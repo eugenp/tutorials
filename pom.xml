@@ -1,332 +1,332 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.baeldung</groupId>
-	<artifactId>parent-modules</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+    <groupId>com.baeldung</groupId>
+    <artifactId>parent-modules</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <modules>
         <module>lombok-custom</module>
     </modules>
     <name>parent-modules</name>
-	<packaging>pom</packaging>
+    <packaging>pom</packaging>
 
-	<dependencies>
-		<!-- logging -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${org.slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>${org.slf4j.version}</version>
-		</dependency>
+    <dependencies>
+        <!-- logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
 
-		<!-- test -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit-jupiter.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-params</artifactId>
-			<version>${junit-jupiter.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
+        <!-- test -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-			<version>${junit-jupiter.version}</version>
-			<scope>test</scope>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
         </dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-core</artifactId>
-			<version>${org.hamcrest.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-library</artifactId>
-			<version>${org.hamcrest.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-all</artifactId>
-			<version>${org.hamcrest.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>${mockito.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.surefire</groupId>
-			<artifactId>surefire-logger-api</artifactId>
-			<version>${maven-surefire-plugin.version}</version>
-			<!-- to get around bug https://github.com/junit-team/junit5/issues/801 -->
-			<scope>test</scope>
-			<optional>true</optional>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>${org.hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>${org.hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>${org.hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire-logger-api</artifactId>
+            <version>${maven-surefire-plugin.version}</version>
+            <!-- to get around bug https://github.com/junit-team/junit5/issues/801 -->
+            <scope>test</scope>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>${exec-maven-plugin.version}</version>
-				<configuration>
-					<executable>maven</executable>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven-surefire-plugin.version}</version>
-				<configuration>
-					<forkCount>3</forkCount>
-					<reuseForks>true</reuseForks>
-					<excludes>
-						<exclude>**/*IntegrationTest.java</exclude>
-						<exclude>**/*IntTest.java</exclude>
-						<exclude>**/*LongRunningUnitTest.java</exclude>
-						<exclude>**/*ManualTest.java</exclude>
-						<exclude>**/JdbcTest.java</exclude>
-						<exclude>**/*LiveTest.java</exclude>
-					</excludes>
-				</configuration>
-				<dependencies>
-	                <dependency>
-	                    <groupId>org.junit.platform</groupId>
-	                    <artifactId>junit-platform-surefire-provider</artifactId>
-	                    <version>${junit-platform.version}</version>
-	                </dependency>
-	                <dependency>
-	                    <groupId>org.junit.jupiter</groupId>
-	                    <artifactId>junit-jupiter-engine</artifactId>
-	                    <version>${junit-jupiter.version}</version>
-	                </dependency>
-					<dependency>
-						<groupId>org.junit.vintage</groupId>
-						<artifactId>junit-vintage-engine</artifactId>
-  	                    <version>${junit-jupiter.version}</version>
-					</dependency>
-            	</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<version>${maven-pmd-plugin.version}</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.baeldung.pmd</groupId>
-						<artifactId>custom-pmd</artifactId>
-						<version>${custom-pmd.version}</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<failurePriority>5</failurePriority>
-					<aggregate>false</aggregate>
-					<failOnViolation>true</failOnViolation>
-					<verbose>true</verbose>
-					<linkXRef>true</linkXRef>
-					<includeTests>true</includeTests>
-					<sourceEncoding>UTF-8</sourceEncoding>
-					<targetJdk>${java.version}</targetJdk>
-					<rulesets>
-						<ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
-					</rulesets>
-					<excludeRoots>
-						<excludeRoot>target/generated-sources</excludeRoot>
-					</excludeRoots>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.commonjava.maven.plugins</groupId>
-				<artifactId>directory-maven-plugin</artifactId>
-				<version>${directory-maven-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>directories</id>
-						<goals>
-							<goal>directory-of</goal>
-						</goals>
-						<phase>validate</phase>
-						<configuration>
-							<property>tutorialsproject.basedir</property>
-							<project>
-								<groupId>com.baeldung</groupId>
-								<artifactId>parent-modules</artifactId>
-							</project>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-install-plugin</artifactId>
-				<version>${maven-install-plugin.version}</version>
-				<configuration>
-					<groupId>org.baeldung.pmd</groupId>
-					<artifactId>custom-pmd</artifactId>
-					<version>${custom-pmd.version}</version>
-					<packaging>jar</packaging>
-					<file>${tutorialsproject.basedir}/custom-pmd-${custom-pmd.version}.jar</file>
-					<generatePom>true</generatePom>
-				</configuration>
-				<executions>
-					<execution>
-						<id>install-jar-lib</id>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-						<phase>validate</phase>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>${maven-war-plugin.version}</version>
-			</plugin>
-		</plugins>
-		
-		<extensions>
-			<extension>
-				<groupId>com.vackosar.gitflowincrementalbuilder</groupId>
-				<artifactId>gitflow-incremental-builder</artifactId>
-				<version>${gitflow-incremental-builder.version}</version>
-			</extension>
-		</extensions>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.commonjava.maven.plugins
-										</groupId>
-										<artifactId>
-											directory-maven-plugin
-										</artifactId>
-										<versionRange>
-											[0.3.1,)
-										</versionRange>
-										<goals>
-											<goal>directory-of</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-install-plugin
-										</artifactId>
-										<versionRange>
-											[2.5.1,)
-										</versionRange>
-										<goals>
-											<goal>install-file</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec-maven-plugin.version}</version>
+                <configuration>
+                    <executable>maven</executable>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <forkCount>3</forkCount>
+                    <reuseForks>true</reuseForks>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IntTest.java</exclude>
+                        <exclude>**/*LongRunningUnitTest.java</exclude>
+                        <exclude>**/*ManualTest.java</exclude>
+                        <exclude>**/JdbcTest.java</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
+                    </excludes>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>${junit-platform.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                        <version>${junit-jupiter.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.junit.vintage</groupId>
+                        <artifactId>junit-vintage-engine</artifactId>
+                          <version>${junit-jupiter.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${maven-pmd-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.baeldung.pmd</groupId>
+                        <artifactId>custom-pmd</artifactId>
+                        <version>${custom-pmd.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <failurePriority>5</failurePriority>
+                    <aggregate>false</aggregate>
+                    <failOnViolation>true</failOnViolation>
+                    <verbose>true</verbose>
+                    <linkXRef>true</linkXRef>
+                    <includeTests>true</includeTests>
+                    <sourceEncoding>UTF-8</sourceEncoding>
+                    <targetJdk>${java.version}</targetJdk>
+                    <rulesets>
+                        <ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
+                    </rulesets>
+                    <excludeRoots>
+                        <excludeRoot>target/generated-sources</excludeRoot>
+                    </excludeRoots>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.commonjava.maven.plugins</groupId>
+                <artifactId>directory-maven-plugin</artifactId>
+                <version>${directory-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>directories</id>
+                        <goals>
+                            <goal>directory-of</goal>
+                        </goals>
+                        <phase>validate</phase>
+                        <configuration>
+                            <property>tutorialsproject.basedir</property>
+                            <project>
+                                <groupId>com.baeldung</groupId>
+                                <artifactId>parent-modules</artifactId>
+                            </project>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>${maven-install-plugin.version}</version>
+                <configuration>
+                    <groupId>org.baeldung.pmd</groupId>
+                    <artifactId>custom-pmd</artifactId>
+                    <version>${custom-pmd.version}</version>
+                    <packaging>jar</packaging>
+                    <file>${tutorialsproject.basedir}/custom-pmd-${custom-pmd.version}.jar</file>
+                    <generatePom>true</generatePom>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install-jar-lib</id>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+            </plugin>
+        </plugins>
+        
+        <extensions>
+            <extension>
+                <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
+                <artifactId>gitflow-incremental-builder</artifactId>
+                <version>${gitflow-incremental-builder.version}</version>
+            </extension>
+        </extensions>
+        <pluginManagement>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse m2e settings
+                    only. It has no influence on the Maven build itself. -->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            org.commonjava.maven.plugins
+                                        </groupId>
+                                        <artifactId>
+                                            directory-maven-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [0.3.1,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>directory-of</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            org.apache.maven.plugins
+                                        </groupId>
+                                        <artifactId>
+                                            maven-install-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [2.5.1,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>install-file</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
-	<profiles>
+    <profiles>
 
-		<profile>
-			<id>default-first</id>
-			<build>
-				<plugins>
+        <profile>
+            <id>default-first</id>
+            <build>
+                <plugins>
 
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>${maven-surefire-plugin.version}</version>
-						<configuration>
-							<forkCount>3</forkCount>
-							<reuseForks>true</reuseForks>
-							<excludes>
-								<exclude>**/*IntegrationTest.java</exclude>
-								<exclude>**/*IntTest.java</exclude>
-								<exclude>**/*LongRunningUnitTest.java</exclude>
-								<exclude>**/*ManualTest.java</exclude>
-								<exclude>**/JdbcTest.java</exclude>
-								<exclude>**/*LiveTest.java</exclude>
-							</excludes>
-						</configuration>
-					</plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
 
-				</plugins>
-			</build>
+                </plugins>
+            </build>
 
-			<modules>
-				<module>parent-boot-1</module>
+            <modules>
+                <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
@@ -449,7 +449,7 @@
                 <module>java-spi</module>
                 <module>java-streams</module>
                 <module>java-strings</module>
-		<module>java-strings-2</module>
+        <module>java-strings-2</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javafx</module>
@@ -527,17 +527,17 @@
                 <module>restx</module>
                 <!-- <module>rmi</module> --> <!-- Not a maven project -->
                 <module>rule-engines</module>
-				<module>rsocket</module>
+                <module>rsocket</module>
                 <module>rxjava</module>
                 <module>rxjava-2</module> 
-			    <module>software-security/sql-injection-samples</module>
-				
-				<module>tensorflow-java</module>
-				
-			</modules>
+                <module>software-security/sql-injection-samples</module>
+                
+                <module>tensorflow-java</module>
+                
+            </modules>
 
-		</profile>
-		
+        </profile>
+        
         <profile>
             <id>default-second</id>
             <build>
@@ -693,7 +693,7 @@
                 <module>spring-security-mvc-boot</module>
                 <module>spring-security-mvc-custom</module>
                 <module>spring-security-mvc-digest-auth</module>
-				<module>spring-security-mvc-jsonview</module>
+                <module>spring-security-mvc-jsonview</module>
                 <module>spring-security-mvc-ldap</module>
                 <module>spring-security-mvc-login</module>
                 <module>spring-security-mvc-persisted-remember-me</module>
@@ -751,153 +751,153 @@
                 <module>xml</module>
                 <module>xmlunit-2</module>
                 <module>xstream</module>
-				
-				<module>tensorflow-java</module>
+                
+                <module>tensorflow-java</module>
                 
             </modules>
 
         </profile>
         
-		<profile>
-			<id>spring-context</id>
-			<build>
-				<plugins>
+        <profile>
+            <id>spring-context</id>
+            <build>
+                <plugins>
 
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>${maven-surefire-plugin.version}</version>
-						<configuration>
-							<forkCount>3</forkCount>
-							<reuseForks>true</reuseForks>
-							<includes>
-								<include>**/*SpringContextIntegrationTest.java</include>
-							</includes>
-						</configuration>
-					</plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>**/*SpringContextIntegrationTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
 
-				</plugins>
-			</build>
+                </plugins>
+            </build>
 
-			<modules>
-				<module>spring-5</module>
-				<module>spring-5-data-reactive</module>
-				<module>spring-5-reactive</module>
-				<module>spring-5-reactive-client</module>
-				<module>spring-5-reactive-security</module>
-				<module>spring-5-security</module>
-				<module>spring-5-security-oauth</module>
-				<module>spring-activiti</module>
-				<module>spring-akka</module>
-				<module>spring-all</module>
-				<module>spring-aop</module>
-				<module>spring-apache-camel</module>
-				<module>spring-batch</module>
-				<module>spring-bom</module>
-				<module>spring-boot-admin</module>
-				<module>spring-boot-bootstrap</module>
-				<module>spring-boot-bootstrap</module>
-				<module>spring-boot-camel</module>
-				<module>spring-boot-client</module>
-				<module>spring-boot-custom-starter</module>
-				<module>greeter-spring-boot-autoconfigure</module>
-				<module>greeter-spring-boot-sample-app</module>
-				<module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
-				<module>spring-boot-jasypt</module>
-				<module>spring-boot-keycloak</module>
-				<module>spring-boot-mvc</module>
-				<module>spring-boot-property-exp</module>
-				<module>spring-boot-vue</module>
-				<module>spring-cloud</module>
-				<module>spring-cloud/spring-cloud-archaius/basic-config</module>
-				<module>spring-cloud/spring-cloud-archaius/extra-configs</module>
-				<module>spring-cloud/spring-cloud-bootstrap/config</module>
-				<module>spring-cloud/spring-cloud-contract</module>
-				<module>spring-cloud/spring-cloud-gateway</module>
-				<module>spring-cloud/spring-cloud-kubernetes/demo-backend</module>
-				<module>spring-cloud/spring-cloud-rest/spring-cloud-rest-config-server</module>
-				<module>spring-cloud/spring-cloud-ribbon-client                </module>
-				<module>spring-cloud/spring-cloud-security</module>
-				<module>spring-cloud/spring-cloud-stream/spring-cloud-stream-rabbit</module>
-				<module>spring-cloud/spring-cloud-task/springcloudtasksink</module>
-				<module>spring-cloud/spring-cloud-zookeeper                     </module>
-				<module>spring-cloud/spring-cloud-bus/spring-cloud-config-server</module>
-				<module>spring-cloud/spring-cloud-data-flow/log-sink</module>
-				<module>spring-cloud/spring-cloud-data-flow/time-processor</module>
-				<module>spring-cloud/spring-cloud-data-flow/time-source</module>
-				<module>spring-cucumber</module>
-				<module>persistence-modules/spring-data-keyvalue</module>
-				<module>spring-data-rest</module>
-				<module>spring-dispatcher-servlet</module>
-				<module>spring-drools</module>
-				<module>spring-ehcache</module>
-				<module>spring-freemarker</module>
-				<module>persistence-modules/spring-hibernate-3</module>
-				<module>persistence-modules/spring-hibernate4</module>
-				<module>spring-integration</module>
-				<module>spring-jenkins-pipeline</module>
-				<module>spring-jersey</module>
-				<module>spring-jinq</module>
-				<module>spring-jms</module>
-				<module>spring-kafka</module>
-				<module>spring-katharsis</module>
-				<module>spring-ldap</module>
-				<module>spring-mobile</module>
-				<module>spring-mockito</module>
-				<module>spring-mvc-forms-thymeleaf</module>
-				<module>spring-mvc-java</module>
-				<module>spring-mvc-velocity</module>
-				<module>spring-mvc-webflow</module>
-				<module>spring-protobuf</module>
-				<module>spring-quartz</module>
-				<module>remoting-hessian-burlap/spring-remoting-hessian-burlap-client</module>
-				<module>remoting-hessian-burlap/remoting-hessian-burlap-server</module>
-				<module>spring-reactor</module>
-				<module>spring-remoting/</module>
-				<module>spring-remoting/remoting-http/remoting-http-server</module>
-				<module>spring-remoting/remoting-jms/remoting-jms-client</module>
-				<module>spring-remoting/remoting-rmi/remoting-rmi-server</module>
-				<module>spring-rest</module>
-				<module>spring-rest-angular</module>
-				<module>spring-rest-full</module>
-				<module>spring-rest-simple</module>
-				<module>spring-resttemplate</module>
-				<module>spring-security-acl</module>
-				<module>spring-security-angular</module>
-				<module>spring-security-cache-control</module>
-				<module>spring-security-client</module>
-				<module>spring-security-core</module>
-				<module>spring-security-mvc-boot</module>
-				<module>spring-security-mvc-custom</module>
-				<module>spring-security-mvc-digest-auth</module>
-				<module>spring-security-mvc-ldap</module>
-				<module>spring-security-mvc-persisted-remember-me</module>
-				<module>spring-security-mvc-session</module>
-				<module>spring-security-mvc-socket</module>
-				<module>spring-security-rest</module>
-				<module>spring-security-sso</module>
-				<module>spring-security-thymeleaf/spring-security-thymeleaf-authentication</module>
-				<module>spring-security-thymeleaf/spring-security-thymeleaf-authorize</module>
-				<module>spring-security-thymeleaf/spring-security-thymeleaf-config</module>
-				<module>spring-security-x509</module>
-				<module>spring-session/spring-session-jdbc</module>
-				<module>spring-sleuth</module>
-				<module>spring-social-login</module>
-				<module>spring-spel</module>
-				<module>spring-state-machine</module>
-				<module>spring-swagger-codegen/spring-swagger-codegen-app</module>
-				<module>spring-thymeleaf</module>
-				<module>spring-userservice</module>
-				<module>spring-vault</module>
-				<module>spring-vertx</module>
-				<module>spring-zuul/spring-zuul-foos-resource</module>
-				<module>persistence-modules/spring-data-dynamodb</module>
-				<module>persistence-modules/spring-data-eclipselink</module>
-				<module>persistence-modules/spring-data-solr</module>
-				<module>persistence-modules/spring-hibernate-5</module>
-			</modules>
+            <modules>
+                <module>spring-5</module>
+                <module>spring-5-data-reactive</module>
+                <module>spring-5-reactive</module>
+                <module>spring-5-reactive-client</module>
+                <module>spring-5-reactive-security</module>
+                <module>spring-5-security</module>
+                <module>spring-5-security-oauth</module>
+                <module>spring-activiti</module>
+                <module>spring-akka</module>
+                <module>spring-all</module>
+                <module>spring-aop</module>
+                <module>spring-apache-camel</module>
+                <module>spring-batch</module>
+                <module>spring-bom</module>
+                <module>spring-boot-admin</module>
+                <module>spring-boot-bootstrap</module>
+                <module>spring-boot-bootstrap</module>
+                <module>spring-boot-camel</module>
+                <module>spring-boot-client</module>
+                <module>spring-boot-custom-starter</module>
+                <module>greeter-spring-boot-autoconfigure</module>
+                <module>greeter-spring-boot-sample-app</module>
+                <module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
+                <module>spring-boot-jasypt</module>
+                <module>spring-boot-keycloak</module>
+                <module>spring-boot-mvc</module>
+                <module>spring-boot-property-exp</module>
+                <module>spring-boot-vue</module>
+                <module>spring-cloud</module>
+                <module>spring-cloud/spring-cloud-archaius/basic-config</module>
+                <module>spring-cloud/spring-cloud-archaius/extra-configs</module>
+                <module>spring-cloud/spring-cloud-bootstrap/config</module>
+                <module>spring-cloud/spring-cloud-contract</module>
+                <module>spring-cloud/spring-cloud-gateway</module>
+                <module>spring-cloud/spring-cloud-kubernetes/demo-backend</module>
+                <module>spring-cloud/spring-cloud-rest/spring-cloud-rest-config-server</module>
+                <module>spring-cloud/spring-cloud-ribbon-client                </module>
+                <module>spring-cloud/spring-cloud-security</module>
+                <module>spring-cloud/spring-cloud-stream/spring-cloud-stream-rabbit</module>
+                <module>spring-cloud/spring-cloud-task/springcloudtasksink</module>
+                <module>spring-cloud/spring-cloud-zookeeper                     </module>
+                <module>spring-cloud/spring-cloud-bus/spring-cloud-config-server</module>
+                <module>spring-cloud/spring-cloud-data-flow/log-sink</module>
+                <module>spring-cloud/spring-cloud-data-flow/time-processor</module>
+                <module>spring-cloud/spring-cloud-data-flow/time-source</module>
+                <module>spring-cucumber</module>
+                <module>persistence-modules/spring-data-keyvalue</module>
+                <module>spring-data-rest</module>
+                <module>spring-dispatcher-servlet</module>
+                <module>spring-drools</module>
+                <module>spring-ehcache</module>
+                <module>spring-freemarker</module>
+                <module>persistence-modules/spring-hibernate-3</module>
+                <module>persistence-modules/spring-hibernate4</module>
+                <module>spring-integration</module>
+                <module>spring-jenkins-pipeline</module>
+                <module>spring-jersey</module>
+                <module>spring-jinq</module>
+                <module>spring-jms</module>
+                <module>spring-kafka</module>
+                <module>spring-katharsis</module>
+                <module>spring-ldap</module>
+                <module>spring-mobile</module>
+                <module>spring-mockito</module>
+                <module>spring-mvc-forms-thymeleaf</module>
+                <module>spring-mvc-java</module>
+                <module>spring-mvc-velocity</module>
+                <module>spring-mvc-webflow</module>
+                <module>spring-protobuf</module>
+                <module>spring-quartz</module>
+                <module>remoting-hessian-burlap/spring-remoting-hessian-burlap-client</module>
+                <module>remoting-hessian-burlap/remoting-hessian-burlap-server</module>
+                <module>spring-reactor</module>
+                <module>spring-remoting/</module>
+                <module>spring-remoting/remoting-http/remoting-http-server</module>
+                <module>spring-remoting/remoting-jms/remoting-jms-client</module>
+                <module>spring-remoting/remoting-rmi/remoting-rmi-server</module>
+                <module>spring-rest</module>
+                <module>spring-rest-angular</module>
+                <module>spring-rest-full</module>
+                <module>spring-rest-simple</module>
+                <module>spring-resttemplate</module>
+                <module>spring-security-acl</module>
+                <module>spring-security-angular</module>
+                <module>spring-security-cache-control</module>
+                <module>spring-security-client</module>
+                <module>spring-security-core</module>
+                <module>spring-security-mvc-boot</module>
+                <module>spring-security-mvc-custom</module>
+                <module>spring-security-mvc-digest-auth</module>
+                <module>spring-security-mvc-ldap</module>
+                <module>spring-security-mvc-persisted-remember-me</module>
+                <module>spring-security-mvc-session</module>
+                <module>spring-security-mvc-socket</module>
+                <module>spring-security-rest</module>
+                <module>spring-security-sso</module>
+                <module>spring-security-thymeleaf/spring-security-thymeleaf-authentication</module>
+                <module>spring-security-thymeleaf/spring-security-thymeleaf-authorize</module>
+                <module>spring-security-thymeleaf/spring-security-thymeleaf-config</module>
+                <module>spring-security-x509</module>
+                <module>spring-session/spring-session-jdbc</module>
+                <module>spring-sleuth</module>
+                <module>spring-social-login</module>
+                <module>spring-spel</module>
+                <module>spring-state-machine</module>
+                <module>spring-swagger-codegen/spring-swagger-codegen-app</module>
+                <module>spring-thymeleaf</module>
+                <module>spring-userservice</module>
+                <module>spring-vault</module>
+                <module>spring-vertx</module>
+                <module>spring-zuul/spring-zuul-foos-resource</module>
+                <module>persistence-modules/spring-data-dynamodb</module>
+                <module>persistence-modules/spring-data-eclipselink</module>
+                <module>persistence-modules/spring-data-solr</module>
+                <module>persistence-modules/spring-hibernate-5</module>
+            </modules>
 
-		</profile>
+        </profile>
 
         <profile>
             <id>default-heavy</id>
@@ -1094,7 +1094,7 @@
                 <module>java-spi</module>
                 <module>java-streams</module>
                 <module>java-strings</module>
-		<module>java-strings-2</module>
+        <module>java-strings-2</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javafx</module>
@@ -1270,7 +1270,7 @@
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
                 
-				<module>spring-ehcache</module>                
+                <module>spring-ehcache</module>                
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
                 
@@ -1445,67 +1445,67 @@
         </profile>
 
 
-	</profiles>
+    </profiles>
 
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jxr-plugin</artifactId>
-				<version>${maven-jxr-plugin.version}</version>
-			</plugin>
-		</plugins>
-	</reporting>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>${maven-jxr-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<gib.referenceBranch>refs/remotes/origin/master</gib.referenceBranch>
-		<gib.skipTestsForNotImpactedModules>true</gib.skipTestsForNotImpactedModules>
-		<gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
-		<gib.failOnError>false</gib.failOnError>
-		<gib.enabled>false</gib.enabled>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <gib.referenceBranch>refs/remotes/origin/master</gib.referenceBranch>
+        <gib.skipTestsForNotImpactedModules>true</gib.skipTestsForNotImpactedModules>
+        <gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
+        <gib.failOnError>false</gib.failOnError>
+        <gib.enabled>false</gib.enabled>
         
-		<junit.version>4.12</junit.version>
-		<org.hamcrest.version>1.3</org.hamcrest.version>
-		<mockito.version>2.21.0</mockito.version>
+        <junit.version>4.12</junit.version>
+        <org.hamcrest.version>1.3</org.hamcrest.version>
+        <mockito.version>2.21.0</mockito.version>
         
-		<!-- logging -->
-		<org.slf4j.version>1.7.21</org.slf4j.version>
-		<logback.version>1.1.7</logback.version>
+        <!-- logging -->
+        <org.slf4j.version>1.7.21</org.slf4j.version>
+        <logback.version>1.1.7</logback.version>
         
-		<!-- plugins -->
-		<maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-		<exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
-		<java.version>1.8</java.version>
-		<log4j.version>1.2.17</log4j.version>
-		<moneta.version>1.1</moneta.version>
-		<esapi.version>2.1.0.1</esapi.version>
-		<jmh-core.version>1.19</jmh-core.version>
-		<jmh-generator.version>1.19</jmh-generator.version>
-		<hamcrest-all.version>1.3</hamcrest-all.version>
-		<exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
-		<maven-failsafe-plugin.version>2.19.1</maven-failsafe-plugin.version>
-		<commons-io.version>2.5</commons-io.version>
-		<commons-cli.version>1.4</commons-cli.version>
-		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>
-		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-		<jstl-api.version>1.2</jstl-api.version>
-		<javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
-		<jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
-		<jstl.version>1.2</jstl.version>
-		<jackson.version>2.9.8</jackson.version>
-		<commons-fileupload.version>1.3</commons-fileupload.version>
-		<junit-platform.version>1.2.0</junit-platform.version>
-		<junit-jupiter.version>5.2.0</junit-jupiter.version>
-		<directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
-		<maven-install-plugin.version>2.5.1</maven-install-plugin.version>
-		<custom-pmd.version>0.0.1</custom-pmd.version>
-		<gitflow-incremental-builder.version>3.4</gitflow-incremental-builder.version>
-		<maven-jxr-plugin.version>2.3</maven-jxr-plugin.version>
-		<!-- <maven-pmd-plugin.version>3.9.0</maven-pmd-plugin.version> -->
-		<maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
-		<lombok.version>1.16.12</lombok.version>
-	</properties>
+        <!-- plugins -->
+        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+        <java.version>1.8</java.version>
+        <log4j.version>1.2.17</log4j.version>
+        <moneta.version>1.1</moneta.version>
+        <esapi.version>2.1.0.1</esapi.version>
+        <jmh-core.version>1.19</jmh-core.version>
+        <jmh-generator.version>1.19</jmh-generator.version>
+        <hamcrest-all.version>1.3</hamcrest-all.version>
+        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+        <maven-failsafe-plugin.version>2.19.1</maven-failsafe-plugin.version>
+        <commons-io.version>2.5</commons-io.version>
+        <commons-cli.version>1.4</commons-cli.version>
+        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <jstl-api.version>1.2</jstl-api.version>
+        <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
+        <jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
+        <jstl.version>1.2</jstl.version>
+        <jackson.version>2.9.8</jackson.version>
+        <commons-fileupload.version>1.3</commons-fileupload.version>
+        <junit-platform.version>1.2.0</junit-platform.version>
+        <junit-jupiter.version>5.2.0</junit-jupiter.version>
+        <directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
+        <maven-install-plugin.version>2.5.1</maven-install-plugin.version>
+        <custom-pmd.version>0.0.1</custom-pmd.version>
+        <gitflow-incremental-builder.version>3.4</gitflow-incremental-builder.version>
+        <maven-jxr-plugin.version>2.3</maven-jxr-plugin.version>
+        <!-- <maven-pmd-plugin.version>3.9.0</maven-pmd-plugin.version> -->
+        <maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
+        <lombok.version>1.16.12</lombok.version>
+    </properties>
 </project>
