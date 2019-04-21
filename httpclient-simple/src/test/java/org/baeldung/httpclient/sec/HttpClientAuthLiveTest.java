@@ -23,19 +23,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 /*
- * NOTE : Need module spring-security-rest-basic-auth to be running
+ * NOTE : Need module httpclient-simple to be running
  */
 
 public class HttpClientAuthLiveTest {
 
-    private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://localhost:8081/spring-security-rest-basic-auth/api/foos/1";
+    private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://localhost:8082/httpclient-simple/api/foos/1";
     private static final String DEFAULT_USER = "user1";
     private static final String DEFAULT_PASS = "user1Pass";
 
@@ -111,7 +110,7 @@ public class HttpClientAuthLiveTest {
     }
 
     private HttpContext context() {
-        final HttpHost targetHost = new HttpHost("localhost", 8080, "http");
+        final HttpHost targetHost = new HttpHost("localhost", 8082, "http");
         final CredentialsProvider credsProvider = new BasicCredentialsProvider();
         credsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(DEFAULT_USER, DEFAULT_PASS));
 
