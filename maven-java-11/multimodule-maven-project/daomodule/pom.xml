@@ -10,5 +10,5 @@
     <artifactId>dao</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
-    <name>DaoModule</name>
+    <name>daomodule</name>
 </project>
