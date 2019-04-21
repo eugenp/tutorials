@@ -6,6 +6,12 @@
     <version>0.0.1</version>
     <name>apache-meecrowave</name>
     <description>A sample REST API application with Meecrowave</description>
+    
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.meecrowave/meecrowave-core -->

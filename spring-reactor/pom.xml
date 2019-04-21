@@ -27,12 +27,17 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-bus</artifactId>
-            <version>2.0.8.RELEASE</version>
+            <version>${reactor.version}</version>
         </dependency>
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>2.0.8.RELEASE</version>
+            <version>${reactor.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <spring-cloud-sleuth.version>2.0.2.RELEASE</spring-cloud-sleuth.version>
+        <reactor.version>2.0.8.RELEASE</reactor.version>
+    </properties>
 </project>
