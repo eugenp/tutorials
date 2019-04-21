@@ -376,7 +376,7 @@
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <module>core-groovy</module>
-				<module>core-groovy-2</module>
+                <module>core-groovy-2</module>
                 <!-- <module>core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
                 <!-- <module>core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
                 <!-- <module>core-java-12</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
