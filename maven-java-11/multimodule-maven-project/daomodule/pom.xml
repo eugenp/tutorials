@@ -6,8 +6,8 @@
         <artifactId>multimodule-maven-project</artifactId>
         <version>1.0</version>
     </parent>
-    <groupId>com.baeldung.dao</groupId>
-    <artifactId>dao</artifactId>
+    <groupId>com.baeldung.daomodule</groupId>
+    <artifactId>daomodule</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
     <name>daomodule</name>
