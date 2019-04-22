@@ -2,29 +2,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.baeldung.multimoduleproject</groupId>
-        <artifactId>multimoduleproject</artifactId>
+        <groupId>com.baeldung.multimodule-maven-project</groupId>
+        <artifactId>multimodule-maven-project</artifactId>
         <version>1.0</version>
     </parent>
     <groupId>com.baeldung.mainappmodule</groupId>
-    <artifactId>mainapp</artifactId>
+    <artifactId>mainappmodule</artifactId>
     <packaging>jar</packaging>
     <name>mainappmodule</name>
     
     <dependencies>
         <dependency>
             <groupId>com.baeldung.entitymodule</groupId>
-            <artifactId>entity</artifactId>
+            <artifactId>entitymodule</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>
-            <groupId>com.baeldung.dao</groupId>
-            <artifactId>dao</artifactId>
+            <groupId>com.baeldung.daomodule</groupId>
+            <artifactId>daomodule</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>
-            <groupId>com.baeldung.userdao</groupId>
-            <artifactId>userdao</artifactId>
+            <groupId>com.baeldung.userdaomodule</groupId>
+            <artifactId>userdaomodule</artifactId>
             <version>1.0</version>
         </dependency>
     </dependencies>
