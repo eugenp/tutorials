@@ -6,7 +6,7 @@
         <artifactId>multimoduleproject</artifactId>
         <version>1.0</version>
     </parent>
-    <groupId>com.baeldung.entity</groupId>
+    <groupId>com.baeldung.entitymodule</groupId>
     <artifactId>entity</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
