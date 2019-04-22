@@ -7,7 +7,7 @@
         <version>1.0</version>
     </parent>
     <groupId>com.baeldung.entitymodule</groupId>
-    <artifactId>entity</artifactId>
+    <artifactId>entitymodule</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
     <name>entitymodule</name>
