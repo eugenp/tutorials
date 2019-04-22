@@ -6,14 +6,14 @@
         <artifactId>multimoduleproject</artifactId>
         <version>1.0</version>
     </parent>
-    <groupId>com.baeldung.mainapp</groupId>
+    <groupId>com.baeldung.mainappmodule</groupId>
     <artifactId>mainapp</artifactId>
     <packaging>jar</packaging>
     <name>mainappmodule</name>
     
     <dependencies>
         <dependency>
-            <groupId>com.baeldung.entity</groupId>
+            <groupId>com.baeldung.entitymodule</groupId>
             <artifactId>entity</artifactId>
             <version>1.0</version>
         </dependency>
