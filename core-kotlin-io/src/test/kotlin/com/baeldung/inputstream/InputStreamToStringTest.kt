@@ -8,7 +8,8 @@ import kotlin.test.assertEquals
 
 class InputStreamToStringTest {
     private val fileName = "src/test/resources/inputstream2string.txt"
-    private val fileFullContent = "Computer programming can be a hassle\r\n" +
+    private val endOfLine = System.lineSeparator()
+    private val fileFullContent = "Computer programming can be a hassle$endOfLine" +
             "It's like trying to take a defended castle"
 
     @Test
@@ -46,7 +47,7 @@ class InputStreamToStringTest {
         } finally {
             reader.close()
         }
-        assertEquals(fileFullContent.replace("\r\n", ""), content.toString())
+        assertEquals(fileFullContent.replace(endOfLine, ""), content.toString())
 
     }
 
