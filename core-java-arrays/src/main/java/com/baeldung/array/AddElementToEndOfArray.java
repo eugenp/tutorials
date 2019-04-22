@@ -8,7 +8,7 @@ public class AddElementToEndOfArray {
     public Integer[] addElementUsingArraysCopyOf(Integer[] srcArray, int elementToAdd) {
         Integer[] destArray = Arrays.copyOf(srcArray, srcArray.length + 1);
 
-        destArray[destArray.length-1] = elementToAdd;
+        destArray[destArray.length - 1] = elementToAdd;
         return destArray;
     }
 
@@ -26,7 +26,7 @@ public class AddElementToEndOfArray {
 
         System.arraycopy(srcArray, 0, destArray, 0, srcArray.length);
 
-        destArray[destArray.length-1] = elementToAdd;
+        destArray[destArray.length - 1] = elementToAdd;
 
         return destArray;
     }
