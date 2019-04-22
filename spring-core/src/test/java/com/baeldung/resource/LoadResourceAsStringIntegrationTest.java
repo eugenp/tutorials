@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -15,9 +16,9 @@ import static org.junit.Assert.assertEquals;
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = LoadResourceConfig.class)
 public class LoadResourceAsStringIntegrationTest {
 
-    private static final String ORIGINAL_DESCRIPTION = "This is a resource text file. This file will be loaded as a " + "resource and use its contents as a string.";
+    private static final String EXPECTED_RESOURCE_VALUE = "This is a resource text file. This file will be loaded as a " + "resource and use its contents as a string.";
 
-    @Value("#{T(org.baeldung.resource.ResourceUtils).readFileToString('classpath:resource.txt'))}")
+    @Value("#{T(com.baeldung.resource.ResourceUtils).readFileToString('classpath:resource.txt')}")
     private String resourceStringUsingSpel;
 
     @Autowired
@@ -28,36 +29,18 @@ public class LoadResourceAsStringIntegrationTest {
     @Qualifier("resourceStringUsingStreamUtils")
     private String resourceStringUsingStreamUtils;
 
-    @Autowired
-    @Qualifier("resourceStringUsingCommonsIo")
-    private String resourceStringUsingCommonsIo;
-
-    @Autowired
-    @Qualifier("resourceStringUsingGuava")
-    private String resourceStringUsingGuava;
-
     @Test
     public void givenUsingSpel_whenConvertingAResourceToAString_thenCorrect() {
-        assertEquals(ORIGINAL_DESCRIPTION, resourceStringUsingSpel);
+        assertEquals(EXPECTED_RESOURCE_VALUE, resourceStringUsingSpel);
     }
 
     @Test
     public void givenUsingFileCopyUtils_whenConvertingAResourceToAString_thenCorrect() {
-        assertEquals(ORIGINAL_DESCRIPTION, resourceStringUsingFileCopyUtils);
+        assertEquals(EXPECTED_RESOURCE_VALUE, resourceStringUsingFileCopyUtils);
     }
 
     @Test
     public void givenUsingStreamUtils_whenConvertingAResourceToAString_thenCorrect() {
-        assertEquals(ORIGINAL_DESCRIPTION, resourceStringUsingStreamUtils);
-    }
-
-    @Test
-    public void givenUsingCommonsIo_whenConvertingAResourceToAString_thenCorrect() {
-        assertEquals(ORIGINAL_DESCRIPTION, resourceStringUsingCommonsIo);
-    }
-
-    @Test
-    public void givenUsingGuava_whenConvertingAResourceToAString_thenCorrect() {
-        assertEquals(ORIGINAL_DESCRIPTION, resourceStringUsingGuava);
+        assertEquals(EXPECTED_RESOURCE_VALUE, resourceStringUsingStreamUtils);
     }
 }

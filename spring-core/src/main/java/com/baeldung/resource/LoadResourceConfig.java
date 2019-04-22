@@ -22,8 +22,11 @@ public class LoadResourceConfig {
 
     @Bean
     public String resourceStringUsingFileCopyUtils() throws IOException {
-        Reader reader = new InputStreamReader(resource.getInputStream());
-        return FileCopyUtils.copyToString(reader);
+        try (InputStream inputStream = resource.getInputStream();
+             Reader reader = new InputStreamReader(inputStream);
+        ) {
+            return FileCopyUtils.copyToString(reader);
+        }
     }
 
     @Bean
@@ -31,17 +34,5 @@ public class LoadResourceConfig {
         try (InputStream inputStream = resource.getInputStream()) {
             return StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
         }
-    }
-
-    @Bean
-    public String resourceStringUsingGuava() throws IOException {
-        try (Reader reader = new InputStreamReader(resource.getInputStream())) {
-            return CharStreams.toString(reader);
-        }
-    }
-
-    @Bean
-    public String resourceStringUsingCommonsIo() throws IOException {
-        return FileUtils.readFileToString(resource.getFile(), StandardCharsets.UTF_8);
     }
 }
