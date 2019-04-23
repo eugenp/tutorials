@@ -8,7 +8,7 @@ import javax.enterprise.context.ApplicationScoped;
 public class HelloService {
 
     @ConfigProperty(name = "greeting")
-    private String greeting;
+    String greeting;
 
     public String politeHello(String name){
         return greeting + " " + name;
