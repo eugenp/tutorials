@@ -1,4 +1,4 @@
-package com.baeldung.resource;
+package com.baeldung.loadresourceasstring;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +18,7 @@ public class LoadResourceAsStringIntegrationTest {
 
     private static final String EXPECTED_RESOURCE_VALUE = "This is a resource text file. This file will be loaded as a " + "resource and use its contents as a string.";
 
-    @Value("#{T(com.baeldung.resource.ResourceUtils).readFileToString('classpath:resource.txt')}")
+    @Value("#{T(com.baeldung.loadresourceasstring.ResourceReader).readFileToString('classpath:resource.txt')}")
     private String resourceStringUsingSpel;
 
     @Autowired
