@@ -7,14 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     @GetMapping("/")
-    public String index() throws CustomException {
-
-        if (true) {
-            throw new CustomException();
-        }
-
-        return "index";
-
+    public void index() throws CustomException {
+        throw new CustomException();
     }
 
 }
