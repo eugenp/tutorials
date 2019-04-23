@@ -42,38 +42,44 @@ public class UserValidationUnitTest {
 
     @Test
     public void whenValidationWithSizeAndInvalidMiddleName_thenConstraintViolation() {
-        User user = new User("john", "m", "butler");
+        User user = new User("john", "m", "butler","japan");
         constraintViolations = validator.validateProperty(user, "middleName");
         assertEquals(constraintViolations.size(), 1);
     }
 
     @Test
     public void whenValidationWithSizeAndValidMiddleName_thenNoConstraintViolation() {
-        User user = new User("john", "mathis", "butler");
+        User user = new User("john", "mathis", "butler","japan");
         constraintViolations = validator.validateProperty(user, "middleName");
         assertEquals(constraintViolations.size(), 0);
     }
 
     @Test
     public void whenValidationWithLengthAndInvalidLastName_thenConstraintViolation() {
-        User user = new User("john", "m", "b");
+        User user = new User("john", "m", "b","japan");
         constraintViolations = validator.validateProperty(user, "lastName");
         assertEquals(constraintViolations.size(), 1);
     }
 
     @Test
     public void whenValidationWithLengthAndValidLastName_thenNoConstraintViolation() {
-        User user = new User("john", "mathis", "butler");
+        User user = new User("john", "mathis", "butler","japan");
         constraintViolations = validator.validateProperty(user, "lastName");
         assertEquals(constraintViolations.size(), 0);
     }
 
     @Test(expected = PersistenceException.class)
     public void whenSavingFirstNameWithInvalidFirstName_thenPersistenceException() {
-        User user = new User("john", "mathis", "butler");
+        User user = new User("john", "mathis", "butler","japan");
         session.save(user);
         session.getTransaction()
             .commit();
     }
 
+    @Test
+    public void whenValidationWithSizeAndColumnWithValidCity_thenNoConstraintViolation() {
+        User user = new User("john", "mathis", "butler","japan");
+        constraintViolations = validator.validateProperty(user, "city");
+        assertEquals(constraintViolations.size(), 0);
+    }
 }

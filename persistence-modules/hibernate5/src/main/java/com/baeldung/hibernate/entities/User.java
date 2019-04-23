@@ -18,11 +18,16 @@ public class User {
     @Length(min = 3, max = 15)
     private String lastName;
 
-    public User(String firstName, String middleName, String lastName) {
+    @Column(length = 5)
+    @Size(min = 3, max = 5)
+    private String city;
+
+    public User(String firstName, String middleName, String lastName, String city) {
         super();
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
+        this.city = city;
     }
 
     public String getFirstName() {
@@ -47,6 +52,14 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
 }
