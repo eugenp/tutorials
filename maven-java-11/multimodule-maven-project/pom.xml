@@ -6,6 +6,11 @@
     <version>1.0</version>
     <packaging>pom</packaging>
     <name>multimodule-maven-project</name>
+    <parent>
+        <groupId>com.baeldung.maven-java-11</groupId>
+        <artifactId>maven-java-11</artifactId>
+        <version>1.0</version>
+    </parent>
     
     <dependencyManagement>
         <dependencies>
