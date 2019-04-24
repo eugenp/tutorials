@@ -1170,6 +1170,7 @@
 
                 <module>mapstruct</module>
                 <module>maven</module>
+                <module>maven-java-11</module>
                 <module>maven-archetype</module>
                 <!-- <module>maven-polyglot/maven-polyglot-json-app</module> --> <!-- Not a maven project -->
                 <module>maven-polyglot/maven-polyglot-json-extension</module>
