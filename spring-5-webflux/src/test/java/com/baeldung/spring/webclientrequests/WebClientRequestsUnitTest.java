@@ -21,7 +21,7 @@ import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
 @WebFluxTest
-public class WebClientRequestsTest {
+public class WebClientRequestsUnitTest {
 
     private static final String BASE_URL = "https://example.com";
 
