@@ -1,14 +1,15 @@
-package com.baeldung.hibernate.entities;
+package com.baeldung.hibernate.persistmaps.mapkey;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class User {
-
+    @Id
     @Column(length = 3)
     private String firstName;
 
