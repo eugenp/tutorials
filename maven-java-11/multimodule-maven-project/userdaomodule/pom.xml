@@ -8,6 +8,7 @@
     </parent>
     <groupId>com.baeldung.userdaomodule</groupId>
     <artifactId>userdaomodule</artifactId>
+    <version>1.0</version>
     <packaging>jar</packaging>
     <name>userdaomodule</name>
     <dependencies>
