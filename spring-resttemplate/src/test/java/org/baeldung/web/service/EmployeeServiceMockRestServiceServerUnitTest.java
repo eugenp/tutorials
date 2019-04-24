@@ -7,7 +7,8 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 import java.net.URI;
 
 import org.baeldung.SpringTestConfig;
-import org.baeldung.web.model.Employee;
+import org.baeldung.resttemplate.web.model.Employee;
+import org.baeldung.resttemplate.web.service.EmployeeService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

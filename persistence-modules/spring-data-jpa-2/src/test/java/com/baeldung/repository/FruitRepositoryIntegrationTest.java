@@ -25,7 +25,7 @@ class FruitRepositoryIntegrationTest {
     @Transactional
     @Test
     @Sql(scripts = { "/test-fruit-data.sql" })
-    public void givenFruits_WhenDeletedByColor_DeletedFruitShouldReturn() {
+    public void givenFruits_WhenDeletedByColor_ThenDeletedFruitsShouldReturn() {
 
         List<Fruit> fruits = fruitRepository.deleteByColor("green");
 
@@ -36,7 +36,7 @@ class FruitRepositoryIntegrationTest {
     @Transactional
     @Test
     @Sql(scripts = { "/test-fruit-data.sql" })
-    public void givenFruits_WhenDeletedByName_DeletedFruitCountShouldReturn() {
+    public void givenFruits_WhenDeletedByName_ThenDeletedFruitCountShouldReturn() {
 
         Long deletedFruitCount = fruitRepository.deleteByName("apple");
 
@@ -46,7 +46,7 @@ class FruitRepositoryIntegrationTest {
     @Transactional
     @Test
     @Sql(scripts = { "/test-fruit-data.sql" })
-    public void givenFruits_WhenRemovedByColor_DeletedFruitShouldReturn() {
+    public void givenFruits_WhenRemovedByColor_ThenDeletedFruitsShouldReturn() {
 
         List<Fruit> fruits = fruitRepository.removeByColor("green");
 
@@ -57,7 +57,7 @@ class FruitRepositoryIntegrationTest {
     @Transactional
     @Test
     @Sql(scripts = { "/test-fruit-data.sql" })
-    public void givenFruits_WhenRemovedByName_DeletedFruitCountShouldReturn() {
+    public void givenFruits_WhenRemovedByName_ThenDeletedFruitCountShouldReturn() {
 
         Long deletedFruitCount = fruitRepository.removeByName("apple");
 
@@ -67,7 +67,7 @@ class FruitRepositoryIntegrationTest {
     @Transactional
     @Test
     @Sql(scripts = { "/test-fruit-data.sql" })
-    public void givenFruits_WhenDeletedByColorOrName_DeletedFruitShouldReturn() {
+    public void givenFruits_WhenDeletedByColorOrName_ThenDeletedFruitsShouldReturn() {
 
         List<Fruit> fruits = fruitRepository.deleteFruits("apple", "green");
 

@@ -88,7 +88,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>1.5.10.RELEASE</version>
+            <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -118,6 +118,7 @@
 
         <!-- Spring -->
         <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
+        <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
 
         <!-- persistence -->
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>

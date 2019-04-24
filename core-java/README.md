@@ -29,7 +29,7 @@
 - [What is the serialVersionUID?](http://www.baeldung.com/java-serial-version-uid)
 - [A Guide to the ResourceBundle](http://www.baeldung.com/java-resourcebundle)
 - [Class Loaders in Java](http://www.baeldung.com/java-classloaders)
-- [Guide to Java Clock Class](http://www.baeldung.com/java-clock)
+- [Guide to the Java Clock Class](http://www.baeldung.com/java-clock)
 - [Importance of Main Manifest Attribute in a Self-Executing JAR](http://www.baeldung.com/java-jar-executable-manifest-main-class)
 - [Java Global Exception Handler](http://www.baeldung.com/java-global-exception-handler)
 - [How to Get the Size of an Object in Java](http://www.baeldung.com/java-size-of-object)
@@ -50,3 +50,4 @@
 - [Finding Leap Years in Java](https://www.baeldung.com/java-leap-year)
 - [Java Bitwise Operators](https://www.baeldung.com/java-bitwise-operators)
 - [Guide to Creating and Running a Jar File in Java](https://www.baeldung.com/java-create-jar)
+- [Making a JSON POST Request With HttpURLConnection](https://www.baeldung.com/httpurlconnection-post)

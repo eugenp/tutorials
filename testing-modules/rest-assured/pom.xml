@@ -21,6 +21,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-json</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
@@ -97,7 +101,7 @@
 
         <dependency>
             <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>            
+            <artifactId>joda-time</artifactId>
         </dependency>
 
         <dependency>
@@ -144,15 +148,6 @@
             <version>${wiremock.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>json-schema-validator</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.github.fge</groupId>
             <artifactId>json-schema-validator</artifactId>
             <version>${github-json-schema-validator.version}</version>
@@ -166,6 +161,34 @@
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
             <version>${commons-collections.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- Rest Assured Dependencies-->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>spring-mock-mvc</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.scribejava</groupId>
+            <artifactId>scribejava-apis</artifactId>
+            <version>${scribejava.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -199,6 +222,8 @@
 
         <rest-assured.version>3.0.1</rest-assured.version>
         <rest-assured-json-schema-validator.version>3.0.1</rest-assured-json-schema-validator.version>
+        
+        <scribejava.version>2.5.3</scribejava.version>
     </properties>
 
 </project>
