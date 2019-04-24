@@ -22,6 +22,7 @@
         <module>hbase</module>
         <module>hibernate5</module>
         <module>hibernate-ogm</module>
+        <module>hibernate-mapping</module>
         <module>influxdb</module>
         <module>java-cassandra</module>
         <module>java-cockroachdb</module>
