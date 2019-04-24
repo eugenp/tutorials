@@ -35,7 +35,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <mongo.version>3.4.1</mongo.version>
+        <mongo.version>3.10.1</mongo.version>
         <flapdoodle.version>1.11</flapdoodle.version>
     </properties>
 
