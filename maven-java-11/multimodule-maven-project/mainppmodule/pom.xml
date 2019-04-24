@@ -8,6 +8,7 @@
     </parent>
     <groupId>com.baeldung.mainappmodule</groupId>
     <artifactId>mainappmodule</artifactId>
+    <version>1.0</version>
     <packaging>jar</packaging>
     <name>mainappmodule</name>
     
