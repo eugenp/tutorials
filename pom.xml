@@ -12,7 +12,7 @@
 
     <modules>
         <module>lombok-custom</module>
-				<module>quarkus</module>
+        <module>quarkus</module>
     </modules>
 
 	<dependencies>
@@ -526,7 +526,7 @@
                 <module>protobuffer</module>
 
                 <module>persistence-modules</module>
-								<module>quarkus</module>
+                <module>quarkus</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
