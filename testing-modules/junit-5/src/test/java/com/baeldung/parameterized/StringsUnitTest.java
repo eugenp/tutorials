@@ -86,7 +86,11 @@ class StringsUnitTest {
         assertEquals(expected, actualValue);
     }
 
-
+    @ParameterizedTest
+    @NullSource
+    void isBlank_ShouldReturnTrueForNullInputs(String input) {
+        assertTrue(Strings.isBlank(input));
+    }
 
     private static Stream<Arguments> provideStringsForIsBlank() {
         return Stream.of(
