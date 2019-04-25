@@ -31,7 +31,7 @@ public class ReadResourceDirectoryUnitTest {
 
     @Test
     public void shouldReadResourceAbsolutePathWithPaths() {
-        Path resourceDirectory = Paths.get("src","test","resources");
+        Path resourceDirectory = Paths.get("src", "test", "resources");
 
         String absolutePath = resourceDirectory.toFile().getAbsolutePath();
 
