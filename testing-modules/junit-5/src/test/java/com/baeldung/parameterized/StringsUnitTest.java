@@ -92,6 +92,25 @@ class StringsUnitTest {
         assertTrue(Strings.isBlank(input));
     }
 
+    @ParameterizedTest
+    @EmptySource
+    void isBlank_ShouldReturnTrueForEmptyStrings(String input) {
+        assertTrue(Strings.isBlank(input));
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    void isBlank_ShouldReturnTrueForNullAndEmptyStrings(String input) {
+        assertTrue(Strings.isBlank(input));
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings = {"  ", "\t", "\n"})
+    void isBlank_ShouldReturnTrueForAllTypesOfBlankStrings(String input) {
+        assertTrue(Strings.isBlank(input));
+    }
+
     private static Stream<Arguments> provideStringsForIsBlank() {
         return Stream.of(
                 Arguments.of(null, true), // null strings should be considered blank
