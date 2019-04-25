@@ -12,5 +12,4 @@
 - [Introduction to the JSON Binding API (JSR 367) in Java](http://www.baeldung.com/java-json-binding-api)
 - [Get a Value by Key in a JSONArray](https://www.baeldung.com/java-jsonarray-get-value-by-key)
 - [Iterating Over an Instance of org.json.JSONObject](https://www.baeldung.com/jsonobject-iteration)
-- [Testing Web APIs with Postman Collections](https://www.baeldung.com/postman-testing-collections)
 - [Escape JSON String in Java](https://www.baeldung.com/java-json-escaping)

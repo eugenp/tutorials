@@ -12,7 +12,7 @@
 - [Dynamic Proxies in Java](http://www.baeldung.com/java-dynamic-proxies)
 - [Java Double Brace Initialization](http://www.baeldung.com/java-double-brace-initialization)
 - [Guide to the Diamond Operator in Java](http://www.baeldung.com/java-diamond-operator)
-- [Quick Example - Comparator vs Comparable in Java](http://www.baeldung.com/java-comparator-comparable)
+- [Comparator and Comparable in Java](http://www.baeldung.com/java-comparator-comparable)
 - [The Java continue and break Keywords](http://www.baeldung.com/java-continue-and-break)
 - [Nested Classes in Java](http://www.baeldung.com/java-nested-classes)
 - [A Guide to Inner Interfaces in Java](http://www.baeldung.com/java-inner-interfaces)

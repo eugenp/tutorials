@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: travel-agency-service
-data:
-  application.properties: |-
-    bean.message=Testing reload ! Message from backend is: %s <br/> Services : %s
-
