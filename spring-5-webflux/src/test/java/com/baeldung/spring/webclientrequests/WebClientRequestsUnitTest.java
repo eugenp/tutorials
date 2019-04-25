@@ -131,6 +131,7 @@ public class WebClientRequestsUnitTest {
         verifyCalledUrl("/posts/?tag%5B%5D=Spring&tag%5B%5D=Kotlin");
     }
 
+
     @Test
     public void whenCallArrayQueryParams_thenURIMatched() {
         this.webClient.get()
@@ -140,6 +141,17 @@ public class WebClientRequestsUnitTest {
                         .build())
                 .retrieve();
         verifyCalledUrl("/posts/?category=Web&category=Mobile");
+    }
+
+    @Test
+    public void whenCallArrayQueryParamsComma_thenURIMatched() {
+        this.webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/posts/")
+                        .queryParam("category",  String.join(",", "Web", "Mobile"))
+                        .build())
+                .retrieve();
+        verifyCalledUrl("/posts/?category=Web,Mobile");
     }
 
     private void verifyCalledUrl(String relativeUrl) {
