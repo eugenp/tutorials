@@ -398,6 +398,7 @@
                 <module>core-java-lang</module>
                 <module>core-java-lang-oop</module>
                 <module>core-java-lang-oop-2</module>
+                <module>core-java-modules</module>
                 <module>core-java-networking</module>
                 <module>core-java-perf</module>
                 <module>core-java-sun</module>
@@ -1069,6 +1070,7 @@
                 <module>core-java-lang</module>
                 <module>core-java-lang-oop</module>
                 <module>core-java-lang-oop-2</module>
+                <module>core-java-modules</module>
                 <module>core-java-networking</module>
                 <module>core-java-perf</module>
                 <module>core-java-sun</module>
