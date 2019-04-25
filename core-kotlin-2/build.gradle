@@ -5,7 +5,7 @@ version '1.0-SNAPSHOT'
 
 
 buildscript {
-    ext.kotlin_version = '1.2.41'
+    ext.kotlin_version = '1.3.30'
 
     repositories {
         mavenCentral()
@@ -26,8 +26,6 @@ sourceCompatibility = 1.8
 compileKotlin { kotlinOptions.jvmTarget = "1.8" }
 compileTestKotlin { kotlinOptions.jvmTarget = "1.8" }
 
-kotlin { experimental { coroutines "enable" } }
-
 repositories {
     mavenCentral()
     jcenter()
@@ -39,10 +37,22 @@ sourceSets {
             srcDirs 'com/baeldung/ktor'
         }
     }
+}
 
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
 dependencies {
-    compile "ch.qos.logback:logback-classic:1.2.1"
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation "ch.qos.logback:logback-classic:1.2.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.assertj:assertj-core:3.12.2'
+    testImplementation 'org.mockito:mockito-core:2.27.0'
+    testImplementation "org.jetbrains.kotlin:kotlin-test:${kotlin_version}"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit5:${kotlin_version}"
 }
