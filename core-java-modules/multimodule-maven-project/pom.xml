@@ -9,7 +9,7 @@
     
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
-        <artifactId>core-java-module</artifactId>
+        <artifactId>core-java-modules</artifactId>
         <version>1.0</version>
     </parent>
     
