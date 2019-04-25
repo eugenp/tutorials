@@ -1,4 +1,4 @@
-package com.baeldung.copyinghashmap;
+package com.baeldung.map;
 
 import java.io.Serializable;
 

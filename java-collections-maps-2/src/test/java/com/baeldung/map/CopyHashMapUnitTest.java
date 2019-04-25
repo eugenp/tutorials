@@ -1,4 +1,4 @@
-package com.baeldung.copyinghashmap;
+package com.baeldung.map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
