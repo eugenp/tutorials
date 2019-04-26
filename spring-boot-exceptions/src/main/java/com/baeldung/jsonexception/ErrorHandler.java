@@ -1,4 +1,4 @@
-package com.baeldung.passexceptiontoclientjsonspringboot;
+package com.baeldung.jsonexception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
