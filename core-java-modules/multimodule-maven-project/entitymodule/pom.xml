@@ -8,6 +8,7 @@
     </parent>
     <groupId>com.baeldung.entitymodule</groupId>
     <artifactId>entitymodule</artifactId>
+    <version>1.0</version>
     <packaging>jar</packaging>
     <name>entitymodule</name>
     <properties>
