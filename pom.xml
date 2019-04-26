@@ -12,6 +12,7 @@
 
     <modules>
         <module>lombok-custom</module>
+        <module>picocli</module>
     </modules>
 
 	<dependencies>
@@ -377,6 +378,7 @@
                 <module>checker-plugin</module>
                 <module>core-groovy</module>
                 <module>core-groovy-2</module>
+		<module>core-groovy-collections</module>
                 <!-- <module>core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
                 <!-- <module>core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
                 <!-- <module>core-java-12</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
@@ -387,7 +389,6 @@
                 <!--<module>core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
-                <module>core-java-collections-map</module>
                 <module>core-java-collections-list</module>
                 <module>core-java-collections-set</module>
                 <module>core-java-concurrency-basic</module>
@@ -398,6 +399,7 @@
                 <module>core-java-lang</module>
                 <module>core-java-lang-oop</module>
                 <module>core-java-lang-oop-2</module>
+                <module>core-java-modules</module>
                 <module>core-java-networking</module>
                 <module>core-java-perf</module>
                 <module>core-java-sun</module>
@@ -1050,6 +1052,7 @@
                 <module>checker-plugin</module>
                 <module>core-groovy</module>
                 <module>core-groovy-2</module>
+                <module>core-groovy-collections</module>
                 <!-- <module>core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
                 <!-- <module>core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
                 <module>core-java-8</module>
@@ -1058,7 +1061,6 @@
                 <!--<module>core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
-                <module>core-java-collections-map</module>
                 <module>core-java-collections-list</module>
                 <module>core-java-collections-set</module>
                 <module>core-java-concurrency-basic</module>
@@ -1069,6 +1071,7 @@
                 <module>core-java-lang</module>
                 <module>core-java-lang-oop</module>
                 <module>core-java-lang-oop-2</module>
+                <module>core-java-modules</module>
                 <module>core-java-networking</module>
                 <module>core-java-perf</module>
                 <module>core-java-sun</module>
