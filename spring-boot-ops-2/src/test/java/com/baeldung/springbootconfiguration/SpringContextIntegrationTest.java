@@ -12,5 +12,4 @@ public class SpringContextIntegrationTest {
     @Test
     public void contextLoads() {
     }
-
 }
