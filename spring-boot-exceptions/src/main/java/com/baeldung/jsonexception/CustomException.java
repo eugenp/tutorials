@@ -1,4 +1,4 @@
-package com.baeldung.passexceptiontoclientjsonspringboot;
+package com.baeldung.jsonexception;
 
 public class CustomException extends RuntimeException {
 
