@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,16 +28,16 @@ public class JpaBatchInsertsIntegrationTest {
 
     private static final int BATCH_SIZE = 5;
 
+    @Transactional
     @Test
     public void whenInsertingSingleTypeOfEntity_thenCreatesSingleBatch() {
         for (int i = 0; i < 10; i++) {
             School school = createSchool(i);
             entityManager.persist(school);
         }
-
-        entityManager.flush();
     }
 
+    @Transactional
     @Test
     public void whenFlushingAfterBatch_ThenClearsMemory() {
         for (int i = 0; i < 10; i++) {
@@ -48,10 +49,9 @@ public class JpaBatchInsertsIntegrationTest {
             School school = createSchool(i);
             entityManager.persist(school);
         }
-
-        entityManager.flush();
     }
 
+    @Transactional
     @Test
     public void whenThereAreMultipleEntities_ThenCreatesNewBatch() {
         for (int i = 0; i < 10; i++) {
@@ -67,10 +67,9 @@ public class JpaBatchInsertsIntegrationTest {
             entityManager.persist(firstStudent);
             entityManager.persist(secondStudent);
         }
-
-        entityManager.flush();
     }
 
+    @Transactional
     @Test
     public void whenUpdatingEntities_thenCreatesBatch() {
         for (int i = 0; i < 10; i++) {
@@ -86,7 +85,10 @@ public class JpaBatchInsertsIntegrationTest {
         for (School school : allSchools) {
             school.setName("Updated_" + school.getName());
         }
+    }
 
+    @After
+    public void tearDown() {
         entityManager.flush();
     }
 }
