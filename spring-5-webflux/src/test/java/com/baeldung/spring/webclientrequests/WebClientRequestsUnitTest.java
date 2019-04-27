@@ -45,6 +45,95 @@ public class WebClientRequestsUnitTest {
                 .build();
     }
 
+
+    @Test
+    public void whenCallSimpleURI_thenURIMatched() {
+        this.webClient.get()
+                .uri("/products")
+                .retrieve();
+        verifyCalledUrl("/products");
+    }
+
+    @Test
+    public void whenCallSinglePathSegmentUri_thenURIMatched() {
+        this.webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/products/{id}")
+                        .build(2))
+                .retrieve();
+        verifyCalledUrl("/products/2");
+    }
+
+    @Test
+    public void whenCallMultiplePathSegmentsUri_thenURIMatched() {
+        this.webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/products/{id}/attributes/{attributeId}")
+                        .build(2, 13))
+                .retrieve();
+        verifyCalledUrl("/products/2/attributes/13");
+    }
+
+    @Test
+    public void whenCallSingleQueryParams_thenURIMatched() {
+        this.webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/products/")
+                        .queryParam("name", "AndroidPhone")
+                        .queryParam("color", "black")
+                        .queryParam("deliveryDate", "13/04/2019")
+                        .build())
+                .retrieve();
+        verifyCalledUrl("/products/?name=AndroidPhone&color=black&deliveryDate=13/04/2019");
+    }
+
+    @Test
+    public void whenCallSingleQueryParamsPlaceholders_thenURIMatched() {
+        this.webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/products/")
+                        .queryParam("name", "{title}")
+                        .queryParam("color", "{authorId}")
+                        .queryParam("deliveryDate", "{date}")
+                        .build("AndroidPhone", "black", "13/04/2019"))
+                .retrieve();
+        verifyCalledUrl("/products/?name=AndroidPhone&color=black&deliveryDate=13%2F04%2F2019");
+    }
+
+    @Test
+    public void whenCallArrayQueryParamsBrackets_thenURIMatched() {
+        this.webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/products/")
+                        .queryParam("tag[]", "Snapdragon", "NFC")
+                        .build())
+                .retrieve();
+        verifyCalledUrl("/products/?tag%5B%5D=Snapdragon&tag%5B%5D=NFC");
+    }
+
+
+    @Test
+    public void whenCallArrayQueryParams_thenURIMatched() {
+        this.webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/products/")
+                        .queryParam("category", "Phones", "Tablets")
+                        .build())
+                .retrieve();
+        verifyCalledUrl("/products/?category=Phones&category=Tablets");
+    }
+
+    @Test
+    public void whenCallArrayQueryParamsComma_thenURIMatched() {
+        this.webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/products/")
+                        .queryParam("category", String.join(",", "Phones", "Tablets"))
+                        .build())
+                .retrieve();
+        verifyCalledUrl("/products/?category=Phones,Tablets");
+    }
+
     @Test
     public void whenUriComponentEncoding_thenQueryParamsNotEscaped() {
         DefaultUriBuilderFactory factory = new DefaultUriBuilderFactory(BASE_URL);
@@ -57,101 +146,13 @@ public class WebClientRequestsUnitTest {
                 .build();
         this.webClient.get()
                 .uri(uriBuilder -> uriBuilder
-                        .path("/posts/")
-                        .queryParam("title", "Baeldung")
-                        .queryParam("authorId", "99")
-                        .queryParam("date", "13/04/2019")
+                        .path("/products/")
+                        .queryParam("name", "AndroidPhone")
+                        .queryParam("color", "black")
+                        .queryParam("deliveryDate", "13/04/2019")
                         .build())
                 .retrieve();
-        verifyCalledUrl("/posts/?title=Baeldung&authorId=99&date=13/04/2019");
-    }
-
-    @Test
-    public void whenCallSimpleURI_thenURIMatched() {
-        this.webClient.get()
-                .uri("/posts")
-                .retrieve();
-        verifyCalledUrl("/posts");
-    }
-
-    @Test
-    public void whenCallSinglePathSegmentUri_thenURIMatched() {
-        this.webClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .path("/posts/{id}")
-                        .build(2))
-                .retrieve();
-        verifyCalledUrl("/posts/2");
-    }
-
-    @Test
-    public void whenCallMultiplePathSegmentsUri_thenURIMatched() {
-        this.webClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .path("/posts/{id}/comments/{commentId}")
-                        .build(2, 13))
-                .retrieve();
-        verifyCalledUrl("/posts/2/comments/13");
-    }
-
-    @Test
-    public void whenCallSingleQueryParams_thenURIMatched() {
-        this.webClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .path("/posts/")
-                        .queryParam("title", "Baeldung")
-                        .queryParam("authorId", "99")
-                        .queryParam("date", "13/04/2019")
-                        .build())
-                .retrieve();
-        verifyCalledUrl("/posts/?title=Baeldung&authorId=99&date=13/04/2019");
-    }
-
-    @Test
-    public void whenCallSingleQueryParamsPlaceholders_thenURIMatched() {
-        this.webClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .path("/posts/")
-                        .queryParam("title", "{title}")
-                        .queryParam("authorId", "{authorId}")
-                        .queryParam("date", "{date}")
-                        .build("Baeldung", "99", "13/04/2019"))
-                .retrieve();
-        verifyCalledUrl("/posts/?title=Baeldung&authorId=99&date=13%2F04%2F2019");
-    }
-
-    @Test
-    public void whenCallArrayQueryParamsBrackets_thenURIMatched() {
-        this.webClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .path("/posts/")
-                        .queryParam("tag[]", "Spring", "Kotlin")
-                        .build())
-                .retrieve();
-        verifyCalledUrl("/posts/?tag%5B%5D=Spring&tag%5B%5D=Kotlin");
-    }
-
-
-    @Test
-    public void whenCallArrayQueryParams_thenURIMatched() {
-        this.webClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .path("/posts/")
-                        .queryParam("category", "Web", "Mobile")
-                        .build())
-                .retrieve();
-        verifyCalledUrl("/posts/?category=Web&category=Mobile");
-    }
-
-    @Test
-    public void whenCallArrayQueryParamsComma_thenURIMatched() {
-        this.webClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .path("/posts/")
-                        .queryParam("category",  String.join(",", "Web", "Mobile"))
-                        .build())
-                .retrieve();
-        verifyCalledUrl("/posts/?category=Web,Mobile");
+        verifyCalledUrl("/products/?name=AndroidPhone&color=black&deliveryDate=13/04/2019");
     }
 
     private void verifyCalledUrl(String relativeUrl) {
