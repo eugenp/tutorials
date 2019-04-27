@@ -21,6 +21,7 @@ import com.baeldung.modelmapper.service.IPostService;
 import com.baeldung.modelmapper.service.IUserService;
 
 @Controller
+@RequestMapping("/posts")
 public class PostRestController {
     
     @Autowired
