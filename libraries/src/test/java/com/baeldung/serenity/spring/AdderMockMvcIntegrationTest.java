@@ -21,7 +21,8 @@ public class AdderMockMvcIntegrationTest {
         RestAssuredMockMvc.standaloneSetup(new PlainAdderController());
     }
 
-    @Steps AdderRestSteps steps;
+    @Steps
+    AdderRestSteps steps;
 
     @Test
     public void givenNumber_whenAdd_thenSummedUp() throws Exception {

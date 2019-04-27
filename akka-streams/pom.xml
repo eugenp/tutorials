@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>akka-streams</artifactId>
+    <name>akka-streams</name>
+
     <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>akka-streams</artifactId>
-    <name>akka-streams</name>
 
     <dependencies>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-stream_2.11</artifactId>
+            <artifactId>akka-stream_${scala.version}</artifactId>
             <version>${akkastreams.version}</version>
         </dependency>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-stream-testkit_2.11</artifactId>
+            <artifactId>akka-stream-testkit_${scala.version}</artifactId>
             <version>${akkastreams.version}</version>
         </dependency>
     </dependencies>
+
     <properties>
         <akkastreams.version>2.5.2</akkastreams.version>
+        <scala.version>2.11</scala.version>
     </properties>
 
 </project>

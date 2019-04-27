@@ -1,0 +1,38 @@
+<f:view xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>TO-DO application</title>
+    </h:head>
+    <h:body>
+        <div>
+            <div>
+                List of TO-DO items
+            </div>
+            <h:dataTable value="#{todoService.allTodo}" var="item">
+                <h:column>
+                    <f:facet name="header"> Message</f:facet>
+                    #{item.message}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Priority</f:facet>
+                    #{item.priority}
+                </h:column>
+            </h:dataTable>
+        </div>
+        <div>
+            <div>
+                Add new to-do item:
+            </div>
+            <h:form>
+                <h:outputLabel for="message" value="Message: "/>
+                <h:inputText id="message" value="#{todoService.todo.message}"/>
+                <h:outputLabel for="priority" value="Priority: "/>
+                <h:inputText id="priority" value="#{todoService.todo.priority}" converterMessage="Please enter digits only."/>
+                <h:commandButton value="Save" action="#{todoService.save}"/>
+            </h:form>
+        </div>
+    </h:body>
+</f:view>

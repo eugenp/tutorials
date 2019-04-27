@@ -12,14 +12,12 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 
 public class MyPairSerializer extends JsonSerializer<MyPair> {
 
-	private final ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
 
-	@Override
-	public void serialize(MyPair value, JsonGenerator gen,
-			SerializerProvider serializers) throws IOException,
-			JsonProcessingException {
-		StringWriter writer = new StringWriter();
-		mapper.writeValue(writer, value);
-		gen.writeFieldName(writer.toString());
-	}
+    @Override
+    public void serialize(MyPair value, JsonGenerator gen, SerializerProvider serializers) throws IOException, JsonProcessingException {
+        StringWriter writer = new StringWriter();
+        mapper.writeValue(writer, value);
+        gen.writeFieldName(writer.toString());
+    }
 }

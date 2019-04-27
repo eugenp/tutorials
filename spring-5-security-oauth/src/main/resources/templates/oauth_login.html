@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Oauth2 Login</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+</head>
+
+<body>
+<div class="container">
+	<div class="col-sm-3 well">
+		<h3>Login with:</h3>
+		<div class="list-group">
+			<p th:each="url : ${urls}">
+				<a th:text="${url.key}" th:href="${url.value}" class="list-group-item active">Client</a>
+			</p>
+		</div>
+	</div>
+</div>
+</body>
+</html>

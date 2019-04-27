@@ -28,7 +28,7 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
 /**
- * @author aiet
+ * Atlas server needs to be up and running for this live test to work.
  */
 public class AtlasObserverLiveTest {
 
