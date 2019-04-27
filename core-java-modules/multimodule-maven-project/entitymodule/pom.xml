@@ -9,6 +9,7 @@
     <groupId>com.baeldung.entitymodule</groupId>
     <artifactId>entitymodule</artifactId>
     <packaging>jar</packaging>
+    <version>1.0</version>
     <name>entitymodule</name>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
