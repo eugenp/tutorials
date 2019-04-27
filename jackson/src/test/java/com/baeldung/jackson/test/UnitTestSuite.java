@@ -12,8 +12,6 @@ import org.junit.runners.Suite;
     ,JacksonDeserializationUnitTest.class
     ,JacksonDeserializationUnitTest.class
     ,JacksonPrettyPrintUnitTest.class
-    ,JacksonSerializationIgnoreUnitTest.class
-    ,JacksonSerializationUnitTest.class
     ,SandboxUnitTest.class
     ,JacksonFieldUnitTest.class
 }) // @formatter:on

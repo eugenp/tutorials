@@ -30,7 +30,7 @@ public class TreeNode {
         this.leftChild = leftChild;
     }
 
-    public TreeNode(int value, TreeNode rightChild, TreeNode leftChild) {
+    public TreeNode(int value, TreeNode leftChild, TreeNode rightChild) {
         this.value = value;
         this.rightChild = rightChild;
         this.leftChild = leftChild;
