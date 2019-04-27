@@ -11,8 +11,16 @@
     <packaging>jar</packaging>
     <version>1.0</version>
     <name>entitymodule</name>
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+                <release>10</release>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 </project>
