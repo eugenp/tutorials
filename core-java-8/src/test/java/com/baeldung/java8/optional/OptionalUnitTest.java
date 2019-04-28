@@ -27,34 +27,35 @@ public class OptionalUnitTest {
     @Test
     public void givenNonNull_whenCreatesNonNullable_thenCorrect() {
         String name = "baeldung";
-        Optional.of(name);
+        Optional<String> opt = Optional.of(name);
+        assertTrue(opt.isPresent());
     }
 
     @Test(expected = NullPointerException.class)
     public void givenNull_whenThrowsErrorOnCreate_thenCorrect() {
         String name = null;
-        Optional<String> opt = Optional.of(name);
+        Optional.of(name);
     }
 
     @Test
     public void givenNonNull_whenCreatesOptional_thenCorrect() {
         String name = "baeldung";
         Optional<String> opt = Optional.of(name);
-        assertEquals("Optional[baeldung]", opt.toString());
+        assertTrue(opt.isPresent());
     }
 
     @Test
     public void givenNonNull_whenCreatesNullable_thenCorrect() {
         String name = "baeldung";
         Optional<String> opt = Optional.ofNullable(name);
-        assertEquals("Optional[baeldung]", opt.toString());
+        assertTrue(opt.isPresent());
     }
 
     @Test
     public void givenNull_whenCreatesNullable_thenCorrect() {
         String name = null;
         Optional<String> opt = Optional.ofNullable(name);
-        assertEquals("Optional.empty", opt.toString());
+        assertFalse(opt.isPresent());
     }
     // Checking Value With isPresent()
 

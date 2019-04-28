@@ -17,8 +17,8 @@ public class ProxyAcceptCookiePolicy implements CookiePolicy {
             host = uri.getHost();
         }
 
-        if (!HttpCookie.domainMatches(acceptedProxy, host)) {
-            return false;
+        if (HttpCookie.domainMatches(acceptedProxy, host)) {
+            return true;
         }
 
         return CookiePolicy.ACCEPT_ORIGINAL_SERVER.shouldAccept(uri, cookie);
