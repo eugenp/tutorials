@@ -12,12 +12,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
-        <spring.cloud.k8s.version>1.0.0.RELEASE</spring.cloud.k8s.version>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -92,5 +86,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
+        <spring.cloud.k8s.version>1.0.0.RELEASE</spring.cloud.k8s.version>
+    </properties>
 
 </project>
