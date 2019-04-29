@@ -50,6 +50,7 @@
         <module>daomodule</module>
         <module>userdaomodule</module>
         <module>mainappmodule</module>
+        <module>multimodule-maven-project</module>
     </modules>
     
     <properties>

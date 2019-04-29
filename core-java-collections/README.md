@@ -4,14 +4,10 @@
 
 ### Relevant Articles: 
 - [Java – Combine Multiple Collections](http://www.baeldung.com/java-combine-multiple-collections)
-- [HashSet and TreeSet Comparison](http://www.baeldung.com/java-hashset-vs-treeset)
 - [Collect a Java Stream to an Immutable Collection](http://www.baeldung.com/java-stream-immutable-collection)
 - [Introduction to the Java ArrayDeque](http://www.baeldung.com/java-array-deque)
-- [A Guide to HashSet in Java](http://www.baeldung.com/java-hashset)
-- [A Guide to TreeSet in Java](http://www.baeldung.com/java-tree-set)
 - [Getting the Size of an Iterable in Java](http://www.baeldung.com/java-iterable-size)
 - [How to Filter a Collection in Java](http://www.baeldung.com/java-collection-filtering)
-- [Initializing HashSet at the Time of Construction](http://www.baeldung.com/java-initialize-hashset)
 - [Removing the First Element of an Array](https://www.baeldung.com/java-array-remove-first-element)
 - [Fail-Safe Iterator vs Fail-Fast Iterator](http://www.baeldung.com/java-fail-safe-vs-fail-fast-iterator)
 - [Shuffling Collections In Java](http://www.baeldung.com/java-shuffle-collection)
@@ -23,7 +19,6 @@
 - [Time Complexity of Java Collections](https://www.baeldung.com/java-collections-complexity)
 - [Operating on and Removing an Item from Stream](https://www.baeldung.com/java-use-remove-item-stream)
 - [An Introduction to Synchronized Java Collections](https://www.baeldung.com/java-synchronized-collections)
-- [Guide to EnumSet](https://www.baeldung.com/java-enumset)
 - [Removing Elements from Java Collections](https://www.baeldung.com/java-collection-remove-elements)
 - [Combining Different Types of Collections in Java](https://www.baeldung.com/java-combine-collections)
 - [Sorting in Java](http://www.baeldung.com/java-sorting)
