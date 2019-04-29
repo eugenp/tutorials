@@ -1,9 +1,7 @@
 =========
-## HttpClient 4.x Cookbooks and Examples
+## Articles that are part of the HTTPClient Ebook
 
-###The Course
-The "REST With Spring" Classes: http://bit.ly/restwithspring
-
+# To run the live tests, use the command: mvn clean install -Plive
 
 ### Relevant Articles: 
 
