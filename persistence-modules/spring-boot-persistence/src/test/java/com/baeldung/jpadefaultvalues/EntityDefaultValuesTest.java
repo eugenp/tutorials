@@ -28,7 +28,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = ContactApp.class)
-public class ContactAppIntegrationTest {
+public class EntityDefaultValuesTest {
 
     @Test
     void saveUser_shouldSaveWithDefaultFieldValues() {
