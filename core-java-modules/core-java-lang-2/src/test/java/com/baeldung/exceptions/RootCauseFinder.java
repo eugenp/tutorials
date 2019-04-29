@@ -1,5 +1,8 @@
 package com.baeldung.exceptions;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
 /**
@@ -16,44 +19,75 @@ public class RootCauseFinder {
         return rootCause;
     }
 
-    static class IntParser {
+    /**
+     *  Calculates the age of a person from a given date.
+     */
+    static class AgeCalculator {
 
-        private IntParser() {
+        private AgeCalculator() {
         }
 
-        public static int parse(String input) throws InvalidNumber {
-            if (input == null || input.isEmpty()) {
+        public static int calculateAge(String birthDate) throws CalculationException {
+            if (birthDate == null || birthDate.isEmpty()) {
                 throw new IllegalArgumentException();
             }
 
             try {
-                return new IntParser().stringToInt(input.trim());
-            } catch (NaNException ex) {
-                throw new InvalidNumber(input, ex);
+                return calculateDifference(birthDate).getYears();
+            } catch (DateParseException ex) {
+                throw new CalculationException(ex);
             }
         }
 
-        private int stringToInt(String numberAsString) throws NaNException {
+        private static Period calculateDifference(String birthDateAsString) throws DateParseException {
+
+            LocalDate birthDate = null;
             try {
-                return Integer.valueOf(numberAsString);
-            } catch (NumberFormatException ex) {
-                throw new NaNException(numberAsString, ex);
+                birthDate = LocalDate.parse(birthDateAsString);
+            } catch (DateTimeParseException ex) {
+                throw new InvalidFormatException(birthDateAsString, ex);
             }
+
+            LocalDate today = LocalDate.now();
+
+            if (birthDate.isAfter(today)) {
+                throw new DateOutOfRangeException(birthDateAsString);
+            }
+
+            return Period.between(birthDate, today);
         }
 
     }
 
-    static class InvalidNumber extends Exception {
+    static class CalculationException extends Exception {
 
-        InvalidNumber(String input, Throwable thr) {
-            super("Invalid input for a number: " + input, thr);
+        CalculationException(DateParseException ex) {
+            super(ex);
         }
     }
 
-    static class NaNException extends Exception {
+    static class DateParseException extends Exception {
 
-        NaNException(String number, Throwable thr) {
-            super(number + "is not a number", thr);
+        DateParseException(String input) {
+            super(input);
+        }
+
+        DateParseException(String input, Throwable thr) {
+            super(input, thr);
+        }
+    }
+
+    static class InvalidFormatException extends DateParseException {
+
+        InvalidFormatException(String input, Throwable thr) {
+            super("Invalid date format: " + input, thr);
+        }
+    }
+
+    static class DateOutOfRangeException extends DateParseException {
+
+        DateOutOfRangeException(String date) {
+            super("Date out of range: " + date);
         }
 
     }
