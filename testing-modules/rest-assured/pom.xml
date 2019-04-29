@@ -162,6 +162,11 @@
             <artifactId>commons-collections</artifactId>
             <version>${commons-collections.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
         <!-- Rest Assured Dependencies-->
         <dependency>
@@ -177,6 +182,12 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.scribejava</groupId>
+            <artifactId>scribejava-apis</artifactId>
+            <version>${scribejava.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -211,6 +222,8 @@
 
         <rest-assured.version>3.0.1</rest-assured.version>
         <rest-assured-json-schema-validator.version>3.0.1</rest-assured-json-schema-validator.version>
+        
+        <scribejava.version>2.5.3</scribejava.version>
     </properties>
 
 </project>
