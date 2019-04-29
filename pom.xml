@@ -490,6 +490,7 @@
 
                 <!-- <module>kotlin-js</module> --> <!-- Not a maven project -->
                 <module>kotlin-libraries</module>
+                <module>kotlin-libraries-2</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries</module>
@@ -622,7 +623,7 @@
                 <module>spring-boot-camel</module>
                 <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
                 <module>spring-boot-client</module>
-				<module>spring-boot-configuration</module>
+
                 <module>spring-boot-crud</module>
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-custom-starter</module>
@@ -635,6 +636,7 @@
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-ops</module>
+                <module>spring-boot-ops-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-boot-data</module>
                 <module>spring-boot-property-exp</module>
@@ -824,7 +826,6 @@
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-camel</module>
 				<module>spring-boot-client</module>
-				<module>spring-boot-configuration</module>
 				<module>spring-boot-custom-starter</module>
                                 <module>spring-boot-exceptions</module>
 		 		<module>greeter-spring-boot-autoconfigure</module>
@@ -1282,7 +1283,6 @@
                 <module>spring-boot-camel</module>
                 <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
                 <module>spring-boot-client</module>
-                <module>spring-boot-configuration</module>
                 <module>spring-boot-crud</module>
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-custom-starter</module>
@@ -1295,6 +1295,7 @@
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-ops</module>
+                <module>spring-boot-ops-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-boot-data</module>
                 <module>spring-boot-property-exp</module>
