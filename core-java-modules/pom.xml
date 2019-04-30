@@ -16,7 +16,7 @@
 
     <modules>
         <module>pre-jpms</module>
-        <module>multimodulemavemproject</module>
+        <module>multimodulemavenproject</module>
     </modules>
 
 </project>
