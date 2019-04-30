@@ -15,25 +15,6 @@
 
     <modules>
         <module>pre-jpms</module>
-        <module>multimodulemavenproject</module>
     </modules>
     
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.0</version>
-                    <configuration>
-                        <configuration>
-                            <source>1.9</source>
-                            <target>1.9</target>
-                        </configuration>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
 </project>
