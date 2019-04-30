@@ -462,6 +462,7 @@
                 <module>java-streams</module>
                 <module>java-streams-2</module>
                 <module>java-strings</module>
+                <module>java-strings-2</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javafx</module>
@@ -1134,6 +1135,7 @@
                 <module>java-streams</module>
                 <module>java-streams-2</module>
                 <module>java-strings</module>
+                <module>java-strings-2</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javafx</module>
