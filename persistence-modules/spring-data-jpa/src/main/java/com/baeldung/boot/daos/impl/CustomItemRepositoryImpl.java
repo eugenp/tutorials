@@ -29,4 +29,5 @@ public class CustomItemRepositoryImpl implements CustomItemRepository {
         final Item item = entityManager.find(Item.class, id);
         entityManager.remove(item);
     }
+
 }

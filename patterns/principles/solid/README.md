@@ -1,5 +1,5 @@
 ### Relevant Articles:
 
-- [A Guide to Solid Principles](https://www.baeldung.com/solid-principles)
+- [A Solid Guide to Solid Principles](https://www.baeldung.com/solid-principles)
 
 

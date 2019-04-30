@@ -12,4 +12,5 @@ public interface CustomItemRepository {
     Item findItemById(Long id);
 
     void findThenDelete(Long id);
+
 }

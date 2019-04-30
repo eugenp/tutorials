@@ -30,6 +30,22 @@
             <version>${jdom2.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.xml</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml</groupId>
+            <artifactId>jaxp-api</artifactId>
+            <version>1.4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.stream</groupId>
+            <artifactId>stax-api</artifactId>
+            <version>1.0-2</version>
+        </dependency>
+
         <!-- utils -->
         <dependency>
             <groupId>commons-io</groupId>

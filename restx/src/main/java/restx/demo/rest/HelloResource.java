@@ -3,6 +3,8 @@ package restx.demo.rest;
 import restx.demo.domain.Message;
 import restx.demo.Roles;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+
 import restx.annotations.GET;
 import restx.annotations.POST;
 import restx.annotations.RestxResource;
@@ -29,7 +31,7 @@ public class HelloResource {
         return new Message().setMessage(String.format(
                 "hello %s, it's %s",
                 RestxSession.current().getPrincipal().get().getName(),
-                DateTime.now().toString("HH:mm:ss")));
+                DateTime.now(DateTimeZone.UTC).toString("HH:mm:ss")));
     }
 
     /**
@@ -44,7 +46,7 @@ public class HelloResource {
     public Message helloPublic(String who) {
         return new Message().setMessage(String.format(
                 "hello %s, it's %s",
-                who, DateTime.now().toString("HH:mm:ss")));
+                who, DateTime.now(DateTimeZone.UTC).toString("HH:mm:ss")));
     }
 
     public static class MyPOJO {

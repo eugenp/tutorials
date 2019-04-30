@@ -3,10 +3,10 @@
 ## Core Java 8 Cookbooks and Examples
 
 ### Relevant Articles: 
-- [Java 8 Collectors](http://www.baeldung.com/java-8-collectors)
-- [Guide to Java 8’s Functional Interfaces](http://www.baeldung.com/java-8-functional-interfaces)
+- [Guide to Java 8’s Collectors](http://www.baeldung.com/java-8-collectors)
+- [Functional Interfaces in Java 8](http://www.baeldung.com/java-8-functional-interfaces)
 - [Java 8 – Powerful Comparison with Lambdas](http://www.baeldung.com/java-8-sort-lambda)
-- [Java 8 New Features](http://www.baeldung.com/java-8-new-features)
+- [New Features in Java 8](http://www.baeldung.com/java-8-new-features)
 - [Lambda Expressions and Functional Interfaces: Tips and Best Practices](http://www.baeldung.com/java-8-lambda-expressions-tips)
 - [The Double Colon Operator in Java 8](http://www.baeldung.com/java-8-double-colon-operator)
 - [Guide to Java 8 groupingBy Collector](http://www.baeldung.com/java-groupingby-collector)
@@ -38,3 +38,5 @@
 - [Java @SafeVarargs Annotation](https://www.baeldung.com/java-safevarargs)
 - [Java @Deprecated Annotation](https://www.baeldung.com/java-deprecated)
 - [Java 8 Predicate Chain](https://www.baeldung.com/java-predicate-chain)
+- [Method References in Java](https://www.baeldung.com/java-method-references)
+- [Creating a Custom Annotation in Java](https://www.baeldung.com/java-custom-annotation)
