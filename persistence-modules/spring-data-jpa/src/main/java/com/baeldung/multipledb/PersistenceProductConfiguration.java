@@ -17,9 +17,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 import java.util.HashMap;
 
-//@Configuration
+@Configuration
 @PropertySource({"classpath:persistence-multiple-db.properties"})
-@EnableJpaRepositories(basePackages = "com.baeldung.multipledb", entityManagerFactoryRef = "productEntityManager", transactionManagerRef = "productTransactionManager")
+@EnableJpaRepositories(basePackages = "com.baeldung.multipledb.dao.product", entityManagerFactoryRef = "productEntityManager", transactionManagerRef = "productTransactionManager")
 @Profile("!tc")
 public class PersistenceProductConfiguration {
     @Autowired
@@ -35,7 +35,7 @@ public class PersistenceProductConfiguration {
     public LocalContainerEntityManagerFactoryBean productEntityManager() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(productDataSource());
-        em.setPackagesToScan("com.baeldung.multipledb");
+        em.setPackagesToScan("com.baeldung.multipledb.model.product");
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

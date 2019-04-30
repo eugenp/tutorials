@@ -13,24 +13,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baeldung.boot.domain.Possession;
-import com.baeldung.boot.domain.User;
-import com.baeldung.boot.user.PossessionRepository;
-import com.baeldung.boot.user.UserRepository;
-import com.baeldung.multipledb.PersistenceProductConfiguration;
-import com.baeldung.multipledb.PersistenceUserConfiguration;
-import com.baeldung.multipledb.Product;
-import com.baeldung.multipledb.ProductRepository;
+import com.baeldung.multipledb.dao.product.ProductRepository;
+import com.baeldung.multipledb.dao.user.PossessionRepository;
+import com.baeldung.multipledb.dao.user.UserRepository;
+import com.baeldung.multipledb.model.product.ProductMultipleDB;
+import com.baeldung.multipledb.model.user.PossessionMultipleDB;
+import com.baeldung.multipledb.model.user.UserMultipleDB;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=MultipleDbApplication.class)
 @EnableTransactionManagement
-@DirtiesContext
 public class JpaMultipleDBIntegrationTest {
 
     @Autowired
@@ -47,15 +43,15 @@ public class JpaMultipleDBIntegrationTest {
     @Test
     @Transactional("userTransactionManager")
     public void whenCreatingUser_thenCreated() {
-        User user = new User();
+        UserMultipleDB user = new UserMultipleDB();
         user.setName("John");
         user.setEmail("john@test.com");
         user.setAge(20);
-        Possession p = new Possession("sample");
+        PossessionMultipleDB p = new PossessionMultipleDB("sample");
         p = possessionRepository.save(p);
         user.setPossessionList(Collections.singletonList(p));
         user = userRepository.save(user);
-        final Optional<User> result = userRepository.findById(user.getId());
+        final Optional<UserMultipleDB> result = userRepository.findById(user.getId());
         assertTrue(result.isPresent());
         System.out.println(result.get().getPossessionList());
         assertEquals(1, result.get().getPossessionList().size());
@@ -64,14 +60,14 @@ public class JpaMultipleDBIntegrationTest {
     @Test
     @Transactional("userTransactionManager")
     public void whenCreatingUsersWithSameEmail_thenRollback() {
-        User user1 = new User();
+        UserMultipleDB user1 = new UserMultipleDB();
         user1.setName("John");
         user1.setEmail("john@test.com");
         user1.setAge(20);
         user1 = userRepository.save(user1);
         assertTrue(userRepository.findById(user1.getId()).isPresent());
 
-        User user2 = new User();
+        UserMultipleDB user2 = new UserMultipleDB();
         user2.setName("Tom");
         user2.setEmail("john@test.com");
         user2.setAge(10);
@@ -89,7 +85,7 @@ public class JpaMultipleDBIntegrationTest {
     @Test
     @Transactional("productTransactionManager")
     public void whenCreatingProduct_thenCreated() {
-        Product product = new Product();
+        ProductMultipleDB product = new ProductMultipleDB();
         product.setName("Book");
         product.setId(2);
         product.setPrice(20);

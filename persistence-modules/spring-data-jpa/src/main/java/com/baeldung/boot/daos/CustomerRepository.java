@@ -1,8 +1,8 @@
-package com.baeldung.batchinserts.repository;
+package com.baeldung.boot.daos;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.baeldung.batchinserts.model.Customer;
+import com.baeldung.boot.domain.Customer;
 
 /**
  * JPA CrudRepository interface

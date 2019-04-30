@@ -1,4 +1,4 @@
-package com.baeldung.multipledb;
+package com.baeldung.multipledb.model.product;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(schema = "products")
-public class Product {
+public class ProductMultipleDB {
 
     @Id
     private int id;
@@ -15,19 +15,19 @@ public class Product {
 
     private double price;
 
-    public Product() {
+    public ProductMultipleDB() {
         super();
     }
 
-    private Product(int id, String name, double price) {
+    private ProductMultipleDB(int id, String name, double price) {
         super();
         this.id = id;
         this.name = name;
         this.price = price;
     }
 
-    public static Product from(int id, String name, double price) {
-        return new Product(id, name, price);
+    public static ProductMultipleDB from(int id, String name, double price) {
+        return new ProductMultipleDB(id, name, price);
     }
 
     public int getId() {

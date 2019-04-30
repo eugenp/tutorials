@@ -1,4 +1,4 @@
-package com.baeldung.dao.repositories.user;
+package com.baeldung.boot.daos.user;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,7 +15,7 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.baeldung.domain.user.User;
+import com.baeldung.boot.domain.User;
 
 public class UserRepositoryCustomImpl implements UserRepositoryCustom {
 
@@ -42,7 +42,7 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
         return entityManager.createQuery(query)
             .getResultList();
     }
-
+    
     @Override
     public List<User> findAllUsersByPredicates(Collection<java.util.function.Predicate<User>> predicates) {
         List<User> allUsers = entityManager.createQuery("select u from User u", User.class).getResultList();

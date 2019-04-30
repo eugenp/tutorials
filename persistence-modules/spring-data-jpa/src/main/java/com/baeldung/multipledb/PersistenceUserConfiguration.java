@@ -14,9 +14,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 import java.util.HashMap;
 
-//@Configuration
+@Configuration
 @PropertySource({"classpath:persistence-multiple-db.properties"})
-@EnableJpaRepositories(basePackages = "com.baeldung.multipledb", entityManagerFactoryRef = "userEntityManager", transactionManagerRef = "userTransactionManager")
+@EnableJpaRepositories(basePackages = "com.baeldung.multipledb.dao.user", entityManagerFactoryRef = "userEntityManager", transactionManagerRef = "userTransactionManager")
 @Profile("!tc")
 public class PersistenceUserConfiguration {
     @Autowired
@@ -31,9 +31,10 @@ public class PersistenceUserConfiguration {
     @Primary
     @Bean
     public LocalContainerEntityManagerFactoryBean userEntityManager() {
+        System.out.println("loading config");
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(userDataSource());
-        em.setPackagesToScan("com.baeldung.multipledb");
+        em.setPackagesToScan("com.baeldung.multipledb.model.user");
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

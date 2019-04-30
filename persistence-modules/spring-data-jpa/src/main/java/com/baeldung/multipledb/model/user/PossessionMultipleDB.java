@@ -1,10 +1,10 @@
-package com.baeldung.multipledb;
+package com.baeldung.multipledb.model.user;
 
 import javax.persistence.*;
 
 @Entity
 @Table
-public class Possession {
+public class PossessionMultipleDB {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,11 +12,11 @@ public class Possession {
 
     private String name;
 
-    public Possession() {
+    public PossessionMultipleDB() {
         super();
     }
 
-    public Possession(final String name) {
+    public PossessionMultipleDB(final String name) {
         super();
 
         this.name = name;
@@ -58,7 +58,7 @@ public class Possession {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Possession other = (Possession) obj;
+        final PossessionMultipleDB other = (PossessionMultipleDB) obj;
         if (id != other.id) {
             return false;
         }

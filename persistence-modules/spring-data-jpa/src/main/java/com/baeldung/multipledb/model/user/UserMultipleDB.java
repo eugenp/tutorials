@@ -1,11 +1,12 @@
-package com.baeldung.multipledb;
+package com.baeldung.multipledb.model.user;
 
 import javax.persistence.*;
+
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class UserMultipleDB {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,12 +16,15 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
     private Integer status;
+    
+    @OneToMany
+    List<PossessionMultipleDB> possessionList;
   
-    public User() {
+    public UserMultipleDB() {
         super();
     }
 
-    public User(String name, String email, Integer status) {
+    public UserMultipleDB(String name, String email, Integer status) {
         this.name = name;
         this.email = email;
         this.status = status;
@@ -64,6 +68,14 @@ public class User {
 
     public void setAge(final int age) {
         this.age = age;
+    }
+
+    public List<PossessionMultipleDB> getPossessionList() {
+        return possessionList;
+    }
+
+    public void setPossessionList(List<PossessionMultipleDB> possessionList) {
+        this.possessionList = possessionList;
     }
 
     @Override
