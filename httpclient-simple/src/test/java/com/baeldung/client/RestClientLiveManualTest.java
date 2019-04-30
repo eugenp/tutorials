@@ -46,12 +46,12 @@ public class RestClientLiveManualTest {
     // old httpClient will throw UnsupportedOperationException
     @Ignore
     @Test
-    public final void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenException_1() throws GeneralSecurityException {
+    public final void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenOk_1() throws GeneralSecurityException {
         final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
         final CloseableHttpClient httpClient = (CloseableHttpClient) requestFactory.getHttpClient();
 
-        TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
-        
+        final TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
+
         final SSLSocketFactory sf = new SSLSocketFactory(acceptingTrustStrategy, ALLOW_ALL_HOSTNAME_VERIFIER);
         httpClient.getConnectionManager().getSchemeRegistry().register(new Scheme("https", 8443, sf));
 
@@ -61,7 +61,7 @@ public class RestClientLiveManualTest {
     
     // new httpClient : 4.4 and above
     @Test
-    public final void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenException_2() throws GeneralSecurityException {
+    public final void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenOk_2() throws GeneralSecurityException {
 
         final TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
         final SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy).build();

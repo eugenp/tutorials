@@ -339,6 +339,7 @@
                 <module>algorithms-genetic</module>
                 <module>algorithms-miscellaneous-1</module>
                 <module>algorithms-miscellaneous-2</module>
+                <module>algorithms-miscellaneous-3</module>
                 <module>algorithms-sorting</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
@@ -462,6 +463,7 @@
                 <module>java-streams</module>
                 <module>java-streams-2</module>
                 <module>java-strings</module>
+                <module>java-strings-2</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javafx</module>
@@ -1018,6 +1020,7 @@
                 <module>algorithms-genetic</module>
                 <module>algorithms-miscellaneous-1</module>
                 <module>algorithms-miscellaneous-2</module>
+                <module>algorithms-miscellaneous-3</module>
                 <module>algorithms-sorting</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
@@ -1134,6 +1137,7 @@
                 <module>java-streams</module>
                 <module>java-streams-2</module>
                 <module>java-strings</module>
+                <module>java-strings-2</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javafx</module>

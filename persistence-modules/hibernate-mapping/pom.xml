@@ -31,6 +31,22 @@
             <artifactId>h2</artifactId>
             <version>${h2database.version}</version>
         </dependency>
+	    <!-- validation -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>${javax.el-api.version}</version>
+	    </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>${org.glassfish.javax.el.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -47,6 +63,9 @@
         <hibernate.version>5.3.7.Final</hibernate.version>
         <h2database.version>1.4.196</h2database.version>
         <assertj-core.version>3.8.0</assertj-core.version>
+        <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
+        <javax.el-api.version>2.2.5</javax.el-api.version>
+        <org.glassfish.javax.el.version>3.0.1-b08</org.glassfish.javax.el.version>
     </properties>
 
 </project>
