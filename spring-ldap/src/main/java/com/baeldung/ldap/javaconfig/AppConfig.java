@@ -1,5 +1,6 @@
 package com.baeldung.ldap.javaconfig;
 
+import com.baeldung.ldap.client.LdapClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -7,15 +8,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.data.ldap.repository.config.EnableLdapRepositories;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.core.support.LdapContextSource;
 
-import com.baeldung.ldap.client.LdapClient;
-
 @Configuration
 @PropertySource("classpath:application.properties")
-@ComponentScan(basePackages = { "com.baeldung.ldap.*" })
+@ComponentScan(basePackages = {"com.baeldung.ldap.*"})
 @Profile("default")
+@EnableLdapRepositories(basePackages = "com.baeldung.ldap.**")
 public class AppConfig {
 
     @Autowired

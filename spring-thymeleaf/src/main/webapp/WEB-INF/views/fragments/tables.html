@@ -1,0 +1,14 @@
+<table>
+    <thead th:fragment="fields(theadFields)">
+        <tr th:replace="${theadFields}">
+        </tr>
+    </thead>
+    <tbody th:fragment="tableBody(tableData)">
+        <tr th:each="row: ${tableData}">
+            <td th:text="${row.id}">0</td>
+            <td th:text="${row.name}">Name</td>
+        </tr>
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>
