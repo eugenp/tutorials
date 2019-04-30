@@ -8,10 +8,9 @@
     <name>multimodulemavenproject</name>
     
     <parent>
-        <artifactId>parent-modules</artifactId>
-        <groupId>com.baeldung</groupId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
+        <version>1.0</version>
     </parent>
     
     <dependencyManagement>
