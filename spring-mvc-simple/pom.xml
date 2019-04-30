@@ -22,7 +22,7 @@
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
-            <version>1.6.1</version>
+            <version>${javax.mail.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -182,6 +182,7 @@
         <scribejava.version>5.1.0</scribejava.version>
         <json.version>20180130</json.version>
         <apache-tiles.version>3.0.8</apache-tiles.version>
+        <javax.mail.version>1.6.1</javax.mail.version>
     </properties>
 
 </project>
