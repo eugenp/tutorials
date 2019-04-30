@@ -7,6 +7,13 @@
     <packaging>pom</packaging>
     <name>multimodulemavenproject</name>
     
+    <parent>
+        <artifactId>parent-modules</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../</relativePath>
+    </parent>
+    
     <dependencyManagement>
         <dependencies>
             <dependency>
