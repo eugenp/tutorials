@@ -3,6 +3,8 @@ package com.baeldung.types;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,14 +26,19 @@ class DeferTest {
 
     @Test
     void givenVoidRunnable_whenDiffer_thenNoReturn() {
+        AtomicBoolean run = new AtomicBoolean(false);
+
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 System.out.println("Hello!");
+                run.set(true);
             }
         };
 
         Defer.defer(runnable);
+
+        assertTrue(run.get());
     }
 
     @Test
@@ -45,9 +52,30 @@ class DeferTest {
     }
 
     @Test
+    void givenVoidConsumer_whenDiffer_thenReturnNull() {
+        AtomicBoolean run = new AtomicBoolean(false);
+
+        Consumer<String> function = s -> {
+            System.out.println("Hello " + s + "!");
+            run.set(true);
+        };
+
+        Defer.defer(function, "World");
+
+        assertTrue(run.get());
+    }
+
+    @Test
     void givenAction_whenDiffer_thenNoReturn() {
-        Action action = () -> System.out.println("Hello!");
+        AtomicBoolean run = new AtomicBoolean(false);
+
+        Action action = () -> {
+            System.out.println("Hello!");
+            run.set(true);
+        };
 
         Defer.defer(action);
+
+        assertTrue(run.get());
     }
 }
