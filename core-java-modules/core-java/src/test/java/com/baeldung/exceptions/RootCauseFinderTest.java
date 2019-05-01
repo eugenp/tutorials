@@ -2,9 +2,12 @@ package com.baeldung.exceptions;
 
 import com.google.common.base.Throwables;
 import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 
 import static com.baeldung.exceptions.RootCauseFinder.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -13,6 +16,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * Tests the {@link RootCauseFinder}.
  */
 public class RootCauseFinderTest {
+
+    @Test
+    public void givenBirthDate_whenCalculatingAge_thenAgeReturned() {
+        try {
+            int age = AgeCalculator.calculateAge("1990-01-01");
+            Assertions.assertEquals(1990, LocalDate
+              .now()
+              .minus(age, ChronoUnit.YEARS)
+              .getYear());
+        } catch (CalculationException e) {
+            Assertions.fail(e.getMessage());
+        }
+    }
 
     @Test
     public void givenWrongFormatDate_whenFindingRootCauseUsingJava_thenRootCauseFound() {
