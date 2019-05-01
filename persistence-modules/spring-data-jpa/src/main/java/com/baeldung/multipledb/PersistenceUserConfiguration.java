@@ -1,23 +1,19 @@
 package com.baeldung.multipledb;
 
-import java.util.HashMap;
-
-import javax.sql.DataSource;
-
+import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+
+import javax.sql.DataSource;
+import java.util.HashMap;
 
 @Configuration
 @PropertySource({"classpath:persistence-multiple-db.properties"})
@@ -26,6 +22,10 @@ import org.springframework.transaction.PlatformTransactionManager;
 public class PersistenceUserConfiguration {
     @Autowired
     private Environment env;
+    
+    @Autowired
+    @Qualifier("userDataSource")
+    private DataSource userDataSource;
 
     public PersistenceUserConfiguration() {
         super();
@@ -38,7 +38,7 @@ public class PersistenceUserConfiguration {
     public LocalContainerEntityManagerFactoryBean userEntityManager() {
         System.out.println("loading config");
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(userDataSource());
+        em.setDataSource(userDataSource);
         em.setPackagesToScan("com.baeldung.multipledb.model.user");
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -51,11 +51,15 @@ public class PersistenceUserConfiguration {
         return em;
     }
 
-    @Primary
     @Bean
-    @ConfigurationProperties(prefix="spring.user")
     public DataSource userDataSource() {
-        return DataSourceBuilder.create().build();
+        final DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));
+        dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("user.jdbc.url")));
+        dataSource.setUsername(Preconditions.checkNotNull(env.getProperty("jdbc.user")));
+        dataSource.setPassword(Preconditions.checkNotNull(env.getProperty("jdbc.pass")));
+
+        return dataSource;
     }
 
     @Primary
