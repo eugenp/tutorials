@@ -499,6 +499,7 @@
                 <module>libraries-2</module>
                 <module>libraries-data</module>
                 <module>libraries-apache-commons</module>
+                <module>libraries-primitive</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
                 <module>linkrest</module>
