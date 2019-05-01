@@ -1,8 +1,9 @@
 package com.baeldung.autofactory.provided;
 
+import com.baeldung.autofactory.model.Camera;
 import com.google.auto.factory.AutoFactory;
 import com.google.auto.factory.Provided;
-import javafx.scene.Camera;
+
 
 import javax.inject.Provider;
 
