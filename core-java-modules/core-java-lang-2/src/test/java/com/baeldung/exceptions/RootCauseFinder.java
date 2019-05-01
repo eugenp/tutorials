@@ -33,28 +33,28 @@ public class RootCauseFinder {
             }
 
             try {
-                return calculateDifference(birthDate).getYears();
+                return Period
+                  .between(parseDate(birthDate), LocalDate.now())
+                  .getYears();
             } catch (DateParseException ex) {
                 throw new CalculationException(ex);
             }
         }
 
-        private static Period calculateDifference(String birthDateAsString) throws DateParseException {
+        private static LocalDate parseDate(String birthDateAsString) throws DateParseException {
 
-            LocalDate birthDate = null;
+            LocalDate birthDate;
             try {
                 birthDate = LocalDate.parse(birthDateAsString);
             } catch (DateTimeParseException ex) {
                 throw new InvalidFormatException(birthDateAsString, ex);
             }
 
-            LocalDate today = LocalDate.now();
-
-            if (birthDate.isAfter(today)) {
+            if (birthDate.isAfter(LocalDate.now())) {
                 throw new DateOutOfRangeException(birthDateAsString);
             }
 
-            return Period.between(birthDate, today);
+            return birthDate;
         }
 
     }
