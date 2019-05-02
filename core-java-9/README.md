@@ -21,5 +21,6 @@
 - [Ahead of Time Compilation (AoT)](https://www.baeldung.com/ahead-of-time-compilation)
 - [Java 9 Process API Improvements](https://www.baeldung.com/java-9-process-api)
 - [Guide to java.lang.Process API](https://www.baeldung.com/java-process-api)
+- [Java 9 java.util.Objects Additions](https://www.baeldung.com/java-9-objects-new)
 
 
