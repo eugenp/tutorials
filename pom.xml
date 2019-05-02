@@ -13,6 +13,7 @@
     <modules>
         <module>lombok-custom</module>
         <module>picocli</module>
+        <module>core-java-reflection</module>
     </modules>
 
 	<dependencies>
