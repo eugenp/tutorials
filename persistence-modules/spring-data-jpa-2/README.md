@@ -8,3 +8,4 @@
 - [Case Insensitive Queries with Spring Data Repository](https://www.baeldung.com/spring-data-case-insensitive-queries)
 - [The Exists Query in Spring Data](https://www.baeldung.com/spring-data-exists-query)
 - [Spring Data JPA Repository Populators](https://www.baeldung.com/spring-data-jpa-repository-populators)
+- [Spring Data JPA and Null Parameters](https://www.baeldung.com/spring-data-jpa-null-parameters)
