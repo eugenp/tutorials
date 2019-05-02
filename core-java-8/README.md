@@ -3,7 +3,7 @@
 ## Core Java 8 Cookbooks and Examples
 
 ### Relevant Articles: 
-- [Java 8 Collectors](http://www.baeldung.com/java-8-collectors)
+- [Guide to Java 8’s Collectors](http://www.baeldung.com/java-8-collectors)
 - [Functional Interfaces in Java 8](http://www.baeldung.com/java-8-functional-interfaces)
 - [Java 8 – Powerful Comparison with Lambdas](http://www.baeldung.com/java-8-sort-lambda)
 - [New Features in Java 8](http://www.baeldung.com/java-8-new-features)

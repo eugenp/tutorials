@@ -14,7 +14,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Properties with Spring and Spring Boot](http://www.baeldung.com/properties-with-spring) - checkout the `org.baeldung.properties` package for all scenarios of properties injection and usage
 - [Spring Profiles](http://www.baeldung.com/spring-profiles)
 - [A Spring Custom Annotation for a Better DAO](http://www.baeldung.com/spring-annotation-bean-pre-processor)
-- [What's New in Spring 4.3?](http://www.baeldung.com/whats-new-in-spring-4-3)
+- [What’s New in Spring 4.3?](http://www.baeldung.com/whats-new-in-spring-4-3)
 - [Running Setup Data on Startup in Spring](http://www.baeldung.com/running-setup-logic-on-startup-in-spring)
 - [Quick Guide to Spring Controllers](http://www.baeldung.com/spring-controllers)
 - [Quick Guide to Spring Bean Scopes](http://www.baeldung.com/spring-bean-scopes)
@@ -22,7 +22,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [A Guide to the Spring Task Scheduler](http://www.baeldung.com/spring-task-scheduler)
 - [Guide to Spring Retry](http://www.baeldung.com/spring-retry)
 - [Custom Scope in Spring](http://www.baeldung.com/spring-custom-scope)
-- [New in Guava 21 common.util.concurrent](http://www.baeldung.com/guava-21-util-concurrent)
 - [A CLI with Spring Shell](http://www.baeldung.com/spring-shell-cli)
 - [JasperReports with Spring](http://www.baeldung.com/spring-jasper)
 - [Model, ModelMap, and ModelView in Spring MVC](http://www.baeldung.com/spring-mvc-model-model-map-model-view)
@@ -34,3 +33,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring @Primary Annotation](http://www.baeldung.com/spring-primary)
 - [Spring Events](https://www.baeldung.com/spring-events)
 - [Spring Null-Safety Annotations](https://www.baeldung.com/spring-null-safety-annotations)
+- [Spring JDBC](https://www.baeldung.com/spring-jdbc-jdbctemplate)
+- [Using @Autowired in Abstract Classes](https://www.baeldung.com/spring-autowired-abstract-class)

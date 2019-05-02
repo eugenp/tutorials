@@ -19,3 +19,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Logging a Reactive Sequence](https://www.baeldung.com/spring-reactive-sequence-logging)
 - [Testing Reactive Streams Using StepVerifier and TestPublisher](https://www.baeldung.com/reactive-streams-step-verifier-test-publisher)
 - [Debugging Reactive Streams in Spring 5](https://www.baeldung.com/spring-debugging-reactive-streams)
+- [Static Content in Spring WebFlux](https://www.baeldung.com/spring-webflux-static-content)
