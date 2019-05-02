@@ -12,7 +12,6 @@
 
     <modules>
         <module>lombok-custom</module>
-        <module>picocli</module>
     </modules>
 
 	<dependencies>
