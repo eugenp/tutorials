@@ -2,6 +2,5 @@
 
 ## Relevant articles:
 
-- [Maps in Groovy](http://www.baeldung.com/)
-- [Console I/O in Kotlin](https://www.baeldung.com/kotlin-console-io)
+- [Maps in Groovy](https://www.baeldung.com/groovy-maps)
 
