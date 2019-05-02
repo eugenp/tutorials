@@ -24,4 +24,7 @@
 - [Java 9 java.util.Objects Additions](https://www.baeldung.com/java-9-objects-new)
 - [Java 9 Reactive Streams](https://www.baeldung.com/java-9-reactive-streams)
 - [Java 9 Optional API Additions](https://www.baeldung.com/java-9-optional)
-
+- [Java 9 CompletableFuture API Improvements](https://www.baeldung.com/java-9-completablefuture)
+- [Introduction to Java 9 StackWalking API](https://www.baeldung.com/java-9-stackwalking-api)
+- [Java 9 Convenience Factory Methods for Collections](https://www.baeldung.com/java-9-collections-factory-methods)
+- [Java 9 Stream API Improvements](https://www.baeldung.com/java-9-stream-api)
