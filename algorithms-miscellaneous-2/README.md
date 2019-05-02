@@ -15,3 +15,4 @@
 - [Calculate Percentage in Java](https://www.baeldung.com/java-calculate-percentage)
 - [Converting Between Byte Arrays and Hexadecimal Strings in Java](https://www.baeldung.com/java-byte-arrays-hex-strings)
 - [Convert Latitude and Longitude to a 2D Point in Java](https://www.baeldung.com/java-convert-latitude-longitude)
+- [Reversing a Binary Tree in Java](https://www.baeldung.com/java-reversing-a-binary-tree)
