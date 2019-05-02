@@ -28,3 +28,4 @@
 - [Introduction to Java 9 StackWalking API](https://www.baeldung.com/java-9-stackwalking-api)
 - [Java 9 Convenience Factory Methods for Collections](https://www.baeldung.com/java-9-collections-factory-methods)
 - [Java 9 Stream API Improvements](https://www.baeldung.com/java-9-stream-api)
+- [A Guide to Java 9 Modularity](https://www.baeldung.com/java-9-modularity)
