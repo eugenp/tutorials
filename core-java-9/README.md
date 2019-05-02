@@ -29,3 +29,5 @@
 - [Java 9 Convenience Factory Methods for Collections](https://www.baeldung.com/java-9-collections-factory-methods)
 - [Java 9 Stream API Improvements](https://www.baeldung.com/java-9-stream-api)
 - [A Guide to Java 9 Modularity](https://www.baeldung.com/java-9-modularity)
+- [Java 9 Platform Module API](https://www.baeldung.com/java-9-module-api)
+- [Java 9 Platform Logging API](https://www.baeldung.com/java-9-logging-api)
