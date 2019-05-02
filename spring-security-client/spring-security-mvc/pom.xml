@@ -5,9 +5,9 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-security-mvc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>spring-security-mvc</name>
     <description>Spring Security MVC</description>
+    <packaging>war</packaging>
 
     <parent>
         <artifactId>parent-boot-1</artifactId>

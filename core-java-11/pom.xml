@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>core-java-11</artifactId>
-    <packaging>jar</packaging>
     <version>0.1.0-SNAPSHOT</version>
     <name>core-java-11</name>
+    <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 
     <parent>
@@ -13,6 +13,14 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -31,6 +39,7 @@
     <properties>
         <maven.compiler.source.version>11</maven.compiler.source.version>
         <maven.compiler.target.version>11</maven.compiler.target.version>
+        <guava.version>27.1-jre</guava.version>
     </properties>
 
 </project>

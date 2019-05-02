@@ -64,13 +64,13 @@
         <dependency>
             <groupId>nl.komponents.kovenant</groupId>
             <artifactId>kovenant</artifactId>
-            <version>3.3.0</version>
+            <version>${kovenant.version}</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>uy.kohesive.injekt</groupId>
             <artifactId>injekt-core</artifactId>
-            <version>1.16.1</version>
+            <version>${injekt-core.version}</version>
         </dependency>
     </dependencies>
 
@@ -82,6 +82,8 @@
         <assertj.version>3.10.0</assertj.version>
         <h2database.version>1.4.197</h2database.version>
         <fuel.version>1.15.0</fuel.version>
+		<kovenant.version>3.3.0</kovenant.version>
+		<injekt-core.version>1.16.1</injekt-core.version>
     </properties>
 
 </project>

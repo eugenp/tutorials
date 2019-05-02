@@ -98,4 +98,18 @@ public class SpringResourceIntegrationTest {
         final String employees = new String(Files.readAllBytes(resource.toPath()));
         assertEquals(EMPLOYEES_EXPECTED, employees);
     }
+    
+    @Test
+    public void whenClassPathResourceWithAbsoultePath_thenReadSuccessful() throws IOException {
+    	final File resource = new ClassPathResource("/data/employees.dat", this.getClass()).getFile();
+        final String employees = new String(Files.readAllBytes(resource.toPath()));
+        assertEquals(EMPLOYEES_EXPECTED, employees);
+    }
+    
+    @Test
+    public void whenClassPathResourceWithRelativePath_thenReadSuccessful() throws IOException {
+    	final File resource = new ClassPathResource("../../../data/employees.dat", SpringResourceIntegrationTest.class).getFile();
+        final String employees = new String(Files.readAllBytes(resource.toPath()));
+        assertEquals(EMPLOYEES_EXPECTED, employees);
+    }
 }

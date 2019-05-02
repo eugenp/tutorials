@@ -6,13 +6,9 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-session-jdbc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-session-jdbc</name>
+    <packaging>jar</packaging>
     <description>Spring Session with JDBC tutorial</description>
-
-    <properties>
-        <h2.version>1.4.197</h2.version>
-    </properties>
 
     <parent>
         <artifactId>parent-boot-2</artifactId>
@@ -52,5 +48,8 @@
         </plugins>
     </build>
 
+    <properties>
+        <h2.version>1.4.197</h2.version>
+    </properties>
 
 </project>

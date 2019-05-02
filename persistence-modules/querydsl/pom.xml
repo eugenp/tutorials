@@ -5,8 +5,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>querydsl</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>querydsl</name>
+    <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 
     <parent>

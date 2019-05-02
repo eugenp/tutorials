@@ -3,6 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-boot-persistence-mongodb</artifactId>
+    <name>spring-boot-persistence-mongodb</name>
+    <packaging>war</packaging>
+    <description>This is simple boot application for Spring boot persistence mongodb test</description>
 
     <parent>
         <artifactId>parent-boot-2</artifactId>
@@ -10,11 +14,6 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
-
-    <artifactId>spring-boot-persistence-mongodb</artifactId>
-    <packaging>war</packaging>
-    <name>spring-boot-persistence-mongodb</name>
-    <description>This is simple boot application for Spring boot persistence mongodb test</description>
 
     <dependencies>
         <dependency>
@@ -25,6 +24,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <scope>test</scope>
         </dependency>
         <!-- JUnit Jupiter dependencies -->
         <dependency>

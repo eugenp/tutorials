@@ -12,11 +12,30 @@
         <artifactId>jnosql</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
-    <properties>
-        <liberty-maven-plugin.version>2.4.2</liberty-maven-plugin.version>
-        <failOnMissingWebXml>false</failOnMissingWebXml>
-    </properties>
+	
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>${javaee-web-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jnosql.artemis</groupId>
+            <artifactId>artemis-configuration</artifactId>
+            <version>${jnosql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jnosql.artemis</groupId>
+            <artifactId>artemis-document</artifactId>
+            <version>${jnosql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jnosql.diana</groupId>
+            <artifactId>mongodb-driver</artifactId>
+            <version>${jnosql.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
@@ -58,31 +77,10 @@
         </plugins>
     </build>
 
-    <dependencies>
-
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>8.0</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jnosql.artemis</groupId>
-            <artifactId>artemis-configuration</artifactId>
-            <version>${jnosql.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jnosql.artemis</groupId>
-            <artifactId>artemis-document</artifactId>
-            <version>${jnosql.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jnosql.diana</groupId>
-            <artifactId>mongodb-driver</artifactId>
-            <version>${jnosql.version}</version>
-        </dependency>
-
-    </dependencies>
+    <properties>
+        <liberty-maven-plugin.version>2.4.2</liberty-maven-plugin.version>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <javaee-web-api.version>8.0</javaee-web-api.version>
+    </properties>
 
 </project>

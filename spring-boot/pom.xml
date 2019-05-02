@@ -3,8 +3,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot</artifactId>
-    <packaging>war</packaging>
     <name>spring-boot</name>
+    <packaging>war</packaging>
     <description>This is simple boot application for Spring boot actuator test</description>
 
     <parent>
@@ -15,16 +15,7 @@
     </parent>
 
     <dependencies>
-        <!-- MongoDB -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.flapdoodle.embed</groupId>
-            <artifactId>de.flapdoodle.embed.mongo</artifactId>
-            <scope>test</scope>
-        </dependency>
+      
         <!-- JUnit Jupiter dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>

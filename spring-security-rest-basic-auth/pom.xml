@@ -96,7 +96,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind.version}</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!-- http -->
@@ -272,8 +272,8 @@
     <properties>
 
         <!-- http -->
-        <httpcore.version>4.4.5</httpcore.version>
-        <httpclient.version>4.5.3</httpclient.version>
+        <httpcore.version>4.4.11</httpcore.version>
+        <httpclient.version>4.5.8</httpclient.version>
 
         <!-- various -->
         <jstl.version>1.2</jstl.version>
