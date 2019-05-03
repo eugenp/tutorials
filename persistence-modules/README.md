@@ -13,3 +13,4 @@
 - [Spring Data with Reactive Cassandra](https://www.baeldung.com/spring-data-cassandra-reactive)
 - [Spring Data JPA – Derived Delete Methods](https://www.baeldung.com/spring-data-jpa-deleteby)
 - [Difference Between save() and saveAndFlush() in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-save-saveandflush)
+- [Spring Boot with Hibernate](https://www.baeldung.com/spring-boot-hibernate)
