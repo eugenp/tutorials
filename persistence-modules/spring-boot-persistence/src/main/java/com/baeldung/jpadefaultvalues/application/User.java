@@ -13,13 +13,13 @@ public class User {
     private Long id;
 
     @Column(columnDefinition = "varchar(255) default 'John Snow'")
-    private String name;
+    private String name = "John Snow";
 
     @Column(columnDefinition = "integer default 25")
-    private Integer age;
+    private Integer age = 25;
 
     @Column(columnDefinition = "boolean default false")
-    private Boolean locked;
+    private Boolean locked = false;
 
     public Long getId() {
         return id;
