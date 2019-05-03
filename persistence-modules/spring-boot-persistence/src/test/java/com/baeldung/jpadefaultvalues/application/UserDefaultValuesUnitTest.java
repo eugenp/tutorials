@@ -1,36 +1,27 @@
-package com.baeldung.jpadefaultvalues;
+package com.baeldung.jpadefaultvalues.application;
 
-import com.baeldung.jpadefaultvalues.User;
+import com.baeldung.jpadefaultvalues.application.User;
+import com.baeldung.jpadefaultvalues.application.UserRepository;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.List;
-import java.util.Map;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.*;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = RANDOM_PORT, classes = ContactApp.class)
-public class EntityDefaultValuesIntegrationTest {
+@SpringBootTest
+public class UserDefaultValuesUnitTest {
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Test
+    @Ignore // SQL default values are also defined
     void saveUser_shouldSaveWithDefaultFieldValues() {
         User user = new User();
         user = userRepository.save(user);
@@ -41,6 +32,7 @@ public class EntityDefaultValuesIntegrationTest {
     }
 
     @Test
+    @Ignore // SQL default values are also defined
     void saveUser_shouldSaveWithNullName() {
         User user = new User();
         user.setName(null);
