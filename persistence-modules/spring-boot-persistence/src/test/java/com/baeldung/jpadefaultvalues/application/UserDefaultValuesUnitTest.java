@@ -22,7 +22,7 @@ public class UserDefaultValuesUnitTest {
 
     @Test
     @Ignore // SQL default values are also defined
-    void saveUser_shouldSaveWithDefaultFieldValues() {
+    public void saveUser_shouldSaveWithDefaultFieldValues() {
         User user = new User();
         user = userRepository.save(user);
 
@@ -33,7 +33,7 @@ public class UserDefaultValuesUnitTest {
 
     @Test
     @Ignore // SQL default values are also defined
-    void saveUser_shouldSaveWithNullName() {
+    public void saveUser_shouldSaveWithNullName() {
         User user = new User();
         user.setName(null);
         user = userRepository.save(user);
@@ -44,7 +44,7 @@ public class UserDefaultValuesUnitTest {
     }
 
     @Test
-    void saveUser_shouldSaveWithDefaultSqlValues() {
+    public void saveUser_shouldSaveWithDefaultSqlValues() {
         User user = new User();
         user = userRepository.save(user);
 
