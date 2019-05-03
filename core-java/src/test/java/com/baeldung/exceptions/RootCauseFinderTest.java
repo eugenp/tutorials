@@ -76,6 +76,15 @@ public class RootCauseFinderTest {
     }
 
     @Test
+    public void givenNullDate_whenFindingRootCauseUsingApacheCommons_thenRootCauseNotFound() {
+        try {
+            AgeCalculator.calculateAge(null);
+        } catch (Exception ex) {
+            assertTrue(ExceptionUtils.getRootCause(ex) instanceof IllegalArgumentException);
+        }
+    }
+
+    @Test
     public void givenWrongFormatDate_whenFindingRootCauseUsingGuava_thenRootCauseFound() {
         try {
             AgeCalculator.calculateAge("010102");
@@ -90,6 +99,15 @@ public class RootCauseFinderTest {
             AgeCalculator.calculateAge("2020-04-04");
         } catch (CalculationException ex) {
             assertTrue(Throwables.getRootCause(ex) instanceof DateOutOfRangeException);
+        }
+    }
+
+    @Test
+    public void givenNullDate_whenFindingRootCauseUsingGuava_thenRootCauseFound() {
+        try {
+            AgeCalculator.calculateAge(null);
+        } catch (Exception ex) {
+            assertTrue(Throwables.getRootCause(ex) instanceof IllegalArgumentException);
         }
     }
 
