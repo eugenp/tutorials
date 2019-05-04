@@ -17,4 +17,5 @@
 - [Dockerizing a Spring Boot Application](http://www.baeldung.com/dockerizing-spring-boot-application)
 - [Instance Profile Credentials using Spring Cloud](http://www.baeldung.com/spring-cloud-instance-profiles)
 - [Running Spring Boot Applications With Minikube](http://www.baeldung.com/spring-boot-minikube)
+- [Introduction to Spring Cloud OpenFeign](https://www.baeldung.com/spring-cloud-openfeign)
 
