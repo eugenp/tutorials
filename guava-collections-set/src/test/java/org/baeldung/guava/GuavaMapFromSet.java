@@ -49,7 +49,7 @@ public class GuavaMapFromSet<K, V> extends AbstractMap<K, V> {
             }
 
             @Override
-            public Entry<K, V> next() {
+            public Map.Entry<K, V> next() {
                 K key = this.inner.next();
                 return new SingleEntry(key);
             }
@@ -67,7 +67,7 @@ public class GuavaMapFromSet<K, V> extends AbstractMap<K, V> {
         }
 
         @Override
-        public Iterator<Entry<K, V>> iterator() {
+        public Iterator<Map.Entry<K, V>> iterator() {
             return new EntryIterator();
         }
 
@@ -79,7 +79,7 @@ public class GuavaMapFromSet<K, V> extends AbstractMap<K, V> {
     }
 
     private WeakHashMap<K, V> cache;
-    private Set<Entry<K, V>> entries;
+    private Set<Map.Entry<K, V>> entries;
     private Function<? super K, ? extends V> function;
 
     public GuavaMapFromSet(Set<K> keys, Function<? super K, ? extends V> function) {
@@ -89,7 +89,7 @@ public class GuavaMapFromSet<K, V> extends AbstractMap<K, V> {
     }
 
     @Override
-    public Set<Entry<K, V>> entrySet() {
+    public Set<Map.Entry<K, V>> entrySet() {
         return this.entries;
     }
 

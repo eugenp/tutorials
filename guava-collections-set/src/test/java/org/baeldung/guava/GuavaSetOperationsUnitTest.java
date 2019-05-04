@@ -128,11 +128,4 @@ public class GuavaSetOperationsUnitTest {
         assertEquals("Adam", topTwo.get(0));
         assertEquals("Tom", topTwo.get(1));
     }
-
-
-
-
-
-
-
 }

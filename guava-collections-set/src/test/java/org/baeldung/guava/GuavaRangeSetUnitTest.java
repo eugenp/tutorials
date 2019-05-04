@@ -121,6 +121,5 @@ public class GuavaRangeSetUnitTest {
 	    .add(Range.closed(0, 2))
 	    .add(Range.closed(3, 5))
 	    .add(Range.closed(5, 8)).build();
-
     }
 }
