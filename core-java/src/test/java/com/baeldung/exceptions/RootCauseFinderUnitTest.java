@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * Tests the {@link RootCauseFinder}.
  */
-public class RootCauseFinderTest {
+public class RootCauseFinderUnitTest {
 
     @Test
     public void givenBirthDate_whenCalculatingAge_thenAgeReturned() {
