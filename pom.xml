@@ -339,6 +339,7 @@
                 <module>algorithms-genetic</module>
                 <module>algorithms-miscellaneous-1</module>
                 <module>algorithms-miscellaneous-2</module>
+                <module>algorithms-miscellaneous-3</module>
                 <module>algorithms-sorting</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
@@ -462,6 +463,7 @@
                 <module>java-streams</module>
                 <module>java-streams-2</module>
                 <module>java-strings</module>
+                <module>java-strings-2</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javafx</module>
@@ -490,12 +492,14 @@
 
                 <!-- <module>kotlin-js</module> --> <!-- Not a maven project -->
                 <module>kotlin-libraries</module>
+                <module>kotlin-libraries-2</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries</module>
                 <module>libraries-2</module>
                 <module>libraries-data</module>
                 <module>libraries-apache-commons</module>
+                <module>libraries-primitive</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
                 <module>linkrest</module>
@@ -1017,6 +1021,7 @@
                 <module>algorithms-genetic</module>
                 <module>algorithms-miscellaneous-1</module>
                 <module>algorithms-miscellaneous-2</module>
+                <module>algorithms-miscellaneous-3</module>
                 <module>algorithms-sorting</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
@@ -1133,6 +1138,7 @@
                 <module>java-streams</module>
                 <module>java-streams-2</module>
                 <module>java-strings</module>
+                <module>java-strings-2</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javafx</module>
