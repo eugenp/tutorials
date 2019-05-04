@@ -79,7 +79,7 @@ public class GuavaMapFromSet<K, V> extends AbstractMap<K, V> {
     }
 
     private WeakHashMap<K, V> cache;
-    private Set<Map.Entry<K, V>> entries;
+    private Set<Entry<K, V>> entries;
     private Function<? super K, ? extends V> function;
 
     public GuavaMapFromSet(Set<K> keys, Function<? super K, ? extends V> function) {
