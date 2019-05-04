@@ -3,6 +3,7 @@ package com.baeldung.singleton;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @RunWith(Arquillian.class)
-@FixMethodOrder(MethodSorters.DEFAULT)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CarServiceIntegrationTest {
 
     public static final Logger LOG = LoggerFactory.getLogger(CarServiceIntegrationTest.class);
@@ -106,9 +107,36 @@ public class CarServiceIntegrationTest {
         LOG.info("Test run {}::carServiceEjbSingletonId: {}", testRun, carServiceEjbSingletonId);
     }
 
-    // @Test
-    public void givenMultipleCars_whenEjb_thenLockingIsProvided() {
-        // TODO
-        // multiple threads, all access service methods
+    @Test
+    public void givenRun3_whenSingleton_thenNoLocking() {
+        for (int i = 0; i < 10; i++) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    String model = Double.toString(Math.round(Math.random() * 100));
+                    Car car = new Car("Speedster", model);
+                    int serviceQueue = carServiceSingleton.service(car);
+                    assertTrue(serviceQueue < 10);                     
+                }
+            }).start();
+        }
+        return;
     }
+    
+    @Test
+    public void givenRun4_whenEjb_thenLocking() {
+        for (int i = 0; i < 10; i++) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    String model = Double.toString(Math.round(Math.random() * 100));
+                    Car car = new Car("Speedster", model);
+                    int serviceQueue = carServiceEjbSingleton.service(car);
+                    assertEquals(0, serviceQueue);
+                }
+            }).start();
+        }
+        return;
+    }
+
 }
