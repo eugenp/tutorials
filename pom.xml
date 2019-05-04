@@ -13,7 +13,6 @@
     <modules>
         <module>lombok-custom</module>
         <module>picocli</module>
-        <module>core-java-reflection</module>
     </modules>
 
 	<dependencies>
@@ -404,6 +403,7 @@
                 <module>core-java-modules</module>
                 <module>core-java-networking</module>
                 <module>core-java-perf</module>
+                <module>core-java-reflection</module>
                 <module>core-java-sun</module>
                 <module>core-java</module>
                 <module>core-java-jvm</module>
