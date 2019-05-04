@@ -49,7 +49,7 @@
 
 	<properties>
 		<assertj.version>3.6.2</assertj.version>
-		<classgraph.version>4.8.22</classgraph.version>
+		<classgraph.version>4.8.28</classgraph.version>
 		<jbpm.version>6.0.0.Final</jbpm.version>
 	</properties>
 </project>
