@@ -1,13 +1,8 @@
 package org.baeldung.guava;
 
-import java.util.AbstractMap;
-import java.util.AbstractSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.WeakHashMap;
-
 import com.google.common.base.Function;
+
+import java.util.*;
 
 public class GuavaMapFromSet<K, V> extends AbstractMap<K, V> {
 
