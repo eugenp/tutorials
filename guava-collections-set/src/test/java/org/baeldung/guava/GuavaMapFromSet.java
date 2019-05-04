@@ -1,13 +1,8 @@
 package org.baeldung.guava;
 
-import java.util.AbstractMap;
-import java.util.AbstractSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.WeakHashMap;
-
 import com.google.common.base.Function;
+
+import java.util.*;
 
 public class GuavaMapFromSet<K, V> extends AbstractMap<K, V> {
 
@@ -54,7 +49,7 @@ public class GuavaMapFromSet<K, V> extends AbstractMap<K, V> {
             }
 
             @Override
-            public Map.Entry<K, V> next() {
+            public Entry<K, V> next() {
                 K key = this.inner.next();
                 return new SingleEntry(key);
             }
@@ -72,7 +67,7 @@ public class GuavaMapFromSet<K, V> extends AbstractMap<K, V> {
         }
 
         @Override
-        public Iterator<Map.Entry<K, V>> iterator() {
+        public Iterator<Entry<K, V>> iterator() {
             return new EntryIterator();
         }
 
@@ -94,7 +89,7 @@ public class GuavaMapFromSet<K, V> extends AbstractMap<K, V> {
     }
 
     @Override
-    public Set<Map.Entry<K, V>> entrySet() {
+    public Set<Entry<K, V>> entrySet() {
         return this.entries;
     }
 
