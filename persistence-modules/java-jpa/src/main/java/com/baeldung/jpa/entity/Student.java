@@ -17,13 +17,13 @@ import javax.persistence.Transient;
 import com.baeldung.util.Gender;
 
 @Entity
-@Table(name="STUD")
+@Table(name="STUDENT")
 public class Student {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column(name = "STUD_NAME", length = 50, nullable = false, unique = false)
+	@Column(name = "STUDENT_NAME", length = 50, nullable = false, unique = false)
 	private String name;
 	@Transient
 	private Integer age;
