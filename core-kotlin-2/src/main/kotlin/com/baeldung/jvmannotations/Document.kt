@@ -5,6 +5,8 @@ import java.util.*
 interface Document {
 
     @JvmDefault
+    fun getTypeDefault() = "document"
+
     fun getType() = "document"
 }
 
@@ -23,9 +25,3 @@ class TextDocument : Document {
 }
 
 class XmlDocument(d : Document) : Document by d
-
-fun main() {
-    val myDocument = TextDocument()
-    val myTextDocument = XmlDocument(myDocument)
-    println("${myDocument.getType()} ${myTextDocument.getType()}")
-}
