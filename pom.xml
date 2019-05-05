@@ -13,6 +13,7 @@
     <modules>
         <module>lombok-custom</module>
         <module>picocli</module>
+        <module>quarkus</module>
     </modules>
 
 	<dependencies>
@@ -339,6 +340,7 @@
                 <module>algorithms-genetic</module>
                 <module>algorithms-miscellaneous-1</module>
                 <module>algorithms-miscellaneous-2</module>
+                <module>algorithms-miscellaneous-3</module>
                 <module>algorithms-sorting</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
@@ -402,6 +404,7 @@
                 <module>core-java-modules</module>
                 <module>core-java-networking</module>
                 <module>core-java-perf</module>
+                <module>core-java-reflection</module>
                 <module>core-java-sun</module>
                 <module>core-java</module>
                 <module>core-java-jvm</module>
@@ -498,6 +501,7 @@
                 <module>libraries-2</module>
                 <module>libraries-data</module>
                 <module>libraries-apache-commons</module>
+                <module>libraries-primitive</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
                 <module>linkrest</module>
@@ -532,6 +536,7 @@
                 <module>protobuffer</module>
 
                 <module>persistence-modules</module>
+		<module>quarkus</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
@@ -1019,6 +1024,7 @@
                 <module>algorithms-genetic</module>
                 <module>algorithms-miscellaneous-1</module>
                 <module>algorithms-miscellaneous-2</module>
+                <module>algorithms-miscellaneous-3</module>
                 <module>algorithms-sorting</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
@@ -1507,7 +1513,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<gib.referenceBranch>refs/remotes/origin/master</gib.referenceBranch>		
+		<gib.referenceBranch>refs/remotes/origin/master</gib.referenceBranch>
 		<gib.skipTestsForUpstreamModules>true</gib.skipTestsForUpstreamModules>
 		<gib.buildUpstream>false</gib.buildUpstream>
 		<gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
