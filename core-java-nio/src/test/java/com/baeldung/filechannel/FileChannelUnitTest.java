@@ -23,7 +23,7 @@ public class FileChannelUnitTest {
 
         try (RandomAccessFile reader = new RandomAccessFile("src/test/resources/test_read.in", "r"); 
             FileChannel channel = reader.getChannel(); 
-            ByteArrayOutputStream out = new ByteArrayOutputStream();) {
+            ByteArrayOutputStream out = new ByteArrayOutputStream()) {
 
             int bufferSize = 1024;
             if (bufferSize > channel.size()) {
@@ -47,7 +47,7 @@ public class FileChannelUnitTest {
 
         try (ByteArrayOutputStream out = new ByteArrayOutputStream(); 
             FileInputStream fin = new FileInputStream("src/test/resources/test_read.in"); 
-            FileChannel channel = fin.getChannel();) {
+            FileChannel channel = fin.getChannel()) {
 
             int bufferSize = 1024;
             if (bufferSize > channel.size()) {
@@ -70,7 +70,7 @@ public class FileChannelUnitTest {
 
         try (RandomAccessFile reader = new RandomAccessFile("src/test/resources/test_read.in", "r"); 
             FileChannel channel = reader.getChannel(); 
-            ByteArrayOutputStream out = new ByteArrayOutputStream();) {
+            ByteArrayOutputStream out = new ByteArrayOutputStream()) {
 
             MappedByteBuffer buff = channel.map(FileChannel.MapMode.READ_ONLY, 6, 5);
 
@@ -86,7 +86,7 @@ public class FileChannelUnitTest {
     public void whenWriteWithFileChannelUsingRandomAccessFile_thenCorrect() throws IOException {
         String file = "src/test/resources/test_write_using_filechannel.txt";
         try (RandomAccessFile writer = new RandomAccessFile(file, "rw"); 
-            FileChannel channel = writer.getChannel();) {
+            FileChannel channel = writer.getChannel()) {
             ByteBuffer buff = ByteBuffer.wrap("Hello world".getBytes(StandardCharsets.UTF_8));
 
             channel.write(buff);
@@ -113,7 +113,7 @@ public class FileChannelUnitTest {
 
         try (ByteArrayOutputStream out = new ByteArrayOutputStream(); 
             RandomAccessFile reader = new RandomAccessFile("src/test/resources/test_read.in", "r"); 
-            FileChannel channel = reader.getChannel();) {
+            FileChannel channel = reader.getChannel()) {
 
             int bufferSize = 1024;
             if (bufferSize > channel.size()) {
@@ -138,7 +138,7 @@ public class FileChannelUnitTest {
     public void whenGetFileSize_thenCorrect() throws IOException {
 
         try (RandomAccessFile reader = new RandomAccessFile("src/test/resources/test_read.in", "r"); 
-            FileChannel channel = reader.getChannel();) {
+            FileChannel channel = reader.getChannel()) {
 
             // the original file is 11 bytes long, so that's where the position pointer should be
             assertEquals(11, channel.size());
