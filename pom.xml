@@ -13,6 +13,7 @@
     <modules>
         <module>lombok-custom</module>
         <module>picocli</module>
+        <module>quarkus</module>
     </modules>
 
 	<dependencies>
@@ -534,6 +535,7 @@
                 <module>protobuffer</module>
 
                 <module>persistence-modules</module>
+		<module>quarkus</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
@@ -1510,7 +1512,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<gib.referenceBranch>refs/remotes/origin/master</gib.referenceBranch>		
+		<gib.referenceBranch>refs/remotes/origin/master</gib.referenceBranch>
 		<gib.skipTestsForUpstreamModules>true</gib.skipTestsForUpstreamModules>
 		<gib.buildUpstream>false</gib.buildUpstream>
 		<gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
