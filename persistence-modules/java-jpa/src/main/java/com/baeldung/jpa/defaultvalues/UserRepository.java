@@ -9,7 +9,7 @@ public class UserRepository {
     private EntityManagerFactory emf = null;
 
     public UserRepository() {
-        emf = Persistence.createEntityManagerFactory("entity-default-values-postgresql");
+        emf = Persistence.createEntityManagerFactory("entity-default-values");
     }
 
     public User find(Long id) {
