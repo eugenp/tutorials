@@ -1,4 +1,4 @@
-package com.baeldung.jpadefaultvalues.application;
+package com.baeldung.jpa.defaultvalues;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
