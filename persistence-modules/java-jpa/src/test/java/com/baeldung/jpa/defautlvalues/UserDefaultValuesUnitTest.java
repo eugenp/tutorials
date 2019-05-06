@@ -57,7 +57,7 @@ public class UserDefaultValuesUnitTest {
 
     @AfterClass
     public static void destroy() {
-        postRepository.clean();
+        userRepository.clean();
     }
 
 }
