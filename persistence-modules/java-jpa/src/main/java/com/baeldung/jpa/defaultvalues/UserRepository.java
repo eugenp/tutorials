@@ -8,7 +8,7 @@ public class UserRepository {
 
     private EntityManagerFactory emf = null;
 
-    public DateTimeEntityRepository() {
+    public UserRepository() {
         emf = Persistence.createEntityManagerFactory("entity-default-values-postgresql");
     }
 
