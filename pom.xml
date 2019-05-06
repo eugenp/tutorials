@@ -608,7 +608,7 @@
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-security</module>
                 <module>spring-5-security-oauth</module>
-		        <module>spring-5-security-cognito</module>
+				<module>spring-5-security-cognito</module>
 
                 <module>spring-activiti</module>
                 <module>spring-akka</module>
