@@ -1,4 +1,4 @@
-package com.baeldung.kotlin.khttp
+package com.baeldung.kotlin.rxkotlin
 
 import io.reactivex.Maybe
 import io.reactivex.Observable
@@ -141,7 +141,7 @@ class RxKotlinTest {
     fun whenFunction_thenCompletable() {
         var value = 0
         val completable = { value = 3 }.toCompletable()
-        assertFalse(completable.test().isCancelled())
+        assertFalse(completable.test().isCancelled)
         assertEquals(3, value)
     }
 
