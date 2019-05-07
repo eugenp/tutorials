@@ -25,7 +25,7 @@ public class UserDefaultValuesUnitTest {
         User user = new User();
         userRepository.save(user, 1L);
 
-        user = userRepository.find(1l);
+        user = userRepository.find(1L);
         assertEquals(user.getName(), "John Snow");
         assertEquals(25, (int) user.getAge());
         assertFalse(user.getLocked());
@@ -38,7 +38,7 @@ public class UserDefaultValuesUnitTest {
         user.setName(null);
         userRepository.save(user, 2L);
 
-        user = userRepository.find(2l);
+        user = userRepository.find(2L);
         assertNull(user.getName());
         assertEquals(25, (int) user.getAge());
         assertFalse(user.getLocked());

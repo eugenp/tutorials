@@ -9,7 +9,6 @@ import javax.persistence.Id;
 public class User {
 
     @Id
-    @GeneratedValue
     private Long id;
 
     @Column(columnDefinition = "varchar(255) default 'John Snow'")
