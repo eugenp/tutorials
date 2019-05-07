@@ -93,7 +93,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>${javax.servlet.jstl.version}</version>
+            <version>${jstl.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -163,10 +163,8 @@
         <hibernate.version>5.2.17.Final</hibernate.version>
         <mysql-connector-java.version>6.0.6</mysql-connector-java.version>
         <spring-data-jpa.version>2.1.5.RELEASE</spring-data-jpa.version>
-        <h2.version>1.4.195</h2.version>
 
         <!-- web -->
-        <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
         <javax.servlet.servlet-api.version>2.5</javax.servlet.servlet-api.version>
 
         <!-- various -->

@@ -15,6 +15,12 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
+        </dependency>
+
         <!-- test scoped -->
         <dependency>
             <groupId>org.assertj</groupId>
@@ -49,6 +55,7 @@
     <properties>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
+        <joda-time.version>2.10</joda-time.version>
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>
     </properties>
