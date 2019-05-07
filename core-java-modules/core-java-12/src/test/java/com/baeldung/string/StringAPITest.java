@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.string;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
