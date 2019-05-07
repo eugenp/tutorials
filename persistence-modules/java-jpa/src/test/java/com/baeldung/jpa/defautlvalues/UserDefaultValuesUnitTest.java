@@ -1,31 +1,31 @@
-package com.baeldung.jpadefaultvalues.application;
+package com.baeldung.jpa.defaultvalues;
 
-import com.baeldung.jpadefaultvalues.application.User;
-import com.baeldung.jpadefaultvalues.application.UserRepository;
+import com.baeldung.jpa.defaultvalues.User;
+import com.baeldung.jpa.defaultvalues.UserRepository;
 
 import org.junit.Test;
 import org.junit.Ignore;
-import org.junit.runner.RunWith;
-
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 
 import static org.junit.Assert.*;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
 public class UserDefaultValuesUnitTest {
 
-    @Autowired
-    private UserRepository userRepository;
+    private static UserRepository userRepository = null;
+
+    @BeforeClass
+    public static void once() {
+        userRepository = new UserRepository();
+    }
 
     @Test
     @Ignore // SQL default values are also defined
     public void saveUser_shouldSaveWithDefaultFieldValues() {
         User user = new User();
-        user = userRepository.save(user);
+        userRepository.save(user, 1L);
 
+        user = userRepository.find(1L);
         assertEquals(user.getName(), "John Snow");
         assertEquals(25, (int) user.getAge());
         assertFalse(user.getLocked());
@@ -36,8 +36,9 @@ public class UserDefaultValuesUnitTest {
     public void saveUser_shouldSaveWithNullName() {
         User user = new User();
         user.setName(null);
-        user = userRepository.save(user);
+        userRepository.save(user, 2L);
 
+        user = userRepository.find(2L);
         assertNull(user.getName());
         assertEquals(25, (int) user.getAge());
         assertFalse(user.getLocked());
@@ -46,11 +47,17 @@ public class UserDefaultValuesUnitTest {
     @Test
     public void saveUser_shouldSaveWithDefaultSqlValues() {
         User user = new User();
-        user = userRepository.save(user);
+        userRepository.save(user, 3L);
 
+        user = userRepository.find(3L);
         assertEquals(user.getName(), "John Snow");
         assertEquals(25, (int) user.getAge());
         assertFalse(user.getLocked());
+    }
+
+    @AfterClass
+    public static void destroy() {
+        userRepository.clean();
     }
 
 }

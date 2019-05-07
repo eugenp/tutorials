@@ -1,4 +1,4 @@
-package com.baeldung.jpadefaultvalues.application;
+package com.baeldung.jpa.defaultvalues;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,6 @@ import javax.persistence.Id;
 public class User {
 
     @Id
-    @GeneratedValue
     private Long id;
 
     @Column(columnDefinition = "varchar(255) default 'John Snow'")
