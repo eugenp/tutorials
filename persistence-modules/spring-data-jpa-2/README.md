@@ -10,3 +10,4 @@
 - [JPA @Embedded And @Embeddable](https://www.baeldung.com/jpa-embedded-embeddable)
 - [Spring Data JPA Projections](https://www.baeldung.com/spring-data-jpa-projections)
 - [Spring Data JPA and Null Parameters](https://www.baeldung.com/spring-data-jpa-null-parameters)
+- [Spring Data JPA Repository Populators](https://www.baeldung.com/spring-data-jpa-repository-populators)
