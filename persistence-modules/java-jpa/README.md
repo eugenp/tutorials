@@ -7,3 +7,4 @@
 - [JPA 2.2 Support for Java 8 Date/Time Types](https://www.baeldung.com/jpa-java-time)
 - [Converting Between LocalDate and SQL Date](https://www.baeldung.com/java-convert-localdate-sql-date)
 - [Combining JPA And/Or Criteria Predicates](https://www.baeldung.com/jpa-and-or-criteria-predicates)
+- [Types of JPA Queries](https://www.baeldung.com/jpa-queries)
