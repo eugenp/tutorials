@@ -60,7 +60,6 @@
     <properties>
         <junit.jupiter.version>5.0.0-M4</junit.jupiter.version>
         <junit-vintage.version>4.12.0-M4</junit-vintage.version>
-        <h2.version>1.4.195</h2.version>
         <log4j-core.version>2.8.2</log4j-core.version>
         <junit-platform-surefire-provider.version>1.0.0-M4</junit-platform-surefire-provider.version>
     </properties>

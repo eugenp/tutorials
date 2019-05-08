@@ -65,8 +65,4 @@
 
     </dependencies>
 
-    <properties>
-        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-    </properties>
-
 </project>
