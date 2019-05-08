@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-@PropertySource("cognito/application_cognito.yml")
+@PropertySource("cognito/application-cognito.yml")
 public class SpringCognitoApplication {
 
     public static void main(String[] args) {
