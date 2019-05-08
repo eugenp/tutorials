@@ -5,7 +5,7 @@
     <groupId>com.baeldung.exception.numberformat</groupId>
     <artifactId>core-java-exceptions</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>NumberFormatExceptionExamples</name>
+    <name>core-java-exceptions</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
