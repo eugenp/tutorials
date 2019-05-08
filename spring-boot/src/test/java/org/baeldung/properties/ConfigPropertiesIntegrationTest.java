@@ -53,4 +53,11 @@ public class ConfigPropertiesIntegrationTest {
         Assert.assertEquals("Incorrectly bound object property, username", "john", credentials.getUsername());
         Assert.assertEquals("Incorrectly bound object property, password", "password", credentials.getPassword());
     }
+
+    @Test
+    public void whenBeanMethodAnnotatedThenPropertiesCorrectlyBound(){
+        Item item = properties.item();
+        Assert.assertEquals("Incorrectly bound object property, item.name","Test item name", item.getName());
+        Assert.assertEquals("Incorrectly bound object property, item.size", 21, item.getSize());
+    }
 }

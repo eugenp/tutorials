@@ -11,3 +11,6 @@
 *.jar
 *.war
 *.ear
+
+# Files
+/src/main/resources/orderOutput.yaml
