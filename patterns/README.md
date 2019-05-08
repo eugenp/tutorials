@@ -4,3 +4,4 @@
 - [Introduction to the Null Object Pattern](https://www.baeldung.com/java-null-object-pattern)
 - [The Dependency Inversion Principle in Java](https://www.baeldung.com/java-dependency-inversion-principle)
 - [The Dependency Inversion Principle in Java](https://www.baeldung.com/java-dependency-inversion-principle)
+- [Avoid Check for Null Statement in Java](https://www.baeldung.com/java-avoid-null-check)
