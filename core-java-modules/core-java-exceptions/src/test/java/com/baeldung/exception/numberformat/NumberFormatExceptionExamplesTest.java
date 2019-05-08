@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.baeldung.exception.numberformat;
 
 import static org.junit.Assert.assertEquals;
@@ -17,9 +14,9 @@ import org.junit.Test;
 /**
  * A set of examples tested to show cases where NumberFormatException is thrown and not thrown.
  */
-public class NumberFormatExceptionTestExamples {
+public class NumberFormatExceptionExamplesTest {
 
-    Logger LOG = Logger.getLogger(NumberFormatExceptionTestExamples.class.getName());
+    Logger LOG = Logger.getLogger(NumberFormatExceptionExamplesTest.class.getName());
 
     /* ---INTEGER FAIL CASES--- */
     @Test(expected = NumberFormatException.class)
@@ -62,25 +59,25 @@ public class NumberFormatExceptionTestExamples {
     public void givenInvalidNumberInputs_whenOptimized_thenPass() {
         Byte byteInt = new Byte("1");
         assertEquals(1, byteInt.intValue());
-        
+
         Short shortInt = new Short("2 ".trim());
         assertEquals(2, shortInt.intValue());
-        
+
         Integer aIntObj = Integer.valueOf("6");
         assertEquals(6, aIntObj.intValue());
-        
+
         BigInteger bigInteger = new BigInteger("4");
         assertEquals(4, bigInteger.intValue());
-        
+
         int aIntPrim = Integer.parseInt("6000 ".trim());
         assertEquals(6000, aIntPrim);
-        
+
         int bIntPrim = Integer.parseInt("6_000".replaceAll("_", ""));
         assertEquals(6000, bIntPrim);
-        
+
         int cIntPrim = Integer.parseInt("-6000");
         assertEquals(-6000, cIntPrim);
-        
+
         Long decodeInteger = Long.decode("644032334");
         assertEquals(644032334L, decodeInteger.longValue());
     }
