@@ -13,9 +13,7 @@
     <modules>
         <module>lombok-custom</module>
         <module>picocli</module>
-        <module>
-            architecture
-        </module>
+        <module>architecture</module>
     </modules>
 
 	<dependencies>
