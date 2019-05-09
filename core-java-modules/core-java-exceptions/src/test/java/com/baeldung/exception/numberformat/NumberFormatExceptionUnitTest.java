@@ -14,9 +14,9 @@ import org.junit.Test;
 /**
  * A set of examples tested to show cases where NumberFormatException is thrown and not thrown.
  */
-public class NumberFormatExceptionExamplesTest {
+public class NumberFormatExceptionUnitTest {
 
-    Logger LOG = Logger.getLogger(NumberFormatExceptionExamplesTest.class.getName());
+    Logger LOG = Logger.getLogger(NumberFormatExceptionUnitTest.class.getName());
 
     /* ---INTEGER FAIL CASES--- */
     @Test(expected = NumberFormatException.class)
