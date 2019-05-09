@@ -1,37 +1,29 @@
 package com.baeldung.loadresourceasstring;
 
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
-import org.springframework.util.FileCopyUtils;
-import org.springframework.util.StreamUtils;
+import org.springframework.core.io.ResourceLoader;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.nio.charset.StandardCharsets;
 
 @Configuration
 public class LoadResourceConfig {
-    @Value("classpath:resource.txt")
-    private Resource resource;
 
     @Bean
-    public String resourceStringUsingFileCopyUtils() throws IOException {
-        try (InputStream inputStream = resource.getInputStream();
-             Reader reader = new InputStreamReader(inputStream);
-        ) {
-            return FileCopyUtils.copyToString(reader);
-        }
+    public Converter<String, String> resourceReader() {
+        ResourceLoader resourceLoader = new DefaultResourceLoader();
+        return path -> {
+            Resource resource = resourceLoader.getResource(path);
+            return ResourceReader.asString(resource);
+        };
     }
 
     @Bean
-    public String resourceStringUsingStreamUtils() throws IOException {
-        try (InputStream inputStream = resource.getInputStream()) {
-            return StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
-        }
+    public String resourceString() {
+        return ResourceReader.readFileToString("resource.txt");
     }
+
 }

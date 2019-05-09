@@ -5,11 +5,18 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.util.FileCopyUtils;
 
+import java.io.InputStreamReader;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,25 +29,36 @@ public class LoadResourceAsStringIntegrationTest {
     private String resourceStringUsingSpel;
 
     @Autowired
-    @Qualifier("resourceStringUsingFileCopyUtils")
-    private String resourceStringUsingFileCopyUtils;
+    @Qualifier("resourceString")
+    private String resourceString;
 
-    @Autowired
-    @Qualifier("resourceStringUsingStreamUtils")
-    private String resourceStringUsingStreamUtils;
+
+    @Value("#{@resourceReader.convert(\"resource.txt\")}")
+    private String contents;
+
+    @Test
+    public void givenUsingResourceLoadAndFileCopyUtils_whenConvertingAResourceToAString_thenCorrect() {
+        ResourceLoader resourceLoader = new DefaultResourceLoader();
+        Resource resource = resourceLoader.getResource("classpath:resource.txt");
+        assertEquals(EXPECTED_RESOURCE_VALUE, ResourceReader.asString(resource));
+    }
+
+    @Test
+    public void givenUsingResourceStringBean_whenConvertingAResourceToAString_thenCorrect() {
+        assertEquals(EXPECTED_RESOURCE_VALUE, resourceString);
+    }
+
+    @Test
+    public void givenUsingConverter_whenConvertingAResourceToAString_thenCorrect() {
+        assertEquals(EXPECTED_RESOURCE_VALUE, contents);
+    }
 
     @Test
     public void givenUsingSpel_whenConvertingAResourceToAString_thenCorrect() {
         assertEquals(EXPECTED_RESOURCE_VALUE, resourceStringUsingSpel);
     }
 
-    @Test
-    public void givenUsingFileCopyUtils_whenConvertingAResourceToAString_thenCorrect() {
-        assertEquals(EXPECTED_RESOURCE_VALUE, resourceStringUsingFileCopyUtils);
-    }
 
-    @Test
-    public void givenUsingStreamUtils_whenConvertingAResourceToAString_thenCorrect() {
-        assertEquals(EXPECTED_RESOURCE_VALUE, resourceStringUsingStreamUtils);
-    }
+
+
 }
