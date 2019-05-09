@@ -12,6 +12,8 @@ import org.springframework.cloud.sleuth.zipkin.HttpZipkinSpanReporter;
 import org.springframework.cloud.sleuth.zipkin.ZipkinProperties;
 import org.springframework.cloud.sleuth.zipkin.ZipkinSpanReporter;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
 import zipkin.Span;
 
 @SpringBootApplication
@@ -42,7 +44,7 @@ public class BookServiceApplication {
                 InstanceInfo instance = eurekaClient.getNextServerFromEureka("zipkin", false);
                 if (!(baseUrl != null && instance.getHomePageUrl().equals(baseUrl))) {
                     baseUrl = instance.getHomePageUrl();
-                    delegate = new HttpZipkinSpanReporter(baseUrl, zipkinProperties.getFlushInterval(), zipkinProperties.getCompression().isEnabled(), spanMetricReporter);
+                    delegate = new HttpZipkinSpanReporter(new RestTemplate(), baseUrl, zipkinProperties.getFlushInterval(), spanMetricReporter);
                     if (!span.name.matches(skipPattern)) delegate.report(span);
                 }
             }

@@ -35,7 +35,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servletapi.version}</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <!-- Freemarker -->
@@ -57,7 +57,6 @@
     <properties>
         <spring.version>5.0.8.RELEASE</spring.version>
         <freemarker.version>2.3.28</freemarker.version>
-        <servletapi.version>3.1.0</servletapi.version>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
     </properties>
