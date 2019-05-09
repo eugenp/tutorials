@@ -45,7 +45,6 @@
 	</build>
 
 	<properties>
-		<java.version>1.8</java.version>
 		<tensorflow.version>1.12.0</tensorflow.version>
 		<junit.jupiter.version>5.4.0</junit.jupiter.version>
 	</properties>

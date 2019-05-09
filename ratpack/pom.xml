@@ -61,7 +61,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2database.version}</version>
+            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -90,7 +90,6 @@
         <ratpack.version>1.5.4</ratpack.version>
         <httpclient.version>4.5.3</httpclient.version>
         <httpcore.version>4.4.6</httpcore.version>
-        <h2database.version>1.4.193</h2database.version>
         <hystrix.version>1.5.12</hystrix.version>
     </properties>
 
