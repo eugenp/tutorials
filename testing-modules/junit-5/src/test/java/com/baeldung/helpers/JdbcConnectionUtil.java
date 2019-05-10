@@ -15,18 +15,37 @@ public class JdbcConnectionUtil {
             try {
                 Properties props = new Properties();
                 props.load(JdbcConnectionUtil.class.getResourceAsStream("jdbc.properties"));
-                Class.forName(props.getProperty("jdbc.driver"));
-                con = DriverManager.getConnection(props.getProperty("jdbc.url"), props.getProperty("jdbc.user"), props.getProperty("jdbc.password"));
+
+                String jdbcUrl = props.getProperty("jdbc.url");
+                String driver = props.getProperty("jdbc.driver");
+                String username = props.getProperty("jdbc.user");
+                String password = props.getProperty("jdbc.password");
+                con = getConnection(jdbcUrl, driver, username, password);
                 return con;
             } catch (IOException exc) {
                 exc.printStackTrace();
+            }
+
+            return null;
+        }
+        return con;
+    }
+
+    public static Connection getConnection(String jdbcUrl, String driver, String username, String password) {
+        if (con == null) {
+            try {
+                Class.forName(driver);
+                con = DriverManager.getConnection(jdbcUrl, username, password);
+                return con;
             } catch (ClassNotFoundException exc) {
                 exc.printStackTrace();
             } catch (SQLException exc) {
                 exc.printStackTrace();
             }
+
             return null;
         }
+
         return con;
     }
 }
