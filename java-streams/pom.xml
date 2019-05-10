@@ -18,12 +18,12 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-generator.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -106,7 +106,6 @@
 
     <properties>
         <!-- util -->
-        <jmh.version>1.21</jmh.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <vavr.version>0.9.0</vavr.version>
         <protonpack.version>1.15</protonpack.version>
