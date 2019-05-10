@@ -6,7 +6,7 @@
     <version>1.0</version>
     <name>design-patterns</name>
 	<packaging>jar</packaging>
-	
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>patterns</artifactId>
@@ -47,6 +47,27 @@
             <artifactId>grep4j</artifactId>
             <version>${grep4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback-classic.version}</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -57,5 +78,9 @@
         <javaee.version>8.0</javaee.version>
         <hibernate-core.version>5.2.16.Final</hibernate-core.version>
         <mysql-connector.version>6.0.6</mysql-connector.version>
+        <jackson.version>2.9.8</jackson.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <slf4j-api.version>1.7.26</slf4j-api.version>
+        <logback-classic.version>1.2.3</logback-classic.version>
     </properties>
 </project>
