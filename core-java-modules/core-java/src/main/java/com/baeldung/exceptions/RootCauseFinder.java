@@ -30,7 +30,7 @@ public class RootCauseFinder {
         private AgeCalculator() {
         }
 
-        public static int calculateAge(String birthDate) throws CalculationException {
+        public static int calculateAge(String birthDate) {
             if (birthDate == null || birthDate.isEmpty()) {
                 throw new IllegalArgumentException();
             }
@@ -44,7 +44,7 @@ public class RootCauseFinder {
             }
         }
 
-        private static LocalDate parseDate(String birthDateAsString) throws DateParseException {
+        private static LocalDate parseDate(String birthDateAsString) {
 
             LocalDate birthDate;
             try {
@@ -62,14 +62,14 @@ public class RootCauseFinder {
 
     }
 
-    static class CalculationException extends Exception {
+    static class CalculationException extends RuntimeException {
 
         CalculationException(DateParseException ex) {
             super(ex);
         }
     }
 
-    static class DateParseException extends Exception {
+    static class DateParseException extends RuntimeException {
 
         DateParseException(String input) {
             super(input);
