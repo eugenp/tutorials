@@ -11,7 +11,7 @@ public class JdbcConnectionUtil {
     private static Connection con;
 
     public static Connection getConnection() {
-        if (con == null) {
+        if (con == null || isClosed(con)) {
             try {
                 Properties props = new Properties();
                 props.load(JdbcConnectionUtil.class.getResourceAsStream("jdbc.properties"));
@@ -32,7 +32,7 @@ public class JdbcConnectionUtil {
     }
 
     public static Connection getConnection(String jdbcUrl, String driver, String username, String password) {
-        if (con == null) {
+        if (con == null || isClosed(con)) {
             try {
                 Class.forName(driver);
                 con = DriverManager.getConnection(jdbcUrl, username, password);
@@ -47,5 +47,13 @@ public class JdbcConnectionUtil {
         }
 
         return con;
+    }
+
+    private static boolean isClosed(Connection con) {
+        try {
+            return con.isClosed();
+        } catch (SQLException e) {
+            return true;
+        }
     }
 }
