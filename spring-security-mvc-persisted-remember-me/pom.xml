@@ -137,7 +137,7 @@
         <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<version>1.5.10.RELEASE</version>
+			<version>${spring-boot.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -198,7 +198,6 @@
         <org.springframework.security.version>4.2.6.RELEASE</org.springframework.security.version>
 
         <!-- persistence -->
-        <h2.version>1.4.193</h2.version>
         <postgresql.version>9.4.1212</postgresql.version>
 
         <!-- various -->
@@ -211,7 +210,7 @@
         <!-- Maven plugins -->
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-
+        <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
     </properties>
 
 </project>

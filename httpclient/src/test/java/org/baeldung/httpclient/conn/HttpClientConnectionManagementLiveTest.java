@@ -327,7 +327,8 @@ public class HttpClientConnectionManagementLiveTest {
     // 8.1
     public final void whenHttpClientChecksStaleConns_thenNoExceptions() {
         poolingConnManager = new PoolingHttpClientConnectionManager();
-        client = HttpClients.custom().setDefaultRequestConfig(RequestConfig.custom().setStaleConnectionCheckEnabled(true).build()).setConnectionManager(poolingConnManager).build();
+        poolingConnManager.setValidateAfterInactivity(1000);
+        client = HttpClients.custom().setDefaultRequestConfig(RequestConfig.custom().build()).setConnectionManager(poolingConnManager).build();
     }
 
     @Test

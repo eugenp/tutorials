@@ -94,7 +94,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet.version}</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -171,8 +171,6 @@
 
         <!-- various -->
         <codahale.metrics.version>3.0.2</codahale.metrics.version>
-        <jstl.version>1.2</jstl.version>
-        <javax.servlet.version>3.1.0</javax.servlet.version>
 
         <!-- Maven plugins -->
         <maven-war-plugin.version>2.6</maven-war-plugin.version>

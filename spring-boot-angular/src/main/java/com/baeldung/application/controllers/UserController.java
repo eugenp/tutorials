@@ -1,6 +1,6 @@
 package com.baeldung.application.controllers;
 
-import com.application.entities.User;
+import com.baeldung.application.entities.User;
 import com.baeldung.application.repositories.UserRepository;
 import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;

@@ -5,3 +5,4 @@
 - [Ratpack Integration with Spring Boot](http://www.baeldung.com/ratpack-spring-boot)
 - [Ratpack with Hystrix](http://www.baeldung.com/ratpack-hystrix)
 - [Ratpack HTTP Client](https://www.baeldung.com/ratpack-http-client)
+- [Ratpack with RxJava](https://www.baeldung.com/ratpack-rxjava)

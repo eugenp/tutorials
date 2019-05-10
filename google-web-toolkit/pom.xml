@@ -120,7 +120,6 @@
 		<!-- Don't let your Mac use a crazy non-standard encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<junit.version>4.11</junit.version>
 		<gwt.version>2.8.2</gwt.version>
 	</properties>
 	

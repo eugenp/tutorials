@@ -6,6 +6,12 @@
     <version>0.0.1</version>
     <name>apache-meecrowave</name>
     <description>A sample REST API application with Meecrowave</description>
+    
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.meecrowave/meecrowave-core -->
@@ -54,7 +60,6 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-		<junit.version>4.10</junit.version>
 		<meecrowave-junit.version>1.2.0</meecrowave-junit.version>
 		<okhttp.version>3.10.0</okhttp.version>
 		<meecrowave-jpa.version>1.2.1</meecrowave-jpa.version>
