@@ -41,7 +41,6 @@
     </dependencies>
 
     <properties>
-        <java.version>1.8</java.version>
         <vavr.version>0.9.1</vavr.version>
         <awaitility.version>3.0.0</awaitility.version>
     </properties>
