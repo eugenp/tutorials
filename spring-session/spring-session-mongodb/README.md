@@ -1,4 +1,4 @@
-This module is for Spring Session with JDBC tutorial.
-Jira BAEL-1911
+This module is for Spring Session with MONGO DB tutorial.
+Jira BAEL-2886
 
 ### Relevant Articles: 
