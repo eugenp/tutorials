@@ -119,7 +119,7 @@
         <mapstruct-jdk8.version>1.2.0.Final</mapstruct-jdk8.version>
         <modelmapper.version>1.1.0</modelmapper.version>
         <jmapper.version>1.6.0.1</jmapper.version>
-        <bean-utils.version>1.2.4</bean-utils.version>
+        <bean-utils.version>1.3.1</bean-utils.version>
         <jmh.version>1.20</jmh.version>
         <mapstruct-processor.version>1.2.0.Final</mapstruct-processor.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
