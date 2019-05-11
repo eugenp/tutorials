@@ -4,7 +4,6 @@
 
 ### Relevant Articles: 
 - [Guide to Hibernate 4 with Spring](http://www.baeldung.com/hibernate-4-spring)
-- [The DAO with Spring and Hibernate](http://www.baeldung.com/persistence-layer-with-spring-and-hibernate)
 - [Hibernate Pagination](http://www.baeldung.com/hibernate-pagination)
 - [Sorting with Hibernate](http://www.baeldung.com/hibernate-sort)
 - [Stored Procedures with Hibernate](http://www.baeldung.com/stored-procedures-with-hibernate-tutorial)

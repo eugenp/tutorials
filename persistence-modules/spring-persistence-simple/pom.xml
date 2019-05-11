@@ -32,7 +32,16 @@
         </dependency>
 
         <!-- persistence -->
-
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>${jta.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
@@ -53,6 +62,12 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>${tomcat-dbcp.version}</version>
         </dependency>
 
         <!-- utils -->
@@ -104,6 +119,8 @@
         <hibernate.version>5.4.2.Final</hibernate.version>
         <mysql-connector-java.version>6.0.6</mysql-connector-java.version>
         <spring-data-jpa.version>2.1.6.RELEASE</spring-data-jpa.version>
+        <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
+        <jta.version>1.1</jta.version>
 
         <!-- util -->
         <guava.version>21.0</guava.version>
