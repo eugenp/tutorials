@@ -3,10 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>junit-5-configuration</artifactId>
+    <artifactId>junit-5-basics</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>junit-5-configuration</name>
-    <description>Intro to JUnit 5 configuration</description>
+    <name>junit-5-basics</name>
+    <description>Intro to JUnit 5</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
