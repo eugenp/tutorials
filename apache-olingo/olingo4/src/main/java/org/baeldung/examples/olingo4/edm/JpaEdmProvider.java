@@ -192,7 +192,7 @@ public class JpaEdmProvider extends CsdlAbstractEdmProvider {
         List<CsdlProperty> properties = et.getDeclaredSingularAttributes()
             .stream()
             .filter(attr -> attr.getPersistentAttributeType() == PersistentAttributeType.BASIC)
-            .map(attr -> buildBasicAttribute(et, attr))
+            .map(attr -> buildBasicAttribute(attr))
             .collect(Collectors.toList());
 
         result.setProperties(properties);
@@ -201,24 +201,25 @@ public class JpaEdmProvider extends CsdlAbstractEdmProvider {
         List<CsdlPropertyRef> ids = et.getDeclaredSingularAttributes()
             .stream()
             .filter(attr -> attr.getPersistentAttributeType() == PersistentAttributeType.BASIC && attr.isId())
-            .map(attr -> buildRefAttribute(et, attr))
+            .map(attr -> buildRefAttribute(attr))
             .collect(Collectors.toList());
 
         result.setKey(ids);
 
         // Process 1:N navs
         List<CsdlNavigationProperty> navs = et.getDeclaredPluralAttributes()
-            .stream()
-            .map(attr -> buildNavAttribute(et, attr))
-            .collect(Collectors.toList());
+          .stream()
+          .filter(attr -> attr.isAssociation())
+          .map(attr -> buildNavAttribute(attr))
+          .collect(Collectors.toList());
         result.setNavigationProperties(navs);
         
         // Process N:1 navs
         List<CsdlNavigationProperty> navs2 = et.getDeclaredSingularAttributes()
-            .stream()
-            .filter(attr -> attr.getPersistentAttributeType() == PersistentAttributeType.MANY_TO_ONE)
-            .map(attr -> buildNavAttribute(et, attr))
-            .collect(Collectors.toList());
+          .stream()
+          .filter(attr -> attr.getPersistentAttributeType() == PersistentAttributeType.MANY_TO_ONE)
+          .map(attr -> buildMany2OneNavAttribute(attr))
+          .collect(Collectors.toList());
 
         result.getNavigationProperties().addAll(navs2);
         
@@ -226,42 +227,40 @@ public class JpaEdmProvider extends CsdlAbstractEdmProvider {
         return result;
     }
 
-    private CsdlProperty buildBasicAttribute(EntityType<?> et, SingularAttribute<?, ?> attr) {
+    private CsdlProperty buildBasicAttribute(SingularAttribute<?, ?> attr) {
 
         CsdlProperty p = new CsdlProperty().setName(attr.getName())
-            .setType(typeMapper.java2edm(attr.getJavaType())
-                .getFullQualifiedName())
-            .setNullable(et.getDeclaredSingularAttribute(attr.getName())
-                .isOptional());
+          .setType(typeMapper.java2edm(attr.getJavaType())
+            .getFullQualifiedName())
+          .setNullable(attr.isOptional());
 
         return p;
     }
 
-    private CsdlPropertyRef buildRefAttribute(EntityType<?> et, SingularAttribute<?, ?> attr) {
+    private CsdlPropertyRef buildRefAttribute(SingularAttribute<?, ?> attr) {
 
         CsdlPropertyRef p = new CsdlPropertyRef().setName(attr.getName());
-
         return p;
     }
 
     // Build NavProperty for 1:N or M:N associations
-    private CsdlNavigationProperty buildNavAttribute(EntityType<?> et, PluralAttribute<?, ?, ?> attr) {
+    private CsdlNavigationProperty buildNavAttribute(PluralAttribute<?, ?, ?> attr) {
 
         CsdlNavigationProperty p = new CsdlNavigationProperty().setName(attr.getName())
-            .setType(new FullQualifiedName(NAMESPACE, attr.getBindableJavaType().getSimpleName()))
-            .setCollection(true)
-            .setNullable(false); 
+          .setType(new FullQualifiedName(NAMESPACE, attr.getBindableJavaType().getSimpleName()))
+          .setCollection(true)
+          .setNullable(false); 
 
         return p;
     }
 
     // Build NavProperty for N:1 associations
-    private CsdlNavigationProperty buildNavAttribute(EntityType<?> et, SingularAttribute<?, ?> attr) {
+    private CsdlNavigationProperty buildMany2OneNavAttribute(SingularAttribute<?, ?> attr) {
 
         CsdlNavigationProperty p = new CsdlNavigationProperty().setName(attr.getName())
-            .setType(new FullQualifiedName(NAMESPACE, attr.getBindableJavaType().getSimpleName()))
-            .setCollection(false)
-            .setNullable(attr.isOptional());
+          .setType(new FullQualifiedName(NAMESPACE, attr.getBindableJavaType().getSimpleName()))
+          .setCollection(false)
+          .setNullable(attr.isOptional());
 
         return p;
     }

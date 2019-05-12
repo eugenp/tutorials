@@ -70,16 +70,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.olingo</groupId>
-			<artifactId>olingo-odata2-api</artifactId>
-			<version>${olingo2.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.olingo</groupId>
-			<artifactId>olingo-odata2-jpa-processor-api</artifactId>
-			<version>${olingo2.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.olingo</groupId>
 			<artifactId>olingo-odata2-jpa-processor-core</artifactId>
 			<version>${olingo2.version}</version>
 		</dependency>
