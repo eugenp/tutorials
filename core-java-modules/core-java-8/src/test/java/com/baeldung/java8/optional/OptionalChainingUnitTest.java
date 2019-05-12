@@ -101,7 +101,7 @@ public class OptionalChainingUnitTest {
     }
 
     private Optional<String> createOptional(String input) {
-        if (input == null || input == "" || input == "empty") {
+        if (input == null || "".equals(input) || "empty".equals(input)) {
             return Optional.empty();
         }
 
