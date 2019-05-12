@@ -10,7 +10,7 @@ public interface IFooDao {
 
     List<Foo> findAll();
 
-    void create(Foo entity);
+    Foo create(Foo entity);
 
     Foo update(Foo entity);
 
