@@ -14,7 +14,7 @@ public class StringAPITest {
 
         String postIndent = multilineStr.indent(3);
 
-        assertThat(outputStr, equalTo(postIndent));
+        assertThat(postIndent, equalTo(outputStr));
     }
 
     @Test
@@ -24,20 +24,20 @@ public class StringAPITest {
 
         String postIndent = multilineStr.indent(-2);
 
-        assertThat(outputStr, equalTo(postIndent));
+        assertThat(postIndent, equalTo(outputStr));
     }
 
     @Test
     public void whenTransformUsingLamda_thenReturnTransformedString() {
         String result = "hello".transform(input -> input + " world!");
 
-        assertThat("hello world!", equalTo(result));
+        assertThat(result, equalTo("hello world!"));
     }
 
     @Test
     public void whenTransformUsingParseInt_thenReturnInt() {
         int result = "42".transform(Integer::parseInt);
 
-        assertThat(42, equalTo(result));
+        assertThat(result, equalTo(42));
     }
 }
