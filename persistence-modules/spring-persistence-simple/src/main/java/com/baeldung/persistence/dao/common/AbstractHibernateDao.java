@@ -28,9 +28,10 @@ public abstract class AbstractHibernateDao<T extends Serializable> extends Abstr
     }
 
     @Override
-    public void create(final T entity) {
+    public T create(final T entity) {
         Preconditions.checkNotNull(entity);
         getCurrentSession().saveOrUpdate(entity);
+        return entity;
     }
 
     @Override
