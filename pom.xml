@@ -608,6 +608,7 @@
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-security</module>
                 <module>spring-5-security-oauth</module>
+                <module>spring-5-security-cognito</module>
 
                 <module>spring-activiti</module>
                 <module>spring-akka</module>
@@ -634,7 +635,6 @@
                 <module>spring-boot-custom-starter</module>
                 <module>spring-boot-disable-console-logging</module>
                 <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
-                <module>spring-boot-exceptions</module>
                 <module>spring-boot-jasypt</module>
                 <module>spring-boot-keycloak</module>
                 <module>spring-boot-logging-log4j2</module>
@@ -819,6 +819,7 @@
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-security</module>
 				<module>spring-5-security-oauth</module>
+				<module>spring-5-security-cognito</module>
 				<module>spring-activiti</module>
 				<module>spring-akka</module>
 				<module>spring-all</module>
@@ -832,7 +833,6 @@
 				<module>spring-boot-camel</module>
 				<module>spring-boot-client</module>
 				<module>spring-boot-custom-starter</module>
-                                <module>spring-boot-exceptions</module>
 		 		<module>greeter-spring-boot-autoconfigure</module>
 				<module>greeter-spring-boot-sample-app</module>
 				<module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
@@ -1271,7 +1271,7 @@
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-security</module>
                 <module>spring-5-security-oauth</module>
-
+                <module>spring-5-security-cognito</module>
                 <module>spring-activiti</module>
                 <module>spring-akka</module>
                 <module>spring-all</module>
@@ -1295,7 +1295,6 @@
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-custom-starter</module>
                 <module>spring-boot-disable-console-logging</module>
-                <module>spring-boot-exceptions</module>
                 <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
                 <module>spring-boot-jasypt</module>
                 <module>spring-boot-keycloak</module>
