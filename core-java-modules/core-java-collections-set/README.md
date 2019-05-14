@@ -9,3 +9,4 @@
 - [A Guide to TreeSet in Java](http://www.baeldung.com/java-tree-set)
 - [Initializing HashSet at the Time of Construction](http://www.baeldung.com/java-initialize-hashset)
 - [Guide to EnumSet](https://www.baeldung.com/java-enumset)
+- [Set Operations in Java](https://www.baeldung.com/java-set-operations)

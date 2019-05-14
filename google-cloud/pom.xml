@@ -30,7 +30,6 @@
     </dependencies>
 
     <properties>
-        <lombok.version>1.16.18</lombok.version>
         <google-cloud-storage.version>1.16.0</google-cloud-storage.version>
     </properties>
 
