@@ -1,4 +1,4 @@
-package springsessionmongodb;
+package com.baeldung.springsessionmongodb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
