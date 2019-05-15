@@ -5,8 +5,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>server</name>
+    <packaging>jar</packaging>
     <description>Spring Security Angular</description>
 
     <parent>
