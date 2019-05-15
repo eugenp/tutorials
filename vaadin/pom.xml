@@ -155,7 +155,6 @@
     </profiles>
 
     <properties>
-        <servlet.version>3.0.1</servlet.version>
         <vaadin.version>10.0.11</vaadin.version>
         <vaadin.plugin.version>10.0.11</vaadin.plugin.version>
         <vaadin-spring-boot-starter.version>10.0.11</vaadin-spring-boot-starter.version>

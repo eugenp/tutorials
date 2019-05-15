@@ -30,7 +30,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2database.version}</version>
+            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -73,7 +73,6 @@
         <postgresql.version>42.2.5.jre7</postgresql.version>
         <mysql-connector.version>8.0.15</mysql-connector.version>
         <assertj-core.version>3.10.0</assertj-core.version>
-        <h2database.version>1.4.197</h2database.version>
         <commons-dbcp2.version>2.4.0</commons-dbcp2.version>
         <HikariCP.version>3.2.0</HikariCP.version>
         <c3p0.version>0.9.5.2</c3p0.version>
