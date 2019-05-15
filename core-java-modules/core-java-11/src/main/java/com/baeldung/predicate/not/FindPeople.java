@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import static java.util.function.Predicate.*;
+
 public class FindPeople {
     public static void main(String[] args) {
         List<Person> people = List.of(
@@ -25,7 +27,7 @@ public class FindPeople {
           .collect(Collectors.toList());
 
         people.stream()
-          .filter(Predicate.not(Person::isAdult))
+          .filter(not(Person::isAdult))
           .collect(Collectors.toList());
     }
 }
