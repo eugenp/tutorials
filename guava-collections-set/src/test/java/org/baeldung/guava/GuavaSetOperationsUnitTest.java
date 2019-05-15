@@ -17,7 +17,7 @@ import static org.junit.Assert.assertTrue;
 public class GuavaSetOperationsUnitTest {
 
     @Test
-    public void whenCalculateUnionOfSets_thenCorrect() {
+    public void whenCalculatingUnionOfSets_thenCorrect() {
         final Set<Character> first = ImmutableSet.of('a', 'b', 'c');
         final Set<Character> second = ImmutableSet.of('b', 'c', 'd');
 
@@ -26,7 +26,7 @@ public class GuavaSetOperationsUnitTest {
     }
 
     @Test
-    public void whenCalculateSetsProduct_thenCorrect() {
+    public void whenCalculatingCartesianProductOfSets_thenCorrect() {
         final Set<Character> first = ImmutableSet.of('a', 'b');
         final Set<Character> second = ImmutableSet.of('c', 'd');
         final Set<List<Character>> result = Sets.cartesianProduct(ImmutableList.of(first, second));
@@ -75,7 +75,7 @@ public class GuavaSetOperationsUnitTest {
     }
 
     @Test
-    public void whenCreateRangeOfIntegersSet_thenCreated() {
+    public void whenCreatingRangeOfIntegersSet_thenCreated() {
         final int start = 10;
         final int end = 30;
         final ContiguousSet<Integer> set = ContiguousSet.create(Range.closed(start, end), DiscreteDomain.integers());
@@ -86,7 +86,7 @@ public class GuavaSetOperationsUnitTest {
     }
 
     @Test
-    public void whenCreateRangeSet_thenCreated() {
+    public void whenUsingRangeSet_thenCorrect() {
         final RangeSet<Integer> rangeSet = TreeRangeSet.create();
         rangeSet.add(Range.closed(1, 10));
         rangeSet.add(Range.closed(12, 15));
@@ -115,7 +115,7 @@ public class GuavaSetOperationsUnitTest {
     }
 
     @Test
-    public void whenGetTopUsingMultiSet_thenCorrect() {
+    public void whenGetTopOcurringElementsWithMultiSet_thenCorrect() {
         final Multiset<String> names = HashMultiset.create();
         names.add("John");
         names.add("Adam", 5);
