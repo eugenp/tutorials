@@ -5,10 +5,7 @@
  */
 package com.baeldung.hexagonal.infastructure;
 
-/**
- *
- * @author cleopatradouglas
- */
+
 public class BattutaConfig {
      public static final String URL = "http://battuta.medunes.net/api/";
     

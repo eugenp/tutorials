@@ -9,10 +9,7 @@ import com.baeldung.hexagonal.infastructure.WorldListServices;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author cleopatradouglas
- */
+
 public class GetCountries {
     public String doExposeGetCountriesPort(String key)  {
 

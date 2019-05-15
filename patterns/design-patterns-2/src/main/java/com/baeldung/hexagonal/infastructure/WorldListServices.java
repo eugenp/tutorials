@@ -16,10 +16,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 
-/**
- *
- * @author cleopatradouglas
- */
+
 public class WorldListServices {
     public String doGetCountriesAdapter(Map<String, String> sParaTemp) {
         StringBuilder result = new StringBuilder();

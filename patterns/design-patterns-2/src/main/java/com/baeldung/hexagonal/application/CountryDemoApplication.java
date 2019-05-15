@@ -7,10 +7,7 @@ package com.baeldung.hexagonal.application;
 
 import com.baeldung.hexagonal.domain.GetCountries;
 
-/**
- *
- * @author cleopatradouglas
- */
+
 public class CountryDemoApplication {
     
     public String getCountriesService(String key) {
