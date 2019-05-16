@@ -8,7 +8,7 @@
 
 #### Running the Integration Tests
 
-To run the Integration Tests, we need to have an AWS account and have API keys generated for programmatic access. Edit 
+To run the Live Tests, we need to have an AWS account and have API keys generated for programmatic access. Edit 
 the `application.properties` file to add the following properties:
 
 ```

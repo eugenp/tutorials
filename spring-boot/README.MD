@@ -35,5 +35,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Display Auto-Configuration Report in Spring Boot](https://www.baeldung.com/spring-boot-auto-configuration-report)
 - [Injecting Git Information Into Spring](https://www.baeldung.com/spring-git-information)
 - [Validation in Spring Boot](https://www.baeldung.com/spring-boot-bean-validation)
-- [Entity To DTO Conversion for a Spring REST API](https://www.baeldung.com/entity-to-and-from-dto-for-a-java-spring-application)
 - [Guide to Creating and Running a Jar File in Java](https://www.baeldung.com/java-create-jar)
+- [Entity To DTO Conversion for a Spring REST API](https://www.baeldung.com/entity-to-and-from-dto-for-a-java-spring-application)
