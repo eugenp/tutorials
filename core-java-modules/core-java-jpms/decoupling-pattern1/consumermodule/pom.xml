@@ -7,7 +7,7 @@
     
     <parent>
         <groupId>com.baeldung.decoupling-pattern1</groupId>
-        <artifactId>com.baeldung.decoupling-pattern1</artifactId>
+        <artifactId>decoupling-pattern1</artifactId>
         <version>1.0</version>
     </parent>
     
