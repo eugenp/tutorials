@@ -1,13 +1,12 @@
 package org.baeldung.guava;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-import org.junit.Test;
 import com.google.common.collect.ImmutableRangeSet;
 import com.google.common.collect.Range;
 import com.google.common.collect.RangeSet;
 import com.google.common.collect.TreeRangeSet;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class GuavaRangeSetUnitTest {
 
@@ -122,6 +121,5 @@ public class GuavaRangeSetUnitTest {
 	    .add(Range.closed(0, 2))
 	    .add(Range.closed(3, 5))
 	    .add(Range.closed(5, 8)).build();
-
     }
 }

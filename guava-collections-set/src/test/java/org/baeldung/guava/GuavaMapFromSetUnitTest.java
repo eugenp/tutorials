@@ -1,15 +1,14 @@
 package org.baeldung.guava;
 
-import static org.junit.Assert.assertTrue;
+import com.google.common.base.Function;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.junit.Test;
-
-import com.google.common.base.Function;
+import static org.junit.Assert.assertTrue;
 
 public class GuavaMapFromSetUnitTest {
 
