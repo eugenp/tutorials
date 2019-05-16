@@ -26,9 +26,6 @@ public class SpringBootMvcFnApplication {
         SpringApplication.run(SpringBootMvcFnApplication.class, args);
     }
 
-    // TODO should i show the other route function as well
-    // What about setting properties on request and respones
-    // Model view dont know how that will even work
     @Bean
     RouterFunction<ServerResponse> productListing(ProductController pc, ProductService ps) {
         return pc.productListing(ps);
