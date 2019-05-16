@@ -35,7 +35,7 @@
         <module>querydsl</module>
         <module>redis</module>
         <module>solr</module>
-        <module>spring-boot-h2/spring-boot-h2-database</module>
+        <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-mongodb</module>
         <module>spring-data-cassandra</module>
@@ -55,5 +55,6 @@
         <module>spring-hibernate-5</module>
         <module>spring-hibernate4</module>
         <module>spring-jpa</module>
+        <module>spring-persistence-simple</module>
     </modules>
 </project>
