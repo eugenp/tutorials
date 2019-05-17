@@ -6,7 +6,7 @@
 - [A Guide to JUnit 5 Extensions](http://www.baeldung.com/junit-5-extensions)
 - [Inject Parameters into JUnit Jupiter Unit Tests](http://www.baeldung.com/junit-5-parameters)
 - [Mockito and JUnit 5 – Using ExtendWith](http://www.baeldung.com/mockito-junit-5-extension)
-- [JUnit 5 – @RunWith](http://www.baeldung.com/junit-5-runwith)
+- [JUnit5 @RunWith](http://www.baeldung.com/junit-5-runwith)
 - [JUnit 5 @Test Annotation](http://www.baeldung.com/junit-5-test-annotation)
 - [Assert an Exception is Thrown in JUnit 4 and 5](http://www.baeldung.com/junit-assert-exception)
 - [@Before vs @BeforeClass vs @BeforeEach vs @BeforeAll](http://www.baeldung.com/junit-before-beforeclass-beforeeach-beforeall)

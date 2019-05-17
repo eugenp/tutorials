@@ -19,7 +19,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Introduction to HtmlUnit](http://www.baeldung.com/htmlunit)
 - [Spring @RequestMapping New Shortcut Annotations](http://www.baeldung.com/spring-new-requestmapping-shortcuts)
 - [Guide to Spring Handler Mappings](http://www.baeldung.com/spring-handler-mappings)
-- [Uploading and Displaying Excel Files with Spring MVC](http://www.baeldung.com/spring-mvc-excel-files)
+- [Upload and Display Excel Files with Spring MVC](http://www.baeldung.com/spring-mvc-excel-files)
 - [Spring MVC Custom Validation](http://www.baeldung.com/spring-mvc-custom-validator)
 - [web.xml vs Initializer with Spring](http://www.baeldung.com/spring-xml-vs-java-config)
 - [The HttpMediaTypeNotAcceptableException in Spring MVC](http://www.baeldung.com/spring-httpmediatypenotacceptable)
@@ -31,3 +31,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Using Spring @ResponseStatus to Set HTTP Status Code](http://www.baeldung.com/spring-response-status)
 - [Spring MVC Tutorial](https://www.baeldung.com/spring-mvc-tutorial)
 - [Working with Date Parameters in Spring](https://www.baeldung.com/spring-date-parameters)
+- [A Java Web Application Without a web.xml](https://www.baeldung.com/java-web-app-without-web-xml)

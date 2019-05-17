@@ -55,6 +55,10 @@
 		</dependency>
 
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -65,9 +69,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
 
 </project>

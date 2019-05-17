@@ -49,7 +49,6 @@
 
     <properties>
         <hibernate.version>5.4.0.Final</hibernate.version>
-        <h2.version>1.4.197</h2.version>
         <eclipselink.version>2.7.4-RC1</eclipselink.version>
         <postgres.version>42.2.5</postgres.version>
     </properties>
