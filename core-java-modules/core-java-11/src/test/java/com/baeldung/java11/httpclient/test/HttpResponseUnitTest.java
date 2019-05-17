@@ -14,7 +14,7 @@ import java.net.http.HttpResponse;
 
 import org.junit.Test;
 
-public class HttpResponseTest {
+public class HttpResponseUnitTest {
 
     @Test
     public void shouldReturnStatusOKWhenSendGetRequest() throws IOException, InterruptedException, URISyntaxException {

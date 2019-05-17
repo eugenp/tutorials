@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-public class HttpClientTest {
+public class HttpClientUnitTest {
 
     @Test
     public void shouldReturnSampleDataContentWhenConnectViaSystemProxy() throws IOException, InterruptedException, URISyntaxException {
