@@ -18,12 +18,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>${org.springframework.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -108,12 +102,6 @@
             <artifactId>querydsl-apt</artifactId>
             <version>${querydsl.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>${hsqldb.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -156,7 +144,6 @@
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <querydsl.version>4.2.1</querydsl.version>
-        <hsqldb.version>2.4.1</hsqldb.version>
 
         <!-- util -->
         <guava.version>21.0</guava.version>
