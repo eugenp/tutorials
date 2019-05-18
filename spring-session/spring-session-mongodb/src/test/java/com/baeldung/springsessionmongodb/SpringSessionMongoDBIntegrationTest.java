@@ -35,8 +35,8 @@ public class SpringSessionMongoDBIntegrationTest {
                 repository.findById(getSessionId(set_cookie)).getAttribute("count").toString());
     }
 
-    private String getSessionId(String set_cookie) {
-        return new String(Base64.getDecoder().decode(set_cookie.split(";")[0].split("=")[1]));
+    private String getSessionId(String cookie) {
+        return new String(Base64.getDecoder().decode(cookie.split(";")[0].split("=")[1]));
     }
 
 }
