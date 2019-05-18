@@ -4,8 +4,6 @@
 
 
 ### Relevant Articles: 
-- [A Guide to JPA with Spring](https://www.baeldung.com/the-persistence-layer-with-spring-and-jpa)
-- [Transactions with Spring and JPA](https://www.baeldung.com/transaction-configuration-with-jpa-and-spring)
 - [The DAO with JPA and Spring](http://www.baeldung.com/spring-dao-jpa)
 - [JPA Pagination](http://www.baeldung.com/jpa-pagination)
 - [Sorting with JPA](http://www.baeldung.com/jpa-sort)

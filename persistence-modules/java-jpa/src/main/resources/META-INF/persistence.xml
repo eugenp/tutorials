@@ -26,6 +26,8 @@
     <persistence-unit name="jpa-h2">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.baeldung.jpa.stringcast.Message</class>
+        <class>com.baeldung.jpa.enums.Article</class>
+        <class>com.baeldung.jpa.enums.CategoryConverter</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
@@ -87,7 +89,7 @@
             <property name="eclipselink.logging.parameters" value="true"/>
         </properties>
     </persistence-unit>
-    
+
     <persistence-unit name="jpa-h2-criteria">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.baeldung.jpa.criteria.entity.Item</class>
@@ -108,7 +110,7 @@
             <property name="javax.persistence.sql-load-script-source" value="item.sql"/>
         </properties>
     </persistence-unit>
-        
+
     <persistence-unit name="jpa-query-types">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.baeldung.jpa.querytypes.UserEntity</class>
@@ -130,4 +132,35 @@
         </properties>
     </persistence-unit>
 
+    <persistence-unit name="entity-default-values">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.baeldung.jpa.defaultvalues.User</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test" />
+            <property name="javax.persistence.jdbc.user" value="sa" />
+            <property name="javax.persistence.jdbc.password" value="" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+            <property name="show_sql" value="true" />
+            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="jpa-entity-definition">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.baeldung.jpa.entity.Student</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test" />
+            <property name="javax.persistence.jdbc.user" value="sa" />
+            <property name="javax.persistence.jdbc.password" value="" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+            <property name="show_sql" value="true" />
+            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
+        </properties>
+    </persistence-unit>
 </persistence>

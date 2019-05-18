@@ -89,5 +89,9 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    
+    <properties>
+    	<start-class>com.baeldung.boot.Application</start-class>
+    </properties>
 
 </project>
