@@ -57,7 +57,7 @@ public class Delay {
 
     private static void delayedServiceTask(Integer delayInSeconds) {
 
-        final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+        ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 
         executorService.schedule(Delay::someTask1, delayInSeconds, TimeUnit.SECONDS);
 
@@ -65,7 +65,7 @@ public class Delay {
 
     private static void fixedRateServiceTask(Integer delayInSeconds) {
 
-        final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+        ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 
         ScheduledFuture<?> sf = executorService.scheduleAtFixedRate(Delay::someTask2, 0, delayInSeconds,
                 TimeUnit.SECONDS);
