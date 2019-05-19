@@ -1,4 +1,4 @@
-package hexagonal.domain;
+package com.baeldung.hexagonal.domain;
 
 public class User {
     private String name;

@@ -1,7 +1,7 @@
-package hexagonal.adapter.persistence;
+package com.baeldung.hexagonal.adapter.persistence;
 
-import hexagonal.application.port.output.FindUser;
-import hexagonal.domain.User;
+import com.baeldung.hexagonal.application.port.output.FindUser;
+import com.baeldung.hexagonal.domain.User;
 
 public class UserPersistenceAdapter implements FindUser {
 

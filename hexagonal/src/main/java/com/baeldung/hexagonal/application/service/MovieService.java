@@ -1,10 +1,10 @@
-package hexagonal.application.service;
+package com.baeldung.hexagonal.application.service;
 
-import hexagonal.application.port.input.SuggestMovies;
-import hexagonal.application.port.output.FindMovies;
-import hexagonal.application.port.output.FindUser;
-import hexagonal.domain.Movie;
-import hexagonal.domain.User;
+import com.baeldung.hexagonal.application.port.input.SuggestMovies;
+import com.baeldung.hexagonal.application.port.output.FindMovies;
+import com.baeldung.hexagonal.application.port.output.FindUser;
+import com.baeldung.hexagonal.domain.Movie;
+import com.baeldung.hexagonal.domain.User;
 
 import java.util.Set;
 

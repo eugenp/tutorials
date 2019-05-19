@@ -1,6 +1,6 @@
-package hexagonal.adapter.persistence;
+package com.baeldung.hexagonal.adapter.persistence;
 
-import hexagonal.domain.Movie;
+import com.baeldung.hexagonal.domain.Movie;
 
 import java.util.Set;
 

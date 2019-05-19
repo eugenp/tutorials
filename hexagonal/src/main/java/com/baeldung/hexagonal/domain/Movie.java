@@ -1,4 +1,4 @@
-package hexagonal.domain;
+package com.baeldung.hexagonal.domain;
 
 public class Movie {
     private String title;

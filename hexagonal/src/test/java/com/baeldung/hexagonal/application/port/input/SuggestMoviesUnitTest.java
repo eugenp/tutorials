@@ -1,11 +1,10 @@
 package com.baeldung.hexagonal.application.port.input;
 
-import hexagonal.application.port.input.SuggestMovies;
-import hexagonal.application.port.output.FindMovies;
-import hexagonal.application.port.output.FindUser;
-import hexagonal.application.service.MovieService;
-import hexagonal.domain.Movie;
-import hexagonal.domain.User;
+import com.baeldung.hexagonal.application.port.output.FindMovies;
+import com.baeldung.hexagonal.application.port.output.FindUser;
+import com.baeldung.hexagonal.application.service.MovieService;
+import com.baeldung.hexagonal.domain.Movie;
+import com.baeldung.hexagonal.domain.User;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;

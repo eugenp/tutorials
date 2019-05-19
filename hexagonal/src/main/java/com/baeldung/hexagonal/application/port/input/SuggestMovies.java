@@ -1,6 +1,6 @@
-package hexagonal.application.port.input;
+package com.baeldung.hexagonal.application.port.input;
 
-import hexagonal.domain.Movie;
+import com.baeldung.hexagonal.domain.Movie;
 
 import java.util.Set;
 

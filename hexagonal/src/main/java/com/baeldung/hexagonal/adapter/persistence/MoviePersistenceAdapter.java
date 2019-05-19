@@ -1,7 +1,7 @@
-package hexagonal.adapter.persistence;
+package com.baeldung.hexagonal.adapter.persistence;
 
-import hexagonal.application.port.output.FindMovies;
-import hexagonal.domain.Movie;
+import com.baeldung.hexagonal.application.port.output.FindMovies;
+import com.baeldung.hexagonal.domain.Movie;
 
 import java.util.Set;
 
