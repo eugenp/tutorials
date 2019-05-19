@@ -1,31 +1,39 @@
 package com.baeldung.multipledb;
 
-import com.google.common.base.Preconditions;
+import java.util.HashMap;
+
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import javax.sql.DataSource;
-import java.util.HashMap;
-
-@Configuration
-@PropertySource({"classpath:persistence-multiple-db.properties"})
+/**
+ * By default, the persistence-multiple-db.properties file is read for 
+ * non auto configuration in PersistenceProductConfiguration. 
+ * <p>
+ * If we need to use persistence-multiple-db-boot.properties and auto configuration 
+ * then uncomment the below @Configuration class and comment out PersistenceProductConfiguration. 
+ */
+//@Configuration
+@PropertySource({"classpath:persistence-multiple-db-boot.properties"})
 @EnableJpaRepositories(basePackages = "com.baeldung.multipledb.dao.product", entityManagerFactoryRef = "productEntityManager", transactionManagerRef = "productTransactionManager")
 @Profile("!tc")
-public class PersistenceProductConfiguration {
+public class PersistenceProductAutoConfiguration {
     @Autowired
     private Environment env;
 
-    public PersistenceProductConfiguration() {
+    public PersistenceProductAutoConfiguration() {
         super();
     }
 
@@ -48,14 +56,9 @@ public class PersistenceProductConfiguration {
     }
 
     @Bean
+    @ConfigurationProperties(prefix="spring.product")
     public DataSource productDataSource() {
-        final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));
-        dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("product.jdbc.url")));
-        dataSource.setUsername(Preconditions.checkNotNull(env.getProperty("jdbc.user")));
-        dataSource.setPassword(Preconditions.checkNotNull(env.getProperty("jdbc.pass")));
-
-        return dataSource;
+        return DataSourceBuilder.create().build();
     }
 
     @Bean
