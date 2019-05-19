@@ -85,7 +85,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
         <spring-cloud-function.version>1.0.1.RELEASE</spring-cloud-function.version>
         <aws-lambda-events.version>2.0.2</aws-lambda-events.version>
         <spring-boot.version>2.0.4.RELEASE</spring-boot.version>

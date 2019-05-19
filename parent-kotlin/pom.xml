@@ -108,6 +108,9 @@
 								<sourceDir>${project.basedir}/src/main/java</sourceDir>
 							</sourceDirs>
 							<jvmTarget>${java.version}</jvmTarget>
+                                                        <args>
+                                                            <arg>-Xjvm-default=enable</arg> 
+                                                        </args>
 						</configuration>
 					</execution>
 					<execution>

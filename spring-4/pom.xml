@@ -88,8 +88,6 @@
     <properties>
         <start-class>com.baeldung.flips.ApplicationConfig</start-class>
         <flips-web.version>1.0.1</flips-web.version>
-        <lombok.version>1.16.18</lombok.version>
-        <h2database.version>1.4.197</h2database.version>
     </properties>
 
 </project>
