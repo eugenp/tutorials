@@ -87,9 +87,5 @@ public class Delay {
     private static void someTask2() {
         System.out.println("Task 2 completed.");
     }
-    
-    public static int main(Boolean isTest) {
-        return 0;
-    }
 
 }
