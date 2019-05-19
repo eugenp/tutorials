@@ -386,6 +386,8 @@
                 <module>core-java-modules/core-java-arrays</module>
                 <module>core-java-modules/core-java-collections</module>
                 <module>core-java-modules/core-java-collections-list</module>
+                <module>core-java-modules/core-java-collections-list-2</module>
+                <module>core-java-modules/core-java-collections-array-list</module>
                 <module>core-java-modules/core-java-collections-set</module>
                 <module>core-java-modules/core-java-concurrency-basic</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
@@ -1066,6 +1068,8 @@
                 <module>core-java-modules/core-java-arrays</module>
                 <module>core-java-modules/core-java-collections</module>
                 <module>core-java-modules/core-java-collections-list</module>
+                <module>core-java-modules/core-java-collections-list-2</module>
+                <module>core-java-modules/core-java-collections-array-list</module>
                 <module>core-java-modules/core-java-collections-set</module>
                 <module>core-java-modules/core-java-concurrency-basic</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
