@@ -2,9 +2,14 @@ package hexagonal.domain;
 
 public class Movie {
     private String title;
-    private String genre;
+    private Genre genre;
 
-    public Movie(String title, String genre) {
+    public enum Genre {
+        COMEDY,
+        HORROR
+    }
+
+    public Movie(String title, Genre genre) {
         this.title = title;
         this.genre = genre;
     }
@@ -13,7 +18,7 @@ public class Movie {
         return title;
     }
 
-    public String getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 }

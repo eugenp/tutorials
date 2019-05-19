@@ -2,9 +2,9 @@ package hexagonal.domain;
 
 public class User {
     private String name;
-    private String preferredGenre;
+    private Movie.Genre preferredGenre;
 
-    public User(String name, String preferredGenre) {
+    public User(String name, Movie.Genre preferredGenre) {
         this.name = name;
         this.preferredGenre = preferredGenre;
     }
@@ -13,7 +13,7 @@ public class User {
         return name;
     }
 
-    public String getPreferredGenre() {
+    public Movie.Genre getPreferredGenre() {
         return preferredGenre;
     }
 }

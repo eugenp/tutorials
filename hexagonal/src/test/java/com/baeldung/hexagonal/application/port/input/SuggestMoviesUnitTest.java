@@ -22,12 +22,12 @@ class SuggestMoviesUnitTest {
         FindMovies findMovies = mock(FindMovies.class);
         SuggestMovies suggestMovies = new MovieService(findUser, findMovies);
 
-        User user = new User("Bruce Wayne", "Comedy");
+        User user = new User("Bruce Wayne", Movie.Genre.COMEDY);
         Set<Movie> comedyMovies = new HashSet<>();
-        comedyMovies.add(new Movie("Deadpool", "Comedy"));
+        comedyMovies.add(new Movie("Deadpool", Movie.Genre.COMEDY));
 
         when(findUser.byName("Bruce Wayne")).thenReturn(user);
-        when(findMovies.byGenre("Comedy")).thenReturn(comedyMovies);
+        when(findMovies.byGenre(Movie.Genre.COMEDY)).thenReturn(comedyMovies);
 
         Set<Movie> movies = suggestMovies.toUserByName("Bruce Wayne");
 

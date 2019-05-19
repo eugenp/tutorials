@@ -14,7 +14,7 @@ public class MoviePersistenceAdapter implements FindMovies {
     }
 
     @Override
-    public Set<Movie> byGenre(String genre) {
+    public Set<Movie> byGenre(Movie.Genre genre) {
         return movieRepository.findMoviesByGenre(genre);
     }
 }
