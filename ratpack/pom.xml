@@ -27,9 +27,19 @@
             <version>${ratpack.version}</version>
         </dependency>
         <dependency>
+    		<groupId>org.codehaus.groovy</groupId>
+		    <artifactId>groovy-sql</artifactId>
+		    <version>2.4.15</version>
+		</dependency>
+        <dependency>
             <groupId>io.ratpack</groupId>
             <artifactId>ratpack-hikari</artifactId>
             <version>${ratpack.version}</version>
+        </dependency>
+        <dependency>
+        	<groupId>io.ratpack</groupId>
+            <artifactId>ratpack-groovy-test</artifactId>
+            <version>1.6.1</version>
         </dependency>
         <dependency>
             <groupId>io.ratpack</groupId>
@@ -92,5 +102,4 @@
         <httpcore.version>4.4.6</httpcore.version>
         <hystrix.version>1.5.12</hystrix.version>
     </properties>
-
 </project>
