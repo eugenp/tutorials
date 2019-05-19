@@ -4,7 +4,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd"
 >
 
-    <bean id="employeeDao" class="org.baeldung.jdbc.EmployeeDAO">
+    <bean id="employeeDao" class="com.baeldung.jdbc.EmployeeDAO">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
