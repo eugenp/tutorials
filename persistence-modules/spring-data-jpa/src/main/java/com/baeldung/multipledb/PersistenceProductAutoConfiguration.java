@@ -54,9 +54,9 @@ public class PersistenceProductAutoConfiguration {
 
         return em;
     }
-
+    
     @Bean
-    @ConfigurationProperties(prefix="spring.product")
+    @ConfigurationProperties(prefix="spring.second-datasource")
     public DataSource productDataSource() {
         return DataSourceBuilder.create().build();
     }
