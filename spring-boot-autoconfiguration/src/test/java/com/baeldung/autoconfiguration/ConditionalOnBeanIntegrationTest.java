@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-public class ConditionalOnBeanTest {
+public class ConditionalOnBeanIntegrationTest {
 
     private final ApplicationContextRunner contextRunner = new ApplicationContextRunner();
 

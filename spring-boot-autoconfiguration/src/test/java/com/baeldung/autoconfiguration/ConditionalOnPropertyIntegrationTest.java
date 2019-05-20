@@ -14,7 +14,7 @@ import com.baeldung.autoconfiguration.service.CustomService;
 import com.baeldung.autoconfiguration.service.DefaultService;
 import com.baeldung.autoconfiguration.service.SimpleService;
 
-public class ConditionalOnPropertyTest {
+public class ConditionalOnPropertyIntegrationTest {
 
     private final ApplicationContextRunner contextRunner = new ApplicationContextRunner();
 
