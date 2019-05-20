@@ -43,7 +43,6 @@ public class PersistenceUserAutoConfiguration {
     @Primary
     @Bean
     public LocalContainerEntityManagerFactoryBean userEntityManager() {
-        System.out.println("loading config");
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(userDataSource());
         em.setPackagesToScan("com.baeldung.multipledb.model.user");
@@ -58,9 +57,9 @@ public class PersistenceUserAutoConfiguration {
         return em;
     }
 
-    @Primary
     @Bean
-    @ConfigurationProperties(prefix="spring.user")
+    @Primary
+    @ConfigurationProperties(prefix="spring.datasource")
     public DataSource userDataSource() {
         return DataSourceBuilder.create().build();
     }
