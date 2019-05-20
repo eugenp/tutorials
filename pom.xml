@@ -322,6 +322,7 @@
 			</build>
 
 			<modules>
+				<module>Hexarchitecture_Exmaple</module>
 				<module>parent-boot-1</module>
 				<module>parent-boot-2</module>
 				<module>parent-spring-4</module>
@@ -553,6 +554,7 @@
             </build>
 
             <modules>
+				<module>Hexarchitecture_Exmaple</module>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>

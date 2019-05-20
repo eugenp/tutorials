@@ -4,7 +4,7 @@ public class Main {
         IPersists<EmployeeDomainObject, EmployeeCommand> adapter = new DataBaseChannelAdapter();
         dao.setAdapter(adapter);
         EmployeeDomainObject emp = new EmployeeDomainObject();
-        emp.setName("Shamik Mitra");
+        emp.setName("Shayamak Daavar");
         emp.setAddress("India,Kolkata");
         EmployeeCommand command = new EmployeeCommand();
         command.setEntityClass("com.employeemanagement.entity.EmployeeJpaEntity");
