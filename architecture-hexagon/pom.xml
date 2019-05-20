@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung</groupId>
+    <artifactId>architecture-hexagonal</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>architecture-hexagonal</name>
+    <packaging>pom</packaging>
+
+
+    <modules>
+        <module>domain</module>
+        <module>infrastructure</module>
+    </modules>
+
+    <build>
+        <finalName>architecture-hexagonal</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+    <properties>
+        <!-- testing -->
+        <assertj.version>3.6.1</assertj.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <tour.project.version>0.0.1-SNAPSHOT</tour.project.version>
+    </properties>
+
+
+
+</project>
