@@ -19,7 +19,7 @@ import java.time.Duration;
 
 import org.junit.Test;
 
-public class HttpRequestTest {
+public class HttpRequestUnitTest {
 
     @Test
     public void shouldReturnStatusOKWhenSendGetRequest() throws IOException, InterruptedException, URISyntaxException {
