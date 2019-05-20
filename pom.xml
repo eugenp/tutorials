@@ -12,6 +12,7 @@
 
     <modules>
         <module>lombok-custom</module>
+        <module>quarkus</module>
     </modules>
 
 	<dependencies>
@@ -123,11 +124,6 @@
 					</excludes>
 				</configuration>
 				<dependencies>
-	                <dependency>
-	                    <groupId>org.junit.platform</groupId>
-	                    <artifactId>junit-platform-surefire-provider</artifactId>
-	                    <version>${junit-platform.version}</version>
-	                </dependency>
 	                <dependency>
 	                    <groupId>org.junit.jupiter</groupId>
 	                    <artifactId>junit-jupiter-engine</artifactId>
@@ -338,6 +334,7 @@
                 <module>algorithms-genetic</module>
                 <module>algorithms-miscellaneous-1</module>
                 <module>algorithms-miscellaneous-2</module>
+                <module>algorithms-miscellaneous-3</module>
                 <module>algorithms-sorting</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
@@ -376,31 +373,37 @@
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <module>core-groovy</module>
-                <!-- <module>core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
-                <!-- <module>core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
-                <!-- <module>core-java-12</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
-                <module>core-java-8</module>
-                <module>core-java-8-2</module>
-				<module>core-java-lambdas</module>
-                <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-                <!--<module>core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
-                <module>core-java-arrays</module>
-                <module>core-java-collections</module>
-                <module>core-java-collections-map</module>
-                <module>core-java-collections-list</module>
-                <module>core-java-concurrency-basic</module>
-                <module>core-java-concurrency-collections</module>
-                <module>core-java-io</module>
-                <module>core-java-security</module>
-                <module>core-java-lang-syntax</module>
-                <module>core-java-lang</module>
-                <module>core-java-lang-oop</module>
-                <module>core-java-lang-oop-2</module>
-                <module>core-java-networking</module>
-                <module>core-java-perf</module>
-                <module>core-java-sun</module>
-                <module>core-java</module>
-                <module>core-java-jvm</module>
+                <module>core-groovy-2</module>
+		<module>core-groovy-collections</module>
+                <!-- <module>core-java-modules/core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
+                <!-- <module>core-java-modules/core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
+                <!-- <module>core-java-modules/core-java-12</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
+                <module>core-java-modules/core-java-8</module>
+                <module>core-java-modules/core-java-8-2</module>
+				<module>core-java-modules/core-java-lambdas</module>
+                <!--<module>core-java-modules/core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
+                <!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
+                <module>core-java-modules/core-java-arrays</module>
+                <module>core-java-modules/core-java-collections</module>
+                <module>core-java-modules/core-java-collections-list</module>
+                <module>core-java-modules/core-java-collections-list-2</module>
+                <module>core-java-modules/core-java-collections-array-list</module>
+                <module>core-java-modules/core-java-collections-set</module>
+                <module>core-java-modules/core-java-concurrency-basic</module>
+                <module>core-java-modules/core-java-concurrency-collections</module>
+                <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-security</module>
+                <module>core-java-modules/core-java-lang-syntax</module>
+                <module>core-java-modules/core-java-lang</module>
+                <module>core-java-modules/core-java-lang-oop</module>
+                <module>core-java-modules/core-java-lang-oop-2</module>
+                <module>core-java-modules</module>
+                <module>core-java-modules/core-java-networking</module>
+                <module>core-java-modules/core-java-perf</module>
+                <module>core-java-modules/core-java-reflection</module>
+                <module>core-java-modules/core-java-sun</module>
+                <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-jvm</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -436,6 +439,7 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
+                <module>httpclient-simple</module>
                 <module>hystrix</module>
 
                 <module>image-processing</module>
@@ -457,6 +461,7 @@
                 <module>java-streams</module>
                 <module>java-streams-2</module>
                 <module>java-strings</module>
+                <module>java-strings-2</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javafx</module>
@@ -485,12 +490,14 @@
 
                 <!-- <module>kotlin-js</module> --> <!-- Not a maven project -->
                 <module>kotlin-libraries</module>
+                <module>kotlin-libraries-2</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries</module>
                 <module>libraries-2</module>
                 <module>libraries-data</module>
                 <module>libraries-apache-commons</module>
+                <module>libraries-primitive</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
                 <module>linkrest</module>
@@ -525,6 +532,7 @@
                 <module>protobuffer</module>
 
                 <module>persistence-modules</module>
+		<module>quarkus</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
@@ -597,6 +605,7 @@
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-security</module>
                 <module>spring-5-security-oauth</module>
+                <module>spring-5-security-cognito</module>
 
                 <module>spring-activiti</module>
                 <module>spring-akka</module>
@@ -617,7 +626,7 @@
                 <module>spring-boot-camel</module>
                 <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
                 <module>spring-boot-client</module>
-				<module>spring-boot-configuration</module>
+
                 <module>spring-boot-crud</module>
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-custom-starter</module>
@@ -629,6 +638,7 @@
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-ops</module>
+                <module>spring-boot-ops-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-boot-data</module>
                 <module>spring-boot-property-exp</module>
@@ -806,6 +816,7 @@
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-security</module>
 				<module>spring-5-security-oauth</module>
+				<module>spring-5-security-cognito</module>
 				<module>spring-activiti</module>
 				<module>spring-akka</module>
 				<module>spring-all</module>
@@ -818,9 +829,8 @@
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-camel</module>
 				<module>spring-boot-client</module>
-				<module>spring-boot-configuration</module>
 				<module>spring-boot-custom-starter</module>
-				<module>greeter-spring-boot-autoconfigure</module>
+		 		<module>greeter-spring-boot-autoconfigure</module>
 				<module>greeter-spring-boot-sample-app</module>
 				<module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
 				<module>spring-boot-jasypt</module>
@@ -956,7 +966,7 @@
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
 
-                <module>core-java-concurrency-advanced</module> <!-- very long running? -->
+                <module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-kotlin</module> <!-- long running? -->
                 <module>core-kotlin-2</module>
                 <module>core-kotlin-io</module>
@@ -967,6 +977,7 @@
                 <module>libraries</module> <!-- very long running -->
 
                 <module>persistence-modules/hibernate5</module>
+		<module>persistence-modules/hibernate-mapping</module>
                 <module>persistence-modules/java-jpa</module>
                 <module>persistence-modules/java-mongodb</module>
                 <module>persistence-modules/jnosql</module>
@@ -1009,6 +1020,7 @@
                 <module>algorithms-genetic</module>
                 <module>algorithms-miscellaneous-1</module>
                 <module>algorithms-miscellaneous-2</module>
+                <module>algorithms-miscellaneous-3</module>
                 <module>algorithms-sorting</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
@@ -1046,27 +1058,31 @@
                 <module>checker-plugin</module>
                 <module>core-groovy</module>
                 <module>core-groovy-2</module>
-                <!-- <module>core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
-                <!-- <module>core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
-                <module>core-java-8</module>
-                <module>core-java-8-2</module>
-                <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-                <!--<module>core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
-                <module>core-java-arrays</module>
-                <module>core-java-collections</module>
-                <module>core-java-collections-map</module>
-                <module>core-java-collections-list</module>
-                <module>core-java-concurrency-basic</module>
-                <module>core-java-concurrency-collections</module>
-                <module>core-java-io</module>
-                <module>core-java-security</module>
-                <module>core-java-lang-syntax</module>
-                <module>core-java-lang</module>
-                <module>core-java-lang-oop</module>
-                <module>core-java-lang-oop-2</module>
-                <module>core-java-networking</module>
-                <module>core-java-perf</module>
-                <module>core-java-sun</module>
+                <module>core-groovy-collections</module>
+                <!-- <module>core-java-modules/core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
+                <!-- <module>core-java-modules/core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
+                <module>core-java-modules/core-java-8</module>
+                <module>core-java-modules/core-java-8-2</module>
+                <!--<module>core-java-modules/core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
+                <!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
+                <module>core-java-modules/core-java-arrays</module>
+                <module>core-java-modules/core-java-collections</module>
+                <module>core-java-modules/core-java-collections-list</module>
+                <module>core-java-modules/core-java-collections-list-2</module>
+                <module>core-java-modules/core-java-collections-array-list</module>
+                <module>core-java-modules/core-java-collections-set</module>
+                <module>core-java-modules/core-java-concurrency-basic</module>
+                <module>core-java-modules/core-java-concurrency-collections</module>
+                <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-security</module>
+                <module>core-java-modules/core-java-lang-syntax</module>
+                <module>core-java-modules/core-java-lang</module>
+                <module>core-java-modules/core-java-lang-oop</module>
+                <module>core-java-modules/core-java-lang-oop-2</module>
+                <module>core-java-modules</module>
+                <module>core-java-modules/core-java-networking</module>
+                <module>core-java-modules/core-java-perf</module>
+                <module>core-java-modules/core-java-sun</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -1102,6 +1118,7 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
+                <module>httpclient-simple</module>
                 <module>hystrix</module>
 
                 <module>image-processing</module>
@@ -1122,6 +1139,7 @@
                 <module>java-streams</module>
                 <module>java-streams-2</module>
                 <module>java-strings</module>
+                <module>java-strings-2</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javafx</module>
@@ -1164,6 +1182,7 @@
 
                 <module>mapstruct</module>
                 <module>maven</module>
+                <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-archetype</module>
                 <!-- <module>maven-polyglot/maven-polyglot-json-app</module> --> <!-- Not a maven project -->
                 <module>maven-polyglot/maven-polyglot-json-extension</module>
@@ -1251,7 +1270,7 @@
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-security</module>
                 <module>spring-5-security-oauth</module>
-
+                <module>spring-5-security-cognito</module>
                 <module>spring-activiti</module>
                 <module>spring-akka</module>
                 <module>spring-all</module>
@@ -1271,7 +1290,6 @@
                 <module>spring-boot-camel</module>
                 <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
                 <module>spring-boot-client</module>
-                <module>spring-boot-configuration</module>
                 <module>spring-boot-crud</module>
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-custom-starter</module>
@@ -1283,6 +1301,7 @@
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-ops</module>
+                <module>spring-boot-ops-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-boot-data</module>
                 <module>spring-boot-property-exp</module>
@@ -1455,8 +1474,8 @@
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
 
-                <module>core-java</module>
-                <module>core-java-concurrency-advanced</module> <!-- very long running? -->
+                <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-kotlin</module> <!-- long running? -->
                 <module>core-kotlin-2</module>
 
@@ -1492,7 +1511,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<gib.referenceBranch>refs/remotes/origin/master</gib.referenceBranch>
-		<gib.skipTestsForNotImpactedModules>true</gib.skipTestsForNotImpactedModules>
+		<gib.skipTestsForUpstreamModules>true</gib.skipTestsForUpstreamModules>
+		<gib.buildUpstream>false</gib.buildUpstream>
 		<gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
 		<gib.failOnError>false</gib.failOnError>
 		<gib.enabled>false</gib.enabled>
@@ -1506,7 +1526,7 @@
 		<logback.version>1.1.7</logback.version>
 
 		<!-- plugins -->
-		<maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+		<maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 		<exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
 		<java.version>1.8</java.version>
@@ -1528,15 +1548,16 @@
 		<jstl.version>1.2</jstl.version>
 		<jackson.version>2.9.8</jackson.version>
 		<commons-fileupload.version>1.3</commons-fileupload.version>
-		<junit-platform.version>1.2.0</junit-platform.version>
-		<junit-jupiter.version>5.2.0</junit-jupiter.version>
+		<junit-platform.version>1.4.2</junit-platform.version>
+		<junit-jupiter.version>5.4.2</junit-jupiter.version>
 		<directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
 		<maven-install-plugin.version>2.5.1</maven-install-plugin.version>
 		<custom-pmd.version>0.0.1</custom-pmd.version>
-		<gitflow-incremental-builder.version>3.4</gitflow-incremental-builder.version>
+		<gitflow-incremental-builder.version>3.8</gitflow-incremental-builder.version>
 		<maven-jxr-plugin.version>2.3</maven-jxr-plugin.version>
 		<!-- <maven-pmd-plugin.version>3.9.0</maven-pmd-plugin.version> -->
 		<maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
 		<lombok.version>1.16.12</lombok.version>
+		<h2.version>1.4.197</h2.version>
 	</properties>
 </project>

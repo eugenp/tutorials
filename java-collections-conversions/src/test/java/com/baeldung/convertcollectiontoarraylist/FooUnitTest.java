@@ -33,9 +33,6 @@ public class FooUnitTest {
         srcCollection.add(sam);
         srcCollection.add(alice);
         srcCollection.add(buffy);
-
-        // make sure the collection isn't sorted accidentally
-        assertFalse("Oops: source collection is already sorted!", isSorted(srcCollection));
     }
     
     /**
