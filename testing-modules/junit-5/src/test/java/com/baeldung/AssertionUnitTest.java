@@ -2,7 +2,21 @@ package com.baeldung;
 
 import static java.time.Duration.ofSeconds;
 import static java.util.Arrays.asList;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+import static org.junit.jupiter.api.Assertions.assertLinesMatch;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTimeout;
+import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -91,11 +105,12 @@ public class AssertionUnitTest {
 
     @Test
     public void givenMultipleAssertion_whenAssertingAll_thenOK() {
+        Object obj = null;
         assertAll(
            "heading",
            () -> assertEquals(4, 2 * 2, "4 is 2 times 2"),
            () -> assertEquals("java", "JAVA".toLowerCase()),
-           () -> assertEquals(null, null, "null is equal to null")
+           () -> assertEquals(obj, null, "null is equal to null")
         );
     }
 

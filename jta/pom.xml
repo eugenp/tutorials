@@ -83,7 +83,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
 		<hsqldb.version>2.4.1</hsqldb.version>
         <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
     </properties>

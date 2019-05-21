@@ -198,7 +198,6 @@
         <org.springframework.security.version>4.2.6.RELEASE</org.springframework.security.version>
 
         <!-- persistence -->
-        <h2.version>1.4.193</h2.version>
         <postgresql.version>9.4.1212</postgresql.version>
 
         <!-- various -->
