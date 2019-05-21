@@ -54,9 +54,8 @@ dependencies {
     testCompile group: 'org.jetbrains.spek', name: 'spek-subject-extension', version: '1.1.5'
     testCompile group: 'org.jetbrains.spek', name: 'spek-junit-platform-engine', version: '1.1.5'
     implementation 'com.beust:klaxon:3.0.1'
-    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
-
 }
+
 task runServer(type: JavaExec) {
     main = 'APIServer'
    classpath = sourceSets.main.runtimeClasspath

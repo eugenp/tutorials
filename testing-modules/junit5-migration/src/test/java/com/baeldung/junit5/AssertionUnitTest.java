@@ -34,7 +34,7 @@ public class AssertionUnitTest {
                 "heading",
                 () -> assertEquals(4, 2 * 2, "4 is 2 times 2"),
                 () -> assertEquals("java", "JAVA".toLowerCase()),
-                () -> assertEquals(null, null, "null is equal to null")
+                () -> assertEquals((String) null, (String) null, "null is equal to null")
         );
     }
 }
