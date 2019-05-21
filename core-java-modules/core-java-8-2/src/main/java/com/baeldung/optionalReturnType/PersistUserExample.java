@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class PersistUserNoOptionalExample {
+public class PersistUserExample {
 	static String persistenceUnit = "com.baeldung.optionalReturnType";
 	static EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnit);
 	

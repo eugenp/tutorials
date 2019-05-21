@@ -12,6 +12,8 @@ public class PersistOptionalTypeExample {
 	
 	static EntityManager entityManager = emf.createEntityManager();
 	
+	//to run this app, uncomment the follow line in META-INF/persistence.xml
+	//<class>com.baeldung.optionalReturnType.UserOptionalField</class>
 	public static void main(String[] args) {
 		UserOptionalField user1 = new UserOptionalField();
 		user1.setUserId(1l);
