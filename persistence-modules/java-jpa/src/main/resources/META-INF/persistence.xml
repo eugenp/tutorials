@@ -151,6 +151,10 @@
     <persistence-unit name="jpa-entity-definition">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.baeldung.jpa.entity.Student</class>
+        <class>com.baeldung.jpa.entity.Book</class>
+        <class>com.baeldung.jpa.entity.BookId</class>
+        <class>com.baeldung.jpa.entity.Account</class>
+        <class>com.baeldung.jpa.entity.AccountId</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
