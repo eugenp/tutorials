@@ -15,9 +15,19 @@ import com.baeldung.helpers.JdbcConnectionUtil;
 
 public class EmployeeDatabaseSetupExtension implements BeforeAllCallback, AfterAllCallback, BeforeEachCallback, AfterEachCallback {
 
-    private Connection con = JdbcConnectionUtil.getConnection();
-    private EmployeeJdbcDao employeeDao = new EmployeeJdbcDao(con);
+    private Connection con;
+    private EmployeeJdbcDao employeeDao;
     private Savepoint savepoint;
+
+    public EmployeeDatabaseSetupExtension() {
+        con = JdbcConnectionUtil.getConnection();
+        employeeDao = new EmployeeJdbcDao(con);
+    }
+
+    public EmployeeDatabaseSetupExtension(String jdbcUrl, String driver, String username, String password) {
+        con = JdbcConnectionUtil.getConnection(jdbcUrl, driver, username, password);
+        employeeDao = new EmployeeJdbcDao(con);
+    }
 
     @Override
     public void afterAll(ExtensionContext context) throws SQLException {
