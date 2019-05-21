@@ -8,8 +8,10 @@
 - [Bootstrapping Hibernate 5 with Spring](http://www.baeldung.com/hibernate-5-spring)
 - [The DAO with Spring and Hibernate](http://www.baeldung.com/persistence-layer-with-spring-and-hibernate)
 - [Introduction to Spring Data JPA](https://www.baeldung.com/the-persistence-layer-with-spring-data-jpa)
-
-
+- [DAO with Spring and Generics](https://www.baeldung.com/simplifying-the-data-access-layer-with-spring-and-java-generics)
+- [Transactions with Spring and JPA](https://www.baeldung.com/transaction-configuration-with-jpa-and-spring)
+- [Spring Data JPA @Query](http://www.baeldung.com/spring-data-jpa-query)
+- [Spring JDBC](https://www.baeldung.com/spring-jdbc-jdbctemplate)
 
 
 ### Eclipse Config 
