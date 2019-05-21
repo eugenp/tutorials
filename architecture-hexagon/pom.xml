@@ -5,13 +5,8 @@
     <artifactId>architecture-hexagonal</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>architecture-hexagonal</name>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
-
-    <modules>
-        <module>domain</module>
-        <module>infrastructure</module>
-    </modules>
 
     <build>
         <finalName>architecture-hexagonal</finalName>
