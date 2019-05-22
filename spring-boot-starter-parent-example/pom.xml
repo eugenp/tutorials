@@ -14,7 +14,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.1.RELEASE</version>
-        <relativePath>../../spring-boot-dependencies</relativePath>
         <!-- lookup parent from repository -->
     </parent>
 
