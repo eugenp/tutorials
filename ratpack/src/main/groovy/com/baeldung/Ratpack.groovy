@@ -9,9 +9,16 @@ import ratpack.exec.Promise
 import ratpack.handling.Context
 import ratpack.jackson.Jackson
 import groovy.sql.Sql
+import java.sql.Connection
+import java.sql.PreparedStatement
+import java.sql.ResultSet
 import ratpack.hikari.HikariModule
+import javax.sql.DataSource;
 
 ratpack {
+    serverConfig {
+        port(5050)
+    }
     bindings {
         module(HikariModule) { config ->
             config.dataSourceClassName = 'org.h2.jdbcx.JdbcDataSource'
@@ -19,17 +26,14 @@ ratpack {
         }
     }
 
-
     handlers {
-        
-        get {
-            render 'Hello World from Ratpck with Groovy!!'
+
+        get { render 'Hello World from Ratpck with Groovy!!' }
+
+        get("greet/:name") { Context ctx ->
+            render "Hello " + ctx.getPathTokens().get("name") + "!!!"
         }
-        
-        get("greet/:name"){Context ctx ->
-            render "Hello " + ctx.getPathTokens().get("name") + " !!!"
-        }
-        
+
         get("data"){
             render Jackson.json([title:"Mr",name:"Norman",country:"USA"])
         }
@@ -39,23 +43,37 @@ ratpack {
             user.then { u -> render u.name }
         }
         
+        get('fetchUserName/:id') { Context ctx ->
+            Connection connection = ctx.get(DataSource.class).getConnection()
+            PreparedStatement queryStatement = connection.prepareStatement("select name from user where id=?")
+            queryStatement.setInt(1, Integer.parseInt(ctx.getPathTokens().get("id")))
+            ResultSet resultSet = queryStatement.executeQuery()
+            resultSet.next()
+            render resultSet.getString(1)
+          
+        }
+
         get('fetchUsers') {
             def db = [url:'jdbc:h2:mem:devDB']
             def sql = Sql.newInstance(db.url, db.user, db.password)
             def users = sql.rows("select * from user");
             render(Jackson.json(users))
         }
-        
+
         post('addUser') {
             Promise<User> user = parse(Jackson.fromJson(User))
-            user.then { u -> 
+            user.then { u ->
                 def db = [url:'jdbc:h2:mem:devDB']
                 Sql sql = Sql.newInstance(db.url, db.user, db.password)
-                sql.executeInsert("insert into user values (?,?,?,?)", [u.id, u.title, u.name, u.country])
+                sql.executeInsert("insert into user values (?,?,?,?)", [
+                    u.id,
+                    u.title,
+                    u.name,
+                    u.country
+                ])
                 render "User $u.name inserted"
             }
         }
-        
     }
 }
 

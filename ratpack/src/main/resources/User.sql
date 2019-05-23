@@ -6,5 +6,5 @@ CREATE TABLE user (
   country varchar(255)
 );
 
-insert into user values(1,'Mr.','Norman', 'USA');
-insert into user values(2,'Mr.','Lewis', 'USA');
+insert into user values(1,'Mr','Norman Potter', 'USA');
+insert into user values(2,'Miss','Ketty Smith', 'FRANCE');
