@@ -14,8 +14,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebMvc
 @ComponentScan("org.baeldung.web")
-// @ImportResource({ "classpath:prop.xml" })
-// @PropertySource("classpath:foo.properties")
 public class WebConfig implements WebMvcConfigurer {
 
     public WebConfig() {

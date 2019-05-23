@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
-// @ImportResource({ "classpath:webSecurityConfig.xml" })
 @EnableWebSecurity
 @ComponentScan("org.baeldung.security")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
