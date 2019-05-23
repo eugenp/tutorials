@@ -75,6 +75,8 @@ public class Slf4jLogger implements System.Logger {
             return;
         }
 
+        String message = MessageFormat.format(format, params);
+
         switch (level) {
         case TRACE:
             logger.trace(format, params);
