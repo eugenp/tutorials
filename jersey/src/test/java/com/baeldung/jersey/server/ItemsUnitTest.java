@@ -30,21 +30,21 @@ public class ItemsUnitTest {
     }
 
     @Test
-    public void testCookieParamIsRead() {
+    public void givenCookieParameter_whenGet_thenReturnsExpectedText() {
         String paramValue = "1";
         String responseText = target.path("items/cookie").request().cookie("cookieParamToRead", paramValue).get(String.class);
         assertEquals("Cookie parameter value is [" + paramValue + "]", responseText);
     }
 
     @Test
-    public void testHeaderParamIsRead() {
+    public void givenHeaderParameter_whenGet_thenReturnsExpectedText() {
         String paramValue = "2";
         String responseText = target.path("items/header").request().header("headerParamToRead", paramValue).get(String.class);
         assertEquals("Header parameter value is [" + paramValue + "]", responseText);
     }
 
     @Test
-    public void testPathParamIsRead() {
+    public void givenPathParameter_whenGet_thenReturnsExpectedText() {
         String paramValue = "3";
         String responseText = target.path("items/path/" + paramValue).request().get(String.class);
         assertEquals("Path parameter value is [" + paramValue + "]", responseText);
