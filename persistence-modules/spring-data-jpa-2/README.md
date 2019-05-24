@@ -12,3 +12,4 @@
 - [Spring Data JPA Projections](https://www.baeldung.com/spring-data-jpa-projections)
 - [JPA @Embedded And @Embeddable](https://www.baeldung.com/jpa-embedded-embeddable)
 - [Spring Data JPA Delete and Relationships](https://www.baeldung.com/spring-data-jpa-delete)
+- [Spring Data JPA and Named Entity Graphs](https://www.baeldung.com/spring-data-jpa-named-entity-graphs)
