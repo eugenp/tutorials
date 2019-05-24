@@ -8,24 +8,24 @@ import javax.persistence.Id;
 
 @Entity
 public class UserOptionalField implements Serializable {
-	@Id
-	private long userId;
-	
-	private Optional<String> firstName;
-	
-	public long getUserId() {
-		return userId;
-	}
+    @Id
+    private long userId;
 
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
+    private Optional<String> firstName;
 
-	public Optional<String> getFirstName() {
-		return firstName;
-	}
+    public long getUserId() {
+        return userId;
+    }
 
-	public void setFirstName(Optional<String> firstName) {
-		this.firstName = firstName;
-	}	
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public Optional<String> getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(Optional<String> firstName) {
+        this.firstName = firstName;
+    }
 }

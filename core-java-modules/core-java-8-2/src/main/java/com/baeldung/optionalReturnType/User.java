@@ -7,25 +7,25 @@ import javax.persistence.Id;
 
 @Entity
 public class User implements Serializable {
-	@Id
-	private long userId;
-	
-	private String firstName;
-	
-	public long getUserId() {
-		return userId;
-	}
+    @Id
+    private long userId;
 
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
+    private String firstName;
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public long getUserId() {
+        return userId;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
 }
