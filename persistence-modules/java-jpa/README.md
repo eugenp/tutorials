@@ -10,3 +10,4 @@
 - [Types of JPA Queries](https://www.baeldung.com/jpa-queries)
 - [Defining JPA Entities](https://www.baeldung.com/jpa-entities)
 - [JPA @Basic Annotation](https://www.baeldung.com/jpa-basic-annotation)
+- [Default Column Values in JPA](https://www.baeldung.com/jpa-default-column-values)
