@@ -9,3 +9,4 @@
 - [Combining JPA And/Or Criteria Predicates](https://www.baeldung.com/jpa-and-or-criteria-predicates)
 - [Types of JPA Queries](https://www.baeldung.com/jpa-queries)
 - [Defining JPA Entities](https://www.baeldung.com/jpa-entities)
+- [JPA @Basic Annotation](https://www.baeldung.com/jpa-basic-annotation)
