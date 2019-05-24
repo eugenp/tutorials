@@ -101,6 +101,16 @@ public class JestDemoApplication {
         jestClient.execute(new Get.Builder("employees", "1").build());
 
         // Search documents
+        String search = "{\n" +
+                "  \"query\": {\n" +
+                "    \"bool\": {\n" +
+                "      \"must\": [\n" +
+                "        { \"match\": { \"name\":   \"Michael Pratt\" }}\n" +
+                "      ]\n" +
+                "    }\n" +
+                "  }\n" +
+                "}";
+        jestClient.execute(new Search.Builder(search).build());
 
         // Update document
         employee.setYears_of_service(3);
