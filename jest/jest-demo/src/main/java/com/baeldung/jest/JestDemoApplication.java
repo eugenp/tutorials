@@ -20,10 +20,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 @SpringBootApplication
 public class JestDemoApplication {
@@ -98,7 +95,7 @@ public class JestDemoApplication {
         jestClient.execute(new Index.Builder(employee).index("employees").build());
 
         // Read document by ID
-        jestClient.execute(new Get.Builder("employees", "1").build());
+        Employee getResult = jestClient.execute(new Get.Builder("employees", "1").build()).getSourceAsObject(Employee.class);
 
         // Search documents
         String search = "{\n" +
@@ -110,7 +107,9 @@ public class JestDemoApplication {
                 "    }\n" +
                 "  }\n" +
                 "}";
-        jestClient.execute(new Search.Builder(search).build());
+        List<SearchResult.Hit<Employee, Void>> searchResults =
+           jestClient.execute(new Search.Builder(search).build())
+           .getHits(Employee.class);
 
         // Update document
         employee.setYears_of_service(3);
