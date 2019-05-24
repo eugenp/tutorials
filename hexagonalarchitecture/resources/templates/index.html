@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html layout:decorate="~{layout.html}"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+</head>
+<body>
+	<form th:object="${form}" method="post">
+		<div>
+			<label for="student-id">Application ID</label> <input id="student-id"
+				type="number" step="1" min="0" th:field="*{id}" value="">
+			<button type="submit">Search</button>
+			<button type="reset">Reset</button>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Application ID</th>
+					<th>Student Name</th>
+					<th>Major</th>
+					<th>Delete</th>
+					<th>Transfer</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="app : *{applications}">
+					<td th:text="${app.id}"></td>
+					<td th:text="${app.name}"></td>
+					<td th:text="${app.major}"></td>
+					<td><button type="submit" name="remove" th:value="${app.id}">Delete</button></td>
+					<td><button type="submit" name="transfer" th:value="${app.id}">Transfer</button></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td></td>
+					<td><label for="student-name">Student Name</label> <input
+						id="student-name" type="text" th:field="*{name}" value=""></td>
+					<td><label for="student-major">Major</label> <select
+						id="student-major" th:field="*{major}">
+							<option value="LAW">Law</option>
+							<option value="SCIENCE">Science</option>
+					</select></td>
+					<td><button type="submit" name="apply">Apply</button></td>
+				</tr>
+			</tfoot>
+		</table>
+	</form>
+</body>
+</html>
