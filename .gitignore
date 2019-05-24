@@ -1,4 +1,5 @@
 */bin/*
+bin/
 
 *.class
 
@@ -20,6 +21,9 @@
 *.iml
 *.iws
 out/
+
+# VSCode
+.vscode/
 
 # Mac
 .DS_Store
