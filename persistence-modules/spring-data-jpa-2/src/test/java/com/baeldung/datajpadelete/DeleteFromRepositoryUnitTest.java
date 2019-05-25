@@ -43,22 +43,22 @@ public class DeleteFromRepositoryUnitTest {
     public void whenDeleteByIdFromRepository_thenDeletingShouldBeSuccessful() {
         repository.deleteById(book1.getId());
 
-        assertThat(repository.count() == 1).isTrue();
+        assertThat(repository.count()).isEqualTo(1);
     }
 
     @Test
     public void whenDeleteAllFromRepository_thenRepositoryShouldBeEmpty() {
         repository.deleteAll();
 
-        assertThat(repository.count() == 0).isTrue();
+        assertThat(repository.count()).isEqualTo(0);
     }
 
     @Test
     @Transactional
     public void whenDeleteFromDerivedQuery_thenDeletingShouldBeSuccessful() {
-        repository.deleteByTitle("The Hobbit");
+        long deletedRecords = repository.deleteByTitle("The Hobbit");
 
-        assertThat(repository.count() == 1).isTrue();
+        assertThat(deletedRecords).isEqualTo(1);
     }
 
     @Test
@@ -66,7 +66,7 @@ public class DeleteFromRepositoryUnitTest {
     public void whenDeleteFromCustomQuery_thenDeletingShouldBeSuccessful() {
         repository.deleteBooks("The Hobbit");
 
-        assertThat(repository.count() == 1).isTrue();
+        assertThat(repository.count()).isEqualTo(1);
     }
 
 }
