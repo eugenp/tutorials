@@ -75,8 +75,6 @@ public class Slf4jLogger implements System.Logger {
         if (!isLoggable(level)) {
             return;
         }
-        String message = MessageFormat.format (format, params);
-
         String message = MessageFormat.format(format, params);
 
         switch (level) {
