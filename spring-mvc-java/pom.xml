@@ -34,7 +34,6 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
-            
         </dependency>
         <!-- Jackson -->
         <dependency>
