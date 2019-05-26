@@ -13,96 +13,102 @@ import org.junit.Test;
 
 public class CompositeKeysIntegrationTest {
 
-	private static final String SAVINGS_ACCOUNT = "Savings";
-	private static final String ACCOUNT_NUMBER = "JXSDF324234";
-	private static final String ENGLISH = "English";
-	private static final String WAR_AND_PEACE = "War and Peace";
-	
-	private static EntityManagerFactory emf;
-	private static EntityManager em;
+    private static final String SAVINGS_ACCOUNT = "Savings";
+    private static final String ACCOUNT_NUMBER = "JXSDF324234";
+    private static final String ENGLISH = "English";
+    private static final String WAR_AND_PEACE = "War and Peace";
 
-	@BeforeClass
-	public static void setup() {
-		emf = Persistence.createEntityManagerFactory("jpa-entity-definition");
-		em = emf.createEntityManager();
-	}
+    private static EntityManagerFactory emf;
+    private static EntityManager em;
 
-	@Test
-	public void persistBookWithCompositeKeyThenRetrieveDetails() {
-		Book warAndPeace = createBook();
-		persist(warAndPeace);
-		clearThePersistenceContext();
-		Book book = findBookByBookId();
-		verifyAssertionsWith(book);
-	}
+    @BeforeClass
+    public static void setup() {
+        emf = Persistence.createEntityManagerFactory("jpa-entity-definition");
+        em = emf.createEntityManager();
+    }
 
-	@Test
-	public void persistAccountWithCompositeKeyThenRetrieveDetails() {
-		Account savingsAccount = createAccount();
-		persist(savingsAccount);
-		clearThePersistenceContext();
-		Account account = findAccountByAccountId();
-		verifyAssertionsWith(account);
-	}
+    @Test
+    public void persistBookWithCompositeKeyThenRetrieveDetails() {
+        Book warAndPeace = createBook();
+        persist(warAndPeace);
+        clearThePersistenceContext();
+        Book book = findBookByBookId();
+        verifyAssertionsWith(book);
+    }
 
-	@AfterClass
-	public static void destroy() {
-		if (em != null) {
-			em.close();
-		}
-		if (emf != null) {
-			emf.close();
-		}
-	}
+    @Test
+    public void persistAccountWithCompositeKeyThenRetrieveDetails() {
+        Account savingsAccount = createAccount();
+        persist(savingsAccount);
+        clearThePersistenceContext();
+        Account account = findAccountByAccountId();
+        verifyAssertionsWith(account);
+    }
 
-	private Account createAccount() {
-		Account savingsAccount = new Account();
-		savingsAccount.setAccountNumber(ACCOUNT_NUMBER);
-		savingsAccount.setAccountType(SAVINGS_ACCOUNT);
-		savingsAccount.setDescription("Savings account");
-		return savingsAccount;
-	}
+    @AfterClass
+    public static void destroy() {
+        if (em != null) {
+            em.close();
+        }
+        if (emf != null) {
+            emf.close();
+        }
+    }
 
-	private void verifyAssertionsWith(Account account) {
-		assertEquals(ACCOUNT_NUMBER, account.getAccountNumber());
-		assertEquals(SAVINGS_ACCOUNT, account.getAccountType());
-	}
+    private Account createAccount() {
+        Account savingsAccount = new Account();
+        savingsAccount.setAccountNumber(ACCOUNT_NUMBER);
+        savingsAccount.setAccountType(SAVINGS_ACCOUNT);
+        savingsAccount.setDescription("Savings account");
+        return savingsAccount;
+    }
 
-	private Account findAccountByAccountId() {
-		return em.find(Account.class, new AccountId(ACCOUNT_NUMBER, SAVINGS_ACCOUNT));
-	}
+    private void verifyAssertionsWith(Account account) {
+        assertEquals(ACCOUNT_NUMBER, account.getAccountNumber());
+        assertEquals(SAVINGS_ACCOUNT, account.getAccountType());
+    }
 
-	private void persist(Account account) {
-		em.getTransaction().begin();
-		em.persist(account);
-		em.getTransaction().commit();
-	}
+    private Account findAccountByAccountId() {
+        return em.find(Account.class, new AccountId(ACCOUNT_NUMBER, SAVINGS_ACCOUNT));
+    }
 
-	private Book findBookByBookId() {
-		return em.find(Book.class, new BookId(WAR_AND_PEACE, ENGLISH));
-	}
+    private void persist(Account account) {
+        em.getTransaction()
+            .begin();
+        em.persist(account);
+        em.getTransaction()
+            .commit();
+    }
 
-	private Book createBook() {
-		BookId bookId = new BookId(WAR_AND_PEACE, ENGLISH);
-		Book warAndPeace = new Book(bookId);
-		warAndPeace.setDescription("Novel and Historical Fiction");
-		return warAndPeace;
-	}
+    private Book findBookByBookId() {
+        return em.find(Book.class, new BookId(WAR_AND_PEACE, ENGLISH));
+    }
 
-	private void verifyAssertionsWith(Book book) {
-		assertNotNull(book);
-		assertNotNull(book.getBookId());
-		assertEquals(WAR_AND_PEACE, book.getBookId().getTitle());
-		assertEquals(ENGLISH, book.getBookId().getLanguage());
-	}
+    private Book createBook() {
+        BookId bookId = new BookId(WAR_AND_PEACE, ENGLISH);
+        Book warAndPeace = new Book(bookId);
+        warAndPeace.setDescription("Novel and Historical Fiction");
+        return warAndPeace;
+    }
 
-	private void persist(Book book) {
-		em.getTransaction().begin();
-		em.persist(book);
-		em.getTransaction().commit();
-	}
+    private void verifyAssertionsWith(Book book) {
+        assertNotNull(book);
+        assertNotNull(book.getBookId());
+        assertEquals(WAR_AND_PEACE, book.getBookId()
+            .getTitle());
+        assertEquals(ENGLISH, book.getBookId()
+            .getLanguage());
+    }
 
-	private void clearThePersistenceContext() {
-		em.clear();
-	}
+    private void persist(Book book) {
+        em.getTransaction()
+            .begin();
+        em.persist(book);
+        em.getTransaction()
+            .commit();
+    }
+
+    private void clearThePersistenceContext() {
+        em.clear();
+    }
 }

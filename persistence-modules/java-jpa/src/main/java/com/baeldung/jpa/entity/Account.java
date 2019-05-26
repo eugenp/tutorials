@@ -8,36 +8,36 @@ import javax.persistence.IdClass;
 @IdClass(AccountId.class)
 public class Account {
 
-	@Id
-	private String accountNumber;
+    @Id
+    private String accountNumber;
 
-	@Id
-	private String accountType;
+    @Id
+    private String accountType;
 
-	private String description;
-	
-	public String getAccountNumber() {
-		return accountNumber;
-	}
+    private String description;
 
-	public void setAccountNumber(String accountNumber) {
-		this.accountNumber = accountNumber;
-	}
+    public String getAccountNumber() {
+        return accountNumber;
+    }
 
-	public String getAccountType() {
-		return accountType;
-	}
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
-	public void setAccountType(String accountType) {
-		this.accountType = accountType;
-	}
+    public String getAccountType() {
+        return accountType;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 }

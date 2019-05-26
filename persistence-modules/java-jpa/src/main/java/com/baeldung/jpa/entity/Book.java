@@ -6,29 +6,29 @@ import javax.persistence.Entity;
 @Entity
 public class Book {
 
-	@EmbeddedId
-	private BookId bookId;
+    @EmbeddedId
+    private BookId bookId;
 
-	private String description;
+    private String description;
 
-	public Book() {
+    public Book() {
 
-	}
+    }
 
-	public Book(BookId bookId) {
-		this.bookId = bookId;
-	}
+    public Book(BookId bookId) {
+        this.bookId = bookId;
+    }
 
-	public BookId getBookId() {
-		return bookId;
-	}
+    public BookId getBookId() {
+        return bookId;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 }
