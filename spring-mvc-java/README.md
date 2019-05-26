@@ -9,7 +9,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Bean Annotations](http://www.baeldung.com/spring-bean-annotations)
 - [Introduction to Pointcut Expressions in Spring](http://www.baeldung.com/spring-aop-pointcut-tutorial)
 - [Introduction to Advice Types in Spring](http://www.baeldung.com/spring-aop-advice-tutorial)
-- [A Guide to the ViewResolver in Spring MVC](http://www.baeldung.com/spring-mvc-view-resolver-tutorial)
 - [Integration Testing in Spring](http://www.baeldung.com/integration-testing-in-spring)
 - [A Quick Guide to Spring MVC Matrix Variables](http://www.baeldung.com/spring-mvc-matrix-variables)
 - [Intro to WebSockets with Spring](http://www.baeldung.com/websockets-spring)

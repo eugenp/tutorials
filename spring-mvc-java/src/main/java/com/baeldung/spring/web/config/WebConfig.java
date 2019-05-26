@@ -12,7 +12,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -26,8 +25,6 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-import org.springframework.web.servlet.view.ResourceBundleViewResolver;
-import org.springframework.web.servlet.view.XmlViewResolver;
 import org.springframework.web.util.UrlPathHelper;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
@@ -109,22 +106,6 @@ public class WebConfig implements WebMvcConfigurer {
         multipartResolver.setMaxUploadSize(100000);
 
         return multipartResolver;
-    }
-    
-    @Bean
-    public ViewResolver xmlViewResolver() {
-        final XmlViewResolver bean = new XmlViewResolver();
-        bean.setLocation(new ClassPathResource("views.xml"));
-        bean.setOrder(1);
-        return bean;
-    }
-
-    @Bean
-    public ViewResolver resourceBundleViewResolver() {
-        final ResourceBundleViewResolver bean = new ResourceBundleViewResolver();
-        bean.setBasename("views");
-        bean.setOrder(0);
-        return bean;
     }
 
     @Override
