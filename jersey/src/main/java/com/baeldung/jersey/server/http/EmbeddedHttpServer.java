@@ -7,12 +7,13 @@ import java.util.logging.Logger;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+import org.glassfish.jersey.server.ResourceConfig;
 
 import com.baeldung.jersey.server.config.ViewApplicationConfig;
 
 public class EmbeddedHttpServer {
 
-    private static final URI BASE_URI = URI.create("http://localhost:8082/");
+    public static final URI BASE_URI = URI.create("http://localhost:8082/");
 
     public static void main(String[] args) {
         try {
@@ -31,5 +32,10 @@ public class EmbeddedHttpServer {
                 .log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    public static HttpServer startServer() {
+        final ResourceConfig rc = new ResourceConfig().packages("com.baeldung.jersey.server");
+        return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI.toString()), rc);
     }
 }
