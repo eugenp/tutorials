@@ -10,7 +10,7 @@ import org.junit.Test;
 /**
  * BAEL-2832: Different ways to check if a Substring could be found in a String.
  */
-public class SubstringSearch {
+public class SubstringSearchUnitTest {
 
     @Test
     public void searchSubstringWithIndexOf() {
