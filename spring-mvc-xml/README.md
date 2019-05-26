@@ -14,3 +14,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Guide to JavaServer Pages (JSP)](http://www.baeldung.com/jsp)
 - [Exploring SpringMVC’s Form Tag Library](http://www.baeldung.com/spring-mvc-form-tags)
 - [web.xml vs Initializer with Spring](http://www.baeldung.com/spring-xml-vs-java-config)
+- [A Java Web Application Without a web.xml](https://www.baeldung.com/java-web-app-without-web-xml)
+- [Validating RequestParams and PathVariables in Spring](https://www.baeldung.com/spring-validate-requestparam-pathvariable)

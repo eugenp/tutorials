@@ -40,7 +40,6 @@
     </dependencies>
     
     <properties>
-        <lombok.version>1.16.16</lombok.version>
         <stripe.version>4.2.0</stripe.version>
     </properties>
 

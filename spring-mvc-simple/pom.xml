@@ -22,7 +22,7 @@
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
-            <version>1.6.1</version>
+            <version>${javax.mail.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -163,9 +163,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven-war-plugin.version>3.2.0</maven-war-plugin.version>
-        <maven.compiler.version>3.7.0</maven.compiler.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-        <jstl.version>1.2</jstl.version>
         <javax.servlet.jsp-api.version>2.3.2-b02</javax.servlet.jsp-api.version>
         <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
@@ -177,11 +175,11 @@
         <jade.version>1.2.5</jade.version>
         <junit.platform.version>1.0.2</junit.platform.version>
         <rome.version>1.9.0</rome.version>
-        <jackson.version>2.9.7</jackson.version>
         <xstream.version>1.4.9</xstream.version>
         <scribejava.version>5.1.0</scribejava.version>
         <json.version>20180130</json.version>
         <apache-tiles.version>3.0.8</apache-tiles.version>
+        <javax.mail.version>1.6.1</javax.mail.version>
     </properties>
 
 </project>
