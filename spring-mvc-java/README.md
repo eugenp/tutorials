@@ -24,7 +24,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [web.xml vs Initializer with Spring](http://www.baeldung.com/spring-xml-vs-java-config)
 - [The HttpMediaTypeNotAcceptableException in Spring MVC](http://www.baeldung.com/spring-httpmediatypenotacceptable)
 - [Spring MVC and the @ModelAttribute Annotation](http://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation)
-- [The Spring @Controller and @RestController Annotations](http://www.baeldung.com/spring-controller-vs-restcontroller)
 - [Spring MVC @PathVariable with a dot (.) gets truncated](http://www.baeldung.com/spring-mvc-pathvariable-dot)
 - [A Quick Example of Spring Websockets’ @SendToUser Annotation](http://www.baeldung.com/spring-websockets-sendtouser)
 - [Using Spring ResponseEntity to Manipulate the HTTP Response](http://www.baeldung.com/spring-response-entity)

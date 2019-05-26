@@ -5,27 +5,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.baeldung.web.controller.SimpleBookController;
-
-public class SimpleBookControllerIntegrationTest {
+public class SimpleBookRestControllerIntegrationTest {
 
     private MockMvc mockMvc;
     private static final String CONTENT_TYPE = "application/json;charset=UTF-8";
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.mockMvc = MockMvcBuilders.standaloneSetup(new SimpleBookController()).build();
+        this.mockMvc = MockMvcBuilders.standaloneSetup(new SimpleBookRestController()).build();
     }
 
     @Test
     public void givenBookId_whenMockMVC_thenVerifyResponse() throws Exception {
         this.mockMvc
-            .perform(get("/books/42"))
+            .perform(get("/books-rest/42"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(CONTENT_TYPE))
             .andExpect(jsonPath("$.id").value(42));

@@ -36,12 +36,25 @@
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
         </dependency>
+        
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+             <version>${jackson.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <scope>test</scope>
+            <version>${jayway.json-path.version}</version>
         </dependency>
     </dependencies>
 
@@ -58,6 +71,7 @@
     <properties>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <javax.jsp-api.version>2.3.3</javax.jsp-api.version>
+        <jayway.json-path.version>2.4.0</jayway.json-path.version>
     </properties>
 
 </project>
