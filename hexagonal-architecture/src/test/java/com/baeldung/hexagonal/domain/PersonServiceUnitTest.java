@@ -14,7 +14,7 @@ import java.util.UUID;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PersonServiceTest {
+public class PersonServiceUnitTest {
 
     @InjectMocks private PersonService personService;
 

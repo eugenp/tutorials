@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class PersonRepositoryAdapterTest {
+public class PersonRepositoryAdapterUnitTest {
 
     @Autowired private PersonRepositoryPort personRepositoryPort;
 

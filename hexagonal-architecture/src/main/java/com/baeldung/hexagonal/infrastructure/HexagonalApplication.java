@@ -1,8 +1,8 @@
 package com.baeldung.hexagonal.infrastructure;
 
-import com.baeldung.hexagonal.domain.PersonService;
 import com.baeldung.hexagonal.domain.PersonPort;
 import com.baeldung.hexagonal.domain.PersonRepositoryPort;
+import com.baeldung.hexagonal.domain.PersonService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
