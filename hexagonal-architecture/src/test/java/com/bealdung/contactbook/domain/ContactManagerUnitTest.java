@@ -23,7 +23,7 @@ public class ContactManagerUnitTest {
     }
 
     @Test
-    public void save_Should_Save_Contact_When_Valid() {
+    public void givenValidContact_whenSaving_thenRepositoryIsCalled() {
         // given
         Contact contact = Contact.builder().name("John").email("test@email.com").build();
 
@@ -35,7 +35,7 @@ public class ContactManagerUnitTest {
     }
 
     @Test(expected = ContactNotValidException.class)
-    public void save_Should_Throw_Exception_When_Contact_Not_Valid() {
+    public void givenNotValidContact_whenSaving_thenExceptionIsRaised() {
         // given
         Contact contactWithNoName = Contact.builder().email("test@email.com").build();
 

@@ -6,10 +6,10 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class ConsoleContactAdministratorAdapter {
-    private final ContactAdministrator contactManager;
+    private final ContactAdministrator contactAdministrator;
 
     public void saveContact(Contact contact) {
-        this.contactManager.save(contact);
+        this.contactAdministrator.save(contact);
     }
 
 }
