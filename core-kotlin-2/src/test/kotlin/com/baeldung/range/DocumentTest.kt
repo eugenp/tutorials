@@ -3,6 +3,8 @@ package com.baeldung.range
 import org.junit.Test
 import kotlin.test.assertEquals
 
+import com.baeldung.jvmannotations.*;
+
 class DocumentTest {
 
     @Test
