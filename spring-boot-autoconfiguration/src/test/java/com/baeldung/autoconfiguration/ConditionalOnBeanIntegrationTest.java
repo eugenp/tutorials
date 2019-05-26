@@ -15,7 +15,7 @@ public class ConditionalOnBeanIntegrationTest {
 
     @Test
     public void whenDependentBeanIsPresent_thenConditionalBeanCreated() {
-        this.contextRunner.withUserConfiguration(basicConfiguration.class, ConditionalOnBeanConfiguration.class)
+        this.contextRunner.withUserConfiguration(BasicConfiguration.class, ConditionalOnBeanConfiguration.class)
             .run((context) -> {
                 assertThat(context).hasBean("created");
                 assertThat(context).getBean("created")
@@ -28,7 +28,7 @@ public class ConditionalOnBeanIntegrationTest {
 
     @Test
     public void whenDependentBeanIsPresent_thenConditionalMissingBeanIgnored() {
-        this.contextRunner.withUserConfiguration(basicConfiguration.class, ConditionalOnMissingBeanConfiguration.class)
+        this.contextRunner.withUserConfiguration(BasicConfiguration.class, ConditionalOnMissingBeanConfiguration.class)
             .run((context) -> {
                 assertThat(context).hasBean("created");
                 assertThat(context).getBean("created")
@@ -49,7 +49,7 @@ public class ConditionalOnBeanIntegrationTest {
     }
 
     @Configuration
-    protected static class basicConfiguration {
+    protected static class BasicConfiguration {
         @Bean
         public String created() {
             return "This is always created";
