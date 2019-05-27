@@ -1,7 +1,7 @@
 package com.baeldung.xml.attribute;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
+import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -37,11 +37,8 @@ public class JaxpTransformer {
 
         // 3- Make the change on the selected nodes
         for (int i = 0; i < nodes.getLength(); i++) {
-            Node value = nodes.item(i)
-                .getAttributes()
-                .getNamedItem("customer");
-            String val = value.getNodeValue();
-            value.setNodeValue(val.replaceAll(oldValue, newValue));
+            Element value = (Element) nodes.item(i);
+            value.setAttribute("customer", newValue);
         }
 
         // 4- Save the result to a new XML doc
