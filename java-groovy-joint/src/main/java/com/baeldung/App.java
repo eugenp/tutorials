@@ -29,9 +29,10 @@ public class App {
     private App() throws IOException {
         loader = new GroovyClassLoader(this.getClass().getClassLoader());
         shell = new GroovyShell(loader, new Binding());
-        engine = new GroovyScriptEngine(new URL[] { new File("src/main/groovy/com/baeldung/").toURI().toURL() }, this.getClass().getClassLoader());
+        engine = new GroovyScriptEngine(new URL[] {
+          new File("src/main/groovy/com/baeldung/").toURI().toURL()
+        }, this.getClass().getClassLoader());
         engineFromFactory = new GroovyScriptEngineFactory().getScriptEngine();
-
     }
 
     private void runCompiledClasses(int x, int y) {
@@ -51,9 +52,10 @@ public class App {
     }
 
     private void runDynamicClassWithLoader(int x, int y) throws IllegalAccessException, InstantiationException, IOException {
-        Class calcClass = loader.parseClass(new File("src/main/groovy/com/baeldung/", "CalcMath.groovy"));
-        Object calc = calcClass.newInstance();
-        Object result = ((GroovyObject) calc).invokeMethod("calcSum", new Object[] { x + 14, y + 14 });
+        Class calcClass = loader.parseClass(
+          new File("src/main/groovy/com/baeldung/", "CalcMath.groovy"));
+        GroovyObject calc = (GroovyObject) calcClass.newInstance();
+        Object result = calc.invokeMethod("calcSum", new Object[] { x + 14, y + 14 });
         LOG.info("Result of CalcMath.calcSum() method is {}", result);
     }
 
@@ -68,7 +70,8 @@ public class App {
     }
 
     private void runDynamicClassWithEngineFactory(int x, int y) throws IllegalAccessException, InstantiationException, javax.script.ScriptException, FileNotFoundException {
-        Class calcClas = (Class) engineFromFactory.eval(new FileReader(new File("src/main/groovy/com/baeldung/", "CalcMath.groovy")));
+        Class calcClas = (Class) engineFromFactory.eval(
+          new FileReader(new File("src/main/groovy/com/baeldung/", "CalcMath.groovy")));
         GroovyObject calc = (GroovyObject) calcClas.newInstance();
         Object result = calc.invokeMethod("calcSum", new Object[] { x, y });
         LOG.info("Result of CalcMath.calcSum() method is {}", result);
