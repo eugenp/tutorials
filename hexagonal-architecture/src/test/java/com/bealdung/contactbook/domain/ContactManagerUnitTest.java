@@ -12,14 +12,14 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class ContactManagerUnitTest {
 
-    @Mock
-    private ContactRepository contactRepositoryMock;
+    @Mock // mocking the infrastructure abstraction
+    private ContactRepositoryPort contactRepositoryPortMock;
 
     private ContactManager contactManager;
 
     @Before
     public void setup() {
-        contactManager = new ContactManager(contactRepositoryMock);
+        contactManager = new ContactManager(contactRepositoryPortMock);
     }
 
     @Test
@@ -31,10 +31,10 @@ public class ContactManagerUnitTest {
         contactManager.save(contact);
 
         // then
-        verify(contactRepositoryMock, times(1)).save(contact);
+        verify(contactRepositoryPortMock, times(1)).save(contact);
     }
 
-    @Test(expected = ContactNotValidException.class)
+    @Test(expected = RuntimeException.class)
     public void givenNotValidContact_whenSaving_thenExceptionIsRaised() {
         // given
         Contact contactWithNoName = Contact.builder().email("test@email.com").build();

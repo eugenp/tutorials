@@ -4,25 +4,23 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.Collection;
 
-// Note: ContactManager implements both exposed interface "ports"
-//       and depends on ContactRepository "port"
 @RequiredArgsConstructor
-public class ContactManager implements ContactAdministrator, ContactSearcher {
+public class ContactManager implements ContactUIPort {
 
-    private final ContactRepository contactRepository;
+    private final ContactRepositoryPort contactRepositoryPort;
 
     @Override
     public void save(Contact contact) {
         if (valid(contact)) {  // business core logic
-            this.contactRepository.save(contact);
+            this.contactRepositoryPort.save(contact);
         } else {
-            throw new ContactNotValidException();
+            throw new RuntimeException("Contact is not valid!");
         }
     }
 
     @Override
     public Collection<Contact> findByName(String name) {
-        return this.contactRepository.findByName(name);
+        return this.contactRepositoryPort.findByName(name);
     }
 
     // contact must contain name at least
