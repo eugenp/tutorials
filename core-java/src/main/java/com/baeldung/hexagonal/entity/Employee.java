@@ -2,34 +2,34 @@ package com.baeldung.hexagonal.entity;
 
 public class Employee {
 
-	private Long empCode;
-	private String name;
+    private Long empCode;
+    private String name;
 
-	public Employee(Long empCode, String name) {
-		super();
-		this.empCode = empCode;
-		this.name = name;
-	}
+    public Employee(Long empCode, String name) {
+        super();
+        this.empCode = empCode;
+        this.name = name;
+    }
 
-	public Long getEmpCode() {
-		return empCode;
-	}
+    public Long getEmpCode() {
+        return empCode;
+    }
 
-	public void setEmpCode(Long empCode) {
-		this.empCode = empCode;
-	}
+    public void setEmpCode(Long empCode) {
+        this.empCode = empCode;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	@Override
-	public String toString() {
-		return "Employee [empCode=" + empCode + ", name=" + name + "]";
-	}
+    @Override
+    public String toString() {
+        return "Employee [empCode=" + empCode + ", name=" + name + "]";
+    }
 
 }

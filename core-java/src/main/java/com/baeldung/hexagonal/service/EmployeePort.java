@@ -6,5 +6,5 @@ import com.baeldung.hexagonal.entity.Employee;
 
 public interface EmployeePort {
 
-	List<Employee> getEmployees();
+    List<Employee> getEmployees();
 }
