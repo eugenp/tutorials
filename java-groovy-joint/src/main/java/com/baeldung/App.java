@@ -59,7 +59,8 @@ public class App {
         LOG.info("Result of CalcMath.calcSum() method is {}", result);
     }
 
-    private void runDynamicClassWithEngine(int x, int y) throws IllegalAccessException, InstantiationException, ResourceException, ScriptException {
+    private void runDynamicClassWithEngine(int x, int y) throws IllegalAccessException,
+      InstantiationException, ResourceException, ScriptException {
 
         Class<GroovyObject> calcClass = engine.loadScriptByName("CalcMath.groovy");
         GroovyObject calc = calcClass.newInstance();
@@ -69,7 +70,8 @@ public class App {
         LOG.info("Result of CalcMath.calcSum() method is {}", result);
     }
 
-    private void runDynamicClassWithEngineFactory(int x, int y) throws IllegalAccessException, InstantiationException, javax.script.ScriptException, FileNotFoundException {
+    private void runDynamicClassWithEngineFactory(int x, int y) throws IllegalAccessException,
+      InstantiationException, javax.script.ScriptException, FileNotFoundException {
         Class calcClas = (Class) engineFromFactory.eval(
           new FileReader(new File("src/main/groovy/com/baeldung/", "CalcMath.groovy")));
         GroovyObject calc = (GroovyObject) calcClas.newInstance();
@@ -83,7 +85,8 @@ public class App {
 
     }
 
-    private void runDynamicCompiledClasses() throws IOException, IllegalAccessException, InstantiationException, ClassNotFoundException, ResourceException, ScriptException, javax.script.ScriptException {
+    private void runDynamicCompiledClasses() throws IOException, IllegalAccessException, InstantiationException,
+      ResourceException, ScriptException, javax.script.ScriptException {
         LOG.info("Running a dynamic groovy script...");
         runDynamicShellScript(5, 10);
         LOG.info("Running a dynamic groovy class with GroovyClassLoader...");
@@ -94,7 +97,8 @@ public class App {
         runDynamicClassWithEngineFactory(5, 6);
     }
 
-    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, ResourceException, ScriptException, IOException, javax.script.ScriptException {
+    public static void main(String[] args) throws InstantiationException, IllegalAccessException,
+      ResourceException, ScriptException, IOException, javax.script.ScriptException {
         App app = new App();
         app.runStaticCompiledClasses();
         app.runDynamicCompiledClasses();
