@@ -22,7 +22,7 @@ import com.mongodb.client.model.geojson.Point;
 import com.mongodb.client.model.geojson.Polygon;
 import com.mongodb.client.model.geojson.Position;
 
-public class MongoGeospatialIntegrationTest {
+public class MongoGeospatialLiveTest {
 
     private MongoClient mongoClient;
     private MongoDatabase db;

@@ -19,7 +19,7 @@ import de.flapdoodle.embedmongo.config.MongodConfig;
 import de.flapdoodle.embedmongo.distribution.Version;
 import de.flapdoodle.embedmongo.runtime.Network;
 
-public class AppIntegrationTest {
+public class AppLiveTest {
 
     private static final String DB_NAME = "myMongoDb";
     private MongodExecutable mongodExe;
