@@ -1,13 +1,13 @@
 package com.bealdung.contactbook.infrastructure;
 
 import com.bealdung.contactbook.domain.Contact;
-import com.bealdung.contactbook.domain.ContactRepository;
+import com.bealdung.contactbook.domain.ContactRepositoryPort;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public class InMemoryContactRepositoryAdapter implements ContactRepository {
+public class InMemoryContactRepositoryAdapter implements ContactRepositoryPort {
     private Collection<Contact> contactList = new ArrayList<>();
 
     @Override
@@ -19,7 +19,7 @@ public class InMemoryContactRepositoryAdapter implements ContactRepository {
     @Override
     public Collection<Contact> findByName(String name) {
         return contactList.stream()
-                .filter(c -> c.getName().toLowerCase().contains(name.toLowerCase()))
-                .collect(Collectors.toList());
+          .filter(c -> c.getName().toLowerCase().contains(name.toLowerCase()))
+          .collect(Collectors.toList());
     }
 }
