@@ -4,9 +4,13 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
@@ -17,17 +21,14 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class JaxpProcessorUnitTest {
-
-    @Test
-    void dunno() throws IOException, SAXException, ParserConfigurationException, XPathExpressionException, TransformerFactoryConfigurationError, TransformerException {
+public class JaxpTransformer {
+    public String modifyAttribute(Document input) throws SAXException, IOException, ParserConfigurationException, XPathExpressionException, TransformerFactoryConfigurationError, TransformerException {
         String xml = this.getClass()
             .getClassLoader()
             .getResource("xml/attribute.xml")
@@ -38,7 +39,6 @@ public class JaxpProcessorUnitTest {
             .newDocumentBuilder()
             .parse(new InputSource(xml));
 
-        System.out.println(doc.getTextContent());
         // 2- Locate the node(s) with xpath
         XPath xpath = XPathFactory.newInstance()
             .newXPath();
@@ -54,12 +54,13 @@ public class JaxpProcessorUnitTest {
         }
 
         // 4- Save the result to a new XML doc
-        Transformer xformer = TransformerFactory.newInstance()
-            .newTransformer();
+        TransformerFactory factory = TransformerFactory.newInstance();
+        factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+        Transformer xformer=factory.newTransformer();
+        xformer.setOutputProperty(OutputKeys.INDENT, "yes");
         Writer output = new StringWriter();
         xformer.transform(new DOMSource(doc), new StreamResult(output));
-
-        System.out.println(output.toString());
+        
+        return output.toString();
     }
-
 }
