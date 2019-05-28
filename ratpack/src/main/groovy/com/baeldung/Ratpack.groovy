@@ -16,9 +16,7 @@ import ratpack.hikari.HikariModule
 import javax.sql.DataSource;
 
 ratpack {
-    serverConfig {
-        port(5050)
-    }
+    serverConfig { port(5050) }
     bindings {
         module(HikariModule) { config ->
             config.dataSourceClassName = 'org.h2.jdbcx.JdbcDataSource'
@@ -34,15 +32,15 @@ ratpack {
             render "Hello " + ctx.getPathTokens().get("name") + "!!!"
         }
 
-        get("data"){
-            render Jackson.json([title:"Mr",name:"Norman",country:"USA"])
+        get("data") {
+            render Jackson.json([title: "Mr", name: "Norman", country: "USA"])
         }
 
         post("user") {
             Promise<User> user = parse(Jackson.fromJson(User))
             user.then { u -> render u.name }
         }
-        
+
         get('fetchUserName/:id') { Context ctx ->
             Connection connection = ctx.get(DataSource.class).getConnection()
             PreparedStatement queryStatement = connection.prepareStatement("select name from user where id=?")
@@ -50,7 +48,6 @@ ratpack {
             ResultSet resultSet = queryStatement.executeQuery()
             resultSet.next()
             render resultSet.getString(1)
-          
         }
 
         get('fetchUsers') {
@@ -61,18 +58,18 @@ ratpack {
         }
 
         post('addUser') {
-            Promise<User> user = parse(Jackson.fromJson(User))
-            user.then { u ->
-                def db = [url:'jdbc:h2:mem:devDB']
-                Sql sql = Sql.newInstance(db.url, db.user, db.password)
-                sql.executeInsert("insert into user values (?,?,?,?)", [
-                    u.id,
-                    u.title,
-                    u.name,
-                    u.country
-                ])
-                render "User $u.name inserted"
-            }
+            parse(Jackson.fromJson(User))
+                .then { u ->
+                    def db = [url:'jdbc:h2:mem:devDB']
+                    Sql sql = Sql.newInstance(db.url, db.user, db.password)
+                    sql.executeInsert("insert into user values (?,?,?,?)", [
+                        u.id,
+                        u.title,
+                        u.name,
+                        u.country
+                    ])
+                    render "User $u.name inserted"
+                }
         }
     }
 }
