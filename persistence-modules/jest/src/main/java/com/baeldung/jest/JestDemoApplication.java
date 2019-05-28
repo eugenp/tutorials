@@ -32,7 +32,10 @@ public class JestDemoApplication {
         JestClient jestClient = context.getBean(JestClient.class);
 
         // Check an index
-        jestClient.execute(new IndicesExists.Builder("employees").build());
+        JestResult result = jestClient.execute(new IndicesExists.Builder("employees").build());
+        if(!result.isSucceeded()) {
+            System.out.println(result.getErrorMessage());
+        }
 
         // Create an index
         jestClient.execute(new CreateIndex.Builder("employees").build());
@@ -111,6 +114,10 @@ public class JestDemoApplication {
            jestClient.execute(new Search.Builder(search).build())
            .getHits(Employee.class);
 
+        searchResults.forEach(hit -> {
+            System.out.println(String.format("Document %s has score %s", hit.id, hit.score));
+        });
+
         // Update document
         employee.setYears_of_service(3);
         jestClient.execute(new Update.Builder(employee).index("employees").id("1").build());
@@ -131,7 +138,7 @@ public class JestDemoApplication {
         employee.setYears_of_service(10);
         employee.setSkills(Arrays.asList("javascript", "angular"));
 
-        jestClient.execute(new Bulk.Builder() .defaultIndex("employees")
+        jestClient.execute(new Bulk.Builder().defaultIndex("employees")
                 .addAction(new Index.Builder(employeeObject1).build())
                 .addAction(new Index.Builder(employeeObject2).build())
                 .addAction(new Delete.Builder("3").build()) .build());
