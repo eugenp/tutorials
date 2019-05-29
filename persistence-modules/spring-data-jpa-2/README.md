@@ -13,6 +13,5 @@
 - [JPA @Embedded And @Embeddable](https://www.baeldung.com/jpa-embedded-embeddable)
 - [Spring Data JPA Delete and Relationships](https://www.baeldung.com/spring-data-jpa-delete)
 - [Spring Data JPA and Named Entity Graphs](https://www.baeldung.com/spring-data-jpa-named-entity-graphs)
-- [Tagging and Filtering JUnit Tests](https://www.baeldung.com/junits-filtering-tests)
 - [Batch Insert/Update with Hibernate/JPA](https://www.baeldung.com/jpa-hibernate-batch-insert-update)
 - [Difference Between save() and saveAndFlush() in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-save-saveandflush)
