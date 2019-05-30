@@ -16,24 +16,9 @@
     <dependencies>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy</artifactId>
-            <version>${groovy.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>${groovy-all.version}</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-dateutil</artifactId>
             <version>${groovy.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-sql</artifactId>
-            <version>${groovy-sql.version}</version>
+            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
@@ -56,21 +41,29 @@
     </dependencies>
 
     <build>
+        <scriptSourceDirectory>src/main/groovy</scriptSourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.gmavenplus</groupId>
-                <artifactId>gmavenplus-plugin</artifactId>
-                <version>${gmavenplus-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>addSources</goal>
-                            <goal>addTestSources</goal>
-                            <goal>compile</goal>
-                            <goal>compileTests</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <compilerId>groovy-eclipse-compiler</compilerId>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.codehaus.groovy</groupId>
+                        <artifactId>groovy-eclipse-compiler</artifactId>
+                        <version>3.3.0-01</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.codehaus.groovy</groupId>
+                        <artifactId>groovy-eclipse-batch</artifactId>
+                        <version>${groovy.version}-01</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
@@ -108,6 +101,35 @@
                 </includes>
                 </configuration>
             </plugin>
+            <!-- Maven Assembly Plugin: needed to run the jar through command line -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <!-- get all project dependencies -->
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <!-- MainClass in mainfest make a executable jar -->
+                    <archive>
+                        <manifest>
+                            <mainClass>com.baeldung.App</mainClass>
+                        </manifest>
+                    </archive>
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <!-- bind to the packaging phase -->
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -120,9 +142,7 @@
 
     <properties>
         <junit.platform.version>1.0.0</junit.platform.version>
-        <groovy.version>2.5.6</groovy.version>
-        <groovy-all.version>2.5.6</groovy-all.version>
-        <groovy-sql.version>2.5.6</groovy-sql.version>
+        <groovy.version>2.5.7</groovy.version>
         <hsqldb.version>2.4.0</hsqldb.version>
         <spock-core.version>1.1-groovy-2.4</spock-core.version>
         <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>

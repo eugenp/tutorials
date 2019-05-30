@@ -1,50 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>java-groovy-joint</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
-    <name>java-groovy-joint</name>
+    <artifactId>core-groovy-2</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>core-groovy-2</name>
+    <packaging>jar</packaging>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <commons-lang3.version>3.9</commons-lang3.version>
-        <java.version>1.8</java.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <logback.version>1.2.3</logback.version>
-        <groovy.version>2.5.7</groovy.version>
-    </properties>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>bintray</id>
-            <name>Groovy Bintray</name>
-            <url>https://dl.bintray.com/groovy/maven</url>
-            <releases>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
     <dependencies>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
@@ -52,30 +21,29 @@
             <type>pom</type>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+            <version>${spock-core.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
+        <scriptSourceDirectory>src/main/groovy</scriptSourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
-            <plugin>
-                <!-- Build an executable JAR -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.2</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.baeldung.App</mainClass>
-                            <addClasspath>true</addClasspath>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
@@ -100,7 +68,7 @@
                         <groupId>org.codehaus.groovy</groupId>
                         <artifactId>groovy-all</artifactId>
                         <!-- any version of Groovy \>= 1.5.0 should work here -->
-                        <version>2.5.6</version>
+                        <version>${groovy.version}</version>
                         <scope>runtime</scope>
                         <type>pom</type>
                     </dependency>
@@ -110,8 +78,42 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
-
-
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>${junit.platform.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>junit5</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>**/*Test5.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20.1</version>
+                <configuration>
+                <useFile>false</useFile>
+                <includes>
+                    <include>**/*Test.java</include>
+                    <include>**/*Spec.java</include>
+                </includes>
+                </configuration>
+            </plugin>
             <!-- Maven Assembly Plugin: needed to run the jar through command line -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -144,5 +146,19 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
 
+    <properties>
+        <junit.platform.version>1.0.0</junit.platform.version>
+        <groovy.version>2.5.7</groovy.version>
+        <hsqldb.version>2.4.0</hsqldb.version>
+        <spock-core.version>1.1-groovy-2.4</spock-core.version>
+        <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
+    </properties>
 </project>
+
