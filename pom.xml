@@ -532,7 +532,8 @@
                 <module>protobuffer</module>
 
                 <module>persistence-modules</module>
-		<module>quarkus</module>
+                <module>quarkus</module>
+                <module>quick-hexagonal-architecture</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
