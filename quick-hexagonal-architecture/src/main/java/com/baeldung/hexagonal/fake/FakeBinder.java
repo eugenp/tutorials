@@ -5,6 +5,9 @@ import com.baeldung.hexagonal.persistence.PersonRepository;
 import javax.inject.Singleton;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 
+/**
+ * HK2 binder which allows developers to swap in the "Fake" implementation of the persistence abstraction.
+ */
 public class FakeBinder extends AbstractBinder {
 
     @Override

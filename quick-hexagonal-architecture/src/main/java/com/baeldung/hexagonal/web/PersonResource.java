@@ -12,6 +12,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+/**
+ * JAX-RS adapter for the {@link PersonService}.
+ */
 @Path("/person")
 @Produces(MediaType.APPLICATION_JSON)
 public class PersonResource {

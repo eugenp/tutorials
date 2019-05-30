@@ -2,6 +2,9 @@ package com.baeldung.hexagonal.fake;
 
 import com.baeldung.hexagonal.domain.Person;
 
+/**
+ * Immutable value object which implements {@link Person}
+ */
 class FakePerson implements Person {
 
     private final int id;

@@ -2,6 +2,9 @@ package com.baeldung.hexagonal.domain;
 
 import java.util.Objects;
 
+/**
+ * Immutable value object which represents a "create new person" request from some port.
+ */
 public class CreatePersonRequest {
 
     private String first;

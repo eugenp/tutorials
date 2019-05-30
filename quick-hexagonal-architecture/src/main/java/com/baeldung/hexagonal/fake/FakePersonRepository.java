@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * Repository for storing "fake" {@link Person} instances in an in-memory collection.
+ */
 class FakePersonRepository implements PersonRepository {
 
     private final List<Person> persons = new CopyOnWriteArrayList<>();

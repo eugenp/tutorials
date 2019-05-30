@@ -6,6 +6,9 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Starts the Person application's web interface. The interface exposes an API for creating and retrieving person objects. Runs on Jersey and Grizzly.
+ */
 public class Main {
 
     public static void main(String[] args) {

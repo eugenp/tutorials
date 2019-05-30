@@ -4,6 +4,9 @@ import com.baeldung.hexagonal.persistence.PersonFactory;
 import com.baeldung.hexagonal.persistence.PersonRepository;
 import javax.inject.Inject;
 
+/**
+ * Package-private implementation of the {@link PersonService} because modules outside this package should not know which concrete class implements {@link PersonService}.
+ */
 class PersonServiceImpl implements PersonService {
 
     private final PersonFactory factory;

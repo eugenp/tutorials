@@ -5,6 +5,9 @@ import com.baeldung.hexagonal.domain.Person;
 import com.baeldung.hexagonal.persistence.PersonFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * {@link PersonFactory} for creating "fake" {@link Person} instances.
+ */
 class FakePersonFactory implements PersonFactory {
 
     private final AtomicInteger id = new AtomicInteger();
