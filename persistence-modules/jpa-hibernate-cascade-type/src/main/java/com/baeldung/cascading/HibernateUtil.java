@@ -1,7 +1,7 @@
 package com.baeldung.cascading;
 
-import com.baeldung.hibernate.cascading.domain.Address;
-import com.baeldung.hibernate.cascading.domain.Person;
+import com.baeldung.cascading.domain.Address;
+import com.baeldung.cascading.domain.Person;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

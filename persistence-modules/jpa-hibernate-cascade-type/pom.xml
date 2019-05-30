@@ -9,9 +9,9 @@
         <relativePath>../../</relativePath>
     </parent>
 
+    <artifactId>jpa-hibernate-cascade-type</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <version>1.0.0-SNAPSHOT</version>
-    <artifactId>cascade-type</artifactId>
 
     <dependencies>
         <dependency>
@@ -49,7 +49,7 @@
     </dependencies>
 
     <build>
-        <finalName>hibernate-mapping</finalName>
+        <finalName>jpa-hibernate-cascade-type</finalName>
         <resources>
             <resource>
                 <directory>src/test/resources</directory>
@@ -64,6 +64,8 @@
         <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
         <javax.el-api.version>2.2.5</javax.el-api.version>
         <org.glassfish.javax.el.version>3.0.1-b08</org.glassfish.javax.el.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
 </project>

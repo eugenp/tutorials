@@ -1,5 +1,7 @@
 package com.baeldung.cascading.domain;
 
+import javax.persistence.*;
+
 @Entity
 public class Address {
     @Id

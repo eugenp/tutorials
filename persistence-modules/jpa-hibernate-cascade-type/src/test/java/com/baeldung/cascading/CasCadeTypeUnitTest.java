@@ -1,8 +1,9 @@
 package com.baeldung.cascading;
 
-import com.baeldung.hibernate.cascading.domain.Address;
-import com.baeldung.hibernate.cascading.domain.Person;
+import com.baeldung.cascading.domain.Address;
+import com.baeldung.cascading.domain.Person;
 import org.assertj.core.api.Assertions;
+import org.hibernate.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -10,7 +11,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class CasCadingTypeTest {
+public class CasCadeTypeUnitTest {
     private static SessionFactory sessionFactory;
     private Session session;
     private Transaction transaction;

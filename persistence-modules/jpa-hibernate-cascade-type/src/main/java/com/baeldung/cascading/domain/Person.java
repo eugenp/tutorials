@@ -1,5 +1,6 @@
 package com.baeldung.cascading.domain;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
