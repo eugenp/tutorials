@@ -35,8 +35,11 @@ public class RegistrationServiceUnitTest {
         String emailAddress = "some@user.org";
         registrationService.register(emailAddress);
 
-        //then
-        assertEquals(1, registrationService.fetchAllRegistrations().size());
-        assertEquals(emailAddress, registrationService.fetchAllRegistrations().get(0).getEmailAddress());
+        // then
+        assertEquals(1, registrationService.fetchAllRegistrations()
+            .size());
+        assertEquals(emailAddress, registrationService.fetchAllRegistrations()
+            .get(0)
+            .getEmailAddress());
     }
 }
