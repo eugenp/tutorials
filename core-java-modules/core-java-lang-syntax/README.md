@@ -5,7 +5,6 @@
 ### Relevant Articles: 
 - [The Basics of Java Generics](http://www.baeldung.com/java-generics)
 - [Java Primitive Conversions](http://www.baeldung.com/java-primitive-conversions)
-- [Java Double Brace Initialization](http://www.baeldung.com/java-double-brace-initialization)
 - [Guide to the Diamond Operator in Java](http://www.baeldung.com/java-diamond-operator)
 - [The Java continue and break Keywords](http://www.baeldung.com/java-continue-and-break)
 - [A Guide to Creating Objects in Java](http://www.baeldung.com/java-initialization)
