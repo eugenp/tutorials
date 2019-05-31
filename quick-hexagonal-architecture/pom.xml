@@ -9,21 +9,6 @@
   <artifactId>quick-hexagonal-architecture</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-
-    <jackson.version>2.9.9</jackson.version>
-    <junit.version>5.3.1</junit.version>
-    <junit.parallelism>4</junit.parallelism>
-    <parallel-test.nop>false</parallel-test.nop>
-    <jersey.version>2.28</jersey.version>
-    <slf4j.version>1.7.25</slf4j.version>
-    <logback-classic.version>1.2.3</logback-classic.version>
-    <hibernate.version>5.4.2.Final</hibernate.version>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -217,4 +202,19 @@
       </plugins>
     </pluginManagement>
   </build>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+    <jackson.version>2.9.9</jackson.version>
+    <junit.version>5.3.1</junit.version>
+    <junit.parallelism>4</junit.parallelism>
+    <parallel-test.nop>false</parallel-test.nop>
+    <jersey.version>2.28</jersey.version>
+    <slf4j.version>1.7.25</slf4j.version>
+    <logback-classic.version>1.2.3</logback-classic.version>
+    <hibernate.version>5.4.2.Final</hibernate.version>
+  </properties>
 </project>
