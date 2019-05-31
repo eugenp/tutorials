@@ -8,7 +8,6 @@
 - [Create a Sudoku Solver in Java](http://www.baeldung.com/java-sudoku)
 - [Displaying Money Amounts in Words](http://www.baeldung.com/java-money-into-words)
 - [A Collaborative Filtering Recommendation System in Java](http://www.baeldung.com/java-collaborative-filtering-recommendations)
-- [Check If Two Rectangles Overlap In Java](https://www.baeldung.com/java-check-if-two-rectangles-overlap)
 - [Calculate the Distance Between Two Points in Java](https://www.baeldung.com/java-distance-between-two-points)
 - [Find the Intersection of Two Lines in Java](https://www.baeldung.com/java-intersection-of-two-lines)
 - [Round Up to the Nearest Hundred](https://www.baeldung.com/java-round-up-nearest-hundred)
