@@ -21,7 +21,7 @@ import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 
-public class GeodeSamplesIntegrationTest {
+public class GeodeSamplesLiveTest {
 
     ClientCache cache = null;
     Region<String, String> region = null;
