@@ -1,10 +1,10 @@
 ## Relevant articles:
 
 - [Introduction to the Kotlin Language](http://www.baeldung.com/kotlin)
-- [A guide to the “when{}” block in Kotlin](http://www.baeldung.com/kotlin-when)
+- [Guide to the “when{}” Block in Kotlin](http://www.baeldung.com/kotlin-when)
 - [Comprehensive Guide to Null Safety in Kotlin](http://www.baeldung.com/kotlin-null-safety)
 - [Kotlin Java Interoperability](http://www.baeldung.com/kotlin-java-interoperability)
-- [Difference Between “==” and “===” in Kotlin](http://www.baeldung.com/kotlin-equality-operators)
+- [Difference Between “==” and “===” operators in Kotlin](http://www.baeldung.com/kotlin-equality-operators)
 - [Generics in Kotlin](http://www.baeldung.com/kotlin-generics)
 - [Introduction to Kotlin Coroutines](http://www.baeldung.com/kotlin-coroutines)
 - [Destructuring Declarations in Kotlin](http://www.baeldung.com/kotlin-destructuring-declarations)
@@ -52,3 +52,7 @@
 - [Inline Classes in Kotlin](https://www.baeldung.com/kotlin-inline-classes)
 - [Creating Java static final Equivalents in Kotlin](https://www.baeldung.com/kotlin-java-static-final)
 - [Nested forEach in Kotlin](https://www.baeldung.com/kotlin-nested-foreach)
+- [Building DSLs in Kotlin](https://www.baeldung.com/kotlin-dsl)
+- [Static Methods Behavior in Kotlin](https://www.baeldung.com/kotlin-static-methods)
+- [Inline Functions in Kotlin](https://www.baeldung.com/kotlin-inline-functions)
+- [Delegation Pattern in Kotlin](https://www.baeldung.com/kotlin-delegation-pattern)

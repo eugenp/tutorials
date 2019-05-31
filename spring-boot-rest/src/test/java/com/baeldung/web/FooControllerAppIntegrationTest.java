@@ -27,7 +27,7 @@ public class FooControllerAppIntegrationTest {
 
     @Test
     public void whenFindPaginatedRequest_thenEmptyResponse() throws Exception {
-        this.mockMvc.perform(get("/auth/foos").param("page", "0")
+        this.mockMvc.perform(get("/foos").param("page", "0")
             .param("size", "2"))
             .andExpect(status().isOk())
             .andExpect(content().json("[]"));

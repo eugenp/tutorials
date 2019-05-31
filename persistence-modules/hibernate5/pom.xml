@@ -30,12 +30,17 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2database.version}</version>
+            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-spatial</artifactId>
             <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.opengeo</groupId>
+            <artifactId>geodb</artifactId>
+            <version>${geodb.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -83,26 +88,38 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${openjdk-jmh.version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
     </dependencies>
 
     <build>
         <finalName>hibernate5</finalName>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
+                <directory>src/test/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
     </build>
+    
+    <repositories>
+        <repository>
+            <id>geodb-repo</id>
+            <name>GeoDB repository</name>
+            <url>http://repo.boundlessgeo.com/main/</url>
+        </repository>
+    </repositories>
 
     <properties>
         <hibernate.version>5.3.7.Final</hibernate.version>
         <mysql.version>6.0.6</mysql.version>
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
-        <h2database.version>1.4.196</h2database.version>
         <assertj-core.version>3.8.0</assertj-core.version>
-        <jackson.version>2.9.7</jackson.version>
         <openjdk-jmh.version>1.21</openjdk-jmh.version>
+        <geodb.version>0.9</geodb.version>
     </properties>
 
 </project>
