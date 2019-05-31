@@ -12,6 +12,7 @@
       <property name="javax.persistence.jdbc.password" value="" />
 
       <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+      <property name="hibernate.show_sql" value="true" />
     </properties>
   </persistence-unit>
 </persistence>

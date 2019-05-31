@@ -23,12 +23,19 @@ class EMFactory implements Factory<EntityManager> {
     @Override
     public EntityManager provide() {
         final EntityManager em = emf.createEntityManager();
-        closeableService.add(em::close);
+        // closeableService.add(em::close);
+        em.getTransaction()
+            .begin();
         return em;
     }
 
     @Override
     public void dispose(EntityManager em) {
+        if (em.getTransaction()
+            .isActive()) {
+            em.getTransaction()
+                .commit();
+        }
         if (em.isOpen()) {
             em.close();
         }

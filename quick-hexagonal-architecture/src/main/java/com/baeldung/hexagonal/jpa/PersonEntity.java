@@ -4,12 +4,14 @@ import com.baeldung.hexagonal.domain.Person;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class PersonEntity implements Person {
 
     @Id
+    @GeneratedValue
     private int id;
 
     @Column(nullable = false)
@@ -57,5 +59,10 @@ public class PersonEntity implements Person {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "PersonEntity{" + "id=" + id + ", first='" + first + '\'' + ", last='" + last + '\'' + '}';
     }
 }
