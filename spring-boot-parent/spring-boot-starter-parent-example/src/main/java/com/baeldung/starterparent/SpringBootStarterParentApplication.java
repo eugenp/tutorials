@@ -1,13 +1,13 @@
-package com.baeldung.springbootstarterparentexample;
+package com.baeldung.starterparent;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootStarterParentExampleApplication {
+public class SpringBootStarterParentApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootStarterParentExampleApplication.class, args);
+        SpringApplication.run(SpringBootStarterParentApplication.class, args);
         System.out.println("Spring boot application running with starter parent");
     }
 
