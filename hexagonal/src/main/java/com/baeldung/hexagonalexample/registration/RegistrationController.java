@@ -1,5 +1,6 @@
 package com.baeldung.hexagonalexample.registration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,19 +11,12 @@ import java.util.List;
 @RestController
 class RegistrationController {
 
+    @Autowired
     private RegistrationUserInterfacePort registrationUserInterfacePort;
-
-    public RegistrationController(RegistrationUserInterfacePort registrationUserInterfacePort) {
-        this.registrationUserInterfacePort = registrationUserInterfacePort;
-    }
-
-    @GetMapping("/registrations")
-    List<Registration> readAll() {
-        return registrationUserInterfacePort.fetchAllRegistrations();
-    }
 
     @PostMapping("/registrations")
     Registration create(@RequestBody String emailAddress) {
+
         return registrationUserInterfacePort.register(emailAddress);
     }
 }
