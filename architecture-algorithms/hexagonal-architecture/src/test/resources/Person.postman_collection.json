@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "388c45ff-9217-44b9-afa1-725d6031719e",
+		"name": "Person",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Fetch All Persons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/person/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person",
+						""
+					]
+				},
+				"description": "http://localhost:8080/person/"
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch One Person",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/person/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person",
+						"1"
+					]
+				},
+				"description": "http://localhost:8080/person/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Save One Person",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n     \"firstName\":\"Jacy\"\n\t,\"lastName\":\"Dow\"\n\t,\"email\":\"Jacy.Doe@email.com\"\n\t,\"mobileNumber\":\"+125658965\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/person/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person",
+						""
+					]
+				},
+				"description": "http://localhost:8080/person/"
+			},
+			"response": []
+		}
+	]
+}
