@@ -651,6 +651,7 @@
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-ops</module>
                 <module>spring-boot-rest</module>
+				<module>spring-boot-parent</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-testing</module>
@@ -1365,6 +1366,7 @@
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-ops</module>
                 <module>spring-boot-rest</module>
+				<module>spring-boot-parent</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-vue</module>
