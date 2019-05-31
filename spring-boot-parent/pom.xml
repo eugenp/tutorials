@@ -9,7 +9,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <name>spring-boot-parent</name>
     <description>spring-boot-parent</description>
-	<packaging>pom</packaging>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -20,7 +20,7 @@
 
     <modules>
         <module>spring-boot-starter-parent-example</module>
-		<module>spring-boot-custom-parent-example</module>
+        <module>spring-boot-custom-parent-example</module>
     </modules>
 
 </project>
