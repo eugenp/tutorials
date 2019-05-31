@@ -8,7 +8,6 @@
 - [A Guide to Creating Objects in Java](http://www.baeldung.com/java-initialization)
 - [A Guide to Java Loops](http://www.baeldung.com/java-loops)
 - [Varargs in Java](http://www.baeldung.com/java-varargs)
-- [A Guide to Java Enums](http://www.baeldung.com/a-guide-to-java-enums)
 - [Infinite Loops in Java](http://www.baeldung.com/infinite-loops-java)
 - [Quick Guide to java.lang.System](http://www.baeldung.com/java-lang-system)
 - [Java Switch Statement](https://www.baeldung.com/java-switch)
