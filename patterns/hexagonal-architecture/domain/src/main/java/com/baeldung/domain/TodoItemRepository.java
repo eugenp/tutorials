@@ -16,5 +16,4 @@ public interface TodoItemRepository {
     public void updateItem(TodoItem todoItem) throws TodoItemNotFoundException;
 
     public void removeItem(int id) throws TodoItemNotFoundException;
-
 }

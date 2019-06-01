@@ -17,7 +17,4 @@ public interface TodoItemService {
     public TodoItem upgradePriority(TodoItem todoItem) throws TodoItemNotFoundException;
 
     public TodoItem degradePriority(TodoItem todoItem) throws TodoItemNotFoundException;
-
-
-
 }

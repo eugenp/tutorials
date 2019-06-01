@@ -12,8 +12,7 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>..</relativePath>
-    </parent>
-
+    </parent>	
 	
     <modules>
         <module>infrastructure</module>
@@ -37,21 +36,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <target>${java.version}</target>
-                    <source>${java.version}</source>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
 
 </project>
