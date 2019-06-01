@@ -13,11 +13,11 @@ import org.flowable.task.api.Task;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 
 @ExtendWith(FlowableSpringExtension.class)
-@ExtendWith(SpringExtension.class)
-public class ArticleWorkflowUnitTest {
+@SpringBootTest
+public class ArticleWorkflowIntegrationTest {
     @Autowired
     private RuntimeService runtimeService;
     @Autowired
