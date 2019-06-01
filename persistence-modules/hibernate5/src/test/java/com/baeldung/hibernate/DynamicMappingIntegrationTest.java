@@ -129,7 +129,7 @@ public class DynamicMappingIntegrationTest {
 
         employees = session.createQuery("from Employee").getResultList();
 
-        assertThat(employees).hasSize(3);
+        assertThat(employees).hasSize(0);
 
     }
 

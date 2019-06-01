@@ -1527,6 +1527,7 @@
 		<logback.version>1.1.7</logback.version>
 
 		<!-- plugins -->
+                <!-- can't upgrade the plugin yet; as there is an issue with 2.22 no longer running all the tests-->
 		<maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 		<exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>

@@ -19,10 +19,7 @@ public class HibernateUtil {
     }
 
     public static SessionFactory getSessionFactory(Strategy strategy) {
-        if (sessionFactory == null) {
-            sessionFactory = buildSessionFactory(strategy);
-        }
-        return sessionFactory;
+        return buildSessionFactory(strategy);
     }
 
     private static SessionFactory buildSessionFactory(Strategy strategy) {

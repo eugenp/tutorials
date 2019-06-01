@@ -16,7 +16,7 @@ import org.junit.Test;
  * @author Donato Rimenti
  *
  */
-public class TaggingIntegrationTest {
+public class TaggingLiveTest {
 
 	/**
 	 * Object to test.
