@@ -4,8 +4,8 @@
     <groupId>com.baeldung</groupId>
     <version>0.1-SNAPSHOT</version>
     <artifactId>apache-velocity</artifactId>
-    <packaging>war</packaging>
     <name>apache-velocity</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -59,7 +59,6 @@
     </build>
 
     <properties>
-        <jstl.version>1.2</jstl.version>
         <org.apache.httpcomponents.version>4.5.2</org.apache.httpcomponents.version>
         <velocity-version>1.7</velocity-version>
         <velocity-tools-version>2.0</velocity-tools-version>

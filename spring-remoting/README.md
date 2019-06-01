@@ -4,7 +4,7 @@
 - [Intro to Spring Remoting with HTTP Invokers](http://www.baeldung.com/spring-remoting-http-invoker)
 - [Spring Remoting with Hessian and Burlap](http://www.baeldung.com/spring-remoting-hessian-burlap)
 - [Spring Remoting with AMQP](http://www.baeldung.com/spring-remoting-amqp)
-- [Spring Remoting with JMS](http://www.baeldung.com/spring-remoting-jms)
+- [Spring Remoting with JMS and ActiveMQ](http://www.baeldung.com/spring-remoting-jms)
 - [Spring Remoting with RMI](http://www.baeldung.com/spring-remoting-rmi)
 
 ### Overview

@@ -61,9 +61,10 @@
     </build>
 
     <properties>
-        <asciidoctor-maven-plugin.version>1.5.5</asciidoctor-maven-plugin.version>
-        <asciidoctorj.version>1.5.4</asciidoctorj.version>
-        <asciidoctorj-pdf.src.version>1.5.0-alpha.11</asciidoctorj-pdf.src.version>
+        <asciidoctor-maven-plugin.version>1.5.6</asciidoctor-maven-plugin.version>
+        <asciidoctorj.version>1.5.6</asciidoctorj.version>
+        
+        <asciidoctorj-pdf.version>1.5.0-alpha.15</asciidoctorj-pdf.version>
         <asciidoctorj-pdf.plugin.version>1.5.0-alpha.15</asciidoctorj-pdf.plugin.version>
     </properties>
 

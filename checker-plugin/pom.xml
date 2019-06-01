@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>checker-plugin</artifactId>
-    <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>checker-plugin</name>
+    <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 
     <parent>
@@ -41,27 +41,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <!-- This plugin will set properties values using dependency information -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <!--
-                            Goal that sets a property pointing to the artifact file for each project dependency.
-                            For each dependency (direct and transitive) a project property will be set which
-                            follows the:
-
-                               groupId:artifactId:type:[classifier]
-
-                            form and contains the path to the resolved artifact. -->
-                            <goal>properties</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>

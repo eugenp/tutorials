@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration>
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID:- } [%t] --- %-40.40logger{39} : %m%n"/>
+        </layout>
+    </appender>
+    <appender name="graylog" class="org.graylog2.log.GelfAppender">
+        <param name="graylogHost" value="18.217.253.212"/>
+        <param name="originHost" value="localhost"/>
+        <param name="graylogPort" value="12201"/>
+        <param name="extractStacktrace" value="true"/>
+        <param name="addExtendedInformation" value="true"/>
+        <param name="facility" value="log4j"/>
+        <param name="Threshold" value="DEBUG"/>
+        <param name="additionalFields" value="{'environment': 'DEV', 'application': 'GraylogDemoApplication'}"/>
+    </appender>
+    <root>
+        <priority value="DEBUG"/>
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="graylog"/>
+    </root>
+</log4j:configuration>

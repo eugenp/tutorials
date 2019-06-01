@@ -32,7 +32,7 @@ public class StudentRepositoryIntegrationTest {
     
     @BeforeClass
     public static void startRedisServer() throws IOException {
-        redisServer = new redis.embedded.RedisServer(6379);
+        redisServer = new redis.embedded.RedisServer(6380);
         redisServer.start();
     }
     

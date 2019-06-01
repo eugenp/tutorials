@@ -22,7 +22,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authenticated()
             .and()
             .formLogin()
-            .permitAll();
+            .permitAll()
+            .and().csrf().disable();
     } // @formatter:on
 
     @Override
