@@ -8,7 +8,7 @@ import com.baeldung.crosscutting.TodoItemNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class TodoItemRepositoryImpl implements TodoItemRepository {
+public class InMemoryTodoItemRepositoryImpl implements TodoItemRepository {
 
     private static int todoItemId = 1;
     private final List<TodoItem> items = new ArrayList<TodoItem>();
