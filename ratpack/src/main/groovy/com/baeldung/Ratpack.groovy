@@ -26,7 +26,7 @@ ratpack {
 
     handlers {
 
-        get { render 'Hello World from Ratpck with Groovy!!' }
+        get { render 'Hello World from Ratpack with Groovy!!' }
 
         get("greet/:name") { Context ctx ->
             render "Hello " + ctx.getPathTokens().get("name") + "!!!"

@@ -21,7 +21,7 @@ class RatpackGroovySpec {
 
         then:
         assert response.statusCode == 200
-        assert response.body.text == "Hello World from Ratpck with Groovy!!"
+        assert response.body.text == "Hello World from Ratpack with Groovy!!"
     }
 
     @Test
