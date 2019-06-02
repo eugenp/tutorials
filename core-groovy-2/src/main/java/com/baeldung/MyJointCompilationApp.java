@@ -7,31 +7,36 @@ import groovy.util.ScriptException;
 import org.codehaus.groovy.jsr223.GroovyScriptEngineFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import javax.script.ScriptEngine;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
  * Hello world!
  *
  */
-public class App {
-    private final static Logger LOG = LoggerFactory.getLogger(App.class);
+public class MyJointCompilationApp {
+    private final static Logger LOG = LoggerFactory.getLogger(MyJointCompilationApp.class);
     private final GroovyClassLoader loader;
     private final GroovyShell shell;
     private final GroovyScriptEngine engine;
     private final ScriptEngine engineFromFactory;
 
-    private App() throws IOException {
+    public MyJointCompilationApp() {
         loader = new GroovyClassLoader(this.getClass().getClassLoader());
         shell = new GroovyShell(loader, new Binding());
-        engine = new GroovyScriptEngine(new URL[] {
-          new File("src/main/groovy/com/baeldung/").toURI().toURL()
-        }, this.getClass().getClassLoader());
+
+        URL url = null;
+        try {
+            url = new File("src/main/groovy/com/baeldung/").toURI().toURL();
+        } catch (MalformedURLException e) {
+            LOG.error("Exception while creating url", e);
+        }
+        engine = new GroovyScriptEngine(new URL[] {url}, this.getClass().getClassLoader());
         engineFromFactory = new GroovyScriptEngineFactory().getScriptEngine();
     }
 
@@ -99,8 +104,8 @@ public class App {
 
     public static void main(String[] args) throws InstantiationException, IllegalAccessException,
       ResourceException, ScriptException, IOException, javax.script.ScriptException {
-        App app = new App();
-        app.runStaticCompiledClasses();
-        app.runDynamicCompiledClasses();
+        MyJointCompilationApp myJointCompilationApp = new MyJointCompilationApp();
+        myJointCompilationApp.runStaticCompiledClasses();
+        myJointCompilationApp.runDynamicCompiledClasses();
     }
 }

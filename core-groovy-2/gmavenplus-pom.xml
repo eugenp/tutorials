@@ -15,6 +15,16 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
             <version>${groovy.version}</version>
@@ -127,7 +137,7 @@
                     <!-- MainClass in mainfest make a executable jar -->
                     <archive>
                         <manifest>
-                            <mainClass>com.baeldung.App</mainClass>
+                            <mainClass>com.baeldung.MyJointCompilationApp</mainClass>
                         </manifest>
                     </archive>
 
@@ -154,10 +164,14 @@
     </repositories>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.platform.version>1.0.0</junit.platform.version>
-        <groovy.version>2.5.7</groovy.version>
         <hsqldb.version>2.4.0</hsqldb.version>
         <spock-core.version>1.1-groovy-2.4</spock-core.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
+        <java.version>1.8</java.version>
+        <logback.version>1.2.3</logback.version>
+        <groovy.version>2.5.7</groovy.version>
         <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
     </properties>
 </project>
