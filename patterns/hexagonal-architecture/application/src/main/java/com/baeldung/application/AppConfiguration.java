@@ -3,7 +3,7 @@ package com.baeldung.application;
 import com.baeldung.domain.TodoItemRepository;
 import com.baeldung.domain.TodoItemService;
 import com.baeldung.domain.TodoItemServiceImpl;
-import com.baeldung.infrastructure.TodoItemRepositoryImpl;
+import com.baeldung.infrastructure.InMemoryTodoItemRepositoryImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,6 +16,6 @@ public class AppConfiguration {
 
     @Bean
     public TodoItemRepository todoItemRepository(){
-        return new TodoItemRepositoryImpl();
+        return new InMemoryTodoItemRepositoryImpl();
     }
 }
