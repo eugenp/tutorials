@@ -1,7 +1,5 @@
 package com.baeldung.springsessionmongodb;
 
-import java.util.Base64;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +11,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.session.data.mongo.MongoOperationsSessionRepository;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Base64;
 
 
 @RunWith(SpringRunner.class)
@@ -26,8 +26,8 @@ public class SpringSessionMongoDBIntegrationTest {
 
     @Test
     public void givenEndpointIsCalledTwiceAndResponseIsReturned_whenMongoDBIsQueriedForCount_thenCountMustBeSame() {
-        HttpEntity<String> response = restTemplate.
-                exchange("http://localhost:" + 8080, HttpMethod.GET, null, String.class);
+        HttpEntity<String> response = restTemplate
+                .exchange("http://localhost:" + 8080, HttpMethod.GET, null, String.class);
         HttpHeaders headers = response.getHeaders();
         String set_cookie = headers.getFirst(HttpHeaders.SET_COOKIE);
 
