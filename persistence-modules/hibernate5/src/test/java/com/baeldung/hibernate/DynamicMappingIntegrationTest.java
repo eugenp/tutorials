@@ -122,14 +122,10 @@ public class DynamicMappingIntegrationTest {
         Employee employee = session.get(Employee.class, 1);
         assertThat(employee.getGrossIncome()).isEqualTo(10_000);
 
-        session.close();
-
-        session = HibernateUtil.getSessionFactory().openSession();
-        transaction = session.beginTransaction();
-
+        session.disableFilter("incomeLevelFilter");
         employees = session.createQuery("from Employee").getResultList();
 
-        assertThat(employees).hasSize(0);
+        assertThat(employees).hasSize(3);
 
     }
 
