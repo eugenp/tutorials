@@ -14,7 +14,7 @@ public class InMemoryTodoItemRepositoryImpl implements TodoItemRepository {
     private final List<TodoItem> items = new ArrayList<TodoItem>();
 
 
-    public TodoItemRepositoryImpl() {
+    public InMemoryTodoItemRepositoryImpl() {
         // add some dummy data
         addItem(new TodoItem("first", "first details", ItemPriority.HIGH));
         addItem(new TodoItem("second", "second details", ItemPriority.MED));
