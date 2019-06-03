@@ -10,10 +10,12 @@ import static junit.framework.Assert.assertEquals;
 
 public class SortedTableMapUnitTest {
 
+  private final String VOLUME_LOCATION = "sortedTableMapVol.db";
+
   @Test
   public void givenValidSortedTableMapSetup_whenQueried_checkValuesCorrect() {
 
-    final String VOLUME_LOCATION = "sortedTableMapVol.db";
+
 
     //create memory mapped volume, readonly false
     Volume vol = MappedFileVol.FACTORY.makeVolume(VOLUME_LOCATION, false);
@@ -29,7 +31,7 @@ public class SortedTableMapUnitTest {
 
     //add content
     for(int i = 0; i < 100; i++){
-      sink.put(i, "Value " + String.valueOf(i));
+      sink.put(i, "Value " + Integer.toString(i));
     }
 
     sink.create();

@@ -16,18 +16,17 @@ public class HelloBaeldungUnitTest {
 
     DB db = DBMaker.memoryDB().make();
 
-    final String WELCOME_MESSAGE_KEY = "Welcome Message";
-    final String WELCOME_MESSAGE = "Hello Baeldung!";
+    String welcomeMessageKey = "Welcome Message";
+    String welcomeMessageString = "Hello Baeldung!";
 
     HTreeMap myMap = db.hashMap("myMap").createOrOpen();
-    myMap.put(WELCOME_MESSAGE_KEY, WELCOME_MESSAGE);
+    myMap.put(welcomeMessageKey, welcomeMessageString);
 
-    String welcomeMessage = (String) myMap.get(WELCOME_MESSAGE_KEY);
+    String welcomeMessageFromDB = (String) myMap.get(welcomeMessageKey);
 
     db.close();
 
-    assertEquals(WELCOME_MESSAGE, welcomeMessage);
-
+    assertEquals(welcomeMessageString, welcomeMessageFromDB);
   }
 
   @Test
@@ -35,17 +34,16 @@ public class HelloBaeldungUnitTest {
 
     DB db = DBMaker.fileDB("file.db").make();
 
-    final String WELCOME_MESSAGE_KEY = "Welcome Message";
-    final String WELCOME_MESSAGE = "Hello Baeldung!";
+    String welcomeMessageKey = "Welcome Message";
+    String welcomeMessageString = "Hello Baeldung!";
 
     HTreeMap myMap = db.hashMap("myMap").createOrOpen();
-    myMap.put(WELCOME_MESSAGE_KEY, WELCOME_MESSAGE);
+    myMap.put(welcomeMessageKey, welcomeMessageString);
 
-    String welcomeMessage = (String) myMap.get(WELCOME_MESSAGE_KEY);
+    String welcomeMessageFromDB = (String) myMap.get(welcomeMessageKey);
 
     db.close();
 
-    assertEquals(WELCOME_MESSAGE, welcomeMessage);
-
+    assertEquals(welcomeMessageString, welcomeMessageFromDB);
   }
 }

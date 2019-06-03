@@ -21,10 +21,10 @@ public class CollectionsUnitTest {
             .serializer(Serializer.STRING)
             .createOrOpen();
 
-    final String MY_STRING = "Baeldung!";
+    String myString = "Baeldung!";
 
-    set.add(MY_STRING);
-    set.add(MY_STRING);
+    set.add(myString);
+    set.add(myString);
 
     assertEquals(1, set.size());
 
