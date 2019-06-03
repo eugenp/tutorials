@@ -26,11 +26,8 @@ public class ImageCrawler extends WebCrawler {
             return false;
         }
 
-        if (IMG_PATTERNS.matcher(urlString).matches()) {
-            return true;
-        }
-
-        if (urlString.startsWith("https://www.baeldung.com/")) {
+        if (IMG_PATTERNS.matcher(urlString).matches() 
+            || urlString.startsWith("https://www.baeldung.com/")) {
             return true;
         }
 

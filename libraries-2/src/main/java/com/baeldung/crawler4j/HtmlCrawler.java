@@ -20,10 +20,9 @@ public class HtmlCrawler extends WebCrawler {
 
     @Override
     public boolean shouldVisit(Page referringPage, WebURL url) {
-        String urlString = url.getURL()
-            .toLowerCase();
-        return !EXCLUSIONS.matcher(urlString)
-            .matches() && urlString.startsWith("https://www.baeldung.com/");
+        String urlString = url.getURL().toLowerCase();
+        return !EXCLUSIONS.matcher(urlString).matches() 
+            && urlString.startsWith("https://www.baeldung.com/");
     }
 
     @Override
