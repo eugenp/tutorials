@@ -10,7 +10,7 @@ import static junit.framework.Assert.assertEquals;
 
 public class SortedTableMapUnitTest {
 
-  private final String VOLUME_LOCATION = "sortedTableMapVol.db";
+  private static final String VOLUME_LOCATION = "sortedTableMapVol.db";
 
   @Test
   public void givenValidSortedTableMapSetup_whenQueried_checkValuesCorrect() {
