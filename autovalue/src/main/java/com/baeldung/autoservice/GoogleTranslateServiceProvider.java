@@ -1,5 +1,7 @@
 package com.baeldung.autoservice;
 
+import com.google.auto.service.AutoService;
+
 import java.util.Locale;
 
 @AutoService(TranslateService.class)
