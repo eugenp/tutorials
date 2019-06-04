@@ -18,18 +18,8 @@
     <dependencies>
         <dependency>
             <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-engine</artifactId>
-            <version>${junit.platform.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>${junit.jupiter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
+            <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -92,13 +82,7 @@
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>${maven-surefire-plugin.version}</version>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.junit.platform</groupId>
-                                <artifactId>junit-platform-surefire-provider</artifactId>
-                                <version>${junit.platform.version}</version>
-                            </dependency>
-                        </dependencies>
+                        
                         <configuration>
                             <excludes>
                                 **/*IntegrationTest.java
@@ -148,9 +132,7 @@
     </profiles>
     
     <properties>
-        <junit.jupiter.version>5.4.2</junit.jupiter.version>
-        <junit.platform.version>1.2.0</junit.platform.version>
-        <junit.vintage.version>5.2.0</junit.vintage.version>
+        <junit.vintage.version>5.4.2</junit.vintage.version>
         <h2.version>1.4.196</h2.version>
         <spring.version>5.0.6.RELEASE</spring.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
