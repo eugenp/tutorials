@@ -19,8 +19,8 @@
     </parent>
 
     <modules>
-        <module>spring-boot-starter-parent-example</module>
-        <module>spring-boot-custom-parent-example</module>
+        <module>spring-boot-with-starter-parent</module>
+        <module>spring-boot-with-custom-parent</module>
     </modules>
 
 </project>

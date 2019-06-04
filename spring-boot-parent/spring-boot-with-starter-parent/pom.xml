@@ -5,9 +5,9 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>spring-boot-starter-parent-example</artifactId>
+    <artifactId>spring-boot-with-starter-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>spring-boot-starter-parent-example</name>
+    <name>spring-boot-with-starter-parent</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
