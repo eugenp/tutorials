@@ -3,7 +3,6 @@ package com.baeldung.algorithms.graphcycledetection;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.assertj.core.util.Arrays;
 import org.junit.Test;
 
 import com.baeldung.algorithms.graphcycledetection.domain.Graph;
