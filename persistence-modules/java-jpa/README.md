@@ -9,3 +9,4 @@
 - [Combining JPA And/Or Criteria Predicates](https://www.baeldung.com/jpa-and-or-criteria-predicates)
 - [Types of JPA Queries](https://www.baeldung.com/jpa-queries)
 - [JPA/Hibernate Projections](https://www.baeldung.com/jpa-hibernate-projections)
+- [Composite Primary Keys in JPA](https://www.baeldung.com/jpa-composite-primary-keys)
