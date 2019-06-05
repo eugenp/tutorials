@@ -8,3 +8,4 @@
 - [Converting Between LocalDate and SQL Date](https://www.baeldung.com/java-convert-localdate-sql-date)
 - [Combining JPA And/Or Criteria Predicates](https://www.baeldung.com/jpa-and-or-criteria-predicates)
 - [Types of JPA Queries](https://www.baeldung.com/jpa-queries)
+- [JPA/Hibernate Projections](https://www.baeldung.com/jpa-hibernate-projections)
