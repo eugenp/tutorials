@@ -921,6 +921,7 @@
 				<module>spring-vault</module>
 				<module>spring-vertx</module>
 				<module>spring-zuul/spring-zuul-foos-resource</module>
+				<module>persistence-modules/hibernate-mapping</module>
 				<module>persistence-modules/spring-data-dynamodb</module>
 				<module>persistence-modules/spring-data-eclipselink</module>
 				<module>persistence-modules/spring-data-solr</module>

@@ -4,9 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
+import javax.money.MonetaryAmount;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.hibernate.validator.constraints.Currency;
 
 @Entity
 public class User {
@@ -23,12 +25,6 @@ public class User {
     @Column(length = 5)
     @Size(min = 3, max = 5)
     private String city;
-
-    @CreditCardNumber
-    private String creditCardNumber;
-
-    @CreditCardNumber(ignoreNonDigitCharacters = true)
-    private String lenientCreditCardNumber;
 
     public User(String firstName, String middleName, String lastName, String city) {
         super();
@@ -68,21 +64,5 @@ public class User {
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getCreditCardNumber() {
-        return creditCardNumber;
-    }
-
-    public void setCreditCardNumber(String creditCardNumber) {
-        this.creditCardNumber = creditCardNumber;
-    }
-
-    public String getLenientCreditCardNumber() {
-        return lenientCreditCardNumber;
-    }
-
-    public void setLenientCreditCardNumber(String lenientCreditCardNumber) {
-        this.lenientCreditCardNumber = lenientCreditCardNumber;
     }
 }
