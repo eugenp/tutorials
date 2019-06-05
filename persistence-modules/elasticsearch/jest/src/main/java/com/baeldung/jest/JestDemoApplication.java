@@ -5,8 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.searchbox.client.JestClient;
+import io.searchbox.client.JestClientFactory;
 import io.searchbox.client.JestResult;
 import io.searchbox.client.JestResultHandler;
+import io.searchbox.client.config.HttpClientConfig;
 import io.searchbox.core.*;
 import io.searchbox.indices.CreateIndex;
 import io.searchbox.indices.IndicesExists;
@@ -15,21 +17,16 @@ import io.searchbox.indices.aliases.ModifyAliases;
 import io.searchbox.indices.aliases.RemoveAliasMapping;
 import io.searchbox.indices.mapping.PutMapping;
 import io.searchbox.indices.settings.GetSettings;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 
 import java.io.IOException;
 import java.util.*;
 
-@SpringBootApplication
 public class JestDemoApplication {
 
     public static void main(String[] args) throws IOException {
-        ApplicationContext context = SpringApplication.run(JestDemoApplication.class, args);
 
         // Demo the JestClient
-        JestClient jestClient = context.getBean(JestClient.class);
+        JestClient jestClient = jestClient();
 
         // Check an index
         JestResult result = jestClient.execute(new IndicesExists.Builder("employees").build());
@@ -160,4 +157,15 @@ public class JestDemoApplication {
         });
     }
 
+    private static JestClient jestClient()
+    {
+        JestClientFactory factory = new JestClientFactory();
+        factory.setHttpClientConfig(
+           new HttpClientConfig.Builder("http://localhost:9200")
+              .multiThreaded(true)
+              .defaultMaxTotalConnectionPerRoute(2)
+              .maxTotalConnection(20)
+              .build());
+        return factory.getObject();
+    }
 }
