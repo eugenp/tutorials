@@ -12,3 +12,4 @@
 - [Spring Data JPA and Null Parameters](https://www.baeldung.com/spring-data-jpa-null-parameters)
 - [Spring Data JPA Repository Populators](https://www.baeldung.com/spring-data-jpa-repository-populators)
 - [Spring Data JPA Delete and Relationships](https://www.baeldung.com/spring-data-jpa-delete)
+- [Derived Query Methods in Spring Data JPA Repositories](https://www.baeldung.com/spring-data-derived-queries)
