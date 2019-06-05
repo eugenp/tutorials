@@ -11,7 +11,6 @@
 	<packaging>pom</packaging>
 
     <modules>
-        <module>lombok-custom</module>
         <module>quarkus</module>
     </modules>
 
@@ -124,17 +123,22 @@
 					</excludes>
 				</configuration>
 				<dependencies>
-	                <dependency>
-	                    <groupId>org.junit.jupiter</groupId>
-	                    <artifactId>junit-jupiter-engine</artifactId>
-	                    <version>${junit-jupiter.version}</version>
-	                </dependency>
-					<dependency>
-						<groupId>org.junit.vintage</groupId>
-						<artifactId>junit-vintage-engine</artifactId>
-  	                    <version>${junit-jupiter.version}</version>
-					</dependency>
-            	</dependencies>
+                                    <dependency>
+	                                <groupId>org.junit.platform</groupId>
+	                                <artifactId>junit-platform-surefire-provider</artifactId>
+	                                <version>${junit-platform.version}</version>
+	                            </dependency>
+	                            <dependency>
+	                                <groupId>org.junit.jupiter</groupId>
+	                                <artifactId>junit-jupiter-engine</artifactId>
+	                                <version>${junit-jupiter.version}</version>
+	                            </dependency>
+                                    <dependency>
+                                        <groupId>org.junit.vintage</groupId>
+                                        <artifactId>junit-vintage-engine</artifactId>
+  	                                <version>${junit-jupiter.version}</version>
+                                    </dependency>
+                                </dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -392,6 +396,7 @@
                 <module>core-java-modules/core-java-concurrency-basic</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang-syntax</module>
                 <module>core-java-modules/core-java-lang</module>
@@ -1075,6 +1080,7 @@
                 <module>core-java-modules/core-java-concurrency-basic</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang-syntax</module>
                 <module>core-java-modules/core-java-lang</module>
@@ -1527,7 +1533,8 @@
 		<logback.version>1.1.7</logback.version>
 
 		<!-- plugins -->
-		<maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
+                <!-- can't upgrade the plugin yet; as there is an issue with 2.22 no longer running all the tests-->
+		<maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 		<exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
 		<java.version>1.8</java.version>
@@ -1538,7 +1545,7 @@
 		<jmh-generator.version>1.19</jmh-generator.version>
 		<hamcrest-all.version>1.3</hamcrest-all.version>
 		<exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
-		<maven-failsafe-plugin.version>2.19.1</maven-failsafe-plugin.version>
+		<maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
 		<commons-io.version>2.5</commons-io.version>
 		<commons-cli.version>1.4</commons-cli.version>
 		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>
@@ -1549,8 +1556,8 @@
 		<jstl.version>1.2</jstl.version>
 		<jackson.version>2.9.8</jackson.version>
 		<commons-fileupload.version>1.3</commons-fileupload.version>
-		<junit-platform.version>1.4.2</junit-platform.version>
-		<junit-jupiter.version>5.4.2</junit-jupiter.version>
+		<junit-platform.version>1.2.0</junit-platform.version>
+		<junit-jupiter.version>5.2.0</junit-jupiter.version>
 		<directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
 		<maven-install-plugin.version>2.5.1</maven-install-plugin.version>
 		<custom-pmd.version>0.0.1</custom-pmd.version>
