@@ -43,7 +43,7 @@ ratpack {
 
         get('fetchUserName/:id') { Context ctx ->
             Connection connection = ctx.get(DataSource.class).getConnection()
-            PreparedStatement queryStatement = connection.prepareStatement("select name from user where id=?")
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT NAME FROM USER WHERE ID=?")
             queryStatement.setInt(1, Integer.parseInt(ctx.getPathTokens().get("id")))
             ResultSet resultSet = queryStatement.executeQuery()
             resultSet.next()
@@ -53,7 +53,7 @@ ratpack {
         get('fetchUsers') {
             def db = [url:'jdbc:h2:mem:devDB']
             def sql = Sql.newInstance(db.url, db.user, db.password)
-            def users = sql.rows("select * from user");
+            def users = sql.rows("SELECT * FROM USER");
             render(Jackson.json(users))
         }
 
@@ -62,7 +62,7 @@ ratpack {
                 .then { u ->
                     def db = [url:'jdbc:h2:mem:devDB']
                     Sql sql = Sql.newInstance(db.url, db.user, db.password)
-                    sql.executeInsert("insert into user values (?,?,?,?)", [
+                    sql.executeInsert("INSERT INTO USER VALUES (?,?,?,?)", [
                         u.id,
                         u.title,
                         u.name,

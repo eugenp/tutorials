@@ -1,10 +1,10 @@
-DROP TABLE IF EXISTS user;
-CREATE TABLE user (
-  id bigint auto_increment primary key,
-  title varchar(255),
-  name varchar(255),
-  country varchar(255)
+DROP TABLE IF EXISTS USER;
+CREATE TABLE USER (
+  ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+  TITLE VARCHAR(255),
+  NAME VARCHAR(255),
+  COUNTRY VARCHAR(255)
 );
 
-insert into user values(1,'Mr','Norman Potter', 'USA');
-insert into user values(2,'Miss','Ketty Smith', 'FRANCE');
+INSERT INTO USER VALUES(1,'Mr','Norman Potter', 'USA');
+INSERT INTO USER VALUES(2,'Miss','Ketty Smith', 'FRANCE');
