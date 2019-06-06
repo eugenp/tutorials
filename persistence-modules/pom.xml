@@ -28,7 +28,7 @@
         <module>java-jdbi</module>
         <module>java-jpa</module>
         <module>java-mongodb</module>
-        <module>elasticsearch/jest</module>
+        <module>elasticsearch</module>
         <module>jnosql</module>
         <module>liquibase</module>
         <module>orientdb</module>
