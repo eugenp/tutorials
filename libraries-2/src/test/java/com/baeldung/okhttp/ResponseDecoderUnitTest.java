@@ -17,11 +17,9 @@ import java.io.InputStreamReader;
 
 public class ResponseDecoderUnitTest {
 
-    @Rule
-    public ExpectedException exceptionRule = ExpectedException.none();
+    @Rule public ExpectedException exceptionRule = ExpectedException.none();
 
-    @Rule
-    public MockWebServer server = new MockWebServer();
+    @Rule public MockWebServer server = new MockWebServer();
 
     SimpleEntity sampleResponse;
 
@@ -29,132 +27,76 @@ public class ResponseDecoderUnitTest {
 
     OkHttpClient client;
 
-
     @Before
     public void setUp() {
         sampleResponse = new SimpleEntity("Baeldung");
-        client = new OkHttpClient.Builder()
-                .build();
+        client = new OkHttpClient.Builder().build();
         mockResponse = new MockResponse()
-                .setResponseCode(200)
-                .setHeader("Content-Type", "application/json")
-                .setBody(new Gson().toJson(sampleResponse));
-    }
-
-    @Test
-    public void givenJacksonDecoder_whenGetByteStreamOfResponse_thenExpectSimpleEntity() throws Exception {
-
-        server.enqueue(mockResponse);
-
-        Request request = new Request.Builder()
-                .url(server.url(""))
-                .build();
-        ResponseBody responseBody = client.newCall(request).execute().body();
-
-        Assert.assertNotNull(responseBody);
-        Assert.assertNotEquals(0, responseBody.contentLength());
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        SimpleEntity response = objectMapper.readValue(responseBody.byteStream()
-                , SimpleEntity.class);
-
-        Assert.assertEquals(sampleResponse.getName(), response.getName());
+          .setResponseCode(200)
+          .setHeader("Content-Type", "application/json")
+          .setBody(new Gson().toJson(sampleResponse));
     }
 
     @Test
     public void givenJacksonDecoder_whenGetStringOfResponse_thenExpectSimpleEntity() throws Exception {
-
         server.enqueue(mockResponse);
-
         Request request = new Request.Builder()
-                .url(server.url(""))
-                .build();
-        ResponseBody responseBody = client.newCall(request).execute().body();
+          .url(server.url(""))
+          .build();
+        ResponseBody responseBody = client
+          .newCall(request)
+          .execute()
+          .body();
 
         Assert.assertNotNull(responseBody);
         Assert.assertNotEquals(0, responseBody.contentLength());
 
         ObjectMapper objectMapper = new ObjectMapper();
-        SimpleEntity response = objectMapper.readValue(responseBody.string(), SimpleEntity.class);
+        SimpleEntity entity = objectMapper.readValue(responseBody.string(), SimpleEntity.class);
 
-        Assert.assertEquals(sampleResponse.getName(), response.getName());
-    }
-
-    @Test
-    public void givenJacksonDecoder_whenGetCharStreamOfResponse_thenExpectSimpleEntity() throws Exception {
-
-        server.enqueue(mockResponse);
-
-        Request request = new Request.Builder()
-                .url(server.url(""))
-                .build();
-        ResponseBody responseBody = client.newCall(request).execute().body();
-
-        Assert.assertNotNull(responseBody);
-        Assert.assertNotEquals(0, responseBody.contentLength());
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        SimpleEntity response = objectMapper.readValue(responseBody.charStream(), SimpleEntity.class);
-
-        Assert.assertEquals(sampleResponse.getName(), response.getName());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(sampleResponse.getName(), entity.getName());
     }
 
     @Test
     public void givenGsonDecoder_whenGetByteStreamOfResponse_thenExpectSimpleEntity() throws Exception {
-
         server.enqueue(mockResponse);
-
         Request request = new Request.Builder()
-                .url(server.url(""))
-                .build();
-        ResponseBody responseBody = client.newCall(request).execute().body();
+          .url(server.url(""))
+          .build();
+        ResponseBody responseBody = client
+          .newCall(request)
+          .execute()
+          .body();
 
         Assert.assertNotNull(responseBody);
         Assert.assertNotEquals(0, responseBody.contentLength());
 
         Gson gson = new Gson();
-        SimpleEntity response = gson.fromJson(new InputStreamReader(responseBody.byteStream())
-                , SimpleEntity.class);
+        SimpleEntity entity = gson.fromJson(new InputStreamReader(responseBody.byteStream()), SimpleEntity.class);
 
-        Assert.assertEquals(sampleResponse.getName(), response.getName());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(sampleResponse.getName(), entity.getName());
     }
 
     @Test
     public void givenGsonDecoder_whenGetStringOfResponse_thenExpectSimpleEntity() throws Exception {
-
         server.enqueue(mockResponse);
-
         Request request = new Request.Builder()
-                .url(server.url(""))
-                .build();
-        ResponseBody responseBody = client.newCall(request).execute().body();
+          .url(server.url(""))
+          .build();
+        ResponseBody responseBody = client
+          .newCall(request)
+          .execute()
+          .body();
 
         Assert.assertNotNull(responseBody);
 
         Gson gson = new Gson();
-        SimpleEntity response = gson.fromJson(responseBody.string(), SimpleEntity.class);
+        SimpleEntity entity = gson.fromJson(responseBody.string(), SimpleEntity.class);
 
-        Assert.assertEquals(sampleResponse.getName(), response.getName());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(sampleResponse.getName(), entity.getName());
     }
-
-    @Test
-    public void givenGsonDecoder_whenGetCharStreamOfResponse_thenExpectSimpleEntity() throws Exception {
-
-        server.enqueue(mockResponse);
-
-        Request request = new Request.Builder()
-                .url(server.url(""))
-                .build();
-
-        ResponseBody responseBody = client.newCall(request).execute().body();
-
-        Assert.assertNotNull(responseBody);
-
-        Gson gson = new Gson();
-        SimpleEntity response = gson.fromJson(responseBody.charStream(), SimpleEntity.class);
-
-        Assert.assertEquals(sampleResponse.getName(), response.getName());
-    }
-
 
 }

@@ -8,6 +8,7 @@ public class SimpleEntity {
     }
 
     //no-arg constructor, getters and setters here
+    
     public SimpleEntity() {
     }
 
