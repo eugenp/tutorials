@@ -16,10 +16,10 @@
     <name>hexagonal-architecture</name>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
-        <groupId>com.baeldung</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
+        <relativePath/>
     </parent>
 
 </project>
