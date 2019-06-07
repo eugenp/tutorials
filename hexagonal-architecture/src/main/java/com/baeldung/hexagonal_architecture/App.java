@@ -8,12 +8,11 @@ import com.baeldung.hexagonal_architecture.core.FactsReader;
 import com.baeldung.hexagonal_architecture.core.ObtainFacts;
 import com.baeldung.hexagonal_architecture.core.RequestFacts;
 
-public class App 
-{
-	public static void main(String[] args) {
-		String filePath = new File("src/main/java/com/baeldung/hexagonal_architecture").getAbsolutePath();
-		// 1. Instantiate file adapter
-        ObtainFacts fileAdapter = new FileAdapter(filePath+"/input.txt");
+public class App {
+    public static void main(String[] args) {
+        String filePath = new File("src/main/java/com/baeldung/hexagonal_architecture").getAbsolutePath();
+        // 1. Instantiate file adapter
+        ObtainFacts fileAdapter = new FileAdapter(filePath + "/input.txt");
 
         // 2. Instantiate the core
         RequestFacts factsReader = new FactsReader(fileAdapter);
@@ -24,5 +23,5 @@ public class App
         System.out.println("Fact of the day is ");
         System.out.println(consoleAdapter.askForFacts());
 
-	}
+    }
 }
