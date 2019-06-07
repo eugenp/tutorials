@@ -11,54 +11,55 @@ import com.google.gson.Gson;
 
 public class CopySets {
 
-	// Copy Constructor
-	public static <T> Set<T> copyByConstructor(Set<T> original) {
-		Set<T> copy = new HashSet<>(original);
-		return copy;
-	}
+    // Copy Constructor
+    public static <T> Set<T> copyByConstructor(Set<T> original) {
+        Set<T> copy = new HashSet<>(original);
+        return copy;
+    }
 
-	// Set.addAll
-	public static <T> Set<T> copyBySetAddAll(Set<T> original) {
-		Set<T> copy = new HashSet<>();
-		copy.addAll(original);
-		return copy;
-	}
+    // Set.addAll
+    public static <T> Set<T> copyBySetAddAll(Set<T> original) {
+        Set<T> copy = new HashSet<>();
+        copy.addAll(original);
+        return copy;
+    }
 
-	// Set.clone
-	public static <T> Set<T> copyBySetClone(HashSet<T> original) {
-		Set<T> copy = (Set<T>) original.clone();
-		return copy;
-	}
+    // Set.clone
+    public static <T> Set<T> copyBySetClone(HashSet<T> original) {
+        Set<T> copy = (Set<T>) original.clone();
+        return copy;
+    }
 
-	// JSON
-	public static <T> Set<T> copyByJson(Set<T> original) {
-		Gson gson = new Gson();
-		String jsonStr = gson.toJson(original);
-		Set<T> copy = gson.fromJson(jsonStr, Set.class);
+    // JSON
+    public static <T> Set<T> copyByJson(Set<T> original) {
+        Gson gson = new Gson();
+        String jsonStr = gson.toJson(original);
+        Set<T> copy = gson.fromJson(jsonStr, Set.class);
 
-		return copy;
-	}
+        return copy;
+    }
 
-	// Apache Commons Lang
-	public static <T extends Serializable> Set<T> copyByApacheCommonsLang(Set<T> original) {
-		Set<T> copy = new HashSet<>();
-		for (T item : original) {
-			copy.add((T) SerializationUtils.clone(item));
-		}
-		return copy;
-	}
+    // Apache Commons Lang
+    public static <T extends Serializable> Set<T> copyByApacheCommonsLang(Set<T> original) {
+        Set<T> copy = new HashSet<>();
+        for (T item : original) {
+            copy.add((T) SerializationUtils.clone(item));
+        }
+        return copy;
+    }
 
-	// Collectors.toSet
-	public static <T extends Serializable> Set<T> copyByCollectorsToSet(Set<T> original) {
-		Set<T> copy = original.stream().collect(Collectors.toSet());
+    // Collectors.toSet
+    public static <T extends Serializable> Set<T> copyByCollectorsToSet(Set<T> original) {
+        Set<T> copy = original.stream()
+            .collect(Collectors.toSet());
 
-		return copy;
-	}
+        return copy;
+    }
 
-	// Using Java 10
-	public static <T> Set<T> copyBySetCopyOf(Set<T> original) {
-		Set<T> copy = Set.copyOf(original);
-		return copy;
-	}
+    // Using Java 10
+    public static <T> Set<T> copyBySetCopyOf(Set<T> original) {
+        Set<T> copy = Set.copyOf(original);
+        return copy;
+    }
 
 }
