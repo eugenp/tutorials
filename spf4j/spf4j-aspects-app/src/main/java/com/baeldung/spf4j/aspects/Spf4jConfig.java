@@ -1,6 +1,6 @@
 package com.baeldung.spf4j.aspects;
 
-import java.nio.file.Paths;
+import java.io.File;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,14 +12,8 @@ public class Spf4jConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
     public static void initialize() {
-        String tsDbFile = Paths.get(Paths.get("")
-            .toAbsolutePath()
-            .toString(), "spf4j-performance-monitoring.tsdb2")
-            .toString();
-        String tsTextFile = Paths.get(Paths.get("")
-            .toAbsolutePath()
-            .toString(), "spf4j-performance-monitoring.txt")
-            .toString();
+        String tsDbFile = System.getProperty("user.dir") + File.separator + "spf4j-performance-monitoring.tsdb2";
+        String tsTextFile = System.getProperty("user.dir") + File.separator + "spf4j-performance-monitoring.txt";
 
         LOGGER.info("\nTime Series DB (TSDB) : {}\nTime Series text file : {}", tsDbFile, tsTextFile);
         System.setProperty("spf4j.perf.ms.config", "TSDB@" + tsDbFile + "," + "TSDB_TXT@" + tsTextFile);
