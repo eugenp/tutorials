@@ -11,7 +11,6 @@
 	<packaging>pom</packaging>
 
     <modules>
-        <module>lombok-custom</module>
         <module>quarkus</module>
     </modules>
 
@@ -124,22 +123,22 @@
 					</excludes>
 				</configuration>
 				<dependencies>
-	                <dependency>
-	                    <groupId>org.junit.platform</groupId>
-	                    <artifactId>junit-platform-surefire-provider</artifactId>
-	                    <version>${junit-platform.version}</version>
-	                </dependency>
-	                <dependency>
-	                    <groupId>org.junit.jupiter</groupId>
-	                    <artifactId>junit-jupiter-engine</artifactId>
-	                    <version>${junit-jupiter.version}</version>
-	                </dependency>
-					<dependency>
-						<groupId>org.junit.vintage</groupId>
-						<artifactId>junit-vintage-engine</artifactId>
-  	                    <version>${junit-jupiter.version}</version>
-					</dependency>
-            	</dependencies>
+                                    <dependency>
+	                                <groupId>org.junit.platform</groupId>
+	                                <artifactId>junit-platform-surefire-provider</artifactId>
+	                                <version>${junit-platform.version}</version>
+	                            </dependency>
+	                            <dependency>
+	                                <groupId>org.junit.jupiter</groupId>
+	                                <artifactId>junit-jupiter-engine</artifactId>
+	                                <version>${junit-jupiter.version}</version>
+	                            </dependency>
+                                    <dependency>
+                                        <groupId>org.junit.vintage</groupId>
+                                        <artifactId>junit-vintage-engine</artifactId>
+  	                                <version>${junit-jupiter.version}</version>
+                                    </dependency>
+                                </dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -391,10 +390,13 @@
                 <module>core-java-modules/core-java-arrays</module>
                 <module>core-java-modules/core-java-collections</module>
                 <module>core-java-modules/core-java-collections-list</module>
+                <module>core-java-modules/core-java-collections-list-2</module>
+                <module>core-java-modules/core-java-collections-array-list</module>
                 <module>core-java-modules/core-java-collections-set</module>
                 <module>core-java-modules/core-java-concurrency-basic</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang-syntax</module>
                 <module>core-java-modules/core-java-lang</module>
@@ -635,7 +637,6 @@
                 <module>spring-boot-custom-starter</module>
                 <module>spring-boot-disable-console-logging</module>
                 <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
-                <module>spring-boot-exceptions</module>
                 <module>spring-boot-jasypt</module>
                 <module>spring-boot-keycloak</module>
                 <module>spring-boot-logging-log4j2</module>
@@ -834,7 +835,6 @@
 				<module>spring-boot-camel</module>
 				<module>spring-boot-client</module>
 				<module>spring-boot-custom-starter</module>
-                                <module>spring-boot-exceptions</module>
 		 		<module>greeter-spring-boot-autoconfigure</module>
 				<module>greeter-spring-boot-sample-app</module>
 				<module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
@@ -926,6 +926,7 @@
 				<module>spring-vault</module>
 				<module>spring-vertx</module>
 				<module>spring-zuul/spring-zuul-foos-resource</module>
+				<module>persistence-modules/hibernate-mapping</module>
 				<module>persistence-modules/spring-data-dynamodb</module>
 				<module>persistence-modules/spring-data-eclipselink</module>
 				<module>persistence-modules/spring-data-solr</module>
@@ -1073,10 +1074,13 @@
                 <module>core-java-modules/core-java-arrays</module>
                 <module>core-java-modules/core-java-collections</module>
                 <module>core-java-modules/core-java-collections-list</module>
+                <module>core-java-modules/core-java-collections-list-2</module>
+                <module>core-java-modules/core-java-collections-array-list</module>
                 <module>core-java-modules/core-java-collections-set</module>
                 <module>core-java-modules/core-java-concurrency-basic</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang-syntax</module>
                 <module>core-java-modules/core-java-lang</module>
@@ -1297,7 +1301,6 @@
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-custom-starter</module>
                 <module>spring-boot-disable-console-logging</module>
-                <module>spring-boot-exceptions</module>
                 <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
                 <module>spring-boot-jasypt</module>
                 <module>spring-boot-keycloak</module>
@@ -1530,6 +1533,7 @@
 		<logback.version>1.1.7</logback.version>
 
 		<!-- plugins -->
+                <!-- can't upgrade the plugin yet; as there is an issue with 2.22 no longer running all the tests-->
 		<maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 		<exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
@@ -1541,7 +1545,7 @@
 		<jmh-generator.version>1.19</jmh-generator.version>
 		<hamcrest-all.version>1.3</hamcrest-all.version>
 		<exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
-		<maven-failsafe-plugin.version>2.19.1</maven-failsafe-plugin.version>
+		<maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
 		<commons-io.version>2.5</commons-io.version>
 		<commons-cli.version>1.4</commons-cli.version>
 		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>

@@ -23,7 +23,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
 
-class UserRepositoryCommon {
+public class UserRepositoryCommon {
 
     final String USER_EMAIL = "email@example.com";
     final String USER_EMAIL2 = "email2@example.com";
@@ -280,7 +280,7 @@ class UserRepositoryCommon {
 
         userRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
 
-        List<User> usersSortByNameLength = userRepository.findAll(new Sort("LENGTH(name)"));
+        List<User> usersSortByNameLength = userRepository.findAll(Sort.by("LENGTH(name)"));
 
         assertThat(usersSortByNameLength.get(0)
           .getName()).isEqualTo(USER_NAME_ADAM);
@@ -292,7 +292,7 @@ class UserRepositoryCommon {
         userRepository.save(new User(USER_NAME_PETER, LocalDate.now(), USER_EMAIL2, ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE", LocalDate.now(), USER_EMAIL3, INACTIVE_STATUS));
 
-        userRepository.findAllUsers(new Sort("name"));
+        userRepository.findAllUsers(Sort.by("name"));
 
         List<User> usersSortByNameLength = userRepository.findAllUsers(JpaSort.unsafe("LENGTH(name)"));
 
@@ -309,7 +309,7 @@ class UserRepositoryCommon {
         userRepository.save(new User("SAMPLE2", LocalDate.now(), USER_EMAIL5, INACTIVE_STATUS));
         userRepository.save(new User("SAMPLE3", LocalDate.now(), USER_EMAIL6, INACTIVE_STATUS));
 
-        Page<User> usersPage = userRepository.findAllUsersWithPagination(new PageRequest(1, 3));
+        Page<User> usersPage = userRepository.findAllUsersWithPagination(PageRequest.of(1, 3));
 
         assertThat(usersPage.getContent()
           .get(0)
@@ -325,7 +325,7 @@ class UserRepositoryCommon {
         userRepository.save(new User("SAMPLE2", LocalDate.now(), USER_EMAIL5, INACTIVE_STATUS));
         userRepository.save(new User("SAMPLE3", LocalDate.now(), USER_EMAIL6, INACTIVE_STATUS));
 
-        Page<User> usersSortByNameLength = userRepository.findAllUsersWithPaginationNative(new PageRequest(1, 3));
+        Page<User> usersSortByNameLength = userRepository.findAllUsersWithPaginationNative(PageRequest.of(1, 3));
 
         assertThat(usersSortByNameLength.getContent()
           .get(0)
