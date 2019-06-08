@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class DoubleMatrix2DUniTest {
+class DoubleMatrix2DUnitTest {
 
     @Test
     void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
