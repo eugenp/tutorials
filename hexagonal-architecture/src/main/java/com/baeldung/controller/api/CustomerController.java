@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
-    private CustomerServicePort customerService;
+    private CustomerServicePort customerServicePort;
 
-    public CustomerController(CustomerServicePort customerService) {
-        this.customerService = customerService;
+    public CustomerController(CustomerServicePort customerServicePort) {
+        this.customerServicePort = customerServicePort;
     }
 
     @GetMapping()
     public Customer getCustomer() {
-        return customerService.getCustomer();
+        return customerServicePort.getCustomer();
     }
 }

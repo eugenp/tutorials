@@ -1,6 +1,5 @@
 package com.baeldung.controller.config;
 
-import com.baeldung.adapter.CustomerRepository;
 import com.baeldung.adapter.CustomerRepositoryAdapter;
 import com.baeldung.domain.port.CustomerRepositoryPort;
 import com.baeldung.domain.port.CustomerServicePort;
@@ -20,6 +19,6 @@ public class BeansConfiguration {
 
     @Bean
     CustomerRepositoryPort customerAdapter() {
-        return new CustomerRepositoryAdapter(new CustomerRepository());
+        return new CustomerRepositoryAdapter();
     }
 }
