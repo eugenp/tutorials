@@ -15,8 +15,7 @@ public class ConvertToMap {
     }
 
     public Map<Integer, Book> listToMapWithDupKey(List<Book> books) {
-        return books.stream().collect(Collectors.toMap(Book::getReleaseYear, Function.identity(),
-                (o1, o2) -> o1));
+        return books.stream().collect(Collectors.toMap(Book::getReleaseYear, Function.identity(), (existing, replacement) -> existing));
     }
 
     public Map<Integer, Book> listToConcurrentMap(List<Book> books) {
