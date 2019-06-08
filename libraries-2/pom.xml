@@ -56,6 +56,11 @@
             <version>${ejml.version}</version>
         </dependency>
 		<dependency>
+			<groupId>colt</groupId>
+			<artifactId>colt</artifactId>
+			<version>${colt.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 			<version>${spring-boot-starter.version}</version>
@@ -115,5 +120,6 @@
         <crawler4j.version>4.4.0</crawler4j.version>
 		<spring-boot-starter.version>2.1.4.RELEASE</spring-boot-starter.version>
 		<ejml.version>0.37.1</ejml.version>
+		<colt.version>1.2.0</colt.version>
 	</properties>
 </project>
