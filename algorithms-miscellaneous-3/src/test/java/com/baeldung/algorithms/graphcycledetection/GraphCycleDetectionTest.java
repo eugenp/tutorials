@@ -30,7 +30,6 @@ public class GraphCycleDetectionTest {
         graph.addEdge(vertexD, vertexC);
 
         assertTrue(graph.hasCycle());
-
     }
 
     @Test
@@ -53,6 +52,5 @@ public class GraphCycleDetectionTest {
         graph.addEdge(vertexD, vertexC);
 
         assertFalse(graph.hasCycle());
-
     }
 }
