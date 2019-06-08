@@ -1,7 +1,7 @@
 package com.baeldung.controller.api;
 
 import com.baeldung.domain.entity.Customer;
-import com.baeldung.domain.services.CustomerService;
+import com.baeldung.domain.port.CustomerServicePort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
-    private CustomerService customerService;
+    private CustomerServicePort customerService;
 
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(CustomerServicePort customerService) {
         this.customerService = customerService;
     }
 
-    @GetMapping
+    @GetMapping()
     public Customer getCustomer() {
-        return customerService.getRandomCustomer();
+        return customerService.getCustomer();
     }
 }
