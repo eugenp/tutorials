@@ -78,7 +78,7 @@
 
     <profiles>
         <profile>
-            <id>integration</id>
+            <id>integration-lite-first</id>
             <build>
                 <plugins>
                     <plugin>
