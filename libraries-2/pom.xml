@@ -82,11 +82,11 @@
 			<scope>test</scope>
 		</dependency>
 
-        <dependency>
-            <groupId>edu.uci.ics</groupId>
-            <artifactId>crawler4j</artifactId>
-            <version>${crawler4j.version}</version>
-        </dependency
+                <dependency>
+                    <groupId>edu.uci.ics</groupId>
+                    <artifactId>crawler4j</artifactId>
+                    <version>${crawler4j.version}</version>
+		</dependency>
           
 	</dependencies>
 
