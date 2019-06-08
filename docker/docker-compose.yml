@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+
+## VOLUME CONTAINER-TO-CONTAINER AND HOST-TO-CONTAINER TEST ##
+
+  volumes-example-service:
+    image: alpine:latest
+    container_name: volumes-example-service
+    volumes: 
+      - /tmp:/my-volumes/host-volume
+      - /home:/my-volumes/readonly-host-volume:ro
+      - my-named-global-volume:/my-volumes/named-global-volume    
+    tty: true # Needed to keep the container running
+
+  another-volumes-example-service:
+    image: alpine:latest
+    container_name: another-volumes-example-service
+    volumes: 
+      - my-named-global-volume:/another-path/the-same-named-global-volume
+    tty: true # Needed to keep the container running
+
+## NETWORK CONTAINER-TO-CONTAINER TEST ##
+
+  network-example-service:
+    image: karthequian/helloworld:latest
+    container_name: network-example-service
+    networks:
+      - my-shared-network
+
+  another-service-in-the-same-network:
+    image: alpine:latest
+    container_name: another-service-in-the-same-network
+    networks: 
+      - my-shared-network
+
+    tty: true # Needed to keep the container running
+
+  another-service-in-its-own-network:
+    image: alpine:latest
+    container_name: another-service-in-its-own-network
+    networks: 
+      - my-private-network
+    tty: true # Needed to keep the container running
+
+## NETWORK HOST-TO-CONTAINER TEST ##
+
+  network-example-service-available-to-host-on-port-1337:
+    image: karthequian/helloworld:latest
+    container_name: network-example-service-available-to-host-on-port-1337
+    networks: 
+      - my-shared-network
+    ports:
+      - "1337:80"
+
+volumes:
+  my-named-global-volume:
+
+networks:
+  my-shared-network: {}
+  my-private-network: {}

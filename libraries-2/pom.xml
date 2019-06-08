@@ -82,6 +82,12 @@
 			<scope>test</scope>
 		</dependency>
 
+        <dependency>
+            <groupId>edu.uci.ics</groupId>
+            <artifactId>crawler4j</artifactId>
+            <version>${crawler4j.version}</version>
+        </dependency
+          
 	</dependencies>
 
 	<properties>
@@ -89,6 +95,7 @@
 		<classgraph.version>4.8.28</classgraph.version>
 		<jbpm.version>6.0.0.Final</jbpm.version>
 		<picocli.version>3.9.6</picocli.version>
+        <crawler4j.version>4.4.0</crawler4j.version>
 		<spring-boot-starter.version>2.1.4.RELEASE</spring-boot-starter.version>
 	</properties>
 </project>
