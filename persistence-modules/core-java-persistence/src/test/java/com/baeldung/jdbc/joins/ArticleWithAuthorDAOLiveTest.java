@@ -1,6 +1,5 @@
 package com.baeldung.jdbc.joins;
 
-import org.h2.tools.Server;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,19 +12,15 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ArticleWithAuthorDAOIntegrationTest {
+public class ArticleWithAuthorDAOLiveTest {
         private Connection connection;
 
         private ArticleWithAuthorDAO articleWithAuthorDAO;
-        
-        private Server server;
 
         @Before
         public void setup() throws ClassNotFoundException, SQLException {
-            
-                server = Server.createTcpServer().start();
-                Class.forName("org.h2.Driver");
-                connection = DriverManager.getConnection("jdbc:h2:mem:test", "sa", "");
+                Class.forName("org.postgresql.Driver");
+                connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/myDb", "user", "pass");
                 articleWithAuthorDAO = new ArticleWithAuthorDAO(connection);
                 Statement statement = connection.createStatement();
                 String createAuthorSql = "CREATE TABLE IF NOT EXISTS AUTHOR (ID int NOT NULL PRIMARY KEY, FIRST_NAME varchar(255), LAST_NAME varchar(255));";
@@ -60,8 +55,7 @@ public class ArticleWithAuthorDAOIntegrationTest {
                 assertThat(articleWithAuthorList).anyMatch(row -> row.getTitle() == null);
         }
 
-        // Commenting JUNIT as currently H2 doesn't support FULL JOIN, please switch to other live database to run FULL JOIN queries
-        //@Test
+        @Test
         public void whenQueryWithFullJoin_thenShouldReturnProperRows() {
                 List<ArticleWithAuthor> articleWithAuthorList = articleWithAuthorDAO.articleFullJoinAuthor();
 
@@ -75,7 +69,6 @@ public class ArticleWithAuthorDAOIntegrationTest {
                 connection.createStatement().execute("DROP TABLE ARTICLE");
                 connection.createStatement().execute("DROP TABLE AUTHOR");
                 connection.close();
-                server.stop();
         }
 
         public void insertTestData(Statement statement) throws SQLException {
