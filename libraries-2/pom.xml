@@ -81,13 +81,17 @@
 			<version>3.14.2</version>
 			<scope>test</scope>
 		</dependency>
-
-                <dependency>
-                    <groupId>edu.uci.ics</groupId>
-                    <artifactId>crawler4j</artifactId>
-                    <version>${crawler4j.version}</version>
-		</dependency>
-          
+        <dependency>
+            <groupId>edu.uci.ics</groupId>
+            <artifactId>crawler4j</artifactId>
+            <version>${crawler4j.version}</version>
+        </dependency>
+        <!-- HandleBars -->
+        <dependency>
+            <groupId>com.github.jknack</groupId>
+            <artifactId>handlebars</artifactId>
+            <version>4.1.2</version>
+        </dependency>
 	</dependencies>
 
 	<properties>
