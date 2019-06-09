@@ -55,6 +55,17 @@
 			<artifactId>spring-boot-starter</artifactId>
 			<version>${spring-boot-starter.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>net.openhft</groupId>
+			<artifactId>chronicle-map</artifactId>
+			<version>${chronicle.map.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sun.java</groupId>
+					<artifactId>tools</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 
 	<properties>
@@ -62,6 +73,7 @@
 		<classgraph.version>4.8.28</classgraph.version>
 		<jbpm.version>6.0.0.Final</jbpm.version>
 		<picocli.version>3.9.6</picocli.version>
+		<chronicle.map.version>3.17.2</chronicle.map.version>
 		<spring-boot-starter.version>2.1.4.RELEASE</spring-boot-starter.version>
 	</properties>
 </project>
