@@ -8,7 +8,7 @@ import org.junit.Test;
 import com.baeldung.algorithms.graphcycledetection.domain.Graph;
 import com.baeldung.algorithms.graphcycledetection.domain.Vertex;
 
-public class GraphCycleDetectionTest {
+public class GraphCycleDetectionUnitTest {
 
     @Test
     public void givenGraph_whenCycleExists_thenReturnTrue() {
