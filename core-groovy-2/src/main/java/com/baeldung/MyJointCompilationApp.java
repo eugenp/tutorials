@@ -40,7 +40,7 @@ public class MyJointCompilationApp {
         engineFromFactory = new GroovyScriptEngineFactory().getScriptEngine();
     }
 
-    private void runCompiledClasses(int x, int y) {
+    private void addWithCompiledClasses(int x, int y) {
         LOG.info("Executing {} + {}", x, y);
         Object result1 = new CalcScript().calcSum(x, y);
         LOG.info("Result of CalcScript.calcSum() method is {}", result1);
@@ -49,14 +49,21 @@ public class MyJointCompilationApp {
         LOG.info("Result of CalcMath.calcSum() method is {}", result2);
     }
 
-    private void runDynamicShellScript(int x, int y) throws IOException {
+    private void addWithGroovyShell(int x, int y) throws IOException {
         Script script = shell.parse(new File("src/main/groovy/com/baeldung/", "CalcScript.groovy"));
         LOG.info("Executing {} + {}", x, y);
         Object result = script.invokeMethod("calcSum", new Object[] { x, y });
         LOG.info("Result of CalcScript.calcSum() method is {}", result);
     }
 
-    private void runDynamicClassWithLoader(int x, int y) throws IllegalAccessException, InstantiationException, IOException {
+    private void addWithGroovyShellRun() throws IOException {
+        Script script = shell.parse(new File("src/main/groovy/com/baeldung/", "CalcScript.groovy"));
+        LOG.info("Executing script run method");
+        Object result = script.run();
+        LOG.info("Result of CalcScript.run() method is {}", result);
+    }
+
+    private void addWithGroovyClassLoader(int x, int y) throws IllegalAccessException, InstantiationException, IOException {
         Class calcClass = loader.parseClass(
           new File("src/main/groovy/com/baeldung/", "CalcMath.groovy"));
         GroovyObject calc = (GroovyObject) calcClass.newInstance();
@@ -64,9 +71,8 @@ public class MyJointCompilationApp {
         LOG.info("Result of CalcMath.calcSum() method is {}", result);
     }
 
-    private void runDynamicClassWithEngine(int x, int y) throws IllegalAccessException,
+    private void addWithGroovyScriptEngine(int x, int y) throws IllegalAccessException,
       InstantiationException, ResourceException, ScriptException {
-
         Class<GroovyObject> calcClass = engine.loadScriptByName("CalcMath.groovy");
         GroovyObject calc = calcClass.newInstance();
         //WARNING the following will throw a ClassCastException
@@ -75,37 +81,40 @@ public class MyJointCompilationApp {
         LOG.info("Result of CalcMath.calcSum() method is {}", result);
     }
 
-    private void runDynamicClassWithEngineFactory(int x, int y) throws IllegalAccessException,
+    private void addWithEngineFactory(int x, int y) throws IllegalAccessException,
       InstantiationException, javax.script.ScriptException, FileNotFoundException {
-        Class calcClas = (Class) engineFromFactory.eval(
+        Class calcClass = (Class) engineFromFactory.eval(
           new FileReader(new File("src/main/groovy/com/baeldung/", "CalcMath.groovy")));
-        GroovyObject calc = (GroovyObject) calcClas.newInstance();
+        GroovyObject calc = (GroovyObject) calcClass.newInstance();
         Object result = calc.invokeMethod("calcSum", new Object[] { x, y });
         LOG.info("Result of CalcMath.calcSum() method is {}", result);
     }
 
-    private void runStaticCompiledClasses() {
+    private void addWithStaticCompiledClasses() {
         LOG.info("Running the Groovy classes compiled statically...");
-        runCompiledClasses(5, 10);
+        addWithCompiledClasses(5, 10);
 
     }
 
-    private void runDynamicCompiledClasses() throws IOException, IllegalAccessException, InstantiationException,
+    private void addWithDynamicCompiledClasses() throws IOException, IllegalAccessException, InstantiationException,
       ResourceException, ScriptException, javax.script.ScriptException {
-        LOG.info("Running a dynamic groovy script...");
-        runDynamicShellScript(5, 10);
-        LOG.info("Running a dynamic groovy class with GroovyClassLoader...");
-        runDynamicClassWithLoader(10, 30);
-        LOG.info("Running a dynamic groovy class with GroovyScriptEngine...");
-        runDynamicClassWithEngine(15, 0);
-        LOG.info("Running a dynamic groovy class with GroovyScriptEngine JSR223...");
-        runDynamicClassWithEngineFactory(5, 6);
+        LOG.info("Invocation of a dynamic groovy script...");
+        addWithGroovyShell(5, 10);
+        LOG.info("Invocation of the run method of a dynamic groovy script...");
+        addWithGroovyShellRun();
+        LOG.info("Invocation of a dynamic groovy class loaded with GroovyClassLoader...");
+        addWithGroovyClassLoader(10, 30);
+        LOG.info("Invocation of a dynamic groovy class loaded with GroovyScriptEngine...");
+        addWithGroovyScriptEngine(15, 0);
+        LOG.info("Invocation of a dynamic groovy class loaded with GroovyScriptEngine JSR223...");
+        addWithEngineFactory(5, 6);
     }
 
     public static void main(String[] args) throws InstantiationException, IllegalAccessException,
       ResourceException, ScriptException, IOException, javax.script.ScriptException {
         MyJointCompilationApp myJointCompilationApp = new MyJointCompilationApp();
-        myJointCompilationApp.runStaticCompiledClasses();
-        myJointCompilationApp.runDynamicCompiledClasses();
+        LOG.info("Example of addition operation via Groovy scripts integration with Java.");
+        myJointCompilationApp.addWithStaticCompiledClasses();
+        myJointCompilationApp.addWithDynamicCompiledClasses();
     }
 }
