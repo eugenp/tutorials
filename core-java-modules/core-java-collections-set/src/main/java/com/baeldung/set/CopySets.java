@@ -56,10 +56,4 @@ public class CopySets {
         return copy;
     }
 
-    // Using Java 10
-    public static <T> Set<T> copyBySetCopyOf(Set<T> original) {
-        Set<T> copy = Set.copyOf(original);
-        return copy;
-    }
-
 }
