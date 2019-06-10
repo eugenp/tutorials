@@ -22,6 +22,7 @@ public class AvroProducer {
         employee.setId(empId);
         employee.setFirstName(firstName);
         employee.setLastName(lastName);
+
         // creating partition key for kafka topic
         EmployeeKey employeeKey = new EmployeeKey();
         employeeKey.setId(empId);
@@ -33,7 +34,6 @@ public class AvroProducer {
 
         processor.output()
             .send(message);
-
     }
 
 }
