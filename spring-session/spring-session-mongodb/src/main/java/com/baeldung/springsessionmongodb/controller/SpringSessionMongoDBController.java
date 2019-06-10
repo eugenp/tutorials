@@ -1,10 +1,10 @@
 package com.baeldung.springsessionmongodb.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpSession;
 
 @RestController
 public class SpringSessionMongoDBController {
@@ -17,7 +17,7 @@ public class SpringSessionMongoDBController {
         if (counter == null) {
             counter = 1;
         } else {
-            counter += 1;
+            counter++;
         }
 
         session.setAttribute("count", counter);
