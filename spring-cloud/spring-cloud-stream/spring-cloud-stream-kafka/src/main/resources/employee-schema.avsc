@@ -1,0 +1,29 @@
+{
+	"type": "record",
+	"name": "Employee",
+	"namespace": "learn.avro.schema",
+	"fields": [
+	{
+		"name": "id",
+		"type": "int"
+	},
+	{
+		"name": "firstName",
+		"type": "string"
+	},
+	{
+		"name": "lastName",
+		"type": "string"
+	},
+	{
+		"name": "department",
+		"type": "string",
+		 "default": "depa-default"
+	},
+	{
+		"name": "designation",
+		"type": "string",
+		 "default": "desig-default"
+	}
+	]
+}
