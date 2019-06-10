@@ -1,7 +1,7 @@
 {
 	"type": "record",
 	"name": "EmployeeKey",
-	"namespace": "learn.avro.schema",
+	"namespace": "com.baeldung.schema",
 	"fields": [
 	 {
 		"name": "id",

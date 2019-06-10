@@ -1,7 +1,7 @@
 {
 	"type": "record",
 	"name": "Employee",
-	"namespace": "learn.avro.schema",
+	"namespace": "com.baeldung.schema",
 	"fields": [
 	{
 		"name": "id",
@@ -18,12 +18,12 @@
 	{
 		"name": "department",
 		"type": "string",
-		 "default": "depa-default"
+		 "default": "IT "
 	},
 	{
 		"name": "designation",
 		"type": "string",
-		 "default": "desig-default"
+		 "default": "Software Engineer"
 	}
 	]
 }
