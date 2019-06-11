@@ -77,7 +77,7 @@
     </build>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spf4j.version>8.6.9</spf4j.version>
+        <spf4j.version>8.6.10</spf4j.version>
         <org.slf4j.version>1.7.21</org.slf4j.version>
     </properties>
 </project>
