@@ -1,7 +1,8 @@
 <configuration>
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="STDOUT"
+        class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-             <pattern>[%level] %msg%n</pattern>
+            <pattern>[%level] %msg%n</pattern>
         </encoder>
     </appender>
     <root level="debug">
