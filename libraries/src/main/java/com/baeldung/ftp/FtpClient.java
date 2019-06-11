@@ -59,5 +59,6 @@ class FtpClient {
     void downloadFile(String source, String destination) throws IOException {
         FileOutputStream out = new FileOutputStream(destination);
         ftp.retrieveFile(source, out);
+        out.close();
     }
 }

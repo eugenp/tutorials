@@ -7,3 +7,5 @@
 - [Exploring the New HTTP Client in Java 9 and 11](https://www.baeldung.com/java-9-http-client)
 - [An Introduction to Epsilon GC: A No-Op Experimental Garbage Collector](https://www.baeldung.com/jvm-epsilon-gc-garbage-collector)
 - [Guide to jlink](https://www.baeldung.com/jlink)
+- [Negate a Predicate Method Reference with Java 11](https://www.baeldung.com/java-negate-predicate-method-reference)
+- [Transforming an Empty String into an Empty Optional](https://www.baeldung.com/java-empty-string-to-empty-optional)
