@@ -15,6 +15,8 @@
 
     <modules>
         <module>pre-jpms</module>
+        <module>core-java-exceptions</module>
+        <module>core-java-optional</module>
     </modules>
     
 </project>

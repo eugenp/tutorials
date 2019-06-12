@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.Resource;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -19,9 +20,7 @@ import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFacto
 @Configuration
 @EnableAuthorizationServer
 @Order(6)
-public class AuthServerConfigurer
-    extends
-        AuthorizationServerConfigurerAdapter {
+public class AuthServerConfigurer extends AuthorizationServerConfigurerAdapter {
 
     @Value("${jwt.certificate.store.file}")
     private Resource keystore;
@@ -37,6 +36,9 @@ public class AuthServerConfigurer
 
     @Autowired
     private UserDetailsService userDetailsService;
+    
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public void configure(
@@ -45,8 +47,8 @@ public class AuthServerConfigurer
         clients
             .inMemory()
             .withClient("authserver")
-            .secret("passwordforauthserver")
-            .redirectUris("http://localhost:8080/")
+            .secret(passwordEncoder.encode("passwordforauthserver"))
+            .redirectUris("http://localhost:8080/login")
             .authorizedGrantTypes("authorization_code",
                 "refresh_token")
             .scopes("myscope")

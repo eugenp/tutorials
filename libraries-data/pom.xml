@@ -263,6 +263,16 @@
             <groupId>org.apache.storm</groupId>
             <artifactId>storm-core</artifactId>
             <version>${storm.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>log4j-over-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -432,9 +442,7 @@
     <properties>
         <storm.version>1.2.2</storm.version>
         <kryo.version>4.0.1</kryo.version>
-        <h2.version>1.4.196</h2.version>
         <reladomo.version>16.5.1</reladomo.version>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <ormlite.version>5.0</ormlite.version>
         <kafka.version>1.0.0</kafka.version>
         <ignite.version>2.4.0</ignite.version>

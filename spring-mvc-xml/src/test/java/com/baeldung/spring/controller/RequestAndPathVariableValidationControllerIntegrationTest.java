@@ -12,12 +12,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.baeldung.spring.ClientWebConfig;
+import com.baeldung.spring.ClientWebConfigJava;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = ClientWebConfig.class)
+@ContextConfiguration(classes = ClientWebConfigJava.class)
 @WebAppConfiguration
 public class RequestAndPathVariableValidationControllerIntegrationTest {
 
