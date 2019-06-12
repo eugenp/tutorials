@@ -1,7 +1,5 @@
 package com.baeldung.hexagon;
 
 public interface TaxService {
-
-	public double calculateTax(Double amount);
-	
+    public double calculateTax(double amount);
 }
