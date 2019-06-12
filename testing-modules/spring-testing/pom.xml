@@ -45,6 +45,11 @@
             <version>LATEST</version>
         </dependency>
         <dependency>
+         <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
             <version>2.1.1</version>
@@ -66,6 +71,11 @@
             <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.api.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -84,6 +94,8 @@
         <hamcrest.version>2.0.0.0</hamcrest.version>
         <awaitility.version>3.1.6</awaitility.version>
         <junit.jupiter.version>5.4.0</junit.jupiter.version>
+        <spring.version>5.1.4.RELEASE</spring.version>
+        <servlet.api.version>4.0.1</servlet.api.version>
     </properties>
 
 </project>
