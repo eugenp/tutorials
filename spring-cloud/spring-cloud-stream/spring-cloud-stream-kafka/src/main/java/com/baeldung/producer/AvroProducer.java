@@ -22,6 +22,8 @@ public class AvroProducer {
         employee.setId(empId);
         employee.setFirstName(firstName);
         employee.setLastName(lastName);
+        employee.setDepartment("IT");
+        employee.setDesignation("Engineer");
 
         // creating partition key for kafka topic
         EmployeeKey employeeKey = new EmployeeKey();

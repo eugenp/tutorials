@@ -10,6 +10,7 @@ spring:
         input:
           destination: employee-details
           content-type: application/*+avro
+          group: group-1
         output:
           destination: employee-details
           content-type: application/*+avro
