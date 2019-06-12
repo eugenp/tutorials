@@ -5,7 +5,7 @@
     <artifactId>spring-boot-performance</artifactId>
     <name>spring-boot-performance</name>
     <packaging>war</packaging>
-    <description>This is a simple Spring Boot application taking advantage of the latests Spring Boot improvements/features. Current version: 2.2</description>
+    <description>This is a simple Spring Boot application taking advantage of the latest Spring Boot improvements/features. Current version: 2.2</description>
 
     <parent>
         <artifactId>parent-boot-performance</artifactId>
