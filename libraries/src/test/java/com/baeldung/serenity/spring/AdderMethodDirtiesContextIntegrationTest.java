@@ -28,7 +28,7 @@ public class AdderMethodDirtiesContextIntegrationTest {
     @Test
     public void _1_givenNumber_whenAdd_thenSumWrong() {
         adderServiceSteps.whenAdd();
-        adderServiceSteps.sumWrong();
+        adderServiceSteps.summedUp();
     }
 
     @Rule
