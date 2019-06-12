@@ -77,7 +77,7 @@ public class ChronicleMapUnitTest {
     }
 
     @Test
-    public void shouldReturnResult_whenQuery_withGet() {
+    public void givenGetQuery_whenCalled_shouldReturnResult() {
         LongValue key = Values.newHeapInstance(LongValue.class);
         key.setValue(1);
         CharSequence country = inMemoryCountryMap.get(key);
@@ -85,7 +85,7 @@ public class ChronicleMapUnitTest {
     }
 
     @Test
-    public void shouldReturnResult_whenQuery_withGetUsing() {
+    public void givenGetUsingQuery_whenCalled_shouldReturnResult() {
         LongValue key = Values.newHeapInstance(LongValue.class);
         StringBuilder country = new StringBuilder();
         key.setValue(1);
@@ -97,7 +97,7 @@ public class ChronicleMapUnitTest {
     }
 
     @Test
-    public void shouldChangeTheValue_whenManage_withMultipleKeys() {
+    public void  givenMultipleKeyQuery_whenProcessed_shouldChangeTheValue() {
         try (ExternalMapQueryContext<Integer, Set<Integer>, ?> fistContext = multiMap.queryContext(1)) {
             try (ExternalMapQueryContext<Integer, Set<Integer>, ?> secondContext = multiMap.queryContext(2)) {
                 fistContext.updateLock()
