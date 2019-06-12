@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ArticleWithAuthorDAOIntegrationTest {
+public class ArticleWithAuthorDAOLiveTest {
         private Connection connection;
 
         private ArticleWithAuthorDAO articleWithAuthorDAO;
