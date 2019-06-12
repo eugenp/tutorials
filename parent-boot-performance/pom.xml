@@ -5,7 +5,7 @@
     <version>0.0.1-SNAPSHOT</version>
 	<name>parent-boot-performance</name>
     <packaging>pom</packaging>
-    <description>Parent for all Spring Boot 2.2 modules</description>
+    <description>Parent for all modules taht want to take advantage of the performance improvements introduced in Spring Boot from version 2.2</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
