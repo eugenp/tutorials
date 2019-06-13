@@ -2,7 +2,6 @@ package com.baeldung;
 
 import com.baeldung.adapters.outgoing.InMemoryCarStorageAdapter;
 import com.baeldung.domain.facade.CarMarketService;
-import com.baeldung.domain.facade.CarRentalService;
 import com.baeldung.domain.ports.dtos.Car;
 import com.baeldung.domain.ports.dtos.NewCar;
 import org.hamcrest.collection.IsCollectionWithSize;

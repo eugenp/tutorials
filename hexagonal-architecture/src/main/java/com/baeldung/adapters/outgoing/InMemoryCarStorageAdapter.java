@@ -28,8 +28,8 @@ public class InMemoryCarStorageAdapter implements CarStorage {
     }
 
     @Override
-    public Optional<Car> getCarById(long carId) {
-        return Optional.ofNullable(availableCars.get(carId));
+    public Car getCarById(long carId) {
+        return availableCars.get(carId);
     }
 
     @Override
