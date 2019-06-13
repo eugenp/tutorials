@@ -54,3 +54,15 @@ class BankAccountCopyConstructor extends BankAccount {
         this.balance = 0.0f;
     }
 }
+
+class BankAccountChainedConstructors extends BankAccount {
+    public BankAccountChainedConstructors(String name, LocalDateTime opened, double balance) {
+        this.name = name;
+        this.opened = opened;
+        this.balance = balance;
+    }
+
+    public BankAccountChainedConstructors(String name) {
+        this(name, LocalDateTime.now(), 0.0f);
+    }
+}
