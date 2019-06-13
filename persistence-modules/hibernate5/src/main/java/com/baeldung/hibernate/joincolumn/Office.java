@@ -21,7 +21,7 @@ public class Office {
             @JoinColumn(name="ADDR_ID", referencedColumnName="ID"),
             @JoinColumn(name="ADDR_ZIP", referencedColumnName="ZIP")
     })
-    private Address address;
+    private OfficeAddress address;
 
     public Long getId() {
         return id;
@@ -31,11 +31,11 @@ public class Office {
         this.id = id;
     }
 
-    public Address getAddress() {
+    public OfficeAddress getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(OfficeAddress address) {
         this.address = address;
     }
 }
