@@ -18,6 +18,7 @@
         <module>apache-cayenne</module>
         <module>core-java-persistence</module>
         <module>deltaspike</module>
+        <module>elasticsearch</module>
         <module>flyway</module>
         <module>hbase</module>
         <module>hibernate5</module>
@@ -28,7 +29,6 @@
         <module>java-jdbi</module>
         <module>java-jpa</module>
         <module>java-mongodb</module>
-        <module>elasticsearch</module>
         <module>jnosql</module>
         <module>liquibase</module>
         <module>orientdb</module>
