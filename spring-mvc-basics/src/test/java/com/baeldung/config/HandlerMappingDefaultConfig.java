@@ -16,7 +16,7 @@ public class HandlerMappingDefaultConfig {
     }
 
     @Bean
-    public WelcomeController welcome() {
+    public WelcomeController welcomeDefaultMappingConfig() {
         return new WelcomeController();
     }
 

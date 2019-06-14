@@ -18,7 +18,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 public class SimpleUrlHandlerMappingConfig {
 
     @Bean
-    public ViewResolver viewResolver() {
+    public ViewResolver viewResolverSimpleMappingConfig() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/");
         viewResolver.setSuffix(".jsp");
@@ -29,13 +29,13 @@ public class SimpleUrlHandlerMappingConfig {
     public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
         SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
         Map<String, Object> urlMap = new HashMap<>();
-        urlMap.put("/simpleUrlWelcome", welcome());
+        urlMap.put("/simpleUrlWelcome", welcomeSimpleMappingConfig());
         simpleUrlHandlerMapping.setUrlMap(urlMap);
         return simpleUrlHandlerMapping;
     }
 
     @Bean
-    public WelcomeController welcome() {
+    public WelcomeController welcomeSimpleMappingConfig() {
         return new WelcomeController();
     }
 

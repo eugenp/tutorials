@@ -10,3 +10,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [The Spring @Controller and @RestController Annotations](http://www.baeldung.com/spring-controller-vs-restcontroller)
 - [Using Spring ResponseEntity to Manipulate the HTTP Response](http://www.baeldung.com/spring-response-entity)
 - [A Guide to the ViewResolver in Spring MVC](http://www.baeldung.com/spring-mvc-view-resolver-tutorial)
+- [Guide to Spring Handler Mappings](http://www.baeldung.com/spring-handler-mappings)

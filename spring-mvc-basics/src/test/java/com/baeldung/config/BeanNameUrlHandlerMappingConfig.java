@@ -1,11 +1,10 @@
 package com.baeldung.config;
 
-import com.baeldung.web.controller.handlermapping.WelcomeController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import com.baeldung.web.controller.handlermapping.WelcomeController;
 
 @Configuration
 public class BeanNameUrlHandlerMappingConfig {
@@ -16,7 +15,7 @@ public class BeanNameUrlHandlerMappingConfig {
     }
 
     @Bean("/beanNameUrl")
-    public WelcomeController welcome() {
+    public WelcomeController welcomeBeanNameMappingConfig() {
         return new WelcomeController();
     }
 
