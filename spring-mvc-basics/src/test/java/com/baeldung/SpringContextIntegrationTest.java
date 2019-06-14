@@ -1,17 +1,9 @@
 package com.baeldung;
 
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import com.baeldung.config.AppInitializer;
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { AppInitializer.class }, loader = AnnotationConfigContextLoader.class)
-@WebAppConfiguration
+@SpringBootTest
 public class SpringContextIntegrationTest {
 
     @Test

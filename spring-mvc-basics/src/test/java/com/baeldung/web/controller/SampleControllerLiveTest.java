@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import io.restassured.RestAssured;
 
 public class SampleControllerLiveTest {
-    
+
     private static final String SERVICE_BASE_URL = "/spring-mvc-basics";
 
     @Test
