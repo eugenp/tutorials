@@ -1,6 +1,5 @@
 package com.baeldung.convertiteratortolist;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
@@ -21,81 +20,81 @@ import com.google.common.collect.Lists;
 
 public class ConvertIteratorToListServiceUnitTest {
 
-	Iterator<Integer> iterator;
+    Iterator<Integer> iterator;
 
-	@Before
-	public void setUp() throws Exception {
-		iterator = Arrays.asList(1, 2, 3).iterator();
-	}
+    @Before
+    public void setUp() throws Exception {
+        iterator = Arrays.asList(1, 2, 3)
+            .iterator();
+    }
 
-	@Test
-	public void givenAnIterator_whenConvertIteratorToListUsingWhileLoop_thenReturnAList() {
+    @Test
+    public void givenAnIterator_whenConvertIteratorToListUsingWhileLoop_thenReturnAList() {
 
-		List<Integer> actualList = new ArrayList<Integer>();
+        List<Integer> actualList = new ArrayList<Integer>();
 
-		// Convert Iterator to List using while loop
-		while (iterator.hasNext()) {
-			actualList.add(iterator.next());
-		}
+        // Convert Iterator to List using while loop dsf
+        while (iterator.hasNext()) {
+            actualList.add(iterator.next());
+        }
 
-		assertThat(actualList, hasSize(3));
-		assertThat(actualList, containsInAnyOrder(1, 2, 3));
-	}
+        assertThat(actualList, hasSize(3));
+        assertThat(actualList, containsInAnyOrder(1, 2, 3));
+    }
 
-	@Test
-	public void givenAnIterator_whenConvertIteratorToListAfterJava8_thenReturnAList() {
-		List<Integer> actualList = new ArrayList<Integer>();
+    @Test
+    public void givenAnIterator_whenConvertIteratorToListAfterJava8_thenReturnAList() {
+        List<Integer> actualList = new ArrayList<Integer>();
 
-		// Convert Iterator to List using Java 8
-		iterator.forEachRemaining(actualList::add);
+        // Convert Iterator to List using Java 8
+        iterator.forEachRemaining(actualList::add);
 
-		assertThat(actualList, hasSize(3));
-		assertThat(actualList, containsInAnyOrder(1, 2, 3));
-	}
+        assertThat(actualList, hasSize(3));
+        assertThat(actualList, containsInAnyOrder(1, 2, 3));
+    }
 
-	@Test
-	public void givenAnIterator_whenConvertIteratorToListJava8Stream_thenReturnAList() {
+    @Test
+    public void givenAnIterator_whenConvertIteratorToListJava8Stream_thenReturnAList() {
 
-		// Convert iterator to iterable
-		Iterable<Integer> iterable = () -> iterator;
+        // Convert iterator to iterable
+        Iterable<Integer> iterable = () -> iterator;
 
-		// Extract List from stream
-		List<Integer> actualList = 
-				StreamSupport
-				  .stream(iterable.spliterator(), false)
-				  .collect(Collectors.toList());
+        // Extract List from stream
+        List<Integer> actualList = StreamSupport
+            .stream(iterable.spliterator(), false)
+            .collect(Collectors.toList());
 
-		assertThat(actualList, hasSize(3));
-		assertThat(actualList, containsInAnyOrder(1, 2, 3));
-	}
+        assertThat(actualList, hasSize(3));
+        assertThat(actualList, containsInAnyOrder(1, 2, 3));
+    }
 
-	@Test
-	public void givenAnIterator_whenConvertIteratorToImmutableListWithGuava_thenReturnAList() {
+    @Test
+    public void givenAnIterator_whenConvertIteratorToImmutableListWithGuava_thenReturnAList() {
 
-		// Convert Iterator to an Immutable list using Guava library in Java
-		List<Integer> actualList = ImmutableList.copyOf(iterator);
+        // Convert Iterator to an Immutable list using Guava library in Java
+        List<Integer> actualList = ImmutableList.copyOf(iterator);
 
-		assertThat(actualList, hasSize(3));
-		assertThat(actualList, containsInAnyOrder(1, 2, 3));
-	}
+        assertThat(actualList, hasSize(3));
+        assertThat(actualList, containsInAnyOrder(1, 2, 3));
+    }
 
-	@Test
-	public void givenAnIterator_whenConvertIteratorToMutableListWithGuava_thenReturnAList() {
+    @Test
+    public void givenAnIterator_whenConvertIteratorToMutableListWithGuava_thenReturnAList() {
 
-		// Convert Iterator to a mutable list using Guava library in Java
-		List<Integer> actualList = Lists.newArrayList(iterator);
+        // Convert Iterator to a mutable list using Guava library in Java
+        List<Integer> actualList = Lists.newArrayList(iterator);
 
-		assertThat(actualList, hasSize(3));
-		assertThat(actualList, containsInAnyOrder(1, 2, 3));
-	}
+        assertThat(actualList, hasSize(3));
+        assertThat(actualList, containsInAnyOrder(1, 2, 3));
+    }
 
-	@Test
-	public void givenAnIterator_whenConvertIteratorToMutableListWithApacheCommons_thenReturnAList() {
+    @Test
+    public void givenAnIterator_whenConvertIteratorToMutableListWithApacheCommons_thenReturnAList() {
 
-		// Convert Iterator to a mutable list using Apache Commons library in Java
-		List<Integer> actualList = IteratorUtils.toList(iterator);
+        // Convert Iterator to a mutable list using Apache Commons library in Java
+        List<Integer> actualList = IteratorUtils.toList(iterator);
 
-		assertThat(actualList, hasSize(3));
-		assertThat(actualList, containsInAnyOrder(1, 2, 3));
-	}
+        assertThat(actualList, hasSize(3));
+        assertThat(actualList, containsInAnyOrder(1, 2, 3));
+    }
 }
