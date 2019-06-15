@@ -11,3 +11,4 @@
 - [How to Convert List to Map in Java](http://www.baeldung.com/java-list-to-map)
 - [Array to String Conversions](https://www.baeldung.com/java-array-to-string)
 - [Converting a Collection to ArrayList in Java](https://www.baeldung.com/java-convert-collection-arraylist)
+- [Converting Iterable to Collection in Java](https://www.baeldung.com/java-iterable-to-collection)
