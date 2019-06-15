@@ -6,16 +6,18 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.endpoint.MetricReaderPublicMetrics;
-import org.springframework.boot.actuate.metrics.Metric;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.Meter;
+import io.micrometer.core.instrument.MeterRegistry;
 
 @Service
 public class ActuatorMetricService implements IActuatorMetricService {
 
     @Autowired
-    private MetricReaderPublicMetrics publicMetrics;
+    private MeterRegistry publicMetrics;
 
     private final List<ArrayList<Integer>> statusMetricsByMinute;
     private final List<String> statusList;
@@ -68,7 +70,7 @@ public class ActuatorMetricService implements IActuatorMetricService {
     private void exportMetrics() {
         final ArrayList<Integer> lastMinuteStatuses = initializeStatuses(statusList.size());
 
-        for (final Metric<?> counterMetric : publicMetrics.metrics()) {
+        for (final Meter counterMetric : publicMetrics.getMeters()) {
             updateMetrics(counterMetric, lastMinuteStatuses);
         }
 
@@ -83,17 +85,17 @@ public class ActuatorMetricService implements IActuatorMetricService {
         return counterList;
     }
 
-    private void updateMetrics(final Metric<?> counterMetric, final ArrayList<Integer> statusCount) {
+    private void updateMetrics(final Meter counterMetric, final ArrayList<Integer> statusCount) {
         String status = "";
         int index = -1;
         int oldCount = 0;
 
-        if (counterMetric.getName().contains("counter.status.")) {
-            status = counterMetric.getName().substring(15, 18); // example 404, 200
+        if (counterMetric.getId().getName().contains("counter.status.")) {
+            status = counterMetric.getId().getName().substring(15, 18); // example 404, 200
             appendStatusIfNotExist(status, statusCount);
             index = statusList.indexOf(status);
             oldCount = statusCount.get(index) == null ? 0 : statusCount.get(index);
-            statusCount.set(index, counterMetric.getValue().intValue() + oldCount);
+            statusCount.set(index, (int)((Counter) counterMetric).count() + oldCount);
         }
     }
 

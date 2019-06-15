@@ -6,3 +6,4 @@
 - [A Guide to Java EE Web-Related Annotations](http://www.baeldung.com/javaee-web-annotations)
 - [Introduction to Testing with Arquillian](http://www.baeldung.com/arquillian)
 - [Java EE 7 Batch Processing](https://www.baeldung.com/java-ee-7-batch-processing)
+- [The Difference Between CDI and EJB Singleton](https://www.baeldung.com/jee-cdi-vs-ejb-singleton)
