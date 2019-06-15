@@ -15,11 +15,12 @@ import java.util.stream.IntStream;
 public class FoldingHash {
 
     /**
-     * Calculate the hash value of a given string 
-     * @param str
-     * @param groupSize
-     * @param maxValue
-     * @return
+     * Calculate the hash value of a given string.
+     * 
+     * @param str Assume it is not null
+     * @param groupSize the group size in the folding technique
+     * @param maxValue defines a max value that the hash may acquire (exclusive)     
+     * @return integer value from 0 (inclusive) to maxValue (exclusive)
      */
     public int hash(String str, int groupSize, int maxValue) {
         final int[] codes = this.toAsciiCodes(str);
@@ -37,9 +38,9 @@ public class FoldingHash {
      * If the original array has not enough elements, the returning array will contain 
      * element from the offset till the end of the original array.
      *  
-     * @param numbers
-     * @param offset
-     * @param length
+     * @param numbers original array. Assume it is not null.
+     * @param offset index of the element to start from. Assume it is less than the size of the array 
+     * @param length max size of the resulting array
      * @return
      */
     public int[] extract(int[] numbers, int offset, int length) {
@@ -53,9 +54,9 @@ public class FoldingHash {
     }
 
     /**
-     * Concatenate the numbers into a single number.
+     * Concatenate the numbers into a single number as if they were strings.
      * Assume that the procedure does not suffer from the overflow.
-     * @param numbers
+     * @param numbers integers to concatenate
      * @return
      */
     public int concatenate(int[] numbers) {
@@ -66,8 +67,8 @@ public class FoldingHash {
     }
 
     /**
-     * Convert the string into its characters' ascii codes.
-     * @param str
+     * Convert the string into its characters' ASCII codes.
+     * @param str input string
      * @return
      */
     private int[] toAsciiCodes(String str) {
