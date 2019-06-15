@@ -42,7 +42,7 @@ public class ChronicleMapUnitTest {
                 .name("country-map")
                 .entries(50)
                 .averageValue("America")
-                .createPersistedTo(new File(System.getProperty("java.io.tmpdir") + "country-details.dat"));
+                .createPersistedTo(new File(System.getProperty("user.home") + "/country-details.dat"));
 
             Set<Integer> averageValue = IntStream.of(1, 2)
                 .boxed()
