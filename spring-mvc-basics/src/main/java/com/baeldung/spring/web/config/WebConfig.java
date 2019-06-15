@@ -3,7 +3,9 @@ package com.baeldung.spring.web.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.MediaType;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -46,5 +48,20 @@ public class WebConfig implements WebMvcConfigurer {
         bean.setLocation(new ClassPathResource("views.xml"));
         bean.setOrder(1);
         return bean;
+    }
+
+    /**
+     * Spring Boot allows configuring Content Negotiation using properties
+     */
+    @Override
+    public void configureContentNegotiation(final ContentNegotiationConfigurer configurer) {
+        configurer.favorPathExtension(true)
+            .favorParameter(true)
+            .parameterName("mediaType")
+            .ignoreAcceptHeader(false)
+            .useRegisteredExtensionsOnly(false)
+            .defaultContentType(MediaType.APPLICATION_JSON)
+            .mediaType("xml", MediaType.APPLICATION_XML)
+            .mediaType("json", MediaType.APPLICATION_JSON);
     }
 }
