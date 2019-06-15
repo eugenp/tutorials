@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
  * The implementation serves only to the illustration purposes and is far
  * from being the most efficient. 
  * 
- * @author veontomo
+ * @author A.Shcherbakov
  *
  */
 public class FoldingHash {

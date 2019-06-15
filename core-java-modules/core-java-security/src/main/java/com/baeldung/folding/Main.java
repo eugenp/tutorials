@@ -1,21 +1,17 @@
 package com.baeldung.folding;
 
-import java.util.stream.IntStream;
-
+/**
+ * Code snippet for article "A Guide to the Folding Technique".
+ *  
+ * @author A.Shcherbakov
+ *
+ */
 public class Main {
     public static void main(String... arg) {
-        final String key = "Java language";
-
-        toAsciiCodes(key).forEach(c -> System.out.println(c));
-        // toAsciiCodes(key).reduce(new ArrayList<Integer>(), (accum, i) -> i);
-        // List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
-        // numbers.stream()
-        // .reduce(new ArrayList<Integer>(), (k, v) -> new ArrayList<Integer>());
-        // System.out.println(result);
-    }
-
-    public static IntStream toAsciiCodes(String key) {
-        return key.chars();
+        FoldingHash hasher = new FoldingHash();
+        final String str = "Java language";
+        System.out.println(hasher.hash(str, 2, 100_000));
+        System.out.println(hasher.hash(str, 3, 1_000));
     }
 
 }
