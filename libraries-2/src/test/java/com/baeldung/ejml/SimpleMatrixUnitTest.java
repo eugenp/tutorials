@@ -34,14 +34,6 @@ class SimpleMatrixUnitTest {
 
         SimpleMatrix actual = firstMatrix.mult(secondMatrix);
 
-        assertThat(actual.numRows()).isEqualTo(expected.numRows());
-        assertThat(actual.numCols()).isEqualTo(expected.numCols());
-        for (int row = 0; row < actual.numRows(); row++) {
-            for (int col = 0; col < actual.numCols(); col++) {
-                assertThat(actual.get(row, col))
-                  .describedAs("Cells at [%d, %d] don't match", row, col)
-                  .isEqualTo(expected.get(row, col));
-            }
-        }
+        assertThat(actual).matches(m -> m.isIdentical(expected, 0d));
     }
 }
