@@ -1,5 +1,7 @@
 package com.baeldung.jpa.queryparams;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -33,12 +35,22 @@ public class JPAQueryParamsUnitTest {
 	@Test
     public void givenEmpNumber_whenUsingPositionalParameter_thenReturnExpectedEmployee() {
 		TypedQuery<Employee> query = entityManager.createQuery(
-		        "SELECT e FROM Employee e WHERE e.empNumber = ?0" , Employee.class);
+		        "SELECT e FROM Employee e WHERE e.empNumber = ?1" , Employee.class);
 		String empNumber = "A123";
 		Employee employee = query.setParameter(0, empNumber).getSingleResult();
         Assert.assertNotNull("Employee not found", employee);
     }
 
+	@Test
+    public void givenEmpNumberList_whenUsingPositionalParameter_thenReturnExpectedEmployee() {
+		TypedQuery<Employee> query = entityManager.createQuery(
+		        "SELECT e FROM Employee e WHERE e.empNumber IN (?1)" , Employee.class);
+		List<String> empNumbers = Arrays.asList("A123", "A124");
+		List<Employee> employees = query.setParameter(1, empNumbers).getResultList();
+        Assert.assertNotNull("Employees not found", employees);
+        Assert.assertFalse("Employees not found", employees.isEmpty());
+    }
+	
     @Test
     public void givenEmpNumber_whenUsingNamedParameter_thenReturnExpectedEmployee() {
 		TypedQuery<Employee> query = entityManager.createQuery(
@@ -49,7 +61,17 @@ public class JPAQueryParamsUnitTest {
     }
 
     @Test
-    public void givenEmpNumber_whenUsingTwoNamedParameters_thenReturnExpectedEmployees() {
+    public void givenEmpNumberList_whenUsingNamedParameter_thenReturnExpectedEmployee() {
+		TypedQuery<Employee> query = entityManager.createQuery(
+		        "SELECT e FROM Employee e WHERE e.empNumber IN (:numbers)" , Employee.class);
+		List<String> empNumbers = Arrays.asList("A123", "A124");
+		List<Employee> employees = query.setParameter("numbers", empNumbers).getResultList();
+		Assert.assertNotNull("Employees not found", employees);
+		Assert.assertFalse("Employees not found", employees.isEmpty());
+    }
+    
+    @Test
+    public void givenEmpNameAndEmpAge_whenUsingTwoNamedParameters_thenReturnExpectedEmployees() {
 		TypedQuery<Employee> query = entityManager.createQuery(
 		        "SELECT e FROM Employee e WHERE e.name = :name AND e.age = :empAge" , Employee.class);
 		String empName = "John Doe";
