@@ -35,10 +35,6 @@ public class LoadResourceAsStringIntegrationTest {
     @Autowired
     private ResourceLoader resourceLoader;
 
-
-    @Value("#{@resourceReader.convert(\"resource.txt\")}")
-    private String contents;
-
     @Test
     public void givenUsingResourceLoadAndFileCopyUtils_whenConvertingAResourceToAString_thenCorrect() {
         Resource resource = resourceLoader.getResource("classpath:resource.txt");
@@ -48,11 +44,6 @@ public class LoadResourceAsStringIntegrationTest {
     @Test
     public void givenUsingResourceStringBean_whenConvertingAResourceToAString_thenCorrect() {
         assertEquals(EXPECTED_RESOURCE_VALUE, resourceString);
-    }
-
-    @Test
-    public void givenUsingConverter_whenConvertingAResourceToAString_thenCorrect() {
-        assertEquals(EXPECTED_RESOURCE_VALUE, contents);
     }
 
     @Test
