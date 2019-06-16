@@ -4,10 +4,10 @@ import com.google.auto.service.AutoService;
 
 import java.util.Locale;
 
-@AutoService(TranslateService.class)
-public class GoogleTranslateServiceProvider implements TranslateService {
+@AutoService(TranslationService.class)
+public class BingTranslationServiceProvider implements TranslationService {
 
     public String translate(String message, Locale from, Locale to) {
-        return "translated by Google";
+        return "translated by Bing";
     }
 }
