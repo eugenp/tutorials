@@ -19,7 +19,7 @@ public class Graph {
 
     void removeVertex(String label) {
         Vertex v = new Vertex(label);
-        adjVertices.values().stream().map(e -> e.remove(v)).collect(Collectors.toList());
+        adjVertices.values().stream().forEach(e -> e.remove(v));
         adjVertices.remove(new Vertex(label));
     }
 

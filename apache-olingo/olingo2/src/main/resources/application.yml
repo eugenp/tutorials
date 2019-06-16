@@ -1,5 +1,5 @@
 server:
-  port: 8180
+  port: 8080
   
 spring:
   jersey:
