@@ -15,7 +15,8 @@ class Basic2DMatrixUnitTest {
             new double[]{1d, 5d},
             new double[]{2d, 3d},
             new double[]{1d, 7d}
-          });
+          }
+        );
 
         Matrix secondMatrix = new Basic2DMatrix(
           new double[][]{
