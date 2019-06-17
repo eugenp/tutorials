@@ -9,6 +9,11 @@ import com.github.jknack.handlebars.io.TemplateLoader;
 import java.io.IOException;
 import org.junit.Test;
 
+/**
+ * Showcases reusing the existing templates.
+ *
+ * @author isaolmez
+ */
 public class ReusingTemplatesUnitTest {
 
     private TemplateLoader templateLoader = new ClassPathTemplateLoader("/handlebars", ".html");

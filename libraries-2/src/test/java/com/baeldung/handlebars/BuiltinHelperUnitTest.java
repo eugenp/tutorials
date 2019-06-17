@@ -9,6 +9,11 @@ import com.github.jknack.handlebars.io.TemplateLoader;
 import java.io.IOException;
 import org.junit.Test;
 
+/**
+ * Showcases the built-in template helpers.
+ *
+ * @author isaolmez
+ */
 public class BuiltinHelperUnitTest {
 
     private TemplateLoader templateLoader = new ClassPathTemplateLoader("/handlebars", ".html");

@@ -11,6 +11,11 @@ import java.util.HashMap;
 import java.util.Map;
 import org.junit.Test;
 
+/**
+ * Showcases the tag usage and different template loading mechanisms.
+ *
+ * @author isaolmez
+ */
 public class BasicUsageUnitTest {
 
     @Test
