@@ -1,4 +1,4 @@
-package com.baeldung.delay;
+package com.baeldung.concurrent.delay;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -61,6 +61,7 @@ public class Delay {
 
         executorService.schedule(Delay::someTask1, delayInSeconds, TimeUnit.SECONDS);
 
+        executorService.shutdown();
     }
 
     private static void fixedRateServiceTask(Integer delayInSeconds) {
@@ -78,6 +79,7 @@ public class Delay {
 
         sf.cancel(true);
 
+        executorService.shutdown();
     }
 
     private static void someTask1() {
