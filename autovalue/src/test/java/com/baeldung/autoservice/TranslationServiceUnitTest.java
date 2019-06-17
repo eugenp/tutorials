@@ -9,26 +9,31 @@ import java.util.stream.StreamSupport;
 import static org.junit.Assert.assertEquals;
 
 public class TranslationServiceUnitTest {
+	
+    private ServiceLoader<TranslationService> loader;
+
+    @Before
+    public void setUp() {
+
+        loader = ServiceLoader.load(TranslationService.class);
+    }
 
     @Test
     public void whenServiceLoaderLoads_thenLoadsAllProviders() {
 
-      ServiceLoader<TranslationService> loader = ServiceLoader.load(TranslationService.class);
-      long count = StreamSupport.stream(loader.spliterator(), false).count();
-      assertEquals(2, count);
+        long count = StreamSupport.stream(loader.spliterator(), false).count();
+        assertEquals(2, count);
     }
 
     @Test
     public void whenServiceLoaderLoadsGoogleService_thenGoogleIsLoaded() {
 
-      ServiceLoader<TranslationService> loader = ServiceLoader.load(TranslationService.class);
-
-      TranslationService googleService = StreamSupport.stream(loader.spliterator(), false)
-        .filter(p -> p.getClass().getSimpleName().equals("GoogleTranslationServiceProvider"))
-        .findFirst()
-        .get();
-
-      assertEquals("translated by Google", googleService.translate("message", null, null));
-
+        TranslationService googleService = StreamSupport.stream(loader.spliterator(), false)
+          .filter(p -> p.getClass().getSimpleName().equals("GoogleTranslationServiceProvider"))
+          .findFirst()
+          .get();
+		
+        String message = "message";
+        assertEquals(message + " (translated by Google)", googleService.translate(message, null, null));
     }
 }

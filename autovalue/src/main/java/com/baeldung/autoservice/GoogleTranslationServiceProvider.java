@@ -8,6 +8,8 @@ import java.util.Locale;
 public class GoogleTranslationServiceProvider implements TranslationService {
 
     public String translate(String message, Locale from, Locale to) {
-        return "translated by Google";
+        
+		// implementation details
+        return message + " (translated by Google)"; 
     }
 }

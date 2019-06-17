@@ -8,6 +8,8 @@ import java.util.Locale;
 public class BingTranslationServiceProvider implements TranslationService {
 
     public String translate(String message, Locale from, Locale to) {
-        return "translated by Bing";
+        
+		// implementation details
+        return message + " (translated by Bing)"; 
     }
 }
