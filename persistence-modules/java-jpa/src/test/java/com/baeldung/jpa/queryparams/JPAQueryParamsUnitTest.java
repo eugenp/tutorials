@@ -37,7 +37,7 @@ public class JPAQueryParamsUnitTest {
 		TypedQuery<Employee> query = entityManager.createQuery(
 		        "SELECT e FROM Employee e WHERE e.empNumber = ?1" , Employee.class);
 		String empNumber = "A123";
-		Employee employee = query.setParameter(0, empNumber).getSingleResult();
+		Employee employee = query.setParameter(1, empNumber).getSingleResult();
         Assert.assertNotNull("Employee not found", employee);
     }
 
