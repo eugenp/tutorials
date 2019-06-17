@@ -9,7 +9,7 @@ public class BingTranslationServiceProvider implements TranslationService {
 
     public String translate(String message, Locale from, Locale to) {
         
-		// implementation details
+        // implementation details
         return message + " (translated by Bing)"; 
     }
 }

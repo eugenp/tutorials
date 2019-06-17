@@ -9,7 +9,7 @@ public class GoogleTranslationServiceProvider implements TranslationService {
 
     public String translate(String message, Locale from, Locale to) {
         
-		// implementation details
+        // implementation details
         return message + " (translated by Google)"; 
     }
 }

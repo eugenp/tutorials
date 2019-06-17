@@ -1,6 +1,7 @@
 package com.baeldung.autoservice;
 
 import com.baeldung.autoservice.TranslationService;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ServiceLoader;
