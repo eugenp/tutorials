@@ -20,6 +20,6 @@ public class Main {
     }
 
     private static InputStream getInputStream(String filePath) {
-        return Main.class.getClassLoader().getResourceAsStream(filePath);
+        return ClassLoader.getSystemClassLoader().getResourceAsStream(filePath);
     }
 }
