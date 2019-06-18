@@ -31,7 +31,7 @@ public class IntStreamsConversionsUnitTest {
 
     @Test
     public void intStreamToString() {
-        String first3numbers = IntStream.range(0, 3)
+        String first3numbers = IntStream.of(0, 1, 2)
                 .mapToObj(String::valueOf)
                 .collect(Collectors.joining(", ", "[", "]"));
 
