@@ -33,6 +33,6 @@
         <module>testing</module>
         <module>testng</module>
         <module>junit-5-basics</module>
-	    <module>easymock</module>
+        <module>easymock</module>
     </modules>
 </project>
