@@ -3,7 +3,7 @@
 ## Mutation Testing
 
 ### Relevant Articles: 
-- [Introduction to Mutation Testing Using the PITest Library](http://www.baeldung.com/java-mutation-testing-with-pitest)
+- [Mutation Testing with PITest](http://www.baeldung.com/java-mutation-testing-with-pitest)
 - [Intro to JaCoCo](http://www.baeldung.com/jacoco)
 - [AssertJ’s Java 8 Features](http://www.baeldung.com/assertJ-java-8-features)
 - [AssertJ for Guava](http://www.baeldung.com/assertJ-for-guava)
@@ -18,6 +18,6 @@
 - [Custom JUnit 4 Test Runners](http://www.baeldung.com/junit-4-custom-runners)
 - [Guide to JSpec](http://www.baeldung.com/jspec)
 - [Custom Assertions with AssertJ](http://www.baeldung.com/assertj-custom-assertion)
-- [Using Conditions with AssertJ](http://www.baeldung.com/assertj-conditions)
-- [Guide to JavaFaker](https://www.baeldung.com/java-faker)
+- [Using Conditions with AssertJ Assertions](http://www.baeldung.com/assertj-conditions)
+- [A Guide to JavaFaker](https://www.baeldung.com/java-faker)
 - [Running JUnit Tests Programmatically, from a Java Application](https://www.baeldung.com/junit-tests-run-programmatically-from-java)

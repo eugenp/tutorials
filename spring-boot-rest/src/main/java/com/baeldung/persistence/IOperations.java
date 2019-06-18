@@ -9,7 +9,7 @@ public interface IOperations<T extends Serializable> {
 
     // read - one
 
-    T findOne(final long id);
+    T findById(final long id);
 
     // read - all
 
