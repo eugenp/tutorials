@@ -2,6 +2,7 @@ package com.baeldung.producer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.messaging.Processor;
+import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class AvroProducer {
         employeeKey.setDepartmentName("IT");
 
         Message<Employee> message = MessageBuilder.withPayload(employee)
-            .setHeader("partitionKey", employeeKey)
+            .setHeader(KafkaHeaders.MESSAGE_KEY, employeeKey)
             .build();
 
         processor.output()

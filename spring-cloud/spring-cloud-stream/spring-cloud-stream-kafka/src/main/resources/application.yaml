@@ -8,15 +8,13 @@ spring:
           useNativeEncoding: true     
       bindings:
         input:
-          destination: employee-details
+          destination: employee-details-3
           content-type: application/*+avro
           group: group-1
         output:
-          destination: employee-details
+          destination: employee-details-3
           content-type: application/*+avro
           producer:
-            partitioned: true
-            partition-key-expression: headers['partitionKey']
             partition-count: 10
       kafka:
           binder:        
