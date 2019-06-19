@@ -11,14 +11,15 @@ public class RawTypeDemo {
 	}
 
 	public void methodA() {
+		// parameterized type
 		List<String> listStr = new ArrayList<>();
 		listStr.add("Hello Folks!");
 		methodB(listStr);
-		String s = listStr.get(1);
+		String s = listStr.get(1); // ClassCastException at run time
 	}
 
-	public void methodB(List rawList) {
-		rawList.add(1);
+	public void methodB(List rawList) { // raw type
+		rawList.add(1); // unsafe operation
 	}
 
 }
