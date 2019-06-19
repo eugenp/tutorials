@@ -1,22 +1,24 @@
 package com.baeldung.core.resourcenotfound;
 
-import java.io.InputStream;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        String filePath = "code.csv";
-        Scanner scanner = new Scanner(getInputStream(filePath));
-        int count = 0;
-        while (scanner.hasNext()) {
-            System.out.println(scanner.nextLine());
-            count++;
-        }
-        System.out.printf("Reading %s lines from %s%n", count, filePath);
-    }
+        String path = "code.csv";
+        ResourceFileReader reader = new ResourceFileReader(path);
 
-    private static InputStream getInputStream(String filePath) {
-        return ClassLoader.getSystemClassLoader().getResourceAsStream(filePath);
+        Scanner in = new Scanner(System.in);
+        System.out.print("$ ");
+        String input = in.nextLine();
+        while (!input.equalsIgnoreCase("exit")) {
+            if (reader.isCodeValid(input)) {
+                System.out.println("Valid");
+            } else {
+                System.out.println("Not Valid");
+            }
+            System.out.print("$ ");
+            input = in.nextLine();
+        }
     }
 }
