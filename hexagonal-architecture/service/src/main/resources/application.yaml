@@ -1,0 +1,16 @@
+server:
+  port: 8081
+  error:
+    include-stacktrace: never
+
+spring:
+  datasource:
+    #    url: jdbc:h2:file:~/h2/posts_db;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:~/h2/posts_db
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    generate-ddl: false
+#    hibernate.ddl-auto: create
+    hibernate.ddl-auto: validate
