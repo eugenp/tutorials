@@ -18,7 +18,10 @@ public class XMLDocumentWriter {
     
     public void write(Document document, String fileName, boolean excludeDeclaration, boolean prettyPrint) {
         try(FileWriter writer = new FileWriter(new File(fileName))) {
+<<<<<<< HEAD
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
+=======
+>>>>>>> Updated code as per review comments
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             if(excludeDeclaration) {
