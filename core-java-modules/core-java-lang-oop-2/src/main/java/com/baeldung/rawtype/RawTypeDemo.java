@@ -18,8 +18,8 @@ public class RawTypeDemo {
 		String s = listStr.get(1); // ClassCastException at run time
 	}
 
-	public void methodB(List rawList) { // raw type
-		rawList.add(1); // unsafe operation
+	public void methodB(List rawList) { // Inexpressive raw type
+		rawList.add(1); // Unsafe operation
 	}
 
 }
