@@ -7,74 +7,73 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "employees")
 public class Employee {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
-	
-	@Column(name = "employee_number", unique = true)
-	private String empNumber;
-	
-	@Column(name = "employee_name")
-	private String name;
-	
-	@Column(name = "employee_age")
-	private int age;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
-	public Employee() {
-		super();
-	}
+    @Column(name = "employee_number", unique = true)
+    private String empNumber;
 
-	public Employee(Long id, String empNumber) {
-		super();
-		this.id = id;
-		this.empNumber = empNumber;
-	}
+    @Column(name = "employee_name")
+    private String name;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "employee_age")
+    private int age;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Employee() {
+        super();
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Employee(Long id, String empNumber) {
+        super();
+        this.id = id;
+        this.empNumber = empNumber;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getEmpNumber() {
-		return empNumber;
-	}
+    public int getAge() {
+        return age;
+    }
 
-	public void setEmpNumber(String empNumber) {
-		this.empNumber = empNumber;
-	}
+    public void setAge(int age) {
+        this.age = age;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmpNumber() {
+        return empNumber;
+    }
+
+    public void setEmpNumber(String empNumber) {
+        this.empNumber = empNumber;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
 
 }
