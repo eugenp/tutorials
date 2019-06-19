@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+	Current user authorities:
+	<span sec:authentication="principal.authorities">user</span>
+	<br />
+	<span id="temp"></span>
+	<a href="#" onclick="tryRunAs()">Generate Report As Super User</a>
+
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+		function tryRunAs(){
+			var context = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2));
+		    $.get( context + "/runas" , function( data ) {
+		         $("#temp").html(data);
+		    });
+		}
+	</script>
+</body>
+</html>

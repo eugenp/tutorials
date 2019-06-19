@@ -34,5 +34,6 @@
         <module>testng</module>
         <module>junit-5-basics</module>
         <module>easymock</module>
+        <module>junit-5-advanced</module>
     </modules>
 </project>

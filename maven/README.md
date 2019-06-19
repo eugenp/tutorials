@@ -16,3 +16,4 @@
 - [Multi-Module Project with Maven](https://www.baeldung.com/maven-multi-module)
 - [Maven Enforcer Plugin](https://www.baeldung.com/maven-enforcer-plugin)
 - [Eclipse Error: web.xml is missing and failOnMissingWebXml is set to true](https://www.baeldung.com/eclipse-error-web-xml-missing)
+- [Guide to Maven Profiles](https://www.baeldung.com/maven-profiles)
