@@ -15,7 +15,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class ForecastProcessorTest {
+public class ForecastProcessorUnitTest {
     private static int MAX_TEMP = 90;
     @Rule
     public EasyMockRule rule = new EasyMockRule(this);
