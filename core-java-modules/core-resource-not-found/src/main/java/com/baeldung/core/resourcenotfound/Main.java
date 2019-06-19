@@ -1,9 +1,6 @@
 package com.baeldung.core.resourcenotfound;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.Scanner;
 
 public class Main {
