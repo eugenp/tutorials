@@ -10,4 +10,9 @@ public class ViewController {
     public String index() {
         return "index";
     }
+    
+    @RequestMapping({ "/runashome" })
+    public String run() {
+        return "runas";
+    }
 }
