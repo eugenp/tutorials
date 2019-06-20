@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BiFunctionalInterfacesUnitTest {
     @Test
-    public void mapAStreamWithUnaryFunction() {
+    public void streamValues_canBeMappedToNewValues() {
         List<String> mapped = Stream.of("hello", "world")
                 .map(word -> word + "!")
                 .collect(Collectors.toList());
@@ -23,7 +23,7 @@ public class BiFunctionalInterfacesUnitTest {
     }
 
     @Test
-    public void reduceAStreamByPrefix() {
+    public void streamValues_reducedWithPrefixingOperation() {
         String result = Stream.of("hello", "world")
                 .reduce("", (a, b) -> b + "-" + a);
 
@@ -31,7 +31,7 @@ public class BiFunctionalInterfacesUnitTest {
     }
 
     @Test
-    public void reduceAStreamByPrefixWithoutTrailingDash() {
+    public void streamValues_reducedWithPrefixingLambda_hasNoTrailingDash() {
         String result = Stream.of("hello", "world")
                 .reduce("", (a, b) -> combineWithoutTrailingDash(a, b));
 
@@ -46,7 +46,7 @@ public class BiFunctionalInterfacesUnitTest {
     }
 
     @Test
-    public void reduceAStreamByPrefixWithoutTrailingDashUsingMethodReference() {
+    public void streamValues_reducedWithPrefixingMethodReference_hasNoTrailingDash() {
         String result = Stream.of("hello", "world")
                 .reduce("", this::combineWithoutTrailingDash);
 
@@ -54,7 +54,7 @@ public class BiFunctionalInterfacesUnitTest {
     }
 
     @Test
-    public void combineTwoLists() {
+    public void twoLists_areCombined() {
         List<String> list1 = Arrays.asList("a", "b", "c");
         List<Integer> list2 = Arrays.asList(1, 2, 3);
 
@@ -67,7 +67,7 @@ public class BiFunctionalInterfacesUnitTest {
     }
 
     @Test
-    public void combineTwoListsWithGeneralisedFunction() {
+    public void twoLists_areCombinedWithGeneralPurposeCombiner() {
         List<String> list1 = Arrays.asList("a", "b", "c");
         List<Integer> list2 = Arrays.asList(1, 2, 3);
 
@@ -87,7 +87,7 @@ public class BiFunctionalInterfacesUnitTest {
     }
 
     @Test
-    public void compareTwoLists() {
+    public void combiningFunction_canCompareTwoLists() {
         List<Double> list1 = Arrays.asList(1.0d, 2.1d, 3.3d);
         List<Float> list2 = Arrays.asList(0.1f, 0.2f, 4f);
 
@@ -98,7 +98,7 @@ public class BiFunctionalInterfacesUnitTest {
     }
 
     @Test
-    public void compareTwoListsWithMethodReference() {
+    public void combiningFunctionWithMethodReference_canCompareTwoLists() {
         List<Double> list1 = Arrays.asList(1.0d, 2.1d, 3.3d);
         List<Float> list2 = Arrays.asList(0.1f, 0.2f, 4f);
 
@@ -113,7 +113,7 @@ public class BiFunctionalInterfacesUnitTest {
     }
 
     @Test
-    public void compareTwoListsHaveEqualValues() {
+    public void combiningFunction_canCompareTwoListsForEquality() {
         List<Float> list1 = Arrays.asList(0.1f, 0.2f, 4f);
         List<Float> list2 = Arrays.asList(0.1f, 0.2f, 4f);
 
@@ -123,7 +123,7 @@ public class BiFunctionalInterfacesUnitTest {
     }
 
     @Test
-    public void compareTwoListsHaveEqualValuesMethodReference() {
+    public void combiningFunctionWithMethodReference_canCompareTwoListsForEquality() {
         List<Float> list1 = Arrays.asList(0.1f, 0.2f, 4f);
         List<Float> list2 = Arrays.asList(0.1f, 0.2f, 4f);
 
@@ -133,7 +133,7 @@ public class BiFunctionalInterfacesUnitTest {
     }
 
     @Test
-    public void compareTwoListsWithCompareTo() {
+    public void combiningFunctionWithCompareTo_canCompareTwoLists() {
         List<Double> list1 = Arrays.asList(1.0d, 2.1d, 3.3d);
         List<Double> list2 = Arrays.asList(0.1d, 0.2d, 4d);
 
@@ -151,7 +151,7 @@ public class BiFunctionalInterfacesUnitTest {
     }
 
     @Test
-    public void compareTwoListsWithCompareToAsGreaterThan() {
+    public void combiningFunctionWithComposedBiFunction_comparesTwoLists() {
         List<Double> list1 = Arrays.asList(1.0d, 2.1d, 3.3d);
         List<Double> list2 = Arrays.asList(0.1d, 0.2d, 4d);
 
