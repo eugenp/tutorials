@@ -1,4 +1,4 @@
-package com.baeldung.la4j;
+package com.baeldung.matrices.la4j;
 
 import org.junit.jupiter.api.Test;
 import org.la4j.Matrix;

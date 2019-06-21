@@ -1,19 +1,15 @@
-package com.baeldung.colt;
+package com.baeldung.matrices.ejml;
 
-import cern.colt.matrix.DoubleFactory2D;
-import cern.colt.matrix.DoubleMatrix2D;
-import cern.colt.matrix.linalg.Algebra;
+import org.ejml.simple.SimpleMatrix;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class DoubleMatrix2DUnitTest {
+class SimpleMatrixUnitTest {
 
     @Test
     void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
-        DoubleFactory2D doubleFactory2D = DoubleFactory2D.dense;
-
-        DoubleMatrix2D firstMatrix = doubleFactory2D.make(
+        SimpleMatrix firstMatrix = new SimpleMatrix(
           new double[][] {
             new double[] {1d, 5d},
             new double[] {2d, 3d},
@@ -21,14 +17,14 @@ class DoubleMatrix2DUnitTest {
           }
         );
 
-        DoubleMatrix2D secondMatrix = doubleFactory2D.make(
+        SimpleMatrix secondMatrix = new SimpleMatrix(
           new double[][] {
             new double[] {1d, 2d, 3d, 7d},
             new double[] {5d, 2d, 8d, 1d}
           }
         );
 
-        DoubleMatrix2D expected = doubleFactory2D.make(
+        SimpleMatrix expected = new SimpleMatrix(
           new double[][] {
             new double[] {26d, 12d, 43d, 12d},
             new double[] {17d, 10d, 30d, 17d},
@@ -36,9 +32,8 @@ class DoubleMatrix2DUnitTest {
           }
         );
 
-        Algebra algebra = new Algebra();
-        DoubleMatrix2D actual = algebra.mult(firstMatrix, secondMatrix);
+        SimpleMatrix actual = firstMatrix.mult(secondMatrix);
 
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).matches(m -> m.isIdentical(expected, 0d));
     }
 }
