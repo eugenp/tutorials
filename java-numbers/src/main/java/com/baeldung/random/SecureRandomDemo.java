@@ -26,7 +26,7 @@ public interface SecureRandomDemo {
     }
 
     public static SecureRandom getSecureRandomForAlgorithm(String algorithm) throws NoSuchAlgorithmException {
-        if(algorithm == null || algorithm.isEmpty()) {
+        if (algorithm == null || algorithm.isEmpty()) {
             return new SecureRandom();
         }
 
