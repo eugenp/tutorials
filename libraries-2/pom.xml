@@ -118,6 +118,18 @@
             <artifactId>crawler4j</artifactId>
             <version>${crawler4j.version}</version>
 		</dependency>
+
+		<!-- Benchmarking -->
+		<dependency>
+			<groupId>org.openjdk.jmh</groupId>
+			<artifactId>jmh-core</artifactId>
+			<version>${jmh.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjdk.jmh</groupId>
+			<artifactId>jmh-generator-annprocess</artifactId>
+			<version>${jmh.version}</version>
+		</dependency>
           
 	</dependencies>
 
@@ -133,5 +145,6 @@
 		<nd4j.version>1.0.0-beta4</nd4j.version>
 		<colt.version>1.2.0</colt.version>
 		<la4j.version>0.6.0</la4j.version>
+		<jmh.version>1.19</jmh.version>
 	</properties>
 </project>

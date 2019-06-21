@@ -2,13 +2,19 @@ package com.baeldung.matrices.ejml;
 
 import org.ejml.simple.SimpleMatrix;
 import org.junit.jupiter.api.Test;
+import org.openjdk.jmh.annotations.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SimpleMatrixUnitTest {
+@BenchmarkMode(Mode.AverageTime)
+@Fork(value = 2)
+@Warmup(iterations = 5)
+@Measurement(iterations = 10)
+public class SimpleMatrixUnitTest {
 
     @Test
-    void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
+    @Benchmark
+    public void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
         SimpleMatrix firstMatrix = new SimpleMatrix(
           new double[][] {
             new double[] {1d, 5d},
@@ -36,4 +42,5 @@ class SimpleMatrixUnitTest {
 
         assertThat(actual).matches(m -> m.isIdentical(expected, 0d));
     }
+
 }

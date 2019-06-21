@@ -1,13 +1,19 @@
 package com.baeldung.matrices.homemade;
 
 import org.junit.jupiter.api.Test;
+import org.openjdk.jmh.annotations.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class MatrixUnitTest {
+@BenchmarkMode(Mode.AverageTime)
+@Fork(value = 2)
+@Warmup(iterations = 5)
+@Measurement(iterations = 10)
+public class HomemadeMatrixUnitTest {
 
     @Test
-    void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
+    @Benchmark
+    public void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
         double[][] firstMatrix = {
           new double[]{1d, 5d},
           new double[]{2d, 3d},

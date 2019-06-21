@@ -3,13 +3,18 @@ package com.baeldung.matrices.nd4j;
 import org.junit.jupiter.api.Test;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
+import org.openjdk.jmh.annotations.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class INDArrayUnitTest {
+@BenchmarkMode(Mode.AverageTime)
+@Fork(value = 2)
+@Warmup(iterations = 5)
+@Measurement(iterations = 10)
+public class INDArrayUnitTest {
 
     @Test
-    void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
+    public void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
         INDArray firstMatrix = Nd4j.create(
           new double[][]{
             new double[]{1d, 5d},
@@ -37,4 +42,5 @@ class INDArrayUnitTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
 }
