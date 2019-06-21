@@ -60,16 +60,16 @@
 			<artifactId>nd4j-native</artifactId>
 			<version>${nd4j.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>colt</groupId>
-			<artifactId>colt</artifactId>
-			<version>${colt.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.la4j</groupId>
-			<artifactId>la4j</artifactId>
-			<version>${la4j.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>org.la4j</groupId>
+            <artifactId>la4j</artifactId>
+            <version>${la4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>colt</groupId>
+            <artifactId>colt</artifactId>
+            <version>${colt.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>

@@ -18,7 +18,8 @@ class DoubleMatrix2DUnitTest {
             new double[] {1d, 5d},
             new double[] {2d, 3d},
             new double[] {1d ,7d}
-          });
+          }
+        );
 
         DoubleMatrix2D secondMatrix = doubleFactory2D.make(
           new double[][] {
