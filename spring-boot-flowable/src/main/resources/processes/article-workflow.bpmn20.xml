@@ -38,12 +38,12 @@
 		</sequenceFlow>
 		<serviceTask id="tutorialApproved"
 			name="Publish the approved tutorial."
-			flowable:class="com.sapient.learning.service.PublishArticleService" />
+			flowable:class="com.baeldung.service.PublishArticleService" />
 		<sequenceFlow sourceRef="tutorialApproved"
 			targetRef="end" />
 		<serviceTask id="tutorialRejected"
 			name="Send out rejection email"
-			flowable:class="com.sapient.learning.service.SendMailService" />
+			flowable:class="com.baeldung.service.SendMailService" />
 		<sequenceFlow sourceRef="tutorialRejected"
 			targetRef="end" />
 		<endEvent id="end" />
