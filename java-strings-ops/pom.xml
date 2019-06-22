@@ -2,10 +2,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>java-strings</artifactId>
+    <artifactId>java-strings-ops</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>java-strings</name>
+    <name>java-strings-ops</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -16,11 +16,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
@@ -29,11 +24,6 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>${commons-codec.version}</version>
         </dependency>
         <!-- test scoped -->
         <dependency>
@@ -51,11 +41,6 @@
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh-generator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.icu</groupId>
-            <artifactId>icu4j</artifactId>
-            <version>${icu4j.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -80,7 +65,7 @@
     </dependencies>
 
     <build>
-        <finalName>java-strings</finalName>
+        <finalName>java-strings-ops</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -105,13 +90,10 @@
     <properties>
         <!-- util -->
         <commons-lang3.version>3.8.1</commons-lang3.version>
-        <commons-codec.version>1.10</commons-codec.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
-        <icu4j.version>61.1</icu4j.version>
         <guava.version>27.0.1-jre</guava.version>
 		<junit-jupiter-api.version>5.3.1</junit-jupiter-api.version>
-		<commons-text.version>1.4</commons-text.version>
     </properties>
 
 </project>
