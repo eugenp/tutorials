@@ -23,7 +23,7 @@ public class CustomHelperUnitTest {
     @Test
     public void whenHelperIsCreated_ThenCanRegister() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
-        handlebars.registerHelper("person", new Helper<Person>() {
+        handlebars.registerHelper("isBusy", new Helper<Person>() {
             @Override
             public Object apply(Person context, Options options) throws IOException {
                 String busyString = context.isBusy() ? "busy" : "available";
