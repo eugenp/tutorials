@@ -2,7 +2,7 @@ package com.baeldung.hexagonal.api.controller;
 
 import com.baeldung.hexagonal.api.dto.PostDto;
 import com.baeldung.hexagonal.api.mapper.ApiDtoMapper;
-import com.baeldung.hexagonal.core.bo.PostBo;
+import com.baeldung.hexagonal.core.domain.bo.PostBo;
 import com.baeldung.hexagonal.core.ports.service.PostService;
 import ma.glasnost.orika.BoundMapperFacade;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,13 +53,31 @@ class PostController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PostDto> get(@PathVariable("id") String id) {
+    public ResponseEntity<PostDto> get(@PathVariable("id") Long id) {
         PostDto post = this.postMapper.mapReverse(this.postService.findPostById(id));
         return ResponseEntity.ok(post);
     }
 
+    @PostMapping("/{id}/submit")
+    public ResponseEntity<Void> submit(@PathVariable("id") Long id) {
+        this.postService.submitForReview(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/{id}/review")
+    public ResponseEntity<Void> review(@PathVariable("id") Long id) {
+        this.postService.review(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/{id}/publish")
+    public ResponseEntity<Void> publish(@PathVariable("id") Long id) {
+        this.postService.publish(id);
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") String id) {
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
         this.postService.deletePostById(id);
         return ResponseEntity.ok().build();
     }

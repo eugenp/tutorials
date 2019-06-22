@@ -1,7 +1,7 @@
 package com.baeldung.hexagonal.api.mapper;
 
 import com.baeldung.hexagonal.api.dto.PostDto;
-import com.baeldung.hexagonal.core.bo.PostBo;
+import com.baeldung.hexagonal.core.domain.bo.PostBo;
 import ma.glasnost.orika.BoundMapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;

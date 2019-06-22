@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-interface PostJpaRepository extends CrudRepository<Post, String> {
+interface PostJpaRepository extends CrudRepository<Post, Long> {
 
 }

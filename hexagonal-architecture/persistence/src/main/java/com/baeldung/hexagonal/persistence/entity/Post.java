@@ -1,5 +1,6 @@
 package com.baeldung.hexagonal.persistence.entity;
 
+import com.baeldung.hexagonal.core.domain.bo.PostBo.PostState;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,4 +19,5 @@ public class Post extends AuditableEntity {
     @Column(name = "title", unique = true)
     private String title;
     private String content;
+    private PostState postState;
 }
