@@ -1,4 +1,4 @@
-package com.baeldung.hexagonal.core.exception;
+package com.baeldung.hexagonal.core.domain.exception;
 
 public class PostNotFoundException extends PostServiceException {
 
