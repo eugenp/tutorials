@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class ApiDtoMapper {
 
-  MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
+    MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
 
-  public BoundMapperFacade<PostDto, PostBo> postMapper() {
-    return mapperFactory.getMapperFacade(PostDto.class, PostBo.class);
-  }
+    public BoundMapperFacade<PostDto, PostBo> postMapper() {
+        return mapperFactory.getMapperFacade(PostDto.class, PostBo.class);
+    }
 }

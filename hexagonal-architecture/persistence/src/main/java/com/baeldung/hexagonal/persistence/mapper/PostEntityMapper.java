@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class PostEntityMapper {
 
-  MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
+    MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
 
-  public BoundMapperFacade<Post, PostBo> postMapper() {
-    return mapperFactory.getMapperFacade(Post.class, PostBo.class);
-  }
+    public BoundMapperFacade<Post, PostBo> postMapper() {
+        return mapperFactory.getMapperFacade(Post.class, PostBo.class);
+    }
 }

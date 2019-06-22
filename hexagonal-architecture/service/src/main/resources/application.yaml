@@ -12,5 +12,5 @@ spring:
     driverClassName: org.h2.Driver
   jpa:
     generate-ddl: false
-#    hibernate.ddl-auto: create
+    #    hibernate.ddl-auto: create
     hibernate.ddl-auto: validate
