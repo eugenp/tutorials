@@ -18,8 +18,8 @@ public class JsonCompareUnitTest {
     public void givenTwoSameJsonDataObjects_whenCompared_thenAreEqual() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
-        String s1 = "{\"employee\": {\"id\": \"1212\",\"fullName\": \"John Miles\",\"age\": 34 }}";
-        String s2 = "{\"employee\": {\"id\": \"1212\",\"fullName\": \"John Miles\",\"age\": 34 }}";
+        String s1 = "{\"employee\": {\"id\": \"1212\",\"fullName\": \"John Miles\", \"age\": 34 }}";
+        String s2 = "{\"employee\": {\"id\": \"1212\",\"age\": 34, \"fullName\": \"John Miles\" }}";
 
         JsonNode actualObj1 = mapper.readTree(s1);
         JsonNode actualObj2 = mapper.readTree(s2);
@@ -29,11 +29,11 @@ public class JsonCompareUnitTest {
     }
 
     @Test
-    public void givenTwoSameNestedJsonDataObjects_whenCompared_thenAreEqual() throws IOException {
+    public void givenTwoSameNestedJsonDataObjects_whenCompared_thenEqual() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
-        String s1 = "{\"employee\": {\"id\": \"1212\",\"fullName\": \"John Miles\",\"age\": 34,\n" + "\"contact\":{\"email\": \"john@xyz.com\",\"phone\": \"9999999999\"} }}";
-        String s2 = "{\"employee\": {\"id\": \"1212\",\"fullName\": \"John Miles\",\"age\": 34,\n" + "\"contact\":{\"email\": \"john@xyz.com\",\"phone\": \"9999999999\"} }}";
+        String s1 = "{\"employee\": {\"id\": \"1212\",\"fullName\": \"John Miles\",\"age\": 34, \"contact\":{\"email\": \"john@xyz.com\",\"phone\": \"9999999999\"} }}";
+        String s2 = "{\"employee\": {\"id\": \"1212\",\"fullName\": \"John Miles\",\"age\": 34, \"contact\":{\"email\": \"john@xyz.com\",\"phone\": \"9999999999\"} }}";
 
         JsonNode actualObj1 = mapper.readTree(s1);
         JsonNode actualObj2 = mapper.readTree(s2);
@@ -43,7 +43,7 @@ public class JsonCompareUnitTest {
     }
 
     @Test
-    public void givenTwoSameListJsonDataObjects_whenCompared_thenAreEqual() throws IOException {
+    public void givenTwoSameListJsonDataObjects_whenCompared_thenEqual() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
         String s1 = "{\"employee\": {\"id\": \"1212\",\"fullName\": \"John Miles\",\"age\": 34, \"skills\":[\"Java\", \"C++\", \"Python\"] }}";
@@ -57,14 +57,13 @@ public class JsonCompareUnitTest {
     }
 
     @Test
-    public void givenTwoJsonDataObjects_whenComparedUsingCustomComparator_thenEqual() throws Exception {
+    public void givenTwoJsonDataObjects_whenComparedUsingCustomComparator_thenEqual() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
         String s1 = "{\"name\": \"John\",\"score\":5.0}";
         String s2 = "{\"name\": \"John\",\"score\":5}";
         JsonNode actualObj1 = mapper.readTree(s1);
         JsonNode actualObj2 = mapper.readTree(s2);
-
 
         Comparator<JsonNode> cmp = new Comparator<JsonNode>() {
             @Override
