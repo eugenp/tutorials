@@ -55,7 +55,7 @@ public class PostControllerAdvice {
         ErrorDto err = new ErrorDto(HttpStatus.BAD_REQUEST, ex.getMessage());
         return errResponse(err);
     }
-    
+
     @ExceptionHandler(PostAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
     ResponseEntity<ErrorDto> handleAlreadyExists(PostAlreadyExistsException ex) {

@@ -1,11 +1,11 @@
 package com.baeldung.hexagonal.api.controller;
 
 import com.baeldung.hexagonal.api.dto.PostDto;
-import com.baeldung.hexagonal.api.mapper.ApiDtoMapper;
 import com.baeldung.hexagonal.core.domain.bo.PostBo;
 import com.baeldung.hexagonal.core.ports.service.PostService;
 import ma.glasnost.orika.BoundMapperFacade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,9 +23,10 @@ class PostController {
     private BoundMapperFacade<PostDto, PostBo> postMapper;
 
     @Autowired
-    public PostController(PostService postService, ApiDtoMapper mapper) {
+    public PostController(PostService postService,
+                          @Qualifier("postDtoMapper") BoundMapperFacade<PostDto, PostBo> mapper) {
         this.postService = postService;
-        this.postMapper = mapper.postMapper();
+        this.postMapper = mapper;
     }
 
     private static URI createUri(PostDto dto) {

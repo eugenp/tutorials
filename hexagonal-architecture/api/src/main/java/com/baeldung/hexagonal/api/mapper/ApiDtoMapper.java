@@ -5,13 +5,15 @@ import com.baeldung.hexagonal.core.domain.bo.PostBo;
 import ma.glasnost.orika.BoundMapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+@Configuration
 public class ApiDtoMapper {
 
     MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
 
+    @Bean("postDtoMapper")
     public BoundMapperFacade<PostDto, PostBo> postMapper() {
         return mapperFactory.getMapperFacade(PostDto.class, PostBo.class);
     }

@@ -5,13 +5,15 @@ import com.baeldung.hexagonal.persistence.entity.Post;
 import ma.glasnost.orika.BoundMapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@Component
-public class PostEntityMapper {
+@Configuration
+public class PostEntityMapperConfiguration {
 
     MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
 
+    @Bean("postEntityMapper")
     public BoundMapperFacade<Post, PostBo> postMapper() {
         return mapperFactory.getMapperFacade(Post.class, PostBo.class);
     }

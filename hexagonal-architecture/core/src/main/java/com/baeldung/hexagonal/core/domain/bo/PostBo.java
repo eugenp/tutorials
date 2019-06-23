@@ -25,6 +25,7 @@ public class PostBo {
             }
         } catch (IOException e) {
             log.error("IO error while getting the word count", e);
+            return -1L;
         }
         return count;
     }
@@ -42,7 +43,7 @@ public class PostBo {
     }
 
     public boolean isReadyForReview() {
-        return state != PostState.REVIEW;
+        return state == PostState.REVIEW;
     }
 
     public enum PostState {

@@ -5,10 +5,10 @@ import com.baeldung.hexagonal.core.domain.exception.PostAlreadyExistsException;
 import com.baeldung.hexagonal.core.domain.exception.PostNotFoundException;
 import com.baeldung.hexagonal.core.ports.repository.PostRepository;
 import com.baeldung.hexagonal.persistence.entity.Post;
-import com.baeldung.hexagonal.persistence.mapper.PostEntityMapper;
 import lombok.extern.slf4j.Slf4j;
 import ma.glasnost.orika.BoundMapperFacade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 
@@ -25,9 +25,10 @@ class DefaultPostRepository implements PostRepository {
     private BoundMapperFacade<Post, PostBo> postMapper;
 
     @Autowired
-    public DefaultPostRepository(PostJpaRepository jpaRepository, PostEntityMapper postMapper) {
+    public DefaultPostRepository(PostJpaRepository jpaRepository,
+                                 @Qualifier("postEntityMapper") BoundMapperFacade<Post, PostBo> postMapper) {
         this.jpaRepository = jpaRepository;
-        this.postMapper = postMapper.postMapper();
+        this.postMapper = postMapper;
     }
 
     @Override

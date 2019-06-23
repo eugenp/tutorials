@@ -19,5 +19,7 @@ public class Post extends AuditableEntity {
     @Column(name = "title", unique = true)
     private String title;
     private String content;
-    private PostState postState;
+
+    @Enumerated(EnumType.STRING)
+    private PostState state;
 }

@@ -9,20 +9,20 @@ import java.time.LocalDateTime;
 @Value
 public final class ErrorDto {
 
-  HttpStatus status;
-  String reason;
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-  LocalDateTime timestamp;
+    HttpStatus status;
+    String reason;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    LocalDateTime timestamp;
 
-  public ErrorDto(HttpStatus status, String reason) {
-    this.status = status;
-    this.reason = reason;
-    this.timestamp = LocalDateTime.now();
-  }
+    public ErrorDto(HttpStatus status, String reason) {
+        this.status = status;
+        this.reason = reason;
+        this.timestamp = LocalDateTime.now();
+    }
 
-  public ErrorDto(HttpStatus status) {
-    this.status = status;
-    this.reason = "Unknown error";
-    this.timestamp = LocalDateTime.now();
-  }
+    public ErrorDto(HttpStatus status) {
+        this.status = status;
+        this.reason = "Unknown error";
+        this.timestamp = LocalDateTime.now();
+    }
 }
