@@ -5,8 +5,8 @@ import java.util.function.Supplier;
 
 public interface Processor {
 
-    String processWithCallable(Callable<String> c) throws Exception;
+    String process(Callable<String> c) throws Exception;
 
-    String processWithSupplier(Supplier<String> s);
+    String process(Supplier<String> s);
 
 }
