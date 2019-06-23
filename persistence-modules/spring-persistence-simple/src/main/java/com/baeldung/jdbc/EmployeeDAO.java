@@ -16,6 +16,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
@@ -27,6 +28,8 @@ public class EmployeeDAO {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     private SimpleJdbcInsert simpleJdbcInsert;
+    
+    private SimpleJdbcCall simpleJdbcCall;
 
     @Autowired
     public void setDataSource(final DataSource dataSource) {
@@ -36,7 +39,9 @@ public class EmployeeDAO {
 
         namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
         simpleJdbcInsert = new SimpleJdbcInsert(dataSource).withTableName("EMPLOYEE");
-
+        
+        // Commented as the database is H2, change the database and create procedure READ_EMPLOYEE before calling getEmployeeUsingSimpleJdbcCall 
+        //simpleJdbcCall = new SimpleJdbcCall(dataSource).withProcedureName("READ_EMPLOYEE");
     }
 
     public int getCountOfEmployees() {
@@ -109,5 +114,16 @@ public class EmployeeDAO {
         final SqlParameterSource[] batch = SqlParameterSourceUtils.createBatch(employees.toArray());
         final int[] updateCounts = namedParameterJdbcTemplate.batchUpdate("INSERT INTO EMPLOYEE VALUES (:id, :firstName, :lastName, :address)", batch);
         return updateCounts;
+    }
+    
+    public Employee getEmployeeUsingSimpleJdbcCall(int id) {
+        SqlParameterSource in = new MapSqlParameterSource().addValue("in_id", id);
+        Map<String, Object> out = simpleJdbcCall.execute(in);
+
+        Employee emp = new Employee();
+        emp.setFirstName((String) out.get("FIRST_NAME"));
+        emp.setLastName((String) out.get("LAST_NAME"));
+
+        return emp;
     }
 }
