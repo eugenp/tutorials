@@ -1,1 +1,0 @@
-# hexagonal architecture
