@@ -188,7 +188,7 @@ public class RestTemplateBasicLiveTest {
         final String resourceUrl = fooResourceUrl + '/' + createResponse.getBody()
             .getId();
         final HttpEntity<Foo> requestUpdate = new HttpEntity<>(updatedResource, headers);
-        final ClientHttpRequestFactory requestFactory = getSimpleClientHttpRequestFactory();
+        final ClientHttpRequestFactory requestFactory = getClientHttpRequestFactory();
         final RestTemplate template = new RestTemplate(requestFactory);
         template.setMessageConverters(Arrays.asList(new MappingJackson2HttpMessageConverter()));
         template.patchForObject(resourceUrl, requestUpdate, Void.class);
@@ -262,7 +262,7 @@ public class RestTemplateBasicLiveTest {
 
     // Simply setting restTemplate timeout using ClientHttpRequestFactory
 
-    ClientHttpRequestFactory getSimpleClientHttpRequestFactory() {
+    ClientHttpRequestFactory getClientHttpRequestFactory() {
         final int timeout = 5;
         final HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
         clientHttpRequestFactory.setConnectTimeout(timeout * 1000);
