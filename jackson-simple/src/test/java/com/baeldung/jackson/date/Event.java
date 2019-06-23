@@ -4,17 +4,17 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class EventWithFormat {
+public class Event {
     public String name;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     public Date eventDate;
 
-    public EventWithFormat() {
+    public Event() {
         super();
     }
 
-    public EventWithFormat(final String name, final Date eventDate) {
+    public Event(final String name, final Date eventDate) {
         this.name = name;
         this.eventDate = eventDate;
     }
