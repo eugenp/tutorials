@@ -18,10 +18,39 @@ public class JsonCompareUnitTest {
     public void givenTwoSameJsonDataObjects_whenCompared_thenAreEqual() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
-        String jsonString1 = "{\"k1\":\"v1\",\"k2\":\"v2\",\"k3\":\"v3\",\"k4\":\"v4\"}";
-        String jsonString2 = "{\"k1\":\"v1\",\"k2\":\"v2\",\"k3\":\"v3\",\"k4\":\"v4\"}";
-        JsonNode actualObj1 = mapper.readTree(jsonString1);
-        JsonNode actualObj2 = mapper.readTree(jsonString2);
+        String s1 = "{\"employee\": {\"id\": \"1212\",\"fullName\": \"John Miles\",\"age\": 34 }}";
+        String s2 = "{\"employee\": {\"id\": \"1212\",\"fullName\": \"John Miles\",\"age\": 34 }}";
+
+        JsonNode actualObj1 = mapper.readTree(s1);
+        JsonNode actualObj2 = mapper.readTree(s2);
+
+        assertTrue(actualObj1.equals(actualObj2));
+
+    }
+
+    @Test
+    public void givenTwoSameNestedJsonDataObjects_whenCompared_thenAreEqual() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+
+        String s1 = "{\"employee\": {\"id\": \"1212\",\"fullName\": \"John Miles\",\"age\": 34,\n" + "\"contact\":{\"email\": \"john@xyz.com\",\"phone\": \"9999999999\"} }}";
+        String s2 = "{\"employee\": {\"id\": \"1212\",\"fullName\": \"John Miles\",\"age\": 34,\n" + "\"contact\":{\"email\": \"john@xyz.com\",\"phone\": \"9999999999\"} }}";
+
+        JsonNode actualObj1 = mapper.readTree(s1);
+        JsonNode actualObj2 = mapper.readTree(s2);
+
+        assertTrue(actualObj1.equals(actualObj2));
+
+    }
+
+    @Test
+    public void givenTwoSameListJsonDataObjects_whenCompared_thenAreEqual() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+
+        String s1 = "{\"employee\": {\"id\": \"1212\",\"fullName\": \"John Miles\",\"age\": 34, \"skills\":[\"Java\", \"C++\", \"Python\"] }}";
+        String s2 = "{\"employee\": {\"id\": \"1212\",\"fullName\": \"John Miles\",\"age\": 34, \"skills\":[\"Java\", \"C++\", \"Python\"] }}";
+
+        JsonNode actualObj1 = mapper.readTree(s1);
+        JsonNode actualObj2 = mapper.readTree(s2);
 
         assertTrue(actualObj1.equals(actualObj2));
 
@@ -31,12 +60,11 @@ public class JsonCompareUnitTest {
     public void givenTwoJsonDataObjects_whenComparedUsingCustomComparator_thenEqual() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
 
-        String jsonString1 = "{\"k1\": 5,\"k2\":9191}";
-        String jsonString2 = "{\"k1\": 5.0,\"k2\":9191}";
-        JsonNode actualObj1 = mapper.readTree(jsonString1);
-        JsonNode actualObj2 = mapper.readTree(jsonString2);
+        String s1 = "{\"name\": \"John\",\"score\":5.0}";
+        String s2 = "{\"name\": \"John\",\"score\":5}";
+        JsonNode actualObj1 = mapper.readTree(s1);
+        JsonNode actualObj2 = mapper.readTree(s2);
 
-        assertFalse(actualObj1.equals(actualObj2));
 
         Comparator<JsonNode> cmp = new Comparator<JsonNode>() {
             @Override
@@ -55,6 +83,7 @@ public class JsonCompareUnitTest {
             }
         };
 
+        assertFalse(actualObj1.equals(actualObj2));
         assertTrue(actualObj1.equals(cmp, actualObj2));
 
     }
