@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
-public class DownstreamServiceReactiveHealthIndicator implements ReactiveHealthIndicator {
+public class DownstreamServiceHealthIndicator implements ReactiveHealthIndicator {
 
     @Override
     public Mono<Health> health() {
