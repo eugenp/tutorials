@@ -50,6 +50,26 @@
 			<artifactId>picocli</artifactId>
 			<version>${picocli.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>org.ejml</groupId>
+            <artifactId>ejml-all</artifactId>
+            <version>${ejml.version}</version>
+        </dependency>
+		<dependency>
+			<groupId>org.nd4j</groupId>
+			<artifactId>nd4j-native</artifactId>
+			<version>${nd4j.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>org.la4j</groupId>
+            <artifactId>la4j</artifactId>
+            <version>${la4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>colt</groupId>
+            <artifactId>colt</artifactId>
+            <version>${colt.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -93,10 +113,22 @@
 			<scope>test</scope>
 		</dependency>
 
-                <dependency>
-                    <groupId>edu.uci.ics</groupId>
-                    <artifactId>crawler4j</artifactId>
-                    <version>${crawler4j.version}</version>
+        <dependency>
+            <groupId>edu.uci.ics</groupId>
+            <artifactId>crawler4j</artifactId>
+            <version>${crawler4j.version}</version>
+		</dependency>
+
+		<!-- Benchmarking -->
+		<dependency>
+			<groupId>org.openjdk.jmh</groupId>
+			<artifactId>jmh-core</artifactId>
+			<version>${jmh.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjdk.jmh</groupId>
+			<artifactId>jmh-generator-annprocess</artifactId>
+			<version>${jmh.version}</version>
 		</dependency>
           
         <dependency>
@@ -113,8 +145,13 @@
 		<jbpm.version>6.0.0.Final</jbpm.version>
 		<picocli.version>3.9.6</picocli.version>
 		<chronicle.map.version>3.17.2</chronicle.map.version>
-        <crawler4j.version>4.4.0</crawler4j.version>
+    <crawler4j.version>4.4.0</crawler4j.version>
 		<spring-boot-starter.version>2.1.4.RELEASE</spring-boot-starter.version>
 		<mesos.library.version>0.28.3</mesos.library.version>
+		<ejml.version>0.38</ejml.version>
+		<nd4j.version>1.0.0-beta4</nd4j.version>
+		<colt.version>1.2.0</colt.version>
+		<la4j.version>0.6.0</la4j.version>
+		<jmh.version>1.19</jmh.version>
 	</properties>
 </project>
