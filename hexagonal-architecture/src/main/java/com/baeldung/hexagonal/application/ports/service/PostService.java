@@ -1,6 +1,6 @@
-package com.baeldung.hexagonal.core.ports.service;
+package com.baeldung.hexagonal.application.ports.service;
 
-import com.baeldung.hexagonal.core.domain.bo.PostBo;
+import com.baeldung.hexagonal.domain.bo.PostBo;
 
 public interface PostService {
 

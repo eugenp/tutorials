@@ -1,6 +1,6 @@
-package com.baeldung.hexagonal.core.domain.bo;
+package com.baeldung.hexagonal.domain.bo;
 
-import com.baeldung.hexagonal.core.domain.bo.PostBo.PostState;
+import com.baeldung.hexagonal.domain.bo.PostBo.PostState;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

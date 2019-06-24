@@ -1,9 +1,9 @@
 package com.baeldung.hexagonal.persistence.repository;
 
-import com.baeldung.hexagonal.core.domain.bo.PostBo;
-import com.baeldung.hexagonal.core.domain.exception.PostAlreadyExistsException;
-import com.baeldung.hexagonal.core.domain.exception.PostNotFoundException;
-import com.baeldung.hexagonal.core.ports.repository.PostRepository;
+import com.baeldung.hexagonal.domain.bo.PostBo;
+import com.baeldung.hexagonal.domain.exception.PostAlreadyExistsException;
+import com.baeldung.hexagonal.domain.exception.PostNotFoundException;
+import com.baeldung.hexagonal.application.ports.repository.PostRepository;
 import com.baeldung.hexagonal.persistence.entity.Post;
 import lombok.extern.slf4j.Slf4j;
 import ma.glasnost.orika.BoundMapperFacade;

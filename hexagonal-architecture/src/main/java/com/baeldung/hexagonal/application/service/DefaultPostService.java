@@ -1,10 +1,10 @@
-package com.baeldung.hexagonal.service;
+package com.baeldung.hexagonal.application.service;
 
-import com.baeldung.hexagonal.core.domain.bo.PostBo;
-import com.baeldung.hexagonal.core.domain.bo.PostBo.PostState;
-import com.baeldung.hexagonal.core.domain.exception.InvalidPostActionException;
-import com.baeldung.hexagonal.core.ports.repository.PostRepository;
-import com.baeldung.hexagonal.core.ports.service.PostService;
+import com.baeldung.hexagonal.domain.bo.PostBo;
+import com.baeldung.hexagonal.domain.bo.PostBo.PostState;
+import com.baeldung.hexagonal.domain.exception.InvalidPostActionException;
+import com.baeldung.hexagonal.application.ports.repository.PostRepository;
+import com.baeldung.hexagonal.application.ports.service.PostService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

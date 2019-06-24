@@ -1,9 +1,9 @@
 package com.baeldung.hexagonal.persistence.repository;
 
-import com.baeldung.hexagonal.core.domain.bo.PostBo;
-import com.baeldung.hexagonal.core.domain.bo.PostBo.PostState;
-import com.baeldung.hexagonal.core.domain.exception.PostAlreadyExistsException;
-import com.baeldung.hexagonal.core.domain.exception.PostNotFoundException;
+import com.baeldung.hexagonal.domain.bo.PostBo;
+import com.baeldung.hexagonal.domain.bo.PostBo.PostState;
+import com.baeldung.hexagonal.domain.exception.PostAlreadyExistsException;
+import com.baeldung.hexagonal.domain.exception.PostNotFoundException;
 import com.baeldung.hexagonal.persistence.entity.Post;
 import ma.glasnost.orika.BoundMapperFacade;
 import org.junit.Test;

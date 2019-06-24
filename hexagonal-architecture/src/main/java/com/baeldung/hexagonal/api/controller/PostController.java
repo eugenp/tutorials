@@ -1,8 +1,8 @@
 package com.baeldung.hexagonal.api.controller;
 
 import com.baeldung.hexagonal.api.dto.PostDto;
-import com.baeldung.hexagonal.core.domain.bo.PostBo;
-import com.baeldung.hexagonal.core.ports.service.PostService;
+import com.baeldung.hexagonal.domain.bo.PostBo;
+import com.baeldung.hexagonal.application.ports.service.PostService;
 import ma.glasnost.orika.BoundMapperFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

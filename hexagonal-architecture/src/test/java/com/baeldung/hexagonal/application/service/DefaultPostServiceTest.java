@@ -1,11 +1,11 @@
-package com.baeldung.hexagonal.service;
+package com.baeldung.hexagonal.application.service;
 
-import com.baeldung.hexagonal.core.domain.bo.PostBo;
-import com.baeldung.hexagonal.core.domain.bo.PostBo.PostState;
-import com.baeldung.hexagonal.core.domain.exception.InvalidPostActionException;
-import com.baeldung.hexagonal.core.domain.exception.PostAlreadyExistsException;
-import com.baeldung.hexagonal.core.domain.exception.PostNotFoundException;
-import com.baeldung.hexagonal.core.ports.repository.PostRepository;
+import com.baeldung.hexagonal.domain.bo.PostBo;
+import com.baeldung.hexagonal.domain.bo.PostBo.PostState;
+import com.baeldung.hexagonal.domain.exception.InvalidPostActionException;
+import com.baeldung.hexagonal.domain.exception.PostAlreadyExistsException;
+import com.baeldung.hexagonal.domain.exception.PostNotFoundException;
+import com.baeldung.hexagonal.application.ports.repository.PostRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

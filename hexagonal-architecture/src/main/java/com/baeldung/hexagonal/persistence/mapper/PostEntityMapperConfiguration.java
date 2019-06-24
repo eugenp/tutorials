@@ -1,6 +1,6 @@
 package com.baeldung.hexagonal.persistence.mapper;
 
-import com.baeldung.hexagonal.core.domain.bo.PostBo;
+import com.baeldung.hexagonal.domain.bo.PostBo;
 import com.baeldung.hexagonal.persistence.entity.Post;
 import ma.glasnost.orika.BoundMapperFacade;
 import ma.glasnost.orika.MapperFactory;
