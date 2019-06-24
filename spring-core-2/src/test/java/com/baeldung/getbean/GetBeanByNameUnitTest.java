@@ -21,9 +21,9 @@ class GetBeanByNameUnitTest {
 
     @Test
     void whenGivenExistingBeanName_shouldReturnThatBean() {
-        Object requestedBean = context.getBean("lion");
+        Object lion = context.getBean("lion");
 
-        assertEquals(requestedBean.getClass(), Lion.class);
+        assertEquals(lion.getClass(), Lion.class);
     }
 
     @Test

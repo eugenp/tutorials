@@ -659,6 +659,7 @@
                 <module>spring-cloud-data-flow</module>
 
                 <module>spring-core</module>
+		<module>spring-core-2</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>

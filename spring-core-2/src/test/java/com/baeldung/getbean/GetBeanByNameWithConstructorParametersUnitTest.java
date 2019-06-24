@@ -20,13 +20,19 @@ class GetBeanByNameWithConstructorParametersUnitTest {
     }
 
     @Test
+    void whenGivenCorrectName_thenShouldReturnBeanWithSpecifiedName() {
+        Tiger tiger = (Tiger) context.getBean("tiger", "Siberian");
+
+        assertEquals("Siberian", tiger.getName());
+    }
+
+    @Test
     void whenGivenCorrectNameOrAlias_shouldReturnBeanWithSpecifiedName() {
-        Tiger tiger = (Tiger) context.getBean("tiger", "Cutie");
-        Tiger tigerSecond = (Tiger) context.getBean("tiger", "Striped");
-        Tiger tigerViaAlias = (Tiger) context.getBean("kitty", "Siberian");
-        assertEquals("Cutie", tiger.getName());
-        assertEquals("Striped", tigerSecond.getName());
-        assertEquals("Siberian", tigerViaAlias.getName());
+        Tiger tiger = (Tiger) context.getBean("tiger", "Siberian");
+        Tiger secondTiger = (Tiger) context.getBean("tiger", "Striped");
+
+        assertEquals("Siberian", tiger.getName());
+        assertEquals("Striped", secondTiger.getName());
     }
 
     @Test
