@@ -32,9 +32,9 @@ public class BasicUsageUnitTest {
     public void whenParameterMapIsSupplied_thenDisplays() throws IOException {
         Handlebars handlebars = new Handlebars();
         Template template = handlebars.compileInline("Hi {{name}}!");
-
         Map<String, String> parameterMap = new HashMap<>();
         parameterMap.put("name", "Baeldung");
+
         String templateString = template.apply(parameterMap);
 
         assertThat(templateString).isEqualTo("Hi Baeldung!");
@@ -44,9 +44,9 @@ public class BasicUsageUnitTest {
     public void whenParameterObjectIsSupplied_ThenDisplays() throws IOException {
         Handlebars handlebars = new Handlebars();
         Template template = handlebars.compileInline("Hi {{name}}!");
-
         Person person = new Person();
         person.setName("Baeldung");
+
         String templateString = template.apply(person);
 
         assertThat(templateString).isEqualTo("Hi Baeldung!");
@@ -56,10 +56,10 @@ public class BasicUsageUnitTest {
     public void whenMultipleParametersAreSupplied_ThenDisplays() throws IOException {
         Handlebars handlebars = new Handlebars();
         Template template = handlebars.compileInline("Hi {{name}}! This is {{topic}}.");
-
         Map<String, String> parameterMap = new HashMap<>();
         parameterMap.put("name", "Baeldung");
         parameterMap.put("topic", "Handlebars");
+
         String templateString = template.apply(parameterMap);
 
         assertThat(templateString).isEqualTo("Hi Baeldung! This is Handlebars.");
@@ -69,8 +69,8 @@ public class BasicUsageUnitTest {
     public void whenNoLoaderIsGiven_ThenSearchesClasspath() throws IOException {
         Handlebars handlebars = new Handlebars();
         Template template = handlebars.compile("greeting");
-
         Person person = getPerson("Baeldung");
+
         String templateString = template.apply(person);
 
         assertThat(templateString).isEqualTo("Hi Baeldung!");
@@ -81,8 +81,8 @@ public class BasicUsageUnitTest {
         TemplateLoader loader = new ClassPathTemplateLoader("/handlebars", ".html");
         Handlebars handlebars = new Handlebars(loader);
         Template template = handlebars.compile("greeting");
-
         Person person = getPerson("Baeldung");
+
         String templateString = template.apply(person);
 
         assertThat(templateString).isEqualTo("Hi Baeldung!");
@@ -94,8 +94,8 @@ public class BasicUsageUnitTest {
         TemplateLoader secondLoader = new ClassPathTemplateLoader("/templates", ".html");
         Handlebars handlebars = new Handlebars().with(firstLoader, secondLoader);
         Template template = handlebars.compile("greeting");
-
         Person person = getPerson("Baeldung");
+
         String templateString = template.apply(person);
 
         assertThat(templateString).isEqualTo("Hi Baeldung!");

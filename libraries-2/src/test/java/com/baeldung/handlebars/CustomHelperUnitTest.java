@@ -31,8 +31,8 @@ public class CustomHelperUnitTest {
             }
         });
         Template template = handlebars.compile("person");
-
         Person person = getPerson("Baeldung");
+
         String templateString = template.apply(person);
 
         assertThat(templateString).isEqualTo("Baeldung - busy");
@@ -43,8 +43,8 @@ public class CustomHelperUnitTest {
         Handlebars handlebars = new Handlebars(templateLoader);
         handlebars.registerHelpers(new HelperSource());
         Template template = handlebars.compile("person");
-
         Person person = getPerson("Baeldung");
+
         String templateString = template.apply(person);
 
         assertThat(templateString).isEqualTo("Baeldung - busy");

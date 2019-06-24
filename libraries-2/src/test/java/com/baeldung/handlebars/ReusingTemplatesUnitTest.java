@@ -22,9 +22,9 @@ public class ReusingTemplatesUnitTest {
     public void whenOtherTemplateIsReferenced_ThenCanReuse() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
         Template template = handlebars.compile("page");
-
         Person person = new Person();
         person.setName("Baeldung");
+
         String templateString = template.apply(person);
 
         assertThat(templateString).isEqualTo("<h4>Hi Baeldung!</h4>\n<p>This is the page Baeldung</p>");
@@ -34,9 +34,9 @@ public class ReusingTemplatesUnitTest {
     public void whenBlockIsDefined_ThenCanOverrideWithPartial() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
         Template template = handlebars.compile("simplemessage");
-
         Person person = new Person();
         person.setName("Baeldung");
+
         String templateString = template.apply(person);
 
         assertThat(templateString).isEqualTo("\n<html>\n"
