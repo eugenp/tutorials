@@ -28,7 +28,7 @@ public class PostExecutionUnitTest {
           .expectComplete()
           .verifyThenAssertThat()
           .hasDropped(4)
-          .tookLessThan(Duration.ofMillis(1050));
+          .tookLessThan(Duration.ofMillis(1500));
     }
 
 }

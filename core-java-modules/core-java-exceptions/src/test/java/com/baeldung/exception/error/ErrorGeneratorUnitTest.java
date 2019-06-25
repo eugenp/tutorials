@@ -1,7 +1,6 @@
-package com.baeldung.error;
+package com.baeldung.exception.error;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 public class ErrorGeneratorUnitTest {
