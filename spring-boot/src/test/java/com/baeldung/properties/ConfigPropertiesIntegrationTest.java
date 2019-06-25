@@ -1,5 +1,6 @@
 package com.baeldung.properties;
 
+import org.baeldung.properties.AdditionalProperties;
 import org.baeldung.properties.ConfigProperties;
 import org.baeldung.properties.ConfigPropertiesDemoApplication;
 import org.junit.Assert;
@@ -17,6 +18,9 @@ public class ConfigPropertiesIntegrationTest {
 
     @Autowired
     private ConfigProperties properties;
+
+    @Autowired
+    private AdditionalProperties additionalProperties;
 
     @Test
     public void whenSimplePropertyQueriedthenReturnsProperty() throws Exception {
@@ -41,5 +45,11 @@ public class ConfigPropertiesIntegrationTest {
         Assert.assertTrue("Incorrectly bound object property!", properties.getCredentials().getAuthMethod().equals("SHA1"));
         Assert.assertTrue("Incorrectly bound object property!", properties.getCredentials().getUsername().equals("john"));
         Assert.assertTrue("Incorrectly bound object property!", properties.getCredentials().getPassword().equals("password"));
+    }
+
+    @Test
+    public void whenAdditionalPropertyQueriedthenReturnsProperty() {
+        Assert.assertTrue(additionalProperties.getUnit().equals("km"));
+        Assert.assertTrue(additionalProperties.getMax() == 100);
     }
 }
