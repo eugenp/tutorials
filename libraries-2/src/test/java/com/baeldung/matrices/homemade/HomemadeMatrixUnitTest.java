@@ -1,19 +1,13 @@
 package com.baeldung.matrices.homemade;
 
 import org.junit.jupiter.api.Test;
-import org.openjdk.jmh.annotations.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@BenchmarkMode(Mode.AverageTime)
-@Fork(value = 2)
-@Warmup(iterations = 5)
-@Measurement(iterations = 10)
-public class HomemadeMatrixUnitTest {
+class HomemadeMatrixUnitTest {
 
     @Test
-    @Benchmark
-    public void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
+    void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
         double[][] firstMatrix = {
           new double[]{1d, 5d},
           new double[]{2d, 3d},
@@ -31,28 +25,9 @@ public class HomemadeMatrixUnitTest {
           new double[]{36d, 16d, 59d, 14d}
         };
 
-        double[][] actual = multiplyMatrices(firstMatrix, secondMatrix);
+        double[][] actual = HomemadeMatrix.multiplyMatrices(firstMatrix, secondMatrix);
 
         assertThat(actual).isEqualTo(expected);
     }
 
-    private double[][] multiplyMatrices(double[][] firstMatrix, double[][] secondMatrix) {
-        double[][] result = new double[firstMatrix.length][secondMatrix[0].length];
-
-        for (int row = 0; row < result.length; row++) {
-            for (int col = 0; col < result[row].length; col++) {
-                result[row][col] = multiplyMatricesCell(firstMatrix, secondMatrix, row, col);
-            }
-        }
-
-        return result;
-    }
-
-    private double multiplyMatricesCell(double[][] firstMatrix, double[][] secondMatrix, int row, int col) {
-        double cell = 0;
-        for (int i = 0; i < secondMatrix.length; i++) {
-            cell += firstMatrix[row][i] * secondMatrix[i][col];
-        }
-        return cell;
-    }
 }

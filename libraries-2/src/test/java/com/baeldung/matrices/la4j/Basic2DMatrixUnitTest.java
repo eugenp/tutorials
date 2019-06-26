@@ -3,19 +3,13 @@ package com.baeldung.matrices.la4j;
 import org.junit.jupiter.api.Test;
 import org.la4j.Matrix;
 import org.la4j.matrix.dense.Basic2DMatrix;
-import org.openjdk.jmh.annotations.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@BenchmarkMode(Mode.AverageTime)
-@Fork(value = 2)
-@Warmup(iterations = 5)
-@Measurement(iterations = 10)
-public class Basic2DMatrixUnitTest {
+class Basic2DMatrixUnitTest {
 
     @Test
-    @Benchmark
-    public void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
+    void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
         Matrix firstMatrix = new Basic2DMatrix(
           new double[][]{
             new double[]{1d, 5d},

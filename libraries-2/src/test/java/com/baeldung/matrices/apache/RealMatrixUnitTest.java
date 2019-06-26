@@ -3,19 +3,13 @@ package com.baeldung.matrices.apache;
 import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.jupiter.api.Test;
-import org.openjdk.jmh.annotations.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@BenchmarkMode(Mode.AverageTime)
-@Fork(value = 2)
-@Warmup(iterations = 5)
-@Measurement(iterations = 10)
-public class RealMatrixUnitTest {
+class RealMatrixUnitTest {
 
     @Test
-    @Benchmark
-    public void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
+    void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
         RealMatrix firstMatrix = new Array2DRowRealMatrix(
           new double[][] {
             new double[] {1d, 5d},

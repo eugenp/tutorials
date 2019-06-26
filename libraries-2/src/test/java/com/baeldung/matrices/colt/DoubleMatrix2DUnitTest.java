@@ -4,19 +4,13 @@ import cern.colt.matrix.DoubleFactory2D;
 import cern.colt.matrix.DoubleMatrix2D;
 import cern.colt.matrix.linalg.Algebra;
 import org.junit.jupiter.api.Test;
-import org.openjdk.jmh.annotations.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@BenchmarkMode(Mode.AverageTime)
-@Fork(value = 2)
-@Warmup(iterations = 5)
-@Measurement(iterations = 10)
-public class DoubleMatrix2DUnitTest {
+class DoubleMatrix2DUnitTest {
 
     @Test
-    @Benchmark
-    public void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
+    void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
         DoubleFactory2D doubleFactory2D = DoubleFactory2D.dense;
 
         DoubleMatrix2D firstMatrix = doubleFactory2D.make(
