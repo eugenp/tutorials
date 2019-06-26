@@ -1,4 +1,4 @@
-package com.baeldung.convertiteratortolist;
+package com.baeldung.convert.iteratortolist;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
