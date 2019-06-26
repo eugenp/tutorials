@@ -21,7 +21,6 @@ public class EmptyStringsUnitTest {
 
     @Test
     public void checkForEmptyString() {
-
         assertTrue(new EmptyStringCheck().isEmptyString(emptyString));
         assertFalse(new EmptyStringCheck().isEmptyString(nonEmptyString));
         assertFalse(new EmptyStringCheck().isEmptyString(blankString));
@@ -29,7 +28,6 @@ public class EmptyStringsUnitTest {
 
     @Test
     public void checkForEmptyStringJava5() {
-
         assertTrue(new Java5EmptyStringCheck().isEmptyString(emptyString));
         assertFalse(new Java5EmptyStringCheck().isEmptyString(nonEmptyString));
         assertFalse(new Java5EmptyStringCheck().isEmptyString(blankString));
@@ -37,7 +35,6 @@ public class EmptyStringsUnitTest {
 
     @Test
     public void checkForBlankString() {
-
         assertTrue(new PlainJavaBlankStringCheck().isBlankString(emptyString));
         assertFalse(new PlainJavaBlankStringCheck().isBlankString(nonEmptyString));
         assertTrue(new PlainJavaBlankStringCheck().isBlankString(blankString));
@@ -59,7 +56,6 @@ public class EmptyStringsUnitTest {
 
     @Test
     public void detectBlankStringsWithBeanValidation() {
-
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
 
