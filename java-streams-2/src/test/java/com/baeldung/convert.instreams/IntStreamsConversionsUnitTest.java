@@ -1,4 +1,4 @@
-package com.baeldung.intstreams.conversion;
+package com.baeldung.convert.intstreams;
 
 import org.junit.Test;
 
