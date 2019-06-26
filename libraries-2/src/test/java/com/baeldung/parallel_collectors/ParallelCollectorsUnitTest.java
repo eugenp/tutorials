@@ -20,7 +20,7 @@ import static com.pivovarit.collectors.ParallelCollectors.parallelToList;
 import static com.pivovarit.collectors.ParallelCollectors.parallelToMap;
 import static com.pivovarit.collectors.ParallelCollectors.parallelToStream;
 
-public class ParallelCollectorsTest {
+public class ParallelCollectorsUnitTest {
 
     @Test
     public void shouldProcessInParallelWithStreams() {
