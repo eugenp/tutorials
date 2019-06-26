@@ -27,9 +27,19 @@
             <version>${ratpack.version}</version>
         </dependency>
         <dependency>
+    		<groupId>org.codehaus.groovy</groupId>
+		    <artifactId>groovy-sql</artifactId>
+		    <version>${groovy.sql.version}</version>
+		</dependency>
+        <dependency>
             <groupId>io.ratpack</groupId>
             <artifactId>ratpack-hikari</artifactId>
             <version>${ratpack.version}</version>
+        </dependency>
+        <dependency>
+        	<groupId>io.ratpack</groupId>
+            <artifactId>ratpack-groovy-test</artifactId>
+            <version>${ratpack.test.latest.version}</version>
         </dependency>
         <dependency>
             <groupId>io.ratpack</groupId>
@@ -61,7 +71,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2database.version}</version>
+            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -90,8 +100,8 @@
         <ratpack.version>1.5.4</ratpack.version>
         <httpclient.version>4.5.3</httpclient.version>
         <httpcore.version>4.4.6</httpcore.version>
-        <h2database.version>1.4.193</h2database.version>
         <hystrix.version>1.5.12</hystrix.version>
+        <groovy.sql.version>2.4.15</groovy.sql.version>
+        <ratpack.test.latest.version>1.6.1</ratpack.test.latest.version>
     </properties>
-
 </project>

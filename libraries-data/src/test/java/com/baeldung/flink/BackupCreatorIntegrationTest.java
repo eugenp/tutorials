@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class BackupCreatorIntegrationTest {
@@ -88,7 +89,7 @@ public class BackupCreatorIntegrationTest {
         SerializationSchema<Backup> serializationSchema = new BackupSerializationSchema();
         byte[] backupProcessed = serializationSchema.serialize(backup);
         
-        assertEquals(backupSerialized, backupProcessed);
+        assertArrayEquals(backupSerialized, backupProcessed);
     }
 
     private static class CollectingSink implements SinkFunction<Backup> {

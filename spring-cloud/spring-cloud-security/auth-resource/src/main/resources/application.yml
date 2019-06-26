@@ -5,7 +5,6 @@ server:
 
 # Configure the public key to use for verifying the incoming JWT tokens
 security:
-  sessions: NEVER
   oauth2:
     resource:
       jwt:

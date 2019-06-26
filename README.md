@@ -20,17 +20,22 @@ In additional to Spring, the following technologies are in focus: `core Java`, `
 
 Building the project
 ====================
-To do the full build, do: `mvn install -Pdefault -Dgib.enabled=false`
+To do the full build, do: `mvn clean install`
 
 
 Building a single module
 ====================
-To build a specific module run the command: `mvn clean install -Dgib.enabled=false` in the module directory
+To build a specific module run the command: `mvn clean install` in the module directory
 
 
 Running a Spring Boot module
 ====================
-To run a Spring Boot module run the command: `mvn spring-boot:run -Dgib.enabled=false` in the module directory
+To run a Spring Boot module run the command: `mvn spring-boot:run` in the module directory
+
+#Running Tests
+
+The command `mvn clean install` will run the unit tests in a module.
+To run the integration tests, use the command `mvn clean install -Pintegration-lite-first`
 
 
 

@@ -32,5 +32,7 @@
         <module>test-containers</module>
         <module>testing</module>
         <module>testng</module>
+        <module>junit-5-basics</module>
+        <module>junit-5-advanced</module>
     </modules>
 </project>
