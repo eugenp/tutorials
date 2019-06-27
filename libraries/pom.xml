@@ -19,12 +19,7 @@
             <version>${typesafe-akka.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.mapdb/mapdb -->
-        <dependency>
-            <groupId>org.mapdb</groupId>
-            <artifactId>mapdb</artifactId>
-            <version>${mapdb.version}</version>
-        </dependency>
+
 
 
         <dependency>
@@ -844,7 +839,7 @@
         <httpclient.version>4.5.3</httpclient.version>
         <h2.version>1.4.196</h2.version>
         <jnats.version>1.0</jnats.version>
-        <mapdb.version>3.0.7</mapdb.version>
+
 
         <httpclient.version>4.5.3</httpclient.version>
         <jackson.version>2.9.7</jackson.version>
