@@ -1,6 +1,7 @@
 package com.baeldung.jackson.json.compare;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -24,7 +25,7 @@ public class JsonCompareUnitTest {
         JsonNode actualObj1 = mapper.readTree(s1);
         JsonNode actualObj2 = mapper.readTree(s2);
 
-        assertTrue(actualObj1.equals(actualObj2));
+        assertEquals(actualObj1, actualObj2);
 
     }
 
@@ -38,7 +39,7 @@ public class JsonCompareUnitTest {
         JsonNode actualObj1 = mapper.readTree(s1);
         JsonNode actualObj2 = mapper.readTree(s2);
 
-        assertTrue(actualObj1.equals(actualObj2));
+        assertEquals(actualObj1, actualObj2);
 
     }
 
@@ -52,7 +53,7 @@ public class JsonCompareUnitTest {
         JsonNode actualObj1 = mapper.readTree(s1);
         JsonNode actualObj2 = mapper.readTree(s2);
 
-        assertTrue(actualObj1.equals(actualObj2));
+        assertEquals(actualObj1, actualObj2);
 
     }
 
@@ -65,26 +66,27 @@ public class JsonCompareUnitTest {
         JsonNode actualObj1 = mapper.readTree(s1);
         JsonNode actualObj2 = mapper.readTree(s2);
 
-        Comparator<JsonNode> cmp = new Comparator<JsonNode>() {
-            @Override
-            public int compare(JsonNode o1, JsonNode o2) {
-                if (o1.equals(o2)) {
-                    return 0;
-                }
-                if ((o1 instanceof NumericNode) && (o2 instanceof NumericNode)) {
-                    double d1 = ((NumericNode) o1).asDouble();
-                    double d2 = ((NumericNode) o2).asDouble();
-                    if (d1 == d2) {
-                        return 0;
-                    }
-                }
-                return 1;
-            }
-        };
+        NumericNodeComparator cmp = new NumericNodeComparator();
 
-        assertFalse(actualObj1.equals(actualObj2));
+        assertNotEquals(actualObj1, actualObj2);
         assertTrue(actualObj1.equals(cmp, actualObj2));
 
     }
-
+    
+    public class NumericNodeComparator implements Comparator<JsonNode> {
+        @Override
+        public int compare(JsonNode o1, JsonNode o2) {
+            if (o1.equals(o2)) {
+                return 0;
+            }
+            if ((o1 instanceof NumericNode) && (o2 instanceof NumericNode)) {
+                Double d1 = ((NumericNode) o1).asDouble();
+                Double d2 = ((NumericNode) o2).asDouble();
+                if (d1.equals(d2)) {
+                    return 0;
+                }
+            }
+            return 1;
+        }
+    }
 }
