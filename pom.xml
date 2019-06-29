@@ -422,6 +422,7 @@
                 <module>drools</module>
                 <module>dubbo</module>
 
+                <module>easy-random</module>
                 <module>ethereum</module>
 
                 <module>feign</module>
