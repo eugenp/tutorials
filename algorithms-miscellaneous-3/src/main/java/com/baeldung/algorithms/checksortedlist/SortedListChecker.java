@@ -27,6 +27,7 @@ public class SortedListChecker {
             if (previous.compareTo(current) > 0) {
                 return false;
             }
+            previous = current;
         }
         return true;
     }
@@ -43,6 +44,7 @@ public class SortedListChecker {
             if (employeeComparator.compare(previous, current) > 0) {
                 return false;
             }
+            previous = current;
         }
         return true;
     }
