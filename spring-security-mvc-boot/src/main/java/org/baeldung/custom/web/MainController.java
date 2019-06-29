@@ -3,9 +3,12 @@ package org.baeldung.custom.web;
 import org.baeldung.custom.persistence.dao.OrganizationRepository;
 import org.baeldung.custom.persistence.model.Foo;
 import org.baeldung.custom.persistence.model.Organization;
+import org.baeldung.custom.security.MyUserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -52,7 +55,17 @@ public class MainController {
     @RequestMapping(method = RequestMethod.GET, value = "/organizations/{id}")
     @ResponseBody
     public Organization findOrgById(@PathVariable final long id) {
-        return organizationRepository.findById(id).orElse(null);
+        return organizationRepository.findById(id)
+            .orElse(null);
+    }
+
+    @PreAuthorize("hasPermission(#id, 'Foo', 'read')")
+    @RequestMapping(method = RequestMethod.GET, value = "/user")
+    @ResponseBody
+    public MyUserPrincipal retrieveUserDetails() {
+        Authentication authentication = SecurityContextHolder.getContext()
+            .getAuthentication();
+        return (MyUserPrincipal) authentication.getPrincipal();
     }
 
 }
