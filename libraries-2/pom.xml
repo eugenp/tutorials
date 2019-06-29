@@ -124,6 +124,12 @@
             <version>${crawler4j.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.github.jknack</groupId>
+			<artifactId>handlebars</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+
 		<!-- Benchmarking -->
 		<dependency>
 			<groupId>org.openjdk.jmh</groupId>
