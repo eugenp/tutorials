@@ -165,7 +165,7 @@ public class JacksonSerializationIgnoreUnitTest {
     }
 
     @Test
-    public final void givenIgnoringNullFieldsOnClass_whenWritingObjectWithNullField_thenFieldIsIgnored() throws JsonProcessingException {
+    public final void givenNullsIgnoredOnClass_whenWritingObjectWithNullField_thenIgnored() throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
         final MyDtoIgnoreNull dtoObject = new MyDtoIgnoreNull();
 
@@ -178,7 +178,7 @@ public class JacksonSerializationIgnoreUnitTest {
     }
 
     @Test
-    public final void givenIgnoringNullFieldsGlobally_whenWritingObjectWithNullField_thenIgnored() throws JsonProcessingException {
+    public final void givenNullsIgnoredGlobally_whenWritingObjectWithNullField_thenIgnored() throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
         mapper.setSerializationInclusion(Include.NON_NULL);
         final MyDto dtoObject = new MyDto();
