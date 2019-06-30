@@ -13,9 +13,9 @@ public class GetterLazy {
     private static final String DELIMETER = ",";
 
     @Getter(lazy = true)
-    private final Map<String, Long> transactions = readTxnsFromFile();
+    private final Map<String, Long> transactions = getTransactions();
 
-    private Map<String, Long> readTxnsFromFile() {
+    private Map<String, Long> getTransactions() {
 
         final Map<String, Long> cache = new HashMap<>();
         List<String> txnRows = readTxnListFromFile();
