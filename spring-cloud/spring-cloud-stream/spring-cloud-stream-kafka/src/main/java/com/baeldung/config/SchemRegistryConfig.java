@@ -9,11 +9,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SchemRegistryConfig {
 
-    @Value("${spring.cloud.stream.kafka.binder.producer-properties.schema.registry.url}")
-    private String endPoint;
-
     @Bean
-    public SchemaRegistryClient schemaRegistryClient() {
+    public SchemaRegistryClient schemaRegistryClient(@Value("${spring.cloud.stream.kafka.binder.producer-properties.schema.registry.url}") String endPoint) {
         ConfluentSchemaRegistryClient client = new ConfluentSchemaRegistryClient();
         client.setEndpoint(endPoint);
         return client;

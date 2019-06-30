@@ -11,6 +11,7 @@ spring:
           destination: employee-details
           content-type: application/*+avro
           group: group-1
+          concurrency: 3
         output:
           destination: employee-details
           content-type: application/*+avro

@@ -11,11 +11,11 @@ import com.baeldung.schema.Employee;
 @Service
 public class AvroConsumer {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(AvroConsumer.class);
 
     @StreamListener(Processor.INPUT)
     public void consumeEmployeeDetails(Employee employeeDetails) {
-        logger.info("Let's process employee details: {}", employeeDetails);
+        LOGGER.info("Let's process employee details: {}", employeeDetails);
     }
 
 }
