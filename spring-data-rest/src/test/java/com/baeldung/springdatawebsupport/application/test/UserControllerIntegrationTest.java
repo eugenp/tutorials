@@ -42,7 +42,7 @@ public class UserControllerIntegrationTest {
 
     @Test
     public void whenGetRequestToUserEndPointWithNameRequestParameter_thenCorrectResponse() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/user").param("name", "John").contentType(MediaType.APPLICATION_JSON_UTF8)).andExpect(MockMvcResultMatchers.status().isOk())
+        mockMvc.perform(MockMvcRequestBuilders.get("/users").param("name", "John").contentType(MediaType.APPLICATION_JSON_UTF8)).andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$['content'][0].['name']").value("John"));
     }
 
