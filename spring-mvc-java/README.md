@@ -15,7 +15,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [File Upload with Spring MVC](http://www.baeldung.com/spring-file-upload)
 - [Circular Dependencies in Spring](http://www.baeldung.com/circular-dependencies-in-spring)
 - [Introduction to HtmlUnit](http://www.baeldung.com/htmlunit)
-- [Spring @RequestMapping New Shortcut Annotations](http://www.baeldung.com/spring-new-requestmapping-shortcuts)
 - [Upload and Display Excel Files with Spring MVC](http://www.baeldung.com/spring-mvc-excel-files)
 - [Spring MVC Custom Validation](http://www.baeldung.com/spring-mvc-custom-validator)
 - [web.xml vs Initializer with Spring](http://www.baeldung.com/spring-xml-vs-java-config)

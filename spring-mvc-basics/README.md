@@ -12,3 +12,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [A Guide to the ViewResolver in Spring MVC](http://www.baeldung.com/spring-mvc-view-resolver-tutorial)
 - [Guide to Spring Handler Mappings](http://www.baeldung.com/spring-handler-mappings)
 - [Spring MVC Content Negotiation](http://www.baeldung.com/spring-mvc-content-negotiation-json-xml)
+- [Spring @RequestMapping New Shortcut Annotations](http://www.baeldung.com/spring-new-requestmapping-shortcuts)
