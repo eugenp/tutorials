@@ -21,6 +21,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring MVC and the @ModelAttribute Annotation](http://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation)
 - [Spring MVC @PathVariable with a dot (.) gets truncated](http://www.baeldung.com/spring-mvc-pathvariable-dot)
 - [A Quick Example of Spring Websockets’ @SendToUser Annotation](http://www.baeldung.com/spring-websockets-sendtouser)
-- [Using Spring @ResponseStatus to Set HTTP Status Code](http://www.baeldung.com/spring-response-status)
 - [Working with Date Parameters in Spring](https://www.baeldung.com/spring-date-parameters)
 - [A Java Web Application Without a web.xml](https://www.baeldung.com/java-web-app-without-web-xml)

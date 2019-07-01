@@ -14,3 +14,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring MVC Content Negotiation](http://www.baeldung.com/spring-mvc-content-negotiation-json-xml)
 - [Spring @RequestMapping New Shortcut Annotations](http://www.baeldung.com/spring-new-requestmapping-shortcuts)
 - [Spring MVC Custom Validation](http://www.baeldung.com/spring-mvc-custom-validator)
+- [Using Spring @ResponseStatus to Set HTTP Status Code](http://www.baeldung.com/spring-response-status)
