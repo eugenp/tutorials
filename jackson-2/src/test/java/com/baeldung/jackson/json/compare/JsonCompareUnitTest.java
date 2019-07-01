@@ -82,7 +82,7 @@ public class JsonCompareUnitTest {
             if ((o1 instanceof NumericNode) && (o2 instanceof NumericNode)) {
                 Double d1 = ((NumericNode) o1).asDouble();
                 Double d2 = ((NumericNode) o2).asDouble();
-                if (d1.equals(d2)) {
+                if (d1.compareTo(d2) == 0) {
                     return 0;
                 }
             }
