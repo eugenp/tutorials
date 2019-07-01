@@ -13,3 +13,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Guide to Spring Handler Mappings](http://www.baeldung.com/spring-handler-mappings)
 - [Spring MVC Content Negotiation](http://www.baeldung.com/spring-mvc-content-negotiation-json-xml)
 - [Spring @RequestMapping New Shortcut Annotations](http://www.baeldung.com/spring-new-requestmapping-shortcuts)
+- [Spring MVC Custom Validation](http://www.baeldung.com/spring-mvc-custom-validator)
