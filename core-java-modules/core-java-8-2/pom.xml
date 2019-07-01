@@ -30,7 +30,6 @@
             <artifactId>icu4j</artifactId>
             <version>${icu.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>

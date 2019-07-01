@@ -24,7 +24,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zuul</artifactId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -34,14 +34,16 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
+            <version>${jquery.version}</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
+            <version>${bootstrap.version}</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
-            <artifactId>webjars-locator</artifactId>
+            <artifactId>webjars-locator-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,8 +64,8 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.security.oauth</groupId>
-            <artifactId>spring-security-oauth2</artifactId>
+            <groupId>org.springframework.security.oauth.boot</groupId>
+            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
         </dependency>
     </dependencies>
 
@@ -89,8 +91,10 @@
     </dependencyManagement>
 
     <properties>
-        <js-cookie.version>2.1.0</js-cookie.version>
-        <spring-cloud.version>Dalston.SR4</spring-cloud.version>
+        <js-cookie.version>2.2.0</js-cookie.version>
+        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+        <jquery.version>3.4.1</jquery.version>
+        <bootstrap.version>4.3.1</bootstrap.version>
     </properties>
 
 </project>

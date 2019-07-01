@@ -26,6 +26,7 @@ public class FruitResourceIntegrationTest extends JerseyTest {
     protected Application configure() {
         enable(TestProperties.LOG_TRAFFIC);
         enable(TestProperties.DUMP_ENTITY);
+        forceSet(TestProperties.CONTAINER_PORT, "0");
 
         ViewApplicationConfig config = new ViewApplicationConfig();
         config.register(FruitExceptionMapper.class);

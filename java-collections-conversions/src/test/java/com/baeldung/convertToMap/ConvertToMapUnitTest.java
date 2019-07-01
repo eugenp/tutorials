@@ -2,6 +2,7 @@ package com.baeldung.convertToMap;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static org.junit.Assert.*;
@@ -34,8 +35,10 @@ public class ConvertToMapUnitTest {
     }
 
     @Test
-    public void whenMapHasDuplicateKey_with_merge_function() {
-        assertTrue(convertToMap.listToMapWithDupKey(bookList).size() == 2);
+    public void whenMapHasDuplicateKeyThenMergeFunctionHandlesCollision() {
+        Map<Integer, Book> booksByYear = convertToMap.listToMapWithDupKey(bookList);
+        assertEquals(2, booksByYear.size());
+        assertEquals("0395489318", booksByYear.get(1954).getIsbn());
     }
 
     @Test
