@@ -10,53 +10,53 @@ import static junit.framework.Assert.assertEquals;
 
 public class InMemoryModesUnitTest {
 
-  @Test
-  public void givenDBCreatedOnHeap_whenUsed_checkUsageCorrect() {
+    @Test
+    public void givenDBCreatedOnHeap_whenUsed_checkUsageCorrect() {
 
-    DB heapDB = DBMaker.heapDB().make();
+        DB heapDB = DBMaker.heapDB().make();
 
-    HTreeMap<Integer, String> map = heapDB
-        .hashMap("myMap")
-        .keySerializer(Serializer.INTEGER)
-        .valueSerializer(Serializer.STRING)
-        .createOrOpen();
+        HTreeMap<Integer, String> map = heapDB
+          .hashMap("myMap")
+          .keySerializer(Serializer.INTEGER)
+          .valueSerializer(Serializer.STRING)
+          .createOrOpen();
 
-    map.put(1, "ONE");
+        map.put(1, "ONE");
 
-    assertEquals("ONE", map.get(1));
+        assertEquals("ONE", map.get(1));
 
-  }
+    }
 
-  @Test
-  public void givenDBCreatedBaseOnByteArray_whenUsed_checkUsageCorrect() {
+    @Test
+    public void givenDBCreatedBaseOnByteArray_whenUsed_checkUsageCorrect() {
 
-    DB heapDB = DBMaker.memoryDB().make();
+        DB heapDB = DBMaker.memoryDB().make();
 
-    HTreeMap<Integer, String> map = heapDB
-            .hashMap("myMap")
-            .keySerializer(Serializer.INTEGER)
-            .valueSerializer(Serializer.STRING)
-            .createOrOpen();
+        HTreeMap<Integer, String> map = heapDB
+          .hashMap("myMap")
+          .keySerializer(Serializer.INTEGER)
+          .valueSerializer(Serializer.STRING)
+          .createOrOpen();
 
-    map.put(1, "ONE");
+        map.put(1, "ONE");
 
-    assertEquals("ONE", map.get(1));
-  }
+        assertEquals("ONE", map.get(1));
+    }
 
-  @Test
-  public void givenDBCreatedBaseOnDirectByteBuffer_whenUsed_checkUsageCorrect() {
+    @Test
+    public void givenDBCreatedBaseOnDirectByteBuffer_whenUsed_checkUsageCorrect() {
 
-    DB heapDB = DBMaker.memoryDirectDB().make();
+        DB heapDB = DBMaker.memoryDirectDB().make();
 
-    HTreeMap<Integer, String> map = heapDB
-            .hashMap("myMap")
-            .keySerializer(Serializer.INTEGER)
-            .valueSerializer(Serializer.STRING)
-            .createOrOpen();
+        HTreeMap<Integer, String> map = heapDB
+          .hashMap("myMap")
+          .keySerializer(Serializer.INTEGER)
+          .valueSerializer(Serializer.STRING)
+          .createOrOpen();
 
-    map.put(1, "ONE");
+        map.put(1, "ONE");
 
-    assertEquals("ONE", map.get(1));
-  }
+        assertEquals("ONE", map.get(1));
+    }
 
 }

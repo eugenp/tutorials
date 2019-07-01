@@ -11,39 +11,39 @@ import static junit.framework.Assert.assertEquals;
 
 public class HelloBaeldungUnitTest {
 
-  @Test
-  public void givenInMemoryDBInstantiateCorrectly_whenDataSavedAndRetrieved_checkRetrievalCorrect() {
+    @Test
+    public void givenInMemoryDBInstantiateCorrectly_whenDataSavedAndRetrieved_checkRetrievalCorrect() {
 
-    DB db = DBMaker.memoryDB().make();
+        DB db = DBMaker.memoryDB().make();
 
-    String welcomeMessageKey = "Welcome Message";
-    String welcomeMessageString = "Hello Baeldung!";
+        String welcomeMessageKey = "Welcome Message";
+        String welcomeMessageString = "Hello Baeldung!";
 
-    HTreeMap myMap = db.hashMap("myMap").createOrOpen();
-    myMap.put(welcomeMessageKey, welcomeMessageString);
+        HTreeMap myMap = db.hashMap("myMap").createOrOpen();
+        myMap.put(welcomeMessageKey, welcomeMessageString);
 
-    String welcomeMessageFromDB = (String) myMap.get(welcomeMessageKey);
+        String welcomeMessageFromDB = (String) myMap.get(welcomeMessageKey);
 
-    db.close();
+        db.close();
 
-    assertEquals(welcomeMessageString, welcomeMessageFromDB);
-  }
+        assertEquals(welcomeMessageString, welcomeMessageFromDB);
+    }
 
-  @Test
-  public void givenInFileDBInstantiateCorrectly_whenDataSavedAndRetrieved_checkRetrievalCorrect() {
+    @Test
+    public void givenInFileDBInstantiateCorrectly_whenDataSavedAndRetrieved_checkRetrievalCorrect() {
 
-    DB db = DBMaker.fileDB("file.db").make();
+        DB db = DBMaker.fileDB("file.db").make();
 
-    String welcomeMessageKey = "Welcome Message";
-    String welcomeMessageString = "Hello Baeldung!";
+        String welcomeMessageKey = "Welcome Message";
+        String welcomeMessageString = "Hello Baeldung!";
 
-    HTreeMap myMap = db.hashMap("myMap").createOrOpen();
-    myMap.put(welcomeMessageKey, welcomeMessageString);
+        HTreeMap myMap = db.hashMap("myMap").createOrOpen();
+        myMap.put(welcomeMessageKey, welcomeMessageString);
 
-    String welcomeMessageFromDB = (String) myMap.get(welcomeMessageKey);
+        String welcomeMessageFromDB = (String) myMap.get(welcomeMessageKey);
 
-    db.close();
+        db.close();
 
-    assertEquals(welcomeMessageString, welcomeMessageFromDB);
-  }
+        assertEquals(welcomeMessageString, welcomeMessageFromDB);
+    }
 }

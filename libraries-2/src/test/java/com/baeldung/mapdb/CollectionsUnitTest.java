@@ -11,23 +11,23 @@ import static junit.framework.Assert.assertEquals;
 
 public class CollectionsUnitTest {
 
-  @Test
-  public void givenSetCreatedInDB_whenMultipleElementsAdded_checkOnlyOneExists() {
+    @Test
+    public void givenSetCreatedInDB_whenMultipleElementsAdded_checkOnlyOneExists() {
 
-    DB db = DBMaker.memoryDB().make();
+        DB db = DBMaker.memoryDB().make();
 
-    NavigableSet<String> set = db.
-            treeSet("mySet")
-            .serializer(Serializer.STRING)
-            .createOrOpen();
+        NavigableSet<String> set = db.
+          treeSet("mySet")
+          .serializer(Serializer.STRING)
+          .createOrOpen();
 
-    String myString = "Baeldung!";
+        String myString = "Baeldung!";
 
-    set.add(myString);
-    set.add(myString);
+        set.add(myString);
+        set.add(myString);
 
-    assertEquals(1, set.size());
+        assertEquals(1, set.size());
 
-    db.close();
-  }
+        db.close();
+    }
 }

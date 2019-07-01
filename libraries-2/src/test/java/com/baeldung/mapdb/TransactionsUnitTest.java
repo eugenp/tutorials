@@ -11,34 +11,31 @@ import static junit.framework.Assert.assertEquals;
 
 public class TransactionsUnitTest {
 
-  //in the article, split this into sections. -
-  @Test
-  public void givenValidDBSetup_whenTransactionCommittedAndRolledBack_checkPreviousStateAchieved() {
+    @Test
+    public void givenValidDBSetup_whenTransactionCommittedAndRolledBack_checkPreviousStateAchieved() {
 
-    //make sure we point this out, transactionEnable. Otherwsie an UnsupportedOperationException is thrown.
-    DB db = DBMaker.memoryDB().transactionEnable().make();
+        DB db = DBMaker.memoryDB().transactionEnable().make();
 
-    NavigableSet<String> set = db.
-            treeSet("mySet")
-            .serializer(Serializer.STRING)
-            .createOrOpen();
+        NavigableSet<String> set = db
+          .treeSet("mySet")
+          .serializer(Serializer.STRING)
+          .createOrOpen();
 
+        set.add("One");
+        set.add("Two");
 
-    set.add("One");
-    set.add("Two");
+        db.commit();
 
-    db.commit();
+        assertEquals(2, set.size());
 
-    assertEquals(2, set.size());
+        set.add("Three");
 
-    set.add("Three");
+        assertEquals(3, set.size());
 
-    assertEquals(3, set.size());
+        db.rollback();
 
-    db.rollback();
+        assertEquals(2, set.size());
 
-    assertEquals(2, set.size());
-
-    db.close();
-  }
+        db.close();
+    }
 }

@@ -10,43 +10,38 @@ import static junit.framework.Assert.assertEquals;
 
 public class SortedTableMapUnitTest {
 
-  private static final String VOLUME_LOCATION = "sortedTableMapVol.db";
+    private static final String VOLUME_LOCATION = "sortedTableMapVol.db";
 
-  @Test
-  public void givenValidSortedTableMapSetup_whenQueried_checkValuesCorrect() {
+    @Test
+    public void givenValidSortedTableMapSetup_whenQueried_checkValuesCorrect() {
 
+        //create memory mapped volume, readonly false
+        Volume vol = MappedFileVol.FACTORY.makeVolume(VOLUME_LOCATION, false);
 
-
-    //create memory mapped volume, readonly false
-    Volume vol = MappedFileVol.FACTORY.makeVolume(VOLUME_LOCATION, false);
-
-    //create sink to feed the map with data
-
-    SortedTableMap.Sink<Integer, String> sink =
-        SortedTableMap.create(
+        //create sink to feed the map with data
+        SortedTableMap.Sink<Integer, String> sink =
+          SortedTableMap.create(
             vol,
             Serializer.INTEGER,
             Serializer.STRING
-        ).createFromSink();
+          ).createFromSink();
 
-    //add content
-    for(int i = 0; i < 100; i++){
-      sink.put(i, "Value " + Integer.toString(i));
+        //add content
+        for(int i = 0; i < 100; i++){
+          sink.put(i, "Value " + Integer.toString(i));
+        }
+
+        sink.create();
+
+        //now open in read-only mode
+        Volume openVol = MappedFileVol.FACTORY.makeVolume(VOLUME_LOCATION, true);
+
+        SortedTableMap<Integer, String> sortedTableMap = SortedTableMap.open(
+          openVol,
+          Serializer.INTEGER,
+          Serializer.STRING
+        );
+
+        assertEquals(100, sortedTableMap.size());
     }
-
-    sink.create();
-
-    //now open in read-only mode
-    Volume openVol = MappedFileVol.FACTORY.makeVolume(VOLUME_LOCATION, true);
-
-    SortedTableMap<Integer, String> sortedTableMap = SortedTableMap.open(
-            openVol,
-            Serializer.INTEGER,
-            Serializer.STRING
-    );
-
-    assertEquals(100, sortedTableMap.size());
-
-
-  }
 }
