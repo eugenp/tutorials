@@ -13,7 +13,7 @@ import reactor.test.StepVerifier;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class R2dbcApplicationTest {
+public class R2dbcApplicationUnitTest {
 
 
     @Autowired
@@ -22,7 +22,7 @@ public class R2dbcApplicationTest {
 
     @Test
     @Order(1)
-    public void whenDeleteAllThen0IsExpected() {
+    public void whenDeleteAll_then0IsExpected() {
 
         Mono<Void> deleteAll = this.playerRepository.deleteAll();
         StepVerifier
@@ -33,7 +33,7 @@ public class R2dbcApplicationTest {
 
     @Test
     @Order(2)
-    public void whenInsertFiveThen5IsExpected() {
+    public void whenInsertFive_then5IsExpected() {
         Flux<Player> playerFlux = Flux.just("Kaka", "Messi", "Ronaldo", "CR7", "Romario")
                 .map(name -> new Player(null, name))
                 .flatMap(p -> this.playerRepository.save(p));
@@ -45,7 +45,7 @@ public class R2dbcApplicationTest {
 
     @Test
     @Order(3)
-    public void whenListAllThen5IsExpected() {
+    public void whenListAll_then5IsExpected() {
         Flux<Player> allPlayers = this.playerRepository.findAll();
         StepVerifier.create(allPlayers)
                 .expectNextCount(5)
@@ -55,7 +55,7 @@ public class R2dbcApplicationTest {
 
     @Test
     @Order(4)
-    public void whenSearchForCR7ThenOneRowExpceted() {
+    public void whenSearchForCR7_thenOneRowExpceted() {
         Flux<Player> cr7 = this.playerRepository.findAllByName("CR7");
         StepVerifier.create(cr7)
                 .expectNextCount(1)
