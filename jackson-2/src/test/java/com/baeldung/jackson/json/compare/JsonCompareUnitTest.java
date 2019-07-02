@@ -12,6 +12,7 @@ import org.junit.Test;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.NumericNode;
+import com.fasterxml.jackson.databind.node.TextNode;
 
 public class JsonCompareUnitTest {
 
@@ -58,7 +59,7 @@ public class JsonCompareUnitTest {
     }
 
     @Test
-    public void givenTwoJsonDataObjects_whenComparedUsingCustomComparator_thenEqual() throws IOException {
+    public void givenTwoJsonDataObjects_whenComparedUsingCustomNumericNodeComparator_thenEqual() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
         String s1 = "{\"name\": \"John\",\"score\":5.0}";
@@ -83,6 +84,39 @@ public class JsonCompareUnitTest {
                 Double d1 = ((NumericNode) o1).asDouble();
                 Double d2 = ((NumericNode) o2).asDouble();
                 if (d1.compareTo(d2) == 0) {
+                    return 0;
+                }
+            }
+            return 1;
+        }
+    }
+    
+    @Test
+    public void givenTwoJsonDataObjects_whenComparedUsingCustomTextNodeComparator_thenEqual() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+
+        String s1 = "{\"name\": \"JOHN\",\"score\":5}";
+        String s2 = "{\"name\": \"John\",\"score\":5}";
+        JsonNode actualObj1 = mapper.readTree(s1);
+        JsonNode actualObj2 = mapper.readTree(s2);
+
+        TextNodeComparator cmp = new TextNodeComparator();
+
+        assertNotEquals(actualObj1, actualObj2);
+        assertTrue(actualObj1.equals(cmp, actualObj2));
+
+    }
+    
+    public class TextNodeComparator implements Comparator<JsonNode> {
+        @Override
+        public int compare(JsonNode o1, JsonNode o2) {
+            if (o1.equals(o2)) {
+                return 0;
+            }
+            if ((o1 instanceof TextNode) && (o2 instanceof TextNode)) {
+                String s1 = ((TextNode) o1).asText();
+                String s2 = ((TextNode) o2).asText();
+                if (s1.equalsIgnoreCase(s2)) {
                     return 0;
                 }
             }
