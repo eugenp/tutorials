@@ -50,7 +50,7 @@ public class R2dbcApplicationUnitTest {
     }
 
     @Test
-    public void whenSearchForCR7_thenOneRowExpceted() {
+    public void whenSearchForCR7_then1IsExpected() {
         Flux<Player> cr7 = this.playerRepository.findAllByName("CR7");
         StepVerifier.create(cr7)
                 .expectNextCount(1)
