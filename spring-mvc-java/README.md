@@ -18,7 +18,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Upload and Display Excel Files with Spring MVC](http://www.baeldung.com/spring-mvc-excel-files)
 - [web.xml vs Initializer with Spring](http://www.baeldung.com/spring-xml-vs-java-config)
 - [The HttpMediaTypeNotAcceptableException in Spring MVC](http://www.baeldung.com/spring-httpmediatypenotacceptable)
-- [Spring MVC and the @ModelAttribute Annotation](http://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation)
 - [Spring MVC @PathVariable with a dot (.) gets truncated](http://www.baeldung.com/spring-mvc-pathvariable-dot)
 - [A Quick Example of Spring Websockets’ @SendToUser Annotation](http://www.baeldung.com/spring-websockets-sendtouser)
 - [Working with Date Parameters in Spring](https://www.baeldung.com/spring-date-parameters)

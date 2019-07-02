@@ -15,3 +15,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring @RequestMapping New Shortcut Annotations](http://www.baeldung.com/spring-new-requestmapping-shortcuts)
 - [Spring MVC Custom Validation](http://www.baeldung.com/spring-mvc-custom-validator)
 - [Using Spring @ResponseStatus to Set HTTP Status Code](http://www.baeldung.com/spring-response-status)
+- [Spring MVC and the @ModelAttribute Annotation](http://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation)
