@@ -2,7 +2,6 @@ package com.baeldung.r2dbc;
 
 
 import org.junit.Test;
-import org.junit.jupiter.api.Order;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +20,6 @@ public class R2dbcApplicationUnitTest {
 
 
     @Test
-    @Order(1)
     public void whenDeleteAll_then0IsExpected() {
 
         Mono<Void> deleteAll = this.playerRepository.deleteAll();
@@ -32,7 +30,6 @@ public class R2dbcApplicationUnitTest {
     }
 
     @Test
-    @Order(2)
     public void whenInsertFive_then5IsExpected() {
         Flux<Player> playerFlux = Flux.just("Kaka", "Messi", "Ronaldo", "CR7", "Romario")
                 .map(name -> new Player(null, name))
@@ -44,7 +41,6 @@ public class R2dbcApplicationUnitTest {
     }
 
     @Test
-    @Order(3)
     public void whenListAll_then5IsExpected() {
         Flux<Player> allPlayers = this.playerRepository.findAll();
         StepVerifier.create(allPlayers)
@@ -54,7 +50,6 @@ public class R2dbcApplicationUnitTest {
     }
 
     @Test
-    @Order(4)
     public void whenSearchForCR7_thenOneRowExpceted() {
         Flux<Player> cr7 = this.playerRepository.findAllByName("CR7");
         StepVerifier.create(cr7)
