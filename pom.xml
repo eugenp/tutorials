@@ -461,6 +461,7 @@
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
                 <module>java-lite</module>
                 <module>java-numbers</module>
+                <module>java-numbers-2</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-streams</module>
@@ -1142,6 +1143,7 @@
                 <module>java-ee-8-security-api</module>
                 <module>java-lite</module>
                 <module>java-numbers</module>
+                <module>java-numbers-2</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-streams</module>
