@@ -12,17 +12,25 @@ import org.la4j.matrix.dense.Basic2DMatrix;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.options.Options;
+import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.concurrent.TimeUnit;
 
-@BenchmarkMode(Mode.AverageTime)
-@Fork(value = 2)
-@Warmup(iterations = 5)
-@Measurement(iterations = 10, timeUnit = TimeUnit.MILLISECONDS)
 public class MatrixMultiplicationBenchmarking {
 
     public static void main(String[] args) throws Exception {
-        org.openjdk.jmh.Main.main(args);
+        Options opt = new OptionsBuilder()
+          .include(MatrixMultiplicationBenchmarking.class.getSimpleName())
+          .mode(Mode.AverageTime)
+          .forks(2)
+          .warmupIterations(5)
+          .measurementIterations(10)
+          .timeUnit(TimeUnit.MICROSECONDS)
+          .build();
+
+        new Runner(opt).run();
     }
 
     @Benchmark
