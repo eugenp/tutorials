@@ -64,7 +64,7 @@
     </dependencies>
 
     <build>
-        <finalName>java-numbers</finalName>
+        <finalName>java-numbers-2</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
