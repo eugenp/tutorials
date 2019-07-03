@@ -62,8 +62,8 @@ public class MultiDimensionalArray {
 
     Integer[] findLengthOfElements(Integer[][] multiDimensionalArray) {
         return Arrays.stream(multiDimensionalArray)
-            .map(array -> array.length)
-            .toArray(Integer[]::new);
+          .map(array -> array.length)
+          .toArray(Integer[]::new);
     }
 
     int[][] copy2DArray(int[][] arrayOfArrays) {
@@ -77,7 +77,7 @@ public class MultiDimensionalArray {
 
     Integer[][] copy2DArray(Integer[][] arrayOfArrays) {
         return Arrays.stream(arrayOfArrays)
-            .map(array -> Arrays.copyOf(array, array.length))
-            .toArray(Integer[][]::new);
+          .map(array -> Arrays.copyOf(array, array.length))
+          .toArray(Integer[][]::new);
     }
 }
