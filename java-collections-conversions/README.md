@@ -12,3 +12,4 @@
 - [Array to String Conversions](https://www.baeldung.com/java-array-to-string)
 - [Converting a Collection to ArrayList in Java](https://www.baeldung.com/java-convert-collection-arraylist)
 - [Java 8 Collectors toMap](https://www.baeldung.com/java-collectors-tomap)
+- [Converting Iterable to Collection in Java](https://www.baeldung.com/java-iterable-to-collection)
