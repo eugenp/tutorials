@@ -1147,7 +1147,7 @@
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-streams</module>
-                <module>java-streams-2</module>
+                <!-- <module>java-streams-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>java-strings</module>
                 <module>java-strings-2</module>
                 <module>java-vavr-stream</module>
