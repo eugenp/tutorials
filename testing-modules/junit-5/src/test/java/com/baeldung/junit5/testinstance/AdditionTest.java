@@ -15,7 +15,7 @@ public class AdditionTest {
     }
 
     @Test
-    void addThreeToSumReturnsFour() {
+    void addingThreeToSumReturnsFour() {
         sum += 3;
         assertEquals(4, sum);
     }

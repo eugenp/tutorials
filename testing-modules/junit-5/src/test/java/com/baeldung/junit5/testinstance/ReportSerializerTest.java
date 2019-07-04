@@ -8,12 +8,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 
-import org.junit.Rule;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
-import org.junit.rules.ExpectedException;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class ReportSerializerTest {
@@ -23,9 +21,6 @@ public class ReportSerializerTest {
     private String smallContent;
 
     private Report report;
-
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
 
     @BeforeAll
     void setUpFixture() {
