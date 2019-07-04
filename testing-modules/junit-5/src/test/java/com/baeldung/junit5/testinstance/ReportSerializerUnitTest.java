@@ -14,7 +14,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 @TestInstance(Lifecycle.PER_CLASS)
-public class ReportSerializerTest {
+public class ReportSerializerUnitTest {
 
     private String largeContent;
     private String content = "Lorem ipsum dolor sit amet, eam no tale solet patrioque, est " + "ne dico veri. Copiosae petentium no eum, has at wisi dicunt causae. Duo ea ";
