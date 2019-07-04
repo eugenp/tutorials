@@ -1,5 +1,6 @@
 package org.baeldung.web;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -29,7 +30,7 @@ public class CustomUserDetailsServiceIntegrationTest {
     @Test
     @WithUserDetails("john")
     public void givenUserWithReadPermissions_whenRequestUserInfo_thenRetrieveUserData() throws Exception {
-        this.mvc.perform(get("/user"))
+        this.mvc.perform(get("/user").with(csrf()))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.user.privileges[0].name").value("FOO_READ_PRIVILEGE"))
             .andExpect(jsonPath("$.user.organization.name").value("FirstOrg"))
@@ -39,7 +40,7 @@ public class CustomUserDetailsServiceIntegrationTest {
     @Test
     @WithUserDetails("tom")
     public void givenUserWithWritePermissions_whenRequestUserInfo_thenRetrieveUserData() throws Exception {
-        this.mvc.perform(get("/user"))
+        this.mvc.perform(get("/user").with(csrf()))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.user.privileges").isArray())
             .andExpect(jsonPath("$.user.organization.name").value("SecondOrg"))
@@ -49,7 +50,7 @@ public class CustomUserDetailsServiceIntegrationTest {
     @Test
     @WithUserDetails("john")
     public void givenUserWithReadPermissions_whenRequestFoo_thenRetrieveSampleFoo() throws Exception {
-        this.mvc.perform(get("/foos/1"))
+        this.mvc.perform(get("/foos/1").with(csrf()))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.name").value("Sample"));
     }
@@ -57,14 +58,15 @@ public class CustomUserDetailsServiceIntegrationTest {
     @Test
     @WithAnonymousUser
     public void givenAnonymous_whenRequestFoo_thenRetrieveUnauthorized() throws Exception {
-        this.mvc.perform(get("/foos/1"))
+        this.mvc.perform(get("/foos/1").with(csrf()))
             .andExpect(status().isUnauthorized());
     }
 
     @Test
     @WithUserDetails("john")
     public void givenUserWithReadPermissions_whenCreateNewFoo_thenForbiddenStatusRetrieved() throws Exception {
-        this.mvc.perform(post("/foos").header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
+        this.mvc.perform(post("/foos").with(csrf())
+            .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
             .content(asJsonString(new Foo())))
             .andExpect(status().isForbidden());
     }
@@ -72,7 +74,8 @@ public class CustomUserDetailsServiceIntegrationTest {
     @Test
     @WithUserDetails("tom")
     public void givenUserWithWritePermissions_whenCreateNewFoo_thenOkStatusRetrieved() throws Exception {
-        this.mvc.perform(post("/foos").header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
+        this.mvc.perform(post("/foos").with(csrf())
+            .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
             .content(asJsonString(new Foo())))
             .andExpect(status().isCreated());
     }
