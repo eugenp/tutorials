@@ -1312,6 +1312,7 @@
                 <module>spring-boot-ops-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-boot-data</module>
+                <module>spring-data-disable-auto-configuration</module>
                 <module>spring-boot-parent</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
