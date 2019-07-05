@@ -13,12 +13,28 @@ public class ConversionTechniquesUnitTest {
         long longNum = 24;
         short shortNum = (short) longNum;
         
-        assertEquals(shortNum, 24);
+        assertEquals(24, shortNum);
 
         double doubleNum = 15.6;
         int integerNum = (int) doubleNum;
 
-        assertEquals(integerNum, 15);
+        assertEquals(15, integerNum);
+        
+        long largeLongNum = 32768;
+        long smallLongNum = -32769;
+        short shortNum1 = (short) largeLongNum;
+        short shortNum2 = (short) smallLongNum;
+        
+        assertEquals(-32768, shortNum1);
+        assertEquals(32767, shortNum2);
+        
+        long maxLong = Long.MAX_VALUE;
+        long minLong = Long.MIN_VALUE;
+        int minInt = (int) maxLong;
+        int maxInt = (int) minLong;
+        
+        assertEquals(-1, minInt);
+        assertEquals(0, maxInt);
     }
 
     @Test
@@ -27,16 +43,12 @@ public class ConversionTechniquesUnitTest {
         Float floatNum = 17.564f;
         long longNum = floatNum.longValue();
 
-        assertEquals(longNum, 17l);
+        assertEquals(17, longNum);
 
         Double doubleNum = 15.9999;
-        int intNum = doubleNum.intValue();
+        longNum = doubleNum.longValue();
 
-        assertEquals(intNum, 15);
-
-        longNum = Math.round(doubleNum);
-
-        assertEquals(longNum, 16);
+        assertEquals(15, longNum);
     }
 
     @Test
@@ -45,7 +57,7 @@ public class ConversionTechniquesUnitTest {
         Double doubleNum = 15.9999;
         long longNum = Math.round(doubleNum);
 
-        assertEquals(longNum, 16);
+        assertEquals(16, longNum);
     }
     
     @Test
