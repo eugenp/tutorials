@@ -24,7 +24,7 @@ import dev.morphia.query.Query;
 import dev.morphia.query.UpdateOperations;
 
 @Ignore
-public class MorphiaIntegrationTests {
+public class MorphiaIntegrationTest {
 
     private static Datastore datastore;
     private static ObjectId id = new ObjectId();
