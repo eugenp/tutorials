@@ -56,7 +56,7 @@ public class R2dbcApplicationUnitTest {
     }
 
     @Test
-    public void whenInsertFive_then6AreExpected() {
+    public void whenInsertSix_then6AreExpected() {
 
         insertPlayers();
 
