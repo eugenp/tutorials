@@ -135,6 +135,11 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.mesos</groupId>
+            <artifactId>mesos</artifactId>
+            <version>${mesos.library.version}</version>
+        </dependency>
     </dependencies>
     <properties>
 	    <mapdb.version>3.0.7</mapdb.version>
@@ -150,5 +155,6 @@
         <colt.version>1.2.0</colt.version>
         <la4j.version>0.6.0</la4j.version>
         <jmh.version>1.19</jmh.version>
+        <mesos.library.version>0.28.3</mesos.library.version>
     </properties>
 </project>
