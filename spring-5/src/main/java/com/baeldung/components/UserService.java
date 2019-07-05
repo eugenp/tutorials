@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserService {
 
-	@Autowired
-	private AccountService accountService;
+    @Autowired
+    private AccountService accountService;
 
-	public AccountService getAccountService() {
-		return accountService;
-	}
+    public AccountService getAccountService() {
+        return accountService;
+    }
 
 }
