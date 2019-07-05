@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = R2dbcApplication.class)
+@SpringBootTest
 public class R2dbcApplicationUnitTest {
 
 
@@ -56,7 +56,7 @@ public class R2dbcApplicationUnitTest {
     }
 
     @Test
-    public void whenInsertFive_then5AreExpected() {
+    public void whenInsertFive_then6AreExpected() {
 
         insertPlayers();
 
@@ -89,14 +89,15 @@ public class R2dbcApplicationUnitTest {
 
     private void insertPlayers() {
         List<Player> players = Arrays.asList(
-                new Player(null, "Kaka", 37),
-                new Player(null, "Messi", 32),
-                new Player(null, "Mbappé", 20),
-                new Player(null, "CR7", 34),
-                new Player(null, "Lewandowski", 30),
-                new Player(null, "Cavani", 32)
+                new Player(1, "Kaka", 37),
+                new Player(2, "Messi", 32),
+                new Player(3, "Mbappé", 20),
+                new Player(4, "CR7", 34),
+                new Player(5, "Lewandowski", 30),
+                new Player(6, "Cavani", 32)
         );
 
         playerRepository.saveAll(players).subscribe();
     }
 }
+

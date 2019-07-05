@@ -46,7 +46,7 @@ class Player {
 }
 
 @Configuration
-@EnableR2dbcRepositories
+@EnableR2dbcRepositories("org.springframework.data.r2dbc.repository.support.R2dbcRepositoryFactory.class")
 class R2DBCConfiguration extends AbstractR2dbcConfiguration {
     @Bean
     public H2ConnectionFactory connectionFactory() {
