@@ -31,6 +31,12 @@
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- validation -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -59,7 +65,7 @@
         <finalName>hibernate-mapping</finalName>
         <resources>
             <resource>
-                <directory>src/test/resources</directory>
+                <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
@@ -70,6 +76,7 @@
         <assertj-core.version>3.8.0</assertj-core.version>
         <hibernate-validator.version>6.0.16.Final</hibernate-validator.version>
         <org.glassfish.javax.el.version>3.0.1-b11</org.glassfish.javax.el.version>
+        <hsqldb.version>2.3.4</hsqldb.version>
     </properties>
 
 </project>
