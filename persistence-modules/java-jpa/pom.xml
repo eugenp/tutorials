@@ -34,7 +34,7 @@
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
-            <version>2.2</version>
+            <version>${javax.persistence-api.version}</version>
         </dependency>
 
         <!--Runtime JPA implementation-->
@@ -108,6 +108,7 @@
         <hibernate.version>5.4.0.Final</hibernate.version>
         <eclipselink.version>2.7.4-RC1</eclipselink.version>
         <postgres.version>42.2.5</postgres.version>
+        <javax.persistence-api.version>2.2</javax.persistence-api.version>
     </properties>
 
 </project>
