@@ -57,5 +57,6 @@
         <module>spring-hibernate4</module>
         <module>spring-jpa</module>
         <module>spring-persistence-simple</module>
+        <module>jpa-hibernate-cascade-type</module>
     </modules>
 </project>
