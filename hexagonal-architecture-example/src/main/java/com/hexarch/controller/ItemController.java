@@ -28,12 +28,10 @@ public class ItemController {
         return  ResponseEntity.status(HttpStatus.CREATED).body(itemService.saveItem(item));
     }
 
-
     @GetMapping(ALL_ITEMS)
     public ResponseEntity<List<Item>> retrieveAllItems(){
         return  ResponseEntity.status(HttpStatus.OK).body(itemService.retrieveAllItems());
     }
-
 
     @GetMapping(SINGLE_ITEM)
     public ResponseEntity<Item> retrieveItem(@PathVariable("id") Integer itemId){
@@ -49,8 +47,6 @@ public class ItemController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Item Not Found");
         }
     }
-
-
 
     @DeleteMapping(SINGLE_ITEM)
     public ResponseEntity<?> deleteItem(@PathVariable("id") Integer itemId){
