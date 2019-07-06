@@ -9,7 +9,7 @@ class ReplaceUnderscoresGeneratorUnitTest {
     class when_doing_something {
 
         @Test
-        void then_should_happen_something() {
+        void then_something_should_happen() {
         }
 
         @Test
