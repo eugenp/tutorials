@@ -7,16 +7,13 @@ import org.springframework.stereotype.Component;
 public class Registrar {
 
     @Autowired
-    protected IStudentLookup studentLookup;
-
-    @Autowired
-    protected IStudentAdder studentAdder;
+    protected IStudentOps studentOps;
 
     public int addStudent(Student student) {
-        return studentAdder.add(student);
+        return studentOps.add(student);
     }
 
     public Student findStudent(int id) {
-        return studentLookup.find(id);
+        return studentOps.find(id);
     }
 }

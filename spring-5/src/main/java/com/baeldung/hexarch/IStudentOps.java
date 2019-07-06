@@ -1,6 +1,9 @@
 package com.baeldung.hexarch;
 
-@FunctionalInterface
-public interface IStudentAdder {
+public interface IStudentOps {
+
+    Student find(int id);
+
     int add(Student student);
+
 }
