@@ -57,6 +57,26 @@
             <artifactId>commons-text</artifactId>
             <version>${commons-text.version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.2.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>2.2.6</version>
+        </dependency>
 
     </dependencies>
 
@@ -86,7 +106,7 @@
     <properties>
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <icu4j.version>61.1</icu4j.version>
-        <guava.version>27.0.1-jre</guava.version>
+        <guava.version>28.0-jre</guava.version>
         <commons-text.version>1.4</commons-text.version>
     </properties>
 

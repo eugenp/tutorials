@@ -6,3 +6,4 @@
 - [Template Engines in Groovy](https://www.baeldung.com/groovy-template-engines)
 - [Groovy def Keyword](https://www.baeldung.com/groovy-def-keyword)
 - [Pattern Matching in Strings in Groovy](https://www.baeldung.com/groovy-pattern-matching)
+- [Working with XML in Groovy](https://www.baeldung.com/groovy-xml)
