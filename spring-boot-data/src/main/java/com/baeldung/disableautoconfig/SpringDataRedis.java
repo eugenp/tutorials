@@ -1,4 +1,4 @@
-package com.baeldung.redis;
+package com.baeldung.disableautoconfig;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,6 +9,6 @@ import org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoCo
 public class SpringDataRedis {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringRedis.class, args);
+        SpringApplication.run(SpringDataRedis.class, args);
     }
 }

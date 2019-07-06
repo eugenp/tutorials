@@ -1,4 +1,4 @@
-package com.baeldung.jpa;
+package com.baeldung.disableautoconfig;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

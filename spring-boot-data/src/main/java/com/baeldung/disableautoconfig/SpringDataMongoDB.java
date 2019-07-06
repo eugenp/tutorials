@@ -1,4 +1,4 @@
-package com.baeldung.mongodb;
+package com.baeldung.disableautoconfig;
 
 
 import org.springframework.boot.SpringApplication;
@@ -10,6 +10,6 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 public class SpringDataMongoDB {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringMongoDB.class, args);
+        SpringApplication.run(SpringDataMongoDB.class, args);
     }
 }
