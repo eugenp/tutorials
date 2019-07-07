@@ -11,34 +11,33 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.domain.Employee;
 import com.baeldung.domain.EmployeeServicePort;
-import com.baeldung.exception.EmployeeNotFoundException;
 
 @RestController
 public class EmployeeRestAdapter {
 
-  private EmployeeServicePort employeeServicePort;
+    private EmployeeServicePort employeeServicePort;
 
-  public EmployeeRestAdapter(EmployeeServicePort employeeServicePort) {
-    this.employeeServicePort = employeeServicePort;
-  }
+    public EmployeeRestAdapter(EmployeeServicePort employeeServicePort) {
+        this.employeeServicePort = employeeServicePort;
+    }
 
-  @GetMapping
-  public List<Employee> getAllEmployees() {
-    return employeeServicePort.getAll();
-  }
+    @GetMapping
+    public List<Employee> getAllEmployees() {
+        return employeeServicePort.getAll();
+    }
 
-  @GetMapping ("{employeeId}")
-  public Employee getById(@PathVariable String employeeId) throws EmployeeNotFoundException {
-    return employeeServicePort.get(employeeId);
-  }
+    @GetMapping("{employeeId}")
+    public Employee getById(@PathVariable String employeeId) {
+        return employeeServicePort.get(employeeId);
+    }
 
-  @PostMapping
-  public Employee create(@RequestBody Employee employee) {
-    return employeeServicePort.create(employee);
-  }
+    @PostMapping
+    public Employee create(@RequestBody Employee employee) {
+        return employeeServicePort.create(employee);
+    }
 
-  @PutMapping
-  public Employee update(@RequestBody Employee employee) {
-    return employeeServicePort.update(employee);
-  }
+    @PutMapping
+    public Employee update(@RequestBody Employee employee) {
+        return employeeServicePort.update(employee);
+    }
 }

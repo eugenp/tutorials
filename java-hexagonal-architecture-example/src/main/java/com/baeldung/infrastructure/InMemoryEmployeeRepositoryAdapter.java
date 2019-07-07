@@ -14,24 +14,24 @@ import com.baeldung.domain.EmployeeRepositoryPort;
 @Repository
 public class InMemoryEmployeeRepositoryAdapter implements EmployeeRepositoryPort {
 
-  private Map<String, Employee> employeeRepository = new HashMap<>();
+    private Map<String, Employee> employeeRepository = new HashMap<>();
 
-  @Override
-  public List<Employee> findAll() {
-    return new ArrayList<>(employeeRepository.values());
-  }
-
-  @Override
-  public Optional<Employee> findById(String employeeId) {
-    if (employeeRepository.containsKey(employeeId)) {
-      return Optional.of(employeeRepository.get(employeeId));
+    @Override
+    public List<Employee> findAll() {
+        return new ArrayList<>(employeeRepository.values());
     }
-    return Optional.empty();
-  }
 
-  @Override
-  public Employee save(Employee employee) {
-    employeeRepository.put(employee.getEmployeeId(), employee);
-    return employee;
-  }
+    @Override
+    public Optional<Employee> findById(String employeeId) {
+        if (employeeRepository.containsKey(employeeId)) {
+            return Optional.of(employeeRepository.get(employeeId));
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Employee save(Employee employee) {
+        employeeRepository.put(employee.getEmployeeId(), employee);
+        return employee;
+    }
 }

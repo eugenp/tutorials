@@ -5,9 +5,9 @@ import java.util.Optional;
 
 public interface EmployeeRepositoryPort {
 
-  List<Employee> findAll();
+    List<Employee> findAll();
 
-  Optional<Employee> findById(String employeeId);
+    Optional<Employee> findById(String employeeId);
 
-  Employee save(Employee employee);
+    Employee save(Employee employee);
 }
