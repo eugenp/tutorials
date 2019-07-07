@@ -1,4 +1,4 @@
-package org.baeldung.properties;
+package com.baeldung.properties.conversion;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,8 +12,11 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.unit.DataSize;
 
+import com.baeldung.properties.conversion.PropertiesConversionApplication;
+import com.baeldung.properties.conversion.PropertyConversion;
+
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ConfigPropertiesDemoApplication.class)
+@SpringBootTest(classes = PropertiesConversionApplication.class)
 @TestPropertySource("classpath:conversion.properties")
 public class PropertiesConversionIntegrationTest {
 

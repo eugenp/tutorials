@@ -1,4 +1,4 @@
-package org.baeldung.properties;
+package com.baeldung.properties.conversion;
 
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.core.convert.converter.Converter;

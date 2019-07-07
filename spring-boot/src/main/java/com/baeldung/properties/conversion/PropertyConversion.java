@@ -1,4 +1,4 @@
-package org.baeldung.properties;
+package com.baeldung.properties.conversion;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
