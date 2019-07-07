@@ -12,7 +12,7 @@
 	<artifactId>rest-adapter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rest-adapter</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Primary adapter/interface for the application</description>
 
 	<properties>
 		<java.version>1.8</java.version>

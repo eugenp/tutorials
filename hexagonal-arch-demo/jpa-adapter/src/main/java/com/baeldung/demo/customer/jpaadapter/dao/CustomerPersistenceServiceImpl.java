@@ -9,18 +9,18 @@ public class CustomerPersistenceServiceImpl implements CustomerPersistenceServic
     @Autowired
     CustomerRepository customerRepository;
     @Override
-    public void createCustomer(Customer customer) {
-        customerRepository;
+    public Customer createCustomer(Customer customer) {
+        return customerRepository.save(customer);
     }
 
     @Override
     public Customer retrieveCustomer(String customerId) {
-        return null;
+        return customerRepository.getOne(customerId);
     }
 
     @Override
-    public boolean updateCustomer(Customer customer) {
-        return false;
+    public Customer updateCustomer(Customer customer) {
+        return customerRepository.save(customer);
     }
     //Implemetation
 }

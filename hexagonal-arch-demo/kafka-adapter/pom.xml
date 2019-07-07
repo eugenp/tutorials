@@ -7,6 +7,7 @@
     <groupId>com.baeldung.demo.customer</groupId>
     <artifactId>kafka-adapter</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <description>One of the 3 secondary adapter/interface for the application</description>
 
 
 </project>

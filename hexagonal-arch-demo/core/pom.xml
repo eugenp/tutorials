@@ -7,6 +7,7 @@
     <groupId>com.baeldung.demo.customer</groupId>
     <artifactId>core</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <description>Core domain model for application</description>
 
 
 </project>

@@ -23,6 +23,6 @@ public class CustomerController {
     }
     @GetMapping
     public ResponseEntity<Boolean> isCustomerEligibleForUpgrade(@PathVariable String customerId) {
-        return ResponseEntity.ok().body(customerService.isCustomerEligibleForUpgrade(customerId));
+        return ResponseEntity.ok().body(customerService.isFreeShippingEligible(customerId));
     }
 }
