@@ -28,13 +28,7 @@
             <version>${typesafe-akka.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
-        <dependency>
-            <groupId>org.asynchttpclient</groupId>
-            <artifactId>async-http-client</artifactId>
-            <version>${async.http.client.version}</version>
-        </dependency>
+        
         <!-- https://mvnrepository.com/artifact/org.beykery/neuroph/2.92 -->
         <dependency>
             <groupId>org.beykery</groupId>
@@ -875,7 +869,6 @@
         <kafka.version>2.0.0</kafka.version>
         <smooks.version>1.7.0</smooks.version>
         <docker.version>3.0.14</docker.version>
-        <async.http.client.version>2.2.0</async.http.client.version>
         <infinispan.version>9.1.5.Final</infinispan.version>
         <opencsv.version>4.1</opencsv.version>
         <unirest.version>1.4.9</unirest.version>
