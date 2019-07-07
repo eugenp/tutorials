@@ -11,6 +11,6 @@ Primary interface for the application.
 ### jpa-adapter
 Secondary interface containing implementation for secondary ports. This module has implementaion for persistence needs of the application.
 ### smtp-adapter
-Secondary interface containing implementation for secondary ports. This module has implementaion for email requirements of the application.
+Secondary interface containing implementation for secondary ports. This module has implementaion for email requirements of the application. This is a shell project, not implemented.
 ### kafka-adapter
-Secondary interface containing implementation for secondary ports. This module has implementaion for messaging needs of the application.
+Secondary interface containing implementation for secondary ports. This module has implementaion for messaging needs of the application. This is a shell project, not implemented.
