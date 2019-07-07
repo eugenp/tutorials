@@ -104,6 +104,7 @@
 			</plugin>
 		</plugins>
 	</build>
+
     <properties>
         <hibernate.version>5.4.0.Final</hibernate.version>
         <eclipselink.version>2.7.4-RC1</eclipselink.version>

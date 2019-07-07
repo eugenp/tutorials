@@ -14,10 +14,6 @@
 		<relativePath>../../parent-java</relativePath>
 	</parent>
 
-	<properties>
-		<commons-lang3.version>3.9</commons-lang3.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -31,5 +27,9 @@
 			<version>${commons-lang3.version}</version>
 		</dependency>
 	</dependencies>
+
+	<properties>
+		<commons-lang3.version>3.9</commons-lang3.version>
+	</properties>
 
 </project>
