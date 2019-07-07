@@ -506,6 +506,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
+                <module>libraries-http</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
                 <module>lombok</module>
@@ -1185,6 +1186,7 @@
                 <module>libraries-apache-commons</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
+                <module>libraries-http</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
                 <module>lombok</module>
