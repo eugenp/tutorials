@@ -1,16 +1,13 @@
 ## Demo project to explain Hexagonal Architecture
-The project comprises of 6 maven modules. Each explained below
+The project comprises of following igh level packages as explained below.
 ### core
 Contains domain model, business rules that define the business objects.
-### port
-Primary ports for application tasks that can be invoked by external actors. Includes dependencies to secondary ports and adapters.
-### secondary-port
+### port.primary
+Primary ports for application tasks that can be invoked by external actors.
+### port.secondary
 Secondary ports that the application invokes to perform internal tasks.
-### rest-adapter
-Primary interface for the application.
-### jpa-adapter
-Secondary interface containing implementation for secondary ports. This module has implementaion for persistence needs of the application.
-### smtp-adapter
-Secondary interface containing implementation for secondary ports. This module has implementaion for email requirements of the application. This is a shell project, not implemented.
-### kafka-adapter
-Secondary interface containing implementation for secondary ports. This module has implementaion for messaging needs of the application. This is a shell project, not implemented.
+### adapter.primary.rest
+Primary REST interface to the application and adapters.
+### adapter.secondary.persistence
+Secondary interface for persistence needs of the application. 
+
