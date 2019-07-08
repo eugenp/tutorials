@@ -1,4 +1,4 @@
-package com.baeldung.jeekotlin.rest;
+package com.baeldung.jeekotlin;
 
 import com.baeldung.jeekotlin.entity.Student;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -60,6 +60,8 @@ public class StudentResourceIntegrationTest {
                 .path("/student")
                 .request(MediaType.APPLICATION_JSON)
                 .post(Entity.json(student));
+
+//        sleep(10000000);
 
         assertEquals(200, response.getStatus());
     }

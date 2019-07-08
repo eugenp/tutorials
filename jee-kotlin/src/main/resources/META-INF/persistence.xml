@@ -5,12 +5,12 @@
 
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-      <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+    <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
 
-    <class>fables.kotlin.jee.business.KittenEntity</class>
+    <class>com.enpy.entity.Student</class>
 
     <properties>
-        <property name="hibernate.hbm2ddl.auto" value="create"/>
+      <property name="hibernate.hbm2ddl.auto" value="create"/>
     </properties>
 
   </persistence-unit>

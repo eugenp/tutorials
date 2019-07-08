@@ -4,7 +4,6 @@
             <property name="jbossHome">target/wildfly-8.2.1.Final</property>
             <property name="serverConfig">standalone.xml</property>
             <property name="outputToConsole">true</property>
-
             <property name="managementPort">9990</property>
         </configuration>
     </container>
