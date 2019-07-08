@@ -56,5 +56,6 @@
         <module>spring-hibernate4</module>
         <module>spring-jpa</module>
         <module>spring-persistence-simple</module>
+        <module>java-jpa-2</module>
     </modules>
 </project>
