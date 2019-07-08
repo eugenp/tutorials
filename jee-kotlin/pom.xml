@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
@@ -12,7 +11,6 @@
     <artifactId>jee-kotlin</artifactId>
     <name>jee-kotlin</name>
     <packaging>war</packaging>
-
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -95,7 +93,6 @@
             <artifactId>arquillian-rest-client-impl-jersey</artifactId>
             <version>${arquillian-rest-client.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -252,7 +249,6 @@
                     <version>2.2.0.Final</version>
                     <scope>test</scope>
                 </dependency>
-
             </dependencies>
         </profile>
     </profiles>

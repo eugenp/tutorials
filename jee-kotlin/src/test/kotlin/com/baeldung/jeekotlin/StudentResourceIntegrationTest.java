@@ -29,7 +29,6 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Arquillian.class)
 public class StudentResourceIntegrationTest {
 
-
     @Deployment
     public static WebArchive createDeployment() {
         JavaArchive[] kotlinRuntime = Maven.configureResolver()
@@ -60,8 +59,6 @@ public class StudentResourceIntegrationTest {
                 .path("/student")
                 .request(MediaType.APPLICATION_JSON)
                 .post(Entity.json(student));
-
-//        sleep(10000000);
 
         assertEquals(200, response.getStatus());
     }
@@ -108,11 +105,4 @@ public class StudentResourceIntegrationTest {
         assertEquals(204, response.getStatus());
     }
 
-    private void sleep(long milis) {
-        try {
-            Thread.sleep(milis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 }

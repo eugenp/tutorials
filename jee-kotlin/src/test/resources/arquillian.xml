@@ -1,4 +1,5 @@
 <arquillian xmlns="http://jboss.org/schema/arquillian" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation=" http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
     <container qualifier="wildfly-managed">
         <configuration>
             <property name="jbossHome">target/wildfly-8.2.1.Final</property>
@@ -7,6 +8,7 @@
             <property name="managementPort">9990</property>
         </configuration>
     </container>
+
     <container qualifier="wildfly-remote" default="true">
         <configuration>
             <property name="managementAddress">127.0.0.1</property>
@@ -16,4 +18,5 @@
             <property name="allowConnectingToRunningServer">true</property>
         </configuration>
     </container>
+
 </arquillian>
