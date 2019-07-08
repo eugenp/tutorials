@@ -13,7 +13,6 @@
         <relativePath>../../parent-java</relativePath>
     </parent>
 
-
     <dependencies>
         <dependency>
             <groupId>commons-io</groupId>

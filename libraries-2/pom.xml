@@ -5,11 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries2</artifactId>
     <name>libraries2</name>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
     <repositories>
         <repository>
             <id>jboss-public-repository-group</id>
@@ -25,6 +27,7 @@
             </snapshots>
         </repository>
     </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.mapdb</groupId>
@@ -141,6 +144,7 @@
             <version>${mesos.library.version}</version>
         </dependency>
     </dependencies>
+
     <properties>
 	    <mapdb.version>3.0.7</mapdb.version>
         <assertj.version>3.6.2</assertj.version>

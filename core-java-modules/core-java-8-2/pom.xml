@@ -9,21 +9,12 @@
     <name>core-java-8-2</name>
     <packaging>jar</packaging>
 
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-java</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-java</relativePath>
     </parent>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <icu.version>64.2</icu.version>
-        <assertj.version>3.12.2</assertj.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -51,6 +42,13 @@
                 </configuration>
             </plugin>
         </plugins>
-
     </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <icu.version>64.2</icu.version>
+        <assertj.version>3.12.2</assertj.version>
+    </properties>
 </project>

@@ -18,17 +18,12 @@
             <artifactId>akka-actor_2.12</artifactId>
             <version>${typesafe-akka.version}</version>
         </dependency>
-
-
-
-
         <dependency>
             <groupId>com.typesafe.akka</groupId>
             <artifactId>akka-testkit_2.12</artifactId>
             <version>${typesafe-akka.version}</version>
             <scope>test</scope>
         </dependency>
-        
         <!-- https://mvnrepository.com/artifact/org.beykery/neuroph/2.92 -->
         <dependency>
             <groupId>org.beykery</groupId>
