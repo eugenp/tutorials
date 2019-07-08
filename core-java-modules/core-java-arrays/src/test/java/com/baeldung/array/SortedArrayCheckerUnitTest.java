@@ -66,5 +66,8 @@ class SortedArrayCheckerUnitTest {
 
         assertThat(sortedArrayChecker.isSortedByAge(EMPLOYEES_SORTED_BY_AGE)).isEqualTo(true);
         assertThat(sortedArrayChecker.isSortedByAge(EMPLOYEES_NOT_SORTED_BY_AGE)).isEqualTo(false);
+
+        assertThat(sortedArrayChecker.isSortedByAge(EMPLOYEES_SORTED_BY_AGE, EMPLOYEES_SORTED_BY_AGE.length)).isEqualTo(true);
+        assertThat(sortedArrayChecker.isSortedByAge(EMPLOYEES_NOT_SORTED_BY_AGE, EMPLOYEES_NOT_SORTED_BY_AGE.length)).isEqualTo(false);
     }
 }
