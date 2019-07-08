@@ -6,24 +6,24 @@ import com.baeldung.hex.demo.port.secondary.CustomerPersistenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class CustomerServiceImpl implements CustomerService {
-    @Autowired
-    private CustomerPersistenceService customerPersistenceService = new CustomerPersistenceServiceImpl();
-    public Customer createCustomer(Customer customer) {
-        return customerPersistenceService.createCustomer(customer);
-    }
+        @Autowired private CustomerPersistenceService customerPersistenceService = new CustomerPersistenceServiceImpl();
 
-    public Customer updateCustomerAddress(Customer customer) {
-        return customerPersistenceService.updateCustomer(customer);
-    }
+        public Customer createCustomer(Customer customer) {
+                return customerPersistenceService.createCustomer(customer);
+        }
 
-    public boolean isFreeShippingEligible(String customerId) {
-        Customer customer = customerPersistenceService.retrieveCustomer(customerId);
-        return customer.isFreeShippingEligible();
-    }
+        public Customer updateCustomerAddress(Customer customer) {
+                return customerPersistenceService.updateCustomer(customer);
+        }
 
-    public Customer getCustomer(String customerId) {
-        return customerPersistenceService.retrieveCustomer(customerId);
-    }
+        public boolean isFreeShippingEligible(String customerId) {
+                Customer customer = customerPersistenceService.retrieveCustomer(customerId);
+                return customer.isFreeShippingEligible();
+        }
+
+        public Customer getCustomer(String customerId) {
+                return customerPersistenceService.retrieveCustomer(customerId);
+        }
 
 }
 
