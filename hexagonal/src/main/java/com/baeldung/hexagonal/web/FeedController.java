@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
-// Inbound adapter
 @RestController
 public class FeedController {
 
@@ -21,10 +20,11 @@ public class FeedController {
     ResponseEntity<Feed> getById(@PathVariable Long id) {
         Optional<Feed> feedOptional = feedReader.read(id);
 
-        if(feedOptional.isPresent()) {
+        if (feedOptional.isPresent()) {
             return ResponseEntity.ok(feedOptional.get());
         }
 
-        return ResponseEntity.status(404).build();
+        return ResponseEntity.status(404)
+            .build();
     }
 }

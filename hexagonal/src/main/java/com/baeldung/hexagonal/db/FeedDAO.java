@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Optional;
 
-// Outbound adapter
 @Transactional
 @Repository
 public class FeedDAO implements FeedRepository {
