@@ -1,2 +1,2 @@
 ### Relevant Articles:
-- [Reloading Properties in Spring](https://www.baeldung.com/spring-boot-formatting-json-dates)
+- [Reloading Properties in Spring](https://www.baeldung.com/reloading-properties-files-in-spring/)
