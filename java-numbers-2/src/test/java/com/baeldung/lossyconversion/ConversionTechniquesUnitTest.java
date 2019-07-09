@@ -19,20 +19,20 @@ public class ConversionTechniquesUnitTest {
         assertEquals(15, integerNum);
         
         long largeLongNum = 32768;
-        short shortNum1 = (short) largeLongNum;
-        assertEquals(-32768, shortNum1);
+        short minShortNum = (short) largeLongNum;
+        assertEquals(-32768, minShortNum);
         
         long smallLongNum = -32769;
-        short shortNum2 = (short) smallLongNum;
-        assertEquals(32767, shortNum2);
+        short maxShortNum = (short) smallLongNum;
+        assertEquals(32767, maxShortNum);
         
         long maxLong = Long.MAX_VALUE;
-        int int1 = (int) maxLong;
-        assertEquals(-1, int1);
+        int minInt = (int) maxLong;
+        assertEquals(-1, minInt);
         
         long minLong = Long.MIN_VALUE;
-        int int2 = (int) minLong;
-        assertEquals(0, int2);
+        int maxInt = (int) minLong;
+        assertEquals(0, maxInt);
     }
 
     @Test
