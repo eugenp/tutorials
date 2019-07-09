@@ -18,8 +18,7 @@ public class SpringBootPropertiesApplication {
 
     @Bean
     @ConditionalOnProperty(name = "spring.config.location", matchIfMissing = false)
-    public PropertiesConfiguration propertiesConfiguration(@Value("${spring.config.location}") String path
-            , @Value("${spring.properties.refreshDelay}") long refreshDelay) throws Exception {
+    public PropertiesConfiguration propertiesConfiguration(@Value("${spring.config.location}") String path, @Value("${spring.properties.refreshDelay}") long refreshDelay) throws Exception {
         String filePath = path.substring("file:".length());
         PropertiesConfiguration configuration = new PropertiesConfiguration(new File(filePath).getCanonicalPath());
         FileChangedReloadingStrategy fileChangedReloadingStrategy = new FileChangedReloadingStrategy();

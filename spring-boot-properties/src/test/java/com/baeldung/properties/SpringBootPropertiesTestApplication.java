@@ -12,7 +12,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @WebAppConfiguration
 public class SpringBootPropertiesTestApplication {
 
-
     @Bean("singletonValueRefreshConfigBean")
     @RefreshScope
     @Scope("singleton")
@@ -25,8 +24,5 @@ public class SpringBootPropertiesTestApplication {
     public ValueRefreshConfigBean valueRefreshConfigBean(@Value("${application.dynamic.prop1:null}") String val) {
         return new ValueRefreshConfigBean(val);
     }
-
-
-
 
 }

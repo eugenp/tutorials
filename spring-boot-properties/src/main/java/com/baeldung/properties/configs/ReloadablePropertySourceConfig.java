@@ -18,7 +18,7 @@ public class ReloadablePropertySourceConfig {
     }
 
     @Bean
-    @ConditionalOnProperty( name="spring.config.location", matchIfMissing = false)
+    @ConditionalOnProperty(name = "spring.config.location", matchIfMissing = false)
     public ReloadablePropertySource reloadablePropertySource(PropertiesConfiguration properties) {
         ReloadablePropertySource ret = new ReloadablePropertySource("dynamic", properties);
         MutablePropertySources sources = env.getPropertySources();
