@@ -23,7 +23,6 @@
             <artifactId>xmlunit-core</artifactId>
             <version>${xmlunit.version}</version>
         </dependency>
-
     </dependencies>
 
     <properties>

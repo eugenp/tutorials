@@ -19,6 +19,9 @@ import okhttp3.Response;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Execute <code>spring-rest</code> module before running this live test
+ */
 public class OkHttpFileUploadingLiveTest {
 
     private static final String BASE_URL = "http://localhost:" + APPLICATION_PORT + "/spring-rest";

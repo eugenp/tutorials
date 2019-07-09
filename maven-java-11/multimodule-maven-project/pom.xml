@@ -6,11 +6,19 @@
     <version>1.0</version>
     <packaging>pom</packaging>
     <name>multimodule-maven-project</name>
+
     <parent>
         <groupId>com.baeldung.maven-java-11</groupId>
         <artifactId>maven-java-11</artifactId>
         <version>1.0</version>
     </parent>
+    
+    <modules>
+        <module>entitymodule</module>
+        <module>daomodule</module>
+        <module>userdaomodule</module>
+        <module>mainappmodule</module>
+    </modules>
     
     <dependencyManagement>
         <dependencies>
@@ -44,13 +52,6 @@
             </plugins>
         </pluginManagement>
     </build>
-    
-    <modules>
-        <module>entitymodule</module>
-        <module>daomodule</module>
-        <module>userdaomodule</module>
-        <module>mainappmodule</module>
-    </modules>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
