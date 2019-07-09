@@ -27,8 +27,7 @@ open class StudentResource {
     }
 
     @PUT
-    @Path("/{id}")
-    open fun update(@PathParam("id") id: Long, student: Student): Response {
+    open fun update(student: Student): Response {
         service.update(student)
         return Response.ok(student, MediaType.APPLICATION_JSON_TYPE).build()
     }

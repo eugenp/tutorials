@@ -85,7 +85,7 @@ public class StudentResourceIntegrationTest {
         WebTarget webTarget = ClientBuilder.newClient().target(url.toURI());
 
         Response response = webTarget
-                .path("/student/1")
+                .path("/student")
                 .request(MediaType.APPLICATION_JSON)
                 .put(Entity.json(studentJson));
 
