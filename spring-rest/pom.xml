@@ -36,6 +36,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
         <!-- Spring -->
         <dependency>
@@ -149,6 +158,11 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${modelmapper.version}</version>
         </dependency>
 
     </dependencies>
@@ -278,6 +292,7 @@
         <pact.version>3.5.11</pact.version>
         <rest-assured.version>3.1.0</rest-assured.version>
         <start-class>com.baeldung.sampleapp.config.MainApplication</start-class>
+        <modelmapper.version>2.3.3</modelmapper.version>
     </properties>
 
 </project>
