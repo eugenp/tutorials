@@ -42,7 +42,7 @@ class SortedArrayCheckerUnitTest {
     }
 
     @Test
-    public void integer_is_sorted() {
+    public void givenIntegerArray_thenReturnIfItIsSortedOrNot() {
         assertThat(sortedArrayChecker.isSorted(INTEGER_SORTED)).isEqualTo(true);
         assertThat(sortedArrayChecker.isSorted(INTEGER_NOT_SORTED)).isEqualTo(false);
 
@@ -51,7 +51,7 @@ class SortedArrayCheckerUnitTest {
     }
 
     @Test
-    public void string_is_sorted() {
+    public void givenStringArray_thenReturnIfItIsSortedOrNot() {
         assertThat(sortedArrayChecker.isSorted(STRING_SORTED)).isEqualTo(true);
         assertThat(sortedArrayChecker.isSorted(STRING_NOT_SORTED)).isEqualTo(false);
 
@@ -60,7 +60,7 @@ class SortedArrayCheckerUnitTest {
     }
 
     @Test
-    public void employee_is_sorted() {
+    public void givenEmployeeArray_thenReturnIfItIsSortedOrNot() {
         assertThat(sortedArrayChecker.isSortedByName(EMPLOYEES_SORTED_BY_NAME)).isEqualTo(true);
         assertThat(sortedArrayChecker.isSortedByName(EMPLOYEES_NOT_SORTED_BY_NAME)).isEqualTo(false);
 
