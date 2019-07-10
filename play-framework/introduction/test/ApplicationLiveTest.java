@@ -43,7 +43,7 @@ public void testInServer() throws Exception {
     public void whenCreatesRecord_thenCorrect() {
         Student student = new Student("jody", "west", 50);
         JSONObject obj = new JSONObject(makeRequest(BASE_URL, "POST", new JSONObject(student)));
-        assertTrue(obj.getBoolean("isSuccessfull"));
+        assertTrue(obj.getBoolean("isSuccessful"));
         JSONObject body = obj.getJSONObject("body");
         assertEquals(student.getAge(), body.getInt("age"));
         assertEquals(student.getFirstName(), body.getString("firstName"));
@@ -56,10 +56,10 @@ public void testInServer() throws Exception {
         JSONObject ob1 = new JSONObject(makeRequest(BASE_URL, "POST", new JSONObject(student))).getJSONObject("body");
         int id = ob1.getInt("id");
         JSONObject obj1 = new JSONObject(makeRequest(BASE_URL + "/" + id, "POST", new JSONObject()));
-        assertTrue(obj1.getBoolean("isSuccessfull"));
+        assertTrue(obj1.getBoolean("isSuccessful"));
         makeRequest(BASE_URL + "/" + id, "DELETE", null);
         JSONObject obj2 = new JSONObject(makeRequest(BASE_URL + "/" + id, "POST", new JSONObject()));
-        assertFalse(obj2.getBoolean("isSuccessfull"));
+        assertFalse(obj2.getBoolean("isSuccessful"));
     }
 
     @Test
@@ -87,7 +87,7 @@ public void testInServer() throws Exception {
         makeRequest(BASE_URL, "POST", new JSONObject(student4));
 
         JSONObject objects = new JSONObject(makeRequest(BASE_URL, "GET", null));
-        assertTrue(objects.getBoolean("isSuccessfull"));
+        assertTrue(objects.getBoolean("isSuccessful"));
         JSONArray array = objects.getJSONArray("body");
         assertTrue(array.length() >= 4);
     }
