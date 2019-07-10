@@ -6,6 +6,6 @@ public class OraclePersistenceAdapter implements PersistencePort {
 
     @Override
     public void saveAttendance(LocalDateTime in, LocalDateTime out, String status) {
-        // Save to database
+        // Logic required to save record to database
     }
 }

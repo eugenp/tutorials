@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 
 public class AttendanceService {
 
-    private static PersistencePort persistencePort = new OraclePersistenceAdapter();
+    private PersistencePort persistencePort = new OraclePersistenceAdapter();
 
-    public static void registerAttendance(LocalDateTime in, LocalDateTime out) {
+    public void registerAttendance(LocalDateTime in, LocalDateTime out) {
         String attendanceStatus = "On Leave";
         Duration duration = Duration.between(out, in);
         long presentHours = duration.toHours();
