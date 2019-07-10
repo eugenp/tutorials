@@ -1,6 +1,8 @@
 package com.baeldung.r2dbc;
 
 
+import com.baeldung.r2dbc.model.Player;
+import com.baeldung.r2dbc.repository.PlayerRepository;
 import io.r2dbc.h2.H2ConnectionFactory;
 import org.junit.Before;
 import org.junit.Test;
