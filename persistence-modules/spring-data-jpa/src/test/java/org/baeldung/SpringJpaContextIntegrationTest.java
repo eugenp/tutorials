@@ -6,10 +6,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.Application;
-import com.baeldung.config.PersistenceConfiguration;
-import com.baeldung.config.PersistenceProductConfiguration;
-import com.baeldung.config.PersistenceUserConfiguration;
+import com.baeldung.boot.Application;
+import com.baeldung.boot.config.PersistenceConfiguration;
+import com.baeldung.multipledb.PersistenceProductConfiguration;
+import com.baeldung.multipledb.PersistenceUserConfiguration;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest(excludeAutoConfiguration = {

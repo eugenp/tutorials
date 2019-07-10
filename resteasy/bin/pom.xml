@@ -2,17 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>resteasy-tutorial</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
-
-    <properties>
-        <resteasy.version>3.0.19.Final</resteasy.version>
-        <commons-io.version>2.5</commons-io.version>
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-    </properties>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -80,4 +73,10 @@
             <version>${commons-io.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <resteasy.version>3.0.19.Final</resteasy.version>
+        <commons-io.version>2.5</commons-io.version>
+        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+    </properties>
 </project>

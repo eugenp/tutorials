@@ -1,14 +1,13 @@
 package com.baeldung.string;
 
-
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.RegExUtils;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class StringReplaceAndRemoveUnitTest {
-
 
     @Test
     public void givenTestStrings_whenReplace_thenProcessedString() {
@@ -26,7 +25,7 @@ public class StringReplaceAndRemoveUnitTest {
     public void givenTestStrings_whenReplaceAll_thenProcessedString() {
 
         String master2 = "Welcome to Baeldung, Hello World Baeldung";
-        String regexTarget= "(Baeldung)$";
+        String regexTarget = "(Baeldung)$";
         String replacement = "Java";
         String processed2 = master2.replaceAll(regexTarget, replacement);
         assertTrue(processed2.endsWith("Java"));
@@ -45,17 +44,15 @@ public class StringReplaceAndRemoveUnitTest {
 
         StringBuilder builder = new StringBuilder(master);
 
-
         builder.delete(startIndex, stopIndex);
-        assertFalse(builder.toString().contains(target));
-
+        assertFalse(builder.toString()
+            .contains(target));
 
         builder.replace(startIndex, stopIndex, replacement);
-        assertTrue(builder.toString().contains(replacement));
-
+        assertTrue(builder.toString()
+            .contains(replacement));
 
     }
-
 
     @Test
     public void givenTestStrings_whenStringUtilsMethods_thenProcessedStrings() {
@@ -74,10 +71,20 @@ public class StringReplaceAndRemoveUnitTest {
 
     }
 
+    @Test
+    public void givenTestStrings_whenReplaceExactWord_thenProcessedString() {
+        String sentence = "A car is not the same as a carriage, and some planes can carry cars inside them!";
+        String regexTarget = "\\bcar\\b";
+        String exactWordReplaced = sentence.replaceAll(regexTarget, "truck");
+        assertTrue("A truck is not the same as a carriage, and some planes can carry cars inside them!".equals(exactWordReplaced));
+    }
 
-
-
-
-
+    @Test
+    public void givenTestStrings_whenReplaceExactWordUsingRegExUtilsMethod_thenProcessedString() {
+        String sentence = "A car is not the same as a carriage, and some planes can carry cars inside them!";
+        String regexTarget = "\\bcar\\b";
+        String exactWordReplaced = RegExUtils.replaceAll(sentence, regexTarget, "truck");
+        assertTrue("A truck is not the same as a carriage, and some planes can carry cars inside them!".equals(exactWordReplaced));
+    }
 
 }

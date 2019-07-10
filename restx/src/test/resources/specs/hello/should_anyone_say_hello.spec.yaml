@@ -5,4 +5,4 @@ wts:
   - when: |
       GET hello?who=xavier
     then: |
-      {"message":"hello xavier, it's 01:18:00"}
+      {"message":"hello xavier, it's 23:18:00"}

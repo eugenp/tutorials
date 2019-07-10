@@ -95,14 +95,11 @@
         <assertj.version>3.6.2</assertj.version>
         <commons.io.version>2.5</commons.io.version>
         <commons.dbutils.version>1.6</commons.dbutils.version>
-        <h2.version>1.4.196</h2.version>
         <commons.collections.version>4.1</commons.collections.version>
-        <junit.version>4.12</junit.version>
         <org.hamcrest.java-hamcrest.version>2.0.0.0</org.hamcrest.java-hamcrest.version>
         <commons-codec-version>1.10.L001</commons-codec-version>
         <xchart-version>3.5.2</xchart-version>
         <commons-net.version>3.6</commons-net.version>
-        <hamcrest-all.version>1.3</hamcrest-all.version>
         <common-math3.version>3.6.1</common-math3.version>
     </properties>
 

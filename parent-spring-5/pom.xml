@@ -4,9 +4,9 @@
     <groupId>com.baeldung</groupId>
     <artifactId>parent-spring-5</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
     <name>parent-spring-5</name>
     <description>Parent for all spring 5 core modules</description>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -29,11 +29,9 @@
     </dependencies>
 
     <properties>
-        <spring.version>5.0.6.RELEASE</spring.version>
+        <spring.version>5.1.4.RELEASE</spring.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
-        <jackson-databind.version>2.9.6</jackson-databind.version>
-		<jackson.version>2.9.6</jackson.version>
-		<spring-security.version>5.0.6.RELEASE</spring-security.version>
+		<spring-security.version>5.1.4.RELEASE</spring-security.version>
     </properties>
 
 </project>

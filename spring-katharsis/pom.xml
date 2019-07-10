@@ -4,8 +4,8 @@
     <groupId>org.springframework.samples</groupId>
     <artifactId>spring-katharsis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
 	<name>spring-katharsis</name>
+    <packaging>war</packaging>
 	
     <parent>
         <artifactId>parent-boot-1</artifactId>

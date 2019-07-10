@@ -1,8 +1,5 @@
 package com.baeldung.sampleapp.web.dto;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
-@XStreamAlias("Foo")
 public class Foo {
     private long id;
     private String name;

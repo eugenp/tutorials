@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 class CustomCheckPointUnitTest {
     @Test
-    public void givenChunk_whenCustomCheckPoint_thenCommitCount_3() throws Exception {
+    public void givenChunk_whenCustomCheckPoint_thenCommitCountIsThree() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();
         Long executionId = jobOperator.start("customCheckPoint", new Properties());
         JobExecution jobExecution = jobOperator.getJobExecution(executionId);
@@ -23,9 +23,10 @@ class CustomCheckPointUnitTest {
         for (StepExecution stepExecution : jobOperator.getStepExecutions(executionId)) {
             if (stepExecution.getStepName()
                 .equals("firstChunkStep")) {
-                Map<Metric.MetricType, Long> metricsMap = BatchTestHelper.getMetricsMap(stepExecution.getMetrics());
-                assertEquals(3L, metricsMap.get(Metric.MetricType.COMMIT_COUNT)
-                    .longValue());
+                jobOperator.getStepExecutions(executionId)
+                    .stream()
+                    .map(BatchTestHelper::getCommitCount)
+                    .forEach(count -> assertEquals(3L, count.longValue()));
             }
         }
         assertEquals(jobExecution.getBatchStatus(), BatchStatus.COMPLETED);

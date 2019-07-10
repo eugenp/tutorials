@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.freemarker</groupId>
     <artifactId>spring-freemarker</artifactId>
-    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>spring-freemarker</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -35,7 +35,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servletapi.version}</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <!-- Freemarker -->
@@ -48,7 +48,7 @@
         <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<version>1.5.10.RELEASE</version>
+			<version>${spring-boot.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -57,8 +57,8 @@
     <properties>
         <spring.version>5.0.8.RELEASE</spring.version>
         <freemarker.version>2.3.28</freemarker.version>
-        <servletapi.version>3.1.0</servletapi.version>
         <failOnMissingWebXml>false</failOnMissingWebXml>
+        <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
     </properties>
 
 </project>

@@ -14,18 +14,19 @@
     <dependencies>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-stream_2.11</artifactId>
+            <artifactId>akka-stream_${scala.version}</artifactId>
             <version>${akkastreams.version}</version>
         </dependency>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-stream-testkit_2.11</artifactId>
+            <artifactId>akka-stream-testkit_${scala.version}</artifactId>
             <version>${akkastreams.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <akkastreams.version>2.5.2</akkastreams.version>
+        <scala.version>2.11</scala.version>
     </properties>
 
 </project>

@@ -6,24 +6,17 @@
     <groupId>com.baeldung.spring</groupId>
     <artifactId>spring-cloud-functions</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-cloud-functions</name>
     <description>Demo project for Spring Cloud Function</description>
+    <packaging>jar</packaging>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.4.RELEASE</version>
-        <relativePath/>
+        <artifactId>parent-boot-2</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <spring-cloud-function.version>1.0.1.RELEASE</spring-cloud-function.version>
-        <aws-lambda-events.version>2.0.2</aws-lambda-events.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -36,7 +29,7 @@
          <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-function-web</artifactId>
-            <version>1.0.1.RELEASE</version>
+            <version>${spring-cloud-function.version}</version>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
@@ -47,7 +40,7 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-core</artifactId>
-            <version>1.1.0</version>
+            <version>${aws-lambda-java-core.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -88,5 +81,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring-cloud-function.version>1.0.1.RELEASE</spring-cloud-function.version>
+        <aws-lambda-events.version>2.0.2</aws-lambda-events.version>
+        <aws-lambda-java-core.version>1.1.0</aws-lambda-java-core.version>
+        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
+    </properties>
 
 </project>

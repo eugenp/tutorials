@@ -16,6 +16,12 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * 
+ * This test requires:
+ * * mongodb instance running on the environment
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SimpleMongoConfig.class)
 public class MongoTemplateProjectionLiveTest {

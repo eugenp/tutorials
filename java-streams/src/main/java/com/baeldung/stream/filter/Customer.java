@@ -32,7 +32,7 @@ public class Customer {
         return this.points > points;
     }
 
-    public boolean hasOverThousandPoints() {
+    public boolean hasOverHundredPoints() {
         return this.points > 100;
     }
 

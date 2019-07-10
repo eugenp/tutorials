@@ -17,3 +17,7 @@
 - [Finding the Highest Value in a Java Map](https://www.baeldung.com/java-find-map-max)
 - [Merging Two Maps with Java 8](https://www.baeldung.com/java-merge-maps)
 - [How to Check If a Key Exists in a Map](https://www.baeldung.com/java-map-key-exists)
+- [Comparing Two HashMaps in Java](https://www.baeldung.com/java-compare-hashmaps)
+- [Immutable Map Implementations in Java](https://www.baeldung.com/java-immutable-maps) 
+- [Map to String Conversion in Java](https://www.baeldung.com/java-map-to-string-conversion)
+- [Guide to Apache Commons MultiValuedMap](https://www.baeldung.com/apache-commons-multi-valued-map)

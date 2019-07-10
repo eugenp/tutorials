@@ -7,7 +7,6 @@
         <groupId>com.baeldung.jhipster</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
     <groupId>com.gateway</groupId>
     <artifactId>gateway-app</artifactId>
     <packaging>war</packaging>

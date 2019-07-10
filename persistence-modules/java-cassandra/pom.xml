@@ -39,6 +39,7 @@
         <!-- Cassandra -->
         <cassandra-driver-core.version>3.1.2</cassandra-driver-core.version>
         <cassandra-unit.version>3.1.1.0</cassandra-unit.version>
+        <guava.version>18.0</guava.version>
     </properties>
 
 </project>

@@ -1,10 +1,10 @@
 package com.baeldung.spring.statemachine;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.config.StateMachineBuilder;
+
+import static org.junit.Assert.assertEquals;
 
 public class StateMachineBuilderIntegrationTest {
 

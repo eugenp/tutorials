@@ -2,8 +2,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>Twitter4J</artifactId>
-    <packaging>jar</packaging>
     <name>Twitter4J</name>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

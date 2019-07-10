@@ -11,3 +11,5 @@
 - [Overview of JSON Pointer](https://www.baeldung.com/json-pointer)
 - [Introduction to the JSON Binding API (JSR 367) in Java](http://www.baeldung.com/java-json-binding-api)
 - [Get a Value by Key in a JSONArray](https://www.baeldung.com/java-jsonarray-get-value-by-key)
+- [Iterating Over an Instance of org.json.JSONObject](https://www.baeldung.com/jsonobject-iteration)
+- [Escape JSON String in Java](https://www.baeldung.com/java-json-escaping)

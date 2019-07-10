@@ -7,10 +7,10 @@
     <name>spring-protobuf</name>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-1</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -36,21 +36,10 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <protobuf-java.version>3.1.0</protobuf-java.version>
         <protobuf-java-format.version>1.4</protobuf-java-format.version>
+        <start-class>com.baeldung.protobuf.Application</start-class>
     </properties>
 
 </project>

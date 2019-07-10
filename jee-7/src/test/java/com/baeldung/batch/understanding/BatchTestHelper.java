@@ -7,6 +7,7 @@ import javax.batch.runtime.BatchRuntime;
 import javax.batch.runtime.BatchStatus;
 import javax.batch.runtime.JobExecution;
 import javax.batch.runtime.Metric;
+import javax.batch.runtime.StepExecution;
 
 public class BatchTestHelper {
     private static final int MAX_TRIES = 40;
@@ -68,6 +69,16 @@ public class BatchTestHelper {
         return jobExecution;
     }
 
+    public static long getCommitCount(StepExecution stepExecution) {
+        Map<Metric.MetricType, Long> metricsMap = getMetricsMap(stepExecution.getMetrics());
+        return metricsMap.get(Metric.MetricType.COMMIT_COUNT);
+    }
+    
+    public static long getProcessSkipCount(StepExecution stepExecution) {
+        Map<Metric.MetricType, Long> metricsMap = getMetricsMap(stepExecution.getMetrics());
+        return metricsMap.get(Metric.MetricType.PROCESS_SKIP_COUNT);
+    }
+    
     public static Map<Metric.MetricType, Long> getMetricsMap(Metric[] metrics) {
         Map<Metric.MetricType, Long> metricsMap = new HashMap<>();
         for (Metric metric : metrics) {

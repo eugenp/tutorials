@@ -1,7 +1,8 @@
 package org.baeldung.web.util;
 
-import org.baeldung.web.exception.MyResourceNotFoundException;
 import org.springframework.http.HttpStatus;
+
+import org.baeldung.web.exception.MyResourceNotFoundException;
 
 /**
  * Simple static methods to be called at the start of your own methods to verify correct arguments and state. If the Precondition fails, an {@link HttpStatus} code is thrown
@@ -30,11 +31,11 @@ public final class RestPreconditions {
 
     /**
      * Check if some value was found, otherwise throw exception.
-     * 
-     * @param expression
-     *            has value true if found, otherwise false
+     *
+     * @param resource
+     *            has value not null to be returned, otherwise throw exception
      * @throws MyResourceNotFoundException
-     *             if expression is false, means value not found.
+     *             if resource is null, means value not found.
      */
     public static <T> T checkFound(final T resource) {
         if (resource == null) {

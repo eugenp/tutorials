@@ -23,6 +23,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.baeldung.config.MongoConfig;
 import com.baeldung.model.User;
 
+/**
+ * 
+ * This test requires:
+ * * mongodb instance running on the environment
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
 public class UserRepositoryLiveTest {

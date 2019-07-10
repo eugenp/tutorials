@@ -6,7 +6,7 @@ import org.derive4j.Make;
 
 @Data(value = @Derive(
     inClass = "{ClassName}Impl",
-    make = {Make.lazyConstructor, Make.constructors}
+    make = {Make.lazyConstructor, Make.constructors, Make.getters}
 ))
 public interface LazyRequest {
     interface Cases<R>{

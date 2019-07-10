@@ -9,15 +9,14 @@
 	<name>jnosql</name>
     <packaging>pom</packaging>
 
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <jnosql.version>0.0.5</jnosql.version>
-    </properties>
-
     <modules>
         <module>jnosql-diana</module>
         <module>jnosql-artemis</module>
    </modules>
 
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <jnosql.version>0.0.5</jnosql.version>
+    </properties>
 </project>

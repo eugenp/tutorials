@@ -48,4 +48,20 @@ internal class FileReaderTest {
 
         assertTrue { text.contains("Hello to Kotlin") }
     }
+
+    @Test
+    fun whenReadFileAsTextUsingGetResource_thenCorrect() {
+        val text = fileReader.readFileUsingGetResource("/Kotlin.in")
+
+        assertTrue { text.contains("1. Concise") }
+    }
+
+    @Test
+    fun whenReadFileUsingGetResourceAsStream_thenCorrect() {
+        val lines = fileReader.readFileAsLinesUsingGetResourceAsStream("/Kotlin.in")
+
+        assertTrue { lines.contains("3. Interoperable") }
+    }
+
+
 }

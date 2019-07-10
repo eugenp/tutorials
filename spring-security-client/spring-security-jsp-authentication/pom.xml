@@ -5,8 +5,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-security-jsp-authentication</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>spring-security-jsp-authentication</name>
+    <packaging>war</packaging>
     <description>Spring Security JSP Authentication tag sample</description>
 
     <parent>

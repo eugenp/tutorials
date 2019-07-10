@@ -18,19 +18,11 @@
             <artifactId>akka-actor_2.12</artifactId>
             <version>${typesafe-akka.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.typesafe.akka</groupId>
             <artifactId>akka-testkit_2.12</artifactId>
             <version>${typesafe-akka.version}</version>
             <scope>test</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
-        <dependency>
-            <groupId>org.asynchttpclient</groupId>
-            <artifactId>async-http-client</artifactId>
-            <version>${async.http.client.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.beykery/neuroph/2.92 -->
         <dependency>
@@ -130,10 +122,10 @@
             <version>${serenity.version}</version>
             <scope>test</scope>
             <exclusions>
-            	<exclusion>
-            		<groupId>org.asciidoctor</groupId>
-					<artifactId>asciidoctorj</artifactId>
-            	</exclusion>
+                <exclusion>
+                    <groupId>org.asciidoctor</groupId>
+                    <artifactId>asciidoctorj</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -223,6 +215,12 @@
             <artifactId>serenity-spring</artifactId>
             <version>${serenity.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-test</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
@@ -318,6 +316,12 @@
             <artifactId>pact-jvm-consumer-junit_2.11</artifactId>
             <version>${pact.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.codehaus.groovy</groupId>
+                    <artifactId>groovy-all</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
@@ -577,7 +581,7 @@
             <classifier>test</classifier>
             <scope>test</scope>
         </dependency>
-		
+
         <dependency>
             <groupId>org.milyn</groupId>
             <artifactId>milyn-smooks-all</artifactId>
@@ -654,8 +658,8 @@
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
-            <version>${snakeyaml.version}</version>            
-        </dependency>       
+            <version>${snakeyaml.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.numericalmethod</groupId>
@@ -675,14 +679,21 @@
             <version>${mockftpserver.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+            <version>1.5.7.1</version>
+        </dependency>
+      	<!-- Reflections -->
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>${reflections.version}</version>
+		</dependency>
+
     </dependencies>
 
     <repositories>
-        <!-- <repository>
-            <id>maven2-repository.dev.java.net</id>
-            <name>Java.net repository</name>
-            <url>http://download.java.net/maven/2</url>
-        </repository> -->
         <repository>
             <snapshots>
                 <enabled>false</enabled>
@@ -690,10 +701,6 @@
             <id>bintray-cuba-platform-main</id>
             <name>bintray</name>
             <url>http://dl.bintray.com/cuba-platform/main</url>
-        </repository>
-        <repository>
-            <id>Apache Staging</id>
-            <url>https://repository.apache.org/content/groups/staging</url>
         </repository>
         <repository>
             <id>nm-repo</id>
@@ -738,7 +745,7 @@
                     <api>JDO</api>
                     <props>${basedir}/datanucleus.properties</props>
                     <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
-                    <verbose>true</verbose>
+                    <verbose>false</verbose>
                     <fork>false</fork>
                     <!-- Solve windows line too long error -->
                 </configuration>
@@ -822,15 +829,15 @@
         <h2.version>1.4.196</h2.version>
         <jnats.version>1.0</jnats.version>
 
+
         <httpclient.version>4.5.3</httpclient.version>
-        <jackson.version>2.8.5</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
         <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.9.26</serenity.version>
         <serenity.jbehave.version>1.41.0</serenity.jbehave.version>
         <serenity.jira.version>1.9.0</serenity.jira.version>
         <serenity.plugin.version>1.9.27</serenity.plugin.version>
         <jUnitParams.version>1.1.0</jUnitParams.version>
-        <junit.version>4.12</junit.version>
         <java-lsh.version>0.10</java-lsh.version>
         <pact.version>3.5.0</pact.version>
         <awaitility.version>3.0.0</awaitility.version>
@@ -857,7 +864,6 @@
         <kafka.version>2.0.0</kafka.version>
         <smooks.version>1.7.0</smooks.version>
         <docker.version>3.0.14</docker.version>
-        <async.http.client.version>2.2.0</async.http.client.version>
         <infinispan.version>9.1.5.Final</infinispan.version>
         <opencsv.version>4.1</opencsv.version>
         <unirest.version>1.4.9</unirest.version>
@@ -901,6 +907,8 @@
         <derive4j.version>1.1.0</derive4j.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
         <commons-net.version>3.6</commons-net.version>
+        <reflections.version>0.9.11</reflections.version>
+
     </properties>
 
 </project>

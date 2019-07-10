@@ -14,7 +14,8 @@ import java.net.URI;
 import java.util.Arrays;
 import java.util.Set;
 
-import org.baeldung.web.dto.Foo;
+import org.baeldung.resttemplate.web.dto.Foo;
+import org.baeldung.resttemplate.web.handler.RestTemplateResponseErrorHandler;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpEntity;
@@ -34,6 +35,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.google.common.base.Charsets;
 
 public class RestTemplateBasicLiveTest {
@@ -44,6 +46,7 @@ public class RestTemplateBasicLiveTest {
     @Before
     public void beforeTest() {
         restTemplate = new RestTemplate();
+        restTemplate.setErrorHandler(new RestTemplateResponseErrorHandler());
         // restTemplate.setMessageConverters(Arrays.asList(new MappingJackson2HttpMessageConverter()));
     }
 
@@ -61,7 +64,7 @@ public class RestTemplateBasicLiveTest {
         final RestTemplate template = new RestTemplate();
         final ResponseEntity<String> response = template.getForEntity(fooResourceUrl + "/1", String.class);
 
-        final ObjectMapper mapper = new ObjectMapper();
+        final ObjectMapper mapper = new XmlMapper();
         final JsonNode root = mapper.readTree(response.getBody());
         final JsonNode name = root.path("name");
         assertThat(name.asText(), notNullValue());
@@ -97,7 +100,7 @@ public class RestTemplateBasicLiveTest {
     @Test
     public void givenFooService_whenPostForLocation_thenCreatedLocationIsReturned() {
         final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"));
-        final URI location = restTemplate.postForLocation(fooResourceUrl, request);
+        final URI location = restTemplate.postForLocation(fooResourceUrl, request, Foo.class);
         assertThat(location, notNullValue());
     }
 
@@ -211,7 +214,7 @@ public class RestTemplateBasicLiveTest {
             restTemplate.getForEntity(entityUrl, Foo.class);
             fail();
         } catch (final HttpClientErrorException ex) {
-            assertThat(ex.getStatusCode(), is(HttpStatus.NOT_FOUND));
+            assertThat(ex.getStatusCode(), is(HttpStatus.INTERNAL_SERVER_ERROR));
         }
     }
 
@@ -221,7 +224,7 @@ public class RestTemplateBasicLiveTest {
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
         MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
-        map.add("id", "1");
+        map.add("id", "10");
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
@@ -230,7 +233,7 @@ public class RestTemplateBasicLiveTest {
         assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
         final String fooResponse = response.getBody();
         assertThat(fooResponse, notNullValue());
-        assertThat(fooResponse, is("1"));
+        assertThat(fooResponse, is("10"));
     }
 
     private HttpHeaders prepareBasicAuthHeaders() {
