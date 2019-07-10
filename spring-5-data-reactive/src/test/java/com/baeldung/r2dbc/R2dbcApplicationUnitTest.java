@@ -1,6 +1,7 @@
 package com.baeldung.r2dbc;
 
 
+import io.r2dbc.h2.H2ConnectionFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.r2dbc.core.DatabaseClient;
 import org.springframework.test.context.junit4.SpringRunner;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Hooks;
+import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.util.Arrays;
@@ -24,6 +27,9 @@ public class R2dbcApplicationUnitTest {
 
     @Autowired
     DatabaseClient client;
+
+    @Autowired
+    H2ConnectionFactory factory;
 
 
     @Before
@@ -85,6 +91,20 @@ public class R2dbcApplicationUnitTest {
                 .as(StepVerifier::create)
                 .expectNextCount(2)
                 .verifyComplete();
+    }
+
+    @Test
+    public void whenBatchHas2Operations_then2AreExpected() {
+        Mono.from(factory.create())
+          .flatMapMany(connection -> Flux.from(connection
+            .createBatch()
+            .add("select * from player")
+            .add("select * from player")
+            .execute()))
+          .as(StepVerifier::create)
+          .expectNextCount(2)
+          .verifyComplete();
+
     }
 
     private void insertPlayers() {
