@@ -140,6 +140,13 @@
             <artifactId>handlebars</artifactId>
             <version>${handlebars.version}</version>
         </dependency>
+
+        <!-- commons.io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
         
         <dependency>
             <groupId>org.springframework</groupId>
@@ -208,6 +215,9 @@
 
         <!-- Maven plugins -->
         <yuicompressor-maven-plugin.version>1.5.1</yuicompressor-maven-plugin.version>
+
+        <!-- commons.io -->
+        <commons.io.version>2.5</commons.io.version>
     </properties>
 
 </project>

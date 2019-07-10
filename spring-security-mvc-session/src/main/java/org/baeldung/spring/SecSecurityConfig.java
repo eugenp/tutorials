@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 
@@ -24,9 +26,9 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         // @formatter:off
         auth.inMemoryAuthentication()
-        .withUser("user1").password("user1Pass").roles("USER")
+        .withUser("user1").password(passwordEncoder().encode("user1Pass")).roles("USER")
         .and()
-        .withUser("admin1").password("admin1Pass").roles("ADMIN");
+        .withUser("admin1").password(passwordEncoder().encode("admin1Pass")).roles("ADMIN");
         // @formatter:on
     }
 
@@ -67,6 +69,11 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public HttpSessionEventPublisher httpSessionEventPublisher() {
         return new HttpSessionEventPublisher();
+    }
+    
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }

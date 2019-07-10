@@ -1,0 +1,1 @@
+This is a parent module for projects that want to take advantage of the latest Spring Boot improvements/features.
