@@ -21,7 +21,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class R2dbcApplicationUnitTest {
+public class R2dbcApplicationIntegrationTest {
 
 
     @Autowired
