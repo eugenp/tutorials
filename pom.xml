@@ -558,6 +558,7 @@
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
+				<module>morphia</module>
 
 			</modules>
 
@@ -791,6 +792,7 @@
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
+				<module>morphia</module>
 
             </modules>
 
