@@ -11,7 +11,7 @@ import org.apache.pulsar.client.api.PulsarClientException;
 import java.io.IOException;
 import java.util.stream.IntStream;
 
-public class ProducerTest {
+public class ProducerUnitTest {
 
     private static final String SERVICE_URL = "pulsar://localhost:6650";
     private static final String TOPIC_NAME = "test-topic";
