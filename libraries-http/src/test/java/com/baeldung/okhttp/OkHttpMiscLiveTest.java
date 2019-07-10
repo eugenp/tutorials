@@ -20,6 +20,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Execute <code>spring-rest</code> module before running this live test
+ */
 public class OkHttpMiscLiveTest {
 
     private static final String BASE_URL = "http://localhost:" + APPLICATION_PORT + "/spring-rest";
