@@ -26,21 +26,21 @@
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>
-            <version>2.9.8</version>
+            <version>${jackson.version}</version>
         </dependency>
         
         <!-- CSV -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-csv</artifactId>
-            <version>2.9.8</version>
+            <version>${jackson.version}</version>
         </dependency>        
 
         <!-- Allow use of LocalDate -->
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.9.8</version>
+            <version>${jackson.version}</version>
         </dependency>
 
 

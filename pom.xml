@@ -506,6 +506,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
+                <module>libraries-http</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
                 <module>lombok</module>
@@ -557,6 +558,7 @@
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
+				<module>morphia</module>
 
 			</modules>
 
@@ -790,6 +792,7 @@
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
+				<module>morphia</module>
 
             </modules>
 
@@ -1185,6 +1188,7 @@
                 <module>libraries-apache-commons</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
+                <module>libraries-http</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
                 <module>lombok</module>
@@ -1552,6 +1556,7 @@
 		<exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
 		<maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
 		<commons-io.version>2.5</commons-io.version>
+		<commons-lang.version>2.6</commons-lang.version>
 		<commons-cli.version>1.4</commons-cli.version>
 		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>
 		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
