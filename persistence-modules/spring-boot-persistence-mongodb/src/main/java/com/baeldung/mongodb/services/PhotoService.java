@@ -1,7 +1,6 @@
 package com.baeldung.mongodb.services;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import org.bson.BsonBinarySubType;
 import org.bson.types.Binary;
@@ -19,20 +18,13 @@ public class PhotoService {
     private PhotoRepository photoRepo;
 
     public Photo getPhoto(String id) {
-        Optional<Photo> result = photoRepo.findById(id);
-        return result.isPresent() ? result.get() : null;
+        return photoRepo.findById(id).get();
     }
 
-    public String addPhoto(String title, MultipartFile file) {
-        String id = null;
-        try {
-            Photo photo = new Photo(title);
-            photo.setImage(new Binary(BsonBinarySubType.BINARY, file.getBytes()));
-            photo = photoRepo.insert(photo);
-            id = photo.getId();
-        } catch (IOException e) {
-            return null;
-        }
-        return id;
+    public String addPhoto(String title, MultipartFile file) throws IOException {
+        Photo photo = new Photo(title);
+        photo.setImage(new Binary(BsonBinarySubType.BINARY, file.getBytes()));
+        photo = photoRepo.insert(photo);
+        return photo.getId();
     }
 }
