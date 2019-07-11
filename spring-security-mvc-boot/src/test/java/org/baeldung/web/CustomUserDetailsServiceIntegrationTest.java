@@ -1,76 +1,89 @@
 package org.baeldung.web;
 
-import static org.junit.Assert.assertEquals;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.apache.http.HttpHeaders;
 import org.baeldung.custom.Application;
-import org.baeldung.custom.config.MvcConfig;
-import org.baeldung.custom.config.SecurityConfig;
-import org.baeldung.custom.persistence.dao.UserRepository;
-import org.baeldung.custom.persistence.model.User;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.baeldung.custom.persistence.model.Foo;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithUserDetails;
+import org.springframework.test.web.servlet.MockMvc;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {Application.class})
-@WebAppConfiguration
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@SpringBootTest(classes = { Application.class })
+@AutoConfigureMockMvc
 public class CustomUserDetailsServiceIntegrationTest {
 
-    private static final String USERNAME = "user";
-    private static final String PASSWORD = "pass";
-    private static final String USERNAME2 = "user2";
-
     @Autowired
-    private UserRepository myUserRepository;
-
-    @Autowired
-    private AuthenticationProvider authenticationProvider;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    //
+    private MockMvc mvc;
 
     @Test
-    public void givenExistingUser_whenAuthenticate_thenRetrieveFromDb() {
-        User user = new User();
-        user.setUsername(USERNAME);
-        user.setPassword(passwordEncoder.encode(PASSWORD));
-
-        myUserRepository.save(user);
-
-        UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(USERNAME, PASSWORD);
-        Authentication authentication = authenticationProvider.authenticate(auth);
-
-        assertEquals(authentication.getName(), USERNAME);
+    @WithUserDetails("john")
+    public void givenUserWithReadPermissions_whenRequestUserInfo_thenRetrieveUserData() throws Exception {
+        this.mvc.perform(get("/user").with(csrf()))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.user.privileges[0].name").value("FOO_READ_PRIVILEGE"))
+            .andExpect(jsonPath("$.user.organization.name").value("FirstOrg"))
+            .andExpect(jsonPath("$.user.username").value("john"));
     }
 
-    @Test(expected = BadCredentialsException.class)
-    public void givenIncorrectUser_whenAuthenticate_thenBadCredentialsException() {
-        User user = new User();
-        user.setUsername(USERNAME);
-        user.setPassword(passwordEncoder.encode(PASSWORD));
-
-        myUserRepository.save(user);
-
-        UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(USERNAME2, PASSWORD);
-        authenticationProvider.authenticate(auth);
+    @Test
+    @WithUserDetails("tom")
+    public void givenUserWithWritePermissions_whenRequestUserInfo_thenRetrieveUserData() throws Exception {
+        this.mvc.perform(get("/user").with(csrf()))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.user.privileges").isArray())
+            .andExpect(jsonPath("$.user.organization.name").value("SecondOrg"))
+            .andExpect(jsonPath("$.user.username").value("tom"));
     }
 
-    //
+    @Test
+    @WithUserDetails("john")
+    public void givenUserWithReadPermissions_whenRequestFoo_thenRetrieveSampleFoo() throws Exception {
+        this.mvc.perform(get("/foos/1").with(csrf()))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.name").value("Sample"));
+    }
 
-    @After
-    public void tearDown() {
-        myUserRepository.removeUserByUsername(USERNAME);
+    @Test
+    @WithAnonymousUser
+    public void givenAnonymous_whenRequestFoo_thenRetrieveUnauthorized() throws Exception {
+        this.mvc.perform(get("/foos/1").with(csrf()))
+            .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    @WithUserDetails("john")
+    public void givenUserWithReadPermissions_whenCreateNewFoo_thenForbiddenStatusRetrieved() throws Exception {
+        this.mvc.perform(post("/foos").with(csrf())
+            .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
+            .content(asJsonString(new Foo())))
+            .andExpect(status().isForbidden());
+    }
+
+    @Test
+    @WithUserDetails("tom")
+    public void givenUserWithWritePermissions_whenCreateNewFoo_thenOkStatusRetrieved() throws Exception {
+        this.mvc.perform(post("/foos").with(csrf())
+            .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
+            .content(asJsonString(new Foo())))
+            .andExpect(status().isCreated());
+    }
+
+    private static String asJsonString(final Object obj) throws Exception {
+        final ObjectMapper mapper = new ObjectMapper();
+        final String jsonContent = mapper.writeValueAsString(obj);
+        return jsonContent;
     }
 
 }
