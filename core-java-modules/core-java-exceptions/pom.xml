@@ -14,15 +14,11 @@
 		<relativePath>../../parent-java</relativePath>
 	</parent>
 
-	<properties>
-		<commons-lang3.version>3.9</commons-lang3.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -31,5 +27,9 @@
 			<version>${commons-lang3.version}</version>
 		</dependency>
 	</dependencies>
+
+	<properties>
+		<commons-lang3.version>3.9</commons-lang3.version>
+	</properties>
 
 </project>
