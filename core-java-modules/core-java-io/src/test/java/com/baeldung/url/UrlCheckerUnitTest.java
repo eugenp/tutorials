@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-public class UrlCheckerTest {
+public class UrlCheckerUnitTest {
 
     @Test
     public void givenValidUrl_WhenUsingHEAD_ThenReturn200() throws IOException {
