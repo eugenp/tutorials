@@ -1,16 +1,16 @@
-package org.hexagonal.model;
+package org.hexagonal.domain.model;
 
 import java.util.Date;
 
 public class Asset {
 	
 	private String assetId;
-	private String assetType;
+	private int assetTypeId;
 	private String assetName;
 	private Date dateOfPurchase;
 	private Date dateOfSell;
 	private String manufacturer;
-	private String assetDescription;
+	private String status;
 	
 	public String getAssetId() {
 		return assetId;
@@ -18,11 +18,11 @@ public class Asset {
 	public void setAssetId(String assetId) {
 		this.assetId = assetId;
 	}
-	public String getAssetType() {
-		return assetType;
+	public int getAssetTypeId() {
+		return assetTypeId;
 	}
-	public void setAssetType(String assetType) {
-		this.assetType = assetType;
+	public void setAssetTypeId(int assetTypeId) {
+		this.assetTypeId = assetTypeId;
 	}
 	public String getAssetName() {
 		return assetName;
@@ -48,11 +48,11 @@ public class Asset {
 	public void setManufacturer(String manufacturer) {
 		this.manufacturer = manufacturer;
 	}
-	public String getAssetDescription() {
-		return assetDescription;
+	public String getStatus() {
+		return status;
 	}
-	public void setAssetDescription(String assetDescription) {
-		this.assetDescription = assetDescription;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }
