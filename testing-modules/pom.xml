@@ -14,6 +14,7 @@
     </parent>
 
     <modules>
+        <module>easy-random</module>
         <module>gatling</module>
         <module>groovy-spock</module>
         <module>junit-5</module>
