@@ -1,5 +1,8 @@
 package org.baeldung.springquartz.basics.scheduler;
 
+import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
+
 import org.baeldung.springquartz.config.AutoWiringSpringBeanJobFactory;
 import org.quartz.JobDetail;
 import org.quartz.SimpleTrigger;
@@ -21,15 +24,12 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
 import org.springframework.scheduling.quartz.SpringBeanJobFactory;
 
-import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
-
 @Configuration
 @EnableAutoConfiguration
 @ConditionalOnExpression("'${using.spring.schedulerFactory}'=='true'")
 public class SpringQrtzScheduler {
 
-    private static final Logger logger = LoggerFactory.getLogger(SpringQrtzScheduler.class);
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -49,9 +49,7 @@ public class SpringQrtzScheduler {
     }
 
     @Bean
-    public SchedulerFactoryBean scheduler(Trigger trigger,
-                                          JobDetail job,
-                                          DataSource quartzDataSource) {
+    public SchedulerFactoryBean scheduler(Trigger trigger, JobDetail job, DataSource quartzDataSource) {
 
         SchedulerFactoryBean schedulerFactory = new SchedulerFactoryBean();
         schedulerFactory.setConfigLocation(new ClassPathResource("quartz.properties"));

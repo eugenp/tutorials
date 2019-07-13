@@ -1,5 +1,13 @@
 package org.baeldung.springquartz.basics.scheduler;
 
+import static org.quartz.JobBuilder.newJob;
+import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
+import static org.quartz.TriggerBuilder.newTrigger;
+
+import java.io.IOException;
+
+import javax.annotation.PostConstruct;
+
 import org.baeldung.springquartz.config.AutoWiringSpringBeanJobFactory;
 import org.quartz.*;
 import org.slf4j.Logger;
@@ -14,19 +22,13 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.scheduling.quartz.SpringBeanJobFactory;
 
-import javax.annotation.PostConstruct;
-import java.io.IOException;
 import java.util.Properties;
-
-import static org.quartz.JobBuilder.newJob;
-import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
-import static org.quartz.TriggerBuilder.newTrigger;
 
 @Configuration
 @ConditionalOnExpression("'${using.spring.schedulerFactory}'=='false'")
 public class QrtzScheduler {
 
-    private static final Logger logger = LoggerFactory.getLogger(QrtzScheduler.class);
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -74,11 +76,7 @@ public class QrtzScheduler {
     @Bean
     public JobDetail jobDetail() {
 
-        return newJob().ofType(SampleJob.class)
-                .storeDurably()
-                .withIdentity(JobKey.jobKey("Qrtz_Job_Detail"))
-                .withDescription("Invoke Sample Job service...")
-                .build();
+        return newJob().ofType(SampleJob.class).storeDurably().withIdentity(JobKey.jobKey("Qrtz_Job_Detail")).withDescription("Invoke Sample Job service...").build();
     }
 
     @Bean
@@ -87,10 +85,6 @@ public class QrtzScheduler {
         int frequencyInSec = 10;
         logger.info("Configuring trigger to fire every {} seconds", frequencyInSec);
 
-        return newTrigger().forJob(job)
-                .withIdentity(TriggerKey.triggerKey("Qrtz_Trigger"))
-                .withDescription("Sample trigger")
-                .withSchedule(simpleSchedule().withIntervalInSeconds(frequencyInSec).repeatForever())
-                .build();
+        return newTrigger().forJob(job).withIdentity(TriggerKey.triggerKey("Qrtz_Trigger")).withDescription("Sample trigger").withSchedule(simpleSchedule().withIntervalInSeconds(frequencyInSec).repeatForever()).build();
     }
 }

@@ -11,7 +11,7 @@ public class SampleJobService {
 
     public static final long EXECUTION_TIME = 5000L;
 
-    private static final Logger logger = LoggerFactory.getLogger(SampleJobService.class);
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     private AtomicInteger count = new AtomicInteger();
 

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SampleJob implements Job {
 
-    private static final Logger logger = LoggerFactory.getLogger(SampleJob.class);
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private SampleJobService jobService;
