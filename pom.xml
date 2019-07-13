@@ -988,29 +988,6 @@
 				<module>jws</module>
 
 				<module>libraries</module> <!-- very long running -->
-        <module>jackson</module>
-        <module>jackson-2</module>
-        <module>jackson-simple</module>
-        <module>java-collections-conversions</module>
-        <module>java-collections-maps</module>
-        <module>java-collections-maps-2</module>
-        <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-        <module>java-ee-8-security-api</module>
-        <module>java-lite</module>
-        <module>java-numbers</module>
-        <module>java-numbers-2</module>
-        <module>java-rmi</module>
-        <module>java-spi</module>
-        <module>java-streams</module>
-        <module>java-streams-2</module>
-        <module>java-strings</module>
-        <module>java-strings-2</module>
-        <module>java-vavr-stream</module>
-        <module>java-websocket</module>
-        <module>javafx</module>
-        <module>javax-servlets</module>
-        <module>javaxval</module>
-        <module>jaxb</module>
 				<module>persistence-modules/hibernate5</module>
 				<module>persistence-modules/hibernate-mapping</module>
 				<module>persistence-modules/java-jpa</module>
@@ -1170,6 +1147,7 @@
 				<module>java-ee-8-security-api</module>
 				<module>java-lite</module>
 				<module>java-numbers</module>
+				<module>java-numbers-2</module>
 				<module>java-rmi</module>
 				<module>java-spi</module>
 				<module>java-streams</module>
@@ -1182,6 +1160,8 @@
 				<module>javax-servlets</module>
 				<module>javaxval</module>
 				<module>jaxb</module>
+				<!-- JIRA-10842
+                <module>jee-7</module> -->
 				<module>jee-7-security</module>
 				<module>jersey</module>
 				<module>JGit</module>
