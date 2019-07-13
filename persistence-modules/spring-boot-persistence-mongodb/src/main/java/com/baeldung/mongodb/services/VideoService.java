@@ -25,31 +25,19 @@ public class VideoService {
     @Autowired
     private GridFsOperations operations;
 
-    public Video getVideo(String id) {
-        Video video = null;
+    public Video getVideo(String id) throws IllegalStateException, IOException {
         GridFSFile file = gridFsTemplate.findOne(new Query(Criteria.where("_id").is(id)));
-        if (file != null) {
-            video = new Video();
-            video.setTitle(file.getMetadata().get("title").toString());
-            try {
-                video.setStream(operations.getResource(file).getInputStream());
-            } catch (IOException e) {
-                return null;
-            }
-        }
+        Video video = new Video();
+        video.setTitle(file.getMetadata().get("title").toString());
+        video.setStream(operations.getResource(file).getInputStream());
         return video;
     }
 
-    public String addVideo(String title, MultipartFile file) {
+    public String addVideo(String title, MultipartFile file) throws IOException {
         DBObject metaData = new BasicDBObject();
         metaData.put("type", "video");
         metaData.put("title", title);
-        ObjectId id;
-        try {
-            id = gridFsTemplate.store(file.getInputStream(), file.getName(), file.getContentType(), metaData);
-        } catch (IOException e) {
-            return null;
-        }
+        ObjectId id = gridFsTemplate.store(file.getInputStream(), file.getName(), file.getContentType(), metaData);
         return id.toString();
     }
 
