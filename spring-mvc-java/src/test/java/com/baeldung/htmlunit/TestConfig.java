@@ -13,6 +13,8 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
+import com.baeldung.excel.ExcelPOIHelper;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.baeldung.web.controller" })
@@ -44,5 +46,9 @@ public class TestConfig implements WebMvcConfigurer {
         templateEngine.setTemplateResolver(templateResolver());
         return templateEngine;
     }
-
+    
+    @Bean
+    public ExcelPOIHelper excelPOIHelper() {
+        return new ExcelPOIHelper();
+    }
 }
