@@ -23,10 +23,6 @@
 				<td><form:input path="contactNumber" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="workingArea">Working Area</form:label></td>
-				<td><form:input path="workingArea" /></td>
-			</tr>
-			<tr>
 				<td><input type="submit" value="Submit" /></td>
 			</tr>
 		</table>

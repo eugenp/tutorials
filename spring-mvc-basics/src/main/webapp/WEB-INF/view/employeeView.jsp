@@ -6,6 +6,7 @@
 <body>
 
 	<h2>Submitted Employee Information</h2>
+	<h3>${msg}</h3>
 	<table>
 		<tr>
 			<td>Name :</td>
