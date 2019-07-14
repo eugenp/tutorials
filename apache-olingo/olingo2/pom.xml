@@ -82,7 +82,6 @@
 	</build>
 
 	<properties>
-		<java.version>1.8</java.version>
 		<olingo2.version>2.0.11</olingo2.version>
 	</properties>
 

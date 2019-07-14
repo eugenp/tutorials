@@ -39,10 +39,6 @@
     <properties>
         <!-- Spring -->
         <spring-cloud.version>2.1.0.RELEASE</spring-cloud.version>
-        <!-- util -->
-        <commons-lang3.version>3.5</commons-lang3.version>
-        <!-- Maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
     </properties>
 
 </project>
