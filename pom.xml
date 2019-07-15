@@ -559,7 +559,7 @@
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
 				<module>morphia</module>
-
+				<module>oauth2-framework-impl</module>
 			</modules>
 
 		</profile>
@@ -1236,6 +1236,7 @@
 				<module>rsocket</module>
 				<module>rxjava</module>
 				<module>rxjava-2</module>
+				<module>oauth2-framework-impl</module>
 
 			</modules>
 
