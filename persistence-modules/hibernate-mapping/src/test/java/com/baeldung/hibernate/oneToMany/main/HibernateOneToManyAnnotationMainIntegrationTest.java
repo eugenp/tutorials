@@ -10,7 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.dialect.HSQLDialect;
+import org.hibernate.dialect.H2Dialect;
 import org.hibernate.service.ServiceRegistry;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,6 +18,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import com.baeldung.hibernate.oneToMany.model.Cart;
 import com.baeldung.hibernate.oneToMany.model.Items;
 
@@ -33,9 +34,9 @@ public class HibernateOneToManyAnnotationMainIntegrationTest {
 	@BeforeClass
 	public static void beforeTests() {
 		Configuration configuration = new Configuration().addAnnotatedClass(Cart.class).addAnnotatedClass(Items.class)
-				.setProperty("hibernate.dialect", HSQLDialect.class.getName())
-				.setProperty("hibernate.connection.driver_class", org.hsqldb.jdbcDriver.class.getName())
-				.setProperty("hibernate.connection.url", "jdbc:hsqldb:mem:test")
+				.setProperty("hibernate.dialect", H2Dialect.class.getName())
+				.setProperty("hibernate.connection.driver_class", org.h2.Driver.class.getName())
+				.setProperty("hibernate.connection.url", "jdbc:h2:mem:test")
 				.setProperty("hibernate.connection.username", "sa").setProperty("hibernate.connection.password", "")
 				.setProperty("hibernate.hbm2ddl.auto", "update");
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
