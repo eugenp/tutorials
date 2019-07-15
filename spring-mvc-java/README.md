@@ -12,7 +12,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [A Quick Guide to Spring MVC Matrix Variables](http://www.baeldung.com/spring-mvc-matrix-variables)
 - [Intro to WebSockets with Spring](http://www.baeldung.com/websockets-spring)
 - [File Upload with Spring MVC](http://www.baeldung.com/spring-file-upload)
-- [Circular Dependencies in Spring](http://www.baeldung.com/circular-dependencies-in-spring)
 - [Introduction to HtmlUnit](http://www.baeldung.com/htmlunit)
 - [Upload and Display Excel Files with Spring MVC](http://www.baeldung.com/spring-mvc-excel-files)
 - [web.xml vs Initializer with Spring](http://www.baeldung.com/spring-xml-vs-java-config)
