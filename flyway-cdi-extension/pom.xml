@@ -8,6 +8,13 @@
     <version>1.0-SNAPSHOT</version>
     <name>flyway-cdi-extension</name>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>javax.enterprise</groupId>
@@ -51,6 +58,5 @@
 		<flyway-core.version>5.1.4</flyway-core.version>
 		<tomcat-jdbc.version>8.5.33</tomcat-jdbc.version>
 		<javax.annotation-api.version>1.3.2</javax.annotation-api.version>
-		<h2.version>1.4.197</h2.version>
     </properties>
 </project>

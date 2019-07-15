@@ -29,7 +29,7 @@
          <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-function-web</artifactId>
-            <version>1.0.1.RELEASE</version>
+            <version>${spring-cloud-function.version}</version>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
@@ -40,7 +40,7 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-core</artifactId>
-            <version>1.1.0</version>
+            <version>${aws-lambda-java-core.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -87,6 +87,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-cloud-function.version>1.0.1.RELEASE</spring-cloud-function.version>
         <aws-lambda-events.version>2.0.2</aws-lambda-events.version>
+        <aws-lambda-java-core.version>1.1.0</aws-lambda-java-core.version>
         <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
     </properties>
 

@@ -13,13 +13,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <rest-assured.version>3.1.0</rest-assured.version>
-        <!-- plugins -->
-        <thin.version>1.0.21.RELEASE</thin.version>
-        <spring-boot.version>2.2.0.M3</spring-boot.version>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -31,6 +24,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+	
     <dependencies>
         <dependency>
             <groupId>io.rest-assured</groupId>
@@ -88,4 +82,11 @@
             </build>
         </profile>
     </profiles>
+
+    <properties>
+        <rest-assured.version>3.1.0</rest-assured.version>
+        <!-- plugins -->
+        <thin.version>1.0.21.RELEASE</thin.version>
+        <spring-boot.version>2.2.0.M3</spring-boot.version>
+    </properties>
 </project>

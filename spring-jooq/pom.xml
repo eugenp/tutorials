@@ -102,7 +102,7 @@
                     <dependency>
                         <groupId>com.h2database</groupId>
                         <artifactId>h2</artifactId>
-                        <version>${com.h2database.version}</version>
+                        <version>${h2.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -189,8 +189,6 @@
 
     <properties>
         <org.jooq.version>3.11.7</org.jooq.version>
-        <com.h2database.version>1.4.193</com.h2database.version>
-
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
         <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>

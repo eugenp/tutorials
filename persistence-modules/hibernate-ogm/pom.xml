@@ -19,31 +19,31 @@
 		<dependency>
 			<groupId>org.hibernate.ogm</groupId>
 			<artifactId>hibernate-ogm-mongodb</artifactId>
-			<version>5.4.0.Final</version>
+			<version>${hibernate.version}</version>
 		</dependency>
 		<!-- Neo4j -->
 		<dependency>
 			<groupId>org.hibernate.ogm</groupId>
 			<artifactId>hibernate-ogm-neo4j</artifactId>
-			<version>5.4.0.Final</version>
+			<version>${hibernate.version}</version>
 		</dependency>
 		<!-- Narayana JTA -->  
 		<dependency>
 			<groupId>org.jboss.narayana.jta</groupId>
 			<artifactId>narayana-jta</artifactId>
-			<version>5.5.23.Final</version>
+			<version>${narayana-jta.version}</version>
 		</dependency>
 		<!-- Testing -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.easytesting</groupId>
 			<artifactId>fest-assert</artifactId>
-			<version>1.4</version>
+			<version>${fest-assert.version}</version>
 			<scope>test</scope>
 		</dependency>
     </dependencies>
@@ -57,4 +57,10 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <hibernate.version>5.4.0.Final</hibernate.version>
+        <fest-assert.version>1.4</fest-assert.version>
+        <narayana-jta.version>5.5.23.Final</narayana-jta.version>
+    </properties>
 </project>

@@ -101,7 +101,6 @@
         <log4j2.version>2.7</log4j2.version>
         <disruptor.version>3.3.6</disruptor.version>
         <jbosslogging.version>3.3.0.Final</jbosslogging.version>
-        <maven-war-plugin.version>2.4</maven-war-plugin.version>
     </properties>
 
 </project>
