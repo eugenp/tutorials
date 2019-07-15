@@ -9,11 +9,11 @@ public class SubstringRepetitionUnitTest {
 
     private String validString = "aa";
     private String validStringTwo = "ababab";
-    private String validStringThree = "aabcaabcaabcaabc";
+    private String validStringThree = "baeldungbaeldung";
 
     private String invalidString = "aca";
     private String invalidStringTwo = "ababa";
-    private String invalidStringThree = "abcdab";
+    private String invalidStringThree = "baeldungnonrepeatedbaeldung";
 
     @Test
     public void givenValidStrings_whenCheckIfContainsOnlySubstrings_thenReturnsTrue() {

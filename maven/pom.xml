@@ -4,12 +4,19 @@
     <groupId>com.baeldung</groupId>
     <artifactId>maven</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <name>maven</name>
+    <packaging>pom</packaging>
+
+    <parent>
+        <artifactId>parent-modules</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
     <modules>
         <module>custom-rule</module>
         <module>maven-enforcer</module>
     </modules>
-    <name>maven</name>
-    <packaging>pom</packaging>
 
     <dependencies>
         <dependency>

@@ -8,6 +8,13 @@
     <version>1.0-SNAPSHOT</version>
     <name>flyway-cdi-extension</name>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>javax.enterprise</groupId>
