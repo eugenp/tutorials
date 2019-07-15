@@ -1,0 +1,8 @@
+# R2DBC Test configuration
+r2dbc:
+  driver: h2
+  protocol: mem
+  database: testdb
+  
+  
+  
