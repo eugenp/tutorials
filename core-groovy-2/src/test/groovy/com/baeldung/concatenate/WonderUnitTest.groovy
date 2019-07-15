@@ -5,7 +5,7 @@ import org.junit.Test
 
 import static org.junit.Assert.*
 
-class WonderTest {
+class WonderUnitTest {
 
     static final String EXPECTED_SINGLE_LINE = "The seven wonders of the world"
 
