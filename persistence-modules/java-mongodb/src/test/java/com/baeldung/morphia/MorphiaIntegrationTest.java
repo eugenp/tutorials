@@ -2,6 +2,7 @@ package com.baeldung.morphia;
 
 import static dev.morphia.aggregation.Group.grouping;
 import static dev.morphia.aggregation.Group.push;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -51,8 +52,8 @@ public class MorphiaIntegrationTest {
             .contains("Learning Java")
             .find()
             .toList();
-        assertEquals(books.size(), 1);
-        assertEquals(books.get(0), book);
+        assertEquals(1, books.size());
+        assertEquals(book, books.get(0));
     }
 
     @Test
@@ -71,8 +72,8 @@ public class MorphiaIntegrationTest {
             .contains("Learning Java")
             .find()
             .toList();
-        assertEquals(books.get(0)
-            .getCost(), 4.95);
+        assertEquals(4.95, books.get(0)
+            .getCost());
     }
 
     @Test
@@ -89,7 +90,7 @@ public class MorphiaIntegrationTest {
             .contains("Learning Java")
             .find()
             .toList();
-        assertEquals(books.size(), 0);
+        assertEquals(0, books.size());
     }
 
     @Test
@@ -123,7 +124,7 @@ public class MorphiaIntegrationTest {
         assertEquals(books.size(), 1);
         assertEquals("Learning Java", books.get(0)
             .getTitle());
-        assertEquals(null, books.get(0)
+        assertNull(books.get(0)
             .getAuthor());
     }
 
