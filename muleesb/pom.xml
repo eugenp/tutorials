@@ -6,9 +6,9 @@
     <groupId>com.mycompany</groupId>
     <artifactId>muleesb</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>mule</packaging>
-    <name>Mule muleesb Application</name>
-
+    <name>muleesb</name>
+	<packaging>mule</packaging>
+    
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>

@@ -4,7 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>design-patterns</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
+    <name>design-patterns</name>
+	<packaging>jar</packaging>
+	
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>patterns</artifactId>
@@ -46,6 +48,7 @@
             <version>${grep4j.version}</version>
         </dependency>
     </dependencies>
+	
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>

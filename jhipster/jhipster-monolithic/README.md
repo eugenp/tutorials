@@ -1,7 +1,5 @@
 ### Relevant articles
 
-- [Intro to JHipster](http://www.baeldung.com/jhipster)
-
 
 # baeldung
 This application was generated using JHipster 4.0.8, you can find documentation and help at [https://jhipster.github.io/documentation-archive/v4.0.8](https://jhipster.github.io/documentation-archive/v4.0.8).

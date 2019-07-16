@@ -5,6 +5,7 @@
     <artifactId>spring-ldap</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
+	<name>spring-ldap</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

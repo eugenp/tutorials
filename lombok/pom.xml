@@ -59,6 +59,7 @@
                         </goals>
                         <configuration>
                             <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+                            <outputDirectory>${project.build.directory}/delombok</outputDirectory>
                             <addOutputDirectory>false</addOutputDirectory>
                             <formatPreferences>
                                 <javaLangAsFQN>skip</javaLangAsFQN>
@@ -75,11 +76,11 @@
 
     <properties>
         <!-- lombok: https://projectlombok.org/changelog.html -->
-        <lombok.version>1.16.18</lombok.version>
+        <lombok.version>1.18.4</lombok.version>
         <!-- various -->
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
         <!-- delombok maven plugin -->
-        <delombok-maven-plugin.version>1.16.10.0</delombok-maven-plugin.version>
+        <delombok-maven-plugin.version>1.18.4.0</delombok-maven-plugin.version>
         <assertj-core.version>3.8.0</assertj-core.version>
     </properties>
 

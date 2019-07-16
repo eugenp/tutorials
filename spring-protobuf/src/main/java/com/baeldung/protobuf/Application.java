@@ -1,22 +1,28 @@
 package com.baeldung.protobuf;
 
-import com.baeldung.protobuf.BaeldungTraining.Course;
-import com.baeldung.protobuf.BaeldungTraining.Student;
-import com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber;
-import com.baeldung.protobuf.BaeldungTraining.Student.PhoneType;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
+
+import com.baeldung.protobuf.BaeldungTraining.Course;
+import com.baeldung.protobuf.BaeldungTraining.Student;
+import com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber;
+import com.baeldung.protobuf.BaeldungTraining.Student.PhoneType;
+
 @SpringBootApplication
 public class Application {
+    
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 
     @Bean
     RestTemplate restTemplate(ProtobufHttpMessageConverter hmc) {

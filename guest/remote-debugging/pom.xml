@@ -5,8 +5,8 @@
     <groupId>com.stackify</groupId>
     <artifactId>remote-debugging</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <name>remote-debugging</name>
     <packaging>war</packaging>
-	<name>remote-debugging</name>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

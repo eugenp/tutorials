@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <h4 class="modal-title">Sign in</h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="activeModal.dismiss('closed')"><span aria-hidden="true">x</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="alert alert-danger" *ngIf="authenticationError">
+                <strong>Failed to sign in!</strong> Please check your credentials and try again.
+            </div>
+        </div>
+        <div class="col-md-8">
+            <form class="form" role="form" (ngSubmit)="login()">
+                <div class="form-group">
+                    <label class="username-label" for="username">Login</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Your username"
+                    [(ngModel)]="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Your password"
+                           [(ngModel)]="password">
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label" for="rememberMe">
+                        <input class="form-check-input" type="checkbox" name="rememberMe" id="rememberMe" [(ngModel)]="rememberMe" checked>
+                        <span>Remember me</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
+            <p></p>
+            <div class="alert alert-warning">
+                <a class="alert-link" (click)="requestResetPassword()">Did you forget your password?</a>
+            </div>
+            <div class="alert alert-warning">
+                <span>You don't have an account yet?</span>
+                <a class="alert-link" (click)="register()">Register a new account</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -21,16 +21,13 @@ import com.baeldung.thymeleaf.service.BookService;
 @Controller
 public class BookController {
 
-    private static int currentPage = 1;
-    private static int pageSize = 5;
-
     @Autowired
     private BookService bookService;
-  
+
     @RequestMapping(value = "/listBooks", method = RequestMethod.GET)
     public String listBooks(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
-        page.ifPresent(p -> currentPage = p);
-        size.ifPresent(s -> pageSize = s);
+        final int currentPage = page.orElse(1);
+        final int pageSize = size.orElse(5);
 
         Page<Book> bookPage = bookService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
 

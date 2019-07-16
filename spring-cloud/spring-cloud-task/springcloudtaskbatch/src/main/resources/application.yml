@@ -3,11 +3,11 @@ logging:
     org:
       springframework:
         cloud:
-          task=DEBUG
+          task: DEBUG
                            
 spring:
   application:
-    name=helloWorld
+    name: helloWorld
   datasource:
     url: jdbc:mysql://localhost:3306/springcloud?useSSL=false
     username: root

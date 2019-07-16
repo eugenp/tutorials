@@ -59,4 +59,14 @@ public class SubstringUnitTest {
         Assert.assertEquals("United States of America", text.substring(text.indexOf('(') + 1, text.indexOf(')')));
     }
 
+    @Test
+    public void givenAString_whenUsedSubstringWithLastIndexOf_ShouldReturnProperSubstring() {
+        Assert.assertEquals("1984", text.substring(text.lastIndexOf('-') + 1, text.indexOf('.')));
+    }
+
+    @Test
+    public void givenAString_whenUsedSubstringWithIndexOfAString_ShouldReturnProperSubstring() {
+        Assert.assertEquals("USA (United States of America)", text.substring(text.indexOf("USA"), text.indexOf(')') + 1));
+    }
+
 }
