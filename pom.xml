@@ -423,6 +423,7 @@
                 <module>dubbo</module>
 
                 <module>ethereum</module>
+                <module>eval</module>
 
                 <module>feign</module>
                 <module>flyway-cdi-extension</module>
@@ -1108,6 +1109,7 @@
 				<module>dubbo</module>
 
 				<module>ethereum</module>
+				<module>eval</module>
 
 				<module>feign</module>
 				<module>flyway-cdi-extension</module>
