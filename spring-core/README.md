@@ -24,3 +24,4 @@
 - [What is a Spring Bean?](https://www.baeldung.com/spring-bean)
 - [Spring PostConstruct and PreDestroy Annotations](https://www.baeldung.com/spring-postconstruct-predestroy)
 - [Guice vs Spring – Dependency Injection](https://www.baeldung.com/guice-spring-dependency-injection)
+- [Circular Dependencies in Spring](http://www.baeldung.com/circular-dependencies-in-spring)
