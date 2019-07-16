@@ -78,7 +78,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2database.version}</version>
+            <version>${h2.version}</version>
         </dependency>
 
         <!-- Websockets -->
@@ -148,10 +148,18 @@
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        
+        <!-- Test -->
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>1.5.10.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
 
     <build>
-        <pluginManagement>
+      
             <plugins>
                 <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
@@ -171,7 +179,6 @@
                     </configuration>
                 </plugin>
             </plugins>
-        </pluginManagement>
         <finalName>spring-security-mvc-socket</finalName>
     </build>
 
@@ -179,9 +186,7 @@
         <hibernate-core.version>5.2.10.Final</hibernate-core.version>
         <spring-security.version>4.2.3.RELEASE</spring-security.version>
         <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
-        <h2database.version>1.4.196</h2database.version>
         <logback-classic.version>1.2.3</logback-classic.version>
-        <jackson.version>2.8.7</jackson.version>
     </properties>
 
 </project>

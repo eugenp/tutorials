@@ -2,4 +2,4 @@
 
 ### Relevant Articles
 
-- [Spring REST Shell](http://www.baeldung.com/spring-rest-shell)
+- [Introduction to Spring REST Shell](http://www.baeldung.com/spring-rest-shell)

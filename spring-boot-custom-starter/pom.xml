@@ -4,6 +4,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-boot-custom-starter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+	<name>spring-boot-custom-starter</name>
     <packaging>pom</packaging>
 
     <parent>
@@ -18,5 +19,6 @@
         <module>greeter-spring-boot-starter</module>
         <module>greeter-spring-boot-sample-app</module>
     </modules>
+	
 
 </project>

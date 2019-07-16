@@ -4,8 +4,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-batch</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-batch</name>
+    <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 
     <parent>

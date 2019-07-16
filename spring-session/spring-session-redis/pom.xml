@@ -5,6 +5,7 @@
     <artifactId>spring-session-redis</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+	<name>spring-session-redis</name>
 
     <parent>
         <artifactId>parent-boot-1</artifactId>

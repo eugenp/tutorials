@@ -2,18 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>jenkins-hello-world</artifactId>
+    <artifactId>hello-world</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>hello-world</name>
     <packaging>hpi</packaging>
-    <name>Hello World Plugin</name>
     <description>A sample Jenkins Hello World plugin</description>
-    <url>https://wiki.jenkins-ci.org/display/JENKINS/TODO+Plugin</url>
-    <licenses>
-        <license>
-            <name>MIT License</name>
-            <url>http://opensource.org/licenses/MIT</url>
-        </license>
-    </licenses>
 
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
