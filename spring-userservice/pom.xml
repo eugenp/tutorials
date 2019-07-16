@@ -234,11 +234,7 @@
 
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <xml-apis.version>1.4.01</xml-apis.version>
-
-        <!-- maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
     </properties>
 
 </project>

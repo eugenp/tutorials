@@ -26,7 +26,6 @@
     </dependencies>
 
     <properties>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <dozer.version>5.5.1</dozer.version>
     </properties>
 

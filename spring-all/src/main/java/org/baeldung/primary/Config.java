@@ -10,13 +10,13 @@ import org.springframework.context.annotation.Primary;
 public class Config {
 
     @Bean
-    public Employee JohnEmployee(){
+    public Employee johnEmployee(){
         return new Employee("John");
     }
 
     @Bean
     @Primary
-    public Employee TonyEmployee(){
+    public Employee tonyEmployee(){
         return new Employee("Tony");
     }
 }
