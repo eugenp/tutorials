@@ -755,8 +755,6 @@
 
 				<module>spring-thymeleaf</module>
 
-				<module>spring-userservice</module>
-
 				<module>spring-vault</module>
 				<module>spring-vertx</module>
 
@@ -925,7 +923,6 @@
 				<module>spring-state-machine</module>
 				<module>spring-swagger-codegen/spring-swagger-codegen-app</module>
 				<module>spring-thymeleaf</module>
-				<module>spring-userservice</module>
 				<module>spring-vault</module>
 				<module>spring-vertx</module>
 				<module>spring-zuul/spring-zuul-foos-resource</module>
@@ -1420,8 +1417,6 @@
 				<module>spring-swagger-codegen</module>
 
 				<module>spring-thymeleaf</module>
-
-				<module>spring-userservice</module>
 
 				<module>spring-vault</module>
 				<module>spring-vertx</module>
