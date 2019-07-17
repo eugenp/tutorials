@@ -480,7 +480,6 @@
 				<module>jersey</module>
 				<module>JGit</module>
 				<module>jgroups</module>
-				<module>jhipster</module>
 				<module>jhipster-5</module>
 				<module>jib</module>
 				<module>jjwt</module>
@@ -777,7 +776,6 @@
 
 				<module>undertow</module>
 
-				<module>vavr</module>
 				<module>vertx</module>
 				<module>vertx-and-rxjava</module>
 				<module>video-tutorials</module>
@@ -983,6 +981,7 @@
 				<module>core-kotlin-io</module>
 
 				<module>jenkins/hello-world</module>
+				<module>jhipster</module>
 				<module>jws</module>
 
 				<module>libraries</module> <!-- very long running -->
@@ -993,6 +992,7 @@
 				<module>persistence-modules/jnosql</module>
 
 				<module>vaadin</module>
+				<module>vavr</module>
 			</modules>
 		</profile>
 
@@ -1164,7 +1164,6 @@
 				<module>jersey</module>
 				<module>JGit</module>
 				<module>jgroups</module>
-				<module>jhipster</module>
 				<module>jhipster-5</module>
 				<module>jib</module>
 				<module>jjwt</module>
@@ -1443,7 +1442,6 @@
 
 				<module>undertow</module>
 
-				<module>vavr</module>
 				<module>vertx</module>
 				<module>vertx-and-rxjava</module>
 				<module>video-tutorials</module>
@@ -1495,6 +1493,7 @@
 				<module>core-kotlin-2</module>
 
 				<module>jenkins/hello-world</module>
+				<module>jhipster</module>
 				<module>jws</module>
 
 				<module>libraries</module> <!-- very long running -->
@@ -1505,6 +1504,7 @@
 				<module>persistence-modules/jnosql</module>
 
 				<module>vaadin</module>
+				<module>vavr</module>
 			</modules>
 
 		</profile>
