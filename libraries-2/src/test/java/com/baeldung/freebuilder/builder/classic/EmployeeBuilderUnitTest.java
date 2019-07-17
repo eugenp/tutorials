@@ -6,16 +6,16 @@ import org.junit.jupiter.api.Test;
 
 class EmployeeBuilderUnitTest {
 
-    private static final String CITY = "New York";
+    public static final String NAME = "baeldung";
 
     @Test
-    public void whenBuildEmployeeWithAddress_thenReturnEmployeeWithValidAddress() {
+    public void whenBuildEmployee_thenReturnValidEmployee() {
 
         // when
         Employee.Builder emplBuilder = new Employee.Builder();
 
         Employee employee = emplBuilder
-          .setName("baeldung")
+          .setName(NAME)
           .setAge(12)
           .setDepartment("Builder Pattern")
           .setDesignation("Author")
@@ -26,7 +26,7 @@ class EmployeeBuilderUnitTest {
           .build();
 
         //then
-        Assertions.assertTrue(employee.getAddress().getCity().equalsIgnoreCase(CITY));
+        Assertions.assertTrue(employee.getName().equalsIgnoreCase(NAME));
     }
 
 }
