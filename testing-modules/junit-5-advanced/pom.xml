@@ -15,6 +15,11 @@
         <relativePath>../../</relativePath>
     </parent>
 
+    <properties>
+        <junit-jupiter.version>5.4.2</junit-jupiter.version>
+        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -24,9 +29,6 @@
         </dependency>
     </dependencies>
     
-    <properties>
-        <junit-jupiter.version>5.4.2</junit-jupiter.version>
-        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-    </properties>
+
 
 </project>
