@@ -266,8 +266,7 @@
     <properties>
 
         <!-- util -->
-        <commons-lang3.version>3.5</commons-lang3.version>
-        <bouncycastle.version>1.60</bouncycastle.version>
+        <bouncycastle.version>1.55</bouncycastle.version>
         <commons-codec.version>1.10</commons-codec.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <decimal4j.version>1.0.3</decimal4j.version>
@@ -283,7 +282,7 @@
         <!-- sftp -->
         <jsch.version>0.1.55</jsch.version>
         <sshj.version>0.27.0</sshj.version>
-        <vfs.version>2.3</vfs.version>        
+        <vfs.version>2.4</vfs.version>        
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <avaitility.version>1.7.0</avaitility.version>
