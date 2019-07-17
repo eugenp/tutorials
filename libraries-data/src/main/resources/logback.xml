@@ -6,8 +6,10 @@
             </pattern>
         </encoder>
     </appender>
-
-    <root level="INFO">
+    <logger name="io.ebean.DDL" level="TRACE"/>
+    <logger name="io.ebean.SQL" level="TRACE"/>
+    <logger name="io.ebean.TXN" level="TRACE"/>
+    <root level="WARN">
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>

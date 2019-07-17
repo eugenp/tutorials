@@ -1,24 +1,12 @@
 package com.baeldung.jackson.domain;
 
-import java.util.UUID;
-
-/**
- * Source code github.com/readlearncode
- *
- * @author Alex Theedom www.readlearncode.com
- * @version 1.0
- */
 public class Person {
 
-    private UUID id;
     private String firstName;
     private String lastName;
-
-    public Person() {
-    }
-
+    
     public Person(String firstName, String lastName) {
-        this.id = UUID.randomUUID();
+        super();
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -38,8 +26,5 @@ public class Person {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    public UUID getId() {
-        return id;
-    }
 }
+

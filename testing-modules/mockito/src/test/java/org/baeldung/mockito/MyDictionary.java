@@ -11,6 +11,10 @@ class MyDictionary {
         wordMap = new HashMap<>();
     }
 
+    MyDictionary(Map<String, String> wordMap) {
+        this.wordMap = wordMap;
+    }
+
     public void add(final String word, final String meaning) {
         wordMap.put(word, meaning);
     }

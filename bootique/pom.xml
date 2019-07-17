@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.bootique</groupId>
     <artifactId>bootique</artifactId>
-    <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>bootique</name>
+    <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 
     <parent>
@@ -65,7 +65,6 @@
     <properties>
         <main.class>com.baeldung.bootique.App</main.class>
         <bootique-bom.version>0.23</bootique-bom.version>
-
         <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
     </properties>
 

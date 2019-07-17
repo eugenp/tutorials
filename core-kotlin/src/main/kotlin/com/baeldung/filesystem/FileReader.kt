@@ -17,4 +17,8 @@ class FileReader {
       File(fileName).inputStream().readBytes().toString(Charsets.UTF_8)
 
     fun readFileDirectlyAsText(fileName: String): String = File(fileName).readText(Charsets.UTF_8)
+
+    fun readFileUsingGetResource(fileName: String) = this::class.java.getResource(fileName).readText(Charsets.UTF_8)
+
+    fun readFileAsLinesUsingGetResourceAsStream(fileName: String) = this::class.java.getResourceAsStream(fileName).bufferedReader().readLines()
 }

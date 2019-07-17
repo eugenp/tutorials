@@ -3,7 +3,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>drools</artifactId>
-
+    <name>drools</name>
+    
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-spring-4</artifactId>
@@ -48,12 +49,18 @@
             <artifactId>poi-ooxml</artifactId>
             <version>${apache-poi-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.optaplanner</groupId>
+            <artifactId>optaplanner-core</artifactId>
+            <version>${opta-planner-version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <http-component-version>4.4.6</http-component-version>
         <drools-version>7.4.1.Final</drools-version>
         <apache-poi-version>3.13</apache-poi-version>
+        <opta-planner-version>7.10.0.Final</opta-planner-version>
     </properties>
 
 </project>

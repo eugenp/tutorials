@@ -1,6 +1,6 @@
 package org.baeldung.mockito;
 
-public class FinalList extends MyList {
+public final class FinalList extends MyList {
 
   @Override
   public int size() {

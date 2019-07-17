@@ -1,7 +1,7 @@
 package com.baeldung.micronaut.helloworld.client;
 
 import io.micronaut.http.HttpRequest;
-import io.micronaut.http.client.Client;
+import io.micronaut.http.client.annotation.Client;
 import io.micronaut.http.client.RxHttpClient;
 import io.reactivex.Single;
 

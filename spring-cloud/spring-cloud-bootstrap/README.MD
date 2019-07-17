@@ -6,7 +6,7 @@
 - [Spring Cloud – Adding Angular 4](http://www.baeldung.com/spring-cloud-angular)
 
 - To run the project:
-  - copy the appliction-config folder to c:\Users\{username}\ on Windows or /Users/{username}/ on *nix. Then open a git bash terminal in application-config and run:
+  - copy the appliction-config folder to c:\Users\{username}\ on Windows or /home/{username}/ on *nix. Then open a git bash terminal in application-config and run:
     - git init
     - git add .
     - git commit -m "First commit"

@@ -42,7 +42,6 @@ Available commands (assumes httpie - https://github.com/jkbrzt/httpie):
 	Parse passed in JWT enforcing the 'iss' registered claim and the 'hasMotorcycle' custom claim
 ```
 
-The Baeldung post that compliments this repo can be found [here](http://www.baeldung.com/)
 
 ## Relevant articles:
 

@@ -5,6 +5,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>java-cockroachdb</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>java-cockroachdb</name>
 
     <parent>
         <artifactId>parent-modules</artifactId>
@@ -20,15 +21,6 @@
             <version>${postgresql.version}</version>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>Central</id>
-            <name>Central</name>
-            <url>http://repo1.maven.org/maven2/</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
 
     <properties>
         <postgresql.version>42.1.4</postgresql.version>

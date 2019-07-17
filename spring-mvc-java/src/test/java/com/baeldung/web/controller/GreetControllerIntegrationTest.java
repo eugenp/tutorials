@@ -20,12 +20,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.spring.web.config.ApplicationConfig;
 import com.baeldung.spring.web.config.WebConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { ApplicationConfig.class, WebConfig.class })
+@ContextConfiguration(classes = { WebConfig.class, WebConfig.class })
 public class GreetControllerIntegrationTest {
 
     @Autowired

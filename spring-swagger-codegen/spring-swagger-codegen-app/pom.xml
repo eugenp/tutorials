@@ -1,10 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-swagger-codegen-app</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+	<name>spring-swagger-codegen-app</name>
 	
     <parent>
         <groupId>com.baeldung</groupId>
@@ -24,6 +22,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -37,7 +41,6 @@
     </build>
 
     <properties>
-        <java.version>1.8</java.version>
         <spring-swagger-codegen-api-client.version>0.0.1-SNAPSHOT</spring-swagger-codegen-api-client.version>
 		<spring.version>1.5.10.RELEASE</spring.version>
     </properties>

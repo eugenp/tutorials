@@ -1,0 +1,7 @@
+modelVersion: 4.0.0
+groupId: com.baeldung.maven.polyglot
+artifactId: maven-polyglot-yml-app
+version: 1.0-SNAPSHOT
+name: 'YAML Demo'
+
+properties: {maven.compiler.source: 1.8, maven.compiler.target: 1.8}

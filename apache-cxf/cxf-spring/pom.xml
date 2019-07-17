@@ -3,6 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>cxf-spring</artifactId>
     <packaging>war</packaging>
+	<name>cxf-spring</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

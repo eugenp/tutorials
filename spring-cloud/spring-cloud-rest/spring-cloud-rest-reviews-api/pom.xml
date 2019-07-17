@@ -5,9 +5,9 @@
     <groupId>org.baeldung</groupId>
     <artifactId>spring-cloud-rest-reviews-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-cloud-rest-reviews-api</name>
     <description>Simple reviews API</description>
+    <packaging>jar</packaging>
 
     <parent>
         <artifactId>parent-boot-1</artifactId>

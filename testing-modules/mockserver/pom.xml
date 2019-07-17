@@ -5,7 +5,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>mockserver</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-
+	<name>mockserver</name>
+	
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>

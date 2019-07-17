@@ -18,16 +18,19 @@ import java.util.List;
 public class BeanExamples {
 
     public static List<CsvBean> beanBuilderExample(Path path, Class clazz) {
+        ColumnPositionMappingStrategy ms = new ColumnPositionMappingStrategy();
+        return beanBuilderExample(path, clazz, ms);
+    }
+
+    public static List<CsvBean> beanBuilderExample(Path path, Class clazz, MappingStrategy ms) {
         CsvTransfer csvTransfer = new CsvTransfer();
         try {
-            ColumnPositionMappingStrategy ms = new ColumnPositionMappingStrategy();
             ms.setType(clazz);
 
             Reader reader = Files.newBufferedReader(path);
-            CsvToBean cb = new CsvToBeanBuilder(reader)
-                    .withType(clazz)
-                    .withMappingStrategy(ms)
-                    .build();
+            CsvToBean cb = new CsvToBeanBuilder(reader).withType(clazz)
+                .withMappingStrategy(ms)
+                .build();
 
             csvTransfer.setCsvList(cb.parse());
             reader.close();
@@ -40,11 +43,10 @@ public class BeanExamples {
 
     public static String writeCsvFromBean(Path path) {
         try {
-            Writer writer  = new FileWriter(path.toString());
+            Writer writer = new FileWriter(path.toString());
 
-            StatefulBeanToCsv sbc = new StatefulBeanToCsvBuilder(writer)
-                    .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
-                    .build();
+            StatefulBeanToCsv sbc = new StatefulBeanToCsvBuilder(writer).withSeparator(CSVWriter.DEFAULT_SEPARATOR)
+                .build();
 
             List<CsvBean> list = new ArrayList<>();
             list.add(new WriteExampleBean("Test1", "sfdsf", "fdfd"));

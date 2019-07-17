@@ -4,8 +4,7 @@
     <artifactId>spring-mvc-simple</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Spring MVC simple Maven Webapp</name>
-    <url>http://maven.apache.org</url>
+    <name>spring-mvc-simple</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -18,17 +17,13 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
-            <version>${spring-oxm.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-context-support</artifactId>
-</dependency>
-<dependency>
-    <groupId>com.sun.mail</groupId>
-    <artifactId>javax.mail</artifactId>
-    <version>1.6.1</version>
-</dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>${javax.mail.version}</version>
+        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -159,25 +154,6 @@
                         <outputDirectory>${deploy-path}</outputDirectory>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>default-test</id>
-                            <configuration>
-                                <skip>true</skip>
-                            </configuration>
-                        </execution>
-                    </executions>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.junit.platform</groupId>
-                            <artifactId>junit-platform-surefire-provider</artifactId>
-                            <version>${junit.platform.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
             </plugins>
         </pluginManagement>
         <finalName>spring-mvc-simple</finalName>
@@ -187,9 +163,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven-war-plugin.version>3.2.0</maven-war-plugin.version>
-        <maven.compiler.version>3.7.0</maven.compiler.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-        <jstl.version>1.2</jstl.version>
         <javax.servlet.jsp-api.version>2.3.2-b02</javax.servlet.jsp-api.version>
         <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
@@ -201,12 +175,11 @@
         <jade.version>1.2.5</jade.version>
         <junit.platform.version>1.0.2</junit.platform.version>
         <rome.version>1.9.0</rome.version>
-        <jackson.version>2.9.4</jackson.version>
         <xstream.version>1.4.9</xstream.version>
         <scribejava.version>5.1.0</scribejava.version>
         <json.version>20180130</json.version>
-        <spring-oxm.version>5.0.2.RELEASE</spring-oxm.version>
         <apache-tiles.version>3.0.8</apache-tiles.version>
+        <javax.mail.version>1.6.1</javax.mail.version>
     </properties>
 
 </project>

@@ -5,6 +5,7 @@
     <groupId>com.baeldung.samples</groupId>
     <artifactId>java-vavr-stream</artifactId>
     <version>1.0</version>
+    <name>java-vavr-stream</name>
     <packaging>jar</packaging>
 
     <parent>

@@ -24,9 +24,9 @@ public class AsyncController {
     @RequestMapping(method = RequestMethod.GET, value = "/async")
     @ResponseBody
     public Object standardProcessing() throws Exception {
-        log.info("Outside the @Async logic - before the async call: " + SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        log.info("Outside the @Async logic - before the async call: {}", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         asyncService.asyncCall();
-        log.info("Inside the @Async logic - after the async call: " + SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        log.info("Inside the @Async logic - after the async call: {}", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 

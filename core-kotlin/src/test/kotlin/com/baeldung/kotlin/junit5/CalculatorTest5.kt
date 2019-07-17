@@ -7,12 +7,12 @@ class CalculatorTest5 {
     private val calculator = Calculator()
 
     @Test
-    fun whenAdding1and3_thenAnswerIs4() {
+    fun `Adding 1 and 3 should be equal to 4`() {
         Assertions.assertEquals(4, calculator.add(1, 3))
     }
 
     @Test
-    fun whenDividingBy0_thenErrorOccurs() {
+    fun `Dividing by zero should throw the DivideByZeroException`() {
         val exception = Assertions.assertThrows(DivideByZeroException::class.java) {
             calculator.divide(5, 0)
         }
@@ -21,7 +21,7 @@ class CalculatorTest5 {
     }
 
     @Test
-    fun whenSquaringNumbers_thenCorrectAnswerGiven() {
+    fun `The square of a number should be equal to that number multiplied in itself`() {
         Assertions.assertAll(
                 Executable { Assertions.assertEquals(1, calculator.square(1)) },
                 Executable { Assertions.assertEquals(4, calculator.square(2)) },
@@ -76,7 +76,7 @@ class CalculatorTest5 {
             Tag("logarithms")
     )
     @Test
-    fun whenIcalculateLog2Of8_thenIget3() {
+    fun `Log to base 2 of 8 should be equal to 3`() {
         Assertions.assertEquals(3.0, calculator.log(2, 8))
     }
 }

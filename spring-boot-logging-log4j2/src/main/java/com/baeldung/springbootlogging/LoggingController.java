@@ -32,6 +32,6 @@ public class LoggingController {
         loggerNative.warn("This WARN message been printed by Log4j2 without passing through SLF4J");
         loggerNative.error("This ERROR message been printed by Log4j2 without passing through SLF4J");
         loggerNative.fatal("This FATAL message been printed by Log4j2 without passing through SLF4J");
-        return "Howdy! Check out the Logs to see the output printed directly throguh Log4j2...";
+        return "Howdy! Check out the Logs to see the output printed directly through Log4j2...";
     }
 }
