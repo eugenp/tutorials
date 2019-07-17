@@ -27,9 +27,9 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan({ "com.baeldung.web" })
-public class WebConfig implements WebMvcConfigurer {
+public class MvcConfig implements WebMvcConfigurer {
 
-    public WebConfig() {
+    public MvcConfig() {
         super();
     }
 
