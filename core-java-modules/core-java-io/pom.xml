@@ -171,6 +171,24 @@
             <artifactId>jmimemagic</artifactId>
             <version>${jmime-magic.version}</version>
         </dependency>
+        <!-- sftp file transfer -->
+        <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>${jsch.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hierynomus</groupId>
+            <artifactId>sshj</artifactId>
+            <version>${sshj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-vfs2</artifactId>
+            <version>${vfs.version}</version>
+        </dependency>
+        
+        
     </dependencies>
 
     <build>
@@ -249,7 +267,7 @@
 
         <!-- util -->
         <commons-lang3.version>3.5</commons-lang3.version>
-        <bouncycastle.version>1.55</bouncycastle.version>
+        <bouncycastle.version>1.60</bouncycastle.version>
         <commons-codec.version>1.10</commons-codec.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <decimal4j.version>1.0.3</decimal4j.version>
@@ -262,6 +280,10 @@
         <streamex.version>0.6.5</streamex.version>
         <vavr.version>0.9.0</vavr.version>
         <opencsv.version>4.1</opencsv.version>
+        <!-- sftp -->
+        <jsch.version>0.1.55</jsch.version>
+        <sshj.version>0.27.0</sshj.version>
+        <vfs.version>2.3</vfs.version>        
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <avaitility.version>1.7.0</avaitility.version>
