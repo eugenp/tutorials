@@ -32,3 +32,5 @@
 - [Common Hibernate Exceptions](https://www.baeldung.com/hibernate-exceptions)
 - [Hibernate Aggregate Functions](https://www.baeldung.com/hibernate-aggregate-functions)
 - [Hibernate Query Plan Cache](https://www.baeldung.com/hibernate-query-plan-cache)
+- [TransactionRequiredException Error](https://www.baeldung.com/jpa-transaction-required-exception)
+- [Enabling Transaction Locks in Spring Data JPA](https://www.baeldung.com/java-jpa-transaction-locks)

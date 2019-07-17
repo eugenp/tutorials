@@ -19,7 +19,7 @@ public class EmployeeJdbcDao {
     }
 
     public void createTable() throws SQLException {
-        String createQuery = "CREATE TABLE employees(id long primary key, firstName varchar(50))";
+        String createQuery = "CREATE TABLE IF NOT EXISTS employees(id long primary key, firstName varchar(50))";
         PreparedStatement pstmt = con.prepareStatement(createQuery);
 
         pstmt.execute();

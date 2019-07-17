@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.validation.annotation.Validated;
@@ -79,5 +80,11 @@ public class ConfigProperties {
 
     public void setCredentials(Credentials credentials) {
         this.credentials = credentials;
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix = "item")
+    public Item item(){
+        return new Item();
     }
 }

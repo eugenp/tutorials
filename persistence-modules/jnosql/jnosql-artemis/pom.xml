@@ -17,7 +17,7 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
-            <version>8.0</version>
+            <version>${javaee-web-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -80,6 +80,7 @@
     <properties>
         <liberty-maven-plugin.version>2.4.2</liberty-maven-plugin.version>
         <failOnMissingWebXml>false</failOnMissingWebXml>
+        <javaee-web-api.version>8.0</javaee-web-api.version>
     </properties>
 
 </project>

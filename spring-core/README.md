@@ -8,7 +8,6 @@
 - [Spring YAML Configuration](http://www.baeldung.com/spring-yaml)
 - [Introduction to Spring’s StreamUtils](http://www.baeldung.com/spring-stream-utils)
 - [Using Spring @Value with Defaults](http://www.baeldung.com/spring-value-defaults)
-- [Groovy Bean Definitions](http://www.baeldung.com/spring-groovy-beans)
 - [XML-Based Injection in Spring](http://www.baeldung.com/spring-xml-injection)
 - [A Quick Guide to the Spring @Lazy Annotation](http://www.baeldung.com/spring-lazy-annotation)
 - [Injecting Prototype Beans into a Singleton Instance in Spring](http://www.baeldung.com/spring-inject-prototype-bean-into-singleton)
@@ -24,3 +23,4 @@
 - [What is a Spring Bean?](https://www.baeldung.com/spring-bean)
 - [Spring PostConstruct and PreDestroy Annotations](https://www.baeldung.com/spring-postconstruct-predestroy)
 - [Guice vs Spring – Dependency Injection](https://www.baeldung.com/guice-spring-dependency-injection)
+- [Circular Dependencies in Spring](http://www.baeldung.com/circular-dependencies-in-spring)

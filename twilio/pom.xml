@@ -16,8 +16,12 @@
         <dependency>
             <groupId>com.twilio.sdk</groupId>
             <artifactId>twilio</artifactId>
-            <version>7.20.0</version>
+            <version>${twilio.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <twilio.version>7.20.0</twilio.version>
+    </properties>
 
 </project>

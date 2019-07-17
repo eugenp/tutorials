@@ -15,12 +15,6 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<properties>
-		<java.version>1.8</java.version>
-		<tensorflow.version>1.12.0</tensorflow.version>
-		<junit.jupiter.version>5.4.0</junit.jupiter.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.tensorflow</groupId>
@@ -30,13 +24,13 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit.jupiter.version}</version>
+			<version>${junit-jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit.jupiter.version}</version>
+			<version>${junit-jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -49,4 +43,8 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<properties>
+		<tensorflow.version>1.12.0</tensorflow.version>
+	</properties>
 </project>

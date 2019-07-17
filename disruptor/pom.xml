@@ -115,7 +115,6 @@
 
     <properties>
         <!-- util -->
-        <commons-lang3.version>3.5</commons-lang3.version>
         <disruptor.version>3.3.6</disruptor.version>
         <!-- testing -->
         <testng.version>6.10</testng.version>

@@ -23,15 +23,13 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <properties>
         <spring.version>5.1.4.RELEASE</spring.version>
-        <junit.jupiter.version>5.0.2</junit.jupiter.version>
-		<jackson.version>2.9.6</jackson.version>
 		<spring-security.version>5.1.4.RELEASE</spring-security.version>
     </properties>
 

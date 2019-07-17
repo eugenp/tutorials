@@ -44,6 +44,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+        
+        <!-- Spring HATEOAS -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
+        </dependency>
 
         <!-- util -->
 
@@ -63,6 +69,11 @@
             <artifactId>htmlunit</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${modelmapper.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -78,5 +89,6 @@
         <start-class>com.baeldung.SpringBootRestApplication</start-class>
         <guava.version>27.0.1-jre</guava.version>
         <xstream.version>1.4.11.1</xstream.version>
+        <modelmapper.version>2.3.3</modelmapper.version>
     </properties>
 </project>

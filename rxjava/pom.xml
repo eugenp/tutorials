@@ -62,7 +62,6 @@
         <rx.java.math.version>1.0.0</rx.java.math.version>
         <rx.java.string.version>1.1.1</rx.java.string.version>
         <awaitility.version>1.7.0</awaitility.version>
-        <h2.version>1.4.196</h2.version>
     </properties>
 
 </project>

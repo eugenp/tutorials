@@ -46,12 +46,12 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-generator.version}</version>
         </dependency>
     </dependencies>
     
@@ -85,7 +85,6 @@
         <mapstruct-jdk8.version>1.2.0.Final</mapstruct-jdk8.version>
         <modelmapper.version>1.1.0</modelmapper.version>
         <jmapper.version>1.6.0.1</jmapper.version>
-        <jmh.version>1.20</jmh.version>
         <mapstruct-processor.version>1.2.0.Final</mapstruct-processor.version>
     </properties>
 

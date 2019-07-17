@@ -42,7 +42,7 @@
         <dependency>
             <groupId>com.github.dpaukov</groupId>
             <artifactId>combinatoricslib3</artifactId>
-            <version>3.3.0</version>
+            <version>${combinatoricslib3.version}</version>
          </dependency>
     </dependencies>
 
@@ -83,6 +83,7 @@
         <org.assertj.core.version>3.9.0</org.assertj.core.version>
         <commons-codec.version>1.11</commons-codec.version>
         <guava.version>27.0.1-jre</guava.version>
+        <combinatoricslib3.version>3.3.0</combinatoricslib3.version>
     </properties>
 
 </project>

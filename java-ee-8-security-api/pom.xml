@@ -72,9 +72,6 @@
         <javaee-version>8.0</javaee-version>
         <liberty-maven-plugin.version>2.3</liberty-maven-plugin.version>
         <openliberty-runtime.version>18.0.0.1</openliberty-runtime.version>
-        <h2-version>1.4.197</h2-version>
-        
-        <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
     </properties>
 
 </project>

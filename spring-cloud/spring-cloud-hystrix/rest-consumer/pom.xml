@@ -40,6 +40,13 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
             <version>${spring-boot-starter-web.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <version>${spring-boot-starter-web.version}</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -53,5 +60,10 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    
+    <properties>
+        <!-- we need the Mockito version provided by Spring Boot -->
+        <mockito.version>1.10.19</mockito.version>
+    </properties>
 
 </project>

@@ -8,11 +8,7 @@ public class UsingOptional {
 
         String response = doSomething(processed);
 
-        if (response == null) {
-            return Optional.empty();
-        }
-
-        return Optional.of(response);
+        return Optional.ofNullable(response);
     }
 
     private String doSomething(boolean processed) {

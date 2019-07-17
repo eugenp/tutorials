@@ -16,6 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 @RunWith(SpringRunner.class)
@@ -49,6 +50,6 @@ public class BasicAuthConfigurationIntegrationTest {
         ResponseEntity<String> response = restTemplate.getForEntity(base.toString(), String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
-        Assert.assertNull(response.getBody());
+        assertNull(response.getBody());
     }
 }

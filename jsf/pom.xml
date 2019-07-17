@@ -67,7 +67,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <scope>provided</scope>
-            <version>${javax.servlet.version}</version>
+            <version>${javax.servlet-api.version}</version>
         </dependency>
 
         <!-- Primefaces -->
@@ -98,14 +98,6 @@
         <!-- JSF -->
         <com.sun.faces.version>2.2.14</com.sun.faces.version>
         <javax.el.version>3.0.0</javax.el.version>
-
-        <!--Tomcat -->
-        <javax.servlet.version>3.1.0</javax.servlet.version>
-
-        <jstl.version>1.2</jstl.version>
-
-        <!-- maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
 
         <primefaces.version>6.2</primefaces.version>
     </properties>
