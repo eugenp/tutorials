@@ -51,7 +51,7 @@
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
-            <version>2.1.1</version>
+            <version>${javax.persistence.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -73,7 +73,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.api.version}</version>
+            <version>${javax.servlet-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -94,7 +94,8 @@
         <awaitility.version>3.1.6</awaitility.version>
         <junit.jupiter.version>5.4.0</junit.jupiter.version>
         <spring.version>5.1.4.RELEASE</spring.version>
-        <servlet.api.version>4.0.1</servlet.api.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <javax.persistence.version>2.1.1</javax.persistence.version>
     </properties>
 
 </project>

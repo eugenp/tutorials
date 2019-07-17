@@ -17,7 +17,7 @@ public class ReadResourceDirectoryUnitTest {
         String absolutePath = file.getAbsolutePath();
 
         System.out.println(absolutePath);
-        Assert.assertTrue(absolutePath.endsWith("src/test/resources"));
+        Assert.assertTrue(absolutePath.endsWith("src" + File.separator + "test" + File.separator + "resources"));
     }
 
     @Test
@@ -27,7 +27,7 @@ public class ReadResourceDirectoryUnitTest {
         String absolutePath = resourceDirectory.toFile().getAbsolutePath();
 
         System.out.println(absolutePath);
-        Assert.assertTrue(absolutePath.endsWith("src/test/resources"));
+        Assert.assertTrue(absolutePath.endsWith("src" + File.separator + "test" + File.separator + "resources"));
     }
 
     @Test
@@ -39,7 +39,7 @@ public class ReadResourceDirectoryUnitTest {
         String absolutePath = file.getAbsolutePath();
 
         System.out.println(absolutePath);
-        Assert.assertTrue(absolutePath.endsWith("/example_resource.txt"));
+        Assert.assertTrue(absolutePath.endsWith(File.separator + "example_resource.txt"));
     }
 
 }
