@@ -58,7 +58,7 @@
         <finalName>hibernate-mapping</finalName>
         <resources>
             <resource>
-                <directory>src/test/resources</directory>
+                <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>

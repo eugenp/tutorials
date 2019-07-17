@@ -33,7 +33,7 @@
     </dependencies>
 
     <properties>
-        <spring-kafka.version>2.2.2.RELEASE</spring-kafka.version>
+        <spring-kafka.version>2.2.7.RELEASE</spring-kafka.version>
     </properties>
 
 </project>

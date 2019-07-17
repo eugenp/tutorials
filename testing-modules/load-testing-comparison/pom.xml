@@ -145,7 +145,6 @@
         <jmeter.version>5.0</jmeter.version>
         <grinder.version>3.11</grinder.version>
         <spring.boot.version>2.0.5.RELEASE</spring.boot.version>
-        <h2.version>1.4.197</h2.version>
     </properties>
     
 </project>

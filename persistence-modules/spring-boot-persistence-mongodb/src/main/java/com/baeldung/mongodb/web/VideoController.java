@@ -24,29 +24,17 @@ public class VideoController {
     private VideoService videoService;
 
     @GetMapping("/videos/{id}")
-    public String getVideo(@PathVariable String id, Model model) {
+    public String getVideo(@PathVariable String id, Model model) throws IllegalStateException, IOException {
         Video video = videoService.getVideo(id);
-        if (video != null) {
-            model.addAttribute("title", video.getTitle());
-            model.addAttribute("url", "/videos/stream/" + id);
-            return "videos";
-        }
-        model.addAttribute("message", "Video not found");
-        return "index";
+        model.addAttribute("title", video.getTitle());
+        model.addAttribute("url", "/videos/stream/" + id);
+        return "videos";
     }
 
     @GetMapping("/videos/stream/{id}")
-    public void streamVideo(@PathVariable String id, HttpServletResponse response) {
+    public void streamVideo(@PathVariable String id, HttpServletResponse response) throws IllegalStateException, IOException {
         Video video = videoService.getVideo(id);
-        if (video != null) {
-            try {
-                FileCopyUtils.copy(video.getStream(), response.getOutputStream());
-            } catch (IOException e) {
-                response.setStatus(500);
-            }
-        } else {
-            response.setStatus(404);
-        }
+        FileCopyUtils.copy(video.getStream(), response.getOutputStream());
     }
 
     @GetMapping("/videos/upload")
@@ -56,12 +44,8 @@ public class VideoController {
     }
 
     @PostMapping("/videos/add")
-    public String addVideo(@RequestParam("title") String title, @RequestParam("file") MultipartFile file, Model model) {
+    public String addVideo(@RequestParam("title") String title, @RequestParam("file") MultipartFile file, Model model) throws IOException {
         String id = videoService.addVideo(title, file);
-        if (id == null) {
-            model.addAttribute("message", "Error Occurred");
-            return "index";
-        }
         return "redirect:/videos/" + id;
     }
 }
