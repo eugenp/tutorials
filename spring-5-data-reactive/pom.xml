@@ -77,28 +77,33 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>5.2.0.M2</version>
+            <version>${spring-tx.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-r2dbc</artifactId>
-            <version>1.0.0.M2</version>
+            <version>${spring-data-r2dbc.version}</version>
         </dependency>
         <dependency>
             <groupId>io.r2dbc</groupId>
             <artifactId>r2dbc-h2</artifactId>
-            <version>0.8.0.M8</version>
+            <version>${r2dbc-h2.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.199</version>
+            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
         </dependency>
 
     </dependencies>
@@ -195,11 +200,6 @@
         </plugins>
     </build>
 
-    <properties>
-        <kotlin.version>1.2.40</kotlin.version>
-        <kotlin-maven-plugin.version>1.2.40</kotlin-maven-plugin.version>
-    </properties>
-
     <repositories>
         <repository>
             <id>spring-snapshots</id>
@@ -215,6 +215,16 @@
             <url>https://repo.spring.io/milestone</url>
         </repository>
     </repositories>
+
+    <properties>
+        <kotlin.version>1.2.40</kotlin.version>
+        <kotlin-maven-plugin.version>1.2.40</kotlin-maven-plugin.version>
+        <spring-tx.version>5.2.0.M2</spring-tx.version>
+        <spring-data-r2dbc.version>1.0.0.M2</spring-data-r2dbc.version>
+        <r2dbc-h2.version>0.8.0.M8</r2dbc-h2.version>
+        <httpclient.version>4.5.2</httpclient.version>
+        <h2.version>1.4.199</h2.version>
+    </properties>
 
 </project>
 

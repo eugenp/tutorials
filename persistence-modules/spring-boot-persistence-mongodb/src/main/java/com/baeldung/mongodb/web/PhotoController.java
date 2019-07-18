@@ -1,5 +1,6 @@
 package com.baeldung.mongodb.web;
 
+import java.io.IOException;
 import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +24,9 @@ public class PhotoController {
     @GetMapping("/photos/{id}")
     public String getPhoto(@PathVariable String id, Model model) {
         Photo photo = photoService.getPhoto(id);
-        if (photo != null) {
-            model.addAttribute("title", photo.getTitle());
-            model.addAttribute("image", Base64.getEncoder().encodeToString(photo.getImage().getData()));
-            return "photos";
-        }
-        model.addAttribute("message", "Photo not found");
-        return "index";
+        model.addAttribute("title", photo.getTitle());
+        model.addAttribute("image", Base64.getEncoder().encodeToString(photo.getImage().getData()));
+        return "photos";
     }
 
     @GetMapping("/photos/upload")
@@ -39,12 +36,8 @@ public class PhotoController {
     }
 
     @PostMapping("/photos/add")
-    public String addPhoto(@RequestParam("title") String title, @RequestParam("image") MultipartFile image, Model model) {
+    public String addPhoto(@RequestParam("title") String title, @RequestParam("image") MultipartFile image, Model model) throws IOException {
         String id = photoService.addPhoto(title, image);
-        if (id == null) {
-            model.addAttribute("message", "Error Occurred");
-            return "index";
-        }
         return "redirect:/photos/" + id;
     }
 }

@@ -38,7 +38,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet-api-version}</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -223,11 +223,10 @@
 
     <properties>
         <jersey.version>2.27</jersey.version>
-        <maven-war-plugin.version>3.2.0</maven-war-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <httpcore.version>4.4.9</httpcore.version>
         <httpclient.version>4.5.5</httpclient.version>
-        <servlet-api-version>4.0.0</servlet-api-version>
+        <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
         <wiremock.version>1.58</wiremock.version>
         <assertj-core.version>3.10.0</assertj-core.version>
         <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
