@@ -42,7 +42,7 @@ public class CoreJavaCollectionsUnitTest {
     @Test(expected = UnsupportedOperationException.class)
     public final void givenUsingGuavaBuilder_whenUnmodifiableListIsCreatedFromOriginal_thenNoLongerModifiable() {
         final List<String> list = new ArrayList<String>(Arrays.asList("one", "two", "three"));
-        final ImmutableList<Object> unmodifiableList = ImmutableList.builder().addAll(list).build();
+        final ImmutableList<String> unmodifiableList = ImmutableList.<String>builder().addAll(list).build();
         unmodifiableList.add("four");
     }
 
