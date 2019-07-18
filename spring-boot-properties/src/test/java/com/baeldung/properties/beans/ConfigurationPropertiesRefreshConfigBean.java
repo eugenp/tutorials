@@ -5,16 +5,16 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties("application.dynamic")
+@ConfigurationProperties(prefix = "application.theme")
 @RefreshScope
 public class ConfigurationPropertiesRefreshConfigBean {
-    private String prop1;
+    private String color;
 
-    public void setProp1(String prop1) {
-        this.prop1 = prop1;
+    public String getColor() {
+        return color;
     }
 
-    public String getProp1() {
-        return prop1;
+    public void setColor(String color) {
+        this.color = color;
     }
 }

@@ -28,112 +28,117 @@ public class PropertiesReloadIntegrationTest {
 
     protected MockMvc mvc;
 
-    @Autowired WebApplicationContext webApplicationContext;
+    protected long refreshDelay = 3000;
 
-    @Autowired ValueRefreshConfigBean valueRefreshConfigBean;
+    @Autowired
+    WebApplicationContext webApplicationContext;
 
-    @Autowired ConfigurationPropertiesRefreshConfigBean configurationPropertiesRefreshConfigBean;
+    @Autowired
+    ValueRefreshConfigBean valueRefreshConfigBean;
 
-    @Autowired EnvironmentConfigBean environmentConfigBean;
+    @Autowired
+    ConfigurationPropertiesRefreshConfigBean configurationPropertiesRefreshConfigBean;
 
-    @Autowired PropertiesConfigBean propertiesConfigBean;
+    @Autowired
+    EnvironmentConfigBean environmentConfigBean;
+
+    @Autowired
+    PropertiesConfigBean propertiesConfigBean;
 
     @Autowired
     @Qualifier("singletonValueRefreshConfigBean")
     ValueRefreshConfigBean singletonValueRefreshConfigBean;
 
-    long refreshDelay = 3000;
 
     @Before
     public void setUp() throws Exception {
         mvc = MockMvcBuilders
           .webAppContextSetup(webApplicationContext)
           .build();
-        createConfig("extra.properties", "application.dynamic.prop1", "baeldung");
-        createConfig("extra2.properties", "application.dynamic.prop2", "baeldung");
+        createConfig("extra.properties", "application.theme.color", "blue");
+        createConfig("extra2.properties", "application.theme.background", "red");
         Thread.sleep(refreshDelay);
         callRefresh();
     }
 
     @After
     public void tearDown() throws Exception {
-        createConfig("extra.properties", "application.dynamic.prop1", "baeldung");
-        createConfig("extra2.properties", "application.dynamic.prop2", "baeldung");
+        createConfig("extra.properties", "application.theme.color", "blue");
+        createConfig("extra2.properties", "application.theme.background", "red");
     }
 
     @Test
-    public void givenEnvironmentComponent_whenConfigChanged_thenExpectChangeValue() throws Exception {
-        Assert.assertEquals("baeldung", environmentConfigBean.getProperty1());
+    public void givenEnvironmentReader_whenColorChanged_thenExpectChangeValue() throws Exception {
+        Assert.assertEquals("blue", environmentConfigBean.getColor());
 
-        createConfig("extra.properties", "application.dynamic.prop1", "baeldung1");
+        createConfig("extra.properties", "application.theme.color", "red");
         Thread.sleep(refreshDelay);
 
-        Assert.assertEquals("baeldung1", environmentConfigBean.getProperty1());
+        Assert.assertEquals("red", environmentConfigBean.getColor());
     }
 
     @Test
-    public void givenEnvironmentComponent_whenConfig2Changed_thenExpectChangeValue() throws Exception {
-        Assert.assertEquals("baeldung", environmentConfigBean.getProperty2());
+    public void givenEnvironmentReader_whenBackgroundChanged_thenExpectChangeValue() throws Exception {
+        Assert.assertEquals("red", environmentConfigBean.getBackgroundColor());
 
-        createConfig("extra2.properties", "application.dynamic.prop2", "baeldung1");
+        createConfig("extra2.properties", "application.theme.background", "blue");
         Thread.sleep(refreshDelay);
 
-        Assert.assertEquals("baeldung1", environmentConfigBean.getProperty2());
+        Assert.assertEquals("blue", environmentConfigBean.getBackgroundColor());
     }
 
     @Test
-    public void givenPropertiesComponent_whenConfigChanged_thenExpectChangeValue() throws Exception {
-        Assert.assertEquals("baeldung", propertiesConfigBean.getProperty1());
+    public void givenPropertiesReader_whenColorChanged_thenExpectChangeValue() throws Exception {
+        Assert.assertEquals("blue", propertiesConfigBean.getColor());
 
-        createConfig("extra.properties", "application.dynamic.prop1", "baeldung1");
+        createConfig("extra.properties", "application.theme.color", "red");
         Thread.sleep(refreshDelay);
 
-        Assert.assertEquals("baeldung1", propertiesConfigBean.getProperty1());
+        Assert.assertEquals("red", propertiesConfigBean.getColor());
     }
 
     @Test
-    public void givenValueRefreshScopedBean_whenConfigChangedAndRefreshCalled_thenExpectChangeValue() throws Exception {
-        Assert.assertEquals("baeldung", valueRefreshConfigBean.getProp1());
+    public void givenRefreshScopedValueReader_whenColorChangedAndRefreshCalled_thenExpectChangeValue() throws Exception {
+        Assert.assertEquals("blue", valueRefreshConfigBean.getColor());
 
-        createConfig("extra.properties", "application.dynamic.prop1", "baeldung1");
+        createConfig("extra.properties", "application.theme.color", "red");
         Thread.sleep(refreshDelay);
 
-        Assert.assertEquals("baeldung", valueRefreshConfigBean.getProp1());
+        Assert.assertEquals("blue", valueRefreshConfigBean.getColor());
 
         callRefresh();
 
-        Assert.assertEquals("baeldung1", valueRefreshConfigBean.getProp1());
+        Assert.assertEquals("red", valueRefreshConfigBean.getColor());
     }
 
     @Test
-    public void givenSingletonValueRefreshScopedBean_whenConfigChangedAndRefreshCalled_thenExpectOldValue() throws Exception {
+    public void givenSingletonRefreshScopedValueReader_whenColorChangedAndRefreshCalled_thenExpectOldValue() throws Exception {
 
-        Assert.assertEquals("baeldung", singletonValueRefreshConfigBean.getProp1());
+        Assert.assertEquals("blue", singletonValueRefreshConfigBean.getColor());
 
-        createConfig("extra.properties", "application.dynamic.prop1", "baeldung1");
-
+        createConfig("extra.properties", "application.theme.color", "red");
         Thread.sleep(refreshDelay);
 
-        Assert.assertEquals("baeldung", singletonValueRefreshConfigBean.getProp1());
+        Assert.assertEquals("blue", singletonValueRefreshConfigBean.getColor());
 
         callRefresh();
 
-        Assert.assertEquals("baeldung", singletonValueRefreshConfigBean.getProp1());
+        Assert.assertEquals("blue", singletonValueRefreshConfigBean.getColor());
     }
 
     @Test
-    public void givenConfigurationPropertiesRefreshScopedValueComponent_whenConfigChangedAndRefreshCalled_thenExpectChangeValue() throws Exception {
+    public void givenRefreshScopedConfigurationPropertiesReader_whenColorChangedAndRefreshCalled_thenExpectChangeValue() throws Exception {
 
-        Assert.assertEquals("baeldung", configurationPropertiesRefreshConfigBean.getProp1());
+        Assert.assertEquals("blue", configurationPropertiesRefreshConfigBean.getColor());
 
-        createConfig("extra.properties", "application.dynamic.prop1", "baeldung1");
+        createConfig("extra.properties", "application.theme.color", "red");
         Thread.sleep(refreshDelay);
 
-        Assert.assertEquals("baeldung", configurationPropertiesRefreshConfigBean.getProp1());
+        Assert.assertEquals("blue", configurationPropertiesRefreshConfigBean.getColor());
 
         callRefresh();
 
-        Assert.assertEquals("baeldung1", configurationPropertiesRefreshConfigBean.getProp1());
+        Assert.assertEquals("red", configurationPropertiesRefreshConfigBean.getColor());
     }
 
     public void callRefresh() throws Exception {

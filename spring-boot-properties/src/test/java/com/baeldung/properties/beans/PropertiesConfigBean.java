@@ -13,7 +13,7 @@ public class PropertiesConfigBean {
         this.properties = properties;
     }
 
-    public String getProperty1() {
-        return properties.getProperty("application.dynamic.prop1");
+    public String getColor() {
+        return properties.getProperty("application.theme.color");
     }
 }

@@ -16,11 +16,11 @@ public class EnvironmentConfigBean {
         this.environment = environment;
     }
 
-    public String getProperty1() {
-        return environment.getProperty("application.dynamic.prop1");
+    public String getColor() {
+        return environment.getProperty("application.theme.color");
     }
 
-    public String getProperty2() {
-        return environment.getProperty("application.dynamic.prop2");
+    public String getBackgroundColor() {
+        return environment.getProperty("application.theme.background");
     }
 }

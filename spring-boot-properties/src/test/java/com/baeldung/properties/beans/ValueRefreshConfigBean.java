@@ -1,13 +1,13 @@
 package com.baeldung.properties.beans;
 
 public class ValueRefreshConfigBean {
-    private String prop1;
+    private String color;
 
-    public ValueRefreshConfigBean(String prop1) {
-        this.prop1 = prop1;
+    public ValueRefreshConfigBean(String color) {
+        this.color = color;
     }
 
-    public String getProp1() {
-        return prop1;
+    public String getColor() {
+        return color;
     }
 }

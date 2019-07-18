@@ -15,13 +15,13 @@ public class SpringBootPropertiesTestApplication {
     @Bean("singletonValueRefreshConfigBean")
     @RefreshScope
     @Scope("singleton")
-    public ValueRefreshConfigBean singletonValueRefreshConfigBean(@Value("${application.dynamic.prop1:null}") String val) {
+    public ValueRefreshConfigBean singletonValueRefreshConfigBean(@Value("${application.theme.color:null}") String val) {
         return new ValueRefreshConfigBean(val);
     }
 
     @Bean
     @RefreshScope
-    public ValueRefreshConfigBean valueRefreshConfigBean(@Value("${application.dynamic.prop1:null}") String val) {
+    public ValueRefreshConfigBean valueRefreshConfigBean(@Value("${application.theme.color:null}") String val) {
         return new ValueRefreshConfigBean(val);
     }
 
