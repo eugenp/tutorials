@@ -2,6 +2,8 @@ package com.baeldung.array;
 
 import com.baeldung.arraycopy.model.Employee;
 
+import java.util.Comparator;
+
 public class SortedArrayChecker {
     boolean isSorted(int[] array, int length) {
         if (array == null || length < 2)
@@ -32,14 +34,14 @@ public class SortedArrayChecker {
         return isSorted(array, length - 1);
     }
 
-boolean isSorted(String[] array) {
-    for (int i = 0; i < array.length - 1; ++i) {
-        if (array[i].compareTo(array[i + 1]) > 0)
-            return false;
-    }
+    boolean isSorted(String[] array) {
+        for (int i = 0; i < array.length - 1; ++i) {
+            if (array[i].compareTo(array[i + 1]) > 0)
+                return false;
+        }
 
-    return true;
-}
+        return true;
+    }
 
     boolean isSortedByName(Employee[] array) {
         for (int i = 0; i < array.length - 1; ++i) {
@@ -50,14 +52,14 @@ boolean isSorted(String[] array) {
         return true;
     }
 
-boolean isSortedByAge(Employee[] array) {
-    for (int i = 0; i < array.length - 1; ++i) {
-        if (array[i].getAge() > (array[i + 1].getAge()))
-            return false;
-    }
+    boolean isSortedByAge(Employee[] array) {
+        for (int i = 0; i < array.length - 1; ++i) {
+            if (array[i].getAge() > (array[i + 1].getAge()))
+                return false;
+        }
 
-    return true;
-}
+        return true;
+    }
 
     boolean isSortedByAge(Employee[] array, int length) {
         if (array == null || length < 2)
@@ -67,5 +69,15 @@ boolean isSortedByAge(Employee[] array) {
             return false;
 
         return isSortedByAge(array, length - 1);
+    }
+
+    boolean isSortedByAge(Employee[] array, Comparator comparator, int length) {
+        if (array == null || length < 2)
+            return true;
+
+        if (comparator.compare(array[length - 2], array[length - 1]) > 0)
+            return false;
+
+        return isSortedByAge(array, Comparator.comparingInt(Employee::getAge),length - 1);
     }
 }
