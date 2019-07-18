@@ -99,9 +99,6 @@
         <com.sun.faces.version>2.2.14</com.sun.faces.version>
         <javax.el.version>3.0.0</javax.el.version>
 
-        <!-- maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
-
         <primefaces.version>6.2</primefaces.version>
     </properties>
 

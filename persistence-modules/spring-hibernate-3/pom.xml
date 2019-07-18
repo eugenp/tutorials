@@ -93,7 +93,6 @@
         <tomcat-dbcp.version>8.5.8</tomcat-dbcp.version>
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
     </properties>
 
 </project>
