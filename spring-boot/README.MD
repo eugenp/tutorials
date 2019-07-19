@@ -5,7 +5,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 - [A Guide to Spring in Eclipse STS](http://www.baeldung.com/eclipse-sts-spring)
 - [The @ServletComponentScan Annotation in Spring Boot](http://www.baeldung.com/spring-servletcomponentscan)
-- [Intro to Building an Application with Spring Boot](http://www.baeldung.com/intro-to-spring-boot)
 - [How to Register a Servlet in Java](http://www.baeldung.com/register-servlet)
 - [Guide to Spring WebUtils and ServletRequestUtils](http://www.baeldung.com/spring-webutils-servletrequestutils)
 - [Using Custom Banners in Spring Boot](http://www.baeldung.com/spring-boot-custom-banners)
