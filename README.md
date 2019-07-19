@@ -32,7 +32,7 @@ Running a Spring Boot module
 ====================
 To run a Spring Boot module run the command: `mvn spring-boot:run` in the module directory
 
-#Running Tests
+###Running Tests
 
 The command `mvn clean install` will run the unit tests in a module.
 To run the integration tests, use the command `mvn clean install -Pintegration-lite-first`

@@ -782,7 +782,6 @@
 				<module>wicket</module>
 
 				<module>xml</module>
-				<module>xmlunit-2</module>
 				<module>xstream</module>
 
 				<module>tensorflow-java</module>
@@ -836,7 +835,8 @@
 				<module>spring-boot-camel</module>
 				<module>spring-boot-client</module>
 				<module>spring-boot-custom-starter</module>
-				<module>greeter-spring-boot-autoconfigure</module>
+				<module>spring-boot-di</module>
+		 		<module>greeter-spring-boot-autoconfigure</module>
 				<module>greeter-spring-boot-sample-app</module>
 				<module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
 				<module>spring-boot-jasypt</module>
