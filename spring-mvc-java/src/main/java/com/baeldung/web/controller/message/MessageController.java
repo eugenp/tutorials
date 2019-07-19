@@ -1,4 +1,4 @@
-package com.baeldung.web.controller;
+package com.baeldung.web.controller.message;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
