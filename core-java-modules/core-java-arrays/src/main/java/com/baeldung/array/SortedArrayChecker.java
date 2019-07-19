@@ -43,32 +43,22 @@ public class SortedArrayChecker {
         return true;
     }
 
-    boolean isSortedByName(Employee[] array) {
+    boolean isSortedByName(Employee[] array, Comparator comparator) {
         for (int i = 0; i < array.length - 1; ++i) {
-            if (array[i].getName().compareTo(array[i + 1].getName()) > 0)
+            if (comparator.compare(array[i], array[i + 1]) > 0)
                 return false;
         }
 
         return true;
     }
 
-    boolean isSortedByAge(Employee[] array) {
+    boolean isSortedByAge(Employee[] array, Comparator comparator) {
         for (int i = 0; i < array.length - 1; ++i) {
-            if (array[i].getAge() > (array[i + 1].getAge()))
+            if (comparator.compare(array[i], (array[i + 1])) > 0)
                 return false;
         }
 
         return true;
-    }
-
-    boolean isSortedByAge(Employee[] array, int length) {
-        if (array == null || length < 2)
-            return true;
-
-        if (array[length - 2].getAge() > array[length - 1].getAge())
-            return false;
-
-        return isSortedByAge(array, length - 1);
     }
 
     boolean isSortedByAge(Employee[] array, Comparator comparator, int length) {
