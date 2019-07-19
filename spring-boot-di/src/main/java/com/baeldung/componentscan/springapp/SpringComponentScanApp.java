@@ -1,10 +1,6 @@
 package com.baeldung.componentscan.springapp;
 
-import org.springframework.context.annotation.FilterType;
-import org.springframework.stereotype.Component;
-
 import com.baeldung.componentscan.ExampleBean;
-import com.baeldung.componentscan.springapp.flowers.Rose;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
