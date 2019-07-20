@@ -1,10 +1,10 @@
-package com.baeldung.pattern.command.client;
+package com.baeldung.command.client;
 
-import com.baeldung.pattern.command.command.OpenTextFileOperation;
-import com.baeldung.pattern.command.command.SaveTextFileOperation;
-import com.baeldung.pattern.command.command.TextFileOperation;
-import com.baeldung.pattern.command.invoker.TextFileOperationExecutor;
-import com.baeldung.pattern.command.receiver.TextFile;
+import com.baeldung.command.command.OpenTextFileOperation;
+import com.baeldung.command.command.SaveTextFileOperation;
+import com.baeldung.command.command.TextFileOperation;
+import com.baeldung.command.invoker.TextFileOperationExecutor;
+import com.baeldung.command.receiver.TextFile;
 
 public class TextFileApplication {
     
