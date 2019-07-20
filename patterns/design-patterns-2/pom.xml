@@ -31,6 +31,16 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+        <dependency>
+	    <groupId>com.h2database</groupId>
+	    <artifactId>h2</artifactId>
+	    <version>${h2.version}</version>
+        </dependency>
+	<dependency>
+	    <groupId>org.glassfish.jaxb</groupId>
+	    <artifactId>jaxb-runtime</artifactId>
+	    <version>${javax.runtime.version}</version>
+	</dependency>
     </dependencies>
     
     <properties>
@@ -38,5 +48,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <intellij.annotations.version>16.0.2</intellij.annotations.version>
+        <h2.version>1.4.199</h2.version>
+        <javax.runtime.version>2.3.2</javax.runtime.version>
     </properties>
 </project>
