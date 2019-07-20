@@ -121,7 +121,7 @@ public class EnversFooBarAuditIntegrationTest {
         barRevisionList = barService.getRevisions();
 
         assertNotNull(barRevisionList);
-        assertTrue(barRevisionList.size()>=4);
+        assertEquals(4, barRevisionList.size());
 
         assertEquals("BAR", barRevisionList.get(0).getName());
         assertEquals("BAR", barRevisionList.get(1).getName());
