@@ -1,14 +1,17 @@
-package com.baeldung.pattern.command.test;
+package com.baeldung.command.test;
 
-import com.baeldung.pattern.command.command.OpenTextFileOperation;
-import com.baeldung.pattern.command.command.SaveTextFileOperation;
-import com.baeldung.pattern.command.command.TextFileOperation;
-import com.baeldung.pattern.command.invoker.TextFileOperationExecutor;
-import com.baeldung.pattern.command.receiver.TextFile;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.function.Function;
-import org.junit.Test;
-import static org.assertj.core.api.Assertions.*;
+
 import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.baeldung.command.command.OpenTextFileOperation;
+import com.baeldung.command.command.SaveTextFileOperation;
+import com.baeldung.command.command.TextFileOperation;
+import com.baeldung.command.invoker.TextFileOperationExecutor;
+import com.baeldung.command.receiver.TextFile;
 
 public class TextFileOperationExecutorUnitTest {
     
@@ -64,5 +67,12 @@ public class TextFileOperationExecutorUnitTest {
     public void givenSaveTextFileOperationExecuteMethodReference_whenCalledApplyMethod_thenOneAssertion() {
         Function<SaveTextFileOperation, String> executeMethodReference = SaveTextFileOperation::execute;
         assertThat(executeMethodReference.apply(new SaveTextFileOperation(new TextFile("file1.txt")))).isEqualTo("Saving file file1.txt"); 
+    }
+    
+    @Test
+    public void givenOpenAndSaveTextFileOperationExecutorInstance_whenCalledExecuteOperationWithLambdaExpression_thenBothAssertion() {
+        TextFileOperationExecutor textFileOperationExecutor = new TextFileOperationExecutor();
+        assertThat(textFileOperationExecutor.executeOperation(() -> "Opening file file1.txt")).isEqualTo("Opening file file1.txt");
+        assertThat(textFileOperationExecutor.executeOperation(() -> "Saving file file1.txt")).isEqualTo("Saving file file1.txt");
     }
 }
