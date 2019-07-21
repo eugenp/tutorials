@@ -1,4 +1,4 @@
-package com.baeldung.string;
+package com.baeldung.string.multiline;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;

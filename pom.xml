@@ -312,6 +312,10 @@
 						<configuration>
 							<forkCount>3</forkCount>
 							<reuseForks>true</reuseForks>
+							<includes>
+								<include>SpringContextTest</include>
+								<include>**/*UnitTest</include>
+							</includes>
 							<excludes>
 								<exclude>**/*IntegrationTest.java</exclude>
 								<exclude>**/*IntTest.java</exclude>
@@ -574,6 +578,10 @@
 						<configuration>
 							<forkCount>3</forkCount>
 							<reuseForks>true</reuseForks>
+							<includes>
+								<include>SpringContextTest</include>
+								<include>**/*UnitTest</include>
+							</includes>
 							<excludes>
 								<exclude>**/*IntegrationTest.java</exclude>
 								<exclude>**/*IntTest.java</exclude>
@@ -950,6 +958,10 @@
 						<configuration>
 							<forkCount>3</forkCount>
 							<reuseForks>true</reuseForks>
+							<includes>
+								<include>SpringContextTest</include>
+								<include>**/*UnitTest</include>
+							</includes>
 							<excludes>
 								<exclude>**/*IntegrationTest.java</exclude>
 								<exclude>**/*IntTest.java</exclude>
@@ -1446,7 +1458,6 @@
 				<module>xml</module>
 				<module>xmlunit-2</module>
 				<module>xstream</module>
-
 			</modules>
 
 		</profile>

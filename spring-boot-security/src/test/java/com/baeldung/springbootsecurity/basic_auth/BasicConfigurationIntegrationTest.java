@@ -1,27 +1,26 @@
 package com.baeldung.springbootsecurity.basic_auth;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = SpringBootSecurityApplication.class)
-public class BasicAuthConfigurationIntegrationTest {
+public class BasicConfigurationIntegrationTest {
 
     TestRestTemplate restTemplate;
     URL base;
@@ -45,7 +44,7 @@ public class BasicAuthConfigurationIntegrationTest {
     }
 
     @Test
-    public void whenUserWithWrongCredentialsRequestsHomePage_ThenUnauthorizedPage() throws IllegalStateException, IOException {
+    public void whenUserWithWrongCredentials_thenUnauthorizedPage() throws IllegalStateException, IOException {
         restTemplate = new TestRestTemplate("user", "wrongpassword");
         ResponseEntity<String> response = restTemplate.getForEntity(base.toString(), String.class);
 
