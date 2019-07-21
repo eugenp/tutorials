@@ -2,23 +2,26 @@ package org.baeldung.web.controller;
 
 import java.security.Principal;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class SecurityController2 {
+public class GetUserWithHTTPServletRequestController {
 
-    public SecurityController2() {
+    public GetUserWithHTTPServletRequestController() {
         super();
     }
 
     // API
 
-    @RequestMapping(value = "/username2", method = RequestMethod.GET)
+    @RequestMapping(value = "/username4", method = RequestMethod.GET)
     @ResponseBody
-    public String currentUserNameSimple(final Principal principal) {
+    public String currentUserNameSimple(final HttpServletRequest request) {
+        final Principal principal = request.getUserPrincipal();
         return principal.getName();
     }
 

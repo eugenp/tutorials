@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class SecurityController5 {
+public class GetUserWithCustomInterfaceController {
 
     @Autowired
     private IAuthenticationFacade authenticationFacade;
 
-    public SecurityController5() {
+    public GetUserWithCustomInterfaceController() {
         super();
     }
 
