@@ -9,65 +9,65 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "database")
 public class DatabaseProperties {
-	
+
     public static class Server {
 
-		/**
-		 * The IP of the database server
-		 */
-		private String ip;
-		
-		/**
-		 * The Port of the database server.
-		 * The Default value is 443.
-		 * The allowed values are in the range 400-4000.
-		 */
-	    @Min(400)
-	    @Max(800)
-		private int port = 443;
+        /**
+         * The IP of the database server
+         */
+        private String ip;
 
-		public String getIp() {
-			return ip;
-		}
+        /**
+         * The Port of the database server.
+         * The Default value is 443.
+         * The allowed values are in the range 400-4000.
+         */
+        @Min(400)
+        @Max(800)
+        private int port = 443;
 
-		public void setIp(String ip) {
-			this.ip = ip;
-		}
+        public String getIp() {
+            return ip;
+        }
 
-		public int getPort() {
-			return port;
-		}
+        public void setIp(String ip) {
+            this.ip = ip;
+        }
+
+        public int getPort() {
+            return port;
+        }
 
         public void setPort(int port) {
-			this.port = port;
-		}
-	}
-	
-	private String username;
-	private String password;
-	private Server server;
-	
-	public String getUsername() {
-		return username;
-	}
-	
-	public void setUsername(String username) {
-		this.username = username;
-	}
+            this.port = port;
+        }
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    private String username;
+    private String password;
+    private Server server;
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public Server getServer() {
-		return server;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public void setServer(Server server) {
-		this.server = server;
-	}
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Server getServer() {
+        return server;
+    }
+
+    public void setServer(Server server) {
+        this.server = server;
+    }
 }
