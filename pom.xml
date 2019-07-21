@@ -312,6 +312,10 @@
 						<configuration>
 							<forkCount>3</forkCount>
 							<reuseForks>true</reuseForks>
+							<includes>
+								<include>SpringContextTest</include>
+								<include>**/*UnitTest</include>
+							</includes>
 							<excludes>
 								<exclude>**/*IntegrationTest.java</exclude>
 								<exclude>**/*IntTest.java</exclude>
@@ -480,7 +484,6 @@
 				<module>jersey</module>
 				<module>JGit</module>
 				<module>jgroups</module>
-				<module>jhipster</module>
 				<module>jhipster-5</module>
 				<module>jib</module>
 				<module>jjwt</module>
@@ -507,6 +510,7 @@
 				<module>libraries-security</module>
 				<module>libraries-server</module>
 				<module>libraries-http</module>
+				<module>libraries-io</module>
 				<module>linkrest</module>
 				<module>logging-modules</module>
 				<module>lombok</module>
@@ -545,7 +549,6 @@
 				<!-- <module>raml</module> --> <!-- Not a maven project -->
 				<module>ratpack</module>
 				<module>reactor-core</module>
-				<module>rest-with-spark-java</module>
 				<module>resteasy</module>
 				<module>restx</module>
 				<!-- <module>rmi</module> --> <!-- Not a maven project -->
@@ -558,7 +561,6 @@
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
-				<module>morphia</module>
 
 			</modules>
 
@@ -576,6 +578,10 @@
 						<configuration>
 							<forkCount>3</forkCount>
 							<reuseForks>true</reuseForks>
+							<includes>
+								<include>SpringContextTest</include>
+								<include>**/*UnitTest</include>
+							</includes>
 							<excludes>
 								<exclude>**/*IntegrationTest.java</exclude>
 								<exclude>**/*IntTest.java</exclude>
@@ -757,8 +763,6 @@
 
 				<module>spring-thymeleaf</module>
 
-				<module>spring-userservice</module>
-
 				<module>spring-vault</module>
 				<module>spring-vertx</module>
 
@@ -778,7 +782,6 @@
 
 				<module>undertow</module>
 
-				<module>vavr</module>
 				<module>vertx</module>
 				<module>vertx-and-rxjava</module>
 				<module>video-tutorials</module>
@@ -787,13 +790,11 @@
 				<module>wicket</module>
 
 				<module>xml</module>
-				<module>xmlunit-2</module>
 				<module>xstream</module>
 
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
-				<module>morphia</module>
 
 			</modules>
 
@@ -842,7 +843,8 @@
 				<module>spring-boot-camel</module>
 				<module>spring-boot-client</module>
 				<module>spring-boot-custom-starter</module>
-				<module>greeter-spring-boot-autoconfigure</module>
+				<module>spring-boot-di</module>
+		 		<module>greeter-spring-boot-autoconfigure</module>
 				<module>greeter-spring-boot-sample-app</module>
 				<module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
 				<module>spring-boot-jasypt</module>
@@ -929,7 +931,6 @@
 				<module>spring-state-machine</module>
 				<module>spring-swagger-codegen/spring-swagger-codegen-app</module>
 				<module>spring-thymeleaf</module>
-				<module>spring-userservice</module>
 				<module>spring-vault</module>
 				<module>spring-vertx</module>
 				<module>spring-zuul/spring-zuul-foos-resource</module>
@@ -957,6 +958,10 @@
 						<configuration>
 							<forkCount>3</forkCount>
 							<reuseForks>true</reuseForks>
+							<includes>
+								<include>SpringContextTest</include>
+								<include>**/*UnitTest</include>
+							</includes>
 							<excludes>
 								<exclude>**/*IntegrationTest.java</exclude>
 								<exclude>**/*IntTest.java</exclude>
@@ -985,6 +990,7 @@
 				<module>core-kotlin-io</module>
 
 				<module>jenkins/hello-world</module>
+				<module>jhipster</module>
 				<module>jws</module>
 
 				<module>libraries</module> <!-- very long running -->
@@ -995,6 +1001,7 @@
 				<module>persistence-modules/jnosql</module>
 
 				<module>vaadin</module>
+				<module>vavr</module>
 			</modules>
 		</profile>
 
@@ -1166,7 +1173,6 @@
 				<module>jersey</module>
 				<module>JGit</module>
 				<module>jgroups</module>
-				<module>jhipster</module>
 				<module>jhipster-5</module>
 				<module>jib</module>
 				<module>jjwt</module>
@@ -1228,7 +1234,6 @@
 				<!-- <module>raml</module> --> <!-- Not a maven project -->
 				<module>ratpack</module>
 				<module>reactor-core</module>
-				<module>rest-with-spark-java</module>
 				<module>resteasy</module>
 				<module>restx</module>
 				<!-- <module>rmi</module> --> <!-- Not a maven project -->
@@ -1424,8 +1429,6 @@
 
 				<module>spring-thymeleaf</module>
 
-				<module>spring-userservice</module>
-
 				<module>spring-vault</module>
 				<module>spring-vertx</module>
 
@@ -1445,7 +1448,6 @@
 
 				<module>undertow</module>
 
-				<module>vavr</module>
 				<module>vertx</module>
 				<module>vertx-and-rxjava</module>
 				<module>video-tutorials</module>
@@ -1456,7 +1458,6 @@
 				<module>xml</module>
 				<module>xmlunit-2</module>
 				<module>xstream</module>
-
 			</modules>
 
 		</profile>
@@ -1497,6 +1498,7 @@
 				<module>core-kotlin-2</module>
 
 				<module>jenkins/hello-world</module>
+				<module>jhipster</module>
 				<module>jws</module>
 
 				<module>libraries</module> <!-- very long running -->
@@ -1507,6 +1509,7 @@
 				<module>persistence-modules/jnosql</module>
 
 				<module>vaadin</module>
+				<module>vavr</module>
 			</modules>
 
 		</profile>
@@ -1558,6 +1561,7 @@
 		<maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
 		<commons-io.version>2.5</commons-io.version>
 		<commons-lang.version>2.6</commons-lang.version>
+		<commons-lang3.version>3.5</commons-lang3.version>
 		<commons-cli.version>1.4</commons-cli.version>
 		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>
 		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>

@@ -119,7 +119,6 @@
         <codahale.metrics.version>3.0.2</codahale.metrics.version>
 
         <!-- Maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
 

@@ -51,7 +51,6 @@
     </build>
 
     <properties>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
         <jetty-maven-plugin.version>9.4.0.v20161208</jetty-maven-plugin.version>
     </properties>
 

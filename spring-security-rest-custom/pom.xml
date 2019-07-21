@@ -206,7 +206,6 @@
     <properties>
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <commons-logging.version>1.2</commons-logging.version>
 
         <!-- Maven plugins -->
