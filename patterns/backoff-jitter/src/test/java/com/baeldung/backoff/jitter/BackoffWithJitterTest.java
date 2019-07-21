@@ -65,6 +65,12 @@ public class BackoffWithJitterTest {
         test(intervalFn);
     }
 
+    @Test
+    public void whenRetryExponentialBackoffWithJitter_thenRetriesAreSpread() throws InterruptedException {
+        IntervalFunction intervalFn = ofExponentialRandomBackoff(INITIAL_INTERVAL, MULTIPLIER, RANDOMIZATION_FACTOR);
+        test(intervalFn);
+    }
+
     private void test(IntervalFunction intervalFn) throws InterruptedException {
         Function<String, String> pingPongFn = getRetryablePingPongFn(intervalFn);
         ExecutorService executors = newFixedThreadPool(NUM_TASKS);
