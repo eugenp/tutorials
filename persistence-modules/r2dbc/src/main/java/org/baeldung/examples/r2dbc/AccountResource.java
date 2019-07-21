@@ -27,13 +27,9 @@ import reactor.core.publisher.Mono;
 @RestController
 public class AccountResource {
 
-    private static final Logger log = LoggerFactory.getLogger(AccountResource.class);
-
-    private final ConnectionFactory connectionFactory;
     private final ReactiveAccountDao accountDao;
 
-    public AccountResource(ConnectionFactory cf, ReactiveAccountDao accountDao) {
-        this.connectionFactory = cf;
+    public AccountResource(ReactiveAccountDao accountDao) {
         this.accountDao = accountDao;
     }
 
@@ -43,21 +39,18 @@ public class AccountResource {
         return accountDao.findById(id)
           .map(acc -> new ResponseEntity<>(acc, HttpStatus.OK))
           .switchIfEmpty(Mono.just(new ResponseEntity<>(null, HttpStatus.NOT_FOUND)));
-
     }
 
     @GetMapping("/accounts")
     public Flux<Account> getAllAccounts() {
-
         return accountDao.findAll();
-
     }
 
     @PostMapping("/accounts")
     public Mono<ResponseEntity<Account>> postAccount(@RequestBody Account account) {
-
         return accountDao.createAccount(account)
-          .map(acc -> new ResponseEntity<>(acc, HttpStatus.CREATED));
+          .map(acc -> new ResponseEntity<>(acc, HttpStatus.CREATED))
+          .log();
     }
 
 }
