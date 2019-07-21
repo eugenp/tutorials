@@ -1,6 +1,0 @@
-# R2DBC Test configuration
-r2dbc:
-  url: r2dbc:h2:mem://./testdb
-  
-  
-  
