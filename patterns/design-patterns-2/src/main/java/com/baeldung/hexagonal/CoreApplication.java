@@ -4,33 +4,37 @@ public class CoreApplication {
 
     private DataPort dataSource;
 
-    public CoreApplication(DataPort dataSource) {
-        this.dataSource = dataSource;
-    }
-
     public boolean makeCoffee(String coffeeType) {
 
         boolean coffeeMadeSuccessfully = false;
-        int recepieId = -1;
+        int recipeId = -1;
         
         switch (coffeeType) {
             case "latte":
-                recepieId = 1;
+                recipeId = 1;
                 break;
             case "espresso":
-                recepieId = 2;
+                recipeId = 2;
                 break;
             case "cappuccino":
-                recepieId = 3;
+                recipeId = 3;
                 break;
         }
 
-        CoffeeRecepie recepie = dataSource.getCoffeeRecepieById(recepieId);
+        CoffeeRecipe recipe = dataSource.getCoffeeRecipeById(recipeId);
 
-        if (recepie != null)
+        if (recipe != null)
             coffeeMadeSuccessfully = true;
 
         return coffeeMadeSuccessfully;
     }
 
+    public DataPort getDataSource() {
+        return dataSource;
+    }
+
+    public void setDataSource(DataPort dataSource) {
+        this.dataSource = dataSource;
+    }
+    
 }

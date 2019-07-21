@@ -21,14 +21,14 @@ public class H2DatabaseAdapter implements DataPort {
             // start with a clean db
             stmt.execute("DROP ALL OBJECTS");
 
-            String sql = "CREATE TABLE COFFEE_RECEPIE " + "(ID INTEGER not NULL, " + " SUGER INTEGER, " + " COFFEE INTEGER)";
+            String sql = "CREATE TABLE COFFEE_RECIPE " + "(ID INTEGER not NULL, " + " SUGER INTEGER, " + " COFFEE INTEGER)";
             stmt.execute(sql);
 
             // Insert data
-            sql = "INSERT INTO COFFEE_RECEPIE VALUES (1, 10, 50)";
+            sql = "INSERT INTO COFFEE_RECIPE VALUES (1, 10, 50)";
             stmt.executeUpdate(sql);
 
-            sql = "INSERT INTO COFFEE_RECEPIE VALUES (2, 7, 40)";
+            sql = "INSERT INTO COFFEE_RECIPE VALUES (2, 7, 40)";
             stmt.executeUpdate(sql);
 
         } catch (SQLException se) {
@@ -38,25 +38,25 @@ public class H2DatabaseAdapter implements DataPort {
     }
 
     @Override
-    public CoffeeRecepie getCoffeeRecepieById(Integer id) {
+    public CoffeeRecipe getCoffeeRecipeById(Integer id) {
 
-        CoffeeRecepie coffeeRecepie = null;
+        CoffeeRecipe coffeeRecipe = null;
 
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS); Statement stmt = conn.createStatement()) {
 
-            String sql = "SELECT * FROM COFFEE_RECEPIE where ID=" + id;
+            String sql = "SELECT * FROM COFFEE_RECIPE where ID=" + id;
             ResultSet resultSet = stmt.executeQuery(sql);
             if (resultSet.next()) {
-                coffeeRecepie = new CoffeeRecepie();
-                coffeeRecepie.setId(resultSet.getInt("ID"));
-                coffeeRecepie.setSugerInGrams(resultSet.getInt("SUGER"));
-                coffeeRecepie.setCoffeeInGrams(resultSet.getInt("COFFEE"));
+                coffeeRecipe = new CoffeeRecipe();
+                coffeeRecipe.setId(resultSet.getInt("ID"));
+                coffeeRecipe.setSugerInGrams(resultSet.getInt("SUGER"));
+                coffeeRecipe.setCoffeeInGrams(resultSet.getInt("COFFEE"));
             }
         } catch (SQLException se) {
             se.printStackTrace();
         }
 
-        return coffeeRecepie;
+        return coffeeRecipe;
 
     }
 

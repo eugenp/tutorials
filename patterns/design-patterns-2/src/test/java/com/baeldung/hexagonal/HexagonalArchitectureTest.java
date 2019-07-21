@@ -10,19 +10,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestInstance(Lifecycle.PER_CLASS)
 public class HexagonalArchitectureTest {
 
-    private DataPort h2DBPortImpl;
-    private DataPort flatFileImpl;
+    private DataPort h2DBAdapter;
+    private DataPort flatFileAdapter;
     
     @BeforeAll
     public void setUp() {
-        h2DBPortImpl = new H2DatabaseAdapter();;
-        flatFileImpl = new FlatFileAdapter();
+        h2DBAdapter = new H2DatabaseAdapter();;
+        flatFileAdapter = new XMLFileAdapter();
     }
 
     @Test
-    public void whenCoffeeRecepieInH2Database_makeCoffee() {
+    public void whenCoffeeRecipeInH2Database_makeCoffee() {
         
-        CoreApplication coreApplication = new CoreApplication(h2DBPortImpl);
+        CoreApplication coreApplication = new CoreApplication();
+        coreApplication.setDataSource(h2DBAdapter);
         
         assertTrue(coreApplication.makeCoffee("latte"));
         
@@ -34,9 +35,10 @@ public class HexagonalArchitectureTest {
     }
     
     @Test
-    public void whenCoffeeRecepieInMockFile_makeCoffee() {
+    public void whenCoffeeRecipeInMockFile_makeCoffee() {
 
-        CoreApplication coreApplication = new CoreApplication(flatFileImpl);
+        CoreApplication coreApplication = new CoreApplication();
+        coreApplication.setDataSource(flatFileAdapter);
 
         assertTrue(coreApplication.makeCoffee("cappuccino"));
 

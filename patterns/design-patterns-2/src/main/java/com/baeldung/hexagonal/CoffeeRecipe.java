@@ -1,6 +1,6 @@
 package com.baeldung.hexagonal;
 
-public class CoffeeRecepie {
+public class CoffeeRecipe {
 
     private Integer id;
     private Integer sugerInGrams;
@@ -24,10 +24,9 @@ public class CoffeeRecepie {
     public void setCoffeeInGrams(Integer coffeeInGrams) {
         this.coffeeInGrams = coffeeInGrams;
     }
-    
     @Override
     public String toString() {
-        return "CoffeeRecepie [id=" + id + ", sugerInGrams=" + sugerInGrams + ", coffeeInGrams=" + coffeeInGrams + "]";
+        return "CoffeeRecipe [id=" + id + ", sugerInGrams=" + sugerInGrams + ", coffeeInGrams=" + coffeeInGrams + "]";
     }
         
 }

@@ -5,32 +5,32 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-public class FlatFileAdapter implements DataPort {
+public class XMLFileAdapter implements DataPort {
 
-    private CoffeeRecepieData parseFile() {
-        CoffeeRecepieData coffeeRecepieData = null;
+    private CoffeeRecipeData parseXMLFile() {
+        CoffeeRecipeData coffeeRecipeData = null;
         try {
             File file = new File(getClass().getClassLoader()
                 .getResource("com/baeldung/hexagonal/flatFile.xml")
                 .getFile());
 
-            JAXBContext jaxbContext = JAXBContext.newInstance(CoffeeRecepieData.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(CoffeeRecipeData.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            coffeeRecepieData = (CoffeeRecepieData) jaxbUnmarshaller.unmarshal(file);
+            coffeeRecipeData = (CoffeeRecipeData) jaxbUnmarshaller.unmarshal(file);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
 
-        return coffeeRecepieData;
+        return coffeeRecipeData;
     }
 
     @Override
-    public CoffeeRecepie getCoffeeRecepieById(Integer id) {
-        CoffeeRecepieData coffeeRecepieData = parseFile();
-        CoffeeRecepie coffeeRecepie = null;
+    public CoffeeRecipe getCoffeeRecipeById(Integer id) {
+        CoffeeRecipeData coffeeRecipeData = parseXMLFile();
+        CoffeeRecipe coffeeRecipe = null;
 
-        if (coffeeRecepieData != null) {
-            coffeeRecepie = coffeeRecepieData.getCoffeeRecepies()
+        if (coffeeRecipeData != null) {
+            coffeeRecipe = coffeeRecipeData.getCoffeeRecipes()
                 .stream()
                 .filter(item -> item.getId()
                     .equals(id))
@@ -39,7 +39,7 @@ public class FlatFileAdapter implements DataPort {
 
         }
 
-        return coffeeRecepie;
+        return coffeeRecipe;
     }
 
 }
