@@ -59,6 +59,22 @@ public class BackoffWithJitterTest {
         }
     }
 
+    @Test
+    public void whenRetryExponentialBackoffWithoutJitter_thenThunderingHerdProblemOccurs() throws InterruptedException {
+        IntervalFunction intervalFn = ofExponentialBackoff(INITIAL_INTERVAL, MULTIPLIER);
+        test(intervalFn);
+    }
+
+    private void test(IntervalFunction intervalFn) throws InterruptedException {
+        Function<String, String> pingPongFn = getRetryablePingPongFn(intervalFn);
+        ExecutorService executors = newFixedThreadPool(NUM_TASKS);
+        List<Callable<String>> tasks = nCopies(NUM_TASKS, () -> pingPongFn.apply("Hello"));
+
+        when(service.call(anyString())).thenThrow(PingPongServiceException.class);
+
+        executors.invokeAll(tasks);
+    }
+
     private Function<String, String> getRetryablePingPongFn(IntervalFunction intervalFn) {
         RetryConfig retryConfig = RetryConfig.custom()
                 .maxAttempts(MAX_TRIES)
