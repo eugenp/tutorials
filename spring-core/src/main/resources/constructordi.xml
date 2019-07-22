@@ -1,19 +1,21 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    https://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="toyota" class="com.baeldung.constructordi.domain.Car">
         <constructor-arg index="0" ref="engine" />
         <constructor-arg index="1" ref="transmission" />
     </bean>
 
-    <bean id="engine" class="com.baeldung.constructordi.domain.Engine">
+    <bean id="engine"
+        class="com.baeldung.constructordi.domain.Engine">
         <constructor-arg index="0" value="v4" />
         <constructor-arg index="1" value="2" />
     </bean>
 
-    <bean id="transmission" class="com.baeldung.constructordi.domain.Transmission">
+    <bean id="transmission"
+        class="com.baeldung.constructordi.domain.Transmission">
         <constructor-arg value="sliding" />
     </bean>
 

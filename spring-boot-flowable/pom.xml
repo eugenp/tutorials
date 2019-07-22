@@ -7,12 +7,14 @@
 	<packaging>war</packaging>
 	<name>spring-boot-flowable</name>
 	<description>Spring Boot Flowable Module</description>
+	
 	<parent>
 		<artifactId>parent-boot-2</artifactId>
 		<groupId>com.baeldung</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../parent-boot-2</relativePath>
 	</parent>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -44,6 +46,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -52,6 +55,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 	<properties>
 		<flowable.version>6.4.1</flowable.version>
 	</properties>

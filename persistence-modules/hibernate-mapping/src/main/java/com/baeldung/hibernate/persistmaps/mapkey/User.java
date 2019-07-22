@@ -4,8 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
+import javax.money.MonetaryAmount;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.CreditCardNumber;
+import org.hibernate.validator.constraints.Currency;
 
 @Entity
 public class User {
@@ -62,5 +65,4 @@ public class User {
     public void setCity(String city) {
         this.city = city;
     }
-
 }

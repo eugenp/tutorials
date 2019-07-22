@@ -19,9 +19,11 @@ import com.baeldung.spring.data.redis.config.RedisConfig;
 import com.baeldung.spring.data.redis.queue.RedisMessagePublisher;
 import com.baeldung.spring.data.redis.queue.RedisMessageSubscriber;
 
+import redis.embedded.RedisServerBuilder;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = RedisConfig.class)
-@DirtiesContext(classMode = ClassMode.AFTER_CLASS)
+@DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
 public class RedisMessageListenerIntegrationTest {
 
     private static redis.embedded.RedisServer redisServer;
@@ -31,7 +33,7 @@ public class RedisMessageListenerIntegrationTest {
     
     @BeforeClass
     public static void startRedisServer() throws IOException {
-        redisServer = new redis.embedded.RedisServer(6380);
+        redisServer = new RedisServerBuilder().port(6379).setting("maxheap 256M").build();
         redisServer.start();
     }
     

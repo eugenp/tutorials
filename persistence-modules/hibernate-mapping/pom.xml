@@ -2,17 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
-    <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
-    </parent>
-
     <artifactId>hibernate-mapping</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>persistence-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
+    </parent>
 
     <dependencies>
         <dependency>
@@ -31,21 +30,27 @@
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
-	    <!-- validation -->
+        <!-- validation -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>${javax.el-api.version}</version>
-	    </dependency>
-        <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.el</artifactId>
             <version>${org.glassfish.javax.el.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.money</groupId>
+            <artifactId>money-api</artifactId>
+            <version>${money-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.javamoney</groupId>
+            <artifactId>moneta</artifactId>
+            <version>${moneta.version}</version>
+            <type>pom</type>
         </dependency>
     </dependencies>
 
@@ -53,18 +58,19 @@
         <finalName>hibernate-mapping</finalName>
         <resources>
             <resource>
-                <directory>src/test/resources</directory>
+                <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
     </build>
 
     <properties>
-        <hibernate.version>5.3.7.Final</hibernate.version>
+        <hibernate.version>5.3.10.Final</hibernate.version>
         <assertj-core.version>3.8.0</assertj-core.version>
-        <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
-        <javax.el-api.version>2.2.5</javax.el-api.version>
-        <org.glassfish.javax.el.version>3.0.1-b08</org.glassfish.javax.el.version>
+        <hibernate-validator.version>6.0.16.Final</hibernate-validator.version>
+        <org.glassfish.javax.el.version>3.0.1-b11</org.glassfish.javax.el.version>
+        <money-api.version>1.0.3</money-api.version>
+        <moneta.version>1.3</moneta.version>
     </properties>
 
 </project>

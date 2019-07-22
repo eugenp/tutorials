@@ -43,7 +43,6 @@
     <properties>
 
         <!-- util -->
-        <commons-lang3.version>3.8.1</commons-lang3.version>
         <bouncycastle.version>1.60</bouncycastle.version>
         <commons-codec.version>1.11</commons-codec.version>
 
