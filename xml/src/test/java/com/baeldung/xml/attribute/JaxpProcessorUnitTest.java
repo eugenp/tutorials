@@ -12,6 +12,9 @@ import javax.xml.xpath.XPathExpressionException;
 import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;
 
+/**
+ * Unit test for {@link JaxpTransformer}.
+ */
 public class JaxpProcessorUnitTest {
 
     @Test

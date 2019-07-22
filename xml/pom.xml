@@ -15,7 +15,7 @@
     <dependencies>
         <!-- xml libraries -->
         <dependency>
-            <groupId>dom4j</groupId>
+            <groupId>org.dom4j</groupId>
             <artifactId>dom4j</artifactId>
             <version>${dom4j.version}</version>
         </dependency>
@@ -24,7 +24,11 @@
             <artifactId>jaxen</artifactId>
             <version>${jaxen.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>joox-java-6</artifactId>
+            <version>${joox.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.jdom</groupId>
             <artifactId>jdom2</artifactId>
@@ -55,7 +59,17 @@
             <artifactId>stax-api</artifactId>
             <version>1.0-2</version>
         </dependency>
-
+        <!-- JMH Libraries -->
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
         <!-- utils -->
         <dependency>
             <groupId>commons-io</groupId>
@@ -294,15 +308,17 @@
     </profiles>
 
     <properties>
-        <dom4j.version>1.6.1</dom4j.version>
-        <jaxen.version>1.1.6</jaxen.version>
+        <dom4j.version>2.1.1</dom4j.version>
+        <jaxen.version>1.2.0</jaxen.version>
         <jdom2.version>2.0.6</jdom2.version>
+        <joox.version>1.6.2</joox.version>
         <commons-io.version>2.5</commons-io.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <jibx-version>1.2.4.5</jibx-version>
         <assertj-core.version>3.12.2</assertj-core.version>
         <xmlunit-assertj.version>2.6.3</xmlunit-assertj.version>
         <junit-jupiter.version>5.5.0</junit-jupiter.version>
+        <jmh.version>1.21</jmh.version>
         <!-- util -->
         <commons-lang3.version>3.5</commons-lang3.version>
         <commons-lang.version>2.4</commons-lang.version>

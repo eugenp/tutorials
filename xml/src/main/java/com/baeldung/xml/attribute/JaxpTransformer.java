@@ -46,6 +46,11 @@ public class JaxpTransformer {
             Element value = (Element) nodes.item(i);
             value.setAttribute(attribute, newValue);
         }
+        //Stream api syntax
+        //        IntStream
+        //          .range(0, nodes.getLength())
+        //          .mapToObj(i -> (Element) nodes.item(i))
+        //          .forEach(value -> value.setAttribute(attribute, newValue));
         // 4- Save the result to a new XML doc
         TransformerFactory factory = TransformerFactory.newInstance();
         factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
