@@ -5,6 +5,7 @@ import com.baeldung.arraycopy.model.Employee;
 import java.util.Comparator;
 
 public class SortedArrayChecker {
+
     boolean isSorted(int[] array, int length) {
         if (array == null || length < 2)
             return true;
@@ -24,7 +25,7 @@ public class SortedArrayChecker {
         return true;
     }
 
-    boolean isSorted(String[] array, int length) {
+    boolean isSorted(Comparable[] array, int length) {
         if (array == null || length < 2)
             return true;
 
@@ -34,7 +35,7 @@ public class SortedArrayChecker {
         return isSorted(array, length - 1);
     }
 
-    boolean isSorted(String[] array) {
+    boolean isSorted(Comparable[] array) {
         for (int i = 0; i < array.length - 1; ++i) {
             if (array[i].compareTo(array[i + 1]) > 0)
                 return false;
