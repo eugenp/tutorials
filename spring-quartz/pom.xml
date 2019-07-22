@@ -32,6 +32,16 @@
             <artifactId>quartz</artifactId>
             <version>${quartz.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3p0.version}</version>
+        </dependency>
+        <!-- h2 in-memory database -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -44,7 +54,8 @@
     </build>
 
     <properties>
-        <quartz.version>2.2.3</quartz.version>
+        <quartz.version>2.3.0</quartz.version>
+        <c3p0.version>0.9.5.2</c3p0.version>
     </properties>
 
 </project>
