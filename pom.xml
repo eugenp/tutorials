@@ -12,7 +12,8 @@
 
 	<modules>
 		<module>quarkus</module>
-	</modules>
+        <module>hexagonal-architecture</module>
+    </modules>
 
 	<dependencies>
 		<!-- logging -->
