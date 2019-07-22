@@ -1,7 +1,8 @@
 package com.example.domain;
 
-import lombok.Getter;
 import org.springframework.util.StringUtils;
+
+import lombok.Getter;
 
 @Getter
 
@@ -29,21 +30,21 @@ public class Customer {
 
     private void validatePhone(String phone) {
         if (StringUtils.isEmpty(phone))
-            throw new BadDataException("Invalid Phone");
+            throw new RuntimeException("Invalid Phone");
     }
 
     private void validateEmail(String email) {
         if (StringUtils.isEmpty(email))
-            throw new BadDataException("Invalid Email");
+            throw new RuntimeException("Invalid Email");
     }
 
     private void validateAddress(String address) {
         if (StringUtils.isEmpty(address))
-            throw new BadDataException("Invalid Address");
+            throw new RuntimeException("Invalid Address");
     }
 
     private void validateName(String firstName, String lastName) {
         if (StringUtils.isEmpty(firstName) || StringUtils.isEmpty(lastName))
-            throw new BadDataException("Invalid Name");
+            throw new RuntimeException("Invalid Name");
     }
 }
