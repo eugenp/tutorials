@@ -21,11 +21,9 @@ public class SpringBootPropertiesApplication {
     public PropertiesConfiguration propertiesConfiguration(
       @Value("${spring.config.location}") String path,
       @Value("${spring.properties.refreshDelay}") long refreshDelay) throws Exception {
-        String filePath = new File(path.substring("file:".length())).getCanonicalPath();
-        PropertiesConfiguration configuration = new PropertiesConfiguration(
-          new File(filePath));
-        FileChangedReloadingStrategy fileChangedReloadingStrategy =
-          new FileChangedReloadingStrategy();
+        String filePath = path.substring("file:".length());
+        PropertiesConfiguration configuration = new PropertiesConfiguration(new File(filePath).getCanonicalPath());
+        FileChangedReloadingStrategy fileChangedReloadingStrategy = new FileChangedReloadingStrategy();
         fileChangedReloadingStrategy.setRefreshDelay(refreshDelay);
         configuration.setReloadingStrategy(fileChangedReloadingStrategy);
         return configuration;
