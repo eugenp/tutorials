@@ -68,6 +68,6 @@ public class SortedArrayChecker {
         if (comparator.compare(array[length - 2], array[length - 1]) > 0)
             return false;
 
-        return isSortedByAge(array, Comparator.comparingInt(Employee::getAge),length - 1);
+        return isSortedByAge(array, Comparator.comparingInt(Employee::getAge), length - 1);
     }
 }
