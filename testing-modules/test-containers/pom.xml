@@ -24,6 +24,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-commons</artifactId>
+            <version>${junit.platform.version}</version>
+            <scope>test</scope>
+        </dependency>        
+        <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
             <version>${junit.vintage.version}</version>
@@ -59,6 +65,11 @@
             <artifactId>selenium-remote-driver</artifactId>
             <version>${selenium-remote-driver.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>${selenium-remote-driver.version}</version>
+        </dependency>        
     </dependencies>
 
     <build>
@@ -76,7 +87,7 @@
                     <dependency>
                         <groupId>org.junit.platform</groupId>
                         <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>${junit.platform.version}</version>
+                        <version>${junit-platform-surefire-provider.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -99,16 +110,14 @@
     </build>
 
     <properties>
-        <junit.jupiter.version>5.1.0</junit.jupiter.version>
-        <junit.platform.version>1.0.1</junit.platform.version>
-        <junit.vintage.version>4.12.1</junit.vintage.version>
-        <log4j2.version>2.8.2</log4j2.version>
-        <mockito.version>2.21.0</mockito.version>
-        <spring.version>5.0.1.RELEASE</spring.version>
-        <testcontainers.version>1.7.2</testcontainers.version>
-        <postgresql.version>42.2.2</postgresql.version>
-        <selenium-remote-driver.version>3.12.0</selenium-remote-driver.version>
-        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+        <junit.platform.version>1.5.0</junit.platform.version>
+        <junit.vintage.version>5.5.0</junit.vintage.version>
+        <log4j2.version>2.12.0</log4j2.version>
+        <testcontainers.version>1.11.4</testcontainers.version>
+        <postgresql.version>42.2.6</postgresql.version>
+        <selenium-remote-driver.version>3.141.59</selenium-remote-driver.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <junit-platform-surefire-provider.version>1.3.2</junit-platform-surefire-provider.version>
     </properties>
 
 </project>
