@@ -1456,7 +1456,6 @@
 				<module>wicket</module>
 
 				<module>xml</module>
-				<module>xmlunit-2</module>
 				<module>xstream</module>
 			</modules>
 
