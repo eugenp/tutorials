@@ -39,7 +39,7 @@ public class BackoffWithJitterTest {
     }
 
     private PingPongService service;
-    private static final int NUM_TASKS = 8;
+    private static final int NUM_CONCURRENT_CLIENTS = 8;
 
     @Before
     public void setUp() {
@@ -55,7 +55,7 @@ public class BackoffWithJitterTest {
         try {
             pingPongFn.apply("Hello");
         } catch (PingPongServiceException e) {
-            verify(service, times(MAX_TRIES)).call(anyString());
+            verify(service, times(MAX_RETRIES)).call(anyString());
         }
     }
 
@@ -73,8 +73,8 @@ public class BackoffWithJitterTest {
 
     private void test(IntervalFunction intervalFn) throws InterruptedException {
         Function<String, String> pingPongFn = getRetryablePingPongFn(intervalFn);
-        ExecutorService executors = newFixedThreadPool(NUM_TASKS);
-        List<Callable<String>> tasks = nCopies(NUM_TASKS, () -> pingPongFn.apply("Hello"));
+        ExecutorService executors = newFixedThreadPool(NUM_CONCURRENT_CLIENTS);
+        List<Callable<String>> tasks = nCopies(NUM_CONCURRENT_CLIENTS, () -> pingPongFn.apply("Hello"));
 
         when(service.call(anyString())).thenThrow(PingPongServiceException.class);
 
@@ -83,7 +83,7 @@ public class BackoffWithJitterTest {
 
     private Function<String, String> getRetryablePingPongFn(IntervalFunction intervalFn) {
         RetryConfig retryConfig = RetryConfig.custom()
-                .maxAttempts(MAX_TRIES)
+                .maxAttempts(MAX_RETRIES)
                 .intervalFunction(intervalFn)
                 .retryExceptions(PingPongServiceException.class)
                 .build();
@@ -98,6 +98,6 @@ public class BackoffWithJitterTest {
         static final Long INITIAL_INTERVAL = 1000L;
         static final Double MULTIPLIER = 2.0D;
         static final Double RANDOMIZATION_FACTOR = 0.6D;
-        static final Integer MAX_TRIES = 4;
+        static final Integer MAX_RETRIES = 4;
     }
 }
