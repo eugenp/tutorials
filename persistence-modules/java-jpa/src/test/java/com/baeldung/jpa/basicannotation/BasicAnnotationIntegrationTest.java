@@ -1,16 +1,13 @@
 package com.baeldung.jpa.basicannotation;
 
-import org.hibernate.PropertyValueException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.AfterClass;
-import org.junit.Test;
+import javax.persistence.PersistenceException;
 
-import java.io.IOException;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class BasicAnnotationIntegrationTest {
 
@@ -18,9 +15,10 @@ public class BasicAnnotationIntegrationTest {
     private static EntityManagerFactory entityManagerFactory;
 
     @BeforeClass
-    public void setup() {
+    public static void setup() {
         entityManagerFactory = Persistence.createEntityManagerFactory("java-jpa-scheduled-day");
         entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
     }
 
     @Test
@@ -34,7 +32,7 @@ public class BasicAnnotationIntegrationTest {
 
     }
 
-    @Test(expected = PropertyValueException.class)
+    @Test(expected = PersistenceException.class)
     public void givenACourse_whenCourseNameAbsent_shouldFail() {
         Course course = new Course();
 
@@ -44,7 +42,7 @@ public class BasicAnnotationIntegrationTest {
     }
 
     @AfterClass
-    public void destroy() {
+    public static void destroy() {
 
         if (entityManager != null) {
             entityManager.close();

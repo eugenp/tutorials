@@ -31,11 +31,11 @@ public final class RestPreconditions {
 
     /**
      * Check if some value was found, otherwise throw exception.
-     * 
-     * @param expression
-     *            has value true if found, otherwise false
+     *
+     * @param resource
+     *            has value not null to be returned, otherwise throw exception
      * @throws MyResourceNotFoundException
-     *             if expression is false, means value not found.
+     *             if resource is null, means value not found.
      */
     public static <T> T checkFound(final T resource) {
         if (resource == null) {

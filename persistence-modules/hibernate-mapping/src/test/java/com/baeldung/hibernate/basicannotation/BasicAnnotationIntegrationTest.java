@@ -1,18 +1,19 @@
 package com.baeldung.hibernate.basicannotation;
 
-import com.baeldung.hibernate.HibernateUtil;
-import com.baeldung.hibernate.basicannotation.Course;
-import com.baeldung.hibernate.Strategy;
-import org.hibernate.PropertyValueException;
+import java.io.IOException;
+
+import javax.persistence.PersistenceException;
+
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
-import org.hibernate.SessionFactory;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
-import java.io.IOException;
+import com.baeldung.hibernate.HibernateUtil;
+import com.baeldung.hibernate.Strategy;
 
 public class BasicAnnotationIntegrationTest {
 
@@ -48,7 +49,7 @@ public class BasicAnnotationIntegrationTest {
 
     }
 
-    @Test(expected = PropertyValueException.class)
+    @Test(expected = PersistenceException.class)
     public void givenACourse_whenCourseNameAbsent_shouldFail() {
         Course course = new Course();
 

@@ -1,6 +1,6 @@
-package com.baeldung.pattern.command.invoker;
+package com.baeldung.command.invoker;
 
-import com.baeldung.pattern.command.command.TextFileOperation;
+import com.baeldung.command.command.TextFileOperation;
 import java.util.ArrayList;
 import java.util.List;
 

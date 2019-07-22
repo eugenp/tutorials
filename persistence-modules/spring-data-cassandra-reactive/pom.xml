@@ -46,6 +46,13 @@
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.cassandraunit</groupId>
+            <artifactId>cassandra-unit-spring</artifactId>
+            <version>${cassandra-unit-spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
     </dependencies>
 
     <properties>
@@ -53,6 +60,7 @@
         <project.reporting.outputEncoding>UTF-8
         </project.reporting.outputEncoding>
         <spring-data-cassandra.version>2.1.2.RELEASE</spring-data-cassandra.version>
+        <cassandra-unit-spring.version>3.11.2.0</cassandra-unit-spring.version>
     </properties>
 
 </project>

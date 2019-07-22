@@ -18,6 +18,7 @@
         <module>apache-cayenne</module>
         <module>core-java-persistence</module>
         <module>deltaspike</module>
+        <module>elasticsearch</module>
         <module>flyway</module>
         <module>hbase</module>
         <module>hibernate5</module>
@@ -56,5 +57,6 @@
         <module>spring-hibernate4</module>
         <module>spring-jpa</module>
         <module>spring-persistence-simple</module>
+        <module>jpa-hibernate-cascade-type</module>
     </modules>
 </project>

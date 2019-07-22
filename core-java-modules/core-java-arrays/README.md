@@ -15,3 +15,4 @@
 - [Intersection Between two Integer Arrays](https://www.baeldung.com/java-array-intersection)
 - [Sorting Arrays in Java](https://www.baeldung.com/java-sorting-arrays)
 - [Convert a Float to a Byte Array in Java](https://www.baeldung.com/java-convert-float-to-byte-array)
+- [Converting Between Stream and Array in Java](https://www.baeldung.com/java-stream-to-array)

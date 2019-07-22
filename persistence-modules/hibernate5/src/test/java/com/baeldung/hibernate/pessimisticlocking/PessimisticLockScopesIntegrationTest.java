@@ -1,6 +1,9 @@
 package com.baeldung.hibernate.pessimisticlocking;
 
 import com.baeldung.hibernate.HibernateUtil;
+
+import org.hibernate.SessionFactory;
+import org.junit.AfterClass;
 import org.junit.Test;
 
 import javax.persistence.EntityManager;
@@ -13,6 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PessimisticLockScopesIntegrationTest {
+    
+    private static SessionFactory sessionFactory;
 
     @Test
     public void givenEclipseEntityWithJoinInheritance_whenNormalLock_thenShouldChildAndParentEntity() throws IOException {
@@ -104,12 +109,17 @@ public class PessimisticLockScopesIntegrationTest {
 
     protected EntityManager getEntityManagerWithOpenTransaction() throws IOException {
         String propertyFileName = "hibernate-pessimistic-locking.properties";
-        EntityManager entityManager = HibernateUtil.getSessionFactory(propertyFileName)
-            .openSession();
-        entityManager.getTransaction()
-            .begin();
+        if (sessionFactory == null) {
+            sessionFactory = HibernateUtil.getSessionFactory(propertyFileName);
+        }
+        EntityManager entityManager = sessionFactory.openSession();
+        entityManager.getTransaction().begin();
 
         return entityManager;
     }
-
+    
+    @AfterClass
+    public static void afterTests() {
+        sessionFactory.close();
+    }
 }

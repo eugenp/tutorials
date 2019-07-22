@@ -14,6 +14,7 @@
     </parent>
 
     <modules>
+        <module>easy-random</module>
         <module>gatling</module>
         <module>groovy-spock</module>
         <module>junit-5</module>
@@ -33,5 +34,8 @@
         <module>testing</module>
         <module>testng</module>
         <module>junit-5-basics</module>
+        <module>easymock</module>
+        <module>junit-5-advanced</module>
+        <module>xmlunit-2</module>
     </modules>
 </project>
