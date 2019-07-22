@@ -44,16 +44,7 @@ public class SortedArrayChecker {
         return true;
     }
 
-    boolean isSortedByName(Employee[] array, Comparator comparator) {
-        for (int i = 0; i < array.length - 1; ++i) {
-            if (comparator.compare(array[i], array[i + 1]) > 0)
-                return false;
-        }
-
-        return true;
-    }
-
-    boolean isSortedByAge(Employee[] array, Comparator comparator) {
+    boolean isSorted(Object[] array, Comparator comparator) {
         for (int i = 0; i < array.length - 1; ++i) {
             if (comparator.compare(array[i], (array[i + 1])) > 0)
                 return false;
@@ -62,13 +53,13 @@ public class SortedArrayChecker {
         return true;
     }
 
-    boolean isSortedByAge(Employee[] array, Comparator comparator, int length) {
+    boolean isSorted(Object[] array, Comparator comparator, int length) {
         if (array == null || length < 2)
             return true;
 
         if (comparator.compare(array[length - 2], array[length - 1]) > 0)
             return false;
 
-        return isSortedByAge(array, Comparator.comparingInt(Employee::getAge), length - 1);
+        return isSorted(array, comparator, length - 1);
     }
 }
