@@ -8,7 +8,10 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MultivaluedMap;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Named("refresh_token")
 public class RefreshTokenGrantTypeHandler extends AbstractGrantTypeHandler {
@@ -40,24 +43,23 @@ public class RefreshTokenGrantTypeHandler extends AbstractGrantTypeHandler {
         String subject = signedRefreshToken.getJWTClaimsSet().getSubject();
         String approvedScopes = signedRefreshToken.getJWTClaimsSet().getStringClaim("scope");
 
-        String finalScope = approvedScopes;
         String requestedScopes = params.getFirst("scope");
         if (requestedScopes != null && !requestedScopes.isEmpty()) {
-            Set<String> allowedScopes = new LinkedHashSet<>();
             Set<String> rScopes = new HashSet(Arrays.asList(requestedScopes.split(" ")));
             Set<String> aScopes = new HashSet(Arrays.asList(approvedScopes.split(" ")));
-            for (String scope : rScopes) {
-                if (aScopes.contains(scope)) allowedScopes.add(scope);
+            if (!aScopes.containsAll(rScopes)) {
+                throw new WebApplicationException("Requested scopes should be a subset of those authorized by the resource owner.");
             }
-            finalScope = String.join(" ", allowedScopes);
+        } else {
+            requestedScopes = approvedScopes;
         }
 
-        String accessToken = getAccessToken(clientId, subject, finalScope);
+        String accessToken = getAccessToken(clientId, subject, requestedScopes);
         return Json.createObjectBuilder()
                 .add("token_type", "Bearer")
                 .add("access_token", accessToken)
                 .add("expires_in", expiresInMin * 60)
-                .add("scope", finalScope)
+                .add("scope", requestedScopes)
                 .add("refresh_token", refreshToken)
                 .build();
     }
