@@ -30,6 +30,14 @@ public class InvoiceUnitTest {
     }
     
     @Test
+    public void whenPriceIntegerDigitGreaterThanThree_thenShouldGiveConstraintViolations() {
+    	Invoice invoice = new Invoice(new BigDecimal(1021.20), "Book purchased");
+        Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
+        assertThat(violations.size()).isEqualTo(1);
+        violations.forEach(action->System.out.println(action.getMessage()));
+    }
+    
+    @Test
     public void whenPriceIsZero_thenShouldGiveConstraintViolations() {
     	Invoice invoice = new Invoice(new BigDecimal(000.00), "Book purchased");
         Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
