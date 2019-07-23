@@ -46,7 +46,12 @@ public class RefreshTokenServlet extends AbstractServlet {
                 .header(HttpHeaders.AUTHORIZATION, getAuthorizationHeaderValue(clientId, clientSecret))
                 .post(Entity.entity(form, MediaType.APPLICATION_FORM_URLENCODED_TYPE), JsonObject.class);
 
-        request.getSession().setAttribute("tokenResponse", tokenResponse);
+        String error = tokenResponse.getString("error");
+        if (error != null) {
+            request.setAttribute("error", error);
+        } else {
+            request.getSession().setAttribute("tokenResponse", tokenResponse);
+        }
         dispatch("/", request, response);
     }
 }
