@@ -29,6 +29,9 @@ public class CallbackServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String clientId = config.getValue("client.clientId", String.class);
+        String clientSecret = config.getValue("client.clientSecret", String.class);
+
         //Error:
         String error = request.getParameter("error");
         if (error != null) {

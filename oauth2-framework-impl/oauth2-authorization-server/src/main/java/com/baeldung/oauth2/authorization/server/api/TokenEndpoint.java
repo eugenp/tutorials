@@ -15,15 +15,15 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
+import java.util.Arrays;
 import java.util.Base64;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 @Path("token")
 public class TokenEndpoint {
 
-    List<String> supportedGrantTypes = Collections.singletonList("authorization_code");
+    List<String> supportedGrantTypes = Arrays.asList("authorization_code", "refresh_token");
 
     @Inject
     private AppDataRepository appDataRepository;
