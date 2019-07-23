@@ -64,6 +64,8 @@ public class TokenEndpoint {
         JsonObject tokenResponse = null;
         try {
             tokenResponse = authorizationGrantTypeHandler.createAccessToken(clientId, params);
+        } catch (WebApplicationException e) {
+            return e.getResponse();
         } catch (Exception e) {
             return responseError("Invalid_request", "Can't get token", Response.Status.INTERNAL_SERVER_ERROR);
         }

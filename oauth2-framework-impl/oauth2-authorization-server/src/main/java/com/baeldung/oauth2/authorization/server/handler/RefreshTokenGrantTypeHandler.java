@@ -8,6 +8,7 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
@@ -48,7 +49,12 @@ public class RefreshTokenGrantTypeHandler extends AbstractGrantTypeHandler {
             Set<String> rScopes = new HashSet(Arrays.asList(requestedScopes.split(" ")));
             Set<String> aScopes = new HashSet(Arrays.asList(approvedScopes.split(" ")));
             if (!aScopes.containsAll(rScopes)) {
-                throw new WebApplicationException("Requested scopes should be a subset of those authorized by the resource owner.");
+                JsonObject error = Json.createObjectBuilder()
+                        .add("error", "Invalid_request")
+                        .add("error_description", "Requested scopes should be a subset of the original scopes.")
+                        .build();
+                Response response = Response.status(Response.Status.BAD_REQUEST).entity(error).build();
+                throw new WebApplicationException(response);
             }
         } else {
             requestedScopes = approvedScopes;

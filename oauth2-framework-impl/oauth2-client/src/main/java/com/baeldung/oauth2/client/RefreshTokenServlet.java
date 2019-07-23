@@ -15,6 +15,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Form;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/refreshtoken")
@@ -42,16 +43,13 @@ public class RefreshTokenServlet extends AbstractServlet {
             form.param("scope", scope);
         }
 
-        JsonObject tokenResponse = target.request(MediaType.APPLICATION_JSON_TYPE)
+        Response jaxrsResponse = target.request(MediaType.APPLICATION_JSON_TYPE)
                 .header(HttpHeaders.AUTHORIZATION, getAuthorizationHeaderValue(clientId, clientSecret))
-                .post(Entity.entity(form, MediaType.APPLICATION_FORM_URLENCODED_TYPE), JsonObject.class);
+                .post(Entity.entity(form, MediaType.APPLICATION_FORM_URLENCODED_TYPE), Response.class);
+        JsonObject tokenResponse = jaxrsResponse.readEntity(JsonObject.class);
+        System.out.println(tokenResponse);
 
-        String error = tokenResponse.getString("error");
-        if (error != null) {
-            request.setAttribute("error", error);
-        } else {
-            request.getSession().setAttribute("tokenResponse", tokenResponse);
-        }
+        request.getSession().setAttribute("tokenResponse", tokenResponse);
         dispatch("/", request, response);
     }
 }
