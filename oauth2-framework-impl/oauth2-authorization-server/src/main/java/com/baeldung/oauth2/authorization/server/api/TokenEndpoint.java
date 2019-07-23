@@ -18,7 +18,6 @@ import javax.ws.rs.core.Response;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
-import java.util.Objects;
 
 @Path("token")
 public class TokenEndpoint {
@@ -39,28 +38,26 @@ public class TokenEndpoint {
 
         //Check grant_type params
         String grantType = params.getFirst("grant_type");
-        Objects.requireNonNull(grantType, "grant_type params is required");
-        if (!supportedGrantTypes.contains(grantType)) {
-            JsonObject error = Json.createObjectBuilder()
-                    .add("error", "unsupported_grant_type")
-                    .add("error_description", "grant type should be one of :" + supportedGrantTypes)
-                    .build();
-            return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(error).build();
+        if (grantType == null || grantType.isEmpty())
+            return responseError("Invalid_request", "grant_type is required", Response.Status.BAD_REQUEST);
 
+        if (!supportedGrantTypes.contains(grantType)) {
+            return responseError("unsupported_grant_type", "grant_type should be one of :" + supportedGrantTypes, Response.Status.BAD_REQUEST);
         }
 
         //Client Authentication
         String[] clientCredentials = extract(authHeader);
+        if (clientCredentials.length != 2) {
+            return responseError("Invalid_request", "Bad Credentials client_id/client_secret", Response.Status.BAD_REQUEST);
+        }
         String clientId = clientCredentials[0];
-        String clientSecret = clientCredentials[1];
         Client client = appDataRepository.getClient(clientId);
-        if (client == null || clientSecret == null || !clientSecret.equals(client.getClientSecret())) {
-            JsonObject error = Json.createObjectBuilder()
-                    .add("error", "invalid_client")
-                    .build();
-            return Response.status(Response.Status.UNAUTHORIZED)
-                    .entity(error).build();
+        if (client == null) {
+            return responseError("Invalid_request", "Invalid client_id", Response.Status.BAD_REQUEST);
+        }
+        String clientSecret = clientCredentials[1];
+        if (!clientSecret.equals(client.getClientSecret())) {
+            return responseError("Invalid_request", "Invalid client_secret", Response.Status.UNAUTHORIZED);
         }
 
         AuthorizationGrantTypeHandler authorizationGrantTypeHandler = authorizationGrantTypeHandlers.select(NamedLiteral.of(grantType)).get();
@@ -68,7 +65,7 @@ public class TokenEndpoint {
         try {
             tokenResponse = authorizationGrantTypeHandler.createAccessToken(clientId, params);
         } catch (Exception e) {
-            e.printStackTrace();
+            return responseError("Invalid_request", "Can't get token", Response.Status.INTERNAL_SERVER_ERROR);
         }
 
         return Response.ok(tokenResponse)
@@ -81,6 +78,15 @@ public class TokenEndpoint {
         if (authHeader != null && authHeader.startsWith("Basic ")) {
             return new String(Base64.getDecoder().decode(authHeader.substring(6))).split(":");
         }
-        return null;
+        return new String[]{};
+    }
+
+    private Response responseError(String error, String errorDescription, Response.Status status) {
+        JsonObject errorResponse = Json.createObjectBuilder()
+                .add("error", error)
+                .add("error_description", errorDescription)
+                .build();
+        return Response.status(status)
+                .entity(errorResponse).build();
     }
 }
