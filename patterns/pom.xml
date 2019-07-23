@@ -20,6 +20,7 @@
         <module>design-patterns-2</module>
         <module>solid</module>
         <module>dip</module>     
+        <module>port-and-adapter</module>
     </modules>
 
     <dependencyManagement>

@@ -1,0 +1,28 @@
+@startuml
+
+class PaymentController {
+    Application Adapter
+}
+
+interface PaymentService {
+    Inbound Port
+}
+
+interface PaymentRepository {
+    Outbound Port
+}
+
+class PaymentRepositoryImpl {
+    Infrastructure Adapter
+}
+
+class PaymentServiceImpl {
+    Domain Logic
+}
+
+PaymentService <|-- PaymentServiceImpl: implements
+PaymentService *-- PaymentController: has
+PaymentRepository *-- PaymentServiceImpl: has
+PaymentRepository <|-- PaymentRepositoryImpl: implements
+
+@enduml
