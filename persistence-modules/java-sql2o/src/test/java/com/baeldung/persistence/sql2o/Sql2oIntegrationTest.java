@@ -1,4 +1,4 @@
-package com.baeldung.persistence.jdbi;
+package com.baeldung.persistence.sql2o;
 
 import org.junit.Test;
 import org.sql2o.Connection;
@@ -8,12 +8,9 @@ import org.sql2o.Sql2o;
 import org.sql2o.data.Row;
 import org.sql2o.data.Table;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
 
