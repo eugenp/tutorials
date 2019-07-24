@@ -42,8 +42,6 @@
 
     <properties>
         <javax.mail.version>1.5.0-b01</javax.mail.version>
-        <commons-io.version>2.5</commons-io.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
     </properties>	
 </project>

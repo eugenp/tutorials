@@ -64,7 +64,6 @@
     <properties>
         <springframework.version>4.3.4.RELEASE</springframework.version>
         <activemq.version>5.14.1</activemq.version>
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
     </properties>
 
 </project>

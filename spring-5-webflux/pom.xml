@@ -28,11 +28,6 @@
         </dependencies>
     </dependencyManagement>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <spring-boot.version>2.2.0.M3</spring-boot.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -86,6 +81,7 @@
             <url>https://repo.spring.io/milestone</url>
         </repository>
     </repositories>
+
     <pluginRepositories>
         <pluginRepository>
             <id>spring-snapshots</id>
@@ -101,4 +97,8 @@
             <url>https://repo.spring.io/milestone</url>
         </pluginRepository>
     </pluginRepositories>
+
+    <properties>
+        <spring-boot.version>2.2.0.M3</spring-boot.version>
+    </properties>
 </project>

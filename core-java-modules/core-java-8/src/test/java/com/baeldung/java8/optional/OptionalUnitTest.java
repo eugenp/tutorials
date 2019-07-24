@@ -259,4 +259,15 @@ public class OptionalUnitTest {
         LOG.debug("Getting default value...");
         return "Default Value";
     }
+    
+//    Uncomment code when code base is compatiable with Java 11     
+//    @Test
+//    public void givenAnEmptyOptional_thenIsEmptyBehavesAsExpected() {
+//        Optional<String> opt = Optional.of("Baeldung");
+//        assertFalse(opt.isEmpty());
+//     
+//        opt = Optional.ofNullable(null);
+//        assertTrue(opt.isEmpty());
+//    }
+
 }
