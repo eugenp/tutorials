@@ -18,11 +18,6 @@ class EmployeeBuilderUnitTest {
           .setName(NAME)
           .setAge(12)
           .setDepartment("Builder Pattern")
-          .setDesignation("Author")
-          .setEmail("abc@xyz.com")
-          .setPermanent(true)
-          .setSupervisorName("Admin")
-          .setPhoneNumber(4445566)
           .build();
 
         //then

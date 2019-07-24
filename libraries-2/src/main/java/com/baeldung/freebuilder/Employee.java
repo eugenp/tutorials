@@ -41,6 +41,8 @@ public interface Employee {
 
     Map<String, Long> getAssetsSerialIdMapping();
 
+    Optional<Double> getSalaryInUSD();
+
 
     class Builder extends Employee_Builder {
 

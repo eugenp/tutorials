@@ -15,6 +15,8 @@ public class EmployeeBuilderUnitTest {
 
     private static final int PIN_CODE = 223344;
     public static final String CITY_NAME = "New York";
+    public static final int INPUT_SALARY_EUROS = 10000;
+    public static final double EUROS_TO_USD_RATIO = 0.6;
 
     @Test
     public void whenBuildEmployeeWithAddress_thenReturnEmployeeWithValidAddress() {
@@ -33,15 +35,27 @@ public class EmployeeBuilderUnitTest {
     }
 
     @Test
-    public void whenMapPincodeInAddress_thenReturnEmployeeWithValidAddressPincode() {
+    public void whenMapSalary_thenReturnEmployeeWithSalaryInUSD() {
 
         // when
         Address.Builder addressBuilder = new Address.Builder();
         Address address = addressBuilder.setCity(CITY_NAME).setPinCode(PIN_CODE).build();
 
+        long salaryInEuros = INPUT_SALARY_EUROS;
         Employee.Builder builder = new Employee.Builder();
 
-        Employee employee = builder.setName("baeldung").setAge(10).setDesignation("author").setEmail("abc@xyz.com").setSupervisorName("Admin").setPhoneNumber(4445566).setPermanent(true).setRole("developer").setAddress(address).build();
+        Employee employee = builder
+          .setName("baeldung")
+          .setAge(10)
+          .setDesignation("author")
+          .setEmail("abc@xyz.com")
+          .setSupervisorName("Admin")
+          .setPhoneNumber(4445566)
+          .setPermanent(true)
+          .setRole("developer")
+          .setAddress(address)
+          .mapSalaryInUSD(sal -> salaryInEuros * EUROS_TO_USD_RATIO)
+          .build();
 
         // then
         assertTrue(employee.getAddress().getPinCode().get() == PIN_CODE);
