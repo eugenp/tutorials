@@ -1,12 +1,12 @@
-package com.baeldung;
+package com.baeldung.springbootconfiguration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.baeldung.ServiceImpl.PersonServiceImpl;
-import com.baeldung.service.PersonService;
+import com.baeldung.springbootconfiguration.ServiceImpl.PersonServiceImpl;
+import com.baeldung.springbootconfiguration.service.PersonService;
 
 @ComponentScan(basePackages = { "com.baeldung.*" })
 @SpringBootConfiguration
