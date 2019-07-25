@@ -22,6 +22,10 @@ public class UnitTestNamingConventionRule extends AbstractJavaRule {
         String className = node.getImage();
         Objects.requireNonNull(className);
 
+        if (className.endsWith("SpringContextTest")) {
+            return data;
+        }
+        
         if (className.endsWith("Tests")
                 || (className.endsWith("Test") && allowedEndings.stream().noneMatch(className::endsWith))) {
             addViolation(data, node);

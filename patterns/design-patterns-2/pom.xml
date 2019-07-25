@@ -38,6 +38,5 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <intellij.annotations.version>16.0.2</intellij.annotations.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
     </properties>
 </project>
