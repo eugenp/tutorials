@@ -26,7 +26,6 @@ public class InvoiceUnitTest {
     	Invoice invoice = new Invoice(new BigDecimal(10.20), "Book purchased");
         Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
         assertThat(violations.size()).isEqualTo(1);
-        violations.forEach(action->System.out.println(action.getMessage()));
     }
     
     @Test
@@ -34,7 +33,6 @@ public class InvoiceUnitTest {
     	Invoice invoice = new Invoice(new BigDecimal(1021.20), "Book purchased");
         Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
         assertThat(violations.size()).isEqualTo(1);
-        violations.forEach(action->System.out.println(action.getMessage()));
     }
     
     @Test
@@ -42,7 +40,6 @@ public class InvoiceUnitTest {
     	Invoice invoice = new Invoice(new BigDecimal(000.00), "Book purchased");
         Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
         assertThat(violations.size()).isEqualTo(1);
-        violations.forEach(action->System.out.println(action.getMessage()));
     }
     
     @Test
@@ -50,7 +47,6 @@ public class InvoiceUnitTest {
     	Invoice invoice = new Invoice(new BigDecimal(100.50), "Book purchased");
         Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
         assertThat(violations.size()).isEqualTo(0);
-        violations.forEach(action->System.out.println(action.getMessage()));
     }
 
 }
