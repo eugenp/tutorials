@@ -11,7 +11,7 @@ public class FoodWarehouse implements WarehousePort {
     @SuppressWarnings("unchecked")
     public Collection<String> getProductsList() {
 
-        final Collection<String> productList = new ArrayList();
+        Collection<String> productList = new ArrayList();
         productList.add("Fat free milk");
         productList.add("Pork");
         productList.add("Frozen breakfast");

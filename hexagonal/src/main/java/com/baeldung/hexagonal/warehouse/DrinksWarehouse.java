@@ -11,7 +11,7 @@ public class DrinksWarehouse implements WarehousePort {
     @SuppressWarnings("unchecked")
     public Collection<String> getProductsList() {
 
-        final Collection<String> productList = new ArrayList();
+        Collection<String> productList = new ArrayList();
         productList.add("English wine");
         productList.add("Rum");
         productList.add("Champagne");
