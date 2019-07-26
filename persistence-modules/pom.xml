@@ -58,5 +58,6 @@
         <module>spring-jpa</module>
         <module>spring-persistence-simple</module>
         <module>jpa-hibernate-cascade-type</module>
+				<module>r2dbc</module>
     </modules>
 </project>
