@@ -312,6 +312,10 @@
 						<configuration>
 							<forkCount>3</forkCount>
 							<reuseForks>true</reuseForks>
+							<includes>
+								<include>SpringContextTest</include>
+								<include>**/*UnitTest</include>
+							</includes>
 							<excludes>
 								<exclude>**/*IntegrationTest.java</exclude>
 								<exclude>**/*IntTest.java</exclude>
@@ -461,6 +465,7 @@
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
                 <module>java-lite</module>
                 <module>java-numbers</module>
+                <module>java-numbers-2</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-streams</module>
@@ -505,6 +510,7 @@
 				<module>libraries-security</module>
 				<module>libraries-server</module>
 				<module>libraries-http</module>
+				<module>libraries-io</module>
 				<module>linkrest</module>
 				<module>logging-modules</module>
 				<module>lombok</module>
@@ -543,7 +549,6 @@
 				<!-- <module>raml</module> --> <!-- Not a maven project -->
 				<module>ratpack</module>
 				<module>reactor-core</module>
-				<module>rest-with-spark-java</module>
 				<module>resteasy</module>
 				<module>restx</module>
 				<!-- <module>rmi</module> --> <!-- Not a maven project -->
@@ -556,7 +561,6 @@
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
-				<module>morphia</module>
 
 			</modules>
 
@@ -574,6 +578,10 @@
 						<configuration>
 							<forkCount>3</forkCount>
 							<reuseForks>true</reuseForks>
+							<includes>
+								<include>SpringContextTest</include>
+								<include>**/*UnitTest</include>
+							</includes>
 							<excludes>
 								<exclude>**/*IntegrationTest.java</exclude>
 								<exclude>**/*IntTest.java</exclude>
@@ -606,6 +614,7 @@
 				<module>spring-5-data-reactive</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-2</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-reactive-oauth</module>
 				<module>spring-5-reactive-security</module>
@@ -655,22 +664,23 @@
 				<module>spring-boot-vue</module>
 				<module>spring-boot-libraries</module>
 
-				<module>spring-cloud</module>
-				<module>spring-cloud-bus</module>
+				
+                                <!-- <module>spring-cloud</module> --> <!-- BAEL-14304 -->
+				<!-- <module>spring-cloud-bus</module> --> <!-- BAEL-14304 -->
 				<!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-				<module>spring-cloud-data-flow</module>
+                                <!-- <module>spring-cloud-data-flow</module> --> <!-- BAEL-14304 -->
 
 				<module>spring-core</module>
 				<module>spring-core-2</module>
 				<module>spring-cucumber</module>
 
 				<module>spring-data-rest</module>
-				<module>spring-data-rest-querydsl</module>
+				<!-- <module>spring-data-rest-querydsl</module> --> <!-- BAEL-14304 -->
 				<module>spring-dispatcher-servlet</module>
 				<module>spring-drools</module>
 
 				<module>spring-ehcache</module>
-				<module>spring-ejb</module>
+				<!-- <module>spring-ejb</module> BAEL-14304 -->
 				<module>spring-exceptions</module>
 
 				<module>spring-freemarker</module>
@@ -744,7 +754,7 @@
 				<module>spring-security-stormpath</module>
 				<module>spring-security-thymeleaf</module>
 				<module>spring-security-x509</module>
-				<module>spring-session</module>
+				<!-- <module>spring-session</module> BAEL-14304 -->
 				<module>spring-sleuth</module>
 				<module>spring-soap</module>
 				<module>spring-social-login</module>
@@ -755,12 +765,10 @@
 
 				<module>spring-thymeleaf</module>
 
-				<module>spring-userservice</module>
-
-				<module>spring-vault</module>
+				<!-- <module>spring-vault</module> BAEL-14304 -->
 				<module>spring-vertx</module>
 
-				<module>spring-webflux-amqp</module> <!-- long -->
+				<!-- <module>spring-webflux-amqp</module> BAEL-14304 --> <!-- long --> 
 
 				<module>spring-zuul</module>
 
@@ -784,13 +792,11 @@
 				<module>wicket</module>
 
 				<module>xml</module>
-				<module>xmlunit-2</module>
 				<module>xstream</module>
 
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
-				<module>morphia</module>
 
 			</modules>
 
@@ -821,6 +827,7 @@
 				<module>spring-5</module>
 				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-2</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-security</module>
@@ -839,7 +846,8 @@
 				<module>spring-boot-camel</module>
 				<module>spring-boot-client</module>
 				<module>spring-boot-custom-starter</module>
-				<module>greeter-spring-boot-autoconfigure</module>
+				<module>spring-boot-di</module>
+		 		<module>greeter-spring-boot-autoconfigure</module>
 				<module>greeter-spring-boot-sample-app</module>
 				<module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
 				<module>spring-boot-jasypt</module>
@@ -926,7 +934,6 @@
 				<module>spring-state-machine</module>
 				<module>spring-swagger-codegen/spring-swagger-codegen-app</module>
 				<module>spring-thymeleaf</module>
-				<module>spring-userservice</module>
 				<module>spring-vault</module>
 				<module>spring-vertx</module>
 				<module>spring-zuul/spring-zuul-foos-resource</module>
@@ -954,6 +961,10 @@
 						<configuration>
 							<forkCount>3</forkCount>
 							<reuseForks>true</reuseForks>
+							<includes>
+								<include>SpringContextTest</include>
+								<include>**/*UnitTest</include>
+							</includes>
 							<excludes>
 								<exclude>**/*IntegrationTest.java</exclude>
 								<exclude>**/*IntTest.java</exclude>
@@ -986,7 +997,6 @@
 				<module>jws</module>
 
 				<module>libraries</module> <!-- very long running -->
-
 				<module>persistence-modules/hibernate5</module>
 				<module>persistence-modules/hibernate-mapping</module>
 				<module>persistence-modules/java-jpa</module>
@@ -1147,6 +1157,7 @@
 				<module>java-ee-8-security-api</module>
 				<module>java-lite</module>
 				<module>java-numbers</module>
+				<module>java-numbers-2</module>
 				<module>java-rmi</module>
 				<module>java-spi</module>
 				<module>java-streams</module>
@@ -1226,7 +1237,6 @@
 				<!-- <module>raml</module> --> <!-- Not a maven project -->
 				<module>ratpack</module>
 				<module>reactor-core</module>
-				<module>rest-with-spark-java</module>
 				<module>resteasy</module>
 				<module>restx</module>
 				<!-- <module>rmi</module> --> <!-- Not a maven project -->
@@ -1278,6 +1288,7 @@
 				<module>spring-5-data-reactive</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-2</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-reactive-oauth</module>
 				<module>spring-5-reactive-security</module>
@@ -1422,8 +1433,6 @@
 
 				<module>spring-thymeleaf</module>
 
-				<module>spring-userservice</module>
-
 				<module>spring-vault</module>
 				<module>spring-vertx</module>
 
@@ -1451,9 +1460,7 @@
 				<module>wicket</module>
 
 				<module>xml</module>
-				<module>xmlunit-2</module>
 				<module>xstream</module>
-
 			</modules>
 
 		</profile>
@@ -1557,6 +1564,7 @@
 		<maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
 		<commons-io.version>2.5</commons-io.version>
 		<commons-lang.version>2.6</commons-lang.version>
+		<commons-lang3.version>3.5</commons-lang3.version>
 		<commons-cli.version>1.4</commons-cli.version>
 		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>
 		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>

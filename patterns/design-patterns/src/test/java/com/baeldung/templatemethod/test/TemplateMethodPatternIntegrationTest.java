@@ -1,14 +1,16 @@
 package com.baeldung.templatemethod.test;
 
-import com.baeldung.pattern.templatemethod.model.Computer;
-import com.baeldung.pattern.templatemethod.model.HighEndComputerBuilder;
-import com.baeldung.pattern.templatemethod.model.StandardComputerBuilder;
-import org.junit.Assert;
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertThat;
+
+import com.baeldung.templatemethod.model.Computer;
+import com.baeldung.templatemethod.model.HighEndComputerBuilder;
+import com.baeldung.templatemethod.model.StandardComputerBuilder;
 
 public class TemplateMethodPatternIntegrationTest {
 

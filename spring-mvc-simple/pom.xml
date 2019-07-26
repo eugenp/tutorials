@@ -47,7 +47,7 @@
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>${fileupload.version}</version>
+            <version>${commons-fileupload.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -162,18 +162,16 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <maven-war-plugin.version>3.2.0</maven-war-plugin.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <javax.servlet.jsp-api.version>2.3.2-b02</javax.servlet.jsp-api.version>
         <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <deploy-path>enter-location-of-server</deploy-path>
-        <fileupload.version>1.3.2</fileupload.version>
+        <commons-fileupload.version>1.3.2</commons-fileupload.version>
         <org.thymeleaf-version>3.0.7.RELEASE</org.thymeleaf-version>
         <groovy.version>2.4.12</groovy.version>
         <freemarker.version>2.3.27-incubating</freemarker.version>
         <jade.version>1.2.5</jade.version>
-        <junit.platform.version>1.0.2</junit.platform.version>
         <rome.version>1.9.0</rome.version>
         <xstream.version>1.4.9</xstream.version>
         <scribejava.version>5.1.0</scribejava.version>
