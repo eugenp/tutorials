@@ -5,9 +5,6 @@ import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.baeldung.springbootconfiguration.ServiceImpl.PersonServiceImpl;
-import com.baeldung.springbootconfiguration.service.PersonService;
-
 @ComponentScan(basePackages = { "com.baeldung.*" })
 @SpringBootConfiguration
 public class Application {
