@@ -5,7 +5,7 @@ import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = { "com.baeldung.*" })
+@ComponentScan(basePackages = {"com.baeldung.springbootconfiguration"})
 @SpringBootConfiguration
 public class Application {
 
