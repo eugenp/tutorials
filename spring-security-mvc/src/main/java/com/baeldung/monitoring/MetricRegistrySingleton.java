@@ -1,4 +1,4 @@
-package org.baeldung.monitoring;
+package com.baeldung.monitoring;
 
 import java.util.concurrent.TimeUnit;
 

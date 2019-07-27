@@ -1,11 +1,9 @@
-package org.baeldung.spring;
+package com.baeldung.spring;
 
-import org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,9 +11,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 
+import com.baeldung.security.MySimpleUrlAuthenticationSuccessHandler;
+
 @Configuration
 // @ImportResource({ "classpath:webSecurityConfig.xml" })
-@EnableWebSecurity
 public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
 
     public SecSecurityConfig() {
@@ -39,7 +38,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         .csrf().disable()
         .authorizeRequests()
         .antMatchers("/anonymous*").anonymous()
-        .antMatchers("/login*").permitAll()
+        .antMatchers("/login*","/invalidSession*", "/sessionExpired*").permitAll()
         .anyRequest().authenticated()
         .and()
         .formLogin()
@@ -70,7 +69,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     public HttpSessionEventPublisher httpSessionEventPublisher() {
         return new HttpSessionEventPublisher();
     }
-    
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
