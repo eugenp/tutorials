@@ -9,6 +9,14 @@ public class TextEditor {
         this.textWindow = textWindow;
     }
 
+    public void write(String text) {
+        textWindow.addText(text);
+    }
+
+    public String print() {
+        return textWindow.getCurrentText();
+    }
+
     public void hitSave() {
         savedTextWindow = textWindow.save();
     }

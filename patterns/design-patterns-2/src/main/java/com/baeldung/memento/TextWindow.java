@@ -3,11 +3,13 @@ package com.baeldung.memento;
 public class TextWindow {
 
     private StringBuilder currentText;
-    private Coordinates cursorPosition;
 
     public TextWindow() {
         this.currentText = new StringBuilder();
-        this.cursorPosition = new Coordinates(0, 0);
+    }
+
+    public String getCurrentText() {
+        return currentText.toString();
     }
 
     public void addText(String text) {
@@ -20,11 +22,5 @@ public class TextWindow {
 
     public void restore(TextWindowState save) {
         currentText = new StringBuilder(save.getText());
-        cursorPosition = atTextEnd();
-    }
-
-    private Coordinates atTextEnd() {
-        String[] lines = currentText.toString().split("\n");
-        return new Coordinates(lines[lines.length - 1].length(), lines.length);
     }
 }
