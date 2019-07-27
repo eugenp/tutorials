@@ -70,7 +70,6 @@
         <struts2.version>2.5.5</struts2.version>
         <struts2-convention-plugin.version>2.5.8</struts2-convention-plugin.version>
         <spring.version>4.3.6.RELEASE</spring.version>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
     </properties>
 
 </project>
