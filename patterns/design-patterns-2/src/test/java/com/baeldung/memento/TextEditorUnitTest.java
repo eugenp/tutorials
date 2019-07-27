@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class TextEditorTest {
+class TextEditorUnitTest {
 
     @Test
     void givenTextEditor_whenAddTextSaveAddMoreAndUndo_thenSavecStateRestored() {
