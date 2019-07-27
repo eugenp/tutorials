@@ -1,4 +1,4 @@
-package com.baeldung.spring.filter;
+package org.baeldung.filter;
 
 import java.io.IOException;
 
