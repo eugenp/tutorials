@@ -10,6 +10,7 @@
         body {
             margin: 0px;
         }
+
         input[type=text], input[type=password] {
             width: 75%;
             padding: 4px 0px;
@@ -17,6 +18,7 @@
             border: 1px solid #502bcc;
             box-sizing: border-box;
         }
+
         .container-error {
             padding: 16px;
             border: 1px solid #cc102a;
@@ -25,6 +27,7 @@
             margin-left: 25px;
             margin-bottom: 25px;
         }
+
         .container {
             padding: 16px;
             border: 1px solid #130ecc;
@@ -81,8 +84,20 @@
         <li>access_token: ${tokenResponse.getString("access_token")}</li>
         <li>scope: ${tokenResponse.getString("scope")}</li>
         <li>Expires in (s): ${tokenResponse.getInt("expires_in")}</li>
+        <li>refresh_token: ${tokenResponse.getString("refresh_token")}</li>
     </ul>
 </div>
+
+<div class="container">
+    <span><h4>Refresh Token</h4></span>
+    <hr>
+    <ul>
+        <li><a href="refreshtoken">Refresh token (original scope)</a></li>
+        <li><a href="refreshtoken?scope=resource.read">Refresh token (scope: resource.read)</a></li>
+        <li><a href="refreshtoken?scope=resource.write">Refresh token (scope: resource.write)</a></li>
+    </ul>
+</div>
+
 <div class="container">
     <span><h4>OAuth2 Resource Server Call</h4></span>
     <hr>
@@ -90,7 +105,6 @@
         <li><a href="downstream?action=read">Read Protected Resource</a></li>
         <li><a href="downstream?action=write">Write Protected Resource</a></li>
     </ul>
-
 </div>
 
 </body>
