@@ -1,6 +1,6 @@
-package com.baeldung.properties;
+package com.baeldung.properties.reloading;
 
-import com.baeldung.properties.configs.ReloadableProperties;
+import com.baeldung.properties.reloading.configs.ReloadableProperties;
 import java.io.File;
 import java.util.Properties;
 import org.apache.commons.configuration.PropertiesConfiguration;

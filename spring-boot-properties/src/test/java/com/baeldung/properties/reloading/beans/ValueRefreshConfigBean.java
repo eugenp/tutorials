@@ -1,4 +1,4 @@
-package com.baeldung.properties.beans;
+package com.baeldung.properties.reloading.beans;
 
 public class ValueRefreshConfigBean {
     private String color;

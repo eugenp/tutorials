@@ -1,9 +1,9 @@
-package com.baeldung.properties;
+package com.baeldung.properties.reloading;
 
-import com.baeldung.properties.beans.ConfigurationPropertiesRefreshConfigBean;
-import com.baeldung.properties.beans.EnvironmentConfigBean;
-import com.baeldung.properties.beans.PropertiesConfigBean;
-import com.baeldung.properties.beans.ValueRefreshConfigBean;
+import com.baeldung.properties.reloading.beans.ConfigurationPropertiesRefreshConfigBean;
+import com.baeldung.properties.reloading.beans.EnvironmentConfigBean;
+import com.baeldung.properties.reloading.beans.PropertiesConfigBean;
+import com.baeldung.properties.reloading.beans.ValueRefreshConfigBean;
 import java.io.FileOutputStream;
 import org.junit.After;
 import org.junit.Assert;

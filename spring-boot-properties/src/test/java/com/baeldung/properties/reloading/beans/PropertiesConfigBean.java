@@ -1,4 +1,4 @@
-package com.baeldung.properties.beans;
+package com.baeldung.properties.reloading.beans;
 
 import java.util.Properties;
 import org.springframework.beans.factory.annotation.Autowired;

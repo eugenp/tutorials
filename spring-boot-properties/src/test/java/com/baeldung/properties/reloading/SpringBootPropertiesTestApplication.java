@@ -1,6 +1,6 @@
-package com.baeldung.properties;
+package com.baeldung.properties.reloading;
 
-import com.baeldung.properties.beans.ValueRefreshConfigBean;
+import com.baeldung.properties.reloading.beans.ValueRefreshConfigBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
