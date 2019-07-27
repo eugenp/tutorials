@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class LoopDiagonallyTest {
+public class LoopDiagonallyUnitTest {
 
     @Test
     public void twoArrayIsLoopedDiagonallyAsExpected() {
