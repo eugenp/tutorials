@@ -2,7 +2,7 @@ package com.baeldung.junit5.testinstance;
 
 import java.io.Serializable;
 
-public class Report implements Serializable {
+public class Tweet implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String id;
