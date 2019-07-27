@@ -7,15 +7,15 @@ import java.util.List;
 
 @RestController
 public class BooksControllerImpl implements BooksController {
-    private BooksDao booksDao;
+	private BooksDao booksDao;
 
-    public BooksControllerImpl(BooksDao booksDao) {
-        this.booksDao = booksDao;
-    }
+	public BooksControllerImpl(BooksDao booksDao) {
+		this.booksDao = booksDao;
+	}
 
-    @GetMapping("/books")
-    @Override
-    public List<Book> getBooks() {
-        return booksDao.findAllBooks();
-    }
+	@GetMapping("/books")
+	@Override
+	public List<Book> getBooks() {
+		return booksDao.findAllBooks();
+	}
 }
