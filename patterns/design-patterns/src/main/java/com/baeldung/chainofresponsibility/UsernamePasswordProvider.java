@@ -1,4 +1,4 @@
-package com.baeldung.pattern.chainofresponsibility;
+package com.baeldung.chainofresponsibility;
 
 public class UsernamePasswordProvider implements AuthenticationProvider {
 

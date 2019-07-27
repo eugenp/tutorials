@@ -287,7 +287,6 @@
 
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <javassist.version>3.25.0-GA</javassist.version>
 
         <!-- Maven plugins -->

@@ -40,3 +40,4 @@
 - [Java 8 Predicate Chain](https://www.baeldung.com/java-predicate-chain)
 - [Method References in Java](https://www.baeldung.com/java-method-references)
 - [Creating a Custom Annotation in Java](https://www.baeldung.com/java-custom-annotation)
+- [The Difference Between Collection.stream().forEach() and Collection.forEach()](https://www.baeldung.com/java-collection-stream-foreach)

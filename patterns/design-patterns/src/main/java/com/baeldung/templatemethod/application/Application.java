@@ -1,11 +1,9 @@
-package com.baeldung.pattern.templatemethod.application;
+package com.baeldung.templatemethod.application;
 
-import com.baeldung.pattern.templatemethod.model.Computer;
-import com.baeldung.pattern.templatemethod.model.StandardComputer;
-import com.baeldung.pattern.templatemethod.model.HighEndComputer;
-import com.baeldung.pattern.templatemethod.model.ComputerBuilder;
-import com.baeldung.pattern.templatemethod.model.HighEndComputerBuilder;
-import com.baeldung.pattern.templatemethod.model.StandardComputerBuilder;
+import com.baeldung.templatemethod.model.Computer;
+import com.baeldung.templatemethod.model.ComputerBuilder;
+import com.baeldung.templatemethod.model.HighEndComputerBuilder;
+import com.baeldung.templatemethod.model.StandardComputerBuilder;
 
 public class Application {
     
