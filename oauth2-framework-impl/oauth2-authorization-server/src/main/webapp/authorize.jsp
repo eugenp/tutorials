@@ -41,8 +41,8 @@
 
             <tr>
                 <td colspan="2">
-                    <input type="submit" name="approbation_status" value="YES"/>
-                    <input type="submit" name="approbation_status" value="NO"/>
+                    <input type="submit" name="approval_status" value="YES"/>
+                    <input type="submit" name="approval_status" value="NO"/>
                 </td>
             </tr>
         </table>
