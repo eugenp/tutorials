@@ -11,7 +11,6 @@ import groovy.util.logging.*
 @TupleConstructor
 @EqualsAndHashCode
 @ToString(includePackage=false, excludes=['id'])
-//@Singleton
 @Log 
 @AutoClone
 class Employee {
