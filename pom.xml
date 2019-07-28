@@ -483,7 +483,7 @@
                 <module>jee-7</module> -->
 				<module>jee-7-security</module>
 				<module>jersey</module>
-				<module>JGit</module>
+				<module>jgit</module>
 				<module>jgroups</module>
 				<module>jhipster-5</module>
 				<module>jib</module>
@@ -781,7 +781,7 @@
 				<module>testing-modules</module>
 
 				<module>twilio</module>
-				<module>Twitter4J</module>
+				<module>twitter4j</module>
 
 				<module>undertow</module>
 
