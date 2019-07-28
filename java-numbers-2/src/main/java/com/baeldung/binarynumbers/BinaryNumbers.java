@@ -112,7 +112,7 @@ public class BinaryNumbers {
     public Integer substractBinaryNumber(Integer firstNum, Integer secondNum) {
 
         // Step 1: one's complement of subtrahend
-        int onesComplement = Integer.valueOf(onesComplement(secondNum));
+        int onesComplement = Integer.valueOf(getOnesComplement(secondNum));
 
         // variable to store addition
         StringBuilder output = new StringBuilder();
@@ -142,12 +142,12 @@ public class BinaryNumbers {
             return addBinaryNumber(Integer.valueOf(additionOfFirstNumAndOnesComplement), carry);
         } else {
             // step 3: if carry is not present, 1's complement of the result of step 2 is the final result
-            return onesComplement(Integer.valueOf(additionOfFirstNumAndOnesComplement));
+            return getOnesComplement(Integer.valueOf(additionOfFirstNumAndOnesComplement));
         }
 
     }
 
-    public Integer onesComplement(Integer num) {
+    public Integer getOnesComplement(Integer num) {
 
         StringBuilder onesComplement = new StringBuilder();
 
