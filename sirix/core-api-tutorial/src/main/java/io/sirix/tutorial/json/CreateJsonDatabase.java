@@ -1,4 +1,4 @@
-package io.sirix.tutorial;
+package io.sirix.tutorial.json;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,6 +9,8 @@ import org.sirix.access.DatabaseConfiguration;
 import org.sirix.access.Databases;
 import org.sirix.access.ResourceConfiguration;
 import org.sirix.service.json.shredder.JsonShredder;
+
+import io.sirix.tutorial.Constants;
 
 public final class CreateJsonDatabase {
 

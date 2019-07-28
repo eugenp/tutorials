@@ -1,4 +1,4 @@
-package io.sirix.tutorial;
+package io.sirix.tutorial.json;
 
 /**
  * Copyright (c) 2011, University of Konstanz, Distributed Systems Group All rights reserved.

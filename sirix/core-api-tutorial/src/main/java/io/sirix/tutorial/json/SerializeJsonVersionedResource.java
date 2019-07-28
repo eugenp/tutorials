@@ -1,4 +1,4 @@
-package io.sirix.tutorial;
+package io.sirix.tutorial.json;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -6,6 +6,8 @@ import java.io.StringWriter;
 import org.sirix.access.Databases;
 import org.sirix.api.json.JsonResourceManager;
 import org.sirix.service.json.serialize.JsonSerializer;
+
+import io.sirix.tutorial.Constants;
 
 public class SerializeJsonVersionedResource {
 

@@ -1,4 +1,4 @@
-package io.sirix.tutorial;
+package io.sirix.tutorial.xml;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,6 +10,8 @@ import org.sirix.access.DatabaseConfiguration;
 import org.sirix.access.Databases;
 import org.sirix.access.ResourceConfiguration;
 import org.sirix.service.xml.shredder.XmlShredder;
+
+import io.sirix.tutorial.Constants;
 
 public final class CreateXmlDatabase {
 

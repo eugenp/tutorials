@@ -1,4 +1,4 @@
-package io.sirix.tutorial;
+package io.sirix.tutorial.json;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,6 +7,8 @@ import org.sirix.access.DatabaseConfiguration;
 import org.sirix.access.Databases;
 import org.sirix.access.ResourceConfiguration;
 import org.sirix.access.trx.node.json.objectvalue.StringValue;
+
+import io.sirix.tutorial.Constants;
 
 public final class CreateJsonVersionedResource {
 
