@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 
-public class ProductJsonAnySetter {
+public class Product {
 
     private String name;
     private String category;
