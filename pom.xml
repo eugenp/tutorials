@@ -392,6 +392,7 @@
                 <!--<module>core-java-modules/core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
                 <module>core-java-modules/core-java-arrays</module>
+                <module>core-java-modules/core-java-arrays-2</module>
                 <module>core-java-modules/core-java-collections</module>
                 <module>core-java-modules/core-java-collections-list</module>
                 <module>core-java-modules/core-java-collections-list-2</module>
@@ -482,7 +483,7 @@
                 <module>jee-7</module> -->
 				<module>jee-7-security</module>
 				<module>jersey</module>
-				<module>JGit</module>
+				<module>jgit</module>
 				<module>jgroups</module>
 				<module>jhipster-5</module>
 				<module>jib</module>
@@ -561,7 +562,7 @@
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
-
+				<module>oauth2-framework-impl</module>
 			</modules>
 
 		</profile>
@@ -614,6 +615,7 @@
 				<module>spring-5-data-reactive</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-2</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-reactive-oauth</module>
 				<module>spring-5-reactive-security</module>
@@ -742,7 +744,7 @@
 				<module>spring-security-mvc-ldap</module>
 				<module>spring-security-mvc-login</module>
 				<module>spring-security-mvc-persisted-remember-me</module>
-				<module>spring-security-mvc-session</module>
+				<module>spring-security-mvc</module>
 				<module>spring-security-mvc-socket</module>
 				<module>spring-security-openid</module>
 				<!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
@@ -779,7 +781,7 @@
 				<module>testing-modules</module>
 
 				<module>twilio</module>
-				<module>Twitter4J</module>
+				<module>twitter4j</module>
 
 				<module>undertow</module>
 
@@ -826,6 +828,7 @@
 				<module>spring-5</module>
 				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-2</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-security</module>
@@ -917,7 +920,7 @@
 				<module>spring-security-mvc-digest-auth</module>
 				<module>spring-security-mvc-ldap</module>
 				<module>spring-security-mvc-persisted-remember-me</module>
-				<module>spring-security-mvc-session</module>
+				<module>spring-security-mvc</module>
 				<module>spring-security-mvc-socket</module>
 				<module>spring-security-rest</module>
 				<module>spring-security-sso</module>
@@ -1086,6 +1089,7 @@
 				<!--<module>core-java-modules/core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
 				<!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
 				<module>core-java-modules/core-java-arrays</module>
+				<module>core-java-modules/core-java-arrays-2</module>
 				<module>core-java-modules/core-java-collections</module>
 				<module>core-java-modules/core-java-collections-list</module>
 				<module>core-java-modules/core-java-collections-list-2</module>
@@ -1172,7 +1176,7 @@
                 <module>jee-7</module> -->
 				<module>jee-7-security</module>
 				<module>jersey</module>
-				<module>JGit</module>
+				<module>jgit</module>
 				<module>jgroups</module>
 				<module>jhipster-5</module>
 				<module>jib</module>
@@ -1242,6 +1246,7 @@
 				<module>rsocket</module>
 				<module>rxjava</module>
 				<module>rxjava-2</module>
+				<module>oauth2-framework-impl</module>
 
 			</modules>
 
@@ -1286,6 +1291,7 @@
 				<module>spring-5-data-reactive</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-2</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-reactive-oauth</module>
 				<module>spring-5-reactive-security</module>
@@ -1408,7 +1414,7 @@
 				<module>spring-security-mvc-ldap</module>
 				<module>spring-security-mvc-login</module>
 				<module>spring-security-mvc-persisted-remember-me</module>
-				<module>spring-security-mvc-session</module>
+				<module>spring-security-mvc</module>
 				<module>spring-security-mvc-socket</module>
 				<module>spring-security-openid</module>
 				<!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
@@ -1445,7 +1451,7 @@
 				<module>testing-modules</module>
 
 				<module>twilio</module>
-				<module>Twitter4J</module>
+				<module>twitter4j</module>
 
 				<module>undertow</module>
 

@@ -121,8 +121,8 @@ public class AuthorizationEndpoint {
         String redirectUri = originalParams.getFirst("resolved_redirect_uri");
         StringBuilder sb = new StringBuilder(redirectUri);
 
-        String approbationStatus = params.getFirst("approbation_status");
-        if ("NO".equals(approbationStatus)) {
+        String approvalStatus = params.getFirst("approval_status");
+        if ("NO".equals(approvalStatus)) {
             URI location = UriBuilder.fromUri(sb.toString())
                     .queryParam("error", "User doesn't approved the request.")
                     .queryParam("error_description", "User doesn't approved the request.")
