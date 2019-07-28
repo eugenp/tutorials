@@ -4,26 +4,24 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.baeldung.binarynumbers.BinaryNumbers;
-
-public class BinaryNumbersTest {
+public class BinaryNumbersUnitTest {
 
     private BinaryNumbers binaryNumbers = new BinaryNumbers();
 
     @Test
-    public void testConvertDecimalToBinary() {
+    public void Given_DecimalNumber_Then_ReturnBinayNumber() {
         assertEquals(Integer.valueOf(1000), binaryNumbers.convertDecimalToBinary(8));
         assertEquals(Integer.valueOf(10100), binaryNumbers.convertDecimalToBinary(20));
     }
 
     @Test
-    public void testConvertBinaryToDecimal() {
+    public void Given_BinayNumber_Then_ReturnDecimalNumber() {
         assertEquals(Integer.valueOf(8), binaryNumbers.convertBinaryToDecimal(1000));
         assertEquals(Integer.valueOf(20), binaryNumbers.convertBinaryToDecimal(10100));
     }
 
     @Test
-    public void testAddBinaryNumber() {
+    public void Given_TwoBinayNumber_Then_ReturnAddition() {
         // adding 4 and 10
         assertEquals(Integer.valueOf(1110), binaryNumbers.addBinaryNumber(100, 1010));
 
@@ -32,7 +30,7 @@ public class BinaryNumbersTest {
     }
 
     @Test
-    public void testSubstractBinaryNumber() {
+    public void Given_TwoBinayNumber_Then_ReturnSubtraction() {
         // subtracting 16 from 25
         assertEquals(Integer.valueOf(1001), binaryNumbers.substractBinaryNumber(11001, 10000));
 
