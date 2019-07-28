@@ -14,7 +14,7 @@ public class TernaryOperatorUnitTest {
     }
 
     @Test
-    public void givenATrueCondition_whenUsingTernaryOperator_thenOnlyExpression1IsEvaluated() {
+    public void whenConditionIsTrue_thenOnlyExpression1IsEvaluated() {
         int exp1 = 0, exp2 = 0;
         int result = 12 > 10 ? ++exp1 : ++exp2;
 
@@ -24,7 +24,7 @@ public class TernaryOperatorUnitTest {
     }
 
     @Test
-    public void givenAFalseCondition_whenUsingTernaryOperator_thenOnlyExpression2IsEvaluated() {
+    public void whenConditionIsFalse_thenOnlyExpression2IsEvaluated() {
         int exp1 = 0, exp2 = 0;
         int result = 8 > 10 ? ++exp1 : ++exp2;
 
