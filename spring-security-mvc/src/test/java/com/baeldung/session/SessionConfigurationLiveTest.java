@@ -15,7 +15,7 @@ import io.restassured.specification.RequestSpecification;
 /**
  * This Live Test requires the service to be up and running.
  */
-public class SessionConfigurationIntegrationTest {
+public class SessionConfigurationLiveTest {
 
     private static final String USER = "user1";
     private static final String PASSWORD = "user1Pass";
