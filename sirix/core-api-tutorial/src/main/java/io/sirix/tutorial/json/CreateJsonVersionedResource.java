@@ -32,18 +32,15 @@ public final class CreateJsonVersionedResource {
                 wtx.commit();
                 
                 // Add changes and commit a second revision.
-                wtx.moveToDocumentRoot()
-                   .getCursor()
-                   .moveToFirstChild();
+                wtx.moveToDocumentRoot();
+                wtx.moveToFirstChild();
                 wtx.insertObjectRecordAsFirstChild("revision2", new StringValue("yes"));
                 wtx.commit();
                 
                 // Add changes and commit a third revision.
                 wtx.moveToDocumentRoot()
-                   .getCursor()
-                   .moveToFirstChild()
-                   .getCursor()
-                   .moveToFirstChild();
+                wtx.moveToFirstChild()
+                wtx.moveToFirstChild();
                 wtx.insertObjectRecordAsRightSibling("revision3", new StringValue("yes"));
                 wtx.commit();
             }
