@@ -216,8 +216,8 @@
 
     <modules>
         <module>spring-security-mvc-boot-default</module>
-<!--         <module>spring-security-mvc-boot-mysql</module> -->
-<!--         <module>spring-security-mvc-boot-postgre</module> -->
+        <module>spring-security-mvc-boot-mysql</module>
+        <module>spring-security-mvc-boot-postgre</module>
     </modules>
 
     <properties>

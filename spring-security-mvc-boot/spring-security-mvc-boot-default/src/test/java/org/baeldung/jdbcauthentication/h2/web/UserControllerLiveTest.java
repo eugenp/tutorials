@@ -20,7 +20,7 @@ public class UserControllerLiveTest {
     public void givenExisting_whenRequestPrincipal_thenRetrieveData() throws Exception {
         SessionFilter filter = new SessionFilter();
         given().auth()
-            .form("user", "pass", new FormAuthConfig().withCsrfFieldName("_csrf"))
+            .form("user", "pass", new FormAuthConfig("/login", "username", "password").withCsrfFieldName("_csrf"))
             .and()
             .filter(filter)
             .when()

@@ -8,9 +8,9 @@ CREATE TABLE users (
 );
   
 CREATE TABLE authorities (
-	username varchar(50) NOT NULL,
-    authority varchar(50) NOT NULL,
-  	CONSTRAINT foreign_authorities_users_1 foreign key(username) references users(username)
+  username varchar(50) NOT NULL,
+  authority varchar(50) NOT NULL,
+  CONSTRAINT foreign_authorities_users_1 foreign key(username) references users(username)
 );
 
 CREATE UNIQUE INDEX ix_auth_username on authorities (username,authority);
