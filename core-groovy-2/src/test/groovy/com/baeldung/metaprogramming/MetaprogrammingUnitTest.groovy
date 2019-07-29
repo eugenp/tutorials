@@ -97,7 +97,7 @@ class MetaprogrammingUnitTest extends GroovyTestCase {
     void testEqualsAndHashCodeAnnotation() {
         Employee norman = new Employee(1, "norman", "lewis", 28)
         Employee normanCopy = new Employee(1, "norman", "lewis", 28)
-        assert norman == normanCopy
+        assert norman.equals(normanCopy)
         assert norman.hashCode() == normanCopy.hashCode()
     }
     
@@ -109,7 +109,10 @@ class MetaprogrammingUnitTest extends GroovyTestCase {
         } catch(CloneNotSupportedException e) {
             e.printStackTrace()
         }
-         
     }
 
+    void testLoggingAnnotation() {
+        Employee employee = new Employee(1, "Norman", "Lewis", 28)
+        employee.logEmp()
+    }
 }

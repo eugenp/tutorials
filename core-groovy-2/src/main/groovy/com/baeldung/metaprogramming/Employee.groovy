@@ -37,5 +37,9 @@ class Employee {
         log.info "$methodName is not defined"
         "method '$methodName' is not defined"
     }
+    
+    def logEmp() {
+        log.info "Employee: $lastName, $firstName is of $age years age"
+    }
 
 }
