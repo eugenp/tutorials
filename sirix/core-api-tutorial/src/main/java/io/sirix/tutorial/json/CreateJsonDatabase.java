@@ -39,5 +39,7 @@ public final class CreateJsonDatabase {
                 wtx.commit();
             }
         }
+
+        System.out.println("Database with resource created.");
     }
 }

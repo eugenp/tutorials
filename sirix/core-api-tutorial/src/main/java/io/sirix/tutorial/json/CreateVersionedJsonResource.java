@@ -45,5 +45,7 @@ public final class CreateVersionedJsonResource {
                 wtx.commit();
             }
         }
+
+        System.out.println("Database with versioned resource created.");
     }
 }

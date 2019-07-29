@@ -43,5 +43,7 @@ public final class CreateXmlDatabase {
                 wtx.commit();
             }
         }
+
+        System.out.println("Database with resource created.");
     }
 }

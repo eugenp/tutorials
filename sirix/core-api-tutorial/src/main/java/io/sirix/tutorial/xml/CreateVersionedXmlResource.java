@@ -33,5 +33,7 @@ public final class CreateVersionedXmlResource {
                 XmlDocumentCreator.createVersioned(wtx);
             }
         }
+
+        System.out.println("Database with versioned resource created.");
     }
 }
