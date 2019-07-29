@@ -1,10 +1,12 @@
-package com.baeldung.pattern.command.test;
+package com.baeldung.command.test;
 
-import com.baeldung.pattern.command.command.OpenTextFileOperation;
-import com.baeldung.pattern.command.command.TextFileOperation;
-import com.baeldung.pattern.command.receiver.TextFile;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
-import static org.assertj.core.api.Assertions.*;
+
+import com.baeldung.command.command.OpenTextFileOperation;
+import com.baeldung.command.command.TextFileOperation;
+import com.baeldung.command.receiver.TextFile;
 
 public class OpenTextFileOperationUnitTest {
     

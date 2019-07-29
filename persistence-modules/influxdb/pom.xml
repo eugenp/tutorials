@@ -33,7 +33,6 @@
 
     <properties>
         <influxdb.sdk.version>2.8</influxdb.sdk.version>
-        <lombok.version>1.16.18</lombok.version>
     </properties>
 
 </project>

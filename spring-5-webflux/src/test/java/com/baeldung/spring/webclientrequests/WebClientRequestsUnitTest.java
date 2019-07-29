@@ -1,5 +1,10 @@
 package com.baeldung.spring.webclientrequests;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
+
+import java.time.Duration;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,8 +21,6 @@ import org.springframework.web.reactive.function.client.ExchangeFunction;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import reactor.core.publisher.Mono;
-
-import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
 @WebFluxTest
@@ -50,7 +53,8 @@ public class WebClientRequestsUnitTest {
     public void whenCallSimpleURI_thenURIMatched() {
         this.webClient.get()
                 .uri("/products")
-                .retrieve();
+                .exchange()
+                .block(Duration.ofSeconds(1));
         verifyCalledUrl("/products");
     }
 
@@ -60,7 +64,8 @@ public class WebClientRequestsUnitTest {
                 .uri(uriBuilder -> uriBuilder
                         .path("/products/{id}")
                         .build(2))
-                .retrieve();
+                .exchange()
+                .block(Duration.ofSeconds(1));
         verifyCalledUrl("/products/2");
     }
 
@@ -70,7 +75,8 @@ public class WebClientRequestsUnitTest {
                 .uri(uriBuilder -> uriBuilder
                         .path("/products/{id}/attributes/{attributeId}")
                         .build(2, 13))
-                .retrieve();
+                .exchange()
+                .block(Duration.ofSeconds(1));
         verifyCalledUrl("/products/2/attributes/13");
     }
 
@@ -83,7 +89,8 @@ public class WebClientRequestsUnitTest {
                         .queryParam("color", "black")
                         .queryParam("deliveryDate", "13/04/2019")
                         .build())
-                .retrieve();
+                .exchange()
+                .block(Duration.ofSeconds(1));
         verifyCalledUrl("/products/?name=AndroidPhone&color=black&deliveryDate=13/04/2019");
     }
 
@@ -96,7 +103,8 @@ public class WebClientRequestsUnitTest {
                         .queryParam("color", "{authorId}")
                         .queryParam("deliveryDate", "{date}")
                         .build("AndroidPhone", "black", "13/04/2019"))
-                .retrieve();
+                .exchange()
+                .block(Duration.ofSeconds(1));
         verifyCalledUrl("/products/?name=AndroidPhone&color=black&deliveryDate=13%2F04%2F2019");
     }
 
@@ -107,7 +115,8 @@ public class WebClientRequestsUnitTest {
                         .path("/products/")
                         .queryParam("tag[]", "Snapdragon", "NFC")
                         .build())
-                .retrieve();
+                .exchange()
+                .block(Duration.ofSeconds(1));
         verifyCalledUrl("/products/?tag%5B%5D=Snapdragon&tag%5B%5D=NFC");
     }
 
@@ -119,7 +128,8 @@ public class WebClientRequestsUnitTest {
                         .path("/products/")
                         .queryParam("category", "Phones", "Tablets")
                         .build())
-                .retrieve();
+                .exchange()
+                .block(Duration.ofSeconds(1));
         verifyCalledUrl("/products/?category=Phones&category=Tablets");
     }
 
@@ -130,7 +140,8 @@ public class WebClientRequestsUnitTest {
                         .path("/products/")
                         .queryParam("category", String.join(",", "Phones", "Tablets"))
                         .build())
-                .retrieve();
+                .exchange()
+                .block(Duration.ofSeconds(1));
         verifyCalledUrl("/products/?category=Phones,Tablets");
     }
 
@@ -151,7 +162,8 @@ public class WebClientRequestsUnitTest {
                         .queryParam("color", "black")
                         .queryParam("deliveryDate", "13/04/2019")
                         .build())
-                .retrieve();
+                .exchange()
+                .block(Duration.ofSeconds(1));
         verifyCalledUrl("/products/?name=AndroidPhone&color=black&deliveryDate=13/04/2019");
     }
 

@@ -35,7 +35,6 @@
     </dependencies>
 
     <properties>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <assertj.version>3.6.1</assertj.version>
     </properties>
 </project>

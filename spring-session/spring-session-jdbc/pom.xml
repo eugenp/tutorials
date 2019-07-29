@@ -48,8 +48,4 @@
         </plugins>
     </build>
 
-    <properties>
-        <h2.version>1.4.197</h2.version>
-    </properties>
-
 </project>

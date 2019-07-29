@@ -96,7 +96,6 @@
 
     <properties>
         <tomcat8-maven-plugin.version>3.0-r1655215</tomcat8-maven-plugin.version>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
     </properties>
 
 </project>

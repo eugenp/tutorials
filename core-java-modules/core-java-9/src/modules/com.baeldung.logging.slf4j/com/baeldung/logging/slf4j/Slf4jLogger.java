@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ResourceBundle;
+import java.text.MessageFormat;
 
 public class Slf4jLogger implements System.Logger {
 
@@ -74,26 +75,27 @@ public class Slf4jLogger implements System.Logger {
         if (!isLoggable(level)) {
             return;
         }
+        String message = MessageFormat.format(format, params);
 
         switch (level) {
         case TRACE:
-            logger.trace(format, params);
+            logger.trace(message);
             break;
         case DEBUG:
-            logger.debug(format, params);
+            logger.debug(message);
             break;
         case INFO:
-            logger.info(format, params);
+            logger.info(message);
             break;
         case WARNING:
-            logger.warn(format, params);
+            logger.warn(message);
             break;
         case ERROR:
-            logger.error(format, params);
+            logger.error(message);
             break;
         case ALL:
         default:
-            logger.info(format, params);
+            logger.info(message);
         }
     }
 }

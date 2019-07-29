@@ -59,7 +59,6 @@
     </build>
 
     <properties>
-        <jstl.version>1.2</jstl.version>
         <org.apache.httpcomponents.version>4.5.2</org.apache.httpcomponents.version>
         <velocity-version>1.7</velocity-version>
         <velocity-tools-version>2.0</velocity-tools-version>

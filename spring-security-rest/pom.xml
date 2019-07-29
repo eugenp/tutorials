@@ -267,14 +267,10 @@
 
     <properties>
         <!-- various -->
-        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <javax.validation.version>1.1.0.Final</javax.validation.version>
-        <jstl.version>1.2</jstl.version>
-        <jackson.version>2.9.7</jackson.version>
 
         <!-- util -->
         <guava.version>26.0-jre</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <commons-fileupload.version>1.3.2</commons-fileupload.version>
 
         <!-- testing -->

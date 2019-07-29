@@ -33,7 +33,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.version}</version>
+            <version>${javax.servlet-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -69,9 +69,7 @@
     <properties>
         <struts2.version>2.5.5</struts2.version>
         <struts2-convention-plugin.version>2.5.8</struts2-convention-plugin.version>
-        <servlet.version>3.0.1</servlet.version>
         <spring.version>4.3.6.RELEASE</spring.version>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
     </properties>
 
 </project>

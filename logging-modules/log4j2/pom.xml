@@ -78,7 +78,7 @@
 
     <profiles>
         <profile>
-            <id>integration</id>
+            <id>integration-lite-first</id>
             <build>
                 <plugins>
                     <plugin>
@@ -115,8 +115,6 @@
     </profiles>
 
     <properties>
-        <jackson.version>2.9.7</jackson.version>
-        <h2.version>1.4.193</h2.version>
         <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
         <log4j-core.version>2.11.0</log4j-core.version>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
