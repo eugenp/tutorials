@@ -69,40 +69,29 @@ public final class JsonDocumentCreator {
            .insertNullValueAsRightSibling()
            .insertNumberValueAsRightSibling(2.33);
 
-        wtx.moveToParent()
-           .getCursor()
-           .moveToParent();
+        wtx.moveToParent().trx().moveToParent();
 
         wtx.insertObjectRecordAsRightSibling("bar", new ObjectValue())
            .insertObjectRecordAsFirstChild("hello", new StringValue("world"))
            .moveToParent();
         wtx.insertObjectRecordAsRightSibling("helloo", new BooleanValue(true))
-           .moveToParent()
-           .getCursor()
-           .moveToParent()
-           .getCursor()
-           .moveToParent();
+           .moveToParent().trx().moveToParent().trx().moveToParent();
 
         wtx.insertObjectRecordAsRightSibling("baz", new StringValue("hello"))
-           .moveToParent()
-           .getCursor();
+           .moveToParent();
 
         wtx.insertObjectRecordAsRightSibling("tada", new ArrayValue())
            .insertObjectAsFirstChild()
            .insertObjectRecordAsFirstChild("foo", new StringValue("bar"))
-           .moveToParent()
-           .getCursor()
-           .moveToParent();
+           .moveToParent().trx().moveToParent();
 
         wtx.insertObjectAsRightSibling()
            .insertObjectRecordAsFirstChild("baz", new BooleanValue(false))
-           .moveToParent()
-           .getCursor()
-           .moveToParent();
+           .moveToParent().trx().moveToParent();
 
-        wtx.insertStringValueAsRightSibling("boo");
-        wtx.insertObjectAsRightSibling();
-        wtx.insertArrayAsRightSibling();
+        wtx.insertStringValueAsRightSibling("boo")
+           .insertObjectAsRightSibling()
+           .insertArrayAsRightSibling();
 
         wtx.moveToDocumentRoot();
     }

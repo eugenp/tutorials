@@ -1,7 +1,5 @@
 package io.sirix.tutorial.json;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -16,11 +14,11 @@ public final class CreateJsonDatabase {
 
     private static final Path JSON = Paths.get("src", "main", "resources", "json");
 
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) {
         createJsonDatabase();
     }
 
-    static void createJsonDatabase() throws FileNotFoundException, IOException {
+    static void createJsonDatabase() {
         final var pathToJsonFile = JSON.resolve("complex1.json");
         final var databaseFile = Constants.SIRIX_DATA_LOCATION.resolve("json-database");
         final var dbConfig = new DatabaseConfiguration(databaseFile);
@@ -30,7 +28,8 @@ public final class CreateJsonDatabase {
                     .useTextCompression(false)
                     .useDeweyIDs(true)
                     .build());
-            try (final var manager = database.openResourceManager("resource"); final var wtx = manager.beginNodeTrx()) {
+            try (final var manager = database.openResourceManager("resource");
+                 final var wtx = manager.beginNodeTrx()) {
                 wtx.insertSubtreeAsFirstChild(JsonShredder.createFileReader(pathToJsonFile));
                 wtx.commit();
             }

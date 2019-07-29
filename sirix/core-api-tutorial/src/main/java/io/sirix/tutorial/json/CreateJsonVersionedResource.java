@@ -1,8 +1,5 @@
 package io.sirix.tutorial.json;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import org.sirix.access.DatabaseConfiguration;
 import org.sirix.access.Databases;
 import org.sirix.access.ResourceConfiguration;
@@ -12,11 +9,11 @@ import io.sirix.tutorial.Constants;
 
 public final class CreateJsonVersionedResource {
 
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) {
         createJsonDatabaseWithVersionedResource();
     }
 
-    static void createJsonDatabaseWithVersionedResource() throws FileNotFoundException, IOException {
+    static void createJsonDatabaseWithVersionedResource() {
         final var databaseFile = Constants.SIRIX_DATA_LOCATION.resolve("json-database-versioned");
         final var dbConfig = new DatabaseConfiguration(databaseFile);
         Databases.createJsonDatabase(dbConfig);
@@ -30,17 +27,14 @@ public final class CreateJsonVersionedResource {
                 // Create sample document.
                 JsonDocumentCreator.create(wtx);
                 wtx.commit();
-                
+
                 // Add changes and commit a second revision.
-                wtx.moveToDocumentRoot();
-                wtx.moveToFirstChild();
+                wtx.moveToDocumentRoot().trx().moveToFirstChild();
                 wtx.insertObjectRecordAsFirstChild("revision2", new StringValue("yes"));
                 wtx.commit();
-                
+
                 // Add changes and commit a third revision.
-                wtx.moveToDocumentRoot()
-                wtx.moveToFirstChild()
-                wtx.moveToFirstChild();
+                wtx.moveToDocumentRoot().trx().moveToFirstChild().trx().moveToFirstChild();
                 wtx.insertObjectRecordAsRightSibling("revision3", new StringValue("yes"));
                 wtx.commit();
             }
