@@ -86,13 +86,14 @@ public class EmployeeBuilderUnitTest {
           .setEmail("abc@xyz.com")
           .setSupervisorName("Admin")
           .setPhoneNumber(4445566)
-          .setNullablePermanent(null)
-          .setDateOfJoining(Optional.empty())
+          .setPermanent(true)
           .setRole("developer")
           .setAddress(address)
           .build();
 
         // then
+        assertTrue(employee.getPermanent().isPresent());
+        assertTrue(employee.getPermanent().get());
         assertFalse(employee.getDateOfJoining().isPresent());
 
     }
