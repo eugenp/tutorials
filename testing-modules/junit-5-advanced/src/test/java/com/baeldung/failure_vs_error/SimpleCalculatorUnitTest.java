@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author paullatzelsperger
@@ -12,21 +13,27 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class SimpleCalculatorUnitTest {
 
     @Test
-    void divideNumbers() {
+    void whenDivideByValidNumber_thenAssertCorrectResult() {
         double result = SimpleCalculator.divideNumbers(6, 3);
         assertEquals(2, result);
     }
 
     @Test
     @Disabled("test is expected to fail, disabled so that CI build still goes through")
-    void divideNumbers_failure() {
+    void whenDivideNumbers_thenExpectWrongResult() {
         double result = SimpleCalculator.divideNumbers(6, 3);
         assertEquals(15, result);
     }
 
     @Test
     @Disabled("test is expected to raise an error, disabled so that CI build still goes through")
-    void divideNumbers_error() {
+    void whenDivideByZero_thenThrowsException() {
         SimpleCalculator.divideNumbers(10, 0);
     }
+
+    @Test
+    void whenDivideByZero_thenAssertException(){
+        assertThrows(ArithmeticException.class, () -> SimpleCalculator.divideNumbers(10, 0));
+    }
+
 }
