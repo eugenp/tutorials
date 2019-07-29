@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<label>Username:</label>
+<p th:text="${username}"></p>
+
+<label>Name:</label>
+<p th:text="${param.name}"></p>
+
+<label>First Department:</label>
+<p th:text="${param.departments[0]}" th:unless="param.departments != null"></p>
+
+<label>Departmens:</label>
+<div th:each="department : ${param.departments}">
+    <p th:text="${department}"></p>
+</div>
+
+</body>
+</html>

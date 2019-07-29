@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<label>Message:</label>
+<p th:text="${#servletContext.getAttribute('message')}"></p>
+</body>
+</html>
