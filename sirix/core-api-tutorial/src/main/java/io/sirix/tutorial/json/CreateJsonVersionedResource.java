@@ -27,13 +27,18 @@ public final class CreateJsonVersionedResource {
                                                          .build());
             try (final var manager = database.openResourceManager("resource");
                  final var wtx = manager.beginNodeTrx()) {
+                // Create sample document.
                 JsonDocumentCreator.create(wtx);
                 wtx.commit();
+                
+                // Add changes and commit a second revision.
                 wtx.moveToDocumentRoot()
                    .getCursor()
                    .moveToFirstChild();
                 wtx.insertObjectRecordAsFirstChild("revision2", new StringValue("yes"));
                 wtx.commit();
+                
+                // Add changes and commit a third revision.
                 wtx.moveToDocumentRoot()
                    .getCursor()
                    .moveToFirstChild()
