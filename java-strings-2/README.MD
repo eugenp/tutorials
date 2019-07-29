@@ -4,3 +4,4 @@
 - [Check If a String Contains a Substring](https://www.baeldung.com/java-string-contains-substring)
 - [Removing Stopwords from a String in Java](https://www.baeldung.com/java-string-remove-stopwords)
 - [Blank and Empty Strings in Java](https://www.baeldung.com/java-blank-empty-strings)
+- [String Initialization in Java](https://www.baeldung.com/java-string-initialization)

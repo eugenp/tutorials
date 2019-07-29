@@ -312,6 +312,10 @@
 						<configuration>
 							<forkCount>3</forkCount>
 							<reuseForks>true</reuseForks>
+							<includes>
+								<include>SpringContextTest</include>
+								<include>**/*UnitTest</include>
+							</includes>
 							<excludes>
 								<exclude>**/*IntegrationTest.java</exclude>
 								<exclude>**/*IntTest.java</exclude>
@@ -388,6 +392,7 @@
                 <!--<module>core-java-modules/core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
                 <module>core-java-modules/core-java-arrays</module>
+                <module>core-java-modules/core-java-arrays-2</module>
                 <module>core-java-modules/core-java-collections</module>
                 <module>core-java-modules/core-java-collections-list</module>
                 <module>core-java-modules/core-java-collections-list-2</module>
@@ -478,9 +483,8 @@
                 <module>jee-7</module> -->
 				<module>jee-7-security</module>
 				<module>jersey</module>
-				<module>JGit</module>
+				<module>jgit</module>
 				<module>jgroups</module>
-				<module>jhipster</module>
 				<module>jhipster-5</module>
 				<module>jib</module>
 				<module>jjwt</module>
@@ -507,6 +511,7 @@
 				<module>libraries-security</module>
 				<module>libraries-server</module>
 				<module>libraries-http</module>
+				<module>libraries-io</module>
 				<module>linkrest</module>
 				<module>logging-modules</module>
 				<module>lombok</module>
@@ -545,7 +550,6 @@
 				<!-- <module>raml</module> --> <!-- Not a maven project -->
 				<module>ratpack</module>
 				<module>reactor-core</module>
-				<module>rest-with-spark-java</module>
 				<module>resteasy</module>
 				<module>restx</module>
 				<!-- <module>rmi</module> --> <!-- Not a maven project -->
@@ -558,8 +562,7 @@
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
-				<module>morphia</module>
-
+				<module>oauth2-framework-impl</module>
 			</modules>
 
 		</profile>
@@ -576,6 +579,10 @@
 						<configuration>
 							<forkCount>3</forkCount>
 							<reuseForks>true</reuseForks>
+							<includes>
+								<include>SpringContextTest</include>
+								<include>**/*UnitTest</include>
+							</includes>
 							<excludes>
 								<exclude>**/*IntegrationTest.java</exclude>
 								<exclude>**/*IntTest.java</exclude>
@@ -608,6 +615,7 @@
 				<module>spring-5-data-reactive</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-2</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-reactive-oauth</module>
 				<module>spring-5-reactive-security</module>
@@ -657,22 +665,23 @@
 				<module>spring-boot-vue</module>
 				<module>spring-boot-libraries</module>
 
-				<module>spring-cloud</module>
-				<module>spring-cloud-bus</module>
+				
+                                <!-- <module>spring-cloud</module> --> <!-- BAEL-14304 -->
+				<!-- <module>spring-cloud-bus</module> --> <!-- BAEL-14304 -->
 				<!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-				<module>spring-cloud-data-flow</module>
+                                <!-- <module>spring-cloud-data-flow</module> --> <!-- BAEL-14304 -->
 
 				<module>spring-core</module>
 				<module>spring-core-2</module>
 				<module>spring-cucumber</module>
 
 				<module>spring-data-rest</module>
-				<module>spring-data-rest-querydsl</module>
+				<!-- <module>spring-data-rest-querydsl</module> --> <!-- BAEL-14304 -->
 				<module>spring-dispatcher-servlet</module>
 				<module>spring-drools</module>
 
 				<module>spring-ehcache</module>
-				<module>spring-ejb</module>
+				<!-- <module>spring-ejb</module> BAEL-14304 -->
 				<module>spring-exceptions</module>
 
 				<module>spring-freemarker</module>
@@ -735,7 +744,7 @@
 				<module>spring-security-mvc-ldap</module>
 				<module>spring-security-mvc-login</module>
 				<module>spring-security-mvc-persisted-remember-me</module>
-				<module>spring-security-mvc-session</module>
+				<module>spring-security-mvc</module>
 				<module>spring-security-mvc-socket</module>
 				<module>spring-security-openid</module>
 				<!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
@@ -746,7 +755,7 @@
 				<module>spring-security-stormpath</module>
 				<module>spring-security-thymeleaf</module>
 				<module>spring-security-x509</module>
-				<module>spring-session</module>
+				<!-- <module>spring-session</module> BAEL-14304 -->
 				<module>spring-sleuth</module>
 				<module>spring-soap</module>
 				<module>spring-social-login</module>
@@ -757,12 +766,10 @@
 
 				<module>spring-thymeleaf</module>
 
-				<module>spring-userservice</module>
-
-				<module>spring-vault</module>
+				<!-- <module>spring-vault</module> BAEL-14304 -->
 				<module>spring-vertx</module>
 
-				<module>spring-webflux-amqp</module> <!-- long -->
+				<!-- <module>spring-webflux-amqp</module> BAEL-14304 --> <!-- long --> 
 
 				<module>spring-zuul</module>
 
@@ -774,11 +781,10 @@
 				<module>testing-modules</module>
 
 				<module>twilio</module>
-				<module>Twitter4J</module>
+				<module>twitter4j</module>
 
 				<module>undertow</module>
 
-				<module>vavr</module>
 				<module>vertx</module>
 				<module>vertx-and-rxjava</module>
 				<module>video-tutorials</module>
@@ -787,13 +793,11 @@
 				<module>wicket</module>
 
 				<module>xml</module>
-				<module>xmlunit-2</module>
 				<module>xstream</module>
 
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
-				<module>morphia</module>
 
 			</modules>
 
@@ -824,6 +828,7 @@
 				<module>spring-5</module>
 				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-2</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-security</module>
@@ -842,7 +847,8 @@
 				<module>spring-boot-camel</module>
 				<module>spring-boot-client</module>
 				<module>spring-boot-custom-starter</module>
-				<module>greeter-spring-boot-autoconfigure</module>
+				<module>spring-boot-di</module>
+		 		<module>greeter-spring-boot-autoconfigure</module>
 				<module>greeter-spring-boot-sample-app</module>
 				<module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
 				<module>spring-boot-jasypt</module>
@@ -914,7 +920,7 @@
 				<module>spring-security-mvc-digest-auth</module>
 				<module>spring-security-mvc-ldap</module>
 				<module>spring-security-mvc-persisted-remember-me</module>
-				<module>spring-security-mvc-session</module>
+				<module>spring-security-mvc</module>
 				<module>spring-security-mvc-socket</module>
 				<module>spring-security-rest</module>
 				<module>spring-security-sso</module>
@@ -929,7 +935,6 @@
 				<module>spring-state-machine</module>
 				<module>spring-swagger-codegen/spring-swagger-codegen-app</module>
 				<module>spring-thymeleaf</module>
-				<module>spring-userservice</module>
 				<module>spring-vault</module>
 				<module>spring-vertx</module>
 				<module>spring-zuul/spring-zuul-foos-resource</module>
@@ -957,6 +962,10 @@
 						<configuration>
 							<forkCount>3</forkCount>
 							<reuseForks>true</reuseForks>
+							<includes>
+								<include>SpringContextTest</include>
+								<include>**/*UnitTest</include>
+							</includes>
 							<excludes>
 								<exclude>**/*IntegrationTest.java</exclude>
 								<exclude>**/*IntTest.java</exclude>
@@ -985,6 +994,7 @@
 				<module>core-kotlin-io</module>
 
 				<module>jenkins/hello-world</module>
+				<module>jhipster</module>
 				<module>jws</module>
 
 				<module>libraries</module> <!-- very long running -->
@@ -995,6 +1005,7 @@
 				<module>persistence-modules/jnosql</module>
 
 				<module>vaadin</module>
+				<module>vavr</module>
 			</modules>
 		</profile>
 
@@ -1078,6 +1089,7 @@
 				<!--<module>core-java-modules/core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
 				<!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
 				<module>core-java-modules/core-java-arrays</module>
+				<module>core-java-modules/core-java-arrays-2</module>
 				<module>core-java-modules/core-java-collections</module>
 				<module>core-java-modules/core-java-collections-list</module>
 				<module>core-java-modules/core-java-collections-list-2</module>
@@ -1164,9 +1176,8 @@
                 <module>jee-7</module> -->
 				<module>jee-7-security</module>
 				<module>jersey</module>
-				<module>JGit</module>
+				<module>jgit</module>
 				<module>jgroups</module>
-				<module>jhipster</module>
 				<module>jhipster-5</module>
 				<module>jib</module>
 				<module>jjwt</module>
@@ -1228,7 +1239,6 @@
 				<!-- <module>raml</module> --> <!-- Not a maven project -->
 				<module>ratpack</module>
 				<module>reactor-core</module>
-				<module>rest-with-spark-java</module>
 				<module>resteasy</module>
 				<module>restx</module>
 				<!-- <module>rmi</module> --> <!-- Not a maven project -->
@@ -1236,6 +1246,7 @@
 				<module>rsocket</module>
 				<module>rxjava</module>
 				<module>rxjava-2</module>
+				<module>oauth2-framework-impl</module>
 
 			</modules>
 
@@ -1280,6 +1291,7 @@
 				<module>spring-5-data-reactive</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-2</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-reactive-oauth</module>
 				<module>spring-5-reactive-security</module>
@@ -1402,7 +1414,7 @@
 				<module>spring-security-mvc-ldap</module>
 				<module>spring-security-mvc-login</module>
 				<module>spring-security-mvc-persisted-remember-me</module>
-				<module>spring-security-mvc-session</module>
+				<module>spring-security-mvc</module>
 				<module>spring-security-mvc-socket</module>
 				<module>spring-security-openid</module>
 				<!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
@@ -1424,8 +1436,6 @@
 
 				<module>spring-thymeleaf</module>
 
-				<module>spring-userservice</module>
-
 				<module>spring-vault</module>
 				<module>spring-vertx</module>
 
@@ -1441,11 +1451,10 @@
 				<module>testing-modules</module>
 
 				<module>twilio</module>
-				<module>Twitter4J</module>
+				<module>twitter4j</module>
 
 				<module>undertow</module>
 
-				<module>vavr</module>
 				<module>vertx</module>
 				<module>vertx-and-rxjava</module>
 				<module>video-tutorials</module>
@@ -1454,9 +1463,7 @@
 				<module>wicket</module>
 
 				<module>xml</module>
-				<module>xmlunit-2</module>
 				<module>xstream</module>
-
 			</modules>
 
 		</profile>
@@ -1497,6 +1504,7 @@
 				<module>core-kotlin-2</module>
 
 				<module>jenkins/hello-world</module>
+				<module>jhipster</module>
 				<module>jws</module>
 
 				<module>libraries</module> <!-- very long running -->
@@ -1507,6 +1515,7 @@
 				<module>persistence-modules/jnosql</module>
 
 				<module>vaadin</module>
+				<module>vavr</module>
 			</modules>
 
 		</profile>
