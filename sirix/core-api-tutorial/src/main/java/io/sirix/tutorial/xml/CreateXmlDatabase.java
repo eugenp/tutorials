@@ -3,6 +3,7 @@ package io.sirix.tutorial.xml;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -24,6 +25,10 @@ public final class CreateXmlDatabase {
     static void createXmlDatabase() throws FileNotFoundException, IOException {
         final var pathToXmlFile = XML.resolve("orga.xml");
         final var databaseFile = Constants.SIRIX_DATA_LOCATION.resolve("xml-database");
+
+        if (Files.exists(databaseFile))
+            Databases.removeDatabase(databaseFile);
+
         final var dbConfig = new DatabaseConfiguration(databaseFile);
         Databases.createXmlDatabase(dbConfig);
         try (final var database = Databases.openXmlDatabase(databaseFile)) {

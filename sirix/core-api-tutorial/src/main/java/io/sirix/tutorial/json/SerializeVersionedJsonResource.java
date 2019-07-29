@@ -1,18 +1,17 @@
 package io.sirix.tutorial.json;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.StringWriter;
+
 import org.sirix.access.Databases;
 import org.sirix.api.json.JsonResourceManager;
 import org.sirix.service.json.serialize.JsonSerializer;
 
 import io.sirix.tutorial.Constants;
 
-public class SerializeJsonVersionedResource {
+public class SerializeVersionedJsonResource {
 
-    public static void main(String[] args) throws FileNotFoundException, IOException {
-        CreateJsonVersionedResource.createJsonDatabaseWithVersionedResource();
+    public static void main(String[] args) {
+        CreateVersionedJsonResource.createJsonDatabaseWithVersionedResource();
 
         final var database = Databases.openJsonDatabase(Constants.SIRIX_DATA_LOCATION.resolve("json-database-versioned"));
 

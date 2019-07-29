@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -25,6 +26,10 @@ import org.sirix.service.xml.shredder.XmlShredder;
 
 import io.sirix.tutorial.Constants;
 
+/**
+ * Note that this simple example shows, that the higher level XQuery-API is much more user-friendly, when chaining
+ * axis is required.
+ */
 public class QueryXmlResourceWithConcurrentAxis {
 
     private static final Path XML = Paths.get("src", "main", "resources", "xml");
@@ -39,6 +44,9 @@ public class QueryXmlResourceWithConcurrentAxis {
 
     static void createXmlDatabase() throws FileNotFoundException, IOException {
         final var pathToXmlFile = XML.resolve("10mb.xml");
+
+        if (Files.exists(DATABASE_PATH))
+            Databases.removeDatabase(DATABASE_PATH);
 
         final var dbConfig = new DatabaseConfiguration(DATABASE_PATH);
         Databases.createXmlDatabase(dbConfig);
