@@ -11,10 +11,10 @@ import io.sirix.tutorial.Constants;
 public final class CreateVersionedXmlResource {
 
     public static void main(String[] args) {
-        createVersionedXmlDatabase();
+        createXmlDatabaseWithVersionedResource();
     }
 
-    static void createVersionedXmlDatabase() {
+    static void createXmlDatabaseWithVersionedResource() {
         final var databaseFile = Constants.SIRIX_DATA_LOCATION.resolve("xml-database-versioned");
 
         if (Files.exists(databaseFile))
