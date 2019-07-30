@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.hexagonal.arch.inside.Book;
-import com.baeldung.hexagonal.arch.inside.Bookstore;
+import com.baeldung.hexagonal.arch.inside.BookService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("books")
 public class BookstoreController {
 
-    private final Bookstore bookstore;
+    private final BookService bookstore;
 
     @GetMapping
     public List<Book> getBooks() {
@@ -26,7 +26,7 @@ public class BookstoreController {
     }
 
     @PostMapping
-    public void create(@RequestParam String title) {
-        bookstore.create(title);
+    public void save(@RequestParam String title) {
+        bookstore.save(title);
     }
 }

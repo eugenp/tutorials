@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface Bookstore {
 
-    void create(String title);
+    void save(String title);
 
     List<Book> getBooks();
 

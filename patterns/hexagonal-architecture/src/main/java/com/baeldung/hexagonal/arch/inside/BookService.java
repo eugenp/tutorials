@@ -10,10 +10,11 @@ public class BookService {
     private final Bookstore bookstore;
 
     public void save(String title) {
-        if (title == null || title.trim().isEmpty()) {
+        if (title == null || title.trim()
+            .isEmpty()) {
             throw new IllegalArgumentException("Book title must be specified");
         }
-        bookstore.create(title);
+        bookstore.save(title);
     }
 
     public List<Book> getBooks() {

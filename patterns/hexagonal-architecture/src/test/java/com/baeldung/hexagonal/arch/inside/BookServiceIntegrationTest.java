@@ -30,7 +30,7 @@ public class BookServiceIntegrationTest {
     public void givenNullBookTitle_thenSaveFails() {
         assertThrows(IllegalArgumentException.class, () -> bookService.save(null));
     }
-    
+
     @Test
     public void givenEmptyBookTitle_thenSaveFails() {
         assertThrows(IllegalArgumentException.class, () -> bookService.save("   "));

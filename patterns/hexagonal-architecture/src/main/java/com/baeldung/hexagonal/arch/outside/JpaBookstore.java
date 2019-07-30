@@ -16,7 +16,7 @@ public class JpaBookstore implements Bookstore {
 
     @Transactional
     @Override
-    public void create(String title) {
+    public void save(String title) {
         Book book = new Book();
         book.setTitle(title);
         entityManager.persist(book);

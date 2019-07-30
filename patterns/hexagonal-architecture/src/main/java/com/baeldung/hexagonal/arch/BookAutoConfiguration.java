@@ -14,7 +14,7 @@ public class BookAutoConfiguration {
     @ConditionalOnMissingBean(name = "bookstoreController")
     @Bean
     public BookstoreController bookstoreController() {
-        return new BookstoreController(bookstore());
+        return new BookstoreController(bookService());
     }
 
     @ConditionalOnMissingBean(name = "bookService")
