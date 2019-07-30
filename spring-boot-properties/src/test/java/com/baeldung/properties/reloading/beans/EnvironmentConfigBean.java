@@ -1,6 +1,6 @@
-package com.baeldung.properties.beans;
+package com.baeldung.properties.reloading.beans;
 
-import com.baeldung.properties.configs.ReloadablePropertySourceFactory;
+import com.baeldung.properties.reloading.configs.ReloadablePropertySourceFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;

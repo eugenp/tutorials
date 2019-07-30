@@ -1,4 +1,4 @@
-package com.baeldung.properties.configs;
+package com.baeldung.properties.reloading.configs;
 
 import java.io.FileReader;
 import java.io.IOException;

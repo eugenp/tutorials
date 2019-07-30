@@ -1,4 +1,4 @@
-package com.baeldung.properties.configs;
+package com.baeldung.properties.reloading.configs;
 
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;

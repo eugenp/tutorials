@@ -1,4 +1,4 @@
-package com.baeldung.properties.beans;
+package com.baeldung.properties.reloading.beans;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
