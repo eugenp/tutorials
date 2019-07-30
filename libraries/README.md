@@ -42,7 +42,6 @@
 - [Introduction to Akka Actors in Java](http://www.baeldung.com/akka-actors-java)
 - [Introduction to Smooks](http://www.baeldung.com/smooks)
 - [A Guide to Infinispan in Java](http://www.baeldung.com/infinispan)
-- [Introduction to OpenCSV](http://www.baeldung.com/opencsv)
 - [A Guide to Unirest](http://www.baeldung.com/unirest)
 - [Introduction to Akka Actors in Java](http://www.baeldung.com/akka-actors-java)
 - [A Guide to Byte Buddy](http://www.baeldung.com/byte-buddy)

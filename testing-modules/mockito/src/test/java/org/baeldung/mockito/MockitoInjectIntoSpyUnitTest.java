@@ -30,7 +30,7 @@ public class MockitoInjectIntoSpyUnitTest {
     private MyDictionary spyDic;
 
     @Test
-    public void whenUseInjectMocksAnnotation_thenCorrect2() {
+    public void whenUseInjectMocksAnnotation_thenCorrect() {
         Mockito.when(wordMap.get("aWord")).thenReturn("aMeaning");
 
         assertEquals("aMeaning", spyDic.getMeaning("aWord"));
