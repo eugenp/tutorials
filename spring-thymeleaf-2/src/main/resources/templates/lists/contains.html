@@ -7,6 +7,6 @@
 <body>
 myList contains red: <span th:text="${#lists.contains(myList, 'red')}"/>
 
-myList contains red and green: <span th:text='${#lists.containsAll(myList, new String[]{"red", "green"})}'/>
+myList contains red and green: <span th:text='${#lists.containsAll(myList, {"red", "green"})}'/>
 </body>
 </html>
