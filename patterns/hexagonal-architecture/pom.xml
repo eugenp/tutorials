@@ -12,14 +12,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>hexagonal-architecture</artifactId>
-	<name>hexagonal-architecture</name>
 	<version>1.0-SNAPSHOT</version>
-
-	<properties>
-		<spring-boot.version>2.1.6.RELEASE</spring-boot.version>
-		<hsqldb.version>2.4.0</hsqldb.version>
-		<lombok.version>1.18.8</lombok.version>
-	</properties>
 
 	<dependencies>
 		<dependency>
@@ -74,5 +67,11 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<properties>
+		<spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+		<hsqldb.version>2.4.0</hsqldb.version>
+		<lombok.version>1.18.8</lombok.version>
+	</properties>
 
 </project>
