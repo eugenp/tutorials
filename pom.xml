@@ -10,10 +10,6 @@
 	<name>parent-modules</name>
 	<packaging>pom</packaging>
 
-	<modules>
-		<module>quarkus</module>
-	</modules>
-
 	<dependencies>
 		<!-- logging -->
 		<dependency>
@@ -1589,4 +1585,5 @@
 		<lombok.version>1.16.12</lombok.version>
 		<h2.version>1.4.197</h2.version>
 	</properties>
+
 </project>
