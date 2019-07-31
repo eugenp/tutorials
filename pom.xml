@@ -997,6 +997,7 @@
 				<module>persistence-modules/hibernate5</module>
 				<module>persistence-modules/hibernate-mapping</module>
 				<module>persistence-modules/java-jpa</module>
+				<module>persistence-modules/java-jpa-2</module>
 				<module>persistence-modules/java-mongodb</module>
 				<module>persistence-modules/jnosql</module>
 
@@ -1507,6 +1508,7 @@
 
 				<module>persistence-modules/hibernate5</module>
 				<module>persistence-modules/java-jpa</module>
+				<module>persistence-modules/java-jpa-2</module>
 				<module>persistence-modules/java-mongodb</module>
 				<module>persistence-modules/jnosql</module>
 

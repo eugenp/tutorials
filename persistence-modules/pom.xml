@@ -29,6 +29,7 @@
         <module>java-cockroachdb</module>
         <module>java-jdbi</module>
         <module>java-jpa</module>
+        <module>java-jpa-2</module>
         <module>java-mongodb</module>
         <module>java-sql2o</module>
         <module>jnosql</module>
