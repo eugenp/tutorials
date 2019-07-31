@@ -31,6 +31,7 @@
         <module>java-jpa</module>
         <module>java-jpa-2</module>
         <module>java-mongodb</module>
+        <module>java-sql2o</module>
         <module>jnosql</module>
         <module>liquibase</module>
         <module>orientdb</module>
@@ -59,5 +60,6 @@
         <module>spring-jpa</module>
         <module>spring-persistence-simple</module>
         <module>jpa-hibernate-cascade-type</module>
+				<module>r2dbc</module>
     </modules>
 </project>

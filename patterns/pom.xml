@@ -19,7 +19,8 @@
         <module>design-patterns</module>
         <module>design-patterns-2</module>
         <module>solid</module>
-        <module>dip</module>     
+        <module>dip</module>
+        <module>backoff-jitter</module>
     </modules>
 
     <dependencyManagement>

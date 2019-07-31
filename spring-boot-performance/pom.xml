@@ -8,10 +8,10 @@
     <description>This is a simple Spring Boot application taking advantage of the latest Spring Boot improvements/features. Current version: 2.2</description>
 
     <parent>
-        <artifactId>parent-boot-performance</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-performance</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
