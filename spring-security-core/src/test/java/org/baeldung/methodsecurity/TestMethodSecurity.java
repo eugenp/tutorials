@@ -80,7 +80,7 @@ public class TestMethodSecurity {
 
     @Test
     @WithMockUser(username = "JOHN", authorities = { "SYS_ADMIN" })
-    public void givenAuthoritySysAdmin_whenCallGetUsernameInLowerCase_thenReturnUsername() {
+    public void givenAuthoritySysAdmin_whenCallGetUsernameLC_thenReturnUsername() {
         String username = userRoleService.getUsernameLC();
         assertEquals("john", username);
     }

@@ -37,7 +37,6 @@
 - [Common Java Exceptions](http://www.baeldung.com/java-common-exceptions)
 - [Throw Exception in Optional in Java 8](https://www.baeldung.com/java-optional-throw-exception)
 - [Merging java.util.Properties Objects](https://www.baeldung.com/java-merging-properties)
-- [Merging java.util.Properties Objects](https://www.baeldung.com/java-merging-properties)
 - [Java – Try with Resources](https://www.baeldung.com/java-try-with-resources)
 - [Abstract Classes in Java](https://www.baeldung.com/java-abstract-class)
 - [Guide to Character Encoding](https://www.baeldung.com/java-char-encoding)
