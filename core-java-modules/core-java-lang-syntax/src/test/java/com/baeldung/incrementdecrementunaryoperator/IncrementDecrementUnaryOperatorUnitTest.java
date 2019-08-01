@@ -1,7 +1,6 @@
-package com.baeldung.IncrementDecrementUnaryOperatorUnitTest;
+package com.baeldung.incrementdecrementunaryoperator;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.Test;
 
 public class IncrementDecrementUnaryOperatorUnitTest {
