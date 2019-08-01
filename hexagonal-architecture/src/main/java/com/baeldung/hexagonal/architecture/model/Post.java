@@ -7,9 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * Created by alfred on 01 August 2019
- */
 @Data
 @Entity
 @Table(name = "post")

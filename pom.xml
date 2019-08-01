@@ -9,7 +9,6 @@
 	<version>1.0.0-SNAPSHOT</version>
     <modules>
         <module>lombok-custom</module>
-		<module>hexadecimal-architecture</module>
 	</modules>
     <name>parent-modules</name>
 	<packaging>pom</packaging>
@@ -428,7 +427,8 @@
                 <module>guava-modules/guava-21</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
-                
+
+				<module>hexagonal-architecture</module>
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
