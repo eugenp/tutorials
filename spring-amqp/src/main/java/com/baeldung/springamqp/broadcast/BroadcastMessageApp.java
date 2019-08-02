@@ -9,6 +9,14 @@ import org.springframework.context.annotation.Bean;
 
 import static com.baeldung.springamqp.broadcast.BroadcastConfig.*;
 
+/**
+ * Simple test application to send messages to rabbitMQ.
+ *
+ *<p>To run this particular application with mvn you use the following command:</p>
+ * {@code
+ * mvn spring-boot:run -Dstart-class=com.baeldung.springamqp.broadcast.BroadcastMessageApp
+ * }
+ */
 @SpringBootApplication
 public class BroadcastMessageApp {
 
