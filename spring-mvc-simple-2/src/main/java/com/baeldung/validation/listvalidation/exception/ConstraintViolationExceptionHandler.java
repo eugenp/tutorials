@@ -14,17 +14,23 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class ConstraintViolationExceptionHandler {
-    private final Logger LOGGER = LoggerFactory.getLogger(ConstraintViolationExceptionHandler.class);
+    
+    private final Logger logger = LoggerFactory.getLogger(ConstraintViolationExceptionHandler.class);
 
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<String> handle(ConstraintViolationException constraintViolationException) {
         Set<ConstraintViolation<?>> violations = constraintViolationException.getConstraintViolations();
-        StringBuilder builder = new StringBuilder();
-        for (ConstraintViolation<?> violation : violations) {
-            builder.append(violation.getMessage());
-
+        String errorMessage = "";
+        if (!violations.isEmpty()) {
+            StringBuilder builder = new StringBuilder();
+            violations.forEach(violation -> builder.append("\n" + violation.getMessage()));
+            errorMessage = builder.toString();
+        } else {
+            errorMessage = "ConstraintViolationException occured.";
         }
-        LOGGER.error(builder.toString());
-        return new ResponseEntity<String>(builder.toString(), HttpStatus.BAD_REQUEST);
+
+        logger.error(errorMessage);
+        return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
     }
+
 }
