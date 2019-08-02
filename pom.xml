@@ -360,6 +360,7 @@
 				<module>apache-tika</module>
 				<module>apache-velocity</module>
 				<module>apache-zookeeper</module>
+				<module>architecture</module>
 				<module>asciidoctor</module>
 				<module>asm</module>
 				<module>atomix</module>
@@ -1062,6 +1063,7 @@
 				<module>apache-tika</module>
 				<module>apache-velocity</module>
 				<module>apache-zookeeper</module>
+				<module>architecture</module>
 				<module>asciidoctor</module>
 				<module>asm</module>
 				<module>atomix</module>
