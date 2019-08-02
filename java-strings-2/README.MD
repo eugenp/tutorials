@@ -20,3 +20,4 @@
 - [Check If a String Contains Multiple Keywords](https://www.baeldung.com/string-contains-multiple-words)
 - [Blank and Empty Strings in Java](https://www.baeldung.com/java-blank-empty-strings)
 - [String Initialization in Java](https://www.baeldung.com/java-string-initialization)
+- [Java Multi-line String](https://www.baeldung.com/java-multiline-string)
