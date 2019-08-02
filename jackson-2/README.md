@@ -2,7 +2,7 @@
 
 ## Jackson Cookbooks and Examples
 
-###The Course
+### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles: 
