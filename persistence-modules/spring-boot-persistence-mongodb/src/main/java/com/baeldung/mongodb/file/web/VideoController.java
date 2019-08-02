@@ -1,4 +1,4 @@
-package com.baeldung.mongodb.web;
+package com.baeldung.mongodb.file.web;
 
 import java.io.IOException;
 
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.baeldung.mongodb.models.Video;
-import com.baeldung.mongodb.services.VideoService;
+import com.baeldung.mongodb.file.models.Video;
+import com.baeldung.mongodb.file.services.VideoService;
 
 @Controller
 public class VideoController {
