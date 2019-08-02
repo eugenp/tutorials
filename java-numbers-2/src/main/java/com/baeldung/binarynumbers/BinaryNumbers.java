@@ -17,13 +17,15 @@ public class BinaryNumbers {
 
         StringBuilder binaryNumber = new StringBuilder();
 
-        while (decimalNumber > 0) {
+        Integer quotient = decimalNumber;
 
-            int remainder = decimalNumber % 2;
-            int result = decimalNumber / 2;
+        while (quotient > 0) {
 
+            int remainder = quotient % 2;
             binaryNumber.append(remainder);
-            decimalNumber = result;
+
+            int result = quotient / 2;
+            quotient = result;
         }
 
         binaryNumber = binaryNumber.reverse();
