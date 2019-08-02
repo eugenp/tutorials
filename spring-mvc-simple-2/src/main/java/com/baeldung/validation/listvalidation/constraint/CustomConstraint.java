@@ -10,7 +10,7 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CustomConstraint {
 
-    String message() default "Invalid movie name.";
+    String message() default "Movie name should start with an alphanumeric character.";
 
     Class<?>[] groups() default {};
 
