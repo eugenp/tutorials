@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -77,7 +78,7 @@ public class SpringResourceIntegrationTest {
 
     @Test
     public void whenResourceUtils_thenReadSuccessful() throws IOException {
-        final File employeeFile = ResourceUtils.getFile("classpath:data/employees.dat");
+        final File employeeFile = loadEmployeesWithSpringInternalClass();
         final String employees = new String(Files.readAllBytes(employeeFile.toPath()));
         assertEquals(EMPLOYEES_EXPECTED, employees);
     }
@@ -111,5 +112,9 @@ public class SpringResourceIntegrationTest {
     	final File resource = new ClassPathResource("../../../data/employees.dat", SpringResourceIntegrationTest.class).getFile();
         final String employees = new String(Files.readAllBytes(resource.toPath()));
         assertEquals(EMPLOYEES_EXPECTED, employees);
+    }
+    
+    public File loadEmployeesWithSpringInternalClass() throws FileNotFoundException {
+        return ResourceUtils.getFile("classpath:data/employees.dat");
     }
 }

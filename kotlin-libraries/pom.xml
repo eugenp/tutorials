@@ -94,7 +94,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2database.version}</version>
+            <version>${h2.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.arrow-kt/arrow-core -->
         <dependency>
@@ -184,7 +184,6 @@
         <junit.platform.version>1.1.1</junit.platform.version>
         <junit.vintage.version>5.2.0</junit.vintage.version>
         <assertj.version>3.10.0</assertj.version>
-        <h2database.version>1.4.197</h2database.version>
         <exposed.version>0.10.4</exposed.version>
         <mockk.version>1.9.3</mockk.version>
     </properties>

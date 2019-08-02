@@ -137,7 +137,6 @@
         <katharsis.version>3.0.2</katharsis.version>
         <reflections.version>0.9.10</reflections.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <commons-lang3.version>3.7</commons-lang3.version>
     </properties>
 
 </project>

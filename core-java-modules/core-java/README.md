@@ -37,7 +37,6 @@
 - [Common Java Exceptions](http://www.baeldung.com/java-common-exceptions)
 - [Throw Exception in Optional in Java 8](https://www.baeldung.com/java-optional-throw-exception)
 - [Merging java.util.Properties Objects](https://www.baeldung.com/java-merging-properties)
-- [Merging java.util.Properties Objects](https://www.baeldung.com/java-merging-properties)
 - [Java – Try with Resources](https://www.baeldung.com/java-try-with-resources)
 - [Abstract Classes in Java](https://www.baeldung.com/java-abstract-class)
 - [Guide to Character Encoding](https://www.baeldung.com/java-char-encoding)
@@ -51,4 +50,5 @@
 - [Java Bitwise Operators](https://www.baeldung.com/java-bitwise-operators)
 - [Guide to Creating and Running a Jar File in Java](https://www.baeldung.com/java-create-jar)
 - [Making a JSON POST Request With HttpURLConnection](https://www.baeldung.com/httpurlconnection-post)
+- [How to Find an Exception’s Root Cause in Java](https://www.baeldung.com/java-exception-root-cause)
 - [Convert Hex to ASCII in Java](https://www.baeldung.com/java-convert-hex-to-ascii)
