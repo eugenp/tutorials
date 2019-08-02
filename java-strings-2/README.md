@@ -18,7 +18,7 @@
 - [Java String Interview Questions and Answers](https://www.baeldung.com/java-string-interview-questions)
 - [Check if a String is a Pangram in Java](https://www.baeldung.com/java-string-pangram)
 - [Check If a String Contains Multiple Keywords](https://www.baeldung.com/string-contains-multiple-words)
-- [Blank and Empty Strings in Java](https://www.baeldung.com/java-blank-empty-strings)
+- [Checking for Empty or Blank Strings in Java](https://www.baeldung.com/java-blank-empty-strings)
 - [String Initialization in Java](https://www.baeldung.com/java-string-initialization)
 - [Java Multi-line String](https://www.baeldung.com/java-multiline-string)
 - [Checking If a String Is a Repeated Substring](https://www.baeldung.com/java-repeated-substring)
