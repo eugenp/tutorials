@@ -15,7 +15,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import com.baeldung.validation.listvalidation.model.Actor;
 import com.baeldung.validation.listvalidation.model.Movie;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -28,38 +27,47 @@ public class MovieControllerIntegrationTest {
     private MockMvc mvc;
 
     ObjectMapper objectMapper = new ObjectMapper();
-
+    
     @Test
-    public void given1Genre_whenAddingMovie_thenThrowBadRequest() throws Exception {
-        Actor actor = new Actor("Actor1");
-        Movie movie = new Movie("Movie1", Arrays.asList("Drama"), Arrays.asList(actor));
-        mvc.perform(MockMvcRequestBuilders.post("/movie")
+    public void givenValidMovieList_whenAddingMovieList_thenIsOK() throws Exception {
+        List<Movie> movies = new ArrayList<>();
+        Movie movie = new Movie("Movie3");
+        movies.add(movie);
+        mvc.perform(MockMvcRequestBuilders.post("/movies")
             .contentType(MediaType.APPLICATION_JSON_UTF8)
-            .content(objectMapper.writeValueAsString(movie)))
+            .content(objectMapper.writeValueAsString(movies)))
+            .andExpect(MockMvcResultMatchers.status()
+                .isOk());
+    }
+    
+    @Test
+    public void givenEmptyMovieList_whenAddingMovieList_thenThrowBadRequest() throws Exception {
+        List<Movie> movies = new ArrayList<>();
+        mvc.perform(MockMvcRequestBuilders.post("/movies")
+            .contentType(MediaType.APPLICATION_JSON_UTF8)
+            .content(objectMapper.writeValueAsString(movies)))
             .andExpect(MockMvcResultMatchers.status()
                 .isBadRequest());
     }
-
+    
     @Test
-    public void givenWithoutActor_whenAddingMovieList_thenThrowBadRequest() throws Exception {
-        List<Actor> actors = new ArrayList<>();
-        Movie movie = new Movie("Movie2", Arrays.asList("Action", "Thriller"), actors);
-        mvc.perform(MockMvcRequestBuilders.post("/movie/batch")
+    public void givenEmptyMovieName_whenAddingMovieList_thenThrowBadRequest() throws Exception {
+        Movie movie = new Movie("");
+        mvc.perform(MockMvcRequestBuilders.post("/movies")
             .contentType(MediaType.APPLICATION_JSON_UTF8)
             .content(objectMapper.writeValueAsString(Arrays.asList(movie))))
             .andExpect(MockMvcResultMatchers.status()
                 .isBadRequest());
     }
-
+    
     @Test
-    public void givenEmptyMovieName_whenAddingMovie_thenThrowBadRequest() throws Exception {
-        Actor actor = new Actor("Actor1");
-        Movie movie = new Movie("", Arrays.asList("Drama", "History"), Arrays.asList(actor));
-        mvc.perform(MockMvcRequestBuilders.post("/movie")
+    public void givenInvalidMovieName_whenAddingMovieList_thenThrowBadRequest() throws Exception {
+        Movie movie = new Movie("$Movie2");
+        mvc.perform(MockMvcRequestBuilders.post("/movies")
             .contentType(MediaType.APPLICATION_JSON_UTF8)
-            .content(objectMapper.writeValueAsString(movie)))
+            .content(objectMapper.writeValueAsString(Arrays.asList(movie))))
             .andExpect(MockMvcResultMatchers.status()
                 .isBadRequest());
     }
-
+    
 }
