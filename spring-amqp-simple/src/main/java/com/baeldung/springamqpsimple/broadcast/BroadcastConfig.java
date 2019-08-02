@@ -1,11 +1,6 @@
 package com.baeldung.springamqpsimple.broadcast;
 
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.Declarable;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.FanoutExchange;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.boot.autoconfigure.amqp.SimpleRabbitListenerContainerFactoryConfigurer;
@@ -17,7 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 
 @Configuration
-@Profile("!test")
 public class BroadcastConfig {
 
     public final static String fanoutQueue1Name = "com.baeldung.spring-amqp-simple.fanout.queue1";
@@ -29,29 +23,28 @@ public class BroadcastConfig {
     public final static String topicExchangeName = "com.baeldung.spring-amql-simple.topic.exchange";
 
     @Bean
-    public List<Declarable> topicBindings() {
+    public Declarables topicBindings() {
         Queue topicQueue1 = new Queue(topicQueue1Name, false);
         Queue topicQueue2 = new Queue(topicQueue2Name, false);
 
         TopicExchange topicExchange = new TopicExchange(topicExchangeName);
 
-        return Arrays.asList(
+        return new Declarables(
                 topicQueue1,
                 topicQueue2,
                 topicExchange,
                 BindingBuilder.bind(topicQueue1).to(topicExchange).with("*.important.*"),
-                BindingBuilder.bind(topicQueue2).to(topicExchange).with("user.#")
-        );
+                BindingBuilder.bind(topicQueue2).to(topicExchange).with("user.#"));
     }
 
     @Bean
-    public List<Declarable> fanoutBindings() {
+    public Declarables fanoutBindings() {
         Queue fanoutQueue1 = new Queue(fanoutQueue1Name, false);
         Queue fanoutQueue2 = new Queue(fanoutQueue2Name, false);
 
         FanoutExchange fanoutExchange = new FanoutExchange(fanoutExchangeName);
 
-        return Arrays.asList(
+        return new Declarables(
                 fanoutQueue1,
                 fanoutQueue2,
                 fanoutExchange,
