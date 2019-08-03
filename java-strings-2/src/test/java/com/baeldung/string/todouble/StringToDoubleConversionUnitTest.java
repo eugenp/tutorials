@@ -2,6 +2,7 @@ package com.baeldung.string.todouble;
 
 import static org.junit.Assert.assertEquals;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 
@@ -41,7 +42,13 @@ public class StringToDoubleConversionUnitTest {
     
     @Test
     public void givenValidString_WhenDecimalFormat_ThenResultIsValidDouble() throws ParseException {
-        assertEquals(1.23, new DecimalFormat("#").parse("1.23").doubleValue(), 0.000001);
+        
+        DecimalFormat format = new DecimalFormat("\u00A4#,##0.00");
+        format.setParseBigDecimal(true);
+        
+        BigDecimal decimal = (BigDecimal) format.parse("-$1,000.57");
+        
+        assertEquals(-1000.57, decimal.doubleValue(), 0.000001);
     }
     
     @Test(expected = NullPointerException.class)
