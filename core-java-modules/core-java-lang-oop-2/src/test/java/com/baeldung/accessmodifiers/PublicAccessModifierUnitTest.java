@@ -11,7 +11,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 @TestInstance(Lifecycle.PER_CLASS)
-public class PublicAccessModifierTest {
+public class PublicAccessModifierUnitTest {
 
     @Test
     public void whenUsingIntValue_valuesAreEqual() {
