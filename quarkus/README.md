@@ -1,3 +1,3 @@
-## Relevant articles:
+## Relevant Articles:
 
-- [Guide to QuarkusIO](hhttps://www.baeldung.com/quarkus-io)
+- [Guide to QuarkusIO](https://www.baeldung.com/quarkus-io)

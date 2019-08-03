@@ -130,8 +130,6 @@
         <!-- maven plugins -->
         <jaxb2-maven-plugin.version>2.3</jaxb2-maven-plugin.version>
         <istack-commons-runtime.version>3.0.2</istack-commons-runtime.version>
-        <commons-io.version>2.5</commons-io.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <lifecycle-mapping-plugin.version>1.0.0</lifecycle-mapping-plugin.version>
 
         <javax.activation.version>1.1</javax.activation.version>

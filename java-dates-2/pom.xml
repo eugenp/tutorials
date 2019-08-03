@@ -20,6 +20,13 @@
             <artifactId>joda-time</artifactId>
             <version>${joda-time.version}</version>
         </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>${commons-validator.version}</version>
+        </dependency>
 
         <!-- test scoped -->
         <dependency>
@@ -56,6 +63,7 @@
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <joda-time.version>2.10</joda-time.version>
+        <commons-validator.version>1.6</commons-validator.version>
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>
     </properties>
