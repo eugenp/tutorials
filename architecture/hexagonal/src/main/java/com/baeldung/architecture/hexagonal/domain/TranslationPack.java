@@ -1,6 +1,6 @@
 package com.baeldung.architecture.hexagonal.domain;
 
-public interface TranslatorPack {
+public interface TranslationPack {
 
     String translate(String englishWordToTranslate);
 }

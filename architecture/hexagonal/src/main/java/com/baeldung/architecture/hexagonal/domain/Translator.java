@@ -2,10 +2,10 @@ package com.baeldung.architecture.hexagonal.domain;
 
 public class Translator implements TranslatorService {
 
-    private final TranslatorPack translatorPack;
+    private final TranslationPack translationPack;
 
-    public Translator(TranslatorPack translatorPack) {
-        this.translatorPack = translatorPack;
+    public Translator(TranslationPack translationPack) {
+        this.translationPack = translationPack;
     }
 
     @Override
@@ -15,6 +15,6 @@ public class Translator implements TranslatorService {
             throw new IllegalArgumentException("Please inform the word to translate");
         }
 
-        return translatorPack.translate(englishWordToTranslate);
+        return translationPack.translate(englishWordToTranslate);
     }
 }
