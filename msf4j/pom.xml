@@ -23,6 +23,7 @@
 			</dependency>
 		</dependencies>		
 	</dependencyManagement>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.wso2.msf4j</groupId>

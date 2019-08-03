@@ -52,7 +52,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>${commons.io.version}</version>
+            <version>${commons-io.version}</version>
         </dependency>
         <dependency>
             <groupId>io.netty</groupId>
@@ -65,7 +65,7 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-		
+
         <!-- tomcat -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
@@ -114,14 +114,13 @@
     <properties>
         <assertj.version>3.6.2</assertj.version>
         <httpclient.version>4.5.3</httpclient.version>
-        <commons.io.version>2.5</commons.io.version>
         <jetty.version>9.4.8.v20171121</jetty.version>
         <netty.version>4.1.20.Final</netty.version>
         <commons.collections.version>4.1</commons.collections.version>
         <tomcat.version>8.5.24</tomcat.version>
         <smack.version>4.3.1</smack.version>
-		<eclipse.paho.client.mqttv3.version>1.2.0</eclipse.paho.client.mqttv3.version>
-		<nanohttpd.version>2.3.1</nanohttpd.version>
+        <eclipse.paho.client.mqttv3.version>1.2.0</eclipse.paho.client.mqttv3.version>
+        <nanohttpd.version>2.3.1</nanohttpd.version>
     </properties>
 
 </project>

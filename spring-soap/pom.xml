@@ -13,11 +13,6 @@
         <relativePath>../parent-boot-2</relativePath>
     </parent>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
-    </properties>
-
     <dependencies>
         <!-- tag::springws[] -->
         <dependency>
@@ -65,5 +60,9 @@
             <!-- end::xsd[] -->
         </plugins>
     </build>
+
+    <properties>
+        <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
+    </properties>
 
 </project>

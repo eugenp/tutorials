@@ -1,4 +1,4 @@
-package com.baeldung.pattern.templatemethod.model;
+package com.baeldung.templatemethod.model;
 
 import java.util.HashMap;
 import java.util.Map;

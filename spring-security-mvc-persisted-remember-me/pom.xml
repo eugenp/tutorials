@@ -99,7 +99,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet.version}</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -200,15 +200,10 @@
         <!-- persistence -->
         <postgresql.version>9.4.1212</postgresql.version>
 
-        <!-- various -->
-        <javax.servlet.version>3.1.0</javax.servlet.version>
-        <jstl.version>1.2</jstl.version>
-
         <!-- util -->
         <guava.version>19.0</guava.version>
 
         <!-- Maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
     </properties>
