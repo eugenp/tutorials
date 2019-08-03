@@ -103,14 +103,14 @@ public class BinaryTree {
     public void traverseInOrder(Node node) {
         if (node != null) {
             traverseInOrder(node.left);
-            System.out.print(" " + node.value);
+            visit(node.value);
             traverseInOrder(node.right);
         }
     }
 
     public void traversePreOrder(Node node) {
         if (node != null) {
-            System.out.print(" " + node.value);
+            visit(node.value);
             traversePreOrder(node.left);
             traversePreOrder(node.right);
         }
@@ -120,7 +120,7 @@ public class BinaryTree {
         if (node != null) {
             traversePostOrder(node.left);
             traversePostOrder(node.right);
-            System.out.print(" " + node.value);
+            visit(node.value);
         }
     }
 
@@ -159,7 +159,7 @@ public class BinaryTree {
                 stack.push(current);                
             }
             current = stack.pop();
-            System.out.print(" " + current.value);
+            visit(current.value);
             if(current.right != null) {
                 current = current.right;                
                 stack.push(current);
@@ -173,7 +173,7 @@ public class BinaryTree {
         stack.push(root);
         while(! stack.isEmpty()) {
             current = stack.pop();
-            System.out.print(" " + current.value);
+            visit(current.value);
             
             if(current.right != null)
                 stack.push(current.right);
@@ -196,7 +196,7 @@ public class BinaryTree {
 
             if (!hasChild || isPrevLastChild) {
                 current = stack.pop();
-                System.out.print(" " + current.value);
+                visit(current.value);
                 prev = current;
             } else {
                 if (current.right != null) {
@@ -209,6 +209,9 @@ public class BinaryTree {
         }   
     }    
     
+    private void visit(int value) {
+        System.out.print(" " + value);        
+    }
     
     class Node {
         int value;
