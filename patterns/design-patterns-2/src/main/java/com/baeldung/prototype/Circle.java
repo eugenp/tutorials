@@ -1,14 +1,19 @@
 package com.baeldung.prototype;
 
-public class Circle extends Shape{
-    private int radius;
+import java.util.List;
 
-    public Circle(int radius){
+public class Circle extends Shape {
+    private int radius;
+    private List<String> metadata;
+
+    public Circle(int radius, List<String> metadata) {
         this.radius = radius;
+        this.metadata = metadata;
     }
 
-    public Circle(Circle that){
+    public Circle(Circle that) {
         this.radius = that.radius;
+        this.metadata = that.metadata;
     }
 
     @Override
