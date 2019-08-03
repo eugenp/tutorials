@@ -17,20 +17,21 @@ import com.baeldung.boot.repository.EmployeeRepository;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 @Sql({ "/employees_schema.sql", "/import_employees.sql" })
-public class SpringBootInitialLoadTest {
+public class SpringBootInitialLoadIntegrationTest {
 
     @Autowired
     private EmployeeRepository employeeRepository;
 
     @Test
     public void testLoadDataForTestClass() {
-        assertEquals(employeeRepository.findAll().size(), 3);
+        assertEquals(employeeRepository.findAll()
+            .size(), 3);
     }
 
     @Test
-    @Sql(scripts = {"/import_senior_employees.sql" }
-        , config = @SqlConfig(encoding = "utf-8", transactionMode = TransactionMode.ISOLATED))
-	public void testLoadDataForTestCase() {
-		assertEquals(employeeRepository.findAll().size(), 5);
-	}
+    @Sql(scripts = { "/import_senior_employees.sql" }, config = @SqlConfig(encoding = "utf-8", transactionMode = TransactionMode.ISOLATED))
+    public void testLoadDataForTestCase() {
+        assertEquals(employeeRepository.findAll()
+            .size(), 5);
+    }
 }

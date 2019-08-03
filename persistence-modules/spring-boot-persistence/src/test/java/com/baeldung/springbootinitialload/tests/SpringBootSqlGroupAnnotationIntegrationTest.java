@@ -19,7 +19,7 @@ import com.baeldung.boot.repository.EmployeeRepository;
 @SpringBootTest(classes = Application.class)
 @SqlGroup({ @Sql(scripts = "/employees_schema.sql", config = @SqlConfig(transactionMode = TransactionMode.ISOLATED)),
             @Sql("/import_employees.sql")})
-public class SpringBootSqlGroupAnnotationTest {
+public class SpringBootSqlGroupAnnotationIntegrationTest {
 
     @Autowired
     private EmployeeRepository employeeRepository;
