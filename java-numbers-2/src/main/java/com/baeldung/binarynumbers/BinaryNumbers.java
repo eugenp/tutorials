@@ -16,7 +16,6 @@ public class BinaryNumbers {
         }
 
         StringBuilder binaryNumber = new StringBuilder();
-
         Integer quotient = decimalNumber;
 
         while (quotient > 0) {
@@ -29,7 +28,6 @@ public class BinaryNumbers {
         }
 
         binaryNumber = binaryNumber.reverse();
-
         return Integer.valueOf(binaryNumber.toString());
     }
 
@@ -51,7 +49,6 @@ public class BinaryNumbers {
             binaryNumber = binaryNumber / 10;
 
             result += lastDigit * base;
-
             base = base * 2;
         }
         return result;
@@ -101,9 +98,7 @@ public class BinaryNumbers {
     public Integer substractBinaryNumber(Integer firstNum, Integer secondNum) {
 
         int onesComplement = Integer.valueOf(getOnesComplement(secondNum));
-
         StringBuilder output = new StringBuilder();
-
         int carry = 0;
         int temp;
 
@@ -126,13 +121,11 @@ public class BinaryNumbers {
         } else {
             return getOnesComplement(Integer.valueOf(additionOfFirstNumAndOnesComplement));
         }
-
     }
 
     public Integer getOnesComplement(Integer num) {
 
         StringBuilder onesComplement = new StringBuilder();
-
         while (num > 0) {
             int lastDigit = num % 10;
             if (lastDigit == 0) {
@@ -142,7 +135,6 @@ public class BinaryNumbers {
             }
             num = num / 10;
         }
-
         return Integer.valueOf(onesComplement.reverse()
             .toString());
     }
