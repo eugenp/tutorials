@@ -1,4 +1,4 @@
-package com.baeldung.mongodb.services;
+package com.baeldung.mongodb.file.services;
 
 import java.io.IOException;
 
@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.baeldung.mongodb.daos.PhotoRepository;
-import com.baeldung.mongodb.models.Photo;
+import com.baeldung.mongodb.file.daos.PhotoRepository;
+import com.baeldung.mongodb.file.models.Photo;
 
 @Service
 public class PhotoService {

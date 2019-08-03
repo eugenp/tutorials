@@ -1,4 +1,4 @@
-package com.baeldung.mongodb.web;
+package com.baeldung.mongodb.file.web;
 
 import java.io.IOException;
 import java.util.Base64;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.baeldung.mongodb.models.Photo;
-import com.baeldung.mongodb.services.PhotoService;
+import com.baeldung.mongodb.file.models.Photo;
+import com.baeldung.mongodb.file.services.PhotoService;
 
 @Controller
 public class PhotoController {
