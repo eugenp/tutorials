@@ -1,4 +1,4 @@
-package com.baeldung.freebuilder.builder.classic;
+package com.baeldung.freebuilder.builder;
 
 public class Employee {
 

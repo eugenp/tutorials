@@ -1,13 +1,11 @@
 package com.baeldung.freebuilder;
 
-import com.baeldung.freebuilder.builder.classic.Address;
 import org.inferred.freebuilder.FreeBuilder;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.UnaryOperator;
 
 @FreeBuilder
 public interface Employee {

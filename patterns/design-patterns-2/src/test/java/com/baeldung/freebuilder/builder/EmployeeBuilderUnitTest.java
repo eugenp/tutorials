@@ -1,4 +1,4 @@
-package com.baeldung.freebuilder.builder.classic;
+package com.baeldung.freebuilder.builder;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
