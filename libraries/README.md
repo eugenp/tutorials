@@ -52,7 +52,6 @@
 - [Java Concurrency Utility with JCTools](http://www.baeldung.com/java-concurrency-jc-tools)
 - [Creating REST Microservices with Javalin](http://www.baeldung.com/javalin-rest-microservices)
 - [Introduction to JavaPoet](http://www.baeldung.com/java-poet)
-- [Introduction to Joda-Time](http://www.baeldung.com/joda-time)
 - [Convert String to Date in Java](http://www.baeldung.com/java-string-to-date)
 - [Guide to Resilience4j](http://www.baeldung.com/resilience4j)
 - [Parsing YAML with SnakeYAML](http://www.baeldung.com/java-snake-yaml)
