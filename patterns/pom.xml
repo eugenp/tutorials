@@ -21,6 +21,7 @@
         <module>solid</module>
         <module>dip</module>
         <module>backoff-jitter</module>
+        <module>hexagon</module>
     </modules>
 
     <dependencyManagement>
