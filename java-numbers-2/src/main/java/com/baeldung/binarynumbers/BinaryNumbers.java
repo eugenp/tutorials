@@ -22,9 +22,7 @@ public class BinaryNumbers {
 
             int remainder = quotient % 2;
             binaryNumber.append(remainder);
-
-            int result = quotient / 2;
-            quotient = result;
+            quotient /= 2;
         }
 
         binaryNumber = binaryNumber.reverse();
@@ -40,7 +38,7 @@ public class BinaryNumbers {
      */
     public Integer convertBinaryToDecimal(Integer binaryNumber) {
 
-        Integer result = 0;
+        Integer decimalNumber = 0;
         Integer base = 1;
 
         while (binaryNumber > 0) {
@@ -48,10 +46,10 @@ public class BinaryNumbers {
             int lastDigit = binaryNumber % 10;
             binaryNumber = binaryNumber / 10;
 
-            result += lastDigit * base;
+            decimalNumber += lastDigit * base;
             base = base * 2;
         }
-        return result;
+        return decimalNumber;
     }
 
     /**
