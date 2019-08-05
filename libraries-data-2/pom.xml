@@ -83,6 +83,12 @@
             <artifactId>google-api-client</artifactId>
             <version>${google-api.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-jackson2</artifactId>
+            <version>${googleclient.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.google.oauth-client</groupId>
             <artifactId>google-oauth-client-jetty</artifactId>
@@ -109,6 +115,21 @@
             <artifactId>infinispan-core</artifactId>
             <version>${infinispan.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
 
     </dependencies>
 
@@ -116,13 +137,16 @@
         <flink.version>1.5.0</flink.version>
         <hll.version>1.6.0</hll.version>
         <crdt.version>0.1.0</crdt.version>
+        <googleclient.version>1.23.0</googleclient.version>
         <unit-ri.version>1.0.3</unit-ri.version>
         <docx4j.version>3.3.5</docx4j.version>
         <jaxb-api.version>2.1</jaxb-api.version>
         <google-api.version>1.23.0</google-api.version>
         <opencsv.version>4.1</opencsv.version>
         <smooks.version>1.7.0</smooks.version>
+        <jackson.version>2.9.8</jackson.version>
         <infinispan.version>9.1.5.Final</infinispan.version>
         <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
+        <spring.version>4.3.8.RELEASE</spring.version>
     </properties>
 </project>
