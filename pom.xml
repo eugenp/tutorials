@@ -469,6 +469,7 @@
                 <!-- <module>java-streams-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>java-strings</module>
                 <module>java-strings-2</module>
+                <module>java-strings-ops</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javafx</module>
@@ -730,8 +731,6 @@
 				<module>spring-security-angular/server</module>
 				<module>spring-security-cache-control</module>
 
-				<module>spring-security-client</module>
-
 				<module>spring-security-core</module>
 				<module>spring-security-mvc-boot</module>
 				<module>spring-security-mvc-custom</module>
@@ -909,7 +908,6 @@
 				<module>spring-security-acl</module>
 				<module>spring-security-angular</module>
 				<module>spring-security-cache-control</module>
-				<module>spring-security-client</module>
 				<module>spring-security-core</module>
 				<module>spring-security-mvc-boot</module>
 				<module>spring-security-mvc-custom</module>
@@ -1163,6 +1161,7 @@
 				<!-- <module>java-streams-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
 				<module>java-strings</module>
 				<module>java-strings-2</module>
+				<module>java-strings-ops</module>
 				<module>java-vavr-stream</module>
 				<module>java-websocket</module>
 				<module>javafx</module>
@@ -1401,9 +1400,6 @@
 				<module>spring-security-acl</module>
 				<module>spring-security-angular/server</module>
 				<module>spring-security-cache-control</module>
-
-				<module>spring-security-client</module>
-
 				<module>spring-security-core</module>
 				<module>spring-security-mvc-boot</module>
 				<module>spring-security-mvc-custom</module>
