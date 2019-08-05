@@ -144,6 +144,11 @@
             <artifactId>spring-messaging</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>${javax.el.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -290,7 +295,7 @@
         <!-- excel -->
         <poi.version>3.16-beta1</poi.version>
 
-        <javax.el.version>3.0.1-b06</javax.el.version>
+        <javax.el.version>3.0.1-b09</javax.el.version>
 		
     </properties>
 
