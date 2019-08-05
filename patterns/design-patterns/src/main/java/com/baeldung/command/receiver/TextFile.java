@@ -1,4 +1,4 @@
-package com.baeldung.pattern.command.receiver;
+package com.baeldung.command.receiver;
 
 public class TextFile {
     

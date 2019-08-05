@@ -69,7 +69,6 @@
     <properties>
         <couchbase.client.version>2.5.0</couchbase.client.version>
         <spring-framework.version>4.3.5.RELEASE</spring-framework.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
     </properties>
 
 </project>

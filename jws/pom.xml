@@ -83,7 +83,6 @@
 
     <properties>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
         <jnlp-jardiff.version>1.6.0</jnlp-jardiff.version>
         <jnlp-servlet.version>1.6.0</jnlp-servlet.version>
     </properties>
