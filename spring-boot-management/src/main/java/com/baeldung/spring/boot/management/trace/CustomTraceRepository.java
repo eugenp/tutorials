@@ -1,8 +1,8 @@
 package com.baeldung.spring.boot.management.trace;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 import org.springframework.boot.actuate.trace.http.HttpTrace;
 import org.springframework.boot.actuate.trace.http.HttpTraceRepository;
@@ -11,23 +11,18 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class CustomTraceRepository implements HttpTraceRepository {
 
-    List<HttpTrace> traces = new ArrayList<>(1);
+    AtomicReference<HttpTrace> lastTrace = new AtomicReference<>();
 
     @Override
     public List<HttpTrace> findAll() {
-        synchronized (this.traces) {
-            return Collections.unmodifiableList(new ArrayList<>(this.traces));
-        }
+        return Collections.singletonList(lastTrace.get());
     }
 
     @Override
     public void add(HttpTrace trace) {
         if ("GET".equals(trace.getRequest()
             .getMethod())) {
-            synchronized (this.traces) {
-                traces.clear();
-                traces.add(trace);
-            }
+            lastTrace.set(trace);
         }
     }
 
