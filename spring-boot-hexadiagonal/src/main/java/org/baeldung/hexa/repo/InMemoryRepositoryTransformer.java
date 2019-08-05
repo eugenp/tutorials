@@ -1,17 +1,19 @@
-package org.baeldung.boot.repository;
+package org.baeldung.hexa.repo;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.baeldung.boot.domain.Book;
-import org.baeldung.boot.domain.BookRepository;
+import org.baeldung.hexa.domain.Book;
+import org.baeldung.hexa.domain.BookRepository;
 
-public class InMemoryBookRepositoryImpl implements BookRepository {
+import com.google.common.collect.ImmutableList;
+
+public class InMemoryRepositoryTransformer implements BookRepository {
 
     private List<Book> inMemoryStorage;
 
-    public InMemoryBookRepositoryImpl() {
+    public InMemoryRepositoryTransformer() {
         this.inMemoryStorage = new ArrayList<Book>();
     }
 
@@ -26,5 +28,11 @@ public class InMemoryBookRepositoryImpl implements BookRepository {
                               .filter(b -> b.getAuthor().equals(author))
                               .collect(Collectors.toList());
     }
+
+    @Override
+    public List<Book> getAllBooks() {
+        return ImmutableList.copyOf(inMemoryStorage);
+    }
+    
 
 }

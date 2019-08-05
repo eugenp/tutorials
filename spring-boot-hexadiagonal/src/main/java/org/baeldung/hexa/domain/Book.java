@@ -1,4 +1,4 @@
-package org.baeldung.boot.domain;
+package org.baeldung.hexa.domain;
 
 public class Book {
 
