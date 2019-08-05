@@ -69,6 +69,34 @@
             <version>${com.squareup.okhttp3.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Retrofit -->
+		<dependency>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>retrofit</artifactId>
+			<version>${retrofit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>converter-gson</artifactId>
+			<version>${retrofit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>adapter-rxjava</artifactId>
+			<version>${retrofit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mashape.unirest</groupId>
+			<artifactId>unirest-java</artifactId>
+			<version>${unirest.version}</version>
+		</dependency>
+		<!-- javalin -->
+		<dependency>
+			<groupId>io.javalin</groupId>
+			<artifactId>javalin</artifactId>
+			<version>${javalin.version}</version>
+		</dependency>
           
 	</dependencies>
 
@@ -77,5 +105,8 @@
         <com.squareup.okhttp3.version>3.14.2</com.squareup.okhttp3.version>
         <googleclient.version>1.23.0</googleclient.version>
         <async.http.client.version>2.2.0</async.http.client.version>
+		<retrofit.version>2.3.0</retrofit.version>
+		<unirest.version>1.4.9</unirest.version>
+		<javalin.version>1.6.0</javalin.version>
 	</properties>
 </project>
