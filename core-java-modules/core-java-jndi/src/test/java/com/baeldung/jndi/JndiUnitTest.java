@@ -31,6 +31,12 @@ public class JndiUnitTest {
     @Test
     public void testNameCreation() throws InvalidNameException {
         Name objectName = new CompositeName("java:comp/env/jdbc");
+
+        Enumeration<String> elements = objectName.getAll();
+        while(elements.hasMoreElements()) {
+            System.out.println(elements.nextElement());
+        }
+
         objectName.add("example");
 
         assertEquals("env", objectName.get(1));
