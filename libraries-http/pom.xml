@@ -26,6 +26,11 @@
 			<artifactId>okhttp</artifactId>
             <version>${com.squareup.okhttp3.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>logging-interceptor</artifactId>
+			<version>${logging-interceptor.version}</version>
+		</dependency>
 
         <!-- Dependencies for google http client -->
         <dependency>
@@ -91,6 +96,17 @@
 			<artifactId>unirest-java</artifactId>
 			<version>${unirest.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<!-- javalin -->
 		<dependency>
 			<groupId>io.javalin</groupId>
@@ -102,11 +118,13 @@
 
 	<properties>
 		<assertj.version>3.6.2</assertj.version>
+		<httpclient.version>4.5.3</httpclient.version>
         <com.squareup.okhttp3.version>3.14.2</com.squareup.okhttp3.version>
         <googleclient.version>1.23.0</googleclient.version>
         <async.http.client.version>2.2.0</async.http.client.version>
 		<retrofit.version>2.3.0</retrofit.version>
 		<unirest.version>1.4.9</unirest.version>
 		<javalin.version>1.6.0</javalin.version>
+		<logging-interceptor.version>3.9.0</logging-interceptor.version>
 	</properties>
 </project>
