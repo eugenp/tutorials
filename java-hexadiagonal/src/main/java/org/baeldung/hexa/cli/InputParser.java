@@ -2,12 +2,8 @@ package org.baeldung.hexa.cli;
 
 import java.io.IOException;
 
-public interface CliInputParser {
+public interface InputParser {
 
     void processUserInput() throws IOException;
-
-    void consumeBooks();
-
-    void produceBooks();
 
 }

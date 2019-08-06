@@ -3,8 +3,8 @@ package org.baeldung.hexa.domain;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BookServiceImpl implements BookService{
-    
+public class BookServiceImpl implements BookService {
+
     private BookRepository bookRepository;
 
     public BookServiceImpl(BookRepository bookRepository) {
@@ -13,7 +13,9 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public void storeBook(Book book) {
-        List<Book> booksByAuthor = bookRepository.getBooksByAuthor(book.getAuthor()).stream().collect(Collectors.toList());
+        List<Book> booksByAuthor = bookRepository.getBooksByAuthor(book.getAuthor())
+            .stream()
+            .collect(Collectors.toList());
         if (!booksByAuthor.contains(book)) {
             bookRepository.storeBook(book);
         }
@@ -26,13 +28,17 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public int getNumberOfBooks() {
-        return bookRepository.getAllBooks().size();
+        return bookRepository.getAllBooks()
+            .size();
     }
 
     @Override
     public int getNumberOfAuthors() {
         List<Book> allBooks = bookRepository.getAllBooks();
-        return allBooks.stream().map(Book::getAuthor).collect(Collectors.toSet()).size();
+        return allBooks.stream()
+            .map(Book::getAuthor)
+            .collect(Collectors.toSet())
+            .size();
     }
-    
+
 }

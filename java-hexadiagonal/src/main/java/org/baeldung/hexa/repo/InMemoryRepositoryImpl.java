@@ -25,14 +25,14 @@ public class InMemoryRepositoryImpl implements BookRepository {
     @Override
     public List<Book> getBooksByAuthor(String author) {
         return inMemoryStorage.stream()
-                              .filter(b -> b.getAuthor().equals(author))
-                              .collect(Collectors.toList());
+            .filter(b -> b.getAuthor()
+                .equals(author))
+            .collect(Collectors.toList());
     }
 
     @Override
     public List<Book> getAllBooks() {
         return ImmutableList.copyOf(inMemoryStorage);
     }
-    
 
 }

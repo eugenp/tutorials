@@ -49,7 +49,6 @@ public class BookServiceTest {
             .storeBook(input1);
     }
 
-
     @Test
     public void givenBooks_whenGetAuthorCount_thenSuccess() {
         // prepare
@@ -63,7 +62,7 @@ public class BookServiceTest {
         // assert
         assertThat(numberOfAuthors, Matchers.is(1));
     }
-    
+
     @Test
     public void givenBooks_whenGetNumberOfBooks_thenSuccess() {
         // prepare
@@ -77,7 +76,5 @@ public class BookServiceTest {
         // assert
         assertThat(numberOfBooks, Matchers.is(2));
     }
-    
-    
 
 }

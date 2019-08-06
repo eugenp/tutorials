@@ -14,14 +14,13 @@ import com.google.common.collect.ImmutableList;
 public class BookServiceITest {
 
     private BookService underTest;
-    
+
     @Before
     public void init() {
         BookRepository bookRepository = new InMemoryRepositoryImpl();
         underTest = new BookServiceImpl(bookRepository);
     }
-    
-    
+
     @Test
     public void givenAuthor_whenGetByAuthor_thenSuccess() {
         // prepare
@@ -39,5 +38,5 @@ public class BookServiceITest {
         assertThat(actual.equals(mockedBooks), Matchers.is(true));
 
     }
-    
+
 }
