@@ -13,7 +13,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import com.google.common.collect.ImmutableList;
 
 @RunWith(MockitoJUnitRunner.class)
-public class BookServiceTest {
+public class BookServiceUnitTest {
 
     BookService underTest;
 

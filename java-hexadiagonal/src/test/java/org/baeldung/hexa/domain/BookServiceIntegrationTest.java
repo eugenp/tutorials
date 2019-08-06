@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import com.google.common.collect.ImmutableList;
 
-public class BookServiceITest {
+public class BookServiceIntegrationTest {
 
     private BookService underTest;
 
