@@ -7,7 +7,7 @@ import java.io.PrintStream;
 import java.util.concurrent.TimeUnit;
 
 public class MetricsAspectJMain {
-    static final MetricRegistry registry = new MetricRegistry();
+    private static final MetricRegistry REGISTRY = new MetricRegistry();
 
     public static void main(String args[]) throws InterruptedException {
         startReport();
@@ -21,14 +21,14 @@ public class MetricsAspectJMain {
         Thread.sleep(3000L);
     }
 
-    static void startReport() {
+    private static void startReport() {
         SharedMetricRegistries.add(ObjectRunner.REGISTRY_NAME, registry);
 
         ConsoleReporter reporter = ConsoleReporter.forRegistry(registry)
                 .convertRatesTo(TimeUnit.SECONDS)
                 .convertDurationsTo(TimeUnit.MILLISECONDS)
                 .outputTo(new PrintStream(System.out))
-                .build();
-        reporter.start(3, TimeUnit.SECONDS);
+                .build()
+                .start(3, TimeUnit.SECONDS);
     }
 }
