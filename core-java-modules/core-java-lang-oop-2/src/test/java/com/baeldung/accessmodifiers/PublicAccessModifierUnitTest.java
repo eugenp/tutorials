@@ -3,34 +3,76 @@ package com.baeldung.accessmodifiers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+import com.baeldung.accessmodifiers.publicmodifier.ListOfThree;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class PublicAccessModifierUnitTest {
 
     @Test
-    public void whenUsingIntValue_valuesAreEqual() {
-        
-        assertEquals(0, new BigDecimal(0).intValue());
+    public void whenUsingBigDecimalIntValueMethod_correspondingIntIsReturned() {
+        assertEquals(0, new BigDecimal(0).intValue()); //instance member
     }
-
+    
     @Test
-    public void whenUsingToLowerCase_valuesAreEqual() {
-        
+    public void whenUsingIntegerMaxValueField_maxPossibleIntValueIsReturned() {
+        assertEquals(2147483647, Integer.MAX_VALUE); //static field
+    }
+    
+    @Test
+    public void whenUsingStringToLowerCase_stringTurnsToLowerCase() {
         assertEquals("alex", "ALEX".toLowerCase());
     }
 
     @Test
+    public void whenParsingStringOne_parseIntReturns1() {
+        assertEquals(1, Integer.parseInt("1"));
+    }
+    
+    @Test
     public void whenConnectingToH2_connectionInstanceIsReturned() throws SQLException {
 
-        final String URL = "jdbc:h2:~/test";
-        Connection conn = DriverManager.getConnection(URL, "sa", "");
+        final String url = "jdbc:h2:~/test";
+        Connection conn = DriverManager.getConnection(url, "sa", "");
         assertNotNull(conn);
     }
 
+    @Test
+    public void whenCreatingCustomList_concreteAndInheritedMethodsWork() {
+
+        List<String> list1 = new ListOfThree<String>();
+        list1.add("zero"); //inherited implementation
+        list1.add("one");
+        list1.add("two");
+        
+        //our implemented methods
+        assertEquals("zero", list1.get(0));
+      
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            list1.get(4);
+        });
+        
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            list1.add("three");
+        });
+        
+        assertEquals(3, list1.size());
+
+        list1.indexOf("one"); //inherited implementation
+        
+        List<String> list2 = new ListOfThree<String>();
+        list2.add("zero");
+        list2.add("one");
+        
+        assertTrue(list1.containsAll(list2));  //inherited implementation
+    }
+    
 }

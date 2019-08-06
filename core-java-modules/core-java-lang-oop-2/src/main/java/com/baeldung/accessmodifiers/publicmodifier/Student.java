@@ -1,4 +1,4 @@
-package com.baeldung.accessmodifiers;
+package com.baeldung.accessmodifiers.publicmodifier;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -7,12 +7,16 @@ import java.sql.SQLException;
 
 public class Student {
 
-    private BigDecimal grades; //new representation
+    private BigDecimal grade; //new representation
     private String name;   
     private int age;
 
-    public int getGrades() {
-        return grades.intValue(); //Backward compatibility
+    public int getGrade() {
+        return grade.intValue(); //Backward compatibility
+    }
+    
+    public BigDecimal bigDecimalGrade() {
+        return grade;
     }
     
     public Connection getConnection() throws SQLException {
@@ -20,10 +24,6 @@ public class Student {
         final String URL = "jdbc:h2:~/test";
         return DriverManager.getConnection(URL, "sa", "");
 
-    }
-    
-    public BigDecimal bigDecimalGrades() {
-        return grades;
     }
         
     public void setAge(int age) {
