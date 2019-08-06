@@ -48,31 +48,21 @@ public class PublicAccessModifierUnitTest {
     @Test
     public void whenCreatingCustomList_concreteAndInheritedMethodsWork() {
 
-        List<String> list1 = new ListOfThree<String>();
-        list1.add("zero"); //inherited implementation
-        list1.add("one");
-        list1.add("two");
+        String[] dataSet1 = new String[] {"zero", "one", "two"};
+        
+        List<String> list1 = new ListOfThree<String>(dataSet1);
         
         //our implemented methods
-        assertEquals("zero", list1.get(0));
-      
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            list1.get(4);
-        });
-        
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            list1.add("three");
-        });
-        
+        assertEquals("one", list1.get(1));
         assertEquals(3, list1.size());
 
-        list1.indexOf("one"); //inherited implementation
+        //inherited implementations
+        assertEquals(1, list1.indexOf("one"));
         
-        List<String> list2 = new ListOfThree<String>();
-        list2.add("zero");
-        list2.add("one");
+        String[] dataSet2 = new String[] {"two", "zero", "one"};
+        List<String> list2 = new ListOfThree<String>(dataSet2);
         
-        assertTrue(list1.containsAll(list2));  //inherited implementation
+        assertTrue(list1.containsAll(list2));
     }
     
 }
