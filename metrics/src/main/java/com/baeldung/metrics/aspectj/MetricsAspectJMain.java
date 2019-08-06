@@ -22,9 +22,9 @@ public class MetricsAspectJMain {
     }
 
     private static void startReport() {
-        SharedMetricRegistries.add(ObjectRunner.REGISTRY_NAME, registry);
+        SharedMetricRegistries.add(ObjectRunner.REGISTRY_NAME, REGISTRY);
 
-        ConsoleReporter reporter = ConsoleReporter.forRegistry(registry)
+        ConsoleReporter.forRegistry(REGISTRY)
                 .convertRatesTo(TimeUnit.SECONDS)
                 .convertDurationsTo(TimeUnit.MILLISECONDS)
                 .outputTo(new PrintStream(System.out))
