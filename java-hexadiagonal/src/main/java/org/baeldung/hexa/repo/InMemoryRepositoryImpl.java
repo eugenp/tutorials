@@ -9,11 +9,11 @@ import org.baeldung.hexa.domain.BookRepository;
 
 import com.google.common.collect.ImmutableList;
 
-public class InMemoryRepositoryTransformer implements BookRepository {
+public class InMemoryRepositoryImpl implements BookRepository {
 
     private List<Book> inMemoryStorage;
 
-    public InMemoryRepositoryTransformer() {
+    public InMemoryRepositoryImpl() {
         this.inMemoryStorage = new ArrayList<Book>();
     }
 

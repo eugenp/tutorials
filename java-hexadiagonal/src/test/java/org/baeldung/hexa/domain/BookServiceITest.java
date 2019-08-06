@@ -4,7 +4,7 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import org.baeldung.hexa.repo.InMemoryRepositoryTransformer;
+import org.baeldung.hexa.repo.InMemoryRepositoryImpl;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +17,7 @@ public class BookServiceITest {
     
     @Before
     public void init() {
-        BookRepository bookRepository = new InMemoryRepositoryTransformer();
+        BookRepository bookRepository = new InMemoryRepositoryImpl();
         underTest = new BookServiceImpl(bookRepository);
     }
     

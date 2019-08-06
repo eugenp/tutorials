@@ -10,15 +10,16 @@ import org.baeldung.hexa.domain.BookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CliTransformer {
+public class CliInputParserImpl implements CliInputParser {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(CliTransformer.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(CliInputParserImpl.class);
     private BookService bookService;
 
-    public CliTransformer(BookService bookService) {
+    public CliInputParserImpl(BookService bookService) {
         this.bookService = bookService;
     }
 
+    @Override
     public void processUserInput() throws IOException {
         BufferedReader reader =  new BufferedReader(new InputStreamReader(System.in));
         String line;
@@ -33,6 +34,7 @@ public class CliTransformer {
         
     }
 
+    @Override
     public void consumeBooks() {
         List<Book> booksByAuthor = bookService.getBooksByAuthor("Isaac Asimov");
         if (booksByAuthor.isEmpty()) {
@@ -42,7 +44,7 @@ public class CliTransformer {
             LOGGER.info("Found book for {} : {}", b.getAuthor(), b.getName());
         }
     }
-
+    @Override
     public void produceBooks() {
         Book book1 = new Book("Foundation", "Isaac Asimov");
         Book book2 = new Book("The man in the high castle", "Philip K. Dick");
