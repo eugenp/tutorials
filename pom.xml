@@ -517,6 +517,7 @@
 				<module>lucene</module>
 
 				<module>mapstruct</module>
+				<module>mapstruct-unmapped-policy</module>
 				<module>maven</module>
 				<module>maven-archetype</module>
 				<!-- <module>maven-polyglot/maven-polyglot-json-app</module> --> <!-- Not a maven project -->
@@ -1202,6 +1203,7 @@
 				<module>lucene</module>
 
 				<module>mapstruct</module>
+				<module>mapstruct-unmapped-policy</module>
 				<module>maven</module>
 				<!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
 				<module>maven-archetype</module>
