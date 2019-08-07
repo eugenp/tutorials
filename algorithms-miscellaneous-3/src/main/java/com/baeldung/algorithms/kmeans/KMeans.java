@@ -55,7 +55,9 @@ public class KMeans {
             // if the assignment does not change, then the algorithm terminates
             boolean shouldTerminate = isLastIteration || clusters.equals(lastState);
             lastState = clusters;
-            if (shouldTerminate) break;
+            if (shouldTerminate) {
+                break;
+            }
 
             // at the end of each iteration we should relocate the centroids
             centroids = relocateCentroids(clusters);
@@ -92,7 +94,9 @@ public class KMeans {
      */
     private static Centroid average(Centroid centroid, List<Record> records) {
         // if this cluster is empty, then we shouldn't move the centroid
-        if (records == null || records.isEmpty()) return centroid;
+        if (records == null || records.isEmpty()) {
+            return centroid;
+        }
 
         // Since some records don't have all possible attributes, we initialize
         // average coordinates equal to current centroid coordinates
@@ -213,12 +217,20 @@ public class KMeans {
     }
 
     private static void applyPreconditions(List<Record> records, int k, Distance distance, int maxIterations) {
-        if (records == null || records.isEmpty()) throw new IllegalArgumentException("The dataset can't be empty");
+        if (records == null || records.isEmpty()) {
+            throw new IllegalArgumentException("The dataset can't be empty");
+        }
 
-        if (k <= 1) throw new IllegalArgumentException("It doesn't make sense to have less than or equal to 1 cluster");
+        if (k <= 1) {
+            throw new IllegalArgumentException("It doesn't make sense to have less than or equal to 1 cluster");
+        }
 
-        if (distance == null) throw new IllegalArgumentException("The distance calculator is required");
+        if (distance == null) {
+            throw new IllegalArgumentException("The distance calculator is required");
+        }
 
-        if (maxIterations <= 0) throw new IllegalArgumentException("Max iterations should be a positive number");
+        if (maxIterations <= 0) {
+            throw new IllegalArgumentException("Max iterations should be a positive number");
+        }
     }
 }

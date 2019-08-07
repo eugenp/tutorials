@@ -23,8 +23,12 @@ public class Centroid {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Centroid centroid = (Centroid) o;
         return Objects.equals(getCoordinates(), centroid.getCoordinates());
     }

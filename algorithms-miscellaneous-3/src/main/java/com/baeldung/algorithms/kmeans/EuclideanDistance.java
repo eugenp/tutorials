@@ -9,7 +9,9 @@ public class EuclideanDistance implements Distance {
 
     @Override
     public double calculate(Map<String, Double> f1, Map<String, Double> f2) {
-        if (f1 == null || f2 == null) throw new IllegalArgumentException("Feature vectors can't be null");
+        if (f1 == null || f2 == null) {
+            throw new IllegalArgumentException("Feature vectors can't be null");
+        }
 
         double sum = 0;
         for (String key : f1.keySet()) {
