@@ -676,6 +676,7 @@
 				<!-- <module>spring-data-rest-querydsl</module> --> <!-- BAEL-14304 -->
 				<module>spring-dispatcher-servlet</module>
 				<module>spring-drools</module>
+				<module>spring-di</module>
 
 				<module>spring-ehcache</module>
 				<!-- <module>spring-ejb</module> BAEL-14304 -->
@@ -730,8 +731,6 @@
 				<module>spring-security-acl</module>
 				<module>spring-security-angular/server</module>
 				<module>spring-security-cache-control</module>
-
-				<module>spring-security-client</module>
 
 				<module>spring-security-core</module>
 				<module>spring-security-mvc-boot</module>
@@ -875,6 +874,7 @@
 				<module>spring-data-rest</module>
 				<module>spring-dispatcher-servlet</module>
 				<module>spring-drools</module>
+				<module>spring-di</module>
 				<module>spring-ehcache</module>
 				<module>spring-freemarker</module>
 				<module>persistence-modules/spring-hibernate-3</module>
@@ -910,7 +910,6 @@
 				<module>spring-security-acl</module>
 				<module>spring-security-angular</module>
 				<module>spring-security-cache-control</module>
-				<module>spring-security-client</module>
 				<module>spring-security-core</module>
 				<module>spring-security-mvc-boot</module>
 				<module>spring-security-mvc-custom</module>
@@ -1348,6 +1347,7 @@
 				<module>spring-data-rest-querydsl</module>
 				<module>spring-dispatcher-servlet</module>
 				<module>spring-drools</module>
+				<module>spring-di</module>
 
 				<module>spring-ehcache</module>
 				<module>spring-ejb</module>
@@ -1403,9 +1403,6 @@
 				<module>spring-security-acl</module>
 				<module>spring-security-angular/server</module>
 				<module>spring-security-cache-control</module>
-
-				<module>spring-security-client</module>
-
 				<module>spring-security-core</module>
 				<module>spring-security-mvc-boot</module>
 				<module>spring-security-mvc-custom</module>
@@ -1591,3 +1588,4 @@
 	</properties>
 
 </project>
+

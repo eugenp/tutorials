@@ -32,7 +32,8 @@ public class JaxpTransformer {
         // 1- Build the doc from the XML file
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
-        input = factory.newDocumentBuilder()
+        factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+        this.input = factory.newDocumentBuilder()
             .parse(resourcePath);
     }
 
@@ -40,24 +41,24 @@ public class JaxpTransformer {
         // 2- Locate the node(s) with xpath
         XPath xpath = XPathFactory.newInstance()
             .newXPath();
-        NodeList nodes = (NodeList) xpath.evaluate(String.format("//*[contains(@%s, '%s')]", attribute, oldValue), input, XPathConstants.NODESET);
+        NodeList nodes = (NodeList) xpath.evaluate(String.format("//*[contains(@%s, '%s')]", attribute, oldValue), this.input, XPathConstants.NODESET);
         // 3- Make the change on the selected nodes
         for (int i = 0; i < nodes.getLength(); i++) {
             Element value = (Element) nodes.item(i);
             value.setAttribute(attribute, newValue);
         }
-        //Stream api syntax
-        //        IntStream
-        //          .range(0, nodes.getLength())
-        //          .mapToObj(i -> (Element) nodes.item(i))
-        //          .forEach(value -> value.setAttribute(attribute, newValue));
+        // Stream api syntax
+        // IntStream
+        // .range(0, nodes.getLength())
+        // .mapToObj(i -> (Element) nodes.item(i))
+        // .forEach(value -> value.setAttribute(attribute, newValue));
         // 4- Save the result to a new XML doc
         TransformerFactory factory = TransformerFactory.newInstance();
         factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
         Transformer xformer = factory.newTransformer();
         xformer.setOutputProperty(OutputKeys.INDENT, "yes");
         Writer output = new StringWriter();
-        xformer.transform(new DOMSource(input), new StreamResult(output));
+        xformer.transform(new DOMSource(this.input), new StreamResult(output));
         return output.toString();
     }
 }
