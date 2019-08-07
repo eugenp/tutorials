@@ -1,13 +1,19 @@
-package com.baeldung.ml.kmeans;
+package com.baeldung.algorithms.kmeans;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
-
-import java.io.IOException;
-import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toSet;
 

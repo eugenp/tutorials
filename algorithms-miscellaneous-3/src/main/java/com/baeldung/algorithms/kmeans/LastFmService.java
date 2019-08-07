@@ -1,4 +1,4 @@
-package com.baeldung.ml.kmeans;
+package com.baeldung.algorithms.kmeans;
 
 import java.io.IOException;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package com.baeldung.ml.kmeans;
+package com.baeldung.algorithms.kmeans;
 
 import java.util.List;
 import java.util.Map;
