@@ -9,17 +9,17 @@ import org.springframework.mock.jndi.SimpleNamingContextBuilder;
 import javax.naming.*;
 import javax.sql.DataSource;
 
-import java.sql.SQLException;
+import java.util.Enumeration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class JndiUnitTest {
+class JndiUnitTest {
 
     private static InitialContext ctx;
     private static DriverManagerDataSource ds;
 
     @BeforeAll
-    public static void setUp() throws NamingException {
+    static void setUp() throws Exception {
         SimpleNamingContextBuilder builder = new SimpleNamingContextBuilder();
         ds = new DriverManagerDataSource("jdbc:h2:mem:mydb");
         builder.activate();
@@ -29,7 +29,7 @@ public class JndiUnitTest {
     }
 
     @Test
-    public void testNameCreation() throws InvalidNameException {
+    void givenACompositeName_whenAddingAnElement_thenNameIncludesIt() throws Exception {
         Name objectName = new CompositeName("java:comp/env/jdbc");
 
         Enumeration<String> elements = objectName.getAll();
@@ -44,13 +44,13 @@ public class JndiUnitTest {
     }
 
     @Test
-    public void testBindObject() throws NamingException {
-       ds.setDriverClassName("org.h2.Driver");
-       ctx.bind("java:comp/env/jdbc/datasource", ds);
+    void givenADataSourceObject_whenAddDriverClassName_thenBind() throws Exception {
+        ds.setDriverClassName("org.h2.Driver");
+        ctx.bind("java:comp/env/jdbc/datasource", ds);
     }
 
     @Test
-    public void testLookupObject() throws NamingException, SQLException {
+    void givenAContext_whenLookingUpDataSourceByNameString_thenReturnValidDataSourceObject() throws Exception {
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/datasource");
 
         assertNotNull(ds);
