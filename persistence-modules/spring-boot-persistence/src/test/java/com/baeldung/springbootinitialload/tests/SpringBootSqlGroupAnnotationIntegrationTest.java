@@ -26,7 +26,6 @@ public class SpringBootSqlGroupAnnotationIntegrationTest {
 
     @Test
     public void testLoadDataForTestCase() {
-        assertEquals(employeeRepository.findAll()
-            .size(), 3);
+        assertEquals(3, employeeRepository.findAll().size());
     }
 }

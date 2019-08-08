@@ -16,7 +16,7 @@ import com.baeldung.boot.repository.EmployeeRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
-@Sql({ "/employees_schema.sql", "/import_employees.sql" })
+@Sql({"/employees_schema.sql", "/import_employees.sql"})
 public class SpringBootInitialLoadIntegrationTest {
 
     @Autowired
@@ -24,14 +24,14 @@ public class SpringBootInitialLoadIntegrationTest {
 
     @Test
     public void testLoadDataForTestClass() {
-        assertEquals(employeeRepository.findAll()
-            .size(), 3);
+        assertEquals(3, employeeRepository.findAll()
+            .size());
     }
 
     @Test
-    @Sql(scripts = { "/import_senior_employees.sql" }, config = @SqlConfig(encoding = "utf-8", transactionMode = TransactionMode.ISOLATED))
+    @Sql(scripts = {"/import_senior_employees.sql"}, config = @SqlConfig(encoding = "utf-8", transactionMode = TransactionMode.ISOLATED))
     public void testLoadDataForTestCase() {
-        assertEquals(employeeRepository.findAll()
-            .size(), 5);
+        assertEquals(5, employeeRepository.findAll()
+            .size());
     }
 }
