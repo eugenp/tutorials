@@ -6,8 +6,9 @@
   <name>java-jpa-2</name>
   <parent>
     <groupId>com.baeldung</groupId>
-    <artifactId>persistence-modules</artifactId>
+    <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
   <dependencies>
     <dependency>
@@ -30,9 +31,22 @@
     <dependency>
       <groupId>javax.persistence</groupId>
       <artifactId>javax.persistence-api</artifactId>
-      <version>2.2</version>
+      <version>${javax.persistence-api.version}</version>
     </dependency>
 
+    <!--Runtime JPA implementation-->
+    <dependency>
+        <groupId>org.eclipse.persistence</groupId>
+        <artifactId>eclipselink</artifactId>
+        <version>${eclipselink.version}</version>
+        <scope>runtime</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>${postgres.version}</version>
+        <scope>runtime</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -89,6 +103,9 @@
   </build>
   <properties>
     <hibernate.version>5.4.0.Final</hibernate.version>
+    <eclipselink.version>2.7.4-RC1</eclipselink.version>
+    <postgres.version>42.2.5</postgres.version>
+    <javax.persistence-api.version>2.2</javax.persistence-api.version>
   </properties>
 
 </project>

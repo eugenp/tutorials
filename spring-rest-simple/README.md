@@ -5,3 +5,4 @@
 - [Spring RequestMapping](http://www.baeldung.com/spring-requestmapping)
 - [Spring and Apache FileUpload](http://www.baeldung.com/spring-apache-file-upload)
 - [Test a REST API with curl](http://www.baeldung.com/curl-rest)
+- [CORS with Spring](https://www.baeldung.com/spring-cors)

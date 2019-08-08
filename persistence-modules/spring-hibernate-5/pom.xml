@@ -146,7 +146,6 @@
 
         <!-- util -->
         <guava.version>21.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
 
     </properties>
 
