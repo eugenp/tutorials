@@ -16,8 +16,7 @@ public class ObjectRunner {
         logger.info("run");
         try {
             Thread.sleep(1000L);
-        } catch (InterruptedException e)
-        {
+        } catch (InterruptedException e) {
         }
     }
 }
