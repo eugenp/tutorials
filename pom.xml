@@ -879,6 +879,7 @@
 				<module>spring-freemarker</module>
 				<module>persistence-modules/spring-hibernate-3</module>
 				<module>persistence-modules/spring-hibernate4</module>
+				<module>persistence-modules/spring-mybatis</module>
 				<module>spring-integration</module>
 				<module>spring-jenkins-pipeline</module>
 				<module>spring-jersey</module>
