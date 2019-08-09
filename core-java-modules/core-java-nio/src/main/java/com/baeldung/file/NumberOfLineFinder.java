@@ -1,4 +1,4 @@
-package com.baeldung.files;
+package com.baeldung.file;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -61,6 +61,17 @@ public class NumberOfLineFinder {
         int lines = 0;
         try (Stream<String> fileStream = Files.lines(Paths.get(fileName))) {
             lines = (int) fileStream.count();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        return lines;
+    }
+
+    public static int getTotalNumberOfLinesUsingNIOFilesReadAllLines(String fileName) {
+        int lines = 0;
+        try {
+            List<String> fileStream = Files.readAllLines(Paths.get(fileName));
+            lines = fileStream.size();
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

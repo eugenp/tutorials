@@ -1,12 +1,13 @@
 package com.baeldung.file;
 
-import static com.baeldung.files.NumberOfLineFinder.getTotalNumberOfLinesUsingApacheCommonsIO;
-import static com.baeldung.files.NumberOfLineFinder.getTotalNumberOfLinesUsingBufferedReader;
-import static com.baeldung.files.NumberOfLineFinder.getTotalNumberOfLinesUsingGoogleGuava;
-import static com.baeldung.files.NumberOfLineFinder.getTotalNumberOfLinesUsingLineNumberReader;
-import static com.baeldung.files.NumberOfLineFinder.getTotalNumberOfLinesUsingNIOFileChannel;
-import static com.baeldung.files.NumberOfLineFinder.getTotalNumberOfLinesUsingNIOFiles;
-import static com.baeldung.files.NumberOfLineFinder.getTotalNumberOfLinesUsingScanner;
+import static com.baeldung.file.NumberOfLineFinder.getTotalNumberOfLinesUsingApacheCommonsIO;
+import static com.baeldung.file.NumberOfLineFinder.getTotalNumberOfLinesUsingBufferedReader;
+import static com.baeldung.file.NumberOfLineFinder.getTotalNumberOfLinesUsingGoogleGuava;
+import static com.baeldung.file.NumberOfLineFinder.getTotalNumberOfLinesUsingLineNumberReader;
+import static com.baeldung.file.NumberOfLineFinder.getTotalNumberOfLinesUsingNIOFileChannel;
+import static com.baeldung.file.NumberOfLineFinder.getTotalNumberOfLinesUsingNIOFiles;
+import static com.baeldung.file.NumberOfLineFinder.getTotalNumberOfLinesUsingNIOFilesReadAllLines;
+import static com.baeldung.file.NumberOfLineFinder.getTotalNumberOfLinesUsingScanner;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -36,6 +37,12 @@ public class NumberOfLineFinderUnitTest {
     @Test
     public void whenUsingNIOFiles_thenReturnTotalNumberOfLines() {
         int lines = getTotalNumberOfLinesUsingNIOFiles(INPUT_FILE_NAME);
+        assertEquals(ACTUAL_LINE_COUNT, lines);
+    }
+
+    @Test
+    public void whenUsingNIOFilesReadAllLines_thenReturnTotalNumberOfLines() {
+        int lines = getTotalNumberOfLinesUsingNIOFilesReadAllLines(INPUT_FILE_NAME);
         assertEquals(ACTUAL_LINE_COUNT, lines);
     }
 
