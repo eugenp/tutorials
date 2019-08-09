@@ -14,25 +14,26 @@ import org.slf4j.LoggerFactory;
 public class WordCount {
     private static final Logger logger = LoggerFactory.getLogger(WordCount.class);
 
-    static int countUsingSplit(String stringTocheck) {
-        String delimiter = "\\t|\\W+|,|;|\\.|\\?|!|-|'|:|@|\\[|\\]|\\(|\\)|\\{|\\}|_|\\*|/";
+    static int countUsingSplit(String stringInput) {
+        String delimiter = "[,:?.;~!@_|\\(\\)\\{\\}\\[|\\]|\\s]+";
+        String stringTocheck = stringInput.trim();
         int counter = stringTocheck.split(delimiter).length;
-        logger.info("Total no of words using split are: " + counter + " delimiter by :" + delimiter);
+        logger.info(" Total no of words using split are: " + counter + " delimiter by :" + delimiter);
         return counter;
     }
 
     static int countUsingStringTokenizer(String stringTocheck) {
-        String delimiter = " ',-@;|!:[](){}_*#%^~.\\W+";
+        String delimiter = " ',-@;|!:[](){}_*#%^~.";
         StringTokenizer tokenizer = new StringTokenizer(stringTocheck, delimiter);
         int counter = tokenizer.countTokens();
-        logger.info("Total no of words in StringTokenizer are: " + counter + "delimiter by :" + delimiter);
+        logger.info("Total no of words in StringTokenizer are: " + counter + " delimiter by :" + delimiter);
         return counter;
     }
 
     static int countUsingApacheStringUtils(String stringTocheck) {
         String delimiter = " ',-@;|!:[](){}_*#%^~.";
         int counter = StringUtils.split(stringTocheck, delimiter).length;
-        logger.info("Total no of words in Apache String util are: " + counter + "delimiter by :" + delimiter);
+        logger.info("Total no of words in Apache String util are: " + counter + " delimiter by :" + delimiter);
         return counter;
     }
 
@@ -40,12 +41,12 @@ public class WordCount {
      *  Please include the spring-core dependency and then uncomment the below code to test Spring StringUtils.
      *  It is suggested that use this approach, only if, the project is already in spring framework
      */
-    /*
+    /* 
     static int countUsingSpringStringUtils(String stringTocheck) {
         String delimiter = " ',-@;|!:[](){}_*#%^~.";
         String[] counterStr = org.springframework.util.StringUtils.tokenizeToStringArray(stringTocheck, delimiter);
         int counter = counterStr.length;
-        logger.info("Total no of words in Spring String util are: " + counter + "delimiter by :" + delimiter);
+        logger.info("Total no of words in Spring String util are: " + counter + " delimiter by :" + delimiter);
         return counter;
     }
     */
