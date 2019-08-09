@@ -21,3 +21,4 @@
 - [Using Conditions with AssertJ Assertions](http://www.baeldung.com/assertj-conditions)
 - [A Guide to JavaFaker](https://www.baeldung.com/java-faker)
 - [Running JUnit Tests Programmatically, from a Java Application](https://www.baeldung.com/junit-tests-run-programmatically-from-java)
+- [AssertJ Exception Assertions](http://www.baeldung.com/assertj-exception-assertion)

@@ -36,12 +36,6 @@
             <artifactId>cglib</artifactId>
             <version>${cglib.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
-        <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>${opencsv.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -51,11 +45,6 @@
             <groupId>commons-net</groupId>
             <artifactId>commons-net</artifactId>
             <version>${commons-net.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>tec.units</groupId>
-            <artifactId>unit-ri</artifactId>
-            <version>${unit-ri.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jasypt</groupId>
@@ -348,11 +337,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>net.agkn</groupId>
-            <artifactId>hll</artifactId>
-            <version>${hll.version}</version>
-        </dependency>
-        <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
             <version>${bytebuddy.version}</version>
@@ -465,21 +449,6 @@
             <version>${jgrapht.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.netopyr.wurmloch</groupId>
-            <artifactId>wurmloch-crdt</artifactId>
-            <version>${crdt.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.docx4j</groupId>
-            <artifactId>docx4j</artifactId>
-            <version>${docx4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb-api.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
             <version>${caffeine.version}</version>
@@ -508,11 +477,6 @@
             <groupId>com.google.http-client</groupId>
             <artifactId>google-http-client-gson</artifactId>
             <version>${googleclient.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-core</artifactId>
-            <version>${infinispan.version}</version>
         </dependency>
 
         <!--Java Docker API Client -->
@@ -554,11 +518,6 @@
             <version>${google-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.apis</groupId>
-            <artifactId>google-api-services-sheets</artifactId>
-            <version>${google-sheets.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-streams</artifactId>
             <version>${kafka.version}</version>
@@ -580,12 +539,6 @@
             <version>${kafka.version}</version>
             <classifier>test</classifier>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.milyn</groupId>
-            <artifactId>milyn-smooks-all</artifactId>
-            <version>${smooks.version}</version>
         </dependency>
         <dependency>
             <groupId>com.mashape.unirest</groupId>
@@ -815,7 +768,6 @@
         <suanshu.version>4.0.0</suanshu.version>
         <snakeyaml.version>1.21</snakeyaml.version>
         <googleclient.version>1.23.0</googleclient.version>
-        <crdt.version>0.1.0</crdt.version>
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.7</cglib.version>
         <jasypt.version>1.9.2</jasypt.version>
@@ -839,7 +791,6 @@
         <pact.version>3.5.0</pact.version>
         <awaitility.version>3.0.0</awaitility.version>
         <org.hamcrest.java-hamcrest.version>2.0.0.0</org.hamcrest.java-hamcrest.version>
-        <hll.version>1.6.0</hll.version>
         <bytebuddy.version>1.7.1</bytebuddy.version>
         <pcollections.version>2.1.2</pcollections.version>
         <rome.version>1.0</rome.version>
@@ -852,17 +803,13 @@
         <joda-time.version>2.10</joda-time.version>
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
         <protonpack.version>1.15</protonpack.version>
-        <unit-ri.version>1.0.3</unit-ri.version>
         <cache.version>1.0.0</cache.version>
         <hazelcast.version>3.10.2</hazelcast.version>
         <caffeine.version>2.5.5</caffeine.version>
         <google-api.version>1.23.0</google-api.version>
         <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
         <kafka.version>2.0.0</kafka.version>
-        <smooks.version>1.7.0</smooks.version>
         <docker.version>3.0.14</docker.version>
-        <infinispan.version>9.1.5.Final</infinispan.version>
-        <opencsv.version>4.1</opencsv.version>
         <unirest.version>1.4.9</unirest.version>
         <jctools.version>2.1.2</jctools.version>
         <commons-codec-version>1.10.L001</commons-codec-version>
@@ -893,8 +840,6 @@
         <jdeferred.version>1.2.6</jdeferred.version>
         <functionaljava.version>4.8.1</functionaljava.version>
         <jgrapht.version>1.0.1</jgrapht.version>
-        <docx4j.version>3.3.5</docx4j.version>
-        <jaxb-api.version>2.1</jaxb-api.version>
         <bouncycastle.version>1.58</bouncycastle.version>
         <jersey.version>1.19.4</jersey.version>
         <javalin.version>1.6.0</javalin.version>
