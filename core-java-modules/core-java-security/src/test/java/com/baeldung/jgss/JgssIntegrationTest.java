@@ -70,7 +70,6 @@ public class JgssIntegrationTest {
         // On the server-side
         MessageProp serverProp = new MessageProp(0, false);
         byte[] bytes = serverContext.unwrap(clientToken, 0, clientToken.length, serverProp);
-        clientContext.verifyMIC(clientToken, 0, clientToken.length, bytes, 0, bytes.length, serverProp);
         String string = new String(bytes);
 
         assertEquals("Baeldung", string);
