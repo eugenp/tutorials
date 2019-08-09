@@ -19,7 +19,11 @@ import org.junit.Test;
 
 @Ignore
 public class JgssIntegrationTest {
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> master
     private static final String SERVER_PRINCIPAL = "HTTP/localhost@EXAMPLE.COM";
     private static final String MECHANISM = "1.2.840.113554.1.2.2";
 
@@ -33,7 +37,12 @@ public class JgssIntegrationTest {
         String serverPrinciple = SERVER_PRINCIPAL;
         GSSName serverName = manager.createName(serverPrinciple, null);
         Oid krb5Oid = new Oid(MECHANISM);
+<<<<<<< HEAD
         clientContext = manager.createContext(serverName, krb5Oid, (GSSCredential) null, GSSContext.DEFAULT_LIFETIME);
+=======
+        clientContext = manager.createContext(
+            serverName, krb5Oid, (GSSCredential) null, GSSContext.DEFAULT_LIFETIME);
+>>>>>>> master
         clientContext.requestMutualAuth(true);
         clientContext.requestConf(true);
         clientContext.requestInteg(true);
@@ -41,6 +50,7 @@ public class JgssIntegrationTest {
 
     @Test
     public void givenCredential_whenStarted_thenAutenticationWorks() throws SaslException, GSSException {
+<<<<<<< HEAD
         byte[] serverToken;
         byte[] clientToken;
 
@@ -55,12 +65,22 @@ public class JgssIntegrationTest {
         // Back on the client-side
         clientContext.initSecContext(serverToken, 0, serverToken.length);
 
+=======
+        byte[] serverToken = new byte[0];
+        byte[] clientToken = new byte[0];
+        clientToken = clientContext.initSecContext(clientToken, 0, clientToken.length);
+        serverToken = clientToken;
+        serverToken = serverContext.acceptSecContext(serverToken, 0, serverToken.length);
+        clientToken = serverToken;
+        clientToken = clientContext.initSecContext(clientToken, 0, clientToken.length);
+>>>>>>> master
         assertTrue(serverContext.isEstablished());
         assertTrue(clientContext.isEstablished());
     }
 
     @Test
     public void givenContext_whenStarted_thenSecurityWorks() throws SaslException, GSSException {
+<<<<<<< HEAD
         // On the client-side
         byte[] messageBytes = "Baeldung".getBytes();
         MessageProp clientProp = new MessageProp(0, true);
@@ -73,6 +93,16 @@ public class JgssIntegrationTest {
         clientContext.verifyMIC(clientToken, 0, clientToken.length, bytes, 0, bytes.length, serverProp);
         String string = new String(bytes);
 
+=======
+        byte[] messageBytes = "Baeldung".getBytes();
+        MessageProp clientProp = new MessageProp(0, true);
+        byte[] clientToken = clientContext.wrap(messageBytes, 0, messageBytes.length, clientProp);
+        byte[] serverToken = clientToken;
+        MessageProp serverProp = new MessageProp(0, false);
+        byte[] bytes = serverContext.unwrap(serverToken, 0, serverToken.length, serverProp);
+        clientContext.verifyMIC(serverToken, 0, serverToken.length, bytes, 0, bytes.length, serverProp);
+        String string = new String(bytes);
+>>>>>>> master
         assertEquals("Baeldung", string);
     }
 
