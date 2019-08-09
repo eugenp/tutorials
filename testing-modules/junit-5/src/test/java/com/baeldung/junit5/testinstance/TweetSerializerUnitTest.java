@@ -1,10 +1,10 @@
 package com.baeldung.junit5.testinstance;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -38,8 +38,7 @@ class TweetSerializerUnitTest {
         tweet.setContent(largeContent);
 
         TweetException tweetException = assertThrows(TweetException.class, () -> new TweetSerializer(tweet).serialize());
-        assertTrue(tweetException.getMessage()
-            .contains("Tweet is too large"));
+        assertThat(tweetException.getMessage(), is(equalTo("Tweet is too large")));
     }
 
     @Test
@@ -47,8 +46,7 @@ class TweetSerializerUnitTest {
         tweet.setContent(smallContent);
 
         TweetException tweetException = assertThrows(TweetException.class, () -> new TweetSerializer(tweet).serialize());
-        assertTrue(tweetException.getMessage()
-            .contains("Tweet is too small"));
+        assertThat(tweetException.getMessage(), is(equalTo("Tweet is too small")));
     }
 
     @Test
