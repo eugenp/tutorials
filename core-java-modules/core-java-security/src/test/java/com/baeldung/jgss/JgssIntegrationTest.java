@@ -19,7 +19,7 @@ import org.junit.Test;
 
 @Ignore
 public class JgssIntegrationTest {
-    
+
     private static final String SERVER_PRINCIPAL = "HTTP/localhost@EXAMPLE.COM";
     private static final String MECHANISM = "1.2.840.113554.1.2.2";
 
@@ -33,8 +33,7 @@ public class JgssIntegrationTest {
         String serverPrinciple = SERVER_PRINCIPAL;
         GSSName serverName = manager.createName(serverPrinciple, null);
         Oid krb5Oid = new Oid(MECHANISM);
-        clientContext = manager.createContext(
-            serverName, krb5Oid, (GSSCredential) null, GSSContext.DEFAULT_LIFETIME);
+        clientContext = manager.createContext(serverName, krb5Oid, (GSSCredential) null, GSSContext.DEFAULT_LIFETIME);
         clientContext.requestMutualAuth(true);
         clientContext.requestConf(true);
         clientContext.requestInteg(true);
@@ -42,27 +41,37 @@ public class JgssIntegrationTest {
 
     @Test
     public void givenCredential_whenStarted_thenAutenticationWorks() throws SaslException, GSSException {
-        byte[] serverToken = new byte[0];
-        byte[] clientToken = new byte[0];
-        clientToken = clientContext.initSecContext(clientToken, 0, clientToken.length);
-        serverToken = clientToken;
-        serverToken = serverContext.acceptSecContext(serverToken, 0, serverToken.length);
-        clientToken = serverToken;
-        clientToken = clientContext.initSecContext(clientToken, 0, clientToken.length);
+        byte[] serverToken;
+        byte[] clientToken;
+
+        // On the client-side
+        clientToken = clientContext.initSecContext(new byte[0], 0, 0);
+        // sendToServer(clientToken); // This is supposed to be send over the network
+
+        // On the server-side
+        serverToken = serverContext.acceptSecContext(clientToken, 0, clientToken.length);
+        // sendToClient(serverToken); // This is supposed to be send over the network
+
+        // Back on the client-side
+        clientContext.initSecContext(serverToken, 0, serverToken.length);
+
         assertTrue(serverContext.isEstablished());
         assertTrue(clientContext.isEstablished());
     }
 
     @Test
     public void givenContext_whenStarted_thenSecurityWorks() throws SaslException, GSSException {
+        // On the client-side
         byte[] messageBytes = "Baeldung".getBytes();
         MessageProp clientProp = new MessageProp(0, true);
         byte[] clientToken = clientContext.wrap(messageBytes, 0, messageBytes.length, clientProp);
-        byte[] serverToken = clientToken;
+        // sendToServer(clientToken); // This is supposed to be send over the network
+
+        // On the server-side
         MessageProp serverProp = new MessageProp(0, false);
-        byte[] bytes = serverContext.unwrap(serverToken, 0, serverToken.length, serverProp);
-        clientContext.verifyMIC(serverToken, 0, serverToken.length, bytes, 0, bytes.length, serverProp);
+        byte[] bytes = serverContext.unwrap(clientToken, 0, clientToken.length, serverProp);
         String string = new String(bytes);
+
         assertEquals("Baeldung", string);
     }
 
