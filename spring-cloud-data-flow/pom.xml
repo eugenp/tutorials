@@ -13,7 +13,7 @@
     </parent>
 
     <modules>
-        <module>spring-cloud-data-flow-stream</module>
+        <module>spring-cloud-data-flow-stream-processing</module>
         <module>spring-cloud-data-flow-etl</module>
         <module>batch-job</module>
         <module>apache-spark-job</module>
