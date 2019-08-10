@@ -17,4 +17,20 @@ public class Car {
     public boolean isManual() {
         return manual;
     }
+
+    static Car dieselAndManualCar() {
+        return new Car(true, true);
+    }
+
+    static Car dieselAndAutomaticCar() {
+        return new Car(true, false);
+    }
+
+    static Car oilAndManualCar() {
+        return new Car(false, true);
+    }
+
+    static Car oilAndAutomaticCar() {
+        return new Car(false, false);
+    }
 }
