@@ -7,9 +7,9 @@
     <packaging>pom</packaging>
 	
     <parent>
+        <artifactId>spring-cloud-data-flow</artifactId>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <modules>
