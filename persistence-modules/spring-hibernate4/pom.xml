@@ -7,10 +7,10 @@
     <name>spring-hibernate4</name>
 
     <parent>
+        <artifactId>parent-spring-4</artifactId>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-spring-4</relativePath>
     </parent>
 
     <dependencies>
@@ -167,7 +167,6 @@
 
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
 
         <httpcore.version>4.4.1</httpcore.version>
         <httpclient.version>4.5</httpclient.version>
@@ -176,7 +175,6 @@
 
         <!-- maven plugins -->
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <!-- <hibernate4-maven-plugin.version>1.1.0</hibernate4-maven-plugin.version> -->
     </properties>
 

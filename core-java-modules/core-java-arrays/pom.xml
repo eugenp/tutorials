@@ -389,7 +389,7 @@
     <properties>
 
         <!-- util -->
-        <commons-lang3.version>3.8.1</commons-lang3.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
         
         <jmh-core.version>1.19</jmh-core.version>
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>

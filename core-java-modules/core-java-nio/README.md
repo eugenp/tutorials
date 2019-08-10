@@ -1,3 +1,3 @@
-## Relevant articles:
+## Relevant Articles:
 
-- [Determine File Creating Date in Java](https://www.baeldung.com/file-creation-date-java)
+- [Determine File Creation Date in Java](https://www.baeldung.com/java-file-creation-date)
