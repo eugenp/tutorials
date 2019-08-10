@@ -30,6 +30,19 @@
         	<artifactId>guava</artifactId>
         	<version>${guava.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.pragmatists</groupId>
+            <artifactId>JUnitParams</artifactId>
+            <version>1.1.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

@@ -13,13 +13,9 @@
     </parent>
 
     <modules>
-        <module>data-flow-server</module>
-        <!-- <module>data-flow-shell</module> -->
-        <module>time-source</module>
-        <module>time-processor</module>
-        <module>log-sink</module>
+        <module>spring-cloud-data-flow-stream-processing</module>
+        <module>spring-cloud-data-flow-etl</module>
         <module>batch-job</module>
-        <module>etl</module>
         <module>apache-spark-job</module>
     </modules>
 
