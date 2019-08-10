@@ -2,9 +2,6 @@ package io.sirix.tutorial.json;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,20 +12,21 @@ import org.junit.Test;
 import org.sirix.access.DatabaseConfiguration;
 import org.sirix.access.Databases;
 import org.sirix.access.ResourceConfiguration;
-import org.sirix.service.json.serialize.JsonSerializer;
+import org.sirix.api.json.JsonNodeReadOnlyTrx;
+import org.sirix.axis.DescendantAxis;
+import org.sirix.axis.IncludeSelf;
+import org.sirix.axis.filter.FilterAxis;
+import org.sirix.axis.filter.json.JsonNameFilter;
 import org.sirix.service.json.shredder.JsonShredder;
 import org.sirix.settings.VersioningType;
 
-public final class CreateJsonDatabaseIntegrationTest {
+public final class JsonFilterIntegrationTest {
 
     private static final Path JSON_DIRECTORY = Paths.get("src", "test", "resources", "json");
 
     private static final String TMP_DIRECTORY = System.getProperty("java.io.tmpdir");
 
     private static final Path DATABASE_PATH = Paths.get(TMP_DIRECTORY, "sirix", "json-database");
-
-    private static final String COMPLEX_JSON =
-        "{\"problems\":[{\"Diabetes\":[{\"medications\":[{\"medicationsClasses\":[{\"className\":[{\"associatedDrug\":[{\"name\":\"asprin\",\"dose\":\"\",\"strength\":\"500 mg\"}],\"associatedDrug#2\":[{\"name\":\"somethingElse\",\"dose\":\"\",\"strength\":\"500 mg\"}]}],\"className2\":[{\"associatedDrug\":[{\"name\":\"asprin\",\"dose\":\"\",\"strength\":\"500 mg\"}],\"associatedDrug#2\":[{\"name\":\"somethingElse\",\"dose\":\"\",\"strength\":\"500 mg\"}]}]}]}],\"labs\":[{\"missing_field\":\"missing_value\"}]}],\"Asthma\":[{}]}]}";
 
     @Before
     public void setUp() throws Exception {
@@ -43,7 +41,7 @@ public final class CreateJsonDatabaseIntegrationTest {
     }
 
     @Test
-    public void createDatabaseResourceAndCheckWithSerialization() throws IOException {
+    public void testFilter() {
         final var pathToJsonFile = JSON_DIRECTORY.resolve("complex1.json");
 
         // Create an empty JSON database.
@@ -65,14 +63,16 @@ public final class CreateJsonDatabaseIntegrationTest {
                  final var wtx = manager.beginNodeTrx()) {
                 wtx.insertSubtreeAsFirstChild(JsonShredder.createFileReader(pathToJsonFile));
                 wtx.commit();
-            }
+                wtx.moveToDocumentRoot();
 
-            // Serialize JSON again and compare.
-            try (final var manager = database.openResourceManager("resource");
-                 final Writer writer = new StringWriter()) {
-                final var serializer = JsonSerializer.newBuilder(manager, writer).build();
-                serializer.call();
-                assertEquals(COMPLEX_JSON, writer.toString());
+                int foundTimes = 0;
+                for (var axis = new FilterAxis<JsonNodeReadOnlyTrx>(
+                    new DescendantAxis(wtx, IncludeSelf.YES),
+                    new JsonNameFilter(wtx, "associatedDrug")); axis.hasNext();) {
+                    axis.next();
+                    foundTimes++;
+                }
+                assertEquals(2, foundTimes);
             }
         }
     }
