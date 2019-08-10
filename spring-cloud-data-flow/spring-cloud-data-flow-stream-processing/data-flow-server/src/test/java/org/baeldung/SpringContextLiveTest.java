@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DataFlowServerApplication.class)
-public class SpringContextTest {
+public class SpringContextLiveTest {
 
     @Test
     public void whenSpringContextIsBootstrapped_thenNoExceptions() {

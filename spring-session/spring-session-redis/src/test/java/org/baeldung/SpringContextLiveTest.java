@@ -9,7 +9,7 @@ import com.baeldung.spring.session.SessionWebApplication;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SessionWebApplication.class)
-public class SpringContextTest {
+public class SpringContextLiveTest {
 
     @Test
     public void whenSpringContextIsBootstrapped_thenNoExceptions() {
