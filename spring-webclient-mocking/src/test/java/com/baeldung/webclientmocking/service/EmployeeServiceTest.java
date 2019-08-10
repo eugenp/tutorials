@@ -63,7 +63,6 @@ public class EmployeeServiceTest {
     @Test
     void givenEmployee_whenAddEmployee_thenAddNewEmployee(){
 
-        //given
         Employee newEmployee = new Employee(null, "Adam", "Sandler", 32, Role.LEAD_ENGINEER);
         Employee webClientResponse = new Employee(100, "Adam", "Sandler", 32, Role.LEAD_ENGINEER);
         when(webClient.post()).thenReturn(requestBodyUriSpec);
@@ -72,10 +71,8 @@ public class EmployeeServiceTest {
         when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
         when(responseSpec.bodyToMono(Employee.class)).thenReturn(Mono.just(webClientResponse));
 
-        //when
         Mono<Employee> employeeMono = employeeService.addNewEmployee(newEmployee);
 
-        //then
         StepVerifier.create(employeeMono)
                 .expectNextMatches(employee -> employee.getEmployeeId().equals(100))
                 .verifyComplete();
@@ -84,7 +81,6 @@ public class EmployeeServiceTest {
     @Test
     void givenEmployee_whenupdateEmployee_thenUpdatedEmployee(){
 
-        //given
         Integer employeeId=100;
         Integer newAge=33;
         String newLastName="Sandler New";
@@ -95,10 +91,8 @@ public class EmployeeServiceTest {
         when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
         when(responseSpec.bodyToMono(Employee.class)).thenReturn(Mono.just(updateEmployee));
 
-        //when
         Mono<Employee> updatedEmploye =employeeService.updateEmployee(employeeId, updateEmployee);
 
-        //then
         StepVerifier.create(updatedEmploye)
                 .expectNextMatches(employee -> employee.getLastName().equals(newLastName) && employee.getAge() == newAge)
                 .verifyComplete();
@@ -108,7 +102,6 @@ public class EmployeeServiceTest {
     @Test
     void givenEmployee_whenDeleteEmployeeById_thenDeleteSuccessful(){
 
-        //given
         String responseMessage = "Employee Deleted SuccessFully";
         Integer employeeId=100;
         when(webClient.delete()).thenReturn(requestHeadersUriSpec);
@@ -116,10 +109,8 @@ public class EmployeeServiceTest {
         when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
         when(responseSpec.bodyToMono(String.class)).thenReturn(Mono.just(responseMessage));
 
-        //when
         Mono<String> deletedEmployee = employeeService.deleteEmployeeById(employeeId);
 
-        //then
         StepVerifier.create(deletedEmployee)
                 .expectNext(responseMessage)
                 .verifyComplete();
