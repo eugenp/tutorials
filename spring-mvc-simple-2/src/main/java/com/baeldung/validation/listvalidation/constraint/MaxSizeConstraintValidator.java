@@ -1,14 +1,13 @@
 package com.baeldung.validation.listvalidation.constraint;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import com.baeldung.validation.listvalidation.model.Movie;
 
-public class CustomConstraintValidator implements ConstraintValidator<CustomConstraint, List<Movie>> {
+public class MaxSizeConstraintValidator implements ConstraintValidator<MaxSizeConstraint, List<Movie>> {
 
     @Override
     public boolean isValid(List<Movie> values, ConstraintValidatorContext context) {
@@ -18,15 +17,10 @@ public class CustomConstraintValidator implements ConstraintValidator<CustomCons
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate("Movie list cannot be empty.")
                 .addConstraintViolation();
-        }
-        String regex = "[^A-Za-z0-9].*";
-        for (Movie movie : values) {
-            if (Pattern.matches(regex, movie.getName())) {
-                isValid = false;
-                break;
-            }
+        } else if (values.size() > 4) {
+            isValid = false;
         }
         return isValid;
     }
-
+    
 }

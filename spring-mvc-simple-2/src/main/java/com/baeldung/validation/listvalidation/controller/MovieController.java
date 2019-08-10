@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.validation.listvalidation.constraint.CustomConstraint;
+import com.baeldung.validation.listvalidation.constraint.MaxSizeConstraint;
 import com.baeldung.validation.listvalidation.model.Movie;
 import com.baeldung.validation.listvalidation.service.MovieService;
 
@@ -25,7 +25,7 @@ public class MovieController {
     private MovieService movieService;
 
     @PostMapping
-    public void addAll(@RequestBody @NotEmpty(message = "Input movie list cannot be empty.") @CustomConstraint List<@Valid Movie> movie) {
-        movieService.addAll(movie);
+    public void addAll(@RequestBody @NotEmpty(message = "Input movie list cannot be empty.") @MaxSizeConstraint List<@Valid Movie> movies) {
+        movieService.addAll(movies);
     }
 }
