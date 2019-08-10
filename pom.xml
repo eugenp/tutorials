@@ -664,23 +664,23 @@
 				<module>spring-boot-libraries</module>
 
 				
-                                <!-- <module>spring-cloud</module> --> <!-- BAEL-14304 -->
-				<!-- <module>spring-cloud-bus</module> --> <!-- BAEL-14304 -->
+				<module>spring-cloud</module>
+				<module>spring-cloud-bus</module>
 				<!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                                <!-- <module>spring-cloud-data-flow</module> --> <!-- BAEL-14304 -->
+				<module>spring-cloud-data-flow</module>
 
 				<module>spring-core</module>
 				<module>spring-core-2</module>
 				<module>spring-cucumber</module>
 
 				<module>spring-data-rest</module>
-				<!-- <module>spring-data-rest-querydsl</module> --> <!-- BAEL-14304 -->
+				<module>spring-data-rest-querydsl</module>
 				<module>spring-dispatcher-servlet</module>
 				<module>spring-drools</module>
 				<module>spring-di</module>
 
 				<module>spring-ehcache</module>
-				<!-- <module>spring-ejb</module> BAEL-14304 -->
+				<module>spring-ejb</module>
 				<module>spring-exceptions</module>
 
 				<module>spring-freemarker</module>
@@ -752,7 +752,7 @@
 				<module>spring-security-stormpath</module>
 				<module>spring-security-thymeleaf</module>
 				<module>spring-security-x509</module>
-				<!-- <module>spring-session</module> BAEL-14304 -->
+				<module>spring-session</module>
 				<module>spring-sleuth</module>
 				<module>spring-soap</module>
 				<module>spring-social-login</module>
@@ -763,10 +763,10 @@
 
 				<module>spring-thymeleaf</module>
 
-				<!-- <module>spring-vault</module> BAEL-14304 -->
+				<module>spring-vault</module>
 				<module>spring-vertx</module>
 
-				<!-- <module>spring-webflux-amqp</module> BAEL-14304 --> <!-- long --> 
+				<module>spring-webflux-amqp</module> <!-- long --> 
 
 				<module>spring-zuul</module>
 

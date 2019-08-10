@@ -1,16 +1,16 @@
-package org.baeldung;
+package com.baeldung.spring.cloud.bootstrap.gateway;
 
-import org.baeldung.spring.amqp.SpringWebfluxAmqpApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringWebfluxAmqpApplication.class)
-public class SpringContextTest {
+@SpringBootTest
+public class SpringContextLiveTest {
 
     @Test
     public void whenSpringContextIsBootstrapped_thenNoExceptions() {
     }
+
 }
