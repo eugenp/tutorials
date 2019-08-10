@@ -4,6 +4,13 @@ import com.baeldung.webclientmocking.domain.Employee;
 import com.baeldung.webclientmocking.enums.Role;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.exceptions.base.MockitoException;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
@@ -13,45 +20,48 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
+@RunWith(JUnitPlatform.class)
 public class EmployeeServiceTest {
 
     EmployeeService employeeService;
-    private WebClient webClient = mock(WebClient.class);
-    private WebClient.RequestHeadersSpec requestHeadersSpec = mock(WebClient.RequestHeadersSpec.class);
-    private WebClient.RequestHeadersUriSpec requestHeadersUriSpec = mock(WebClient.RequestHeadersUriSpec.class);
-    private WebClient.RequestBodySpec requestBodySpec = mock(WebClient.RequestBodySpec.class);
-    private WebClient.RequestBodyUriSpec requestBodyUriSpec = mock(WebClient.RequestBodyUriSpec.class);
-    private WebClient.ResponseSpec responseSpec = mock(WebClient.ResponseSpec.class);
-
+    @Mock
+    private WebClient webClient;
+    @Mock
+    private WebClient.RequestHeadersSpec requestHeadersSpec;
+    @Mock
+    private WebClient.RequestHeadersUriSpec requestHeadersUriSpec;
+    @Mock
+    private WebClient.RequestBodySpec requestBodySpec;
+    @Mock
+    private WebClient.RequestBodyUriSpec requestBodyUriSpec;
+    @Mock
+    private WebClient.ResponseSpec responseSpec;
 
     @BeforeEach
-    public void setUp(){
-
+    void setUp(){
         employeeService = new EmployeeService(webClient);
     }
 
     @Test
-    void getEmployeeById(){
+    void givenEmployeeId_whenGetEmployeeById_thenReturnEmployee(){
 
-        //given
         Integer employeeId = 100;
         Employee mockEmployee = new Employee(100, "Adam", "Sandler", 32, Role.LEAD_ENGINEER);
         when(webClient.get()).thenReturn(requestHeadersUriSpec);
-        when(requestHeadersUriSpec.uri(EmployeeService.PATH_PARAM_BY_ID, employeeId)).thenReturn(requestHeadersSpec);
+        when(requestHeadersUriSpec.uri("/employee/{id}", employeeId)).thenReturn(requestHeadersSpec);
         when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
         when(responseSpec.bodyToMono(Employee.class)).thenReturn(Mono.just(mockEmployee));
 
-        //when
         Mono<Employee> employeeMono = employeeService.getEmployeeById(employeeId);
 
-        //then
         StepVerifier.create(employeeMono)
                 .expectNextMatches(employee -> employee.getRole().equals(Role.LEAD_ENGINEER))
                 .verifyComplete();
     }
 
     @Test
-    void addNewEmployee(){
+    void givenEmployee_whenAddEmployee_thenAddNewEmployee(){
 
         //given
         Employee newEmployee = new Employee(null, "Adam", "Sandler", 32, Role.LEAD_ENGINEER);
@@ -72,7 +82,7 @@ public class EmployeeServiceTest {
     }
 
     @Test
-    void updateEmployee(){
+    void givenEmployee_whenupdateEmployee_thenUpdatedEmployee(){
 
         //given
         Integer employeeId=100;
@@ -96,7 +106,7 @@ public class EmployeeServiceTest {
     }
 
     @Test
-    void deleteEmployee(){
+    void givenEmployee_whenDeleteEmployeeById_thenDeleteSuccessful(){
 
         //given
         String responseMessage = "Employee Deleted SuccessFully";

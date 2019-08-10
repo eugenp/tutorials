@@ -8,21 +8,33 @@ import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
 import org.junit.Rule;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class EmployeeServiceMockWebServerTest {
 
-    @Rule
-    public final MockWebServer mockBackEnd = new MockWebServer();
+    public  static MockWebServer mockBackEnd=null;
     private EmployeeService employeeService;
-    ObjectMapper objectMapper ;
+    ObjectMapper objectMapper;
+
+    @BeforeAll
+    static void setUp() throws IOException {
+        mockBackEnd = new MockWebServer();
+        mockBackEnd.start();
+    }
+
+    @AfterAll
+    static void tearDown() throws IOException {
+        mockBackEnd.shutdown();
+    }
 
     @BeforeEach
-    public void setUp(){
+    void initialize(){
 
         final String baseUrl=String.format("http://localhost:%s", mockBackEnd.getPort());
         employeeService = new EmployeeService(baseUrl);
@@ -30,97 +42,83 @@ public class EmployeeServiceMockWebServerTest {
     }
 
     @Test
-    void getEmployeeById() throws JsonProcessingException, InterruptedException {
+    void getEmployeeById() throws Exception {
 
-        //given
         Integer employeeId = 100;
         Employee mockEmployee = new Employee(100, "Adam", "Sandler", 32, Role.LEAD_ENGINEER);
         mockBackEnd.enqueue(new MockResponse().setBody(objectMapper.writeValueAsString(mockEmployee))
                 .addHeader("Content-Type", "application/json"));
 
-        //when
         Mono<Employee> employeeMono = employeeService.getEmployeeById(employeeId);
 
-        //then
         StepVerifier.create(employeeMono)
                 .expectNextMatches(employee -> employee.getRole().equals(Role.LEAD_ENGINEER))
                 .verifyComplete();
 
-        //verify
         final RecordedRequest recordedRequest = mockBackEnd.takeRequest();
-        Assertions.assertEquals(recordedRequest.getMethod(),"GET");
-        Assertions.assertEquals((recordedRequest.getPath()),"/employee/100");
+        assertEquals(recordedRequest.getMethod(),"GET");
+        assertEquals((recordedRequest.getPath()),"/employee/100");
     }
 
     @Test
-    void addNewEmployee() throws JsonProcessingException, InterruptedException {
+    void addNewEmployee() throws Exception {
 
-        //given
         Employee newEmployee = new Employee(null, "Adam", "Sandler", 32, Role.LEAD_ENGINEER);
         Employee webClientResponse = new Employee(100, "Adam", "Sandler", 32, Role.LEAD_ENGINEER);
         mockBackEnd.enqueue(new MockResponse().setBody(objectMapper.writeValueAsString(webClientResponse))
                 .addHeader("Content-Type", "application/json"));
 
-        //when
         Mono<Employee> employeeMono = employeeService.addNewEmployee(newEmployee);
 
-        //then
         StepVerifier.create(employeeMono)
                 .expectNextMatches(employee -> employee.getEmployeeId().equals(100))
                 .verifyComplete();
 
-        //verify
         final RecordedRequest recordedRequest = mockBackEnd.takeRequest();
-        Assertions.assertEquals(recordedRequest.getMethod(),"POST");
-        Assertions.assertEquals((recordedRequest.getPath()),"/employee");
+        assertEquals(recordedRequest.getMethod(),"POST");
+        assertEquals((recordedRequest.getPath()),"/employee");
     }
 
     @Test
-    void updateEmployee() throws JsonProcessingException, InterruptedException {
+    void updateEmployee() throws Exception {
 
-        //given
         Integer employeeId=100;
         Integer newAge=33;
         String newLastName="Sandler New";
         Employee updateEmployee = new Employee(100, "Adam", newLastName, newAge, Role.LEAD_ENGINEER);
         mockBackEnd.enqueue(new MockResponse().setBody(objectMapper.writeValueAsString(updateEmployee))
                 .addHeader("Content-Type", "application/json"));
-        //when
+
         Mono<Employee> updatedEmploye =employeeService.updateEmployee(employeeId, updateEmployee);
 
-        //then
         StepVerifier.create(updatedEmploye)
                 .expectNextMatches(employee -> employee.getLastName().equals(newLastName) && employee.getAge() == newAge)
                 .verifyComplete();
 
-        //verify
         final RecordedRequest recordedRequest = mockBackEnd.takeRequest();
-        Assertions.assertEquals(recordedRequest.getMethod(),"PUT");
-        Assertions.assertEquals((recordedRequest.getPath()),"/employee/100");
+        assertEquals(recordedRequest.getMethod(),"PUT");
+        assertEquals((recordedRequest.getPath()),"/employee/100");
 
     }
 
 
     @Test
-    void deleteEmployee() throws JsonProcessingException, InterruptedException {
+    void deleteEmployee() throws Exception {
 
-        //given
         String responseMessage = "Employee Deleted SuccessFully";
         Integer employeeId=100;
         mockBackEnd.enqueue(new MockResponse().setBody(objectMapper.writeValueAsString(responseMessage))
                 .addHeader("Content-Type", "application/json"));
-        //when
+
         Mono<String> deletedEmployee = employeeService.deleteEmployeeById(employeeId);
 
-        //then
         StepVerifier.create(deletedEmployee)
                 .expectNext("\"Employee Deleted SuccessFully\"")
                 .verifyComplete();
 
-        //verify
         final RecordedRequest recordedRequest = mockBackEnd.takeRequest();
-        Assertions.assertEquals(recordedRequest.getMethod(),"DELETE");
-        Assertions.assertEquals((recordedRequest.getPath()),"/employee/100");
+        assertEquals(recordedRequest.getMethod(),"DELETE");
+        assertEquals((recordedRequest.getPath()),"/employee/100");
     }
 
 }
