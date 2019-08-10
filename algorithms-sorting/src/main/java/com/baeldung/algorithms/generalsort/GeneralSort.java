@@ -1,6 +1,6 @@
-package com.baeldung.algorithms.inplacesort;
+package com.baeldung.algorithms.generalsort;
 
-public class InPlaceSort {
+public class GeneralSort {
 
     public static int[] reverseInPlace(int A[]) {
         int n = A.length;
