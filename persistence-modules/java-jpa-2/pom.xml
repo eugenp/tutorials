@@ -1,18 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>java-jpa-2</artifactId>
     <name>java-jpa-2</name>
-
     <parent>
-        <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
-
     <dependencies>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -30,14 +27,14 @@
             <version>${h2.version}</version>
         </dependency>
 
-        <!--Compile time JPA API-->
+        <!--Compile time JPA API -->
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
             <version>${javax.persistence-api.version}</version>
         </dependency>
 
-        <!--Runtime JPA implementation-->
+        <!--Runtime JPA implementation -->
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
@@ -104,7 +101,6 @@
             </plugin>
         </plugins>
     </build>
-
     <properties>
         <hibernate.version>5.4.0.Final</hibernate.version>
         <eclipselink.version>2.7.4-RC1</eclipselink.version>
