@@ -667,8 +667,7 @@
                                 <!-- <module>spring-cloud</module> --> <!-- BAEL-14304 -->
 				<!-- <module>spring-cloud-bus</module> --> <!-- BAEL-14304 -->
 				<!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                                <!-- <module>spring-cloud-data-flow</module> --> <!-- BAEL-14304 -->
-
+                                <module>spring-cloud-data-flow</module>
 				<module>spring-core</module>
 				<module>spring-core-2</module>
 				<module>spring-cucumber</module>
@@ -867,9 +866,7 @@
 				<module>spring-cloud/spring-cloud-task/springcloudtasksink</module>
 				<module>spring-cloud/spring-cloud-zookeeper                     </module>
 				<module>spring-cloud/spring-cloud-bus/spring-cloud-config-server</module>
-				<module>spring-cloud/spring-cloud-data-flow/log-sink</module>
-				<module>spring-cloud/spring-cloud-data-flow/time-processor</module>
-				<module>spring-cloud/spring-cloud-data-flow/time-source</module>
+				<module>spring-cloud/spring-cloud-data-flow</module>
 				<module>spring-cucumber</module>
 				<module>persistence-modules/spring-data-keyvalue</module>
 				<module>spring-data-rest</module>
