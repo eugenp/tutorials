@@ -44,13 +44,13 @@ class JndiUnitTest {
     }
 
     @Test
-    void givenADataSourceObject_whenAddDriverClassName_thenBind() throws Exception {
+    void givenADataSource_whenAddingDriver_thenBind() throws Exception {
         ds.setDriverClassName("org.h2.Driver");
         ctx.bind("java:comp/env/jdbc/datasource", ds);
     }
 
     @Test
-    void givenAContext_whenLookingUpDataSourceByNameString_thenReturnValidDataSourceObject() throws Exception {
+    void givenContext_whenLookupByName_thenValidDataSource() throws Exception {
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/datasource");
 
         assertNotNull(ds);
