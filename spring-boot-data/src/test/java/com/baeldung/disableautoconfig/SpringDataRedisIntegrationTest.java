@@ -18,7 +18,7 @@ public class SpringDataRedisIntegrationTest {
     private ApplicationContext context;
 
     @Test(expected = NoSuchBeanDefinitionException.class)
-    public void givenAutoconfigurationIsDisable_whenApplicationStarts_thenContextWillNotHaveTheAutoconfiguredClasses() {
+    public void givenAutoConfigDisabled_whenStarting_thenNoAutoconfiguredBeansInContext() {
         context.getBean(RedisTemplate.class);
     }
 
