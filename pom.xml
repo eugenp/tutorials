@@ -469,6 +469,7 @@
                 <!-- <module>java-streams-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>java-strings</module>
                 <module>java-strings-2</module>
+                <module>java-strings-3</module>
                 <module>java-strings-ops</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
@@ -1164,6 +1165,7 @@
 				<!-- <module>java-streams-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
 				<module>java-strings</module>
 				<module>java-strings-2</module>
+				<module>java-strings-3</module>
 				<module>java-strings-ops</module>
 				<module>java-vavr-stream</module>
 				<module>java-websocket</module>
