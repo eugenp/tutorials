@@ -1,8 +1,5 @@
 package com.baeldung.properties;
 
-import org.baeldung.properties.AdditionalProperties;
-import org.baeldung.properties.ConfigProperties;
-import org.baeldung.properties.ConfigPropertiesDemoApplication;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
