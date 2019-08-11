@@ -562,6 +562,7 @@
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
 				<module>oauth2-framework-impl</module>
+				<module>bazel</module>
 			</modules>
 
 		</profile>
