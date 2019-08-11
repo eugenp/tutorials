@@ -1,40 +1,48 @@
 package com.baeldung.prototype;
 
 import org.junit.Test;
+import org.junit.Before;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
 
 public class PrototypeIntegrationTest {
 
+    private ShapeCache shapeCache;
+
+    @Before
+    public void init() {
+        Map<String, Shape> shapeMap = new HashMap<>();
+
+        List<String> circleMetadata = new ArrayList<>();
+        circleMetadata.add("Circle created by Author at XYZ time");
+        shapeMap.put(Circle.class.getName(), new Circle(0, circleMetadata));
+
+        List<String> squareMetadata = new ArrayList<>();
+        squareMetadata.add("Square created by Author at XYZ time");
+        shapeMap.put(Square.class.getName(), new Square(0, squareMetadata));
+
+        shapeCache = new ShapeCache(shapeMap);
+    }
+
     @Test
     public void givenCircleObjectWhenCloneIsInvokedThenReturnClonedObject() {
-        List<String> metadata = new ArrayList<>();
-        metadata.add("Circle");
+        Circle circle = (Circle) shapeCache.getShape(Circle.class.getName());
+        circle.setRadius(10);
 
-        Circle circle = new Circle(5, metadata);
-
-        Circle cloneCircle = circle.clone();
-        cloneCircle.setRadius(10);
-
-        assertTrue(cloneCircle != circle);
-        assertTrue(cloneCircle.getRadius() != circle.getRadius());
+        assertTrue(circle.getRadius() != 0);
     }
 
     @Test
     public void givenSquareObjectWhenCloneIsInvokedThenReturnClonedObject() {
-        List<String> metadata = new ArrayList<>();
-        metadata.add("Square");
+        Square square = (Square) shapeCache.getShape(Square.class.getName());
+        square.setSide(10);
 
-        Square square = new Square(5, metadata);
-
-        Square cloneSquare = square.clone();
-        cloneSquare.setSide(10);
-
-        assertTrue(cloneSquare != square);
-        assertTrue(cloneSquare.getSide() != square.getSide());
+        assertTrue(square.getSide() != 0);
     }
 
 }
