@@ -1,7 +1,9 @@
-package org.baeldung.properties;
+package com.baeldung.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 @ConfigurationProperties(prefix = "additional")
 public class AdditionalProperties {
 

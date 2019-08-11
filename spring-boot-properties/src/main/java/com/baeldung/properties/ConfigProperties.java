@@ -1,4 +1,4 @@
-package org.baeldung.properties;
+package com.baeldung.properties;
 
 import java.util.List;
 import java.util.Map;
@@ -8,6 +8,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,39 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class ConfigProperties {
 
+    @Validated
+    public static class Credentials {
+
+        @Length(max = 4, min = 1)
+        private String authMethod;
+        private String username;
+        private String password;
+
+        public String getAuthMethod() {
+            return authMethod;
+        }
+
+        public void setAuthMethod(String authMethod) {
+            this.authMethod = authMethod;
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+    }
+
     @NotBlank
     private String hostName;
 
@@ -30,9 +64,9 @@ public class ConfigProperties {
     @Pattern(regexp = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$")
     private String from;
 
+    private Credentials credentials;
     private List<String> defaultRecipients;
     private Map<String, String> additionalHeaders;
-    private Credentials credentials;
 
     public String getHostName() {
         return hostName;
@@ -58,6 +92,14 @@ public class ConfigProperties {
         this.from = from;
     }
 
+    public Credentials getCredentials() {
+        return credentials;
+    }
+
+    public void setCredentials(Credentials credentials) {
+        this.credentials = credentials;
+    }
+
     public List<String> getDefaultRecipients() {
         return defaultRecipients;
     }
@@ -73,15 +115,7 @@ public class ConfigProperties {
     public void setAdditionalHeaders(Map<String, String> additionalHeaders) {
         this.additionalHeaders = additionalHeaders;
     }
-
-    public Credentials getCredentials() {
-        return credentials;
-    }
-
-    public void setCredentials(Credentials credentials) {
-        this.credentials = credentials;
-    }
-
+    
     @Bean
     @ConfigurationProperties(prefix = "item")
     public Item item(){
