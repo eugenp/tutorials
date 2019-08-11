@@ -18,6 +18,7 @@
         <module>apache-cayenne</module>
         <module>core-java-persistence</module>
         <module>deltaspike</module>
+        <module>elasticsearch</module>
         <module>flyway</module>
         <module>hbase</module>
         <module>hibernate5</module>
