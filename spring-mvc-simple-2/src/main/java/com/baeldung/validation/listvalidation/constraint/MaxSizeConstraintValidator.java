@@ -12,15 +12,10 @@ public class MaxSizeConstraintValidator implements ConstraintValidator<MaxSizeCo
     @Override
     public boolean isValid(List<Movie> values, ConstraintValidatorContext context) {
         boolean isValid = true;
-        if (values == null || values.isEmpty()) {
-            isValid = false;
-            context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate("Movie list cannot be empty.")
-                .addConstraintViolation();
-        } else if (values.size() > 4) {
+        if (values.size() > 4) {
             isValid = false;
         }
         return isValid;
     }
-    
+
 }
