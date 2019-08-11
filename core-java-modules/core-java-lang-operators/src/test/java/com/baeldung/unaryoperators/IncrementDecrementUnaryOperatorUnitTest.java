@@ -1,4 +1,4 @@
-package com.baeldung.incrementdecrementunaryoperators;
+package com.baeldung.unaryoperators;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -2,10 +2,6 @@ package com.baeldung.properties;
 
 import java.util.Arrays;
 
-import org.baeldung.properties.ConfigPropertiesDemoApplication;
-import org.baeldung.properties.CustomJsonProperties;
-import org.baeldung.properties.JsonProperties;
-import org.baeldung.properties.JsonPropertyContextInitializer;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
