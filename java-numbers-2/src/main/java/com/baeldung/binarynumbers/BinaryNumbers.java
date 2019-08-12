@@ -16,18 +16,16 @@ public class BinaryNumbers {
         }
 
         StringBuilder binaryNumber = new StringBuilder();
+        Integer quotient = decimalNumber;
 
-        while (decimalNumber > 0) {
+        while (quotient > 0) {
 
-            int remainder = decimalNumber % 2;
-            int result = decimalNumber / 2;
-
+            int remainder = quotient % 2;
             binaryNumber.append(remainder);
-            decimalNumber = result;
+            quotient /= 2;
         }
 
         binaryNumber = binaryNumber.reverse();
-
         return Integer.valueOf(binaryNumber.toString());
     }
 
@@ -40,7 +38,7 @@ public class BinaryNumbers {
      */
     public Integer convertBinaryToDecimal(Integer binaryNumber) {
 
-        Integer result = 0;
+        Integer decimalNumber = 0;
         Integer base = 1;
 
         while (binaryNumber > 0) {
@@ -48,11 +46,10 @@ public class BinaryNumbers {
             int lastDigit = binaryNumber % 10;
             binaryNumber = binaryNumber / 10;
 
-            result += lastDigit * base;
-
+            decimalNumber += lastDigit * base;
             base = base * 2;
         }
-        return result;
+        return decimalNumber;
     }
 
     /**
@@ -99,9 +96,7 @@ public class BinaryNumbers {
     public Integer substractBinaryNumber(Integer firstNum, Integer secondNum) {
 
         int onesComplement = Integer.valueOf(getOnesComplement(secondNum));
-
         StringBuilder output = new StringBuilder();
-
         int carry = 0;
         int temp;
 
@@ -124,13 +119,11 @@ public class BinaryNumbers {
         } else {
             return getOnesComplement(Integer.valueOf(additionOfFirstNumAndOnesComplement));
         }
-
     }
 
     public Integer getOnesComplement(Integer num) {
 
         StringBuilder onesComplement = new StringBuilder();
-
         while (num > 0) {
             int lastDigit = num % 10;
             if (lastDigit == 0) {
@@ -140,7 +133,6 @@ public class BinaryNumbers {
             }
             num = num / 10;
         }
-
         return Integer.valueOf(onesComplement.reverse()
             .toString());
     }
