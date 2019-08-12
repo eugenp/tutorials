@@ -66,10 +66,12 @@ public final class JsonFilterIntegrationTest {
                 wtx.moveToDocumentRoot();
 
                 int foundTimes = 0;
-                for (var axis = new FilterAxis<JsonNodeReadOnlyTrx>(
-                    new DescendantAxis(wtx, IncludeSelf.YES),
-                    new JsonNameFilter(wtx, "associatedDrug")); axis.hasNext();) {
-                    axis.next();
+
+                final var axis = new DescendantAxis(wtx, IncludeSelf.YES);
+                final var filter = new JsonNameFilter(wtx, "associatedDrug");
+
+                for (var filterAxis = new FilterAxis<JsonNodeReadOnlyTrx>(axis, filter); filterAxis.hasNext();) {
+                    filterAxis.next();
                     foundTimes++;
                 }
                 assertEquals(2, foundTimes);
