@@ -2,7 +2,7 @@ package com.baeldung.mapper.unmapped;
 
 import com.baeldung.dto.DocumentDTO;
 import com.baeldung.entity.Document;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 class DocumentMapperMappingIgnoreUnitTest {
     @Test
-    void givenDocumentEntityToDocumentDto_whenMaps_thenCorrect() {
+    public void givenDocumentEntityToDocumentDto_whenMaps_thenCorrect() {
         Document entity = new Document();
         entity.setId(1);
         entity.setTitle("Price 13-42");
@@ -26,7 +26,7 @@ class DocumentMapperMappingIgnoreUnitTest {
     }
 
     @Test
-    void givenDocumentDtoToDocumentEntity_whenMaps_thenCorrect() {
+    public void givenDocumentDtoToDocumentEntity_whenMaps_thenCorrect() {
 
         DocumentDTO dto = new DocumentDTO();
         dto.setId(1);
