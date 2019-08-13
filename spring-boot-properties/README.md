@@ -8,3 +8,4 @@
 - [Spring YAML Configuration](http://www.baeldung.com/spring-yaml)
 - [Using Spring @Value with Defaults](http://www.baeldung.com/spring-value-defaults)
 - [How to Inject a Property Value Into a Class Not Managed by Spring?](http://www.baeldung.com/inject-properties-value-non-spring-class)
+- [Reloading Properties Files in Spring](https://www.baeldung.com/spring-reloading-properties)
