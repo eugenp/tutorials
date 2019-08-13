@@ -1,5 +1,5 @@
 ### Relevant Articles:
-- [Reloading Properties in Spring](https://www.baeldung.com/reloading-properties-files-in-spring/)
+- [Reloading Properties Files in Spring](https://www.baeldung.com/spring-reloading-properties)
 - [Guide to @ConfigurationProperties in Spring Boot](http://www.baeldung.com/configuration-properties-in-spring-boot)
 - [Load Spring Boot Properties From a JSON File](https://www.baeldung.com/spring-boot-json-properties)
 - [Guide to @EnableConfigurationProperties](https://www.baeldung.com/spring-enable-config-properties)
@@ -8,4 +8,3 @@
 - [Spring YAML Configuration](http://www.baeldung.com/spring-yaml)
 - [Using Spring @Value with Defaults](http://www.baeldung.com/spring-value-defaults)
 - [How to Inject a Property Value Into a Class Not Managed by Spring?](http://www.baeldung.com/inject-properties-value-non-spring-class)
-- [Reloading Properties Files in Spring](https://www.baeldung.com/spring-reloading-properties)
