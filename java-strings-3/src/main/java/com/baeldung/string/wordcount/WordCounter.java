@@ -2,19 +2,9 @@ package com.baeldung.string.wordcount;
 
 import java.util.StringTokenizer;
 
-/**
- * Created by alfred on 14 August 2019
- */
 public class WordCounter {
     public static void main(String[] args) {
-        //test string
-        String random = "Lorem%Ipsum is-simply dummy text.";
-
-        System.out.printf("Using delimiter, word count: %d\n", countWordsUsingTokenizer(random));
-        System.out.printf("Using no library method, word count: %d\n", countWordsManually(random));
-        System.out.printf("Using punctuation regex, word count: %d\n", countWordsUsingRegex(random));
-        System.out.printf("\n\n%s\n\n", random);
-
+        
     }
 
     public static int countWordsUsingRegex(String arg) {
