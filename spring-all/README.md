@@ -33,4 +33,3 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Events](https://www.baeldung.com/spring-events)
 - [Spring Null-Safety Annotations](https://www.baeldung.com/spring-null-safety-annotations)
 - [Using @Autowired in Abstract Classes](https://www.baeldung.com/spring-autowired-abstract-class)
-- [The Spring @Qualifier Annotation](https://www.baeldung.com/spring-qualifier-annotation)
