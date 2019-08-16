@@ -46,11 +46,7 @@
             <artifactId>commons-net</artifactId>
             <version>${commons-net.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.jasypt</groupId>
-            <artifactId>jasypt</artifactId>
-            <version>${jasypt.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>org.javatuples</groupId>
             <artifactId>javatuples</artifactId>
@@ -106,17 +102,17 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-core</artifactId>
-            <version>${serenity.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.asciidoctor</groupId>
-                    <artifactId>asciidoctorj</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <groupId>net.serenity-bdd</groupId>
+        <artifactId>serenity-core</artifactId>
+        <version>${serenity.version}</version>
+        <scope>test</scope>
+        <exclusions>
+            <exclusion>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctorj</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-junit</artifactId>
@@ -439,16 +435,6 @@
             <version>${caffeine.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>${bouncycastle.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcpkix-jdk15on</artifactId>
-            <version>${bouncycastle.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.google.http-client</groupId>
             <artifactId>google-http-client</artifactId>
             <version>${googleclient.version}</version>
@@ -727,7 +713,6 @@
         <googleclient.version>1.23.0</googleclient.version>
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.7</cglib.version>
-        <jasypt.version>1.9.2</jasypt.version>
         <javatuples.version>1.2</javatuples.version>
         <javaassist.version>3.21.0-GA</javaassist.version>
         <assertj.version>3.6.2</assertj.version>
@@ -797,9 +782,7 @@
         <jdeferred.version>1.2.6</jdeferred.version>
         <functionaljava.version>4.8.1</functionaljava.version>
         <jgrapht.version>1.0.1</jgrapht.version>
-        <bouncycastle.version>1.58</bouncycastle.version>
         <jersey.version>1.19.4</jersey.version>
-
         <fugue.version>4.5.1</fugue.version>
         <maven-bundle-plugin.version>3.3.0</maven-bundle-plugin.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>

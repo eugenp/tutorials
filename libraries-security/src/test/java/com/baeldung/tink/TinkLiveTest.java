@@ -18,7 +18,9 @@ import org.junit.Test;
 
 import java.security.GeneralSecurityException;
 
-public class TinkUnitTest {
+public class TinkLiveTest {
+
+    //need to download policy files and put them into ${java.home}/jre/lib/security/
 
     private static final String PLAINTEXT = "BAELDUNG";
     private static final String DATA = "TINK";
