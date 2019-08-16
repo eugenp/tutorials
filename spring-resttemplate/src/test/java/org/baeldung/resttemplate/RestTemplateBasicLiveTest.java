@@ -1,4 +1,4 @@
-package org.baeldung.client;
+package org.baeldung.resttemplate;
 
 import static org.apache.commons.codec.binary.Base64.encodeBase64;
 import static org.baeldung.client.Consts.APPLICATION_PORT;

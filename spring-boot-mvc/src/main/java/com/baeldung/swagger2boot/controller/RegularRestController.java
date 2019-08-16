@@ -1,4 +1,4 @@
-package com.baeldung.swaggerboot.controller;
+package com.baeldung.swagger2boot.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

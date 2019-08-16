@@ -1,4 +1,4 @@
-package com.baeldung.swaggerboot;
+package com.baeldung.swagger2boot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

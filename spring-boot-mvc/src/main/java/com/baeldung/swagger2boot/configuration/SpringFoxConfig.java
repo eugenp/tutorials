@@ -1,4 +1,4 @@
-package com.baeldung.swaggerboot.configuration;
+package com.baeldung.swagger2boot.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
