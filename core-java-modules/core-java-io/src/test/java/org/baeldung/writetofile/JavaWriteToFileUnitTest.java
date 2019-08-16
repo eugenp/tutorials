@@ -1,4 +1,4 @@
-package org.baeldung.java.io;
+package org.baeldung.writetofile;
 
 import static org.junit.Assert.assertEquals;
 

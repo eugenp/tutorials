@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.persistence.dao.user;
+package com.baeldung.spring.data.persistence.jpaquery;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

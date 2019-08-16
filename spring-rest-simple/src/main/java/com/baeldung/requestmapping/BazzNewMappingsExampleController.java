@@ -1,4 +1,4 @@
-package com.baeldung.web.controller;
+package com.baeldung.requestmapping;
 
 import java.util.Arrays;
 import java.util.List;
