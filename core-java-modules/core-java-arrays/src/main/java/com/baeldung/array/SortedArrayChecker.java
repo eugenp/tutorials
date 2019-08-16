@@ -2,7 +2,10 @@ package com.baeldung.array;
 
 import com.baeldung.arraycopy.model.Employee;
 
+import java.util.Comparator;
+
 public class SortedArrayChecker {
+
     boolean isSorted(int[] array, int length) {
         if (array == null || length < 2)
             return true;
@@ -22,7 +25,7 @@ public class SortedArrayChecker {
         return true;
     }
 
-    boolean isSorted(String[] array, int length) {
+    boolean isSorted(Comparable[] array, int length) {
         if (array == null || length < 2)
             return true;
 
@@ -32,40 +35,31 @@ public class SortedArrayChecker {
         return isSorted(array, length - 1);
     }
 
-boolean isSorted(String[] array) {
-    for (int i = 0; i < array.length - 1; ++i) {
-        if (array[i].compareTo(array[i + 1]) > 0)
-            return false;
-    }
-
-    return true;
-}
-
-    boolean isSortedByName(Employee[] array) {
+    boolean isSorted(Comparable[] array) {
         for (int i = 0; i < array.length - 1; ++i) {
-            if (array[i].getName().compareTo(array[i + 1].getName()) > 0)
+            if (array[i].compareTo(array[i + 1]) > 0)
                 return false;
         }
 
         return true;
     }
 
-boolean isSortedByAge(Employee[] array) {
-    for (int i = 0; i < array.length - 1; ++i) {
-        if (array[i].getAge() > (array[i + 1].getAge()))
-            return false;
+    boolean isSorted(Object[] array, Comparator comparator) {
+        for (int i = 0; i < array.length - 1; ++i) {
+            if (comparator.compare(array[i], (array[i + 1])) > 0)
+                return false;
+        }
+
+        return true;
     }
 
-    return true;
-}
-
-    boolean isSortedByAge(Employee[] array, int length) {
+    boolean isSorted(Object[] array, Comparator comparator, int length) {
         if (array == null || length < 2)
             return true;
 
-        if (array[length - 2].getAge() > array[length - 1].getAge())
+        if (comparator.compare(array[length - 2], array[length - 1]) > 0)
             return false;
 
-        return isSortedByAge(array, length - 1);
+        return isSorted(array, comparator, length - 1);
     }
 }

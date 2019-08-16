@@ -1,0 +1,490 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "name": "Radiohead"
+        },
+        {
+          "name": "Red Hot Chili Peppers"
+        },
+        {
+          "name": "Coldplay"
+        },
+        {
+          "name": "Nirvana"
+        },
+        {
+          "name": "Panic! at the Disco"
+        },
+        {
+          "name": "The Cure"
+        },
+        {
+          "name": "Linkin Park"
+        },
+        {
+          "name": "Radiohead"
+        },
+        {
+          "name": "Red Hot Chili Peppers"
+        },
+        {
+          "name": "Coldplay"
+        },
+        {
+          "name": "Nirvana"
+        },
+        {
+          "name": "Panic! at the Disco"
+        },
+        {
+          "name": "The Cure"
+        },
+        {
+          "name": "Linkin Park"
+        },
+        {
+          "name": "Muse"
+        },
+        {
+          "name": "Maroon 5"
+        },
+        {
+          "name": "Foo Fighters"
+        },
+        {
+          "name": "Paramore"
+        },
+        {
+          "name": "Oasis"
+        },
+        {
+          "name": "Fall Out Boy"
+        },
+        {
+          "name": "OneRepublic"
+        },
+        {
+          "name": "Weezer"
+        },
+        {
+          "name": "System of a Down"
+        },
+        {
+          "name": "The White Stripes"
+        }
+      ],
+      "name": "rock, alternative"
+    },
+    {
+      "children": [
+        {
+          "name": "Lil Nas X"
+        },
+        {
+          "name": "Post Malone"
+        },
+        {
+          "name": "Drake"
+        },
+        {
+          "name": "Kanye West"
+        },
+        {
+          "name": "Kendrick Lamar"
+        },
+        {
+          "name": "Tyler, the Creator"
+        },
+        {
+          "name": "Eminem"
+        },
+        {
+          "name": "Childish Gambino"
+        },
+        {
+          "name": "Frank Ocean"
+        },
+        {
+          "name": "Lil Nas X"
+        },
+        {
+          "name": "Post Malone"
+        },
+        {
+          "name": "Drake"
+        },
+        {
+          "name": "Kanye West"
+        },
+        {
+          "name": "Kendrick Lamar"
+        },
+        {
+          "name": "Tyler, the Creator"
+        },
+        {
+          "name": "Eminem"
+        },
+        {
+          "name": "Childish Gambino"
+        },
+        {
+          "name": "Frank Ocean"
+        },
+        {
+          "name": "Lizzo"
+        },
+        {
+          "name": "Travi$ Scott"
+        },
+        {
+          "name": "A$AP Rocky"
+        },
+        {
+          "name": "Nicki Minaj"
+        },
+        {
+          "name": "xxxtentacion"
+        }
+      ],
+      "name": "Hip-Hop, rap"
+    },
+    {
+      "children": [
+        {
+          "name": "Arctic Monkeys"
+        },
+        {
+          "name": "Imagine Dragons"
+        },
+        {
+          "name": "The Killers"
+        },
+        {
+          "name": "Gorillaz"
+        },
+        {
+          "name": "The Black Keys"
+        },
+        {
+          "name": "Arctic Monkeys"
+        },
+        {
+          "name": "Imagine Dragons"
+        },
+        {
+          "name": "The Killers"
+        },
+        {
+          "name": "Gorillaz"
+        },
+        {
+          "name": "The Black Keys"
+        },
+        {
+          "name": "Twenty One Pilots"
+        },
+        {
+          "name": "Ellie Goulding"
+        },
+        {
+          "name": "Florence + the Machine"
+        },
+        {
+          "name": "Vampire Weekend"
+        },
+        {
+          "name": "The Smiths"
+        },
+        {
+          "name": "The Strokes"
+        },
+        {
+          "name": "MGMT"
+        },
+        {
+          "name": "Foster the People"
+        },
+        {
+          "name": "Two Door Cinema Club"
+        },
+        {
+          "name": "Cage the Elephant"
+        },
+        {
+          "name": "Arcade Fire"
+        },
+        {
+          "name": "The 1975"
+        }
+      ],
+      "name": "indie, alternative"
+    },
+    {
+      "children": [
+        {
+          "name": "Ed Sheeran"
+        },
+        {
+          "name": "Tame Impala"
+        },
+        {
+          "name": "Ed Sheeran"
+        },
+        {
+          "name": "Tame Impala"
+        },
+        {
+          "name": "Green Day"
+        },
+        {
+          "name": "Metallica"
+        },
+        {
+          "name": "blink-182"
+        },
+        {
+          "name": "Bon Iver"
+        },
+        {
+          "name": "The Clash"
+        }
+      ],
+      "name": "rock, punk rock"
+    },
+    {
+      "children": [
+        {
+          "name": "Calvin Harris"
+        },
+        {
+          "name": "The Weeknd"
+        },
+        {
+          "name": "The Chainsmokers"
+        },
+        {
+          "name": "Daft Punk"
+        },
+        {
+          "name": "Marshmello"
+        },
+        {
+          "name": "David Guetta"
+        },
+        {
+          "name": "Calvin Harris"
+        },
+        {
+          "name": "The Weeknd"
+        },
+        {
+          "name": "The Chainsmokers"
+        },
+        {
+          "name": "Daft Punk"
+        },
+        {
+          "name": "Marshmello"
+        },
+        {
+          "name": "David Guetta"
+        },
+        {
+          "name": "Avicii"
+        },
+        {
+          "name": "Kygo"
+        },
+        {
+          "name": "Martin Garrix"
+        },
+        {
+          "name": "Major Lazer"
+        },
+        {
+          "name": "Depeche Mode"
+        }
+      ],
+      "name": "electronic, dance"
+    },
+    {
+      "children": [
+        {
+          "name": "Queen"
+        },
+        {
+          "name": "The Beatles"
+        },
+        {
+          "name": "David Bowie"
+        },
+        {
+          "name": "Fleetwood Mac"
+        },
+        {
+          "name": "Pink Floyd"
+        },
+        {
+          "name": "The Rolling Stones"
+        },
+        {
+          "name": "Led Zeppelin"
+        },
+        {
+          "name": "Queen"
+        },
+        {
+          "name": "The Beatles"
+        },
+        {
+          "name": "David Bowie"
+        },
+        {
+          "name": "Fleetwood Mac"
+        },
+        {
+          "name": "Pink Floyd"
+        },
+        {
+          "name": "The Rolling Stones"
+        },
+        {
+          "name": "Led Zeppelin"
+        },
+        {
+          "name": "Elton John"
+        }
+      ],
+      "name": "classic rock, rock"
+    },
+    {
+      "children": [
+        {
+          "name": "Billie Eilish"
+        },
+        {
+          "name": "Ariana Grande"
+        },
+        {
+          "name": "Taylor Swift"
+        },
+        {
+          "name": "Beyoncé"
+        },
+        {
+          "name": "Shawn Mendes"
+        },
+        {
+          "name": "Rihanna"
+        },
+        {
+          "name": "Lana Del Rey"
+        },
+        {
+          "name": "Katy Perry"
+        },
+        {
+          "name": "Lady Gaga"
+        },
+        {
+          "name": "Miley Cyrus"
+        },
+        {
+          "name": "Mark Ronson"
+        },
+        {
+          "name": "Madonna"
+        },
+        {
+          "name": "Lorde"
+        },
+        {
+          "name": "Khalid"
+        },
+        {
+          "name": "Billie Eilish"
+        },
+        {
+          "name": "Ariana Grande"
+        },
+        {
+          "name": "Taylor Swift"
+        },
+        {
+          "name": "Beyoncé"
+        },
+        {
+          "name": "Shawn Mendes"
+        },
+        {
+          "name": "Rihanna"
+        },
+        {
+          "name": "Lana Del Rey"
+        },
+        {
+          "name": "Katy Perry"
+        },
+        {
+          "name": "Lady Gaga"
+        },
+        {
+          "name": "Miley Cyrus"
+        },
+        {
+          "name": "Mark Ronson"
+        },
+        {
+          "name": "Madonna"
+        },
+        {
+          "name": "Lorde"
+        },
+        {
+          "name": "Khalid"
+        },
+        {
+          "name": "Sia"
+        },
+        {
+          "name": "Sam Smith"
+        },
+        {
+          "name": "Halsey"
+        },
+        {
+          "name": "Michael Jackson"
+        },
+        {
+          "name": "Charli XCX"
+        },
+        {
+          "name": "Britney Spears"
+        },
+        {
+          "name": "Dua Lipa"
+        },
+        {
+          "name": "Jonas Brothers"
+        },
+        {
+          "name": "Bruno Mars"
+        },
+        {
+          "name": "Carly Rae Jepsen"
+        },
+        {
+          "name": "P!nk"
+        },
+        {
+          "name": "Adele"
+        }
+      ],
+      "name": "pop, female vocalists"
+    }
+  ],
+  "name": "Musicians"
+}

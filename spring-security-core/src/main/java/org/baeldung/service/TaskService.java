@@ -20,7 +20,7 @@ public class TaskService {
 
     @PreFilter("hasRole('MANAGER') or filterObject.assignee == authentication.name")
     public Iterable<Task> save(Iterable<Task> entities) {
-        return taskRepository.save(entities);
+        return taskRepository.saveAll(entities);
     }
 
 }

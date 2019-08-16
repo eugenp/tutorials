@@ -37,6 +37,17 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
+   		<dependency>
+            <groupId>org.inferred</groupId>
+            <artifactId>freebuilder</artifactId>
+            <version>${freebuilder.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${javax.annotations.version}</version>
+        </dependency>
     </dependencies>
     
     <properties>
@@ -45,5 +56,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <intellij.annotations.version>16.0.2</intellij.annotations.version>
         <assertj.version>3.12.2</assertj.version>
+        <freebuilder.version>2.4.1</freebuilder.version>
+        <javax.annotations.version>3.0.2</javax.annotations.version>
     </properties>
 </project>
