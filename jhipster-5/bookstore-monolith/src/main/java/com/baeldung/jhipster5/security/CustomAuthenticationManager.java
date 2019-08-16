@@ -5,12 +5,13 @@ import com.baeldung.jhipster5.security.dto.LoginRequest;
 import com.baeldung.jhipster5.security.dto.LoginResponse;
 import com.baeldung.jhipster5.service.UserService;
 import com.baeldung.jhipster5.service.dto.UserDTO;
-import com.baeldung.jhipster5.service.mapper.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -21,7 +22,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -35,9 +35,6 @@ public class CustomAuthenticationManager implements AuthenticationManager {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private UserMapper userMapper;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -64,26 +61,20 @@ public class CustomAuthenticationManager implements AuthenticationManager {
                 // update the local user entry)
                 //
 
-                Optional<User> user = userService.getUserWithAuthoritiesByLogin(authentication.getPrincipal().toString());
-
-                if(!user.isPresent())
-                {
-                    User newUser = userService.createUser(createUserDTO(response.getBody(), authentication));
-
-                    return createAuthentication(authentication, newUser);
-                }
-                else
-                {
-                    return createAuthentication(authentication, user.get());
-                }
+                User user = userService.getUserWithAuthoritiesByLogin(authentication.getPrincipal().toString())
+                                       .orElseGet(() -> userService.createUser(createUserDTO(response.getBody(), authentication)));
+                return createAuthentication(authentication, user);
+            }
+            else
+            {
+                throw new BadCredentialsException("Invalid username or password");
             }
         }
         catch (Exception e)
         {
             LOG.warn("Failed to authenticate", e);
+            throw new AuthenticationServiceException("Failed to login", e);
         }
-
-        return authentication;
     }
 
     /**
