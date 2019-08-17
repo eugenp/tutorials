@@ -3,10 +3,6 @@ package com.baeldung.string.wordcount;
 import java.util.StringTokenizer;
 
 public class WordCounter {
-    public static void main(String[] args) {
-        
-    }
-
     public static int countWordsUsingRegex(String arg) {
         if (arg == null) {
             return 0;
