@@ -4,13 +4,6 @@ import java.util.UUID;
 
 import javax.validation.constraints.NotEmpty;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
-@NoArgsConstructor
 public class Movie {
 
     private String id;
@@ -23,5 +16,25 @@ public class Movie {
             .toString();
         this.name = name;
     }
-    
+
+    public Movie(){
+
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }
