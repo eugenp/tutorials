@@ -6,8 +6,6 @@ import com.baeldung.reactive.enums.Role;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.exceptions.base.MockitoException;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -81,19 +79,18 @@ class EmployeeServiceUnitTest {
     @Test
     void givenEmployee_whenupdateEmployee_thenUpdatedEmployee() {
 
-        Integer employeeId = 100;
         Integer newAge = 33;
         String newLastName = "Sandler New";
         Employee updateEmployee = new Employee(100, "Adam", newLastName, newAge, Role.LEAD_ENGINEER);
         when(webClient.put()).thenReturn(requestBodyUriSpec);
-        when(requestBodyUriSpec.uri(EmployeeService.PATH_PARAM_BY_ID, employeeId)).thenReturn(requestBodySpec);
+        when(requestBodyUriSpec.uri(EmployeeService.PATH_PARAM_BY_ID, 100)).thenReturn(requestBodySpec);
         when(requestBodySpec.syncBody(updateEmployee)).thenReturn(requestHeadersSpec);
         when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
         when(responseSpec.bodyToMono(Employee.class)).thenReturn(Mono.just(updateEmployee));
 
-        Mono<Employee> updatedEmploye = employeeService.updateEmployee(employeeId, updateEmployee);
+        Mono<Employee> updatedEmployee = employeeService.updateEmployee(100, updateEmployee);
 
-        StepVerifier.create(updatedEmploye)
+        StepVerifier.create(updatedEmployee)
                 .expectNextMatches(employee -> employee.getLastName().equals(newLastName) && employee.getAge() == newAge)
                 .verifyComplete();
 
@@ -103,13 +100,12 @@ class EmployeeServiceUnitTest {
     void givenEmployee_whenDeleteEmployeeById_thenDeleteSuccessful() {
 
         String responseMessage = "Employee Deleted SuccessFully";
-        Integer employeeId = 100;
         when(webClient.delete()).thenReturn(requestHeadersUriSpec);
-        when(requestHeadersUriSpec.uri(EmployeeService.PATH_PARAM_BY_ID, employeeId)).thenReturn(requestHeadersSpec);
+        when(requestHeadersUriSpec.uri(EmployeeService.PATH_PARAM_BY_ID, 100)).thenReturn(requestHeadersSpec);
         when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
         when(responseSpec.bodyToMono(String.class)).thenReturn(Mono.just(responseMessage));
 
-        Mono<String> deletedEmployee = employeeService.deleteEmployeeById(employeeId);
+        Mono<String> deletedEmployee = employeeService.deleteEmployeeById(100);
 
         StepVerifier.create(deletedEmployee)
                 .expectNext(responseMessage)
