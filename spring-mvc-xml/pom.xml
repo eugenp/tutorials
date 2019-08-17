@@ -33,7 +33,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet.version}</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -82,7 +82,7 @@
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.el</artifactId>
-            <version>3.0.1-b08</version>
+            <version>${javax.el.version}</version>
         </dependency>
 
         <dependency>
@@ -129,18 +129,13 @@
 
         <!-- various -->
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
-        <jstl.version>1.2</jstl.version>
-        <javax.servlet.version>3.1.0</javax.servlet.version>
-        <jackson.version>2.9.6</jackson.version>
+        <javax.el.version>3.0.1-b08</javax.el.version>
 
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
-        <commons-io.version>2.5</commons-io.version>
         <geoip2.version>2.8.0</geoip2.version>
 
         <!-- Maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
 
     </properties>

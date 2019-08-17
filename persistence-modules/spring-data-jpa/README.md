@@ -10,7 +10,6 @@
 - [Spring Data Java 8 Support](http://www.baeldung.com/spring-data-java-8)
 - [A Simple Tagging Implementation with JPA](http://www.baeldung.com/jpa-tagging)
 - [Spring Data Composable Repositories](https://www.baeldung.com/spring-data-composable-repositories)
-- [Auditing with JPA, Hibernate, and Spring Data JPA](https://www.baeldung.com/database-auditing-jpa)
 - [Query Entities by Dates and Times with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-query-by-date)
 - [DDD Aggregates and @DomainEvents](https://www.baeldung.com/spring-data-ddd)
 - [Spring Data – CrudRepository save() Method](https://www.baeldung.com/spring-data-crud-repository-save)

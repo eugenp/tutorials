@@ -33,7 +33,7 @@
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
-            <version>2.1.1</version>
+            <version>${javax.persistence.version}</version>
         </dependency>
 
         <!-- utils -->
@@ -94,11 +94,11 @@
     	<spring-data.version>2.0.9.RELEASE</spring-data.version>
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
 
         <!-- testing -->
         <powermock.version>1.7.0</powermock.version>
         <hamcrest.version>2.0.0.0</hamcrest.version>
+        <javax.persistence.version>2.1.1</javax.persistence.version>
     </properties>
 
 </project>

@@ -21,10 +21,16 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+        <dependency> 
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <guava.version>23.0</guava.version>
+        <commons.io.version>2.6</commons.io.version>
     </properties>
 
 </project>

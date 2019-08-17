@@ -3,7 +3,7 @@ package com.baeldung.tailablecursor.service;
 import com.baeldung.tailablecursor.domain.Log;
 import com.baeldung.tailablecursor.domain.LogLevel;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
+import org.springframework.data.mongodb.core.ReactiveMongoOperations;
 import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 
@@ -21,10 +21,10 @@ public class WarnLogsCounter implements LogsCounter {
     private final AtomicInteger counter = new AtomicInteger();
     private final Disposable subscription;
 
-    public WarnLogsCounter(ReactiveMongoTemplate template) {
+    public WarnLogsCounter(ReactiveMongoOperations template) {
         Flux<Log> stream = template.tail(query(where(LEVEL_FIELD_NAME).is(LogLevel.WARN)), Log.class);
-        subscription = stream.subscribe(l -> {
-          log.warn("WARN log received: " + l);
+        subscription = stream.subscribe(logEntity -> {
+          log.warn("WARN log received: " + logEntity);
           counter.incrementAndGet();
         });
     }
