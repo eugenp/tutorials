@@ -12,7 +12,7 @@ var App = React.createClass({displayName: "App",
                 this.setState({data: series});
             }.bind(this),
             error: function (xhr, status, err) {
-                console.error("http://localhost:8080/next", status, err.toString());
+                console.error("/next", status, err.toString());
             }.bind(this)
         });
     },

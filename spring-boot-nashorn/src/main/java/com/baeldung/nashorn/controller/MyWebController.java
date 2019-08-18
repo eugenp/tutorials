@@ -1,11 +1,12 @@
 package com.baeldung.nashorn.controller;
 
-import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.Map;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,10 +18,12 @@ public class MyWebController {
 
         ScriptEngine nashorn = new ScriptEngineManager().getEngineByName("nashorn");
 
-        nashorn.eval(new FileReader("./src/main/webapp/js/react.js"));
-        nashorn.eval(new FileReader("./src/main/webapp/js/react-dom-server.js"));
+        getClass().getResource("classpath:storedProcedures.sql");
 
-        nashorn.eval(new FileReader("./src/main/webapp/app.js"));
+        nashorn.eval(new InputStreamReader(new ClassPathResource("static/js/react.js").getInputStream()));
+        nashorn.eval(new InputStreamReader(new ClassPathResource("static/js/react-dom-server.js").getInputStream()));
+
+        nashorn.eval(new InputStreamReader(new ClassPathResource("static/app.js").getInputStream()));
         Object html = nashorn.eval("ReactDOMServer.renderToString(" + "React.createElement(App, {data: [0,1,1]})" + ");");
 
         model.put("content", String.valueOf(html));
