@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
 
-public class CombinationUnitTest {
+public class LogarithmUnitTest {
 
     @Test
     public void givenLog10_shouldReturnValidResults() {
@@ -13,9 +13,9 @@ public class CombinationUnitTest {
     }
 
     @Test
-    public void givenLog10_shouldReturnValidResults() {
+    public void givenLogE_shouldReturnValidResults() {
         assertEquals(Math.log(Math.E), 1);
-        assertEquals(Math.log(10), 2.30258);
+        assertEquals(Math.log(10), 2.30258, 0.00001);
     }
 
     @Test
