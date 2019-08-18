@@ -10,6 +10,7 @@ public class Student {
     private BigDecimal grade; //new representation
     private String name;   
     private int age;
+    public static final String GENDER = "male";
 
     public int getGrade() {
         return grade.intValue(); //Backward compatibility
@@ -33,6 +34,10 @@ public class Student {
         this.age = age;
     }
 
+    public int getAge() {
+        return age;
+    }
+    
     @Override
     public String toString() {
         return this.name;

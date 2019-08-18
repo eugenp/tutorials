@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import com.baeldung.accessmodifiers.publicmodifier.ListOfThree;
+import com.baeldung.accessmodifiers.publicmodifier.Student;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,6 +20,11 @@ public class PublicAccessModifierUnitTest {
     @Test
     public void whenUsingBigDecimalIntValueMethod_correspondingIntIsReturned() {
         assertEquals(0, new BigDecimal(0).intValue()); //instance member
+    }
+    
+    @Test
+    public void whenUsingGenderPublicStaticFinalField_getReferenceToStringMale() {
+        assertEquals("male", Student.GENDER);
     }
     
     @Test
