@@ -11,6 +11,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <dependencies>
@@ -28,7 +29,7 @@
     </dependencies>
 
     <properties>
-        <xstream.version>1.4.9</xstream.version>
+        <xstream.version>1.4.10</xstream.version>
         <jettison.version>1.3.8</jettison.version>
     </properties>
 

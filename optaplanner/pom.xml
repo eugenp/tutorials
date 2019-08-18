@@ -18,11 +18,6 @@
             <artifactId>optaplanner-core</artifactId>
             <version>7.9.0.Final</version>
         </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId></groupId>-->
-            <!--<artifactId></artifactId>-->
-        <!--</dependency>-->
     </dependencies>
 
 </project>

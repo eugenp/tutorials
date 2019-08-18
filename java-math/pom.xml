@@ -18,6 +18,26 @@
             <version>${commons-math3.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.ejml</groupId>
+            <artifactId>ejml-all</artifactId>
+            <version>${ejml.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.nd4j</groupId>
+            <artifactId>nd4j-native</artifactId>
+            <version>${nd4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.la4j</groupId>
+            <artifactId>la4j</artifactId>
+            <version>${la4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>colt</groupId>
+            <artifactId>colt</artifactId>
+            <version>${colt.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
@@ -42,8 +62,19 @@
         <dependency>
             <groupId>com.github.dpaukov</groupId>
             <artifactId>combinatoricslib3</artifactId>
-            <version>3.3.0</version>
+            <version>${combinatoricslib3.version}</version>
          </dependency>
+        <!-- Benchmarking -->
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -63,6 +94,12 @@
         <org.assertj.core.version>3.9.0</org.assertj.core.version>
         <commons-codec.version>1.11</commons-codec.version>
         <guava.version>27.0.1-jre</guava.version>
+        <combinatoricslib3.version>3.3.0</combinatoricslib3.version>
+        <ejml.version>0.38</ejml.version>
+        <nd4j.version>1.0.0-beta4</nd4j.version>
+        <colt.version>1.2.0</colt.version>
+        <la4j.version>0.6.0</la4j.version>
+        <jmh.version>1.19</jmh.version>
     </properties>
 
 </project>

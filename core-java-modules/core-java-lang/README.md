@@ -18,7 +18,6 @@
 - [A Guide to Inner Interfaces in Java](http://www.baeldung.com/java-inner-interfaces)
 - [Recursion In Java](http://www.baeldung.com/java-recursion)
 - [A Guide to the finalize Method in Java](http://www.baeldung.com/java-finalize)
-- [A Guide to Java Enums](http://www.baeldung.com/a-guide-to-java-enums)
 - [Infinite Loops in Java](http://www.baeldung.com/infinite-loops-java)
 - [Quick Guide to java.lang.System](http://www.baeldung.com/java-lang-system)
 - [Using Java Assertions](http://www.baeldung.com/java-assert)

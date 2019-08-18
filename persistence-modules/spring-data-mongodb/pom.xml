@@ -21,7 +21,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-releasetrain</artifactId>
-            <version>Lovelace-SR3</version>
+            <version>Lovelace-SR9</version>
             <type>pom</type>
         </dependency>
 
@@ -95,7 +95,7 @@
     </build>
 
     <properties>
-        <org.springframework.data.version>2.1.2.RELEASE</org.springframework.data.version>
+        <org.springframework.data.version>2.1.9.RELEASE</org.springframework.data.version>
         <querydsl.version>4.1.4</querydsl.version>
         <mysema.maven.version>1.1.3</mysema.maven.version>
         <mongodb-reactivestreams.version>1.9.2</mongodb-reactivestreams.version>
