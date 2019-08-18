@@ -2,8 +2,8 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>testing-modules-misc</artifactId>
-    <name>testing-modules-misc</name>
+    <artifactId>testing-modules-mocking</artifactId>
+    <name>testing-modules-mocking</name>
     <packaging>pom</packaging>
 
     <parent>
@@ -14,12 +14,11 @@
     </parent>
 
     <modules>
-        <module>easy-random</module>
-        <module>groovy-spock</module>
-        <module>spring-testing</module>
-        <module>test-containers</module>
+<!--        <module>mockito</module>-->
+        <module>mockito-2</module>
+        <module>mocks</module>
+        <module>mockserver</module>
         <module>testing</module>
-        <module>testng</module>
-        <module>xmlunit-2</module>
+        <module>easymock</module>
     </modules>
 </project>
