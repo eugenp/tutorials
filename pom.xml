@@ -777,7 +777,12 @@
 				<module>structurizr</module>
 				<module>struts-2</module>
 
-				<module>testing-modules</module>
+				<module>testing-modules-assertions</module>
+				<module>testing-modules-misc</module>
+				<module>testing-modules-junit</module>
+				<module>testing-modules-load-testing</module>
+				<module>testing-modules-mocking</module>
+				<module>testing-modules-rest</module>
 
 				<module>twilio</module>
 				<module>twitter4j</module>
@@ -1451,7 +1456,12 @@
 				<module>structurizr</module>
 				<module>struts-2</module>
 
-				<module>testing-modules</module>
+				<module>testing-modules-assertions</module>
+				<module>testing-modules-misc</module>
+				<module>testing-modules-junit</module>
+				<module>testing-modules-load-testing</module>
+				<module>testing-modules-mocking</module>
+				<module>testing-modules-rest</module>
 
 				<module>twilio</module>
 				<module>twitter4j</module>
