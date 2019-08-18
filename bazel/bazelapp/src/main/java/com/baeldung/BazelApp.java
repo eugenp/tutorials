@@ -1,7 +1,7 @@
 package com.baeldung;
 
 import com.baeldung.Greetings;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class BazelApp {
 

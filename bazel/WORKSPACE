@@ -17,7 +17,7 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
     artifacts = [
-        "commons-lang:commons-lang:2.6"
+        "org.apache.commons:commons-lang3:3.9"
     ],
     repositories = [
         "https://repo1.maven.org/maven2",
@@ -26,6 +26,6 @@ maven_install(
 
 http_jar (
     name = "apache-commons-lang",
-    url = "https://repo1.maven.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.jar"
+    url = "https://repo1.maven.org/maven2/org/apache/commons/commons-lang3/3.9/commons-lang3-3.9.jar"
 )
 
