@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.baeldung.thymeleaf.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +12,7 @@ import static java.util.Arrays.asList;
 @Controller
 public class ParticipantController {
 
-    @RequestMapping("/")
+    @RequestMapping("/participants")
     public String index(
             @RequestParam(value = "participant", required = false) String participant,
             @RequestParam(value = "country", required = false) String country,
