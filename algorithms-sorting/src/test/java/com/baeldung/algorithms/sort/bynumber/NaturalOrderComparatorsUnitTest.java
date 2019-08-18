@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.stringsortingbynumber;
+package com.baeldung.algorithms.sort.bynumber;
 
 import com.baeldung.algorithms.stringsortingbynumber.NaturalOrderComparators;
 import org.junit.Test;
