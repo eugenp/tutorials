@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import com.baeldung.accessmodifiers.publicmodifier.ListOfThree;
-import com.baeldung.accessmodifiers.publicmodifier.Student;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -23,15 +22,10 @@ public class PublicAccessModifierUnitTest {
     }
     
     @Test
-    public void whenUsingGenderPublicStaticFinalField_getReferenceToStringMale() {
-        assertEquals("male", Student.GENDER);
-    }
-    
-    @Test
     public void whenUsingIntegerMaxValueField_maxPossibleIntValueIsReturned() {
         assertEquals(2147483647, Integer.MAX_VALUE); //static field
     }
-    
+        
     @Test
     public void whenUsingStringToLowerCase_stringTurnsToLowerCase() {
         assertEquals("alex", "ALEX".toLowerCase());

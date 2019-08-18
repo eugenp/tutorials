@@ -10,13 +10,12 @@ public class Student {
     private BigDecimal grade; //new representation
     private String name;   
     private int age;
-    public static final String GENDER = "male";
 
     public int getGrade() {
         return grade.intValue(); //Backward compatibility
     }
     
-    public BigDecimal bigDecimalGrade() {
+    public BigDecimal getBigDecimalGrade() {
         return grade;
     }
     
@@ -28,9 +27,10 @@ public class Student {
     }
         
     public void setAge(int age) {
-        if (age < 0 || age > 150)
+        if (age < 0 || age > 150) {
             throw new IllegalArgumentException();
-
+        }
+        
         this.age = age;
     }
 
