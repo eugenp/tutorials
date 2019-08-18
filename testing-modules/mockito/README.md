@@ -18,3 +18,7 @@
 - [Hamcrest Common Core Matchers](http://www.baeldung.com/hamcrest-core-matchers)
 - [Testing Callbacks with Mockito](http://www.baeldung.com/mockito-callbacks)
 - [Using Hamcrest Number Matchers](https://www.baeldung.com/hamcrest-number-matchers)
+- [Quick Guide to BDDMockito](http://www.baeldung.com/bdd-mockito)
+- [Hamcrest Bean Matchers](http://www.baeldung.com/hamcrest-bean-matchers)
+- [Hamcrest Object Matchers](http://www.baeldung.com/hamcrest-object-matchers)
+- [Testing Callbacks with Mockito](http://www.baeldung.com/mockito-callbacks)

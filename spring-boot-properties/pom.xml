@@ -37,6 +37,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>${httpcore.version}</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -99,6 +109,8 @@
         <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
         <commons-configuration.version>1.10</commons-configuration.version>
+        <guava.version>20.0</guava.version>
+        <httpcore.version>4.4.11</httpcore.version>
     </properties>
 
 </project>

@@ -3,6 +3,7 @@ package com.baeldung.xml.attribute;
 import org.dom4j.*;
 import org.dom4j.io.DocumentSource;
 import org.dom4j.io.SAXReader;
+import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
 import javax.xml.transform.OutputKeys;
@@ -17,9 +18,12 @@ import java.util.List;
 public class Dom4jTransformer {
     private final Document input;
 
-    public Dom4jTransformer(String resourcePath) throws DocumentException {
+    public Dom4jTransformer(String resourcePath) throws DocumentException, SAXException {
         // 1- Build the doc from the XML file
         SAXReader xmlReader = new SAXReader();
+        xmlReader.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+        xmlReader.setFeature("http://xml.org/sax/features/external-general-entities", false);
+        xmlReader.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
         this.input = xmlReader.read(resourcePath);
     }
 

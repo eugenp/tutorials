@@ -1,4 +1,4 @@
-## Relevant articles:
+## Relevant Articles:
 
 - [Java Two Pointer Technique](https://www.baeldung.com/java-two-pointer-technique)
 - [Implementing Simple State Machines with Java Enums](https://www.baeldung.com/java-enum-simple-state-machine)
