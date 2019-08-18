@@ -43,4 +43,8 @@ public class Employee {
         this.manager = manager;
     }
 
+    public static Employee buildManager(String id, String name) {
+        return new Employee(id, name, true);
+    }
+    
 }
