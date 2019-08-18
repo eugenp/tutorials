@@ -1,9 +1,11 @@
-package com.example.demo;
+package com.baeldung.thymeleaf.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 
 import java.util.List;
 
@@ -12,7 +14,7 @@ import static java.util.Arrays.asList;
 @Controller
 public class ParticipantController {
 
-    @RequestMapping("/")
+    @RequestMapping(value = "/participants", method = RequestMethod.GET)
     public String index(
             @RequestParam(value = "participant", required = false) String participant,
             @RequestParam(value = "country", required = false) String country,
@@ -23,6 +25,6 @@ public class ParticipantController {
         model.addAttribute("id", id);
         List<Integer> userIds = asList(1,2,3,4);
         model.addAttribute("userIds", userIds);
-        return "participants";
+        return "participants.html";
     }
 }

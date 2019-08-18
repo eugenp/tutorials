@@ -4,7 +4,7 @@
 </head>
 
 <h2>Enter participant</h2>
-<form th:action="@{/}">
+<form th:action="@{/participants}">
 
     <input type="text" th:name="participant"/>
     <select name="country">
@@ -25,7 +25,7 @@
 <h2>Users</h2>
 <th:block th:each="userId: ${userIds}">
     <p>
-        <a th:href="@{/(id=${userId})}"> User [[${userId}]]</a>
+        <a th:href="@{/participants(id=${userId})}"> User [[${userId}]]</a>
     </p>
 </th:block>
 
