@@ -3,11 +3,14 @@ package com.baeldung.string.wordcount;
 import java.util.StringTokenizer;
 
 public class WordCounter {
+    static final int WORD = 0;
+    static final int SEPARATOR = 1;
+
     public static int countWordsUsingRegex(String arg) {
         if (arg == null) {
             return 0;
         }
-        final String[] words = arg.split("\\pP|\\s+");
+        final String[] words = arg.split("[\\pP\\s]+");
         return words.length;
     }
 
@@ -23,21 +26,19 @@ public class WordCounter {
         if (arg == null) {
             return 0;
         }
-
+        int flag = SEPARATOR;
         int count = 0;
+        int stringLength = arg.length();
+        int characterCounter = 0;
 
-        boolean isAWord = false;
-        int argEnd = arg.length() - 1;
-
-        for (int i = 0; i < arg.length(); i++) {
-            if (Character.isLetter(arg.charAt(i)) && i != argEnd) {
-                isAWord = true;
-            } else if (!Character.isLetter(arg.charAt(i)) && isAWord) {
+        while (characterCounter < stringLength) {
+            if (Character.isLetter(arg.charAt(characterCounter)) && flag == SEPARATOR) {
+                flag = WORD;
                 count++;
-                isAWord = false;
-            } else if (Character.isLetter(arg.charAt(i)) && i == argEnd) {
-                count++;
+            } else if (!Character.isLetter(arg.charAt(characterCounter))) {
+                flag = SEPARATOR;
             }
+            characterCounter++;
         }
         return count;
     }
