@@ -1,4 +1,4 @@
-package com.baeldung.annotations;
+package com.baeldung.responseentity;
 
 import java.time.Year;
 

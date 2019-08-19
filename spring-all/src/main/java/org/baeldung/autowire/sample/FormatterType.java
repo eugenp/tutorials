@@ -1,4 +1,4 @@
-package org.baeldung.sample;
+package org.baeldung.autowire.sample;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

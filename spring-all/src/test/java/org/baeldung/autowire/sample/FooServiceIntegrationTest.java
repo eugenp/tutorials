@@ -1,4 +1,4 @@
-package org.baeldung.sample;
+package org.baeldung.autowire.sample;
 
 import org.junit.Assert;
 import org.junit.Test;
