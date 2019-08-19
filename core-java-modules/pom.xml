@@ -19,6 +19,8 @@
         <module>core-java-optional</module>
         <module>core-java-lang-operators</module>
         <module>core-java-networking-2</module>
+        <module>core-java-io</module>
+        <module>core-java-io-2</module>
     </modules>
     
 </project>
