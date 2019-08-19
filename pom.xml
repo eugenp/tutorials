@@ -507,6 +507,7 @@
 				<module>libraries-data-2</module>
 				<module>libraries-apache-commons</module>
 				<module>libraries-primitive</module>
+				<module>libraries-testing</module>
 				<module>libraries-security</module>
 				<module>libraries-server</module>
 				<module>libraries-http</module>
@@ -650,6 +651,7 @@
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-kotlin</module>
 				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-management</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-mvc-birt</module>
 				<module>spring-boot-ops</module>
@@ -1200,6 +1202,7 @@
 				<module>libraries-data</module>
 				<module>libraries-data-2</module>
 				<module>libraries-apache-commons</module>
+				<module>libraries-testing</module>
 				<module>libraries-security</module>
 				<module>libraries-server</module>
 				<module>libraries-http</module>
@@ -1326,6 +1329,7 @@
 				<module>spring-boot-jasypt</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-management</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-mvc-birt</module>
 				<module>spring-boot-ops</module>

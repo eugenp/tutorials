@@ -5,15 +5,10 @@ import org.openjdk.jmh.annotations.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@BenchmarkMode(Mode.AverageTime)
-@Fork(value = 2)
-@Warmup(iterations = 5)
-@Measurement(iterations = 10)
-public class HomemadeMatrixUnitTest {
+class HomemadeMatrixUnitTest {
 
     @Test
-    @Benchmark
-    public void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
+    void givenTwoMatrices_whenMultiply_thenMultiplicatedMatrix() {
         double[][] firstMatrix = {
           new double[]{1d, 5d},
           new double[]{2d, 3d},
@@ -55,4 +50,5 @@ public class HomemadeMatrixUnitTest {
         }
         return cell;
     }
+
 }
