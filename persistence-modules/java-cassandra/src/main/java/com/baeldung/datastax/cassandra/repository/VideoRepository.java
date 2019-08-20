@@ -7,6 +7,9 @@ import com.datastax.oss.driver.api.core.cql.BoundStatement;
 import com.datastax.oss.driver.api.core.cql.PreparedStatement;
 import com.datastax.oss.driver.api.core.cql.ResultSet;
 import com.datastax.oss.driver.api.core.cql.SimpleStatement;
+import com.datastax.oss.driver.api.core.type.DataTypes;
+import com.datastax.oss.driver.api.querybuilder.SchemaBuilder;
+import com.datastax.oss.driver.api.querybuilder.schema.CreateTable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,15 +30,12 @@ public class VideoRepository {
     }
 
     public void createTable(String keyspace) {
-        StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ").append(TABLE_NAME).append(" (")
-            .append("video_id UUID,")
-            .append("title TEXT,")
-            .append("creation_date TIMESTAMP,")
-            .append("PRIMARY KEY(video_id));");
+        CreateTable createTable = SchemaBuilder.createTable(TABLE_NAME)
+          .withPartitionKey("video_id", DataTypes.UUID)
+          .withColumn("title", DataTypes.TEXT)
+          .withColumn("creation_date", DataTypes.TIMESTAMP);
 
-        String query = sb.toString();
-
-        executeStatement(SimpleStatement.newInstance(query), keyspace);
+        executeStatement(createTable.build(), keyspace);
     }
 
     public UUID insertVideo(Video video) {
