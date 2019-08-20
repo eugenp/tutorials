@@ -736,7 +736,7 @@
         <bytebuddy.version>1.7.1</bytebuddy.version>
         <pcollections.version>2.1.2</pcollections.version>
         <rome.version>1.0</rome.version>
-        <eclipse-collections.version>8.2.0</eclipse-collections.version>
+        <eclipse-collections.version>10.0.0</eclipse-collections.version>
         <streamex.version>0.6.5</streamex.version>
         <vavr.version>0.9.0</vavr.version>
         <geotools.version>15.2</geotools.version>
