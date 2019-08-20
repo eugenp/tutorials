@@ -30,7 +30,7 @@ public class VideoRepository {
     }
 
     public void createTable(String keyspace) {
-        CreateTable createTable = SchemaBuilder.createTable(TABLE_NAME)
+        CreateTable createTable = SchemaBuilder.createTable(TABLE_NAME).ifNotExists()
           .withPartitionKey("video_id", DataTypes.UUID)
           .withColumn("title", DataTypes.TEXT)
           .withColumn("creation_date", DataTypes.TIMESTAMP);

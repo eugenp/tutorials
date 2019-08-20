@@ -141,12 +141,7 @@
             <artifactId>hazelcast</artifactId>
             <version>${hazelcast.version}</version>
         </dependency>
-        
-        <dependency>
-            <groupId>com.googlecode.jmapper-framework</groupId>
-            <artifactId>jmapper-core</artifactId>
-            <version>${jmapper.version}</version>
-        </dependency>
+
         <!--  crunch project  -->
         <dependency>
             <groupId>org.apache.crunch</groupId>
@@ -449,7 +444,6 @@
         <gson.version>2.8.2</gson.version>
         <cache.version>1.1.0</cache.version>
         <flink.version>1.5.0</flink.version>
-        <jackson.version>2.9.7</jackson.version>
         <awaitility.version>3.0.0</awaitility.version>
         <assertj.version>3.6.2</assertj.version>
         <hazelcast.version>3.8.4</hazelcast.version>
@@ -461,7 +455,6 @@
         <datanucleus-maven-plugin.version>5.0.2</datanucleus-maven-plugin.version>
         <datanucleus-xml.version>5.0.0-release</datanucleus-xml.version>
         <datanucleus-jdo-query.version>5.0.4</datanucleus-jdo-query.version>
-        <jmapper.version>1.6.0.1</jmapper.version>
         <org.apache.crunch.crunch-core.version>0.15.0</org.apache.crunch.crunch-core.version>
         <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client> 
         <ebean.version>11.22.4</ebean.version>

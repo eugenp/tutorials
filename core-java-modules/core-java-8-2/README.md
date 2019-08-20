@@ -7,3 +7,4 @@
 - [How to Delay Code Execution in Java](https://www.baeldung.com/java-delay-code-execution)
 - [Run JAR Application With Command Line Arguments](https://www.baeldung.com/java-run-jar-with-arguments)
 - [Java 8 Stream skip() vs limit()](https://www.baeldung.com/java-stream-skip-vs-limit)
+- [Guide to Java BiFunction Interface](https://www.baeldung.com/java-bifunction-interface)
