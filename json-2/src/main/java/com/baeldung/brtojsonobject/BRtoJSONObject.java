@@ -1,4 +1,4 @@
-package com.baeldung.jsontobufferedreader;
+package com.baeldung.brtojsonobject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
