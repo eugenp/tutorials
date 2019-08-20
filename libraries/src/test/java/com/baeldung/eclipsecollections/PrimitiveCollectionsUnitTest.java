@@ -50,7 +50,7 @@ public class PrimitiveCollectionsUnitTest {
         DoubleStream doubleStream = DoubleLists
                 .mutable.with(1.0, 2.0, 3.0, 4.0, 5.0)
                 .primitiveStream();
-        assertEquals(3, doubleStream.average().getAsDouble());
+        assertEquals(3, doubleStream.average().getAsDouble(), 0.001);
     }
 
     @Test
