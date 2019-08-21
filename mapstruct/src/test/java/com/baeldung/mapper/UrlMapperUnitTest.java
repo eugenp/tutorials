@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class UrlMapperTest {
+public class UrlMapperUnitTest {
 
     @Test
     public void givenDomains_whenCallDomainMapper_thenReturnDomainsWithoutProtocols() {
