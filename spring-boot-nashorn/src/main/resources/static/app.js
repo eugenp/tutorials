@@ -4,7 +4,7 @@ var App = React.createClass({displayName: "App",
     	var last = this.state.data[this.state.data.length-1];
     	var secondLast = this.state.data[this.state.data.length-2];
         $.ajax({
-            url: 'http://localhost:8080/next/'+last+'/'+secondLast,
+            url: '/next/'+last+'/'+secondLast,
             dataType: 'text',
             success: function (msg) {
                 var series = this.state.data;
