@@ -2,8 +2,8 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>testing-modules-assertions</artifactId>
-    <name>testing-modules-assertions</name>
+    <artifactId>testing-modules-assertion-frameworks</artifactId>
+    <name>testing-modules-assertion-frameworks</name>
     <packaging>pom</packaging>
 
     <parent>
@@ -66,5 +66,9 @@
         <assertj-generator.version>2.1.0</assertj-generator.version>
         <truth.version>0.32</truth.version>
     </properties>
+
+    <modules>
+        <module>testng</module>
+    </modules>
 
 </project>

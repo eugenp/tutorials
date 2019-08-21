@@ -777,7 +777,7 @@
 				<module>structurizr</module>
 				<module>struts-2</module>
 
-				<module>testing-modules-assertions</module>
+				<module>testing-modules-assertion-frameworks</module>
 				<module>testing-modules-misc</module>
 				<module>testing-modules-junit</module>
 				<module>testing-modules-load-testing</module>
@@ -1456,7 +1456,7 @@
 				<module>structurizr</module>
 				<module>struts-2</module>
 
-				<module>testing-modules-assertions</module>
+				<module>testing-modules-assertion-frameworks</module>
 				<module>testing-modules-misc</module>
 				<module>testing-modules-junit</module>
 				<module>testing-modules-load-testing</module>
