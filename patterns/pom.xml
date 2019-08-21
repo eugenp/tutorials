@@ -18,6 +18,7 @@
         <module>intercepting-filter</module>
         <module>design-patterns</module>
         <module>design-patterns-2</module>
+        <module>design-patterns-behavioral</module>
         <module>solid</module>
         <module>dip</module>
         <module>backoff-jitter</module>
