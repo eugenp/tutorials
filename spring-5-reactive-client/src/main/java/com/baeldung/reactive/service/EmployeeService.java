@@ -9,12 +9,12 @@ public class EmployeeService {
     public static String PATH_PARAM_BY_ID = "/employee/{id}";
     public static String ADD_EMPLOYEE = "/employee";
 
-    public EmployeeService(WebClient _webClient) {
-        this.webClient = _webClient;
+    public EmployeeService(WebClient webClient) {
+        this.webClient = webClient;
     }
 
-    public EmployeeService(String _baseUrl) {
-        this.webClient = WebClient.create(_baseUrl);
+    public EmployeeService(String baseUrl) {
+        this.webClient = WebClient.create(baseUrl);
     }
 
     public Mono<Employee> getEmployeeById(Integer employeeId) {
