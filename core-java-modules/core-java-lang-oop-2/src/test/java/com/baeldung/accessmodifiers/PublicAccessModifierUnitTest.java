@@ -11,7 +11,9 @@ import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class PublicAccessModifierUnitTest {
@@ -25,7 +27,20 @@ public class PublicAccessModifierUnitTest {
     public void whenUsingIntegerMaxValueField_maxPossibleIntValueIsReturned() {
         assertEquals(2147483647, Integer.MAX_VALUE); //static field
     }
+    
+    @Test
+    public void whenUsingEntrySet_keyValuePairsAreReturned() {
         
+        Map<String, String> mapObject = new HashMap<String, String>();
+        mapObject.put("name", "Alex");
+       
+        for(Map.Entry<String, String> entry : mapObject.entrySet()) {
+            assertEquals("name", entry.getKey());
+            assertEquals("Alex", entry.getValue());
+        }
+        
+    }
+    
     @Test
     public void whenUsingStringToLowerCase_stringTurnsToLowerCase() {
         assertEquals("alex", "ALEX".toLowerCase());
