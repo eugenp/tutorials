@@ -3,6 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-io-2</artifactId>
     <packaging>jar</packaging>
+    <name>core-java-io-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
