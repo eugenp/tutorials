@@ -21,6 +21,7 @@
         <module>design-patterns-architectural</module>
         <module>design-patterns-behavioral</module>
         <module>design-patterns-creational</module>
+        <module>design-patterns-functional</module>
         <module>design-patterns-structural</module>
         <module>solid</module>
         <module>dip</module>
