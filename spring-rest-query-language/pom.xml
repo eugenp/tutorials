@@ -353,7 +353,6 @@
 		
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
         
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.7.0</cargo-maven2-plugin.version>

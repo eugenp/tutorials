@@ -23,11 +23,4 @@
        
     </dependencies>
 
-    <properties>
-
-        <!-- util -->
-        <commons-lang3.version>3.8.1</commons-lang3.version>
-      
-    </properties>
-
 </project>

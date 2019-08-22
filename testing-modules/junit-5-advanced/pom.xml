@@ -1,32 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>junit-5-advanced</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>junit-5-advanced</name>
-    <description>Advanced JUnit 5 Topics</description>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>junit-5-advanced</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>junit-5-advanced</name>
+	<description>Advanced JUnit 5 Topics</description>
 
-    <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
-    </parent>
+	<parent>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-modules</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../../</relativePath>
+	</parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-    
-    <properties>
-        <junit-jupiter.version>5.4.2</junit-jupiter.version>
-        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-    </properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit-jupiter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<version>${junit.vintage.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+			</plugin>
+		</plugins>
+	</build>
+	<properties>
+		<junit-jupiter.version>5.4.2</junit-jupiter.version>
+		<maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+		<junit.vintage.version>5.4.2</junit.vintage.version>
+	</properties>
 
 </project>

@@ -7,12 +7,14 @@
 	<version>0.1-SNAPSHOT</version>
 	<name>spring-security-kerberos</name>
 	<packaging>war</packaging>
+	
 	<parent>
 		<artifactId>parent-boot-1</artifactId>
 		<groupId>com.baeldung</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../parent-boot-1</relativePath>
 	</parent>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -50,6 +52,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
 	<build>
 		<plugins>
 			<plugin>
