@@ -1,5 +1,4 @@
 ### Relevant Articles:
-- [Introduction to Creational Design Patterns](http://www.baeldung.com/creational-design-patterns)
 - [The Observer Pattern in Java](http://www.baeldung.com/java-observer-pattern)
 - [Flyweight Pattern in Java](http://www.baeldung.com/java-flyweight)
 - [Service Locator Pattern](http://www.baeldung.com/java-service-locator-pattern)
@@ -10,7 +9,6 @@
 - [Interpreter Design Pattern in Java](http://www.baeldung.com/java-interpreter-pattern)
 - [State Design Pattern in Java](https://www.baeldung.com/java-state-design-pattern)
 - [The Decorator Pattern in Java](https://www.baeldung.com/java-decorator-pattern)
-- [Abstract Factory Pattern in Java](https://www.baeldung.com/java-abstract-factory-pattern)
 - [Implementing the Template Method Pattern in Java](http://www.baeldung.com/java-template-method-pattern)
 - [Chain of Responsibility Design Pattern in Java](http://www.baeldung.com/chain-of-responsibility-pattern)
 - [The Command Pattern in Java](http://www.baeldung.com/java-command-pattern)
