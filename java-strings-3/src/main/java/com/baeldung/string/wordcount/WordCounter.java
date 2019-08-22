@@ -10,7 +10,7 @@ public class WordCounter {
         if (arg == null) {
             return 0;
         }
-        final String[] words = arg.split("[\\pP\\s]+");
+        final String[] words = arg.split("[\\pP\\s&&[^']]+");
         return words.length;
     }
 
@@ -32,7 +32,7 @@ public class WordCounter {
         int characterCounter = 0;
 
         while (characterCounter < stringLength) {
-            if (Character.isLetter(arg.charAt(characterCounter)) && flag == SEPARATOR) {
+            if ((Character.isLetter(arg.charAt(characterCounter)) || isAllowedWordPunct(arg.charAt(characterCounter))) && flag == SEPARATOR) {
                 flag = WORD;
                 count++;
             } else if (!Character.isLetter(arg.charAt(characterCounter))) {
@@ -41,5 +41,9 @@ public class WordCounter {
             characterCounter++;
         }
         return count;
+    }
+
+    private static boolean isAllowedWordPunct(char charAt) {
+        return charAt == '\'';
     }
 }
