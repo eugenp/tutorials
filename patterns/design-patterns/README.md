@@ -1,5 +1,4 @@
 ### Relevant Articles:
-- [Proxy, Decorator, Adapter and Bridge Patterns](http://www.baeldung.com/java-structural-design-patterns)
 - [Introduction to Creational Design Patterns](http://www.baeldung.com/creational-design-patterns)
 - [The Observer Pattern in Java](http://www.baeldung.com/java-observer-pattern)
 - [Flyweight Pattern in Java](http://www.baeldung.com/java-flyweight)

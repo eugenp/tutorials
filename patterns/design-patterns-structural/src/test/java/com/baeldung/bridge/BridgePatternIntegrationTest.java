@@ -1,14 +1,8 @@
-package com.baeldung;
+package com.baeldung.bridge;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-import com.baeldung.bridge.Blue;
-import com.baeldung.bridge.Red;
-import com.baeldung.bridge.Shape;
-import com.baeldung.bridge.Square;
-import com.baeldung.bridge.Triangle;
 
 public class BridgePatternIntegrationTest {
 	
