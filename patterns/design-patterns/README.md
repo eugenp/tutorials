@@ -1,5 +1,4 @@
 ### Relevant Articles:
-- [Facade Design Pattern in Java](http://www.baeldung.com/java-facade-pattern)
 - [Singletons in Java](http://www.baeldung.com/java-singleton)
 - [Proxy, Decorator, Adapter and Bridge Patterns](http://www.baeldung.com/java-structural-design-patterns)
 - [Introduction to Creational Design Patterns](http://www.baeldung.com/creational-design-patterns)
