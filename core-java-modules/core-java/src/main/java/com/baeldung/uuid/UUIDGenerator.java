@@ -67,7 +67,7 @@ public class UUIDGenerator {
         } catch (NoSuchAlgorithmException nsae) {
             throw new InternalError("MD5 not supported", nsae);
         }
-        byte[] bytes = md.digest(name);
+        byte[] bytes = Arrays.copyOfRange(md.digest(name), 0, 16);
         bytes[6] &= 0x0f; /* clear version        */
         bytes[6] |= 0x50; /* set to version 5     */
         bytes[8] &= 0x3f; /* clear variant        */
