@@ -32,10 +32,10 @@ public class WordCounter {
         int characterCounter = 0;
 
         while (characterCounter < stringLength) {
-            if ((Character.isLetter(arg.charAt(characterCounter)) || isAllowedWordPunct(arg.charAt(characterCounter))) && flag == SEPARATOR) {
+            if (isAllowedInWord(arg.charAt(characterCounter)) && flag == SEPARATOR) {
                 flag = WORD;
                 count++;
-            } else if (!Character.isLetter(arg.charAt(characterCounter))) {
+            } else if (!isAllowedInWord(arg.charAt(characterCounter))) {
                 flag = SEPARATOR;
             }
             characterCounter++;
@@ -43,7 +43,7 @@ public class WordCounter {
         return count;
     }
 
-    private static boolean isAllowedWordPunct(char charAt) {
-        return charAt == '\'';
+    private static boolean isAllowedInWord(char charAt) {
+        return charAt == '\'' || Character.isLetter(charAt);
     }
 }
