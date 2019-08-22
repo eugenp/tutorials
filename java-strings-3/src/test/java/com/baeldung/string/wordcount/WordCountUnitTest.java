@@ -27,5 +27,9 @@ public class WordCountUnitTest {
     @Test
     public void givenAStringWith8Words_whenUsingTokenizer_ThenWordCountEqual8() {
         assertEquals(8, WordCounter.countWordsUsingTokenizer(string1));
+        assertEquals(3, new StringTokenizer("three blind mice").countTokens());
+        assertEquals(4, new StringTokenizer("see\thow\tthey\trun").countTokens());
+        assertEquals(7, new StringTokenizer("the farmer's wife--she was from Albuquerque", " -").countTokens());
+        assertEquals(10, new StringTokenizer("did,you,ever,see,such,a,sight,in,your,life", ",").countTokens());
     }
 }
