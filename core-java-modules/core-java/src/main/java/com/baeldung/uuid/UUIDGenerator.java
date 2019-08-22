@@ -65,7 +65,7 @@ public class UUIDGenerator {
         try {
             md = MessageDigest.getInstance("SHA-1");
         } catch (NoSuchAlgorithmException nsae) {
-            throw new InternalError("MD5 not supported", nsae);
+            throw new InternalError("SHA-1 not supported", nsae);
         }
         byte[] bytes = Arrays.copyOfRange(md.digest(name), 0, 16);
         bytes[6] &= 0x0f; /* clear version        */
