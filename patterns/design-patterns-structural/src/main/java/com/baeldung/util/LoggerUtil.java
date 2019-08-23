@@ -8,7 +8,7 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-public class LogerUtil {
+public class LoggerUtil {
 
     public final static Logger LOG = Logger.getLogger("GLOBAL");
     
@@ -22,7 +22,7 @@ public class LogerUtil {
 			props.load(
 			  new BufferedReader(
 			    new InputStreamReader(
-			      LogerUtil.class.getResourceAsStream("/log4jstructuraldp.properties")
+			      LoggerUtil.class.getResourceAsStream("/log4jstructuraldp.properties")
 			    )
 			  )
 			);
