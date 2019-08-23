@@ -1,4 +1,4 @@
-package com.baeldung.properties.conversion;
+package com.baeldung.configurationproperties;
 
 public class Employee {
 

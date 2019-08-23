@@ -1,4 +1,4 @@
-package com.baeldung.properties;
+package com.baeldung.configurationproperties;
 
 import java.util.List;
 import java.util.Map;
