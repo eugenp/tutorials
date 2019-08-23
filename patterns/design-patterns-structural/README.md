@@ -3,3 +3,4 @@
 - [Proxy, Decorator, Adapter and Bridge Patterns](http://www.baeldung.com/java-structural-design-patterns)
 - [Composite Design Pattern in Java](http://www.baeldung.com/java-composite-pattern)
 - [The Decorator Pattern in Java](https://www.baeldung.com/java-decorator-pattern)
+- [The Adapter Pattern in Java](https://www.baeldung.com/java-adapter-pattern)

@@ -1,15 +1,8 @@
-package com.baeldung;
+package com.baeldung.adapter;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
-import com.baeldung.adapter.AstonMartin;
-import com.baeldung.adapter.BugattiVeyron;
-import com.baeldung.adapter.McLaren;
-import com.baeldung.adapter.Movable;
-import com.baeldung.adapter.MovableAdapter;
-import com.baeldung.adapter.MovableAdapterImpl;
 
 public class AdapterPatternIntegrationTest {
     @Test
