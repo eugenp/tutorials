@@ -36,5 +36,7 @@
         <module>junit-5-basics</module>
         <module>easymock</module>
         <module>junit-5-advanced</module>
+        <module>xmlunit-2</module>
+        <module>junit-4</module>
     </modules>
 </project>

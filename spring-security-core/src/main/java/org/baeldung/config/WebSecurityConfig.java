@@ -1,12 +1,15 @@
 package org.baeldung.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -21,8 +24,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-            .withUser("jim").password("jim").roles("USER", "ACTUATOR")
-            .and().withUser("pam").password("pam").roles("USER")
-            .and().withUser("michael").password("michael").roles("MANAGER");
+            .withUser("jim").password(passwordEncoder().encode("jim")).roles("USER", "ACTUATOR")
+            .and().withUser("pam").password(passwordEncoder().encode("pam")).roles("USER")
+            .and().withUser("michael").password(passwordEncoder().encode("michael")).roles("MANAGER");
+    }
+    
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

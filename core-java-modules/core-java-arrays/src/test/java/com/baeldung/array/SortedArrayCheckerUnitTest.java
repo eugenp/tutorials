@@ -4,32 +4,33 @@ import com.baeldung.arraycopy.model.Employee;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Comparator;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SortedArrayCheckerUnitTest {
-
+public class SortedArrayCheckerUnitTest {
     private static final int[] INTEGER_SORTED = {1, 3, 5, 7, 9};
     private static final int[] INTEGER_NOT_SORTED = {1, 3, 11, 7};
 
     private static final String[] STRING_SORTED = {"abc", "cde", "fgh"};
     private static final String[] STRING_NOT_SORTED = {"abc", "fgh", "cde", "ijk"};
 
-    private final Employee[] EMPLOYEES_SORTED_BY_NAME = {
+    private static final Employee[] EMPLOYEES_SORTED_BY_NAME = {
             new Employee(1, "Carlos", 26),
             new Employee(2, "Daniel", 31),
             new Employee(3, "Marta", 27)};
 
-    private final Employee[] EMPLOYEES_NOT_SORTED_BY_NAME = {
+    private static final Employee[] EMPLOYEES_NOT_SORTED_BY_NAME = {
             new Employee(1, "Daniel", 31),
             new Employee(2, "Carlos", 26),
             new Employee(3, "Marta", 27)};
 
-    private final Employee[] EMPLOYEES_SORTED_BY_AGE = {
+    private static final Employee[] EMPLOYEES_SORTED_BY_AGE = {
             new Employee(1, "Carlos", 26),
             new Employee(2, "Marta", 27),
             new Employee(3, "Daniel", 31)};
 
-    private final Employee[] EMPLOYEES_NOT_SORTED_BY_AGE = {
+    private static final Employee[] EMPLOYEES_NOT_SORTED_BY_AGE = {
             new Employee(1, "Marta", 27),
             new Employee(2, "Carlos", 26),
             new Employee(3, "Daniel", 31)};
@@ -61,13 +62,18 @@ class SortedArrayCheckerUnitTest {
 
     @Test
     public void givenEmployeeArray_thenReturnIfItIsSortedOrNot() {
-        assertThat(sortedArrayChecker.isSortedByName(EMPLOYEES_SORTED_BY_NAME)).isEqualTo(true);
-        assertThat(sortedArrayChecker.isSortedByName(EMPLOYEES_NOT_SORTED_BY_NAME)).isEqualTo(false);
+        assertThat(sortedArrayChecker.isSorted(EMPLOYEES_SORTED_BY_NAME, Comparator.comparing(Employee::getName))).isEqualTo(true);
+        assertThat(sortedArrayChecker.isSorted(EMPLOYEES_NOT_SORTED_BY_NAME, Comparator.comparing(Employee::getName))).isEqualTo(false);
 
-        assertThat(sortedArrayChecker.isSortedByAge(EMPLOYEES_SORTED_BY_AGE)).isEqualTo(true);
-        assertThat(sortedArrayChecker.isSortedByAge(EMPLOYEES_NOT_SORTED_BY_AGE)).isEqualTo(false);
+        assertThat(sortedArrayChecker.isSorted(EMPLOYEES_SORTED_BY_AGE, Comparator.comparingInt(Employee::getAge))).isEqualTo(true);
+        assertThat(sortedArrayChecker.isSorted(EMPLOYEES_NOT_SORTED_BY_AGE, Comparator.comparingInt(Employee::getAge))).isEqualTo(false);
 
-        assertThat(sortedArrayChecker.isSortedByAge(EMPLOYEES_SORTED_BY_AGE, EMPLOYEES_SORTED_BY_AGE.length)).isEqualTo(true);
-        assertThat(sortedArrayChecker.isSortedByAge(EMPLOYEES_NOT_SORTED_BY_AGE, EMPLOYEES_NOT_SORTED_BY_AGE.length)).isEqualTo(false);
+        assertThat(sortedArrayChecker
+                .isSorted(EMPLOYEES_SORTED_BY_AGE, Comparator.comparingInt(Employee::getAge), EMPLOYEES_SORTED_BY_AGE.length))
+                .isEqualTo(true);
+        assertThat(sortedArrayChecker
+                .isSorted(EMPLOYEES_NOT_SORTED_BY_AGE, Comparator.comparingInt(Employee::getAge), EMPLOYEES_NOT_SORTED_BY_AGE.length))
+                .isEqualTo(false);
     }
+
 }
