@@ -1,5 +1,4 @@
 ### Relevant Articles:
-- [Implementing the Template Method Pattern in Java](http://www.baeldung.com/java-template-method-pattern)
 - [Chain of Responsibility Design Pattern in Java](http://www.baeldung.com/chain-of-responsibility-pattern)
 - [The Command Pattern in Java](http://www.baeldung.com/java-command-pattern)
 - [Java Constructors vs Static Factory Methods](https://www.baeldung.com/java-constructors-vs-static-factory-methods)
