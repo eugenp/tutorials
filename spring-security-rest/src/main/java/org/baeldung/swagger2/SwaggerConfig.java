@@ -1,4 +1,4 @@
-package org.baeldung.spring;
+package org.baeldung.swagger2;
 
 import static com.google.common.collect.Lists.newArrayList;
 
