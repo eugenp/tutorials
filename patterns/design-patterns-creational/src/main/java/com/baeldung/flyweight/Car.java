@@ -2,8 +2,6 @@ package com.baeldung.flyweight;
 
 import java.awt.Color;
 
-import javax.annotation.concurrent.Immutable;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +10,6 @@ import org.slf4j.LoggerFactory;
  * 
  * @author Donato Rimenti
  */
-@Immutable
 public class Car implements Vehicle {
 
 	/**
