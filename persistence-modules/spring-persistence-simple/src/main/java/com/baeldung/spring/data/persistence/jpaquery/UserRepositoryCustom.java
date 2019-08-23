@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.persistence.dao.user;
+package com.baeldung.spring.data.persistence.jpaquery;
 
 import java.util.Collection;
 import java.util.List;

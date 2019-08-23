@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.persistence.dao.user;
+package com.baeldung.spring.data.persistence.jpaquery;
 
 import java.time.LocalDate;
 import java.util.Collection;

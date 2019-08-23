@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.persistence.dao.user;
+package com.baeldung.spring.data.persistence.jpaquery;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -19,6 +19,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import com.baeldung.spring.data.persistence.config.PersistenceConfig;
+import com.baeldung.spring.data.persistence.jpaquery.UserRepository;
 import com.baeldung.spring.data.persistence.model.User;
 import org.junit.After;
 import org.junit.Test;
