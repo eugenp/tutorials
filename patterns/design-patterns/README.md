@@ -1,5 +1,4 @@
 ### Relevant Articles:
-- [Visitor Design Pattern in Java](http://www.baeldung.com/java-visitor-pattern)
 - [The DAO Pattern in Java](http://www.baeldung.com/java-dao-pattern)
 - [Interpreter Design Pattern in Java](http://www.baeldung.com/java-interpreter-pattern)
 - [State Design Pattern in Java](https://www.baeldung.com/java-state-design-pattern)
