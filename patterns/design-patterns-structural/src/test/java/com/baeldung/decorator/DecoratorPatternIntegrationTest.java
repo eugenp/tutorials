@@ -1,13 +1,8 @@
-package com.baeldung;
+package com.baeldung.decorator;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
-import com.baeldung.decorator.BubbleLights;
-import com.baeldung.decorator.ChristmasTree;
-import com.baeldung.decorator.ChristmasTreeImpl;
-import com.baeldung.decorator.Garland;
 
 public class DecoratorPatternIntegrationTest {
     @Test
