@@ -4,3 +4,4 @@
 - [Composite Design Pattern in Java](http://www.baeldung.com/java-composite-pattern)
 - [The Decorator Pattern in Java](https://www.baeldung.com/java-decorator-pattern)
 - [The Adapter Pattern in Java](https://www.baeldung.com/java-adapter-pattern)
+- [The Proxy Pattern in Java](https://www.baeldung.com/java-proxy-pattern)

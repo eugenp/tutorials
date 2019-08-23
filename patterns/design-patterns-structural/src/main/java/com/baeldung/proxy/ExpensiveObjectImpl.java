@@ -1,6 +1,6 @@
 package com.baeldung.proxy;
 
-import static com.baeldung.util.LogerUtil.LOG;;
+import static com.baeldung.util.LoggerUtil.LOG;
 
 public class ExpensiveObjectImpl implements ExpensiveObject {
 

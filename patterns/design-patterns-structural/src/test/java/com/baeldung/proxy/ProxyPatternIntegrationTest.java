@@ -1,6 +1,6 @@
-package com.baeldung;
+package com.baeldung.proxy;
 
-import static com.baeldung.util.LogerUtil.LOG;
+import static com.baeldung.util.LoggerUtil.LOG;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -10,9 +10,6 @@ import org.apache.log4j.spi.LoggingEvent;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.baeldung.proxy.ExpensiveObject;
-import com.baeldung.proxy.ExpensiveObjectProxy;
 
 public class ProxyPatternIntegrationTest {
     public static TestAppenderDP appender;

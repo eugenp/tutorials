@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.proxy;
 
 import java.util.ArrayList;
 import java.util.List;
