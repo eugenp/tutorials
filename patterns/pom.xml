@@ -16,7 +16,6 @@
     <modules>
         <module>front-controller</module>
         <module>intercepting-filter</module>
-        <module>design-patterns</module>
         <module>design-patterns-2</module>
         <module>design-patterns-architectural</module>
         <module>design-patterns-behavioral</module>
