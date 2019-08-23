@@ -1,6 +1,6 @@
 package com.baeldung.jdi;
 
-public class JDIExample {
+public class JDIExampleDebuggee {
 
     public static void main(String[] args) {
         String jpda = "Java Platform Debugger Architecture";
