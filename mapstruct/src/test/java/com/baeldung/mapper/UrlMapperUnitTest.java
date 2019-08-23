@@ -9,14 +9,22 @@ import static org.junit.Assert.assertEquals;
 public class UrlMapperUnitTest {
 
     @Test
-    public void givenDomains_whenCallDomainMapper_thenReturnDomainsWithoutProtocols() {
+    public void givenDomain_whenCallNamedMapper_thenReturnDomainWithoutProtocol() {
         UrlDTO dto = new UrlDTO();
-        dto.setUrl("http://www.baeldung.com");
-        dto.setSubUrl("https://www.baeldung.com");
+        dto.setAddress("http://www.baeldung.com/mapstruct");
 
-        UrlObject urlObject = UrlMapper.INSTANCE.urlObjectDomainMapper(dto);
+        UrlObject urlObject = UrlMapper.INSTANCE.urlObjectNamedMapper(dto);
 
-        assertEquals(urlObject.getUrl(), "www.baeldung.com");
-        assertEquals(urlObject.getSubUrl(), "www.baeldung.com");
+        assertEquals(urlObject.getAddress(), "www.baeldung.com/mapstruct");
+    }
+
+    @Test
+    public void givenAddress_whenCallAnnotatedMapper_thenReturnDomainWithoutProtocol() {
+        UrlDTO dto = new UrlDTO();
+        dto.setAddress("http://www.baeldung.com/customMappers");
+
+        UrlObject urlObject = UrlMapper.INSTANCE.urlObjectAnnotatedMapper(dto);
+
+        assertEquals(urlObject.getAddress(), "www.baeldung.com/customMappers");
     }
 }
