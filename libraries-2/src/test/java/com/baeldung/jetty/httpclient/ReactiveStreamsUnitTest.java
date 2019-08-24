@@ -24,7 +24,7 @@ public class ReactiveStreamsUnitTest extends AbstractTest {
         Publisher<ReactiveResponse> publisher = reactiveRequest.response();
 
         CountDownLatch latch = new CountDownLatch(1);
-        AtomicReference<ReactiveResponse> responseRef = new AtomicReference<>();
+        AtomicReference<ReactiveResponse> responseReference = new AtomicReference<>();
         publisher.subscribe(new Subscriber<ReactiveResponse>() {
             @Override
             public void onSubscribe(Subscription subscription) {
@@ -33,7 +33,7 @@ public class ReactiveStreamsUnitTest extends AbstractTest {
 
             @Override
             public void onNext(ReactiveResponse response) {
-                responseRef.set(response);
+                responseReference.set(response);
             }
 
             @Override
@@ -47,7 +47,7 @@ public class ReactiveStreamsUnitTest extends AbstractTest {
         });
 
         Assert.assertTrue(latch.await(5, TimeUnit.SECONDS));
-        ReactiveResponse response = responseRef.get();
+        ReactiveResponse response = responseReference.get();
         Assert.assertNotNull(response);
         Assert.assertEquals(response.getStatus(), HttpStatus.OK_200);
     }

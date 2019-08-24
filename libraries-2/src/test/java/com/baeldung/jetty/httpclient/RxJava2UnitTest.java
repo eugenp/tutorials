@@ -48,10 +48,10 @@ public class RxJava2UnitTest extends AbstractTest {
         ReactiveRequest request = ReactiveRequest.newBuilder(httpClient, uri())
             .content(ReactiveRequest.Content.fromString(content, "text/plain", UTF_8))
             .build();
-        Publisher<ReactiveRequest.Event> reqEevents = request.requestEvents();
-        Publisher<ReactiveResponse.Event> resEvents = request.responseEvents();
+        Publisher<ReactiveRequest.Event> requestEvents = request.requestEvents();
+        Publisher<ReactiveResponse.Event> responseEvents = request.responseEvents();
         CountDownLatch latch = new CountDownLatch(2);
-        Flowable.fromPublisher(reqEevents)
+        Flowable.fromPublisher(requestEvents)
             .map(ReactiveRequest.Event::getType)
             .subscribe(new Subscriber<Type>() {
                 private Subscription subscription;
@@ -80,7 +80,7 @@ public class RxJava2UnitTest extends AbstractTest {
                 }
             });
 
-        Flowable.fromPublisher(resEvents)
+        Flowable.fromPublisher(responseEvents)
             .map(ReactiveResponse.Event::getType)
             .subscribe(new Subscriber<org.eclipse.jetty.reactive.client.ReactiveResponse.Event.Type>() {
                 private Subscription subscription;
@@ -170,9 +170,9 @@ public class RxJava2UnitTest extends AbstractTest {
                         emitter.onComplete();
                     }
                 }))
-                .reduce(new ByteArrayOutputStream(), (acc, b) -> {
-                    acc.write(b);
-                    return acc;
+                .reduce(new ByteArrayOutputStream(), (accumulator, bytes) -> {
+                    accumulator.write(bytes);
+                    return accumulator;
                 })
                 .map(ByteArrayOutputStream::toString)
                 .blockingGet();
