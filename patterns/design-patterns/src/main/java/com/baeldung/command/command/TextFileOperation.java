@@ -1,4 +1,4 @@
-package com.baeldung.pattern.command.command;
+package com.baeldung.command.command;
 
 @FunctionalInterface
 public interface TextFileOperation {

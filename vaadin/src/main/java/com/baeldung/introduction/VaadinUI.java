@@ -201,10 +201,14 @@ public class VaadinUI extends UI {
         TwinColSelect twinColSelect = new TwinColSelect("TwinColSelect");
         twinColSelect.setItems(numbers);
 
-        Grid grid = new Grid("Grid");
-        grid.setColumns("Column1", "Column2", "Column3");
-        grid.setItems("Item1", "Item2", "Item3");
-        grid.setItems("Item4", "Item5", "Item6");
+        Grid<Row> grid = new Grid(Row.class);
+        grid.setColumns("column1", "column2", "column3");
+        Row row1 = new Row("Item1", "Item2", "Item3");
+        Row row2 = new Row("Item4", "Item5", "Item6");
+        List<Row> rows = new ArrayList();
+        rows.add(row1);
+        rows.add(row2);
+        grid.setItems(rows);
 
         Panel panel = new Panel("Panel");
         panel.setContent(grid);
@@ -271,7 +275,7 @@ public class VaadinUI extends UI {
         setContent(verticalLayout);
     }
 
-    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
+    @WebServlet(urlPatterns = "/VAADIN/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = VaadinUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
     }
