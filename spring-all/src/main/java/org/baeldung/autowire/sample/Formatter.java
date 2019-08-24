@@ -1,4 +1,4 @@
-package org.baeldung.sample;
+package org.baeldung.autowire.sample;
 
 public interface Formatter {
 

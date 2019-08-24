@@ -1,4 +1,4 @@
-package com.baeldung.http;
+package com.baeldung.httprequest;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

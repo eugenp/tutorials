@@ -1,4 +1,4 @@
-package org.baeldung.sample;
+package org.baeldung.autowire.sample;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
