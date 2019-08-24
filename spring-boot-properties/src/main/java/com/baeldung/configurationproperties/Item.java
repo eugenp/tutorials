@@ -1,4 +1,4 @@
-package com.baeldung.properties;
+package com.baeldung.configurationproperties;
 
 public class Item {
 
