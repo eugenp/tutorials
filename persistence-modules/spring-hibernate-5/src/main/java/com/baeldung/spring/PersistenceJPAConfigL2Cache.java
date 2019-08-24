@@ -1,4 +1,4 @@
-package org.baeldung.config;
+package com.baeldung.spring;
 
 import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +23,8 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-h2.properties" })
-@ComponentScan({ "org.baeldung.persistence" })
-@EnableJpaRepositories(basePackages = { "org.baeldung.persistence.dao", "org.baeldung.persistence.repository" })
+@ComponentScan({ "com.baeldung.hibernate.cache" })
+@EnableJpaRepositories(basePackages = { "com.baeldung.hibernate.cache.dao"})
 public class PersistenceJPAConfigL2Cache {
 
     @Autowired
@@ -50,7 +50,7 @@ public class PersistenceJPAConfigL2Cache {
     }
 
     protected String[] getPackagesToScan() {
-        return new String[] { "org.baeldung.persistence.model" };
+        return new String[] { "com.baeldung.hibernate.cache.model" };
     }
 
     @Bean
