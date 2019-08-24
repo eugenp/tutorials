@@ -1,5 +1,5 @@
 
-package com.baeldung.web.test;
+package com.baeldung.requestmapping;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
