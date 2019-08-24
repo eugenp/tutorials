@@ -1,4 +1,4 @@
-package com.baeldung.spring.controller;
+package com.baeldung.spring.requestparam;
 
 import java.util.List;
 import java.util.Map;
@@ -47,7 +47,7 @@ public class RequestParamController {
     @GetMapping("/api/foos4")
     @ResponseBody
     public String getFoos4(@RequestParam List<String> id){
-        return "ID are " + id;
+        return "IDs are " + id;
     }
     
     @GetMapping("/foos/{id}")
