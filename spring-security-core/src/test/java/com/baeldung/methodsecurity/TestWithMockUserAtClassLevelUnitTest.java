@@ -1,4 +1,4 @@
-package org.baeldung.methodsecurity;
+package com.baeldung.methodsecurity;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @ContextConfiguration
 @WithMockUser(username = "john", roles = { "VIEWER" })
-public class TestWithMockUserAtClassLevel {
+public class TestWithMockUserAtClassLevelUnitTest {
 
     @Test
     public void givenRoleViewer_whenCallGetUsername_thenReturnUsername() {

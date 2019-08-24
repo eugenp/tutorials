@@ -1,4 +1,4 @@
-package org.baeldung;
+package com.baeldung;
 
 import org.baeldung.app.App;
 import org.junit.Test;

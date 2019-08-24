@@ -1,4 +1,4 @@
-package org.baeldung.methodsecurity;
+package com.baeldung.methodsecurity;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration
-public class TestWithUserDetails {
+public class TestWithUserDetailsUnitTest {
 
     @Autowired
     UserRoleService userService;
