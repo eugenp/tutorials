@@ -1,4 +1,4 @@
-package org.baeldung.config;
+package com.baeldung.spring;
 
 import java.util.Properties;
 
@@ -24,8 +24,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:persistence-jndi.properties")
-@ComponentScan("org.baeldung.persistence")
-@EnableJpaRepositories(basePackages = "org.baeldung.persistence.dao")
+@ComponentScan("com.baeldung.hibernate.cache")
+@EnableJpaRepositories(basePackages = "com.baeldung.hibernate.cache.dao")
 public class PersistenceJNDIConfig {
 
     @Autowired
@@ -35,7 +35,7 @@ public class PersistenceJNDIConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("org.baeldung.persistence.model");
+        em.setPackagesToScan("com.baeldung.hibernate.cache.model");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(additionalProperties());
         return em;

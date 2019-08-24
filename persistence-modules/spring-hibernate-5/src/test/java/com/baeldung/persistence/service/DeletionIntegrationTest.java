@@ -1,9 +1,5 @@
-package org.baeldung.persistence.service;
+package com.baeldung.persistence.service;
 
-import org.baeldung.persistence.deletion.config.PersistenceJPAConfigDeletion;
-import org.baeldung.persistence.deletion.model.Bar;
-import org.baeldung.persistence.deletion.model.Baz;
-import org.baeldung.persistence.deletion.model.Foo;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +10,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.baeldung.persistence.deletion.config.PersistenceJPAConfigDeletion;
+import com.baeldung.persistence.deletion.model.Bar;
+import com.baeldung.persistence.deletion.model.Baz;
+import com.baeldung.persistence.deletion.model.Foo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

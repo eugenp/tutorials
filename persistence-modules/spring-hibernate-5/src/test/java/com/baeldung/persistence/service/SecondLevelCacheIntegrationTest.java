@@ -1,9 +1,13 @@
-package org.baeldung.persistence.service;
+package com.baeldung.persistence.service;
 
-import net.sf.ehcache.CacheManager;
-import org.baeldung.config.PersistenceJPAConfigL2Cache;
-import org.baeldung.persistence.model.Bar;
-import org.baeldung.persistence.model.Foo;
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertThat;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,13 +19,12 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import com.baeldung.hibernate.cache.model.Bar;
+import com.baeldung.hibernate.cache.model.Foo;
+import com.baeldung.hibernate.cache.service.FooService;
+import com.baeldung.spring.PersistenceJPAConfigL2Cache;
 
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertThat;
+import net.sf.ehcache.CacheManager;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceJPAConfigL2Cache.class }, loader = AnnotationConfigContextLoader.class)
@@ -45,7 +48,7 @@ public class SecondLevelCacheIntegrationTest {
         final Foo foo = new Foo(randomAlphabetic(6));
         fooService.create(foo);
         fooService.findOne(foo.getId());
-        final int size = CacheManager.ALL_CACHE_MANAGERS.get(0).getCache("org.baeldung.persistence.model.Foo").getSize();
+        final int size = CacheManager.ALL_CACHE_MANAGERS.get(0).getCache("com.baeldung.hibernate.cache.model.Foo").getSize();
         assertThat(size, greaterThan(0));
     }
 
@@ -65,7 +68,7 @@ public class SecondLevelCacheIntegrationTest {
             return nativeQuery.executeUpdate();
         });
 
-        final int size = CacheManager.ALL_CACHE_MANAGERS.get(0).getCache("org.baeldung.persistence.model.Foo").getSize();
+        final int size = CacheManager.ALL_CACHE_MANAGERS.get(0).getCache("com.baeldung.hibernate.cache.model.Foo").getSize();
         assertThat(size, greaterThan(0));
     }
 

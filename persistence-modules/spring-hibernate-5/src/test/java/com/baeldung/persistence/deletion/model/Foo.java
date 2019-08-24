@@ -1,4 +1,4 @@
-package org.baeldung.persistence.deletion.model;
+package com.baeldung.persistence.deletion.model;
 
 import org.hibernate.annotations.Where;
 
