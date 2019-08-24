@@ -1,9 +1,11 @@
-package com.baeldung.pattern.command.test;
+package com.baeldung.command.test;
 
-import com.baeldung.pattern.command.receiver.TextFile;
-import org.junit.Test;
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.baeldung.command.receiver.TextFile;
 
 public class TextFileUnitTest {
     

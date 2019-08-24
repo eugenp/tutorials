@@ -169,10 +169,8 @@
 
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
 
         <!-- Maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
         <jetty.version>9.4.11.v20180605</jetty.version>

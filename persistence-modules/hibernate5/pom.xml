@@ -60,7 +60,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-testing</artifactId>
-            <version>5.2.2.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -70,7 +70,7 @@
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
-            <version>1.9.5</version>
+            <version>${byte-buddy.version}</version>
         </dependency>
 
         <dependency>
@@ -91,7 +91,7 @@
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.3.0</version>
+            <version>${jaxb-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -120,6 +120,8 @@
         <assertj-core.version>3.8.0</assertj-core.version>
         <openjdk-jmh.version>1.21</openjdk-jmh.version>
         <geodb.version>0.9</geodb.version>
+        <byte-buddy.version>1.9.5</byte-buddy.version>
+        <jaxb-api.version>2.3.0</jaxb-api.version>
     </properties>
 
 </project>

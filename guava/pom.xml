@@ -49,7 +49,6 @@
     <properties>
         <!-- util -->
         <guava.version>24.0-jre</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
 
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>

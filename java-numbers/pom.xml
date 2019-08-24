@@ -121,7 +121,6 @@
     <properties>
         <commons-math3.version>3.6.1</commons-math3.version>
         <decimal4j.version>1.0.3</decimal4j.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
 
         <assertj.version>3.6.1</assertj.version>
 
