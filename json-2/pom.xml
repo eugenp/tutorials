@@ -3,31 +3,31 @@
   <groupId>org.baeldung</groupId>
     <artifactId>json-2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-      <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+    <parent>
+      <groupId>com.baeldung</groupId>
+      <artifactId>parent-modules</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
     </parent>
-<dependencies>
-<dependency>
-  <groupId>junit</groupId>
-  <artifactId>junit</artifactId>
-  <version>4.12</version>
-</dependency>
-<dependency>
-    <groupId>org.json</groupId>
-    <artifactId>json</artifactId>
-    <version>20190722</version>
-</dependency>
-<dependency> 
-  <groupId>commons-io</groupId> 
-  <artifactId>commons-io</artifactId> 
-  <version>2.6</version> 
-</dependency>
-<dependency>
-    <groupId>com.google.guava</groupId>
-    <artifactId>guava</artifactId>
-    <version>28.0-jre</version>
-</dependency>     
-</dependencies>
+	  <dependencies>
+		<dependency>
+		  <groupId>junit</groupId>
+		  <artifactId>junit</artifactId>
+		  <version>4.12</version>
+		</dependency>
+		<dependency>
+		  <groupId>org.json</groupId>
+		  <artifactId>json</artifactId>
+		  <version>20190722</version>
+		</dependency>
+		<dependency>
+		  <groupId>commons-io</groupId>
+		  <artifactId>commons-io</artifactId>
+		  <version>2.6</version>
+		</dependency>
+		<dependency>
+		  <groupId>com.google.guava</groupId>
+		  <artifactId>guava</artifactId>
+		  <version>28.0-jre</version>
+		</dependency>
+	</dependencies>
 </project>
