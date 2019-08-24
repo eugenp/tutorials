@@ -31,6 +31,12 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
    		<dependency>
             <groupId>org.inferred</groupId>
             <artifactId>freebuilder</artifactId>
@@ -49,6 +55,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <intellij.annotations.version>16.0.2</intellij.annotations.version>
+        <assertj.version>3.12.2</assertj.version>
         <freebuilder.version>2.4.1</freebuilder.version>
         <javax.annotations.version>3.0.2</javax.annotations.version>
     </properties>

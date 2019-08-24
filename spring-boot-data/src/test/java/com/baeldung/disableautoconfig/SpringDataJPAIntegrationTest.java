@@ -19,7 +19,7 @@ public class SpringDataJPAIntegrationTest {
     private ApplicationContext context;
 
     @Test(expected = NoSuchBeanDefinitionException.class)
-    public void givenAutoconfigurationIsDisable_whenApplicationStarts_thenContextWillNotHaveTheAutoconfiguredClasses() {
+    public void givenAutoConfigDisabled_whenStarting_thenNoAutoconfiguredBeansInContext() {
         context.getBean(DataSource.class);
     }
 

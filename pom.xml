@@ -457,6 +457,7 @@
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
+                <module>java-jdi</module>
                 <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!-- <module>java-dates-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
@@ -507,6 +508,7 @@
 				<module>libraries-data-2</module>
 				<module>libraries-apache-commons</module>
 				<module>libraries-primitive</module>
+				<module>libraries-testing</module>
 				<module>libraries-security</module>
 				<module>libraries-server</module>
 				<module>libraries-http</module>
@@ -562,6 +564,8 @@
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
 				<module>oauth2-framework-impl</module>
+				
+				<module>spring-boot-nashorn</module>
 			</modules>
 
 		</profile>
@@ -650,6 +654,7 @@
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-kotlin</module>
 				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-management</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-mvc-birt</module>
 				<module>spring-boot-ops</module>
@@ -795,6 +800,8 @@
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
+				
+				<module>spring-boot-nashorn</module>
 
 			</modules>
 
@@ -944,6 +951,7 @@
 
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
+				<module>spring-boot-nashorn</module>
 			</modules>
 
 		</profile>
@@ -1154,6 +1162,7 @@
 				<module>java-collections-conversions</module>
 				<module>java-collections-maps</module>
 				<module>java-collections-maps-2</module>
+				<module>java-jdi</module>
 				<!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
 				<module>java-ee-8-security-api</module>
 				<module>java-lite</module>
@@ -1200,6 +1209,7 @@
 				<module>libraries-data</module>
 				<module>libraries-data-2</module>
 				<module>libraries-apache-commons</module>
+				<module>libraries-testing</module>
 				<module>libraries-security</module>
 				<module>libraries-server</module>
 				<module>libraries-http</module>
@@ -1326,6 +1336,7 @@
 				<module>spring-boot-jasypt</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-management</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-mvc-birt</module>
 				<module>spring-boot-ops</module>
