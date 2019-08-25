@@ -40,17 +40,19 @@ public class StringDiffBenchmarkUnitTest {
     }
 
     @Benchmark
-    public void diffMatchPatch() {
+    public int diffMatchPatch() {
         for (int i = 0; i < inputs.size() - 1; i++) {
             diffMatchPatch.diffMain(inputs.get(i), inputs.get(i + 1), false);
         }
+        return inputs.size();
     }
 
     @Benchmark
-    public void stringUtils() {
+    public int stringUtils() {
         for (int i = 0; i < inputs.size() - 1; i++) {
             StringUtils.difference(inputs.get(i), inputs.get(i + 1));
         }
+        return inputs.size();
     }
 
     /**
