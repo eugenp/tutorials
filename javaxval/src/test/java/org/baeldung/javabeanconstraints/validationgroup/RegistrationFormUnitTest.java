@@ -27,7 +27,7 @@ public class RegistrationFormUnitTest {
 		assertThat(violations.size()).isEqualTo(1);
 		violations.forEach(action -> {
 			assertThat(action.getMessage()).isEqualTo("must not be blank");
-			assertThat(action.getPropertyPath()).isEqualTo("firstName");
+			assertThat(action.getPropertyPath().toString()).isEqualTo("firstName");
 		});
 	}
 
@@ -39,7 +39,7 @@ public class RegistrationFormUnitTest {
 		assertThat(violations.size()).isEqualTo(1);
 		violations.forEach(action -> {
 			assertThat(action.getMessage()).isEqualTo("must not be blank");
-			assertThat(action.getPropertyPath()).isEqualTo("zipCode");
+			assertThat(action.getPropertyPath().toString()).isEqualTo("zipCode");
 		});
 	}
 
