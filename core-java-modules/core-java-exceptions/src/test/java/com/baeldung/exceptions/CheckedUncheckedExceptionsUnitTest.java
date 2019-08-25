@@ -19,6 +19,7 @@ public class CheckedUncheckedExceptionsUnitTest {
         });
     }
 
+    @Test
     public void whenTryCatchExcetpion_thenSuccess() {
         try {
             CheckedUncheckedExceptions.checkedExceptionWithTryCatch();
