@@ -566,6 +566,19 @@
 				<module>oauth2-framework-impl</module>
 				
 				<module>spring-boot-nashorn</module>
+				<module>apache-olingo/olingo2</module>
+				<module>bazel</module>
+				<module>cloud-foundry-uaa/cf-uaa-oauth2-client</module>
+				<module>cloud-foundry-uaa/cf-uaa-oauth2-resource-server</module>
+				<module>guava-collections-set</module>
+				<module>java-math</module>
+				<module>jee-kotlin</module>
+				<module>spf4j</module>
+				<module>spring-boot-mvc-2</module>
+				<module>spring-boot-performance</module>
+				<module>spring-boot-properties</module>
+				<!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
+				<!-- <module>Twitter4J</module> --> <!-- Builds locally, but fails in Jenkins, Failed to parse POMs -->
 			</modules>
 
 		</profile>
@@ -1259,6 +1272,19 @@
 				<module>rxjava</module>
 				<module>rxjava-2</module>
 				<module>oauth2-framework-impl</module>
+				<module>apache-olingo/olingo2</module>
+				<module>bazel</module>
+				<module>cloud-foundry-uaa/cf-uaa-oauth2-client</module>
+				<module>cloud-foundry-uaa/cf-uaa-oauth2-resource-server</module>
+				<module>guava-collections-set</module>
+				<module>java-math</module>
+				<module>jee-kotlin</module>
+				<module>spf4j</module>
+				<module>spring-boot-mvc-2</module>
+				<module>spring-boot-performance</module>
+				<module>spring-boot-properties</module>
+				<!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
+				<!-- <module>Twitter4J</module> --> <!-- Builds locally, but fails in Jenkins, Failed to parse POMs -->
 
 			</modules>
 
