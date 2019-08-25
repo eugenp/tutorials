@@ -1,48 +1,46 @@
 package com.baeldung.prototype;
 
-import org.junit.Test;
 import org.junit.Before;
+import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotSame;
 
 public class PrototypeIntegrationTest {
 
-    private ShapeCache shapeCache;
+    private ItemManager itemManager;
+    private Rabbit rabbit;
+    private Duck duck;
 
     @Before
     public void init() {
-        Map<String, Shape> shapeMap = new HashMap<>();
+        Map<String, Item> itemMap = new HashMap<>();
 
-        List<String> circleMetadata = new ArrayList<>();
-        circleMetadata.add("Circle created by Author at XYZ time");
-        shapeMap.put(Circle.class.getName(), new Circle(0, circleMetadata));
+        rabbit = new Rabbit("white", "Metadata to create Rabbit");
+        itemMap.put(Rabbit.class.getName(), rabbit);
 
-        List<String> squareMetadata = new ArrayList<>();
-        squareMetadata.add("Square created by Author at XYZ time");
-        shapeMap.put(Square.class.getName(), new Square(0, squareMetadata));
+        duck = new Duck("Yellow", "Metadata to create Duck");
+        itemMap.put(Duck.class.getName(), duck);
 
-        shapeCache = new ShapeCache(shapeMap);
+        itemManager = new ItemManager(itemMap);
     }
 
     @Test
-    public void givenCircleObjectWhenCloneIsInvokedThenReturnClonedObject() {
-        Circle circle = (Circle) shapeCache.getShape(Circle.class.getName());
-        circle.setRadius(10);
+    public void givenDuckObjectWhenCloneIsInvokedThenReturnClonedObject() {
+        Duck blueDuck = (Duck) itemManager.getShape(Duck.class.getName());
+        blueDuck.setColor("blue");
 
-        assertTrue(circle.getRadius() != 0);
+        assertNotSame(duck, blueDuck);
     }
 
     @Test
-    public void givenSquareObjectWhenCloneIsInvokedThenReturnClonedObject() {
-        Square square = (Square) shapeCache.getShape(Square.class.getName());
-        square.setSide(10);
+    public void givenRabbitObjectWhenCloneIsInvokedThenReturnClonedObject() {
+        Rabbit greyRabbit = (Rabbit) itemManager.getShape(Rabbit.class.getName());
+        greyRabbit.setColor("grey");
 
-        assertTrue(square.getSide() != 0);
+        assertNotSame(rabbit, greyRabbit);
     }
 
 }
