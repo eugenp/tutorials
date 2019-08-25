@@ -5,15 +5,15 @@ import java.util.Map;
 
 public class ItemManager {
 
-    private final Map<String, Item> itemManager;
+    private final Map<String, Item> itemMap;
 
-    public ItemManager(Map<String, Item> itemManager) {
-        this.itemManager = new HashMap<>(itemManager);
+    public ItemManager(Map<String, Item> itemMap) {
+        this.itemMap = new HashMap<>(itemMap);
     }
 
     public Item getShape(String name) {
-        if (itemManager.get(name) != null) {
-            return itemManager.get(name).clone();
+        if (itemMap.get(name) != null) {
+            return itemMap.get(name).clone();
         }
         throw new IllegalArgumentException("No item found, please create new one");
     }
