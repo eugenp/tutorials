@@ -26,7 +26,7 @@ public class Employee {
     }
 
     public String getId() {
-        return this.privateId;
+        return privateId;
     }
 
     public boolean isManager() {
