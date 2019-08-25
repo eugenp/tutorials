@@ -29,7 +29,7 @@ public class PrototypeIntegrationTest {
 
     @Test
     public void givenDuckObjectWhenCloneIsInvokedThenReturnClonedObject() {
-        Duck blueDuck = (Duck) itemManager.getShape(Duck.class.getName());
+        Duck blueDuck = (Duck) itemManager.getItem(Duck.class.getName());
         blueDuck.setColor("blue");
 
         assertNotSame(duck, blueDuck);
@@ -37,7 +37,7 @@ public class PrototypeIntegrationTest {
 
     @Test
     public void givenRabbitObjectWhenCloneIsInvokedThenReturnClonedObject() {
-        Rabbit greyRabbit = (Rabbit) itemManager.getShape(Rabbit.class.getName());
+        Rabbit greyRabbit = (Rabbit) itemManager.getItem(Rabbit.class.getName());
         greyRabbit.setColor("grey");
 
         assertNotSame(rabbit, greyRabbit);

@@ -11,7 +11,7 @@ public class ItemManager {
         this.itemMap = new HashMap<>(itemMap);
     }
 
-    public Item getShape(String name) {
+    public Item getItem(String name) {
         if (itemMap.get(name) != null) {
             return itemMap.get(name).clone();
         }
