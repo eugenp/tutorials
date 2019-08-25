@@ -30,7 +30,7 @@ public class Employee {
     }
 
     public boolean isManager() {
-        return this.manager;
+        return manager;
     }
 
     public void elevateToManager() {
