@@ -1,4 +1,4 @@
-package com.baeldung.transfer;
+package com.baeldung.requestresponsebody;
 
 public class ResponseTransfer {
 
