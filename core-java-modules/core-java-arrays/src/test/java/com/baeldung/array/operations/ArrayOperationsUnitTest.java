@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 
+import com.baeldung.arraylist.operations.ArrayListOperations;
 import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -361,5 +362,17 @@ public class ArrayOperationsUnitTest {
         Integer output = ArrayOperations.getRandomFromObjectArray(defaultObjectArray);
 
         assertThat(defaultObjectArray).contains(output);
+    }
+
+    @Test
+    public void whenInsertAnElementAtAGivenIndexCalled_thenShiftTheFollowingElementsAndInsertTheElementInArray() {
+        int[] expectedArray = { 1, 4, 2, 3, 0};
+        int[] anArray = new int[4];
+        anArray[0] = 1;
+        anArray[1] = 2;
+        anArray[2] = 3;
+        int[] outputArray = ArrayOperations.insertAnElementAtAGivenIndex(anArray, 1, 4);
+
+        assertThat(outputArray).containsExactly(expectedArray);
     }
 }

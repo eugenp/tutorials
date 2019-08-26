@@ -46,4 +46,15 @@ public class AddElementToEndOfArrayUnitTest {
         Integer[] expectedArray = {1, 2, 3, 4, 5};
         assertArrayEquals(expectedArray, destArray);
     }
+
+    @Test
+    public void givenSourceArrayAndElement_whenAddElementUsingPureJavaIsInvoked_thenNewElementMustBeAdded() {
+        Integer[] sourceArray = {1, 2, 3, 4};
+        int elementToAdd = 5;
+
+        Integer[] destArray = addElementToEndOfArray.addElementUsingPureJava(sourceArray, elementToAdd);
+
+        Integer[] expectedArray = {1, 2, 3, 4, 5};
+        assertArrayEquals(expectedArray, destArray);
+    }
 }
