@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.baeldung.java9.datetime;
+package com.baeldung.datetolocaldate;
 
 import java.time.Instant;
 import java.time.LocalDate;
