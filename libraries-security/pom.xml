@@ -25,6 +25,11 @@
             <artifactId>spring-security-oauth2</artifactId>
             <version>${spring-security-oauth2.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.github.scribejava</groupId>
@@ -37,7 +42,16 @@
             <artifactId>tink</artifactId>
             <version>${tink.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>${bouncycastle.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk15on</artifactId>
+            <version>${bouncycastle.version}</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -54,6 +68,11 @@
             <artifactId>cryptacular</artifactId>
             <version>${cryptacular.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jasypt</groupId>
+            <artifactId>jasypt</artifactId>
+            <version>${jasypt.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -63,5 +82,8 @@
 		<passay.version>1.3.1</passay.version>
         <tink.version>1.2.2</tink.version>
 		<cryptacular.version>1.2.2</cryptacular.version>
+        <jasypt.version>1.9.2</jasypt.version>
+        <bouncycastle.version>1.58</bouncycastle.version>
+        <spring.version>4.3.8.RELEASE</spring.version>
     </properties>
 </project>
