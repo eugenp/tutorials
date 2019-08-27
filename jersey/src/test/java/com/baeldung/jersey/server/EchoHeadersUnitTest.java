@@ -16,7 +16,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class EchoHeadersTest extends JerseyTest {
+public class EchoHeadersUnitTest extends JerseyTest {
 
     private static final String SIMPLE_HEADER_KEY = "my-header-key";
     private static final String SIMPLE_HEADER_VALUE = "my-header-value";
@@ -28,35 +28,35 @@ public class EchoHeadersTest extends JerseyTest {
     private static final String BEARER_REQUEST_TOKEN_VALUE = "my-request-token";
 
     @Test
-    public void sendingSimpleHeaders_shouldReturnThanBack() {
+    public void whenCallingSimpleHeader_thenHeadersReturnedBack() {
         Response response = JerseyClientHeaders.simpleHeader(SIMPLE_HEADER_KEY, SIMPLE_HEADER_VALUE);
 
         assertEquals(response.getHeaderString(SIMPLE_HEADER_KEY), SIMPLE_HEADER_VALUE);
     }
 
     @Test
-    public void sendingSimpleHeadersFluently_shouldReturnThanBack() {
+    public void whenCallingSimpleHeaderFluently_thenHeadersReturnedBack() {
         Response response = JerseyClientHeaders.simpleHeaderFluently(SIMPLE_HEADER_KEY, SIMPLE_HEADER_VALUE);
 
         assertEquals(response.getHeaderString(SIMPLE_HEADER_KEY), SIMPLE_HEADER_VALUE);
     }
 
     @Test
-    public void sendingBasicAuthenticationHeadersAtClientLevel_shouldReturnThanBack() {
+    public void whenCallingBasicAuthenticationAtClientLevel_thenHeadersReturnedBack() {
         Response response = JerseyClientHeaders.basicAuthenticationAtClientLevel(USERNAME, PASSWORD);
 
         assertBasicAuthenticationHeaders(response);
     }
 
     @Test
-    public void sendingBasicAuthenticationHeadersAtRequestLevel_shouldReturnThanBack() {
+    public void whenCallingBasicAuthenticationAtRequestLevel_thenHeadersReturnedBack() {
         Response response = JerseyClientHeaders.basicAuthenticationAtRequestLevel(USERNAME, PASSWORD);
 
         assertBasicAuthenticationHeaders(response);
     }
 
     @Test
-    public void sendingDigestAuthenticationHeadersAtClientLevel_shouldReturnThanBack() {
+    public void whenCallingDigestAuthenticationAtClientLevel_thenHeadersReturnedBack() {
         Response response = JerseyClientHeaders.digestAuthenticationAtClientLevel(USERNAME, PASSWORD);
 
         Map<String, String> subHeadersMap = parseAuthenticationSubHeader(response, 7);
@@ -65,7 +65,7 @@ public class EchoHeadersTest extends JerseyTest {
     }
 
     @Test
-    public void sendingDigestAuthenticationHeadersAtRequestLevel_shouldReturnThanBack() {
+    public void whenCallingDigestAuthenticationAtRequestLevel_thenHeadersReturnedBack() {
         Response response = JerseyClientHeaders.digestAuthenticationAtRequestLevel(USERNAME, PASSWORD);
 
         Map<String, String> subHeadersMap = parseAuthenticationSubHeader(response, 7);
@@ -74,7 +74,7 @@ public class EchoHeadersTest extends JerseyTest {
     }
 
     @Test
-    public void sendingBearerOAuth1AuthenticationHeadersAtClientLevel_shouldReturnThanBack() {
+    public void whenCallingBearerAuthenticationWithOAuth1AtClientLevel_thenHeadersReturnedBack() {
         Response response = JerseyClientHeaders.bearerAuthenticationWithOAuth1AtClientLevel(BEARER_TOKEN_VALUE, BEARER_CONSUMER_KEY_VALUE);
 
         Map<String, String> subHeadersMap = parseAuthenticationSubHeader(response, 6);
@@ -83,7 +83,7 @@ public class EchoHeadersTest extends JerseyTest {
     }
 
     @Test
-    public void sendingBearerOAuth1AuthenticationHeadersAtRequestLevel_shouldReturnThanBack() {
+    public void whenCallingBearerAuthenticationWithOAuth1AtRequestLevel_thenHeadersReturnedBack() {
         Response response = JerseyClientHeaders.bearerAuthenticationWithOAuth1AtRequestLevel(BEARER_TOKEN_VALUE, BEARER_CONSUMER_KEY_VALUE);
 
         Map<String, String> subHeadersMap = parseAuthenticationSubHeader(response, 6);
@@ -92,35 +92,35 @@ public class EchoHeadersTest extends JerseyTest {
     }
 
     @Test
-    public void sendingBearerOAuth2AuthenticationHeadersAtClientLevel_shouldReturnThanBack() {
+    public void whenCallingBearerAuthenticationWithOAuth2AtClientLevel_thenHeadersReturnedBack() {
         Response response = JerseyClientHeaders.bearerAuthenticationWithOAuth2AtClientLevel(BEARER_TOKEN_VALUE);
 
         assertEquals("Bearer " + BEARER_TOKEN_VALUE, response.getHeaderString(AUTHORIZATION_HEADER_KEY));
     }
 
     @Test
-    public void sendingBearerOAuth2AuthenticationHeadersAtRequestLevel_shouldReturnThanBack() {
+    public void whenCallingBearerAuthenticationWithOAuth2AtRequestLevel_thenHeadersReturnedBack() {
         Response response = JerseyClientHeaders.bearerAuthenticationWithOAuth2AtRequestLevel(BEARER_TOKEN_VALUE, BEARER_REQUEST_TOKEN_VALUE);
 
         assertEquals("Bearer " + BEARER_REQUEST_TOKEN_VALUE, response.getHeaderString(AUTHORIZATION_HEADER_KEY));
     }
 
     @Test
-    public void sendingHeaderThroughFilter_shouldReturnThanBack() {
+    public void whenCallingFilter_thenHeadersReturnedBack() {
         Response response = JerseyClientHeaders.filter();
 
         assertEquals(AddHeaderOnRequestFilter.FILTER_HEADER_VALUE, response.getHeaderString(AddHeaderOnRequestFilter.FILTER_HEADER_KEY));
     }
 
     @Test
-    public void sendingRestrictedHeaderThroughDefaultTransportConnector_shouldReturnThanBack() {
+    public void whenCallingSendRestrictedHeaderThroughDefaultTransportConnector_thenHeadersReturnedBack() {
         Response response = JerseyClientHeaders.sendRestrictedHeaderThroughDefaultTransportConnector("keep-alive", "keep-alive-value");
 
         assertEquals("keep-alive-value", response.getHeaderString("keep-alive"));
     }
 
     @Test
-    public void sendingSimpleHeadersThroughSSE_shouldReturnThanBack() throws InterruptedException {
+    public void whenCallingSimpleSSEHeader_thenHeadersReturnedBack() throws InterruptedException {
         String sseHeaderBackValue = JerseyClientHeaders.simpleSSEHeader();
 
         assertEquals(AddHeaderOnRequestFilter.FILTER_HEADER_VALUE, sseHeaderBackValue);
@@ -154,7 +154,7 @@ public class EchoHeadersTest extends JerseyTest {
     private Map<String, String> parseAuthenticationSubHeader(Response response, int startAt) {
         String authorizationHeader = response.getHeaderString(AUTHORIZATION_HEADER_KEY);
         // The substring(startAt) is used to cut off the authentication schema part from the value returned.
-        String[] subHeadersKeyValue = new String(authorizationHeader.substring(startAt)).split(",");
+        String[] subHeadersKeyValue = authorizationHeader.substring(startAt).split(",");
         Map<String, String> subHeadersMap = new HashMap<>();
 
         for (String subHeader : subHeadersKeyValue) {
