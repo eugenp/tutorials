@@ -26,15 +26,15 @@ class EmployeeServiceUnitTest {
     @Mock
     private WebClient webClient;
     @Mock
-    private WebClient.RequestHeadersSpec requestHeadersSpec;
+    private WebClient.RequestHeadersSpec requestHeadersMock;
     @Mock
-    private WebClient.RequestHeadersUriSpec requestHeadersUriSpec;
+    private WebClient.RequestHeadersUriSpec requestHeadersUriMock;
     @Mock
-    private WebClient.RequestBodySpec requestBodySpec;
+    private WebClient.RequestBodySpec requestBodyMock;
     @Mock
-    private WebClient.RequestBodyUriSpec requestBodyUriSpec;
+    private WebClient.RequestBodyUriSpec requestBodyUriMock;
     @Mock
-    private WebClient.ResponseSpec responseSpec;
+    private WebClient.ResponseSpec responseMock;
 
     @BeforeEach
     void setUp() {
@@ -46,10 +46,10 @@ class EmployeeServiceUnitTest {
 
         Integer employeeId = 100;
         Employee mockEmployee = new Employee(100, "Adam", "Sandler", 32, Role.LEAD_ENGINEER);
-        when(webClient.get()).thenReturn(requestHeadersUriSpec);
-        when(requestHeadersUriSpec.uri("/employee/{id}", employeeId)).thenReturn(requestHeadersSpec);
-        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
-        when(responseSpec.bodyToMono(Employee.class)).thenReturn(Mono.just(mockEmployee));
+        when(webClient.get()).thenReturn(requestHeadersUriMock);
+        when(requestHeadersUriMock.uri("/employee/{id}", employeeId)).thenReturn(requestHeadersMock);
+        when(requestHeadersMock.retrieve()).thenReturn(responseMock);
+        when(responseMock.bodyToMono(Employee.class)).thenReturn(Mono.just(mockEmployee));
 
         Mono<Employee> employeeMono = employeeService.getEmployeeById(employeeId);
 
@@ -63,11 +63,11 @@ class EmployeeServiceUnitTest {
 
         Employee newEmployee = new Employee(null, "Adam", "Sandler", 32, Role.LEAD_ENGINEER);
         Employee webClientResponse = new Employee(100, "Adam", "Sandler", 32, Role.LEAD_ENGINEER);
-        when(webClient.post()).thenReturn(requestBodyUriSpec);
-        when(requestBodyUriSpec.uri(EmployeeService.ADD_EMPLOYEE)).thenReturn(requestBodySpec);
-        when(requestBodySpec.syncBody(newEmployee)).thenReturn(requestHeadersSpec);
-        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
-        when(responseSpec.bodyToMono(Employee.class)).thenReturn(Mono.just(webClientResponse));
+        when(webClient.post()).thenReturn(requestBodyUriMock);
+        when(requestBodyUriMock.uri(EmployeeService.ADD_EMPLOYEE)).thenReturn(requestBodyMock);
+        when(requestBodyMock.syncBody(newEmployee)).thenReturn(requestHeadersMock);
+        when(requestHeadersMock.retrieve()).thenReturn(responseMock);
+        when(responseMock.bodyToMono(Employee.class)).thenReturn(Mono.just(webClientResponse));
 
         Mono<Employee> employeeMono = employeeService.addNewEmployee(newEmployee);
 
@@ -82,11 +82,11 @@ class EmployeeServiceUnitTest {
         Integer newAge = 33;
         String newLastName = "Sandler New";
         Employee updateEmployee = new Employee(100, "Adam", newLastName, newAge, Role.LEAD_ENGINEER);
-        when(webClient.put()).thenReturn(requestBodyUriSpec);
-        when(requestBodyUriSpec.uri(EmployeeService.PATH_PARAM_BY_ID, 100)).thenReturn(requestBodySpec);
-        when(requestBodySpec.syncBody(updateEmployee)).thenReturn(requestHeadersSpec);
-        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
-        when(responseSpec.bodyToMono(Employee.class)).thenReturn(Mono.just(updateEmployee));
+        when(webClient.put()).thenReturn(requestBodyUriMock);
+        when(requestBodyUriMock.uri(EmployeeService.PATH_PARAM_BY_ID, 100)).thenReturn(requestBodyMock);
+        when(requestBodyMock.syncBody(updateEmployee)).thenReturn(requestHeadersMock);
+        when(requestHeadersMock.retrieve()).thenReturn(responseMock);
+        when(responseMock.bodyToMono(Employee.class)).thenReturn(Mono.just(updateEmployee));
 
         Mono<Employee> updatedEmployee = employeeService.updateEmployee(100, updateEmployee);
 
@@ -100,10 +100,10 @@ class EmployeeServiceUnitTest {
     void givenEmployee_whenDeleteEmployeeById_thenDeleteSuccessful() {
 
         String responseMessage = "Employee Deleted SuccessFully";
-        when(webClient.delete()).thenReturn(requestHeadersUriSpec);
-        when(requestHeadersUriSpec.uri(EmployeeService.PATH_PARAM_BY_ID, 100)).thenReturn(requestHeadersSpec);
-        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
-        when(responseSpec.bodyToMono(String.class)).thenReturn(Mono.just(responseMessage));
+        when(webClient.delete()).thenReturn(requestHeadersUriMock);
+        when(requestHeadersUriMock.uri(EmployeeService.PATH_PARAM_BY_ID, 100)).thenReturn(requestHeadersMock);
+        when(requestHeadersMock.retrieve()).thenReturn(responseMock);
+        when(responseMock.bodyToMono(String.class)).thenReturn(Mono.just(responseMessage));
 
         Mono<String> deletedEmployee = employeeService.deleteEmployeeById(100);
 
