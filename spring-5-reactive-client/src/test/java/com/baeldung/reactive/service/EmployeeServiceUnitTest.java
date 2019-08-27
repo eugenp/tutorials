@@ -24,7 +24,7 @@ class EmployeeServiceUnitTest {
 
     EmployeeService employeeService;
     @Mock
-    private WebClient webClient;
+    private WebClient webClientMock;
     @Mock
     private WebClient.RequestHeadersSpec requestHeadersMock;
     @Mock
@@ -38,7 +38,7 @@ class EmployeeServiceUnitTest {
 
     @BeforeEach
     void setUp() {
-        employeeService = new EmployeeService(webClient);
+        employeeService = new EmployeeService(webClientMock);
     }
 
     @Test
@@ -46,7 +46,7 @@ class EmployeeServiceUnitTest {
 
         Integer employeeId = 100;
         Employee mockEmployee = new Employee(100, "Adam", "Sandler", 32, Role.LEAD_ENGINEER);
-        when(webClient.get()).thenReturn(requestHeadersUriMock);
+        when(webClientMock.get()).thenReturn(requestHeadersUriMock);
         when(requestHeadersUriMock.uri("/employee/{id}", employeeId)).thenReturn(requestHeadersMock);
         when(requestHeadersMock.retrieve()).thenReturn(responseMock);
         when(responseMock.bodyToMono(Employee.class)).thenReturn(Mono.just(mockEmployee));
@@ -63,7 +63,7 @@ class EmployeeServiceUnitTest {
 
         Employee newEmployee = new Employee(null, "Adam", "Sandler", 32, Role.LEAD_ENGINEER);
         Employee webClientResponse = new Employee(100, "Adam", "Sandler", 32, Role.LEAD_ENGINEER);
-        when(webClient.post()).thenReturn(requestBodyUriMock);
+        when(webClientMock.post()).thenReturn(requestBodyUriMock);
         when(requestBodyUriMock.uri(EmployeeService.ADD_EMPLOYEE)).thenReturn(requestBodyMock);
         when(requestBodyMock.syncBody(newEmployee)).thenReturn(requestHeadersMock);
         when(requestHeadersMock.retrieve()).thenReturn(responseMock);
@@ -82,7 +82,7 @@ class EmployeeServiceUnitTest {
         Integer newAge = 33;
         String newLastName = "Sandler New";
         Employee updateEmployee = new Employee(100, "Adam", newLastName, newAge, Role.LEAD_ENGINEER);
-        when(webClient.put()).thenReturn(requestBodyUriMock);
+        when(webClientMock.put()).thenReturn(requestBodyUriMock);
         when(requestBodyUriMock.uri(EmployeeService.PATH_PARAM_BY_ID, 100)).thenReturn(requestBodyMock);
         when(requestBodyMock.syncBody(updateEmployee)).thenReturn(requestHeadersMock);
         when(requestHeadersMock.retrieve()).thenReturn(responseMock);
@@ -100,7 +100,7 @@ class EmployeeServiceUnitTest {
     void givenEmployee_whenDeleteEmployeeById_thenDeleteSuccessful() {
 
         String responseMessage = "Employee Deleted SuccessFully";
-        when(webClient.delete()).thenReturn(requestHeadersUriMock);
+        when(webClientMock.delete()).thenReturn(requestHeadersUriMock);
         when(requestHeadersUriMock.uri(EmployeeService.PATH_PARAM_BY_ID, 100)).thenReturn(requestHeadersMock);
         when(requestHeadersMock.retrieve()).thenReturn(responseMock);
         when(responseMock.bodyToMono(String.class)).thenReturn(Mono.just(responseMessage));
