@@ -1,4 +1,4 @@
-package com.baeldung.java8.base64;
+package com.baeldung.base64encodinganddecoding;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

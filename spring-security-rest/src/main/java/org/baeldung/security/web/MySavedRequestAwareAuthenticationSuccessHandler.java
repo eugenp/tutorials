@@ -1,4 +1,4 @@
-package org.baeldung.security;
+package org.baeldung.security.web;
 
 import java.io.IOException;
 

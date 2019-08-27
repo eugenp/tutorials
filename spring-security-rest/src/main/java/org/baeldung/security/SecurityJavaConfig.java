@@ -1,7 +1,7 @@
-package org.baeldung.spring;
+package org.baeldung.security;
 
-import org.baeldung.security.MySavedRequestAwareAuthenticationSuccessHandler;
-import org.baeldung.security.RestAuthenticationEntryPoint;
+import org.baeldung.security.web.MySavedRequestAwareAuthenticationSuccessHandler;
+import org.baeldung.security.web.RestAuthenticationEntryPoint;
 import org.baeldung.web.error.CustomAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
