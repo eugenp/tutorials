@@ -7,6 +7,7 @@
     <groupId>com.baeldung.jndi</groupId>
     <artifactId>core-java-jndi</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>core-java-jndi</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

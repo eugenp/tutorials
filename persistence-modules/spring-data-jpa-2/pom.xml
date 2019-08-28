@@ -6,7 +6,7 @@
 
     <groupId>com.baeldung</groupId>
     <artifactId>spring-data-jpa-2</artifactId>
-    <name>spring-data-jpa</name>
+    <name>spring-data-jpa-2</name>
 
     <parent>
         <artifactId>parent-boot-2</artifactId>
