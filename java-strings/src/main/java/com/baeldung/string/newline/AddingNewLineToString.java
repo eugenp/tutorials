@@ -1,4 +1,4 @@
-package com.baeldung.string;
+package com.baeldung.string.newline;
 
 public class AddingNewLineToString {
 	

@@ -1,4 +1,4 @@
-package com.baeldung.resource;
+package com.baeldung.classpathfileaccess;
 
 import static org.junit.Assert.assertEquals;
 
