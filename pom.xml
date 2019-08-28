@@ -566,6 +566,7 @@
 				<module>oauth2-framework-impl</module>
 				
 				<module>spring-boot-nashorn</module>
+				<module>java-blockchain</module>
 			</modules>
 
 		</profile>
@@ -802,6 +803,7 @@
 				<module>spring-security-kerberos</module>
 				
 				<module>spring-boot-nashorn</module>
+				<module>java-blockchain</module>
 
 			</modules>
 
