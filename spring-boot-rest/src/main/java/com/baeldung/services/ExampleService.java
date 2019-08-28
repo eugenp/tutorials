@@ -1,7 +1,8 @@
 package com.baeldung.services;
 
-import com.baeldung.transfer.LoginForm;
 import org.springframework.stereotype.Service;
+
+import com.baeldung.requestresponsebody.LoginForm;
 
 @Service
 public class ExampleService {

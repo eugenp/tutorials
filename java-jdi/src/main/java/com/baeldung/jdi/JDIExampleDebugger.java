@@ -123,7 +123,7 @@ public class JDIExampleDebugger {
     public static void main(String[] args) throws Exception {
 
         JDIExampleDebugger debuggerInstance = new JDIExampleDebugger();
-        debuggerInstance.setDebugClass(JDIExample.class);
+        debuggerInstance.setDebugClass(JDIExampleDebuggee.class);
         int[] breakPoints = {6, 9};
         debuggerInstance.setBreakPointLines(breakPoints);
         VirtualMachine vm = null;

@@ -7,7 +7,7 @@ public class SequenceGeneratorUsingReentrantLock extends SequenceGenerator {
     private ReentrantLock mutex = new ReentrantLock();
 
     @Override
-    public int getNextSequence() throws InterruptedException {
+    public int getNextSequence() {
         try {
             mutex.lock();
             return super.getNextSequence();
@@ -15,4 +15,5 @@ public class SequenceGeneratorUsingReentrantLock extends SequenceGenerator {
             mutex.unlock();
         }
     }
+
 }

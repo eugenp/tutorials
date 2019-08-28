@@ -564,6 +564,9 @@
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
 				<module>oauth2-framework-impl</module>
+				
+				<module>spring-boot-nashorn</module>
+				<module>java-blockchain</module>
 			</modules>
 
 		</profile>
@@ -798,6 +801,9 @@
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
+				
+				<module>spring-boot-nashorn</module>
+				<module>java-blockchain</module>
 
 			</modules>
 
@@ -947,6 +953,7 @@
 
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
+				<module>spring-boot-nashorn</module>
 			</modules>
 
 		</profile>
