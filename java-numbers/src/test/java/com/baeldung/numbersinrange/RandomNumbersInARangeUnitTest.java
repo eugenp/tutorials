@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class RandomNumbersInARangeTest {
+public class RandomNumbersInARangeUnitTest {
 
     @Test
     public void givenTheRange1To10_andUsingMathRandom_thenExpectCorrectResult() {

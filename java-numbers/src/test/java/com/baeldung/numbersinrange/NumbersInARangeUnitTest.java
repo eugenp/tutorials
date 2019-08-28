@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class NumbersInARangeTest {
+public class NumbersInARangeUnitTest {
 
     @Test
     public void givenTheRange1To10_andUsingForLoop_thenExpectCorrectResult() {
