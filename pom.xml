@@ -350,6 +350,7 @@
 				<module>apache-fop</module>
 				<module>apache-geode</module>
 				<module>apache-meecrowave</module>
+				<module>apache-olingo/olingo2</module>
 				<module>apache-opennlp</module>
 				<module>apache-poi</module>
 				<module>apache-pulsar</module>
@@ -369,13 +370,15 @@
 				<module>axon</module>
 				<module>azure</module>
 
+				<module>bazel</module>
 				<module>blade</module>
-
 				<module>bootique</module>
 
 				<module>cas</module>
 				<module>cdi</module>
 				<module>checker-plugin</module>
+				<module>cloud-foundry-uaa/cf-uaa-oauth2-client</module>
+				<module>cloud-foundry-uaa/cf-uaa-oauth2-resource-server</module>
 				<module>core-groovy</module>
 				<module>core-groovy-2</module>
 				<module>core-groovy-collections</module>
@@ -438,6 +441,7 @@
                 <module>gson</module>
                 <module>guava</module>
                 <module>guava-collections</module>
+				<module>guava-collections-set</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
@@ -462,6 +466,7 @@
                 <!-- <module>java-dates-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
                 <module>java-lite</module>
+				<module>java-math</module>
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
                 <module>java-rmi</module>
@@ -481,6 +486,7 @@
                 <!-- JIRA-10842
                 <module>jee-7</module> -->
 				<module>jee-7-security</module>
+				<module>jee-kotlin</module>
 				<module>jersey</module>
 				<module>jgit</module>
 				<module>jgroups</module>
@@ -561,23 +567,17 @@
 				<module>software-security/sql-injection-samples</module>
 
 				<module>tensorflow-java</module>
-				<module>spring-boot-flowable</module>
-				<module>spring-security-kerberos</module>
-				<module>oauth2-framework-impl</module>
-				
-				<module>spring-boot-nashorn</module>
-				<module>apache-olingo/olingo2</module>
-				<module>bazel</module>
-				<module>cloud-foundry-uaa/cf-uaa-oauth2-client</module>
-				<module>cloud-foundry-uaa/cf-uaa-oauth2-resource-server</module>
-				<module>guava-collections-set</module>
-				<module>java-math</module>
-				<module>jee-kotlin</module>
 				<module>spf4j</module>
+				<module>spring-boot-flowable</module>
 				<module>spring-boot-mvc-2</module>
 				<module>spring-boot-performance</module>
 				<module>spring-boot-properties</module>
 				<!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
+				<module>spring-security-kerberos</module>
+				<module>oauth2-framework-impl</module>
+				
+				<module>spring-boot-nashorn</module>
+				<module>java-blockchain</module>
 				<!-- <module>Twitter4J</module> --> <!-- Builds locally, but fails in Jenkins, Failed to parse POMs -->
 			</modules>
 
@@ -815,6 +815,7 @@
 				<module>spring-security-kerberos</module>
 				
 				<module>spring-boot-nashorn</module>
+				<module>java-blockchain</module>
 
 			</modules>
 
@@ -1075,6 +1076,7 @@
 				<module>apache-fop</module>
 				<module>apache-geode</module>
 				<module>apache-meecrowave</module>
+				<module>apache-olingo/olingo2</module>
 				<module>apache-opennlp</module>
 				<module>apache-poi</module>
 				<module>apache-pulsar</module>
@@ -1093,12 +1095,14 @@
 				<module>aws-lambda</module>
 				<module>axon</module>
 				<module>azure</module>
-
+				<module>bazel</module>
 				<module>bootique</module>
 
 				<module>cas</module>
 				<module>cdi</module>
 				<module>checker-plugin</module>
+				<module>cloud-foundry-uaa/cf-uaa-oauth2-client</module>
+				<module>cloud-foundry-uaa/cf-uaa-oauth2-resource-server</module>
 				<module>core-groovy</module>
 				<module>core-groovy-2</module>
 				<module>core-groovy-collections</module>
@@ -1156,6 +1160,7 @@
 				<module>gson</module>
 				<module>guava</module>
 				<module>guava-collections</module>
+				<module>guava-collections-set</module>
 				<module>guava-modules</module>
 				<!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 				<module>guice</module>
@@ -1179,6 +1184,7 @@
 				<!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
 				<module>java-ee-8-security-api</module>
 				<module>java-lite</module>
+				<module>java-math</module>
 				<module>java-numbers</module>
 				<module>java-numbers-2</module>
 				<module>java-rmi</module>
@@ -1198,6 +1204,7 @@
 				<!-- JIRA-10842
                 <module>jee-7</module> -->
 				<module>jee-7-security</module>
+				<module>jee-kotlin</module>
 				<module>jersey</module>
 				<module>jgit</module>
 				<module>jgroups</module>
@@ -1272,15 +1279,7 @@
 				<module>rxjava</module>
 				<module>rxjava-2</module>
 				<module>oauth2-framework-impl</module>
-				<module>apache-olingo/olingo2</module>
-				<module>bazel</module>
-				<module>cloud-foundry-uaa/cf-uaa-oauth2-client</module>
-				<module>cloud-foundry-uaa/cf-uaa-oauth2-resource-server</module>
-				<module>guava-collections-set</module>
-				<module>java-math</module>
-				<module>jee-kotlin</module>
 				<module>spf4j</module>
-				<module>spring-boot-mvc-2</module>
 				<module>spring-boot-performance</module>
 				<module>spring-boot-properties</module>
 				<!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
