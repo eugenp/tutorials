@@ -20,12 +20,12 @@ public class StaxParserUnitTest {
     @Test
     public void givenWebsitesXML_whenParsed_thenSizeIsThree() {
         List<WebSite> websites = StaxParser.parse("src/test/resources/xml/websites.xml");
-        assertTrue(websites.size() == 3);
+        assertEquals(3, websites.size());
     }
     
     @Test
     public void givenWebsitesXML_whenParsed_thenLocalhostExists() {
         List<WebSite> websites = StaxParser.parse("src/test/resources/xml/websites.xml");
-        assertEquals(websites.get(2).getName(),"Localhost");
+        assertEquals("Localhost", websites.get(2).getName());
     }
 }
