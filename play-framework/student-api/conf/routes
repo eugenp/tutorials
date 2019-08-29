@@ -3,9 +3,9 @@
 # ~~~~
 
 GET     /                           controllers.StudentController.listStudents()
-POST    /:id                        controllers.StudentController.retrieve(id:Int)
+GET     /:id                        controllers.StudentController.retrieve(id:Int)
 POST    /                           controllers.StudentController.create(request: Request)
-PUT     /                           controllers.StudentController.update()
+PUT     /                           controllers.StudentController.update(request: Request)
 DELETE  /:id                        controllers.StudentController.delete(id:Int)
 
 # Map static resources from the /public folder to the /assets URL path

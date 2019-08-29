@@ -8,8 +8,8 @@ public class StudentStore {
     private Map<Integer, Student> students = new HashMap<>();
 
     public Optional<Student> addStudent(Student student) {
-        int id = students.size();
-        student.setId(id + 1);
+        int id = students.size() + 1;
+        student.setId(id);
         students.put(id, student);
         return Optional.ofNullable(student);
     }
@@ -28,7 +28,7 @@ public class StudentStore {
             students.put(id, student);
             return Optional.ofNullable(student);
         }
-        return null;
+        return Optional.empty();
     }
 
     public boolean deleteStudent(int id) {

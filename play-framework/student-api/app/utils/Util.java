@@ -1,6 +1,5 @@
 package utils;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import play.libs.Json;
 
@@ -11,7 +10,7 @@ public class Util {
         if (response instanceof String) {
             result.put("body", (String) response);
         } else {
-            result.put("body", (JsonNode) response);
+            result.putPOJO("body", response);
         }
         return result;
     }
