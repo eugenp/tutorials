@@ -14,6 +14,31 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../../</relativePath>
     </parent>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.gatling</groupId>
+				<artifactId>gatling-app</artifactId>
+				<version>${gatling.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.gatling</groupId>
+				<artifactId>gatling-recorder</artifactId>
+				<version>${gatling.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.gatling.highcharts</groupId>
+				<artifactId>gatling-charts-highcharts</artifactId>
+				<version>${gatling.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-library</artifactId>
+				<version>${scala.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
     
 	<dependencies>
 		<dependency>
@@ -77,51 +102,26 @@
 			<id>simulation</id>
 			<build>
 				<plugins>
-			<plugin>
-				<groupId>io.gatling</groupId>
-				<artifactId>gatling-maven-plugin</artifactId>
-				<version>${gatling-maven-plugin.version}</version>
-				<executions>
-					<execution>
-						<phase>test</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-  							<disableCompiler>true</disableCompiler>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+					<plugin>
+						<groupId>io.gatling</groupId>
+						<artifactId>gatling-maven-plugin</artifactId>
+						<version>${gatling-maven-plugin.version}</version>
+						<executions>
+							<execution>
+								<phase>test</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<disableCompiler>true</disableCompiler>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>io.gatling</groupId>
-				<artifactId>gatling-app</artifactId>
-				<version>${gatling.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.gatling</groupId>
-				<artifactId>gatling-recorder</artifactId>
-				<version>${gatling.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.gatling.highcharts</groupId>
-				<artifactId>gatling-charts-highcharts</artifactId>
-				<version>${gatling.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.scala-lang</groupId>
-				<artifactId>scala-library</artifactId>
-				<version>${scala.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>

@@ -32,7 +32,7 @@
         <dependency>
             <groupId>com.stormpath.spring</groupId>
             <artifactId>stormpath-default-spring-boot-starter</artifactId>
-            <version>1.5.4</version>
+            <version>${stormpath-spring.version}</version>
         </dependency>
     </dependencies>
 
@@ -60,5 +60,9 @@
             </plugin>
         </plugins>
     </build>
+	
+    <properties>
+        <stormpath-spring.version>1.5.4</stormpath-spring.version>
+    </properties>
 
 </project>

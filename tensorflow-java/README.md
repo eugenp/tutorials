@@ -1,3 +1,3 @@
 ## Relevant articles:
 
-- [TensorFlow for Java](https://www.baeldung.com/xxxx)
+- [Introduction to Tensorflow for Java](https://www.baeldung.com/tensorflow-java)

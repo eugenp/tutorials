@@ -37,12 +37,28 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.docx4j</groupId>
+            <artifactId>docx4j</artifactId>
+            <version>${docx4j.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
     </dependencies>
 
     <properties>
         <logback.version>1.2.3</logback.version>
         <logback.contrib.version>0.1.5</logback.contrib.version>
-        <jackson.version>2.9.7</jackson.version>
+        <docx4j.version>3.3.5</docx4j.version>
     </properties>
 
 </project>

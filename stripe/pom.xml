@@ -5,7 +5,7 @@
     <groupId>com.baeldung.stripe</groupId>
     <artifactId>stripe</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Stripe</name>
+    <name>stripe</name>
     <description>Demo project for Stripe API</description>
     <packaging>jar</packaging>
 
@@ -40,7 +40,6 @@
     </dependencies>
     
     <properties>
-        <lombok.version>1.16.16</lombok.version>
         <stripe.version>4.2.0</stripe.version>
     </properties>
 

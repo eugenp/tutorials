@@ -12,9 +12,18 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <cxf-version>3.2.0</cxf-version>
-    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-client</artifactId>
+            <version>${cxf-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-sse</artifactId>
+            <version>${cxf-version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -45,17 +54,8 @@
         </plugins>
     </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-rs-client</artifactId>
-            <version>${cxf-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-rs-sse</artifactId>
-            <version>${cxf-version}</version>
-        </dependency>
-    </dependencies>
+    <properties>
+        <cxf-version>3.2.0</cxf-version>
+    </properties>
 
 </project>

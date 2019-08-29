@@ -18,36 +18,36 @@
         <dependency>
             <groupId>org.jnosql.diana</groupId>
             <artifactId>diana-document</artifactId>
-            <version>0.0.5</version>
+            <version>${jnosql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jnosql.diana</groupId>
             <artifactId>mongodb-driver</artifactId>
-            <version>0.0.5</version>
+            <version>${jnosql.version}</version>
         </dependency>
 
         <!--NoSQL Column oriented-->
         <dependency>
             <groupId>org.jnosql.diana</groupId>
             <artifactId>diana-column</artifactId>
-            <version>0.0.5</version>
+            <version>${jnosql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jnosql.diana</groupId>
             <artifactId>cassandra-driver</artifactId>
-            <version>0.0.5</version>
+            <version>${jnosql.version}</version>
         </dependency>
 
         <!--NoSQL Key Value oriented-->
         <dependency>
             <groupId>org.jnosql.diana</groupId>
             <artifactId>diana-key-value</artifactId>
-            <version>0.0.5</version>
+            <version>${jnosql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jnosql.diana</groupId>
             <artifactId>hazelcast-driver</artifactId>
-            <version>0.0.5</version>
+            <version>${jnosql.version}</version>
         </dependency>
     </dependencies>
 

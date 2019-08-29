@@ -4,7 +4,7 @@ import org.junit.Test
 import kotlin.test.assertTrue
 import kotlin.test.assertFalse
 
-class ValidationUnitTest {
+class ValidationTest {
 
     @Test
     fun whenAmountIsOneAndNameIsAlice_thenTrue() {

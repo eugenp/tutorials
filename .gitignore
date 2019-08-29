@@ -1,4 +1,5 @@
 */bin/*
+bin/
 
 *.class
 
@@ -19,6 +20,10 @@
 .idea/
 *.iml
 *.iws
+out/
+
+# VSCode
+.vscode/
 
 # Mac
 .DS_Store
@@ -26,6 +31,9 @@
 # Maven
 log/
 target/
+
+# Gradle
+.gradle/
 
 spring-openid/src/main/resources/application.properties
 .recommenders/
@@ -73,3 +81,5 @@ apache-avro/src/main/java/com/baeldung/avro/model/
 jta/transaction-logs/
 software-security/sql-injection-samples/derby.log
 spring-soap/src/main/java/com/baeldung/springsoap/gen/
+/report-*.json
+transaction.log

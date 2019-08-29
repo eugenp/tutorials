@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>patterns</artifactId>
     <packaging>pom</packaging>
-	<name>patterns</name>
+    <name>patterns</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -19,6 +19,8 @@
         <module>design-patterns</module>
         <module>design-patterns-2</module>
         <module>solid</module>
+        <module>dip</module>
+        <module>backoff-jitter</module>
     </modules>
 
     <dependencyManagement>
@@ -50,8 +52,6 @@
     </build>
 
     <properties>
-        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
         <jetty-maven-plugin.version>9.4.0.v20161208</jetty-maven-plugin.version>
     </properties>
 

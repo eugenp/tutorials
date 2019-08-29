@@ -18,7 +18,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
-@PropertySource("classpath:persistence-h2.properties")
+@PropertySource({"classpath:persistence-h2.properties", "classpath:application-defaults.properties"})
 @EnableJpaRepositories(basePackages = { "com.baeldung.data.repositories" })
 @EnableWebMvc
 @Import(SpringSecurityConfig.class)

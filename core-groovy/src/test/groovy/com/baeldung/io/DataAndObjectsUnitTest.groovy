@@ -34,7 +34,9 @@ class DataAndObjectsUnitTest {
     @Test
     void whenUsingWithObjectOutputStream_thenObjectIsSerializedToFile() {
         Task task = new Task(description:'Take out the trash', startDate:new Date(), status:0)
-        new File('src/main/resources/ioSerializedObject.txt').withObjectOutputStream { out ->
+        def serializedDataFile = new File('src/main/resources/ioSerializedObject.txt')
+        serializedDataFile.createNewFile()
+        serializedDataFile.withObjectOutputStream { out ->
             out.writeObject(task)
         }
 

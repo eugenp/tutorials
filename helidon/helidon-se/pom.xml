@@ -12,10 +12,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <helidon.version>0.10.4</helidon.version>
-    </properties>
-
     <dependencies>
         <!--Config-->
         <dependency>
@@ -60,5 +56,9 @@
         </dependency>
 
     </dependencies>
+
+    <properties>
+        <helidon.version>0.10.4</helidon.version>
+    </properties>
 
 </project>

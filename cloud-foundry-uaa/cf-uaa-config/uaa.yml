@@ -1,12 +1,7 @@
 issuer:
   uri: http://localhost:8080/uaa
 
-spring_profiles: postgresql,default  
-  
-database.driverClassName: org.postgresql.Driver
-database.url: jdbc:postgresql:uaadb2
-database.username: postgres
-database.password: postgres  
+spring_profiles: default,hsqldb
   
 encryption:
   active_key_label: CHANGE-THIS-KEY

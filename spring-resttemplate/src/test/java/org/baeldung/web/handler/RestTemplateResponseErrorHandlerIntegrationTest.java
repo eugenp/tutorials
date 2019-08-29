@@ -1,7 +1,8 @@
 package org.baeldung.web.handler;
 
-import org.baeldung.web.exception.NotFoundException;
-import org.baeldung.web.model.Bar;
+import org.baeldung.resttemplate.web.exception.NotFoundException;
+import org.baeldung.resttemplate.web.handler.RestTemplateResponseErrorHandler;
+import org.baeldung.resttemplate.web.model.Bar;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

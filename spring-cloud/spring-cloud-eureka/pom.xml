@@ -9,12 +9,6 @@
     <description>Spring Cloud Eureka Server and Sample Clients</description>
     <packaging>pom</packaging>
 
-    <modules>
-        <module>spring-cloud-eureka-server</module>
-        <module>spring-cloud-eureka-client</module>
-        <module>spring-cloud-eureka-feign-client</module>
-    </modules>
-
     <parent>
         <groupId>com.baeldung.spring.cloud</groupId>
         <artifactId>spring-cloud</artifactId>
@@ -22,9 +16,24 @@
         <relativePath>..</relativePath>
     </parent>
 
+    <modules>
+        <module>spring-cloud-eureka-server</module>
+        <module>spring-cloud-eureka-client</module>
+        <module>spring-cloud-eureka-feign-client</module>
+    </modules>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
     <properties>
-        <spring-boot.version>2.0.1.RELEASE</spring-boot.version>
-        <spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
+        <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
+        <spring-cloud-dependencies.version>Greenwich.RELEASE</spring-cloud-dependencies.version>
     </properties>
 
 </project>

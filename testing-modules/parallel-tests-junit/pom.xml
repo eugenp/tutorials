@@ -6,6 +6,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>parallel-tests-junit</name>
     <packaging>pom</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-java</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-java</relativePath>
+    </parent>
     
     <modules>
         <module>math-test-functions</module>

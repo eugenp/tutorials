@@ -78,7 +78,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2database.version}</version>
+            <version>${h2.version}</version>
         </dependency>
 
         <!-- Websockets -->
@@ -186,9 +186,7 @@
         <hibernate-core.version>5.2.10.Final</hibernate-core.version>
         <spring-security.version>4.2.3.RELEASE</spring-security.version>
         <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
-        <h2database.version>1.4.196</h2database.version>
         <logback-classic.version>1.2.3</logback-classic.version>
-        <jackson.version>2.9.7</jackson.version>
     </properties>
 
 </project>

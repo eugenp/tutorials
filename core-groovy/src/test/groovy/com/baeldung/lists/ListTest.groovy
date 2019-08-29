@@ -129,13 +129,13 @@ class ListTest{
         assertTrue(filterList.findAll{it > 3} == [4, 5, 6, 76])
 
         assertTrue(filterList.findAll{ it instanceof Number} == [2, 1, 3, 4, 5, 6, 76])
-        
+
         assertTrue(filterList.grep( Number )== [2, 1, 3, 4, 5, 6, 76])
-        
+
         assertTrue(filterList.grep{ it> 6 }== [76])
 
         def conditionList = [2, 1, 3, 4, 5, 6, 76]
-        
+
         assertFalse(conditionList.every{ it < 6})
 
         assertTrue(conditionList.any{ it%2 == 0})
@@ -165,7 +165,7 @@ class ListTest{
 
         def strList = ["na", "ppp", "as"]
         assertTrue(strList.max() == "ppp")
-        
+
         Comparator minc = {a,b -> a == b? 0: a < b? -1 : 1}
         def numberList = [3, 2, 0, 7]
         assertTrue(numberList.min(minc) == 0)

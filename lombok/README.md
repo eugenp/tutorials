@@ -6,4 +6,5 @@
 - [Lombok Builder with Default Value](https://www.baeldung.com/lombok-builder-default-value)
 - [Lombok Builder with Custom Setter](https://www.baeldung.com/lombok-builder-custom-setter)
 - [Setting up Lombok with Eclipse and Intellij](https://www.baeldung.com/lombok-ide)
+- [Using the @Singular Annotation with Lombok Builders](https://www.baeldung.com/lombok-builder-singular)
 

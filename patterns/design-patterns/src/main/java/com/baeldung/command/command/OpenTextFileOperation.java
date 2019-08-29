@@ -1,6 +1,6 @@
-package com.baeldung.pattern.command.command;
+package com.baeldung.command.command;
 
-import com.baeldung.pattern.command.receiver.TextFile;
+import com.baeldung.command.receiver.TextFile;
 
 public class OpenTextFileOperation implements TextFileOperation {
 

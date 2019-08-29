@@ -38,7 +38,7 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh-generator-annprocess.version}</version>
+            <version>${jmh-generator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -121,14 +121,11 @@
     <properties>
         <commons-math3.version>3.6.1</commons-math3.version>
         <decimal4j.version>1.0.3</decimal4j.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
 
         <assertj.version>3.6.1</assertj.version>
 
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <logback.version>1.1.7</logback.version>
-        <jmh-core.version>1.19</jmh-core.version>
-        <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
 
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>

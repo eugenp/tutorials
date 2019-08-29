@@ -3,3 +3,4 @@
 - [Bean Validation in Jersey](https://www.baeldung.com/jersey-bean-validation)
 - [Set a Response Body in JAX-RS](https://www.baeldung.com/jax-rs-response)
 - [Exploring the Jersey Test Framework](https://www.baeldung.com/jersey-test)
+- [Explore Jersey Request Parameters](https://www.baeldung.com/jersey-request-parameters)

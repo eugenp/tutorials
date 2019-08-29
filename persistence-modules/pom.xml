@@ -22,19 +22,22 @@
         <module>hbase</module>
         <module>hibernate5</module>
         <module>hibernate-ogm</module>
+        <module>hibernate-mapping</module>
         <module>influxdb</module>
         <module>java-cassandra</module>
         <module>java-cockroachdb</module>
         <module>java-jdbi</module>
         <module>java-jpa</module>
+        <module>java-jpa-2</module>
         <module>java-mongodb</module>
+        <module>java-sql2o</module>
         <module>jnosql</module>
         <module>liquibase</module>
         <module>orientdb</module>
         <module>querydsl</module>
         <module>redis</module>
         <module>solr</module>
-        <module>spring-boot-h2/spring-boot-h2-database</module>
+        <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-mongodb</module>
         <module>spring-data-cassandra</module>
@@ -54,5 +57,8 @@
         <module>spring-hibernate-5</module>
         <module>spring-hibernate4</module>
         <module>spring-jpa</module>
+        <module>spring-persistence-simple</module>
+        <module>jpa-hibernate-cascade-type</module>
+				<module>r2dbc</module>
     </modules>
 </project>

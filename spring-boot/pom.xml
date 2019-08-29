@@ -15,16 +15,7 @@
     </parent>
 
     <dependencies>
-        <!-- MongoDB -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.flapdoodle.embed</groupId>
-            <artifactId>de.flapdoodle.embed.mongo</artifactId>
-            <scope>test</scope>
-        </dependency>
+      
         <!-- JUnit Jupiter dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -162,12 +153,6 @@
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
         </dependency>
-        
-        <dependency>
-            <groupId>org.modelmapper</groupId>
-            <artifactId>modelmapper</artifactId>
-            <version>${modelmapper.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -265,7 +250,6 @@
         <graphql-java-tools.version>5.2.4</graphql-java-tools.version>
         <guava.version>18.0</guava.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
-        <modelmapper.version>2.3.2</modelmapper.version>
     </properties>
 
 </project>

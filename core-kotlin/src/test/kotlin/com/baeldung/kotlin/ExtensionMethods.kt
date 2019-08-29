@@ -6,13 +6,6 @@ import org.junit.Test
 class ExtensionMethods {
     @Test
     fun simpleExtensionMethod() {
-        fun String.escapeForXml() : String {
-            return this
-                    .replace("&", "&amp;")
-                    .replace("<", "&lt;")
-                    .replace(">", "&gt;")
-        }
-
         Assert.assertEquals("Nothing", "Nothing".escapeForXml())
         Assert.assertEquals("&lt;Tag&gt;", "<Tag>".escapeForXml())
         Assert.assertEquals("a&amp;b", "a&b".escapeForXml())

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.baeldung.boot.Application;
 import com.baeldung.boot.domain.GenericEntity;
 import com.baeldung.boot.repository.GenericEntityRepository;
 
