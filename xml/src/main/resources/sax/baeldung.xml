@@ -1,0 +1,16 @@
+<baeldung>
+    <articles>
+        <article>
+            <title>Parsing an XML File Using SAX Parser</title>
+            <content>Lorem ipsum...</content>
+        </article>
+        <article>
+            <title>Parsing an XML File Using DOM Parser</title>
+            <content>Lorem ipsum...</content>
+        </article>
+        <article>
+            <title>Parsing an XML File Using StAX Parser</title>
+            <content>Lorem ipsum...</content>
+        </article>
+    </articles>
+</baeldung>
