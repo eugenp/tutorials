@@ -5,6 +5,8 @@
   <groupId>com.baeldung.quarkus</groupId>
   <artifactId>quarkus</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <name>quarkus</name>
+  
   <properties>
     <surefire-plugin.version>2.22.0</surefire-plugin.version>
     <quarkus.version>0.15.0</quarkus.version>
