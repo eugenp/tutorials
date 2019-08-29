@@ -1,20 +1,18 @@
-package org.baeldung;
+package org.baeldung.javaxval.beanvalidation;
+
+import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Set;
-
-import java.util.Optional;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
 import org.junit.Before;
+import org.junit.Test;
 
 public class ValidationIntegrationTest {
 

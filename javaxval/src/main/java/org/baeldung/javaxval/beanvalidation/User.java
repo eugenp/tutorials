@@ -1,4 +1,4 @@
-package org.baeldung;
+package org.baeldung.javaxval.beanvalidation;
 
 import java.time.LocalDate;
 import java.util.List;
