@@ -1,4 +1,4 @@
-package com.baeldung.java8.base64;
+package com.baeldung.base64encodinganddecoding;
 
 import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
