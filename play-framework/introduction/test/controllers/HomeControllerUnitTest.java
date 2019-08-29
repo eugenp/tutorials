@@ -6,10 +6,8 @@ import play.inject.guice.GuiceApplicationBuilder;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.test.WithApplication;
-import play.twirl.api.Html;
 
 import java.util.Optional;
-import java.util.concurrent.CompletionStage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -17,7 +15,7 @@ import static play.mvc.Http.Status.*;
 import static play.test.Helpers.GET;
 import static play.test.Helpers.route;
 
-public class HomeControllerTest extends WithApplication {
+public class HomeControllerUnitTest extends WithApplication {
 
     @Override
     protected Application provideApplication() {
@@ -25,7 +23,7 @@ public class HomeControllerTest extends WithApplication {
     }
 
     @Test
-    public void testIndex() {
+    public void givenRequest_whenRootPath_ThenStatusOkay() {
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
                 .uri("/");
@@ -35,7 +33,7 @@ public class HomeControllerTest extends WithApplication {
     }
 
     @Test
-    public void testApplyHtml() {
+    public void givenRequest_whenHtmlPath_ThenStatusOkay() {
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
                 .uri("/baeldung/html");
@@ -45,7 +43,7 @@ public class HomeControllerTest extends WithApplication {
     }
 
     @Test
-    public void testBadRequestPage() {
+    public void givenRequest_whenBadRequest_ThenStatusBadRequest() {
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
                 .uri("/baeldung/bad-req");
@@ -55,7 +53,7 @@ public class HomeControllerTest extends WithApplication {
     }
 
     @Test
-    public void testNotFoundPage() {
+    public void givenRequest_whenNotFound_ThenStatusNotFound() {
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
                 .uri("/baeldung/not-found");
@@ -65,7 +63,7 @@ public class HomeControllerTest extends WithApplication {
     }
 
     @Test
-    public void testCustomContentType() {
+    public void givenRequest_whenCustomContentTypePath_ThenContextTypeTextHtml() {
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
                 .uri("/baeldung/custom-content-type");
@@ -76,7 +74,7 @@ public class HomeControllerTest extends WithApplication {
     }
 
     @Test
-    public void testAsyncOperation() {
+    public void givenRequest_whenAsyncPath_ThenStatusOkay() {
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
                 .uri("/baeldung/async");
@@ -86,7 +84,7 @@ public class HomeControllerTest extends WithApplication {
     }
 
     @Test
-    public void testSetHeaders() {
+    public void givenRequest_whenHeadersPath_ThenCustomHeaderFieldSet() {
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
                 .uri("/baeldung/headers");
