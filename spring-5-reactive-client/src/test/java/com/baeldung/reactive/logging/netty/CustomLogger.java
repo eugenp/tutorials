@@ -3,8 +3,11 @@ package com.baeldung.reactive.logging.netty;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.logging.LoggingHandler;
-import io.netty.util.internal.PlatformDependent;
 import java.nio.charset.Charset;
+
+import static io.netty.util.internal.PlatformDependent.allocateUninitializedArray;
+import static java.lang.Math.max;
+import static java.nio.charset.Charset.defaultCharset;
 
 public class CustomLogger extends LoggingHandler {
     public CustomLogger(Class<?> clazz) {
@@ -12,26 +15,28 @@ public class CustomLogger extends LoggingHandler {
     }
 
     @Override
-    protected String format(ChannelHandlerContext ctx, String eventName, Object arg) {
+    protected String format(ChannelHandlerContext ctx, String event, Object arg) {
         if (arg instanceof ByteBuf) {
             ByteBuf msg = (ByteBuf) arg;
-            return decodeString(msg, msg.readerIndex(), msg.readableBytes(), Charset.defaultCharset());
+            return decode(msg, msg.readerIndex(), msg.readableBytes(), defaultCharset());
         }
         return "";
     }
 
-    private String decodeString(ByteBuf src, int readerIndex, int len, Charset charset) {
-        if (len == 0) return "";
-        byte[] array;
-        int offset;
-        if (src.hasArray()) {
-            array = src.array();
-            offset = src.arrayOffset() + readerIndex;
-        } else {
-            array = PlatformDependent.allocateUninitializedArray(Math.max(len, 1024));
-            offset = 0;
-            src.getBytes(readerIndex, array, 0, len);
+    private String decode(ByteBuf src, int readerIndex, int len, Charset charset) {
+        if (len != 0) {
+            byte[] array;
+            int offset;
+            if (src.hasArray()) {
+                array = src.array();
+                offset = src.arrayOffset() + readerIndex;
+            } else {
+                array = allocateUninitializedArray(max(len, 1024));
+                offset = 0;
+                src.getBytes(readerIndex, array, 0, len);
+            }
+            return new String(array, offset, len, charset);
         }
-        return new String(array, offset, len, charset);
+        return "";
     }
 }

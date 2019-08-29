@@ -27,7 +27,9 @@ public class RequestLogEnhancer {
                   .append(header)
                   .append("\n");
         });
-        request.onRequestContent((theRequest, content) -> group.append(toString(content, getCharset(theRequest.getHeaders()))));
+        request.onRequestContent((theRequest, content) -> {
+            group.append(toString(content, getCharset(theRequest.getHeaders())));
+        });
         request.onRequestSuccess(theRequest -> {
             log.debug(group.toString());
             group.delete(0, group.length());
@@ -35,13 +37,15 @@ public class RequestLogEnhancer {
         group.append("\n");
         request.onResponseBegin(theResponse -> {
             group
-              .append("Response \n ")
+              .append("Response \n")
               .append(theResponse.getVersion())
               .append(" ")
               .append(theResponse.getStatus());
-            if (theResponse.getReason() != null) group
-              .append(" ")
-              .append(theResponse.getReason());
+            if (theResponse.getReason() != null) {
+                group
+                  .append(" ")
+                  .append(theResponse.getReason());
+            }
             group.append("\n");
         });
         request.onResponseHeaders(theResponse -> {
@@ -50,39 +54,39 @@ public class RequestLogEnhancer {
                   .append(header)
                   .append("\n");
         });
-        request.onResponseContent((theResponse, content) -> group.append(toString(content, getCharset(theResponse.getHeaders()))));
+        request.onResponseContent((theResponse, content) -> {
+            group.append(toString(content, getCharset(theResponse.getHeaders())));
+        });
         request.onResponseSuccess(theResponse -> {
             log.debug(group.toString());
         });
         return request;
     }
 
-
-    private String toString(ByteBuffer buffer, Charset charset)
-    {
+    private String toString(ByteBuffer buffer, Charset charset) {
         byte[] bytes;
         if (buffer.hasArray()) {
             bytes = new byte[buffer.capacity()];
-            System.arraycopy(buffer.array(), 0, bytes, 0, buffer.capacity() );
-        }
-        else
-        {
+            System.arraycopy(buffer.array(), 0, bytes, 0, buffer.capacity());
+        } else {
             bytes = new byte[buffer.remaining()];
             buffer.get(bytes, 0, bytes.length);
         }
         return new String(bytes, charset);
     }
 
-
     private Charset getCharset(HttpFields headers) {
         String contentType = headers.get(HttpHeader.CONTENT_TYPE);
-        if (contentType == null) return StandardCharsets.UTF_8;
-        String[] tokens = contentType
-          .toLowerCase(Locale.US)
-          .split("charset=");
-        if (tokens.length != 2) return StandardCharsets.UTF_8;
-        String encoding = tokens[1].replaceAll("[;\"]", "");
-        return Charset.forName(encoding);
+        if (contentType != null) {
+            String[] tokens = contentType
+              .toLowerCase(Locale.US)
+              .split("charset=");
+            if (tokens.length == 2) {
+                String encoding = tokens[1].replaceAll("[;\"]", "");
+                return Charset.forName(encoding);
+            }
+        }
+        return StandardCharsets.UTF_8;
     }
 }
 

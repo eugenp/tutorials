@@ -116,7 +116,9 @@ public class WebClientLoggingIntegrationTest {
 
         reactor.netty.http.client.HttpClient httpClient = HttpClient
           .create()
-          .tcpConfiguration(tcpClient -> tcpClient.bootstrap(b -> BootstrapHandlers.updateLogSupport(b, new CustomLogger(HttpClient.class))));
+          .tcpConfiguration(
+            tc -> tc.bootstrap(
+              b -> BootstrapHandlers.updateLogSupport(b, new CustomLogger(HttpClient.class))));
         WebClient
           .builder()
           .clientConnector(new ReactorClientHttpConnector(httpClient))
