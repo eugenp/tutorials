@@ -4,7 +4,7 @@
 
 GET     /                           controllers.StudentController.listStudents()
 POST    /:id                        controllers.StudentController.retrieve(id:Int)
-POST    /                           controllers.StudentController.create()
+POST    /                           controllers.StudentController.create(request: Request)
 PUT     /                           controllers.StudentController.update()
 DELETE  /:id                        controllers.StudentController.delete(id:Int)
 
