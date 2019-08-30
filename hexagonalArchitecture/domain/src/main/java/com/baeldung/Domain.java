@@ -1,16 +1,20 @@
 package com.baeldung;
 
+import com.baeldung.service.NamingPort;
 import com.baeldung.service.OutputStreamingPort;
 
 public class Domain {
 
-    private OutputStreamingPort outputStreamingPort;
+    private final OutputStreamingPort outputStreamingPort;
+    private final NamingPort namingPort;
 
-    public Domain(OutputStreamingPort outputStreamingPort) {
+    public Domain(OutputStreamingPort outputStreamingPort, NamingPort namingPort) {
         this.outputStreamingPort = outputStreamingPort;
+        this.namingPort = namingPort;
     }
 
     public void greeting() {
-        outputStreamingPort.write("Hello World");
+        String name = namingPort.getName();
+        outputStreamingPort.write(String.format("%s %s","Hello", name));
     }
 }
