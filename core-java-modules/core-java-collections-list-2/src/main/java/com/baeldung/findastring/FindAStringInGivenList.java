@@ -58,7 +58,9 @@ public class FindAStringInGivenList {
     }
 
     public List<String> findUsingGuava(String search, List<String> list) {
-        if (search == null) return Lists.newArrayList();
+        if (search == null) {
+            return Lists.newArrayList();
+        }
 
         Iterable<String> result = Iterables.filter(Iterables.filter(list,Predicates.notNull()), Predicates.containsPattern(search));
 
