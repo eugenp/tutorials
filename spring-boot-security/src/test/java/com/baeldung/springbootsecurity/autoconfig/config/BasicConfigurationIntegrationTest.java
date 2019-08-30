@@ -1,4 +1,4 @@
-package com.baeldung.springbootsecurity.basic_auth;
+package com.baeldung.springbootsecurity.autoconfig.config;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -18,6 +18,8 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.baeldung.springbootsecurity.autoconfig.SpringBootSecurityApplication;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = SpringBootSecurityApplication.class)
 public class BasicConfigurationIntegrationTest {

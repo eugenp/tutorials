@@ -1,4 +1,4 @@
-package com.baeldung.springbootsecurity.basic_auth.config;
+package com.baeldung.springbootsecurity.autoconfig.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
