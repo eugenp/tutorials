@@ -1,7 +1,9 @@
 package com.baeldung;
 
+import com.baeldung.service.GreetingPort;
 import com.baeldung.service.NamingPort;
 import com.baeldung.service.OutputStreamingPort;
+import com.baeldung.service.TranslatingPort;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +24,13 @@ class DomainUnitTest {
         //mock the naming port
         NamingPort namingPort = mock(NamingPort.class);
         when(namingPort.getName()).thenReturn("World");
+        //mock the greeting port
+        GreetingPort greetingPort = mock(GreetingPort.class);
+        when(greetingPort.getGreetingPhrase()).thenReturn("Hello");
+        when(greetingPort.getDesiredLanguage()).thenReturn("en");
+        //mock the translating port
+        TranslatingPort translatingPort = mock(TranslatingPort.class);
+        when(translatingPort.translate(anyString(), anyString())).thenReturn("Hello");
 
-        new Domain(outputStreamingPort, namingPort).greeting();
-    }
-}
+        new Domain(outputStreamingPort, namingPort, greetingPort, translatingPort).greeting();
+    }}
