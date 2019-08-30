@@ -1,0 +1,8 @@
+# folders #
+.idea
+/target
+
+# Packaged files #
+*.jar
+*.war
+*.ear
