@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Console name="ConsoleAppender" target="SYSTEM_OUT">
+    <PatternLayout
+	  pattern="%style{%date{DEFAULT}}{yellow} [%style{%thread}{white}] %highlight{%-5level}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green, DEBUG=cyan, TRACE=blue} %style{%logger{36}}{cyan}:%n[+] %message%n%throwable" />
+</Console>

@@ -1,0 +1,241 @@
+<set xmlns="http://docbook.org/ns/docbook" version="5.0"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xml:base="../docsrc/"
+  >
+  <!-- * WARNING WARNING WARNING -->
+  <!-- * WARNING WARNING WARNING -->
+  <!-- * -->
+  <!-- * This document has duplicate IDs in it and is intended for -->
+  <!-- * processing using the chunk.xsl stylesheet to generate chunked -->
+  <!-- * output from it (not for generating a single HTML output file) -->
+  <!-- * -->
+  <!-- * WARNING WARNING WARNING -->
+  <!-- * WARNING WARNING WARNING -->
+  <title>DocBook XSL Stylesheets: Reference Documentation</title>
+  <info><releaseinfo role="meta">$Id: reference.xml 9625 2012-10-20 23:12:33Z dcramer $ </releaseinfo>
+    <xi:include href="./authors.xml"/>
+    <xi:include href="./copyright.xml" xpointer="xpointer(//*[local-name() = 'copyright'])"/>
+    <xi:include href="./license.xml"/>
+    <xi:include href="./warranty.xml"/>
+    <abstract xml:id="about">
+      <title>About this document</title>
+      <para>This is generated reference documentation for the DocBook
+        XSL stylesheets. It is available in the following formats:
+        <itemizedlist>
+          <listitem>
+            <para><link
+                xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/reference.html"
+                >HTML</link>,
+              <link
+                xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/reference.pdf"
+                >PDF</link>,
+              <link
+                xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/reference.txt"
+                >plain text</link></para>
+          </listitem>
+        </itemizedlist>
+        This is primarily documentation on the parameters and processing instructions you can use
+        to control the behavior of the stylesheets.
+        <note>
+          <para>This is purely reference documentation&#xa0;– not how-to
+            documentation. For a thorough step-by-step how-to guide to
+            publishing content using the DocBook XSL stylesheets, see
+            Bob Stayton’s <link 
+              xlink:href="http://www.sagehill.net/book-description.html"
+              >DocBook XSL: The Complete Guide</link>, available online
+            at <link
+              xlink:href="http://www.sagehill.net/docbookxsl/index.html"
+              >http://www.sagehill.net/docbookxsl/index.html</link>
+          </para>
+        </note>
+        This document is divided into three sets of references:
+        the first two sets provides user documentation; the third,
+        developer documentation.</para>
+    </abstract>
+  </info>
+  <book xml:id="param"><title>DocBook XSL Stylesheets User Reference: Parameters</title>
+    <info>
+      <abstract>
+        <para>This is generated reference documentation for all
+          user-configurable parameters in the DocBook XSL
+          stylesheets.
+          <note>
+            <para>This is purely reference documentation&#xa0;– not how-to
+              documentation. For a thorough step-by-step how-to guide to
+              publishing content using the DocBook XSL stylesheets, see
+              Bob Stayton’s <link 
+                xlink:href="http://www.sagehill.net/book-description.html"
+                >DocBook XSL: The Complete Guide</link>, available online
+              at <link
+                xlink:href="http://www.sagehill.net/docbookxsl/index.html"
+                >http://www.sagehill.net/docbookxsl/index.html</link>
+            </para>
+          </note>
+        </para>
+      </abstract>
+    </info>
+    <part xml:id="html">
+      <?dbhtml dir="html"?>
+      <?dbhtml filename="index.html"?>
+      <xi:include href="../html/param.xml" xpointer="xpointer(/book/info/title)" />
+      <partintro xml:id="htmlintro">
+        <xi:include href="../html/param.xml" xpointer="xpointer(/book/info/abstract/node())" />
+      </partintro>
+      <xi:include href="../html/param.xml" xpointer="xpointer(/book/reference)" />
+    </part>
+    <part xml:id="fo">
+      <?dbhtml dir="fo"?>
+      <?dbhtml filename="index.html"?>
+      <xi:include href="../fo/param.xml" xpointer="xpointer(/book/info/title)" />
+      <partintro xml:id="fointro">
+        <xi:include href="../fo/param.xml" xpointer="xpointer(/book/info/abstract/node())" />
+      </partintro>
+      <xi:include href="../fo/param.xml" xpointer="xpointer(/book/reference)" />
+    </part>
+    <part xml:id="manpages">
+      <?dbhtml dir="manpages"?>
+      <?dbhtml filename="index.html"?>
+      <xi:include href="../manpages/param.xml" xpointer="xpointer(/book/info/title)" />
+      <partintro xml:id="manintro">
+        <xi:include href="../manpages/param.xml" xpointer="xpointer(/book/info/abstract/node())" />
+      </partintro>
+      <xi:include href="../manpages/param.xml" xpointer="xpointer(/book/reference)" />
+    </part>
+    <part xml:id="roundtrip">
+      <?dbhtml dir="roundtrip"?>
+      <?dbhtml filename="index.html"?>
+      <xi:include href="../roundtrip/param.xml" xpointer="xpointer(/book/info/title)" />
+      <partintro xml:id="roundtripintro">
+        <xi:include href="../roundtrip/param.xml" xpointer="xpointer(/book/info/abstract/node())" />
+      </partintro>
+      <xi:include href="../roundtrip/param.xml" xpointer="xpointer(/book/reference/node()[not(self::title)])" />
+    </part>
+    <part xml:id="slides"><title>Slides Parameter Reference</title>
+      <?dbhtml dir="slides"?>
+      <?dbhtml filename="index.html"?>
+      <partintro xml:id="slidesintro">
+        <para>This is reference documentation for all
+          user-configurable parameters in the DocBook XSL Slides
+          stylesheets (for generating HTML and PDF slide
+          presentations).</para>
+        <note>
+          <para>The Slides stylesheet for HTML output is a
+            customization layer of the DocBook XSL HTML
+            stylesheet; the Slides stylesheet for FO output is a
+            customization layer of the DocBook XSL FO stylesheet.
+            Therefore, in addition to the slides-specific
+            parameters listed in this section, you can also use a
+            number of <link xlink:href="../html">HTML stylesheet
+              parameters</link> and <link xlink:href="../fo">FO
+              stylesheet parameters</link> to control Slides
+            output.</para>
+        </note>
+      </partintro>
+      <xi:include href="../slides/xhtml/param.xml" xpointer="xpointer(/book/reference)" />
+      <xi:include href="../slides/fo/param.xml" xpointer="xpointer(/book/reference)" />
+    </part>
+    <part xml:id="website">
+      <?dbhtml dir="website"?>
+      <?dbhtml filename="index.html"?>
+      <xi:include href="../website/param.xml" xpointer="xpointer(/book/info/title)" />
+      <partintro xml:id="websiteintro">
+        <xi:include href="../website/param.xml" xpointer="xpointer(/book/info/abstract/node())" />
+      </partintro>
+      <xi:include href="../website/param.xml" xpointer="xpointer(/book/reference)" />
+    </part>
+   <!-- Prepare WebHelp output
+    <part xml:id="webhelp">
+      <?dbhtml dir="webhelp"?>
+      <?dbhtml filename="index.html"?>
+      <xi:include href="../webhelp/param.xml" xpointer="xpointer(/book/info/title)" />
+      <partintro xml:id="webhelpintro">
+        <xi:include href="../webhelp/param.xml" xpointer="xpointer(/book/info/abstract/node())" />
+      </partintro>
+      <xi:include href="../webhelp/param.xml" xpointer="xpointer(/book/reference)" />
+    </part>
+   -->
+  </book>
+ 
+  <book xml:id="pi"><title>DocBook XSL Stylesheets User Reference: PIs</title>
+    <?dbhtml dir="pi"?>
+    <?dbhtml filename="index.html"?>
+    <info>
+      <abstract>
+        <para>This is generated reference documentation for all
+          user-specifiable processing instructions in the DocBook
+          XSL stylesheets.
+          <note>
+            <para>You add these PIs at particular points in a document to
+              cause specific “exceptions” to formatting/output behavior. To
+              make global changes in formatting/output behavior across an
+              entire document, it’s better to do it by setting an
+              appropriate stylesheet parameter (if there is one).</para>
+          </note>
+        </para>
+      </abstract>
+    </info>
+    <part xml:id="pi-html">
+      <xi:include href="../html/pi.xml" xpointer="xpointer(/reference/node())" />
+    </part>
+    <part xml:id="pi-fo">
+      <xi:include href="../fo/pi.xml" xpointer="xpointer(/reference/node())" />
+    </part>
+    <part xml:id="pi-man">
+      <xi:include href="../manpages/pi.xml" xpointer="xpointer(/reference/node())" />
+    </part>
+    <part xml:id="pi-common">
+      <xi:include href="../common/pi.xml" xpointer="xpointer(/reference/node())" />
+    </part>
+  </book>
+  <book xml:id="developer"><title>DocBook XSL Stylesheets Developer Reference</title>
+    <info>
+      <abstract>
+        <para>This is technical reference documentation for
+          developers using the DocBook XSL Stylesheets. It is not
+          intended to be user documentation, but is instead
+          provided for developers writing customization layers for
+          the stylesheets.</para>
+      </abstract>
+    </info>
+    <part xml:id="lib">
+      <?dbhtml dir="lib"?>
+      <?dbhtml filename="index.html"?>
+      <xi:include href="../lib/lib.xml" xpointer="xpointer(/book/info/title)" />
+      <partintro xml:id="libintro">
+        <xi:include href="../lib/lib.xml" xpointer="xpointer(/book/info/abstract/node())" />
+      </partintro>
+      <xi:include href="../lib/lib.xml" xpointer="xpointer(/book/reference)" />
+    </part>
+    <part xml:id="common-part"><title>Common Template Reference</title>
+      <?dbhtml dir="common"?>
+      <?dbhtml filename="index.html"?>
+      <info>
+        <abstract>
+          <para>This is technical reference documentation for the
+            “base”, “refentry”, and “utility” sets of common
+            templates in the DocBook XSL Stylesheets. These
+            templates are “common” in that they are shared across
+            output formats (that is, they’re not
+            output-format-dependent)</para>
+          <para>This documentation is not intended to be user
+            documentation. It is provided for developers writing
+            customization layers for the stylesheets.</para>
+        </abstract>
+      </info>
+        <xi:include href="../common/common.xml"/>
+        <xi:include href="../common/refentry.xml"/>
+        <xi:include href="../common/utility.xml"/>
+        <xi:include href="../common/charmap.xml"/>
+    </part>
+    <part xml:id="table-templates">
+      <xi:include href="../fo/table.xml" xpointer="xpointer(/reference/node())"/>
+    </part>
+    <part xml:id="template"> 
+      <xi:include href="../template/titlepage.xml" xpointer="xpointer(/reference/node())"/>
+    </part>
+  </book>
+</set>
+<!-- * vim: set ft=docbk foldlevel=2: -->
