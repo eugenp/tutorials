@@ -6,7 +6,7 @@
     <artifactId>bash</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>bash</name>
-    <description>Linux Bash  Topics</description>
+    <description>Linux Bash Topics</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
