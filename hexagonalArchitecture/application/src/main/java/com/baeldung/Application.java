@@ -1,13 +1,10 @@
 package com.baeldung;
 
-import com.baeldung.impl.GreetingPortStaticAdapter;
-import com.baeldung.impl.NamingPortStaticAdapter;
-import com.baeldung.impl.OutputStreamingPortConsoleAdapter;
-import com.baeldung.impl.TranslatingPortMapAdapter;
+import com.baeldung.impl.*;
 
 public class Application {
     public static void main(String[] args) {
-        new Domain(new OutputStreamingPortConsoleAdapter(), new NamingPortStaticAdapter(),
+        new Domain(new OutputStreamingPortConsoleAdapter(), new NamingPortCurrentLoginUserAdapter(),
                 new GreetingPortStaticAdapter(), new TranslatingPortMapAdapter()).greeting();
     }
 }
