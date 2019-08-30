@@ -1,7 +1,16 @@
 package com.baeldung;
 
+import com.baeldung.service.OutputStreamingPort;
+
 public class Domain {
+
+    private OutputStreamingPort outputStreamingPort;
+
+    public Domain(OutputStreamingPort outputStreamingPort) {
+        this.outputStreamingPort = outputStreamingPort;
+    }
+
     public void greeting() {
-        System.out.println("Hello World");
+        outputStreamingPort.write("Hello World");
     }
 }

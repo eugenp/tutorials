@@ -1,7 +1,9 @@
 package com.baeldung;
 
+import com.baeldung.impl.OutputStreamingPortConsoleAdapter;
+
 public class Application {
     public static void main(String[] args) {
-        System.out.println("Hello World");
+        new Domain(new OutputStreamingPortConsoleAdapter()).greeting();
     }
 }
