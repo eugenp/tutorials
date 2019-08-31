@@ -3,6 +3,7 @@
 <groupId>org.baeldung</groupId>
 <artifactId>json-2</artifactId>
 <version>0.0.1-SNAPSHOT</version>
+<name>json-2</name>
 <parent>
 <groupId>com.baeldung</groupId>
 <artifactId>parent-modules</artifactId>
