@@ -61,10 +61,10 @@ public class RegistrationFormUnitTest {
 
 	private RegistrationForm buildRegistrationFormWithAdvanceInfo() {
 		RegistrationForm form = new RegistrationForm();
-		return popultaeAdvanceInfo(form);
+		return populateAdvanceInfo(form);
 	}
 
-	private RegistrationForm popultaeAdvanceInfo(RegistrationForm form) {
+	private RegistrationForm populateAdvanceInfo(RegistrationForm form) {
 		form.setCity("Berlin");
 		form.setContry("DE");
 		form.setStreet("alexa str.");
@@ -75,6 +75,6 @@ public class RegistrationFormUnitTest {
 
 	private RegistrationForm buildRegistrationFormWithBasicAndAdvanceInfo() {
 		RegistrationForm form = buildRegistrationFormWithBasicInfo();
-		return popultaeAdvanceInfo(form);
+		return populateAdvanceInfo(form);
 	}
 }

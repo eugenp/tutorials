@@ -4,24 +4,24 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 public class RegistrationForm {
-	@NotBlank(groups=BasicInfo.class)
+	@NotBlank(groups = BasicInfo.class)
 	private String firstName;
-	@NotBlank(groups=BasicInfo.class)
+	@NotBlank(groups = BasicInfo.class)
 	private String lastName;
-	@Email(groups=BasicInfo.class)
+	@Email(groups = BasicInfo.class)
 	private String email;
-	@NotBlank(groups=BasicInfo.class)
+	@NotBlank(groups = BasicInfo.class)
 	private String phone;
-	
-	@NotBlank(groups=AdvanceInfo.class)
+
+	@NotBlank(groups = AdvanceInfo.class)
 	private String street;
-	@NotBlank(groups=AdvanceInfo.class)
+	@NotBlank(groups = AdvanceInfo.class)
 	private String houseNumber;
-	@NotBlank(groups=AdvanceInfo.class)
+	@NotBlank(groups = AdvanceInfo.class)
 	private String zipCode;
-	@NotBlank(groups=AdvanceInfo.class)
+	@NotBlank(groups = AdvanceInfo.class)
 	private String city;
-	@NotBlank(groups=AdvanceInfo.class)
+	@NotBlank(groups = AdvanceInfo.class)
 	private String contry;
 
 	public String getStreet() {
