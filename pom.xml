@@ -780,7 +780,9 @@
 				<module>structurizr</module>
 				<module>struts-2</module>
 
-				<module>testing-modules</module>
+				<module>assertion-libraries</module>
+				<module>testing-libraries</module>
+				<module>testing-libraries-2</module>
 
 				<module>twilio</module>
 				<module>twitter4j</module>
@@ -1458,7 +1460,9 @@
 				<module>structurizr</module>
 				<module>struts-2</module>
 
-				<module>testing-modules</module>
+				<module>assertion-libraries</module>
+				<module>testing-libraries</module>
+				<module>testing-libraries-2</module>
 
 				<module>twilio</module>
 				<module>twitter4j</module>
