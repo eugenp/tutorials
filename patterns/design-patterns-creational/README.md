@@ -5,3 +5,4 @@
 - [Flyweight Pattern in Java](http://www.baeldung.com/java-flyweight)
 - [Double-Checked Locking with Singleton](http://www.baeldung.com/java-singleton-double-checked-locking)
 - [Java Constructors vs Static Factory Methods](https://www.baeldung.com/java-constructors-vs-static-factory-methods)
+- [Automatic Generation of the Builder Pattern with FreeBuilder](https://www.baeldung.com/java-builder-pattern-freebuilder)
