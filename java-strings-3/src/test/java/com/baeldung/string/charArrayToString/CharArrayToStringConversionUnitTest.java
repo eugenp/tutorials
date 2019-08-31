@@ -12,61 +12,62 @@ import java.util.stream.Stream;
 
 public class CharArrayToStringConversionUnitTest {
 
-        @Test
-        public void whenStringConstructor_thenOK() {
-                final char[] charArray = { 'b', 'a', 'e', 'l', 'd', 'u', 'n', 'g' };
-                String string = new String(charArray);
+    @Test
+    public void whenStringConstructor_thenOK() {
+        final char[] charArray = { 'b', 'a', 'e', 'l', 'd', 'u', 'n', 'g' };
 
-                assertThat(string, is("baeldung"));
+        String string = new String(charArray);
+
+        assertThat(string, is("baeldung"));
+    }
+
+    @Test
+    public void whenStringCopyValueOf_thenOK() {
+        final char[] charArray = { 'b', 'a', 'e', 'l', 'd', 'u', 'n', 'g' };
+
+        String string = String.copyValueOf(charArray);
+
+        assertThat(string, is("baeldung"));
+    }
+
+    @Test
+    public void whenStringValueOf_thenOK() {
+        final char[] charArray = { 'b', 'a', 'e', 'l', 'd', 'u', 'n', 'g' };
+
+        String string = String.valueOf(charArray);
+
+        assertThat(string, is("baeldung"));
+    }
+
+    @Test
+    public void whenStringBuilder_thenOK() {
+        final char[] charArray = { 'b', 'a', 'e', 'l', 'd', 'u', 'n', 'g' };
+
+        StringBuilder sb = new StringBuilder();
+        for (char value : charArray) {
+            sb.append(value);
         }
 
-        @Test
-        public void whenStringCopyValueOf_thenOK() {
-                final char[] charArray = { 'b', 'a', 'e', 'l', 'd', 'u', 'n', 'g' };
+        assertThat(sb.toString(), is("baeldung"));
+    }
 
-                String string = String.copyValueOf(charArray);
+    @Test
+    public void whenStreamCollectors_thenOK() {
+        final Character[] charArray = { 'b', 'a', 'e', 'l', 'd', 'u', 'n', 'g' };
 
-                assertThat(string, is("baeldung"));
-        }
+        Stream<Character> charStream = Arrays.stream(charArray);
+        String string = charStream.map(String::valueOf).collect(Collectors.joining());
 
-        @Test
-        public void whenStringValueOf_thenOK() {
-                final char[] charArray = { 'b', 'a', 'e', 'l', 'd', 'u', 'n', 'g' };
+        assertThat(string, is("baeldung"));
+    }
 
-                String string = String.valueOf(charArray);
+    @Test
+    public void whenGoogleCommonBaseJoiners_thenOK() {
+        final Character[] charArray = { 'b', 'a', 'e', 'l', 'd', 'u', 'n', 'g' };
 
-                assertThat(string, is("baeldung"));
-        }
+        String string = Joiner.on("").join(charArray);
 
-        @Test
-        public void whenStringBuilder_thenOK() {
-                final char[] charArray = { 'b', 'a', 'e', 'l', 'd', 'u', 'n', 'g' };
-
-                StringBuilder sb = new StringBuilder();
-                for (char value : charArray) {
-                        sb.append(value);
-                }
-
-                assertThat(sb.toString(), is("baeldung"));
-        }
-
-        @Test
-        public void whenStreamCollectors_thenOK() {
-                final Character[] charArray = { 'b', 'a', 'e', 'l', 'd', 'u', 'n', 'g' };
-
-                Stream<Character> charStream = Arrays.stream(charArray);
-                String string = charStream.map(String::valueOf).collect(Collectors.joining());
-
-                assertThat(string, is("baeldung"));
-        }
-
-        @Test
-        public void whenGoogleCommonBaseJoiners_thenOK() {
-                final Character[] charArray = { 'b', 'a', 'e', 'l', 'd', 'u', 'n', 'g' };
-
-                String string = Joiner.on("").join(charArray);
-
-                assertThat(string, is("baeldung"));
-        }
+        assertThat(string, is("baeldung"));
+    }
 
 }
