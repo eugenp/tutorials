@@ -11,15 +11,15 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class SaxParserMainTest {
+public class SaxParserMainUnitTest {
 
     @Test
-    void parse_baeldung_xml_document() throws IOException, SAXException, ParserConfigurationException {
+    public void parse_baeldung_xml_document() throws IOException, SAXException, ParserConfigurationException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser saxParser = factory.newSAXParser();
 
         SaxParserMain.BaeldungHandler baeldungHandler = new SaxParserMain.BaeldungHandler();
-        saxParser.parse("xml\\src\\test\\resources\\sax\\baeldung.xml", baeldungHandler);
+        saxParser.parse("src\\test\\resources\\sax\\baeldung.xml", baeldungHandler);
 
         SaxParserMain.Baeldung result = baeldungHandler.getWebsite();
 
