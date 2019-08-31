@@ -2,7 +2,6 @@ package com.baeldung.contexts.config;
 
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
 
 public class SecureAnnotationsBasedApplicationAndServletInitializer// extends AbstractDispatcherServletInitializer 
 {

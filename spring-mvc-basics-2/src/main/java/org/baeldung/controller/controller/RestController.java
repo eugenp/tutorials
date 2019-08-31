@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class RestController {
 
     @GetMapping(value = "/student/{studentId}")
-    public @ResponseBody Student getTestData(@PathVariable Integer studentId) {
+    public @ResponseBody
+    Student getTestData(@PathVariable Integer studentId) {
         Student student = new Student();
         student.setName("Peter");
         student.setId(studentId);
