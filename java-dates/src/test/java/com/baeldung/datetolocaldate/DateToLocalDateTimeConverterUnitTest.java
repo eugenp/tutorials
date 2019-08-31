@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.baeldung.java9.datetime;
+package com.baeldung.datetolocaldate;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,7 +12,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import com.baeldung.java9.datetime.DateToLocalDateTimeConverter;
+import com.baeldung.datetolocaldate.DateToLocalDateTimeConverter;
 
 /**
  * JUnits for {@link DateToLocalDateTimeConverter} class.

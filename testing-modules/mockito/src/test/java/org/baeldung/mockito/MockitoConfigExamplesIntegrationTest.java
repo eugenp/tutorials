@@ -11,6 +11,8 @@ import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
+import org.baeldung.mockito.voidmethods.MyList;
+
 public class MockitoConfigExamplesIntegrationTest {
 
     // tests
