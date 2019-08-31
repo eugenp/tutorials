@@ -1,11 +1,12 @@
 package com.baeldung.concurrent.mutex;
 
 public class SequenceGenerator {
+
     private int currentValue = 0;
 
-    public int getNextSequence() throws InterruptedException {
+    public int getNextSequence() {
         currentValue = currentValue + 1;
-        Thread.sleep(500);
         return currentValue;
     }
+
 }
