@@ -26,7 +26,8 @@ public class InvoiceUnitTest {
     	Invoice invoice = new Invoice(new BigDecimal(10.21), "Book purchased");
         Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
         assertThat(violations.size()).isEqualTo(1);
-        violations.forEach(action-> assertThat(action.getMessage()).isEqualTo("numeric value out of bounds (<3 digits>.<2 digits> expected)"));
+        violations.forEach(action-> assertThat(action.getMessage())
+        		.isEqualTo("numeric value out of bounds (<3 digits>.<2 digits> expected)"));
     }
     
     @Test
@@ -41,7 +42,8 @@ public class InvoiceUnitTest {
     	Invoice invoice = new Invoice(new BigDecimal(1021.21), "Book purchased");
         Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
         assertThat(violations.size()).isEqualTo(1);
-        violations.forEach(action-> assertThat(action.getMessage()).isEqualTo("numeric value out of bounds (<3 digits>.<2 digits> expected)"));
+        violations.forEach(action-> assertThat(action.getMessage())
+        		.isEqualTo("numeric value out of bounds (<3 digits>.<2 digits> expected)"));
     }
     
     @Test
@@ -49,7 +51,8 @@ public class InvoiceUnitTest {
     	Invoice invoice = new Invoice(new BigDecimal(000.00), "Book purchased");
         Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
         assertThat(violations.size()).isEqualTo(1);
-        violations.forEach(action-> assertThat(action.getMessage()).isEqualTo("must be greater than 0.0"));
+        violations.forEach(action-> assertThat(action.getMessage())
+        		.isEqualTo("must be greater than 0.0"));
     }
     
     @Test

@@ -86,6 +86,11 @@
             <artifactId>javafaker</artifactId>
             <version>0.18</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -167,5 +172,6 @@
         <jayway-rest-assured.version>2.9.0</jayway-rest-assured.version>
         <kotlin.version>1.1.2</kotlin.version>
         <start-class>com.baeldung.Spring5Application</start-class>
+        <httpclient.version>4.5.8</httpclient.version>
     </properties>
 </project>
