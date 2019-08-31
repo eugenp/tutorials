@@ -55,7 +55,7 @@
 
 	<properties>
 		<rest-assured.version>3.1.0</rest-assured.version>
-		<spring-boot.version>1.5.19.RELEASE</spring-boot.version>
+		<spring-boot.version>1.5.22.RELEASE</spring-boot.version>
 	</properties>
 	
 </project>

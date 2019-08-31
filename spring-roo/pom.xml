@@ -604,14 +604,14 @@
     </dependencyManagement>
 
     <properties>
-        <roo.version>2.0.0.RC1</roo.version>
+        <roo.version>2.0.0.RELEASE</roo.version>
         <java.product.version>8</java.product.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.plugin.version>1.8</aspectj.plugin.version>
         <asciidoclet.version>1.5.4</asciidoclet.version>
-        <spring-boot.version>1.4.1.RELEASE</spring-boot.version>
+        <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
         <java.version>1.8</java.version>
-        <springlets.version>1.2.0.RC1</springlets.version>
+        <springlets.version>1.2.0.RELEASE</springlets.version>
         <tracee.version>1.1.2</tracee.version>
         <thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
         <thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>
