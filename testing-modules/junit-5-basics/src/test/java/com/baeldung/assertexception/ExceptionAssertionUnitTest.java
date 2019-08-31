@@ -1,4 +1,4 @@
-package com.baeldung.exception;
+package com.baeldung.assertexception;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

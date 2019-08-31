@@ -1,4 +1,4 @@
-package com.baeldung.migration.junit4;
+package com.baeldung.assertexception.migration.junit4;
 
 import org.junit.Rule;
 import org.junit.Test;
