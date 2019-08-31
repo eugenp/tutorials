@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import com.google.common.io.CharStreams;
 
-public class BRtoJSONObject {
+public class BRtoJSONObjectUnitTest {
 
     @Test
     public void whenUsingCoreJava_convertBufferedReaderToJSONObject() throws Exception {
