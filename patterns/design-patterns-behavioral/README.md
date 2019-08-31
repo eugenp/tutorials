@@ -6,3 +6,4 @@
 - [Implementing the Template Method Pattern in Java](http://www.baeldung.com/java-template-method-pattern)
 - [Chain of Responsibility Design Pattern in Java](http://www.baeldung.com/chain-of-responsibility-pattern)
 - [The Command Pattern in Java](http://www.baeldung.com/java-command-pattern)
+- [The Mediator Pattern in Java](https://www.baeldung.com/java-mediator-pattern)
