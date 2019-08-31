@@ -1,6 +1,6 @@
 package org.baeldung.caching.example;
 
-import org.baeldung.model.Book;
+import org.baeldung.caching.model.Book;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 

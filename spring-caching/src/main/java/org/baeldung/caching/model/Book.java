@@ -1,4 +1,4 @@
-package org.baeldung.model;
+package org.baeldung.caching.model;
 
 public class Book {
 

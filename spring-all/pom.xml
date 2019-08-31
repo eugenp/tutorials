@@ -148,10 +148,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.ehcache</groupId>
-            <artifactId>ehcache</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
         </dependency>
@@ -243,7 +239,6 @@
 
         <!-- util -->
         <guava.version>25.1-jre</guava.version>
-        <ehcache.version>3.5.2</ehcache.version>
         <easymock.version>3.6</easymock.version>
         <assertj.version>3.6.1</assertj.version>
         <jasperreports.version>6.6.0</jasperreports.version>
