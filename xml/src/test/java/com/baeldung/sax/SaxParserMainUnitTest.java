@@ -7,11 +7,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -19,13 +14,12 @@ import static org.junit.Assert.*;
 public class SaxParserMainUnitTest {
 
     @Test
-    public void parse_baeldung_xml_document() throws IOException, SAXException, ParserConfigurationException, URISyntaxException {
+    public void parse_baeldung_xml_document() throws IOException, SAXException, ParserConfigurationException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser saxParser = factory.newSAXParser();
 
         SaxParserMain.BaeldungHandler baeldungHandler = new SaxParserMain.BaeldungHandler();
-        Path path = Paths.get(new URL("src\\test\\resources\\sax\\baeldung.xml").toURI());
-        saxParser.parse(path.toFile(), baeldungHandler);
+        saxParser.parse("src/test/resources/sax/baeldung.xml", baeldungHandler);
 
         SaxParserMain.Baeldung result = baeldungHandler.getWebsite();
 
