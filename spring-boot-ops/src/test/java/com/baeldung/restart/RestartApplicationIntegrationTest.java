@@ -2,15 +2,13 @@ package com.baeldung.restart;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.After;
-import org.junit.Before;
+import java.io.IOException;
+import java.net.ServerSocket;
+
 import org.junit.Test;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-
-import java.time.Duration;
 
 public class RestartApplicationIntegrationTest {
 
@@ -18,9 +16,10 @@ public class RestartApplicationIntegrationTest {
 
     @Test
     public void givenBootApp_whenRestart_thenOk() throws Exception {
-        Application.main(new String[0]);
+        Integer port = findRandomOpenPortOnAllLocalInterfaces();
+        Application.main(new String[] { String.format("--server.port=%d", port) });
 
-        ResponseEntity response = restTemplate.exchange("http://localhost:8080/restart",
+        ResponseEntity response = restTemplate.exchange(String.format("http://localhost:%d/restart", port),
            HttpMethod.POST, null, Object.class);
         
         assertEquals(200, response.getStatusCode().value());
@@ -28,12 +27,18 @@ public class RestartApplicationIntegrationTest {
     
     @Test
     public void givenBootApp_whenRestartUsingActuator_thenOk() throws Exception {
-        Application.main(new String[] { "--server.port=8090" });
+        Integer port = findRandomOpenPortOnAllLocalInterfaces();
+        Application.main(new String[] { String.format("--server.port=%d", port) });
 
-        ResponseEntity response = restTemplate.exchange("http://localhost:8090/restartApp",
+        ResponseEntity response = restTemplate.exchange(String.format("http://localhost:%d/restartApp", port),
            HttpMethod.POST, null, Object.class);
         
         assertEquals(200, response.getStatusCode().value());
     }
-
+    
+    private Integer findRandomOpenPortOnAllLocalInterfaces() throws IOException {
+        try (ServerSocket socket = new ServerSocket(0);) {
+            return socket.getLocalPort();
+        }
+    }
 }
