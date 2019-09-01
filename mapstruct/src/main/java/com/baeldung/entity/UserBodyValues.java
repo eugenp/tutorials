@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UrlObject {
-    private String address;
+public class UserBodyValues {
+    private double kilogram;
+    private double centimeter;
 }

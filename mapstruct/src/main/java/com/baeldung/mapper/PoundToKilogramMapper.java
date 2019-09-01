@@ -10,4 +10,4 @@ import java.lang.annotation.Target;
 @Qualifier
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.CLASS)
-public @interface ProtocolRemover {}
+public @interface PoundToKilogramMapper {}

@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UrlDTO {
-    private String address;
+public class UserBodyImperialValuesDTO {
+    private int inch;
+    private int pound;
 }
