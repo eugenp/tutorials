@@ -49,9 +49,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-        	<groupId>com.github.groovy-wslite</groupId>
-        	<artifactId>groovy-wslite</artifactId>
-        	<version>${groovy-wslite.version}</version>
+            <groupId>com.github.groovy-wslite</groupId>
+            <artifactId>groovy-wslite</artifactId>
+            <version>${groovy-wslite.version}</version>
         </dependency>
     </dependencies>
 
