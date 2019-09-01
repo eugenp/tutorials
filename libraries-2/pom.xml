@@ -113,30 +113,30 @@
             <version>${mesos.library.version}</version>
         </dependency>
         <dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-reactive-httpclient</artifactId>
-			<version>${jetty.httpclient.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-server</artifactId>
-			<version>${jetty.server.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.reactivex.rxjava2</groupId>
-			<artifactId>rxjava</artifactId>
-			<version>${rxjava2.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webflux</artifactId>
-			<version>${spring.webflux.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.reactivestreams</groupId>
-			<artifactId>reactive-streams</artifactId>
-			<version>${reactive.stream.version}</version>
-		</dependency>
+	<groupId>org.eclipse.jetty</groupId>
+	<artifactId>jetty-reactive-httpclient</artifactId>
+	<version>${jetty.httpclient.version}</version>
+</dependency>
+<dependency>
+	<groupId>org.eclipse.jetty</groupId>
+	<artifactId>jetty-server</artifactId>
+	<version>${jetty.server.version}</version>
+</dependency>
+<dependency>
+	<groupId>io.reactivex.rxjava2</groupId>
+	<artifactId>rxjava</artifactId>
+	<version>${rxjava2.version}</version>
+</dependency>
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-webflux</artifactId>
+	<version>${spring.webflux.version}</version>
+</dependency>
+<dependency>
+	<groupId>org.reactivestreams</groupId>
+	<artifactId>reactive-streams</artifactId>
+	<version>${reactive.stream.version}</version>
+</dependency>
     </dependencies>
 
     <properties>
@@ -155,9 +155,9 @@
         <mockwebserver.version>3.14.2</mockwebserver.version>
         <handlebars.version>4.1.2</handlebars.version>
         <jetty.httpclient.version>1.0.3</jetty.httpclient.version>
-		<jetty.server.version>9.4.19.v20190610</jetty.server.version>
-		<rxjava2.version>2.2.11</rxjava2.version>
-		<spring.webflux.version>5.1.9.RELEASE</spring.webflux.version>
-		<reactive.stream.version>1.0.3</reactive.stream.version>
+<jetty.server.version>9.4.19.v20190610</jetty.server.version>
+<rxjava2.version>2.2.11</rxjava2.version>
+<spring.webflux.version>5.1.9.RELEASE</spring.webflux.version>
+<reactive.stream.version>1.0.3</reactive.stream.version>
     </properties>
 </project>
