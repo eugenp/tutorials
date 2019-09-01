@@ -1,8 +1,8 @@
-package org.baeldung.mockito;
+package org.baeldung.mockito.voidmethods;
 
 import java.util.AbstractList;
 
-class MyList extends AbstractList<String> {
+public class MyList extends AbstractList<String> {
 
     @Override
     public String get(final int index) {
