@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.util.List;
+import java.util.Collections;
 
 @TestConfiguration
 public class CouchbaseMockConfiguration {
@@ -27,7 +27,7 @@ public class CouchbaseMockConfiguration {
         bucketConfiguration.password = couchbaseProperties.getBucketPassword();
 
         try {
-            couchbaseMock = new CouchbaseMock(couchbaseProperties.getPort(), List.of(bucketConfiguration));
+            couchbaseMock = new CouchbaseMock(couchbaseProperties.getPort(), Collections.singletonList(bucketConfiguration));
         } catch (final IOException ex) {
             throw new UncheckedIOException(ex);
         }

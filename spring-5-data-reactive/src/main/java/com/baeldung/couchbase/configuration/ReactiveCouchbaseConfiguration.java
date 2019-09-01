@@ -17,11 +17,6 @@ public abstract class ReactiveCouchbaseConfiguration extends AbstractReactiveCou
         this.couchbaseProperties = couchbaseProperties;
     }
 
-    @Bean(name = BeanNames.COUCHBASE_INDEX_MANAGER)
-    public IndexManager indexManager() {
-        return new IndexManager(true, true, false);
-    }
-
     @Override
     protected List<String> getBootstrapHosts() {
         return couchbaseProperties.getBootstrapHosts();
