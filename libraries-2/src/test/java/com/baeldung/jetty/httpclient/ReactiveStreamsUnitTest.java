@@ -2,7 +2,6 @@ package com.baeldung.jetty.httpclient;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicReference;
 
 import org.eclipse.jetty.client.api.Request;
 import org.eclipse.jetty.http.HttpStatus;
@@ -24,7 +23,6 @@ public class ReactiveStreamsUnitTest extends AbstractTest {
         Publisher<ReactiveResponse> publisher = reactiveRequest.response();
 
         CountDownLatch latch = new CountDownLatch(1);
-        AtomicReference<ReactiveResponse> responseReference = new AtomicReference<>();
         publisher.subscribe(new Subscriber<ReactiveResponse>() {
             @Override
             public void onSubscribe(Subscription subscription) {
@@ -33,7 +31,8 @@ public class ReactiveStreamsUnitTest extends AbstractTest {
 
             @Override
             public void onNext(ReactiveResponse response) {
-                responseReference.set(response);
+                Assert.assertNotNull(response);
+                Assert.assertEquals(response.getStatus(), HttpStatus.OK_200);
             }
 
             @Override
@@ -47,8 +46,5 @@ public class ReactiveStreamsUnitTest extends AbstractTest {
         });
 
         Assert.assertTrue(latch.await(5, TimeUnit.SECONDS));
-        ReactiveResponse response = responseReference.get();
-        Assert.assertNotNull(response);
-        Assert.assertEquals(response.getStatus(), HttpStatus.OK_200);
     }
 }
