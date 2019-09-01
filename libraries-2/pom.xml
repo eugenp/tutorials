@@ -113,7 +113,7 @@
             <version>${mesos.library.version}</version>
         </dependency>
         <dependency>
-        <groupId>org.eclipse.jetty</groupId>
+            <groupId>org.eclipse.jetty</groupId>
 	    <artifactId>jetty-reactive-httpclient</artifactId>
 	    <version>${jetty.httpclient.version}</version>
 	</dependency>
