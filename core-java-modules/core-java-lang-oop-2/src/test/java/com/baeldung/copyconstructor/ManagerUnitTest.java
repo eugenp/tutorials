@@ -56,7 +56,7 @@ public class ManagerUnitTest {
         assertEquals(directReports1.size(), directReports2.size());
         assertArrayEquals(directReports1.toArray(), directReports2.toArray());
 
-        // clear m1's direct reports list. m2's list should not be affected
+        // clear source's direct reports list. clone's list should not be affected
         directReports.clear();
         directReports1 = ((Manager) source).getDirectReport();
         directReports2 = ((Manager) clone).getDirectReport();
