@@ -113,29 +113,29 @@
             <version>${mesos.library.version}</version>
         </dependency>
         <dependency>
-	<groupId>org.eclipse.jetty</groupId>
-	<artifactId>jetty-reactive-httpclient</artifactId>
-	<version>${jetty.httpclient.version}</version>
+        <groupId>org.eclipse.jetty</groupId>
+	    <artifactId>jetty-reactive-httpclient</artifactId>
+	    <version>${jetty.httpclient.version}</version>
 	</dependency>
 	<dependency>
-	<groupId>org.eclipse.jetty</groupId>
-	<artifactId>jetty-server</artifactId>
-	<version>${jetty.server.version}</version>
+	    <groupId>org.eclipse.jetty</groupId>
+	    <artifactId>jetty-server</artifactId>
+	    <version>${jetty.server.version}</version>
 	</dependency>
 	<dependency>
-	<groupId>io.reactivex.rxjava2</groupId>
-	<artifactId>rxjava</artifactId>
-	<version>${rxjava2.version}</version>
+	    <groupId>io.reactivex.rxjava2</groupId>
+	    <artifactId>rxjava</artifactId>
+	    <version>${rxjava2.version}</version>
 	</dependency>
 	<dependency>
-	<groupId>org.springframework</groupId>
-	<artifactId>spring-webflux</artifactId>
-	<version>${spring.webflux.version}</version>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-webflux</artifactId>
+	    <version>${spring.webflux.version}</version>
 	</dependency>
 	<dependency>
-	<groupId>org.reactivestreams</groupId>
-	<artifactId>reactive-streams</artifactId>
-	<version>${reactive.stream.version}</version>
+	    <groupId>org.reactivestreams</groupId>
+	    <artifactId>reactive-streams</artifactId>
+	    <version>${reactive.stream.version}</version>
 	</dependency>
     </dependencies>
 
