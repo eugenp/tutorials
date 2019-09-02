@@ -21,7 +21,6 @@ class EmployeeServiceIntegrationTest {
     public static MockWebServer mockBackEnd;
     private EmployeeService employeeService;
     private ObjectMapper MAPPER = new ObjectMapper();
-    ;
 
     @BeforeAll
     static void setUp() throws IOException {
