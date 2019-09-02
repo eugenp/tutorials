@@ -162,11 +162,6 @@
             <artifactId>commons-collections</artifactId>
             <version>${commons-collections.version}</version>
         </dependency>
-        
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
 
         <!-- Rest Assured Dependencies-->
         <dependency>

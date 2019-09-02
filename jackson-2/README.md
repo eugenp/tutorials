@@ -11,3 +11,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Working with Tree Model Nodes in Jackson](https://www.baeldung.com/jackson-json-node-tree-model)
 - [Converting JSON to CSV in Java](https://www.baeldung.com/java-converting-json-to-csv)
 - [Compare Two JSON Objects with Jackson](https://www.baeldung.com/jackson-compare-two-json-objects)
+- [Calling Default Serializer from Custom Serializer in Jackson](https://www.baeldung.com/jackson-call-default-serializer-from-custom-serializer)
