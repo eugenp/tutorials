@@ -9,8 +9,8 @@
 - [Stored Procedures with Hibernate](http://www.baeldung.com/stored-procedures-with-hibernate-tutorial)
 - [Hibernate: save, persist, update, merge, saveOrUpdate](http://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate)
 - [Eager/Lazy Loading In Hibernate](http://www.baeldung.com/hibernate-lazy-eager-loading)
-- [Hibernate One to Many Annotation Tutorial](http://www.baeldung.com/hibernate-one-to-many)
 - [The DAO with Spring and Hibernate](http://www.baeldung.com/persistence-layer-with-spring-and-hibernate)
+- [Auditing with JPA, Hibernate, and Spring Data JPA](https://www.baeldung.com/database-auditing-jpa)
 
 ### Quick Start
 

@@ -3,8 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>libraries2</artifactId>
-    <name>libraries2</name>
+    <artifactId>libraries-2</artifactId>
+    <name>libraries-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -60,26 +60,6 @@
             <version>${picocli.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.ejml</groupId>
-            <artifactId>ejml-all</artifactId>
-            <version>${ejml.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.nd4j</groupId>
-            <artifactId>nd4j-native</artifactId>
-            <version>${nd4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.la4j</groupId>
-            <artifactId>la4j</artifactId>
-            <version>${la4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>colt</groupId>
-            <artifactId>colt</artifactId>
-            <version>${colt.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
             <version>${spring-boot-starter.version}</version>
@@ -127,17 +107,6 @@
             <artifactId>handlebars</artifactId>
             <version>${handlebars.version}</version>
         </dependency>
-        <!-- Benchmarking -->
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.apache.mesos</groupId>
             <artifactId>mesos</artifactId>
@@ -154,11 +123,6 @@
         <chronicle.map.version>3.17.2</chronicle.map.version>
         <crawler4j.version>4.4.0</crawler4j.version>
         <spring-boot-starter.version>2.1.4.RELEASE</spring-boot-starter.version>
-        <ejml.version>0.38</ejml.version>
-        <nd4j.version>1.0.0-beta4</nd4j.version>
-        <colt.version>1.2.0</colt.version>
-        <la4j.version>0.6.0</la4j.version>
-        <jmh.version>1.19</jmh.version>
         <mesos.library.version>0.28.3</mesos.library.version>
         <parallel-collectors.version>1.1.0</parallel-collectors.version>
         <okhttp.version>3.14.2</okhttp.version>

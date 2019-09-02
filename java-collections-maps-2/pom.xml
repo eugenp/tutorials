@@ -54,7 +54,6 @@
         <trove4j.version>3.0.2</trove4j.version>
         <fastutil.version>8.1.0</fastutil.version>
         <colt.version>1.2.0</colt.version>
-        <commons-lang3.version>3.8.1</commons-lang3.version>
         <assertj.version>3.11.1</assertj.version>
     </properties>
 

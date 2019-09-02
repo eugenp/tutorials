@@ -5,7 +5,7 @@
     <groupId>org.test</groupId>
     <artifactId>vaadin</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Vaadin</name>
+    <name>vaadin</name>
     <packaging>war</packaging>
 
     <parent>
@@ -187,7 +187,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <vaadin.widgetset.mode>local</vaadin.widgetset.mode>
         <vaadin.theme>mytheme</vaadin.theme>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
         <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
     </properties>
 

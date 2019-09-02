@@ -94,7 +94,6 @@
     	<spring-data.version>2.0.9.RELEASE</spring-data.version>
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
 
         <!-- testing -->
         <powermock.version>1.7.0</powermock.version>

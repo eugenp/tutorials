@@ -5,14 +5,14 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.baeldung.components.AccountService;
-import com.baeldung.components.UserService;
+import com.baeldung.annotationconfigvscomponentscan.components.AccountService;
+import com.baeldung.annotationconfigvscomponentscan.components.UserService;
 
 public class SpringXMLConfigurationIntegrationTest {
 
     @Test
     public void givenContextAnnotationConfigOrContextComponentScan_whenDependenciesAndBeansAnnotated_thenNoXMLNeeded() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:beans.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:annotationconfigvscomponentscan-beans.xml");
         UserService userService = context.getBean(UserService.class);
         AccountService accountService = context.getBean(AccountService.class);
         Assert.assertNotNull(userService);

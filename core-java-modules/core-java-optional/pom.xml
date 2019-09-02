@@ -3,6 +3,7 @@
     <artifactId>core-java-optional</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <name>core-java-optional</name>
 	
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -19,12 +20,12 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2database.version}</version>
+            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.databind.version}</version>
+            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
 
@@ -48,7 +49,5 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <hibernate.core.version>5.4.0.Final</hibernate.core.version>
-        <h2database.version>1.4.197</h2database.version>
-        <jackson.databind.version>2.9.8</jackson.databind.version>
     </properties>
 </project>

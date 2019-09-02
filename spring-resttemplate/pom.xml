@@ -284,7 +284,6 @@
     </profiles>
 
     <properties>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <xstream.version>1.4.9</xstream.version>
 
         <!-- util -->
