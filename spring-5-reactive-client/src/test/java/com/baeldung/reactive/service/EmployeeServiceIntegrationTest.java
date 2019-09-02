@@ -20,7 +20,8 @@ class EmployeeServiceIntegrationTest {
 
     public static MockWebServer mockBackEnd;
     private EmployeeService employeeService;
-    private ObjectMapper MAPPER = new ObjectMapper();;
+    private ObjectMapper MAPPER = new ObjectMapper();
+    ;
 
     @BeforeAll
     static void setUp() throws IOException {
@@ -54,8 +55,8 @@ class EmployeeServiceIntegrationTest {
                 .verifyComplete();
 
         RecordedRequest recordedRequest = mockBackEnd.takeRequest();
-        assertEquals(recordedRequest.getMethod(), "GET");
-        assertEquals((recordedRequest.getPath()), "/employee/100");
+        assertEquals("GET", recordedRequest.getMethod(), );
+        assertEquals("/employee/100", recordedRequest.getPath());
     }
 
     @Test
@@ -73,28 +74,28 @@ class EmployeeServiceIntegrationTest {
                 .verifyComplete();
 
         RecordedRequest recordedRequest = mockBackEnd.takeRequest();
-        assertEquals(recordedRequest.getMethod(), "POST");
-        assertEquals((recordedRequest.getPath()), "/employee");
+        assertEquals("POST", recordedRequest.getMethod(), );
+        assertEquals("/employee", recordedRequest.getPath());
     }
 
     @Test
     void updateEmployee() throws Exception {
 
-        Integer newAge=33;
-        String newLastName="Sandler New";
+        Integer newAge = 33;
+        String newLastName = "Sandler New";
         Employee updateEmployee = new Employee(100, "Adam", newLastName, newAge, Role.LEAD_ENGINEER);
         mockBackEnd.enqueue(new MockResponse().setBody(MAPPER.writeValueAsString(updateEmployee))
                 .addHeader("Content-Type", "application/json"));
 
-        Mono<Employee> updatedEmploye =employeeService.updateEmployee(100, updateEmployee);
+        Mono<Employee> updatedEmploye = employeeService.updateEmployee(100, updateEmployee);
 
         StepVerifier.create(updatedEmploye)
                 .expectNextMatches(employee -> employee.getLastName().equals(newLastName) && employee.getAge() == newAge)
                 .verifyComplete();
 
         RecordedRequest recordedRequest = mockBackEnd.takeRequest();
-        assertEquals(recordedRequest.getMethod(), "PUT");
-        assertEquals((recordedRequest.getPath()), "/employee/100");
+        assertEquals("PUT", recordedRequest.getMethod());
+        assertEquals("/employee/100", recordedRequest.getPath());
 
     }
 
@@ -103,7 +104,7 @@ class EmployeeServiceIntegrationTest {
     void deleteEmployee() throws Exception {
 
         String responseMessage = "Employee Deleted SuccessFully";
-        Integer employeeId=100;
+        Integer employeeId = 100;
         mockBackEnd.enqueue(new MockResponse().setBody(MAPPER.writeValueAsString(responseMessage))
                 .addHeader("Content-Type", "application/json"));
 
@@ -114,8 +115,8 @@ class EmployeeServiceIntegrationTest {
                 .verifyComplete();
 
         RecordedRequest recordedRequest = mockBackEnd.takeRequest();
-        assertEquals(recordedRequest.getMethod(), "DELETE");
-        assertEquals((recordedRequest.getPath()), "/employee/100");
+        assertEquals("DELETE", recordedRequest.getMethod());
+        assertEquals("/employee/100", recordedRequest.getPath());
     }
 
 }

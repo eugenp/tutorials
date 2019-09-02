@@ -5,7 +5,7 @@ import com.baeldung.reactive.enums.Role;
 
 public class Employee {
     private Integer employeeId;
-    private String firsName;
+    private String firstName;
     private String lastName;
     private Integer age;
     private Role role;
@@ -13,9 +13,9 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Integer employeeId, String firsName, String lastName, Integer age, Role role) {
+    public Employee(Integer employeeId, String firstName, String lastName, Integer age, Role role) {
         this.employeeId = employeeId;
-        this.firsName = firsName;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.role = role;
@@ -29,12 +29,12 @@ public class Employee {
         this.employeeId = employeeId;
     }
 
-    public String getFirsName() {
-        return firsName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirsName(String firsName) {
-        this.firsName = firsName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
