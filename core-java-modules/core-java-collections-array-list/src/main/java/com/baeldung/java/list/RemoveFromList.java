@@ -27,13 +27,12 @@ public class RemoveFromList {
                 while (iterator.hasNext()) {
                         if (iterator.next().equals("Boxing")) {
                                 iterator.remove();
+                                break;
                         }
                 }
 
                 // ArrayList removeIf method (Java 8)
-                for (int i = 0; i < sports.size(); i++) {
-                        sports.removeIf(p -> p.equals("Cycling"));
-                }
+                sports.removeIf(p -> p.equals("Cycling"));
 
                 System.out.println("List after removing:  " + sports);
         }
