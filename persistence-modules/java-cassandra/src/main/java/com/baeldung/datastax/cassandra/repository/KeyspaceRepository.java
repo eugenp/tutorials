@@ -1,5 +1,6 @@
 package com.baeldung.datastax.cassandra.repository;
 
+import com.datastax.oss.driver.api.core.CqlIdentifier;
 import com.datastax.oss.driver.api.core.CqlSession;
 
 import com.datastax.oss.driver.api.querybuilder.SchemaBuilder;
@@ -21,6 +22,6 @@ public class KeyspaceRepository {
     }
 
     public void useKeyspace(String keyspace) {
-        session.execute("USE " + keyspace);
+        session.execute("USE " + CqlIdentifier.fromCql(keyspace));
     }
 }
