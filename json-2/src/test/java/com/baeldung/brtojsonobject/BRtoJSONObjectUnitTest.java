@@ -15,40 +15,42 @@ public class BRtoJSONObjectUnitTest {
 
     @Test
     public void whenUsingCoreJava_convertBufferedReaderToJSONObject() throws Exception {
-            BufferedReader br = new BufferedReader(new FileReader("src/main/resources/input.txt"));
-            StringBuilder response = new StringBuilder();
-            String responseLine = null;
-            while ((responseLine = br.readLine()) != null) {
-            response.append(responseLine.trim());
-            }
-            br.close();
-            JSONObject json = new JSONObject(response.toString());
-            assertEquals("John Doe", json.getString("name")); 
-            assertEquals("39", json.getString("age"));
+    BufferedReader br = new BufferedReader(new FileReader("src/main/resources/input.txt"));
+    StringBuilder response = new StringBuilder();
+    String responseLine = null;
+    while ((responseLine = br.readLine()) != null) {
+    response.append(responseLine.trim());
     }
-    @Test
-    public void whenUsingJava8_convertBufferedReaderToJSONObject() throws Exception {
-            BufferedReader br = new BufferedReader(new FileReader("src/main/resources/input.txt")); 
-            String line = br.lines().collect(Collectors.joining());
-            JSONObject json = new JSONObject(line); 
-            assertEquals("John Doe", json.getString("name")); 
-            assertEquals("39", json.getString("age"));
-    }
-    @Test
-    public void whenUsingApacheCommons_convertBufferedReaderToJSONObject() throws Exception {
-            BufferedReader br = new BufferedReader(new FileReader("src/main/resources/input.txt"));
-            String responseNew= IOUtils.toString(br); 
-            JSONObject json = new JSONObject(responseNew.toString());
-            assertEquals("John Doe", json.getString("name")); 
-            assertEquals("39", json.getString("age"));
-    }
-    @Test
-    public void whenUsingGuava_convertBufferedReaderToJSONObject() throws Exception {
-            BufferedReader br = new BufferedReader(new FileReader("src/main/resources/input.txt"));
-            String targetString = CharStreams.toString(br); 
-            JSONObject json = new JSONObject(targetString);
-            assertEquals("John Doe", json.getString("name")); 
-            assertEquals("39", json.getString("age"));
+    br.close();
+    JSONObject json = new JSONObject(response.toString());
+    assertEquals("John Doe", json.getString("name")); 
+    assertEquals("39", json.getString("age"));
     }
 
+    @Test
+    public void whenUsingJava8_convertBufferedReaderToJSONObject() throws Exception {
+    BufferedReader br = new BufferedReader(new FileReader("src/main/resources/input.txt")); 
+    String line = br.lines().collect(Collectors.joining());
+    JSONObject json = new JSONObject(line); 
+    assertEquals("John Doe", json.getString("name")); 
+    assertEquals("39", json.getString("age"));
+    }
+
+    @Test
+    public void whenUsingApacheCommons_convertBufferedReaderToJSONObject() throws Exception {
+    BufferedReader br = new BufferedReader(new FileReader("src/main/resources/input.txt"));
+    String responseNew= IOUtils.toString(br); 
+    JSONObject json = new JSONObject(responseNew.toString());
+    assertEquals("John Doe", json.getString("name")); 
+    assertEquals("39", json.getString("age"));
+    }
+
+    @Test
+    public void whenUsingGuava_convertBufferedReaderToJSONObject() throws Exception {
+    BufferedReader br = new BufferedReader(new FileReader("src/main/resources/input.txt"));
+    String targetString = CharStreams.toString(br); 
+    JSONObject json = new JSONObject(targetString);
+    assertEquals("John Doe", json.getString("name")); 
+    assertEquals("39", json.getString("age"));
+    }
 }
