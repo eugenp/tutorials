@@ -19,19 +19,20 @@ public class CompressingClientHttpRequestInterceptor implements ClientHttpReques
     /**
      * Compress a request body using Gzip and add Http headers.
      *
-     * @param request
+     * @param req
      * @param body
-     * @param execution
+     * @param exec
      * @return
      * @throws IOException
      */
     @Override
-    public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
+    public ClientHttpResponse intercept(HttpRequest req, byte[] body, ClientHttpRequestExecution exec)
+            throws IOException {
         LOG.info("Compressing request...");
-        HttpHeaders httpHeaders = request.getHeaders();
+        HttpHeaders httpHeaders = req.getHeaders();
         httpHeaders.add(HttpHeaders.CONTENT_ENCODING, GZIP_ENCODING);
         httpHeaders.add(HttpHeaders.ACCEPT_ENCODING, GZIP_ENCODING);
-        return execution.execute(request, GzipUtils.compress(body));
+        return exec.execute(req, GzipUtils.compress(body));
     }
 
 }

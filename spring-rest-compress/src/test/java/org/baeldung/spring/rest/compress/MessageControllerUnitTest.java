@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class MessageControllerUnitTest {
 
 	private static final Logger LOG = LoggerFactory.getLogger(MessageControllerUnitTest.class);
@@ -29,8 +29,8 @@ public class MessageControllerUnitTest {
 	private int randomServerPort;
 
 	/**
-	 * As a further test you can intercept the request body, using a tool like Wireshark,
-	 * to see the request body is actually gzipped.
+	 * As a further test you can intercept the request body, using a tool like
+	 * Wireshark, to see the request body is actually gzipped.
 	 *
 	 * @throws Exception
 	 */

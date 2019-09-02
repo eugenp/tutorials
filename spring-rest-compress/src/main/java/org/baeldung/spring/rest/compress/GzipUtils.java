@@ -18,7 +18,7 @@ public class GzipUtils {
      * @return
      * @throws Exception
      */
-    public static byte [] compress(String text) throws Exception {
+    public static byte[] compress(String text) throws Exception {
         return GzipUtils.compress(text.getBytes(Charsets.UTF_8));
     }
 
@@ -29,7 +29,7 @@ public class GzipUtils {
      * @return
      * @throws IOException
      */
-    public static byte [] compress(byte [] body) throws IOException {
+    public static byte[] compress(byte[] body) throws IOException {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         try {
             try (GZIPOutputStream gzipOutputStream = new GZIPOutputStream(output)) {

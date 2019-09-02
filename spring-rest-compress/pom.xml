@@ -31,22 +31,9 @@
 			</exclusions>
 		</dependency>
 
-		<!-- Uncomment to use Jetty 							-->
-		<!-- You must also:        								-->
-		<!-- 1. Uncomment JettyWebServerConfiguration class 	-->
-		<!-- 2. Comment UndertowWebServerConfiguration class 	-->
-		<!-- 3. Comment Undertow dependency below      			-->
-		<!--
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jetty</artifactId>
-		</dependency>
-		-->
-
-		<!-- Use Undertow -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-undertow</artifactId>
 		</dependency>
 
 		<dependency>
