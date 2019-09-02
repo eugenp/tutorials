@@ -8,7 +8,7 @@ public class StudentStore {
     private Map<Integer, Student> students = new HashMap<>();
 
     public Optional<Student> addStudent(Student student) {
-        int id = students.size() + 1;
+        int id = students.size();
         student.setId(id);
         students.put(id, student);
         return Optional.ofNullable(student);
