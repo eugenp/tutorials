@@ -6,6 +6,7 @@ import wslite.rest.RESTClient
 import wslite.rest.RESTClientException
 import wslite.soap.SOAPClient
 import wslite.soap.SOAPMessageBuilder
+import wslite.http.auth.HTTPBasicAuthorization
 
 class WebserviceUnitTest extends GroovyTestCase {
 
@@ -120,10 +121,12 @@ class WebserviceUnitTest extends GroovyTestCase {
         def path = "/basic-auth"
         def response
         try {
-            response = client.get(path: path, headers: ["Authorization": "Basic cG9zdG1hbjpwYXNzd29yZA=="])
+            client.authorization = new HTTPBasicAuthorization("postman", "password")
+            response = client.get(path: path)
             assert response.statusCode == 200
             assert response.json?.authenticated == true
         } catch (RESTClientException e) {
+            e.printStackTrace()
             assert e?.response?.statusCode != 200
         }
     }
