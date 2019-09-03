@@ -41,11 +41,6 @@
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${validation-api.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -60,7 +55,6 @@
 
     <properties>
         <maven.surefire.version>2.22.1</maven.surefire.version>
-        <validation-api.version>2.0.1.Final</validation-api.version>
     </properties>
 
 </project>
