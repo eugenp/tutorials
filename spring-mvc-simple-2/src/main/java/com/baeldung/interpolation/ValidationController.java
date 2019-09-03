@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RestController {
+public class ValidationController {
 
     @PostMapping("/test-not-null")
     public void testNotNull(@Valid @RequestBody NotNullRequest request) {
