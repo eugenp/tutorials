@@ -54,7 +54,7 @@ class EmployeeServiceIntegrationTest {
                 .verifyComplete();
 
         RecordedRequest recordedRequest = mockBackEnd.takeRequest();
-        assertEquals("GET", recordedRequest.getMethod(), );
+        assertEquals("GET", recordedRequest.getMethod());
         assertEquals("/employee/100", recordedRequest.getPath());
     }
 
@@ -73,7 +73,7 @@ class EmployeeServiceIntegrationTest {
                 .verifyComplete();
 
         RecordedRequest recordedRequest = mockBackEnd.takeRequest();
-        assertEquals("POST", recordedRequest.getMethod(), );
+        assertEquals("POST", recordedRequest.getMethod());
         assertEquals("/employee", recordedRequest.getPath());
     }
 
