@@ -1,5 +1,7 @@
 package com.baeldung.graph;
 
+import java.util.List;
+
 import org.junit.Test;
 
 public class GraphUnitTest {
@@ -15,7 +17,8 @@ public class GraphUnitTest {
     @Test
     public void givenDirectedGraph_whenGetTopologicalSort_thenPrintValuesSorted() {
         Graph graph = createDirectedGraph();
-        graph.topologicalSort(0);
+        List<Integer> list = graph.topologicalSort(0);
+        System.out.println(list);
     }
 
     private Graph createDirectedGraph() {

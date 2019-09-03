@@ -6,6 +6,7 @@
 
     <artifactId>oauth2-authorization-server</artifactId>
     <packaging>war</packaging>
+    <name>oauth2-authorization-server</name>
 
     <parent>
         <groupId>com.baeldung.oauth2</groupId>

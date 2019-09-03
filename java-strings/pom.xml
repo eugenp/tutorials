@@ -62,12 +62,6 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
-        
-        <dependency>
-            <groupId>com.vdurmont</groupId>
-            <artifactId>emoji-java</artifactId>
-            <version>${emoji-java.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -81,24 +75,6 @@
             <artifactId>hamcrest-library</artifactId>
             <version>${org.hamcrest.version}</version>
             <scope>test</scope>
-        </dependency>
-
-        <!-- Added for password generation -->
-        <dependency>
-            <groupId>org.passay</groupId>
-            <artifactId>passay</artifactId>
-            <version>${passay.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-text</artifactId>
-            <version>${commons-text.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.ahocorasick</groupId>
-            <artifactId>ahocorasick</artifactId>
-            <version>${ahocorasick.version}</version>
         </dependency>
 
     </dependencies>
@@ -134,11 +110,8 @@
         <assertj.version>3.6.1</assertj.version>
         <icu4j.version>61.1</icu4j.version>
         <guava.version>27.0.1-jre</guava.version>
-		<emoji-java.version>4.0.0</emoji-java.version>
 		<junit-jupiter-api.version>5.3.1</junit-jupiter-api.version>
-		<passay.version>1.3.1</passay.version>
 		<commons-text.version>1.4</commons-text.version>
-		<ahocorasick.version>0.4.0</ahocorasick.version>
     </properties>
 
 </project>
