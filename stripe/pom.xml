@@ -5,7 +5,7 @@
     <groupId>com.baeldung.stripe</groupId>
     <artifactId>stripe</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Stripe</name>
+    <name>stripe</name>
     <description>Demo project for Stripe API</description>
     <packaging>jar</packaging>
 

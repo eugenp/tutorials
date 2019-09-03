@@ -49,12 +49,13 @@ public class SpringBootIntegrationTest {
                 .from(AUTHOR).join(AUTHOR_BOOK).on(AUTHOR.ID.equal(AUTHOR_BOOK.AUTHOR_ID))
                 .join(BOOK).on(AUTHOR_BOOK.BOOK_ID.equal(BOOK.ID))
                 .groupBy(AUTHOR.LAST_NAME)
+                .orderBy(AUTHOR.LAST_NAME.desc())
                 .fetch();
 
         assertEquals(3, result.size());
         assertEquals("Sierra", result.getValue(0, AUTHOR.LAST_NAME));
         assertEquals(Integer.valueOf(2), result.getValue(0, DSL.count()));
-        assertEquals("Schildt", result.getValue(2, AUTHOR.LAST_NAME));
+        assertEquals("Bates", result.getValue(2, AUTHOR.LAST_NAME));
         assertEquals(Integer.valueOf(1), result.getValue(2, DSL.count()));
     }
 
