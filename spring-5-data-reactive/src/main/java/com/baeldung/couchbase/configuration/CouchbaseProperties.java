@@ -14,10 +14,7 @@ public class CouchbaseProperties {
     private final String bucketPassword;
     private final int port;
 
-    public CouchbaseProperties(
-      @Value("${spring.couchbase.bootstrap-hosts}") final List<String> bootstrapHosts,
-      @Value("${spring.couchbase.bucket.name}") final String bucketName,
-      @Value("${spring.couchbase.bucket.password}") final String bucketPassword,
+    public CouchbaseProperties(@Value("${spring.couchbase.bootstrap-hosts}") final List<String> bootstrapHosts, @Value("${spring.couchbase.bucket.name}") final String bucketName, @Value("${spring.couchbase.bucket.password}") final String bucketPassword,
       @Value("${spring.couchbase.port}") final int port) {
         this.bootstrapHosts = Collections.unmodifiableList(bootstrapHosts);
         this.bucketName = bucketName;

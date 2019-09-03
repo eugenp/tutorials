@@ -2,10 +2,7 @@ package com.baeldung.couchbase.configuration;
 
 import com.couchbase.client.java.env.CouchbaseEnvironment;
 import com.couchbase.client.java.env.DefaultCouchbaseEnvironment;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.couchbase.config.AbstractReactiveCouchbaseConfiguration;
-import org.springframework.data.couchbase.config.BeanNames;
-import org.springframework.data.couchbase.repository.support.IndexManager;
 
 import java.util.List;
 
