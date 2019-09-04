@@ -3,7 +3,6 @@ package com.baeldung.blockchain;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,10 +16,10 @@ public class Block {
     private long timeStamp;
     private int nonce;
 
-    public Block(String data, String previousHash) {
+    public Block(String data, String previousHash, long timeStamp) {
         this.data = data;
         this.previousHash = previousHash;
-        this.timeStamp = new Date().getTime();
+        this.timeStamp = timeStamp;
         this.hash = calculateBlockHash();
     }
 
