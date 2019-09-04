@@ -2,10 +2,8 @@ package com.baeldung.hexagon;
 
 public class Main {
     public static void main(String[] args) {
-        SongManagerPort songManagerPort = new InMemorySongManagerAdapter();
+        final SongServiceImpl songService = new SongServiceImpl(new InMemorySongManagerAdapter());
 
-        songManagerPort.saveSong("In the end", "Linkin Park");
-
-        System.out.println(songManagerPort.findSong("In the end"));
+        songService.addSong("In the end", "Linkin Park");
     }
 }
