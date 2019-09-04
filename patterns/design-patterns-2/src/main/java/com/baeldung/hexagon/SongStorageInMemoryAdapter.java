@@ -3,11 +3,11 @@ package com.baeldung.hexagon;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SongStorageAdapter implements SongStorage {
+public class SongStorageInMemoryAdapter implements SongStorage {
 
     private Map<String, Song> songStorage;
 
-    public SongStorageAdapter() {
+    public SongStorageInMemoryAdapter() {
         this.songStorage = new HashMap<>();
     }
 
