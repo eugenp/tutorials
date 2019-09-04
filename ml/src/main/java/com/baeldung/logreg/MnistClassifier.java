@@ -67,18 +67,20 @@ public class MnistClassifier {
 
         final String path = basePath + "mnist_png" + File.separator;
         if (!new File(path).exists()) {
-            logger.debug("Downloading data {}", dataUrl);
+            logger.info("Downloading data {}", dataUrl);
             String localFilePath = basePath + "mnist_png.tar.gz";
-            logger.info("local file: {}", localFilePath);
-            if (DataUtilities.downloadFile(dataUrl, localFilePath)) {
-                DataUtilities.extractTarGz(localFilePath, basePath);
+            File file = new File(localFilePath);
+            if (!file.exists()) {
+                file.getParentFile()
+                    .mkdirs();
+                Utils.downloadAndSave(dataUrl, file);
+                Utils.extractTarArchive(file, basePath);
             }
         } else {
-            logger.info("local file exists {}", path);
-
+            logger.info("Using the local data from folder {}", path);
         }
 
-        logger.info("Vectorizing data...");
+        logger.info("Vectorizing the data from folder {}", path);
         // vectorization of train data
         File trainData = new File(path + "training");
         FileSplit trainSplit = new FileSplit(trainData, NativeImageLoader.ALLOWED_FORMATS, randNumGen);

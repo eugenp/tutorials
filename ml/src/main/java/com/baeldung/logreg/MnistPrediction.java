@@ -36,18 +36,22 @@ public class MnistPrediction {
     }
 
     public static void main(String[] args) throws IOException {
-        String path = fileChose().toString();
+        if (!modelPath.exists()) {
+            logger.info("The model not found. Have you trained it?");
+            return;
+        }
         MultiLayerNetwork model = ModelSerializer.restoreMultiLayerNetwork(modelPath);
+        String path = fileChose();
         File file = new File(path);
 
         INDArray image = new NativeImageLoader(height, width, channels).asMatrix(file);
         new ImagePreProcessingScaler(0, 1).transform(image);
-        
+
         // Pass through to neural Net
         INDArray output = model.output(image);
 
         logger.info("File: {}", path);
-        logger.info(output.toString());
+        logger.info("Probabilities: {}", output);
     }
 
 }
