@@ -3,37 +3,26 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-amqp</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>spring-amqp</name>
-    <packaging>jar</packaging>
     <description>Introduction to Spring-AMQP</description>
 
     <parent>
+        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.amqp</groupId>
-            <artifactId>spring-rabbit</artifactId>
-            <version>${spring-rabbit}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
     </dependencies>
 
-    <build>
-        <finalName>spring-amqp</finalName>
-    </build>
-
     <properties>
-        <spring-rabbit>1.6.6.RELEASE</spring-rabbit>
+        <start-class>com.baeldung.springamqp.simple.HelloWorldMessageApp</start-class>
     </properties>
 
 </project>
