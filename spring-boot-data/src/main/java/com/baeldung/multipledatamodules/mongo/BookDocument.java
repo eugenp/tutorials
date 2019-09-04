@@ -1,5 +1,7 @@
 package com.baeldung.multipledatamodules.mongo;
 
+import java.util.Objects;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -47,6 +49,28 @@ public class BookDocument {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bookAuthor, bookId, bookName, content);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof BookDocument))
+            return false;
+        BookDocument other = (BookDocument) obj;
+        return Objects.equals(bookAuthor, other.bookAuthor) && Objects.equals(bookId, other.bookId) && Objects.equals(bookName, other.bookName) && Objects.equals(content, other.content);
+    }
+
+    @Override
+    public String toString() {
+        return "BookDocument [bookId=" + bookId + ", bookName=" + bookName + ", bookAuthor=" + bookAuthor + ", content=" + content + "]";
     }
 
 }
