@@ -1,10 +1,10 @@
 package com.baeldung.hexagon;
 
-public class SongServiceImpl implements SongServicePort {
+public class SongServiceAdapter implements SongServicePort {
 
-    InMemorySongManagerAdapter songManagerAdapter;
+    SongStorageAdapter songManagerAdapter;
 
-    public SongServiceImpl(InMemorySongManagerAdapter songManagerAdapter) {
+    public SongServiceAdapter(SongStorageAdapter songManagerAdapter) {
         this.songManagerAdapter = songManagerAdapter;
     }
 
