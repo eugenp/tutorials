@@ -3,9 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-5-mvc</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>spring-5-mvc</name>
     <description>spring 5 MVC sample project about new features</description>
     <packaging>jar</packaging>
@@ -82,6 +80,16 @@
             <artifactId>rest-assured</artifactId>
             <version>${jayway-rest-assured.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>0.18</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
         </dependency>
     </dependencies>
 
@@ -164,5 +172,6 @@
         <jayway-rest-assured.version>2.9.0</jayway-rest-assured.version>
         <kotlin.version>1.1.2</kotlin.version>
         <start-class>com.baeldung.Spring5Application</start-class>
+        <httpclient.version>4.5.8</httpclient.version>
     </properties>
 </project>
