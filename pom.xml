@@ -404,6 +404,7 @@
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang-syntax</module>
                 <module>core-java-modules/core-java-lang</module>
+				<module>core-java-modules/core-java-lang-2</module>
                 <module>core-java-modules/core-java-lang-oop</module>
                 <module>core-java-modules/core-java-lang-oop-2</module>
                 <module>core-java-modules</module>
@@ -1126,6 +1127,7 @@
 				<module>core-java-modules/core-java-security</module>
 				<module>core-java-modules/core-java-lang-syntax</module>
 				<module>core-java-modules/core-java-lang</module>
+				<module>core-java-modules/core-java-lang-2</module>
 				<module>core-java-modules/core-java-lang-oop</module>
 				<module>core-java-modules/core-java-lang-oop-2</module>
 				<module>core-java-modules</module>
