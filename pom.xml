@@ -781,8 +781,8 @@
 				<module>struts-2</module>
 
 				<module>assertion-libraries</module>
-				<module>testing-libraries</module>
-				<module>testing-libraries-2</module>
+				<module>testing-modules</module>
+				<module>testing-modules-2</module>
 
 				<module>twilio</module>
 				<module>twitter4j</module>
@@ -1461,8 +1461,8 @@
 				<module>struts-2</module>
 
 				<module>assertion-libraries</module>
-				<module>testing-libraries</module>
-				<module>testing-libraries-2</module>
+				<module>testing-modules</module>
+				<module>testing-modules-2</module>
 
 				<module>twilio</module>
 				<module>twitter4j</module>
