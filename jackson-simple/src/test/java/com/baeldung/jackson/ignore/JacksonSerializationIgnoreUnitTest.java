@@ -1,4 +1,4 @@
-package com.baeldung.jackson.test;
+package com.baeldung.jackson.ignore;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
@@ -15,9 +15,9 @@ import com.baeldung.jackson.dtos.MyDtoIncludeNonDefault;
 import com.baeldung.jackson.dtos.MyDtoWithFilter;
 import com.baeldung.jackson.dtos.MyDtoWithSpecialField;
 import com.baeldung.jackson.dtos.MyMixInForIgnoreType;
-import com.baeldung.jackson.dtos.ignore.MyDtoIgnoreField;
-import com.baeldung.jackson.dtos.ignore.MyDtoIgnoreFieldByName;
-import com.baeldung.jackson.dtos.ignore.MyDtoIgnoreNull;
+import com.baeldung.jackson.ignore.dtos.MyDtoIgnoreField;
+import com.baeldung.jackson.ignore.dtos.MyDtoIgnoreFieldByName;
+import com.baeldung.jackson.ignore.dtos.MyDtoIgnoreNull;
 import com.baeldung.jackson.serialization.MyDtoNullKeySerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonGenerator;
