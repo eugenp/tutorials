@@ -15,7 +15,7 @@ public class JettyWebServerConfiguration {
     private static final int MIN_BYTES = 1;
 
     /**
-     * Uncomment imports and method to enable Jetty web server configuration.
+     * Customise the Jetty web server to automatically decompress requests.
      */
     @Bean
     public JettyServletWebServerFactory jettyServletWebServerFactory() {
