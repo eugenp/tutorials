@@ -579,7 +579,7 @@
 				
 				<module>spring-boot-nashorn</module>
 				<module>java-blockchain</module>
-				<!-- <module>Twitter4J</module> --> <!-- Builds locally, but fails in Jenkins, Failed to parse POMs -->
+			
 			</modules>
 
 		</profile>
