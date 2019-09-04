@@ -11,4 +11,5 @@ public class NotificationOutputAdapter implements NotificationPort {
 		System.out.println("Subject=" + message.getSubject());
 		System.out.println("Content=" + message.getContent());
 	}
+
 }

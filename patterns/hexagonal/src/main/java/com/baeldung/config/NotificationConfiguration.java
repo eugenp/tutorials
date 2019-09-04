@@ -31,4 +31,5 @@ public class NotificationConfiguration {
 					environment.getProperty("email.auth.user"), environment.getProperty("email.auth.password")));
 		}
 	}
+
 }

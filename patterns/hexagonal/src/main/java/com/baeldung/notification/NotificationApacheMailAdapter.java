@@ -39,8 +39,9 @@ public class NotificationApacheMailAdapter implements NotificationPort {
 			email.setMsg(message.getContent());
 			email.send();
 		} catch (EmailException e) {
-			Logger.getLogger(NotificationApacheMailAdapter.class.getName())
-					.log(Level.SEVERE, "Email send has failed.", e);
+			Logger.getLogger(NotificationApacheMailAdapter.class.getName()).log(Level.SEVERE, "Email send has failed.",
+					e);
 		}
 	}
+
 }

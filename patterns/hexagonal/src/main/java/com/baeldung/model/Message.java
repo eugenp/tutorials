@@ -1,6 +1,7 @@
 package com.baeldung.model;
 
 public class Message {
+
 	private String to;
 	private String from;
 	private String subject;
@@ -45,4 +46,5 @@ public class Message {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 }

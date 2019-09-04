@@ -23,7 +23,7 @@ public class NotificationServiceUnitTest {
 	private NotificationService notificationService;
 
 	@Test
-	public void givenValidMessage_thenPrintOutput() {
+	public void whenSendingAValidMessage_thenPrintOutput() {
 		Message message = new Message(environment.getProperty("email.auth.user"),
 				environment.getProperty("email.auth.user"), "Baeldung Hexagonal Architecture",
 				"Your notification service is running in test mode.");

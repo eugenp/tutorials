@@ -30,4 +30,5 @@ public class NotificationRunnerConfiguration implements CommandLineRunner {
 				"Your notification service is running.");
 		notificationService.send(message);
 	}
+
 }

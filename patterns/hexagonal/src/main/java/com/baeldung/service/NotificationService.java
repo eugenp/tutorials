@@ -15,4 +15,5 @@ public class NotificationService {
 	public void send(Message message) {
 		notificationSystem.send(message);
 	}
+
 }

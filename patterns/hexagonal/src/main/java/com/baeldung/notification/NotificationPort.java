@@ -5,4 +5,5 @@ import com.baeldung.model.Message;
 public interface NotificationPort {
 
 	public void send(Message message);
+
 }
