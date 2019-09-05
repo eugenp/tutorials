@@ -4,7 +4,6 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -41,9 +40,9 @@ public class MultipleDataModulesMongoIntegrationTest {
 
     @Test
     public void givenBookDocument_whenPersistWithBookDocumentRepository_thenSuccess() {
+      
         // given
-        BookDocument bookDocument = new BookDocument(UUID.randomUUID()
-            .toString(), "Foundation", "Isaac Asimov", "Once upon a time ...");
+        BookDocument bookDocument = new BookDocument("lorem", "Foundation", "Isaac Asimov", "Once upon a time ...");
 
         // when
         bookDocumentRepository.save(bookDocument);
@@ -52,15 +51,14 @@ public class MultipleDataModulesMongoIntegrationTest {
         List<BookDocument> result = bookDocumentRepository.findAll();
         assertThat(result.isEmpty(), is(false));
         assertThat(result.contains(bookDocument), is(true));
-        LOGGER.info(result.get(0)
-            .toString());
+        LOGGER.info(result.get(0).toString());
     }
 
     @Test
     public void givenBookAudit_whenPersistWithBookDocumentCrudRepository_thenSuccess() {
+   
         // given
-        BookDocument bookDocument = new BookDocument(UUID.randomUUID()
-            .toString(), "Foundation", "Isaac Asimov", "Once upon a time ...");
+        BookDocument bookDocument = new BookDocument("lorem", "Foundation", "Isaac Asimov", "Once upon a time ...");
 
         // when
         bookDocumentCrudRepository.save(bookDocument);
@@ -71,8 +69,7 @@ public class MultipleDataModulesMongoIntegrationTest {
             .collect(Collectors.toList());
         assertThat(result.isEmpty(), is(false));
         assertThat(result.contains(bookDocument), is(true));
-        LOGGER.info(result.get(0)
-            .toString());
+        LOGGER.info(result.get(0).toString());
     }
 
 }

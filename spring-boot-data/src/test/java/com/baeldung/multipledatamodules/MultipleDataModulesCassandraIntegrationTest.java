@@ -3,9 +3,7 @@ package com.baeldung.multipledatamodules;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.time.Instant;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -42,14 +40,9 @@ public class MultipleDataModulesCassandraIntegrationTest {
 
     @Test
     public void givenBookAudit_whenPersistWithBookAuditRepository_thenSuccess() {
-        // given
 
-        BookAudit bookAudit = new BookAudit(UUID.randomUUID()
-            .toString(),
-            UUID.randomUUID()
-                .toString(),
-            "Baeldung", Instant.now()
-                .toString());
+        // given
+        BookAudit bookAudit = new BookAudit("lorem", "ipsum", "Baeldung", "19:30/20.08.2017");
 
         // when
         bookAuditRepository.save(bookAudit);
@@ -58,20 +51,14 @@ public class MultipleDataModulesCassandraIntegrationTest {
         List<BookAudit> result = bookAuditRepository.findAll();
         assertThat(result.isEmpty(), is(false));
         assertThat(result.contains(bookAudit), is(true));
-        LOGGER.info(result.get(0)
-            .toString());
+        LOGGER.info(result.get(0).toString());
     }
 
     @Test
     public void givenBookAudit_whenPersistWithBookAuditCrudRepository_thenSuccess() {
-        // given
 
-        BookAudit bookAudit = new BookAudit(UUID.randomUUID()
-            .toString(),
-            UUID.randomUUID()
-                .toString(),
-            "Baeldung", Instant.now()
-                .toString());
+        // given
+        BookAudit bookAudit = new BookAudit("lorem", "ipsum", "Baeldung", "19:30/20.08.2017");
 
         // when
         bookAuditCrudRepository.save(bookAudit);
@@ -82,8 +69,7 @@ public class MultipleDataModulesCassandraIntegrationTest {
             .collect(Collectors.toList());
         assertThat(result.isEmpty(), is(false));
         assertThat(result.contains(bookAudit), is(true));
-        LOGGER.info(result.get(0)
-            .toString());
+        LOGGER.info(result.get(0).toString());
     }
 
 }
