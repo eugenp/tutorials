@@ -20,6 +20,7 @@
         <module>core-java-lang-operators</module>
         <module>core-java-networking-2</module>
         <module>core-java-io-2</module>
+        <module>core-java-security-manager</module>
     </modules>
     
 </project>

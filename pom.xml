@@ -405,6 +405,7 @@
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang-syntax</module>
                 <module>core-java-modules/core-java-lang</module>
+				<module>core-java-modules/core-java-lang-2</module>
                 <module>core-java-modules/core-java-lang-oop</module>
                 <module>core-java-modules/core-java-lang-oop-2</module>
                 <module>core-java-modules</module>
@@ -579,7 +580,7 @@
 				
 				<module>spring-boot-nashorn</module>
 				<module>java-blockchain</module>
-				<!-- <module>Twitter4J</module> --> <!-- Builds locally, but fails in Jenkins, Failed to parse POMs -->
+			
 			</modules>
 
 		</profile>
@@ -741,6 +742,7 @@
 				<module>spring-remoting</module>
 				<module>spring-rest</module>
 				<module>spring-rest-angular</module>
+				<module>spring-rest-compress</module>
 				<module>spring-rest-full</module>
 				<module>spring-rest-hal-browser</module>
 				<module>spring-rest-query-language</module>
@@ -928,6 +930,7 @@
 				<module>spring-remoting/remoting-rmi/remoting-rmi-server</module>
 				<module>spring-rest</module>
 				<module>spring-rest-angular</module>
+				<module>spring-rest-compress</module>
 				<module>spring-rest-full</module>
 				<module>spring-rest-simple</module>
 				<module>spring-resttemplate</module>
@@ -1126,6 +1129,7 @@
 				<module>core-java-modules/core-java-security</module>
 				<module>core-java-modules/core-java-lang-syntax</module>
 				<module>core-java-modules/core-java-lang</module>
+				<module>core-java-modules/core-java-lang-2</module>
 				<module>core-java-modules/core-java-lang-oop</module>
 				<module>core-java-modules/core-java-lang-oop-2</module>
 				<module>core-java-modules</module>
@@ -1431,6 +1435,7 @@
 				<module>spring-remoting</module>
 				<module>spring-rest</module>
 				<module>spring-rest-angular</module>
+				<module>spring-rest-compress</module>
 				<module>spring-rest-full</module>
 				<module>spring-rest-hal-browser</module>
 				<module>spring-rest-query-language</module>
