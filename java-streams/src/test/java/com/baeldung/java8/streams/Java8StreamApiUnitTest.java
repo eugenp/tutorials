@@ -1,4 +1,4 @@
-package com.baeldung.java8;
+package com.baeldung.java8.streams;
 
 import com.baeldung.stream.Product;
 import org.junit.Before;
