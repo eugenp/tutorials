@@ -1,7 +1,7 @@
-package service.impl;
+package com.baeldung.service.impl;
 
-import service.GreetingPort;
-import service.OutputStreamingPort;
+import com.baeldung.service.GreetingPort;
+import com.baeldung.service.OutputStreamingPort;
 
 public class GreetingPortHelloWorldAdapter implements GreetingPort {
 

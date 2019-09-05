@@ -1,6 +1,6 @@
-package service.impl;
+package com.baeldung.service.impl;
 
-import service.OutputStreamingPort;
+import com.baeldung.service.OutputStreamingPort;
 
 public class OutputStreamingPortConsoleAdapter implements OutputStreamingPort {
     @Override
