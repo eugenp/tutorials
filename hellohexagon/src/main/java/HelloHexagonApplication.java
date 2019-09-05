@@ -1,5 +1,9 @@
+import service.GreetingPort;
+import service.impl.GreetingPortHelloWorldAdapter;
+
 public class HelloHexagonApplication {
     public static void main(String[] args) {
-        System.out.println("Hello World");
+        GreetingPort greetingPort = new GreetingPortHelloWorldAdapter();
+        greetingPort.greet();
     }
 }
