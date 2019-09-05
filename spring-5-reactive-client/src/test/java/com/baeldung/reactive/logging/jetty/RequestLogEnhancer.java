@@ -13,7 +13,7 @@ import org.eclipse.jetty.http.HttpHeader;
 @Slf4j
 public class RequestLogEnhancer {
 
-    public Request enhance(Request request) {
+    public static Request enhance(Request request) {
         StringBuilder group = new StringBuilder();
         request.onRequestBegin(theRequest -> group
           .append("Request ")
@@ -63,7 +63,7 @@ public class RequestLogEnhancer {
         return request;
     }
 
-    private String toString(ByteBuffer buffer, Charset charset) {
+    private static String toString(ByteBuffer buffer, Charset charset) {
         byte[] bytes;
         if (buffer.hasArray()) {
             bytes = new byte[buffer.capacity()];
@@ -75,7 +75,7 @@ public class RequestLogEnhancer {
         return new String(bytes, charset);
     }
 
-    private Charset getCharset(HttpFields headers) {
+    private static Charset getCharset(HttpFields headers) {
         String contentType = headers.get(HttpHeader.CONTENT_TYPE);
         if (contentType != null) {
             String[] tokens = contentType
@@ -88,5 +88,6 @@ public class RequestLogEnhancer {
         }
         return StandardCharsets.UTF_8;
     }
+
 }
 

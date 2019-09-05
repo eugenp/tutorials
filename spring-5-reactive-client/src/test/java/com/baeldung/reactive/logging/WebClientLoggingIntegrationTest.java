@@ -3,7 +3,6 @@ package com.baeldung.reactive.logging;
 import ch.qos.logback.classic.spi.LoggingEvent;
 import ch.qos.logback.core.Appender;
 import com.baeldung.reactive.logging.filters.LogFilters;
-import com.baeldung.reactive.logging.jetty.RequestLogEnhancer;
 import com.baeldung.reactive.logging.netty.CustomLogger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.net.URI;
@@ -21,6 +20,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.channel.BootstrapHandlers;
 import reactor.netty.http.client.HttpClient;
 
+import static com.baeldung.reactive.logging.jetty.RequestLogEnhancer.enhance;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -69,13 +69,13 @@ public class WebClientLoggingIntegrationTest {
     }
 
     @Test
-    public void givenJettyHttpClient_whenEndpointIsConsumed_thenRequestAndResponseBodyShouldBeLogged() {
+    public void givenJettyHttpClient_whenEndpointIsConsumed_thenRequestAndResponseBodyLogged() {
         SslContextFactory.Client sslContextFactory = new SslContextFactory.Client();
         org.eclipse.jetty.client.HttpClient httpClient = new org.eclipse.jetty.client.HttpClient(sslContextFactory) {
             @Override
             public Request newRequest(URI uri) {
                 Request request = super.newRequest(uri);
-                return new RequestLogEnhancer().enhance(request);
+                return enhance(request);
             }
         };
 
@@ -94,7 +94,7 @@ public class WebClientLoggingIntegrationTest {
     }
 
     @Test
-    public void givenNettyHttpClientWithWiretap_whenEndpointIsConsumed_thenRequestAndResponseBodyShouldBeLogged() {
+    public void givenNettyHttpClientWithWiretap_whenEndpointIsConsumed_thenRequestAndResponseBodyLogged() {
 
         reactor.netty.http.client.HttpClient httpClient = HttpClient
           .create()
@@ -108,11 +108,12 @@ public class WebClientLoggingIntegrationTest {
           .body(BodyInserters.fromObject(post))
           .exchange()
           .block();
+
         verify(nettyAppender).doAppend(argThat(argument -> (((LoggingEvent) argument).getFormattedMessage()).contains("00000300")));
     }
 
     @Test
-    public void givenNettyHttpClientWithCustomLogger_whenEndpointIsConsumed_thenRequestAndResponseBodyShouldBeLogged() {
+    public void givenNettyHttpClientWithCustomLogger_whenEndpointIsConsumed_thenRequestAndResponseBodyLogged() {
 
         reactor.netty.http.client.HttpClient httpClient = HttpClient
           .create()
@@ -128,11 +129,12 @@ public class WebClientLoggingIntegrationTest {
           .body(BodyInserters.fromObject(post))
           .exchange()
           .block();
+
         verify(nettyAppender).doAppend(argThat(argument -> (((LoggingEvent) argument).getFormattedMessage()).contains(sampleResponseBody)));
     }
 
     @Test
-    public void givenDefaultHttpClientWithString_whenEndpointIsConsumed_thenRequestAndResponseLogged() {
+    public void givenDefaultHttpClientWithFilter_whenEndpointIsConsumed_thenRequestAndResponseLogged() {
         WebClient
           .builder()
           .filters(exchangeFilterFunctions -> {

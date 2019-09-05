@@ -20,7 +20,7 @@ public class CustomLogger extends LoggingHandler {
             ByteBuf msg = (ByteBuf) arg;
             return decode(msg, msg.readerIndex(), msg.readableBytes(), defaultCharset());
         }
-        return "";
+        return super.format(ctx, event, arg);
     }
 
     private String decode(ByteBuf src, int readerIndex, int len, Charset charset) {
