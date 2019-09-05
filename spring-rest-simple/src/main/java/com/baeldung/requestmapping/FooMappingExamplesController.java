@@ -97,5 +97,17 @@ public class FooMappingExamplesController {
     public String putAndPostFoos() {
         return "Advanced - PUT and POST within single method";
     }
+ 
+    @GetMapping(value = "foos/duplicate" )
+    public String duplicate() {
+        return "Duplicate";
+    }
+    
+    // uncomment for exception of type java.lang.IllegalStateException: Ambiguous mapping
+
+    // @GetMapping(value = "foos/duplicate" )
+    // public String duplicateEx() {
+    // return "Duplicate";
+    // }
 
 }
