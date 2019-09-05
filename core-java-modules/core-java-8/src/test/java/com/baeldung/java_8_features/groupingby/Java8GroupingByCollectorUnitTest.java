@@ -1,4 +1,4 @@
-package com.baeldung.java8;
+package com.baeldung.java_8_features.groupingby;
 
 import com.baeldung.java_8_features.groupingby.BlogPost;
 import com.baeldung.java_8_features.groupingby.BlogPostType;
