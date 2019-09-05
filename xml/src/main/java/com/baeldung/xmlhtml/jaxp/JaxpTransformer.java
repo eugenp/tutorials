@@ -38,6 +38,28 @@ public class JaxpTransformer {
         //Head
         Element html = doc.createElement("html");
         html.setAttribute("lang", "en");
+        Element head = buildHead(xml, doc);
+        html.appendChild(head);
+        //Body
+        Element body = buildBody(xml, doc);
+        html.appendChild(body);
+        doc.appendChild(html);
+        Writer output = applyTransformation(doc);
+        return String.format("<!DOCTYPE html>%n%s", output.toString());
+    }
+
+    private Writer applyTransformation(Document doc) throws TransformerException {
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        transformerFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+        transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+        transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
+        Writer output = new StringWriter();
+        Transformer transformer = transformerFactory.newTransformer();
+        transformer.transform(new DOMSource(doc), new StreamResult(output));
+        return output;
+    }
+
+    private Element buildHead(Element xml, Document doc) {
         Element head = doc.createElement("head");
         Element title = doc.createElement("title");
         title.setTextContent(xml
@@ -45,8 +67,10 @@ public class JaxpTransformer {
           .item(0)
           .getTextContent());
         head.appendChild(title);
-        html.appendChild(head);
-        //Body
+        return head;
+    }
+
+    private Element buildBody(Element xml, Document doc) {
         Element body = doc.createElement("body");
         Element from = doc.createElement("p");
         from.setTextContent(String.format("from: %s", xml
@@ -60,17 +84,7 @@ public class JaxpTransformer {
           .getTextContent());
         body.appendChild(from);
         body.appendChild(success);
-        html.appendChild(body);
-        doc.appendChild(html);
-
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        transformerFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
-        transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-        transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
-        Writer output = new StringWriter();
-        Transformer transformer = transformerFactory.newTransformer();
-        transformer.transform(new DOMSource(doc), new StreamResult(output));
-        return String.format("<!DOCTYPE html>%n%s", output.toString());
+        return body;
     }
 
 }
