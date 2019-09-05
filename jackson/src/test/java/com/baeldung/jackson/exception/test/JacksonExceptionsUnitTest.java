@@ -1,4 +1,4 @@
-package com.baeldung.jackson.test;
+package com.baeldung.jackson.exception.test;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertEquals;
