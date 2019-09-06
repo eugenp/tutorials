@@ -2,15 +2,15 @@
     <articles>
         <article>
             <title>Parsing an XML File Using SAX Parser</title>
-            <content>Lorem ipsum...</content>
+            <content>SAX Parser's Lorem ipsum...</content>
         </article>
         <article>
             <title>Parsing an XML File Using DOM Parser</title>
-            <content>Lorem ipsum...</content>
+            <content>DOM Parser's Lorem ipsum...</content>
         </article>
         <article>
             <title>Parsing an XML File Using StAX Parser</title>
-            <content>Lorem ipsum...</content>
+            <content>StAX Parser's Lorem ipsum...</content>
         </article>
     </articles>
 </baeldung>

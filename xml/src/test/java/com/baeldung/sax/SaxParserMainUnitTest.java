@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 public class SaxParserMainUnitTest {
 
     @Test
-    public void parse_baeldung_xml_document() throws IOException, SAXException, ParserConfigurationException {
+    public void givenAProperXMLFile_whenItIsParsed_ThenAnObjectContainsAllItsElements() throws IOException, SAXException, ParserConfigurationException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser saxParser = factory.newSAXParser();
 
@@ -31,14 +31,14 @@ public class SaxParserMainUnitTest {
 
         SaxParserMain.BaeldungArticle articleOne = articles.get(0);
         assertEquals("Parsing an XML File Using SAX Parser", articleOne.getTitle());
-        assertEquals("Lorem ipsum...", articleOne.getContent());
+        assertEquals("SAX Parser's Lorem ipsum...", articleOne.getContent());
 
         SaxParserMain.BaeldungArticle articleTwo = articles.get(1);
         assertEquals("Parsing an XML File Using DOM Parser", articleTwo.getTitle());
-        assertEquals("Lorem ipsum...", articleTwo.getContent());
+        assertEquals("DOM Parser's Lorem ipsum...", articleTwo.getContent());
 
         SaxParserMain.BaeldungArticle articleThree = articles.get(2);
         assertEquals("Parsing an XML File Using StAX Parser", articleThree.getTitle());
-        assertEquals("Lorem ipsum...", articleThree.getContent());
+        assertEquals("StAX Parser's Lorem ipsum...", articleThree.getContent());
     }
 }

@@ -112,13 +112,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.8</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>${junit-jupiter.version}</version>
@@ -332,7 +325,7 @@
                         </configuration>
                     </plugin>
                     <plugin>
-                        <!-- NOTE: We don't need a groupId specification 
+                        <!-- NOTE: We don't need a groupId specification
                             because the group is org.apache.maven.plugins ...which is assumed by default. -->
                         <artifactId>maven-assembly-plugin</artifactId>
                         <configuration>
@@ -352,9 +345,9 @@
                         </configuration>
                         <executions>
                             <execution>
-                                <id>make-assembly</id><!-- this is used for 
+                                <id>make-assembly</id><!-- this is used for
                                     inheritance merges -->
-                                <phase>package</phase><!-- append to the 
+                                <phase>package</phase><!-- append to the
                                     packaging phase. -->
                                 <goals>
                                     <goal>attached</goal><!-- goals == mojos -->

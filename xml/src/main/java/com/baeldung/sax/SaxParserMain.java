@@ -1,7 +1,5 @@
 package com.baeldung.sax;
 
-import lombok.Data;
-import lombok.ToString;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -23,7 +21,7 @@ public class SaxParserMain {
         System.out.println(baeldungHandler.getWebsite());
     }
 
-    @ToString
+    //@ToString
     public static class BaeldungHandler extends DefaultHandler {
         private static final String ARTICLES = "articles";
         private static final String ARTICLE = "article";
@@ -77,14 +75,38 @@ public class SaxParserMain {
         }
     }
 
-    @Data
+    //@Data
     public static class Baeldung {
         private List<BaeldungArticle> articleList;
+
+        public void setArticleList(List<BaeldungArticle> articleList) {
+            this.articleList = articleList;
+        }
+
+        public List<BaeldungArticle> getArticleList() {
+            return this.articleList;
+        }
     }
 
-    @Data
+    //@Data
     public static class BaeldungArticle {
         private String title;
         private String content;
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getTitle() {
+            return this.title;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
+        public String getContent() {
+            return this.content;
+        }
     }
 }
