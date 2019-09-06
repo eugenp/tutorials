@@ -31,44 +31,28 @@ public class UserControllerIntegrationTest {
 
     @Test
     public void whenGetRequestToUsersEndPointWithIdPathVariable_thenCorrectResponse() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/users/{id}", "1")
-          .contentType(MediaType.APPLICATION_JSON_UTF8))
-          .andExpect(MockMvcResultMatchers.status().isOk())
-          .andExpect(MockMvcResultMatchers.jsonPath("$.id").value("1"));
+        mockMvc.perform(MockMvcRequestBuilders.get("/users/{id}", "1").contentType(MediaType.APPLICATION_JSON_UTF8)).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.jsonPath("$.id").value("1"));
     }
 
     @Test
     public void whenGetRequestToUsersEndPoint_thenCorrectResponse() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/users")
-          .contentType(MediaType.APPLICATION_JSON_UTF8))
-          .andExpect(MockMvcResultMatchers.status().isOk())
-          .andExpect(MockMvcResultMatchers.jsonPath("$['pageable']['paged']").value("true"));
+        mockMvc.perform(MockMvcRequestBuilders.get("/users").contentType(MediaType.APPLICATION_JSON_UTF8)).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.jsonPath("$['pageable']['paged']").value("true"));
 
     }
 
     @Test
     public void whenGetRequestToUserEndPointWithNameRequestParameter_thenCorrectResponse() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/user")
-          .param("name", "John")
-          .contentType(MediaType.APPLICATION_JSON_UTF8))
-          .andExpect(MockMvcResultMatchers.status().isOk())
-          .andExpect(MockMvcResultMatchers.jsonPath("$['content'][0].['name']").value("John"));
+        mockMvc.perform(MockMvcRequestBuilders.get("/users").param("name", "John").contentType(MediaType.APPLICATION_JSON_UTF8)).andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$['content'][0].['name']").value("John"));
     }
 
     @Test
     public void whenGetRequestToSorteredUsersEndPoint_thenCorrectResponse() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/sortedusers")
-          .contentType(MediaType.APPLICATION_JSON_UTF8))
-          .andExpect(MockMvcResultMatchers.status().isOk())
-          .andExpect(MockMvcResultMatchers.jsonPath("$['sort']['sorted']").value("true"));
+        mockMvc.perform(MockMvcRequestBuilders.get("/sortedusers").contentType(MediaType.APPLICATION_JSON_UTF8)).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.jsonPath("$['sort']['sorted']").value("true"));
     }
 
     @Test
     public void whenGetRequestToFilteredUsersEndPoint_thenCorrectResponse() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/filteredusers")
-          .param("name", "John")
-          .contentType(MediaType.APPLICATION_JSON_UTF8))
-          .andExpect(MockMvcResultMatchers.status().isOk())
-          .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value("John"));
+        mockMvc.perform(MockMvcRequestBuilders.get("/filteredusers").param("name", "John").contentType(MediaType.APPLICATION_JSON_UTF8)).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value("John"));
     }
 }

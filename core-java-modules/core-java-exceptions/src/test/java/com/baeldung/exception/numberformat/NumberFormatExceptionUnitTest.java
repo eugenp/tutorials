@@ -36,7 +36,7 @@ public class NumberFormatExceptionUnitTest {
 
     @Test(expected = NumberFormatException.class)
     public void givenParseIntMethod_whenUnderscoreInInput_thenFail() {
-        int bIntPrim = Integer.parseInt("6_000");
+        int bIntPrim = Integer.parseInt("_6000");
     }
 
     @Test(expected = NumberFormatException.class)
@@ -51,7 +51,7 @@ public class NumberFormatExceptionUnitTest {
 
     @Test(expected = NumberFormatException.class)
     public void givenDecodeMethod_whenAlphabetInInput_thenFail() {
-        Long decodeInteger = Long.decode("64403L");
+        Long decodedLong = Long.decode("64403L");
     }
 
     /* ---INTEGER PASS CASES--- */
@@ -72,7 +72,7 @@ public class NumberFormatExceptionUnitTest {
         int aIntPrim = Integer.parseInt("6000 ".trim());
         assertEquals(6000, aIntPrim);
 
-        int bIntPrim = Integer.parseInt("6_000".replaceAll("_", ""));
+        int bIntPrim = Integer.parseInt("_6000".replaceAll("_", ""));
         assertEquals(6000, bIntPrim);
 
         int cIntPrim = Integer.parseInt("-6000");

@@ -3,6 +3,7 @@ package com.baeldung.uuid;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.UUID;
 
 public class UUIDGenerator {
@@ -65,9 +66,9 @@ public class UUIDGenerator {
         try {
             md = MessageDigest.getInstance("SHA-1");
         } catch (NoSuchAlgorithmException nsae) {
-            throw new InternalError("MD5 not supported", nsae);
+            throw new InternalError("SHA-1 not supported", nsae);
         }
-        byte[] bytes = md.digest(name);
+        byte[] bytes = Arrays.copyOfRange(md.digest(name), 0, 16);
         bytes[6] &= 0x0f; /* clear version        */
         bytes[6] |= 0x50; /* set to version 5     */
         bytes[8] &= 0x3f; /* clear variant        */

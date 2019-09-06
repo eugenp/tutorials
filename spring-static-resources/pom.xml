@@ -140,6 +140,13 @@
             <artifactId>handlebars</artifactId>
             <version>${handlebars.version}</version>
         </dependency>
+
+        <!-- commons.io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
         
         <dependency>
             <groupId>org.springframework</groupId>

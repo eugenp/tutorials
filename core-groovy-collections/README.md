@@ -2,5 +2,5 @@
 
 ## Relevant articles:
 
-- [Maps in Groovy](http://www.baeldung.com/)
+- [Maps in Groovy](https://www.baeldung.com/groovy-maps)
 

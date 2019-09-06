@@ -46,15 +46,15 @@ public class DeleteInRelationshipsUnitTest {
     public void whenDeletingCategories_thenBooksShouldAlsoBeDeleted() {
         categoryRepository.deleteAll();
 
-        assertThat(bookRepository.count() == 0).isTrue();
-        assertThat(categoryRepository.count() == 0).isTrue();
+        assertThat(bookRepository.count()).isEqualTo(0);
+        assertThat(categoryRepository.count()).isEqualTo(0);
     }
 
     @Test
     public void whenDeletingBooks_thenCategoriesShouldAlsoBeDeleted() {
         bookRepository.deleteAll();
 
-        assertThat(bookRepository.count() == 0).isTrue();
-        assertThat(categoryRepository.count() == 2).isTrue();
+        assertThat(bookRepository.count()).isEqualTo(0);
+        assertThat(categoryRepository.count()).isEqualTo(2);
     }
 }

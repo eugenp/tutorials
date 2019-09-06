@@ -1,4 +1,5 @@
 */bin/*
+bin/
 
 *.class
 
@@ -20,6 +21,9 @@
 *.iml
 *.iws
 out/
+
+# VSCode
+.vscode/
 
 # Mac
 .DS_Store
@@ -78,3 +82,4 @@ jta/transaction-logs/
 software-security/sql-injection-samples/derby.log
 spring-soap/src/main/java/com/baeldung/springsoap/gen/
 /report-*.json
+transaction.log

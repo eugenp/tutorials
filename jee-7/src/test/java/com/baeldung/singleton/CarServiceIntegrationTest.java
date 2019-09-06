@@ -10,6 +10,10 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.spi.CreationalContext;
+import javax.enterprise.inject.spi.Bean;
+import javax.enterprise.inject.spi.BeanManager;
+import javax.enterprise.inject.spi.CDI;
 import javax.inject.Inject;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -47,68 +51,31 @@ public class CarServiceIntegrationTest {
 
     @EJB
     private CarServiceEjbSingleton carServiceEjbSingleton;
+    
+    @Test
+    public void givenASingleton_whenGetBeanIsCalledTwice_thenTheSameInstanceIsReturned() {       
+        CarServiceSingleton one = getBean(CarServiceSingleton.class);
+        CarServiceSingleton two = getBean(CarServiceSingleton.class);
+        assertTrue(one == two);
+    }
+    
+    @Test
+    public void givenAPojo_whenGetBeanIsCalledTwice_thenDifferentInstancesAreReturned() {       
+        CarServiceBean one = getBean(CarServiceBean.class);
+        CarServiceBean two = getBean(CarServiceBean.class);
+        assertTrue(one != two);
+    }
 
-    private static Map<String, UUID> idMap = new HashMap<>();
-
-    @Before
-    public void setUp() {
-        // populate idMap only on first run
-        if (idMap.isEmpty()) {
-            LOG.info("setUp::carServiceBean: {}", carServiceBean.getId());
-            idMap.put("carServiceBeanId", carServiceBean.getId());
-
-            LOG.info("setUp::carServiceSingleton: {}", carServiceSingleton.getId());
-            idMap.put("carServiceSingletonId", carServiceSingleton.getId());
-
-            LOG.info("setUp::carServiceEjbSingleton: {}", carServiceEjbSingleton.getId());
-            idMap.put("carServiceEjbSingletonId", carServiceEjbSingleton.getId());
-        }
+    @SuppressWarnings("unchecked")
+    private <T> T getBean(Class<T> beanClass) {
+        BeanManager bm = CDI.current().getBeanManager();
+        Bean<T> bean = (Bean<T>) bm.getBeans(beanClass).iterator().next();
+        CreationalContext<T> ctx = bm.createCreationalContext(bean);
+        return (T) bm.getReference(bean, beanClass, ctx);
     }
 
     @Test
-    public void givenRun1_whenGetId_thenSingletonIdEqual() {
-        int testRun = 1;
-
-        assertNotNull(carServiceBean);
-        assertNotNull(carServiceSingleton);
-        assertNotNull(carServiceEjbSingleton);
-
-        UUID carServiceBeanId = carServiceBean.getId();
-        assertEquals(idMap.get("carServiceBeanId"), carServiceBeanId);
-        LOG.info("Test run {}::carServiceBeanId: {}", testRun, carServiceBeanId);
-
-        UUID carServiceSingletonId = carServiceSingleton.getId();
-        assertEquals(idMap.get("carServiceSingletonId"), carServiceSingletonId);
-        LOG.info("Test run {}::carServiceSingletonId: {}", testRun, carServiceSingletonId);
-
-        UUID carServiceEjbSingletonId = carServiceEjbSingleton.getId();
-        assertEquals(idMap.get("carServiceEjbSingletonId"), carServiceEjbSingletonId);
-        LOG.info("Test run {}::carServiceEjbSingletonId: {}", testRun, carServiceEjbSingletonId);
-    }
-
-    @Test
-    public void givenRun2_whenGetId_thenSingletonIdEqual() {
-        int testRun = 2;
-
-        assertNotNull(carServiceBean);
-        assertNotNull(carServiceSingleton);
-        assertNotNull(carServiceEjbSingleton);
-
-        UUID carServiceBeanId = carServiceBean.getId();
-        assertNotEquals(idMap.get("carServiceBeanId"), carServiceBeanId);
-        LOG.info("Test run {}::carServiceBeanId: {}", testRun, carServiceBeanId);
-
-        UUID carServiceSingletonId = carServiceSingleton.getId();
-        assertEquals(idMap.get("carServiceSingletonId"), carServiceSingletonId);
-        LOG.info("Test run {}::carServiceSingletonId: {}", testRun, carServiceSingletonId);
-
-        UUID carServiceEjbSingletonId = carServiceEjbSingleton.getId();
-        assertEquals(idMap.get("carServiceEjbSingletonId"), carServiceEjbSingletonId);
-        LOG.info("Test run {}::carServiceEjbSingletonId: {}", testRun, carServiceEjbSingletonId);
-    }
-
-    @Test
-    public void givenRun3_whenSingleton_thenNoLocking() {
+    public void givenCDI_whenConcurrentAccess_thenLockingIsNotProvided() {
         for (int i = 0; i < 10; i++) {
             new Thread(new Runnable() {
                 @Override
@@ -124,7 +91,7 @@ public class CarServiceIntegrationTest {
     }
     
     @Test
-    public void givenRun4_whenEjb_thenLocking() {
+    public void givenEJB_whenConcurrentAccess_thenLockingIsProvided() {
         for (int i = 0; i < 10; i++) {
             new Thread(new Runnable() {
                 @Override

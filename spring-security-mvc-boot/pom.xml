@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-security-mvc-boot</artifactId>
@@ -46,8 +47,18 @@
             <artifactId>spring-security-data</artifactId>
         </dependency>
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -198,7 +209,7 @@
                                     <excludes>
                                         <exclude>**/*LiveTest.java</exclude>
                                         <exclude>**/*IntegrationTest.java</exclude>
-                        				<exclude>**/*IntTest.java</exclude>
+                                        <exclude>**/*IntTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/*EntryPointsTest.java</include>
@@ -228,10 +239,10 @@
         <!--<start-class>org.baeldung.multiplelogin.MultipleLoginApplication</start-class> -->
         <!--If you want to run the example with the multiple http elements, 
             comment the tag above and uncomment the one below -->
-        <!--<start-class>org.baeldung.multipleentrypoints.MultipleEntryPointsApplication</start-class>-->
-        <!--If you want to run the example with the Https enabled endpoints,
+        <!--<start-class>org.baeldung.multipleentrypoints.MultipleEntryPointsApplication</start-class> -->
+        <!--If you want to run the example with the Https enabled endpoints, 
             comment the tag above and uncomment the one below -->
-       <!-- <start-class>org.baeldung.ssl.HttpsEnabledApplication</start-class> -->
+        <!-- <start-class>org.baeldung.ssl.HttpsEnabledApplication</start-class> -->
 
         <taglibs-standard.version>1.1.2</taglibs-standard.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>

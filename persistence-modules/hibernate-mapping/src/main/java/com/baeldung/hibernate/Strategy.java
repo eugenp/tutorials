@@ -2,12 +2,12 @@ package com.baeldung.hibernate;
 
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public enum Strategy {
     //See that the classes belongs to different packages
-    MAP_KEY_COLUMN_BASED(Collections.singletonList(com.baeldung.hibernate.persistmaps.mapkeycolumn.Order.class)),
+    MAP_KEY_COLUMN_BASED(Arrays.asList(com.baeldung.hibernate.persistmaps.mapkeycolumn.Order.class, 
+            com.baeldung.hibernate.basicannotation.Course.class)),
     MAP_KEY_BASED(Arrays.asList(com.baeldung.hibernate.persistmaps.mapkey.Item.class,
             com.baeldung.hibernate.persistmaps.mapkey.Order.class,com.baeldung.hibernate.persistmaps.mapkey.User.class)),
     MAP_KEY_JOIN_COLUMN_BASED(Arrays.asList(com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Seller.class,

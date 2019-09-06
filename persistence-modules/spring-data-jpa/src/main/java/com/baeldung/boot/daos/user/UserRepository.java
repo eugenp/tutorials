@@ -94,6 +94,6 @@ public interface UserRepository extends JpaRepository<User, Integer> , UserRepos
     int deleteDeactivatedUsers();
 
     @Modifying(clearAutomatically = true, flushAutomatically = true)
-    @Query(value = "alter table USERS.USERS add column deleted int(1) not null default 0", nativeQuery = true)
+    @Query(value = "alter table USERS add column deleted int(1) not null default 0", nativeQuery = true)
     void addDeletedColumn();
 }
