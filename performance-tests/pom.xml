@@ -45,7 +45,7 @@
         </dependency>
         <dependency>
 		    <groupId>com.hotels.beans</groupId>
-		    <artifactId>bean-utils-library</artifactId>
+		    <artifactId>bull-bean-transformer</artifactId>
 		    <version>${bean-utils.version}</version>
 		</dependency>
         <dependency>
@@ -120,7 +120,7 @@
         <modelmapper.version>1.1.0</modelmapper.version>
         <jmapper.version>1.6.0.1</jmapper.version>
         <mapstruct-processor.version>1.2.0.Final</mapstruct-processor.version>
-        <bean-utils.version>1.4.7</bean-utils.version>
+        <bean-utils.version>1.5.1</bean-utils.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
     </properties>
 

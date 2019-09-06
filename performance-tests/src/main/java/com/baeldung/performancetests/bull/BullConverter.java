@@ -10,16 +10,16 @@ import com.baeldung.performancetests.model.source.SourceCode;
 import com.baeldung.performancetests.model.source.SourceOrder;
 
 import com.hotels.beans.BeanUtils;
-import com.hotels.beans.model.FieldMapping;
-import com.hotels.beans.model.FieldTransformer;
-import com.hotels.beans.transformer.Transformer;
+import com.hotels.beans.transformer.BeanTransformer;
+import com.hotels.transformer.model.FieldMapping;
+import com.hotels.transformer.model.FieldTransformer;
 
 /**
  * BULL converter configuration.
  * @see <a href="https://github.com/HotelsDotCom/bull">https://github.com/HotelsDotCom/bull</a>
  */
 public class BullConverter implements Converter {
-    private final Transformer beanTransformer;
+    private final BeanTransformer beanTransformer;
 
     public BullConverter() {
         beanTransformer = new BeanUtils().getTransformer()
