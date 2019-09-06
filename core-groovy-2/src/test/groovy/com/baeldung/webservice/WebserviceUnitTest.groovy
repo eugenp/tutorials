@@ -7,6 +7,7 @@ import wslite.rest.RESTClientException
 import wslite.soap.SOAPClient
 import wslite.soap.SOAPMessageBuilder
 import wslite.http.auth.HTTPBasicAuthorization
+import org.junit.Test
 
 class WebserviceUnitTest extends GroovyTestCase {
 
@@ -19,7 +20,7 @@ class WebserviceUnitTest extends GroovyTestCase {
         client.httpClient.sslTrustAllCerts = true
     }
 
-    void testHttpGetRequest() {
+    void test_whenSendingGet_thenRespose200() {
         def postmanGet = new URL('https://postman-echo.com/get')
         def getConnection = postmanGet.openConnection()
         getConnection.requestMethod = 'GET'
@@ -29,7 +30,7 @@ class WebserviceUnitTest extends GroovyTestCase {
         }
     }
 
-    void testHttpPostRequest() {
+    void test_whenSendingPost_thenRespose200() {
         def postmanPost = new URL('https://postman-echo.com/post')
         def query = "q=This is post request form parameter."
         def postConnection = postmanPost.openConnection()
@@ -37,7 +38,7 @@ class WebserviceUnitTest extends GroovyTestCase {
         assert postConnection.responseCode == 200
     }
     
-    void testHttpPostRequestWithParams() {
+    void test_whenSendingPostWithParams_thenRespose200() {
         def postmanPost = new URL('https://postman-echo.com/post')
         def form = "param1=This is request parameter."
         def postConnection = postmanPost.openConnection()
@@ -54,7 +55,7 @@ class WebserviceUnitTest extends GroovyTestCase {
         assert jsonSlurper.parseText(text)?.json.param1 == "This is request parameter."
     }
     
-    void testRssFeed() {
+    void test_whenReadingRSS_thenReceiveFeed() {
         def rssFeed = new XmlParser().parse("https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en")
         def stories = []
         (0..4).each {
@@ -64,7 +65,7 @@ class WebserviceUnitTest extends GroovyTestCase {
         assert stories.size() == 5
     }
 
-    void testAtomFeed() {
+    void test_whenReadingAtom_thenReceiveFeed() {
         def atomFeed = new XmlParser().parse("https://news.google.com/atom?hl=en-US&gl=US&ceid=US:en")
         def stories = []
         (0..4).each {
@@ -74,7 +75,7 @@ class WebserviceUnitTest extends GroovyTestCase {
         assert stories.size() == 5
     }
     
-    void testSoapClient() {
+    void test_whenConsumingSoap_thenReceiveResponse() {
         def url = "http://www.dataaccess.com/webservicesserver/numberconversion.wso"
         def soapClient = new SOAPClient(url)
         def message = new SOAPMessageBuilder().build({
@@ -89,7 +90,7 @@ class WebserviceUnitTest extends GroovyTestCase {
         assert words == "one thousand two hundred and thirty four "
     }
 
-    void testRestClientGet() {
+    void test_whenConsumingRestGet_thenReceiveResponse() {
         def path = "/get"
         def response
         try {
@@ -101,7 +102,7 @@ class WebserviceUnitTest extends GroovyTestCase {
         }
     }
 
-    void testRestClientPost() {
+    void test_whenConsumingRestPost_thenReceiveResponse() {
         def path = "/post"
         def params = ["foo":1,"bar":2]
         def response
@@ -117,7 +118,7 @@ class WebserviceUnitTest extends GroovyTestCase {
         }
     }
 
-    void testBasicAuthentication() {
+    void test_whenBasicAuthentication_thenReceive200() {
         def path = "/basic-auth"
         def response
         try {
@@ -131,7 +132,7 @@ class WebserviceUnitTest extends GroovyTestCase {
         }
     }
 
-    void testOAuth() {
+    void test_whenOAuth_thenReceive200() {
         RESTClient oAuthClient = new RESTClient("https://postman-echo.com")
         oAuthClient.defaultAcceptHeader = ContentType.JSON
         oAuthClient.httpClient.sslTrustAllCerts = true
