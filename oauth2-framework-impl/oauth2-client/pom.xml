@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>oauth2-client</artifactId>
     <packaging>war</packaging>
+    <name>oauth2-client</name>
 
     <parent>
         <groupId>com.baeldung.oauth2</groupId>
