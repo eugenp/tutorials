@@ -98,6 +98,8 @@ public class FooMappingExamplesController {
         return "Advanced - PUT and POST within single method";
     }
  
+	// --- Ambiguous Mapping
+ 
     @GetMapping(value = "foos/duplicate" )
     public String duplicate() {
         return "Duplicate";
@@ -109,5 +111,15 @@ public class FooMappingExamplesController {
     // public String duplicateEx() {
     // return "Duplicate";
     // }
+	
+	@GetMapping(value = "foos/duplicate/xml", produces = MediaType.APPLICATION_XML_VALUE)
+	public String duplicateXml() {
+		return "Duplicate Xml";
+	}
+	 
+	@GetMapping(value = "foos/duplicate/json", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String duplicateJson() {
+		return "Duplicate Json";
+	}
 
 }
