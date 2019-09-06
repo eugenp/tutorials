@@ -579,7 +579,7 @@
 				
 				<module>spring-boot-nashorn</module>
 				<module>java-blockchain</module>
-			
+				<module>digital-signature</module>			
 			</modules>
 
 		</profile>
