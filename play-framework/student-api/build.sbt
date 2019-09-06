@@ -1,4 +1,4 @@
-name := """play-routing"""
+name := """student-api"""
 organization := "com.baeldung"
 
 version := "1.0-SNAPSHOT"
