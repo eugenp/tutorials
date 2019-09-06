@@ -21,6 +21,9 @@ import com.hotels.transformer.model.FieldTransformer;
 public class BullConverter implements Converter {
     private final BeanTransformer beanTransformer;
 
+    /**
+     * Default constructor.
+     */
     public BullConverter() {
         beanTransformer = new BeanUtils().getTransformer()
                 .withFieldMapping(new FieldMapping("status", "orderStatus"))
