@@ -24,6 +24,7 @@ public class BullConverter implements Converter {
     public BullConverter() {
         beanTransformer = new BeanUtils().getTransformer()
                 .withFieldMapping(new FieldMapping("status", "orderStatus"))
+                .setDefaultValueSetEnabled(false)
                 .setFlatFieldNameTransformation(true);
     }
 
