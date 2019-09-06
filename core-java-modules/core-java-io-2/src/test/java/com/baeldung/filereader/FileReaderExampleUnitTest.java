@@ -17,15 +17,9 @@ public class FileReaderExampleUnitTest {
     public void givenFileReader_whenReadAllCharacters_thenReturnsContent() throws IOException {
         String expectedText = "Hello, World!";
         File file = new File(FILE_PATH);
-        FileReader fileReader = null;
-        try {
-            fileReader = new FileReader(file);
+        try (FileReader fileReader = new FileReader(file)) {
             String content = FileReaderExample.readAllCharactersOneByOne(fileReader);
             Assert.assertEquals(expectedText, content);
-        } finally {
-            if (fileReader != null) {
-                fileReader.close();
-            }
         }
     }
 
@@ -33,15 +27,9 @@ public class FileReaderExampleUnitTest {
     public void givenFileReader_whenReadMultipleCharacters_thenReturnsContent() throws IOException {
         String expectedText = "Hello";
         File file = new File(FILE_PATH);
-        FileReader fileReader = null;
-        try {
-            fileReader = new FileReader(file);
+        try (FileReader fileReader = new FileReader(file)) {
             String content = FileReaderExample.readMultipleCharacters(fileReader, 5);
             Assert.assertEquals(expectedText, content);
-        } finally {
-            if (fileReader != null) {
-                fileReader.close();
-            }
         }
     }
 
