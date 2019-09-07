@@ -207,6 +207,21 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.baeldung.resource.MyResourceLoader</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -274,6 +289,8 @@
         <!-- Mime Type Libraries -->
         <tika.version>1.18</tika.version>
         <jmime-magic.version>0.1.5</jmime-magic.version>
+        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
+
     </properties>
 
 </project>
