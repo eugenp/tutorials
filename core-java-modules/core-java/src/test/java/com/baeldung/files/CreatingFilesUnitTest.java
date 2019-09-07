@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 
-public class CreateFilesTest {
+public class CreateFilesUnitTest {
     @Test(expected = IOException.class)
     public void whenCreatingAFileWithAbsolutePath_thenExceptionIsThrown() throws IOException {
         File fileWithAbsolutePath = new File("/myDirectory/testFile.txt");
