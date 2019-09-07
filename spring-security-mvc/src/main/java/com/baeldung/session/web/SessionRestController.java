@@ -1,4 +1,4 @@
-package com.baeldung.web;
+package com.baeldung.session.web;
 
 import javax.servlet.http.HttpSession;
 
