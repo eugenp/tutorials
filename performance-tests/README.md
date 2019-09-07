@@ -6,5 +6,5 @@
 
  To run the performance benchmarks:
 
-1: `mvn clean install`   
+1: `mvn clean install -P run-benchmarks`   
 2: `java -jar target/benchmarks.jar`
