@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
-public class UserRepositoryTest {
+public class UserRepositoryIntegrationTest {
 
     private static final String USER_NAME_ADAM = "Adam";
     private static final String USER_NAME_EVE = "Eve";

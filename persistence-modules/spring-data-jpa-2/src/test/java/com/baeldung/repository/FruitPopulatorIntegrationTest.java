@@ -14,7 +14,7 @@ import com.baeldung.entity.Fruit;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class FruitPopulatorTest {
+public class FruitPopulatorIntegrationTest {
 
     @Autowired
     private FruitRepository fruitRepository;
