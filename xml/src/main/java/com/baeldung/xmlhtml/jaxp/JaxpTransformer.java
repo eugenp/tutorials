@@ -15,6 +15,8 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.HashMap;
+import java.util.Map;
 
 public class JaxpTransformer {
 
@@ -35,13 +37,15 @@ public class JaxpTransformer {
         Document doc = factory
           .newDocumentBuilder()
           .newDocument();
+        //Build Map
+        Map<String, String> map = buildMap(xml);
         //Head
         Element html = doc.createElement("html");
         html.setAttribute("lang", "en");
-        Element head = buildHead(xml, doc);
+        Element head = buildHead(map, doc);
         html.appendChild(head);
         //Body
-        Element body = buildBody(xml, doc);
+        Element body = buildBody(map, doc);
         html.appendChild(body);
         doc.appendChild(html);
         Writer output = applyTransformation(doc);
@@ -59,29 +63,37 @@ public class JaxpTransformer {
         return output;
     }
 
-    private Element buildHead(Element xml, Document doc) {
-        Element head = doc.createElement("head");
-        Element title = doc.createElement("title");
-        title.setTextContent(xml
+    private Map<String, String> buildMap(Element xml) {
+        Map<String, String> map = new HashMap<>();
+        map.put("heading", xml
           .getElementsByTagName("heading")
           .item(0)
           .getTextContent());
+        map.put("from", String.format("from: %s", xml
+          .getElementsByTagName("from")
+          .item(0)
+          .getTextContent()));
+        map.put("content", xml
+          .getElementsByTagName("content")
+          .item(0)
+          .getTextContent());
+        return map;
+    }
+
+    private Element buildHead(Map<String, String> map, Document doc) {
+        Element head = doc.createElement("head");
+        Element title = doc.createElement("title");
+        title.setTextContent(map.get("heading"));
         head.appendChild(title);
         return head;
     }
 
-    private Element buildBody(Element xml, Document doc) {
+    private Element buildBody(Map<String, String> map, Document doc) {
         Element body = doc.createElement("body");
         Element from = doc.createElement("p");
-        from.setTextContent(String.format("from: %s", xml
-          .getElementsByTagName("from")
-          .item(0)
-          .getTextContent()));
+        from.setTextContent(map.get("from"));
         Element success = doc.createElement("p");
-        success.setTextContent(xml
-          .getElementsByTagName("content")
-          .item(0)
-          .getTextContent());
+        success.setTextContent(map.get("content"));
         body.appendChild(from);
         body.appendChild(success);
         return body;
