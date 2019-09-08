@@ -395,6 +395,7 @@
                 <module>core-java-modules/core-java-collections</module>
                 <module>core-java-modules/core-java-collections-list</module>
                 <module>core-java-modules/core-java-collections-list-2</module>
+                <module>core-java-modules/core-java-collections-list-3</module>
                 <module>core-java-modules/core-java-collections-array-list</module>
                 <module>core-java-modules/core-java-collections-set</module>
                 <module>core-java-modules/core-java-concurrency-basic</module>
@@ -535,6 +536,7 @@
 				<module>metrics</module>
 				<!-- <module>micronaut</module> --> <!-- Fixing in BAEL-10877 -->
 				<module>microprofile</module>
+                <module>ml</module>
 				<module>msf4j</module>
 				<!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
 				<module>mustache</module>
@@ -1120,6 +1122,7 @@
 				<module>core-java-modules/core-java-collections</module>
 				<module>core-java-modules/core-java-collections-list</module>
 				<module>core-java-modules/core-java-collections-list-2</module>
+				<module>core-java-modules/core-java-collections-list-3</module>
 				<module>core-java-modules/core-java-collections-array-list</module>
 				<module>core-java-modules/core-java-collections-set</module>
 				<module>core-java-modules/core-java-concurrency-basic</module>
@@ -1253,6 +1256,7 @@
 				<module>metrics</module>
 				<!-- <module>micronaut</module> --> <!-- Fixing in BAEL-10877 -->
 				<module>microprofile</module>
+                <module>ml</module>
 				<module>msf4j</module>
 				<!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
 				<module>mustache</module>
