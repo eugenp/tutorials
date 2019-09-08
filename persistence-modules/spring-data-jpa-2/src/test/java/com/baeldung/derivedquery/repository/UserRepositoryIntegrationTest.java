@@ -84,7 +84,7 @@ public class UserRepositoryIntegrationTest {
     @Test
     public void whenByNameLike_thenReturnsCorrectResult() {
 
-        assertEquals(2, userRepository.findByNameEndingWith("%d%m").size());
+        assertEquals(2, userRepository.findByNameEndingWith("m").size());
     }
 
     @Test
