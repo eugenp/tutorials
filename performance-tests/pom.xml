@@ -104,7 +104,6 @@
     </properties>
 
     <profiles>
-        <!-- modules profiles -->
         <profile>
             <id>run-benchmarks</id>
             <build>
