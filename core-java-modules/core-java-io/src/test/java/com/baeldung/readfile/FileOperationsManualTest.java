@@ -1,4 +1,4 @@
-package com.baeldung.file;
+package com.baeldung.readfile;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;

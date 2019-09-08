@@ -1,10 +1,11 @@
-package org.baeldung.resttemplate;
+package org.baeldung.resttemplate.postjson;
 
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
 import java.net.URI;
 
+import org.baeldung.resttemplate.RestTemplateConfigurationApplication;
 import org.baeldung.resttemplate.web.dto.Person;
 import org.json.JSONException;
 import org.json.JSONObject;
