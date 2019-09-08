@@ -3,12 +3,12 @@ package com.baeldung.core.modifiers;
 public class Employee {
 
     private String privateId;
-    public String name;
+    private String name;
     private boolean manager;
 
     public Employee(String id, String name) {
-        changeId(id);
-        this.name = name;
+        setPrivateId(id);
+        setName(name);
     }
 
     private Employee(String id, String name, boolean managerAttribute) {
@@ -17,7 +17,7 @@ public class Employee {
         this.privateId = id + "_ID-MANAGER";
     }
 
-    public void changeId(String customId) {
+    public void setPrivateId(String customId) {
         if (customId.endsWith("_ID")) {
             this.privateId = customId;
         } else {
@@ -25,7 +25,7 @@ public class Employee {
         }
     }
 
-    public String getId() {
+    public String getPrivateId() {
         return privateId;
     }
 
@@ -43,6 +43,15 @@ public class Employee {
         this.manager = manager;
     }
 
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     public static Employee buildManager(String id, String name) {
         return new Employee(id, name, true);
     }
