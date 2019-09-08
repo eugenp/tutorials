@@ -796,7 +796,6 @@
 				<module>structurizr</module>
 				<module>struts-2</module>
 
-				<module>assertion-libraries</module>
 				<module>testing-modules</module>
 
 				<module>twilio</module>
@@ -1491,7 +1490,6 @@
 				<module>structurizr</module>
 				<module>struts-2</module>
 
-				<module>assertion-libraries</module>
 				<module>testing-modules</module>
 
 				<module>twilio</module>
