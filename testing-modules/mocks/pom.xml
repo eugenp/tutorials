@@ -3,7 +3,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mocks</artifactId>
     <name>mocks</name>
-    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

@@ -3,7 +3,6 @@ package org.baeldung.mocks.jmockit;
 import mockit.Delegate;
 import mockit.Expectations;
 import mockit.Mocked;
-import mockit.StrictExpectations;
 import mockit.Verifications;
 import mockit.integration.junit4.JMockit;
 import org.hamcrest.BaseMatcher;
@@ -106,7 +105,7 @@ public class ExpectationsIntegrationTest {
 
     @Test
     public void testResultAndReturns(@Mocked ExpectationsCollaborator mock) {
-        new StrictExpectations() {{
+        new Expectations() {{
             mock.methodReturnsString();
             result = "foo";
             result = new Exception();

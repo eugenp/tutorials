@@ -1,12 +1,10 @@
 package org.baeldung.mocks.jmockit;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.baeldung.mocks.jmockit.AdvancedCollaborator.InnerAdvancedCollaborator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -53,12 +51,6 @@ public class AdvancedCollaboratorIntegrationTest<MultiMock extends List<String> 
     }
 
     @Test
-    public void testToCallPrivateMethodsDirectly() {
-        Object value = Deencapsulation.invoke(mock, "privateMethod");
-        assertEquals("default:", value);
-    }
-
-    @Test
     public void testToSetPrivateFieldDirectly() {
         Deencapsulation.setField(mock, "privateField", 10);
         assertEquals(10, mock.methodThatReturnsThePrivateField());
@@ -70,18 +62,6 @@ public class AdvancedCollaboratorIntegrationTest<MultiMock extends List<String> 
         assertEquals(5, value);
     }
 
-    @Test
-    public void testToCreateNewInstanceDirectly() {
-        AdvancedCollaborator coll = Deencapsulation.newInstance(AdvancedCollaborator.class, "foo");
-        assertEquals(3, coll.i);
-    }
-
-    @Test
-    public void testToCreateNewInnerClassInstanceDirectly() {
-        InnerAdvancedCollaborator innerCollaborator = Deencapsulation.newInnerInstance(InnerAdvancedCollaborator.class, mock);
-        assertNotNull(innerCollaborator);
-    }
-    
     @Test
     @SuppressWarnings("unchecked")
     public void testMultipleInterfacesWholeTest() {

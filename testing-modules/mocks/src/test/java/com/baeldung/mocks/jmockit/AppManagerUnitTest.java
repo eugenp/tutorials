@@ -28,17 +28,4 @@ public class AppManagerUnitTest {
 
         Assertions.assertFalse(appManager.managerResponse("Why are you coming late?"));
     }
-
-    @Test
-    public void givenAppManager_whenPrivateStaticMethod_thenValidateExpectedResponse() {
-        final int response = Deencapsulation.invoke(AppManager.class, "stringToInteger", "110");
-        Assertions.assertEquals(110, response);
-    }
-
-    @Test
-    public void givenAppManager_whenPrivateStaticMethod_thenExpectException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Deencapsulation.invoke(AppManager.class, "stringToInteger", "11r");
-        });
-    }
 }

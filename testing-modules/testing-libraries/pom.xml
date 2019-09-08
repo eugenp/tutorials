@@ -4,13 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>testing-libraries</artifactId>
     <name>testing-libraries</name>
-    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <artifactId>testing-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>..</relativePath>
     </parent>
 
     <dependencies>
