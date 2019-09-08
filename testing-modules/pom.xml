@@ -2,8 +2,8 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>testing-modules</artifactId>
-    <name>testing-modules</name>
+    <artifactId>testing-libraries</artifactId>
+    <name>testing-libraries</name>
     <packaging>pom</packaging>
 
     <parent>
@@ -31,7 +31,6 @@
         <module>selenium-junit-testng</module>
         <module>spring-testing</module>
         <module>test-containers</module>
-        <module>testing</module>
         <module>testng</module>
         <module>junit-5-basics</module>
         <module>easymock</module>
