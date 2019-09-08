@@ -2,17 +2,16 @@ package com.baeldung.restart;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 
-import java.time.Duration;
-
-public class RestartApplicationIntegrationTest {
+/**
+ * We have to make sure that while running this test, 8080 and 8090 ports are free.
+ * Otherwise it will fail.
+ */
+public class RestartApplicationManualTest {
 
     private TestRestTemplate restTemplate = new TestRestTemplate();
 
