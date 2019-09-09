@@ -9,15 +9,19 @@ import java.io.IOException;
 import static org.junit.Assert.assertTrue;
 
 public class CreateFilesUnitTest {
-    @Test(expected = IOException.class)
-    public void whenCreatingAFileWithAbsolutePath_thenExceptionIsThrown() throws IOException {
-        File fileWithAbsolutePath = new File("/myDirectory/testFile.txt");
+    @Test
+    public void givenAnExistingDirectory_whenCreatingAFileWithAbsolutePath_thenFileIsCreated() throws IOException {
+        File tempDirectory = new File(System.getProperty("java.io.tmpdir"));
+        File fileWithAbsolutePath = new File(tempDirectory.getAbsolutePath() + "/myDirectory/testFile.txt");
 
+        fileWithAbsolutePath.mkdirs();
         Files.touch(fileWithAbsolutePath);
+
+        assertTrue(fileWithAbsolutePath.exists());
     }
 
     @Test
-    public void givenAnExistingDirectory_whenCreatingANewDirectoryAndFile_thenFileIsCreated() throws IOException {
+    public void givenAnExistingDirectory_whenCreatingANewDirectoryAndFileWithRelativePath_thenFileIsCreated() throws IOException {
         File tempDirectory = new File(System.getProperty("java.io.tmpdir"));
         File fileWithRelativePath = new File(tempDirectory, "myDirectory/newFile.txt");
 
