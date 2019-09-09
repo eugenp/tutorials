@@ -60,5 +60,6 @@
         <module>spring-persistence-simple</module>
         <module>jpa-hibernate-cascade-type</module>
 				<module>r2dbc</module>
+        <module>spring-boot-jdbi</module>
     </modules>
 </project>
