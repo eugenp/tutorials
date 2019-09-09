@@ -1,4 +1,4 @@
-package com.baeldung.security;
+package com.baeldung.session.filter;
 
 import java.io.IOException;
 import java.util.Arrays;
