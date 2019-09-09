@@ -61,7 +61,7 @@ public class StaxTransformer {
         return output.toString();
     }
 
-    private Map<String, String> buildMap() throws XMLStreamException {
+    public Map<String, String> buildMap() throws XMLStreamException {
         Map<String, String> map = new HashMap<>();
         while (input.hasNext()) {
             input.next();
