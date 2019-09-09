@@ -1,7 +1,5 @@
-package org.baeldung.spring.config;
+package org.baeldung.scopes;
 
-import org.baeldung.scopes.HelloMessageGenerator;
-import org.baeldung.scopes.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.baeldung.validation.application.entities;
+package com.baeldung.beanvalidation.application.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
