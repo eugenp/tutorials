@@ -1,4 +1,4 @@
-package com.baeldung.definition.domain;
+package com.baeldung.springbean.domain;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;

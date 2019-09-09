@@ -1,11 +1,12 @@
-package com.baeldung.definition;
+package com.baeldung.springbean;
 
-import com.baeldung.definition.domain.Company;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import static org.junit.Assert.assertEquals;
+import com.baeldung.springbean.domain.Company;
 
 public class SpringBeanIntegrationTest {
     @Test
