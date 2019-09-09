@@ -1,0 +1,32 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="glossdef.block.properties">
+<refmeta>
+<refentrytitle>glossdef.block.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>glossdef.block.properties</refname>
+<refpurpose>To add properties to the block of a glossary definition.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="glossdef.block.properties.frag"><xsl:attribute-set name="glossdef.block.properties">
+  <xsl:attribute name="margin-{$direction.align.start}">.25in</xsl:attribute>
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+<refsection><info><title>Description</title></info>
+<para>These properties are added to the block containing a
+glossary definition in a glossary when
+the <parameter>glossary.as.blocks</parameter> parameter
+is non-zero.
+Use this attribute-set to set the space above and below,
+any font properties,
+and any indent for the glossary definition.</para>
+
+</refsection>
+</refentry>
