@@ -1,4 +1,4 @@
-package org.baeldung.mockito;
+package org.baeldung.mockito.spy;
 
 import static org.junit.Assert.assertEquals;
 
