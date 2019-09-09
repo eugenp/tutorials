@@ -1,7 +1,8 @@
-package com.baeldung.validation.application.controllers;
+package com.baeldung.beanvalidation.application.controllers;
 
-import com.baeldung.validation.application.entities.User;
-import com.baeldung.validation.application.repositories.UserRepository;
+import com.baeldung.beanvalidation.application.entities.User;
+import com.baeldung.beanvalidation.application.repositories.UserRepository;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

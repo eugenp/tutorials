@@ -1,7 +1,8 @@
-package com.baeldung.validation.application;
+package com.baeldung.beanvalidation.application;
 
-import com.baeldung.validation.application.controllers.UserController;
-import com.baeldung.validation.application.repositories.UserRepository;
+import com.baeldung.beanvalidation.application.controllers.UserController;
+import com.baeldung.beanvalidation.application.repositories.UserRepository;
+
 import java.nio.charset.Charset;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.hamcrest.core.Is;

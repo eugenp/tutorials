@@ -1,7 +1,8 @@
-package com.baeldung.validation.application;
+package com.baeldung.beanvalidation.application;
 
-import com.baeldung.validation.application.entities.User;
-import com.baeldung.validation.application.repositories.UserRepository;
+import com.baeldung.beanvalidation.application.entities.User;
+import com.baeldung.beanvalidation.application.repositories.UserRepository;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
