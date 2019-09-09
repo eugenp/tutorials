@@ -1,3 +1,5 @@
+package com.baeldung.files;
+
 import com.google.common.io.Files;
 import org.junit.Test;
 
