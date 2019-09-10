@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class FindAStringInGivenList {
 
 
-    public List findUsingLoopWithRegex(String search, List<String> list) {
+    public List<String> findUsingLoopWithRegex(String search, List<String> list) {
 
         List<String> matches = new ArrayList<String>();
 
@@ -33,7 +33,7 @@ public class FindAStringInGivenList {
     }
 
 
-    public List findUsingLoop(String search, List<String> list) {
+    public List<String> findUsingLoop(String search, List<String> list) {
 
         List<String> matches = new ArrayList<String>();
 
@@ -46,7 +46,7 @@ public class FindAStringInGivenList {
         return matches;
     }
 
-    public List findUsingStream(String search, List<String> list) {
+    public List<String> findUsingStream(String search, List<String> list) {
 
         List<String> matchingElements =
                 list.stream()
@@ -67,7 +67,7 @@ public class FindAStringInGivenList {
         return Lists.newArrayList(result.iterator());
     }
 
-    public List<String> findUsingApacheCommon(String search, List<String> list) {
+    public List<String> findUsingCommonsCollection(String search, List<String> list) {
         CollectionUtils.filter(list, PredicateUtils.notNullPredicate());
         Iterable<String> result = IterableUtils.filteredIterable(list, new org.apache.commons.collections4.Predicate<String>() {
             public boolean evaluate(String listElement) {

@@ -63,16 +63,16 @@ public class FindAStringInListUnitTest {
     }
 
     @Test
-    public void givenAString_whenFoundUsingApacheCommons_thenReturnList(){
-        List matchingElements = findAStringInGivenList.findUsingApacheCommon("Jack", list);
+    public void givenAString_whenFoundUsingCommonsCollection_thenReturnList(){
+        List matchingElements = findAStringInGivenList.findUsingCommonsCollection("Jack", list);
         assertEquals(2, matchingElements.size());
         assertEquals("Jack and Jill", matchingElements.get(0));
         assertEquals("Jack", matchingElements.get(1));
     }
 
     @Test
-    public void givenAString_whenNullFoundUsingApacheCommons_thenReturnEmptyList(){
-        List matchingElements = findAStringInGivenList.findUsingApacheCommon(null, list);
+    public void givenAString_whenNullFoundUsingCommonsCollection_thenReturnEmptyList(){
+        List matchingElements = findAStringInGivenList.findUsingCommonsCollection(null, list);
         assertEquals(0, matchingElements.size());
     }
 
