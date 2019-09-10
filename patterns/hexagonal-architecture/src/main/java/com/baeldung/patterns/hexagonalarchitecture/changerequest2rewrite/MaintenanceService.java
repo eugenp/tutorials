@@ -1,7 +1,7 @@
 package com.baeldung.patterns.hexagonalarchitecture.changerequest2rewrite;
 
 public class MaintenanceService {
- 
+    
     public static final int MAX_PENDING_JOB_COUNT = 1000;
  
     private PendingJobService pendingJobService;

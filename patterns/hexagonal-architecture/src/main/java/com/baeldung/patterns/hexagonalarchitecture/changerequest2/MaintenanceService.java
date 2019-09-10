@@ -3,7 +3,7 @@ package com.baeldung.patterns.hexagonalarchitecture.changerequest2;
 import java.util.Random;
  
 public class MaintenanceService {
- 
+    
     public static final int MAX_PENDING_JOB_COUNT = 1000;
  
     public void checkPendingJobsAndNotifyIfNecessary() {

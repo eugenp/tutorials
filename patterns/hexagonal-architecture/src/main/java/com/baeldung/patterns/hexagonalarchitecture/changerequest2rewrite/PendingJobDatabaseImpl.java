@@ -1,7 +1,7 @@
 package com.baeldung.patterns.hexagonalarchitecture.changerequest2rewrite;
 
 import java.util.Random;
- 
+
 public class PendingJobDatabaseImpl implements PendingJobService {
     @Override
     public int getPendingJobCount() {
