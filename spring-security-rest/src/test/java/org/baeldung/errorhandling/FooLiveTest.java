@@ -1,8 +1,10 @@
-package org.baeldung.web;
+package org.baeldung.errorhandling;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import org.baeldung.errorhandling.ApiError;
+import org.baeldung.web.TestConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.http.HttpStatus;

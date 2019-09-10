@@ -1,4 +1,4 @@
-package org.baeldung.web;
+package org.baeldung.errorhandling;
 
 import java.util.Arrays;
 import java.util.List;
