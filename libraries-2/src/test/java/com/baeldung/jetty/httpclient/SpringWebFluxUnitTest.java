@@ -3,19 +3,21 @@ package com.baeldung.jetty.httpclient;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.reactive.ClientHttpConnector;
 import org.springframework.http.client.reactive.JettyClientHttpConnector;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import reactor.core.publisher.Mono;
 
-public class SpringReactorUnitTest extends AbstractTest {
+public class SpringWebFluxUnitTest extends AbstractTest {
 
     @Test
-    public void testResponseWithContent() throws Exception {
+    public void givenReactiveClient_whenRequested_shouldReturnResponse() throws Exception {
 
+        ClientHttpConnector clientConnector = new JettyClientHttpConnector(httpClient);
         WebClient client = WebClient.builder()
-            .clientConnector(new JettyClientHttpConnector(httpClient))
+            .clientConnector(clientConnector)
             .build();
         String responseContent = client.post()
             .uri(uri()).contentType(MediaType.TEXT_PLAIN)

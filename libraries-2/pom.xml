@@ -133,6 +133,11 @@
 	    <version>${spring.webflux.version}</version>
 	</dependency>
 	<dependency>
+	    <groupId>io.projectreactor</groupId>
+	    <artifactId>reactor-core</artifactId>
+	    <version>${reactor.version}</version>
+	</dependency>
+	<dependency>
 	    <groupId>org.reactivestreams</groupId>
 	    <artifactId>reactive-streams</artifactId>
 	    <version>${reactive.stream.version}</version>
@@ -159,5 +164,6 @@
 	<rxjava2.version>2.2.11</rxjava2.version>
 	<spring.webflux.version>5.1.9.RELEASE</spring.webflux.version>
 	<reactive.stream.version>1.0.3</reactive.stream.version>
+	<reactor.version>3.2.12.RELEASE</reactor.version>
     </properties>
 </project>
