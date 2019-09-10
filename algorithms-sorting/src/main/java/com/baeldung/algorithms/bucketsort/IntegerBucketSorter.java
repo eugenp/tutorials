@@ -53,7 +53,7 @@ public class IntegerBucketSorter implements Sorter<Integer> {
     }
 
     private int findMax(List<Integer> input){
-        int m = 0;
+        int m = Integer.MIN_VALUE;
         for (int i : input){
             m = Math.max(i, m);
         }
