@@ -3,15 +3,12 @@ package com.baeldung;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.config.AppInitializer;
+import com.baeldung.config.TestConfig;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { AppInitializer.class }, loader = AnnotationConfigContextLoader.class)
-@WebAppConfiguration
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = {TestConfig.class})
 public class SpringContextIntegrationTest {
 
     @Test
