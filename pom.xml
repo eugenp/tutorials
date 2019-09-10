@@ -442,6 +442,7 @@
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava</module>
+				<module>guava-io</module>
                 <module>guava-collections</module>
 				<module>guava-collections-set</module>
                 <module>guava-modules</module>
@@ -1166,6 +1167,7 @@
 				<module>grpc</module>
 				<module>gson</module>
 				<module>guava</module>
+				<module>guava-io</module>
 				<module>guava-collections</module>
 				<module>guava-collections-set</module>
 				<module>guava-modules</module>
