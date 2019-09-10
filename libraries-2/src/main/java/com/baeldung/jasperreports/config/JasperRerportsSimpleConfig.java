@@ -1,12 +1,13 @@
-package org.baeldung.jasperreports.config;
+package com.baeldung.jasperreports.config;
 
-import javax.sql.DataSource;
-import org.baeldung.jasperreports.SimpleReportExporter;
-import org.baeldung.jasperreports.SimpleReportFiller;
+import com.baeldung.jasperreports.SimpleReportExporter;
+import com.baeldung.jasperreports.SimpleReportFiller;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class JasperRerportsSimpleConfig {

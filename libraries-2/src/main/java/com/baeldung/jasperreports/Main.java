@@ -1,9 +1,10 @@
-package org.baeldung.jasperreports;
+package com.baeldung.jasperreports;
+
+import com.baeldung.jasperreports.config.JasperRerportsSimpleConfig;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.baeldung.jasperreports.config.JasperRerportsSimpleConfig;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     public static void main(String[] args) {

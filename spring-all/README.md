@@ -18,7 +18,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Quick Guide to Spring Bean Scopes](http://www.baeldung.com/spring-bean-scopes)
 - [Custom Scope in Spring](http://www.baeldung.com/spring-custom-scope)
 - [A CLI with Spring Shell](http://www.baeldung.com/spring-shell-cli)
-- [JasperReports with Spring](http://www.baeldung.com/spring-jasper)
 - [@Order in Spring](http://www.baeldung.com/spring-order)
 - [Spring @Primary Annotation](http://www.baeldung.com/spring-primary)
 - [Spring Events](https://www.baeldung.com/spring-events)
