@@ -22,8 +22,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public final class FileCopyIntegrationTest {
 
-    //
-
     @Test
     public void whenFileCopyConfiguration_thanFileCopiedSuccessfully() throws InterruptedException {
         final AbstractApplicationContext context = new AnnotationConfigApplicationContext(FileCopyConfig.class.getCanonicalName());

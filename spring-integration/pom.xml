@@ -36,7 +36,7 @@
         <dependency>
             <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-twitter</artifactId>
-            <version>${spring.version}</version>
+            <version>5.0.14.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.integration</groupId>
@@ -68,12 +68,23 @@
             <artifactId>spring-integration-security</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <version>${spring.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.197</version>
         </dependency>
     </dependencies>
 
@@ -106,12 +117,25 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>5.0.3.RELEASE</spring.version>
+        <spring.version>5.2.0.RC1</spring.version>
         <spring-social.version>1.1.4.RELEASE</spring-social.version>
         <javax-mail.version>1.4.7</javax-mail.version>
         <javax-activation.version>1.1.1</javax-activation.version>
         <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
         <exec-maven-plugin.version>1.5.0</exec-maven-plugin.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>repo.spring.io.milestone</id>
+            <name>Spring Framework Maven Milestone Repository</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+        </repository>
+        <repository>
+            <id>central</id>
+            <name>Maven central</name>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+    </repositories>
 
 </project>
