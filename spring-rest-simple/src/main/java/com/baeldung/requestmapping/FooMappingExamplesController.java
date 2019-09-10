@@ -1,4 +1,4 @@
-package test;
+package com.baeldung.requestmapping;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
