@@ -66,7 +66,7 @@ public class MultipleDataModulesCassandraIntegrationTest {
         // then
         Iterable<BookAudit> resultIterable = bookAuditCrudRepository.findAll();
         List<BookAudit> result = StreamSupport.stream(resultIterable.spliterator(), false)
-            .collect(Collectors.toList());
+                                              .collect(Collectors.toList());
         assertThat(result.isEmpty(), is(false));
         assertThat(result.contains(bookAudit), is(true));
         LOGGER.info(result.get(0).toString());

@@ -66,7 +66,7 @@ public class MultipleDataModulesMongoIntegrationTest {
         // then
         Iterable<BookDocument> resultIterable = bookDocumentCrudRepository.findAll();
         List<BookDocument> result = StreamSupport.stream(resultIterable.spliterator(), false)
-            .collect(Collectors.toList());
+                                                 .collect(Collectors.toList());
         assertThat(result.isEmpty(), is(false));
         assertThat(result.contains(bookDocument), is(true));
         LOGGER.info(result.get(0).toString());
