@@ -40,7 +40,7 @@ public class MultipleDataModulesMongoIntegrationTest {
 
     @Test
     public void givenBookDocument_whenPersistWithBookDocumentRepository_thenSuccess() {
-      
+
         // given
         BookDocument bookDocument = new BookDocument("lorem", "Foundation", "Isaac Asimov", "Once upon a time ...");
 
@@ -56,7 +56,7 @@ public class MultipleDataModulesMongoIntegrationTest {
 
     @Test
     public void givenBookAudit_whenPersistWithBookDocumentCrudRepository_thenSuccess() {
-   
+
         // given
         BookDocument bookDocument = new BookDocument("lorem", "Foundation", "Isaac Asimov", "Once upon a time ...");
 
