@@ -1,4 +1,4 @@
-package com.baeldung.files;
+package com.baeldung.createfiles;
 
 import com.google.common.io.Files;
 import org.junit.Test;
