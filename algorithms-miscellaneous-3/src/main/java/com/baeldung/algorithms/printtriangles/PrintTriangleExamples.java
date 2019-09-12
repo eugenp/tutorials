@@ -4,7 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class PrintTriangleExamples {
 
-    public static String printARightAngledTriangle(int N) {
+    public static String printARightTriangle(int N) {
         StringBuilder result = new StringBuilder();
         for (int r = 1; r <= N; r++) {
             for (int j = 1; j <= r; j++) {
@@ -29,6 +29,17 @@ public class PrintTriangleExamples {
         return result.toString();
     }
 
+    public static String printAnIsoscelesTriangleUsingStringUtils(int N) {
+        StringBuilder result = new StringBuilder();
+
+        for (int r = 1; r <= N; r++) {
+            result.append(StringUtils.repeat(' ', N - r));
+            result.append(StringUtils.repeat('*', 2 * r - 1));
+            result.append(System.lineSeparator());
+        }
+        return result.toString();
+    }
+
     public static String printAnIsoscelesTriangleUsingSubstring(int N) {
         StringBuilder result = new StringBuilder();
         String helperString = StringUtils.repeat(' ', N - 1) + StringUtils.repeat('*', N * 2 - 1);
@@ -41,8 +52,9 @@ public class PrintTriangleExamples {
     }
 
     public static void main(String[] args) {
-        System.out.println(printARightAngledTriangle(5));
+        System.out.println(printARightTriangle(5));
         System.out.println(printAnIsoscelesTriangle(5));
+        System.out.println(printAnIsoscelesTriangleUsingStringUtils(5));
         System.out.println(printAnIsoscelesTriangleUsingSubstring(5));
     }
 

@@ -9,9 +9,9 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
 public class PrintTriangleExamplesUnitTest {
-    
-    private static Object[][] rightAngledTriangles() {
-        String expected0 = ""; 
+
+    private static Object[][] rightTriangles() {
+        String expected0 = "";
         
         String expected2 = "*" + System.lineSeparator() 
                          + "**" + System.lineSeparator();
@@ -39,9 +39,9 @@ public class PrintTriangleExamplesUnitTest {
     }
 
     @Test
-    @Parameters(method = "rightAngledTriangles")
-    public void whenPrintARightAngledTriangleIsCalled_ThenTheCorrectStringIsReturned(int nrOfRows, String expected) {
-        String actual = PrintTriangleExamples.printARightAngledTriangle(nrOfRows);
+    @Parameters(method = "rightTriangles")
+    public void whenPrintARightTriangleIsCalled_ThenTheCorrectStringIsReturned(int nrOfRows, String expected) {
+        String actual = PrintTriangleExamples.printARightTriangle(nrOfRows);
 
         assertEquals(expected, actual);
     }
@@ -78,6 +78,14 @@ public class PrintTriangleExamplesUnitTest {
     @Parameters(method = "isoscelesTriangles")
     public void whenPrintAnIsoscelesTriangleIsCalled_ThenTheCorrectStringIsReturned(int nrOfRows, String expected) {
         String actual = PrintTriangleExamples.printAnIsoscelesTriangle(nrOfRows);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @Parameters(method = "isoscelesTriangles")
+    public void whenPrintAnIsoscelesTriangleUsingStringUtilsIsCalled_ThenTheCorrectStringIsReturned(int nrOfRows, String expected) {
+        String actual = PrintTriangleExamples.printAnIsoscelesTriangleUsingStringUtils(nrOfRows);
 
         assertEquals(expected, actual);
     }

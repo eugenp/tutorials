@@ -18,22 +18,17 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ShiroSpringController {
 
-
-
     @GetMapping("/")
     public String index() {
        return "index";
     }
-
 
     @RequestMapping( value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
     public String login(HttpServletRequest req, UserCredentials cred, RedirectAttributes attr) {
 
       if(req.getMethod().equals(RequestMethod.GET.toString())) {
         return "login";
-      }
-      else {
-
+      } else {
         Subject subject = SecurityUtils.getSubject();
 
         if(!subject.isAuthenticated()) {

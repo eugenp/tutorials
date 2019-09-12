@@ -5,6 +5,7 @@
     <artifactId>hibernate-mapping</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
+    <name>hibernate-mapping</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
