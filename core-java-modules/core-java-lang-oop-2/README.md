@@ -8,4 +8,3 @@
 - [Anonymous Classes in Java](https://www.baeldung.com/java-anonymous-classes)
 - [Raw Types in Java](https://www.baeldung.com/raw-types-java)
 - [Java ‘private’ Access Modifier](https://www.baeldung.com/java-private-keyword)
-- [Methods in Java](https://www.baeldung.com/methods-in-java)

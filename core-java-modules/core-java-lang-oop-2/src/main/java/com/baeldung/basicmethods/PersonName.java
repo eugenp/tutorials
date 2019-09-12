@@ -26,4 +26,12 @@ public class PersonName {
         out.println("Name: " + name);
         out.close();
     }
+
+    public static String getNameStatic(String firstName, String lastName) {
+        return firstName + " " + lastName;
+    }
+
+    public static void callToStaticMethod() {
+        System.out.println("Name is: " + PersonName.getNameStatic("Alan", "Turing"));
+    }
 }
