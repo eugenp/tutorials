@@ -3,14 +3,7 @@ package com.baeldung.httprequest;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
-import com.baeldung.httprequest.FullResponseBuilder;
-import com.baeldung.httprequest.ParameterStringBuilder;
-
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
 import java.net.CookieManager;
 import java.net.HttpCookie;
 import java.net.HttpURLConnection;
