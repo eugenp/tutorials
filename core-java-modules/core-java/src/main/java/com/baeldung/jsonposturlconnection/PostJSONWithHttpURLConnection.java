@@ -1,4 +1,4 @@
-package com.baeldung.urlconnection;
+package com.baeldung.jsonposturlconnection;
 
 import java.io.BufferedReader;
 import java.io.IOException;
