@@ -339,6 +339,7 @@
 				<module>algorithms-miscellaneous-1</module>
 				<module>algorithms-miscellaneous-2</module>
 				<module>algorithms-miscellaneous-3</module>
+				<module>algorithms-miscellaneous-5</module>
 				<module>algorithms-sorting</module>
 				<module>animal-sniffer-mvn-plugin</module>
 				<module>annotations</module>
@@ -1072,6 +1073,7 @@
 				<module>algorithms-miscellaneous-1</module>
 				<module>algorithms-miscellaneous-2</module>
 				<module>algorithms-miscellaneous-3</module>
+				<module>algorithms-miscellaneous-5</module>
 				<module>algorithms-sorting</module>
 				<module>animal-sniffer-mvn-plugin</module>
 				<module>annotations</module>
