@@ -1,0 +1,44 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="toc.line.properties">
+<refmeta>
+<refentrytitle>toc.line.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>toc.line.properties</refname>
+<refpurpose>Properties for lines in ToCs and LoTs</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="toc.line.properties.frag">
+<xsl:attribute-set name="toc.line.properties">
+  <xsl:attribute name="text-align-last">justify</xsl:attribute>
+  <xsl:attribute name="text-align">start</xsl:attribute>
+  <xsl:attribute name="end-indent"><xsl:value-of select="concat($toc.indent.width, 'pt')"/></xsl:attribute>
+  <xsl:attribute name="last-line-end-indent"><xsl:value-of select="concat('-', $toc.indent.width, 'pt')"/></xsl:attribute>
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Properties which are applied to every line in ToC (or LoT). You can
+modify them in order to change appearance of all, or some lines. For
+example, in order to make lines for chapters bold, specify the
+following in your customization layer:</para>
+
+<programlisting>&lt;xsl:attribute-set name="toc.line.properties"&gt;
+  &lt;xsl:attribute name="font-weight"&gt;
+   &lt;xsl:choose>
+    &lt;xsl:when test="self::chapter">bold&lt;/xsl:when&gt;
+    &lt;xsl:otherwise&gt;normal&lt;/xsl:otherwise&gt;
+   &lt;/xsl:choose>
+  &lt;/xsl:attribute&gt;
+&lt;/xsl:attribute-set&gt;</programlisting>
+
+</refsection>
+</refentry>
