@@ -408,6 +408,7 @@
 				<module>core-java-modules/core-java-lang-2</module>
                 <module>core-java-modules/core-java-lang-oop</module>
                 <module>core-java-modules/core-java-lang-oop-2</module>
+				<module>core-java-modules/core-java-lang-oop-3</module>
                 <module>core-java-modules</module>
                 <module>core-java-modules/core-java-networking</module>
                 <module>core-java-modules/core-java-perf</module>
@@ -442,6 +443,7 @@
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava</module>
+				<module>guava-io</module>
                 <module>guava-collections</module>
 				<module>guava-collections-set</module>
                 <module>guava-modules</module>
@@ -1135,6 +1137,7 @@
 				<module>core-java-modules/core-java-lang-2</module>
 				<module>core-java-modules/core-java-lang-oop</module>
 				<module>core-java-modules/core-java-lang-oop-2</module>
+				<module>core-java-modules/core-java-lang-oop-3</module>
 				<module>core-java-modules</module>
 				<module>core-java-modules/core-java-networking</module>
 				<module>core-java-modules/core-java-perf</module>
@@ -1166,6 +1169,7 @@
 				<module>grpc</module>
 				<module>gson</module>
 				<module>guava</module>
+				<module>guava-io</module>
 				<module>guava-collections</module>
 				<module>guava-collections-set</module>
 				<module>guava-modules</module>

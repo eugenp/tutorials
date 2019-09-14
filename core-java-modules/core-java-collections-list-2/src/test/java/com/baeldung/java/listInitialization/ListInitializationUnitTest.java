@@ -42,7 +42,7 @@ public class ListInitializationUnitTest {
     }
 
     @Test
-    public void givenArrayAsList_whenCreated_thenShareReference() {
+    public void givenArraysAsList_whenCreated_thenShareReference() {
         String[] array = { "foo", "bar" };
         List<String> list = Arrays.asList(array);
         array[0] = "baz";
