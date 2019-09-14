@@ -13,6 +13,9 @@ public class RegistrationForm {
 	@NotBlank(groups = BasicInfo.class)
 	private String phone;
 
+	@NotBlank(groups = { BasicInfo.class, AdvanceInfo.class })
+	private String captcha;
+
 	@NotBlank(groups = AdvanceInfo.class)
 	private String street;
 	@NotBlank(groups = AdvanceInfo.class)
@@ -94,6 +97,14 @@ public class RegistrationForm {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	
+	public String getCaptcha() {
+		return captcha;
+	}
+
+	public void setCaptcha(String captcha) {
+		this.captcha = captcha;
 	}
 
 }
