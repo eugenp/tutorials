@@ -41,11 +41,11 @@ public class CharArrayToStringConversionUnitTest {
 
     @Test
     public void whenStringBuilder_thenOK() {
-        final char[] charArray = { 'b', 'a', 'e', 'l', 'd', 'u', 'n', 'g' };
+        final char[][] arrayOfCharArray = { { 'b', 'a' }, { 'e', 'l', 'd', 'u' }, { 'n', 'g' } };
 
         StringBuilder sb = new StringBuilder();
-        for (char value : charArray) {
-            sb.append(value);
+        for (char[] subArray : arrayOfCharArray) {
+            sb.append(subArray);
         }
 
         assertThat(sb.toString(), is("baeldung"));
@@ -65,9 +65,8 @@ public class CharArrayToStringConversionUnitTest {
     public void whenGoogleCommonBaseJoiners_thenOK() {
         final Character[] charArray = { 'b', 'a', 'e', 'l', 'd', 'u', 'n', 'g' };
 
-        String string = Joiner.on("").join(charArray);
+        String string = Joiner.on("|").join(charArray);
 
-        assertThat(string, is("baeldung"));
+        assertThat(string, is("b|a|e|l|d|u|n|g"));
     }
-
 }
