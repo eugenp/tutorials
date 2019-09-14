@@ -19,7 +19,6 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.9.4</version>
 		</dependency>
 
 		<dependency>
