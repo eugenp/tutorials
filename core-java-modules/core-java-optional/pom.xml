@@ -3,6 +3,7 @@
     <artifactId>core-java-optional</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <name>core-java-optional</name>
 	
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>

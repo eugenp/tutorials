@@ -26,7 +26,7 @@ public class Application {
 
         KeyspaceRepository keyspaceRepository = new KeyspaceRepository(session);
 
-        keyspaceRepository.createKeyspace("testKeyspace", "SimpleStrategy", 1);
+        keyspaceRepository.createKeyspace("testKeyspace", 1);
         keyspaceRepository.useKeyspace("testKeyspace");
 
         VideoRepository videoRepository = new VideoRepository(session);

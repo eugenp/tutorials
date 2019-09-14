@@ -350,6 +350,7 @@
 				<module>apache-fop</module>
 				<module>apache-geode</module>
 				<module>apache-meecrowave</module>
+				<module>apache-olingo/olingo2</module>
 				<module>apache-opennlp</module>
 				<module>apache-poi</module>
 				<module>apache-pulsar</module>
@@ -369,13 +370,15 @@
 				<module>axon</module>
 				<module>azure</module>
 
+				<module>bazel</module>
 				<module>blade</module>
-
 				<module>bootique</module>
 
 				<module>cas</module>
 				<module>cdi</module>
 				<module>checker-plugin</module>
+				<module>cloud-foundry-uaa/cf-uaa-oauth2-client</module>
+				<module>cloud-foundry-uaa/cf-uaa-oauth2-resource-server</module>
 				<module>core-groovy</module>
 				<module>core-groovy-2</module>
 				<module>core-groovy-collections</module>
@@ -392,6 +395,7 @@
                 <module>core-java-modules/core-java-collections</module>
                 <module>core-java-modules/core-java-collections-list</module>
                 <module>core-java-modules/core-java-collections-list-2</module>
+                <module>core-java-modules/core-java-collections-list-3</module>
                 <module>core-java-modules/core-java-collections-array-list</module>
                 <module>core-java-modules/core-java-collections-set</module>
                 <module>core-java-modules/core-java-concurrency-basic</module>
@@ -401,8 +405,10 @@
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang-syntax</module>
                 <module>core-java-modules/core-java-lang</module>
+				<module>core-java-modules/core-java-lang-2</module>
                 <module>core-java-modules/core-java-lang-oop</module>
                 <module>core-java-modules/core-java-lang-oop-2</module>
+				<module>core-java-modules/core-java-lang-oop-3</module>
                 <module>core-java-modules</module>
                 <module>core-java-modules/core-java-networking</module>
                 <module>core-java-modules/core-java-perf</module>
@@ -437,7 +443,9 @@
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava</module>
+				<module>guava-io</module>
                 <module>guava-collections</module>
+				<module>guava-collections-set</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
@@ -457,10 +465,12 @@
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
+                <module>java-jdi</module>
                 <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!-- <module>java-dates-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
                 <module>java-lite</module>
+				<module>java-math</module>
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
                 <module>java-rmi</module>
@@ -469,6 +479,7 @@
                 <!-- <module>java-streams-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>java-strings</module>
                 <module>java-strings-2</module>
+                <module>java-strings-3</module>
                 <module>java-strings-ops</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
@@ -479,6 +490,7 @@
                 <!-- JIRA-10842
                 <module>jee-7</module> -->
 				<module>jee-7-security</module>
+				<module>jee-kotlin</module>
 				<module>jersey</module>
 				<module>jgit</module>
 				<module>jgroups</module>
@@ -506,6 +518,7 @@
 				<module>libraries-data-2</module>
 				<module>libraries-apache-commons</module>
 				<module>libraries-primitive</module>
+				<module>libraries-testing</module>
 				<module>libraries-security</module>
 				<module>libraries-server</module>
 				<module>libraries-http</module>
@@ -525,6 +538,7 @@
 				<module>metrics</module>
 				<!-- <module>micronaut</module> --> <!-- Fixing in BAEL-10877 -->
 				<module>microprofile</module>
+                <module>ml</module>
 				<module>msf4j</module>
 				<!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
 				<module>mustache</module>
@@ -558,9 +572,18 @@
 				<module>software-security/sql-injection-samples</module>
 
 				<module>tensorflow-java</module>
+				<module>spf4j</module>
 				<module>spring-boot-flowable</module>
+				<module>spring-boot-mvc-2</module>
+				<module>spring-boot-performance</module>
+				<module>spring-boot-properties</module>
+				<!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
 				<module>spring-security-kerberos</module>
 				<module>oauth2-framework-impl</module>
+				
+				<module>spring-boot-nashorn</module>
+				<module>java-blockchain</module>
+			
 			</modules>
 
 		</profile>
@@ -649,6 +672,7 @@
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-kotlin</module>
 				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-management</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-mvc-birt</module>
 				<module>spring-boot-ops</module>
@@ -721,6 +745,7 @@
 				<module>spring-remoting</module>
 				<module>spring-rest</module>
 				<module>spring-rest-angular</module>
+				<module>spring-rest-compress</module>
 				<module>spring-rest-full</module>
 				<module>spring-rest-hal-browser</module>
 				<module>spring-rest-query-language</module>
@@ -794,6 +819,9 @@
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
+				
+				<module>spring-boot-nashorn</module>
+				<module>java-blockchain</module>
 
 			</modules>
 
@@ -905,6 +933,7 @@
 				<module>spring-remoting/remoting-rmi/remoting-rmi-server</module>
 				<module>spring-rest</module>
 				<module>spring-rest-angular</module>
+				<module>spring-rest-compress</module>
 				<module>spring-rest-full</module>
 				<module>spring-rest-simple</module>
 				<module>spring-resttemplate</module>
@@ -943,6 +972,7 @@
 
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
+				<module>spring-boot-nashorn</module>
 			</modules>
 
 		</profile>
@@ -1053,6 +1083,7 @@
 				<module>apache-fop</module>
 				<module>apache-geode</module>
 				<module>apache-meecrowave</module>
+				<module>apache-olingo/olingo2</module>
 				<module>apache-opennlp</module>
 				<module>apache-poi</module>
 				<module>apache-pulsar</module>
@@ -1071,12 +1102,14 @@
 				<module>aws-lambda</module>
 				<module>axon</module>
 				<module>azure</module>
-
+				<module>bazel</module>
 				<module>bootique</module>
 
 				<module>cas</module>
 				<module>cdi</module>
 				<module>checker-plugin</module>
+				<module>cloud-foundry-uaa/cf-uaa-oauth2-client</module>
+				<module>cloud-foundry-uaa/cf-uaa-oauth2-resource-server</module>
 				<module>core-groovy</module>
 				<module>core-groovy-2</module>
 				<module>core-groovy-collections</module>
@@ -1091,6 +1124,7 @@
 				<module>core-java-modules/core-java-collections</module>
 				<module>core-java-modules/core-java-collections-list</module>
 				<module>core-java-modules/core-java-collections-list-2</module>
+				<module>core-java-modules/core-java-collections-list-3</module>
 				<module>core-java-modules/core-java-collections-array-list</module>
 				<module>core-java-modules/core-java-collections-set</module>
 				<module>core-java-modules/core-java-concurrency-basic</module>
@@ -1100,8 +1134,10 @@
 				<module>core-java-modules/core-java-security</module>
 				<module>core-java-modules/core-java-lang-syntax</module>
 				<module>core-java-modules/core-java-lang</module>
+				<module>core-java-modules/core-java-lang-2</module>
 				<module>core-java-modules/core-java-lang-oop</module>
 				<module>core-java-modules/core-java-lang-oop-2</module>
+				<module>core-java-modules/core-java-lang-oop-3</module>
 				<module>core-java-modules</module>
 				<module>core-java-modules/core-java-networking</module>
 				<module>core-java-modules/core-java-perf</module>
@@ -1133,7 +1169,9 @@
 				<module>grpc</module>
 				<module>gson</module>
 				<module>guava</module>
+				<module>guava-io</module>
 				<module>guava-collections</module>
+				<module>guava-collections-set</module>
 				<module>guava-modules</module>
 				<!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 				<module>guice</module>
@@ -1153,9 +1191,11 @@
 				<module>java-collections-conversions</module>
 				<module>java-collections-maps</module>
 				<module>java-collections-maps-2</module>
+				<module>java-jdi</module>
 				<!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
 				<module>java-ee-8-security-api</module>
 				<module>java-lite</module>
+				<module>java-math</module>
 				<module>java-numbers</module>
 				<module>java-numbers-2</module>
 				<module>java-rmi</module>
@@ -1164,6 +1204,7 @@
 				<!-- <module>java-streams-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
 				<module>java-strings</module>
 				<module>java-strings-2</module>
+				<module>java-strings-3</module>
 				<module>java-strings-ops</module>
 				<module>java-vavr-stream</module>
 				<module>java-websocket</module>
@@ -1174,6 +1215,7 @@
 				<!-- JIRA-10842
                 <module>jee-7</module> -->
 				<module>jee-7-security</module>
+				<module>jee-kotlin</module>
 				<module>jersey</module>
 				<module>jgit</module>
 				<module>jgroups</module>
@@ -1198,6 +1240,7 @@
 				<module>libraries-data</module>
 				<module>libraries-data-2</module>
 				<module>libraries-apache-commons</module>
+				<module>libraries-testing</module>
 				<module>libraries-security</module>
 				<module>libraries-server</module>
 				<module>libraries-http</module>
@@ -1217,6 +1260,7 @@
 				<module>metrics</module>
 				<!-- <module>micronaut</module> --> <!-- Fixing in BAEL-10877 -->
 				<module>microprofile</module>
+                <module>ml</module>
 				<module>msf4j</module>
 				<!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
 				<module>mustache</module>
@@ -1247,6 +1291,11 @@
 				<module>rxjava</module>
 				<module>rxjava-2</module>
 				<module>oauth2-framework-impl</module>
+				<module>spf4j</module>
+				<module>spring-boot-performance</module>
+				<module>spring-boot-properties</module>
+				<!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
+				<!-- <module>Twitter4J</module> --> <!-- Builds locally, but fails in Jenkins, Failed to parse POMs -->
 
 			</modules>
 
@@ -1324,6 +1373,7 @@
 				<module>spring-boot-jasypt</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-management</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-mvc-birt</module>
 				<module>spring-boot-ops</module>
@@ -1393,6 +1443,7 @@
 				<module>spring-remoting</module>
 				<module>spring-rest</module>
 				<module>spring-rest-angular</module>
+				<module>spring-rest-compress</module>
 				<module>spring-rest-full</module>
 				<module>spring-rest-hal-browser</module>
 				<module>spring-rest-query-language</module>

@@ -7,6 +7,7 @@
     <artifactId>oauth2-framework-impl</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>oauth2-framework-impl</name>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
