@@ -48,12 +48,11 @@ public class HttpClient {
         }
     }
 
-    private void setAuthenticator() {
-        Authenticator.setDefault(new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(user, password.toCharArray());
-            }
-        });
+    private HttpURLConnection createConnection(String urlString) throws MalformedURLException, IOException, ProtocolException {
+        URL url = new URL(String.format(urlString));
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+        return connection;
     }
 
     private String createBasicAuthHeaderValue() {
@@ -63,10 +62,13 @@ public class HttpClient {
         return authHeaderValue;
     }
 
-    private HttpURLConnection createConnection(String urlString) throws MalformedURLException, IOException, ProtocolException {
-        URL url = new URL(String.format(urlString));
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        return connection;
+    private void setAuthenticator() {
+        Authenticator.setDefault(new BasicAuthenticator());
+    }
+
+    private final class BasicAuthenticator extends Authenticator {
+        protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(user, password.toCharArray());
+        }
     }
 }
