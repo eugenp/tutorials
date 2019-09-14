@@ -1,3 +1,7 @@
+## Spring 5 WebFlux
+
+This module contains articles regarding the WebFlux framework provided as part of Spring 5
+
 ## Relevant articles:
 
 - [Spring Boot Reactor Netty Configuration](https://www.baeldung.com/spring-boot-reactor-netty)

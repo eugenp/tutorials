@@ -1,3 +1,7 @@
+## Spring 5 Security
+
+This module contains articles regarding security in Spring 5
+
 ## Relevant articles:
 
 - [Extra Login Fields with Spring Security](http://www.baeldung.com/spring-security-extra-login-fields)

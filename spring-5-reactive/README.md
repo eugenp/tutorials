@@ -1,5 +1,7 @@
 ## Spring 5 Reactive Project
 
+This module contains articles regarding reactive programming in Spring 5
+
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
