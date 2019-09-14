@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import com.baeldung.spring.rest.error.domain.Book;
 
-public class BookRepositoryTest {
+public class BookRepositoryUnitTest {
 
     private BookRepository repository;
     

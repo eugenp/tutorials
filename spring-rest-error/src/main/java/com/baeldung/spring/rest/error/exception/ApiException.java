@@ -11,7 +11,7 @@ public abstract class ApiException extends RuntimeException {
         return "https://example.com/help/error/" + getErrorId();
     }
     
-    public String getJson() {
+    public String toJson() {
         return "{" +
             "\"error\":\"" + getErrorId() + "\"," +
             "\"message\":\"" + getErrorMessage() + "\"," +

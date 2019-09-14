@@ -24,7 +24,7 @@ import static org.mockito.Mockito.doReturn;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BookController.class)
-public class BookControllerTest {
+public class BookControllerIntegrationTest {
     
     private static final ObjectMapper MAPPER = new ObjectMapper();
  
@@ -43,7 +43,7 @@ public class BookControllerTest {
         
         mvc.perform(get("/api/book/{id}", id))
             .andExpect(status().isNotFound())
-            .andExpect(content().string(new BookNotFoundException(id).getJson()));
+            .andExpect(content().string(new BookNotFoundException(id).toJson()));
     }
     
     @Test
