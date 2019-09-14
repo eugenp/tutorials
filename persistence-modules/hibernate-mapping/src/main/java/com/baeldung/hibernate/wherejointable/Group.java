@@ -20,10 +20,6 @@ public class Group {
     @ManyToMany(mappedBy = "groups")
     private List<User> users = new ArrayList<>();
 
-    public Group() {
-
-    }
-
     public Group(String name) {
         this.name = name;
     }
