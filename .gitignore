@@ -83,3 +83,9 @@ software-security/sql-injection-samples/derby.log
 spring-soap/src/main/java/com/baeldung/springsoap/gen/
 /report-*.json
 transaction.log
+
+apache-cxf/cxf-aegis/baeldung.xml
+apache-fop/src/test/resources/output_herold.pdf
+apache-fop/src/test/resources/output_html2fo.pdf
+apache-fop/src/test/resources/output_jtidy.pdf
+apache-fop/src/test/resources/output.xml

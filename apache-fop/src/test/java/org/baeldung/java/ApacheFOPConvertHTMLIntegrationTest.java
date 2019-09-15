@@ -33,7 +33,7 @@ public class ApacheFOPConvertHTMLIntegrationTest {
     private final String output_html2fo = "src/test/resources/output_html2fo.pdf";
     private final String output_herold = "src/test/resources/output_herold.pdf";
     private final String foFile = "src/test/resources/input.fo";
-    private final String xmlFile = "src/test/resources/input.xml";
+    private final String xmlFile = "src/test/resources/output.xml";
 
     @Test
     public void whenTransformHTMLToPDFUsingJTidy_thenCorrect() throws Exception {
