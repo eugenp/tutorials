@@ -1,12 +1,10 @@
 package com.baeldung.array.conversions;
 
-import static com.baeldung.array.conversions.FloatToByteArray.byteArrayToFloat;
-import static com.baeldung.array.conversions.FloatToByteArray.byteArrayToFloatWithByteBuffer;
-import static com.baeldung.array.conversions.FloatToByteArray.floatToByteArray;
-import static com.baeldung.array.conversions.FloatToByteArray.floatToByteArrayWithByteBuffer;
+import org.junit.Test;
+
+import static com.baeldung.array.conversions.FloatToByteArray.*;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import org.junit.Test;
 
 public class FloatToByteArrayUnitTest {
 
