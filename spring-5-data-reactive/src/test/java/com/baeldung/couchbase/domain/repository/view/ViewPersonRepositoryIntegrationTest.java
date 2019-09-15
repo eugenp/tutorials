@@ -17,7 +17,7 @@ import reactor.test.StepVerifier;
 import java.util.UUID;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = { "spring.couchbase.port=10010", "spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration" },
+@SpringBootTest(properties = { "spring.couchbase.port=10010", "spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration,org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration" },
                 classes = { CouchbaseMockConfiguration.class, ViewReactiveCouchbaseConfiguration.class, CouchbaseProperties.class })
 public class ViewPersonRepositoryIntegrationTest {
 
