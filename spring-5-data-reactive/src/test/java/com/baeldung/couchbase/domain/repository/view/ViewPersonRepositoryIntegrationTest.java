@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -16,7 +17,8 @@ import reactor.test.StepVerifier;
 import java.util.UUID;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = { "spring.couchbase.port=10010" }, classes = { ViewReactiveCouchbaseConfiguration.class, CouchbaseProperties.class, CouchbaseMockConfiguration.class })
+@SpringBootTest(properties = { "spring.couchbase.port=10010", "spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration,org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration" },
+                classes = { CouchbaseMockConfiguration.class, ViewReactiveCouchbaseConfiguration.class, CouchbaseProperties.class })
 public class ViewPersonRepositoryIntegrationTest {
 
     @Autowired private ViewPersonRepository personRepository;
