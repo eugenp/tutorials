@@ -339,6 +339,7 @@
 				<module>algorithms-miscellaneous-1</module>
 				<module>algorithms-miscellaneous-2</module>
 				<module>algorithms-miscellaneous-3</module>
+				<module>algorithms-miscellaneous-5</module>
 				<module>algorithms-sorting</module>
 				<module>animal-sniffer-mvn-plugin</module>
 				<module>annotations</module>
@@ -395,6 +396,7 @@
                 <module>core-java-modules/core-java-collections</module>
                 <module>core-java-modules/core-java-collections-list</module>
                 <module>core-java-modules/core-java-collections-list-2</module>
+                <module>core-java-modules/core-java-collections-list-3</module>
                 <module>core-java-modules/core-java-collections-array-list</module>
                 <module>core-java-modules/core-java-collections-set</module>
                 <module>core-java-modules/core-java-concurrency-basic</module>
@@ -407,6 +409,7 @@
 				<module>core-java-modules/core-java-lang-2</module>
                 <module>core-java-modules/core-java-lang-oop</module>
                 <module>core-java-modules/core-java-lang-oop-2</module>
+				<module>core-java-modules/core-java-lang-oop-3</module>
                 <module>core-java-modules</module>
                 <module>core-java-modules/core-java-networking</module>
                 <module>core-java-modules/core-java-perf</module>
@@ -441,6 +444,7 @@
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava</module>
+				<module>guava-io</module>
                 <module>guava-collections</module>
 				<module>guava-collections-set</module>
                 <module>guava-modules</module>
@@ -1069,6 +1073,7 @@
 				<module>algorithms-miscellaneous-1</module>
 				<module>algorithms-miscellaneous-2</module>
 				<module>algorithms-miscellaneous-3</module>
+				<module>algorithms-miscellaneous-5</module>
 				<module>algorithms-sorting</module>
 				<module>animal-sniffer-mvn-plugin</module>
 				<module>annotations</module>
@@ -1121,6 +1126,7 @@
 				<module>core-java-modules/core-java-collections</module>
 				<module>core-java-modules/core-java-collections-list</module>
 				<module>core-java-modules/core-java-collections-list-2</module>
+				<module>core-java-modules/core-java-collections-list-3</module>
 				<module>core-java-modules/core-java-collections-array-list</module>
 				<module>core-java-modules/core-java-collections-set</module>
 				<module>core-java-modules/core-java-concurrency-basic</module>
@@ -1133,6 +1139,7 @@
 				<module>core-java-modules/core-java-lang-2</module>
 				<module>core-java-modules/core-java-lang-oop</module>
 				<module>core-java-modules/core-java-lang-oop-2</module>
+				<module>core-java-modules/core-java-lang-oop-3</module>
 				<module>core-java-modules</module>
 				<module>core-java-modules/core-java-networking</module>
 				<module>core-java-modules/core-java-perf</module>
@@ -1164,6 +1171,7 @@
 				<module>grpc</module>
 				<module>gson</module>
 				<module>guava</module>
+				<module>guava-io</module>
 				<module>guava-collections</module>
 				<module>guava-collections-set</module>
 				<module>guava-modules</module>
