@@ -14,7 +14,6 @@
 - [DDD Aggregates and @DomainEvents](https://www.baeldung.com/spring-data-ddd)
 - [Spring Data – CrudRepository save() Method](https://www.baeldung.com/spring-data-crud-repository-save)
 
-- [DB Integration Tests with Spring Boot and Testcontainers](https://www.baeldung.com/spring-boot-testcontainers-integration-test)
 - [Spring Data JPA @Modifying Annotation](https://www.baeldung.com/spring-data-jpa-modifying-annotation)
 - [Spring Data JPA Batch Inserts](https://www.baeldung.com/spring-data-jpa-batch-inserts)
 
