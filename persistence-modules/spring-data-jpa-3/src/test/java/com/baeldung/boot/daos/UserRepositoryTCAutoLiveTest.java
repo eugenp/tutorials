@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class UserRepositoryTCAutoLiveTest extends UserRepositoryCommon {
 
     @ClassRule
-    public static PostgreSQLContainer postgreSQLContainer = BaeldungPostgresqlContainer.getInstance();
+    public static PostgreSQLContainer<BaeldungPostgresqlContainer> postgreSQLContainer = BaeldungPostgresqlContainer.getInstance();
 
     @Test
     @Transactional
