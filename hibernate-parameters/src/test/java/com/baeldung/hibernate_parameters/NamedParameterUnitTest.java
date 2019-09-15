@@ -1,18 +1,23 @@
 package com.baeldung.hibernate_parameters;
 
-import junit.framework.TestCase;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-public class NamedParameterUnitTest extends TestCase {
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
+public class NamedParameterUnitTest {
     private SessionFactory sessionFactory;
 
-    @Override
-    protected void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure()
                 .build();
@@ -29,14 +34,15 @@ public class NamedParameterUnitTest extends TestCase {
         }
     }
 
-    @Override
-    protected void tearDown() throws Exception {
+    @After
+    public void tearDown() throws Exception {
         if (sessionFactory != null) {
             sessionFactory.close();
         }
     }
 
-    public void testNamedParameter() {
+    @Test
+    public void testNamedParameterCorrect() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
             Query<Event> query = session.createQuery("from Event E WHERE E.title = :eventTitle", Event.class);
@@ -47,5 +53,20 @@ public class NamedParameterUnitTest extends TestCase {
             assertEquals(1, query.list().size());
         session.getTransaction().commit();
         session.close();
+    }
+
+    @Test(expected = org.hibernate.QueryException.class)
+    public void testNamedParameterIncorrect() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query<Event> query = session.createQuery("from Event E WHERE E.title = :eventTitle", Event.class);
+
+        try {
+            query.list();
+            fail("We are expecting an exception!");
+        } finally {
+            session.getTransaction().commit();
+            session.close();
+        }
     }
 }
