@@ -14,8 +14,6 @@
 - [DDD Aggregates and @DomainEvents](https://www.baeldung.com/spring-data-ddd)
 - [Spring Data – CrudRepository save() Method](https://www.baeldung.com/spring-data-crud-repository-save)
 
-- [Spring Data JPA Batch Inserts](https://www.baeldung.com/spring-data-jpa-batch-inserts)
-
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
 "No persistence xml file found in project"
