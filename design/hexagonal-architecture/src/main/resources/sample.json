@@ -1,0 +1,10 @@
+{
+  "city": "London",
+  "population": "8908081",
+  "language": "English",
+  "timezone": "UTC",
+  "state": "UK",
+  "elevation": "11m",
+  "current_temperature": "$temperature",
+  "current_time": "$time"
+}
