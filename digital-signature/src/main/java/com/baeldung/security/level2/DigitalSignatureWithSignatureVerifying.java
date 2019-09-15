@@ -25,8 +25,8 @@ public class DigitalSignatureWithSignatureVerifying {
 
         signature.update(messageBytes);
 
-        boolean check = signature.verify(sig);
-        System.out.println("Signature " + (check ? "OK" : "KO"));
+        boolean isCorrect = signature.verify(sig);
+        System.out.println("Signature " + (isCorrect ? "correct" : "incorrect"));
 
     }
 }

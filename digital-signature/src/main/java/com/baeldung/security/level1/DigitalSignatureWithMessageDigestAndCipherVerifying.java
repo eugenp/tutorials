@@ -32,8 +32,8 @@ public class DigitalSignatureWithMessageDigestAndCipherVerifying {
         byte[] decryptedMessageHash = cipher.doFinal(encryptedMessageHash);
 
         //compare messageHash && decryptedMessageHash
-        boolean check = Arrays.equals(decryptedMessageHash, newMessageHash);
-        System.out.println("Signature " + (check ? "OK" : "KO"));
+        boolean isCorrect = Arrays.equals(decryptedMessageHash, newMessageHash);
+        System.out.println("Signature " + (isCorrect ? "correct" : "incorrect"));
 
     }
 
