@@ -2,13 +2,15 @@ package com.baeldung.multipledatamodules.cassandra;
 
 import java.util.Objects;
 
-import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
+import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 @Table
 public class BookAudit {
+    @PrimaryKeyColumn(type = PrimaryKeyType.PARTITIONED)
     private String bookId;
-    @PrimaryKey
+    @PrimaryKeyColumn
     private String rentalRecNo;
     private String loaner;
     private String loanDate;
