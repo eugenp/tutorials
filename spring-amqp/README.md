@@ -1,3 +1,7 @@
+## Spring AMQP
+
+This module contains articles about the AMQP messaging system with Spring
+
 ## Relevant articles:
 
 - [Messaging With Spring AMQP](https://www.baeldung.com/spring-amqp)
