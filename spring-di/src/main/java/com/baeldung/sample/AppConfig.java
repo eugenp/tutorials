@@ -1,4 +1,4 @@
-package org.baeldung.sample;
+package com.baeldung.sample;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
