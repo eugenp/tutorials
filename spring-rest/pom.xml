@@ -139,7 +139,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.4</version>
+            <version>${commons-io.version}</version>
         </dependency>
         <dependency>
             <groupId>au.com.dius</groupId>
