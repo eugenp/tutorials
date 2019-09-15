@@ -55,11 +55,18 @@
             <version>${postgresql.version}</version>
         </dependency>
         <!-- Test containers only dependencies -->
+
+        <dependency>
+            <groupId>net.ttddyy</groupId>
+            <artifactId>datasource-proxy</artifactId>
+            <version>${datasource-proxy.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <guava.version>21.0</guava.version>
         <testcontainers.postgresql.version>1.10.6</testcontainers.postgresql.version>
         <postgresql.version>42.2.5</postgresql.version>
+        <datasource-proxy.version>1.4.1</datasource-proxy.version>
     </properties>
 </project>

@@ -3,12 +3,12 @@ package com.baeldung.batchinserts;
 import static com.baeldung.batchinserts.TestObjectHelper.createSchool;
 import static com.baeldung.batchinserts.TestObjectHelper.createStudent;
 
-import com.baeldung.batchinserts.model.School;
-import com.baeldung.batchinserts.model.Student;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,8 +17,12 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.baeldung.batchinserts.model.School;
+import com.baeldung.batchinserts.model.Student;
+import com.baeldung.boot.Application;
+
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = Application.class)
 @Transactional
 @ActiveProfiles("batchinserts")
 public class JpaBatchInsertsIntegrationTest {

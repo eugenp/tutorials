@@ -3,6 +3,8 @@ package com.baeldung.batchinserts;
 import static com.baeldung.batchinserts.TestObjectHelper.createSchool;
 
 import com.baeldung.batchinserts.model.School;
+import com.baeldung.boot.Application;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.junit.After;
@@ -15,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = Application.class)
 @Transactional
 @ActiveProfiles("batchinserts")
 @TestPropertySource(properties = "spring.jpa.properties.hibernate.jdbc.batch_size=-1")
