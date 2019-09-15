@@ -1,14 +1,16 @@
-package com.baeldung.concurrent.threadsafety.tests;
+package com.baeldung.concurrent.threadsafety;
 
-import org.junit.Test;
-import static org.assertj.core.api.Assertions.assertThat;
 import com.baeldung.concurrent.threadsafety.callables.CounterCallable;
 import com.baeldung.concurrent.threadsafety.services.Counter;
+import org.junit.Test;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class CounterTest {
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class CounterUnitTest {
 
     @Test
     public void whenCalledIncrementCounter_thenCorrect() throws Exception {

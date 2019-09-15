@@ -1,14 +1,16 @@
-package com.baeldung.concurrent.threadsafety.tests;
+package com.baeldung.concurrent.threadsafety;
 
-import org.junit.Test;
-import static org.assertj.core.api.Assertions.assertThat;
 import com.baeldung.concurrent.threadsafety.callables.MessageServiceCallable;
 import com.baeldung.concurrent.threadsafety.services.MessageService;
+import org.junit.Test;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class MessageServiceTest {
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class MessageServiceUnitTest {
 
     @Test
     public void whenCalledgetMessage_thenCorrect() throws Exception {
