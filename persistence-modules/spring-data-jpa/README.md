@@ -3,12 +3,12 @@
 ## Spring Data JPA Example Project
 
 ### Relevant Articles: 
-- [Spring JPA – Multiple Databases](http://www.baeldung.com/spring-data-jpa-multiple-databases)
-- [Spring Data JPA – Adding a Method in All Repositories](http://www.baeldung.com/spring-data-jpa-method-in-all-repositories)
-- [An Advanced Tagging Implementation with JPA](http://www.baeldung.com/jpa-tagging-advanced)
-- [Spring Data Annotations](http://www.baeldung.com/spring-data-annotations)
-- [Spring Data Java 8 Support](http://www.baeldung.com/spring-data-java-8)
-- [A Simple Tagging Implementation with JPA](http://www.baeldung.com/jpa-tagging)
+- [Spring JPA – Multiple Databases](https://www.baeldung.com/spring-data-jpa-multiple-databases)
+- [Spring Data JPA – Adding a Method in All Repositories](https://www.baeldung.com/spring-data-jpa-method-in-all-repositories)
+- [An Advanced Tagging Implementation with JPA](https://www.baeldung.com/jpa-tagging-advanced)
+- [Spring Data Annotations](https://www.baeldung.com/spring-data-annotations)
+- [Spring Data Java 8 Support](https://www.baeldung.com/spring-data-java-8)
+- [A Simple Tagging Implementation with JPA](https://www.baeldung.com/jpa-tagging)
 - [Spring Data Composable Repositories](https://www.baeldung.com/spring-data-composable-repositories)
 - [Query Entities by Dates and Times with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-query-by-date)
 - [DDD Aggregates and @DomainEvents](https://www.baeldung.com/spring-data-ddd)
