@@ -5,13 +5,14 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.baeldung.boot.Application;
 import com.baeldung.entity.Employee;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@SpringBootTest(classes = Application.class)
 public class EmployeeRepositoryIntegrationTest {
 
     private static final Employee EMPLOYEE1 = new Employee(1L, "John");
@@ -25,7 +26,7 @@ public class EmployeeRepositoryIntegrationTest {
         employeeRepository.save(EMPLOYEE1);
         assertEmployeePersisted(EMPLOYEE1);
     }
-    
+
     @Test
     public void givenEmployeeEntity_whenInsertWithSaveAndFlush_ThenEmployeeIsPersisted() {
         employeeRepository.saveAndFlush(EMPLOYEE2);

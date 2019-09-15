@@ -10,6 +10,5 @@
 - [Spring Data JPA Delete and Relationships](https://www.baeldung.com/spring-data-jpa-delete)
 - [Spring Data JPA and Named Entity Graphs](https://www.baeldung.com/spring-data-jpa-named-entity-graphs)
 
-- [Difference Between save() and saveAndFlush() in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-save-saveandflush)
 - [Derived Query Methods in Spring Data JPA Repositories](https://www.baeldung.com/spring-data-derived-queries)
 - [LIKE Queries in Spring JPA Repositories](https://www.baeldung.com/spring-jpa-like-queries)
