@@ -1,6 +1,6 @@
 ## Spring 5 MVC
 
-This module contains articles regarding the model-view-controller (MVC) pattern using the Spring 5 Framework
+This module contains articles about the Spring 5 model-view-controller (MVC) pattern 
 
 ### Relevant Articles:
 - [Spring Boot and Kotlin](http://www.baeldung.com/spring-boot-kotlin)

@@ -1,6 +1,6 @@
 ## Spring 5 WebFlux
 
-This module contains articles regarding the WebFlux framework provided as part of Spring 5
+This module contains articles about the Spring 5 WebFlux framework
 
 ## Relevant articles:
 

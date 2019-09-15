@@ -1,6 +1,7 @@
 ## Spring 5 Reactive OAuth
 
-This module contains articles regarding OAuth using reactive programming in Spring 5
+This module contains articles about Spring 5 OAuth using reactive programming
+This module contains articles about Spring 5 OAuth using reactive programming
 
 ### Relevant Articles: 
 

@@ -1,6 +1,6 @@
 ## Spring 5 Security OAuth
 
-This module contains articles regarding OAuth security using reactive programming in Spring 5
+This module contains articles about Spring 5 OAuth security
 
 ## Relevant articles:
 
