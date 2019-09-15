@@ -1,5 +1,6 @@
 ### Relevant Articles: 
 - [Derived Query Methods in Spring Data JPA Repositories](https://www.baeldung.com/spring-data-derived-queries)
+- [LIKE Queries in Spring JPA Repositories](https://www.baeldung.com/spring-jpa-like-queries)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
