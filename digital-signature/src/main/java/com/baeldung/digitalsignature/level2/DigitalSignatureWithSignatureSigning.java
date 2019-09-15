@@ -1,6 +1,6 @@
-package com.baeldung.security.level2;
+package com.baeldung.digitalsignature.level2;
 
-import com.baeldung.security.Utils;
+import com.baeldung.digitalsignature.Utils;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;

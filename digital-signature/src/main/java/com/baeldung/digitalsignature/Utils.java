@@ -1,4 +1,4 @@
-package com.baeldung.security;
+package com.baeldung.digitalsignature;
 
 import java.io.FileInputStream;
 import java.security.KeyStore;
