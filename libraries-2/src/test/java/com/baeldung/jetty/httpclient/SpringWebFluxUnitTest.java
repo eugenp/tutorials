@@ -21,11 +21,11 @@ public class SpringWebFluxUnitTest extends AbstractTest {
             .build();
         String responseContent = client.post()
             .uri(uri()).contentType(MediaType.TEXT_PLAIN)
-            .body(BodyInserters.fromPublisher(Mono.just(content), String.class))
+            .body(BodyInserters.fromPublisher(Mono.just(CONTENT), String.class))
             .retrieve()
             .bodyToMono(String.class)
             .block();
         Assert.assertNotNull(responseContent);
-        Assert.assertEquals(content, responseContent);
+        Assert.assertEquals(CONTENT, responseContent);
     }
 }

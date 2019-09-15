@@ -11,7 +11,7 @@ public abstract class AbstractTest {
 
     protected HttpClient httpClient;
     protected Server server;
-    protected String content = "Hello World!";
+    protected static final String CONTENT = "Hello World!";
     
     @Before
     public void init() {
