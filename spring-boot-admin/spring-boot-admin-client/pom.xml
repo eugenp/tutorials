@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -59,7 +59,7 @@
     </build>
 
     <properties>
-        <spring-boot-admin-starter-client.version>1.5.4</spring-boot-admin-starter-client.version>
+        <spring-boot-admin-starter-client.version>2.1.6</spring-boot-admin-starter-client.version>
         <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
     </properties>
 
