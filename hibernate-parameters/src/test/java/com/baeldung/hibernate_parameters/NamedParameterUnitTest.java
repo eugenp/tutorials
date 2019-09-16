@@ -45,12 +45,12 @@ public class NamedParameterUnitTest {
     public void testNamedParameterCorrect() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-            Query<Event> query = session.createQuery("from Event E WHERE E.title = :eventTitle", Event.class);
+        Query<Event> query = session.createQuery("from Event E WHERE E.title = :eventTitle", Event.class);
 
-            // This binds the value "Event1" to the parameter :eventTitle
-            query.setParameter("eventTitle", "Event 1");
+        // This binds the value "Event1" to the parameter :eventTitle
+        query.setParameter("eventTitle", "Event 1");
 
-            assertEquals(1, query.list().size());
+        assertEquals(1, query.list().size());
         session.getTransaction().commit();
         session.close();
     }
