@@ -1,4 +1,4 @@
-package com.baeldung.spring.rest.error.exception;
+package com.baeldung.springbootmvc.error;
 
 @SuppressWarnings("serial")
 public class BookNotFoundException extends ApiException {
@@ -17,10 +17,5 @@ public class BookNotFoundException extends ApiException {
     @Override
     protected String getErrorMessage() {
         return "Cannot find book with ID " + id;
-    }
-
-    @Override
-    protected String getDetail() {
-        return "Ensure that book with ID " + id + " exists";
     }
 }

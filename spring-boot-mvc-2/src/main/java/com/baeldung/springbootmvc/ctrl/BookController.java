@@ -1,4 +1,4 @@
-package com.baeldung.spring.rest.error.controller;
+package com.baeldung.springbootmvc.ctrl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.spring.rest.error.domain.Book;
-import com.baeldung.spring.rest.error.exception.BookNotFoundException;
-import com.baeldung.spring.rest.error.repository.BookRepository;
+import com.baeldung.springbootmvc.error.BookNotFoundException;
+import com.baeldung.springbootmvc.model.Book;
+import com.baeldung.springbootmvc.svc.BookRepository;
 
 @RestController
 @RequestMapping("/api/book")

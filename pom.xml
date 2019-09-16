@@ -746,7 +746,6 @@
 				<module>spring-reactor</module>
 				<module>spring-remoting</module>
 				<module>spring-rest</module>
-				<module>spring-rest-error</module>
 				<module>spring-rest-angular</module>
 				<module>spring-rest-compress</module>
 				<module>spring-rest-full</module>
@@ -935,7 +934,6 @@
 				<module>spring-remoting/remoting-jms/remoting-jms-client</module>
 				<module>spring-remoting/remoting-rmi/remoting-rmi-server</module>
 				<module>spring-rest</module>
-				<module>spring-rest-error</module>
 				<module>spring-rest-angular</module>
 				<module>spring-rest-compress</module>
 				<module>spring-rest-full</module>
@@ -1448,7 +1446,6 @@
 				<module>spring-reactor</module>
 				<module>spring-remoting</module>
 				<module>spring-rest</module>
-				<module>spring-rest-error</module>
 				<module>spring-rest-angular</module>
 				<module>spring-rest-compress</module>
 				<module>spring-rest-full</module>
