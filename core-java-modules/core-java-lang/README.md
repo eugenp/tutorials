@@ -3,13 +3,10 @@
 ## Core Java Lang Cookbooks and Examples
 
 ### Relevant Articles: 
-- [Guide to Java Reflection](http://www.baeldung.com/java-reflection)
+
 - [Generate equals() and hashCode() with Eclipse](http://www.baeldung.com/java-eclipse-equals-and-hashcode)
 - [Chained Exceptions in Java](http://www.baeldung.com/java-chained-exceptions)
-- [Call Methods at Runtime Using Java Reflection](http://www.baeldung.com/java-method-reflection)
 - [Iterating Over Enum Values in Java](http://www.baeldung.com/java-enum-iteration)
-- [Changing Annotation Parameters At Runtime](http://www.baeldung.com/java-reflection-change-annotation-params)
-- [Dynamic Proxies in Java](http://www.baeldung.com/java-dynamic-proxies)
 - [Java Double Brace Initialization](http://www.baeldung.com/java-double-brace-initialization)
 - [Guide to the Diamond Operator in Java](http://www.baeldung.com/java-diamond-operator)
 - [Comparator and Comparable in Java](http://www.baeldung.com/java-comparator-comparable)
@@ -18,7 +15,6 @@
 - [A Guide to Inner Interfaces in Java](http://www.baeldung.com/java-inner-interfaces)
 - [Recursion In Java](http://www.baeldung.com/java-recursion)
 - [A Guide to the finalize Method in Java](http://www.baeldung.com/java-finalize)
-- [A Guide to Java Enums](http://www.baeldung.com/a-guide-to-java-enums)
 - [Infinite Loops in Java](http://www.baeldung.com/infinite-loops-java)
 - [Quick Guide to java.lang.System](http://www.baeldung.com/java-lang-system)
 - [Using Java Assertions](http://www.baeldung.com/java-assert)

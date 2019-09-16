@@ -12,7 +12,7 @@ public class ScopesIntegrationTest {
     private static final String NAME_OTHER = "Anna Jones";
 
     @Test
-    public void testScopeSingleton() {
+    public void givenSingletonScope_whenSetName_thenEqualNames() {
         final ApplicationContext applicationContext = new ClassPathXmlApplicationContext("scopes.xml");
 
         final Person personSingletonA = (Person) applicationContext.getBean("personSingleton");
@@ -25,7 +25,7 @@ public class ScopesIntegrationTest {
     }
 
     @Test
-    public void testScopePrototype() {
+    public void givenPrototypeScope_whenSetNames_thenDifferentNames() {
         final ApplicationContext applicationContext = new ClassPathXmlApplicationContext("scopes.xml");
 
         final Person personPrototypeA = (Person) applicationContext.getBean("personPrototype");
