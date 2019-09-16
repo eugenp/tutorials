@@ -1,6 +1,4 @@
 package com.baeldung.componentscan.filter.annotation;
 
 @Animal
-public class Elephant {
-
-}
+public class Elephant { }
