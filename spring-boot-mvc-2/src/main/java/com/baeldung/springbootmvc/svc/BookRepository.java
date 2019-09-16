@@ -1,4 +1,4 @@
-package com.baeldung.spring.rest.error.repository;
+package com.baeldung.springbootmvc.svc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import com.baeldung.spring.rest.error.domain.Book;
+import com.baeldung.springbootmvc.model.Book;
 
 @Repository
 public class BookRepository {

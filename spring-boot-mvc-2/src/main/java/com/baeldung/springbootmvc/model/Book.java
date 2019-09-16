@@ -1,4 +1,4 @@
-package com.baeldung.spring.rest.error.domain;
+package com.baeldung.springbootmvc.model;
 
 public class Book {
 
