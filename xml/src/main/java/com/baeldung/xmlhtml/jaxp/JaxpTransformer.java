@@ -27,6 +27,7 @@ public class JaxpTransformer {
         // 1- Build the doc from the XML file
         factory = DocumentBuilderFactory.newInstance();
         factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+        factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
         input = factory
           .newDocumentBuilder()
           .parse(resourcePath);
