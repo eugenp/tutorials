@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @EnableAutoConfiguration
 @SpringBootApplication
-@ComponentScan("com.baeldung.cors")
+//@ComponentScan("com.baeldung.cors")
 public class Application extends SpringBootServletInitializer {
 
     public static void main(final String[] args) {
