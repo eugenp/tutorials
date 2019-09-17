@@ -3,13 +3,10 @@
 ## Core Java Lang Cookbooks and Examples
 
 ### Relevant Articles: 
-- [Guide to Java Reflection](http://www.baeldung.com/java-reflection)
+
 - [Generate equals() and hashCode() with Eclipse](http://www.baeldung.com/java-eclipse-equals-and-hashcode)
 - [Chained Exceptions in Java](http://www.baeldung.com/java-chained-exceptions)
-- [Call Methods at Runtime Using Java Reflection](http://www.baeldung.com/java-method-reflection)
 - [Iterating Over Enum Values in Java](http://www.baeldung.com/java-enum-iteration)
-- [Changing Annotation Parameters At Runtime](http://www.baeldung.com/java-reflection-change-annotation-params)
-- [Dynamic Proxies in Java](http://www.baeldung.com/java-dynamic-proxies)
 - [Java Double Brace Initialization](http://www.baeldung.com/java-double-brace-initialization)
 - [Guide to the Diamond Operator in Java](http://www.baeldung.com/java-diamond-operator)
 - [Comparator and Comparable in Java](http://www.baeldung.com/java-comparator-comparable)
