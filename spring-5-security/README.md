@@ -1,6 +1,6 @@
 ## Spring 5 Security
 
-This module contains articles about Spring 5 security
+This module contains articles about Spring Security 5
 
 ## Relevant articles:
 

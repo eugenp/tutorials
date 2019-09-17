@@ -1,6 +1,6 @@
 ## Spring 5 Reactive Project
 
-This module contains articles about Spring 5 reactive programming. More articles [can be found here](/spring-5-reactive-2)
+This module contains articles about reactive Spring 5 
 
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
@@ -22,3 +22,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Testing Reactive Streams Using StepVerifier and TestPublisher](https://www.baeldung.com/reactive-streams-step-verifier-test-publisher)
 - [Debugging Reactive Streams in Spring 5](https://www.baeldung.com/spring-debugging-reactive-streams)
 - [Static Content in Spring WebFlux](https://www.baeldung.com/spring-webflux-static-content)
+- [more...](/spring-5-reactive-2)
