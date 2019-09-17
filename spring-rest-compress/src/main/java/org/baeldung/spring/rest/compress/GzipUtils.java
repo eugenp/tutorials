@@ -30,15 +30,11 @@ public class GzipUtils {
      * @throws IOException
      */
     public static byte[] compress(byte[] body) throws IOException {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        try {
-            try (GZIPOutputStream gzipOutputStream = new GZIPOutputStream(output)) {
-                gzipOutputStream.write(body);
-            }
-        } finally {
-            output.close();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try (GZIPOutputStream gzipOutputStream = new GZIPOutputStream(baos)) {
+            gzipOutputStream.write(body);
         }
-        return output.toByteArray();
+        return baos.toByteArray();
     }
 
     /**

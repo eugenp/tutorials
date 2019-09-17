@@ -8,6 +8,5 @@
 - [A Guide to Crawler4j](https://www.baeldung.com/crawler4j)
 - [Decode an OkHttp JSON Response](https://www.baeldung.com/okhttp-json-response)
 - [Key Value Store with Chronicle Map](https://www.baeldung.com/java-chronicle-map)
-- [Matrix Multiplication in Java](https://www.baeldung.com/java-matrix-multiplication)
 - [Guide to MapDB](https://www.baeldung.com/mapdb)
 - [A Guide to Apache Mesos](https://www.baeldung.com/apache-mesos)

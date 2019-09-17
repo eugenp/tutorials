@@ -16,8 +16,12 @@
         <dependency>
             <groupId>org.optaplanner</groupId>
             <artifactId>optaplanner-core</artifactId>
-            <version>7.9.0.Final</version>
+            <version>${optaplanner-core.version}</version>
         </dependency>
     </dependencies>
+
+	<properties>
+		<optaplanner-core.version>7.9.0.Final</optaplanner-core.version>
+	</properties>
 
 </project>
