@@ -17,12 +17,13 @@ public class MyMessageInterpolator implements MessageInterpolator {
 
     @Override
     public String interpolate(String messageTemplate, Context context) {
-        logger.debug("Selecting the language " + Locale.getDefault() + " for the error message.");
+        messageTemplate = messageTemplate.toUpperCase();
         return defaultInterpolator.interpolate(messageTemplate, context, Locale.getDefault());
     }
 
     @Override
     public String interpolate(String messageTemplate, Context context, Locale locale) {
+        messageTemplate = messageTemplate.toUpperCase();
         return defaultInterpolator.interpolate(messageTemplate, context, locale);
     }
 }
