@@ -16,14 +16,17 @@
         <dependency>
             <groupId>com.baeldung</groupId>
             <artifactId>bazelgreeting</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${bazelgreeting.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.9</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
     </dependencies>
 
+    <properties>
+        <bazelgreeting.version>1.0.0-SNAPSHOT</bazelgreeting.version>
+    </properties>
 
 </project>

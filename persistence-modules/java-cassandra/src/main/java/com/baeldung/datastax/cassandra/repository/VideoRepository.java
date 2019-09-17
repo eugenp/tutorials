@@ -7,6 +7,12 @@ import com.datastax.oss.driver.api.core.cql.BoundStatement;
 import com.datastax.oss.driver.api.core.cql.PreparedStatement;
 import com.datastax.oss.driver.api.core.cql.ResultSet;
 import com.datastax.oss.driver.api.core.cql.SimpleStatement;
+import com.datastax.oss.driver.api.core.type.DataTypes;
+import com.datastax.oss.driver.api.querybuilder.QueryBuilder;
+import com.datastax.oss.driver.api.querybuilder.SchemaBuilder;
+import com.datastax.oss.driver.api.querybuilder.insert.RegularInsert;
+import com.datastax.oss.driver.api.querybuilder.schema.CreateTable;
+import com.datastax.oss.driver.api.querybuilder.select.Select;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,15 +33,12 @@ public class VideoRepository {
     }
 
     public void createTable(String keyspace) {
-        StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ").append(TABLE_NAME).append(" (")
-            .append("video_id UUID,")
-            .append("title TEXT,")
-            .append("creation_date TIMESTAMP,")
-            .append("PRIMARY KEY(video_id));");
+        CreateTable createTable = SchemaBuilder.createTable(TABLE_NAME).ifNotExists()
+          .withPartitionKey("video_id", DataTypes.UUID)
+          .withColumn("title", DataTypes.TEXT)
+          .withColumn("creation_date", DataTypes.TIMESTAMP);
 
-        String query = sb.toString();
-
-        executeStatement(SimpleStatement.newInstance(query), keyspace);
+        executeStatement(createTable.build(), keyspace);
     }
 
     public UUID insertVideo(Video video) {
@@ -47,17 +50,23 @@ public class VideoRepository {
 
         video.setId(videoId);
 
-        String absoluteTableName = keyspace != null ? keyspace + "." + TABLE_NAME: TABLE_NAME;
+        RegularInsert insertInto = QueryBuilder.insertInto(TABLE_NAME)
+          .value("video_id", QueryBuilder.bindMarker())
+          .value("title", QueryBuilder.bindMarker())
+          .value("creation_date", QueryBuilder.bindMarker());
 
-        StringBuilder sb = new StringBuilder("INSERT INTO ").append(absoluteTableName)
-            .append("(video_id, title, creation_date) values (:video_id, :title, :creation_date)");
+        SimpleStatement insertStatement = insertInto.build();
 
-        PreparedStatement preparedStatement = session.prepare(sb.toString());
+        if (keyspace != null) {
+            insertStatement = insertStatement.setKeyspace(keyspace);
+        }
+
+        PreparedStatement preparedStatement = session.prepare(insertStatement);
 
         BoundStatement statement = preparedStatement.bind()
-            .setUuid("video_id", video.getId())
-            .setString("title", video.getTitle())
-            .setInstant("creation_date", video.getCreationDate());
+          .setUuid(0, video.getId())
+          .setString(1, video.getTitle())
+          .setInstant(2, video.getCreationDate());
 
         session.execute(statement);
 
@@ -69,11 +78,9 @@ public class VideoRepository {
     }
 
     public List<Video> selectAll(String keyspace) {
-        StringBuilder sb = new StringBuilder("SELECT * FROM ").append(TABLE_NAME);
+        Select select = QueryBuilder.selectFrom(TABLE_NAME).all();
 
-        String query = sb.toString();
-
-        ResultSet resultSet = executeStatement(SimpleStatement.newInstance(query), keyspace);
+        ResultSet resultSet = executeStatement(select.build(), keyspace);
 
         List<Video> result = new ArrayList<>();
 
