@@ -1,6 +1,6 @@
 ## Spring Activiti
 
-This module contains articles about Activiti with Spring 
+This module contains articles about Spring with Activiti 
 
 ### Relevant articles
 

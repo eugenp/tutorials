@@ -1,6 +1,6 @@
 ## Spring AOP
 
-This module contains articles about aspect oriented programming (AOP) with Spring
+This module contains articles about Spring aspect oriented programming (AOP)
 
 ### Relevant articles
 
