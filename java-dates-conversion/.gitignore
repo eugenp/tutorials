@@ -24,6 +24,3 @@ backup-pom.xml
 #IntelliJ specific
 .idea/
 *.iml
-
-#jenv
-.java-version

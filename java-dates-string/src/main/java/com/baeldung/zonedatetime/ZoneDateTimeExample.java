@@ -1,4 +1,4 @@
-package com.baeldung.zoneddatetime;
+package com.baeldung.zonedatetime;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;

@@ -1,4 +1,4 @@
-package com.baeldung.zoneddatetime;
+package com.baeldung.zonedatetime;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
