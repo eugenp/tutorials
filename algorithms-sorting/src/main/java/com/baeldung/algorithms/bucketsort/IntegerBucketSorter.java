@@ -2,6 +2,7 @@ package com.baeldung.bucketsort;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class IntegerBucketSorter implements Sorter<Integer> {
@@ -28,43 +29,40 @@ public class IntegerBucketSorter implements Sorter<Integer> {
     }
 
     private List<Integer> concatenateSortedBuckets(List<List<Integer>> buckets){
-        List<Integer> sortedArray = new ArrayList<>();
-        int index = 0;
+        List<Integer> sortedArray = new LinkedList<>();
         for(List<Integer> bucket : buckets){
-            for(int number : bucket){
-                sortedArray.add(index++, number);
-            }
+            sortedArray.addAll(bucket);
         }
         return sortedArray;
     }
 
     private List<List<Integer>> splitIntoUnsortedBuckets(List<Integer> initialList){
 
-        final int[] codes = createHashes(initialList);
+        final int max = findMax(initialList);
+        final int numberOfBuckets = (int) Math.sqrt(initialList.size());
 
-        List<List<Integer>> buckets = new ArrayList<>(codes[1]);
-        for(int i = 0; i < codes[1]; i++) buckets.add(new ArrayList<>());
+        List<List<Integer>> buckets = new ArrayList<>();
+        for(int i = 0; i < numberOfBuckets; i++) buckets.add(new ArrayList<>());
 
         //distribute the data
         for (int i : initialList) {
-            buckets.get(hash(i, codes)).add(i);
+            buckets.get(hash(i, max, numberOfBuckets)).add(i);
         }
         return buckets;
 
     }
 
-    private int[] createHashes(List<Integer> input){
-        int m = input.get(0);
-        for (int i = 1; i < input.size(); i++) {
-            if (m < input.get(i)) {
-                m = input.get(i);
-            }
+    private int findMax(List<Integer> input){
+        int m = Integer.MIN_VALUE;
+        for (int i : input){
+            m = Math.max(i, m);
         }
-        return new int[]{m, (int) Math.sqrt(input.size())};
+        return m;
     }
 
-    private static int hash(int i, int[] code) {
-        return (int) ((double) i / code[0] * (code[1] - 1));
+    private static int hash(int i, int max, int numberOfBuckets) {
+        return (int) ((double) i / max * (numberOfBuckets - 1));
     }
+
 
 }
