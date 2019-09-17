@@ -32,7 +32,7 @@ public class JaxpTransformer {
           .parse(resourcePath);
     }
 
-    public String html() throws ParserConfigurationException, TransformerException {
+    public String html() throws ParserConfigurationException, TransformerException, IOException {
         Element xml = input.getDocumentElement();
         Document doc = factory
           .newDocumentBuilder()
@@ -48,19 +48,19 @@ public class JaxpTransformer {
         Element body = buildBody(map, doc);
         html.appendChild(body);
         doc.appendChild(html);
-        Writer output = applyTransformation(doc);
-        return String.format("<!DOCTYPE html>%n%s", output.toString());
+        return String.format("<!DOCTYPE html>%n%s", applyTransformation(doc));
     }
 
-    private Writer applyTransformation(Document doc) throws TransformerException {
+    private String applyTransformation(Document doc) throws TransformerException, IOException {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         transformerFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
         transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
         transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
-        Writer output = new StringWriter();
-        Transformer transformer = transformerFactory.newTransformer();
-        transformer.transform(new DOMSource(doc), new StreamResult(output));
-        return output;
+        try (Writer output = new StringWriter()) {
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.transform(new DOMSource(doc), new StreamResult(output));
+            return output.toString();
+        }
     }
 
     private Map<String, String> buildMap(Element xml) {
