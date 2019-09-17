@@ -14,5 +14,12 @@
         <appender-ref ref="map"/>
         <appender-ref ref="out"/>
     </root>
+    <!-- https://mvnrepository.com/artifact/com.google.flogger/flogger -->
+    <dependency>
+        <groupId>com.google.flogger</groupId>
+        <artifactId>flogger</artifactId>
+        <version>0.4</version>
+    </dependency>
+
 
 </configuration>
