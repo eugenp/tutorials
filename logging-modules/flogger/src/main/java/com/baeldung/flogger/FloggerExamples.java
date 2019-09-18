@@ -5,9 +5,6 @@ import com.google.common.flogger.LoggerConfig;
 
 import java.util.logging.Level;
 
-/**
- * Created by alfred on 18 September 2019
- */
 public class FloggerExamples {
 
     private static final FluentLogger logger = FluentLogger.forEnclosingClass();

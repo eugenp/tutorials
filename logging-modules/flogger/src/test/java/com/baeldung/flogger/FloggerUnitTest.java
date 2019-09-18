@@ -11,9 +11,6 @@ import java.util.stream.IntStream;
 
 import static com.google.common.flogger.LazyArgs.lazy;
 
-/**
- * Created by alfred on 18 September 2019
- */
 public class FloggerUnitTest {
     private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
@@ -29,6 +26,12 @@ public class FloggerUnitTest {
         IntStream.range(0, 1_000_0000).forEach(value -> {
             logger.atInfo().atMostEvery(10, TimeUnit.SECONDS).log("This log shows [every 10 seconds] => %d", value);
         });
+    }
+
+    @Test
+    public void givenASimpleOperation_shouldLogTheResult() {
+        int result = 45 / 3;
+        logger.atInfo().log("The result is %d", result);
     }
 
     @Test
