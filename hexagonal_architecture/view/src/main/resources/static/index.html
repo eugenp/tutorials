@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <title>View - Hexagonal architecture </title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body onload="listAll()">
+    
+    <h2>List all Cars</h2>
+	<div id="table"></div>
+	
+	<h2>New car</h2>
+	brand:<input id="brand" type="text" />
+	Year:<input id="year" type="text" />
+	 <input type='submit' onclick="save()" value="save"></input> 
+		
+</body>
+<script type="text/javascript">
+
+function listAll(){
+	var data = null;
+
+	var xhr = new XMLHttpRequest();
+	xhr.withCredentials = true;
+
+	xhr.addEventListener("readystatechange", function () {
+	  if (this.readyState === 4) {
+	   var obj = JSON.parse(this.responseText);
+	    var txt = "<table border='1'>";
+	    for (x in obj) {
+	      txt += "<tr><td>" + obj[x].brand + "</td> ><td>" + obj[x].year + "</td></tr>";
+	    }
+	    txt += "</table>" 
+	    document.getElementById("table").innerHTML = txt;
+	  }
+	});
+
+	xhr.open("GET", "http://localhost:8080/cars/listAllCars");
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.send(data);
+}
+
+function save(){
+	var data = JSON.stringify({
+	  "brand": document.getElementById("brand").value,
+	  "year": document.getElementById("year").value
+	});
+
+	var xhr = new XMLHttpRequest();
+	xhr.withCredentials = true;
+
+	xhr.addEventListener("readystatechange", function () {
+	  if (this.readyState === 4) {
+			window.location.reload(true);
+	  }
+	});
+
+	xhr.open("POST", "http://localhost:8080/cars/save");
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.send(data);
+}
+
+
+</script>
+</html>
