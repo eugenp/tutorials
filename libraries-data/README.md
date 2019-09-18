@@ -14,3 +14,4 @@
 - [Guide to Ebean ORM](https://www.baeldung.com/ebean-orm)
 - [Introduction to Kafka Connectors](https://www.baeldung.com/kafka-connectors-guide)
 - [Kafka Connect Example with MQTT and MongoDB](https://www.baeldung.com/kafka-connect-mqtt-mongodb)
+- [Building a Data Pipeline with Flink and Kafka](https://www.baeldung.com/kafka-flink-data-pipeline)
