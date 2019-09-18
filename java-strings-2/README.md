@@ -24,3 +24,4 @@
 - [Checking If a String Is a Repeated Substring](https://www.baeldung.com/java-repeated-substring)
 - [How to Reverse a String in Java](https://www.baeldung.com/java-reverse-string)
 - [String toLowerCase and toUpperCase Methods in Java](https://www.baeldung.com/java-string-convert-case)
+- [Guide to StreamTokenizer](https://www.baeldung.com/java-streamtokenizer)
