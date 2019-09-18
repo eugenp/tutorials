@@ -17,3 +17,4 @@
 - [Convert a Float to a Byte Array in Java](https://www.baeldung.com/java-convert-float-to-byte-array)
 - [Converting Between Stream and Array in Java](https://www.baeldung.com/java-stream-to-array)
 - [Removing an Element from an Array in Java](https://www.baeldung.com/java-array-remove-element)
+- [Read and Write User Input in Java](https://www.baeldung.com/java-console-input-output)
