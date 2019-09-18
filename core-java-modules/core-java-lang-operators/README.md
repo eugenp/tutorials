@@ -1,2 +1,2 @@
-### Relevant Articles:
-[Guide to the Diamond Operator in Java](https://www.baeldung.com/java-diamond-operator)
+## Relevant Articles:
+- [Guide to the Diamond Operator in Java](https://www.baeldung.com/java-diamond-operator)
