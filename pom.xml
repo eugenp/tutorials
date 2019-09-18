@@ -403,6 +403,7 @@
                 <module>core-java-modules/core-java-concurrency-basic</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-io-files</module>
                 <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang-syntax</module>
@@ -1134,6 +1135,7 @@
 				<module>core-java-modules/core-java-concurrency-basic</module>
 				<module>core-java-modules/core-java-concurrency-collections</module>
 				<module>core-java-modules/core-java-io</module>
+				<module>core-java-modules/core-java-io-files</module>
 				<module>core-java-modules/core-java-nio</module>
 				<module>core-java-modules/core-java-security</module>
 				<module>core-java-modules/core-java-lang-syntax</module>
