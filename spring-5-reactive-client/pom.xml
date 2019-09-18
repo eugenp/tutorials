@@ -54,7 +54,7 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-
+        httpclient
         <!-- okhttp -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -114,6 +114,13 @@
             <version>3.2.10.RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-reactive-httpclient</artifactId>
+            <version>${jetty-reactive-httpclient.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
