@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SlashParsingController {
 
     @GetMapping("pathParam/{rest}")
-    public String pathParam(HttpServletRequest request, @PathVariable("rest") String rest) {
+    public String pathParam(@PathVariable("rest") String rest) {
         return rest;
     }
 
