@@ -10,7 +10,7 @@
 - [Multi-Dimensional Arrays In Java](http://www.baeldung.com/java-jagged-arrays)
 - [Find Sum and Average in a Java Array](http://www.baeldung.com/java-array-sum-average)
 - [Arrays in Java: A Reference Guide](https://www.baeldung.com/java-arrays-guide)
-- [How to Invert an Array in Java](http://www.baeldung.com/java-invert-array)
+- [How to Reverse an Array in Java](http://www.baeldung.com/java-invert-array)
 - [Array Operations in Java](http://www.baeldung.com/java-common-array-operations)
 - [Intersection Between two Integer Arrays](https://www.baeldung.com/java-array-intersection)
 - [Sorting Arrays in Java](https://www.baeldung.com/java-sorting-arrays)
