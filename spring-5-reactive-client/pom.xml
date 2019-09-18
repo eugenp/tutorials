@@ -69,7 +69,6 @@
         </dependency>
 
         <!-- runtime and test scoped -->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -137,8 +136,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -165,6 +164,7 @@
         <jsonb-api.version>1.0</jsonb-api.version>
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
         <commons-collections4.version>4.1</commons-collections4.version>
+        <jetty-reactive-httpclient.version>1.0.3</jetty-reactive-httpclient.version>
     </properties>
 
 </project>

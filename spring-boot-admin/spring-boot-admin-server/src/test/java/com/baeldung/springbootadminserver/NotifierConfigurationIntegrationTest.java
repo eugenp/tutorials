@@ -1,9 +1,11 @@
 package com.baeldung.springbootadminserver;
 
 import com.baeldung.springbootadminserver.configs.NotifierConfiguration;
-import de.codecentric.boot.admin.notify.Notifier;
-import de.codecentric.boot.admin.notify.RemindingNotifier;
-import de.codecentric.boot.admin.notify.filter.FilteringNotifier;
+
+import de.codecentric.boot.admin.server.notify.Notifier;
+import de.codecentric.boot.admin.server.notify.RemindingNotifier;
+import de.codecentric.boot.admin.server.notify.filter.FilteringNotifier;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
