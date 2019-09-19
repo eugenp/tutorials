@@ -1,6 +1,6 @@
 ## Spring Cloud Bus
 
-This modules contains articles about Spring Cloud Bus
+This module contains articles about Spring Cloud Bus
 
 ### Relevant articles
 

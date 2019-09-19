@@ -1,6 +1,6 @@
 ## Spring Core
 
-This module contains articles about Core Spring Functionality
+This module contains articles about core Spring functionality
 
 ## Relevant Articles:
 
