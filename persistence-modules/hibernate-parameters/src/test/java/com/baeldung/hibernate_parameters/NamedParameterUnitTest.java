@@ -42,7 +42,7 @@ public class NamedParameterUnitTest {
     }
 
     @Test
-    public void testNamedParameterCorrect() {
+    public void whenNamedParameterProvided_thenCorrect() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Query<Event> query = session.createQuery("from Event E WHERE E.title = :eventTitle", Event.class);
