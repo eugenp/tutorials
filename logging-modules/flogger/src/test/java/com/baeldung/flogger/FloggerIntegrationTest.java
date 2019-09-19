@@ -11,11 +11,11 @@ import java.util.stream.IntStream;
 
 import static com.google.common.flogger.LazyArgs.lazy;
 
-public class FloggerUnitTest {
+public class FloggerIntegrationTest {
     private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
     @Test
-    public void givenAnInterval_shouldLogAfterEveryTInterval() {
+    public void givenAnInterval_shouldLogAfterEveryInterval() {
         IntStream.range(0, 100).forEach(value -> {
             logger.atInfo().every(40).log("This log shows [every 40 iterations] => %d", value);
         });
