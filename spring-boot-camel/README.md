@@ -1,18 +1,26 @@
-Example for the Article on Camel API with SpringBoot
+## Spring Boot Camel
+
+This module contains articles about Spring Boot with Apache Camel
+
+### Example for the Article on Camel API with SpringBoot
 
 to start up, run:
-	mvn spring-boot:run
+
+`mvn spring-boot:run`
 	
 them, do a POST http request to:
-	http://localhost:8080/camel/api/bean 
+
+`http://localhost:8080/camel/api/bean` 
 
 with the HEADER: Content-Type: application/json, 
 
-and a BODY Payload like {"id": 1,"name": "World"}
+and a BODY Payload like:
 
-and we will get a return code of 201 and the response: Hello, World - if the transform() method from Application class is uncommented and the process() method is commented
+`{"id": 1,"name": "World"}`
 
-or return code of 201 and the response: {"id": 10,"name": "Hello, World"} - if the transform() method from Application class is commented and the process() method is uncommented 
+and we will get a return code of 201 and the response: `Hello, World` - if the transform() method from Application class is uncommented and the process() method is commented
+
+or return code of 201 and the response: `{"id": 10,"name": "Hello, World"}` - if the transform() method from Application class is commented and the process() method is uncommented 
 
 ## Relevant articles:
 

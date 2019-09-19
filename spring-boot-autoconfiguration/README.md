@@ -1,3 +1,7 @@
+## Spring Boot Auto Configuration
+
+This module contains articles about Spring Boot Auto Configuration
+
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
