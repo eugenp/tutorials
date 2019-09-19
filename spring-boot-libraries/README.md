@@ -1,3 +1,7 @@
+## Spring Boot Libraries
+
+This module contains articles about various Spring Boot libraries
+
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
