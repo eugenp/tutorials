@@ -56,7 +56,7 @@ public class NamedParameterUnitTest {
     }
 
     @Test(expected = org.hibernate.QueryException.class)
-    public void testNamedParameterIncorrect() {
+    public void whenNamedParameterMissing_thenThrowsQueryException() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Query<Event> query = session.createQuery("from Event E WHERE E.title = :eventTitle", Event.class);
