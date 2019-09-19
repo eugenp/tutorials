@@ -11,8 +11,7 @@ public class StringToEnumConverter implements Converter<String, Modes> {
     public Modes convert(String source) {
         // Remove the try-catch block if we want to handle the exception globally in GlobalControllerExceptionHandler
         try {
-            String capitalized = source.toUpperCase();
-            return Modes.valueOf(capitalized);
+            return Modes.valueOf(source.toUpperCase());
         } catch (IllegalArgumentException e) {
             return null;
         }
