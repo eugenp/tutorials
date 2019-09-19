@@ -22,3 +22,4 @@
 - [ZoneOffset in Java](https://www.baeldung.com/java-zone-offset)
 - [Differences Between ZonedDateTime and OffsetDateTime](https://www.baeldung.com/java-zoneddatetime-offsetdatetime)
 - [Introduction to Joda-Time](http://www.baeldung.com/joda-time)
+- [Comparing Dates in Java](https://www.baeldung.com/java-comparing-dates)

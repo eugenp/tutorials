@@ -1,5 +1,7 @@
 ## Spring 5 Reactive Security Examples
 
+This module contains articles about reactive Spring Security 5
+
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
