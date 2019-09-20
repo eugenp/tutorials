@@ -15,7 +15,7 @@ public class ConvertToOffsetDateTimeUnitTest {
         Date date = new Date();
         assertTrue(ConvertToOffsetDateTime.convert(date) instanceof OffsetDateTime);
     }
-    
+
     @Test
     public void givenDate_whenHasOffset_thenConvertWithOffset() {
         Date date = new Date();
@@ -25,5 +25,5 @@ public class ConvertToOffsetDateTimeUnitTest {
         assertEquals(10, odt.getHour());
         assertEquals(0, odt.getMinute());
     }
-    
+
 }
