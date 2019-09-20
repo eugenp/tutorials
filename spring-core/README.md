@@ -13,5 +13,5 @@ This module contains articles about core Spring functionality
 - [Spring Application Context Events](https://www.baeldung.com/spring-context-events)
 - [What is a Spring Bean?](https://www.baeldung.com/spring-bean)
 - [Spring PostConstruct and PreDestroy Annotations](https://www.baeldung.com/spring-postconstruct-predestroy)
-- [more...](/spring-core-2)
+- More articles: [[next -->]](/spring-core-2)
 
