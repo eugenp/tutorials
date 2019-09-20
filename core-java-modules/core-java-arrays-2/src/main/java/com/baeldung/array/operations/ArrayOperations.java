@@ -1,18 +1,13 @@
 package com.baeldung.array.operations;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
-
-import org.apache.commons.lang3.ArrayUtils;
 
 public class ArrayOperations {
 
