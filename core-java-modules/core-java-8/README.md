@@ -20,7 +20,6 @@
 - [Finding Min/Max in an Array with Java](http://www.baeldung.com/java-array-min-max)
 - [Internationalization and Localization in Java 8](http://www.baeldung.com/java-8-localization)
 - [Java Optional – orElse() vs orElseGet()](http://www.baeldung.com/java-optional-or-else-vs-or-else-get)
-- [Method Parameter Reflection in Java](http://www.baeldung.com/java-parameter-reflection)
 - [Java 8 Unsigned Arithmetic Support](http://www.baeldung.com/java-unsigned-arithmetic)
 - [Generalized Target-Type Inference in Java](http://www.baeldung.com/java-generalized-target-type-inference)
 - [Overriding System Time for Testing in Java](http://www.baeldung.com/java-override-system-time)
