@@ -1,3 +1,7 @@
+## Spring EJB
+
+This module contains articles about Spring EJB
+
 ### Relevant Articles
 
 - [Guide to EJB Set-up](http://www.baeldung.com/ejb-intro)

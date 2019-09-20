@@ -1,3 +1,7 @@
+## Spring Dependency Injection
+
+This module contains articles about Spring Dependency Injection
+
 ### Relevant Articles
 
 - [The Spring @Qualifier Annotation](https://www.baeldung.com/spring-qualifier-annotation)
