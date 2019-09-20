@@ -17,6 +17,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<r2dbc-h2.version>0.8.0.M8</r2dbc-h2.version>
 	</properties>
 
 	<dependencies>
@@ -41,7 +42,7 @@
 		<dependency>
 			<groupId>io.r2dbc</groupId>
 			<artifactId>r2dbc-h2</artifactId>
-			<version>0.8.0.M8</version>
+			<version>${r2dbc-h2.version}</version>
 		</dependency>
 
 		<dependency>

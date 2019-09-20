@@ -48,19 +48,19 @@
         <dependency>
             <groupId>com.innoventsolutions.birt.runtime</groupId>
             <artifactId>org.eclipse.birt.runtime_4.8.0-20180626</artifactId>
-            <version>4.8.0</version>
+            <version>${eclipse.birt.runtime.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/log4j/log4j -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <version>${log4j.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.6</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -80,6 +80,7 @@
         <start-class>com.baeldung.birt.engine.ReportEngineApplication</start-class>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <eclipse.birt.runtime.version>4.8.0</eclipse.birt.runtime.version>
     </properties>
 
 </project>
