@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SlashParsingController {
 
     @GetMapping("mypaths/{anything}")
-    public String pathParam(@PathVariable("anything") String anything) {
+    public String pathVariable(@PathVariable("anything") String anything) {
         return anything;
     }
 
@@ -24,7 +24,7 @@ public class SlashParsingController {
     }
 
     @GetMapping("all")
-    public String parameter(@RequestParam("param") String param) {
+    public String queryParameter(@RequestParam("param") String param) {
         return param;
     }
 
