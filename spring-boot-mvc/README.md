@@ -18,4 +18,4 @@ This module contains articles about Spring Web MVC in Spring Boot projects.
 - [Accessing Spring MVC Model Objects in JavaScript](https://www.baeldung.com/spring-mvc-model-objects-js)
 - [Using Spring ResponseEntity to Manipulate the HTTP Response](http://www.baeldung.com/spring-response-entity)
 - [Spring Bean Annotations](http://www.baeldung.com/spring-bean-annotations)
-- [More...](https://github.com/eugenp/tutorials/tree/master/spring-boot-mvc-2)
+- More articles: [[next -->]](/spring-boot-mvc-2)
