@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("slash")
 public class SlashParsingController {
 
-    @GetMapping("pathParam/{rest}")
-    public String pathParam(@PathVariable("rest") String rest) {
-        return rest;
+    @GetMapping("mypaths/{anything}")
+    public String pathParam(@PathVariable("anything") String anything) {
+        return anything;
     }
 
     @GetMapping("all/**")
@@ -23,8 +23,8 @@ public class SlashParsingController {
             .split(request.getContextPath() + "/all/")[1];
     }
 
-    @GetMapping("param")
-    public String parameter(@RequestParam("p") String param) {
+    @GetMapping("all")
+    public String parameter(@RequestParam("param") String param) {
         return param;
     }
 

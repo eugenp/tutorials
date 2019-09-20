@@ -27,7 +27,7 @@ public class SlashParsingControllerIntTest {
     public void whenUsingPathVariablemWithoutSlashes_thenStatusOk() throws Exception {
         final String stringWithoutSlashes = "noslash";
 
-        MvcResult mvcResult = mockMvc.perform(get("/slash/pathParam/" + stringWithoutSlashes))
+        MvcResult mvcResult = mockMvc.perform(get("/slash/mypaths/" + stringWithoutSlashes))
             .andExpect(status().isOk())
             .andReturn();
 
@@ -39,7 +39,7 @@ public class SlashParsingControllerIntTest {
     public void whenUsingPathVariableWithSlashes_thenStatusNotFound() throws Exception {
         final String stringWithSlashes = "url/with/slashes";
 
-        mockMvc.perform(get("/slash/pathParam/" + stringWithSlashes))
+        mockMvc.perform(get("/slash/mypaths/" + stringWithSlashes))
             .andExpect(status().isNotFound());
     }
 
@@ -76,7 +76,7 @@ public class SlashParsingControllerIntTest {
     public void whenUsingSlashesInQueryParam_thenParameterAccepted() throws Exception {
         final String stringWithSlashes = "url/for////testing/purposes";
 
-        MvcResult mvcResult = mockMvc.perform(get("/slash/param").param("p", stringWithSlashes))
+        MvcResult mvcResult = mockMvc.perform(get("/slash/all").param("param", stringWithSlashes))
             .andExpect(status().isOk())
             .andReturn();
 
