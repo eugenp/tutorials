@@ -2,7 +2,6 @@ package com.baeldung.hibernate.wherejointable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +29,7 @@ public class User {
     @ManyToMany
     @JoinTable(name = "r_user_group", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
     private List<Group> moderatorGroups = new ArrayList<>();
-    
+
     public User(String name) {
         this.name = name;
     }
@@ -70,26 +69,6 @@ public class User {
     @Override
     public String toString() {
         return "User [name=" + name + "]";
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        User other = (User) obj;
-        return Objects.equals(name, other.name);
     }
 
 }
