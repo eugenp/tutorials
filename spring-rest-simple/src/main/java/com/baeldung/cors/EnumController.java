@@ -19,7 +19,7 @@ public class EnumController {
     }
 
     @RequestMapping("/findbymode/{mode}")
-    public String accountType(@PathVariable Modes mode) {
+    public String findByEnum(@PathVariable Modes mode) {
         return "good";
     }
 }
