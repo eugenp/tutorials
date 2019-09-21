@@ -2,19 +2,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>com.com.baeldung</groupId>
-	<artifactId>hexagonal_arch</artifactId>
-	<packaging>pom</packaging>
-			<version>0.0.1-SNAPSHOT</version>
-
-	<name>hexagonal_arch</name>
-    <description>A quick and practical example of Hexagonal Architecture in Java</description>
+	<groupId>com.baeldung</groupId>
+	<artifactId>hexagonal_architecture</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>hexagonal architecture</name>
+	<description>A quick and practical example of Hexagonal Architecture in Java</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
 
 	<parent>
@@ -22,17 +20,18 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.6.RELEASE</version>
 	</parent>
-	
-	<modules>
-		<module>application</module>
-		<module>infrastructure</module>
-		<module>view</module>
-	</modules>
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 		</dependency>
 	</dependencies>
 </project>
