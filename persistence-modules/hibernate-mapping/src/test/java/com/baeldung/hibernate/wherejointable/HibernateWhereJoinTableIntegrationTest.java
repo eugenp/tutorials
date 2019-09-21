@@ -31,21 +31,10 @@ public class HibernateWhereJoinTableIntegrationTest {
     private User user3;
     private Group group1;
     private Group group2;
-    
-    public void saveRelation(User user, Group group, UserGroupRole role) {
 
-        UserGroupRelation relation = new UserGroupRelation(user.getId(), group.getId(), role);
-        
-        session.save(relation);
-        session.flush();
-        session.refresh(user);
-        session.refresh(group);
-    }
-    
     @BeforeClass
     public static void beforeTests() {
-        Configuration configuration = new Configuration()
-            .addAnnotatedClass(User.class)
+        Configuration configuration = new Configuration().addAnnotatedClass(User.class)
             .addAnnotatedClass(Group.class)
             .addAnnotatedClass(UserGroupRelation.class)
             .setProperty("hibernate.dialect", H2Dialect.class.getName())
@@ -54,9 +43,11 @@ public class HibernateWhereJoinTableIntegrationTest {
             .setProperty("hibernate.connection.username", "sa")
             .setProperty("hibernate.connection.password", "")
             .setProperty("hibernate.hbm2ddl.auto", "update");
+        
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
             .applySettings(configuration.getProperties())
             .build();
+        
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
     }
 
@@ -64,7 +55,7 @@ public class HibernateWhereJoinTableIntegrationTest {
     public void setUp() {
         session = sessionFactory.openSession();
         session.beginTransaction();
-        
+
         user1 = new User("user1");
         user2 = new User("user2");
         user3 = new User("user3");
@@ -87,6 +78,17 @@ public class HibernateWhereJoinTableIntegrationTest {
         saveRelation(user2, group2, UserGroupRole.MODERATOR);
     }
 
+    @After
+    public void tearDown() {
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    @AfterClass
+    public static void afterTests() {
+        sessionFactory.close();
+    }
+
     @Test
     public void givenUser1_getGroups_returnsAllGroups() {
         List<Group> groups = user1.getGroups();
@@ -103,16 +105,14 @@ public class HibernateWhereJoinTableIntegrationTest {
 
         assertTrue(groups.contains(group1));
     }
-    
-    @After
-    public void tearDown() {
-        session.getTransaction().commit();
-        session.close();
-    }
 
-    @AfterClass
-    public static void afterTests() {
-        sessionFactory.close();
+    public void saveRelation(User user, Group group, UserGroupRole role) {
+        UserGroupRelation relation = new UserGroupRelation(user.getId(), group.getId(), role);
+
+        session.save(relation);
+        session.flush();
+        session.refresh(user);
+        session.refresh(group);
     }
 
 }
