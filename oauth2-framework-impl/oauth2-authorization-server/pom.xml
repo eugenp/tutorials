@@ -6,6 +6,7 @@
 
     <artifactId>oauth2-authorization-server</artifactId>
     <packaging>war</packaging>
+    <name>oauth2-authorization-server</name>
 
     <parent>
         <groupId>com.baeldung.oauth2</groupId>
@@ -17,23 +18,26 @@
         <h2.version>1.4.199</h2.version>
         <httpPort>9080</httpPort>
         <httpsPort>9443</httpsPort>
+        <nimbus-jose-jwt.version>7.3</nimbus-jose-jwt.version>
+        <bcprov-jdk15on.version>1.62</bcprov-jdk15on.version>
+        <bcpkix-jdk15on.version>1.62</bcpkix-jdk15on.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
-            <version>7.3</version>
+            <version>${nimbus-jose-jwt.version}</version>
         </dependency>
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.62</version>
+            <version>${bcprov-jdk15on.version}</version>
         </dependency>
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcpkix-jdk15on</artifactId>
-            <version>1.62</version>
+            <version>${bcpkix-jdk15on.version}</version>
         </dependency>
     </dependencies>
     <build>

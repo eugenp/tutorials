@@ -112,6 +112,13 @@
 			<artifactId>assertj-core</artifactId>
 			<version>${assertj.version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hamcrest/java-hamcrest -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>java-hamcrest</artifactId>
+			<version>${java-hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>net.serenity-bdd</groupId>
@@ -165,6 +172,7 @@
 		<spring.version>4.3.8.RELEASE</spring.version>
 		<spring-mock-mvc.version>3.0.3</spring-mock-mvc.version>
 		<assertj.version>3.6.2</assertj.version>
+		<java-hamcrest.version>2.0.0.0</java-hamcrest.version>
 
 	</properties>
 </project>

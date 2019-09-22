@@ -56,7 +56,6 @@
         </dependency>
 
         <!-- runtime and test scoped -->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -89,6 +88,14 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
+        <!-- WebClient logging with Jetty -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-reactive-httpclient</artifactId>
+            <version>${jetty-reactive-httpclient.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -110,6 +117,7 @@
         <jsonb-api.version>1.0</jsonb-api.version>
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
         <commons-collections4.version>4.1</commons-collections4.version>
+        <jetty-reactive-httpclient.version>1.0.3</jetty-reactive-httpclient.version>
     </properties>
 
 </project>
