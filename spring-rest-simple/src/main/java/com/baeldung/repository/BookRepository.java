@@ -1,4 +1,4 @@
-package com.baeldung.springbootmvc.svc;
+package com.baeldung.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import com.baeldung.springbootmvc.model.Book;
+import com.baeldung.web.dto.Book;
 
 @Repository
 public class BookRepository {

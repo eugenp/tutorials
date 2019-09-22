@@ -1,4 +1,4 @@
-package com.baeldung.springbootmvc.svc;
+package com.baeldung.repository;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -9,7 +9,8 @@ import java.util.Optional;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.springbootmvc.model.Book;
+import com.baeldung.repository.BookRepository;
+import com.baeldung.web.dto.Book;
 
 public class BookRepositoryUnitTest {
 

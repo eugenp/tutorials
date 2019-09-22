@@ -1,4 +1,4 @@
-package com.baeldung.springbootmvc.ctrl;
+package com.baeldung.web.controller;
 
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
@@ -17,15 +17,15 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.baeldung.springbootmvc.SpringBootMvcFnApplication;
-import com.baeldung.springbootmvc.error.BookNotFoundException;
-import com.baeldung.springbootmvc.model.Book;
-import com.baeldung.springbootmvc.svc.BookRepository;
+import com.baeldung.Application;
+import com.baeldung.repository.BookRepository;
+import com.baeldung.web.dto.Book;
+import com.baeldung.web.error.ApiErrorResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BookController.class)
-@ComponentScan(basePackageClasses = SpringBootMvcFnApplication.class)
+@ComponentScan(basePackageClasses = Application.class)
 public class BookControllerIntegrationTest {
     
     private static final ObjectMapper MAPPER = new ObjectMapper();
@@ -45,7 +45,7 @@ public class BookControllerIntegrationTest {
         
         mvc.perform(get("/api/book/{id}", id))
             .andExpect(status().isNotFound())
-            .andExpect(content().string(new BookNotFoundException(id).toJson()));
+            .andExpect(content().json(MAPPER.writeValueAsString(new ApiErrorResponse("error-0001", "No book found with ID " + id))));
     }
     
     @Test
@@ -58,7 +58,7 @@ public class BookControllerIntegrationTest {
         
         mvc.perform(get("/api/book/{id}", id))
             .andExpect(status().isOk())
-            .andExpect(content().string(MAPPER.writeValueAsString(book)));
+            .andExpect(content().json(MAPPER.writeValueAsString(book)));
     }
     
     private static Book book(long id, String title, String author) {

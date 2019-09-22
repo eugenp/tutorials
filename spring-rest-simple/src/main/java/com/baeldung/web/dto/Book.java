@@ -1,4 +1,4 @@
-package com.baeldung.springbootmvc.model;
+package com.baeldung.web.dto;
 
 public class Book {
 
