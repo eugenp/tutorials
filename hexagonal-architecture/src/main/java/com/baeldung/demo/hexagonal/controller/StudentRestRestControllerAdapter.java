@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/students")
-public class StudentRestControllerAdapter implements StudentUIPort {
+public class StudentRestRestControllerAdapter implements StudentRestUI {
 
     @Autowired
     private StudentService studentService;
