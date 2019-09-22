@@ -82,17 +82,19 @@ class CategoryUnitTest extends GroovyTestCase {
         } 
     }
     
-    void test_whenUsingBaeldungCategory_thenSquareNumber() {
+    void test_whenUsingBaeldungCategory_thenOperationsOnNumber() {
         use (BaeldungCategory) {
-            assert 50.square() == 2500
-            assert 20.01.square() == 400.4001
+            assert 50.toThePower(2) == 2500
+            assert 2.4.toThePower(4) == 33.1776
         }
     }
     
-    void test_whenUsingNumberUtils_thenCubeNumber() {
+    void test_whenUsingNumberCategory_thenOperationsOnNumber() {
         use (NumberCategory) {
             assert 3.cube() == 27
-            assert 2.4.toThePower(4) == 33.1776
+            assert 25.divideWithRoundUp(6, true) == 5
+            assert 120.23.divideWithRoundUp(6.1, true) == 20
+            assert 150.9.divideWithRoundUp(12.1, false) == 12
         }
     }
 

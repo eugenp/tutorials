@@ -10,8 +10,8 @@ class BaeldungCategory {
         return capitalizedStr
     }
     
-    public static Number square(Number self) {
-        return self*self;
+    public static double toThePower(Number self, Number exponent) {
+        return Math.pow(self, exponent);
     }
 
 }
