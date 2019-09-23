@@ -13,7 +13,6 @@ public class FindAStringInListUnitTest {
         list.add("James and Sarah");
         list.add("Sam and Louise");
         list.add("Jack");
-        list.add(null);
         list.add("");
     }
 
@@ -28,23 +27,11 @@ public class FindAStringInListUnitTest {
     }
 
     @Test
-    public void givenAString_whenNullFoundUsingLoopWithRegex_thenReturnEmptyList(){
-        List matchingElements = findAStringInGivenList.findUsingLoopWithRegex(null, list);
-        assertEquals(0, matchingElements.size());
-    }
-
-    @Test
     public void givenAString_whenFoundUsingLoop_thenReturnList() {
         List matchingElements = findAStringInGivenList.findUsingLoop("Jack", list);
         assertEquals(2, matchingElements.size());
         assertEquals("Jack and Jill", matchingElements.get(0));
         assertEquals("Jack", matchingElements.get(1));
-    }
-
-    @Test
-    public void givenAString_whenNullFoundUsingLoop_thenReturnEmptyList(){
-        List matchingElements = findAStringInGivenList.findUsingLoop(null, list);
-        assertEquals(0, matchingElements.size());
     }
 
 
@@ -57,12 +44,6 @@ public class FindAStringInListUnitTest {
     }
 
     @Test
-    public void givenAString_whenNullFoundUsingStream_thenReturnEmptyList(){
-        List matchingElements = findAStringInGivenList.findUsingStream(null, list);
-        assertEquals(0, matchingElements.size());
-    }
-
-    @Test
     public void givenAString_whenFoundUsingCommonsCollection_thenReturnList(){
         List matchingElements = findAStringInGivenList.findUsingCommonsCollection("Jack", list);
         assertEquals(2, matchingElements.size());
@@ -71,23 +52,11 @@ public class FindAStringInListUnitTest {
     }
 
     @Test
-    public void givenAString_whenNullFoundUsingCommonsCollection_thenReturnEmptyList(){
-        List matchingElements = findAStringInGivenList.findUsingCommonsCollection(null, list);
-        assertEquals(0, matchingElements.size());
-    }
-
-    @Test
     public void givenAString_whenFoundUsingGuava_thenReturnList(){
         List matchingElements = findAStringInGivenList.findUsingGuava("Jack", list);
         assertEquals(2, matchingElements.size());
         assertEquals("Jack and Jill", matchingElements.get(0));
         assertEquals("Jack", matchingElements.get(1));
-    }
-
-    @Test
-    public void givenAString_whenNullFoundUsingGuava_thenReturnEmptyList(){
-        List matchingElements = findAStringInGivenList.findUsingGuava(null, list);
-        assertEquals(0, matchingElements.size());
     }
 
 }
