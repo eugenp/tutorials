@@ -1,3 +1,7 @@
+## Spring Boot Security MVC
+
+This module contains articles about Boot Security with Spring Boot MVC applications
+
 ### The Course
 The "REST With Spring" Classes: http://github.learnspringsecurity.com
 
