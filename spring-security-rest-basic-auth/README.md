@@ -1,8 +1,9 @@
-=========
+## Spring Security REST Basic Authentication
 
-## REST API with Basic Authentication - Example Project
+This module contains articles about Spring Security in REST APIs with basic authentication
 
 ###The Course
+
 The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 

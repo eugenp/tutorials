@@ -1,6 +1,6 @@
-=========
+## Spring Security REST
 
-## Spring Security for REST Example Project
+This module contains articles about Spring Security in RESTful APIs
 
 ### Courses
 The "REST With Spring" Classes: http://bit.ly/restwithspring
