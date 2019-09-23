@@ -15,11 +15,17 @@
 
     <dependencies>
 
-        <!-- test scoped -->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>java-hamcrest</artifactId>
             <version>${hamcrest.version}</version>
+        </dependency>
+
+       <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -27,6 +33,8 @@
             <artifactId>spring-boot-starter</artifactId>
             <version>LATEST</version>
         </dependency>
+        
+        <!-- test scoped -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
