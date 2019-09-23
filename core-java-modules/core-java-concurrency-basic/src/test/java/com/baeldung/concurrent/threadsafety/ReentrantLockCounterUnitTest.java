@@ -1,14 +1,16 @@
-package com.baeldung.concurrent.threadsafety.tests;
+package com.baeldung.concurrent.threadsafety;
 
 import com.baeldung.concurrent.threadsafety.callables.ReentrantLockCounterCallable;
 import com.baeldung.concurrent.threadsafety.services.ReentrantLockCounter;
+import org.junit.Test;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import static org.assertj.core.api.Assertions.assertThat;
-import org.junit.Test;
 
-public class ReentrantLockCounterTest {
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class ReentrantLockCounterUnitTest {
     
     @Test
     public void whenCalledIncrementCounter_thenCorrect() throws Exception {
