@@ -54,7 +54,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-        httpclient
         <!-- okhttp -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
