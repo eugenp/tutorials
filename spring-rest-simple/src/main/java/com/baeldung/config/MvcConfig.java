@@ -2,6 +2,7 @@ package com.baeldung.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.baeldung.config.converter.KryoHttpMessageConverter;
+import com.baeldung.config.converter.StringToEnumConverter;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -70,5 +72,10 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**");
+    }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+       registry.addConverter(new StringToEnumConverter());
     }
 }
