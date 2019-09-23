@@ -29,6 +29,16 @@ public class FloggerIntegrationTest {
     }
 
     @Test
+    public void givenAnObject_shouldLogTheObject() {
+        User user = new User();
+        logger.atInfo().log("The user is: %s", user); //correct
+
+        //The following ways of logging are not recommended
+        logger.atInfo().log("Ths user is: %s", user.toString());
+        logger.atInfo().log("Ths user is: %s" + user);
+    }
+
+    @Test
     public void givenASimpleOperation_shouldLogTheResult() {
         int result = 45 / 3;
         logger.atInfo().log("The result is %d", result);
@@ -69,5 +79,14 @@ public class FloggerIntegrationTest {
         int items = 110;
         int s = 30;
         return String.format("%d seconds elapsed so far. %d items pending processing", s, items);
+    }
+
+    private class User {
+        String name = "Test";
+
+        @Override
+        public String toString() {
+            return name;
+        }
     }
 }
