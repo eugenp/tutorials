@@ -1,8 +1,9 @@
-=========
+## Spring REST Full
 
-## REST Example Project with Spring
+This module contains articles about Spring REST
 
 ### Courses
+
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 The "Learn Spring Security" Classes: http://github.learnspringsecurity.com

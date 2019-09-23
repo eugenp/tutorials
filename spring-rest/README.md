@@ -1,4 +1,6 @@
-## Spring REST Example Project
+## Spring REST
+
+This module contains articles about Spring REST
 
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
