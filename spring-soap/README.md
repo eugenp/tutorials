@@ -1,6 +1,6 @@
 ## Spring SOAP
 
-This module contains articles about Spring with the SOAP protocol 
+This module contains articles about SOAP APIs with Spring 
 
 ### Relevant articles:
 
