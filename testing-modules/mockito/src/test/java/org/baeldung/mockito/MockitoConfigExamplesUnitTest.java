@@ -13,7 +13,7 @@ import static org.mockito.Mockito.*;
 
 import org.baeldung.mockito.voidmethods.MyList;
 
-public class MockitoConfigExamplesIntegrationTest {
+public class MockitoConfigExamplesUnitTest {
 
     // tests
 

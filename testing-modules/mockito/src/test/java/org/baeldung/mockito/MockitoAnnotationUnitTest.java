@@ -11,7 +11,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
 //@RunWith(MockitoJUnitRunner.class)
-public class MockitoAnnotationIntegrationTest {
+public class MockitoAnnotationUnitTest {
 
     @Mock
     private List<String> mockedList;

@@ -96,7 +96,7 @@
         <guava.version>19.0</guava.version>
 
         <!-- testing -->
-        <powermock.version>1.7.0</powermock.version>
+        <powermock.version>2.0.2</powermock.version>
         <hamcrest.version>2.0.0.0</hamcrest.version>
         <javax.persistence.version>2.1.1</javax.persistence.version>
     </properties>
