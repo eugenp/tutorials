@@ -1,6 +1,6 @@
 ## Spring REST
 
-This module contains articles about Spring REST
+This module contains articles about REST APIs with Spring
 
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring

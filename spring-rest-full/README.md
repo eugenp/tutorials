@@ -1,6 +1,6 @@
 ## Spring REST Full
 
-This module contains articles about Spring REST
+This module contains articles about REST APIs with Spring
 
 ### Courses
 

@@ -1,6 +1,6 @@
 ## Spring REST Query Language
 
-This module contains articles about Spring REST query language
+This module contains articles about the REST query language with Spring
 
 ### Courses
 
