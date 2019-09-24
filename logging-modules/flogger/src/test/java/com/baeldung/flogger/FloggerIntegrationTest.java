@@ -3,6 +3,7 @@ package com.baeldung.flogger;
 import com.google.common.flogger.FluentLogger;
 import com.google.common.flogger.LoggerConfig;
 import com.google.common.flogger.StackSize;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -12,6 +13,10 @@ import java.util.stream.IntStream;
 import static com.google.common.flogger.LazyArgs.lazy;
 
 public class FloggerIntegrationTest {
+    static {
+//        System.setProperty("flogger.backend_factory", "com.google.common.flogger.backend.log4j.Log4jBackendFactory#getInstance");
+        System.setProperty("flogger.backend_factory", "com.google.common.flogger.backend.slf4j.Slf4jBackendFactory#getInstance");
+    }
     private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
     @Test
@@ -34,8 +39,8 @@ public class FloggerIntegrationTest {
         logger.atInfo().log("The user is: %s", user); //correct
 
         //The following ways of logging are not recommended
-        logger.atInfo().log("Ths user is: %s", user.toString());
-        logger.atInfo().log("Ths user is: %s" + user);
+        logger.atInfo().log("The user is: %s", user.toString());
+        logger.atInfo().log("The user is: %s" + user);
     }
 
     @Test
