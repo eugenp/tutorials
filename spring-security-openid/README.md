@@ -1,6 +1,6 @@
 ## Spring Security OpenID
 
-This module contains articles about Spring Security and OpenID
+This module contains articles about OpenID with Spring Security
 
 ### Relevant articles
 

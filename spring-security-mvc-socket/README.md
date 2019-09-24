@@ -1,6 +1,6 @@
 ## Spring Security MVC Socket
 
-This module contains articles about Spring Security with WebSockets 
+This module contains articles about WebSockets with Spring Security 
 
 ### Relevant Articles: 
 

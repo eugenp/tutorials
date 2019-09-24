@@ -1,6 +1,6 @@
 ## Spring Security Persisted Remember Me
 
-This module contains articles about Spring Security with 'remember me' functionality
+This module contains articles about 'remember me' with Spring Security
 
 ###The Course
 The "Learn Spring Security" Classes: http://github.learnspringsecurity.com

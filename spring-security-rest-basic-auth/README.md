@@ -1,6 +1,6 @@
 ## Spring Security REST Basic Authentication
 
-This module contains articles about Spring Security in REST APIs with basic authentication
+This module contains articles about basic authentication in RESTful APIs with Spring Security
 
 ###The Course
 

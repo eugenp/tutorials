@@ -1,6 +1,6 @@
 ## Spring Security MVC Json View
 
-This module contains articles about Spring Security and JSON 
+This module contains articles about Spring Security with JSON
 
 ### Relevant Articles:
 

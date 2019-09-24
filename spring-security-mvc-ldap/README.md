@@ -1,6 +1,6 @@
-## Spring Security with LDAP
+## Spring Security LDAP
 
-This module contains articles about Spring Security with LDAP
+This module contains articles about Spring Security LDAP
 
 ###The Course
 The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
