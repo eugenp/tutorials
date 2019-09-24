@@ -18,17 +18,16 @@ public class CarFactory {
 	@Autowired
 	private MongoDBCarServiceAdapter mongoDBCarServiceAdapter;
 	
+	@Autowired
 	private DefaultCarServiceAdapter defaultServiceAdapter;
 
 	public CarRepositoryPort getConnection(String typeConnection) {
 			
-	      if(typeConnection.equalsIgnoreCase(CarEnum.MONGODB.name())){
-	         return  mongoDBCarServiceAdapter;
-	         
-	      } else if(typeConnection.equalsIgnoreCase(CarEnum.MEMORY.name())){
-	         return mockCarServiceAdapter;    
+	      if(typeConnection.equalsIgnoreCase(CarEnum.MEMORY.name())){
+	         return mockCarServiceAdapter;
+	      } else if(typeConnection.equalsIgnoreCase(CarEnum.MONGODB.name())){
+	         return mongoDBCarServiceAdapter;
 	      }
-	     
 		return defaultServiceAdapter;
 	}
 }

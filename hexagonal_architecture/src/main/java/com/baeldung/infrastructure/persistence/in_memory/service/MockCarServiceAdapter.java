@@ -20,14 +20,14 @@ public class MockCarServiceAdapter implements CarRepositoryPort {
 
 	    @Override
 	    public List<Car> listAllCars() {
-	           TypedQuery<Car> query = entityManager.createQuery("FROM Car", Car.class);
-		   List<Car> cars = query.getResultList();		  
+	      TypedQuery<Car> query = entityManager.createQuery("FROM Car", Car.class);
+		  List<Car> cars = query.getResultList();
 		return cars;
 	    }
 		
 	    @Transactional
 	    @Override
 	    public void saveCar(String brand, Integer year) {
-	        entityManager.persist(new Car(brand,year));
+	      entityManager.persist(new Car(brand, year));
 	    }
 }

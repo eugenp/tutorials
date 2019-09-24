@@ -22,7 +22,7 @@ public class CarControllerUIAdapter implements CarUIPort{
     private CarFactory carFactory;
 
     @PostMapping("save")
-    public void saveFomUI(@RequestBody Car request) {
+    public void saveFromUI(@RequestBody Car request) {
     	carFactory.getConnection(
     				CarEnum.MEMORY.name())
     	            .saveCar(request.getBrand(), request.getYear());
@@ -35,6 +35,4 @@ public class CarControllerUIAdapter implements CarUIPort{
     			.listAllCars();
         return cars;
     }
-
-	
 }

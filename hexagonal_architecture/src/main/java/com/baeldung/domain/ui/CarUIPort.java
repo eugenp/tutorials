@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.baeldung.domain.Car;
 
+
 public interface CarUIPort {
 
-	void saveFomUI(@RequestBody Car request);
+	void saveFromUI(@RequestBody Car request);
 	
 	List<Car> listAllCarsFromUI();
 }

@@ -54,5 +54,4 @@ public class Car {
     public void setYear(Integer year) {
         this.year = year;
     }
-
 }

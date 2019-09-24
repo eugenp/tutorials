@@ -18,5 +18,4 @@ public class MongoDBCarServiceAdapter implements CarRepositoryPort {
 	public List<Car> listAllCars() {
 		return null;
 	}
-
 }
