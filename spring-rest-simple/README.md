@@ -1,6 +1,6 @@
 ## Spring REST Simple
 
-This module contains articles about Spring REST
+This module contains articles about REST APIs in Spring
 
 ## Relevant articles:
 

@@ -1,6 +1,6 @@
 ## Spring Security Core
 
-This module contains articles about Spring Security Core
+This module contains articles about core Spring Security
 
 ### Relevant Articles:
 - [Spring Security – @PreFilter and @PostFilter](http://www.baeldung.com/spring-security-prefilter-postfilter)
