@@ -47,7 +47,6 @@ public class FindAStringInGivenList {
 
         List<String> matchingElements =
                 list.stream()
-                        .filter(str -> search != null)
                         .filter(str -> str.trim().contains(search))
                         .collect(Collectors.toList());
 
