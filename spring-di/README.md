@@ -1,6 +1,6 @@
 ## Spring Dependency Injection
 
-This module contains articles about Spring Dependency Injection
+This module contains articles about dependency injection with Spring
 
 ### Relevant Articles
 

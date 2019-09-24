@@ -1,6 +1,6 @@
 ## Spring EJB
 
-This module contains articles about Spring EJB
+This module contains articles about Spring with EJB
 
 ### Relevant Articles
 
