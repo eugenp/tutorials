@@ -1,6 +1,6 @@
-## Spring Exceptions
+## Spring `Exception`s
 
-This module contains articles about Spring Exceptions
+This module contains articles about Spring `Exception`s
 
 ### Relevant articles: 
 - [Spring BeanCreationException](http://www.baeldung.com/spring-beancreationexception)
