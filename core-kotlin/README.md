@@ -3,7 +3,7 @@
 - [Introduction to the Kotlin Language](https://www.baeldung.com/kotlin)
 - [Guide to the “when{}” Block in Kotlin](https://www.baeldung.com/kotlin-when)
 - [Comprehensive Guide to Null Safety in Kotlin](https://www.baeldung.com/kotlin-null-safety)
-- [Kotlin Java Interoperability](https://www.baeldung.com/kotlin-java-interoperability
+- [Kotlin Java Interoperability](https://www.baeldung.com/kotlin-java-interoperability)
 - [Difference Between “==” and “===” operators in Kotlin](https://www.baeldung.com/kotlin-equality-operators)
 - [Generics in Kotlin](https://www.baeldung.com/kotlin-generics)
 - [Introduction to Kotlin Coroutines](https://www.baeldung.com/kotlin-coroutines)
