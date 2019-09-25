@@ -1,6 +1,6 @@
 ## Spring Security Kerberos
 
-This module contains articles about Spring Security with Kerberos
+This module contains articles about Spring Security Kerberos
 
 ### Relevant Articles:
 
