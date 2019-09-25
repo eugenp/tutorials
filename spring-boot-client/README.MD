@@ -1,3 +1,7 @@
+## Spring Boot Client
+
+This module contains articles about Spring Boot Clients
+
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 

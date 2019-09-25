@@ -1,6 +1,6 @@
-=========
+## Spring Security MVC
 
-## Spring Security Login Example Project
+This module contains articles about Spring Security in MVC applications
 
 ###The Course
 The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
