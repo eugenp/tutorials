@@ -11,7 +11,7 @@ import java.io.InputStream;
 
 import static junit.framework.Assert.assertEquals;
 
-public class CustomerIntegrationTest {
+public class CustomerUnitTest {
 
 	@Test
 	public void whenUnmarshalXML_ThenFieldsAreMapped() throws JiBXException, FileNotFoundException {
@@ -21,7 +21,7 @@ public class CustomerIntegrationTest {
 		InputStream inputStream = classLoader.getResourceAsStream("Customer1.xml");
 		Customer customer = (Customer) uctx.unmarshalDocument(inputStream, null);
 
-		assertEquals("Stefan Jaegar", customer.getPerson().getName());
+		assertEquals("Stefan Jaeger", customer.getPerson().getName());
 		assertEquals("Davos Dorf", customer.getCity());
 
 	}
