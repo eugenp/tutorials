@@ -3,7 +3,6 @@ package com.baeldung.flogger;
 import com.google.common.flogger.FluentLogger;
 import com.google.common.flogger.LoggerConfig;
 import com.google.common.flogger.StackSize;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
