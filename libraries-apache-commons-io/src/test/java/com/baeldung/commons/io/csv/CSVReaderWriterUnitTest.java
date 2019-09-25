@@ -1,4 +1,4 @@
-package com.baeldung.commons.csv;
+package com.baeldung.commons.io.csv;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;

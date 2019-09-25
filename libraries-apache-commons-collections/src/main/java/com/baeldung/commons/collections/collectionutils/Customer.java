@@ -1,4 +1,4 @@
-package com.baeldung.commons.collectionutil;
+package com.baeldung.commons.collections.collectionutils;
 
 public class Customer implements Comparable<Customer> {
 
