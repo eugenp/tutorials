@@ -463,6 +463,7 @@
 
                 <module>hazelcast</module>
                 <module>helidon</module>
+				<module>hexagonal-architecture</module>
                 <module>httpclient</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
@@ -1200,6 +1201,7 @@
 
 				<module>hazelcast</module>
 				<module>helidon</module>
+				<module>hexagonal-architecture</module>
 				<module>httpclient</module>
 				<module>httpclient-simple</module>
 				<module>hystrix</module>
