@@ -1,4 +1,4 @@
-package com.baeldung.springbootmvc.slash;
+package com.baeldung.spring.slash;
 
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

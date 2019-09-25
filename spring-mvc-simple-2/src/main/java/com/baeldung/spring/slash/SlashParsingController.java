@@ -1,4 +1,4 @@
-package com.baeldung.springbootmvc.slash;
+package com.baeldung.spring.slash;
 
 import javax.servlet.http.HttpServletRequest;
 
