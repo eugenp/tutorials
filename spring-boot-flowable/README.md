@@ -1,3 +1,3 @@
 ### Relevant articles
 
-- [Introduction to Flowable](http://www.baeldung.com/flowable)
+- [Introduction to Flowable](https://www.baeldung.com/flowable)
