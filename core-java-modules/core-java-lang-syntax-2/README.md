@@ -4,3 +4,4 @@
 
 ### Relevant Articles: 
 - [Java ‘private’ Access Modifier](https://www.baeldung.com/java-private-keyword)
+- [Java ‘protected’ Access Modifier](https://www.baeldung.com/java-protected-keyword)
