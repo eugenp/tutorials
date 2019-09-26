@@ -1,4 +1,6 @@
-## Spring Remoting Tutorials
+## Spring Remoting
+
+This module contains articles about Spring Remoting
 
 ### Relevant Articles
 - [Intro to Spring Remoting with HTTP Invokers](http://www.baeldung.com/spring-remoting-http-invoker)

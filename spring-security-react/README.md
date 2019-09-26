@@ -1,6 +1,6 @@
-=========
+## Spring Security React 
 
-## Spring Security React Example Project
+This module contains articles about Spring Security with ReactJS
 
 ### The Course
 

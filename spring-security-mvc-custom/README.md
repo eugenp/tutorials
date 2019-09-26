@@ -1,6 +1,6 @@
-=========
+## Spring Security MVC Custom
 
-## Spring Security Login Example Project
+This module contains articles about Spring Security with custom MVC applications
 
 ###The Course
 The "REST With Spring" Classes: http://github.learnspringsecurity.com
