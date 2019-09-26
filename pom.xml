@@ -540,6 +540,7 @@
 				<module>lucene</module>
 
 				<module>mapstruct</module>
+				<!-- <module>maven-all/compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
 				<module>maven-all/maven</module>
 				<module>maven-all/maven-war-plugin</module>
 				<module>maven-all/profiles</module>
@@ -1275,6 +1276,7 @@
 				<module>lucene</module>
 
 				<module>mapstruct</module>
+				<!-- <module>maven-all/compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
 				<module>maven-all/maven</module>
 				<module>maven-all/maven-war-plugin</module>
 				<module>maven-all/profiles</module>
