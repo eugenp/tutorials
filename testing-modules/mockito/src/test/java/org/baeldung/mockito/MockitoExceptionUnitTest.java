@@ -8,7 +8,7 @@ import static org.mockito.Mockito.when;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class MockitoExceptionIntegrationTest {
+public class MockitoExceptionUnitTest {
 
     @Test(expected = NullPointerException.class)
     public void whenConfigNonVoidRetunMethodToThrowEx_thenExIsThrown() {

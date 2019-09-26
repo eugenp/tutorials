@@ -13,7 +13,7 @@ import static org.powermock.api.mockito.PowerMockito.*;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(fullyQualifiedNames = "com.baeldung.powermockito.introduction.*")
-public class PowerMockitoIntegrationTest {
+public class PowerMockitoUnitTest {
 
     @Test
     public void givenFinalMethods_whenUsingPowerMockito_thenCorrect() throws Exception {
@@ -44,10 +44,10 @@ public class PowerMockitoIntegrationTest {
         assertEquals("Hello Baeldung!", firstWelcome);
         assertEquals("Hello Baeldung!", secondWelcome);
 
-        verifyStatic(times(2));
+        verifyStatic(CollaboratorWithStaticMethods.class, times(2));
         CollaboratorWithStaticMethods.firstMethod(Mockito.anyString());
 
-        verifyStatic(Mockito.never());
+        verifyStatic(CollaboratorWithStaticMethods.class, Mockito.never());
         CollaboratorWithStaticMethods.secondMethod();
 
         CollaboratorWithStaticMethods.thirdMethod();
@@ -60,7 +60,6 @@ public class PowerMockitoIntegrationTest {
         spy(CollaboratorForPartialMocking.class);
         when(CollaboratorForPartialMocking.staticMethod()).thenReturn("I am a static mock method.");
         returnValue = CollaboratorForPartialMocking.staticMethod();
-        verifyStatic();
         CollaboratorForPartialMocking.staticMethod();
         assertEquals("I am a static mock method.", returnValue);
 

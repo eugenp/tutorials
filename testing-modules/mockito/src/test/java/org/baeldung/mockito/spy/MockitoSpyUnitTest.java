@@ -12,7 +12,7 @@ import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MockitoSpyIntegrationTest {
+public class MockitoSpyUnitTest {
 
     @Spy
     private List<String> aSpyList = new ArrayList<String>();

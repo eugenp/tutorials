@@ -17,7 +17,7 @@ import org.mockito.exceptions.verification.TooLittleActualInvocations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-public class MockitoMockIntegrationTest {
+public class MockitoMockUnitTest {
 
     private static class CustomAnswer implements Answer<Boolean> {
         @Override

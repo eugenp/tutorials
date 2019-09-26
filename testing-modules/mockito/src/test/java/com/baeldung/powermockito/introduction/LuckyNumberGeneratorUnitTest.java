@@ -14,7 +14,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(fullyQualifiedNames = "com.baeldung.powermockito.introduction.LuckyNumberGenerator")
-public class LuckyNumberGeneratorIntegrationTest {
+public class LuckyNumberGeneratorUnitTest {
 
     @Test
     public final void givenPrivateMethodWithReturn_whenUsingPowerMockito_thenCorrect() throws Exception {

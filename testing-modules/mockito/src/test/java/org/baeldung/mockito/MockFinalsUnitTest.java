@@ -8,7 +8,7 @@ import static org.mockito.Mockito.when;
 
 import org.baeldung.mockito.voidmethods.MyList;
 
-public class MockFinals {
+public class MockFinalsUnitTest {
 
       @Test
       public void whenMockFinalClassMockWorks() {

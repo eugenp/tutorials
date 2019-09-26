@@ -10,7 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 
 
-public class BDDMockitoIntegrationTest {
+public class BDDMockitoUnitTest {
     
     PhoneBookService phoneBookService;
     PhoneBookRepository phoneBookRepository;
