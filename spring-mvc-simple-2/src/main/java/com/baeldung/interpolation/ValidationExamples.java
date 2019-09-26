@@ -18,7 +18,7 @@ public class ValidationExamples {
 
     @Min(
       value = 1,
-      message = "There must be at least {value} test{value > 1 ? 's' : ''} int the test case"
+      message = "There must be at least {value} test{value > 1 ? 's' : ''} in the test case"
     )
     private int testCount;
 
