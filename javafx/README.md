@@ -1,3 +1,3 @@
 ### Relevant Articles:
--[Introduction to JavaFX](http://www.baeldung.com/javafx)
+-[Introduction to JavaFX](https://www.baeldung.com/javafx)
 
