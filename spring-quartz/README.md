@@ -22,5 +22,5 @@ org.baeldung.springquartz.SpringQuartzApp
     ```
 
 ### Relevant Articles: 
-- [Scheduling in Spring with Quartz](http://www.baeldung.com/spring-quartz-schedule)
+- [Scheduling in Spring with Quartz](https://www.baeldung.com/spring-quartz-schedule)
     
