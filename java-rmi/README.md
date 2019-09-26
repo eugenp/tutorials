@@ -1,3 +1,3 @@
 ### Relevant articles
 
-- [Getting Started with Java RMI](http://www.baeldung.com/java-rmi)
+- [Getting Started with Java RMI](https://www.baeldung.com/java-rmi)
