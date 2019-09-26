@@ -39,7 +39,7 @@ public class RestServiceVerticleUnitTest {
         port = socket.getLocalPort();
         socket.close();
 
-        DeploymentOptions options = new DeploymentOptions().setConfig(new JsonObject().put("HTTP_PORT", port));
+        DeploymentOptions options = new DeploymentOptions().setConfig(new JsonObject().put("http.port", port));
 
         vertx.deployVerticle(RestServiceVerticle.class.getName(), options, testContext.asyncAssertSuccess());
     }

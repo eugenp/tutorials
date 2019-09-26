@@ -30,7 +30,7 @@ public class SimpleServerVerticleUnitTest {
         port = socket.getLocalPort();
         socket.close();
 
-        DeploymentOptions options = new DeploymentOptions().setConfig(new JsonObject().put("HTTP_PORT", port));
+        DeploymentOptions options = new DeploymentOptions().setConfig(new JsonObject().put("http.port", port));
 
         vertx.deployVerticle(SimpleServerVerticle.class.getName(), options, testContext.asyncAssertSuccess());
     }
@@ -45,7 +45,7 @@ public class SimpleServerVerticleUnitTest {
         final Async async = testContext.async();
 
         vertx.createHttpClient()
-            .getNow(8080, "localhost", "/", response -> response.handler(responseBody -> {
+            .getNow(port, "localhost", "/", response -> response.handler(responseBody -> {
                 testContext.assertTrue(responseBody.toString()
                     .contains("Welcome"));
                 async.complete();
