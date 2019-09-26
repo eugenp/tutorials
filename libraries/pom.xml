@@ -579,7 +579,7 @@
         <dependency>
             <groupId>org.asciidoctor</groupId>
             <artifactId>asciidoctor-maven-plugin</artifactId>
-            <version>1.5.7.1</version>
+            <version>${asciidoctor-maven-plugin.version}</version>
         </dependency>
       	<!-- Reflections -->
 		<dependency>
@@ -789,6 +789,7 @@
         <mockftpserver.version>2.7.1</mockftpserver.version>
         <commons-net.version>3.6</commons-net.version>
         <reflections.version>0.9.11</reflections.version>
+        <asciidoctor-maven-plugin.version>1.5.7.1</asciidoctor-maven-plugin.version>
 
     </properties>
 

@@ -13,7 +13,7 @@ import reactor.test.StepVerifier;
 import java.util.UUID;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(properties = {"spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration"})
 public class N1QLSortingPersonRepositoryLiveTest {
 
     @Autowired private N1QLSortingPersonRepository personRepository;
