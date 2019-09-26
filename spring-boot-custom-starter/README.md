@@ -1,5 +1,5 @@
 ### Relevant Articles: 
-- [Creating a Custom Starter with Spring Boot](http://www.baeldung.com/spring-boot-custom-starter)
+- [Creating a Custom Starter with Spring Boot](https://www.baeldung.com/spring-boot-custom-starter)
 
 - **greeter-library**: The sample library that we're creating the starter for.
 
@@ -9,4 +9,4 @@
 
 - **greeter-spring-boot-sample-app**: The sample project that uses the custom starter.
 
-- [Multi-Module Project With Spring Boot](http://www.baeldung.com/spring-boot-multiple-modules)
+- [Multi-Module Project With Spring Boot](https://www.baeldung.com/spring-boot-multiple-modules)
