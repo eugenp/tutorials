@@ -1,4 +1,4 @@
-package com.baeldung.sqlresultsetmapping;
+package com.baeldung.jpa.sqlresultsetmapping;
 
 import static org.junit.Assert.*;
 

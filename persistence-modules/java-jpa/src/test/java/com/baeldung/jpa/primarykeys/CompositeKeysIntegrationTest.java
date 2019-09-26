@@ -1,4 +1,4 @@
-package com.baeldung.jpa.entity;
+package com.baeldung.jpa.primarykeys;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,6 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.baeldung.jpa.primarykeys.Account;
+import com.baeldung.jpa.primarykeys.AccountId;
+import com.baeldung.jpa.primarykeys.Book;
+import com.baeldung.jpa.primarykeys.BookId;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.baeldung.jpa.entity;
+package com.baeldung.jpa.primarykeys;
 
 import java.io.Serializable;
 
