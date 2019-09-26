@@ -1,6 +1,6 @@
 ### Relevant articles
 
-- [Intro to Apache Kafka with Spring](http://www.baeldung.com/spring-kafka)
+- [Intro to Apache Kafka with Spring](https://www.baeldung.com/spring-kafka)
 
 
 
