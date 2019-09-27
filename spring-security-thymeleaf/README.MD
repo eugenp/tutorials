@@ -3,4 +3,4 @@ Jira BAEL-1556
 
 ### Relevant Articles: 
 
-- [Spring Security with Thymeleaf](http://www.baeldung.com/spring-security-thymeleaf)
+- [Spring Security with Thymeleaf](https://www.baeldung.com/spring-security-thymeleaf)
