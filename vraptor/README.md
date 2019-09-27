@@ -15,4 +15,4 @@ Cuidado para *jamais* executar `mvn tomcat:run` pois ele usará um tomcat6 (inco
 
 ### Relevant Article:
 
-- [Introduction to VRaptor in Java](http://www.baeldung.com/vraptor)
+- [Introduction to VRaptor in Java](https://www.baeldung.com/vraptor)
