@@ -1,4 +1,4 @@
-package com.baeldung.list.removefirst;
+package com.baeldung.array.removefirst;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;

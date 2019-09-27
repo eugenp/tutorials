@@ -7,3 +7,4 @@
 - [Array Operations in Java](https://www.baeldung.com/java-common-array-operations)
 - [Intersection Between two Integer Arrays](https://www.baeldung.com/java-array-intersection)
 - [Removing an Element from an Array in Java](https://www.baeldung.com/java-array-remove-element)
+- [Removing the First Element of an Array](https://www.baeldung.com/java-array-remove-first-element)
