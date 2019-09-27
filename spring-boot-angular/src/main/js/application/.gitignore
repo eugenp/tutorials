@@ -36,8 +36,8 @@ testem.log
 /typings
 
 # e2e
-/e2e/*.js
-/e2e/*.map
+/spring-boot-angular/src/main/js/application/e2e/*.js
+/spring-boot-angular/src/main/js/application/e2e/*.map
 
 # System Files
 .DS_Store
