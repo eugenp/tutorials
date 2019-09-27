@@ -6,9 +6,7 @@ import java.util.Set;
 import org.springframework.stereotype.Component;
 
 import lombok.Getter;
-import lombok.ToString;
 
-@ToString
 @Component
 public class UserCache {
 
