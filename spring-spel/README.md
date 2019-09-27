@@ -1,2 +1,2 @@
 ### Relevant Articles:
-- [Spring Expression Language Guide](http://www.baeldung.com/spring-expression-language)
+- [Spring Expression Language Guide](https://www.baeldung.com/spring-expression-language)
