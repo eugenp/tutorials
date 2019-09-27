@@ -5,4 +5,4 @@ mvn jetty:run
 
 
 ###Relevant Articles:
-- [Introduction to the Wicket Framework](http://www.baeldung.com/intro-to-the-wicket-framework)
+- [Introduction to the Wicket Framework](https://www.baeldung.com/intro-to-the-wicket-framework)
