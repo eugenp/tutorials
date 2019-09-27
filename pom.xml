@@ -530,6 +530,8 @@
 				<module>libraries-data</module>
 				<module>libraries-data-2</module>
 				<module>libraries-apache-commons</module>
+				<module>libraries-apache-commons-collections</module>
+				<module>libraries-apache-commons-io</module>
 				<module>libraries-primitive</module>
 				<module>libraries-testing</module>
 				<module>libraries-security</module>
@@ -1266,6 +1268,8 @@
 				<module>libraries-data</module>
 				<module>libraries-data-2</module>
 				<module>libraries-apache-commons</module>
+				<module>libraries-apache-commons-collections</module>
+				<module>libraries-apache-commons-io</module>
 				<module>libraries-testing</module>
 				<module>libraries-security</module>
 				<module>libraries-server</module>

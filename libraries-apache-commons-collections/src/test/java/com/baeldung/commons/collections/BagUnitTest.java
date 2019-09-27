@@ -1,4 +1,4 @@
-package com.baeldung.commons.collections4;
+package com.baeldung.commons.collections;
 
 import org.apache.commons.collections4.Bag;
 import org.apache.commons.collections4.SortedBag;
