@@ -1,4 +1,4 @@
-package com.baeldung.mockito.voidmethods;
+package com.baeldung.mockito;
 
 import java.util.AbstractList;
 

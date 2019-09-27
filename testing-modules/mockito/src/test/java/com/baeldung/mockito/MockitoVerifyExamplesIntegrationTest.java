@@ -1,6 +1,5 @@
 package com.baeldung.mockito;
 
-import com.baeldung.mockito.voidmethods.MyList;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;

@@ -1,4 +1,4 @@
-package org.baeldung.mockito;
+package com.baeldung.mockito;
 
 import org.junit.Test;
 
@@ -6,7 +6,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import org.baeldung.mockito.voidmethods.MyList;
+import com.baeldung.mockito.MyList;
 
 public class MockFinalsUnitTest {
 

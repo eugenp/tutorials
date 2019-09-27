@@ -1,4 +1,4 @@
-package org.baeldung.mockito;
+package com.baeldung.mockito;
 
 import org.junit.Before;
 import org.junit.Test;

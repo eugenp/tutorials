@@ -1,4 +1,4 @@
-package org.baeldung.mockito;
+package com.baeldung.mockito;
 
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -11,7 +11,7 @@ import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
-import org.baeldung.mockito.voidmethods.MyList;
+import com.baeldung.mockito.MyList;
 
 public class MockitoConfigExamplesUnitTest {
 

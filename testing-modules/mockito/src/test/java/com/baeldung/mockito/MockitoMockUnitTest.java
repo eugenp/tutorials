@@ -1,8 +1,8 @@
-package org.baeldung.mockito;
+package com.baeldung.mockito;
 
 import static org.mockito.Mockito.*;
 
-import org.baeldung.mockito.voidmethods.MyList;
+import com.baeldung.mockito.MyList;
 
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;

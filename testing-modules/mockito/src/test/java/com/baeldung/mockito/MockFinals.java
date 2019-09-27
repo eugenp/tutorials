@@ -1,6 +1,5 @@
 package com.baeldung.mockito;
 
-import com.baeldung.mockito.voidmethods.MyList;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotEquals;

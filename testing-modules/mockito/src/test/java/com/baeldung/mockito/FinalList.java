@@ -1,7 +1,5 @@
 package com.baeldung.mockito;
 
-import com.baeldung.mockito.voidmethods.MyList;
-
 public final class FinalList extends MyList {
 
   @Override

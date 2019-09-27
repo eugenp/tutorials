@@ -1,8 +1,8 @@
-package org.baeldung.mockito;
+package com.baeldung.mockito;
 
 import com.google.common.collect.Lists;
 
-import org.baeldung.mockito.voidmethods.MyList;
+import com.baeldung.mockito.MyList;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;

@@ -1,5 +1,6 @@
 package com.baeldung.mockito.voidmethods;
 
+import com.baeldung.mockito.MyList;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;

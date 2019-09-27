@@ -10,7 +10,7 @@ import static org.junit.Assert.fail;
 import static org.mockito.BDDMockito.*;
 
 
-public class BDDMockitoIntegrationTest {
+public class BDDMockitoUnitTest {
     
     PhoneBookService phoneBookService;
     PhoneBookRepository phoneBookRepository;

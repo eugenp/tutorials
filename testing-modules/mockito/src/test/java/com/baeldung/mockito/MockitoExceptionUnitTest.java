@@ -1,4 +1,4 @@
-package org.baeldung.mockito;
+package com.baeldung.mockito;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doThrow;
