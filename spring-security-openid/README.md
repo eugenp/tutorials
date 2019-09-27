@@ -1,6 +1,6 @@
 ### Relevant articles
 
-- [Spring Security and OpenID Connect](http://www.baeldung.com/spring-security-openid-connect)
+- [Spring Security and OpenID Connect](https://www.baeldung.com/spring-security-openid-connect)
 
 
 ## OpenID Connect with Spring Security
