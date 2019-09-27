@@ -4,4 +4,4 @@
 
 
 ### Relevant Articles: 
-- [Spring REST with a Zuul Proxy](http://www.baeldung.com/spring-rest-with-zuul-proxy)
+- [Spring REST with a Zuul Proxy](https://www.baeldung.com/spring-rest-with-zuul-proxy)
