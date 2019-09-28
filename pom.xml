@@ -544,7 +544,11 @@
 				<module>lucene</module>
 
 				<module>mapstruct</module>
-				<module>maven</module>
+				<!-- <module>maven-all/compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
+				<module>maven-all/maven</module>
+				<module>maven-all/maven-war-plugin</module>
+				<module>maven-all/profiles</module>
+				<module>maven-all/versions-maven-plugin</module>
 				<module>maven-archetype</module>
 				<!-- <module>maven-polyglot/maven-polyglot-json-app</module> --> <!-- Not a maven project -->
 				<module>maven-polyglot/maven-polyglot-json-extension</module>
@@ -1279,7 +1283,11 @@
 				<module>lucene</module>
 
 				<module>mapstruct</module>
-				<module>maven</module>
+				<!-- <module>maven-all/compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
+				<module>maven-all/maven</module>
+				<module>maven-all/maven-war-plugin</module>
+				<module>maven-all/profiles</module>
+				<module>maven-all/versions-maven-plugin</module>
 				<!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
 				<module>maven-archetype</module>
 				<!-- <module>maven-polyglot/maven-polyglot-json-app</module> --> <!-- Not a maven project -->
