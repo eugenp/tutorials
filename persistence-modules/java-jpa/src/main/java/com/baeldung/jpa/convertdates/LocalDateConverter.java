@@ -1,4 +1,4 @@
-package com.baeldung.util;
+package com.baeldung.jpa.convertdates;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

@@ -1,4 +1,4 @@
-package com.baeldung.sqlresultsetmapping;
+package com.baeldung.jpa.sqlresultsetmapping;
 
 import javax.persistence.*;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
         name="EmployeeResult",
         entities={
                 @EntityResult(
-                        entityClass = com.baeldung.sqlresultsetmapping.Employee.class,
+                        entityClass = com.baeldung.jpa.sqlresultsetmapping.Employee.class,
                         fields={@FieldResult(name="id",column="employeeNumber"),
                                  @FieldResult(name="name", column="name")}
                 )
