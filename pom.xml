@@ -401,6 +401,8 @@
                 <module>core-java-modules/core-java-arrays</module>
                 <module>core-java-modules/core-java-arrays-2</module>
                 <module>core-java-modules/core-java-collections</module>
+				<module>core-java-modules/core-java-collections-2</module>
+				<module>core-java-modules/core-java-collections-3</module>
                 <module>core-java-modules/core-java-collections-list</module>
                 <module>core-java-modules/core-java-collections-list-2</module>
                 <module>core-java-modules/core-java-collections-list-3</module>
@@ -528,6 +530,8 @@
 				<module>libraries-data</module>
 				<module>libraries-data-2</module>
 				<module>libraries-apache-commons</module>
+				<module>libraries-apache-commons-collections</module>
+				<module>libraries-apache-commons-io</module>
 				<module>libraries-primitive</module>
 				<module>libraries-testing</module>
 				<module>libraries-security</module>
@@ -667,7 +671,6 @@
 				<module>spring-boot</module>
 				<module>spring-boot-admin</module>
 				<module>spring-boot-angular</module>
-				<module>spring-boot-angular-ecommerce</module>
 				<module>spring-boot-autoconfiguration</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-camel</module>
@@ -1141,6 +1144,8 @@
 				<module>core-java-modules/core-java-arrays</module>
 				<module>core-java-modules/core-java-arrays-2</module>
 				<module>core-java-modules/core-java-collections</module>
+				<module>core-java-modules/core-java-collections-2</module>
+				<module>core-java-modules/core-java-collections-3</module>
 				<module>core-java-modules/core-java-collections-list</module>
 				<module>core-java-modules/core-java-collections-list-2</module>
 				<module>core-java-modules/core-java-collections-list-3</module>
@@ -1262,6 +1267,8 @@
 				<module>libraries-data</module>
 				<module>libraries-data-2</module>
 				<module>libraries-apache-commons</module>
+				<module>libraries-apache-commons-collections</module>
+				<module>libraries-apache-commons-io</module>
 				<module>libraries-testing</module>
 				<module>libraries-security</module>
 				<module>libraries-server</module>
@@ -1381,7 +1388,6 @@
 				<module>spring-boot</module>
 				<module>spring-boot-admin</module>
 				<module>spring-boot-angular</module>
-				<module>spring-boot-angular-ecommerce</module>
 				<module>spring-boot-autoconfiguration</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-camel</module>
