@@ -21,7 +21,6 @@ public class SaxParserMain {
         System.out.println(baeldungHandler.getWebsite());
     }
 
-    //@ToString
     public static class BaeldungHandler extends DefaultHandler {
         private static final String ARTICLES = "articles";
         private static final String ARTICLE = "article";
@@ -75,7 +74,6 @@ public class SaxParserMain {
         }
     }
 
-    //@Data
     public static class Baeldung {
         private List<BaeldungArticle> articleList;
 
@@ -88,7 +86,6 @@ public class SaxParserMain {
         }
     }
 
-    //@Data
     public static class BaeldungArticle {
         private String title;
         private String content;
