@@ -3,7 +3,7 @@ package com.baeldung.gracefulshutdown;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = {"com.baeldung.gracefulshutdown"})
+@SpringBootApplication
 public class GracefulShutdownApplication {
 
     public static void main(String args[]) {
