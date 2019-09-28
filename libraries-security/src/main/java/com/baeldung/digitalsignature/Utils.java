@@ -13,7 +13,7 @@ public class Utils {
     private static final String SENDER_KEYSTORE = "sender_keystore.p12";
     private static final String SENDER_ALIAS = "senderKeyPair";
 
-    public static final String signingAlgorithm = "SHA256withRSA";
+    public static final String SIGNING_ALGORITHM = "SHA256withRSA";
 
     private static final String RECEIVER_KEYSTORE = "receiver_keystore.p12";
     private static final String RECEIVER_ALIAS = "receiverKeyPair";
