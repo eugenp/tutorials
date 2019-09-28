@@ -22,8 +22,8 @@ public class ComponentScanAnnotationFilterAppIntergrationTest {
     public void testBean() {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ComponentScanAnnotationFilterApp.class);
         List<String> beans = Arrays.stream(applicationContext.getBeanDefinitionNames())
-        .filter(bean-> !bean.contains("org.springframework") && !bean.contains("componentScanAnnotationFilterApp"))
-        .collect(Collectors.toList());
+            .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanAnnotationFilterApp"))
+            .collect(Collectors.toList());
         assertThat(beans.size(), equalTo(1));
         assertThat(beans.get(0), equalTo("elephant"));
     }
