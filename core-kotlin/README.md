@@ -1,4 +1,8 @@
-## Relevant articles:
+## Core Kotlin
+
+This module contains articles about core Kotlin.
+
+### Relevant articles:
 
 - [Introduction to the Kotlin Language](http://www.baeldung.com/kotlin)
 - [Guide to the “when{}” Block in Kotlin](http://www.baeldung.com/kotlin-when)
@@ -56,3 +60,4 @@
 - [Static Methods Behavior in Kotlin](https://www.baeldung.com/kotlin-static-methods)
 - [Inline Functions in Kotlin](https://www.baeldung.com/kotlin-inline-functions)
 - [Delegation Pattern in Kotlin](https://www.baeldung.com/kotlin-delegation-pattern)
+- More articles: [[next -->]](/core-kotlin-2)
