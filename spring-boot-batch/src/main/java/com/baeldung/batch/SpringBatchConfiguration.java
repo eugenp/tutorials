@@ -20,7 +20,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 
 import com.baeldung.batch.model.Book;
 import com.baeldung.batch.service.BookFieldSetMapper;
@@ -40,7 +39,7 @@ public class SpringBatchConfiguration {
     private StepBuilderFactory stepBuilderFactory;
 
     @Value("${file.input}")
-    private Resource input;
+    private FileSystemResource input;
 
     @Value("${file.output}")
     private FileSystemResource output;
@@ -49,6 +48,7 @@ public class SpringBatchConfiguration {
     public ItemReader<Book> itemReader() {
         FlatFileItemReaderBuilder<Book> builder = new FlatFileItemReaderBuilder<>();
         BookFieldSetMapper bookFieldSetMapper = new BookFieldSetMapper();
+        LOGGER.info("Configuring reader to input {}, {}", input.getPath(), input.exists());
         String[] tokens = { "bookname", "bookauthor" };
         return builder.name("bookItemReader")
             .resource(input)
@@ -62,7 +62,7 @@ public class SpringBatchConfiguration {
     public ItemWriter<Book> itemWriter() throws IOException {
         JsonFileItemWriterBuilder<Book> builder = new JsonFileItemWriterBuilder<>();
         JacksonJsonObjectMarshaller<Book> marshaller = new JacksonJsonObjectMarshaller<>();
-        LOGGER.info("Configuring writer to output {}", output.getPath());
+        LOGGER.info("Configuring writer to output {}, {}", output.getPath(), output.exists());
         return builder.name("bookItemWriter")
             .jsonObjectMarshaller(marshaller)
             .resource(output)
