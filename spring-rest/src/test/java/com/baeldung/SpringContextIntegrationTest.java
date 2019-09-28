@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.custom.CustomApplication;
+import com.baeldung.changeport.CustomApplication;
 import com.baeldung.produceimage.ImageApplication;
 import com.baeldung.propertyeditor.PropertyEditorApplication;
 import com.baeldung.responseheaders.ResponseHeadersApplication;

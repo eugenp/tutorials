@@ -116,12 +116,6 @@
             <version>${powermock.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.jmockit</groupId>
-            <artifactId>jmockit</artifactId>
-            <version>${jmockit.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -150,16 +144,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <argLine>
-                        -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
-                    </argLine>
-                    <disableXmlReport>true</disableXmlReport>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -176,7 +160,6 @@
         <assertj.version>3.6.1</assertj.version>
         <asspectj.version>1.8.9</asspectj.version>
         <powermock.version>2.0.0-RC.4</powermock.version>
-        <jmockit.version>1.44</jmockit.version>
         <avaitility.version>1.7.0</avaitility.version>
         <jmh-core.version>1.19</jmh-core.version>
         <jmh-generator.version>1.19</jmh-generator.version>

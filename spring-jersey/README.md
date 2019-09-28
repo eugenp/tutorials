@@ -1,4 +1,6 @@
-=========
+## Spring Jersey
+
+This module contains articles about Spring with Jersey
 
 ## REST API with Jersey & Spring Example Project
 - [REST API with Jersey and Spring](http://www.baeldung.com/jersey-rest-api-with-spring)

@@ -23,6 +23,7 @@
         <module>load-testing-comparison</module>
         <module>mockito</module>
         <module>mockito-2</module>
+        <module>hamcrest</module>
         <module>mocks</module>
         <module>mockserver</module>
         <module>parallel-tests-junit</module>

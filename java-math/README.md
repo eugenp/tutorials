@@ -9,3 +9,4 @@
 - [Calculate Percentage in Java](https://www.baeldung.com/java-calculate-percentage)
 - [Convert Latitude and Longitude to a 2D Point in Java](https://www.baeldung.com/java-convert-latitude-longitude)
 - [Debugging with Eclipse](https://www.baeldung.com/eclipse-debugging)
+- [Matrix Multiplication in Java](https://www.baeldung.com/java-matrix-multiplication)

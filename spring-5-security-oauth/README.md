@@ -1,3 +1,7 @@
+## Spring 5 Security OAuth
+
+This module contains articles about Spring 5 OAuth Security
+
 ## Relevant articles:
 
 - [Spring Security 5 – OAuth2 Login](http://www.baeldung.com/spring-security-5-oauth2-login)

@@ -1,3 +1,7 @@
+## Spring REST Simple
+
+This module contains articles about REST APIs in Spring
+
 ## Relevant articles:
 
 - [Guide to UriComponentsBuilder in Spring](http://www.baeldung.com/spring-uricomponentsbuilder)
