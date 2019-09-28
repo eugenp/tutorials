@@ -1,3 +1,7 @@
+## Spring Boot
+
+This module contains articles about Spring Boot
+
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 

@@ -1,3 +1,7 @@
+## XStream
+
+This module contains articles about XStream
+
 ## Relevant Articles:
 
 - [XStream User Guide: JSON](http://www.baeldung.com/xstream-json-processing)

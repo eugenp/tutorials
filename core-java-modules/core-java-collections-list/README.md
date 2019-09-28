@@ -12,3 +12,4 @@
 - [How to Find an Element in a List with Java](http://www.baeldung.com/find-list-element-java)
 - [Finding Max/Min of a List or Collection](http://www.baeldung.com/java-collection-min-max)
 - [Remove All Occurrences of a Specific Value from a List](https://www.baeldung.com/java-remove-value-from-list)
+- [Removing the First Element of an Array](https://www.baeldung.com/java-array-remove-first-element)
