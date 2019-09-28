@@ -36,7 +36,7 @@ class ProductUnitTest {
 
         Product nextPurchase = productsByName.get("Car");
 
-        assertEquals(null, nextPurchase);
+        assertNull(nextPurchase);
     }
 
     @Test
