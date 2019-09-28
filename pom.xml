@@ -684,17 +684,20 @@
 				<module>spring-boot-crud</module>
 				<module>spring-boot-ctx-fluent</module>
 				<module>spring-boot-custom-starter</module>
-				<module>spring-boot-disable-console-logging</module>
 				<!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
 				<module>spring-boot-jasypt</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-kotlin</module>
 				<module>spring-boot-logging-log4j2</module>
-				<module>spring-boot-management</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-mvc-birt</module>
-				<module>spring-boot-ops</module>
-				<module>spring-boot-ops-2</module>
+				<module>spring-boot-environment</module>
+				<module>spring-boot-deployment</module>
+				<module>spring-boot-runtime</module>
+				<module>spring-boot-runtime/disabling-console-jul</module>
+				<module>spring-boot-runtime/disabling-console-log4j2</module>
+				<module>spring-boot-runtime/disabling-console-logback</module>
+				<module>spring-boot-artifacts</module>
 				<module>spring-boot-rest</module>
 				<module>spring-boot-data</module>
 				<module>spring-boot-parent</module>
@@ -1404,16 +1407,19 @@
 				<module>spring-boot-crud</module>
 				<module>spring-boot-ctx-fluent</module>
 				<module>spring-boot-custom-starter</module>
-				<module>spring-boot-disable-console-logging</module>
 				<!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
 				<module>spring-boot-jasypt</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-logging-log4j2</module>
-				<module>spring-boot-management</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-mvc-birt</module>
-				<module>spring-boot-ops</module>
-				<module>spring-boot-ops-2</module>
+				<module>spring-boot-environment</module>
+				<module>spring-boot-deployment</module>
+				<module>spring-boot-runtime</module>
+				<module>spring-boot-runtime/disabling-console-jul</module>
+				<module>spring-boot-runtime/disabling-console-log4j2</module>
+				<module>spring-boot-runtime/disabling-console-logback</module>
+				<module>spring-boot-artifacts</module>
 				<module>spring-boot-rest</module>
 				<module>spring-boot-data</module>
 				<module>spring-boot-parent</module>
