@@ -469,7 +469,7 @@
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
                 <module>java-jdi</module>
-				<!-- <module>core-java/core-java-datetime</module>--> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
+				<!--<module>core-java-modules/core-java-datetime</module>--> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
 				<!--<module>java-dates</module>-->
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
                 <module>java-lite</module>

@@ -16,6 +16,7 @@
 	</parent>
 
 	<modules>
+		<module>java-dates-computations</module>
 		<module>java-dates-conversion</module>
 		<module>java-dates-string</module>
 	</modules>
