@@ -7,3 +7,4 @@
 - [Heap Sort in Java](https://www.baeldung.com/java-heap-sort)
 - [Shell Sort in Java](https://www.baeldung.com/java-shell-sort)
 - [Counting Sort in Java](https://www.baeldung.com/java-counting-sort)
+- [How an In-Place Sorting Algorithm Works](https://www.baeldung.com/java-in-place-sorting)
