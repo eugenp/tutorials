@@ -54,6 +54,21 @@
             <version>1.1.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh-generator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-bytecode</artifactId>
+            <version>${jmh-generator.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -73,5 +88,7 @@
         <commons-collections4.version>4.3</commons-collections4.version>
         <guava.version>28.0-jre</guava.version>
         <retrofit.version>2.6.0</retrofit.version>
+        <jmh-core.version>1.19</jmh-core.version>
+        <jmh-generator.version>1.19</jmh-generator.version>
     </properties>
 </project>

@@ -1,3 +1,7 @@
+## Spring Boot MVC
+
+This module contains articles about Spring Web MVC in Spring Boot projects.
+
 ### Relevant Articles:
 
 - [Guide to the Favicon in Spring Boot](http://www.baeldung.com/spring-boot-favicon)
@@ -14,3 +18,4 @@
 - [Accessing Spring MVC Model Objects in JavaScript](https://www.baeldung.com/spring-mvc-model-objects-js)
 - [Using Spring ResponseEntity to Manipulate the HTTP Response](http://www.baeldung.com/spring-response-entity)
 - [Spring Bean Annotations](http://www.baeldung.com/spring-bean-annotations)
+- More articles: [[next -->]](/spring-boot-mvc-2)

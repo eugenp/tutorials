@@ -1,5 +1,6 @@
-This module is for Spring Security Thymeleaf tutorial.
-Jira BAEL-1556
+## Spring Security Thymeleaf
+
+This module contains articles about Spring Security with Thymeleaf
 
 ### Relevant Articles: 
 
