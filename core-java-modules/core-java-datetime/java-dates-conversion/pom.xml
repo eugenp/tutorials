@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>java-dates-conversion</artifactId>
     <version>${project.parent.version}</version>
-    <name>java-dates</name>
+    <name>java-dates-conversion</name>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-java</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-java</relativePath>
+        <relativePath>../../parent-java</relativePath>
     </parent>
 
     <dependencies>
@@ -39,7 +39,7 @@
     </dependencies>
 
     <build>
-        <finalName>java-dates</finalName>
+        <finalName>java-dates-conversion</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
