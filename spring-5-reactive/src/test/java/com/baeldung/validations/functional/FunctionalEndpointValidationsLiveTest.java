@@ -11,7 +11,7 @@ import com.baeldung.validations.functional.model.CustomRequestEntity;
 
 import reactor.core.publisher.Mono;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class FunctionalEndpointValidationsLiveTest {
 
     private static final String BASE_URL = "http://localhost:8080";
