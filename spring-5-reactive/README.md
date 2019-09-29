@@ -18,7 +18,6 @@ The "REST With Spring" Classes: https://bit.ly/restwithspring
 - [Server-Sent Events in Spring](https://www.baeldung.com/spring-server-sent-events)
 - [A Guide to Spring Session Reactive Support: WebSession](https://www.baeldung.com/spring-session-reactive)
 
-- [Logging a Reactive Sequence](https://www.baeldung.com/spring-reactive-sequence-logging)
 - [Testing Reactive Streams Using StepVerifier and TestPublisher](https://www.baeldung.com/reactive-streams-step-verifier-test-publisher)
 - [Debugging Reactive Streams in Spring 5](https://www.baeldung.com/spring-debugging-reactive-streams)
 - [Static Content in Spring WebFlux](https://www.baeldung.com/spring-webflux-static-content)
