@@ -1,6 +1,6 @@
 ## Hibernate Mapping
 
-This module contains articles about Object-Relational Mapping with Hibernate.
+This module contains articles about Object-relational Mapping (ORM) with Hibernate.
 
 ### Relevant Articles: 
 
