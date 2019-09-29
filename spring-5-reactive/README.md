@@ -17,6 +17,4 @@ The "REST With Spring" Classes: https://bit.ly/restwithspring
 - [Handling Errors in Spring WebFlux](https://www.baeldung.com/spring-webflux-errors)
 - [Server-Sent Events in Spring](https://www.baeldung.com/spring-server-sent-events)
 - [A Guide to Spring Session Reactive Support: WebSession](https://www.baeldung.com/spring-session-reactive)
-
-- [Static Content in Spring WebFlux](https://www.baeldung.com/spring-webflux-static-content)
 - More articles: [[next -->]](/spring-5-reactive-2)
