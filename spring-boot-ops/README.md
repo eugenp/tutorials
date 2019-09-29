@@ -12,3 +12,4 @@
  - [Programmatically Restarting a Spring Boot Application](https://www.baeldung.com/java-restart-spring-boot-app)
  - [Spring Properties File Outside jar](https://www.baeldung.com/spring-properties-file-outside-jar)
  - [EnvironmentPostProcessor in Spring Boot](https://www.baeldung.com/spring-boot-environmentpostprocessor)
+ - [Running a Spring Boot App with Maven vs an Executable War/Jar](https://www.baeldung.com/spring-boot-run-maven-vs-executable-jar)
