@@ -1,6 +1,6 @@
-=========
-
 ## Java Dates Parsing and Formatting Cookbooks and Examples
+
+This module contains articles about parsing and formatting Java date and time objects.
 
 ### Relevant Articles: 
 - [Check If a String Is a Valid Date in Java](https://www.baeldung.com/java-string-valid-date)
