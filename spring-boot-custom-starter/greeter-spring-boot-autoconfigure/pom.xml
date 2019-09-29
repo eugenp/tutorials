@@ -68,7 +68,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
         <greeter.version>0.0.1-SNAPSHOT</greeter.version>
-        
     </properties>
 
 </project>

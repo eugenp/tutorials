@@ -208,7 +208,6 @@
     <properties>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <json-path.version>2.4.0</json-path.version>
-
     </properties>
 
 </project>

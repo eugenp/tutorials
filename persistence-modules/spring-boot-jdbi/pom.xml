@@ -16,12 +16,6 @@
 		<relativePath>../../pom.xml</relativePath>
 	</parent>
 
-
-	<properties>
-		<java.version>1.8</java.version>
-		<jdbi.version>3.9.1</jdbi.version>
-	</properties>
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -31,40 +25,32 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-
 			<dependency>
 				<groupId>org.jdbi</groupId>
 				<artifactId>jdbi3-spring4</artifactId>
 				<version>${jdbi.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.jdbi</groupId>
 				<artifactId>jdbi3-sqlobject</artifactId>
 				<version>${jdbi.version}</version>
 			</dependency>
-
 		</dependencies>
 	</dependencyManagement>
-
 
 	<dependencies>		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.jdbi</groupId>
 			<artifactId>jdbi3-spring4</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.jdbi</groupId>
 			<artifactId>jdbi3-sqlobject</artifactId>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -91,8 +77,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-
 	</dependencies>
 
 	<build>
@@ -103,5 +87,10 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<jdbi.version>3.9.1</jdbi.version>
+	</properties>
 
 </project>
