@@ -1,4 +1,6 @@
-## Spring REST Angular Example Project
+## Spring REST Angular
+
+This module contains articles about REST APIs with Spring and Angular
 
 ### Relevant Articles:
 

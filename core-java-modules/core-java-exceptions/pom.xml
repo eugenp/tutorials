@@ -26,10 +26,30 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>${commons-lang3.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.openjdk.jmh</groupId>
+			<artifactId>jmh-core</artifactId>
+			<version>${jmh-core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjdk.jmh</groupId>
+			<artifactId>jmh-generator-annprocess</artifactId>
+			<version>${jmh-generator-annprocess.version}</version>
+		</dependency>
+		<!-- test scoped -->
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>${assertj-core.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<properties>
 		<commons-lang3.version>3.9</commons-lang3.version>
+		<jmh-core.version>1.19</jmh-core.version>
+		<assertj-core.version>3.10.0</assertj-core.version>
+		<jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
 	</properties>
 
 </project>

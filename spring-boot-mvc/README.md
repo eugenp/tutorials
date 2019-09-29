@@ -1,3 +1,7 @@
+## Spring Boot MVC
+
+This module contains articles about Spring Web MVC in Spring Boot projects.
+
 ### Relevant Articles:
 
 - [Guide to the Favicon in Spring Boot](http://www.baeldung.com/spring-boot-favicon)
@@ -12,3 +16,6 @@
 - [Setting Up Swagger 2 with a Spring REST API](http://www.baeldung.com/swagger-2-documentation-for-spring-rest-api)
 - [Conditionally Enable Scheduled Jobs in Spring](https://www.baeldung.com/spring-scheduled-enabled-conditionally)
 - [Accessing Spring MVC Model Objects in JavaScript](https://www.baeldung.com/spring-mvc-model-objects-js)
+- [Using Spring ResponseEntity to Manipulate the HTTP Response](http://www.baeldung.com/spring-response-entity)
+- [Spring Bean Annotations](http://www.baeldung.com/spring-bean-annotations)
+- More articles: [[next -->]](/spring-boot-mvc-2)

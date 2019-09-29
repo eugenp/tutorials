@@ -1,5 +1,4 @@
 ### Relevant Articles:
-- [The Basics of JUnit 5 – A Preview](http://www.baeldung.com/junit-5-preview)
 - [A Guide to JUnit 5](http://www.baeldung.com/junit-5)
 - [JUnit5 @RunWith](http://www.baeldung.com/junit-5-runwith)
 - [Get the Path of the /src/test/resources Directory in JUnit](https://www.baeldung.com/junit-src-test-resources-directory-path)
@@ -9,3 +8,4 @@
 - [JUnit 5 @Test Annotation](http://www.baeldung.com/junit-5-test-annotation)
 - [Migrating from JUnit 4 to JUnit 5](http://www.baeldung.com/junit-5-migration)
 - [Assert an Exception is Thrown in JUnit 4 and 5](http://www.baeldung.com/junit-assert-exception)
+- [The Difference Between Failure and Error in JUnit](https://www.baeldung.com/junit-failure-vs-error)
