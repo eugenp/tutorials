@@ -11,3 +11,4 @@
 - [Java CyclicBarrier vs CountDownLatch](https://www.baeldung.com/java-cyclicbarrier-countdownlatch)
 - [Guide to the Fork/Join Framework in Java](https://www.baeldung.com/java-fork-join)
 - [Guide to ThreadLocalRandom in Java](https://www.baeldung.com/java-thread-local-random)
+- [The Thread.join() Method in Java](https://www.baeldung.com/java-thread-join)
