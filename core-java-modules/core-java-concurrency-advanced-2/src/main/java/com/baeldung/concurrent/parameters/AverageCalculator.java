@@ -1,4 +1,4 @@
-package com.baeldung.concurrent.parameter;
+package com.baeldung.concurrent.parameters;
 
 import java.util.concurrent.Callable;
 import java.util.stream.IntStream;

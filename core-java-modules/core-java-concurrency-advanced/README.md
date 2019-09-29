@@ -13,5 +13,3 @@
 - [An Introduction to Atomic Variables in Java](https://www.baeldung.com/java-atomic-variables)
 - [CyclicBarrier in Java](https://www.baeldung.com/java-cyclic-barrier)
 - [Guide to the Volatile Keyword in Java](https://www.baeldung.com/java-volatile)
-
-- [Passing Parameters to Java Threads](https://www.baeldung.com/java-thread-parameters)
