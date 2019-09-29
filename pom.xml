@@ -584,6 +584,7 @@
 				
 				<module>spring-boot-nashorn</module>
 				<module>java-blockchain</module>
+				<module>gs-spring-boot-wildfly</module>
 			
 			</modules>
 
