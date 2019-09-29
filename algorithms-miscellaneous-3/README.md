@@ -9,3 +9,4 @@
 - [A Guide to the Folding Technique in Java](https://www.baeldung.com/folding-hashing-technique)
 - [Creating a Triangle with for Loops in Java](https://www.baeldung.com/java-print-triangle)
 - [Interpolation Search in Java](https://www.baeldung.com/java-interpolation-search)
+- [The K-Means Clustering Algorithm in Java](https://www.baeldung.com/java-k-means-clustering-algorithm)
