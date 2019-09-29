@@ -5,3 +5,4 @@
 - [Deploy a Spring Boot Application to Google App Engine](https://www.baeldung.com/spring-boot-google-app-engine)
 - [Deploy a Spring Boot Application to OpenShift](https://www.baeldung.com/spring-boot-deploy-openshift)
 - [Deploy a Spring Boot Application to AWS Beanstalk](https://www.baeldung.com/spring-boot-deploy-aws-beanstalk)
+- [Guide to @SpringBootConfiguration in Spring Boot](https://www.baeldung.com/springbootconfiguration-annotation)
