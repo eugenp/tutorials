@@ -14,7 +14,6 @@
 - [CyclicBarrier in Java](https://www.baeldung.com/java-cyclic-barrier)
 - [Guide to the Volatile Keyword in Java](https://www.baeldung.com/java-volatile)
 
-- [Priority-based Job Scheduling in Java](https://www.baeldung.com/java-priority-job-schedule)
 - [Brief Introduction to Java Thread.yield()](https://www.baeldung.com/java-thread-yield)
 - [Print Even and Odd Numbers Using 2 Threads](https://www.baeldung.com/java-even-odd-numbers-with-2-threads)
 - [Java CyclicBarrier vs CountDownLatch](https://www.baeldung.com/java-cyclicbarrier-countdownlatch)
