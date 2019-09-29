@@ -41,3 +41,5 @@
 - [List Files in a Directory in Java](https://www.baeldung.com/java-list-directory-files)
 - [Java InputStream to Byte Array and ByteBuffer](https://www.baeldung.com/convert-input-stream-to-array-of-bytes)
 - [Introduction to the Java NIO Selector](https://www.baeldung.com/java-nio-selector)
+- [How to Avoid the Java FileNotFoundException When Loading Resources](https://www.baeldung.com/java-classpath-resource-cannot-be-opened)
+
