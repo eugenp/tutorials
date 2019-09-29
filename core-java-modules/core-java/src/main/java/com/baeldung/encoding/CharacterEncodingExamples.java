@@ -1,10 +1,9 @@
 package com.baeldung.encoding;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
 
 public class CharacterEncodingExamples {
 
@@ -28,5 +27,16 @@ public class CharacterEncodingExamples {
             buffer.append(" ");
         }
         return buffer.toString();
+    }
+
+    static String decodeText(String input, Charset charset, CodingErrorAction codingErrorAction) throws IOException {
+        CharsetDecoder charsetDecoder = charset.newDecoder();
+        charsetDecoder.onMalformedInput(codingErrorAction);
+        return new BufferedReader(
+                new InputStreamReader(
+                        new ByteArrayInputStream(input.getBytes()),
+                        charsetDecoder))
+                .readLine();
+
     }
 }

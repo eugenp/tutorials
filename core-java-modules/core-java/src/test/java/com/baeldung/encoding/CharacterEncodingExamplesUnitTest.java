@@ -1,9 +1,21 @@
 package com.baeldung.encoding;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+
+import static java.nio.file.Files.newInputStream;
 
 public class CharacterEncodingExamplesUnitTest {
 
@@ -56,6 +68,49 @@ public class CharacterEncodingExamplesUnitTest {
         Assert.assertEquals(
           CharacterEncodingExamples.convertToBinary("語", "UTF-32"), 
           "0 0 10001010 10011110 ");
+    }
+
+    @Test
+    public void givenUTF8String_decodeByUS_ASCII_ReplaceMalformedInputSequence() throws IOException {
+        String input = "The façade pattern is a software design pattern.";
+        Assertions.assertEquals(CharacterEncodingExamples.decodeText(input, StandardCharsets.US_ASCII, CodingErrorAction.REPLACE),
+                "The fa��ade pattern is a software design pattern.");
+    }
+
+    @Test
+    public void givenUTF8String_decodeByUS_ASCII_IgnoreMalformedInputSequence() throws IOException {
+        String input = "The façade pattern is a software design pattern.";
+        Assertions.assertEquals(
+                CharacterEncodingExamples.decodeText(input, StandardCharsets.US_ASCII, CodingErrorAction.IGNORE),
+                "The faade pattern is a software design pattern.");
+    }
+
+    @Test
+    public void givenUTF8String_decodeByUS_ASCII_ReportMalformedInputSequence() {
+        String input = "The façade pattern is a software design pattern.";
+        Assertions.assertThrows(MalformedInputException.class,
+                () -> CharacterEncodingExamples.decodeText(input, StandardCharsets.US_ASCII, CodingErrorAction.REPORT));
+    }
+
+    @Test
+    public void givenTextFile_FindSuitableCandidateEncodings() {
+        Path path = Paths.get("src/test/resources/encoding.txt");
+        List<Charset> allCandidateCharSets = Arrays.asList(StandardCharsets.US_ASCII, StandardCharsets.UTF_8, StandardCharsets.ISO_8859_1);
+        List<Charset> suitableCharsets = new ArrayList<>();
+        allCandidateCharSets.forEach(charset -> {
+            try {
+                CharsetDecoder charsetDecoder = charset.newDecoder().onMalformedInput(CodingErrorAction.REPORT);
+                Reader reader = new InputStreamReader(newInputStream(path), charsetDecoder);
+                BufferedReader bufferedReader = new BufferedReader(reader);
+                while (bufferedReader.readLine() != null) {
+                }
+                suitableCharsets.add(charset);
+            } catch (MalformedInputException ignored) {
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        Assertions.assertEquals(suitableCharsets, Arrays.asList(StandardCharsets.UTF_8, StandardCharsets.ISO_8859_1));
     }
 
 }
