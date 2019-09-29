@@ -28,6 +28,7 @@ public class ConsumerDebuggingApplication {
         http.authorizeExchange()
             .anyExchange()
             .permitAll();
+        http.csrf().disable();
         return http.build();
     }
 }

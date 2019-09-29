@@ -2,10 +2,7 @@ package com.baeldung.debugging.consumer.model;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import org.springframework.data.annotation.Id;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +13,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Foo {
 
-    @Id
     private Integer id;
     private String formattedName;
     private Integer quantity;
