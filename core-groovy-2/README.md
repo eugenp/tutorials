@@ -9,3 +9,4 @@
 - [Working with XML in Groovy](https://www.baeldung.com/groovy-xml)
 - [Integrating Groovy into Java Applications](https://www.baeldung.com/groovy-java-applications)
 - [Concatenate Strings with Groovy](https://www.baeldung.com/groovy-concatenate-strings)
+- [Metaprogramming in Groovy](https://www.baeldung.com/groovy-metaprogramming)
