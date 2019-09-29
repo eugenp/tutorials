@@ -1,2 +1,4 @@
 
-This is an aggregator module for JHipster 5 modules.
+### Relevant Articles:
+
+- [JHipster Authentication with an External Service](https://www.baeldung.com/jhipster-authentication-external-service)
