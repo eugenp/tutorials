@@ -19,6 +19,7 @@
         <module>gatling</module>
         <module>groovy-spock</module>
         <module>junit-5</module>
+        <module>junit5-annotations</module>
         <module>junit5-migration</module>
         <module>load-testing-comparison</module>
         <module>mockito</module>
