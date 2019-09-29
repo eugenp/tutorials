@@ -20,6 +20,16 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh-generator-annprocess.version}</version>
+        </dependency>
         
         <dependency>
             <groupId>org.assertj</groupId>
@@ -40,6 +50,9 @@
     </build>
 
     <properties>
+        <jmh-core.version>1.19</jmh-core.version>
+        <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
+        
         <assertj.version>3.6.1</assertj.version>
     </properties>
 

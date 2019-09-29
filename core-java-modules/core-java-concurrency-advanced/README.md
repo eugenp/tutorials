@@ -14,6 +14,5 @@
 - [CyclicBarrier in Java](https://www.baeldung.com/java-cyclic-barrier)
 - [Guide to the Volatile Keyword in Java](https://www.baeldung.com/java-volatile)
 
-- [Guide to ThreadLocalRandom in Java](https://www.baeldung.com/java-thread-local-random)
 - [The Thread.join() Method in Java](https://www.baeldung.com/java-thread-join)
 - [Passing Parameters to Java Threads](https://www.baeldung.com/java-thread-parameters)
