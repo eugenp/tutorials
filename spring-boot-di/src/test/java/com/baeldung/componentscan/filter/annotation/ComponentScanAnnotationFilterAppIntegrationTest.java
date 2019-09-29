@@ -1,4 +1,4 @@
-package com.baeldung.componentscan.filter.assignable;
+package com.baeldung.componentscan.filter.annotation;
 
 import static org.junit.Assert.assertThat;
 
@@ -15,17 +15,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.hamcrest.CoreMatchers.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ComponentScanAssignableTypeFilterApp.class)
-public class ComponentScanAssignableTypeFilterAppIntergrationTest {
+@SpringBootTest(classes = ComponentScanAnnotationFilterApp.class)
+public class ComponentScanAnnotationFilterAppIntegrationTest {
 
     @Test
     public void testBean() {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ComponentScanAssignableTypeFilterApp.class);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ComponentScanAnnotationFilterApp.class);
         List<String> beans = Arrays.stream(applicationContext.getBeanDefinitionNames())
-            .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanAssignableTypeFilterApp"))
+            .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanAnnotationFilterApp"))
             .collect(Collectors.toList());
-        assertThat(beans.size(), equalTo(2));
-        assertThat(beans.contains("cat"), equalTo(true));
-        assertThat(beans.contains("elephant"), equalTo(true));
+        assertThat(beans.size(), equalTo(1));
+        assertThat(beans.get(0), equalTo("elephant"));
     }
 }

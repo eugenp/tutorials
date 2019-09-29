@@ -1,4 +1,4 @@
-package com.baeldung.componentscan.filter.regex;
+package com.baeldung.componentscan.filter.assignable;
 
 import static org.junit.Assert.assertThat;
 
@@ -15,14 +15,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.hamcrest.CoreMatchers.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ComponentScanRegexFilterApp.class)
-public class ComponentScanRegexFilterAppIntergrationTest {
+@SpringBootTest(classes = ComponentScanAssignableTypeFilterApp.class)
+public class ComponentScanAssignableTypeFilterAppIntegrationTest {
 
     @Test
     public void testBean() {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ComponentScanRegexFilterApp.class);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ComponentScanAssignableTypeFilterApp.class);
         List<String> beans = Arrays.stream(applicationContext.getBeanDefinitionNames())
-            .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanRegexFilterApp"))
+            .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanAssignableTypeFilterApp"))
             .collect(Collectors.toList());
         assertThat(beans.size(), equalTo(2));
         assertThat(beans.contains("cat"), equalTo(true));

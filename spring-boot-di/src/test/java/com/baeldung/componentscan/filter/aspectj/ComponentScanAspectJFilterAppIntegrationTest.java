@@ -1,4 +1,4 @@
-package com.baeldung.componentscan.filter.custom;
+package com.baeldung.componentscan.filter.aspectj;
 
 import static org.junit.Assert.assertThat;
 
@@ -15,16 +15,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.hamcrest.CoreMatchers.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ComponentScanCustomFilterApp.class)
-public class ComponentScanCustomFilterAppIntergrationTest {
+@SpringBootTest(classes = ComponentScanAspectJFilterApp.class)
+public class ComponentScanAspectJFilterAppIntegrationTest {
 
     @Test
     public void testBean() {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ComponentScanCustomFilterApp.class);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ComponentScanAspectJFilterApp.class);
         List<String> beans = Arrays.stream(applicationContext.getBeanDefinitionNames())
             .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanCustomFilterApp"))
             .collect(Collectors.toList());
         assertThat(beans.size(), equalTo(1));
-        assertThat(beans.get(0), equalTo("cat"));
+        assertThat(beans.get(0), equalTo("elephant"));
     }
 }
