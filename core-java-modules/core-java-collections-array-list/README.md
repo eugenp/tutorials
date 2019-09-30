@@ -1,6 +1,6 @@
-=========
+## Core Java Collections ArrayList
 
-## Core Java Collections Array List Cookbooks and Examples
+This module contains articles about the Java ArrayList collection
 
 ### Relevant Articles: 
 - [Immutable ArrayList in Java](http://www.baeldung.com/java-immutable-list)
