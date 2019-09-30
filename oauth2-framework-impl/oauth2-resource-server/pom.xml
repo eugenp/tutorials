@@ -18,13 +18,14 @@
         <httpsPort>8643</httpsPort>
         <jwt.issuer>http://localhost:9080</jwt.issuer>
         <jwt.resourceId>http://localhost:9280</jwt.resourceId>
+        <microprofile-jwt-auth-api.version>1.1</microprofile-jwt-auth-api.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.eclipse.microprofile.jwt</groupId>
             <artifactId>microprofile-jwt-auth-api</artifactId>
-            <version>1.1</version>
+            <version>${microprofile-jwt-auth-api.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

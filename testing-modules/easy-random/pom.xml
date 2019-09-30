@@ -17,8 +17,12 @@
         <dependency>
             <groupId>org.jeasy</groupId>
             <artifactId>easy-random-core</artifactId>
-            <version>4.0.0</version>
+            <version>${easy-random-core.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <easy-random-core.version>4.0.0</easy-random-core.version>
+    </properties>
 
 </project>

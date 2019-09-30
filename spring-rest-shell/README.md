@@ -1,4 +1,6 @@
-## Spring REST Shell Project
+## Spring REST Shell
+
+This module contains articles about Spring REST Shell
 
 ### Relevant Articles
 

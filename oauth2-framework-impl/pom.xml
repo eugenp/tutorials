@@ -15,19 +15,21 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <openliberty.version>RELEASE</openliberty.version>
         <openliberty.maven.version>2.6.4</openliberty.maven.version>
+        <javaee-web-api.version>8.0</javaee-web-api.version>
+        <microprofile-config-api.version>1.3</microprofile-config-api.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
-            <version>8.0</version>
+            <version>${javaee-web-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.microprofile.config</groupId>
             <artifactId>microprofile-config-api</artifactId>
-            <version>1.3</version>
+            <version>${microprofile-config-api.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
