@@ -1,5 +1,3 @@
-=========
-
 ## Spring General Example Project
 
 This project is used to replicate Spring Exceptions only.
