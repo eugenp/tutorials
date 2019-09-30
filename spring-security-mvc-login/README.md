@@ -1,8 +1,8 @@
-=========
+## Spring Security Login
 
-## Spring Security Login Example Project
+This module contains articles about login mechanisms with Spring Security
 
-###The Course
+### The Course
 The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 

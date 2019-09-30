@@ -1,3 +1,7 @@
+## Static Analysis
+
+This module contains articles about static program analysis
+
 ## Relevant articles:
 
 - [Introduction to PMD](http://www.baeldung.com/pmd)

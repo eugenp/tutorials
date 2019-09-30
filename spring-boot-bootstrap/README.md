@@ -1,3 +1,7 @@
+## Spring Boot Bootstrap
+
+This module contains articles about bootstrapping Spring Boot applications.
+
 ### Relevant Articles:
 - [Spring Boot Tutorial – Bootstrap a Simple Application](http://www.baeldung.com/spring-boot-start)
 - [Thin JARs with Spring Boot](http://www.baeldung.com/spring-boot-thin-jar)

@@ -1,3 +1,7 @@
+## Spring Boot Admin
+
+This module contains articles about Spring Boot Admin
+
 ## 1. Spring Boot Admin Server
 
 * mvn clean install

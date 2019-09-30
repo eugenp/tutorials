@@ -1,3 +1,7 @@
+## Spring Activiti
+
+This module contains articles about Spring with Activiti 
+
 ### Relevant articles
 
 - [A Guide to Activiti with Java](http://www.baeldung.com/java-activiti)
