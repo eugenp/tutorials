@@ -1,17 +1,18 @@
 package com.baeldung.dirtiescontext;
 
-import org.junit.FixMethodOrder;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.MethodMode;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-@RunWith(SpringJUnit4ClassRunner.class)
+@TestMethodOrder(OrderAnnotation.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = SpringDataRestApplication.class)
 class DirtiesContextIntegrationTest {
 
@@ -19,26 +20,30 @@ class DirtiesContextIntegrationTest {
     protected UserCache userCache;
 
     @Test
-    void testA() {
+    @Order(1)
+    void addJaneDoeAndPrintCache() {
         userCache.addUser("Jane Doe");
-        userCache.printUserList("Test A");
+        userCache.printUserList("addJaneDoeAndPrintCache");
     }
 
     @Test
-    void testB() {
-        userCache.printUserList("Test B");
+    @Order(2)
+    void printCache() {
+        userCache.printUserList("printCache");
     }
 
     @DirtiesContext(methodMode = MethodMode.AFTER_METHOD)
     @Test
-    void testC() {
+    @Order(3)
+    void addJohnDoeAndPrintCache() {
         userCache.addUser("John Doe");
-        userCache.printUserList("Test C");
+        userCache.printUserList("addJohnDoeAndPrintCache");
     }
 
     @Test
-    void testD() {
-        userCache.printUserList("Test D");
+    @Order(4)
+    void printCacheAgain() {
+        userCache.printUserList("printCacheAgain");
     }
 
 }
