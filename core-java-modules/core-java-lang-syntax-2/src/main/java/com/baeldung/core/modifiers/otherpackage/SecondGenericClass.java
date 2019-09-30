@@ -5,7 +5,7 @@ import com.baeldung.core.modifiers.FirstClass;
 
 public class SecondGenericClass {
 
-    // error demonstration
+    // uncomment the following lines to see the errors
     public static void main(String[] args) {
         // accessing protected constructor
         // FirstClass first = new FirstClass("random name");
