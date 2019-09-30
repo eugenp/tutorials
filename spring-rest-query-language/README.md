@@ -1,8 +1,9 @@
-=========
+## Spring REST Query Language
 
-## REST Example Project Query Language
+This module contains articles about the REST query language with Spring
 
 ### Courses
+
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
@@ -16,14 +17,10 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [REST Query Language with RSQL](http://www.baeldung.com/rest-api-search-language-rsql-fiql)
 - [REST Query Language – Implementing OR Operation](http://www.baeldung.com/rest-api-query-search-or-operation)
 
-
-
-
 ### Build the Project
 ```
 mvn clean install
 ```
-
 
 ### Set up MySQL
 ```

@@ -1,6 +1,6 @@
-=========
+## Spring Thymeleaf 
 
-## Spring Thymeleaf Example Project
+This module contains articles about Spring with Thymeleaf
 
 ### Relevant Articles: 
 - [Introduction to Using Thymeleaf in Spring](http://www.baeldung.com/thymeleaf-in-spring-mvc)
@@ -19,13 +19,14 @@
 - [Working with Select and Option in Thymeleaf](http://www.baeldung.com/thymeleaf-select-option)
 - [Working With Custom HTML Attributes in Thymeleaf](https://www.baeldung.com/thymeleaf-custom-html-attributes)
 - [Spring Request Parameters with Thymeleaf](https://www.baeldung.com/spring-thymeleaf-request-parameters)
+- [[next -->]](/spring-thymeleaf-2)
 
 ### Build the Project
 
 mvn clean install
 
-
 ### Run the Project
+
 mvn cargo:run
 - **note**: starts on port '8082'
 

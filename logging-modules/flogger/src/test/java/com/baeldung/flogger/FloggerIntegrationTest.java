@@ -12,6 +12,10 @@ import java.util.stream.IntStream;
 import static com.google.common.flogger.LazyArgs.lazy;
 
 public class FloggerIntegrationTest {
+    static {
+//        System.setProperty("flogger.backend_factory", "com.google.common.flogger.backend.log4j.Log4jBackendFactory#getInstance");
+        System.setProperty("flogger.backend_factory", "com.google.common.flogger.backend.slf4j.Slf4jBackendFactory#getInstance");
+    }
     private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
     @Test
@@ -26,6 +30,16 @@ public class FloggerIntegrationTest {
         IntStream.range(0, 1_000_0000).forEach(value -> {
             logger.atInfo().atMostEvery(10, TimeUnit.SECONDS).log("This log shows [every 10 seconds] => %d", value);
         });
+    }
+
+    @Test
+    public void givenAnObject_shouldLogTheObject() {
+        User user = new User();
+        logger.atInfo().log("The user is: %s", user); //correct
+
+        //The following ways of logging are not recommended
+        logger.atInfo().log("The user is: %s", user.toString());
+        logger.atInfo().log("The user is: %s" + user);
     }
 
     @Test
@@ -69,5 +83,14 @@ public class FloggerIntegrationTest {
         int items = 110;
         int s = 30;
         return String.format("%d seconds elapsed so far. %d items pending processing", s, items);
+    }
+
+    private class User {
+        String name = "Test";
+
+        @Override
+        public String toString() {
+            return name;
+        }
     }
 }
