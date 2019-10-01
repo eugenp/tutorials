@@ -1,4 +1,6 @@
-## Spring LDAP Example Project
+## Spring LDAP
+
+This module contains articles about Spring LDAP
 
 ### Relevant articles
 
