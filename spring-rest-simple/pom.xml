@@ -180,6 +180,11 @@
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-core</artifactId>
+            <version>1.1.44</version>
+        </dependency>
     </dependencies>
 
     <build>
