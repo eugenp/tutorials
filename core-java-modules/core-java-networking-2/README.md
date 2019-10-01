@@ -1,3 +1,7 @@
+## Core Java Networking (Part 2)
+
+This module contains articles about core Java networking
+
 ### Relevant Articles
 
 - [Checking if a URL Exists in Java](https://www.baeldung.com/java-check-url-exists)
@@ -5,3 +9,4 @@
 - [Using Curl in Java](https://www.baeldung.com/java-curl)
 - [Do a Simple HTTP Request in Java](http://www.baeldung.com/java-http-request)
 - [Sending Emails with Java](http://www.baeldung.com/java-email)
+- [[<-- Prev]](/core-java-modules/core-java-networking)

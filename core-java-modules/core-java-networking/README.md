@@ -1,6 +1,6 @@
-=========
-
 ## Core Java Networking
+
+This module contains articles about core Java networking
 
 ### Relevant Articles
 
@@ -14,3 +14,4 @@
 - [Guide to Java URL Encoding/Decoding](http://www.baeldung.com/java-url-encoding-decoding)
 - [Difference between URL and URI](http://www.baeldung.com/java-url-vs-uri)
 - [Read an InputStream using the Java Server Socket](https://www.baeldung.com/java-inputstream-server-socket)
+- [[More -->]](/core-java-modules/core-java-networking-2)
