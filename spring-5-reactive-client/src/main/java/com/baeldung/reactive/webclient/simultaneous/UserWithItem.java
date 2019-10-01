@@ -1,4 +1,4 @@
-package com.baeldung.reactive.simultaneouswebclient;
+package com.baeldung.reactive.webclient.simultaneous;
 
 public class UserWithItem {
     private User user;

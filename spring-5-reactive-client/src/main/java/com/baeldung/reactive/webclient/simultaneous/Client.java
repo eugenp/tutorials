@@ -1,4 +1,4 @@
-package com.baeldung.reactive.simultaneouswebclient;
+package com.baeldung.reactive.webclient.simultaneous;
 
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -16,24 +16,21 @@ public class Client {
     }
 
     public Mono<User> getUser(int id) {
-        return webClient
-            .get()
+        return webClient.get()
             .uri("/user/{id}", id)
             .retrieve()
             .bodyToMono(User.class);
     }
 
     public Mono<Item> getItem(int id) {
-        return webClient
-            .get()
+        return webClient.get()
             .uri("/item/{id}", id)
             .retrieve()
             .bodyToMono(Item.class);
     }
 
     public Mono<User> getOtherUser(int id) {
-        return webClient
-            .get()
+        return webClient.get()
             .uri("/otheruser/{id}", id)
             .retrieve()
             .bodyToMono(User.class);
@@ -45,7 +42,7 @@ public class Client {
             .runOn(Schedulers.elastic())
             .flatMap(this::getUser)
             .collectSortedList((u1, u2) -> u2.id() - u1.id())
-          .block();
+            .block();
     }
 
     public List<User> fetchUserAndOtherUser(int id) {
@@ -61,6 +58,6 @@ public class Client {
         Mono<Item> item = getItem(itemId).subscribeOn(Schedulers.elastic());
 
         return Mono.zip(user, item, UserWithItem::new)
-          .block();
+            .block();
     }
 }

@@ -1,13 +1,13 @@
-package com.baeldung.reactive.simultaneouswebclient;
+package com.baeldung.reactive.webclient.simultaneous;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Item {
+public class User {
     private int id;
 
     @JsonCreator
-    public Item(@JsonProperty("id") int id) {
+    public User(@JsonProperty("id") int id) {
         this.id = id;
     }
 

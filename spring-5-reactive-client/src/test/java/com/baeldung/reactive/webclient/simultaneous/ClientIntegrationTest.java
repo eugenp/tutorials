@@ -1,4 +1,4 @@
-package com.baeldung.reactive.simultaneouswebclient;
+package com.baeldung.reactive.webclient.simultaneous;
 
 import org.junit.Test;
 import org.junit.Before;
@@ -8,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.github.tomakehurst.wiremock.WireMockServer;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -43,17 +42,15 @@ public class ClientIntegrationTest {
         int singleRequestTime = 1000;
 
         for (int i = 1; i <= requestsNumber; i++) {
-            stubFor(
-              get(urlEqualTo("/user/" + i)).willReturn(aResponse()
-                .withFixedDelay(singleRequestTime)
+            stubFor(get(urlEqualTo("/user/" + i)).willReturn(aResponse().withFixedDelay(singleRequestTime)
                 .withStatus(200)
                 .withHeader("Content-Type", "application/json")
                 .withBody(String.format("{ \"id\": %d }", i))));
         }
 
         List<Integer> userIds = IntStream.rangeClosed(1, requestsNumber)
-          .boxed()
-          .collect(Collectors.toList());
+            .boxed()
+            .collect(Collectors.toList());
 
         Client client = new Client("http://localhost:8089");
 
