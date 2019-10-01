@@ -1,7 +1,6 @@
-=========
+## Spring Mockito
 
-## Mockito Mocks into Spring Beans
-
+This module contains articles about Spring with Mockito
 
 ### Relevant Articles: 
 - [Injecting Mockito Mocks into Spring Beans](http://www.baeldung.com/injecting-mocks-in-spring)

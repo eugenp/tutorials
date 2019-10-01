@@ -1,8 +1,9 @@
-=========
+## Spring MVC with Java Configuration
 
-## Spring MVC with Java Configuration Example Project
+This module contains articles about Spring MVC with Java configuration
 
 ### The Course
+
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles: 
