@@ -12,4 +12,4 @@ This module contains articles about the Java List collection
 - [How to Find an Element in a List with Java](http://www.baeldung.com/find-list-element-java)
 - [Finding Max/Min of a List or Collection](http://www.baeldung.com/java-collection-min-max)
 - [Remove All Occurrences of a Specific Value from a List](https://www.baeldung.com/java-remove-value-from-list)
-- [[Next -->]](/core-java-modules/core-java-collections-2)
+- [[Next -->]](/core-java-modules/core-java-collections-list-2)

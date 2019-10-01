@@ -9,4 +9,4 @@ This module contains articles about the Java List collection
 - [List of Primitive Integer Values in Java](https://www.baeldung.com/java-list-primitive-int)
 - [Performance Comparison of Primitive Lists in Java](https://www.baeldung.com/java-list-primitive-performance)
 - [Filtering a Java Collection by a List](https://www.baeldung.com/java-filter-collection-by-list)
-- [[<-- Prev]](/core-java-modules/core-java-collections-2)
+- [[<-- Prev]](/core-java-modules/core-java-collections-list-2)
