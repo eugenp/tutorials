@@ -1,5 +1,7 @@
 ### set docker env
 eval $(minikube docker-env)
+#fish shell
+#eval (minikube docker-env)
 
 ### build the repository
 #mvn clean  install
