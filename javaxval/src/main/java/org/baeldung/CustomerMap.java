@@ -6,8 +6,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 public class CustomerMap {
-    
-    private Map<@Email(message="Must be a valid email") String, @NotNull Customer> customers;
+
+    private Map<@Email(message = "Must be a valid email") String, @NotNull Customer> customers;
 
     public Map<String, Customer> getCustomers() {
         return customers;

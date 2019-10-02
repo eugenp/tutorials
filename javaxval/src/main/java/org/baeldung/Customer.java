@@ -10,16 +10,16 @@ import javax.validation.constraints.PositiveOrZero;
 
 public class Customer {
 
-    @NotBlank(message="Name cannot be empty")
+    @NotBlank(message = "Name cannot be empty")
     private String name;
 
-    private List<@NotBlank(message="Address must not be blank") String> addresses;
-    
+    private List<@NotBlank(message = "Address must not be blank") String> addresses;
+
     private Integer age;
-    
+
     @PositiveOrZero
     private OptionalInt numberOfOrders;
-    
+
     //@NotBlank
     private Profile profile;
 

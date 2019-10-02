@@ -6,9 +6,9 @@ import org.baeldung.javabeanconstraints.entities.UserNotBlank;
 
 public class Application {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
         UserNotBlank user = new UserNotBlank(" ");
-        validator.validate(user).stream().forEach(violation -> System.out.println(violation.getMessage())); 
+        validator.validate(user).stream().forEach(violation -> System.out.println(violation.getMessage()));
     }
 }
