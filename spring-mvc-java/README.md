@@ -20,3 +20,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [A Quick Example of Spring Websockets’ @SendToUser Annotation](http://www.baeldung.com/spring-websockets-sendtouser)
 - [Working with Date Parameters in Spring](https://www.baeldung.com/spring-date-parameters)
 - [A Java Web Application Without a web.xml](https://www.baeldung.com/java-web-app-without-web-xml)
+- [The HttpMediaTypeNotAcceptableException in Spring MVC](https://www.baeldung.com/spring-httpmediatypenotacceptable)
