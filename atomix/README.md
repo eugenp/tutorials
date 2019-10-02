@@ -1,3 +1,3 @@
 ## Relevant articles:
 
-- [Introduction to Atomix](http://www.baeldung.com/atomix)
+- [Introduction to Atomix](https://www.baeldung.com/atomix)
