@@ -3,7 +3,7 @@
 This module contains articles about Spring with Quartz
 
 ### Relevant Articles: 
-- [Scheduling in Spring with Quartz](http://www.baeldung.com/spring-quartz-schedule)
+- [Scheduling in Spring with Quartz](https://www.baeldung.com/spring-quartz-schedule)
     
 
 ## #Scheduling in Spring with Quartz Example Project
@@ -23,5 +23,3 @@ This is the first example where we configure a basic scheduler.
   - To configure scheduler using Quartz API: 
   
     `using.spring.schedulerFactory=false`
-    
-

@@ -42,5 +42,5 @@ Enjoy it :)
 
 ### Relevant Articles:
 
-- [Intro to Performance Testing using JMeter](http://www.baeldung.com/jmeter)
-- [Configure Jenkins to Run and Show JMeter Tests](http://www.baeldung.com/jenkins-and-jmeter)
+- [Intro to Performance Testing using JMeter](https://www.baeldung.com/jmeter)
+- [Configure Jenkins to Run and Show JMeter Tests](https://www.baeldung.com/jenkins-and-jmeter)

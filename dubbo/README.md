@@ -1,4 +1,4 @@
 ## Relevant articles:
 
-- [Introduction to Dubbo](http://www.baeldung.com/dubbo)
+- [Introduction to Dubbo](https://www.baeldung.com/dubbo)
 

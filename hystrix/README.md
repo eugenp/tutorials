@@ -1,3 +1,3 @@
 ### Relevant Articles:
-- [Hystrix Integration with Existing Spring Application](http://www.baeldung.com/hystrix-integration-with-spring-aop)
-- [Introduction to Hystrix](http://www.baeldung.com/introduction-to-hystrix)
+- [Hystrix Integration with Existing Spring Application](https://www.baeldung.com/hystrix-integration-with-spring-aop)
+- [Introduction to Hystrix](https://www.baeldung.com/introduction-to-hystrix)
