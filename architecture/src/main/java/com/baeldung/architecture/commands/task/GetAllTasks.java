@@ -4,4 +4,4 @@ import com.baeldung.architecture.domain.task.Task;
 
 public interface GetAllTasks {
     public Iterable<Task> getAll();
-};
+}
