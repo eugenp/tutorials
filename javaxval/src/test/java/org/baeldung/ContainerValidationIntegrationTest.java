@@ -76,7 +76,7 @@ public class ContainerValidationIntegrationTest {
         assertEquals(0, violations.size());
     }
 
-    // @Test
+    @Test
     public void whenProfileCompanyNameBlank_thenValidationFails() {
         Customer customer = new Customer();
         customer.setName("John");

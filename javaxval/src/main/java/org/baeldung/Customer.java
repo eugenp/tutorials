@@ -20,6 +20,7 @@ public class Customer {
     @PositiveOrZero
     private OptionalInt numberOfOrders;
 
+    @NotBlank
     private Profile profile;
 
     public String getName() {

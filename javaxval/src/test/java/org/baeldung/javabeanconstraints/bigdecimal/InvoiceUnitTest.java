@@ -3,6 +3,7 @@ package org.baeldung.javabeanconstraints.bigdecimal;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
+import java.util.Locale;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -18,6 +19,8 @@ public class InvoiceUnitTest {
 
     @BeforeClass
     public static void setupValidatorInstance() {
+        Locale.setDefault(Locale.US);
+
         validator = Validation.buildDefaultValidatorFactory()
             .getValidator();
     }

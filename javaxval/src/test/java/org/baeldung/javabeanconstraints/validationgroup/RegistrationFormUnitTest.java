@@ -2,6 +2,7 @@ package org.baeldung.javabeanconstraints.validationgroup;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Locale;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -16,6 +17,8 @@ public class RegistrationFormUnitTest {
 
     @BeforeClass
     public static void setupValidatorInstance() {
+        Locale.setDefault(Locale.US);
+
         validator = Validation.buildDefaultValidatorFactory()
             .getValidator();
     }
