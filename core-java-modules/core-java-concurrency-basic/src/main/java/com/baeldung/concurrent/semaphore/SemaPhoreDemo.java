@@ -12,7 +12,6 @@ public class SemaPhoreDemo {
 		System.out.println("Number of threads waiting to acquire: " + semaphore.getQueueLength());
 
 		if (semaphore.tryAcquire()) {
-			semaphore.acquire();
 			// perform some critical operations
 			semaphore.release();
 		}
