@@ -8,3 +8,4 @@
 - [Check If a Number Is Prime in Java](http://www.baeldung.com/java-prime-numbers)
 - [Binary Numbers in Java](https://www.baeldung.com/java-binary-numbers)
 - [Finding the Least Common Multiple in Java](https://www.baeldung.com/java-least-common-multiple)
+- [Binary Numbers in Java](https://www.baeldung.com/java-binary-numbers)

@@ -1,7 +1,6 @@
-=========
+## Spring FreeMarker
 
-## Using FreeMarker in Spring MVC
-
+This module contains articles about Spring with FreeMarker
 
 ### Relevant Articles:
 - [Introduction to Using FreeMarker in Spring MVC](http://www.baeldung.com/freemarker-in-spring-mvc-tutorial)
