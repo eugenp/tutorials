@@ -19,7 +19,7 @@ import static org.hamcrest.CoreMatchers.*;
 public class ComponentScanCustomFilterAppIntegrationTest {
 
     @Test
-    public void testBean() {
+    public void whenCustomFilterIsUsed_thenComponentScanShouldRegisterBeanMatchingCustomFilter() {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ComponentScanCustomFilterApp.class);
         List<String> beans = Arrays.stream(applicationContext.getBeanDefinitionNames())
             .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanCustomFilterApp"))

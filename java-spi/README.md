@@ -1,4 +1,4 @@
 
 ### Relevant Articles: 
 
-- [Java Service Provider Interface](http://www.baeldung.com/java-spi)
+- [Java Service Provider Interface](https://www.baeldung.com/java-spi)
