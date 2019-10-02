@@ -1,4 +1,4 @@
-package org.baeldung;
+package org.baeldung.javaxval.container.validation;
 
 public class Profile {
     private String companyName;

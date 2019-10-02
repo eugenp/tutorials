@@ -1,4 +1,4 @@
-package org.baeldung.javabeanconstraints.bigdecimal;
+package org.baeldung.javaxval.bigdecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

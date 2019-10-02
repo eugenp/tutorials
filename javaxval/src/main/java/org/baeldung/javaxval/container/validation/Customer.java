@@ -1,4 +1,4 @@
-package org.baeldung;
+package org.baeldung.javaxval.container.validation;
 
 import java.util.List;
 import java.util.Optional;

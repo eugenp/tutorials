@@ -1,4 +1,4 @@
-package org.baeldung;
+package org.baeldung.javaxval.container.validation;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,7 +11,10 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-import org.baeldung.valueextractors.ProfileValueExtractor;
+import org.baeldung.javaxval.container.validation.Customer;
+import org.baeldung.javaxval.container.validation.CustomerMap;
+import org.baeldung.javaxval.container.validation.Profile;
+import org.baeldung.javaxval.container.validation.valueextractors.ProfileValueExtractor;
 import org.junit.Before;
 import org.junit.Test;
 
