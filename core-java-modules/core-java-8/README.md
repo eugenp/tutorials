@@ -23,7 +23,6 @@
 - [Java 8 Unsigned Arithmetic Support](http://www.baeldung.com/java-unsigned-arithmetic)
 - [Generalized Target-Type Inference in Java](http://www.baeldung.com/java-generalized-target-type-inference)
 - [Overriding System Time for Testing in Java](http://www.baeldung.com/java-override-system-time)
-- [Set the Time Zone of a Date in Java](https://www.baeldung.com/java-set-date-time-zone)
 - [An Overview of Regular Expressions Performance in Java](https://www.baeldung.com/java-regex-performance)
 - [Java Primitives versus Objects](https://www.baeldung.com/java-primitives-vs-objects)
 - [How to Use if/else Logic in Java 8 Streams](https://www.baeldung.com/java-8-streams-if-else-logic)
