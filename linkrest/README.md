@@ -1,3 +1,3 @@
 ## Relevant articles:
 
-- [Guide to LinkRest](http://www.baeldung.com/linkrest)
+- [Guide to LinkRest](https://www.baeldung.com/linkrest)

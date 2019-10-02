@@ -1,2 +1,2 @@
 ### Relevant Articles:
-- [Introduction to gRPC](http://www.baeldung.com/grpc-introduction)
+- [Introduction to gRPC](https://www.baeldung.com/grpc-introduction)

@@ -1,3 +1,3 @@
 ### Relevant articles:
 
-- [Introduction to Dagger 2](http://www.baeldung.com/dagger-2)
+- [Introduction to Dagger 2](https://www.baeldung.com/dagger-2)

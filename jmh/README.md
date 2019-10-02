@@ -1,4 +1,4 @@
 ## Relevant articles:
 
-- [Microbenchmarking with Java](http://www.baeldung.com/java-microbenchmark-harness)
+- [Microbenchmarking with Java](https://www.baeldung.com/java-microbenchmark-harness)
 
