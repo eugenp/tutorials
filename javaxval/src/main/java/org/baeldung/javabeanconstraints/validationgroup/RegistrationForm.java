@@ -13,7 +13,7 @@ public class RegistrationForm {
     @NotBlank(groups = BasicInfo.class)
     private String phone;
 
-    @NotBlank(groups = {BasicInfo.class, AdvanceInfo.class})
+    @NotBlank(groups = { BasicInfo.class, AdvanceInfo.class })
     private String captcha;
 
     @NotBlank(groups = AdvanceInfo.class)
@@ -25,7 +25,7 @@ public class RegistrationForm {
     @NotBlank(groups = AdvanceInfo.class)
     private String city;
     @NotBlank(groups = AdvanceInfo.class)
-    private String contry;
+    private String country;
 
     public String getStreet() {
         return street;
@@ -59,12 +59,12 @@ public class RegistrationForm {
         this.city = city;
     }
 
-    public String getContry() {
-        return contry;
+    public String getCountry() {
+        return country;
     }
 
-    public void setContry(String contry) {
-        this.contry = contry;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getFirstName() {
