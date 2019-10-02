@@ -389,24 +389,34 @@
 				<!-- <module>core-java-modules/core-java-12</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
 				<module>core-java-modules/core-java-8</module>
 				<module>core-java-modules/core-java-8-2</module>
+				<module>core-java-modules/core-java-annotations</module>
+				<module>core-java-modules/core-java-streams</module>
+				<module>core-java-modules/core-java-function</module>
+				<module>core-java-modules/core-java-lang-math</module>
+				<module>core-java-modules/core-java-datetime</module>
+				<module>core-java-modules/core-java-text</module>
 				<module>core-java-modules/core-java-lambdas</module>
                 <!--<module>core-java-modules/core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
                 <module>core-java-modules/core-java-arrays</module>
                 <module>core-java-modules/core-java-arrays-2</module>
                 <module>core-java-modules/core-java-collections</module>
+				<module>core-java-modules/core-java-collections-2</module>
+				<module>core-java-modules/core-java-collections-3</module>
                 <module>core-java-modules/core-java-collections-list</module>
                 <module>core-java-modules/core-java-collections-list-2</module>
                 <module>core-java-modules/core-java-collections-list-3</module>
                 <module>core-java-modules/core-java-collections-array-list</module>
                 <module>core-java-modules/core-java-collections-set</module>
                 <module>core-java-modules/core-java-concurrency-basic</module>
+				<module>core-java-modules/core-java-concurrency-basic-2</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
                 <module>core-java-modules/core-java-io-files</module>
                 <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang-syntax</module>
+                <module>core-java-modules/core-java-lang-syntax-2</module>
                 <module>core-java-modules/core-java-lang</module>
 				<module>core-java-modules/core-java-lang-2</module>
                 <module>core-java-modules/core-java-lang-oop</module>
@@ -520,6 +530,8 @@
 				<module>libraries-data</module>
 				<module>libraries-data-2</module>
 				<module>libraries-apache-commons</module>
+				<module>libraries-apache-commons-collections</module>
+				<module>libraries-apache-commons-io</module>
 				<module>libraries-primitive</module>
 				<module>libraries-testing</module>
 				<module>libraries-security</module>
@@ -532,7 +544,11 @@
 				<module>lucene</module>
 
 				<module>mapstruct</module>
-				<module>maven</module>
+				<!-- <module>maven-all/compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
+				<module>maven-all/maven</module>
+				<module>maven-all/maven-war-plugin</module>
+				<module>maven-all/profiles</module>
+				<module>maven-all/versions-maven-plugin</module>
 				<module>maven-archetype</module>
 				<!-- <module>maven-polyglot/maven-polyglot-json-app</module> --> <!-- Not a maven project -->
 				<module>maven-polyglot/maven-polyglot-json-extension</module>
@@ -659,7 +675,6 @@
 				<module>spring-boot</module>
 				<module>spring-boot-admin</module>
 				<module>spring-boot-angular</module>
-				<module>spring-boot-angular-ecommerce</module>
 				<module>spring-boot-autoconfiguration</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-camel</module>
@@ -1122,23 +1137,33 @@
 				<!-- <module>core-java-modules/core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
 				<module>core-java-modules/core-java-8</module>
 				<module>core-java-modules/core-java-8-2</module>
+				<module>core-java-modules/core-java-annotations</module>
+				<module>core-java-modules/core-java-streams</module>
+				<module>core-java-modules/core-java-function</module>
+				<module>core-java-modules/core-java-lang-math</module>
+				<module>core-java-modules/core-java-datetime</module>
+				<module>core-java-modules/core-java-text</module>
 				<!--<module>core-java-modules/core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
 				<!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
 				<module>core-java-modules/core-java-arrays</module>
 				<module>core-java-modules/core-java-arrays-2</module>
 				<module>core-java-modules/core-java-collections</module>
+				<module>core-java-modules/core-java-collections-2</module>
+				<module>core-java-modules/core-java-collections-3</module>
 				<module>core-java-modules/core-java-collections-list</module>
 				<module>core-java-modules/core-java-collections-list-2</module>
 				<module>core-java-modules/core-java-collections-list-3</module>
 				<module>core-java-modules/core-java-collections-array-list</module>
 				<module>core-java-modules/core-java-collections-set</module>
 				<module>core-java-modules/core-java-concurrency-basic</module>
+				<module>core-java-modules/core-java-concurrency-basic-2</module>
 				<module>core-java-modules/core-java-concurrency-collections</module>
 				<module>core-java-modules/core-java-io</module>
 				<module>core-java-modules/core-java-io-files</module>
 				<module>core-java-modules/core-java-nio</module>
 				<module>core-java-modules/core-java-security</module>
 				<module>core-java-modules/core-java-lang-syntax</module>
+				<module>core-java-modules/core-java-lang-syntax-2</module>
 				<module>core-java-modules/core-java-lang</module>
 				<module>core-java-modules/core-java-lang-2</module>
 				<module>core-java-modules/core-java-lang-oop</module>
@@ -1246,6 +1271,8 @@
 				<module>libraries-data</module>
 				<module>libraries-data-2</module>
 				<module>libraries-apache-commons</module>
+				<module>libraries-apache-commons-collections</module>
+				<module>libraries-apache-commons-io</module>
 				<module>libraries-testing</module>
 				<module>libraries-security</module>
 				<module>libraries-server</module>
@@ -1256,7 +1283,11 @@
 				<module>lucene</module>
 
 				<module>mapstruct</module>
-				<module>maven</module>
+				<!-- <module>maven-all/compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
+				<module>maven-all/maven</module>
+				<module>maven-all/maven-war-plugin</module>
+				<module>maven-all/profiles</module>
+				<module>maven-all/versions-maven-plugin</module>
 				<!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
 				<module>maven-archetype</module>
 				<!-- <module>maven-polyglot/maven-polyglot-json-app</module> --> <!-- Not a maven project -->
@@ -1365,7 +1396,6 @@
 				<module>spring-boot</module>
 				<module>spring-boot-admin</module>
 				<module>spring-boot-angular</module>
-				<module>spring-boot-angular-ecommerce</module>
 				<module>spring-boot-autoconfiguration</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-camel</module>

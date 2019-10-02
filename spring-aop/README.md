@@ -1,3 +1,7 @@
+## Spring AOP
+
+This module contains articles about Spring aspect oriented programming (AOP)
+
 ### Relevant articles
 
 - [Implementing a Custom Spring AOP Annotation](http://www.baeldung.com/spring-aop-annotation)

@@ -1,3 +1,7 @@
+## Spring Core
+
+This module contains articles about core Spring functionality
+
 ### Relevant Articles:
 - [Wiring in Spring: @Autowired, @Resource and @Inject](http://www.baeldung.com/spring-annotations-resource-inject-autowire)
 - [Constructor Injection in Spring with Lombok](http://www.baeldung.com/spring-injection-lombok)
@@ -9,4 +13,5 @@
 - [Spring Application Context Events](https://www.baeldung.com/spring-context-events)
 - [What is a Spring Bean?](https://www.baeldung.com/spring-bean)
 - [Spring PostConstruct and PreDestroy Annotations](https://www.baeldung.com/spring-postconstruct-predestroy)
+- More articles: [[next -->]](/spring-core-2)
 

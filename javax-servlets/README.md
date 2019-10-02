@@ -7,3 +7,4 @@
 - [Returning a JSON Response from a Servlet](http://www.baeldung.com/servlet-json-response)
 - [Java EE Servlet Exception Handling](http://www.baeldung.com/servlet-exceptions)
 - [Context and Servlet Initialization Parameters](http://www.baeldung.com/context-servlet-initialization-param)
+- [The Difference between getRequestURI and getPathInfo in HttpServletRequest](https://www.baeldung.com/http-servlet-request-requesturi-pathinfo)

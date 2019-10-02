@@ -1,6 +1,6 @@
-=========
+##  Spring Security with Digest Authentication
 
-##  Spring Security with Digest Authentication Example Project
+This module contains articles about digest authentication with Spring Security
 
 ###The Course
 The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
