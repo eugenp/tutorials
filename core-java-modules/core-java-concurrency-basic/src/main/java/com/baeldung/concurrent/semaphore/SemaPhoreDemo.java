@@ -11,9 +11,12 @@ public class SemaPhoreDemo {
 		System.out.println("Available permit : " + semaphore.availablePermits());
 		System.out.println("Number of threads waiting to acquire: " + semaphore.getQueueLength());
 
-		if (semaphore.tryAcquire()) {
+		if (semaphore.tryAcquire()) 
+			try {		
 			// perform some critical operations
-			semaphore.release();
+			} finally {
+				semaphore.release();
+			}
 		}
 
 	}
