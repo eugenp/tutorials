@@ -32,6 +32,13 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+        
+         <dependency>
+        	<groupId>com.github.tomakehurst</groupId>
+        	<artifactId>wiremock-jre8</artifactId>
+        	<version>${wiremock.version}</version>
+        	<scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -46,5 +53,9 @@
             </plugin>
         </plugins>
     </build>
+    
+    <properties>
+    	<wiremock.version>2.24.0</wiremock.version>
+    </properties>
 
 </project>
