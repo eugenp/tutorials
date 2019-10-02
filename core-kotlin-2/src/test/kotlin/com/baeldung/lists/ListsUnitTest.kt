@@ -2,6 +2,7 @@ package com.baeldung.lists
 
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class ListsUnitTest {
@@ -26,7 +27,8 @@ class ListsUnitTest {
     fun whenFilterNotWithPredicate_thenMatchingItemsAreReturned() {
         //Returns a list containing only elements not matching the given predicate.
         val theMehBatmans = batmans.filterNot { actor -> actor.contains("a") }
-        assertTrue(!theMehBatmans.contains("Christian Bale") && !theMehBatmans.contains("Michael Keaton"))
+        assertFalse(theMehBatmans.contains("Christian Bale") && theMehBatmans.contains("Michael Keaton"))
+        assertTrue(theMehBatmans.contains("Ben Affleck") && theMehBatmans.contains("George Clooney"))
     }
 
 }
