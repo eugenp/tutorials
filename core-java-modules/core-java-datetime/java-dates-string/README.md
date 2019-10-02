@@ -10,3 +10,4 @@ This module contains articles about parsing and formatting Java date and time ob
 - [A Guide to SimpleDateFormat](https://www.baeldung.com/java-simple-date-format)
 - [Display All Time Zones With GMT And UTC in Java](http://www.baeldung.com/java-time-zones)
 - [Convert between String and Timestamp](https://www.baeldung.com/java-string-to-timestamp)
+- [Convert String to Date in Java](http://www.baeldung.com/java-string-to-date)

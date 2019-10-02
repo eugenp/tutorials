@@ -31,7 +31,6 @@
 - [Publish and Receive Messages with Nats Java Client](http://www.baeldung.com/nats-java-client)
 - [Java Concurrency Utility with JCTools](http://www.baeldung.com/java-concurrency-jc-tools)
 - [Introduction to JavaPoet](http://www.baeldung.com/java-poet)
-- [Convert String to Date in Java](http://www.baeldung.com/java-string-to-date)
 - [Guide to Resilience4j](http://www.baeldung.com/resilience4j)
 - [Exactly Once Processing in Kafka](https://www.baeldung.com/kafka-exactly-once)
 - [Implementing a FTP-Client in Java](http://www.baeldung.com/java-ftp-client)
