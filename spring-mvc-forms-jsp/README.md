@@ -1,4 +1,6 @@
-## Spring MVC Forms Tutorials
+## Spring MVC Forms JSP
+
+This module contains articles about Spring MVC Forms using JSP 
 
 ### Relevant Articles
 - [MaxUploadSizeExceededException in Spring](http://www.baeldung.com/spring-maxuploadsizeexceeded)
