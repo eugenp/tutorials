@@ -1,2 +1,2 @@
 ### Relevant Articles:
-- [Guide to JAXB](http://www.baeldung.com/jaxb)
+- [Guide to JAXB](https://www.baeldung.com/jaxb)

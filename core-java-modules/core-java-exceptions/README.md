@@ -1,8 +1,13 @@
-## Relevant Articles:
+## Core Java Exceptions
 
-- [Will an Error Be Caught by Catch Block in Java?](https://www.baeldung.com/java-error-catch)
-- [Java Global Exception Handler](http://www.baeldung.com/java-global-exception-handler)
-- [Common Java Exceptions](http://www.baeldung.com/java-common-exceptions)
-- [Throw Exception in Optional in Java 8](https://www.baeldung.com/java-optional-throw-exception)
-- [How to Find an Exception’s Root Cause in Java](https://www.baeldung.com/java-exception-root-cause)
-- [Java – Try with Resources](https://www.baeldung.com/java-try-with-resources)
+This module contains articles about core java exceptions
+
+### Relevant articles:
+- [Chained Exceptions in Java](https://www.baeldung.com/java-chained-exceptions)
+- [ClassNotFoundException vs NoClassDefFoundError](https://www.baeldung.com/java-classnotfoundexception-and-noclassdeffounderror)
+- [Create a Custom Exception in Java](https://www.baeldung.com/java-new-custom-exception)
+- [Exception Handling in Java](https://www.baeldung.com/java-exceptions)
+- [Differences Between Final, Finally and Finalize in Java](https://www.baeldung.com/java-final-finally-finalize)
+- [Difference Between Throw and Throws in Java](https://www.baeldung.com/java-throw-throws)
+- [“Sneaky Throws” in Java](https://www.baeldung.com/java-sneaky-throws)
+- [The StackOverflowError in Java](https://www.baeldung.com/java-stack-overflow-error)
