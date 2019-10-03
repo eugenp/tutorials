@@ -1,3 +1,3 @@
 ## Relevant articles:
 
-- [Introduction to GraphQL](http://www.baeldung.com/graphql)
+- [Introduction to GraphQL](https://www.baeldung.com/graphql)

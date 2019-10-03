@@ -3,5 +3,5 @@
 
 ### Relevant Articles:
 
-- [Creating a Custom Logback Appender](http://www.baeldung.com/custom-logback-appender)
-- [A Guide To Logback](http://www.baeldung.com/logback)
+- [Creating a Custom Logback Appender](https://www.baeldung.com/custom-logback-appender)
+- [A Guide To Logback](https://www.baeldung.com/logback)
