@@ -88,6 +88,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>2.24.1</version>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>

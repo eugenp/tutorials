@@ -3,4 +3,4 @@
 This module contains articles about Bootique
 
 ### Relevant Articles:
-- [Introduction to Bootique](http://www.baeldung.com/bootique)
+- [Introduction to Bootique](https://www.baeldung.com/bootique)

@@ -8,7 +8,7 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 
 
-* [Spring Security Login Page with React](http://www.baeldung.com/spring-security-login-react)
+* [Spring Security Login Page with React](https://www.baeldung.com/spring-security-login-react)
 
 ### Build the Project
 
