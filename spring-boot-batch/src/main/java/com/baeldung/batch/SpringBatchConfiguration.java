@@ -9,11 +9,13 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
-import org.springframework.batch.item.ItemReader;
-import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.json.JacksonJsonObjectMarshaller;
+import org.springframework.batch.item.json.JsonFileItemWriter;
 import org.springframework.batch.item.json.builder.JsonFileItemWriterBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,6 +25,7 @@ import org.springframework.core.io.FileSystemResource;
 
 import com.baeldung.batch.model.Book;
 import com.baeldung.batch.service.BookFieldSetMapper;
+import com.baeldung.batch.service.BookItemAuthorCounter;
 import com.baeldung.batch.service.BookItemProcessor;
 import com.baeldung.batch.service.BookItemWriterListener;
 
@@ -31,7 +34,7 @@ import com.baeldung.batch.service.BookItemWriterListener;
 public class SpringBatchConfiguration {
 
     private static Logger LOGGER = LoggerFactory.getLogger(SpringBatchConfiguration.class);
-    
+
     @Autowired
     private JobBuilderFactory jobBuilderFactory;
 
@@ -45,7 +48,8 @@ public class SpringBatchConfiguration {
     private FileSystemResource output;
 
     @Bean
-    public ItemReader<Book> itemReader() {
+    @StepScope
+    public FlatFileItemReader<Book> itemReader() {
         FlatFileItemReaderBuilder<Book> builder = new FlatFileItemReaderBuilder<>();
         BookFieldSetMapper bookFieldSetMapper = new BookFieldSetMapper();
         LOGGER.info("Configuring reader to input {}, {}", input.getPath(), input.exists());
@@ -59,7 +63,8 @@ public class SpringBatchConfiguration {
     }
 
     @Bean
-    public ItemWriter<Book> itemWriter() throws IOException {
+    @StepScope
+    public JsonFileItemWriter<Book> itemWriter() throws IOException {
         JsonFileItemWriterBuilder<Book> builder = new JsonFileItemWriterBuilder<>();
         JacksonJsonObjectMarshaller<Book> marshaller = new JacksonJsonObjectMarshaller<>();
         LOGGER.info("Configuring writer to output {}, {}", output.getPath(), output.exists());
@@ -73,20 +78,22 @@ public class SpringBatchConfiguration {
     public BookItemProcessor itemProcessor() {
         return new BookItemProcessor();
     }
-    
+
     @Bean
     public BookItemWriterListener itemWriterListener() {
-        return new BookItemWriterListener();
+        return new BookItemWriterListener(counter());
     }
-    
+
     @Bean
-    public Step step1() throws IOException {
+    public Step step1(FlatFileItemReader<Book> itemReader, 
+                      ItemProcessor<Book, Book> itemProcessor, 
+                      JsonFileItemWriter<Book> itemWriter) throws IOException {
         return stepBuilderFactory.get("step1")
             .<Book, Book> chunk(3)
             .listener(itemWriterListener())
-            .reader(itemReader())
-            .processor(itemProcessor())
-            .writer(itemWriter())
+            .reader(itemReader)
+            .processor(itemProcessor)
+            .writer(itemWriter)
             .build();
     }
 
@@ -99,6 +106,9 @@ public class SpringBatchConfiguration {
             .build();
     }
 
-    
+    @Bean
+    public BookItemAuthorCounter counter() {
+        return new BookItemAuthorCounter();
+    }
 
 }

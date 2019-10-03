@@ -14,9 +14,18 @@ public class BookItemWriterListener implements ItemWriteListener<Book> {
 
     private static Logger LOGGER = LoggerFactory.getLogger(BookItemWriterListener.class);
 
+    private BookItemAuthorCounter counter;
+
+    public BookItemWriterListener(BookItemAuthorCounter counter) {
+        this.counter = counter;
+    }
+
     @Override
     public void beforeWrite(List<? extends Book> items) {
         LOGGER.info("Attemtpting to write {} books", items.size());
+        for (Book b : items) {
+            LOGGER.info("{}", b);
+        }
     }
 
     @Override
