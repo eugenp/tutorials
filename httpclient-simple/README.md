@@ -1,5 +1,8 @@
-=========
-## This module contains articles that are part of the HTTPClient Ebook
+## HTTPClient Ebook
+
+This module contains articles about HTTPClient that are part of the HTTPClient Ebook.
+
+### Relevant Articles
 
 - [HttpClient 4 – Get the Status Code](https://www.baeldung.com/httpclient-status-code)
 - [HttpClient with SSL](https://www.baeldung.com/httpclient-ssl)

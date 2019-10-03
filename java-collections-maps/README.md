@@ -1,6 +1,6 @@
-=========
-
 ## Java Collections Cookbooks and Examples
+
+This module contains articles about Map data structures in Java.
 
 ### Relevant Articles: 
 - [Guide to the Guava BiMap](https://www.baeldung.com/guava-bimap)
@@ -13,3 +13,4 @@
 - [Comparing Two HashMaps in Java](https://www.baeldung.com/java-compare-hashmaps)
 - [Immutable Map Implementations in Java](https://www.baeldung.com/java-immutable-maps) 
 - [Guide to Apache Commons MultiValuedMap](https://www.baeldung.com/apache-commons-multi-valued-map)
+- More articles: [[next -->]](/../java-collections-maps-2)
