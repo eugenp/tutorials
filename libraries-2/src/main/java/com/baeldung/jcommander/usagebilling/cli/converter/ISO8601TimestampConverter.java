@@ -11,7 +11,7 @@ public class ISO8601TimestampConverter implements IStringConverter<Instant> {
   @Override
   public Instant convert(String value) {
     return LocalDateTime
-        .parse(value, DateTimeFormatter.ofPattern("uuuu-MM-ddTHH:mm:ss"))
+        .parse(value, DateTimeFormatter.ofPattern("uuuu-MM-dd'T'HH:mm:ss"))
         .atOffset(ZoneOffset.UTC)
         .toInstant();
   }

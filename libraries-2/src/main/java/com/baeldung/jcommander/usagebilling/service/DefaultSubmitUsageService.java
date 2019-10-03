@@ -1,7 +1,18 @@
 package com.baeldung.jcommander.usagebilling.service;
 
+import com.baeldung.jcommander.usagebilling.model.UsageRequest;
+import java.util.UUID;
+
 class DefaultSubmitUsageService implements SubmitUsageService {
 
   DefaultSubmitUsageService() {
+  }
+
+  @Override
+  public String submit(UsageRequest request) {
+    System.out.println("Submitting usage... \n Details:" + request);
+
+    System.out.println("Submitted usage successfully...");
+    return UUID.randomUUID().toString();
   }
 }

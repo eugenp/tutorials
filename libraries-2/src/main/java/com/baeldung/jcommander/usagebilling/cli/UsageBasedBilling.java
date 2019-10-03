@@ -24,12 +24,12 @@ public class UsageBasedBilling {
     jc.parse(args);
 
     String cmd = jc.getParsedCommand();
-    if (Constants.CREATE_CMD.equalsIgnoreCase(cmd)) {
-      System.out.println("Preparing Order...");
-      this.createOrderCmd.create();
+    if (Constants.SUBMIT_CMD.equalsIgnoreCase(cmd)) {
+      System.out.println("Parsing usage request...");
+      this.createOrderCmd.submit();
 
     } else if (Constants.FETCH_CMD.equalsIgnoreCase(cmd)) {
-      System.out.println("Fetching Order Trades...");
+      System.out.println("Preparing query...");
       this.fetchTradesCmd.fetch();
 
     } else {
@@ -39,7 +39,7 @@ public class UsageBasedBilling {
 
   static class Constants {
 
-    static final String CREATE_CMD = "create";
+    static final String SUBMIT_CMD = "submit";
     static final String FETCH_CMD = "fetch";
   }
 }
