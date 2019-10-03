@@ -10,11 +10,11 @@ import java.io.IOException;
 public class ComponentScanCustomFilter implements TypeFilter {
 
     @Override
-    public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory)
-            throws IOException {
+    public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
         ClassMetadata classMetadata = metadataReader.getClassMetadata();
         String superClass = classMetadata.getSuperClassName();
-        if (Pet.class.getName().equalsIgnoreCase(superClass)) {
+        if (Pet.class.getName()
+            .equalsIgnoreCase(superClass)) {
             return true;
         }
         return false;

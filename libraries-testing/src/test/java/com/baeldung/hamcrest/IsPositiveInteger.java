@@ -1,4 +1,4 @@
-package org.baeldung.hamcrest;
+package com.baeldung.hamcrest;
 
 import org.hamcrest.Description;
 import org.hamcrest.Factory;

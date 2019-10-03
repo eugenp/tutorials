@@ -1,3 +1,4 @@
 package com.baeldung.componentscan.filter.aspectj;
 
-public class Elephant { }
+public class Elephant {
+}

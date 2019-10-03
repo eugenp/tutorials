@@ -1,6 +1,6 @@
 ### Relevant articles
 
-- [Guide to Reactive Microservices Using Lagom Framework](http://www.baeldung.com/lagom-reactive-microservices)
+- [Guide to Reactive Microservices Using Lagom Framework](https://www.baeldung.com/lagom-reactive-microservices)
 
 
 

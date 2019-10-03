@@ -1,3 +1,3 @@
 ### Relevant articles
 
-- [Introduction to Google Protocol Buffer](http://www.baeldung.com/google-protocol-buffer)
+- [Introduction to Google Protocol Buffer](https://www.baeldung.com/google-protocol-buffer)

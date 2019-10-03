@@ -1,4 +1,4 @@
-package com.baeldung.cdi.cdi2observers.events;
+package com.baeldung.cdi2observers.events;
 
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
