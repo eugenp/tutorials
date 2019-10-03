@@ -1,4 +1,8 @@
-## Relevant Articles:
+## Java Strings Cookbooks and Examples
+
+This module contains articles about strings in Java.
+
+### Relevant Articles:
 
 - [Java Localization – Formatting Messages](https://www.baeldung.com/java-localization-messages-formatting)
 - [Check If a String Contains a Substring](https://www.baeldung.com/java-string-contains-substring)
@@ -25,3 +29,4 @@
 - [How to Reverse a String in Java](https://www.baeldung.com/java-reverse-string)
 - [String toLowerCase and toUpperCase Methods in Java](https://www.baeldung.com/java-string-convert-case)
 - [Guide to StreamTokenizer](https://www.baeldung.com/java-streamtokenizer)
+- More articles: [[<-- prev>]](/java-strings) [[next -->]](/java-strings-3)
