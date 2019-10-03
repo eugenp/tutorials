@@ -1,3 +1,7 @@
+## Algorithms Miscellaneous 3
+
+This module contains articles about miscellaneous algorithms
+
 ## Relevant Articles:
 
 - [Java Two Pointer Technique](https://www.baeldung.com/java-two-pointer-technique)
@@ -9,3 +13,4 @@
 - [A Guide to the Folding Technique in Java](https://www.baeldung.com/folding-hashing-technique)
 - [Creating a Triangle with for Loops in Java](https://www.baeldung.com/java-print-triangle)
 - [Efficient Word Frequency Calculator in Java](https://www.baeldung.com/java-word-frequency)
+- [[<-- prev]](/algorithms-miscellaneous-2)[[next -->]](/algorithms-miscellaneous-4)
