@@ -5,4 +5,4 @@
 - [The Order of Tests in JUnit](https://www.baeldung.com/junit-5-test-order)
 - [Running JUnit Tests Programmatically, from a Java Application](https://www.baeldung.com/junit-tests-run-programmatically-from-java)
 - [Testing an Abstract Class With JUnit](https://www.baeldung.com/junit-test-abstract-class)
-- [Guide to Dynamic Tests in Junit 5](https://www.baeldung.com/junit5-dynamic-tests)
+- [Guide to Dynamic Tests in JUnit 5](https://www.baeldung.com/junit5-dynamic-tests)
