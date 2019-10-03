@@ -17,7 +17,7 @@ public class FindAStringInGivenList {
 
         List<String> matches = new ArrayList<String>();
 
-        String pattern = ".*\\b"+search+"\\b.*";
+        String pattern = ".*"+search+".*";
         Pattern p = Pattern.compile(pattern);
 
         for(String str: list) {
