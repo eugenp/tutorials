@@ -1,3 +1,7 @@
+## JEE 7
+
+This module contains articles about JEE 7.
+
 ### Relevant Articles:
 - [Scheduling in Java EE](https://www.baeldung.com/scheduling-in-java-enterprise-edition)
 - [JSON Processing in Java EE 7](https://www.baeldung.com/jee7-json)
