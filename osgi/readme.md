@@ -87,7 +87,7 @@ org.eclipse.osgi_3.12.1.v20170821-1548.jar
  = = NOT GOOD = =
  
  ## Relevant articles:
- - [Introduction to OSGi](http://www.baeldung.com/osgi)
+ - [Introduction to OSGi](https://www.baeldung.com/osgi)
  
 
 

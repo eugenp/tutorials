@@ -1,7 +1,7 @@
 ## Google Cloud Tutorial Project
 
 ### Relevant Article:
-- [Intro to Google Cloud Storage With Java](http://www.baeldung.com/java-google-cloud-storage)
+- [Intro to Google Cloud Storage With Java](https://www.baeldung.com/java-google-cloud-storage)
 
 ### Overview
 This Maven project contains the Java code for the article linked above.
