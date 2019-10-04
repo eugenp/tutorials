@@ -3,24 +3,22 @@ package org.baeldung.javaxval.bigdecimal;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
-import java.util.Locale;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
+import org.baeldung.javaxval.LocaleAwareUnitTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class InvoiceUnitTest {
+public class InvoiceUnitTest extends LocaleAwareUnitTest {
 
     private static Validator validator;
 
     @BeforeClass
     public static void setupValidatorInstance() {
-        Locale.setDefault(Locale.US);
-
         validator = Validation.buildDefaultValidatorFactory()
             .getValidator();
     }

@@ -11,9 +11,6 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-import org.baeldung.javaxval.container.validation.Customer;
-import org.baeldung.javaxval.container.validation.CustomerMap;
-import org.baeldung.javaxval.container.validation.Profile;
 import org.baeldung.javaxval.container.validation.valueextractors.ProfileValueExtractor;
 import org.junit.Before;
 import org.junit.Test;
