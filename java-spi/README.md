@@ -1,3 +1,6 @@
+## Java SPI
+
+This module contains articles about the SPI (Service Provider Interface) in Java.
 
 ### Relevant Articles: 
 
