@@ -1,5 +1,7 @@
 ## Core Java Security 
 
+This module contains articles about core Java Security
+
 ### Relevant Articles: 
 - [MD5 Hashing in Java](http://www.baeldung.com/java-md5)
 - [Guide to the Cipher Class](http://www.baeldung.com/java-cipher-class)
