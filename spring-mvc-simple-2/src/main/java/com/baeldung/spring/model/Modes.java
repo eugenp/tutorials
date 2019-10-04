@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.spring.model;
 
 public enum Modes {
     ALPHA, BETA;

@@ -1,4 +1,4 @@
-package com.baeldung.exceptions;
+package com.baeldung.spring.exceptions;
 
 import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.http.HttpStatus;

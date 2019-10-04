@@ -1,9 +1,9 @@
-package com.baeldung.config.converter;
+package com.baeldung.spring.config.converter;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import com.baeldung.model.Modes;
+import com.baeldung.spring.model.Modes;
 
 @Component
 public class StringToEnumConverter implements Converter<String, Modes> {
