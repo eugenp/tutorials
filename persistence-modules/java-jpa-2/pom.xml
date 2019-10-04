@@ -102,9 +102,9 @@
         </plugins>
     </build>
     <properties>
-        <hibernate.version>5.4.0.Final</hibernate.version>
+        <hibernate.version>5.4.6.Final</hibernate.version>
         <eclipselink.version>2.7.4-RC1</eclipselink.version>
-        <postgres.version>42.2.5</postgres.version>
+        <postgres.version>42.2.8</postgres.version>
         <javax.persistence-api.version>2.2</javax.persistence-api.version>
     </properties>
 
