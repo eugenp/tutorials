@@ -1,6 +1,6 @@
-=========
-
 ## Java Bean Validation Examples
+
+This module contains articles about Bean Validation.
 
 ### Relevant Articles: 
 - [Java Bean Validation Basics](https://www.baeldung.com/javax-validation)

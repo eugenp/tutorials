@@ -1,6 +1,6 @@
-=========
-
 ## Java Strings Cookbooks and Examples
+
+This module contains articles about strings in Java.
 
 ### Relevant Articles:
 - [String Operations with Java Streams](https://www.baeldung.com/java-stream-operations-on-strings)
@@ -21,3 +21,4 @@
 - [Adding a Newline Character to a String in Java](https://www.baeldung.com/java-string-newline)
 - [Remove or Replace part of a String in Java](https://www.baeldung.com/java-remove-replace-string-part)
 - [Replace a Character at a Specific Index in a String in Java](https://www.baeldung.com/java-replace-character-at-index)
+- More articles: [[next -->]](/java-strings-2)
