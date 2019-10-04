@@ -1,6 +1,6 @@
-=========
+## Core Java Arrays
 
-## Core Java Arrays Cookbooks and Examples
+This module contains articles about Java arrays
 
 ### Relevant Articles: 
 - [How to Copy an Array in Java](https://www.baeldung.com/java-array-copy)
@@ -10,6 +10,8 @@
 - [Multi-Dimensional Arrays In Java](https://www.baeldung.com/java-jagged-arrays)
 - [Find Sum and Average in a Java Array](https://www.baeldung.com/java-array-sum-average)
 - [Arrays in Java: A Reference Guide](https://www.baeldung.com/java-arrays-guide)
-- [How to Invert an Array in Java](https://www.baeldung.com/java-invert-array)
+- [Read and Write User Input in Java](https://www.baeldung.com/java-console-input-output)
+- [How to Reverse an Array in Java](http://www.baeldung.com/java-invert-array)
 - [Sorting Arrays in Java](https://www.baeldung.com/java-sorting-arrays)
 - [Checking If an Array Is Sorted in Java](https://www.baeldung.com/java-check-sorted-array)
+- [[More -->]](/core-java-modules/core-java-arrays-2)

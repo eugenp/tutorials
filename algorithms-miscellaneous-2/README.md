@@ -1,6 +1,6 @@
 ## Relevant articles:
 
-- [Dijkstra Algorithm in Java](https://www.baeldung.com/java-dijkstra)
+- [Dijkstra Shortest Path Algorithm in Java](https://www.baeldung.com/java-dijkstra)
 - [Introduction to Cobertura](https://www.baeldung.com/cobertura)
 - [Test a Linked List for Cyclicity](https://www.baeldung.com/java-linked-list-cyclicity)
 - [Introduction to JGraphT](https://www.baeldung.com/jgrapht)

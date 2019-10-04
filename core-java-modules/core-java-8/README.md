@@ -1,6 +1,6 @@
-=========
+## Core Java 8
 
-## Core Java 8 Cookbooks and Examples
+This module contains articles about Java 8 core features
 
 ### Relevant Articles: 
 - [New Features in Java 8](https://www.baeldung.com/java-8-new-features)
@@ -12,3 +12,4 @@
 - [Finding Min/Max in an Array with Java](https://www.baeldung.com/java-array-min-max)
 - [Internationalization and Localization in Java 8](https://www.baeldung.com/java-8-localization)
 - [Generalized Target-Type Inference in Java](https://www.baeldung.com/java-generalized-target-type-inference)
+- [[More -->]](/core-java-modules/core-java-8-2)
