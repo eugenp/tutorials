@@ -1,2 +1,2 @@
 ### Relevant Articles: 
-- [Introduction to GWT](http://www.baeldung.com/gwt)
+- [Introduction to GWT](https://www.baeldung.com/gwt)

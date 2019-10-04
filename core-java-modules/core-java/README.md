@@ -29,7 +29,6 @@
 - [What is the serialVersionUID?](http://www.baeldung.com/java-serial-version-uid)
 - [A Guide to the ResourceBundle](http://www.baeldung.com/java-resourcebundle)
 - [Class Loaders in Java](http://www.baeldung.com/java-classloaders)
-- [Guide to the Java Clock Class](http://www.baeldung.com/java-clock)
 - [Importance of Main Manifest Attribute in a Self-Executing JAR](http://www.baeldung.com/java-jar-executable-manifest-main-class)
 - [Java Global Exception Handler](http://www.baeldung.com/java-global-exception-handler)
 - [How to Get the Size of an Object in Java](http://www.baeldung.com/java-size-of-object)

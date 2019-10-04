@@ -6,8 +6,11 @@ import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Client {
+
+    private static final Logger LOG = Logger.getLogger(Client.class.getName());
 
     private WebClient webClient;
 
@@ -16,6 +19,8 @@ public class Client {
     }
 
     public Mono<User> getUser(int id) {
+        LOG.info(String.format("Calling getUser(%d)", id));
+
         return webClient.get()
             .uri("/user/{id}", id)
             .retrieve()

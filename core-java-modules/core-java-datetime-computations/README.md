@@ -13,4 +13,3 @@ This module contains articles about date and time computations in Java.
 - [Increment Date in Java](http://www.baeldung.com/java-increment-date)
 - [Add Hours To a Date In Java](http://www.baeldung.com/java-add-hours-date)
 - [Introduction to Joda-Time](http://www.baeldung.com/joda-time)
-- [Measure Elapsed Time in Java](http://www.baeldung.com/java-measure-elapsed-time)

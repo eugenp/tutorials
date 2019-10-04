@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.baeldung.exception.numberformat</groupId>
-	<artifactId>core-java-datetime</artifactId>
+	<artifactId>core-java-time-measurements</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<name>core-java-datetime</name>
+	<packaging>jar</packaging>
+	<name>core-java-time-measurements</name>
 
 	<parent>
 		<groupId>com.baeldung</groupId>
@@ -14,13 +14,6 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../../parent-java</relativePath>
 	</parent>
-
-	<modules>
-		<module>java-dates-computations</module>
-		<module>java-dates-conversion</module>
-		<module>java-dates-java8</module>
-		<module>java-dates-string</module>
-	</modules>
 
     <dependencies>
         <dependency>
@@ -72,7 +65,7 @@
     </dependencies>
 
     <build>
-        <finalName>core-java-datetime</finalName>
+        <finalName>core-java-time-measurements</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
