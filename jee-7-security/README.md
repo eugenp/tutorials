@@ -1,2 +1,2 @@
 ### Relevant Articles:
-- [Securing Java EE with Spring Security](http://www.baeldung.com/java-ee-spring-security)
+- [Securing Java EE with Spring Security](https://www.baeldung.com/java-ee-spring-security)
