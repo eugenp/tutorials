@@ -1,3 +1,3 @@
 ## Relevant articles:
 
-- [Introduction to Jooby](http://www.baeldung.com/jooby)
+- [Introduction to Jooby](https://www.baeldung.com/jooby)
