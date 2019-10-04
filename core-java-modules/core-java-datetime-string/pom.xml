@@ -1,16 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>java-dates-string</artifactId>
+    <artifactId>core-java-datetime-string</artifactId>
     <version>${project.parent.version}</version>
-    <name>java-dates-string</name>
+    <name>core-java-datetime-string</name>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-java</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../../parent-java</relativePath>
+        <relativePath>../../parent-java</relativePath>
     </parent>
 
     <dependencies>
@@ -51,7 +51,7 @@
     </dependencies>
 
     <build>
-        <finalName>java-dates-string</finalName>
+        <finalName>core-java-datetime-string</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
