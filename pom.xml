@@ -366,7 +366,6 @@
 				<module>asciidoctor</module>
 				<module>asm</module>
 				<module>atomix</module>
-				<module>autovalue</module>
 				<module>aws</module>
 				<module>aws-lambda</module>
 				<module>axon</module>
@@ -381,6 +380,7 @@
 				<module>checker-plugin</module>
 				<module>cloud-foundry-uaa/cf-uaa-oauth2-client</module>
 				<module>cloud-foundry-uaa/cf-uaa-oauth2-resource-server</module>
+				<module>code-generation</module>
 				<module>core-groovy</module>
 				<module>core-groovy-2</module>
 				<module>core-groovy-collections</module>
@@ -1118,7 +1118,6 @@
 				<module>asciidoctor</module>
 				<module>asm</module>
 				<module>atomix</module>
-				<module>autovalue</module>
 				<module>aws</module>
 				<module>aws-lambda</module>
 				<module>axon</module>
@@ -1131,6 +1130,7 @@
 				<module>checker-plugin</module>
 				<module>cloud-foundry-uaa/cf-uaa-oauth2-client</module>
 				<module>cloud-foundry-uaa/cf-uaa-oauth2-resource-server</module>
+				<module>code-generation</module>
 				<module>core-groovy</module>
 				<module>core-groovy-2</module>
 				<module>core-groovy-collections</module>
