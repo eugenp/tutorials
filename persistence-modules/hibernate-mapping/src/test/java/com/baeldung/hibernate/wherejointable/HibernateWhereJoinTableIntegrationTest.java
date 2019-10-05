@@ -106,7 +106,7 @@ public class HibernateWhereJoinTableIntegrationTest {
         assertTrue(groups.contains(group1));
     }
 
-    public void saveRelation(User user, Group group, UserGroupRole role) {
+    private void saveRelation(User user, Group group, UserGroupRole role) {
         UserGroupRelation relation = new UserGroupRelation(user.getId(), group.getId(), role);
 
         session.save(relation);
