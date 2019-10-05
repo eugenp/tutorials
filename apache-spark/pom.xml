@@ -42,6 +42,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-graphx_2.12</artifactId>
+			<version>${org.apache.spark.spark-mllib.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
 			<version>${org.apache.spark.spark-streaming-kafka.version}</version>
 		</dependency>
