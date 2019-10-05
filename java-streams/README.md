@@ -1,6 +1,6 @@
-=========
-
 ## Java Streams Cookbooks and Examples
+
+This module contains articles about the Stream API in Java.
 
 ### Relevant Articles: 
 - [The Java 8 Stream API Tutorial](https://www.baeldung.com/java-8-streams)
@@ -18,3 +18,4 @@
 - [Counting Matches on a Stream Filter](https://www.baeldung.com/java-stream-filter-count)
 - [Java 8 Streams peek() API](https://www.baeldung.com/java-streams-peek-api)
 - [Working With Maps Using Streams](https://www.baeldung.com/java-maps-streams)
+- More articles: [[next -->]](/../java-streams-2)

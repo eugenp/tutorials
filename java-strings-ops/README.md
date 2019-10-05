@@ -1,6 +1,6 @@
-=========
-
 ## Java Strings Cookbooks and Examples
+
+This module contains articles about operations on strings in Java.
 
 ### Relevant Articles:
 - [Convert char to String in Java](https://www.baeldung.com/java-convert-char-to-string)
