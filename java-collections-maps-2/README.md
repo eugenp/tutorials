@@ -1,6 +1,7 @@
 ## Relevant Articles:
 - [Map of Primitives in Java](https://www.baeldung.com/java-map-primitives)
 - [Copying a HashMap in Java](https://www.baeldung.com/java-copy-hashmap)
+- [Guide to Java HashMap]()
 - [Guide to WeakHashMap in Java](https://www.baeldung.com/java-weakhashmap)
 - [Map to String Conversion in Java](https://www.baeldung.com/java-map-to-string-conversion)
 - [Iterate over a Map in Java](https://www.baeldung.com/java-iterate-map)

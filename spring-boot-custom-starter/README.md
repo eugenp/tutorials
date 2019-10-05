@@ -3,7 +3,7 @@
 This module contains articles about writing Spring Boot [starters](https://www.baeldung.com/spring-boot-starters).
 
 ### Relevant Articles: 
-- [Creating a Custom Starter with Spring Boot](http://www.baeldung.com/spring-boot-custom-starter)
+- [Creating a Custom Starter with Spring Boot](https://www.baeldung.com/spring-boot-custom-starter)
 
 - **greeter-library**: The sample library that we're creating the starter for.
 
@@ -13,4 +13,4 @@ This module contains articles about writing Spring Boot [starters](https://www.b
 
 - **greeter-spring-boot-sample-app**: The sample project that uses the custom starter.
 
-- [Multi-Module Project With Spring Boot](http://www.baeldung.com/spring-boot-multiple-modules)
+- [Multi-Module Project With Spring Boot](https://www.baeldung.com/spring-boot-multiple-modules)

@@ -19,7 +19,7 @@ import static org.hamcrest.CoreMatchers.*;
 public class ComponentScanAssignableTypeFilterAppIntegrationTest {
 
     @Test
-    public void testBean() {
+    public void whenAssignableTypeFilterIsUsed_thenComponentScanShouldRegisterBeanOfAssignableTypeAndItsSubClass() {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ComponentScanAssignableTypeFilterApp.class);
         List<String> beans = Arrays.stream(applicationContext.getBeanDefinitionNames())
             .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanAssignableTypeFilterApp"))

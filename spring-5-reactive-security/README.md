@@ -7,7 +7,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles
 
-- [Spring Boot Actuator](http://www.baeldung.com/spring-boot-actuators)
-- [Spring Security 5 for Reactive Applications](http://www.baeldung.com/spring-security-5-reactive)
-- [Guide to Spring 5 WebFlux](http://www.baeldung.com/spring-webflux)
+- [Spring Boot Actuator](https://www.baeldung.com/spring-boot-actuators)
+- [Spring Security 5 for Reactive Applications](https://www.baeldung.com/spring-security-5-reactive)
+- [Guide to Spring 5 WebFlux](https://www.baeldung.com/spring-webflux)
 - [Introduction to the Functional Web Framework in Spring 5](https://www.baeldung.com/spring-5-functional-web)
