@@ -1,4 +1,4 @@
-package com.baeldung.jenkins.helloworld;
+package com.baeldung.jenkins.plugins;
 
 import hudson.Extension;
 import hudson.FilePath;
