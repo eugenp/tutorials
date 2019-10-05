@@ -1,6 +1,6 @@
-=========
+## Core Java Lang
 
-## Core Java Lang Cookbooks and Examples
+This module contains articles about core features in the Java language
 
 ### Relevant Articles: 
 
@@ -31,3 +31,4 @@
 - [Variable Scope in Java](https://www.baeldung.com/java-variable-scope)
 - [Java Classes and Objects](https://www.baeldung.com/java-classes-objects)
 - [A Guide to Java Enums](https://www.baeldung.com/a-guide-to-java-enums)
+- [[More --> ]](/core-java-modules/core-java-lang-2)
