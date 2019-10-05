@@ -1,4 +1,4 @@
-package org.baeldung;
+package org.baeldung.javaxval.container.validation;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,8 +10,8 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import org.baeldung.valueextractors.ProfileValueExtractor;
 
+import org.baeldung.javaxval.container.validation.valueextractors.ProfileValueExtractor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,8 +20,10 @@ public class ContainerValidationIntegrationTest {
 
     @Before
     public void setup() {
-        ValidatorFactory factory = Validation.byDefaultProvider().configure()
-            .addValueExtractor(new ProfileValueExtractor()).buildValidatorFactory();
+        ValidatorFactory factory = Validation.byDefaultProvider()
+            .configure()
+            .addValueExtractor(new ProfileValueExtractor())
+            .buildValidatorFactory();
         validator = factory.getValidator();
     }
 
@@ -74,7 +76,7 @@ public class ContainerValidationIntegrationTest {
         assertEquals(0, violations.size());
     }
 
-    //@Test
+    @Test
     public void whenProfileCompanyNameBlank_thenValidationFails() {
         Customer customer = new Customer();
         customer.setName("John");

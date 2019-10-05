@@ -1,10 +1,10 @@
-package org.baeldung.valueextractors;
+package org.baeldung.javaxval.container.validation.valueextractors;
 
 import javax.validation.valueextraction.ExtractedValue;
 import javax.validation.valueextraction.UnwrapByDefault;
 import javax.validation.valueextraction.ValueExtractor;
 
-import org.baeldung.Profile;
+import org.baeldung.javaxval.container.validation.Profile;
 
 @UnwrapByDefault
 public class ProfileValueExtractor implements ValueExtractor<@ExtractedValue(type = String.class) Profile> {
