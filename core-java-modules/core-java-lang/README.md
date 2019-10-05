@@ -1,6 +1,6 @@
 ## Core Java Lang
 
-This module contains articles about core Java language
+This module contains articles about core features in the Java language
 
 ### Relevant Articles: 
 

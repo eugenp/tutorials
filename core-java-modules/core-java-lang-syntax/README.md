@@ -1,6 +1,6 @@
 ## Core Java Lang Syntax
 
-This module contains articles about core Java syntax
+This module contains articles about Java syntax
 
 ### Relevant Articles: 
 - [The Basics of Java Generics](http://www.baeldung.com/java-generics)

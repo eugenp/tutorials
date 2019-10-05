@@ -1,6 +1,6 @@
 ## Core Java Networking
 
-This module contains articles about core Java networking
+This module contains articles about networking in Java
 
 ### Relevant Articles
 

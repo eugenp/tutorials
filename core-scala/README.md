@@ -1,6 +1,6 @@
 ## Core Scala
 
-This module contains articles about core Scala
+This module contains articles about Scala's core features
 
 ### Relevant Articles: 
 
