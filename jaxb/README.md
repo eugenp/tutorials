@@ -1,2 +1,6 @@
+## JAXB
+
+This module contains articles about JAXB.
+
 ### Relevant Articles:
-- [Guide to JAXB](http://www.baeldung.com/jaxb)
+- [Guide to JAXB](https://www.baeldung.com/jaxb)

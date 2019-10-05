@@ -94,7 +94,7 @@ public class ValidationIntegrationTest {
         Set<ConstraintViolation<User>> violations = validator.validate(user);
         assertEquals(1, violations.size());
     }
-    
+
     @Test
     public void givenBlankPreference_thenValidationFails() {
         User user = createUser();
@@ -107,18 +107,18 @@ public class ValidationIntegrationTest {
     @Test
     public void givenEmptyOptional_thenValidationSucceeds() {
         User user = createUser();
-		
-        Set<ConstraintViolation<User>> violations = validator.validate(user);
-        assertEquals(0, violations.size());
-    }
-    
-    @Test
-    public void givenPastDateOfBirth_thenValidationSuccess() {
-        User user = createUser();		
-        user.setDateOfBirth(LocalDate.of(1980, 5, 20));		
 
         Set<ConstraintViolation<User>> violations = validator.validate(user);
         assertEquals(0, violations.size());
-		
+    }
+
+    @Test
+    public void givenPastDateOfBirth_thenValidationSuccess() {
+        User user = createUser();
+        user.setDateOfBirth(LocalDate.of(1980, 5, 20));
+
+        Set<ConstraintViolation<User>> violations = validator.validate(user);
+        assertEquals(0, violations.size());
+
     }
 }
