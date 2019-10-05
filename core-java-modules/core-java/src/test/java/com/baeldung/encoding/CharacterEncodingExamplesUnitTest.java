@@ -4,7 +4,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.nio.charset.*;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
+import java.nio.charset.MalformedInputException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -14,8 +19,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-
-import static java.nio.file.Files.newInputStream;
 
 public class CharacterEncodingExamplesUnitTest {
 
@@ -100,7 +103,7 @@ public class CharacterEncodingExamplesUnitTest {
         allCandidateCharSets.forEach(charset -> {
             try {
                 CharsetDecoder charsetDecoder = charset.newDecoder().onMalformedInput(CodingErrorAction.REPORT);
-                Reader reader = new InputStreamReader(newInputStream(path), charsetDecoder);
+                Reader reader = new InputStreamReader(Files.newInputStream(path), charsetDecoder);
                 BufferedReader bufferedReader = new BufferedReader(reader);
                 while (bufferedReader.readLine() != null) {
                 }
