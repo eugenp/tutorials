@@ -1,6 +1,6 @@
 ## Remoting HTTP
 
-This module contains articles about Spring Remoting with HTTP
+This module contains articles about Spring Remoting over HTTP
 
 ### Relevant Articles: 
 
