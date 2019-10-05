@@ -5,16 +5,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 
 import com.baeldung.batch.model.Book;
+import com.baeldung.batch.model.BookRecord;
 
-public class BookItemProcessor implements ItemProcessor<Book, Book> {
+public class BookItemProcessor implements ItemProcessor<BookRecord, Book> {
 
     private static Logger LOGGER = LoggerFactory.getLogger(BookItemProcessor.class);
 
     @Override
-    public Book process(Book item) throws Exception {
-        // no actual processing
-        LOGGER.info("Processing book {}", item);
-        return item;
+    public Book process(BookRecord item) throws Exception {
+        Book book = new Book();
+        book.setAuthor(item.getBookAuthor());
+        book.setName(item.getBookName());
+        LOGGER.info("Processing book {}", book);
+        return book;
     }
 
 }
