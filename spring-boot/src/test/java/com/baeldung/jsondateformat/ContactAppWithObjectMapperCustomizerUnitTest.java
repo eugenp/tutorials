@@ -2,11 +2,14 @@ package com.baeldung.jsondateformat;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -19,20 +22,30 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.DEFINED_PORT;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = DEFINED_PORT, classes = ContactApp.class)
-public class ContactAppWithObjectMapperCustomizerIntegrationTest {
+@SpringBootTest(webEnvironment = RANDOM_PORT, classes = ContactApp.class)
+public class ContactAppWithObjectMapperCustomizerUnitTest {
 
     private final ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
     TestRestTemplate restTemplate;
 
+    @LocalServerPort
+    int port;
+    
+    String url;
+
+    @Before
+    public void before() {
+        url=String.format("http://localhost:%s", port);
+    }
+    
     @Test
     public void givenDefaultDateFormatInAppPropertiesAndLegacyDateType_whenGet_thenReturnExpectedDateFormat() throws IOException {
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/contacts/plainWithJavaUtilDate", String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity(url + "/contacts/plainWithJavaUtilDate", String.class);
 
         assertEquals(200, response.getStatusCodeValue());
 
@@ -47,7 +60,7 @@ public class ContactAppWithObjectMapperCustomizerIntegrationTest {
 
     @Test
     public void givenDefaultDateFormatInAppPropertiesAndJava8DateType_whenGet_thenReturnExpectedDateFormat() throws IOException {
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/contacts/plain", String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity(url + "/contacts/plain", String.class);
 
         assertEquals(200, response.getStatusCodeValue());
 
