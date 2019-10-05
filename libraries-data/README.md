@@ -1,3 +1,7 @@
+## Data Libraries
+
+This module contains articles about libraries for data processing in Java.
+
 ### Relevant articles
 - [Introduction to Reladomo](https://www.baeldung.com/reladomo)
 - [Introduction to ORMLite](https://www.baeldung.com/ormlite)
@@ -15,3 +19,4 @@
 - [Introduction to Kafka Connectors](https://www.baeldung.com/kafka-connectors-guide)
 - [Kafka Connect Example with MQTT and MongoDB](https://www.baeldung.com/kafka-connect-mqtt-mongodb)
 - [Building a Data Pipeline with Flink and Kafka](https://www.baeldung.com/kafka-flink-data-pipeline)
+- More articles: [[next -->]](/libraries-data-2)
