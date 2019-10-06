@@ -30,9 +30,15 @@
             <version>${spring.version}</version>
         </dependency>
         <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>${annotation-api.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -60,6 +66,7 @@
 
     <properties>
         <maven.surefire.version>2.22.1</maven.surefire.version>
+        <annotation-api.version>1.3.2</annotation-api.version>
     </properties>
 
 </project>

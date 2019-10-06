@@ -4,8 +4,6 @@ This module contains articles about core Spring functionality
 
 ## Relevant Articles:
 
-- [Understanding getBean() in Spring](https://www.baeldung.com/spring-getbean)
-
 - [Guide to Spring @Autowired](http://www.baeldung.com/spring-autowire)
 - [Spring Profiles](http://www.baeldung.com/spring-profiles)
 - [A Spring Custom Annotation for a Better DAO](http://www.baeldung.com/spring-annotation-bean-pre-processor)
@@ -17,7 +15,4 @@ This module contains articles about core Spring functionality
 - [Spring Events](https://www.baeldung.com/spring-events)
 - [Spring Null-Safety Annotations](https://www.baeldung.com/spring-null-safety-annotations)
 - [Using @Autowired in Abstract Classes](https://www.baeldung.com/spring-autowired-abstract-class)
-- [Exploring the Spring BeanFactory API](https://www.baeldung.com/spring-beanfactory)
-- [How to use the Spring FactoryBean?](https://www.baeldung.com/spring-factorybean)
-- [Spring – Injecting Collections](https://www.baeldung.com/spring-injecting-collections)
 - More articles: [[<-- prev]](/spring-core)
