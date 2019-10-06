@@ -43,6 +43,12 @@
 			<artifactId>serenity-rest-assured</artifactId>
 			<version>${serenity.version}</version>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>io.rest-assured</groupId>
+					<artifactId>rest-assured</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>net.serenity-bdd</groupId>
@@ -112,6 +118,13 @@
 			<artifactId>assertj-core</artifactId>
 			<version>${assertj.version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hamcrest/java-hamcrest -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>java-hamcrest</artifactId>
+			<version>${java-hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>net.serenity-bdd</groupId>
@@ -155,16 +168,17 @@
 	</build>
 
 	<properties>
-		<serenity.version>1.9.26</serenity.version>
-		<serenity.jbehave.version>1.41.0</serenity.jbehave.version>
+		<serenity.version>1.9.9</serenity.version>
+		<serenity.jbehave.version>1.9.0</serenity.jbehave.version>
 		<serenity.jira.version>1.9.0</serenity.jira.version>
 		<serenity.plugin.version>1.9.27</serenity.plugin.version>
 		<jsonassert.version>1.5.0</jsonassert.version>
 		<awaitility.version>3.0.0</awaitility.version>
 		<hoverfly-java.version>0.8.1</hoverfly-java.version>
 		<spring.version>4.3.8.RELEASE</spring.version>
-		<spring-mock-mvc.version>3.0.3</spring-mock-mvc.version>
+		<spring-mock-mvc.version>4.1.1</spring-mock-mvc.version>
 		<assertj.version>3.6.2</assertj.version>
+		<java-hamcrest.version>2.0.0.0</java-hamcrest.version>
 
 	</properties>
 </project>

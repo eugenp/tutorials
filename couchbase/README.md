@@ -1,11 +1,11 @@
 ## Couchbase SDK Tutorial Project
 
 ### Relevant Articles:
-- [Introduction to Couchbase SDK for Java](http://www.baeldung.com/java-couchbase-sdk)
-- [Using Couchbase in a Spring Application](http://www.baeldung.com/couchbase-sdk-spring)
-- [Asynchronous Batch Operations in Couchbase](http://www.baeldung.com/async-batch-operations-in-couchbase)
-- [Querying Couchbase with MapReduce Views](http://www.baeldung.com/couchbase-query-mapreduce-view)
-- [Querying Couchbase with N1QL](http://www.baeldung.com/n1ql-couchbase)
+- [Introduction to Couchbase SDK for Java](https://www.baeldung.com/java-couchbase-sdk)
+- [Using Couchbase in a Spring Application](https://www.baeldung.com/couchbase-sdk-spring)
+- [Asynchronous Batch Operations in Couchbase](https://www.baeldung.com/async-batch-operations-in-couchbase)
+- [Querying Couchbase with MapReduce Views](https://www.baeldung.com/couchbase-query-mapreduce-view)
+- [Querying Couchbase with N1QL](https://www.baeldung.com/n1ql-couchbase)
 
 ### Overview
 This Maven project contains the Java code for the Couchbase entities and Spring services

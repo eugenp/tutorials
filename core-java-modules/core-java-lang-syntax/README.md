@@ -1,6 +1,6 @@
-=========
+## Core Java Lang Syntax
 
-## Core Java Lang Syntax Cookbooks and Examples
+This module contains articles about Java syntax
 
 ### Relevant Articles: 
 - [The Basics of Java Generics](http://www.baeldung.com/java-generics)
@@ -19,3 +19,4 @@
 - [Ternary Operator In Java](https://www.baeldung.com/java-ternary-operator)
 - [Java instanceof Operator](https://www.baeldung.com/java-instanceof)
 - [Breaking Out of Nested Loops](https://www.baeldung.com/java-breaking-out-nested-loop)
+- [[More -->]](/core-java-modules/core-java-lang-syntax-2)

@@ -1,6 +1,8 @@
 package com.baeldung.requestmapping;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -96,6 +98,30 @@ public class FooMappingExamplesController {
     @ResponseBody
     public String putAndPostFoos() {
         return "Advanced - PUT and POST within single method";
+    }
+ 
+    // --- Ambiguous Mapping
+ 
+    @GetMapping(value = "foos/duplicate" )
+    public String duplicate() {
+        return "Duplicate";
+    }
+    
+    // uncomment for exception of type java.lang.IllegalStateException: Ambiguous mapping
+
+    // @GetMapping(value = "foos/duplicate" )
+    // public String duplicateEx() {
+    // return "Duplicate";
+    // }
+    
+    @GetMapping(value = "foos/duplicate/xml", produces = MediaType.APPLICATION_XML_VALUE)
+    public String duplicateXml() {
+        return "Duplicate Xml";
+    }
+     
+    @GetMapping(value = "foos/duplicate/json", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String duplicateJson() {
+        return "Duplicate Json";
     }
 
 }
