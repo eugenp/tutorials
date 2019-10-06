@@ -1,9 +1,9 @@
-=========
+## Guava Collections 
 
-## Guava and Hamcrest Cookbooks and Examples
-
+This module contains articles about Google Guava collections
 
 ### Relevant Articles: 
+
 - [Guava Collections Cookbook](https://www.baeldung.com/guava-collections)
 - [Guava Ordering Cookbook](https://www.baeldung.com/guava-order)
 - [Hamcrest Collections Cookbook](https://www.baeldung.com/hamcrest-collections-arrays)
