@@ -39,10 +39,7 @@ public class CharacterEncodingExamples {
         CharsetDecoder charsetDecoder = charset.newDecoder();
         charsetDecoder.onMalformedInput(codingErrorAction);
         return new BufferedReader(
-                new InputStreamReader(
-                        new ByteArrayInputStream(input.getBytes()),
-                        charsetDecoder))
-                .readLine();
-
+          new InputStreamReader(
+            new ByteArrayInputStream(input.getBytes()), charsetDecoder)).readLine();
     }
 }
