@@ -1,6 +1,6 @@
 ## Akka Streams
 
-This module contains articles about streams in Akka. 
+This module contains articles about Akka Streams. 
 
 ### Relevant articles
 

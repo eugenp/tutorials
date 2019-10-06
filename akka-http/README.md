@@ -1,6 +1,6 @@
 ## Akka HTTP
 
-This module contains articles about HTTP with Akka. 
+This module contains articles about Akka HTTP. 
 
 ### Relevant articles:
 
