@@ -13,7 +13,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Guide to Spring @Autowired](http://www.baeldung.com/spring-autowire)
 - [Spring Profiles](http://www.baeldung.com/spring-profiles)
 - [A Spring Custom Annotation for a Better DAO](http://www.baeldung.com/spring-annotation-bean-pre-processor)
-- [What’s New in Spring 4.3?](http://www.baeldung.com/whats-new-in-spring-4-3)
 - [Running Setup Data on Startup in Spring](http://www.baeldung.com/running-setup-logic-on-startup-in-spring)
 - [Quick Guide to Spring Bean Scopes](http://www.baeldung.com/spring-bean-scopes)
 - [Custom Scope in Spring](http://www.baeldung.com/spring-custom-scope)
