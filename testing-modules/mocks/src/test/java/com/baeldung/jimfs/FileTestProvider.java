@@ -1,4 +1,4 @@
-package com.baeldung.jimf;
+package com.baeldung.jimfs;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

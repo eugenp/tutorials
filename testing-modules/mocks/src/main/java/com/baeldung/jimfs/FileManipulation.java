@@ -1,4 +1,4 @@
-package com.baeldung.jimf;
+package com.baeldung.jimfs;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
