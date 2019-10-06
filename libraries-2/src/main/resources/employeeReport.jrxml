@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employeeReport" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="employeeReport" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20"
+              topMargin="20" bottomMargin="20">
     <parameter name="title" class="java.lang.String" isForPrompting="false"/>
     <parameter name="condition" class="java.lang.String" isForPrompting="false">
         <defaultValueExpression><![CDATA[" 1 = 1"]]></defaultValueExpression>
     </parameter>
     <parameter name="minSalary" class="java.lang.Double" isForPrompting="false"/>
     <queryString>
-		<![CDATA[SELECT * FROM EMPLOYEE WHERE SALARY >= $P{minSalary} AND $P!{condition}]]>
+        <![CDATA[SELECT * FROM EMPLOYEE WHERE SALARY >= $P{minSalary} AND $P!{condition}]]>
     </queryString>
     <field name="FIRST_NAME" class="java.lang.String"/>
     <field name="LAST_NAME" class="java.lang.String"/>
@@ -44,7 +48,8 @@
                     <subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
                 </subreportParameter>
                 <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-                <subreportExpression class="java.lang.String"><![CDATA["employeeEmailReport.jasper"]]></subreportExpression>
+                <subreportExpression class="java.lang.String">
+                    <![CDATA["employeeEmailReport.jasper"]]></subreportExpression>
             </subreport>
         </band>
     </detail>

@@ -15,10 +15,10 @@
             org.springframework.web.context.ContextLoaderListener
         </listener-class>
     </listener>-->
-  	<!--<context-param>
-    	<param-name>contextConfigLocation</param-name>
-    	<param-value>/WEB-INF/rootApplicationContext.xml</param-value>
-	</context-param>-->
+    <!--<context-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/rootApplicationContext.xml</param-value>
+  </context-param>-->
     <!--<context-param>
         <param-name>contextClass</param-name>
         <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
@@ -32,7 +32,7 @@
         <param-value>org.baeldung.bean.config</param-value>
     </context-param>-->
 
-	<!-- secure web app context -->
+    <!-- secure web app context -->
     <!--<servlet>
         <servlet-name>secure-webapp</servlet-name>
         <servlet-class>
@@ -48,7 +48,7 @@
         <servlet-name>secure-webapp</servlet-name>
         <url-pattern>/s/api/*</url-pattern>
     </servlet-mapping>-->
-    
+
     <!-- normal web app context -->
     <!--<servlet>
         <servlet-name>normal-webapp</servlet-name>

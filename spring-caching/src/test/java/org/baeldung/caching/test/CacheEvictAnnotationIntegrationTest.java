@@ -26,54 +26,54 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration
 public class CacheEvictAnnotationIntegrationTest {
 
-	@Configuration
-	@EnableCaching
-	static class ContextConfiguration {
+    @Configuration
+    @EnableCaching
+    static class ContextConfiguration {
 
-		@Bean
-		public CachingService cachingService() {
-			return new CachingService();
-		}
-		
-		@Bean
-		public CacheManager cacheManager(){
-			SimpleCacheManager cacheManager = new SimpleCacheManager();
-			List<Cache> caches = new ArrayList<>();
-			caches.add(cacheBean().getObject());
-			cacheManager.setCaches(caches );
-			return cacheManager;
-		}
-		
-		@Bean
-		public ConcurrentMapCacheFactoryBean cacheBean(){
-			ConcurrentMapCacheFactoryBean cacheFactoryBean = new ConcurrentMapCacheFactoryBean();
-			cacheFactoryBean.setName("first");
-			return cacheFactoryBean;
-		}
-	}
+        @Bean
+        public CachingService cachingService() {
+            return new CachingService();
+        }
 
-	@Autowired
-	CachingService cachingService;
+        @Bean
+        public CacheManager cacheManager() {
+            SimpleCacheManager cacheManager = new SimpleCacheManager();
+            List<Cache> caches = new ArrayList<>();
+            caches.add(cacheBean().getObject());
+            cacheManager.setCaches(caches);
+            return cacheManager;
+        }
 
-	@Before
-	public void before() {
-		cachingService.putToCache("first", "key1", "Baeldung");
-		cachingService.putToCache("first", "key2", "Article");
-	}
+        @Bean
+        public ConcurrentMapCacheFactoryBean cacheBean() {
+            ConcurrentMapCacheFactoryBean cacheFactoryBean = new ConcurrentMapCacheFactoryBean();
+            cacheFactoryBean.setName("first");
+            return cacheFactoryBean;
+        }
+    }
 
-	@Test
-	public void givenFirstCache_whenSingleCacheValueEvictRequested_thenEmptyCacheValue() {
-		cachingService.evictSingleCacheValue("key1");
-		String key1 = cachingService.getFromCache("first", "key1");
-		assertThat(key1, is(nullValue()));
-	}
+    @Autowired
+    CachingService cachingService;
 
-	@Test
-	public void givenFirstCache_whenAllCacheValueEvictRequested_thenEmptyCache() {
-		cachingService.evictAllCacheValues();
-		String key1 = cachingService.getFromCache("first", "key1");
-		String key2 = cachingService.getFromCache("first", "key2");
-		assertThat(key1, is(nullValue()));
-		assertThat(key2, is(nullValue()));
-	}
+    @Before
+    public void before() {
+        cachingService.putToCache("first", "key1", "Baeldung");
+        cachingService.putToCache("first", "key2", "Article");
+    }
+
+    @Test
+    public void givenFirstCache_whenSingleCacheValueEvictRequested_thenEmptyCacheValue() {
+        cachingService.evictSingleCacheValue("key1");
+        String key1 = cachingService.getFromCache("first", "key1");
+        assertThat(key1, is(nullValue()));
+    }
+
+    @Test
+    public void givenFirstCache_whenAllCacheValueEvictRequested_thenEmptyCache() {
+        cachingService.evictAllCacheValues();
+        String key1 = cachingService.getFromCache("first", "key1");
+        String key2 = cachingService.getFromCache("first", "key2");
+        assertThat(key1, is(nullValue()));
+        assertThat(key2, is(nullValue()));
+    }
 }

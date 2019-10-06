@@ -24,39 +24,39 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
 public class CacheManagerEvictIntegrationTest {
-	
-	@Configuration
-	static class ContextConfiguration {
 
-		@Bean
-		public CachingService cachingService() {
-			return new CachingService();
-		}
-		
-		@Bean
-		public CacheManager cacheManager(){
-			SimpleCacheManager cacheManager = new SimpleCacheManager();
-			List<Cache> caches = new ArrayList<>();
-			caches.add(cacheBeanFirst().getObject());
-			caches.add(cacheBeanSecond().getObject());
-			cacheManager.setCaches(caches );
-			return cacheManager;
-		}
-		
-		@Bean
-		public ConcurrentMapCacheFactoryBean cacheBeanFirst(){
-			ConcurrentMapCacheFactoryBean cacheFactoryBean = new ConcurrentMapCacheFactoryBean();
-			cacheFactoryBean.setName("first");
-			return cacheFactoryBean;
-		}
-		
-		@Bean
-		public ConcurrentMapCacheFactoryBean cacheBeanSecond(){
-			ConcurrentMapCacheFactoryBean cacheFactoryBean = new ConcurrentMapCacheFactoryBean();
-			cacheFactoryBean.setName("second");
-			return cacheFactoryBean;
-		}
-	}
+    @Configuration
+    static class ContextConfiguration {
+
+        @Bean
+        public CachingService cachingService() {
+            return new CachingService();
+        }
+
+        @Bean
+        public CacheManager cacheManager() {
+            SimpleCacheManager cacheManager = new SimpleCacheManager();
+            List<Cache> caches = new ArrayList<>();
+            caches.add(cacheBeanFirst().getObject());
+            caches.add(cacheBeanSecond().getObject());
+            cacheManager.setCaches(caches);
+            return cacheManager;
+        }
+
+        @Bean
+        public ConcurrentMapCacheFactoryBean cacheBeanFirst() {
+            ConcurrentMapCacheFactoryBean cacheFactoryBean = new ConcurrentMapCacheFactoryBean();
+            cacheFactoryBean.setName("first");
+            return cacheFactoryBean;
+        }
+
+        @Bean
+        public ConcurrentMapCacheFactoryBean cacheBeanSecond() {
+            ConcurrentMapCacheFactoryBean cacheFactoryBean = new ConcurrentMapCacheFactoryBean();
+            cacheFactoryBean.setName("second");
+            return cacheFactoryBean;
+        }
+    }
 
     @Autowired
     CachingService cachingService;

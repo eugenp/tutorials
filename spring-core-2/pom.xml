@@ -40,11 +40,6 @@
             <artifactId>spring-retry</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.shell</groupId>
-            <artifactId>spring-shell</artifactId>
-            <version>${org.springframework.shell.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-websocket</artifactId>
         </dependency>
@@ -103,17 +98,6 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports</artifactId>
-            <version>${jasperreports.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!-- test scoped -->
         <dependency>
@@ -218,7 +202,6 @@
         <start-class>org.baeldung.sample.App</start-class>
         <!-- Spring -->
         <org.springframework.version>5.0.6.RELEASE</org.springframework.version>
-        <org.springframework.shell.version>1.2.0.RELEASE</org.springframework.shell.version>
         <annotation-api.version>1.3.2</annotation-api.version>
         <!-- persistence -->
         <hibernate.version>5.2.5.Final</hibernate.version>
@@ -227,7 +210,6 @@
         <guava.version>25.1-jre</guava.version>
         <easymock.version>3.6</easymock.version>
         <assertj.version>3.6.1</assertj.version>
-        <jasperreports.version>6.6.0</jasperreports.version>
         <shedlock.version>2.1.0</shedlock.version>
         <javassist.version>3.22.0-GA</javassist.version>
     </properties>
