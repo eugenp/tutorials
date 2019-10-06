@@ -1,4 +1,8 @@
-## Relevant Articles:
+## Project Lombok
+
+This module contains articles about Project Lombok.
+
+### Relevant Articles:
 - [Introduction to Project Lombok](https://www.baeldung.com/intro-to-project-lombok)
 - [Using Lombok’s @Builder Annotation](https://www.baeldung.com/lombok-builder)
 - [Using Lombok’s @Getter for Boolean Fields](https://www.baeldung.com/lombok-getter-boolean)
