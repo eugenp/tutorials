@@ -4,12 +4,18 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Properties;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.batch.core.JobExecution;
+import org.springframework.batch.core.JobParameter;
+import org.springframework.batch.core.JobParameters;
+import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.item.ExecutionContext;
+import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.json.JsonFileItemWriter;
 import org.springframework.batch.item.support.ListItemWriter;
 import org.springframework.batch.test.AssertFile;
@@ -19,6 +25,7 @@ import org.springframework.batch.test.StepScopeTestExecutionListener;
 import org.springframework.batch.test.StepScopeTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -28,13 +35,21 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 
 import com.baeldung.batch.model.Book;
 import com.baeldung.batch.model.BookDetails;
+import com.baeldung.batch.model.BookRecord;
 
 @RunWith(SpringRunner.class)
 @SpringBatchTest
-@ContextConfiguration(classes = SpringBatchApplication.class)
+@EnableAutoConfiguration
+@ContextConfiguration(classes = { SpringBatchConfiguration.class })
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, StepScopeTestExecutionListener.class })
 @TestPropertySource("classpath:application-test.properties")
 public class SpringBatchIntegrationTest {
+
+    private static final String TEST_OUTPUT = "src/test/resources/actual-output.json";
+
+    private static final String EXPECTED_OUTPUT = "src/test/resources/expected-output.json";
+
+    private static final String TEST_INPUT = "src/test/resources/test-input.csv";
 
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
@@ -45,21 +60,24 @@ public class SpringBatchIntegrationTest {
     @Autowired
     private ListItemWriter<BookDetails> listItemWriter;
 
-    public StepExecution getStepExection() {
-        StepExecution execution = MetaDataInstanceFactory.createStepExecution();
-        execution.getExecutionContext()
-            .putString("input.data", "foo,bar,spam");
-        return execution;
+    @Autowired
+    private FlatFileItemReader<BookRecord> itemReader;
+
+    private JobParameters defaultJobParameters() {
+        JobParametersBuilder paramsBuilder = new JobParametersBuilder();
+        paramsBuilder.addString("file.input", TEST_INPUT);
+        paramsBuilder.addString("file.output", TEST_OUTPUT);
+        return paramsBuilder.toJobParameters();
     }
 
     @Test
     public void givenReferenceOutput_whenJobExecuted_thenSuccess() throws Exception {
         // given
-        FileSystemResource expectedResult = new FileSystemResource("src/test/resources/expected-output.json");
-        FileSystemResource actualResult = new FileSystemResource("src/test/resources/actual-output.json");
+        FileSystemResource expectedResult = new FileSystemResource(EXPECTED_OUTPUT);
+        FileSystemResource actualResult = new FileSystemResource(TEST_OUTPUT);
 
         // when
-        JobExecution jobExecution = jobLauncherTestUtils.launchJob();
+        JobExecution jobExecution = jobLauncherTestUtils.launchJob(defaultJobParameters());
 
         // then
         assertThat(jobExecution.getJobInstance()
@@ -73,11 +91,11 @@ public class SpringBatchIntegrationTest {
     public void givenReferenceOutput_whenStep1Executed_thenSuccess() throws Exception {
 
         // given
-        FileSystemResource expectedResult = new FileSystemResource("src/test/resources/expected-output.json");
-        FileSystemResource actualResult = new FileSystemResource("src/test/resources/actual-output.json");
+        FileSystemResource expectedResult = new FileSystemResource(EXPECTED_OUTPUT);
+        FileSystemResource actualResult = new FileSystemResource(TEST_OUTPUT);
 
         // when
-        JobExecution jobExecution = jobLauncherTestUtils.launchStep("step1");
+        JobExecution jobExecution = jobLauncherTestUtils.launchStep("step1", defaultJobParameters());
 
         // then
         assertThat(jobExecution.getStepExecutions()
@@ -88,14 +106,20 @@ public class SpringBatchIntegrationTest {
     }
 
     @Test
-    public void givenReferenceOutput_whenStep2Executed_thenSuccess() {
+    public void whenStep2Executed_thenSuccess() {
 
+        // when
         JobExecution jobExecution = jobLauncherTestUtils.launchStep("step2");
 
+        // then
         assertThat(jobExecution.getStepExecutions()
             .size(), is(1));
         assertThat(jobExecution.getExitStatus()
             .getExitCode(), is("COMPLETED"));
+        jobExecution.getStepExecutions()
+            .forEach(stepExecution -> {
+                assertThat(stepExecution.getWriteCount(), is(8));
+            });
     }
 
     @Test
@@ -103,7 +127,7 @@ public class SpringBatchIntegrationTest {
 
         // given
         FileSystemResource expectedResult = new FileSystemResource("src/test/resources/writer-expected-output.json");
-        FileSystemResource actualResult = new FileSystemResource("src/test/resources/actual-output.json");
+        FileSystemResource actualResult = new FileSystemResource(TEST_OUTPUT);
         Book demoBook = new Book();
         demoBook.setAuthor("lorem");
         demoBook.setName("ipsum");
@@ -145,4 +169,5 @@ public class SpringBatchIntegrationTest {
             return null;
         });
     }
+
 }
