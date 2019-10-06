@@ -1,4 +1,4 @@
-package com.baeldung.springbootnonwebapp;
+package com.baeldung.springbootconsoleapp;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

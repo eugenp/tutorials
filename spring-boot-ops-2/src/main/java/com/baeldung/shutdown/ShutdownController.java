@@ -1,4 +1,4 @@
-package com.baeldung.shutdown.shutdown;
+package com.baeldung.shutdown;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

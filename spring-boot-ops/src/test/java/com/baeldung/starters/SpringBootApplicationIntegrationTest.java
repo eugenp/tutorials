@@ -1,4 +1,4 @@
-package org.baeldung;
+package com.baeldung.starters;
 
 import org.baeldung.boot.Application;
 import org.baeldung.boot.domain.Modes;
