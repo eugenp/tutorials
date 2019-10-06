@@ -1,55 +1,99 @@
 package com.baeldung.jcommander.usagebilling.cli;
 
-import static com.baeldung.jcommander.usagebilling.service.SubmitUsageService.getDefault;
-
 import com.baeldung.jcommander.usagebilling.cli.UsageBasedBilling.Constants;
 import com.baeldung.jcommander.usagebilling.cli.converter.ISO8601TimestampConverter;
+import com.baeldung.jcommander.usagebilling.cli.validator.UUIDValidator;
 import com.baeldung.jcommander.usagebilling.model.UsageRequest;
 import com.baeldung.jcommander.usagebilling.model.UsageRequest.PricingType;
 import com.baeldung.jcommander.usagebilling.service.SubmitUsageService;
+import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 import com.beust.jcommander.converters.BigDecimalConverter;
+import lombok.Getter;
+
 import java.math.BigDecimal;
 import java.time.Instant;
 
-@Parameters(commandNames = {Constants.SUBMIT_CMD})
+import static com.baeldung.jcommander.usagebilling.service.SubmitUsageService.getDefault;
+
+@Parameters(
+  commandNames = { Constants.SUBMIT_CMD },
+  commandDescription = "Submit usage for a given customer and subscription, accepts one usage item"
+)
+@Getter
 class SubmitUsageCommand {
 
-  SubmitUsageCommand() {
-  }
+    SubmitUsageCommand() {
+    }
 
-  private SubmitUsageService service = getDefault();
+    private SubmitUsageService service = getDefault();
 
-  @Parameter(names = {"--customer", "-C"}, required = true)
-  private String customerId;
+    @Parameter(names = "--help", help = true)
+    private boolean help;
 
-  @Parameter(names = {"--subscription", "-S"}, required = true)
-  private String subscriptionId;
+    @Parameter(
+      names = { "--customer", "-C" },
+      description = "Id of the Customer who's using the services",
+      validateWith = UUIDValidator.class,
+      order = 1,
+      required = true
+    )
+    private String customerId;
 
-  @Parameter(names = {"--pricing-type", "-P"}, required = true)
-  private PricingType pricingType;
+    @Parameter(
+      names = { "--subscription", "-S" },
+      description = "Id of the Subscription that was purchased",
+      order = 2,
+      required = true
+    )
+    private String subscriptionId;
 
-  @Parameter(names = {"--quantity"}, required = true)
-  private Integer quantity;
+    @Parameter(
+      names = { "--pricing-type", "-P" },
+      description = "Pricing type of the usage reported",
+      order = 3,
+      required = true
+    )
+    private PricingType pricingType;
 
-  @Parameter(names = {"--timestamp"}, required = true, converter = ISO8601TimestampConverter.class)
-  private Instant timestamp;
+    @Parameter(
+      names = { "--quantity" },
+      description = "Used quantity; reported quantity is added over the billing period",
+      order = 3,
+      required = true
+    )
+    private Integer quantity;
 
-  @Parameter(names = {"--price"}, converter = BigDecimalConverter.class)
-  private BigDecimal price;
+    @Parameter(
+      names = { "--timestamp" },
+      description = "Timestamp of the usage event, must lie in the current billing period",
+      converter = ISO8601TimestampConverter.class,
+      order = 4,
+      required = true
+    )
+    private Instant timestamp;
 
-  void submit() {
-    UsageRequest req = UsageRequest.builder()
-        .customerId(this.customerId)
-        .subscriptionId(this.subscriptionId)
-        .pricingType(this.pricingType)
-        .quantity(this.quantity)
-        .timestamp(this.timestamp)
-        .price(this.price)
-        .build();
-    
-    String reqId = service.submit(req);
-    System.out.println("Generated Request Id for reference: " + reqId);
-  }
+    @Parameter(
+      names = { "--price" },
+      description = "If PRE_RATED, unit price to be applied per unit of usage quantity reported",
+      order = 5
+    )
+    private BigDecimal price;
+
+    void submit() {
+        
+        UsageRequest req = UsageRequest
+          .builder()
+          .customerId(this.customerId)
+          .subscriptionId(this.subscriptionId)
+          .pricingType(this.pricingType)
+          .quantity(this.quantity)
+          .timestamp(this.timestamp)
+          .price(this.price)
+          .build();
+
+        String reqId = service.submit(req);
+        System.out.println("Generated Request Id for reference: " + reqId);
+    }
 }

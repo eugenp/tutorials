@@ -1,11 +1,8 @@
 package com.baeldung.jcommander.usagebilling.model;
 
+import lombok.*;
+
 import java.util.List;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
@@ -13,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class CurrentChargesRequest {
 
-  private String customerId;
-  private List<String> subscriptionIds;
+    private String customerId;
+    private List<String> subscriptionIds;
+    private boolean itemized;
 }

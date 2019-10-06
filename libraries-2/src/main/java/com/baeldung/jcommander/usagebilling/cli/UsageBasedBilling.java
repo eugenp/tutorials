@@ -1,45 +1,82 @@
 package com.baeldung.jcommander.usagebilling.cli;
 
 import com.beust.jcommander.JCommander;
-import com.beust.jcommander.Parameters;
+import com.beust.jcommander.ParameterException;
+import com.beust.jcommander.UnixStyleUsageFormatter;
 
-@Parameters(commandDescription = "")
 public class UsageBasedBilling {
 
-  private SubmitUsageCommand createOrderCmd;
-  private FetchCurrentChargesCommand fetchTradesCmd;
+    private JCommander main;
+    private SubmitUsageCommand submitUsageCmd;
+    private FetchCurrentChargesCommand fetchChargesCmd;
 
-  public UsageBasedBilling() {
-    this.createOrderCmd = new SubmitUsageCommand();
-    this.fetchTradesCmd = new FetchCurrentChargesCommand();
-  }
+    public UsageBasedBilling() {
+        this.submitUsageCmd = new SubmitUsageCommand();
+        this.fetchChargesCmd = new FetchCurrentChargesCommand();
+        main = JCommander
+          .newBuilder()
+          .addObject(this)
+          .addCommand(submitUsageCmd)
+          .addCommand(fetchChargesCmd)
+          .build();
 
-  public void run(String[] args) {
-    JCommander jc = JCommander.newBuilder()
-        .addObject(this)
-        .addCommand(createOrderCmd)
-        .addCommand(fetchTradesCmd)
-        .build();
-
-    jc.parse(args);
-
-    String cmd = jc.getParsedCommand();
-    if (Constants.SUBMIT_CMD.equalsIgnoreCase(cmd)) {
-      System.out.println("Parsing usage request...");
-      this.createOrderCmd.submit();
-
-    } else if (Constants.FETCH_CMD.equalsIgnoreCase(cmd)) {
-      System.out.println("Preparing query...");
-      this.fetchTradesCmd.fetch();
-
-    } else {
-      System.err.println("Invalid command: " + cmd);
+        setUsageFormatter(Constants.SUBMIT_CMD);
+        setUsageFormatter(Constants.FETCH_CMD);
     }
-  }
 
-  static class Constants {
+    public void run(String[] args) {
+        String parsedCmdStr;
+        try {
+            main.parse(args);
+            parsedCmdStr = main.getParsedCommand();
 
-    static final String SUBMIT_CMD = "submit";
-    static final String FETCH_CMD = "fetch";
-  }
+            if (Constants.SUBMIT_CMD.equalsIgnoreCase(parsedCmdStr)) {
+                if (this.submitUsageCmd.isHelp()) {
+                    getSubCommandHandle(Constants.SUBMIT_CMD).usage();
+                }
+                System.out.println("Parsing usage request...");
+                this.submitUsageCmd.submit();
+
+            } else if (Constants.FETCH_CMD.equalsIgnoreCase(parsedCmdStr)) {
+                if (this.fetchChargesCmd.isHelp()) {
+                    getSubCommandHandle(Constants.SUBMIT_CMD).usage();
+                }
+                System.out.println("Preparing fetch query...");
+                this.fetchChargesCmd.fetch();
+
+            } else {
+                System.err.println("Invalid command: " + parsedCmdStr);
+            }
+        } catch (ParameterException e) {
+            System.err.println(e.getLocalizedMessage());
+            parsedCmdStr = main.getParsedCommand();
+            if (parsedCmdStr != null) {
+                getSubCommandHandle(parsedCmdStr).usage();
+            } else {
+                main.usage();
+            }
+        }
+    }
+
+    private JCommander getSubCommandHandle(String command) {
+        JCommander cmd = main
+          .getCommands()
+          .get(command);
+
+        if (cmd == null) {
+            System.err.println("Invalid command: " + command);
+        }
+        return cmd;
+    }
+
+    private void setUsageFormatter(String subCommand) {
+        JCommander cmd = getSubCommandHandle(subCommand);
+        cmd.setUsageFormatter(new UnixStyleUsageFormatter(cmd));
+    }
+
+    static class Constants {
+
+        static final String SUBMIT_CMD = "submit";
+        static final String FETCH_CMD = "fetch";
+    }
 }
