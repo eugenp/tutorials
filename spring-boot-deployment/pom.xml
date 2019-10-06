@@ -102,14 +102,14 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-				<excludes>
-					<exclude>**/conf.properties</exclude>
-				</excludes>
-			</resource>
-		</resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/conf.properties</exclude>
+                </excludes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -126,28 +126,28 @@
                 </executions>
             </plugin>
             <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>2.18</version>
-				<executions>
-					<!-- Invokes both the integration-test and the verify goals of the Failsafe 
-						Maven plugin -->
-					<execution>
-						<id>integration-tests</id>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-						<configuration>
-							<!-- Skips integration tests if the value of skip.integration.tests 
-								property is true -->
-								<includes>
-										<include>**/ExternalPropertyFileLoaderIntegrationTest.java</include>
-									</includes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.18</version>
+                <executions>
+                    <!-- Invokes both the integration-test and the verify goals of the Failsafe 
+                        Maven plugin -->
+                    <execution>
+                        <id>integration-tests</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Skips integration tests if the value of skip.integration.tests 
+                                property is true -->
+                                <includes>
+                                        <include>**/ExternalPropertyFileLoaderIntegrationTest.java</include>
+                                    </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
