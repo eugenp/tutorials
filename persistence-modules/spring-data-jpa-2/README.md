@@ -13,3 +13,4 @@
 - [Difference Between save() and saveAndFlush() in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-save-saveandflush)
 - [Derived Query Methods in Spring Data JPA Repositories](https://www.baeldung.com/spring-data-derived-queries)
 - [LIKE Queries in Spring JPA Repositories](https://www.baeldung.com/spring-jpa-like-queries)
+- [Customizing the Result of JPA Queries with Aggregation Functions](https://www.baeldung.com/spring-jpa-aggregation-function-queries)
