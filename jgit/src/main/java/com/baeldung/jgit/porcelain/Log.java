@@ -49,14 +49,14 @@ public class Log {
 
                 logs = git.log()
                         // for all log.all()
-                        .addPath("README.md")
+                        .addPath("README.MD")
                         .call();
                 count = 0;
                 for (RevCommit rev : logs) {
                     //System.out.println("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
                     count++;
                 }
-                System.out.println("Had " + count + " commits on README.md");
+                System.out.println("Had " + count + " commits on README.MD");
 
                 logs = git.log()
                         // for all log.all()
