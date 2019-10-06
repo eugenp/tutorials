@@ -1,6 +1,6 @@
-=========
+## Core Java Lang OOP
 
-## Core Java Lang OOP Cookbooks and Examples
+This module contains articles about Object-oriented programming (OOP) in Java
 
 ### Relevant Articles: 
 - [Guide to hashCode() in Java](https://www.baeldung.com/java-hashcode)
@@ -13,3 +13,4 @@
 - [The “final” Keyword in Java](https://www.baeldung.com/java-final)
 - [Type Erasure in Java Explained](https://www.baeldung.com/java-type-erasure)
 - [Variable and Method Hiding in Java](https://www.baeldung.com/java-variable-method-hiding)
+- [[More -->]](/core-java-modules/core-java-lang-oop-2)
