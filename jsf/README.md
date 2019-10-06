@@ -1,6 +1,6 @@
 ## JSF
 
-This module contains articles about JSF (JavaServer Faces).
+This module contains articles about JavaServer Faces (JSF).
 
 ### Relevant Articles:
 - [Guide to JSF Expression Language 3.0](https://www.baeldung.com/jsf-expression-language-el-3)

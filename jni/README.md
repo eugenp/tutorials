@@ -1,6 +1,6 @@
 ## JNI
 
-This module contains articles about JNI (the Java Native Interface).
+This module contains articles about the Java Native Interface (JNI).
 
 ### Relevant Articles: 
 
