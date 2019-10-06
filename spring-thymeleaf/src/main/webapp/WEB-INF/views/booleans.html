@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Expression utility objects</title>
+<style>
+	table {
+		border-collapse: collapse;
+	}
+	
+	td {
+		border: 1px solid black;
+		padding: .5em;
+	}
+</style>
+</head>
+<body>
+	<h1>'Truthy' and 'falsy' expressions</h1>
+	<ul>
+		<li>'true' is evaluated to <strong th:text="${#bools.isTrue(trueValue)}"></strong></li>
+		<li>'1' is evaluated to <strong th:text="${#bools.isTrue(one)}"></strong></li>
+		<li>non zero character is evaluated to <strong th:text="${#bools.isTrue(nonZeroCharacter)}"></strong></li>
+		<li>empty string is evaluated to <strong th:text="${#bools.isTrue(emptyString)}"></strong></li>
+		<li>the string "foo" is evaluated to <strong th:text="${#bools.isTrue(foo)}"></strong></li>
+		<li>an object is evaluated to <strong th:text="${#bools.isTrue(object)}"></strong></li>
+		<li>the array [0, 0] is evaluated to <strong th:text="${#bools.isTrue(arrayOfZeros)}"></strong></li>
+		<li>the array [0, 1] is evaluated to <strong th:text="${#bools.isTrue(arrayOfZeroAndOne)}"></strong></li>
+		<li>the array [1, 1] is evaluated to <strong th:text="${#bools.isTrue(arrayOfOnes)}"></strong></li>
+		
+		<li>null value is evaluated to <strong th:text="${#bools.isTrue(nullValue)}"></strong></li>
+		<li>'false' is evaluated to <strong th:text="${#bools.isTrue(falseValue)}"></strong></li>
+		<li>'0' is evaluated to <strong th:text="${#bools.isTrue(zero)}"></strong></li>
+		<li>zero character is evaluated to <strong th:text="${#bools.isTrue(zeroCharacter)}"></strong></li>
+		<li>the string "false" is evaluated to <strong th:text="${#bools.isTrue(falseString)}"></strong></li>
+		<li>the string "no" is evaluated to <strong th:text="${#bools.isTrue(no)}"></strong></li>
+		<li>the string "off" is evaluated to <strong th:text="${#bools.isTrue(off)}"></strong></li>
+	</ul>
+	
+	<h1>Using booleans as rendering conditions</h1>
+	<table>
+		<tr>
+			<td></td>
+			<td>th:if</td>
+			<td>th:unless</td>
+		</tr>
+		<tr>
+			<td>true</td>
+			<td><span th:if="${true}">will be rendered</span></td>
+			<td><span th:unless="${true}">won't be rendered</span></td>
+		</tr>
+		<tr>
+			<td>false</td>
+			<td><span th:if="${false}">won't be rendered</span></td>
+			<td><span th:unless="${false}">will be rendered</span></td>
+		</tr>
+	</table>
+	
+	<h1>Boolean and conditional operators</h1>
+	<table>
+		<tr>
+			<td>A</td>
+			<td>B</td>
+			<td>${A or B}</td>
+			<td>${A} or ${B}</td>
+			<td>${A and B}</td>
+			<td>${A} and ${B}</td>
+			<td>${!A}</td>
+			<td>!${A}</td>
+			<td>${not A}</td>
+			<td>not ${A}</td>
+		</tr>
+		<tr>
+			<td>true</td>
+			<td>true</td>
+			<td th:text="${true or true}"></td>
+			<td th:text="${true} or ${true}"></td>
+			<td th:text="${true and true}"></td>
+			<td th:text="${true} and ${true}"></td>
+			<td th:text="${!true}"></td>
+			<td th:text="!${true}"></td>
+			<td th:text="${not true}"></td>
+			<td th:text="not ${true}"></td>
+		</tr>
+		<tr>
+			<td>true</td>
+			<td>false</td>
+			<td th:text="${true or false}"></td>
+			<td th:text="${true} or ${false}"></td>
+			<td th:text="${true and false}"></td>
+			<td th:text="${true} and ${false}"></td>
+			<td th:text="${!true}"></td>
+			<td th:text="!${true}"></td>
+			<td th:text="${not true}"></td>
+			<td th:text="not ${true}"></td>
+		</tr>
+		<tr>
+			<td>false</td>
+			<td>true</td>
+			<td th:text="${false or true}"></td>
+			<td th:text="${false} or ${true}"></td>
+			<td th:text="${false and true}"></td>
+			<td th:text="${false} and ${true}"></td>
+			<td th:text="${!false}"></td>
+			<td th:text="!${false}"></td>
+			<td th:text="${not false}"></td>
+			<td th:text="not ${false}"></td>
+		</tr>
+		<tr>
+			<td>false</td>
+			<td>false</td>
+			<td th:text="${false or false}"></td>
+			<td th:text="${false} or ${false}"></td>
+			<td th:text="${false and false}"></td>
+			<td th:text="${false} and ${false}"></td>
+			<td th:text="${!false}"></td>
+			<td th:text="!${false}"></td>
+			<td th:text="${not false}"></td>
+			<td th:text="not ${false}"></td>
+		</tr>
+	</table>
+	
+	<ul>
+		<li> the result of "true ? 'then'" is <strong th:text="true ? 'then'"></strong></li>
+		<li> the result of "false ? 'then'" is <strong th:text="false ? 'then'"></strong></li>
+		<li> the result of "true ? 'then' : 'else'" is <strong th:text="true ? 'then' : 'else'"></strong></li>
+		<li> the result of "false ? 'then' : 'else'" is <strong th:text="false ? 'then' : 'else'"></strong></li>
+		<li> the result of "'foo' ?: 'bar'" is <strong th:text="'foo' ?: 'bar'"></strong></li>
+		<li> the result of "null ?: 'bar'" is <strong th:text="null ?: 'bar'"></strong></li>
+		<li> the result of "0 ?: 'bar'" is <strong th:text="0 ?: 'bar'"></strong></li>
+		<li> the result of "1 ?: 'bar'" is <strong th:text="1 ?: 'bar'"></strong></li>
+	</ul>
+	
+	<ul>
+		<li><span th:if="${isRaining or isCold}">The weather is bad</span></li>
+		<li><span th:if="${isRaining} or ${isCold}">The weather is bad</span></li>
+		<li><span th:if="${isSunny and isWarm}">The weather is good</span></li>
+		<li><span th:if="${isSunny} and ${isWarm}">The weather is good</span></li>
+		<li><span th:if="${not isCold}">It's warm</span></li>
+		<li><span th:if="${!isCold}">It's warm</span></li>
+		<li><span th:if="not ${isCold}">It's warm</span></li>
+		<li><span th:if="!${isCold}">It's warm</span></li>
+		<li>It's <span th:text="${isCold} ? 'cold' : 'warm'"></span></li>
+		<li><span th:text="${isRaining or isCold} ? 'The weather is bad'"></span></li>
+	</ul>
+	
+	<h1>#bools utility object</h1>
+	<table>
+		<tr>
+			<td>Array</td>
+			<td>#bools.arrayIsTrue()</td>
+			<td>#bools.arrayIsFalse()</td>
+			<td>#bools.arrayAnd()</td>
+			<td>#bools.arrayOr()</td>
+		</tr>
+		<tr>
+			<td>[0, 0]</td>
+			<td th:text="${#strings.arrayJoin(#bools.arrayIsTrue(arrayOfZeros), ',')}"></td>
+			<td th:text="${#strings.arrayJoin(#bools.arrayIsFalse(arrayOfZeros), ',')}"></td>
+			<td th:text="${#bools.arrayAnd(arrayOfZeros)}"></td>
+			<td th:text="${#bools.arrayOr(arrayOfZeros)}"></td>
+		</tr>
+		<tr>
+			<td>[0, 1]</td>
+			<td th:text="${#strings.arrayJoin(#bools.arrayIsTrue(arrayOfZeroAndOne), ',')}"></td>
+			<td th:text="${#strings.arrayJoin(#bools.arrayIsFalse(arrayOfZeroAndOne), ',')}"></td>
+			<td th:text="${#bools.arrayAnd(arrayOfZeroAndOne)}"></td>
+			<td th:text="${#bools.arrayOr(arrayOfZeroAndOne)}"></td>
+		</tr>
+		<tr>
+			<td>[1, 1]</td>
+			<td th:text="${#strings.arrayJoin(#bools.arrayIsTrue(arrayOfOnes), ',')}"></td>
+			<td th:text="${#strings.arrayJoin(#bools.arrayIsFalse(arrayOfOnes), ',')}"></td>
+			<td th:text="${#bools.arrayAnd(arrayOfOnes)}"></td>
+			<td th:text="${#bools.arrayOr(arrayOfOnes)}"></td>
+		</tr>
+	</table>
+</body>
+</html>

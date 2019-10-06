@@ -1,0 +1,43 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="normal.para.spacing">
+<refmeta>
+<refentrytitle>normal.para.spacing</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>normal.para.spacing</refname>
+<refpurpose>What space do you want between normal paragraphs</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="normal.para.spacing.frag"><xsl:attribute-set name="normal.para.spacing">
+  <xsl:attribute name="space-before.optimum">1em</xsl:attribute>
+  <xsl:attribute name="space-before.minimum">0.8em</xsl:attribute>
+  <xsl:attribute name="space-before.maximum">1.2em</xsl:attribute>
+</xsl:attribute-set></src:fragment>
+</refsynopsisdiv>
+<refsection><info><title>Description</title></info>
+<para>Specify the spacing required between normal paragraphs as well as
+the following block-level elements:
+</para>
+<literallayout>ackno
+acknowledgements
+cmdsynopsis
+glosslist
+sidebar
+simpara
+simplelist
+</literallayout>
+<para>To customize the spacing, you need to reset all three attributes.</para>
+
+<para>To specify properties on just <tag>para</tag> elements without
+affecting these other elements,
+use the
+<link linkend="para.properties">para.properties</link>
+attribute-set. </para>
+</refsection>
+</refentry>

@@ -1,0 +1,14 @@
+*.class
+
+.settings
+.project
+
+#folders#
+/target
+/src/main/webapp/WEB-INF/classes
+*/META-INF/*
+
+# Packaged files #
+*.jar
+*.war
+*.ear
