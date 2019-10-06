@@ -14,15 +14,6 @@
 
     <repositories>
         <repository>
-            <id>central</id>
-            <name>Central Repository</name>
-            <url>https://repo.maven.apache.org/maven2</url>
-            <layout>default</layout>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
             <id>jboss-public-repository-group</id>
             <name>JBoss Public Repository Group</name>
             <url>http://repository.jboss.org/nexus/content/groups/public/</url>
@@ -151,25 +142,5 @@
         <handlebars.version>4.1.2</handlebars.version>
         <jcommander.version>1.78</jcommander.version>
         <lombok.version>1.18.6</lombok.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
-
-    <build>
-        <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-
-
-        </plugins>
-    </build>
 </project>
