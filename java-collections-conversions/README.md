@@ -1,6 +1,6 @@
-=========
-
 ## Java Collections Cookbooks and Examples
+
+This module contains articles about conversions among Collection types and arrays in Java.
 
 ### Relevant Articles: 
 - [Converting between an Array and a List in Java](https://www.baeldung.com/convert-array-to-list-and-list-to-array)

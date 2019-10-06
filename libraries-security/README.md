@@ -1,3 +1,7 @@
+## Security
+
+This module contains articles about security libraries.
+
 ### Relevant Articles:
 
 - [Guide to ScribeJava](https://www.baeldung.com/scribejava)

@@ -1,16 +1,19 @@
 package org.baeldung.javaxval.methodvalidation.model;
 
+import java.time.LocalDate;
+import java.util.List;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.baeldung.javaxval.methodvalidation.constraints.ConsistentDateParameters;
-import org.baeldung.javaxval.methodvalidation.constraints.ValidReservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-import java.time.LocalDate;
-import java.util.List;
 
 @Controller
 @Validated

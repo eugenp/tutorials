@@ -1,3 +1,7 @@
+## Data Libraries
+
+This module contains articles about libraries for data processing in Java.
+
 ### Relevant articles
 - [Introduction to Apache Flink with Java](https://www.baeldung.com/apache-flink)
 - [Guide to the HyperLogLog Algorithm](https://www.baeldung.com/java-hyperloglog)
@@ -8,4 +12,5 @@
 - [Introduction To OpenCSV](https://www.baeldung.com/opencsv)
 - [Introduction to Smooks](https://www.baeldung.com/smooks)
 - [A Guide to Infinispan in Java](https://www.baeldung.com/infinispan)
+- More articles: [[<-- prev>]](/libraries-data)
 
