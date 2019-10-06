@@ -1,6 +1,6 @@
 ## Twitter4J
 
-This module contains articles about Twitter4J
+This module contains articles about Twitter4J.
 
 ### Relevant articles
 
