@@ -10,7 +10,6 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
-import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
@@ -52,7 +51,7 @@ public class SpringBatchConfiguration {
     public FlatFileItemReader<BookRecord> csvItemReader(@Value("#{jobParameters['file.input']}") String input) {
         FlatFileItemReaderBuilder<BookRecord> builder = new FlatFileItemReaderBuilder<>();
         FieldSetMapper<BookRecord> bookRecordFieldSetMapper = new BookRecordFieldSetMapper();
-        LOGGER.info("Configuring reader to input {}, {}", input);
+        LOGGER.info("Configuring reader to input {}", input);
         return builder.name("bookRecordItemReader")
             .resource(new FileSystemResource(input))
             .delimited()
@@ -66,7 +65,7 @@ public class SpringBatchConfiguration {
     public JsonFileItemWriter<Book> jsonItemWriter(@Value("#{jobParameters['file.output']}") String output) throws IOException {
         JsonFileItemWriterBuilder<Book> builder = new JsonFileItemWriterBuilder<>();
         JacksonJsonObjectMarshaller<Book> marshaller = new JacksonJsonObjectMarshaller<>();
-        LOGGER.info("Configuring writer to output {}, {}", output);
+        LOGGER.info("Configuring writer to output {}", output);
         return builder.name("bookItemWriter")
             .jsonObjectMarshaller(marshaller)
             .resource(new FileSystemResource(output))
@@ -113,7 +112,6 @@ public class SpringBatchConfiguration {
     }
 
     @Bean(name="transformBooksRecords")
-
     public Job transformBookRecords(Step step1, Step step2) throws IOException {
         return jobBuilderFactory.get("transformBooksRecords")
             .flow(step1)
