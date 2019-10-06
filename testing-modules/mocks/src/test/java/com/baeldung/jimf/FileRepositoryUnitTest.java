@@ -26,7 +26,7 @@ class FileRepositoryUnitTest implements FileTestProvider {
     @DisplayName("Should create a file on a file system")
     @MethodSource("provideFileSystem")
     void shouldCreateFile(final FileSystem fileSystem) throws Exception {
-        final String fileName = "test.txt";
+        final String fileName = "newFile.txt";
         final Path pathToStore = fileSystem.getPath("");
 
         fileRepository.create(pathToStore, fileName);
@@ -38,10 +38,10 @@ class FileRepositoryUnitTest implements FileTestProvider {
     @DisplayName("Should read the content of the file")
     @MethodSource("provideFileSystem")
     void shouldReadFileContent_thenReturnIt(final FileSystem fileSystem) throws Exception {
-        final Path pathToStore = fileSystem.getPath(RESOURCE_FILE_NAME);
-        Files.copy(getResourceFilePath(), pathToStore);
+        final Path resourceFilePath = fileSystem.getPath(RESOURCE_FILE_NAME);
+        Files.copy(getResourceFilePath(), resourceFilePath);
 
-        final String content = fileRepository.read(pathToStore);
+        final String content = fileRepository.read(resourceFilePath);
 
         assertEquals(FILE_CONTENT, content);
     }
@@ -50,25 +50,25 @@ class FileRepositoryUnitTest implements FileTestProvider {
     @DisplayName("Should update content of the file")
     @MethodSource("provideFileSystem")
     void shouldUpdateContentOfTheFile(final FileSystem fileSystem) throws Exception {
-        final Path pathToStore = fileSystem.getPath(RESOURCE_FILE_NAME);
-        Files.copy(getResourceFilePath(), pathToStore);
-        final String newContent = "NEW_CONTENT";
+        final Path resourceFilePath = fileSystem.getPath(RESOURCE_FILE_NAME);
+        Files.copy(getResourceFilePath(), resourceFilePath);
+        final String newContent = "I'm updating you.";
 
-        final String content = fileRepository.update(pathToStore, newContent);
+        final String content = fileRepository.update(resourceFilePath, newContent);
 
         assertEquals(newContent, content);
-        assertEquals(newContent, fileRepository.read(pathToStore));
+        assertEquals(newContent, fileRepository.read(resourceFilePath));
     }
 
     @ParameterizedTest
     @DisplayName("Should update delete file")
     @MethodSource("provideFileSystem")
     void shouldDeleteFile(final FileSystem fileSystem) throws Exception {
-        final Path pathToStore = fileSystem.getPath(RESOURCE_FILE_NAME);
-        Files.copy(getResourceFilePath(), pathToStore);
+        final Path resourceFilePath = fileSystem.getPath(RESOURCE_FILE_NAME);
+        Files.copy(getResourceFilePath(), resourceFilePath);
 
-        fileRepository.delete(pathToStore);
+        fileRepository.delete(resourceFilePath);
 
-        assertFalse(Files.exists(pathToStore));
+        assertFalse(Files.exists(resourceFilePath));
     }
 }

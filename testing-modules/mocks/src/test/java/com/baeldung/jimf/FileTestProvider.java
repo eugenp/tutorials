@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public interface FileTestProvider {
-    String FILE_CONTENT = "BAELDUNG";
+    String FILE_CONTENT = "I'm the file content.";
     String RESOURCE_FILE_NAME = "fileRepositoryRead.txt";
 
     default Path getResourceFilePath() {
