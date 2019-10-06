@@ -17,25 +17,27 @@ import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
 @RunWith(SpringRunner.class)
 @SpringBatchTest
 @EnableAutoConfiguration
 @ContextConfiguration(classes = { SpringBatchConfiguration.class })
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, StepScopeTestExecutionListener.class })
-@TestPropertySource("classpath:application-test.properties")
+@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, StepScopeTestExecutionListener.class , DirtiesContextTestExecutionListener.class})
+@DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 public class SpringBatchIntegrationTest {
 
-    private static final String TEST_OUTPUT = "src/test/resources/actual-output.json";
+    private static final String TEST_OUTPUT = "src/test/resources/output/actual-output.json";
 
-    private static final String EXPECTED_OUTPUT = "src/test/resources/expected-output.json";
+    private static final String EXPECTED_OUTPUT = "src/test/resources/output/expected-output.json";
 
-    private static final String TEST_INPUT = "src/test/resources/test-input.csv";
+    private static final String TEST_INPUT = "src/test/resources/input/test-input.csv";
 
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
@@ -48,6 +50,7 @@ public class SpringBatchIntegrationTest {
         jobRepositoryTestUtils.removeJobExecutions();
     }
 
+    
     private JobParameters defaultJobParameters() {
         JobParametersBuilder paramsBuilder = new JobParametersBuilder();
         paramsBuilder.addString("file.input", TEST_INPUT);
@@ -70,6 +73,7 @@ public class SpringBatchIntegrationTest {
         assertThat(jobExecution.getExitStatus().getExitCode(), is("COMPLETED"));
         AssertFile.assertFileEquals(expectedResult, actualResult);
         // @formatter:on
+        jobExecution.stop();
     }
 
     @Test

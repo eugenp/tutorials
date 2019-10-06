@@ -4,73 +4,87 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
-import java.util.Properties;
 
-import javax.annotation.PostConstruct;
-
-import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.batch.core.JobParameters;
+import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.StepExecution;
-import org.springframework.batch.core.annotation.BeforeStep;
-import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.json.JsonFileItemWriter;
-import org.springframework.batch.item.support.ListItemWriter;
 import org.springframework.batch.test.AssertFile;
+import org.springframework.batch.test.JobRepositoryTestUtils;
 import org.springframework.batch.test.MetaDataInstanceFactory;
 import org.springframework.batch.test.StepScopeTestExecutionListener;
 import org.springframework.batch.test.StepScopeTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
 import com.baeldung.batch.model.Book;
-import com.baeldung.batch.model.BookDetails;
 import com.baeldung.batch.model.BookRecord;
 
 @RunWith(SpringRunner.class)
 @SpringBatchTest
-@ContextConfiguration(classes = { SpringBatchApplication.class/*, BatchTestConfiguration.class*/ })
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, StepScopeTestExecutionListener.class })
-// @TestPropertySource("classpath:application-test.properties")
+@EnableAutoConfiguration
+@ContextConfiguration(classes = { SpringBatchConfiguration.class })
+@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, StepScopeTestExecutionListener.class, DirtiesContextTestExecutionListener.class })
+@DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 public class SpringBatchStepScopeIntegrationTest {
 
-    private static final String TEST_OUTPUT = "src/test/resources/actual-output.json";
+    private static final String TEST_OUTPUT = "src/test/resources/output/actual-output.json";
 
-    private static final String EXPECTED_OUTPUT = "src/test/resources/expected-output.json";
+    private static final String EXPECTED_OUTPUT_ONE = "src/test/resources/output/expected-output-one.json";
 
-    private static final String TEST_INPUT = "src/test/resources/test-input.csv";
+    private static final String TEST_INPUT_ONE = "src/test/resources/input/test-input-one.csv";
     @Autowired
     private JsonFileItemWriter<Book> jsonItemWriter;
 
     @Autowired
-    private ListItemWriter<BookDetails> listItemWriter;
+    private FlatFileItemReader<BookRecord> itemReader;
 
     @Autowired
-    private FlatFileItemReader<BookRecord> itemReader;
+    private JobRepositoryTestUtils jobRepositoryTestUtils;
+
+    private JobParameters defaultJobParameters() {
+        JobParametersBuilder paramsBuilder = new JobParametersBuilder();
+        paramsBuilder.addString("file.input", TEST_INPUT_ONE);
+        paramsBuilder.addString("file.output", TEST_OUTPUT);
+        return paramsBuilder.toJobParameters();
+    }
+
+    @After
+    public void cleanUp() {
+        jobRepositoryTestUtils.removeJobExecutions();
+    }
 
     @Test
     public void givenMockedStep_whenReaderCalled_thenSuccess() throws Exception {
-        Properties properties = System.getProperties();
-        properties.setProperty("file.input", "src/test/resources/test-input-one.csv");
-        StepExecution stepExecution = MetaDataInstanceFactory.createStepExecution("step1", 1l);
-        // stepExecution.getExecutionContext()
-        // .put("file.input", new FileSystemResource("src/test/resources/test-input-one.csv"));
+
+        // given
+        StepExecution stepExecution = MetaDataInstanceFactory.createStepExecution(defaultJobParameters());
+
+        // when
         StepScopeTestUtils.doInStepScope(stepExecution, () -> {
-            BookRecord read;
-            // itemReader.setResource((FileSystemResource) stepExecution.getExecutionContext()
-            // .get("file.input"));
+            BookRecord bookRecord;
             itemReader.open(stepExecution.getExecutionContext());
-            while ((read = itemReader.read()) != null) {
-                assertThat(read.getBookName(), is("Foundation"));
+            while ((bookRecord = itemReader.read()) != null) {
+
+                // then
+                assertThat(bookRecord.getBookName(), is("Foundation"));
+                assertThat(bookRecord.getBookAuthor(), is("Asimov I."));
+                assertThat(bookRecord.getBookISBN(), is("ISBN 12839"));
+                assertThat(bookRecord.getBookFormat(), is("hardcover"));
+                assertThat(bookRecord.getPublishingYear(), is("2018"));
             }
             itemReader.close();
             return null;
@@ -81,18 +95,17 @@ public class SpringBatchStepScopeIntegrationTest {
     public void givenMockedStep_whenWriterCalled_thenSuccess() throws Exception {
 
         // given
-        FileSystemResource expectedResult = new FileSystemResource("src/test/resources/writer-expected-output.json");
+        FileSystemResource expectedResult = new FileSystemResource(EXPECTED_OUTPUT_ONE);
         FileSystemResource actualResult = new FileSystemResource(TEST_OUTPUT);
         Book demoBook = new Book();
-        demoBook.setAuthor("lorem");
-        demoBook.setName("ipsum");
+        demoBook.setAuthor("Grisham J.");
+        demoBook.setName("The Firm");
+        StepExecution stepExecution = MetaDataInstanceFactory.createStepExecution(defaultJobParameters());
 
         // when
-        StepExecution stepExecution = MetaDataInstanceFactory.createStepExecution();
-        ExecutionContext executionContext = stepExecution.getExecutionContext();
         StepScopeTestUtils.doInStepScope(stepExecution, () -> {
 
-            jsonItemWriter.open(executionContext);
+            jsonItemWriter.open(stepExecution.getExecutionContext());
             jsonItemWriter.write(Arrays.asList(demoBook));
             jsonItemWriter.close();
             return null;
@@ -100,28 +113,5 @@ public class SpringBatchStepScopeIntegrationTest {
 
         // then
         AssertFile.assertFileEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    public void givenMockedStep_whenListWriterCalled_thenSuccess() throws Exception {
-
-        // given
-        BookDetails bookDetails = new BookDetails();
-        bookDetails.setBookFormat("lorem");
-        bookDetails.setBookName("ipsum");
-        bookDetails.setBookISBN("1234");
-        bookDetails.setPublishingYear("1987");
-
-        // when
-        StepExecution stepExecution = MetaDataInstanceFactory.createStepExecution();
-        StepScopeTestUtils.doInStepScope(stepExecution, () -> {
-
-            listItemWriter.write(Arrays.asList(bookDetails));
-
-            // then
-            assertThat(listItemWriter.getWrittenItems()
-                .size(), is(1));
-            return null;
-        });
     }
 }

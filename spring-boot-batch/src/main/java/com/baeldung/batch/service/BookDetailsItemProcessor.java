@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 
-import com.baeldung.batch.model.Book;
 import com.baeldung.batch.model.BookDetails;
 import com.baeldung.batch.model.BookRecord;
 
