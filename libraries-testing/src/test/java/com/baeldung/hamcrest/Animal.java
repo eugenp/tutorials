@@ -1,4 +1,4 @@
-package org.baeldung.hamcrest;
+package com.baeldung.hamcrest;
 
 public class Animal {
 	String name;

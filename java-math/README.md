@@ -1,4 +1,8 @@
-## Relevant articles:
+## Java Math
+
+This module contains articles about math in Java.
+
+### Relevant articles:
 
 - [Calculate Factorial in Java](https://www.baeldung.com/java-calculate-factorial)
 - [Generate Combinations in Java](https://www.baeldung.com/java-combinations-algorithm)

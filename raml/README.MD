@@ -1,2 +1,2 @@
 ###The Course
-The "REST With Spring" Classes: http://bit.ly/restwithspring
+The "REST With Spring" Classes: https://bit.ly/restwithspring
