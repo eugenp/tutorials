@@ -5,6 +5,7 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index(request: Request)
 GET     /chat                       controllers.HomeController.socket
+GET     /chat                       controllers.HomeController.akkaStreamsSocket
 
 
 # Map static resources from the /public folder to the /assets URL path

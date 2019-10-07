@@ -11,7 +11,8 @@ lazy val akkaVersion = "2.6.0-M8"
 
 libraryDependencies ++= Seq(
   guice,
-  ws,
+  javaWs,
+  ehcache,
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
   "com.typesafe.akka" %% "akka-testkit" % akkaVersion,
   "com.typesafe.akka" %% "akka-stream" % akkaVersion,

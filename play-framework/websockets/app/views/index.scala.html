@@ -10,12 +10,10 @@
             <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
             <script>
-            var messageContent;
             var websocket;
             var messageInput;
 
             function initWebsocket() {
-                messageContent = document.getElementById("messageContent");
                 initWebsocket();
             }
 
@@ -46,6 +44,11 @@
             function onMessage(evt) {
                 var receivedData = JSON.parse(evt.data);
                 console.log("New Data: ", receivedData);
+                appendMessageToView("Server", receivedData.body);
+            }
+
+            function appendMessageToView(title, message) {
+                $("#messageContent").append("<p>" + title + ": " + message + "</p>");
             }
 
             function onError(evt) {
@@ -60,14 +63,13 @@
 
             function writeToScreen(message) {
                 console.log("New message: ", message);
-                $("#messageContent").append("<p>" + message + "</p>");
             }
 
             window.addEventListener("load", initWebsocket, false);
 
 
             $(".sendButton").click(function () {
-                console.log("Submiting.");
+                console.log("Submitting.");
                 newMessage();
             });
 
@@ -85,6 +87,8 @@
                 if ($.trim(messageInput) == "") {
                     return false;
                 }
+                
+                appendMessageToView("Me", messageInput);
 
                 var message = {
                   message: messageInput
