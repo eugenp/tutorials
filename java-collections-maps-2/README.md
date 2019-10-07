@@ -1,4 +1,8 @@
-## Relevant Articles:
+## Java Collections Cookbooks and Examples
+
+This module contains articles about Map data structures in Java.
+
+### Relevant Articles: 
 - [Map of Primitives in Java](https://www.baeldung.com/java-map-primitives)
 - [Copying a HashMap in Java](https://www.baeldung.com/java-copy-hashmap)
 - [Guide to Java HashMap]()
@@ -10,3 +14,4 @@
 - [Finding the Highest Value in a Java Map](https://www.baeldung.com/java-find-map-max)
 - [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
 - [Java TreeMap vs HashMap](https://www.baeldung.com/java-treemap-vs-hashmap)
+- More articles: [[<-- prev>]](/../java-collections-maps)

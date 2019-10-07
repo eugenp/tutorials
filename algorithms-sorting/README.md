@@ -1,4 +1,8 @@
-## Relevant articles:
+## Algorithms - Sorting
+
+This module contains articles about sorting algorithms.
+
+### Relevant articles:
 
 - [Bubble Sort in Java](https://www.baeldung.com/java-bubble-sort)
 - [Merge Sort in Java](https://www.baeldung.com/java-merge-sort)

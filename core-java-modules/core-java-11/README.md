@@ -1,3 +1,7 @@
+## Core Java 11
+
+This module contains articles about Java 11 core features
+
 ### Relevant articles
 
 - [Java 11 Single File Source Code](https://www.baeldung.com/java-single-file-source-code)

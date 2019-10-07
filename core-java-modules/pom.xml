@@ -15,7 +15,6 @@
 
     <modules>
         <module>pre-jpms</module>
-        <module>core-java-exceptions</module>
         <module>core-java-optional</module>
         <module>core-java-lang-operators</module>
         <module>core-java-networking-2</module>
