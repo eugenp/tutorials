@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Swagger UI</title>
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+    <link href='./dist/css/typography.css' media='screen' rel='stylesheet' type='text/css'/>
+    <link href='./dist/css/reset.css' media='screen' rel='stylesheet' type='text/css'/>
+    <link href='./dist/css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
+    <link href='./dist/css/reset.css' media='print' rel='stylesheet' type='text/css'/>
+    <link href='./dist/css/print.css' media='print' rel='stylesheet' type='text/css'/>
+    <script src='./dist/lib/object-assign-pollyfill.js' type='text/javascript'></script>
+    <script src='./dist/lib/jquery-1.8.0.min.js' type='text/javascript'></script>
+    <script src='./dist/lib/jquery.slideto.min.js' type='text/javascript'></script>
+    <script src='./dist/lib/jquery.wiggle.min.js' type='text/javascript'></script>
+    <script src='./dist/lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
+    <script src='./dist/lib/handlebars-4.0.5.js' type='text/javascript'></script>
+    <script src='./dist/lib/lodash.min.js' type='text/javascript'></script>
+    <script src='./dist/lib/backbone-min.js' type='text/javascript'></script>
+    <script src='./dist/swagger-ui.js' type='text/javascript'></script>
+    <script src='./dist/lib/highlight.9.1.0.pack.js' type='text/javascript'></script>
+    <script src='./dist/lib/highlight.9.1.0.pack.js' type='text/javascript'></script>
+    <script src='./dist/lib/jsoneditor.min.js' type='text/javascript'></script>
+    <script src='./dist/lib/marked.js' type='text/javascript'></script>
+    <script src='./dist/lib/swagger-oauth.js' type='text/javascript'></script>
+
+    <!-- Some basic translations -->
+    <!-- <script src='lang/translator.js' type='text/javascript'></script> -->
+    <!-- <script src='lang/ru.js' type='text/javascript'></script> -->
+    <!-- <script src='lang/en.js' type='text/javascript'></script> -->
+
+    <script type="text/javascript">
+        $(function() {
+            var springfox = {
+                "baseUrl": function() {
+                    var urlMatches = /(.*)\/swagger-ui\/index.html.*/.exec(window.location.href);
+                    return urlMatches[1];
+                },
+                "securityConfig": function(cb) {
+                    $.getJSON(this.baseUrl() + "/swagger-resources/configuration/security", function(data) {
+                        cb(data);
+                    });
+                },
+                "uiConfig": function(cb) {
+                    $.getJSON(this.baseUrl() + "/swagger-resources/configuration/ui", function(data) {
+                        cb(data);
+                    });
+                }
+            };
+            window.springfox = springfox;
+            window.oAuthRedirectUrl = springfox.baseUrl() + './dist/o2c.html'
+
+            window.springfox.uiConfig(function(data) {
+                window.swaggerUi = new SwaggerUi({
+                    dom_id: "swagger-ui-container",
+                    validatorUrl: data.validatorUrl,
+                    supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+                    onComplete: function(swaggerApi, swaggerUi) {
+                        initializeSpringfox();
+                        if (window.SwaggerTranslator) {
+                            window.SwaggerTranslator.translate();
+                        }
+                        $('pre code').each(function(i, e) {
+                            hljs.highlightBlock(e)
+                        });
+                    },
+                    onFailure: function(data) {
+                        log("Unable to Load SwaggerUI");
+                    },
+                    docExpansion: "none",
+                    apisSorter: "alpha",
+                    showRequestHeaders: false
+                });
+
+                initializeBaseUrl();
+
+                $('#select_baseUrl').change(function() {
+                    window.swaggerUi.headerView.trigger('update-swagger-ui', {
+                        url: $('#select_baseUrl').val()
+                    });
+                    addApiKeyAuthorization();
+                });
+
+                function addApiKeyAuthorization() {
+                    var authToken = JSON.parse(localStorage.getItem("jhi-authenticationtoken") || sessionStorage.getItem("jhi-authenticationtoken"));
+                    var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("Authorization", "Bearer " + authToken, "header");
+                    window.swaggerUi.api.clientAuthorizations.add("bearer", apiKeyAuth);
+                }
+
+                function getCSRF() {
+                    var name = "XSRF-TOKEN=";
+                    var ca = document.cookie.split(';');
+                    for(var i=0; i<ca.length; i++) {
+                        var c = ca[i];
+                        while (c.charAt(0)==' ') c = c.substring(1);
+                        if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+                    }
+                    return "";
+                }
+
+                function log() {
+                    if ('console' in window) {
+                        console.log.apply(console, arguments);
+                    }
+                }
+
+                function oAuthIsDefined(security) {
+                    return security.clientId
+                    && security.clientSecret
+                    && security.appName
+                    && security.realm;
+                }
+
+                function initializeSpringfox() {
+                    var security = {};
+                    window.springfox.securityConfig(function(data) {
+                        security = data;
+                        if (typeof initOAuth == "function" && oAuthIsDefined(security)) {
+                            initOAuth(security);
+                        }
+                    });
+                }
+            });
+
+            function maybePrefix(location, withRelativePath) {
+                var pat = /^https?:\/\//i;
+                if (pat.test(location)) {
+                    return location;
+                }
+                return withRelativePath + location;
+            }
+
+            function initializeBaseUrl() {
+                var relativeLocation = springfox.baseUrl();
+
+                $('#input_baseUrl').hide();
+
+                $.getJSON(relativeLocation + "/swagger-resources", function(data) {
+
+                    var $urlDropdown = $('#select_baseUrl');
+                    $urlDropdown.empty();
+                    $.each(data, function(i, resource) {
+                        var option = $('<option></option>')
+                        .attr("value", maybePrefix(resource.location, relativeLocation))
+                        .text(resource.name + " (" + resource.location + ")");
+                        $urlDropdown.append(option);
+                    });
+                    $urlDropdown.change();
+                });
+
+            }
+
+        });
+    </script>
+</head>
+
+
+<body class="swagger-section">
+<div id='header'>
+    <div class="swagger-ui-wrap">
+        <a id="logo" href="http://swagger.io">swagger</a>
+
+        <form id='api_selector'>
+            <div class='input'>
+                <select id="select_baseUrl" name="select_baseUrl"></select>
+            </div>
+            <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
+<div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+</body>
+</html>
