@@ -1,6 +1,7 @@
 ## Relevant Articles
 
 - [Intro to JHipster](https://www.baeldung.com/jhipster)
+- [Creating New Roles and Authorities in JHipster](https://www.baeldung.com/jhipster-new-roles)
 
 
 # baeldung

@@ -18,6 +18,7 @@
         <module>log4j2</module>
         <module>logback</module>
         <module>log-mdc</module>
+        <module>flogger</module>
     </modules>
 
 </project>

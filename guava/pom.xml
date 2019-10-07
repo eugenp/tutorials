@@ -27,13 +27,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.hamcrest/java-hamcrest -->
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>java-hamcrest</artifactId>
-            <version>${java-hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
 
     <build>
@@ -52,7 +46,6 @@
 
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
-        <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
     </properties>
 
 </project>

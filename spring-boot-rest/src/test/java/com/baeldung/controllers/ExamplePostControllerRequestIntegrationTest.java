@@ -17,9 +17,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.baeldung.SpringBootRestApplication;
+import com.baeldung.requestresponsebody.ExamplePostController;
+import com.baeldung.requestresponsebody.LoginForm;
 import com.baeldung.services.ExampleService;
-import com.baeldung.transfer.LoginForm;
-import com.baeldung.web.controller.ExamplePostController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBootRestApplication.class)

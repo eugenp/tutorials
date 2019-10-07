@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConfProperties {
 
-    @Value("${url}")
+    @Value("${db.url}")
     private String url;
     
-    @Value("${username}")
+    @Value("${db.username}")
     private String username;
     
-    @Value("${password}")
+    @Value("${db.password}")
     private String password;
 
     public String getUrl() {
