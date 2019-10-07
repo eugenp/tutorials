@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.hexagonal.HexagonalApplication;
 import com.baeldung.hexagonal.domain.Book;
-import com.baeldung.hexagonal.port.outbound.BookOutboundPort;
+import com.baeldung.hexagonal.port.BookOutboundPort;
 
 import junit.framework.TestCase;
 

@@ -1,10 +1,10 @@
-package com.baeldung.hexagonal.adapter.outbound;
+package com.baeldung.hexagonal.adapter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.baeldung.hexagonal.domain.Book;
-import com.baeldung.hexagonal.port.outbound.BookOutboundPort;
+import com.baeldung.hexagonal.port.BookOutboundPort;
 import com.baeldung.hexagonal.repository.BookEntity;
 import com.baeldung.hexagonal.repository.BookRepository;
 

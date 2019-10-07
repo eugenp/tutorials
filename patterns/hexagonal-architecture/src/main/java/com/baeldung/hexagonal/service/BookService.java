@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.baeldung.hexagonal.domain.Book;
-import com.baeldung.hexagonal.port.outbound.BookOutboundPort;
+import com.baeldung.hexagonal.port.BookOutboundPort;
 
 @Service
 public class BookService {

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
-import com.baeldung.hexagonal.port.outbound.BookOutboundPort;
+import com.baeldung.hexagonal.port.BookOutboundPort;
 
 @Profile("test-book-service")
 @Configuration
