@@ -99,7 +99,7 @@ public class CharacterEncodingExamplesUnitTest {
     }
 
     @Test
-    public void givenTextFile_whenFindSuitableCandidateEncodings_thenProduceSuitableCandidateEncodings() {
+    public void givenTextFile_whenLoopOverAllCandidateEncodings_thenProduceSuitableCandidateEncodings() {
         Path path = Paths.get("src/test/resources/encoding.txt");
         List<Charset> allCandidateCharSets = Arrays.asList(
           StandardCharsets.US_ASCII, StandardCharsets.UTF_8, StandardCharsets.ISO_8859_1);
