@@ -1,29 +1,20 @@
 package com.baeldung.jackson.enums;
 
 import com.baeldung.jackson.serialization.DistanceSerializer;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * Use  @JsonFormat to handle representation of Enum as JSON (available since Jackson 2.1.2)
  * Use @JsonSerialize to configure a custom Jackson serializer
  */
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
-//@JsonSerialize(using = DistanceSerializer.class)
+// @JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@JsonSerialize(using = DistanceSerializer.class)
 public enum Distance {
-    @JsonProperty("distance-in-km")
-    KILOMETER("km", 1000), 
-    @JsonProperty("distance-in-miles")
-    MILE("miles", 1609.34), METER("meters", 1), INCH("inches", 0.0254), CENTIMETER("cm", 0.01), 
-    MILLIMETER("mm", 0.001);
+    KILOMETER("km", 1000), MILE("miles", 1609.34), METER("meters", 1), INCH("inches", 0.0254), CENTIMETER("cm", 0.01), MILLIMETER("mm", 0.001);
 
     private String unit;
     private final double meters;
-    
+
     private Distance(String unit, double meters) {
         this.unit = unit;
         this.meters = meters;
@@ -32,11 +23,11 @@ public enum Distance {
     /**
      * Use @JsonValue to control marshalling output for an enum
      */
-//    @JsonValue
+    // @JsonValue
     public double getMeters() {
         return meters;
     }
-    
+
     public String getUnit() {
         return unit;
     }
@@ -44,7 +35,7 @@ public enum Distance {
     public void setUnit(String unit) {
         this.unit = unit;
     }
-    
+
     /**
      * Usage example: Distance.MILE.convertFromMeters(1205.5);
      */
@@ -58,21 +49,6 @@ public enum Distance {
      */
     public double convertToMeters(double distanceInMeters) {
         return distanceInMeters * meters;
-    }
-
-//    @JsonCreator
-    public static Distance forValues(@JsonProperty("unit") String unit, @JsonProperty("meters") double meters) {
-
-        for (Distance distance : Distance.values()) {
-            if (distance.unit.equals(unit) 
-                && Double.compare(distance.meters, meters) == 0) {
-
-                return distance;
-            }
-        }
-
-        return null;
-
     }
 
 }
