@@ -36,7 +36,7 @@ public class ClientIntegrationTest {
     }
 
     @Test
-    public void checkIfCallsAreExecutedSimultaneously() {
+    public void givenClient_whenFetchingUsers_thenExecutionTimeIsLessThanDouble() {
         // Arrange
         int requestsNumber = 5;
         int singleRequestTime = 1000;

@@ -1,6 +1,6 @@
-=========
+## Core Java Collections Set
 
-## Core Java Sets Cookbooks and Examples
+This module contains articles about the Java Set collection
 
 ### Relevant Articles: 
 - [Set Operations in Java](http://www.baeldung.com/set-operations-in-java)

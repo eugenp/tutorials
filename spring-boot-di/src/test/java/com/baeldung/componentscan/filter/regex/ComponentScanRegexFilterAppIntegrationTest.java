@@ -19,7 +19,7 @@ import static org.hamcrest.CoreMatchers.*;
 public class ComponentScanRegexFilterAppIntegrationTest {
 
     @Test
-    public void testBean() {
+    public void whenRegexFilterIsUsed_thenComponentScanShouldRegisterBeanMatchingRegex() {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ComponentScanRegexFilterApp.class);
         List<String> beans = Arrays.stream(applicationContext.getBeanDefinitionNames())
             .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanRegexFilterApp"))
