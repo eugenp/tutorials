@@ -42,4 +42,11 @@ public class JacksonEnumDeserializationUnitTest {
         assertEquals(City.CityWithJsonCreatorEnum.Distance.MILE, city.getDistance());
     }
     
+    @Test
+    public final void givenEnumWithCustomDeserializer_whenDeserializingJson_thenCorrectRepresentation() throws JsonParseException, IOException {
+        String json = "{\"distance\": {\"unit\":\"miles\",\"meters\":1609.34}}";
+
+        City.CityWithCustomDeserializationEnum city = new ObjectMapper().readValue(json, City.CityWithCustomDeserializationEnum.class);
+        assertEquals(City.CityWithCustomDeserializationEnum.Distance.MILE, city.getDistance());
+    }
 }
