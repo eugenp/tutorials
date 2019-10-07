@@ -1,6 +1,6 @@
-=========
-
 ## Jackson Cookbooks and Examples
+
+This module contains articles about Jackson.
 
 ###The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
@@ -32,4 +32,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Convert XML to JSON Using Jackson](https://www.baeldung.com/jackson-convert-xml-json)
 - [Deserialize Immutable Objects with Jackson](https://www.baeldung.com/jackson-deserialize-immutable-objects)
 - [Mapping a Dynamic JSON Object with Jackson](https://www.baeldung.com/jackson-mapping-dynamic-object)
+- More articles: [[next -->]](/../jackson-2)
 

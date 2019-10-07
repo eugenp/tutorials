@@ -1,6 +1,6 @@
-=========
+## Core Java Lang OOP (Part 2)
 
-## Core Java Lang OOP 2 Cookbooks and Examples
+This module contains articles about Object-oriented programming (OOP) in Java
 
 ### Relevant Articles: 
 - [Generic Constructors in Java](https://www.baeldung.com/java-generic-constructors)
@@ -15,3 +15,4 @@
 - [A Guide to Constructors in Java](https://www.baeldung.com/java-constructors)
 - [Composition, Aggregation, and Association in Java](https://www.baeldung.com/java-composition-aggregation-association)
 - [Static and Default Methods in Interfaces in Java](https://www.baeldung.com/java-static-default-methods)
+- [[<-- Prev]](/core-java-modules/core-java-lang-oop)[[More -->]](/core-java-modules/core-java-lang-oop-3)

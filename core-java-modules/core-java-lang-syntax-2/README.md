@@ -1,6 +1,8 @@
-=========
+## Core Java Lang Syntax
 
-## Core Java Lang Syntax Cookbooks and Examples
+This module contains articles about Java syntax
 
 ### Relevant Articles: 
+
 - [Java ‘private’ Access Modifier](https://www.baeldung.com/java-private-keyword)
+- [[<-- Prev]](/core-java-modules/core-java-lang-syntax)
