@@ -75,11 +75,7 @@
             <artifactId>moneta</artifactId>
             <version>${javamoney.moneta.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.owasp.esapi</groupId>
-            <artifactId>esapi</artifactId>
-            <version>${esapi.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>com.sun.messaging.mq</groupId>
             <artifactId>fscontext</artifactId>
@@ -115,19 +111,7 @@
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
-        <!-- instrumentation -->
-        <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>${javaassist.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun</groupId>
-            <artifactId>tools</artifactId>
-            <version>${sun.tools.version}</version>
-            <scope>system</scope>
-            <systemPath>${java.home}/../lib/tools.jar</systemPath>
-        </dependency>
+
     </dependencies>
 
     <build>
@@ -469,7 +453,7 @@
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         
         <javamoney.moneta.version>1.1</javamoney.moneta.version>
-        <esapi.version>2.1.0.1</esapi.version>
+
         <jmh-core.version>1.19</jmh-core.version>
        
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
@@ -480,9 +464,8 @@
         <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <icu4j.version>61.1</icu4j.version>
-        <!-- instrumentation -->
-        <javaassist.version>3.21.0-GA</javaassist.version>
+
         
-        <sun.tools.version>1.8.0</sun.tools.version>
+
     </properties>
 </project>
