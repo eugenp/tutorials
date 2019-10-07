@@ -20,7 +20,7 @@ public class CurrentChargesResponse {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb
-          .append("Usage: {")
+          .append("Current Month Charges: {")
           .append("\n\tcustomer: ")
           .append(this.customerId)
           .append("\n\ttotalAmountDue: ")

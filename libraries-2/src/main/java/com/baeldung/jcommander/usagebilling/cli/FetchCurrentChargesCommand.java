@@ -63,6 +63,6 @@ class FetchCurrentChargesCommand {
           .build();
 
         CurrentChargesResponse response = service.fetch(req);
-        System.out.println("Current charges:\n" + response);
+        System.out.println(response);
     }
 }
