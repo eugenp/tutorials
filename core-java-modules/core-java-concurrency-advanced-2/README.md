@@ -2,6 +2,8 @@
 
 ## Core Java Concurrency Advanced Examples
 
+This module contains articles about advanced topics about multithreading with core Java.
+
 ### Relevant Articles: 
 - [Semaphores in Java](https://www.baeldung.com/java-semaphore)
 - [Daemon Threads in Java](https://www.baeldung.com/java-daemon-thread)
