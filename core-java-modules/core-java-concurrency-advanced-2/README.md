@@ -15,3 +15,5 @@ This module contains articles about advanced topics about multithreading with co
 - [Guide to ThreadLocalRandom in Java](https://www.baeldung.com/java-thread-local-random)
 - [The Thread.join() Method in Java](https://www.baeldung.com/java-thread-join)
 - [Passing Parameters to Java Threads](https://www.baeldung.com/java-thread-parameters)
+
+[[<-- previous]](/core-java-modules/core-java-concurrency-advanced)[[next -->]](/core-java-modules/core-java-concurrency-advanced-3)
