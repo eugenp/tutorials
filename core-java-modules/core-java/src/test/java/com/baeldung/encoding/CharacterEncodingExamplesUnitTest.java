@@ -75,23 +75,27 @@ public class CharacterEncodingExamplesUnitTest {
 
     @Test
     public void givenUTF8String_whenDecodeByUS_ASCII_thenIgnoreMalformedInputSequence() throws IOException {
-        Assertions.assertEquals("The faade pattern is a software design pattern.",
-            CharacterEncodingExamples.decodeText(
-                "The façade pattern is a software design pattern.", StandardCharsets.US_ASCII, CodingErrorAction.IGNORE));
+        Assertions.assertEquals("The faade pattern is a software design pattern.", CharacterEncodingExamples.decodeText("The façade pattern is a software design pattern.", StandardCharsets.US_ASCII, CodingErrorAction.IGNORE));
     }
 
     @Test
     public void givenUTF8String_whenDecodeByUS_ASCII_thenReplaceMalformedInputSequence() throws IOException {
-        Assertions.assertEquals("The fa��ade pattern is a software design pattern.",
+        Assertions.assertEquals(
+          "The fa��ade pattern is a software design pattern.",
           CharacterEncodingExamples.decodeText(
-              "The façade pattern is a software design pattern.", StandardCharsets.US_ASCII, CodingErrorAction.REPLACE));
+            "The façade pattern is a software design pattern.",
+            StandardCharsets.US_ASCII,
+            CodingErrorAction.REPLACE));
     }
 
     @Test
     public void givenUTF8String_whenDecodeByUS_ASCII_thenReportMalformedInputSequence() {
-        Assertions.assertThrows(MalformedInputException.class,
+        Assertions.assertThrows(
+          MalformedInputException.class,
           () -> CharacterEncodingExamples.decodeText(
-              "The façade pattern is a software design pattern.", StandardCharsets.US_ASCII, CodingErrorAction.REPORT));
+            "The façade pattern is a software design pattern.",
+            StandardCharsets.US_ASCII,
+            CodingErrorAction.REPORT));
     }
 
     @Test
@@ -99,6 +103,7 @@ public class CharacterEncodingExamplesUnitTest {
         Path path = Paths.get("src/test/resources/encoding.txt");
         List<Charset> allCandidateCharSets = Arrays.asList(
           StandardCharsets.US_ASCII, StandardCharsets.UTF_8, StandardCharsets.ISO_8859_1);
+
         List<Charset> suitableCharsets = new ArrayList<>();
         allCandidateCharSets.forEach(charset -> {
             try {
