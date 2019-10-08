@@ -18,7 +18,7 @@ public class DigitalSignatureWithSignatureVerifying {
         Signature signature = Signature.getInstance(Utils.SIGNING_ALGORITHM);
         signature.initVerify(publicKey);
 
-        byte[] messageBytes = Files.readAllBytes(Paths.get("src/test/resources/message.txt"));
+        byte[] messageBytes = Files.readAllBytes(Paths.get("src/test/resources/digitalsignature/message.txt"));
 
         signature.update(messageBytes);
 

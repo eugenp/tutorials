@@ -16,7 +16,7 @@ public class DigitalSignatureWithSignatureSigning {
         Signature signature = Signature.getInstance(Utils.SIGNING_ALGORITHM);
         signature.initSign(privateKey);
 
-        byte[] messageBytes = Files.readAllBytes(Paths.get("src/test/resources/message.txt"));
+        byte[] messageBytes = Files.readAllBytes(Paths.get("src/test/resources/digitalsignature/message.txt"));
 
         signature.update(messageBytes);
         byte[] digitalSignature = signature.sign();

@@ -14,7 +14,7 @@ public class DigitalSignatureWithMessageDigestAndCipherSigning {
 
         PrivateKey privateKey = Utils.getPrivateKey();
 
-        byte[] messageBytes = Files.readAllBytes(Paths.get("src/test/resources/message.txt"));
+        byte[] messageBytes = Files.readAllBytes(Paths.get("src/test/resources/digitalsignature/message.txt"));
 
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         byte[] messageHash = md.digest(messageBytes);
