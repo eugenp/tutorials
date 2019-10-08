@@ -38,7 +38,7 @@ public class SpringBatchConfiguration {
 
     private static Logger LOGGER = LoggerFactory.getLogger(SpringBatchConfiguration.class);
 
-    private final String[] tokens = { "bookname", "bookauthor", "bookformat", "isbn", "publishyear" };
+    private static final String[] TOKENS = { "bookname", "bookauthor", "bookformat", "isbn", "publishyear" };
 
     @Autowired
     private JobBuilderFactory jobBuilderFactory;
@@ -56,7 +56,7 @@ public class SpringBatchConfiguration {
         return builder.name("bookRecordItemReader")
                       .resource(new FileSystemResource(input))
                       .delimited()
-                      .names(tokens)
+                      .names(TOKENS)
                       .fieldSetMapper(bookRecordFieldSetMapper)
                       .build();
         // @formatter:on

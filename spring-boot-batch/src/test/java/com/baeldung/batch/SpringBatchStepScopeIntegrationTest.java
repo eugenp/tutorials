@@ -16,7 +16,6 @@ import org.springframework.batch.item.json.JsonFileItemWriter;
 import org.springframework.batch.test.AssertFile;
 import org.springframework.batch.test.JobRepositoryTestUtils;
 import org.springframework.batch.test.MetaDataInstanceFactory;
-import org.springframework.batch.test.StepScopeTestExecutionListener;
 import org.springframework.batch.test.StepScopeTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,7 @@ import com.baeldung.batch.model.BookRecord;
 @SpringBatchTest
 @EnableAutoConfiguration
 @ContextConfiguration(classes = { SpringBatchConfiguration.class })
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, StepScopeTestExecutionListener.class, DirtiesContextTestExecutionListener.class })
+@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class })
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 public class SpringBatchStepScopeIntegrationTest {
 

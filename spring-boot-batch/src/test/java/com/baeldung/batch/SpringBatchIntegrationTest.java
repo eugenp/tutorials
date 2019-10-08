@@ -12,7 +12,6 @@ import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.test.AssertFile;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.batch.test.JobRepositoryTestUtils;
-import org.springframework.batch.test.StepScopeTestExecutionListener;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -29,7 +28,7 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 @SpringBatchTest
 @EnableAutoConfiguration
 @ContextConfiguration(classes = { SpringBatchConfiguration.class })
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, StepScopeTestExecutionListener.class , DirtiesContextTestExecutionListener.class})
+@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class})
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 public class SpringBatchIntegrationTest {
 

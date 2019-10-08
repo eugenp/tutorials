@@ -13,6 +13,7 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
+    
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -36,13 +37,6 @@
             <artifactId>spring-batch-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
