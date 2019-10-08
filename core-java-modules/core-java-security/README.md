@@ -1,5 +1,7 @@
 ## Core Java Security 
 
+This module contains articles about core Java Security
+
 ### Relevant Articles: 
 - [MD5 Hashing in Java](http://www.baeldung.com/java-md5)
 - [Guide to the Cipher Class](http://www.baeldung.com/java-cipher-class)
@@ -11,3 +13,4 @@
 - [SHA-256 and SHA3-256 Hashing in Java](https://www.baeldung.com/sha-256-hashing-java)
 - [Enabling TLS v1.2 in Java 7](https://www.baeldung.com/java-7-tls-v12)
 - [The Java SecureRandom Class](https://www.baeldung.com/java-secure-random)
+- [An Introduction to Java SASL](https://www.baeldung.com/java-sasl)

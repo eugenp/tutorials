@@ -1,4 +1,4 @@
 ### Relevant Articles: 
 ================================
 
-- [Guide to Maven Archetype](http://www.baeldung.com/maven-archetype)
+- [Guide to Maven Archetype](https://www.baeldung.com/maven-archetype)

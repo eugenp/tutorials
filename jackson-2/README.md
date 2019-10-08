@@ -1,6 +1,6 @@
-=========
-
 ## Jackson Cookbooks and Examples
+
+This module contains articles about Jackson.
 
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
@@ -12,3 +12,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Converting JSON to CSV in Java](https://www.baeldung.com/java-converting-json-to-csv)
 - [Compare Two JSON Objects with Jackson](https://www.baeldung.com/jackson-compare-two-json-objects)
 - [Calling Default Serializer from Custom Serializer in Jackson](https://www.baeldung.com/jackson-call-default-serializer-from-custom-serializer)
+- More articles: [[<-- prev]](/../jackson)

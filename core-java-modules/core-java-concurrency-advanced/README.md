@@ -1,6 +1,6 @@
-=========
-
 ## Core Java Concurrency Advanced Examples
+
+This module contains articles about advanced concurrency in core Java.
 
 ### Relevant Articles: 
 - [Introduction to Thread Pools in Java](http://www.baeldung.com/thread-pool-java-and-guava)
