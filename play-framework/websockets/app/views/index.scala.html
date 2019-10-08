@@ -1,100 +1,100 @@
 @(url: String)
 @main("Welcome to Play") {
     <h1>Welcome to Play Websockets!</h1>
-            <div id="messageContent"></div>
-            <form>
-                <textarea id="messageInput"></textarea>
-                <button id="sendButton">Send</button>
-            </form>
+        <div id="messageContent"></div>
+        <form>
+            <textarea id="messageInput"></textarea>
+            <button id="sendButton">Send</button>
+        </form>
 
-            <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-            <script>
-            var websocket;
-            var messageInput;
+        <script>
+        var websocket;
+        var messageInput;
 
-            function initWebsocket() {
-                initWebsocket();
-            }
+        function init() {
+            initWebsocket();
+        }
 
-            function initWebsocket() {
-                websocket = new WebSocket("@url");
-                websocket.onopen = function (evt) {
-                    onOpen(evt)
-                };
-                websocket.onclose = function (evt) {
-                    onClose(evt)
-                };
-                websocket.onmessage = function (evt) {
-                    onMessage(evt)
-                };
-                websocket.onerror = function (evt) {
-                    onError(evt)
-                };
-            }
+        function initWebsocket() {
+            websocket = new WebSocket("@url");
+            websocket.onopen = function (evt) {
+                onOpen(evt)
+            };
+            websocket.onclose = function (evt) {
+                onClose(evt)
+            };
+            websocket.onmessage = function (evt) {
+                onMessage(evt)
+            };
+            websocket.onerror = function (evt) {
+                onError(evt)
+            };
+        }
 
-            function onOpen(evt) {
-                writeToScreen("CONNECTED");
-            }
+        function onOpen(evt) {
+            writeToScreen("CONNECTED");
+        }
 
-            function onClose(evt) {
-                writeToScreen("DISCONNECTED");
-            }
+        function onClose(evt) {
+            writeToScreen("DISCONNECTED");
+        }
 
-            function onMessage(evt) {
-                var receivedData = JSON.parse(evt.data);
-                console.log("New Data: ", receivedData);
-                appendMessageToView("Server", receivedData.body);
-            }
+        function onError(evt) {
+            writeToScreen("ERROR: " + evt.data);
+            writeToScreen("ERROR: " + JSON.stringify(evt));
+        }
 
-            function appendMessageToView(title, message) {
-                $("#messageContent").append("<p>" + title + ": " + message + "</p>");
-            }
+        function onMessage(evt) {
+            var receivedData = JSON.parse(evt.data);
+            console.log("New Data: ", receivedData);
+            appendMessageToView("Server", receivedData.body);
+        }
 
-            function onError(evt) {
-                writeToScreen("ERROR: " + evt.data);
-                writeToScreen("ERROR: " + JSON.stringify(evt));
-            }
+        function appendMessageToView(title, message) {
+            $("#messageContent").append("<p>" + title + ": " + message + "</p>");
+        }
 
-            function doSend(protocolMessage) {
-                writeToScreen("SENT: " + protocolMessage.message);
-                websocket.send(JSON.stringify(protocolMessage));
-            }
+        function writeToScreen(message) {
+            console.log("New message: ", message);
+        }
 
-            function writeToScreen(message) {
-                console.log("New message: ", message);
-            }
+        function doSend(protocolMessage) {
+            writeToScreen("SENT: " + protocolMessage.message);
+            websocket.send(JSON.stringify(protocolMessage));
+        }
 
-            window.addEventListener("load", initWebsocket, false);
+        window.addEventListener("load", init, false);
 
 
-            $(".sendButton").click(function () {
-                console.log("Submitting.");
+        $(".sendButton").click(function () {
+            console.log("Submitting.");
+            newMessage();
+        });
+
+        $(window).on("keydown", function (e) {
+            if (e.which == 13) {
+                console.log("Enter pressed.");
                 newMessage();
-            });
-
-            $(window).on("keydown", function (e) {
-                if (e.which == 13) {
-                    console.log("Enter pressed.");
-                    newMessage();
-                    return false;
-                }
-            });
-
-            function newMessage() {
-                messageInput = $("#messageInput").val();
-                $("#messageInput").val("");
-                if ($.trim(messageInput) == "") {
-                    return false;
-                }
-                
-                appendMessageToView("Me", messageInput);
-
-                var message = {
-                  message: messageInput
-                };
-
-                doSend(message);
+                return false;
             }
+        });
+
+        function newMessage() {
+            messageInput = $("#messageInput").val();
+            $("#messageInput").val("");
+            if ($.trim(messageInput) == "") {
+                return false;
+            }
+
+            appendMessageToView("Me", messageInput);
+
+            var message = {
+                message: messageInput
+            };
+
+            doSend(message);
+        }
     </script>
 }

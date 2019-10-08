@@ -37,12 +37,12 @@ public class Messenger extends AbstractActor {
 
     @Override
     public void preStart() throws Exception {
-        log.info("Messenger actor for started");
+        log.info("Messenger actor started");
     }
 
     @Override
     public void postStop() throws Exception {
-        log.info("Messenger actor for stopped");
+        log.info("Messenger actor stopped");
     }
 
     private void onSendMessage(JsonNode jsonNode) {
@@ -54,13 +54,17 @@ public class Messenger extends AbstractActor {
     private void processMessage(RequestDTO requestDTO) {
         final int postId = ThreadLocalRandom.current().nextInt(0, 100);
         Materializer materializer = Materializer.matFromSystem(getContext().getSystem());
-        final CompletionStage<HttpResponse> responseFuture =
-                Http.get(getContext().getSystem())
+
+        //Request the post
+        final CompletionStage<HttpResponse> responseFuture = Http.get(getContext().getSystem())
                         .singleRequest(HttpRequest.create("https://jsonplaceholder.typicode.com/posts/" + postId));
         responseFuture.thenCompose(httpResponse -> {
-            final CompletionStage<MessageDTO> unmarshal =
-                    Jackson.unmarshaller(MessageDTO.class).unmarshal(httpResponse.entity(), materializer);
 
+            //convert the post into a MessageDTO
+            final CompletionStage<MessageDTO> unmarshal = Jackson.unmarshaller(MessageDTO.class)
+                    .unmarshal(httpResponse.entity(), materializer);
+
+            //Discard the body of the entity to avoid akka stream errors
             return unmarshal.thenApply(messageDTO -> {
                 log.info("Received message: {}", messageDTO);
                 final HttpMessage.DiscardedEntity discarded = httpResponse.discardEntityBytes(materializer);
