@@ -48,6 +48,7 @@
         <module>spring-data-eclipselink</module>
         <module>spring-data-elasticsearch</module>
         <module>spring-data-gemfire</module>
+        <module>spring-data-geode</module>
         <module>spring-data-jpa</module>
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module> <!-- long -->
