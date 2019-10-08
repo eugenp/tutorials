@@ -8,15 +8,13 @@ lazy val root = (project in file(".")).enablePlugins(PlayJava)
 scalaVersion := "2.13.0"
 
 lazy val akkaVersion = "2.6.0-M8"
+lazy val akkaHttpVersion = "10.1.10"
 
-libraryDependencies ++= Seq(
-  guice,
-  javaWs,
-  ehcache,
-  "com.typesafe.akka" %% "akka-actor" % akkaVersion,
-  "com.typesafe.akka" %% "akka-testkit" % akkaVersion,
-  "com.typesafe.akka" %% "akka-stream" % akkaVersion,
-  "com.typesafe.akka" %% "akka-http-jackson" % "10.1.10",
-  "com.typesafe.akka" %% "akka-http"   % "10.1.10",
-  "org.projectlombok" % "lombok" % "1.18.8" % "provided",
-  "junit" % "junit" % "4.12")
+libraryDependencies += guice
+libraryDependencies += "com.typesafe.akka" %% "akka-actor" % akkaVersion
+libraryDependencies += "com.typesafe.akka" %% "akka-testkit" % akkaVersion
+libraryDependencies += "com.typesafe.akka" %% "akka-stream" % akkaVersion
+libraryDependencies += "com.typesafe.akka" %% "akka-http-jackson" % akkaHttpVersion
+libraryDependencies += "com.typesafe.akka" %% "akka-http" % akkaHttpVersion
+libraryDependencies += "org.projectlombok" % "lombok" % "1.18.8" % "provided"
+libraryDependencies += "junit" % "junit" % "4.12"
