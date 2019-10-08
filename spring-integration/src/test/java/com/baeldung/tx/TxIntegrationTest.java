@@ -31,7 +31,7 @@ public final class TxIntegrationTest {
     }
 
     @Test
-    public void whenFileStartsWithFail_thanTxFailed() {
+    public void whenFileStartsWithFail_thenTxFailed() {
 
         String fileName = System.getProperty("java.io.tmpdir") + "/tx/test2.txt";
 
