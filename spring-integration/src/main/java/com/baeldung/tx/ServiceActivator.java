@@ -17,7 +17,7 @@ public class ServiceActivator {
         this.jdbcTemplate.update("insert into STUDENT values(?)", payload);
 
         if (payload.toLowerCase().startsWith("fail")) {
-            log.error("Service failure. Test result: {} ", payload);
+            log.error("Service failure. Test result: {}", payload);
             throw new RuntimeException("Service failure.");
         }
 
