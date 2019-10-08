@@ -1,0 +1,19 @@
+#%RAML 1.0 Library
+# This is the file /libraries/dataTypes.raml
+usage: This library defines the data types for the API
+types:
+  Foo:
+    properties:
+      id: integer
+      name: string
+      ownerName?: string
+  Bar:
+    properties:
+      id: integer
+      name: string
+      city?: string
+      fooId: integer
+  Error:
+    properties:
+      code: integer
+      message: string

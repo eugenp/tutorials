@@ -1,0 +1,39 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="footnote.sep.leader.properties">
+<refmeta>
+<refentrytitle>footnote.sep.leader.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>footnote.sep.leader.properties</refname>
+<refpurpose>Properties associated with footnote separators</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="footnote.sep.leader.properties.frag">
+<xsl:attribute-set name="footnote.sep.leader.properties">
+  <xsl:attribute name="color">black</xsl:attribute>
+  <xsl:attribute name="leader-pattern">rule</xsl:attribute>
+  <xsl:attribute name="leader-length">1in</xsl:attribute>
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The styling for the rule line that separates the
+footnotes from the body text.
+These are properties applied to the fo:leader used as
+the separator.
+</para>
+<para>If you want to do more than just set properties on
+the leader element, then you can customize the template
+named <literal>footnote.separator</literal> in 
+<filename>fo/pagesetup.xsl</filename>.</para>
+
+</refsection>
+</refentry>

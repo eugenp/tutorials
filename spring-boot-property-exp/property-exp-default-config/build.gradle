@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.baeldung'
+version = '0.0.1-SNAPSHOT'
+
+description = """spring-boot"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+springBoot {
+    executable = true
+}
+
+import org.apache.tools.ant.filters.ReplaceTokens
+processResources {
+    with copySpec {
+        from 'src/main/resources'
+        include '**/application*.yml'
+        include '**/application*.yaml'
+        include '**/application*.properties'
+        project.properties.findAll().each { prop ->
+
+            if (prop.value != null) {
+                filter(ReplaceTokens, tokens: [ (prop.key): prop.value])
+                filter(ReplaceTokens, tokens: [ ('project.' + prop.key): prop.value])
+            }
+
+        }
+    }
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter")
+}

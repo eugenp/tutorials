@@ -1,0 +1,137 @@
+{
+    "global": {
+        "title": "Gateway",
+        "browsehappy": "Você está usando um navegador <strong>desatualizado</strong>. Favor <a href=\"http://browsehappy.com/?locale=pt_BR\">atualizar o seu navegador</a> para ter uma experiência melhor.",
+        "menu": {
+            "home": "Início",
+            "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+            "entities": {
+                "main": "Entidades",
+                "quotesQuote": "Quote",
+                "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+            },
+            "account": {
+                "main": "Conta",
+                "settings": "Configuração",
+                "password": "Senha",
+                "sessions": "Sessões",
+                "login": "Entrar",
+                "logout": "Sair",
+                "register": "Registrar"
+            },
+            "admin": {
+                "main": "Administração",
+                "gateway": "Gateway",
+                "userManagement": "Gerenciamento de usuário",
+                "tracker": "Rastreamento de usuário",
+                "metrics": "Métricas",
+                "health": "Estado do Sistema",
+                "configuration": "Configuração",
+                "logs": "Logs",
+                "audits": "Auditorias",
+                "apidocs": "API",
+                "database": "Banco de dados",
+                "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
+            },
+            "language": "Idioma"
+        },
+        "form": {
+            "username": "Usuário",
+            "username.placeholder": "Seu usuário",
+            "currentpassword": "Current password",
+            "currentpassword.placeholder": "Current password",
+            "newpassword": "Nova senha",
+            "newpassword.placeholder": "Nova senha",
+            "confirmpassword": "Confirmação de nova senha",
+            "confirmpassword.placeholder": "Confirme a nova senha",
+            "email": "Email",
+            "email.placeholder": "Seu email"
+        },
+        "messages": {
+            "info": {
+                "authenticated": {
+                    "prefix": "Para ",
+                    "link": "entrar",
+                    "suffix": ", utilize as seguintes contas padrões:<br/>- Administrador (usuário=\"admin\" and senha=\"admin\") <br/>- Usuário (usuário=\"user\" and senha=\"user\")."
+                },
+                "register": {
+                    "noaccount": "Não possui uma conta ainda?",
+                    "link": "Crie uma nova conta"
+                }
+            },
+            "error": {
+                "dontmatch" : "A senha e sua confirmação devem ser iguais!"
+            },
+            "validate": {
+                "newpassword": {
+                    "required": "A senha é obrigatória.",
+                    "minlength": "A senha deve ter pelo menos 5 caracteres",
+                    "maxlength": "A senha não pode ter mais de 50 caracteres",
+                    "strength": "Nível de dificuldade da senha:"
+                },
+                "confirmpassword": {
+                    "required": "A confirmação da senha é obrigatória.",
+                    "minlength": "A confirmação da senha deve ter pelo menos 5 caracteres",
+                    "maxlength": "A confirmação da senha não pode ter mais de 50 caracteres"
+                },
+                "email": {
+                    "required": "O email é obrigatório.",
+                    "invalid": "Email inválido.",
+                    "minlength": "O email deve ter pelo menos 5 caracteres",
+                    "maxlength": "O email não pode ter mais de 50 caracteres"
+                }
+            }
+        },
+        "field": {
+            "id" : "Código"
+        },
+        "ribbon": {
+            "dev":"Development"
+        },
+        "item-count": "Mostrando {{first}} - {{second}} de {{total}} resultados."
+    },
+    "entity": {
+        "action": {
+            "addblob": "Adicionar blob",
+            "addimage": "Adicionar imagem",
+            "back": "Voltar",
+            "cancel": "Cancelar",
+            "delete": "Excluir",
+            "edit": "Editar",
+            "open": "Open",
+            "save": "Salvar",
+            "view": "Visualizar"
+        },
+        "detail": {
+            "field": "Campo",
+            "value": "Valor"
+        },
+        "delete": {
+            "title": "Confirme a exclusão"
+        },
+        "validation": {
+            "required": "O campo é obrigatório.",
+            "minlength": "Este campo deve ter ao menos {{min}} caracteres.",
+            "maxlength": "Este campo não pode ter mais que {{max}} caracteres.",
+            "min": "Este campo deve ser maior que {{min}}.",
+            "max": "Este campo não pode ser maior que {{max}}.",
+            "minbytes": "Este campo deve ter ao menos {{min}} bytes.",
+            "maxbytes": "Este campo não pode ter mais que {{max}} bytes.",
+            "pattern": "Este campo deve estar dentro do seguinte padrão {{pattern}}.",
+            "number": "Este campo é do tipo número.",
+            "datetimelocal": "Este campo é do tipo data/hora."
+        }
+    },
+    "error": {
+        "internalServerError": "Internal server error",
+        "server.not.reachable": "Servidor indisponível",
+        "url.not.found": "Not found",
+        "NotNull": "O Campo {{fieldName}} não pode ser vazio!",
+        "Size": "O campo {{fieldName}} não obedece os requisitos de tamanho mínimo ou máximo!",
+        "userexists": "Usuário já existente!",
+        "emailexists": "Este email já está cadastrado!",
+        "idexists": "Novo(a) {{entityName}} não pode ter uma ID",
+        "idnull": "Invalid ID"
+    },
+    "footer": "Este é o seu rodapé"
+}

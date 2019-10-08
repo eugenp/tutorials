@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xmlns:file="http://www.springframework.org/schema/integration/file"
+       xmlns:ftp="http://www.springframework.org/schema/integration/ftp"
+       xmlns:mail="http://www.springframework.org/schema/integration/mail"
+       xmlns:twitter="http://www.springframework.org/schema/integration/twitter"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration
+		http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/file
+        http://www.springframework.org/schema/integration/file/spring-integration-file.xsd
+        http://www.springframework.org/schema/integration/ftp
+        http://www.springframework.org/schema/integration/ftp/spring-integration-ftp.xsd
+        http://www.springframework.org/schema/integration/mail 
+        http://www.springframework.org/schema/integration/mail/spring-integration-mail.xsd
+        http://www.springframework.org/schema/integration/twitter 
+        http://www.springframework.org/schema/integration/twitter/spring-integration-twitter.xsd">
+
+    <file:inbound-channel-adapter id="videoFolder"
+                                  directory="C:\projects\baeldung\clean-start-tutorials\tutorials\spring-integration\src\main\resources\source"
+                                  channel="videoChannel"
+                                  prevent-duplicates="true">
+        <int:poller fixed-rate="1000"/>
+    </file:inbound-channel-adapter>
+
+    <file:outbound-channel-adapter id="destFileFolder"
+                                   directory="C:\projects\baeldung\clean-start-tutorials\tutorials\spring-integration\src\main\resources\destination"
+
+    >
+    </file:outbound-channel-adapter>
+
+    <int:publish-subscribe-channel id="videoChannel" />
+
+    <int:channel id="emailOutbound" />
+
+    <mail:outbound-channel-adapter channel="emailOutbound"
+                                   mail-sender="mailSender" />
+
+    <file:file-to-bytes-transformer
+            input-channel="videoChannel"
+            output-channel="emailOutbound"
+            delete-files="false"/>
+
+    <mail:header-enricher input-channel="videoChannel" output-channel="emailOutbound">
+        <mail:attachment-filename value="test"/>
+    </mail:header-enricher>
+
+    <bean name="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="username" value="${username}" />
+        <property name="password" value="${password}" />
+    </bean>
+
+    <int:bridge input-channel="videoChannel" output-channel="destFileFolder" />
+    <int:bridge input-channel="videoChannel" output-channel="emailOutbound" />
+
+
+</beans>
