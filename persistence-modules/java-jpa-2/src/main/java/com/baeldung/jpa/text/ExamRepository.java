@@ -1,34 +1,35 @@
-package com.baeldung.jpa.defaultvalues;
+package com.baeldung.jpa.text;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class UserRepository {
+public class ExamRepository {
 
     private EntityManagerFactory emf = null;
 
-    public UserRepository() {
-        emf = Persistence.createEntityManagerFactory("entity-default-values");
+    public ExamRepository() {
+        emf = Persistence.createEntityManagerFactory("jpa-h2-text");
     }
 
-    public User find(Long id) {
+    public Exam find(Long id) {
         EntityManager entityManager = emf.createEntityManager();
-        User user = entityManager.find(User.class, id);
+        Exam exam = entityManager.find(Exam.class, id);
         entityManager.close();
-        return user;
+        return exam;
     }
 
-    public void save(User user, Long id) {
-        user.setId(id);
+    public Exam save(Exam exam) {
 
         EntityManager entityManager = emf.createEntityManager();
         entityManager.getTransaction()
             .begin();
-        entityManager.persist(user);
+        exam = entityManager.merge(exam);
         entityManager.getTransaction()
             .commit();
         entityManager.close();
+
+        return exam;
     }
 
     public void clean() {
