@@ -13,10 +13,6 @@ public class BreadthFirstSearchAlgorithm {
         Queue<Tree<T>> queue = new ArrayDeque<>();
         queue.add(root);
 
-        return searchTreeQueue(value, queue);
-    }
-
-    private static <T> Optional<Tree<T>> searchTreeQueue(T value, Queue<Tree<T>> queue) {
         Tree<T> currentNode;
         while (!queue.isEmpty()) {
             currentNode = queue.remove();
@@ -36,10 +32,6 @@ public class BreadthFirstSearchAlgorithm {
         Queue<Node<T>> queue = new ArrayDeque<>();
         queue.add(start);
 
-        return searchNodeQueue(value, queue);
-    }
-
-    private static <T> Optional<Node<T>> searchNodeQueue(T value, Queue<Node<T>> queue) {
         Node<T> currentNode;
         Set<Node<T>> alreadyVisited = new HashSet<>();
 
@@ -51,11 +43,12 @@ public class BreadthFirstSearchAlgorithm {
                 return Optional.of(currentNode);
             } else {
                 alreadyVisited.add(currentNode);
-                queue.addAll(currentNode.getNeighbours());
+                queue.addAll(currentNode.getNeighbors());
                 queue.removeAll(alreadyVisited);
             }
         }
 
         return Optional.empty();
     }
+
 }

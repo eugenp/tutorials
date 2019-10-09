@@ -1,6 +1,5 @@
 package com.baeldung.algorithms.breadthfirstsearch;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,14 +12,32 @@ class BreadthFirstSearchAlgorithmUnitTest {
     private Tree<Integer> rootSecondChild;
 
     private Node<Integer> start;
-    private Node<Integer> firstNeighbour;
-    private Node<Integer> firstNeighbourNeighbour;
-    private Node<Integer> secondNeighbour;
+    private Node<Integer> firstNeighbor;
+    private Node<Integer> firstNeighborNeighbor;
+    private Node<Integer> secondNeighbor;
 
-    @BeforeEach
-    void beforeEach() {
+    @Test
+    void givenTree_whenSearchTen_thenRoot() {
         initTree();
-        initNode();
+        assertThat(BreadthFirstSearchAlgorithm.search(10, root)).isPresent().contains(root);
+    }
+
+    @Test
+    void givenTree_whenSearchThree_thenDepthMostValue() {
+        initTree();
+        assertThat(BreadthFirstSearchAlgorithm.search(3, root)).isPresent().contains(depthMostChild);
+    }
+
+    @Test
+    void givenTree_whenSearchFour_thenRootSecondChild() {
+        initTree();
+        assertThat(BreadthFirstSearchAlgorithm.search(4, root)).isPresent().contains(rootSecondChild);
+    }
+
+    @Test
+    void givenTree_whenSearchFive_thenNotFound() {
+        initTree();
+        assertThat(BreadthFirstSearchAlgorithm.search(5, root)).isEmpty();
     }
 
     private void initTree() {
@@ -30,56 +47,40 @@ class BreadthFirstSearchAlgorithmUnitTest {
         rootSecondChild = root.addChild(4);
     }
 
-    private void initNode() {
-        start = new Node<>(10);
-        firstNeighbour = new Node<>(2);
-        start.connect(firstNeighbour);
-
-        firstNeighbourNeighbour = new Node<>(3);
-        firstNeighbour.connect(firstNeighbourNeighbour);
-        firstNeighbourNeighbour.connect(start);
-
-        secondNeighbour = new Node<>(4);
-        start.connect(secondNeighbour);
-    }
-
-    @Test
-    void givenTree_whenSearchTen_thenRoot() {
-        assertThat(BreadthFirstSearchAlgorithm.search(10, root)).isPresent().contains(root);
-    }
-
-    @Test
-    void givenTree_whenSearchThree_thenDepthMostValue() {
-        assertThat(BreadthFirstSearchAlgorithm.search(3, root)).isPresent().contains(depthMostChild);
-    }
-
-    @Test
-    void givenTree_whenSearchFour_thenRootSecondChild() {
-        assertThat(BreadthFirstSearchAlgorithm.search(4, root)).isPresent().contains(rootSecondChild);
-    }
-
-    @Test
-    void givenTree_whenSearchFive_thenNotFound() {
-        assertThat(BreadthFirstSearchAlgorithm.search(5, root)).isEmpty();
-    }
-
     @Test
     void givenNode_whenSearchTen_thenStart() {
-        assertThat(BreadthFirstSearchAlgorithm.search(10, firstNeighbourNeighbour)).isPresent().contains(start);
+        initNode();
+        assertThat(BreadthFirstSearchAlgorithm.search(10, firstNeighborNeighbor)).isPresent().contains(start);
     }
 
     @Test
-    void givenNode_whenSearchThree_thenNeighbourNeighbour() {
-        assertThat(BreadthFirstSearchAlgorithm.search(3, firstNeighbourNeighbour)).isPresent().contains(firstNeighbourNeighbour);
+    void givenNode_whenSearchThree_thenNeighborNeighbor() {
+        initNode();
+        assertThat(BreadthFirstSearchAlgorithm.search(3, firstNeighborNeighbor)).isPresent().contains(firstNeighborNeighbor);
     }
 
     @Test
-    void givenNode_whenSearchFour_thenSecondNeighbour() {
-        assertThat(BreadthFirstSearchAlgorithm.search(4, firstNeighbourNeighbour)).isPresent().contains(secondNeighbour);
+    void givenNode_whenSearchFour_thenSecondNeighbor() {
+        initNode();
+        assertThat(BreadthFirstSearchAlgorithm.search(4, firstNeighborNeighbor)).isPresent().contains(secondNeighbor);
     }
 
     @Test
     void givenNode_whenSearchFive_thenNotFound() {
-        assertThat(BreadthFirstSearchAlgorithm.search(5, firstNeighbourNeighbour)).isEmpty();
+        initNode();
+        assertThat(BreadthFirstSearchAlgorithm.search(5, firstNeighborNeighbor)).isEmpty();
+    }
+
+    private void initNode() {
+        start = new Node<>(10);
+        firstNeighbor = new Node<>(2);
+        start.connect(firstNeighbor);
+
+        firstNeighborNeighbor = new Node<>(3);
+        firstNeighbor.connect(firstNeighborNeighbor);
+        firstNeighborNeighbor.connect(start);
+
+        secondNeighbor = new Node<>(4);
+        start.connect(secondNeighbor);
     }
 }
