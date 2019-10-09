@@ -1,7 +1,6 @@
-=========
+## RESTEasy
 
-## A Guide to RESTEasy
-
+This module contains articles about RESTEasy.
 
 ### Relevant Articles:
 - [A Guide to RESTEasy](https://www.baeldung.com/resteasy-tutorial)
