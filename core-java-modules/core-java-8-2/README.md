@@ -1,6 +1,6 @@
-=========
+## Core Java 8 (part 2)
 
-## Core Java 8 Cookbooks and Examples (part 2)
+This module contains articles about Java 8 core features
 
 ### Relevant Articles: 
 - [Anonymous Classes in Java](http://www.baeldung.com/)
@@ -8,3 +8,4 @@
 - [Run a Java Application from the Command Line](https://www.baeldung.com/java-run-jar-with-arguments)
 - [Java 8 Stream skip() vs limit()](https://www.baeldung.com/java-stream-skip-vs-limit)
 - [Guide to Java BiFunction Interface](https://www.baeldung.com/java-bifunction-interface)
+- [[<-- Prev]](/core-java-modules/core-java-8)

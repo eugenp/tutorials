@@ -1,6 +1,6 @@
-=========
+## Core Java Collections List (Part 3)
 
-## Core Java Collections List Cookbooks and Examples
+This module contains articles about the Java List collection
 
 ### Relevant Articles: 
 - [Collections.emptyList() vs. New List Instance](https://www.baeldung.com/java-collections-emptylist-new-list)
@@ -9,3 +9,4 @@
 - [List of Primitive Integer Values in Java](https://www.baeldung.com/java-list-primitive-int)
 - [Performance Comparison of Primitive Lists in Java](https://www.baeldung.com/java-list-primitive-performance)
 - [Filtering a Java Collection by a List](https://www.baeldung.com/java-filter-collection-by-list)
+- [[<-- Prev]](/core-java-modules/core-java-collections-list-2)
