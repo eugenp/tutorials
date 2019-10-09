@@ -1,3 +1,7 @@
+## Apache Lucene
+
+This module contains articles about Apache Lucene.
+
 ### Relevant Articles:
 
 - [Introduction to Apache Lucene](https://www.baeldung.com/lucene)
