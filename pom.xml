@@ -599,6 +599,7 @@
 				<module>spring-boot-performance</module>
 				<module>spring-boot-properties</module>
 				<!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
+
 				<module>spring-security-kerberos</module>
 				<module>oauth2-framework-impl</module>
 				
@@ -667,7 +668,6 @@
 
 				<module>spring-activiti</module>
 				<module>spring-akka</module>
-				<module>spring-all</module>
 				<module>spring-amqp</module>
 				<module>spring-aop</module>
 				<module>spring-apache-camel</module>
@@ -714,6 +714,7 @@
 
 				<module>spring-core</module>
 				<module>spring-core-2</module>
+				<module>spring-core-3</module>
 				<module>spring-cucumber</module>
 
 				<module>spring-data-rest</module>
@@ -1390,7 +1391,6 @@
 				<module>spring-5-security-cognito</module>
 				<module>spring-activiti</module>
 				<module>spring-akka</module>
-				<module>spring-all</module>
 				<module>spring-amqp</module>
 				<module>spring-aop</module>
 				<module>spring-apache-camel</module>
@@ -1424,7 +1424,7 @@
 				<module>spring-boot-property-exp</module>
 				<module>spring-boot-security</module>
 				<module>spring-boot-vue</module>
-
+				<module>spring-caching</module>
 				<module>spring-cloud</module>
 				<module>spring-cloud-bus</module>
 				<!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
@@ -1463,6 +1463,7 @@
 
 				<module>spring-mobile</module>
 				<module>spring-mockito</module>
+				<module>spring-mvc-basics-2</module>
 				<module>spring-mvc-forms-jsp</module>
 				<module>spring-mvc-forms-thymeleaf</module>
 				<module>spring-mvc-java</module>
@@ -1492,6 +1493,7 @@
 				<module>spring-resttemplate</module>
 				<module>spring-roo</module>
 
+				<module>spring-scheduling</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-angular/server</module>
 				<module>spring-security-cache-control</module>
@@ -1514,6 +1516,7 @@
 				<module>spring-security-thymeleaf</module>
 				<module>spring-security-x509</module>
 				<module>spring-session</module>
+				<module>spring-shell</module>
 				<module>spring-sleuth</module>
 				<module>spring-soap</module>
 				<module>spring-social-login</module>
