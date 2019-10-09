@@ -559,7 +559,6 @@
 				<module>metrics</module>
 				<!-- <module>micronaut</module> --> <!-- Fixing in BAEL-10877 -->
 				<module>microprofile</module>
-                <module>ml</module>
 				<module>msf4j</module>
 				<!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
 				<module>mustache</module>
@@ -1302,7 +1301,6 @@
 				<module>metrics</module>
 				<!-- <module>micronaut</module> --> <!-- Fixing in BAEL-10877 -->
 				<module>microprofile</module>
-                <module>ml</module>
 				<module>msf4j</module>
 				<!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
 				<module>mustache</module>
