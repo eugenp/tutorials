@@ -1,5 +1,7 @@
 ## Ethereum
 
+This module contains articles about the Ethereum blockchain
+
 ### Relevant Articles:
 - [Introduction to EthereumJ](https://www.baeldung.com/ethereumj)
 - [Creating and Deploying Smart Contracts with Solidity](https://www.baeldung.com/smart-contracts-ethereum-solidity)
