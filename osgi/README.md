@@ -1,5 +1,9 @@
-OSGi
-====
+## OSGi
+
+This module contains articles about OSGi.
+
+### Relevant articles:
+ - [Introduction to OSGi](https://www.baeldung.com/osgi)
 
 Info
 ---
@@ -84,11 +88,7 @@ Oxygen.1 	Wed, 6 Sep 2017 -- 17:00 (-0400)
 
 org.eclipse.osgi_3.12.1.v20170821-1548.jar
 
- = = NOT GOOD = =
- 
- ## Relevant articles:
- - [Introduction to OSGi](https://www.baeldung.com/osgi)
- 
+ = = NOT GOOD = = 
 
 
 

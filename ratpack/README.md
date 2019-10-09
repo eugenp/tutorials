@@ -1,3 +1,7 @@
+## Ratpack
+
+This module contains articles about Ratpack.
+
 ### Relevant articles
 
 - [Introduction to Ratpack](https://www.baeldung.com/ratpack)
