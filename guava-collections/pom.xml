@@ -43,7 +43,7 @@
     </dependencies>
 
     <build>
-        <finalName>guava</finalName>
+        <finalName>guava-collections</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

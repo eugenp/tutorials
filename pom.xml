@@ -459,6 +459,7 @@
                 <module>guava</module>
 				<module>guava-io</module>
                 <module>guava-collections</module>
+                <module>guava-collections-map</module>
 				<module>guava-collections-set</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
@@ -1204,6 +1205,7 @@
 				<module>guava</module>
 				<module>guava-io</module>
 				<module>guava-collections</module>
+				<module>guava-collections-map</module>
 				<module>guava-collections-set</module>
 				<module>guava-modules</module>
 				<!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
