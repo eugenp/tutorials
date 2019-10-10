@@ -1,17 +1,16 @@
 package com.baeldung.wicket.examples.cafeaddress;
 
-import org.apache.wicket.ajax.AjaxRequestTarget;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class CafeAddress extends WebPage {
     private String selectedCafe;
@@ -30,14 +29,12 @@ public class CafeAddress extends WebPage {
         addressLabel.setOutputMarkupId(true);
 
         final DropDownChoice<String> cafeDropdown = new DropDownChoice<>("cafes", new PropertyModel<>(this, "selectedCafe"), cafeNames);
-        cafeDropdown.add(new AjaxFormComponentUpdatingBehavior("onchange") {
-            @Override
-            protected void onUpdate(AjaxRequestTarget target) {
+        cafeDropdown.add(AjaxFormComponentUpdatingBehavior.onUpdate("change", ajaxTarget -> {
                 String name = (String) cafeDropdown.getDefaultModel().getObject();
                 address.setAddress(cafeNamesAndAddresses.get(name).getAddress());
-                target.add(addressLabel);
+                ajaxTarget.add(addressLabel);
             }
-        });
+        ));
 
         add(addressLabel);
         add(cafeDropdown);
@@ -50,18 +47,18 @@ public class CafeAddress extends WebPage {
     }
 
     class Address implements Serializable {
-        private String sAddress = "";
+        private String address = "";
 
         public Address(String address) {
-            this.sAddress = address;
+            this.address = address;
         }
 
         String getAddress() {
-            return this.sAddress;
+            return this.address;
         }
 
         void setAddress(String address) {
-            this.sAddress = address;
+            this.address = address;
         }
     }
 }

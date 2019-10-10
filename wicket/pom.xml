@@ -23,12 +23,14 @@
         </dependency>
 
         <!-- JETTY DEPENDENCIES FOR TESTING -->
-        <dependency>
-            <groupId>org.eclipse.jetty.aggregate</groupId>
-            <artifactId>jetty-all</artifactId>
+        <!-- https://mvnrepository.com/artifact/org.eclipse.jetty.aggregate/jetty-all -->
+		<dependency>
+		    <groupId>org.eclipse.jetty.aggregate</groupId>
+		    <artifactId>jetty-all</artifactId>
             <version>${jetty9.version}</version>
-            <scope>test</scope>
-        </dependency>
+		    <type>pom</type>
+		    <scope>test</scope>
+		</dependency>
     </dependencies>
     
     <build>
@@ -82,8 +84,8 @@
     </build>
 
     <properties>
-        <wicket.version>7.5.0</wicket.version>
-        <jetty9.version>9.2.13.v20150730</jetty9.version>
+        <wicket.version>8.6.1</wicket.version>
+        <jetty9.version>9.4.21.v20190926</jetty9.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
     </properties>
 
