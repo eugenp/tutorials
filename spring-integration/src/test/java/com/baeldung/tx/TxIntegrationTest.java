@@ -14,7 +14,7 @@ public final class TxIntegrationTest {
     private static final String CONTEXT_CONFIG = "classpath:META-INF/spring/integration/spring-integration-tx-context.xml";
 
     @Test
-    public void whenFileDoesntStartWithFail_thanTxSuccessful() throws InterruptedException, IOException {
+    public void whenFileDoesntStartWithFail_thenTxSuccessful() throws InterruptedException, IOException {
         final AbstractApplicationContext context =
                 new ClassPathXmlApplicationContext(CONTEXT_CONFIG);
 
@@ -31,7 +31,7 @@ public final class TxIntegrationTest {
     }
 
     @Test
-    public void whenFileStartsWithFail_thanTxFailed() {
+    public void whenFileStartsWithFail_thenTxFailed() {
 
         String fileName = System.getProperty("java.io.tmpdir") + "/tx/test2.txt";
 
