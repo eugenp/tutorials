@@ -7,7 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.expression.common.LiteralExpression;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.integration.annotation.InboundChannelAdapter;
 import org.springframework.integration.annotation.Poller;
 import org.springframework.integration.annotation.ServiceActivator;
@@ -86,13 +86,14 @@ public class TxIntegrationConfig {
     }
 
     @Bean
-    public TransactionSynchronizationFactory transactionSynchronizationFactory(){
+    public TransactionSynchronizationFactory transactionSynchronizationFactory() {
         ExpressionEvaluatingTransactionSynchronizationProcessor transactionSynchronizationProcessor =
-            new ExpressionEvaluatingTransactionSynchronizationProcessor();
-        transactionSynchronizationProcessor.setAfterCommitExpression(
-            new LiteralExpression("payload.renameTo(new java.io.File(payload.absolutePath + '.PASSED'))"));
-        transactionSynchronizationProcessor.setAfterRollbackExpression(
-            new LiteralExpression("payload.renameTo(new java.io.File(payload.absolutePath + '.FAILED'))"));
+                new ExpressionEvaluatingTransactionSynchronizationProcessor();
+        SpelExpressionParser spelExpressionParser = new SpelExpressionParser();
+        transactionSynchronizationProcessor.setAfterCommitExpression(spelExpressionParser.parseExpression(
+                "payload.renameTo(new java.io.File(payload.absolutePath + '.PASSED'))"));
+        transactionSynchronizationProcessor.setAfterRollbackExpression(spelExpressionParser.parseExpression(
+                "payload.renameTo(new java.io.File(payload.absolutePath + '.FAILED'))"));
         return new DefaultTransactionSynchronizationFactory(transactionSynchronizationProcessor);
     }
 
