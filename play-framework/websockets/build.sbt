@@ -18,3 +18,5 @@ libraryDependencies += "com.typesafe.akka" %% "akka-http-jackson" % akkaHttpVers
 libraryDependencies += "com.typesafe.akka" %% "akka-http" % akkaHttpVersion
 libraryDependencies += "org.projectlombok" % "lombok" % "1.18.8" % "provided"
 libraryDependencies += "junit" % "junit" % "4.12"
+
+PlayKeys.devSettings += "play.server.http.idleTimeout" -> "infinite"

@@ -25,6 +25,7 @@
   </appender>
 
   <logger name="akka" level="INFO" />
+  <logger name="actors" level="INFO"/>
   <logger name="play" level="INFO" />
   <logger name="application" level="DEBUG" />
 

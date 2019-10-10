@@ -16,6 +16,8 @@ import dto.MessageDTO;
 import dto.RequestDTO;
 import utils.MessageConverter;
 
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -37,12 +39,12 @@ public class Messenger extends AbstractActor {
 
     @Override
     public void preStart() throws Exception {
-        log.info("Messenger actor started");
+        log.info("Messenger actor started at {}", OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
     }
 
     @Override
     public void postStop() throws Exception {
-        log.info("Messenger actor stopped");
+        log.info("Messenger actor stopped at {}", OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
     }
 
     private void onSendMessage(JsonNode jsonNode) {
