@@ -162,7 +162,7 @@
     </dependencyManagement>
 
     <build>
-        <finalName>spring-all</finalName>
+        <finalName>spring-core-2</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
