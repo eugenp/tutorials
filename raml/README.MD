@@ -1,2 +1,3 @@
-###The Course
-The "REST With Spring" Classes: https://bit.ly/restwithspring
+## RAML
+
+This module contains articles about the RESTful API Modeling Language (RAML).

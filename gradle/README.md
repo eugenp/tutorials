@@ -1,3 +1,7 @@
+## Gradle
+
+This module contains articles about Gradle
+
 ## Relevant articles:
 - [Introduction to Gradle](https://www.baeldung.com/gradle)
 - [Writing Custom Gradle Plugins](https://www.baeldung.com/gradle-create-plugin)

@@ -84,3 +84,4 @@ software-security/sql-injection-samples/derby.log
 spring-soap/src/main/java/com/baeldung/springsoap/gen/
 /report-*.json
 transaction.log
+*-shell.log
