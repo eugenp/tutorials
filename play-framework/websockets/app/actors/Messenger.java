@@ -39,12 +39,14 @@ public class Messenger extends AbstractActor {
 
     @Override
     public void preStart() throws Exception {
-        log.info("Messenger actor started at {}", OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+        log.info("Messenger actor started at {}",
+                OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
     }
 
     @Override
     public void postStop() throws Exception {
-        log.info("Messenger actor stopped at {}", OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+        log.info("Messenger actor stopped at {}",
+                OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
     }
 
     private void onSendMessage(JsonNode jsonNode) {
