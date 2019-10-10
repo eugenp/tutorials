@@ -2,7 +2,7 @@ package com.baeldung.aggregation.model.custom;
 
 public interface ICommentCount {
 
-	Integer getYearComment();
+    Integer getYearComment();
 
-	Long getTotalComment();
+    Long getTotalComment();
 }
