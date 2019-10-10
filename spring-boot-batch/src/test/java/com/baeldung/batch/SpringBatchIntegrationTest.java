@@ -3,12 +3,17 @@ package com.baeldung.batch;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.Collection;
+
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
+import org.springframework.batch.core.JobInstance;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
+import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.test.AssertFile;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.batch.test.JobRepositoryTestUtils;
@@ -28,7 +33,7 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 @SpringBatchTest
 @EnableAutoConfiguration
 @ContextConfiguration(classes = { SpringBatchConfiguration.class })
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class})
+@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class })
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 public class SpringBatchIntegrationTest {
 
@@ -40,16 +45,15 @@ public class SpringBatchIntegrationTest {
 
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
-    
+
     @Autowired
     private JobRepositoryTestUtils jobRepositoryTestUtils;
-    
+
     @After
     public void cleanUp() {
         jobRepositoryTestUtils.removeJobExecutions();
     }
 
-    
     private JobParameters defaultJobParameters() {
         JobParametersBuilder paramsBuilder = new JobParametersBuilder();
         paramsBuilder.addString("file.input", TEST_INPUT);
@@ -65,14 +69,13 @@ public class SpringBatchIntegrationTest {
 
         // when
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(defaultJobParameters());
+        JobInstance actualJobInstance = jobExecution.getJobInstance();
+        ExitStatus actualJobExitStatus = jobExecution.getExitStatus();
 
         // then
-        // @formatter:off
-        assertThat(jobExecution.getJobInstance().getJobName(), is("transformBooksRecords"));
-        assertThat(jobExecution.getExitStatus().getExitCode(), is("COMPLETED"));
+        assertThat(actualJobInstance.getJobName(), is("transformBooksRecords"));
+        assertThat(actualJobExitStatus.getExitCode(), is("COMPLETED"));
         AssertFile.assertFileEquals(expectedResult, actualResult);
-        // @formatter:on
-        jobExecution.stop();
     }
 
     @Test
@@ -84,13 +87,13 @@ public class SpringBatchIntegrationTest {
 
         // when
         JobExecution jobExecution = jobLauncherTestUtils.launchStep("step1", defaultJobParameters());
+        Collection<StepExecution> actualStepExecutions = jobExecution.getStepExecutions();
+        ExitStatus actualJobExitStatus = jobExecution.getExitStatus();
 
         // then
-        // @formatter:off
-        assertThat(jobExecution.getStepExecutions().size(), is(1));
-        assertThat(jobExecution.getExitStatus().getExitCode(), is("COMPLETED"));
+        assertThat(actualStepExecutions.size(), is(1));
+        assertThat(actualJobExitStatus.getExitCode(), is("COMPLETED"));
         AssertFile.assertFileEquals(expectedResult, actualResult);
-        // @formatter:on
     }
 
     @Test
@@ -98,16 +101,15 @@ public class SpringBatchIntegrationTest {
 
         // when
         JobExecution jobExecution = jobLauncherTestUtils.launchStep("step2", defaultJobParameters());
+        Collection<StepExecution> actualStepExecutions = jobExecution.getStepExecutions();
+        ExitStatus actualExitStatus = jobExecution.getExitStatus();
 
         // then
-        // @formatter:off
-        assertThat(jobExecution.getStepExecutions().size(), is(1));
-        assertThat(jobExecution.getExitStatus().getExitCode(), is("COMPLETED"));
-        jobExecution.getStepExecutions()
-            .forEach(stepExecution -> {
-                assertThat(stepExecution.getWriteCount(), is(8));
-            });
-        // @formatter:on
+        assertThat(actualStepExecutions.size(), is(1));
+        assertThat(actualExitStatus.getExitCode(), is("COMPLETED"));
+        actualStepExecutions.forEach(stepExecution -> {
+            assertThat(stepExecution.getWriteCount(), is(8));
+        });
     }
 
 }
