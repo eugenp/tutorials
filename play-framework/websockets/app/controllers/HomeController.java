@@ -48,13 +48,17 @@ public class HomeController extends Controller {
     public WebSocket akkaStreamsSocket() {
         return WebSocket.Json.accept(
                 request -> {
-                    // Log events to the console
                     Sink<JsonNode, ?> in = Sink.foreach(System.out::println);
-
-                    // Send a single 'Hello!' message and then leave the socket open
-                    final MessageDTO messageDTO = new MessageDTO("userid", "id", "test title", "test body");
-                    Source<JsonNode, ?> out = Source.tick(Duration.ofSeconds(2), Duration.ofSeconds(2), MessageConverter.messageToJsonNode(messageDTO));
-
+                    final MessageDTO messageDTO = new MessageDTO(
+                            "userid",
+                            "id",
+                            "test title",
+                            "test body");
+                    Source<JsonNode, ?> out = Source.tick(
+                            Duration.ofSeconds(2),
+                            Duration.ofSeconds(2),
+                            MessageConverter.messageToJsonNode(messageDTO)
+                    );
                     return Flow.fromSinkAndSource(in, out);
                 });
     }
