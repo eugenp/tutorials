@@ -49,7 +49,7 @@ public class Log {
 
                 logs = git.log()
                         // for all log.all()
-                        .addPath("README.MD")
+                        .addPath("README.md")
                         .call();
                 count = 0;
                 for (RevCommit rev : logs) {
