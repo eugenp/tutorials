@@ -6,30 +6,8 @@ import org.junit.jupiter.api.Test
 internal class BuilderPatternUnitTest {
 
     @Test
-    fun whenBuildingFoodOrderSettingValues_thenFieldsNotNull() {
-
-        val foodOrder = FoodOrder.Builder()
-                .bread("white bread")
-                .meat("bacon")
-                .fish("salmon")
-                .condiments("olive oil")
-                .build()
-
-        Assertions.assertNotNull(foodOrder.bread)
-        Assertions.assertNotNull(foodOrder.meat)
-        Assertions.assertNotNull(foodOrder.condiments)
-        Assertions.assertNotNull(foodOrder.fish)
-    }
-
-    @Test
     fun whenBuildingFoodOrderSettingValues_thenFieldsContainsValues() {
-
-        val foodOrder = FoodOrder.Builder()
-                .bread("white bread")
-                .meat("bacon")
-                .fish("salmon")
-                .condiments("olive oil")
-                .build()
+        val foodOrder = FoodOrder(bread = "white bread", meat = "bacon", fish = "salmon", condiments = "olive oil")
 
         Assertions.assertEquals("white bread", foodOrder.bread)
         Assertions.assertEquals("bacon", foodOrder.meat)
@@ -40,8 +18,7 @@ internal class BuilderPatternUnitTest {
     @Test
     fun whenBuildingFoodOrderWithoutSettingValues_thenFieldsNull() {
 
-        val foodOrder = FoodOrder.Builder()
-                .build()
+        val foodOrder = FoodOrder()
 
         Assertions.assertNull(foodOrder.bread)
         Assertions.assertNull(foodOrder.meat)
