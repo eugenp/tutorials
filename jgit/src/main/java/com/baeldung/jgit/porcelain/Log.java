@@ -56,7 +56,7 @@ public class Log {
                     //System.out.println("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
                     count++;
                 }
-                System.out.println("Had " + count + " commits on README.MD");
+                System.out.println("Had " + count + " commits on README.md");
 
                 logs = git.log()
                         // for all log.all()
