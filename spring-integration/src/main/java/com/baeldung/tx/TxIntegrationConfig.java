@@ -41,7 +41,7 @@ public class TxIntegrationConfig {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    public final String INPUT_DIR = "/tmp/tx/";
+    public final String INPUT_DIR = System.getProperty("java.io.tmpdir") + "/tx/";
     public final String FILE_PATTERN = "*.txt";
 
     @Autowired
@@ -72,28 +72,25 @@ public class TxIntegrationConfig {
 
     @Bean
     public PollerMetadata pollerMetadata() {
-        return Pollers
-                .fixedDelay(5000)
-                .advice(transactionInterceptor())
-                .transactionSynchronizationFactory(transactionSynchronizationFactory)
-                .get();
+        return Pollers.fixedDelay(5000)
+                 .advice(transactionInterceptor())
+                 .transactionSynchronizationFactory(transactionSynchronizationFactory)
+                 .get();
     }
 
     private TransactionInterceptor transactionInterceptor() {
-        return new TransactionInterceptorBuilder()
-                .transactionManager(txManager)
-                .build();
+        return new TransactionInterceptorBuilder().transactionManager(txManager).build();
     }
 
     @Bean
     public TransactionSynchronizationFactory transactionSynchronizationFactory() {
         ExpressionEvaluatingTransactionSynchronizationProcessor transactionSynchronizationProcessor =
-                new ExpressionEvaluatingTransactionSynchronizationProcessor();
+          new ExpressionEvaluatingTransactionSynchronizationProcessor();
         SpelExpressionParser spelExpressionParser = new SpelExpressionParser();
         transactionSynchronizationProcessor.setAfterCommitExpression(spelExpressionParser.parseExpression(
-                "payload.renameTo(new java.io.File(payload.absolutePath + '.PASSED'))"));
+          "payload.renameTo(new java.io.File(payload.absolutePath + '.PASSED'))"));
         transactionSynchronizationProcessor.setAfterRollbackExpression(spelExpressionParser.parseExpression(
-                "payload.renameTo(new java.io.File(payload.absolutePath + '.FAILED'))"));
+          "payload.renameTo(new java.io.File(payload.absolutePath + '.FAILED'))"));
         return new DefaultTransactionSynchronizationFactory(transactionSynchronizationProcessor);
     }
 
