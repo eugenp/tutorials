@@ -594,6 +594,7 @@
 
 				<module>tensorflow-java</module>
 				<module>spf4j</module>
+				<module>spring-boot-configuration</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-boot-mvc-2</module>
 				<module>spring-boot-performance</module>
@@ -681,6 +682,7 @@
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-camel</module>
 				<!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
+				<module>spring-boot-configuration</module>
 				<module>spring-boot-client</module>
 
 				<module>spring-boot-crud</module>
