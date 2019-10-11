@@ -24,7 +24,7 @@
         <module>design-patterns-structural</module>
         <module>solid</module>
         <module>dip</module>
-        <module>backoff-jitter</module>
+        <module>design-patterns-cloud</module>
     </modules>
 
     <dependencyManagement>
