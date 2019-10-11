@@ -14,6 +14,19 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
     <dependencies>
         <!-- SQLite database driver -->
         <dependency>
@@ -52,18 +65,41 @@
             <artifactId>opencsv</artifactId>
             <version>${opencsv.version}</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-batch</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.5.0</version>
+            <scope>runtime</scope>
+        </dependency>
         
         <dependency>
-    		<groupId>org.awaitility</groupId>
-    		<artifactId>awaitility</artifactId>
-    		<version>${awaitility.version}</version>
-    		<scope>test</scope>
-		</dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring.boot.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <properties>
         <spring.version>5.0.3.RELEASE</spring.version>
-        <spring.batch.version>4.0.0.RELEASE</spring.batch.version>
+        <spring.batch.version>4.2.0.RELEASE</spring.batch.version>
+        <spring.boot.version>2.1.9.RELEASE</spring.boot.version>
         <sqlite.version>3.15.1</sqlite.version>
         <opencsv.version>4.1</opencsv.version>
         <awaitility.version>3.1.1</awaitility.version>

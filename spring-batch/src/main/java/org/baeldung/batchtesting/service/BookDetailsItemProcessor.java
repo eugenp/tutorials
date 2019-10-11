@@ -1,11 +1,10 @@
-package com.baeldung.batch.service;
+package org.baeldung.batchtesting.service;
 
+import org.baeldung.batchtesting.model.BookDetails;
+import org.baeldung.batchtesting.model.BookRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
-
-import com.baeldung.batch.model.BookDetails;
-import com.baeldung.batch.model.BookRecord;
 
 public class BookDetailsItemProcessor implements ItemProcessor<BookRecord, BookDetails> {
 

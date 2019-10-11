@@ -1,4 +1,4 @@
-package com.baeldung.batch;
+package org.baeldung.batchtesting;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;

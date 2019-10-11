@@ -1,10 +1,12 @@
-package com.baeldung.batch;
+package org.baeldung.batchtesting;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
 
+import org.baeldung.batchtesting.model.Book;
+import org.baeldung.batchtesting.model.BookRecord;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,8 +31,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
-import com.baeldung.batch.model.Book;
-import com.baeldung.batch.model.BookRecord;
 
 @RunWith(SpringRunner.class)
 @SpringBatchTest

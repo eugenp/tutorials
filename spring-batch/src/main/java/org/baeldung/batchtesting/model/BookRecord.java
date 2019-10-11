@@ -1,4 +1,4 @@
-package com.baeldung.batch.model;
+package org.baeldung.batchtesting.model;
 
 public class BookRecord {
 

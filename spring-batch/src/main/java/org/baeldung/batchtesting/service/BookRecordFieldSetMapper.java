@@ -1,10 +1,10 @@
-package com.baeldung.batch.service;
+package org.baeldung.batchtesting.service;
 
+import org.baeldung.batchtesting.model.BookRecord;
 import org.springframework.batch.item.file.mapping.FieldSetMapper;
 import org.springframework.batch.item.file.transform.FieldSet;
 import org.springframework.validation.BindException;
 
-import com.baeldung.batch.model.BookRecord;
 
 public class BookRecordFieldSetMapper implements FieldSetMapper<BookRecord> {
 

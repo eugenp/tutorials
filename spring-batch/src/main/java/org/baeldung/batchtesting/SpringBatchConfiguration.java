@@ -1,7 +1,13 @@
-package com.baeldung.batch;
+package org.baeldung.batchtesting;
 
 import java.io.IOException;
 
+import org.baeldung.batchtesting.model.Book;
+import org.baeldung.batchtesting.model.BookDetails;
+import org.baeldung.batchtesting.model.BookRecord;
+import org.baeldung.batchtesting.service.BookDetailsItemProcessor;
+import org.baeldung.batchtesting.service.BookItemProcessor;
+import org.baeldung.batchtesting.service.BookRecordFieldSetMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
@@ -25,12 +31,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 
-import com.baeldung.batch.model.Book;
-import com.baeldung.batch.model.BookDetails;
-import com.baeldung.batch.model.BookRecord;
-import com.baeldung.batch.service.BookDetailsItemProcessor;
-import com.baeldung.batch.service.BookItemProcessor;
-import com.baeldung.batch.service.BookRecordFieldSetMapper;
 
 @Configuration
 @EnableBatchProcessing

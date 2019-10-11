@@ -1,4 +1,4 @@
-package com.baeldung.batch;
+package org.baeldung.batchtesting;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;
@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
+@PropertySource("classpath:batchtesting/application.properties")
 public class SpringBatchApplication implements CommandLineRunner {
 
     @Autowired
