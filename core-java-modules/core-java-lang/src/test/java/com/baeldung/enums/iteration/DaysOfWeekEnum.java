@@ -1,4 +1,4 @@
-package com.baeldung.java.enumiteration;
+package com.baeldung.enums.iteration;
 
 import java.util.stream.Stream;
 

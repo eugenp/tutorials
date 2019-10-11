@@ -1,11 +1,11 @@
 package com.baeldung.objects;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
-public class CarUnitTest {
+import static org.junit.Assert.*;
+
+public class ObjectsUnitTest {
     
     private Car car;
 

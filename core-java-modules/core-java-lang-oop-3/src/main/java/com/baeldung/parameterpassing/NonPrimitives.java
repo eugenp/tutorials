@@ -17,7 +17,7 @@ public class NonPrimitives {
         b1.num++;
     }
 }
- 
+
 class FooClass {
     public int num;
    

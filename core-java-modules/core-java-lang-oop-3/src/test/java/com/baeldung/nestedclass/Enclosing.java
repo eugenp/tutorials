@@ -15,7 +15,7 @@ public class Enclosing {
 
     @Test
     public void test() {
-        Enclosing.StaticNested nested = new Enclosing.StaticNested();
+        StaticNested nested = new StaticNested();
         nested.run();
     }
 }
