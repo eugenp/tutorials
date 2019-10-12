@@ -62,7 +62,7 @@ public class HelloWorldMessageApp {
     int batchSize = 1;
 
     // consumer
-    int consumerCount = 1;
+    int consumerCount = 2;
     // max concurrent consumer
     int maxConsumerCount = consumerCount;
     // total prefetchCount considering the concurrent consumers
@@ -78,7 +78,7 @@ public class HelloWorldMessageApp {
         backOffPolicy.setBackOffPeriod(1000);
         return RetryInterceptorBuilder.stateless()
                 .backOffPolicy(backOffPolicy)
-                .maxAttempts(300)
+                .maxAttempts(10)
                 .recoverer(new MessageRecoverer() {
                     @Override
                     public void recover(Message message, Throwable cause) {
