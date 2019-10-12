@@ -1,6 +1,6 @@
-=========
+## JSON
 
-## Fast-Json
+This module contains articles about JSON.
 
 ### Relevant Articles:
 - [Introduction to JSON Schema in Java](https://www.baeldung.com/introduction-to-json-schema-in-java)
