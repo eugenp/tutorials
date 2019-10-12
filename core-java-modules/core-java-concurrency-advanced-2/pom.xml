@@ -2,9 +2,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>core-java-concurrency-advanced</artifactId>
+    <artifactId>core-java-concurrency-advanced-2</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <name>core-java-concurrency-advanced</name>
+    <name>core-java-concurrency-advanced-2</name>
     <packaging>jar</packaging>
 
     <parent>
@@ -17,40 +17,30 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-            <version>${commons-collections4.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math3</artifactId>
-            <version>${commons-math3.version}</version>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh-core.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh-generator-annprocess.version}</version>
+        </dependency>
+        
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.jayway.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>${avaitility.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
-        <finalName>core-java-concurrency-advanced</finalName>
+        <finalName>core-java-concurrency-advanced-2</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -60,14 +50,10 @@
     </build>
 
     <properties>
-        <!-- util -->
-        <guava.version>21.0</guava.version>
-        <commons-math3.version>3.6.1</commons-math3.version>
-        <commons-collections4.version>4.1</commons-collections4.version>
-        <collections-generic.version>4.01</collections-generic.version>
-        <!-- testing -->
+        <jmh-core.version>1.19</jmh-core.version>
+        <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
+        
         <assertj.version>3.6.1</assertj.version>
-        <avaitility.version>1.7.0</avaitility.version>
     </properties>
 
 </project>

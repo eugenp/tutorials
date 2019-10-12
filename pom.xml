@@ -1044,6 +1044,8 @@
 				<module>parent-kotlin</module>
 
 				<module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
+                <module>core-java-modules/core-java-concurrency-advanced-2</module>
+                <module>core-java-modules/core-java-concurrency-advanced-3</module>
 				<module>core-kotlin</module> <!-- long running? -->
 				<module>core-kotlin-2</module>
 				<module>core-kotlin-io</module>
@@ -1602,6 +1604,8 @@
 
 				<module>core-java-modules/core-java</module>
 				<module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
+                <module>core-java-modules/core-java-concurrency-advanced-2</module>
+                <module>core-java-modules/core-java-concurrency-advanced-3</module>
 				<module>core-kotlin</module> <!-- long running? -->
 				<module>core-kotlin-2</module>
 

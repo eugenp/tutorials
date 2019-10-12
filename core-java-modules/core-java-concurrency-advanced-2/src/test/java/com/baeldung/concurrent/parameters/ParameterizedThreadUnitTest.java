@@ -1,14 +1,13 @@
-package com.baeldung.parameters;
+package com.baeldung.concurrent.parameters;
 
-import com.baeldung.concurrent.parameter.AverageCalculator;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.stream.IntStream;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 public class ParameterizedThreadUnitTest {
 
