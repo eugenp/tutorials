@@ -6,44 +6,39 @@
     <packaging>war</packaging>
     <name>spring-boot-data</name>
     <description>Spring Boot Data Module</description>
-
     <parent>
         <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
-            <version>2.1.6.RELEASE</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.javers</groupId>
+            <artifactId>javers-spring-boot-starter-sql</artifactId>
+            <version>${javers.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
-            <version>2.1.6.RELEASE</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>2.1.6.RELEASE</version>
         </dependency>
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.197</version>
+            <version>${h2.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
@@ -54,8 +49,8 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-    </dependencies>
 
+    </dependencies>
 
     <build>
         <finalName>spring-boot</finalName>
@@ -98,6 +93,14 @@
                     </generateGitPropertiesFilename>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -106,6 +109,22 @@
             <id>autoconfiguration</id>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <mainClass>com.baeldung.javers.SpringBootJaVersApplication</mainClass>
+                            <layout>JAR</layout>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>8</source>
+                            <target>8</target>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
@@ -133,14 +152,21 @@
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>1.8</source>
+                            <target>1.8</target>
+                        </configuration>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
     </profiles>
 
     <properties>
-        <start-class>com.baeldung.SpringBootDataApplication</start-class>
+        <javers.version>5.6.3</javers.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
     </properties>
-
 </project>
