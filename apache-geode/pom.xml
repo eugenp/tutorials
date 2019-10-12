@@ -17,6 +17,7 @@
         <dependency>
             <groupId>org.apache.geode</groupId>
             <artifactId>geode-core</artifactId>
+            <version>${geode.core}</version>
         </dependency>
     </dependencies>
 	
