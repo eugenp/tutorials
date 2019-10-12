@@ -23,6 +23,20 @@ public class SpringDataAggregateIntegrationTest {
     private CommentRepository commentRepository;
 
     @Test
+    public void whenQueryWithAggregation_thenReturnResult() {
+        List<Object[]> commentCountsByYear = commentRepository.countTotalCommentsByYear();
+        Object[] countYear2019 = commentCountsByYear.get(0);
+        assertEquals(countYear2019[0], Integer.valueOf(2019));
+        assertEquals(countYear2019[1], 1l);
+        Object[] countYear2018 = commentCountsByYear.get(1);
+        assertEquals(countYear2018[0], Integer.valueOf(2018));
+        assertEquals(countYear2018[1], 2l);
+        Object[] countYear2017 = commentCountsByYear.get(2);
+        assertEquals(countYear2017[0], Integer.valueOf(2017));
+        assertEquals(countYear2017[1], 1l);
+    }
+
+    @Test
     public void whenQueryWithAggregation_thenReturnCustomResult() {
         List<CommentCount> commentCountsByYear = commentRepository.countTotalCommentsByYearClass();
         CommentCount countYear2019 = commentCountsByYear.get(0);
