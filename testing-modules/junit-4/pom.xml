@@ -15,4 +15,17 @@
         <relativePath>../../</relativePath>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>pl.pragmatists</groupId>
+            <artifactId>JUnitParams</artifactId>
+            <version>${jUnitParams.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <jUnitParams.version>1.1.0</jUnitParams.version>
+    </properties>
+
 </project>

@@ -64,9 +64,8 @@
     </build>
 
     <properties>
-        <vertx.version>3.0.0</vertx.version>
-        <testng.version>6.10</testng.version>
-        <maven-shade-plugin.version>2.3</maven-shade-plugin.version>
+        <vertx.version>3.8.1</vertx.version>
+        <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
     </properties>
 
 </project>

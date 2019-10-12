@@ -3,7 +3,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mocks</artifactId>
     <name>mocks</name>
-    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -12,9 +11,45 @@
         <relativePath>../../</relativePath>
     </parent>
 
-    <modules>
-        <module>mock-comparisons</module>
-        <module>jmockit</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javafaker.version}</version>
+        </dependency>
+ <dependency>
+            <groupId>org.jmockit</groupId>
+            <artifactId>jmockit</artifactId>
+            <version>${jmockit.version}</version>
+            <scope>test</scope>
+        </dependency>
+  <dependency>
+            <groupId>org.jukito</groupId>
+            <artifactId>jukito</artifactId>
+            <version>${jukito.version}</version>
+            <scope>test</scope>
+        </dependency>
+ <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>${easymock.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <javafaker.version>0.15</javafaker.version>
+        <jukito.version>1.5</jukito.version>
+<mockito.version>2.21.0</mockito.version>
+        <easymock.version>3.5.1</easymock.version>
+        <jmockit.version>1.41</jmockit.version>
+    </properties>
 
 </project>
