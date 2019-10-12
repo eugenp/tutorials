@@ -366,7 +366,6 @@
 				<module>asciidoctor</module>
 				<module>asm</module>
 				<module>atomix</module>
-				<module>autovalue</module>
 				<module>aws</module>
 				<module>aws-lambda</module>
 				<module>axon</module>
@@ -381,6 +380,7 @@
 				<module>checker-plugin</module>
 				<module>cloud-foundry-uaa/cf-uaa-oauth2-client</module>
 				<module>cloud-foundry-uaa/cf-uaa-oauth2-resource-server</module>
+				<module>code-generation</module>
 				<module>core-groovy</module>
 				<module>core-groovy-2</module>
 				<module>core-groovy-collections</module>
@@ -415,6 +415,7 @@
                 <module>core-java-modules/core-java-io-files</module>
                 <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-security</module>
+                <module>core-java-modules/core-java-exceptions</module>
                 <module>core-java-modules/core-java-lang-syntax</module>
                 <module>core-java-modules/core-java-lang-syntax-2</module>
                 <module>core-java-modules/core-java-lang</module>
@@ -458,6 +459,7 @@
                 <module>guava</module>
 				<module>guava-io</module>
                 <module>guava-collections</module>
+                <module>guava-collections-map</module>
 				<module>guava-collections-set</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
@@ -597,6 +599,7 @@
 				<module>spring-boot-performance</module>
 				<module>spring-boot-properties</module>
 				<!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
+
 				<module>spring-security-kerberos</module>
 				<module>oauth2-framework-impl</module>
 				
@@ -665,7 +668,6 @@
 
 				<module>spring-activiti</module>
 				<module>spring-akka</module>
-				<module>spring-all</module>
 				<module>spring-amqp</module>
 				<module>spring-aop</module>
 				<module>spring-apache-camel</module>
@@ -684,17 +686,20 @@
 				<module>spring-boot-crud</module>
 				<module>spring-boot-ctx-fluent</module>
 				<module>spring-boot-custom-starter</module>
-				<module>spring-boot-disable-console-logging</module>
 				<!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
 				<module>spring-boot-jasypt</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-kotlin</module>
 				<module>spring-boot-logging-log4j2</module>
-				<module>spring-boot-management</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-mvc-birt</module>
-				<module>spring-boot-ops</module>
-				<module>spring-boot-ops-2</module>
+				<module>spring-boot-environment</module>
+				<module>spring-boot-deployment</module>
+				<module>spring-boot-runtime</module>
+				<module>spring-boot-runtime/disabling-console-jul</module>
+				<module>spring-boot-runtime/disabling-console-log4j2</module>
+				<module>spring-boot-runtime/disabling-console-logback</module>
+				<module>spring-boot-artifacts</module>
 				<module>spring-boot-rest</module>
 				<module>spring-boot-data</module>
 				<module>spring-boot-parent</module>
@@ -702,6 +707,7 @@
 				<module>spring-boot-security</module>
 				<module>spring-boot-testing</module>
 				<module>spring-boot-vue</module>
+				<module>spring-caching</module>
 				<module>spring-boot-libraries</module>
 
 				
@@ -712,6 +718,7 @@
 
 				<module>spring-core</module>
 				<module>spring-core-2</module>
+				<module>spring-core-3</module>
 				<module>spring-cucumber</module>
 
 				<module>spring-data-rest</module>
@@ -743,6 +750,7 @@
 
 				<module>spring-mobile</module>
 				<module>spring-mockito</module>
+				<module>spring-mvc-basics-2</module>
 				<module>spring-mvc-forms-jsp</module>
 				<module>spring-mvc-forms-thymeleaf</module>
 				<module>spring-mvc-java</module>
@@ -771,6 +779,8 @@
 				<module>spring-rest-simple</module>
 				<module>spring-resttemplate</module>
 				<module>spring-roo</module>
+
+				<module>spring-scheduling</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-angular/server</module>
 				<module>spring-security-cache-control</module>
@@ -795,6 +805,7 @@
 				<module>spring-security-thymeleaf</module>
 				<module>spring-security-x509</module>
 				<module>spring-session</module>
+				<module>spring-shell</module>
 				<module>spring-sleuth</module>
 				<module>spring-soap</module>
 				<module>spring-social-login</module>
@@ -878,7 +889,6 @@
 				<module>spring-5-security-cognito</module>
 				<module>spring-activiti</module>
 				<module>spring-akka</module>
-				<module>spring-all</module>
 				<module>spring-aop</module>
 				<module>spring-apache-camel</module>
 				<module>spring-batch</module>
@@ -1040,7 +1050,7 @@
 				<module>core-kotlin-2</module>
 				<module>core-kotlin-io</module>
 
-				<module>jenkins/hello-world</module>
+				<module>jenkins/plugins</module>
 				<module>jhipster</module>
 				<module>jws</module>
 
@@ -1119,7 +1129,6 @@
 				<module>asciidoctor</module>
 				<module>asm</module>
 				<module>atomix</module>
-				<module>autovalue</module>
 				<module>aws</module>
 				<module>aws-lambda</module>
 				<module>axon</module>
@@ -1132,6 +1141,7 @@
 				<module>checker-plugin</module>
 				<module>cloud-foundry-uaa/cf-uaa-oauth2-client</module>
 				<module>cloud-foundry-uaa/cf-uaa-oauth2-resource-server</module>
+				<module>code-generation</module>
 				<module>core-groovy</module>
 				<module>core-groovy-2</module>
 				<module>core-groovy-collections</module>
@@ -1164,6 +1174,7 @@
 				<module>core-java-modules/core-java-io-files</module>
 				<module>core-java-modules/core-java-nio</module>
 				<module>core-java-modules/core-java-security</module>
+				<module>core-java-modules/core-java-exceptions</module>
 				<module>core-java-modules/core-java-lang-syntax</module>
 				<module>core-java-modules/core-java-lang-syntax-2</module>
 				<module>core-java-modules/core-java-lang</module>
@@ -1204,6 +1215,7 @@
 				<module>guava</module>
 				<module>guava-io</module>
 				<module>guava-collections</module>
+				<module>guava-collections-map</module>
 				<module>guava-collections-set</module>
 				<module>guava-modules</module>
 				<!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
@@ -1388,7 +1400,6 @@
 				<module>spring-5-security-cognito</module>
 				<module>spring-activiti</module>
 				<module>spring-akka</module>
-				<module>spring-all</module>
 				<module>spring-amqp</module>
 				<module>spring-aop</module>
 				<module>spring-apache-camel</module>
@@ -1406,23 +1417,26 @@
 				<module>spring-boot-crud</module>
 				<module>spring-boot-ctx-fluent</module>
 				<module>spring-boot-custom-starter</module>
-				<module>spring-boot-disable-console-logging</module>
 				<!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
 				<module>spring-boot-jasypt</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-logging-log4j2</module>
-				<module>spring-boot-management</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-mvc-birt</module>
-				<module>spring-boot-ops</module>
-				<module>spring-boot-ops-2</module>
+				<module>spring-boot-environment</module>
+				<module>spring-boot-deployment</module>
+				<module>spring-boot-runtime</module>
+				<module>spring-boot-runtime/disabling-console-jul</module>
+				<module>spring-boot-runtime/disabling-console-log4j2</module>
+				<module>spring-boot-runtime/disabling-console-logback</module>
+				<module>spring-boot-artifacts</module>
 				<module>spring-boot-rest</module>
 				<module>spring-boot-data</module>
 				<module>spring-boot-parent</module>
 				<module>spring-boot-property-exp</module>
 				<module>spring-boot-security</module>
 				<module>spring-boot-vue</module>
-
+				<module>spring-caching</module>
 				<module>spring-cloud</module>
 				<module>spring-cloud-bus</module>
 				<!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
@@ -1430,6 +1444,7 @@
 
 				<module>spring-core</module>
 				<module>spring-core-2</module>
+				<module>spring-core-3</module>
 				<module>spring-cucumber</module>
 
 				<module>spring-data-rest</module>
@@ -1461,6 +1476,7 @@
 
 				<module>spring-mobile</module>
 				<module>spring-mockito</module>
+				<module>spring-mvc-basics-2</module>
 				<module>spring-mvc-forms-jsp</module>
 				<module>spring-mvc-forms-thymeleaf</module>
 				<module>spring-mvc-java</module>
@@ -1490,6 +1506,7 @@
 				<module>spring-resttemplate</module>
 				<module>spring-roo</module>
 
+				<module>spring-scheduling</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-angular/server</module>
 				<module>spring-security-cache-control</module>
@@ -1512,6 +1529,7 @@
 				<module>spring-security-thymeleaf</module>
 				<module>spring-security-x509</module>
 				<module>spring-session</module>
+				<module>spring-shell</module>
 				<module>spring-sleuth</module>
 				<module>spring-soap</module>
 				<module>spring-social-login</module>
@@ -1591,7 +1609,7 @@
 				<module>core-kotlin</module> <!-- long running? -->
 				<module>core-kotlin-2</module>
 
-				<module>jenkins/hello-world</module>
+				<module>jenkins/plugins</module>
 				<module>jhipster</module>
 				<module>jws</module>
 
