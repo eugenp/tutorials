@@ -71,6 +71,17 @@
             <version>${spring.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${http.client.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-module-junit4</artifactId>
             <version>${powermock.version}</version>
@@ -124,9 +135,13 @@
                     <mainClass>com.baeldung.TestLauncher</mainClass>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${surefire.report.plugin}</version>
+            </plugin>
         </plugins>
     </build>
-
     <properties>
         <junit.jupiter.version>5.4.2</junit.jupiter.version>
         <mockito.junit.jupiter.version>2.23.0</mockito.junit.jupiter.version>
@@ -137,6 +152,8 @@
         <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <spring.version>5.0.1.RELEASE</spring.version>
+        <http.client.version>4.5.10</http.client.version>
+        <surefire.report.plugin>3.0.0-M3</surefire.report.plugin>
     </properties>
 
 </project>
