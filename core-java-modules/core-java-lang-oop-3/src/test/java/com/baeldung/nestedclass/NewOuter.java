@@ -23,7 +23,7 @@ public class NewOuter {
     @Test
     public void test() {
         NewOuter outer = new NewOuter();
-        NewOuter.InnerClass inner = outer.new InnerClass();
+        InnerClass inner = outer.new InnerClass();
         inner.run();
 
     }

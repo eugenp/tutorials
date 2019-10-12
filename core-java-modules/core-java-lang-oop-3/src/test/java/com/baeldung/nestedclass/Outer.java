@@ -14,7 +14,7 @@ public class Outer {
     @Test
     public void test() {
         Outer outer = new Outer();
-        Outer.Inner inner = outer.new Inner();
+        Inner inner = outer.new Inner();
         inner.run();
     }
 }

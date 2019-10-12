@@ -1,4 +1,4 @@
-package com.baeldung.interfaces;
+package com.baeldung.innerinterfaces;
 
 public class Customer {
     public interface List {
