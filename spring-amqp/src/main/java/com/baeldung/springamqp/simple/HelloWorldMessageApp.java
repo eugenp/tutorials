@@ -9,6 +9,7 @@ import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFacto
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,7 +34,7 @@ public class HelloWorldMessageApp {
     @Bean
     public ApplicationRunner runner(RabbitTemplate template) {
         return args -> {
-            IntStream.range(1, 101).forEach(id -> template.convertAndSend("myQueue", "Hello, world@" + id));
+            IntStream.range(1, 51).forEach(id -> template.convertAndSend("myQueue", "Hello, world@" + id));
         };
     }
 
@@ -46,20 +47,28 @@ public class HelloWorldMessageApp {
         return connectionFactory;
     }
 
+    // number of message fetched at one time
     int prefetchCount = 25;
+    // Number of messages in one transaction if transacted
+    // if not transacted but AcknowledgeMode.AUTO no of message after which ack is sent back
+    // by default the size in one so ack is sent for each message
+    int batchSize=25;
 
     @Bean
     @Primary
     public SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory() {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory());
-        factory.setChannelTransacted(true);
         factory.setPrefetchCount(prefetchCount);
         factory.setAcknowledgeMode(AcknowledgeMode.AUTO);
         factory.setConcurrentConsumers(1);
+        // this is really important when the acknowledgemode is Auto
+        // but it's depricated in 2.2 amqp for batch size
+        factory.setTxSize(batchSize);
         //factory.setMaxConcurrentConsumers(10);
         return factory;
     }
+
 
     @Bean
     public Queue myQueue() {
@@ -67,14 +76,14 @@ public class HelloWorldMessageApp {
         return myQueue;
     }
 
-    @RabbitListener(queues = MY_QUEUE_NAME, concurrency = "1", containerFactory = "rabbitListenerContainerFactory")
+    @RabbitListener(queues = MY_QUEUE_NAME,containerFactory = "rabbitListenerContainerFactory")
     public void listen(String in, Channel channel) throws InterruptedException, IOException {
         System.out.println("Message read from myQueue : " + in);
         Thread.sleep(10);
         System.out.println("Message processing done :" + in);
         int msgNo = Integer.parseInt(in.split("@", 2)[1]);
-        if (msgNo ==prefetchCount-5) {
-            System.out.println("Prefetch " + prefetchCount + " no it should commit 250");
+        if (msgNo ==batchSize-1) {
+            System.out.println("Prefetch " + prefetchCount + ", batch="+batchSize+" all messages would be put back ");
             //  Thread.sleep(1000000);
             System.exit(2);
         }
