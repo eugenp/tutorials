@@ -1,3 +1,7 @@
+## Spring Boot Admin
+
+This module contains articles about Spring Boot Admin
+
 ## 1. Spring Boot Admin Server
 
 * mvn clean install
@@ -19,4 +23,4 @@ and the mail configuration from application.properties
 
 ### Relevant Articles: 
 
-- [A Guide to Spring Boot Admin](http://www.baeldung.com/spring-boot-admin)
+- [A Guide to Spring Boot Admin](https://www.baeldung.com/spring-boot-admin)

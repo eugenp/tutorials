@@ -14,8 +14,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import com.baeldung.util.Gender;
-
 @Entity
 @Table(name="STUDENT")
 public class Student {

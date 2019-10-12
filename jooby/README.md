@@ -1,3 +1,7 @@
-## Relevant articles:
+## Jooby
 
-- [Introduction to Jooby](http://www.baeldung.com/jooby)
+This module contains articles about Jooby.
+
+### Relevant articles:
+
+- [Introduction to Jooby](https://www.baeldung.com/jooby)
