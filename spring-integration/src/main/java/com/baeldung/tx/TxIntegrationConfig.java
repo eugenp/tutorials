@@ -20,10 +20,7 @@ import org.springframework.integration.file.FileReadingMessageSource;
 import org.springframework.integration.file.filters.SimplePatternFileListFilter;
 import org.springframework.integration.file.transformer.FileToStringTransformer;
 import org.springframework.integration.scheduling.PollerMetadata;
-import org.springframework.integration.transaction.DefaultTransactionSynchronizationFactory;
-import org.springframework.integration.transaction.ExpressionEvaluatingTransactionSynchronizationProcessor;
-import org.springframework.integration.transaction.TransactionInterceptorBuilder;
-import org.springframework.integration.transaction.TransactionSynchronizationFactory;
+import org.springframework.integration.transaction.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -84,15 +81,19 @@ public class TxIntegrationConfig {
 
     @Bean
     public TransactionSynchronizationFactory transactionSynchronizationFactory() {
-        ExpressionEvaluatingTransactionSynchronizationProcessor transactionSynchronizationProcessor =
-          new ExpressionEvaluatingTransactionSynchronizationProcessor();
-        SpelExpressionParser spelExpressionParser = new SpelExpressionParser();
-        transactionSynchronizationProcessor.setAfterCommitExpression(spelExpressionParser.parseExpression(
-          "payload.renameTo(new java.io.File(payload.absolutePath + '.PASSED'))"));
-        transactionSynchronizationProcessor.setAfterRollbackExpression(spelExpressionParser.parseExpression(
-          "payload.renameTo(new java.io.File(payload.absolutePath + '.FAILED'))"));
-        return new DefaultTransactionSynchronizationFactory(transactionSynchronizationProcessor);
-    }
+        ExpressionEvaluatingTransactionSynchronizationProcessor processor =
+            new ExpressionEvaluatingTransactionSynchronizationProcessor();
+
+        SpelExpressionParser spelParser = new SpelExpressionParser();
+        processor.setAfterCommitExpression(
+            spelParser.parseExpression(
+                "payload.renameTo(new java.io.File(payload.absolutePath + '.PASSED'))"));
+        processor.setAfterRollbackExpression(
+            spelParser.parseExpression(
+                "payload.renameTo(new java.io.File(payload.absolutePath + '.FAILED'))"));
+
+        return new DefaultTransactionSynchronizationFactory(processor);
+        }
 
     @Bean
     @Transformer(inputChannel = "inputChannel", outputChannel = "toServiceChannel")
