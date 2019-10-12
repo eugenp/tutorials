@@ -1,13 +1,16 @@
 package com.baeldung.execution.time;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class RandomNumberUnitTest {
+import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+public class UUIDUniquenessUnitTest {
 
     @Test
-    public void whenTwoRandomNumberThenAssertUniqueness() {
+    public void whenTwoUUIDThenAssertNotEqual() {
 
-        Assertions.assertNotEquals(Math.random(), Math.random());
+        assertNotEquals(UUID.randomUUID(), UUID.randomUUID());
     }
 }

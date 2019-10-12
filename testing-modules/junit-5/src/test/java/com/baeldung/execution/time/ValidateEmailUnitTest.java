@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PublishListUnitTest {
+public class ValidateEmailUnitTest {
 
     @Test
     public void whenValidEmailThenReturnTrue() {
