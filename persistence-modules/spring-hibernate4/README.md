@@ -1,6 +1,6 @@
-=========
+## Spring with Hibernate 4
 
-## Spring with Hibernate 4 Example Project
+This module contains articles about Spring with Hibernate 4
 
 ### Relevant Articles: 
 - [Guide to Hibernate 4 with Spring](http://www.baeldung.com/hibernate-4-spring)
@@ -20,5 +20,6 @@ cd REST
 mvn install
 mvn cargo:run
 ```
+
 - **note**: starts on port `8082`
 
