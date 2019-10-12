@@ -8,8 +8,10 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,16 +28,21 @@ public class HelloWorldMessageApp {
     private static final boolean NON_DURABLE = false;
     private static final String MY_QUEUE_NAME = "myQueue";
 
-
     public static void main(String[] args) {
         SpringApplication.run(HelloWorldMessageApp.class, args);
     }
 
     @Bean
-    public ApplicationRunner runner(RabbitTemplate template) {
+    public ApplicationRunner runner(RabbitTemplate template, RabbitAdmin rabbitAdmin) {
+        rabbitAdmin.purgeQueue(HelloWorldMessageApp.MY_QUEUE_NAME);
         return args -> {
             IntStream.range(1, 51).forEach(id -> template.convertAndSend("myQueue", "Hello, world@" + id));
         };
+    }
+
+    @Bean
+    public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {
+        return new RabbitAdmin(connectionFactory);
     }
 
     @Bean
@@ -53,6 +60,10 @@ public class HelloWorldMessageApp {
     // if not transacted but AcknowledgeMode.AUTO no of message after which ack is sent back
     // by default the size in one so ack is sent for each message
     int batchSize=25;
+    // consumer
+    int consumerCount=2;
+    // max concurrent consumer
+    int maxConsumerCount=3;
 
     @Bean
     @Primary
@@ -61,11 +72,11 @@ public class HelloWorldMessageApp {
         factory.setConnectionFactory(connectionFactory());
         factory.setPrefetchCount(prefetchCount);
         factory.setAcknowledgeMode(AcknowledgeMode.AUTO);
-        factory.setConcurrentConsumers(1);
+        factory.setConcurrentConsumers(consumerCount);
         // this is really important when the acknowledgemode is Auto
         // but it's depricated in 2.2 amqp for batch size
         factory.setTxSize(batchSize);
-        //factory.setMaxConcurrentConsumers(10);
+        factory.setMaxConcurrentConsumers(maxConsumerCount);
         return factory;
     }
 
