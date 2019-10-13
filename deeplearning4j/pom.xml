@@ -16,6 +16,11 @@
     <dependencies>
         <dependency>
             <groupId>org.nd4j</groupId>
+            <artifactId>nd4j-api</artifactId>
+            <version>${dl4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.nd4j</groupId>
             <artifactId>nd4j-native-platform</artifactId>
             <version>${dl4j.version}</version>
         </dependency>
@@ -43,7 +48,7 @@
     </dependencies>
 
     <properties>
-        <dl4j.version>0.9.1</dl4j.version>
+        <dl4j.version>1.0.0-beta5</dl4j.version>
     </properties>
 
 </project>
