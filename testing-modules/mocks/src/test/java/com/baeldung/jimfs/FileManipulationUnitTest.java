@@ -12,18 +12,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FileManipulationUnitTest implements FileTestProvider {
 
-    private static Stream<Arguments> provideFileSystem() {
-        return Stream.of(
-          Arguments.of(Jimfs.newFileSystem(Configuration.unix())),
-          Arguments.of(Jimfs.newFileSystem(Configuration.windows())),
-          Arguments.of(Jimfs.newFileSystem(Configuration.osX())));
-    }
-
     private final FileManipulation fileManipulation = new FileManipulation();
+
+    private static Stream<Arguments> provideFileSystem() {
+        return Stream.of(Arguments.of(Jimfs.newFileSystem(Configuration.unix())), Arguments.of(Jimfs.newFileSystem(Configuration.windows())), Arguments.of(Jimfs.newFileSystem(Configuration.osX())));
+    }
 
     @ParameterizedTest
     @DisplayName("Should create a file on a file system")

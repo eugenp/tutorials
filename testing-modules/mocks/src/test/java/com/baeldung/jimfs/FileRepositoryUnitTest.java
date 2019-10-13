@@ -3,14 +3,11 @@ package com.baeldung.jimfs;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.api.Test;
 
 import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,14 +15,10 @@ class FileRepositoryUnitTest implements FileTestProvider {
 
     private final FileRepository fileRepository = new FileRepository();
 
-    private static Stream<Arguments> provideFileSystem() {
-        return Stream.of(Arguments.of(Jimfs.newFileSystem(Configuration.unix())), Arguments.of(Jimfs.newFileSystem(Configuration.windows())), Arguments.of(Jimfs.newFileSystem(Configuration.osX())));
-    }
-
-    @ParameterizedTest
+    @Test
     @DisplayName("Should create a file on a file system")
-    @MethodSource("provideFileSystem")
-    void shouldCreateFile(final FileSystem fileSystem) throws Exception {
+    void shouldCreateFile() {
+        final FileSystem fileSystem = Jimfs.newFileSystem(Configuration.unix());
         final String fileName = "newFile.txt";
         final Path pathToStore = fileSystem.getPath("");
 
@@ -34,10 +27,10 @@ class FileRepositoryUnitTest implements FileTestProvider {
         assertTrue(Files.exists(pathToStore.resolve(fileName)));
     }
 
-    @ParameterizedTest
+    @Test
     @DisplayName("Should read the content of the file")
-    @MethodSource("provideFileSystem")
-    void shouldReadFileContent_thenReturnIt(final FileSystem fileSystem) throws Exception {
+    void shouldReadFileContent_thenReturnIt() throws Exception {
+        final FileSystem fileSystem = Jimfs.newFileSystem(Configuration.osX());
         final Path resourceFilePath = fileSystem.getPath(RESOURCE_FILE_NAME);
         Files.copy(getResourceFilePath(), resourceFilePath);
 
@@ -46,10 +39,10 @@ class FileRepositoryUnitTest implements FileTestProvider {
         assertEquals(FILE_CONTENT, content);
     }
 
-    @ParameterizedTest
-    @DisplayName("Should update content of the file")
-    @MethodSource("provideFileSystem")
-    void shouldUpdateContentOfTheFile(final FileSystem fileSystem) throws Exception {
+    @Test
+    @DisplayName("Should update the content of the file")
+    void shouldUpdateContentOfTheFile() throws Exception {
+        final FileSystem fileSystem = Jimfs.newFileSystem(Configuration.windows());
         final Path resourceFilePath = fileSystem.getPath(RESOURCE_FILE_NAME);
         Files.copy(getResourceFilePath(), resourceFilePath);
         final String newContent = "I'm updating you.";
@@ -60,10 +53,10 @@ class FileRepositoryUnitTest implements FileTestProvider {
         assertEquals(newContent, fileRepository.read(resourceFilePath));
     }
 
-    @ParameterizedTest
-    @DisplayName("Should update delete file")
-    @MethodSource("provideFileSystem")
-    void shouldDeleteFile(final FileSystem fileSystem) throws Exception {
+    @Test
+    @DisplayName("Should delete file")
+    void shouldDeleteFile() throws Exception {
+        final FileSystem fileSystem = Jimfs.newFileSystem();
         final Path resourceFilePath = fileSystem.getPath(RESOURCE_FILE_NAME);
         Files.copy(getResourceFilePath(), resourceFilePath);
 

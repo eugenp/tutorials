@@ -33,7 +33,7 @@ public class FileRepository {
         }
     }
 
-    void delete (final Path path){
+    void delete(final Path path) {
         try {
             Files.deleteIfExists(path);
         } catch (final IOException ex) {
