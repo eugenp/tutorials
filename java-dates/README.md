@@ -21,5 +21,4 @@
 - [Add Hours To a Date In Java](http://www.baeldung.com/java-add-hours-date)
 - [ZoneOffset in Java](https://www.baeldung.com/java-zone-offset)
 - [Differences Between ZonedDateTime and OffsetDateTime](https://www.baeldung.com/java-zoneddatetime-offsetdatetime)
-- [Introduction to Joda-Time](http://www.baeldung.com/joda-time)
-- [Comparing Dates in Java](https://www.baeldung.com/java-comparing-dates)
+- [Introduction to Joda-Time](https://www.baeldung.com/joda-time)
