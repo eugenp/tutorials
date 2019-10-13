@@ -1,5 +1,4 @@
 spring:
    application:
       name: weather-service
-server:
-   port: 7070
+

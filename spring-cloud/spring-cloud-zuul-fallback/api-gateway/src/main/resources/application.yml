@@ -2,7 +2,7 @@ spring:
    application:
       name: api-gateway
 server:
-   port: 8008
+   port: 7070
   
 zuul:
    igoredServices: '*'
@@ -18,5 +18,5 @@ ribbon:
 
 weather-service:
    ribbon:
-      listOfServers: localhost:7070
+      listOfServers: localhost:8080
 
