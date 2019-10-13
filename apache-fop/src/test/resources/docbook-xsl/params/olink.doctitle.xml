@@ -1,0 +1,146 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="olink.doctitle"> 
+<refmeta> 
+<refentrytitle>olink.doctitle</refentrytitle> 
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo> 
+<refmiscinfo class="other" otherclass="value">no</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">yes</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">maybe</refmiscinfo>
+</refmeta> 
+<refnamediv> 
+<refname>olink.doctitle</refname> 
+<refpurpose>show the document title for external olinks?</refpurpose>
+
+</refnamediv> 
+<refsynopsisdiv> <src:fragment xml:id="olink.doctitle.frag">
+<xsl:param name="olink.doctitle">no</xsl:param> 
+</src:fragment> 
+</refsynopsisdiv> 
+<refsection><info><title>Description</title></info> 
+ 
+<para>When olinks between documents are resolved, the generated text
+may not make it clear that the reference is to another document.
+It is possible for the stylesheets to append the other document's
+title to external olinks. For this to happen, two parameters must
+be set.</para>
+<itemizedlist>
+<listitem>
+<para>This <parameter>olink.doctitle</parameter> parameter
+should be set to either <literal>yes</literal> or <literal>maybe</literal>
+to enable this feature.
+</para>
+</listitem>
+<listitem>
+<para>And you should also set the <parameter>current.docid</parameter>
+parameter to the document id for the  document currently
+being processed for output.
+</para>
+</listitem>
+</itemizedlist>
+
+<para>
+Then if an olink's  <literal>targetdoc</literal> id differs from
+the <literal>current.docid</literal> value, the stylesheet knows
+that it is a reference to another document and can
+append the target document's
+title to the generated olink text. </para> 
+
+<para>The text for the target document's title is copied from the
+olink database from the <tag>ttl</tag> element
+of the top-level <tag>div</tag> for that document.
+If that <tag>ttl</tag> element is missing or empty,
+no title is output.
+</para>
+
+<para>The supported values for <parameter>olink.doctitle</parameter> are:
+</para>
+<variablelist>
+<varlistentry>
+<term><literal>yes</literal></term>
+<listitem>
+<para>
+Always insert the title to the target document if it is not
+the current document.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>no</literal></term>
+<listitem>
+<para>
+Never insert the title to the target document, even if requested
+in an <tag class="attribute">xrefstyle</tag> attribute.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>maybe</literal></term>
+<listitem>
+<para>
+Only insert the title to the target document, if requested
+in an <tag class="attribute">xrefstyle</tag> attribute.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>An <tag class="attribute">xrefstyle</tag> attribute
+may override the global setting for individual olinks.
+The following values are supported in an
+<tag class="attribute">xrefstyle</tag>
+attribute using the <literal>select:</literal> syntax:
+</para>
+
+<variablelist>
+<varlistentry>
+<term><literal>docname</literal></term>
+<listitem>
+<para>
+Insert the target document name for this olink using the
+<literal>docname</literal> gentext template, but only
+if the value of <parameter>olink.doctitle</parameter>
+is not <literal>no</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>docnamelong</literal></term>
+<listitem>
+<para>
+Insert the target document name for this olink using the
+<literal>docnamelong</literal> gentext template, but only
+if the value of <parameter>olink.doctitle</parameter>
+is not <literal>no</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>nodocname</literal></term>
+<listitem>
+<para>
+Omit the target document name even if
+the value of <parameter>olink.doctitle</parameter>
+is <literal>yes</literal>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>Another way of inserting the target document name 
+for a single olink is to employ an
+<tag class="attribute">xrefstyle</tag>
+attribute using the <literal>template:</literal> syntax.
+The <literal>%o</literal> placeholder (the letter o, not zero)
+in such a template
+will be filled in with the target document's title when it is processed.
+This will occur regardless of 
+the value of <parameter>olink.doctitle</parameter>.
+</para>
+<para>Note that prior to version 1.66 of the XSL stylesheets,
+the allowed values for this parameter were 0 and 1.  Those
+values are still supported and mapped to 'no' and 'yes', respectively.
+</para>
+</refsection> 
+</refentry>
