@@ -24,8 +24,7 @@ public class ComponentScanRegexFilterAppIntegrationTest {
         List<String> beans = Arrays.stream(applicationContext.getBeanDefinitionNames())
             .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanRegexFilterApp"))
             .collect(Collectors.toList());
-        assertThat(beans.size(), equalTo(2));
-        assertThat(beans.contains("cat"), equalTo(true));
+        assertThat(beans.size(), equalTo(1));
         assertThat(beans.contains("elephant"), equalTo(true));
     }
 }
