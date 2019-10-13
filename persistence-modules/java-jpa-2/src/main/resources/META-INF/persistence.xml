@@ -119,4 +119,34 @@
         </properties>
     </persistence-unit>
 
+    <persistence-unit name="jpa-h2-multipltables">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.baeldung.jpa.multipletables.multipleentities.MealWithMultipleEntities</class>
+        <class>com.baeldung.jpa.multipletables.multipleentities.AllergensAsEntity</class>
+        
+        <class>com.baeldung.jpa.multipletables.secondarytable.MealAsSingleEntity</class>
+        
+        <class>com.baeldung.jpa.multipletables.secondarytable.embeddable.MealWithEmbeddedAllergens</class>
+        <class>com.baeldung.jpa.multipletables.secondarytable.embeddable.AllergensAsEmbeddable</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver"
+                      value="org.h2.Driver" />
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:h2:mem:test" />
+            <property name="javax.persistence.jdbc.user" value="sa" />
+            <property name="javax.persistence.jdbc.password" value="" />
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.H2Dialect" />
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.hbm2ddl.import_files" value="multipletables.sql" />
+            <property name="show_sql" value="true" />
+            <property name="hibernate.temp.use_jdbc_metadata_defaults"
+                      value="false" />
+<!--             <property name="javax.persistence.sql-load-script-source" -->
+<!--                       value="multipletables.sql" /> -->
+        </properties>
+    </persistence-unit>
+
 </persistence>
