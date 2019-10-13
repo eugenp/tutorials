@@ -29,13 +29,6 @@
             <scope>test</scope>
         </dependency>
 	</dependencies>
-
-    <properties>
-        <h2.version>1.4.199</h2.version>
-        <!-- testing -->
-        <assertj-core.version>3.10.0</assertj-core.version>
-        <equalsverifier.version>3.0.3</equalsverifier.version>
-    </properties>
     
     <build>
         <finalName>core-java-lang-oop-2</finalName>
@@ -46,5 +39,12 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <h2.version>1.4.199</h2.version>
+        <!-- testing -->
+        <assertj-core.version>3.10.0</assertj-core.version>
+        <equalsverifier.version>3.0.3</equalsverifier.version>
+    </properties>
 
 </project>
