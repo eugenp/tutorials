@@ -593,6 +593,7 @@
 
 				<module>tensorflow-java</module>
 				<module>spf4j</module>
+				<module>spring-boot-configuration</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-boot-mvc-2</module>
 				<module>spring-boot-performance</module>
@@ -680,22 +681,26 @@
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-camel</module>
 				<!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
+				<module>spring-boot-configuration</module>
 				<module>spring-boot-client</module>
 
 				<module>spring-boot-crud</module>
 				<module>spring-boot-ctx-fluent</module>
 				<module>spring-boot-custom-starter</module>
-				<module>spring-boot-disable-console-logging</module>
 				<!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
 				<module>spring-boot-jasypt</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-kotlin</module>
 				<module>spring-boot-logging-log4j2</module>
-				<module>spring-boot-management</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-mvc-birt</module>
-				<module>spring-boot-ops</module>
-				<module>spring-boot-ops-2</module>
+				<module>spring-boot-environment</module>
+				<module>spring-boot-deployment</module>
+				<module>spring-boot-runtime</module>
+				<module>spring-boot-runtime/disabling-console-jul</module>
+				<module>spring-boot-runtime/disabling-console-log4j2</module>
+				<module>spring-boot-runtime/disabling-console-logback</module>
+				<module>spring-boot-artifacts</module>
 				<module>spring-boot-rest</module>
 				<module>spring-boot-data</module>
 				<module>spring-boot-parent</module>
@@ -703,6 +708,7 @@
 				<module>spring-boot-security</module>
 				<module>spring-boot-testing</module>
 				<module>spring-boot-vue</module>
+				<module>spring-caching</module>
 				<module>spring-boot-libraries</module>
 
 				
@@ -745,6 +751,7 @@
 
 				<module>spring-mobile</module>
 				<module>spring-mockito</module>
+				<module>spring-mvc-basics-2</module>
 				<module>spring-mvc-forms-jsp</module>
 				<module>spring-mvc-forms-thymeleaf</module>
 				<module>spring-mvc-java</module>
@@ -773,6 +780,8 @@
 				<module>spring-rest-simple</module>
 				<module>spring-resttemplate</module>
 				<module>spring-roo</module>
+
+				<module>spring-scheduling</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-angular/server</module>
 				<module>spring-security-cache-control</module>
@@ -797,6 +806,7 @@
 				<module>spring-security-thymeleaf</module>
 				<module>spring-security-x509</module>
 				<module>spring-session</module>
+				<module>spring-shell</module>
 				<module>spring-sleuth</module>
 				<module>spring-soap</module>
 				<module>spring-social-login</module>
@@ -880,7 +890,6 @@
 				<module>spring-5-security-cognito</module>
 				<module>spring-activiti</module>
 				<module>spring-akka</module>
-				<module>spring-all</module>
 				<module>spring-aop</module>
 				<module>spring-apache-camel</module>
 				<module>spring-batch</module>
@@ -1036,6 +1045,8 @@
 				<module>parent-kotlin</module>
 
 				<module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
+                <module>core-java-modules/core-java-concurrency-advanced-2</module>
+                <module>core-java-modules/core-java-concurrency-advanced-3</module>
 				<module>core-kotlin</module> <!-- long running? -->
 				<module>core-kotlin-2</module>
 				<module>core-kotlin-io</module>
@@ -1406,16 +1417,19 @@
 				<module>spring-boot-crud</module>
 				<module>spring-boot-ctx-fluent</module>
 				<module>spring-boot-custom-starter</module>
-				<module>spring-boot-disable-console-logging</module>
 				<!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
 				<module>spring-boot-jasypt</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-logging-log4j2</module>
-				<module>spring-boot-management</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-mvc-birt</module>
-				<module>spring-boot-ops</module>
-				<module>spring-boot-ops-2</module>
+				<module>spring-boot-environment</module>
+				<module>spring-boot-deployment</module>
+				<module>spring-boot-runtime</module>
+				<module>spring-boot-runtime/disabling-console-jul</module>
+				<module>spring-boot-runtime/disabling-console-log4j2</module>
+				<module>spring-boot-runtime/disabling-console-logback</module>
+				<module>spring-boot-artifacts</module>
 				<module>spring-boot-rest</module>
 				<module>spring-boot-data</module>
 				<module>spring-boot-parent</module>
@@ -1430,6 +1444,7 @@
 
 				<module>spring-core</module>
 				<module>spring-core-2</module>
+				<module>spring-core-3</module>
 				<module>spring-cucumber</module>
 
 				<module>spring-data-rest</module>
@@ -1589,6 +1604,8 @@
 
 				<module>core-java-modules/core-java</module>
 				<module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
+                <module>core-java-modules/core-java-concurrency-advanced-2</module>
+                <module>core-java-modules/core-java-concurrency-advanced-3</module>
 				<module>core-kotlin</module> <!-- long running? -->
 				<module>core-kotlin-2</module>
 
