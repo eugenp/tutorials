@@ -1,4 +1,8 @@
-## Relevant articles:
+## RxJava
+
+This module contains articles about RxJava.
+
+### Relevant articles:
 
 - [Dealing with Backpressure with RxJava](https://www.baeldung.com/rxjava-backpressure)
 - [How to Test RxJava?](https://www.baeldung.com/rxjava-testing)
@@ -13,3 +17,4 @@
 - [Filtering Observables in RxJava](https://www.baeldung.com/rxjava-filtering)
 - [RxJava One Observable, Multiple Subscribers](https://www.baeldung.com/rxjava-multiple-subscribers-observable)
 - [Difference Between Flatmap and Switchmap in RxJava](https://www.baeldung.com/rxjava-flatmap-switchmap)
+- More articles: [[next -->]](/rxjava-2)

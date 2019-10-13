@@ -19,11 +19,6 @@
         <module>core-java-lang-operators</module>
         <module>core-java-networking-2</module>
         <module>core-java-security-manager</module>
-        <module>core-java-datetime-computations</module>
-        <module>core-java-datetime-conversion</module>
-        <module>core-java-datetime-java8</module>
-        <module>core-java-datetime-string</module>
-        <module>core-java-time-measurements</module>
     </modules>
     
 </project>

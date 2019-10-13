@@ -18,9 +18,17 @@ public class App {
         // Spring xml config
         // ApplicationContext context = new ClassPathXmlApplicationContext("spring-batch.xml");
 
+        runJob(context, "firstBatchJob");
+        runJob(context, "skippingBatchJob");
+        runJob(context, "skipPolicyBatchJob");
+    }
+
+    private static void runJob(AnnotationConfigApplicationContext context, String batchJobName) {
         final JobLauncher jobLauncher = (JobLauncher) context.getBean("jobLauncher");
-        final Job job = (Job) context.getBean("firstBatchJob");
-        System.out.println("Starting the batch job");
+        final Job job = (Job) context.getBean(batchJobName);
+
+        System.out.println("----------------------------------------");
+        System.out.println("Starting the batch job: " + batchJobName);
         try {
 			// To enable multiple execution of a job with the same parameters
 			JobParameters jobParameters = new JobParametersBuilder()
