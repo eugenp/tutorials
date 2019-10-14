@@ -48,7 +48,7 @@
     </dependencies>
 
     <properties>
-        <dl4j.version>1.0.0-beta5</dl4j.version>
+        <dl4j.version>0.9.1</dl4j.version> <!-- Latest non beta version -->
     </properties>
 
 </project>

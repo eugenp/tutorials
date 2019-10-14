@@ -4,6 +4,7 @@ import org.datavec.api.records.reader.RecordReader;
 import org.datavec.api.records.reader.impl.csv.CSVRecordReader;
 import org.datavec.api.split.FileSplit;
 import org.deeplearning4j.datasets.datavec.RecordReaderDataSetIterator;
+import org.deeplearning4j.eval.Evaluation;
 import org.deeplearning4j.nn.conf.BackpropType;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
@@ -11,8 +12,6 @@ import org.deeplearning4j.nn.conf.layers.DenseLayer;
 import org.deeplearning4j.nn.conf.layers.OutputLayer;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.weights.WeightInit;
-import org.deeplearning4j.util.NetworkUtils;
-import org.nd4j.evaluation.classification.Evaluation;
 import org.nd4j.linalg.activations.Activation;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.DataSet;
@@ -51,11 +50,11 @@ public class IrisClassifier {
         DataSet testData = testAndTrain.getTest();
 
         MultiLayerConfiguration configuration = new NeuralNetConfiguration.Builder()
-                .maxNumLineSearchIterations(1000)
+                .iterations(1000)
                 .activation(Activation.TANH)
                 .weightInit(WeightInit.XAVIER)
-                //.regularization(true)
-                .l2(0.0001)
+                .regularization(true)
+                .learningRate(0.1).l2(0.0001)
                 .list()
                 .layer(0, new DenseLayer.Builder().nIn(FEATURES_COUNT).nOut(3)
                         .build())
@@ -64,12 +63,11 @@ public class IrisClassifier {
                 .layer(2, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
                         .activation(Activation.SOFTMAX)
                         .nIn(3).nOut(CLASSES_COUNT).build())
-                .backpropType(BackpropType.Standard)//.pretrain(false)
+                .backpropType(BackpropType.Standard).pretrain(false)
                 .build();
 
         MultiLayerNetwork model = new MultiLayerNetwork(configuration);
         model.init();
-        NetworkUtils.setLearningRate(model, 0.1);
         model.fit(trainingData);
 
         INDArray output = model.output(testData.getFeatures());
