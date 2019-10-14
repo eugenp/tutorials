@@ -59,7 +59,7 @@ public class DynamicObjectDeserializationUnitTest {
         String json = readResource("/deserialize-dynamic-object/flat.json");
 
         // when
-        ProductJsonAnySetter product = objectMapper.readValue(json, ProductJsonAnySetter.class);
+        Product product = objectMapper.readValue(json, Product.class);
 
         // then
         assertThat(product.getName()).isEqualTo("Pear yPhone 72");
