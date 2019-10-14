@@ -110,7 +110,6 @@
 					<forkCount>3</forkCount>
 					<reuseForks>true</reuseForks>
 					<excludes>
-						<exclude>**/*IntegrationTest.java</exclude>
 						<exclude>**/*IntTest.java</exclude>
 						<exclude>**/*LongRunningUnitTest.java</exclude>
 						<exclude>**/*ManualTest.java</exclude>
