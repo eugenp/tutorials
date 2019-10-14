@@ -428,6 +428,8 @@
                 <module>core-java-modules/core-java-perf</module>
                 <module>core-java-modules/core-java-reflection</module>
                 <module>core-java-modules/core-java-sun</module>
+                <module>core-java-modules/core-java-string-conversions</module>
+                <module>core-java-modules/core-java-string-conversions-2</module>
                 <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-scala</module>
@@ -594,6 +596,7 @@
 
 				<module>tensorflow-java</module>
 				<module>spf4j</module>
+				<module>spring-boot-configuration</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-boot-mvc-2</module>
 				<module>spring-boot-performance</module>
@@ -605,6 +608,7 @@
 				
 				<module>spring-boot-nashorn</module>
 				<module>java-blockchain</module>
+				<module>wildfly</module>
 			
 			</modules>
 
@@ -681,6 +685,7 @@
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-camel</module>
 				<!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
+				<module>spring-boot-configuration</module>
 				<module>spring-boot-client</module>
 
 				<module>spring-boot-crud</module>
@@ -1044,6 +1049,8 @@
 				<module>parent-kotlin</module>
 
 				<module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
+                <module>core-java-modules/core-java-concurrency-advanced-2</module>
+                <module>core-java-modules/core-java-concurrency-advanced-3</module>
 				<module>core-kotlin</module> <!-- long running? -->
 				<module>core-kotlin-2</module>
 				<module>core-kotlin-io</module>
@@ -1184,6 +1191,8 @@
 				<module>core-java-modules/core-java-networking</module>
 				<module>core-java-modules/core-java-perf</module>
 				<module>core-java-modules/core-java-sun</module>
+				<module>core-java-modules/core-java-string-conversions</module>
+				<module>core-java-modules/core-java-string-conversions-2</module>
 				<module>core-scala</module>
 				<module>couchbase</module>
 				<module>custom-pmd</module>
@@ -1602,6 +1611,8 @@
 
 				<module>core-java-modules/core-java</module>
 				<module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
+                <module>core-java-modules/core-java-concurrency-advanced-2</module>
+                <module>core-java-modules/core-java-concurrency-advanced-3</module>
 				<module>core-kotlin</module> <!-- long running? -->
 				<module>core-kotlin-2</module>
 
