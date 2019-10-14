@@ -429,6 +429,8 @@
                 <module>core-java-modules/core-java-perf</module>
                 <module>core-java-modules/core-java-reflection</module>
                 <module>core-java-modules/core-java-sun</module>
+                <module>core-java-modules/core-java-string-conversions</module>
+                <module>core-java-modules/core-java-string-conversions-2</module>
                 <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-scala</module>
@@ -605,7 +607,7 @@
 
                 <module>spring-boot-nashorn</module>
                 <module>java-blockchain</module>
-
+<module>wildfly</module>
             </modules>
 
         </profile>
@@ -1186,7 +1188,9 @@
                 <module>core-java-modules/core-java-networking</module>
                 <module>core-java-modules/core-java-perf</module>
                 <module>core-java-modules/core-java-sun</module>
-                <module>core-scala</module>
+                <module>core-java-modules/core-java-string-conversions</module>
+				<module>core-java-modules/core-java-string-conversions-2</module>
+				<module>core-scala</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
 
