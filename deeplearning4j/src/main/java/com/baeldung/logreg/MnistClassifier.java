@@ -42,7 +42,7 @@ import org.slf4j.LoggerFactory;
 
 public class MnistClassifier {
     private static final Logger logger = LoggerFactory.getLogger(MnistClassifier.class);
-    private static final String basePath = System.getProperty("java.io.tmpdir") + "mnist" + File.separator;
+    private static final String basePath = System.getProperty("java.io.tmpdir") + File.separator + "mnist" + File.separator;
     private static final File modelPath = new File(basePath + "mnist-model.zip");
     private static final String dataUrl = "http://github.com/myleott/mnist_png/raw/master/mnist_png.tar.gz";
 
