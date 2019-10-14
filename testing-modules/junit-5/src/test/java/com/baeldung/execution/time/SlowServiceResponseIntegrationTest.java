@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 
-public class SlowServiceResponseUnitTest {
+public class SlowServiceResponseIntegrationTest {
 
     public static final String RESOURCE_URL = "http://localhost:8080/doSomething";
 
