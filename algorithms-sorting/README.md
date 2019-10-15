@@ -16,3 +16,4 @@ This module contains articles about sorting algorithms.
 - [Selection Sort in Java](https://www.baeldung.com/java-selection-sort)
 - [Sorting Strings by Contained Numbers in Java](https://www.baeldung.com/java-sort-strings-contained-numbers)
 - [Radix Sort in Java](https://www.baeldung.com/java-radix-sort)
+- [Bucket Sort in Java](https://www.baeldung.com/java-bucket-sort)
