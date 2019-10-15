@@ -6,10 +6,10 @@ import org.junit.Test;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class DefaultJacksonEnumDeserialization {
+public class DefaultEnumDeserializationUnitTest {
 
     @Test
-    public final void givenEnum_whenDeserializingJson_thenCorrectRepresentation() throws JsonParseException, IOException {
+    public void givenEnum_whenDeserializingJson_thenCorrectRepresentation() throws JsonParseException, IOException {
         String json = "{\"distance\":\"KILOMETER\"}";
         City city = new ObjectMapper().readValue(json, City.class);
         

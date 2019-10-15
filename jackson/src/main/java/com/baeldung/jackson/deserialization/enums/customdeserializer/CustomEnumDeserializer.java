@@ -15,14 +15,14 @@ public class CustomEnumDeserializer extends StdDeserializer<Distance> {
         this(null);
     }
 
-    public CustomEnumDeserializer(Class<?> vc) {
-        super(vc);
+    public CustomEnumDeserializer(Class<?> c) {
+        super(c);
     }
 
     @Override
-    public Distance deserialize(final JsonParser jsonParser, final DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public Distance deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
 
-        final JsonNode node = jsonParser.getCodec().readTree(jsonParser);
+        JsonNode node = jsonParser.getCodec().readTree(jsonParser);
 
         String unit = node.get("unit").asText();
         double meters = node.get("meters").asDouble();

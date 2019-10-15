@@ -23,13 +23,17 @@ public enum Distance {
     MILLIMETER("mm", 0.001);
 
     private String unit;
-    private final double meters;
+    private double meters;
 
     private Distance(String unit, double meters) {
         this.unit = unit;
         this.meters = meters;
     }
 
+    public void setMeters(double meters) {
+        this.meters = meters;
+    }
+    
     public double getMeters() {
         return meters;
     }
