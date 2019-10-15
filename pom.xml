@@ -556,7 +556,7 @@
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
 				<module>spring-security-kerberos</module>
-
+		 <module>webrtc</module>
 			</modules>
 
 		</profile>

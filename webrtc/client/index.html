@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>WebRTC demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .container {
+        background: rgb(148, 144, 144);
+        margin: 50px auto;
+        max-width: 80%;
+        text-align: center;
+        padding: 2%;
+    }
+    button{
+        margin: 1em;
+    }
+    
+</style>
+
+<body>
+    <script src="client.js"></script>
+    <div class="container">
+        <button type="button" class="offerBtn btn btn-primary" onclick='createOffer()'>Create Offer</button>
+        <br />
+        <input id="messageInput" type="text" class="form-control" placeholder="message">
+        <button type="button" class="btn btn-primary" onclick='sendMessage()'>SEND</button>
+    </div>
+</body>
+
+</html>

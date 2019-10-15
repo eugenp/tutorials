@@ -1,0 +1,9 @@
+{
+    "name": "webrtc-demo",
+    "version": "0.0.1",
+    "description": "webrtc-demo",
+    "author": "baeldung",
+    "dependencies": {
+        "ws": "^7.1.2"
+    }
+}
