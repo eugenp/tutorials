@@ -1,4 +1,4 @@
-package com.baeldung.hexagonalarchitecture.core.port;
+package com.baeldung.hexagonalarchitecture.port;
 
 import com.baeldung.hexagonalarchitecture.core.domain.Book;
 

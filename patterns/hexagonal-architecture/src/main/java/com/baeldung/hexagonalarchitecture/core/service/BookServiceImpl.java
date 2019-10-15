@@ -1,12 +1,14 @@
 package com.baeldung.hexagonalarchitecture.core.service;
 
 import com.baeldung.hexagonalarchitecture.core.domain.Book;
-import com.baeldung.hexagonalarchitecture.core.port.BookRepositoryPort;
+import com.baeldung.hexagonalarchitecture.port.BookRepositoryPort;
+
+import com.baeldung.hexagonalarchitecture.port.BookServicePort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BookServiceImpl implements BookService {
+public class BookServiceImpl implements BookServicePort {
 
     @Autowired
     private BookRepositoryPort bookRepositoryPort;

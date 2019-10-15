@@ -1,7 +1,7 @@
-package com.baeldung.hexagonalarchitecture.core.service;
+package com.baeldung.hexagonalarchitecture.port;
 
 import com.baeldung.hexagonalarchitecture.core.domain.Book;
 
-public interface BookService {
+public interface BookServicePort {
     Book getBook(Long id);
 }

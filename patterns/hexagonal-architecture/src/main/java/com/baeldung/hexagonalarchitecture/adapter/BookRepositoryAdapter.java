@@ -1,7 +1,7 @@
 package com.baeldung.hexagonalarchitecture.adapter;
 
 import com.baeldung.hexagonalarchitecture.core.domain.Book;
-import com.baeldung.hexagonalarchitecture.core.port.BookRepositoryPort;
+import com.baeldung.hexagonalarchitecture.port.BookRepositoryPort;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

@@ -1,7 +1,7 @@
 package com.baeldung.hexagonalarchitecture.util;
 
 import com.baeldung.hexagonalarchitecture.core.domain.Book;
-import com.baeldung.hexagonalarchitecture.core.port.BookRepositoryPort;
+import com.baeldung.hexagonalarchitecture.port.BookRepositoryPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
