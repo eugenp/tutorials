@@ -8,3 +8,4 @@
 - [Find the Longest Substring without Repeating Characters](https://www.baeldung.com/java-longest-substring-without-repeated-characters)
 - [Permutations of an Array in Java](https://www.baeldung.com/java-array-permutations)
 - [Creating a Custom Annotation in Java](https://www.baeldung.com/java-custom-annotation)
+- [Interpolation Search in Java](https://www.baeldung.com/java-interpolation-search)
