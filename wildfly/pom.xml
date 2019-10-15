@@ -4,8 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework</groupId>
-    <artifactId>gs-spring-boot-wildfly</artifactId>
+    <artifactId>wildfly</artifactId>
     <version>0.1.0</version>
+    <name>wildfly</name>
 
     <packaging>war</packaging>
 
@@ -38,11 +39,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <scope>provided</scope>
-            </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <!-- end::tests[] -->
     </dependencies>
 
