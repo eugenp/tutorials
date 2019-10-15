@@ -14,3 +14,4 @@
 - [Mocking Void Methods with Mockito](https://www.baeldung.com/mockito-void-methods)
 - [Mock Final Classes and Methods with Mockito](https://www.baeldung.com/mockito-final)
 - [Testing Callbacks with Mockito](https://www.baeldung.com/mockito-callbacks)
+- [Mockito – Using Spies](https://www.baeldung.com/mockito-spy)
