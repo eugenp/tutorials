@@ -1,4 +1,11 @@
-package com.baeldung.string.password;
+package com.baeldung.password;
+
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.text.RandomStringGenerator;
+import org.passay.CharacterRule;
+import org.passay.EnglishCharacterData;
+import org.passay.CharacterData;
+import org.passay.PasswordGenerator;
 
 import java.security.SecureRandom;
 import java.util.Collections;
@@ -7,13 +14,6 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.text.RandomStringGenerator;
-import org.passay.CharacterData;
-import org.passay.CharacterRule;
-import org.passay.EnglishCharacterData;
-import org.passay.PasswordGenerator;
 
 public class RandomPasswordGenerator {
 

@@ -1,4 +1,4 @@
-package com.baeldung.string;
+package com.baeldung.charsequence;
 
 import org.junit.Test;
 

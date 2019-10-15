@@ -14,5 +14,3 @@ This module contains articles about operations on strings in Java.
 - [Split a String in Java](https://www.baeldung.com/java-split-string)
 - [Common String Operations in Java](https://www.baeldung.com/java-string-operations)
 - [Java toString() Method](https://www.baeldung.com/java-tostring)
-- [CharSequence vs. String in Java](https://www.baeldung.com/java-char-sequence-string)
-- [StringBuilder and StringBuffer in Java](https://www.baeldung.com/java-string-builder-string-buffer)

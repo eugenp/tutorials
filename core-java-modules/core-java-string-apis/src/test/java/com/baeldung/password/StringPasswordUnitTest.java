@@ -1,8 +1,8 @@
-package com.baeldung.string.password;
-
-import static org.junit.Assert.assertTrue;
+package com.baeldung.password;
 
 import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Examples of passwords conforming to various specifications, using different libraries.
