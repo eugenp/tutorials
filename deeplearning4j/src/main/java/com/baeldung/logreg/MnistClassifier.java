@@ -10,6 +10,7 @@ import org.datavec.api.split.FileSplit;
 import org.datavec.image.loader.NativeImageLoader;
 import org.datavec.image.recordreader.ImageRecordReader;
 import org.deeplearning4j.datasets.datavec.RecordReaderDataSetIterator;
+import org.deeplearning4j.eval.Evaluation;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.inputs.InputType;
@@ -21,15 +22,12 @@ import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.weights.WeightInit;
 import org.deeplearning4j.optimize.listeners.ScoreIterationListener;
 import org.deeplearning4j.util.ModelSerializer;
-import org.nd4j.evaluation.classification.Evaluation;
 import org.nd4j.linalg.activations.Activation;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
 import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
 import org.nd4j.linalg.learning.config.Nesterovs;
 import org.nd4j.linalg.lossfunctions.LossFunctions;
-import org.nd4j.linalg.schedule.MapSchedule;
-import org.nd4j.linalg.schedule.ScheduleType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,7 +42,7 @@ import org.slf4j.LoggerFactory;
 
 public class MnistClassifier {
     private static final Logger logger = LoggerFactory.getLogger(MnistClassifier.class);
-    private static final String basePath = System.getProperty("java.io.tmpdir") + "mnist" + File.separator;
+    private static final String basePath = System.getProperty("java.io.tmpdir") + File.separator + "mnist" + File.separator;
     private static final File modelPath = new File(basePath + "mnist-model.zip");
     private static final String dataUrl = "http://github.com/myleott/mnist_png/raw/master/mnist_png.tar.gz";
 
@@ -71,8 +69,7 @@ public class MnistClassifier {
             String localFilePath = basePath + "mnist_png.tar.gz";
             File file = new File(localFilePath);
             if (!file.exists()) {
-                file.getParentFile()
-                    .mkdirs();
+                file.getParentFile().mkdirs();
                 Utils.downloadAndSave(dataUrl, file);
                 Utils.extractTarArchive(file, basePath);
             }
@@ -135,15 +132,15 @@ public class MnistClassifier {
             .build();
         final MultiLayerConfiguration config = new NeuralNetConfiguration.Builder().seed(seed)
             .l2(0.0005) // ridge regression value
-            .updater(new Nesterovs(new MapSchedule(ScheduleType.ITERATION, learningRateSchedule)))
+            .updater(new Nesterovs()) //TODO new MapSchedule(ScheduleType.ITERATION, learningRateSchedule)
             .weightInit(WeightInit.XAVIER)
             .list()
-            .layer(layer1)
-            .layer(layer2)
-            .layer(layer3)
-            .layer(layer2)
-            .layer(layer4)
-            .layer(layer5)
+            .layer(0, layer1)
+            .layer(1, layer2)
+            .layer(2, layer3)
+            .layer(3, layer2)
+            .layer(4, layer4)
+            .layer(5, layer5)
             .setInputType(InputType.convolutionalFlat(height, width, channels))
             .build();
 
