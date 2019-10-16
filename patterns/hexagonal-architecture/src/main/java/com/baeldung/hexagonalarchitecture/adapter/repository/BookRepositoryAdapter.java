@@ -1,4 +1,4 @@
-package com.baeldung.hexagonalarchitecture.adapter;
+package com.baeldung.hexagonalarchitecture.adapter.repository;
 
 import com.baeldung.hexagonalarchitecture.core.domain.Book;
 import com.baeldung.hexagonalarchitecture.port.BookRepositoryPort;
