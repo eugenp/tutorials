@@ -8,6 +8,7 @@ import com.baeldung.resttemplate.lists.dto.Employee;
 import com.baeldung.resttemplate.lists.dto.EmployeeList;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,6 +19,9 @@ public class EmployeeClient
     public static void main(String[] args)
     {
         EmployeeClient employeeClient = new EmployeeClient();
+
+        System.out.println("Calling GET using arrays");
+        employeeClient.getAllEmployeesAsArray();
 
         System.out.println("Calling GET using ParameterizedTypeReference");
         employeeClient.getAllEmployeesUsingParameterizedTypeReference();
@@ -34,6 +38,24 @@ public class EmployeeClient
 
     public EmployeeClient()
     {
+
+    }
+
+    public Employee[] getAllEmployeesAsArray(){
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<Employee[]> response =
+                restTemplate.exchange(
+                        "http://localhost:8082/spring-rest/employees/",
+                        HttpMethod.GET,
+                        null, Employee[].class);
+
+        Employee[] employees = response.getBody();
+
+        Arrays.asList(employees).forEach(e -> System.out.println(e));
+
+        return employees;
 
     }
 
