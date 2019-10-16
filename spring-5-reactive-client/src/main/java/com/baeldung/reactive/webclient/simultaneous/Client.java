@@ -41,28 +41,25 @@ public class Client {
             .bodyToMono(User.class);
     }
 
-    public List<User> fetchUsers(List<Integer> userIds) {
+    public Flux<User> fetchUsers(List<Integer> userIds) {
         return Flux.fromIterable(userIds)
             .parallel()
             .runOn(Schedulers.elastic())
             .flatMap(this::getUser)
-            .collectSortedList((u1, u2) -> u2.id() - u1.id())
-            .block();
+            .ordered((u1, u2) -> u2.id() - u1.id());
     }
 
-    public List<User> fetchUserAndOtherUser(int id) {
+    public Flux<User> fetchUserAndOtherUser(int id) {
         return Flux.merge(getUser(id), getOtherUser(id))
             .parallel()
             .runOn(Schedulers.elastic())
-            .collectSortedList((u1, u2) -> u2.id() - u1.id())
-            .block();
+            .ordered((u1, u2) -> u2.id() - u1.id());
     }
 
-    public UserWithItem fetchUserAndItem(int userId, int itemId) {
+    public Mono<UserWithItem> fetchUserAndItem(int userId, int itemId) {
         Mono<User> user = getUser(userId).subscribeOn(Schedulers.elastic());
         Mono<Item> item = getItem(itemId).subscribeOn(Schedulers.elastic());
 
-        return Mono.zip(user, item, UserWithItem::new)
-            .block();
+        return Mono.zip(user, item, UserWithItem::new);
     }
 }

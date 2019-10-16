@@ -12,11 +12,8 @@ public class ComponentScanCustomFilter implements TypeFilter {
     @Override
     public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
         ClassMetadata classMetadata = metadataReader.getClassMetadata();
-        String superClass = classMetadata.getSuperClassName();
-        if (Pet.class.getName()
-            .equalsIgnoreCase(superClass)) {
-            return true;
-        }
-        return false;
+        String fullyQualifiedName = classMetadata.getClassName();
+        String className = fullyQualifiedName.substring(fullyQualifiedName.lastIndexOf(".") + 1);
+        return className.length() > 5 ? true : false;
     }
 }

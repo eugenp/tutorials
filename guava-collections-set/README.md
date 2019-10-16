@@ -1,4 +1,6 @@
-# Guava
+## Guava Collections Set
+
+This module contains articles about Google Guava sets
 
 ## Relevant Articles:
 
