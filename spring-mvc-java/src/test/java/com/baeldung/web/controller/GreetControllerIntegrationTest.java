@@ -40,7 +40,7 @@ public class GreetControllerIntegrationTest {
     }
 
     @Test
-    public void givenWAC_whenServletContext_thenItProvidesGreetController() {
+    public void givenWac_whenServletContext_thenItProvidesGreetController() {
         final ServletContext servletContext = wac.getServletContext();
         Assert.assertNotNull(servletContext);
         Assert.assertTrue(servletContext instanceof MockServletContext);
@@ -59,7 +59,7 @@ public class GreetControllerIntegrationTest {
     }
 
     @Test
-    public void givenGreetURIWithPathVariable_whenMockMVC_thenVerifyResponse() throws Exception {
+    public void givenGreetURIWithPathVariable_whenMockMVC_thenResponseOK() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/greetWithPathVariable/John")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(CONTENT_TYPE))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World John!!!"));
     }
@@ -71,7 +71,7 @@ public class GreetControllerIntegrationTest {
     }
 
     @Test
-    public void givenGreetURIWithQueryParameter_whenMockMVC_thenVerifyResponse() throws Exception {
+    public void givenGreetURIWithQueryParameter_whenMockMVC_thenResponseOK() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/greetWithQueryVariable").param("name", "John Doe")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(CONTENT_TYPE))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World John Doe!!!"));
     }
@@ -83,7 +83,7 @@ public class GreetControllerIntegrationTest {
     }
 
     @Test
-    public void givenGreetURIWithPostAndFormData_whenMockMVC_thenVerifyResponse() throws Exception {
+    public void givenGreetURIWithPostAndFormData_whenMockMVC_thenResponseOK() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/greetWithPostAndFormData").param("id", "1").param("name", "John Doe")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(CONTENT_TYPE)).andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World John Doe!!!")).andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1));
     }

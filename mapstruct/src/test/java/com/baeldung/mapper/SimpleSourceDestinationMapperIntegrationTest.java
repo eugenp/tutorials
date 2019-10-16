@@ -18,7 +18,7 @@ public class SimpleSourceDestinationMapperIntegrationTest {
     SimpleSourceDestinationMapper simpleSourceDestinationMapper;
 
     @Test
-    public void givenSimpleSourceToSimpleDestination_whenMaps_thenCorrect() {
+    public void givenSourceToDestination_whenMaps_thenCorrect() {
         SimpleSource simpleSource = new SimpleSource();
         simpleSource.setName("SourceName");
         simpleSource.setDescription("SourceDescription");
@@ -30,7 +30,7 @@ public class SimpleSourceDestinationMapperIntegrationTest {
     }
 
     @Test
-    public void givenSimpleDestinationToSourceDestination_whenMaps_thenCorrect() {
+    public void givenDestinationToSource_whenMaps_thenCorrect() {
         SimpleDestination destination = new SimpleDestination();
         destination.setName("DestinationName");
         destination.setDescription("DestinationDescription");
