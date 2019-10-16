@@ -4,7 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.cfuaa</groupId>
     <artifactId>cf-uaa-oauth2-resource-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>cf-uaa-oauth2-resource-server</name>
     <description>Demo project for Spring Boot</description>
 
