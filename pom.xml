@@ -691,6 +691,7 @@
 				<module>spring-boot-client</module>
 
 				<module>spring-boot-crud</module>
+				<module>hexagonal-architecture</module>
 				<module>spring-boot-ctx-fluent</module>
 				<module>spring-boot-custom-starter</module>
 				<!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
