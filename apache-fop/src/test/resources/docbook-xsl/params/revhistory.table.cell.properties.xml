@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="revhistory.table.cell.properties">
+<refmeta>
+<refentrytitle>revhistory.table.cell.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>revhistory.table.cell.properties</refname>
+<refpurpose>The properties of table cells used for formatting revhistory</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="revhistory.table.cell.properties.frag">
+<xsl:attribute-set name="revhistory.table.cell.properties">
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This property set defines appearance of individual cells in revhistory table.</para>
+
+</refsection>
+</refentry>

@@ -1,0 +1,1420 @@
+<?xml version="1.0"?>
+<article xmlns="http://docbook.org/ns/docbook">
+  <info>
+    <title>Round-Tripping Specifications</title>
+    <author>
+      <firstname>Bob</firstname>
+      <surname>Stayton</surname>
+      <affiliation>
+        <orgname>Sagehill Enterprises</orgname>
+      </affiliation>
+    </author>
+    <author>
+      <firstname>Steve</firstname>
+      <surname>Ball</surname>
+      <affiliation>
+        <orgname>Explain</orgname>
+      </affiliation>
+    </author>
+    <revhistory>
+      <revision>
+        <revnumber>1.8</revnumber>
+        <date>2008-05-22</date>
+        <authorinitials>SRB</authorinitials>
+        <revremark>Updated for current implementation.</revremark>
+      </revision>
+      <revision>
+        <revnumber>1.7</revnumber>
+        <date>2008-02-22</date>
+        <authorinitials>SRB</authorinitials>
+        <revremark>Added edition.</revremark>
+      </revision>
+      <revision>
+        <revnumber>1.6</revnumber>
+        <date>2007-10-19</date>
+        <authorinitials>SRB</authorinitials>
+        <revremark>Added keyword.</revremark>
+      </revision>
+      <revision>
+        <revnumber>1.5</revnumber>
+        <date>2007-01-05</date>
+        <authorinitials>SRB</authorinitials>
+        <revremark>Reduce emphasis on WordML, add support for OpenOffice.</revremark>
+      </revision>
+      <revision>
+        <revnumber>1.4</revnumber>
+        <date>2005-11-11</date>
+        <authorinitials>SRB</authorinitials>
+        <revremark>Added bibliography.</revremark>
+      </revision>
+      <revision>
+        <revnumber>1.3</revnumber>
+        <date>2005-10-31</date>
+        <authorinitials>SRB</authorinitials>
+        <revremark>Added mediaobjectco, imageobjectco, programlistingco, areaspec, area, calloutlist.</revremark>
+      </revision>
+      <revision>
+        <revnumber>1.2</revnumber>
+        <date>2005-10-13</date>
+        <authorinitials>SRB</authorinitials>
+        <revremark>Version prior to using revhistory.</revremark>
+      </revision>
+    </revhistory>
+  </info>
+  <abstract>
+    <para>This document specifies how DocBook elements are mapped to paragraph and character styles in a word processor.  The specifications are used to write conversions between DocBook XML and word processor XML formats, such as Microsoft's WordProcessingML (WordML), OpenOffice's OpenDocument and Apple's Pages.</para>
+  </abstract>
+  <section>
+    <title>Introduction</title>
+    <para>Microsoft Word 2003 introduced WordProcessingML (WordML), an XML vocabulary for Word documents.  Since then, other popular word processors have become available that use XML as their data representation, namely Apple's Pages and OpenOffice.  By converting Word (or OpenOffice or Pages) to XML, it becomes possible to convert a word processing document to DocBook and vice versa using XSL transformations. Such conversions then enable the following.</para>
+    <itemizedlist>
+      <listitem>
+        <para>DocBook content creators write in their familiar wordprocessing application, rather than learning a new XML editing application.</para>
+      </listitem>
+      <listitem>
+        <para>DocBook XML documents can be styled for output using the typesetting features of the word processor.</para>
+      </listitem>
+    </itemizedlist>
+    <para>Word processors have a simple, flat data model; documents consist of paragraphs (and tables) and paragraphs contain text and character spans.  All word processors allow styles to be associated with paragraphs and spans.</para>
+    <para>This specification describes how DocBook elements map to a set of paragraph and character styles. It defines a specific set of style names for which a Word style template can be created. The style names are also used in XSLT template match patterns for conversion.  Although originally targetted to MS Word, the system has subsequently been extended to use other word processors, notably Apple's Pages and Open Office.</para>
+  </section>
+  <section>
+    <title>Project goals</title>
+    <para>The goal of this project is to enable a word processor, such as, but not limited to, Microsoft Word, to be used with DocBook files.  The specific goals include:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Enable authoring of basic DocBook documents in the word processor.</para>
+      </listitem>
+      <listitem>
+        <para>Enable importing of basic DocBook XML documents into the word processor.</para>
+      </listitem>
+    </itemizedlist>
+    <para>To meet these goals, the project provides a toolkit that can be immediately put to use.  The kit includes:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Templates for Microsoft Word, Apple Pages and Open Office with formatting styles attached to the style names.</para>
+      </listitem>
+      <listitem>
+        <para>XSLT stylesheets that convert a word processing document that is authored with the corresponding template into a DocBook XML file.</para>
+      </listitem>
+      <listitem>
+        <para>XSLT stylesheets that convert a DocBook document into a word processing document that can be opened in a word processor.</para>
+      </listitem>
+    </itemizedlist>
+    <section>
+      <title>Why basic DocBook?</title>
+      <para>This project will never be able to support all DocBook elements and structure. Take, for example, the <tag>address</tag> element. This element can be used both as a block element for metadata. It can also be used as a phrase level element in a block parent, such as the <tag>affiliation</tag> element. To make matters worse, it can itself contain phrase level markup, such as <tag>personname</tag>. No word processor allows character styles to be nested.</para>
+      <para>The project will initially focus on a basic set of commonly used DocBook elements in order to create a useful editing environment that utilises a word processor with DocBook. </para>
+      <para>One problem facing this conversion project is the sheer number of DocBook elements, over 400 in DocBook 5.0. To support DocBook structural models, several of the elements require more than one paragraph or character style. This would lead to very long and unwieldy list of styles in the word processor interface. That would make authoring less efficient and discourage users.</para>
+      <para>Accordingly, this project assumes that authors who need the full set of DocBook elements and structures will use an XML authoring tool that better supports them. This project is focused on authors who wish to write basic DocBook documents using a word processor. Because Microsoft Word is so widespread, it is hoped that this project will help a lot of new DocBook users get started with familiar tools.  They can then graduate to more advanced tools as their needs develop.</para>
+    </section>
+  </section>
+  <section>
+    <title>Project Non-Goals</title>
+    <para>The following goals <emphasis>are not</emphasis> in the scope of this project:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Support of versions of Word that do not feature reading/writing WordML (XML).  That is, all versions prior to Word 11 (Office 2003).</para>
+      </listitem>
+      <listitem>
+        <para>Support of arbitrarily defined styles.  This system may expect certain styles to be defined in a particular fashion (in particular, those defining the title of components and divisions).</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section>
+    <title>Mapping elements to styles</title>
+    <para>Although WordML, OpenDocument and DocBook are all XML, there several challenges when trying to convert between them.</para>
+    <para>The basic problem in mapping paragraph/character styles to DocBook elements is that word processor documents support far less structure than DocBook.  DocBook permits nesting of elements within other elements, providing multiple levels of context for each element.</para>
+    <para>Word's only structural feature is the outlining mode. In Word outlining, certain paragraph styles are assigned outline levels.  When a user applies those styles, they effectively create logical structure in the Word document.  Unfortunately, Word itself attempts to automatically determine which paragraphs are headings, rendering this method is unreliable.</para>
+    <para>Instead of relying on Word's built-in outlining mode, this system uses only the names of paragraph styles to determine document structure.  Certain heuristics are applied to build the DocBook element structure from the (relatively flat) word processing structure.  Titles and other features are used to mark the beginning of a structure and all paragraphs following that are included in that structure until the beginning of the next structure is found. That is, the beginning of one structure marks the end of the previous structure.</para>
+    <para>Problems may arise when a structure should end, but there is no word processor feature that marks the endpoint. To mark the end of a feature an empty paragraph is used.</para>
+    <para>Nesting of block elements is another commonly used feature of DocBook.  It is not possible to use Word's outline mode for blocks if it is being used for components and sections.  So in this specification, nesting of block elements is indicated by adding a number suffix to a style. So a paragraph with style <literal>orderedlist2</literal> is considered to be contained within a preceding paragraph with style <literal>orderedlist1</literal> or <literal>itemizedlist1</literal>. Where appropriate in the word processor, paragraph indent levels are used to visually indicate nesting of blocks.</para>
+    <para>Nesting of inline DocBook elements is particularly difficult to support because word processors do not nest character styles. That means a nested inline would require a separate character style to indicate the parent-child relationship. Given the large number of combinations possible, a prohibitively large number of character styles would have to be created. In this project, nesting of character styles is not supported. Nested inlines being imported from DocBook will be converted to a sequence of single-name character styles, where possible, or rejected.</para>
+    <para>In many cases, DocBook structure can be derived from the flat sequence of paragraphs based on sibling relationships. For example, when a paragraph styled as <literal>para</literal> is followed by a paragraph styled as <literal>itemizedlist1</literal>, the conversion to DocBook will output a <tag>para</tag> element and then start an <tag>itemizedlist</tag> element, with the second paragraph as its first <tag>listitem</tag>. All <literal>itemizedlist1</literal> paragraphs that follow without interruption are inserted into the same <tag>itemizedlist</tag> element.</para>
+    <para>Some combinations of elements cannot be supported (at least not with the techniques as described in this document).  An example is <tag>informalexample</tag> and its permitted content; there is no title to mark the beginning of the element and no marker for the end of the element, also there are too many parent-child combinations to reasonably define style names.</para>
+    <para>The design principles used in this project for selecting paragraph/character style names are as follows:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Where Word (or OpenOffice or Pages), by default, has a style or feature that corresponds directly to a DocBook element then that style or feature will be used (and documented in this document).  For example, the <literal>Normal</literal> paragraph style maps to a DocBook <tag>para</tag> element, and a Word table (<tag>w:tbl</tag>) maps to a DocBook <tag>table</tag><footnote><para>In some cases Word may posess a feature, but it doesn't function in an acceptable manner.  For example, lists.  In these cases the feature is to be avoided, and a workaround provided.</para></footnote>.</para>
+      </listitem>
+      <listitem>
+        <para>Paragraph and character style names will match DocBook element names as much as possible. This will enable authors to learn DocBook element names and help debug problems with conversion.</para>
+      </listitem>
+      <listitem>
+        <para>A style may indicate a parent-child relationship, but the paragraph for such an element may only occur after a paragraph that denotes the beginning of the parent structure.  In this case the element name is used as the style name.  For example, a <tag>personblurb</tag> paragraph may only occur after an <tag>author</tag>, <tag>editor</tag> or <tag>othercontrib</tag> paragraph.  If a paragraph occurs without the appropriate preceding paragraph, then an error is signalled.</para>
+      </listitem>
+      <listitem>
+        <para>Some styles may also indicate a parent-child relationship, but either the parent structure is ambiguous or the paragraph starts the parent structure.  For example, <literal>chapter-title</literal> indicates that the paragraph is a <tag>title</tag> element whose DocBook parent is a <tag>chapter</tag> element.</para>
+      </listitem>
+      <listitem>
+        <para>Some style names are simplified to make them easier to use in the word processor. For example, a paragraph in an orderedlist requires three elements in DocBook: <tag>orderedlist</tag>, <tag>listitem</tag>, and <tag>para</tag>. The paragraph style name in Word is shortened from <literal>orderedlist-listitem-para</literal> to just <literal>orderedlist1</literal> (for a first level list). In the case of lists (see below), the list level is appended, which is why this example becomes <literal>orderedlist1</literal>.</para>
+      </listitem>
+      <listitem>
+        <para>Style names with a number suffix indicate a nesting level, as described above.</para>
+      </listitem>
+      <listitem>
+        <para>Style names with <literal>continue</literal> indicate that the paragraph is part of the preceding element. For example, a <literal>para</literal> paragraph is used for a single paragraph <tag>para</tag> element. This causes any preceding list to be closed. If a list item in the preceding list is to contain more than one paragraph, then the subsequent paragraphs in the word processor documentmust use the <literal>para-continue</literal> style.</para>
+      </listitem>
+      <listitem>
+        <para>Character styles map to elements that are children of the element for the paragraph, hence there is no need to encode parent-child relationships.  For example, a <literal>surname</literal> character style in an <literal>author</literal> paragraph becomes a <tag>surname</tag> child element of the <tag>author</tag> element.</para>
+      </listitem>
+      <listitem>
+        <para>Empty paragraph and character styles are ignored. This can be useful to end structures.</para>
+      </listitem>
+      <listitem>
+        <para>The first paragraph style in the word processor document is used to define the root element of the DocBook document. For example, if the document starts with <literal>book-title</literal>, then the DocBook document will have <tag>book</tag> element as its root element.  All the rest of the document content will be contained in that root element.</para>
+      </listitem>
+    </itemizedlist>
+    <para>Sequential structures are coalesced into a single parent element.  For example, a sequence of <literal>itemizedlist1</literal> paragraphs becomes a single <tag>itemizedlist</tag> element with several <tag>listitem</tag> element children.</para>
+    <table>
+      <title>DocBook to Paragraph/Character Styles</title>
+      <tgroup cols="3">
+        <colspec colnum="1" colname="col1" colwidth="2*"/>
+        <colspec colnum="2" colname="col2" colwidth="2*"/>
+        <colspec colnum="3" colname="col3" colwidth="2*"/>
+        <thead>
+          <row>
+            <entry>
+              <para colname="col1">DocBook element</para>
+            </entry>
+            <entry>
+              <para colname="col2">Style(s)</para>
+            </entry>
+            <entry>
+              <para colname="col3">Comments</para>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry namest="col1" nameend="col3">
+              <para>
+                <emphasis role="bold">Components and sections</emphasis>
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para colname="col1">book/info/title</para>
+            </entry>
+            <entry colname="col2">
+              <para>book-title</para>
+            </entry>
+            <entry colname="col3">
+              <para/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <para>book/info/subtitle</para>
+            </entry>
+            <entry colname="col2">
+              <para>book-subtitle</para>
+            </entry>
+            <entry colname="col3">
+              <para/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <para>book/info/titleabbrev</para>
+            </entry>
+            <entry colname="col2">
+              <para>book-titleabbrev</para>
+            </entry>
+            <entry colname="col3">
+              <para/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <para>chapter/info/title</para>
+            </entry>
+            <entry colname="col2">
+              <para>chapter-title</para>
+            </entry>
+            <entry colname="col3">
+              <para>Assigned Word outline level 1.</para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <para>chapter/info/subtitle</para>
+            </entry>
+            <entry colname="col2">
+              <para>chapter-subtitle</para>
+            </entry>
+            <entry colname="col3">
+              <para/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <para>chapter/info/titleabbrev</para>
+            </entry>
+            <entry colname="col2">
+              <para>chapter-titleabbrev</para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <para>appendix/info/title</para>
+            </entry>
+            <entry colname="col2">
+              <para>appendix-title</para>
+            </entry>
+            <entry colname="col3">
+              <para>Assigned Word outline level 1.</para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <para>preface/info/title</para>
+            </entry>
+            <entry colname="col2">
+              <para>preface-title</para>
+            </entry>
+            <entry colname="col3">
+              <para>Assigned Word outline level 1.</para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <para>article/info/title</para>
+            </entry>
+            <entry colname="col2">
+              <para>article-title</para>
+            </entry>
+            <entry colname="col3">
+              <para>Assigned Word outline level 1.</para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <para>article/info/subtitle</para>
+            </entry>
+            <entry colname="col2">
+              <para>article-subtitle</para>
+            </entry>
+            <entry colname="col3">
+              <para/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">article/info/titleabbrev</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">article-titleabbrev</db:para>
+            </entry>
+            <entry colname="col3">
+              <para/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">bibliography/info/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">bibliography-title</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Assigned Word outline level 1.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">bibliography/bibliodiv/info/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">bibliodiv-title</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">biblioentry/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">biblioentry-title</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Metadata elements after the biblioentry-title paragraph become part of the <sgmltag>biblioentry</sgmltag>.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">glossary/info/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">glossary-title</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Assigned Word outline level 1.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">index/info/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">index-title</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Assigned Word outline level 1.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">part/info/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">part-title</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">section</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Unnumbered <tag>section</tag> elements are translated into their equivalent numbered paragraph style. Sections 6 levels and deeper are reported as an error.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect1/info/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect1-title</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Assigned Word outline level 2.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect1/info/subtitle</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect1-subtitle</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect2/info/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect2-title</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Assigned Word outline level 3.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect2/info/subtitle</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect2-subtitle</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect3/info/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect3-title</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Assigned Word outline level 4.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect3/info/subtitle</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect3-subtitle</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect4/info/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect4-title</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Assigned Word outline level 5.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect4/info/subtitle</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect4-subtitle</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect5/info/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect5-title</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Assigned Word outline level 6.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect5/info/subtitle</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">sect5-subtitle</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">simplesect/info/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">simplesect-title</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">simplesect/info/subtitle</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">simplesect-subtitle</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">bridgehead</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">bridgehead</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry namest="col1" nameend="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">
+                <emphasis role="bold">Metadata elements</emphasis>
+              </db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">abstract/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">abstract-title</db:para>
+            </entry>
+            <entry colname="col3"><para/>.</entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">abstract/para</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">abstract</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">affiliation</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">affiliation</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">address</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">address</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">author</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">author</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">date</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">date</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">edition</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">edition</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">legalnotice</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">legalnotice</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">pubdate</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">pubdate</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">publisher/pubishername</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">publisher</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">publisher/address</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">publisher-address</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">revhistory/revision</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">revision</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry namest="col1" nameend="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">
+                <emphasis role="bold">Block-level elements</emphasis>
+              </db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">para</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">para, Normal</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Any Word paragraph with style <literal>Normal</literal> will also be converted to a <tag>para</tag> element.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">formalpara/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">formalpara-title</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">formalpara/para</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">formalpara</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">simpara</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">simpara</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">note/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">note-title</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">note/para</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">note</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Consecutive paragraphs with style <literal>note</literal> after the first note are to be treated as part of the same <tag>note</tag> element.  That is, consecutive notes are coalesced. The note may or may not have a title.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">caution/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">caution-title</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">caution/para</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">caution</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Consecutive cautions are coalesced.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">warning/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">warning-title</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">warning/para</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">warning</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Consecutive warnings are coalesced.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">important/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">important-title</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">important/para</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">important</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Consecutive importants are coalesced.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">tip/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">tip-title</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">tip/para</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">tip</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Consecutive tips are coalesced.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">itemizedlist/listitem/para</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">
+                <literallayout class="monospaced">itemizedlist1
+itemizedlist2
+itemizedlist3
+itemizedlist4</literallayout>
+              </db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">A number suffix indicates a nesting level within other lists.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">orderedlist/listitem/para</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">
+                <literallayout class="monospaced">orderedlist1
+orderedlist2
+orderedlist3
+orderedlist4</literallayout>
+              </db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">listitem/para[position() != 1]</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">para-continue</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">This paragraph is included in the immediately preceding listitem.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">example/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">example-title</db:para>
+            </entry>
+            <entry colname="col3">
+              <para>All content following the title is included in the <tag>example</tag> element. The end of the example content is marked by a <literal>caption</literal> paragraph or an empty paragraph if there is no caption.</para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">figure/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">figure-title</db:para>
+            </entry>
+            <entry colname="col3">
+              <para>All content following the title is included in the <tag>figure</tag> element. Metadata must immediately follow the title. The end of the figure content is marked by a <literal>caption</literal> paragraph or an empty paragraph if there is no caption.</para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">informalfigure/mediaobject/imageobject/imagedata/@fileref</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">informalfigure-imagedata, caption</db:para>
+            </entry>
+            <entry colname="col3">
+              <para>The content of the <literal>imageobject-imagedata</literal> paragraph is taken as the URI for the image. Metadata may immediately follow the paragraph.</para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">mediaobject/imageobject/imagedata/@fileref</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">imageobject-imagedata, caption</db:para>
+            </entry>
+            <entry colname="col3">
+              <para>The content of the <literal>imageobject-imagedata</literal> paragraph is taken as the URI for the image.  May be followed by a <literal>caption</literal> style paragraph. Metadata may immediately follow the paragraph, before the caption, if any.</para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">table</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Word table, caption</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">table/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">table-title, caption</db:para>
+            </entry>
+            <entry colname="col3">
+              <para>Metadata may immediately follow the paragraph.</para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">informaltable</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Word table</db:para>
+            </entry>
+            <entry colname="col3">
+              <para>A table with no title imediately preceding it.</para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">caption</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">caption</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">literallayout</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">literallayout</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Inside a <literal>literallayout</literal> paragraph in Word, lines should be separated by line break (Shift-Enter) rather than paragraph break (Enter).</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">programlisting</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">programlisting</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Inside a <literal>programlisting</literal> paragraph in Word, lines should be separated by line break (Shift-Enter) rather than paragraph break (Enter). Tabs are not supported.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">blockquote/title</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">blockquote-title</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Must immediately precede a <literal>blockquote</literal> paragraph in Word.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">blockquote/para</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">blockquote</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">blockquote/attribution</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">blockquote-attribution</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Must immediately follow a <literal>blockquote</literal> paragraph in Word.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">bibliomisc</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">bibliomisc</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry namest="col1" nameend="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">
+                <emphasis role="bold">Non-DocBook elements</emphasis>
+              </db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">xi:include</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">xinclude</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">The content of the paragraph becomes the value of the <tag>href</tag> attribute.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry namest="col1" nameend="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">
+                <emphasis role="bold">Inline elements</emphasis>
+              </db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">emphasis</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">emphasis</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">emphasis/@role="bold"</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">emphasis-bold</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">emphasis/@role="underline"</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">emphasis-underline</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">footnote</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Word footnote</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">link</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">link</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">In Word, hyperlink properties identify the DocBook linkend.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">releaseinfo</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">releaseinfo</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">surname</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">surname</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Character style.  Must occur in an appropriate parent paragraph, such as <tag>author</tag> or <tag>editor</tag>.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">firstname</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">firstname</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Character style.  Must occur in an appropriate parent paragraph, such as <tag>author</tag> or <tag>editor</tag>.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">orgname</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">orgname</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">keyword</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">keywordset/keyword</db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">Paragraph style.  Consecutive <tag>keyword</tag> elements are merged into a single <tag>keywordset</tag> parent element.  Words (phrases) within a paragraph separated by commas become individual <tag>keyword</tag> elements.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">citetitle</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">citetitle</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">city</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">city</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">contrib</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">contrib</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">country</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">country</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">email</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">email</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">fax</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">fax</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">honorific</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">honorific</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">jobtitle</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">jobtitle</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">lineage</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">lineage</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">orgdiv</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">orgdiv</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">otheraddr</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">otheraddr</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">othername</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">othername</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">phone</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">phone</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">pob</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">pob</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">postcode</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">postcode</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">shortaffil</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">shortaffil</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">state</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">state</db:para>
+            </entry>
+            <entry>
+              <db:para xmlns:db="http://docbook.org/ns/docbook"/>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <table>
+      <title>Proposed Additions - not yet implemented</title>
+      <tgroup cols="3">
+        <colspec colnum="1" colname="col1" colwidth="2*"/>
+        <colspec colnum="2" colname="col2" colwidth="2*"/>
+        <colspec colnum="3" colname="col3" colwidth="2*"/>
+        <thead>
+          <row>
+            <entry colname="col1">
+              <para>DocBook element</para>
+            </entry>
+            <entry colname="col2">
+              <para>Style(s)</para>
+            </entry>
+            <entry colname="col3">
+              <para>Comments</para>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">variablelist/varlistentry/term</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">
+                <literallayout class="monospaced">variablelist1-term
+variablelist2-term
+variablelist3-term
+variablelist4-term</literallayout>
+              </db:para>
+            </entry>
+            <entry colname="col3">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">A <sgmltag class="element">variablelist</sgmltag> in Word should be a sequence of alternating paragraphs styled as <literal>variablelistN-term</literal> and <literal>variablelistN</literal>.</db:para>
+            </entry>
+          </row>
+          <row>
+            <entry colname="col1">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">variablelist/varlistentry/listitem/para</db:para>
+            </entry>
+            <entry colname="col2">
+              <db:para xmlns:db="http://docbook.org/ns/docbook">
+                <literallayout class="monospaced">variablelist1
+variablelist2
+variablelist3
+variablelist4</literallayout>
+              </db:para>
+            </entry>
+            <entry colname="col3">
+              <para>Consecutive paragraphs are coalesced.</para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <section>
+      <title>Attributes</title>
+      <para>Attributes are a feature of DocBook XML that have no direct counterpart in Word.</para>
+      <para>XML attributes are encoded in Word comments (annotations).  Some dummy text (just a space, using a character style that includes the hidden property) anchors the comment.  Within the comment text, character types are used to indicate attribute names and values (these must be paired).  This approach keeps the attributes separate to the main body and allows multiple attributes to be encoded.</para>
+      <para>A disadvantage to this approach is that a paragraph may be related to more than one element, but the attributes are associated with only one element (by default the parent).  For example, a section may have an attribute as well as the title child element, but only a single paragraph (with paragraph style <literal>sect1-title</literal>) represents both elements.  Any attribute defined in a comment would be associated with the <tag>sect1</tag> element.</para>
+      <para>Pages does not have annotations, so the character styles <literal>attribute-name</literal> and <literal>attribute-value</literal> are used.</para>
+    </section>
+  </section>
+</article>
