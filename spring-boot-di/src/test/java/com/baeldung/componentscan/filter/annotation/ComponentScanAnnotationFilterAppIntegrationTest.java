@@ -19,7 +19,7 @@ import static org.hamcrest.CoreMatchers.*;
 public class ComponentScanAnnotationFilterAppIntegrationTest {
 
     @Test
-    public void testBean() {
+    public void whenAnnotationFilterIsUsed_thenComponentScanShouldRegisterBeanAnnotatedWithAnimalAnootation() {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ComponentScanAnnotationFilterApp.class);
         List<String> beans = Arrays.stream(applicationContext.getBeanDefinitionNames())
             .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanAnnotationFilterApp"))

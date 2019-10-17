@@ -24,4 +24,4 @@ or return code of 201 and the response: `{"id": 10,"name": "Hello, World"}` - if
 
 ## Relevant articles:
 
-- [Apache Camel with Spring Boot](http://www.baeldung.com/apache-camel-spring-boot)
+- [Apache Camel with Spring Boot](https://www.baeldung.com/apache-camel-spring-boot)
