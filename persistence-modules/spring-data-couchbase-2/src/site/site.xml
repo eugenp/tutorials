@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Spring Batch: ${project.name}">
+
+	<bannerLeft>
+		<name>Spring Sample: ${project.name}</name>
+    	<href>index.html</href>
+	</bannerLeft>
+
+  <skin>
+    <groupId>org.springframework.maven.skins</groupId>
+    <artifactId>maven-spring-skin</artifactId>
+    <version>1.0.5</version>
+  </skin>
+
+	<body>
+
+		<links>
+			<item name="${project.name}" href="index.html"/>
+		</links>
+		
+		<menu ref="reports"/>
+	
+	</body>
+
+</project>

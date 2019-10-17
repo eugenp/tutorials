@@ -1,0 +1,69 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="insert.link.page.number">
+<refmeta>
+<refentrytitle>insert.link.page.number</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo> 
+<refmiscinfo class="other" otherclass="value">no</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">yes</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">maybe</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>insert.link.page.number</refname>
+<refpurpose>Turns page numbers in link elements on and off</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="insert.link.page.number.frag">
+<xsl:param name="insert.link.page.number">no</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The value of this parameter determines if
+cross references using the <tag>link</tag> element in
+printed output will
+include standard page number citations.
+It has three possible values.
+</para>
+<variablelist>
+<varlistentry>
+<term>no</term>
+<listitem><para>No page number references will be generated.
+</para></listitem>
+</varlistentry>
+<varlistentry>
+<term>yes</term>
+<listitem><para>Page number references will be generated
+for all <tag>link</tag> elements.
+The style of page reference may be changed
+if an <tag class="attribute">xrefstyle</tag>
+attribute is used.
+</para></listitem>
+</varlistentry>
+<varlistentry>
+<term>maybe</term>
+<listitem><para>Page number references will not be generated
+for a <tag>link</tag> element unless 
+it has an
+<tag class="attribute">xrefstyle</tag>
+attribute whose value specifies a page reference.
+</para></listitem>
+</varlistentry>
+</variablelist>
+
+<para>Although the <tag>xrefstyle</tag> attribute
+can be used to turn the page reference on or off, it cannot be
+used to control the formatting of the page number as it
+can in <tag>xref</tag>.
+In <tag>link</tag> it will always format with
+the style established by the
+gentext template with <literal>name="page.citation"</literal>
+in the <literal>l:context name="xref"</literal>.
+</para>
+</refsection>
+</refentry>

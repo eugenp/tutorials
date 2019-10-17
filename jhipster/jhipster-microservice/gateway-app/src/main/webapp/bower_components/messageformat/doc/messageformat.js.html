@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: messageformat.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: messageformat.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** @file messageformat.js - ICU PluralFormat + SelectFormat for JavaScript
+ *
+ * @author Alex Sexton - @SlexAxton, Eemeli Aro
+ * @version 0.3.1
+ * @copyright 2012-2016 Alex Sexton, Eemeli Aro, and Contributors
+ * @license To use or fork, MIT. To contribute back, Dojo CLA  */
+
+
+/** Utility function for quoting an Object's key value iff required
+ *
+ * @private  */
+function propname(key, obj) {
+  /* Quote the key if it contains invalid characters or is an
+   * ECMAScript 3rd Edition reserved word.
+   */
+  if (/^[A-Z_$][0-9A-Z_$]*$/i.test(key) &amp;&amp;
+     ['break', 'continue', 'delete', 'else', 'for', 'function', 'if', 'in', 'new',
+      'return', 'this', 'typeof', 'var', 'void', 'while', 'with', 'case', 'catch',
+      'default', 'do', 'finally', 'instanceof', 'switch', 'throw', 'try'].indexOf(key) &lt; 0) {
+    return obj ? obj + '.' + key : key;
+  } else {
+    var jkey = JSON.stringify(key);
+    return obj ? obj + '[' + jkey + ']' : jkey;
+  }
+}
+
+/** Utility formatter function for enforcing Bidi Structured Text by using UCC
+ *
+ * @private  */
+function bidiMarkText(text, locale) {
+  function isLocaleRTL(locale) {
+    /* list inlined from data extracted from CLDR v27 &amp; v28
+     * to verify/recreate, use the following:
+     *   git clone https://github.com/unicode-cldr/cldr-misc-full.git
+     *   cd cldr-misc-full/main/
+     *   grep characterOrder -r . | tr '"/' '\t' | cut -f2,6 | grep -C4 right-to-left
+     */
+    var rtlLanguages = ['ar', 'ckb', 'fa', 'he', 'ks($|[^bfh])', 'lrc', 'mzn', 'pa-Arab', 'ps', 'ug', 'ur', 'uz-Arab', 'yi'];
+    return new RegExp('^' + rtlLanguages.join('|^')).test(locale);
+  }
+  var mark = JSON.stringify(isLocaleRTL(locale) ? '\u200F' : '\u200E');
+  return mark + ' + ' + text + ' + ' + mark;
+}
+
+/** Create a new message formatter
+ *
+ * @class
+ * @param {string|string[]} [locale="en"] - The locale to use, with fallbacks
+ * @param {function} [pluralFunc] - Optional custom pluralization function
+ * @param {function[]} [formatters] - Optional custom formatting functions  */
+function MessageFormat(locale, pluralFunc, formatters) {
+  if (!locale) {
+    this.lc = ['en'];
+  } else if (typeof locale == 'string') {
+    this.lc = [];
+    for (var l = locale; l; l = l.replace(/[-_]?[^-_]*$/, '')) this.lc.push(l);
+  } else {
+    this.lc = locale;
+  }
+  if (!pluralFunc) {
+    if (this.lc.every(function(l){
+      pluralFunc = MessageFormat.plurals[l];
+      return !pluralFunc;
+    })) {
+      throw new Error('Plural function for locale `' + this.lc.join(',') + '` not found');
+    }
+  }
+  this.runtime = new Runtime(this.lc[0], pluralFunc, formatters);
+}
+
+module.exports = MessageFormat;
+
+
+/** Parse an input string to its AST
+ *
+ *  Precompiled from `lib/messageformat-parser.pegjs` by
+ *  {@link http://pegjs.org/ PEG.js}. Included in MessageFormat object
+ *  to enable testing.
+ *
+ * @private  */
+MessageFormat._parse = require('./messageformat-parser').parse;
+
+
+/** Pluralization functions from
+ *  {@link http://github.com/eemeli/make-plural.js make-plural}
+ *
+ * @memberof MessageFormat
+ * @type Object.&lt;string,function>  */
+MessageFormat.plurals = require('make-plural/plurals');
+
+
+/** Default number formatting functions in the style of ICU's
+ *  {@link http://icu-project.org/apiref/icu4j/com/ibm/icu/text/MessageFormat.html simpleArg syntax}
+ *  implemented using the
+ *  {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl Intl}
+ *  object defined by ECMA-402.
+ *
+ *  **Note**: Intl is not defined in default Node until 0.11.15 / 0.12.0, so
+ *  earlier versions require a {@link https://www.npmjs.com/package/intl polyfill}.
+ *  Therefore {@link MessageFormat.withIntlSupport} needs to be true for these
+ *  functions to be available for inclusion in the output.
+ *
+ * @see MessageFormat#setIntlSupport
+ *
+ * @namespace
+ * @memberof MessageFormat
+ * @property {function} number - Represent a number as an integer, percent or currency value
+ * @property {function} date - Represent a date as a full/long/default/short string
+ * @property {function} time - Represent a time as a full/long/default/short string
+ *
+ * @example
+ * var mf = new MessageFormat('en').setIntlSupport(true);
+ * mf.currency = 'EUR';
+ * var cf = mf.compile('The total is {V,number,currency}.');
+ *
+ * cf({ V: 5.5 })
+ * // 'The total is €5.50.'
+ *
+ * @example
+ * var mf = new MessageFormat('en', null, {number: MessageFormat.number});
+ * mf.currency = 'EUR';
+ * var cf = mf.compile('The total is {V,number,currency}.');
+ *
+ * cf({ V: 5.5 })
+ * // 'The total is €5.50.'  */
+MessageFormat.formatters = {
+  number: function(self) {
+    return new Function("v,lc,p",
+      "return Intl.NumberFormat(lc,\n" +
+      "    p=='integer' ? {maximumFractionDigits:0}\n" +
+      "  : p=='percent' ? {style:'percent'}\n" +
+      "  : p=='currency' ? {style:'currency', currency:'" + (self.currency || 'USD') + "', minimumFractionDigits:2, maximumFractionDigits:2}\n" +
+      "  : {}).format(v)"
+    );
+  },
+  date: function(v,lc,p) {
+    var o = {day:'numeric', month:'short', year:'numeric'};
+    switch (p) {
+      case 'full': o.weekday = 'long';
+      case 'long': o.month = 'long'; break;
+      case 'short': o.month = 'numeric';
+    }
+    return (new Date(v)).toLocaleDateString(lc, o)
+  },
+  time: function(v,lc,p) {
+    var o = {second:'numeric', minute:'numeric', hour:'numeric'};
+    switch (p) {
+      case 'full': case 'long': o.timeZoneName = 'short'; break;
+      case 'short': delete o.minute;
+    }
+    return (new Date(v)).toLocaleTimeString(lc, o)
+  }
+};
+
+/** Enable or disable the addition of Unicode control characters to all input
+ *  to preserve the integrity of the output when mixing LTR and RTL text.
+ *
+ * @see http://cldr.unicode.org/development/development-process/design-proposals/bidi-handling-of-structured-text
+ *
+ * @memberof MessageFormat
+ * @param {boolean} [enable=true]
+ * @returns {MessageFormat} The MessageFormat instance, to allow for chaining
+ *
+ * @example
+ * // upper case stands for RTL characters, output is shown as rendered
+ * var mf = new MessageFormat('en');
+ *
+ * mf.compile('{0} >> {1} >> {2}')(['first', 'SECOND', 'THIRD']);
+ * // 'first >> THIRD &lt;&lt; SECOND'
+ *
+ * mf.setBiDiSupport(true);
+ * mf.compile('{0} >> {1} >> {2}')(['first', 'SECOND', 'THIRD']);
+ * // 'first >> SECOND >> THIRD'  */
+MessageFormat.prototype.setBiDiSupport = function(enable) {
+    this.bidiSupport = !!enable || (typeof enable == 'undefined');
+    return this;
+};
+
+
+/** Enable or disable support for the default formatters, which require the
+ *  `Intl` object. Note that this can't be autodetected, as the environment
+ *  in which the formatted text is compiled into Javascript functions is not
+ *  necessarily the same environment in which they will get executed.
+ *
+ * @see MessageFormat.formatters
+ *
+ * @memberof MessageFormat
+ * @param {boolean} [enable=true]
+ * @returns {MessageFormat} The MessageFormat instance, to allow for chaining
+ *
+ * @example
+ * // Intl is not defined in default Node until 0.11.15 / 0.12.0
+ * var Intl = require('intl');
+ * var mf = new MessageFormat('en').setIntlSupport(true);
+ * mf.currency = 'EUR';
+ *
+ * mf.compile('The total is {V,number,currency}.')({ V: 5.5 });
+ * // 'The total is €5.50.'  */
+MessageFormat.prototype.setIntlSupport = function(enable) {
+    this.withIntlSupport = !!enable || (typeof enable == 'undefined');
+    return this;
+};
+
+
+/** A set of utility functions that are called by the compiled Javascript
+ *  functions, these are included locally in the output of {@link
+ *  MessageFormat#compile compile()}.
+ *
+ * @class
+ * @param {string} [locale] - The parsed locale
+ * @param {function} [pluralFunc] - Pluralization function for the locale
+ * @param {function[]} [formatters] - Optional custom formatting functions  */
+function Runtime(locale, pluralFunc, formatters) {
+
+  /** Pluralization functions included in compiled output
+   *
+   * @instance
+   * @type Object.&lt;string,function>  */
+  this.pluralFuncs = {};
+  this.pluralFuncs[locale] = pluralFunc;
+
+  /** Custom formatting functions called by `{var, fn[, args]*}` syntax
+   *
+   *  For examples, see {@link MessageFormat.formatters}
+   *
+   * @instance
+   * @see MessageFormat.formatters
+   * @type Object.&lt;string,function>  */
+  this.fmt = {};
+  if (formatters) for (var f in formatters) {
+    this.fmt[f] = formatters[f];
+  }
+}
+
+Runtime.prototype = {
+
+  /** Utility function for `#` in plural rules
+   *
+   * @param {number} value - The value to operate on
+   * @param {number} [offset=0] - An optional offset, set by the surrounding context  */
+  number: function(value, offset) {
+    if (isNaN(value)) throw new Error("'" + value + "' isn't a number.");
+    return value - (offset || 0);
+  },
+
+  /** Utility function for `{N, plural|selectordinal, ...}`
+   *
+   * @param {number} value - The key to use to find a pluralization rule
+   * @param {number} offset - An offset to apply to `value`
+   * @param {function} lcfunc - A locale function from `pluralFuncs`
+   * @param {Object.&lt;string,string>} data - The object from which results are looked up
+   * @param {?boolean} isOrdinal - If true, use ordinal rather than cardinal rules
+   * @returns {string} The result of the pluralization  */
+  plural: function(value, offset, lcfunc, data, isOrdinal) {
+    if ({}.hasOwnProperty.call(data, value)) return data[value]();
+    if (offset) value -= offset;
+    var key = lcfunc(value, isOrdinal);
+    if (key in data) return data[key]();
+    return data.other();
+  },
+
+  /** Utility function for `{N, select, ...}`
+   *
+   * @param {number} value - The key to use to find a selection
+   * @param {Object.&lt;string,string>} data - The object from which results are looked up
+   * @returns {string} The result of the select statement  */
+  select: function(value, data) {
+    if ({}.hasOwnProperty.call(data, value)) return data[value]();
+    return data.other()
+  },
+
+  /** Custom stringifier
+   *
+   * @example
+   * var mf = new MessageFormat('en');
+   * console.log(mf.runtime.toString())
+   * > var pluralFuncs = {
+   * >   en: function (n, ord) {
+   * >     var s = String(n).split('.'), v0 = !s[1], t0 = Number(s[0]) == n,
+   * >         n10 = t0 &amp;&amp; s[0].slice(-1), n100 = t0 &amp;&amp; s[0].slice(-2);
+   * >     if (ord) return (n10 == 1 &amp;&amp; n100 != 11) ? 'one'
+   * >         : (n10 == 2 &amp;&amp; n100 != 12) ? 'two'
+   * >         : (n10 == 3 &amp;&amp; n100 != 13) ? 'few'
+   * >         : 'other';
+   * >     return (n == 1 &amp;&amp; v0) ? 'one' : 'other';
+   * >   }
+   * > };
+   * > var fmt = {};
+   * > var number = function (value, offset) {
+   * >   if (isNaN(value)) throw new Error("'" + value + "' isn't a number.");
+   * >   return value - (offset || 0);
+   * > };
+   * > var plural = function (value, offset, lcfunc, data, isOrdinal) {
+   * >   if ({}.hasOwnProperty.call(data, value)) return data[value]();
+   * >   if (offset) value -= offset;
+   * >   var key = lcfunc(value, isOrdinal);
+   * >   if (key in data) return data[key]();
+   * >   return data.other();
+   * > };
+   * > var select = function (value, data) {
+   * >   if ({}.hasOwnProperty.call(data, value)) return data[value]();
+   * >   return data.other()
+   * > };  */
+  toString: function () {
+    var _stringify = function(o, level) {
+      if (typeof o != 'object') {
+        var funcStr = o.toString().replace(/^(function )\w*/, '$1');
+        var indent = /([ \t]*)\S.*$/.exec(funcStr);
+        return indent ? funcStr.replace(new RegExp('^' + indent[1], 'mg'), '') : funcStr;
+      }
+      var s = [];
+      for (var i in o) if (i != 'toString') {
+        if (level == 0) s.push('var ' + i + ' = ' + _stringify(o[i], level + 1) + ';\n');
+        else s.push(propname(i) + ': ' + _stringify(o[i], level + 1));
+      }
+      if (level == 0) return s.join('');
+      if (s.length == 0) return '{}';
+      var indent = '  '; while (--level) indent += '  ';
+      return '{\n' + s.join(',\n').replace(/^/gm, indent) + '\n}';
+    };
+    return _stringify(this, 0);
+  }
+};
+
+
+/** Recursively map an AST to its resulting string
+ *
+ * @memberof MessageFormat
+ * @param ast - the Ast node for which the JS code should be generated
+ * @private  */
+MessageFormat.prototype._precompile = function(ast, data) {
+  data = data || { keys: {}, offset: {} };
+  var r = [], i, tmp, args = [];
+
+  switch ( ast.type ) {
+    case 'messageFormatPattern':
+      for ( i = 0; i &lt; ast.statements.length; ++i ) {
+        r.push(this._precompile( ast.statements[i], data ));
+      }
+      tmp = r.join(' + ') || '""';
+      return data.pf_count ? tmp : 'function(d) { return ' + tmp + '; }';
+
+    case 'messageFormatElement':
+      data.pf_count = data.pf_count || 0;
+      if ( ast.output ) {
+        var ret = propname(ast.argumentIndex, 'd');
+        return this.bidiSupport ? bidiMarkText(ret, this.lc) : ret;
+      }
+      else {
+        data.keys[data.pf_count] = ast.argumentIndex;
+        return this._precompile( ast.elementFormat, data );
+      }
+      return '';
+
+    case 'elementFormat':
+      args = [ propname(data.keys[data.pf_count], 'd') ];
+      switch (ast.key) {
+        case 'select':
+          args.push(this._precompile(ast.val, data));
+          return 'select(' + args.join(', ') + ')';
+        case 'selectordinal':
+          args = args.concat([ 0, propname(this.lc[0], 'pluralFuncs'), this._precompile(ast.val, data), 1 ]);
+          return 'plural(' + args.join(', ') + ')';
+        case 'plural':
+          data.offset[data.pf_count || 0] = ast.val.offset || 0;
+          args = args.concat([ data.offset[data.pf_count] || 0, propname(this.lc[0], 'pluralFuncs'), this._precompile(ast.val, data) ]);
+          return 'plural(' + args.join(', ') + ')';
+        default:
+          if (this.withIntlSupport &amp;&amp; !(ast.key in this.runtime.fmt) &amp;&amp; (ast.key in MessageFormat.formatters)) {
+            tmp = MessageFormat.formatters[ast.key];
+            this.runtime.fmt[ast.key] = (typeof tmp(this) == 'function') ? tmp(this) : tmp;
+          }
+          args.push(JSON.stringify(this.lc));
+          if (ast.val &amp;&amp; ast.val.length) args.push(JSON.stringify(ast.val.length == 1 ? ast.val[0] : ast.val));
+          return 'fmt.' + ast.key + '(' + args.join(', ') + ')';
+      }
+
+    case 'pluralFormatPattern':
+    case 'selectFormatPattern':
+      data.pf_count = data.pf_count || 0;
+      if (ast.type == 'selectFormatPattern') data.offset[data.pf_count] = 0;
+      var needOther = true;
+      for (i = 0; i &lt; ast.pluralForms.length; ++i) {
+        var key = ast.pluralForms[i].key;
+        if (key === 'other') needOther = false;
+        var data_copy = JSON.parse(JSON.stringify(data));
+        data_copy.pf_count++;
+        r.push(propname(key) + ': function() { return ' + this._precompile(ast.pluralForms[i].val, data_copy) + ';}');
+      }
+      if (needOther) throw new Error("No 'other' form found in " + ast.type + " " + data.pf_count);
+      return '{ ' + r.join(', ') + ' }';
+
+    case 'string':
+      return JSON.stringify(ast.val || "");
+
+    case 'octothorpe':
+      if (!data.pf_count) return '"#"';
+      args = [ propname(data.keys[data.pf_count-1], 'd') ];
+      if (data.offset[data.pf_count-1]) args.push(data.offset[data.pf_count-1]);
+      return 'number(' + args.join(', ') + ')';
+
+    default:
+      throw new Error( 'Bad AST type: ' + ast.type );
+  }
+};
+
+/** Compile messages into an executable function with clean string
+ *  representation.
+ *
+ *  If `messages` is a single string including ICU MessageFormat declarations,
+ *  `opt` is ignored and the returned function takes a single Object parameter
+ *  `d` representing each of the input's defined variables. The returned
+ *  function will be defined in a local scope that includes all the required
+ *  runtime variables.
+ *
+ *  If `messages` is a map of keys to strings, or a map of namespace keys to
+ *  such key/string maps, the returned function will fill the specified global
+ *  with javascript functions matching the structure of the input. In such use,
+ *  the result of `compile()` may be serialized using its `toString()` method,
+ *  including all required runtime function definitions. If `opt.global` is
+ *  null, calling the output function will return the object itself.
+ *
+ *  Together, the input parameters should match the following patterns:
+ *  ```js
+ *  messages = "string" || { key0: "string0", key1: "string1", ... } || {
+ *    ns0: { key0: "string0", key1: "string1", ...  },
+ *    ns1: { key0: "string0", key1: "string1", ...  },
+ *    ...
+ *  }
+ *
+ *  opt = null || {
+ *    locale: null || {
+ *      ns0: "lc0" || [ "lc0", ... ],
+ *      ns1: "lc1" || [ "lc1", ... ],
+ *      ...
+ *    },
+ *    global: null || "module.exports" || "exports" || "i18n" || ...
+ *  }
+ *  ```
+ *
+ * @memberof MessageFormat
+ * @param {string|Object}
+ *     messages - The input message(s) to be compiled, in ICU MessageFormat
+ * @param {Object} [opt={}] - Options controlling output for non-simple intput
+ * @param {Object} [opt.locale] - The locales to use for the messages, with a
+ *     structure matching that of `messages`
+ * @param {string} [opt.global=""] - The global variable that the output
+ *     function should use, or a null string for none. "exports" and
+ *     "module.exports" are recognised as special cases.
+ * @returns {function} The first match found for the given locale(s)
+ *
+ * @example
+ * var mf = new MessageFormat('en');
+ * var cf = mf.compile('A {TYPE} example.');
+ *
+ * cf({ TYPE: 'simple' })
+ * // 'A simple example.'
+ *
+ * cf.toString()
+ * // 'function (d) { return "A " + d.TYPE + " example."; }'
+ *
+ * @example
+ * var fs = require('fs');
+ * var mf = new MessageFormat('en');
+ * var msgSet = {
+ *   a: 'A {TYPE} example.',
+ *   b: 'This has {COUNT, plural, one{one member} other{# members}}.'
+ * };
+ * var cfSet = mf.compile(msgSet, { global: 'module.exports' });
+ * var str = cfSet.toString().replace(/^[^{]*{/, '').replace(/}\s*$/, '').trim();
+ * fs.writeFileSync('messages.js', str);
+ * ...
+ * var messages = require('./messages');
+ *
+ * messages.a({ TYPE: 'more complex' })
+ * // 'A more complex example.'
+ *
+ * messages.b({ COUNT: 2 })
+ * // 'This has 2 members.'
+ *
+ * @example
+ * var mf = new MessageFormat('en');
+ * mf.runtime.pluralFuncs.fi = MessageFormat.plurals.fi;
+ * mf.compile({
+ *   en: { a: 'A {TYPE} example.',
+ *         b: 'This is the {COUNT, selectordinal, one{#st} two{#nd} few{#rd} other{#th}} example.' },
+ *   fi: { a: '{TYPE} esimerkki.',
+ *         b: 'Tämä on {COUNT, selectordinal, other{#.}} esimerkki.' }
+ * }, {
+ *   locale: { en: 'en', fi: 'fi' },
+ *   global: 'i18n'
+ * })(this);
+ *
+ * i18n.en.b({ COUNT: 3 })
+ * // 'This is the 3rd example.'
+ *
+ * i18n.fi.b({ COUNT: 3 })
+ * // 'Tämä on 3. esimerkki.'  */
+MessageFormat.prototype.compile = function ( messages, opt ) {
+  var r = {}, lc0 = this.lc,
+      compileMsg = function(self, msg) {
+        try {
+          var ast = MessageFormat._parse(msg);
+          return self._precompile(ast);
+        } catch (e) {
+          throw new Error((ast ? 'Precompiler' : 'Parser') + ' error: ' + e.toString());
+        }
+      },
+      stringify = function(r, level) {
+        if (!level) level = 0;
+        if (typeof r != 'object') return r;
+        var o = [], indent = '';
+        for (var i = 0; i &lt; level; ++i) indent += '  ';
+        for (var k in r) o.push('\n' + indent + '  ' + propname(k) + ': ' + stringify(r[k], level + 1));
+        return '{' + o.join(',') + '\n' + indent + '}';
+      };
+
+  if (typeof messages == 'string') {
+    var f = new Function(
+        'number, plural, select, pluralFuncs, fmt',
+        'return ' + compileMsg(this, messages));
+    return f(this.runtime.number, this.runtime.plural, this.runtime.select,
+        this.runtime.pluralFuncs, this.runtime.fmt);
+  }
+
+  opt = opt || {};
+
+  for (var ns in messages) {
+    if (opt.locale) this.lc = opt.locale[ns] &amp;&amp; [].concat(opt.locale[ns]) || lc0;
+    if (typeof messages[ns] == 'string') {
+      try { r[ns] = compileMsg(this, messages[ns]); }
+      catch (e) { e.message = e.message.replace(':', ' with `' + ns + '`:'); throw e; }
+    } else {
+      r[ns] = {};
+      for (var key in messages[ns]) {
+        try { r[ns][key] = compileMsg(this, messages[ns][key]); }
+        catch (e) { e.message = e.message.replace(':', ' with `' + key + '` in `' + ns + '`:'); throw e; }
+      }
+    }
+  }
+
+  this.lc = lc0;
+  var s = this.runtime.toString() + '\n';
+  switch (opt.global || '') {
+    case 'exports':
+      var o = [];
+      for (var k in r) o.push(propname(k, 'exports') + ' = ' + stringify(r[k]));
+      return new Function(s + o.join(';\n'));
+    case 'module.exports':
+      return new Function(s + 'module.exports = ' + stringify(r));
+    case '':
+      return new Function(s + 'return ' + stringify(r));
+    default:
+      return new Function('G', s + propname(opt.global, 'G') + ' = ' + stringify(r));
+  }
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="MessageFormat.html">MessageFormat</a></li><li><a href="Runtime.html">Runtime</a></li></ul><h3>Namespaces</h3><ul><li><a href="MessageFormat.formatters.html">formatters</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Feb 20 2016 18:21:43 GMT+0200 (EET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
