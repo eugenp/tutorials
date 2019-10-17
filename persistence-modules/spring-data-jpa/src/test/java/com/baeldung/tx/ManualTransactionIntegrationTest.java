@@ -63,7 +63,7 @@ public class ManualTransactionIntegrationTest {
     }
 
     @Test
-    public void withResult_ShouldWorkAsExpected() {
+    public void givenAPayment_WhenNotDuplicate_ThenShouldCommit() {
         Long id = transactionTemplate.execute(status -> {
             Payment payment = new Payment();
             payment.setAmount(1000L);
@@ -80,7 +80,7 @@ public class ManualTransactionIntegrationTest {
     }
 
     @Test
-    public void withResult_ShouldBeAbleToRollbackManually() {
+    public void givenAPayment_WhenMarkAsRollback_ThenShouldRollback() {
         transactionTemplate.execute(status -> {
             Payment payment = new Payment();
             payment.setAmount(1000L);
@@ -99,7 +99,7 @@ public class ManualTransactionIntegrationTest {
     }
 
     @Test
-    public void withResult_ShouldMaintainACID() {
+    public void givenTwoPayments_WhenRefIsDuplicate_ThenShouldRollback() {
         try {
             transactionTemplate.execute(s -> {
                 Payment first = new Payment();
@@ -126,7 +126,7 @@ public class ManualTransactionIntegrationTest {
     }
 
     @Test
-    public void withoutResult_ShouldWorkAsExpected() {
+    public void givenAPayment_WhenNotExpectingAnyResult_ThenShouldCommit() {
         transactionTemplate.execute(new TransactionCallbackWithoutResult() {
             @Override
             protected void doInTransactionWithoutResult(TransactionStatus status) {
@@ -144,7 +144,7 @@ public class ManualTransactionIntegrationTest {
     }
 
     @Test
-    public void txManager_ShouldCommitOkTransactions() {
+    public void givenAPayment_WhenUsingTxManager_ThenShouldCommit() {
         DefaultTransactionDefinition definition = new DefaultTransactionDefinition();
         definition.setIsolationLevel(TransactionDefinition.ISOLATION_REPEATABLE_READ);
         definition.setTimeout(3);
