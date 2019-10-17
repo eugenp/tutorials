@@ -1,4 +1,4 @@
-package com.baeldung.string;
+package com.baeldung.stringbuilderstringbuffer;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Scope;
@@ -8,12 +8,12 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-public class StringBufferStringBuilder {
+public class StringBuilderStringBuffer {
 
     public static void main(String[] args) throws RunnerException {
 
         Options opt = new OptionsBuilder()
-            .include(StringBufferStringBuilder.class.getSimpleName())
+            .include(StringBuilderStringBuffer.class.getSimpleName())
             .build();
 
         new Runner(opt).run();

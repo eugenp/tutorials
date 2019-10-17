@@ -1,4 +1,4 @@
-package com.baeldung.string.streamtokenizer;
+package com.baeldung.streamtokenizer;
 
 import org.junit.Test;
 
