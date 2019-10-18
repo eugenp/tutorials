@@ -15,4 +15,5 @@ This module contains articles about core features in the Java language
 - [Attaching Values to Java Enum](https://www.baeldung.com/java-enum-values)
 - [The Java continue and break Keywords](https://www.baeldung.com/java-continue-and-break)
 - [A Guide to Java Enums](https://www.baeldung.com/a-guide-to-java-enums)
+- [Infinite Loops in Java](https://www.baeldung.com/infinite-loops-java)
 - [[More --> ]](/core-java-modules/core-java-lang-2)
