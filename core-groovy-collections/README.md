@@ -1,4 +1,6 @@
-# Groovy
+## Core Groovy Collections
+
+This module contains articles about Groovy core collections
 
 ## Relevant articles:
 

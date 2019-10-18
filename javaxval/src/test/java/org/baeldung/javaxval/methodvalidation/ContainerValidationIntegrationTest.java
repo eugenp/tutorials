@@ -1,5 +1,10 @@
 package org.baeldung.javaxval.methodvalidation;
 
+import java.time.LocalDate;
+import java.util.List;
+
+import javax.validation.ConstraintViolationException;
+
 import org.baeldung.javaxval.methodvalidation.model.Customer;
 import org.baeldung.javaxval.methodvalidation.model.Reservation;
 import org.baeldung.javaxval.methodvalidation.model.ReservationManagement;
@@ -11,10 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-
-import javax.validation.ConstraintViolationException;
-import java.time.LocalDate;
-import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { MethodValidationConfig.class }, loader = AnnotationConfigContextLoader.class)

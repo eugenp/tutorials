@@ -31,7 +31,7 @@
         <module>java-jpa</module>
         <module>java-jpa-2</module>
         <module>java-mongodb</module>
-        <module>java-sql2o</module>
+        <module>persistence-libraries</module>
         <module>jnosql</module>
         <module>liquibase</module>
         <module>orientdb</module>
