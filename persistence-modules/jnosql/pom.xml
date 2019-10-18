@@ -10,8 +10,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>jnosql-diana</module>
         <module>jnosql-artemis</module>
+        <module>jnosql-diana</module>
    </modules>
 
     <properties>
