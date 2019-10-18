@@ -4,7 +4,7 @@ This module contains articles about core Spring functionality
 
 ### Relevant Articles:
 - [Wiring in Spring: @Autowired, @Resource and @Inject](https://www.baeldung.com/spring-annotations-resource-inject-autowire)
-- [Constructor Injection in Spring with Lombok](httsp://www.baeldung.com/spring-injection-lombok)
+- [Constructor Injection in Spring with Lombok](https://www.baeldung.com/spring-injection-lombok)
 - [Introduction to Spring’s StreamUtils](https://www.baeldung.com/spring-stream-utils)
 - [XML-Based Injection in Spring](https://www.baeldung.com/spring-xml-injection)
 - [A Quick Guide to the Spring @Lazy Annotation](https://www.baeldung.com/spring-lazy-annotation)
