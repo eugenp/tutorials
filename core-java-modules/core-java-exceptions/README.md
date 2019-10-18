@@ -15,3 +15,4 @@ This module contains articles about core java exceptions
 - [Java – Try with Resources](https://www.baeldung.com/java-try-with-resources)
 - [Java Global Exception Handler](https://www.baeldung.com/java-global-exception-handler)
 - [Common Java Exceptions](https://www.baeldung.com/java-common-exceptions)
+- [Throw Exception in Optional in Java 8](https://www.baeldung.com/java-optional-throw-exception)
