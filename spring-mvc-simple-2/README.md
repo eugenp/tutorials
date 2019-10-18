@@ -9,4 +9,5 @@ This module contains articles about Spring MVC
 - [Spring Validation Message Interpolation](https://www.baeldung.com/spring-validation-message-interpolation)
 - [Using a Slash Character in Spring URLs](https://www.baeldung.com/spring-slash-character-in-url)
 - [Using Enums as Request Parameters in Spring](https://www.baeldung.com/spring-enum-request-param)
+- [Excluding URLs for a Filter in a Spring Web Application](https://www.baeldung.com/spring-exclude-filter)
 - More articles: [[<-- prev]](/spring-mvc-simple)
