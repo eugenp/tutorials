@@ -14,3 +14,4 @@ This module contains articles about core java exceptions
 - [Checked and Unchecked Exceptions in Java](https://www.baeldung.com/java-checked-unchecked-exceptions)
 - [Java – Try with Resources](https://www.baeldung.com/java-try-with-resources)
 - [Java Global Exception Handler](https://www.baeldung.com/java-global-exception-handler)
+- [Common Java Exceptions](https://www.baeldung.com/java-common-exceptions)
