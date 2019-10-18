@@ -13,8 +13,4 @@
         <relativePath>../../parent-java</relativePath>
     </parent>
 
-    <properties>
-        <guava.version>18.0</guava.version>
-    </properties>
-
 </project>
