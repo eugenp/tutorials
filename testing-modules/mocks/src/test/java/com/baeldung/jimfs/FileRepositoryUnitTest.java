@@ -17,7 +17,7 @@ class FileRepositoryUnitTest implements FileTestProvider {
 
     @Test
     @DisplayName("Should create a file on a file system")
-    void shouldCreateFile() {
+    void givenUnixSystem_whenCreatingFile_thenCreatedInPath() {
         final FileSystem fileSystem = Jimfs.newFileSystem(Configuration.unix());
         final String fileName = "newFile.txt";
         final Path pathToStore = fileSystem.getPath("");
@@ -29,7 +29,7 @@ class FileRepositoryUnitTest implements FileTestProvider {
 
     @Test
     @DisplayName("Should read the content of the file")
-    void shouldReadFileContent_thenReturnIt() throws Exception {
+    void givenOSXSystem_whenReadingFile_thenContentIsReturned() throws Exception {
         final FileSystem fileSystem = Jimfs.newFileSystem(Configuration.osX());
         final Path resourceFilePath = fileSystem.getPath(RESOURCE_FILE_NAME);
         Files.copy(getResourceFilePath(), resourceFilePath);
@@ -41,7 +41,7 @@ class FileRepositoryUnitTest implements FileTestProvider {
 
     @Test
     @DisplayName("Should update the content of the file")
-    void shouldUpdateContentOfTheFile() throws Exception {
+    void givenWindowsSystem_whenUpdatingFile_thenContentHasChanged() throws Exception {
         final FileSystem fileSystem = Jimfs.newFileSystem(Configuration.windows());
         final Path resourceFilePath = fileSystem.getPath(RESOURCE_FILE_NAME);
         Files.copy(getResourceFilePath(), resourceFilePath);
@@ -55,7 +55,7 @@ class FileRepositoryUnitTest implements FileTestProvider {
 
     @Test
     @DisplayName("Should delete file")
-    void shouldDeleteFile() throws Exception {
+    void givenRandomSystem_whenDeletingFile_thenFileHasBeenDeleted() throws Exception {
         final FileSystem fileSystem = Jimfs.newFileSystem();
         final Path resourceFilePath = fileSystem.getPath(RESOURCE_FILE_NAME);
         Files.copy(getResourceFilePath(), resourceFilePath);

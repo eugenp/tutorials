@@ -19,7 +19,7 @@ class FilePathReaderUnitTest {
 
     @Test
     @DisplayName("Should get path on windows")
-    void shouldGetPath_onWindows() throws Exception {
+    void givenWindowsSystem_shouldGetPath_thenReturnWindowsPath() throws Exception {
         final FileSystem fileSystem = Jimfs.newFileSystem(Configuration.windows());
         final Path path = getPathToFile(fileSystem);
 
@@ -30,7 +30,7 @@ class FilePathReaderUnitTest {
 
     @Test
     @DisplayName("Should get path on unix")
-    void shouldGetPath_onUnix() throws Exception {
+    void givenUnixSystem_shouldGetPath_thenReturnUnixPath() throws Exception {
         final FileSystem fileSystem = Jimfs.newFileSystem(Configuration.unix());
         final Path path = getPathToFile(fileSystem);
 

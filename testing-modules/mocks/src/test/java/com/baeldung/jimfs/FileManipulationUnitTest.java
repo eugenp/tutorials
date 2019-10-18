@@ -24,9 +24,9 @@ class FileManipulationUnitTest implements FileTestProvider {
     }
 
     @ParameterizedTest
-    @DisplayName("Should create a file on a file system")
+    @DisplayName("Should move file to new destination")
     @MethodSource("provideFileSystem")
-    void shouldCreateFile(final FileSystem fileSystem) throws Exception {
+    void givenEachSystem_whenMovingFile_thenMovedToNewPath(final FileSystem fileSystem) throws Exception {
         final Path origin = fileSystem.getPath(RESOURCE_FILE_NAME);
         Files.copy(getResourceFilePath(), origin);
         final Path destination = fileSystem.getPath("newDirectory", RESOURCE_FILE_NAME);
