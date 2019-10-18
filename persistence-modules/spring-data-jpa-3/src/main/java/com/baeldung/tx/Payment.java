@@ -1,4 +1,4 @@
-package com.baeldung.boot.domain;
+package com.baeldung.tx;
 
 import javax.persistence.*;
 

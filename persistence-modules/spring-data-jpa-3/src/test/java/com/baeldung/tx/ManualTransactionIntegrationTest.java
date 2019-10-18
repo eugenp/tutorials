@@ -1,40 +1,39 @@
 package com.baeldung.tx;
 
-import com.baeldung.boot.Application;
-import com.baeldung.boot.domain.Payment;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.ClassRule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.util.TestPropertyValues;
-import org.springframework.context.ApplicationContextInitializer;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import javax.persistence.EntityManager;
 
+import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
+import static org.springframework.transaction.annotation.Propagation.NOT_SUPPORTED;
 
-@ActiveProfiles("tc")
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
-@Transactional(propagation = Propagation.NOT_SUPPORTED)
-@ContextConfiguration(initializers = { ManualTransactionIntegrationTest.Initializer.class })
-public class ManualTransactionIntegrationTest {
+@DataJpaTest
+@Testcontainers
+@ActiveProfiles("test")
+@AutoConfigureTestDatabase(replace = NONE)
+@Transactional(propagation = NOT_SUPPORTED)
+class ManualTransactionIntegrationTest {
+
+    @Container
+    private static PostgreSQLContainer<?> pg = getPostgres();
 
     @Autowired
     private PlatformTransactionManager transactionManager;
@@ -42,28 +41,22 @@ public class ManualTransactionIntegrationTest {
     @Autowired
     private EntityManager entityManager;
 
-    @ClassRule
-    public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer("postgres:11.1")
-            .withDatabaseName("integration-tests-db")
-            .withUsername("sa")
-            .withPassword("sa");
-
     private TransactionTemplate transactionTemplate;
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         transactionTemplate = new TransactionTemplate(transactionManager);
     }
 
-    @After
-    public void flushDb() {
+    @AfterEach
+    void flushDb() {
         transactionTemplate.execute(status -> entityManager
                 .createQuery("delete from Payment")
                 .executeUpdate());
     }
 
     @Test
-    public void givenAPayment_WhenNotDuplicate_ThenShouldCommit() {
+    void givenAPayment_WhenNotDuplicate_ThenShouldCommit() {
         Long id = transactionTemplate.execute(status -> {
             Payment payment = new Payment();
             payment.setAmount(1000L);
@@ -80,7 +73,7 @@ public class ManualTransactionIntegrationTest {
     }
 
     @Test
-    public void givenAPayment_WhenMarkAsRollback_ThenShouldRollback() {
+    void givenAPayment_WhenMarkAsRollback_ThenShouldRollback() {
         transactionTemplate.execute(status -> {
             Payment payment = new Payment();
             payment.setAmount(1000L);
@@ -99,7 +92,7 @@ public class ManualTransactionIntegrationTest {
     }
 
     @Test
-    public void givenTwoPayments_WhenRefIsDuplicate_ThenShouldRollback() {
+    void givenTwoPayments_WhenRefIsDuplicate_ThenShouldRollback() {
         try {
             transactionTemplate.execute(s -> {
                 Payment first = new Payment();
@@ -126,7 +119,7 @@ public class ManualTransactionIntegrationTest {
     }
 
     @Test
-    public void givenAPayment_WhenNotExpectingAnyResult_ThenShouldCommit() {
+    void givenAPayment_WhenNotExpectingAnyResult_ThenShouldCommit() {
         transactionTemplate.execute(new TransactionCallbackWithoutResult() {
             @Override
             protected void doInTransactionWithoutResult(TransactionStatus status) {
@@ -144,7 +137,7 @@ public class ManualTransactionIntegrationTest {
     }
 
     @Test
-    public void givenAPayment_WhenUsingTxManager_ThenShouldCommit() {
+    void givenAPayment_WhenUsingTxManager_ThenShouldCommit() {
         DefaultTransactionDefinition definition = new DefaultTransactionDefinition();
         definition.setIsolationLevel(TransactionDefinition.ISOLATION_REPEATABLE_READ);
         definition.setTimeout(3);
@@ -166,13 +159,13 @@ public class ManualTransactionIntegrationTest {
                 .getResultList()).hasSize(1);
     }
 
-    static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
-        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-            TestPropertyValues
-                    .of("spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
-                            "spring.datasource.username=" + postgreSQLContainer.getUsername(),
-                            "spring.datasource.password=" + postgreSQLContainer.getPassword())
-                    .applyTo(configurableApplicationContext.getEnvironment());
-        }
+    private static PostgreSQLContainer<?> getPostgres() {
+        PostgreSQLContainer<?> pg = new PostgreSQLContainer<>("postgres:11.1")
+                .withDatabaseName("baeldung")
+                .withUsername("test")
+                .withPassword("test");
+        pg.setPortBindings(singletonList("54320:5432"));
+
+        return pg;
     }
 }
