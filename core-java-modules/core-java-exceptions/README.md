@@ -12,4 +12,4 @@ This module contains articles about core java exceptions
 - [“Sneaky Throws” in Java](https://www.baeldung.com/java-sneaky-throws)
 - [The StackOverflowError in Java](https://www.baeldung.com/java-stack-overflow-error)
 - [Checked and Unchecked Exceptions in Java](https://www.baeldung.com/java-checked-unchecked-exceptions)
-
+- [Java – Try with Resources](https://www.baeldung.com/java-try-with-resources)
