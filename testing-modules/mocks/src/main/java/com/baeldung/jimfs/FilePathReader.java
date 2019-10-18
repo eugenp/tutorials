@@ -5,12 +5,13 @@ import java.io.UncheckedIOException;
 import java.nio.file.Path;
 
 class FilePathReader {
-    String getSystemPath(Path path) {
+
+    String getSystemPath(final Path path) {
         try {
             return path
               .toRealPath()
               .toString();
-        } catch (IOException ex) {
+        } catch (final IOException ex) {
             throw new UncheckedIOException(ex);
         }
     }

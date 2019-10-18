@@ -55,7 +55,7 @@ class FileRepositoryUnitTest implements FileTestProvider {
 
     @Test
     @DisplayName("Should delete file")
-    void givenRandomSystem_whenDeletingFile_thenFileHasBeenDeleted() throws Exception {
+    void givenCurrentSystem_whenDeletingFile_thenFileHasBeenDeleted() throws Exception {
         final FileSystem fileSystem = Jimfs.newFileSystem();
         final Path resourceFilePath = fileSystem.getPath(RESOURCE_FILE_NAME);
         Files.copy(getResourceFilePath(), resourceFilePath);
