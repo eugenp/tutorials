@@ -33,7 +33,7 @@ import static org.springframework.transaction.annotation.Propagation.NOT_SUPPORT
 class ManualTransactionIntegrationTest {
 
     @Container
-    private static PostgreSQLContainer<?> pg = getPostgres();
+    private static PostgreSQLContainer<?> pg = initPostgres();
 
     @Autowired
     private PlatformTransactionManager transactionManager;
@@ -159,7 +159,7 @@ class ManualTransactionIntegrationTest {
                 .getResultList()).hasSize(1);
     }
 
-    private static PostgreSQLContainer<?> getPostgres() {
+    private static PostgreSQLContainer<?> initPostgres() {
         PostgreSQLContainer<?> pg = new PostgreSQLContainer<>("postgres:11.1")
                 .withDatabaseName("baeldung")
                 .withUsername("test")
