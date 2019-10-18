@@ -1,7 +1,8 @@
 package com.baeldung.springdoc.repository;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
@@ -11,19 +12,17 @@ import com.baeldung.springdoc.model.Book;
 @Repository
 public class BookRepository {
 
-    private List<Book> books = new ArrayList<>();
+    private Map<Long, Book> books = new HashMap<>();
 
     public Optional<Book> findById(long id) {
-        return books.stream()
-            .filter(book -> book.getId() == id)
-            .findFirst();
+        return Optional.ofNullable(books.get(id));
     }
 
     public void add(Book book) {
-        books.add(book);
+        books.put(book.getId(), book);
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public Collection<Book> getBooks() {
+        return books.values();
     }
 }
