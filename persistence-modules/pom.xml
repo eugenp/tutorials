@@ -23,6 +23,7 @@
         <module>hibernate5</module>
         <module>hibernate-ogm</module>
         <module>hibernate-mapping</module>
+        <module>hibernate-parameters</module>
         <module>influxdb</module>
         <module>java-cassandra</module>
         <module>java-cockroachdb</module>
@@ -62,7 +63,7 @@
         <module>spring-jpa</module>
         <module>spring-persistence-simple</module>
         <module>jpa-hibernate-cascade-type</module>
-	<module>r2dbc</module>
+				<module>r2dbc</module>
         <module>spring-boot-jdbi</module>
     </modules>
 </project>

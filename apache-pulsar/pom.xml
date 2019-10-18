@@ -24,8 +24,6 @@
     </dependencies>
 	
     <properties>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
-		<pulsar-client.version>2.1.1-incubating</pulsar-client.version>
+ 		<pulsar-client.version>2.1.1-incubating</pulsar-client.version>
     </properties>
 </project>

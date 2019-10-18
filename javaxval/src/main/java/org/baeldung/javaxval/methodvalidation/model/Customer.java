@@ -1,9 +1,9 @@
 package org.baeldung.javaxval.methodvalidation.model;
 
-import org.springframework.validation.annotation.Validated;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.validation.annotation.Validated;
 
 @Validated
 public class Customer {

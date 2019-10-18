@@ -1,7 +1,7 @@
 package org.baeldung.repository;
 
 import org.baeldung.boot.config.H2JpaConfig;
-import org.baeldung.model.User;
+import org.baeldung.caching.model.User;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;

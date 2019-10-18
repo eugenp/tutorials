@@ -18,18 +18,14 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <!-- dependencies used to enable admin server and UI -->
+        <!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-server -->
         <dependency>
             <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-server</artifactId>
-            <version>${spring-boot-admin-server.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-server-ui</artifactId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
             <version>${spring-boot-admin-server.version}</version>
         </dependency>
 
@@ -37,7 +33,7 @@
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-server-ui-login</artifactId>
-            <version>${spring-boot-admin-server.version}</version>
+            <version>${spring-boot-admin-server-ui-login.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -47,6 +43,7 @@
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast</artifactId>
         </dependency>
+
         <!--declare the admin server as a client, for self monitoring -->
         <dependency>
             <groupId>de.codecentric</groupId>
@@ -54,10 +51,12 @@
             <version>${spring-boot-admin-starter-client.version}</version>
         </dependency>
         <!--mail notifications -->
-        <!--<dependency> -->
-        <!--<groupId>org.springframework.boot</groupId> -->
-        <!--<artifactId>spring-boot-starter-mail</artifactId> -->
-        <!--</dependency> -->
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+         
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -82,8 +81,9 @@
     </build>
 
     <properties>
-        <spring-boot-admin-server.version>1.5.4</spring-boot-admin-server.version>
-        <spring-boot-admin-starter-client.version>1.5.4</spring-boot-admin-starter-client.version>
+        <spring-boot-admin-server.version>2.1.6</spring-boot-admin-server.version>
+        <spring-boot-admin-starter-client.version>2.1.6</spring-boot-admin-starter-client.version>
+        <spring-boot-admin-server-ui-login.version>1.5.7</spring-boot-admin-server-ui-login.version>
         <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
     </properties>
 
