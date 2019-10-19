@@ -30,19 +30,6 @@
         </repository>
     </repositories>
 
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <pluginRepositories>
         <pluginRepository>
             <id>spring-snapshots</id>
@@ -160,7 +147,6 @@
         <r2dbc-spi.version>1.0.0.M7</r2dbc-spi.version>
         <h2-r2dbc.version>1.0.0.BUILD-SNAPSHOT</h2-r2dbc.version>
         <kotlinx-coroutines.version>1.2.1</kotlinx-coroutines.version>
-        <spring-boot.version>2.2.0.M2</spring-boot.version>
     </properties>
 
 </project>
