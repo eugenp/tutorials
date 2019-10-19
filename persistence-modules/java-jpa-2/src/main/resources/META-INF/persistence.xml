@@ -144,8 +144,6 @@
             <property name="show_sql" value="true" />
             <property name="hibernate.temp.use_jdbc_metadata_defaults"
                       value="false" />
-<!--             <property name="javax.persistence.sql-load-script-source" -->
-<!--                       value="multipletables.sql" /> -->
         </properties>
     </persistence-unit>
 
