@@ -1,6 +1,6 @@
 package com.baeldung.prototype;
 
-public class Tree implements TreeCloneable {
+public class Tree implements Cloneable {
 
     private double mass;
     private double height;
@@ -36,10 +36,10 @@ public class Tree implements TreeCloneable {
     }
 
     @Override
-    public TreeCloneable createA_Clone() {
-        TreeCloneable tree = null;
+    public Tree clone() {
+        Tree tree = null;
         try {
-            tree = (TreeCloneable) super.clone();
+            tree = (Tree) super.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
