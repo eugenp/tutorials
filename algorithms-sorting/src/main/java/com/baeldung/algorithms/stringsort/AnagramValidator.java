@@ -1,4 +1,4 @@
-package com.baeldung.string.sorting;
+package com.baeldung.algorithms.stringsort;
 
 import java.util.Arrays;
 

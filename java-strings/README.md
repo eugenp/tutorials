@@ -4,12 +4,9 @@ This module contains articles about strings in Java.
 
 ### Relevant Articles:
 - [String Operations with Java Streams](https://www.baeldung.com/java-stream-operations-on-strings)
-- [Java 8 StringJoiner](https://www.baeldung.com/java-string-joiner)
-- [Quick Guide to the Java StringTokenizer](https://www.baeldung.com/java-stringtokenizer)
 - [Use char[] Array Over a String for Manipulating Passwords in Java?](https://www.baeldung.com/java-storing-passwords)
 - [Compact Strings in Java 9](https://www.baeldung.com/java-9-compact-string)
 - [Java Check a String for Lowercase/Uppercase Letter, Special Character and Digit](https://www.baeldung.com/java-lowercase-uppercase-special-character-digit-regex)
-- [Sorting a String Alphabetically in Java](https://www.baeldung.com/java-sort-string-alphabetically)
 - [String Not Empty Test Assertions in Java](https://www.baeldung.com/java-assert-string-not-empty)
 - [String Performance Hints](https://www.baeldung.com/java-string-performance)
 - [Using indexOf to Find All Occurrences of a Word in a String](https://www.baeldung.com/java-indexOf-find-string-occurrences)

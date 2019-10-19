@@ -1,4 +1,4 @@
-package com.baeldung.string.streamtokenizer;
+package com.baeldung.streamtokenizer;
 
 import java.io.*;
 import java.util.ArrayList;

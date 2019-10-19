@@ -1,12 +1,10 @@
-package com.baeldung.string.sorting;
+package com.baeldung.algorithms.stringsort;
 
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.string.sorting.AnagramValidator;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AnagramValidatorUnitTest {
     

@@ -1,8 +1,8 @@
-package com.baeldung.string.sorting;
-
-import java.util.Arrays;
+package com.baeldung.algorithms.stringsort;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
