@@ -48,7 +48,7 @@ public class Tree implements Cloneable {
 
     @Override
     public String toString() {
-        return "SomeTree [mass=" + mass + ", height=" + height + ", position=" + position + "]";
+        return "Tree [mass=" + mass + ", height=" + height + ", position=" + position + "]";
     }
 
 }
