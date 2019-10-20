@@ -1,0 +1,31 @@
+<configuration debug="false">
+
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+
+    <appender name="map" class="com.baeldung.logback.MapAppender">
+        <prefix>test</prefix>
+    </appender>
+
+    <appender name="badMap" class="com.baeldung.logback.MapAppender" />
+
+    # JSON appender
+    <appender name="json" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+            <jsonFormatter
+                class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
+                <prettyPrint>true</prettyPrint>
+            </jsonFormatter>
+            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>
+        </layout>
+    </appender>
+
+    <logger name="jsonLogger" level="TRACE">
+        <appender-ref ref="json" />
+    </logger>
+
+    <root level="debug">
+        <appender-ref ref="map" />
+        <appender-ref ref="badMap" />
+    </root>
+
+</configuration>

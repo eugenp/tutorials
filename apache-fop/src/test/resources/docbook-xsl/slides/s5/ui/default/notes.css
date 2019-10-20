@@ -1,0 +1,122 @@
+/* Following are the note styles -- edit away! */
+
+body {
+	margin: 0;
+	padding: 1.0em;
+	background: #333; 
+	color: #FFF;
+	font: 2em/1.4em 'Lucida Grande', Verdana, sans-serif;
+}
+
+div.timers {
+	background: #FFF;
+	color: #333;
+	border: 0.08em solid #222;
+	border-top-width: 1px;
+	border-left-width: 1px;
+	float: left;
+	padding: 0.2em;
+	margin: 0 0 0.5em;
+	position: relative;
+}
+
+div.timers h1 {
+	text-align: left;
+	font-size: 0.6em;
+	line-height: 1.4em;
+	background-color: #FF9;
+	padding: 0 0.75em;
+	margin: 0.25em 0 0;
+	border: 1px solid #EE8;
+}
+
+div.timers div.controls {
+	position: absolute;
+	right: 0.25em;
+	top: 0.1em;
+	line-height: 1em;
+}
+
+div.timers h1 a {
+	text-decoration: none;
+	color: #000;
+}
+
+div.timers div.controls a {
+	font-size: 0.5em;
+	padding: 0;
+	color: #330;
+}
+
+div.timers a.control {
+	position: absolute;
+	text-decoration: none;
+	padding: 0 0.25em;
+	color: #AAA;
+	outline: 0;
+}
+
+#minus {
+	left: 0.25em;
+}
+
+#plus {
+	right: 0.25em;
+}
+
+.overtime {
+	background: yellow;
+	color: red;
+	border: 3px solid;
+	padding: 0.1em 0.25em;
+	font-weight: bold;
+}
+
+div.timers h2 {
+	font-size: 0.6em;
+	line-height: 1.0em;
+	font-weight: normal;
+	margin: 0 0 -0.25em;
+	padding-top: 0.5em;
+	color: #666;
+}
+
+div.timers p {margin: 0; padding: 0 0.5em;}
+div.timers form {margin: 0;}
+
+div.timers span.clock {
+	font-family: monospace;
+}
+
+div.timers ul {margin: 0; padding: 0; list-style: none;}
+div.timers li {float: left; width: 5em; margin: 0; padding: 0 0.5em;
+  text-align: center;}
+
+div#elapsed {width: 12.1em;}
+div#remaining {clear: left; width: 12.1em;}
+div#remaining p {text-align: center;}
+
+#slide,
+#next,
+#notes,
+#nextnotes {
+	font-size: 0.75em;
+	line-height: 1.4em;
+	clear: left;
+/*	max-width: 30.0em; */
+	text-shadow: 0.1em 0.1em 0.1em #111;
+}
+
+#next {margin-top: 2.5em;}
+#next, #nextnotes {
+	color: #999;
+	font-size: 0.66em;
+}
+
+em.disclaimer {
+	color: #666;
+}
+
+div.collapsed h1 {display: block; font-size: 0.33em;}
+div.collapsed h1 a {display: inline;}
+div.collapsed * {display: none;}

@@ -1,0 +1,32 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="menuchoice.separator">
+<refmeta>
+<refentrytitle>menuchoice.separator</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>menuchoice.separator</refname>
+<refpurpose>Separator between items of a <tag>menuchoice</tag>
+other than <tag>guimenuitem</tag> and
+<tag>guisubmenu</tag></refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="menuchoice.separator.frag">
+<xsl:param name="menuchoice.separator">+</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Separator used to connect items of a <tag>menuchoice</tag> other
+than <tag>guimenuitem</tag> and <tag>guisubmenu</tag>. The latter
+elements are linked with <parameter>menuchoice.menu.separator</parameter>.
+</para>
+
+</refsection>
+</refentry>
