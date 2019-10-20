@@ -14,6 +14,4 @@ This module contains articles about Kotlin Libraries.
 - [Introduction to Arrow in Kotlin](https://www.baeldung.com/kotlin-arrow)
 - [Kotlin with Ktor](https://www.baeldung.com/kotlin-ktor)
 - [REST API With Kotlin and Kovert](https://www.baeldung.com/kotlin-kovert)
-- [MockK: A Mocking Library for Kotlin](https://www.baeldung.com/kotlin-mockk)
-- [Kotlin Immutable Collections](https://www.baeldung.com/kotlin-immutable-collections)
 - More articles: [[next -->]](/kotlin-libraries-2)

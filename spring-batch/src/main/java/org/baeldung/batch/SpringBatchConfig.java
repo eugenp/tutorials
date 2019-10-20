@@ -86,9 +86,14 @@ public class SpringBatchConfig {
     }
 
     @Bean
-    protected Step step1(@Qualifier("itemProcessor") ItemProcessor<Transaction, Transaction> processor,
-                         ItemWriter<Transaction> writer) throws ParseException {
-        return stepBuilderFactory.get("step1").<Transaction, Transaction>chunk(10).reader(itemReader(inputCsv)).processor(processor).writer(writer).build();
+    protected Step step1(@Qualifier("itemProcessor") ItemProcessor<Transaction, Transaction> processor, ItemWriter<Transaction> writer) throws ParseException {
+        return stepBuilderFactory
+                .get("step1")
+                .<Transaction, Transaction> chunk(10)
+                .reader(itemReader(inputCsv))
+                .processor(processor)
+                .writer(writer)
+                .build();
     }
 
     @Bean(name = "firstBatchJob")

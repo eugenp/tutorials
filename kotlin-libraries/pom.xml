@@ -129,25 +129,7 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-collections-immutable -->
-        <dependency>
-            <groupId>org.jetbrains.kotlinx</groupId>
-            <artifactId>kotlinx-collections-immutable</artifactId>
-            <version>${kotlinx-collections-immutable.version}</version>
-        </dependency>
 
-        <!-- MockK dependencies-->
-        <dependency>
-            <groupId>io.mockk</groupId>
-            <artifactId>mockk</artifactId>
-            <version>${mockk.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
@@ -185,13 +167,10 @@
         <junit.vintage.version>5.2.0</junit.vintage.version>
         <assertj.version>3.10.0</assertj.version>
         <exposed.version>0.10.4</exposed.version>
-        <mockk.version>1.9.3</mockk.version>
-        <guava.version>27.1-jre</guava.version>
         <kovenant.version>3.3.0</kovenant.version>
         <byte-buddy.version>1.8.13</byte-buddy.version>
         <objenesis.version>2.6</objenesis.version>
         <rxkotlin.version>2.3.0</rxkotlin.version>
-        <kotlinx-collections-immutable.version>0.1</kotlinx-collections-immutable.version>
         <arrow-core.version>0.7.3</arrow-core.version>
     </properties>
 
