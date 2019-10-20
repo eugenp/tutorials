@@ -1,17 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
-    <artifactId>java-dates</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
-    <name>java-dates</name>
+    <artifactId>core-java-datetime-string</artifactId>
+    <version>${project.parent.version}</version>
+    <name>core-java-datetime-string</name>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-java</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-java</relativePath>
+        <relativePath>../../parent-java</relativePath>
     </parent>
 
     <dependencies>
@@ -19,6 +18,12 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>${commons-validator.version}</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
@@ -46,7 +51,7 @@
     </dependencies>
 
     <build>
-        <finalName>java-dates</finalName>
+        <finalName>core-java-datetime-string</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -68,6 +73,7 @@
     </build>
 
     <properties>
+        <commons-validator.version>1.6</commons-validator.version>
         <joda-time.version>2.10</joda-time.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
