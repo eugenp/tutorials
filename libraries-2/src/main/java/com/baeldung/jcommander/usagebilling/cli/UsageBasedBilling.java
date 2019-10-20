@@ -29,23 +29,27 @@ public class UsageBasedBilling {
         try {
             main.parse(args);
             parsedCmdStr = main.getParsedCommand();
+            
+            switch (parsedCmdStr) {
+                case Constants.SUBMIT_CMD:
+                    if (this.submitUsageCmd.isHelp()) {
+                        getSubCommandHandle(Constants.SUBMIT_CMD).usage();
+                    }
+                    System.out.println("Parsing usage request...");
+                    this.submitUsageCmd.submit();
+                    break;
 
-            if (Constants.SUBMIT_CMD.equalsIgnoreCase(parsedCmdStr)) {
-                if (this.submitUsageCmd.isHelp()) {
-                    getSubCommandHandle(Constants.SUBMIT_CMD).usage();
-                }
-                System.out.println("Parsing usage request...");
-                this.submitUsageCmd.submit();
-
-            } else if (Constants.FETCH_CMD.equalsIgnoreCase(parsedCmdStr)) {
-                if (this.fetchChargesCmd.isHelp()) {
-                    getSubCommandHandle(Constants.SUBMIT_CMD).usage();
-                }
-                System.out.println("Preparing fetch query...");
-                this.fetchChargesCmd.fetch();
-
-            } else {
-                System.err.println("Invalid command: " + parsedCmdStr);
+                case Constants.FETCH_CMD:
+                    if (this.fetchChargesCmd.isHelp()) {
+                        getSubCommandHandle(Constants.SUBMIT_CMD).usage();
+                    }
+                    System.out.println("Preparing fetch query...");
+                    this.fetchChargesCmd.fetch();
+                    
+                    break;
+                    
+                default:
+                    System.err.println("Invalid command: " + parsedCmdStr);
             }
         } catch (ParameterException e) {
             System.err.println(e.getLocalizedMessage());
