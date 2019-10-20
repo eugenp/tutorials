@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: refentry.rnc 8931 2010-10-20 13:29:20Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
+  <start combine="choice">
+    <choice>
+      <ref name="db.refentry"/>
+      <ref name="db.refsection"/>
+      <ref name="db.refsynopsisdiv"/>
+    </choice>
+  </start>
+  <define name="db.divisions" combine="choice">
+    <ref name="db.reference"/>
+  </define>
+  <define name="db.part.components" combine="choice">
+    <choice>
+      <ref name="db.refentry"/>
+      <ref name="db.reference"/>
+    </choice>
+  </define>
+  <define name="db.toplevel.sections" combine="choice">
+    <oneOrMore>
+      <ref name="db.refentry"/>
+    </oneOrMore>
+  </define>
+  <define name="db.recursive.sections" combine="choice">
+    <oneOrMore>
+      <ref name="db.refentry"/>
+    </oneOrMore>
+  </define>
+  <define name="db.toplevel.refsection">
+    <oneOrMore>
+      <ref name="db.refsection"/>
+    </oneOrMore>
+  </define>
+  <define name="db.secondlevel.refsection">
+    <oneOrMore>
+      <ref name="db.refsection"/>
+    </oneOrMore>
+  </define>
+  <!-- ====================================================================== -->
+  <define name="db.reference.components">
+    <ref name="db.refentry"/>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>reference</db:refname>
+    <db:refpurpose>A collection of reference entries</db:refpurpose>
+    <define name="db.reference.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.reference.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.reference.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.reference.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.reference.status.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.reference.info">
+      <ref name="db._info.title.req"/>
+    </define>
+    <define name="db.reference">
+      <element name="reference">
+        <ref name="db.reference.attlist"/>
+        <ref name="db.reference.info"/>
+        <optional>
+          <ref name="db.partintro"/>
+        </optional>
+        <oneOrMore>
+          <ref name="db.reference.components"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>refentry</db:refname>
+    <db:refpurpose>A reference page (originally a UNIX man-style reference page)</db:refpurpose>
+    <define name="db.refentry.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.refentry.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.refentry.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.refentry.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.refentry.status.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.refentry.info">
+      <ref name="db._info.title.forbidden"/>
+    </define>
+    <define name="db.refentry">
+      <element name="refentry">
+        <ref name="db.refentry.attlist"/>
+        <zeroOrMore>
+          <ref name="db.indexterm"/>
+        </zeroOrMore>
+        <ref name="db.refentry.info"/>
+        <optional>
+          <ref name="db.refmeta"/>
+        </optional>
+        <oneOrMore>
+          <ref name="db.refnamediv"/>
+        </oneOrMore>
+        <optional>
+          <ref name="db.refsynopsisdiv"/>
+        </optional>
+        <ref name="db.toplevel.refsection"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>refmeta</db:refname>
+    <db:refpurpose>Meta-information for a reference entry</db:refpurpose>
+    <define name="db.refmeta.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.refmeta.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.refmeta.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.refmeta">
+      <element name="refmeta">
+        <ref name="db.refmeta.attlist"/>
+        <zeroOrMore>
+          <ref name="db.indexterm"/>
+        </zeroOrMore>
+        <ref name="db.refentrytitle"/>
+        <optional>
+          <ref name="db.manvolnum"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="db.refmiscinfo"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="db.indexterm"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <ctrl:other-attribute name="db.refmiscinfo.class.attribute" enum-name="db.refmiscinfo.class-enum.attribute" other-name="db.refmiscinfo.class-other.attributes"/>
+  <define name="db.refmiscinfo.class.enumeration">
+    <choice>
+      <value>source</value>
+      <a:documentation>The name of the software product or component to which this topic applies</a:documentation>
+      <value>version</value>
+      <a:documentation>The version of the software product or component to which this topic applies</a:documentation>
+      <value>manual</value>
+      <a:documentation>The section title of the reference page (e.g., User Commands)</a:documentation>
+      <value>sectdesc</value>
+      <a:documentation>The section title of the reference page (believed synonymous with "manual" but in wide use)</a:documentation>
+      <value>software</value>
+      <a:documentation>The name of the software product or component to which this topic applies (e.g., SunOS x.y; believed synonymous with "source" but in wide use)</a:documentation>
+    </choice>
+  </define>
+  <define name="db.refmiscinfo.class-enum.attribute">
+    <optional>
+      <attribute name="class">
+        <db:refpurpose>Identifies the kind of miscellaneous information</db:refpurpose>
+        <ref name="db.refmiscinfo.class.enumeration"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="db.refmiscinfo.class-other.attribute">
+    <attribute name="otherclass">
+      <db:refpurpose>Identifies the nature of non-standard miscellaneous information</db:refpurpose>
+    </attribute>
+  </define>
+  <define name="db.refmiscinfo.class-other.attributes">
+    <interleave>
+      <attribute name="class">
+        <db:refpurpose>Identifies the kind of miscellaneious information</db:refpurpose>
+        <value>other</value>
+        <a:documentation>Indicates that the information is some 'other' kind.</a:documentation>
+      </attribute>
+      <ref name="db.refmiscinfo.class-other.attribute"/>
+    </interleave>
+  </define>
+  <define name="db.refmiscinfo.class.attribute">
+    <choice>
+      <ref name="db.refmiscinfo.class-enum.attribute"/>
+      <ref name="db.refmiscinfo.class-other.attributes"/>
+    </choice>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>refmiscinfo</db:refname>
+    <db:refpurpose>Meta-information for a reference entry other than the title and volume number</db:refpurpose>
+    <define name="db.refmiscinfo.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.refmiscinfo.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.refmiscinfo.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.refmiscinfo.class.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.refmiscinfo">
+      <element name="refmiscinfo">
+        <ref name="db.refmiscinfo.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>refnamediv</db:refname>
+    <db:refpurpose>The name, purpose, and classification of a reference page</db:refpurpose>
+    <define name="db.refnamediv.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.refnamediv.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.refnamediv.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.refnamediv">
+      <element name="refnamediv">
+        <ref name="db.refnamediv.attlist"/>
+        <optional>
+          <ref name="db.refdescriptor"/>
+        </optional>
+        <oneOrMore>
+          <ref name="db.refname"/>
+        </oneOrMore>
+        <ref name="db.refpurpose"/>
+        <zeroOrMore>
+          <ref name="db.refclass"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>refdescriptor</db:refname>
+    <db:refpurpose>A description of the topic of a reference page</db:refpurpose>
+    <define name="db.refdescriptor.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.refdescriptor.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.refdescriptor.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.refdescriptor">
+      <element name="refdescriptor">
+        <ref name="db.refdescriptor.attlist"/>
+        <zeroOrMore>
+          <ref name="db.all.inlines"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>refname</db:refname>
+    <db:refpurpose>The name of (one of) the subject(s) of a reference page</db:refpurpose>
+    <define name="db.refname.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.refname.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.refname.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.refname">
+      <element name="refname">
+        <ref name="db.refname.attlist"/>
+        <zeroOrMore>
+          <ref name="db.all.inlines"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>refpurpose</db:refname>
+    <db:refpurpose>A short (one sentence) synopsis of the topic of a reference page</db:refpurpose>
+    <define name="db.refpurpose.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.refpurpose.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.refpurpose.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.refpurpose">
+      <element name="refpurpose">
+        <ref name="db.refpurpose.attlist"/>
+        <zeroOrMore>
+          <ref name="db.all.inlines"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>refclass</db:refname>
+    <db:refpurpose>The scope or other indication of applicability of a reference entry</db:refpurpose>
+    <define name="db.refclass.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.refclass.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.refclass.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.refclass">
+      <element name="refclass">
+        <ref name="db.refclass.attlist"/>
+        <zeroOrMore>
+          <choice>
+            <text/>
+            <ref name="db.application"/>
+          </choice>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>refsynopsisdiv</db:refname>
+    <db:refpurpose>A syntactic synopsis of the subject of the reference page</db:refpurpose>
+    <define name="db.refsynopsisdiv.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.refsynopsisdiv.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.refsynopsisdiv.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.refsynopsisdiv.info">
+      <ref name="db._info"/>
+    </define>
+    <define name="db.refsynopsisdiv">
+      <element name="refsynopsisdiv">
+        <ref name="db.refsynopsisdiv.attlist"/>
+        <ref name="db.refsynopsisdiv.info"/>
+        <choice>
+          <group>
+            <oneOrMore>
+              <ref name="db.all.blocks"/>
+            </oneOrMore>
+            <optional>
+              <ref name="db.secondlevel.refsection"/>
+            </optional>
+          </group>
+          <ref name="db.secondlevel.refsection"/>
+        </choice>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>refsection</db:refname>
+    <db:refpurpose>A recursive section in a refentry</db:refpurpose>
+    <define name="db.refsection.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.refsection.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.refsection.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.refsection.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.refsection.status.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.refsection.info">
+      <ref name="db._info.title.req"/>
+    </define>
+    <define name="db.refsection">
+      <element name="refsection">
+        <ref name="db.refsection.attlist"/>
+        <ref name="db.refsection.info"/>
+        <choice>
+          <group>
+            <oneOrMore>
+              <ref name="db.all.blocks"/>
+            </oneOrMore>
+            <zeroOrMore>
+              <ref name="db.refsection"/>
+            </zeroOrMore>
+          </group>
+          <oneOrMore>
+            <ref name="db.refsection"/>
+          </oneOrMore>
+        </choice>
+      </element>
+    </define>
+  </div>
+</grammar>

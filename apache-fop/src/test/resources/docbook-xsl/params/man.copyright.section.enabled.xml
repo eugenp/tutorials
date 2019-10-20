@@ -1,0 +1,46 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.copyright.section.enabled">
+<refmeta>
+<refentrytitle>man.copyright.section.enabled</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>man.copyright.section.enabled</refname>
+<refpurpose>Display auto-generated COPYRIGHT section?</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<src:fragment xml:id="man.copyright.section.enabled.frag">
+<xsl:param name="man.copyright.section.enabled">1</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+<refsection><info><title>Description</title></info>
+
+<para>If the value of
+<parameter>man.copyright.section.enabled</parameter> is non-zero
+(the default), then a <literal>COPYRIGHT</literal> section is
+generated near the end of each man page. The output of the
+<literal>COPYRIGHT</literal> section is assembled from any
+<tag>copyright</tag> and <tag>legalnotice</tag> metadata found in
+the contents of the child <tag>info</tag> or
+<tag>refentryinfo</tag> (if any) of the <tag>refentry</tag>
+itself, or from any <tag>copyright</tag> and
+<tag>legalnotice</tag> metadata that may appear in <tag>info</tag>
+contents of any ancestors of the <tag>refentry</tag>.</para>
+
+<para>If the value of
+<parameter>man.copyright.section.enabled</parameter> is zero, the
+the auto-generated <literal>COPYRIGHT</literal> section is
+suppressed.</para>
+
+<para>Set the value of
+  <parameter>man.copyright.section.enabled</parameter> to zero if
+  you want to have a manually created <literal>COPYRIGHT</literal>
+  section in your source, and you want it to appear in output
+  instead of the auto-generated <literal>COPYRIGHT</literal>
+  section.</para>
+</refsection>
+</refentry>

@@ -1,0 +1,43 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="indexService" class="com.baeldung.di.spring.IndexService" />
+    
+    <bean id="messageService" class="com.baeldung.di.spring.MessageService">
+    	<constructor-arg value="${message.value}" />
+    </bean>
+    
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="com.baeldung.di.spring.properties" />
+	</bean>
+	
+	<bean id="messageServiceFromStaticFactory" class="com.baeldung.di.spring.StaticServiceFactory"
+        factory-method="getService">
+    	<constructor-arg value="1" />
+	</bean>
+	
+	<bean id="indexServiceFactory" class="com.baeldung.di.spring.InstanceServiceFactory" />
+	
+	<bean id="messageServiceFromInstanceFactory" class="com.baeldung.di.spring.InstanceServiceFactory"
+        factory-method="getService" factory-bean="indexServiceFactory">
+    	<constructor-arg value="1" />
+	</bean>
+    
+    <bean id="indexApp" class="com.baeldung.di.spring.IndexApp">
+    	<property name="service" ref="indexService" />
+    </bean>
+    
+    <bean id="indexAppWithStaticFactory" class="com.baeldung.di.spring.IndexApp">
+    	<property name="service" ref="messageServiceFromStaticFactory" />
+    </bean>
+    
+    <bean id="indexAppWithFactoryMethod" class="com.baeldung.di.spring.IndexApp">
+    	<property name="service" ref="messageServiceFromInstanceFactory" />
+    </bean>
+    
+    <bean id="messageWorldApp" class="com.baeldung.di.spring.MessageApp">
+    	<constructor-arg ref="messageService" />
+    </bean>
+</beans>
