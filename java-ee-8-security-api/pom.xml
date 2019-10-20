@@ -14,6 +14,13 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
+    <modules>
+        <module>app-auth-basic-store-db</module>
+        <module>app-auth-form-store-ldap</module>
+        <module>app-auth-custom-form-store-custom</module>
+        <module>app-auth-custom-no-store</module>
+    </modules>
+
     <dependencies>
     
         <dependency>
@@ -58,17 +65,9 @@
         </plugins>
     </build>
 
-    <modules>
-        <module>app-auth-basic-store-db</module>
-        <module>app-auth-form-store-ldap</module>
-        <module>app-auth-custom-form-store-custom</module>
-        <module>app-auth-custom-no-store</module>
-    </modules>
-
     <properties>
         <defaultHttpPort>9080</defaultHttpPort>
         <defaultHttpsPort>9443</defaultHttpsPort>
-
         <javaee-version>8.0</javaee-version>
         <liberty-maven-plugin.version>2.3</liberty-maven-plugin.version>
         <openliberty-runtime.version>18.0.0.1</openliberty-runtime.version>
