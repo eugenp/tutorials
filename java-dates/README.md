@@ -30,3 +30,4 @@
 - [ZoneOffset in Java](https://www.baeldung.com/java-zone-offset)
 - [Differences Between ZonedDateTime and OffsetDateTime](https://www.baeldung.com/java-zoneddatetime-offsetdatetime)
 - [Introduction to Joda-Time](https://www.baeldung.com/joda-time)
+- [Convert String to Date in Java](https://www.baeldung.com/java-string-to-date)

@@ -1,3 +1,8 @@
+## Algorithms - Miscellaneous
+
+This module contains articles about algorithms. Some classes of algorithms, e.g., [sorting](/algorithms-sorting) and
+[genetic algorithms](/algorithms-genetic), have their own dedicated modules. 
+
 ## Relevant Articles:
 
 - [Java Two Pointer Technique](https://www.baeldung.com/java-two-pointer-technique)
@@ -9,3 +14,6 @@
 - [A Guide to the Folding Technique in Java](https://www.baeldung.com/folding-hashing-technique)
 - [Creating a Triangle with for Loops in Java](https://www.baeldung.com/java-print-triangle)
 - [Efficient Word Frequency Calculator in Java](https://www.baeldung.com/java-word-frequency)
+- [Interpolation Search in Java](https://www.baeldung.com/java-interpolation-search)
+- [The K-Means Clustering Algorithm in Java](https://www.baeldung.com/java-k-means-clustering-algorithm)
+- More articles: [[<-- prev]](/algorithms-miscellaneous-2) [[next -->]](/algorithms-miscellaneous-4)
