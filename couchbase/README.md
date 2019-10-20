@@ -1,4 +1,6 @@
-## Couchbase SDK Tutorial Project
+## Couchbase
+
+This module contains articles about Couchbase
 
 ### Relevant Articles:
 - [Introduction to Couchbase SDK for Java](https://www.baeldung.com/java-couchbase-sdk)
