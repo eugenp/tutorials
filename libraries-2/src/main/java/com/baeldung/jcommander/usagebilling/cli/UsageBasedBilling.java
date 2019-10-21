@@ -34,19 +34,19 @@ public class UsageBasedBilling {
             
             switch (parsedCmdStr) {
                 case SUBMIT_CMD:
-                    if (this.submitUsageCmd.isHelp()) {
+                    if (submitUsageCmd.isHelp()) {
                         getSubCommandHandle(SUBMIT_CMD).usage();
                     }
                     System.out.println("Parsing usage request...");
-                    this.submitUsageCmd.submit();
+                    submitUsageCmd.submit();
                     break;
 
                 case FETCH_CMD:
-                    if (this.fetchChargesCmd.isHelp()) {
+                    if (fetchChargesCmd.isHelp()) {
                         getSubCommandHandle(SUBMIT_CMD).usage();
                     }
                     System.out.println("Preparing fetch query...");
-                    this.fetchChargesCmd.fetch();
+                    fetchChargesCmd.fetch();
                     
                     break;
                     
