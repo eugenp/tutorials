@@ -17,9 +17,9 @@ Apache Felix
 
 ### Start
 
-Download Apache Felix Framework Distribution
+Download Apache Felix Framework Distribution 
 from <https://felix.apache.org/downloads.cgi>
-org.apache.felix.main.distribution-5.6.8
+org.apache.felix.main.distribution-5.6.8 
 
 No! The Apache Karaf container is best.
 Download it from: <https://karaf.apache.org/download.html>
@@ -33,12 +33,12 @@ Then run
 
 Unzip, pay attention to the files not being clipped(!).
 
-    system:exit
-
+    system:exit 
+    
 exit!
 
     shutdown -h
-
+ 
 or `^D`
 
 ### clean start
@@ -69,7 +69,7 @@ can be logged to console
 ### Bundle deploy
 
     bundle:install mvn:com.baeldung/osgi-intro-sample-activator/1.0-SNAPSHOT
-
+    
     install mvn:com.baeldung/osgi-intro-sample-service/1.0-SNAPSHOT
     install mvn:com.baeldung/osgi-intro-sample-client/1.0-SNAPSHOT
 
@@ -88,4 +88,7 @@ Oxygen.1 	Wed, 6 Sep 2017 -- 17:00 (-0400)
 
 org.eclipse.osgi_3.12.1.v20170821-1548.jar
 
- = = NOT GOOD = =
+ = = NOT GOOD = = 
+
+
+
