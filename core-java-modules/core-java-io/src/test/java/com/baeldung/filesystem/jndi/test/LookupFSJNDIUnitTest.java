@@ -9,12 +9,12 @@ import java.io.File;
 
 import static org.junit.Assert.assertNotNull;
 
-public class LookupFSJNDIIntegrationTest {
+public class LookupFSJNDIUnitTest {
     LookupFSJNDI fsjndi;
     InitialContext ctx = null;
     final String FILENAME = "test.find";
 
-    public LookupFSJNDIIntegrationTest() {
+    public LookupFSJNDIUnitTest() {
         try {
             fsjndi = new LookupFSJNDI();
         } catch (NamingException e) {
