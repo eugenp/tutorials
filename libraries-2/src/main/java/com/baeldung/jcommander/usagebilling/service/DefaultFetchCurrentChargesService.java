@@ -52,8 +52,7 @@ class DefaultFetchCurrentChargesService implements FetchCurrentChargesService {
     private List<LineItem> mockLineItems(List<String> subscriptions) {
         return subscriptions
           .stream()
-          .map(subscription -> LineItem
-            .builder()
+          .map(subscription -> LineItem.builder()
             .subscriptionId(subscription)
             .quantity(current().nextInt(20))
             .amount(new BigDecimal(current().nextDouble(1_000)))
@@ -63,9 +62,7 @@ class DefaultFetchCurrentChargesService implements FetchCurrentChargesService {
 
     private List<String> mockSubscriptions() {
         String[] subscriptions = new String[5];
-        fill(subscriptions, UUID
-          .randomUUID()
-          .toString());
+        fill(subscriptions, UUID.randomUUID().toString());
         return asList(subscriptions);
     }
 }

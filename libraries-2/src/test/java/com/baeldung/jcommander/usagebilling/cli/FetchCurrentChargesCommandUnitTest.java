@@ -1,23 +1,19 @@
 package com.baeldung.jcommander.usagebilling.cli;
 
 import com.beust.jcommander.JCommander;
-import org.junit.Before;
+import org.hamcrest.collection.IsIterableContainingInOrder;
 import org.junit.Test;
 
 import static java.util.Arrays.asList;
+import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class FetchCurrentChargesCommandUnitTest {
 
-    private JCommander jc;
-
-    @Before
-    public void setup() {
-        jc = JCommander
-          .newBuilder()
-          .addObject(new FetchCurrentChargesCommand())
-          .build();
-    }
+    private JCommander jc = JCommander.newBuilder()
+      .addObject(new FetchCurrentChargesCommand())
+      .build();
 
     @Test
     public void whenParsedMultipleSubscriptionsParameter_thenParameterSubscriptionsIsPopulated() {
@@ -49,10 +45,8 @@ public class FetchCurrentChargesCommandUnitTest {
           "-S", "subscriptionA001:subscriptionA002:subscriptionA003",
         });
 
-        assertEquals(
-          asList("subscriptionA001", "subscriptionA002", "subscriptionA003"),
-          cmd.getSubscriptionIds()
-        );
+        assertThat(cmd.getSubscriptionIds(), 
+          contains("subscriptionA001", "subscriptionA002", "subscriptionA003"));
     }
 
     @Test

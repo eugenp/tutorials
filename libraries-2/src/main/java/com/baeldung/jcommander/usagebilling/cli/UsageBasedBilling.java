@@ -16,8 +16,7 @@ public class UsageBasedBilling {
     public UsageBasedBilling() {
         this.submitUsageCmd = new SubmitUsageCommand();
         this.fetchChargesCmd = new FetchCurrentChargesCommand();
-        jCommander = JCommander
-          .newBuilder()
+        jCommander = JCommander.newBuilder()
           .addObject(this)
           .addCommand(submitUsageCmd)
           .addCommand(fetchChargesCmd)
@@ -66,9 +65,7 @@ public class UsageBasedBilling {
     }
 
     private JCommander getSubCommandHandle(String command) {
-        JCommander cmd = jCommander
-          .getCommands()
-          .get(command);
+        JCommander cmd = jCommander.getCommands().get(command);
 
         if (cmd == null) {
             System.err.println("Invalid command: " + command);

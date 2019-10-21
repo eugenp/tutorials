@@ -55,8 +55,7 @@ class FetchCurrentChargesCommand {
     private boolean itemized;
 
     void fetch() {
-        CurrentChargesRequest req = CurrentChargesRequest
-          .builder()
+        CurrentChargesRequest req = CurrentChargesRequest.builder()
           .customerId(customerId)
           .subscriptionIds(subscriptionIds)
           .itemized(itemized)

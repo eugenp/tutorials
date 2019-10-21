@@ -81,8 +81,7 @@ class SubmitUsageCommand {
 
     void submit() {
         
-        UsageRequest req = UsageRequest
-          .builder()
+        UsageRequest req = UsageRequest.builder()
           .customerId(customerId)
           .subscriptionId(subscriptionId)
           .pricingType(pricingType)

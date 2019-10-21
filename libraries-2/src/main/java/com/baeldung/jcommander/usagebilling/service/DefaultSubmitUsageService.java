@@ -11,8 +11,6 @@ class DefaultSubmitUsageService implements SubmitUsageService {
         System.out.println("Submitting usage..." + request);
 
         System.out.println("Submitted usage successfully...");
-        return UUID
-          .randomUUID()
-          .toString();
+        return UUID.randomUUID().toString();
     }
 }
