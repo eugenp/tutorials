@@ -6,42 +6,45 @@ import com.beust.jcommander.UnixStyleUsageFormatter;
 
 public class UsageBasedBilling {
 
-    private JCommander main;
+    static final String SUBMIT_CMD = "submit";
+    static final String FETCH_CMD = "fetch";
+
+    private JCommander jCommander;
     private SubmitUsageCommand submitUsageCmd;
     private FetchCurrentChargesCommand fetchChargesCmd;
 
     public UsageBasedBilling() {
         this.submitUsageCmd = new SubmitUsageCommand();
         this.fetchChargesCmd = new FetchCurrentChargesCommand();
-        main = JCommander
+        jCommander = JCommander
           .newBuilder()
           .addObject(this)
           .addCommand(submitUsageCmd)
           .addCommand(fetchChargesCmd)
           .build();
 
-        setUsageFormatter(Constants.SUBMIT_CMD);
-        setUsageFormatter(Constants.FETCH_CMD);
+        setUsageFormatter(SUBMIT_CMD);
+        setUsageFormatter(FETCH_CMD);
     }
 
     public void run(String[] args) {
         String parsedCmdStr;
         try {
-            main.parse(args);
-            parsedCmdStr = main.getParsedCommand();
+            jCommander.parse(args);
+            parsedCmdStr = jCommander.getParsedCommand();
             
             switch (parsedCmdStr) {
-                case Constants.SUBMIT_CMD:
+                case SUBMIT_CMD:
                     if (this.submitUsageCmd.isHelp()) {
-                        getSubCommandHandle(Constants.SUBMIT_CMD).usage();
+                        getSubCommandHandle(SUBMIT_CMD).usage();
                     }
                     System.out.println("Parsing usage request...");
                     this.submitUsageCmd.submit();
                     break;
 
-                case Constants.FETCH_CMD:
+                case FETCH_CMD:
                     if (this.fetchChargesCmd.isHelp()) {
-                        getSubCommandHandle(Constants.SUBMIT_CMD).usage();
+                        getSubCommandHandle(SUBMIT_CMD).usage();
                     }
                     System.out.println("Preparing fetch query...");
                     this.fetchChargesCmd.fetch();
@@ -53,17 +56,17 @@ public class UsageBasedBilling {
             }
         } catch (ParameterException e) {
             System.err.println(e.getLocalizedMessage());
-            parsedCmdStr = main.getParsedCommand();
+            parsedCmdStr = jCommander.getParsedCommand();
             if (parsedCmdStr != null) {
                 getSubCommandHandle(parsedCmdStr).usage();
             } else {
-                main.usage();
+                jCommander.usage();
             }
         }
     }
 
     private JCommander getSubCommandHandle(String command) {
-        JCommander cmd = main
+        JCommander cmd = jCommander
           .getCommands()
           .get(command);
 
@@ -76,11 +79,5 @@ public class UsageBasedBilling {
     private void setUsageFormatter(String subCommand) {
         JCommander cmd = getSubCommandHandle(subCommand);
         cmd.setUsageFormatter(new UnixStyleUsageFormatter(cmd));
-    }
-
-    static class Constants {
-
-        static final String SUBMIT_CMD = "submit";
-        static final String FETCH_CMD = "fetch";
     }
 }

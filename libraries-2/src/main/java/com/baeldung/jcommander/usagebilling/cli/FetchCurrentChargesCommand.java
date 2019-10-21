@@ -1,6 +1,5 @@
 package com.baeldung.jcommander.usagebilling.cli;
 
-import com.baeldung.jcommander.usagebilling.cli.UsageBasedBilling.Constants;
 import com.baeldung.jcommander.usagebilling.cli.splitter.ColonParameterSplitter;
 import com.baeldung.jcommander.usagebilling.cli.validator.UUIDValidator;
 import com.baeldung.jcommander.usagebilling.model.CurrentChargesRequest;
@@ -12,10 +11,11 @@ import lombok.Getter;
 
 import java.util.List;
 
+import static com.baeldung.jcommander.usagebilling.cli.UsageBasedBilling.*;
 import static com.baeldung.jcommander.usagebilling.service.FetchCurrentChargesService.getDefault;
 
 @Parameters(
-  commandNames = { Constants.FETCH_CMD },
+  commandNames = { FETCH_CMD },
   commandDescription = "Fetch charges for a customer in the current month, can be itemized or aggregated"
 )
 @Getter
@@ -57,9 +57,9 @@ class FetchCurrentChargesCommand {
     void fetch() {
         CurrentChargesRequest req = CurrentChargesRequest
           .builder()
-          .customerId(this.customerId)
-          .subscriptionIds(this.subscriptionIds)
-          .itemized(this.itemized)
+          .customerId(customerId)
+          .subscriptionIds(subscriptionIds)
+          .itemized(itemized)
           .build();
 
         CurrentChargesResponse response = service.fetch(req);

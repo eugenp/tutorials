@@ -1,24 +1,22 @@
 package com.baeldung.jcommander.usagebilling.cli;
 
-import com.baeldung.jcommander.usagebilling.cli.UsageBasedBilling.Constants;
 import com.baeldung.jcommander.usagebilling.cli.converter.ISO8601TimestampConverter;
 import com.baeldung.jcommander.usagebilling.cli.validator.UUIDValidator;
 import com.baeldung.jcommander.usagebilling.model.UsageRequest;
 import com.baeldung.jcommander.usagebilling.model.UsageRequest.PricingType;
 import com.baeldung.jcommander.usagebilling.service.SubmitUsageService;
-import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
-import com.beust.jcommander.converters.BigDecimalConverter;
 import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 
+import static com.baeldung.jcommander.usagebilling.cli.UsageBasedBilling.*;
 import static com.baeldung.jcommander.usagebilling.service.SubmitUsageService.getDefault;
 
 @Parameters(
-  commandNames = { Constants.SUBMIT_CMD },
+  commandNames = { SUBMIT_CMD },
   commandDescription = "Submit usage for a given customer and subscription, accepts one usage item"
 )
 @Getter
@@ -85,12 +83,12 @@ class SubmitUsageCommand {
         
         UsageRequest req = UsageRequest
           .builder()
-          .customerId(this.customerId)
-          .subscriptionId(this.subscriptionId)
-          .pricingType(this.pricingType)
-          .quantity(this.quantity)
-          .timestamp(this.timestamp)
-          .price(this.price)
+          .customerId(customerId)
+          .subscriptionId(subscriptionId)
+          .pricingType(pricingType)
+          .quantity(quantity)
+          .timestamp(timestamp)
+          .price(price)
           .build();
 
         String reqId = service.submit(req);

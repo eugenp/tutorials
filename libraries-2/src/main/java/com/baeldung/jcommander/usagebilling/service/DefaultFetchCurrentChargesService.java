@@ -17,9 +17,6 @@ import static java.util.stream.Collectors.toList;
 
 class DefaultFetchCurrentChargesService implements FetchCurrentChargesService {
 
-    DefaultFetchCurrentChargesService() {
-    }
-
     @Override
     public CurrentChargesResponse fetch(CurrentChargesRequest request) {
         List<String> subscriptions = request.getSubscriptionIds();

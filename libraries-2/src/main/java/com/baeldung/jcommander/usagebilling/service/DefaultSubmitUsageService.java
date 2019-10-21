@@ -6,9 +6,6 @@ import java.util.UUID;
 
 class DefaultSubmitUsageService implements SubmitUsageService {
 
-    DefaultSubmitUsageService() {
-    }
-
     @Override
     public String submit(UsageRequest request) {
         System.out.println("Submitting usage..." + request);

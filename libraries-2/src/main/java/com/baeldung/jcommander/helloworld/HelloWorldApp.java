@@ -5,6 +5,11 @@ import com.beust.jcommander.Parameter;
 
 public class HelloWorldApp {
 
+    /*
+     * Execute:
+     * mvn exec:java -Dexec.mainClass=com.baeldung.jcommander.helloworld.HelloWorldApp -q \
+     *   -Dexec.args="--name JavaWorld"
+     */
     public static void main(String[] args) {
         HelloWorldArgs jArgs = new HelloWorldArgs();
         JCommander helloCmd = JCommander
