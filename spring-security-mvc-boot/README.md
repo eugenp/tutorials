@@ -17,3 +17,5 @@ The "REST With Spring" Classes: http://github.learnspringsecurity.com
 - [Spring Security – Whitelist IP Range](https://www.baeldung.com/spring-security-whitelist-ip-range)
 - [Find the Registered Spring Security Filters](https://www.baeldung.com/spring-security-registered-filters)
 - [HTTPS using Self-Signed Certificate in Spring Boot](https://www.baeldung.com/spring-boot-https-self-signed-certificate)
+- [Spring Security: Exploring JDBC Authentication](https://www.baeldung.com/spring-security-jdbc-authentication)
+

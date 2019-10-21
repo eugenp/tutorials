@@ -9,3 +9,5 @@ This module contains articles about Jersey.
 - [Set a Response Body in JAX-RS](https://www.baeldung.com/jax-rs-response)
 - [Exploring the Jersey Test Framework](https://www.baeldung.com/jersey-test)
 - [Explore Jersey Request Parameters](https://www.baeldung.com/jersey-request-parameters)
+- [Add a Header to a Jersey SSE Client Request](https://www.baeldung.com/jersey-sse-client-request-headers)
+

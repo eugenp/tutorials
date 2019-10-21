@@ -14,6 +14,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [web.xml vs Initializer with Spring](https://www.baeldung.com/spring-xml-vs-java-config)
 - [A Java Web Application Without a web.xml](https://www.baeldung.com/java-web-app-without-web-xml)
 - [Validating RequestParams and PathVariables in Spring](https://www.baeldung.com/spring-validate-requestparam-pathvariable)
-
+- [Debugging the Spring MVC 404 “No mapping found for HTTP request” Error](https://www.baeldung.com/spring-mvc-404-error)
 ## Spring MVC with XML Configuration Example Project
 - access a sample jsp page at: `http://localhost:8080/spring-mvc-xml/sample.html`
