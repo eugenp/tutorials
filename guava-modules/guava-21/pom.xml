@@ -22,6 +22,7 @@
     </dependencies>
 
     <properties>
+        <guava.version>21.0</guava.version>
         <jool.version>0.9.12</jool.version>
     </properties>
 
