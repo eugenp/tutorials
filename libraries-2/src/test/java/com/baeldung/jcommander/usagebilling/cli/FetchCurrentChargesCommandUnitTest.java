@@ -1,12 +1,9 @@
 package com.baeldung.jcommander.usagebilling.cli;
 
 import com.beust.jcommander.JCommander;
-import org.hamcrest.collection.IsIterableContainingInOrder;
 import org.junit.Test;
 
-import static java.util.Arrays.asList;
 import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class FetchCurrentChargesCommandUnitTest {
@@ -27,11 +24,9 @@ public class FetchCurrentChargesCommandUnitTest {
           "-S", "subscriptionA002",
           "-S", "subscriptionA003",
         });
-        
-        assertEquals(
-          asList("subscriptionA001", "subscriptionA002", "subscriptionA003"),
-          cmd.getSubscriptionIds()
-        );
+
+        assertThat(cmd.getSubscriptionIds(),
+          contains("subscriptionA001", "subscriptionA002", "subscriptionA003"));
     }
 
     @Test
@@ -60,9 +55,7 @@ public class FetchCurrentChargesCommandUnitTest {
           "-S", "subscriptionA001", "subscriptionA002", "subscriptionA003",
         });
 
-        assertEquals(
-          asList("subscriptionA001", "subscriptionA002", "subscriptionA003"),
-          cmd.getSubscriptionIds()
-        );
+        assertThat(cmd.getSubscriptionIds(),
+          contains("subscriptionA001", "subscriptionA002", "subscriptionA003"));
     }
 }
