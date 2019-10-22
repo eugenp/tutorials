@@ -1,14 +1,13 @@
-package org.baeldung.convertarraytostring;
+package com.baeldung.convertarraytostring;
+
+import com.google.common.base.Joiner;
+import com.google.common.base.Splitter;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.apache.commons.lang3.StringUtils;
-import org.junit.Test;
-
-import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;

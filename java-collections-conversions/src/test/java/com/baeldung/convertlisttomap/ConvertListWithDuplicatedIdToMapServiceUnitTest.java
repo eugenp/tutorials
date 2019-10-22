@@ -11,7 +11,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 
-public class ConvertListWithDiplicatedIdToMapServiceUnitTest {
+public class ConvertListWithDuplicatedIdToMapServiceUnitTest {
     List<Animal> duplicatedIdList;
 
     private ConvertListToMapService convertListService = new ConvertListToMapService();

@@ -482,6 +482,7 @@
                 <module>jackson-2</module>
                 <module>jackson-simple</module>
                 <module>java-collections-conversions</module>
+                <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
                 <module>java-jdi</module>
@@ -609,7 +610,7 @@
 
                 <module>spring-boot-nashorn</module>
                 <module>java-blockchain</module>
-<module>wildfly</module>
+                <module>wildfly</module>
             </modules>
 
         </profile>
@@ -1241,6 +1242,7 @@
                 <module>jackson-2</module>
                 <module>jackson-simple</module>
                 <module>java-collections-conversions</module>
+                <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
                 <module>java-jdi</module>
