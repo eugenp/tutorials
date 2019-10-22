@@ -39,6 +39,7 @@
 
         function onClose(evt) {
             writeToScreen("DISCONNECTED");
+            appendMessageToView(":", "DISCONNECTED");
         }
 
         function onError(evt) {
@@ -61,8 +62,12 @@
         }
 
         function doSend(protocolMessage) {
-            writeToScreen("SENT: " + protocolMessage.message);
-            websocket.send(JSON.stringify(protocolMessage));
+            if(websocket.readyState == WebSocket.OPEN) {
+                writeToScreen("SENT: " + protocolMessage.message);
+                websocket.send(JSON.stringify(protocolMessage));
+            } else {
+                writeToScreen("Could not send data. Websocket is not open.");
+            }
         }
 
         window.addEventListener("load", init, false);

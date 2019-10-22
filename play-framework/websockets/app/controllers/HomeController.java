@@ -32,34 +32,28 @@ public class HomeController extends Controller {
 
     public Result index(Http.Request request) {
         String url = routes.HomeController.socket().webSocketURL(request);
-//        String url = routes.HomeController.akkaStreamsSocket().webSocketURL(request);
+        //String url = routes.HomeController.akkaStreamsSocket().webSocketURL(request);
         return ok(views.html.index.render(url));
     }
 
 
     public WebSocket socket() {
-        return WebSocket.Json.acceptOrResult(request -> {
-            return CompletableFuture.completedFuture(F.Either.Right(
-                    ActorFlow.actorRef(out -> Messenger.props(out), actorSystem, materializer)));
-        });
-
+        return WebSocket.Json.acceptOrResult(request ->
+          CompletableFuture.completedFuture(F.Either.Right(
+          ActorFlow.actorRef(out -> Messenger.props(out), actorSystem, materializer))));
     }
 
     public WebSocket akkaStreamsSocket() {
         return WebSocket.Json.accept(
-                request -> {
-                    Sink<JsonNode, ?> in = Sink.foreach(System.out::println);
-                    final MessageDTO messageDTO = new MessageDTO(
-                            "userid",
-                            "id",
-                            "test title",
-                            "test body");
-                    Source<JsonNode, ?> out = Source.tick(
-                            Duration.ofSeconds(2),
-                            Duration.ofSeconds(2),
-                            MessageConverter.messageToJsonNode(messageDTO)
-                    );
-                    return Flow.fromSinkAndSource(in, out);
-                });
+          request -> {
+              Sink<JsonNode, ?> in = Sink.foreach(System.out::println);
+              final MessageDTO messageDTO = new MessageDTO("1", "1", "Title", "Test Body");
+              Source<JsonNode, ?> out = Source.tick(
+                Duration.ofSeconds(2),
+                Duration.ofSeconds(2),
+                MessageConverter.messageToJsonNode(messageDTO)
+              );
+              return Flow.fromSinkAndSource(in, out);
+        });
     }
 }

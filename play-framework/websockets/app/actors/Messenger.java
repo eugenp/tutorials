@@ -2,6 +2,7 @@ package actors;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
+import akka.actor.PoisonPill;
 import akka.actor.Props;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
@@ -18,6 +19,7 @@ import utils.MessageConverter;
 
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -40,53 +42,73 @@ public class Messenger extends AbstractActor {
     @Override
     public void preStart() throws Exception {
         log.info("Messenger actor started at {}",
-                OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+          OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
     }
 
     @Override
     public void postStop() throws Exception {
         log.info("Messenger actor stopped at {}",
-                OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+          OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
     }
 
     private void onSendMessage(JsonNode jsonNode) {
         final RequestDTO requestDTO = MessageConverter.jsonNodeToRequest(jsonNode);
-        log.info("Actor received. {}", requestDTO);
-        processMessage(requestDTO);
+        final String message = requestDTO.getMessage().toLowerCase();
+        if("stop".equals(message)) {
+            MessageDTO messageDTO = createMessageDTO("1", "1", "Stop", "Stopping actor");
+            out.tell(MessageConverter.messageToJsonNode(messageDTO), getSelf());
+            self().tell(PoisonPill.getInstance(), getSelf());
+        } else {
+            log.info("Actor received. {}", requestDTO);
+            processMessage(requestDTO);
+        }
+    }
+
+    private MessageDTO createMessageDTO(String userId, String id, String title, String message) {
+        MessageDTO messageDTO = new MessageDTO();
+        messageDTO.setUserId(UUID.randomUUID().toString());
+        messageDTO.setId(UUID.randomUUID().toString());
+        messageDTO.setTitle("Self Kill");
+        messageDTO.setBody("Stopping actor");
+        return messageDTO;
     }
 
     private void processMessage(RequestDTO requestDTO) {
-        final int postId = ThreadLocalRandom.current().nextInt(0, 100);
-        Materializer materializer = Materializer.matFromSystem(getContext().getSystem());
+        CompletionStage<HttpResponse> responseFuture = getRandomMessage();
+        responseFuture.thenCompose(this::consumeHttpResponse)
+          .thenAccept(messageDTO ->
+            out.tell(MessageConverter.messageToJsonNode(messageDTO), getSelf()));
+    }
 
-        final CompletionStage<HttpResponse> responseFuture =
-                Http.get(getContext().getSystem())
-                        .singleRequest(
-                                HttpRequest.create("https://jsonplaceholder.typicode.com/posts/" + postId)
-                        );
-        responseFuture.thenCompose(httpResponse -> {
-            final CompletionStage<MessageDTO> unmarshal =
-                    Jackson.unmarshaller(MessageDTO.class)
-                            .unmarshal(httpResponse.entity(), materializer);
-            return unmarshal.thenApply(messageDTO -> {
-                log.info("Received message: {}", messageDTO);
-                final HttpMessage.DiscardedEntity discarded = httpResponse.discardEntityBytes(materializer);
-                discarded.completionStage().whenComplete((done, ex) -> {
-                    log.info("Entity discarded completely!");
-                });
-                return messageDTO;
-            });
-        }).thenAccept(messageDTO -> {
-            log.info("Now responding with => {}", messageDTO);
-            out.tell(MessageConverter.messageToJsonNode(messageDTO), getSelf());
-        });
+    private CompletionStage<HttpResponse> getRandomMessage() {
+        int postId = ThreadLocalRandom.current().nextInt(0, 100);
+        return Http.get(getContext().getSystem()).singleRequest(
+          HttpRequest.create("https://jsonplaceholder.typicode.com/posts/" + postId)
+        );
+    }
+
+    private void discardEntity(HttpResponse httpResponse, Materializer materializer) {
+        final HttpMessage.DiscardedEntity discarded = httpResponse.discardEntityBytes(materializer);
+        discarded.completionStage()
+          .whenComplete((done, ex) -> log.info("Entity discarded completely!"));
+    }
+
+    private CompletionStage<MessageDTO> consumeHttpResponse(HttpResponse httpResponse) {
+        Materializer materializer = Materializer.matFromSystem(getContext().getSystem());
+        return Jackson.unmarshaller(MessageDTO.class)
+          .unmarshal(httpResponse.entity(), materializer)
+          .thenApply(messageDTO -> {
+              log.info("Received message: {}", messageDTO);
+              discardEntity(httpResponse, materializer);
+              return messageDTO;
+          });
     }
 
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match(JsonNode.class, this::onSendMessage)
-                .matchAny(o -> log.error("Received unknown message: {}", o.getClass()))
-                .build();
+          .match(JsonNode.class, this::onSendMessage)
+          .matchAny(o -> log.error("Received unknown message: {}", o.getClass()))
+          .build();
     }
 }
