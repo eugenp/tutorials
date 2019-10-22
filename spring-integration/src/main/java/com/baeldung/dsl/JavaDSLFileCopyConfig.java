@@ -113,7 +113,7 @@ public class JavaDSLFileCopyConfig {
     
     // @Bean
     public IntegrationFlow fileReader() {
-		return IntegrationFlows.from(sourceDirectory(), configurer -> configurer.poller(Pollers.fixedDelay(10)))
+        return IntegrationFlows.from(sourceDirectory(), configurer -> configurer.poller(Pollers.fixedDelay(10)))
             .filter(onlyJpgs())
             .channel("holdingTank")
             .get();
