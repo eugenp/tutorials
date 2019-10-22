@@ -1,4 +1,4 @@
-package com.baeldung.map;
+package com.baeldung.maps;
 
 import static groovy.test.GroovyAssert.*
 import org.junit.Test

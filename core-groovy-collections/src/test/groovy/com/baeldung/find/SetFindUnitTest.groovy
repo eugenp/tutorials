@@ -1,10 +1,10 @@
-package com.baeldung.set
+package com.baeldung.find
 
 import org.junit.Test
 
 import static org.junit.Assert.assertTrue
 
-class SetUnitTest {
+class SetFindUnitTest {
 
     @Test
     void whenSetContainsElement_thenCheckReturnsTrue() {
