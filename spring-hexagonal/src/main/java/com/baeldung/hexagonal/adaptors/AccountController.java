@@ -2,7 +2,7 @@ package com.baeldung.hexagonal.adaptors;
 
 import com.baeldung.hexagonal.model.Account;
 import com.baeldung.hexagonal.model.AccountNotFoundException;
-import com.baeldung.hexagonal.ports.entry.AccountPorts;
+import com.baeldung.hexagonal.ports.entry.AccountPort;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -10,9 +10,9 @@ import java.util.List;
 
 @RestController
 public class AccountController {
-    private AccountPorts accountService;
+    private AccountPort accountService;
 
-    AccountController(AccountPorts accountService) {
+    AccountController(AccountPort accountService) {
         this.accountService = accountService;
         this.accountService.openAccount(BigDecimal.ZERO);
     }

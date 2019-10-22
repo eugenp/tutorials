@@ -6,7 +6,7 @@ import com.baeldung.hexagonal.model.AccountNotFoundException;
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface AccountPorts {
+public interface AccountPort {
     Account openAccount(BigDecimal initialDeposit);
 
     Account getAccount(Long id) throws AccountNotFoundException;

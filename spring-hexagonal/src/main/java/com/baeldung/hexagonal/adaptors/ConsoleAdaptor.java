@@ -1,7 +1,7 @@
 package com.baeldung.hexagonal.adaptors;
 
 import com.baeldung.hexagonal.model.Account;
-import com.baeldung.hexagonal.ports.entry.AccountPorts;
+import com.baeldung.hexagonal.ports.entry.AccountPort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -22,7 +22,7 @@ public class ConsoleAdaptor {
     }
 
     @Bean
-    public CommandLineRunner entryAdaptor(AccountPorts service) {
+    public CommandLineRunner entryAdaptor(AccountPort service) {
         return (args) -> {
             Account newAccount = service.openAccount(BigDecimal.TEN);
             log.info("Account details = " + service.getAccount(newAccount.getId()));

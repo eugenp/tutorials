@@ -2,7 +2,7 @@ package com.baeldung.hexagonal.core;
 
 import com.baeldung.hexagonal.model.Account;
 import com.baeldung.hexagonal.model.AccountNotFoundException;
-import com.baeldung.hexagonal.ports.entry.AccountPorts;
+import com.baeldung.hexagonal.ports.entry.AccountPort;
 import com.baeldung.hexagonal.ports.exit.AccountRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AccountService implements AccountPorts {
+public class AccountService implements AccountPort {
     private AccountRepository repository;
 
     public AccountService(AccountRepository repository) {
