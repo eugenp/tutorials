@@ -71,8 +71,8 @@
     </dependencies>
 
     <properties>
-        <testcontainers.version>1.10.6</testcontainers.version>
-        <postgresql.version>42.2.5</postgresql.version>
+        <testcontainers.version>1.12.2</testcontainers.version>
+        <postgresql.version>42.2.8</postgresql.version>
     </properties>
 
 </project>
