@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import com.google.common.base.CharMatcher;
 
-
 /***
  * Example of counting chars in a String.
  */
@@ -78,16 +77,21 @@ public class CountCharsExampleUnitTest {
     @Test
     public void givenString_whenUsingJava8Features_thenCountChars() {
         String someString = "elephant";
-        long count = someString.chars().filter(ch -> ch == 'e').count();
+        long count = someString.chars()
+            .filter(ch -> ch == 'e')
+            .count();
         assertEquals(2, count);
 
-        long count2 = someString.codePoints().filter(ch -> ch == 'e').count();
+        long count2 = someString.codePoints()
+            .filter(ch -> ch == 'e')
+            .count();
         assertEquals(2, count2);
     }
 
     @Test
     public void givenString_whenUsingGuavaCharMatcher_thenCountChars() {
-        int count = CharMatcher.is('e').countIn("elephant");
+        int count = CharMatcher.is('e')
+            .countIn("elephant");
         assertEquals(2, count);
     }
 

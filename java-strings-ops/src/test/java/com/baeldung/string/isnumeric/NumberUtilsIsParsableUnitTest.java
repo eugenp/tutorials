@@ -1,4 +1,4 @@
-package com.baeldung.stringisnumeric;
+package com.baeldung.string.isnumeric;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,7 +13,7 @@ public class NumberUtilsIsParsableUnitTest {
         assertThat(NumberUtils.isParsable("-23")).isTrue();
         assertThat(NumberUtils.isParsable("2.2")).isTrue();
         assertThat(NumberUtils.isParsable("09")).isTrue();
-        
+
         // Invalid Numbers
         assertThat(NumberUtils.isParsable(null)).isFalse();
         assertThat(NumberUtils.isParsable("")).isFalse();

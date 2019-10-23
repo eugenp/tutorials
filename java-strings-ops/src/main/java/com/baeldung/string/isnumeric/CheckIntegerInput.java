@@ -1,14 +1,13 @@
-package com.baeldung.string.checkinputs;
+package com.baeldung.string.isnumeric;
 
 import java.util.Scanner;
 
 public class CheckIntegerInput {
 
     public static void main(String[] args) {
-
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Enter an integer : ");
-            
+
             if (scanner.hasNextInt()) {
                 System.out.println("You entered : " + scanner.nextInt());
             } else {
