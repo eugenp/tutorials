@@ -5,7 +5,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>hibernate5-2</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>hibernate-5-2</name>
+    <name>hibernate5-2</name>
     <packaging>jar</packaging>
     <description>Hibernate tutorial illustrating the use of named parameters</description>
 
