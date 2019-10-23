@@ -1,4 +1,8 @@
-## Relevant articles:
+## Algorithms - Miscellaneous
+
+This module contains articles about algorithms. Some classes of algorithms, e.g., sorting and genetic algorithms, have their own dedicated modules.
+
+### Relevant articles:
 
 - [Multi-Swarm Optimization Algorithm in Java](https://www.baeldung.com/java-multi-swarm-algorithm)
 - [String Search Algorithms for Large Texts](https://www.baeldung.com/java-full-text-search-algorithms)
