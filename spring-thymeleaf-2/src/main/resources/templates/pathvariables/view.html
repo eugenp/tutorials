@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Pathvariables in Thymeleaf</title>
+</head>
+<body>
+    <h3>View Item</h3>
+    <div>
+        <label for="name">Name: </label>
+        <span th:text="${item.name}"></span>
+    </div>
+    <h4 th:if="${detail}">Detail</h4>
+    <div th:if="${detail}">
+        <label for="description">Description: </label>
+        <span th:text="${detail.description}"></span>
+    </div>
+</body>
+</html>

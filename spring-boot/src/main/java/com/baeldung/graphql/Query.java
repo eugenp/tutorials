@@ -11,7 +11,7 @@ public class Query implements GraphQLQueryResolver {
         this.postDao = postDao;
     }
 
-    public List<Post> recentPosts(int count, int offset) {
+    public List<Post> getRecentPosts(int count, int offset) {
         return postDao.getRecentPosts(count, offset);
     }
 }
