@@ -1,6 +1,6 @@
-=========
+## Core Java Collections List (Part 2)
 
-## Core Java Collections List Cookbooks and Examples
+This module contains articles about the Java List collection
 
 ### Relevant Articles: 
 - [Check If Two Lists are Equal in Java](http://www.baeldung.com/java-test-a-list-for-ordinality-and-equality)
@@ -11,3 +11,4 @@
 - [Ways to Iterate Over a List in Java](https://www.baeldung.com/java-iterate-list)
 - [Flattening Nested Collections in Java](http://www.baeldung.com/java-flatten-nested-collections)
 - [Intersection of Two Lists in Java](https://www.baeldung.com/java-lists-intersection)
+- [[<-- Prev]](/core-java-modules/core-java-collections-list)[[Next -->]](/core-java-modules/core-java-collections-list-3)

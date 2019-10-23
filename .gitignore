@@ -4,6 +4,7 @@ bin/
 *.class
 
 # Package Files #
+*.jar
 *.war
 *.ear
 
@@ -29,7 +30,7 @@ out/
 .DS_Store
 
 # Maven
-log/
+log/*
 target/
 
 # Gradle
@@ -83,3 +84,4 @@ software-security/sql-injection-samples/derby.log
 spring-soap/src/main/java/com/baeldung/springsoap/gen/
 /report-*.json
 transaction.log
+*-shell.log

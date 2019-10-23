@@ -1,19 +1,22 @@
 package com.baeldung.nth.root.calculator;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.MockitoJUnitRunner;
+
+import static org.junit.Assert.assertEquals;
 
 public class NthRootCalculatorUnitTest {
 
     private NthRootCalculator nthRootCalculator = new NthRootCalculator();
 
     @Test
-    public void whenBaseIs125AndNIs3_thenNthRootIs5() {
-       Double result = nthRootCalculator.calculate(125.0, 3.0);
-       assertEquals(result, (Double) 5.0d);
+    public void whenBaseIs125AndNIs3_thenNthIs5() {
+        double nth = nthRootCalculator.calculateWithRound(125,3);
+        assertEquals(5, nth, 0);
+    }
+
+    @Test
+    public void whenBaseIs625AndNIs4_thenNthIs5() {
+        double nth = nthRootCalculator.calculate(625,4);
+        assertEquals(5, nth, 0.00001);
     }
 }
