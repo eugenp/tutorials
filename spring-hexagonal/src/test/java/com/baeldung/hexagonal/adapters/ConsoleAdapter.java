@@ -1,4 +1,4 @@
-package com.baeldung.hexagonal.adaptors;
+package com.baeldung.hexagonal.adapters;
 
 import com.baeldung.hexagonal.model.Account;
 import com.baeldung.hexagonal.ports.entry.AccountPort;
@@ -7,22 +7,23 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 import java.math.BigDecimal;
 
-@SpringBootApplication
+@SpringBootTest
 @ComponentScan("com.baeldung")
-public class ConsoleAdaptor {
-    private static final Logger log = LoggerFactory.getLogger(ConsoleAdaptor.class);
+public class ConsoleAdapter {
+    private static final Logger log = LoggerFactory.getLogger(ConsoleAdapter.class);
 
     public static void main(String[] args) {
-        SpringApplication.run(ConsoleAdaptor.class);
+        SpringApplication.run(ConsoleAdapter.class);
     }
 
     @Bean
-    public CommandLineRunner entryAdaptor(AccountPort service) {
+    public CommandLineRunner entryAdapter(AccountPort service) {
         return (args) -> {
             Account newAccount = service.openAccount(BigDecimal.TEN);
             log.info("Account details = " + service.getAccount(newAccount.getId()));

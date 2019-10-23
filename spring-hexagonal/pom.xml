@@ -61,7 +61,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.baeldung.hexagonal.adaptors.ConsoleAdaptor</mainClass>
+					<mainClass>com.baeldung.hexagonal.HexagonalApplication</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>

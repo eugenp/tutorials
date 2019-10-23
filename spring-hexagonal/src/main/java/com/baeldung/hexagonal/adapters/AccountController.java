@@ -1,4 +1,4 @@
-package com.baeldung.hexagonal.adaptors;
+package com.baeldung.hexagonal.adapters;
 
 import com.baeldung.hexagonal.model.Account;
 import com.baeldung.hexagonal.model.AccountNotFoundException;
