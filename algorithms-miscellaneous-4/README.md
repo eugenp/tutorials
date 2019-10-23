@@ -1,6 +1,6 @@
 ## Algorithms - Miscellaneous
 
-This module contains articles about algorithms. Some classes of algorithms, e.g., sorting and genetic algorithms, have their own dedicated modules.
+This module contains articles about algorithms. Some classes of algorithms, e.g., [sorting](https://github.com/eugenp/tutorials/blob/algorithms-sorting) and [genetic algorithms](https://github.com/eugenp/tutorials/blob/algorithms-genetic), have their own dedicated modules.
 
 ### Relevant articles:
 
