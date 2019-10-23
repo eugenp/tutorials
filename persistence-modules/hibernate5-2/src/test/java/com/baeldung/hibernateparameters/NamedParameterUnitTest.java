@@ -1,4 +1,4 @@
-package com.baeldung.hibernate_parameters;
+package com.baeldung.hibernateparameters;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,6 +30,7 @@ public class NamedParameterUnitTest {
             session.getTransaction().commit();
             session.close();
         } catch (Exception e) {
+            fail(e);
             StandardServiceRegistryBuilder.destroy(registry);
         }
     }

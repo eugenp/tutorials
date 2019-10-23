@@ -1,4 +1,4 @@
-package com.baeldung.hibernate_parameters;
+package com.baeldung.hibernateparameters;
 
 public class Event {
     private Long id;

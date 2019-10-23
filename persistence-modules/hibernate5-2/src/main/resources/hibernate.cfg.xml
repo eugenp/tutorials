@@ -7,7 +7,7 @@
 
     <session-factory>
         <property name="connection.driver_class">org.h2.Driver</property>
-        <property name="connection.url">jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE</property>
+        <property name="connection.url">jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1</property>
         <property name="connection.username">sa</property>
         <property name="connection.password"/>
 
@@ -21,7 +21,7 @@
 
         <property name="hbm2ddl.auto">create</property>
 
-        <mapping resource="com/baeldung/hibernate_parameters/Event.hbm.xml"/>
+        <mapping resource="com/baeldung/hibernateparameters/Event.hbm.xml"/>
 
     </session-factory>
 
