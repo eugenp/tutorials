@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: glossary.rnc 8931 2010-10-20 13:29:20Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start combine="choice">
+    <choice>
+      <ref name="db.glossary"/>
+      <ref name="db.glossdiv"/>
+      <ref name="db.glosslist"/>
+    </choice>
+  </start>
+  <define name="db.publishing.inlines" combine="choice">
+    <ref name="db.glossary.inlines"/>
+  </define>
+  <define name="db.list.blocks" combine="choice">
+    <ref name="db.glosslist"/>
+  </define>
+  <define name="db.navigation.components" combine="choice">
+    <ref name="db.glossary"/>
+  </define>
+  <define name="db.glossary.inlines">
+    <choice>
+      <ref name="db.firstterm"/>
+      <ref name="db.glossterm"/>
+      <ref name="db._firstterm"/>
+      <ref name="db._glossterm"/>
+    </choice>
+  </define>
+  <define name="db.ubiq.inlines" combine="choice">
+    <choice>
+      <ref name="db._firstterm"/>
+      <ref name="db._glossterm"/>
+    </choice>
+  </define>
+  <!-- ====================================================================== -->
+  <define name="db.baseform.attribute">
+    <optional>
+      <attribute name="baseform">
+        <db:refpurpose>Specifies the base form of the term, the one that appears in the glossary. This allows adjectival, plural, and other variations of the term to appear in the element. The element content is the default base form.</db:refpurpose>
+      </attribute>
+    </optional>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>glosslist</db:refname>
+    <db:refpurpose>A wrapper for a list of glossary entries</db:refpurpose>
+    <define name="db.glosslist.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.glosslist.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.glosslist.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.glosslist.info">
+      <ref name="db._info.title.only"/>
+    </define>
+    <define name="db.glosslist">
+      <element name="glosslist">
+        <ref name="db.glosslist.attlist"/>
+        <optional>
+          <ref name="db.glosslist.info"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="db.all.blocks"/>
+        </zeroOrMore>
+        <oneOrMore>
+          <ref name="db.glossentry"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>glossentry</db:refname>
+    <db:refpurpose>An entry in a glossary or glosslist</db:refpurpose>
+    <define name="db.glossentry.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.glossentry.sortas.attribute">
+      <attribute name="sortas">
+        <db:refpurpose>Specifies the string by which the element's content is to be sorted; if unspecified, the content is used</db:refpurpose>
+      </attribute>
+    </define>
+    <define name="db.glossentry.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.glossentry.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.glossentry.sortas.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.glossentry">
+      <element name="glossentry">
+        <ref name="db.glossentry.attlist"/>
+        <ref name="db.glossterm"/>
+        <optional>
+          <ref name="db.acronym"/>
+        </optional>
+        <optional>
+          <ref name="db.abbrev"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="db.indexterm"/>
+        </zeroOrMore>
+        <choice>
+          <ref name="db.glosssee"/>
+          <oneOrMore>
+            <ref name="db.glossdef"/>
+          </oneOrMore>
+        </choice>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>glossdef</db:refname>
+    <db:refpurpose>A definition in a glossentry</db:refpurpose>
+    <define name="db.glossdef.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.glossdef.subject.attribute">
+      <attribute name="subject">
+        <db:refpurpose>Specifies a list of keywords for the definition</db:refpurpose>
+      </attribute>
+    </define>
+    <define name="db.glossdef.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.glossdef.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.glossdef.subject.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.glossdef">
+      <element name="glossdef">
+        <ref name="db.glossdef.attlist"/>
+        <oneOrMore>
+          <ref name="db.all.blocks"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="db.glossseealso"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>glosssee</db:refname>
+    <db:refpurpose>A cross-reference from one <db:tag>glossentry</db:tag>
+ to another</db:refpurpose>
+    <define name="db.glosssee.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.glosssee.otherterm.attribute">
+      <attribute name="otherterm">
+        <db:refpurpose>Identifies the other term</db:refpurpose>
+        <data type="IDREF"/>
+      </attribute>
+    </define>
+    <define name="db.glosssee.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.glosssee.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.glosssee.otherterm.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.glosssee">
+      <element name="glosssee">
+        <s:pattern name="Glosssary 'see' type constraint">
+          <s:rule context="db:glosssee[@otherterm]">
+            <s:assert test="local-name(//*[@xml:id=current()/@otherterm]) = 'glossentry' and namespace-uri(//*[@xml:id=current()/@otherterm]) = 'http://docbook.org/ns/docbook'">@otherterm on glosssee must point to a glossentry.</s:assert>
+          </s:rule>
+        </s:pattern>
+        <ref name="db.glosssee.attlist"/>
+        <zeroOrMore>
+          <ref name="db.all.inlines"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>glossseealso</db:refname>
+    <db:refpurpose>A cross-reference from one glossentry to another</db:refpurpose>
+    <define name="db.glossseealso.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.glossseealso.otherterm.attribute">
+      <attribute name="otherterm">
+        <db:refpurpose>Identifies the other term</db:refpurpose>
+        <data type="IDREF"/>
+      </attribute>
+    </define>
+    <define name="db.glossseealso.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.glossseealso.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.glossseealso.otherterm.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.glossseealso">
+      <element name="glossseealso">
+        <s:pattern name="Glossary 'seealso' type constraint">
+          <s:rule context="db:glossseealso[@otherterm]">
+            <s:assert test="local-name(//*[@xml:id=current()/@otherterm]) = 'glossentry' and namespace-uri(//*[@xml:id=current()/@otherterm]) = 'http://docbook.org/ns/docbook'">@otherterm on glossseealso must point to a glossentry.</s:assert>
+          </s:rule>
+        </s:pattern>
+        <ref name="db.glossseealso.attlist"/>
+        <zeroOrMore>
+          <ref name="db.all.inlines"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>firstterm</db:refname>
+    <db:refpurpose>The first occurrence of a term</db:refpurpose>
+    <define name="db.firstterm.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.firstterm.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.firstterm.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <ref name="db.baseform.attribute"/>
+      </interleave>
+    </define>
+    <define name="db.firstterm">
+      <element name="firstterm">
+        <s:pattern name="Glossary 'firstterm' type constraint">
+          <s:rule context="db:firstterm[@linkend]">
+            <s:assert test="local-name(//*[@xml:id=current()/@linkend]) = 'glossentry' and namespace-uri(//*[@xml:id=current()/@linkend]) = 'http://docbook.org/ns/docbook'">@linkend on firstterm must point to a glossentry.</s:assert>
+          </s:rule>
+        </s:pattern>
+        <ref name="db.firstterm.attlist"/>
+        <zeroOrMore>
+          <ref name="db.all.inlines"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>firstterm</db:refname>
+    <db:refpurpose>The first occurrence of a term, with limited content</db:refpurpose>
+    <define name="db._firstterm.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db._firstterm.attlist">
+      <interleave>
+        <optional>
+          <ref name="db._firstterm.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <ref name="db.baseform.attribute"/>
+      </interleave>
+    </define>
+    <define name="db._firstterm">
+      <element name="firstterm">
+        <s:pattern name="Glossary 'firstterm' type constraint">
+          <s:rule context="db:firstterm[@linkend]">
+            <s:assert test="local-name(//*[@xml:id=current()/@linkend]) = 'glossentry' and namespace-uri(//*[@xml:id=current()/@linkend]) = 'http://docbook.org/ns/docbook'">@linkend on firstterm must point to a glossentry.</s:assert>
+          </s:rule>
+        </s:pattern>
+        <ref name="db._firstterm.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>glossterm</db:refname>
+    <db:refpurpose>A glossary term</db:refpurpose>
+    <define name="db.glossterm.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.glossterm.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.glossterm.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <ref name="db.baseform.attribute"/>
+      </interleave>
+    </define>
+    <define name="db.glossterm">
+      <element name="glossterm">
+        <s:pattern name="Glossary 'glossterm' type constraint">
+          <s:rule context="db:glossterm[@linkend]">
+            <s:assert test="local-name(//*[@xml:id=current()/@linkend]) = 'glossentry' and namespace-uri(//*[@xml:id=current()/@linkend]) = 'http://docbook.org/ns/docbook'">@linkend on glossterm must point to a glossentry.</s:assert>
+          </s:rule>
+        </s:pattern>
+        <ref name="db.glossterm.attlist"/>
+        <zeroOrMore>
+          <ref name="db.all.inlines"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>glossterm</db:refname>
+    <db:refpurpose>A glossary term</db:refpurpose>
+    <define name="db._glossterm.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db._glossterm.attlist">
+      <interleave>
+        <optional>
+          <ref name="db._glossterm.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <ref name="db.baseform.attribute"/>
+      </interleave>
+    </define>
+    <define name="db._glossterm">
+      <element name="glossterm">
+        <s:pattern name="Glossary 'glossterm' type constraint">
+          <s:rule context="db:glossterm[@linkend]">
+            <s:assert test="local-name(//*[@xml:id=current()/@linkend]) = 'glossentry' and namespace-uri(//*[@xml:id=current()/@linkend]) = 'http://docbook.org/ns/docbook'">@linkend on glossterm must point to a glossentry.</s:assert>
+          </s:rule>
+        </s:pattern>
+        <ref name="db._glossterm.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>glossary</db:refname>
+    <db:refpurpose>A glossary</db:refpurpose>
+    <define name="db.glossary.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.glossary.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.glossary.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.glossary.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.glossary.status.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.glossary.info">
+      <ref name="db._info"/>
+    </define>
+    <define name="db.glossary">
+      <element name="glossary">
+        <ref name="db.glossary.attlist"/>
+        <ref name="db.glossary.info"/>
+        <zeroOrMore>
+          <ref name="db.all.blocks"/>
+        </zeroOrMore>
+        <choice>
+          <zeroOrMore>
+            <ref name="db.glossdiv"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="db.glossentry"/>
+          </zeroOrMore>
+        </choice>
+        <optional>
+          <ref name="db.bibliography"/>
+        </optional>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>glossdiv</db:refname>
+    <db:refpurpose>A division in a glossary</db:refpurpose>
+    <define name="db.glossdiv.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.glossdiv.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.glossdiv.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.glossdiv.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.glossdiv.status.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.glossdiv.info">
+      <ref name="db._info.title.req"/>
+    </define>
+    <define name="db.glossdiv">
+      <element name="glossdiv">
+        <ref name="db.glossdiv.attlist"/>
+        <ref name="db.glossdiv.info"/>
+        <zeroOrMore>
+          <ref name="db.all.blocks"/>
+        </zeroOrMore>
+        <oneOrMore>
+          <ref name="db.glossentry"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <define name="db.technical.inlines" combine="choice">
+    <ref name="db.termdef"/>
+  </define>
+  <div>
+    <db:refname>termdef</db:refname>
+    <db:refpurpose>An inline definition of a term</db:refpurpose>
+    <define name="db.termdef.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.termdef.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.termdef.role.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.glossentry.sortas.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <ref name="db.baseform.attribute"/>
+      </interleave>
+    </define>
+    <define name="db.termdef">
+      <element name="termdef">
+        <s:pattern name="Glossary term definition constraint">
+          <s:rule context="db:termdef">
+            <s:assert test="count(db:firstterm) = 1">A termdef must contain exactly one firstterm</s:assert>
+          </s:rule>
+        </s:pattern>
+        <ref name="db.termdef.attlist"/>
+        <zeroOrMore>
+          <ref name="db.all.inlines"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+</grammar>
