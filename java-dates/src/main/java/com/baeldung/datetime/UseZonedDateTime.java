@@ -12,31 +12,35 @@ class UseZonedDateTime {
         return ZonedDateTime.of(localDateTime, zoneId);
     }
 
+    ZonedDateTime getZonedDateTimeUsingParseMethod(String parsableString) {
+        return ZonedDateTime.parse(parsableString);
+    }
+
     ZonedDateTime getStartOfDay(LocalDate localDate, ZoneId zone) {
-        ZonedDateTime startofDay = localDate.atStartOfDay()
+        ZonedDateTime startOfDay = localDate.atStartOfDay()
             .atZone(zone);
-        return startofDay;
+        return startOfDay;
     }
 
     ZonedDateTime getStartOfDayShorthand(LocalDate localDate, ZoneId zone) {
-        ZonedDateTime startofDay = localDate.atStartOfDay(zone);
-        return startofDay;
+        ZonedDateTime startOfDay = localDate.atStartOfDay(zone);
+        return startOfDay;
     }
 
     ZonedDateTime getStartOfDayFromZonedDateTime(ZonedDateTime zonedDateTime) {
-        ZonedDateTime startofDay = zonedDateTime.toLocalDateTime()
+        ZonedDateTime startOfDay = zonedDateTime.toLocalDateTime()
             .toLocalDate()
             .atStartOfDay(zonedDateTime.getZone());
-        return startofDay;
+        return startOfDay;
     }
 
     ZonedDateTime getStartOfDayAtMinTime(ZonedDateTime zonedDateTime) {
-        ZonedDateTime startofDay = zonedDateTime.with(ChronoField.HOUR_OF_DAY, 0);
-        return startofDay;
+        ZonedDateTime startOfDay = zonedDateTime.with(ChronoField.HOUR_OF_DAY, 0);
+        return startOfDay;
     }
 
     ZonedDateTime getStartOfDayAtMidnightTime(ZonedDateTime zonedDateTime) {
-        ZonedDateTime startofDay = zonedDateTime.with(ChronoField.NANO_OF_DAY, 0);
-        return startofDay;
+        ZonedDateTime startOfDay = zonedDateTime.with(ChronoField.NANO_OF_DAY, 0);
+        return startOfDay;
     }
 }
