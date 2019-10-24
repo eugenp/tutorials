@@ -10,7 +10,37 @@ public class SampleExecutionTimeUnitTest {
     @Test
     public void someUnitTest() {
 
-        assertTrue(SampleTest::doSomething);
+        assertTrue(this::doSomething);
     }
 
+    @Test
+    public void someIntegrationTest() {
+
+        try {
+            //simulate an operation that may take 5 seconds
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            fail();
+        }
+
+        assertTrue(this::doSomething);
+    }
+
+    @Test
+    public void someEndToEndTest() {
+
+        try {
+            //simulate an operation that may take 10 seconds
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            fail();
+        }
+
+        assertTrue(this::doSomething);
+
+    }
+
+    private boolean doSomething() {
+        return true;
+    }
 }
