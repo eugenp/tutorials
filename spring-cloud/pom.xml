@@ -25,7 +25,7 @@
         <module>spring-cloud-zookeeper</module>
         <module>spring-cloud-gateway</module>
         <module>spring-cloud-stream</module>
-		<module>spring-cloud-stream-starters/twitterhdfs</module>
+        <module>spring-cloud-stream-starters/twitterhdfs</module>
         <module>spring-cloud-connectors-heroku</module>
         <module>spring-cloud-aws</module>
         <module>spring-cloud-consul</module>
@@ -35,9 +35,10 @@
         <module>spring-cloud-archaius</module>
         <module>spring-cloud-functions</module>        
         <module>spring-cloud-vault</module>
-		<!-- <module>spring-cloud-security</module> --> <!-- Fixing in BAEL-10887 -->
-		<module>spring-cloud-task</module>
+        <!-- <module>spring-cloud-security</module> --> <!-- Fixing in BAEL-10887 -->
+        <module>spring-cloud-task</module>
         <module>spring-cloud-zuul</module>
+        <module>spring-cloud-zuul-fallback</module>
     </modules>
 
     <build>

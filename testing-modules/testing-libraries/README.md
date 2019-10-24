@@ -6,5 +6,5 @@
 - [Cucumber and Scenario Outline](http://www.baeldung.com/cucumber-scenario-outline)
 - [Cucumber Java 8 Support](http://www.baeldung.com/cucumber-java-8-support)
 - [Introduction to Lambda Behave](http://www.baeldung.com/lambda-behave)
-- [Running JUnit Tests Programmatically, from a Java Application](https://www.baeldung.com/junit-tests-run-programmatically-from-java)
+
 

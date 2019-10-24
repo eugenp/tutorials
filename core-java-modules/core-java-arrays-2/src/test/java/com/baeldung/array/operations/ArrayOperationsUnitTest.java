@@ -1,12 +1,11 @@
 package com.baeldung.array.operations;
 
+import java.util.Arrays;
 import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertArrayEquals;
 
 public class ArrayOperationsUnitTest {
 
@@ -262,8 +261,7 @@ public class ArrayOperationsUnitTest {
 
     @Test
     public void whenMapIntArrayToString_thenReturnArray() {
-        String[] expectedArray = new String[] { "Value: 3", "Value: 5", "Value: 2", "Value: 5", "Value: 14",
-                "Value: 4" };
+        String[] expectedArray = new String[] { "Value: 3", "Value: 5", "Value: 2", "Value: 5", "Value: 14", "Value: 4" };
         String[] output = ArrayOperations.mapIntArrayToString(defaultIntArray);
 
         assertThat(output).containsExactly(expectedArray);
@@ -313,13 +311,10 @@ public class ArrayOperationsUnitTest {
         int[] output5 = ArrayOperations.shuffleIntArray(defaultIntArray);
         int[] output6 = ArrayOperations.shuffleIntArray(defaultIntArray);
 
-        Condition<int[]> atLeastOneArraysIsNotEqual = new Condition<int[]>(
-            "at least one output should be different (order-wise)") {
+        Condition<int[]> atLeastOneArraysIsNotEqual = new Condition<int[]>("at least one output should be different (order-wise)") {
             @Override
             public boolean matches(int[] value) {
-                return !Arrays.equals(value, output) || !Arrays.equals(value, output2) || !Arrays.equals(value, output3)
-                    || !Arrays.equals(value, output4) || !Arrays.equals(value, output5)
-                    || !Arrays.equals(value, output6);
+                return !Arrays.equals(value, output) || !Arrays.equals(value, output2) || !Arrays.equals(value, output3) || !Arrays.equals(value, output4) || !Arrays.equals(value, output5) || !Arrays.equals(value, output6);
             }
         };
 
@@ -335,13 +330,10 @@ public class ArrayOperationsUnitTest {
         Integer[] output5 = ArrayOperations.shuffleObjectArray(defaultObjectArray);
         Integer[] output6 = ArrayOperations.shuffleObjectArray(defaultObjectArray);
 
-        Condition<Integer[]> atLeastOneArraysIsNotEqual = new Condition<Integer[]>(
-            "at least one output should be different (order-wise)") {
+        Condition<Integer[]> atLeastOneArraysIsNotEqual = new Condition<Integer[]>("at least one output should be different (order-wise)") {
             @Override
             public boolean matches(Integer[] value) {
-                return !Arrays.equals(value, output) || !Arrays.equals(value, output2) || !Arrays.equals(value, output3)
-                    || !Arrays.equals(value, output4) || !Arrays.equals(value, output5)
-                    || !Arrays.equals(value, output6);
+                return !Arrays.equals(value, output) || !Arrays.equals(value, output2) || !Arrays.equals(value, output3) || !Arrays.equals(value, output4) || !Arrays.equals(value, output5) || !Arrays.equals(value, output6);
             }
         };
 
@@ -361,5 +353,28 @@ public class ArrayOperationsUnitTest {
         Integer output = ArrayOperations.getRandomFromObjectArray(defaultObjectArray);
 
         assertThat(defaultObjectArray).contains(output);
+    }
+
+    @Test
+    public void givenSourceArrayAndElement_whenAddElementUsingPureJavaIsInvoked_thenNewElementMustBeAdded() {
+        Integer[] sourceArray = { 1, 2, 3, 4 };
+        int elementToAdd = 5;
+
+        Integer[] destArray = ArrayOperations.addElementUsingPureJava(sourceArray, elementToAdd);
+
+        Integer[] expectedArray = { 1, 2, 3, 4, 5 };
+        assertArrayEquals(expectedArray, destArray);
+    }
+
+    @Test
+    public void whenInsertAnElementAtAGivenIndexCalled_thenShiftTheFollowingElementsAndInsertTheElementInArray() {
+        int[] expectedArray = { 1, 4, 2, 3, 0 };
+        int[] anArray = new int[4];
+        anArray[0] = 1;
+        anArray[1] = 2;
+        anArray[2] = 3;
+        int[] outputArray = ArrayOperations.insertAnElementAtAGivenIndex(anArray, 1, 4);
+
+        assertThat(outputArray).containsExactly(expectedArray);
     }
 }
