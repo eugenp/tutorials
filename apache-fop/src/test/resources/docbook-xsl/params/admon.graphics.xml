@@ -1,0 +1,29 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="admon.graphics">
+<refmeta>
+<refentrytitle>admon.graphics</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>admon.graphics</refname>
+<refpurpose>Use graphics in admonitions?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="admon.graphics.frag">
+<xsl:param name="admon.graphics" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If true (non-zero), admonitions are presented in an alternate style that uses
+a graphic.  Default graphics are provided in the distribution.
+</para>
+
+</refsection>
+</refentry>

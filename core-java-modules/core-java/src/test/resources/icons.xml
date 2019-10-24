@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>xml example</comment>
+    <entry key="fileIcon">icon1.jpg</entry>
+    <entry key="imageIcon">icon2.jpg</entry>
+    <entry key="videoIcon">icon3.jpg</entry>
+</properties>
