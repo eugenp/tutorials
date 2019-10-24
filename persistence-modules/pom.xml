@@ -49,6 +49,7 @@
         <module>spring-data-elasticsearch</module>
         <module>spring-data-gemfire</module>
         <module>spring-data-jpa</module>
+        <module>spring-data-jpa-3</module>
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module> <!-- long -->
         <module>spring-data-neo4j</module>
@@ -60,7 +61,7 @@
         <module>spring-jpa</module>
         <module>spring-persistence-simple</module>
         <module>jpa-hibernate-cascade-type</module>
-				<module>r2dbc</module>
+        <module>r2dbc</module>
         <module>spring-boot-jdbi</module>
     </modules>
 </project>
