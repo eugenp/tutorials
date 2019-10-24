@@ -36,8 +36,13 @@ class UseLocalDate {
     }
 
     LocalDate getFirstDayOfMonth() {
-        LocalDate firstDayOfMonth = LocalDate.now().with(TemporalAdjusters.firstDayOfMonth());
+        LocalDate firstDayOfMonth = LocalDate.now()
+            .with(TemporalAdjusters.firstDayOfMonth());
         return firstDayOfMonth;
+    }
+
+    boolean isLeapYear(LocalDate localDate) {
+        return localDate.isLeapYear();
     }
 
     LocalDateTime getStartOfDay(LocalDate localDate) {

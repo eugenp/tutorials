@@ -1,11 +1,15 @@
 package com.baeldung.date.comparison;
 
-import org.junit.Test;
-
-import java.time.*;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
+import org.junit.Test;
 
 public class Java8DateTimeApiGeneralComparisonsUnitTest {
 
@@ -54,10 +58,8 @@ public class Java8DateTimeApiGeneralComparisonsUnitTest {
 
     @Test
     public void givenZonedDateTimes_whenComparing_thenAssertsPass() {
-        ZonedDateTime timeInNewYork = ZonedDateTime.of(2019, 8, 10, 8, 0, 0, 0,
-          ZoneId.of("America/New_York"));
-        ZonedDateTime timeInBerlin = ZonedDateTime.of(2019, 8, 10, 14, 0, 0, 0,
-          ZoneId.of("Europe/Berlin"));
+        ZonedDateTime timeInNewYork = ZonedDateTime.of(2019, 8, 10, 8, 0, 0, 0, ZoneId.of("America/New_York"));
+        ZonedDateTime timeInBerlin = ZonedDateTime.of(2019, 8, 10, 14, 0, 0, 0, ZoneId.of("Europe/Berlin"));
 
         assertThat(timeInNewYork.isAfter(timeInBerlin), is(false));
         assertThat(timeInNewYork.isBefore(timeInBerlin), is(false));
@@ -79,5 +81,15 @@ public class Java8DateTimeApiGeneralComparisonsUnitTest {
         assertThat(firstTime.equals(secondTime), is(false));
 
         assertThat(firstTime.compareTo(secondTime), is(-1));
+    }
+
+    @Test
+    public void givenMinMaxLocalTimes_whenComparing_thenAssertsPass() {
+        LocalTime minTime = LocalTime.MIN;
+        LocalTime time = LocalTime.of(8, 30);
+        LocalTime maxTime = LocalTime.MAX;
+
+        assertThat(minTime.isBefore(time), is(true));
+        assertThat(time.isBefore(maxTime), is(true));
     }
 }

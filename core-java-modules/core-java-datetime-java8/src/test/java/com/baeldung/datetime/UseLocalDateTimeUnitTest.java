@@ -7,12 +7,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.ZoneOffset;
 
 import org.junit.Test;
 
 public class UseLocalDateTimeUnitTest {
 
-    UseLocalDateTime useLocalDateTime = new UseLocalDateTime();
+    private UseLocalDateTime useLocalDateTime = new UseLocalDateTime();
 
     @Test
     public void givenString_whenUsingParse_thenLocalDateTime() {
@@ -32,5 +33,29 @@ public class UseLocalDateTimeUnitTest {
         assertThat(endOfDayFromGivenDirectly).isEqualTo(endOfDayFromGiven);
         assertThat(endOfDayFromGivenDirectly.toLocalTime()).isEqualTo(LocalTime.MAX);
         assertThat(endOfDayFromGivenDirectly.toString()).isEqualTo("2018-06-23T23:59:59.999999999");
+    }
+
+    @Test
+    public void givenLocalDateTimeInFebruary_whenRequestingMonth_thenMonthIsFebruary() {
+        LocalDateTime givenLocalDateTime = LocalDateTime.of(2015, Month.FEBRUARY, 20, 6, 30);
+
+        assertThat(givenLocalDateTime.getMonth()).isEqualTo(Month.FEBRUARY);
+    }
+
+    @Test
+    public void givenLocalDateTime_whenManipulating_thenResultIsAsExpected() {
+        LocalDateTime givenLocalDateTime = LocalDateTime.parse("2015-02-20T06:30:00");
+
+        LocalDateTime manipulatedLocalDateTime = givenLocalDateTime.plusDays(1);
+        manipulatedLocalDateTime = manipulatedLocalDateTime.minusHours(2);
+
+        assertThat(manipulatedLocalDateTime).isEqualTo(LocalDateTime.of(2015, Month.FEBRUARY, 21, 4, 30));
+    }
+
+    @Test
+    public void whenRequestTimeFromEpoch_thenResultIsAsExpected() {
+        LocalDateTime result = useLocalDateTime.ofEpochSecond(1465817690, ZoneOffset.UTC);
+
+        assertThat(result.toString()).isEqualTo("2016-06-13T11:34:50");
     }
 }
