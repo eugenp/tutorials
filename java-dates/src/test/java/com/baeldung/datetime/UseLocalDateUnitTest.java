@@ -12,7 +12,7 @@ import org.junit.Test;
 
 public class UseLocalDateUnitTest {
 
-    UseLocalDate useLocalDate = new UseLocalDate();
+    private UseLocalDate useLocalDate = new UseLocalDate();
 
     @Test
     public void givenValues_whenUsingFactoryOf_thenLocalDate() {
@@ -86,6 +86,33 @@ public class UseLocalDateUnitTest {
         assertThat(endOfDayWithMax).isEqualTo(endOfDayFromLocalTime);
         assertThat(endOfDayWithMax.toLocalTime()).isEqualTo(LocalTime.MAX);
         assertThat(endOfDayWithMax.toString()).isEqualTo("2018-06-23T23:59:59.999999999");
+    }
+
+    @Test
+    public void givenTheYear2000_whenCheckingForLeapYear_thenReturnTrue() {
+        LocalDate given = LocalDate.parse("2000-06-23");
+
+        boolean leapYear = useLocalDate.isLeapYear(given);
+
+        assertThat(leapYear).isEqualTo(true);
+    }
+
+    @Test
+    public void givenTheYear2004_whenCheckingForLeapYear_thenReturnTrue() {
+        LocalDate given = LocalDate.parse("2004-06-23");
+
+        boolean leapYear = useLocalDate.isLeapYear(given);
+
+        assertThat(leapYear).isEqualTo(true);
+    }
+
+    @Test
+    public void givenTheYear2019_whenCheckingForLeapYear_thenReturnFalse() {
+        LocalDate given = LocalDate.parse("2019-06-23");
+
+        boolean leapYear = useLocalDate.isLeapYear(given);
+
+        assertThat(leapYear).isEqualTo(false);
     }
 
 }
