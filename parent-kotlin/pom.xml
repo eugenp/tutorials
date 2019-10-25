@@ -1,60 +1,70 @@
 <?xml version="1.0"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>parent-kotlin</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
 	<name>parent-kotlin</name>
 	<packaging>pom</packaging>
 	<description>Parent for all kotlin modules</description>
 
 	<parent>
 		<groupId>com.baeldung</groupId>
-		<artifactId>parent-boot-2</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../parent-boot-2</relativePath>
+		<artifactId>parent-modules</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-    <repositories>
-        <repository>
-            <id>jcenter</id>
-            <url>http://jcenter.bintray.com</url>
-        </repository>
-        <repository>
-            <id>kotlin-ktor</id>
-            <url>https://dl.bintray.com/kotlin/ktor/</url>
-        </repository>
-        <repository>
-            <id>kotlin-eap</id>
-            <url>http://dl.bintray.com/kotlin/kotlin-eap</url>
-        </repository>
-        <repository>
-            <id>spring-milestone</id>
-            <name>Spring Milestone Repository</name> 
-            <url>http://repo.spring.io/milestone</url> 
-        </repository>
-    </repositories>
-    
-    <pluginRepositories>
-        <pluginRepository>
-           <id>kotlin-eap</id>
-            <url>http://dl.bintray.com/kotlin/kotlin-eap</url>
-        </pluginRepository>
-    </pluginRepositories>
-    
+	<repositories>
+		<repository>
+			<id>jcenter</id>
+			<url>http://jcenter.bintray.com</url>
+		</repository>
+		<repository>
+			<id>kotlin-ktor</id>
+			<url>https://dl.bintray.com/kotlin/ktor/</url>
+		</repository>
+		<repository>
+			<id>kotlin-eap</id>
+			<url>http://dl.bintray.com/kotlin/kotlin-eap</url>
+		</repository>
+		<repository>
+			<id>spring-milestone</id>
+			<name>Spring Milestone Repository</name>
+			<url>http://repo.spring.io/milestone</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>kotlin-eap</id>
+			<url>http://dl.bintray.com/kotlin/kotlin-eap</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>2.2.0.M4</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-stdlib-jdk8</artifactId>
-			</dependency>
-		 <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-            </dependency>
+		</dependency>
+		<dependency>
+			<groupId>org.jetbrains.kotlin</groupId>
+			<artifactId>kotlin-stdlib</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-reflect</artifactId>
-			</dependency>
+		</dependency>
 
 		<dependency>
 			<groupId>org.jetbrains.kotlinx</groupId>
@@ -103,9 +113,9 @@
 								<sourceDir>${project.basedir}/src/main/java</sourceDir>
 							</sourceDirs>
 							<jvmTarget>${java.version}</jvmTarget>
-                                                        <args>
-                                                            <arg>-Xjvm-default=enable</arg> 
-                                                        </args>
+							<args>
+								<arg>-Xjvm-default=enable</arg>
+							</args>
 						</configuration>
 					</execution>
 					<execution>
