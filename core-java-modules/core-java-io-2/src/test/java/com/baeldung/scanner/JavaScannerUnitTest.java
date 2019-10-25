@@ -18,6 +18,16 @@ public class JavaScannerUnitTest {
         }
     }
 
+    @Test
+    public void whenReadingPartialLines_thenCorrect() {
+        String input = "Scanner\n";
+        try (Scanner scanner = new Scanner(input)) {
+            scanner.useDelimiter("");
+            scanner.next();
+            assertEquals("canner", scanner.nextLine());
+        }
+    }
+
     @Test(expected = NoSuchElementException.class)
     public void whenReadingLines_thenThrowNoSuchElementException() {
         try (Scanner scanner = new Scanner("")) {
