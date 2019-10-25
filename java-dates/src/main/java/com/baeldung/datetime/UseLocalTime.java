@@ -9,6 +9,10 @@ public class UseLocalTime {
         return LocalTime.of(hour, min, seconds);
     }
 
+    LocalTime getLocalTimeUsingFactoryOfMethod(int hour, int min) {
+        return LocalTime.of(hour, min);
+    }
+
     LocalTime getLocalTimeUsingParseMethod(String timeRepresentation) {
         return LocalTime.parse(timeRepresentation);
     }

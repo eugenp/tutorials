@@ -1,10 +1,10 @@
 package com.baeldung.string;
 
-import org.apache.commons.lang3.StringUtils;
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+
+import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 
 public class StringHelperUnitTest {
 

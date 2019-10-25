@@ -1,6 +1,7 @@
 package com.baeldung.string;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 public class PalindromeUnitTest {
@@ -20,9 +21,9 @@ public class PalindromeUnitTest {
             "No mists or frost Simon",
             "Stella won no wallets"
     };
-    
+
     private Palindrome palindrome = new Palindrome();
-    
+
     @Test
     public void whenWord_shouldBePalindrome() {
         for (String word : words)
