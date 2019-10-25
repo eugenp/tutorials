@@ -1,8 +1,9 @@
-package com.baeldung.stringisnumeric;
+package com.baeldung.string.isnumeric;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringUtilsIsNumericUnitTest {
     @Test
@@ -11,7 +12,7 @@ public class StringUtilsIsNumericUnitTest {
         assertThat(StringUtils.isNumeric("123")).isTrue();
         assertThat(StringUtils.isNumeric("١٢٣")).isTrue();
         assertThat(StringUtils.isNumeric("१२३")).isTrue();
-         
+
         // Invalid Numbers
         assertThat(StringUtils.isNumeric(null)).isFalse();
         assertThat(StringUtils.isNumeric("")).isFalse();

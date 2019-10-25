@@ -1,8 +1,9 @@
-package com.baeldung.stringisnumeric;
+package com.baeldung.string.isnumeric;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringUtilsIsNumericSpaceUnitTest {
     @Test
@@ -13,7 +14,7 @@ public class StringUtilsIsNumericSpaceUnitTest {
         assertThat(StringUtils.isNumericSpace("")).isTrue();
         assertThat(StringUtils.isNumericSpace("  ")).isTrue();
         assertThat(StringUtils.isNumericSpace("12 3")).isTrue();
-         
+
         // Invalid Numbers
         assertThat(StringUtils.isNumericSpace(null)).isFalse();
         assertThat(StringUtils.isNumericSpace("ab2c")).isFalse();

@@ -1,4 +1,4 @@
-package com.baeldung.stringisnumeric;
+package com.baeldung.string.isnumeric;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,7 +17,7 @@ public class NumberUtilsIsCreatableUnitTest {
         assertThat(NumberUtils.isCreatable("0xFF")).isTrue();
         assertThat(NumberUtils.isCreatable("07")).isTrue();
         assertThat(NumberUtils.isCreatable("2.99e+8")).isTrue();
-         
+
         // Invalid Numbers
         assertThat(NumberUtils.isCreatable(null)).isFalse();
         assertThat(NumberUtils.isCreatable("")).isFalse();
