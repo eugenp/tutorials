@@ -56,7 +56,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
-            <version>${jackson.version</version>
+            <version>${jackson.version}</version>
         </dependency>
         <!-- runtime and test scoped -->
         <dependency>
