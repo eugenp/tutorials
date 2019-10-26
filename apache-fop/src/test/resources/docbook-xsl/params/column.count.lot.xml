@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="column.count.lot">
+<refmeta>
+<refentrytitle>column.count.lot</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">integer</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>column.count.lot</refname>
+<refpurpose>Number of columns on a 'List-of-Titles' page</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="column.count.lot.frag">
+<xsl:param name="column.count.lot" select="1"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Number of columns on a page sequence containing the Table of Contents,
+List of Figures, etc.</para>
+
+</refsection>
+</refentry>

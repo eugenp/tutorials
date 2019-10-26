@@ -1,0 +1,21 @@
+environment:
+  matrix:
+    - nodejs_version: 0.10
+    - nodejs_version: 0.12
+
+# Get the latest stable version of Node 0.STABLE.latest
+install:
+  - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version)
+  - npm install -g npm@latest
+  - set PATH=%APPDATA%\npm;%PATH%
+  - npm install
+
+build: off
+
+before_test:
+  - npm install grunt-cli -g
+
+test_script:
+  - node --version
+  - npm --version
+  - npm test
