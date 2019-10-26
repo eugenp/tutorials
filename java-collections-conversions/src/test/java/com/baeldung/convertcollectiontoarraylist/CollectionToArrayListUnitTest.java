@@ -14,10 +14,10 @@ import static org.junit.Assert.*;
  *
  * @author chris
  */
-public class FooUnitTest {
+public class CollectionToArrayListUnitTest {
     private static Collection<Foo> srcCollection = new HashSet<>();
 
-    public FooUnitTest() {
+    public CollectionToArrayListUnitTest() {
     }
     
     @BeforeClass
