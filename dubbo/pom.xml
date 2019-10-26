@@ -32,7 +32,6 @@
         <dubbo.version>2.5.7</dubbo.version>
         <zookeeper.version>3.4.11</zookeeper.version>
         <zkclient.version>0.10</zkclient.version>
-        <surefire.version>2.19.1</surefire.version>
     </properties>
 
 </project>
