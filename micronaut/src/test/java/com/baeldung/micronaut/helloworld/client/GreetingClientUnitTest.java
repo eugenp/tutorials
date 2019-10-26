@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class GreetingClientTest {
+public class GreetingClientUnitTest {
     private EmbeddedServer server;
     private GreetingClient client;
 
