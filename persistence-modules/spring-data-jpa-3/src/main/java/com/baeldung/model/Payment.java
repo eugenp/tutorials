@@ -1,4 +1,4 @@
-package com.baeldung.tx;
+package com.baeldung.model;
 
 import javax.persistence.*;
 
