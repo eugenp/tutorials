@@ -1,4 +1,4 @@
-package org.baeldung.java.shell;
+package com.baeldung.java.shell;
 
 import org.junit.Assert;
 import org.junit.Test;
