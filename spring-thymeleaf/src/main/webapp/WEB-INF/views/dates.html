@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Baeldung - dates</title>
+</head>
+<body>
+	<h1>Format ISO</h1>
+	<p th:text="${#dates.formatISO(standardDate)}"></p>
+	<p th:text="${#temporals.formatISO(localDateTime)}"></p>
+	<p th:text="${#temporals.formatISO(localDate)}"></p>
+	<p th:text="${#temporals.formatISO(timestamp)}"></p>
+	
+	<h1>Format manually</h1>
+	<p th:text="${#dates.format(standardDate, 'dd-MM-yyyy HH:mm')}"></p>
+	<p th:text="${#temporals.format(localDateTime, 'dd-MM-yyyy HH:mm')}"></p>
+	<p th:text="${#temporals.format(localDate, 'MM-yyyy')}"></p>
+	
+	<h1>Show only which day of a week</h1>
+	<p th:text="${#dates.day(standardDate)}"></p>
+	<p th:text="${#temporals.day(localDateTime)}"></p>
+	<p th:text="${#temporals.day(localDate)}"></p>
+	
+	<h1>Show the name of the week day</h1>
+	<p th:text="${#dates.dayOfWeekName(standardDate)}"></p>
+	<p th:text="${#temporals.dayOfWeekName(localDateTime)}"></p>
+	<p th:text="${#temporals.dayOfWeekName(localDate)}"></p>
+	
+	<h1>Show the second of the day</h1>
+	<p th:text="${#dates.second(standardDate)}"></p>
+	<p th:text="${#temporals.second(localDateTime)}"></p>
+	
+</body>
+</html>

@@ -1,0 +1,54 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="variablelist.as.table">
+<refmeta>
+<refentrytitle>variablelist.as.table</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>variablelist.as.table</refname>
+<refpurpose>Format <tag>variablelist</tag>s as tables?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="variablelist.as.table.frag">
+<xsl:param name="variablelist.as.table" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, <tag>variablelist</tag>s will be formatted as
+tables. A processing instruction exists to specify a particular width for the 
+column containing the <tag>term</tag>s:   
+<tag class="xmlpi">dbhtml term-width=".25in"</tag></para>
+
+<para>You can override this setting with a processing instruction as the
+child of <tag>variablelist</tag>: <tag class="xmlpi">dbhtml
+list-presentation="table"</tag> or <tag class="xmlpi">dbhtml
+list-presentation="list"</tag>.</para>
+
+<para>This parameter only applies to the HTML transformations. In the
+FO case, proper list markup is robust enough to handle the formatting.
+But see also <parameter>variablelist.as.blocks</parameter>.</para>
+
+<programlisting>  &lt;variablelist&gt;
+        &lt;?dbhtml list-presentation="table"?&gt;
+        &lt;?dbhtml term-width="1.5in"?&gt;
+        &lt;?dbfo list-presentation="list"?&gt;
+        &lt;?dbfo term-width="1in"?&gt;
+        &lt;varlistentry&gt;
+          &lt;term&gt;list&lt;/term&gt;
+          &lt;listitem&gt;
+                &lt;para&gt;
+                  Formatted as a table even if variablelist.as.table is set to 0.
+                &lt;/para&gt;
+          &lt;/listitem&gt;
+        &lt;/varlistentry&gt;
+  &lt;/variablelist&gt;</programlisting>
+
+</refsection>
+</refentry>
