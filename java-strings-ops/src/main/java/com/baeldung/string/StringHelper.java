@@ -12,10 +12,15 @@ class StringHelper {
     }
 
     static String removeLastCharOptional(String s) {
-        return Optional.ofNullable(s).filter(str -> str.length() != 0).map(str -> str.substring(0, str.length() - 1)).orElse(s);
+        return Optional.ofNullable(s)
+            .filter(str -> str.length() != 0)
+            .map(str -> str.substring(0, str.length() - 1))
+            .orElse(s);
     }
 
     static String removeLastCharRegexOptional(String s) {
-        return Optional.ofNullable(s).map(str -> str.replaceAll(".$", "")).orElse(s);
+        return Optional.ofNullable(s)
+            .map(str -> str.replaceAll(".$", ""))
+            .orElse(s);
     }
 }
