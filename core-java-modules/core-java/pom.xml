@@ -455,5 +455,6 @@
 
         <!-- instrumentation -->
         <javaassist.version>3.21.0-GA</javaassist.version>
+        <sun.tools.version>1.8.0</sun.tools.version>
     </properties>
 </project>
