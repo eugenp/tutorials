@@ -1,11 +1,11 @@
-package com.baeldung.lists
+package com.baeldung.find
 
-import com.baeldung.Person
+import com.baeldung.find.Person
 import org.junit.Test
 
 import static org.junit.Assert.*
 
-class ListUnitTest {
+class ListFindUnitTest {
 
     private final personList = [
       new Person("Regina", "Fitzpatrick", 25),

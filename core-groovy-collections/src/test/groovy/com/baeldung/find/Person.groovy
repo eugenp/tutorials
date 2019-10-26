@@ -1,4 +1,4 @@
-package com.baeldung
+package com.baeldung.find
 
 class Person {
     private String firstname

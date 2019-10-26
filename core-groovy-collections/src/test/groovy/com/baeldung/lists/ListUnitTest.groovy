@@ -1,9 +1,9 @@
-package com.baeldung.groovy.lists
+package com.baeldung.lists
 
 import static groovy.test.GroovyAssert.*
 import org.junit.Test
 
-class ListTest{
+class ListUnitTest {
 
     @Test
     void testCreateList() {
