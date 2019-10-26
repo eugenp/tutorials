@@ -3,7 +3,6 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.ddd</groupId>
     <artifactId>ddd</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>ddd</name>
     <packaging>jar</packaging>
     <description>DDD series examples</description>
@@ -35,7 +34,6 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
-            <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -85,8 +83,6 @@
 
     <properties>
         <joda-money.version>1.0.1</joda-money.version>
-        <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
-        <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
     </properties>
 	
 </project>

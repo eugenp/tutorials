@@ -1,16 +1,16 @@
 package com.baeldung.string;
 
-import org.apache.commons.lang3.StringUtils;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Objects;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 
 public class StringComparisonUnitTest {
 
     @Test
-    public void whenUsingComparisonOperator_ThenComparingStrings(){
+    public void whenUsingComparisonOperator_ThenComparingStrings() {
 
         String string1 = "using comparison operator";
         String string2 = "using comparison operator";
@@ -21,7 +21,7 @@ public class StringComparisonUnitTest {
     }
 
     @Test
-    public void whenUsingEqualsMethod_ThenComparingStrings(){
+    public void whenUsingEqualsMethod_ThenComparingStrings() {
 
         String string1 = "using equals method";
         String string2 = "using equals method";
@@ -37,7 +37,7 @@ public class StringComparisonUnitTest {
     }
 
     @Test
-    public void whenUsingEqualsIgnoreCase_ThenComparingStrings(){
+    public void whenUsingEqualsIgnoreCase_ThenComparingStrings() {
 
         String string1 = "using equals ignore case";
         String string2 = "USING EQUALS IGNORE CASE";
@@ -46,7 +46,7 @@ public class StringComparisonUnitTest {
     }
 
     @Test
-    public void whenUsingCompareTo_ThenComparingStrings(){
+    public void whenUsingCompareTo_ThenComparingStrings() {
 
         String author = "author";
         String book = "book";
@@ -58,7 +58,7 @@ public class StringComparisonUnitTest {
     }
 
     @Test
-    public void whenUsingCompareToIgnoreCase_ThenComparingStrings(){
+    public void whenUsingCompareToIgnoreCase_ThenComparingStrings() {
 
         String author = "Author";
         String book = "book";
@@ -70,7 +70,7 @@ public class StringComparisonUnitTest {
     }
 
     @Test
-    public void whenUsingObjectsEqualsMethod_ThenComparingStrings(){
+    public void whenUsingObjectsEqualsMethod_ThenComparingStrings() {
 
         String string1 = "using objects equals";
         String string2 = "using objects equals";
@@ -84,7 +84,7 @@ public class StringComparisonUnitTest {
     }
 
     @Test
-    public void whenUsingEqualsOfApacheCommons_ThenComparingStrings(){
+    public void whenUsingEqualsOfApacheCommons_ThenComparingStrings() {
 
         assertThat(StringUtils.equals(null, null)).isTrue();
         assertThat(StringUtils.equals(null, "equals method")).isFalse();
@@ -93,7 +93,7 @@ public class StringComparisonUnitTest {
     }
 
     @Test
-    public void whenUsingEqualsIgnoreCaseOfApacheCommons_ThenComparingStrings(){
+    public void whenUsingEqualsIgnoreCaseOfApacheCommons_ThenComparingStrings() {
 
         assertThat(StringUtils.equalsIgnoreCase(null, null)).isTrue();
         assertThat(StringUtils.equalsIgnoreCase(null, "equals method")).isFalse();
@@ -102,7 +102,7 @@ public class StringComparisonUnitTest {
     }
 
     @Test
-    public void whenUsingEqualsAnyOf_ThenComparingStrings(){
+    public void whenUsingEqualsAnyOf_ThenComparingStrings() {
 
         assertThat(StringUtils.equalsAny(null, null, null)).isTrue();
         assertThat(StringUtils.equalsAny("equals any", "equals any", "any")).isTrue();
@@ -112,18 +112,17 @@ public class StringComparisonUnitTest {
     }
 
     @Test
-    public void whenUsingEqualsAnyIgnoreCase_ThenComparingStrings(){
+    public void whenUsingEqualsAnyIgnoreCase_ThenComparingStrings() {
 
         assertThat(StringUtils.equalsAnyIgnoreCase(null, null, null)).isTrue();
         assertThat(StringUtils.equalsAnyIgnoreCase("equals any", "equals any", "any")).isTrue();
         assertThat(StringUtils.equalsAnyIgnoreCase("equals any", null, "equals any")).isTrue();
         assertThat(StringUtils.equalsAnyIgnoreCase(null, "equals", "any")).isFalse();
-        assertThat(StringUtils.equalsAnyIgnoreCase(
-                "equals any ignore case", "EQUALS ANY IGNORE CASE", "any")).isTrue();
+        assertThat(StringUtils.equalsAnyIgnoreCase("equals any ignore case", "EQUALS ANY IGNORE CASE", "any")).isTrue();
     }
 
     @Test
-    public void whenUsingCompare_thenComparingStringsWithNulls(){
+    public void whenUsingCompare_thenComparingStringsWithNulls() {
 
         assertThat(StringUtils.compare(null, null)).isEqualTo(0);
         assertThat(StringUtils.compare(null, "abc")).isEqualTo(-1);
@@ -134,7 +133,7 @@ public class StringComparisonUnitTest {
     }
 
     @Test
-    public void whenUsingCompareIgnoreCase_ThenComparingStringsWithNulls(){
+    public void whenUsingCompareIgnoreCase_ThenComparingStringsWithNulls() {
 
         assertThat(StringUtils.compareIgnoreCase(null, null)).isEqualTo(0);
         assertThat(StringUtils.compareIgnoreCase(null, "abc")).isEqualTo(-1);
@@ -145,7 +144,7 @@ public class StringComparisonUnitTest {
     }
 
     @Test
-    public void whenUsingCompareWithNullIsLessOption_ThenComparingStrings(){
+    public void whenUsingCompareWithNullIsLessOption_ThenComparingStrings() {
 
         assertThat(StringUtils.compare(null, "abc", true)).isEqualTo(-1);
         assertThat(StringUtils.compare(null, "abc", false)).isEqualTo(1);

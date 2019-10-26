@@ -1,6 +1,6 @@
 package com.baeldung.date;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,7 +16,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 public class DateDiffUnitTest {
 
@@ -31,14 +31,14 @@ public class DateDiffUnitTest {
 
         assertEquals(diff, 6);
     }
-    
+
     @Test
     public void givenTwoDatesInJava8_whenDifferentiating_thenWeGetSix() {
         LocalDate now = LocalDate.now();
         LocalDate sixDaysBehind = now.minusDays(6);
 
         Period period = Period.between(now, sixDaysBehind);
-        int diff = period.getDays();
+        int diff = Math.abs(period.getDays());
 
         assertEquals(diff, 6);
     }
@@ -68,7 +68,8 @@ public class DateDiffUnitTest {
     public void givenTwoZonedDateTimesInJava8_whenDifferentiating_thenWeGetSix() {
         LocalDateTime ldt = LocalDateTime.now();
         ZonedDateTime now = ldt.atZone(ZoneId.of("America/Montreal"));
-        ZonedDateTime sixDaysBehind = now.withZoneSameInstant(ZoneId.of("Asia/Singapore")).minusDays(6);
+        ZonedDateTime sixDaysBehind = now.withZoneSameInstant(ZoneId.of("Asia/Singapore"))
+            .minusDays(6);
         long diff = ChronoUnit.DAYS.between(sixDaysBehind, now);
         assertEquals(diff, 6);
     }

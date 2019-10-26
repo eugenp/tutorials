@@ -47,16 +47,6 @@
             <version>${avaitility.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh-generator-annprocess.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -78,8 +68,6 @@
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <avaitility.version>1.7.0</avaitility.version>
-        <jmh-core.version>1.19</jmh-core.version>
-        <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
     </properties>
 
 </project>

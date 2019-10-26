@@ -2,6 +2,7 @@ package com.baeldung.datetime;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.time.temporal.ChronoField;
 
 public class UseLocalDateTime {
@@ -21,4 +22,7 @@ public class UseLocalDateTime {
         return endOfDate;
     }
 
+    LocalDateTime ofEpochSecond(int epochSecond, ZoneOffset zoneOffset) {
+        return LocalDateTime.ofEpochSecond(epochSecond, 0, zoneOffset);
+    }
 }

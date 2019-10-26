@@ -30,12 +30,6 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${openjdk.jmh.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
     <properties>
