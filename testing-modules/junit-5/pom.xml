@@ -141,6 +141,7 @@
         <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <spring.version>5.0.1.RELEASE</spring.version>
+        <surefire.report.plugin>3.0.0-M3</surefire.report.plugin>
     </properties>
 
 </project>

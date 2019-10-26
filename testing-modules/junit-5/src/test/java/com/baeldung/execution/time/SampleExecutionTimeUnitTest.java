@@ -1,44 +1,36 @@
 package com.baeldung.execution.time;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
-public class SampleExecutionTimeUnitTest {
-
-    @Test
-    public void someUnitTest() {
-
-        assertTrue(this::doSomething);
-    }
+class SampleExecutionTimeUnitTest {
 
     @Test
-    public void someIntegrationTest() {
+    void someUnitTest() {
 
-        try {
-            //simulate an operation that may take 5 seconds
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            fail();
-        }
-
-        assertTrue(this::doSomething);
+        assertTrue(doSomething());
     }
 
-    @Test
-    public void someEndToEndTest() {
-
-        try {
-            //simulate an operation that may take 10 seconds
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            fail();
-        }
-
-        assertTrue(this::doSomething);
-
-    }
+//    @Test
+//    void someIntegrationTest() throws InterruptedException {
+//
+//        //simulate an operation that may take 5 seconds
+//        Thread.sleep(5000);
+//
+//        assertTrue(doSomething());
+//    }
+//
+//    @Test
+//    void someEndToEndTest() throws InterruptedException {
+//
+//        //simulate an operation that may take 10 seconds
+//        Thread.sleep(10000);
+//
+//        assertTrue(doSomething());
+//
+//    }
 
     private boolean doSomething() {
         return true;
