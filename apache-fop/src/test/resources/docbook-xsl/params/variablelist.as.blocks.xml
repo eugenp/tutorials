@@ -1,0 +1,62 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="variablelist.as.blocks">
+<refmeta>
+<refentrytitle>variablelist.as.blocks</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>variablelist.as.blocks</refname>
+<refpurpose>Format <tag>variablelist</tag>s lists as blocks?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="variablelist.as.blocks.frag">
+<xsl:param name="variablelist.as.blocks" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, <tag>variablelist</tag>s will be formatted as
+blocks.</para>
+
+<para>If you have long terms, proper list markup in the FO case may produce
+unattractive lists. By setting this parameter, you can force the stylesheets
+to produce block markup instead of proper lists.</para>
+
+<para>You can override this setting with a processing instruction as the
+child of <tag>variablelist</tag>: <tag class="xmlpi">dbfo
+list-presentation="blocks"</tag> or <tag class="xmlpi">dbfo
+list-presentation="list"</tag>.</para>
+
+<para>When using <literal>list-presentation="list"</literal>,
+you can also control the amount of space used for the <tag>term</tag>s with 
+the <tag class="xmlpi">dbfo term-width=".25in"</tag> processing instruction,
+the <tag class="attribute">termlength</tag> attribute on <tag>variablelist</tag>,
+or allow the stylesheets to attempt to calculate the amount of space to leave based on the 
+number of letters in the longest term.  
+</para>
+
+<programlisting>  &lt;variablelist&gt;
+        &lt;?dbfo list-presentation="list"?&gt;
+        &lt;?dbfo term-width="1.5in"?&gt;
+        &lt;?dbhtml list-presentation="table"?&gt;
+        &lt;?dbhtml term-width="1.5in"?&gt;
+        &lt;varlistentry&gt;
+          &lt;term&gt;list&lt;/term&gt;
+          &lt;listitem&gt;
+                &lt;para&gt;
+                  Formatted as a list even if variablelist.as.blocks is set to 1.
+                &lt;/para&gt;
+          &lt;/listitem&gt;
+        &lt;/varlistentry&gt;
+  &lt;/variablelist&gt;</programlisting>
+
+
+</refsection>
+
+</refentry>

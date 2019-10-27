@@ -1,0 +1,34 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="fop1.extensions">
+<refmeta>
+<refentrytitle>fop1.extensions</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>fop1.extensions</refname>
+<refpurpose>Enable extensions for FOP version 0.90 and later</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="fop1.extensions.frag"><xsl:param name="fop1.extensions" select="0"/></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, extensions for 
+<link xlink:href="http://xml.apache.org/fop/">FOP</link>
+version 0.90 and later will be used.
+</para>
+
+<para>This parameter can also affect which graphics file formats
+are supported.</para>
+
+<para>The original <parameter>fop.extensions</parameter> parameter
+should still be used for FOP version 0.20.5 and earlier.
+</para>
+</refsection>
+</refentry>

@@ -1,0 +1,31 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="callout.graphics.path">
+<refmeta>
+<refentrytitle>callout.graphics.path</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>callout.graphics.path</refname>
+<refpurpose>Path to callout graphics</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="callout.graphics.path.frag">
+<xsl:param name="callout.graphics.path">images/callouts/</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Sets the path to the directory holding the callout graphics. his
+location is normally relative to the output html directory. see
+base.dir. Always terminate the directory with / since the graphic file
+is appended to this string, hence needs the separator.
+</para>
+
+</refsection>
+</refentry>
