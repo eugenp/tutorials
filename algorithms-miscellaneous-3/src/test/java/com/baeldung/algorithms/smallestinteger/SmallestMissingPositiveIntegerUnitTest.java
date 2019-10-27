@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SmallestMissingPositiveIntegerTest {
+class SmallestMissingPositiveIntegerUnitTest {
     @Test
     void givenArrayWithThreeMissing_whenSearchInSortedArray_thenThree() {
         int[] input = new int[] {0, 1, 2, 4, 5};
