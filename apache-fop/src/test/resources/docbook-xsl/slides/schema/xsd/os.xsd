@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: pool.rnc 7466 2007-09-27 14:03:55Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docbook.org/ns/docbook" xmlns:dbs="http://docbook.org/ns/docbook-slides" xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <xs:import namespace="http://docbook.org/ns/docbook-slides" schemaLocation="slides.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:element name="db.synopsis.blocks" abstract="true"/>
+  <xs:element name="db.os.inlines" abstract="true"/>
+  <!-- ====================================================================== -->
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.prompt.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.prompt.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="prompt" substitutionGroup="db:db.os.inlines">
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.prompt.inlines"/>
+      <xs:attributeGroup ref="db:db.prompt.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.envar.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.envar.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="envar" substitutionGroup="db:db.os.inlines">
+    <xs:complexType mixed="true">
+      <xs:group ref="db:db._text"/>
+      <xs:attributeGroup ref="db:db.envar.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:simpleType name="db.filename.class.enumeration">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="devicefile">
+        <xs:annotation>
+          <xs:documentation>A device</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="directory">
+        <xs:annotation>
+          <xs:documentation>A directory</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="extension">
+        <xs:annotation>
+          <xs:documentation>A filename extension</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="headerfile">
+        <xs:annotation>
+          <xs:documentation>A header file (as for a programming language)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="libraryfile">
+        <xs:annotation>
+          <xs:documentation>A library file</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="partition">
+        <xs:annotation>
+          <xs:documentation>A partition (as of a hard disk)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="symlink">
+        <xs:annotation>
+          <xs:documentation>A symbolic link</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="db.filename.class.attribute">
+    <xs:attribute name="class" use="required" type="db:db.filename.class.enumeration"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.filename.path.attribute">
+    <xs:attribute name="path" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.filename.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.filename.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="path"/>
+    <xs:attribute name="class" type="db:db.filename.class.enumeration"/>
+  </xs:attributeGroup>
+  <xs:element name="filename" substitutionGroup="db:db.os.inlines">
+    <xs:complexType mixed="true">
+      <xs:group ref="db:db._text"/>
+      <xs:attributeGroup ref="db:db.filename.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.command.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.command.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="command" substitutionGroup="db:db.os.inlines">
+    <xs:complexType mixed="true">
+      <xs:group ref="db:db._text"/>
+      <xs:attributeGroup ref="db:db.command.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.computeroutput.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.computeroutput.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="computeroutput" substitutionGroup="db:db.os.inlines">
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.computeroutput.inlines"/>
+      <xs:attributeGroup ref="db:db.computeroutput.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.userinput.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.userinput.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="userinput" substitutionGroup="db:db.os.inlines">
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.userinput.inlines"/>
+      <xs:attributeGroup ref="db:db.userinput.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.cmdsynopsis.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.cmdsynopsis.sepchar.attribute">
+    <xs:attribute name="sepchar" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.cmdsynopsis.cmdlength.attribute">
+    <xs:attribute name="cmdlength" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.cmdsynopsis.label.attribute">
+    <xs:attributeGroup ref="db:db.label.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.cmdsynopsis.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="sepchar"/>
+    <xs:attribute name="cmdlength"/>
+    <xs:attribute name="label"/>
+  </xs:attributeGroup>
+  <xs:group name="db.cmdsynopsis.info">
+    <xs:sequence>
+      <xs:group ref="db:db._info.title.forbidden"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="cmdsynopsis" substitutionGroup="db:db.synopsis.blocks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="db:db.cmdsynopsis.info"/>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="db:command"/>
+          <xs:element ref="db:arg"/>
+          <xs:group ref="db:db.group"/>
+          <xs:element ref="db:sbr"/>
+        </xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="db:synopfragment"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="db:db.cmdsynopsis.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:simpleType name="db.rep.enumeration">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="norepeat">
+        <xs:annotation>
+          <xs:documentation>Can not be repeated.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="repeat">
+        <xs:annotation>
+          <xs:documentation>Can be repeated.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="db.rep.attribute">
+    <xs:attribute name="rep" use="required" type="db:db.rep.enumeration"/>
+  </xs:attributeGroup>
+  <xs:simpleType name="db.choice.enumeration">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="opt">
+        <xs:annotation>
+          <xs:documentation>Formatted to indicate that it is optional.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="plain">
+        <xs:annotation>
+          <xs:documentation>Formatted without indication.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="req">
+        <xs:annotation>
+          <xs:documentation>Formatted to indicate that it is required.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="db.choice.opt.attribute">
+    <xs:attribute name="choice" use="required" type="db:db.choice.enumeration"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.choice.req.attribute">
+    <xs:attribute name="choice" use="required" type="db:db.choice.enumeration"/>
+  </xs:attributeGroup>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.arg.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.arg.rep.attribute">
+    <xs:attributeGroup ref="db:db.rep.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.arg.choice.attribute">
+    <xs:attributeGroup ref="db:db.choice.opt.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.arg.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="rep" type="db:db.rep.enumeration"/>
+    <xs:attribute name="choice" type="db:db.choice.enumeration"/>
+  </xs:attributeGroup>
+  <xs:element name="arg">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="db:db._text"/>
+        <xs:element ref="db:arg"/>
+        <xs:group ref="db:db.group"/>
+        <xs:element ref="db:option"/>
+        <xs:element ref="db:synopfragmentref"/>
+        <xs:element ref="db:sbr"/>
+      </xs:choice>
+      <xs:attributeGroup ref="db:db.arg.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.group.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.group.rep.attribute">
+    <xs:attributeGroup ref="db:db.rep.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.group.choice.attribute">
+    <xs:attributeGroup ref="db:db.choice.opt.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.group.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="rep" type="db:db.rep.enumeration"/>
+    <xs:attribute name="choice" type="db:db.choice.enumeration"/>
+  </xs:attributeGroup>
+  <xs:group name="db.group">
+    <xs:sequence>
+      <xs:element name="group">
+        <xs:complexType>
+          <xs:choice maxOccurs="unbounded">
+            <xs:element ref="db:arg"/>
+            <xs:group ref="db:db.group"/>
+            <xs:element ref="db:option"/>
+            <xs:element ref="db:synopfragmentref"/>
+            <xs:element ref="db:replaceable"/>
+            <xs:element ref="db:sbr"/>
+          </xs:choice>
+          <xs:attributeGroup ref="db:db.group.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.sbr.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.sbr.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="sbr">
+    <xs:complexType>
+      <xs:attributeGroup ref="db:db.sbr.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.synopfragment.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.synopfragment.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="synopfragment">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="db:arg"/>
+        <xs:group ref="db:db.group"/>
+      </xs:choice>
+      <xs:attributeGroup ref="db:db.synopfragment.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.synopfragmentref.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.synopfragmentref.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.linkend.attribute"/>
+  </xs:attributeGroup>
+  <xs:element name="synopfragmentref">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="db:db.synopfragmentref.attlist"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

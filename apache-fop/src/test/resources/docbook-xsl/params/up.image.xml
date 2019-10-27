@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="up.image">
+<refmeta>
+<refentrytitle>up.image</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>up.image</refname>
+<refpurpose>Up-arrow image</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="up.image.frag">
+<xsl:param name="up.image">active/nav-up.png</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies the filename of the upward-pointing navigation arrow.</para>
+
+</refsection>
+</refentry>
