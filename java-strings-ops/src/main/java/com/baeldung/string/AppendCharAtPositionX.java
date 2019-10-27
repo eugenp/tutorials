@@ -8,7 +8,7 @@ package com.baeldung.string;
  *
  */
 public class AppendCharAtPositionX {
-    
+
     public String addCharUsingCharArray(String str, char ch, int position) {
         validate(str, position);
         int len = str.length();
@@ -30,15 +30,14 @@ public class AppendCharAtPositionX {
         sb.insert(position, ch);
         return sb.toString();
     }
-    
+
     private void validate(String str, int position) {
         if (str == null) {
             throw new IllegalArgumentException("Str should not be null");
         }
         int len = str.length();
         if (position < 0 || position > len) {
-            throw new IllegalArgumentException("position[" + position + "] should be " 
-                            + "in the range 0.." + len + " for string " + str);
+            throw new IllegalArgumentException("position[" + position + "] should be " + "in the range 0.." + len + " for string " + str);
         }
     }
 

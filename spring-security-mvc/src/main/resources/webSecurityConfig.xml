@@ -7,7 +7,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd"
 >
 
-    <http create-session="always" use-expressions="true">
+    <http create-session="always" use-expressions="true" disable-url-rewriting="true">
         <intercept-url pattern="/anonymous*" access="isAnonymous()"/>
         <intercept-url pattern="/login*" access="permitAll"/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>
@@ -22,10 +22,9 @@
         <session-management invalid-session-url="/invalidSession.html">
             <concurrency-control max-sessions="2" expired-url="/sessionExpired.html"/>
         </session-management>
-
     </http>
 
-    <beans:bean id="myAuthenticationSuccessHandler" class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler"/>
+    <beans:bean id="myAuthenticationSuccessHandler" class="com.baeldung.security.MySimpleUrlAuthenticationSuccessHandler"/>
 
     <authentication-manager>
         <authentication-provider>
