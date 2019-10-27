@@ -18,12 +18,12 @@
         <module>apache-cayenne</module>
         <module>core-java-persistence</module>
         <module>deltaspike</module>
-        <module>elasticsearch</module>
         <module>flyway</module>
         <module>hbase</module>
         <module>hibernate5</module>
         <module>hibernate-ogm</module>
         <module>hibernate-mapping</module>
+        <module>hibernate5-2</module>
         <module>influxdb</module>
         <module>java-cassandra</module>
         <module>java-cockroachdb</module>
@@ -31,7 +31,7 @@
         <module>java-jpa</module>
         <module>java-jpa-2</module>
         <module>java-mongodb</module>
-        <module>java-sql2o</module>
+        <module>persistence-libraries</module>
         <module>jnosql</module>
         <module>liquibase</module>
         <module>orientdb</module>
@@ -48,7 +48,9 @@
         <module>spring-data-eclipselink</module>
         <module>spring-data-elasticsearch</module>
         <module>spring-data-gemfire</module>
+        <module>spring-data-geode</module>
         <module>spring-data-jpa</module>
+        <module>spring-data-jpa-3</module>
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module> <!-- long -->
         <module>spring-data-neo4j</module>
@@ -60,6 +62,7 @@
         <module>spring-jpa</module>
         <module>spring-persistence-simple</module>
         <module>jpa-hibernate-cascade-type</module>
-				<module>r2dbc</module>
+        <module>r2dbc</module>
+        <module>spring-boot-jdbi</module>
     </modules>
 </project>

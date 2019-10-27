@@ -2,6 +2,7 @@ package com.baeldung.graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
@@ -29,7 +30,7 @@ public class Graph {
         while (!stack.isEmpty()) {
             int current = stack.pop();
             isVisited[current] = true;
-            System.out.print(" " + current);
+            visit(current);
             for (int dest : adjVertices.get(current)) {
                 if (!isVisited[dest])
                     stack.push(dest);
@@ -44,29 +45,30 @@ public class Graph {
 
     private void dfsRecursive(int current, boolean[] isVisited) {
         isVisited[current] = true;
-        System.out.print(" " + current);
+        visit(current);
         for (int dest : adjVertices.get(current)) {
             if (!isVisited[dest])
                 dfsRecursive(dest, isVisited);
         }
     }
 
-    public void topologicalSort(int start) {
-        Stack<Integer> result = new Stack<Integer>();
+    public List<Integer> topologicalSort(int start) {
+        LinkedList<Integer> result = new LinkedList<Integer>();
         boolean[] isVisited = new boolean[adjVertices.size()];
         topologicalSortRecursive(start, isVisited, result);
-        while (!result.isEmpty()) {
-            System.out.print(" " + result.pop());
-        }
+        return result;
     }
 
-    private void topologicalSortRecursive(int current, boolean[] isVisited, Stack<Integer> result) {
+    private void topologicalSortRecursive(int current, boolean[] isVisited, LinkedList<Integer> result) {
         isVisited[current] = true;
         for (int dest : adjVertices.get(current)) {
             if (!isVisited[dest])
                 topologicalSortRecursive(dest, isVisited, result);
         }
-        result.push(current);
+        result.addFirst(current);
     }
 
+    private void visit(int value) {
+        System.out.print(" " + value);        
+    }
 }

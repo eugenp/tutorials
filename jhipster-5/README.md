@@ -1,3 +1,3 @@
-## Relevant articles:
+## JHipster 5
 
-- [Creating New APIs and Views in JHipster](https://www.baeldung.com/jhipster-new-apis-and-views)
+This module contains articles about JHipster 5. This is an aggregator module, articles are in the relevant submodules.

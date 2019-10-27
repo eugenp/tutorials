@@ -7,8 +7,8 @@
 
 	<persistence-unit name="java-jpa-scheduled-day">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>com.baeldung.sqlresultsetmapping.ScheduledDay</class>
-		<class>com.baeldung.sqlresultsetmapping.Employee</class>
+		<class>com.baeldung.jpa.sqlresultsetmapping.ScheduledDay</class>
+		<class>com.baeldung.jpa.sqlresultsetmapping.Employee</class>
 		<class>com.baeldung.jpa.basicannotation.Course</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
@@ -115,77 +115,13 @@
 		</properties>
 	</persistence-unit>
 
-	<persistence-unit name="jpa-h2-criteria">
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>com.baeldung.jpa.criteria.entity.Item</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-		<properties>
-			<property name="javax.persistence.jdbc.driver"
-				value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:mem:test" />
-			<property name="javax.persistence.jdbc.user" value="sa" />
-			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.H2Dialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="show_sql" value="true" />
-			<property name="hibernate.temp.use_jdbc_metadata_defaults"
-				value="false" />
-			<property name="javax.persistence.sql-load-script-source"
-				value="item.sql" />
-		</properties>
-	</persistence-unit>
-
-	<persistence-unit name="jpa-query-types">
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>com.baeldung.jpa.querytypes.UserEntity</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-		<properties>
-			<property name="javax.persistence.jdbc.driver"
-				value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:mem:test" />
-			<property name="javax.persistence.jdbc.user" value="sa" />
-			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.H2Dialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="show_sql" value="true" />
-			<property name="hibernate.temp.use_jdbc_metadata_defaults"
-				value="false" />
-			<property name="javax.persistence.sql-load-script-source"
-				value="users.sql" />
-		</properties>
-	</persistence-unit>
-
-	<persistence-unit name="entity-default-values">
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>com.baeldung.jpa.defaultvalues.User</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-		<properties>
-			<property name="javax.persistence.jdbc.driver"
-				value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:mem:test" />
-			<property name="javax.persistence.jdbc.user" value="sa" />
-			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.H2Dialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="show_sql" value="true" />
-			<property name="hibernate.temp.use_jdbc_metadata_defaults"
-				value="false" />
-		</properties>
-	</persistence-unit>
-
 	<persistence-unit name="jpa-entity-definition">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>com.baeldung.jpa.entity.Student</class>
-		<class>com.baeldung.jpa.entity.Book</class>
-		<class>com.baeldung.jpa.entity.BookId</class>
-		<class>com.baeldung.jpa.entity.Account</class>
-		<class>com.baeldung.jpa.entity.AccountId</class>
+		<class>com.baeldung.jpa.primarykeys.Book</class>
+		<class>com.baeldung.jpa.primarykeys.BookId</class>
+		<class>com.baeldung.jpa.primarykeys.Account</class>
+		<class>com.baeldung.jpa.primarykeys.AccountId</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
@@ -203,47 +139,4 @@
 		</properties>
 	</persistence-unit>
 
-	<persistence-unit name="jpa-projections">
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>com.baeldung.jpa.projections.Product</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-		<properties>
-			<property name="javax.persistence.jdbc.driver"
-				value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:mem:test" />
-			<property name="javax.persistence.jdbc.user" value="sa" />
-			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.H2Dialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="show_sql" value="true" />
-			<property name="hibernate.temp.use_jdbc_metadata_defaults"
-				value="false" />
-			<property name="javax.persistence.sql-load-script-source"
-				value="products_jpa.sql" />
-		</properties>
-	</persistence-unit>
-	
-	<persistence-unit name="jpa-h2-queryparams" transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>com.baeldung.jpa.queryparams.Employee</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-		<properties>
-			<property name="javax.persistence.jdbc.driver"
-				value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:mem:test" />
-			<property name="javax.persistence.jdbc.user" value="sa" />
-			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.H2Dialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="show_sql" value="true" />
-			<property name="hibernate.temp.use_jdbc_metadata_defaults"
-				value="false" />
-			<property name="javax.persistence.sql-load-script-source"
-				value="employees2.sql" />
-		</properties>
-	</persistence-unit>
 </persistence>

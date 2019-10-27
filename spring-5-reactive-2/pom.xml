@@ -23,14 +23,36 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.projectreactor</groupId>
+            <artifactId>reactor-spring</artifactId>
+            <version>${reactor-spring.version}</version>
+        </dependency>
+        
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+         <dependency>
+        	<groupId>com.github.tomakehurst</groupId>
+        	<artifactId>wiremock-jre8</artifactId>
+        	<version>${wiremock.version}</version>
+        	<scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -46,5 +68,10 @@
             </plugin>
         </plugins>
     </build>
+    
+    <properties>
+        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
+    	<wiremock.version>2.24.0</wiremock.version>
+    </properties>
 
 </project>

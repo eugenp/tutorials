@@ -1,6 +1,6 @@
-=========
+## Core Java IO
 
-## Core Java IO Cookbooks and Examples
+This module contains articles about core Java input and output (IO)
 
 ### Relevant Articles: 
 - [How to Read a Large File Efficiently with Java](http://www.baeldung.com/java-read-lines-large-file)
@@ -41,3 +41,5 @@
 - [List Files in a Directory in Java](https://www.baeldung.com/java-list-directory-files)
 - [Java InputStream to Byte Array and ByteBuffer](https://www.baeldung.com/convert-input-stream-to-array-of-bytes)
 - [Introduction to the Java NIO Selector](https://www.baeldung.com/java-nio-selector)
+- [How to Avoid the Java FileNotFoundException When Loading Resources](https://www.baeldung.com/java-classpath-resource-cannot-be-opened)
+- [[More -->]](/core-java-modules/core-java-io-2)
