@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="ASCII"?>
+<book version="5.0" xml:id="slides_xhtml_doc">
+<info>
+<title>Slides XHTML Parameter Reference</title>
+<releaseinfo role="meta">
+$Id$
+</releaseinfo>
+<author>
+  <personname>
+    <surname>K&#246;vesd&#225;n</surname>
+    <firstname>G&#225;bor</firstname>
+  </personname>
+</author>
+<copyright>
+  <year>2012</year>
+  <holder>G&#225;bor K&#246;vesd&#225;n</holder>
+</copyright>
+<abstract>
+  <para>This is reference documentation for all user-configurable
+    parameters in the DocBook XSL Slides XHTML stylesheet.
+    Note that the Slides stylesheet for XHTML output is a
+    customization layer of the DocBook XSL XHTML stylesheet.
+    Therefore, in addition to the slides-specific parameters
+    listed in this section, you can also use a number of
+    <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../fo/">XHTML stylesheet
+    parameters</link> to control Slides XHTML output.</para>
+</abstract>
+</info>
+<reference xml:id="xhtml">
+  <title>XHTML: General Params</title>
+
+<refentry version="5.0" xml:id="disable.collapsible">
+<refmeta>
+<refentrytitle>disable.collapsible</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>disable.collapsible</refname>
+<refpurpose>Specifies whether collapsible rendering is enabled</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="disable.collapsible.frag">
+    &lt;xsl:param name="disable.collapsible"&gt;0&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether elements marked as
+  collapsible are generated as such in the output document.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="disable.incremental">
+<refmeta>
+<refentrytitle>disable.incremental</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>disable.incremental</refname>
+<refpurpose>Specifies whether incremental rendering is enabled</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="disable.incremental.frag">
+    &lt;xsl:param name="disable.incremental"&gt;0&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether elements marked as
+  incremental are generated as such in the output document.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.copyright">
+<refmeta>
+<refentrytitle>generate.copyright</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.copyright</refname>
+<refpurpose>Specifies whether copyright is generated</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.copyright.frag">
+    &lt;xsl:param name="generate.copyright"&gt;1&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether the copyright info is generated
+  in the footer area.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.foilgroup.numbered.toc">
+<refmeta>
+<refentrytitle>generate.foilgroup.numbered.toc</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.foilgroup.numbered.toc</refname>
+<refpurpose>Specifies whether foilgroups have a numbered TOC</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.foilgroup.numbered.toc.frag">
+    &lt;xsl:param name="generate.foilgroup.numbered.toc"&gt;1&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If TOC generation is turned on, this parameter specifies
+  whether foilgroups have a numbered TOC. If disabled, TOC items
+  will be bulleted, not numbered.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.foilgroup.toc">
+<refmeta>
+<refentrytitle>generate.foilgroup.toc</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.foilgroup.toc</refname>
+<refpurpose>Specifies whether foilgroups have a TOC</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.foilgroup.toc.frag">
+    &lt;xsl:param name="generate.foilgroup.toc"&gt;1&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether foilgroups will
+  contain a table of contents of the included foils.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.handoutnotes">
+<refmeta>
+<refentrytitle>generate.handoutnotes</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.handoutnotes</refname>
+<refpurpose>Specifies whether handoutnotes are generated</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.handoutnotes.frag">
+    &lt;xsl:param name="generate.handoutnotes"&gt;0&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether handoutnotes shall
+  be generated to the output.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.pubdate">
+<refmeta>
+<refentrytitle>generate.pubdate</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.pubdate</refname>
+<refpurpose>Specifies whether the pubdate is generated</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.pubdate.frag">
+    &lt;xsl:param name="generate.pubdate"&gt;1&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether the publication date is generated
+  in the footer area.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.speakernotes">
+<refmeta>
+<refentrytitle>generate.speakernotes</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.speakernotes</refname>
+<refpurpose>Specifies whether speakernotes are generated</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.speakernotes.frag">
+    &lt;xsl:param name="generate.speakernotes"&gt;0&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether speakernotes shall
+  be generated to the output.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.titlepage">
+<refmeta>
+<refentrytitle>generate.titlepage</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.titlepage</refname>
+<refpurpose>Specifies whether titlepage is generated</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.titlepage.frag">
+    &lt;xsl:param name="generate.titlepage"&gt;1&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether titlepage is generated
+  for the presentation.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="mml.embedding.mode">
+<refmeta>
+<refentrytitle>mml.embedding.mode</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">inline</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">object</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">image</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">link</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">iframe</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">embed</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>mml.embedding.mode</refname>
+<refpurpose>Specifies how inline MathML is processed</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="mml.embedding.mode.frag">
+    &lt;xsl:param name="mml.embedding.mode"&gt;inline&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies how inline MathML formulas
+  are embedded into the output document.</para>
+
+<variablelist>
+  <varlistentry>
+    <term>inline</term>
+    <listitem>
+      <para>Content is copied over inline with its namespace.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>object</term>
+    <listitem>
+      <para>Content is extracted into an externel file and referenced
+        by an <markup>object</markup> element.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>image</term>
+    <listitem>
+      <para>Content is extracted into an externel file and referenced
+        by an <markup>img</markup> element.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>link</term>
+    <listitem>
+      <para>Content is extracted into an externel file and referenced
+        by an <markup>a</markup> element.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>iframe</term>
+    <listitem>
+      <para>Content is extracted into an externel file and referenced
+        by an <markup>iframe</markup> element.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>embed</term>
+    <listitem>
+      <para>Content is extracted into an externel file and referenced
+        by an <markup>embed</markup> element.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="svg.embedding.mode">
+<refmeta>
+<refentrytitle>svg.embedding.mode</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">inline</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">object</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">image</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">link</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">iframe</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">embed</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>svg.embedding.mode</refname>
+<refpurpose>Specifies how inline SVG is processed</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="svg.embedding.mode.frag">
+    &lt;xsl:param name="svg.embedding.mode"&gt;object&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies how inline SVG graphics
+  are embedded into the output document.</para>
+
+<variablelist>
+  <varlistentry>
+    <term>inline</term>
+    <listitem>
+      <para>Content is copied over inline with its namespace.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>object</term>
+    <listitem>
+      <para>Content is extracted into an externel file and referenced
+        by an <markup>object</markup> element.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>image</term>
+    <listitem>
+      <para>Content is extracted into an externel file and referenced
+        by an <markup>img</markup> element.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>link</term>
+    <listitem>
+      <para>Content is extracted into an externel file and referenced
+        by an <markup>a</markup> element.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>iframe</term>
+    <listitem>
+      <para>Content is extracted into an externel file and referenced
+        by an <markup>iframe</markup> element.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>embed</term>
+    <listitem>
+      <para>Content is extracted into an externel file and referenced
+        by an <markup>embed</markup> element.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="user.css">
+<refmeta>
+<refentrytitle>user.css</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>user.css</refname>
+<refpurpose>Specifies the path to user-supplied CSS</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="user.css.frag">
+    &lt;xsl:param name="user.css"&gt;user.css&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies the path from where the
+  CSS styling is read.  This file can be used to
+  add additional styling to the slides.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="wrap.slidecontent">
+<refmeta>
+<refentrytitle>wrap.slidecontent</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>wrap.slidecontent</refname>
+<refpurpose>Specifies whether the foil content is wrapped into a div</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="wrap.slidecontent.frag">
+    &lt;xsl:param name="wrap.slidecontent"&gt;0&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether the foil content is wrapped into
+  a div so that additional styling can be applied.</para>
+
+</refsection>
+</refentry>
+
+</reference>
+
+<reference xml:id="s5">
+  <title>XHTML: S5 Params</title>
+
+<refentry version="5.0" xml:id="s5.controls">
+<refmeta>
+<refentrytitle>s5.controls</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>s5.controls</refname>
+<refpurpose>Specifies whether S5 controls are visible</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="s5.controls.frag">
+    &lt;xsl:param name="s5.controls"&gt;0&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether S5 navigation controls are
+  visible by default.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="s5.defaultview">
+<refmeta>
+<refentrytitle>s5.defaultview</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">slideshow</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">outline</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>s5.defaultview</refname>
+<refpurpose>Specifies the default S5 view</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="s5.defaultview.frag">
+    &lt;xsl:param name="s5.defaultview"&gt;slideshow&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies, which is the default view
+  in the generated S5 presentation.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="s5.opera.css">
+<refmeta>
+<refentrytitle>s5.opera.css</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>s5.opera.css</refname>
+<refpurpose>Specifies the name of the S5 Opera-specific CSS file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="s5.opera.css.frag">
+    &lt;xsl:param name="s5.opera.css"&gt;opera.css&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies the name of the S5 Opera-specific
+  CSS file.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="s5.outline.css">
+<refmeta>
+<refentrytitle>s5.outline.css</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>s5.outline.css</refname>
+<refpurpose>Specifies the name of the S5 outline CSS file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="s5.outline.css.frag">
+    &lt;xsl:param name="s5.outline.css"&gt;outline.css&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies the name of the S5 outline CSS file.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="s5.path.prefix">
+<refmeta>
+<refentrytitle>s5.path.prefix</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">uri</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>s5.path.prefix</refname>
+<refpurpose>Specifies the path to S5 files</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="s5.path.prefix.frag">
+    &lt;xsl:param name="s5.path.prefix"&gt;files/s5/ui/default/&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies the path where S5 CSS and
+  JavaScript files reside. All the CSS and JavaScript paths
+  will be generated relative to this directory.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="s5.print.css">
+<refmeta>
+<refentrytitle>s5.print.css</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>s5.print.css</refname>
+<refpurpose>Specifies the name of the S5 print CSS file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="s5.print.css.frag">
+    &lt;xsl:param name="s5.print.css"&gt;print.css&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies the name of the S5 print CSS file.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="s5.slides.css">
+<refmeta>
+<refentrytitle>s5.slides.css</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>s5.slides.css</refname>
+<refpurpose>Specifies the name of the S5 slides CSS file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="s5.slides.css.frag">
+    &lt;xsl:param name="s5.slides.css"&gt;slides.css&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies the name of the S5 slides CSS file.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="s5.slides.js">
+<refmeta>
+<refentrytitle>s5.slides.js</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>s5.slides.js</refname>
+<refpurpose>Specifies the name of the S5 slides JavaScript file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="s5.slides.js.frag">
+    &lt;xsl:param name="s5.slides.js"&gt;slides.js&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies the name of the S5 slides JavaScript
+  file.</para>
+
+</refsection>
+</refentry>
+
+</reference>
+
+<reference xml:id="slidy">
+  <title>XHTML: Slidy Params</title>
+
+<refentry version="5.0" xml:id="slidy.duration">
+<refmeta>
+<refentrytitle>slidy.duration</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">integer</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slidy.duration</refname>
+<refpurpose>Specifies the duration of the presentation</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="slidy.duration.frag">
+    &lt;xsl:param name="slidy.duration"&gt;0&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies the duration of the presentation
+  in minutes. A JavaScript clock will count down to help the
+  speaker in not running out of time. Can be disabled if set to 0.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slidy.path.prefix">
+<refmeta>
+<refentrytitle>slidy.path.prefix</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">uri</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slidy.path.prefix</refname>
+<refpurpose>Specifies the path to Slidy files</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="slidy.path.prefix.frag">
+    &lt;xsl:param name="slidy.path.prefix"&gt;files/slidy/&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies the path where Slidy CSS and
+  JavaScript files reside. All the CSS and JavaScript paths
+  will be generated relative to this directory.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slidy.slidy.css">
+<refmeta>
+<refentrytitle>slidy.slidy.css</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slidy.slidy.css</refname>
+<refpurpose>Specifies the name of the main Slidy CSS file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="slidy.slidy.css.frag">
+    &lt;xsl:param name="slidy.slidy.css"&gt;styles/slidy.css&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies the name of the main Slidy CSS file.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slidy.slidy.js">
+<refmeta>
+<refentrytitle>slidy.slidy.js</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slidy.slidy.js</refname>
+<refpurpose>Specifies the name of the Slidy JavaScript file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="slidy.slidy.js.frag">
+    &lt;xsl:param name="slidy.slidy.js"&gt;scripts/slidy.js&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies the name of the Slidy JavaScript file.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slidy.user.css">
+<refmeta>
+<refentrytitle>slidy.user.css</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slidy.user.css</refname>
+<refpurpose>Specifies the name of the Slidy user CSS file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="slidy.user.css.frag">
+    &lt;xsl:param name="slidy.user.css"&gt;styles/w3c-blue.css&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies the name of the Slidy user CSS file.</para>
+
+</refsection>
+</refentry>
+
+</reference>
+
+
+<appendix xml:id="styleheet"><title>The Stylesheet</title>
+
+<para>The <filename>param.xsl</filename> stylesheet is just a wrapper
+around all these parameters.</para>
+
+<programlisting xml:id="top">
+
+&lt;!-- This file is generated from param.xweb --&gt;
+
+&lt;xsl:stylesheet exclude-result-prefixes="src" version="1.0"&gt;
+
+&lt;!-- ********************************************************************
+     $Id: param.xweb 6633 2007-02-21 18:33:33Z xmldoc $
+     ********************************************************************
+
+     This file is part of the DocBook Slides Stylesheet distribution.
+     See ../README or http://docbook.sf.net/release/xsl/current/ for
+     copyright and other information.
+
+     ******************************************************************** --&gt;
+
+&lt;src:fragref linkend="disable.collapsible.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="disable.incremental.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.copyright.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.foilgroup.numbered.toc.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.foilgroup.toc.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.handoutnotes.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.pubdate.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.speakernotes.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.titlepage.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="mml.embedding.mode.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="svg.embedding.mode.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="user.css.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="wrap.slidecontent.frag"&gt;&lt;/src:fragref&gt;
+
+&lt;src:fragref linkend="s5.controls.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="s5.defaultview.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="s5.opera.css.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="s5.outline.css.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="s5.path.prefix.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="s5.print.css.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="s5.slides.css.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="s5.slides.js.frag"&gt;&lt;/src:fragref&gt;
+
+&lt;src:fragref linkend="slidy.duration.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="slidy.path.prefix.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="slidy.slidy.css.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="slidy.slidy.js.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="slidy.user.css.frag"&gt;&lt;/src:fragref&gt;
+
+&lt;/xsl:stylesheet&gt;
+</programlisting>
+
+</appendix>
+</book>
