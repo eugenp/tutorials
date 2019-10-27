@@ -18,12 +18,6 @@
             <groupId>org.axonframework</groupId>
             <artifactId>axon-spring-boot-starter</artifactId>
             <version>${axon.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.axonframework</groupId>
-                    <artifactId>axon-server-connector</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
@@ -36,7 +30,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>${spring-boot.version}</version>
             <scope>compile</scope>
         </dependency>
 
@@ -58,7 +51,7 @@
     </dependencies>
 
     <properties>
-        <axon.version>4.0.3</axon.version>
+        <axon.version>4.1.2</axon.version>
     </properties>
 
 </project>

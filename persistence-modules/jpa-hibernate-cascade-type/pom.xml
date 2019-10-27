@@ -5,7 +5,7 @@
     <artifactId>jpa-hibernate-cascade-type</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <version>1.0.0-SNAPSHOT</version>
-	
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>

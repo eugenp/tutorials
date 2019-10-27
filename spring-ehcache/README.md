@@ -1,7 +1,8 @@
-## Spring Ehcache Example Project
+## Spring Ehcache
 
-A simple example of using ehcache with spring-boot.
+This module contains articles about Spring with Ehcache
 
 ### Relevant Articles:
+
 - [Spring Boot Ehcache Example](https://www.baeldung.com/spring-boot-ehcache)
 

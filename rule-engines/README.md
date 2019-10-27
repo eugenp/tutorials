@@ -1,3 +1,7 @@
-## Relevant articles:
+## Rule Engines
 
-- [List of Rules Engines in Java](http://www.baeldung.com/java-rule-engines)
+This module contains articles about rule engines. Articles specific to a given rule engine go in the relevant submodule.
+
+### Relevant articles:
+
+- [List of Rules Engines in Java](https://www.baeldung.com/java-rule-engines)
