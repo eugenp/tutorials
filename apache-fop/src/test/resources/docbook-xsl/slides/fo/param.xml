@@ -1,0 +1,1155 @@
+<?xml version="1.0" encoding="ASCII"?>
+<book version="5.0" xml:id="slides_fo_doc">
+<info>
+<title>Slides FO Parameter Reference</title>
+<releaseinfo role="meta">
+$Id: param.xweb 6633 2007-02-21 18:33:33Z xmldoc $
+</releaseinfo>
+<author>
+  <personname>
+    <surname>K&#246;vesd&#225;n</surname>
+    <firstname>G&#225;bor</firstname>
+  </personname>
+</author>
+<copyright>
+  <year>2012</year>
+  <holder>G&#225;bor K&#246;vesd&#225;n</holder>
+</copyright>
+<abstract>
+  <para>This is reference documentation for all user-configurable
+    parameters in the DocBook XSL Slides FO stylesheet (for
+    generating PDF slide presentations). Note that the Slides
+    stylesheet for FO output is a customization layer of the
+    DocBook XSL FO stylesheet. Therefore, in addition to the
+    slides-specific parameters listed in this section, you can
+    also use a number of <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../fo/">FO stylesheet
+    parameters</link> to control Slides FO output.</para>
+</abstract>
+</info>
+<reference xml:id="fo">
+  <title>FO: General Params</title>
+
+<refentry version="5.0" xml:id="foil.title.master">
+<refmeta>
+<refentrytitle>foil.title.master</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">number</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>foil.title.master</refname>
+<refpurpose>Specifies unitless font size to use for foil titles</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="foil.title.master.frag">
+&lt;xsl:param name="foil.title.master"&gt;36&lt;/xsl:param&gt;
+&lt;!-- Inconsistant use of point size? --&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies a unitless font size to use for foil titles; used in
+combination with the <parameter>foil.title.size</parameter>
+parameter.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="foil.title.size">
+<refmeta>
+<refentrytitle>foil.title.size</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>foil.title.size</refname>
+<refpurpose>Specifies font size to use for foil titles, including units</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="foil.title.size.frag">
+    &lt;xsl:param name="foil.title.size"&gt;
+      &lt;xsl:value-of select="$foil.title.master"&gt;&lt;/xsl:value-of&gt;&lt;xsl:text&gt;pt&lt;/xsl:text&gt;
+    &lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter combines the value of the
+<parameter>foil.title.master</parameter> parameter with a unit
+specification. The default unit is <literal>pt</literal>
+(points).</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.copyright">
+<refmeta>
+<refentrytitle>generate.copyright</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.copyright</refname>
+<refpurpose>Specifies whether copyright is generated</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.copyright.frag">
+    &lt;xsl:param name="generate.copyright"&gt;1&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether the copyright info is generated
+  in the footer area.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.foilgroup.numbered.toc">
+<refmeta>
+<refentrytitle>generate.foilgroup.numbered.toc</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.foilgroup.numbered.toc</refname>
+<refpurpose>Specifies whether foilgroups have a numbered TOC</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.foilgroup.numbered.toc.frag">
+    &lt;xsl:param name="generate.foilgroup.numbered.toc"&gt;1&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If TOC generation is turned on, this parameter specifies
+  whether foilgroups have a numbered TOC. If disabled, TOC items
+  will be bulleted, not numbered.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.foilgroup.toc">
+<refmeta>
+<refentrytitle>generate.foilgroup.toc</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.foilgroup.toc</refname>
+<refpurpose>Specifies whether foilgroups have a TOC</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.foilgroup.toc.frag">
+    &lt;xsl:param name="generate.foilgroup.toc"&gt;1&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether foilgroups will
+  contain a table of contents of the included foils.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.handoutnotes">
+<refmeta>
+<refentrytitle>generate.handoutnotes</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.handoutnotes</refname>
+<refpurpose>Specifies whether handoutnotes are generated</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.handoutnotes.frag">
+    &lt;xsl:param name="generate.handoutnotes"&gt;0&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether handoutnotes shall
+  be generated to the output.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.page.number">
+<refmeta>
+<refentrytitle>generate.page.number</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">full<alt>1/2</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">compact<alt>1</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">no</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.page.number</refname>
+<refpurpose>Specifies whether page numbers are generated</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.page.number.frag">
+    &lt;xsl:param name="generate.page.number"&gt;compact&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies how page numbers are generated in
+  the footer area.</para>
+
+<variablelist>
+  <varlistentry>
+    <term>no</term>
+    <listitem>
+      <para>No page numbers generated at all.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>full</term>
+    <listitem>
+      <para>Current page number, a slash and the total number of pages</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>compact</term>
+    <listitem>
+      <para>Current page number only</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>no</term>
+    <listitem>
+      <para>No page numbers generated at all.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.pubdate">
+<refmeta>
+<refentrytitle>generate.pubdate</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.pubdate</refname>
+<refpurpose>Specifies whether the pubdate is generated</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.pubdate.frag">
+    &lt;xsl:param name="generate.pubdate"&gt;1&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether the publication date is generated
+  in the footer area.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.speakernotes">
+<refmeta>
+<refentrytitle>generate.speakernotes</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.speakernotes</refname>
+<refpurpose>Specifies whether speakernotes are generated</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.speakernotes.frag">
+    &lt;xsl:param name="generate.speakernotes"&gt;0&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether speakernotes shall
+  be generated to the output.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="generate.titlepage">
+<refmeta>
+<refentrytitle>generate.titlepage</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.titlepage</refname>
+<refpurpose>Specifies whether titlepage is generated</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="generate.titlepage.frag">
+    &lt;xsl:param name="generate.titlepage"&gt;1&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether titlepage is generated
+  for the presentation.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="mml.embedding.mode">
+<refmeta>
+<refentrytitle>mml.embedding.mode</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">inline</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">external-graphic</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">instream-foreign-object</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>mml.embedding.mode</refname>
+<refpurpose>Specifies how inline MathML is processed</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="mml.embedding.mode.fo.frag">
+    &lt;xsl:param name="mml.embedding.mode"&gt;external-graphic&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies how inline MathML formulas
+  are embedded into the output document.</para>
+
+<variablelist>
+  <varlistentry>
+    <term>inline</term>
+    <listitem>
+      <para>Content is copied over inline with its namespace.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>external-graphic</term>
+    <listitem>
+      <para>Content is extracted into an externel file and referenced
+	by an <markup>external-graphic</markup> element.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>instream-foreign-object</term>
+    <listitem>
+      <para>Content is copied over with its namespace inside an
+	<markup>instream-foreign-object</markup> element.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slide.font.family">
+<refmeta>
+<refentrytitle>slide.font.family</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="list-type">open</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">serif</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">sans-serif</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">monospace</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slide.font.family</refname>
+<refpurpose>Specifies font family to use for slide bodies</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="slide.font.family.frag">
+&lt;xsl:param name="slide.font.family"&gt;Helvetica&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies the font family to use for slides bodies.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slide.title.font.family">
+<refmeta>
+<refentrytitle>slide.title.font.family</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="list-type">open</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">serif</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">sans-serif</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">monospace</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slide.title.font.family</refname>
+<refpurpose>Specifies font family to use for slide titles</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="slide.title.font.family.frag">
+&lt;xsl:param name="slide.title.font.family"&gt;Helvetica&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies the font family to use for slides titles.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="svg.embedding.mode">
+<refmeta>
+<refentrytitle>svg.embedding.mode</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">external-graphic</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">instream-foreign-object</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>svg.embedding.mode</refname>
+<refpurpose>Specifies how inline SVG is processed</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="svg.embedding.mode.fo.frag">
+    &lt;xsl:param name="svg.embedding.mode"&gt;instream-foreign-object&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies how inline SVG graphics
+  are embedded into the output document.</para>
+
+<variablelist>
+  <varlistentry>
+    <term>inline</term>
+    <listitem>
+      <para>Content is copied over inline with its namespace.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>external-graphic</term>
+    <listitem>
+      <para>Content is extracted into an externel file and referenced
+        by an <markup>external-graphic</markup> element.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>instream-foreign-object</term>
+    <listitem>
+      <para>Content is copied over with its namespace inside an
+        <markup>instream-foreign-object</markup> element.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+</refsection>
+</refentry>
+
+</reference>
+<reference xml:id="propsets">
+  <title>FO: Property Sets</title>
+<refentry version="5.0" xml:id="foil.header.properties">
+<refmeta>
+<refentrytitle>foil.header.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>foil.header.properties</refname>
+<refpurpose>Specifies properties for foil header area</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="foil.header.properties.frag">
+    &lt;xsl:attribute-set name="foil.header.properties"&gt;
+      &lt;xsl:attribute name="background-color"&gt;white&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="color"&gt;black&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="font-weight"&gt;bold&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="text-align"&gt;center&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="font-family"&gt;
+        &lt;xsl:value-of select="$slide.title.font.family"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="space-after"&gt;12pt&lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the foil header area.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="foil.master.properties">
+<refmeta>
+<refentrytitle>foil.master.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>foil.master.properties</refname>
+<refpurpose>Specifies properties for foil master</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="foil.master.properties.frag">
+    &lt;xsl:attribute-set name="foil.master.properties"&gt;
+      &lt;xsl:attribute name="page-width"&gt;
+        &lt;xsl:value-of select="$page.width"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="page-height"&gt;
+        &lt;xsl:value-of select="$page.height"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="margin-top"&gt;
+        &lt;xsl:value-of select="$page.margin.top"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="margin-bottom"&gt;
+        &lt;xsl:value-of select="$page.margin.bottom"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="margin-left"&gt;
+        &lt;xsl:value-of select="$page.margin.inner"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="margin-right"&gt;
+        &lt;xsl:value-of select="$page.margin.outer"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the foil master.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="foil.page-sequence.properties">
+<refmeta>
+<refentrytitle>foil.page-sequence.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>foil.page-sequence.properties</refname>
+<refpurpose>Specifies properties for foil page-sequence</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="foil.page-sequence.properties.frag">
+    &lt;xsl:attribute-set name="foil.page-sequence.properties"&gt;
+      &lt;xsl:attribute name="hyphenate"&gt;
+        &lt;xsl:value-of select="$hyphenate"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for foil page-sequence.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="foil.properties">
+<refmeta>
+<refentrytitle>foil.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>foil.properties</refname>
+<refpurpose>Specifies properties for all foils</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="foil.properties.frag">
+    &lt;xsl:attribute-set name="foil.properties"&gt;
+      &lt;xsl:attribute name="font-family"&gt;
+        &lt;xsl:value-of select="$slide.font.family"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="margin-{$direction.align.start}"&gt;1in&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="margin-{$direction.align.end}"&gt;1in&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="font-size"&gt;
+        &lt;xsl:value-of select="$body.font.size"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties that are applied to all foils.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="foil.region-after.properties">
+<refmeta>
+<refentrytitle>foil.region-after.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>foil.region-after.properties</refname>
+<refpurpose>Specifies properties for foil region-after</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="foil.region-after.properties.frag">
+    &lt;xsl:attribute-set name="foil.region-after.properties"&gt;
+      &lt;xsl:attribute name="extent"&gt;
+        &lt;xsl:value-of select="$region.after.extent"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="display-align"&gt;after&lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the foil region-after.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="foil.region-before.properties">
+<refmeta>
+<refentrytitle>foil.region-before.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>foil.region-before.properties</refname>
+<refpurpose>Specifies properties for foil region-before</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="foil.region-before.properties.frag">
+    &lt;xsl:attribute-set name="foil.region-before.properties"&gt;
+      &lt;xsl:attribute name="extent"&gt;
+        &lt;xsl:value-of select="$region.before.extent"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="display-align"&gt;
+        &lt;xsl:value-of select="'before'"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the foil region-before.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="foil.region-body.properties">
+<refmeta>
+<refentrytitle>foil.region-body.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>foil.region-body.properties</refname>
+<refpurpose>Specifies properties for foil region-body</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="foil.region-body.properties.frag">
+    &lt;xsl:attribute-set name="foil.region-body.properties"&gt;
+      &lt;xsl:attribute name="margin-bottom"&gt;
+        &lt;xsl:value-of select="$body.margin.bottom"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="margin-top"&gt;
+        &lt;xsl:value-of select="$body.margin.top"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="column-count"&gt;
+        &lt;xsl:value-of select="$column.count.body"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the foil region-body.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="foil.subtitle.properties">
+<refmeta>
+<refentrytitle>foil.subtitle.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>foil.subtitle.properties</refname>
+<refpurpose>Specifies properties for all foil subtitles</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="foil.subtitle.properties.frag">
+    &lt;xsl:attribute-set name="foil.subtitle.properties"&gt;
+      &lt;xsl:attribute name="font-family"&gt;
+        &lt;xsl:value-of select="$slide.title.font.family"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="text-align"&gt;center&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="font-size"&gt;
+        &lt;xsl:value-of select="$foil.title.master * 0.8"&gt;&lt;/xsl:value-of&gt;&lt;xsl:text&gt;pt&lt;/xsl:text&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="space-after"&gt;12pt&lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties that are applied to all foil subtitles.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="foil.title.properties">
+<refmeta>
+<refentrytitle>foil.title.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>foil.title.properties</refname>
+<refpurpose>Specifies properties for foil title</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="foil.title.properties.frag">
+    &lt;xsl:attribute-set name="foil.title.properties"&gt;
+      &lt;xsl:attribute name="font-size"&gt;
+        &lt;xsl:value-of select="$foil.title.size"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the foil title.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="foil.footer.properties">
+<refmeta>
+<refentrytitle>foil.footer.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>foil.footer.properties</refname>
+<refpurpose>Specifies properties for slides footer</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="foil.footer.properties.frag">
+    &lt;xsl:attribute-set name="foil.footer.properties"&gt;&lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the foil footer.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="handoutnotes.properties">
+<refmeta>
+<refentrytitle>handoutnotes.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>  
+<refnamediv>
+<refname>footnote.properties</refname>
+<refpurpose>Properties applied to handoutnotes
+</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="handoutnotes.properties.frag">
+&lt;xsl:attribute-set name="handoutnotes.properties"&gt;&lt;/xsl:attribute-set&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This attribute set is applied to handoutnotes.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slides.properties">
+<refmeta>
+<refentrytitle>slides.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slides.properties</refname>
+<refpurpose>Specifies properties for all slides</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="slides.properties.frag">
+    &lt;xsl:attribute-set name="slides.properties"&gt;
+      &lt;xsl:attribute name="font-family"&gt;
+        &lt;xsl:value-of select="$slide.font.family"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties that are applied to all slides.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slides.titlepage.master.properties">
+<refmeta>
+<refentrytitle>slides.titlepage.master.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slides.titlepage.master.properties</refname>
+<refpurpose>Specifies properties for slides titlepage master</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="slides.titlepage.master.properties.frag">
+    &lt;xsl:attribute-set name="slides.titlepage.master.properties"&gt;
+      &lt;xsl:attribute name="page-width"&gt;
+        &lt;xsl:value-of select="$page.width"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="page-height"&gt;
+        &lt;xsl:value-of select="$page.height"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="margin-top"&gt;
+        &lt;xsl:value-of select="$page.margin.top"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="margin-bottom"&gt;
+        &lt;xsl:value-of select="$page.margin.bottom"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="margin-left"&gt;
+        &lt;xsl:value-of select="$page.margin.inner"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="margin-right"&gt;
+        &lt;xsl:value-of select="$page.margin.outer"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the slides titlepage master.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slides.titlepage.region-body.properties">
+<refmeta>
+<refentrytitle>slides.titlepage.region-body.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slides.titlepage.region-body.properties</refname>
+<refpurpose>Specifies properties for slides titlepage region-body</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="slides.titlepage.region-body.properties.frag">
+    &lt;xsl:attribute-set name="slides.titlepage.region-body.properties"&gt;
+      &lt;xsl:attribute name="margin-bottom"&gt;0pt&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="margin-top"&gt;0pt&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="column-count"&gt;
+        &lt;xsl:value-of select="$column.count.body"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the slides titlepage region-body.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slides.titlepage.corpauthor.properties">
+<refmeta>
+<refentrytitle>slides.titlepage.corpauthor.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slides.titlepage.corpauthor.properties</refname>
+<refpurpose>Specifies properties for slides titlepage title</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="slides.titlepage.corpauthor.properties.frag">
+    &lt;xsl:attribute-set name="slides.titlepage.corpauthor.properties"&gt;
+      &lt;xsl:attribute name="text-align"&gt;center&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="space-after"&gt;1em&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="font-size"&gt;20.736pt&lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the corpauthor on the default
+  titlepage.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slides.titlepage.title.properties">
+<refmeta>
+<refentrytitle>slides.titlepage.title.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slides.titlepage.title.properties</refname>
+<refpurpose>Specifies properties for slides titlepage title</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="slides.titlepage.title.properties.frag">
+    &lt;xsl:attribute-set name="slides.titlepage.title.properties"&gt;
+      &lt;xsl:attribute name="text-align"&gt;center&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="space-after"&gt;1em&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="padding-top"&gt;1.5in&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="keep-with-next"&gt;always&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="font-size"&gt;
+	&lt;xsl:value-of select="$foil.title.size"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="font-weight"&gt;bold&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="font-family"&gt;
+	&lt;xsl:value-of select="$slide.title.font.family"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the title on the default
+  titlepage.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slides.titlepage.subtitle.properties">
+<refmeta>
+<refentrytitle>slides.titlepage.subtitle.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slides.titlepage.subtitle.properties</refname>
+<refpurpose>Specifies properties for slides titlepage title</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="slides.titlepage.subtitle.properties.frag">
+    &lt;xsl:attribute-set name="slides.titlepage.subtitle.properties"&gt;
+      &lt;xsl:attribute name="text-align"&gt;center&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="space-after"&gt;1em&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="font-family"&gt;
+	&lt;xsl:value-of select="$slide.title.font.family"&gt;&lt;/xsl:value-of&gt;
+      &lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the subtitle on the default
+  titlepage.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slides.titlepage.author.properties">
+<refmeta>
+<refentrytitle>slides.titlepage.author.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slides.titlepage.author.properties</refname>
+<refpurpose>Specifies properties for slides titlepage title</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="slides.titlepage.author.properties.frag">
+    &lt;xsl:attribute-set name="slides.titlepage.author.properties"&gt;
+      &lt;xsl:attribute name="text-align"&gt;center&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="space-after"&gt;1em&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="font-size"&gt;20.736pt&lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the author on the default
+  titlepage.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slides.titlepage.pubdate.properties">
+<refmeta>
+<refentrytitle>slides.titlepage.pubdate.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slides.titlepage.pubdate.properties</refname>
+<refpurpose>Specifies properties for slides titlepage title</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="slides.titlepage.pubdate.properties.frag">
+    &lt;xsl:attribute-set name="slides.titlepage.pubdate.properties"&gt;
+      &lt;xsl:attribute name="text-align"&gt;center&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="space-after"&gt;1em&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name="font-size"&gt;17.28pt&lt;/xsl:attribute&gt;
+    &lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the pubdate on the default
+  titlepage.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="slides.titlepage.authorgroup.properties">
+<refmeta>
+<refentrytitle>slides.titlepage.authorgroup.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slides.titlepage.authorgroup.properties</refname>
+<refpurpose>Specifies properties for slides titlepage title</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting xml:id="slides.titlepage.authorgroup.properties.frag">
+    &lt;xsl:attribute-set name="slides.titlepage.authorgroup.properties"&gt;&lt;/xsl:attribute-set&gt;
+  </programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the authorgroup on the default
+  titlepage.</para>
+
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="speakernotes.properties">
+<refmeta>
+<refentrytitle>speakernotes.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>  
+<refnamediv>
+<refname>footnote.properties</refname>
+<refpurpose>Properties applied to speakernotes
+</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="speakernotes.properties.frag">
+&lt;xsl:attribute-set name="speakernotes.properties"&gt;&lt;/xsl:attribute-set&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This attribute set is applied to speakernotes.</para>
+
+</refsection>
+</refentry>
+
+</reference>
+
+<appendix xml:id="styleheet"><title>The Stylesheet</title>
+
+<para>The <filename>param.xsl</filename> stylesheet is just a wrapper
+around all these parameters.</para>
+
+<programlisting xml:id="top">
+
+&lt;!-- This file is generated from param.xweb --&gt;
+
+&lt;xsl:stylesheet exclude-result-prefixes="src" version="1.0"&gt;
+
+&lt;!-- ********************************************************************
+     $Id: param.xweb 6633 2007-02-21 18:33:33Z xmldoc $
+     ********************************************************************
+
+     This file is part of the DocBook Slides Stylesheet distribution.
+     See ../README or http://docbook.sf.net/release/xsl/current/ for
+     copyright and other information.
+
+     ******************************************************************** --&gt;
+
+&lt;src:fragref linkend="foil.title.master.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="foil.title.size.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.copyright.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.foilgroup.numbered.toc.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.foilgroup.toc.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.handoutnotes.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.page.number.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.pubdate.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.speakernotes.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="generate.titlepage.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="mml.embedding.mode.fo.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="slide.font.family.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="slide.title.font.family.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="svg.embedding.mode.fo.frag"&gt;&lt;/src:fragref&gt;
+
+&lt;src:fragref linkend="foil.header.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="foil.master.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="foil.page-sequence.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="foil.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="foil.region-after.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="foil.region-before.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="foil.region-body.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="foil.subtitle.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="foil.title.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="handoutnotes.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="slides.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="slides.titlepage.master.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="slides.titlepage.region-body.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="speakernotes.properties.frag"&gt;&lt;/src:fragref&gt;
+
+&lt;src:fragref linkend="slides.titlepage.corpauthor.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="slides.titlepage.title.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="slides.titlepage.subtitle.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="foil.footer.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="slides.titlepage.author.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="slides.titlepage.pubdate.properties.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="slides.titlepage.authorgroup.properties.frag"&gt;&lt;/src:fragref&gt;
+
+&lt;/xsl:stylesheet&gt;
+</programlisting>
+
+</appendix>
+</book>

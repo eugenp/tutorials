@@ -1,0 +1,73 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="part.autolabel">
+<refmeta>
+<refentrytitle>part.autolabel</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo> 
+<refmiscinfo class="other" otherclass="value">0<alt>none</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">1<alt>1,2,3...</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">A<alt>A,B,C...</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">a<alt>a,b,c...</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">i<alt>i,ii,iii...</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">I<alt>I,II,III...</alt></refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>part.autolabel</refname>
+<refpurpose>Specifies the labeling format for Part titles</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="part.autolabel.frag">
+<xsl:param name="part.autolabel">I</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, then parts will be numbered using the parameter
+value as the number format if the value matches one of the following:
+</para>
+
+<variablelist>
+  <varlistentry>
+    <term>1 or arabic</term>
+    <listitem>
+      <para>Arabic numeration (1, 2, 3 ...).</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>A or upperalpha</term>
+    <listitem>
+      <para>Uppercase letter numeration (A, B, C ...).</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>a or loweralpha</term>
+    <listitem>
+      <para>Lowercase letter numeration (a, b, c ...).</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>I or upperroman</term>
+    <listitem>
+      <para>Uppercase roman numeration (I, II, III ...).</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>i or lowerroman</term>
+    <listitem>
+      <para>Lowercase roman letter numeration (i, ii, iii ...).</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+<para>Any nonzero value other than the above will generate
+the default number format (upperroman).
+</para>
+
+
+</refsection>
+</refentry>
