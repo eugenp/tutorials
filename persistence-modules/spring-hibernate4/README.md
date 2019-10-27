@@ -1,6 +1,6 @@
-=========
+## Spring with Hibernate 4
 
-## Spring with Hibernate 4 Example Project
+This module contains articles about Spring with Hibernate 4
 
 ### Relevant Articles: 
 - [Guide to Hibernate 4 with Spring](http://www.baeldung.com/hibernate-4-spring)
@@ -10,6 +10,7 @@
 - [Hibernate: save, persist, update, merge, saveOrUpdate](http://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate)
 - [Eager/Lazy Loading In Hibernate](http://www.baeldung.com/hibernate-lazy-eager-loading)
 - [The DAO with Spring and Hibernate](http://www.baeldung.com/persistence-layer-with-spring-and-hibernate)
+- [Auditing with JPA, Hibernate, and Spring Data JPA](https://www.baeldung.com/database-auditing-jpa)
 
 ### Quick Start
 
@@ -19,5 +20,6 @@ cd REST
 mvn install
 mvn cargo:run
 ```
+
 - **note**: starts on port `8082`
 

@@ -5,17 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>oauth2-client</artifactId>
     <packaging>war</packaging>
+    <name>oauth2-client</name>
 
     <parent>
         <groupId>com.baeldung.oauth2</groupId>
         <artifactId>oauth2-framework-impl</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
-    <properties>
-        <httpPort>9180</httpPort>
-        <httpsPort>9543</httpsPort>
-    </properties>
 
     <build>
         <plugins>
@@ -25,4 +21,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <httpPort>9180</httpPort>
+        <httpsPort>9543</httpsPort>
+    </properties>
 </project>

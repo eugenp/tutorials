@@ -26,7 +26,7 @@ import java.util.List;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan({ "com.baeldung.web" })
+@ComponentScan({ "com.baeldung.web", "com.baeldung.requestmapping" })
 public class MvcConfig implements WebMvcConfigurer {
 
     public MvcConfig() {
@@ -66,7 +66,6 @@ public class MvcConfig implements WebMvcConfigurer {
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         configurer.defaultContentType(MediaType.APPLICATION_JSON);
     }
-    
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {

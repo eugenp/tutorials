@@ -1,18 +1,12 @@
-=========
-
 ## Core Java Cookbooks and Examples
 
 ### Relevant Articles: 
 - [Java Timer](http://www.baeldung.com/java-timer-and-timertask)
-- [How to Run a Shell Command in Java](http://www.baeldung.com/run-shell-command-in-java)
-- [How to Print Screen in Java](http://www.baeldung.com/print-screen-in-java)
 - [A Guide To Java Regular Expressions API](http://www.baeldung.com/regular-expressions-java)
 - [Getting Started with Java Properties](http://www.baeldung.com/java-properties)
-- [Pattern Search with Grep in Java](http://www.baeldung.com/grep-in-java)
 - [How to Create an Executable JAR with Maven](http://www.baeldung.com/executable-jar-with-maven)
 - [Introduction to Nashorn](http://www.baeldung.com/java-nashorn)
 - [Java Money and the Currency API](http://www.baeldung.com/java-money-and-currency)
-- [JVM Log Forging](http://www.baeldung.com/jvm-log-forging)
 - [How to Add a Single Element to a Stream](http://www.baeldung.com/java-stream-append-prepend)
 - [How to Find all Getters Returning Null](http://www.baeldung.com/java-getters-returning-null)
 - [How to Get a Name of a Method Being Executed?](http://www.baeldung.com/java-name-of-executing-method)
@@ -24,16 +18,12 @@
 - [Compiling Java *.class Files with javac](http://www.baeldung.com/javac)
 - [Introduction to Javadoc](http://www.baeldung.com/javadoc)
 - [Guide to the Externalizable Interface in Java](http://www.baeldung.com/java-externalizable)
-- [How to Detect the OS Using Java](http://www.baeldung.com/java-detect-os)
 - [ASCII Art in Java](http://www.baeldung.com/ascii-art-in-java)
 - [What is the serialVersionUID?](http://www.baeldung.com/java-serial-version-uid)
 - [A Guide to the ResourceBundle](http://www.baeldung.com/java-resourcebundle)
-- [Class Loaders in Java](http://www.baeldung.com/java-classloaders)
-- [Guide to the Java Clock Class](http://www.baeldung.com/java-clock)
 - [Importance of Main Manifest Attribute in a Self-Executing JAR](http://www.baeldung.com/java-jar-executable-manifest-main-class)
 - [Java Global Exception Handler](http://www.baeldung.com/java-global-exception-handler)
 - [How to Get the Size of an Object in Java](http://www.baeldung.com/java-size-of-object)
-- [Guide to Java Instrumentation](http://www.baeldung.com/java-instrumentation)
 - [Common Java Exceptions](http://www.baeldung.com/java-common-exceptions)
 - [Throw Exception in Optional in Java 8](https://www.baeldung.com/java-optional-throw-exception)
 - [Merging java.util.Properties Objects](https://www.baeldung.com/java-merging-properties)

@@ -4,7 +4,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>java-cassandra</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-	<name>java-cassandra</name>
+    <name>java-cassandra</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -29,6 +29,24 @@
             <version>${cassandra-unit.version}</version>
         </dependency>
 
+        <!-- DataStax Cassandra -->
+        <dependency>
+            <groupId>com.datastax.oss</groupId>
+            <artifactId>java-driver-core</artifactId>
+            <version>${datastax-cassandra.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.datastax.oss</groupId>
+            <artifactId>java-driver-query-builder</artifactId>
+            <version>${datastax-cassandra.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-handler</artifactId>
+            <version>${io-netty.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -39,6 +57,8 @@
         <!-- Cassandra -->
         <cassandra-driver-core.version>3.1.2</cassandra-driver-core.version>
         <cassandra-unit.version>3.1.1.0</cassandra-unit.version>
+        <datastax-cassandra.version>4.1.0</datastax-cassandra.version>
+        <io-netty.version>4.1.34.Final</io-netty.version>
         <guava.version>18.0</guava.version>
     </properties>
 
