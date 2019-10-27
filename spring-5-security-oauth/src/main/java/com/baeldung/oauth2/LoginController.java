@@ -1,10 +1,8 @@
 package com.baeldung.oauth2;
 
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ResolvableType;
 import org.springframework.http.HttpEntity;
@@ -73,14 +71,4 @@ public class LoginController {
 
         return "loginSuccess";
     }
-    
-    public HttpHeaders createHeaders(String username, String password){
-        return new HttpHeaders() {{
-              String auth = username + ":" + password;
-              byte[] encodedAuth = Base64.encodeBase64( 
-                 auth.getBytes(Charset.forName("US-ASCII")) );
-              String authHeader = "Basic " + new String( encodedAuth );
-              set( "Authorization", authHeader );
-           }};
-     }
 }
