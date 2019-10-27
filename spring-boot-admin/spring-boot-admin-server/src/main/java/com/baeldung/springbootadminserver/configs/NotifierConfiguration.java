@@ -1,42 +1,48 @@
 package com.baeldung.springbootadminserver.configs;
 
-import de.codecentric.boot.admin.notify.LoggingNotifier;
-import de.codecentric.boot.admin.notify.RemindingNotifier;
-import de.codecentric.boot.admin.notify.filter.FilteringNotifier;
+import java.time.Duration;
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 
-import java.util.concurrent.TimeUnit;
+import de.codecentric.boot.admin.server.domain.entities.InstanceRepository;
+import de.codecentric.boot.admin.server.notify.CompositeNotifier;
+import de.codecentric.boot.admin.server.notify.LoggingNotifier;
+import de.codecentric.boot.admin.server.notify.Notifier;
+import de.codecentric.boot.admin.server.notify.RemindingNotifier;
+import de.codecentric.boot.admin.server.notify.filter.FilteringNotifier;
 
 @Configuration
-@EnableScheduling
 public class NotifierConfiguration {
+    private final InstanceRepository repository;
+    private final ObjectProvider<List<Notifier>> otherNotifiers;
 
-    //    @Autowired private Notifier notifier;
-
-    @Bean
-    public LoggingNotifier notifier() {
-        return new LoggingNotifier();
+    public NotifierConfiguration(InstanceRepository repository, ObjectProvider<List<Notifier>> otherNotifiers) {
+        this.repository = repository;
+        this.otherNotifiers = otherNotifiers;
     }
 
     @Bean
     public FilteringNotifier filteringNotifier() {
-        return new FilteringNotifier(notifier());
+        CompositeNotifier delegate = new CompositeNotifier(this.otherNotifiers.getIfAvailable(Collections::emptyList));
+        return new FilteringNotifier(delegate, this.repository);
     }
 
     @Bean
-    @Primary
-    public RemindingNotifier remindingNotifier() {
-        RemindingNotifier remindingNotifier = new RemindingNotifier(filteringNotifier());
-        remindingNotifier.setReminderPeriod(TimeUnit.MINUTES.toMillis(5));
-        return remindingNotifier;
+    public LoggingNotifier notifier() {
+        return new LoggingNotifier(repository);
     }
 
-    @Scheduled(fixedRate = 60_000L)
-    public void remind() {
-        remindingNotifier().sendReminders();
+    @Primary
+    @Bean(initMethod = "start", destroyMethod = "stop")
+    public RemindingNotifier remindingNotifier() {
+        RemindingNotifier remindingNotifier = new RemindingNotifier(filteringNotifier(), repository);
+        remindingNotifier.setReminderPeriod(Duration.ofMinutes(5));
+        remindingNotifier.setCheckReminderInverval(Duration.ofSeconds(60));
+        return remindingNotifier;
     }
 }

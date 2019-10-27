@@ -1,15 +1,17 @@
-# Relevant Articles
+## JPA in Java
 
-- [A Guide to SqlResultSetMapping](http://www.baeldung.com/jpa-sql-resultset-mapping)
-- [A Guide to Stored Procedures with JPA](http://www.baeldung.com/jpa-stored-procedures)
+This module contains articles about the Java Persistence API (JPA) in Java.
+
+### Relevant Articles
+
+- [A Guide to SqlResultSetMapping](https://www.baeldung.com/jpa-sql-resultset-mapping)
+- [A Guide to Stored Procedures with JPA](https://www.baeldung.com/jpa-stored-procedures)
 - [Fixing the JPA error “java.lang.String cannot be cast to Ljava.lang.String;”](https://www.baeldung.com/jpa-error-java-lang-string-cannot-be-cast)
 - [JPA Entity Graph](https://www.baeldung.com/jpa-entity-graph)
 - [JPA 2.2 Support for Java 8 Date/Time Types](https://www.baeldung.com/jpa-java-time)
 - [Converting Between LocalDate and SQL Date](https://www.baeldung.com/java-convert-localdate-sql-date)
-- [Combining JPA And/Or Criteria Predicates](https://www.baeldung.com/jpa-and-or-criteria-predicates)
-- [Types of JPA Queries](https://www.baeldung.com/jpa-queries)
-- [JPA/Hibernate Projections](https://www.baeldung.com/jpa-hibernate-projections)
 - [Composite Primary Keys in JPA](https://www.baeldung.com/jpa-composite-primary-keys)
 - [Defining JPA Entities](https://www.baeldung.com/jpa-entities)
 - [JPA @Basic Annotation](https://www.baeldung.com/jpa-basic-annotation)
-- [Default Column Values in JPA](https://www.baeldung.com/jpa-default-column-values)
+- [Persisting Enums in JPA](https://www.baeldung.com/jpa-persisting-enums-in-jpa)
+- More articles: [[next -->]](/java-jpa-2)

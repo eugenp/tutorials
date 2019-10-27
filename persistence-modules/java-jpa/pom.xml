@@ -34,7 +34,7 @@
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
-            <version>2.2</version>
+            <version>${javax.persistence-api.version}</version>
         </dependency>
 
         <!--Runtime JPA implementation-->
@@ -57,7 +57,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <compilerArgument>-proc:none</compilerArgument>
                 </configuration>
@@ -65,7 +65,7 @@
 			<plugin>
 				<groupId>org.bsc.maven</groupId>
 				<artifactId>maven-processor-plugin</artifactId>
-				<version>3.3.3</version>
+				<version>${maven-processor-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>process</id>
@@ -86,7 +86,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>${build-helper-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>add-source</id>
@@ -104,10 +104,14 @@
 			</plugin>
 		</plugins>
 	</build>
+
     <properties>
         <hibernate.version>5.4.0.Final</hibernate.version>
         <eclipselink.version>2.7.4-RC1</eclipselink.version>
         <postgres.version>42.2.5</postgres.version>
+        <javax.persistence-api.version>2.2</javax.persistence-api.version>
+        <maven-processor-plugin.version>3.3.3</maven-processor-plugin.version>
+        <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
     </properties>
 
 </project>

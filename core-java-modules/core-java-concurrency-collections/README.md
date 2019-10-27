@@ -1,6 +1,6 @@
-=========
+## Core Java Concurrency Collections
 
-## Core Java Concurrency Collections Examples
+This module contains articles about concurrent Java collections
 
 ### Relevant Articles: 
 - [Guide to java.util.concurrent.BlockingQueue](http://www.baeldung.com/java-blocking-queue)

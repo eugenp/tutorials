@@ -20,11 +20,6 @@
             <version>${commons-collections4.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
@@ -36,41 +31,10 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
-        <dependency>
-            <groupId>net.sf.trove4j</groupId>
-            <artifactId>trove4j</artifactId>
-            <version>${trove4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>it.unimi.dsi</groupId>
-            <artifactId>fastutil</artifactId>
-            <version>${fastutil.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>colt</groupId>
-            <artifactId>colt</artifactId>
-            <version>${colt.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh-core.version}</version>
-        </dependency>
     </dependencies>
 
     <properties>
-        <commons-collections4.version>4.1</commons-collections4.version>
-        <commons-lang3.version>3.8.1</commons-lang3.version>
+        <commons-collections4.version>4.1</commons-collections4.version>    
         <assertj.version>3.11.1</assertj.version>
-		<trove4j.version>3.0.2</trove4j.version>
-		<fastutil.version>8.1.0</fastutil.version>
-		<colt.version>1.2.0</colt.version>
     </properties>
 </project>

@@ -1,8 +1,10 @@
 */bin/*
+bin/
 
 *.class
 
 # Package Files #
+*.jar
 *.war
 *.ear
 
@@ -21,11 +23,14 @@
 *.iws
 out/
 
+# VSCode
+.vscode/
+
 # Mac
 .DS_Store
 
 # Maven
-log/
+log/*
 target/
 
 # Gradle
@@ -78,3 +83,11 @@ jta/transaction-logs/
 software-security/sql-injection-samples/derby.log
 spring-soap/src/main/java/com/baeldung/springsoap/gen/
 /report-*.json
+transaction.log
+*-shell.log
+
+apache-cxf/cxf-aegis/baeldung.xml
+apache-fop/src/test/resources/input.xml
+apache-fop/src/test/resources/output_herold.pdf
+apache-fop/src/test/resources/output_html2fo.pdf
+apache-fop/src/test/resources/output_jtidy.pdf

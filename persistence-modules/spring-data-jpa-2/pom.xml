@@ -6,7 +6,7 @@
 
     <groupId>com.baeldung</groupId>
     <artifactId>spring-data-jpa-2</artifactId>
-    <name>spring-data-jpa</name>
+    <name>spring-data-jpa-2</name>
 
     <parent>
         <artifactId>parent-boot-2</artifactId>
@@ -29,7 +29,7 @@
         <dependency>
             <groupId>net.ttddyy</groupId>
             <artifactId>datasource-proxy</artifactId>
-            <version>1.4.1</version>
+            <version>${datasource-proxy.version}</version>
         </dependency>
 
         <dependency>
@@ -42,4 +42,8 @@
             <artifactId>spring-oxm</artifactId>
         </dependency>
     </dependencies>
+	
+    <properties>
+        <datasource-proxy.version>1.4.1</datasource-proxy.version>
+    </properties>
 </project>

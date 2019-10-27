@@ -323,7 +323,6 @@
         <kryo.version>4.0.0</kryo.version>
         <protobuf-java-format.version>1.4</protobuf-java-format.version>
         <protobuf-java.version>3.1.0</protobuf-java.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <xstream.version>1.4.9</xstream.version>
 
         <!-- util -->
