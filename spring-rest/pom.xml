@@ -93,13 +93,6 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
 
-        <!-- okhttp -->
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>${com.squareup.okhttp3.version}</version>
-        </dependency>
-
         <!-- test scoped -->
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -146,7 +139,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.4</version>
+            <version>${commons-io.version}</version>
         </dependency>
         <dependency>
             <groupId>au.com.dius</groupId>
@@ -156,6 +149,11 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
         </dependency>
 
     </dependencies>
@@ -270,7 +268,6 @@
         <kryo.version>4.0.0</kryo.version>
         <protobuf-java-format.version>1.4</protobuf-java-format.version>
         <protobuf-java.version>3.1.0</protobuf-java.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
 
         <!-- util -->
         <guava.version>20.0</guava.version>
@@ -280,12 +277,11 @@
         <findbugs-maven-plugin.version>3.0.4</findbugs-maven-plugin.version>
         <checkstyle-maven-plugin.version>3.0.0</checkstyle-maven-plugin.version>
         <dependency.locations.enabled>false</dependency.locations.enabled>
-        <!-- okhttp -->
-        <com.squareup.okhttp3.version>3.4.1</com.squareup.okhttp3.version>
 
         <json.path.version>2.2.0</json.path.version>
         <pact.version>3.5.11</pact.version>
         <rest-assured.version>3.1.0</rest-assured.version>
+        <httpclient.version>4.5.2</httpclient.version>
         <start-class>com.baeldung.sampleapp.config.MainApplication</start-class>
     </properties>
 

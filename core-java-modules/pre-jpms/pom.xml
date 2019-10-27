@@ -18,9 +18,10 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.25</version>
+			<version>${org.slf4j.version}</version>
 		</dependency>
 	</dependencies>
+
 	<build>
 		<finalName>pre-jpms</finalName>
 		<plugins>
@@ -65,10 +66,7 @@
 					</archive>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+
 </project>

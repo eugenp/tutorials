@@ -42,12 +42,6 @@
             <artifactId>bootique-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -65,7 +59,6 @@
     <properties>
         <main.class>com.baeldung.bootique.App</main.class>
         <bootique-bom.version>0.23</bootique-bom.version>
-
         <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
     </properties>
 

@@ -18,19 +18,11 @@
             <artifactId>akka-actor_2.12</artifactId>
             <version>${typesafe-akka.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.typesafe.akka</groupId>
             <artifactId>akka-testkit_2.12</artifactId>
             <version>${typesafe-akka.version}</version>
             <scope>test</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
-        <dependency>
-            <groupId>org.asynchttpclient</groupId>
-            <artifactId>async-http-client</artifactId>
-            <version>${async.http.client.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.beykery/neuroph/2.92 -->
         <dependency>
@@ -44,32 +36,17 @@
             <artifactId>cglib</artifactId>
             <version>${cglib.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
-        <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>${opencsv.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang.version}</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-net</groupId>
             <artifactId>commons-net</artifactId>
             <version>${commons-net.version}</version>
         </dependency>
-        <dependency>
-            <groupId>tec.units</groupId>
-            <artifactId>unit-ri</artifactId>
-            <version>${unit-ri.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jasypt</groupId>
-            <artifactId>jasypt</artifactId>
-            <version>${jasypt.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>org.javatuples</groupId>
             <artifactId>javatuples</artifactId>
@@ -125,17 +102,17 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-core</artifactId>
-            <version>${serenity.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.asciidoctor</groupId>
-                    <artifactId>asciidoctorj</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <groupId>net.serenity-bdd</groupId>
+        <artifactId>serenity-core</artifactId>
+        <version>${serenity.version}</version>
+        <scope>test</scope>
+        <exclusions>
+            <exclusion>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctorj</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-junit</artifactId>
@@ -356,11 +333,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>net.agkn</groupId>
-            <artifactId>hll</artifactId>
-            <version>${hll.version}</version>
-        </dependency>
-        <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
             <version>${bytebuddy.version}</version>
@@ -391,22 +363,7 @@
             <version>${vavr.version}</version>
         </dependency>
 
-        <!-- Retrofit -->
-        <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>retrofit</artifactId>
-            <version>${retrofit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>converter-gson</artifactId>
-            <version>${retrofit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>adapter-rxjava</artifactId>
-            <version>${retrofit.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>logging-interceptor</artifactId>
@@ -473,34 +430,9 @@
             <version>${jgrapht.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.netopyr.wurmloch</groupId>
-            <artifactId>wurmloch-crdt</artifactId>
-            <version>${crdt.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.docx4j</groupId>
-            <artifactId>docx4j</artifactId>
-            <version>${docx4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb-api.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
             <version>${caffeine.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>${bouncycastle.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcpkix-jdk15on</artifactId>
-            <version>${bouncycastle.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.http-client</groupId>
@@ -516,11 +448,6 @@
             <groupId>com.google.http-client</groupId>
             <artifactId>google-http-client-gson</artifactId>
             <version>${googleclient.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-core</artifactId>
-            <version>${infinispan.version}</version>
         </dependency>
 
         <!--Java Docker API Client -->
@@ -562,11 +489,6 @@
             <version>${google-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.apis</groupId>
-            <artifactId>google-api-services-sheets</artifactId>
-            <version>${google-sheets.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-streams</artifactId>
             <version>${kafka.version}</version>
@@ -590,23 +512,8 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.milyn</groupId>
-            <artifactId>milyn-smooks-all</artifactId>
-            <version>${smooks.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mashape.unirest</groupId>
-            <artifactId>unirest-java</artifactId>
-            <version>${unirest.version}</version>
-        </dependency>
 
-        <!-- javalin -->
-        <dependency>
-            <groupId>io.javalin</groupId>
-            <artifactId>javalin</artifactId>
-            <version>${javalin.version}</version>
-        </dependency>
+
         <!-- Atlassian Fugue -->
         <dependency>
             <groupId>io.atlassian.fugue</groupId>
@@ -664,24 +571,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.yaml</groupId>
-            <artifactId>snakeyaml</artifactId>
-            <version>${snakeyaml.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.numericalmethod</groupId>
-            <artifactId>suanshu</artifactId>
-            <version>${suanshu.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.derive4j</groupId>
-            <artifactId>derive4j</artifactId>
-            <version>${derive4j.version}</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
             <groupId>org.mockftpserver</groupId>
             <artifactId>MockFtpServer</artifactId>
             <version>${mockftpserver.version}</version>
@@ -690,7 +579,7 @@
         <dependency>
             <groupId>org.asciidoctor</groupId>
             <artifactId>asciidoctor-maven-plugin</artifactId>
-            <version>1.5.7.1</version>
+            <version>${asciidoctor-maven-plugin.version}</version>
         </dependency>
       	<!-- Reflections -->
 		<dependency>
@@ -820,25 +709,20 @@
     </build>
 
     <properties>
-        <suanshu.version>4.0.0</suanshu.version>
-        <snakeyaml.version>1.21</snakeyaml.version>
+
         <googleclient.version>1.23.0</googleclient.version>
-        <crdt.version>0.1.0</crdt.version>
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.7</cglib.version>
-        <commons-lang.version>3.6</commons-lang.version>
-        <jasypt.version>1.9.2</jasypt.version>
         <javatuples.version>1.2</javatuples.version>
         <javaassist.version>3.21.0-GA</javaassist.version>
         <assertj.version>3.6.2</assertj.version>
         <jsonassert.version>1.5.0</jsonassert.version>
         <javers.version>3.1.0</javers.version>
         <httpclient.version>4.5.3</httpclient.version>
-        <h2.version>1.4.196</h2.version>
         <jnats.version>1.0</jnats.version>
 
+
         <httpclient.version>4.5.3</httpclient.version>
-        <jackson.version>2.9.7</jackson.version>
         <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.9.26</serenity.version>
         <serenity.jbehave.version>1.41.0</serenity.jbehave.version>
@@ -849,7 +733,6 @@
         <pact.version>3.5.0</pact.version>
         <awaitility.version>3.0.0</awaitility.version>
         <org.hamcrest.java-hamcrest.version>2.0.0.0</org.hamcrest.java-hamcrest.version>
-        <hll.version>1.6.0</hll.version>
         <bytebuddy.version>1.7.1</bytebuddy.version>
         <pcollections.version>2.1.2</pcollections.version>
         <rome.version>1.0</rome.version>
@@ -858,23 +741,18 @@
         <vavr.version>0.9.0</vavr.version>
         <geotools.version>15.2</geotools.version>
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
-        <retrofit.version>2.3.0</retrofit.version>
+
         <joda-time.version>2.10</joda-time.version>
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
         <protonpack.version>1.15</protonpack.version>
-        <unit-ri.version>1.0.3</unit-ri.version>
         <cache.version>1.0.0</cache.version>
         <hazelcast.version>3.10.2</hazelcast.version>
         <caffeine.version>2.5.5</caffeine.version>
         <google-api.version>1.23.0</google-api.version>
         <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
         <kafka.version>2.0.0</kafka.version>
-        <smooks.version>1.7.0</smooks.version>
         <docker.version>3.0.14</docker.version>
-        <async.http.client.version>2.2.0</async.http.client.version>
-        <infinispan.version>9.1.5.Final</infinispan.version>
-        <opencsv.version>4.1</opencsv.version>
-        <unirest.version>1.4.9</unirest.version>
+
         <jctools.version>2.1.2</jctools.version>
         <commons-codec-version>1.10.L001</commons-codec-version>
         <jets3t-version>0.9.4.0006L</jets3t-version>
@@ -904,18 +782,14 @@
         <jdeferred.version>1.2.6</jdeferred.version>
         <functionaljava.version>4.8.1</functionaljava.version>
         <jgrapht.version>1.0.1</jgrapht.version>
-        <docx4j.version>3.3.5</docx4j.version>
-        <jaxb-api.version>2.1</jaxb-api.version>
-        <bouncycastle.version>1.58</bouncycastle.version>
         <jersey.version>1.19.4</jersey.version>
-        <javalin.version>1.6.0</javalin.version>
         <fugue.version>4.5.1</fugue.version>
         <maven-bundle-plugin.version>3.3.0</maven-bundle-plugin.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
-        <derive4j.version>1.1.0</derive4j.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
         <commons-net.version>3.6</commons-net.version>
         <reflections.version>0.9.11</reflections.version>
+        <asciidoctor-maven-plugin.version>1.5.7.1</asciidoctor-maven-plugin.version>
 
     </properties>
 

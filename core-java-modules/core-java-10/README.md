@@ -1,3 +1,6 @@
+## Core Java 10
+
+This module contains articles about Java 10 core features
 
 ### Relevant Articles: 
 
@@ -5,3 +8,4 @@
 - [Guide to Java 10](http://www.baeldung.com/java-10-overview)
 - [Copy a List to Another List in Java](http://www.baeldung.com/java-copy-list-to-another)
 - [Deep Dive Into the New Java JIT Compiler – Graal](https://www.baeldung.com/graal-java-jit-compiler)
+- [Copying Sets in Java](https://www.baeldung.com/java-copy-sets)

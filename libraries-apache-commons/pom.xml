@@ -25,7 +25,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang.version}</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -33,19 +33,9 @@
             <version>${commons-text.version}</version>
         </dependency>
         <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons.io.version}</version>
-        </dependency>
-        <dependency>
             <groupId>commons-chain</groupId>
             <artifactId>commons-chain</artifactId>
             <version>${commons-chain.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-csv</artifactId>
-            <version>${commons-csv.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-dbutils</groupId>
@@ -72,31 +62,15 @@
             <artifactId>xchart</artifactId>
             <version>${xchart-version}</version>
         </dependency>
-		<dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-            <version>${commons.collections.version}</version>
-        </dependency>
-		<dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>java-hamcrest</artifactId>
-            <version>${org.hamcrest.java-hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <properties>
-        <commons-lang.version>3.6</commons-lang.version>
+        <commons-lang3.version>3.6</commons-lang3.version>
         <commons-text.version>1.1</commons-text.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
         <commons-chain.version>1.2</commons-chain.version>
-        <commons-csv.version>1.4</commons-csv.version>
         <assertj.version>3.6.2</assertj.version>
-        <commons.io.version>2.5</commons.io.version>
         <commons.dbutils.version>1.6</commons.dbutils.version>
-        <commons.collections.version>4.1</commons.collections.version>
-        <org.hamcrest.java-hamcrest.version>2.0.0.0</org.hamcrest.java-hamcrest.version>
         <commons-codec-version>1.10.L001</commons-codec-version>
         <xchart-version>3.5.2</xchart-version>
         <commons-net.version>3.6</commons-net.version>

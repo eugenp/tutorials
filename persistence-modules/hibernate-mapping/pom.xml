@@ -2,6 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <artifactId>hibernate-mapping</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <modelVersion>4.0.0</modelVersion>
+    <name>hibernate-mapping</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -9,10 +13,6 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
-
-    <artifactId>hibernate-mapping</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <modelVersion>4.0.0</modelVersion>
 
     <dependencies>
         <dependency>
@@ -45,12 +45,12 @@
         <dependency>
             <groupId>javax.money</groupId>
             <artifactId>money-api</artifactId>
-            <version>1.0.3</version>
+            <version>${money-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.javamoney</groupId>
             <artifactId>moneta</artifactId>
-            <version>1.3</version>
+            <version>${moneta.version}</version>
             <type>pom</type>
         </dependency>
     </dependencies>
@@ -59,7 +59,7 @@
         <finalName>hibernate-mapping</finalName>
         <resources>
             <resource>
-                <directory>src/test/resources</directory>
+                <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
@@ -70,6 +70,8 @@
         <assertj-core.version>3.8.0</assertj-core.version>
         <hibernate-validator.version>6.0.16.Final</hibernate-validator.version>
         <org.glassfish.javax.el.version>3.0.1-b11</org.glassfish.javax.el.version>
+        <money-api.version>1.0.3</money-api.version>
+        <moneta.version>1.3</moneta.version>
     </properties>
 
 </project>

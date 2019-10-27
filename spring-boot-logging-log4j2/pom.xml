@@ -34,6 +34,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
+        <dependency>
+        	<groupId>org.projectlombok</groupId>
+        	<artifactId>lombok</artifactId>
+        	<version>${lombok.version}</version>
+        	<scope>provided</scope>
+    	</dependency>
         
         <!-- for Graylog demo -->
         <dependency>
@@ -73,5 +79,6 @@
         <start-class>com.baeldung.springbootlogging.SpringBootLoggingApplication</start-class>
 		<spring-boot-starter-log4j.version>1.3.8.RELEASE</spring-boot-starter-log4j.version>
 		<gelfj.version>1.1.16</gelfj.version>
+		<lombok.version>1.18.4</lombok.version>
     </properties>
 </project>

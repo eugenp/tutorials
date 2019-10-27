@@ -59,6 +59,20 @@
             <artifactId>validation-api</artifactId>
             <version>${validation-api.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>${derby.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -83,6 +97,8 @@
         <tomcat-jdbc.version>9.0.10</tomcat-jdbc.version>
         <mockito.version>2.23.0</mockito.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
+        <derby.version>10.13.1.1</derby.version>
+        <hsqldb.version>2.3.4</hsqldb.version>
     </properties>
 
 </project>

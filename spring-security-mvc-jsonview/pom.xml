@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
     <groupId>com.baeldung</groupId>
     <artifactId>spring-security-mvc-jsonview</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -16,7 +15,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -111,7 +109,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet.version}</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -142,7 +140,6 @@
             <version>${json-path.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -153,9 +150,7 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -200,21 +195,12 @@
                     </configuration>
                 </configuration>
             </plugin>
-
         </plugins>
-
     </build>
 
     <properties>
-        <!-- various -->
-        <javax.servlet.version>3.1.0</javax.servlet.version>
-        <jstl.version>1.2</jstl.version>
-
-        <!-- Maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <json-path.version>2.4.0</json-path.version>
-
     </properties>
 
 </project>

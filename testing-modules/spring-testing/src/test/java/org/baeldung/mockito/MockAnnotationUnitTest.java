@@ -25,7 +25,7 @@ public class MockAnnotationUnitTest {
     }
     
     @Test
-    public void givenCountMethodOfLocalMockVariableMocked_WhenCountInvoked_ThenMockedValueReturned() {
+    public void givenCountMethodMocked_WhenCountInvoked_ThenMockedValueReturned() {
         UserRepository localMockRepository = Mockito.mock(UserRepository.class);
         Mockito.when(localMockRepository.count()).thenReturn(111L);
 

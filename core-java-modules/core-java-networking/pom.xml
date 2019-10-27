@@ -15,24 +15,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>${javax.mail.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${springframework.spring-web.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
         </dependency>
     </dependencies>
 
@@ -41,9 +26,6 @@
     </build>
 
     <properties>
-        <javax.mail.version>1.5.0-b01</javax.mail.version>
-        <commons-io.version>2.5</commons-io.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
     </properties>	
 </project>

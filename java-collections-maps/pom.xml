@@ -36,20 +36,13 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>one.util</groupId>
-            <artifactId>streamex</artifactId>
-            <version>${streamex.version}</version>
-        </dependency>
     </dependencies>
 
     <properties>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <collections-generic.version>4.01</collections-generic.version>
         <avaitility.version>1.7.0</avaitility.version>
         <assertj.version>3.6.1</assertj.version>
         <eclipse.collections.version>7.1.0</eclipse.collections.version>
-		<streamex.version>0.6.5</streamex.version>
     </properties>
 </project>

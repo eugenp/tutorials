@@ -16,16 +16,19 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>io.searchbox</groupId>
             <artifactId>jest</artifactId>
-            <version>6.3.1</version>
+            <version>${jest.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.6</version>
+            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <jest.version>6.3.1</jest.version>
+    </properties>
 </project>
