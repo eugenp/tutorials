@@ -32,7 +32,7 @@ import com.baeldung.jackson.bidirection.ItemWithIdentity;
 import com.baeldung.jackson.bidirection.ItemWithRef;
 import com.baeldung.jackson.bidirection.UserWithIdentity;
 import com.baeldung.jackson.bidirection.UserWithRef;
-import com.baeldung.jackson.date.Event;
+import com.baeldung.jackson.date.EventWithFormat;
 import com.baeldung.jackson.date.EventWithSerializer;
 import com.baeldung.jackson.dtos.MyMixInForIgnoreType;
 import com.baeldung.jackson.dtos.withEnum.DistanceEnumWithValue;
@@ -270,7 +270,7 @@ public class JacksonAnnotationUnitTest {
 
         final String toParse = "20-12-2014 02:30:00";
         final Date date = df.parse(toParse);
-        final Event event = new Event("party", date);
+        final EventWithFormat event = new EventWithFormat("party", date);
 
         final String result = new ObjectMapper().writeValueAsString(event);
         assertThat(result, containsString(toParse));
