@@ -1,9 +1,11 @@
 package com.baeldung.tx;
 
+import com.baeldung.PostgresExtension;
 import com.baeldung.model.Payment;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -15,26 +17,19 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import javax.persistence.EntityManager;
 
-import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
 import static org.springframework.transaction.annotation.Propagation.NOT_SUPPORTED;
 
 @DataJpaTest
-@Testcontainers
 @ActiveProfiles("test")
+@ExtendWith(PostgresExtension.class)
 @AutoConfigureTestDatabase(replace = NONE)
 @Transactional(propagation = NOT_SUPPORTED)
 class ManualTransactionIntegrationTest {
-
-    @Container
-    private static PostgreSQLContainer<?> pg = initPostgres();
 
     @Autowired
     private PlatformTransactionManager transactionManager;
@@ -160,13 +155,4 @@ class ManualTransactionIntegrationTest {
                 .getResultList()).hasSize(1);
     }
 
-    private static PostgreSQLContainer<?> initPostgres() {
-        PostgreSQLContainer<?> pg = new PostgreSQLContainer<>("postgres:11.1")
-                .withDatabaseName("baeldung")
-                .withUsername("test")
-                .withPassword("test");
-        pg.setPortBindings(singletonList("54320:5432"));
-
-        return pg;
-    }
 }
