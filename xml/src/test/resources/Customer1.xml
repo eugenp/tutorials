@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customer>
+	<person>
+		<customer-id>12345</customer-id>
+		<name>Stefan Jaeger</name>
+	</person>
+	<home-phone>
+		<number>234678</number>
+	</home-phone>
+
+	<office-phone>
+		<number>234678</number>
+	</office-phone>
+	<city>Davos Dorf</city>
+
+</customer>
