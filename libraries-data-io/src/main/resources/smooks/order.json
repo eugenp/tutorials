@@ -1,0 +1,21 @@
+{
+  "creationDate":"2018-01-14",
+  "orderNumber":771,
+  "orderStatus":"IN_PROGRESS",
+  "supplier":{
+    "name":"CompanyX",
+    "phone":"1234567"
+  },
+  "orderItems":[
+    {
+      "quantity":1,
+      "code":"PX1234",
+      "price":9.99
+    },
+    {
+      "quantity":2,
+      "code":"RX1990",
+      "price":120.32
+    }
+  ]
+}
