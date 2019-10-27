@@ -609,6 +609,7 @@
 
                 <module>spring-boot-nashorn</module>
                 <module>java-blockchain</module>
+                <module>supervised-learning</module>
 <module>wildfly</module>
             </modules>
 
