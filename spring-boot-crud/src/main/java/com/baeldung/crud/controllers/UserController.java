@@ -22,6 +22,12 @@ public class UserController {
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
+    @GetMapping("/")
+    public String index(Model model) {
+        model.addAttribute("users", userRepository.findAll());
+        return "index";
+    }
     
     @GetMapping("/signup")
     public String showSignUpForm(User user) {
