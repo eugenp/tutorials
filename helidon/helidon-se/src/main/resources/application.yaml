@@ -1,0 +1,33 @@
+server:
+  port: 9080
+web:
+  debug: true
+  page-size: 15
+user:
+  home: C:/Users/app
+
+#Config 4 Security ==> Mapped to Security Object
+security:
+  providers:
+  - http-basic-auth:
+      realm: "myRealm"
+      principal-type: USER # Can be USER or SERVICE, default is USER
+      users:
+      - login: "user"
+        password: "user"
+        roles: ["ROLE_USER"]
+      - login: "admin"
+        password: "admin"
+        roles: ["ROLE_USER", "ROLE_ADMIN"]
+
+  #Config 4 Security Web Server Integration ==> Mapped to WebSecurity Object
+  web-server:
+    securityDefaults:
+      authenticate: true
+    paths:
+    - path: "/user"
+      methods: ["get"]
+      roles-allowed: ["ROLE_USER", "ROLE_ADMIN"]
+    - path: "/admin"
+      methods: ["get"]
+      roles-allowed: ["ROLE_ADMIN"]

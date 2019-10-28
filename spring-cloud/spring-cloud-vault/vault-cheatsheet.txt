@@ -1,0 +1,79 @@
+== Vault server bootstrap
+
+1. Run vaul-start in one shell
+
+2. Open another shell and execute the command below:
+> vault operator init
+
+Unseal Key 1: Iwvpd4IVofhcmQ2HEIPs5HMUbz4tz6JhqmLZ6+1MhAPx
+Unseal Key 2: ANQDXUFGGtLtt6grX25YsdmeKELhM/ioKWzwFukJIe2f
+Unseal Key 3: 8MHyzFnOvlwVQzdWYJ3BIN4xPDOn8a4VemZ/Qe5HgurU
+Unseal Key 4: ywT9YR9OfxIpA4l1RniNNCvSZWAuNZsAEFRyD7aqFOrp
+Unseal Key 5: q1c7M+lnlT72jGLoCH+jjri6KGSBhc5lCzlT0I1R9URU
+
+Initial Root Token: dee7107a-8819-0719-62a3-cea3ea854589
+
+...
+
+== Admin token setup
+
+1. Set the VAULT_TOKEN environment variable with the root token value 
+export VAULT_TOKEN=d341fdaf-1cf9-936a-3c38-cf5eec94b5c0 (Linux) 
+set VAULT_TOKEN=d341fdaf-1cf9-936a-3c38-cf5eec94b5c0 (Windows)
+
+2. Create another admin token
+
+>vault token create -display-name=admin
+Key                  Value
+---                  -----
+token                3779c3ca-9f5e-1d8f-3842-efa96d88de43  <=== this is the new root token
+token_accessor       2dfa4031-973b-cf88-c749-ee6f520ecaea
+token_duration       ∞
+token_renewable      false
+token_policies       ["root"]
+identity_policies    []
+policies             ["root"]
+
+3. Create ~/.vault-secret with your root token
+4. Unset the VAULT_TOKEN environment variable !
+
+=== Test DB setup (MySQL only, for now)
+
+1. Create test db
+2. Create admin account used to create dynamic accounts:
+
+create schema fakebank;
+create user 'fakebank-admin'@'%' identified by 'Sup&rSecre7!'
+grant all privileges on fakebank.* to 'fakebank-admin'@'%' with grant option;
+grant create user on *.* to 'fakebank-admin' with grant option;
+flush privileges;
+
+
+=== Database secret backend setup
+> vault secrets enable database
+
+==== Create db configuration
+> vault write database/config/mysql-fakebank ^
+  plugin_name=mysql-legacy-database-plugin ^
+  connection_url="{{username}}:{{password}}@tcp(127.0.0.1:3306)/fakebank" ^
+  allowed_roles="*" ^
+  username="fakebank-admin" ^
+  password="Sup&rSecre7!" 
+  
+==== Create roles
+> vault write database/roles/fakebank-accounts-ro ^
+    db_name=mysql-fakebank ^
+    creation_statements="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT SELECT ON fakebank.* TO '{{name}}'@'%';" ^
+    default_ttl="1h" ^
+    max_ttl="24h"  
+
+> vault write database/roles/fakebank-accounts-rw ^
+    db_name=mysql-fakebank ^
+    creation_statements="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT SELECT,INSERT,UPDATE ON fakebank.* TO '{{name}}'@'%';" ^
+    default_ttl="5m" ^
+    max_ttl="30m"  
+	
+=== Get credentials
+> vault read database/creds/fakebank-accounts-rw
+
+
