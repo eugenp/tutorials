@@ -1,23 +1,29 @@
 package com.baeldung.resttemplate.lists.client;
 
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.*;
-import org.springframework.web.client.RestTemplate;
-
 import com.baeldung.resttemplate.lists.dto.Employee;
 import com.baeldung.resttemplate.lists.dto.EmployeeList;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Arrays.asList;
+
 /**
  * Application that shows how to use Lists with RestTemplate.
  */
-public class EmployeeClient
-{
-    public static void main(String[] args)
-    {
+public class EmployeeClient {
+    public static void main(String[] args) {
         EmployeeClient employeeClient = new EmployeeClient();
+
+        System.out.println("Calling GET using arrays");
+        employeeClient.getAllEmployeesAsArray();
+
+        System.out.println("Calling GET for entity using arrays");
+        employeeClient.getForEntityEmployeesAsArray();
 
         System.out.println("Calling GET using ParameterizedTypeReference");
         employeeClient.getAllEmployeesUsingParameterizedTypeReference();
@@ -32,13 +38,48 @@ public class EmployeeClient
         employeeClient.createEmployeesUsingWrapperClass();
     }
 
-    public EmployeeClient()
-    {
+    public EmployeeClient() {
 
     }
 
-    public List<Employee> getAllEmployeesUsingParameterizedTypeReference()
-    {
+    public Employee[] getForEntityEmployeesAsArray() {
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<Employee[]> response =
+                restTemplate.getForEntity(
+                        "http://localhost:8082/spring-rest/employees/",
+                        Employee[].class);
+
+        Employee[] employees = response.getBody();
+
+        assert employees != null;
+        asList(employees).forEach(System.out::println);
+
+        return employees;
+
+    }
+
+    public Employee[] getAllEmployeesAsArray() {
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<Employee[]> response =
+                restTemplate.exchange(
+                        "http://localhost:8082/spring-rest/employees/",
+                        HttpMethod.GET,
+                        null, Employee[].class);
+
+        Employee[] employees = response.getBody();
+
+        assert employees != null;
+        asList(employees).forEach(System.out::println);
+
+        return employees;
+
+    }
+
+    public List<Employee> getAllEmployeesUsingParameterizedTypeReference() {
         RestTemplate restTemplate = new RestTemplate();
 
         ResponseEntity<List<Employee>> response =
@@ -46,17 +87,18 @@ public class EmployeeClient
                         "http://localhost:8082/spring-rest/employees/",
                         HttpMethod.GET,
                         null,
-                        new ParameterizedTypeReference<List<Employee>>(){});
+                        new ParameterizedTypeReference<List<Employee>>() {
+                        });
 
         List<Employee> employees = response.getBody();
 
-        employees.forEach(e -> System.out.println(e));
+        assert employees != null;
+        employees.forEach(System.out::println);
 
         return employees;
     }
 
-    public List<Employee> getAllEmployeesUsingWrapperClass()
-    {
+    public List<Employee> getAllEmployeesUsingWrapperClass() {
         RestTemplate restTemplate = new RestTemplate();
 
         EmployeeList response =
@@ -66,13 +108,12 @@ public class EmployeeClient
 
         List<Employee> employees = response.getEmployees();
 
-        employees.forEach(e -> System.out.println(e));
+        employees.forEach(System.out::println);
 
         return employees;
     }
 
-    public void createEmployeesUsingLists()
-    {
+    public void createEmployeesUsingLists() {
         RestTemplate restTemplate = new RestTemplate();
 
         List<Employee> newEmployees = new ArrayList<>();
@@ -85,8 +126,7 @@ public class EmployeeClient
                 ResponseEntity.class);
     }
 
-    public void createEmployeesUsingWrapperClass()
-    {
+    public void createEmployeesUsingWrapperClass() {
         RestTemplate restTemplate = new RestTemplate();
 
         List<Employee> newEmployees = new ArrayList<>();
