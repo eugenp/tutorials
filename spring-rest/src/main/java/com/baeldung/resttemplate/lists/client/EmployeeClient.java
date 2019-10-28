@@ -19,9 +19,6 @@ public class EmployeeClient {
     public static void main(String[] args) {
         EmployeeClient employeeClient = new EmployeeClient();
 
-        System.out.println("Calling GET using arrays");
-        employeeClient.getAllEmployeesAsArray();
-
         System.out.println("Calling GET for entity using arrays");
         employeeClient.getForEntityEmployeesAsArray();
 
@@ -60,24 +57,6 @@ public class EmployeeClient {
 
     }
 
-    public Employee[] getAllEmployeesAsArray() {
-
-        RestTemplate restTemplate = new RestTemplate();
-
-        ResponseEntity<Employee[]> response =
-                restTemplate.exchange(
-                        "http://localhost:8082/spring-rest/employees/",
-                        HttpMethod.GET,
-                        null, Employee[].class);
-
-        Employee[] employees = response.getBody();
-
-        assert employees != null;
-        asList(employees).forEach(System.out::println);
-
-        return employees;
-
-    }
 
     public List<Employee> getAllEmployeesUsingParameterizedTypeReference() {
         RestTemplate restTemplate = new RestTemplate();
