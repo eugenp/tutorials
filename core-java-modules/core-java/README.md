@@ -7,7 +7,7 @@
 - [How to Create an Executable JAR with Maven](http://www.baeldung.com/executable-jar-with-maven)
 - [Introduction to Nashorn](http://www.baeldung.com/java-nashorn)
 - [Java Money and the Currency API](http://www.baeldung.com/java-money-and-currency)
-- [How to Add a Single Element to a Stream](http://www.baeldung.com/java-stream-append-prepend)
+- [JVM Log Forging](http://www.baeldung.com/jvm-log-forging)
 - [How to Find all Getters Returning Null](http://www.baeldung.com/java-getters-returning-null)
 - [How to Get a Name of a Method Being Executed?](http://www.baeldung.com/java-name-of-executing-method)
 - [Introduction to Java Serialization](http://www.baeldung.com/java-serialization)
