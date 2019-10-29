@@ -5,7 +5,7 @@ This module contains articles about Map data structures in Java.
 ### Relevant Articles: 
 - [Map of Primitives in Java](https://www.baeldung.com/java-map-primitives)
 - [Copying a HashMap in Java](https://www.baeldung.com/java-copy-hashmap)
-- [Guide to Java HashMap]()
+- [A Guide to Java HashMap](https://www.baeldung.com/java-hashmap)
 - [Guide to WeakHashMap in Java](https://www.baeldung.com/java-weakhashmap)
 - [Map to String Conversion in Java](https://www.baeldung.com/java-map-to-string-conversion)
 - [Iterate over a Map in Java](https://www.baeldung.com/java-iterate-map)
