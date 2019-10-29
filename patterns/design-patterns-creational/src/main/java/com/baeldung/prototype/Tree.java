@@ -1,6 +1,6 @@
 package com.baeldung.prototype;
 
-public class Tree implements Cloneable {
+public class Tree implements TreeCloneable {
 
     private double mass;
     private double height;
@@ -36,7 +36,12 @@ public class Tree implements Cloneable {
     }
 
     @Override
-    public Tree clone() {
+    public String toString() {
+        return "Tree [mass=" + mass + ", height=" + height + ", position=" + position + "]";
+    }
+
+    @Override
+    public TreeCloneable createA_Clone() {
         Tree tree = null;
         try {
             tree = (Tree) super.clone();
@@ -44,11 +49,6 @@ public class Tree implements Cloneable {
             e.printStackTrace();
         }
         return tree;
-    }
-
-    @Override
-    public String toString() {
-        return "Tree [mass=" + mass + ", height=" + height + ", position=" + position + "]";
     }
 
 }

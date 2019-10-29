@@ -15,7 +15,7 @@ public class TreePrototypeUnitTest {
 
         Tree tree = new Tree(mass, height);
         tree.setPosition(position);
-        Tree anotherTree = tree.clone();
+        Tree anotherTree = (Tree) tree.createA_Clone();
         anotherTree.setPosition(otherPosition);
 
         assertEquals(position, tree.getPosition());
