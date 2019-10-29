@@ -440,6 +440,8 @@
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-string-conversions</module>
                 <module>core-java-modules/core-java-string-conversions-2</module>
+                <module>core-java-modules/core-java-string-algorithms</module>
+                <module>core-java-modules/core-java-string-algorithms-2</module>
                 <module>core-java-modules/core-java-string-apis</module>
                 <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-jvm</module>
@@ -1209,6 +1211,8 @@
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-string-conversions</module>
                 <module>core-java-modules/core-java-string-conversions-2</module>
+                <module>core-java-modules/core-java-string-algorithms</module>
+                <module>core-java-modules/core-java-string-algorithms-2</module>
                 <module>core-java-modules/core-java-string-apis</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
