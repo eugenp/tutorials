@@ -9,6 +9,13 @@
 	<name>jnosql</name>
     <packaging>pom</packaging>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../</relativePath>
+    </parent>
+
     <modules>
         <module>jnosql-diana</module>
         <module>jnosql-artemis</module>
