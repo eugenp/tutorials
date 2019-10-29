@@ -1,0 +1,27 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    
+destinations:
+  queues:
+    NYSE:
+      exchange: nyse
+      routing-key: NYSE
+    IBOV:
+      exchange: ibov
+      routing-key: IBOV
+      
+      
+  topics:
+    weather:
+      exchange: alerts
+      routing-key: WEATHER
+      
+
+  
+      
+    
+    

@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="toc.spacer.image">
+<refmeta>
+<refentrytitle>toc.spacer.image</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>toc.spacer.image</refname>
+<refpurpose>The image for spacing the TOC</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="toc.spacer.image.frag">
+<xsl:param name="toc.spacer.image">graphics/blank.gif</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>If <varname>toc.spacer.graphic</varname> is non-zero, this image
+will be used to indent the TOC.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>

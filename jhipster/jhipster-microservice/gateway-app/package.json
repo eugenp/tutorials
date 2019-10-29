@@ -1,0 +1,68 @@
+{
+  "name": "gateway",
+  "version": "0.0.0",
+  "description": "Description for gateway",
+  "private": true,
+  "cacheDirectories": [
+    "node_modules",
+    "src/main/webapp/bower_components"
+  ],
+  "devDependencies": {
+    "bower": "1.7.9",
+    "browser-sync": "2.17.0",
+    "del": "2.2.2",
+    "eslint-config-angular": "0.5.0",
+    "eslint-plugin-angular": "1.3.1",
+    "event-stream": "3.3.4",
+    "generator-jhipster": "4.0.8",
+    "gulp": "3.9.1",
+    "gulp-angular-filesort": "1.1.1",
+    "gulp-angular-templatecache": "2.0.0",
+    "gulp-autoprefixer": "3.1.1",
+    "gulp-changed": "1.3.2",
+    "gulp-cssnano": "2.1.2",
+    "gulp-eslint": "3.0.1",
+    "gulp-flatten": "0.3.1",
+    "gulp-footer": "1.0.5",
+    "gulp-htmlmin": "2.0.0",
+    "gulp-if": "2.0.1",
+    "gulp-imagemin": "3.0.3",
+    "gulp-inject": "4.1.0",
+    "gulp-natural-sort": "0.1.1",
+    "gulp-ng-annotate": "2.0.0",
+    "gulp-ng-constant": "1.1.0",
+    "gulp-notify": "2.2.0",
+    "gulp-plumber": "1.1.0",
+    "gulp-rename": "1.2.2",
+    "gulp-replace": "0.5.4",
+    "gulp-rev": "7.1.2",
+    "gulp-rev-replace": "0.4.3",
+    "gulp-sourcemaps": "1.6.0",
+    "gulp-uglify": "2.0.0",
+    "gulp-useref": "3.1.2",
+    "jasmine-core": "2.5.0",
+    "karma": "1.2.0",
+    "karma-chrome-launcher": "2.0.0",
+    "karma-coverage": "1.1.1",
+    "karma-jasmine": "1.0.2",
+    "karma-junit-reporter": "1.1.0",
+    "karma-phantomjs-launcher": "1.0.2",
+    "karma-script-launcher": "1.0.0",
+    "lazypipe": "1.0.1",
+    "lodash": "4.17.10",
+    "main-bower-files": "2.13.1",
+    "map-stream": "0.0.6",
+    "phantomjs-prebuilt": "2.1.12",
+    "proxy-middleware": "0.15.0",
+    "run-sequence": "1.2.2",
+    "xml2js": "0.4.17",
+
+    "yargs": "5.0.0"
+  },
+  "engines": {
+    "node": "^4.3"
+  },
+  "scripts": {
+    "test": "gulp test"
+  }
+}

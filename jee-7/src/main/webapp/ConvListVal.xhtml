@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Converters, Listeners and Validators</title>
+</h:head>
+<h:body>
+    <h1>Testing converters</h1>
+    <h:form id="myForm">
+        <h:outputLabel value="Age:"/>
+        <h:inputText id="age" value="#{convListVal.age}">
+            <f:converter converterId="javax.faces.Integer" />
+        </h:inputText>
+        <h:message id="ageError" for="age" />
+        <br/>
+        <h:outputLabel value="Average:"/>
+        <h:inputText id="average" value="#{convListVal.average}">
+            <f:converter converterId="javax.faces.Double" />
+        </h:inputText>
+        <h:message id = "averageError" for="average" />
+        <br/>
+		<h:outputLabel value="Date:"/>
+        <h:inputText id="myDate" value="#{convListVal.myDate}">
+        	<f:convertDateTime pattern="dd/MM/yyyy" />
+        </h:inputText>
+        <h:message id="myDateError" for="myDate" />
+        <br/>
+        <h:outputText value="#{convListVal.myDate}">
+	        <f:convertDateTime dateStyle="full" locale="en"/>
+        </h:outputText>
+        <br/>
+        <h:outputLabel value="Name:"/>
+		<h:inputText id="name" size="30" value="#{convListVal.name}">
+    		<f:valueChangeListener type="com.baeldung.convListVal.MyListener" />
+		</h:inputText>
+        <br/>
+		<h:outputLabel value="surname" for="surname"/>
+		<h:panelGroup>
+		    <h:inputText id="surname" value="#{convListVal.surname}">
+		        <f:validateLength minimum="5" maximum="10"/>
+		    </h:inputText>
+		    <h:message id="surnameError" for="surname" errorStyle="color:red"  />
+		</h:panelGroup>
+        <br/>
+        <h:commandButton id="send" value="submit" type="submit" />
+    </h:form>
+</h:body>
+</html>
