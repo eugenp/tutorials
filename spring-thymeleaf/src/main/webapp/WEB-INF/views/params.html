@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Thymeleaf Fragments: params</title>
+</head>
+<body>
+    <header th:insert="fragments/general.html :: header"> </header>
+    <div
+        th:replace="fragments/forms.html :: formField(field='Name', value='John Doe',size='40')">
+    </div>
+    <div th:replace="fragments/general.html :: footer"></div>
+</body>
+</html>

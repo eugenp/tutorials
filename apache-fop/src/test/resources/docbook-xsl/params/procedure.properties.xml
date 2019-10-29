@@ -1,0 +1,29 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="procedure.properties">
+<refmeta>
+<refentrytitle>procedure.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>procedure.properties</refname>
+<refpurpose>Properties associated with a procedure</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="procedure.properties.frag">
+<xsl:attribute-set name="procedure.properties" use-attribute-sets="formal.object.properties">
+  <xsl:attribute name="keep-together.within-column">auto</xsl:attribute>
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The styling for procedures.</para>
+
+</refsection>
+</refentry>

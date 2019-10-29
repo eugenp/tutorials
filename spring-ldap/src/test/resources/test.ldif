@@ -1,0 +1,24 @@
+version: 1
+dn: ou=users,dc=example,dc=com
+objectClass: organizationalUnit
+objectClass: top
+ou: users
+
+dn: cn=TEST03,ou=users,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: TEST03
+sn: TEST03
+userPassword:: e1NIQX1JbktFOFY2enBpWWdMY0RYQTYzdXZVNjRGZXc9
+
+dn: cn=TEST02,ou=users,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: TEST02
+sn: TEST02
+userPassword:: e1NIQX1uZERKdWNNYnl5a3hWdEkyQzgyRUFlalN1WTQ9
+
