@@ -54,7 +54,7 @@ public class ParameterMessageInterpolaterIntegrationTest {
     }
     
     @Test
-    public void ifEmailIsMalformed_emailFormatValidationFails() {
+    public void givenEmailIsMalformed_whenValidate_thenValidationFails() {
         Person person = new Person();
         person.setName("John Stephaner Doe");
         person.setAge(18);
