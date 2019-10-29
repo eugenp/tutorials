@@ -28,7 +28,7 @@ public class ParameterMessageInterpolaterIntegrationTest {
     }
 
     @Test
-    public void ifNameLengthIsLess_nameValidationFails() {
+    public void givenNameLengthLessThanMin_whenValidate_thenValidationFails() {
         Person person = new Person();
         person.setName("John Doe");
         person.setAge(18);
