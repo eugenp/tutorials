@@ -1,0 +1,50 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="marker.section.level">
+<refmeta>
+<refentrytitle>marker.section.level</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">integer</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>marker.section.level</refname>
+<refpurpose>Control depth of sections shown in running headers or footers</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="marker.section.level.frag">
+<xsl:param name="marker.section.level" >2</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The <parameter>marker.section.level</parameter> parameter
+controls the depth of section levels that may be displayed
+in running headers and footers.  For example, if the value
+is 2 (the default), then titles from <tag>sect1</tag> and 
+<tag>sect2</tag> or equivalent <tag>section</tag>
+elements are candidates for use in running headers and
+footers.
+</para>
+<para>Each candidate title is marked in the FO output with a
+<tag>&lt;fo:marker marker-class-name="section.head.marker"&gt;</tag>
+element.
+</para>
+<para>In order for such titles to appear in headers
+or footers, the <literal>header.content</literal>
+or <literal>footer.content</literal> template
+must be customized to retrieve the marker using
+an output element such as:
+</para>
+<programlisting>
+&lt;fo:retrieve-marker retrieve-class-name="section.head.marker"
+                       retrieve-position="first-including-carryover"
+                       retrieve-boundary="page-sequence"/&gt;
+</programlisting>
+
+
+</refsection>
+</refentry>

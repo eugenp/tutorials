@@ -1,0 +1,176 @@
+Changes since the 1.78.0 release
+
+Note: This document lists changes only since the 1.78.0 release. If you instead
+want a record of the complete list of changes for the codebase over its entire
+history, you can obtain one by running the following commands:
+
+  svn checkout https://docbook.svn.sourceforge.net/svnroot/docbook/trunk/xsl
+  svn log --xml --verbose xsl > ChangeHistory.xml
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Table of Contents
+
+Release Notes: 1.78.1
+
+    Common
+    FO
+    HTML
+    Manpages
+    Webhelp
+    Params
+    Highlighting
+
+Release Notes: 1.78.1
+
+The following is a list of changes that have been made since the 1.78.0
+release.
+
+Common
+
+The following changes have been made to the common code since the 1.78.0
+release.
+
+  • Robert Stayton: titles.xsl
+
+    Make sure part and set titleabbrev are used in mode="titleabbrev.markup"
+
+  • Robert Stayton: titles.xsl
+
+    Add empty default template for titleabbrev since it is always processed in a mode.
+
+  • Robert Stayton: gentext.xsl
+
+    Make consistent handling of titleabbrev in xrefs.
+
+  • Robert Stayton: titles.xsl
+
+    for missing title in xref, provide parent information of target to help locate problem element.
+    Process bridgehead in mode="title.markup", not normal mode.
+
+  • Jirka Kosek: l10n.xsl
+
+    Fixed bug #3598963
+
+  • Robert Stayton: gentext.xsl; labels.xsl
+
+    Make sure bridgeheads are not numbered in all contexts, including html title attributes.
+
+FO
+
+The following changes have been made to the fo code since the 1.78.0 release.
+
+  • Robert Stayton: division.xsl
+
+    Fix bug where part TOC not generated when partintro is present.
+
+  • Jirka Kosek: xref.xsl
+
+    Footnotes can't be placed into fo:float
+
+  • Robert Stayton: titlepage.templates.xml
+
+    Remove margin-left when start-indent is used because they interfere
+    with each other.
+
+  • Robert Stayton: fo.xsl; pagesetup.xsl
+
+    Use dingbat.fontset rather than dingbat.font.family so it falls
+    back to symbol font if glyph not found, like other font properties.
+
+  • Robert Stayton: inline.xsl
+
+    Change last instance of inline.charseq in inline glossterm to
+    inline.italicseq so it is consistent with the others.
+
+  • Robert Stayton: xref.xsl
+
+    Make consistent handling of titleabbrev in xrefs.
+
+HTML
+
+The following changes have been made to the html code since the 1.78.0 release.
+
+  • Robert Stayton: admon.xsl
+
+    Turn off $admon.style if $make.clean.html is set to non-zero.
+
+  • Jirka Kosek: highlight.xsl
+
+    Added new definitions for syntax highlighting
+
+  • Robert Stayton: chunk-common.xsl
+
+    Make active.olink.hrefs param work for chunked output too.
+
+  • Robert Stayton: xref.xsl
+
+    Make consistent handling of titleabbrev in xrefs.
+
+  • Robert Stayton: graphics.xsl
+
+    Add round() function when pixel counts are used for image width and height.
+
+  • Robert Stayton: glossary.xsl
+
+    fix missing class and id attributes on glossterm and glossdef.
+
+  • Robert Stayton: autoidx.xsl
+
+    Fix bug where prefer.index.titleabbrev ignored info/titleabbrev.
+
+Manpages
+
+The following changes have been made to the manpages code since the 1.78.0
+release.
+
+  • Robert Stayton: utility.xsl
+
+    Fix bug 3599520: spurious newline in para when starts with
+    whitespace and inline element.
+
+Webhelp
+
+The following changes have been made to the webhelp code since the 1.78.0
+release.
+
+  • David Cramer: xsl/webhelp-common.xsl
+
+    Webhelp: Fix test for webhelp.include.search.tab param
+
+  • David Cramer: Makefile.sample
+
+    Webhelp: Fix order of args to xsltproc
+
+  • David Cramer: docsrc/readme.xml
+
+    Webhelp: Turn on xinclude-test.xml in readme to demo xinclude functionality
+
+  • David Cramer: Makefile; Makefile.sample
+
+    Webhelp: In Makefiles, do xinclude in first pass at document
+
+Params
+
+The following changes have been made to the params code since the 1.78.0
+release.
+
+  • David Cramer: webhelp.include.search.tab.xml
+
+    Webhelp: Fix test for webhelp.include.search.tab param
+
+  • Robert Stayton: article.appendix.title.properties.xml
+
+    Remove unneeded margin-left property from article appendix title.
+    It interferes with the start-indent property.
+
+Highlighting
+
+The following changes have been made to the highlighting code since the 1.78.0
+release.
+
+  • Jirka Kosek: c-hl.xml; cpp-hl.xml; sql2003-hl.xml; php-hl.xml; upc-hl.xml;
+    bourne-hl.xml; ⋯
+
+    Added new definitions for syntax highlighting
+

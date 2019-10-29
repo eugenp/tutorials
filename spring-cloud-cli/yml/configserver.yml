@@ -1,0 +1,4 @@
+spring:
+  profiles:
+    active: git
+  cloud.config.server.git.uri: https://github.com/spring-cloud/spring-cloud-cli/tree/master/spring-cloud-launcher/spring-cloud-launcher-configserver

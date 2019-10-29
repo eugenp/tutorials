@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="eclipse.plugin.name">
+<refmeta>
+<refentrytitle>eclipse.plugin.name</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>eclipse.plugin.name</refname>
+<refpurpose>Eclipse Help plugin name</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="eclipse.plugin.name.frag">
+<xsl:param name="eclipse.plugin.name">DocBook Online Help Sample</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Eclipse Help plugin name.</para>
+
+</refsection>
+</refentry>
