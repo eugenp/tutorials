@@ -29,14 +29,15 @@ public class JavaScannerUnitTest {
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void whenReadingLines_thenThrowNoSuchElementException() {
+
+    public void givenNoNewLine_whenReadingNextLine_thenThrowNoSuchElementException() {
         try (Scanner scanner = new Scanner("")) {
             String result = scanner.nextLine();
         }
     }
 
     @Test(expected = IllegalStateException.class)
-    public void whenReadingLines_thenThrowIllegalStateException() {
+    public void givenScannerIsClosed_whenReadingNextLine_thenThrowIllegalStateException() {
         Scanner scanner = new Scanner("");
         scanner.close();
         String result = scanner.nextLine();
