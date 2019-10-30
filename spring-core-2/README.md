@@ -15,4 +15,5 @@ This module contains articles about core Spring functionality
 - [Spring Events](https://www.baeldung.com/spring-events)
 - [Spring Null-Safety Annotations](https://www.baeldung.com/spring-null-safety-annotations)
 - [Using @Autowired in Abstract Classes](https://www.baeldung.com/spring-autowired-abstract-class)
+- [Guide to the Spring BeanFactory](https://www.baeldung.com/spring-beanfactory)
 - More articles: [[<-- prev]](/spring-core)
