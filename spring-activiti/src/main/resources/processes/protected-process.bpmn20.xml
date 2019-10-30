@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef" xmlns:modeler="http://activiti.com/modeler" modeler:version="1.0ev" modeler:exportDateTime="20170726123124" modeler:modelId="1005315" modeler:modelVersion="1" modeler:modelLastUpdated="1501068675875">
+    <process id="protected-process" name="protected-process" isExecutable="true">
+        <startEvent id="startEvent" name="startEvent">
+        </startEvent>
+        <sequenceFlow id="sequence-flow-1" sourceRef="startEvent" targetRef="A">
+        </sequenceFlow>     
+        <userTask id="A" name="A">
+           <potentialOwner>
+	      <resourceAssignmentExpression>
+	        <formalExpression>ROLE_USER</formalExpression>
+	      </resourceAssignmentExpression>
+	    </potentialOwner>
+        </userTask>
+        <sequenceFlow id="sequence-flow-2" sourceRef="A" targetRef="endEvent">
+        </sequenceFlow>
+        <endEvent id="endEvent" name="endEvent">
+        </endEvent>
+    </process>
+     <bpmndi:BPMNDiagram id="BPMNDiagram_protected-process">
+        <bpmndi:BPMNPlane bpmnElement="protected-process" id="BPMNPlane_protected-process">
+            <bpmndi:BPMNShape bpmnElement="startEvent" id="BPMNShape_startEvent">
+                <omgdc:Bounds height="30.0" width="30.0" x="120.0" y="163.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="endEvent" id="BPMNShape_endEvent">
+                <omgdc:Bounds height="28.0" width="28.0" x="365.0" y="164.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="A" id="BPMNShape_A">
+                <omgdc:Bounds height="80.0" width="100.0" x="210.0" y="138.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="sequence-flow-1" id="BPMNEdge_sequence-flow-1">
+                <omgdi:waypoint x="150.0" y="178.0"/>
+                <omgdi:waypoint x="210.0" y="178.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="sequence-flow-2" id="BPMNEdge_sequence-flow-2">
+                <omgdi:waypoint x="310.0" y="178.0"/>
+                <omgdi:waypoint x="365.0" y="178.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</definitions>

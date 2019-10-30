@@ -1,0 +1,21 @@
+<xs:schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified" targetNamespace="http://www.jibx.xml.baeldung.com/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Order">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Address" maxOccurs="unbounded"
+					minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="Name" />
+						</xs:sequence>
+						<xs:attribute type="xs:string" name="Type" use="optional" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute type="xs:int" name="OrderNumber" />
+			<xs:attribute type="xs:date" name="OrderDate" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

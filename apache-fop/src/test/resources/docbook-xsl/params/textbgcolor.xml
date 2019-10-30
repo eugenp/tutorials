@@ -1,0 +1,26 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="textbgcolor">
+<refmeta>
+<refentrytitle>textbgcolor</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">color</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>textbgcolor</refname>
+<refpurpose>The background color of the table body</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="textbgcolor.frag">
+<xsl:param name="textbgcolor">white</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>The background color of the table body.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>

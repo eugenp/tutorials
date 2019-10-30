@@ -1,0 +1,11 @@
+POST http://localhost:8080/ship-order
+
+###
+
+POST http://localhost:8080/ship-unconfirmed-order
+
+###
+
+GET http://localhost:8080/all-orders
+
+###
