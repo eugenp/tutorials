@@ -40,7 +40,7 @@ public class PersistenceContextIntegrationTest {
     }
 
     @Test(expected = HttpServerErrorException.class)
-    public void testThatWhenUserSaveWithOutTransactionInPersistanceContextTypeTransactionThenShouldFailOnPersist() {
+    public void testThatWhenUserSaveWithOutTransactionInPersistenceContextTypeTransactionThenShouldFailOnPersist() {
         User user = new User(122L, "Devender", "admin");
         restTemplate.postForEntity(buildRequestUrl("v4/user/"), user, User.class);
     }
