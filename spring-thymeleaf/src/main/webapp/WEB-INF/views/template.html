@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Baeldung</title>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+</head>
+<body>
+	<header>
+		<h1>New dialect example</h1>
+	</header>
+	<section layout:fragment="custom-content">
+		<p>Your page content goes here</p>
+	</section>
+	<footer>
+		<p>My custom footer</p>
+		<p layout:fragment="custom-footer">Your custom footer here</p>
+	</footer>
+</body>
+</html>

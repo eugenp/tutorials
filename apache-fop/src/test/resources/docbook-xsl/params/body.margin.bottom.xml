@@ -1,0 +1,29 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="body.margin.bottom">
+<refmeta>
+<refentrytitle>body.margin.bottom</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>body.margin.bottom</refname>
+<refpurpose>The bottom margin of the body text</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="body.margin.bottom.frag">
+<xsl:param name="body.margin.bottom">0.5in</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The body bottom margin is the distance from the last line of text
+in the page body to the bottom of the region-after.
+</para>
+
+</refsection>
+</refentry>
