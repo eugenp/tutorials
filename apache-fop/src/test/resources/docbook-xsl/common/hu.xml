@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="utf-8"?>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="hu" english-language-name="Hungarian">
+
+<!-- * This file is generated automatically. -->
+<!-- * To submit changes to this file upstream (to the DocBook Project) -->
+<!-- * do not submit an edited version of this file. Instead, submit an -->
+<!-- * edited version of the source file at the following location: -->
+<!-- * -->
+<!-- *  https://docbook.svn.sourceforge.net/svnroot/docbook/trunk/gentext/locale/hu.xml -->
+<!-- * -->
+<!-- * E-mail the edited hu.xml source file to: -->
+<!-- * -->
+<!-- *  docbook-developers@lists.sourceforge.net -->
+
+<!-- ******************************************************************** -->
+
+<!-- This file is part of the XSL DocBook Stylesheet distribution. -->
+<!-- See ../README or http://docbook.sf.net/release/xsl/current/ for -->
+<!-- copyright and other information. -->
+
+<!-- ******************************************************************** -->
+<!-- In these files, % with a letter is used for a placeholder: -->
+<!--   %t is the current element's title -->
+<!--   %s is the current element's subtitle (if applicable)-->
+<!--   %n is the current element's number label-->
+<!--   %p is the current element's page number (if applicable)-->
+<!-- ******************************************************************** -->
+
+
+<l:gentext key="Abstract" text="Kivonat"/>
+<l:gentext key="abstract" text="kivonat"/>
+<l:gentext key="Acknowledgements" text="Köszönetnyilvánítás"/>
+<l:gentext key="acknowledgements" text="köszönetnyilvánítás"/>
+<l:gentext key="Answer" text="V:"/>
+<l:gentext key="answer" text="v:"/>
+<l:gentext key="Appendix" text="Függelék"/>
+<l:gentext key="appendix" text="függelék"/>
+<l:gentext key="Article" text="Cikk"/>
+<l:gentext key="article" text="cikk"/>
+<l:gentext key="Author" text="Szerz"/>
+<l:gentext key="Bibliography" text="Irodalomjegyzék"/>
+<l:gentext key="bibliography" text="irodalomjegyzék"/>
+<l:gentext key="Book" text="Könyv"/>
+<l:gentext key="book" text="könyv"/>
+<l:gentext key="CAUTION" text="FIGYELEM"/>
+<l:gentext key="Caution" text="Figyelem"/>
+<l:gentext key="caution" text="figyelem"/>
+<l:gentext key="Chapter" text="Fejezet"/>
+<l:gentext key="chapter" text="fejezet"/>
+<l:gentext key="Colophon" text="Végszó"/>
+<l:gentext key="colophon" text="végszó"/>
+<l:gentext key="Copyright" text="Szerzői jog"/>
+<l:gentext key="copyright" text="szerzői jog"/>
+<l:gentext key="Dedication" text="Ajánlás"/>
+<l:gentext key="dedication" text="ajánlás"/>
+<l:gentext key="Edition" text="Kiadás"/>
+<l:gentext key="edition" text="kiadás"/>
+<l:gentext key="Editor" text="Szerkesztő"/>
+<l:gentext key="Equation" text="Egyenlet"/>
+<l:gentext key="equation" text="egyenlet"/>
+<l:gentext key="Example" text="Példa"/>
+<l:gentext key="example" text="példa"/>
+<l:gentext key="Figure" text="Ábra"/>
+<l:gentext key="figure" text="ábra"/>
+<l:gentext key="Glossary" text="Szójegyzék"/>
+<l:gentext key="glossary" text="szójegyzék"/>
+<l:gentext key="GlossSee" text="Lásd"/>
+<l:gentext key="glosssee" text="lásd"/>
+<l:gentext key="GlossSeeAlso" text="Lásd még"/>
+<l:gentext key="glossseealso" text="lásd még"/>
+<l:gentext key="IMPORTANT" text="FONTOS"/>
+<l:gentext key="important" text="fontos"/>
+<l:gentext key="Important" text="Fontos"/>
+<l:gentext key="Index" text="Tárgymutató"/>
+<l:gentext key="index" text="tárgymutató"/>
+<l:gentext key="ISBN" text="ISBN"/>
+<l:gentext key="isbn" text="isbn"/>
+<l:gentext key="LegalNotice" text="Jogi közlemény"/>
+<l:gentext key="legalnotice" text="jogi közlemény"/>
+<l:gentext key="MsgAud" text="Célközönség"/>
+<l:gentext key="msgaud" text="célközönség"/>
+<l:gentext key="MsgLevel" text="Szint"/>
+<l:gentext key="msglevel" text="szint"/>
+<l:gentext key="MsgOrig" text="Eredet"/>
+<l:gentext key="msgorig" text="eredet"/>
+<l:gentext key="NOTE" text="MEGJEGYZÉS"/>
+<l:gentext key="Note" text="Megjegyzés"/>
+<l:gentext key="note" text="megjegyzés"/>
+<l:gentext key="Part" text="Rész"/>
+<l:gentext key="part" text="rész"/>
+<l:gentext key="Preface" text="Előszó"/>
+<l:gentext key="preface" text="előszó"/>
+<l:gentext key="Procedure" text="Eljárás"/>
+<l:gentext key="procedure" text="eljárás"/>
+<l:gentext key="ProductionSet" text="Elemcsoport"/>
+<l:gentext key="PubDate" text="Publication Date"/>
+<l:gentext key="pubdate" text="Publication date"/>
+<l:gentext key="Published" text="Megjelent"/>
+<l:gentext key="published" text="megjelent"/>
+<l:gentext key="Publisher" text="Kiadó"/>
+<l:gentext key="Qandadiv" text="K és V"/>
+<l:gentext key="qandadiv" text="K és V"/>
+<l:gentext key="QandASet" text="Gyakran feltett kérdések"/>
+<l:gentext key="Question" text="K:"/>
+<l:gentext key="question" text="k:"/>
+<l:gentext key="RefEntry" text="Oldal"/>
+<l:gentext key="refentry" text="oldal"/>
+<l:gentext key="Reference" text="Hivatkozás"/>
+<l:gentext key="reference" text="hivatkozás"/>
+<l:gentext key="References" text="Hivatkozások"/>
+<l:gentext key="RefName" text="Név"/>
+<l:gentext key="refname" text="név"/>
+<l:gentext key="RefSection" text="Szakasz"/>
+<l:gentext key="refsection" text="szakasz"/>
+<l:gentext key="RefSynopsisDiv" text="Áttekintés"/>
+<l:gentext key="refsynopsisdiv" text="áttekintés"/>
+<l:gentext key="RevHistory" text="Verziótörténet"/>
+<l:gentext key="revhistory" text="verziótörténet"/>
+<l:gentext key="revision" text="verzió"/>
+<l:gentext key="Revision" text="Verzió"/>
+<l:gentext key="sect1" text="Szakasz"/>
+<l:gentext key="sect2" text="Szakasz"/>
+<l:gentext key="sect3" text="Szakasz"/>
+<l:gentext key="sect4" text="Szakasz"/>
+<l:gentext key="sect5" text="Szakasz"/>
+<l:gentext key="section" text="szakasz"/>
+<l:gentext key="Section" text="Szakasz"/>
+<l:gentext key="see" text="lásd"/>
+<l:gentext key="See" text="Lásd"/>
+<l:gentext key="seealso" text="lásd még"/>
+<l:gentext key="Seealso" text="Lásd még"/>
+<l:gentext key="SeeAlso" text="Lásd még"/>
+<l:gentext key="set" text="csoport"/>
+<l:gentext key="Set" text="Csoport"/>
+<l:gentext key="setindex" text="csoportmutató"/>
+<l:gentext key="SetIndex" text="Csoportmutató"/>
+<l:gentext key="Sidebar" text="Széljegyzet"/>
+<l:gentext key="sidebar" text="széljegyzet"/>
+<l:gentext key="step" text="lépés"/>
+<l:gentext key="Step" text="Lépés"/>
+<l:gentext key="table" text="táblázat"/>
+<l:gentext key="Table" text="Táblázat"/>
+<l:gentext key="task" text="feladat"/>
+<l:gentext key="Task" text="Feladat"/>
+<l:gentext key="tip" text="tipp"/>
+<l:gentext key="TIP" text="TIPP"/>
+<l:gentext key="Tip" text="Tipp"/>
+<l:gentext key="Warning" text="Figyelem"/>
+<l:gentext key="warning" text="figyelem"/>
+<l:gentext key="WARNING" text="FIGYELEM"/>
+<l:gentext key="and" text="és"/>
+<l:gentext key="or" text="vagy"/>
+<l:gentext key="by" text="írta"/>
+<l:gentext key="Edited" text="Szerk."/>
+<l:gentext key="edited" text="szerk."/>
+<l:gentext key="Editedby" text="Szerkesztette"/>
+<l:gentext key="editedby" text="szerkesztette"/>
+<l:gentext key="in" text="in"/>
+<l:gentext key="lastlistcomma" text=","/>
+<l:gentext key="listcomma" text=","/>
+<l:gentext key="notes" text="megjegyzések"/>
+<l:gentext key="Notes" text="Megjegyzések"/>
+<l:gentext key="Pgs" text="Old."/>
+<l:gentext key="pgs" text="old."/>
+<l:gentext key="Revisedby" text="Felülvizsgálta"/>
+<l:gentext key="revisedby" text="felülvizsgálta"/>
+<l:gentext key="TableNotes" text="Megjegyzések"/>
+<l:gentext key="tablenotes" text="megjegyzések"/>
+<l:gentext key="TableofContents" text="Tartalom"/>
+<l:gentext key="tableofcontents" text="tartalom"/>
+<l:gentext key="unexpectedelementname" text="nem várt elemnév"/>
+<l:gentext key="unsupported" text="nem támogatott"/>
+<l:gentext key="xrefto" text="kereszthiv"/>
+<l:gentext key="Authors" text="Szerzők"/>
+<l:gentext key="copyeditor" text="Kiadás szerkesztő"/>
+<l:gentext key="graphicdesigner" text="Grafikus tervező"/>
+<l:gentext key="productioneditor" text="Főszerkesztőr"/>
+<l:gentext key="technicaleditor" text="Szakszerkesztő"/>
+<l:gentext key="translator" text="Fordító"/>
+<l:gentext key="listofequations" text="az egyenletek listája"/>
+<l:gentext key="ListofEquations" text="Az egyenletek listája"/>
+<l:gentext key="ListofExamples" text="A példák listája"/>
+<l:gentext key="listofexamples" text="a példák listája"/>
+<l:gentext key="ListofFigures" text="Az ábrák listája"/>
+<l:gentext key="listoffigures" text="az ábrák listája"/>
+<l:gentext key="ListofProcedures" text="Eljárások listája"/>
+<l:gentext key="listofprocedures" text="eljárások listája"/>
+<l:gentext key="listoftables" text="a táblázatok listája"/>
+<l:gentext key="ListofTables" text="A táblázatok listája"/>
+<l:gentext key="ListofUnknown" text="Az egyéb elemek listája"/>
+<l:gentext key="listofunknown" text="az egyéb elemek listája"/>
+<l:gentext key="nav-home" text="Főoldal"/>
+<l:gentext key="nav-next" text="Előre"/>
+<l:gentext key="nav-next-sibling" text="Gyors előre"/>
+<l:gentext key="nav-prev" text="Vissza"/>
+<l:gentext key="nav-prev-sibling" text="Gyors vissza"/>
+<l:gentext key="nav-up" text="Fel"/>
+<l:gentext key="nav-toc" text="Tartalom"/>
+<l:gentext key="Draft" text="Piszkozat"/>
+<l:gentext key="above" text="fent"/>
+<l:gentext key="below" text="alább"/>
+<l:gentext key="sectioncalled" text="a szakasz:"/>
+<l:gentext key="index symbols" text="Jelzések"/>
+<l:gentext key="writing-mode" text="lr-tb"/>
+<l:gentext key="lowercase.alpha" text="aábcdeéfghiíjklmnoóöőpqrstuúüűvwxyz"/>
+<l:gentext key="uppercase.alpha" text="AÁBCDEÉFGHIÍJKLMNOÓÖŐPQRSTUÚÜŰVWXYZ"/>
+<l:gentext key="normalize.sort.input" text="AaÀàÁáÂâÃãÄäÅåĀāĂăĄąǍǎǞǟǠǡǺǻȀȁȂȃȦȧḀḁẚẠạẢảẤấẦầẨẩẪẫẬậẮắẰằẲẳẴẵẶặBbƀƁɓƂƃḂḃḄḅḆḇCcÇçĆćĈĉĊċČčƇƈɕḈḉDdĎďĐđƊɗƋƌǅǲȡɖḊḋḌḍḎḏḐḑḒḓEeÈèÉéÊêËëĒēĔĕĖėĘęĚěȄȅȆȇȨȩḔḕḖḗḘḙḚḛḜḝẸẹẺẻẼẽẾếỀềỂểỄễỆệFfƑƒḞḟGgĜĝĞğĠġĢģƓɠǤǥǦǧǴǵḠḡHhĤĥĦħȞȟɦḢḣḤḥḦḧḨḩḪḫẖIiÌìÍíÎîÏïĨĩĪīĬĭĮįİƗɨǏǐȈȉȊȋḬḭḮḯỈỉỊịJjĴĵǰʝKkĶķƘƙǨǩḰḱḲḳḴḵLlĹĺĻļĽľĿŀŁłƚǈȴɫɬɭḶḷḸḹḺḻḼḽMmɱḾḿṀṁṂṃNnÑñŃńŅņŇňƝɲƞȠǋǸǹȵɳṄṅṆṇṈṉṊṋOoÒòÓóÔôÕõÖöØøŌōŎŏŐőƟƠơǑǒǪǫǬǭǾǿȌȍȎȏȪȫȬȭȮȯȰȱṌṍṎṏṐṑṒṓỌọỎỏỐốỒồỔổỖỗỘộỚớỜờỞởỠỡỢợPpƤƥṔṕṖṗQqʠRrŔŕŖŗŘřȐȑȒȓɼɽɾṘṙṚṛṜṝṞṟSsŚśŜŝŞşŠšȘșʂṠṡṢṣṤṥṦṧṨṩTtŢţŤťŦŧƫƬƭƮʈȚțȶṪṫṬṭṮṯṰṱẗUuÙùÚúÛûÜüŨũŪūŬŭŮůŰűŲųƯưǓǔǕǖǗǘǙǚǛǜȔȕȖȗṲṳṴṵṶṷṸṹṺṻỤụỦủỨứỪừỬửỮữỰựVvƲʋṼṽṾṿWwŴŵẀẁẂẃẄẅẆẇẈẉẘXxẊẋẌẍYyÝýÿŸŶŷƳƴȲȳẎẏẙỲỳỴỵỶỷỸỹZzŹźŻżŽžƵƶȤȥʐʑẐẑẒẓẔẕẕ" lang="en"/>
+<l:gentext key="normalize.sort.output" text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEFFFFFFGGGGGGGGGGGGGGGGGGGGHHHHHHHHHHHHHHHHHHHHIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIJJJJJJKKKKKKKKKKKKKKLLLLLLLLLLLLLLLLLLLLLLLLLLMMMMMMMMMNNNNNNNNNNNNNNNNNNNNNNNNNNNOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOPPPPPPPPQQQRRRRRRRRRRRRRRRRRRRRRRRSSSSSSSSSSSSSSSSSSSSSSSTTTTTTTTTTTTTTTTTTTTTTTTTUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUVVVVVVVVWWWWWWWWWWWWWWWXXXXXXYYYYYYYYYYYYYYYYYYYYYYYZZZZZZZZZZZZZZZZZZZZZ" lang="en"/>
+<l:dingbat key="startquote" text="„"/>
+<l:dingbat key="endquote" text="”"/>
+<l:dingbat key="nestedstartquote" text="»"/>
+<l:dingbat key="nestedendquote" text="«"/>
+<l:dingbat key="singlestartquote" text="‘" lang="en"/>
+<l:dingbat key="singleendquote" text="’" lang="en"/>
+<l:dingbat key="bullet" text="•"/>
+<l:gentext key="hyphenation-character" text="-" lang="en"/>
+<l:gentext key="hyphenation-push-character-count" text="2" lang="en"/>
+<l:gentext key="hyphenation-remain-character-count" text="2" lang="en"/>
+<l:context name="keycap"><l:template name="alt" text="Alt" lang="en"/>
+<l:template name="backspace" text="&lt;—" lang="en"/>
+<l:template name="command" text="⌘" lang="en"/>
+<l:template name="control" text="Ctrl" lang="en"/>
+<l:template name="delete" text="Del" lang="en"/>
+<l:template name="down" text="↓" lang="en"/>
+<l:template name="end" text="End" lang="en"/>
+<l:template name="enter" text="Enter" lang="en"/>
+<l:template name="escape" text="Esc" lang="en"/>
+<l:template name="home" text="Home" lang="en"/>
+<l:template name="insert" text="Ins" lang="en"/>
+<l:template name="left" text="←" lang="en"/>
+<l:template name="meta" text="Meta" lang="en"/>
+<l:template name="option" text="???" lang="en"/>
+<l:template name="pagedown" text="Page ↓" lang="en"/>
+<l:template name="pageup" text="Page ↑" lang="en"/>
+<l:template name="right" text="→" lang="en"/>
+<l:template name="shift" text="Shift" lang="en"/>
+<l:template name="space" text="Space" lang="en"/>
+<l:template name="tab" text="→|" lang="en"/>
+<l:template name="up" text="↑" lang="en"/>
+</l:context>
+<l:context name="webhelp"><l:template name="Search" text="Search" lang="en"/>
+<l:template name="Enter_a_term_and_click" text="Enter a term and click " lang="en"/>
+<l:template name="Go" text="Go" lang="en"/>
+<l:template name="to_perform_a_search" text=" to perform a search." lang="en"/>
+<l:template name="txt_filesfound" text="Results" lang="en"/>
+<l:template name="txt_enter_at_least_1_char" text="You must enter at least one character." lang="en"/>
+<l:template name="txt_browser_not_supported" text="JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site." lang="en"/>
+<l:template name="txt_please_wait" text="Please wait. Search in progress..." lang="en"/>
+<l:template name="txt_results_for" text="Results for: " lang="en"/>
+<l:template name="TableofContents" text="Contents" lang="en"/>
+<l:template name="HighlightButton" text="Toggle search result highlighting" lang="en"/>
+<l:template name="Your_search_returned_no_results" text="Your search returned no results." lang="en"/>
+</l:context>
+<l:context name="styles"><l:template name="person-name" text="last-first"/>
+</l:context>
+<l:context name="title"><l:template name="abstract" text="%t"/>
+<l:template name="acknowledgements" text="%t" lang="en"/>
+<l:template name="answer" text="%t"/>
+<l:template name="appendix" text="%n. függelék - %t"/>
+<l:template name="article" text="%t"/>
+<l:template name="authorblurb" text="%t"/>
+<l:template name="bibliodiv" text="%t"/>
+<l:template name="biblioentry" text="%t"/>
+<l:template name="bibliography" text="%t"/>
+<l:template name="bibliolist" text="%t" lang="en"/>
+<l:template name="bibliomixed" text="%t"/>
+<l:template name="bibliomset" text="%t"/>
+<l:template name="biblioset" text="%t"/>
+<l:template name="blockquote" text="%t"/>
+<l:template name="book" text="%t"/>
+<l:template name="calloutlist" text="%t"/>
+<l:template name="caution" text="%t"/>
+<l:template name="chapter" text="%n. fejezet - %t"/>
+<l:template name="colophon" text="%t"/>
+<l:template name="dedication" text="%t"/>
+<l:template name="equation" text="%n. egyenlet - %t"/>
+<l:template name="example" text="%n. példa - %t"/>
+<l:template name="figure" text="%n. ábra - %t"/>
+<l:template name="foil" text="%t" lang="en"/>
+<l:template name="foilgroup" text="%t" lang="en"/>
+<l:template name="formalpara" text="%t"/>
+<l:template name="glossary" text="%t"/>
+<l:template name="glossdiv" text="%t"/>
+<l:template name="glosslist" text="%t" lang="en"/>
+<l:template name="glossentry" text="%t" lang="en"/>
+<l:template name="important" text="%t"/>
+<l:template name="index" text="%t"/>
+<l:template name="indexdiv" text="%t"/>
+<l:template name="itemizedlist" text="%t"/>
+<l:template name="legalnotice" text="%t"/>
+<l:template name="listitem" text=""/>
+<l:template name="lot" text="%t"/>
+<l:template name="msg" text="%t"/>
+<l:template name="msgexplan" text="%t"/>
+<l:template name="msgmain" text="%t"/>
+<l:template name="msgrel" text="%t"/>
+<l:template name="msgset" text="%t"/>
+<l:template name="msgsub" text="%t"/>
+<l:template name="note" text="%t"/>
+<l:template name="orderedlist" text="%t"/>
+<l:template name="part" text="%n. rész - %t"/>
+<l:template name="partintro" text="%t"/>
+<l:template name="preface" text="%t"/>
+<l:template name="procedure" text="%t"/>
+<l:template name="procedure.formal" text="Eljárás %n. %t"/>
+<l:template name="productionset" text="%t"/>
+<l:template name="productionset.formal" text="Elemcsoport %n"/>
+<l:template name="qandadiv" text="%t"/>
+<l:template name="qandaentry" text="%t"/>
+<l:template name="qandaset" text="%t"/>
+<l:template name="question" text="%t"/>
+<l:template name="refentry" text="%t"/>
+<l:template name="reference" text="%t"/>
+<l:template name="refsection" text="%t"/>
+<l:template name="refsect1" text="%t"/>
+<l:template name="refsect2" text="%t"/>
+<l:template name="refsect3" text="%t"/>
+<l:template name="refsynopsisdiv" text="%t"/>
+<l:template name="refsynopsisdivinfo" text="%t"/>
+<l:template name="screenshot" text="%t" lang="en"/>
+<l:template name="segmentedlist" text="%t"/>
+<l:template name="set" text="%t"/>
+<l:template name="setindex" text="%t"/>
+<l:template name="sidebar" text="%t"/>
+<l:template name="step" text="%t"/>
+<l:template name="table" text="%n. táblázat - %t"/>
+<l:template name="task" text="%t" lang="en"/>
+<l:template name="tasksummary" text="%t" lang="en"/>
+<l:template name="taskprerequisites" text="%t" lang="en"/>
+<l:template name="taskrelated" text="%t" lang="en"/>
+<l:template name="tip" text="%t"/>
+<l:template name="toc" text="%t"/>
+<l:template name="variablelist" text="%t"/>
+<l:template name="varlistentry" text="" lang="en"/>
+<l:template name="warning" text="%t"/>
+</l:context>
+<l:context name="title-unnumbered"><l:template name="appendix" text="%t"/>
+<l:template name="article/appendix" text="%t" lang="en"/>
+<l:template name="bridgehead" text="%t"/>
+<l:template name="chapter" text="%t"/>
+<l:template name="sect1" text="%t"/>
+<l:template name="sect2" text="%t"/>
+<l:template name="sect3" text="%t"/>
+<l:template name="sect4" text="%t"/>
+<l:template name="sect5" text="%t"/>
+<l:template name="section" text="%t"/>
+<l:template name="simplesect" text="%t"/>
+<l:template name="topic" text="%t" lang="en"/>
+<l:template name="part" text="%t" lang="en"/>
+</l:context>
+<l:context name="title-numbered"><l:template name="appendix" text="%n. függelék - %t"/>
+<l:template name="article/appendix" text="%n. %t" lang="en"/>
+<l:template name="bridgehead" text="%t"/>
+<l:template name="chapter" text="%n. fejezet - %t"/>
+<l:template name="part" text="%n. rész - %t"/>
+<l:template name="sect1" text="%n. %t"/>
+<l:template name="sect2" text="%n. %t"/>
+<l:template name="sect3" text="%n. %t"/>
+<l:template name="sect4" text="%n. %t"/>
+<l:template name="sect5" text="%n. %t"/>
+<l:template name="section" text="%n. %t"/>
+<l:template name="simplesect" text="%n. %t"/>
+<l:template name="topic" text="%t" lang="en"/>
+</l:context>
+<l:context name="subtitle"><l:template name="appendix" text="%s"/>
+<l:template name="acknowledgements" text="%s" lang="en"/>
+<l:template name="article" text="%s"/>
+<l:template name="bibliodiv" text="%s"/>
+<l:template name="biblioentry" text="%s"/>
+<l:template name="bibliography" text="%s"/>
+<l:template name="bibliomixed" text="%s"/>
+<l:template name="bibliomset" text="%s"/>
+<l:template name="biblioset" text="%s"/>
+<l:template name="book" text="%s"/>
+<l:template name="chapter" text="%s"/>
+<l:template name="colophon" text="%s"/>
+<l:template name="dedication" text="%s"/>
+<l:template name="glossary" text="%s"/>
+<l:template name="glossdiv" text="%s"/>
+<l:template name="index" text="%s"/>
+<l:template name="indexdiv" text="%s"/>
+<l:template name="lot" text="%s"/>
+<l:template name="part" text="%s"/>
+<l:template name="partintro" text="%s"/>
+<l:template name="preface" text="%s"/>
+<l:template name="refentry" text="%s"/>
+<l:template name="reference" text="%s"/>
+<l:template name="refsection" text="%s"/>
+<l:template name="refsect1" text="%s"/>
+<l:template name="refsect2" text="%s"/>
+<l:template name="refsect3" text="%s"/>
+<l:template name="refsynopsisdiv" text="%s"/>
+<l:template name="sect1" text="%s"/>
+<l:template name="sect2" text="%s"/>
+<l:template name="sect3" text="%s"/>
+<l:template name="sect4" text="%s"/>
+<l:template name="sect5" text="%s"/>
+<l:template name="section" text="%s"/>
+<l:template name="set" text="%s"/>
+<l:template name="setindex" text="%s"/>
+<l:template name="sidebar" text="%s"/>
+<l:template name="simplesect" text="%s"/>
+<l:template name="topic" text="%t" lang="en"/>
+<l:template name="toc" text="%s"/>
+</l:context>
+<l:context name="xref"><l:template name="abstract" text="%t"/>
+<l:template name="acknowledgements" text="%t" lang="en"/>
+<l:template name="answer" text="V: %n"/>
+<l:template name="appendix" text="%t"/>
+<l:template name="article" text="%t"/>
+<l:template name="authorblurb" text="%t"/>
+<l:template name="bibliodiv" text="%t"/>
+<l:template name="bibliography" text="%t"/>
+<l:template name="bibliomset" text="%t"/>
+<l:template name="biblioset" text="%t"/>
+<l:template name="blockquote" text="%t"/>
+<l:template name="book" text="%t"/>
+<l:template name="calloutlist" text="%t"/>
+<l:template name="caution" text="%t"/>
+<l:template name="chapter" text="%t"/>
+<l:template name="colophon" text="%t"/>
+<l:template name="constraintdef" text="%t"/>
+<l:template name="dedication" text="%t"/>
+<l:template name="equation" text="%t"/>
+<l:template name="example" text="%t"/>
+<l:template name="figure" text="%t"/>
+<l:template name="foil" text="%t" lang="en"/>
+<l:template name="foilgroup" text="%t" lang="en"/>
+<l:template name="formalpara" text="%t"/>
+<l:template name="glossary" text="%t"/>
+<l:template name="glossdiv" text="%t"/>
+<l:template name="important" text="%t"/>
+<l:template name="index" text="%t"/>
+<l:template name="indexdiv" text="%t"/>
+<l:template name="itemizedlist" text="%t"/>
+<l:template name="legalnotice" text="%t"/>
+<l:template name="listitem" text="%n"/>
+<l:template name="lot" text="%t"/>
+<l:template name="msg" text="%t"/>
+<l:template name="msgexplan" text="%t"/>
+<l:template name="msgmain" text="%t"/>
+<l:template name="msgrel" text="%t"/>
+<l:template name="msgset" text="%t"/>
+<l:template name="msgsub" text="%t"/>
+<l:template name="note" text="%t"/>
+<l:template name="orderedlist" text="%t"/>
+<l:template name="part" text="%t"/>
+<l:template name="partintro" text="%t"/>
+<l:template name="preface" text="%t"/>
+<l:template name="procedure" text="%t"/>
+<l:template name="productionset" text="%t"/>
+<l:template name="qandadiv" text="%t"/>
+<l:template name="qandaentry" text="K: %n"/>
+<l:template name="qandaset" text="%t"/>
+<l:template name="question" text="K: %n"/>
+<l:template name="reference" text="%t"/>
+<l:template name="refsynopsisdiv" text="%t"/>
+<l:template name="screenshot" text="%t" lang="en"/>
+<l:template name="segmentedlist" text="%t"/>
+<l:template name="set" text="%t"/>
+<l:template name="setindex" text="%t"/>
+<l:template name="sidebar" text="%t"/>
+<l:template name="table" text="%t"/>
+<l:template name="task" text="%t" lang="en"/>
+<l:template name="tip" text="%t"/>
+<l:template name="toc" text="%t"/>
+<l:template name="variablelist" text="%t"/>
+<l:template name="varlistentry" text="%n"/>
+<l:template name="warning" text="%t"/>
+<l:template name="olink.document.citation" text=" in %o" lang="en"/>
+<l:template name="olink.page.citation" text=" (page %p)" lang="en"/>
+<l:template name="page.citation" text=" [%p]"/>
+<l:template name="page" text="(page %p)" lang="en"/>
+<l:template name="docname" text=" in %o" lang="en"/>
+<l:template name="docnamelong" text=" in the document titled %o" lang="en"/>
+<l:template name="pageabbrev" text="(p. %p)" lang="en"/>
+<l:template name="Page" text="Page %p" lang="en"/>
+<l:template name="topic" text="%t" lang="en"/>
+<l:template name="bridgehead" text="„%t”"/>
+<l:template name="refsection" text="„%t”"/>
+<l:template name="refsect1" text="„%t”"/>
+<l:template name="refsect2" text="„%t”"/>
+<l:template name="refsect3" text="„%t”"/>
+<l:template name="sect1" text="„%t”"/>
+<l:template name="sect2" text="„%t”"/>
+<l:template name="sect3" text="„%t”"/>
+<l:template name="sect4" text="„%t”"/>
+<l:template name="sect5" text="„%t”"/>
+<l:template name="section" text="„%t”"/>
+<l:template name="simplesect" text="„%t”"/>
+</l:context>
+<l:context name="xref-number"><l:template name="answer" text="V: %n"/>
+<l:template name="appendix" text="%n. függelék"/>
+<l:template name="bridgehead" text="Szakasz %n"/>
+<l:template name="chapter" text="%n. fejezet"/>
+<l:template name="equation" text="Egyenlet %n"/>
+<l:template name="example" text="%n. példa"/>
+<l:template name="figure" text="%n. ábra"/>
+<l:template name="part" text="%n. rész"/>
+<l:template name="procedure" text="Eljárás %n"/>
+<l:template name="productionset" text="Elemcsoport %n"/>
+<l:template name="qandadiv" text="K és V %n"/>
+<l:template name="qandaentry" text="K: %n"/>
+<l:template name="question" text="K: %n"/>
+<l:template name="sect1" text="%n. szakasz"/>
+<l:template name="sect2" text="%n. szakasz"/>
+<l:template name="sect3" text="%n. szakasz"/>
+<l:template name="sect4" text="%n. szakasz"/>
+<l:template name="sect5" text="%n. szakasz"/>
+<l:template name="section" text="%n. szakasz"/>
+<l:template name="table" text="Táblázat %n"/>
+</l:context>
+<l:context name="xref-number-and-title"><l:template name="appendix" text="%n. függelék - %t"/>
+<l:template name="bridgehead" text="Szakasz %n, „%t”"/>
+<l:template name="chapter" text="%n. fejezet - %t"/>
+<l:template name="equation" text="Egyenlet %n, „%t”"/>
+<l:template name="example" text="%n. példa - %t"/>
+<l:template name="figure" text="%n. ábra - %t"/>
+<l:template name="part" text="%n. rész - %t"/>
+<l:template name="procedure" text="Eljárás %n, „%t”"/>
+<l:template name="productionset" text="Elemcsoport %n, „%t”"/>
+<l:template name="qandadiv" text="K és V %n, „%t”"/>
+<l:template name="refsect1" text="„%t”"/>
+<l:template name="refsect2" text="„%t”"/>
+<l:template name="refsect3" text="„%t”"/>
+<l:template name="refsection" text="„%t”"/>
+<l:template name="sect1" text="%n. szakasz - %t"/>
+<l:template name="sect2" text="%n. szakasz - %t"/>
+<l:template name="sect3" text="%n. szakasz - %t"/>
+<l:template name="sect4" text="%n. szakasz - %t"/>
+<l:template name="sect5" text="%n. szakasz - %t"/>
+<l:template name="section" text="%n. szakasz - %t"/>
+<l:template name="simplesect" text="„%t”"/>
+<l:template name="table" text="%n. táblázat - %t"/>
+</l:context>
+<l:context name="authorgroup"><l:template name="sep" text=", "/>
+<l:template name="sep2" text=" és "/>
+<l:template name="seplast" text=", és "/>
+</l:context>
+<l:context name="glossary"><l:template name="see" text="Lásd %t."/>
+<l:template name="seealso" text="Lásd még %t."/>
+<l:template name="seealso-separator" text=", "/>
+</l:context>
+<l:context name="msgset"><l:template name="MsgAud" text="Célközönség: "/>
+<l:template name="MsgLevel" text="Szint: "/>
+<l:template name="MsgOrig" text="Eredet: "/>
+</l:context>
+<l:context name="datetime"><l:template name="format" text="d/m/Y"/>
+</l:context>
+<l:context name="termdef"><l:template name="prefix" text="[Definition: "/>
+<l:template name="suffix" text="]"/>
+</l:context>
+<l:context name="datetime-full"><l:template name="January" text="január"/>
+<l:template name="February" text="február"/>
+<l:template name="March" text="március"/>
+<l:template name="April" text="április"/>
+<l:template name="May" text="május"/>
+<l:template name="June" text="június"/>
+<l:template name="July" text="július"/>
+<l:template name="August" text="augusztus"/>
+<l:template name="September" text="szeptember"/>
+<l:template name="October" text="október"/>
+<l:template name="November" text="november"/>
+<l:template name="December" text="december"/>
+<l:template name="Monday" text="hétfő"/>
+<l:template name="Tuesday" text="kedd"/>
+<l:template name="Wednesday" text="szerda"/>
+<l:template name="Thursday" text="csütörtök"/>
+<l:template name="Friday" text="péntek"/>
+<l:template name="Saturday" text="szombat"/>
+<l:template name="Sunday" text="vasárnap"/>
+</l:context>
+<l:context name="datetime-abbrev"><l:template name="Jan" text="jan"/>
+<l:template name="Feb" text="feb"/>
+<l:template name="Mar" text="már"/>
+<l:template name="Apr" text="ápr"/>
+<l:template name="May" text="máj"/>
+<l:template name="Jun" text="jún"/>
+<l:template name="Jul" text="júl"/>
+<l:template name="Aug" text="aug"/>
+<l:template name="Sep" text="szep"/>
+<l:template name="Oct" text="okt"/>
+<l:template name="Nov" text="nov"/>
+<l:template name="Dec" text="dec"/>
+<l:template name="Mon" text="hfő"/>
+<l:template name="Tue" text="ked"/>
+<l:template name="Wed" text="sze"/>
+<l:template name="Thu" text="csü"/>
+<l:template name="Fri" text="pén"/>
+<l:template name="Sat" text="szo"/>
+<l:template name="Sun" text="vas"/>
+</l:context>
+<l:context name="htmlhelp"><l:template name="langcode" text="0x040e Hungarian"/>
+</l:context>
+<l:context name="index"><l:template name="term-separator" text=", "/>
+<l:template name="number-separator" text=", "/>
+<l:template name="range-separator" text="-"/>
+</l:context>
+<l:context name="iso690"><l:template name="lastfirst.sep" text=", "/>
+<l:template name="alt.person.two.sep" text=" – "/>
+<l:template name="alt.person.last.sep" text=" – "/>
+<l:template name="alt.person.more.sep" text=" – "/>
+<l:template name="primary.editor" text=" (ed.)"/>
+<l:template name="primary.many" text=", et al."/>
+<l:template name="primary.sep" text=". "/>
+<l:template name="submaintitle.sep" text=": "/>
+<l:template name="title.sep" text=". "/>
+<l:template name="othertitle.sep" text=", "/>
+<l:template name="medium1" text=" ["/>
+<l:template name="medium2" text="]"/>
+<l:template name="secondary.person.sep" text="; "/>
+<l:template name="secondary.sep" text=". "/>
+<l:template name="respons.sep" text=". "/>
+<l:template name="edition.sep" text=". "/>
+<l:template name="edition.serial.sep" text=", "/>
+<l:template name="issuing.range" text="-"/>
+<l:template name="issuing.div" text=", "/>
+<l:template name="issuing.sep" text=". "/>
+<l:template name="partnr.sep" text=". "/>
+<l:template name="placepubl.sep" text=": "/>
+<l:template name="publyear.sep" text=", "/>
+<l:template name="pubinfo.sep" text=". "/>
+<l:template name="spec.pubinfo.sep" text=", "/>
+<l:template name="upd.sep" text=", "/>
+<l:template name="datecit1" text=" [cited "/>
+<l:template name="datecit2" text="]"/>
+<l:template name="extent.sep" text=". "/>
+<l:template name="locs.sep" text=", "/>
+<l:template name="location.sep" text=". "/>
+<l:template name="serie.sep" text=". "/>
+<l:template name="notice.sep" text=". "/>
+<l:template name="access" text="Available "/>
+<l:template name="acctoo" text="Also available "/>
+<l:template name="onwww" text="from World Wide Web"/>
+<l:template name="oninet" text="from Internet"/>
+<l:template name="access.end" text=": "/>
+<l:template name="link1" text="&lt;"/>
+<l:template name="link2" text="&gt;"/>
+<l:template name="access.sep" text=". "/>
+<l:template name="isbn" text="ISBN "/>
+<l:template name="issn" text="ISSN "/>
+<l:template name="stdnum.sep" text=". "/>
+<l:template name="patcountry.sep" text=". "/>
+<l:template name="pattype.sep" text=", "/>
+<l:template name="patnum.sep" text=". "/>
+<l:template name="patdate.sep" text=". "/>
+</l:context><l:letters><l:l i="-1"/>
+<l:l i="0">Jelzések</l:l>
+<l:l i="10">A</l:l>
+<l:l i="10">a</l:l>
+<l:l i="10">Á</l:l>
+<l:l i="10">á</l:l>
+<l:l i="20">B</l:l>
+<l:l i="20">b</l:l>
+<l:l i="30">C</l:l>
+<l:l i="30">c</l:l>
+<l:l i="40">D</l:l>
+<l:l i="40">d</l:l>
+<l:l i="50">E</l:l>
+<l:l i="50">e</l:l>
+<l:l i="50">É</l:l>
+<l:l i="50">é</l:l>
+<l:l i="60">F</l:l>
+<l:l i="60">f</l:l>
+<l:l i="70">G</l:l>
+<l:l i="70">g</l:l>
+<l:l i="80">H</l:l>
+<l:l i="80">h</l:l>
+<l:l i="90">I</l:l>
+<l:l i="90">i</l:l>
+<l:l i="90">Í</l:l>
+<l:l i="90">í</l:l>
+<l:l i="100">J</l:l>
+<l:l i="100">j</l:l>
+<l:l i="110">K</l:l>
+<l:l i="110">k</l:l>
+<l:l i="120">L</l:l>
+<l:l i="120">l</l:l>
+<l:l i="130">M</l:l>
+<l:l i="130">m</l:l>
+<l:l i="140">N</l:l>
+<l:l i="140">n</l:l>
+<l:l i="150">O</l:l>
+<l:l i="150">o</l:l>
+<l:l i="150">Ó</l:l>
+<l:l i="150">ó</l:l>
+<l:l i="160">Ö</l:l>
+<l:l i="160">ö</l:l>
+<l:l i="160">Ő</l:l>
+<l:l i="160">ő</l:l>
+<l:l i="170">P</l:l>
+<l:l i="170">p</l:l>
+<l:l i="180">Q</l:l>
+<l:l i="180">q</l:l>
+<l:l i="190">R</l:l>
+<l:l i="190">r</l:l>
+<l:l i="200">S</l:l>
+<l:l i="200">s</l:l>
+<l:l i="210">T</l:l>
+<l:l i="210">t</l:l>
+<l:l i="220">U</l:l>
+<l:l i="220">u</l:l>
+<l:l i="220">Ú</l:l>
+<l:l i="220">ú</l:l>
+<l:l i="230">Ü</l:l>
+<l:l i="230">ü</l:l>
+<l:l i="230">Ű</l:l>
+<l:l i="230">ű</l:l>
+<l:l i="240">V</l:l>
+<l:l i="240">v</l:l>
+<l:l i="250">W</l:l>
+<l:l i="250">w</l:l>
+<l:l i="260">X</l:l>
+<l:l i="260">x</l:l>
+<l:l i="270">Y</l:l>
+<l:l i="270">y</l:l>
+<l:l i="280">Z</l:l>
+<l:l i="280">z</l:l>
+</l:letters>
+</l:l10n>

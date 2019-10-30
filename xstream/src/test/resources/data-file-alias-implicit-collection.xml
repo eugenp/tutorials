@@ -1,0 +1,13 @@
+<customer>
+    <firstName>XStream</firstName>
+    <lastName>Java</lastName>
+    <dob>1986-02-14 04:14:20.541 UTC</dob>
+    <ContactDetails contactType="Home">
+        <mobile>6673543265</mobile>
+        <landline>0124-2460311</landline>
+    </ContactDetails>
+    <ContactDetails contactType="Office">
+        <mobile>4676543565</mobile>
+        <landline>0120-223312</landline>
+    </ContactDetails>
+</customer>
