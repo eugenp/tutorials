@@ -1,4 +1,4 @@
-package com.baeldung.thymeleaf.model;
+package com.baeldung.thymeleaf.customhtml;
 
 import java.util.Date;
 

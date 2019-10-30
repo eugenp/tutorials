@@ -1,4 +1,4 @@
-package com.baeldung.thymeleaf.controller;
+package com.baeldung.thymeleaf.requestparameters;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
