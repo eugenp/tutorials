@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="body.bg.color">
+<refmeta>
+<refentrytitle>body.bg.color</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">color</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>body.bg.color</refname>
+<refpurpose>Background color for body frame</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="body.bg.color.frag">
+<xsl:param name="body.bg.color">#FFFFFF</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies the background color used in the body column of
+tabular slides.</para>
+
+</refsection>
+</refentry>

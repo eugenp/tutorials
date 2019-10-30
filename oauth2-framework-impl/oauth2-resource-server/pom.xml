@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>oauth2-resource-server</artifactId>
+    <packaging>war</packaging>
+    <name>oauth2-resource-server</name>
+
+    <parent>
+        <groupId>com.baeldung.oauth2</groupId>
+        <artifactId>oauth2-framework-impl</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.microprofile.jwt</groupId>
+            <artifactId>microprofile-jwt-auth-api</artifactId>
+            <version>${microprofile-jwt-auth-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.wasdev.wlp.maven.plugins</groupId>
+                <artifactId>liberty-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <httpPort>9280</httpPort>
+        <httpsPort>8643</httpsPort>
+        <jwt.issuer>http://localhost:9080</jwt.issuer>
+        <jwt.resourceId>http://localhost:9280</jwt.resourceId>
+        <microprofile-jwt-auth-api.version>1.1</microprofile-jwt-auth-api.version>
+    </properties>
+
+</project>
