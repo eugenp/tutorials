@@ -15,17 +15,17 @@ import static org.junit.Assert.assertThat;
 
 public class MapAppenderIntegrationTest {
 
-    private Logger rootLogger;
+    private Logger logger;
 
     @Before
     public void setUp() {
-        rootLogger = (Logger) LoggerFactory.getLogger("ROOT");
+        logger = (Logger) LoggerFactory.getLogger(MapAppenderIntegrationTest.class);
     }
 
     @Test
     public void whenLoggerEmitsLoggingEvent_thenAppenderReceivesEvent() {
-        rootLogger.info("Test from {}", this.getClass().getSimpleName());
-        MapAppender appender = (MapAppender) rootLogger.getAppender("map");
+        logger.info("Test from {}", this.getClass().getSimpleName());
+        MapAppender appender = (MapAppender) logger.getAppender("map");
 
         List<String> messages = appender.getEventMap().values().stream().map(ILoggingEvent::getMessage).collect(toList());
         assertThat(messages, hasItems("Test from {}"));
@@ -33,8 +33,8 @@ public class MapAppenderIntegrationTest {
 
     @Test
     public void givenNoPrefixSet_whenLoggerEmitsEvent_thenAppenderReceivesNoEvent() {
-        rootLogger.info("Test from {}", this.getClass().getSimpleName());
-        MapAppender appender = (MapAppender) rootLogger.getAppender("badMap");
+        logger.info("Test from {}", this.getClass().getSimpleName());
+        MapAppender appender = (MapAppender) logger.getAppender("badMap");
         assertEquals(appender.getEventMap().size(), 0);
     }
 }
