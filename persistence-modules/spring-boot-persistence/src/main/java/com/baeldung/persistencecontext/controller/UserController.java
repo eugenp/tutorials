@@ -1,4 +1,4 @@
-package com.baeldung.persistancecontext.controller;
+package com.baeldung.persistencecontext.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.persistancecontext.entity.User;
-import com.baeldung.persistancecontext.service.ExtendedPersistenceContextUserService;
-import com.baeldung.persistancecontext.service.TransctionPersistenceContextUserService;
+import com.baeldung.persistencecontext.entity.User;
+import com.baeldung.persistencecontext.service.ExtendedPersistenceContextUserService;
+import com.baeldung.persistencecontext.service.TransctionPersistenceContextUserService;
 
 @RestController
 public class UserController{

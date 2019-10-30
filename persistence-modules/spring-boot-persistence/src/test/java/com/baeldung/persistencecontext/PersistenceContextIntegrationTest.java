@@ -1,4 +1,4 @@
-package com.baeldung.persistancecontext;
+package com.baeldung.persistencecontext;
 
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsNull;
@@ -11,14 +11,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import com.baeldung.persistancecontext.entity.User;
+import com.baeldung.persistencecontext.PersistenceContextDemoApplication;
+import com.baeldung.persistencecontext.entity.User;
 
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = PersistentContextDemoApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = PersistenceContextDemoApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 
-public class PersistanceContextIntegrationTest {
+public class PersistenceContextIntegrationTest {
     @LocalServerPort
     private int port;
     private RestTemplate restTemplate;

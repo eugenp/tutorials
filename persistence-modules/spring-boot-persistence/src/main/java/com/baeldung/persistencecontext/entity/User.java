@@ -1,4 +1,4 @@
-package com.baeldung.persistancecontext.entity;
+package com.baeldung.persistencecontext.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
