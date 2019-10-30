@@ -46,7 +46,7 @@ public class RedisMessageListenerIntegrationTest {
     public void testOnMessage() throws Exception {
         String message = "Message " + UUID.randomUUID();
         redisMessagePublisher.publish(message);
-        Thread.sleep(100);
+        Thread.sleep(1000);
         assertTrue(RedisMessageSubscriber.messageList.get(0).contains(message));
     }
 }
