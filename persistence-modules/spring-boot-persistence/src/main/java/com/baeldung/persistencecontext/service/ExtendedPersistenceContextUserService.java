@@ -18,14 +18,14 @@ public class ExtendedPersistenceContextUserService {
     public EntityManager getEntityManager() {
         return entityManager;
     }
-
-    public User insert(User user) {
+    
+    @Transactional
+    public User insertWithTransaction(User user) {
         entityManager.persist(user);
         return user;
     }
 
-    @Transactional
-    public User insertWithManagedTransaction(User user) {
+    public User insertWithoutTransaction(User user) {
         entityManager.persist(user);
         return user;
     }

@@ -21,17 +21,17 @@ public class UserController{
 
     @RequestMapping(value = "v1/user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public User saveUserV1(@RequestBody User user) {
-        return transctionPersistenceContextUserService.insert(user);
+        return transctionPersistenceContextUserService.insertWithTransaction(user);
     }
 
     @RequestMapping(value = "v2/user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public User saveUserV2(@RequestBody User user) {
-        return extendedPersistenceContextUserService.insert(user);
+        return extendedPersistenceContextUserService.insertWithoutTransaction(user);
     }
     
     @RequestMapping(value = "v3/user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public User saveUserV3(@RequestBody User user) {
-        return extendedPersistenceContextUserService.insertWithManagedTransaction(user);
+        return extendedPersistenceContextUserService.insertWithTransaction(user);
     }
     
     @RequestMapping(value = "v4/user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")

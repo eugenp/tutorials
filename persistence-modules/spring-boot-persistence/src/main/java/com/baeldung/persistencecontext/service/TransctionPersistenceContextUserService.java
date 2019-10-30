@@ -20,7 +20,7 @@ public class TransctionPersistenceContextUserService {
     }
 
     @Transactional
-    public User insert(User user) {
+    public User insertWithTransaction(User user) {
         entityManager.persist(user);
         return user;
     }
