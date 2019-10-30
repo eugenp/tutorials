@@ -9,4 +9,5 @@ This module contains articles about networking in Java
 - [Using Curl in Java](https://www.baeldung.com/java-curl)
 - [Do a Simple HTTP Request in Java](http://www.baeldung.com/java-http-request)
 - [Sending Emails with Java](http://www.baeldung.com/java-email)
+- [Authentication with HttpUrlConnection](https://www.baeldung.com/java-http-url-connection)
 - [[<-- Prev]](/core-java-modules/core-java-networking)

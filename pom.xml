@@ -439,6 +439,8 @@
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-string-conversions</module>
                 <module>core-java-modules/core-java-string-conversions-2</module>
+                <module>core-java-modules/core-java-string-operations</module>
+                <module>core-java-modules/core-java-string-operations-2</module>
                 <module>core-java-modules/core-java-string-algorithms</module>
                 <module>core-java-modules/core-java-string-algorithms-2</module>
                 <module>core-java-modules/core-java-string-apis</module>
@@ -506,7 +508,6 @@
                 <module>java-spi</module>
                 <module>java-strings</module>
                 <module>java-strings-2</module>
-                <module>java-strings-3</module>
                 <module>java-strings-ops</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
@@ -1210,6 +1211,8 @@
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-string-conversions</module>
                 <module>core-java-modules/core-java-string-conversions-2</module>
+                <module>core-java-modules/core-java-string-operations</module>
+                <module>core-java-modules/core-java-string-operations-2</module>
                 <module>core-java-modules/core-java-string-algorithms</module>
                 <module>core-java-modules/core-java-string-algorithms-2</module>
                 <module>core-java-modules/core-java-string-apis</module>
@@ -1275,7 +1278,6 @@
                 <module>java-spi</module>
                 <module>java-strings</module>
                 <module>java-strings-2</module>
-                <module>java-strings-3</module>
                 <module>java-strings-ops</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
