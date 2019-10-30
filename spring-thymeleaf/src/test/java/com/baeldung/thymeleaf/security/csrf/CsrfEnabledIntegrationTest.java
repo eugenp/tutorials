@@ -1,12 +1,9 @@
-package org.baeldung.security.csrf;
+package com.baeldung.thymeleaf.security.csrf;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import javax.servlet.Filter;
-
+import com.baeldung.thymeleaf.config.InitSecurity;
+import com.baeldung.thymeleaf.config.WebApp;
+import com.baeldung.thymeleaf.config.WebMVCConfig;
+import com.baeldung.thymeleaf.config.WebMVCSecurity;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,10 +18,12 @@ import org.springframework.test.web.servlet.request.RequestPostProcessor;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.thymeleaf.config.InitSecurity;
-import com.baeldung.thymeleaf.config.WebApp;
-import com.baeldung.thymeleaf.config.WebMVCConfig;
-import com.baeldung.thymeleaf.config.WebMVCSecurity;
+import javax.servlet.Filter;
+
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
