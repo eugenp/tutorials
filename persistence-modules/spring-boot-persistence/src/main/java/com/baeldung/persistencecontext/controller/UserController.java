@@ -15,37 +15,37 @@ import com.baeldung.persistencecontext.service.TransctionPersistenceContextUserS
 public class UserController{
 
     @Autowired
-    private TransctionPersistenceContextUserService userServiceTransctionPersistenceContext1;
+    private TransctionPersistenceContextUserService transctionPersistenceContextUserService;
     @Autowired
-    private ExtendedPersistenceContextUserService userServiceExtendedPersistenceContext1;
+    private ExtendedPersistenceContextUserService extendedPersistenceContextUserService;
 
     @RequestMapping(value = "v1/user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public User saveUserV1(@RequestBody User user) {
-        return userServiceTransctionPersistenceContext1.insert(user);
+        return transctionPersistenceContextUserService.insert(user);
     }
 
     @RequestMapping(value = "v2/user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public User saveUserV2(@RequestBody User user) {
-        return userServiceExtendedPersistenceContext1.insert(user);
+        return extendedPersistenceContextUserService.insert(user);
     }
     
     @RequestMapping(value = "v3/user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public User saveUserV3(@RequestBody User user) {
-        return userServiceExtendedPersistenceContext1.insertWithManagedTransaction(user);
+        return extendedPersistenceContextUserService.insertWithManagedTransaction(user);
     }
     
     @RequestMapping(value = "v4/user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public User saveUserV4(@RequestBody User user) {
-        return userServiceTransctionPersistenceContext1.insertWithoutTransaction(user);
+        return transctionPersistenceContextUserService.insertWithoutTransaction(user);
     }
 
     @RequestMapping(value = "v1/user/{id}", method = RequestMethod.GET, produces = "application/json")
     public User getUserV1(@PathVariable("id") Long id) {
-        return userServiceTransctionPersistenceContext1.find(id);
+        return transctionPersistenceContextUserService.find(id);
     }
 
     @RequestMapping(value = "v2/user/{id}", method = RequestMethod.GET, produces = "application/json")
     public User getUserV2(@PathVariable("id") Long id) {
-        return userServiceExtendedPersistenceContext1.find(id);
+        return extendedPersistenceContextUserService.find(id);
     }
 }
