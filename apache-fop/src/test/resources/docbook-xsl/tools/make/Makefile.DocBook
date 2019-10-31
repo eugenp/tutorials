@@ -1,0 +1,698 @@
+# $Source$
+# $Author: xmldoc $
+# $Date: 2008-03-03 09:20:29 +0000 (Mon, 03 Mar 2008) $
+# $Revision: 7787 $
+# vim: number
+#
+# -----------------------------------------------------------------
+#  ** Makefile.DocBook -- generate output from DocBook sources **
+# -----------------------------------------------------------------
+#
+#   This file is part of the DocBook Project XSL Stylesheet
+#   distribution.
+#
+#   See http://docbook.sourceforge.net/release/xsl/current/
+#   for copyright and other information.
+
+# DOCBOOK_OUTPUT_FORMATS is the default set of targets (output
+# formats) that get built when you type "make" without any targets
+# explicitly specified. To generate a different set of output
+# formats, change the value of DOCBOOK_OUTPUT_FORMATS here or set
+# it in your environment; for example:
+#
+#   set DOCBOOK_OUTPUT_FORMATS="html pdf"; export DOCBOOK_OUTPUT_FORMATS
+#
+# Of course by explicitly specifying particular targets when you
+# invoke "make", you can always override generation of the default
+# set of targets; for example:
+#
+#   make html txt
+#
+# That would generate just HTML (unchunked) and plain-text output.
+#
+DOCBOOK_OUTPUT_FORMATS ?= xml man man-pdf chunk txt pdf
+
+# If you want XHTML output instead of HTML, set HTML_OR_XHTML to
+# 'xhtml' or just specify 'xhtml" in DOCBOOK_OUTPUT_FORMATS.
+ifeq ($(findstring xhtml,$(DOCBOOK_OUTPUT_FORMATS)),)
+HTML_OR_XHTML ?= html
+else
+HTML_OR_XHTML ?= xhtml
+endif
+
+# if your source is in asciidoc instead of DocBook, set
+# ASCII_OR_DOCBOOK to "ascii"
+ASCII_OR_DOCBOOK ?= docbook
+
+# -----------------------------------------------------------------
+#                *** TOOLS and other DEPENDENCIES ***
+# -----------------------------------------------------------------
+# we use rmdir(1) to remove dirs we create for chunked HTML output
+RMDIR = rmdir
+# "-p" causes empty parent dirs to be deleted as well
+RMDIR_FLAGS = --ignore-fail-on-non-empty -p
+
+# possible values for PDF_MAKER are:
+#   dblatex|fop|xep|xmlroff|passivetex
+PDF_MAKER = dblatex
+
+# possible values for TXT_MAKER are:
+#   links|lynx|w3m|w3mmee
+TXT_MAKER = links
+TXT_MAKER_FLAGS = -dump
+
+# xsl
+XSLT = xsltproc
+XSLT_FLAGS = --xinclude
+
+# http://dblatex.sourceforge.net/
+DBLATEX = dblatex
+DBLATEX_FLAGS = -b pdftex
+
+FOP = fop
+FOP_FLAGS =
+
+XEP = xep
+XEP_FLAGS =
+
+# http://xmlroff.sourceforge.net/
+XMLROFF = xmlroff
+XMLROFF_FLAGS =
+
+PDFTEX = pdftex
+PDFTEX_FLAGS =
+
+# used by PassiveTeX
+PDFXMLTEX = pdfxmltex
+
+# http://docbook2x.sourceforge.net/
+DB2X_XSLTPROC = db2x_xsltproc
+DB2X_XSLTPROC_FLAGS = 
+DB2X_TEXIXML = db2x_texixml
+DB2X_TEXIXML_FLAGS = 
+
+# we call the man(1) command to generate "foo.N.pdf" and
+# "foo.N.txt" output (see "man-pdf" & "man-txt" targets)
+MAN = man
+MAN_FLAGS =
+
+# The "ps2pdf" command is part of GhostSript (gs) distro.
+# It is just a wrapper script around gs that does this:
+#
+#   gs -dCompatibilityLevel=1.2 -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite \
+#     "-sOutputFile=$outfile" -dCompatibilityLevel=1.2 -c .setpdfwrite -f "$infile"
+#
+# Where, for example: $outfile = foo.pdf and $infile = foo.1
+PS2PDF = ps2pdf
+PS2PDF_FLAGS =
+
+# asciidoc is used to generate DocBook XML from asciidoc source
+ASCIIDOC=asciidoc
+ASCIIDOCFLAGS=
+
+# asciidoc source seems to have DOS line endings, so we use
+# DOS2UNIX to be able to grep them correctly
+DOS2UNIX=dos2unix
+DOS2UNIXFLAGS=
+
+# The "col" command is needed for stripping backspaces and
+# underscores from man(1) output to get pure plain-text
+COL = col
+COL_FLAGS =
+
+# The "expand" command is needed for expanding tabs from files
+# generated from "man foo.1 | col -b" output
+# output to get pure plain-text
+EXPAND = expand
+EXPAND_FLAGS =
+
+# value of DOCBOOK_XSL should either be the canonical
+# (docbook.sourceforge.net) URL for the DocBook Project XSL
+# stylesheets OR it can be a local system path
+DOCBOOK_XSL = http://docbook.sourceforge.net/release/xsl/current
+
+# -----------------------------------------------------------------
+#       names of some DIRECTORIES and FILES we need
+# -----------------------------------------------------------------
+# We create a tmp directory once per make invocation; it's needed
+# for holding a temporary copy of the custom DBLaTeX stylesheet
+# (because dblatex currently can't read a stylesheet from stdin)
+TMP ?= /tmp
+TMPNUM := $(shell echo $$$$)
+DOCBOOK_TMP := $(TMP)/docbook-make-$(TMPNUM)
+
+# MAN_MANIFEST_EXT is file extension added to individual manifest
+# files
+MAN_MANIFEST_EXT = manifest_man
+
+# HTML_MANIFEST_EXT is file extension added to HTML manifest files
+HTML_MANIFEST_EXT = manifest_html
+
+# BASEDIR_SUFFIX is a what you need to set if you want a suffix
+# added to the end of each "base.dir" we create while generating
+# chunked HTML output
+#BASEDIR_SUFFIX = -html
+#BASEDIR_SUFFIX = _html
+BASEDIR_SUFFIX = 
+
+# -----------------------------------------------------------------
+#                        assorted OPTIONS
+# -----------------------------------------------------------------
+# HTML_STYLESHEET -> $html.stylesheet stylesheet param
+# http://docbook.sourceforge.net/snapshots/xsl/doc/html/html.stylesheet.html
+HTML_STYLESHEET = style.css
+# HTML_IMAGES -> $admon.graphics.path
+# http://docbook.sourceforge.net/snapshots/xsl/doc/html/admon.graphics.path.html
+HTML_IMAGES = images/
+# HTML_IMAGES_EXT -> $admon.graphics.extension
+# http://docbook.sourceforge.net/snapshots/xsl/doc/html/admon.graphics.extension.html
+HTML_IMAGES_EXT = .png
+
+# use these to set params on the command-line
+# format is, e.g., HTML_PARAMS="--stringparam variablelist.as.table 1..."
+FO_PARAMS =
+HTML_PARAMS =
+MAN_PARAMS =
+
+# DBX_PARAMS is for dblatex(1); format uses "-p":
+# DBX_PARAMS="-p doc.publisher.show 1 -p term.breakline 1...
+DBX_PARAMS=
+
+# What file extension do you use for DocBook source files?
+DOCBOOK_FILE_EXTENSION = .xml
+
+# -----------------------------------------------------------------
+#       make(1) functions for building file lists
+# -----------------------------------------------------------------
+#
+#    the values of the following are used for determing what needs
+#    to be built and/or cleaned up
+
+ifeq ($(ASCII_OR_DOCBOOK),docbook)
+SOURCE_FILES_DBK = $(wildcard *$(DOCBOOK_FILE_EXTENSION))
+else
+SOURCE_FILES_DBK = $(foreach base,$(basename $(wildcard *.txt)),$(base)$(DOCBOOK_FILE_EXTENSION))
+endif
+
+FILES_FO   = $(foreach base,$(basename $(SOURCE_FILES_DBK)),$(base).fo)
+FILES_TXT  = $(foreach base,$(basename $(SOURCE_FILES_DBK)),$(base).out.txt)
+FILES_PDF  = $(foreach base,$(basename $(SOURCE_FILES_DBK)),$(base).pdf)
+FILES_LOG  = $(foreach base,$(basename $(SOURCE_FILES_DBK)),$(base).log)
+FILES_OUT  = $(foreach base,$(basename $(SOURCE_FILES_DBK)),$(base).out)
+FILES_AUX  = $(foreach base,$(basename $(SOURCE_FILES_DBK)),$(base).aux)
+FILES_HTML = $(foreach base,$(basename $(SOURCE_FILES_DBK)),$(base).html)
+FILES_INFO = $(foreach base,$(basename $(SOURCE_FILES_DBK)),$(base).info)
+DIRS_CHUNK = $(foreach base,$(basename $(SOURCE_FILES_DBK)),$(base)$(BASEDIR_SUFFIX))
+LISTS_HTML = $(foreach base,$(basename $(SOURCE_FILES_DBK)),$(base).$(HTML_MANIFEST_EXT))
+LISTS_MAN  = $(foreach base,$(basename $(SOURCE_FILES_DBK)),$(base).$(MAN_MANIFEST_EXT))
+FILES_CHNK = $(shell for manifest in $(LISTS_HTML); do if [ -f "$$manifest" ]; then cat $$manifest; fi done)
+FILES_MAN  = $(shell for manifest in $(LISTS_MAN);  do if [ -f "$$manifest" ]; then cat $$manifest; fi done)
+FILES_MANP = $(foreach base,$(FILES_MAN),$(base).man.pdf)
+FILES_MANT = $(foreach base,$(FILES_MAN),$(base).out.txt)
+DIRS_MAN   = $(shell for file in $(FILES_MAN); do dirname $$file; done | uniq)
+
+# -----------------------------------------------------------------
+#   ** stylesheet for testing whether a file has a refentry
+# -----------------------------------------------------------------
+REFENTRY_CHECK := <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" \
+                version="1.0" \
+                xmlns:db="http://docbook.org/ns/docbook" \
+                > \
+  <xsl:output method="text"/> \
+  <xsl:template match="/"> \
+    <xsl:if test="//refentry|//db:refentry"> \
+      <xsl:text>true</xsl:text> \
+    </xsl:if> \
+  </xsl:template> \
+</xsl:stylesheet>
+
+# -----------------------------------------------------------------
+#             ** Stylesheet Customization Layers ** 
+# -----------------------------------------------------------------
+#
+# for DBLaTeX
+DBX_CUSTOM := <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" \
+                 version="1.0"> \
+  <xsl:param name="co.linkends.show">0</xsl:param> \
+  <xsl:param name="callout.markup.circled">1</xsl:param> \
+  <xsl:param name="callout.linkends.hot">0</xsl:param> \
+  <xsl:param name="doc.publisher.show">1</xsl:param> \
+  <xsl:param name="term.breakline">1</xsl:param> \
+  <xsl:param name="doc.alignment">left</xsl:param> \
+  <xsl:param name="newtbl.use">1</xsl:param> \
+  <xsl:param name="latex.hyperparam"/> \
+  <xsl:param name="latex.style">docbook</xsl:param> \
+  <xsl:param name="latex.biblio.output">all</xsl:param> \
+  <xsl:param name="latex.bibfiles">""</xsl:param> \
+  <xsl:param name="latex.bibwidelabel">WIDELABEL</xsl:param> \
+  <xsl:param name="latex.output.revhistory">0</xsl:param> \
+  <xsl:param name="latex.figure.position">[htbp]</xsl:param> \
+  <xsl:param name="latex.figure.boxed">0</xsl:param> \
+  <xsl:param name="latex.babel.use">1</xsl:param> \
+  <xsl:param name="latex.babel.language"></xsl:param> \
+  <xsl:param name="latex.class.options">twoside</xsl:param> \
+  <xsl:param name="biblioentry.item.separator">, </xsl:param> \
+  <xsl:param name="refentry.xref.manvolnum">1</xsl:param> \
+  <xsl:param name="refsynopsis.title">Synopsis</xsl:param> \
+  <xsl:param name="refnamediv.title"></xsl:param> \
+  <xsl:param name="funcsynopsis.style">ansi</xsl:param> \
+  <xsl:param name="funcsynopsis.decoration">1</xsl:param> \
+  <xsl:param name="function.parens">0</xsl:param> \
+  <xsl:param name="classsynopsis.default.language">java</xsl:param> \
+  <xsl:param name="show.comments">0</xsl:param> \
+</xsl:stylesheet>
+
+# for FO output
+FO_CUSTOM := <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" \
+                xmlns:fo="http://www.w3.org/1999/XSL/Format" \
+                version="1.0"> \
+  <xsl:import href="$(DOCBOOK_XSL)/fo/docbook.xsl"/> \
+  <xsl:param name="$(PDF_MAKER).extensions">1</xsl:param> \
+  <xsl:param name="paper.type">A4</xsl:param> \
+  <xsl:param name="draft.watermark.image"></xsl:param> \
+  <xsl:param name="hyphenation">false</xsl:param> \
+  <xsl:param name="hyphenate.verbatim">1</xsl:param> \
+  <xsl:param name="alignment">left</xsl:param> \
+  <xsl:param name="refentry.generate.name">1</xsl:param> \
+  <xsl:param name="refentry.generate.title">0</xsl:param> \
+  <xsl:param name="refentry.pagebreak">1</xsl:param> \
+  <xsl:param name="shade.verbatim">1</xsl:param> \
+  <xsl:param name="variablelist.as.blocks">1</xsl:param> \
+  <xsl:param name="ulink.show">1</xsl:param> \
+  <xsl:param name="ulink.footnotes">1</xsl:param> \
+  <xsl:param name="index.on.type">1</xsl:param> \
+  <xsl:attribute-set name="xref.properties"> \
+    <xsl:attribute name="color">blue</xsl:attribute> \
+  </xsl:attribute-set> \
+  <xsl:attribute-set name="shade.verbatim.style"> \
+    <xsl:attribute name="background-color">\#E0E0E0</xsl:attribute> \
+    <xsl:attribute name="padding-left">4pt</xsl:attribute> \
+    <xsl:attribute name="padding-right">4pt</xsl:attribute> \
+    <xsl:attribute name="padding-top">4pt</xsl:attribute> \
+    <xsl:attribute name="padding-bottom">4pt</xsl:attribute> \
+  </xsl:attribute-set> \
+  <xsl:attribute-set name="section.title.level1.properties"> \
+    <xsl:attribute name="font-size"> \
+      <xsl:value-of select="$$body.font.master * 1.5"></xsl:value-of> \
+      <xsl:text>pt</xsl:text> \
+    </xsl:attribute> \
+  </xsl:attribute-set> \
+  <xsl:attribute-set name="section.title.level2.properties"> \
+    <xsl:attribute name="font-size"> \
+      <xsl:value-of select="$$body.font.master * 1.3"></xsl:value-of> \
+      <xsl:text>pt</xsl:text> \
+    </xsl:attribute> \
+  </xsl:attribute-set> \
+  <xsl:attribute-set name="section.title.level3.properties"> \
+    <xsl:attribute name="font-size"> \
+      <xsl:value-of select="$$body.font.master * 1.1"></xsl:value-of> \
+      <xsl:text>pt</xsl:text> \
+    </xsl:attribute> \
+  </xsl:attribute-set> \
+  <xsl:attribute-set name="section.title.level4.properties"> \
+    <xsl:attribute name="font-size"> \
+      <xsl:value-of select="$$body.font.master"></xsl:value-of> \
+      <xsl:text>pt</xsl:text> \
+    </xsl:attribute> \
+  </xsl:attribute-set> \
+  <xsl:attribute-set name="component.title.properties"> \
+    <xsl:attribute name="font-size"> \
+      <xsl:value-of select="$$body.font.master * 1.5"></xsl:value-of> \
+      <xsl:text>pt</xsl:text> \
+    </xsl:attribute> \
+  </xsl:attribute-set> \
+  <xsl:attribute-set name="monospace.verbatim.properties"> \
+    <xsl:attribute name="wrap-option">wrap</xsl:attribute> \
+    <xsl:attribute name="hyphenation-character">\</xsl:attribute> \
+    <xsl:attribute name="font-size"> \
+      <xsl:value-of select="$$body.font.master * 0.8"></xsl:value-of> \
+      <xsl:text>pt</xsl:text> \
+    </xsl:attribute> \
+  </xsl:attribute-set> \
+</xsl:stylesheet>
+
+# for single-file (X)HTML outpout
+HTML_CUSTOM := <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" \
+                version="1.0"> \
+  <xsl:import href="$(DOCBOOK_XSL)/$(HTML_OR_XHTML)/docbook.xsl"/> \
+  <xsl:param name="gentext.custom">local.l10n.xml</xsl:param> \
+  <xsl:param name="local.l10n.xml" select="document($$gentext.custom)"/> \
+  <xsl:param name="refentry.generate.name">1</xsl:param> \
+  <xsl:param name="refentry.generate.title">0</xsl:param> \
+  <xsl:param name="root.filename"></xsl:param> \
+  <xsl:param name="variablelist.as.table">0</xsl:param> \
+  <xsl:param name="html.stylesheet">$(HTML_STYLESHEET)</xsl:param> \
+  <xsl:param name="admon.graphics">0</xsl:param> \
+  <xsl:param name="index.on.type">1</xsl:param> \
+</xsl:stylesheet>
+
+# for chunked (X)HTML output
+CHNK_CUSTOM := <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" \
+                version="1.0"> \
+  <xsl:import href="$(DOCBOOK_XSL)/$(HTML_OR_XHTML)/chunk.xsl"/> \
+  <xsl:param name="refentry.generate.name">0</xsl:param> \
+  <xsl:param name="refentry.generate.title">1</xsl:param> \
+  <xsl:param name="variablelist.as.table">0</xsl:param> \
+  <xsl:param name="html.stylesheet">$(HTML_STYLESHEET)</xsl:param> \
+  <xsl:param name="admon.graphics">1</xsl:param> \
+  <xsl:param name="admon.graphics.path">$(HTML_IMAGES)</xsl:param> \
+  <xsl:param name="admon.graphics.extension">$(HTML_IMAGES_EXT)</xsl:param> \
+  <xsl:param name="root.filename"></xsl:param> \
+  <xsl:param name="generate.manifest">1</xsl:param> \
+  <xsl:param name="use.id.as.filename">1</xsl:param> \
+  <xsl:param name="chunker.output.indent">yes</xsl:param> \
+  <xsl:param name="index.on.type">1</xsl:param> \
+</xsl:stylesheet>
+
+# for man-page output
+MAN_CUSTOM := <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" \
+                version="1.0"> \
+  <xsl:import href="$(DOCBOOK_XSL)/manpages/docbook.xsl"/> \
+  <xsl:param name="man.output.manifest.enabled" select="1"/> \
+  <xsl:param name="man.output.in.separate.dir" select="1"/> \
+  <xsl:param name="man.output.base.dir">man/</xsl:param> \
+  <xsl:param name="man.output.subdirs.enabled" select="1"/> \
+</xsl:stylesheet>
+
+# -----------------------------------------------------------------
+#                  ** TARGETS START HERE ** 
+# -----------------------------------------------------------------
+#  prevents make from deleting, e.g. foo.1, after making foo.1.pdf
+#  and foo.1.txt from it.
+.PRECIOUS: %.1 %.2 %.3 %.4 %.5 %.6 %.7 %.8 %.9
+
+docbook: $(DOCBOOK_OUTPUT_FORMATS)
+
+xml: $(SOURCE_FILES_DBK)
+
+man: $(LISTS_MAN)
+
+# we can generate PDFs from man pages
+man-pdf: man
+	$(MAKE) $(FILES_MANP)
+
+# we can generate plain text from man pages
+man-txt: man
+	$(MAKE) $(FILES_MANT)
+
+html: $(FILES_HTML)
+
+chunk: $(LISTS_HTML)
+
+txt: $(FILES_TXT)
+
+pdf: $(FILES_PDF)
+
+info: $(FILES_INFO)
+
+# use the "debug" target to echo variables, etc., to
+# test/troubleshoot changes you make to this makefile
+debug:
+	echo $(wildcard *$(DOCBOOK_FILE_EXTENSION))
+	echo $(ASCII_OR_DOCBOOK)
+	echo $(SOURCE_FILES_DBK)
+
+# -----------------------------------------------------------------
+#     pattern rule to make DocBook refentry from asciidoc source
+# -----------------------------------------------------------------
+%.1$(DOCBOOK_FILE_EXTENSION): %.1.txt
+	$(ASCIIDOC) $(ASCIIDOCFLAGS) -d manpage -b docbook $<
+
+%.2$(DOCBOOK_FILE_EXTENSION): %.2.txt
+	$(ASCIIDOC) $(ASCIIDOCFLAGS) -d manpage -b docbook $<
+
+%.3$(DOCBOOK_FILE_EXTENSION): %.3.txt
+	$(ASCIIDOC) $(ASCIIDOCFLAGS) -d manpage -b docbook $<
+
+%.4$(DOCBOOK_FILE_EXTENSION): %.4.txt
+	$(ASCIIDOC) $(ASCIIDOCFLAGS) -d manpage -b docbook $<
+
+%.5$(DOCBOOK_FILE_EXTENSION): %.5.txt
+	$(ASCIIDOC) $(ASCIIDOCFLAGS) -d manpage -b docbook $<
+
+%.6$(DOCBOOK_FILE_EXTENSION): %.6.txt
+	$(ASCIIDOC) $(ASCIIDOCFLAGS) -d manpage -b docbook $<
+
+%.7$(DOCBOOK_FILE_EXTENSION): %.7.txt
+	$(ASCIIDOC) $(ASCIIDOCFLAGS) -d manpage -b docbook $<
+
+%.8$(DOCBOOK_FILE_EXTENSION): %.8.txt
+	$(ASCIIDOC) $(ASCIIDOCFLAGS) -d manpage -b docbook $<
+
+%.9$(DOCBOOK_FILE_EXTENSION): %.9.txt
+	$(ASCIIDOC) $(ASCIIDOCFLAGS) -d manpage -b docbook $<
+
+# -----------------------------------------------------------------
+#     pattern rule to make DocBook article from asciidoc source
+# -----------------------------------------------------------------
+%$(DOCBOOK_FILE_EXTENSION): %.txt
+	export LINECOUNT1=$$(cat $< | $(DOS2UNIX) $(DOS2UNIXFLAGS) | egrep "^=+$$" | wc -l); \
+	export LINECOUNT2=$$(cat $< | $(DOS2UNIX) $(DOS2UNIXFLAGS) | egrep "^= $$" | wc -l); \
+	if [[ $$LINECOUNT1 > 1 || $$LINECOUNT2 > 1 ]]; then \
+	$(ASCIIDOC) $(ASCIIDOCFLAGS) -d book -b docbook $<; \
+	else \
+	$(ASCIIDOC) $(ASCIIDOCFLAGS) -b docbook $<; \
+	fi
+
+# -----------------------------------------------------------------
+#     pattern rule for making (X)HTML and plain-text output
+# -----------------------------------------------------------------
+%.html: %$(DOCBOOK_FILE_EXTENSION)
+	@echo '$(HTML_CUSTOM)' | $(XSLT) $(XSLT_FLAGS) $(HTML_PARAMS) - $< > $@
+
+%.out.txt: %.html
+	$(TXT_MAKER) $(TXT_MAKER_FLAGS) ./$< \
+	  | sed "s/^\(\s\+[0-9]\+\. \)file:\/\/.\+$$/\\1(local)/g" \
+	  | egrep -v '^	file:///.+$$' \
+	  > $@
+# if DOCBOOK_OUTPUT_FORMATS does not contain "html", then we need
+# to remove the "intermediate" HTML files we used for generating
+# plain-text output
+ifeq ($(findstring html,$(DOCBOOK_OUTPUT_FORMATS)),)
+	$(RM) $<
+endif
+
+# -----------------------------------------------------------------
+#     pattern rule for making chunked (X)HTML pages
+# -----------------------------------------------------------------
+%.$(HTML_MANIFEST_EXT): %$(DOCBOOK_FILE_EXTENSION)
+	@echo '$(CHNK_CUSTOM)' | $(XSLT) $(XSLT_FLAGS) $(HTML_PARAMS) \
+	--stringparam manifest $@  \
+	--stringparam base.dir $(basename $@)$(BASEDIR_SUFFIX)/  \
+	- $< 
+
+# -----------------------------------------------------------------
+#     pattern rules for making FO and PDF stuff
+# -----------------------------------------------------------------
+%.fo: %$(DOCBOOK_FILE_EXTENSION)
+	@echo '$(FO_CUSTOM)' \
+	  | $(XSLT) $(XSLT_FLAGS) $(FO_PARAMS) - $< > $@
+
+ifeq ($(PDF_MAKER),dblatex)
+%.pdf: %$(DOCBOOK_FILE_EXTENSION)
+	mkdir -p $(DOCBOOK_TMP)
+	echo '$(DBX_CUSTOM)' > $(DOCBOOK_TMP)/dblatex.xsl
+	-$(DBLATEX) $(DBLATEX_FLAGS)\
+	  -p $(DOCBOOK_TMP)/dblatex.xsl \
+	  -o $@ \
+	  $<
+	$(RM) -r $(DOCBOOK_TMP)
+endif
+
+%.pdf: %.fo
+ifeq ($(PDF_MAKER),)
+	$(error No PDF_MAKER specified. Cannot make pdf)
+else
+ifeq ($(PDF_MAKER),xep)
+	$(XEP) $(XEP_FLAGS) $< $@
+else
+ifeq ($(PDF_MAKER),fop)
+	$(FOP) $(FOP_FLAGS) $< $@
+else
+ifeq ($(PDF_MAKER),xmlroff)
+	$(XMLROFF) $(XMLROFF_FLAGS) $< -o $@
+else
+ifeq ($(PDF_MAKER),passivetex)
+	$(PDFTEX) $(PDFTEX_FLAGS) &$(PDFXMLTEX) $<
+	@if [ `egrep Rerun $(basename $@).log | wc -l` -gt 0 ]; then \
+		$(PDFTEX) $(PDFTEX_FLAGS) &$(PDFXMLTEX) $< ; \
+	fi
+	@if [ `egrep Rerun $(basename $@).log | wc -l` -gt 0 ]; then \
+		$(PDFTEX) $(PDFTEX_FLAGS) &$(PDFXMLTEX) $< ; \
+	fi
+	$(RM) $(basename $@).log
+	$(RM) $(basename $@).aux
+	$(RM) $(basename $@).out
+else
+	$(error I do not know how to make a PDF using "$(PDF_MAKER)")
+endif
+endif
+endif
+endif
+endif
+
+# -----------------------------------------------------------------
+#     pattern rules for making TeXinfo stuff
+# -----------------------------------------------------------------
+%.txml: %$(DOCBOOK_FILE_EXTENSION)
+	$(DB2X_XSLTPROC) $(DB2X_XSLTPROC_FLAGS) -s texi -o $@ $<
+
+%.texi: %.txml
+	$(DB2X_TEXIXML) $(DB2X_TEXIXML_FLAGS) $<
+
+# the following is actually a built-in rule, but it's redefined
+# here just for the sake of clarity
+%.info: %.texi
+	$(MAKEINFO) $(MAKEINFO_FLAGS) $< -o $@
+
+# -----------------------------------------------------------------
+#     pattern rule for making man pages
+# -----------------------------------------------------------------
+%.$(MAN_MANIFEST_EXT): %$(DOCBOOK_FILE_EXTENSION)
+	@if [ "$(strip $(shell echo '$(REFENTRY_CHECK)' | $(XSLT) $(XSLT_FLAGS) - $<))" != "true" ]; then \
+	  touch $@; \
+	else \
+	  echo '$(MAN_CUSTOM)' \
+	  | $(XSLT) $(XSLT_FLAGS) $(MAN_PARAMS) \
+	    --stringparam man.output.manifest.filename $@ \
+	    - $<; \
+	fi
+
+# -----------------------------------------------------------------
+#  pattern rule for enabling direct "make foo.1" to work
+# -----------------------------------------------------------------
+
+%.1 %.2 %.3 %.4 %.5 %.6 %.7: %.xml
+	$(MAKE) $(basename $<).$(MAN_MANIFEST_EXT)
+
+# -----------------------------------------------------------------
+#  pattern rules for making Postscript/PDF output from man pages
+# -----------------------------------------------------------------
+%.1.man.ps: %.1
+	$(MAN) -l $(MAN_FLAGS) -Tps $< > $@
+
+%.2.man.ps: %.2
+	$(MAN) -l $(MAN_FLAGS) -Tps $< > $@
+
+%.3.man.ps: %.3
+	$(MAN) -l $(MAN_FLAGS) -Tps $< > $@
+
+%.4.man.ps: %.4
+	$(MAN) -l $(MAN_FLAGS) -Tps $< > $@
+
+%.5.man.ps: %.5
+	$(MAN) -l $(MAN_FLAGS) -Tps $< > $@
+
+%.6.man.ps: %.6
+	$(MAN) -l $(MAN_FLAGS) -Tps $< > $@
+
+%.7.man.ps: %.7
+	$(MAN) -l $(MAN_FLAGS) -Tps $< > $@
+
+%.8.man.ps: %.8
+	$(MAN) -l $(MAN_FLAGS) -Tps $< > $@
+
+%.9.man.ps: %.9
+	$(MAN) -l $(MAN_FLAGS) -Tps $< > $@
+
+# -----------------------------------------------------------------
+#  pattern rule for converting Postscript to PDF
+# -----------------------------------------------------------------
+%.pdf: %.ps
+	$(PS2PDF) $(PS2PDF_FLAGS) $<
+
+# -----------------------------------------------------------------
+#  pattern rules for making plain-text output from man pages
+# -----------------------------------------------------------------
+%.1.out.txt: %.1
+	$(MAN) -l $(MAN_FLAGS) -Tascii $< | $(COL) -b $(COL_FLAGS) | $(EXPAND) $(EXPAND_FLAGS) > $@
+
+%.2.out.txt: %.2
+	$(MAN) -l $(MAN_FLAGS) -Tascii $< | $(COL) -b $(COL_FLAGS) | $(EXPAND) $(EXPAND_FLAGS) > $@
+
+%.3.out.txt: %.3
+	$(MAN) -l $(MAN_FLAGS) -Tascii $< | $(COL) -b $(COL_FLAGS) | $(EXPAND) $(EXPAND_FLAGS) > $@
+
+%.4.out.txt: %.4
+	$(MAN) -l $(MAN_FLAGS) -Tascii $< | $(COL) -b $(COL_FLAGS) | $(EXPAND) $(EXPAND_FLAGS) > $@
+
+%.5.out.txt: %.5
+	$(MAN) -l $(MAN_FLAGS) -Tascii $< | $(COL) -b $(COL_FLAGS) | $(EXPAND) $(EXPAND_FLAGS) > $@
+
+%.6.out.txt: %.6
+	$(MAN) -l $(MAN_FLAGS) -Tascii $< | $(COL) -b $(COL_FLAGS) | $(EXPAND) $(EXPAND_FLAGS) > $@
+
+%.7.out.txt: %.7
+	$(MAN) -l $(MAN_FLAGS) -Tascii $< | $(COL) -b $(COL_FLAGS) | $(EXPAND) $(EXPAND_FLAGS) > $@
+
+%.8.out.txt: %.8
+	$(MAN) -l $(MAN_FLAGS) -Tascii $< | $(COL) -b $(COL_FLAGS) | $(EXPAND) $(EXPAND_FLAGS) > $@
+
+%.9.out.txt: %.9
+	$(MAN) -l $(MAN_FLAGS) -Tascii $< | $(COL) -b $(COL_FLAGS) | $(EXPAND) $(EXPAND_FLAGS) > $@
+
+# -----------------------------------------------------------------
+#   target(s) for cleaning up the mess
+# -----------------------------------------------------------------
+clean:
+ifneq ($(FILES_TXT),)
+	$(RM) $(FILES_TXT)
+endif
+ifneq ($(FILES_PDF),)
+	$(RM) $(FILES_PDF)
+endif
+ifneq ($(FILES_FO),)
+	$(RM) $(FILES_FO)
+endif
+ifneq ($(FILES_LOG),)
+	$(RM) $(FILES_LOG)
+endif
+ifneq ($(FILES_OUT),)
+	$(RM) $(FILES_OUT)
+endif
+ifneq ($(FILES_AUX),)
+	$(RM) $(FILES_AUX)
+endif
+ifneq ($(FILES_HTML),)
+	$(RM) $(FILES_HTML)
+endif
+ifneq ($(FILES_CHNK),)
+	$(RM) $(FILES_CHNK)
+endif
+ifneq ($(FILES_MAN),)
+	$(RM) $(FILES_MAN)
+endif
+ifneq ($(FILES_MANT),)
+	$(RM) $(FILES_MANT)
+endif
+ifneq ($(FILES_MANP),)
+	$(RM) $(FILES_MANP)
+endif
+ifneq ($(FILES_INFO),)
+	$(RM) $(FILES_INFO)
+endif
+ifneq ($(DIRS_CHUNK),)
+	for dir in $(DIRS_CHUNK); do \
+	  if [ -d "$$dir" ]; then \
+	    $(RMDIR) $(RMDIR_FLAGS) $$dir; \
+	  fi \
+	done
+endif
+ifneq ($(DIRS_MAN),)
+ifneq ($(DIRS_MAN),.)
+	for dir in $(DIRS_MAN); do \
+	  if [ -d "$$dir" ]; then \
+	    $(RMDIR) $(RMDIR_FLAGS) $$dir; \
+	  fi \
+	done
+endif
+endif
+ifneq ($(LISTS_MAN),)
+	$(RM) $(LISTS_MAN)
+endif
+ifneq ($(LISTS_HTML),)
+	$(RM) $(LISTS_HTML)
+endif
+ifneq ($(ASCII_OR_DOCBOOK),docbook)
+	$(RM) -i $(SOURCE_FILES_DBK)
+endif

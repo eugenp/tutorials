@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: pool.rnc 7466 2007-09-27 14:03:55Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
+  <define name="db.domain.inlines" combine="choice">
+    <ref name="db.keyboard.inlines"/>
+  </define>
+  <define name="db.userinput.inlines" combine="choice">
+    <ref name="db.keyboard.inlines"/>
+  </define>
+  <define name="db.keyboard.inlines">
+    <choice>
+      <ref name="db.keycombo"/>
+      <ref name="db.keycap"/>
+      <ref name="db.keycode"/>
+      <ref name="db.keysym"/>
+      <ref name="db.shortcut"/>
+      <ref name="db.accel"/>
+    </choice>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>keycap</db:refname>
+    <db:refpurpose>The text printed on a key on a keyboard</db:refpurpose>
+    <ctrl:other-attribute name="db.keycap.function.attrib" enum-name="db.keycap.function-enum.attribute" other-name="db.keycap.function-other.attributes"/>
+    <define name="db.keycap.function.enumeration">
+      <choice>
+        <value>alt</value>
+        <a:documentation>The "Alt" key</a:documentation>
+        <value>backspace</value>
+        <a:documentation>The "Backspace" key</a:documentation>
+        <value>command</value>
+        <a:documentation>The "Command" key</a:documentation>
+        <value>control</value>
+        <a:documentation>The "Control" key</a:documentation>
+        <value>delete</value>
+        <a:documentation>The "Delete" key</a:documentation>
+        <value>down</value>
+        <a:documentation>The down arrow</a:documentation>
+        <value>end</value>
+        <a:documentation>The "End" key</a:documentation>
+        <value>enter</value>
+        <a:documentation>The "Enter" or "Return" key</a:documentation>
+        <value>escape</value>
+        <a:documentation>The "Escape" key</a:documentation>
+        <value>home</value>
+        <a:documentation>The "Home" key</a:documentation>
+        <value>insert</value>
+        <a:documentation>The "Insert" key</a:documentation>
+        <value>left</value>
+        <a:documentation>The left arrow</a:documentation>
+        <value>meta</value>
+        <a:documentation>The "Meta" key</a:documentation>
+        <value>option</value>
+        <a:documentation>The "Option" key</a:documentation>
+        <value>pagedown</value>
+        <a:documentation>The page down key</a:documentation>
+        <value>pageup</value>
+        <a:documentation>The page up key</a:documentation>
+        <value>right</value>
+        <a:documentation>The right arrow</a:documentation>
+        <value>shift</value>
+        <a:documentation>The "Shift" key</a:documentation>
+        <value>space</value>
+        <a:documentation>The spacebar</a:documentation>
+        <value>tab</value>
+        <a:documentation>The "Tab" key</a:documentation>
+        <value>up</value>
+        <a:documentation>The up arrow</a:documentation>
+      </choice>
+    </define>
+    <define name="db.keycap.function-enum.attribute">
+      <optional>
+        <attribute name="function">
+          <db:refpurpose>Identifies the function key</db:refpurpose>
+          <ref name="db.keycap.function.enumeration"/>
+        </attribute>
+      </optional>
+    </define>
+    <define name="db.keycap.function-other.attributes">
+      <optional>
+        <attribute name="function">
+          <db:refpurpose>Identifies the function key</db:refpurpose>
+          <value>other</value>
+          <a:documentation>Indicates a non-standard function key</a:documentation>
+        </attribute>
+      </optional>
+      <attribute name="otherfunction">
+        <db:refpurpose>Specifies a keyword that identifies the non-standard key</db:refpurpose>
+      </attribute>
+    </define>
+    <define name="db.keycap.function.attrib">
+      <choice>
+        <ref name="db.keycap.function-enum.attribute"/>
+        <ref name="db.keycap.function-other.attributes"/>
+      </choice>
+    </define>
+    <define name="db.keycap.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.keycap.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.keycap.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <ref name="db.keycap.function.attrib"/>
+      </interleave>
+    </define>
+    <define name="db.keycap">
+      <element name="keycap">
+        <ref name="db.keycap.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>keycode</db:refname>
+    <db:refpurpose>The internal, frequently numeric, identifier for a key on a keyboard</db:refpurpose>
+    <define name="db.keycode.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.keycode.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.keycode.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.keycode">
+      <element name="keycode">
+        <ref name="db.keycode.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <define name="db.keycombination.contentmodel">
+    <choice>
+      <ref name="db.keycap"/>
+      <ref name="db.keycombo"/>
+      <ref name="db.keysym"/>
+    </choice>
+  </define>
+  <div>
+    <db:refname>keycombo</db:refname>
+    <db:refpurpose>A combination of input actions</db:refpurpose>
+    <ctrl:other-attribute name="db.keycombo.action.attrib" enum-name="db.keycombo.action-enum.attribute" other-name="db.keycombo.action-other.attributes"/>
+    <define name="db.keycombo.action.enumeration">
+      <choice>
+        <value>click</value>
+        <a:documentation>A (single) mouse click.</a:documentation>
+        <value>double-click</value>
+        <a:documentation>A double mouse click.</a:documentation>
+        <value>press</value>
+        <a:documentation>A mouse or key press.</a:documentation>
+        <value>seq</value>
+        <a:documentation>Sequential clicks or presses.</a:documentation>
+        <value>simul</value>
+        <a:documentation>Simultaneous clicks or presses.</a:documentation>
+      </choice>
+    </define>
+    <define name="db.keycombo.action-enum.attribute">
+      <optional>
+        <attribute name="action">
+          <db:refpurpose>Identifies the nature of the action taken. If <db:tag>keycombo</db:tag>
+ contains more than one element, <db:tag class="attvalue">simul</db:tag>
+ is the default, otherwise there is no default.</db:refpurpose>
+          <ref name="db.keycombo.action.enumeration"/>
+        </attribute>
+      </optional>
+    </define>
+    <define name="db.keycombo.action-other.attributes">
+      <optional>
+        <attribute name="action">
+          <db:refpurpose>Identifies the nature of the action taken</db:refpurpose>
+          <value>other</value>
+          <a:documentation>Indicates a non-standard action</a:documentation>
+        </attribute>
+      </optional>
+      <attribute name="otheraction">
+        <db:refpurpose>Identifies the non-standard action in some unspecified way.</db:refpurpose>
+      </attribute>
+    </define>
+    <define name="db.keycombo.action.attrib">
+      <choice>
+        <ref name="db.keycombo.action-enum.attribute"/>
+        <ref name="db.keycombo.action-other.attributes"/>
+      </choice>
+    </define>
+    <define name="db.keycombo.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.keycombo.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.keycombo.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <ref name="db.keycombo.action.attrib"/>
+      </interleave>
+    </define>
+    <define name="db.keycombo">
+      <element name="keycombo">
+        <ref name="db.keycombo.attlist"/>
+        <oneOrMore>
+          <ref name="db.keycombination.contentmodel"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>keysym</db:refname>
+    <db:refpurpose>The symbolic name of a key on a keyboard</db:refpurpose>
+    <define name="db.keysym.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.keysym.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.keysym.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.keysym">
+      <element name="keysym">
+        <ref name="db.keysym.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>accel</db:refname>
+    <db:refpurpose>A graphical user interface (GUI) keyboard shortcut</db:refpurpose>
+    <define name="db.accel.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.accel.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.accel.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.accel">
+      <element name="accel">
+        <ref name="db.accel.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>shortcut</db:refname>
+    <db:refpurpose>A key combination for an action that is also accessible through a menu</db:refpurpose>
+    <define name="db.shortcut.action.attrib">
+      <ref name="db.keycombo.action.attrib"/>
+    </define>
+    <define name="db.shortcut.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.shortcut.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.shortcut.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <ref name="db.shortcut.action.attrib"/>
+      </interleave>
+    </define>
+    <define name="db.shortcut">
+      <element name="shortcut">
+        <ref name="db.shortcut.attlist"/>
+        <oneOrMore>
+          <ref name="db.keycombination.contentmodel"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+</grammar>
