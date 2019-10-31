@@ -21,32 +21,32 @@ public class ThreadJoinUnitTest {
 
         SampleThread(int processingCount) {
             this.processingCount = processingCount;
-            LOGGER.info("Thread " + this.getName() + " created");
+            //LOGGER.info("Thread " + this.getName() + " created");
         }
 
         @Override
         public void run() {
-            LOGGER.info("Thread " + this.getName() + " started");
+            //LOGGER.info("Thread " + this.getName() + " started");
             while (processingCount > 0) {
                 try {
                     Thread.sleep(1000); // Simulate some work being done by thread
                 } catch (InterruptedException e) {
-                    LOGGER.info("Thread " + this.getName() + " interrupted.");
+                    //LOGGER.info("Thread " + this.getName() + " interrupted.");
                 }
                 processingCount--;
-                LOGGER.info("Inside Thread " + this.getName() + ", processingCount = " + processingCount);
+                //LOGGER.info("Inside Thread " + this.getName() + ", processingCount = " + processingCount);
             }
-            LOGGER.info("Thread " + this.getName() + " exiting");
+            //LOGGER.info("Thread " + this.getName() + " exiting");
         }
     }
 
     @Test
     public void givenNewThread_whenJoinCalled_returnsImmediately() throws InterruptedException {
         Thread t1 = new SampleThread(0);
-        LOGGER.info("Invoking join.");
+        //LOGGER.info("Invoking join.");
         t1.join();
-        LOGGER.info("Returned from join");
-        LOGGER.info("Thread state is" + t1.getState());
+        //LOGGER.info("Returned from join");
+        //LOGGER.info("Thread state is " + t1.getState());
         assertFalse(t1.isAlive());
     }
 
@@ -55,9 +55,9 @@ public class ThreadJoinUnitTest {
       throws InterruptedException {
         Thread t2 = new SampleThread(1);
         t2.start();
-        LOGGER.info("Invoking join.");
+        //LOGGER.info("Invoking join.");
         t2.join();
-        LOGGER.info("Returned from join");
+        //LOGGER.info("Returned from join");
         assertFalse(t2.isAlive());
     }
 

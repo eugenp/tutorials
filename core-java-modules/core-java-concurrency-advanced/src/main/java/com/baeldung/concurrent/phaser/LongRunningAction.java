@@ -14,8 +14,8 @@ class LongRunningAction implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("This is phase " + ph.getPhase());
-        System.out.println("Thread " + threadName + " before long running action");
+        //System.out.println("This is phase " + ph.getPhase());
+        //System.out.println("Thread " + threadName + " before long running action");
         ph.arriveAndAwaitAdvance();
         try {
             Thread.sleep(20);
