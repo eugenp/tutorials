@@ -7,7 +7,8 @@
 	<groupId>com.baeldung</groupId>
 	<artifactId>parent-modules</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>parent-modules</name>
+
+    <name>parent-modules</name>
 	<packaging>pom</packaging>
 
 	<dependencies>
@@ -745,6 +746,7 @@
 				<module>spring-mvc-kotlin</module>
 				<module>spring-mvc-simple</module>
 				<module>spring-mvc-simple-2</module>
+				<module>spring-mvc-themes</module>
 				<module>spring-mvc-velocity</module>
 				<module>spring-mvc-webflow</module>
 				<module>spring-mvc-xml</module>
@@ -1457,6 +1459,7 @@
 				<module>spring-mvc-kotlin</module>
 				<module>spring-mvc-simple</module>
 				<module>spring-mvc-simple-2</module>
+				<module>spring-mvc-themes</module>
 				<module>spring-mvc-velocity</module>
 				<module>spring-mvc-webflow</module>
 				<module>spring-mvc-xml</module>
