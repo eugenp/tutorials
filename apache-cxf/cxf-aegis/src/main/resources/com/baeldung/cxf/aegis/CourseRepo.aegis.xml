@@ -1,0 +1,5 @@
+<mappings xmlns:ns="http://courserepo.baeldung.com">
+    <mapping name="ns:Baeldung">
+        <property name="greeting" style="attribute"/>
+    </mapping>
+</mappings>

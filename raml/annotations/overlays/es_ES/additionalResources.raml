@@ -1,0 +1,11 @@
+#%RAML 1.0 Overlay
+# Archivo situado en:
+# /overlays/es_ES/additionalResources.raml
+masterRef: ../../api.raml
+usage: |
+  Se trata de un español demasiado que describe los recursos adicionales
+  para la versión 1 del API.
+/foos/bar/{barId}:
+  get:
+    description: |
+      Obtener el foo que se relaciona con el bar tomando barId = {barId}

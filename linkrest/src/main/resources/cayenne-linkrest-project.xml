@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<domain project-version="9">
+	<map name="linkrest"/>
+
+	<node name="datanode"
+		 factory="org.apache.cayenne.configuration.server.XMLPoolingDataSourceFactory"
+		 schema-update-strategy="org.apache.cayenne.access.dbsync.CreateIfNoSchemaStrategy"
+		>
+		<map-ref name="linkrest"/>
+		<data-source>
+			<driver value="org.h2.Driver"/>
+			<url value="jdbc:h2:mem:myDb;MVCC=TRUE"/>
+			<connectionPool min="1" max="1"/>
+			<login userName="sa" password="sa"/>
+		</data-source>
+	</node>
+</domain>
