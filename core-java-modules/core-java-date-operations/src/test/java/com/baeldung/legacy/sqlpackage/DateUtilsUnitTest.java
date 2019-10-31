@@ -1,4 +1,4 @@
-package com.baeldung.sql;
+package com.baeldung.legacy.sqlpackage;
 
 import static org.junit.Assert.assertEquals;
 

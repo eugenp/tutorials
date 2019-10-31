@@ -1,4 +1,4 @@
-package com.baeldung.sql;
+package com.baeldung.legacy.sqlpackage;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,7 +11,7 @@ public class TimestampUtilsUnitTest {
 
     @Test
     public void givenCurrentTimestamp_thenNowIsReturned() {
-        assertEquals(TimestampUtils.getNow().toInstant(), new Date().toInstant());
+        assertEquals(TimestampUtils.getNow().getTime(), new Date().getTime());
     }
 
     @Test(expected = IllegalArgumentException.class)

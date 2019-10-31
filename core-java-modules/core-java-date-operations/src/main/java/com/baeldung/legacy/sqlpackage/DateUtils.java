@@ -1,4 +1,4 @@
-package com.baeldung.sql;
+package com.baeldung.legacy.sqlpackage;
 
 import java.sql.Date;
 import java.text.ParseException;
