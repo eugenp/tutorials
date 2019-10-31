@@ -17,8 +17,8 @@ class LazyUnitTest {
             ClassWithHeavyInitialization()
         }
         //when
-        println(lazyValue)
-        println(lazyValue)
+        lazyValue.equals(null)
+        lazyValue.equals(null)
 
         //then
         assertEquals(numberOfInitializations.get(), 1)
@@ -55,7 +55,7 @@ class LazyUnitTest {
     fun givenLateInitProperty_whenAccessItAfterInit_thenPass() {
         //when
         a = "it"
-        println(a)
+        assertEquals(a, "it")
 
         //then not throw
     }

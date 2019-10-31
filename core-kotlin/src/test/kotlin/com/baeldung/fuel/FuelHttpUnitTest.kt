@@ -113,7 +113,7 @@ internal class FuelHttpUnitTest {
         FuelManager.instance.basePath = "http://httpbin.org"
         FuelManager.instance.baseHeaders = mapOf("OS" to "macOS High Sierra")
 
-        FuelManager.instance.addRequestInterceptor(cUrlLoggingRequestInterceptor())
+        //FuelManager.instance.addRequestInterceptor(cUrlLoggingRequestInterceptor())
         FuelManager.instance.addRequestInterceptor(tokenInterceptor())
 
 
@@ -130,7 +130,7 @@ internal class FuelHttpUnitTest {
     fun givenInterceptors_whenMakingSyncHttpGetRequest_thenResponseNotNullAndErrorNullAndStatusCode200() {
 
         FuelManager.instance.basePath = "http://httpbin.org"
-        FuelManager.instance.addRequestInterceptor(cUrlLoggingRequestInterceptor())
+        //FuelManager.instance.addRequestInterceptor(cUrlLoggingRequestInterceptor())
         FuelManager.instance.addRequestInterceptor(tokenInterceptor())
 
         val (request, response, result) = "/get"

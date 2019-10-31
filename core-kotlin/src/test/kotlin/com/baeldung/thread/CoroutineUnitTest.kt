@@ -9,7 +9,7 @@ class CoroutineUnitTest {
     fun whenCreateCoroutineWithLaunchWithoutContext_thenRun() = runBlocking {
 
         val job = launch {
-            println("${Thread.currentThread()} has run.")
+            //println("${Thread.currentThread()} has run.")
         }
 
     }
@@ -18,7 +18,7 @@ class CoroutineUnitTest {
     fun whenCreateCoroutineWithLaunchWithDefaultContext_thenRun() = runBlocking {
 
         val job = launch(Dispatchers.Default) {
-            println("${Thread.currentThread()} has run.")
+            //println("${Thread.currentThread()} has run.")
         }
     }
 
@@ -26,7 +26,7 @@ class CoroutineUnitTest {
     fun whenCreateCoroutineWithLaunchWithUnconfinedContext_thenRun() = runBlocking {
 
         val job = launch(Dispatchers.Unconfined) {
-            println("${Thread.currentThread()} has run.")
+            //println("${Thread.currentThread()} has run.")
         }
     }
 
@@ -34,7 +34,7 @@ class CoroutineUnitTest {
     fun whenCreateCoroutineWithLaunchWithDedicatedThread_thenRun() = runBlocking {
 
         val job = launch(newSingleThreadContext("dedicatedThread")) {
-            println("${Thread.currentThread()} has run.")
+            //println("${Thread.currentThread()} has run.")
         }
 
     }
@@ -47,6 +47,6 @@ class CoroutineUnitTest {
         }
 
         val result = deferred.await()
-        println(result)
+        assertTrue(result.endsWith(" has run."))
     }
 }

@@ -46,8 +46,8 @@ class WhenBlockUnitTest {
         val fileType = UnixFileType.HYPHEN_MINUS
 
         when (fileType) {
-            UnixFileType.HYPHEN_MINUS -> println("Regular file type")
-            UnixFileType.D -> println("Directory file type")
+            UnixFileType.HYPHEN_MINUS -> "Regular file type"
+            UnixFileType.D -> "Directory file type"
         }
     }
 
@@ -82,9 +82,9 @@ class WhenBlockUnitTest {
         val unixFile = UnixFile.SymbolicLink(UnixFile.RegularFile("Content"))
 
         when {
-            unixFile.getFileType() == UnixFileType.D -> println("It's a directory!")
-            unixFile.getFileType() == UnixFileType.HYPHEN_MINUS -> println("It's a regular file!")
-            unixFile.getFileType() == UnixFileType.L -> println("It's a soft link!")
+            unixFile.getFileType() == UnixFileType.D -> "It's a directory!"
+            unixFile.getFileType() == UnixFileType.HYPHEN_MINUS -> "It's a regular file!"
+            unixFile.getFileType() == UnixFileType.L -> "It's a soft link!"
         }
     }
 
