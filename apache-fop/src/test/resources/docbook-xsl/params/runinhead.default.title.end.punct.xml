@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="runinhead.default.title.end.punct">
+<refmeta>
+<refentrytitle>runinhead.default.title.end.punct</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>runinhead.default.title.end.punct</refname>
+<refpurpose>Default punctuation character on a run-in-head</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="runinhead.default.title.end.punct.frag"><xsl:param name="runinhead.default.title.end.punct">.</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, For a <tag>formalpara</tag>, use the specified
+string as the separator between the title and following text. The period is the default value.</para>
+
+</refsection>
+</refentry>

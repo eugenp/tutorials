@@ -1,0 +1,34 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.string.subst.map.local.post">
+<refmeta>
+<refentrytitle>man.string.subst.map.local.post</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>man.string.subst.map.local.post</refname>
+<refpurpose>Specifies “local” string substitutions</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="man.string.subst.map.local.post.frag">
+<xsl:param name="man.string.subst.map.local.post"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Use the <parameter>man.string.subst.map.local.post</parameter>
+parameter to specify any “local” string substitutions to perform over
+the entire roff source for each man page <emphasis>after</emphasis>
+performing the string substitutions specified by the <parameter>man.string.subst.map</parameter> parameter.</para>
+
+<para>For details about the format of this parameter, see the
+documentation for the <parameter>man.string.subst.map</parameter>
+parameter.</para>
+
+</refsection>
+</refentry>

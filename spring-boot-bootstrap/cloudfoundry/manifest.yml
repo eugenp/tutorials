@@ -1,0 +1,10 @@
+---
+applications:
+- name: spring-boot-bootstrap
+  memory: 768M
+  random-route: true
+  path: ../target/spring-boot-bootstrap-cf.jar
+  env:
+    SPRING_PROFILES_ACTIVE: cloud,mysql
+  services:
+  - spring-bootstrap-db
