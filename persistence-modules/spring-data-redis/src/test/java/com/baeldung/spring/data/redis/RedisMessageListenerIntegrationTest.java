@@ -1,8 +1,10 @@
 package com.baeldung.spring.data.redis;
 
-import com.baeldung.spring.data.redis.config.RedisConfig;
-import com.baeldung.spring.data.redis.queue.RedisMessagePublisher;
-import com.baeldung.spring.data.redis.queue.RedisMessageSubscriber;
+import static org.junit.Assert.assertTrue;
+
+import java.io.IOException;
+import java.util.UUID;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -12,12 +14,12 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.baeldung.spring.data.redis.config.RedisConfig;
+import com.baeldung.spring.data.redis.queue.RedisMessagePublisher;
+import com.baeldung.spring.data.redis.queue.RedisMessageSubscriber;
+
 import redis.embedded.RedisServerBuilder;
-
-import java.io.IOException;
-import java.util.UUID;
-
-import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = RedisConfig.class)
@@ -44,6 +46,7 @@ public class RedisMessageListenerIntegrationTest {
     public void testOnMessage() throws Exception {
         String message = "Message " + UUID.randomUUID();
         redisMessagePublisher.publish(message);
-        assertTrue(RedisMessageSubscriber.messages.take().contains(message));
+        Thread.sleep(1000);
+        assertTrue(RedisMessageSubscriber.messageList.get(0).contains(message));
     }
 }
