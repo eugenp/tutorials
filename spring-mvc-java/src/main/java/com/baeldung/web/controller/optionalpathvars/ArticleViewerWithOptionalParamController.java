@@ -14,7 +14,7 @@ import com.baeldung.model.Article;;
 @RequestMapping("/optionalParam")
 public class ArticleViewerWithOptionalParamController {
 
-    @RequestMapping(value = {"/articles", "/articles/{id}"})
+    @RequestMapping(value = {"/article", "/article/{id}"})
     public Article getArticle(@PathVariable(name = "id") Optional<Integer> optionalArticleId) {
 
         if(optionalArticleId.isPresent()) {

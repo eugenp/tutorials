@@ -37,7 +37,7 @@ public class ArticleViewerControllerWithOptionalParamIntegrationTest {
         int articleId = 154;
         
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/optionalParam/articles/{id}", articleId))
+            .perform(MockMvcRequestBuilders.get("/optionalParam/article/{id}", articleId))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(articleId));
                 
@@ -47,7 +47,7 @@ public class ArticleViewerControllerWithOptionalParamIntegrationTest {
     public void givenOPtionalParam_whenIdPathVariableIsNotPassed_thenResponseOK() throws Exception {
             
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/optionalParam/articles"))
+            .perform(MockMvcRequestBuilders.get("/optionalParam/article"))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(Article.DEFAULT_ARTICLE.getId()));
                 

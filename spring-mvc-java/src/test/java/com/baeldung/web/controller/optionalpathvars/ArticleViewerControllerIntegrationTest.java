@@ -36,7 +36,7 @@ public class ArticleViewerControllerIntegrationTest {
         int articleId = 5;
         
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/articles/{id}", articleId))
+            .perform(MockMvcRequestBuilders.get("/article/{id}", articleId))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(articleId));
                
@@ -46,7 +46,7 @@ public class ArticleViewerControllerIntegrationTest {
     public void whenIdPathVariableIsNotPassed_thenResponse500() throws Exception {
                 
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/articles"))
+            .perform(MockMvcRequestBuilders.get("/article"))
             .andExpect(MockMvcResultMatchers.status().isInternalServerError());
                
     }

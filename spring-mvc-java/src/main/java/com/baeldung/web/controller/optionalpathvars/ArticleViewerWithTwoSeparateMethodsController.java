@@ -12,19 +12,13 @@ import com.baeldung.model.Article;
 @RequestMapping(value = "/seperateMethods")
 public class ArticleViewerWithTwoSeparateMethodsController {
 
-    @RequestMapping(value = "/articles/{id}")
+    @RequestMapping(value = "/article/{id}")
     public Article getArticle(@PathVariable(name = "id") Integer articleId) {
         
         return new Article(articleId);        
     }
     
-    @RequestMapping(value = "/articless/{id}")
-    public Article getArticle3() {
-        
-        return new Article(5);        
-    }
-    
-    @RequestMapping(value = "/articles")
+    @RequestMapping(value = "/article")
     public Article getDefaultArticle() {
 
         return DEFAULT_ARTICLE;

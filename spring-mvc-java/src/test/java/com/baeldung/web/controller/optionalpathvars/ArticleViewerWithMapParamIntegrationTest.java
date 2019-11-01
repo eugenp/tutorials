@@ -37,7 +37,7 @@ public class ArticleViewerWithMapParamIntegrationTest {
         int articleId = 5;
         
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/mapParam/articles/{id}", articleId))
+            .perform(MockMvcRequestBuilders.get("/mapParam/article/{id}", articleId))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(articleId));
                
@@ -47,7 +47,7 @@ public class ArticleViewerWithMapParamIntegrationTest {
     public void givenPathVarsMapParam_whenIdPathVariableIsNotPassed_thenResponseOK() throws Exception {
                 
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/mapParam/articles"))
+            .perform(MockMvcRequestBuilders.get("/mapParam/article"))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(Article.DEFAULT_ARTICLE.getId()));
                

@@ -37,7 +37,7 @@ public class ArticleViewerWithTwoSeparateMethodsIntegrationTest {
         int articleId = 5;
         
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/seperateMethods/articles/{id}", articleId))
+            .perform(MockMvcRequestBuilders.get("/seperateMethods/article/{id}", articleId))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(articleId));
                
@@ -47,19 +47,10 @@ public class ArticleViewerWithTwoSeparateMethodsIntegrationTest {
     public void givenTwoSeparateMethods_whenIdPathVariableIsNotPassed_thenResponseOK() throws Exception {
                 
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/seperateMethods/articles"))
+            .perform(MockMvcRequestBuilders.get("/seperateMethods/article"))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(Article.DEFAULT_ARTICLE.getId()));
                
     }
-    
-    @Test
-    public void givenTwoSeparateMethodswhenIdPathVariableIsNotPassed_thenResponseOK() throws Exception {
-                
-        this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/seperateMethods/articless/99"))
-            .andExpect(MockMvcResultMatchers.status().isOk());               
-    }
-
-    
+        
 }

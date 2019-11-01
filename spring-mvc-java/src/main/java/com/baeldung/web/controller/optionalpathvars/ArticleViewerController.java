@@ -11,7 +11,7 @@ import com.baeldung.model.Article;
 @RestController
 public class ArticleViewerController {
 
-    @RequestMapping(value = {"/articles", "/articles/{id}"})
+    @RequestMapping(value = {"/article", "/article/{id}"})
     public Article getArticle(@PathVariable(name = "id") Integer articleId) {
 
         if (articleId != null) {

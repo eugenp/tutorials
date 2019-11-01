@@ -37,7 +37,7 @@ public class ArticleViewerControllerWithRequiredAttributeIntegrationTest {
         int articleId = 154;
         
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/requiredAttribute/articles/{id}", articleId))
+            .perform(MockMvcRequestBuilders.get("/requiredAttribute/article/{id}", articleId))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(articleId));
                 
@@ -47,7 +47,7 @@ public class ArticleViewerControllerWithRequiredAttributeIntegrationTest {
     public void givenRequiredAttributeIsFalse_whenIdPathVariableIsNotPassed_thenResponseOK() throws Exception {
             
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/requiredAttribute/articles"))
+            .perform(MockMvcRequestBuilders.get("/requiredAttribute/article"))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(Article.DEFAULT_ARTICLE.getId()));
                 

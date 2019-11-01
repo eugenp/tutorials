@@ -12,7 +12,7 @@ import com.baeldung.model.Article;;
 @RequestMapping(value = "/requiredAttribute")
 public class ArticleViewerWithRequiredAttributeController {
 
-    @RequestMapping(value = {"/articles", "/articles/{id}"})
+    @RequestMapping(value = {"/article", "/article/{id}"})
     public Article getArticle(@PathVariable(name = "id", required = false) Integer articleId) {
 
         if (articleId != null) {

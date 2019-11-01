@@ -14,7 +14,7 @@ import com.baeldung.model.Article;
 @RequestMapping(value = "/mapParam")
 public class ArticleViewerWithMapParamController {
 
-    @RequestMapping(value = {"/articles", "/articles/{id}"})
+    @RequestMapping(value = {"/article", "/article/{id}"})
     public Article getArticle(@PathVariable Map<String, String> pathVarsMap) {
 
         String articleId = pathVarsMap.get("id");
