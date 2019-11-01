@@ -1,0 +1,13 @@
+// JDL definition for application 'quotes' generated with command 'jhipster export-jdl'
+
+entity Quote {
+  symbol String required unique,
+  price BigDecimal required,
+  lastTrade ZonedDateTime required
+}
+dto Quote with mapstruct
+paginate Quote with pagination
+service Quote with serviceImpl
+microservice Quote with quotes
+filter Quote
+clientRootFolder Quote with quotes
