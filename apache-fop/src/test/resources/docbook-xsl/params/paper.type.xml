@@ -1,0 +1,73 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="paper.type">
+<refmeta>
+<refentrytitle>paper.type</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="list-type">open</refmiscinfo>
+<refmiscinfo class="other" otherclass="list-type">open</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">USletter<alt>8.5x11in</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">USlandscape<alt>11x8.5in</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">USlegal<alt>8.5inx14in</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">USlegallandscape<alt>14inx8.5in</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">4A0<alt>2378x1682mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">2A0<alt>1682x1189mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">A0<alt>1189x841mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">A1<alt>841x594mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">A2<alt>594x420mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">A3<alt>420x297mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">A4<alt>297x210mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">A5<alt>210x148mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">A6<alt>148x105mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">A7<alt>105x74mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">A8<alt>74x52mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">A9<alt>52x37mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">A10<alt>37x26mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">B0<alt>1414x1000mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">B1<alt>1000x707mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">B2<alt>707x500mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">B3<alt>500x353mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">B4<alt>353x250mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">B5<alt>250x176mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">B6<alt>176x125mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">B7<alt>125x88mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">B8<alt>88x62mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">B9<alt>62x44mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">B10<alt>44x31mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">C0<alt>1297x917mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">C1<alt>917x648mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">C2<alt>648x458mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">C3<alt>458x324mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">C4<alt>324x229mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">C5<alt>229x162mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">C6<alt>162x114mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">C7<alt>114x81mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">C8<alt>81x57mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">C9<alt>57x40mm</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">C10<alt>40x28mm</alt></refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>paper.type</refname>
+<refpurpose>Select the paper type</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="paper.type.frag">
+<xsl:param name="paper.type">USletter</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The paper type is a convenient way to specify the paper size.
+The list of known paper sizes includes USletter and most of the A,
+B, and C sizes. See <parameter>page.width.portrait</parameter>, for example.
+
+
+</para>
+
+</refsection>
+</refentry>

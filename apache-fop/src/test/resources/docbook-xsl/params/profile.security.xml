@@ -1,0 +1,38 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="profile.security">
+<refmeta>
+<refentrytitle>profile.security</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>profile.security</refname>
+<refpurpose>Target profile for <tag class="attribute">security</tag>
+attribute</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="profile.security.frag">
+<xsl:param name="profile.security"></xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The value of this parameter specifies profiles which should be
+included in the output. You can specify multiple profiles by
+separating them by semicolon. You can change separator character by
+<parameter>profile.separator</parameter>
+parameter.</para>
+
+<para>This parameter has effect only when you are using profiling
+stylesheets (<filename>profile-docbook.xsl</filename>,
+<filename>profile-chunk.xsl</filename>, …) instead of normal
+ones (<filename>docbook.xsl</filename>,
+<filename>chunk.xsl</filename>, …).</para>
+
+</refsection>
+</refentry>
