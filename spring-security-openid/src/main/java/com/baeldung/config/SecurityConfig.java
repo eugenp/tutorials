@@ -1,6 +1,5 @@
-package org.baeldung.config;
+package com.baeldung.config;
 
-import org.baeldung.security.OpenIdConnectFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +11,8 @@ import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
+
+import com.baeldung.security.OpenIdConnectFilter;
 
 @Configuration
 @EnableWebSecurity
