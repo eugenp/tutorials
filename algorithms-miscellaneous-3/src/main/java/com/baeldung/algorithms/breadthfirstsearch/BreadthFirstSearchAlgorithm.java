@@ -7,8 +7,6 @@ import java.util.*;
 
 public class BreadthFirstSearchAlgorithm {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(BreadthFirstSearchAlgorithm.class);
-
     public static <T> Optional<Tree<T>> search(T value, Tree<T> root) {
         Queue<Tree<T>> queue = new ArrayDeque<>();
         queue.add(root);
@@ -16,7 +14,6 @@ public class BreadthFirstSearchAlgorithm {
         Tree<T> currentNode;
         while (!queue.isEmpty()) {
             currentNode = queue.remove();
-            LOGGER.info("Visited node with value: {}", currentNode.getValue());
 
             if (currentNode.getValue().equals(value)) {
                 return Optional.of(currentNode);

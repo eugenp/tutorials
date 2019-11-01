@@ -15,8 +15,6 @@ import static org.junit.Assert.*;
 
 public class OptionalUnitTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(OptionalUnitTest.class);
-
     // creating Optional
     @Test
     public void whenCreatesEmptyOptional_thenCorrect() {
@@ -72,7 +70,9 @@ public class OptionalUnitTest {
     @Test
     public void givenOptional_whenIfPresentWorks_thenCorrect() {
         Optional<String> opt = Optional.of("baeldung");
-        opt.ifPresent(name -> LOG.debug("{}", name.length()));
+        boolean[] result = new boolean[] { false };
+        opt.ifPresent(name -> result[0] = true);
+        assertTrue(result[0]);
     }
 
     // returning Value With get()
@@ -222,12 +222,12 @@ public class OptionalUnitTest {
     @Test
     public void whenOrElseGetAndOrElseOverlap_thenCorrect() {
         String text = null;
-        LOG.debug("Using orElseGet:");
+        //Using orElseGet
         String defaultText = Optional.ofNullable(text)
             .orElseGet(this::getMyDefault);
         assertEquals("Default Value", defaultText);
 
-        LOG.debug("Using orElse:");
+        //Using orElse
         defaultText = Optional.ofNullable(text)
             .orElse(getMyDefault());
         assertEquals("Default Value", defaultText);
@@ -236,12 +236,12 @@ public class OptionalUnitTest {
     @Test
     public void whenOrElseGetAndOrElseDiffer_thenCorrect() {
         String text = "Text present";
-        LOG.debug("Using orElseGet:");
+        //Using orElseGet
         String defaultText = Optional.ofNullable(text)
             .orElseGet(this::getMyDefault);
         assertEquals("Text present", defaultText);
 
-        LOG.debug("Using orElse:");
+        //Using orElse
         defaultText = Optional.ofNullable(text)
             .orElse(getMyDefault());
         assertEquals("Text present", defaultText);
@@ -256,7 +256,7 @@ public class OptionalUnitTest {
     }
 
     public String getMyDefault() {
-        LOG.debug("Getting default value...");
+        //LOG.debug("Getting default value...");
         return "Default Value";
     }
     

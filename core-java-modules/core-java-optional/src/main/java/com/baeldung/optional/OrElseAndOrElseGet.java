@@ -12,13 +12,9 @@ public class OrElseAndOrElseGet {
 
     public static List<String> names = Arrays.asList("John", "Jones", "Kelly", "Cristina", "Raven");
 
-    private static final Logger LOG = LoggerFactory.getLogger(OrElseAndOrElseGet.class);
-
     public String getRandomName() {
-        LOG.info("getRandomName() method - start");
         Random random = new Random();
         int index = random.nextInt(5);
-        LOG.info("getRandomName() method - end");
         return names.get(index);
     }
 
