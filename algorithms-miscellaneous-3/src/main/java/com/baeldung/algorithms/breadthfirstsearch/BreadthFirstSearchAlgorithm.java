@@ -34,7 +34,6 @@ public class BreadthFirstSearchAlgorithm {
 
         while (!queue.isEmpty()) {
             currentNode = queue.remove();
-            LOGGER.info("Visited node with value: {}", currentNode.getValue());
 
             if (currentNode.getValue().equals(value)) {
                 return Optional.of(currentNode);
