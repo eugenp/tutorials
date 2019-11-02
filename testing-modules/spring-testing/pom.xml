@@ -85,6 +85,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-commons</artifactId>
+            <version>${junit.commons.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>${awaitility.version}</version>
@@ -112,7 +117,8 @@
         <!-- testing -->
         <hamcrest.version>2.0.0.0</hamcrest.version>
         <awaitility.version>3.1.6</awaitility.version>
-        <junit.jupiter.version>5.4.0</junit.jupiter.version>
+        <junit.jupiter.version>5.5.0</junit.jupiter.version>
+        <junit.commons.version>1.5.2</junit.commons.version>
         <spring.version>5.1.4.RELEASE</spring.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <javax.persistence.version>2.1.1</javax.persistence.version>
