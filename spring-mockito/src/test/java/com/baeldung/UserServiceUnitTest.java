@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ActiveProfiles("test")
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = MocksApplication.class)
-public class UserServiceIntegrationUnitTest {
+public class UserServiceUnitTest {
 
     @Autowired
     private UserService userService;
