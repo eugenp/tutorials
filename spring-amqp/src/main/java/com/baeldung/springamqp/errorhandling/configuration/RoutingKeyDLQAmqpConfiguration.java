@@ -17,8 +17,8 @@ import static com.baeldung.springamqp.errorhandling.configuration.SimpleDLQAmqpC
 @Configuration
 @ConditionalOnProperty(
   value = "amqp.configuration.current",
-  havingValue = "dlx-custom")
-public class DLXCustomAmqpConfiguration {
+  havingValue = "routing-dlq")
+public class RoutingKeyDLQAmqpConfiguration {
     public static final String DLX_EXCHANGE_MESSAGES = QUEUE_MESSAGES + ".dlx";
 
     @Bean
