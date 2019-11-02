@@ -15,10 +15,6 @@ public class TransctionPersistenceContextUserService {
     @PersistenceContext
     private EntityManager entityManager;
     
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
-
     @Transactional
     public User insertWithTransaction(User user) {
         entityManager.persist(user);
