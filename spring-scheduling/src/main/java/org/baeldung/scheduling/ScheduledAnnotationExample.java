@@ -31,9 +31,10 @@ public class ScheduledAnnotationExample {
         System.out.println("Fixed rate task - " + System.currentTimeMillis() / 1000);
     }
 
-    @Scheduled(fixedDelay = 1000, initialDelay = 100)
+    @Scheduled(fixedDelay = 1000, initialDelay = 1000)
     public void scheduleFixedRateWithInitialDelayTask() {
-        System.out.println("Fixed delay task with one second initial delay - " + System.currentTimeMillis() / 1000);
+        long now = System.currentTimeMillis() / 1000;
+        System.out.println("Fixed rate task with one second initial delay - " + now);
     }
 
     /**
@@ -41,7 +42,8 @@ public class ScheduledAnnotationExample {
      */
     @Scheduled(cron = "0 15 10 15 * ?")
     public void scheduleTaskUsingCronExpression() {
-        System.out.println("schedule tasks using cron expressions - " + System.currentTimeMillis() / 1000);
+        long now = System.currentTimeMillis() / 1000;
+        System.out.println("schedule tasks using cron jobs - " + now);
     }
 
     @Scheduled(cron = "${cron.expression}")
