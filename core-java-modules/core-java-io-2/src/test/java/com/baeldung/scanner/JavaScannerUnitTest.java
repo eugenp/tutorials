@@ -29,7 +29,6 @@ public class JavaScannerUnitTest {
     }
 
     @Test(expected = NoSuchElementException.class)
-
     public void givenNoNewLine_whenReadingNextLine_thenThrowNoSuchElementException() {
         try (Scanner scanner = new Scanner("")) {
             String result = scanner.nextLine();
