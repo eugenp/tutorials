@@ -75,17 +75,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>com.beust</groupId>
-            <artifactId>jcommander</artifactId>
-            <version>${jcommander.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-        </dependency>
-
         <!-- Dependencies for response decoder with okhttp -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -169,7 +158,5 @@
         <jasperreports.version>6.6.0</jasperreports.version>
         <spring.version>5.1.9.RELEASE</spring.version>
         <hsqldb.version>2.5.0</hsqldb.version>
-        <jcommander.version>1.78</jcommander.version>
-        <lombok.version>1.18.6</lombok.version>
     </properties>
 </project>
