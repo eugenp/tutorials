@@ -27,7 +27,6 @@
         </dependency>
     </dependencies>
 
-
     <profiles>
         <!-- mvn clean package cargo:run -Pwildfly-standalone -->
         <profile>

@@ -1,4 +1,8 @@
-## Relevant articles:
+## Algorithms - Miscellaneous
+
+This module contains articles about algorithms. Some classes of algorithms, e.g., [sorting](https://github.com/eugenp/tutorials/blob/algorithms-sorting) and [genetic algorithms](https://github.com/eugenp/tutorials/blob/algorithms-genetic), have their own dedicated modules.
+
+### Relevant articles:
 
 - [Multi-Swarm Optimization Algorithm in Java](https://www.baeldung.com/java-multi-swarm-algorithm)
 - [String Search Algorithms for Large Texts](https://www.baeldung.com/java-full-text-search-algorithms)
@@ -7,3 +11,4 @@
 - [Find Substrings That Are Palindromes in Java](https://www.baeldung.com/java-palindrome-substrings)
 - [Find the Longest Substring without Repeating Characters](https://www.baeldung.com/java-longest-substring-without-repeated-characters)
 - [Permutations of an Array in Java](https://www.baeldung.com/java-array-permutations)
+- More articles: [[<-- prev]](/algorithms-miscellaneous-3) [[next -->]](/algorithms-miscellaneous-5)

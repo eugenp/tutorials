@@ -13,9 +13,6 @@
         <relativePath>../parent-java</relativePath>
     </parent>
 
-    <dependencies>
-    </dependencies>
-
     <build>
         <finalName>guava-collections-map</finalName>
         <resources>
@@ -25,8 +22,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-    </properties>
 
 </project>

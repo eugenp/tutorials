@@ -13,3 +13,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Mocking a RestTemplate in Spring](https://www.baeldung.com/spring-mock-rest-template)
 - [RestTemplate Post Request with JSON](https://www.baeldung.com/spring-resttemplate-post-json)
 - [Download a Large File Through a Spring RestTemplate](https://www.baeldung.com/spring-resttemplate-download-large-file)
+- [Copy of RestTemplate Post Request with JSON](https://www.baeldung.com/spring-resttemplate-post-json-test)
