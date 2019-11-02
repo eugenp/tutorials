@@ -40,7 +40,7 @@ public class PersistenceContextIntegrationTest {
     }
 
     @Test(expected = HttpServerErrorException.class)
-    public void testThatWhenUserSaveWithOutTransactionInPersistenceContextTypeTransactionThenShouldFailOnPersist() {
+    public void testThatWhenUserSaveWithOutTransactionInPersistenceContextTypeTransactionThenShouldWhtowTransactionRequiredExceptionOnPersist() {
         User user = new User(122L, "Devender", "admin");
         restTemplate.postForEntity(buildRequestUrl("v4/user/"), user, User.class);
     }
@@ -53,6 +53,21 @@ public class PersistenceContextIntegrationTest {
         User userFromTransctionPersistenceContext = restTemplate.getForObject(buildRequestUrl("v1/user/123"), User.class);
         assertThat(userFromExtendedPersistenceContext, Is.is(IsNull.notNullValue()));
         assertThat(userFromTransctionPersistenceContext, Is.is(IsNull.nullValue()));
+    }
+
+    @Test(expected = HttpServerErrorException.class)
+    public void testThatWhenAddUserWithSameIdentifierInPersistenceContextThenShouldThrowException() {
+        User user = new User(126L, "Devender", "admin");
+        restTemplate.postForEntity(buildRequestUrl("v2/user/"), user, User.class);
+        restTemplate.postForEntity(buildRequestUrl("v2/user/"), user, User.class);
+    }
+
+    @Test
+    public void testThatWhenUserSavedWithExtendedPersistenceContextWithTransactionThenUserShouldSaveEntityIntoDB() {
+        User user = new User(127L, "Devender", "admin");
+        restTemplate.postForEntity(buildRequestUrl("v3/user/"), user, User.class);
+        User userFromDB = restTemplate.getForObject(buildRequestUrl("v1/user/127"), User.class);
+        assertThat(userFromDB, Is.is(IsNull.notNullValue()));
     }
 
     @Test
