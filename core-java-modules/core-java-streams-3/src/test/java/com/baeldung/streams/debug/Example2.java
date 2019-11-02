@@ -26,7 +26,7 @@ public class Example2 {
 
         long numberOf65PlusCustomers = customers.stream()
             .flatMap(c -> c.map(Stream::of)
-                .orElseGet(Stream::empty))
+              .orElseGet(Stream::empty))
             .mapToInt(Customer::getAge)
             .filter(c -> c > 65)
             .count();
