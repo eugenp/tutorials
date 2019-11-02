@@ -381,7 +381,7 @@
                 <module>cloud-foundry-uaa/cf-uaa-oauth2-client</module>
                 <module>cloud-foundry-uaa/cf-uaa-oauth2-resource-server</module>
                 <module>code-generation</module>
-				<module>core-groovy</module>
+                <module>core-groovy</module>
                 <module>core-groovy-2</module>
                 <module>core-groovy-collections</module>
                 <!-- <module>core-java-modules/core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
@@ -391,10 +391,19 @@
                 <module>core-java-modules/core-java-8-2</module>
                 <module>core-java-modules/core-java-annotations</module>
                 <module>core-java-modules/core-java-streams</module>
+                <module>core-java-modules/core-java-streams-2</module>
+                <module>core-java-modules/core-java-streams-3</module>
+                <!-- <module>core-java-modules/core-java-9-streams</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>core-java-modules/core-java-function</module>
                 <module>core-java-modules/core-java-lang-math</module>
-                <!--<module>core-java-modules/core-java-datetime-conversion</module>-->  <!-- We haven't upgraded to java 9.-->
-                <!--<module>core-java-modules/core-java-datetime-string</module>--> <!-- We haven't upgraded to java 9.-->
+                <!-- We haven't upgraded to java 9.-->
+                <!--
+                <module>core-java-modules/core-java-datetime-computations</module>
+                <module>core-java-modules/core-java-datetime-conversion</module>
+                <module>core-java-modules/core-java-datetime-java8</module>
+                <module>core-java-modules/core-java-datetime-string</module>
+                <module>core-java-modules/core-java-time-measurements</module>
+                -->
                 <module>core-java-modules/core-java-text</module>
                 <module>core-java-modules/core-java-lambdas</module>
                 <!--<module>core-java-modules/core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
@@ -431,6 +440,10 @@
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-string-conversions</module>
                 <module>core-java-modules/core-java-string-conversions-2</module>
+                <module>core-java-modules/core-java-string-operations</module>
+                <module>core-java-modules/core-java-string-operations-2</module>
+                <module>core-java-modules/core-java-string-algorithms</module>
+                <module>core-java-modules/core-java-string-algorithms-2</module>
                 <module>core-java-modules/core-java-string-apis</module>
                 <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-jvm</module>
@@ -482,6 +495,7 @@
                 <module>jackson-2</module>
                 <module>jackson-simple</module>
                 <module>java-collections-conversions</module>
+                <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
                 <module>java-jdi</module>
@@ -493,11 +507,8 @@
                 <module>java-numbers-2</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
-                <module>java-streams</module>
-                <!-- <module>java-streams-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>java-strings</module>
                 <module>java-strings-2</module>
-                <module>java-strings-3</module>
                 <module>java-strings-ops</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
@@ -609,7 +620,7 @@
 
                 <module>spring-boot-nashorn</module>
                 <module>java-blockchain</module>
-<module>wildfly</module>
+                <module>wildfly</module>
             </modules>
 
         </profile>
@@ -1145,7 +1156,7 @@
                 <module>cloud-foundry-uaa/cf-uaa-oauth2-client</module>
                 <module>cloud-foundry-uaa/cf-uaa-oauth2-resource-server</module>
                 <module>code-generation</module>
-				<module>core-groovy</module>
+                <module>core-groovy</module>
                 <module>core-groovy-2</module>
                 <module>core-groovy-collections</module>
                 <!-- <module>core-java-modules/core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
@@ -1154,10 +1165,19 @@
                 <module>core-java-modules/core-java-8-2</module>
                 <module>core-java-modules/core-java-annotations</module>
                 <module>core-java-modules/core-java-streams</module>
+                <module>core-java-modules/core-java-streams-2</module>
+                <module>core-java-modules/core-java-streams-3</module>
+                <!-- <module>core-java-modules/core-java-9-streams</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>core-java-modules/core-java-function</module>
                 <module>core-java-modules/core-java-lang-math</module>
-                <!--<module>core-java-modules/core-java-datetime-conversion</module>-->  <!-- We haven't upgraded to java 9.-->
-                <!--<module>core-java-modules/core-java-datetime-string</module>--> <!-- We haven't upgraded to java 9.-->
+                <!-- We haven't upgraded to java 9.-->
+                <!--
+                <module>core-java-modules/core-java-datetime-computations</module>
+                <module>core-java-modules/core-java-datetime-conversion</module>
+                <module>core-java-modules/core-java-datetime-java8</module>
+                <module>core-java-modules/core-java-datetime-string</module>
+                <module>core-java-modules/core-java-time-measurements</module>
+                -->
                 <module>core-java-modules/core-java-text</module>
                 <!--<module>core-java-modules/core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
@@ -1191,9 +1211,13 @@
                 <module>core-java-modules/core-java-perf</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-string-conversions</module>
-				<module>core-java-modules/core-java-string-conversions-2</module>
-				<module>core-java-modules/core-java-string-apis</module>
-				<module>core-scala</module>
+                <module>core-java-modules/core-java-string-conversions-2</module>
+                <module>core-java-modules/core-java-string-operations</module>
+                <module>core-java-modules/core-java-string-operations-2</module>
+                <module>core-java-modules/core-java-string-algorithms</module>
+                <module>core-java-modules/core-java-string-algorithms-2</module>
+                <module>core-java-modules/core-java-string-apis</module>
+                <module>core-scala</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
 
@@ -1241,6 +1265,7 @@
                 <module>jackson-2</module>
                 <module>jackson-simple</module>
                 <module>java-collections-conversions</module>
+                <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
                 <module>java-jdi</module>
@@ -1252,11 +1277,8 @@
                 <module>java-numbers-2</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
-                <module>java-streams</module>
-                <!-- <module>java-streams-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>java-strings</module>
                 <module>java-strings-2</module>
-                <module>java-strings-3</module>
                 <module>java-strings-ops</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
