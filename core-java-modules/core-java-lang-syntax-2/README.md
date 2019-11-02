@@ -11,4 +11,5 @@ This module contains articles about Java syntax
 - [Java Double Brace Initialization](https://www.baeldung.com/java-double-brace-initialization)
 - [The Java Native Keyword and Methods](https://www.baeldung.com/java-native)
 - [Variable Scope in Java](https://www.baeldung.com/java-variable-scope)
+- [Introduction to Basic Syntax in Java](https://www.baeldung.com/java-syntax)
 - [[<-- Prev]](/core-java-modules/core-java-lang-syntax)
