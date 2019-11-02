@@ -603,8 +603,10 @@
                 <!-- <module>rmi</module> --> <!-- Not a maven project -->
                 <module>rule-engines</module>
                 <module>rsocket</module>
-                <module>rxjava</module>
-                <module>rxjava-2</module>
+                <module>rxjava-core</module>
+                <module>rxjava-observables</module>
+                <module>rxjava-operators</module>
+                <module>rxjava-libraries</module>
                 <module>software-security/sql-injection-samples</module>
 
                 <module>tensorflow-java</module>
@@ -1369,8 +1371,10 @@
                 <!-- <module>rmi</module> --> <!-- Not a maven project -->
                 <module>rule-engines</module>
                 <module>rsocket</module>
-                <module>rxjava</module>
-                <module>rxjava-2</module>
+                <module>rxjava-core</module>
+                <module>rxjava-observables</module>
+                <module>rxjava-operators</module>
+                <module>rxjava-libraries</module>
                 <module>oauth2-framework-impl</module>
                 <module>spf4j</module>
                 <module>spring-boot-performance</module>
