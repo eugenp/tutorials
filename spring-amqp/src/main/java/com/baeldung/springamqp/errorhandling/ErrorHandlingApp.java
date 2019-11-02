@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 public class ErrorHandlingApp {
+
     @Autowired
     MessageProducer messageProducer;
 
