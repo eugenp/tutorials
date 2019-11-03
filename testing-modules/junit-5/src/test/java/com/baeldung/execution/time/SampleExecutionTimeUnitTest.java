@@ -14,7 +14,7 @@ class SampleExecutionTimeUnitTest {
     }
 
 //    @Test
-//    void someIntegrationTest() throws InterruptedException {
+//    void someIntegrationTest() throws Exception {
 //
 //        //simulate an operation that may take 5 seconds
 //        Thread.sleep(5000);
@@ -23,7 +23,7 @@ class SampleExecutionTimeUnitTest {
 //    }
 //
 //    @Test
-//    void someEndToEndTest() throws InterruptedException {
+//    void someEndToEndTest() throws Exception {
 //
 //        //simulate an operation that may take 10 seconds
 //        Thread.sleep(10000);
