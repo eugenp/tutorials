@@ -10,7 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "course_registration")
+@Table(name = "course_registration", uniqueConstraints = {
+        @UniqueConstraint(name = "uk_course_student", columnNames = {"student_id", "course_id"})
 public class CourseRegistration {
 
     @Id
