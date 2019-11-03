@@ -6,12 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.filter.ShallowEtagHeaderFilter;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @EnableAutoConfiguration
 @Import(PersistenceConfig.class)
-public class Application extends WebMvcConfigurerAdapter {
+public class Application implements WebMvcConfigurer {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

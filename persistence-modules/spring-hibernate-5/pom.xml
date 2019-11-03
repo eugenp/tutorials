@@ -52,6 +52,11 @@
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
             <groupId>javax.transaction</groupId>
             <artifactId>jta</artifactId>
             <version>${jta.version}</version>
@@ -143,11 +148,9 @@
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <hsqldb.version>2.3.4</hsqldb.version>
-        <h2.version>1.4.195</h2.version>
 
         <!-- util -->
         <guava.version>21.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
 
     </properties>
 

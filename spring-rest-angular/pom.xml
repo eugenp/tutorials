@@ -8,10 +8,10 @@
     <packaging>war</packaging>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-1</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -74,7 +74,6 @@
 
     <properties>
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <start-class>org.baeldung.web.main.Application</start-class>
     </properties>
 

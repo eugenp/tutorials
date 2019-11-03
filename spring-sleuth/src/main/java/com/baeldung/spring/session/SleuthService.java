@@ -28,7 +28,7 @@ public class SleuthService {
     public void doSomeWorkNewSpan() throws InterruptedException {
         logger.info("I'm in the original span");
 
-        Span newSpan = tracer.newTrace().name("newSpan").start();
+        Span newSpan = tracer.nextSpan().name("newSpan").start();
         try (SpanInScope ws = tracer.withSpanInScope(newSpan.start())) {
             Thread.sleep(1000L);
             logger.info("I'm in the new span doing some cool work that needs its own span");

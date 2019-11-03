@@ -20,7 +20,6 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringBootAnnotatedApp.class)
-@TestPropertySource(properties = { "security.basic.enabled=false" })
 public class SpringBootWithServletComponentIntegrationTest {
 
     @Autowired

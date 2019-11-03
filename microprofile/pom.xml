@@ -5,6 +5,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>microprofile</artifactId>
     <version>1.0-SNAPSHOT</version>
+	<name>microprofile</name>
     <packaging>war</packaging>
 
     <parent>

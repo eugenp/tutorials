@@ -20,9 +20,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.baeldung.spring.data.redis.config.RedisConfig;
 import com.baeldung.spring.data.redis.model.Student;
 
+import redis.embedded.RedisServerBuilder;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = RedisConfig.class)
-@DirtiesContext(classMode = ClassMode.AFTER_CLASS)
+@DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
 public class StudentRepositoryIntegrationTest {
 
     @Autowired
@@ -32,7 +34,7 @@ public class StudentRepositoryIntegrationTest {
     
     @BeforeClass
     public static void startRedisServer() throws IOException {
-        redisServer = new redis.embedded.RedisServer(6379);
+        redisServer = new RedisServerBuilder().port(6379).setting("maxmemory 128M").build();
         redisServer.start();
     }
     

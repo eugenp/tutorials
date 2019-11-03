@@ -7,7 +7,6 @@
         <groupId>com.baeldung.jhipster</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
     <groupId>com.car.app</groupId>
     <artifactId>car-app</artifactId>
     <packaging>war</packaging>
@@ -898,4 +897,5 @@
             </dependencies>
         </profile>
     </profiles>
+
 </project>

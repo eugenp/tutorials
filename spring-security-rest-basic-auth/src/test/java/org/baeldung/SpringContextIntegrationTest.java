@@ -6,7 +6,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "/WebSecurityConfig.xml" })
+@ContextConfiguration({ "/webSecurityConfig.xml" })
 public class SpringContextIntegrationTest {
 
     @Test

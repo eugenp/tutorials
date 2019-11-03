@@ -8,10 +8,10 @@
     <packaging>war</packaging>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-1</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -33,6 +33,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <!-- Spring -->
@@ -319,7 +323,6 @@
         <kryo.version>4.0.0</kryo.version>
         <protobuf-java-format.version>1.4</protobuf-java-format.version>
         <protobuf-java.version>3.1.0</protobuf-java.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <xstream.version>1.4.9</xstream.version>
 
         <!-- util -->

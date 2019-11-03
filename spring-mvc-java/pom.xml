@@ -5,20 +5,23 @@
     <artifactId>spring-mvc-java</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>spring-mvc-java</name>
-     <packaging>war</packaging>
+    <packaging>war</packaging>
 
     <parent>
-        <artifactId>parent-spring-5</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-spring-5</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
-    <dependency>
-         <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -33,14 +36,17 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
-            
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
         </dependency>
         <!-- Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-             <version>${jackson-databind.version}</version>
+             <version>${jackson.version}</version>
         </dependency>
 
         <!-- AOP -->
@@ -57,11 +63,6 @@
 
         <!-- common -->
         <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>${commons-fileupload.version}</version>
-        </dependency>
-        <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
             <version>2.32</version>
@@ -70,7 +71,16 @@
                     <artifactId>commons-logging</artifactId>
                     <groupId>commons-logging</groupId>
                 </exclusion>
+                <exclusion>
+                    <groupId>commons-io</groupId>
+                    <artifactId>commons-io</artifactId>
+                </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
         </dependency>
 
         <!-- Thymeleaf -->
@@ -92,9 +102,8 @@
             <version>2.4.0</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-             <version>${spring.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -119,17 +128,15 @@
             <artifactId>gson</artifactId>
             <version>2.8.5</version>
         </dependency>
-     <dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-websocket</artifactId>
-    <version>${spring.version}</version>
-</dependency>
- 
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-messaging</artifactId>
-    <version>${spring.version}</version>
-</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>${javax.el.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -255,6 +262,7 @@
         <guava.version>19.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <commons-fileupload.version>1.3.2</commons-fileupload.version>
+        <commons-io.version>2.5</commons-io.version>
         <jsonpath.version>2.2.0</jsonpath.version>
 
         <!-- testing -->
@@ -275,7 +283,8 @@
         <!-- excel -->
         <poi.version>3.16-beta1</poi.version>
 
-        <javax.el.version>3.0.1-b06</javax.el.version>
+        <javax.el.version>3.0.1-b09</javax.el.version>
+        <start-class>com.baeldung.SpringMVCApplication</start-class>
 		
     </properties>
 

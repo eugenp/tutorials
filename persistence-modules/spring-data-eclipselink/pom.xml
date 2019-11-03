@@ -63,11 +63,9 @@
         </plugins>
     </build>
 
-
     <properties>
         <spring.version>1.5.9.RELEASE</spring.version>
         <eclipselink.version>2.7.0</eclipselink.version>
-        <h2.version>1.4.196</h2.version>
     </properties>
 
 </project>

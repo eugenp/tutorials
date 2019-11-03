@@ -50,7 +50,7 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh-core.version}</version>
+            <version>${jmh-generator.version}</version>
         </dependency>
         <dependency>
             <groupId>com.ibm.icu</groupId>
@@ -62,13 +62,21 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
-        
+
         <dependency>
-            <groupId>com.vdurmont</groupId>
-            <artifactId>emoji-java</artifactId>
-            <version>4.0.0</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter-api.version}</version>
+            <scope>test</scope>
         </dependency>
-        
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>${org.hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -84,10 +92,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <compilerArgument>-parameters</compilerArgument>
                 </configuration>
             </plugin>
@@ -96,13 +104,14 @@
 
     <properties>
         <!-- util -->
-        <commons-lang3.version>3.5</commons-lang3.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
         <commons-codec.version>1.10</commons-codec.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
-        <jmh-core.version>1.19</jmh-core.version>
         <icu4j.version>61.1</icu4j.version>
-        <guava.version>26.0-jre</guava.version>
+        <guava.version>27.0.1-jre</guava.version>
+		<junit-jupiter-api.version>5.3.1</junit-jupiter-api.version>
+		<commons-text.version>1.4</commons-text.version>
     </properties>
 
 </project>

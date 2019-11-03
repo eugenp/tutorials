@@ -1,21 +1,23 @@
 package org.baeldung.javaxval.methodvalidation;
 
-import org.baeldung.javaxval.methodvalidation.model.Customer;
-import org.baeldung.javaxval.methodvalidation.model.Reservation;
-import org.baeldung.javaxval.methodvalidation.model.ReservationManagement;
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.ValidatorFactory;
-import javax.validation.executable.ExecutableValidator;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.ValidatorFactory;
+import javax.validation.executable.ExecutableValidator;
+
+import org.baeldung.javaxval.methodvalidation.model.Customer;
+import org.baeldung.javaxval.methodvalidation.model.Reservation;
+import org.baeldung.javaxval.methodvalidation.model.ReservationManagement;
+import org.junit.Before;
+import org.junit.Test;
 
 public class ValidationIntegrationTest {
 
