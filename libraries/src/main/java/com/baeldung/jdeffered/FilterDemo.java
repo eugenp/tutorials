@@ -16,7 +16,7 @@ class FilterDemo {
             modifiedMsg = "Hello " + result;
         });
 
-        filtered.done(r -> System.out.println("filtering done"));
+        filtered.done(r -> {});
 
         d.resolve(msg);
         return modifiedMsg;

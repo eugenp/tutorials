@@ -10,13 +10,13 @@ public class MyActor extends AbstractActor {
 
     @Override
     public void postStop() {
-        log.info("Stopping actor {}", this);
+        //log.info("Stopping actor {}", this);
     }
 
     public Receive createReceive() {
         return receiveBuilder()
                 .matchEquals("printit", p -> {
-                    System.out.println("The address of this actor is: " + getSelf());
+                    log.info("The address of this actor is: " + getSelf());
                     getSender().tell("Got Message", getSelf());
                 })
                 .build();

@@ -6,7 +6,7 @@ import akka.event.LoggingAdapter;
 
 public class WordCounterActor extends AbstractActor {
 
-    private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
+    //private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 
     public static final class CountWords {
         String line;
@@ -18,7 +18,7 @@ public class WordCounterActor extends AbstractActor {
 
     @Override
     public void preStart() {
-        log.info("Starting WordCounterActor {}", this);
+        //log.info("Starting WordCounterActor {}", this);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class WordCounterActor extends AbstractActor {
         return receiveBuilder()
                 .match(CountWords.class, r -> {
                     try {
-                        log.info("Received CountWords message from " + getSender());
+                        //log.info("Received CountWords message from " + getSender());
                         int numberOfWords = countWordsFromLine(r.line);
                         getSender().tell(numberOfWords, getSelf());
                     } catch (Exception ex) {
