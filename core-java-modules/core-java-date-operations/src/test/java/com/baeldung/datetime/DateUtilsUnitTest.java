@@ -1,8 +1,10 @@
-package com.baeldung.legacy.utilpackage;
+package com.baeldung.datetime;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+
+import com.baeldung.datetime.DateUtils;
 
 import java.text.ParseException;
 import java.util.Date;

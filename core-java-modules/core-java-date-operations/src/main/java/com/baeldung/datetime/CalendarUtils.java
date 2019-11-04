@@ -1,4 +1,4 @@
-package com.baeldung.legacy.utilpackage;
+package com.baeldung.datetime;
 
 import java.text.ParseException;
 import java.util.Calendar;

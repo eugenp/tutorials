@@ -1,4 +1,4 @@
-package com.baeldung.legacy.sqlpackage;
+package com.baeldung.datetime.sql;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
