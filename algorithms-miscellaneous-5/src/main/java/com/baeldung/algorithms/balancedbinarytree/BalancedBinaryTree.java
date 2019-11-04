@@ -1,8 +1,8 @@
 package com.baeldung.algorithms.balancedbinarytree;
 
-class BalancedBinaryTree {
+public class BalancedBinaryTree {
 
-    static boolean isBalanced(Tree tree) {
+    public static boolean isBalanced(Tree tree) {
         return isBalancedRecursive(tree, -1).isBalanced;
     }
 
