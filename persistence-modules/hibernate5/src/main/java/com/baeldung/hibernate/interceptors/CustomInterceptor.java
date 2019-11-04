@@ -11,12 +11,12 @@ import org.slf4j.LoggerFactory;
 import com.baeldung.hibernate.interceptors.entity.User;
 
 public class CustomInterceptor extends EmptyInterceptor {
-    private static final Logger logger = LoggerFactory.getLogger(CustomInterceptor.class);
+    //private static final Logger logger = LoggerFactory.getLogger(CustomInterceptor.class);
 
     @Override
     public boolean onSave(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types) {
         if (entity instanceof User) {
-            logger.info(((User) entity).toString());
+            //logger.info(((User) entity).toString());
         }
         return super.onSave(entity, id, state, propertyNames, types);
     }
@@ -25,7 +25,7 @@ public class CustomInterceptor extends EmptyInterceptor {
     public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object [] previousState, String[] propertyNames, Type[] types) {
         if (entity instanceof User) {
             ((User) entity).setLastModified(new Date());
-            logger.info(((User) entity).toString());
+            //logger.info(((User) entity).toString());
         }
         return super.onFlushDirty(entity, id, currentState, previousState, propertyNames, types);
     }
