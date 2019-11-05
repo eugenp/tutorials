@@ -125,6 +125,7 @@
         <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
+            <version>${xml-apis.version}</version>
         </dependency>
         <dependency>
             <groupId>org.javassist</groupId>
@@ -284,6 +285,7 @@
     <properties>
         <!-- various -->
         <xstream.version>1.4.9</xstream.version>
+        <xml-apis.version>1.4.01</xml-apis.version>
 
         <!-- util -->
         <guava.version>19.0</guava.version>
