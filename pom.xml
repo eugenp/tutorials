@@ -541,6 +541,7 @@
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries</module>
                 <module>libraries-2</module>
+                <module>libraries-3</module>
                 <module>libraries-data</module>
                 <module>libraries-data-2</module>
                 <module>libraries-data-db</module>
@@ -1307,6 +1308,7 @@
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries</module>
+                <module>libraries-3</module>
                 <module>libraries-data</module>
                 <module>libraries-data-2</module>
                 <module>libraries-data-db</module>
