@@ -3,6 +3,7 @@ package com.baeldung.junit5.conditional;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.*;
+import static org.junit.Assert.*;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -13,61 +14,63 @@ public class ConditionalAnnotationsUnitTest {
     @Test
     @EnabledOnOs({OS.WINDOWS, OS.MAC})
     public void shouldRunBothWindowsAndMac() {
-        System.out.println("runs on Windows and Mac");
+        //runs on Windows and Mac
     }
 
     @Test
     @DisabledOnOs(OS.LINUX)
     public void shouldNotRunAtLinux() {
-        System.out.println("will not run on Linux");
+        //will not run on Linux
     }
 
     @Test
     @EnabledOnJre({JRE.JAVA_10, JRE.JAVA_11})
     public void shouldOnlyRunOnJava10And11() {
-        System.out.println("runs with java 10 and 11");
+        //runs with java 10 and 11
     }
 
     @Test
     @DisabledOnJre(JRE.OTHER)
     public void thisTestOnlyRunsWithUpToDateJREs() {
-        System.out.println("this test will only run on java8, 9, 10 and 11.");
+        //this test will only run on java8, 9, 10 and 11.
     }
 
     @Test
     @EnabledIfSystemProperty(named = "java.vm.vendor", matches = "Oracle.*")
     public void onlyIfVendorNameStartsWithOracle() {
-        System.out.println("runs only if vendor name starts with Oracle");
+        //runs only if vendor name starts with Oracle
     }
 
     @Test
     @DisabledIfSystemProperty(named = "file.separator", matches = "[/]")
     public void disabledIfFileSeperatorIsSlash() {
-        System.out.println("Will not run if file.sepeartor property is /");
+        //Will not run if file.sepeartor property is /
     }
 
     @Test
     @EnabledIfEnvironmentVariable(named = "GDMSESSION", matches = "ubuntu")
     public void onlyRunOnUbuntuServer() {
-        System.out.println("only runs if GDMSESSION is ubuntu");
+        //Only runs if GDMSESSION is ubuntu
     }
 
     @Test
     @DisabledIfEnvironmentVariable(named = "LC_TIME", matches = ".*UTF-8.")
     public void shouldNotRunWhenTimeIsNotUTF8() {
-        System.out.println("will not run if environment variable LC_TIME is UTF-8");
+        //Will not run if environment variable LC_TIME is UTF-8
     }
 
     @Test
     @EnabledIf("'FR' == systemProperty.get('user.country')")
     public void onlyFrenchPeopleWillRunThisMethod() {
-        System.out.println("will run only if user.country is FR");
+        //Will run only if user.country is FR
+        assertEquals('FR', System.getProperty("user.country"));
     }
 
     @Test
     @DisabledIf("java.lang.System.getProperty('os.name').toLowerCase().contains('mac')")
     public void shouldNotRunOnMacOS() {
-        System.out.println("will not run if our os.name is mac");
+        //Will not run if our os.name is mac
+        assertFalse(System.getProperty('os.name').toLowerCase().contains('mac'));
     }
 
     @Test
@@ -82,14 +85,14 @@ public class ConditionalAnnotationsUnitTest {
             engine = "nashorn",
             reason = "Self-fulfilling: {result}")
     public void onlyRunsInFebruary() {
-        System.out.println("this test only runs in February");
+        //This test only runs in February
     }
 
     @Test
     @DisabledIf("systemEnvironment.get('XPC_SERVICE_NAME') != null " +
             "&& systemEnvironment.get('XPC_SERVICE_NAME').contains('intellij')")
     public void notValidForIntelliJ() {
-        System.out.println("this test will run if our ide is INTELLIJ");
+        //this test will run if our ide is INTELLIJ.
     }
 
     @Target(ElementType.METHOD)
@@ -102,7 +105,7 @@ public class ConditionalAnnotationsUnitTest {
 
     @ThisTestWillOnlyRunAtLinuxAndMacWithJava9Or10Or11
     public void someSuperTestMethodHere() {
-        System.out.println("this method will run with java9, 10, 11 and Linux or macOS.");
+        //This method will run with java9, 10, 11 and Linux or macOS.
     }
 
     @Target(ElementType.METHOD)
@@ -114,6 +117,6 @@ public class ConditionalAnnotationsUnitTest {
     @RepeatedTest(2)
     @CoinToss
     public void gamble() {
-        System.out.println("This tests run status is a gamble with %50 rate");
+        //This test run status is a gamble with %50 rate
     }
 }

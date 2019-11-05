@@ -64,9 +64,9 @@ public class DataImporter {
                 .runWith(storeAverages(), ActorMaterializer.create(actorSystem))
                 .whenComplete((d, e) -> {
                     if (d != null) {
-                        System.out.println("Import finished ");
+                        //System.out.println("Import finished ");
                     } else {
-                        e.printStackTrace();
+                        //e.printStackTrace();
                     }
                 });
     }
