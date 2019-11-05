@@ -25,7 +25,6 @@
         <module>hibernate5-2</module>
         <module>hibernate-mapping</module> <!-- long running -->
         <module>hibernate-ogm</module>
-        <module>hibernate-parameters</module>
         <module>influxdb</module>
         <module>java-cassandra</module>
         <module>java-cockroachdb</module>
@@ -33,15 +32,15 @@
         <module>java-jpa</module> <!-- long running -->
         <module>java-jpa-2</module> <!-- long running -->
         <module>java-mongodb</module> <!-- long running -->
-        <module>persistence-libraries</module>
         <module>jnosql</module> <!-- long running -->
         <module>jpa-hibernate-cascade-type</module>
         <module>liquibase</module>
         <module>orientdb</module>
+        <module>persistence-libraries</module>
         <module>querydsl</module>
-		    <module>r2dbc</module>
+		<module>r2dbc</module>
         <module>redis</module>
-		    <module>sirix</module>
+		<module>sirix</module>
         <module>solr</module>
         <module>spring-boot-jdbi</module>
         <module>spring-boot-mysql</module>
