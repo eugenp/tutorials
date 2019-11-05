@@ -39,20 +39,12 @@ public class ThemeMVCConfig implements WebMvcConfigurer {
     }
 
     @Bean
-//    @Profile("cookie")
     public ThemeResolver themeResolver() {
         UserPreferenceThemeResolver themeResolver = new UserPreferenceThemeResolver();
         themeResolver.setDefaultThemeName("light");
         return themeResolver;
     }
 
-//    @Bean
-//    @Profile("database")
-//    public ThemeResolver databaseThemeResolver() {
-//        UserPreferenceThemeResolver themeResolver = new UserPreferenceThemeResolver();
-//        themeResolver.setDefaultThemeName("light");
-//        return themeResolver;
-//    }
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry resolverRegistry) {
