@@ -38,7 +38,7 @@ public class RedisKeyCommandsIntegrationTest {
     
     @BeforeClass
     public static void startRedisServer() throws IOException {
-        redisServer = new RedisServerBuilder().port(6379).setting("maxheap 256M").build();
+        redisServer = new RedisServerBuilder().port(6379).setting("maxmemory 256M").build();
         redisServer.start();
     }
     
