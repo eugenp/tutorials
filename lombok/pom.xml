@@ -77,6 +77,7 @@
     <properties>
         <!-- lombok: https://projectlombok.org/changelog.html -->
         <lombok.version>1.18.10</lombok.version>
+
         <!-- various -->
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
         <!-- delombok maven plugin -->
