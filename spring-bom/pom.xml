@@ -1,27 +1,25 @@
 <?xml version="1.0"?>
-<project
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-bom</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>spring-bom</name>
     <url>http://maven.apache.org</url>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-framework-bom</artifactId>
-                <version>4.3.8.RELEASE</version>
+                <version>${spring-framework-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -37,4 +35,9 @@
             <artifactId>spring-web</artifactId>
         </dependency>
     </dependencies>
+
+    <properties>
+        <spring-framework-bom.version>4.3.8.RELEASE</spring-framework-bom.version>
+    </properties>
+
 </project>

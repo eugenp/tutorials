@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.baelding.rxjava.operator.ToCleanString.toCleanString;
-import static com.baelding.rxjava.operator.ToLength.toLength;
+import static com.baeldung.rxjava.operator.ToCleanString.toCleanString;
+import static com.baeldung.rxjava.operator.ToLength.toLength;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.notNullValue;

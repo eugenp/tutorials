@@ -1,20 +1,24 @@
 package com.baeldung.rxjava.jdbc;
 
-import com.github.davidmoten.rx.jdbc.Database;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import rx.Observable;
+import static org.junit.Assert.assertEquals;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.github.davidmoten.rx.jdbc.ConnectionProvider;
+import com.github.davidmoten.rx.jdbc.Database;
+
+import rx.Observable;
 
 public class InsertClobIntegrationTest {
 
-    private Database db = Database.from(Connector.connectionProvider);
+    private ConnectionProvider connectionProvider = Connector.connectionProvider;
+    private Database db = Database.from(connectionProvider);
 
     private String expectedDocument = null;
     private String actualDocument = null;
@@ -23,7 +27,7 @@ public class InsertClobIntegrationTest {
 
     @Before
     public void setup() throws IOException {
-        create = db.update("CREATE TABLE IF NOT EXISTS SERVERLOG (id int primary key, document CLOB)")
+        create = db.update("CREATE TABLE IF NOT EXISTS SERVERLOG_TABLE (id int primary key, document CLOB)")
           .count();
 
         InputStream actualInputStream = new FileInputStream("src/test/resources/actual_clob");
@@ -31,7 +35,7 @@ public class InsertClobIntegrationTest {
 
         InputStream expectedInputStream = new FileInputStream("src/test/resources/expected_clob");
         this.expectedDocument = Utils.getStringFromInputStream(expectedInputStream);
-        this.insert = db.update("insert into SERVERLOG(id,document) values(?,?)")
+        this.insert = db.update("insert into SERVERLOG_TABLE(id,document) values(?,?)")
           .parameter(1)
           .parameter(Database.toSentinelIfNull(actualDocument))
           .dependsOn(create)
@@ -40,7 +44,7 @@ public class InsertClobIntegrationTest {
 
     @Test
     public void whenSelectCLOB_thenCorrect() throws IOException {
-        db.select("select document from SERVERLOG where id = 1")
+        db.select("select document from SERVERLOG_TABLE where id = 1")
           .dependsOn(create)
           .dependsOn(insert)
           .getAs(String.class)
@@ -52,8 +56,8 @@ public class InsertClobIntegrationTest {
 
     @After
     public void close() {
-        db.update("DROP TABLE SERVERLOG")
+        db.update("DROP TABLE SERVERLOG_TABLE")
           .dependsOn(create);
-        Connector.connectionProvider.close();
+        connectionProvider.close();
     }
 }

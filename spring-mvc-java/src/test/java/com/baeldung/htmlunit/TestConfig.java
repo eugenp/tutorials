@@ -1,20 +1,26 @@
 package com.baeldung.htmlunit;
 
+import javax.servlet.ServletContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.baeldung.web.controller" })
-public class TestConfig extends WebMvcConfigurerAdapter {
+@ComponentScan(basePackages = { "com.baeldung.web.controller.message" })
+public class TestConfig implements WebMvcConfigurer {
 
+    @Autowired
+    private ServletContext ctx;
+    
     @Bean
     public ViewResolver thymeleafViewResolver() {
         final ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
@@ -25,7 +31,7 @@ public class TestConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public ServletContextTemplateResolver templateResolver() {
-        final ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
+        final ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(ctx);
         templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");
@@ -38,5 +44,4 @@ public class TestConfig extends WebMvcConfigurerAdapter {
         templateEngine.setTemplateResolver(templateResolver());
         return templateEngine;
     }
-
 }

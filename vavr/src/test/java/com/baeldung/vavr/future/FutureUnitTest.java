@@ -1,289 +1,189 @@
 package com.baeldung.vavr.future;
 
-import static io.vavr.API.$;
-import static io.vavr.API.Case;
-import static io.vavr.API.Match;
-import static io.vavr.Predicates.exists;
-import static io.vavr.Predicates.forAll;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.concurrent.CancellationException;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
-import org.junit.Test;
-import org.mockito.Mockito;
-import org.mockito.internal.verification.VerificationModeFactory;
-import org.mockito.verification.Timeout;
-
 import io.vavr.Tuple;
-import io.vavr.Tuple2;
-import io.vavr.collection.List;
 import io.vavr.concurrent.Future;
+import io.vavr.control.Option;
 import io.vavr.control.Try;
+import org.junit.Test;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+
+import static java.util.concurrent.Executors.newSingleThreadExecutor;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class FutureUnitTest {
 
-    private final String SUCCESS = "Success";
-    private final String FAILURE = "Failure";
+    private static final String error = "Failed to get underlying value.";
+    private static final String HELLO = "Welcome to Baeldung!";
 
     @Test
-    public void givenFunctionReturnInteger_WhenCallWithFuture_ShouldReturnFunctionValue() {
-        Future<Integer> future = Future.of(() -> 1);
+    public void whenChangeExecutorService_thenCorrect() {
+        String result = Future.of(newSingleThreadExecutor(), () -> HELLO)
+          .getOrElse(error);
 
-        assertEquals(1, future.get().intValue());
+        assertThat(result)
+          .isEqualTo(HELLO);
     }
 
     @Test
-    public void givenFunctionGetRemoteHttpResourceAsString_WhenCallSuccessWithFuture_ShouldReturnContentValueAsString() {
-        String url = "http://resource";
-        String content = "Content from " + url;
-        Future<String> future = Future.of(() -> getResource(url));
+    public void whenAppendData_thenCorrect1() {
+        String result = Future.of(() -> HELLO)
+          .getOrElse(error);
 
-        assertEquals(content, future.get());
+        assertThat(result)
+          .isEqualTo(HELLO);
     }
 
     @Test
-    public void givenFunctionThrowException_WhenCallWithFuture_ShouldReturnFailure() {
-        Future<String> future = Future.of(() -> getResourceThrowException(""));
-        future.await();
+    public void whenAppendData_thenCorrect2() {
+        Future<String> resultFuture = Future.of(() -> HELLO)
+          .await();
 
-        assertTrue(future.isFailure());
+        Option<Try<String>> futureOption = resultFuture.getValue();
+        String result = futureOption.get().getOrElse(error);
+
+        assertThat(result)
+          .isEqualTo(HELLO);
     }
 
     @Test
-    public void givenAFutureReturnZero_WhenCheckFutureWithExistEvenValue_ShouldReturnRight() {
-        Future<Integer> future = Future.of(() -> 2);
-        boolean result = future.exists(i -> i % 2 == 0);
+    public void whenAppendData_thenSuccess() {
+        String result = Future.of(() -> HELLO)
+          .onSuccess(finalResult -> System.out.println("Successfully Completed - Result: " + finalResult))
+          .onFailure(finalResult -> System.out.println("Failed - Result: " + finalResult))
+          .getOrElse(error);
 
-        assertTrue(result);
-    }
-
-    @Test
-    public void givenFunction_WhenCallWithFutureAndRegisterConsumerForSuccess_ShouldCallConsumerToStoreValue() {
-        Future<Integer> future = Future.of(() -> 1);
-        MockConsumer consumer = Mockito.mock(MockConsumer.class);
-        future.onSuccess(consumer);
-        Mockito.verify(consumer, new Timeout(1000, VerificationModeFactory.times(1))).accept(1);
-    }
-
-    @Test
-    public void givenFunctionThrowException_WhenCallWithFutureAndRegisterConsumerForFailer_ShouldCallConsumerToStoreException() {
-        Future<String> future = Future.of(() -> getResourceThrowException(""));
-        MockThrowableConsumer consumer = Mockito.mock(MockThrowableConsumer.class);
-        future.onFailure(consumer);
-        Mockito.verify(consumer, new Timeout(1000, VerificationModeFactory.times(1))).accept(Mockito.any());
-    }
-
-    @Test
-    public void givenAFuture_WhenAddAndThenConsumer_ShouldCallConsumerWithResultOfFutureAction() {
-        MockTryConsumer consumer1 = Mockito.mock(MockTryConsumer.class);
-        MockTryConsumer consumer2 = Mockito.mock(MockTryConsumer.class);
-        Future<Integer> future = Future.of(() -> 1);
-        Future<Integer> andThenFuture = future.andThen(consumer1).andThen(consumer2);
-        andThenFuture.await();
-        Mockito.verify(consumer1, VerificationModeFactory.times(1)).accept(Try.success(1));
-        Mockito.verify(consumer2, VerificationModeFactory.times(1)).accept(Try.success(1));
-    }
-
-    @Test
-    public void givenAFailureFuture_WhenCallOrElseFunction_ShouldReturnNewFuture() {
-        Future<Integer> future = Future.failed(new RuntimeException());
-        Future<Integer> future2 = future.orElse(Future.of(() -> 2));
-
-        assertEquals(2, future2.get().intValue());
-    }
-
-    @Test(expected = CancellationException.class)
-    public void givenAFuture_WhenCallCancel_ShouldReturnCancellationException() {
-        long waitTime = 1000;
-        Future<Integer> future = Future.of(() -> {
-            Thread.sleep(waitTime);
-            return 1;
-        });
-        future.cancel();
-        future.await();
-        future.get();
-    }
-
-    @Test
-    public void givenAFuture_WhenCallFallBackWithSuccessFuture_ShouldReturnFutureResult() {
-        String expectedResult = "take this";
-        Future<String> future = Future.of(() -> expectedResult);
-        Future<String> secondFuture = Future.of(() -> "take that");
-        Future<String> futureResult = future.fallbackTo(secondFuture);
-        futureResult.await();
-
-        assertEquals(expectedResult, futureResult.get());
-    }
-
-    @Test
-    public void givenAFuture_WhenCallFallBackWithFailureFuture_ShouldReturnValueOfFallBackFuture() {
-        String expectedResult = "take that";
-        Future<String> future = Future.failed(new RuntimeException());
-        Future<String> fallbackFuture = Future.of(() -> expectedResult);
-        Future<String> futureResult = future.fallbackTo(fallbackFuture);
-
-        assertEquals(expectedResult, futureResult.get());
+        assertThat(result)
+          .isEqualTo(HELLO);
     }
     
     @Test
-    public void givenAFuture_WhenTransformByAddingOne_ShouldReturn() {
-        Future<Object> future = Future.of(() -> 1).transformValue(f -> Try.of(() -> "Hello: " + f.get()));
-        
-        assertEquals("Hello: 1", future.get());
+    public void whenTransform_thenCorrect() {
+        Future<Object> future = Future.of(() -> 5)
+          .transformValue(result -> Try.of(() -> HELLO + result.get()));
+            
+        assertThat(future.get()).isEqualTo(HELLO + 5);
+    }
+
+    @Test
+    public void whenChainingCallbacks_thenCorrect() {
+        Future.of(() -> HELLO)
+          .andThen(r -> System.out.println("Completed - 1: " + r))
+          .andThen(r -> System.out.println("Completed - 2: " + r));
+    }
+
+    @Test
+    public void whenCallAwait_thenCorrect() {
+        Future<String> resultFuture = Future.of(() -> HELLO)
+          .await();
+        String result = resultFuture.getValue().get().getOrElse(error);
+
+        assertThat(result)
+          .isEqualTo(HELLO);
+    }
+
+    @Test
+    public void whenDivideByZero_thenGetThrowable1() {
+        Future<Integer> resultFuture = Future.of(() -> 10 / 0);
+
+        assertThatThrownBy(resultFuture::get)
+          .isInstanceOf(ArithmeticException.class);
+    }
+
+    @Test
+    public void whenDivideByZero_thenGetThrowable2() {
+        Future<Integer> resultFuture = Future.of(() -> 10 / 0)
+          .await();
+
+        assertThat(resultFuture.getCause().get().getMessage())
+          .isEqualTo("/ by zero");
+    }
+
+    @Test
+    public void whenDivideByZero_thenCorrect() {
+        Future<Integer> resultFuture = Future.of(() -> 10 / 0)
+          .await();
+
+        assertThat(resultFuture.isCompleted()).isTrue();
+        assertThat(resultFuture.isSuccess()).isFalse();
+        assertThat(resultFuture.isFailure()).isTrue();
+    }
+
+    @Test
+    public void whenAppendData_thenFutureNotEmpty() {
+        Future<String> resultFuture = Future.of(() -> HELLO)
+          .await();
+
+        assertThat(resultFuture.isEmpty())
+          .isFalse();
+    }
+
+    @Test
+    public void whenCallZip_thenCorrect() {
+        Future<String> f1 = Future.of(() -> "hello1");
+        Future<String> f2 = Future.of(() -> "hello2");
+
+        assertThat(f1.zip(f2).get())
+          .isEqualTo(Tuple.of("hello1", "hello2"));
+    }
+
+    @Test
+    public void whenConvertToCompletableFuture_thenCorrect() throws InterruptedException, ExecutionException {
+        CompletableFuture<String> convertedFuture = Future.of(() -> HELLO)
+          .toCompletableFuture();
+
+        assertThat(convertedFuture.get())
+          .isEqualTo(HELLO);
+    }
+
+    @Test
+    public void whenCallMap_thenCorrect() {
+        Future<String> futureResult = Future.of(() -> "from Baeldung")
+          .map(a -> "Hello " + a)
+          .await();
+
+        assertThat(futureResult.get())
+          .isEqualTo("Hello from Baeldung");
     }
     
     @Test
-     public void givenAFutureOfInt_WhenMapToString_ShouldCombineAndReturn() {
-        Future<String> future = Future.of(()->1).map(i -> "Hello: " + i);
-        
-        assertEquals("Hello: 1", future.get());
-    }
-    
-    @Test
-    public void givenAFutureOfInt_WhenFlatMapToString_ShouldCombineAndReturn() {
-        Future<Object> futureMap = Future.of(() -> 1).flatMap((i) -> Future.of(() -> "Hello: " + i));
-        
-        assertEquals("Hello: 1", futureMap.get());
-    }
-    
-    @Test
-    public void givenAFutureOf2String_WhenZip_ShouldReturnTupleOf2String() {
-        Future<Tuple2<String, String>> future = Future.of(() -> "hello").zip(Future.of(() -> "world"));
-        
-        assertEquals(Tuple.of("hello", "world"), future.get());
+    public void whenCallFlatMap_thenCorrect() {
+        Future<Object> futureMap = Future.of(() -> 1)
+          .flatMap((i) -> Future.of(() -> "Hello: " + i));
+     
+        assertThat(futureMap.get()).isEqualTo("Hello: 1");
     }
 
     @Test
-    public void givenGetResourceWithFuture_WhenWaitAndMatchWithPredicate_ShouldReturnSuccess() {
-        String url = "http://resource";
-        Future<String> future = Future.of(() -> getResource(url));
-        future.await();
-        String s = Match(future).of(
-          Case($(future0 -> future0.isSuccess()), SUCCESS),
-          Case($(), FAILURE));
+    public void whenFutureFails_thenGetErrorMessage() {
+        Future<String> future = Future.of(() -> "Hello".substring(-1))
+          .recover(x -> "fallback value");
 
-        assertEquals(SUCCESS, s);
+        assertThat(future.get())
+          .isEqualTo("fallback value");
     }
 
     @Test
-    public void givenAFailedFuture_WhenWaitAndMatchWithPredicateCheckSuccess_ShouldReturnFailed() {
-        Future<Integer> future = Future.failed(new RuntimeException());
-        future.await();
-        String s = Match(future).of(
-          Case($(future0 -> future0.isSuccess()), SUCCESS),
-          Case($(), FAILURE));
+    public void whenFutureFails_thenGetAnotherFuture() {
+        Future<String> future = Future.of(() -> "Hello".substring(-1))
+          .recoverWith(x -> Future.of(() -> "fallback value"));
 
-        assertEquals(FAILURE, s);
+        assertThat(future.get())
+          .isEqualTo("fallback value");
     }
 
     @Test
-    public void givenAFuture_WhenMatchWithFuturePredicate_ShouldReturnSuccess() {
-        Future<Integer> future = Future.of(() -> {
-            Thread.sleep(10);
-            return 1;
-        });
-        Predicate<Future<Integer>> predicate = f -> f.exists(i -> i % 2 == 1);
+    public void whenBothFuturesFail_thenGetErrorMessage() {
+        Future<String> f1 = Future.of(() -> "Hello".substring(-1));
+        Future<String> f2 = Future.of(() -> "Hello".substring(-2));
 
-        String s = Match(future).of(
-          Case($(predicate), "Even"),
-          Case($(), "Odd"));
+        Future<String> errorMessageFuture = f1.fallbackTo(f2);
+        Future<Throwable> errorMessage = errorMessageFuture.failed();
 
-        assertEquals("Even", s);
-    }
-
-    @Test
-    public void givenAListOfFutureReturnFist3Integers_WhenMatchWithExistEvenNumberPredicate_ShouldReturnSuccess() {
-        List<Future<Integer>> futures = getFutureOfFirst3Number();
-        Predicate<Future<Integer>> predicate0 = future -> future.exists(i -> i % 2 == 0);
-        String s = Match(futures).of(
-          Case($(exists(predicate0)), "Even"),
-          Case($(), "Odd"));
-
-        assertEquals("Even", s);
-    }
-
-    @Test
-    public void givenAListOfFutureReturnFist3Integers_WhenMatchWithForAllNumberBiggerThanZeroPredicate_ShouldReturnSuccess() {
-        List<Future<Integer>> futures = getFutureOfFirst3Number();
-        Predicate<Future<Integer>> predicate0 = future -> future.exists(i -> i > 0);
-        String s = Match(futures).of(
-          Case($(forAll(predicate0)), "Positive numbers"),
-          Case($(), "None"));
-
-        assertEquals("Positive numbers", s);
-    }
-
-    @Test
-    public void givenAListOfFutureReturnFist3Integers_WhenMatchWithForAllNumberSmallerThanZeroPredicate_ShouldReturnFailed() {
-        List<Future<Integer>> futures = getFutureOfFirst3Number();
-        Predicate<Future<Integer>> predicate0 = future -> future.exists(i -> i < 0);
-        String s = Match(futures).of(
-          Case($(forAll(predicate0)), "Negative numbers"),
-          Case($(), "None"));
-
-        assertEquals("None", s);
-    }
-
-    private String getResource(String url) {
-        try {
-            Thread.sleep(10);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        return "Content from " + url;
-    }
-
-    private String getResourceThrowException(String url) {
-        throw new RuntimeException("Exception when get resource " + url);
-    }
-
-    private List<Future<Integer>> getFutureOfFirst3Number() {
-        List<Future<Integer>> futures = List.of(Future.of(() -> 1), Future.of(() -> 2), Future.of(() -> 3));
-        return futures;
-    }
-    
-    private static void checkOnSuccessFunction() {
-        Future<Integer> future = Future.of(() -> 1);
-        future.onSuccess(i -> System.out.println("Future finish with result: " + i));
-    }
-    
-    private static void checkOnFailureFunction() {
-        Future<Integer> future = Future.of(() -> {throw new RuntimeException("Failed");});
-        future.onFailure(t -> System.out.println("Future failures with exception: " + t));
-    }
-    
-    private static void runAndThenConsumer() {
-        Future<Integer> future = Future.of(() -> 1);
-        future.andThen(i -> System.out.println("Do side-effect action 1 with input: " + i.get())).
-          andThen((i) -> System.out.println("Do side-effect action 2 with input: " + i.get()));
-    }
-    
-    public static void main(String[] args) throws InterruptedException {
-        checkOnSuccessFunction();
-        checkOnFailureFunction();
-        runAndThenConsumer();
-        Thread.sleep(1000);
-    }
-}
-
-
-class MockConsumer implements Consumer<Integer> {
-    @Override
-    public void accept(Integer t) {
-    }
-}
-
-class MockTryConsumer implements Consumer<Try<Integer>> {
-    @Override
-    public void accept(Try<Integer> t) {
-    }
-}
-
-class MockThrowableConsumer implements Consumer<Throwable> {
-    @Override
-    public void accept(Throwable t) {
+        assertThat(
+          errorMessage.get().getMessage())
+          .isEqualTo("String index out of range: -1");
     }
 }

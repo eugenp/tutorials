@@ -7,9 +7,9 @@ import org.jdeferred.impl.DeferredObject;
 class FilterDemo {
 
     private static String modifiedMsg;
-    
+
     static String filter(String msg) {
-        
+
         Deferred<String, ?, ?> d = new DeferredObject<>();
         Promise<String, ?, ?> p = d.promise();
         Promise<String, ?, ?> filtered = p.then((result) -> {

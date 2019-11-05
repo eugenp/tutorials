@@ -1,15 +1,21 @@
 package com.baeldung.rxjava.jdbc;
 
-import com.github.davidmoten.rx.jdbc.Database;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.After;
 import org.junit.Test;
-import rx.Observable;
 
-import static org.junit.Assert.assertEquals;
+import com.github.davidmoten.rx.jdbc.ConnectionProvider;
+import com.github.davidmoten.rx.jdbc.Database;
+
+import rx.Observable;
 
 public class TransactionIntegrationTest {
 
-    private Database db = Database.from(Connector.connectionProvider);
+    private Observable<Integer> createStatement = null;
+
+    private ConnectionProvider connectionProvider = Connector.connectionProvider;
+    private Database db = Database.from(connectionProvider);
 
     @Test
     public void whenCommitTransaction_thenRecordUpdated() {
@@ -18,8 +24,11 @@ public class TransactionIntegrationTest {
           .update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int primary key, name varchar(255))")
           .dependsOn(begin)
           .count();
+        Observable<Integer> truncateStatement = db.update("TRUNCATE TABLE EMPLOYEE")
+                .dependsOn(createStatement)
+                .count();
         Observable<Integer> insertStatement = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(1, 'John')")
-          .dependsOn(createStatement)
+          .dependsOn(truncateStatement)
           .count();
         Observable<Integer> updateStatement = db.update("UPDATE EMPLOYEE SET name = 'Tom' WHERE id = 1")
           .dependsOn(insertStatement)
@@ -36,7 +45,8 @@ public class TransactionIntegrationTest {
 
     @After
     public void close() {
-        db.update("DROP TABLE EMPLOYEE");
-        Connector.connectionProvider.close();
+        db.update("DROP TABLE EMPLOYEE")
+          .dependsOn(createStatement);
+        connectionProvider.close();
     }
 }

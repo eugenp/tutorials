@@ -2,7 +2,9 @@ package com.baeldung.dynamicvalidation;
 
 import com.baeldung.dynamicvalidation.dao.ContactInfoExpressionRepository;
 import com.baeldung.dynamicvalidation.model.ContactInfoExpression;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.thymeleaf.util.StringUtils;
@@ -13,7 +15,7 @@ import java.util.regex.Pattern;
 
 public class ContactInfoValidator implements ConstraintValidator<ContactInfo, String> {
 
-    private static final Logger LOG = Logger.getLogger(ContactInfoValidator.class);
+    private static final Logger LOG = LogManager.getLogger(ContactInfoValidator.class);
 
     @Autowired
     private ContactInfoExpressionRepository expressionRepository;
@@ -28,9 +30,7 @@ public class ContactInfoValidator implements ConstraintValidator<ContactInfo, St
         if (StringUtils.isEmptyOrWhitespace(expressionType)) {
             LOG.error("Contact info type missing!");
         } else {
-            pattern = expressionRepository.findOne(expressionType)
-                .map(ContactInfoExpression::getPattern)
-                .orElse("");
+            pattern = expressionRepository.findById(expressionType).map(ContactInfoExpression::getPattern).orElse("");
         }
     }
 

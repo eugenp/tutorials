@@ -89,7 +89,7 @@ public class GuavaCacheUnitTest {
         cache.getUnchecked("hello");
         assertEquals(1, cache.size());
         cache.getUnchecked("hello");
-        Thread.sleep(300);
+        Thread.sleep(3);
         cache.getUnchecked("test");
         assertEquals(1, cache.size());
         assertNull(cache.getIfPresent("hello"));
@@ -106,7 +106,7 @@ public class GuavaCacheUnitTest {
         final LoadingCache<String, String> cache = CacheBuilder.newBuilder().expireAfterWrite(2, TimeUnit.MILLISECONDS).build(loader);
         cache.getUnchecked("hello");
         assertEquals(1, cache.size());
-        Thread.sleep(300);
+        Thread.sleep(3);
         cache.getUnchecked("test");
         assertEquals(1, cache.size());
         assertNull(cache.getIfPresent("hello"));
@@ -203,8 +203,9 @@ public class GuavaCacheUnitTest {
 
     private String getSuffix(final String str) {
         final int lastIndex = str.lastIndexOf('.');
-        if (lastIndex == -1)
+        if (lastIndex == -1) {
             return null;
+        }
         return str.substring(lastIndex + 1);
     }
 

@@ -58,7 +58,7 @@ public class SecretService {
     }
 
     public byte[] getHS512SecretBytes() {
-        return TextCodec.BASE64.decode(secrets.get(SignatureAlgorithm.HS384.getValue()));
+        return TextCodec.BASE64.decode(secrets.get(SignatureAlgorithm.HS512.getValue()));
     }
 
     public Map<String, String> refreshSecrets() {

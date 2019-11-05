@@ -30,25 +30,17 @@ public class DocumentController {
     @RequestMapping(path = "/generate/doc", method = RequestMethod.GET)
     public void generateDocument(HttpServletResponse response) throws IOException {
         ReportBuilder reportBuilder = new ReportBuilder();
-        ReportTemplateBuilder reportTemplateBuilder = new ReportTemplateBuilder()
-            .documentPath("./src/main/resources/Letter.docx")
-            .documentName("Letter.docx")
-            .outputType(ReportOutputType.docx)
-            .readFileFromPath();
+        ReportTemplateBuilder reportTemplateBuilder = new ReportTemplateBuilder().documentPath("./src/main/resources/Letter.docx").documentName("Letter.docx").outputType(ReportOutputType.docx).readFileFromPath();
         reportBuilder.template(reportTemplateBuilder.build());
         BandBuilder bandBuilder = new BandBuilder();
         String json = FileUtils.readFileToString(new File("./src/main/resources/Data.json"));
-        ReportBand main = bandBuilder.name("Main")
-            .query("Main", "parameter=param1 $.main", "json")
-            .build();
+        ReportBand main = bandBuilder.name("Main").query("Main", "parameter=param1 $.main", "json").build();
         reportBuilder.band(main);
         Report report = reportBuilder.build();
 
         Reporting reporting = new Reporting();
         reporting.setFormatterFactory(new DefaultFormatterFactory());
-        reporting.setLoaderFactory(
-            new DefaultLoaderFactory()
-                .setJsonDataLoader(new JsonDataLoader()));
+        reporting.setLoaderFactory(new DefaultLoaderFactory().setJsonDataLoader(new JsonDataLoader()));
         response.setContentType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
         reporting.runReport(new RunParams(report).param("param1", json), response.getOutputStream());
     }

@@ -25,14 +25,20 @@ public class MultipartController {
         try {
             InputStream in = file.getInputStream();
             String path = new File(".").getAbsolutePath();
-            FileOutputStream f = new FileOutputStream(path.substring(0, path.length()-1)+ "/uploads/" + file.getOriginalFilename());
-            int ch;
-            while ((ch = in.read()) != -1) {
-                f.write(ch);
+            FileOutputStream f = new FileOutputStream(path.substring(0, path.length() - 1) + "/uploads/" + file.getOriginalFilename());
+            try {
+                int ch;
+                while ((ch = in.read()) != -1) {
+                    f.write(ch);
+                }
+                modelAndView.getModel().put("message", "File uploaded successfully!");
+            } catch (Exception e) {
+                System.out.println("Exception uploading multipart: " + e);
+            } finally {
+                f.flush();
+                f.close();
+                in.close();
             }
-            f.flush();
-            f.close();
-            modelAndView.getModel().put("message", "File uploaded successfully!");
         } catch (Exception e) {
             System.out.println("Exception uploading multipart: " + e);
         }

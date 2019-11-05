@@ -1,8 +1,8 @@
 package com.baeldung.introduction;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -13,11 +13,10 @@ import javax.servlet.annotation.WebServlet;
 import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
-import com.vaadin.data.Validator.InvalidValueException;
-import com.vaadin.data.fieldgroup.BeanFieldGroup;
+import com.vaadin.data.Binder;
 import com.vaadin.data.validator.StringLengthValidator;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.ExternalResource;
-import com.vaadin.server.FontAwesome;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
@@ -84,7 +83,7 @@ public class VaadinUI extends UI {
         textField.setId("TextField");
         textField.setCaption("TextField:");
         textField.setValue("TextField Value");
-        textField.setIcon(FontAwesome.USER);
+        textField.setIcon(VaadinIcons.USER);
         gridLayout.addComponent(textField);
 
         final TextArea textArea = new TextArea();
@@ -93,7 +92,7 @@ public class VaadinUI extends UI {
         textArea.setValue("TextArea Value");
         gridLayout.addComponent(textArea);
 
-        final DateField dateField = new DateField("DateField", new Date(0));
+        final DateField dateField = new DateField("DateField", LocalDate.ofEpochDay(0));
         dateField.setId("DateField");
         gridLayout.addComponent(dateField);
 
@@ -112,7 +111,7 @@ public class VaadinUI extends UI {
         richTextPanel.setContent(richTextArea);
 
         final InlineDateField inlineDateField = new InlineDateField();
-        inlineDateField.setValue(new Date(0));
+        inlineDateField.setValue(LocalDate.ofEpochDay(0));
         inlineDateField.setCaption("Inline Date Field");
         horizontalLayout.addComponent(inlineDateField);
 
@@ -160,7 +159,7 @@ public class VaadinUI extends UI {
         buttonLayout.addComponent(nativeButton);
 
         Button iconButton = new Button("Icon Button");
-        iconButton.setIcon(FontAwesome.ALIGN_LEFT);
+        iconButton.setIcon(VaadinIcons.ALIGN_LEFT);
         buttonLayout.addComponent(iconButton);
 
         Button borderlessButton = new Button("BorderLess Button");
@@ -187,25 +186,29 @@ public class VaadinUI extends UI {
         numbers.add("Ten");
         numbers.add("Eleven");
         ComboBox comboBox = new ComboBox("ComboBox");
-        comboBox.addItems(numbers);
+        comboBox.setItems(numbers);
         formLayout.addComponent(comboBox);
 
         ListSelect listSelect = new ListSelect("ListSelect");
-        listSelect.addItems(numbers);
+        listSelect.setItems(numbers);
         listSelect.setRows(2);
         formLayout.addComponent(listSelect);
 
         NativeSelect nativeSelect = new NativeSelect("NativeSelect");
-        nativeSelect.addItems(numbers);
+        nativeSelect.setItems(numbers);
         formLayout.addComponent(nativeSelect);
 
         TwinColSelect twinColSelect = new TwinColSelect("TwinColSelect");
-        twinColSelect.addItems(numbers);
+        twinColSelect.setItems(numbers);
 
-        Grid grid = new Grid("Grid");
-        grid.setColumns("Column1", "Column2", "Column3");
-        grid.addRow("Item1", "Item2", "Item3");
-        grid.addRow("Item4", "Item5", "Item6");
+        Grid<Row> grid = new Grid(Row.class);
+        grid.setColumns("column1", "column2", "column3");
+        Row row1 = new Row("Item1", "Item2", "Item3");
+        Row row2 = new Row("Item4", "Item5", "Item6");
+        List<Row> rows = new ArrayList();
+        rows.add(row1);
+        rows.add(row2);
+        grid.setItems(rows);
 
         Panel panel = new Panel("Panel");
         panel.setContent(grid);
@@ -229,11 +232,12 @@ public class VaadinUI extends UI {
         dataBindingLayout.setSpacing(true);
         dataBindingLayout.setMargin(true);
 
+        Binder<BindData> binder = new Binder<>();
         BindData bindData = new BindData("BindData");
-        BeanFieldGroup beanFieldGroup = new BeanFieldGroup(BindData.class);
-        beanFieldGroup.setItemDataSource(bindData);
-        TextField bindedTextField = (TextField) beanFieldGroup.buildAndBind("BindName", "bindName");
+        binder.readBean(bindData);
+        TextField bindedTextField = new TextField();
         bindedTextField.setWidth("250px");
+        binder.forField(bindedTextField).bind(BindData::getBindName, BindData::setBindName);
         dataBindingLayout.addComponent(bindedTextField);
 
         FormLayout validatorLayout = new FormLayout();
@@ -244,21 +248,18 @@ public class VaadinUI extends UI {
         textValidatorLayout.setSpacing(true);
         textValidatorLayout.setMargin(true);
 
+        
+        BindData stringValidatorBindData = new BindData("");
         TextField stringValidator = new TextField();
-        stringValidator.setNullSettingAllowed(true);
-        stringValidator.setNullRepresentation("");
-        stringValidator.addValidator(new StringLengthValidator("String must have 2-5 characters lenght", 2, 5, true));
-        stringValidator.setValidationVisible(false);
+        Binder<BindData> stringValidatorBinder = new Binder<>();
+        stringValidatorBinder.setBean(stringValidatorBindData);
+        stringValidatorBinder.forField(stringValidator)
+        .withValidator(new StringLengthValidator("String must have 2-5 characters lenght", 2, 5))
+        .bind(BindData::getBindName, BindData::setBindName);
+        
         textValidatorLayout.addComponent(stringValidator);
         Button buttonStringValidator = new Button("Validate String");
-        buttonStringValidator.addClickListener(e -> {
-            try {
-                stringValidator.setValidationVisible(false);
-                stringValidator.validate();
-            } catch (InvalidValueException err) {
-                stringValidator.setValidationVisible(true);
-            }
-        });
+        buttonStringValidator.addClickListener(e -> stringValidatorBinder.validate());
         textValidatorLayout.addComponent(buttonStringValidator);
 
         validatorLayout.addComponent(textValidatorLayout);
@@ -274,7 +275,7 @@ public class VaadinUI extends UI {
         setContent(verticalLayout);
     }
 
-    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
+    @WebServlet(urlPatterns = "/VAADIN/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = VaadinUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
     }

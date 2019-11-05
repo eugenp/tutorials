@@ -5,17 +5,20 @@ import java.util.ResourceBundle;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.MessageSourceResourceBundle;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 //@EnableWebMvc
 //@Configuration
-public class ClientWebConfigJava extends WebMvcConfigurerAdapter {
+@ComponentScan("com.baeldung.spring")
+public class ClientWebConfigJava implements WebMvcConfigurer {
 
     public ClientWebConfigJava() {
         super();
@@ -38,8 +41,6 @@ public class ClientWebConfigJava extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
-        super.addViewControllers(registry);
-
         registry.addViewController("/sample.html");
     }
 
@@ -52,5 +53,10 @@ public class ClientWebConfigJava extends WebMvcConfigurerAdapter {
         bean.setSuffix(".jsp");
 
         return bean;
+    }
+    
+    @Bean
+    public MethodValidationPostProcessor methodValidationPostProcessor() {
+        return new MethodValidationPostProcessor();
     }
 }

@@ -17,17 +17,13 @@ public class DistinctWithVavrUnitTest {
 
     @Test
     public void whenFilterListByName_thenSizeShouldBe4() {
-        List<Person> personListFiltered = io.vavr.collection.List.ofAll(personList)
-            .distinctBy(Person::getName)
-            .toJavaList();
+        List<Person> personListFiltered = io.vavr.collection.List.ofAll(personList).distinctBy(Person::getName).toJavaList();
         assertTrue(personListFiltered.size() == 4);
     }
 
     @Test
     public void whenFilterListByAge_thenSizeShouldBe2() {
-        List<Person> personListFiltered = io.vavr.collection.List.ofAll(personList)
-            .distinctBy(Person::getAge)
-            .toJavaList();
+        List<Person> personListFiltered = io.vavr.collection.List.ofAll(personList).distinctBy(Person::getAge).toJavaList();
         assertTrue(personListFiltered.size() == 2);
     }
 

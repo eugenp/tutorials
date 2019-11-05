@@ -4,6 +4,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>orika</artifactId>
     <version>1.0</version>
+    <name>orika</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -11,20 +12,16 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <orika-core.version>1.5.0</orika-core.version>
-    </properties>
-
-    <name>orika</name>
-
     <dependencies>
-
         <dependency>
             <groupId>ma.glasnost.orika</groupId>
             <artifactId>orika-core</artifactId>
             <version>${orika-core.version}</version>
         </dependency>
-
     </dependencies>
+
+    <properties>
+        <orika-core.version>1.5.0</orika-core.version>
+    </properties>
 
 </project>

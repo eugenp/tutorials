@@ -1,16 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.springframework.samples</groupId>
     <artifactId>spring-katharsis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+	<name>spring-katharsis</name>
     <packaging>war</packaging>
-
+	
     <parent>
-        <artifactId>parent-boot-4</artifactId>
+        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-4</relativePath>
+        <relativePath>../parent-boot-1</relativePath>
     </parent>
 
     <dependencies>
@@ -33,18 +34,26 @@
 
         <dependency>
             <groupId>io.katharsis</groupId>
-            <artifactId>katharsis-servlet</artifactId>
+            <artifactId>katharsis-spring</artifactId>
             <version>${katharsis.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>${reflections.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
     </dependencies>
-
-
-    <properties>
-        <katharsis.version>1.0.1</katharsis.version>
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-    </properties>
-
 
     <build>
         <plugins>
@@ -124,5 +133,10 @@
         </profile>
     </profiles>
 
+    <properties>
+        <katharsis.version>3.0.2</katharsis.version>
+        <reflections.version>0.9.10</reflections.version>
+        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+    </properties>
 
 </project>

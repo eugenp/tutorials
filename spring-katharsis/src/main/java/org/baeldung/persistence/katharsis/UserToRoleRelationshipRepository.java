@@ -1,7 +1,8 @@
 package org.baeldung.persistence.katharsis;
 
-import io.katharsis.queryParams.RequestParams;
-import io.katharsis.repository.RelationshipRepository;
+import io.katharsis.queryspec.QuerySpec;
+import io.katharsis.repository.RelationshipRepositoryV2;
+import io.katharsis.resource.list.ResourceList;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserToRoleRelationshipRepository implements RelationshipRepository<User, Long, Role, Long> {
+public class UserToRoleRelationshipRepository implements RelationshipRepositoryV2<User, Long, Role, Long> {
 
     @Autowired
     private UserRepository userRepository;
@@ -52,14 +53,25 @@ public class UserToRoleRelationshipRepository implements RelationshipRepository<
     }
 
     @Override
-    public Role findOneTarget(Long sourceId, String fieldName, RequestParams requestParams) {
+    public Role findOneTarget(Long sourceId, String fieldName, QuerySpec querySpec) {
         // not for many-to-many
         return null;
     }
 
     @Override
-    public Iterable<Role> findManyTargets(Long sourceId, String fieldName, RequestParams requestParams) {
+    public ResourceList<Role> findManyTargets(Long sourceId, String fieldName, QuerySpec querySpec) {
         final User user = userRepository.findOne(sourceId);
-        return user.getRoles();
+        return  querySpec.apply(user.getRoles());
     }
+
+    @Override
+    public Class<User> getSourceResourceClass() {
+        return User.class;
+    }
+
+    @Override
+    public Class<Role> getTargetResourceClass() {
+        return Role.class;
+    }
+
 }

@@ -3,6 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>cxf-spring</artifactId>
     <packaging>war</packaging>
+	<name>cxf-spring</name>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>apache-cxf</artifactId>
@@ -52,15 +54,6 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -102,24 +95,6 @@
                             </execution>
                         </executions>
                     </plugin>
-
-                    <plugin>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${surefire.version}</version>
-                        <executions>
-                            <execution>
-                                <phase>integration-test</phase>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                                <configuration>
-                                    <excludes>
-                                        <exclude>none</exclude>
-                                    </excludes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -127,12 +102,7 @@
     </profiles>
 
     <properties>
-        <cxf.version>3.1.8</cxf.version>
         <spring.version>4.3.4.RELEASE</spring.version>
-        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <surefire.version>2.19.1</surefire.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
 

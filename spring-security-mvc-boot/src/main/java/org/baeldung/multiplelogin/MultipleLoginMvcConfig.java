@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -13,7 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableWebMvc
 @Configuration
 @ComponentScan("org.baeldung.controller")
-public class MultipleLoginMvcConfig extends WebMvcConfigurerAdapter {
+public class MultipleLoginMvcConfig implements WebMvcConfigurer {
 
     public MultipleLoginMvcConfig() {
         super();
@@ -23,8 +24,6 @@ public class MultipleLoginMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
-        super.addViewControllers(registry);
-
         registry.addViewController("/anonymous.html");
 
         registry.addViewController("/login.html");

@@ -3,7 +3,8 @@ package org.baeldung.boot.repository;
 import static org.junit.Assert.assertThat;
 
 import org.baeldung.boot.DemoApplicationIntegrationTest;
-import org.baeldung.boot.model.Foo;
+import org.baeldung.demo.model.Foo;
+import org.baeldung.demo.repository.FooRepository;
 
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.is;

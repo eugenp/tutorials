@@ -8,34 +8,37 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.github.davidmoten.rx.jdbc.ConnectionProvider;
 import com.github.davidmoten.rx.jdbc.Database;
 
 import rx.Observable;
 
 public class AutomapInterfaceIntegrationTest {
 
-    private Database db = Database.from(Connector.connectionProvider);
+    private ConnectionProvider connectionProvider = Connector.connectionProvider;
+    private Database db = Database.from(connectionProvider);
 
-    private Observable<Integer> create = null;
+    private Observable<Integer> truncate = null;
     private Observable<Integer> insert1, insert2 = null;
 
     @Before
     public void setup() {
-        create = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int primary key, name varchar(255))")
+        Observable<Integer> create = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int primary key, name varchar(255))")
           .count();
+        truncate = db.update("TRUNCATE TABLE EMPLOYEE")
+           .dependsOn(create)
+           .count();
         insert1 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(1, 'Alan')")
-          .dependsOn(create)
+          .dependsOn(truncate)
           .count();
         insert2 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(2, 'Sarah')")
-          .dependsOn(create)
+          .dependsOn(insert1)
           .count();
     }
 
     @Test
     public void whenSelectFromTableAndAutomap_thenCorrect() {
         List<Employee> employees = db.select("select id, name from EMPLOYEE")
-          .dependsOn(create)
-          .dependsOn(insert1)
           .dependsOn(insert2)
           .autoMap(Employee.class)
           .toList()
@@ -55,8 +58,7 @@ public class AutomapInterfaceIntegrationTest {
     @After
     public void close() {
         db.update("DROP TABLE EMPLOYEE")
-            .dependsOn(create);
-        Connector.connectionProvider.close();
+          .dependsOn(truncate);
+        connectionProvider.close();
     }
-
 }

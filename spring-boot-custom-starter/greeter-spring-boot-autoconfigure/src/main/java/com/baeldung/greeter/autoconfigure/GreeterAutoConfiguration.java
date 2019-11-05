@@ -1,6 +1,6 @@
 package com.baeldung.greeter.autoconfigure;
 
-import static com.baeldung.greeter.GreeterConfigParams.*;
+import static com.baeldung.greeter.library.GreeterConfigParams.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -9,8 +9,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.baeldung.greeter.Greeter;
-import com.baeldung.greeter.GreetingConfig;
+import com.baeldung.greeter.library.Greeter;
+import com.baeldung.greeter.library.GreetingConfig;
 
 @Configuration
 @ConditionalOnClass(Greeter.class)

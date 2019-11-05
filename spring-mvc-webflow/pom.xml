@@ -4,7 +4,6 @@
     <groupId>com.baeldung</groupId>
     <version>0.1-SNAPSHOT</version>
     <artifactId>spring-mvc-webflow</artifactId>
-
     <name>spring-mvc-webflow</name>
     <packaging>war</packaging>
 
@@ -36,26 +35,31 @@
         </dependency>
 
         <!-- web -->
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
-
         <dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
             <groupId>org.slf4j</groupId>
             <artifactId>log4j-over-slf4j</artifactId>
             <version>${org.slf4j.version}</version>
         </dependency>
+        
+        <!-- Test -->
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>1.5.10.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
 
     </dependencies>
 
@@ -67,7 +71,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -78,26 +81,19 @@
                 </configuration>
             </plugin>
         </plugins>
-
     </build>
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
+        <org.springframework.version>5.0.1.RELEASE</org.springframework.version>
 
         <!-- Spring Web Flow -->
-        <spring.webflow>2.4.4.RELEASE</spring.webflow>
-
-        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-        <jstl.version>1.2</jstl.version>
+        <spring.webflow>2.5.0.RELEASE</spring.webflow>
 
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
 
-        <rest-assured.version>2.9.0</rest-assured.version>
-
         <!-- Maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
 

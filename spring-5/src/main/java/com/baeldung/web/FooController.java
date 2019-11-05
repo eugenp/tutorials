@@ -7,12 +7,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.List;
 
 @RestController("/foos")
 public class FooController {
+
+    @PostConstruct
+    public void init(){
+        System.out.println("test");
+    }
 
     @Autowired
     private FooRepository repo;

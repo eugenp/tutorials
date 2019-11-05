@@ -216,11 +216,11 @@ public class VavrUnitTest {
         assertEquals(-1, errorSentinel);
     }
 
-    // @Test(expected = ArithmeticException.class)
-    // public void givenBadCode_whenTryHandles_thenCorrect3() {
-    // Try<Integer> result = Try.of(() -> 1 / 0);
-    // result.getOrElseThrow(ArithmeticException::new);
-    // }
+     @Test(expected = RuntimeException.class)
+     public void givenBadCode_whenTryHandles_thenCorrect3() {
+        Try<Integer> result = Try.of(() -> 1 / 0);
+        result.getOrElseThrow(e->new RuntimeException(e));//re-throw different ex type
+     }
 
     // lazy
     @Test

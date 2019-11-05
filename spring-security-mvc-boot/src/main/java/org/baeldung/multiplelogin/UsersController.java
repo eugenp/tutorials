@@ -1,37 +1,37 @@
 package org.baeldung.multiplelogin;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UsersController {
 
-    @RequestMapping("/protectedLinks")
+    @GetMapping("/protectedLinks")
     public String getAnonymousPage() {
         return "protectedLinks";
     }
 
-    @RequestMapping("/userPage")
+    @GetMapping("/userPage")
     public String getUserPage() {
         return "userPage";
     }
 
-    @RequestMapping("/adminPage")
+    @GetMapping("/adminPage")
     public String getAdminPage() {
         return "adminPage";
     }
 
-    @RequestMapping("/loginAdmin")
+    @GetMapping("/loginAdmin")
     public String getAdminLoginPage() {
         return "loginAdmin";
     }
 
-    @RequestMapping("/loginUser")
+    @GetMapping("/loginUser")
     public String getUserLoginPage() {
         return "loginUser";
     }
 
-    @RequestMapping("/403")
+    @GetMapping("/403")
     public String getAccessDeniedPage() {
         return "403";
     }

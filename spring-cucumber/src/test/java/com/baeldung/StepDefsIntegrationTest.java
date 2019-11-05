@@ -3,6 +3,7 @@ package com.baeldung;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+import cucumber.api.java.en.Given;
 import org.springframework.http.HttpStatus;
 
 import cucumber.api.java.en.And;
@@ -11,9 +12,19 @@ import cucumber.api.java.en.When;
 
 public class StepDefsIntegrationTest extends SpringIntegrationTest {
 
+    @When("^the client calls /baeldung$")
+    public void the_client_issues_POST_hello() throws Throwable {
+        executePost();
+    }
+
+    @Given("^the client calls /hello$")
+    public void the_client_issues_GET_hello() throws Throwable {
+        executeGet("http://localhost:8082/hello");
+    }
+
     @When("^the client calls /version$")
     public void the_client_issues_GET_version() throws Throwable {
-        executeGet("http://localhost:8080/version");
+        executeGet("http://localhost:8082/version");
     }
 
     @Then("^the client receives status code of (\\d+)$")

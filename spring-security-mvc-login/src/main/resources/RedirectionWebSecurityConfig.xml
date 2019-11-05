@@ -14,7 +14,9 @@
     </http>
 
     <beans:bean class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler" name="awareAuthenticationSuccessHandler"/>
-    <beans:bean class="org.baeldung.security.RefererAuthenticationSuccessHandler" name="refererHandler"/>
+    <beans:bean class="com.baeldung.security.RefererAuthenticationSuccessHandler" name="refererHandler"/>
+    <beans:bean class="com.baeldung.controller.SecuredResourceController" />
+    <beans:bean id ="passwordEncoder" class = "org.springframework.security.crypto.password.NoOpPasswordEncoder" factory-method = "getInstance" />
 
     <authentication-manager>
         <authentication-provider>
@@ -26,4 +28,3 @@
 
 
 </beans:beans>
-
