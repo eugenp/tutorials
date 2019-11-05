@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ThemeResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Optional;
 
 public class UserPreferenceThemeResolver implements ThemeResolver {
 
@@ -34,55 +35,40 @@ public class UserPreferenceThemeResolver implements ThemeResolver {
 
     @Override
     public String resolveThemeName(HttpServletRequest request) {
-        String themeName = (String) request.getAttribute(THEME_REQUEST_ATTRIBUTE_NAME);
-        if (themeName != null) {
-            return themeName;
-        }
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (authentication != null && authentication.isAuthenticated() && isNotAnonymous(authentication)) {
-            User user = (User) authentication.getPrincipal();
-            UserPreference userPreference = userPreferenceRepository.findById(user.getUsername()).orElse(null);
-
-            if (userPreference != null) {
-                themeName = userPreference.getTheme();
-            }
-        }
-
-        // Fall back to default theme.
-        if (themeName == null) {
-            themeName = getDefaultThemeName();
-        }
+        String themeName = findThemeFromRequest(request).orElse(findUserPreferredTheme().orElse(getDefaultThemeName()));
         request.setAttribute(THEME_REQUEST_ATTRIBUTE_NAME, themeName);
         return themeName;
     }
 
-    private boolean isNotAnonymous(Authentication authentication) {
-        return !isAnonymous(authentication);
+    private Optional<String> findUserPreferredTheme() {
+        Authentication authentication = SecurityContextHolder.getContext()
+            .getAuthentication();
+        UserPreference userPreference = getUserPreference(authentication).orElse(new UserPreference());
+        return Optional.ofNullable(userPreference.getTheme());
     }
 
-    private boolean isAnonymous(Authentication authentication) {
-        return authentication != null && authentication.getPrincipal() instanceof String && "anonymousUser".equals(authentication.getPrincipal());
+    private Optional<String> findThemeFromRequest(HttpServletRequest request) {
+        return Optional.ofNullable((String) request.getAttribute(THEME_REQUEST_ATTRIBUTE_NAME));
+    }
+
+    private Optional<UserPreference> getUserPreference(Authentication authentication) {
+        return isAuthenticated(authentication) ? userPreferenceRepository.findById(((User) authentication.getPrincipal()).getUsername()) : Optional.empty();
+    }
+
+    private boolean isAuthenticated(Authentication authentication) {
+        return authentication != null && authentication.isAuthenticated();
     }
 
     @Override
     public void setThemeName(HttpServletRequest request, HttpServletResponse response, String theme) {
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated() && isNotAnonymous(authentication)) {
+        Authentication authentication = SecurityContextHolder.getContext()
+            .getAuthentication();
+        if (isAuthenticated(authentication)) {
             request.setAttribute(THEME_REQUEST_ATTRIBUTE_NAME, theme);
-            User user = (User) authentication.getPrincipal();
-
-            UserPreference userPreference = userPreferenceRepository.findById(user.getUsername()).orElse(new UserPreference());
-
-            userPreference.setUsername(user.getUsername());
+            UserPreference userPreference = getUserPreference(authentication).orElse(new UserPreference());
+            userPreference.setUsername(((User) authentication.getPrincipal()).getUsername());
             userPreference.setTheme(StringUtils.hasText(theme) ? theme : null);
             userPreferenceRepository.save(userPreference);
-
-        }
-
-        if (!StringUtils.hasText(theme)) {
-            request.setAttribute(THEME_REQUEST_ATTRIBUTE_NAME, getDefaultThemeName());
         }
     }
 }
