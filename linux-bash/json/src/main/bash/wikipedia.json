@@ -1,0 +1,22 @@
+{
+  "query": {
+    "pages": [
+      {
+        "21721040": {
+          "pageid": 21721040,
+          "ns": 0,
+          "title": "Stack Overflow",
+          "extract": "Some interesting text about Stack Overflow"
+        }
+      },
+      {
+        "21721041": {
+          "pageid": 21721041,
+          "ns": 0,
+          "title": "Baeldung",
+          "extract": "A great place to learn about Java"
+        }
+      }
+    ]
+  }
+}
