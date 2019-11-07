@@ -8,7 +8,7 @@ import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration;
 import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 
 @Configuration
-//@EnableR2dbcRepositories(basePackages = "com.baeldung.r2dbc.repository")
+@EnableR2dbcRepositories(basePackages = "com.baeldung.r2dbc.repository")
 public class R2DBCConfiguration extends AbstractR2dbcConfiguration {
     @Bean
     public H2ConnectionFactory connectionFactory() {

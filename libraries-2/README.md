@@ -18,6 +18,7 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Key Value Store with Chronicle Map](https://www.baeldung.com/java-chronicle-map)
 - [Guide to MapDB](https://www.baeldung.com/mapdb)
 - [A Guide to Apache Mesos](https://www.baeldung.com/apache-mesos)
-- [JasperReports with Spring](https://www.baeldung.com/spring-jasper)
+- [JasperReports with Spring](https://www.baeldung.com/spring-jasper)]
+- [Jetty ReactiveStreams HTTP Client](https://www.baeldung.com/jetty-reactivestreams-http-client)
 - More articles [[<-- prev]](/libraries)
 
