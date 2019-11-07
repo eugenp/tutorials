@@ -12,8 +12,6 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [Integration Testing with the Maven Cargo plugin](https://www.baeldung.com/integration-testing-with-the-maven-cargo-plugin)
 - [Project Configuration with Spring](https://www.baeldung.com/project-configuration-with-spring)
 - [Metrics for your Spring REST API](https://www.baeldung.com/spring-rest-api-metrics)
-- [Spring Security Expressions - hasRole Example](https://www.baeldung.com/spring-security-expressions-basic)
-
 
 ### Build the Project
 ```
