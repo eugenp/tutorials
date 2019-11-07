@@ -6,9 +6,10 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>com.baeldung.core-java-modules</groupId>
-        <artifactId>core-java-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-java</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-java</relativePath>
     </parent>
 
     <dependencies>
@@ -27,6 +28,11 @@
             <artifactId>mail</artifactId>
             <version>${javax.mail.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.asynchttpclient</groupId>
+            <artifactId>async-http-client</artifactId>
+            <version>${async-http-client.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -36,5 +42,6 @@
     <properties>
         <httpclient.version>4.5.9</httpclient.version>
         <javax.mail.version>1.5.0-b01</javax.mail.version>
+        <async-http-client.version>2.4.5</async-http-client.version>
     </properties>
 </project>
