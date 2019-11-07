@@ -18,6 +18,7 @@ import javax.inject.Inject;
 
 import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 
 @Slf4j
 public class HomeController extends Controller {
@@ -38,9 +39,16 @@ public class HomeController extends Controller {
 
 
     public WebSocket socket() {
-        return WebSocket.Json.acceptOrResult(request ->
-          CompletableFuture.completedFuture(F.Either.Right(
-          ActorFlow.actorRef(out -> Messenger.props(out), actorSystem, materializer))));
+        return WebSocket.Json.acceptOrResult(this::createActorFlow);
+    }
+
+    private CompletionStage<F.Either<Result, Flow<JsonNode, JsonNode, ?>>> createActorFlow(
+      Http.RequestHeader request) {
+        return CompletableFuture.completedFuture(F.Either.Right(createFlowForActor()));
+    }
+
+    private Flow<JsonNode, JsonNode, ?> createFlowForActor() {
+        return ActorFlow.actorRef(out -> Messenger.props(out), actorSystem, materializer);
     }
 
     public WebSocket akkaStreamsSocket() {
