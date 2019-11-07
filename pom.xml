@@ -722,10 +722,11 @@
                 <module>spring-boot-parent</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
+                <module>spring-boot-springdoc</module>
                 <module>spring-boot-testing</module>
                 <module>spring-boot-vue</module>
                 <module>spring-caching</module>
-				<module>spring-boot-libraries</module>
+                <module>spring-boot-libraries</module>
 
 
                 <module>spring-cloud</module>
@@ -922,6 +923,7 @@
                 <module>spring-boot-keycloak</module>
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-property-exp</module>
+                <module>spring-boot-springdoc</module>
                 <module>spring-boot-vue</module>
                 <module>spring-cloud</module>
                 <module>spring-cloud/spring-cloud-archaius/basic-config</module>
@@ -1467,8 +1469,9 @@
                 <module>spring-boot-parent</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
+                <module>spring-boot-springdoc</module>
                 <module>spring-boot-vue</module>
-				<module>spring-caching</module>
+                <module>spring-caching</module>
                 <module>spring-cloud</module>
                 <module>spring-cloud-bus</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
