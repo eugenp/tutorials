@@ -12,6 +12,7 @@
 - [Introduction to Spring Data JPA](http://www.baeldung.com/the-persistence-layer-with-spring-data-jpa)
 - [Spring Data JPA @Query](http://www.baeldung.com/spring-data-jpa-query)
 - [Spring JDBC](https://www.baeldung.com/spring-jdbc-jdbctemplate)
+- [Transaction Propagation and Isolation in Spring @Transactional](https://www.baeldung.com/spring-transactional-propagation-isolation)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
