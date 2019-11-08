@@ -27,12 +27,6 @@
             <version>${hsqldb.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
-        <dependency>
-            <groupId>org.asynchttpclient</groupId>
-            <artifactId>async-http-client</artifactId>
-            <version>${async-http-client.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.opencsv</groupId>
             <artifactId>opencsv</artifactId>
@@ -49,6 +43,12 @@
             <groupId>net.sf.jmimemagic</groupId>
             <artifactId>jmimemagic</artifactId>
             <version>${jmime-magic.version}</version>
+        </dependency>
+        <!-- Context Libraries -->
+        <dependency>
+            <groupId>com.sun.messaging.mq</groupId>
+            <artifactId>fscontext</artifactId>
+            <version>${fscontext.version}</version>
         </dependency>
     </dependencies>
 
@@ -149,12 +149,11 @@
         <!-- maven plugins -->
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <hsqldb.version>2.4.0</hsqldb.version>
-        <async-http-client.version>2.4.5</async-http-client.version>
         <!-- Mime Type Libraries -->
         <tika.version>1.18</tika.version>
         <jmime-magic.version>0.1.5</jmime-magic.version>
         <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
-
+        <fscontext.version>4.4.2</fscontext.version>
     </properties>
 
 </project>

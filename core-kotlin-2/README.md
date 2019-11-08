@@ -12,4 +12,5 @@ This module contains articles about core Kotlin.
 - [Split a List into Parts in Kotlin](https://www.baeldung.com/kotlin-split-list-into-parts)
 - [String Comparison in Kotlin](https://www.baeldung.com/kotlin-string-comparison)
 - [Guide to JVM Platform Annotations in Kotlin](https://www.baeldung.com/kotlin-jvm-annotations)
+- [Finding an Element in a List Using Kotlin](https://www.baeldung.com/kotlin-finding-element-in-list)
 - More articles: [[<-- prev]](/core-kotlin)

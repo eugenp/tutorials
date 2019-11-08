@@ -9,3 +9,4 @@ This module contains articles about security libraries.
 - [Guide to Google Tink](https://www.baeldung.com/google-tink)
 - [Introduction to BouncyCastle with Java](https://www.baeldung.com/java-bouncy-castle)
 - [Intro to Jasypt](https://www.baeldung.com/jasypt)
+- [Digital Signature in Java](https://www.baeldung.com/java-digital-signature)
