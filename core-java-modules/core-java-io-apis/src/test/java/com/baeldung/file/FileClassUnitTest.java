@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class FileClassDemoUnitTest {
+public class FileClassUnitTest {
 
     @Test
     public void givenDir_whenMkdir_thenDirIsDeleted() {

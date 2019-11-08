@@ -1,11 +1,6 @@
-package com.baeldung.stream;
+package com.baeldung.outputstream;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import java.io.*;
 
 public class OutputStreamExamples {
 

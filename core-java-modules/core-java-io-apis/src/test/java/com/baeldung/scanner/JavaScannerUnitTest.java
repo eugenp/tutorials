@@ -1,20 +1,12 @@
-package org.baeldung.java.io;
+package com.baeldung.scanner;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Locale;
 import java.util.Scanner;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class JavaScannerUnitTest {
 

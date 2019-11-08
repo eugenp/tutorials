@@ -1,6 +1,4 @@
-package org.baeldung.java.io;
-
-import static org.junit.Assert.*;
+package com.baeldung.filepath;
 
 import org.junit.AfterClass;
 import org.junit.Assume;
@@ -9,6 +7,8 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
 
 public class JavaFilePathUnitTest {
 
