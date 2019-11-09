@@ -1,6 +1,6 @@
 @(url: String)
 @main("Welcome to Play") {
-    <h1>Welcome to Play Websockets!</h1>
+    <h1>Welcome to Play WebSockets!</h1>
         <div id="messageContent"></div>
         <form>
             <textarea id="messageInput"></textarea>
@@ -19,18 +19,10 @@
 
         function initWebsocket() {
             websocket = new WebSocket("@url");
-            websocket.onopen = function (evt) {
-                onOpen(evt)
-            };
-            websocket.onclose = function (evt) {
-                onClose(evt)
-            };
-            websocket.onmessage = function (evt) {
-                onMessage(evt)
-            };
-            websocket.onerror = function (evt) {
-                onError(evt)
-            };
+            websocket.onopen = onOpen;
+            websocket.onclose = onClose;
+            websocket.onmessage = onMessage;
+            websocket.onerror = onError;
         }
 
         function onOpen(evt) {
