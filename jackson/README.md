@@ -24,7 +24,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Map Serialization and Deserialization with Jackson](https://www.baeldung.com/jackson-map)
 - [Jackson Streaming API](https://www.baeldung.com/jackson-streaming-api)
 - [Jackson – JsonMappingException (No serializer found for class)](https://www.baeldung.com/jackson-jsonmappingexception)
-- [How To Serialize Enums as JSON Objects with Jackson](https://www.baeldung.com/jackson-serialize-enums)
+- [How To Serialize and Deserialize Enums with Jackson](https://www.baeldung.com/jackson-serialize-enums)
 - [Jackson – Marshall String to JsonNode](https://www.baeldung.com/jackson-json-to-jsonnode)
 - [Jackson – Unmarshall to Collection/Array](https://www.baeldung.com/jackson-collection-array)
 - [Serialize Only Fields that meet a Custom Criteria with Jackson](https://www.baeldung.com/jackson-serialize-field-custom-criteria)
