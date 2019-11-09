@@ -2,10 +2,12 @@
 
 This module contains articles about Jackson.
 
-###The Course
+### The Course
+
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles: 
+
 - [Jackson – Unmarshall to Collection/Array](https://www.baeldung.com/jackson-collection-array)
 - [Jackson – Custom Serializer](https://www.baeldung.com/jackson-custom-serialization)
 - [Getting Started with Custom Deserialization in Jackson](https://www.baeldung.com/jackson-deserialization)
