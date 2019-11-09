@@ -3,6 +3,7 @@
     <groupId>com.stackify</groupId>
     <artifactId>rest-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <name>rest-client</name>
     <packaging>war</packaging>
 
     <parent>
@@ -24,9 +25,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
-    </properties>
 
 </project>

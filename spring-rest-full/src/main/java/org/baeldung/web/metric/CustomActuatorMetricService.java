@@ -6,20 +6,18 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.metrics.CounterService;
-import org.springframework.boot.actuate.metrics.Metric;
-import org.springframework.boot.actuate.metrics.repository.InMemoryMetricRepository;
-import org.springframework.boot.actuate.metrics.repository.MetricRepository;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.search.Search;
 
 @Service
 public class CustomActuatorMetricService implements ICustomActuatorMetricService {
 
-    private MetricRepository repo;
-
     @Autowired
-    private CounterService counter;
+    private MeterRegistry registry;
 
     private final List<ArrayList<Integer>> statusMetricsByMinute;
     private final List<String> statusList;
@@ -27,7 +25,6 @@ public class CustomActuatorMetricService implements ICustomActuatorMetricService
 
     public CustomActuatorMetricService() {
         super();
-        repo = new InMemoryMetricRepository();
         statusMetricsByMinute = new ArrayList<ArrayList<Integer>>();
         statusList = new ArrayList<String>();
     }
@@ -36,9 +33,10 @@ public class CustomActuatorMetricService implements ICustomActuatorMetricService
 
     @Override
     public void increaseCount(final int status) {
-        counter.increment("status." + status);
-        if (!statusList.contains("counter.status." + status)) {
-            statusList.add("counter.status." + status);
+        String counterName = "counter.status." + status;
+        registry.counter(counterName).increment(1);
+        if (!statusList.contains(counterName)) {
+            statusList.add(counterName);
         }
     }
 
@@ -78,17 +76,16 @@ public class CustomActuatorMetricService implements ICustomActuatorMetricService
 
     @Scheduled(fixedDelay = 60000)
     private void exportMetrics() {
-        Metric<?> metric;
         final ArrayList<Integer> statusCount = new ArrayList<Integer>();
         for (final String status : statusList) {
-            metric = repo.findOne(status);
-            if (metric != null) {
-                statusCount.add(metric.getValue().intValue());
-                repo.reset(status);
+            Search search = registry.find(status);
+            if (search != null) {
+                Counter counter = search.counter();
+                statusCount.add(counter != null ? ((int) counter.count()) : 0);
+                registry.remove(counter);
             } else {
                 statusCount.add(0);
             }
-
         }
         statusMetricsByMinute.add(statusCount);
     }

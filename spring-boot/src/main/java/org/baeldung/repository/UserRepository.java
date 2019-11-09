@@ -15,7 +15,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
 
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<User, Integer> {
@@ -23,8 +22,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     int countByStatus(int status);
 
     Optional<User> findOneByName(String name);
-
-    Stream<User> findAllByName(String name);
 
     @Async
     CompletableFuture<User> findOneByStatus(Integer status);

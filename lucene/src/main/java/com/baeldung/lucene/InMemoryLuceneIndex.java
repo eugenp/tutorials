@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.SortedDocValuesField;
@@ -27,9 +27,9 @@ import org.apache.lucene.util.BytesRef;
 public class InMemoryLuceneIndex {
 
     private Directory memoryIndex;
-    private StandardAnalyzer analyzer;
+    private Analyzer analyzer;
 
-    public InMemoryLuceneIndex(Directory memoryIndex, StandardAnalyzer analyzer) {
+    public InMemoryLuceneIndex(Directory memoryIndex, Analyzer analyzer) {
         super();
         this.memoryIndex = memoryIndex;
         this.analyzer = analyzer;

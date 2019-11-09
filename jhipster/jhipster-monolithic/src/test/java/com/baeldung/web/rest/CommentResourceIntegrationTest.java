@@ -86,7 +86,7 @@ public class CommentResourceIntegrationTest {
             .text(DEFAULT_TEXT)
             .creationDate(DEFAULT_CREATION_DATE);
         // Add required entity
-        Post post = PostResourceIntTest.createEntity(em);
+        Post post = PostResourceIntegrationTest.createEntity(em);
         em.persist(post);
         em.flush();
         comment.setPost(post);

@@ -14,9 +14,9 @@ public class ErrorController {
         return "Error Code: 400 occured.";
     }
 
-    @GetMapping("/errorHeaven")
+    @GetMapping("/errorHaven")
     String errorHeaven() {
-        return "You have reached the heaven of errors!!!";
+        return "You have reached the haven of errors!!!";
     }
 
 }

@@ -49,7 +49,7 @@
     "karma-phantomjs-launcher": "1.0.2",
     "karma-script-launcher": "1.0.0",
     "lazypipe": "1.0.1",
-    "lodash": "4.15.0",
+    "lodash": "4.17.10",
     "main-bower-files": "2.13.1",
     "map-stream": "0.0.6",
     "phantomjs-prebuilt": "2.1.12",

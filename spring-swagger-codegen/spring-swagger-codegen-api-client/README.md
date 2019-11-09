@@ -1,4 +1,6 @@
-# spring-swagger-codegen-api-client
+## Spring Swagger Codegen API Client
+
+This module contains the code for [Generate Spring Boot REST Client with Swagger](http://www.baeldung.com/spring-boot-rest-client-swagger-codegen).
 
 ## Requirements
 
@@ -152,4 +154,6 @@ It's recommended to create an instance of `ApiClient` per thread in a multithrea
 ## Author
 
 apiteam@swagger.io
+
+
 

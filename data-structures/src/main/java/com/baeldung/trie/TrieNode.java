@@ -4,28 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 class TrieNode {
-    private Map<Character, TrieNode> children;
+    private final Map<Character, TrieNode> children = new HashMap<>();
     private boolean endOfWord;
 
-    public TrieNode() {
-        children = new HashMap<>();
-        endOfWord = false;
-    }
-
-    public Map<Character, TrieNode> getChildren() {
+    Map<Character, TrieNode> getChildren() {
         return children;
     }
 
-    public void setChildren(Map<Character, TrieNode> children) {
-        this.children = children;
-    }
-
-    public boolean isEndOfWord() {
+    boolean isEndOfWord() {
         return endOfWord;
     }
 
-    public void setEndOfWord(boolean endOfWord) {
+    void setEndOfWord(boolean endOfWord) {
         this.endOfWord = endOfWord;
     }
-
 }

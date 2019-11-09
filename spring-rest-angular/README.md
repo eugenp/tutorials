@@ -1,6 +1,7 @@
-## Spring REST Angular Example Project
+## Spring REST Angular
+
+This module contains articles about REST APIs with Spring and Angular
 
 ### Relevant Articles:
 
-- [Spring’s RequestBody and ResponseBody Annotations](http://www.baeldung.com/spring-request-response-body)
-- [Pagination with Spring REST and AngularJS table](http://www.baeldung.com/pagination-with-a-spring-rest-api-and-an-angularjs-table)
+- [Pagination with Spring REST and AngularJS table](https://www.baeldung.com/pagination-with-a-spring-rest-api-and-an-angularjs-table)

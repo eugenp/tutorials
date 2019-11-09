@@ -4,8 +4,9 @@ import com.baeldung.spring.data.neo4j.config.MovieDatabaseNeo4jTestConfiguration
 import com.baeldung.spring.data.neo4j.domain.Movie;
 import com.baeldung.spring.data.neo4j.domain.Person;
 import com.baeldung.spring.data.neo4j.domain.Role;
-import com.baeldung.spring.data.neo4j.repostory.MovieRepository;
-import com.baeldung.spring.data.neo4j.repostory.PersonRepository;
+import com.baeldung.spring.data.neo4j.repository.MovieRepository;
+import com.baeldung.spring.data.neo4j.repository.PersonRepository;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,10 +51,10 @@ public class MovieRepositoryIntegrationTest {
         Role charlie = new Role();
         charlie.setMovie(italianJob);
         charlie.setPerson(mark);
-        Collection<String> roleNames = new HashSet();
+        Collection<String> roleNames = new HashSet<>();
         roleNames.add("Charlie Croker");
         charlie.setRoles(roleNames);
-        List<Role> roles = new ArrayList();
+        List<Role> roles = new ArrayList<>();
         roles.add(charlie);
         italianJob.setRoles(roles);
         movieRepository.save(italianJob);

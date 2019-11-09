@@ -1,2 +1,2 @@
 ### Relevant Articles:
-- [Docker Test Containers in Java Tests](TODO link to be added.)
+- [Docker Test Containers in Java Tests](http://www.baeldung.com/docker-test-containers)

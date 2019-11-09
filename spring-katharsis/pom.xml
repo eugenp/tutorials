@@ -4,8 +4,9 @@
     <groupId>org.springframework.samples</groupId>
     <artifactId>spring-katharsis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+	<name>spring-katharsis</name>
     <packaging>war</packaging>
-
+	
     <parent>
         <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
@@ -45,12 +46,12 @@
         <dependency>
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
-            <version>0.9.10</version>
+            <version>${reflections.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.7</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
     </dependencies>
 
@@ -134,6 +135,7 @@
 
     <properties>
         <katharsis.version>3.0.2</katharsis.version>
+        <reflections.version>0.9.10</reflections.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
 

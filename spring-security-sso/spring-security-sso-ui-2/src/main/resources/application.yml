@@ -1,6 +1,7 @@
 server:
     port: 8083
-    context-path: /ui2
+    servlet:
+      context-path: /ui2
     session:
       cookie:
         name: UI2SESSION

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>asciidoctor</artifactId>
     <name>asciidoctor</name>
@@ -61,9 +61,10 @@
     </build>
 
     <properties>
-        <asciidoctor-maven-plugin.version>1.5.5</asciidoctor-maven-plugin.version>
-        <asciidoctorj.version>1.5.4</asciidoctorj.version>
-        <asciidoctorj-pdf.src.version>1.5.0-alpha.11</asciidoctorj-pdf.src.version>
+        <asciidoctor-maven-plugin.version>1.5.6</asciidoctor-maven-plugin.version>
+        <asciidoctorj.version>1.5.6</asciidoctorj.version>
+        
+        <asciidoctorj-pdf.version>1.5.0-alpha.15</asciidoctorj-pdf.version>
         <asciidoctorj-pdf.plugin.version>1.5.0-alpha.15</asciidoctorj-pdf.plugin.version>
     </properties>
 

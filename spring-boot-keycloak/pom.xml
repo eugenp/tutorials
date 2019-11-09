@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.keycloak</groupId>
     <artifactId>spring-boot-keycloak</artifactId>
     <version>0.0.1</version>
-    <packaging>jar</packaging>
     <name>spring-boot-keycloak</name>
     <description>This is a simple application demonstrating integration between Keycloak and Spring Boot.</description>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -75,8 +75,6 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <keycloak-adapter-bom.version>3.3.0.Final</keycloak-adapter-bom.version>
     </properties>
 

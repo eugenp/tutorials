@@ -4,15 +4,20 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Spring Secured Sockets</title>
-    <link href="<c:url value="/resources/styles/style.css"/>" rel="stylesheet">
-    <script src="<c:url value="/resources/vendor/jquery/jquery.min.js" />"></script>
-</head>
-<body>
-    <h1>ACCESS DENIED!</h1>
-    <br/>
-    <br/>
-    <a href="${pageContext.request.contextPath}/login">Click to login.</a>
-</body>
+
+    <head>
+        <title>Spring Secured Sockets</title>
+        <link href="<c:url value="/resources/styles/app.css"/>" rel="stylesheet">
+        <link href="<c:url value="/resources/styles/denied.css"/>" rel="stylesheet">
+        <script src="<c:url value="/resources/vendor/jquery/jquery.min.js" />"></script>
+    </head>
+
+    <body>
+        <main>
+            <div class="wrapper">
+                <h1>ACCESS DENIED!</h1>
+                <a href="${pageContext.request.contextPath}/login">Click to login.</a>
+            </div>
+        </main>
+    </body>
 </html>
