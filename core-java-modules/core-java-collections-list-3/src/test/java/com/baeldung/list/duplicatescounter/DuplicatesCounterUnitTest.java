@@ -1,4 +1,4 @@
-package com.baeldung.list;
+package com.baeldung.list.duplicatescounter;
 
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
