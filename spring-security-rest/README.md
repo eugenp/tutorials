@@ -15,3 +15,4 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [Servlet 3 Async Support with Spring MVC and Spring Security](https://www.baeldung.com/spring-mvc-async-security)
 - [Intro to Spring Security Expressions](https://www.baeldung.com/spring-security-expressions)
 - [Spring Security for a REST API](https://www.baeldung.com/securing-a-restful-web-service-with-spring-security)
+- [Spring Security Expressions - hasRole Example](https://www.baeldung.com/spring-security-expressions-basic)
