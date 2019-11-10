@@ -13,36 +13,51 @@ public class CreateFilesUnitTest {
     @Test
     public void givenAnExistingDirectory_whenCreatingAFileWithAbsolutePath_thenFileIsCreated() throws IOException {
         File tempDirectory = new File(System.getProperty("java.io.tmpdir"));
-        File fileWithAbsolutePath = new File(tempDirectory.getAbsolutePath() + "/myDirectory/testFile.txt");
+        File fileWithAbsolutePath = new File(tempDirectory.getAbsolutePath() + "/testFile1.txt");
 
-        assertFalse(fileWithAbsolutePath.exists());
+        try {
+            assertFalse(fileWithAbsolutePath.exists());
 
-        Files.touch(fileWithAbsolutePath);
+            Files.touch(fileWithAbsolutePath);
 
-        assertTrue(fileWithAbsolutePath.exists());
+            assertTrue(fileWithAbsolutePath.exists());
+        }
+        finally {
+            fileWithAbsolutePath.delete();
+        }
     }
 
     @Test
     public void givenAnExistingDirectory_whenCreatingANewDirectoryAndFileWithRelativePath_thenFileIsCreated() throws IOException {
         File tempDirectory = new File(System.getProperty("java.io.tmpdir"));
-        File fileWithRelativePath = new File(tempDirectory, "myDirectory/newFile.txt");
+        File fileWithRelativePath = new File(tempDirectory, "testFile2.txt");
 
-        assertFalse(fileWithRelativePath.exists());
+        try {
+            assertFalse(fileWithRelativePath.exists());
 
-        Files.touch(fileWithRelativePath);
+            Files.touch(fileWithRelativePath);
 
-        assertTrue(fileWithRelativePath.exists());
+            assertTrue(fileWithRelativePath.exists());
+        }
+        finally {
+            fileWithRelativePath.delete();
+        }
     }
 
     @Test
     public void whenCreatingAFileWithFileSeparator_thenFileIsCreated() throws IOException {
         File tempDirectory = new File(System.getProperty("java.io.tmpdir"));
-        File newFile = new File(tempDirectory.getAbsolutePath() + File.separator + "newFile.txt");
+        File newFile = new File(tempDirectory.getAbsolutePath() + File.separator + "testFile3.txt");
 
-        assertFalse(newFile.exists());
+        try {
+            assertFalse(newFile.exists());
 
-        Files.touch(newFile);
+            Files.touch(newFile);
 
-        assertTrue(newFile.exists());
+            assertTrue(newFile.exists());
+        }
+        finally {
+            newFile.delete();
+        }            
     }
 }
