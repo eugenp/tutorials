@@ -27,7 +27,7 @@ public class PaymentController {
 	}
 
 	@PostMapping(value = "/makepayment", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Mono<Boolean> createTweets(@RequestBody Payment payment) {
+	public Mono<Boolean> makePayment(@RequestBody Payment payment) {
 		return service.makePayment(payment);
 	}
 
