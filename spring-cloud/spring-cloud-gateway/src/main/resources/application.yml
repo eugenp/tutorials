@@ -1,16 +1,2 @@
 server:
   port: 80
-spring:
-  cloud:
-    gateway:
-      routes:
-      - id: baeldung_route
-        uri: http://www.baeldung.com
-        predicates:
-        - Path=/baeldung
-        
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
