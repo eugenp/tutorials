@@ -2,11 +2,19 @@ package com.baeldung.isnumeric;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.regex.Pattern;
+
 import org.junit.Test;
 
 public class RegularExpressionsUnitTest {
-    public static boolean isNumeric(String strNum) {
-        return strNum.matches("-?\\d+(\\.\\d+)?");
+    private final Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+
+    public boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        return pattern.matcher(strNum)
+            .matches();
     }
 
     @Test
@@ -17,6 +25,7 @@ public class RegularExpressionsUnitTest {
         assertThat(isNumeric("-200")).isTrue();
 
         // Invalid Numbers
+        assertThat(isNumeric(null)).isFalse();
         assertThat(isNumeric("abc")).isFalse();
     }
 }
