@@ -12,11 +12,11 @@ public class AccessorsUnitTest {
     @Test
     public void givenBasicAccount_thenUseBasicAccessors() {
         BasicAccount account = new BasicAccount();
-        account.setBalance(BigDecimal.TEN);
         account.setName("Basic Accessors");
+        account.setBalance(BigDecimal.TEN);
 
-        assertEquals(BigDecimal.TEN, account.getBalance());
         assertEquals("Basic Accessors", account.getName());
+        assertEquals(BigDecimal.TEN, account.getBalance());
     }
 
     @Test
@@ -25,8 +25,8 @@ public class AccessorsUnitTest {
         account.name("Fluent Account");
         account.balance(BigDecimal.TEN);
 
-        assertEquals(BigDecimal.TEN, account.balance());
         assertEquals("Fluent Account", account.name());
+        assertEquals(BigDecimal.TEN, account.balance());
     }
 
     @Test
@@ -34,8 +34,8 @@ public class AccessorsUnitTest {
         ChainedAccount account = new ChainedAccount();
         account.setName("Chained Account").setBalance(BigDecimal.TEN);
 
-        assertEquals(BigDecimal.TEN, account.getBalance());
         assertEquals("Chained Account", account.getName());
+        assertEquals(BigDecimal.TEN, account.getBalance());
     }
 
     @Test
@@ -44,8 +44,8 @@ public class AccessorsUnitTest {
           .name("Fluent Account")
           .balance(BigDecimal.TEN);
 
-        assertEquals(BigDecimal.TEN, account.balance());
         assertEquals("Fluent Account", account.name());
+        assertEquals(BigDecimal.TEN, account.balance());
     }
 
     @Test
@@ -53,9 +53,11 @@ public class AccessorsUnitTest {
         PrefixedAccount account = new PrefixedAccount();
         account.setName("Prefixed Fields");
         account.setBalance(BigDecimal.TEN);
+        account.setNotes("Notes");
 
-        assertEquals(BigDecimal.TEN, account.getBalance());
         assertEquals("Prefixed Fields", account.getName());
+        assertEquals(BigDecimal.TEN, account.getBalance());
+        assertEquals("Notes", account.getNotes());
     }
 
     @Test
@@ -65,8 +67,8 @@ public class AccessorsUnitTest {
           .name("Prefixed Fluent Fields")
           .balance(BigDecimal.TEN);
 
-        assertEquals(BigDecimal.TEN, account.balance());
         assertEquals("Prefixed Fluent Fields", account.name());
+        assertEquals(BigDecimal.TEN, account.balance());
     }
 
 }
