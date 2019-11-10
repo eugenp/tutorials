@@ -11,148 +11,171 @@ import static org.junit.Assert.*;
 public class FileClassDemoUnitTest {
 
     @Test
-    public void givenDirectoryCreated_whenMkdirIsInvoked_thenDirectoryIsDeleted() {
-        File directory = new File("testDirectory");
-        if (!directory.isDirectory() || !directory.exists()) {
-            directory.mkdir();
-        }
-
+    public void givenDir_whenMkdir_thenDirIsDeleted() {
+        File directory = new File("dir");
+        assertTrue(directory.mkdir());
         assertTrue(directory.delete());
     }
 
     @Test
-    public void givenFileCreated_whenCreateNewFileIsInvoked_thenFileIsDeleted() throws IOException {
-        File file = new File("testFile.txt");
-        if (!file.isFile() || !file.exists()) {
-            file.createNewFile();
+    public void givenFile_whenCreateNewFile_thenFileIsDeleted() {
+        File file = new File("file.txt");
+        try {
+            assertTrue(file.createNewFile());
+        } catch (IOException e) {
+            fail("Could not create " + "file.txt");
         }
-
         assertTrue(file.delete());
     }
 
+    @Test
+    public void givenFile_whenCreateNewFile_thenMetadataIsCorrect() {
+
+        String sep = File.separator;
+
+        File parentDir = makeDir("filesDir");
+
+        File child = new File(parentDir, "file.txt");
+        try {
+            child.createNewFile();
+        } catch (IOException e) {
+            fail("Could not create " + "file.txt");
+        }
+
+        assertEquals("file.txt", child.getName());
+        assertEquals(parentDir.getName(), child.getParentFile().getName());
+        assertEquals(parentDir.getPath() + sep + "file.txt", child.getPath());
+
+        removeDir(parentDir);
+    }
+
 
     @Test
-    public void givenFileCreated_whenCreateNewFileInvoked_thenMetadataIsAsExpected() throws IOException {
+    public void givenReadOnlyFile_whenCreateNewFile_thenCantModFile() {
+        File parentDir = makeDir("readDir");
 
-        // different Operating systems have different separator characters
-        String separatorCharacter = System.getProperty("file.separator");
-
-        File parentDirectory = makeDirectory("filesDirectory");
-
-        File childFile = new File(parentDirectory, "file1.txt");
-        childFile.createNewFile();
-
-        assertTrue(childFile.getName().equals("file1.txt"));
-        assertTrue(childFile.getParentFile().getName().equals(parentDirectory.getName()));
-        assertTrue(childFile.getPath().equals(parentDirectory.getPath() + separatorCharacter + "file1.txt"));
-
-        removeDirectory(parentDirectory);
-    }
-
-
-    @Test(expected = FileNotFoundException.class)
-    public void givenReadOnlyFileCreated_whenCreateNewFileInvoked_thenFileCannotBeWrittenTo() throws IOException {
-        File parentDirectory = makeDirectory("filesDirectory");
-
-        File childFile = new File(parentDirectory, "file1.txt");
-        childFile.createNewFile();
-
-        childFile.setWritable(false);
-
-        FileOutputStream fos = new FileOutputStream(childFile);
-        fos.write("Hello World".getBytes()); // write operation
-        fos.flush();
-        fos.close();
-
-        removeDirectory(parentDirectory);
-    }
-
-    @Test(expected = FileNotFoundException.class)
-    public void givenWriteOnlyFileCreated_whenCreateNewFileInvoked_thenFileCannotBeReadFrom() throws IOException {
-        File parentDirectory = makeDirectory("filesDirectory");
-
-        File childFile = new File(parentDirectory, "file1.txt");
-        childFile.createNewFile();
-
-        childFile.setReadable(false);
-
-        FileInputStream fis = new FileInputStream(childFile);
-        fis.read(); // read operation
-        fis.close();
-
-        removeDirectory(parentDirectory);
+        File child = new File(parentDir, "file.txt");
+        try {
+            child.createNewFile();
+        } catch (IOException e) {
+            fail("Could not create " + "file.txt");
+        }
+        child.setWritable(false);
+        boolean writable = true;
+        try (FileOutputStream fos = new FileOutputStream(child)) {
+            fos.write("Hello World".getBytes()); // write operation
+            fos.flush();
+        } catch (IOException e) {
+            writable = false;
+        } finally {
+            removeDir(parentDir);
+        }
+        assertFalse(writable);
     }
 
     @Test
-    public void givenFilesCreatedInDirectory_whenCreateNewFileInvoked_thenTheyCanBeListedAsExpected() throws IOException {
-        File directory = makeDirectory("filtersDirectory");
+    public void givenWriteOnlyFile_whenCreateNewFile_thenCantReadFile() {
+        File parentDir = makeDir("writeDir");
 
-        File csvFile = new File(directory, "csvFile.csv");
-        csvFile.createNewFile();
+        File child = new File(parentDir, "file.txt");
+        try {
+            child.createNewFile();
+        } catch (IOException e) {
+            fail("Could not create " + "file.txt");
+        }
+        child.setReadable(false);
+        boolean readable = true;
+        try (FileInputStream fis = new FileInputStream(child)) {
+            fis.read(); // read operation
+        } catch (IOException e) {
+            readable = false;
+        } finally {
+            removeDir(parentDir);
+        }
+        assertFalse(readable);
+    }
 
-        File txtFile = new File(directory, "txtFile.txt");
-        txtFile.createNewFile();
+    @Test
+    public void givenFilesInDir_whenCreateNewFile_thenCanListFiles() {
+        File parentDir = makeDir("filtersDir");
+
+        String[] files = {"file1.csv", "file2.txt"};
+        for (String file : files) {
+            try {
+                new File(parentDir, file).createNewFile();
+            } catch (IOException e) {
+                fail("Could not create " + file);
+            }
+        }
 
         //normal listing
-        assertEquals(2, directory.list().length);
+        assertEquals(2, parentDir.list().length);
 
         //filtered listing
         FilenameFilter csvFilter = (dir, ext) -> ext.endsWith(".csv");
-        assertEquals(1, directory.list(csvFilter).length);
+        assertEquals(1, parentDir.list(csvFilter).length);
 
-        removeDirectory(directory);
+        removeDir(parentDir);
     }
 
     @Test
-    public void givenDirectoryIsCreated_whenMkdirInvoked_thenDirectoryCanBeRenamed() {
+    public void givenDir_whenMkdir_thenCanRenameDir() {
 
-        File source = makeDirectory("source");
-        File destination = makeDirectory("destination");
-        source.renameTo(destination);
+        File source = makeDir("source");
+        File destination = makeDir("destination");
+        boolean renamed = source.renameTo(destination);
 
-        assertFalse(source.isDirectory());
-        assertTrue(destination.isDirectory());
+        if (renamed) {
+            assertFalse(source.isDirectory());
+            assertTrue(destination.isDirectory());
 
-        removeDirectory(destination);
+            removeDir(destination);
+        }
     }
 
     @Test
-    public void givenDataIsWrittenToFile_whenWriteIsInvoked_thenFreeSpaceOnSystemDecreases() throws IOException {
+    public void givenDataWritten_whenWrite_thenFreeSpaceReduces() {
 
-        String name = System.getProperty("user.home") + System.getProperty("file.separator") + "test";
-        File testDir = makeDirectory(name);
+        String home = System.getProperty("user.home");
+        String sep = File.separator;
+        File testDir = makeDir(home + sep + "test");
         File sample = new File(testDir, "sample.txt");
 
-        long freeSpaceBeforeWrite = testDir.getFreeSpace();
-        writeSampleDataToFile(sample);
+        long freeSpaceBefore = testDir.getFreeSpace();
+        try {
+            writeSampleDataToFile(sample);
+        } catch (IOException e) {
+            fail("Could not write to " + "sample.txt");
+        }
 
-        long freeSpaceAfterWrite = testDir.getFreeSpace();
-        assertTrue(freeSpaceAfterWrite < freeSpaceBeforeWrite);
+        long freeSpaceAfter = testDir.getFreeSpace();
+        assertTrue(freeSpaceAfter < freeSpaceBefore);
 
-        removeDirectory(testDir);
+        removeDir(testDir);
     }
 
-    private static File makeDirectory(String directoryName) {
-        File directory = new File(directoryName);
+    private static File makeDir(String name) {
+        File directory = new File(name);
         directory.mkdir();
         if (directory.isDirectory()) {
             return directory;
         }
-        throw new RuntimeException("Directory not created for " + directoryName);
+        throw new RuntimeException("'" + name + "' not made!");
     }
 
-    private static void removeDirectory(File directory) {
+    private static void removeDir(File directory) {
         // make sure you don't delete your home directory here
-        if (directory.getPath().equals(System.getProperty("user.home"))) {
+        String home = System.getProperty("user.home");
+        if (directory.getPath().equals(home)) {
             return;
         }
 
         // remove directory and its files from system
-        if (directory != null && directory.exists()) {
+        if (directory.exists()) {
             // delete all files inside the directory
-            File[] filesInDirectory = directory.listFiles();
-            if (filesInDirectory != null) {
-                List<File> files = Arrays.asList(filesInDirectory);
+            File[] dirFiles = directory.listFiles();
+            if (dirFiles != null) {
+                List<File> files = Arrays.asList(dirFiles);
                 files.forEach(f -> deleteFile(f));
             }
 
@@ -171,8 +194,8 @@ public class FileClassDemoUnitTest {
         //write sample text to file
         try (FileOutputStream out = new FileOutputStream(sample)) {
             for (int i = 1; i <= 100000; i++) {
-                String sampleText = "Sample line number " + i + "\n";
-                out.write(sampleText.getBytes());
+                String text = "Sample line number " + i + "\n";
+                out.write(text.getBytes());
             }
         }
     }
