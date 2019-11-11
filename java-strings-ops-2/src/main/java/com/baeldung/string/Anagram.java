@@ -5,26 +5,30 @@ import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 
 public class Anagram {
-    public boolean isAnagramSort(String str1, String str2) {
-        if (str1.length() != str2.length()) {
+    //this definition only works for single byte encoding character set.
+    //For multibyte encoding, such as UTF-8, 16, 32 etc., 
+    //we need to increase this number so that it can contain all possible characters.
+    private static int MAX_CHARACTER = 256;
+
+    public boolean isAnagramSort(String string1, String string2) {
+        if (string1.length() != string2.length()) {
             return false;
         }
-        char[] a1 = str1.toCharArray();
-        char[] a2 = str2.toCharArray();
+        char[] a1 = string1.toCharArray();
+        char[] a2 = string2.toCharArray();
         Arrays.sort(a1);
         Arrays.sort(a2);
         return Arrays.equals(a1, a2);
     }
 
-    public boolean isAnagramCouting(String str1, String str2) {
-        if (str1.length() != str2.length()) {
+    public boolean isAnagramCounting(String string1, String string2) {
+        if (string1.length() != string2.length()) {
             return false;
         }
-        final int MAX_CHARACTER = 256;
         int count[] = new int[MAX_CHARACTER];
-        for (int i = 0; i < str1.length(); i++) {
-            count[str1.charAt(i)]++;
-            count[str2.charAt(i)]--;
+        for (int i = 0; i < string1.length(); i++) {
+            count[string1.charAt(i)]++;
+            count[string2.charAt(i)]--;
         }
         for (int i = 0; i < MAX_CHARACTER; i++) {
             if (count[i] != 0) {
@@ -34,15 +38,15 @@ public class Anagram {
         return true;
     }
 
-    public boolean isAnagramMultiset(String str1, String str2) {
-        if (str1.length() != str2.length()) {
+    public boolean isAnagramMultiset(String string1, String string2) {
+        if (string1.length() != string2.length()) {
             return false;
         }
         Multiset<Character> multiset1 = HashMultiset.create();
         Multiset<Character> multiset2 = HashMultiset.create();
-        for (int i = 0; i < str1.length(); i++) {
-            multiset1.add(str1.charAt(i));
-            multiset2.add(str2.charAt(i));
+        for (int i = 0; i < string1.length(); i++) {
+            multiset1.add(string1.charAt(i));
+            multiset2.add(string2.charAt(i));
         }
         return multiset1.equals(multiset2);
     }

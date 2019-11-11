@@ -7,22 +7,50 @@ import org.junit.Test;
 
 public class AnagramUnitTest {
     @Test
-    public void whenAnagram_thenReturnTrue() {
-       Anagram anagram = new Anagram();
-       String str1 = "abcab";
-       String str2 = "cabba";
-       assertTrue(anagram.isAnagramSort(str1, str2));
-       assertTrue(anagram.isAnagramCouting(str1, str2));
-       assertTrue(anagram.isAnagramMultiset(str1, str2));
+    public void givenAnagram_whenUsingSort_thenIdentifyAnagram() {
+        Anagram anagram = new Anagram();
+        String string1 = "abcab";
+        String string2 = "cabba";
+        assertTrue(anagram.isAnagramSort(string1, string2));
     }
 
     @Test
-    public void whenNotAnagram_thenReturnFalse() {
-       Anagram anagram = new Anagram();
-       String str1 = "abcaba";
-       String str2 = "cabbac";
-       assertFalse(anagram.isAnagramSort(str1, str2));
-       assertFalse(anagram.isAnagramCouting(str1, str2));
-       assertFalse(anagram.isAnagramMultiset(str1, str2));
+    public void givenAnagram_whenUsingCounting_thenIdentifyAnagram() {
+        Anagram anagram = new Anagram();
+        String string1 = "abcab";
+        String string2 = "cabba";
+        assertTrue(anagram.isAnagramCounting(string1, string2));
+    }
+
+    @Test
+    public void givenAnagram_whenUsingMultiset_thenIdentifyAnagram() {
+        Anagram anagram = new Anagram();
+        String string1 = "abcab";
+        String string2 = "cabba";
+        assertTrue(anagram.isAnagramMultiset(string1, string2));
+    }
+
+    @Test
+    public void givenNonAnagram_whenUsingSort_thenIdentifyNotAnagram() {
+        Anagram anagram = new Anagram();
+        String string1 = "abcaba";
+        String string2 = "cabbac";
+        assertFalse(anagram.isAnagramSort(string1, string2));
+    }
+
+    @Test
+    public void givenNonAnagram_whenUsingCounting_thenIdentifyNotAnagram() {
+        Anagram anagram = new Anagram();
+        String string1 = "abcaba";
+        String string2 = "cabbac";
+        assertFalse(anagram.isAnagramCounting(string1, string2));
+    }
+
+    @Test
+    public void givenNonAnagram_whenUsingMultiset_thenIdentifyNotAnagram() {
+        Anagram anagram = new Anagram();
+        String string1 = "abcaba";
+        String string2 = "cabbac";
+        assertFalse(anagram.isAnagramMultiset(string1, string2));
     }
 }
