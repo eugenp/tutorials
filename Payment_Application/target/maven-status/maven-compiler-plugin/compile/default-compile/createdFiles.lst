@@ -1,7 +1,0 @@
-com\baeldung\payment\controller\PaymentController.class
-com\baeldung\payment\domain\Payment.class
-com\baeldung\payment\service\PaymentExternalAdapter.class
-com\baeldung\payment\service\impl\PaymentServiceImpl.class
-com\baeldung\payment\PaymentDemoApplication.class
-com\baeldung\payment\service\impl\PaymentExternalAdapterImpl.class
-com\baeldung\payment\service\PaymentService.class
