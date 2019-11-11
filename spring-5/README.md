@@ -15,4 +15,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring ResponseStatusException](https://www.baeldung.com/spring-response-status-exception)
 - [Spring Assert Statements](https://www.baeldung.com/spring-assert)
 - [Configuring a Hikari Connection Pool with Spring Boot](https://www.baeldung.com/spring-boot-hikari)
-- [Difference between <context:annotation-config> vs <context:component-scan>](https://www.baeldung.com/spring-contextannotation-contextcomponentscan)
+- [Difference between \<context:annotation-config> vs \<context:component-scan>](https://www.baeldung.com/spring-contextannotation-contextcomponentscan)
