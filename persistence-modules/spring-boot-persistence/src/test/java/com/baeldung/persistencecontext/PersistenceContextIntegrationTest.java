@@ -37,7 +37,7 @@ public class PersistenceContextIntegrationTest {
     }
 
     @Test(expected = TransactionRequiredException.class)
-    public void testThatWhenUserSaveWithOutTransactionowTransactionRequiredExceptionOnPersist() {
+    public void testThatUserSaveWithoutTransactionThrowException() {
         User user = new User(122L, "Devender", "admin");
         transctionPersistenceContext.insertWithoutTransaction(user);
     }
@@ -53,7 +53,7 @@ public class PersistenceContextIntegrationTest {
     }
 
     @Test(expected = EntityExistsException.class)
-    public void testThatWhenAddUserWithSameIdentifierInPersistenceContextThenShouldThrowException() {
+    public void testThatPersistUserWithSameIdentifierThrowException() {
         User user1 = new User(126L, "Devender", "admin");
         User user2 = new User(126L, "Devender", "admin");
         extendedPersistenceContext.insertWithoutTransaction(user1);
