@@ -1,4 +1,4 @@
-package com.baeldung.list;
+package com.baeldung.list.duplicatescounter;
 
 import java.util.HashMap;
 import java.util.List;
