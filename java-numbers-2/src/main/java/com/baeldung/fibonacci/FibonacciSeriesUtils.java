@@ -23,4 +23,20 @@ public class FibonacciSeriesUtils {
         return n1;
     }
 
+    public static int nthFibonacciTermUsingGoldenRatio(int n) {
+        double goldenRatio = 1.6180339;
+        int first5FibonacciTerms[] = { 0, 1, 1, 2, 3, 5 };
+        if (n < 6) {
+            return first5FibonacciTerms[n];
+        }
+
+        int term = 5;
+        int sn = 5;
+        while (term < n) {
+            sn = (int)Math.round(sn * goldenRatio);
+            term++;
+        }
+        return sn;
+    }
+
 }

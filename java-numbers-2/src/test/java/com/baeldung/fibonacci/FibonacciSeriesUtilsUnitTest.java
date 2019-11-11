@@ -19,4 +19,11 @@ public class FibonacciSeriesUtilsUnitTest {
         int expectedValue = 55;
         assertEquals(FibonacciSeriesUtils.nthFibonacciTermIterativeMethod(term), expectedValue);
     }
+
+    @Test
+    public void givenTermToCalculate_thenReturnThatTermUsingGoldenRatio() {
+        int term = 10;
+        int expectedValue = 55;
+        assertEquals(FibonacciSeriesUtils.nthFibonacciTermUsingGoldenRatio(term), expectedValue);
+    }
 }
