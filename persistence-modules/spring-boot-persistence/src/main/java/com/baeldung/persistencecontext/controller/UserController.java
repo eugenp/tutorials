@@ -1,51 +1,56 @@
 package com.baeldung.persistencecontext.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.baeldung.persistencecontext.entity.User;
 import com.baeldung.persistencecontext.service.ExtendedPersistenceContextUserService;
 import com.baeldung.persistencecontext.service.TransctionPersistenceContextUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class UserController{
+public class UserController {
 
     @Autowired
-    private TransctionPersistenceContextUserService transctionPersistenceContextUserService;
+    private TransctionPersistenceContextUserService transctionPersistenceContext;
     @Autowired
-    private ExtendedPersistenceContextUserService extendedPersistenceContextUserService;
+    private ExtendedPersistenceContextUserService extendedPersistenceContext;
 
-    @RequestMapping(value = "v1/user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    @RequestMapping(value = "v1/user", method = RequestMethod.POST,
+            consumes = "application/json",
+            produces = "application/json")
     public User saveUserV1(@RequestBody User user) {
-        return transctionPersistenceContextUserService.insertWithTransaction(user);
+        return transctionPersistenceContext.insertWithTransaction(user);
     }
 
-    @RequestMapping(value = "v2/user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    @RequestMapping(value = "v2/user", method = RequestMethod.POST,
+            consumes = "application/json",
+            produces = "application/json")
     public User saveUserV2(@RequestBody User user) {
-        return extendedPersistenceContextUserService.insertWithoutTransaction(user);
+        return extendedPersistenceContext.insertWithoutTransaction(user);
     }
-    
-    @RequestMapping(value = "v3/user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+
+    @RequestMapping(value = "v3/user", method = RequestMethod.POST,
+            consumes = "application/json",
+            produces = "application/json")
     public User saveUserV3(@RequestBody User user) {
-        return extendedPersistenceContextUserService.insertWithTransaction(user);
+        return extendedPersistenceContext.insertWithTransaction(user);
     }
-    
-    @RequestMapping(value = "v4/user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+
+    @RequestMapping(value = "v4/user", method = RequestMethod.POST,
+            consumes = "application/json",
+            produces = "application/json")
     public User saveUserV4(@RequestBody User user) {
-        return transctionPersistenceContextUserService.insertWithoutTransaction(user);
+        return transctionPersistenceContext.insertWithoutTransaction(user);
     }
 
-    @RequestMapping(value = "v1/user/{id}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "v1/user/{id}", method = RequestMethod.GET,
+            produces = "application/json")
     public User getUserV1(@PathVariable("id") Long id) {
-        return transctionPersistenceContextUserService.find(id);
+        return transctionPersistenceContext.find(id);
     }
 
-    @RequestMapping(value = "v2/user/{id}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "v2/user/{id}", method = RequestMethod.GET,
+            produces = "application/json")
     public User getUserV2(@PathVariable("id") Long id) {
-        return extendedPersistenceContextUserService.find(id);
+        return extendedPersistenceContext.find(id);
     }
 }
