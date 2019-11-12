@@ -1,2 +1,4 @@
-server:
-  port: 80
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
