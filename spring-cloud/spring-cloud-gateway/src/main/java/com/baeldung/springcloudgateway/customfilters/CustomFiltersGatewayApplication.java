@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-@PropertySource("classpath:introduction-application.properties")
+@PropertySource("classpath:customfilters-global-application.properties")
 public class CustomFiltersGatewayApplication {
 
     public static void main(String[] args) {
