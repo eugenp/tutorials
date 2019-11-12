@@ -56,7 +56,7 @@ public class ModifyRequestGatewayFilterFactory extends AbstractGatewayFilterFact
                 .map(range -> range.getRange())
                 .collect(Collectors.joining(","));
 
-            logger.info("Request contains Accept-Language header: " + allOutgoingRequestLanguages);
+            logger.info("Modify Request output - Request contains Accept-Language header: " + allOutgoingRequestLanguages);
             return chain.filter(exchange);
         };
     }

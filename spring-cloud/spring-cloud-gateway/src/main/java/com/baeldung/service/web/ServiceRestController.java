@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 @RestController
 public class ServiceRestController {
 
-    @GetMapping("resource")
+    @GetMapping("/resource")
     public Mono<ResponseEntity<String>> getResource() {
         return Mono.just(ResponseEntity.ok()
             .header(HttpHeaders.CONTENT_LANGUAGE, Locale.ENGLISH.getLanguage())
