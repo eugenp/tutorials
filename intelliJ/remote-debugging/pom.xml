@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>remote-debugger</artifactId>
+    <artifactId>spring-scheduler-sampler</artifactId>
     <version>0.1.0</version>
-    <name>remote-debugger</name>
+    <name>spring-scheduler-sampler</name>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
