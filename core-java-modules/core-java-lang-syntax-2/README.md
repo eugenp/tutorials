@@ -4,7 +4,6 @@ This module contains articles about Java syntax
 
 ### Relevant Articles: 
 
-- [Java ‘private’ Access Modifier](https://www.baeldung.com/java-private-keyword)
 - [Guide to Java Packages](https://www.baeldung.com/java-packages)
 - [If-Else Statement in Java](https://www.baeldung.com/java-if-else)
 - [Control Structures in Java](https://www.baeldung.com/java-control-structures)
