@@ -12,4 +12,5 @@ This module contains articles about Java syntax
 - [The Java Native Keyword and Methods](https://www.baeldung.com/java-native)
 - [Variable Scope in Java](https://www.baeldung.com/java-variable-scope)
 - [Introduction to Basic Syntax in Java](https://www.baeldung.com/java-syntax)
+- [Java ‘protected’ Access Modifier](https://www.baeldung.com/java-protected-access-modifier)
 - [[<-- Prev]](/core-java-modules/core-java-lang-syntax)
