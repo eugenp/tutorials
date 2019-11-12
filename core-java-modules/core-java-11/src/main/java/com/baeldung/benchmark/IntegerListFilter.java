@@ -23,49 +23,48 @@ import java.util.stream.Collectors;
 @Fork(2)
 public class IntegerListFilter {
 
-private List<Integer> jdkIntList;
-private MutableList<Integer> ecMutableList;
-private IntList ecIntList;
-private ExecutorService executor;
+    private List<Integer> jdkIntList;
+    private MutableList<Integer> ecMutableList;
+    private IntList ecIntList;
+    private ExecutorService executor;
 
-@Setup
-public void setup() {
-    PrimitiveIterator.OfInt iterator = new Random(1L).ints(-10000, 10000).iterator();
-    ecMutableList = FastList.newWithNValues(1_000_000, iterator::nextInt);
-    jdkIntList = new ArrayList<>(1_000_000);
-    jdkIntList.addAll(ecMutableList);
-    ecIntList = ecMutableList.collectInt(i -> i, new IntArrayList(1_000_000));
-    executor = Executors.newWorkStealingPool();
-}
+    @Setup
+    public void setup() {
+        PrimitiveIterator.OfInt iterator = new Random(1L).ints(-10000, 10000).iterator();
+        ecMutableList = FastList.newWithNValues(1_000_000, iterator::nextInt);
+        jdkIntList = new ArrayList<>(1_000_000);
+        jdkIntList.addAll(ecMutableList);
+        ecIntList = ecMutableList.collectInt(i -> i, new IntArrayList(1_000_000));
+        executor = Executors.newWorkStealingPool();
+    }
 
-@Benchmark
-public List<Integer> jdkList() {
-    return jdkIntList.stream().filter(i -> i % 5 == 0).collect(Collectors.toList());
-}
+    @Benchmark
+    public List<Integer> jdkList() {
+        return jdkIntList.stream().filter(i -> i % 5 == 0).collect(Collectors.toList());
+    }
 
-@Benchmark
-public MutableList<Integer> ecMutableList() {
-    return ecMutableList.select(i -> i % 5 == 0);
-}
+    @Benchmark
+    public MutableList<Integer> ecMutableList() {
+        return ecMutableList.select(i -> i % 5 == 0);
+    }
 
+    @Benchmark
+    public List<Integer> jdkListParallel() {
+        return jdkIntList.parallelStream().filter(i -> i % 5 == 0).collect(Collectors.toList());
+    }
 
-@Benchmark
-public List<Integer> jdkListParallel() {
-    return jdkIntList.parallelStream().filter(i -> i % 5 == 0).collect(Collectors.toList());
-}
+    @Benchmark
+    public MutableList<Integer> ecMutableListParallel() {
+        return ecMutableList.asParallel(executor, 100_000).select(i -> i % 5 == 0).toList();
+    }
 
-@Benchmark
-public MutableList<Integer> ecMutableListParallel() {
-    return ecMutableList.asParallel(executor, 100_000).select(i -> i % 5 == 0).toList();
-}
+    @Benchmark
+    public IntList ecPrimitive() {
+        return this.ecIntList.select(i -> i % 5 == 0);
+    }
 
-@Benchmark
-public IntList ecPrimitive() {
-    return this.ecIntList.select(i -> i % 5 == 0);
-}
-
-@Benchmark
-public IntList ecPrimitiveParallel() {
-    return this.ecIntList.primitiveParallelStream().filter(i -> i % 5 == 0).collect(IntLists.mutable::empty, MutableIntList::add, MutableIntList::addAll);
-}
+    @Benchmark
+    public IntList ecPrimitiveParallel() {
+        return this.ecIntList.primitiveParallelStream().filter(i -> i % 5 == 0).collect(IntLists.mutable::empty, MutableIntList::add, MutableIntList::addAll);
+    }
 }
