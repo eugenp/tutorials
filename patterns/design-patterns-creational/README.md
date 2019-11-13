@@ -6,3 +6,5 @@
 - [Double-Checked Locking with Singleton](https://www.baeldung.com/java-singleton-double-checked-locking)
 - [Java Constructors vs Static Factory Methods](https://www.baeldung.com/java-constructors-vs-static-factory-methods)
 - [Automatic Generation of the Builder Pattern with FreeBuilder](https://www.baeldung.com/java-builder-pattern-freebuilder)
+- [How to Replace Many if Statements in Java](https://www.baeldung.com/java-replace-if-statements)
+- [Prototype Pattern in Java](https://www.baeldung.com/java-pattern-prototype)

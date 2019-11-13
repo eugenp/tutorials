@@ -8,10 +8,10 @@ import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
-import javax.validation.constraints.NotBlank;
 
 public class User {
 
@@ -30,9 +30,9 @@ public class User {
 
     @Email(message = "Email should be valid")
     private String email;
-    
-    List<@NotBlank String> preferences;
-    
+
+    private List<@NotBlank String> preferences;
+
     private LocalDate dateOfBirth;
 
     public int getAge() {
@@ -90,5 +90,4 @@ public class User {
     public void setPreferences(List<String> preferences) {
         this.preferences = preferences;
     }
-   
 }

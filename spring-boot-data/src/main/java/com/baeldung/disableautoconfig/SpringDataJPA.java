@@ -1,12 +1,15 @@
 package com.baeldung.disableautoconfig;
 
+import org.javers.spring.boot.sql.JaversSqlAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,
+        JaversSqlAutoConfiguration.class, SpringDataWebAutoConfiguration.class,
         DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class SpringDataJPA {
 

@@ -17,48 +17,51 @@ public class DeliveryAddressMapperUnitTest {
     @Test
     public void testGivenCustomerAndAddress_mapsToDeliveryAddress() {
 
-        // given
+        // given a customer
         Customer customer = new Customer().setFirstName("Max")
             .setLastName("Powers");
 
+        // and some address
         Address homeAddress = new Address().setStreet("123 Some Street")
             .setCounty("Nevada")
             .setPostalcode("89123");
 
-        // when
+        // when calling DeliveryAddressMapper::from
         DeliveryAddress deliveryAddress = deliveryAddressMapper.from(customer, homeAddress);
 
-        // then
+        // then a new DeliveryAddress is created, based on the given customer and his home address
         assertEquals(deliveryAddress.getForename(), customer.getFirstName());
         assertEquals(deliveryAddress.getSurname(), customer.getLastName());
         assertEquals(deliveryAddress.getStreet(), homeAddress.getStreet());
         assertEquals(deliveryAddress.getCounty(), homeAddress.getCounty());
         assertEquals(deliveryAddress.getPostalcode(), homeAddress.getPostalcode());
+
     }
 
     @Test
     public void testGivenDeliveryAddressAndSomeOtherAddress_updatesDeliveryAddress() {
 
-        // given
-        Customer customer = new Customer().setFirstName("Max")
-            .setLastName("Powers");
-
-        DeliveryAddress deliveryAddress = new DeliveryAddress().setStreet("123 Some Street")
+        // given a delivery address
+        DeliveryAddress deliveryAddress = new DeliveryAddress().setForename("Max")
+            .setSurname("Powers")
+            .setStreet("123 Some Street")
             .setCounty("Nevada")
             .setPostalcode("89123");
 
-        Address otherAddress = new Address().setStreet("456 Some other street")
+        // and some new address
+        Address newAddress = new Address().setStreet("456 Some other street")
             .setCounty("Arizona")
             .setPostalcode("12345");
 
-        // when
-        DeliveryAddress updatedDeliveryAddress = deliveryAddressMapper.updateAddress(deliveryAddress, otherAddress);
+        // when calling DeliveryAddressMapper::updateAddress
+        DeliveryAddress updatedDeliveryAddress = deliveryAddressMapper.updateAddress(deliveryAddress, newAddress);
 
-        // then
+        // then the *existing* delivery address is updated
         assertSame(deliveryAddress, updatedDeliveryAddress);
 
-        assertEquals(deliveryAddress.getStreet(), otherAddress.getStreet());
-        assertEquals(deliveryAddress.getCounty(), otherAddress.getCounty());
-        assertEquals(deliveryAddress.getPostalcode(), otherAddress.getPostalcode());
+        assertEquals(deliveryAddress.getStreet(), newAddress.getStreet());
+        assertEquals(deliveryAddress.getCounty(), newAddress.getCounty());
+        assertEquals(deliveryAddress.getPostalcode(), newAddress.getPostalcode());
+
     }
 }

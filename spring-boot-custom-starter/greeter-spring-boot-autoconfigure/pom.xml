@@ -4,7 +4,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>greeter-spring-boot-autoconfigure</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-	<name>greeter-spring-boot-autoconfigure</name>
+    <name>greeter-spring-boot-autoconfigure</name>
 
     <parent>
         <artifactId>spring-boot-custom-starter</artifactId>
@@ -14,7 +14,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
@@ -42,12 +41,11 @@
         </dependency>
         
         <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<version>1.5.10.RELEASE</version>
-			<scope>test</scope>
-		</dependency>
-
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -68,7 +66,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
         <greeter.version>0.0.1-SNAPSHOT</greeter.version>
-        
     </properties>
 
 </project>
