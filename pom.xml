@@ -450,6 +450,7 @@
                 <module>core-java-modules/core-java-string-apis</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-jar</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
@@ -1645,6 +1646,7 @@
                 <module>parent-kotlin</module>
 
                 <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-jar</module>
                 <module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-java-modules/core-java-concurrency-advanced-2</module>
                 <module>core-java-modules/core-java-concurrency-advanced-3</module>
