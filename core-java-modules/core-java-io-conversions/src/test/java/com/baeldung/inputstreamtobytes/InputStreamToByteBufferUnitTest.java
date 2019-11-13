@@ -1,4 +1,4 @@
-package org.baeldung.java.io;
+package com.baeldung.inputstreamtobytes;
 
 import com.google.common.io.ByteSource;
 import com.google.common.io.ByteStreams;
