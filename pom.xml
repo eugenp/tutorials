@@ -421,6 +421,8 @@
                 <module>core-java-modules/core-java-concurrency-basic-2</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-io-apis</module>
+                <module>core-java-modules/core-java-io-conversions</module>
                 <module>core-java-modules/core-java-io-files</module>
                 <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-nio-2</module>
@@ -433,6 +435,7 @@
                 <module>core-java-modules/core-java-lang-oop</module>
                 <module>core-java-modules/core-java-lang-oop-2</module>
                 <module>core-java-modules/core-java-lang-oop-3</module>
+                <module>core-java-modules/core-java-lang-oop-4</module>
                 <module>core-java-modules</module>
                 <module>core-java-modules/core-java-networking</module>
                 <module>core-java-modules/core-java-perf</module>
@@ -447,6 +450,7 @@
                 <module>core-java-modules/core-java-string-apis</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-jar</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
@@ -1198,6 +1202,8 @@
                 <module>core-java-modules/core-java-concurrency-basic-2</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-io-apis</module>
+                <module>core-java-modules/core-java-io-conversions</module>
                 <module>core-java-modules/core-java-io-files</module>
                 <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-nio-2</module>
@@ -1210,6 +1216,7 @@
                 <module>core-java-modules/core-java-lang-oop</module>
                 <module>core-java-modules/core-java-lang-oop-2</module>
                 <module>core-java-modules/core-java-lang-oop-3</module>
+                <module>core-java-modules/core-java-lang-oop-4</module>
                 <module>core-java-modules</module>
                 <module>core-java-modules/core-java-networking</module>
                 <module>core-java-modules/core-java-perf</module>
@@ -1639,6 +1646,7 @@
                 <module>parent-kotlin</module>
 
                 <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-jar</module>
                 <module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-java-modules/core-java-concurrency-advanced-2</module>
                 <module>core-java-modules/core-java-concurrency-advanced-3</module>
