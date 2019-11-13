@@ -1,4 +1,4 @@
-package org.baeldung.java.io;
+package com.baeldung.inputstreamtostring;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.ByteSource;
