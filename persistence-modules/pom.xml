@@ -68,7 +68,7 @@
         <module>spring-hibernate-5</module> <!-- long running -->
         <module>spring-hibernate4</module>
         <module>spring-jpa</module>
-		<!-- <module>spring-mybatis</module> --> <!-- needs fixing -->
+		<!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
         <module>spring-persistence-simple</module>
     </modules>
     
