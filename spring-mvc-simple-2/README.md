@@ -10,4 +10,5 @@ This module contains articles about Spring MVC
 - [Using a Slash Character in Spring URLs](https://www.baeldung.com/spring-slash-character-in-url)
 - [Using Enums as Request Parameters in Spring](https://www.baeldung.com/spring-enum-request-param)
 - [Excluding URLs for a Filter in a Spring Web Application](https://www.baeldung.com/spring-exclude-filter)
+- [Guide to Flash Attributes in a Spring Web Application](https://www.baeldung.com/spring-web-flash-attributes)
 - More articles: [[<-- prev]](/spring-mvc-simple)
