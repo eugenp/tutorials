@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -406,7 +405,7 @@
                 -->
                 <module>core-java-modules/core-java-text</module>
                 <module>core-java-modules/core-java-lambdas</module>
-                <!--<module>core-java-modules/core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
+                <!--<module>core-java-modules/core-java-9-jigsaw</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
                 <module>core-java-modules/core-java-arrays</module>
                 <module>core-java-modules/core-java-arrays-2</module>
@@ -422,8 +421,11 @@
                 <module>core-java-modules/core-java-concurrency-basic-2</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-io-apis</module>
+                <module>core-java-modules/core-java-io-conversions</module>
                 <module>core-java-modules/core-java-io-files</module>
                 <module>core-java-modules/core-java-nio</module>
+                <module>core-java-modules/core-java-nio-2</module>
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-exceptions</module>
                 <module>core-java-modules/core-java-lang-syntax</module>
@@ -433,6 +435,7 @@
                 <module>core-java-modules/core-java-lang-oop</module>
                 <module>core-java-modules/core-java-lang-oop-2</module>
                 <module>core-java-modules/core-java-lang-oop-3</module>
+                <module>core-java-modules/core-java-lang-oop-4</module>
                 <module>core-java-modules</module>
                 <module>core-java-modules/core-java-networking</module>
                 <module>core-java-modules/core-java-perf</module>
@@ -447,6 +450,7 @@
                 <module>core-java-modules/core-java-string-apis</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-jar</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
@@ -541,6 +545,7 @@
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries</module>
                 <module>libraries-2</module>
+                <module>libraries-3</module>
                 <module>libraries-data</module>
                 <module>libraries-data-2</module>
                 <module>libraries-data-db</module>
@@ -601,13 +606,15 @@
                 <!-- <module>rmi</module> --> <!-- Not a maven project -->
                 <module>rule-engines</module>
                 <module>rsocket</module>
-                <module>rxjava</module>
-                <module>rxjava-2</module>
+                <module>rxjava-core</module>
+                <module>rxjava-observables</module>
+                <module>rxjava-operators</module>
+                <module>rxjava-libraries</module>
                 <module>software-security/sql-injection-samples</module>
 
                 <module>tensorflow-java</module>
                 <module>spf4j</module>
-                <module>spring-boot-configuration</module>
+                <module>spring-boot-config-jpa-error</module>
 				<module>spring-boot-flowable</module>
                 <module>spring-boot-mvc-2</module>
                 <module>spring-boot-performance</module>
@@ -694,7 +701,7 @@
                 <module>spring-boot-bootstrap</module>
                 <module>spring-boot-camel</module>
                 <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
-                <module>spring-boot-configuration</module>
+                <module>spring-boot-config-jpa-error</module>
 				<module>spring-boot-client</module>
 
                 <module>spring-boot-crud</module>
@@ -719,10 +726,11 @@
                 <module>spring-boot-parent</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
+                <module>spring-boot-springdoc</module>
                 <module>spring-boot-testing</module>
                 <module>spring-boot-vue</module>
                 <module>spring-caching</module>
-				<module>spring-boot-libraries</module>
+                <module>spring-boot-libraries</module>
 
 
                 <module>spring-cloud</module>
@@ -918,6 +926,7 @@
                 <module>spring-boot-keycloak</module>
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-property-exp</module>
+                <module>spring-boot-springdoc</module>
                 <module>spring-boot-vue</module>
                 <module>spring-cloud</module>
                 <module>spring-cloud/spring-cloud-archaius/basic-config</module>
@@ -1167,7 +1176,7 @@
                 <module>core-java-modules/core-java-time-measurements</module>
                 -->
                 <module>core-java-modules/core-java-text</module>
-                <!--<module>core-java-modules/core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
+                <!--<module>core-java-modules/core-java-9-jigsaw</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
                 <module>core-java-modules/core-java-arrays</module>
                 <module>core-java-modules/core-java-arrays-2</module>
@@ -1183,8 +1192,11 @@
                 <module>core-java-modules/core-java-concurrency-basic-2</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-io-apis</module>
+                <module>core-java-modules/core-java-io-conversions</module>
                 <module>core-java-modules/core-java-io-files</module>
                 <module>core-java-modules/core-java-nio</module>
+                <module>core-java-modules/core-java-nio-2</module>
                 <module>core-java-modules/core-java-security</module>
 				<module>core-java-modules/core-java-exceptions</module>
                 <module>core-java-modules/core-java-lang-syntax</module>
@@ -1194,6 +1206,7 @@
                 <module>core-java-modules/core-java-lang-oop</module>
                 <module>core-java-modules/core-java-lang-oop-2</module>
                 <module>core-java-modules/core-java-lang-oop-3</module>
+                <module>core-java-modules/core-java-lang-oop-4</module>
                 <module>core-java-modules</module>
                 <module>core-java-modules/core-java-networking</module>
                 <module>core-java-modules/core-java-perf</module>
@@ -1297,6 +1310,7 @@
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries</module>
+                <module>libraries-3</module>
                 <module>libraries-data</module>
                 <module>libraries-data-2</module>
                 <module>libraries-data-db</module>
@@ -1355,8 +1369,10 @@
                 <!-- <module>rmi</module> --> <!-- Not a maven project -->
                 <module>rule-engines</module>
                 <module>rsocket</module>
-                <module>rxjava</module>
-                <module>rxjava-2</module>
+                <module>rxjava-core</module>
+                <module>rxjava-observables</module>
+                <module>rxjava-operators</module>
+                <module>rxjava-libraries</module>
                 <module>oauth2-framework-impl</module>
                 <module>spf4j</module>
                 <module>spring-boot-performance</module>
@@ -1451,8 +1467,9 @@
                 <module>spring-boot-parent</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
+                <module>spring-boot-springdoc</module>
                 <module>spring-boot-vue</module>
-				<module>spring-caching</module>
+                <module>spring-caching</module>
                 <module>spring-cloud</module>
                 <module>spring-cloud-bus</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
@@ -1619,6 +1636,7 @@
                 <module>parent-kotlin</module>
 
                 <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-jar</module>
                 <module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-java-modules/core-java-concurrency-advanced-2</module>
                 <module>core-java-modules/core-java-concurrency-advanced-3</module>
