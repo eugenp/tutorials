@@ -14,7 +14,7 @@ public class SecondServiceIntegrationTest {
     private WebTestClient webClient;
 
     @Test
-    public void testExample() throws Exception {
+    public void whenResourceLanguageEndpointCalled_thenRetrievesSpanishLanguageString() throws Exception {
         this.webClient.get()
             .uri("/resource/language")
             .exchange()

@@ -15,7 +15,7 @@ public class ServiceIntegrationTest {
     private WebTestClient webClient;
 
     @Test
-    public void testExample() throws Exception {
+    public void whenResourceEndpointCalled_thenRetrievesResourceStringWithContentLanguageHeader() throws Exception {
         this.webClient.get()
             .uri("/resource")
             .exchange()
