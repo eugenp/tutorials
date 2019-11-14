@@ -19,50 +19,41 @@ import java.util.Date;
  * Start page of application apache-tapestry.
  */
 public class Index {
-	@Inject
-	private Logger logger;
+    @Inject
+    private Logger logger;
 
-	@Inject
-	private AjaxResponseRenderer ajaxResponseRenderer;
+    @Inject
+    private AjaxResponseRenderer ajaxResponseRenderer;
 
-	@Property
-	@Inject
-	@Symbol(SymbolConstants.TAPESTRY_VERSION)
-	private String tapestryVersion;
+    @Property
+    @Inject
+    @Symbol(SymbolConstants.TAPESTRY_VERSION)
+    private String tapestryVersion;
 
-	@InjectPage
-	private About about;
+    @Inject
+    private Block block;
 
-	@Inject
-	private Block block;
+    // Handle call with an unwanted context
+    Object onActivate(EventContext eventContext) {
+        return eventContext.getCount() > 0 ?
+            new HttpError(404, "Resource not found") :
+                null;
+    }
 
-	// Handle call with an unwanted context
-	Object onActivate(EventContext eventContext) {
-		return eventContext.getCount() > 0 ?
-				new HttpError(404, "Resource not found") :
-					null;
-	}
+    @Log
+    void onComplete() {
+        logger.info("Complete call on Index page");
+    }
 
-	Object onActionFromLearnMore() {
-		about.setLearn("LearnMore");
+    @Log
+    void onAjax() {
+        logger.info("Ajax call on Index page");
 
-		return about;
-	}
+        ajaxResponseRenderer.addRender("middlezone", block);
+    }
 
-	@Log
-	void onComplete() {
-		logger.info("Complete call on Index page");
-	}
-
-	@Log
-	void onAjax() {
-		logger.info("Ajax call on Index page");
-
-		ajaxResponseRenderer.addRender("middlezone", block);
-	}
-
-	public Date getCurrentTime() {
-		return new Date();
-	}
+    public Date getCurrentTime() {
+        return new Date();
+    }
 
 }

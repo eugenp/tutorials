@@ -6,8 +6,8 @@
     <div class="span4 offset3">
         <t:form t:id="login">
             <h2>Please sign in</h2>
-            <t:textfield t:id="email" class="input-block-level" validate="required" placeholder="Email address"/>
-            <t:passwordfield t:id="password" class="input-block-level" validate="required" placeholder="Password"/>
+            <t:textfield t:id="email" class="input-block-level" placeholder="Email address"/>
+            <t:passwordfield t:id="password" class="input-block-level" placeholder="Password"/>
             <t:submit class="btn btn-large btn-primary" value="Sign in"/>
         </t:form>
     </div>
