@@ -44,7 +44,7 @@ class CaesarCipherAlgorithmUnitTest {
     }
 
     @Test
-    void givenSentenceShiftedTenAndShitTen_whenDecipher_thenOriginalSentenceWithOverflow() {
+    void givenSentenceShiftedTenAndShiftTen_whenDecipher_thenOriginalSentenceWithOverflow() {
         String decipheredSentence = algorithm.decipher(SENTENCE_SHIFTED_TEN, 10);
 
         assertThat(decipheredSentence)
@@ -56,6 +56,28 @@ class CaesarCipherAlgorithmUnitTest {
         String decipheredSentence = algorithm.decipher(SENTENCE_SHIFTED_TEN, 36);
 
         assertThat(decipheredSentence)
+          .isEqualTo(SENTENCE);
+    }
+
+    @Test
+    void givenSentenceShiftedThree_whenBreakCipher_thenOriginalSentenceWithoutOverflow() {
+        int offset = algorithm.breakCipher(SENTENCE_SHIFTED_THREE);
+
+        assertThat(offset)
+          .isEqualTo(3);
+
+        assertThat(algorithm.decipher(SENTENCE_SHIFTED_THREE, offset))
+          .isEqualTo(SENTENCE);
+    }
+
+    @Test
+    void givenSentenceShiftedTen_whenBreakCipher_thenOriginalSentenceWithOverflow() {
+        int offset = algorithm.breakCipher(SENTENCE_SHIFTED_TEN);
+
+        assertThat(offset)
+          .isEqualTo(10);
+
+        assertThat(algorithm.decipher(SENTENCE_SHIFTED_TEN, offset))
           .isEqualTo(SENTENCE);
     }
 }
