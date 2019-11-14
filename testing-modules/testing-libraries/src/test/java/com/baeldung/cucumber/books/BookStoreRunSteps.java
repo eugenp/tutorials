@@ -28,8 +28,8 @@ public class BookStoreRunSteps {
         
         List<List<String>> rows = table.asLists(String.class);
         
-        for (List<String> fields: rows) {
-            store.addBook(new Book(fields.get(0), fields.get(1)));
+        for (List<String> columns: rows) {
+            store.addBook(new Book(columns.get(0), columns.get(1)));
         }
     }
     
@@ -38,8 +38,8 @@ public class BookStoreRunSteps {
         
         List<Map<String, String>> rows = table.asMaps(String.class, String.class);
         
-        for (Map<String, String> fields: rows) {
-            store.addBook(new Book(fields.get("title"), fields.get("author")));
+        for (Map<String, String> columns: rows) {
+            store.addBook(new Book(columns.get("title"), columns.get("author")));
         }
     }
     
