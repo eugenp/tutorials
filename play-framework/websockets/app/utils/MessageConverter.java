@@ -5,30 +5,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.MessageDTO;
 import dto.RequestDTO;
 
-/**
- * Created by alfred on 07 Jun 2019
- */
 public class MessageConverter {
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
     public static MessageDTO jsonNodeToMessage(JsonNode jsonNode) {
-        ObjectMapper mapper = new ObjectMapper();
-        final MessageDTO messageDTO = mapper.convertValue(jsonNode, MessageDTO.class);
-        return messageDTO;
+        return OBJECT_MAPPER.convertValue(jsonNode, MessageDTO.class);
     }
 
     public static JsonNode messageToJsonNode(MessageDTO messageDTO) {
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonData = mapper.convertValue(messageDTO, JsonNode.class);
-        return jsonData;
+        return OBJECT_MAPPER.convertValue(messageDTO, JsonNode.class);
     }
     public static RequestDTO jsonNodeToRequest(JsonNode jsonNode) {
-        ObjectMapper mapper = new ObjectMapper();
-        final RequestDTO requestDTO = mapper.convertValue(jsonNode, RequestDTO.class);
-        return requestDTO;
+        return OBJECT_MAPPER.convertValue(jsonNode, RequestDTO.class);
     }
 
     public static JsonNode requestToJsonNode(RequestDTO requestDTO) {
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonData = mapper.convertValue(requestDTO, JsonNode.class);
-        return jsonData;
+        return OBJECT_MAPPER.convertValue(requestDTO, JsonNode.class);
     }
 }

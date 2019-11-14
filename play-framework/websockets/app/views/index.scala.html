@@ -10,19 +10,19 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
         <script>
-        var websocket;
+        var webSocket;
         var messageInput;
 
         function init() {
-            initWebsocket();
+            initWebSocket();
         }
 
-        function initWebsocket() {
-            websocket = new WebSocket("@url");
-            websocket.onopen = onOpen;
-            websocket.onclose = onClose;
-            websocket.onmessage = onMessage;
-            websocket.onerror = onError;
+        function initWebSocket() {
+            webSocket = new WebSocket("@url");
+            webSocket.onopen = onOpen;
+            webSocket.onclose = onClose;
+            webSocket.onmessage = onMessage;
+            webSocket.onerror = onError;
         }
 
         function onOpen(evt) {
@@ -54,9 +54,9 @@
         }
 
         function doSend(protocolMessage) {
-            if(websocket.readyState == WebSocket.OPEN) {
+            if(webSocket.readyState == WebSocket.OPEN) {
                 writeToScreen("SENT: " + protocolMessage.message);
-                websocket.send(JSON.stringify(protocolMessage));
+                webSocket.send(JSON.stringify(protocolMessage));
             } else {
                 writeToScreen("Could not send data. Websocket is not open.");
             }

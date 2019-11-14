@@ -1,8 +1,5 @@
 package dto;
 
-/**
- * Created by alfred on 07 October 2019
- */
 public class RequestDTO {
     private String message;
 

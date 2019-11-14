@@ -22,8 +22,8 @@ import java.util.concurrent.CompletionStage;
 
 @Slf4j
 public class HomeController extends Controller {
-    private final ActorSystem actorSystem;
-    private final Materializer materializer;
+    private ActorSystem actorSystem;
+    private Materializer materializer;
 
     @Inject
     public HomeController(ActorSystem actorSystem, Materializer materializer) {
@@ -33,6 +33,7 @@ public class HomeController extends Controller {
 
     public Result index(Http.Request request) {
         String url = routes.HomeController.socket().webSocketURL(request);
+        //To test WebSockets with akka streams, uncomment the next line and comment out the previous
         //String url = routes.HomeController.akkaStreamsSocket().webSocketURL(request);
         return ok(views.html.index.render(url));
     }
@@ -47,6 +48,17 @@ public class HomeController extends Controller {
         return CompletableFuture.completedFuture(F.Either.Right(createFlowForActor()));
     }
 
+    private CompletionStage<F.Either<Result, Flow<JsonNode, JsonNode, ?>>>
+      createActorFlow2(Http.RequestHeader request) {
+        return CompletableFuture.completedFuture(
+          request.session()
+          .getOptional("username")
+          .map(username ->
+            F.Either.<Result, Flow<JsonNode, JsonNode, ?>>Right(
+              createFlowForActor()))
+          .orElseGet(() -> F.Either.Left(forbidden())));
+    }
+
     private Flow<JsonNode, JsonNode, ?> createFlowForActor() {
         return ActorFlow.actorRef(out -> Messenger.props(out), actorSystem, materializer);
     }
@@ -55,7 +67,7 @@ public class HomeController extends Controller {
         return WebSocket.Json.accept(
           request -> {
               Sink<JsonNode, ?> in = Sink.foreach(System.out::println);
-              final MessageDTO messageDTO = new MessageDTO("1", "1", "Title", "Test Body");
+              MessageDTO messageDTO = new MessageDTO("1", "1", "Title", "Test Body");
               Source<JsonNode, ?> out = Source.tick(
                 Duration.ofSeconds(2),
                 Duration.ofSeconds(2),

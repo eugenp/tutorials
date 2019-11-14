@@ -23,13 +23,10 @@ import java.util.UUID;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Created by alfred on 02 Mar 2019
- */
 public class Messenger extends AbstractActor {
-    private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
+    private LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 
-    private final ActorRef out;
+    private ActorRef out;
 
     public Messenger(ActorRef out) {
         this.out = out;
@@ -52,8 +49,8 @@ public class Messenger extends AbstractActor {
     }
 
     private void onSendMessage(JsonNode jsonNode) {
-        final RequestDTO requestDTO = MessageConverter.jsonNodeToRequest(jsonNode);
-        final String message = requestDTO.getMessage().toLowerCase();
+        RequestDTO requestDTO = MessageConverter.jsonNodeToRequest(jsonNode);
+        String message = requestDTO.getMessage().toLowerCase();
         if("stop".equals(message)) {
             MessageDTO messageDTO = createMessageDTO("1", "1", "Stop", "Stopping actor");
             out.tell(MessageConverter.messageToJsonNode(messageDTO), getSelf());
@@ -88,8 +85,8 @@ public class Messenger extends AbstractActor {
     }
 
     private void discardEntity(HttpResponse httpResponse, Materializer materializer) {
-        final HttpMessage.DiscardedEntity discarded = httpResponse.discardEntityBytes(materializer);
-        discarded.completionStage()
+        httpResponse.discardEntityBytes(materializer)
+          .completionStage()
           .whenComplete((done, ex) -> log.info("Entity discarded completely!"));
     }
 
