@@ -43,8 +43,8 @@ public class BookStoreRunSteps {
         }
     }
     
-    @Given("^I have the following books in the store with custom table parsing$")
-    public void haveBooksInTheStoreByListOfDomainObjects(BookCatalog catalog) {
+    @Given("^I have the following books in the store with transformer$")
+    public void haveBooksInTheStoreByListOfTransformer(BookCatalog catalog) {
         store.addAllBooks(catalog.getBooks());
     }
     
