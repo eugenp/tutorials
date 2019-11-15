@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import twitter4j.TwitterException;
 
-public class ApplicationIntegrationTest {
+public class ApplicationManualTest {
 
 	/**
 	 * In order run this jUnit test you need to configure your API details in the twitter4j.properties
