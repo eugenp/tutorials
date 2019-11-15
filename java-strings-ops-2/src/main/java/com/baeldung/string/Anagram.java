@@ -5,10 +5,10 @@ import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 
 public class Anagram {
-    //this definition only works for single byte encoding character set.
-    //For multibyte encoding, such as UTF-8, 16, 32 etc., 
-    //we need to increase this number so that it can contain all possible characters.
-    private static int MAX_CHARACTER = 256;
+    // This definition only works for single byte encoding character set.
+    // For multibyte encoding, such as UTF-8, 16, 32 etc.,
+    // we need to increase this number so that it can contain all possible characters.
+    private static int CHARACTER_RANGE = 256;
 
     public boolean isAnagramSort(String string1, String string2) {
         if (string1.length() != string2.length()) {
@@ -25,12 +25,12 @@ public class Anagram {
         if (string1.length() != string2.length()) {
             return false;
         }
-        int count[] = new int[MAX_CHARACTER];
+        int count[] = new int[CHARACTER_RANGE];
         for (int i = 0; i < string1.length(); i++) {
             count[string1.charAt(i)]++;
             count[string2.charAt(i)]--;
         }
-        for (int i = 0; i < MAX_CHARACTER; i++) {
+        for (int i = 0; i < CHARACTER_RANGE; i++) {
             if (count[i] != 0) {
                 return false;
             }
