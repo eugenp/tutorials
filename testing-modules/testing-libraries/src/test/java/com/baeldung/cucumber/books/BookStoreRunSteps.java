@@ -44,7 +44,7 @@ public class BookStoreRunSteps {
     }
     
     @Given("^I have the following books in the store with transformer$")
-    public void haveBooksInTheStoreByListOfTransformer(BookCatalog catalog) {
+    public void haveBooksInTheStoreByTransformer(BookCatalog catalog) {
         store.addAllBooks(catalog.getBooks());
     }
     
