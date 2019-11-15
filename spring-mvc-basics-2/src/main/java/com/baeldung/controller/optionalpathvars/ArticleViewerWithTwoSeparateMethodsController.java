@@ -1,4 +1,4 @@
-package com.baeldung.web.controller.optionalpathvars;
+package com.baeldung.controller.optionalpathvars;
 
 import static com.baeldung.model.Article.DEFAULT_ARTICLE;
 
@@ -9,17 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baeldung.model.Article;
 
 @RestController
-public class ArticleViewerController {
+@RequestMapping(value = "/seperateMethods")
+public class ArticleViewerWithTwoSeparateMethodsController {
 
-    @RequestMapping(value = {"/article", "/article/{id}"})
+    @RequestMapping(value = "/article/{id}")
     public Article getArticle(@PathVariable(name = "id") Integer articleId) {
+        
+        return new Article(articleId);        
+    }
+    
+    @RequestMapping(value = "/article")
+    public Article getDefaultArticle() {
 
-        if (articleId != null) {
-            return new Article(articleId);
-        } else {
-            return DEFAULT_ARTICLE;
-        }
-
+        return DEFAULT_ARTICLE;
     }
 
 }

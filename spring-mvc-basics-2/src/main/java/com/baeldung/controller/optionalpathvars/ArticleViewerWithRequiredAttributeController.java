@@ -1,8 +1,6 @@
-package com.baeldung.web.controller.optionalpathvars;
+package com.baeldung.controller.optionalpathvars;
 
 import static com.baeldung.model.Article.DEFAULT_ARTICLE;
-
-import java.util.Optional;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,18 +9,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baeldung.model.Article;;
 
 @RestController
-@RequestMapping("/optionalParam")
-public class ArticleViewerWithOptionalParamController {
+@RequestMapping(value = "/requiredAttribute")
+public class ArticleViewerWithRequiredAttributeController {
 
     @RequestMapping(value = {"/article", "/article/{id}"})
-    public Article getArticle(@PathVariable(name = "id") Optional<Integer> optionalArticleId) {
+    public Article getArticle(@PathVariable(name = "id", required = false) Integer articleId) {
 
-        if(optionalArticleId.isPresent()) {
-            Integer articleId = optionalArticleId.get();
+        if (articleId != null) {
             return new Article(articleId);
-        }else {
+        } else {
             return DEFAULT_ARTICLE;
         }
+
     }
     
 }
