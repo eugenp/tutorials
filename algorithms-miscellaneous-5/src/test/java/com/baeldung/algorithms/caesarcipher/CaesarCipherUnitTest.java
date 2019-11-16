@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CaesarCipherAlgorithmUnitTest {
-    private static final String SENTENCE = "he told me i could never teach a lama to drive";
-    private static final String SENTENCE_SHIFTED_THREE = "kh wrog ph l frxog qhyhu whdfk d odpd wr gulyh";
-    private static final String SENTENCE_SHIFTED_TEN = "ro dyvn wo s myevn xofob dokmr k vkwk dy nbsfo";
+class CaesarCipherUnitTest {
+    private static final String SENTENCE = "he told me i could never teach a llama to drive";
+    private static final String SENTENCE_SHIFTED_THREE = "kh wrog ph l frxog qhyhu whdfk d oodpd wr gulyh";
+    private static final String SENTENCE_SHIFTED_TEN = "ro dyvn wo s myevn xofob dokmr k vvkwk dy nbsfo";
 
-    private CaesarCipherAlgorithm algorithm = new CaesarCipherAlgorithm();
+    private CaesarCipher algorithm = new CaesarCipher();
 
     @Test
     void givenSentenceAndShiftThree_whenCipher_thenCipheredMessageWithoutOverflow() {
@@ -60,7 +60,7 @@ class CaesarCipherAlgorithmUnitTest {
     }
 
     @Test
-    void givenSentenceShiftedThree_whenBreakCipher_thenOriginalSentenceWithoutOverflow() {
+    void givenSentenceShiftedThree_whenBreakCipher_thenOriginalSentence() {
         int offset = algorithm.breakCipher(SENTENCE_SHIFTED_THREE);
 
         assertThat(offset)
@@ -71,7 +71,7 @@ class CaesarCipherAlgorithmUnitTest {
     }
 
     @Test
-    void givenSentenceShiftedTen_whenBreakCipher_thenOriginalSentenceWithOverflow() {
+    void givenSentenceShiftedTen_whenBreakCipher_thenOriginalSentence() {
         int offset = algorithm.breakCipher(SENTENCE_SHIFTED_TEN);
 
         assertThat(offset)
