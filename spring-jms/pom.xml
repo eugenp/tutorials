@@ -38,7 +38,7 @@
         <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<version>1.5.10.RELEASE</version>
+			<version>${spring-boot.version}</version>
 			<scope>test</scope>
 		</dependency>
     </dependencies>
@@ -62,8 +62,9 @@
     </build>
 
     <properties>
-        <springframework.version>4.3.4.RELEASE</springframework.version>
-        <activemq.version>5.14.1</activemq.version>
+               <springframework.version>4.3.4.RELEASE</springframework.version>
+               <activemq.version>5.14.1</activemq.version>
+		<spring-boot.version>1.5.10.RELEASE</spring-boot.version>
     </properties>
 
 </project>

@@ -28,7 +28,7 @@
 		<dependency>
 			<groupId>com.marcosbarbero.cloud</groupId>
 			<artifactId>spring-cloud-zuul-ratelimit</artifactId>
-			<version>2.2.0.RELEASE</version>
+			<version>${marcosbarbero-cloud.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -71,7 +71,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<spring-cloud.version>Finchley.SR1</spring-cloud.version>
-        <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
+               <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
+		<marcosbarbero-cloud.version>2.2.0.RELEASE</marcosbarbero-cloud.version>
+		
 	</properties>
 	
 </project>

@@ -125,7 +125,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
         </dependency>
 
         <dependency>
@@ -162,10 +162,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>${maven.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${source.version}</source>
+                    <target>${target.version}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -304,10 +304,18 @@
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.0</cargo-maven2-plugin.version>
         <findbugs-maven-plugin.version>3.0.4</findbugs-maven-plugin.version>
-
+               
         <!-- okhttp -->
         <com.squareup.okhttp3.version>3.4.1</com.squareup.okhttp3.version>
         <pact.version>3.5.11</pact.version>
+		
+		<!-- junit -->
+		<junit.version>4.12</junit.version>
+		
+		<!-- maven -->
+		<maven.version>3.7.0</maven.version>
+		 <source.version>1.8</source.version>
+		 <target.version>1.8</target.version>
     </properties>
 
 </project>
