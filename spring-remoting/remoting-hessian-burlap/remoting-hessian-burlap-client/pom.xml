@@ -31,7 +31,7 @@
         <dependency>
             <groupId>com.caucho</groupId>
             <artifactId>hessian</artifactId>
-            <version>4.0.38</version>
+            <version>${caucho.version}</version>
         </dependency>
 
         <!-- test -->
@@ -58,5 +58,9 @@
         </dependency>
         <!-- test -->
     </dependencies>
-
+	
+	<properties>
+	   <caucho.version>4.0.38</caucho.version>
+	</properties>
+	
 </project>

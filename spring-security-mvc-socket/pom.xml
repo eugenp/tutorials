@@ -152,7 +152,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>1.5.10.RELEASE</version>
+            <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -171,7 +171,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>${maven-plugin.version}</version>
                 <configuration>
                     <warSourceDirectory>src/main/webapp</warSourceDirectory>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -185,6 +185,8 @@
         <spring-security.version>4.2.3.RELEASE</spring-security.version>
         <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
         <logback-classic.version>1.2.3</logback-classic.version>
+		<spring-boot.version>1.5.10.RELEASE</spring-boot.version>
+		<maven-plugin.version>3.0.0</maven-plugin.version>
     </properties>
 
 </project>

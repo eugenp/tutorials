@@ -72,7 +72,7 @@
             <plugin>
                 <groupId>org.apache.avro</groupId>
                 <artifactId>avro-maven-plugin</artifactId>
-                <version>1.8.2</version>
+                <version>${avro.version}</version>
                 <executions>
                     <execution>
                         <id>schemas</id>

@@ -20,7 +20,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>1.5.9.RELEASE</version>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -63,8 +63,9 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+               <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+               <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<spring-boot.version>1.5.9.RELEASE</spring-boot.version>
     </properties>
 
 </project>
