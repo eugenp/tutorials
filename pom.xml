@@ -841,8 +841,6 @@
 
                 <module>spring-webflux-amqp</module> <!-- long -->
 
-                <module>spring-zuul</module>
-
                 <module>static-analysis</module>
                 <module>stripe</module>
                 <module>structurizr</module>
@@ -1587,8 +1585,6 @@
                 <module>spring-vertx</module>
 
                 <module>spring-webflux-amqp</module> <!-- long -->
-
-                <module>spring-zuul</module>
 
                 <module>static-analysis</module>
                 <module>stripe</module>
