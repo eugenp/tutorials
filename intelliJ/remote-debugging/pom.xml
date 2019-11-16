@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>spring-scheduler-sampler</artifactId>
+    <artifactId>gs-scheduling-tasks</artifactId>
     <version>0.1.0</version>
-    <name>spring-scheduler-sampler</name>
+    <name>gs-scheduling-tasks</name>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
