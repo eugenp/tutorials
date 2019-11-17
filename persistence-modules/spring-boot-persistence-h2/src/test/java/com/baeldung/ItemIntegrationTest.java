@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import javax.validation.ConstraintViolationException;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBootH2Application.class)
@@ -20,12 +22,8 @@ public class ItemIntegrationTest {
 
     @Test
     public void shouldNotAllowToPersistNullItemsPrice() {
-        Item saved = null;
-        try {
-            saved = itemRepository.save(new Item());
-        } catch (Exception e) {
-            assertThat(saved).isNull();
-            assertThat(e).hasStackTraceContaining("must not be null");
-        }
+        assertThatThrownBy(() -> itemRepository.save(new Item()))
+                .hasRootCauseInstanceOf(ConstraintViolationException.class)
+                .hasStackTraceContaining("must not be null");
     }
 }
