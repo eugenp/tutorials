@@ -1,29 +1,23 @@
 package com.baeldung.mockito.fluentapi;
 
-import java.util.List;
-import java.util.Optional;
-
 import com.baeldung.mockito.fluentapi.Pizza.PizzaSize;
 
 public class PizzaService {
 
-    private Pizza pizza;
+    private Pizza.PizzaBuilder builder;
 
     public PizzaService(Pizza.PizzaBuilder builder) {
-        this.pizza = builder.build();
+        this.builder = builder;
     }
 
-    public List<String> listToppings(Pizza.PizzaBuilder builder) {
-        Pizza build = builder.size(PizzaSize.LARGE)
-            .withExtaTopping("Mushroom")
-            .withStuffedCrust(false)
+    public Pizza orderHouseSpecial() {
+        return builder.name("Special")
+            .size(PizzaSize.LARGE)
+            .withExtraTopping("Mushrooms")
+            .withStuffedCrust(true)
+            .withExtraTopping("Chilli")
             .willCollect(true)
             .applyDiscount(20)
             .build();
     }
-
-    public boolean isLarge() {
-        return PizzaSize.LARGE.equals(pizza.getSize());
-    }
-
 }

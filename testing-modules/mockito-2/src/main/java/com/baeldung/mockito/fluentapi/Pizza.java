@@ -53,13 +53,17 @@ public class Pizza {
         private String name;
         private PizzaSize size;
 
-        private List<String> toppings = new ArrayList<>();
+        private List<String> toppings;
         private boolean stuffedCrust;
         private boolean collect;
         private Integer discount = null;
 
-        public PizzaBuilder(String name) {
+        public PizzaBuilder() {
+        }
+
+        public PizzaBuilder name(String name) {
             this.name = name;
+            return this;
         }
 
         public PizzaBuilder size(PizzaSize size) {
@@ -67,7 +71,10 @@ public class Pizza {
             return this;
         }
 
-        public PizzaBuilder withExtaTopping(String extraTopping) {
+        public PizzaBuilder withExtraTopping(String extraTopping) {
+            if (this.toppings == null) {
+                toppings = new ArrayList<>();
+            }
             this.toppings.add(extraTopping);
             return this;
         }
