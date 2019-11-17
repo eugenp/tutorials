@@ -45,8 +45,7 @@ public class Order {
         return orderItems
           .stream()
           .filter(orderItem -> orderItem
-            .getProduct()
-            .getId()
+            .getProductId()
             .equals(id))
           .findFirst()
           .orElseThrow(() -> new DomainException("Product with " + id + " doesn't exist."));

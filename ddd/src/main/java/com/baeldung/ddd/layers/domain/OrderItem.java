@@ -2,20 +2,23 @@ package com.baeldung.ddd.layers.domain;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import java.util.UUID;
 
 public class OrderItem {
-    private final Product product;
+    private final UUID productId;
+    private final BigDecimal price;
 
     public OrderItem(final Product product) {
-        this.product = product;
+        this.productId = product.getId();
+        this.price = product.getPrice();
+    }
+
+    public UUID getProductId() {
+        return productId;
     }
 
     public BigDecimal getPrice() {
-        return product.getPrice();
-    }
-
-    public Product getProduct() {
-        return product;
+        return price;
     }
 
     @Override
@@ -23,11 +26,11 @@ public class OrderItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderItem orderItem = (OrderItem) o;
-        return Objects.equals(product, orderItem.product);
+        return Objects.equals(productId, orderItem.productId) && Objects.equals(price, orderItem.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(product);
+        return Objects.hash(productId, price);
     }
 }
