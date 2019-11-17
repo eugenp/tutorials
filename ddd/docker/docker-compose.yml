@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  order-mongo-database:
+    image: mongo:3.4.13
+    restart: always
+    ports:
+      - ${ORDER_DOCKER_MONGODB_PORT}:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: order-database
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
