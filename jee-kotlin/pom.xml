@@ -230,7 +230,7 @@
             </build>
         </profile>
         <profile>
-            <id>wildfly-remote-arquillian</id>
+            <id>wildfly-remote-arquillian-disabled</id>
             <dependencies>
                 <dependency>
                     <groupId>org.jboss.resteasy</groupId>
