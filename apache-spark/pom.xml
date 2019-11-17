@@ -112,4 +112,10 @@
 		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>SparkPackagesRepo</id>
+			<url>http://dl.bintray.com/spark-packages/maven</url>
+		</repository>
+	</repositories>
 </project>
