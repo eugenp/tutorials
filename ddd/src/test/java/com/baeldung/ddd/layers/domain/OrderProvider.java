@@ -3,11 +3,10 @@ package com.baeldung.ddd.layers.domain;
 import org.bson.types.ObjectId;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 
 public class OrderProvider {
     public static Order getCreatedOrder() {
-        return new Order(ObjectId.get(), Arrays.asList(new Product(BigDecimal.TEN, "productName")));
+        return new Order(ObjectId.get(), new Product(BigDecimal.TEN, "productName"));
     }
 
     public static Order getCompletedOrder() {

@@ -22,9 +22,9 @@ public class OrderController {
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     CreateOrderResponse createOrder(@RequestBody final CreateOrderRequest createOrderRequest) {
-        return new CreateOrderResponse(orderService
-          .createOrder(createOrderRequest.getProducts())
-          .toString());
+        final ObjectId id = orderService.createOrder(createOrderRequest.getProduct());
+
+        return new CreateOrderResponse(id.toString());
     }
 
     @PostMapping(value = "/{id}/products", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)

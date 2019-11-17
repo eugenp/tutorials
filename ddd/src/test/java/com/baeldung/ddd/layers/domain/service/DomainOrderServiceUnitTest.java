@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -33,7 +32,7 @@ class DomainOrderServiceUnitTest {
     void shouldCreateOrder_thenSaveIt() {
         final Product product = new Product(BigDecimal.TEN, "productName");
 
-        final ObjectId id = tested.createOrder(Arrays.asList(product));
+        final ObjectId id = tested.createOrder(product);
 
         verify(orderRepository).save(any(Order.class));
         assertNotNull(id);
