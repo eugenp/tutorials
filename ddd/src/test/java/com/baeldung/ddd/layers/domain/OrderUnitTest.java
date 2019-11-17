@@ -1,13 +1,11 @@
 package com.baeldung.ddd.layers.domain;
 
-import com.baeldung.ddd.layers.domain.exception.DomainException;
-import org.bson.types.ObjectId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,22 +23,26 @@ class OrderUnitTest {
     @Test
     void shouldAddProduct_thenUpdatePrice() {
         final Order order = OrderProvider.getCreatedOrder();
-        final int orderOriginalProductSize = order.getProducts().size();
+        final int orderOriginalProductSize = order
+          .getOrderItems()
+          .size();
         final BigDecimal orderOriginalPrice = order.getPrice();
-        final Product productToAdd = new Product(new BigDecimal("20"), "secondProduct");
+        final Product productToAdd = new Product(UUID.randomUUID(), new BigDecimal("20"), "secondProduct");
 
-        order.addProduct(productToAdd);
+        order.addOrder(productToAdd);
 
-        assertEquals(orderOriginalProductSize + 1, order.getProducts().size());
+        assertEquals(orderOriginalProductSize + 1, order
+          .getOrderItems()
+          .size());
         assertEquals(orderOriginalPrice.add(productToAdd.getPrice()), order.getPrice());
     }
 
     @Test
-    void shouldAddProduct_thenThrowException(){
+    void shouldAddProduct_thenThrowException() {
         final Order order = OrderProvider.getCompletedOrder();
-        final Product productToAdd = new Product(new BigDecimal("20"), "secondProduct");
+        final Product productToAdd = new Product(UUID.randomUUID(), new BigDecimal("20"), "secondProduct");
 
-        final Executable executable = () -> order.addProduct(productToAdd);
+        final Executable executable = () -> order.addOrder(productToAdd);
 
         Assertions.assertThrows(DomainException.class, executable);
     }
@@ -49,9 +51,15 @@ class OrderUnitTest {
     void shouldRemoveProduct_thenUpdatePrice() {
         final Order order = OrderProvider.getCreatedOrder();
 
-        order.removeProduct(order.getProducts().get(0).getName());
+        order.removeOrder(order
+          .getOrderItems()
+          .get(0)
+          .getProduct()
+          .getId());
 
-        assertEquals(0, order.getProducts().size());
+        assertEquals(0, order
+          .getOrderItems()
+          .size());
         assertEquals(BigDecimal.ZERO, order.getPrice());
     }
 }

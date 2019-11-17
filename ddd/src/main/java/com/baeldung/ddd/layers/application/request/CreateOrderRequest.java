@@ -10,7 +10,7 @@ public class CreateOrderRequest {
     @NotNull private Product product;
 
     @JsonCreator
-    public CreateOrderRequest(@JsonProperty("product") @NotNull Product product) {
+    public CreateOrderRequest(@JsonProperty("product") @NotNull final Product product) {
         this.product = product;
     }
 

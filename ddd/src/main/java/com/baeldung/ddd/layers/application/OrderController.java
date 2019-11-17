@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
@@ -33,8 +35,8 @@ public class OrderController {
     }
 
     @DeleteMapping(value = "/{id}/products", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    void deleteProduct(@PathVariable final ObjectId id, @RequestParam final String name) {
-        orderService.deleteProduct(id, name);
+    void deleteProduct(@PathVariable final ObjectId id, @RequestParam final UUID productId) {
+        orderService.deleteProduct(id, productId);
     }
 
     @PostMapping("/{id}/complete")

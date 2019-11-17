@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackageClasses = DomainLayerApplication.class)
-public class DomainConfiguration {
+public class BeanConfiguration {
 
     @Bean
     OrderService orderService(final OrderRepository orderRepository) {
