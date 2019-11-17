@@ -80,8 +80,8 @@ class DomainOrderServiceUnitTest {
         final UUID productId = order
           .getOrderItems()
           .get(0)
-          .getProduct()
-          .getId();
+          .getProductId();
+        
         when(orderRepository.findById(order.getId())).thenReturn(Optional.of(order));
 
         tested.deleteProduct(order.getId(), productId);

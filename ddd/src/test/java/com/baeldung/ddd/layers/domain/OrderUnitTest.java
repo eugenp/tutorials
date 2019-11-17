@@ -50,12 +50,12 @@ class OrderUnitTest {
     @Test
     void shouldRemoveProduct_thenUpdatePrice() {
         final Order order = OrderProvider.getCreatedOrder();
-
-        order.removeOrder(order
+        final UUID productId = order
           .getOrderItems()
           .get(0)
-          .getProduct()
-          .getId());
+          .getProductId();
+        
+        order.removeOrder(productId);
 
         assertEquals(0, order
           .getOrderItems()
