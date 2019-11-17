@@ -4,18 +4,17 @@ import com.baeldung.ddd.layers.domain.Product;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
 public class CreateOrderRequest {
-    private List<Product> products;
+    @NotNull private Product product;
 
     @JsonCreator
-    public CreateOrderRequest(@JsonProperty("products") final List<Product> productList) {
-        this.products = new ArrayList<>(productList);
+    public CreateOrderRequest(@JsonProperty("product") @NotNull Product product) {
+        this.product = product;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public Product getProduct() {
+        return product;
     }
 }

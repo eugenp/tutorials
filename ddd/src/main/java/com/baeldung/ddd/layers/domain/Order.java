@@ -14,14 +14,11 @@ public class Order {
     private List<Product> products;
     private BigDecimal price;
 
-    public Order(final ObjectId id, final List<Product> products) {
+    public Order(final ObjectId id, final Product product) {
         this.id = id;
-        this.products = new ArrayList<>(products);
+        this.products = new ArrayList<>(Collections.singletonList(product));
         this.status = OrderStatus.CREATED;
-        this.price = products
-          .stream()
-          .map(Product::getPrice)
-          .reduce(BigDecimal.ZERO, BigDecimal::add);
+        this.price = product.getPrice();
     }
 
     public void complete() {

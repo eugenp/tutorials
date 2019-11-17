@@ -2,11 +2,8 @@ package com.baeldung.ddd.layers.domain.service;
 
 import com.baeldung.ddd.layers.domain.Order;
 import com.baeldung.ddd.layers.domain.Product;
-import com.baeldung.ddd.layers.domain.exception.DomainException;
 import com.baeldung.ddd.layers.domain.repository.OrderRepository;
 import org.bson.types.ObjectId;
-
-import java.util.List;
 
 public class DomainOrderService implements OrderService {
 
@@ -17,8 +14,8 @@ public class DomainOrderService implements OrderService {
     }
 
     @Override
-    public ObjectId createOrder(List<Product> products) {
-        final Order order = new Order(ObjectId.get(), products);
+    public ObjectId createOrder(final Product product) {
+        final Order order = new Order(ObjectId.get(), product);
         orderRepository.save(order);
 
         return order.getId();
