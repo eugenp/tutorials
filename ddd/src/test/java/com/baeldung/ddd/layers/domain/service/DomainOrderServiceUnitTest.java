@@ -11,6 +11,7 @@ import org.junit.jupiter.api.function.Executable;
 
 import java.math.BigDecimal;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -30,7 +31,7 @@ class DomainOrderServiceUnitTest {
 
     @Test
     void shouldCreateOrder_thenSaveIt() {
-        final Product product = new Product(BigDecimal.TEN, "productName");
+        final Product product = new Product(UUID.randomUUID(), BigDecimal.TEN, "productName");
 
         final ObjectId id = tested.createOrder(product);
 
@@ -41,18 +42,18 @@ class DomainOrderServiceUnitTest {
     @Test
     void shouldAddProduct_thenSaveOrder() {
         final Order order = spy(OrderProvider.getCreatedOrder());
-        final Product product = new Product(BigDecimal.TEN, "test");
+        final Product product = new Product(UUID.randomUUID(), BigDecimal.TEN, "test");
         when(orderRepository.findById(order.getId())).thenReturn(Optional.of(order));
 
         tested.addProduct(order.getId(), product);
 
         verify(orderRepository).save(order);
-        verify(order).addProduct(product);
+        verify(order).addOrder(product);
     }
 
     @Test
     void shouldAddProduct_thenThrowException() {
-        final Product product = new Product(BigDecimal.TEN, "test");
+        final Product product = new Product(UUID.randomUUID(), BigDecimal.TEN, "test");
         final ObjectId id = ObjectId.get();
         when(orderRepository.findById(id)).thenReturn(Optional.empty());
 
@@ -76,15 +77,16 @@ class DomainOrderServiceUnitTest {
     @Test
     void shouldDeleteProduct_thenSaveOrder() {
         final Order order = spy(OrderProvider.getCreatedOrder());
-        final String productName = order
-          .getProducts()
+        final UUID productId = order
+          .getOrderItems()
           .get(0)
-          .getName();
+          .getProduct()
+          .getId();
         when(orderRepository.findById(order.getId())).thenReturn(Optional.of(order));
 
-        tested.deleteProduct(order.getId(), productName);
+        tested.deleteProduct(order.getId(), productId);
 
         verify(orderRepository).save(order);
-        verify(order).removeProduct(productName);
+        verify(order).removeOrder(productId);
     }
 }

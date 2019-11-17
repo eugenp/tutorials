@@ -1,22 +1,22 @@
 package com.baeldung.ddd.layers.domain;
 
-import com.baeldung.ddd.layers.domain.exception.DomainException;
 import org.bson.types.ObjectId;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 public class Order {
     private final ObjectId id;
     private OrderStatus status;
-    private List<Product> products;
+    private List<OrderItem> orderItems;
     private BigDecimal price;
 
     public Order(final ObjectId id, final Product product) {
         this.id = id;
-        this.products = new ArrayList<>(Collections.singletonList(product));
+        this.orderItems = new ArrayList<>(Collections.singletonList(new OrderItem(product)));
         this.status = OrderStatus.CREATED;
         this.price = product.getPrice();
     }
@@ -26,29 +26,30 @@ public class Order {
         this.status = OrderStatus.COMPLETED;
     }
 
-    public void addProduct(final Product product) {
+    public void addOrder(final Product product) {
         validateState();
         validateProduct(product);
-        products.add(product);
+        orderItems.add(new OrderItem(product));
         price = price.add(product.getPrice());
     }
 
-    public void removeProduct(final String name) {
+    public void removeOrder(final UUID id) {
         validateState();
-        final Product product = getProduct(name);
-        products.remove(product);
+        final OrderItem orderItem = getOrderItem(id);
+        orderItems.remove(orderItem);
 
-        price = price.subtract(product.getPrice());
+        price = price.subtract(orderItem.getPrice());
     }
 
-    private Product getProduct(String name) {
-        return products
+    private OrderItem getOrderItem(final UUID id) {
+        return orderItems
           .stream()
-          .filter(product -> product
-            .getName()
-            .equals(name))
+          .filter(orderItem -> orderItem
+            .getProduct()
+            .getId()
+            .equals(id))
           .findFirst()
-          .orElseThrow(() -> new DomainException("Product with " + name + " doesn't exist."));
+          .orElseThrow(() -> new DomainException("Product with " + id + " doesn't exist."));
     }
 
     private void validateState() {
@@ -71,11 +72,11 @@ public class Order {
         return status;
     }
 
-    public List<Product> getProducts() {
-        return Collections.unmodifiableList(products);
-    }
-
     public BigDecimal getPrice() {
         return price;
+    }
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
     }
 }

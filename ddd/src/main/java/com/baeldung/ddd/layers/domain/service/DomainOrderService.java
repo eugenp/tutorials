@@ -5,11 +5,13 @@ import com.baeldung.ddd.layers.domain.Product;
 import com.baeldung.ddd.layers.domain.repository.OrderRepository;
 import org.bson.types.ObjectId;
 
+import java.util.UUID;
+
 public class DomainOrderService implements OrderService {
 
     private final OrderRepository orderRepository;
 
-    public DomainOrderService(OrderRepository orderRepository) {
+    public DomainOrderService(final OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
@@ -22,15 +24,15 @@ public class DomainOrderService implements OrderService {
     }
 
     @Override
-    public void addProduct(ObjectId id, Product product) {
+    public void addProduct(final ObjectId id, final Product product) {
         final Order order = getOrder(id);
-        order.addProduct(product);
+        order.addOrder(product);
 
         orderRepository.save(order);
     }
 
     @Override
-    public void completeOrder(ObjectId id) {
+    public void completeOrder(final ObjectId id) {
         final Order order = getOrder(id);
         order.complete();
 
@@ -38,9 +40,9 @@ public class DomainOrderService implements OrderService {
     }
 
     @Override
-    public void deleteProduct(ObjectId id, String name) {
+    public void deleteProduct(final ObjectId id, final UUID productId) {
         final Order order = getOrder(id);
-        order.removeProduct(name);
+        order.removeOrder(productId);
 
         orderRepository.save(order);
     }
