@@ -7,20 +7,19 @@ import com.baeldung.persistencecontext.service.TransctionPersistenceContextUserS
 import javax.persistence.EntityExistsException;
 import javax.persistence.TransactionRequiredException;
 
-import org.hamcrest.core.Is;
-import org.hamcrest.core.IsNull;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = PersistenceContextDemoApplication.class)
+@SpringBootTest(classes = com.baeldung.persistencecontext.PersistenceContextDemoApplication.class)
 public class PersistenceContextIntegrationTest {
-    
+
     @Autowired
     private TransctionPersistenceContextUserService transctionPersistenceContext;
     @Autowired
@@ -30,10 +29,12 @@ public class PersistenceContextIntegrationTest {
     public void testThatWhenUserSavedWithTransctionPersistenceContextThenUserShouldGetSavedInDB() {
         User user = new User(121L, "Devender", "admin");
         transctionPersistenceContext.insertWithTransaction(user);
+
         User userFromTransctionPersistenceContext = transctionPersistenceContext.find(user.getId());
+        assertNotNull(userFromTransctionPersistenceContext);
+
         User userFromExtendedPersistenceContext = extendedPersistenceContext.find(user.getId());
-        assertThat(userFromTransctionPersistenceContext, Is.is(IsNull.notNullValue()));
-        assertThat(userFromExtendedPersistenceContext, Is.is(IsNull.notNullValue()));
+        assertNotNull(userFromExtendedPersistenceContext);
     }
 
     @Test(expected = TransactionRequiredException.class)
@@ -46,10 +47,12 @@ public class PersistenceContextIntegrationTest {
     public void testThatWhenUserSavedWithExtendedPersistenceContextWithoutTransactionThenUserShouldGetCached() {
         User user = new User(123L, "Devender", "admin");
         extendedPersistenceContext.insertWithoutTransaction(user);
+
         User userFromExtendedPersistenceContext = extendedPersistenceContext.find(user.getId());
+        assertNotNull(userFromExtendedPersistenceContext);
+
         User userFromTransctionPersistenceContext = transctionPersistenceContext.find(user.getId());
-        assertThat(userFromExtendedPersistenceContext, Is.is(IsNull.notNullValue()));
-        assertThat(userFromTransctionPersistenceContext, Is.is(IsNull.nullValue()));
+        assertNull(userFromTransctionPersistenceContext);
     }
 
     @Test(expected = EntityExistsException.class)
@@ -64,24 +67,24 @@ public class PersistenceContextIntegrationTest {
     public void testThatWhenUserSavedWithExtendedPersistenceContextWithTransactionThenUserShouldSaveEntityIntoDB() {
         User user = new User(127L, "Devender", "admin");
         extendedPersistenceContext.insertWithTransaction(user);
+
         User userFromDB = transctionPersistenceContext.find(user.getId());
-        assertThat(userFromDB, Is.is(IsNull.notNullValue()));
+        assertNotNull(userFromDB);
     }
 
     @Test
     public void testThatWhenUserSavedWithExtendedPersistenceContextWithTransactionThenUserShouldFlushCachedEntityIntoDB() {
         User user1 = new User(124L, "Devender", "admin");
         extendedPersistenceContext.insertWithoutTransaction(user1);
+
         User user2 = new User(125L, "Devender", "admin");
         extendedPersistenceContext.insertWithTransaction(user2);
-        User userFromExtendedPersistenceContextuser1 = extendedPersistenceContext.find(user1.getId());
-        User userFromExtendedPersistenceContextuser2 = extendedPersistenceContext.find(user2.getId());
-        User userFromTransctionPersistenceContextuser1 = transctionPersistenceContext.find(user1.getId());
-        User userFromTransctionPersistenceContextuser2 = transctionPersistenceContext.find(user2.getId());
-        assertThat(userFromExtendedPersistenceContextuser1, Is.is(IsNull.notNullValue()));
-        assertThat(userFromExtendedPersistenceContextuser2, Is.is(IsNull.notNullValue()));
-        assertThat(userFromTransctionPersistenceContextuser1, Is.is(IsNull.notNullValue()));
-        assertThat(userFromTransctionPersistenceContextuser2, Is.is(IsNull.notNullValue()));
+
+        User user1FromTransctionPersistenceContext = transctionPersistenceContext.find(user1.getId());
+        assertNotNull(user1FromTransctionPersistenceContext);
+
+        User user2FromTransctionPersistenceContext = transctionPersistenceContext.find(user2.getId());
+        assertNotNull(user2FromTransctionPersistenceContext);
     }
 
 }
