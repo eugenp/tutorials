@@ -11,4 +11,5 @@ This module contains articles about Java operators
 - [Java Compound Operators](https://www.baeldung.com/java-compound-operators)
 - [The XOR Operator in Java](https://www.baeldung.com/java-xor-operator)
 - [Java Bitwise Operators](https://www.baeldung.com/java-bitwise-operators)
+- [Bitwise & vs Logical && Operators](https://www.baeldung.com/bitwise-vs-logical-operators/)
 
