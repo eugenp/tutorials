@@ -1,20 +1,22 @@
-package com.baeldung.maths;
+package com.baeldung.maths.calculator.basic;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class BasicCalculatorSwitchCase {
+public class BasicCalculatorIfElse {
+
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("---------------------------------- \n"
-            + "Welcome to Basic Calculator \n"
-            + "----------------------------------");
+        System.out.println("---------------------------------- \n" +
+                "Welcome to Basic Calculator \n" +
+                "----------------------------------");
         System.out.println("Following operations are supported : \n" +
                 "1. Addition (+) \n" +
                 "2. Subtraction (-) \n" +
                 "3. Multiplication (* OR x) \n" +
                 "4. Division (/) \n");
+
+        Scanner scanner = new Scanner(System.in);
         try {
             System.out.println("Enter an operator: (+ OR - OR * OR /) ");
             char operation = scanner.next().charAt(0);
@@ -33,30 +35,21 @@ public class BasicCalculatorSwitchCase {
                 System.err.println("Second Number cannot be zero for Division operation.");
             }
 
-            switch (operation) {
-                case '+':
-                    System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
-                    break;
-                case '-':
-                    System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
-                    break;
-                case '*':
-                    System.out.println(num1 + " x " + num2 + " = " + (num1 * num2));
-                    break;
-                case 'x':
-                    System.out.println(num1 + " x " + num2 + " = " + (num1 * num2));
-                    break;
-                case '/':
-                    System.out.println(num1 + " / " + num2 + " = " + (num1 / num2));
-                    break;
-                default:
-                    System.err.println("Invalid Operator Specified.");
-                    break;
+            if (operation == '+') {
+                System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
+            } else if (operation == '-') {
+                System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
+            } else if (operation == '*' || operation == 'x') {
+                System.out.println(num1 + " x " + num2 + " = " + (num1 * num2));
+            } else if (operation == '/') {
+                System.out.println(num1 + " / " + num2 + " = " + (num1 / num2));
+            } else {
+                System.err.println("Invalid Operator Specified.");
             }
         } catch (InputMismatchException exc) {
             System.err.println(exc.getMessage());
+        } finally {
+            scanner.close();
         }
-        scanner.close();
     }
 }
-
