@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-mvc-themes</artifactId>
+    <artifactId>spring-mvc-views</artifactId>
     <packaging>war</packaging>
     <name>spring-mvc-themes</name>
 
@@ -17,14 +17,14 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <javax.servlet.jsp-api.version>2.3.2-b02</javax.servlet.jsp-api.version>
-        <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
+        <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <spring.version>5.2.1.RELEASE</spring.version>
         <spring.security.version>5.2.1.RELEASE</spring.security.version>
-        <spring.data.version>2.1.10.RELEASE</spring.data.version>
+        <spring.data.version>2.2.2.RELEASE</spring.data.version>
         <cglib.version>2.2.2</cglib.version>
         <hsqldb.version>2.5.0</hsqldb.version>
-        <hibernate.version>5.2.17.Final</hibernate.version>
+        <hibernate.version>5.4.9.Final</hibernate.version>
         <deploy-path>enter-location-of-server</deploy-path>
     </properties>
 
@@ -110,7 +110,7 @@
                 <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                    <warName>spring-mvc-theme</warName>
+                    <warName>spring-mvc-views</warName>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <outputDirectory>${deploy-path}</outputDirectory>
                 </configuration>
