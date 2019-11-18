@@ -19,7 +19,8 @@
         <java.version>1.8</java.version>
         <javax.servlet.jsp-api.version>2.3.2-b02</javax.servlet.jsp-api.version>
         <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
-        <spring.security.version>5.1.6.RELEASE</spring.security.version>
+        <spring.version>5.2.1.RELEASE</spring.version>
+        <spring.security.version>5.2.1.RELEASE</spring.security.version>
         <spring.data.version>2.1.10.RELEASE</spring.data.version>
         <cglib.version>2.2.2</cglib.version>
         <hsqldb.version>2.5.0</hsqldb.version>
