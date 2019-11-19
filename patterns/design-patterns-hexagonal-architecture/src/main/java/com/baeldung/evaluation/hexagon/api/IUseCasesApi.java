@@ -1,5 +1,5 @@
 package com.baeldung.evaluation.hexagon.api;
 
-public interface IApplicationApi {
+public interface IUseCasesApi {
         boolean execute(String command);
 }

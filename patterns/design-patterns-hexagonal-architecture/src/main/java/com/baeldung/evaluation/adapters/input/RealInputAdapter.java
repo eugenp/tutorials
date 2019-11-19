@@ -1,12 +1,12 @@
 package com.baeldung.evaluation.adapters.input;
 
 import com.baeldung.evaluation.adapters.UseCaseInputAdapter;
-import com.baeldung.evaluation.hexagon.api.IApplicationApi;
+import com.baeldung.evaluation.hexagon.api.IUseCasesApi;
 
 public class RealInputAdapter implements UseCaseInputAdapter {
-        private final IApplicationApi applicationApi;
+        private final IUseCasesApi applicationApi;
 
-        public RealInputAdapter(IApplicationApi applicationApi) {
+        public RealInputAdapter(IUseCasesApi applicationApi) {
                 this.applicationApi = applicationApi;
         }
 

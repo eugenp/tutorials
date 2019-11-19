@@ -7,7 +7,7 @@ import com.baeldung.evaluation.adapters.output.MockNotificationsAdapter;
 import com.baeldung.evaluation.adapters.output.MockPersistenceAdapter;
 import com.baeldung.evaluation.adapters.output.RealNotificationsAdapter;
 import com.baeldung.evaluation.adapters.output.RealPersistenceAdapter;
-import com.baeldung.evaluation.hexagon.api.IApplicationApi;
+import com.baeldung.evaluation.hexagon.api.IUseCasesApi;
 import com.baeldung.evaluation.hexagon.application.Application;
 import com.baeldung.evaluation.hexagon.spi.INotificationsSpi;
 import com.baeldung.evaluation.hexagon.spi.IPersistenceSpi;
@@ -17,7 +17,7 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class HexagonalArchitectureUnitTest {
-        IApplicationApi applicationApi = null;
+        IUseCasesApi applicationApi = null;
         INotificationsSpi notificationsSpi = null;
         IPersistenceSpi persistenceSpi = null;
 

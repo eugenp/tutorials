@@ -1,10 +1,10 @@
 package com.baeldung.evaluation.hexagon.application;
 
-import com.baeldung.evaluation.hexagon.api.IApplicationApi;
+import com.baeldung.evaluation.hexagon.api.IUseCasesApi;
 import com.baeldung.evaluation.hexagon.spi.INotificationsSpi;
 import com.baeldung.evaluation.hexagon.spi.IPersistenceSpi;
 
-public class Application implements IApplicationApi {
+public class Application implements IUseCasesApi {
         private final INotificationsSpi notificationsSpi;
         private final IPersistenceSpi persistenceSpi;
 
