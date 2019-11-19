@@ -17,7 +17,9 @@ public class BookStoreRegistryConfigurer implements TypeRegistryConfigurer {
 
     @Override
     public void configureTypeRegistry(TypeRegistry typeRegistry) {
-        typeRegistry.defineDataTableType(new DataTableType(BookCatalog.class, new BookTableTransformer()));
+        typeRegistry.defineDataTableType(
+          new DataTableType(BookCatalog.class, new BookTableTransformer())
+        );
     }
     
     private static class BookTableTransformer implements TableTransformer<BookCatalog> {
@@ -28,10 +30,10 @@ public class BookStoreRegistryConfigurer implements TypeRegistryConfigurer {
             BookCatalog catalog = new BookCatalog();
             
             table.cells()
-                .stream()
-                .skip(1)        // Skip header row
-                .map(fields -> new Book(fields.get(0), fields.get(1)))
-                .forEach(catalog::addBook);
+              .stream()
+              .skip(1)        // Skip header row
+              .map(fields -> new Book(fields.get(0), fields.get(1)))
+              .forEach(catalog::addBook);
             
             return catalog;
         }
