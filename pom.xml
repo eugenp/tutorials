@@ -421,9 +421,9 @@
                 <module>core-java-modules/core-java-concurrency-basic-2</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-io-2</module>
                 <module>core-java-modules/core-java-io-apis</module>
                 <module>core-java-modules/core-java-io-conversions</module>
-                <module>core-java-modules/core-java-io-files</module>
                 <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-nio-2</module>
                 <module>core-java-modules/core-java-security</module>
@@ -924,7 +924,6 @@
                 <module>spring-boot-di</module>
                 <module>greeter-spring-boot-autoconfigure</module>
                 <module>greeter-spring-boot-sample-app</module>
-                <module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
                 <module>spring-boot-jasypt</module>
                 <module>spring-boot-keycloak</module>
                 <module>spring-boot-mvc</module>
@@ -949,16 +948,12 @@
                 <module>spring-cloud/spring-cloud-data-flow/time-processor</module>
                 <module>spring-cloud/spring-cloud-data-flow/time-source</module>
                 <module>spring-cucumber</module>
-                <module>persistence-modules/spring-data-keyvalue</module>
                 <module>spring-data-rest</module>
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
                 <module>spring-di</module>
                 <module>spring-ehcache</module>
                 <module>spring-freemarker</module>
-                <module>persistence-modules/spring-hibernate-3</module>
-                <module>persistence-modules/spring-hibernate4</module>
-                <module>persistence-modules/spring-mybatis</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
@@ -1015,11 +1010,6 @@
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
                 <module>spring-zuul/spring-zuul-foos-resource</module>
-                <module>persistence-modules/hibernate-mapping</module>
-                <module>persistence-modules/spring-data-dynamodb</module>
-                <module>persistence-modules/spring-data-eclipselink</module>
-                <module>persistence-modules/spring-data-solr</module>
-                <module>persistence-modules/spring-hibernate-5</module>
 
                 <module>spring-boot-flowable</module>
                 <module>spring-security-kerberos</module>
@@ -1204,9 +1194,9 @@
                 <module>core-java-modules/core-java-concurrency-basic-2</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-io-2</module>
                 <module>core-java-modules/core-java-io-apis</module>
                 <module>core-java-modules/core-java-io-conversions</module>
-                <module>core-java-modules/core-java-io-files</module>
                 <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-nio-2</module>
                 <module>core-java-modules/core-java-security</module>
@@ -1653,7 +1643,7 @@
                 <module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-java-modules/core-java-concurrency-advanced-2</module>
                 <module>core-java-modules/core-java-concurrency-advanced-3</module>
-				<module>core-kotlin</module> <!-- long running? -->
+                <module>core-kotlin</module> <!-- long running? -->
                 <module>core-kotlin-2</module>
 
                 <module>jenkins/plugins</module>
@@ -1663,6 +1653,7 @@
                 <module>libraries</module> <!-- very long running -->
 
                 <module>persistence-modules/hibernate5</module>
+				        <module>persistence-modules/hibernate-mapping</module>
                 <module>persistence-modules/java-jpa</module>
                 <module>persistence-modules/java-jpa-2</module>
                 <module>persistence-modules/java-mongodb</module>

@@ -1,6 +1,6 @@
 package com.baeldung.web;
 
-import com.baeldung.model.User;
+import com.baeldung.model.BasicUser;
 
 import java.util.Set;
 
@@ -34,7 +34,7 @@ public class DetailedUserDto {
         this.permissions = permissions;
     }
 
-    public static DetailedUserDto fromEntity(User user) {
+    public static DetailedUserDto fromEntity(BasicUser user) {
         DetailedUserDto detailed = new DetailedUserDto();
         detailed.setId(user.getId());
         detailed.setUsername(user.getUsername());

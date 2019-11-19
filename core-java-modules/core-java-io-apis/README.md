@@ -12,3 +12,5 @@ This module contains articles about core Java input/output(IO) APIs.
 - [Quick Use of FilenameFilter](https://www.baeldung.com/java-filename-filter)
 - [Guide to BufferedReader](https://www.baeldung.com/java-buffered-reader)
 - [Java Scanner](https://www.baeldung.com/java-scanner)
+- [Scanner nextLine() Method](https://www.baeldung.com/java-scanner-nextline)
+- [Java Scanner hasNext() vs. hasNextLine()](https://www.baeldung.com/java-scanner-hasnext-vs-hasnextline)
