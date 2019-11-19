@@ -1,19 +1,17 @@
-=========
+## Core Java Arrays
 
-## Core Java Arrays Cookbooks and Examples
+This module contains articles about Java arrays
 
 ### Relevant Articles: 
-- [How to Copy an Array in Java](http://www.baeldung.com/java-array-copy)
-- [Check if a Java Array Contains a Value](http://www.baeldung.com/java-array-contains-value)
-- [Initializing Arrays in Java](http://www.baeldung.com/java-initialize-array)
-- [Guide to the java.util.Arrays Class](http://www.baeldung.com/java-util-arrays)
-- [Multi-Dimensional Arrays In Java](http://www.baeldung.com/java-jagged-arrays)
-- [Find Sum and Average in a Java Array](http://www.baeldung.com/java-array-sum-average)
+- [How to Copy an Array in Java](https://www.baeldung.com/java-array-copy)
+- [Check if a Java Array Contains a Value](https://www.baeldung.com/java-array-contains-value)
+- [Initializing Arrays in Java](https://www.baeldung.com/java-initialize-array)
+- [Guide to the java.util.Arrays Class](https://www.baeldung.com/java-util-arrays)
+- [Multi-Dimensional Arrays In Java](https://www.baeldung.com/java-jagged-arrays)
+- [Find Sum and Average in a Java Array](https://www.baeldung.com/java-array-sum-average)
 - [Arrays in Java: A Reference Guide](https://www.baeldung.com/java-arrays-guide)
-- [How to Invert an Array in Java](http://www.baeldung.com/java-invert-array)
-- [Array Operations in Java](http://www.baeldung.com/java-common-array-operations)
-- [Intersection Between two Integer Arrays](https://www.baeldung.com/java-array-intersection)
+- [Read and Write User Input in Java](https://www.baeldung.com/java-console-input-output)
+- [How to Reverse an Array in Java](http://www.baeldung.com/java-invert-array)
 - [Sorting Arrays in Java](https://www.baeldung.com/java-sorting-arrays)
-- [Convert a Float to a Byte Array in Java](https://www.baeldung.com/java-convert-float-to-byte-array)
-- [Converting Between Stream and Array in Java](https://www.baeldung.com/java-stream-to-array)
-- [Removing an Element from an Array in Java](https://www.baeldung.com/java-array-remove-element)
+- [Checking If an Array Is Sorted in Java](https://www.baeldung.com/java-check-sorted-array)
+- [[More -->]](/core-java-modules/core-java-arrays-2)

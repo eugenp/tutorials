@@ -13,7 +13,7 @@ import java.util.UUID;
 @ViewIndexed(designDoc = ViewPersonRepository.DESIGN_DOCUMENT)
 public interface ViewPersonRepository extends ReactiveCrudRepository<Person, UUID> {
 
-    String DESIGN_DOCUMENT = "persons";
+    String DESIGN_DOCUMENT = "person";
 
     @View(designDocument = ViewPersonRepository.DESIGN_DOCUMENT)
     Flux<Person> findByFirstName(String firstName);

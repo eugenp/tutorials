@@ -19,12 +19,13 @@ public class MustacheTransformer {
         this.templateFile = templateFile;
     }
 
-    public String html() throws IOException, XMLStreamException {
+    public String html() throws IOException {
         MustacheFactory mf = new DefaultMustacheFactory();
         Mustache mustache = mf.compile(templateFile);
-        Writer output = new StringWriter();
-        mustache.execute(output, staxTransformer.buildMap());
-        output.flush();
-        return output.toString();
+        try (Writer output = new StringWriter()) {
+            mustache.execute(output, staxTransformer.getMap());
+            output.flush();
+            return output.toString();
+        }
     }
 }

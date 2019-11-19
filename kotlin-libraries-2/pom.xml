@@ -28,9 +28,30 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-collections-immutable -->
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-collections-immutable</artifactId>
+            <version>${kotlinx-collections-immutable.version}</version>
+        </dependency>
+        <!-- MockK dependencies-->
+        <dependency>
+            <groupId>io.mockk</groupId>
+            <artifactId>mockk</artifactId>
+            <version>${mockk.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
+        <guava.version>27.1-jre</guava.version>
+        <mockk.version>1.9.3</mockk.version>
+        <kotlinx-collections-immutable.version>0.1</kotlinx-collections-immutable.version>
     </properties>
 
 </project>

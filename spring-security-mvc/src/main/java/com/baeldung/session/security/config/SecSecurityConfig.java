@@ -38,7 +38,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         .csrf().disable()
         .authorizeRequests()
         .antMatchers("/anonymous*").anonymous()
-        .antMatchers("/login*","/invalidSession*", "/sessionExpired*").permitAll()
+        .antMatchers("/login*","/invalidSession*", "/sessionExpired*", "/foo/**").permitAll()
         .anyRequest().authenticated()
         .and()
         .formLogin()
