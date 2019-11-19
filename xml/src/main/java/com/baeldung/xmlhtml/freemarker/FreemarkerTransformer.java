@@ -24,7 +24,7 @@ public class FreemarkerTransformer {
         this.templateFile = templateFile;
     }
 
-    public String html() throws IOException, XMLStreamException, TemplateException {
+    public String html() throws IOException, TemplateException {
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_29);
         cfg.setDirectoryForTemplateLoading(new File(templateDirectory));
         cfg.setDefaultEncoding(StandardCharsets.UTF_8.toString());
@@ -33,8 +33,9 @@ public class FreemarkerTransformer {
         cfg.setWrapUncheckedExceptions(true);
         cfg.setFallbackOnNullLoopVariable(false);
         Template temp = cfg.getTemplate(templateFile);
-        Writer output = new StringWriter();
-        temp.process(staxTransformer.buildMap(), output);
-        return output.toString();
+        try (Writer output = new StringWriter()) {
+            temp.process(staxTransformer.getMap(), output);
+            return output.toString();
+        }
     }
 }

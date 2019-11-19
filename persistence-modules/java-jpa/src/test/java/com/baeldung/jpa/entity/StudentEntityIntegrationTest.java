@@ -16,8 +16,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.util.Gender;
-
 public class StudentEntityIntegrationTest {
 
 	private EntityManagerFactory emf;
