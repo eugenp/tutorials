@@ -12,16 +12,12 @@ import java.net.URL;
 import java.util.Properties;
 
 public class HibernateUtil {
-    private static SessionFactory sessionFactory;
 
     private HibernateUtil() {
     }
 
     public static SessionFactory getSessionFactory(Strategy strategy) {
-        if (sessionFactory == null) {
-            sessionFactory = buildSessionFactory(strategy);
-        }
-        return sessionFactory;
+        return buildSessionFactory(strategy);
     }
 
     private static SessionFactory buildSessionFactory(Strategy strategy) {

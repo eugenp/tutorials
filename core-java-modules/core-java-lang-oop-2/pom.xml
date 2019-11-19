@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>core-java-lang-oop-2</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <name>core-java-lang-oop-2</name>
@@ -14,6 +13,22 @@
         <relativePath>../../parent-java</relativePath>
     </parent>
 
+	<dependencies>
+        <!-- test scoped -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>nl.jqno.equalsverifier</groupId>
+            <artifactId>equalsverifier</artifactId>
+            <version>${equalsverifier.version}</version>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
+    
     <build>
         <finalName>core-java-lang-oop-2</finalName>
         <resources>
@@ -23,5 +38,11 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <!-- testing -->
+        <assertj-core.version>3.10.0</assertj-core.version>
+        <equalsverifier.version>3.0.3</equalsverifier.version>
+    </properties>
 
 </project>

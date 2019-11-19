@@ -5,7 +5,7 @@
     <groupId>org.test</groupId>
     <artifactId>vaadin</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Vaadin</name>
+    <name>vaadin</name>
     <packaging>war</packaging>
 
     <parent>
@@ -33,7 +33,26 @@
             <artifactId>javax.servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-server</artifactId>
+            <version>${vaadin-server.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-push</artifactId>
+            <version>${vaadin-push.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-client-compiled</artifactId>
+            <version>${vaadin-client-compiled.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-themes</artifactId>
+            <version>${vaadin-themes.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -155,16 +174,19 @@
     </profiles>
 
     <properties>
-        <vaadin.version>10.0.11</vaadin.version>
-        <vaadin.plugin.version>10.0.11</vaadin.plugin.version>
-        <vaadin-spring-boot-starter.version>10.0.11</vaadin-spring-boot-starter.version>
+        <vaadin.version>13.0.9</vaadin.version>
+        <vaadin.plugin.version>13.0.9</vaadin.plugin.version>
+        <vaadin-spring-boot-starter.version>13.0.9</vaadin-spring-boot-starter.version>
+        <vaadin-server.version>8.8.5</vaadin-server.version>
+        <vaadin-push.version>8.8.5</vaadin-push.version>
+        <vaadin-client-compiled.version>8.8.5</vaadin-client-compiled.version>
+        <vaadin-themes.version>8.8.5</vaadin-themes.version>
         <jetty.plugin.version>9.3.9.v20160517</jetty.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <vaadin.widgetset.mode>local</vaadin.widgetset.mode>
         <vaadin.theme>mytheme</vaadin.theme>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
         <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
     </properties>
 

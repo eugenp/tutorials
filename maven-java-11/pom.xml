@@ -6,14 +6,17 @@
     <version>1.0</version>
     <packaging>pom</packaging>
     <name>maven-java-11</name>
+
     <parent>
-	<artifactId>parent-modules</artifactId>
-	<groupId>com.baeldung</groupId>
-	<version>1.0.0-SNAPSHOT</version>
+        <artifactId>parent-modules</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
+
     <modules>
         <module>multimodule-maven-project</module>
     </modules>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>

@@ -28,4 +28,9 @@
         <appender-ref ref="badMap" />
     </root>
 
+    <logger name="com.baeldung.logback.MapAppenderIntegrationTest" level="info">
+        <appender-ref ref="map"/>
+        <appender-ref ref="badMap" />
+    </logger>
+
 </configuration>

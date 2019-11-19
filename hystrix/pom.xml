@@ -41,22 +41,10 @@
             <artifactId>hystrix-metrics-event-stream</artifactId>
             <version>${hystrix-metrics-event-stream.version}</version>
         </dependency>
-        <!--<dependency> <groupId>com.netflix.hystrix</groupId> <artifactId>hystrix-dashboard</artifactId> <version>${hystrix-dashboard.version}</version> </dependency> -->
         <dependency>
             <groupId>com.netflix.rxjava</groupId>
             <artifactId>rxjava-core</artifactId>
             <version>${rxjava-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>${hamcrest-all.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -65,10 +53,7 @@
         <hystrix-core.version>1.5.8</hystrix-core.version>
         <rxjava-core.version>0.20.7</rxjava-core.version>
         <!-- maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <hystrix-metrics-event-stream.version>1.5.8</hystrix-metrics-event-stream.version>
-        <hystrix-dashboard.version>1.5.8</hystrix-dashboard.version>
     </properties>
 
 </project>

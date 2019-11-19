@@ -2,7 +2,8 @@
 # These are default settings, but we add them for clarity.
 server:
   port: 8080
-  contextPath: /
+  servlet:
+    context-path: /
 
 # Configure the Authorization Server and User Info Resource Server details
 security:
@@ -21,6 +22,7 @@ person:
 # Proxies the calls to http://localhost:8080/api/* to our REST service at http://localhost:8081/*
 # and automatically includes our OAuth2 token in the request headers
 zuul:
+  sensitiveHeaders: Cookie,Set-Cookie  
   routes:
     resource:
       path: /api/**

@@ -1,29 +1,51 @@
 package com.baeldung.spring.data.reactive.redis.template;
 
 
-import com.baeldung.spring.data.reactive.redis.SpringRedisReactiveApplication;
-import com.baeldung.spring.data.reactive.redis.model.Employee;
+import java.io.IOException;
+import java.time.Duration;
+
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.data.redis.core.ReactiveValueOperations;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.baeldung.spring.data.reactive.redis.SpringRedisReactiveApplication;
+import com.baeldung.spring.data.reactive.redis.model.Employee;
+
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-
-import java.time.Duration;
+import redis.embedded.RedisServerBuilder;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringRedisReactiveApplication.class)
+@DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
 public class RedisTemplateValueOpsIntegrationTest {
+    
+    private static redis.embedded.RedisServer redisServer;
 
     @Autowired
     private ReactiveRedisTemplate<String, Employee> redisTemplate;
 
     private ReactiveValueOperations<String, Employee> reactiveValueOps;
+    
+    @BeforeClass
+    public static void startRedisServer() throws IOException {
+        redisServer = new RedisServerBuilder().port(6379).setting("maxmemory 256M").build();
+        redisServer.start();
+    }
+    
+    @AfterClass
+    public static void stopRedisServer() throws IOException {
+        redisServer.stop();
+    }
 
     @Before
     public void setup() {

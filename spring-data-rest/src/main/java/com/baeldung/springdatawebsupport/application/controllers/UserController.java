@@ -1,8 +1,5 @@
 package com.baeldung.springdatawebsupport.application.controllers;
 
-import com.baeldung.springdatawebsupport.application.entities.User;
-import com.baeldung.springdatawebsupport.application.repositories.UserRepository;
-import com.querydsl.core.types.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,8 +8,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.baeldung.springdatawebsupport.application.entities.User;
+import com.baeldung.springdatawebsupport.application.repositories.UserRepository;
+import com.querydsl.core.types.Predicate;
 
 @RestController
 public class UserController {
@@ -33,7 +33,7 @@ public class UserController {
     public Page<User> findAllUsers(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
-	
+
     @GetMapping("/sortedusers")
     public Page<User> findAllUsersSortedByName() {
         Pageable pageable = PageRequest.of(0, 5, Sort.by("name"));

@@ -7,6 +7,7 @@
 	<artifactId>tensorflow-java</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
+	<name>tensorflow-java</name>
 	<url>http://maven.apache.org</url>
 
 	<parent>
@@ -24,13 +25,13 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit.jupiter.version}</version>
+			<version>${junit-jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit.jupiter.version}</version>
+			<version>${junit-jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -46,6 +47,5 @@
 
 	<properties>
 		<tensorflow.version>1.12.0</tensorflow.version>
-		<junit.jupiter.version>5.4.0</junit.jupiter.version>
 	</properties>
 </project>

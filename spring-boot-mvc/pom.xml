@@ -40,7 +40,7 @@
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.faces</artifactId>
-            <version>2.3.7</version>
+            <version>${javax.faces.version}</version>
         </dependency>
 
         <!--Test -->
@@ -89,6 +89,18 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- AOP -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -108,6 +120,7 @@
         <spring.fox.version>2.9.2</spring.fox.version>
         <!-- ROME for RSS -->
         <rome.version>1.10.0</rome.version>
+        <javax.faces.version>2.3.7</javax.faces.version>
         <start-class>com.baeldung.springbootmvc.SpringBootMvcApplication</start-class>
     </properties>
 
