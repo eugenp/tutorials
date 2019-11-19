@@ -1,12 +1,12 @@
-package com.baeldung.hexagonal.container;
+package com.baeldung.evaluation.container;
 
-import com.baeldung.hexagonal.adapters.input.RealInputAdapter;
-import com.baeldung.hexagonal.adapters.output.RealNotificationsAdapter;
-import com.baeldung.hexagonal.adapters.output.RealPersistenceAdapter;
-import com.baeldung.hexagonal.api.IApplicationApi;
-import com.baeldung.hexagonal.application.Application;
-import com.baeldung.hexagonal.spi.INotificationsSpi;
-import com.baeldung.hexagonal.spi.IPersistenceSpi;
+import com.baeldung.evaluation.adapters.input.RealInputAdapter;
+import com.baeldung.evaluation.adapters.output.RealNotificationsAdapter;
+import com.baeldung.evaluation.adapters.output.RealPersistenceAdapter;
+import com.baeldung.evaluation.hexagon.api.IApplicationApi;
+import com.baeldung.evaluation.hexagon.application.Application;
+import com.baeldung.evaluation.hexagon.spi.INotificationsSpi;
+import com.baeldung.evaluation.hexagon.spi.IPersistenceSpi;
 
 public class MainComponent {
 

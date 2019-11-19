@@ -1,4 +1,4 @@
-package com.baeldung.hexagonal.adapters;
+package com.baeldung.evaluation.adapters;
 
 public interface UseCaseInputAdapter {
         boolean execute();

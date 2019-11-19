@@ -1,6 +1,6 @@
-package com.baeldung.hexagonal.adapters.output;
+package com.baeldung.evaluation.adapters.output;
 
-import com.baeldung.hexagonal.spi.IPersistenceSpi;
+import com.baeldung.evaluation.hexagon.spi.IPersistenceSpi;
 
 public class RealPersistenceAdapter implements IPersistenceSpi {
 

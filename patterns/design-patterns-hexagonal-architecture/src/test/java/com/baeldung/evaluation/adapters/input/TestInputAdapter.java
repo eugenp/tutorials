@@ -1,7 +1,7 @@
-package com.baeldung.hexagonal.adapters.input;
+package com.baeldung.evaluation.adapters.input;
 
-import com.baeldung.hexagonal.adapters.UseCaseInputAdapter;
-import com.baeldung.hexagonal.api.IApplicationApi;
+import com.baeldung.evaluation.adapters.UseCaseInputAdapter;
+import com.baeldung.evaluation.hexagon.api.IApplicationApi;
 
 public class TestInputAdapter implements UseCaseInputAdapter {
         private final IApplicationApi applicationApi;

@@ -1,8 +1,8 @@
-package com.baeldung.hexagonal.application;
+package com.baeldung.evaluation.hexagon.application;
 
-import com.baeldung.hexagonal.api.IApplicationApi;
-import com.baeldung.hexagonal.spi.INotificationsSpi;
-import com.baeldung.hexagonal.spi.IPersistenceSpi;
+import com.baeldung.evaluation.hexagon.api.IApplicationApi;
+import com.baeldung.evaluation.hexagon.spi.INotificationsSpi;
+import com.baeldung.evaluation.hexagon.spi.IPersistenceSpi;
 
 public class Application implements IApplicationApi {
         private final INotificationsSpi notificationsSpi;
