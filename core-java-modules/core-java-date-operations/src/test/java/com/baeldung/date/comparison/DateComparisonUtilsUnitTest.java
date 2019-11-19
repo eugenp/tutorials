@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class DateComparisonUtilsUnitTest {
 
@@ -21,7 +21,7 @@ public class DateComparisonUtilsUnitTest {
     }
 
     @Test
-    void givenDatesWithDifferentTime_whenIsSameDay_thenReturnsTrue() {
+    public void givenDatesWithDifferentTime_whenIsSameDay_thenReturnsTrue() {
         assertTrue(DateComparisonUtils.isSameDayUsingLocalDate(day1Morning, day1Evening));
         assertTrue(DateComparisonUtils.isSameDayUsingSimpleDateFormat(day1Morning, day1Evening));
         assertTrue(DateComparisonUtils.isSameDayUsingCalendar(day1Morning, day1Evening));
@@ -31,7 +31,7 @@ public class DateComparisonUtilsUnitTest {
     }
 
     @Test
-    void givenDates_whenIsDifferentDay_thenReturnsFalse() {
+    public void givenDates_whenIsDifferentDay_thenReturnsFalse() {
         assertFalse(DateComparisonUtils.isSameDayUsingLocalDate(day1Morning, day2Morning));
         assertFalse(DateComparisonUtils.isSameDayUsingLocalDate(day1Evening, day2Morning));
 
