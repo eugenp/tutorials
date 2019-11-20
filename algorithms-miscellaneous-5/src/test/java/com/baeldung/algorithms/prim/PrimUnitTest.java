@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class PrimTest {
+public class PrimUnitTest {
 
     @Test
     public void givenAGraph_whenPrimRuns_thenPrintMST() {
