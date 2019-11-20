@@ -25,6 +25,7 @@
         <module>solid</module>
         <module>dip</module>
         <module>design-patterns-cloud</module>
+        <module>hexagonal</module>
     </modules>
 
     <dependencyManagement>
