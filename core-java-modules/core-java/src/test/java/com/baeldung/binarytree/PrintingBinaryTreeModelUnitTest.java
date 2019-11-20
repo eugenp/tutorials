@@ -1,19 +1,36 @@
 package com.baeldung.binarytree;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class PrintingBinaryTreeUnitTest {
+public class PrintingBinaryTreeModelUnitTest {
 
     private BinaryTreeModel balanced;
-    private BinaryTreeModel leftUnbalanced;
-    private BinaryTreeModel rightUnbalanced;
+    private BinaryTreeModel leftSkewed;
+    private BinaryTreeModel rightSkewed;
+    
+    private OutputStream output;
 
     @Before
     public void setup() {
         balanced = createBalancedTree();
-        leftUnbalanced = createLeftUnbalancedTree();
-        rightUnbalanced = createRightUnbalancedTree();
+        leftSkewed = createLeftUnbalancedTree();
+        rightSkewed = createRightUnbalancedTree();
+        
+        output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+    }
+    
+    @After
+    public void tearDown() {
+        System.setOut(System.out);
     }
 
     private BinaryTreeModel createBalancedTree() {
@@ -48,7 +65,7 @@ public class PrintingBinaryTreeUnitTest {
 
     private BinaryTreeModel createLeftUnbalancedTree() {
 
-        BinaryTreeModel root = new BinaryTreeModel("left");
+        BinaryTreeModel root = new BinaryTreeModel("root");
 
         BinaryTreeModel node1 = new BinaryTreeModel("node1");
         BinaryTreeModel node2 = new BinaryTreeModel("node2");
@@ -78,7 +95,7 @@ public class PrintingBinaryTreeUnitTest {
 
     private BinaryTreeModel createRightUnbalancedTree() {
 
-        BinaryTreeModel root = new BinaryTreeModel("right");
+        BinaryTreeModel root = new BinaryTreeModel("root");
 
         BinaryTreeModel node1 = new BinaryTreeModel("node1");
         BinaryTreeModel node2 = new BinaryTreeModel("node2");
@@ -108,17 +125,60 @@ public class PrintingBinaryTreeUnitTest {
 
     @Test
     public void givenBinaryTreeModelBalanced_whenPrintWithBinaryTreePrinter() {
+        
+        StringBuilder expected = new StringBuilder();
+        expected.append("root").append("\n");
+        expected.append("├──node1").append("\n");
+        expected.append("│  ├──node3").append("\n");
+        expected.append("│  │  └──node7").append("\n");
+        expected.append("│  │     ├──node8").append("\n");
+        expected.append("│  │     └──node9").append("\n");
+        expected.append("│  └──node4").append("\n");
+        expected.append("└──node2").append("\n");
+        expected.append("   ├──node5").append("\n");
+        expected.append("   └──node6");
+        
         new BinaryTreePrinter(balanced).print();
+        
+        assertEquals(expected.toString(), output.toString());
     }
 
     @Test
     public void givenBinaryTreeModelLeftUnbalanced_whenPrintWithBinaryTreePrinter() {
-        new BinaryTreePrinter(leftUnbalanced).print();
+        
+        StringBuilder expected = new StringBuilder();
+        expected.append("root").append("\n");
+        expected.append("├──node1").append("\n");
+        expected.append("│  └──node3").append("\n");
+        expected.append("│     └──node4").append("\n");
+        expected.append("│        └──node5").append("\n");
+        expected.append("│           └──node6").append("\n");
+        expected.append("│              └──node7").append("\n");
+        expected.append("│                 └──node8").append("\n");
+        expected.append("└──node2");
+        
+        new BinaryTreePrinter(leftSkewed).print();
+        
+        assertEquals(expected.toString(), output.toString());
     }
 
     @Test
     public void givenBinaryTreeModelRightUnbalanced_whenPrintWithBinaryTreePrinter() {
-        new BinaryTreePrinter(rightUnbalanced).print();
+        
+        StringBuilder expected = new StringBuilder();
+        expected.append("root").append("\n");
+        expected.append("├──node1").append("\n");
+        expected.append("└──node2").append("\n");
+        expected.append("   └──node3").append("\n");
+        expected.append("      └──node4").append("\n");
+        expected.append("         └──node5").append("\n");
+        expected.append("            └──node6").append("\n");
+        expected.append("               └──node7").append("\n");
+        expected.append("                  └──node8");
+        
+        new BinaryTreePrinter(rightSkewed).print();
+        
+        assertEquals(expected.toString(), output.toString());
     }
 
 }

@@ -16,7 +16,6 @@ public class BinaryTreePrinter {
 
         StringBuilder sb = new StringBuilder();
         sb.append(root.getValue());
-        sb.append("\n");
 
         String pointerRight = "└──";
         String pointerLeft = (root.getRight() != null) ? "├──" : "└──";
@@ -32,10 +31,10 @@ public class BinaryTreePrinter {
 
         if (node != null) {
 
+            sb.append("\n");
             sb.append(padding);
             sb.append(pointer);
             sb.append(node.getValue());
-            sb.append("\n");
 
             StringBuilder paddingBuilder = new StringBuilder(padding);
             if (hasRightSibling) {
@@ -56,7 +55,7 @@ public class BinaryTreePrinter {
     }
 
     public void print() {
-        System.out.println(traversePreOrder(tree));
+        System.out.print(traversePreOrder(tree));
     }
 
 }
