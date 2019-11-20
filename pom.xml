@@ -508,6 +508,7 @@
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
                 <module>java-lite</module>
                 <module>java-math</module>
+				<module>java-math-2</module> <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
                 <module>java-rmi</module>
@@ -1274,6 +1275,7 @@
                 <module>java-ee-8-security-api</module>
                 <module>java-lite</module>
                 <module>java-math</module>
+				<module>java-math-2</module>  <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
                 <module>java-rmi</module>
