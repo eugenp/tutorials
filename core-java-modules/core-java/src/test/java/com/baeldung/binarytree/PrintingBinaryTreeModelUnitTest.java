@@ -124,7 +124,7 @@ public class PrintingBinaryTreeModelUnitTest {
     }
 
     @Test
-    public void givenBinaryTreeModelBalanced_whenPrintWithBinaryTreePrinter() {
+    public void givenBinaryTreeModelBalanced_whenPrintWithBinaryTreePrinter_thenProduceCorrectOutput() {
         
         StringBuilder expected = new StringBuilder();
         expected.append("root").append("\n");
@@ -144,7 +144,7 @@ public class PrintingBinaryTreeModelUnitTest {
     }
 
     @Test
-    public void givenBinaryTreeModelLeftUnbalanced_whenPrintWithBinaryTreePrinter() {
+    public void givenBinaryTreeModelLeftUnbalanced_whenPrintWithBinaryTreePrinter_thenProduceCorrectOutput() {
         
         StringBuilder expected = new StringBuilder();
         expected.append("root").append("\n");
@@ -163,7 +163,7 @@ public class PrintingBinaryTreeModelUnitTest {
     }
 
     @Test
-    public void givenBinaryTreeModelRightUnbalanced_whenPrintWithBinaryTreePrinter() {
+    public void givenBinaryTreeModelRightUnbalanced_whenPrintWithBinaryTreePrinter_thenProduceCorrectOutput() {
         
         StringBuilder expected = new StringBuilder();
         expected.append("root").append("\n");
