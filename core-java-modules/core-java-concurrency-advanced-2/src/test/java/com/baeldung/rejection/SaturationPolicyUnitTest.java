@@ -33,8 +33,7 @@ public class SaturationPolicyUnitTest {
         executor = new ThreadPoolExecutor(1, 1, 0, MILLISECONDS, new SynchronousQueue<>(), new AbortPolicy());
         executor.execute(() -> waitFor(100));
 
-        assertThatThrownBy(() -> executor.execute(() -> System.out.println("Will be rejected")))
-                .isInstanceOf(RejectedExecutionException.class);
+        assertThatThrownBy(() -> executor.execute(() -> System.out.println("Will be rejected"))).isInstanceOf(RejectedExecutionException.class);
     }
 
     @Test
@@ -97,8 +96,7 @@ public class SaturationPolicyUnitTest {
         ThreadPoolExecutor executor = new ThreadPoolExecutor(1, 1, 0, MILLISECONDS, new LinkedBlockingQueue<>());
         executor.shutdownNow();
 
-        assertThatThrownBy(() -> executor.execute(() -> {}))
-                .isInstanceOf(RejectedExecutionException.class);
+        assertThatThrownBy(() -> executor.execute(() -> {})).isInstanceOf(RejectedExecutionException.class);
     }
 
     @Test
@@ -107,8 +105,8 @@ public class SaturationPolicyUnitTest {
         executor.execute(() -> waitFor(100));
         executor.shutdown();
 
-        assertThatThrownBy(() -> executor.execute(() -> {}))
-                .isInstanceOf(RejectedExecutionException.class);
+        assertThatThrownBy(() -> executor.execute(() -> {
+        })).isInstanceOf(RejectedExecutionException.class);
     }
 
     private static class GrowPolicy implements RejectedExecutionHandler {
