@@ -46,7 +46,7 @@ public class EmployeeMapperUnitTest {
     }
 
     @Test
-    public void givenEmployeeDTOwithNestedMappingToEmployee_whenMaps_thenCorrect() {
+    public void givenEmpDTONestedMappingToEmp_whenMaps_thenCorrect() {
         EmployeeDTO dto = new EmployeeDTO();
         dto.setDivision(new DivisionDTO(1, "Division1"));
 
@@ -102,7 +102,7 @@ public class EmployeeMapperUnitTest {
     }
 
     @Test
-    public void givenEmployeeWithStartDateMappingToEmployeeDTO_whenMaps_thenCorrect() throws ParseException {
+    public void givenEmpStartDtMappingToEmpDTO_whenMaps_thenCorrect() throws ParseException {
         Employee entity = new Employee();
         entity.setStartDt(new Date());
 
@@ -112,7 +112,7 @@ public class EmployeeMapperUnitTest {
     }
 
     @Test
-    public void givenEmployeeDTOWithStartDateMappingToEmployee_whenMaps_thenCorrect() throws ParseException {
+    public void givenEmpDTOStartDtMappingToEmp_whenMaps_thenCorrect() throws ParseException {
         EmployeeDTO dto = new EmployeeDTO();
         dto.setEmployeeStartDt("01-04-2016 01:00:00");
 

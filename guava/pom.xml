@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>guava</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <name>guava</name>
@@ -26,14 +25,6 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.hamcrest/java-hamcrest -->
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>java-hamcrest</artifactId>
-            <version>${java-hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -47,12 +38,8 @@
     </build>
 
     <properties>
-        <!-- util -->
-        <guava.version>24.0-jre</guava.version>
-
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
-        <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
     </properties>
 
 </project>

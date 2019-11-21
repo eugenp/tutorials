@@ -29,7 +29,7 @@ public class RadixSort {
             frequency[digit]++;
         }
 
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < range; i++) {
             frequency[i] += frequency[i - 1];
         }
 

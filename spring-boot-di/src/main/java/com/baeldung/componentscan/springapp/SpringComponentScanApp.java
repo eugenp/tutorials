@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan
-//@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = Rose.class))
-//@ComponentScan(basePackages = "com.baeldung.componentscan.springapp")
-//@ComponentScan(basePackages = "com.baeldung.componentscan.springapp.animals")
-//@ComponentScan (excludeFilters = @ComponentScan.Filter(type=FilterType.REGEX,pattern="com\\.baeldung\\.componentscan\\.springapp\\.flowers\\..*"))
+// @ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = Rose.class))
+// @ComponentScan(basePackages = "com.baeldung.componentscan.springapp")
+// @ComponentScan(basePackages = "com.baeldung.componentscan.springapp.animals")
+// @ComponentScan (excludeFilters = @ComponentScan.Filter(type=FilterType.REGEX,pattern="com\\.baeldung\\.componentscan\\.springapp\\.flowers\\..*"))
 public class SpringComponentScanApp {
 
     private static ApplicationContext applicationContext;
