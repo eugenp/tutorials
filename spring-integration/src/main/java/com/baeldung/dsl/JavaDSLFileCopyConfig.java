@@ -16,8 +16,10 @@ import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.dsl.Pollers;
+import org.springframework.integration.dsl.channel.MessageChannels;
 import org.springframework.integration.file.FileReadingMessageSource;
 import org.springframework.integration.file.FileWritingMessageHandler;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 
 /**
@@ -104,9 +106,14 @@ public class JavaDSLFileCopyConfig {
         return handler;
     }
 
+    @Bean
+    public MessageChannel holdingTank() {
+        return MessageChannels.queue().get();
+    }
+    
     // @Bean
     public IntegrationFlow fileReader() {
-        return IntegrationFlows.from(sourceDirectory())
+        return IntegrationFlows.from(sourceDirectory(), configurer -> configurer.poller(Pollers.fixedDelay(10)))
             .filter(onlyJpgs())
             .channel("holdingTank")
             .get();
