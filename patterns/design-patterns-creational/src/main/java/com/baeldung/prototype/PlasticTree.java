@@ -8,14 +8,16 @@ public class PlasticTree extends Tree {
         super(mass, height);
         this.name = "PlasticTree";
     }
-    
+
     public String getName() {
         return name;
     }
 
     @Override
     public Tree copy() {
-        return new PlasticTree(this.getMass(), this.getHeight());
+        PlasticTree plasticTreeClone = new PlasticTree(this.getMass(), this.getHeight());
+        plasticTreeClone.setPosition(this.getPosition());
+        return plasticTreeClone;
     }
 
 }
