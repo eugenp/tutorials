@@ -13,8 +13,11 @@ case class Fish(name: String) extends Animal
 sealed abstract class CardSuit
 
 case class Spike() extends CardSuit
+
 case class Diamond() extends CardSuit
+
 case class Heart() extends CardSuit
+
 case class Club() extends CardSuit
 
 class PatternMatching {
