@@ -1,4 +1,4 @@
-package com.baeldung.string;
+package com.baeldung.anagram;
 
 import java.util.Arrays;
 import com.google.common.collect.HashMultiset;
@@ -11,6 +11,8 @@ public class Anagram {
     private static int CHARACTER_RANGE = 256;
 
     public boolean isAnagramSort(String string1, String string2) {
+        string1 = preprocess(string1);
+        string2 = preprocess(string2);
         if (string1.length() != string2.length()) {
             return false;
         }
@@ -22,6 +24,8 @@ public class Anagram {
     }
 
     public boolean isAnagramCounting(String string1, String string2) {
+        string1 = preprocess(string1);
+        string2 = preprocess(string2);
         if (string1.length() != string2.length()) {
             return false;
         }
@@ -39,6 +43,8 @@ public class Anagram {
     }
 
     public boolean isAnagramMultiset(String string1, String string2) {
+        string1 = preprocess(string1);
+        string2 = preprocess(string2);
         if (string1.length() != string2.length()) {
             return false;
         }
@@ -49,6 +55,10 @@ public class Anagram {
             multiset2.add(string2.charAt(i));
         }
         return multiset1.equals(multiset2);
+    }
+    
+    private String preprocess(String source) {
+       return source.replaceAll("\\s+","").toLowerCase();
     }
 
 }

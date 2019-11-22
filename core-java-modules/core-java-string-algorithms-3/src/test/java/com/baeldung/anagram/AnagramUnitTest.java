@@ -1,4 +1,4 @@
-package com.baeldung.string;
+package com.baeldung.anagram;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -12,6 +12,9 @@ public class AnagramUnitTest {
         String string1 = "abcab";
         String string2 = "cabba";
         assertTrue(anagram.isAnagramSort(string1, string2));
+        string1 = "New York Times";
+        string2 = "monkeys write";
+        assertTrue(anagram.isAnagramSort(string1, string2));
     }
 
     @Test
@@ -20,6 +23,9 @@ public class AnagramUnitTest {
         String string1 = "abcab";
         String string2 = "cabba";
         assertTrue(anagram.isAnagramCounting(string1, string2));
+        string1 = "New York Times";
+        string2 = "monkeys write";
+        assertTrue(anagram.isAnagramCounting(string1, string2));
     }
 
     @Test
@@ -27,6 +33,9 @@ public class AnagramUnitTest {
         Anagram anagram = new Anagram();
         String string1 = "abcab";
         String string2 = "cabba";
+        assertTrue(anagram.isAnagramMultiset(string1, string2));
+        string1 = "New York Times";
+        string2 = "monkeys write";
         assertTrue(anagram.isAnagramMultiset(string1, string2));
     }
 
