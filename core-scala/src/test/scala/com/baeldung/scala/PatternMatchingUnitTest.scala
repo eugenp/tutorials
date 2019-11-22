@@ -45,4 +45,96 @@ class PatternMatchingUnitTest {
     val result = new PatternMatching().constantsPatternMatching(true)
     assertEquals("I'm unknown and equal to true", result)
   }
+
+  @Test
+  def singleElementList(): Unit = {
+    val result = new PatternMatching().sequencesPatternMatching(List("String"))
+    assertEquals("I'm a list with one element", result)
+  }
+
+  @Test
+  def singleOrMoreElementsList(): Unit = {
+    val result = new PatternMatching().sequencesPatternMatching(List("Multiple", "Elements"))
+    assertEquals("I'm a list with one or multiple elements", result)
+  }
+
+  @Test
+  def vectorWithOneAndTwo(): Unit = {
+    val result = new PatternMatching().sequencesPatternMatching(Vector(1, 2, 3))
+    assertEquals("I'm a vector. My two first elements are '1' & '2'", result)
+  }
+
+  @Test
+  def otherSequences(): Unit = {
+    val result = new PatternMatching().sequencesPatternMatching(Vector(2, 1))
+    assertEquals("I'm an unrecognized sequence. My value: Vector(2, 1)", result)
+  }
+
+  @Test
+  def emptyList(): Unit = {
+    val result = new PatternMatching().sequencesPatternMatching(List())
+    assertEquals("I'm an unrecognized sequence. My value: List()", result)
+  }
+
+  @Test
+  def tupleWithTwoElements(): Unit = {
+    val result = new PatternMatching().tuplesPatternMatching(("First", "Second"))
+    assertEquals("I'm a tuple with two elements: First & Second", result)
+  }
+
+  @Test
+  def threeElementsTuple(): Unit = {
+    val result = new PatternMatching().tuplesPatternMatching(("First", "Second", "Third"))
+    assertEquals("I'm a tuple with three elements: First & Second & Third", result)
+  }
+
+  @Test
+  def unrecognizedTuple(): Unit = {
+    val result = new PatternMatching().tuplesPatternMatching(("First"))
+    assertEquals("Unrecognized pattern. My value: First", result)
+  }
+
+  @Test
+  def numericRegex(): Unit = {
+    val result = new PatternMatching().regexPatterns("123")
+    assertEquals("I'm a numeric with value 123", result)
+  }
+
+  @Test
+  def alphabeticRegex(): Unit = {
+    val result = new PatternMatching().regexPatterns("abc")
+    assertEquals("I'm an alphabetic with value abc", result)
+  }
+
+  @Test
+  def alphaNumericRegex(): Unit = {
+    val result = new PatternMatching().regexPatterns("abc123")
+    assertEquals("I'm an alphanumeric with value abc123", result)
+  }
+
+  @Test
+  def otherRegex(): Unit = {
+    val result = new PatternMatching().regexPatterns("abc_123")
+    assertEquals("I contain other characters than alphanumerics. My value abc_123", result)
+  }
+
+  @Test
+  def some(): Unit = {
+    val result = new PatternMatching().optionsPatternMatching(Option.apply("something"))
+    assertEquals("I'm not an empty option. Value something", result)
+  }
+
+  @Test
+  def none(): Unit = {
+    val result = new PatternMatching().optionsPatternMatching(Option.empty)
+    assertEquals("I'm an empty option", result)
+  }
+
+  @Test
+  def default(): Unit = {
+    val result = new PatternMatching().defaultPatternMatching("Five")
+    assertEquals(-1, result)
+  }
 }
+
+
