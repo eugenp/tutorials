@@ -173,6 +173,20 @@ class PatternMatchingUnitTest {
     assertEquals("Card is heart", new PatternMatching().sealedClass(Heart()))
     assertEquals("Card is diamond", new PatternMatching().sealedClass(Diamond()))
   }
+
+  @Test
+  def extractor(): Unit = {
+    val person = Person("John Smith")
+    val result = new PatternMatching().extractors(person)
+    assertEquals("My initials are J. S.", result)
+  }
+
+  @Test
+  def extractorEmpty(): Unit = {
+    val person = Person("")
+    val result = new PatternMatching().extractors(person)
+    assertEquals("Could not extract initials", result)
+  }
 }
 
 

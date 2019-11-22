@@ -1,8 +1,9 @@
 package com.baeldung.scala
 
+// Case Class
+
 abstract class Animal
 
-// Case Class
 case class Mammal(name: String, fromSea: Boolean) extends Animal
 
 case class Bird(name: String) extends Animal
@@ -19,6 +20,17 @@ case class Diamond() extends CardSuit
 case class Heart() extends CardSuit
 
 case class Club() extends CardSuit
+
+object Person {
+  def apply(fullName: String) = fullName
+
+  def unapply(fullName: String): Option[String] = {
+    if (!fullName.isEmpty)
+      Some(fullName.replaceAll("(?<=\\w)(\\w+)", "."))
+    else
+      None
+  }
+}
 
 class PatternMatching {
 
@@ -113,8 +125,11 @@ class PatternMatching {
     }
   }
 
-  def extractors(): String = {
-    ""
+  def extractors(person: Any): String = {
+    person match {
+      case Person(initials) => s"My initials are $initials"
+      case _ => "Could not extract initials"
+    }
   }
 
   def closuresPatternMatching(): String = {
