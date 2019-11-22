@@ -15,7 +15,9 @@ public class PineTree extends Tree {
 
     @Override
     public Tree copy() {
-        return new PineTree(this.getMass(), this.getHeight());
+        PineTree pineTreeClone = new PineTree(this.getMass(), this.getHeight());
+        pineTreeClone.setPosition(this.getPosition());
+        return pineTreeClone;
     }
 
 }
