@@ -1,7 +1,6 @@
 package com.baeldung.scala
 
 // Case Class
-
 abstract class Animal
 
 case class Mammal(name: String, fromSea: Boolean) extends Animal
@@ -132,11 +131,17 @@ class PatternMatching {
     }
   }
 
-  def closuresPatternMatching(): String = {
-    ""
+  def closuresPatternMatching(list: List[Any]): List[Any] = {
+    list.collect { case i: Int if (i < 10) => i }
   }
 
-  def catchBlocksPatternMatching(): String = {
-    ""
+  def catchBlocksPatternMatching(exception: Exception): String = {
+    try {
+      throw exception
+    } catch {
+      case ex: IllegalArgumentException => "It's an IllegalArgumentException"
+      case ex: RuntimeException => "It's a RuntimeException"
+      case _ => "It's an unknown kind of exception"
+    }
   }
 }
