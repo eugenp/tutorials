@@ -133,43 +133,43 @@ class PatternMatchingUnitTest {
   }
 
   @Test
-  def default(): Unit = {
+  def whenAnUnkownStringPatternIsPassed_ThenTheDefaultClauseIsUsed(): Unit = {
     val result = new PatternMatching().defaultPatternMatching("Five")
     assertEquals(-1, result)
   }
 
   @Test
-  def listAccSize(): Unit = {
+  def whenAListWithAcceptedSizeIsPassed_ThenThePositiveMessageIsSent(): Unit = {
     val result = new PatternMatching().patternGuards(List(1, 2), 3)
     assertEquals("List is of acceptable size", result)
   }
 
   @Test
-  def listUnaccSize(): Unit = {
+  def whenAListWithAnUnacceptedSizeIsPassed_ThenTheNegativeMessageIsSent(): Unit = {
     val result = new PatternMatching().patternGuards(List(1, 2, 3, 4), 3)
     assertEquals("List has not an acceptable size", result)
   }
 
   @Test
-  def stringAccSize(): Unit = {
+  def whenAStringWithAcceptedSizeIsPassed_ThenThePositiveMessageIsSent(): Unit = {
     val result = new PatternMatching().patternGuards("OK", 3)
     assertEquals("String is of acceptable size", result)
   }
 
   @Test
-  def stringUnaccSize(): Unit = {
+  def whenAStringWithAnUnacceptedSizeIsPassed_ThenTheNegativeMessageIsSent(): Unit = {
     val result = new PatternMatching().patternGuards("Not OK", 3)
     assertEquals("String has not an acceptable size", result)
   }
 
   @Test
-  def patternGuardWithUnknownType(): Unit = {
+  def whenAnObjectWhichIsNotAListOrAStringIsPassed_thenTheDefaultClauseIsUsed(): Unit = {
     val result = new PatternMatching().patternGuards(1, 1)
     assertEquals("Input is neither a List or a String", result)
   }
 
   @Test
-  def cardSuit(): Unit = {
+  def whenACardSuitIsPassed_ThenTheCorrespondingMatchCaseClauseIsUsed(): Unit = {
     assertEquals("Card is spike", new PatternMatching().sealedClass(Spike()))
     assertEquals("Card is club", new PatternMatching().sealedClass(Club()))
     assertEquals("Card is heart", new PatternMatching().sealedClass(Heart()))
@@ -177,28 +177,28 @@ class PatternMatchingUnitTest {
   }
 
   @Test
-  def extractor(): Unit = {
+  def whenAnObjectWithExtractorIsPassed_ThenTheExtractedValueIsUsedInTheCaseClause(): Unit = {
     val person = Person("John Smith")
     val result = new PatternMatching().extractors(person)
     assertEquals("My initials are J. S.", result)
   }
 
   @Test
-  def extractorEmpty(): Unit = {
+  def whenAnObjectWithExtractorIsPassed_AndTheValueIsEmpty_ThenTheDefaultCaseClauseIsUsed(): Unit = {
     val person = Person("")
     val result = new PatternMatching().extractors(person)
     assertEquals("Could not extract initials", result)
   }
 
   @Test
-  def closure(): Unit = {
+  def whenAListOfRandomElementsIsPassed_ThenOnlyTheIntegersBelowTenAreReturned(): Unit = {
     val input = List(1, 2, "5", 11, true)
     val result = new PatternMatching().closuresPatternMatching(input)
     assertEquals(List(1, 2), result)
   }
 
   @Test
-  def exceptions(): Unit = {
+  def whenAnExceptionIsPassed_ThenTheCorrespondingMessageIsReturned(): Unit = {
     val pm = new PatternMatching()
 
     val iae = new IllegalArgumentException()
