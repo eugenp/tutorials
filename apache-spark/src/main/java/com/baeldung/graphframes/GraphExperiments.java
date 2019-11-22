@@ -42,7 +42,7 @@ public class GraphExperiments {
 
     private void doGraphFrameAlgorithms(GraphFrame graph) {
 
-        graph.pageRank().maxIter(20).resetProbability(0.0001).run().vertices().show();
+        graph.pageRank().maxIter(20).resetProbability(0.15).run().vertices().show();
 
         graph.connectedComponents().run().show();
 
