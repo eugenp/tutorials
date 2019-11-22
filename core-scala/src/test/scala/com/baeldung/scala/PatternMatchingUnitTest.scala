@@ -135,6 +135,44 @@ class PatternMatchingUnitTest {
     val result = new PatternMatching().defaultPatternMatching("Five")
     assertEquals(-1, result)
   }
+
+  @Test
+  def listAccSize(): Unit = {
+    val result = new PatternMatching().patternGuards(List(1, 2), 3)
+    assertEquals("List is of acceptable size", result)
+  }
+
+  @Test
+  def listUnaccSize(): Unit = {
+    val result = new PatternMatching().patternGuards(List(1, 2, 3, 4), 3)
+    assertEquals("List has not an acceptable size", result)
+  }
+
+  @Test
+  def stringAccSize(): Unit = {
+    val result = new PatternMatching().patternGuards("OK", 3)
+    assertEquals("String is of acceptable size", result)
+  }
+
+  @Test
+  def stringUnaccSize(): Unit = {
+    val result = new PatternMatching().patternGuards("Not OK", 3)
+    assertEquals("String has not an acceptable size", result)
+  }
+
+  @Test
+  def patternGuardWithUnknownType(): Unit = {
+    val result = new PatternMatching().patternGuards(1, 1)
+    assertEquals("Input is neither a List or a String", result)
+  }
+
+  @Test
+  def cardSuit(): Unit = {
+    assertEquals("Card is spike", new PatternMatching().sealedClass(Spike()))
+    assertEquals("Card is club", new PatternMatching().sealedClass(Club()))
+    assertEquals("Card is heart", new PatternMatching().sealedClass(Heart()))
+    assertEquals("Card is diamond", new PatternMatching().sealedClass(Diamond()))
+  }
 }
 
 

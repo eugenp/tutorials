@@ -2,11 +2,20 @@ package com.baeldung.scala
 
 abstract class Animal
 
+// Case Class
 case class Mammal(name: String, fromSea: Boolean) extends Animal
 
 case class Bird(name: String) extends Animal
 
 case class Fish(name: String) extends Animal
+
+// Sealed Class
+sealed abstract class CardSuit
+
+case class Spike() extends CardSuit
+case class Diamond() extends CardSuit
+case class Heart() extends CardSuit
+case class Club() extends CardSuit
 
 class PatternMatching {
 
@@ -82,12 +91,23 @@ class PatternMatching {
     }
   }
 
-  def patternGuards(toMatch: String, maxLength: Int): String = {
-    ""
+  def patternGuards(toMatch: Any, maxLength: Int): String = {
+    toMatch match {
+      case list: List[Any] if (list.size <= maxLength) => "List is of acceptable size"
+      case list: List[Any] => "List has not an acceptable size"
+      case string: String if (string.length <= maxLength) => "String is of acceptable size"
+      case string: String => "String has not an acceptable size"
+      case _ => "Input is neither a List or a String"
+    }
   }
 
-  def sealedClass(): String = {
-    ""
+  def sealedClass(cardSuit: CardSuit): String = {
+    cardSuit match {
+      case Spike() => "Card is spike"
+      case Club() => "Card is club"
+      case Heart() => "Card is heart"
+      case Diamond() => "Card is diamond"
+    }
   }
 
   def extractors(): String = {
