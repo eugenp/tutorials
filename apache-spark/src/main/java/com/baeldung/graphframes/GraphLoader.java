@@ -27,7 +27,7 @@ public class GraphLoader {
         Path temp = Files.createTempDirectory("sparkGraphFrames");
         SparkSession session = SparkSession.builder()
             .appName("SparkGraphFrameSample")
-            .config("spark.sql.warehouse.dir", temp.toString())//"/file:C:/temp"
+            .config("spark.sql.warehouse.dir", temp.toString())
             .sparkContext(getSparkContext().sc())
             .master("local[*]")
             .getOrCreate();
