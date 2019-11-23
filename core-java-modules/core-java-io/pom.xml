@@ -27,12 +27,6 @@
             <version>${hsqldb.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
-        <dependency>
-            <groupId>org.asynchttpclient</groupId>
-            <artifactId>async-http-client</artifactId>
-            <version>${async-http-client.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.opencsv</groupId>
             <artifactId>opencsv</artifactId>
@@ -146,16 +140,13 @@
     </profiles>
 
     <properties>
-
         <!-- util -->
         <opencsv.version>4.1</opencsv.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
-
         <!-- maven plugins -->
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <hsqldb.version>2.4.0</hsqldb.version>
-        <async-http-client.version>2.4.5</async-http-client.version>
         <!-- Mime Type Libraries -->
         <tika.version>1.18</tika.version>
         <jmime-magic.version>0.1.5</jmime-magic.version>

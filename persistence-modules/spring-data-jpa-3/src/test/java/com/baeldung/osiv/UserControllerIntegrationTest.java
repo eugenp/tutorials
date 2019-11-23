@@ -1,6 +1,6 @@
 package com.baeldung.osiv;
 
-import com.baeldung.model.User;
+import com.baeldung.model.BasicUser;
 import com.baeldung.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,7 +32,7 @@ class UserControllerIntegrationTest {
 
     @BeforeEach
     void setUp() {
-        User user = new User();
+        BasicUser user = new BasicUser();
         user.setUsername("root");
         user.setPermissions(new HashSet<>(Arrays.asList("PERM_READ", "PERM_WRITE")));
 
