@@ -28,6 +28,13 @@
             <version>${jackson.version}</version>
         </dependency>        
 
+        <!-- Allow use of LocalDate -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
 
         <!-- test scoped -->
 

@@ -18,6 +18,11 @@
             <version>${hibernate-validator.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>${javax.el.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${org.springframework.version}</version>
@@ -37,6 +42,7 @@
 	
     <properties>
         <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
+        <javax.el.version>3.0.0</javax.el.version>    
         <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
         <assertj.version>3.11.1</assertj.version>
     </properties>    
