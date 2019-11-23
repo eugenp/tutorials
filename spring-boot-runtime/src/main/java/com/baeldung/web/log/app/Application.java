@@ -11,6 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.context.annotation.PropertySource;
 
 import com.baeldung.web.log.config.CustomeRequestLoggingFilter;
 
@@ -18,6 +19,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @EnableAutoConfiguration
 @ComponentScan("com.baeldung.web.log")
+@PropertySource("application-log.properties")
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 
