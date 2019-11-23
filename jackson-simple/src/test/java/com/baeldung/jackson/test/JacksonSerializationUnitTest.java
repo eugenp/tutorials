@@ -8,13 +8,10 @@ import static org.junit.Assert.assertThat;
 import java.io.IOException;
 import java.util.List;
 
-import com.baeldung.jackson.dtos.MyDtoFieldNameChanged;
 import com.baeldung.jackson.dtos.User;
 import com.baeldung.jackson.dtos.Item;
 import com.baeldung.jackson.dtos.ItemWithSerializer;
 import com.baeldung.jackson.dtos.MyDto;
-import com.baeldung.jackson.dtos.MyDtoNoAccessors;
-import com.baeldung.jackson.dtos.MyDtoNoAccessorsAndFieldVisibility;
 import com.baeldung.jackson.serialization.ItemSerializer;
 import org.junit.Test;
 
@@ -28,61 +25,6 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.google.common.collect.Lists;
 
 public class JacksonSerializationUnitTest {
-
-    // tests - single entity to json
-
-    @Test
-    public final void whenSerializing_thenCorrect() throws JsonParseException, IOException {
-        final ObjectMapper mapper = new ObjectMapper();
-        final String dtoAsString = mapper.writeValueAsString(new MyDto());
-
-        assertThat(dtoAsString, containsString("intValue"));
-        assertThat(dtoAsString, containsString("stringValue"));
-        assertThat(dtoAsString, containsString("booleanValue"));
-    }
-
-    @Test
-    public final void givenNameOfFieldIsChangedViaAnnotationOnGetter_whenSerializing_thenCorrect() throws JsonParseException, IOException {
-        final ObjectMapper mapper = new ObjectMapper();
-        final MyDtoFieldNameChanged dtoObject = new MyDtoFieldNameChanged();
-        dtoObject.setStringValue("a");
-
-        final String dtoAsString = mapper.writeValueAsString(dtoObject);
-
-        assertThat(dtoAsString, not(containsString("stringValue")));
-        assertThat(dtoAsString, containsString("strVal"));
-        System.out.println(dtoAsString);
-    }
-
-    // tests - serialize via accessors/fields
-
-    @Test(expected = JsonMappingException.class)
-    public final void givenObjectHasNoAccessors_whenSerializing_thenException() throws JsonParseException, IOException {
-        final String dtoAsString = new ObjectMapper().writeValueAsString(new MyDtoNoAccessors());
-
-        assertThat(dtoAsString, notNullValue());
-    }
-
-    @Test
-    public final void givenObjectHasNoAccessors_whenSerializingWithPrivateFieldsVisibility_thenNoException() throws JsonParseException, IOException {
-        final ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
-        final String dtoAsString = objectMapper.writeValueAsString(new MyDtoNoAccessors());
-
-        assertThat(dtoAsString, containsString("intValue"));
-        assertThat(dtoAsString, containsString("stringValue"));
-        assertThat(dtoAsString, containsString("booleanValue"));
-    }
-
-    @Test
-    public final void givenObjectHasNoAccessorsButHasVisibleFields_whenSerializing_thenNoException() throws JsonParseException, IOException {
-        final ObjectMapper objectMapper = new ObjectMapper();
-        final String dtoAsString = objectMapper.writeValueAsString(new MyDtoNoAccessorsAndFieldVisibility());
-
-        assertThat(dtoAsString, containsString("intValue"));
-        assertThat(dtoAsString, containsString("stringValue"));
-        assertThat(dtoAsString, containsString("booleanValue"));
-    }
 
     // tests - multiple entities to json
 
