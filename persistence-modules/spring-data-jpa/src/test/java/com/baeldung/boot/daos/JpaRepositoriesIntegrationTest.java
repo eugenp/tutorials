@@ -13,21 +13,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.boot.Application;
-import com.baeldung.boot.config.PersistenceConfiguration;
-import com.baeldung.boot.daos.ItemTypeRepository;
-import com.baeldung.boot.daos.LocationRepository;
-import com.baeldung.boot.daos.ReadOnlyLocationRepository;
-import com.baeldung.boot.daos.StoreRepository;
 import com.baeldung.boot.domain.Item;
 import com.baeldung.boot.domain.ItemType;
 import com.baeldung.boot.domain.Location;
 import com.baeldung.boot.domain.Store;
-import com.baeldung.multipledb.PersistenceProductConfiguration;
-import com.baeldung.multipledb.PersistenceUserConfiguration;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest(properties="spring.datasource.data=classpath:import_entities.sql")
