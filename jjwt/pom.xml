@@ -4,7 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.jsonwebtoken</groupId>
     <artifactId>jjwt</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>jjwt</name>
     <packaging>jar</packaging>
     <description>Exercising the JJWT</description>
