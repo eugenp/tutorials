@@ -51,19 +51,19 @@ class PatternMatchingUnitTest {
   @Test
   def whenASingleElementListIsPassed_ThenItMatchesTheCorrespondingPattern(): Unit = {
     val result = new PatternMatching().sequencesPatternMatching(List("String"))
-    assertEquals("I'm a list with one element", result)
+    assertEquals("I'm a list with one element: List(String)", result)
   }
 
   @Test
   def whenAMultipleElementsListIsPassed_ThenItMatchesTheCorrespondingPattern(): Unit = {
     val result = new PatternMatching().sequencesPatternMatching(List("Multiple", "Elements"))
-    assertEquals("I'm a list with one or multiple elements", result)
+    assertEquals("I'm a list with one or multiple elements: List(Multiple, Elements)", result)
   }
 
   @Test
   def whenAVectorBeginningWithOneAndTwoIsPassed_ThenItMatchesTheCorrespondingPattern(): Unit = {
     val result = new PatternMatching().sequencesPatternMatching(Vector(1, 2, 3))
-    assertEquals("I'm a vector. My two first elements are '1' & '2'", result)
+    assertEquals("I'm a vector: Vector(1, 2, 3)", result)
   }
 
   @Test
@@ -130,12 +130,6 @@ class PatternMatchingUnitTest {
   def whenAnEmptyOptionIsPassed_ThenItShouldMatchTheNoneClause(): Unit = {
     val result = new PatternMatching().optionsPatternMatching(Option.empty)
     assertEquals("I'm an empty option", result)
-  }
-
-  @Test
-  def whenAnUnkownStringPatternIsPassed_ThenTheDefaultClauseIsUsed(): Unit = {
-    val result = new PatternMatching().defaultPatternMatching("Five")
-    assertEquals(-1, result)
   }
 
   @Test

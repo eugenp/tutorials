@@ -52,9 +52,9 @@ class PatternMatching {
 
   def sequencesPatternMatching(sequence: Any): String = {
     sequence match {
-      case List(_) => "I'm a list with one element"
-      case List(_, _*) => "I'm a list with one or multiple elements"
-      case Vector(1, 2, _*) => "I'm a vector. My two first elements are '1' & '2'"
+      case List(_) => s"I'm a list with one element: $sequence"
+      case List(_, _*) => s"I'm a list with one or multiple elements: $sequence"
+      case Vector(1, 2, _*) => s"I'm a vector: $sequence"
       case _ => s"I'm an unrecognized sequence. My value: $sequence"
     }
   }
@@ -92,16 +92,6 @@ class PatternMatching {
     option match {
       case Some(value) => s"I'm not an empty option. Value $value"
       case None => "I'm an empty option"
-    }
-  }
-
-  def defaultPatternMatching(noneMatching: String): Int = {
-    noneMatching match {
-      case "One" => 1
-      case "Two" => 2
-      case "Three" => 3
-      case "Four" => 4
-      case _ => -1
     }
   }
 
