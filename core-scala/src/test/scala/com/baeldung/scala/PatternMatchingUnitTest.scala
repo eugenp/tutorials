@@ -51,7 +51,7 @@ class PatternMatchingUnitTest {
   @Test
   def whenASingleElementListIsPassed_ThenItMatchesTheCorrespondingPattern(): Unit = {
     val result = new PatternMatching().sequencesPatternMatching(List("String"))
-    assertEquals("I'm a list with one element: List(String)", result)
+    assertEquals("I'm a list with one element: String", result)
   }
 
   @Test

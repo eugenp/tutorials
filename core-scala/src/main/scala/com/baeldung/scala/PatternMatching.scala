@@ -52,7 +52,7 @@ class PatternMatching {
 
   def sequencesPatternMatching(sequence: Any): String = {
     sequence match {
-      case List(_) => s"I'm a list with one element: $sequence"
+      case List(singleElement) => s"I'm a list with one element: $singleElement"
       case List(_, _*) => s"I'm a list with one or multiple elements: $sequence"
       case Vector(1, 2, _*) => s"I'm a vector: $sequence"
       case _ => s"I'm an unrecognized sequence. My value: $sequence"
