@@ -56,9 +56,9 @@ public class Anagram {
         }
         return multiset1.equals(multiset2);
     }
-    
+
     private String preprocess(String source) {
-       return source.replaceAll("\\s+","").toLowerCase();
+        return source.replaceAll("[^a-zA-Z]", "").toLowerCase();
     }
 
 }

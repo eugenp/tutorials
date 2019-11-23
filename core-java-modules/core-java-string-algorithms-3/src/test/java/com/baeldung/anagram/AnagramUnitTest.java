@@ -12,8 +12,8 @@ public class AnagramUnitTest {
         String string1 = "abcab";
         String string2 = "cabba";
         assertTrue(anagram.isAnagramSort(string1, string2));
-        string1 = "New York Times";
-        string2 = "monkeys write";
+        string1 = "A decimal point";
+        string2 = "I’m a dot in place.";
         assertTrue(anagram.isAnagramSort(string1, string2));
     }
 
@@ -23,8 +23,8 @@ public class AnagramUnitTest {
         String string1 = "abcab";
         String string2 = "cabba";
         assertTrue(anagram.isAnagramCounting(string1, string2));
-        string1 = "New York Times";
-        string2 = "monkeys write";
+        string1 = "A decimal point";
+        string2 = "I’m a dot in place.";
         assertTrue(anagram.isAnagramCounting(string1, string2));
     }
 
@@ -34,8 +34,8 @@ public class AnagramUnitTest {
         String string1 = "abcab";
         String string2 = "cabba";
         assertTrue(anagram.isAnagramMultiset(string1, string2));
-        string1 = "New York Times";
-        string2 = "monkeys write";
+        string1 = "A decimal point";
+        string2 = "I’m a dot in place.";
         assertTrue(anagram.isAnagramMultiset(string1, string2));
     }
 
