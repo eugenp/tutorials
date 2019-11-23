@@ -22,8 +22,7 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j-release-version}</version>
         </dependency>
-
-
+        
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-webresources</artifactId>
@@ -82,8 +81,8 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <optimize>true</optimize>
                 </configuration>
             </plugin>
@@ -125,8 +124,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
     <reporting/>
 
     <repositories>
-
-      <repository>
+        <repository>
             <id>jboss</id>
             <url>http://repository.jboss.org/nexus/content/groups/public/</url>
         </repository>
