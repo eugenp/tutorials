@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>jta</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>jta</name>
@@ -33,51 +32,7 @@
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
-            <version>${hsqldb.version}</version>
         </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>autoconfiguration</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>integration-test</phase>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                                <configuration>
-                                    <excludes>
-                                        <exclude>**/*LiveTest.java</exclude>
-                                        <exclude>**/*IntegrationTest.java</exclude>
-                                        <exclude>**/*IntTest.java</exclude>
-                                    </excludes>
-                                    <includes>
-                                        <include>**/AutoconfigurationTest.java</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <test.mime>json</test.mime>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-	
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<hsqldb.version>2.4.1</hsqldb.version>
-        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
-    </properties>
 </project>
