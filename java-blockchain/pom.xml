@@ -7,12 +7,14 @@
     <version>0.1.0-SNAPSHOT</version>
     <name>java-blockchain</name>
     <packaging>jar</packaging>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-java</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-java</relativePath>
     </parent>
+
     <build>
         <finalName>java-blockchain</finalName>
         <resources>
@@ -33,8 +35,10 @@
             </plugin>
         </plugins>
     </build>
+
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
 </project>

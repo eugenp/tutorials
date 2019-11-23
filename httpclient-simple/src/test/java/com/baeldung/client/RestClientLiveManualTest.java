@@ -6,9 +6,9 @@ import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.security.cert.X509Certificate;
 
 import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLPeerUnverifiedException;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -46,7 +46,7 @@ public class RestClientLiveManualTest {
     // old httpClient will throw UnsupportedOperationException
     @Ignore
     @Test
-    public final void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenOk_1() throws GeneralSecurityException {
+    public final void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenOk() throws GeneralSecurityException {
         final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
         final CloseableHttpClient httpClient = (CloseableHttpClient) requestFactory.getHttpClient();
 
@@ -92,7 +92,7 @@ public class RestClientLiveManualTest {
     }
 
     @Test
-    public final void givenAcceptingAllCertificatesUsing4_4_whenHttpsUrlIsConsumedUsingRestTemplate_thenCorrect() throws ClientProtocolException, IOException {
+    public final void givenAcceptingAllCertificatesUsing4_4_whenUsingRestTemplate_thenCorrect() throws ClientProtocolException, IOException {
         final CloseableHttpClient httpClient = HttpClients.custom().setSSLHostnameVerifier(new NoopHostnameVerifier()).build();
         final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
         requestFactory.setHttpClient(httpClient);
@@ -101,4 +101,12 @@ public class RestClientLiveManualTest {
         assertThat(response.getStatusCode().value(), equalTo(200));
     }
 
+    @Test(expected = SSLPeerUnverifiedException.class)
+    public void whenHttpsUrlIsConsumed_thenException() throws ClientProtocolException, IOException {
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        String urlOverHttps = "https://localhost:8082/httpclient-simple";
+        HttpGet getMethod = new HttpGet(urlOverHttps);
+        HttpResponse response = httpClient.execute(getMethod);
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+    }
 }

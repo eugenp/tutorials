@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>io.sirix</groupId>
 			<artifactId>sirix-core</artifactId>
-			<version>0.9.3</version>
+			<version>${sirix-core.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -48,5 +48,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.release.version>11</maven.release.version>
+		<sirix-core.version>0.9.3</sirix-core.version>
 	</properties>
 </project>

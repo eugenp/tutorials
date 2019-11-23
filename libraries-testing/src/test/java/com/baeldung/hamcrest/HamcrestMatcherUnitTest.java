@@ -1,10 +1,10 @@
-package org.baeldung.hamcrest;
+package com.baeldung.hamcrest;
 
 import org.junit.Test;
 
 import java.util.*;
 
-import static org.baeldung.hamcrest.IsPositiveInteger.isAPositiveInteger;
+import static com.baeldung.hamcrest.IsPositiveInteger.isAPositiveInteger;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.beans.HasProperty.hasProperty;
