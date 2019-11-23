@@ -18,7 +18,7 @@ public class CircularLinkedList {
             tail.nextNode = newNode;
         }
 
-        // Irrespective of whether or not elements are addNodeed, assign the
+        // Irrespective of whether or not elements are added, assign the
         // tail to newNode and the nextNode for tail as head
         tail = newNode;
         tail.nextNode = head;
