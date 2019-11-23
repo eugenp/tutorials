@@ -63,6 +63,10 @@
             <artifactId>spring-boot-admin-starter-client</artifactId>
             <version>${spring-boot-admin-starter-client.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>
