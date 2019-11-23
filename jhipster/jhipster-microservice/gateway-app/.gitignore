@@ -19,6 +19,11 @@ npm-debug.log.*
 .sass-cache/
 
 ######################
+# Bower
+######################
+bower_components
+
+######################
 # Eclipse
 ######################
 *.pydevproject
