@@ -14,14 +14,6 @@
 
     <dependencies>
 
-        <!-- marshalling -->
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-
         <!-- YAML -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
