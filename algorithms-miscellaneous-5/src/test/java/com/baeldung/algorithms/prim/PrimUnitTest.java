@@ -18,7 +18,7 @@ public class PrimUnitTest {
         System.out.println(prim.minimumSpanningTreeToString());
     }
 
-    public static List<Vertex> createGraph(){
+    public static List<Vertex> createGraph() {
         List<Vertex> graph = new ArrayList<>();
         Vertex a = new Vertex("A");
         Vertex b = new Vertex("B");
@@ -52,4 +52,3 @@ public class PrimUnitTest {
     }
 
 }
-

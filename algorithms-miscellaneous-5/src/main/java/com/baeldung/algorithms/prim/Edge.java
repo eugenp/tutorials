@@ -6,7 +6,7 @@ public class Edge {
     private boolean isIncluded = false;
     private boolean isPrinted = false;
 
-    public Edge (int weight){
+    public Edge(int weight) {
         this.weight = weight;
     }
 
@@ -34,4 +34,3 @@ public class Edge {
         isPrinted = printed;
     }
 }
-
