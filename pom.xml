@@ -499,6 +499,8 @@
                 <module>jackson</module>
                 <module>jackson-2</module>
                 <module>jackson-simple</module>
+                <module>jackson-annotations</module>
+                <module>jackson-exceptions</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
@@ -1266,6 +1268,8 @@
                 <module>jackson</module>
                 <module>jackson-2</module>
                 <module>jackson-simple</module>
+                <module>jackson-annotations</module>
+                <module>jackson-exceptions</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
@@ -1589,7 +1593,7 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
-                <module>undertow</module>
+                <!-- <module>undertow</module> --> <!-- 19.11.2019 - disabling temporarily as it's causing a major issue with the build (TODO: create a jira to fix it) -->
 
                 <module>vertx</module>
                 <module>vertx-and-rxjava</module>
