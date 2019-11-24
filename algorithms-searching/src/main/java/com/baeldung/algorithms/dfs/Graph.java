@@ -1,4 +1,4 @@
-package com.baeldung.graph;
+package com.baeldung.algorithms.dfs;
 
 import java.util.ArrayList;
 import java.util.HashMap;
