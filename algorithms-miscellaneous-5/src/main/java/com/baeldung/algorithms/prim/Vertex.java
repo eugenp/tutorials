@@ -12,7 +12,7 @@ public class Vertex {
     private Map<Vertex, Edge> edges = new HashMap<>();
     private boolean isVisited = false;
 
-    public Vertex(String label){
+    public Vertex(String label) {
         this.label = label;
     }
 
@@ -28,7 +28,7 @@ public class Vertex {
         return edges;
     }
 
-    public void addEdge(Vertex vertex, Edge edge){
+    public void addEdge(Vertex vertex, Edge edge) {
         this.edges.put(vertex, edge);
     }
 
@@ -40,14 +40,15 @@ public class Vertex {
         isVisited = visited;
     }
 
-    public Pair<Vertex, Edge> nextMinimum(){
+    public Pair<Vertex, Edge> nextMinimum() {
         Edge nextMinimum = new Edge(Integer.MAX_VALUE);
         Vertex nextVertex = this;
-        Iterator it = edges.entrySet().iterator();
+        Iterator it = edges.entrySet()
+            .iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
-            if (!((Vertex)pair.getKey()).isVisited()){
-                if (!((Edge)pair.getValue()).isIncluded()) {
+            if (!((Vertex) pair.getKey()).isVisited()) {
+                if (!((Edge) pair.getValue()).isIncluded()) {
                     if (((Edge) pair.getValue()).getWeight() < nextMinimum.getWeight()) {
                         nextMinimum = (Edge) pair.getValue();
                         nextVertex = (Vertex) pair.getKey();
@@ -58,12 +59,13 @@ public class Vertex {
         return new Pair<>(nextVertex, nextMinimum);
     }
 
-    public String originalToString(){
+    public String originalToString() {
         StringBuilder sb = new StringBuilder();
-        Iterator it = edges.entrySet().iterator();
+        Iterator it = edges.entrySet()
+            .iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
-            if (!((Edge)pair.getValue()).isPrinted()) {
+            if (!((Edge) pair.getValue()).isPrinted()) {
                 sb.append(getLabel());
                 sb.append(" --- ");
                 sb.append(((Edge) pair.getValue()).getWeight());
@@ -76,14 +78,15 @@ public class Vertex {
         return sb.toString();
     }
 
-    public String includedToString(){
+    public String includedToString() {
         StringBuilder sb = new StringBuilder();
         if (isVisited()) {
-            Iterator it = edges.entrySet().iterator();
+            Iterator it = edges.entrySet()
+                .iterator();
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
                 if (((Edge) pair.getValue()).isIncluded()) {
-                    if (!((Edge)pair.getValue()).isPrinted()) {
+                    if (!((Edge) pair.getValue()).isPrinted()) {
                         sb.append(getLabel());
                         sb.append(" --- ");
                         sb.append(((Edge) pair.getValue()).getWeight());
@@ -98,4 +101,3 @@ public class Vertex {
         return sb.toString();
     }
 }
-
