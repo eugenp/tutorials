@@ -1,7 +1,8 @@
-package com.baeldung.graph;
+package com.baeldung.algorithms.dfs;
 
 import java.util.List;
 
+import com.baeldung.algorithms.dfs.Graph;
 import org.junit.Test;
 
 public class GraphUnitTest {
