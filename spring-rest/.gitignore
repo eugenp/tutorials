@@ -4,7 +4,7 @@
 /target
 /neoDb*
 /data
-/src/main/webapp/WEB-INF/classes
+/spring-boot-runtime/src/main/webapp/WEB-INF/classes
 */META-INF/*
 
 # Packaged files #
