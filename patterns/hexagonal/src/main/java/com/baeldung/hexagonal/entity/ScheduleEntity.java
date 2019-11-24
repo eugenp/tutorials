@@ -1,4 +1,4 @@
-package com.example.hexagonal.entity;
+package com.baeldung.hexagonal.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

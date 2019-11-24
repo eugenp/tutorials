@@ -1,6 +1,6 @@
-package com.example.hexagonal.repository;
+package com.baeldung.hexagonal.repository;
 
-import com.example.hexagonal.entity.ScheduleEntity;
+import com.baeldung.hexagonal.entity.ScheduleEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

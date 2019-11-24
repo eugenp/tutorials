@@ -1,6 +1,6 @@
-package com.example.hexagonal.service;
+package com.baeldung.hexagonal.service;
 
-import com.example.hexagonal.entity.ScheduleEntity;
+import com.baeldung.hexagonal.entity.ScheduleEntity;
 
 import java.util.List;
 
