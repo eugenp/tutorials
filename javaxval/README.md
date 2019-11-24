@@ -10,3 +10,4 @@ This module contains articles about Bean Validation.
 - [Javax BigDecimal Validation](https://www.baeldung.com/javax-bigdecimal-validation)
 - [Grouping Javax Validation Constraints](https://www.baeldung.com/javax-validation-groups)
 - [Validations for Enum Types](https://www.baeldung.com/javax-validations-enums)
+- [Guide to ParameterMessageInterpolator](https://www.baeldung.com/hibernate-parametermessageinterpolator)
