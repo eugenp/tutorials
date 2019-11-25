@@ -2,7 +2,7 @@
 
 This module contains articles about HttpClient 4.x
 
-###The Course
+### The Course
 
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 

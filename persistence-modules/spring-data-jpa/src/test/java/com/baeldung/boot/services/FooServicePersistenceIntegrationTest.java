@@ -1,10 +1,7 @@
 package com.baeldung.boot.services;
 
-import com.baeldung.boot.Application;
-import com.baeldung.boot.config.PersistenceConfiguration;
-import com.baeldung.boot.domain.Foo;
-import com.baeldung.boot.services.IFooService;
-import com.baeldung.boot.services.IOperations;
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -13,12 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
-import static org.junit.Assert.assertNotNull;
+import com.baeldung.boot.Application;
+import com.baeldung.boot.domain.Foo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=Application.class)

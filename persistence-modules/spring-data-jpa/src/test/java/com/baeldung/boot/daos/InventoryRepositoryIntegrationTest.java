@@ -1,22 +1,19 @@
 package com.baeldung.boot.daos;
 
-import com.baeldung.boot.Application;
-import com.baeldung.boot.config.PersistenceConfiguration;
-import com.baeldung.boot.daos.InventoryRepository;
-import com.baeldung.boot.domain.MerchandiseEntity;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.math.BigDecimal;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.math.BigDecimal;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
+import com.baeldung.boot.Application;
+import com.baeldung.boot.domain.MerchandiseEntity;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=Application.class)
