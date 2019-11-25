@@ -10,7 +10,7 @@
 	<packaging>war</packaging>
 
 	<parent>
-		<artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-2</artifactId>
 		<groupId>com.baeldung</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../parent-boot-2</relativePath>
@@ -20,7 +20,7 @@
 	<repositories>
 		<!-- Snapshot repository location -->
 		<repository>
-			<id>jcenter</id>
+            <id>jcenter</id>
 			<name>jcenter</name>
 			<url>https://jcenter.bintray.com/</url>
 		</repository>
