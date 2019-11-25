@@ -1,5 +1,6 @@
 package com.baeldung.set;
 
+import com.google.common.collect.Sets;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.collection.IsCollectionWithSize;
 import org.junit.Test;
@@ -98,7 +99,7 @@ public class PowerSetUnitTest {
     }
 
     @Test
-    public void givenSet_WhenPowerSetIsCalculatedIterativePowerSetByLoopOverNumbersMinimalChange_ThenItContainsAllSubsets() {
+    public void givenSet_WhenPowerSetIsCalculatedIterativePowerSetByLoopOverNumbersMinimalChange_ThenItContainsAllSubsetsInGrayOrder() {
 
         Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
         List<List<String>> powerSet = new PowerSet<String>().iterativePowerSetByLoopOverNumbersMinimalChange(set);
@@ -131,6 +132,25 @@ public class PowerSetUnitTest {
                     diff++;
             Assertions.assertEquals(1, diff);
         }
+    }
+
+    @Test
+    public void givenSet_WhenPowerSetGeneratedByGuava_ThenItContainsAllSubsets() {
+        Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
+
+        Set<Set<String>> powerSet = Sets.powerSet(set);
+
+        //To make sure that the size of power set is (2 power n)
+        MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
+        //To make sure that number of occurrence of each element is (2 power n-1)
+        Map<String, Integer> counter = new HashMap<>();
+        for (Set<String> subset : powerSet) {
+            for (String name : subset) {
+                int num = counter.getOrDefault(name, 0);
+                counter.put(name, num + 1);
+            }
+        }
+        counter.forEach((k, v) -> Assertions.assertEquals((1 << (set.size() - 1)), v.intValue()));
     }
 
 
