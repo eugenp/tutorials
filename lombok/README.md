@@ -11,4 +11,4 @@ This module contains articles about Project Lombok.
 - [Lombok Builder with Custom Setter](https://www.baeldung.com/lombok-builder-custom-setter)
 - [Setting up Lombok with Eclipse and Intellij](https://www.baeldung.com/lombok-ide)
 - [Using the @Singular Annotation with Lombok Builders](https://www.baeldung.com/lombok-builder-singular)
-
+- [Using Lombok’s @Accessors Annotation](https://www.baeldung.com/lombok-accessors)

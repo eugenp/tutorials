@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="LISTAPPENDER"
+        class="com.baeldung.springcloudgateway.customfilters.utils.LoggerListAppender">
+    </appender>
+    <root level="info">
+        <appender-ref ref="LISTAPPENDER" />
+    </root>
+</configuration> 

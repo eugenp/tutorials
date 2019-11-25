@@ -11,6 +11,10 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class PrefixedAccount {
-    String sName;
-    BigDecimal bdBalance;
+    private String sName;
+    private BigDecimal bdBalance;
+
+    @Accessors(prefix = "s_")
+    private String s_notes;
+
 }

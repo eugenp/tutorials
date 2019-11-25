@@ -30,28 +30,7 @@
             <artifactId>javax.el-api</artifactId>
             <version>${javax.el.version}</version>
         </dependency>
-        <!-- JSTL -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
-        </dependency>
         <!-- Spring -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-websocket</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-messaging</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -68,13 +47,6 @@
             <artifactId>javax.servlet-api</artifactId>
             <scope>provided</scope>
             <version>${javax.servlet-api.version}</version>
-        </dependency>
-
-        <!-- Primefaces -->
-        <dependency>
-            <groupId>org.primefaces</groupId>
-            <artifactId>primefaces</artifactId>
-            <version>${primefaces.version}</version>
         </dependency>
     </dependencies>
 
@@ -98,8 +70,6 @@
         <!-- JSF -->
         <com.sun.faces.version>2.2.14</com.sun.faces.version>
         <javax.el.version>3.0.0</javax.el.version>
-
-        <primefaces.version>6.2</primefaces.version>
     </properties>
 
 </project>
