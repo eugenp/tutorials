@@ -1,5 +1,7 @@
 package com.baeldung.set;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -30,6 +32,55 @@ public class PowerSet<T> {
         powerSet.addAll(powerSetSubSetWithElement);
         return powerSet;
     }
+
+    public Set<Set<T>> recursivePowerSetIndexRepresentation(Collection<T> set) {
+        initializeMap(set);
+        Set<Set<Integer>> powerSetBoolean = recursivePowerSetIndexRepresentation(0, set.size());
+        return unMapIndex(powerSetBoolean);
+    }
+
+
+    private Set<Set<Integer>> recursivePowerSetIndexRepresentation(int idx, int n) {
+        if (idx == n) {
+            Set<Set<Integer>> empty = new HashSet<>();
+            empty.add(new HashSet<>());
+            return empty;
+        }
+        Set<Set<Integer>> powerSetSubset = recursivePowerSetIndexRepresentation(idx + 1, n);
+        Set<Set<Integer>> powerSet = new HashSet<>(powerSetSubset);
+        for (Set<Integer> s : powerSetSubset) {
+            HashSet<Integer> subSetIdxInclusive = new HashSet<>(s);
+            subSetIdxInclusive.add(idx);
+            powerSet.add(subSetIdxInclusive);
+        }
+        return powerSet;
+    }
+
+    public Set<Set<T>> recursivePowerSetBooleanRepresentation(Collection<T> set) {
+        initializeMap(set);
+        Set<List<Boolean>> powerSetBoolean = recursivePowerSetBooleanRepresentation(0, set.size());
+        return unMapBoolean(powerSetBoolean);
+    }
+
+    private Set<List<Boolean>> recursivePowerSetBooleanRepresentation(int idx, int n) {
+        if (idx == n) {
+            Set<List<Boolean>> powerSetOfEmptySet = new HashSet<>();
+            powerSetOfEmptySet.add(Arrays.asList(new Boolean[n]));
+            return powerSetOfEmptySet;
+        }
+        Set<List<Boolean>> powerSetSubset = recursivePowerSetBooleanRepresentation(idx + 1, n);
+        Set<List<Boolean>> powerSet = new HashSet<>();
+        for (List<Boolean> s : powerSetSubset) {
+            List<Boolean> subSetIdxExclusive = new ArrayList<>(s);
+            subSetIdxExclusive.set(idx, false);
+            powerSet.add(subSetIdxExclusive);
+            List<Boolean> subSetIdxInclusive = new ArrayList<>(s);
+            subSetIdxInclusive.set(idx, true);
+            powerSet.add(subSetIdxInclusive);
+        }
+        return powerSet;
+    }
+
 
     private void initializeMap(Collection<T> collection) {
         int mapId = 0;
