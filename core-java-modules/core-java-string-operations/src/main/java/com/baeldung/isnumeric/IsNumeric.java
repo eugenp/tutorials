@@ -1,20 +1,33 @@
 package com.baeldung.isnumeric;
 
+import java.util.regex.Pattern;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 public class IsNumeric {
+    private final Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+
     public boolean usingCoreJava(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+
         try {
             Double.parseDouble(strNum);
-        } catch (NumberFormatException | NullPointerException nfe) {
+        } catch (NumberFormatException nfe) {
             return false;
         }
         return true;
     }
 
-    public boolean usingRegularExpressions(String strNum) {
-        return strNum.matches("-?\\d+(\\.\\d+)?");
+    public boolean usingPreCompiledRegularExpressions(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+
+        return pattern.matcher(strNum)
+            .matches();
     }
 
     public boolean usingNumberUtils_isCreatable(String strNum) {

@@ -1,9 +1,9 @@
 package com.baeldung.service;
 
-import com.baeldung.model.User;
+import com.baeldung.model.BasicUser;
 
 import java.util.Optional;
 
 public interface UserService {
-    Optional<User> findOne(String username);
+    Optional<BasicUser> findOne(String username);
 }

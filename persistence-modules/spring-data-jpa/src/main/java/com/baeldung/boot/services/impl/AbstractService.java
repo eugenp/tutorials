@@ -31,7 +31,7 @@ public abstract class AbstractService<T extends Serializable> implements IOperat
 
     @Override
     public Page<T> findPaginated(final int page, final int size) {
-        return getDao().findAll(new PageRequest(page, size));
+        return getDao().findAll(PageRequest.of(page, size));
     }
 
     // write
