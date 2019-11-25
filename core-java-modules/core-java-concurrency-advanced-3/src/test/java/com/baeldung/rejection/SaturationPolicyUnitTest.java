@@ -96,7 +96,8 @@ public class SaturationPolicyUnitTest {
         ThreadPoolExecutor executor = new ThreadPoolExecutor(1, 1, 0, MILLISECONDS, new LinkedBlockingQueue<>());
         executor.shutdownNow();
 
-        assertThatThrownBy(() -> executor.execute(() -> {})).isInstanceOf(RejectedExecutionException.class);
+        assertThatThrownBy(() -> executor.execute(() -> {
+        })).isInstanceOf(RejectedExecutionException.class);
     }
 
     @Test
