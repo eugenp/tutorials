@@ -1,5 +1,7 @@
 package com.baeldung.fibonacci;
 
+import static java.lang.Math.pow;
+
 public class FibonacciSeriesUtils {
 
     public static int nthFibonacciTermRecursiveMethod(int n) {
@@ -23,20 +25,10 @@ public class FibonacciSeriesUtils {
         return n1;
     }
 
-    public static int nthFibonacciTermUsingGoldenRatio(int n) {
-        double goldenRatio = 1.6180339;
-        int first5FibonacciTerms[] = { 0, 1, 1, 2, 3, 5 };
-        if (n < 6) {
-            return first5FibonacciTerms[n];
-        }
-
-        int term = 5;
-        int sn = 5;
-        while (term < n) {
-            sn = (int)Math.round(sn * goldenRatio);
-            term++;
-        }
-        return sn;
+    public static int nthFibonacciTermUsingBinetsFormula(int n) {
+        final double squareRootOf5 = Math.sqrt(5);
+        final double phi = (1 + squareRootOf5)/2;
+        int nthTerm = (int) ((Math.pow(phi, n) - Math.pow(-phi, -n))/squareRootOf5);
+        return nthTerm;
     }
-
 }

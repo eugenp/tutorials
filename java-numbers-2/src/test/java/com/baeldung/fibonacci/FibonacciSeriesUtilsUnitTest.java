@@ -21,9 +21,9 @@ public class FibonacciSeriesUtilsUnitTest {
     }
 
     @Test
-    public void givenTermToCalculate_thenReturnThatTermUsingGoldenRatio() {
+    public void givenTermToCalculate_thenReturnThatTermUsingBinetsFormula() {
         int term = 10;
         int expectedValue = 55;
-        assertEquals(FibonacciSeriesUtils.nthFibonacciTermUsingGoldenRatio(term), expectedValue);
+        assertEquals(FibonacciSeriesUtils.nthFibonacciTermUsingBinetsFormula(term), expectedValue);
     }
 }
