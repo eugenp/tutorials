@@ -611,6 +611,7 @@
 
                 <module>tensorflow-java</module>
                 <module>spf4j</module>
+                <module>springfox</module>
                 <module>spring-boot-configuration</module>
 				<module>spring-boot-flowable</module>
                 <module>spring-boot-mvc-2</module>
@@ -1380,6 +1381,7 @@
                 <module>rxjava-libraries</module>
                 <module>oauth2-framework-impl</module>
                 <module>spf4j</module>
+                <module>springfox</module>
                 <module>spring-boot-performance</module>
                 <module>spring-boot-properties</module>
                 <!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
