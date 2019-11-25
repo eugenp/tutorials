@@ -12,6 +12,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.web.server.ServerWebExchange;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
 public class ModifyRequestGatewayFilterFactory extends AbstractGatewayFilterFactory<ModifyRequestGatewayFilterFactory.Config> {
@@ -45,8 +48,7 @@ public class ModifyRequestGatewayFilterFactory extends AbstractGatewayFilterFact
 
                 exchange.getRequest()
                     .mutate()
-                    .headers(h -> h.setAcceptLanguageAsLocales(Collections.singletonList(requestLocale)))
-                    .build();
+                    .headers(h -> h.setAcceptLanguageAsLocales(Collections.singletonList(requestLocale)));
             }
 
             String allOutgoingRequestLanguages = exchange.getRequest()
@@ -56,8 +58,20 @@ public class ModifyRequestGatewayFilterFactory extends AbstractGatewayFilterFact
                 .map(range -> range.getRange())
                 .collect(Collectors.joining(","));
 
-            logger.info("Modify Request output - Request contains Accept-Language header: " + allOutgoingRequestLanguages);
-            return chain.filter(exchange);
+            logger.info("Modify request output - Request contains Accept-Language header: {}", allOutgoingRequestLanguages);
+
+            ServerWebExchange modifiedExchange = exchange.mutate()
+                .request(originalRequest -> originalRequest.uri(UriComponentsBuilder.fromUri(exchange.getRequest()
+                    .getURI())
+                    .replaceQueryParams(new LinkedMultiValueMap<String, String>())
+                    .build()
+                    .toUri()))
+                .build();
+
+            logger.info("Removed all query params: {}", modifiedExchange.getRequest()
+                .getURI());
+
+            return chain.filter(modifiedExchange);
         };
     }
 
