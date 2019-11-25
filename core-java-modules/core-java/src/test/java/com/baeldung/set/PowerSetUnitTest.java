@@ -18,7 +18,9 @@ public class PowerSetUnitTest {
     @Test
     public void givenSet_WhenPowerSetIsCalculated_ThenItContainsAllSubsets() {
         Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
+
         Set<Set<String>> powerSet = new PowerSet<String>().recursivePowerSet(set);
+
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
         Map<String, Integer> counter = new HashMap<>();
         for (Set<String> subset : powerSet) {
@@ -33,7 +35,9 @@ public class PowerSetUnitTest {
     @Test
     public void givenSet_WhenPowerSetIsCalculatedRecursiveByIndexRepresentation_ThenItContainsAllSubsets() {
         Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
+
         Set<Set<String>> powerSet = new PowerSet<String>().recursivePowerSetIndexRepresentation(set);
+
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
         Map<String, Integer> counter = new HashMap<>();
         for (Set<String> subset : powerSet) {
@@ -48,7 +52,9 @@ public class PowerSetUnitTest {
     @Test
     public void givenSet_WhenPowerSetIsCalculatedRecursiveByBooleanRepresentation_ThenItContainsAllSubsets() {
         Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
+
         Set<Set<String>> powerSet = new PowerSet<String>().recursivePowerSetBooleanRepresentation(set);
+
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
         Map<String, Integer> counter = new HashMap<>();
         for (Set<String> subset : powerSet) {
@@ -59,6 +65,51 @@ public class PowerSetUnitTest {
         }
         counter.forEach((k, v) -> Assertions.assertEquals((1 << (set.size() - 1)), v.intValue()));
     }
+
+    @Test
+    public void givenSet_WhenPowerSetIsCalculatedIterativePowerSetByLoopOverNumbers_ThenItContainsAllSubsets() {
+        Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
+
+        List<List<String>> powerSet = new PowerSet<String>().iterativePowerSetByLoopOverNumbers(set);
+
+        MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
+        Map<String, Integer> counter = new HashMap<>();
+        for (List<String> subset : powerSet) {
+            for (String name : subset) {
+                int num = counter.getOrDefault(name, 0);
+                counter.put(name, num + 1);
+            }
+        }
+        counter.forEach((k, v) -> Assertions.assertEquals((1 << (set.size() - 1)), v.intValue()));
+    }
+
+    @Test
+    public void givenSet_WhenPowerSetIsCalculatedIterativePowerSetByLoopOverNumbersMinimalChange_ThenItContainsAllSubsets() {
+
+        Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
+        List<List<String>> powerSet = new PowerSet<String>().iterativePowerSetByLoopOverNumbersMinimalChange(set);
+
+        MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
+        Map<String, Integer> counter = new HashMap<>();
+        for (List<String> subset : powerSet) {
+            for (String name : subset) {
+                int num = counter.getOrDefault(name, 0);
+                counter.put(name, num + 1);
+            }
+        }
+        counter.forEach((k, v) -> Assertions.assertEquals((1 << (set.size() - 1)), v.intValue()));
+        for(int i=1; i<powerSet.size(); i++) {
+            int diff = 0;
+            for (String s : powerSet.get(i - 1))
+                if (!powerSet.get(i).contains(s))
+                    diff++;
+            for (String s : powerSet.get(i))
+                if (!powerSet.get(i - 1).contains(s))
+                    diff++;
+            Assertions.assertEquals(1, diff);
+        }
+    }
+
 
     static class RandomSetOfStringGenerator {
         private static List<String> fruits = Arrays.asList("Apples", "Avocados", "Banana", "Blueberry", "Cherry", "Clementine", "Cucumber", "Date", "Fig",

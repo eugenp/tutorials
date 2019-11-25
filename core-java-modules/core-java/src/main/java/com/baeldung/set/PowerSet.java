@@ -39,6 +39,47 @@ public class PowerSet<T> {
         return unMapIndex(powerSetBoolean);
     }
 
+    private List<List<Boolean>> iterativePowerSetByLoopOverNumbersWithLexicographicalOrder(int n) {
+        List<List<Boolean>> powerSet = new ArrayList<>();
+        for (int i = 0; i < (1 << n); i++) {
+            List<Boolean> subset = new ArrayList<>(n);
+            for (int j = 0; j < n; j++)
+                subset.add(((1 << j) & i) > 0);
+            powerSet.add(subset);
+        }
+        return powerSet;
+    }
+
+    private List<List<Boolean>> iterativePowerSetByLoopOverNumbersWithGrayCodeOrder(int n) {
+        List<List<Boolean>> powerSet = new ArrayList<>();
+        for (int i = 0; i < (1 << n); i++) {
+            List<Boolean> subset = new ArrayList<>(n);
+            for (int j = 0; j < n; j++) {
+                int grayEquivalent = i ^ (i >> 1);
+                subset.add(((1 << j) & grayEquivalent) > 0);
+            }
+            powerSet.add(subset);
+        }
+        return powerSet;
+    }
+
+    public Set<Set<T>> recursivePowerSetBooleanRepresentation(Collection<T> set) {
+        initializeMap(set);
+        Set<List<Boolean>> powerSetBoolean = recursivePowerSetBooleanRepresentation(0, set.size());
+        return unMapBoolean(powerSetBoolean);
+    }
+
+    public List<List<T>> iterativePowerSetByLoopOverNumbers(Set<T> set) {
+        initializeMap(set);
+                List<List<Boolean>> sets = iterativePowerSetByLoopOverNumbersWithLexicographicalOrder(set.size());
+        return unMapListBoolean(sets);
+    }
+
+    public List<List<T>> iterativePowerSetByLoopOverNumbersMinimalChange(Set<T> set) {
+        initializeMap(set);
+        List<List<Boolean>> sets = iterativePowerSetByLoopOverNumbersWithGrayCodeOrder(set.size());
+        return unMapListBoolean(sets);
+    }
 
     private Set<Set<Integer>> recursivePowerSetIndexRepresentation(int idx, int n) {
         if (idx == n) {
@@ -54,12 +95,6 @@ public class PowerSet<T> {
             powerSet.add(subSetIdxInclusive);
         }
         return powerSet;
-    }
-
-    public Set<Set<T>> recursivePowerSetBooleanRepresentation(Collection<T> set) {
-        initializeMap(set);
-        Set<List<Boolean>> powerSetBoolean = recursivePowerSetBooleanRepresentation(0, set.size());
-        return unMapBoolean(powerSetBoolean);
     }
 
     private Set<List<Boolean>> recursivePowerSetBooleanRepresentation(int idx, int n) {
@@ -103,6 +138,18 @@ public class PowerSet<T> {
         Set<Set<T>> ret = new HashSet<>();
         for (List<Boolean> s : sets) {
             HashSet<T> subset = new HashSet<>();
+            for (int i = 0; i < s.size(); i++)
+                if (s.get(i))
+                    subset.add(map.get(i));
+            ret.add(subset);
+        }
+        return ret;
+    }
+
+    private List<List<T>> unMapListBoolean(Collection<List<Boolean>> sets) {
+        List<List<T>> ret = new ArrayList<>();
+        for (List<Boolean> s : sets) {
+            List<T> subset = new ArrayList<>();
             for (int i = 0; i < s.size(); i++)
                 if (s.get(i))
                     subset.add(map.get(i));
