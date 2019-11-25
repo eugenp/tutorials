@@ -341,6 +341,7 @@
                 <module>algorithms-miscellaneous-4</module>
                 <module>algorithms-miscellaneous-5</module>
                 <module>algorithms-sorting</module>
+                <module>algorithms-searching</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
@@ -422,7 +423,9 @@
                 <module>core-java-modules/core-java-concurrency-basic-2</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
-                <module>core-java-modules/core-java-io-files</module>
+                <module>core-java-modules/core-java-io-2</module>
+                <module>core-java-modules/core-java-io-apis</module>
+                <module>core-java-modules/core-java-io-conversions</module>
                 <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-nio-2</module>
                 <module>core-java-modules/core-java-security</module>
@@ -434,6 +437,7 @@
                 <module>core-java-modules/core-java-lang-oop</module>
                 <module>core-java-modules/core-java-lang-oop-2</module>
                 <module>core-java-modules/core-java-lang-oop-3</module>
+                <module>core-java-modules/core-java-lang-oop-4</module>
                 <module>core-java-modules</module>
                 <module>core-java-modules/core-java-networking</module>
                 <module>core-java-modules/core-java-perf</module>
@@ -448,6 +452,7 @@
                 <module>core-java-modules/core-java-string-apis</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-jar</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
@@ -496,6 +501,8 @@
                 <module>jackson</module>
                 <module>jackson-2</module>
                 <module>jackson-simple</module>
+                <module>jackson-annotations</module>
+                <module>jackson-exceptions</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
@@ -505,6 +512,7 @@
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
                 <module>java-lite</module>
                 <module>java-math</module>
+				<module>java-math-2</module> <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
                 <module>java-rmi</module>
@@ -613,7 +621,8 @@
                 <module>spf4j</module>
                 <module>springfox</module>
                 <module>spring-boot-configuration</module>
-				<module>spring-boot-flowable</module>
+                <module>spring-boot-config-jpa-error</module>
+                <module>spring-boot-flowable</module>
                 <module>spring-boot-mvc-2</module>
                 <module>spring-boot-performance</module>
                 <module>spring-boot-properties</module>
@@ -623,6 +632,7 @@
 
                 <module>spring-boot-nashorn</module>
                 <module>java-blockchain</module>
+                <module>machine-learning</module>
                 <module>wildfly</module>
             </modules>
 
@@ -699,7 +709,7 @@
                 <module>spring-boot-bootstrap</module>
                 <module>spring-boot-camel</module>
                 <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
-                <module>spring-boot-configuration</module>
+                <module>spring-boot-config-jpa-error</module>
 				<module>spring-boot-client</module>
 
                 <module>spring-boot-crud</module>
@@ -839,8 +849,6 @@
 
                 <module>spring-webflux-amqp</module> <!-- long -->
 
-                <module>spring-zuul</module>
-
                 <module>static-analysis</module>
                 <module>stripe</module>
                 <module>structurizr</module>
@@ -851,7 +859,7 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
-                <module>undertow</module>
+                <!-- <module>undertow</module> --> <!-- 19.11.2019 - disabling temporarily as it's causing a major issue with the build (TODO: create a jira to fix it) -->
 
                 <module>vertx</module>
                 <module>vertx-and-rxjava</module>
@@ -920,7 +928,6 @@
                 <module>spring-boot-di</module>
                 <module>greeter-spring-boot-autoconfigure</module>
                 <module>greeter-spring-boot-sample-app</module>
-                <module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
                 <module>spring-boot-jasypt</module>
                 <module>spring-boot-keycloak</module>
                 <module>spring-boot-mvc</module>
@@ -945,16 +952,12 @@
                 <module>spring-cloud/spring-cloud-data-flow/time-processor</module>
                 <module>spring-cloud/spring-cloud-data-flow/time-source</module>
                 <module>spring-cucumber</module>
-                <module>persistence-modules/spring-data-keyvalue</module>
                 <module>spring-data-rest</module>
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
                 <module>spring-di</module>
                 <module>spring-ehcache</module>
                 <module>spring-freemarker</module>
-                <module>persistence-modules/spring-hibernate-3</module>
-                <module>persistence-modules/spring-hibernate4</module>
-                <module>persistence-modules/spring-mybatis</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
@@ -1011,11 +1014,6 @@
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
                 <module>spring-zuul/spring-zuul-foos-resource</module>
-                <module>persistence-modules/hibernate-mapping</module>
-                <module>persistence-modules/spring-data-dynamodb</module>
-                <module>persistence-modules/spring-data-eclipselink</module>
-                <module>persistence-modules/spring-data-solr</module>
-                <module>persistence-modules/spring-hibernate-5</module>
 
                 <module>spring-boot-flowable</module>
                 <module>spring-security-kerberos</module>
@@ -1124,6 +1122,7 @@
                 <module>algorithms-miscellaneous-4</module>
                 <module>algorithms-miscellaneous-5</module>
                 <module>algorithms-sorting</module>
+                <module>algorithms-searching</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
@@ -1201,7 +1200,9 @@
                 <module>core-java-modules/core-java-concurrency-basic-2</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
-                <module>core-java-modules/core-java-io-files</module>
+                <module>core-java-modules/core-java-io-2</module>
+                <module>core-java-modules/core-java-io-apis</module>
+                <module>core-java-modules/core-java-io-conversions</module>
                 <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-nio-2</module>
                 <module>core-java-modules/core-java-security</module>
@@ -1213,6 +1214,7 @@
                 <module>core-java-modules/core-java-lang-oop</module>
                 <module>core-java-modules/core-java-lang-oop-2</module>
                 <module>core-java-modules/core-java-lang-oop-3</module>
+                <module>core-java-modules/core-java-lang-oop-4</module>
                 <module>core-java-modules</module>
                 <module>core-java-modules/core-java-networking</module>
                 <module>core-java-modules/core-java-perf</module>
@@ -1272,6 +1274,8 @@
                 <module>jackson</module>
                 <module>jackson-2</module>
                 <module>jackson-simple</module>
+                <module>jackson-annotations</module>
+                <module>jackson-exceptions</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
@@ -1281,6 +1285,7 @@
                 <module>java-ee-8-security-api</module>
                 <module>java-lite</module>
                 <module>java-math</module>
+				<module>java-math-2</module>  <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
                 <module>java-rmi</module>
@@ -1585,8 +1590,6 @@
 
                 <module>spring-webflux-amqp</module> <!-- long -->
 
-                <module>spring-zuul</module>
-
                 <module>static-analysis</module>
                 <module>stripe</module>
                 <module>structurizr</module>
@@ -1597,7 +1600,7 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
-                <module>undertow</module>
+                <!-- <module>undertow</module> --> <!-- 19.11.2019 - disabling temporarily as it's causing a major issue with the build (TODO: create a jira to fix it) -->
 
                 <module>vertx</module>
                 <module>vertx-and-rxjava</module>
@@ -1643,10 +1646,11 @@
                 <module>parent-kotlin</module>
 
                 <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-jar</module>
                 <module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-java-modules/core-java-concurrency-advanced-2</module>
                 <module>core-java-modules/core-java-concurrency-advanced-3</module>
-				<module>core-kotlin</module> <!-- long running? -->
+                <module>core-kotlin</module> <!-- long running? -->
                 <module>core-kotlin-2</module>
 
                 <module>jenkins/plugins</module>
@@ -1656,6 +1660,7 @@
                 <module>libraries</module> <!-- very long running -->
 
                 <module>persistence-modules/hibernate5</module>
+				        <module>persistence-modules/hibernate-mapping</module>
                 <module>persistence-modules/java-jpa</module>
                 <module>persistence-modules/java-jpa-2</module>
                 <module>persistence-modules/java-mongodb</module>

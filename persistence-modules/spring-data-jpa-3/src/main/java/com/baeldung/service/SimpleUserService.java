@@ -1,6 +1,6 @@
 package com.baeldung.service;
 
-import com.baeldung.model.User;
+import com.baeldung.model.BasicUser;
 import com.baeldung.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +18,7 @@ public class SimpleUserService implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<User> findOne(String username) {
+    public Optional<BasicUser> findOne(String username) {
         return userRepository.findDetailedByUsername(username);
     }
 }
