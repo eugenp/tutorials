@@ -28,14 +28,14 @@ public class ChainRequestGatewayFilterFactory extends AbstractGatewayFilterFacto
 
     @Override
     public List<String> shortcutFieldOrder() {
-        return Arrays.asList("endpoint", "defaultLanguage");
+        return Arrays.asList("languageServiceEndpoint", "defaultLanguage");
     }
 
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
             return client.get()
-                .uri(config.getEndpoint())
+                .uri(config.getLanguageServiceEndpoint())
                 .exchange()
                 .flatMap(response -> {
                     return (response.statusCode()
@@ -45,8 +45,7 @@ public class ChainRequestGatewayFilterFactory extends AbstractGatewayFilterFacto
                 .map(range -> {
                     exchange.getRequest()
                         .mutate()
-                        .headers(h -> h.setAcceptLanguage(range))
-                        .build();
+                        .headers(h -> h.setAcceptLanguage(range));
 
                     String allOutgoingRequestLanguages = exchange.getRequest()
                         .getHeaders()
@@ -65,18 +64,18 @@ public class ChainRequestGatewayFilterFactory extends AbstractGatewayFilterFacto
     }
 
     public static class Config {
-        private String endpoint;
+        private String languageServiceEndpoint;
         private String defaultLanguage;
 
         public Config() {
         }
 
-        public String getEndpoint() {
-            return endpoint;
+        public String getLanguageServiceEndpoint() {
+            return languageServiceEndpoint;
         }
 
-        public void setEndpoint(String endpoint) {
-            this.endpoint = endpoint;
+        public void setLanguageServiceEndpoint(String languageServiceEndpoint) {
+            this.languageServiceEndpoint = languageServiceEndpoint;
         }
 
         public String getDefaultLanguage() {
