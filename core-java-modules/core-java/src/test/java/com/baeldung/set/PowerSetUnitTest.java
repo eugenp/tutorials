@@ -156,7 +156,7 @@ public class PowerSetUnitTest {
 
     static class RandomSetOfStringGenerator {
         private static List<String> fruits = Arrays.asList("Apples", "Avocados", "Banana", "Blueberry", "Cherry", "Clementine", "Cucumber", "Date", "Fig",
-          "Grapefruit", "Grape", "Kiwi", "Lemon", "Mango", "Mulberry", "Melon", "Nectarine", "Olive", "Orange");
+          "Grapefruit"/*, "Grape", "Kiwi", "Lemon", "Mango", "Mulberry", "Melon", "Nectarine", "Olive", "Orange"*/);
 
         static Set<String> generateRandomSet() {
             Set<String> set = new HashSet<>();
