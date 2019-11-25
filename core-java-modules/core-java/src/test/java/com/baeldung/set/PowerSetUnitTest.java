@@ -21,7 +21,9 @@ public class PowerSetUnitTest {
 
         Set<Set<String>> powerSet = new PowerSet<String>().recursivePowerSet(set);
 
+        //To make sure that the size of power set is (2 power n)
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
+        //To make sure that number of occurrence of each element is (2 power n-1)
         Map<String, Integer> counter = new HashMap<>();
         for (Set<String> subset : powerSet) {
             for (String name : subset) {
@@ -38,7 +40,9 @@ public class PowerSetUnitTest {
 
         Set<Set<String>> powerSet = new PowerSet<String>().recursivePowerSetIndexRepresentation(set);
 
+        //To make sure that the size of power set is (2 power n)
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
+        //To make sure that number of occurrence of each element is (2 power n-1)
         Map<String, Integer> counter = new HashMap<>();
         for (Set<String> subset : powerSet) {
             for (String name : subset) {
@@ -55,7 +59,9 @@ public class PowerSetUnitTest {
 
         Set<Set<String>> powerSet = new PowerSet<String>().recursivePowerSetBooleanRepresentation(set);
 
+        //To make sure that the size of power set is (2 power n)
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
+        //To make sure that number of occurrence of each element is (2 power n-1)
         Map<String, Integer> counter = new HashMap<>();
         for (Set<String> subset : powerSet) {
             for (String name : subset) {
@@ -72,7 +78,9 @@ public class PowerSetUnitTest {
 
         List<List<String>> powerSet = new PowerSet<String>().iterativePowerSetByLoopOverNumbers(set);
 
+        //To make sure that the size of power set is (2 power n)
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
+        //To make sure that number of occurrence of each element is (2 power n-1)
         Map<String, Integer> counter = new HashMap<>();
         for (List<String> subset : powerSet) {
             for (String name : subset) {
@@ -81,6 +89,12 @@ public class PowerSetUnitTest {
             }
         }
         counter.forEach((k, v) -> Assertions.assertEquals((1 << (set.size() - 1)), v.intValue()));
+        //To make sure that one subset is not generated twice
+        Assertions.assertEquals(powerSet.size(), new HashSet<>(powerSet).size());
+        //To make sure that each element in each subset is occurred once
+        for (List<String> subset : powerSet) {
+            Assertions.assertEquals(subset.size(), new HashSet<>(subset).size());
+        }
     }
 
     @Test
@@ -89,7 +103,9 @@ public class PowerSetUnitTest {
         Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
         List<List<String>> powerSet = new PowerSet<String>().iterativePowerSetByLoopOverNumbersMinimalChange(set);
 
+        //To make sure that the size of power set is (2 power n)
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
+        //To make sure that number of occurrence of each element is (2 power n-1)
         Map<String, Integer> counter = new HashMap<>();
         for (List<String> subset : powerSet) {
             for (String name : subset) {
@@ -98,6 +114,13 @@ public class PowerSetUnitTest {
             }
         }
         counter.forEach((k, v) -> Assertions.assertEquals((1 << (set.size() - 1)), v.intValue()));
+        //To make sure that one subset is not generated twice
+        Assertions.assertEquals(powerSet.size(), new HashSet<>(powerSet).size());
+        //To make sure that each element in each subset is occurred once
+        for (List<String> subset : powerSet) {
+            Assertions.assertEquals(subset.size(), new HashSet<>(subset).size());
+        }
+        //To make sure that difference of consecutive subsets is exactly 1
         for(int i=1; i<powerSet.size(); i++) {
             int diff = 0;
             for (String s : powerSet.get(i - 1))
@@ -118,7 +141,7 @@ public class PowerSetUnitTest {
         static Set<String> generateRandomSet() {
             Set<String> set = new HashSet<>();
             Random random = new Random();
-            int size = random.nextInt(fruits.size() - 1) + 1;
+            int size = random.nextInt(fruits.size());
             while (set.size() != size) {
                 set.add(fruits.get(random.nextInt(fruits.size())));
             }
