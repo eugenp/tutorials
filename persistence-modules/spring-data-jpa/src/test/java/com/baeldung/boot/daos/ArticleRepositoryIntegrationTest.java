@@ -1,24 +1,19 @@
 package com.baeldung.boot.daos;
 
-import com.baeldung.boot.Application;
-import com.baeldung.boot.config.PersistenceConfiguration;
-import com.baeldung.boot.daos.ArticleRepository;
-import com.baeldung.boot.domain.Article;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.junit4.SpringRunner;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.baeldung.boot.domain.Article;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest(properties="spring.datasource.data=classpath:import_entities.sql")
