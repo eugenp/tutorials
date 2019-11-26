@@ -1,7 +1,5 @@
-package com.baeldung.java8.optional;
+package com.baeldung.optional;
 
-import com.baeldung.optional.Modem;
-import com.baeldung.optional.Person;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -260,7 +258,7 @@ public class OptionalUnitTest {
         return "Default Value";
     }
     
-//    Uncomment code when code base is compatiable with Java 11     
+//    Uncomment code when code base is compatible with Java 11
 //    @Test
 //    public void givenAnEmptyOptional_thenIsEmptyBehavesAsExpected() {
 //        Optional<String> opt = Optional.of("Baeldung");
