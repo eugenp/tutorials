@@ -1,6 +1,6 @@
-## Spring REST Full
+## Spring REST Testing
 
-This module contains articles about REST APIs with Spring
+This module contains articles about testing REST APIs with Spring
 
 ### Courses
 
@@ -16,7 +16,6 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 ```
 mvn clean install
 ```
-
 
 ### Set up MySQL
 ```

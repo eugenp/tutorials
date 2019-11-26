@@ -2,9 +2,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>spring-rest-full</artifactId>
+    <artifactId>spring-rest-testing</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-rest-full</name>
+    <name>spring-rest-testing</name>
     <packaging>war</packaging>
 
     <parent>
