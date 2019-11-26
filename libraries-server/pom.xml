@@ -81,12 +81,6 @@
 
          <dependency>
              <groupId>org.igniterealtime.smack</groupId>
-             <artifactId>smack-im</artifactId>
-             <version>${smack.version}</version>
-         </dependency>
-
-         <dependency>
-             <groupId>org.igniterealtime.smack</groupId>
              <artifactId>smack-extensions</artifactId>
              <version>${smack.version}</version>
          </dependency>
@@ -116,7 +110,6 @@
         <httpclient.version>4.5.3</httpclient.version>
         <jetty.version>9.4.8.v20171121</jetty.version>
         <netty.version>4.1.20.Final</netty.version>
-        <commons.collections.version>4.1</commons.collections.version>
         <tomcat.version>8.5.24</tomcat.version>
         <smack.version>4.3.1</smack.version>
         <eclipse.paho.client.mqttv3.version>1.2.0</eclipse.paho.client.mqttv3.version>

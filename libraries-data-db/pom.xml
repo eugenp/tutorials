@@ -56,18 +56,8 @@
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-xml</artifactId>
-            <version>${datanucleus-xml.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-jdo-query</artifactId>
             <version>${datanucleus-jdo-query.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -218,10 +208,8 @@
         <ormlite.version>5.0</ormlite.version>
         <datanucleus.version>5.1.1</datanucleus.version>
         <datanucleus-maven-plugin.version>5.0.2</datanucleus-maven-plugin.version>
-        <datanucleus-xml.version>5.0.0-release</datanucleus-xml.version>
         <datanucleus-jdo-query.version>5.0.4</datanucleus-jdo-query.version>
         <javax.jdo.version>3.2.0-m7</javax.jdo.version>
-        <slf4j.version>1.7.25</slf4j.version>
         <HikariCP.version>2.7.2</HikariCP.version>
         <ebean.version>11.22.4</ebean.version>
     </properties>
