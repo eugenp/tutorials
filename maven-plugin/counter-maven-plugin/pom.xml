@@ -9,11 +9,11 @@
 
 	<name>counter-maven-plugin Maven Mojo</name>
 	<url>http://maven.apache.org</url>
-	
-    <organization>
-        <name>Baeldung</name>
-        <url>https://www.baeldung.com/</url>
-    </organization>
+
+	<organization>
+		<name>Baeldung</name>
+		<url>https://www.baeldung.com/</url>
+	</organization>
 
 	<properties>
 		<maven.compiler.target>1.8</maven.compiler.target>
