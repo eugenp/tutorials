@@ -455,7 +455,7 @@
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
-                <module>counter-maven-plugin</module>
+                <module>maven-plugin/counter-maven-plugin</module>
                 <module>custom-pmd</module>
 
                 <module>dagger</module>
