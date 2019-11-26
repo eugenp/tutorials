@@ -48,15 +48,10 @@
             <version>${common-math3.version}</version>
         </dependency>
         <dependency>
-            <groupId>commons-net</groupId>
-            <artifactId>commons-net</artifactId>
-            <version>${commons-net.version}</version>
-        </dependency>
-		<dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
-        </dependency>
+        </dependency>        
         <dependency>
             <groupId>org.knowm.xchart</groupId>
             <artifactId>xchart</artifactId>
@@ -71,9 +66,7 @@
         <commons-chain.version>1.2</commons-chain.version>
         <assertj.version>3.6.2</assertj.version>
         <commons.dbutils.version>1.6</commons.dbutils.version>
-        <commons-codec-version>1.10.L001</commons-codec-version>
         <xchart-version>3.5.2</xchart-version>
-        <commons-net.version>3.6</commons-net.version>
         <common-math3.version>3.6.1</common-math3.version>
     </properties>
 

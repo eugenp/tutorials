@@ -52,21 +52,11 @@
             <artifactId>javatuples</artifactId>
             <version>${javatuples.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>${javaassist.version}</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.skyscreamer</groupId>
-            <artifactId>jsonassert</artifactId>
-            <version>${jsonassert.version}</version>
         </dependency>
         <dependency>
             <groupId>org.javers</groupId>
@@ -84,22 +74,6 @@
             <groupId>rome</groupId>
             <artifactId>rome</artifactId>
             <version>${rome.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.specto</groupId>
-            <artifactId>hoverfly-java</artifactId>
-            <version>${hoverfly-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
         <groupId>net.serenity-bdd</groupId>
@@ -136,11 +110,6 @@
             <artifactId>serenity-jira-requirements-provider</artifactId>
             <version>${serenity.jira.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
         </dependency>
 
         <!-- JDO -->
@@ -226,11 +195,6 @@
             <artifactId>jets3t</artifactId>
             <version>${jets3t-version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.lucee</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>${commons-codec-version}</version>
-        </dependency>
 
         <dependency>
             <groupId>io.rest-assured</groupId>
@@ -242,17 +206,6 @@
             <groupId>org.multiverse</groupId>
             <artifactId>multiverse-core</artifactId>
             <version>${multiverse.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-            <version>${HikariCP.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>pl.pragmatists</groupId>
@@ -281,11 +234,6 @@
             <version>${jmh.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
@@ -307,12 +255,6 @@
                     <artifactId>groovy-all</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <type>pom</type>
-            <version>${groovy.version}</version>
         </dependency>
         <dependency>
             <groupId>org.awaitility</groupId>
@@ -363,17 +305,6 @@
             <version>${vavr.version}</version>
         </dependency>
 
-
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>logging-interceptor</artifactId>
-            <version>${logging-interceptor.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.darwinsys</groupId>
-            <artifactId>hirondelle-date4j</artifactId>
-            <version>${hirondelle-date4j.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.haulmont.yarg</groupId>
             <artifactId>yarg</artifactId>
@@ -396,58 +327,13 @@
         </dependency>
         <dependency>
             <groupId>org.functionaljava</groupId>
-            <artifactId>functionaljava</artifactId>
-            <version>${functionaljava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.functionaljava</groupId>
             <artifactId>functionaljava-java8</artifactId>
             <version>${functionaljava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.functionaljava</groupId>
-            <artifactId>functionaljava-quickcheck</artifactId>
-            <version>${functionaljava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.functionaljava</groupId>
-            <artifactId>functionaljava-java-core</artifactId>
-            <version>${functionaljava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.cache</groupId>
-            <artifactId>cache-api</artifactId>
-            <version>${cache.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.hazelcast</groupId>
-            <artifactId>hazelcast</artifactId>
-            <version>${hazelcast.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jgrapht</groupId>
-            <artifactId>jgrapht-core</artifactId>
-            <version>${jgrapht.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
             <version>${caffeine.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.http-client</groupId>
-            <artifactId>google-http-client</artifactId>
-            <version>${googleclient.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.http-client</groupId>
-            <artifactId>google-http-client-jackson2</artifactId>
-            <version>${googleclient.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.http-client</groupId>
-            <artifactId>google-http-client-gson</artifactId>
-            <version>${googleclient.version}</version>
         </dependency>
 
         <!--Java Docker API Client -->
@@ -470,19 +356,9 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-client</artifactId>
-            <version>${jersey.version}</version>
-        </dependency>
         <!--Java Docker API Client -->
 
         <!-- google api -->
-        <dependency>
-            <groupId>com.google.api-client</groupId>
-            <artifactId>google-api-client</artifactId>
-            <version>${google-api.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.google.oauth-client</groupId>
             <artifactId>google-oauth-client-jetty</artifactId>
@@ -492,17 +368,6 @@
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-streams</artifactId>
             <version>${kafka.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>${kafka.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
@@ -535,22 +400,12 @@
         </dependency>
         <dependency>
             <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-ratelimiter</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-bulkhead</artifactId>
             <version>${resilience4j.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-retry</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-cache</artifactId>
             <version>${resilience4j.version}</version>
         </dependency>
         <dependency>
@@ -575,11 +430,6 @@
             <artifactId>MockFtpServer</artifactId>
             <version>${mockftpserver.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.asciidoctor</groupId>
-            <artifactId>asciidoctor-maven-plugin</artifactId>
-            <version>${asciidoctor-maven-plugin.version}</version>
         </dependency>
       	<!-- Reflections -->
 		<dependency>
@@ -710,19 +560,14 @@
 
     <properties>
 
-        <googleclient.version>1.23.0</googleclient.version>
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.7</cglib.version>
         <javatuples.version>1.2</javatuples.version>
-        <javaassist.version>3.21.0-GA</javaassist.version>
         <assertj.version>3.6.2</assertj.version>
-        <jsonassert.version>1.5.0</jsonassert.version>
         <javers.version>3.1.0</javers.version>
-        <httpclient.version>4.5.3</httpclient.version>
         <jnats.version>1.0</jnats.version>
 
 
-        <httpclient.version>4.5.3</httpclient.version>
         <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.9.26</serenity.version>
         <serenity.jbehave.version>1.41.0</serenity.jbehave.version>
@@ -739,29 +584,19 @@
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <streamex.version>0.6.5</streamex.version>
         <vavr.version>0.9.0</vavr.version>
-        <geotools.version>15.2</geotools.version>
-        <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
 
-        <joda-time.version>2.10</joda-time.version>
-        <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
         <protonpack.version>1.15</protonpack.version>
-        <cache.version>1.0.0</cache.version>
-        <hazelcast.version>3.10.2</hazelcast.version>
         <caffeine.version>2.5.5</caffeine.version>
         <google-api.version>1.23.0</google-api.version>
-        <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
         <kafka.version>2.0.0</kafka.version>
         <docker.version>3.0.14</docker.version>
 
-        <jctools.version>2.1.2</jctools.version>
-        <commons-codec-version>1.10.L001</commons-codec-version>
         <jets3t-version>0.9.4.0006L</jets3t-version>
         <jctools.version>2.1.2</jctools.version>
         <typesafe-akka.version>2.5.11</typesafe-akka.version>
         <resilience4j.version>0.12.1</resilience4j.version>
         <javapoet.version>1.10.0</javapoet.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
-        <hoverfly-java.version>0.8.1</hoverfly-java.version>
         <javax.jdo.version>3.2.0-m7</javax.jdo.version>
         <datanucleus.version>5.1.1</datanucleus.version>
         <datanucleus-maven-plugin.version>5.0.2</datanucleus-maven-plugin.version>
@@ -770,26 +605,19 @@
         <chronicle.version>3.6.4</chronicle.version>
         <spring.version>4.3.8.RELEASE</spring.version>
         <spring-mock-mvc.version>3.0.3</spring-mock-mvc.version>
-        <HikariCP.version>2.6.3</HikariCP.version>
         <quartz.version>2.3.0</quartz.version>
         <jool.version>0.9.12</jool.version>
         <jmh.version>1.19</jmh.version>
-        <groovy.version>2.5.2</groovy.version>
         <noexception.version>1.1.0</noexception.version>
-        <logging-interceptor.version>3.9.0</logging-interceptor.version>
         <yarg.version>2.0.4</yarg.version>
         <mbassador.version>1.3.1</mbassador.version>
         <jdeferred.version>1.2.6</jdeferred.version>
         <functionaljava.version>4.8.1</functionaljava.version>
-        <jgrapht.version>1.0.1</jgrapht.version>
-        <jersey.version>1.19.4</jersey.version>
         <fugue.version>4.5.1</fugue.version>
-        <maven-bundle-plugin.version>3.3.0</maven-bundle-plugin.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
         <commons-net.version>3.6</commons-net.version>
         <reflections.version>0.9.11</reflections.version>
-        <asciidoctor-maven-plugin.version>1.5.7.1</asciidoctor-maven-plugin.version>
 
     </properties>
 
