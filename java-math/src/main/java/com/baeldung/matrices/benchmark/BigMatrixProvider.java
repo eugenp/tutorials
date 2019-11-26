@@ -1,4 +1,4 @@
-package com.baeldung.matrices;
+package com.baeldung.matrices.benchmark;
 
 import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
