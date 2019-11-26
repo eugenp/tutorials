@@ -1,11 +1,13 @@
 package com.baeldung.boot.config;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 import com.baeldung.boot.services.IBarService;
 import com.baeldung.boot.services.impl.BarSpringDataJpaService;
-import org.springframework.context.annotation.*;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @Profile("!tc")
