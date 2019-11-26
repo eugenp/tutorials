@@ -1,6 +1,6 @@
 # Hexagonal Architecture
 
-It's a design pattern used that advocates decoupling of business logic from external components (databases, servers, other applications) and makes it technology agnostic.
+It's a design pattern that advocates decoupling of business logic from external components (databases, servers, other applications) and makes it technology agnostic.
 
 ## Installation
 
