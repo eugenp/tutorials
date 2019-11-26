@@ -5,14 +5,14 @@
 	version="2.0">
 
 	<persistence-unit
-		name="com.baeldung.optionalReturnType"
+		name="com.baeldung.optionalreturntype"
 		transaction-type="RESOURCE_LOCAL">
 		<description>Persist Optional Return Type Demo</description>
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>com.baeldung.optionalReturnType.User</class>
-		<class>com.baeldung.optionalReturnType.UserOptional</class>
+		<class>com.baeldung.optionalreturntype.User</class>
+		<class>com.baeldung.optionalreturntype.UserOptional</class>
 		<!-- 
-		<class>com.baeldung.optionalReturnType.UserOptionalField</class>
+		<class>com.baeldung.optionalreturntype.UserOptionalField</class>
 		-->
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 

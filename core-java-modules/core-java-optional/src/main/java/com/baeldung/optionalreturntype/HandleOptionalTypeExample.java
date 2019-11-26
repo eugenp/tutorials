@@ -1,4 +1,4 @@
-package com.baeldung.optionalReturnType;
+package com.baeldung.optionalreturntype;
 
 import java.util.HashMap;
 import java.util.Map;

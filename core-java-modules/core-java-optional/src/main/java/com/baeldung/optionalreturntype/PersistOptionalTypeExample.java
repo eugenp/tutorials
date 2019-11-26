@@ -1,4 +1,4 @@
-package com.baeldung.optionalReturnType;
+package com.baeldung.optionalreturntype;
 
 import java.util.Optional;
 
@@ -7,13 +7,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class PersistOptionalTypeExample {
-    static String persistenceUnit = "com.baeldung.optionalReturnType";
+    static String persistenceUnit = "com.baeldung.optionalreturntype";
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnit);
 
     static EntityManager entityManager = emf.createEntityManager();
 
     // to run this app, uncomment the follow line in META-INF/persistence.xml
-    // <class>com.baeldung.optionalReturnType.UserOptionalField</class>
+    // <class>com.baeldung.optionalreturntype.UserOptionalField</class>
     public static void main(String[] args) {
         UserOptionalField user1 = new UserOptionalField();
         user1.setUserId(1l);
