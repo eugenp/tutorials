@@ -1,6 +1,6 @@
 ## Spring Cloud Kubernetes
 
-This moudle contains articles about Spring Cloud Kubernetes
+This module contains articles about Spring Cloud Kubernetes
 
 ### Relevant Articles:
 
