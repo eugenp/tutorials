@@ -14,51 +14,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.esotericsoftware</groupId>
-            <artifactId>kryo</artifactId>
-            <version>${kryo.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.goldmansachs.reladomo</groupId>
-            <artifactId>reladomo</artifactId>
-            <version>${reladomo.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.goldmansachs.reladomo</groupId>
-            <artifactId>reladomo-test-util</artifactId>
-            <version>${reladomo.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.j256.ormlite</groupId>
-            <artifactId>ormlite-jdbc</artifactId>
-            <version>${ormlite.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-streams</artifactId>
             <version>${kafka.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>${kafka.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
@@ -78,57 +42,9 @@
             <version>${ignite.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.ignite</groupId>
-            <artifactId>ignite-indexing</artifactId>
-            <version>${ignite.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
-        </dependency>
-        <!-- Hikari CP -->
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-            <version>${HikariCP.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <!-- JDO -->
-        <dependency>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>javax.jdo</artifactId>
-            <version>${javax.jdo.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-core</artifactId>
-            <version>${datanucleus.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-api-jdo</artifactId>
-            <version>${datanucleus.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-rdbms</artifactId>
-            <version>${datanucleus.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-maven-plugin</artifactId>
-            <version>${datanucleus-maven-plugin.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-xml</artifactId>
-            <version>${datanucleus-xml.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-jdo-query</artifactId>
-            <version>${datanucleus-jdo-query.version}</version>
         </dependency>
         <!-- Jcache -->
         <dependency>
@@ -180,74 +96,15 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-kafka-0.11_2.11</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-streaming-java_2.11</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-core</artifactId>
-            <version>${flink.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-java</artifactId>
-            <version>${flink.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
             <artifactId>flink-test-utils_2.11</artifactId>
             <version>${flink.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>${awaitility.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.awaitility</groupId>
-            <artifactId>awaitility-proxy</artifactId>
-            <version>${awaitility.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.ebean</groupId>
-            <artifactId>ebean</artifactId>
-            <version>${ebean.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -269,133 +126,17 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-
-            <!-- Reladomo -->
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>${maven-antrun-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>generateMithra</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <tasks>
-                                <property name="plugin_classpath" refid="maven.plugin.classpath" />
-                                <taskdef name="gen-reladomo" classpath="plugin_classpath" classname="com.gs.fw.common.mithra.generator.MithraGenerator" />
-                                <gen-reladomo xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml" generateGscListMethod="true"
-                                    generatedDir="${project.build.directory}/generated-sources/reladomo" nonGeneratedDir="${project.basedir}/src/main/java" />
-
-                                <taskdef name="gen-ddl" classname="com.gs.fw.common.mithra.generator.dbgenerator.MithraDbDefinitionGenerator" loaderRef="reladomoGenerator">
-                                    <classpath refid="maven.plugin.classpath" />
-                                </taskdef>
-                                <gen-ddl xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml"
-                                    generatedDir="${project.build.directory}/generated-db/sql" databaseType="postgres" />
-                            </tasks>
-                        </configuration>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.goldmansachs.reladomo</groupId>
-                        <artifactId>reladomogen</artifactId>
-                        <version>${reladomo.version}</version>
-                    </dependency>
-
-                    <dependency>
-                        <groupId>com.goldmansachs.reladomo</groupId>
-                        <artifactId>reladomo-gen-util</artifactId>
-                        <version>${reladomo.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>${build-helper-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>add-source</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>${project.build.directory}/generated-sources/reladomo</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>add-resource</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>add-resource</goal>
-                        </goals>
-                        <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>${project.build.directory}/generated-db/</directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- /Reladomo -->
-
-            <!-- JDO Plugin -->
-            <plugin>
-                <groupId>org.datanucleus</groupId>
-                <artifactId>datanucleus-maven-plugin</artifactId>
-                <version>${datanucleus-maven-plugin.version}</version>
-                <configuration>
-                    <api>JDO</api>
-                    <props>${basedir}/datanucleus.properties</props>
-                    <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
-                    <verbose>true</verbose>
-                    <fork>false</fork>
-                    <!-- Solve windows line too long error -->
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>enhance</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
                     <descriptors>
-                        <descriptor>src/main/assembly/hadoop-job.xml</descriptor>
+                        <descriptor>src/main/resources/assembly/hadoop-job.xml</descriptor>
                     </descriptors>
                     <archive>
                         <manifest>
@@ -413,53 +154,20 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>io.ebean</groupId>
-                <artifactId>ebean-maven-plugin</artifactId>
-                <version>11.11.2</version>
-                <executions>
-                    <!-- enhance main classes -->
-                    <execution>
-                        <id>main</id>
-                        <phase>process-classes</phase>
-                        <configuration>
-                            <transformArgs>debug=1</transformArgs>
-                        </configuration>
-                        <goals>
-                            <goal>enhance</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
     <properties>
         <storm.version>1.2.2</storm.version>
-        <kryo.version>4.0.1</kryo.version>
-        <reladomo.version>16.5.1</reladomo.version>
-        <ormlite.version>5.0</ormlite.version>
         <kafka.version>1.0.0</kafka.version>
         <ignite.version>2.4.0</ignite.version>
         <gson.version>2.8.2</gson.version>
         <cache.version>1.1.0</cache.version>
         <flink.version>1.5.0</flink.version>
-        <awaitility.version>3.0.0</awaitility.version>
-        <assertj.version>3.6.2</assertj.version>
         <hazelcast.version>3.8.4</hazelcast.version>
-        <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
-        <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
-        <HikariCP.version>2.7.2</HikariCP.version>
-        <javax.jdo.version>3.2.0-m7</javax.jdo.version>
-        <datanucleus.version>5.1.1</datanucleus.version>
-        <datanucleus-maven-plugin.version>5.0.2</datanucleus-maven-plugin.version>
-        <datanucleus-xml.version>5.0.0-release</datanucleus-xml.version>
-        <datanucleus-jdo-query.version>5.0.4</datanucleus-jdo-query.version>
         <org.apache.crunch.crunch-core.version>0.15.0</org.apache.crunch.crunch-core.version>
         <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client> 
-        <ebean.version>11.22.4</ebean.version>
         <slf4j.version>1.7.25</slf4j.version>
-        <logback.version>1.0.1</logback.version>          
     </properties>
 
 </project>

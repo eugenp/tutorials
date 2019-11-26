@@ -28,17 +28,17 @@
 		<dependency>
 			<groupId>org.springframework.security.kerberos</groupId>
 			<artifactId>spring-security-kerberos-core</artifactId>
-			<version>1.0.1.RELEASE</version>
+			<version>${spring-security-kerberos.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security.kerberos</groupId>
 			<artifactId>spring-security-kerberos-web</artifactId>
-			<version>1.0.1.RELEASE</version>
+			<version>${spring-security-kerberos.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security.kerberos</groupId>
 			<artifactId>spring-security-kerberos-client</artifactId>
-			<version>1.0.1.RELEASE</version>
+			<version>${spring-security-kerberos.version}</version>
 		</dependency>
 
 		<dependency>
@@ -61,4 +61,8 @@
 			</plugin>
 		</plugins>
 	</build>
+
+    <properties>
+        <spring-security-kerberos.version>1.0.1.RELEASE</spring-security-kerberos.version>
+    </properties>
 </project>

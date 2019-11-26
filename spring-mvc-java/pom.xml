@@ -8,17 +8,20 @@
     <packaging>war</packaging>
 
     <parent>
-        <artifactId>parent-spring-5</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-spring-5</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -33,7 +36,11 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
         </dependency>
         <!-- Jackson -->
         <dependency>
@@ -55,17 +62,6 @@
         </dependency>
 
         <!-- common -->
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>${commons-fileupload.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-io</groupId>
-                    <artifactId>commons-io</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
         <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
@@ -106,9 +102,8 @@
             <version>2.4.0</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-             <version>${spring.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -134,15 +129,8 @@
             <version>2.8.5</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-websocket</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
- 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-messaging</artifactId>
-            <version>${spring.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
@@ -296,6 +284,7 @@
         <poi.version>3.16-beta1</poi.version>
 
         <javax.el.version>3.0.1-b09</javax.el.version>
+        <start-class>com.baeldung.SpringMVCApplication</start-class>
 		
     </properties>
 

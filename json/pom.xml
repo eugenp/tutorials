@@ -50,13 +50,6 @@
             <version>${jsonb-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://search.maven.org/search?q=g:org.glassfish%20AND%20a:javax.json&core=gav  -->
-        <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.json</artifactId>
             <version>${javax.version}</version>

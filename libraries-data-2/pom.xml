@@ -68,43 +68,6 @@
             <version>${unit-ri.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.docx4j</groupId>
-            <artifactId>docx4j</artifactId>
-            <version>${docx4j.version}</version>
-        </dependency>
-        <!-- google api -->
-        <dependency>
-            <groupId>com.google.api-client</groupId>
-            <artifactId>google-api-client</artifactId>
-            <version>${google-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.oauth-client</groupId>
-            <artifactId>google-oauth-client-jetty</artifactId>
-            <version>${google-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.apis</groupId>
-            <artifactId>google-api-services-sheets</artifactId>
-            <version>${google-sheets.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
-        <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>${opencsv.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.milyn</groupId>
-            <artifactId>milyn-smooks-all</artifactId>
-            <version>${smooks.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.infinispan</groupId>
             <artifactId>infinispan-core</artifactId>
             <version>${infinispan.version}</version>
@@ -124,22 +87,72 @@
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.googlecode.jmapper-framework</groupId>
+            <artifactId>jmapper-core</artifactId>
+            <version>${jmapper.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.numericalmethod</groupId>
+            <artifactId>suanshu</artifactId>
+            <version>${suanshu.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.derive4j</groupId>
+            <artifactId>derive4j</artifactId>
+            <version>${derive4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility-proxy</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>nm-repo</id>
+            <name>Numerical Method's Maven Repository</name>
+            <url>http://repo.numericalmethod.com/maven/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
 
     <properties>
         <flink.version>1.5.0</flink.version>
         <hll.version>1.6.0</hll.version>
         <crdt.version>0.1.0</crdt.version>
         <unit-ri.version>1.0.3</unit-ri.version>
-        <docx4j.version>3.3.5</docx4j.version>
-        <jaxb-api.version>2.1</jaxb-api.version>
-        <google-api.version>1.23.0</google-api.version>
-        <opencsv.version>4.1</opencsv.version>
-        <smooks.version>1.7.0</smooks.version>
         <infinispan.version>9.1.5.Final</infinispan.version>
-        <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
         <jackson.version>2.9.8</jackson.version>
         <spring.version>4.3.8.RELEASE</spring.version>
+        <jmapper.version>1.6.0.1</jmapper.version>
+        <suanshu.version>4.0.0</suanshu.version>
+        <derive4j.version>1.1.0</derive4j.version>
+        <assertj.version>3.6.2</assertj.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <awaitility.version>3.0.0</awaitility.version>
     </properties>
 </project>

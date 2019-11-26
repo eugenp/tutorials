@@ -24,12 +24,6 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
         
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -70,9 +64,6 @@
 
     <properties>
         <mustache.compiler.api.version>0.9.2</mustache.compiler.api.version>
-        <log4j.version>1.2.16</log4j.version>
-
-        <!-- maven plugins -->
         <datafactory.version>0.8</datafactory.version>
         <webjars.bootstrap.version>3.3.7</webjars.bootstrap.version>
     </properties>
