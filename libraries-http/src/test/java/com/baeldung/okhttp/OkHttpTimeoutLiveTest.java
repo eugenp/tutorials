@@ -1,13 +1,11 @@
 package com.baeldung.okhttp;
 
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
+import okhttp3.*;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.SocketTimeoutException;
 import java.util.concurrent.TimeUnit;
@@ -25,7 +23,7 @@ public class OkHttpTimeoutLiveTest {
     @Test
     public void whenConnectTimeoutExceededThenSocketTimeoutException() {
         // Given
-        final OkHttpClient client = new OkHttpClient.Builder()
+        OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.MILLISECONDS)
                 .build();
 
@@ -45,7 +43,7 @@ public class OkHttpTimeoutLiveTest {
     @Test
     public void whenReadTimeoutExceededThenSocketTimeoutException() {
         // Given
-        final OkHttpClient client = new OkHttpClient.Builder()
+        OkHttpClient client = new OkHttpClient.Builder()
                 .readTimeout(10, TimeUnit.MILLISECONDS)
                 .build();
 
@@ -65,7 +63,7 @@ public class OkHttpTimeoutLiveTest {
     @Test
     public void whenWriteTimeoutExceededThenSocketTimeoutException() {
         // Given
-        final OkHttpClient client = new OkHttpClient.Builder()
+        OkHttpClient client = new OkHttpClient.Builder()
                 .writeTimeout(10, TimeUnit.MILLISECONDS)
                 .build();
 
@@ -84,9 +82,9 @@ public class OkHttpTimeoutLiveTest {
     }
 
     @Test
-    public void whenCallTimeoutExceededThenSocketTimeoutException() {
+    public void whenCallTimeoutExceededThenInterruptedIOException() {
         // Given
-        final OkHttpClient client = new OkHttpClient.Builder()
+        OkHttpClient client = new OkHttpClient.Builder()
                 .callTimeout(1, TimeUnit.SECONDS)
                 .build();
 
@@ -101,6 +99,31 @@ public class OkHttpTimeoutLiveTest {
         assertThat(thrown).isInstanceOf(InterruptedIOException.class);
 
         logThrown(thrown);
+    }
+
+    @Test
+    public void whenPerRequestTimeoutExtendedThenResponseSuccess() throws IOException {
+        // Given
+        OkHttpClient defaultClient = new OkHttpClient.Builder()
+                .readTimeout(1, TimeUnit.SECONDS)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(HTTPS_ADDRESS_DELAY_2)
+                .build();
+
+        Throwable thrown = catchThrowable(() -> defaultClient.newCall(request).execute());
+
+        assertThat(thrown).isInstanceOf(InterruptedIOException.class);
+
+        // When
+        OkHttpClient extendedTimeoutClient = defaultClient.newBuilder()
+                .readTimeout(5, TimeUnit.SECONDS)
+                .build();
+
+        // Then
+        Response response = extendedTimeoutClient.newCall(request).execute();
+        assertThat(response.code()).isEqualTo(200);
     }
 
     private void logThrown(Throwable thrown) {
