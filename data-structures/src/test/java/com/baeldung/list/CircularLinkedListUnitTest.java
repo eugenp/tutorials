@@ -9,41 +9,37 @@ public class CircularLinkedListUnitTest {
 
     @Test
     public void givenACircularLinkedList_WhenAddingElements_ThenListContainsThoseElements() {
-
         CircularLinkedList cll = createCircularLinkedList();
 
         assertTrue(cll.containsNode(8));
         assertTrue(cll.containsNode(37));
     }
-    
+
     @Test
     public void givenACircularLinkedList_WhenLookingForNonExistingElement_ThenReturnsFalse() {
-
         CircularLinkedList cll = createCircularLinkedList();
 
         assertFalse(cll.containsNode(11));
     }
-    
+
     @Test
     public void givenACircularLinkedList_WhenDeletingElements_ThenListDoesNotContainThoseElements() {
-
         CircularLinkedList cll = createCircularLinkedList();
 
         assertTrue(cll.containsNode(13));
         cll.deleteNode(13);
         assertFalse(cll.containsNode(13));
-        
+
         assertTrue(cll.containsNode(1));
         cll.deleteNode(1);
         assertFalse(cll.containsNode(1));
-        
+
         assertTrue(cll.containsNode(46));
         cll.deleteNode(46);
-        assertFalse(cll.containsNode(46));  
+        assertFalse(cll.containsNode(46));
     }
 
     private CircularLinkedList createCircularLinkedList() {
-
         CircularLinkedList cll = new CircularLinkedList();
 
         cll.addNode(13);
