@@ -10,8 +10,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
-//https://github.com/liquibase/liquibase/blob/master/liquibase-cdi/src/main/java/liquibase/integration/cdi/CDILiquibase.java
-
 @ApplicationScoped
 public class LiquibaseProducer {
 
