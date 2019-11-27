@@ -26,27 +26,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
-                .passwordEncoder(passwordEncoder())
-                .dataSource(dataSource);
+           .passwordEncoder(passwordEncoder())
+           .dataSource(dataSource);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http
-                .csrf()
-                .disable()
-                .authorizeRequests()
-                .antMatchers("/anonymous*").anonymous()
-                .antMatchers("/login*").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .and()
-                .logout()
-                .logoutUrl("/logout.do")
-                .invalidateHttpSession(true)
-                .clearAuthentication(true);
+        http.csrf()
+           .disable()
+           .authorizeRequests()
+           .antMatchers("/anonymous*").anonymous()
+           .antMatchers("/login*").permitAll()
+           .anyRequest().authenticated()
+           .and()
+           .formLogin()
+           .and()
+           .logout()
+           .logoutUrl("/logout.do")
+           .invalidateHttpSession(true)
+           .clearAuthentication(true);
     }
 
     @Override

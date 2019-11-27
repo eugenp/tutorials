@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-views</artifactId>
     <packaging>war</packaging>
-    <name>spring-mvc-themes</name>
+    <name>spring-mvc-views</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
