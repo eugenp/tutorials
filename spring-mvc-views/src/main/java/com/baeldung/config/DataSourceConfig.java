@@ -19,8 +19,8 @@ public class DataSourceConfig {
     public DataSource dataSource() {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         return builder.setType(EmbeddedDatabaseType.HSQL)
-                .addScripts("db/sql/create-db.sql", "db/sql/insert-data.sql")
-                .build();
+            .addScripts("db/sql/create-db.sql", "db/sql/insert-data.sql")
+            .build();
     }
 
     @Bean
