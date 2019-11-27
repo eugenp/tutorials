@@ -1,4 +1,4 @@
-package com.baeldung.ddd.layers.application;
+package com.baeldung.ddd.layers.application.controller;
 
 import com.baeldung.ddd.layers.application.request.AddProductRequest;
 import com.baeldung.ddd.layers.application.request.CreateOrderRequest;
