@@ -26,7 +26,11 @@ import com.baeldung.repository.UserRepository;
 /**
  * 
  * This test requires:
- * * mongodb instance running on the environment
+ * * mongodb instance running on the environment, supporting replica set:
+ * (e.g. `docker run -d -p 27017:27017 --name bael-mongo mongo`)
+ * 
+ * * Initiate the replica set:
+ * (e.g. `docker exec bael-mongo mongo --eval "rs.initiate() && rs.conf()"`)
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
