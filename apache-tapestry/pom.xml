@@ -5,7 +5,7 @@
     <artifactId>apache-tapestry</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>apache-tapestry Tapestry 5 Application</name>
+    <name>apache-tapestry</name>
         <dependencies>
         <!-- To set up an application with a database, change the artifactId below to
              tapestry-hibernate, and add a dependency on your JDBC driver. You'll also
