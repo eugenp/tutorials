@@ -1,4 +1,4 @@
-package com.baeldung.java8.optional;
+package com.baeldung.optional;
 
 import org.junit.Before;
 import org.junit.Test;

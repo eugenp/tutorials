@@ -1,4 +1,4 @@
-package com.baeldung.optionalReturnType;
+package com.baeldung.optionalreturntype;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

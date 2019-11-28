@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.emptystringoptional;
 
 import com.google.common.base.Strings;
 import org.junit.Assert;
@@ -16,12 +16,13 @@ public class EmptyStringToEmptyOptionalUnitTest {
         Assert.assertFalse(opt.isPresent());
     }
 
-    @Test
-    public void givenEmptyString_whenFilteringOnOptionalInJava11_thenEmptyOptionalIsReturned() {
-        String str = "";
-        Optional<String> opt = Optional.ofNullable(str).filter(Predicate.not(String::isEmpty));
-        Assert.assertFalse(opt.isPresent());
-    }
+//    Uncomment code when code base is compatible with Java 11
+//    @Test
+//    public void givenEmptyString_whenFilteringOnOptionalInJava11_thenEmptyOptionalIsReturned() {
+//        String str = "";
+//        Optional<String> opt = Optional.ofNullable(str).filter(Predicate.not(String::isEmpty));
+//        Assert.assertFalse(opt.isPresent());
+//    }
 
     @Test
     public void givenEmptyString_whenPassingResultOfEmptyToNullToOfNullable_thenEmptyOptionalIsReturned() {

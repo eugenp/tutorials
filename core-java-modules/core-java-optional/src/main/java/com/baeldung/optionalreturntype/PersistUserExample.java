@@ -1,11 +1,11 @@
-package com.baeldung.optionalReturnType;
+package com.baeldung.optionalreturntype;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class PersistUserExample {
-    static String persistenceUnit = "com.baeldung.optionalReturnType";
+    static String persistenceUnit = "com.baeldung.optionalreturntype";
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnit);
 
     static EntityManager em = emf.createEntityManager();
