@@ -12,7 +12,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
 import com.baeldung.springfox.plugin.EmailAnnotationPlugin;
+
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
@@ -36,11 +38,11 @@ public class SpringfoxApplication {
     @Bean
     public Docket springfoxAppInfo() {
         return new Docket(DocumentationType.SWAGGER_2)
-            .groupName("baeldung-springfox-api")
-            .select()
-            .paths(paths())
-            .build()
-            .apiInfo(apiInfo());
+          .groupName("baeldung-springfox-api")
+          .select()
+          .paths(paths())
+          .build()
+          .apiInfo(apiInfo());
     }
 
     private Predicate<String> paths() {
@@ -48,13 +50,8 @@ public class SpringfoxApplication {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfo(
-            "Springfox API specification", 
-            "User REST and Spring Data APIs", 
-            "", 
-            "", 
-            null, 
-            "License of API", "API license URL", Collections.emptyList());
+        return new ApiInfo("Springfox API specification", "User REST and Spring Data APIs", 
+          "", "", null, "License of API", "API license URL", Collections.emptyList());
     }
 
     @Bean
