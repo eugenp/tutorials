@@ -16,8 +16,6 @@ public class User{
     @NotNull(message = "First Name cannot be null")
     private String firstName;
     
-    private String lastName;
-    
     @Min(value = 15, message = "Age should not be less than 15")
     @Max(value = 65, message = "Age should not be greater than 65")
     private int age;
@@ -39,14 +37,6 @@ public class User{
     
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-    
-    public String getLastName() {
-        return lastName;
-    }
-    
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
     
     public String getEmail() {
