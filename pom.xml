@@ -502,6 +502,8 @@
                 <module>jackson-simple</module>
                 <module>jackson-annotations</module>
                 <module>jackson-exceptions</module>
+                <module>jackson-conversions</module>
+                <module>jackson-conversions-2</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
@@ -1132,6 +1134,8 @@
                 <module>jackson-simple</module>
                 <module>jackson-annotations</module>
                 <module>jackson-exceptions</module>
+                <module>jackson-conversions</module>
+                <module>jackson-conversions-2</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
