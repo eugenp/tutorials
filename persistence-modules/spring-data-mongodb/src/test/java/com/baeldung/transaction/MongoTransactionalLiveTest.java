@@ -22,7 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.baeldung.config.MongoConfig;
 import com.baeldung.model.User;
 import com.baeldung.repository.UserRepository;
-import com.mongodb.MongoCommandException;
 
 /**
  * 
@@ -62,7 +61,8 @@ public class MongoTransactionalLiveTest {
         }
     }
 
-    @Test(expected = MongoCommandException.class)
+    // using the count() operation doesn't trigger a MongoCommandException using the latest spring-data-mongodb versions
+    @Test
     @Transactional
     public void whenCountDuringMongoTransaction_thenException() {
         userRepository.save(new User("John", 30));
