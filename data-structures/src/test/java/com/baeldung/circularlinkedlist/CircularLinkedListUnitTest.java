@@ -5,8 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.baeldung.circularlinkedlist.CircularLinkedList;
-
 public class CircularLinkedListUnitTest {
 
     @Test
