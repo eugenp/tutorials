@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>maven</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>maven</name>
@@ -307,7 +306,6 @@
         <maven.verifier.version>1.1</maven.verifier.version>
         <maven.clean.version>3.0.0</maven.clean.version>
         <maven.build.helper.version>3.0.0</maven.build.helper.version>
-        <resources.name>Baeldung</resources.name>
         <jetty.version>9.4.11.v20180605</jetty.version>
         <jersey.version>2.27</jersey.version>
     </properties>
