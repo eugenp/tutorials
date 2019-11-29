@@ -590,6 +590,7 @@
                 <module>mustache</module>
                 <module>mybatis</module>
 
+                <module>netflix</module>
 
                 <module>optaplanner</module>
                 <module>orika</module>
@@ -669,6 +670,8 @@
             </build>
 
             <modules>
+                <module>netflix</module>
+
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
@@ -1220,6 +1223,7 @@
                 <module>mustache</module>
                 <module>mybatis</module>
 
+                <module>netflix</module>
 
                 <module>optaplanner</module>
                 <module>orika</module>
