@@ -622,7 +622,6 @@
                 <module>tensorflow-java</module>
                 <module>spf4j</module>
                 <module>springfox</module>
-                <module>spring-boot-configuration</module>
                 <module>spring-boot-config-jpa-error</module>
                 <module>spring-boot-flowable</module>
                 <module>spring-boot-mvc-2</module>
