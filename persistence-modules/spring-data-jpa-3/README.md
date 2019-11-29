@@ -9,8 +9,8 @@
 - [Spring Data JPA Batch Inserts](https://www.baeldung.com/spring-data-jpa-batch-inserts)
 - [Batch Insert/Update with Hibernate/JPA](https://www.baeldung.com/jpa-hibernate-batch-insert-update)
 - [Difference Between save() and saveAndFlush() in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-save-saveandflush)
+
 - [Programmatic Transaction Management in Spring](https://www.baeldung.com/spring-programmatic-transaction-management)
-- [A Guide to Spring’s Open Session In View](https://www.baeldung.com/spring-open-session-in-view)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  

@@ -1,18 +1,19 @@
 package com.baeldung.service;
 
-import com.baeldung.model.BasicUser;
-import com.baeldung.repository.UserRepository;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import com.baeldung.model.BasicUser;
+import com.baeldung.repository.BasicUserRepository;
 
 @Service
 public class SimpleUserService implements UserService {
 
-    private final UserRepository userRepository;
+    private final BasicUserRepository userRepository;
 
-    public SimpleUserService(UserRepository userRepository) {
+    public SimpleUserService(BasicUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
