@@ -10,8 +10,6 @@
 - [Batch Insert/Update with Hibernate/JPA](https://www.baeldung.com/jpa-hibernate-batch-insert-update)
 - [Difference Between save() and saveAndFlush() in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-save-saveandflush)
 
-- [Programmatic Transaction Management in Spring](https://www.baeldung.com/spring-programmatic-transaction-management)
-
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
 "No persistence xml file found in project"
