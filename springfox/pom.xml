@@ -17,12 +17,12 @@
     </parent>
     
     <repositories>
-        <!-- Snapshot repository location -->
         <repository>
             <id>jcenter</id>
             <name>jcenter</name>
             <url>https://jcenter.bintray.com/</url>
         </repository>
+        <!-- Snapshot repository location -->
         <repository>
             <id>jcenter-snapshots</id>
             <name>jcenter</name>
@@ -49,7 +49,6 @@
         </dependency>
 
         <!-- Springfox -->
-
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
