@@ -45,6 +45,8 @@ public class CustomFiltersLiveTest {
 
         response.expectStatus()
             .isOk()
+            .expectHeader()
+            .doesNotExist("Bael-Custom-Language-Header")
             .expectBody(String.class)
             .isEqualTo("Service Resource");
 
@@ -60,7 +62,8 @@ public class CustomFiltersLiveTest {
             .haveAtLeastOne(eventContains("Pre GatewayFilter logging: My Custom Message"))
             .haveAtLeastOne(eventContains("Post GatewayFilter logging: My Custom Message"))
             // Modify Request
-            .haveAtLeastOne(eventContains("Modify Request output - Request contains Accept-Language header:"))
+            .haveAtLeastOne(eventContains("Modify request output - Request contains Accept-Language header:"))
+            .haveAtLeastOne(eventContainsExcept("Removed all query params: ", "locale"))
             // Modify Response
             .areNot(eventContains("Added custom header to Response"))
             // Chain Request
@@ -75,16 +78,33 @@ public class CustomFiltersLiveTest {
 
         response.expectStatus()
             .isOk()
+            .expectHeader()
+            .exists("Bael-Custom-Language-Header")
             .expectBody(String.class)
             .isEqualTo("Service Resource");
 
         assertThat(LoggerListAppender.getEvents())
             // Modify Response
-            .haveAtLeastOne(eventContains("Added custom header to Response"));
+            .haveAtLeastOne(eventContains("Added custom header to Response"))
+            .haveAtLeastOne(eventContainsExcept("Removed all query params: ", "locale"));
     }
 
+    /**
+     * This condition will be successful if the event contains a substring
+     */
     private Condition<ILoggingEvent> eventContains(String substring) {
         return new Condition<ILoggingEvent>(entry -> (substring == null || (entry.getFormattedMessage() != null && entry.getFormattedMessage()
             .contains(substring))), String.format("entry with message '%s'", substring));
+    }
+
+    /**
+     * This condition will be successful if the event contains a substring, but not another one
+     */
+    private Condition<ILoggingEvent> eventContainsExcept(String substring, String except) {
+        return new Condition<ILoggingEvent>(entry -> (substring == null || (entry.getFormattedMessage() != null && entry.getFormattedMessage()
+            .contains(substring)
+            && !entry.getFormattedMessage()
+                .contains(except))),
+            String.format("entry with message '%s'", substring));
     }
 }
