@@ -359,6 +359,7 @@
                 <module>apache-shiro</module>
                 <module>apache-solrj</module>
                 <module>apache-spark</module>
+                <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
@@ -999,6 +1000,7 @@
                 <module>apache-shiro</module>
                 <module>apache-solrj</module>
                 <module>apache-spark</module>
+                <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
