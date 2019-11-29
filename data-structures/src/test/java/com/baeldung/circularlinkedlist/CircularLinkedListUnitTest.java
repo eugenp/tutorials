@@ -1,9 +1,11 @@
-package com.baeldung.list;
+package com.baeldung.circularlinkedlist;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
+import com.baeldung.circularlinkedlist.CircularLinkedList;
 
 public class CircularLinkedListUnitTest {
 
