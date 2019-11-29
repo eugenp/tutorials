@@ -1,4 +1,4 @@
-package com.baeldung.list;
+package com.baeldung.circularlinkedlist;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,13 +49,11 @@ public class CircularLinkedList {
             if (currentNode.value == valueToDelete) {
                 head = head.nextNode;
                 tail.nextNode = head;
-                currentNode = null;
             } else {
                 do {
                     Node nextNode = currentNode.nextNode;
                     if (nextNode.value == valueToDelete) {
                         currentNode.nextNode = nextNode.nextNode;
-                        nextNode = null;
                         break;
                     }
                     currentNode = currentNode.nextNode;
