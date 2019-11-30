@@ -790,6 +790,7 @@
                 <module>spring-mvc-kotlin</module>
                 <module>spring-mvc-simple</module>
                 <module>spring-mvc-simple-2</module>
+                <module>spring-mvc-views</module>
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
@@ -1393,6 +1394,7 @@
                 <module>spring-mvc-kotlin</module>
                 <module>spring-mvc-simple</module>
                 <module>spring-mvc-simple-2</module>
+                <module>spring-mvc-views</module>
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
