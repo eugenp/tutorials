@@ -85,4 +85,13 @@ class SmallestMissingPositiveIntegerUnitTest {
 
         assertThat(result).isEqualTo(input.length);
     }
+
+    @Test
+    void givenArrayFromArticleComment_whenSearchInUnsortedArrayBooleanArray_thenZero() {
+        int[] input = new int[] {11, 13, 14, 15};
+
+        int result = SmallestMissingPositiveInteger.searchInUnsortedArrayBooleanArray(input);
+
+        assertThat(result).isEqualTo(0);
+    }
 }
