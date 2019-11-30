@@ -3,9 +3,5 @@ server:
   
 logging:
   level:
-    org:
-      springframework:
-        web:
-          client:
-            RestTemplate: DEBUG
+    org.springframework.web.client.RestTemplate: DEBUG
             

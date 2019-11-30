@@ -1,9 +1,9 @@
-package com.baeldung.openid.oidc.core;
+package com.baeldung.openid.oidc.login;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.baeldung.openid.oidc.boot.SpringOidcLoginApplication;
+import com.baeldung.openid.oidc.login.SpringOidcLoginApplication;
 
 @SpringBootTest(classes = SpringOidcLoginApplication.class)
 public class SpringContextTest {
