@@ -21,7 +21,7 @@ public class OkHttpTimeoutLiveTest {
     private static final String HTTPS_ADDRESS_DELAY_2 = "https://httpbin.org/delay/2";
 
     @Test
-    public void whenConnectTimeoutExceededThenSocketTimeoutException() {
+    public void whenConnectTimeoutExceeded_thenSocketTimeoutException() {
         // Given
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.MILLISECONDS)
@@ -41,7 +41,7 @@ public class OkHttpTimeoutLiveTest {
     }
 
     @Test
-    public void whenReadTimeoutExceededThenSocketTimeoutException() {
+    public void whenReadTimeoutExceeded_thenSocketTimeoutException() {
         // Given
         OkHttpClient client = new OkHttpClient.Builder()
                 .readTimeout(10, TimeUnit.MILLISECONDS)
@@ -61,7 +61,7 @@ public class OkHttpTimeoutLiveTest {
     }
 
     @Test
-    public void whenWriteTimeoutExceededThenSocketTimeoutException() {
+    public void whenWriteTimeoutExceeded_thenSocketTimeoutException() {
         // Given
         OkHttpClient client = new OkHttpClient.Builder()
                 .writeTimeout(10, TimeUnit.MILLISECONDS)
@@ -82,7 +82,7 @@ public class OkHttpTimeoutLiveTest {
     }
 
     @Test
-    public void whenCallTimeoutExceededThenInterruptedIOException() {
+    public void whenCallTimeoutExceeded_thenInterruptedIOException() {
         // Given
         OkHttpClient client = new OkHttpClient.Builder()
                 .callTimeout(1, TimeUnit.SECONDS)
@@ -102,7 +102,7 @@ public class OkHttpTimeoutLiveTest {
     }
 
     @Test
-    public void whenPerRequestTimeoutExtendedThenResponseSuccess() throws IOException {
+    public void whenPerRequestTimeoutExtended_thenResponseSuccess() throws IOException {
         // Given
         OkHttpClient defaultClient = new OkHttpClient.Builder()
                 .readTimeout(1, TimeUnit.SECONDS)
