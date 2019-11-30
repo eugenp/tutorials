@@ -58,9 +58,9 @@ public class Combinatorics {
             powerSet.add(new ArrayList<>(accumulator));
         } else {
             accumulator.add(set.get(index));
-
             powerSetInternal(set, powerSet, accumulator, index + 1);
             accumulator.remove(accumulator.size() - 1);
+            
             powerSetInternal(set, powerSet, accumulator, index + 1);
         }
     }
