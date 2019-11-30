@@ -11,8 +11,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>quarkus-app</module>
         <module>quarkus-liquibase</module>
+        <module>quarkus-app</module>
     </modules>
 
 </project>
