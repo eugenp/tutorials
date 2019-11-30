@@ -40,7 +40,7 @@ public class Order{
         this.amount = amount;
     }
     
-    public boolean checkOrderValidity() {
+    public boolean isOrderValid() {
         if(this.amount > 0 && this.id > 0) {
             return Boolean.TRUE;
         }
