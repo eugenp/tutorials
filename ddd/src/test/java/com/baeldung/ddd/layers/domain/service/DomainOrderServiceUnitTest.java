@@ -4,7 +4,6 @@ import com.baeldung.ddd.layers.domain.Order;
 import com.baeldung.ddd.layers.domain.OrderProvider;
 import com.baeldung.ddd.layers.domain.Product;
 import com.baeldung.ddd.layers.domain.repository.OrderRepository;
-import org.bson.types.ObjectId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -33,7 +32,7 @@ class DomainOrderServiceUnitTest {
     void shouldCreateOrder_thenSaveIt() {
         final Product product = new Product(UUID.randomUUID(), BigDecimal.TEN, "productName");
 
-        final ObjectId id = tested.createOrder(product);
+        final UUID id = tested.createOrder(product);
 
         verify(orderRepository).save(any(Order.class));
         assertNotNull(id);
@@ -54,7 +53,7 @@ class DomainOrderServiceUnitTest {
     @Test
     void shouldAddProduct_thenThrowException() {
         final Product product = new Product(UUID.randomUUID(), BigDecimal.TEN, "test");
-        final ObjectId id = ObjectId.get();
+        final UUID id = UUID.randomUUID();
         when(orderRepository.findById(id)).thenReturn(Optional.empty());
 
         final Executable executable = () -> tested.addProduct(id, product);
@@ -81,7 +80,7 @@ class DomainOrderServiceUnitTest {
           .getOrderItems()
           .get(0)
           .getProductId();
-        
+
         when(orderRepository.findById(order.getId())).thenReturn(Optional.of(order));
 
         tested.deleteProduct(order.getId(), productId);

@@ -1,7 +1,5 @@
 package com.baeldung.ddd.layers.domain;
 
-import org.bson.types.ObjectId;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,12 +7,12 @@ import java.util.List;
 import java.util.UUID;
 
 public class Order {
-    private final ObjectId id;
+    private UUID id;
     private OrderStatus status;
     private List<OrderItem> orderItems;
     private BigDecimal price;
 
-    public Order(final ObjectId id, final Product product) {
+    public Order(final UUID id, final Product product) {
         this.id = id;
         this.orderItems = new ArrayList<>(Collections.singletonList(new OrderItem(product)));
         this.status = OrderStatus.CREATED;
@@ -63,7 +61,7 @@ public class Order {
         }
     }
 
-    public ObjectId getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -77,5 +75,8 @@ public class Order {
 
     public List<OrderItem> getOrderItems() {
         return Collections.unmodifiableList(orderItems);
+    }
+
+    private Order() {
     }
 }

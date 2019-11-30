@@ -1,15 +1,15 @@
 package com.baeldung.ddd.layers.application.response;
 
-import org.bson.types.ObjectId;
+import java.util.UUID;
 
 public class CreateOrderResponse {
-    private final String id;
+    private final UUID id;
 
-    public CreateOrderResponse(final String id) {
+    public CreateOrderResponse(final UUID id) {
         this.id = id;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 }
