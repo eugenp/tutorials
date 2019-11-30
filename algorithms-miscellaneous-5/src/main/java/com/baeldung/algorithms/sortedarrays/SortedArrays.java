@@ -4,29 +4,29 @@ public class SortedArrays {
 
     public static int[] merge(int[] first, int[] second) {
 
-        int m = first.length;
-        int n = second.length;
+        int firstLength = first.length;
+        int secondLength = second.length;
 
-        int i, j, k;
-        i = j = k = 0;
+        int[] result = new int[firstLength + secondLength];
 
-        int[] result = new int[m + n];
+        int firstPosition, secondPosition, resultPosition;
+        firstPosition = secondPosition = resultPosition = 0;
 
-        while (i < m && j < n) {
+        while (firstPosition < firstLength && secondPosition < secondLength) {
 
-            if (first[i] < second[j]) {
-                result[k++] = first[i++];
+            if (first[firstPosition] < second[secondPosition]) {
+                result[resultPosition++] = first[firstPosition++];
             } else {
-                result[k++] = second[j++];
+                result[resultPosition++] = second[secondPosition++];
             }
         }
 
-        while (i < m) {
-            result[k++] = first[i++];
+        while (firstPosition < firstLength) {
+            result[resultPosition++] = first[firstPosition++];
         }
 
-        while (j < n) {
-            result[k++] = second[j++];
+        while (secondPosition < secondLength) {
+            result[resultPosition++] = second[secondPosition++];
         }
 
         return result;
