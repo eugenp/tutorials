@@ -3,7 +3,6 @@ package com.baeldung.ddd.layers.domain.service;
 import com.baeldung.ddd.layers.domain.Order;
 import com.baeldung.ddd.layers.domain.Product;
 import com.baeldung.ddd.layers.domain.repository.OrderRepository;
-import org.bson.types.ObjectId;
 
 import java.util.UUID;
 
@@ -16,15 +15,15 @@ public class DomainOrderService implements OrderService {
     }
 
     @Override
-    public ObjectId createOrder(final Product product) {
-        final Order order = new Order(ObjectId.get(), product);
+    public UUID createOrder(final Product product) {
+        final Order order = new Order(UUID.randomUUID(), product);
         orderRepository.save(order);
 
         return order.getId();
     }
 
     @Override
-    public void addProduct(final ObjectId id, final Product product) {
+    public void addProduct(final UUID id, final Product product) {
         final Order order = getOrder(id);
         order.addOrder(product);
 
@@ -32,7 +31,7 @@ public class DomainOrderService implements OrderService {
     }
 
     @Override
-    public void completeOrder(final ObjectId id) {
+    public void completeOrder(final UUID id) {
         final Order order = getOrder(id);
         order.complete();
 
@@ -40,14 +39,14 @@ public class DomainOrderService implements OrderService {
     }
 
     @Override
-    public void deleteProduct(final ObjectId id, final UUID productId) {
+    public void deleteProduct(final UUID id, final UUID productId) {
         final Order order = getOrder(id);
         order.removeOrder(productId);
 
         orderRepository.save(order);
     }
 
-    private Order getOrder(ObjectId id) {
+    private Order getOrder(UUID id) {
         return orderRepository
           .findById(id)
           .orElseThrow(() -> new RuntimeException("Order with given id doesn't exist"));

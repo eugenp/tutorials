@@ -5,8 +5,8 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class OrderItem {
-    private final UUID productId;
-    private final BigDecimal price;
+    private UUID productId;
+    private BigDecimal price;
 
     public OrderItem(final Product product) {
         this.productId = product.getId();
@@ -19,6 +19,9 @@ public class OrderItem {
 
     public BigDecimal getPrice() {
         return price;
+    }
+
+    private OrderItem() {
     }
 
     @Override
