@@ -4,7 +4,6 @@ import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +21,6 @@ import com.baeldung.boot.domain.Customer;
 @RestController
 public class CustomerController {
 
-    @Autowired
     CustomerRepository customerRepository;
 
     public CustomerController(CustomerRepository customerRepository2) {

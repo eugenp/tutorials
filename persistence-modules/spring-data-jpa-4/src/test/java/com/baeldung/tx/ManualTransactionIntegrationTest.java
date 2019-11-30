@@ -77,7 +77,7 @@ class ManualTransactionIntegrationTest {
         });
 
         assertThat(entityManager
-                .createQuery("select p from Payment p")
+                .createQuery("select p from Payment p", Payment.class)
                 .getResultList()).isEmpty();
     }
 
@@ -104,7 +104,7 @@ class ManualTransactionIntegrationTest {
         }
 
         assertThat(entityManager
-                .createQuery("select p from Payment p")
+                .createQuery("select p from Payment p", Payment.class)
                 .getResultList()).isEmpty();
     }
 
@@ -122,7 +122,7 @@ class ManualTransactionIntegrationTest {
         });
 
         assertThat(entityManager
-                .createQuery("select p from Payment p")
+                .createQuery("select p from Payment p", Payment.class)
                 .getResultList()).hasSize(1);
     }
 
@@ -145,7 +145,7 @@ class ManualTransactionIntegrationTest {
         }
 
         assertThat(entityManager
-                .createQuery("select p from Payment p")
+                .createQuery("select p from Payment p", Payment.class)
                 .getResultList()).hasSize(1);
     }
 
