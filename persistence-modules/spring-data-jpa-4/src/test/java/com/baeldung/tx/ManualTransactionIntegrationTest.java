@@ -1,6 +1,6 @@
 package com.baeldung.tx;
 
-import com.baeldung.model.Payment;
+import com.baeldung.tx.model.Payment;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
