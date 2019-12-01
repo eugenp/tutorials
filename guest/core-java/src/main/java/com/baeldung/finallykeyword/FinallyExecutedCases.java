@@ -34,9 +34,6 @@ public class FinallyExecutedCases {
         try {
             System.out.println("Inside try");
             return "from try";
-        } catch (Exception e) {
-            System.out.println("Inside catch");
-            return "from catch";
         } finally {
             System.out.println("Inside finally");
         }
