@@ -455,7 +455,6 @@
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
-                <module>maven-plugin/counter-maven-plugin</module>
                 <module>custom-pmd</module>
 
                 <module>dagger</module>
@@ -572,6 +571,7 @@
                 <module>mapstruct</module>
                 <!-- <module>maven-all/compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
                 <module>maven-all/maven</module>
+                <module>maven-all/maven-custom-plugin</module>
                 <module>maven-all/maven-war-plugin</module>
                 <module>maven-all/profiles</module>
                 <module>maven-all/versions-maven-plugin</module>
@@ -1198,6 +1198,7 @@
                 <module>mapstruct</module>
                 <!-- <module>maven-all/compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
                 <module>maven-all/maven</module>
+                <module>maven-all/maven-custom-plugin</module>
                 <module>maven-all/maven-war-plugin</module>
                 <module>maven-all/profiles</module>
                 <module>maven-all/versions-maven-plugin</module>
