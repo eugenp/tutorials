@@ -24,8 +24,8 @@ public class FinallyNotExecutedCases {
     public void infiniteLoop() {
         try {
             System.out.println("Inside try");
-            while (true)
-                ;
+            while (true) {
+            }
         } finally {
             System.out.println("Inside finally");
         }
