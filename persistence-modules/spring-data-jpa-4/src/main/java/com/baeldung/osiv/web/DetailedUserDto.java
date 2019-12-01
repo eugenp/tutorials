@@ -1,6 +1,6 @@
-package com.baeldung.web;
+package com.baeldung.osiv.web;
 
-import com.baeldung.model.BasicUser;
+import com.baeldung.osiv.model.BasicUser;
 
 import java.util.Set;
 

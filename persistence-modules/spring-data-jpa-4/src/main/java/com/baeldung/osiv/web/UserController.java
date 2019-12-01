@@ -1,6 +1,6 @@
-package com.baeldung.web;
+package com.baeldung.osiv.web;
 
-import com.baeldung.service.UserService;
+import com.baeldung.osiv.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
