@@ -50,7 +50,8 @@ public class SpringfoxApplication {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfo("Springfox API specification", 
+        return new ApiInfo(
+          "Springfox API specification", 
           "User REST and Spring Data APIs", 
           "", 
           "", 
