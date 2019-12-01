@@ -50,8 +50,14 @@ public class SpringfoxApplication {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfo("Springfox API specification", "User REST and Spring Data APIs", 
-          "", "", null, "License of API", "API license URL", Collections.emptyList());
+        return new ApiInfo("Springfox API specification", 
+          "User REST and Spring Data APIs", 
+          "", 
+          "", 
+          null, 
+          "License of API", 
+          "API license URL", 
+          Collections.emptyList());
     }
 
     @Bean
