@@ -30,10 +30,22 @@ public class FinallyExecutedCases {
         }
     }
 
-    public String returnFromTryOrCatch() {
+    public String returnFromTry() {
         try {
             System.out.println("Inside try");
             return "from try";
+        } catch (Exception e) {
+            System.out.println("Inside catch");
+            return "from catch";
+        } finally {
+            System.out.println("Inside finally");
+        }
+    }
+
+    public String returnFromCatch() {
+        try {
+            System.out.println("Inside try");
+            throw new Exception();
         } catch (Exception e) {
             System.out.println("Inside catch");
             return "from catch";
