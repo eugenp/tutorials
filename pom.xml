@@ -635,6 +635,7 @@
                 <module>java-blockchain</module>
                 <module>machine-learning</module>
                 <module>wildfly</module>
+                <module>quarkus-extension</module>
             </modules>
 
         </profile>
