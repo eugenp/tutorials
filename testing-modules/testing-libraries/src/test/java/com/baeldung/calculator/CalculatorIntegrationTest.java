@@ -9,7 +9,6 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
   features = {"classpath:features/calculator.feature", "classpath:features/calculator-scenario-outline.feature"}
   , plugin = {"pretty", "json:target/reports/json/calculator.json"}
-  , glue = {"com.baeldung.cucumber.calculator"}
 )
 public class CalculatorIntegrationTest {
 }

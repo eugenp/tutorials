@@ -1,6 +1,8 @@
 ### Relevant Articles: 
 - [Derived Query Methods in Spring Data JPA Repositories](https://www.baeldung.com/spring-data-derived-queries)
 - [LIKE Queries in Spring JPA Repositories](https://www.baeldung.com/spring-jpa-like-queries)
+- [A Guide to Spring’s Open Session In View](https://www.baeldung.com/spring-open-session-in-view)
+- [Programmatic Transaction Management in Spring](https://www.baeldung.com/spring-programmatic-transaction-management)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
