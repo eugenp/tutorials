@@ -16,17 +16,16 @@ public class PowerSet<T> {
     public Set<Set<T>> recursivePowerSet(Set<T> set) {
         if (set.isEmpty()) {
             Set<Set<T>> ret = new HashSet<>();
-            ret.add(new HashSet<>());
+            ret.add(set);
             return ret;
         }
-        //Extract one element and get set without that element
+
         T element = set.iterator().next();
-        Set<T> setWithoutElement = getSetWithoutElement(set, element);
-        //recursively calculate the powerSet of setWithoutElement
-        Set<Set<T>> powerSetSubSetWithoutElement = recursivePowerSet(setWithoutElement);
-        //add the extracted element to all sets in powerSetSubSetWithoutElement
+        Set<T> subSetWithoutElement = getSubSetWithoutElement(set, element);
+        Set<Set<T>> powerSetSubSetWithoutElement = recursivePowerSet(subSetWithoutElement);
+
         Set<Set<T>> powerSetSubSetWithElement = addElementToAll(powerSetSubSetWithoutElement, element);
-        //union of powerSetSubSetWithElement and powerSetSubSetWithoutElement will be the result
+
         Set<Set<T>> powerSet = new HashSet<>();
         powerSet.addAll(powerSetSubSetWithoutElement);
         powerSet.addAll(powerSetSubSetWithElement);
@@ -35,8 +34,8 @@ public class PowerSet<T> {
 
     public Set<Set<T>> recursivePowerSetIndexRepresentation(Collection<T> set) {
         initializeMap(set);
-        Set<Set<Integer>> powerSetBoolean = recursivePowerSetIndexRepresentation(0, set.size());
-        return unMapIndex(powerSetBoolean);
+        Set<Set<Integer>> powerSetIndices = recursivePowerSetIndexRepresentation(0, set.size());
+        return unMapIndex(powerSetIndices);
     }
 
     private List<List<Boolean>> iterativePowerSetByLoopOverNumbersWithLexicographicalOrder(int n) {
@@ -63,22 +62,22 @@ public class PowerSet<T> {
         return powerSet;
     }
 
-    public Set<Set<T>> recursivePowerSetBooleanRepresentation(Collection<T> set) {
+    public Set<Set<T>> recursivePowerSetBinaryRepresentation(Collection<T> set) {
         initializeMap(set);
-        Set<List<Boolean>> powerSetBoolean = recursivePowerSetBooleanRepresentation(0, set.size());
-        return unMapBoolean(powerSetBoolean);
+        Set<List<Boolean>> powerSetBoolean = recursivePowerSetBinaryRepresentation(0, set.size());
+        return unMapBinary(powerSetBoolean);
     }
 
     public List<List<T>> iterativePowerSetByLoopOverNumbers(Set<T> set) {
         initializeMap(set);
                 List<List<Boolean>> sets = iterativePowerSetByLoopOverNumbersWithLexicographicalOrder(set.size());
-        return unMapListBoolean(sets);
+        return unMapListBinary(sets);
     }
 
     public List<List<T>> iterativePowerSetByLoopOverNumbersMinimalChange(Set<T> set) {
         initializeMap(set);
         List<List<Boolean>> sets = iterativePowerSetByLoopOverNumbersWithGrayCodeOrder(set.size());
-        return unMapListBoolean(sets);
+        return unMapListBinary(sets);
     }
 
     private Set<Set<Integer>> recursivePowerSetIndexRepresentation(int idx, int n) {
@@ -97,13 +96,13 @@ public class PowerSet<T> {
         return powerSet;
     }
 
-    private Set<List<Boolean>> recursivePowerSetBooleanRepresentation(int idx, int n) {
+    private Set<List<Boolean>> recursivePowerSetBinaryRepresentation(int idx, int n) {
         if (idx == n) {
             Set<List<Boolean>> powerSetOfEmptySet = new HashSet<>();
             powerSetOfEmptySet.add(Arrays.asList(new Boolean[n]));
             return powerSetOfEmptySet;
         }
-        Set<List<Boolean>> powerSetSubset = recursivePowerSetBooleanRepresentation(idx + 1, n);
+        Set<List<Boolean>> powerSetSubset = recursivePowerSetBinaryRepresentation(idx + 1, n);
         Set<List<Boolean>> powerSet = new HashSet<>();
         for (List<Boolean> s : powerSetSubset) {
             List<Boolean> subSetIdxExclusive = new ArrayList<>(s);
@@ -134,7 +133,7 @@ public class PowerSet<T> {
         return ret;
     }
 
-    private Set<Set<T>> unMapBoolean(Collection<List<Boolean>> sets) {
+    private Set<Set<T>> unMapBinary(Collection<List<Boolean>> sets) {
         Set<Set<T>> ret = new HashSet<>();
         for (List<Boolean> s : sets) {
             HashSet<T> subset = new HashSet<>();
@@ -146,7 +145,7 @@ public class PowerSet<T> {
         return ret;
     }
 
-    private List<List<T>> unMapListBoolean(Collection<List<Boolean>> sets) {
+    private List<List<T>> unMapListBinary(Collection<List<Boolean>> sets) {
         List<List<T>> ret = new ArrayList<>();
         for (List<Boolean> s : sets) {
             List<T> subset = new ArrayList<>();
@@ -158,22 +157,22 @@ public class PowerSet<T> {
         return ret;
     }
 
-    private Set<Set<T>> addElementToAll(Set<Set<T>> ps, T element) {
-        Set<Set<T>> ret = new HashSet<>();
-        for (Set<T> s : ps) {
-            Set<T> subsetWithElement = new HashSet<>(s);
+    private Set<Set<T>> addElementToAll(Set<Set<T>> powerSetSubSetWithoutElement, T element) {
+        Set<Set<T>> powerSetSubSetWithElement = new HashSet<>();
+        for (Set<T> subsetWithoutElement : powerSetSubSetWithoutElement) {
+            Set<T> subsetWithElement = new HashSet<>(subsetWithoutElement);
             subsetWithElement.add(element);
-            ret.add(subsetWithElement);
+            powerSetSubSetWithElement.add(subsetWithElement);
         }
-        return ret;
+        return powerSetSubSetWithElement;
     }
 
-    private Set<T> getSetWithoutElement(Set<T> set, T element) {
-        Set<T> ret = new HashSet<>();
+    private Set<T> getSubSetWithoutElement(Set<T> set, T element) {
+        Set<T> subsetWithoutElement = new HashSet<>();
         for (T s : set) {
             if (!s.equals(element))
-                ret.add(s);
+                subsetWithoutElement.add(s);
         }
-        return ret;
+        return subsetWithoutElement;
     }
 }

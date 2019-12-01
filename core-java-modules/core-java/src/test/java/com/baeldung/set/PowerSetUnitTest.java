@@ -55,10 +55,10 @@ public class PowerSetUnitTest {
     }
 
     @Test
-    public void givenSet_WhenPowerSetIsCalculatedRecursiveByBooleanRepresentation_ThenItContainsAllSubsets() {
+    public void givenSet_WhenPowerSetIsCalculatedRecursiveByBinaryRepresentation_ThenItContainsAllSubsets() {
         Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
 
-        Set<Set<String>> powerSet = new PowerSet<String>().recursivePowerSetBooleanRepresentation(set);
+        Set<Set<String>> powerSet = new PowerSet<String>().recursivePowerSetBinaryRepresentation(set);
 
         //To make sure that the size of power set is (2 power n)
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
