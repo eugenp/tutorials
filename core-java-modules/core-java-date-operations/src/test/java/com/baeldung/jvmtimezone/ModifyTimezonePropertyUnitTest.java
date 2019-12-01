@@ -1,4 +1,4 @@
-package com.baeldung.timezone;
+package com.baeldung.jvmtimezone;
 
 import org.junit.After;
 import org.junit.Before;
@@ -14,7 +14,7 @@ public class ModifyTimezonePropertyUnitTest {
 
     @Before
     public void setup() {
-        System.setProperty("user.timezone", "IST");
+        System.setProperty("user.timezone", "Asia/Kolkata");
         TimeZone.setDefault(null);
     }
 
@@ -25,10 +25,8 @@ public class ModifyTimezonePropertyUnitTest {
 
     @Test
     public void givenTimezonePropertySet_thenDateTimezoneIsCorrect() {
-        Date date = new Date();
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        assertEquals(calendar.getTimeZone(), TimeZone.getTimeZone("IST"));
+        assertEquals(calendar.getTimeZone(), TimeZone.getTimeZone("Asia/Kolkata"));
     }
 
 }
