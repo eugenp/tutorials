@@ -38,7 +38,7 @@ public class PowerSet<T> {
         return unMapIndex(powerSetIndices);
     }
 
-    private List<List<Boolean>> iterativePowerSetByLoopOverNumbersWithLexicographicalOrder(int n) {
+    private List<List<Boolean>> iterativePowerSetByLoopOverNumbersWithReverseLexicographicalOrder(int n) {
         List<List<Boolean>> powerSet = new ArrayList<>();
         for (int i = 0; i < (1 << n); i++) {
             List<Boolean> subset = new ArrayList<>(n);
@@ -70,7 +70,7 @@ public class PowerSet<T> {
 
     public List<List<T>> iterativePowerSetByLoopOverNumbers(Set<T> set) {
         initializeMap(set);
-                List<List<Boolean>> sets = iterativePowerSetByLoopOverNumbersWithLexicographicalOrder(set.size());
+                List<List<Boolean>> sets = iterativePowerSetByLoopOverNumbersWithReverseLexicographicalOrder(set.size());
         return unMapListBinary(sets);
     }
 
