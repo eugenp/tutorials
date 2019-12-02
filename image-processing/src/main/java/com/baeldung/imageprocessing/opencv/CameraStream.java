@@ -84,4 +84,5 @@ public class CameraStream extends Application {
         }
         return inputImage;
     }
+    
 }
