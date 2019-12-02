@@ -1,25 +1,26 @@
-package com.baeldung.algorithms.datastreammedian;
+package com.baeldung.algorithms.integerstreammedian;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
 
 import static java.util.Comparator.reverseOrder;
 
-public class DataStreamMedian {
+public class MedianOfIntegerStream2 {
 
     private Queue<Integer> minHeap, maxHeap;
 
-    DataStreamMedian() {
+    MedianOfIntegerStream2() {
         minHeap = new PriorityQueue<>();
         maxHeap = new PriorityQueue<>(reverseOrder());
     }
 
     void add(int num) {
-        minHeap.offer(num);
-        maxHeap.offer(minHeap.poll());
-
-        if (minHeap.size() < maxHeap.size()) {
+        if (minHeap.size() == maxHeap.size()) {
+            maxHeap.offer(num);
             minHeap.offer(maxHeap.poll());
+        } else {
+            minHeap.offer(num);
+            maxHeap.offer(minHeap.poll());
         }
     }
 
