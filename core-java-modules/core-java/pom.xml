@@ -15,16 +15,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.unix4j</groupId>
             <artifactId>unix4j-command</artifactId>
             <version>${unix4j.version}</version>
@@ -40,11 +30,6 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
         </dependency>
         <!-- logging -->
         <dependency>
@@ -74,59 +59,6 @@
             <groupId>org.javamoney</groupId>
             <artifactId>moneta</artifactId>
             <version>${javamoney.moneta.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.owasp.esapi</groupId>
-            <artifactId>esapi</artifactId>
-            <version>${esapi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.messaging.mq</groupId>
-            <artifactId>fscontext</artifactId>
-            <version>${fscontext.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.codepoetics</groupId>
-            <artifactId>protonpack</artifactId>
-            <version>${protonpack.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>one.util</groupId>
-            <artifactId>streamex</artifactId>
-            <version>${streamex.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.vavr</groupId>
-            <artifactId>vavr</artifactId>
-            <version>${vavr.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh-generator-annprocess.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-        </dependency>
-        <!-- instrumentation -->
-        <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>${javaassist.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun</groupId>
-            <artifactId>tools</artifactId>
-            <version>${sun.tools.version}</version>
-            <scope>system</scope>
-            <systemPath>${java.home}/../lib/tools.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -448,41 +380,21 @@
     </profiles>
 
     <properties>
-        
-        <!-- marshalling -->
-        <gson.version>2.8.2</gson.version>
-
         <!-- util -->
-        <commons-math3.version>3.6.1</commons-math3.version>
-        <decimal4j.version>1.0.3</decimal4j.version>
         <unix4j.version>0.4</unix4j.version>
         <grep4j.version>1.8.7</grep4j.version>
-        <fscontext.version>4.6-b01</fscontext.version>
-        <protonpack.version>1.13</protonpack.version>
-        <streamex.version>0.6.5</streamex.version>
-        <vavr.version>0.9.0</vavr.version>
-
+      
         <!-- testing -->
         <assertj-core.version>3.10.0</assertj-core.version>
 
         <!-- maven plugins -->
-        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-        
         <javamoney.moneta.version>1.1</javamoney.moneta.version>
-        <esapi.version>2.1.0.1</esapi.version>
-        <jmh-core.version>1.19</jmh-core.version>
-       
-        <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
+
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
         <onejar-maven-plugin.version>1.4.4</onejar-maven-plugin.version>
         <maven-shade-plugin.version>3.1.1</maven-shade-plugin.version>
         <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
-        <icu4j.version>61.1</icu4j.version>
-        <!-- instrumentation -->
-        <javaassist.version>3.21.0-GA</javaassist.version>
-        
-        <sun.tools.version>1.8.0</sun.tools.version>
     </properties>
 </project>

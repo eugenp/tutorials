@@ -1,9 +1,9 @@
-=========
+## GSON
 
-## GSON Cookbooks and Examples
-
+This module contains articles about Gson
 
 ### Relevant Articles: 
+
 - [Gson Deserialization Cookbook](https://www.baeldung.com/gson-deserialization-guide)
 - [Jackson vs Gson](https://www.baeldung.com/jackson-vs-gson)
 - [Exclude Fields from Serialization in Gson](https://www.baeldung.com/gson-exclude-fields-serialization)

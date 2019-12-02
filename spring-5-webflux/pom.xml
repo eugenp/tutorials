@@ -99,6 +99,6 @@
     </pluginRepositories>
 
     <properties>
-        <spring-boot.version>2.2.0.M3</spring-boot.version>
+        <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
     </properties>
 </project>

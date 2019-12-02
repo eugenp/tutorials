@@ -22,49 +22,10 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.sun.faces</groupId>
-            <artifactId>jsf-api</artifactId>
-            <version>${com.sun.faces.jsf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.faces</groupId>
-            <artifactId>jsf-impl</artifactId>
-            <version>${com.sun.faces.jsf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>${jsp-api.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>taglibs</groupId>
-            <artifactId>standard</artifactId>
-            <version>${taglibs.standard.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>javax.mvc</groupId>
             <artifactId>javax.mvc-api</artifactId>
             <version>${javax.mvc-api.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>${org.springframework.security.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
@@ -93,9 +54,6 @@
 
     <properties>
         <javaee_api.version>7.0</javaee_api.version>
-        <com.sun.faces.jsf.version>2.2.14</com.sun.faces.jsf.version>
-        <jsp-api.version>2.2</jsp-api.version>
-        <taglibs.standard.version>1.1.2</taglibs.standard.version>
         <org.springframework.security.version>4.2.3.RELEASE</org.springframework.security.version>
 		<javax.mvc-api.version>1.0-pr</javax.mvc-api.version>
     </properties>
