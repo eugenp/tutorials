@@ -14,7 +14,8 @@ import org.springframework.util.Base64Utils;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = AuthResolverApplication.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AuthResolverIntegrationTest {
-    @Autowired private WebTestClient testClient;
+    @Autowired
+    private WebTestClient testClient;
 
     @Test
     public void givenCustomerCredential_whenWelcomeCustomer_thenExpectOk() {

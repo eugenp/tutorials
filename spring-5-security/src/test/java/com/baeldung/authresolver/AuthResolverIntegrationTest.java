@@ -23,9 +23,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AuthResolverIntegrationTest {
 
-    @Autowired private FilterChainProxy springSecurityFilterChain;
+    @Autowired
+    private FilterChainProxy springSecurityFilterChain;
 
-    @Autowired private WebApplicationContext wac;
+    @Autowired
+    private WebApplicationContext wac;
 
     private MockMvc mockMvc;
 

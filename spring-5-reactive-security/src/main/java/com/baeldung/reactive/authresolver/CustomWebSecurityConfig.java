@@ -19,7 +19,7 @@ import reactor.core.publisher.Mono;
 
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
-public class AuthResolverSecurityConfig {
+public class CustomWebSecurityConfig {
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
@@ -35,17 +35,17 @@ public class AuthResolverSecurityConfig {
     }
 
     public AuthenticationWebFilter authenticationWebFilter() {
-        AuthenticationWebFilter filter = new AuthenticationWebFilter(authenticationManagerResolver());
-        return filter;
+        return new AuthenticationWebFilter(resolver());
     }
 
-    public ReactiveAuthenticationManagerResolver<ServerHttpRequest> authenticationManagerResolver() {
+    public ReactiveAuthenticationManagerResolver<ServerHttpRequest> resolver() {
         return request -> {
             if (request
               .getPath()
               .subPath(0)
               .value()
-              .startsWith("/employee")) return Mono.just(employeesAuthenticationManager());
+              .startsWith("/employee"))
+                return Mono.just(employeesAuthenticationManager());
             return Mono.just(customersAuthenticationManager());
         };
     }
@@ -55,7 +55,11 @@ public class AuthResolverSecurityConfig {
           .switchIfEmpty(Mono.error(new UsernameNotFoundException(authentication
             .getPrincipal()
             .toString())))
-          .map(b -> new UsernamePasswordAuthenticationToken(authentication.getPrincipal(), authentication.getCredentials(), Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))));
+          .map(b -> new UsernamePasswordAuthenticationToken(authentication.getPrincipal(),
+              authentication.getCredentials(),
+              Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
+            )
+          );
     }
 
     public ReactiveAuthenticationManager employeesAuthenticationManager() {
@@ -63,7 +67,12 @@ public class AuthResolverSecurityConfig {
           .switchIfEmpty(Mono.error(new UsernameNotFoundException(authentication
             .getPrincipal()
             .toString())))
-          .map(b -> new UsernamePasswordAuthenticationToken(authentication.getPrincipal(), authentication.getCredentials(), Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))));
+          .map(
+            b -> new UsernamePasswordAuthenticationToken(authentication.getPrincipal(),
+              authentication.getCredentials(),
+              Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
+            )
+          );
     }
 
     public Mono<String> customer(Authentication authentication) {
