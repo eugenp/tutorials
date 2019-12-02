@@ -45,6 +45,12 @@
             <artifactId>imageio-bmp</artifactId>
             <version>${imageio.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openpnp</groupId>
+            <artifactId>opencv</artifactId>
+            <version>3.4.2-0</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
