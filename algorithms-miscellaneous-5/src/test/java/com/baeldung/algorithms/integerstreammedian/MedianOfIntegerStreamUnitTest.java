@@ -7,7 +7,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
-public class MedianOfIntegerStreamTest {
+public class MedianOfIntegerStreamUnitTest {
 
     @Test
     public void givenStreamOfIntegers_whenAnElementIsRead_thenMedianChangesWithApproach1() {
