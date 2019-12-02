@@ -32,10 +32,6 @@
     </dependencies>
 
     <properties>
-        <!-- various -->
-        <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
-        <!-- delombok maven plugin -->
-        <delombok-maven-plugin.version>1.16.10.0</delombok-maven-plugin.version>
         <lucene.version>7.4.0</lucene.version>
     </properties>
 

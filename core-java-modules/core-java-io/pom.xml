@@ -140,12 +140,10 @@
     </profiles>
 
     <properties>
-
         <!-- util -->
         <opencsv.version>4.1</opencsv.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
-
         <!-- maven plugins -->
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <hsqldb.version>2.4.0</hsqldb.version>

@@ -14,28 +14,6 @@
 
     <dependencies>
 
-        <!-- marshalling -->
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-
-        <!-- YAML -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-yaml</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        
-        <!-- CSV -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-csv</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>        
-
         <!-- Allow use of LocalDate -->
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
