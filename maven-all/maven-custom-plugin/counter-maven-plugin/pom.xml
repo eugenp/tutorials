@@ -60,7 +60,6 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-
 	</build>
 
 	<reporting>
