@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>jackson-simple</artifactId>
-    <version>0.1-SNAPSHOT</version>
-    <name>jackson-simple</name>
+    <artifactId>jackson-custom-conversions</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>jackson-custom-conversions</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -13,24 +13,25 @@
     </parent>
 
     <dependencies>
-        <!--jackson for xml -->
         <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-
-        <!-- test scoped -->
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>jackson-simple</finalName>
+        <finalName>jackson-custom-conversions</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -38,10 +39,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <!-- testing -->
-        <assertj.version>3.11.0</assertj.version>
-    </properties>
 
 </project>
