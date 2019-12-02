@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>httpclient</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>httpclient</name>
@@ -49,11 +48,6 @@
             <version>${httpclient.version}</version>
         </dependency>
         <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>${commons-codec.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpasyncclient</artifactId>
             <version>${httpasyncclient.version}</version> <!-- 4.0.2 --> <!-- 4.1-beta1 -->
@@ -82,51 +76,12 @@
         </resources>
     </build>
 
-    <profiles>
-        <profile>
-            <id>live</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>integration-test</phase>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                                <configuration>
-                                    <excludes>
-                                        <exclude>**/*ManualTest.java</exclude>
-                                    </excludes>
-                                    <includes>
-                                        <include>**/*LiveTest.java</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <test.mime>json</test.mime>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
     <properties>
         <!-- util -->
-        <guava.version>19.0</guava.version>
-        <commons-codec.version>1.10</commons-codec.version>
         <httpasyncclient.version>4.1.4</httpasyncclient.version>
         <!-- testing -->
         <wiremock.version>2.5.1</wiremock.version>
         <httpclient.version>4.5.8</httpclient.version> <!-- 4.3.6 --> <!-- 4.4-beta1 -->
-        <!-- maven plugins -->
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
 
 </project>

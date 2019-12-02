@@ -16,7 +16,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>io.searchbox</groupId>
             <artifactId>jest</artifactId>

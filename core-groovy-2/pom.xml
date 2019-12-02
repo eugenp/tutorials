@@ -181,10 +181,8 @@
         <hsqldb.version>2.4.0</hsqldb.version>
         <spock-core.version>1.1-groovy-2.4</spock-core.version>
         <groovy-wslite.version>1.1.3</groovy-wslite.version>        
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <logback.version>1.2.3</logback.version>
         <groovy.version>2.5.7</groovy.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 </project>
 

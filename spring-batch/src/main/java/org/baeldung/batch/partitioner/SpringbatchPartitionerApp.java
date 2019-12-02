@@ -1,5 +1,7 @@
 package org.baeldung.batch.partitioner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
@@ -7,6 +9,9 @@ import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class SpringbatchPartitionerApp {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(SpringbatchPartitionerApp.class);
+
     public static void main(final String[] args) {
         // Spring Java config
         final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
@@ -15,14 +20,13 @@ public class SpringbatchPartitionerApp {
 
         final JobLauncher jobLauncher = (JobLauncher) context.getBean("jobLauncher");
         final Job job = (Job) context.getBean("partitionerJob");
-        System.out.println("Starting the batch job");
+        LOGGER.info("Starting the batch job");
         try {
             final JobExecution execution = jobLauncher.run(job, new JobParameters());
-            System.out.println("Job Status : " + execution.getStatus());
-            System.out.println("Job succeeded");
+            LOGGER.info("Job Status : {}", execution.getStatus());
         } catch (final Exception e) {
             e.printStackTrace();
-            System.out.println("Job failed");
+            LOGGER.error("Job failed {}", e.getMessage());
         }
     }
 }

@@ -125,19 +125,6 @@
 			<version>${java-hamcrest.version}</version>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>net.serenity-bdd</groupId>
-			<artifactId>serenity-core</artifactId>
-			<version>${serenity.version}</version>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.asciidoctor</groupId>
-					<artifactId>asciidoctorj</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
 		<dependency>
 			<groupId>org.asciidoctor</groupId>
 			<artifactId>asciidoctor-maven-plugin</artifactId>

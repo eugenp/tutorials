@@ -10,10 +10,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.MethodMode;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @TestMethodOrder(OrderAnnotation.class)
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = SpringDataRestApplication.class)
+@EnableWebMvc
 class DirtiesContextIntegrationTest {
 
     @Autowired

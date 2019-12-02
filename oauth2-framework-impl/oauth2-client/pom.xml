@@ -13,11 +13,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <httpPort>9180</httpPort>
-        <httpsPort>9543</httpsPort>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -26,4 +21,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <httpPort>9180</httpPort>
+        <httpsPort>9543</httpsPort>
+    </properties>
 </project>
