@@ -35,6 +35,7 @@ file_read(){
         do
             echo " Word [$input]"
         done
+    # close file descriptor after reading
     exec {file_descriptor}>&-
 }
 
@@ -67,13 +68,46 @@ advanced_pipeing(){
 
 }
 
+custom_ifs_read(){
+    declare -a input_array
+    while IFS=";" read -a input_array -r
+        do
+            for element in ${input_array[@]}
+                do
+                    echo -n "$element.backup "
+                done
+            echo ""
+        done < "file.csv"
+}
+
+infinite_read(){
+    while read -d "?" -ep "Input:" input
+        do
+            echo "$input"
+        done
+}
+
+custom_ifs(){
+    declare -a input_array
+    IFS=$1 # whitespace 
+    read -a input_array -p "Enter something with delimiter <$1>:"
+    for input in ${input_array[@]}
+        do
+            echo "[$input]"
+        done
+}
+
 #default_read
 #array_read
 #special_delim
 #file_read
 #prompt_read
 #default_input_read
-advanced_pipeing
+#advanced_pipeing
+#custom_ifs_read
+#infinite_read
+custom_ifs " "
+custom_ifs ";"
 
 
 
