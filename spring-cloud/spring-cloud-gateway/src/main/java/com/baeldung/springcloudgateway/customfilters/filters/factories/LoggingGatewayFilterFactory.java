@@ -40,7 +40,7 @@ public class LoggingGatewayFilterFactory extends AbstractGatewayFilterFactory<Lo
                     if (config.isPostLogger())
                         logger.info("Post GatewayFilter logging: " + config.getBaseMessage());
                 }));
-        }, -2);
+        }, 1);
     }
 
     public static class Config {

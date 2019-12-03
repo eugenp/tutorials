@@ -18,7 +18,6 @@ import com.baeldung.jackson.ignore.dtos.MyMixInForIgnoreType;
 import com.baeldung.jackson.ignore.dtos.MyDtoIgnoreField;
 import com.baeldung.jackson.ignore.dtos.MyDtoIgnoreFieldByName;
 import com.baeldung.jackson.ignore.dtos.MyDtoIgnoreNull;
-import com.baeldung.jackson.ignore.dtos.MyDtoNullKeySerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -189,90 +188,6 @@ public class JacksonSerializationIgnoreUnitTest {
         assertThat(dtoAsString, containsString("booleanValue"));
         assertThat(dtoAsString, not(containsString("stringValue")));
         System.out.println(dtoAsString);
-    }
-
-    // map
-
-    @Test
-    public final void givenIgnoringMapNullValue_whenWritingMapObjectWithNullValue_thenIgnored() throws JsonProcessingException {
-        final ObjectMapper mapper = new ObjectMapper();
-        // mapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
-        mapper.setSerializationInclusion(Include.NON_NULL);
-
-        final MyDto dtoObject1 = new MyDto();
-
-        final Map<String, MyDto> dtoMap = new HashMap<String, MyDto>();
-        dtoMap.put("dtoObject1", dtoObject1);
-        dtoMap.put("dtoObject2", null);
-
-        final String dtoMapAsString = mapper.writeValueAsString(dtoMap);
-
-        assertThat(dtoMapAsString, containsString("dtoObject1"));
-        assertThat(dtoMapAsString, not(containsString("dtoObject2")));
-        System.out.println(dtoMapAsString);
-    }
-
-    @Test
-    public final void givenIgnoringMapValueObjectWithNullField_whenWritingMapValueObjectWithNullField_thenIgnored() throws JsonProcessingException {
-        final ObjectMapper mapper = new ObjectMapper();
-        mapper.setSerializationInclusion(Include.NON_NULL);
-
-        final MyDto dtoObject = new MyDto();
-
-        final Map<String, MyDto> dtoMap = new HashMap<String, MyDto>();
-        dtoMap.put("dtoObject", dtoObject);
-
-        final String dtoMapAsString = mapper.writeValueAsString(dtoMap);
-
-        assertThat(dtoMapAsString, containsString("dtoObject"));
-        assertThat(dtoMapAsString, not(containsString("stringValue")));
-        System.out.println(dtoMapAsString);
-    }
-
-    @Test
-    public final void givenAllowingMapObjectWithNullKey_whenWriting_thenCorrect() throws JsonProcessingException {
-        final ObjectMapper mapper = new ObjectMapper();
-        mapper.getSerializerProvider()
-            .setNullKeySerializer(new MyDtoNullKeySerializer());
-
-        final MyDto dtoObject1 = new MyDto();
-        dtoObject1.setStringValue("dtoObjectString1");
-        final MyDto dtoObject2 = new MyDto();
-        dtoObject2.setStringValue("dtoObjectString2");
-
-        final Map<String, MyDto> dtoMap = new HashMap<String, MyDto>();
-        dtoMap.put(null, dtoObject1);
-        dtoMap.put("obj2", dtoObject2);
-
-        final String dtoMapAsString = mapper.writeValueAsString(dtoMap);
-
-        System.out.println(dtoMapAsString);
-        assertThat(dtoMapAsString, containsString("\"\""));
-        assertThat(dtoMapAsString, containsString("dtoObjectString1"));
-        assertThat(dtoMapAsString, containsString("obj2"));
-    }
-
-    @Test
-    public final void givenAllowingMapObjectOneNullKey_whenWritingMapObjectWithTwoNullKeys_thenOverride() throws JsonProcessingException {
-        final ObjectMapper mapper = new ObjectMapper();
-        mapper.getSerializerProvider()
-            .setNullKeySerializer(new MyDtoNullKeySerializer());
-
-        final MyDto dtoObject1 = new MyDto();
-        dtoObject1.setStringValue("dtoObject1String");
-
-        final MyDto dtoObject2 = new MyDto();
-        dtoObject2.setStringValue("dtoObject2String");
-
-        final Map<String, MyDto> dtoMap = new HashMap<String, MyDto>();
-        dtoMap.put(null, dtoObject1);
-        dtoMap.put(null, dtoObject2);
-
-        final String dtoMapAsString = mapper.writeValueAsString(dtoMap);
-
-        assertThat(dtoMapAsString, not(containsString("dtoObject1String")));
-        assertThat(dtoMapAsString, containsString("dtoObject2String"));
-        System.out.println(dtoMapAsString);
     }
 
 }
