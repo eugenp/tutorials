@@ -17,6 +17,8 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.reactivestreams.Publisher;
 import org.springframework.core.io.buffer.DataBuffer;
@@ -115,14 +117,14 @@ public class UploadResource {
      * @return
      */
     @RequestMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, method = {RequestMethod.POST, RequestMethod.PUT})
-    public Mono<UploadResult> uploadHandler(@RequestBody Flux<Part> parts, @RequestHeader HttpHeaders headers) {
+    public Mono<UploadResult> multipartUploadHandler(@RequestHeader HttpHeaders headers, @RequestBody Flux<Part> parts  ) {
                 
         return parts.filter(part -> part instanceof FilePart) // only retain file parts
             .ofType(FilePart.class) // convert the flux to FilePart
             .flatMap((part) -> saveFile(headers, s3config.getBucket(), part))
-            .last();
-            
-            
+            .map((r)-> r.key[0])
+            .collect(Collectors.toList())
+            .map((kk) -> new UploadResult(HttpStatus.CREATED,kk.toArray(new String[] {})));
     }
 
 
@@ -209,7 +211,7 @@ public class UploadResource {
           .flatMap((state) -> completeUpload(state))
           .map((response) -> {
               checkResult(response);
-              return  new UploadResult(HttpStatus.OK, uploadState.filekey);
+              return  new UploadResult(HttpStatus.OK, new String[] {uploadState.filekey});
           });
           
 
@@ -294,7 +296,7 @@ public class UploadResource {
 
         log.info("[I73] upload completed: response={}", response);
         return new UploadResult(HttpStatus.valueOf(response.sdkHttpResponse()
-            .statusCode()), fileKey);
+            .statusCode()), new String[] {fileKey});
 
     }
 

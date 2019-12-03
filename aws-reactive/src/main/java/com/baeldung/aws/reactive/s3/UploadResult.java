@@ -9,5 +9,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class UploadResult {
 	HttpStatus status = HttpStatus.CREATED;
-	String key;
+	String[] key;
 }

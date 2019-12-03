@@ -11,7 +11,7 @@ import software.amazon.awssdk.regions.Region;
 @Data
 public class S3ClientConfigurarionProperties {
 
-    private Region region = null;
+    private Region region = Region.US_EAST_1;
     private URI endpoint = null;
 
     private     String accessKeyId;
