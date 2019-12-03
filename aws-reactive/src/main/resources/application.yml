@@ -1,0 +1,15 @@
+
+#
+# Configurações de acesso ao Minio
+#
+aws:
+  s3:
+    region: sa-east-1
+#    endpoint: http://minio.127.0.0.1.nip.io:9000
+    accessKeyId: AKIAJBPFPVF2IDUP574Q
+    secretAccessKey: 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
+    bucket: dev1.token.com.br
+    
+    
+    
+    
