@@ -1,8 +1,9 @@
-package com.baeldung.matrices;
+package com.baeldung.matrices.benchmark;
 
 import cern.colt.matrix.DoubleFactory2D;
 import cern.colt.matrix.DoubleMatrix2D;
 import cern.colt.matrix.linalg.Algebra;
+import com.baeldung.matrices.HomemadeMatrix;
 import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.ejml.simple.SimpleMatrix;
@@ -23,9 +24,10 @@ public class MatrixMultiplicationBenchmarking {
     public static void main(String[] args) throws Exception {
         Options opt = new OptionsBuilder()
           .include(MatrixMultiplicationBenchmarking.class.getSimpleName())
+          .exclude(BigMatrixMultiplicationBenchmarking.class.getSimpleName())
           .mode(Mode.AverageTime)
           .forks(2)
-          .warmupIterations(5)
+          .warmupIterations(10)
           .measurementIterations(10)
           .timeUnit(TimeUnit.MICROSECONDS)
           .build();
