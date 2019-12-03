@@ -883,6 +883,8 @@
                 <module>spring-boot-nashorn</module>
                 <module>java-blockchain</module>
 
+                <module>spring-boot-hexagon</module>
+
             </modules>
 
         </profile>
@@ -1536,6 +1538,7 @@
 
                 <module>vaadin</module>
                 <module>vavr</module>
+				
             </modules>
 
         </profile>
