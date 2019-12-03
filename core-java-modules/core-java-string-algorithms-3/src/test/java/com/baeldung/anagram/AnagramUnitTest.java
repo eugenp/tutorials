@@ -12,9 +12,6 @@ public class AnagramUnitTest {
         String string1 = "abcab";
         String string2 = "cabba";
         assertTrue(anagram.isAnagramSort(string1, string2));
-        string1 = "A decimal point";
-        string2 = "I’m a dot in place.";
-        assertTrue(anagram.isAnagramSort(string1, string2));
     }
 
     @Test
@@ -22,9 +19,6 @@ public class AnagramUnitTest {
         Anagram anagram = new Anagram();
         String string1 = "abcab";
         String string2 = "cabba";
-        assertTrue(anagram.isAnagramCounting(string1, string2));
-        string1 = "A decimal point";
-        string2 = "I’m a dot in place.";
         assertTrue(anagram.isAnagramCounting(string1, string2));
     }
 
@@ -34,9 +28,14 @@ public class AnagramUnitTest {
         String string1 = "abcab";
         String string2 = "cabba";
         assertTrue(anagram.isAnagramMultiset(string1, string2));
-        string1 = "A decimal point";
-        string2 = "I’m a dot in place.";
-        assertTrue(anagram.isAnagramMultiset(string1, string2));
+    }
+
+    @Test
+    public void givenAnagram_whenUsingLetterBasedMultiset_thenIdentifyAnagram() {
+        Anagram anagram = new Anagram();
+        String string1 = "A decimal point";
+        String string2 = "I’m a dot in place.";
+        assertTrue(anagram.isLetterBasedAnagramMultiset(string1, string2));
     }
 
     @Test
@@ -60,6 +59,14 @@ public class AnagramUnitTest {
         Anagram anagram = new Anagram();
         String string1 = "abcaba";
         String string2 = "cabbac";
+        assertFalse(anagram.isAnagramMultiset(string1, string2));
+    }
+
+    @Test
+    public void ggivenNonAnagram_whenUsingLetterBasedMultiset_thenIdentifyAnagram() {
+        Anagram anagram = new Anagram();
+        String string1 = "A decimal point";
+        String string2 = "I’m dot in place.";
         assertFalse(anagram.isAnagramMultiset(string1, string2));
     }
 }
