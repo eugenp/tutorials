@@ -1,12 +1,12 @@
-package com.baeldung.service;
+package com.baeldung.osiv.service;
 
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baeldung.model.BasicUser;
-import com.baeldung.repository.BasicUserRepository;
+import com.baeldung.osiv.model.BasicUser;
+import com.baeldung.osiv.repository.BasicUserRepository;
 
 @Service
 public class SimpleUserService implements UserService {
