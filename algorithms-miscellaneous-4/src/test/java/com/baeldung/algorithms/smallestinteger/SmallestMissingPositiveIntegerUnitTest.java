@@ -87,7 +87,7 @@ class SmallestMissingPositiveIntegerUnitTest {
     }
 
     @Test
-    void givenArrayFromArticleComment_whenSearchInUnsortedArrayBooleanArray_thenZero() {
+    void givenArrayWithoutZero_whenSearchInUnsortedArrayBooleanArray_thenZero() {
         int[] input = new int[] {11, 13, 14, 15};
 
         int result = SmallestMissingPositiveInteger.searchInUnsortedArrayBooleanArray(input);
