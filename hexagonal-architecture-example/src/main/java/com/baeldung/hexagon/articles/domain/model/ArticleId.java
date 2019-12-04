@@ -1,4 +1,4 @@
-package com.baeldung.hexagon.articles.domain;
+package com.baeldung.hexagon.articles.domain.model;
 
 public class ArticleId {
     private final String value;

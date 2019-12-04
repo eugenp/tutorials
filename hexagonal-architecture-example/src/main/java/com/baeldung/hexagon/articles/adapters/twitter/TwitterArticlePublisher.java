@@ -1,6 +1,6 @@
 package com.baeldung.hexagon.articles.adapters.twitter;
 
-import com.baeldung.hexagon.articles.domain.Article;
+import com.baeldung.hexagon.articles.domain.model.Article;
 import com.baeldung.hexagon.articles.domain.ports.SocialMediaPublisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +17,6 @@ class TwitterArticlePublisher implements SocialMediaPublisher {
         /**
          * social media integration implementation  using {@link TwitterModel} comes here
          */
-        log.info("Article published on twitter {}", article.title().value());
+        log.info("Article: \"{}\" published on twitter", article.title().value());
     }
 }

@@ -1,10 +1,10 @@
 package com.baeldung.hexagon.articles.domain.ports;
 
-import com.baeldung.hexagon.articles.domain.Article;
-import com.baeldung.hexagon.articles.domain.ArticleId;
-import com.baeldung.hexagon.articles.domain.Author;
-import com.baeldung.hexagon.articles.domain.Content;
-import com.baeldung.hexagon.articles.domain.Title;
+import com.baeldung.hexagon.articles.domain.model.Article;
+import com.baeldung.hexagon.articles.domain.model.ArticleId;
+import com.baeldung.hexagon.articles.domain.model.Author;
+import com.baeldung.hexagon.articles.domain.model.Content;
+import com.baeldung.hexagon.articles.domain.model.Title;
 
 public interface ArticleRepository {
 

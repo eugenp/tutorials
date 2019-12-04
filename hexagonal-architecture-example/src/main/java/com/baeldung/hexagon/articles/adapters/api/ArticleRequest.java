@@ -1,8 +1,8 @@
 package com.baeldung.hexagon.articles.adapters.api;
 
-import com.baeldung.hexagon.articles.domain.AuthorId;
-import com.baeldung.hexagon.articles.domain.Content;
-import com.baeldung.hexagon.articles.domain.Title;
+import com.baeldung.hexagon.articles.domain.model.AuthorId;
+import com.baeldung.hexagon.articles.domain.model.Content;
+import com.baeldung.hexagon.articles.domain.model.Title;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 class ArticleRequest {

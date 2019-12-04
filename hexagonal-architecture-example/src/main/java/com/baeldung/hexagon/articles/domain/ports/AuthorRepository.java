@@ -1,8 +1,7 @@
 package com.baeldung.hexagon.articles.domain.ports;
 
-import com.baeldung.hexagon.articles.domain.Article;
-import com.baeldung.hexagon.articles.domain.Author;
-import com.baeldung.hexagon.articles.domain.AuthorId;
+import com.baeldung.hexagon.articles.domain.model.Author;
+import com.baeldung.hexagon.articles.domain.model.AuthorId;
 
 public interface AuthorRepository {
 

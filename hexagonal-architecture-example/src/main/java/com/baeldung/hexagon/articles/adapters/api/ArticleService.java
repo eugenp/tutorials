@@ -1,7 +1,7 @@
 package com.baeldung.hexagon.articles.adapters.api;
 
 import com.baeldung.hexagon.articles.domain.ArticleFacade;
-import com.baeldung.hexagon.articles.domain.ArticleId;
+import com.baeldung.hexagon.articles.domain.model.ArticleId;
 import org.springframework.stereotype.Component;
 
 @Component

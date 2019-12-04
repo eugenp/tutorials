@@ -1,11 +1,11 @@
 package com.baeldung.hexagon.articles.adapters.persistence;
 
-import com.baeldung.hexagon.articles.domain.Article;
-import com.baeldung.hexagon.articles.domain.ArticleId;
-import com.baeldung.hexagon.articles.domain.Author;
-import com.baeldung.hexagon.articles.domain.AuthorId;
-import com.baeldung.hexagon.articles.domain.Content;
-import com.baeldung.hexagon.articles.domain.Title;
+import com.baeldung.hexagon.articles.domain.model.Article;
+import com.baeldung.hexagon.articles.domain.model.ArticleId;
+import com.baeldung.hexagon.articles.domain.model.Author;
+import com.baeldung.hexagon.articles.domain.model.AuthorId;
+import com.baeldung.hexagon.articles.domain.model.Content;
+import com.baeldung.hexagon.articles.domain.model.Title;
 import com.baeldung.hexagon.articles.domain.ports.ArticleRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ class DbArticleRepository implements ArticleRepository {
          * Database integration implementation using {@link ArticleDatabaseModel} comes here
          */
         final String articleId = UUID.randomUUID().toString();
-        log.info("Article persisted with id {} title {} and content {}", articleId, title.value(), content.value());
+        log.info("Article: \"{}\" persisted", title.value());
         return Article.article()
                 .withId(ArticleId.of(articleId))
                 .withAuthor(author)
@@ -39,16 +39,17 @@ class DbArticleRepository implements ArticleRepository {
         /**
          * Database integration implementation using {@link ArticleDatabaseModel} comes here
          */
-        log.info("Article with id {} fetched", id.value());
+        final Title title = Title.of("Hexagonal Architecture");
+        log.info("Article \"{}\" fetched", title.value());
         return Article.article()
                 .withId(id)
                 .withAuthor(Author
                         .author()
                         .withId(AuthorId.of(UUID.randomUUID().toString()))
-                        .withName("William Shakespeare")
+                        .withName("Baeldung")
                         .build())
-                .withTitle(Title.of("Lorem ipsum"))
-                .withContent(Content.of("To be or not to be"))
+                .withTitle(title)
+                .withContent(Content.of("Lorem ipsum"))
                 .build();
     }
 }

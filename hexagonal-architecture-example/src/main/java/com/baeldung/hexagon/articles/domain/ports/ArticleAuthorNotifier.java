@@ -2,8 +2,8 @@ package com.baeldung.hexagon.articles.domain.ports;
 
 import com.baeldung.hexagon.articles.domain.model.Article;
 
-public interface SocialMediaPublisher {
+public interface ArticleAuthorNotifier {
 
-    void publish(Article article);
+    void notifyAboutArticleCreation(Article article);
 
 }

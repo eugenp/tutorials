@@ -1,6 +1,6 @@
 package com.baeldung.hexagon.articles.adapters.api;
 
-import com.baeldung.hexagon.articles.domain.ArticleId;
+import com.baeldung.hexagon.articles.domain.model.ArticleId;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 class ArticleIdResponse {

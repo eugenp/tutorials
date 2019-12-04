@@ -1,7 +1,7 @@
 package com.baeldung.hexagon.articles.adapters.authorservice;
 
-import com.baeldung.hexagon.articles.domain.Author;
-import com.baeldung.hexagon.articles.domain.AuthorId;
+import com.baeldung.hexagon.articles.domain.model.Author;
+import com.baeldung.hexagon.articles.domain.model.AuthorId;
 import com.baeldung.hexagon.articles.domain.ports.AuthorRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,11 +16,11 @@ class ExternalServiceClientAuthorRepository implements AuthorRepository {
         /**
          * external author service integration implementation comes here
          */
-        log.info("Author fetched for id {}", authorId.value());
+        log.info("Author: \"Baeldung\" fetched", authorId.value());
         return Author
                 .author()
                 .withId(authorId)
-                .withName("William Shakespeare")
+                .withName("Baeldung")
                 .build();
     }
 }
