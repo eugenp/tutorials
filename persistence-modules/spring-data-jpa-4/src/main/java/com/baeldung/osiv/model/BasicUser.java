@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.osiv.model;
 
 import javax.persistence.*;
 import java.util.Set;
