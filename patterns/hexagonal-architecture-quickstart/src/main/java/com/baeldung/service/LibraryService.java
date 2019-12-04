@@ -1,7 +1,6 @@
 package com.baeldung.service;
 
 import java.math.BigDecimal;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
@@ -9,35 +8,21 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.exception.BookNotFoundException;
-import com.baeldung.exception.BorrowerNotFoundException;
-import com.baeldung.exception.BorrowingRecordNotFoundException;
-import com.baeldung.exception.RecordNotFoundException;
 import com.baeldung.pojo.Book;
 import com.baeldung.pojo.Borrower;
 import com.baeldung.pojo.BorrowingRecord;
-import com.baeldung.repo.BookRepository;
-import com.baeldung.repo.BorrowerRepository;
 import com.baeldung.repo.BorrowingRecordRepository;
 
 @Service
 public class LibraryService {
 
     @Autowired
-    private BorrowerRepository borrowerRepo;
-
-    @Autowired
-    private BookRepository bookRepo;
-
-    @Autowired
     private BorrowingRecordRepository recordRepo;
 
-    public BorrowingRecord borrowBook(String borrowerUid, String bookNo) throws RecordNotFoundException {
-        Optional<Borrower> borrowerOpt = borrowerRepo.findById(borrowerUid);
-        Borrower borrower = borrowerOpt.orElseThrow(BorrowerNotFoundException::new);
+    public BorrowingRecord borrowBook(String borrowerUid, String bookNo) throws Exception {
+        Borrower borrower = validateBorrower(borrowerUid);
 
-        Optional<Book> bookOpt = bookRepo.findById(bookNo);
-        Book book = bookOpt.orElseThrow(BookNotFoundException::new);
+        Book book = validateBook(bookNo);
 
         BorrowingRecord record = new BorrowingRecord();
 
@@ -56,9 +41,8 @@ public class LibraryService {
         return record;
     }
 
-    public BorrowingRecord returnBook(long recNo) throws RecordNotFoundException {
-        Optional<BorrowingRecord> recordOpt = recordRepo.findById(recNo);
-        BorrowingRecord record = recordOpt.orElseThrow(BorrowingRecordNotFoundException::new);
+    public BorrowingRecord returnBook(long recNo) throws Exception {
+        BorrowingRecord record = validateBorrowingRecord(recNo);
 
         LocalDate dueDate = record.getDueDate();
         LocalDate returnDate = LocalDate.now();
@@ -73,6 +57,22 @@ public class LibraryService {
 
         record = recordRepo.save(record);
         return record;
+    }
+
+    private Borrower validateBorrower(String uid) throws Exception {
+    	Borrower borrower = new Borrower(uid,"John Doe");
+    	return borrower;
+    }
+    
+    private Book validateBook(String bookNo) throws Exception {
+    	Book book = new Book(bookNo,"Book Title Sample","Marry Peter");
+    	return book;
+    }
+
+    private BorrowingRecord validateBorrowingRecord(long recNo) throws Exception {
+        Optional<BorrowingRecord> recordOpt = recordRepo.findById(recNo);
+        BorrowingRecord record = recordOpt.orElseThrow(Exception::new);
+    	return record;
     }
 
     private LocalDate adjustDueDate(LocalDate date) {
