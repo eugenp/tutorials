@@ -10,8 +10,8 @@ import com.baeldung.rest.LibraryRestController;
 @Import(LibraryRestController.class)
 public class LibraryApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(LibraryApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(LibraryApplication.class, args);
+    }
 
 }

@@ -50,7 +50,7 @@ public class LibraryService {
         record.setReturnDate(returnDate);
 
         if (returnDate.isAfter(dueDate)) {
-            BigDecimal overdueFee = calOverdueFee(dueDate,returnDate);
+            BigDecimal overdueFee = calOverdueFee(dueDate, returnDate);
 
             record.setOverdueFines(overdueFee);
         }
@@ -60,32 +60,32 @@ public class LibraryService {
     }
 
     private Borrower validateBorrower(String uid) throws Exception {
-    	Borrower borrower = new Borrower(uid,"John Doe");
-    	return borrower;
+        Borrower borrower = new Borrower(uid, "John Doe");
+        return borrower;
     }
-    
+
     private Book validateBook(String bookNo) throws Exception {
-    	Book book = new Book(bookNo,"Book Title Sample","Marry Peter");
-    	return book;
+        Book book = new Book(bookNo, "Book Title Sample", "Marry Peter");
+        return book;
     }
 
     private BorrowingRecord validateBorrowingRecord(long recNo) throws Exception {
         Optional<BorrowingRecord> recordOpt = recordRepo.findById(recNo);
         BorrowingRecord record = recordOpt.orElseThrow(Exception::new);
-    	return record;
+        return record;
     }
 
     private LocalDate adjustDueDate(LocalDate date) {
         return date;
     }
-    
+
     private BigDecimal calOverdueFee(LocalDate dueDate, LocalDate returnDate) {
         long overDueDays = ChronoUnit.DAYS.between(dueDate, returnDate);
 
         BigDecimal overdueFee = BigDecimal.valueOf(overDueDays * 1.2d);
 
         return overdueFee;
-        
+
     }
 
 }
