@@ -1,6 +1,6 @@
-package com.baeldung.service;
+package com.baeldung.osiv.service;
 
-import com.baeldung.model.BasicUser;
+import com.baeldung.osiv.model.BasicUser;
 
 import java.util.Optional;
 
