@@ -356,6 +356,7 @@
                 <module>apache-opennlp</module>
                 <module>apache-poi</module>
                 <module>apache-pulsar</module>
+                <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-solrj</module>
                 <module>apache-spark</module>
@@ -1003,6 +1004,7 @@
                 <module>apache-opennlp</module>
                 <module>apache-poi</module>
                 <module>apache-pulsar</module>
+                <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-solrj</module>
                 <module>apache-spark</module>
