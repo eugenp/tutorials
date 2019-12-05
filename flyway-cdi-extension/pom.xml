@@ -50,10 +50,10 @@
     </dependencies>
 
     <properties>
-		<cdi-api.version>2.0.SP1</cdi-api.version>
-		<weld-se-core.version>3.0.5.Final</weld-se-core.version>
-		<flyway-core.version>5.1.4</flyway-core.version>
-		<tomcat-jdbc.version>8.5.33</tomcat-jdbc.version>
-		<javax.annotation-api.version>1.3.2</javax.annotation-api.version>
+        <cdi-api.version>2.0.SP1</cdi-api.version>
+        <weld-se-core.version>3.0.5.Final</weld-se-core.version>
+        <flyway-core.version>5.1.4</flyway-core.version>
+        <tomcat-jdbc.version>8.5.33</tomcat-jdbc.version>
+        <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
     </properties>
 </project>

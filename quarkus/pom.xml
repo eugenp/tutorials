@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.quarkus</groupId>
     <artifactId>quarkus</artifactId>
@@ -12,14 +12,7 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    
-    <properties>
-        <surefire-plugin.version>2.22.0</surefire-plugin.version>
-        <quarkus.version>0.15.0</quarkus.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -31,6 +24,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -47,6 +41,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -72,6 +67,7 @@
             </plugin>
         </plugins>
     </build>
+
     <profiles>
         <profile>
             <id>native</id>
@@ -118,4 +114,13 @@
             </build>
         </profile>
     </profiles>
+
+    <properties>
+        <surefire-plugin.version>2.22.0</surefire-plugin.version>
+        <quarkus.version>0.15.0</quarkus.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
 </project>
