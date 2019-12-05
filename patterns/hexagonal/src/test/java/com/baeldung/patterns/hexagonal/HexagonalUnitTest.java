@@ -57,8 +57,7 @@ public class HexagonalUnitTest {
 
         CommandLineAdaptor commandLineAdapter
                 = new CommandLineAdaptor(
-                        new ProductServiceImpl(inMemoryProductRepository),
-                        new SimpleToStringOutputStrategy());
+                        new ProductServiceImpl(inMemoryProductRepository));
 
         assertThat(commandLineAdapter.getProduct(new String[]{"3"})).isEqualTo("Product{id='3', name='product3'}");
     }
@@ -68,8 +67,7 @@ public class HexagonalUnitTest {
         Product myProduct = new Product("1", "myProduct");
         CommandLineAdaptor commandLineAdapter
                 = new CommandLineAdaptor(
-                        new ProductServiceImpl(mockProductRepository),
-                        new SimpleToStringOutputStrategy());
+                        new ProductServiceImpl(mockProductRepository));
 
         given(mockProductRepository.findProduct("1")).willReturn(myProduct);
 

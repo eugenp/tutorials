@@ -8,11 +8,9 @@ import com.baeldung.patterns.hexagonal.domain.port.ProductService;
 public class CommandLineAdaptor {
 
     private ProductService productService;
-    private OutputStrategy outputStrategy;
 
-    public CommandLineAdaptor(ProductService prodcutService, OutputStrategy outputStrategy) {
+    public CommandLineAdaptor(ProductService prodcutService) {
         this.productService = prodcutService;
-        this.outputStrategy = outputStrategy;
     }
 
     public String getProduct(String[] args) {
@@ -22,6 +20,6 @@ public class CommandLineAdaptor {
         } catch (ProductNotFoundException e) {
             // Some console specific error handling goes here..
         }
-        return outputStrategy.formatAndOutput(product);
+        return product.toString();
     }
 }
