@@ -17,10 +17,10 @@ public class Swagger2Config {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select()
-            .apis(RequestHandlerSelectors
-                .basePackage("com.baeldung.spring.hexagon.adapter"))
-                .paths(PathSelectors.regex("/.*"))
-                .build().apiInfo(apiEndPointsInfo());
+            .apis(RequestHandlerSelectors.basePackage("com.baeldung.spring.hexagon.adapter"))
+            .paths(PathSelectors.regex("/.*"))
+            .build()
+            .apiInfo(apiEndPointsInfo());
     }
 
     private ApiInfo apiEndPointsInfo() {
@@ -28,7 +28,7 @@ public class Swagger2Config {
             .description("Rest API for ")
             .license("Apache 2.0")
             .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
-                .version("1.0.0")
-                .build();
+            .version("1.0.0")
+            .build();
     }
 }

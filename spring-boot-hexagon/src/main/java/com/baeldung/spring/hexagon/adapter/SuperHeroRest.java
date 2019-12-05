@@ -41,7 +41,7 @@ public class SuperHeroRest implements Rest {
         superHeroService.save(hero);
         return hero.getId();
     }
-    
+
     @GetMapping("/hero/{id}/fight/{id2}")
     public SuperHero fight(@PathVariable("id") int id, @PathVariable("id2") int id2) {
         return superHeroService.fight(id, id2);

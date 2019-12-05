@@ -18,7 +18,7 @@ public class SuperHero {
     @Id
     @GeneratedValue
     private int id;
-    
+
     private String name;
     private Type type;
     private int power;
