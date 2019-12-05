@@ -1,4 +1,4 @@
-package com.baeldung.spring.hexagon.adapter;
+package com.baeldung.spring.hexagon.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.baeldung.spring.hexagon.domain.SuperHero;
-import com.baeldung.spring.hexagon.domain.Type;
 import com.baeldung.spring.hexagon.port.Repository;
 import com.baeldung.spring.hexagon.port.Service;
 
