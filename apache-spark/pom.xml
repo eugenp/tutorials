@@ -29,6 +29,18 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-graphx_2.11</artifactId>
+			<version>${org.apache.spark.spark-graphx.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>graphframes</groupId>
+			<artifactId>graphframes</artifactId>
+			<version>${graphframes.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-streaming_2.11</artifactId>
 			<version>${org.apache.spark.spark-streaming.version}</version>
 			<scope>provided</scope>
@@ -82,9 +94,17 @@
 		<org.apache.spark.spark-sql.version>2.3.0</org.apache.spark.spark-sql.version>
 		<org.apache.spark.spark-streaming.version>2.3.0</org.apache.spark.spark-streaming.version>
 		<org.apache.spark.spark-mllib.version>2.3.0</org.apache.spark.spark-mllib.version>
+		<org.apache.spark.spark-graphx.version>2.3.0</org.apache.spark.spark-graphx.version>
+		<graphframes.version>0.7.0-spark2.4-s_2.11</graphframes.version>
 		<org.apache.spark.spark-streaming-kafka.version>2.3.0</org.apache.spark.spark-streaming-kafka.version>
 		<com.datastax.spark.spark-cassandra-connector.version>2.3.0</com.datastax.spark.spark-cassandra-connector.version>
 		<com.datastax.spark.spark-cassandra-connector-java.version>1.5.2</com.datastax.spark.spark-cassandra-connector-java.version>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>SparkPackagesRepo</id>
+			<url>http://dl.bintray.com/spark-packages/maven</url>
+		</repository>
+	</repositories>
 </project>
