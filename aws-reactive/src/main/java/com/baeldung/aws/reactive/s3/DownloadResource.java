@@ -6,6 +6,7 @@ package com.baeldung.aws.reactive.s3;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
 
 import org.springframework.core.io.buffer.DataBuffer;
@@ -61,14 +62,7 @@ public class DownloadResource {
         return Mono.fromFuture(s3client.getObject(request,new FluxResponseProvider()))
           .map( (response) -> {
             checkResult(response.sdkResponse);
-              
-            Map<String,String> meta = response.sdkResponse.metadata();
-            String filename = meta.get("filename");
-              
-            if ( filename == null ) {
-                filename = filekey;
-            }
-            
+            String filename = getMetadataItem(response.sdkResponse,"filename",filekey);            
 
             log.info("[I65] filename={}, length={}",filename, response.sdkResponse.contentLength() );
             
@@ -78,6 +72,22 @@ public class DownloadResource {
               .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
               .body(response.flux);
           });
+    }
+
+    /**
+     * Lookup a metadata key in a case-insensitive way.
+     * @param sdkResponse
+     * @param key
+     * @param defaultValue
+     * @return
+     */
+    private String getMetadataItem(GetObjectResponse sdkResponse, String key, String defaultValue) {
+        for( Entry<String, String> entry : sdkResponse.metadata().entrySet()) {
+            if ( entry.getKey().equalsIgnoreCase(key)) {
+                return entry.getValue();
+            }
+        }
+        return defaultValue;
     }
 
 
