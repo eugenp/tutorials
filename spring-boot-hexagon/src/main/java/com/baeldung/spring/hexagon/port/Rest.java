@@ -17,7 +17,7 @@ public interface Rest {
     @GetMapping("/hero/{id}")
     SuperHero getSuperHero(@PathVariable("id") int id);
 
-    @DeleteMapping("/heros/{id}")
+    @DeleteMapping("/hero/{id}")
     void delete(@PathVariable("id") int id);
 
     @PostMapping("/hero")
