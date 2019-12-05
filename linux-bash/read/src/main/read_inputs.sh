@@ -1,50 +1,48 @@
 #!/bin/bash
 
-
-default_read() {
-    echo "Please enter something:"
-    read first second third
-    echo "first word [$first]"
-    echo "second word [$second]"
-    echo "third word [$third]"
+# Section 2.3
+prompt_read_password(){
+    prompt="You shall not pass:"
+    read -p "$prompt" -s input
+    echo -e "\ninput password [$input]"
 }
 
 array_read() {
     declare -a input_array
-    echo "Please enter something:"
-    read -a input_array
+    text="baeldung is a cool tech site"
+    read -e -i "$text" -a input_array 
     for input in ${input_array[@]} 
         do
-            echo " Word [$input]"
+            echo " word [$input]"
         done
 }
 
-special_delim() {
-    echo "Please enter something:"
-    read -d ";" first second third
-    echo "first word [$first]"
+# section 2.2
+custom_ifs_no_array(){
+    IFS=";"
+    read input1 input2 input3
+    echo "[$input1] [$input2] [$input3]"
 }
 
+# section 2.1
+default_read() {
+    read input1 input2 input3
+    echo "[$input1] [$input2] [$input3]"
+}
+
+# section 3.1
 file_read(){
-    # open file descriptor for reading
-    exec {file_descriptor}<"./dummy_file"
+    exec {file_descriptor}<"./file.csv"
     declare -a input_array
-    echo "Reading first line from file"
-    read -a input_array -u $file_descriptor 
-    for input in ${input_array[@]} 
+    delimiter=";"
+    while IFS="," read -a input_array -d $delimiter -u $file_descriptor 
         do
-            echo " Word [$input]"
+            echo "${input_array[0]},${input_array[2]}" 
         done
-    # close file descriptor after reading
     exec {file_descriptor}>&-
 }
 
-prompt_read(){
-    echo "With prompt :"
-    prompt="You shall not pass:"
-    read -p "$prompt" input
-    echo "word -> [$input]"
-}
+
 
 default_input_read(){
     echo "Default input read:"
@@ -55,17 +53,20 @@ default_input_read(){
 }
 
 advanced_pipeing(){
-    ls | (read -p "Input from ls" input; echo "Single read -> [$input]")
-    ls | (while IFS= read input; 
-            do
-                echo "$input"
-            done )
-    # process substitution
-    while read input
-    do
-        echo "$input"
-    done < <(ls)
+    ls -ll | ( declare -a input
+               while read -a input; 
+               do
+                   echo "${input[0]} ${input[8]}"
+               done )
+}
 
+advanced_pipeing_ps(){
+# process substitution
+    declare -a input
+    while read -a input
+    do
+        echo "${input[0]} ${input[8]}"
+    done < <(ls -ll)
 }
 
 custom_ifs_read(){
@@ -97,17 +98,20 @@ custom_ifs(){
         done
 }
 
+
+
 #default_read
 #array_read
 #special_delim
-#file_read
+file_read
 #prompt_read
 #default_input_read
 #advanced_pipeing
 #custom_ifs_read
 #infinite_read
-custom_ifs " "
-custom_ifs ";"
+# custom_ifs " "
+# custom_ifs ";"
+#custom_ifs_no_array
 
 
 
