@@ -2,18 +2,16 @@ package com.baeldung.datetime.sql;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
-
-import com.baeldung.datetime.sql.DateUtils;
-
 import java.text.ParseException;
-import java.util.Date;
+import java.time.LocalDate;
+
+import org.junit.Test;
 
 public class DateUtilsUnitTest {
 
     @Test
     public void givenCurrentDate_thenTodayIsReturned() {
-        assertEquals(DateUtils.getNow(), new Date());
+        assertEquals(DateUtils.getNow().toLocalDate(), LocalDate.now());
     }
 
     @Test(expected = IllegalArgumentException.class)

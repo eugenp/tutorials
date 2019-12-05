@@ -58,7 +58,7 @@
     </build>
 
     <properties>
-        <commons-lang3.version>3.8.1</commons-lang3.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
         <assertj.version>3.6.1</assertj.version>
         <commons-codec.version>1.10</commons-codec.version>
     </properties>
