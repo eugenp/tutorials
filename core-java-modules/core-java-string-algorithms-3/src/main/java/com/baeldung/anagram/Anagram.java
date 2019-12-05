@@ -52,9 +52,7 @@ public class Anagram {
     }
 
     public boolean isLetterBasedAnagramMultiset(String string1, String string2) {
-        string1 = preprocess(string1);
-        string2 = preprocess(string2);
-        return isAnagramMultiset(string1, string2);
+        return isAnagramMultiset(preprocess(string1), preprocess(string2));
     }
 
     private String preprocess(String source) {
