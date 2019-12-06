@@ -499,12 +499,12 @@
                 <module>immutables</module>
 
                 <module>jackson</module>
-                <module>jackson-2</module>
                 <module>jackson-simple</module>
                 <module>jackson-annotations</module>
                 <module>jackson-exceptions</module>
                 <module>jackson-conversions</module>
                 <module>jackson-conversions-2</module>
+                <module>jackson-custom-conversions</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
@@ -1138,12 +1138,12 @@
                 <module>immutables</module>
 
                 <module>jackson</module>
-                <module>jackson-2</module>
                 <module>jackson-simple</module>
                 <module>jackson-annotations</module>
                 <module>jackson-exceptions</module>
                 <module>jackson-conversions</module>
                 <module>jackson-conversions-2</module>
+                <module>jackson-custom-conversions</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
