@@ -1,6 +1,6 @@
-=========
+## Core Java Collections
 
-## Core Java Collections Cookbooks and Examples
+This module contains articles about Java collections
 
 ### Relevant Articles: 
 - [Collect a Java Stream to an Immutable Collection](https://www.baeldung.com/java-stream-immutable-collection)
@@ -13,3 +13,4 @@
 - [Defining a Char Stack in Java](https://www.baeldung.com/java-char-stack)
 - [Guide to the Java Queue Interface](https://www.baeldung.com/java-queue)
 - [An Introduction to Synchronized Java Collections](https://www.baeldung.com/java-synchronized-collections)
+- [[More -->]](/core-java-modules/core-java-collections-2)

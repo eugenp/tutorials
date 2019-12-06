@@ -1,3 +1,12 @@
+## Libraries
+
+This module contains articles about various Java libraries. 
+These are small libraries that are relatively easy to use and do not require any separate module of their own.
+
+The code examples related to different libraries are each in their own module.
+
+Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-modules) we already have separate modules. Please make sure to have a look at the existing modules in such cases.
+
 ### Relevant articles
 
 - [Introduction to Javatuples](https://www.baeldung.com/java-tuples)
@@ -31,15 +40,9 @@
 - [Publish and Receive Messages with Nats Java Client](https://www.baeldung.com/nats-java-client)
 - [Java Concurrency Utility with JCTools](https://www.baeldung.com/java-concurrency-jc-tools)
 - [Introduction to JavaPoet](https://www.baeldung.com/java-poet)
-- [Convert String to Date in Java](https://www.baeldung.com/java-string-to-date)
 - [Guide to Resilience4j](https://www.baeldung.com/resilience4j)
 - [Exactly Once Processing in Kafka](https://www.baeldung.com/kafka-exactly-once)
 - [Implementing a FTP-Client in Java](https://www.baeldung.com/java-ftp-client)
 - [Introduction to Functional Java](https://www.baeldung.com/java-functional-library)
 - [A Guide to the Reflections Library](https://www.baeldung.com/reflections-library)
-
-The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
-
-The code examples related to different libraries should go in a new package.
-
-Remember, for advanced libraries like JUnit, Jackson, etc. we already have separate modules. Please make sure to have a look at the existing modules in such cases.
+- More articles [[next -->]](/libraries-2)

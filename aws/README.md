@@ -1,3 +1,7 @@
+## AWS
+
+This module contains articles about AWS
+
 ### Relevant articles
 
 - [AWS Lambda Using DynamoDB With Java](https://www.baeldung.com/aws-lambda-dynamodb-java)

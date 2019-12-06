@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mocks</artifactId>
     <name>mocks</name>
@@ -17,19 +17,19 @@
             <artifactId>javafaker</artifactId>
             <version>${javafaker.version}</version>
         </dependency>
- <dependency>
+        <dependency>
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit</artifactId>
             <version>${jmockit.version}</version>
             <scope>test</scope>
         </dependency>
-  <dependency>
+        <dependency>
             <groupId>org.jukito</groupId>
             <artifactId>jukito</artifactId>
             <version>${jukito.version}</version>
             <scope>test</scope>
         </dependency>
- <dependency>
+        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
@@ -42,14 +42,21 @@
             <version>${easymock.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.jimfs</groupId>
+            <artifactId>jimfs</artifactId>
+            <version>${jimf.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <javafaker.version>0.15</javafaker.version>
         <jukito.version>1.5</jukito.version>
-<mockito.version>2.21.0</mockito.version>
+        <mockito.version>2.21.0</mockito.version>
         <easymock.version>3.5.1</easymock.version>
         <jmockit.version>1.41</jmockit.version>
+        <jimf.version>1.1</jimf.version>
     </properties>
 
 </project>

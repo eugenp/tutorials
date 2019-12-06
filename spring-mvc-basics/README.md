@@ -1,6 +1,7 @@
-=========
+## Spring MVC Basics
 
-## Spring MVC Basics with Java Configuration Example Project
+This module contains articles about the basics of Spring MVC. Articles about more specific areas of Spring MVC have
+their own module. 
 
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring

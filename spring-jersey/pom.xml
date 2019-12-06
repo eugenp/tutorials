@@ -222,12 +222,12 @@
     </build>
 
     <properties>
-        <jersey.version>2.27</jersey.version>
+        <jersey.version>2.29.1</jersey.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <httpcore.version>4.4.9</httpcore.version>
         <httpclient.version>4.5.5</httpclient.version>
         <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
-        <wiremock.version>1.58</wiremock.version>
+        <wiremock.version>2.25.1</wiremock.version>
         <assertj-core.version>3.10.0</assertj-core.version>
         <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
     </properties>

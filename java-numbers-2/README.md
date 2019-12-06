@@ -1,4 +1,8 @@
-## Relevant Articles
+## Java Number Cookbooks and Examples
+
+This module contains articles about numbers in Java.
+
+### Relevant Articles
 - [Lossy Conversion in Java](https://www.baeldung.com/java-lossy-conversion)
 - [A Guide to the Java Math Class](https://www.baeldung.com/java-lang-math)
 - [Calculate the Area of a Circle in Java](https://www.baeldung.com/java-calculate-circle-area)
@@ -9,3 +13,6 @@
 - [Binary Numbers in Java](https://www.baeldung.com/java-binary-numbers)
 - [Finding the Least Common Multiple in Java](https://www.baeldung.com/java-least-common-multiple)
 - [Binary Numbers in Java](https://www.baeldung.com/java-binary-numbers)
+- [Generating Random Numbers in a Range in Java](https://www.baeldung.com/java-generating-random-numbers)
+- [Listing Numbers Within a Range in Java](https://www.baeldung.com/java-listing-numbers-within-a-range)
+- More articles: [[<-- prev]](/../java-numbers)

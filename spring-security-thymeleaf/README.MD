@@ -1,6 +1,6 @@
 ## Spring Security Thymeleaf
 
-This module contains articles about Spring Security with Thymeleaf
+This module contains articles about Spring Security with Thymeleaf.
 
 ### Relevant Articles: 
 

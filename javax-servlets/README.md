@@ -1,3 +1,7 @@
+## Servlets
+
+This module contains articles about Servlets.
+
 ### Relevant Articles:
 - [Introduction to Java Servlets](https://www.baeldung.com/intro-to-servlets)
 - [An MVC Example with Servlets and JSP](https://www.baeldung.com/mvc-servlet-jsp)

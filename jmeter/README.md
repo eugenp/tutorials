@@ -1,7 +1,7 @@
-BASIC CRUD API with Spring Boot
-================================
+## JMeter
 
-This is the code of a simple API for some CRUD operations build using Spring Boot.
+This module contains articles about JMeter.
+It contains the code of a simple API for some CRUD operations built using Spring Boot.
 
 ### Requirements
 

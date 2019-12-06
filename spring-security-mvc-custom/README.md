@@ -2,10 +2,12 @@
 
 This module contains articles about Spring Security with custom MVC applications
 
-###The Course
+### The Course
+
 The "REST With Spring" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 
+
 - [Spring Security Remember Me](https://www.baeldung.com/spring-security-remember-me)
 - [Redirect to different pages after Login with Spring Security](https://www.baeldung.com/spring_redirect_after_login)
 - [Changing Spring Model Parameters with Handler Interceptor](https://www.baeldung.com/spring-model-parameters-with-handler-interceptor)
@@ -15,6 +17,7 @@ The "REST With Spring" Classes: http://github.learnspringsecurity.com
 - [How to Manually Authenticate User with Spring Security](https://www.baeldung.com/manually-set-user-authentication-spring-security)
 
 ### Build the Project
+
 ```
 mvn clean install
 ```

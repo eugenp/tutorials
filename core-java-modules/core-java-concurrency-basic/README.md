@@ -1,6 +1,6 @@
-=========
+## Core Java Concurrency Basic
 
-## Core Java Concurrency Basic Examples
+This module contains articles about basic Java concurrency
 
 ### Relevant Articles: 
 - [Guide To CompletableFuture](https://www.baeldung.com/java-completablefuture)
@@ -13,3 +13,4 @@
 - [Runnable vs. Callable in Java](https://www.baeldung.com/java-runnable-callable)
 - [What is Thread-Safety and How to Achieve it?](https://www.baeldung.com/java-thread-safety)
 - [How to Start a Thread in Java](https://www.baeldung.com/java-start-thread)
+- [[Next -->]](/core-java-modules/core-java-concurrency-basic-2)

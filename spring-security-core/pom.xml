@@ -4,7 +4,6 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-security-core</artifactId>
     <version>0.1-SNAPSHOT</version>
-
     <name>spring-security-core</name>
     <packaging>war</packaging>
 

@@ -1,10 +1,11 @@
 package org.baeldung.javaxval.methodvalidation.constraints;
 
+import java.time.LocalDate;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.constraintvalidation.SupportedValidationTarget;
 import javax.validation.constraintvalidation.ValidationTarget;
-import java.time.LocalDate;
 
 @SupportedValidationTarget(ValidationTarget.PARAMETERS)
 public class ConsistentDateParameterValidator implements ConstraintValidator<ConsistentDateParameters, Object[]> {

@@ -1,4 +1,8 @@
-# Relevant Articles
+## JPA in Java
+
+This module contains articles about the Java Persistence API (JPA) in Java.
+
+### Relevant Articles
 
 - [A Guide to SqlResultSetMapping](https://www.baeldung.com/jpa-sql-resultset-mapping)
 - [A Guide to Stored Procedures with JPA](https://www.baeldung.com/jpa-stored-procedures)
@@ -10,3 +14,4 @@
 - [Defining JPA Entities](https://www.baeldung.com/jpa-entities)
 - [JPA @Basic Annotation](https://www.baeldung.com/jpa-basic-annotation)
 - [Persisting Enums in JPA](https://www.baeldung.com/jpa-persisting-enums-in-jpa)
+- More articles: [[next -->]](/java-jpa-2)

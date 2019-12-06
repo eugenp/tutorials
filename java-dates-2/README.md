@@ -1,4 +1,2 @@
-## Relevant Articles:
-- [Converting Between LocalDate and XMLGregorianCalendar](https://www.baeldung.com/java-localdate-to-xmlgregoriancalendar)
-- [Convert Time to Milliseconds in Java](https://www.baeldung.com/java-time-milliseconds)
-- [Check If a String Is a Valid Date in Java](https://www.baeldung.com/java-string-valid-date)
+### Relevant Articles:
+- [Converting Java Date to OffsetDateTime](https://www.baeldung.com/java-convert-date-to-offsetdatetime)

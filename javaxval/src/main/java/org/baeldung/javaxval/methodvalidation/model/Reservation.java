@@ -1,12 +1,13 @@
 package org.baeldung.javaxval.methodvalidation.model;
 
-import org.baeldung.javaxval.methodvalidation.constraints.ConsistentDateParameters;
-import org.baeldung.javaxval.methodvalidation.constraints.ValidReservation;
-import org.springframework.validation.annotation.Validated;
+import java.time.LocalDate;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
-import java.time.LocalDate;
+
+import org.baeldung.javaxval.methodvalidation.constraints.ConsistentDateParameters;
+import org.baeldung.javaxval.methodvalidation.constraints.ValidReservation;
+import org.springframework.validation.annotation.Validated;
 
 @Validated
 public class Reservation {

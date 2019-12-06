@@ -1,5 +1,7 @@
 ## Core Java Performance 
 
+This module contains articles about performance of Java applications
+
 ### Relevant Articles: 
 - [Verbose Garbage Collection in Java](https://www.baeldung.com/java-verbose-gc)
 - [Different Ways to Capture Java Heap Dumps](https://www.baeldung.com/java-heap-dump-capture)

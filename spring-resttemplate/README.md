@@ -13,3 +13,12 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Mocking a RestTemplate in Spring](https://www.baeldung.com/spring-mock-rest-template)
 - [RestTemplate Post Request with JSON](https://www.baeldung.com/spring-resttemplate-post-json)
 - [Download a Large File Through a Spring RestTemplate](https://www.baeldung.com/spring-resttemplate-download-large-file)
+- [Using the Spring RestTemplate Interceptor](https://www.baeldung.com/spring-rest-template-interceptor)
+- [Uploading MultipartFile with Spring RestTemplate](https://www.baeldung.com/spring-rest-template-multipart-upload)
+- [Get and Post Lists of Objects with RestTemplate](https://www.baeldung.com/spring-rest-template-list)
+- [Copy of RestTemplate Post Request with JSON](https://www.baeldung.com/spring-resttemplate-post-json-test)
+
+### NOTE:
+
+This module is closed and should **not** be used to store the code
+for any further articles.

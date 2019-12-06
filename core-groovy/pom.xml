@@ -109,9 +109,6 @@
 
     <properties>
         <junit.platform.version>1.0.0</junit.platform.version>
-<!--         <groovy.version>2.4.13</groovy.version> -->
-<!--         <groovy-all.version>2.4.13</groovy-all.version> -->
-<!--         <groovy-sql.version>2.4.13</groovy-sql.version> -->
         <groovy.version>2.5.6</groovy.version>
         <groovy-all.version>2.5.6</groovy-all.version>
         <groovy-sql.version>2.5.6</groovy-sql.version>

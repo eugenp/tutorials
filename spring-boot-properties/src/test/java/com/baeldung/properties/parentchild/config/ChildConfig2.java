@@ -16,7 +16,7 @@ public class ChildConfig2 {
     }
 
     @Bean
-    public static PropertyPlaceholderConfigurer configurer() {
+    public static PropertyPlaceholderConfigurer properties() {
         final PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
         ppc.setLocations(new ClassPathResource("child.properties"));
         return ppc;

@@ -23,6 +23,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
         <dependency>
@@ -32,7 +36,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>au.com.dius</groupId>
+            <artifactId>pact-jvm-provider-junit_2.11</artifactId>
+            <version>${pact.version}</version>
         </dependency>
 
         <!-- Spring -->
@@ -111,11 +121,13 @@
 
         <!-- test scoped -->
 
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <scope>test</scope>
+            <version>4.12</version>
         </dependency>
+
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
@@ -295,6 +307,7 @@
 
         <!-- okhttp -->
         <com.squareup.okhttp3.version>3.4.1</com.squareup.okhttp3.version>
+        <pact.version>3.5.11</pact.version>
     </properties>
 
 </project>

@@ -87,7 +87,8 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <verbose>true</verbose>
-                    <fork>true</fork>
+                    <fork>false</fork>
+                    <forkCount>0</forkCount>
                     <argLine>-Xmx1024m</argLine>
                 </configuration>
             </plugin>

@@ -1,5 +1,6 @@
 ## JWT Fun
 
+This module contains articles about JJWT.
 This tutorial walks you through the various features supported by the [JJWT](https://github.com/jwtk/jjwt) library - a fluent interface Java JWT building and parsing library.
 
 ### Build and Run

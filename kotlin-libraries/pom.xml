@@ -56,7 +56,6 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -78,7 +77,6 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -94,8 +92,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-        </dependency>
+            </dependency>
         <!-- https://mvnrepository.com/artifact/io.arrow-kt/arrow-core -->
         <dependency>
             <groupId>io.arrow-kt</groupId>
@@ -125,39 +122,18 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-collections-immutable -->
-        <dependency>
-            <groupId>org.jetbrains.kotlinx</groupId>
-            <artifactId>kotlinx-collections-immutable</artifactId>
-            <version>${kotlinx-collections-immutable.version}</version>
-        </dependency>
 
-        <!-- MockK dependencies-->
-        <dependency>
-            <groupId>io.mockk</groupId>
-            <artifactId>mockk</artifactId>
-            <version>${mockk.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
-            <version>${byte-buddy.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy-agent</artifactId>
-            <version>${byte-buddy.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -185,13 +161,10 @@
         <junit.vintage.version>5.2.0</junit.vintage.version>
         <assertj.version>3.10.0</assertj.version>
         <exposed.version>0.10.4</exposed.version>
-        <mockk.version>1.9.3</mockk.version>
-        <guava.version>27.1-jre</guava.version>
         <kovenant.version>3.3.0</kovenant.version>
         <byte-buddy.version>1.8.13</byte-buddy.version>
         <objenesis.version>2.6</objenesis.version>
         <rxkotlin.version>2.3.0</rxkotlin.version>
-        <kotlinx-collections-immutable.version>0.1</kotlinx-collections-immutable.version>
         <arrow-core.version>0.7.3</arrow-core.version>
     </properties>
 
