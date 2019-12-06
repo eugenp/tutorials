@@ -28,13 +28,12 @@ public class LibraryService {
 
         LocalDate borrowDate = LocalDate.now();
 
-        LocalDate dueDate = borrowDate.plusDays(14);
-        LocalDate adjustedDueDate = adjustDueDate(dueDate);
+        LocalDate dueDate = calDueDate(borrowDate);
 
         record.setBorrowerUid(borrower.getUid());
         record.setBookNo(book.getBookNo());
         record.setBorrowDate(borrowDate);
-        record.setDueDate(adjustedDueDate);
+        record.setDueDate(dueDate);
 
         record = recordRepo.save(record);
 
@@ -75,8 +74,8 @@ public class LibraryService {
         return record;
     }
 
-    private LocalDate adjustDueDate(LocalDate date) {
-        return date;
+    private LocalDate calDueDate(LocalDate borrowDate) {
+        return borrowDate.plusDays(14);
     }
 
     private BigDecimal calOverdueFee(LocalDate dueDate, LocalDate returnDate) {
