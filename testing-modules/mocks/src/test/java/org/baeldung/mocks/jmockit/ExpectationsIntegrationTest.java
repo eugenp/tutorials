@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 @RunWith(JMockit.class)
 @SuppressWarnings("unchecked")
@@ -110,11 +111,9 @@ public class ExpectationsIntegrationTest {
             result = "foo";
             result = new Exception();
             result = "bar";
-            mock.methodReturnsInt();
-            result = new int[]{1, 2, 3};
-            mock.methodReturnsString();
             returns("foo", "bar");
             mock.methodReturnsInt();
+            result = new int[]{1, 2, 3};
             result = 1;
         }};
 
