@@ -1,12 +1,12 @@
-package com.baeldung.date.conversion;
+package com.baeldung.offsetdatetime;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 import java.time.OffsetDateTime;
 import java.util.Date;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ConvertToOffsetDateTimeUnitTest {
 
