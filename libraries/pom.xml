@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries</artifactId>
     <name>libraries</name>
 
     <parent>
-        <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
@@ -76,17 +76,17 @@
             <version>${rome.version}</version>
         </dependency>
         <dependency>
-        <groupId>net.serenity-bdd</groupId>
-        <artifactId>serenity-core</artifactId>
-        <version>${serenity.version}</version>
-        <scope>test</scope>
-        <exclusions>
-            <exclusion>
-                <groupId>org.asciidoctor</groupId>
-                <artifactId>asciidoctorj</artifactId>
-            </exclusion>
-        </exclusions>
-    </dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-core</artifactId>
+            <version>${serenity.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.asciidoctor</groupId>
+                    <artifactId>asciidoctorj</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-junit</artifactId>
@@ -377,8 +377,6 @@
             <scope>test</scope>
         </dependency>
 
-
-
         <!-- Atlassian Fugue -->
         <dependency>
             <groupId>io.atlassian.fugue</groupId>
@@ -431,12 +429,12 @@
             <version>${mockftpserver.version}</version>
             <scope>test</scope>
         </dependency>
-      	<!-- Reflections -->
-		<dependency>
-			<groupId>org.reflections</groupId>
-			<artifactId>reflections</artifactId>
-			<version>${reflections.version}</version>
-		</dependency>
+        <!-- Reflections -->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>${reflections.version}</version>
+        </dependency>
 
     </dependencies>
 
@@ -456,7 +454,6 @@
             <layout>default</layout>
         </repository>
     </repositories>
-
 
     <build>
         <plugins>
@@ -559,14 +556,12 @@
     </build>
 
     <properties>
-
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.7</cglib.version>
         <javatuples.version>1.2</javatuples.version>
         <assertj.version>3.6.2</assertj.version>
         <javers.version>3.1.0</javers.version>
         <jnats.version>1.0</jnats.version>
-
 
         <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.9.26</serenity.version>
@@ -618,7 +613,6 @@
         <mockftpserver.version>2.7.1</mockftpserver.version>
         <commons-net.version>3.6</commons-net.version>
         <reflections.version>0.9.11</reflections.version>
-
     </properties>
 
 </project>

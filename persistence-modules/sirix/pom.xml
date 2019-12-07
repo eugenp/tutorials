@@ -1,53 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>io.sirix</groupId>
-	<artifactId>core-api-tutorial</artifactId>
-	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>core-api-tutorial</name>
-	<url>http://maven.apache.org</url>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.sirix</groupId>
+    <artifactId>core-api-tutorial</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>core-api-tutorial</name>
+    <packaging>jar</packaging>
+    <url>http://maven.apache.org</url>
 
-	<parent>
-		<groupId>com.baeldung</groupId>
-		<artifactId>parent-java</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../../parent-java</relativePath>
-	</parent>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-java</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-java</relativePath>
+    </parent>
 
-	<dependencies>
-		<dependency>
-			<groupId>io.sirix</groupId>
-			<artifactId>sirix-core</artifactId>
-			<version>${sirix-core.version}</version>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>io.sirix</groupId>
+            <artifactId>sirix-core</artifactId>
+            <version>${sirix-core.version}</version>
+        </dependency>
+    </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
-				<configuration>
-					<release>${maven.release.version}</release>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.ow2.asm</groupId>
-						<artifactId>asm</artifactId>
-						<version>6.1</version> <!-- Use newer version of ASM -->
-					</dependency>
-				</dependencies>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <release>${maven.release.version}</release>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.ow2.asm</groupId>
+                        <artifactId>asm</artifactId>
+                        <version>6.1</version> <!-- Use newer version of ASM -->
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.release.version>11</maven.release.version>
-		<sirix-core.version>0.9.3</sirix-core.version>
-	</properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.release.version>11</maven.release.version>
+        <sirix-core.version>0.9.3</sirix-core.version>
+    </properties>
+
 </project>

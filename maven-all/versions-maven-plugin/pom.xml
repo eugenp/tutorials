@@ -1,14 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>versions-maven-plugin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-	<name>versions-maven-plugin</name>
+    <name>versions-maven-plugin</name>
 
     <dependencies>
-
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -38,7 +38,6 @@
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.1</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -69,8 +68,8 @@
             </snapshots>
         </repository>
     </repositories>
-	
-    <properties>        
+
+    <properties>
         <commons-compress-version>1.15</commons-compress-version>
     </properties>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jee-7-security</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -55,7 +55,7 @@
     <properties>
         <javaee_api.version>7.0</javaee_api.version>
         <org.springframework.security.version>4.2.3.RELEASE</org.springframework.security.version>
-		<javax.mvc-api.version>1.0-pr</javax.mvc-api.version>
+        <javax.mvc-api.version>1.0-pr</javax.mvc-api.version>
     </properties>
 
 </project>

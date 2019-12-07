@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-di</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>spring-di</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -14,6 +14,23 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-spring-5</relativePath>
     </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${org.springframework.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${org.springframework.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -69,10 +86,10 @@
             <version>${commons.io.version}</version>
         </dependency>
         <!-- Spring -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework</groupId>-->
-<!--            <artifactId>spring-context</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework</groupId>-->
+        <!--            <artifactId>spring-context</artifactId>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>javax.annotation</groupId>
@@ -80,31 +97,14 @@
             <version>${annotation-api.version}</version>
         </dependency>
 
-<!--        &lt;!&ndash; test scoped &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework</groupId>-->
-<!--            <artifactId>spring-test</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <!--        &lt;!&ndash; test scoped &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework</groupId>-->
+        <!--            <artifactId>spring-test</artifactId>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
 
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-framework-bom</artifactId>
-                <version>${org.springframework.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <finalName>spring-di</finalName>

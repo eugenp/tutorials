@@ -8,8 +8,8 @@
     <description>Demo project for Spring Boot</description>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
@@ -33,5 +33,5 @@
             </plugin>
         </plugins>
     </build>
-	
+
 </project>

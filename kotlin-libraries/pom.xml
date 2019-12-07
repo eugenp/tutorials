@@ -92,7 +92,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            </dependency>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/io.arrow-kt/arrow-core -->
         <dependency>
             <groupId>io.arrow-kt</groupId>
