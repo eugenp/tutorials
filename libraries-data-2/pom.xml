@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-data-2</artifactId>
     <name>libraries-data-2</name>
@@ -155,4 +154,5 @@
         <slf4j.version>1.7.25</slf4j.version>
         <awaitility.version>3.0.0</awaitility.version>
     </properties>
+
 </project>

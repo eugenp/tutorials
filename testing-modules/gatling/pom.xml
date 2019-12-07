@@ -15,7 +15,6 @@
         <relativePath>../../</relativePath>
     </parent>
 
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -105,7 +104,6 @@
             </plugin>
         </plugins>
     </build>
-
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
