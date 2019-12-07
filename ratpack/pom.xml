@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>ratpack</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>ratpack</name>
@@ -27,17 +27,17 @@
             <version>${ratpack.version}</version>
         </dependency>
         <dependency>
-    		<groupId>org.codehaus.groovy</groupId>
-		    <artifactId>groovy-sql</artifactId>
-		    <version>${groovy.sql.version}</version>
-		</dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-sql</artifactId>
+            <version>${groovy.sql.version}</version>
+        </dependency>
         <dependency>
             <groupId>io.ratpack</groupId>
             <artifactId>ratpack-hikari</artifactId>
             <version>${ratpack.version}</version>
         </dependency>
         <dependency>
-        	<groupId>io.ratpack</groupId>
+            <groupId>io.ratpack</groupId>
             <artifactId>ratpack-groovy-test</artifactId>
             <version>${ratpack.test.latest.version}</version>
         </dependency>
@@ -104,4 +104,5 @@
         <groovy.sql.version>2.4.15</groovy.sql.version>
         <ratpack.test.latest.version>1.6.1</ratpack.test.latest.version>
     </properties>
+
 </project>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>metrics</artifactId>
     <name>metrics</name>
 
     <parent>
-        <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
@@ -73,7 +73,7 @@
             <artifactId>jackson-dataformat-smile</artifactId>
             <version>${fasterxml.jackson.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>io.astefanutti.metrics.aspectj</groupId>
             <artifactId>metrics-aspectj-deps</artifactId>
@@ -86,7 +86,6 @@
             <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <properties>
@@ -95,8 +94,8 @@
         <netflix.servo.ver>0.12.17</netflix.servo.ver>
         <micrometer.ver>0.12.0.RELEASE</micrometer.ver>
         <fasterxml.jackson.version>2.9.1</fasterxml.jackson.version>
-		<spring-boot-starter-web.version>2.0.7.RELEASE</spring-boot-starter-web.version>
-		<assertj-core.version>3.11.1</assertj-core.version>
+        <spring-boot-starter-web.version>2.0.7.RELEASE</spring-boot-starter-web.version>
+        <assertj-core.version>3.11.1</assertj-core.version>
         <metrics-aspectj.version>1.1.0</metrics-aspectj.version>
     </properties>
 

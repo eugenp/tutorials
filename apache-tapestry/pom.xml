@@ -1,12 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>apache-tapestry</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>apache-tapestry</name>
-        <dependencies>
+    <packaging>war</packaging>
+
+    <dependencies>
         <!-- To set up an application with a database, change the artifactId below to
              tapestry-hibernate, and add a dependency on your JDBC driver. You'll also
              need to add Hibernate configuration files, such as hibernate.cfg.xml. -->
@@ -22,7 +24,7 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j-release-version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-webresources</artifactId>
@@ -71,8 +73,8 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <version>${tapestry-release-version}</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
+
     <build>
         <finalName>apache-tapestry</finalName>
         <plugins>
@@ -142,6 +144,6 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         <servlet-api-release-version>2.5</servlet-api-release-version>
         <testng-release-version>6.8.21</testng-release-version>
         <slf4j-release-version>1.7.19</slf4j-release-version>
-
     </properties>
+
 </project>
