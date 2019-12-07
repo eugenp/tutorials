@@ -1,4 +1,4 @@
-package com.baeldung.hook;
+package com.baeldung.shutdownhook;
 
 import org.junit.Test;
 
