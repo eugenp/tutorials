@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-reactor</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>spring-reactor</name>
@@ -9,8 +9,8 @@
     <url>http://maven.apache.org</url>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
@@ -40,4 +40,5 @@
         <spring-cloud-sleuth.version>2.0.2.RELEASE</spring-cloud-sleuth.version>
         <reactor.version>2.0.8.RELEASE</reactor.version>
     </properties>
+
 </project>

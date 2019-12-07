@@ -1,10 +1,7 @@
 package com.baeldung.like;
 
-import static org.junit.Assert.assertEquals;
-import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
-
-import java.util.List;
-
+import com.baeldung.like.model.Movie;
+import com.baeldung.like.repository.MovieRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +9,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.like.model.Movie;
-import com.baeldung.like.repository.MovieRepository;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
 @Sql(scripts = { "/test-movie-data.sql" })
+@SpringBootTest(classes = LikeApplication.class)
 @Sql(scripts = "/test-movie-cleanup.sql", executionPhase = AFTER_TEST_METHOD)
 public class MovieRepositoryIntegrationTest {
     @Autowired
