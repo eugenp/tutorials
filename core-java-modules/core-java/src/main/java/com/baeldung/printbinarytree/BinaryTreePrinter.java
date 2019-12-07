@@ -1,4 +1,6 @@
-package com.baeldung.binarytree;
+package com.baeldung.printbinarytree;
+
+import java.io.PrintStream;
 
 public class BinaryTreePrinter {
 
@@ -54,8 +56,8 @@ public class BinaryTreePrinter {
 
     }
 
-    public void print() {
-        System.out.print(traversePreOrder(tree));
+    public void print(PrintStream os) {
+        os.print(traversePreOrder(tree));
     }
 
 }
