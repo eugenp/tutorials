@@ -1,4 +1,4 @@
-package com.baeldung.binarytree;
+package com.baeldung.printbinarytree;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,6 +9,9 @@ import java.io.PrintStream;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.baeldung.printbinarytree.BinaryTreeModel;
+import com.baeldung.printbinarytree.BinaryTreePrinter;
 
 public class PrintingBinaryTreeModelUnitTest {
 
@@ -129,7 +132,7 @@ public class PrintingBinaryTreeModelUnitTest {
         expected.append("   ├──node5").append("\n");
         expected.append("   └──node6");
         
-        new BinaryTreePrinter(balanced).print();
+        new BinaryTreePrinter(balanced).print(System.out);
         
         assertEquals(expected.toString(), output.toString());
     }
@@ -148,7 +151,7 @@ public class PrintingBinaryTreeModelUnitTest {
         expected.append("│                 └──node8").append("\n");
         expected.append("└──node2");
         
-        new BinaryTreePrinter(leftSkewed).print();
+        new BinaryTreePrinter(leftSkewed).print(System.out);
         
         assertEquals(expected.toString(), output.toString());
     }
@@ -167,7 +170,7 @@ public class PrintingBinaryTreeModelUnitTest {
         expected.append("               └──node7").append("\n");
         expected.append("                  └──node8");
         
-        new BinaryTreePrinter(rightSkewed).print();
+        new BinaryTreePrinter(rightSkewed).print(System.out);
         
         assertEquals(expected.toString(), output.toString());
     }
