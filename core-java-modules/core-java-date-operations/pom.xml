@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-date-operations</artifactId>
     <version>${project.parent.version}</version>
+    <name>core-java-date-operations</name>
     <packaging>jar</packaging>
 
     <parent>
