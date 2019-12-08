@@ -18,8 +18,11 @@ public class ExtrinsicLockCounterUnitTest {
         ExtrinsicLockCounter counter = new ExtrinsicLockCounter();
         Future<Integer> future1 = (Future<Integer>) executorService.submit(new ExtrinsicLockCounterCallable(counter));
         Future<Integer> future2 = (Future<Integer>) executorService.submit(new ExtrinsicLockCounterCallable(counter));
-        
-        assertThat(future1.get()).isEqualTo(1);
-        assertThat(future2.get()).isEqualTo(2);
+
+        // Just to make sure both are completed
+        future1.get();
+        future2.get();
+
+        assertThat(counter.getCounter()).isEqualTo(2);
     }
 }

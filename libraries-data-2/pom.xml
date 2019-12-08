@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-data-2</artifactId>
     <name>libraries-data-2</name>
@@ -88,11 +87,6 @@
             <version>${spring.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.api-client</groupId>
-            <artifactId>google-api-client</artifactId>
-            <version>${google-api.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.googlecode.jmapper-framework</groupId>
             <artifactId>jmapper-core</artifactId>
             <version>${jmapper.version}</version>
@@ -153,7 +147,6 @@
         <infinispan.version>9.1.5.Final</infinispan.version>
         <jackson.version>2.9.8</jackson.version>
         <spring.version>4.3.8.RELEASE</spring.version>
-        <google-api.version>1.23.0</google-api.version>
         <jmapper.version>1.6.0.1</jmapper.version>
         <suanshu.version>4.0.0</suanshu.version>
         <derive4j.version>1.1.0</derive4j.version>
@@ -161,4 +154,5 @@
         <slf4j.version>1.7.25</slf4j.version>
         <awaitility.version>3.0.0</awaitility.version>
     </properties>
+
 </project>

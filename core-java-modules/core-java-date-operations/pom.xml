@@ -14,4 +14,27 @@
         <relativePath>../../parent-java</relativePath>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.darwinsys</groupId>
+            <artifactId>hirondelle-date4j</artifactId>
+            <version>${hirondelle-date4j.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <joda-time.version>2.10</joda-time.version>
+        <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
+    </properties>
+
 </project>
