@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-security-mvc-boot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-security-mvc-boot</name>
@@ -11,8 +10,8 @@
     <description>Spring Security MVC Boot</description>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
@@ -112,7 +111,6 @@
             <version>${ehcache-core.version}</version>
             <type>jar</type>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -227,7 +225,6 @@
             </build>
         </profile>
     </profiles>
-
 
     <properties>
         <start-class>org.baeldung.custom.Application</start-class>

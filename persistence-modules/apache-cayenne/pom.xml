@@ -27,7 +27,6 @@
             <version>${mysql.connector.version}</version>
             <scope>runtime</scope>
         </dependency>
-
     </dependencies>
 
     <build>

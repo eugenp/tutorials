@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-logging-log4j2</artifactId>
-	<name>spring-boot-logging-log4j2</name>
+    <name>spring-boot-logging-log4j2</name>
     <packaging>jar</packaging>
     <description>Demo project for Spring Boot Logging with Log4J2</description>
 
-	<!-- this needs to use the boot parent directly in order to not inherit logback dependencies -->
-	
+    <!-- this needs to use the boot parent directly in order to not inherit logback dependencies -->
+
     <parent>
-        <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
-        <version>2.0.5.RELEASE</version>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.1.RELEASE</version>
     </parent>
 
     <dependencies>
@@ -35,12 +35,12 @@
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
         <dependency>
-        	<groupId>org.projectlombok</groupId>
-        	<artifactId>lombok</artifactId>
-        	<version>${lombok.version}</version>
-        	<scope>provided</scope>
-    	</dependency>
-        
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- for Graylog demo -->
         <dependency>
             <!-- forcing spring boot 1.x sing log4j was dropped in spring boot 1.4 and beyond -->
@@ -55,30 +55,31 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-    
+
     <build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<forkCount>3</forkCount>
-					<reuseForks>true</reuseForks>
-					<excludes>
-						<exclude>**/*IntegrationTest.java</exclude>
-						<exclude>**/*IntTest.java</exclude>
-						<exclude>**/*ManualTest.java</exclude>
-						<exclude>**/*LiveTest.java</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-    	</plugins>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <forkCount>3</forkCount>
+                    <reuseForks>true</reuseForks>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IntTest.java</exclude>
+                        <exclude>**/*ManualTest.java</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
-    
+
     <properties>
         <start-class>com.baeldung.springbootlogging.SpringBootLoggingApplication</start-class>
-		<spring-boot-starter-log4j.version>1.3.8.RELEASE</spring-boot-starter-log4j.version>
-		<gelfj.version>1.1.16</gelfj.version>
-		<lombok.version>1.18.4</lombok.version>
+        <spring-boot-starter-log4j.version>1.3.8.RELEASE</spring-boot-starter-log4j.version>
+        <gelfj.version>1.1.16</gelfj.version>
+        <lombok.version>1.18.4</lombok.version>
     </properties>
+
 </project>

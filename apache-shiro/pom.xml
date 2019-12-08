@@ -6,10 +6,10 @@
     <artifactId>apache-shiro</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>apache-shiro</name>
-    
+
     <parent>
-        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-1</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-1</relativePath>
     </parent>
