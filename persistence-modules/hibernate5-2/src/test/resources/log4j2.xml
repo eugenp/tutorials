@@ -6,12 +6,12 @@
                 pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />
         </Console>
     </Appenders>
-    <Logger name="org.hibernate" level="info"/>
-    <Logger name="org.hibernate.SQL" level="debug"/>
-    <Logger name="org.hibernate.type.descriptor.sql" level="trace"/>
-    <Logger name="org.hibernate.stat" level="DEBUG" />
     <Loggers>
-        <Root level="debug" additivity="false">
+        <Logger name="org.hibernate" level="info"/>
+    	<Logger name="org.hibernate.SQL" level="debug"/>
+    	<Logger name="org.hibernate.type.descriptor.sql" level="trace"/>
+    	<Logger name="org.hibernate.stat" level="debug" />
+        <Root level="info" additivity="false">
             <AppenderRef ref="console" />
         </Root>
     </Loggers>
