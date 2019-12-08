@@ -16,7 +16,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ComponentScanAspectJFilterApp.class)
-public class ComponentScanAspectJFilterAppIntegrationTest {
+public class ComponentScanAspectJFilterAppUnitTest {
 
     @Test
     public void whenAspectJFilterIsUsed_thenComponentScanShouldRegisterBeanMatchingAspectJCreteria() {

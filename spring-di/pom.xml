@@ -85,6 +85,12 @@
             <artifactId>commons-io</artifactId>
             <version>${commons.io.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectjweaver.version}</version>
+        </dependency>
+
         <!-- Spring -->
         <!--        <dependency>-->
         <!--            <groupId>org.springframework</groupId>-->
@@ -157,6 +163,7 @@
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
         <mockito.version>1.10.19</mockito.version>
         <assertj.version>3.12.2</assertj.version>
+        <aspectjweaver.version>1.9.5</aspectjweaver.version>
     </properties>
 
 </project>
