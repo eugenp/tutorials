@@ -1,10 +1,15 @@
 package services;
 
+import models.User;
+
 public class UserServiceImpl implements UserService {
-    
+
     @Override
-    public String getUserName() {
-        return "Eugen Parashic";
+    public User getUser() {
+        User user = new User();
+        user.firstName = "Norman";
+        user.email = "norman@email.com";
+        return user;
     }
 
 }
