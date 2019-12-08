@@ -23,7 +23,30 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <finalName>core-java-reflection</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <compilerArgument>-parameters</compilerArgument>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <assertj-core.version>3.10.0</assertj-core.version>
     </properties>
 </project>

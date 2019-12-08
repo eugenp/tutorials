@@ -4,6 +4,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>oauth2-client</artifactId>
+    <name>oauth2-client</name>
     <packaging>war</packaging>
 
     <parent>
@@ -11,11 +12,6 @@
         <artifactId>oauth2-framework-impl</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
-    <properties>
-        <httpPort>9180</httpPort>
-        <httpsPort>9543</httpsPort>
-    </properties>
 
     <build>
         <plugins>
@@ -25,4 +21,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <httpPort>9180</httpPort>
+        <httpsPort>9543</httpsPort>
+    </properties>
+
 </project>

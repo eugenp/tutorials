@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>xml</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -58,6 +59,16 @@
             <groupId>javax.xml.stream</groupId>
             <artifactId>stax-api</artifactId>
             <version>${stax-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>${freemarker.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.spullara.mustache.java</groupId>
+            <artifactId>compiler</artifactId>
+            <version>${mustache.version}</version>
         </dependency>
         <!-- JMH Libraries -->
         <dependency>
@@ -135,7 +146,50 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.jibx</groupId>
+                    <artifactId>maven-jibx-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>org.jibx</groupId>
+                <artifactId>maven-jibx-plugin</artifactId>
+                <version>${maven-jibx-plugin.version}</version>
+                <configuration>
+                    <directory>src/main/resources</directory>
+                    <includes>
+                        <includes>*-binding.xml</includes>
+                    </includes>
+                    <excludes>
+                        <exclude>template-binding.xml</exclude>
+                    </excludes>
+                    <schemaBindingDirectory>src/main/resources</schemaBindingDirectory>
+                    <includeSchemaBindings>
+                        <includeSchemaBindings>*-binding.xml</includeSchemaBindings>
+                    </includeSchemaBindings>
+                    <verbose>true</verbose>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>process-classes</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>bind</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>process-test-classes</id>
+                        <phase>process-test-classes</phase>
+                        <goals>
+                            <goal>test-bind</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
@@ -324,6 +378,8 @@
         <xmlunit-assertj.version>2.6.3</xmlunit-assertj.version>
         <junit-jupiter.version>5.5.0</junit-jupiter.version>
         <jmh.version>1.21</jmh.version>
+        <freemarker.version>2.3.29</freemarker.version>
+        <mustache.version>0.9.6</mustache.version>
         <!-- util -->
         <commons-lang3.version>3.5</commons-lang3.version>
         <commons-lang.version>2.4</commons-lang.version>

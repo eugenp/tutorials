@@ -1,5 +1,7 @@
 package org.baeldung.javaxval.methodvalidation;
 
+import java.time.LocalDate;
+
 import org.baeldung.javaxval.methodvalidation.model.Customer;
 import org.baeldung.javaxval.methodvalidation.model.Reservation;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -8,8 +10,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
-
-import java.time.LocalDate;
 
 @Configuration
 @ComponentScan({ "org.baeldung.javaxval.methodvalidation.model" })

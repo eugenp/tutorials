@@ -8,13 +8,14 @@
 
     <session-config>
         <session-timeout>1</session-timeout>
+        <tracking-mode>COOKIE</tracking-mode>
 <!--          <cookie-config>
             <http-only>true</http-only>
             <secure>true</secure>
         </cookie-config>  -->
     </session-config>
     <listener>
-        <listener-class>org.baeldung.web.SessionListenerWithMetrics</listener-class>
+        <listener-class>com.baeldung.web.SessionListenerWithMetrics</listener-class>
     </listener>
    <!--  <listener>
         <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>

@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>patterns</artifactId>
-    <packaging>pom</packaging>
     <name>patterns</name>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -16,11 +16,15 @@
     <modules>
         <module>front-controller</module>
         <module>intercepting-filter</module>
-        <module>design-patterns</module>
-        <module>design-patterns-2</module>
+        <module>design-patterns-architectural</module>
+        <module>design-patterns-behavioral</module>
+        <module>design-patterns-behavioral-2</module>
+        <module>design-patterns-creational</module>
+        <module>design-patterns-functional</module>
+        <module>design-patterns-structural</module>
         <module>solid</module>
         <module>dip</module>
-        <module>backoff-jitter</module>
+        <module>design-patterns-cloud</module>
     </modules>
 
     <dependencyManagement>

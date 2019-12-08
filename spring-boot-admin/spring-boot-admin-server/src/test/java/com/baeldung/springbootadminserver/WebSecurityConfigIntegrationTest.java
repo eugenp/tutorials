@@ -14,6 +14,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.unauthenticated;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -51,21 +52,21 @@ public class WebSecurityConfigIntegrationTest {
           .password("admin"));
 
         mockMvc
-          .perform(get("/api/applications/"))
+          .perform(get("/applications/"))
           .andExpect(status().is2xxSuccessful());
 
     }
 
     @Test
     public void whenHttpBasicAttempted_ThenSuccess() throws Exception {
-        mockMvc.perform(get("/env").with(httpBasic("admin", "admin")));
+        mockMvc.perform(get("/actuator/env").with(httpBasic("admin", "admin")));
     }
 
     @Test
     public void whenInvalidHttpBasicAttempted_ThenUnauthorized() throws Exception {
         mockMvc
-          .perform(get("/env").with(httpBasic("admin", "invalid")))
-          .andExpect(status().isUnauthorized());
+          .perform(get("/actuator/env").with(httpBasic("admin", "invalid")))
+          .andExpect(unauthenticated());
     }
 
 }

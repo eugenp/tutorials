@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>load-testing-comparison</artifactId>
-	<name>load-testing-comparison</name>
-	
+    <name>load-testing-comparison</name>
+
     <parent>
-        <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -34,11 +34,6 @@
             <artifactId>scala-library</artifactId>
             <version>${scala.version}</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>net.sf.grinder</groupId>-->
-            <!--<artifactId>grinder</artifactId>-->
-            <!--<version>${grinder.version}</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -47,33 +42,22 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-            <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>${spring.boot.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring.boot.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
@@ -81,13 +65,13 @@
     <build>
         <!--<testSourceDirectory>src/test/scala</testSourceDirectory>-->
         <!--<pluginManagement>-->
-            <!--<plugins>-->
-                <!--<plugin>-->
-                    <!--<groupId>net.alchim31.maven</groupId>-->
-                    <!--<artifactId>scala-maven-plugin</artifactId>-->
-                    <!--<version>${scala-maven-plugin.version}</version>-->
-                <!--</plugin>-->
-            <!--</plugins>-->
+        <!--<plugins>-->
+        <!--<plugin>-->
+        <!--<groupId>net.alchim31.maven</groupId>-->
+        <!--<artifactId>scala-maven-plugin</artifactId>-->
+        <!--<version>${scala-maven-plugin.version}</version>-->
+        <!--</plugin>-->
+        <!--</plugins>-->
         <!--</pluginManagement>-->
         <plugins>
             <plugin>
@@ -96,40 +80,40 @@
                 <version>2.0.5.RELEASE</version>
             </plugin>
             <!--<plugin>-->
-                <!--<groupId>net.alchim31.maven</groupId>-->
-                <!--<artifactId>scala-maven-plugin</artifactId>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>testCompile</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<args>-->
-                                <!--&lt;!&ndash;<arg>-Ybackend:GenBCode</arg> &ndash;&gt;-->
-                                <!--<arg>-Ydelambdafy:method</arg>-->
-                                <!--<arg>-target:jvm-1.8</arg>-->
-                                <!--<arg>-deprecation</arg>-->
-                                <!--<arg>-feature</arg>-->
-                                <!--<arg>-unchecked</arg>-->
-                                <!--<arg>-language:implicitConversions</arg>-->
-                                <!--<arg>-language:postfixOps</arg>-->
-                            <!--</args>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
+            <!--<groupId>net.alchim31.maven</groupId>-->
+            <!--<artifactId>scala-maven-plugin</artifactId>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<goals>-->
+            <!--<goal>testCompile</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<args>-->
+            <!--&lt;!&ndash;<arg>-Ybackend:GenBCode</arg> &ndash;&gt;-->
+            <!--<arg>-Ydelambdafy:method</arg>-->
+            <!--<arg>-target:jvm-1.8</arg>-->
+            <!--<arg>-deprecation</arg>-->
+            <!--<arg>-feature</arg>-->
+            <!--<arg>-unchecked</arg>-->
+            <!--<arg>-language:implicitConversions</arg>-->
+            <!--<arg>-language:postfixOps</arg>-->
+            <!--</args>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
             <!--</plugin>-->
             <!--<plugin>-->
-                <!--<groupId>io.gatling</groupId>-->
-                <!--<artifactId>gatling-maven-plugin</artifactId>-->
-                <!--<version>${gatling-maven-plugin.version}</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<phase>test</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>execute</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
+            <!--<groupId>io.gatling</groupId>-->
+            <!--<artifactId>gatling-maven-plugin</artifactId>-->
+            <!--<version>${gatling-maven-plugin.version}</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<phase>test</phase>-->
+            <!--<goals>-->
+            <!--<goal>execute</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
             <!--</plugin>-->
         </plugins>
     </build>
@@ -143,8 +127,6 @@
         <scala-maven-plugin.version>3.2.2</scala-maven-plugin.version> <!--3.2.2 --> <!--3.3.2 -->
         <gatling-maven-plugin.version>2.2.1</gatling-maven-plugin.version> <!--2.2.1 --> <!--2.2.4 -->
         <jmeter.version>5.0</jmeter.version>
-        <grinder.version>3.11</grinder.version>
-        <spring.boot.version>2.0.5.RELEASE</spring.boot.version>
     </properties>
-    
+
 </project>

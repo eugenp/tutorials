@@ -1,9 +1,9 @@
-=========
+## jsoup
 
-## jsoup Example Project
+This module contains articles about jsoup.
 
 ### Relevant Articles: 
-- [Parsing HTML in Java with Jsoup](http://www.baeldung.com/java-with-jsoup)
+- [Parsing HTML in Java with Jsoup](https://www.baeldung.com/java-with-jsoup)
 
 ### Build the Project
 

@@ -1,35 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.baeldung.exception.numberformat</groupId>
-	<artifactId>core-java-exceptions</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>core-java-exceptions</name>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.exceptions</groupId>
+    <artifactId>core-java-exceptions</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <name>core-java-exceptions</name>
+    <packaging>jar</packaging>
 
-	<parent>
-		<groupId>com.baeldung</groupId>
-		<artifactId>parent-java</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../../parent-java</relativePath>
-	</parent>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-java</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-java</relativePath>
+    </parent>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>${commons-lang3.version}</version>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>${javax.mail.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- test scoped -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-	<properties>
-		<commons-lang3.version>3.9</commons-lang3.version>
-	</properties>
+    <properties>
+        <javax.mail.version>1.5.0-b01</javax.mail.version>
+        <!-- testing -->
+        <assertj-core.version>3.10.0</assertj-core.version>
+    </properties>
 
 </project>

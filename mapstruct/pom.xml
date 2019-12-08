@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mapstruct</artifactId>
-    <name>mapstruct</name>
     <version>1.0</version>
+    <name>mapstruct</name>
     <packaging>jar</packaging>
 
     <parent>
@@ -34,6 +34,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${org.projectlombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -65,11 +71,12 @@
     </build>
 
     <properties>
-        <org.mapstruct.version>1.3.0.Beta2</org.mapstruct.version>
+        <org.mapstruct.version>1.3.0.Final</org.mapstruct.version>
         <springframework.version>4.3.4.RELEASE</springframework.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <org.projectlombok.version>1.18.4</org.projectlombok.version>
+        <assertj.version>3.11.1</assertj.version>
     </properties>
 
 </project> 

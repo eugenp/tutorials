@@ -23,15 +23,15 @@ public class LoggingAspect {
         }
     };
 
-    @Pointcut("@target(org.springframework.stereotype.Repository)")
+    @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.dao.FooDao.*(..))")
     public void repositoryMethods() {
     }
 
-    @Pointcut("@annotation(com.baeldung.aop.annotations.Loggable)")
+    @Pointcut("within(com.baeldung..*) && @annotation(com.baeldung.aop.annotations.Loggable)")
     public void loggableMethods() {
     }
 
-    @Pointcut("@args(com.baeldung.aop.annotations.Entity)")
+    @Pointcut("within(com.baeldung..*) && @args(com.baeldung.aop.annotations.Entity)")
     public void methodsAcceptingEntities() {
     }
 

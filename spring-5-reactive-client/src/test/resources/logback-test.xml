@@ -6,11 +6,15 @@
             <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
         </layout>
     </appender>
-    
+
     <logger name="org.springframework" level="INFO" />
+
+    <logger name="com.baeldung.reactive.logging.jetty" level="DEBUG" />
+    <logger name="reactor.netty.http.client.HttpClient" level="DEBUG" />
+    <logger name="com.baeldung.reactive.logging" level="DEBUG" />
 
     <root level="INFO">
         <appender-ref ref="stdout" />
     </root>
-    
+
 </configuration>

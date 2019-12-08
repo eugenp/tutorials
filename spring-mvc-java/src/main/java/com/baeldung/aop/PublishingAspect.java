@@ -20,11 +20,11 @@ public class PublishingAspect {
         this.eventPublisher = eventPublisher;
     }
 
-    @Pointcut("@target(org.springframework.stereotype.Repository)")
+    @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.dao.FooDao.*(..))")
     public void repositoryMethods() {
     }
 
-    @Pointcut("execution(* *..create*(Long,..))")
+    @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.dao.FooDao.create*(Long,..))")
     public void firstLongParamMethods() {
     }
 

@@ -7,13 +7,8 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ // @formatter:off
-    JacksonCollectionDeserializationUnitTest.class
-    ,JacksonSerializationEnumsUnitTest.class
-    ,JacksonDeserializationUnitTest.class
-    ,JacksonDeserializationUnitTest.class
-    ,JacksonPrettyPrintUnitTest.class
+     JacksonPrettyPrintUnitTest.class
     ,SandboxUnitTest.class
-    ,JacksonFieldUnitTest.class
 }) // @formatter:on
 public class UnitTestSuite {
 }

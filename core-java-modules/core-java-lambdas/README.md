@@ -6,3 +6,4 @@
 - [Lambda Expressions and Functional Interfaces: Tips and Best Practices](http://www.baeldung.com/java-8-lambda-expressions-tips)
 - [Exceptions in Java 8 Lambda Expressions](http://www.baeldung.com/java-lambda-exceptions)
 - [Method References in Java](https://www.baeldung.com/java-method-references)
+- [The Double Colon Operator in Java 8](https://www.baeldung.com/java-8-double-colon-operator)

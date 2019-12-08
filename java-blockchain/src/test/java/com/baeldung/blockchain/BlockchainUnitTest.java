@@ -3,6 +3,7 @@ package com.baeldung.blockchain;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.AfterClass;
@@ -17,10 +18,10 @@ public class BlockchainUnitTest {
 
     @BeforeClass
     public static void setUp() {
-        Block genesisBlock = new Block("The is the Genesis Block.", "0");
+        Block genesisBlock = new Block("The is the Genesis Block.", "0", new Date().getTime());
         genesisBlock.mineBlock(prefix);
         blockchain.add(genesisBlock);
-        Block firstBlock = new Block("The is the First Block.", genesisBlock.getHash());
+        Block firstBlock = new Block("The is the First Block.", genesisBlock.getHash(), new Date().getTime());
         firstBlock.mineBlock(prefix);
         blockchain.add(firstBlock);
     }
@@ -28,7 +29,7 @@ public class BlockchainUnitTest {
     @Test
     public void givenBlockchain_whenNewBlockAdded_thenSuccess() {
         Block newBlock = new Block("The is a New Block.", blockchain.get(blockchain.size() - 1)
-            .getHash());
+            .getHash(), new Date().getTime());
         newBlock.mineBlock(prefix);
         assertTrue(newBlock.getHash()
             .substring(0, prefix)
