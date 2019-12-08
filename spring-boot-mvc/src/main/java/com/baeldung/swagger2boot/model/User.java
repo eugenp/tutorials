@@ -1,4 +1,4 @@
-package com.baeldung.springfox.model;
+package com.baeldung.swagger2boot.model;
 
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
