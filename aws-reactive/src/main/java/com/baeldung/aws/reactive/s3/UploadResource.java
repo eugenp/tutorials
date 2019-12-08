@@ -92,6 +92,7 @@ public class UploadResource {
             mediaType = MediaType.APPLICATION_OCTET_STREAM;
         }
 
+        log.info("[I95] uploadHandler: mediaType{}, length={}", mediaType, length);
         CompletableFuture<PutObjectResponse> future = s3client
           .putObject(PutObjectRequest.builder()
             .bucket(s3config.getBucket())
