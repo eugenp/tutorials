@@ -18,8 +18,8 @@
   <logger name="org.hibernate.stat">
     <level value="debug" />
   </logger>
-  <Root>
+  <root>
     <priority value ="info" />
     <appender-ref ref="STDOUT" />
-  </Root>
+  </root>
 </log4j:configuration>
