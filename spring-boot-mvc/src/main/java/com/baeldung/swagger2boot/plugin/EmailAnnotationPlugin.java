@@ -1,4 +1,4 @@
-package com.baeldung.springfox.plugin;
+package com.baeldung.swagger2boot.plugin;
 
 import static springfox.bean.validators.plugins.Validators.annotationFromBean;
 
