@@ -42,23 +42,34 @@ file_read(){
     exec {file_descriptor}>&-
 }
 
-
-
-default_input_read(){
-    echo "Default input read:"
-    prompt=$'What\'s up doc: \n'
-    default_input="Nothing much just killing time"
-    read -e -p "$prompt" -i "$default_input" actual_input
-    echo "word -> [$actual_input]"
-}
-
+# section 3.2
 advanced_pipeing(){
-    ls -ll | ( declare -a input
+    ls -ll | { declare -a input
+               read
                while read -a input; 
                do
                    echo "${input[0]} ${input[8]}"
-               done )
+               done }
 }
+
+# section 3.3
+timeout_input_read(){
+    prompt="You shall not pass:"
+    read -p "$prompt" -s -r -t 5 input
+        if [ -z "$input" ]; then
+            echo -e "\ntimeout occured!"
+        else
+            echo -e "\ninput word [$input]"
+        fi
+}
+
+exactly_n_read(){
+    prompt="Reading exactly 11 chars:"
+    read -p "$prompt" -N 11 -t 5 input1 input2 
+    echo -e "\ninput word1 [$input1]"
+    echo "input word2 [$input2]"
+}
+
 
 advanced_pipeing_ps(){
 # process substitution
