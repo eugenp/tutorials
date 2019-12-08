@@ -1,6 +1,11 @@
-package com.baeldung.algorithms.subarray.maximum;
+package com.baeldung.algorithms.maximumsubarray;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BruteForceAlgorithm {
+
+    private Logger logger = LoggerFactory.getLogger(BruteForceAlgorithm.class.getName());
 
     public int maxSubArray(int[] arr) {
 
@@ -23,7 +28,7 @@ public class BruteForceAlgorithm {
                 }
             }
         }
-        System.out.println("Found Maximum Subarray between " + start + " and " + end);
+        logger.info("Found Maximum Subarray between {} and {}", start, end);
         return maximumSubArraySum;
     }
 
