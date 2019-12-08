@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BruteForceAlgorithmTest {
+class BruteForceAlgorithmUnitTest {
 
     @Test
     void givenArrayWithNegativeNumberWhenMaximumSubarrayThenReturns6() {
