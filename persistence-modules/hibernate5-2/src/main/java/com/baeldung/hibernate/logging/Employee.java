@@ -24,13 +24,6 @@ public class Employee {
         this.name = name;
         this.employeeNumber = employeeNumber;
     }
-    
-    public Employee(String name, String employeeNumber, String title) {
-        super();
-        this.name = name;
-        this.employeeNumber = employeeNumber;
-        this.title = title;
-    }
 
     public long getId() {
         return id;
