@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>optaplanner</artifactId>
-	<name>optaplanner</name>
+    <name>optaplanner</name>
 
     <parent>
-        <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
@@ -16,8 +16,12 @@
         <dependency>
             <groupId>org.optaplanner</groupId>
             <artifactId>optaplanner-core</artifactId>
-            <version>7.9.0.Final</version>
+            <version>${optaplanner-core.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <optaplanner-core.version>7.9.0.Final</optaplanner-core.version>
+    </properties>
 
 </project>

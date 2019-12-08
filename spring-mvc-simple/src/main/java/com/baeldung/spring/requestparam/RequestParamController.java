@@ -2,6 +2,7 @@ package com.baeldung.spring.requestparam;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,12 @@ public class RequestParamController {
     @ResponseBody
     public String getFoos2(@RequestParam(required = false) String id){ 
         return "ID: " + id;
+    }
+
+    @GetMapping("/api/foosOptional")
+    @ResponseBody
+    public String getFoosOptional(@RequestParam Optional<String> id){
+        return "ID: " + id.orElseGet(() -> "not provided");
     }
     
     @GetMapping("/api/foos3")

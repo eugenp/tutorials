@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean name="ftpReader" class="com.baeldung.beaninjection.FtpReader">
+		<constructor-arg value="localhost" />
+		<constructor-arg value="21" />
+	</bean>
+	
+	<bean name="readerService" class="com.baeldung.beaninjection.ReaderService">
+		<property name="ftpReader" ref="ftpReader" />
+	</bean>
+	
+</beans>

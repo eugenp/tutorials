@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-persistence-simple</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -116,7 +117,7 @@
             <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>apt-maven-plugin</artifactId>
-                <version>1.1.3</version>
+                <version>${apt-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -130,7 +131,7 @@
                     </execution>
                 </executions>
             </plugin>
-        </plugins>	
+        </plugins>
     </build>
 
     <properties>
@@ -148,6 +149,7 @@
         <!-- util -->
         <guava.version>21.0</guava.version>
         <assertj.version>3.8.0</assertj.version>
+        <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
     </properties>
 
 </project>

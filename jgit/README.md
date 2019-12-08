@@ -1,3 +1,7 @@
-## Relevant articles:
+## JGit
 
-- [A Guide to JGit](http://www.baeldung.com/jgit)
+This module contains articles about JGit.
+
+### Relevant articles:
+
+- [A Guide to JGit](https://www.baeldung.com/jgit)

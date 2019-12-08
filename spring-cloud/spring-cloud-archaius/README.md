@@ -1,9 +1,11 @@
+# Spring Cloud Archaius
+
+This module contains articles about Spring Cloud with Netflix Archaius
+
 # Relevant Articles
 
 - [Introduction to Netflix Archaius with Spring Cloud](https://www.baeldung.com/netflix-archaius-spring-cloud-integration)
 - [Netflix Archaius with Various Database Configurations](https://www.baeldung.com/netflix-archaius-database-configurations)
-
-# Spring Cloud Archaius
 
 #### Basic Config
 This service has the basic, out-of-the-box Spring Cloud Netflix Archaius configuration.

@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Bean;
 import com.baeldung.componentscan.ExampleBean;
 
 @SpringBootApplication
-//@ComponentScan(basePackages = "com.baeldung.componentscan.springbootapp.animals")
-//@ComponentScan ( excludeFilters = @ComponentScan.Filter(type=FilterType.REGEX,pattern="com\\.baeldung\\.componentscan\\.springbootapp\\.flowers\\..*"))
-//@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = Rose.class))
+// @ComponentScan(basePackages = "com.baeldung.componentscan.springbootapp.animals")
+// @ComponentScan ( excludeFilters = @ComponentScan.Filter(type=FilterType.REGEX,pattern="com\\.baeldung\\.componentscan\\.springbootapp\\.flowers\\..*"))
+// @ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = Rose.class))
 
 public class SpringBootComponentScanApp {
     private static ApplicationContext applicationContext;

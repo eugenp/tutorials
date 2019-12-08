@@ -1,7 +1,7 @@
 package org.baeldung;
 
+import org.baeldung.security.SecurityJavaConfig;
 import org.baeldung.spring.ClientWebConfig;
-import org.baeldung.spring.SecurityJavaConfig;
 import org.baeldung.spring.WebConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;

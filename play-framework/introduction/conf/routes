@@ -2,11 +2,14 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET		/		controllers.StudentController.listStudents()
-POST     /:id		controllers.StudentController.retrieve(id:Int)
-POST    /			controllers.StudentController.create()
-PUT		/		controllers.StudentController.update()
-DELETE	/:id		controllers.StudentController.delete(id:Int)
+# An example controller showing a sample home page
+GET     /                               controllers.HomeController.index
+GET     /baeldung/html                  controllers.HomeController.applyHtml
+GET     /baeldung/bad-req               controllers.HomeController.badRequestPage
+GET     /baeldung/not-found             controllers.HomeController.notFoundPage
+GET     /baeldung/custom-content-type   controllers.HomeController.customContentType
+GET     /baeldung/async                 controllers.HomeController.asyncOperation
+GET     /baeldung/headers               controllers.HomeController.setHeaders
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /assets/*file                   controllers.Assets.versioned(path="/public", file: Asset)

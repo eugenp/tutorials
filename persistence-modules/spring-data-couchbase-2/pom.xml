@@ -1,5 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.baeldung</groupId>
     <artifactId>spring-data-couchbase-2</artifactId>
@@ -15,7 +17,6 @@
     </parent>
 
     <dependencies>
-
         <!-- Spring Context and Couchbase Peristence -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -59,13 +60,24 @@
             <version>${spring-framework.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>${javax.el.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>${javax.el.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-       <spring-framework.version>4.3.4.RELEASE</spring-framework.version>
+        <spring-framework.version>4.3.4.RELEASE</spring-framework.version>
         <spring-data-couchbase.version>2.1.5.RELEASE</spring-data-couchbase.version>
         <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
         <joda-time.version>2.9.6</joda-time.version>
+        <javax.el.version>3.0.0</javax.el.version>
     </properties>
 
 </project>

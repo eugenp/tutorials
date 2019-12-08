@@ -1,6 +1,6 @@
-=========
+## Spring Session
 
-## Spring Session Examples
+This module contains articles about Spring Session
 
 ### Relevant Articles: 
 - [Guide to Spring Session](https://www.baeldung.com/spring-session)

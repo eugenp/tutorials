@@ -1,6 +1,7 @@
-package com.baeldung.cdi.cdi2observers.application;
+package com.baeldung.cdi2observers.application;
 
-import com.baeldung.cdi.cdi2observers.events.ExampleEvent;
+import com.baeldung.cdi2observers.events.ExampleEvent;
+
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 

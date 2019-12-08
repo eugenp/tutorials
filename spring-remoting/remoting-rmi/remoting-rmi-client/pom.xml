@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>remoting-rmi-client</artifactId>
-	<name>remoting-rmi-client</name>
+    <name>remoting-rmi-client</name>
 
     <parent>
-        <artifactId>remoting-rmi</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>remoting-rmi</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-	
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -29,4 +29,5 @@
             <version>${project.version}</version>
         </dependency>
     </dependencies>
+
 </project>

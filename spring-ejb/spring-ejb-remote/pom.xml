@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-ejb-remote</artifactId>
-	<name>spring-ejb-remote</name>
+    <name>spring-ejb-remote</name>
     <packaging>ejb</packaging>
-	
+
     <parent>
         <groupId>com.baeldung.spring.ejb</groupId>
         <artifactId>spring-ejb</artifactId>
@@ -26,7 +27,6 @@
         </dependency>
     </dependencies>
 
-
     <profiles>
         <!-- mvn clean package cargo:run -Pwildfly-standalone -->
         <profile>
@@ -46,7 +46,7 @@
                             <container>
                                 <containerId>wildfly10x</containerId>
                                 <zipUrlInstaller>
-                                    <url>http://download.jboss.org/wildfly/12.0.0.Final/wildfly-12.0.0.Final.zip</url>
+                                    <url>https://download.jboss.org/wildfly/12.0.0.Final/wildfly-12.0.0.Final.zip</url>
                                 </zipUrlInstaller>
                             </container>
 

@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>redis</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>redis</name>
@@ -44,4 +43,5 @@
         <redisson.version>3.3.0</redisson.version>
         <lettuce-core.version>5.0.1.RELEASE</lettuce-core.version>
     </properties>
+
 </project>

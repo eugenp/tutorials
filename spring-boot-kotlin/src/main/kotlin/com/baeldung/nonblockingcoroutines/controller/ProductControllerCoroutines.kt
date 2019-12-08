@@ -5,6 +5,8 @@ import com.baeldung.nonblockingcoroutines.repository.ProductRepositoryCoroutines
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
 import org.springframework.beans.factory.annotation.Autowired
@@ -28,17 +30,17 @@ class ProductControllerCoroutines {
     }
 
     @GetMapping("/{id}/stock")
-    suspend fun findOneInStock(@PathVariable id: Int): ProductStockView {
-        val product: Deferred<Product?> = GlobalScope.async {
+    suspend fun findOneInStock(@PathVariable id: Int): ProductStockView = coroutineScope {
+        val product: Deferred<Product?> = async(start = CoroutineStart.LAZY) {
             productRepository.getProductById(id)
         }
-        val quantity: Deferred<Int> = GlobalScope.async {
+        val quantity: Deferred<Int> = async(start = CoroutineStart.LAZY) {
             webClient.get()
               .uri("/stock-service/product/$id/quantity")
               .accept(APPLICATION_JSON)
               .awaitExchange().awaitBody<Int>()
         }
-        return ProductStockView(product.await()!!, quantity.await())
+        ProductStockView(product.await()!!, quantity.await())
     }
 
     @FlowPreview

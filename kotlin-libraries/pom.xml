@@ -56,7 +56,6 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -78,7 +77,6 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -94,13 +92,12 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.arrow-kt/arrow-core -->
         <dependency>
             <groupId>io.arrow-kt</groupId>
             <artifactId>arrow-core</artifactId>
-            <version>0.7.3</version>
+            <version>${arrow-core.version}</version>
         </dependency>
 
         <dependency>
@@ -117,7 +114,7 @@
         <dependency>
             <groupId>nl.komponents.kovenant</groupId>
             <artifactId>kovenant</artifactId>
-            <version>3.3.0</version>
+            <version>${kovenant.version}</version>
             <type>pom</type>
         </dependency>
 
@@ -125,52 +122,31 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>27.1-jre</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-collections-immutable -->
-        <dependency>
-            <groupId>org.jetbrains.kotlinx</groupId>
-            <artifactId>kotlinx-collections-immutable</artifactId>
-            <version>0.1</version>
-        </dependency>
 
-        <!-- MockK dependencies-->
-        <dependency>
-            <groupId>io.mockk</groupId>
-            <artifactId>mockk</artifactId>
-            <version>${mockk.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
-            <version>1.8.13</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy-agent</artifactId>
-            <version>1.8.13</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.objenesis</groupId>
             <artifactId>objenesis</artifactId>
-            <version>2.6</version>
+            <version>${objenesis.version}</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>io.reactivex.rxjava2</groupId>
             <artifactId>rxkotlin</artifactId>
-            <version>2.3.0</version>
+            <version>${rxkotlin.version}</version>
         </dependency>
     </dependencies>
 
@@ -185,7 +161,11 @@
         <junit.vintage.version>5.2.0</junit.vintage.version>
         <assertj.version>3.10.0</assertj.version>
         <exposed.version>0.10.4</exposed.version>
-        <mockk.version>1.9.3</mockk.version>
+        <kovenant.version>3.3.0</kovenant.version>
+        <byte-buddy.version>1.8.13</byte-buddy.version>
+        <objenesis.version>2.6</objenesis.version>
+        <rxkotlin.version>2.3.0</rxkotlin.version>
+        <arrow-core.version>0.7.3</arrow-core.version>
     </properties>
 
 </project>
