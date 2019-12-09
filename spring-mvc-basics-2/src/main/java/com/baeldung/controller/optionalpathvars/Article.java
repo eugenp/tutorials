@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.controller.optionalpathvars;
 
 public class Article {
 
