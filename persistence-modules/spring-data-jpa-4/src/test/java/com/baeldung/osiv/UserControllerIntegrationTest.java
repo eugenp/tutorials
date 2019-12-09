@@ -1,8 +1,7 @@
 package com.baeldung.osiv;
 
-import com.baeldung.Application;
-import com.baeldung.model.BasicUser;
-import com.baeldung.repository.BasicUserRepository;
+import com.baeldung.osiv.model.BasicUser;
+import com.baeldung.osiv.repository.BasicUserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,8 +22,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@ContextConfiguration(classes = Application.class)
 @ActiveProfiles("test")
+@ContextConfiguration(classes = OsivApplication.class)
 class UserControllerIntegrationTest {
 
     @Autowired

@@ -1,8 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -499,12 +499,12 @@
                 <module>immutables</module>
 
                 <module>jackson</module>
-                <module>jackson-2</module>
                 <module>jackson-simple</module>
                 <module>jackson-annotations</module>
                 <module>jackson-exceptions</module>
                 <module>jackson-conversions</module>
                 <module>jackson-conversions-2</module>
+                <module>jackson-custom-conversions</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
@@ -574,6 +574,7 @@
                 <module>mapstruct</module>
                 <!-- <module>maven-all/compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
                 <module>maven-all/maven</module>
+                <module>maven-all/maven-custom-plugin/counter-maven-plugin</module>
                 <module>maven-all/maven-war-plugin</module>
                 <module>maven-all/profiles</module>
                 <module>maven-all/versions-maven-plugin</module>
@@ -814,7 +815,8 @@
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
                 <module>spring-roo</module>
-                <module>spring-scheduling</module><module>spring-security-acl</module>
+                <module>spring-scheduling</module>
+                <module>spring-security-acl</module>
                 <module>spring-security-angular/server</module>
                 <module>spring-security-cache-control</module>
 
@@ -1137,12 +1139,12 @@
                 <module>immutables</module>
 
                 <module>jackson</module>
-                <module>jackson-2</module>
                 <module>jackson-simple</module>
                 <module>jackson-annotations</module>
                 <module>jackson-exceptions</module>
                 <module>jackson-conversions</module>
                 <module>jackson-conversions-2</module>
+                <module>jackson-custom-conversions</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
@@ -1208,6 +1210,7 @@
                 <module>mapstruct</module>
                 <!-- <module>maven-all/compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
                 <module>maven-all/maven</module>
+                <module>maven-all/maven-custom-plugin/counter-maven-plugin</module>
                 <module>maven-all/maven-war-plugin</module>
                 <module>maven-all/profiles</module>
                 <module>maven-all/versions-maven-plugin</module>
@@ -1539,7 +1542,6 @@
             </modules>
 
         </profile>
-
 
     </profiles>
 

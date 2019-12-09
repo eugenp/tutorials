@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-data</artifactId>
     <name>libraries-data</name>
@@ -166,7 +166,7 @@
         <flink.version>1.5.0</flink.version>
         <hazelcast.version>3.8.4</hazelcast.version>
         <org.apache.crunch.crunch-core.version>0.15.0</org.apache.crunch.crunch-core.version>
-        <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client> 
+        <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client>
         <slf4j.version>1.7.25</slf4j.version>
     </properties>
 
