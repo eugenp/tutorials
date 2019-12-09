@@ -1,16 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>libraries-server</name>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.eclipse.paho</groupId>
@@ -73,29 +74,23 @@
             <version>${tomcat.version}</version>
         </dependency>
 
-         <dependency>
-             <groupId>org.igniterealtime.smack</groupId>
-             <artifactId>smack-tcp</artifactId>
-             <version>${smack.version}</version>
-         </dependency>
+        <dependency>
+            <groupId>org.igniterealtime.smack</groupId>
+            <artifactId>smack-tcp</artifactId>
+            <version>${smack.version}</version>
+        </dependency>
 
-         <dependency>
-             <groupId>org.igniterealtime.smack</groupId>
-             <artifactId>smack-im</artifactId>
-             <version>${smack.version}</version>
-         </dependency>
+        <dependency>
+            <groupId>org.igniterealtime.smack</groupId>
+            <artifactId>smack-extensions</artifactId>
+            <version>${smack.version}</version>
+        </dependency>
 
-         <dependency>
-             <groupId>org.igniterealtime.smack</groupId>
-             <artifactId>smack-extensions</artifactId>
-             <version>${smack.version}</version>
-         </dependency>
-
-         <dependency>
-             <groupId>org.igniterealtime.smack</groupId>
-             <artifactId>smack-java7</artifactId>
-             <version>${smack.version}</version>
-         </dependency>
+        <dependency>
+            <groupId>org.igniterealtime.smack</groupId>
+            <artifactId>smack-java7</artifactId>
+            <version>${smack.version}</version>
+        </dependency>
 
         <!-- NanoHTTPD -->
         <dependency>
@@ -116,7 +111,6 @@
         <httpclient.version>4.5.3</httpclient.version>
         <jetty.version>9.4.8.v20171121</jetty.version>
         <netty.version>4.1.20.Final</netty.version>
-        <commons.collections.version>4.1</commons.collections.version>
         <tomcat.version>8.5.24</tomcat.version>
         <smack.version>4.3.1</smack.version>
         <eclipse.paho.client.mqttv3.version>1.2.0</eclipse.paho.client.mqttv3.version>

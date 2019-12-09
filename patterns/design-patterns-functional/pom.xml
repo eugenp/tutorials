@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>design-patterns-functional</artifactId>
     <version>1.0</version>
     <name>design-patterns-functional</name>
-	<packaging>jar</packaging>
-	
+    <packaging>jar</packaging>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>patterns</artifactId>
@@ -14,12 +14,10 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <dependencies>
-    </dependencies>
-	
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
 </project>

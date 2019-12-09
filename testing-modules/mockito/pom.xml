@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>mockito</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>mockito</name>
@@ -14,7 +14,6 @@
     </parent>
 
     <dependencies>
-    
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -83,9 +82,9 @@
     </build>
 
     <properties>
-    	<spring-boot.version>2.0.4.RELEASE</spring-boot.version>
-    	<spring-framework.version>5.0.8.RELEASE</spring-framework.version>
-    	<spring-data.version>2.0.9.RELEASE</spring-data.version>
+        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
+        <spring-framework.version>5.0.8.RELEASE</spring-framework.version>
+        <spring-data.version>2.0.9.RELEASE</spring-data.version>
         <!-- util -->
         <guava.version>19.0</guava.version>
 

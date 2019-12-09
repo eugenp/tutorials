@@ -17,3 +17,8 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Uploading MultipartFile with Spring RestTemplate](https://www.baeldung.com/spring-rest-template-multipart-upload)
 - [Get and Post Lists of Objects with RestTemplate](https://www.baeldung.com/spring-rest-template-list)
 - [Copy of RestTemplate Post Request with JSON](https://www.baeldung.com/spring-resttemplate-post-json-test)
+
+### NOTE:
+
+This module is closed and should **not** be used to store the code
+for any further articles.

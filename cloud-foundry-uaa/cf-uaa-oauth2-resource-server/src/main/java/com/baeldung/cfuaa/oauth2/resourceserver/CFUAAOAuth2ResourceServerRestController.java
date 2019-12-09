@@ -18,7 +18,7 @@ public class CFUAAOAuth2ResourceServerRestController {
 
     @GetMapping("/read")
     public String read(JwtAuthenticationToken jwtAuthenticationToken) {
-        return "Hello write: " + jwtAuthenticationToken.getTokenAttributes();
+        return "Hello read: " + jwtAuthenticationToken.getTokenAttributes();
     }
 
     @GetMapping("/write")

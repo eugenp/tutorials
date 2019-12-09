@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>persistence-modules</artifactId>
     <name>persistence-modules</name>
@@ -18,28 +18,34 @@
         <module>apache-cayenne</module>
         <module>core-java-persistence</module>
         <module>deltaspike</module>
+        <module>elasticsearch</module>
         <module>flyway</module>
         <module>hbase</module>
         <module>hibernate5</module>
-        <module>hibernate-ogm</module>
-        <module>hibernate-mapping</module>
         <module>hibernate5-2</module>
+        <module>hibernate-mapping</module> <!-- long running -->
+        <module>hibernate-ogm</module>
         <module>influxdb</module>
         <module>java-cassandra</module>
         <module>java-cockroachdb</module>
         <module>java-jdbi</module>
-        <module>java-jpa</module>
-        <module>java-jpa-2</module>
-        <module>java-mongodb</module>
-        <module>persistence-libraries</module>
-        <module>jnosql</module>
+        <module>java-jpa</module> <!-- long running -->
+        <module>java-jpa-2</module> <!-- long running -->
+        <module>java-mongodb</module> <!-- long running -->
+        <module>jnosql</module> <!-- long running -->
+        <module>jpa-hibernate-cascade-type</module>
         <module>liquibase</module>
         <module>orientdb</module>
+        <module>persistence-libraries</module>
         <module>querydsl</module>
+        <module>r2dbc</module>
         <module>redis</module>
+        <!-- <module>sirix</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
         <module>solr</module>
-        <module>spring-boot-persistence-h2</module>
+        <module>spring-boot-jdbi</module>
+        <module>spring-boot-mysql</module>
         <module>spring-boot-persistence</module>
+        <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-mongodb</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-cassandra-reactive</module>
@@ -50,19 +56,20 @@
         <module>spring-data-gemfire</module>
         <module>spring-data-geode</module>
         <module>spring-data-jpa</module>
+        <module>spring-data-jpa-2</module>
         <module>spring-data-jpa-3</module>
+        <module>spring-data-jpa-4</module>
         <module>spring-data-keyvalue</module>
-        <module>spring-data-mongodb</module> <!-- long -->
+        <module>spring-data-mongodb</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
         <module>spring-data-solr</module>
         <module>spring-hibernate-3</module>
-        <module>spring-hibernate-5</module>
+        <module>spring-hibernate-5</module> <!-- long running -->
         <module>spring-hibernate4</module>
         <module>spring-jpa</module>
+        <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
         <module>spring-persistence-simple</module>
-        <module>jpa-hibernate-cascade-type</module>
-        <module>r2dbc</module>
-        <module>spring-boot-jdbi</module>
     </modules>
+
 </project>

@@ -1,7 +1,8 @@
 package com.baeldung.shopping;
 
 import static org.junit.Assert.assertEquals;
-import cucumber.api.java8.En;
+
+import io.cucumber.java8.En;
 
 public class ShoppingStepsDef implements En {
 
