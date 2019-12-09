@@ -325,10 +325,10 @@ public class UserRepositoryCommon {
         userRepository.save(new User("SAMPLE2", LocalDate.now(), USER_EMAIL5, INACTIVE_STATUS));
         userRepository.save(new User("SAMPLE3", LocalDate.now(), USER_EMAIL6, INACTIVE_STATUS));
 
-        Page<User> usersSortByNameLength = userRepository.findAllUsersWithPaginationNative(PageRequest.of(1, 3));
+        Page<User> usersSortByNameLength = userRepository.findAllUsersWithPaginationNative(PageRequest.of(0, 3));
 
         assertThat(usersSortByNameLength.getContent()
-          .get(0)
+          .get(1)
           .getName()).isEqualTo(USER_NAME_PETER);
     }
 
