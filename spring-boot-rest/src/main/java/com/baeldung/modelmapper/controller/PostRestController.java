@@ -1,24 +1,25 @@
 package com.baeldung.modelmapper.controller;
 
-import java.text.ParseException;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
 import com.baeldung.modelmapper.dto.PostDto;
 import com.baeldung.modelmapper.model.Post;
 import com.baeldung.modelmapper.service.IPostService;
 import com.baeldung.modelmapper.service.IUserService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.text.ParseException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/posts")
@@ -33,7 +34,7 @@ public class PostRestController {
     @Autowired
     private ModelMapper modelMapper;
  
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     @ResponseBody
     public List<PostDto> getPosts(
             @PathVariable("page") int page,
@@ -43,11 +44,11 @@ public class PostRestController {
         
         List<Post> posts = postService.getPostsList(page, size, sortDir, sort);
         return posts.stream()
-          .map(post -> convertToDto(post))
+          .map(this::convertToDto)
           .collect(Collectors.toList());
     }
  
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public PostDto createPost(@RequestBody PostDto postDto) throws ParseException {
@@ -56,13 +57,13 @@ public class PostRestController {
         return convertToDto(postCreated);
     }
  
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     @ResponseBody
     public PostDto getPost(@PathVariable("id") Long id) {
         return convertToDto(postService.getPostById(id));
     }
  
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void updatePost(@RequestBody PostDto postDto) throws ParseException {
         Post post = convertToEntity(postDto);
