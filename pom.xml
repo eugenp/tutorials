@@ -454,6 +454,7 @@
                 <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-jar</module>
                 <module>core-java-modules/core-java-jvm</module>
+                <module>core-kotlin-modules</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -932,7 +933,6 @@
                 <module>core-java-modules/core-java-concurrency-advanced-3</module>
                 <module>core-kotlin</module> <!-- long running? -->
                 <module>core-kotlin-2</module>
-                <module>core-kotlin-io</module>
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
@@ -1094,6 +1094,7 @@
                 <module>core-java-modules/core-java-string-algorithms-2</module>
                 <module>core-java-modules/core-java-string-apis</module>
                 <module>core-java-modules/core-java-strings</module>
+                <module>core-kotlin-modules</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
