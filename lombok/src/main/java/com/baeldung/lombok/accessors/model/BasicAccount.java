@@ -3,8 +3,8 @@ package com.baeldung.lombok.accessors.model;
 import java.math.BigDecimal;
 
 public class BasicAccount {
-    String name;
-    BigDecimal balance;
+    private String name;
+    private BigDecimal balance;
 
     public BigDecimal getBalance() {
         return this.balance;

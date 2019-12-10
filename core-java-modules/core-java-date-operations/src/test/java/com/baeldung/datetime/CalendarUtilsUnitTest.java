@@ -1,14 +1,11 @@
 package com.baeldung.datetime;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-
-import com.baeldung.datetime.CalendarUtils;
-import com.baeldung.datetime.DateUtils;
 
 import java.text.ParseException;
 import java.util.Date;
+
+import static org.junit.Assert.assertEquals;
 
 public class CalendarUtilsUnitTest {
 

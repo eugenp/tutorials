@@ -2,10 +2,12 @@
 
 This module contains articles about Spring MVC with XML configuration
 
-###The Course
+### The Course
+
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles: 
+
 - [Java Session Timeout](https://www.baeldung.com/servlet-session-timeout)
 - [Returning Image/Media Data with Spring MVC](https://www.baeldung.com/spring-mvc-image-media-data)
 - [Geolocation by IP in Java](https://www.baeldung.com/geolocation-by-ip-with-maxmind)
@@ -17,4 +19,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Debugging the Spring MVC 404 “No mapping found for HTTP request” Error](https://www.baeldung.com/spring-mvc-404-error)
 
 ## Spring MVC with XML Configuration Example Project
+
 - access a sample jsp page at: `http://localhost:8080/spring-mvc-xml/sample.html`

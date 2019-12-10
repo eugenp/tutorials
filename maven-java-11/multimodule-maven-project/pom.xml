@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.multimodule-maven-project</groupId>
     <artifactId>multimodule-maven-project</artifactId>
     <version>1.0</version>
-    <packaging>pom</packaging>
     <name>multimodule-maven-project</name>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung.maven-java-11</groupId>
         <artifactId>maven-java-11</artifactId>
         <version>1.0</version>
     </parent>
-    
+
     <modules>
         <module>entitymodule</module>
         <module>daomodule</module>
         <module>userdaomodule</module>
         <module>mainappmodule</module>
     </modules>
-    
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -36,7 +37,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
+
     <build>
         <pluginManagement>
             <plugins>
@@ -52,8 +53,9 @@
             </plugins>
         </pluginManagement>
     </build>
-    
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
 </project>

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>apache-avro</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-	<name>apache-avro</name>
+    <name>apache-avro</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -67,5 +67,5 @@
         <avro.version>1.8.2</avro.version>
         <slf4j.version>1.7.25</slf4j.version>
     </properties>
-	
+
 </project>

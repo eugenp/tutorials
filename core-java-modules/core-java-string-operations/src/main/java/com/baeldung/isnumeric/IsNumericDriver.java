@@ -13,8 +13,8 @@ public class IsNumericDriver {
         boolean res = isNumeric.usingCoreJava("1001");
         LOG.info("Using Core Java : " + res);
 
-        res = isNumeric.usingRegularExpressions("1001");
-        LOG.info("Using Regular Expressions : " + res);
+        res = isNumeric.usingPreCompiledRegularExpressions("1001");
+        LOG.info("Using Pre-compiled Regular Expressions : " + res);
 
         res = isNumeric.usingNumberUtils_isCreatable("1001");
         LOG.info("Using NumberUtils.isCreatable : " + res);
