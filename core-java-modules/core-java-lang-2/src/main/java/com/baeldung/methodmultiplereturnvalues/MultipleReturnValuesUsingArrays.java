@@ -1,29 +1,19 @@
-package com.baeldung.method.multiplereturnvalues;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.baeldung.methodmultiplereturnvalues;
 
 class MultipleReturnValuesUsingArrays {
 
-    Object[] getStudentData() {
-        
-        String name = "Alex";
-        int age = 15;
-        
-        return new Object[] {name, age};
-    }
     
-    double[] getStreetCoordinates() {
+    double[] getCoordinates() {
         
         double[] coordinates = new double[2];
 
-        coordinates[0] = 12.5;
-        coordinates[1] = 10;
+        coordinates[0] = 10.2;
+        coordinates[1] = 12.5;
         
         return coordinates;
     }
 
-    Number[] getStreetCoordinates2() {
+    Number[] getCoordinateNumbers() {
         
         Number[] coordinates = new Double[2];
 
@@ -32,7 +22,7 @@ class MultipleReturnValuesUsingArrays {
         return coordinates;
     }
     
-    Object[] getStreetCoordinates3() {
+    Object[] getCoordinateObjects() {
         
         Object[] coordinates = new Object[2];
 
