@@ -1,4 +1,4 @@
-package com.baeldung.date.conversion;
+package com.baeldung.offsetdatetime;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;

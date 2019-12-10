@@ -1,7 +1,8 @@
-package com.baeldung.datetime;
+package com.baeldung.skipweekends;
 
 import static org.junit.Assert.assertEquals;
 
+import com.baeldung.skipweekends.AddSubtractDaysSkippingWeekendsUtils;
 import org.junit.Test;
 
 import java.time.LocalDate;
