@@ -10,6 +10,6 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class PrefixedFluentAccount {
-    String sName;
-    BigDecimal bdBalance;
+    private String sName;
+    private BigDecimal bdBalance;
 }

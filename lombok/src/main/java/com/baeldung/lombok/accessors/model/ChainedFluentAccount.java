@@ -10,6 +10,6 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class ChainedFluentAccount {
-    String name;
-    BigDecimal balance;
+    private String name;
+    private BigDecimal balance;
 }
