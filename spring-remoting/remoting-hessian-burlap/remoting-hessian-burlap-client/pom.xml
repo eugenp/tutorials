@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>remoting-hessian-burlap-client</artifactId>
     <name>remoting-hessian-burlap-client</name>
-	
-	<parent>
+    
+    <parent>
         <artifactId>remoting-hessian-burlap</artifactId>
         <groupId>com.baeldung</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-	
+    
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -58,9 +58,9 @@
         </dependency>
         <!-- test -->
     </dependencies>
-	
-	<properties>
-	   <caucho.version>4.0.38</caucho.version>
-	</properties>
-	
+    
+    <properties>
+       <caucho.version>4.0.38</caucho.version>
+    </properties>
+    
 </project>

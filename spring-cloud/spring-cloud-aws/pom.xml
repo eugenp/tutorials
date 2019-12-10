@@ -60,6 +60,6 @@
     <properties>
              <start-class>com.baeldung.spring.cloud.aws.SpringCloudAwsApplication</start-class>
              <spring-cloud.version>Dalston.SR4</spring-cloud.version>
-	      <spring-cloud>2.0.1.RELEASE</spring-cloud>
+          <spring-cloud>2.0.1.RELEASE</spring-cloud>
     </properties>
 </project>

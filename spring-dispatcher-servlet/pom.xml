@@ -62,11 +62,11 @@
             <version>${commons-fileupload.version}</version>
         </dependency>
         <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<version>${spring-boot.version}</version>
-			<scope>test</scope>
-		</dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -95,8 +95,8 @@
     </build>
 
     <properties>
-               <tomcat8-maven-plugin.version>3.0-r1655215</tomcat8-maven-plugin.version>
-		<spring-boot.version>1.5.10.RELEASE</spring-boot.version>
+        <tomcat8-maven-plugin.version>3.0-r1655215</tomcat8-maven-plugin.version>
+        <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
     </properties>
 
 </project>

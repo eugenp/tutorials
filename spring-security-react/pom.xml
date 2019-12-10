@@ -7,11 +7,11 @@
     <packaging>war</packaging>
 
     <parent>
-		<groupId>com.baeldung</groupId>
-		<artifactId>parent-spring-4</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../parent-spring-4</relativePath>
-	</parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-spring-4</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-spring-4</relativePath>
+    </parent>
 
     <dependencies>
 
@@ -84,11 +84,11 @@
         
         <!-- Test -->
         <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<version>${org.springframework.boot.version}</version>
-			<scope>test</scope>
-		</dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${org.springframework.boot.version}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -164,9 +164,9 @@
 
     <properties>
         <!-- Spring -->
-            <org.springframework.version>4.3.6.RELEASE</org.springframework.version>
-            <org.springframework.security.version>4.2.1.RELEASE</org.springframework.security.version>
-		<org.springframework.boot.version>1.5.10.RELEASE</org.springframework.boot.version>
+        <org.springframework.version>4.3.6.RELEASE</org.springframework.version>
+        <org.springframework.security.version>4.2.1.RELEASE</org.springframework.security.version>
+        <org.springframework.boot.version>1.5.10.RELEASE</org.springframework.boot.version>
 
         <!-- util -->
         <guava.version>19.0</guava.version>

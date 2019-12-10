@@ -40,7 +40,7 @@
     <properties>
            <java.version>1.8</java.version>
            <junit.version>4.11</junit.version>
-	    <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
+        <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
     </properties>
 
 </project>

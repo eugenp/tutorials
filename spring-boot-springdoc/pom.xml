@@ -98,14 +98,14 @@
             </build>
         </profile>
     </profiles>
-	
-	<properties>
-	    
-	  <springdoc.version>1.1.45</springdoc.version>
-	  <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
-	  <maven.version>0.2</maven.version>
-	  <java.version>1.8</java.version>
-	
-	</properties>
+    
+    <properties>
+        
+      <springdoc.version>1.1.45</springdoc.version>
+      <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
+      <maven.version>0.2</maven.version>
+      <java.version>1.8</java.version>
+    
+    </properties>
      
 </project>

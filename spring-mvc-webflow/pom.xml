@@ -55,11 +55,11 @@
         
         <!-- Test -->
         <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<version>${spring.boot}</version>
-			<scope>test</scope>
-		</dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring.boot}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -89,8 +89,8 @@
 
         <!-- Spring Web Flow -->
         <spring.webflow>2.5.0.RELEASE</spring.webflow>
-		
-		 <!-- Spring Boot -->
+        
+         <!-- Spring Boot -->
         <spring.boot>1.5.10.RELEASE</spring.boot>
 
         <httpcore.version>4.4.5</httpcore.version>

@@ -94,20 +94,20 @@
         <assertj.version>3.9.0</assertj.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <wildfly-maven-plugin.version>1.1.0.Alpha5</wildfly-maven-plugin.version>
-		
-	 <!--wildfly-runtime-credentials -->
-	 
+        
+     <!--wildfly-runtime-credentials -->
+     
         <hostname>127.0.0.1</hostname>
-		<port>9990</port>
-		<username>testUser</username>
+        <port>9990</port>
+        <username>testUser</username>
         <password>admin1234!</password>
-		
-		<cargo.hostname>127.0.0.1</cargo.hostname>
+        
+        <cargo.hostname>127.0.0.1</cargo.hostname>
         <cargo.jboss.configuration>standalone-full</cargo.jboss.configuration>
         <cargo.jboss.management-http.port>9990</cargo.jboss.management-http.port>
         <cargo.servlet.users>testUser:admin1234!</cargo.servlet.users>
-		<url>https://download.jboss.org/wildfly/12.0.0.Final/wildfly-12.0.0.Final.zip</url>
-		
+        <url>https://download.jboss.org/wildfly/12.0.0.Final/wildfly-12.0.0.Final.zip</url>
+        
     </properties>
 
 </project>

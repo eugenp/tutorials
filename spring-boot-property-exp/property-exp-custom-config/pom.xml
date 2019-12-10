@@ -4,7 +4,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>property-exp-custom-config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-	<name>property-exp-custom-config</name>
+    <name>property-exp-custom-config</name>
     <packaging>jar</packaging>
 
     <parent>
@@ -75,8 +75,8 @@
     <properties>
         <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
         <custom.property>Custom Property Value</custom.property>
-		<apache-maven.version>2.7</apache-maven.version>
-		<exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+        <apache-maven.version>2.7</apache-maven.version>
+        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     </properties>
 
 </project>
