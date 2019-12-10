@@ -21,6 +21,10 @@ public class XmlAppConfigUnitTest {
     @Autowired
     @Qualifier("xml-store-by-setter")
     private Store storeBySetterInjection;
+
+    @Autowired
+    @Qualifier("xml-store-by-autowire-name")
+    private Store storeByAutowireInjectionByName;
     
     @Autowired
     @Qualifier("xml-store-by-setter-lazy")
@@ -36,6 +40,12 @@ public class XmlAppConfigUnitTest {
     public void givenValidXmlConfig_WhenInjectStoreBySetterInjection_ThenBeanIsNotNull() {
         assertNotNull(storeBySetterInjection);
         assertNotNull(storeByConstructorInjection.getItem());
+    }
+
+    @Test
+    public void givenValidXmlConfig_WhenInjectStoreByAutowireInjectionByName_ThenBeanIsNotNull() {
+        assertNotNull(storeByAutowireInjectionByName);
+        assertNotNull(storeByAutowireInjectionByName.getItem());
     }
 
     @Test
