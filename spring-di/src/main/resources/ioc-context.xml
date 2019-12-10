@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    
+    <!-- Constructor injection -->
+
+	<bean id="item1" class="org.baeldung.store.ItemImpl1" />
+	<bean id="xml-store-by-constructor" class="org.baeldung.store.Store">
+		<constructor-arg type="ItemImpl1" index="0"	name="item" ref="item1" />
+	</bean>
+	
+	<!-- Setter injection -->
+
+	<bean id="xml-store-by-setter" class="org.baeldung.store.Store">
+		<property name="item" ref="item1" />
+	</bean>
+	
+	<!-- Autowired injection -->
+
+	<bean id="item" class="org.baeldung.store.ItemImpl1" />
+	<bean id="xml-store-by-autowire" class="org.baeldung.store.Store" autowire="byName">
+	</bean>
+	
+	<!-- Lazy instantiation -->
+	
+	<bean id="item1-lazy" class="org.baeldung.store.ItemImpl1" lazy-init="true" />
+	<bean id="xml-store-by-setter-lazy" class="org.baeldung.store.Store">
+		<property name="item" ref="item1-lazy" />
+	</bean>
+
+</beans>
