@@ -1,4 +1,4 @@
-package com.baeldung.exceptions;
+package com.baeldung.rethrow;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

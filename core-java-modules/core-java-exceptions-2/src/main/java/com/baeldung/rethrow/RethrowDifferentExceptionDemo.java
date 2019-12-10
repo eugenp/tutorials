@@ -1,9 +1,9 @@
-package com.baeldung.exceptions;
+package com.baeldung.rethrow;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.baeldung.exceptions.custom.InvalidDataException;
+import com.baeldung.rethrow.custom.InvalidDataException;
 
 public class RethrowDifferentExceptionDemo {
 
