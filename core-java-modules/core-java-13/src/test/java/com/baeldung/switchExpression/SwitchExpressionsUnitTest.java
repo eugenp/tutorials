@@ -14,7 +14,7 @@ public class SwitchExpressionsUnitTest {
 
   @Test
   @SuppressWarnings ("preview")
-  public void switchExpression() {
+  public void whenSwitchingOverMonthJune_thenWillReturn3() {
 
     var month = JUNE;
 
@@ -30,7 +30,7 @@ public class SwitchExpressionsUnitTest {
 
   @Test
   @SuppressWarnings ("preview")
-  public void switchExpressionWithYieldKeyword() {
+  public void whenSwitchingOverMonthAugust_thenWillReturn24() {
     var month = AUGUST;
 
     var result = switch (month) {
@@ -48,7 +48,7 @@ public class SwitchExpressionsUnitTest {
 
   @Test
   @SuppressWarnings ("preview")
-  public void switchStatementWithReturnInsideBlock() {
+  public void whenSwitchingOverMonthJanuary_thenWillReturn3() {
 
     Function<Month, Integer> func = (month) -> {
       switch (month) {
@@ -62,7 +62,7 @@ public class SwitchExpressionsUnitTest {
 
   @Test
   @SuppressWarnings ("preview")
-  public void switchExpressionWithAllCasesCovered() {
+  public void whenSwitchingOverMonthAugust_thenWillReturn2() {
     var month = AUGUST;
 
     var result = switch (month) {
