@@ -99,13 +99,13 @@
             </plugin>
         </plugins>
     </build>
-	
-	<properties>
-	
-	  <maven.source>1.8</maven.source>
+    
+    <properties>
+    
+      <maven.source>1.8</maven.source>
       <maven.target>1.8</maven.target>
-	  <mysema.version>1.1.3</mysema.version>
-	  
-	</properties>
+      <mysema.version>1.1.3</mysema.version>
+      
+    </properties>
 
 </project>

@@ -94,5 +94,6 @@
     
     <properties>
         <maven.version>2.7</maven.version>
-    </properties>
+    </properties>  
+    
 </project>

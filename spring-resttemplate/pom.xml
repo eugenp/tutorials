@@ -308,14 +308,14 @@
         <!-- okhttp -->
         <com.squareup.okhttp3.version>3.4.1</com.squareup.okhttp3.version>
         <pact.version>3.5.11</pact.version>
-		
-		<!-- junit -->
-		<junit.version>4.12</junit.version>
-		
-		<!-- maven -->
-		<maven.version>3.7.0</maven.version>
-		 <source.version>1.8</source.version>
-		 <target.version>1.8</target.version>
+        
+        <!-- junit -->
+        <junit.version>4.12</junit.version>
+        
+        <!-- maven -->
+        <maven.version>3.7.0</maven.version>
+        <source.version>1.8</source.version>
+        <target.version>1.8</target.version>
     </properties>
 
 </project>

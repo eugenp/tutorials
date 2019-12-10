@@ -168,9 +168,9 @@
     <properties>
         <javers.version>5.6.3</javers.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
-		<maven-source.version>1.8</maven-source.version>
+        <maven-source.version>1.8</maven-source.version>
         <maven-target.version>1.8</maven-target.version>
-		<source.version>8</source.version>
+        <source.version>8</source.version>
         <target.version>8</target.version>
     </properties>
     
