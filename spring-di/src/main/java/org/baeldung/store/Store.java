@@ -1,4 +1,4 @@
-package com.baeldung.dependency.ioc;
+package org.baeldung.store;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
