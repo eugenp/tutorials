@@ -18,9 +18,10 @@
 	</bean>
 	
 	<!-- Autowired injection -->
-
+	
 	<bean id="item" class="org.baeldung.store.ItemImpl1" />
-	<bean id="xml-store-by-autowire" class="org.baeldung.store.Store" autowire="byName">
+
+	<bean id="xml-store-by-autowire-name" class="org.baeldung.store.Store" autowire="byName">
 	</bean>
 	
 	<!-- Lazy instantiation -->
