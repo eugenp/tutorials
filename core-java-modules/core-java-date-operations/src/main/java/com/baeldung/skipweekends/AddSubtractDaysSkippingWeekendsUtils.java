@@ -1,4 +1,4 @@
-package com.baeldung.datetime;
+package com.baeldung.skipweekends;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
