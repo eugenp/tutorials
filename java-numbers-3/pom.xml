@@ -21,6 +21,12 @@
             <version>${vavr.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
@@ -39,6 +45,7 @@
     </build>
 
     <properties>
+        <commons.version>3.9</commons.version>
         <assertj.version>3.6.1</assertj.version>
         <vavr.version>0.10.2</vavr.version>
     </properties>
