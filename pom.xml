@@ -805,7 +805,7 @@
                 <module>spring-reactive-kotlin</module>
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-rest</module>
+                <module>spring-rest-http</module>
                 <module>spring-rest-angular</module>
                 <module>spring-rest-compress</module>
                 <module>spring-rest-testing</module>
@@ -1411,7 +1411,7 @@
                 <module>spring-reactive-kotlin</module>
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-rest</module>
+                <module>spring-rest-http</module>
                 <module>spring-rest-angular</module>
                 <module>spring-rest-compress</module>
                 <module>spring-rest-testing</module>
