@@ -31,7 +31,7 @@ public class HomeControllerTest extends WithServer {
         return new GuiceApplicationBuilder().build();
     }
 
-    @Test public void testIndex() throws InterruptedException {
+    @Test public void givenMultipleRequestsWhenResponseThenLog() throws InterruptedException {
         AtomicInteger completedReqs = new AtomicInteger(0);
         OptionalInt optHttpsPort = testServer.getRunningHttpsPort();
         String url;
@@ -65,7 +65,7 @@ public class HomeControllerTest extends WithServer {
     }
 
     @Test
-    public void testTimeout() throws ExecutionException, InterruptedException {
+    public void givenLongResponseWhenTimeoutThenHandle() throws ExecutionException, InterruptedException {
         OptionalInt optHttpsPort = testServer.getRunningHttpsPort();
         String url;
         int port;
