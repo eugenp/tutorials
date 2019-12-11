@@ -15,7 +15,6 @@ import static org.junit.Assert.*;
 public class BookStoreRunSteps {
     private BookStore store;
     private List<Book> foundBooks;
-    private Book foundBook;
     
     @Before
     public void setUp() {
@@ -23,11 +22,6 @@ public class BookStoreRunSteps {
         foundBooks = new ArrayList<>();
     }
     
-    @Given("^I have the following books in the store$")
-    public void haveBooksInTheStore(DataTable table) {
-        haveBooksInTheStoreByList(table);
-    }
-
     @Given("^I have the following books in the store by list$")
     public void haveBooksInTheStoreByList(DataTable table) {
         List<List<String>> rows = table.asLists(String.class);
@@ -56,23 +50,8 @@ public class BookStoreRunSteps {
         foundBooks = store.booksByAuthor(author);
     }
 
-    @When("^I search for a book titled (.+)$")
-    public void searchForBookByTitle(String title) {
-        foundBook = store.bookByTitle(title).orElse(null);
-    }
-    
     @Then("^I find (\\d+) books$")
     public void findBooks(int count) {
         assertEquals(count, foundBooks.size());
-    }
-
-    @Then("^I find a book$")
-    public void findABook() {
-        assertNotNull(foundBook);
-    }
-
-    @Then("^I find no book$")
-    public void findNoBook() {
-        assertNull(foundBook);
     }
 }
