@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -195,12 +196,12 @@
                         <argument>-Xmx300m</argument>
                         <argument>-XX:+UseParallelGC</argument>
                         <argument>-classpath</argument>
-                        <classpath />
+                        <classpath/>
                         <argument>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</argument>
                     </arguments>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -261,7 +262,7 @@
                                     <executable>java</executable>
                                     <arguments>
                                         <argument>-classpath</argument>
-                                        <classpath />
+                                        <classpath/>
                                         <argument>org.openjdk.jmh.Main</argument>
                                         <argument>.*</argument>
                                     </arguments>
@@ -383,7 +384,7 @@
         <!-- util -->
         <unix4j.version>0.4</unix4j.version>
         <grep4j.version>1.8.7</grep4j.version>
-      
+
         <!-- testing -->
         <assertj-core.version>3.10.0</assertj-core.version>
 
@@ -397,4 +398,5 @@
         <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     </properties>
+
 </project>

@@ -13,18 +13,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.marcosbarbero.cloud</groupId>
-            <artifactId>spring-cloud-zuul-ratelimit</artifactId>
-            <version>${rate.limit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-    </dependencies>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -36,6 +24,18 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.marcosbarbero.cloud</groupId>
+            <artifactId>spring-cloud-zuul-ratelimit</artifactId>
+            <version>${rate.limit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>spring-zuul-rate-limiting</finalName>

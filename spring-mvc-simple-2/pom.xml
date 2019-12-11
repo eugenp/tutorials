@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-simple-2</artifactId>
     <name>spring-mvc-simple-2</name>
@@ -8,8 +8,8 @@
     <description>Demo project for Spring Boot</description>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
@@ -20,7 +20,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -78,7 +78,7 @@
             <artifactId>spring-cloud-context</artifactId>
             <version>${springcloud.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
@@ -135,7 +135,7 @@
             </build>
         </profile>
     </profiles>
-    
+
     <properties>
         <!-- The main class to start by executing java -jar -->
         <start-class>org.baeldung.boot.Application</start-class>

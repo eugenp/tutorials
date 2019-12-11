@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.micronaut</groupId>
     <artifactId>micronaut</artifactId>
@@ -22,6 +24,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>io.micronaut</groupId>
@@ -72,6 +75,7 @@
             <version>3.1.6.RELEASE</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -133,10 +137,11 @@
             </plugins>
         </pluginManagement>
     </build>
-    
+
     <properties>
         <exec.mainClass>com.baeldung.micronaut.helloworld.server.ServerApplication</exec.mainClass>
         <micronaut.version>1.0.0.RC2</micronaut.version>
         <jdk.version>1.8</jdk.version>
     </properties>
+
 </project>
