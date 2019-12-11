@@ -10,18 +10,19 @@ import play.libs.ws.WSClient;
 import play.libs.ws.ahc.AhcCurlRequestLogger;
 import play.mvc.Result;
 import play.mvc.Results;
-import play.mvc.StatusHeader;
 import play.test.WithServer;
 
 import java.time.Duration;
 import java.util.OptionalInt;
-import java.util.concurrent.*;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 import static java.time.temporal.ChronoUnit.SECONDS;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import static play.mvc.Http.Status.SERVICE_UNAVAILABLE;
 
 public class HomeControllerTest extends WithServer {
