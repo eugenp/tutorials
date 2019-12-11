@@ -38,9 +38,15 @@ public class OkHttpPostingLiveTest {
 
     @Test
     public void whenSendPostRequest_thenCorrect() throws IOException {
-        final RequestBody formBody = new FormBody.Builder().add("username", "test").add("password", "test").build();
+        final RequestBody formBody = new FormBody.Builder()
+                .add("username", "test")
+                .add("password", "test")
+                .build();
 
-        final Request request = new Request.Builder().url(BASE_URL + "/users").post(formBody).build();
+        final Request request = new Request.Builder()
+                .url(BASE_URL + "/users")
+                .post(formBody)
+                .build();
 
         final Call call = client.newCall(request);
         final Response response = call.execute();
@@ -52,7 +58,11 @@ public class OkHttpPostingLiveTest {
     public void whenSendPostRequestWithAuthorization_thenCorrect() throws IOException {
         final String postBody = "test post";
 
-        final Request request = new Request.Builder().url(URL_SECURED_BY_BASIC_AUTHENTICATION).addHeader("Authorization", Credentials.basic("test", "test")).post(RequestBody.create(MediaType.parse("text/x-markdown; charset=utf-8"), "test post")).build();
+        final Request request = new Request.Builder()
+                .url(URL_SECURED_BY_BASIC_AUTHENTICATION)
+                .addHeader("Authorization", Credentials.basic("test", "test"))
+                .post(RequestBody.create(MediaType.parse("text/x-markdown"), "test post"))
+                .build();
 
         final Call call = client.newCall(request);
         final Response response = call.execute();
@@ -64,13 +74,37 @@ public class OkHttpPostingLiveTest {
     public void whenPostJson_thenCorrect() throws IOException {
         final String json = "{\"id\":1,\"name\":\"John\"}";
 
-        final RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), "{\"id\":1,\"name\":\"John\"}");
+        final RequestBody body = RequestBody.create(MediaType.parse("application/json"), "{\"id\":1,\"name\":\"John\"}");
         final Request request = new Request.Builder().url(BASE_URL + "/users/detail").post(body).build();
 
         final Call call = client.newCall(request);
         final Response response = call.execute();
 
         assertThat(response.code(), equalTo(200));
+    }
+
+    @Test
+    public void whenPostJsonWithoutCharset_thenCharsetIsUtf8() throws IOException {
+        final String json = "{\"id\":1,\"name\":\"John\"}";
+
+        final RequestBody body = RequestBody.create(
+                MediaType.parse("application/json"), json);
+
+        String charset = body.contentType().charset().displayName();
+
+        assertThat(charset, equalTo("UTF-8"));
+    }
+
+    @Test
+    public void whenPostJsonWithUtf16Charset_thenCharsetIsUtf16() throws IOException {
+        final String json = "{\"id\":1,\"name\":\"John\"}";
+
+        final RequestBody body = RequestBody.create(
+                MediaType.parse("application/json; charset=utf-16"), json);
+
+        String charset = body.contentType().charset().displayName();
+
+        assertThat(charset, equalTo("UTF-16"));
     }
 
     @Test
