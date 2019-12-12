@@ -1,4 +1,4 @@
-package com.baeldung.pattern;
+package com.baeldung.patternreuse;
 
 import org.junit.jupiter.api.Test;
 
