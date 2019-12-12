@@ -39,6 +39,35 @@ public class RandomStringsUnitTest {
     }
 
     @Test
+    public void givenUsingJava8_whenGeneratingRandomAlphabeticString_thenCorrect() {
+        final int leftLimit = 97; // letter 'a'
+        final int rightLimit = 122; // letter 'z'
+        final int targetStringLength = 10;
+        final Random random = new Random();
+
+        final String generatedString = random.ints(targetStringLength, leftLimit, rightLimit + 1)
+            .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+            .toString();
+
+        LOG.debug(generatedString);
+    }
+
+    @Test
+    public void givenUsingJava8_whenGeneratingRandomAlphanumericString_thenCorrect() {
+        final int leftLimit = 48; // numeral '0'
+        final int rightLimit = 122; // letter 'z'
+        final int targetStringLength = 10;
+        final Random random = new Random();
+
+        final String generatedString = random.ints(targetStringLength, leftLimit, rightLimit + 1)
+            .filter(i -> (i < 57 || i > 65) && (i < 90 || i > 97))
+            .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+            .toString();
+
+        LOG.debug(generatedString);
+    }
+
+    @Test
     public void givenUsingApache_whenGeneratingRandomString_thenCorrect() {
         final String generatedString = RandomStringUtils.random(10);
 
