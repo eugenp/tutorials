@@ -7,8 +7,8 @@
     <version>0.1-SNAPSHOT</version>
     <name>restx</name>
     <packaging>war</packaging>
-	
-	<parent>
+
+    <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
@@ -114,7 +114,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-	
+
     <build>
         <plugins>
             <plugin>
@@ -153,4 +153,5 @@
         <restx.version>0.35-rc4</restx.version>
         <logback-classic.version>1.2.3</logback-classic.version>
     </properties>
+
 </project>

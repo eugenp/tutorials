@@ -8,11 +8,11 @@
     <name>java-ee-8-security-api</name>
     <packaging>pom</packaging>
 
-	<parent>
-		<groupId>com.baeldung</groupId>
-		<artifactId>parent-modules</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <modules>
         <module>app-auth-basic-store-db</module>
@@ -22,14 +22,12 @@
     </modules>
 
     <dependencies>
-    
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>${javaee-version}</version>
             <scope>provided</scope>
         </dependency>
-        
     </dependencies>
 
     <build>

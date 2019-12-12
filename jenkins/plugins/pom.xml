@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>plugins</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -12,7 +12,7 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
         <version>2.33</version>
-        <relativePath />
+        <relativePath/>
     </parent>
 
     <dependencies>
@@ -91,6 +91,6 @@
         <workflow-durable-task-step.version>2.13</workflow-durable-task-step.version>
         <workflow-api.version>2.20</workflow-api.version>
         <workflow-support.version>2.14</workflow-support.version>
-
     </properties>
+
 </project>

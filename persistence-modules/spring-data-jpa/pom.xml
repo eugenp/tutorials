@@ -3,13 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-	<groupId>com.baeldung</groupId>
     <artifactId>spring-data-jpa</artifactId>
-	<name>spring-data-jpa</name>
-	
+    <name>spring-data-jpa</name>
+
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
@@ -58,9 +57,9 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-        <groupId>org.springframework.boot</groupId>
-           <artifactId>spring-boot-starter-test</artifactId>
-           <scope>test</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -68,7 +67,7 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
-        
+
         <!-- JUnit Jupiter dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -89,12 +88,12 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
+
     <properties>
-    	<start-class>com.baeldung.boot.Application</start-class>
-    	<testcontainers.postgresql.version>1.10.6</testcontainers.postgresql.version>
-    	<postgresql.version>42.2.5</postgresql.version>
-    	<guava.version>21.0</guava.version>
+        <start-class>com.baeldung.boot.Application</start-class>
+        <testcontainers.postgresql.version>1.10.6</testcontainers.postgresql.version>
+        <postgresql.version>42.2.5</postgresql.version>
+        <guava.version>21.0</guava.version>
     </properties>
 
 </project>
