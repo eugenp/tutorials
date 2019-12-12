@@ -13,6 +13,19 @@
         <relativePath>../../parent-java</relativePath>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh-core.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>core-java-text</finalName>
         <resources>
