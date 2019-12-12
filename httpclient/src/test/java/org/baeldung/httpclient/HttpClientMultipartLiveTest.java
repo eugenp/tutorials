@@ -34,7 +34,7 @@ public class HttpClientMultipartLiveTest {
     // No longer available
     // private static final String SERVER = "http://echo.200please.com";
 
-    private static final String SERVER = "http://posttestserver.com/post.php";
+    private static final String SERVER = "http://localhost:8080/spring-mvc-java/stub/multipart";
     private static final String TEXTFILENAME = "temp.txt";
     private static final String IMAGEFILENAME = "image.jpg";
     private static final String ZIPFILENAME = "zipFile.zip";
@@ -84,7 +84,7 @@ public class HttpClientMultipartLiveTest {
         //
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        builder.addPart("upfile", fileBody);
+        builder.addPart("file", fileBody);
         builder.addPart("text1", stringBody1);
         builder.addPart("text2", stringBody2);
         final HttpEntity entity = builder.build();
@@ -112,7 +112,7 @@ public class HttpClientMultipartLiveTest {
         final String message = "This is a multipart post";
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        builder.addBinaryBody("upfile", file, ContentType.DEFAULT_BINARY, TEXTFILENAME);
+        builder.addBinaryBody("file", file, ContentType.DEFAULT_BINARY, TEXTFILENAME);
         builder.addTextBody("text", message, ContentType.DEFAULT_BINARY);
         final HttpEntity entity = builder.build();
         post.setEntity(entity);
@@ -141,7 +141,7 @@ public class HttpClientMultipartLiveTest {
         final String message = "This is a multipart post";
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        builder.addBinaryBody("upfile", file, ContentType.DEFAULT_BINARY, IMAGEFILENAME);
+        builder.addBinaryBody("file", file, ContentType.DEFAULT_BINARY, IMAGEFILENAME);
         builder.addBinaryBody("upstream", inputStream, ContentType.create("application/zip"), ZIPFILENAME);
         builder.addTextBody("text", message, ContentType.TEXT_PLAIN);
         final HttpEntity entity = builder.build();
@@ -165,7 +165,7 @@ public class HttpClientMultipartLiveTest {
         final byte[] bytes = "binary code".getBytes();
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        builder.addBinaryBody("upfile", bytes, ContentType.DEFAULT_BINARY, TEXTFILENAME);
+        builder.addBinaryBody("file", bytes, ContentType.DEFAULT_BINARY, TEXTFILENAME);
         builder.addTextBody("text", message, ContentType.TEXT_PLAIN);
         final HttpEntity entity = builder.build();
         post.setEntity(entity);

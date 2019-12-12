@@ -2,10 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>resteasy</artifactId>
     <version>1.0</version>
-	<name>resteasy</name>
+    <name>resteasy</name>
     <packaging>war</packaging>
 
     <parent>
@@ -28,7 +27,6 @@
             </exclusions>
         </dependency>
 
-
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
@@ -49,17 +47,15 @@
             <version>${resteasy.version}</version>
         </dependency>
 
-
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
-        <finalName>RestEasyTutorial</finalName>
+        <finalName>resteasy</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
@@ -98,7 +94,7 @@
                                 <configuration>
                                     <excludes>
                                         <exclude>**/*IntegrationTest.java</exclude>
-                        				<exclude>**/*IntTest.java</exclude>
+                                        <exclude>**/*IntTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/*LiveTest.java</include>
