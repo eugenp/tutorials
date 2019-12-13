@@ -45,7 +45,8 @@ public class RandomStringsUnitTest {
         final int targetStringLength = 10;
         final Random random = new Random();
 
-        final String generatedString = random.ints(targetStringLength, leftLimit, rightLimit + 1)
+        final String generatedString = random.ints(leftLimit, rightLimit + 1)
+            .limit(targetStringLength)
             .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
             .toString();
 
@@ -59,8 +60,9 @@ public class RandomStringsUnitTest {
         final int targetStringLength = 10;
         final Random random = new Random();
 
-        final String generatedString = random.ints(targetStringLength, leftLimit, rightLimit + 1)
-            .filter(i -> (i < 57 || i > 65) && (i < 90 || i > 97))
+        final String generatedString = random.ints(leftLimit, rightLimit + 1)
+            .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+            .limit(targetStringLength)
             .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
             .toString();
 
