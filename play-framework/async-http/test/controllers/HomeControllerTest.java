@@ -1,5 +1,6 @@
 package controllers;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,6 @@ import play.test.WithServer;
 import java.time.Duration;
 import java.util.OptionalInt;
 import java.util.concurrent.CompletionStage;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -27,16 +27,17 @@ import static play.mvc.Http.Status.SERVICE_UNAVAILABLE;
 
 public class HomeControllerTest extends WithServer {
     private final Logger log = LoggerFactory.getLogger(HomeControllerTest.class);
+    private String url;
+    private int port;
 
-    @Override protected Application provideApplication() {
+    @Override
+    protected Application provideApplication() {
         return new GuiceApplicationBuilder().build();
     }
 
-    @Test public void givenMultipleRequestsWhenResponseThenLog() throws InterruptedException {
-        AtomicInteger completedReqs = new AtomicInteger(0);
+    @Before
+    public void setup() {
         OptionalInt optHttpsPort = testServer.getRunningHttpsPort();
-        String url;
-        int port;
         if (optHttpsPort.isPresent()) {
             port = optHttpsPort.getAsInt();
             url = "https://localhost:" + port;
@@ -44,7 +45,11 @@ public class HomeControllerTest extends WithServer {
             port = testServer.getRunningHttpPort().getAsInt();
             url = "http://localhost:" + port;
         }
+    }
 
+    @Test
+    public void givenMultipleRequestsWhenResponseThenLog() throws InterruptedException {
+        AtomicInteger completedReqs = new AtomicInteger(0);
         WSClient ws = play.test.WSTestClient.newClient(port);
         IntStream.range(0, 100).parallel().forEach(num ->
           ws.url(url)
@@ -66,24 +71,12 @@ public class HomeControllerTest extends WithServer {
     }
 
     @Test
-    public void givenLongResponseWhenTimeoutThenHandle() throws ExecutionException, InterruptedException {
-        OptionalInt optHttpsPort = testServer.getRunningHttpsPort();
-        String url;
-        int port;
-
-        if (optHttpsPort.isPresent()) {
-            port = optHttpsPort.getAsInt();
-            url = "https://localhost:" + port;
-        } else {
-            port = testServer.getRunningHttpPort().getAsInt();
-            url = "http://localhost:" + port;
-        }
-
+    public void givenLongResponseWhenTimeoutThenHandle() {
         WSClient ws = play.test.WSTestClient.newClient(port);
         Futures futures = app.injector().instanceOf(Futures.class);
         CompletionStage<Result> f = futures.timeout(ws.url(url).setRequestTimeout(Duration.of(1, SECONDS)).get().thenApply(result -> {
             try {
-                Thread.sleep(10000L);
+                Thread.sleep(2000L);
                 return Results.ok();
             } catch (InterruptedException e) {
                 return Results.status(SERVICE_UNAVAILABLE);
@@ -97,7 +90,8 @@ public class HomeControllerTest extends WithServer {
                 return result;
             }
         });
-        Class<?> clazz = res.toCompletableFuture().get().getClass();
-        assertEquals(TimeoutException.class, clazz);
+        res.thenAccept(result ->
+          assertEquals(TimeoutException.class, result)
+        );
     }
 }
