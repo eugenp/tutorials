@@ -1,9 +1,7 @@
 package com.baeldung.hexagon.articles.adapters.persistence;
 
 import com.baeldung.hexagon.articles.domain.model.Article;
-import com.baeldung.hexagon.articles.domain.model.ArticleId;
 import com.baeldung.hexagon.articles.domain.model.Author;
-import com.baeldung.hexagon.articles.domain.model.AuthorId;
 import com.baeldung.hexagon.articles.domain.model.Content;
 import com.baeldung.hexagon.articles.domain.model.Title;
 import com.baeldung.hexagon.articles.domain.ports.ArticleRepository;
@@ -27,7 +25,7 @@ class DbArticleRepository implements ArticleRepository {
         final String articleId = UUID.randomUUID().toString();
         log.info("Article: \"{}\" persisted", title.value());
         return Article.article()
-                .withId(ArticleId.of(articleId))
+                .withId(articleId)
                 .withAuthor(author)
                 .withTitle(title)
                 .withContent(content)
@@ -35,7 +33,7 @@ class DbArticleRepository implements ArticleRepository {
     }
 
     @Override
-    public Article get(final ArticleId id) {
+    public Article get(final String id) {
         /**
          * Database integration implementation using {@link ArticleDatabaseModel} comes here
          */
@@ -45,7 +43,7 @@ class DbArticleRepository implements ArticleRepository {
                 .withId(id)
                 .withAuthor(Author
                         .author()
-                        .withId(AuthorId.of(UUID.randomUUID().toString()))
+                        .withId(UUID.randomUUID().toString())
                         .withName("Baeldung")
                         .build())
                 .withTitle(title)

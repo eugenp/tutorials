@@ -1,6 +1,5 @@
 package com.baeldung.hexagon.articles.adapters.api;
 
-import com.baeldung.hexagon.articles.domain.model.AuthorId;
 import com.baeldung.hexagon.articles.domain.model.Content;
 import com.baeldung.hexagon.articles.domain.model.Title;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -25,8 +24,8 @@ class ArticleRequest {
         return Content.of(content);
     }
 
-    public AuthorId authorId() {
-        return AuthorId.of(authorId);
+    public String authorId() {
+        return authorId;
     }
 
 }

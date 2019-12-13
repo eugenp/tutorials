@@ -1,7 +1,6 @@
 package com.baeldung.hexagon.articles.adapters.authorservice;
 
 import com.baeldung.hexagon.articles.domain.model.Author;
-import com.baeldung.hexagon.articles.domain.model.AuthorId;
 import com.baeldung.hexagon.articles.domain.ports.AuthorRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,11 +11,11 @@ class ExternalServiceClientAuthorRepository implements AuthorRepository {
     private final Logger log = LoggerFactory.getLogger(ExternalServiceClientAuthorRepository.class);
 
     @Override
-    public Author get(final AuthorId authorId) {
+    public Author get(final String authorId) {
         /**
          * external author service integration implementation comes here
          */
-        log.info("Author: \"Baeldung\" fetched", authorId.value());
+        log.info("Author: \"Baeldung\" fetched", authorId);
         return Author
                 .author()
                 .withId(authorId)

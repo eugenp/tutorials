@@ -1,7 +1,6 @@
 package com.baeldung.hexagon.articles.adapters.api;
 
 import com.baeldung.hexagon.articles.domain.ArticleFacade;
-import com.baeldung.hexagon.articles.domain.model.ArticleId;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,11 +13,11 @@ class ArticleService {
     }
 
     ArticleResponse get(final String articleId) {
-        return ArticleResponse.of(articleFacade.get(ArticleId.of(articleId)));
+        return ArticleResponse.of(articleFacade.get(articleId));
     }
 
     ArticleIdResponse create(final ArticleRequest articleRequest) {
-        final ArticleId articleId = articleFacade.create(articleRequest.authorId(), articleRequest.title(), articleRequest.content());
+        final String articleId = articleFacade.create(articleRequest.authorId(), articleRequest.title(), articleRequest.content());
         return ArticleIdResponse.of(articleId);
     }
 }

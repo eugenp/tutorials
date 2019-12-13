@@ -1,6 +1,5 @@
 package com.baeldung.hexagon.articles.adapters.api;
 
-import com.baeldung.hexagon.articles.domain.model.ArticleId;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 class ArticleIdResponse {
@@ -15,8 +14,8 @@ class ArticleIdResponse {
         return id;
     }
 
-    public static ArticleIdResponse of(final ArticleId articleId) {
-        return new ArticleIdResponse(articleId.value());
+    public static ArticleIdResponse of(final String articleId) {
+        return new ArticleIdResponse(articleId);
     }
 
 }

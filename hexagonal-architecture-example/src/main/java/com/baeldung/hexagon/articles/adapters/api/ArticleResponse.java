@@ -17,7 +17,7 @@ class ArticleResponse {
     }
 
     static ArticleResponse of(final Article article) {
-        return new ArticleResponse(article.id().value(),
+        return new ArticleResponse(article.id(),
                 article.title().value(),
                 article.content().value(),
                 article.author().name());

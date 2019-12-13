@@ -1,11 +1,11 @@
 package com.baeldung.hexagon.articles.domain.model;
 
 public class Author {
-    private final AuthorId id;
+    private final String id;
     private final String name;
 
 
-    public Author(final AuthorId id, final String name) {
+    public Author(final String id, final String name) {
         this.id = id;
         this.name = name;
     }
@@ -19,13 +19,13 @@ public class Author {
     }
 
     public static final class AuthorBuilder {
-        private AuthorId id;
+        private String id;
         private String name;
 
         private AuthorBuilder() {
         }
 
-        public AuthorBuilder withId(AuthorId id) {
+        public AuthorBuilder withId(String id) {
             this.id = id;
             return this;
         }

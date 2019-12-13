@@ -1,20 +1,20 @@
 package com.baeldung.hexagon.articles.domain.model;
 
 public class Article {
-    private final ArticleId id;
+    private final String id;
     private final Title title;
     private final Content content;
     private final Author author;
 
 
-    private Article(final ArticleId id, final Title title, final Content content, final Author author) {
+    private Article(final String id, final Title title, final Content content, final Author author) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.author = author;
     }
 
-    public ArticleId id() {
+    public String id() {
         return id;
     }
 
@@ -36,7 +36,7 @@ public class Article {
 
 
     public static final class ArticleBuilder {
-        private ArticleId id;
+        private String id;
         private Title title;
         private Content content;
         private Author author;
@@ -44,7 +44,7 @@ public class Article {
         private ArticleBuilder() {
         }
 
-        public ArticleBuilder withId(ArticleId id) {
+        public ArticleBuilder withId(String id) {
             this.id = id;
             return this;
         }
