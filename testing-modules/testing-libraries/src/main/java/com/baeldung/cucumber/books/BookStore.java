@@ -19,10 +19,4 @@ public class BookStore {
           .filter(book -> Objects.equals(author, book.getAuthor()))
           .collect(Collectors.toList());
     }
-
-    public Optional<Book> bookByTitle(String title) {
-        return books.stream()
-          .filter(book -> book.getTitle().equals(title))
-          .findFirst();
-    }
 }
