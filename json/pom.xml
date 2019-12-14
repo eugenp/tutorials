@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.baeldung</groupId>
     <artifactId>json</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>json</name>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -30,6 +31,11 @@
             <version>${fastjson.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
@@ -39,7 +45,7 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-		<dependency>
+        <dependency>
             <groupId>javax.json.bind</groupId>
             <artifactId>javax.json.bind-api</artifactId>
             <version>${jsonb-api.version}</version>
@@ -49,12 +55,12 @@
             <artifactId>javax.json</artifactId>
             <version>${javax.version}</version>
         </dependency>
-		<dependency>
-			<groupId>org.eclipse</groupId>
-			<artifactId>yasson</artifactId>
-			<version>${yasson.version}</version>
+        <dependency>
+            <groupId>org.eclipse</groupId>
+            <artifactId>yasson</artifactId>
+            <version>${yasson.version}</version>
         </dependency>
-		<!-- utils -->
+        <!-- utils -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
@@ -75,10 +81,10 @@
         <jsonb-api.version>1.0</jsonb-api.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <yasson.version>1.0.1</yasson.version>
-		<json.version>20171018</json.version>
-		<gson.version>2.8.5</gson.version>
-		<javax.version>1.1.2</javax.version>
-		<assertj-core.version>3.11.1</assertj-core.version>
+        <json.version>20171018</json.version>
+        <gson.version>2.8.5</gson.version>
+        <javax.version>1.1.2</javax.version>
+        <assertj-core.version>3.11.1</assertj-core.version>
     </properties>
 
 </project>

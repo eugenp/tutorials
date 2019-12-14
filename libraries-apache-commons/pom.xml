@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-apache-commons</artifactId>
     <name>libraries-apache-commons</name>
 
     <parent>
-        <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
@@ -48,11 +48,6 @@
             <version>${common-math3.version}</version>
         </dependency>
         <dependency>
-            <groupId>commons-net</groupId>
-            <artifactId>commons-net</artifactId>
-            <version>${commons-net.version}</version>
-        </dependency>
-		<dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
@@ -71,9 +66,7 @@
         <commons-chain.version>1.2</commons-chain.version>
         <assertj.version>3.6.2</assertj.version>
         <commons.dbutils.version>1.6</commons.dbutils.version>
-        <commons-codec-version>1.10.L001</commons-codec-version>
         <xchart-version>3.5.2</xchart-version>
-        <commons-net.version>3.6</commons-net.version>
         <common-math3.version>3.6.1</common-math3.version>
     </properties>
 
