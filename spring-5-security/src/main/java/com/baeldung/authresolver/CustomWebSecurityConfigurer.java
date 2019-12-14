@@ -27,8 +27,9 @@ public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         return request -> {
             if (request
               .getPathInfo()
-              .startsWith("/employee"))
+              .startsWith("/employee")) {
                 return employeesAuthenticationManager();
+            }
             return customersAuthenticationManager();
         };
     }
@@ -63,10 +64,10 @@ public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     }
 
     private AuthenticationFilter authenticationFilter() {
-        AuthenticationFilter ret = new AuthenticationFilter(
+        AuthenticationFilter filter = new AuthenticationFilter(
           resolver(), authenticationConverter());
-        ret.setSuccessHandler((request, response, auth) -> {});
-        return ret;
+        filter.setSuccessHandler((request, response, auth) -> {});
+        return filter;
     }
 
     private AuthenticationManager employeesAuthenticationManager() {
