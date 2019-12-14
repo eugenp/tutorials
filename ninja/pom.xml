@@ -4,10 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ninja</artifactId>
-    <!-- If you want to deploy to a war please -->
-    <!-- replace "jar" with "war" and -->
-    <!-- comment ninja-standalone dependency and  -->
-    <!-- uncomment the dependency for ninja-servlet -->
     <packaging>jar</packaging>
     <groupId>com.baeldung</groupId>
     <version>1.0.0</version>
@@ -172,16 +168,6 @@
             <artifactId>h2</artifactId>
             <version>1.4.186</version>
         </dependency>
-        <!-- If you want to deploy to a war please -->
-        <!-- comment ninja-standalone dependency and  -->
-        <!-- uncomment the dependency for ninja-servlet -->
-        <!--
-        <dependency>
-            <groupId>org.ninjaframework</groupId>
-            <artifactId>ninja-servlet</artifactId>
-            <version>${ninja.version}</version>
-        </dependency>
-        -->
         <dependency>
             <groupId>org.ninjaframework</groupId>
             <artifactId>ninja-standalone</artifactId>
