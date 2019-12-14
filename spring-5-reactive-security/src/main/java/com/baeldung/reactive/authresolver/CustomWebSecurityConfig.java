@@ -44,8 +44,9 @@ public class CustomWebSecurityConfig {
               .getPath()
               .subPath(0)
               .value()
-              .startsWith("/employee"))
+              .startsWith("/employee")) {
                 return Mono.just(employeesAuthenticationManager());
+            }
             return Mono.just(customersAuthenticationManager());
         };
     }
