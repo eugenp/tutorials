@@ -26,6 +26,4 @@ public class SandboxUnitTest {
         System.err.println(serialized);
     }
 
-    //
-
 }
