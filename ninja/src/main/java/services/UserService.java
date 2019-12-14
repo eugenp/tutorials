@@ -1,9 +1,9 @@
 package services;
 
-import models.User;
+import java.util.HashMap;
 
 public interface UserService {
     
-    User getUser();
+    HashMap<String, String> getUserMap();
 
 }

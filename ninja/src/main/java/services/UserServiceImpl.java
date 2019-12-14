@@ -1,15 +1,15 @@
 package services;
 
-import models.User;
+import java.util.HashMap;
 
 public class UserServiceImpl implements UserService {
 
     @Override
-    public User getUser() {
-        User user = new User();
-        user.firstName = "Norman";
-        user.email = "norman@email.com";
-        return user;
+    public HashMap<String, String> getUserMap() {
+        HashMap<String, String> userMap = new HashMap<>();
+        userMap.put("name", "Norman Lewis");
+        userMap.put("email", "norman@email.com");
+        return userMap;
     }
 
 }
