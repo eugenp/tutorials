@@ -14,13 +14,19 @@ public class YamlLoaderInitializer implements ApplicationContextInitializer<Conf
     private final YamlPropertySourceLoader loader = new YamlPropertySourceLoader();
     private final String file;
 
+    public YamlLoaderInitializer() {
+        this.file = null;
+    }
+
     public YamlLoaderInitializer(String file) {
         this.file = file;
     }
 
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
-        Resource path = new ClassPathResource(this.file);
+        String yamlFile = (this.file == null) ? applicationContext.getEnvironment()
+            .getProperty("custom.configyaml.file") : this.file;
+        Resource path = new ClassPathResource(yamlFile);
         PropertySource<?> propertySource = loadYaml(path);
         applicationContext.getEnvironment()
             .getPropertySources()
