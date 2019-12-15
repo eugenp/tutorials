@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>remoting-http-client</artifactId>
-	<name>remoting-http-client</name>
+    <name>remoting-http-client</name>
     <description>Shows how to invoke a remote service using Spring Remoting HTTP.</description>
-	
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>remoting-http</artifactId>
@@ -30,4 +30,5 @@
             <version>${project.version}</version>
         </dependency>
     </dependencies>
+
 </project>

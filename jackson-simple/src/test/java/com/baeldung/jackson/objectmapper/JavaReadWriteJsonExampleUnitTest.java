@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JavaReadWriteJsonExampleUnitTest {
+
     @Rule
     public TemporaryFolder folder = new TemporaryFolder();
 
