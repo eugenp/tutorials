@@ -7,8 +7,8 @@
     <packaging>jar</packaging>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
@@ -119,7 +119,6 @@
             <version>${couchbaseMock.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>

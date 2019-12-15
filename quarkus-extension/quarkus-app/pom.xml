@@ -6,16 +6,7 @@
     <groupId>com.baeldung.quarkus.app</groupId>
     <artifactId>quarkus-app</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <properties>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <surefire-plugin.version>2.22.0</surefire-plugin.version>
-        <maven.compiler.parameters>true</maven.compiler.parameters>
-        <quarkus.version>1.0.0.Final</quarkus.version>
-        <compiler-plugin.version>3.8.1</compiler-plugin.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -27,6 +18,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>com.baeldung.quarkus.liquibase</groupId>
@@ -39,6 +31,7 @@
             <version>${quarkus.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -68,4 +61,16 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <surefire-plugin.version>2.22.0</surefire-plugin.version>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+        <quarkus.version>1.0.0.Final</quarkus.version>
+        <compiler-plugin.version>3.8.1</compiler-plugin.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
 </project>
