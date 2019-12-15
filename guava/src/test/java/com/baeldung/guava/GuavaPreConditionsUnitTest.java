@@ -1,4 +1,4 @@
-package org.baeldung.guava;
+package com.baeldung.guava;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.Arrays;

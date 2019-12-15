@@ -1,4 +1,4 @@
-package org.baeldung.guava;
+package com.baeldung.guava;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;

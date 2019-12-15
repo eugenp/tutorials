@@ -1,4 +1,4 @@
-package org.baeldung.guava;
+package com.baeldung.guava;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.*;
