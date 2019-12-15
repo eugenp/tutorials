@@ -1,4 +1,4 @@
-package com.baeldung.aws.reactive.s3;
+package com.baeldung.awss3reactive;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

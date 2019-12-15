@@ -1,4 +1,4 @@
-package com.baeldung.aws.reactive.s3;
+package com.baeldung.awss3reactive;
 
 import java.util.Optional;
 
@@ -9,14 +9,14 @@ import software.amazon.awssdk.core.SdkResponse;
 import software.amazon.awssdk.http.SdkHttpResponse;
 
 @AllArgsConstructor
-public class DownloadFailedException extends RuntimeException {
+public class UploadFailedException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
     private int statusCode;
     private Optional<String> statusText;
 
-    public DownloadFailedException(SdkResponse response) {
+    public UploadFailedException(SdkResponse response) {
 
         SdkHttpResponse httpResponse = response.sdkHttpResponse();
         if (httpResponse != null) {

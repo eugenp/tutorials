@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.baeldung.aws.reactive.s3;
+package com.baeldung.awss3reactive;
 
 import java.io.InputStream;
 import java.nio.ByteBuffer;

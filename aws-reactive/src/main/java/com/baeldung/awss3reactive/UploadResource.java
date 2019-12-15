@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.baeldung.aws.reactive.s3;
+package com.baeldung.awss3reactive;
 
 import java.io.File;
 import java.io.IOException;

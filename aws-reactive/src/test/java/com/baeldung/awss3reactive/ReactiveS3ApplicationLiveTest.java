@@ -1,4 +1,4 @@
-package com.baeldung.aws.reactive.s3;
+package com.baeldung.awss3reactive;
 
 import static org.junit.Assert.assertTrue;
 
@@ -23,6 +23,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.ResourceUtils;
+
+import com.baeldung.awss3reactive.UploadResult;
 
 import static org.junit.Assert.*;
 
