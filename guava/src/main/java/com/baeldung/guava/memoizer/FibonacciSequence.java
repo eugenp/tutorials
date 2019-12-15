@@ -1,11 +1,10 @@
-package org.baeldung.guava.memoizer;
+package com.baeldung.guava.memoizer;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 
 import java.math.BigInteger;
-import java.util.concurrent.TimeUnit;
 
 public class FibonacciSequence {
 
