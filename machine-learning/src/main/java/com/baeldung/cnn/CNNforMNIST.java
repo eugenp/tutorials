@@ -1,6 +1,6 @@
 package com.baeldung.cnn;
 
-import org.deeplearning4j.datasets.iterator.impl.MnistDataSetIterator;
+import org.deeplearning4j.datasets.datavec.RecordReaderDataSetIterator;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.inputs.InputType;
@@ -12,8 +12,8 @@ import org.nd4j.linalg.activations.Activation;
 import org.nd4j.linalg.learning.config.Adam;
 import org.nd4j.linalg.lossfunctions.LossFunctions;
 
+import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 public class CNNforMNIST extends MultiLayerNetwork {
 
@@ -23,11 +23,15 @@ public class CNNforMNIST extends MultiLayerNetwork {
         super(conf);
     }
 
-    public static CNNforMNIST getInstance(String fileName) throws IOException {
-        URL mnistModel = CNNforMNIST.class.getResource(fileName);
-        if (mnistModel != null) {
-            return (CNNforMNIST) ModelSerializer.restoreMultiLayerNetwork(fileName);
+    public static MultiLayerNetwork getInstance(String fileName) throws IOException, InterruptedException {
+        System.out.println("Looking for pretrained model...");
+        File mnistModel = new File(fileName);
+        System.out.println(mnistModel);
+        if (mnistModel.exists()) {
+            System.out.println("Pretrained model found");
+            return ModelSerializer.restoreMultiLayerNetwork(fileName);
         }
+        System.out.println("Pretrained model not found");
         return createDefaultCNNforMNIST().initModel().train().persist(fileName);
     }
 
@@ -38,13 +42,14 @@ public class CNNforMNIST extends MultiLayerNetwork {
         return this;
     }
 
-    private CNNforMNIST train() throws IOException {
+    private CNNforMNIST train() throws IOException, InterruptedException {
         System.out.println("Training Model...");
-        MnistDataSetIterator mnistDataSetIterator = new MnistDataSetIterator(128, true, SEED);
-        int numEpochs = 10;
+        int numEpochs = 2;
+        System.out.println("Loading Training Set...");
+        RecordReaderDataSetIterator trainingSet = MNISTDataSet.load(false);
         for (int i = 0; i < numEpochs; i++) {
             System.out.println(String.format("Starting epoch n° %s", i + 1));
-            this.fit(mnistDataSetIterator);
+            this.fit(trainingSet);
         }
         System.out.println("Model Trained");
         return this;

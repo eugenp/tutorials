@@ -16,8 +16,8 @@ class ZalandoMNISTDataSet {
     private val IMAGE_SIZE = ROWS * COLUMNS
 
     fun load(): MutableList<List<String>> {
-        val labelsFile = File("machine-learning/src/main/resources/train-labels-idx1-ubyte")
-        val imagesFile = File("machine-learning/src/main/resources/train-images-idx3-ubyte")
+        val labelsFile = File("machine-learning/src/main/resources/zalandomnist/train-labels-idx1-ubyte")
+        val imagesFile = File("machine-learning/src/main/resources/zalandomnist/train-images-idx3-ubyte")
 
         val labelBytes = labelsFile.readBytes()
         val imageBytes = imagesFile.readBytes()
