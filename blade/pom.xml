@@ -1,21 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <!-- WITH THIS mvn integration-test DOES WORK -->
-    <groupId>com.baeldung</groupId>
     <artifactId>blade</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
     <name>blade</name>
 
-
-    <!-- WITH THIS mvn integration-test DOESN'T WORK -->
-    <!-- <parent> -->
-    <!-- <groupId>com.baeldung</groupId> -->
-    <!-- <artifactId>parent-modules</artifactId> -->
-    <!-- <version>1.0.0-SNAPSHOT</version> -->
-    <!-- </parent> -->
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <dependencies>
         <dependency>
@@ -46,12 +41,6 @@
 
         <!-- TEST -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
@@ -76,23 +65,10 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
-        <finalName>sample-blade-app</finalName>
+        <finalName>blade</finalName>
         <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <forkCount>3</forkCount>
-                    <reuseForks>true</reuseForks>
-                    <excludes>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
@@ -146,7 +122,6 @@
                 </executions>
             </plugin>
 
-
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.1.0</version>
@@ -172,34 +147,20 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
-	
+
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-		<blade-mvc.version>2.0.14.RELEASE</blade-mvc.version>
-		<bootstrap.version>4.2.1</bootstrap.version>
-		<commons-lang3.version>3.8.1</commons-lang3.version>
-		<lombok.version>1.18.4</lombok.version>
-		<junit.version>4.12</junit.version>
-		<httpclient.version>4.5.6</httpclient.version>
-		<httpmime.version>4.5.6</httpmime.version>
-		<httpcore.version>4.4.10</httpcore.version>
-		<assertj-core.version>3.11.1</assertj-core.version>
-		<maven-failsafe-plugin.version>3.0.0-M3</maven-failsafe-plugin.version>
-		<process-exec-maven-plugin.version>0.7</process-exec-maven-plugin.version>
-		<maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <blade-mvc.version>2.0.14.RELEASE</blade-mvc.version>
+        <bootstrap.version>4.2.1</bootstrap.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
+        <lombok.version>1.18.4</lombok.version>
+        <httpclient.version>4.5.6</httpclient.version>
+        <httpmime.version>4.5.6</httpmime.version>
+        <httpcore.version>4.4.10</httpcore.version>
+        <assertj-core.version>3.11.1</assertj-core.version>
+        <maven-failsafe-plugin.version>3.0.0-M3</maven-failsafe-plugin.version>
+        <process-exec-maven-plugin.version>0.7</process-exec-maven-plugin.version>
     </properties>
+
 </project>

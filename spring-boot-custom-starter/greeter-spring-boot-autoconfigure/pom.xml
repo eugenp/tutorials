@@ -1,20 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>greeter-spring-boot-autoconfigure</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-	<name>greeter-spring-boot-autoconfigure</name>
+    <name>greeter-spring-boot-autoconfigure</name>
 
     <parent>
-        <artifactId>spring-boot-custom-starter</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>spring-boot-custom-starter</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../spring-boot-custom-starter</relativePath>
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
@@ -40,14 +39,13 @@
             <version>${greeter.version}</version>
             <optional>true</optional>
         </dependency>
-        
-        <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<version>${spring-boot.version}</version>
-			<scope>test</scope>
-		</dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -68,7 +66,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
         <greeter.version>0.0.1-SNAPSHOT</greeter.version>
-        
     </properties>
 
 </project>

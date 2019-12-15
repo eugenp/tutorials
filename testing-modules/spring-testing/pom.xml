@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.baeldung</groupId>
     <artifactId>spring-testing</artifactId>
@@ -15,7 +16,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>java-hamcrest</artifactId>
@@ -85,6 +85,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-commons</artifactId>
+            <version>${junit.commons.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>${awaitility.version}</version>
@@ -105,14 +110,14 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
     </build>
 
     <properties>
         <!-- testing -->
         <hamcrest.version>2.0.0.0</hamcrest.version>
         <awaitility.version>3.1.6</awaitility.version>
-        <junit.jupiter.version>5.4.0</junit.jupiter.version>
+        <junit.jupiter.version>5.5.0</junit.jupiter.version>
+        <junit.commons.version>1.5.2</junit.commons.version>
         <spring.version>5.1.4.RELEASE</spring.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <javax.persistence.version>2.1.1</javax.persistence.version>

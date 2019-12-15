@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-rest-angular</artifactId>
-    <name>spring-rest-angular</name>
     <version>1.0</version>
+    <name>spring-rest-angular</name>
     <packaging>war</packaging>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
@@ -60,7 +60,7 @@
     </dependencies>
 
     <build>
-        <finalName>angular-spring-rest-sample</finalName>
+        <finalName>spring-rest-angular</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -1,6 +1,6 @@
 package com.baeldung.builder
 
-class FoodOrder(
+class FoodOrder private constructor(
   val bread: String?,
   val condiments: String?,
   val meat: String?,

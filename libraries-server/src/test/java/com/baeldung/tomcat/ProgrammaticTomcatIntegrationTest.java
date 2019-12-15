@@ -37,7 +37,8 @@ public class ProgrammaticTomcatIntegrationTest {
     @Test
     public void givenTomcatStarted_whenAccessServlet_responseIsTestAndResponseHeaderIsSet() throws Exception {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-        HttpGet getServlet = new HttpGet("http://localhost:8080/my-servlet");
+        String uri = "http://localhost:" + tomcat.getPort() + "/my-servlet";
+        HttpGet getServlet = new HttpGet(uri);
 
         HttpResponse response = httpClient.execute(getServlet);
         assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());

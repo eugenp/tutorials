@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>wildfly-ear</artifactId>
-	<name>wildfly-ear</name>
+    <name>wildfly-ear</name>
     <packaging>ear</packaging>
-	
+
     <parent>
         <groupId>com.baeldung.wildfly</groupId>
         <artifactId>wildfly</artifactId>
@@ -61,9 +62,10 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <properties>
         <maven-ear-plugin.version>2.10.1</maven-ear-plugin.version>
         <wildfly-maven-plugin.version>1.2.0.Final</wildfly-maven-plugin.version>
     </properties>
+
 </project>

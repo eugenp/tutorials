@@ -40,7 +40,6 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Publish and Receive Messages with Nats Java Client](https://www.baeldung.com/nats-java-client)
 - [Java Concurrency Utility with JCTools](https://www.baeldung.com/java-concurrency-jc-tools)
 - [Introduction to JavaPoet](https://www.baeldung.com/java-poet)
-- [Convert String to Date in Java](https://www.baeldung.com/java-string-to-date)
 - [Guide to Resilience4j](https://www.baeldung.com/resilience4j)
 - [Exactly Once Processing in Kafka](https://www.baeldung.com/kafka-exactly-once)
 - [Implementing a FTP-Client in Java](https://www.baeldung.com/java-ftp-client)

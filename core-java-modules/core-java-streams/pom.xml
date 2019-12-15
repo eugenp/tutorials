@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>core-java-streams</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <name>core-java-streams</name>
@@ -15,10 +15,27 @@
     </parent>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core -->
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh-generator.version}</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -33,6 +50,36 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.codepoetics</groupId>
+            <artifactId>protonpack</artifactId>
+            <version>${protonpack.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>${vavr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>one.util</groupId>
+            <artifactId>streamex</artifactId>
+            <version>${streamex.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${asspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${asspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>pl.touk</groupId>
+            <artifactId>throwing-function</artifactId>
+            <version>${throwing-function.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -43,12 +90,34 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <compilerArgument>-parameters</compilerArgument>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <properties>
+        <!-- util -->
+        <vavr.version>0.9.0</vavr.version>
+        <protonpack.version>1.15</protonpack.version>
+        <streamex.version>0.6.5</streamex.version>
+        <joda.version>2.10</joda.version>
+        <throwing-function.version>1.3</throwing-function.version>
         <!-- testing -->
-        <assertj.version>3.6.1</assertj.version>
-        <!-- plugins -->
-        <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
+        <assertj.version>3.11.1</assertj.version>
+        <asspectj.version>1.8.9</asspectj.version>
+        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
 </project>

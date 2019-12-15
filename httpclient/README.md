@@ -1,9 +1,10 @@
-=========
-## HttpClient 4.x Cookbooks and Examples
+## HttpClient 4.x
 
-###The Course
+This module contains articles about HttpClient 4.x
+
+### The Course
+
 The "REST With Spring" Classes: http://bit.ly/restwithspring
-
 
 ### Relevant Articles: 
 

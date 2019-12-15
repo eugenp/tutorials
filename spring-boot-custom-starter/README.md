@@ -1,6 +1,6 @@
 ## Spring Boot Custom Starter
 
-This module contains articles about writing Spring Boot [starters](https://www.baeldung.com/spring-boot-starters).
+This module contains articles about writing [Spring Boot Starters](https://www.baeldung.com/spring-boot-starters).
 
 ### Relevant Articles: 
 - [Creating a Custom Starter with Spring Boot](https://www.baeldung.com/spring-boot-custom-starter)
