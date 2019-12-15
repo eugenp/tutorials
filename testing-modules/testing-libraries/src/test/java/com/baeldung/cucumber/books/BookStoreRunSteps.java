@@ -56,11 +56,6 @@ public class BookStoreRunSteps {
         foundBooks = store.booksByAuthor(author);
     }
 
-    @When("^I search for a book titled (.+)$")
-    public void searchForBookByTitle(String title) {
-        foundBook = store.bookByTitle(title).orElse(null);
-    }
-    
     @Then("^I find (\\d+) books$")
     public void findBooks(int count) {
         assertEquals(count, foundBooks.size());
