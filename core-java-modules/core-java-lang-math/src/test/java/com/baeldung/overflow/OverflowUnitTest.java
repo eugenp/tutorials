@@ -1,4 +1,4 @@
-package com.baeldung.math;
+package com.baeldung.overflow;
 
 import static org.junit.Assert.assertTrue;
 
