@@ -1,4 +1,4 @@
-package org.baeldung.httpclient.conn;
+package com.baeldung.httpclient.conn;
 
 import java.io.IOException;
 

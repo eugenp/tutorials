@@ -1,4 +1,4 @@
-package org.baeldung.httpclient.rare;
+package com.baeldung.httpclient.rare;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;

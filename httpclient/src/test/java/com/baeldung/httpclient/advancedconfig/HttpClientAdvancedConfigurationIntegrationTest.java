@@ -1,4 +1,4 @@
-package org.baeldung.httpclient.advancedconfig;
+package com.baeldung.httpclient.advancedconfig;
 
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
