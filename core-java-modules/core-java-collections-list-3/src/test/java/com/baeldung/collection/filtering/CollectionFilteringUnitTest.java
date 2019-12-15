@@ -33,9 +33,9 @@ public class CollectionFilteringUnitTest {
 
         for (Employee employee : originalList) {
             for (String name : nameFilter) {
-                if (employee.getName()
-                    .equalsIgnoreCase(name)) {
+                if (employee.getName().equals(name)) {
                     filteredList.add(employee);
+                    //break;
                 }
             }
         }

@@ -7,3 +7,5 @@ This module contains articles about Spring Batch
 - [Spring Batch using Partitioner](https://www.baeldung.com/spring-batch-partitioner)
 - [Spring Batch – Tasklets vs Chunks](https://www.baeldung.com/spring-batch-tasklet-chunk)
 - [How to Trigger and Stop a Scheduled Spring Batch Job](https://www.baeldung.com/spring-batch-start-stop-job)
+- [Configuring Skip Logic in Spring Batch](https://www.baeldung.com/spring-batch-skip-logic)
+- [Testing a Spring Batch Job](https://www.baeldung.com/spring-batch-testing-job)

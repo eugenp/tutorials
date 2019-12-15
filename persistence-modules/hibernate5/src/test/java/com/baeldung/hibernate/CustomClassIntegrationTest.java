@@ -26,7 +26,6 @@ public class CustomClassIntegrationTest {
     public void setUp() throws IOException {
         session = HibernateUtil.getSessionFactory().openSession();
         transaction = session.beginTransaction();
-        session.createNativeQuery("delete from manager").executeUpdate();
         session.createNativeQuery("delete from department").executeUpdate();
         Department department = new Department("Sales");
         DeptEmployee employee = new DeptEmployee("John Smith", "001", department);

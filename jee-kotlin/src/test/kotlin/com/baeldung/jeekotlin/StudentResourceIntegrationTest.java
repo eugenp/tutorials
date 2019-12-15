@@ -36,7 +36,7 @@ public class StudentResourceIntegrationTest {
                 .withMavenCentralRepo(true)
                 .withClassPathResolution(true)
                 .loadPomFromFile("pom.xml")
-                .resolve("org.jetbrains.kotlin:kotlin-stdlib")
+                .resolve("org.jetbrains.kotlin:kotlin-stdlib:1.3.41")
                 .withTransitivity()
                 .as(JavaArchive.class);
 

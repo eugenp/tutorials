@@ -8,8 +8,8 @@
     <description>Demo project showing how to use non-blocking in Kotlin with Spring Boot</description>
 
     <parent>
-        <artifactId>parent-kotlin</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-kotlin</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../parent-kotlin</relativePath>
     </parent>
@@ -29,19 +29,6 @@
             <url>https://repo.spring.io/milestone</url>
         </repository>
     </repositories>
-
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <pluginRepositories>
         <pluginRepository>
@@ -81,7 +68,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
-            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
@@ -160,7 +146,6 @@
         <r2dbc-spi.version>1.0.0.M7</r2dbc-spi.version>
         <h2-r2dbc.version>1.0.0.BUILD-SNAPSHOT</h2-r2dbc.version>
         <kotlinx-coroutines.version>1.2.1</kotlinx-coroutines.version>
-        <spring-boot.version>2.2.0.M2</spring-boot.version>
     </properties>
 
 </project>
