@@ -10,4 +10,3 @@ This module contains articles about Jersey.
 - [Exploring the Jersey Test Framework](https://www.baeldung.com/jersey-test)
 - [Explore Jersey Request Parameters](https://www.baeldung.com/jersey-request-parameters)
 - [Add a Header to a Jersey SSE Client Request](https://www.baeldung.com/jersey-sse-client-request-headers)
-

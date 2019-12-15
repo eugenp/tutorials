@@ -1,4 +1,4 @@
-package org.baeldung.caching.model;
+package org.baeldung.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

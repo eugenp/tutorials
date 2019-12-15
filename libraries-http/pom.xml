@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>libraries-http</artifactId>
+    <name>libraries-http</name>
 
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>libraries-http</artifactId>
-	<name>libraries-http</name>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
-	<parent>
-		<groupId>com.baeldung</groupId>
-		<artifactId>parent-modules</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</parent>
+    <dependencies>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+        </dependency>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<version>${assertj.version}</version>
-		</dependency>
-
-		<!-- Dependencies for response decoder with okhttp -->
-		<dependency>
-			<groupId>com.squareup.okhttp3</groupId>
-			<artifactId>okhttp</artifactId>
+        <!-- Dependencies for response decoder with okhttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
             <version>${com.squareup.okhttp3.version}</version>
-		</dependency>
+        </dependency>
 
         <!-- Dependencies for google http client -->
         <dependency>
@@ -38,28 +37,23 @@
             <artifactId>google-http-client-jackson2</artifactId>
             <version>${googleclient.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.http-client</groupId>
-            <artifactId>google-http-client-gson</artifactId>
-            <version>${googleclient.version}</version>
-        </dependency>
 
-		<!-- Retrofit -->
-		<dependency>
-			<groupId>com.squareup.retrofit2</groupId>
-			<artifactId>retrofit</artifactId>
-			<version>${retrofit.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.squareup.retrofit2</groupId>
-			<artifactId>converter-gson</artifactId>
-			<version>${retrofit.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.squareup.retrofit2</groupId>
-			<artifactId>adapter-rxjava</artifactId>
-			<version>${retrofit.version}</version>
-		</dependency>
+        <!-- Retrofit -->
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>retrofit</artifactId>
+            <version>${retrofit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-gson</artifactId>
+            <version>${retrofit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>adapter-rxjava</artifactId>
+            <version>${retrofit.version}</version>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
         <dependency>
@@ -68,70 +62,70 @@
             <version>${async.http.client.version}</version>
         </dependency>
 
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.8.5</version>
-		</dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
+        </dependency>
 
-		<dependency>
-			<groupId>com.squareup.okhttp3</groupId>
-			<artifactId>mockwebserver</artifactId>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>mockwebserver</artifactId>
             <version>${com.squareup.okhttp3.version}</version>
-			<scope>test</scope>
-		</dependency>
+            <scope>test</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>com.mashape.unirest</groupId>
-			<artifactId>unirest-java</artifactId>
-			<version>${unirest.version}</version>
-		</dependency>
-		<!-- javalin -->
-		<dependency>
-			<groupId>io.javalin</groupId>
-			<artifactId>javalin</artifactId>
-			<version>${javalin.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.squareup.okhttp3</groupId>
-			<artifactId>logging-interceptor</artifactId>
-			<version>${logging-interceptor.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>${httpclient.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>commons-logging</artifactId>
-					<groupId>commons-logging</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-          
-	</dependencies>
+        <dependency>
+            <groupId>com.mashape.unirest</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>${unirest.version}</version>
+        </dependency>
+        <!-- javalin -->
+        <dependency>
+            <groupId>io.javalin</groupId>
+            <artifactId>javalin</artifactId>
+            <version>${javalin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>logging-interceptor</artifactId>
+            <version>${logging-interceptor.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
 
-	<properties>
-		<httpclient.version>4.5.3</httpclient.version>
-		<jackson.version>2.9.8</jackson.version>
-		<assertj.version>3.6.2</assertj.version>
+    <properties>
+        <httpclient.version>4.5.3</httpclient.version>
+        <jackson.version>2.9.8</jackson.version>
+        <assertj.version>3.6.2</assertj.version>
         <com.squareup.okhttp3.version>3.14.2</com.squareup.okhttp3.version>
         <googleclient.version>1.23.0</googleclient.version>
         <async.http.client.version>2.2.0</async.http.client.version>
-		<retrofit.version>2.3.0</retrofit.version>
-		<unirest.version>1.4.9</unirest.version>
-		<javalin.version>1.6.0</javalin.version>
-		<logging-interceptor.version>3.9.0</logging-interceptor.version>
-	</properties>
+        <retrofit.version>2.3.0</retrofit.version>
+        <unirest.version>1.4.9</unirest.version>
+        <javalin.version>1.6.0</javalin.version>
+        <logging-interceptor.version>3.9.0</logging-interceptor.version>
+    </properties>
+
 </project>

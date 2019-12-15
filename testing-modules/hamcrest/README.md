@@ -7,6 +7,6 @@ This module contains articles about Hamcrest
 - [Hamcrest File Matchers](https://www.baeldung.com/hamcrest-file-matchers)
 - [Hamcrest Object Matchers](https://www.baeldung.com/hamcrest-object-matchers)
 - [Hamcrest Bean Matchers](https://www.baeldung.com/hamcrest-bean-matchers)
-- [Hamcrest Number Matchers](https://www.baeldung.com/hamcrest-number-matchers)
+- [Using Hamcrest Number Matchers](https://www.baeldung.com/hamcrest-number-matchers)
 - [Hamcrest Common Core Matchers](https://www.baeldung.com/hamcrest-core-matchers)
 - [Hamcrest Custom Matchers](https://www.baeldung.com/hamcrest-custom-matchers)

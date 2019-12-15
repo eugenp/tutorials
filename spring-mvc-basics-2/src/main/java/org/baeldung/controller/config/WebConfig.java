@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "org.baeldung.controller.controller", "org.baeldung.controller.config" })
+@ComponentScan(basePackages = { "org.baeldung.controller.controller", "com.baeldung.controller", "org.baeldung.controller.config" })
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

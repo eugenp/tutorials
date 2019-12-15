@@ -8,3 +8,4 @@ This module contains articles about configuring the Spring Boot build process.
  - [Intro to Spring Boot Starters](https://www.baeldung.com/spring-boot-starters)
  - [Introduction to WebJars](https://www.baeldung.com/maven-webjars)
  - [A Quick Guide to Maven Wrapper](https://www.baeldung.com/maven-wrapper) 
+ - [Running a Spring Boot App with Maven vs an Executable War/Jar](https://www.baeldung.com/spring-boot-run-maven-vs-executable-jar)

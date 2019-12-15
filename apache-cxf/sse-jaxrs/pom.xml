@@ -16,6 +16,6 @@
     <modules>
         <module>sse-jaxrs-server</module>
         <module>sse-jaxrs-client</module>
-   </modules>
+    </modules>
 
 </project>

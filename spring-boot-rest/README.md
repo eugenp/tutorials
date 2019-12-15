@@ -10,6 +10,7 @@ This module contains articles about Spring Boot RESTful APIs.
 - [Testing REST with multiple MIME types](https://www.baeldung.com/testing-rest-api-with-multiple-media-types)
 - [Testing Web APIs with Postman Collections](https://www.baeldung.com/postman-testing-collections)
 - [Spring Boot Consuming and Producing JSON](https://www.baeldung.com/spring-boot-json)
+- [Error Handling for REST with Spring](https://www.baeldung.com/exception-handling-for-rest-with-spring)
 
 ### E-book
 
