@@ -12,6 +12,7 @@
         <artifactId>remoting-hessian-burlap</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

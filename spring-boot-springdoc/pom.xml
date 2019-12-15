@@ -97,6 +97,7 @@
             </build>
         </profile>
     </profiles>
+
     <properties>
        
         <springdoc.version>1.1.45</springdoc.version>
