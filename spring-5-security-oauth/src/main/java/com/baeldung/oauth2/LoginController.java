@@ -71,5 +71,4 @@ public class LoginController {
 
         return "loginSuccess";
     }
-
 }

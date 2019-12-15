@@ -1,4 +1,8 @@
-## Relevant articles:
+## Genetic Algorithms
+
+This module contains articles about genetic algorithms. 
+
+### Relevant articles:
 
 - [Introduction to Jenetics Library](https://www.baeldung.com/jenetics)
 - [Ant Colony Optimization](https://www.baeldung.com/java-ant-colony-optimization)

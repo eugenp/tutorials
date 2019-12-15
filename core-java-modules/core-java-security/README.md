@@ -14,3 +14,5 @@ This module contains articles about core Java Security
 - [Enabling TLS v1.2 in Java 7](https://www.baeldung.com/java-7-tls-v12)
 - [The Java SecureRandom Class](https://www.baeldung.com/java-secure-random)
 - [An Introduction to Java SASL](https://www.baeldung.com/java-sasl)
+- [A Guide to Java GSS API](https://www.baeldung.com/java-gss)
+

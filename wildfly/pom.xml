@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.springframework</groupId>
-    <artifactId>gs-spring-boot-wildfly</artifactId>
+    <artifactId>wildfly</artifactId>
     <version>0.1.0</version>
-
+    <name>wildfly</name>
     <packaging>war</packaging>
 
     <parent>
@@ -38,17 +37,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <scope>provided</scope>
-            </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <!-- end::tests[] -->
     </dependencies>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
 
     <build>
         <plugins>
@@ -77,4 +72,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
 </project>

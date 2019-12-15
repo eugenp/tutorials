@@ -5,18 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>apache-spark-job</artifactId>
     <name>apache-spark-job</name>
-	
+
     <parent>
-        <artifactId>spring-cloud-data-flow</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>spring-cloud-data-flow</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-task-core</artifactId>
-                <version>${spring-cloud-task-core.version}</version>
+            <version>${spring-cloud-task-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>

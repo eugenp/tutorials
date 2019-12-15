@@ -7,8 +7,8 @@
     <name>java-jpa</name>
 
     <parent>
-        <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
@@ -19,11 +19,11 @@
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-jpamodelgen</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -52,8 +52,8 @@
         </dependency>
     </dependencies>
 
-	<build>
-		<plugins>
+    <build>
+        <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -62,48 +62,48 @@
                     <compilerArgument>-proc:none</compilerArgument>
                 </configuration>
             </plugin>
-			<plugin>
-				<groupId>org.bsc.maven</groupId>
-				<artifactId>maven-processor-plugin</artifactId>
-				<version>${maven-processor-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>process</id>
-						<goals>
-							<goal>process</goal>
-						</goals>
-						<phase>generate-sources</phase>
-						<configuration>
-							<outputDirectory>target/metamodel</outputDirectory>
-							<processors>
-								<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
-							</processors>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+            <plugin>
+                <groupId>org.bsc.maven</groupId>
+                <artifactId>maven-processor-plugin</artifactId>
+                <version>${maven-processor-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>process</id>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <outputDirectory>target/metamodel</outputDirectory>
+                            <processors>
+                                <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+                            </processors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>${build-helper-maven-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>target/metamodel</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${build-helper-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>target/metamodel</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <hibernate.version>5.4.0.Final</hibernate.version>

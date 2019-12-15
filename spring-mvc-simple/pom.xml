@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-simple</artifactId>
-    <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-mvc-simple</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -131,15 +132,16 @@
             <artifactId>json</artifactId>
             <version>${json.version}</version>
         </dependency>
-		<dependency>
-		    <groupId>org.apache.maven.surefire</groupId>
-			<artifactId>surefire-logger-api</artifactId>
-			<version>${maven-surefire-plugin.version}</version>
-			<!-- to get around bug https://github.com/junit-team/junit5/issues/1367 -->
-			<scope>test</scope>
-			<optional>true</optional>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire-logger-api</artifactId>
+            <version>${maven-surefire-plugin.version}</version>
+            <!-- to get around bug https://github.com/junit-team/junit5/issues/1367 -->
+            <scope>test</scope>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
+
     <build>
         <pluginManagement>
             <plugins>

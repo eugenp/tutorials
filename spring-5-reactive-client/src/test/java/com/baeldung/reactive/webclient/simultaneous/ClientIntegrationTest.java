@@ -56,7 +56,9 @@ public class ClientIntegrationTest {
 
         // Act
         long start = System.currentTimeMillis();
-        List<User> users = client.fetchUsers(userIds);
+        List<User> users = client.fetchUsers(userIds)
+          .collectList()
+          .block();
         long end = System.currentTimeMillis();
 
         // Assert

@@ -1,9 +1,9 @@
+## Guava
 
-## Guava Examples
+This module contains articles a Google Guava
 
 ### Relevant Articles: 
 - [Guava Functional Cookbook](https://www.baeldung.com/guava-functions-predicates)
-- [Guide to Guava’s Ordering](https://www.baeldung.com/guava-ordering)
 - [Guide to Guava’s PreConditions](https://www.baeldung.com/guava-preconditions)
 - [Introduction to Guava CacheLoader](https://www.baeldung.com/guava-cacheloader)
 - [Introduction to Guava Memoizer](https://www.baeldung.com/guava-memoizer)
