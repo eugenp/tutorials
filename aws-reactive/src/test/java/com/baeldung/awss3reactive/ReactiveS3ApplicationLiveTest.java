@@ -1,6 +1,5 @@
 package com.baeldung.awss3reactive;
 
-import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -12,24 +11,31 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.core.io.Resource;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.util.ResourceUtils;
 
 import com.baeldung.awss3reactive.UploadResult;
 
 import static org.junit.Assert.*;
 
+/**
+ * <p>LiveTests for Reactive S3 Application</p>
+ * 
+ * <p>
+ * Please take a look at instructions available at README.md in this folder before running tests.
+ * </p>
+ * 
+ * @author <a href="https://www.baeldung.com/author/philippe-sevestre">psevestre</a>
+ *
+ */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("minio")
+@ActiveProfiles("minio") // NOTE: Remove this in order to run tests with AWS !
 class ReactiveS3ApplicationLiveTest {
     
     @Autowired
