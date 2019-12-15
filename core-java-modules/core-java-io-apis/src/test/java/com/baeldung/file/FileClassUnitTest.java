@@ -1,14 +1,20 @@
 package com.baeldung.file;
 
+
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.StringJoiner;
 
 import static org.junit.Assert.*;
 
 public class FileClassUnitTest {
+
+    private static final Logger log = LoggerFactory.getLogger("FileClassUnitTest");
 
     @Test
     public void givenDir_whenMkdir_thenDirIsDeleted() {
@@ -137,11 +143,17 @@ public class FileClassUnitTest {
     public void givenDataWritten_whenWrite_thenFreeSpaceReduces() {
 
         String home = System.getProperty("user.home");
+        log.info("user.home: " + home);
         String sep = File.separator;
         File testDir = makeDir(home + sep + "test");
+        log.info("testDir: " + testDir.toString());
         File sample = new File(testDir, "sample.txt");
+        log.info("sample: " + sample.toString());
 
         long freeSpaceBefore = testDir.getFreeSpace();
+        log.info("freeSpaceBefore: " + freeSpaceBefore);
+
+        log.info("testDir list before: " + getListOfFiles(testDir));
         try {
             writeSampleDataToFile(sample);
         } catch (IOException e) {
@@ -149,9 +161,19 @@ public class FileClassUnitTest {
         }
 
         long freeSpaceAfter = testDir.getFreeSpace();
+        log.info("freeSpaceAfter: " + freeSpaceAfter);
+        log.info("testDir list after: " + getListOfFiles(testDir));
         assertTrue(freeSpaceAfter < freeSpaceBefore);
 
         removeDir(testDir);
+    }
+
+    private String getListOfFiles(File dir){
+        String list = "";
+        for(String l : dir.list()){
+            list += " _ " + l;
+        }
+        return list;
     }
 
     private static File makeDir(String name) {
