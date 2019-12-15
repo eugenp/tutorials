@@ -59,7 +59,7 @@
         <spring-data.version>3.0.8.RELEASE</spring-data.version>
         <hibernate.version>1.4.197</hibernate.version>
         <maven-source.version>1.8</maven-source.version>
-        <maven-target.version>1.8<maven-target.version>
+        <maven-target.version>1.8</maven-target.version>
   </properties>
 
 </project>

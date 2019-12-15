@@ -140,6 +140,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
+				<version>${plugin.codehaus.helper.version}</version>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -177,6 +178,7 @@
         <kotlin.version>1.2.71</kotlin.version> <!-- Same as spring-boot-dependencies:2.1.7.RELEASE -->
         <start-class>com.baeldung.Spring5Application</start-class>
         <httpclient.version>4.5.8</httpclient.version>
+		<plugin.codehaus.helper.version>3.0.0</plugin.codehaus.helper.version>
     </properties>
 
 </project>
