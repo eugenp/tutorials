@@ -1,4 +1,4 @@
-package org.baeldung.httpclient.conn;
+package com.baeldung.httpclient.conn;
 
 import org.apache.http.HeaderElement;
 import org.apache.http.HeaderElementIterator;

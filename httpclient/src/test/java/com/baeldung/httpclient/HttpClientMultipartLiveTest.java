@@ -1,4 +1,4 @@
-package org.baeldung.httpclient;
+package com.baeldung.httpclient;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
@@ -38,7 +38,7 @@ public class HttpClientMultipartLiveTest {
     private static final String TEXTFILENAME = "temp.txt";
     private static final String IMAGEFILENAME = "image.jpg";
     private static final String ZIPFILENAME = "zipFile.zip";
-    private static final Logger LOGGER = Logger.getLogger("org.baeldung.httpclient.HttpClientMultipartLiveTest");
+    private static final Logger LOGGER = Logger.getLogger("com.baeldung.httpclient.HttpClientMultipartLiveTest");
     private CloseableHttpClient client;
     private HttpPost post;
     private BufferedReader rd;

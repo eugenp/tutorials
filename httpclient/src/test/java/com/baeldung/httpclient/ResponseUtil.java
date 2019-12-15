@@ -1,4 +1,4 @@
-package org.baeldung.httpclient;
+package com.baeldung.httpclient;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;

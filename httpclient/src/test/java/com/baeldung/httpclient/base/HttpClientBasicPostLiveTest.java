@@ -1,5 +1,6 @@
-package org.baeldung.httpclient.base;
+package com.baeldung.httpclient.base;
 
+import com.baeldung.httpclient.ResponseUtil;
 import org.apache.http.auth.AuthenticationException;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -8,7 +9,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.baeldung.httpclient.ResponseUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
