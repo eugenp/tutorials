@@ -4,8 +4,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>oauth2-resource-server</artifactId>
-    <packaging>war</packaging>
     <name>oauth2-resource-server</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung.oauth2</groupId>

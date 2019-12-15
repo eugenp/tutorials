@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>hibernate-ogm</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-	<name>hibernate-ogm</name>
+    <name>hibernate-ogm</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -15,37 +14,37 @@
     </parent>
 
     <dependencies>
-		<!-- MongoDB -->
-		<dependency>
-			<groupId>org.hibernate.ogm</groupId>
-			<artifactId>hibernate-ogm-mongodb</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		<!-- Neo4j -->
-		<dependency>
-			<groupId>org.hibernate.ogm</groupId>
-			<artifactId>hibernate-ogm-neo4j</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		<!-- Narayana JTA -->  
-		<dependency>
-			<groupId>org.jboss.narayana.jta</groupId>
-			<artifactId>narayana-jta</artifactId>
-			<version>${narayana-jta.version}</version>
-		</dependency>
-		<!-- Testing -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.easytesting</groupId>
-			<artifactId>fest-assert</artifactId>
-			<version>${fest-assert.version}</version>
-			<scope>test</scope>
-		</dependency>
+        <!-- MongoDB -->
+        <dependency>
+            <groupId>org.hibernate.ogm</groupId>
+            <artifactId>hibernate-ogm-mongodb</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <!-- Neo4j -->
+        <dependency>
+            <groupId>org.hibernate.ogm</groupId>
+            <artifactId>hibernate-ogm-neo4j</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <!-- Narayana JTA -->
+        <dependency>
+            <groupId>org.jboss.narayana.jta</groupId>
+            <artifactId>narayana-jta</artifactId>
+            <version>${narayana-jta.version}</version>
+        </dependency>
+        <!-- Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-assert</artifactId>
+            <version>${fest-assert.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -63,4 +62,5 @@
         <fest-assert.version>1.4</fest-assert.version>
         <narayana-jta.version>5.5.23.Final</narayana-jta.version>
     </properties>
+    
 </project>
