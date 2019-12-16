@@ -670,7 +670,7 @@
             </build>
 
             <modules>
-				<module>ninja</module>
+
                 <module>netflix</module>
 
                 <module>parent-boot-1</module>
@@ -1224,7 +1224,7 @@
                 <!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
                 <module>mustache</module>
                 <module>mybatis</module>
-
+				<module>ninja</module>
                 <module>netflix</module>
 
                 <module>optaplanner</module>
