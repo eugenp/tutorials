@@ -1,8 +1,7 @@
-package com.baeldung;
+package com.baeldung.h2db.notnull;
 
-import com.baeldung.h2db.springboot.SpringBootH2Application;
-import com.baeldung.h2db.springboot.daos.ItemRepository;
-import com.baeldung.h2db.springboot.models.Item;
+import com.baeldung.h2db.notnull.daos.ItemRepository;
+import com.baeldung.h2db.notnull.models.Item;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import javax.validation.ConstraintViolationException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringBootH2Application.class)
+@SpringBootTest(classes = NotNullVsNullableApplication.class)
 public class ItemIntegrationTest {
 
     @Autowired
