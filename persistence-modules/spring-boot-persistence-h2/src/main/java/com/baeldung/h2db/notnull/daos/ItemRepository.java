@@ -1,6 +1,6 @@
-package com.baeldung.h2db.springboot.daos;
+package com.baeldung.h2db.notnull.daos;
 
-import com.baeldung.h2db.springboot.models.Item;
+import com.baeldung.h2db.notnull.models.Item;
 import org.springframework.data.repository.CrudRepository;
 
 import java.math.BigDecimal;
