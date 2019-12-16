@@ -1,6 +1,6 @@
 ## Java RMI
 
-This module contains articles about RMI (Remote Method Invocation) in Java.
+This module contains articles about Remote Method Invocation (RMI) in Java.
 
 ### Relevant articles
 
