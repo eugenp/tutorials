@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # section 2.1
-default_read() {
+default_read(){
     read input1 input2 input3
     echo "[$input1] [$input2] [$input3]"
 }
@@ -20,7 +20,7 @@ prompt_read_password(){
     echo -e "\ninput password [$input]"
 }
 
-array_read() {
+array_read(){
     declare -a input_array
     text="baeldung is a cool tech site"
     read -e -i "$text" -a input_array 
