@@ -2,13 +2,13 @@ package com.baeldung.methodmultiplereturnvalues;
 
 class MultipleReturnValuesUsingContainer {
 
-    Coordinates getCoordinates() {
+    static Coordinates getCoordinates() {
         
-        double longitude = 154.2;
-        double latitude = 15;
-        String directionsNote = "directions note";
+        double longitude = 10;
+        double latitude = 12.5;
+        Coordinates nearbyLocation = null;
         
-        return new Coordinates(longitude, latitude, directionsNote);
+        return new Coordinates(longitude, latitude, nearbyLocation);
     }
     
 }

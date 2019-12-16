@@ -1,28 +1,25 @@
 package com.baeldung.methodmultiplereturnvalues;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.Before;
-import org.junit.Test;
-
-import com.baeldung.methodmultiplereturnvalues.MultipleReturnValuesUsingTuples;
-import com.baeldung.methodmultiplereturnvalues.Tuple3;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 public class MultipleReturnValuesUsingTuplesUnitTest {
 
-    private MultipleReturnValuesUsingTuples multipleReturnValuesUsingTuples;
-    
-    @Before
-    public void setUp() {
-        this.multipleReturnValuesUsingTuples = new MultipleReturnValuesUsingTuples();
-    }
-    
     @Test
     public void whenUsingTuple_thenMultipleFieldsAreReturned() {
         
-        Tuple3<Double, Double, String> coordinates = multipleReturnValuesUsingTuples.getCoordinates();
+        List<Coordinates> coordinatesList = new ArrayList<>();
+        coordinatesList.add(new Coordinates(10, 12.5, null));
         
-        assertEquals(Double.valueOf(154.2), coordinates.getFirst());
-        assertEquals(Double.valueOf(15), coordinates.getSecond());
-        assertEquals("directions note", coordinates.getThird());
+        Tuple2<Integer, Coordinates> coordinates = MultipleReturnValuesUsingTuples.getFirstNullNearbyLocation(coordinatesList);
+        
+        assertEquals(Integer.valueOf(55), coordinates.getFirst());
+        assertEquals(10, coordinates.getSecond().getLongitude());
+        assertEquals(12.5, coordinates.getSecond().getLatitude());
+        assertEquals(null, coordinates.getSecond().getNearbyLocation());
+        
     }
+    
 }
