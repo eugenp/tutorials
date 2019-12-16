@@ -629,7 +629,7 @@
                 <module>spring-boot-mvc-2</module>
                 <module>spring-boot-performance</module>
                 <module>spring-boot-properties</module>
-                <!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
+                <module>spring-mvc-basics</module>
                 <module>spring-security-modules/spring-security-kerberos</module>
                 <module>oauth2-framework-impl</module>
 
@@ -786,13 +786,13 @@
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-                <module>spring-mvc-basics-2</module>
+                <module>spring-mvc-basics-4</module>
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
                 <module>spring-mvc-kotlin</module>
-                <module>spring-mvc-simple</module>
-                <module>spring-mvc-simple-2</module>
+                <module>spring-mvc-basics-2</module>
+                <module>spring-mvc-basics-3</module>
                 <module>spring-mvc-views</module>
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
@@ -1259,7 +1259,7 @@
                 <module>spf4j</module>
                 <module>spring-boot-performance</module>
                 <module>spring-boot-properties</module>
-                <!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
+                <module>spring-mvc-basics</module>
                 <!-- <module>Twitter4J</module> --> <!-- Builds locally, but fails in Jenkins, Failed to parse POMs -->
 
             </modules>
@@ -1391,13 +1391,13 @@
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-                <module>spring-mvc-basics-2</module>
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
                 <module>spring-mvc-kotlin</module>
-                <module>spring-mvc-simple</module>
-                <module>spring-mvc-simple-2</module>
+                <module>spring-mvc-basics-2</module>
+                <module>spring-mvc-basics-3</module>
+                <module>spring-mvc-basics-4</module>
                 <module>spring-mvc-views</module>
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>

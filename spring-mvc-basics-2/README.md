@@ -1,14 +1,15 @@
-## Spring MVC Basics
+## Spring MVC Basics 2
 
-This module contains articles about the basics of Spring MVC. Articles about more specific areas of Spring MVC have
-their own module. 
+This module contains articles about Spring MVC
 
-### The Course
-The "REST With Spring" Classes: http://bit.ly/restwithspring
-
-### Relevant Articles: 
-- [Quick Guide to Spring Controllers](http://www.baeldung.com/spring-controllers)
-- [The Spring @Controller and @RestController Annotations](http://www.baeldung.com/spring-controller-vs-restcontroller)
-- [Model, ModelMap, and ModelView in Spring MVC](http://www.baeldung.com/spring-mvc-model-model-map-model-view)
-- [Spring Web Contexts](http://www.baeldung.com/spring-web-contexts)
-- [[<-- Prev]](/spring-mvc-basics)
+## Relevant articles:
+- [HandlerAdapters in Spring MVC](https://www.baeldung.com/spring-mvc-handler-adapters)
+- [Template Engines for Spring](https://www.baeldung.com/spring-template-engines)
+- [Spring 5 and Servlet 4 – The PushBuilder](https://www.baeldung.com/spring-5-push)
+- [Servlet Redirect vs Forward](https://www.baeldung.com/servlet-redirect-forward)
+- [Apache Tiles Integration with Spring MVC](https://www.baeldung.com/spring-mvc-apache-tiles)
+- [Guide to Spring Email](https://www.baeldung.com/spring-email)
+- [Request Method Not Supported (405) in Spring](https://www.baeldung.com/spring-request-method-not-supported-405)
+- [Spring @RequestParam Annotation](https://www.baeldung.com/spring-request-param)
+- More articles: [[more -->]](/spring-mvc-basics-3)
+- More articles: [[<-- prev]](/spring-mvc-basics)
