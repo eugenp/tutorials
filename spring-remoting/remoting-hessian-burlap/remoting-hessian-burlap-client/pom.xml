@@ -9,7 +9,6 @@
     <parent>
         <artifactId>remoting-hessian-burlap</artifactId>
         <groupId>com.baeldung</groupId>
-        <artifactId>remoting-hessian-burlap</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     
