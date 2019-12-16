@@ -1,4 +1,4 @@
-package com.baeldung.h2db.springboot.models;
+package com.baeldung.h2db.notnull.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
