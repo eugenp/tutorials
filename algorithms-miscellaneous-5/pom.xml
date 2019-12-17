@@ -34,6 +34,11 @@
             <artifactId>tradukisto</artifactId>
             <version>${tradukisto.version}</version>
         </dependency>
+        <dependency>
+           <groupId>com.google.guava</groupId>
+           <artifactId>guava</artifactId>
+           <version>28.1-jre</version>
+        </dependency>
 
         <dependency>
             <groupId>org.assertj</groupId>
