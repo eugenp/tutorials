@@ -9,9 +9,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class QuadTreeSearchTest {
+public class QuadTreeSearchUnitTest {
     
-    private static final Logger LOGGER = LoggerFactory.getLogger(QuadTreeSearchTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(QuadTreeSearchUnitTest.class);
 
     private static QuadTree quadTree;
 
