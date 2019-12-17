@@ -20,7 +20,7 @@ import org.junit.runners.MethodSorters;
  */
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SortComparisonTest {
+public class SortComparisonUnitTest {
 
     private int[] sizeOfArrays = { 1000, 10000, 100000, 1000000 };
 
