@@ -27,16 +27,16 @@ public class QuadTreeSearchTest {
             Point point = new Point(points[i][0], points[i][1]);
             quadTree.addPoint(point);
         }
-        LOGGER.debug("\n" + quadTree.printTree(""));
-        LOGGER.debug("==============================================");
+        LOGGER.info("\n" + quadTree.printTree(""));
+        LOGGER.info("==============================================");
     }
 
     @Test
     public void givenQuadTree_whenSearchingForRange_thenReturn1MatchingItem() {
         Region searchArea = new Region(200, 200, 250, 250);
         List<Point> result = quadTree.search(searchArea, null, "");
-        LOGGER.debug(result.toString());
-        LOGGER.debug(quadTree.printSearchTraversePath());
+        LOGGER.info(result.toString());
+        LOGGER.info(quadTree.printSearchTraversePath());
        
         Assert.assertEquals(1, result.size());
         Assert.assertArrayEquals(new float[] { 245, 238 }, 
@@ -47,8 +47,8 @@ public class QuadTreeSearchTest {
     public void givenQuadTree_whenSearchingForRange_thenReturn2MatchingItems() {
         Region searchArea = new Region(0, 0, 100, 100);
         List<Point> result = quadTree.search(searchArea, null, "");
-        LOGGER.debug(result.toString());
-        LOGGER.debug(quadTree.printSearchTraversePath());
+        LOGGER.info(result.toString());
+        LOGGER.info(quadTree.printSearchTraversePath());
         
         Assert.assertEquals(2, result.size());
         Assert.assertArrayEquals(new float[] { 21, 25 }, 
