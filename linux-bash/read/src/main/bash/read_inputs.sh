@@ -58,6 +58,7 @@ timeout_input_read(){
     read -p "$prompt" -s -r -t 5 input
         if [ -z "$input" ]; then
             echo -e "\ntimeout occured!"
+            echo "empty -?> [$input]"
         else
             echo -e "\ninput word [$input]"
         fi
@@ -69,3 +70,24 @@ exactly_n_read(){
     echo -e "\ninput word1 [$input1]"
     echo "input word2 [$input2]"
 }
+
+
+echo "Read command samples"
+options=("default_read" "custom_ifs_no_array" "prompt_read_password" "quit")
+select option in "${options[@]}"
+do
+  case $option in
+        "default_read")
+            echo "Default read"
+            default_read
+            ;;
+        "custom_ifs_no_array")  
+            echo "Custom IFS no array"
+            custom_ifs_no_array
+            ;;
+        "quit")
+            break
+            ;;
+        *) echo "Invalid option";;
+  esac
+done
