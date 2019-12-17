@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.hexagonal.domain.Product;
-import com.baeldung.hexagonal.ports.IProductController;
-import com.baeldung.hexagonal.service.IProductService;
+import com.baeldung.hexagonal.ports.IProductService;
 
 /**
  * Primary Adapter - Connecting to ProductService via IProductController Port
@@ -24,26 +23,23 @@ import com.baeldung.hexagonal.service.IProductService;
  */
 @RestController
 @RequestMapping("/products")
-public class ProductController implements IProductController {
+public class ProductController {
 
 	@Autowired
 	private IProductService productService;
 
-	@Override
 	@GetMapping("/{id}")
 	public ResponseEntity<Product> getProductById(@PathVariable(name = "id") Integer id) {
 
 		return ResponseEntity.ok().body(productService.getProduct(id));
 	}
 
-	@Override
 	@GetMapping
 	public ResponseEntity<List<Product>> getProducts() {
 
 		return ResponseEntity.ok().body(productService.getProducts());
 	}
 
-	@Override
 	@PostMapping
 	public ResponseEntity<?> createProduct(@RequestBody Product product) {
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.baeldung.hexagonal.domain.Product;
 import com.baeldung.hexagonal.ports.IProductRepository;
+import com.baeldung.hexagonal.ports.IProductService;
 
 @Service
 public class ProductService implements IProductService {
