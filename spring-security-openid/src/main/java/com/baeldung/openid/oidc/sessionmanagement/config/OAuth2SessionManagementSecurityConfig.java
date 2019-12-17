@@ -17,17 +17,15 @@ public class OAuth2SessionManagementSecurityConfig extends WebSecurityConfigurer
     private ClientRegistrationRepository clientRegistrationRepository;
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .mvcMatchers("/home")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .oauth2Login()
-            .and()
+    protected void configure(HttpSecurity http) throws Exception { // @formatter:off
+        http.authorizeRequests(authorizeRequests -> authorizeRequests.mvcMatchers("/home")
+              .permitAll()
+              .anyRequest()
+                .authenticated())
+            .oauth2Login(oauthLogin -> oauthLogin.permitAll())
             .logout(logout -> logout.logoutSuccessHandler(oidcLogoutSuccessHandler()));
-    }
+    }  // @formatter:on
+
 
     private LogoutSuccessHandler oidcLogoutSuccessHandler() {
         OidcClientInitiatedLogoutSuccessHandler oidcLogoutSuccessHandler = new OidcClientInitiatedLogoutSuccessHandler(this.clientRegistrationRepository);
