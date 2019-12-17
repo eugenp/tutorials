@@ -1,4 +1,4 @@
-package org.baeldung.akka;
+package com.baeldung.akka;
 
 import akka.actor.UntypedActor;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;

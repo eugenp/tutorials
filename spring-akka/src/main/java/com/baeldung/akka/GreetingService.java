@@ -1,4 +1,4 @@
-package org.baeldung.akka;
+package com.baeldung.akka;
 
 import org.springframework.stereotype.Component;
 

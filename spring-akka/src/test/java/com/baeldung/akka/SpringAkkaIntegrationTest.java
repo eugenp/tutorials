@@ -1,11 +1,11 @@
-package org.baeldung.akka;
+package com.baeldung.akka;
 
 import java.util.concurrent.TimeUnit;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.util.Timeout;
-import org.baeldung.akka.GreetingActor.Greet;
+import com.baeldung.akka.GreetingActor.Greet;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,7 +17,7 @@ import scala.concurrent.Future;
 import scala.concurrent.duration.FiniteDuration;
 
 import static akka.pattern.Patterns.ask;
-import static org.baeldung.akka.SpringExtension.SPRING_EXTENSION_PROVIDER;
+import static com.baeldung.akka.SpringExtension.SPRING_EXTENSION_PROVIDER;
 
 @ContextConfiguration(classes = AppConfiguration.class)
 public class SpringAkkaIntegrationTest extends AbstractJUnit4SpringContextTests {
