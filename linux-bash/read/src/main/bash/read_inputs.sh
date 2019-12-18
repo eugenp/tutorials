@@ -8,9 +8,12 @@ default_read(){
 
 # section 2.2
 custom_ifs_no_array(){
+    OLDIFS=$IFS
     IFS=";"
     read input1 input2 input3
     echo "[$input1] [$input2] [$input3]"
+    # restore default IFS after we're finished so current shell behaves like before
+    IFS=$OLDIFS
 }
 
 # Section 2.3
@@ -44,7 +47,7 @@ file_read(){
 
 # section 3.2
 command_pipe(){
-    ls -ll | { declare -a input
+    ls -ll / | { declare -a input
                read
                while read -a input; 
                do
@@ -58,7 +61,6 @@ timeout_input_read(){
     read -p "$prompt" -s -r -t 5 input
         if [ -z "$input" ]; then
             echo -e "\ntimeout occured!"
-            echo "empty -?> [$input]"
         else
             echo -e "\ninput word [$input]"
         fi
@@ -71,19 +73,46 @@ exactly_n_read(){
     echo "input word2 [$input2]"
 }
 
-
-echo "Read command samples"
-options=("default_read" "custom_ifs_no_array" "prompt_read_password" "quit")
+# main menu entry point
+echo "****Read command samples menu*****"
+PS3="Your choice (1,2,3 etc.):"
+options=("default_read" "custom_ifs_no_array" "prompt_read_password" \
+         "array_read" "file_read" "command_pipe" "timeout_input_read" \
+         "exactly_n_read" "quit")
 select option in "${options[@]}"
 do
   case $option in
         "default_read")
-            echo "Default read"
+            echo "Enter something separated by spaces"
             default_read
             ;;
         "custom_ifs_no_array")  
-            echo "Custom IFS no array"
+            echo "Enter something separated by ;"
             custom_ifs_no_array
+            ;;
+        "prompt_read_password")
+            echo "Enter an invisible password after the prompt"
+            prompt_read_password
+            ;;
+        "array_read")
+            echo "Enter something else or just return"
+            array_read
+            ;;
+        "file_read")
+            echo "Reading from one liner csv file"
+            file_read
+            ;;
+        "command_pipe")
+            echo "Listing files and access rights from /"
+            command_pipe
+            ;;
+        "timeout_input_read")
+            echo "Enter something in 5 seconds or less"
+            timeout_input_read
+            ;;
+        "exactly_n_read")
+            echo "Enter at least 11 characters or wait 5 seconds"
+            exactly_n_read
             ;;
         "quit")
             break
