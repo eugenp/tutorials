@@ -15,7 +15,7 @@ public class PostDtoUnitTest {
     @Test
     public void whenConvertPostEntityToPostDto_thenCorrect() {
         Post post = new Post();
-        post.setId(Long.valueOf(1));
+        post.setId(1L);
         post.setTitle(randomAlphabetic(6));
         post.setUrl("www.test.com");
  
@@ -28,7 +28,7 @@ public class PostDtoUnitTest {
     @Test
     public void whenConvertPostDtoToPostEntity_thenCorrect() {
         PostDto postDto = new PostDto();
-        postDto.setId(Long.valueOf(1));
+        postDto.setId(1L);
         postDto.setTitle(randomAlphabetic(6));
         postDto.setUrl("www.test.com");
  

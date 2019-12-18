@@ -1,8 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -341,6 +341,7 @@
                 <module>algorithms-miscellaneous-4</module>
                 <module>algorithms-miscellaneous-5</module>
                 <module>algorithms-sorting</module>
+                <module>algorithms-searching</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
@@ -358,6 +359,7 @@
                 <module>apache-shiro</module>
                 <module>apache-solrj</module>
                 <module>apache-spark</module>
+                <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
@@ -421,9 +423,9 @@
                 <module>core-java-modules/core-java-concurrency-basic-2</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-io-2</module>
                 <module>core-java-modules/core-java-io-apis</module>
                 <module>core-java-modules/core-java-io-conversions</module>
-                <module>core-java-modules/core-java-io-files</module>
                 <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-nio-2</module>
                 <module>core-java-modules/core-java-security</module>
@@ -452,6 +454,7 @@
                 <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-jar</module>
                 <module>core-java-modules/core-java-jvm</module>
+                <module>core-kotlin-modules</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -482,7 +485,7 @@
                 <module>guava-io</module>
                 <module>guava-collections</module>
                 <module>guava-collections-map</module>
-				<module>guava-collections-set</module>
+                <module>guava-collections-set</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
@@ -497,17 +500,21 @@
                 <module>immutables</module>
 
                 <module>jackson</module>
-                <module>jackson-2</module>
                 <module>jackson-simple</module>
+                <module>jackson-annotations</module>
+                <module>jackson-exceptions</module>
+                <module>jackson-conversions</module>
+                <module>jackson-conversions-2</module>
+                <module>jackson-custom-conversions</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
                 <module>java-jdi</module>
-                <!--<module>java-dates</module>-->
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
                 <module>java-lite</module>
                 <module>java-math</module>
+                <module>java-math-2</module> <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
                 <module>java-rmi</module>
@@ -549,8 +556,8 @@
                 <module>libraries-data</module>
                 <module>libraries-data-2</module>
                 <module>libraries-data-db</module>
-				<module>libraries-data-io</module>
-				<module>libraries-apache-commons</module>
+                <module>libraries-data-io</module>
+                <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
                 <module>libraries-primitive</module>
@@ -567,6 +574,7 @@
                 <module>mapstruct</module>
                 <!-- <module>maven-all/compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
                 <module>maven-all/maven</module>
+                <module>maven-all/maven-custom-plugin/counter-maven-plugin</module>
                 <module>maven-all/maven-war-plugin</module>
                 <module>maven-all/profiles</module>
                 <module>maven-all/versions-maven-plugin</module>
@@ -583,6 +591,7 @@
                 <module>mustache</module>
                 <module>mybatis</module>
 
+                <module>netflix</module>
 
                 <module>optaplanner</module>
                 <module>orika</module>
@@ -615,18 +624,19 @@
                 <module>tensorflow-java</module>
                 <module>spf4j</module>
                 <module>spring-boot-config-jpa-error</module>
-				<module>spring-boot-flowable</module>
+                <module>spring-boot-flowable</module>
                 <module>spring-boot-mvc-2</module>
                 <module>spring-boot-performance</module>
                 <module>spring-boot-properties</module>
                 <!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
-                <module>spring-security-kerberos</module>
+                <module>spring-security-modules/spring-security-kerberos</module>
                 <module>oauth2-framework-impl</module>
 
                 <module>spring-boot-nashorn</module>
                 <module>java-blockchain</module>
                 <module>machine-learning</module>
                 <module>wildfly</module>
+                <module>quarkus-extension</module>
             </modules>
 
         </profile>
@@ -662,6 +672,8 @@
             </build>
 
             <modules>
+                <module>netflix</module>
+
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
@@ -703,7 +715,7 @@
                 <module>spring-boot-camel</module>
                 <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
                 <module>spring-boot-config-jpa-error</module>
-				<module>spring-boot-client</module>
+                <module>spring-boot-client</module>
 
                 <module>spring-boot-crud</module>
                 <module>spring-boot-ctx-fluent</module>
@@ -716,10 +728,10 @@
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-environment</module>
-				<module>spring-boot-deployment</module>
-				<module>spring-boot-runtime</module>
-				<module>spring-boot-runtime/disabling-console-jul</module>
-				<module>spring-boot-runtime/disabling-console-log4j2</module>
+                <module>spring-boot-deployment</module>
+                <module>spring-boot-runtime</module>
+                <module>spring-boot-runtime/disabling-console-jul</module>
+                <module>spring-boot-runtime/disabling-console-log4j2</module>
                 <module>spring-boot-runtime/disabling-console-logback</module>
                 <module>spring-boot-artifacts</module>
                 <module>spring-boot-rest</module>
@@ -742,7 +754,7 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
-				<module>spring-cucumber</module>
+                <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
                 <module>spring-data-rest-querydsl</module>
@@ -774,12 +786,13 @@
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
                 <module>spring-mvc-basics-2</module>
-				<module>spring-mvc-forms-jsp</module>
+                <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
                 <module>spring-mvc-kotlin</module>
                 <module>spring-mvc-simple</module>
                 <module>spring-mvc-simple-2</module>
+                <module>spring-mvc-views</module>
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
@@ -792,42 +805,42 @@
                 <module>spring-reactive-kotlin</module>
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-rest</module>
+                <module>spring-rest-http</module>
                 <module>spring-rest-angular</module>
                 <module>spring-rest-compress</module>
-                <module>spring-rest-full</module>
+                <module>spring-rest-testing</module>
                 <module>spring-rest-hal-browser</module>
                 <module>spring-rest-query-language</module>
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
                 <module>spring-roo</module>
-                <module>spring-scheduling</module><module>spring-security-acl</module>
-                <module>spring-security-angular/server</module>
-                <module>spring-security-cache-control</module>
-
-                <module>spring-security-core</module>
-                <module>spring-security-mvc-boot</module>
-                <module>spring-security-mvc-custom</module>
-                <module>spring-security-mvc-digest-auth</module>
-                <module>spring-security-mvc-jsonview</module>
-                <module>spring-security-mvc-ldap</module>
-                <module>spring-security-mvc-login</module>
-                <module>spring-security-mvc-persisted-remember-me</module>
-                <module>spring-security-mvc</module>
-                <module>spring-security-mvc-socket</module>
-                <module>spring-security-openid</module>
+                <module>spring-scheduling</module>
+                <module>spring-security-modules/spring-security-acl</module>
+                <module>spring-security-modules/spring-security-angular/server</module>
+                <module>spring-security-modules/spring-security-cache-control</module>
+                <module>spring-security-modules/spring-security-core</module>
+                <module>spring-security-modules/spring-security-mvc</module>
+                <module>spring-security-modules/spring-security-mvc-boot</module>
+                <module>spring-security-modules/spring-security-mvc-custom</module>
+                <module>spring-security-modules/spring-security-mvc-digest-auth</module>
+                <module>spring-security-modules/spring-security-mvc-jsonview</module>
+                <module>spring-security-modules/spring-security-mvc-ldap</module>
+                <module>spring-security-modules/spring-security-mvc-login</module>
+                <module>spring-security-modules/spring-security-mvc-persisted-remember-me</module>
+                <module>spring-security-modules/spring-security-mvc-socket</module>
+                <module>spring-security-modules/spring-security-openid</module>
                 <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
-                <module>spring-security-rest</module>
-                <module>spring-security-rest-basic-auth</module>
-                <module>spring-security-rest-custom</module>
-                <module>spring-security-sso</module>
-                <module>spring-security-stormpath</module>
-                <module>spring-security-thymeleaf</module>
-                <module>spring-security-x509</module>
+                <module>spring-security-modules/spring-security-rest</module>
+                <module>spring-security-modules/spring-security-rest-basic-auth</module>
+                <module>spring-security-modules/spring-security-rest-custom</module>
+                <module>spring-security-modules/spring-security-sso</module>
+                <module>spring-security-modules/spring-security-stormpath</module>
+                <module>spring-security-modules/spring-security-thymeleaf</module>
+                <module>spring-security-modules/spring-security-x509</module>
                 <module>spring-session</module>
                 <module>spring-shell</module>
-				<module>spring-sleuth</module>
+                <module>spring-sleuth</module>
                 <module>spring-soap</module>
                 <module>spring-social-login</module>
                 <module>spring-spel</module>
@@ -842,8 +855,6 @@
 
                 <module>spring-webflux-amqp</module> <!-- long -->
 
-                <module>spring-zuul</module>
-
                 <module>static-analysis</module>
                 <module>stripe</module>
                 <module>structurizr</module>
@@ -854,7 +865,7 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
-                <module>undertow</module>
+                <!-- <module>undertow</module> --> <!-- 19.11.2019 - disabling temporarily as it's causing a major issue with the build (TODO: create a jira to fix it) -->
 
                 <module>vertx</module>
                 <module>vertx-and-rxjava</module>
@@ -868,161 +879,11 @@
 
                 <module>tensorflow-java</module>
                 <module>spring-boot-flowable</module>
-                <module>spring-security-kerberos</module>
+                <module>spring-security-modules/spring-security-kerberos</module>
 
                 <module>spring-boot-nashorn</module>
                 <module>java-blockchain</module>
 
-            </modules>
-
-        </profile>
-
-        <profile>
-            <id>spring-context</id>
-            <build>
-                <plugins>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven-surefire-plugin.version}</version>
-                        <configuration>
-                            <forkCount>3</forkCount>
-                            <reuseForks>true</reuseForks>
-                            <includes>
-                                <include>**/*SpringContextIntegrationTest.java</include>
-                            </includes>
-                        </configuration>
-                    </plugin>
-
-                </plugins>
-            </build>
-
-            <modules>
-                <module>spring-5</module>
-                <module>spring-5-data-reactive</module>
-                <module>spring-5-reactive</module>
-                <module>spring-5-reactive-2</module>
-                <module>spring-5-reactive-client</module>
-                <module>spring-5-reactive-security</module>
-                <module>spring-5-security</module>
-                <module>spring-5-security-oauth</module>
-                <module>spring-5-security-cognito</module>
-                <module>spring-activiti</module>
-                <module>spring-akka</module>
-                <module>spring-aop</module>
-                <module>spring-apache-camel</module>
-                <module>spring-batch</module>
-                <module>spring-bom</module>
-                <module>spring-boot-admin</module>
-                <module>spring-boot-bootstrap</module>
-                <module>spring-boot-bootstrap</module>
-                <module>spring-boot-camel</module>
-                <module>spring-boot-client</module>
-                <module>spring-boot-custom-starter</module>
-                <module>spring-boot-di</module>
-                <module>greeter-spring-boot-autoconfigure</module>
-                <module>greeter-spring-boot-sample-app</module>
-                <module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
-                <module>spring-boot-jasypt</module>
-                <module>spring-boot-keycloak</module>
-                <module>spring-boot-mvc</module>
-                <module>spring-boot-property-exp</module>
-                <module>spring-boot-springdoc</module>
-                <module>spring-boot-vue</module>
-                <module>spring-cloud</module>
-                <module>spring-cloud/spring-cloud-archaius/basic-config</module>
-                <module>spring-cloud/spring-cloud-archaius/extra-configs</module>
-                <module>spring-cloud/spring-cloud-bootstrap/config</module>
-                <module>spring-cloud/spring-cloud-contract</module>
-                <module>spring-cloud/spring-cloud-gateway</module>
-                <module>spring-cloud/spring-cloud-kubernetes/demo-backend</module>
-                <module>spring-cloud/spring-cloud-rest/spring-cloud-rest-config-server</module>
-                <module>spring-cloud/spring-cloud-ribbon-client                </module>
-                <module>spring-cloud/spring-cloud-security</module>
-                <module>spring-cloud/spring-cloud-stream/spring-cloud-stream-rabbit</module>
-                <module>spring-cloud/spring-cloud-task/springcloudtasksink</module>
-                <module>spring-cloud/spring-cloud-zookeeper                     </module>
-                <module>spring-cloud/spring-cloud-bus/spring-cloud-config-server</module>
-                <module>spring-cloud/spring-cloud-data-flow/log-sink</module>
-                <module>spring-cloud/spring-cloud-data-flow/time-processor</module>
-                <module>spring-cloud/spring-cloud-data-flow/time-source</module>
-                <module>spring-cucumber</module>
-                <module>persistence-modules/spring-data-keyvalue</module>
-                <module>spring-data-rest</module>
-                <module>spring-dispatcher-servlet</module>
-                <module>spring-drools</module>
-                <module>spring-di</module>
-                <module>spring-ehcache</module>
-                <module>spring-freemarker</module>
-                <module>persistence-modules/spring-hibernate-3</module>
-                <module>persistence-modules/spring-hibernate4</module>
-                <module>persistence-modules/spring-mybatis</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
-                <module>spring-jersey</module>
-                <module>spring-jinq</module>
-                <module>spring-jms</module>
-                <module>spring-kafka</module>
-                <module>spring-katharsis</module>
-                <module>spring-ldap</module>
-                <module>spring-mobile</module>
-                <module>spring-mockito</module>
-                <module>spring-mvc-forms-thymeleaf</module>
-                <module>spring-mvc-java</module>
-                <module>spring-mvc-velocity</module>
-                <module>spring-mvc-webflow</module>
-                <module>spring-protobuf</module>
-                <module>spring-quartz</module>
-                <module>remoting-hessian-burlap/spring-remoting-hessian-burlap-client</module>
-                <module>remoting-hessian-burlap/remoting-hessian-burlap-server</module>
-                <module>spring-reactor</module>
-                <module>spring-remoting/</module>
-                <module>spring-remoting/remoting-http/remoting-http-server</module>
-                <module>spring-remoting/remoting-jms/remoting-jms-client</module>
-                <module>spring-remoting/remoting-rmi/remoting-rmi-server</module>
-                <module>spring-rest</module>
-                <module>spring-rest-angular</module>
-                <module>spring-rest-compress</module>
-                <module>spring-rest-full</module>
-                <module>spring-rest-simple</module>
-                <module>spring-resttemplate</module>
-                <module>spring-security-acl</module>
-                <module>spring-security-angular</module>
-                <module>spring-security-cache-control</module>
-                <module>spring-security-core</module>
-                <module>spring-security-mvc-boot</module>
-                <module>spring-security-mvc-custom</module>
-                <module>spring-security-mvc-digest-auth</module>
-                <module>spring-security-mvc-ldap</module>
-                <module>spring-security-mvc-persisted-remember-me</module>
-                <module>spring-security-mvc</module>
-                <module>spring-security-mvc-socket</module>
-                <module>spring-security-rest</module>
-                <module>spring-security-sso</module>
-                <module>spring-security-thymeleaf/spring-security-thymeleaf-authentication</module>
-                <module>spring-security-thymeleaf/spring-security-thymeleaf-authorize</module>
-                <module>spring-security-thymeleaf/spring-security-thymeleaf-config</module>
-                <module>spring-security-x509</module>
-                <module>spring-session/spring-session-jdbc</module>
-                <module>spring-sleuth</module>
-                <module>spring-social-login</module>
-                <module>spring-spel</module>
-                <module>spring-state-machine</module>
-                <module>spring-swagger-codegen/spring-swagger-codegen-app</module>
-                <module>spring-thymeleaf</module>
-                <module>spring-vault</module>
-                <module>spring-vertx</module>
-                <module>spring-zuul/spring-zuul-foos-resource</module>
-                <module>persistence-modules/hibernate-mapping</module>
-                <module>persistence-modules/spring-data-dynamodb</module>
-                <module>persistence-modules/spring-data-eclipselink</module>
-                <module>persistence-modules/spring-data-solr</module>
-                <module>persistence-modules/spring-hibernate-5</module>
-
-                <module>spring-boot-flowable</module>
-                <module>spring-security-kerberos</module>
-                <module>spring-boot-nashorn</module>
             </modules>
 
         </profile>
@@ -1068,9 +929,8 @@
                 <module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-java-modules/core-java-concurrency-advanced-2</module>
                 <module>core-java-modules/core-java-concurrency-advanced-3</module>
-				<module>core-kotlin</module> <!-- long running? -->
+                <module>core-kotlin</module> <!-- long running? -->
                 <module>core-kotlin-2</module>
-                <module>core-kotlin-io</module>
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
@@ -1127,6 +987,7 @@
                 <module>algorithms-miscellaneous-4</module>
                 <module>algorithms-miscellaneous-5</module>
                 <module>algorithms-sorting</module>
+                <module>algorithms-searching</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
@@ -1144,6 +1005,7 @@
                 <module>apache-shiro</module>
                 <module>apache-solrj</module>
                 <module>apache-spark</module>
+                <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
@@ -1203,13 +1065,13 @@
                 <module>core-java-modules/core-java-concurrency-basic-2</module>
                 <module>core-java-modules/core-java-concurrency-collections</module>
                 <module>core-java-modules/core-java-io</module>
+                <module>core-java-modules/core-java-io-2</module>
                 <module>core-java-modules/core-java-io-apis</module>
                 <module>core-java-modules/core-java-io-conversions</module>
-                <module>core-java-modules/core-java-io-files</module>
                 <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-nio-2</module>
                 <module>core-java-modules/core-java-security</module>
-				<module>core-java-modules/core-java-exceptions</module>
+                <module>core-java-modules/core-java-exceptions</module>
                 <module>core-java-modules/core-java-lang-syntax</module>
                 <module>core-java-modules/core-java-lang-syntax-2</module>
                 <module>core-java-modules/core-java-lang</module>
@@ -1230,6 +1092,7 @@
                 <module>core-java-modules/core-java-string-algorithms-2</module>
                 <module>core-java-modules/core-java-string-apis</module>
                 <module>core-java-modules/core-java-strings</module>
+                <module>core-kotlin-modules</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -1260,7 +1123,7 @@
                 <module>guava-io</module>
                 <module>guava-collections</module>
                 <module>guava-collections-map</module>
-				<module>guava-collections-set</module>
+                <module>guava-collections-set</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
@@ -1275,17 +1138,21 @@
                 <module>immutables</module>
 
                 <module>jackson</module>
-                <module>jackson-2</module>
                 <module>jackson-simple</module>
+                <module>jackson-annotations</module>
+                <module>jackson-exceptions</module>
+                <module>jackson-conversions</module>
+                <module>jackson-conversions-2</module>
+                <module>jackson-custom-conversions</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
                 <module>java-jdi</module>
-                <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>java-ee-8-security-api</module>
                 <module>java-lite</module>
                 <module>java-math</module>
+                <module>java-math-2</module>  <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
                 <module>java-rmi</module>
@@ -1325,8 +1192,8 @@
                 <module>libraries-data</module>
                 <module>libraries-data-2</module>
                 <module>libraries-data-db</module>
-				<module>libraries-data-io</module>
-				<module>libraries-apache-commons</module>
+                <module>libraries-data-io</module>
+                <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
                 <module>libraries-testing</module>
@@ -1341,6 +1208,7 @@
                 <module>mapstruct</module>
                 <!-- <module>maven-all/compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
                 <module>maven-all/maven</module>
+                <module>maven-all/maven-custom-plugin/counter-maven-plugin</module>
                 <module>maven-all/maven-war-plugin</module>
                 <module>maven-all/profiles</module>
                 <module>maven-all/versions-maven-plugin</module>
@@ -1358,6 +1226,7 @@
                 <module>mustache</module>
                 <module>mybatis</module>
 
+                <module>netflix</module>
 
                 <module>optaplanner</module>
                 <module>orika</module>
@@ -1467,10 +1336,10 @@
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-environment</module>
-				<module>spring-boot-deployment</module>
-				<module>spring-boot-runtime</module>
-				<module>spring-boot-runtime/disabling-console-jul</module>
-				<module>spring-boot-runtime/disabling-console-log4j2</module>
+                <module>spring-boot-deployment</module>
+                <module>spring-boot-runtime</module>
+                <module>spring-boot-runtime/disabling-console-jul</module>
+                <module>spring-boot-runtime/disabling-console-log4j2</module>
                 <module>spring-boot-runtime/disabling-console-logback</module>
                 <module>spring-boot-artifacts</module>
                 <module>spring-boot-rest</module>
@@ -1489,7 +1358,7 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
-				<module>spring-cucumber</module>
+                <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
                 <module>spring-data-rest-querydsl</module>
@@ -1521,12 +1390,13 @@
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
                 <module>spring-mvc-basics-2</module>
-				<module>spring-mvc-forms-jsp</module>
+                <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
                 <module>spring-mvc-kotlin</module>
                 <module>spring-mvc-simple</module>
                 <module>spring-mvc-simple-2</module>
+                <module>spring-mvc-views</module>
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
@@ -1539,10 +1409,10 @@
                 <module>spring-reactive-kotlin</module>
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-rest</module>
+                <module>spring-rest-http</module>
                 <module>spring-rest-angular</module>
                 <module>spring-rest-compress</module>
-                <module>spring-rest-full</module>
+                <module>spring-rest-testing</module>
                 <module>spring-rest-hal-browser</module>
                 <module>spring-rest-query-language</module>
                 <module>spring-rest-shell</module>
@@ -1551,29 +1421,29 @@
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
-				<module>spring-security-acl</module>
-                <module>spring-security-angular/server</module>
-                <module>spring-security-cache-control</module>
-                <module>spring-security-core</module>
-                <module>spring-security-mvc-boot</module>
-                <module>spring-security-mvc-custom</module>
-                <module>spring-security-mvc-digest-auth</module>
-                <module>spring-security-mvc-ldap</module>
-                <module>spring-security-mvc-login</module>
-                <module>spring-security-mvc-persisted-remember-me</module>
-                <module>spring-security-mvc</module>
-                <module>spring-security-mvc-socket</module>
-                <module>spring-security-openid</module>
+                <module>spring-security-modules/spring-security-acl</module>
+                <module>spring-security-modules/spring-security-angular/server</module>
+                <module>spring-security-modules/spring-security-cache-control</module>
+                <module>spring-security-modules/spring-security-core</module>
+                <module>spring-security-modules/spring-security-mvc</module>
+                <module>spring-security-modules/spring-security-mvc-boot</module>
+                <module>spring-security-modules/spring-security-mvc-custom</module>
+                <module>spring-security-modules/spring-security-mvc-digest-auth</module>
+                <module>spring-security-modules/spring-security-mvc-ldap</module>
+                <module>spring-security-modules/spring-security-mvc-login</module>
+                <module>spring-security-modules/spring-security-mvc-persisted-remember-me</module>
+                <module>spring-security-modules/spring-security-mvc-socket</module>
+                <module>spring-security-modules/spring-security-openid</module>
                 <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
-                <module>spring-security-rest</module>
-                <module>spring-security-rest-basic-auth</module>
-                <module>spring-security-rest-custom</module>
-                <module>spring-security-sso</module>
-                <module>spring-security-stormpath</module>
-                <module>spring-security-thymeleaf</module>
-                <module>spring-security-x509</module>
+                <module>spring-security-modules/spring-security-rest</module>
+                <module>spring-security-modules/spring-security-rest-basic-auth</module>
+                <module>spring-security-modules/spring-security-rest-custom</module>
+                <module>spring-security-modules/spring-security-sso</module>
+                <module>spring-security-modules/spring-security-stormpath</module>
+                <module>spring-security-modules/spring-security-thymeleaf</module>
+                <module>spring-security-modules/spring-security-x509</module>
                 <module>spring-session</module>
-				<module>spring-shell</module>
+                <module>spring-shell</module>
                 <module>spring-sleuth</module>
                 <module>spring-soap</module>
                 <module>spring-social-login</module>
@@ -1589,8 +1459,6 @@
 
                 <module>spring-webflux-amqp</module> <!-- long -->
 
-                <module>spring-zuul</module>
-
                 <module>static-analysis</module>
                 <module>stripe</module>
                 <module>structurizr</module>
@@ -1601,7 +1469,7 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
-                <module>undertow</module>
+                <!-- <module>undertow</module> --> <!-- 19.11.2019 - disabling temporarily as it's causing a major issue with the build (TODO: create a jira to fix it) -->
 
                 <module>vertx</module>
                 <module>vertx-and-rxjava</module>
@@ -1651,7 +1519,7 @@
                 <module>core-java-modules/core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-java-modules/core-java-concurrency-advanced-2</module>
                 <module>core-java-modules/core-java-concurrency-advanced-3</module>
-				<module>core-kotlin</module> <!-- long running? -->
+                <module>core-kotlin</module> <!-- long running? -->
                 <module>core-kotlin-2</module>
 
                 <module>jenkins/plugins</module>
@@ -1661,6 +1529,7 @@
                 <module>libraries</module> <!-- very long running -->
 
                 <module>persistence-modules/hibernate5</module>
+                <module>persistence-modules/hibernate-mapping</module>
                 <module>persistence-modules/java-jpa</module>
                 <module>persistence-modules/java-jpa-2</module>
                 <module>persistence-modules/java-mongodb</module>
@@ -1671,7 +1540,6 @@
             </modules>
 
         </profile>
-
 
     </profiles>
 
@@ -1743,4 +1611,3 @@
     </properties>
 
 </project>
-

@@ -4,8 +4,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>oauth2-authorization-server</artifactId>
-    <packaging>war</packaging>
     <name>oauth2-authorization-server</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung.oauth2</groupId>
@@ -30,6 +30,7 @@
             <version>${bcpkix-jdk15on.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -72,4 +73,5 @@
         <bcprov-jdk15on.version>1.62</bcprov-jdk15on.version>
         <bcpkix-jdk15on.version>1.62</bcpkix-jdk15on.version>
     </properties>
+
 </project>
