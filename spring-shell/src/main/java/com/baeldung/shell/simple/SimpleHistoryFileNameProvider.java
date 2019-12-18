@@ -1,4 +1,4 @@
-package org.baeldung.shell.simple;
+package com.baeldung.shell.simple;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;

@@ -1,4 +1,4 @@
-package org.baeldung.shell.simple;
+package com.baeldung.shell.simple;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

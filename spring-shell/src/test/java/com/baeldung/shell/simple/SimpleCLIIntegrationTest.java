@@ -1,4 +1,4 @@
-package org.baeldung.shell.simple;
+package com.baeldung.shell.simple;
 
 import org.junit.AfterClass;
 import org.junit.Assert;
