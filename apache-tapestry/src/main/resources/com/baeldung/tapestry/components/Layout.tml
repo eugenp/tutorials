@@ -1,0 +1,21 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+    <head>
+        <title>${title}</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <t:alerts/>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <t:body />
+            <hr />
+            <footer>
+                <p>&copy; Your Company</p>
+            </footer>
+        </div>
+    </body>
+</html>
