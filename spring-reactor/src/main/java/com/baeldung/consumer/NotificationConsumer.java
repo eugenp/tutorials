@@ -3,7 +3,7 @@ package com.baeldung.consumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.doman.NotificationData;
+import com.baeldung.domain.NotificationData;
 import com.baeldung.service.NotificationService;
 
 import reactor.bus.Event;

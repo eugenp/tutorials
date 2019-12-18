@@ -1,4 +1,4 @@
-package com.baeldung.doman;
+package com.baeldung.domain;
 
 public class NotificationData {
 
