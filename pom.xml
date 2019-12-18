@@ -635,6 +635,7 @@
                 <module>spring-boot-nashorn</module>
                 <module>java-blockchain</module>
                 <module>machine-learning</module>
+                <module>webrtc</module>
                 <module>wildfly</module>
                 <module>quarkus-extension</module>
             </modules>
@@ -883,7 +884,6 @@
 
                 <module>spring-boot-nashorn</module>
                 <module>java-blockchain</module>
-
             </modules>
 
         </profile>
