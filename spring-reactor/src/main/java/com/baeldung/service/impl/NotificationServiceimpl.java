@@ -2,7 +2,7 @@ package com.baeldung.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.baeldung.doman.NotificationData;
+import com.baeldung.domain.NotificationData;
 import com.baeldung.service.NotificationService;
 
 @Service

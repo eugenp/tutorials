@@ -1,24 +1,16 @@
 package com.baeldung;
 
+import com.baeldung.consumer.NotificationConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-
-import com.baeldung.consumer.NotificationConsumer;
-
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import reactor.bus.EventBus;
 
 import static reactor.bus.selector.Selectors.$;
 
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan
-@Import(Config.class)
-public class Application implements CommandLineRunner {
+@SpringBootApplication
+public class NotificationApplication implements CommandLineRunner {
 
     @Autowired
     private EventBus eventBus;
@@ -32,7 +24,7 @@ public class Application implements CommandLineRunner {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(NotificationApplication.class, args);
     }
 
 }

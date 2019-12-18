@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.doman.NotificationData;
+import com.baeldung.domain.NotificationData;
 
 import reactor.bus.Event;
 import reactor.bus.EventBus;
