@@ -1,4 +1,4 @@
-package org.baeldung.reflectiontestutils.repository;
+package com.baeldung.reflectiontestutils.repository;
 
 public class Employee {
     private Integer id;

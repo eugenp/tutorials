@@ -1,4 +1,4 @@
-package org.baeldung.mockito.repository;
+package com.baeldung.mockito.repository;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,11 +1,11 @@
-package org.baeldung.reflectiontestutils;
+package com.baeldung.reflectiontestutils;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
-import org.baeldung.reflectiontestutils.repository.Employee;
-import org.baeldung.reflectiontestutils.repository.EmployeeService;
-import org.baeldung.reflectiontestutils.repository.HRService;
+import com.baeldung.reflectiontestutils.repository.EmployeeService;
+import com.baeldung.reflectiontestutils.repository.HRService;
+import com.baeldung.reflectiontestutils.repository.Employee;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
 
