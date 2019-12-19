@@ -4,7 +4,6 @@ This module contains articles about Java 11 core features
 
 ### Relevant articles
 
-- [Benchmark JDK Collections vs Eclipse Collections](https://www.baeldung.com/jdk-collections-vs-eclipse-collections)
 - [Java 11 Single File Source Code](https://www.baeldung.com/java-single-file-source-code)
 - [Java 11 Local Variable Syntax for Lambda Parameters](https://www.baeldung.com/java-var-lambda-params)
 - [Java 11 String API Additions](https://www.baeldung.com/java-11-string-api)
@@ -13,3 +12,4 @@ This module contains articles about Java 11 core features
 - [An Introduction to Epsilon GC: A No-Op Experimental Garbage Collector](https://www.baeldung.com/jvm-epsilon-gc-garbage-collector)
 - [Guide to jlink](https://www.baeldung.com/jlink)
 - [Negate a Predicate Method Reference with Java 11](https://www.baeldung.com/java-negate-predicate-method-reference)
+- [Benchmark JDK Collections vs Eclipse Collections](https://www.baeldung.com/jdk-collections-vs-eclipse-collections)
