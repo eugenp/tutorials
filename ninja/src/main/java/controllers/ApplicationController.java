@@ -40,7 +40,7 @@ public class ApplicationController {
     private static Log logger = LogFactory.getLog(ApplicationController.class);
     
     @Inject 
-    Provider<EntityManager> entitiyManagerProvider;
+    Provider<EntityManager> entityManagerProvider;
 
     @Inject
     UserService userService;
@@ -77,7 +77,7 @@ public class ApplicationController {
     
     @UnitOfWork
     public Result fetchUsers() {
-        EntityManager entityManager = entitiyManagerProvider.get();
+        EntityManager entityManager = entityManagerProvider.get();
         Query q = entityManager.createQuery("SELECT x FROM User x");
         List<User> users = (List<User>) q.getResultList();
         return Results.json().render(users);
@@ -90,7 +90,7 @@ public class ApplicationController {
         if (validation.getViolations().size() > 0) {
             flashScope.error("Validation Error: User can't be created");
         } else {
-            EntityManager entityManager = entitiyManagerProvider.get();
+            EntityManager entityManager = entityManagerProvider.get();
             entityManager.persist(user);
             entityManager.flush();
             flashScope.success("User '" + user + "' is created successfully");
