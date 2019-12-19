@@ -1,6 +1,7 @@
 package com.baeldung.patternreuse;
 
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.RunnerException;
 
 import java.io.IOException;
@@ -29,52 +30,52 @@ public class PatternPerformanceComparison {
     }
 
     @Benchmark
-    public void matcherFromPreCompiledPatternResetMatches() {
+    public void matcherFromPreCompiledPatternResetMatches(Blackhole bh) {
         //With pre-compiled pattern and reusing the matcher
         // 1 Pattern object created
         // 1 Matcher objects created
         for (String value : values) {
-            matcherFromPreCompiledPattern.reset(value).matches();
+            bh.consume(matcherFromPreCompiledPattern.reset(value).matches());
         }
     }
 
     @Benchmark
-    public void preCompiledPatternMatcherMatches() {
+    public void preCompiledPatternMatcherMatches(Blackhole bh) {
         // With pre-compiled pattern
         // 1         Pattern object created
         // 5_000_000 Matcher objects created
         for (String value : values) {
-            preCompiledPattern.matcher(value).matches();
+            bh.consume(preCompiledPattern.matcher(value).matches());
         }
     }
 
     @Benchmark
-    public void patternCompileMatcherMatches() {
+    public void patternCompileMatcherMatches(Blackhole bh) {
         // Above approach "Pattern.matches(PATTERN, value)" makes this internally
         // 5_000_000 Pattern objects created
         // 5_000_000 Matcher objects created
         for (String value : values) {
-            Pattern.compile(PATTERN).matcher(value).matches();
+            bh.consume(Pattern.compile(PATTERN).matcher(value).matches());
         }
     }
 
     @Benchmark
-    public void patternMatches() {
+    public void patternMatches(Blackhole bh) {
         // Above approach "value.matches(PATTERN)" makes this internally
         // 5_000_000 Pattern objects created
         // 5_000_000 Matcher objects created
         for (String value : values) {
-            Pattern.matches(PATTERN, value);
+            bh.consume(Pattern.matches(PATTERN, value));
         }
     }
 
     @Benchmark
-    public void stringMatchs() {
+    public void stringMatchs(Blackhole bh) {
         // 5_000_000 Pattern objects created
         // 5_000_000 Matcher objects created
         Instant start = Instant.now();
         for (String value : values) {
-            value.matches(PATTERN);
+            bh.consume(value.matches(PATTERN));
         }
     }
 
