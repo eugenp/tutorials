@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring.ejb</groupId>
     <artifactId>spring-ejb</artifactId>
@@ -74,10 +74,10 @@
     <modules>
         <module>spring-ejb-remote</module>
         <module>ejb-beans</module>
-		<module>spring-ejb-client</module>
-		<module>wildfly</module>
+        <module>spring-ejb-client</module>
+        <module>wildfly</module>
     </modules>
-    
+
     <properties>
         <spring-ejb-remote.version>1.0.0-SNAPSHOT</spring-ejb-remote.version>
         <javaee.version>8.0</javaee.version>

@@ -1,15 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>property-exp-custom-config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-	<name>property-exp-custom-config</name>
+    <name>property-exp-custom-config</name>
     <packaging>jar</packaging>
 
     <parent>
-        <artifactId>spring-boot-property-exp</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>spring-boot-property-exp</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -26,7 +26,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
 
     <build>
         <resources>

@@ -9,8 +9,8 @@
     <description>This is simple boot application for Spring boot persistence mongodb test</description>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>        
+        </dependency>
         <!-- MongoDB -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -61,7 +61,7 @@
     </dependencies>
 
     <build>
-        <finalName>spring-boot-persistence</finalName>
+        <finalName>spring-boot-persistence-mongodb</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -109,6 +109,5 @@
             </build>
         </profile>
     </profiles>
-
 
 </project>

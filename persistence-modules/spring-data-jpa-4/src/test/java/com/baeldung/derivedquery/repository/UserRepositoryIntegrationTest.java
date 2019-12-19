@@ -1,11 +1,7 @@
 package com.baeldung.derivedquery.repository;
 
-import com.baeldung.Application;
+import com.baeldung.derivedquery.QueryApplication;
 import com.baeldung.derivedquery.entity.User;
-import com.baeldung.derivedquery.repository.UserRepository;
-import java.time.ZonedDateTime;
-import java.util.Arrays;
-import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,10 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.ZonedDateTime;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = QueryApplication.class)
 public class UserRepositoryIntegrationTest {
 
     private static final String USER_NAME_ADAM = "Adam";
