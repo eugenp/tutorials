@@ -8,22 +8,11 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
+        <artifactId>jackson-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-java</relativePath>
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-jsonSchema</artifactId>
