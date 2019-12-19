@@ -1,9 +1,9 @@
-package org.baeldung.easy.random;
+package com.baeldung.easy.random;
 
-import org.baeldung.easy.random.model.Employee;
-import org.baeldung.easy.random.model.Person;
-import org.baeldung.easy.random.model.YearQuarter;
-import org.baeldung.easy.random.randomizer.YearQuarterRandomizer;
+import com.baeldung.easy.random.model.Employee;
+import com.baeldung.easy.random.model.Person;
+import com.baeldung.easy.random.model.YearQuarter;
+import com.baeldung.easy.random.randomizer.YearQuarterRandomizer;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 import org.jeasy.random.FieldPredicates;

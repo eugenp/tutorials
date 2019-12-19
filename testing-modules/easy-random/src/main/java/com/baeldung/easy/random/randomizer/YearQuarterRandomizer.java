@@ -1,6 +1,6 @@
-package org.baeldung.easy.random.randomizer;
+package com.baeldung.easy.random.randomizer;
 
-import org.baeldung.easy.random.model.YearQuarter;
+import com.baeldung.easy.random.model.YearQuarter;
 import org.jeasy.random.api.Randomizer;
 
 import java.time.LocalDate;

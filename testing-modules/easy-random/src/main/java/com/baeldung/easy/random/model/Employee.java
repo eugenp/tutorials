@@ -1,4 +1,4 @@
-package org.baeldung.easy.random.model;
+package com.baeldung.easy.random.model;
 
 import java.util.*;
 
