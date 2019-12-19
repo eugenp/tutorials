@@ -1,10 +1,11 @@
-package org.baeldung.mocks.jmockit;
+package com.baeldung.jmockit;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.baeldung.jmockit.AdvancedCollaborator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
