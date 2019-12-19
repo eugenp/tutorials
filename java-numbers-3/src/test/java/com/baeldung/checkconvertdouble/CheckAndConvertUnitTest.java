@@ -1,12 +1,9 @@
 package com.baeldung.checkconvertdouble;
 
-import static com.baeldung.checkconvertdouble.core.CheckAndConvert.checkedDouble;
-import static com.baeldung.checkconvertdouble.core.CheckAndConvert.checkedDoubleDefault;
-import static com.baeldung.checkconvertdouble.core.CheckAndConvert.checkedDoubleOptional;
+import static com.baeldung.checkconvertdouble.core.CheckAndConvert.*;
 import static com.baeldung.checkconvertdouble.thirdparty.CheckAndConvert.checkDoubleFunctional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.ThrowableAssert.catchThrowable;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.primitives.Doubles;
@@ -23,7 +20,7 @@ public class CheckAndConvertUnitTest {
         assertThat(checkedDouble(null)).isNaN();
         assertThat(checkedDouble("")).isNaN();
 
-        assertThat(checkedDoubleDefault("1", 1.0d)).isEqualTo(1.0d);
+        assertThat(checkedDoubleDefault("1", 2.0d)).isEqualTo(1.0d);
         assertThat(checkedDoubleDefault(null, 1.0d)).isEqualTo(1.0d);
         assertThat(checkedDoubleDefault("", 1.0d)).isEqualTo(1.0d);
     }
