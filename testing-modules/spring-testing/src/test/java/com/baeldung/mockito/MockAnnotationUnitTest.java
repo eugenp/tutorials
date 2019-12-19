@@ -1,6 +1,6 @@
-package org.baeldung.mockito;
+package com.baeldung.mockito;
 
-import org.baeldung.mockito.repository.UserRepository;
+import com.baeldung.mockito.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
