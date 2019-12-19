@@ -1,4 +1,4 @@
-package org.baeldung.mocks.jmockit;
+package com.baeldung.jmockit;
 
 public class Collaborator {
 

@@ -1,9 +1,9 @@
-package org.baeldung.mocks.mockito;
+package com.baeldung.mockito;
 
-import org.baeldung.mocks.testCase.LoginController;
-import org.baeldung.mocks.testCase.LoginDao;
-import org.baeldung.mocks.testCase.LoginService;
-import org.baeldung.mocks.testCase.UserForm;
+import com.baeldung.testCase.LoginController;
+import com.baeldung.testCase.LoginDao;
+import com.baeldung.testCase.LoginService;
+import com.baeldung.testCase.UserForm;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

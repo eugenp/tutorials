@@ -1,5 +1,8 @@
-package org.baeldung.mocks.jmockit;
+package com.baeldung.jmockit;
 
+import com.baeldung.jmockit.Collaborator;
+import com.baeldung.jmockit.Model;
+import com.baeldung.jmockit.Performer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

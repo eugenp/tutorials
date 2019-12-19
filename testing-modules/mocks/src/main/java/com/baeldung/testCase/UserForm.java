@@ -1,4 +1,4 @@
-package org.baeldung.mocks.testCase;
+package com.baeldung.testCase;
 
 public class UserForm {
 

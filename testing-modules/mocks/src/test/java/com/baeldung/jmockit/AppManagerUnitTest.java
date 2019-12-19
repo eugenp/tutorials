@@ -1,10 +1,9 @@
-package com.baeldung.mocks.jmockit;
+package com.baeldung.jmockit;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import mockit.Deencapsulation;
 import mockit.Mock;
 import mockit.MockUp;
 

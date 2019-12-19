@@ -1,5 +1,7 @@
-package org.baeldung.mocks.jmockit;
+package com.baeldung.jmockit;
 
+import com.baeldung.jmockit.ExpectationsCollaborator;
+import com.baeldung.jmockit.Model;
 import mockit.Delegate;
 import mockit.Expectations;
 import mockit.Mocked;
