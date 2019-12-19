@@ -57,7 +57,7 @@ public class SortComparisonUnitTest {
     }
 
     @Test
-    public void sortFullArrayUsingSortMethod() {
+    public void givenArrayOfIntegers_whenUsingArraysSortMethod_thenSortFullArrayInAscendingOrder() {
 
         int[] array = { 10, 4, 6, 2, 1, 9, 7, 8, 3, 5 };
         int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -69,7 +69,7 @@ public class SortComparisonUnitTest {
     }
 
     @Test
-    public void sortPartialArrayUsingSortMethod() {
+    public void givenArrayOfIntegers_whenUsingArraysSortMethodWithRange_thenSortRangeOfArrayInAscendingOrder() {
         int[] array = { 10, 4, 6, 2, 1, 9, 7, 8, 3, 5 };
         int[] expected = { 10, 4, 1, 2, 6, 7, 8, 9, 3, 5 };
 
@@ -79,7 +79,7 @@ public class SortComparisonUnitTest {
     }
 
     @Test
-    public void sortFullArrayUsingParallelSortMethod() {
+    public void givenArrayOfIntegers_whenUsingArraysParallelSortMethod_thenSortFullArrayInAscendingOrder() {
         int[] array = { 10, 4, 6, 2, 1, 9, 7, 8, 3, 5 };
         int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
@@ -89,7 +89,7 @@ public class SortComparisonUnitTest {
     }
 
     @Test
-    public void sortPartialArrayUsingParallelSortMethod() {
+    public void givenArrayOfIntegers_whenUsingArraysParallelSortMethodWithRange_thenSortRangeOfArrayInAscendingOrder() {
         int[] array = { 10, 4, 6, 2, 1, 9, 7, 8, 3, 5 };
         int[] expected = { 10, 4, 1, 2, 6, 7, 8, 9, 3, 5 };
 
@@ -99,7 +99,7 @@ public class SortComparisonUnitTest {
     }
 
     @Test
-    public void sortArrayof_1000Elements_UsingSortMethod() {
+    public void givenIntegerArrayOf1000Elements_whenUsingArraysSortMethod_thenSortFullArrayInAscendingOrder() {
         int[] sequentialDataSet = Arrays.copyOf(_1000_elements_array, _1000_elements_array.length);
         Arrays.sort(sequentialDataSet);
 
@@ -109,7 +109,7 @@ public class SortComparisonUnitTest {
     }
 
     @Test
-    public void sortArrayof_1000Elements_UsingParallelSortMethod() {
+    public void givenIntegerArrayOf1000Elements_whenUsingArraysParallelSortMethod_thenSortFullArrayInAscendingOrder() {
         int[] parallelDataSet = Arrays.copyOf(_1000_elements_array, _1000_elements_array.length);
         Arrays.parallelSort(parallelDataSet);
 
@@ -119,7 +119,7 @@ public class SortComparisonUnitTest {
     }
 
     @Test
-    public void sortArrayof_10000Elements_UsingSortMethod() {
+    public void givenIntegerArrayOf10000Elements_whenUsingArraysSortMethod_thenSortFullArrayInAscendingOrder() {
         int[] sequentialDataSet = Arrays.copyOf(_10000_elements_array, _10000_elements_array.length);
         Arrays.sort(sequentialDataSet);
 
@@ -128,7 +128,7 @@ public class SortComparisonUnitTest {
     }
 
     @Test
-    public void sortArrayof_10000Elements_UsingParallelSortMethod() {
+    public void givenIntegerArrayOf10000Elements_whenUsingArraysParallelSortMethod_thenSortFullArrayInAscendingOrder() {
         int[] parallelDataSet = Arrays.copyOf(_10000_elements_array, _10000_elements_array.length);
         Arrays.parallelSort(parallelDataSet);
 
@@ -137,7 +137,7 @@ public class SortComparisonUnitTest {
     }
 
     @Test
-    public void sortArrayof_100000Elements_UsingSortMethod() {
+    public void givenIntegerArrayOf100000Elements_whenUsingArraysSortMethod_thenSortFullArrayInAscendingOrder() {
         int[] sequentialDataSet = Arrays.copyOf(_100000_elements_array, _100000_elements_array.length);
         Arrays.sort(sequentialDataSet);
 
@@ -146,7 +146,7 @@ public class SortComparisonUnitTest {
     }
 
     @Test
-    public void sortArrayof_100000Elements_UsingParallelSortMethod() {
+    public void givenIntegerArrayOf100000Elements_whenUsingArraysParallelSortMethod_thenSortFullArrayInAscendingOrder() {
         int[] parallelDataSet = Arrays.copyOf(_100000_elements_array, _100000_elements_array.length);
         Arrays.parallelSort(parallelDataSet);
 
@@ -155,7 +155,7 @@ public class SortComparisonUnitTest {
     }
 
     @Test
-    public void sortArrayof_1000000Elements_UsingSortMethod() {
+    public void givenIntegerArrayOf1000000Elements_whenUsingArraysSortMethod_thenSortFullArrayInAscendingOrder() {
         int[] sequentialDataSet = Arrays.copyOf(_1000000_elements_array, _1000000_elements_array.length);
         Arrays.sort(sequentialDataSet);
 
@@ -164,7 +164,7 @@ public class SortComparisonUnitTest {
     }
 
     @Test
-    public void sortArrayof_1000000Elements_UsingParallelSortMethod() {
+    public void givenIntegerArrayOf1000000Elements_whenUsingArraysParallelSortMethod_thenSortFullArrayInAscendingOrder() {
         int[] parallelDataSet = Arrays.copyOf(_1000000_elements_array, _1000000_elements_array.length);
         Arrays.parallelSort(parallelDataSet);
 
