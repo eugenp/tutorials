@@ -19,6 +19,4 @@ public class NotificationApplicationIntegrationTest {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getForObject("http://localhost:" + port + "/startNotification/10", String.class);
     }
-
-
 }
