@@ -8,6 +8,7 @@ import static com.baeldung.checkconvertdouble.thirdparty.CheckAndConvert.checkDo
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.ThrowableAssert.catchThrowable;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.primitives.Doubles;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
@@ -38,17 +39,16 @@ public class CheckAndConvertUnitTest {
 
     @Test
     public void checkAndConvertFunctional() {
-        assertThat(checkDoubleFunctional("1", 1.0d)).isEqualTo(1.0d);
-        assertThat(checkDoubleFunctional(null, 1.0d)).isEqualTo(1.0d);
-        assertThat(checkDoubleFunctional("", 1.0d)).isEqualTo(1.0d);
+        assertThat(checkDoubleFunctional("1", 2.0d)).isEqualTo(1.0d);
+        assertThat(checkDoubleFunctional(null, 2.0d)).isEqualTo(2.0d);
+        assertThat(checkDoubleFunctional("", 2.0d)).isEqualTo(2.0d);
     }
 
     @Test
     public void checkAndConvertGuava() {
-        assertThat(Doubles.tryParse("1.0")).isEqualTo(1.0d);
-        Throwable thrown = catchThrowable(() -> Doubles.tryParse(null));
-        assertThat(thrown).isInstanceOf(NullPointerException.class);
-        assertThat(Doubles.tryParse("")).isEqualTo(null);
+        assertThat(Doubles.tryParse(MoreObjects.firstNonNull("1.0", "2.0"))).isEqualTo(1.0d);
+        assertThat(Doubles.tryParse(MoreObjects.firstNonNull(null, "2.0"))).isEqualTo(2.0d);
+        assertThat(Doubles.tryParse(MoreObjects.firstNonNull("", "2.0"))).isEqualTo(null);
     }
 
     @Test
