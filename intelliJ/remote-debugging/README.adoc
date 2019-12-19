@@ -83,6 +83,3 @@ The following guides may also be helpful:
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
 
-### Relevant Articles:
-
-- [Remote Debugging with IntelliJ IDEA](https://www.baeldung.com/intellij-remote-debugging)
