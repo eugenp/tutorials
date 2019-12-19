@@ -1,11 +1,11 @@
-package com.baeldung.config;
+package com.baeldung.app.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.baeldung.entity.Task;
-import com.baeldung.repository.TaskRepository;
+import com.baeldung.app.entity.Task;
+import com.baeldung.app.repository.TaskRepository;
 
 @Component
 public class DatabaseLoader implements CommandLineRunner {

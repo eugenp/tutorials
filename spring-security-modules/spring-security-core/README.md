@@ -8,8 +8,6 @@ This module contains articles about core Spring Security
 - [Introduction to Spring Method Security](https://www.baeldung.com/spring-security-method-security)
 - [Overview and Need for DelegatingFilterProxy in Spring](https://www.baeldung.com/spring-delegating-filter-proxy)
 
-### @PreFilter and @PostFilter annotations
-
-#### Build the Project
+### Build the Project
 
 `mvn clean install`

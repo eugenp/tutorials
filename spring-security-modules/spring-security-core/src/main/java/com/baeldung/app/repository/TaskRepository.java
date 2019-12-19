@@ -1,8 +1,8 @@
-package com.baeldung.repository;
+package com.baeldung.app.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.baeldung.entity.Task;
+import com.baeldung.app.entity.Task;
 
 public interface TaskRepository extends CrudRepository<Task, Long> {
 

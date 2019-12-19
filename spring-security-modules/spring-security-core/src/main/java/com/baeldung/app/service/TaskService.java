@@ -1,12 +1,12 @@
-package com.baeldung.service;
+package com.baeldung.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreFilter;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.entity.Task;
-import com.baeldung.repository.TaskRepository;
+import com.baeldung.app.entity.Task;
+import com.baeldung.app.repository.TaskRepository;
 
 @Service
 public class TaskService {

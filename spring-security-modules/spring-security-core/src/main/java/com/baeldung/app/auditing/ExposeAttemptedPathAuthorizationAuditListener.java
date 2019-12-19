@@ -1,4 +1,4 @@
-package com.baeldung.auditing;
+package com.baeldung.app.auditing;
 
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.boot.actuate.security.AbstractAuthorizationAuditListener;
