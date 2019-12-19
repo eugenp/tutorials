@@ -1,4 +1,4 @@
-package org.baeldung.rest;
+package com.baeldung.rest.jbehave;
 
 public class GitHubUser {
 
