@@ -670,7 +670,6 @@
             </build>
 
             <modules>
-
                 <module>netflix</module>
 
                 <module>parent-boot-1</module>
