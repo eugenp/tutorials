@@ -1,0 +1,16 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          okta:
+            client-id: <client-id>
+            client-secret: <client-secret>
+        provider:
+          okta:
+            issuer-uri: https://dev-123.okta.com
+            # Or, optionally:            
+            #authorization-uri https://dev-123-admin.okta.com/oauth2/v1/authorize
+            #token-uri: https://dev-123-admin.okta.com/oauth2/v1/token
+            #user-info-uri: https://dev-123-admin.okta.com/oauth2/v1/userinfo
+            #jwk-set-uri: https://dev-123-admin.okta.com/oauth2/v1/keys
