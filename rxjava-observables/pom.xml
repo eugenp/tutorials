@@ -29,7 +29,6 @@
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
         </dependency>
-
     </dependencies>
 
     <properties>
