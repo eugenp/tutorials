@@ -1,0 +1,39 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Array server"
+  version: "1.0.0"
+  title: "Swagger Array"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+basePath: "/v2"
+tags:
+- name: "array"
+  description: "How to insert an array"
+  externalDocs:
+    description: "Find out more"
+    url: "http://www.baeldung.com"
+schemes:
+- "https"
+- "http"
+
+paths:
+  /array:
+    post:
+      tags:
+      - "array"
+      summary: "Inserting array example"
+      description: ""
+      parameters:
+        - in: body
+          description: ""
+          required: true
+          name: arrayStr
+          schema:
+            type: array
+            items:
+              type: string
+            example: ["str1", "str2", "str3"]
+      responses:
+        default:
+          description: OK
