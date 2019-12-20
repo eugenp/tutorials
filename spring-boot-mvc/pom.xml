@@ -9,11 +9,20 @@
     <description>Module For Spring Boot MVC</description>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
+    
+    <repositories>
+        <!-- Snapshot repository location -->
+        <repository>
+            <id>jcenter-snapshots</id>
+            <name>jcenter</name>
+            <url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
 
@@ -34,7 +43,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
 
         <!--JSF -->
         <dependency>
@@ -82,6 +98,18 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${spring.fox.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-data-rest</artifactId>
+            <version>${spring.fox.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-bean-validators</artifactId>
+            <version>${spring.fox.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
@@ -117,7 +145,7 @@
     </build>
 
     <properties>
-        <spring.fox.version>2.9.2</spring.fox.version>
+        <spring.fox.version>3.0.0-SNAPSHOT</spring.fox.version>
         <!-- ROME for RSS -->
         <rome.version>1.10.0</rome.version>
         <javax.faces.version>2.3.7</javax.faces.version>

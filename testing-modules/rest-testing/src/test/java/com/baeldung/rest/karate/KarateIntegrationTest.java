@@ -15,7 +15,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 @CucumberOptions(features = "classpath:karate")
 public class KarateIntegrationTest {
 
-    public static final int PORT_NUMBER = 8097;
+    private static final int PORT_NUMBER = 8097;
 
     private static final WireMockServer wireMockServer = new WireMockServer(WireMockConfiguration.options().port(PORT_NUMBER));
 

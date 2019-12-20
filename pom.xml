@@ -1,8 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -454,6 +454,7 @@
                 <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-jar</module>
                 <module>core-java-modules/core-java-jvm</module>
+                <module>core-kotlin-modules</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -499,18 +500,17 @@
                 <module>immutables</module>
 
                 <module>jackson</module>
-                <module>jackson-2</module>
                 <module>jackson-simple</module>
                 <module>jackson-annotations</module>
                 <module>jackson-exceptions</module>
                 <module>jackson-conversions</module>
                 <module>jackson-conversions-2</module>
+                <module>jackson-custom-conversions</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
                 <module>java-jdi</module>
-                <!--<module>java-dates</module>-->
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
                 <module>java-lite</module>
                 <module>java-math</module>
@@ -629,12 +629,13 @@
                 <module>spring-boot-performance</module>
                 <module>spring-boot-properties</module>
                 <!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
-                <module>spring-security-kerberos</module>
+                <module>spring-security-modules/spring-security-kerberos</module>
                 <module>oauth2-framework-impl</module>
 
                 <module>spring-boot-nashorn</module>
                 <module>java-blockchain</module>
                 <module>machine-learning</module>
+                <module>webrtc</module>
                 <module>wildfly</module>
                 <module>quarkus-extension</module>
             </modules>
@@ -805,7 +806,7 @@
                 <module>spring-reactive-kotlin</module>
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-rest</module>
+                <module>spring-rest-http</module>
                 <module>spring-rest-angular</module>
                 <module>spring-rest-compress</module>
                 <module>spring-rest-testing</module>
@@ -815,29 +816,29 @@
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
                 <module>spring-roo</module>
-                <module>spring-scheduling</module><module>spring-security-acl</module>
-                <module>spring-security-angular/server</module>
-                <module>spring-security-cache-control</module>
-
-                <module>spring-security-core</module>
-                <module>spring-security-mvc-boot</module>
-                <module>spring-security-mvc-custom</module>
-                <module>spring-security-mvc-digest-auth</module>
-                <module>spring-security-mvc-jsonview</module>
-                <module>spring-security-mvc-ldap</module>
-                <module>spring-security-mvc-login</module>
-                <module>spring-security-mvc-persisted-remember-me</module>
-                <module>spring-security-mvc</module>
-                <module>spring-security-mvc-socket</module>
-                <module>spring-security-openid</module>
+                <module>spring-scheduling</module>
+                <module>spring-security-modules/spring-security-acl</module>
+                <module>spring-security-modules/spring-security-angular/server</module>
+                <module>spring-security-modules/spring-security-cache-control</module>
+                <module>spring-security-modules/spring-security-core</module>
+                <module>spring-security-modules/spring-security-mvc</module>
+                <module>spring-security-modules/spring-security-mvc-boot</module>
+                <module>spring-security-modules/spring-security-mvc-custom</module>
+                <module>spring-security-modules/spring-security-mvc-digest-auth</module>
+                <module>spring-security-modules/spring-security-mvc-jsonview</module>
+                <module>spring-security-modules/spring-security-mvc-ldap</module>
+                <module>spring-security-modules/spring-security-mvc-login</module>
+                <module>spring-security-modules/spring-security-mvc-persisted-remember-me</module>
+                <module>spring-security-modules/spring-security-mvc-socket</module>
+                <module>spring-security-modules/spring-security-openid</module>
                 <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
-                <module>spring-security-rest</module>
-                <module>spring-security-rest-basic-auth</module>
-                <module>spring-security-rest-custom</module>
-                <module>spring-security-sso</module>
-                <module>spring-security-stormpath</module>
-                <module>spring-security-thymeleaf</module>
-                <module>spring-security-x509</module>
+                <module>spring-security-modules/spring-security-rest</module>
+                <module>spring-security-modules/spring-security-rest-basic-auth</module>
+                <module>spring-security-modules/spring-security-rest-custom</module>
+                <module>spring-security-modules/spring-security-sso</module>
+                <module>spring-security-modules/spring-security-stormpath</module>
+                <module>spring-security-modules/spring-security-thymeleaf</module>
+                <module>spring-security-modules/spring-security-x509</module>
                 <module>spring-session</module>
                 <module>spring-shell</module>
                 <module>spring-sleuth</module>
@@ -879,11 +880,10 @@
 
                 <module>tensorflow-java</module>
                 <module>spring-boot-flowable</module>
-                <module>spring-security-kerberos</module>
+                <module>spring-security-modules/spring-security-kerberos</module>
 
                 <module>spring-boot-nashorn</module>
                 <module>java-blockchain</module>
-
             </modules>
 
         </profile>
@@ -931,7 +931,6 @@
                 <module>core-java-modules/core-java-concurrency-advanced-3</module>
                 <module>core-kotlin</module> <!-- long running? -->
                 <module>core-kotlin-2</module>
-                <module>core-kotlin-io</module>
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
@@ -1093,6 +1092,7 @@
                 <module>core-java-modules/core-java-string-algorithms-2</module>
                 <module>core-java-modules/core-java-string-apis</module>
                 <module>core-java-modules/core-java-strings</module>
+                <module>core-kotlin-modules</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -1138,18 +1138,17 @@
                 <module>immutables</module>
 
                 <module>jackson</module>
-                <module>jackson-2</module>
                 <module>jackson-simple</module>
                 <module>jackson-annotations</module>
                 <module>jackson-exceptions</module>
                 <module>jackson-conversions</module>
                 <module>jackson-conversions-2</module>
+                <module>jackson-custom-conversions</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
                 <module>java-jdi</module>
-                <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>java-ee-8-security-api</module>
                 <module>java-lite</module>
                 <module>java-math</module>
@@ -1410,7 +1409,7 @@
                 <module>spring-reactive-kotlin</module>
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-rest</module>
+                <module>spring-rest-http</module>
                 <module>spring-rest-angular</module>
                 <module>spring-rest-compress</module>
                 <module>spring-rest-testing</module>
@@ -1422,27 +1421,27 @@
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
-                <module>spring-security-acl</module>
-                <module>spring-security-angular/server</module>
-                <module>spring-security-cache-control</module>
-                <module>spring-security-core</module>
-                <module>spring-security-mvc-boot</module>
-                <module>spring-security-mvc-custom</module>
-                <module>spring-security-mvc-digest-auth</module>
-                <module>spring-security-mvc-ldap</module>
-                <module>spring-security-mvc-login</module>
-                <module>spring-security-mvc-persisted-remember-me</module>
-                <module>spring-security-mvc</module>
-                <module>spring-security-mvc-socket</module>
-                <module>spring-security-openid</module>
+                <module>spring-security-modules/spring-security-acl</module>
+                <module>spring-security-modules/spring-security-angular/server</module>
+                <module>spring-security-modules/spring-security-cache-control</module>
+                <module>spring-security-modules/spring-security-core</module>
+                <module>spring-security-modules/spring-security-mvc</module>
+                <module>spring-security-modules/spring-security-mvc-boot</module>
+                <module>spring-security-modules/spring-security-mvc-custom</module>
+                <module>spring-security-modules/spring-security-mvc-digest-auth</module>
+                <module>spring-security-modules/spring-security-mvc-ldap</module>
+                <module>spring-security-modules/spring-security-mvc-login</module>
+                <module>spring-security-modules/spring-security-mvc-persisted-remember-me</module>
+                <module>spring-security-modules/spring-security-mvc-socket</module>
+                <module>spring-security-modules/spring-security-openid</module>
                 <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
-                <module>spring-security-rest</module>
-                <module>spring-security-rest-basic-auth</module>
-                <module>spring-security-rest-custom</module>
-                <module>spring-security-sso</module>
-                <module>spring-security-stormpath</module>
-                <module>spring-security-thymeleaf</module>
-                <module>spring-security-x509</module>
+                <module>spring-security-modules/spring-security-rest</module>
+                <module>spring-security-modules/spring-security-rest-basic-auth</module>
+                <module>spring-security-modules/spring-security-rest-custom</module>
+                <module>spring-security-modules/spring-security-sso</module>
+                <module>spring-security-modules/spring-security-stormpath</module>
+                <module>spring-security-modules/spring-security-thymeleaf</module>
+                <module>spring-security-modules/spring-security-x509</module>
                 <module>spring-session</module>
                 <module>spring-shell</module>
                 <module>spring-sleuth</module>
@@ -1541,7 +1540,6 @@
             </modules>
 
         </profile>
-
 
     </profiles>
 
