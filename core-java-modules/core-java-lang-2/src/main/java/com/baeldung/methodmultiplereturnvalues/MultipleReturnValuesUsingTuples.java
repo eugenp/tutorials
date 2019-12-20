@@ -8,7 +8,7 @@ class MultipleReturnValuesUsingTuples {
                                                            Coordinates target) {
 
         return coordinatesList.stream()
-            .map(coordinates -> new Tuple2<>(coordinates, coordinates.calculateDistance(target)))
+            .map(coor -> new Tuple2<>(coor, coor.calculateDistance(target)))
             .max((d1, d2) -> Double.compare(d1.getSecond(), d2.getSecond()))
             .get();
 
