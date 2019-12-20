@@ -1,4 +1,4 @@
-package org.baeldung.async;
+package com.baeldung.async;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package org.baeldung.taskscheduler;
+package com.baeldung.taskscheduler;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

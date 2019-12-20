@@ -1,4 +1,4 @@
-package org.baeldung.scheduling;
+package com.baeldung.scheduling;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
 @EnableScheduling
-@ComponentScan("org.baeldung.scheduling")
+@ComponentScan("com.baeldung.scheduling")
 @PropertySource("classpath:springScheduled.properties")
 public class SpringSchedulingConfig {
 

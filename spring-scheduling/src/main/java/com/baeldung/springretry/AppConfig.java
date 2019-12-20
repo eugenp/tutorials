@@ -1,4 +1,4 @@
-package org.baeldung.springretry;
+package com.baeldung.springretry;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -9,7 +9,7 @@ import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
 
 @Configuration
-@ComponentScan(basePackages = "org.baeldung.springretry")
+@ComponentScan(basePackages = "com.baeldung.springretry")
 @EnableRetry
 // Uncomment this two lines if we need XML configuration
 // @EnableAspectJAutoProxy

@@ -1,4 +1,4 @@
-package org.baeldung.springretry;
+package com.baeldung.springretry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package org.baeldung.taskscheduler;
+package com.baeldung.taskscheduler;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,7 +10,7 @@ import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.scheduling.support.PeriodicTrigger;
 
 @Configuration
-@ComponentScan(basePackages = "org.baeldung.taskscheduler", basePackageClasses = { ThreadPoolTaskSchedulerExamples.class })
+@ComponentScan(basePackages = "com.baeldung.taskscheduler", basePackageClasses = { ThreadPoolTaskSchedulerExamples.class })
 public class ThreadPoolTaskSchedulerConfig {
 
     @Bean

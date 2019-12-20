@@ -1,4 +1,4 @@
-package org.baeldung.springretry;
+package com.baeldung.springretry;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

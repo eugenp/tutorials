@@ -1,4 +1,4 @@
-package org.baeldung.async;
+package com.baeldung.async;
 
 import java.lang.reflect.Method;
 

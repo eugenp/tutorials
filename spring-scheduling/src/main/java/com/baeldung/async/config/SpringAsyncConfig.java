@@ -1,8 +1,8 @@
-package org.baeldung.async.config;
+package com.baeldung.async.config;
 
 import java.util.concurrent.Executor;
 
-import org.baeldung.async.CustomAsyncExceptionHandler;
+import com.baeldung.async.CustomAsyncExceptionHandler;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,7 +14,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 @Configuration
 @EnableAsync()
-@ComponentScan("org.baeldung.async")
+@ComponentScan("com.baeldung.async")
 public class SpringAsyncConfig implements AsyncConfigurer {
 
     @Bean(name = "threadPoolTaskExecutor")
