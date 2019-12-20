@@ -1,5 +1,6 @@
 rootProject.name = "gradle-6"
 
+include("configuration-avoidance")
 include("dependency-constraints")
 include("fibonacci-spi")
 include("fibonacci-recursive")
