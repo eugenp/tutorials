@@ -25,6 +25,8 @@ class CNNforMNISTUnitTest {
             eval.eval(next.getLabels(), output);
         }
 
+        System.out.println(eval.stats());
+
         assertTrue(eval.accuracy() > 0.9);
         assertTrue(eval.precision() > 0.9);
         assertTrue(eval.recall() > 0.9);

@@ -117,7 +117,7 @@ public class CNNforMNIST extends MultiLayerNetwork {
     private static ConvolutionLayer buildConvolutionLayer() {
         return new ConvolutionLayer.Builder(5, 5)
                 .stride(1, 1) // nIn need not specified in later layers
-                .nOut(50)
+                .nOut(20)
                 .activation(Activation.IDENTITY)
                 .build();
     }
