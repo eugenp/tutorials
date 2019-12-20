@@ -1,4 +1,4 @@
-package org.baeldung.scheduling;
+package com.baeldung.scheduling;
 
 public class SchedulingWithXmlConfig {
 

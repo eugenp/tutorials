@@ -1,4 +1,4 @@
-package org.baeldung.async;
+package com.baeldung.async;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;

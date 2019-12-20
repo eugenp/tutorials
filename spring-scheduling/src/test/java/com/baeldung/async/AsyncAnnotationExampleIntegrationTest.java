@@ -1,9 +1,9 @@
-package org.baeldung.async;
+package com.baeldung.async;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import org.baeldung.async.config.SpringAsyncConfig;
+import com.baeldung.async.config.SpringAsyncConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

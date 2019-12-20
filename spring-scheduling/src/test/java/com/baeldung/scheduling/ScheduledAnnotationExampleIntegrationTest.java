@@ -1,5 +1,6 @@
-package org.baeldung.scheduling;
+package com.baeldung.scheduling;
 
+import com.baeldung.scheduling.SpringSchedulingConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

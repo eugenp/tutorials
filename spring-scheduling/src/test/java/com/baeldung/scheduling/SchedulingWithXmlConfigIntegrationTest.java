@@ -1,4 +1,4 @@
-package org.baeldung.scheduling;
+package com.baeldung.scheduling;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

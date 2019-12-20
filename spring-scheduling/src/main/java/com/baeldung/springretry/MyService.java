@@ -1,4 +1,4 @@
-package org.baeldung.springretry;
+package com.baeldung.springretry;
 
 import java.sql.SQLException;
 
