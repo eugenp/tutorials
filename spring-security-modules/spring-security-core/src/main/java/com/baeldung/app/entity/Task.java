@@ -1,4 +1,4 @@
-package com.baeldung.entity;
+package com.baeldung.app.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
