@@ -15,6 +15,8 @@ import org.nd4j.linalg.lossfunctions.LossFunctions;
 import java.io.File;
 import java.io.IOException;
 
+import static org.nd4j.linalg.learning.config.Adam.*;
+
 public class CNNforMNIST extends MultiLayerNetwork {
 
     public static final int SEED = 123;
@@ -63,11 +65,12 @@ public class CNNforMNIST extends MultiLayerNetwork {
     }
 
     private static CNNforMNIST createDefaultCNNforMNIST() {
+        double learningRate = 0.01;
         return new CNNforMNIST(
                 new NeuralNetConfiguration.Builder()
                         .seed(SEED)
                         .l2(0.0005)
-                        .updater(new Adam())
+                        .updater(new Adam(learningRate, DEFAULT_ADAM_BETA1_MEAN_DECAY, DEFAULT_ADAM_BETA2_VAR_DECAY, DEFAULT_ADAM_EPSILON))
                         .weightInit(WeightInit.XAVIER)
                         .list()
                         .layer(0, buildInitialConvolutionLayer())
