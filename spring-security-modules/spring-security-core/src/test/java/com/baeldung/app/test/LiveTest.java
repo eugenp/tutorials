@@ -1,4 +1,4 @@
-package com.baeldung.test;
+package com.baeldung.app.test;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -22,7 +22,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.baeldung.app.App;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = App.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = App.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class LiveTest {
 

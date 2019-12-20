@@ -1,4 +1,4 @@
-package com.baeldung.filter;
+package com.baeldung.app.filter;
 
 import java.io.IOException;
 
