@@ -4,13 +4,12 @@ import java.util.List;
 
 class MultipleReturnValuesUsingTuples {
 
-    static Tuple2<Integer, Coordinates> getFirstNullNearbyLocation(List<Coordinates> coordinatesList) {
+    static Tuple2<Coordinates, Double> getMostDistantPoint(List<Coordinates> coordinatesList,
+                                                           Coordinates target) {
 
-        int id = 55;
         return coordinatesList.stream()
-            .filter(coordinates -> coordinates.getNearbyLocation() == null)
-            .map(coordinates -> new Tuple2<Integer, Coordinates>(id, coordinates))
-            .findFirst()
+            .map(coordinates -> new Tuple2<>(coordinates, coordinates.calculateDistance(target)))
+            .max((d1, d2) -> Double.compare(d1.getSecond(), d2.getSecond()))
             .get();
 
     }

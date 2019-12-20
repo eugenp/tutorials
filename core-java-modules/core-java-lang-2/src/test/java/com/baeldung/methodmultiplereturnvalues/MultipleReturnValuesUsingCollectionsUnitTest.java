@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 
-public class MultipleReturnValuesUsingCollectionsUnitTest {
+class MultipleReturnValuesUsingCollectionsUnitTest {
 
     @Test
-    public void whenReturningList_thenMultipleFieldsAreReturned() {
+    void whenUsingList_thenMultipleFieldsAreReturned() {
         
         List<Number> coordinates = MultipleReturnValuesUsingCollections.getCoordinatesList();
         assertEquals(Integer.valueOf(10), coordinates.get(0));
@@ -16,7 +16,7 @@ public class MultipleReturnValuesUsingCollectionsUnitTest {
     }
     
     @Test
-    public void whenReturningMap_thenMultipleFieldsAreReturned() {
+    void whenUsingMap_thenMultipleFieldsAreReturned() {
         
         Map<String, Number> coordinates = MultipleReturnValuesUsingCollections.getCoordinatesMap();
         assertEquals(Integer.valueOf(10), coordinates.get("longitude"));

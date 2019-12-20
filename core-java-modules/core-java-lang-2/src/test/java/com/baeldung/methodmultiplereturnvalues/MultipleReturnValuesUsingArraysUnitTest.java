@@ -3,10 +3,10 @@ package com.baeldung.methodmultiplereturnvalues;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
-public class MultipleReturnValuesUsingArraysUnitTest {
+class MultipleReturnValuesUsingArraysUnitTest {
 
     @Test
-    public void whenReturningArrayOfDoubles_thenMultipleDoubleFieldsAreReturned() {
+    void whenUsingArrayOfDoubles_thenMultipleDoubleFieldsAreReturned() {
 
         double[] coordinates = MultipleReturnValuesUsingArrays.getCoordinatesDoubleArray();
         assertEquals(10, coordinates[0]);
@@ -14,7 +14,7 @@ public class MultipleReturnValuesUsingArraysUnitTest {
     }
 
     @Test
-    public void whenReturningArrayOfNumbers_thenMultipleNumberFieldsAreReturned() {
+    void whenUsingArrayOfNumbers_thenMultipleNumberFieldsAreReturned() {
         
         Number[] coordinates = MultipleReturnValuesUsingArrays.getCoordinatesNumberArray();
         assertEquals(10, coordinates[0]);
