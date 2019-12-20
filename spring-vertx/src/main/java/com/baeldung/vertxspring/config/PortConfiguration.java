@@ -12,7 +12,6 @@ public class PortConfiguration {
 
     private static final int DEFAULT_PORT = 8069;
 
-
     @Profile("default")
     @Bean
     public Integer defaultPort() {
