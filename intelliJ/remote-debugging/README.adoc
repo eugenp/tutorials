@@ -82,3 +82,4 @@ The following guides may also be helpful:
 * https://spring.io/guides/gs/batch-processing/[Creating a Batch Service]
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
+
