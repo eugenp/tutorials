@@ -8,9 +8,7 @@ import com.baeldung.fibonacci.FibonacciSequenceGeneratorFixture;
  * the fibonacci-spi project.
  */
 final class RecursiveFibonacciUnitTest implements FibonacciSequenceGeneratorFixture {
-
-  @Override
-  public FibonacciSequenceGenerator provide() {
-    return new RecursiveFibonacci();
-  }
+    @Override public FibonacciSequenceGenerator provide() {
+        return new RecursiveFibonacci();
+    }
 }
