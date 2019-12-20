@@ -1,6 +1,6 @@
-=========
+## Core Java Concurrency Basic
 
-## Core Java Concurrency Basic 2 Examples
+This module contains articles about basic Java concurrency
 
 ### Relevant Articles: 
 - [How to Delay Code Execution in Java](https://www.baeldung.com/java-delay-code-execution)
@@ -8,3 +8,4 @@
 - [Difference Between Wait and Sleep in Java](https://www.baeldung.com/java-wait-and-sleep)
 - [Guide to the Synchronized Keyword in Java](https://www.baeldung.com/java-synchronized)
 - [Life Cycle of a Thread in Java](https://www.baeldung.com/java-thread-lifecycle)
+- [[<-- Prev]](/core-java-modules/core-java-concurrency-basic)

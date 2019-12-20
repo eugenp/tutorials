@@ -159,4 +159,5 @@
         <spring.version>5.1.9.RELEASE</spring.version>
         <hsqldb.version>2.5.0</hsqldb.version>
     </properties>
+
 </project>
