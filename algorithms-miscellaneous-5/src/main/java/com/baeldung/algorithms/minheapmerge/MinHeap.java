@@ -3,16 +3,14 @@ package com.baeldung.algorithms.minheapmerge;
 public class MinHeap {
 
     HeapNode[] heapNodes;
-    int heapSize;
 
     public MinHeap(HeapNode heapNodes[]) {
-        this.heapSize = heapNodes.length;
         this.heapNodes = heapNodes;
         heapifyFromLastLeafsParent();
     }
 
     void heapifyFromLastLeafsParent() {
-        int lastLeafsParentIndex = getParentNodeIndex(heapSize);
+        int lastLeafsParentIndex = getParentNodeIndex(heapNodes.length);
         while (lastLeafsParentIndex >= 0) {
             heapify(lastLeafsParentIndex);
             lastLeafsParentIndex--;
@@ -23,12 +21,12 @@ public class MinHeap {
         int leftNodeIndex = getLeftNodeIndex(index);
         int rightNodeIndex = getRightNodeIndex(index);
         int smallestElementIndex = index;
-        if (leftNodeIndex < heapSize && heapNodes[leftNodeIndex].element < heapNodes[index].element)
+        if (leftNodeIndex < heapNodes.length && heapNodes[leftNodeIndex].element < heapNodes[index].element)
             smallestElementIndex = leftNodeIndex;
-        
-        if (rightNodeIndex < heapSize && heapNodes[rightNodeIndex].element < heapNodes[smallestElementIndex].element)
+
+        if (rightNodeIndex < heapNodes.length && heapNodes[rightNodeIndex].element < heapNodes[smallestElementIndex].element)
             smallestElementIndex = rightNodeIndex;
-        
+
         if (smallestElementIndex != index) {
             swap(index, smallestElementIndex);
             heapify(smallestElementIndex);
@@ -51,7 +49,7 @@ public class MinHeap {
         return heapNodes[0];
     }
 
-    void hepifyFromRoot(HeapNode root) {
+    void heapifyFromRoot() {
         heapify(0);
     }
 
