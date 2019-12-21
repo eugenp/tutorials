@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  description: "This is a sample server Array server"
+  description: "This is a sample Swagger description for an Array server"
   version: "1.0.0"
   title: "Swagger Array"
   license:
@@ -28,7 +28,7 @@ paths:
         - in: body
           description: ""
           required: true
-          name: arrayStr
+          name: swaggerArray
           schema:
             type: array
             items:
