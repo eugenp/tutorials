@@ -2,12 +2,6 @@ package com.baeldung.algorithms.minheapmerge;
 
 public class MinHeapMerge {
 
-    static void printArray(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
-    }
-
     static int populateHeapNodesAndDetermineResultingArrayLength(int[][] array, HeapNode[] heapNodes) {
         int resultSize = 0;
 
@@ -33,24 +27,14 @@ public class MinHeapMerge {
             } else {
                 root.element = Integer.MAX_VALUE;
             }
-            minHeap.hepifyFromRoot(root);
+            minHeap.heapifyFromRoot();
         }
         return resultingArray;
     }
 
-    static void merge(int[][] array) {
+    static int[] merge(int[][] array) {
         HeapNode[] heapNodes = new HeapNode[array.length];
         int resultingArraySize = populateHeapNodesAndDetermineResultingArrayLength(array, heapNodes);
-
-        int[] resultingArray = createMinHeapAndMergeArrays(array, heapNodes, resultingArraySize);
-
-        printArray(resultingArray);
-
-    }
-
-    public static void main(String args[]) {
-        int[][] array = { { 0, 6 }, { 1, 5, 10, 100 }, { 2, 4, 650, 200 }, { 3, 4 }, { 1001, 6456, 23000 } };
-
-        merge(array);
+        return createMinHeapAndMergeArrays(array, heapNodes, resultingArraySize);
     }
 }
