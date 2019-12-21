@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-data</artifactId>
-    <packaging>war</packaging>
     <name>spring-boot-data</name>
+    <packaging>war</packaging>
     <description>Spring Boot Data Module</description>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
@@ -54,7 +54,7 @@
     </dependencies>
 
     <build>
-        <finalName>spring-boot</finalName>
+        <finalName>spring-boot-data</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -169,4 +169,5 @@
         <javers.version>5.6.3</javers.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
     </properties>
+    
 </project>
