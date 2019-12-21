@@ -11,5 +11,6 @@ This module contains articles about Spring MVC
 - [Guide to Spring Email](https://www.baeldung.com/spring-email)
 - [Request Method Not Supported (405) in Spring](https://www.baeldung.com/spring-request-method-not-supported-405)
 - [Spring @RequestParam Annotation](https://www.baeldung.com/spring-request-param)
+- [Spring Optional Path Variables](https://www.baeldung.com/spring-optional-path-variables)
 - More articles: [[more -->]](/spring-mvc-basics-3)
 - More articles: [[<-- prev]](/spring-mvc-basics)
