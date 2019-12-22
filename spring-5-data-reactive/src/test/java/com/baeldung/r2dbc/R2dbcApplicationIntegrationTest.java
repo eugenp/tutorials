@@ -43,8 +43,7 @@ public class R2dbcApplicationIntegrationTest {
                 "DROP TABLE IF EXISTS player;",
                 "CREATE table player (id INT AUTO_INCREMENT NOT NULL, name VARCHAR2, age INT NOT NULL);");
 
-        statements.forEach(it -> client.execute() //
-                .sql(it) //
+        statements.forEach(it -> client.execute(it) //
                 .fetch() //
                 .rowsUpdated() //
                 .as(StepVerifier::create) //
