@@ -1,11 +1,7 @@
 package com.baeldung.reactive.functional;
 
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.verify;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import com.baeldung.webflux.Employee;
+import com.baeldung.webflux.EmployeeRepository;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,12 +11,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
-
-import com.baeldung.webflux.Employee;
-import com.baeldung.webflux.EmployeeRepository;
-
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = EmployeeSpringFunctionalApplication.class)
@@ -58,15 +56,11 @@ public class EmployeeSpringFunctionalIntegrationTest {
             .bindToRouterFunction(config.getAllEmployeesRoute())
             .build();
 
-        List<Employee> employeeList = new ArrayList<>();
+        List<Employee> employees = Arrays.asList(
+            new Employee("1", "Employee 1"),
+            new Employee("2", "Employee 2"));
 
-        Employee employee1 = new Employee("1", "Employee 1");
-        Employee employee2 = new Employee("2", "Employee 2");
-
-        employeeList.add(employee1);
-        employeeList.add(employee2);
-
-        Flux<Employee> employeeFlux = Flux.fromIterable(employeeList);
+        Flux<Employee> employeeFlux = Flux.fromIterable(employees);
         given(employeeRepository.findAllEmployees()).willReturn(employeeFlux);
 
         client.get()
@@ -75,7 +69,7 @@ public class EmployeeSpringFunctionalIntegrationTest {
             .expectStatus()
             .isOk()
             .expectBodyList(Employee.class)
-            .isEqualTo(employeeList);
+            .isEqualTo(employees);
     }
 
     @Test
