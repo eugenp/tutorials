@@ -26,6 +26,11 @@
             <id>kotlin-eap</id>
             <url>http://dl.bintray.com/kotlin/kotlin-eap</url>
         </repository>
+        <repository>
+            <id>spring-milestone</id>
+            <name>Spring Milestone Repository</name>
+            <url>http://repo.spring.io/milestone</url>
+        </repository>
     </repositories>
 
     <pluginRepositories>
@@ -40,7 +45,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.2.2.RELEASE</version>
+                <version>2.2.0.M4</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
