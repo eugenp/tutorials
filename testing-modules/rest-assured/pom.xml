@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>rest-assured</artifactId>
     <version>1.0</version>
     <name>rest-assured</name>
@@ -213,7 +213,7 @@
 
         <rest-assured.version>3.0.1</rest-assured.version>
         <rest-assured-json-schema-validator.version>3.0.1</rest-assured-json-schema-validator.version>
-        
+
         <scribejava.version>2.5.3</scribejava.version>
     </properties>
 
