@@ -9,6 +9,7 @@ import org.junit.Test;
 import com.google.common.graph.MutableValueGraph;
 import com.google.common.graph.ValueGraph;
 import com.google.common.graph.ValueGraphBuilder;
+import com.baeldung.algorithms.kruskal.Kruskal;
 
 public class KruskalUnitTest {
 
