@@ -35,9 +35,9 @@
             <version>${tradukisto.version}</version>
         </dependency>
         <dependency>
-           <groupId>com.google.guava</groupId>
-           <artifactId>guava</artifactId>
-           <version>28.1-jre</version>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>28.1-jre</version>
         </dependency>
 
         <dependency>
