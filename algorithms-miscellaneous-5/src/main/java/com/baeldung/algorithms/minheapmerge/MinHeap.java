@@ -21,12 +21,12 @@ public class MinHeap {
         int leftNodeIndex = getLeftNodeIndex(index);
         int rightNodeIndex = getRightNodeIndex(index);
         int smallestElementIndex = index;
-        if (leftNodeIndex < heapNodes.length && heapNodes[leftNodeIndex].element < heapNodes[index].element)
+        if (leftNodeIndex < heapNodes.length && heapNodes[leftNodeIndex].element < heapNodes[index].element) {
             smallestElementIndex = leftNodeIndex;
-
-        if (rightNodeIndex < heapNodes.length && heapNodes[rightNodeIndex].element < heapNodes[smallestElementIndex].element)
+        }
+        if (rightNodeIndex < heapNodes.length && heapNodes[rightNodeIndex].element < heapNodes[smallestElementIndex].element) {
             smallestElementIndex = rightNodeIndex;
-
+        }
         if (smallestElementIndex != index) {
             swap(index, smallestElementIndex);
             heapify(smallestElementIndex);
