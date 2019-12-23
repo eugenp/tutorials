@@ -38,6 +38,12 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>${spring.fox.version}</version>
 		</dependency>
+			
+	<dependency>
+	    <groupId>io.springfox</groupId>
+	    <artifactId>springfox-spring-webmvc</artifactId>
+	    <version>${spring.fox.version}</version>
+	</dependency>		
 		
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -51,7 +57,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.baeldung.swagger2boot.SpringBootSwaggerApplication</mainClass>
+                    <mainClass>${start-class}</mainClass>
                     <layout>JAR</layout>
                 </configuration>
             </plugin>
@@ -92,8 +98,9 @@
     </pluginRepositories>
 
     <properties>
-        <spring.fox.version>2.9.2</spring.fox.version>
-        <start-class>com.baeldung.springbootmvc.SpringBootMvcApplication</start-class>
+        <spring.fox.version>3.0.0-SNAPSHOT</spring.fox.version>
+        <start-class>com.baeldung.swagger2boot.SpringBootSwaggerApplication</start-class>
+<!-- 	<start-class>com.baeldung.springbootmvc.SpringBootMvcFnApplication</start-class>  -->
     </properties>
 
 </project>
