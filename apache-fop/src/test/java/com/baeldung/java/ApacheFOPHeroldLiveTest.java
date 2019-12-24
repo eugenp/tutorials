@@ -1,4 +1,4 @@
-package org.baeldung.java;
+package com.baeldung.java;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;

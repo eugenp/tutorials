@@ -1,35 +1,31 @@
-package org.baeldung.examples.olingo2.domain;
+package com.baeldung.examples.olingo2.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "car_model")
-public class CarModel {
+@Table(name = "car_maker")
+public class CarMaker {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
+    @Column(name = "name")
     private String name;
 
-    @NotNull
-    private Integer year;
-
-    @NotNull
-    private String sku;
-
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "maker_fk")
-    private CarMaker maker;
+    @OneToMany(mappedBy = "maker", orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<CarModel> models;
 
     /**
      * @return the id
@@ -60,45 +56,17 @@ public class CarModel {
     }
 
     /**
-     * @return the year
+     * @return the models
      */
-    public Integer getYear() {
-        return year;
+    public List<CarModel> getModels() {
+        return models;
     }
 
     /**
-     * @param year the year to set
+     * @param models the models to set
      */
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
-    /**
-     * @return the sku
-     */
-    public String getSku() {
-        return sku;
-    }
-
-    /**
-     * @param sku the sku to set
-     */
-    public void setSku(String sku) {
-        this.sku = sku;
-    }
-
-    /**
-     * @return the maker
-     */
-    public CarMaker getMaker() {
-        return maker;
-    }
-
-    /**
-     * @param maker the maker to set
-     */
-    public void setMaker(CarMaker maker) {
-        this.maker = maker;
+    public void setModels(List<CarModel> models) {
+        this.models = models;
     }
 
     /* (non-Javadoc)
@@ -109,10 +77,8 @@ public class CarModel {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((maker == null) ? 0 : maker.hashCode());
+        result = prime * result + ((models == null) ? 0 : models.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((sku == null) ? 0 : sku.hashCode());
-        result = prime * result + ((year == null) ? 0 : year.hashCode());
         return result;
     }
 
@@ -127,31 +93,21 @@ public class CarModel {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        CarModel other = (CarModel) obj;
+        CarMaker other = (CarMaker) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
         } else if (!id.equals(other.id))
             return false;
-        if (maker == null) {
-            if (other.maker != null)
+        if (models == null) {
+            if (other.models != null)
                 return false;
-        } else if (!maker.equals(other.maker))
+        } else if (!models.equals(other.models))
             return false;
         if (name == null) {
             if (other.name != null)
                 return false;
         } else if (!name.equals(other.name))
-            return false;
-        if (sku == null) {
-            if (other.sku != null)
-                return false;
-        } else if (!sku.equals(other.sku))
-            return false;
-        if (year == null) {
-            if (other.year != null)
-                return false;
-        } else if (!year.equals(other.year))
             return false;
         return true;
     }

@@ -1,11 +1,10 @@
-    package org.baeldung.examples.olingo2;
+    package com.baeldung.examples.olingo2;
 
 import java.io.IOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.Path;
