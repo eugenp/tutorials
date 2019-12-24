@@ -33,6 +33,7 @@
 			<artifactId>springfox-swagger2</artifactId>
 			<version>${spring.fox.version}</version>
 		</dependency>
+      
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
@@ -63,7 +64,7 @@
             </plugin>
         </plugins>
     </build>
-
+  
     <repositories>
         <repository>
             <id>spring-snapshots</id>
@@ -102,5 +103,5 @@
         <start-class>com.baeldung.swagger2boot.SpringBootSwaggerApplication</start-class>
 <!-- 	<start-class>com.baeldung.springbootmvc.SpringBootMvcFnApplication</start-class>  -->
     </properties>
-
+  
 </project>
