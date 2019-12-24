@@ -1,4 +1,4 @@
-package ternary
+package com.baeldung.ternary
 
 import org.junit.Test
 import kotlin.test.assertEquals
