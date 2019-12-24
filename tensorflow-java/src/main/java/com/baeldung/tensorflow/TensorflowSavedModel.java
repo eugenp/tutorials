@@ -1,4 +1,4 @@
-package org.baeldung.tensorflow;
+package com.baeldung.tensorflow;
 
 import org.tensorflow.SavedModelBundle;
 import org.tensorflow.Tensor;
