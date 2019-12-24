@@ -1,4 +1,4 @@
-package org.baeldung.tensorflow;
+package com.baeldung.tensorflow;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

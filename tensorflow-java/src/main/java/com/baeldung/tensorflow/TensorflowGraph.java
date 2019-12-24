@@ -1,4 +1,4 @@
-package org.baeldung.tensorflow;
+package com.baeldung.tensorflow;
 
 import org.tensorflow.DataType;
 import org.tensorflow.Graph;
