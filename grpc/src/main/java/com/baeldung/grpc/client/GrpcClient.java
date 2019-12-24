@@ -1,8 +1,8 @@
-package org.baeldung.grpc.client;
+package com.baeldung.grpc.client;
 
-import org.baeldung.grpc.HelloRequest;
-import org.baeldung.grpc.HelloResponse;
-import org.baeldung.grpc.HelloServiceGrpc;
+import com.baeldung.grpc.HelloRequest;
+import com.baeldung.grpc.HelloResponse;
+import com.baeldung.grpc.HelloServiceGrpc;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
