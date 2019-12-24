@@ -8,8 +8,8 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 public class Foo {
     private long id;
-    
-    @ApiModelProperty(name = "name", dataType="List", example = "[\"str1\", \"str2\", \"str3\"]")
+
+    @ApiModelProperty(name = "name", dataType = "List", example = "[\"str1\", \"str2\", \"str3\"]")
     private List<String> name;
 
     public Foo() {
