@@ -1,4 +1,4 @@
-package org.baeldung.java.io.remote;
+package com.baeldung.java.io.remote;
 
 import java.io.IOException;
 
