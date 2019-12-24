@@ -1,4 +1,4 @@
-package org.baeldung.examples.olingo2;
+package com.baeldung.examples.olingo2;
 
 import java.util.List;
 import java.util.Map;
@@ -9,10 +9,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.FlushModeType;
 import javax.persistence.LockModeType;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
-import javax.persistence.SynchronizationType;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
@@ -25,11 +23,8 @@ import org.apache.olingo.odata2.api.processor.ODataContext;
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPAContext;
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPAServiceFactory;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException;
-import org.baeldung.examples.olingo2.JerseyConfig.EntityManagerFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.orm.jpa.EntityManagerFactoryUtils;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Component;
 
 /**
@@ -58,7 +53,7 @@ public class CarsODataJPAServiceFactory extends ODataJPAServiceFactory {
         ODataJPAContext ctx = getODataJPAContext();
         ODataContext octx = ctx.getODataContext();
         HttpServletRequest request = (HttpServletRequest)octx.getParameter(ODataContext.HTTP_SERVLET_REQUEST_OBJECT);
-        EntityManager em = (EntityManager)request.getAttribute(EntityManagerFilter.EM_REQUEST_ATTRIBUTE);
+        EntityManager em = (EntityManager)request.getAttribute(JerseyConfig.EntityManagerFilter.EM_REQUEST_ATTRIBUTE);
                 
         // Here we're passing the EM that was created by the EntityManagerFilter (see JerseyConfig)
         ctx.setEntityManager(new EntityManagerWrapper(em));
