@@ -24,7 +24,7 @@
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
-                <version>1.2.3</version>
+                <version>${logback.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -71,6 +71,7 @@
 
     <properties>
         <spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
+        <logback.version>1.2.3</logback.version>
     </properties>
 
 </project>
