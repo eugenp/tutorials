@@ -14,7 +14,7 @@ public class MatchesExample {
     static void exampleOne() {
 
         Pattern stringPattern = Pattern.compile("\\d\\d\\d\\d");
-        Matcher m = stringPattern.matcher("good bye 2019");
+        Matcher m = stringPattern.matcher("goodbye 2019 and welcome 2020");
         System.out.println(m.matches());
     }
 
@@ -23,7 +23,7 @@ public class MatchesExample {
         Pattern stringPattern = Pattern.compile("\\d\\d\\d\\d");
         Matcher m = stringPattern.matcher("2019");
         System.out.println(m.matches());
-        
+
         if (m.matches()) {
             System.out.println("Start Index: " + m.start());
             System.out.println("Group: " + m.group());
