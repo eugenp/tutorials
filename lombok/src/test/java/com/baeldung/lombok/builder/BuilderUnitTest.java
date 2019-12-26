@@ -40,20 +40,4 @@ public class BuilderUnitTest {
         assertThat(testImmutableClient.getName()).isEqualTo("foo");
         assertThat(testImmutableClient.getId()).isEqualTo(1);
     }
-
-    @Test
-    public void givenBuilderAtMethodLevel_ChildInheritingParentIsBuilt() {
-        Child child = Child.childBuilder()
-            .parentName("Andrea")
-            .parentAge(38)
-            .childName("Emma")
-            .childAge(6)
-            .build();
-
-        assertThat(child.getChildName()).isEqualTo("Emma");
-        assertThat(child.getChildAge()).isEqualTo(6);
-        assertThat(child.getParentName()).isEqualTo("Andrea");
-        assertThat(child.getParentAge()).isEqualTo(38);
-    }
-
 }

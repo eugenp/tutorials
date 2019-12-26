@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.unauthenticated;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -36,20 +36,20 @@ public class SpringBootAdminClientApplicationIntegrationTest {
 
     @Test
     public void whenEnvironmentAvailable_ThenAdminServerPropertiesExist() {
-        assertEquals(environment.getProperty("spring.boot.admin.url"), "http://localhost:8080");
-        assertEquals(environment.getProperty("spring.boot.admin.username"), "admin");
-        assertEquals(environment.getProperty("spring.boot.admin.password"), "admin");
+        assertEquals(environment.getProperty("spring.boot.admin.client.url"), "http://localhost:8080");
+        assertEquals(environment.getProperty("spring.boot.admin.client.username"), "admin");
+        assertEquals(environment.getProperty("spring.boot.admin.client.password"), "admin");
     }
 
     @Test
     public void whenHttpBasicAttempted_ThenSuccess() throws Exception {
-        mockMvc.perform(get("/env").with(httpBasic("client", "client")));
+        mockMvc.perform(get("/actuator/env").with(httpBasic("client", "client")));
     }
 
     @Test
     public void whenInvalidHttpBasicAttempted_ThenUnauthorized() throws Exception {
         mockMvc
-          .perform(get("/env").with(httpBasic("client", "invalid")))
-          .andExpect(status().isUnauthorized());
+          .perform(get("/actuator/env").with(httpBasic("client", "invalid")))
+          .andExpect(unauthenticated());
     }
 }

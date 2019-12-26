@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ ComparisonFunctionTest.class, ArithmeticFunctionTest.class })
+@SuiteClasses({ ComparisonFunctionUnitTest.class, ArithmeticFunctionUnitTest.class })
 public class FunctionTestSuite {
 
 }

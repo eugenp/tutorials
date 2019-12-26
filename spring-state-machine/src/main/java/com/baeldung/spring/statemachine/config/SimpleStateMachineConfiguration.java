@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 @EnableStateMachine
 public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapter<String, String> {
 
-    public static final Logger LOGGER = Logger.getLogger(SimpleStateMachineConfiguration.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(SimpleStateMachineConfiguration.class.getName());
 
     @Override
     public void configure(StateMachineConfigurationConfigurer<String, String> config) throws Exception {
@@ -80,7 +80,7 @@ public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapt
 
     @Bean
     public Guard<String, String> simpleGuard() {
-        return (ctx) -> {
+        return ctx -> {
             int approvalCount = (int) ctx
               .getExtendedState()
               .getVariables()

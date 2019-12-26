@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class TodoDao implements Dao<Todo> {
 
     private List<Todo> todoList = new ArrayList<>();
-    
+
     @Override
     public Optional<Todo> get(int id) {
         return Optional.ofNullable(todoList.get(id));
@@ -22,9 +22,9 @@ public class TodoDao implements Dao<Todo> {
 
     @Override
     public Collection<Todo> getAll() {
-        return Collections.unmodifiableCollection(todoList.stream()
+        return todoList.stream()
             .filter(Objects::nonNull)
-            .collect(Collectors.toList()));
+            .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
     }
 
     @Override

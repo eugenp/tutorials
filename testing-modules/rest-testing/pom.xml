@@ -1,8 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.baeldung</groupId>
     <artifactId>rest-testing</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>rest-testing</name>
@@ -107,29 +106,62 @@
             </resource>
         </resources>
 
+        <plugins>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe-plugin.version}</version>
+                <configuration>
+                    <parallel>classes</parallel>
+                    <threadCount>4</threadCount>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.temyers</groupId>
+                <artifactId>cucumber-jvm-parallel-plugin</artifactId>
+                <version>5.0.0</version>
+                <executions>
+                    <execution>
+                        <id>generateRunners</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>generateRunners</goal>
+                        </goals>
+                        <configuration>
+                            <glue>
+                                <package>com.baeldung.rest.cucumber</package>
+                            </glue>
+                            <featuresDirectory>src/test/resources/Feature/</featuresDirectory>
+                            <parallelScheme>SCENARIO</parallelScheme>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
     </build>
 
     <properties>
-        <!-- marshalling -->
-        <jackson.version>2.8.5</jackson.version>
-
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
 
         <!-- testing -->
         <rest-assured.version>2.9.0</rest-assured.version>
         <cucumber.version>1.2.5</cucumber.version>
-        <wiremock.version>2.4.1</wiremock.version>
+        <wiremock.version>2.21.0</wiremock.version>
         <karate.version>0.6.1</karate.version>
 
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
 
         <jbehave.version>4.1</jbehave.version>
-
-        <!-- maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
     </properties>
 
 </project>

@@ -1,8 +1,10 @@
 */bin/*
+bin/
 
 *.class
 
 # Package Files #
+*.jar
 *.war
 *.ear
 
@@ -19,13 +21,20 @@
 .idea/
 *.iml
 *.iws
+out/
+
+# VSCode
+.vscode/
 
 # Mac
 .DS_Store
 
 # Maven
-log/
+log/*
 target/
+
+# Gradle
+.gradle/
 
 spring-openid/src/main/resources/application.properties
 .recommenders/
@@ -62,3 +71,23 @@ jmeter/src/main/resources/*-JMeter.csv
 **/dist
 **/tmp
 **/out-tsc
+**/nbproject/
+**/nb-configuration.xml
+core-scala/.cache-main
+core-scala/.cache-tests
+
+
+persistence-modules/hibernate5/transaction.log
+apache-avro/src/main/java/com/baeldung/avro/model/
+jta/transaction-logs/
+software-security/sql-injection-samples/derby.log
+spring-soap/src/main/java/com/baeldung/springsoap/gen/
+/report-*.json
+transaction.log
+*-shell.log
+
+apache-cxf/cxf-aegis/baeldung.xml
+apache-fop/src/test/resources/input.xml
+apache-fop/src/test/resources/output_herold.pdf
+apache-fop/src/test/resources/output_html2fo.pdf
+apache-fop/src/test/resources/output_jtidy.pdf

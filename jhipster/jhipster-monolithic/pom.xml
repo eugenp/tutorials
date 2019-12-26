@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jhipster-monolithic</artifactId>
     <packaging>war</packaging>
+	<name>jhipster-monolithic</name>
     <description>JHipster Monolithic Application</description>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
-        <groupId>com.baeldung</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-1</relativePath>
+        <artifactId>jhipster</artifactId>
+        <groupId>com.baeldung.jhipster</groupId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>

@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" 
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+	<div sec:authorize="isAuthenticated()">Authenticated as <span sec:authentication="name"></span></div>
+</body>
+</html>

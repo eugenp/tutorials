@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
-@ComponentScan(basePackages = { "com.baeldung.execption" })
+@ComponentScan(basePackages = { "com.baeldung.exception" })
 public class SpringExceptionApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringExceptionApplication.class, args);

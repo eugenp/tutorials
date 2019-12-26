@@ -45,10 +45,10 @@ public class EmployeeControllerIntegrationTest {
     @Test
     public void whenPostEmployee_thenCreateEmployee() throws Exception {
         Employee alex = new Employee("alex");
-        given(service.save(Mockito.anyObject())).willReturn(alex);
+        given(service.save(Mockito.any())).willReturn(alex);
 
         mvc.perform(post("/api/employees").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJson(alex))).andExpect(status().isCreated()).andExpect(jsonPath("$.name", is("alex")));
-        verify(service, VerificationModeFactory.times(1)).save(Mockito.anyObject());
+        verify(service, VerificationModeFactory.times(1)).save(Mockito.any());
         reset(service);
     }
 

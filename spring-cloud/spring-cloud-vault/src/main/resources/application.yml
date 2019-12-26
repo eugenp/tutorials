@@ -3,4 +3,9 @@ spring:
     name: fakebank
     
   datasource:
-    url: jdbc:mysql://localhost:3306/fakebank
+    url: jdbc:mysql://localhost:3306/fakebank?serverTimezone=GMT-3
+    hikari:      connection-test-query: select 1
+      idle-timeout: 5000
+      max-lifetime: 120000
+      maximum-pool-size: 5
+      minimum-idle: 5

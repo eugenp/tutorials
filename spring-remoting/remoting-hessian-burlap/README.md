@@ -1,6 +1,9 @@
-## Spring Remoting with Hessian and Burlap Tutorial
+## Spring Remoting with Hessian and Burlap
+
+This module contains articles about Spring Remoting with Hessian and Burlap
 
 ### Relevant Articles
+
 - [Spring Remoting with Hessian and Burlap](http://www.baeldung.com/spring-remoting-hessian-burlap)
 
 ### Overview

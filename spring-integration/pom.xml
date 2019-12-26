@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.samples.spring.integration</groupId>
     <artifactId>spring-integration</artifactId>
     <version>1.0.0.BUILD-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-integration</name>
+    <packaging>jar</packaging>
     <url>http://www.springsource.org/spring-integration</url>
 
     <parent>
@@ -68,12 +69,23 @@
             <artifactId>spring-integration-security</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <version>${spring.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
         </dependency>
     </dependencies>
 
@@ -104,23 +116,15 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>repo.springsource.org.milestone</id>
-            <name>Spring Framework Maven Milestone Repository</name>
-            <url>https://repo.springsource.org/milestone</url>
-        </repository>
-    </repositories>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>5.0.3.RELEASE</spring.version>
+        <spring.version>5.0.13.RELEASE</spring.version>
         <spring-social.version>1.1.4.RELEASE</spring-social.version>
         <javax-mail.version>1.4.7</javax-mail.version>
         <javax-activation.version>1.1.1</javax-activation.version>
-        <junit.version>4.12</junit.version>
         <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
         <exec-maven-plugin.version>1.5.0</exec-maven-plugin.version>
+        <h2.version>1.4.197</h2.version>
     </properties>
 
 </project>

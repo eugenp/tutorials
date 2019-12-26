@@ -64,11 +64,11 @@ public class ForkJoinStateMachineConfiguration extends StateMachineConfigurerAda
 
     @Bean
     public Guard<String, String> mediumGuard() {
-        return (ctx) -> false;
+        return ctx -> false;
     }
 
     @Bean
     public Guard<String, String> highGuard() {
-        return (ctx) -> false;
+        return ctx -> false;
     }
 }

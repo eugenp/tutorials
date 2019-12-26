@@ -1,10 +1,8 @@
-## Spring LDAP Example Project
+## Spring LDAP
+
+This module contains articles about Spring LDAP
 
 ### Relevant articles
 
-- [Spring LDAP Overview](http://www.baeldung.com/spring-ldap)
-- [Spring LDAP Example Project](http://www.baeldung.com/spring-ldap-overview/)
-- [Guide to Spring Data LDAP](http://www.baeldung.com/spring-data-ldap)
-
-
-
+- [Spring LDAP Overview](https://www.baeldung.com/spring-ldap)
+- [Guide to Spring Data LDAP](https://www.baeldung.com/spring-data-ldap)

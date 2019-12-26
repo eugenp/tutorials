@@ -1,19 +1,5 @@
 package com.baeldung.rest.cucumber;
 
-import com.github.tomakehurst.wiremock.WireMockServer;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Scanner;
-
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.containing;
@@ -25,9 +11,26 @@ import static com.github.tomakehurst.wiremock.client.WireMock.postRequestedFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.verify;
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+
+import com.github.tomakehurst.wiremock.WireMockServer;
+
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 public class StepDefinition {
 
@@ -37,20 +40,20 @@ public class StepDefinition {
     private final InputStream jsonInputStream = this.getClass().getClassLoader().getResourceAsStream("cucumber.json");
     private final String jsonString = new Scanner(jsonInputStream, "UTF-8").useDelimiter("\\Z").next();
 
-    private final WireMockServer wireMockServer = new WireMockServer();
+    private final WireMockServer wireMockServer = new WireMockServer(options().dynamicPort());
     private final CloseableHttpClient httpClient = HttpClients.createDefault();
 
     @When("^users upload data on a project$")
     public void usersUploadDataOnAProject() throws IOException {
         wireMockServer.start();
 
-        configureFor("localhost", 8080);
+        configureFor("localhost", wireMockServer.port());
         stubFor(post(urlEqualTo(CREATE_PATH))
                 .withHeader("content-type", equalTo(APPLICATION_JSON))
                 .withRequestBody(containing("testing-framework"))
                 .willReturn(aResponse().withStatus(200)));
 
-        HttpPost request = new HttpPost("http://localhost:8080/create");
+        HttpPost request = new HttpPost("http://localhost:" + wireMockServer.port() + "/create");
         StringEntity entity = new StringEntity(jsonString);
         request.addHeader("content-type", APPLICATION_JSON);
         request.setEntity(entity);
@@ -67,11 +70,11 @@ public class StepDefinition {
     public void usersGetInformationOnAProject(String projectName) throws IOException {
         wireMockServer.start();
 
-        configureFor("localhost", 8080);
+        configureFor("localhost", wireMockServer.port());
         stubFor(get(urlEqualTo("/projects/cucumber")).withHeader("accept", equalTo(APPLICATION_JSON))
                 .willReturn(aResponse().withBody(jsonString)));
 
-        HttpGet request = new HttpGet("http://localhost:8080/projects/" + projectName.toLowerCase());
+        HttpGet request = new HttpGet("http://localhost:" + wireMockServer.port() + "/projects/" + projectName.toLowerCase());
         request.addHeader("accept", APPLICATION_JSON);
         HttpResponse httpResponse = httpClient.execute(request);
         String responseString = convertResponseToString(httpResponse);

@@ -1,2 +1,3 @@
 ### Relevant Articles:
-- [Guide to CockroachDB in Java](http://www.baeldung.com/cockroachdb-java)
+
+- [A Guide to Jdbi](http://www.baeldung.com/jdbi)

@@ -23,7 +23,7 @@ public class MapAppenderIntegrationTest {
 
     @Test
     public void whenLoggerEmitsLoggingEvent_thenAppenderReceivesEvent() throws Exception {
-        logger.info("Test from {}", this.getClass()
+        logger.error("Error log message from {}", this.getClass()
             .getSimpleName());
         LoggerContext context = LoggerContext.getContext(false);
         Configuration config = context.getConfiguration();

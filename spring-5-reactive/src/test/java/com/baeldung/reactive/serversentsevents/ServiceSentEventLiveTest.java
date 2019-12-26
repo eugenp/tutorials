@@ -3,14 +3,13 @@ package com.baeldung.reactive.serversentsevents;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-@RunWith(JUnitPlatform.class)
 @SpringBootTest
+@WithMockUser
 public class ServiceSentEventLiveTest {
 
     private WebTestClient client = WebTestClient.bindToServer()

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+	xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+	xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
+	xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+	xmlns:flowable="http://flowable.org/bpmn"
+	typeLanguage="http://www.w3.org/2001/XMLSchema"
+	expressionLanguage="http://www.w3.org/1999/XPath"
+	targetNamespace="http://www.flowable.org/processdef">
+	<process id="articleReview"
+		name="A simple process for article review." isExecutable="true">
+		<startEvent id="start" />
+		<sequenceFlow sourceRef="start" targetRef="reviewArticle" />
+		<userTask id="reviewArticle"
+			name="Review the submitted tutorial"
+			flowable:candidateGroups="editors" />
+		<sequenceFlow sourceRef="reviewArticle"
+			targetRef="decision" />
+		<exclusiveGateway id="decision" />
+		<sequenceFlow sourceRef="decision"
+			targetRef="tutorialApproved">
+			<conditionExpression xsi:type="tFormalExpression">
+		        <![CDATA[
+		          ${approved}
+		        ]]>
+			</conditionExpression>
+		</sequenceFlow>
+		<sequenceFlow sourceRef="decision"
+			targetRef="tutorialRejected">
+			<conditionExpression xsi:type="tFormalExpression">
+		        <![CDATA[
+		          ${!approved}
+		        ]]>
+			</conditionExpression>
+		</sequenceFlow>
+		<serviceTask id="tutorialApproved"
+			name="Publish the approved tutorial."
+			flowable:class="com.baeldung.service.PublishArticleService" />
+		<sequenceFlow sourceRef="tutorialApproved"
+			targetRef="end" />
+		<serviceTask id="tutorialRejected"
+			name="Send out rejection email"
+			flowable:class="com.baeldung.service.SendMailService" />
+		<sequenceFlow sourceRef="tutorialRejected"
+			targetRef="end" />
+		<endEvent id="end" />
+	</process>
+</definitions>

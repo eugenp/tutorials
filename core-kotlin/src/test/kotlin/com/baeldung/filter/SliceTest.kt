@@ -24,14 +24,15 @@ internal class SliceTest {
         assertIterableEquals(expected, actual)
     }
 
-    @Test
-    fun whenSlicingBeyondTheRangeOfTheArray_thenContainManyNulls() {
-        val original = arrayOf(12, 3, 34, 4)
-        val actual = original.slice(3..8)
-        val expected = listOf(4, null, null, null, null, null)
-
-        assertIterableEquals(expected, actual)
-    }
+// From the 1.3 version of Kotlin APIs, slice doesn't return array of nulls but throw IndexOutOfBoundsException
+//    @Test
+//    fun whenSlicingBeyondTheRangeOfTheArray_thenContainManyNulls() {
+//        val original = arrayOf(12, 3, 34, 4)
+//        val actual = original.slice(3..8)
+//        val expected = listOf(4, null, null, null, null, null)
+//
+//        assertIterableEquals(expected, actual)
+//    }
 
     @Test
     fun whenSlicingBeyondRangeOfArrayWithStep_thenOutOfBoundsException() {

@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Entity
 @Table(name = "person")
@@ -24,6 +25,8 @@ public class Employee {
 
     @Size(min = 3, max = 20)
     private String name;
+
+    private Date birthday;
 
     public Long getId() {
         return id;

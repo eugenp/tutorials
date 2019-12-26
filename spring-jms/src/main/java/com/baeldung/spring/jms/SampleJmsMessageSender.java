@@ -26,4 +26,8 @@ public class SampleJmsMessageSender {
     public void sendMessage(final Employee employee) {
         this.jmsTemplate.convertAndSend(employee);
     }
+
+    public void sendTextMessage(String msg) {
+        this.jmsTemplate.send(queue, s -> s.createTextMessage(msg));
+    }
 }

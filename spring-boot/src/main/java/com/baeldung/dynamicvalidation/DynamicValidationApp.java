@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DynamicValidationApp {
     @RolesAllowed("*")
     public static void main(String[] args) {
-        System.setProperty("security.basic.enabled", "false");
         SpringApplication.run(DynamicValidationApp.class, args);
     }
 }

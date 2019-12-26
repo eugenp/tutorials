@@ -4,7 +4,6 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import javax.ejb.embeddable.EJBContainer;
@@ -22,7 +21,6 @@ public class CountryStateCacheBeanUnitTest {
 
     @Before
     public void init() {
-
         ejbContainer = EJBContainer.createEJBContainer();
         context = ejbContainer.getContext();
     }

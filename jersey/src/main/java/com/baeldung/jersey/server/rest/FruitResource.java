@@ -16,6 +16,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.glassfish.jersey.server.mvc.ErrorTemplate;
 import org.glassfish.jersey.server.mvc.Template;
@@ -85,6 +87,16 @@ public class FruitResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public void createFruit(@Valid Fruit fruit) {
         SimpleStorageService.storeFruit(fruit);
+    }
+    
+    @POST
+    @Path("/created")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createNewFruit(@Valid Fruit fruit) {
+        String result = "Fruit saved : " + fruit;
+        return Response.status(Status.CREATED.getStatusCode())
+            .entity(result)
+            .build();
     }
 
     @GET

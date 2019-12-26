@@ -87,6 +87,8 @@ public class BinaryTreeUnitTest {
         BinaryTree bt = createBinaryTree();
 
         bt.traverseInOrder(bt.root);
+        System.out.println();
+        bt.traverseInOrderWithoutRecursion();
     }
 
     @Test
@@ -95,6 +97,8 @@ public class BinaryTreeUnitTest {
         BinaryTree bt = createBinaryTree();
 
         bt.traversePreOrder(bt.root);
+        System.out.println();
+        bt.traversePreOrderWithoutRecursion();
     }
 
     @Test
@@ -103,6 +107,8 @@ public class BinaryTreeUnitTest {
         BinaryTree bt = createBinaryTree();
 
         bt.traversePostOrder(bt.root);
+        System.out.println();
+        bt.traversePostOrderWithoutRecursion();
     }
 
     @Test

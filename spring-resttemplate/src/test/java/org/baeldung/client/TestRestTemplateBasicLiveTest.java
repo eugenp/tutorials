@@ -1,7 +1,10 @@
 package org.baeldung.client;
 
-import okhttp3.Request;
-import okhttp3.RequestBody;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
+
+import org.baeldung.resttemplate.web.dto.Foo;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -12,9 +15,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 public class TestRestTemplateBasicLiveTest {
 
@@ -33,14 +35,16 @@ public class TestRestTemplateBasicLiveTest {
     @Test
     public void givenTestRestTemplate_whenSendGetForEntity_thenStatusOk() {
         TestRestTemplate testRestTemplate = new TestRestTemplate();
-        ResponseEntity<String> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", String.class);
+        ResponseEntity<Foo> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", Foo.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
 
     @Test
     public void givenRestTemplateWrapper_whenSendGetForEntity_thenStatusOk() {
-        TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplate);
-        ResponseEntity<String> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", String.class);
+        RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
+        restTemplateBuilder.configure(restTemplate);
+        TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplateBuilder);
+        ResponseEntity<Foo> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", Foo.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
 
@@ -49,13 +53,15 @@ public class TestRestTemplateBasicLiveTest {
         RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
         restTemplateBuilder.build();
         TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplateBuilder);
-        ResponseEntity<String> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", String.class);
+        ResponseEntity<Foo> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", Foo.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
 
     @Test
     public void givenRestTemplateWrapperWithCredentials_whenSendGetForEntity_thenStatusOk() {
-        TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplate, "user", "passwd");
+        RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
+        restTemplateBuilder.configure(restTemplate);
+        TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplateBuilder, "user", "passwd");
         ResponseEntity<String> response = testRestTemplate.getForEntity(URL_SECURED_BY_AUTHENTICATION,
                 String.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));

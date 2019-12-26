@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
-            </pattern>
-        </encoder>
-    </appender>
 
-    <root level="INFO">
-        <appender-ref ref="STDOUT" />
-    </root>
+<!-- this is the configuration needed for the Sleuth examples; 
+     don't override this with the standard logback config 
+-->
+
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/base.xml"/>
+	<logger name="feign" level="DEBUG"/>
+	<logger name="org.springframework.cloud.sleuth" level="TRACE"/>
+	<logger name="org.springframework.boot.autoconfigure.logging" level="INFO"/>
+	<logger name="org.springframework.cloud.sleuth.log" level="DEBUG"/>
+	<logger name="org.springframework.cloud.sleuth.trace" level="DEBUG"/>
+	<logger name="org.springframework.cloud.sleuth.instrument.rxjava" level="DEBUG"/>
+	<logger name="org.springframework.cloud.sleuth.instrument.reactor" level="TRACE"/>
+	<root level="INFO">
+		<appender-ref ref="CONSOLE"/>
+		<appender-ref ref="FILE"/>
+	</root>
 </configuration>

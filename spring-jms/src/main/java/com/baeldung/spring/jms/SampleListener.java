@@ -27,6 +27,9 @@ public class SampleListener implements MessageListener {
             try {
                 String msg = ((TextMessage) message).getText();
                 System.out.println("Received message: " + msg);
+                if (msg == null) {
+                    throw new IllegalArgumentException("Null value received...");
+                }
             } catch (JMSException ex) {
                 throw new RuntimeException(ex);
             }
@@ -37,4 +40,5 @@ public class SampleListener implements MessageListener {
         Map map = (Map) this.jmsTemplate.receiveAndConvert();
         return new Employee((String) map.get("name"), (Integer) map.get("age"));
     }
+
 }

@@ -71,7 +71,7 @@ public class GatewayApplication {
                 InstanceInfo instance = eurekaClient.getNextServerFromEureka("zipkin", false);
                 if (!(baseUrl != null && instance.getHomePageUrl().equals(baseUrl))) {
                     baseUrl = instance.getHomePageUrl();
-                    delegate = new HttpZipkinSpanReporter(baseUrl, zipkinProperties.getFlushInterval(), zipkinProperties.getCompression().isEnabled(), spanMetricReporter);
+                    delegate = new HttpZipkinSpanReporter(new RestTemplate(), baseUrl, zipkinProperties.getFlushInterval(), spanMetricReporter);
                     if (!span.name.matches(skipPattern)) delegate.report(span);
                 }
                 if (!span.name.matches(skipPattern)) delegate.report(span);

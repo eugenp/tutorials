@@ -32,8 +32,8 @@ public class EthereumRestController {
 
         return CompletableFuture.supplyAsync(() -> {
             try {
-                CompletableFuture<EthBlockNumber> result = web3Service.getBlockNumber();
-                responseTransfer.setMessage(result.get().toString());
+                EthBlockNumber result = web3Service.getBlockNumber();
+                responseTransfer.setMessage(result.toString());
             } catch (Exception e) {
                 responseTransfer.setMessage(GENERIC_EXCEPTION);
             }
@@ -51,8 +51,8 @@ public class EthereumRestController {
 
         return CompletableFuture.supplyAsync(() -> {
             try {
-                CompletableFuture<EthAccounts> result = web3Service.getEthAccounts();
-                responseTransfer.setMessage(result.get().toString());
+                EthAccounts result = web3Service.getEthAccounts();
+                responseTransfer.setMessage(result.toString());
             } catch (Exception e) {
                 responseTransfer.setMessage(GENERIC_EXCEPTION);
             }
@@ -70,8 +70,8 @@ public class EthereumRestController {
         Instant start = TimeHelper.start();
         return CompletableFuture.supplyAsync(() -> {
             try {
-                CompletableFuture<EthGetTransactionCount> result = web3Service.getTransactionCount();
-                responseTransfer.setMessage(result.get().toString());
+                EthGetTransactionCount result = web3Service.getTransactionCount();
+                responseTransfer.setMessage(result.toString());
             } catch (Exception e) {
                 responseTransfer.setMessage(GENERIC_EXCEPTION);
             }
@@ -88,8 +88,8 @@ public class EthereumRestController {
         Instant start = TimeHelper.start();
         return CompletableFuture.supplyAsync(() -> {
             try {
-                CompletableFuture<EthGetBalance> result = web3Service.getEthBalance();
-                responseTransfer.setMessage(result.get().toString());
+                EthGetBalance result = web3Service.getEthBalance();
+                responseTransfer.setMessage(result.toString());
             } catch (Exception e) {
                 responseTransfer.setMessage(GENERIC_EXCEPTION);
             }

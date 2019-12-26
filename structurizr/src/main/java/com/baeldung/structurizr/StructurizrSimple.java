@@ -4,12 +4,10 @@ import java.io.File;
 import java.io.StringWriter;
 
 import com.structurizr.Workspace;
-import com.structurizr.api.StructurizrClient;
-import com.structurizr.api.StructurizrClientException;
-import com.structurizr.componentfinder.ComponentFinder;
-import com.structurizr.componentfinder.ReferencedTypesSupportingTypesStrategy;
-import com.structurizr.componentfinder.SourceCodeComponentFinderStrategy;
-import com.structurizr.componentfinder.SpringComponentFinderStrategy;
+import com.structurizr.analysis.ComponentFinder;
+import com.structurizr.analysis.ReferencedTypesSupportingTypesStrategy;
+import com.structurizr.analysis.SourceCodeComponentFinderStrategy;
+import com.structurizr.analysis.SpringComponentFinderStrategy;
 import com.structurizr.io.WorkspaceWriterException;
 import com.structurizr.io.plantuml.PlantUMLWriter;
 import com.structurizr.model.Component;
@@ -110,11 +108,6 @@ public class StructurizrSimple {
 
         ContainerView view = workspace.getViews().createContainerView(paymentTerminal, CONTAINER_VIEW, "Container View");
         view.addAllContainers();
-    }
-
-    private static void uploadToExternal(Workspace workspace) throws StructurizrClientException {
-        StructurizrClient client = new StructurizrClient("e94bc0c9-76ef-41b0-8de7-82afc1010d04", "78d555dd-2a31-487c-952c-50508f1da495");
-        client.putWorkspace(32961L, workspace);
     }
 
     private static void exportToPlantUml(View view) throws WorkspaceWriterException {

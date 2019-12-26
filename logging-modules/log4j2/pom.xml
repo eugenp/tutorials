@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>log4j2</artifactId>
+    <name>log4j2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -18,12 +19,12 @@
             <artifactId>log4j-core</artifactId>
             <version>${log4j-core.version}</version>
         </dependency>
-        
+
         <!-- This is the needed API component. -->
         <dependency>
-          <groupId>org.apache.logging.log4j</groupId>
-          <artifactId>log4j-api</artifactId>
-          <version>${log4j-core.version}</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j-core.version}</version>
         </dependency>
 
         <!-- This is used by JSONLayout. -->
@@ -77,7 +78,7 @@
 
     <profiles>
         <profile>
-            <id>integration</id>
+            <id>integration-lite-first</id>
             <build>
                 <plugins>
                     <plugin>
@@ -114,8 +115,6 @@
     </profiles>
 
     <properties>
-        <jackson.version>2.9.5</jackson.version>
-        <h2.version>1.4.193</h2.version>
         <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
         <log4j-core.version>2.11.0</log4j-core.version>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
