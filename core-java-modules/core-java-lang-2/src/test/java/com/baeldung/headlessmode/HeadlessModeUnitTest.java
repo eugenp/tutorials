@@ -10,23 +10,20 @@ import java.awt.Frame;
 import java.awt.GraphicsEnvironment;
 import java.awt.HeadlessException;
 import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class HeadlessModeUnitTest {
 
-    private static final String IN_FILE = "src/test/resources/product.png";
-    private static final String OUT_FILE = "src/test/resources/product.jpg";
+    private static final String IN_FILE = "/product.png";
+    private static final String OUT_FILE = System.getProperty("java.io.tmpdir") + "product.jpg";
     private static final String FORMAT = "jpg";
-    private static final Logger LOGGER = LoggerFactory.getLogger(HeadlessModeUnitTest.class);
 
     @Before
     public void setUpHeadlessMode() {
@@ -56,16 +53,11 @@ public class HeadlessModeUnitTest {
     }
 
     @Test
-    public void whenHeadlessMode_thenImagesWork() {
+    public void whenHeadlessMode_thenImagesWork() throws IOException {
         boolean result = false;
-        try (FileInputStream inStream = new FileInputStream(IN_FILE); FileOutputStream outStream = new FileOutputStream(OUT_FILE)) {
-
+        try (InputStream inStream = HeadlessModeUnitTest.class.getResourceAsStream(IN_FILE); FileOutputStream outStream = new FileOutputStream(OUT_FILE)) {
             BufferedImage inputImage = ImageIO.read(inStream);
-
             result = ImageIO.write(inputImage, FORMAT, outStream);
-
-        } catch (IOException e) {
-            LOGGER.error(e.getMessage());
         }
 
         assertThat(result).isTrue();
