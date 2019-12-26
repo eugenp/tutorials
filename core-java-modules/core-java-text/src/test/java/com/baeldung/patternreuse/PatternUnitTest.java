@@ -30,7 +30,7 @@ public class PatternUnitTest {
     }
 
     @Test
-    public void givenPreCompiledPattern_whenCallAsPredicate_thenReturnPredicateToFindThePatternInTheListElements() {
+    public void givenPreCompiledPattern_whenCallAsPredicate_thenReturnPredicateToFindPatternInTheList() {
         List<String> namesToValidate = Arrays.asList("Fabio Silva", "Mr. Silva");
         Predicate<String> patternsAsPredicate = FIRST_LAST_NAME_PRE_COMPILED_PATTERN.asPredicate();
 
@@ -52,7 +52,7 @@ public class PatternUnitTest {
     }
 
     @Test
-    public void givenPreCompiledPattern_whenCallSplitAsStream_thenReturnArrayWithValuesSplitByThePattern() {
+    public void givenPreCompiledPattern_whenCallSplitAsStream_thenReturnArraySplitByThePattern() {
         Stream<String> textSplitAsStream = SPLIT_PRE_COMPILED_PATTERN.splitAsStream("My_Name__is__Fabio_Silva");
         String[] textSplit = textSplitAsStream.toArray(String[]::new);
 
