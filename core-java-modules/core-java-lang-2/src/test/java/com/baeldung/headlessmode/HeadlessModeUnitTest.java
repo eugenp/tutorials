@@ -22,7 +22,7 @@ import org.junit.Test;
 public class HeadlessModeUnitTest {
 
     private static final String IN_FILE = "/product.png";
-    private static final String OUT_FILE = System.getProperty("java.io.tmpdir") + "product.jpg";
+    private static final String OUT_FILE = System.getProperty("java.io.tmpdir") + "/product.jpg";
     private static final String FORMAT = "jpg";
 
     @Before
