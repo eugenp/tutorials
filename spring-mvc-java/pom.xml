@@ -26,12 +26,12 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
+            <version>${javax.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.3</version>
+            <version>${javax-servlet-api.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -53,19 +53,19 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>1.9.1</version>
+            <version>${aspectjrt.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.9.1</version>
+            <version>${aspectjweaver.version}</version>
         </dependency>
 
         <!-- common -->
         <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
-            <version>2.32</version>
+            <version>${htmlunit.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -99,7 +99,7 @@
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <scope>test</scope>
-            <version>2.4.0</version>
+            <version>${json-path.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -126,7 +126,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.8.5</version>
+            <version>${gson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -283,6 +283,13 @@
         <poi.version>3.16-beta1</poi.version>
 
         <javax.el.version>3.0.1-b09</javax.el.version>
+        <javax.version>4.0.1</javax.version>
+        <javax-servlet-api.version>2.3.3</javax-servlet-api.version>
+        <aspectjrt.version>1.9.1</aspectjrt.version>
+        <aspectjweaver.version>1.9.1</aspectjweaver.version>
+        <htmlunit.version>2.32</htmlunit.version>
+        <json-path.version>2.4.0</json-path.version>
+        <gson.version>2.8.5</gson.version>
         <start-class>com.baeldung.SpringMVCApplication</start-class>
     </properties>
 

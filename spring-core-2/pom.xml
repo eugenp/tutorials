@@ -174,7 +174,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.2</version>
+                <version>${maven.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
@@ -214,6 +214,7 @@
         <assertj.version>3.6.1</assertj.version>
         <shedlock.version>2.1.0</shedlock.version>
         <javassist.version>3.22.0-GA</javassist.version>
+        <maven.version>3.2.2</maven.version>
     </properties>
 
 </project>
