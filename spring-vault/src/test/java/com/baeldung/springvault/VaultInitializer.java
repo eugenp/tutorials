@@ -1,4 +1,4 @@
-package org.baeldung.springvault;
+package com.baeldung.springvault;
 
 import java.io.BufferedReader;
 import java.io.Closeable;
