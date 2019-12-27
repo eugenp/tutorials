@@ -1,11 +1,9 @@
-package org.baeldung.spring.amqp;
+package com.baeldung.spring.amqp;
 
 import java.time.Duration;
-import java.util.Date;
 
 import javax.annotation.PostConstruct;
 
-import org.baeldung.spring.amqp.DestinationsConfig.DestinationInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpAdmin;
@@ -29,7 +27,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
 
 @RestController
 public class AmqpReactiveController {
@@ -105,7 +102,7 @@ public class AmqpReactiveController {
     public Mono<ResponseEntity<?>> sendMessageToQueue(@PathVariable String name, @RequestBody String payload) {
 
         // Lookup exchange details
-        final DestinationInfo d = destinationsConfig.getQueues()
+        final DestinationsConfig.DestinationInfo d = destinationsConfig.getQueues()
             .get(name);
 
         if (d == null) {
@@ -135,7 +132,7 @@ public class AmqpReactiveController {
     @GetMapping(value = "/queue/{name}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<?> receiveMessagesFromQueue(@PathVariable String name) {
 
-        DestinationInfo d = destinationsConfig.getQueues()
+        DestinationsConfig.DestinationInfo d = destinationsConfig.getQueues()
             .get(name);
 
         if (d == null) {
@@ -201,7 +198,7 @@ public class AmqpReactiveController {
     public Mono<ResponseEntity<?>> sendMessageToTopic(@PathVariable String name, @RequestBody String payload) {
 
         // Lookup exchange details
-        final DestinationInfo d = destinationsConfig.getTopics()
+        final DestinationsConfig.DestinationInfo d = destinationsConfig.getTopics()
             .get(name);
         if (d == null) {
             // Destination not found.
@@ -223,7 +220,7 @@ public class AmqpReactiveController {
     @GetMapping(value = "/topic/{name}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<?> receiveMessagesFromTopic(@PathVariable String name) {
 
-        DestinationInfo d = destinationsConfig.getTopics()
+        DestinationsConfig.DestinationInfo d = destinationsConfig.getTopics()
             .get(name);
 
         if (d == null) {
@@ -281,7 +278,7 @@ public class AmqpReactiveController {
 
     }
 
-    private Queue createTopicQueue(DestinationInfo destination) {
+    private Queue createTopicQueue(DestinationsConfig.DestinationInfo destination) {
 
         Exchange ex = ExchangeBuilder.topicExchange(destination.getExchange())
           .durable(true)
