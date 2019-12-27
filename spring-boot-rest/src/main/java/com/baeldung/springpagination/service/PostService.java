@@ -1,4 +1,4 @@
-package com.baeldung.modelmapper.service;
+package com.baeldung.springpagination.service;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.modelmapper.model.Post;
-import com.baeldung.modelmapper.repository.PostRepository;
+import com.baeldung.springpagination.model.Post;
+import com.baeldung.springpagination.repository.PostRepository;
 
 @Service
 public class PostService implements IPostService {

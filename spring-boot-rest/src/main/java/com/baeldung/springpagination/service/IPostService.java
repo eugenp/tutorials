@@ -1,8 +1,8 @@
-package com.baeldung.modelmapper.service;
+package com.baeldung.springpagination.service;
 
 import java.util.List;
 
-import com.baeldung.modelmapper.model.Post;
+import com.baeldung.springpagination.model.Post;
 
 public interface IPostService {
 

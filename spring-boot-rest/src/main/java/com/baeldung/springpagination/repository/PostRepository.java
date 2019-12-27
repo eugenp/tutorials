@@ -1,4 +1,4 @@
-package com.baeldung.modelmapper.repository;
+package com.baeldung.springpagination.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.baeldung.modelmapper.model.Post;
-import com.baeldung.modelmapper.model.User;
+import com.baeldung.springpagination.model.Post;
+import com.baeldung.springpagination.model.User;
 
 public interface PostRepository extends JpaRepository<Post, Long>, PagingAndSortingRepository<Post, Long> {
 

@@ -1,9 +1,9 @@
-package com.baeldung.modelmapper.controller;
+package com.baeldung.springpagination.controller;
 
-import com.baeldung.modelmapper.dto.PostDto;
-import com.baeldung.modelmapper.model.Post;
-import com.baeldung.modelmapper.service.IPostService;
-import com.baeldung.modelmapper.service.IUserService;
+import com.baeldung.springpagination.dto.PostDto;
+import com.baeldung.springpagination.model.Post;
+import com.baeldung.springpagination.service.IPostService;
+import com.baeldung.springpagination.service.IUserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

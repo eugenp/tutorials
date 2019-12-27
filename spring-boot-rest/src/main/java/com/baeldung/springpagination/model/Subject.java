@@ -1,4 +1,4 @@
-package com.baeldung.modelmapper.model;
+package com.baeldung.springpagination.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

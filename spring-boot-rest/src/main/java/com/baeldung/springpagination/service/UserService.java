@@ -1,9 +1,9 @@
-package com.baeldung.modelmapper.service;
+package com.baeldung.springpagination.service;
 
 import org.springframework.stereotype.Service;
 
-import com.baeldung.modelmapper.model.Preference;
-import com.baeldung.modelmapper.model.User;
+import com.baeldung.springpagination.model.Preference;
+import com.baeldung.springpagination.model.User;
 
 @Service
 public class UserService implements IUserService {
