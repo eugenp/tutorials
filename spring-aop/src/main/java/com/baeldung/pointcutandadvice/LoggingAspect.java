@@ -1,4 +1,4 @@
-package com.baeldung.aop;
+package com.baeldung.pointcutandadvice;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -23,15 +23,15 @@ public class LoggingAspect {
         }
     };
 
-    @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.dao.FooDao.*(..))")
+    @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.pointcutandadvice.dao.FooDao.*(..))")
     public void repositoryMethods() {
     }
 
-    @Pointcut("within(com.baeldung..*) && @annotation(com.baeldung.aop.annotations.Loggable)")
+    @Pointcut("within(com.baeldung..*) && @annotation(com.baeldung.pointcutandadvice.annotations.Loggable)")
     public void loggableMethods() {
     }
 
-    @Pointcut("within(com.baeldung..*) && @args(com.baeldung.aop.annotations.Entity)")
+    @Pointcut("within(com.baeldung..*) && @args(com.baeldung.pointcutandadvice.annotations.Entity)")
     public void methodsAcceptingEntities() {
     }
 

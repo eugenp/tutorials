@@ -49,18 +49,6 @@
             <version>${jackson.version}</version>
         </dependency>
 
-        <!-- AOP -->
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>${aspectjrt.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>${aspectjweaver.version}</version>
-        </dependency>
-
         <!-- common -->
         <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>

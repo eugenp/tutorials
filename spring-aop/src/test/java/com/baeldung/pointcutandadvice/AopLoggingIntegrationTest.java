@@ -1,8 +1,8 @@
-package com.baeldung.aop;
+package com.baeldung.pointcutandadvice;
 
-import com.baeldung.config.TestConfig;
-import com.baeldung.dao.FooDao;
-import com.baeldung.model.Foo;
+import com.baeldung.pointcutandadvice.config.AopTestConfig;
+import com.baeldung.pointcutandadvice.dao.FooDao;
+import com.baeldung.pointcutandadvice.model.Foo;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +24,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {TestConfig.class}, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {AopTestConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class AopLoggingIntegrationTest {
 
     @Before

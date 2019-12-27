@@ -1,7 +1,9 @@
-package com.baeldung.aop;
+package com.baeldung.pointcutandadvice;
 
-import com.baeldung.config.TestConfig;
-import com.baeldung.dao.FooDao;
+import com.baeldung.pointcutandadvice.config.AopTestConfig;
+import com.baeldung.pointcutandadvice.dao.FooDao;
+import com.baeldung.pointcutandadvice.events.FooCreationEventListener;
+import com.baeldung.pointcutandadvice.model.Foo;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,14 +19,11 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { TestConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class AopPerformanceIntegrationTest {
+@ContextConfiguration(classes = {AopTestConfig.class}, loader = AnnotationConfigContextLoader.class)
+public class AopPublishingIntegrationTest {
 
     @Before
     public void setUp() {
@@ -54,16 +53,14 @@ public class AopPerformanceIntegrationTest {
     private List<String> messages;
 
     @Test
-    public void givenPerformanceAspect_whenCallDaoMethod_thenPerformanceMeasurementAdviceIsCalled() {
-        Logger logger = Logger.getLogger(PerformanceAspect.class.getName());
+    public void givenPublishingAspect_whenCallCreate_thenCreationEventIsPublished() {
+        Logger logger = Logger.getLogger(FooCreationEventListener.class.getName());
         logger.addHandler(logEventHandler);
 
-        final String entity = dao.findById(1L);
-        assertThat(entity, notNullValue());
-        assertThat(messages, hasSize(1));
+        dao.create(1L, "Bar");
 
         String logMessage = messages.get(0);
-        Pattern pattern = Pattern.compile("Execution of findById took \\d+ ms");
+        Pattern pattern = Pattern.compile("Created foo instance: " + Pattern.quote(new Foo(1L, "Bar").toString()));
         assertTrue(pattern.matcher(logMessage).matches());
     }
 }

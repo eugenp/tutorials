@@ -7,8 +7,6 @@ This module contains articles about Spring MVC with Java configuration
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles: 
-- [Introduction to Pointcut Expressions in Spring](https://www.baeldung.com/spring-aop-pointcut-tutorial)
-- [Introduction to Advice Types in Spring](https://www.baeldung.com/spring-aop-advice-tutorial)
 - [Integration Testing in Spring](https://www.baeldung.com/integration-testing-in-spring)
 - [A Quick Guide to Spring MVC Matrix Variables](https://www.baeldung.com/spring-mvc-matrix-variables)
 - [Intro to WebSockets with Spring](https://www.baeldung.com/websockets-spring)

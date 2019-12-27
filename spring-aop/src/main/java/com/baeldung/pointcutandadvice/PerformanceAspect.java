@@ -1,4 +1,4 @@
-package com.baeldung.aop;
+package com.baeldung.pointcutandadvice;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -15,7 +15,7 @@ public class PerformanceAspect {
 
     private static Logger logger = Logger.getLogger(PerformanceAspect.class.getName());
 
-    @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.dao.FooDao.*(..))")
+    @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.pointcutandadvice.dao.FooDao.*(..))")
     public void repositoryClassMethods() {
     }
 

@@ -1,7 +1,7 @@
-package com.baeldung.dao;
+package com.baeldung.pointcutandadvice.dao;
 
-import com.baeldung.aop.annotations.Loggable;
-import com.baeldung.model.Foo;
+import com.baeldung.pointcutandadvice.annotations.Loggable;
+import com.baeldung.pointcutandadvice.model.Foo;
 import org.springframework.stereotype.Repository;
 
 @Repository

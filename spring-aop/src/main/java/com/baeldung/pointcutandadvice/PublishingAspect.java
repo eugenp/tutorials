@@ -1,6 +1,6 @@
-package com.baeldung.aop;
+package com.baeldung.pointcutandadvice;
 
-import com.baeldung.events.FooCreationEvent;
+import com.baeldung.pointcutandadvice.events.FooCreationEvent;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -20,11 +20,11 @@ public class PublishingAspect {
         this.eventPublisher = eventPublisher;
     }
 
-    @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.dao.FooDao.*(..))")
+    @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.pointcutandadvice.dao.FooDao.*(..))")
     public void repositoryMethods() {
     }
 
-    @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.dao.FooDao.create*(Long,..))")
+    @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.pointcutandadvice.dao.FooDao.create*(Long,..))")
     public void firstLongParamMethods() {
     }
 

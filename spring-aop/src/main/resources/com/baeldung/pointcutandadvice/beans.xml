@@ -7,8 +7,8 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
 
-    <bean id="perfomanceMeter" class="com.baeldung.aop.PerformanceAspect"/>
-    <bean id="fooDao" class="com.baeldung.dao.FooDao"/>
+    <bean id="perfomanceMeter" class="com.baeldung.pointcutandadvice.PerformanceAspect"/>
+    <bean id="fooDao" class="com.baeldung.pointcutandadvice.dao.FooDao"/>
 
     <aop:config>
         <aop:pointcut id="anyDaoMethod" expression="@target(org.springframework.stereotype.Repository)"/>

@@ -1,6 +1,6 @@
-package com.baeldung.model;
+package com.baeldung.pointcutandadvice.model;
 
-import com.baeldung.aop.annotations.Entity;
+import com.baeldung.pointcutandadvice.annotations.Entity;
 
 @Entity
 public class Foo {

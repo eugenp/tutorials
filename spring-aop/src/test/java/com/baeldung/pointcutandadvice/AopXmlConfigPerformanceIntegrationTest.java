@@ -1,16 +1,12 @@
-package com.baeldung.aop;
+package com.baeldung.pointcutandadvice;
 
-import com.baeldung.config.TestConfig;
-import com.baeldung.dao.FooDao;
-import com.baeldung.events.FooCreationEventListener;
-import com.baeldung.model.Foo;
+import com.baeldung.pointcutandadvice.dao.FooDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +15,14 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {TestConfig.class}, loader = AnnotationConfigContextLoader.class)
-public class AopPublishingIntegrationTest {
+@ContextConfiguration("/com/baeldung/pointcutandadvice/beans.xml")
+public class AopXmlConfigPerformanceIntegrationTest {
 
     @Before
     public void setUp() {
@@ -53,14 +52,16 @@ public class AopPublishingIntegrationTest {
     private List<String> messages;
 
     @Test
-    public void givenPublishingAspect_whenCallCreate_thenCreationEventIsPublished() {
-        Logger logger = Logger.getLogger(FooCreationEventListener.class.getName());
+    public void givenPerformanceAspect_whenCallDaoMethod_thenPerformanceMeasurementAdviceIsCalled() {
+        Logger logger = Logger.getLogger(PerformanceAspect.class.getName());
         logger.addHandler(logEventHandler);
 
-        dao.create(1L, "Bar");
+        final String entity = dao.findById(1L);
+        assertThat(entity, notNullValue());
+        assertThat(messages, hasSize(1));
 
         String logMessage = messages.get(0);
-        Pattern pattern = Pattern.compile("Created foo instance: " + Pattern.quote(new Foo(1L, "Bar").toString()));
+        Pattern pattern = Pattern.compile("Execution of findById took \\d+ ms");
         assertTrue(pattern.matcher(logMessage).matches());
     }
 }
