@@ -1,4 +1,4 @@
-package com.baeldung.autoconfiguration;
+package com.baeldung.springbootannotations;
 
 import java.util.Arrays;
 import java.util.Properties;
