@@ -17,6 +17,8 @@
     <modules>
         <module>core-kotlin-annotations</module>
         <module>core-kotlin-io</module>
+        <module>core-kotlin-lang</module>
+        <module>core-kotlin-lang-2</module>
         <module>core-kotlin-strings</module>
     </modules>
 
