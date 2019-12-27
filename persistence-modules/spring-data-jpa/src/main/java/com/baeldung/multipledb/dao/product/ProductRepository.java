@@ -1,5 +1,8 @@
 package com.baeldung.multipledb.dao.product;
 
+import java.util.List;
+
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.baeldung.multipledb.model.product.Product;
