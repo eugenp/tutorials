@@ -1,4 +1,4 @@
-package org.baeldung.springvault;
+package com.baeldung.springvault;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

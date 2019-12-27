@@ -1,16 +1,10 @@
-package org.baeldung.springvault;
+package com.baeldung.springvault;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.vault.authentication.TokenAuthentication;
-import org.springframework.vault.client.VaultEndpoint;
 import org.springframework.vault.core.VaultTemplate;
-import org.springframework.vault.core.env.VaultPropertySource;
-import org.springframework.vault.support.VaultResponse;
 import org.springframework.vault.support.VaultResponseSupport;
 
 /**

@@ -1,4 +1,4 @@
-package org.baeldung.springvault;
+package com.baeldung.springvault;
 
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;

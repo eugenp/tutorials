@@ -1,4 +1,4 @@
-package org.baeldung.springvault;
+package com.baeldung.springvault;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

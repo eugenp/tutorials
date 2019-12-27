@@ -1,4 +1,4 @@
-package org.baeldung.springvault;
+package com.baeldung.springvault;
 
 import java.net.URI;
 import java.net.URISyntaxException;
