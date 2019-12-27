@@ -1,4 +1,4 @@
-package org.baeldung.spring.amqp;
+package com.baeldung.spring.amqp;
 
 import org.junit.Test;
 import org.springframework.test.web.reactive.server.WebTestClient;
