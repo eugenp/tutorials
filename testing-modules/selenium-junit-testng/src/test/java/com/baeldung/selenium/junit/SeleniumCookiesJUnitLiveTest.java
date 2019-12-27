@@ -26,15 +26,16 @@ public class SeleniumCookiesJUnitLiveTest {
         driver = new FirefoxDriver(capabilities);
         navUrl = "https://baeldung.com";
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
     }
 
     @After
     public void teardown() {
-        driver.close();
+        driver.quit();
     }
 
     @Test
-    public void givenHomePage_whenNavigate_thenCookiesExist() {
+    public void whenNavigate_thenCookiesExist() {
         driver.navigate().to(navUrl);
         Set<Cookie> cookies = driver.manage().getCookies();
 
@@ -42,7 +43,7 @@ public class SeleniumCookiesJUnitLiveTest {
     }
 
     @Test
-    public void givenHomePage_whenNavigate_thenLpCookieExists() {
+    public void whenNavigate_thenLpCookieExists() {
         driver.navigate().to(navUrl);
         Cookie lpCookie = driver.manage().getCookieNamed("lp_120073");
 
@@ -50,7 +51,7 @@ public class SeleniumCookiesJUnitLiveTest {
     }
 
     @Test
-    public void givenHomePage_whenNavigate_thenLpCookieIsHasCorrectValue() {
+    public void whenNavigate_thenLpCookieIsHasCorrectValue() {
         driver.navigate().to(navUrl);
         Cookie lpCookie = driver.manage().getCookieNamed("lp_120073");
 
@@ -58,7 +59,7 @@ public class SeleniumCookiesJUnitLiveTest {
     }
 
     @Test
-    public void givenHomePage_whenNavigate_thenLpCookieHasCorrectProps() {
+    public void whenNavigate_thenLpCookieHasCorrectProps() {
         driver.navigate().to(navUrl);
         Cookie lpCookie = driver.manage().getCookieNamed("lp_120073");
 
@@ -70,7 +71,7 @@ public class SeleniumCookiesJUnitLiveTest {
     }
 
     @Test
-    public void givenHomePage_whenAddingCookie_thenItIsPresent() {
+    public void whenAddingCookie_thenItIsPresent() {
         driver.navigate().to(navUrl);
         Cookie cookie = new Cookie("foo", "bar");
         driver.manage().addCookie(cookie);
@@ -80,7 +81,7 @@ public class SeleniumCookiesJUnitLiveTest {
     }
 
     @Test
-    public void givenHomePage_whenDeletingCookie_thenItIsAbsent() {
+    public void whenDeletingCookie_thenItIsAbsent() {
         driver.navigate().to(navUrl);
         Cookie lpCookie = driver.manage().getCookieNamed("lp_120073");
 
@@ -93,7 +94,7 @@ public class SeleniumCookiesJUnitLiveTest {
     }
 
     @Test
-    public void givenHomePage_whenOverridingCookie_thenItIsUpdated() {
+    public void whenOverridingCookie_thenItIsUpdated() {
         driver.navigate().to(navUrl);
         Cookie lpCookie = driver.manage().getCookieNamed("lp_120073");
         driver.manage().deleteCookie(lpCookie);
