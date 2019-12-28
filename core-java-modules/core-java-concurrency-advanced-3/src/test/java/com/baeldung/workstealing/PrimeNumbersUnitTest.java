@@ -22,9 +22,9 @@ public class PrimeNumbersUnitTest {
     @Test
     public void givenPrimesCalculated_whenUsingPoolsAndOneThread_thenOneThreadSlowest() {
         Options opt = new OptionsBuilder()
-                .include(Benchmarker.class.getSimpleName())
-                .forks(1)
-                .build();
+          .include(Benchmarker.class.getSimpleName())
+          .forks(1)
+          .build();
 
         try {
             new Runner(opt).run();
@@ -40,7 +40,7 @@ public class PrimeNumbersUnitTest {
         for (int granularity : PrimeNumbers.GRANULARITIES) {
             int parallelism = ForkJoinPool.getCommonPoolParallelism();
             ForkJoinPool pool =
-                    (ForkJoinPool) Executors.newWorkStealingPool(parallelism);
+              (ForkJoinPool) Executors.newWorkStealingPool(parallelism);
 
             stealCountInfo(info, granularity, pool);
         }
