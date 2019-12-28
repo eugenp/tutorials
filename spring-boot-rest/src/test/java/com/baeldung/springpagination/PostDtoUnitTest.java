@@ -1,12 +1,12 @@
-package com.baeldung.modelmapper;
+package com.baeldung.springpagination;
 
 import static org.junit.Assert.assertEquals;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import org.junit.Test;
 import org.modelmapper.ModelMapper;
 
-import com.baeldung.modelmapper.dto.PostDto;
-import com.baeldung.modelmapper.model.Post;
+import com.baeldung.springpagination.dto.PostDto;
+import com.baeldung.springpagination.model.Post;
 
 public class PostDtoUnitTest {
     
