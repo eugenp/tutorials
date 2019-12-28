@@ -1,4 +1,4 @@
-package com.baeldung.modelmapper.model;
+package com.baeldung.springpagination.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

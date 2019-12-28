@@ -1,4 +1,4 @@
-package com.baeldung.modelmapper.model;
+package com.baeldung.springpagination.model;
 
 import java.util.Date;
 

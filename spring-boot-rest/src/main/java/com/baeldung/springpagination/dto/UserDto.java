@@ -1,4 +1,4 @@
-package com.baeldung.modelmapper.dto;
+package com.baeldung.springpagination.dto;
 
 public class UserDto {
 
