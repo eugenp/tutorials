@@ -780,6 +780,7 @@
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
+                <module>spring-websockets</module>
                 <module>spring-mvc-basics-4</module>
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
@@ -1377,6 +1378,7 @@
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
+                <module>spring-websockets</module>
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
