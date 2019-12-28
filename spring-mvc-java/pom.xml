@@ -48,19 +48,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-
-        <!-- AOP -->
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>${aspectjrt.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>${aspectjweaver.version}</version>
-        </dependency>
-
         <!-- common -->
         <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>
@@ -119,18 +106,6 @@
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
-        </dependency>
-
-        <!-- Web socket to user example -->
-
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
@@ -285,11 +260,8 @@
         <javax.el.version>3.0.1-b09</javax.el.version>
         <javax.version>4.0.1</javax.version>
         <javax-servlet-api.version>2.3.3</javax-servlet-api.version>
-        <aspectjrt.version>1.9.1</aspectjrt.version>
-        <aspectjweaver.version>1.9.1</aspectjweaver.version>
         <htmlunit.version>2.32</htmlunit.version>
         <json-path.version>2.4.0</json-path.version>
-        <gson.version>2.8.5</gson.version>
         <start-class>com.baeldung.SpringMVCApplication</start-class>
     </properties>
 
