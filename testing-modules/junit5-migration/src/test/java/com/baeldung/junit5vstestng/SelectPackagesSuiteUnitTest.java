@@ -5,7 +5,7 @@ import org.junit.platform.suite.api.SelectPackages;
 import org.junit.runner.RunWith;
 
 @RunWith(JUnitPlatform.class)
-@SelectPackages({ "org.baeldung.java.suite.childpackage1", "org.baeldung.java.suite.childpackage2" })
+@SelectPackages({ "com.baeldung.java.suite.childpackage1", "com.baeldung.java.suite.childpackage2" })
 public class SelectPackagesSuiteUnitTest {
 
 }
