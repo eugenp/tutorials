@@ -15,7 +15,10 @@
     </parent>
 
     <modules>
+        <module>core-kotlin-advanced</module>
         <module>core-kotlin-annotations</module>
+        <module>core-kotlin-collections</module>
+        <module>core-kotlin-concurrency</module>
         <module>core-kotlin-io</module>
         <module>core-kotlin-lang</module>
         <module>core-kotlin-lang-2</module>
