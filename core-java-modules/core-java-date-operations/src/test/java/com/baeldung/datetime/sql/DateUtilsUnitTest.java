@@ -9,11 +9,6 @@ import org.junit.Test;
 
 public class DateUtilsUnitTest {
 
-    @Test
-    public void givenCurrentDate_thenTodayIsReturned() {
-        assertEquals(DateUtils.getNow().toLocalDate(), LocalDate.now());
-    }
-
     @Test(expected = IllegalArgumentException.class)
     public void givenDateAsString_whenPatternIsNotRespected_thenExceptionIsThrown() {
         DateUtils.getDate("2020 01 01");
