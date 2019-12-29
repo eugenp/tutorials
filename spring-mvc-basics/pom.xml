@@ -38,6 +38,7 @@
     </dependencies>
 
     <build>
+        <finalName>spring-mvc-basics</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
