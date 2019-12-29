@@ -1,7 +1,9 @@
 package com.baeldung.powerset;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.hamcrest.collection.IsCollectionWithSize;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -16,6 +18,23 @@ import java.util.Random;
 import java.util.Set;
 
 public class PowerSetUnitTest {
+
+    @Test
+    public void givenSet_WhenGuavaLibraryGeneratePowerSet_ThenItContainsAllSubsets() {
+        ImmutableSet<String> set = ImmutableSet.of("APPLE", "ORANGE", "MANGO");
+        Set<Set<String>> powerSet = Sets.powerSet(set);
+        Assertions.assertEquals((1 << set.size()), powerSet.size());
+        MatcherAssert.assertThat(powerSet, Matchers.containsInAnyOrder(
+          ImmutableSet.of(),
+          ImmutableSet.of("APPLE"),
+          ImmutableSet.of("ORANGE"),
+          ImmutableSet.of("APPLE", "ORANGE"),
+          ImmutableSet.of("MANGO"),
+          ImmutableSet.of("APPLE", "MANGO"),
+          ImmutableSet.of("ORANGE", "MANGO"),
+          ImmutableSet.of("APPLE", "ORANGE", "MANGO")
+        ));
+    }
 
     @Test
     public void givenSet_WhenPowerSetIsCalculated_ThenItContainsAllSubsets() {
@@ -133,25 +152,6 @@ public class PowerSetUnitTest {
                     diff++;
             Assertions.assertEquals(1, diff);
         }
-    }
-
-    @Test
-    public void givenSet_WhenPowerSetGeneratedByGuava_ThenItContainsAllSubsets() {
-        Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
-
-        Set<Set<String>> powerSet = Sets.powerSet(set);
-
-        //To make sure that the size of power set is (2 power n)
-        MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
-        //To make sure that number of occurrence of each element is (2 power n-1)
-        Map<String, Integer> counter = new HashMap<>();
-        for (Set<String> subset : powerSet) {
-            for (String name : subset) {
-                int num = counter.getOrDefault(name, 0);
-                counter.put(name, num + 1);
-            }
-        }
-        counter.forEach((k, v) -> Assertions.assertEquals((1 << (set.size() - 1)), v.intValue()));
     }
 
     @Test
