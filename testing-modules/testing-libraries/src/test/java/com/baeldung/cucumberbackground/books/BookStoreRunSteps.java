@@ -20,7 +20,6 @@ public class BookStoreRunSteps {
     public void setUp() {
         store = new BookStore();
         foundBooks = new ArrayList<>();
-        System.out.print("Book store steps run simple");
     }
     
     @Given("^I have the following books in the store$")
