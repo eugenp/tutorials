@@ -6,45 +6,45 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd">
 
 	<bean id="sampleAdder"
-		class="org.baeldung.logger.SampleAdder" />
+		class="com.baeldung.logger.SampleAdder" />
 
-	<bean id="doBeforeAspect" class="org.baeldung.logger.AdderBeforeAspect" />
-	<bean id="doAfterAspect" class="org.baeldung.logger.AdderAfterAspect" />
-	<bean id="doAfterThrowingAspect" class="org.baeldung.logger.AdderAfterThrowAspect" />
-	<bean id="doAfterReturningAspect" class="org.baeldung.logger.AdderAfterReturnAspect" />
-	<bean id="doAroundAspect" class="org.baeldung.logger.AdderAroundAspect" />
+	<bean id="doBeforeAspect" class="com.baeldung.logger.AdderBeforeAspect" />
+	<bean id="doAfterAspect" class="com.baeldung.logger.AdderAfterAspect" />
+	<bean id="doAfterThrowingAspect" class="com.baeldung.logger.AdderAfterThrowAspect" />
+	<bean id="doAfterReturningAspect" class="com.baeldung.logger.AdderAfterReturnAspect" />
+	<bean id="doAroundAspect" class="com.baeldung.logger.AdderAroundAspect" />
 
 	<aop:config>
 
 		<aop:aspect id="aspects" ref="doBeforeAspect">
 			<aop:pointcut id="pointCutBefore"
-				expression="execution(* org.baeldung.logger.SampleAdder+.*(..))" />
+				expression="execution(* com.baeldung.logger.SampleAdder+.*(..))" />
 			<aop:before method="beforeAdvice" pointcut-ref="pointCutBefore" />
 		</aop:aspect>
 
 		<aop:aspect id="aspects" ref="doAfterAspect">
 			<aop:pointcut id="pointCutAfter"
-				expression="execution(* org.baeldung.logger.SampleAdder+.*(..))" />
+				expression="execution(* com.baeldung.logger.SampleAdder+.*(..))" />
 			<aop:after method="afterAdvice" pointcut-ref="pointCutAfter" />
 		</aop:aspect>
 
 		<aop:aspect id="aspects" ref="doAfterReturningAspect">
 			<aop:pointcut id="pointCutAfterReturning"
-				expression="execution(* org.baeldung.logger.SampleAdder+.*(..))" />
+				expression="execution(* com.baeldung.logger.SampleAdder+.*(..))" />
 			<aop:after-returning method="afterReturn"
 				returning="returnValue" pointcut-ref="pointCutAfterReturning" />
 		</aop:aspect>
 
 		<aop:aspect id="aspects" ref="doAfterThrowingAspect">
 			<aop:pointcut id="pointCutAfterThrowing"
-				expression="execution(* org.baeldung.logger.SampleAdder+.*(..))" />
+				expression="execution(* com.baeldung.logger.SampleAdder+.*(..))" />
 			<aop:after-throwing method="afterThrow"
 				throwing="error" pointcut-ref="pointCutAfterThrowing" />
 		</aop:aspect>
 
 		<aop:aspect id="aspects" ref="doAroundAspect">
 			<aop:pointcut id="pointCutAround"
-				expression="execution(* org.baeldung.logger.SampleAdder+.*(..))" />
+				expression="execution(* com.baeldung.logger.SampleAdder+.*(..))" />
 			<aop:around method="aroundAdvice" pointcut-ref="pointCutAround" />
 		</aop:aspect>
 
