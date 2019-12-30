@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-public class PowerSetUnitTest {
+public class PowerSetUtilityUnitTest {
 
     @Test
     public void givenSet_WhenGuavaLibraryGeneratePowerSet_ThenItContainsAllSubsets() {
@@ -37,10 +37,28 @@ public class PowerSetUnitTest {
     }
 
     @Test
+    public void givenSet_WhenPowerSetIsLazyLoadGenerated_ThenItContainsAllSubsets() {
+        Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
+        Set<Set<String>> powerSet = new PowerSetUtility<String>().lazyLoadPowerSet(set);
+
+        //To make sure that the size of power set is (2 power n)
+        MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
+        //To make sure that number of occurrence of each element is (2 power n-1)
+        Map<String, Integer> counter = new HashMap<>();
+        for (Set<String> subset : powerSet) {
+            for (String name : subset) {
+                int num = counter.getOrDefault(name, 0);
+                counter.put(name, num + 1);
+            }
+        }
+        counter.forEach((k, v) -> Assertions.assertEquals((1 << (set.size() - 1)), v.intValue()));
+    }
+
+    @Test
     public void givenSet_WhenPowerSetIsCalculated_ThenItContainsAllSubsets() {
         Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
 
-        Set<Set<String>> powerSet = new PowerSet<String>().recursivePowerSet(set);
+        Set<Set<String>> powerSet = new PowerSetUtility<String>().recursivePowerSet(set);
 
         //To make sure that the size of power set is (2 power n)
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
@@ -59,7 +77,7 @@ public class PowerSetUnitTest {
     public void givenSet_WhenPowerSetIsCalculatedRecursiveByIndexRepresentation_ThenItContainsAllSubsets() {
         Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
 
-        Set<Set<String>> powerSet = new PowerSet<String>().recursivePowerSetIndexRepresentation(set);
+        Set<Set<String>> powerSet = new PowerSetUtility<String>().recursivePowerSetIndexRepresentation(set);
 
         //To make sure that the size of power set is (2 power n)
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
@@ -78,7 +96,7 @@ public class PowerSetUnitTest {
     public void givenSet_WhenPowerSetIsCalculatedRecursiveByBinaryRepresentation_ThenItContainsAllSubsets() {
         Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
 
-        Set<Set<String>> powerSet = new PowerSet<String>().recursivePowerSetBinaryRepresentation(set);
+        Set<Set<String>> powerSet = new PowerSetUtility<String>().recursivePowerSetBinaryRepresentation(set);
 
         //To make sure that the size of power set is (2 power n)
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
@@ -97,7 +115,7 @@ public class PowerSetUnitTest {
     public void givenSet_WhenPowerSetIsCalculatedIterativePowerSetByLoopOverNumbers_ThenItContainsAllSubsets() {
         Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
 
-        List<List<String>> powerSet = new PowerSet<String>().iterativePowerSetByLoopOverNumbers(set);
+        List<List<String>> powerSet = new PowerSetUtility<String>().iterativePowerSetByLoopOverNumbers(set);
 
         //To make sure that the size of power set is (2 power n)
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
@@ -122,7 +140,7 @@ public class PowerSetUnitTest {
     public void givenSet_WhenPowerSetIsCalculatedIterativePowerSetByLoopOverNumbersMinimalChange_ThenItContainsAllSubsetsInGrayOrder() {
 
         Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
-        List<List<String>> powerSet = new PowerSet<String>().iterativePowerSetByLoopOverNumbersMinimalChange(set);
+        List<List<String>> powerSet = new PowerSetUtility<String>().iterativePowerSetByLoopOverNumbersMinimalChange(set);
 
         //To make sure that the size of power set is (2 power n)
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << set.size())));
@@ -162,7 +180,7 @@ public class PowerSetUnitTest {
             for(int j=0; j < n; j++) {
                 subset[n - j - 1] = ((i & (1 << j)) > 0);
             }
-            Assertions.assertEquals(i, PowerSet.getRankInLexicographicalOrder(Arrays.asList(subset)));
+            Assertions.assertEquals(i, PowerSetUtility.getRankInLexicographicalOrder(Arrays.asList(subset)));
         }
     }
 
@@ -171,7 +189,7 @@ public class PowerSetUnitTest {
         int n = new Random().nextInt(5) + 5; //a number in [5, 10)
         List<List<Boolean>> powerSet = new ArrayList<>();
         for(int i = 0; i < (1 << n); i++) {
-            powerSet.add(PowerSet.getSubsetForRankInLexicographicalOrder(i, n));
+            powerSet.add(PowerSetUtility.getSubsetForRankInLexicographicalOrder(i, n));
         }
         //To make sure that the size of power set is (2 power n)
         MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << n)));
