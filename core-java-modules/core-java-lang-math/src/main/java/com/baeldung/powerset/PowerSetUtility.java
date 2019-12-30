@@ -119,7 +119,7 @@ public class PowerSetUtility<T> {
         public boolean equals(@Nullable Object obj) {
             if (obj instanceof PowerSet) {
                 PowerSet<?> that = (PowerSet<?>) obj;
-                return map.keySet().equals(that.map.keySet());//Set equals check to have the same element regardless of the order of the items
+                return set.equals(that.set);//Set equals check to have the same element regardless of the order of the items
             }
             return super.equals(obj);
         }
