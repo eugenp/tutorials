@@ -6,12 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
- * Reusable test fixture for {@link FibonacciSequenceGenerator} implementations. Tests will be
- * skipped if no such implementation exists.
+ * Reusable test fixture for {@link FibonacciSequenceGenerator} implementations. Tests will be skipped if no such implementation exists.
  */
 public interface FibonacciSequenceGeneratorFixture {
 
-    /** @return the implementation of {@link FibonacciSequenceGenerator} to test. Must not be null */
+    /**
+     * @return the implementation of {@link FibonacciSequenceGenerator} to test. Must not be null
+     */
     FibonacciSequenceGenerator provide();
 
     @Test default void when_sequence_index_is_negative_then_throws() {
