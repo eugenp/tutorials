@@ -52,7 +52,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.7</version>
+                <version>${apache-maven.version}</version>
                 <configuration>
                     <delimiters>
                         <delimiter>@</delimiter>
@@ -63,7 +63,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <version>${exec-maven-plugin.version}</version>
                 <configuration>
                     <mainClass>com.baeldung.propertyexpansion.SpringBootPropertyExpansionApp</mainClass>
                 </configuration>
@@ -74,6 +74,8 @@
     <properties>
         <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
         <custom.property>Custom Property Value</custom.property>
+        <apache-maven.version>2.7</apache-maven.version>
+        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     </properties>
 
 </project>
