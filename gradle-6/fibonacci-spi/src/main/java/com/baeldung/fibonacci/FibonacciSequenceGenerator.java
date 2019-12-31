@@ -1,6 +1,8 @@
 package com.baeldung.fibonacci;
 
-/** Describes an SPI for a Fibonacci sequence generator function. */
+/**
+ * Describes an SPI for a Fibonacci sequence generator function.
+ */
 public interface FibonacciSequenceGenerator {
 
     /**
