@@ -15,7 +15,7 @@ public class GreedyAlgorithm {
         this.fp = new FollowersPath();
     }
     
-    public long findMostFollowersPath(String account) throws Exception {        
+    public long findMostFollowersPath(String account) {        
         long max = 0;
         SocialUser toFollow = null;
         

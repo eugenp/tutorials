@@ -35,21 +35,21 @@ public class GreedyAlgorithmUnitTest {
     }
 
     @Test
-    public void greedyAlgorithmTest() throws Exception {
+    public void greedyAlgorithmTest() {
         GreedyAlgorithm ga = new GreedyAlgorithm(prepareNetwork());
         assertEquals(ga.findMostFollowersPath("root"), 5);
     }
 
     @Test
-    public void nongreedyAlgorithmTest() throws Exception {
+    public void nongreedyAlgorithmTest() {
         NonGreedyAlgorithm nga = new NonGreedyAlgorithm(prepareNetwork(), 0);
-        Assertions.assertThrows(Exception.class, () -> {
+        Assertions.assertThrows(IllegalStateException.class, () -> {
             nga.findMostFollowersPath("root");
           });
     }
 
     @Test
-    public void nongreedyAlgorithmUnboundedTest() throws Exception {
+    public void nongreedyAlgorithmUnboundedTest() {
         SocialConnector sc = prepareNetwork();
         sc.switchCounter();
         NonGreedyAlgorithm nga = new NonGreedyAlgorithm(sc, 0);
