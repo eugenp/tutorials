@@ -1,6 +1,6 @@
 ## Core Kotlin Lang OOP
 
-This module contains articles about core Kotlin language OOP.
+This module contains articles about Object-Oriented Programming in Kotlin
 
 ### Relevant articles:
 
