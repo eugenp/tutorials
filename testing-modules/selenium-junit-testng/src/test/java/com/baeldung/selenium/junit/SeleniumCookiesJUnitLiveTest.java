@@ -99,10 +99,12 @@ public class SeleniumCookiesJUnitLiveTest {
         Cookie lpCookie = driver.manage().getCookieNamed("lp_120073");
         driver.manage().deleteCookie(lpCookie);
 
-        lpCookie = new Cookie("lp_120073", "foo");
-        driver.manage().addCookie(lpCookie);
+        Cookie newLpCookie = new Cookie("lp_120073", "foo");
+        driver.manage().addCookie(newLpCookie);
 
-        assertThat(lpCookie.getValue(), equalTo("foo"));
+        Cookie overriddenCookie = driver.manage().getCookieNamed("lp_120073");
+
+        assertThat(overriddenCookie.getValue(), equalTo("foo"));
     }
 
 }
