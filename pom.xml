@@ -506,7 +506,7 @@
                 <module>jackson-conversions</module>
                 <module>jackson-conversions-2</module>
                 <module>jackson-custom-conversions</module>
-<module>java-async</module>
+                <module>java-async</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
@@ -1146,7 +1146,7 @@
                 <module>jackson-conversions</module>
                 <module>jackson-conversions-2</module>
                 <module>jackson-custom-conversions</module>
-<module>java-async</module>
+                <module>java-async</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
