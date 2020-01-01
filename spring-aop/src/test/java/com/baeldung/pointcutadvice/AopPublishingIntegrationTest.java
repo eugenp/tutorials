@@ -1,6 +1,6 @@
 package com.baeldung.pointcutadvice;
 
-import com.baeldung.TestConfig;
+import com.baeldung.Application;
 import com.baeldung.pointcutadvice.dao.FooDao;
 import com.baeldung.pointcutadvice.events.FooCreationEventListener;
 import org.junit.Before;
@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {TestConfig.class}, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {Application.class}, loader = AnnotationConfigContextLoader.class)
 public class AopPublishingIntegrationTest {
 
     @Before
