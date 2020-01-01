@@ -58,7 +58,7 @@ class MetaprogrammingUnitTest extends GroovyTestCase {
 
     void testEmployeeExtension() {
         Employee emp = new Employee(age: 28)
-        assert emp.getYearOfBirth() == 1991
+        assert emp.getYearOfBirth() == 1992
     }
 
     void testJavaClassesExtensions() {
