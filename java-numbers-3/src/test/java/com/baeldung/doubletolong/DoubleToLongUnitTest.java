@@ -13,13 +13,18 @@ public class DoubleToLongUnitTest {
     }
 
     @Test
-    public void givenDoubleValue_whenMathRoundUsed_thenLongValueReturned() {
+    public void givenDoubleValue_whenMathRoundUsed_thenRoundUp() {
         Assert.assertEquals(10000L, Math.round(VALUE));
     }
 
     @Test
     public void givenDoubleValue_whenMathRoundUsed_thenRoundDown() {
         Assert.assertEquals(9999L, Math.round(9999.444));
+    }
+
+    @Test
+    public void givenDoubleValue_whenMathRoundUsed_thenSameValueReturned() {
+        Assert.assertEquals(9999L, Math.round(9999.0));
     }
 
     @Test
@@ -45,6 +50,11 @@ public class DoubleToLongUnitTest {
     @Test
     public void givenDoubleValue_whenMathFloorUsed_thenSameValueReturned() {
         Assert.assertEquals(9999L, Math.floor(9999.0), 0);
+    }
+
+    @Test
+    public void givenDoubleValue_whenMathFloorUsed_thenDifferentThanCeil() {
+        Assert.assertEquals(9999L, Math.floor(9999.444), 0);
     }
 
     @Test
