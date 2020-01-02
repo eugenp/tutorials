@@ -400,7 +400,7 @@
                 <module>core-java-modules/core-java-lang-math</module>
                 <!-- We haven't upgraded to java 9.-->
                 <!--
-                <module>core-java-modules/core-java-datetime-computations</module>
+                <module>core-java-modules/core-java-date-operations-1</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>core-java-modules/core-java-datetime-java8</module>
                 <module>core-java-modules/core-java-datetime-string</module>
@@ -1040,7 +1040,7 @@
                 <module>core-java-modules/core-java-lang-math</module>
                 <!-- We haven't upgraded to java 9.-->
                 <!--
-                <module>core-java-modules/core-java-datetime-computations</module>
+                <module>core-java-modules/core-java-date-operations-1</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>core-java-modules/core-java-datetime-java8</module>
                 <module>core-java-modules/core-java-datetime-string</module>
