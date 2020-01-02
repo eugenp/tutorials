@@ -1,14 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-data-dynamodb</artifactId>
-    <packaging>jar</packaging>
     <name>spring-data-dynamodb</name>
+    <packaging>jar</packaging>
     <description>This is simple boot application for Spring boot dynamodb test</description>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-1</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-1</relativePath>
     </parent>
@@ -134,11 +135,10 @@
             <type>so</type>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
-        <finalName>spring-boot</finalName>
+        <finalName>spring-data-dynamodb</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -150,6 +150,25 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeScope>test</includeScope>
+                            <includeTypes>so,dll,dylib</includeTypes>
+                            <outputDirectory>${project.basedir}/native-libs</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -174,6 +193,7 @@
         <dynamodb.version>1.11.106</dynamodb.version>
         <dynamodblocal.version>1.11.86</dynamodblocal.version>
         <dynamodblocal.repository.url>https://s3-us-west-2.amazonaws.com/dynamodb-local/release</dynamodblocal.repository.url>
+        <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
     </properties>
 
 </project>
