@@ -1,3 +1,7 @@
+## Spring Core
+
+This module contains articles about core Spring functionality
+
 ## Relevant Articles:
 
 - [Understanding getBean() in Spring](https://www.baeldung.com/spring-getbean)

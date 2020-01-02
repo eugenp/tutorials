@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>helidon-se</artifactId>
     <name>helidon-se</name>
-    
+
     <parent>
         <groupId>com.baeldung.helidon</groupId>
         <artifactId>helidon</artifactId>
@@ -54,7 +54,6 @@
             <artifactId>helidon-security-integration-webserver</artifactId>
             <version>${helidon.version}</version>
         </dependency>
-
     </dependencies>
 
     <properties>

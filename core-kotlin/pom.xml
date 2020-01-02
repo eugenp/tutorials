@@ -16,11 +16,6 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math3</artifactId>
-            <version>${commons-math3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
@@ -75,13 +70,12 @@
     </dependencies>
 
     <properties>
-        <commons-math3.version>3.6.1</commons-math3.version>
         <junit.platform.version>1.1.1</junit.platform.version>
         <junit.vintage.version>5.2.0</junit.vintage.version>
         <assertj.version>3.10.0</assertj.version>
         <fuel.version>1.15.0</fuel.version>
-		<kovenant.version>3.3.0</kovenant.version>
-		<injekt-core.version>1.16.1</injekt-core.version>
+        <kovenant.version>3.3.0</kovenant.version>
+        <injekt-core.version>1.16.1</injekt-core.version>
     </properties>
 
 </project>

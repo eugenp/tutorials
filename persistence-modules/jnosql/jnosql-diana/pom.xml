@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jnosql-diana</artifactId>
-	<name>jnosql-diana</name>
-	
+    <name>jnosql-diana</name>
+
     <parent>
         <groupId>com.baeldung.jnosql</groupId>
         <artifactId>jnosql</artifactId>
@@ -13,7 +13,6 @@
     </parent>
 
     <dependencies>
-
         <!--NoSQL Document oriented-->
         <dependency>
             <groupId>org.jnosql.diana</groupId>
