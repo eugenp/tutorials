@@ -588,7 +588,7 @@
                 <module>mybatis</module>
 
                 <module>ninja</module>
-                <module>netflix</module>
+                <module>netflix-modules</module>
 
                 <module>optaplanner</module>
                 <module>orika</module>
@@ -670,7 +670,7 @@
             </build>
 
             <modules>
-                <module>netflix</module>
+                <module>netflix-modules</module>
 
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
@@ -1221,7 +1221,7 @@
                 <module>mybatis</module>
 
                 <module>ninja</module>
-                <module>netflix</module>
+                <module>netflix-modules</module>
 
                 <module>optaplanner</module>
                 <module>orika</module>
