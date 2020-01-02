@@ -1,21 +1,12 @@
 package com.baeldung.datetime.sql;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
-import com.baeldung.datetime.sql.TimestampUtils;
-
 import java.text.ParseException;
-import java.util.Date;
+
+import static org.junit.Assert.assertEquals;
 
 public class TimestampUtilsUnitTest {
-
-    @Test
-    public void givenCurrentTimestamp_thenNowIsReturned() {
-        assertEquals(TimestampUtils.getNow()
-            .getTime(), new Date().getTime());
-    }
 
     @Test(expected = IllegalArgumentException.class)
     public void givenTimestampAsString_whenPatternIsNotRespected_thenExceptionIsThrown() {

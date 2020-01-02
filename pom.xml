@@ -356,6 +356,7 @@
                 <module>apache-opennlp</module>
                 <module>apache-poi</module>
                 <module>apache-pulsar</module>
+                <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-solrj</module>
                 <module>apache-spark</module>
@@ -499,13 +500,7 @@
                 <module>image-processing</module>
                 <module>immutables</module>
 
-                <module>jackson</module>
-                <module>jackson-simple</module>
-                <module>jackson-annotations</module>
-                <module>jackson-exceptions</module>
-                <module>jackson-conversions</module>
-                <module>jackson-conversions-2</module>
-                <module>jackson-custom-conversions</module>
+                <module>jackson-modules</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
@@ -517,6 +512,7 @@
                 <module>java-math-2</module> <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
+                <module>java-numbers-3</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -590,7 +586,7 @@
                 <!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
                 <module>mustache</module>
                 <module>mybatis</module>
-
+                <module>ninja</module>
                 <module>netflix</module>
 
                 <module>optaplanner</module>
@@ -628,7 +624,7 @@
                 <module>spring-boot-mvc-2</module>
                 <module>spring-boot-performance</module>
                 <module>spring-boot-properties</module>
-                <!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
+                <module>spring-mvc-basics</module>
                 <module>spring-security-modules/spring-security-kerberos</module>
                 <module>oauth2-framework-impl</module>
 
@@ -786,13 +782,14 @@
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-                <module>spring-mvc-basics-2</module>
+                <module>spring-websockets</module>
+                <module>spring-mvc-basics-4</module>
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
                 <module>spring-mvc-kotlin</module>
-                <module>spring-mvc-simple</module>
-                <module>spring-mvc-simple-2</module>
+                <module>spring-mvc-basics-2</module>
+                <module>spring-mvc-basics-3</module>
                 <module>spring-mvc-views</module>
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
@@ -830,7 +827,7 @@
                 <module>spring-security-modules/spring-security-mvc-login</module>
                 <module>spring-security-modules/spring-security-mvc-persisted-remember-me</module>
                 <module>spring-security-modules/spring-security-mvc-socket</module>
-                <module>spring-security-modules/spring-security-openid</module>
+                <module>spring-security-modules/spring-security-oidc</module>
                 <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
                 <module>spring-security-modules/spring-security-rest</module>
                 <module>spring-security-modules/spring-security-rest-basic-auth</module>
@@ -1002,6 +999,7 @@
                 <module>apache-opennlp</module>
                 <module>apache-poi</module>
                 <module>apache-pulsar</module>
+                <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-solrj</module>
                 <module>apache-spark</module>
@@ -1137,13 +1135,7 @@
                 <module>image-processing</module>
                 <module>immutables</module>
 
-                <module>jackson</module>
-                <module>jackson-simple</module>
-                <module>jackson-annotations</module>
-                <module>jackson-exceptions</module>
-                <module>jackson-conversions</module>
-                <module>jackson-conversions-2</module>
-                <module>jackson-custom-conversions</module>
+                <module>jackson-modules</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
@@ -1155,6 +1147,7 @@
                 <module>java-math-2</module>  <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
+                <module>java-numbers-3</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -1225,7 +1218,7 @@
                 <!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
                 <module>mustache</module>
                 <module>mybatis</module>
-
+                <module>ninja</module>
                 <module>netflix</module>
 
                 <module>optaplanner</module>
@@ -1257,7 +1250,7 @@
                 <module>spf4j</module>
                 <module>spring-boot-performance</module>
                 <module>spring-boot-properties</module>
-                <!-- <module>spring-mvc-basics</module> --> <!-- Compilation failure -->
+                <module>spring-mvc-basics</module>
                 <!-- <module>Twitter4J</module> --> <!-- Builds locally, but fails in Jenkins, Failed to parse POMs -->
 
             </modules>
@@ -1389,13 +1382,14 @@
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-                <module>spring-mvc-basics-2</module>
+                <module>spring-websockets</module>
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
                 <module>spring-mvc-kotlin</module>
-                <module>spring-mvc-simple</module>
-                <module>spring-mvc-simple-2</module>
+                <module>spring-mvc-basics-2</module>
+                <module>spring-mvc-basics-3</module>
+                <module>spring-mvc-basics-4</module>
                 <module>spring-mvc-views</module>
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
@@ -1433,7 +1427,7 @@
                 <module>spring-security-modules/spring-security-mvc-login</module>
                 <module>spring-security-modules/spring-security-mvc-persisted-remember-me</module>
                 <module>spring-security-modules/spring-security-mvc-socket</module>
-                <module>spring-security-modules/spring-security-openid</module>
+                <module>spring-security-modules/spring-security-oidc</module>
                 <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
                 <module>spring-security-modules/spring-security-rest</module>
                 <module>spring-security-modules/spring-security-rest-basic-auth</module>
