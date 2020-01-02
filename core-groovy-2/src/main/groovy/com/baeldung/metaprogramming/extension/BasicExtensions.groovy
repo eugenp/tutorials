@@ -2,10 +2,13 @@ package com.baeldung.metaprogramming.extension
 
 import com.baeldung.metaprogramming.Employee
 
+import java.time.LocalDate
+import java.time.Year
+
 class BasicExtensions {
     
     static int getYearOfBirth(Employee self) {
-        return (new Date().getYear() + 1900) - self.age;
+        return LocalDate.now().getYear() - self.age;
     }
     
     static String capitalize(String self) {
