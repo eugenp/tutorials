@@ -20,9 +20,9 @@ public class SocialConnector {
         return this.isCounterEnabled;
     }
     
-    public List<SocialUser> getFollowers(String account) throws Exception {
+    public List<SocialUser> getFollowers(String account) {
         if (counter < 0)
-            throw new Exception ("API limit reached");
+            throw new IllegalStateException ("API limit reached");
         else {
             if(this.isCounterEnabled) counter--;
             for(SocialUser user : users) {
