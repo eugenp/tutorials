@@ -8,7 +8,7 @@ import java.time.Year
 class BasicExtensions {
     
     static int getYearOfBirth(Employee self) {
-        return LocalDate.now().getYear() - self.age;
+        return Year.now().value - self.age
     }
     
     static String capitalize(String self) {
