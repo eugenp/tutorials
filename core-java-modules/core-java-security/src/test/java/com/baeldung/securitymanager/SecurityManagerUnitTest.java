@@ -1,35 +1,35 @@
 package com.baeldung.securitymanager;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.net.URL;
 import java.security.AccessControlException;
-import java.util.concurrent.Callable;
 
 public class SecurityManagerUnitTest {
 
-    @Test(expected = AccessControlException.class)
-    public void whenSecurityManagerIsActive_thenNetworkIsNotAccessibleByDefault() throws Exception {
-        doTest(() -> {
-            new URL("http://www.google.com").openConnection().connect();
-            return null;
-        });
-    }
+    private static final String TESTING_SECURITY_POLICY = "file:src/test/resources/testing.policy";
 
-    @Test(expected = AccessControlException.class)
-    public void whenUnauthorizedClassTriesToAccessProtectedOperation_thenAnExceptionIsThrown() throws Exception {
-        doTest(() -> {
-            new Service().operation();
-            return null;
-        });
-    }
-
-    private void doTest(Callable<Void> action) throws Exception {
+    @Before
+    public void setUp() {
+        System.setProperty("java.security.policy", TESTING_SECURITY_POLICY);
         System.setSecurityManager(new SecurityManager());
-        try {
-            action.call();
-        } finally {
-            System.setSecurityManager(null);
-        }
+    }
+
+    @After
+    public void tearDown() {
+        System.setSecurityManager(null);
+    }
+
+    @Test(expected = AccessControlException.class)
+    public void whenSecurityManagerIsActive_thenNetworkIsNotAccessibleByDefault() throws IOException {
+        new URL("http://www.google.com").openConnection().connect();
+    }
+
+    @Test(expected = AccessControlException.class)
+    public void whenUnauthorizedClassTriesToAccessProtectedOperation_thenAnExceptionIsThrown() {
+        new Service().operation();
     }
 }
