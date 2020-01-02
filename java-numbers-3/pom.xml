@@ -3,7 +3,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>java-numbers-3</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>java-numbers-3</name>
     <packaging>jar</packaging>
 
@@ -13,7 +12,6 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-java</relativePath>
     </parent>
-
    
     <build>
         <finalName>java-numbers-3</finalName>

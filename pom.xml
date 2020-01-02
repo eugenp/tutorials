@@ -512,6 +512,7 @@
                 <module>java-math-2</module> <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
+                <module>java-numbers-3</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -1146,6 +1147,7 @@
                 <module>java-math-2</module>  <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
+                <module>java-numbers-3</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
