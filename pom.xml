@@ -839,7 +839,6 @@
                 <module>parent-kotlin</module>
 
                 <module>core-kotlin</module> <!-- long running? -->
-                <module>core-kotlin-2</module>
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
@@ -1372,7 +1371,6 @@
                 <module>parent-kotlin</module>
 
                 <module>core-kotlin</module> <!-- long running? -->
-                <module>core-kotlin-2</module>
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
