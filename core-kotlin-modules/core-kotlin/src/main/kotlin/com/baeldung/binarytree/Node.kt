@@ -5,9 +5,9 @@ package com.baeldung.binarytree
  * Note that this data type is neither immutable nor thread safe.
  */
 class Node(
-    var key: Int,
-    var left: Node? = null,
-    var right: Node? = null) {
+        var key: Int,
+        var left: Node? = null,
+        var right: Node? = null) {
 
     /**
      * Return a node with given value. If no such node exists, return null.
