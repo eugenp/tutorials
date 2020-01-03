@@ -42,7 +42,7 @@
         <dependency>
             <groupId>it.ozimov</groupId>
             <artifactId>embedded-redis</artifactId>
-            <version>0.7.2</version>
+            <version>${redis.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- Spock & Spring -->
@@ -131,6 +131,7 @@
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <spock.version>1.2-groovy-2.4</spock.version>
         <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
+        <redis.version>0.7.2</redis.version>
     </properties>
 
 </project>
