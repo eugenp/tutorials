@@ -1,4 +1,4 @@
-package org.baeldung.java.md5;
+package com.baeldung.java.md5;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
