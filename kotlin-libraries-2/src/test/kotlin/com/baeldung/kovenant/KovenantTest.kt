@@ -1,4 +1,4 @@
-package com.baeldung.kotlin
+package com.baeldung.kovenant
 
 import nl.komponents.kovenant.*
 import nl.komponents.kovenant.Kovenant.deferred
@@ -12,6 +12,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 class KovenantTest {
+
     @Before
     fun setupTestMode() {
         Kovenant.testMode { error ->
