@@ -70,10 +70,8 @@ class NodeTest {
 
     @Test
     fun givenDepthTwo_whenPivotAtDepth2_then_Success() {
-        val left =
-            Node(1, Node(0), Node(2))
-        val right =
-            Node(5, Node(4), Node(6))
+        val left = Node(1, Node(0), Node(2))
+        val right = Node(5, Node(4), Node(6))
         val n = Node(3, left, right)
         assertEquals(left.left, n.find(0))
     }
@@ -246,8 +244,7 @@ class NodeTest {
      */
     @Test
     fun givenTreeDepthOne_whenValueAbsent_thenNoChange() {
-        val n =
-            Node(1, Node(0), Node(2))
+        val n = Node(1, Node(0), Node(2))
         n.delete(3)
         assertEquals(1, n.key)
         assertEquals(2, n.right!!.key)
@@ -285,11 +282,7 @@ class NodeTest {
      */
     @Test
     fun givenTreeDepthTwo_whenNodeToDeleteHasOneChild_thenChangeTree() {
-        val n = Node(
-            2,
-            Node(0, null, Node(1)),
-            Node(3)
-        )
+        val n = Node(2, Node(0, null, Node(1)), Node(3))
         n.delete(0)
         assertEquals(2, n.key)
         with(n.right!!) {
@@ -306,13 +299,8 @@ class NodeTest {
 
     @Test
     fun givenTreeDepthThree_whenNodeToDeleteHasTwoChildren_thenChangeTree() {
-        val l = Node(
-            2,
-            Node(1),
-            Node(5, Node(4), Node(6))
-        )
-        val r =
-            Node(10, Node(9), Node(11))
+        val l = Node(2, Node(1), Node(5, Node(4), Node(6)))
+        val r = Node(10, Node(9), Node(11))
         val n = Node(8, l, r)
         n.delete(8)
         assertEquals(6, n.key)

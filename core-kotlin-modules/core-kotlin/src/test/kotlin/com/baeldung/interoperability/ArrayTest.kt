@@ -7,7 +7,7 @@ class ArrayTest {
 
     @Test
     fun givenArray_whenValidateArrayType_thenComplete () {
-        val ex = com.baeldung.interoperability.ArrayExample()
+        val ex = ArrayExample()
         val numArray = intArrayOf(1, 2, 3)
 
         assertEquals(ex.sumValues(numArray), 6)
@@ -15,7 +15,7 @@ class ArrayTest {
 
     @Test
     fun givenCustomer_whenGetSuperType_thenComplete() {
-        val instance = com.baeldung.interoperability.Customer::class
+        val instance = Customer::class
         val supertypes = instance.supertypes
 
         assertEquals(supertypes[0].toString(), "kotlin.Any")
@@ -23,7 +23,7 @@ class ArrayTest {
 
     @Test
     fun givenCustomer_whenGetConstructor_thenComplete() {
-        val instance = com.baeldung.interoperability.Customer::class.java
+        val instance = Customer::class.java
         val constructors = instance.constructors
 
         assertEquals(constructors.size, 1)
@@ -31,7 +31,7 @@ class ArrayTest {
     }
 
     fun makeReadFile() {
-        val ax = com.baeldung.interoperability.ArrayExample()
+        val ax = ArrayExample()
         ax.writeList()
     }
 }
