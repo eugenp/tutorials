@@ -24,11 +24,21 @@ public class DuplicatesCounter {
         return resultMap;
     }
 
-    public static <T> Map<T, Long> countByClassicalLoopWithMapCompute(List<T> inputList) {
+    public static <T> Map<T, Long> countByForEachLoopWithGetOrDefault(List<T> inputList) {
         Map<T, Long> resultMap = new HashMap<>();
-        for (T element : inputList) {
-            resultMap.compute(element, (k, v) -> v == null ? 1 : v + 1);
-        }
+        inputList.forEach(e -> resultMap.put(e, resultMap.getOrDefault(e, 0L) + 1L));
+        return resultMap;
+    }
+
+    public static <T> Map<T, Long> countByForEachLoopWithMapCompute(List<T> inputList) {
+        Map<T, Long> resultMap = new HashMap<>();
+        inputList.forEach(e -> resultMap.compute(e, (k, v) -> v == null ? 1L : v + 1L));
+        return resultMap;
+    }
+
+    public static <T> Map<T, Long> countByForEachLoopWithMapMerge(List<T> inputList) {
+        Map<T, Long> resultMap = new HashMap<>();
+        inputList.forEach(e -> resultMap.merge(e, 1L, Long::sum));
         return resultMap;
     }
 
