@@ -39,7 +39,6 @@ target/
 spring-openid/src/main/resources/application.properties
 .recommenders/
 /spring-hibernate4/nbproject/
-spring-security-openid/src/main/resources/application.properties
 
 spring-all/*.log
 
