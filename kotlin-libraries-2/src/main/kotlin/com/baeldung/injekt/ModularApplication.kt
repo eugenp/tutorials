@@ -1,7 +1,8 @@
 package com.baeldung.injekt
 
 import org.slf4j.LoggerFactory
-import uy.kohesive.injekt.*
+import uy.kohesive.injekt.Injekt
+import uy.kohesive.injekt.InjektMain
 import uy.kohesive.injekt.api.*
 
 class ModularApplication {
