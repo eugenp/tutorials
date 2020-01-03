@@ -7,7 +7,7 @@ class CustomerTest {
 
     @Test
     fun givenCustomer_whenNameAndLastNameAreAssigned_thenComplete() {
-        val customer = com.baeldung.interoperability.Customer()
+        val customer = Customer()
 
         // Setter method is being called
         customer.firstName = "Frodo"
