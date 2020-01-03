@@ -1,8 +1,12 @@
 package com.baeldung.injekt
 
 import org.slf4j.LoggerFactory
-import uy.kohesive.injekt.*
-import uy.kohesive.injekt.api.*
+import uy.kohesive.injekt.Injekt
+import uy.kohesive.injekt.InjektMain
+import uy.kohesive.injekt.api.InjektRegistrar
+import uy.kohesive.injekt.api.addPerThreadFactory
+import uy.kohesive.injekt.api.addSingletonFactory
+import uy.kohesive.injekt.api.get
 import java.util.*
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit

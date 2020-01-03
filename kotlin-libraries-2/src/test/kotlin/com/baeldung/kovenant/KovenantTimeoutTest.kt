@@ -1,4 +1,4 @@
-package com.baeldung.kotlin
+package com.baeldung.kovenant
 
 import nl.komponents.kovenant.Promise
 import nl.komponents.kovenant.any
