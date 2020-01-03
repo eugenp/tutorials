@@ -385,75 +385,7 @@
                 <module>core-groovy</module>
                 <module>core-groovy-2</module>
                 <module>core-groovy-collections</module>
-                <!-- <module>core-java-modules/core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
-                <!-- <module>core-java-modules/core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
-                <!-- <module>core-java-modules/core-java-12</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
-                <module>core-java-modules/core-java-8</module>
-                <module>core-java-modules/core-java-8-2</module>
-                <module>core-java-modules/core-java-annotations</module>
-                <module>core-java-modules/core-java-streams</module>
-                <module>core-java-modules/core-java-streams-2</module>
-                <module>core-java-modules/core-java-streams-3</module>
-                <!-- <module>core-java-modules/core-java-9-streams</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-                <module>core-java-modules/core-java-function</module>
-                <module>core-java-modules/core-java-lang-math</module>
-                <!-- We haven't upgraded to java 9.-->
-                <!--
-                <module>core-java-modules/core-java-datetime-computations</module>
-                <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>core-java-modules/core-java-datetime-java8</module>
-                <module>core-java-modules/core-java-datetime-string</module>
-                <module>core-java-modules/core-java-time-measurements</module>
-                -->
-                <module>core-java-modules/core-java-text</module>
-                <module>core-java-modules/core-java-lambdas</module>
-                <!--<module>core-java-modules/core-java-9-jigsaw</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-                <!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
-                <module>core-java-modules/core-java-arrays</module>
-                <module>core-java-modules/core-java-arrays-2</module>
-                <module>core-java-modules/core-java-collections</module>
-                <module>core-java-modules/core-java-collections-2</module>
-                <module>core-java-modules/core-java-collections-3</module>
-                <module>core-java-modules/core-java-collections-list</module>
-                <module>core-java-modules/core-java-collections-list-2</module>
-                <module>core-java-modules/core-java-collections-list-3</module>
-                <module>core-java-modules/core-java-collections-array-list</module>
-                <module>core-java-modules/core-java-collections-set</module>
-                <module>core-java-modules/core-java-concurrency-basic</module>
-                <module>core-java-modules/core-java-concurrency-basic-2</module>
-                <module>core-java-modules/core-java-concurrency-collections</module>
-                <module>core-java-modules/core-java-io</module>
-                <module>core-java-modules/core-java-io-2</module>
-                <module>core-java-modules/core-java-io-apis</module>
-                <module>core-java-modules/core-java-io-conversions</module>
-                <module>core-java-modules/core-java-nio</module>
-                <module>core-java-modules/core-java-nio-2</module>
-                <module>core-java-modules/core-java-security</module>
-                <module>core-java-modules/core-java-exceptions</module>
-                <module>core-java-modules/core-java-lang-syntax</module>
-                <module>core-java-modules/core-java-lang-syntax-2</module>
-                <module>core-java-modules/core-java-lang</module>
-                <module>core-java-modules/core-java-lang-2</module>
-                <module>core-java-modules/core-java-lang-oop</module>
-                <module>core-java-modules/core-java-lang-oop-2</module>
-                <module>core-java-modules/core-java-lang-oop-3</module>
-                <module>core-java-modules/core-java-lang-oop-4</module>
                 <module>core-java-modules</module>
-                <module>core-java-modules/core-java-networking</module>
-                <module>core-java-modules/core-java-perf</module>
-                <module>core-java-modules/core-java-reflection</module>
-                <module>core-java-modules/core-java-sun</module>
-                <module>core-java-modules/core-java-string-conversions</module>
-                <module>core-java-modules/core-java-string-conversions-2</module>
-                <module>core-java-modules/core-java-string-operations</module>
-                <module>core-java-modules/core-java-string-operations-2</module>
-                <module>core-java-modules/core-java-string-algorithms</module>
-                <module>core-java-modules/core-java-string-algorithms-2</module>
-                <module>core-java-modules/core-java-string-apis</module>
-                <module>core-java-modules/core-java-strings</module>
-                <module>core-java-modules/core-java</module>
-                <module>core-java-modules/core-java-jar</module>
-                <module>core-java-modules/core-java-jvm</module>
                 <module>core-kotlin-modules</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
@@ -623,7 +555,7 @@
                 <module>spring-boot-performance</module>
                 <module>spring-boot-properties</module>
                 <module>spring-mvc-basics</module>
-                <module>spring-security-modules/spring-security-kerberos</module>
+                <module>spring-security-modules</module>
                 <module>oauth2-framework-impl</module>
 
                 <module>spring-boot-nashorn</module>
@@ -812,28 +744,7 @@
                 <module>spring-resttemplate</module>
                 <module>spring-roo</module>
                 <module>spring-scheduling</module>
-                <module>spring-security-modules/spring-security-acl</module>
-                <module>spring-security-modules/spring-security-angular/server</module>
-                <module>spring-security-modules/spring-security-cache-control</module>
-                <module>spring-security-modules/spring-security-core</module>
-                <module>spring-security-modules/spring-security-mvc</module>
-                <module>spring-security-modules/spring-security-mvc-boot</module>
-                <module>spring-security-modules/spring-security-mvc-custom</module>
-                <module>spring-security-modules/spring-security-mvc-digest-auth</module>
-                <module>spring-security-modules/spring-security-mvc-jsonview</module>
-                <module>spring-security-modules/spring-security-mvc-ldap</module>
-                <module>spring-security-modules/spring-security-mvc-login</module>
-                <module>spring-security-modules/spring-security-mvc-persisted-remember-me</module>
-                <module>spring-security-modules/spring-security-mvc-socket</module>
-                <module>spring-security-modules/spring-security-oidc</module>
-                <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
-                <module>spring-security-modules/spring-security-rest</module>
-                <module>spring-security-modules/spring-security-rest-basic-auth</module>
-                <module>spring-security-modules/spring-security-rest-custom</module>
-                <module>spring-security-modules/spring-security-sso</module>
-                <module>spring-security-modules/spring-security-stormpath</module>
-                <module>spring-security-modules/spring-security-thymeleaf</module>
-                <module>spring-security-modules/spring-security-x509</module>
+                <module>spring-security-modules</module>
                 <module>spring-session</module>
                 <module>spring-shell</module>
                 <module>spring-sleuth</module>
@@ -1024,69 +935,7 @@
                 <module>core-groovy</module>
                 <module>core-groovy-2</module>
                 <module>core-groovy-collections</module>
-                <!-- <module>core-java-modules/core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
-                <!-- <module>core-java-modules/core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
-                <module>core-java-modules/core-java-8</module>
-                <module>core-java-modules/core-java-8-2</module>
-                <module>core-java-modules/core-java-annotations</module>
-                <module>core-java-modules/core-java-streams</module>
-                <module>core-java-modules/core-java-streams-2</module>
-                <module>core-java-modules/core-java-streams-3</module>
-                <!-- <module>core-java-modules/core-java-9-streams</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-                <module>core-java-modules/core-java-function</module>
-                <module>core-java-modules/core-java-lang-math</module>
-                <!-- We haven't upgraded to java 9.-->
-                <!--
-                <module>core-java-modules/core-java-datetime-computations</module>
-                <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>core-java-modules/core-java-datetime-java8</module>
-                <module>core-java-modules/core-java-datetime-string</module>
-                <module>core-java-modules/core-java-time-measurements</module>
-                -->
-                <module>core-java-modules/core-java-text</module>
-                <!--<module>core-java-modules/core-java-9-jigsaw</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-                <!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
-                <module>core-java-modules/core-java-arrays</module>
-                <module>core-java-modules/core-java-arrays-2</module>
-                <module>core-java-modules/core-java-collections</module>
-                <module>core-java-modules/core-java-collections-2</module>
-                <module>core-java-modules/core-java-collections-3</module>
-                <module>core-java-modules/core-java-collections-list</module>
-                <module>core-java-modules/core-java-collections-list-2</module>
-                <module>core-java-modules/core-java-collections-list-3</module>
-                <module>core-java-modules/core-java-collections-array-list</module>
-                <module>core-java-modules/core-java-collections-set</module>
-                <module>core-java-modules/core-java-concurrency-basic</module>
-                <module>core-java-modules/core-java-concurrency-basic-2</module>
-                <module>core-java-modules/core-java-concurrency-collections</module>
-                <module>core-java-modules/core-java-io</module>
-                <module>core-java-modules/core-java-io-2</module>
-                <module>core-java-modules/core-java-io-apis</module>
-                <module>core-java-modules/core-java-io-conversions</module>
-                <module>core-java-modules/core-java-nio</module>
-                <module>core-java-modules/core-java-nio-2</module>
-                <module>core-java-modules/core-java-security</module>
-                <module>core-java-modules/core-java-exceptions</module>
-                <module>core-java-modules/core-java-lang-syntax</module>
-                <module>core-java-modules/core-java-lang-syntax-2</module>
-                <module>core-java-modules/core-java-lang</module>
-                <module>core-java-modules/core-java-lang-2</module>
-                <module>core-java-modules/core-java-lang-oop</module>
-                <module>core-java-modules/core-java-lang-oop-2</module>
-                <module>core-java-modules/core-java-lang-oop-3</module>
-                <module>core-java-modules/core-java-lang-oop-4</module>
                 <module>core-java-modules</module>
-                <module>core-java-modules/core-java-networking</module>
-                <module>core-java-modules/core-java-perf</module>
-                <module>core-java-modules/core-java-sun</module>
-                <module>core-java-modules/core-java-string-conversions</module>
-                <module>core-java-modules/core-java-string-conversions-2</module>
-                <module>core-java-modules/core-java-string-operations</module>
-                <module>core-java-modules/core-java-string-operations-2</module>
-                <module>core-java-modules/core-java-string-algorithms</module>
-                <module>core-java-modules/core-java-string-algorithms-2</module>
-                <module>core-java-modules/core-java-string-apis</module>
-                <module>core-java-modules/core-java-strings</module>
                 <module>core-kotlin-modules</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
@@ -1411,27 +1260,7 @@
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
-                <module>spring-security-modules/spring-security-acl</module>
-                <module>spring-security-modules/spring-security-angular/server</module>
-                <module>spring-security-modules/spring-security-cache-control</module>
-                <module>spring-security-modules/spring-security-core</module>
-                <module>spring-security-modules/spring-security-mvc</module>
-                <module>spring-security-modules/spring-security-mvc-boot</module>
-                <module>spring-security-modules/spring-security-mvc-custom</module>
-                <module>spring-security-modules/spring-security-mvc-digest-auth</module>
-                <module>spring-security-modules/spring-security-mvc-ldap</module>
-                <module>spring-security-modules/spring-security-mvc-login</module>
-                <module>spring-security-modules/spring-security-mvc-persisted-remember-me</module>
-                <module>spring-security-modules/spring-security-mvc-socket</module>
-                <module>spring-security-modules/spring-security-oidc</module>
-                <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
-                <module>spring-security-modules/spring-security-rest</module>
-                <module>spring-security-modules/spring-security-rest-basic-auth</module>
-                <module>spring-security-modules/spring-security-rest-custom</module>
-                <module>spring-security-modules/spring-security-sso</module>
-                <module>spring-security-modules/spring-security-stormpath</module>
-                <module>spring-security-modules/spring-security-thymeleaf</module>
-                <module>spring-security-modules/spring-security-x509</module>
+                <module>spring-security-modules</module>
                 <module>spring-session</module>
                 <module>spring-shell</module>
                 <module>spring-sleuth</module>
