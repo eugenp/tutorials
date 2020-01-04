@@ -1,0 +1,130 @@
+<!--
+  Copyright (c) 2016 IBM Corp.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html>
+    <head>
+        <script src="js/mpData.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <section id="appIntro">
+            <div id="titleSection">
+                <h1 id="appTitle">System Properties Sample</h1>
+                <div class="line"></div>
+                <div class="headerImage"></div>
+                <h2>Congrats on your shiny, new Open Liberty sample app!</h2>
+                <p>This sample app uses a System Properties microservice to return the properties of the system that you're running.</p>
+            </div>
+
+            <div class="msSection" id="systemProperties">
+                <div class="headerRow">
+                    <div class="headerIcon"><img src="img/sysProps.svg"/></div>
+                    <div class="headerTitle" id="sysPropTitle"><h2>System Properties</h2></div>
+                </div>
+                <div class="sectionContent">
+                    <table id="systemPropertiesTable">
+                        <tbody id="sysPropertiesTableBody">
+                        <tr><th>Properties</th><th>Value</th></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="whereTo">
+            <p>This sample app, running on Open Liberty, uses a microservice to get the system properties from your laptop and displays them in your browser. It also displays health information about the microservice (or it will when you've added the capability) and metrics for the microservice. Scroll down to learn more.</p>
+        </section>
+
+        <section id="openLibertyAndMp">
+            <h1>System properties sample Insights</h1>
+            <h2>Built with Microprofile on Open Liberty </h2>
+            <div class="msSection collapsed" id="healthSection">
+                <div class="collapsibleRow headerRow" onClick="toggle()">
+                    <div class="headerIcon"><img src="img/health.svg"/></div>
+                    <div class="headerTitle">
+                        <h2>Health</h2>
+                        <p>Monitoring the health of your microservice</p>
+                        <img class="caret" src="img/carets/caret_down_blue.svg"/>
+                    </div>
+                </div>
+                <div class="collapsibleContent" id="collapsibleHealth">
+                    <div class="sectionContent">
+                        <div id="healthBox">
+                            <div id="healthIcon"><div id="healthStatusIcon"><img id="healthStatusIconImage"/></div></div>
+                            <div id="healthText">
+                                <p id="serviceName"></p>
+                                <p id="serviceStatus"></p>
+                            </div>
+                        </div>
+                        <table id="healthTable"></table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="msSection collapsed" id="metricsSection">
+                <div class="collapsibleRow headerRow" onClick="toggle()">
+                    <div class="headerIcon"><img src="img/metrics.svg"/></div>
+                    <div class="headerTitle">
+                        <h2>Metrics</h2>
+                        <p>Monitoring how well your service is running</p>
+                        <img class="caret" src="img/carets/caret_down_green.svg"/>
+                    </div>
+                </div>
+                <div class="collapsibleContent" id="collapsibleConfig">
+                    <div class="sectionContent" id="metricsText">
+                        <table id="metricsTable">
+                            <tbody id="metricsTableBody">
+                            <tr><th>PROPERTY</th><th>VALUE</th></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="learnMore">
+                        <h2>Want to learn more about Open Liberty and MicroProfile?</h2>
+                        <p>Continue your winning streak and keep building successful apps with the help of our guides. Our MicroProfile&trade; guides are a great place to start if you want to build something similar to this sample app.</p>
+                        <a href="https://openliberty.io/guides/?search=MicroProfile&key=tag"><button id="mpGuidesButton">Check out our MicroProfile guides</button></a>
+                    </div>
+            </div>
+
+
+        </section>
+        <section id="whereTo">
+            <h2>Where to next, captain?</h2>
+            <h4>Set course for the Open Liberty guides!</h4>
+            <p>All of the info you need to continue your journey is here, laid out in easy to follow steps and examples. Searching our current selection makes it easy to find the guide that will help make your next project a reality.</p>
+            <a href="https://openliberty.io/guides/"><button id="guidesButton">View all Open Liberty guides</button></a>
+        </section>
+
+        <script>
+            displaySystemProperties(); // this calls displayMetrics() because it is a dependency
+            displayHealth();
+            //displayConfigProperties();
+        </script>
+    </body>
+
+    <footer class="bodyFooter">
+        <div class="bodyFooterLink">
+          <a id="licenseLink"href="https://github.com/OpenLiberty/open-liberty/blob/master/LICENSE">License</a>
+          <a href="https://twitter.com/OpenLibertyIO">Twitter</a>
+          <a href="https://github.com/OpenLiberty">GitHub</a>
+          <a href="https://openliberty.io/">openliberty.io</a>
+        </div>
+        <p id="footer_text">an IBM open source project</p>
+        <p id="footer_copyright">&copy;Copyright IBM Corp. 2018</p>
+    </footer>
+</html>
