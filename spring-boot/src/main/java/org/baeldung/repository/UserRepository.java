@@ -1,6 +1,6 @@
 package org.baeldung.repository;
 
-import org.baeldung.caching.model.User;
+import org.baeldung.model.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -15,7 +15,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
 
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<User, Integer> {

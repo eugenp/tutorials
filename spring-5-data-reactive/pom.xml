@@ -7,8 +7,8 @@
     <packaging>jar</packaging>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
@@ -17,6 +17,7 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
+            <version>${reactor-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -119,7 +120,6 @@
             <version>${couchbaseMock.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -214,31 +214,16 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-        </repository>
-    </repositories>
-
     <properties>
         <kotlin.version>1.2.40</kotlin.version>
         <kotlin-maven-plugin.version>1.2.40</kotlin-maven-plugin.version>
-        <spring-tx.version>5.2.0.M2</spring-tx.version>
-        <spring-data-r2dbc.version>1.0.0.M2</spring-data-r2dbc.version>
-        <r2dbc-h2.version>0.8.0.M8</r2dbc-h2.version>
+        <spring-tx.version>5.2.2.RELEASE</spring-tx.version>
+        <spring-data-r2dbc.version>1.0.0.RELEASE</spring-data-r2dbc.version>
+        <r2dbc-h2.version>0.8.1.RELEASE</r2dbc-h2.version>
         <httpclient.version>4.5.2</httpclient.version>
-        <h2.version>1.4.199</h2.version>
+        <h2.version>1.4.200</h2.version>
         <couchbaseMock.version>1.5.23</couchbaseMock.version>
+        <reactor-core.version>3.3.1.RELEASE</reactor-core.version>
     </properties>
 
 </project>

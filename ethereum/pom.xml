@@ -1,13 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.ethereum</groupId>
     <artifactId>ethereum</artifactId>
     <name>ethereum</name>
 
     <parent>
-        <artifactId>parent-spring-5</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-spring-5</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-spring-5</relativePath>
     </parent>
@@ -215,5 +216,4 @@
         <slf4j.version>1.7.25</slf4j.version>
         <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
     </properties>
-
 </project>

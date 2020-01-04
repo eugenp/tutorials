@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>remoting-hessian-burlap</artifactId>
-	<name>remoting-hessian-burlap</name>
     <version>1.0-SNAPSHOT</version>
+    <name>remoting-hessian-burlap</name>
     <packaging>pom</packaging>
-	
-	<parent>
-        <artifactId>parent-boot-1</artifactId>
+
+    <parent>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-1</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-1</relativePath>
     </parent>
@@ -19,4 +19,5 @@
         <module>remoting-hessian-burlap-server</module>
         <module>remoting-hessian-burlap-client</module>
     </modules>
+
 </project>

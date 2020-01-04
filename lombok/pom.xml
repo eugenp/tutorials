@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-    <name>lombok</name>
     <artifactId>lombok</artifactId>
     <version>0.1-SNAPSHOT</version>
+    <name>lombok</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -76,11 +75,12 @@
 
     <properties>
         <!-- lombok: https://projectlombok.org/changelog.html -->
-        <lombok.version>1.18.4</lombok.version>
+        <lombok.version>1.18.10</lombok.version>
+
         <!-- various -->
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
         <!-- delombok maven plugin -->
-        <delombok-maven-plugin.version>1.18.4.0</delombok-maven-plugin.version>
+        <delombok-maven-plugin.version>1.18.10.0</delombok-maven-plugin.version>
         <assertj-core.version>3.8.0</assertj-core.version>
     </properties>
 

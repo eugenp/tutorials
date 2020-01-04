@@ -36,17 +36,17 @@ public class IntegrationTest {
 
     @Test public void givenRequestHasBeenMade_whenQueryOverNameAttribute_thenGetJohn() throws Exception {
         // Get John
-        mockMvc.perform(get("/personQuery?name=John")).andExpect(status().isOk()).andExpect(content().contentType(contentType))
+        mockMvc.perform(get("/users?name=John")).andExpect(status().isOk()).andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$", hasSize(1))).andExpect(jsonPath("$[0].name", is("John")))
                 .andExpect(jsonPath("$[0].address.address", is("Fake Street 1")))
-                .andExpect(jsonPath("$[0].address.country", is("Fake Country")));
+                .andExpect(jsonPath("$[0].address.country", is("Spain")));
     }
 
     @Test public void givenRequestHasBeenMade_whenQueryOverNameAttribute_thenGetLisa() throws Exception {
         // Get Lisa
-        mockMvc.perform(get("/personQuery?name=Lisa")).andExpect(status().isOk()).andExpect(content().contentType(contentType))
+        mockMvc.perform(get("/users?name=Lisa")).andExpect(status().isOk()).andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$", hasSize(1))).andExpect(jsonPath("$[0].name", is("Lisa")))
                 .andExpect(jsonPath("$[0].address.address", is("Real Street 1")))
-                .andExpect(jsonPath("$[0].address.country", is("Real Country")));
+                .andExpect(jsonPath("$[0].address.country", is("Germany")));
     }
 }

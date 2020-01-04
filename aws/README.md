@@ -1,6 +1,6 @@
 ## AWS
 
-This module contains articles about AWS
+This module contains articles about Amazon Web Services (AWS)
 
 ### Relevant articles
 
