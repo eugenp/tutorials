@@ -23,6 +23,38 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
+        
+        <dependency>
+			<groupId>com.jcabi</groupId>
+			<artifactId>jcabi-aspects</artifactId>
+			<version>0.22.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.9.5</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>28.1-jre</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.cactoos</groupId>
+			<artifactId>cactoos</artifactId>
+			<version>0.43</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ea.async</groupId>
+			<artifactId>ea-async</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+        
     </dependencies>
 
     <build>
@@ -36,6 +68,30 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
+            <plugin>
+				<groupId>com.jcabi</groupId>
+				<artifactId>jcabi-maven-plugin</artifactId>
+				<version>0.14.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>ajc</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjtools</artifactId>
+						<version>1.9.1</version>
+					</dependency>
+					<dependency>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjweaver</artifactId>
+						<version>1.9.1</version>
+					</dependency>
+				</dependencies>
+			</plugin>
         </plugins>
         <resources>
             <resource>
