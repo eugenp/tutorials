@@ -67,7 +67,7 @@
 					<target>${maven.compiler.target}</target>
 				</configuration>
 			</plugin>
-            
+
 			<plugin>
 				<groupId>com.jcabi</groupId>
 				<artifactId>jcabi-maven-plugin</artifactId>
