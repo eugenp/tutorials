@@ -5,6 +5,26 @@
 # variable shadowing
 # nesting and recursion
 
+simple_function() {
+    echo "First"
+    for ((i=0;i<5;++i)) do
+        echo -n " "$i" ";
+    done
+}
+
+function simple_function {
+    echo "Second"
+    for ((i=0;i<5;++i)) do
+        echo -n " "$i" ";
+    done
+}
+
+# missing brackets still works
+# as long as we have compound commands
+function simple_for_loop()
+    for ((i=0;i<5;++i)) do
+        echo -n " "$i" ";
+    done
 
 function simple_inputs() {
     echo "This is the first argument [$1]"
@@ -12,15 +32,21 @@ function simple_inputs() {
     echo "Calling function with $# aruments"
 }
 
-global_variable="lorem"
+# global_variable="lorem"
+# sum=0
+# function simple_outputs() {
+#     sum=$(($1+$2)) 
+#     global_variable="dolor"
+# }
+
 function simple_outputs() {
     sum=$(($1+$2)) 
-    echo "Sum is $sum"
-    global_variable="dolor"
-    # this is just the status code
-    # does not work if we want to return 
-    # other than numerical 
-    return $sum
+    echo $sum
+}
+
+function ref_outputs() {
+    declare -n sum_ref=$3
+    sum_ref=$(($1+$2)) 
 }
 
 # missing brackets still works
@@ -60,13 +86,17 @@ function fibonnaci_recursion() {
 }
 
 
-
-simple_inputs one two three
-simple_outputs 1 2
-simple_for_loop
-simple_comparison 6
-simple_comparison 4
-simple_subshell
-echo $global_variable
+#simple_function
+# simple_inputs one 'two three'
+# sum=$(simple_outputs 1 2)
+# echo "Sum is $sum"
+# sum=0
+ref_outputs 1 9 sumt
+echo "Sum is $sumt"
+# simple_for_loop
+# simple_comparison 6
+# simple_comparison 4
+# simple_subshell
+# echo $global_variable
 
 #echo $(fibonnaci_recursion 7)
