@@ -11,7 +11,6 @@ import java.util.concurrent.Future;
 
 import com.google.common.util.concurrent.AsyncCallable;
 import com.google.common.util.concurrent.Callables;
-import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
