@@ -1,8 +1,9 @@
 package com.baeldung.algorithms.balancedbrackets;
 
-import java.util.Stack;
+import java.util.Deque;
+import java.util.LinkedList;
 
-public class BalancedBracketsUsingStack {
+public class BalancedBracketsUsingDeque {
 
         public boolean isBalanced(String str) {
                 if (null == str || str.length() == 0 || ((str.length() % 2) != 0)) {
@@ -17,17 +18,17 @@ public class BalancedBracketsUsingStack {
                         }
                 }
 
-                Stack<Character> stack = new Stack<>();
+                Deque<Character> deque = new LinkedList<>();
                 for (char ch: str.toCharArray()) {
                         if (ch == '{' || ch == '[' || ch == '(') {
-                                stack.push(ch);
+                                deque.addFirst(ch);
                         } else {
-                                if ( !stack.isEmpty()
-                                        && ((stack.peek() == '{' && ch == '}')
-                                        || (stack.peek() == '[' && ch == ']')
-                                        || (stack.peek() == '(' && ch == ')')
+                                if ( !deque.isEmpty()
+                                        && ((deque.peekFirst() == '{' && ch == '}')
+                                        || (deque.peekFirst() == '[' && ch == ']')
+                                        || (deque.peekFirst() == '(' && ch == ')')
                                     )) {
-                                        stack.pop();
+                                        deque.removeFirst();
                                 } else {
                                         return false;
                                 }
