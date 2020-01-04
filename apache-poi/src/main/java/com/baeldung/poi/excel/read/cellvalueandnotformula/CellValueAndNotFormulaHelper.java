@@ -29,17 +29,17 @@ public class CellValueAndNotFormulaHelper {
 
         if (cell.getCellType() == CellType.FORMULA) {
             switch (cell.getCachedFormulaResultType()) {
-            case BOOLEAN:
-                cellValue = cell.getBooleanCellValue();
-                break;
-            case NUMERIC:
-                cellValue = cell.getNumericCellValue();
-                break;
-            case STRING:
-                cellValue = cell.getStringCellValue();
-                break;
-            default:
-                cellValue = null;
+                case BOOLEAN:
+                    cellValue = cell.getBooleanCellValue();
+                    break;
+                case NUMERIC:
+                    cellValue = cell.getNumericCellValue();
+                    break;
+                case STRING:
+                    cellValue = cell.getStringCellValue();
+                    break;
+                default:
+                    cellValue = null;
             }
         }
 
@@ -48,7 +48,7 @@ public class CellValueAndNotFormulaHelper {
     }
 
     public Object getCellValueByEvaluatingFormula(String fileLocation, String cellLocation) throws IOException {
-        Object cellValue;
+        Object cellValue = new Object();
 
         FileInputStream inputStream = new FileInputStream(new File(fileLocation));
         Workbook workbook = new XSSFWorkbook(inputStream);
@@ -61,18 +61,20 @@ public class CellValueAndNotFormulaHelper {
         Row row = sheet.getRow(cellAddress.getRow());
         Cell cell = row.getCell(cellAddress.getColumn());
 
-        switch (evaluator.evaluateFormulaCell(cell)) {
-        case BOOLEAN:
-            cellValue = cell.getBooleanCellValue();
-            break;
-        case NUMERIC:
-            cellValue = cell.getNumericCellValue();
-            break;
-        case STRING:
-            cellValue = cell.getStringCellValue();
-            break;
-        default:
-            cellValue = null;
+        if (cell.getCellType() == CellType.FORMULA) {
+            switch (evaluator.evaluateFormulaCell(cell)) {
+                case BOOLEAN:
+                    cellValue = cell.getBooleanCellValue();
+                    break;
+                case NUMERIC:
+                    cellValue = cell.getNumericCellValue();
+                    break;
+                case STRING:
+                    cellValue = cell.getStringCellValue();
+                    break;
+                default:
+                    cellValue = null;
+            }
         }
 
         workbook.close();
