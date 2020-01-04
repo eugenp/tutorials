@@ -16,12 +16,12 @@
     </parent>
 
     <modules>
-        <module>demo-frontend</module>
-        <module>demo-backend</module>
-        <module>liveness-example</module>
-        <module>readiness-example</module>
-        <module>client-service</module>
-        <module>travel-agency-service</module>
+        <module>kubernetes-minikube/demo-frontend</module>
+        <module>kubernetes-minikube/demo-backend</module>
+        <module>kubernetes-selfhealing/liveness-example</module>
+        <module>kubernetes-selfhealing/readiness-example</module>
+        <module>kubernetes-guide/client-service</module>
+        <module>kubernetes-guide/travel-agency-service</module>
     </modules>
 
 </project>

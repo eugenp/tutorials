@@ -10,9 +10,47 @@
         </encoder>
     </appender>
 
+    <appender name="emailAppender" class="ch.qos.logback.classic.net.SMTPAppender">
+        <smtpHost>OUR-SMTP-HOST-ADDRESS</smtpHost>
+        <!-- one or more recipients are possible -->
+        <to>EMAIL-RECIPIENT-1</to>
+        <to>EMAIL-RECIPIENT-2</to>
+        <from>SENDER-EMAIL-ADDRESS</from>
+        <subject>BAELDUNG: %logger{20} - %msg</subject>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="emailAppenderCustomBufferSize" class="ch.qos.logback.classic.net.SMTPAppender">
+        <smtpHost>OUR-SMTP-HOST-ADDRESS</smtpHost>
+        <to>EMAIL-RECIPIENT</to>
+        <from>SENDER-EMAIL-ADDRESS</from>
+        <subject>BAELDUNG: %logger{20} - %msg</subject>
+        <layout class="ch.qos.logback.classic.html.HTMLLayout"/>
+        <cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTracker">
+            <!-- only 5 log entries on email -->
+            <bufferSize>5</bufferSize>
+        </cyclicBufferTracker>
+    </appender>
+
+    <appender name="emailAppenderGmail" class="ch.qos.logback.classic.net.SMTPAppender">
+        <smtpHost>smtp.gmail.com</smtpHost>
+        <smtpPort>587</smtpPort>
+        <STARTTLS>true</STARTTLS>
+        <asynchronousSending>false</asynchronousSending>
+        <username>SENDER-EMAIL@gmail.com</username>
+        <password>GMAIL-ACCT-PASSWORD</password>
+        <to>EMAIL-RECIPIENT</to>
+        <from>SENDER-EMAIL@gmail.com</from>
+        <subject>BAELDUNG: %logger{20} - %msg</subject>
+        <layout class="ch.qos.logback.classic.html.HTMLLayout"/>
+    </appender>
+
     <root level="info">
         <appender-ref ref="map"/>
         <appender-ref ref="out"/>
+        <appender-ref ref="emailAppender"/>
     </root>
 
 </configuration>
