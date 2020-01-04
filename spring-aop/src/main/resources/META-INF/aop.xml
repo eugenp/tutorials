@@ -1,6 +1,6 @@
 <aspectj>
     <aspects>
-        <aspect name="org.baeldung.aspectj.SecuredMethodAspect"/>
+        <aspect name="com.baeldung.aspectj.SecuredMethodAspect"/>
         <weaver options="-verbose -showWeaveInfo">
             <include within="com.baeldung.aspectj.*"/>
         </weaver>
