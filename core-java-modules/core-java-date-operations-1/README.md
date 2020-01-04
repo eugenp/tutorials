@@ -1,6 +1,5 @@
-## Java Date/time computations Cookbooks and Examples
-
-This module contains articles about date and time computations in Java.
+## Core Date Operations (Part 1)
+This module contains articles about date operations in Java.
 
 ### Relevant Articles: 
 - [Difference Between Two Dates in Java](http://www.baeldung.com/java-date-difference)
@@ -13,3 +12,4 @@ This module contains articles about date and time computations in Java.
 - [Increment Date in Java](http://www.baeldung.com/java-increment-date)
 - [Add Hours To a Date In Java](http://www.baeldung.com/java-add-hours-date)
 - [Introduction to Joda-Time](http://www.baeldung.com/joda-time)
+- [[Next -->]](/core-java-modules/core-java-date-operations-2)

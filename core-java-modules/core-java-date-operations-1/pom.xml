@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>core-java-datetime-computations</artifactId>
+    <artifactId>core-java-date-operations-1</artifactId>
     <version>${project.parent.version}</version>
-    <name>core-java-datetime-computations</name>
+    <name>core-java-date-operations-1</name>
     <packaging>jar</packaging>
 
     <parent>
@@ -41,7 +41,7 @@
     </dependencies>
 
     <build>
-        <finalName>core-java-datetime-computations</finalName>
+        <finalName>core-java-date-operations-1</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
