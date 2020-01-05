@@ -8,8 +8,9 @@ import model.MovieSearchRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Consumer;
 
-public class MovieApp {
+public class MovieApp implements Consumer<MovieSearchRequest> {
     private IFetchMovieReviews fetchMovieReviews;
     private IPrintMovieReviews printMovieReviews;
     private static Random rand = new Random();
@@ -17,12 +18,6 @@ public class MovieApp {
     public MovieApp(IFetchMovieReviews fetchMovieReviews, IPrintMovieReviews printMovieReviews) {
         this.fetchMovieReviews = fetchMovieReviews;
         this.printMovieReviews = printMovieReviews;
-    }
-
-    public void displayMovieReviews(MovieSearchRequest movieSearchRequest) {
-        List<MovieReview> movieReviewList = fetchMovieReviews.fetchMovieReviews(movieSearchRequest);
-        List<MovieReview> randomReviews = filterRandomReviews(new ArrayList<>(movieReviewList));
-        printMovieReviews.writeMovieReviews(randomReviews);
     }
 
     private List<MovieReview> filterRandomReviews(List<MovieReview> movieReviewList) {
@@ -41,5 +36,11 @@ public class MovieApp {
 
     private int getRandomElement(int size) {
         return rand.nextInt(size);
+    }
+
+    public void accept(MovieSearchRequest movieSearchRequest) {
+        List<MovieReview> movieReviewList = fetchMovieReviews.fetchMovieReviews(movieSearchRequest);
+        List<MovieReview> randomReviews = filterRandomReviews(new ArrayList<>(movieReviewList));
+        printMovieReviews.writeMovieReviews(randomReviews);
     }
 }
