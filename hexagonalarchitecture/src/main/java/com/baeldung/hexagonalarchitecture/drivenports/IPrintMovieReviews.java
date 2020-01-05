@@ -1,6 +1,6 @@
-package drivenports;
+package com.baeldung.hexagonalarchitecture.drivenports;
 
-import model.MovieReview;
+import com.baeldung.hexagonalarchitecture.model.MovieReview;
 
 import java.util.List;
 

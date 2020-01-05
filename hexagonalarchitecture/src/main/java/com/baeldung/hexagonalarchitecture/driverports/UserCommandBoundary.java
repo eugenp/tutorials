@@ -1,9 +1,9 @@
-package driverports;
+package com.baeldung.hexagonalarchitecture.driverports;
 
-import core.MovieApp;
-import drivenports.IFetchMovieReviews;
-import drivenports.IPrintMovieReviews;
-import model.CommandMapperModel;
+import com.baeldung.hexagonalarchitecture.core.MovieApp;
+import com.baeldung.hexagonalarchitecture.drivenports.IFetchMovieReviews;
+import com.baeldung.hexagonalarchitecture.drivenports.IPrintMovieReviews;
+import com.baeldung.hexagonalarchitecture.model.CommandMapperModel;
 import org.requirementsascode.Model;
 import org.requirementsascode.ModelRunner;
 

@@ -1,4 +1,4 @@
-package model;
+package com.baeldung.hexagonalarchitecture.model;
 
 import org.requirementsascode.Model;
 

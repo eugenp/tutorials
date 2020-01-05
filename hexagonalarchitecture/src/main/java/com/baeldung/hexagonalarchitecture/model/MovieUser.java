@@ -1,6 +1,6 @@
-package model;
+package com.baeldung.hexagonalarchitecture.model;
 
-import driverports.IUserInput;
+import com.baeldung.hexagonalarchitecture.driverports.IUserInput;
 
 public class MovieUser {
     private IUserInput userInputDriverPort;

@@ -1,7 +1,7 @@
-package drivenports;
+package com.baeldung.hexagonalarchitecture.drivenports;
 
-import model.MovieReview;
-import model.MovieSearchRequest;
+import com.baeldung.hexagonalarchitecture.model.MovieReview;
+import com.baeldung.hexagonalarchitecture.model.MovieSearchRequest;
 
 import java.util.*;
 

@@ -1,12 +1,13 @@
-import core.MovieApp;
-import drivenports.ConsolePrinter;
-import drivenports.IFetchMovieReviews;
-import drivenports.IPrintMovieReviews;
-import drivenports.MovieReviewsRepo;
-import driverports.IUserInput;
-import driverports.UserCommandBoundary;
-import model.MovieSearchRequest;
-import model.MovieUser;
+package com.baeldung.hexagonalarchitecture;
+
+import com.baeldung.hexagonalarchitecture.drivenports.ConsolePrinter;
+import com.baeldung.hexagonalarchitecture.drivenports.IFetchMovieReviews;
+import com.baeldung.hexagonalarchitecture.drivenports.IPrintMovieReviews;
+import com.baeldung.hexagonalarchitecture.drivenports.MovieReviewsRepo;
+import com.baeldung.hexagonalarchitecture.driverports.IUserInput;
+import com.baeldung.hexagonalarchitecture.driverports.UserCommandBoundary;
+import com.baeldung.hexagonalarchitecture.model.MovieSearchRequest;
+import com.baeldung.hexagonalarchitecture.model.MovieUser;
 
 public class Main {
 

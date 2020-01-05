@@ -1,9 +1,9 @@
-package core;
+package com.baeldung.hexagonalarchitecture.core;
 
-import drivenports.IFetchMovieReviews;
-import drivenports.IPrintMovieReviews;
-import model.MovieReview;
-import model.MovieSearchRequest;
+import com.baeldung.hexagonalarchitecture.drivenports.IFetchMovieReviews;
+import com.baeldung.hexagonalarchitecture.drivenports.IPrintMovieReviews;
+import com.baeldung.hexagonalarchitecture.model.MovieReview;
+import com.baeldung.hexagonalarchitecture.model.MovieSearchRequest;
 
 import java.util.ArrayList;
 import java.util.List;
