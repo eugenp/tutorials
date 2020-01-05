@@ -51,9 +51,8 @@ public class Phone {
             return false;
         }
         Phone phone = (Phone) o;
-        return getType().equals(phone.getType()) &&
-                getAreaCode().equals(phone.getAreaCode()) &&
-                getNumber().equals(phone.getNumber());
+        return getType().equals(phone.getType()) && getAreaCode().equals(phone.getAreaCode())
+                && getNumber().equals(phone.getNumber());
     }
 
     @Override

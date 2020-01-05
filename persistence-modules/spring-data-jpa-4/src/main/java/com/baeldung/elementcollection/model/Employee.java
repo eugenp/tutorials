@@ -10,10 +10,7 @@ public class Employee {
     private int id;
     private String name;
     @ElementCollection
-    @CollectionTable(
-            name = "employee_phone",
-            joinColumns = @JoinColumn(name = "employee_id")
-    )
+    @CollectionTable(name = "employee_phone", joinColumns = @JoinColumn(name = "employee_id"))
     private List<Phone> phones;
 
     public Employee() {

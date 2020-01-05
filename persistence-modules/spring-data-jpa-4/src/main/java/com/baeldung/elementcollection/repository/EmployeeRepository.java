@@ -32,7 +32,8 @@ public class EmployeeRepository {
     }
 
     public Employee findByJPQL(int id) {
-        return em.createQuery("SELECT u FROM Employee AS u JOIN FETCH u.phones WHERE u.id=:id", Employee.class).setParameter("id", id).getSingleResult();
+        return em.createQuery("SELECT u FROM Employee AS u JOIN FETCH u.phones WHERE u.id=:id", Employee.class)
+                .setParameter("id", id).getSingleResult();
     }
 
     public Employee findByEntityGraph(int id) {
