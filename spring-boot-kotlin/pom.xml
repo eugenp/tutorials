@@ -8,8 +8,8 @@
     <description>Demo project showing how to use non-blocking in Kotlin with Spring Boot</description>
 
     <parent>
-        <artifactId>parent-kotlin</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-kotlin</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../parent-kotlin</relativePath>
     </parent>
