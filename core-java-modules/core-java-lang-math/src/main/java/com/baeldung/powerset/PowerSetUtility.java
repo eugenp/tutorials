@@ -1,7 +1,5 @@
 package com.baeldung.powerset;
 
-import com.google.common.collect.Sets;
-
 import javax.annotation.Nullable;
 import java.util.AbstractSet;
 import java.util.ArrayList;
@@ -163,7 +161,7 @@ public class PowerSetUtility<T> {
         return unMapIndex(powerSetIndices);
     }
 
-    private List<List<Boolean>> iterativePowerSetByLoopOverNumbersWithReverseLexicographicalOrder(int n) {
+    private List<List<Boolean>> iterativePowerSetByLoopOverNumbers(int n) {
         List<List<Boolean>> powerSet = new ArrayList<>();
         for (int i = 0; i < (1 << n); i++) {
             List<Boolean> subset = new ArrayList<>(n);
@@ -174,7 +172,7 @@ public class PowerSetUtility<T> {
         return powerSet;
     }
 
-    private List<List<Boolean>> iterativePowerSetByLoopOverNumbersWithGrayCodeOrder(int n) {
+    private List<List<Boolean>> iterativePowerSetByLoopOverNumbersWithMinimalChange(int n) {
         List<List<Boolean>> powerSet = new ArrayList<>();
         for (int i = 0; i < (1 << n); i++) {
             List<Boolean> subset = new ArrayList<>(n);
@@ -195,30 +193,14 @@ public class PowerSetUtility<T> {
 
     public List<List<T>> iterativePowerSetByLoopOverNumbers(Set<T> set) {
         initializeMap(set);
-                List<List<Boolean>> sets = iterativePowerSetByLoopOverNumbersWithReverseLexicographicalOrder(set.size());
+        List<List<Boolean>> sets = iterativePowerSetByLoopOverNumbers(set.size());
         return unMapListBinary(sets);
     }
 
     public List<List<T>> iterativePowerSetByLoopOverNumbersMinimalChange(Set<T> set) {
         initializeMap(set);
-        List<List<Boolean>> sets = iterativePowerSetByLoopOverNumbersWithGrayCodeOrder(set.size());
+        List<List<Boolean>> sets = iterativePowerSetByLoopOverNumbersWithMinimalChange(set.size());
         return unMapListBinary(sets);
-    }
-
-    public static int getRankInLexicographicalOrder(List<Boolean> subset) {
-        int rank = 0;
-        for (int i = 0; i < subset.size(); i++)
-            if (subset.get(i))
-                rank += (1 << (subset.size() - i - 1));
-        return rank;
-    }
-
-    public static List<Boolean> getSubsetForRankInLexicographicalOrder(int rank, int sizeOfSet) {
-        Boolean[] subset = new Boolean[sizeOfSet];
-        for(int j = 0; j < sizeOfSet; j++) {
-            subset[sizeOfSet - j - 1] = ((rank & (1 << j)) > 0);
-        }
-        return Arrays.asList(subset);
     }
 
     private Set<Set<Integer>> recursivePowerSetIndexRepresentation(int idx, int n) {
