@@ -1,8 +1,8 @@
 package com.baeldung.graphql;
 
-import java.util.List;
-
 import com.coxautodev.graphql.tools.GraphQLResolver;
+
+import java.util.List;
 
 public class AuthorResolver implements GraphQLResolver<Author> {
     private PostDao postDao;

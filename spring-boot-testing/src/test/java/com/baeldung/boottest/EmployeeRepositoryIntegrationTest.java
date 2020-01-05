@@ -1,7 +1,5 @@
-package org.baeldung.demo.boottest;
+package com.baeldung.boottest;
 
-import org.baeldung.demo.boottest.Employee;
-import org.baeldung.demo.boottest.EmployeeRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

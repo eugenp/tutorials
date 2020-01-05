@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class GraphqlConfiguration {
+
     @Bean
     public PostDao postDao() {
         List<Post> posts = new ArrayList<>();

@@ -1,8 +1,5 @@
-package org.baeldung.demo.boottest;
+package com.baeldung.boottest;
 
-import org.baeldung.demo.boottest.Employee;
-import org.baeldung.demo.boottest.EmployeeRestController;
-import org.baeldung.demo.boottest.EmployeeService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(EmployeeRestController.class)
+@WebMvcTest(value = EmployeeRestController.class, secure = false)
 public class EmployeeControllerIntegrationTest {
 
     @Autowired

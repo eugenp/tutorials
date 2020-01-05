@@ -1,4 +1,4 @@
-package org.baeldung.demo.boottest;
+package com.baeldung.boottest;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;

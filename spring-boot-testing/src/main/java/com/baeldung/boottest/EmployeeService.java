@@ -1,4 +1,4 @@
-package org.baeldung.demo.boottest;
+package com.baeldung.boottest;
 
 import java.util.List;
 

@@ -9,3 +9,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 - [Spring Component Scanning](https://www.baeldung.com/spring-component-scanning)
 - [Spring @ComponentScan – Filter Types](https://www.baeldung.com/spring-componentscan-filter-type)
+- [How to Get All Spring-Managed Beans?](https://www.baeldung.com/spring-show-all-beans)

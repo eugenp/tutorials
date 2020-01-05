@@ -1,8 +1,7 @@
 package org.baeldung.converter;
 
-import com.baeldung.toggle.Employee;
-
 import org.baeldung.boot.Application;
+import org.baeldung.boot.domain.Employee;
 import org.baeldung.boot.domain.Modes;
 import org.junit.Test;
 import org.junit.runner.RunWith;

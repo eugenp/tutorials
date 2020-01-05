@@ -1,8 +1,7 @@
 package org.baeldung.boot.converter;
 
+import org.baeldung.boot.domain.Employee;
 import org.springframework.core.convert.converter.Converter;
-
-import com.baeldung.toggle.Employee;
 
 public class StringToEmployeeConverter implements Converter<String, Employee> {
 

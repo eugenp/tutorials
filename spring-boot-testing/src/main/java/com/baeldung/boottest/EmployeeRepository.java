@@ -1,10 +1,10 @@
-package org.baeldung.demo.boottest;
-
-import java.util.List;
+package com.baeldung.boottest;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Repository
 @Transactional
