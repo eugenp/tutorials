@@ -2,10 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.core-java-modules</groupId>
-    <artifactId>core-java-modules</artifactId>
-    <name>core-java-modules</name>
+    <artifactId>netflix-modules</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>Netflix Modules</name>
     <packaging>pom</packaging>
+    <description>Module for Netflix projects</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -14,11 +15,7 @@
     </parent>
 
     <modules>
-        <module>pre-jpms</module>
-        <module>core-java-optional</module>
-        <module>core-java-lang-operators</module>
-        <module>core-java-networking-2</module>
-        <module>core-java-date-operations-2</module>
+        <module>genie</module>
     </modules>
 
 </project>
