@@ -27,7 +27,8 @@ public class ElementCollectionIntegrationTest {
     @Before
     public void init() {
         Employee employee = new Employee(1, "Fred");
-        employee.setPhones(Arrays.asList(new Phone("work", "+55", "99999-9999"), new Phone("home", "+55", "98888-8888")));
+        employee.setPhones(
+                Arrays.asList(new Phone("work", "+55", "99999-9999"), new Phone("home", "+55", "98888-8888")));
         employeeRepository.save(employee);
     }
 
