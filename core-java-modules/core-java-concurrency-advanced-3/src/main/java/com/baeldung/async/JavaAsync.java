@@ -127,7 +127,6 @@ public class JavaAsync {
     }
 
     /**
-     * 
      * Finds factorial of a number using Async of Cactoos
      * @param number
      * @return
@@ -170,7 +169,6 @@ public class JavaAsync {
     }
 
     /**
-     * 
      * Finds factorial of a number using @Async of jcabi-aspects
      * @param number
      * @return
