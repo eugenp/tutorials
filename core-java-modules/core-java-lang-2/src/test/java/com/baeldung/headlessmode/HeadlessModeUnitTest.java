@@ -26,9 +26,9 @@ public class HeadlessModeUnitTest {
     private static final String OUT_FILE = System.getProperty("java.io.tmpdir") + "/product.jpg";
     private static final String FORMAT = "jpg";
 
-    //@Before
+    @Before
     public void setUpHeadlessMode() {
-        System.setProperty("java.awt.headless", "true");
+        System.setProperty("java.awt.headless", "false");
     }
 
     @Test
@@ -75,8 +75,8 @@ public class HeadlessModeUnitTest {
 
     @Test
     public void whenHeadlessmode_thenShowDialog() {
-        System.out.println(GraphicsEnvironment.isHeadless());       
-        JOptionPane.showMessageDialog(null, "Hello World");
+        System.out.println(GraphicsEnvironment.isHeadless());
+        JOptionPane.showMessageDialog(null, "Hello World");        
     }
 
 }
