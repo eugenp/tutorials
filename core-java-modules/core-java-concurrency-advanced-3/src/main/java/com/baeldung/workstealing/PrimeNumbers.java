@@ -14,20 +14,21 @@ public class PrimeNumbers extends RecursiveAction {
     private int granularity;
     static final List<Integer> GRANULARITIES
       = Arrays.asList(1, 10, 100, 1000, 10000);
-    private AtomicInteger noOfPrimeNumbers = new AtomicInteger();
+    private AtomicInteger noOfPrimeNumbers;
 
-    PrimeNumbers(int lowerBound, int upperBound, int granularity) {
+    PrimeNumbers(int lowerBound, int upperBound, int granularity, AtomicInteger noOfPrimeNumbers) {
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
         this.granularity = granularity;
+        this.noOfPrimeNumbers = noOfPrimeNumbers;
     }
 
     PrimeNumbers(int upperBound) {
-        this(1, upperBound, 100);
+        this(1, upperBound, 100, new AtomicInteger(0));
     }
 
-    private PrimeNumbers(int lowerBound, int upperBound) {
-        this(lowerBound, upperBound, 100);
+    private PrimeNumbers(int lowerBound, int upperBound, AtomicInteger noOfPrimeNumbers) {
+        this(lowerBound, upperBound, 100, noOfPrimeNumbers);
     }
 
     private List<PrimeNumbers> subTasks() {
@@ -36,7 +37,7 @@ public class PrimeNumbers extends RecursiveAction {
         for (int i = 1; i <= this.upperBound / granularity; i++) {
             int upper = i * granularity;
             int lower = (upper - granularity) + 1;
-            subTasks.add(new PrimeNumbers(lower, upper));
+            subTasks.add(new PrimeNumbers(lower, upper, noOfPrimeNumbers));
         }
         return subTasks;
     }

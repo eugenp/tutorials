@@ -1,6 +1,5 @@
 package com.baeldung.workstealing;
 
-
 import org.junit.Test;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
@@ -11,6 +10,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 
 import static org.junit.Assert.fail;
@@ -59,7 +59,7 @@ public class PrimeNumbersUnitTest {
     }
 
     private void stealCountInfo(StringBuilder info, int granularity, ForkJoinPool forkJoinPool) {
-        PrimeNumbers primes = new PrimeNumbers(1, 10000, granularity);
+        PrimeNumbers primes = new PrimeNumbers(1, 10000, granularity, new AtomicInteger(0));
         forkJoinPool.invoke(primes);
         forkJoinPool.shutdown();
 
