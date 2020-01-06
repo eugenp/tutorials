@@ -789,7 +789,6 @@
 
                 <module>tensorflow-java</module>
                 <module>spring-boot-flowable</module>
-                <module>spring-security-modules/spring-security-kerberos</module>
 
                 <module>spring-boot-nashorn</module>
                 <module>java-blockchain</module>

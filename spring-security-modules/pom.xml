@@ -15,12 +15,11 @@
 
     <profiles>
         <profile>
-        <id>default-first</id>
-        <modules>
-            <module>spring-security-kerberos</module>
-        </modules>
-
-    </profile>
+            <id>default-first</id>
+            <modules>
+                <module>spring-security-kerberos</module>
+            </modules>
+        </profile>
 
         <profile>
             <id>default-second</id>
@@ -30,6 +29,7 @@
                 <module>spring-security-angular/server</module>
                 <module>spring-security-cache-control</module>
                 <module>spring-security-core</module>
+                <module>spring-security-kerberos</module>
                 <module>spring-security-mvc</module>
                 <module>spring-security-mvc-boot</module>
                 <module>spring-security-mvc-custom</module>
