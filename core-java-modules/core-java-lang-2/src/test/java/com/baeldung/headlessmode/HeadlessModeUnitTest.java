@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +32,7 @@ public class HeadlessModeUnitTest {
     }
 
     @Test
-    public void whenSetUpSuccessful_thenHeadlessIsTrue() {
+    public void whenJavaAwtHeadlessSetToTrue_thenIsHeadlessReturnsTrue() {
         assertThat(GraphicsEnvironment.isHeadless()).isTrue();
     }
 
@@ -70,6 +71,12 @@ public class HeadlessModeUnitTest {
             frame.setVisible(true);
             frame.setSize(120, 120);
         });
+    }
+
+    @Test
+    public void whenHeadlessmode_thenShowDialog() {
+        System.out.println(GraphicsEnvironment.isHeadless());       
+        JOptionPane.showMessageDialog(null, "Hello World");
     }
 
 }
