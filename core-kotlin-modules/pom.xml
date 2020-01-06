@@ -23,6 +23,8 @@
         <module>core-kotlin-lang</module>
         <module>core-kotlin-lang-2</module>
         <module>core-kotlin-strings</module>
+        <module>core-kotlin-lang-oop</module>
+        <module>core-kotlin-lang-oop-2</module>
     </modules>
 
     <build>

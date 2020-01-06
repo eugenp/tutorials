@@ -1,6 +1,9 @@
 package com.baeldung.metaprogramming
 
-import groovy.time.TimeCategory
+
+import java.time.LocalDate
+import java.time.Period
+import java.time.Year
 
 class MetaprogrammingUnitTest extends GroovyTestCase {
 
@@ -51,14 +54,16 @@ class MetaprogrammingUnitTest extends GroovyTestCase {
 
     void testJavaMetaClass() {
         String.metaClass.capitalize = { String str ->
-            str.substring(0, 1).toUpperCase() + str.substring(1);
+            str.substring(0, 1).toUpperCase() + str.substring(1)
         }
         assert "norman".capitalize() == "Norman"
     }
 
     void testEmployeeExtension() {
-        Employee emp = new Employee(age: 28)
-        assert emp.getYearOfBirth() == 1992
+        def age = 28
+        def expectedYearOfBirth = Year.now() - age
+        Employee emp = new Employee(age: age)
+        assert emp.getYearOfBirth() == expectedYearOfBirth.value
     }
 
     void testJavaClassesExtensions() {
