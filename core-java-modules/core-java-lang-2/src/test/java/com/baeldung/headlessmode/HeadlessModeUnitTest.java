@@ -28,7 +28,7 @@ public class HeadlessModeUnitTest {
 
     @Before
     public void setUpHeadlessMode() {
-        System.setProperty("java.awt.headless", "false");
+        System.setProperty("java.awt.headless", "true");
     }
 
     @Test
@@ -74,9 +74,12 @@ public class HeadlessModeUnitTest {
     }
 
     @Test
-    public void whenHeadlessmode_thenShowDialog() {
-        System.out.println(GraphicsEnvironment.isHeadless());
-        JOptionPane.showMessageDialog(null, "Hello World");        
+    public void whenGUIOnHeadless_thenConditionalPatternWorks() {
+        if (GraphicsEnvironment.isHeadless()) {
+            System.out.println("Hello World");
+        } else {
+            JOptionPane.showMessageDialog(null, "Hello World");
+        }
     }
 
 }
