@@ -47,6 +47,7 @@
         <module>core-java-concurrency-basic-2</module>
         <module>core-java-concurrency-2</module>
         <module>core-java-concurrency-collections</module>
+        <module>core-java-date-operations-2</module>
         <module>core-java-exceptions</module>
         <module>core-java-exceptions-2</module>
         <module>core-java-function</module>

@@ -356,6 +356,7 @@
                 <module>apache-opennlp</module>
                 <module>apache-poi</module>
                 <module>apache-pulsar</module>
+                <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-solrj</module>
                 <module>apache-spark</module>
@@ -443,6 +444,7 @@
                 <module>java-math-2</module> <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
+                <module>java-numbers-3</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -516,8 +518,9 @@
                 <!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
                 <module>mustache</module>
                 <module>mybatis</module>
+
                 <module>ninja</module>
-                <module>netflix</module>
+                <module>netflix-modules</module>
 
                 <module>optaplanner</module>
                 <module>orika</module>
@@ -599,7 +602,7 @@
             </build>
 
             <modules>
-                <module>netflix</module>
+                <module>netflix-modules</module>
 
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
@@ -908,6 +911,7 @@
                 <module>apache-opennlp</module>
                 <module>apache-poi</module>
                 <module>apache-pulsar</module>
+                <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-solrj</module>
                 <module>apache-spark</module>
@@ -993,6 +997,7 @@
                 <module>java-math-2</module>  <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
+                <module>java-numbers-3</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -1063,8 +1068,9 @@
                 <!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
                 <module>mustache</module>
                 <module>mybatis</module>
+
                 <module>ninja</module>
-                <module>netflix</module>
+                <module>netflix-modules</module>
 
                 <module>optaplanner</module>
                 <module>orika</module>
