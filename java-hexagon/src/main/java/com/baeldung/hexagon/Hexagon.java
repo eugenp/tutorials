@@ -16,8 +16,8 @@ public class Hexagon {
         products.add(prodAdapter.addProduct("Watch", "Lamex Watch", 20));
         products.add(prodAdapter.addProduct("Shoes", "Nike", 30));
         products.add(prodAdapter.addProduct("Shoes", "Addidas", 15));
-        ProductSummary viewSummary = prodAdapter.viewSummary("Shoes");
-        System.out.println(viewSummary.toString());
+        ProductSummary productSummary = prodAdapter.viewSummary("Shoes");
+        System.out.println(productSummary.toString());
     }
 
 }
