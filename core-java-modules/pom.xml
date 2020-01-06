@@ -76,7 +76,6 @@
         <module>core-java-security</module>
         <module>core-java-perf</module>
         <module>core-java-reflection</module>
-        <module>core-java-security-manager</module>
         <module>core-java-streams</module>
         <module>core-java-streams-2</module>
         <module>core-java-streams-3</module>
