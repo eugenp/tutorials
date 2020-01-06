@@ -26,7 +26,7 @@ public class HeadlessModeUnitTest {
     private static final String OUT_FILE = System.getProperty("java.io.tmpdir") + "/product.jpg";
     private static final String FORMAT = "jpg";
 
-    @Before
+    //@Before
     public void setUpHeadlessMode() {
         System.setProperty("java.awt.headless", "true");
     }
