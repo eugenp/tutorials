@@ -14,3 +14,4 @@ This module contains articles about the Date and Time API introduced with Java 8
 - [Set the Time Zone of a Date in Java](https://www.baeldung.com/java-set-date-time-zone)
 - [Comparing Dates in Java](https://www.baeldung.com/java-comparing-dates)
 - [Generating Random Dates in Java](https://www.baeldung.com/java-random-dates)
+- [Creating a Date with Values in Java](https://www.baeldung.com/creating-a-date-with-values-in-java)
