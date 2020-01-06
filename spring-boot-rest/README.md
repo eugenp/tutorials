@@ -11,6 +11,7 @@ This module contains articles about Spring Boot RESTful APIs.
 - [Testing Web APIs with Postman Collections](https://www.baeldung.com/postman-testing-collections)
 - [Spring Boot Consuming and Producing JSON](https://www.baeldung.com/spring-boot-json)
 - [Error Handling for REST with Spring](https://www.baeldung.com/exception-handling-for-rest-with-spring)
+- [A quick and practical example of Hexagonal Architecture in Java](https://www.baeldung.com/quick-example-of-hexagonal-architecture-in-java)
 
 ### E-book
 
