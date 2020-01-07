@@ -1,12 +1,10 @@
 package com.baeldung.springbootsecurity.oauth2server;
 
-import org.apache.commons.io.IOUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.resource.OAuth2AccessDeniedException;
 import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
@@ -15,7 +13,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.net.URL;
-import java.nio.charset.Charset;
 
 import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertEquals;
@@ -26,8 +23,6 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = SpringBootAuthorizationServerApplication.class)
 @ActiveProfiles("authz")
 public class CustomConfigAuthorizationServerIntegrationTest extends OAuth2IntegrationTestSupport {
-
-    private URL base;
 
     @LocalServerPort
     private int port;
@@ -47,14 +42,12 @@ public class CustomConfigAuthorizationServerIntegrationTest extends OAuth2Integr
         assertNotNull(accessToken);
     }
 
-
     @Test
     public void givenOAuth2Context_whenAccessingAuthentication_ThenRespondBaeldung() {
         ClientCredentialsResourceDetails resourceDetails = getClientCredentialsResourceDetails("baeldung", singletonList("read"));
         OAuth2RestTemplate restTemplate = getOAuth2RestTemplate(resourceDetails);
 
-        String authentication = restTemplate.execute(base.toString() + "/authentication", HttpMethod.GET, clientHttpRequest -> {
-        }, clientHttpResponse -> IOUtils.toString(clientHttpResponse.getBody(), Charset.defaultCharset()));
+        String authentication = executeGetRequest(restTemplate, "/authentication");
 
         assertEquals("baeldung", authentication);
     }
@@ -64,8 +57,7 @@ public class CustomConfigAuthorizationServerIntegrationTest extends OAuth2Integr
         ClientCredentialsResourceDetails resourceDetails = getClientCredentialsResourceDetails("baeldung", singletonList("read"));
         OAuth2RestTemplate restTemplate = getOAuth2RestTemplate(resourceDetails);
 
-        String principal = restTemplate.execute(base.toString() + "/principal", HttpMethod.GET, clientHttpRequest -> {
-        }, clientHttpResponse -> IOUtils.toString(clientHttpResponse.getBody(), Charset.defaultCharset()));
+        String principal = executeGetRequest(restTemplate, "/principal");
 
         assertEquals("baeldung", principal);
     }

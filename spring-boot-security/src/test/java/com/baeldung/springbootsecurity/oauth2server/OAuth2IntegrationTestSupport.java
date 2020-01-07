@@ -1,19 +1,27 @@
 package com.baeldung.springbootsecurity.oauth2server;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
+import org.springframework.web.client.RequestCallback;
+import org.springframework.web.client.ResponseExtractor;
 
+import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.List;
 
 import static java.lang.String.format;
 import static java.util.Collections.singletonList;
+import static org.springframework.http.HttpMethod.GET;
 
 public class OAuth2IntegrationTestSupport {
 
     @Value("${local.server.port}") protected int port;
+
+    protected URL base;
 
     protected ClientCredentialsResourceDetails getClientCredentialsResourceDetails(final String clientId, final List<String> scopes) {
         ClientCredentialsResourceDetails resourceDetails = new ClientCredentialsResourceDetails();
@@ -31,4 +39,18 @@ public class OAuth2IntegrationTestSupport {
         restTemplate.setMessageConverters(singletonList(new MappingJackson2HttpMessageConverter()));
         return restTemplate;
     }
+
+    protected String executeGetRequest(OAuth2RestTemplate restTemplate, String path) {
+        return restTemplate.execute(base.toString() + path, GET, getRequestCallback(), getStringResponseExtractor());
+    }
+
+    protected RequestCallback getRequestCallback() {
+        return clientHttpRequest -> {
+        };
+    }
+
+    protected ResponseExtractor<String> getStringResponseExtractor() {
+        return clientHttpResponse -> IOUtils.toString(clientHttpResponse.getBody(), Charset.defaultCharset());
+    }
+
 }

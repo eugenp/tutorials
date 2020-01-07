@@ -36,13 +36,13 @@ public class SpringBootAuthorizationServerApplication {
         }
 
         @GetMapping("/authentication")
-        public String authentication(@CurrentSecurityContext(expression = "authentication") Authentication authentication) {
+        public String getAuthentication(@CurrentSecurityContext(expression = "authentication") Authentication authentication) {
             logger.info("authentication -> {}", authentication);
             return authentication.getName();
         }
 
         @GetMapping("/principal")
-        public String principal(@CurrentSecurityContext(expression = "authentication.principal") Principal principal) {
+        public String getPrincipal(@CurrentSecurityContext(expression = "authentication.principal") Principal principal) {
             logger.info("principal -> {}", principal);
             return principal.getName();
         }
