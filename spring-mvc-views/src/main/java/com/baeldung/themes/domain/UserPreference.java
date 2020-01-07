@@ -1,4 +1,4 @@
-package com.baeldung.domain;
+package com.baeldung.themes.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
