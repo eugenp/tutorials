@@ -1,4 +1,4 @@
-package com.baeldung.config;
+package com.baeldung.themes.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
@@ -27,7 +27,7 @@ public class DataSourceConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("com.baeldung.domain");
+        em.setPackagesToScan("com.baeldung.themes.domain");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         return em;
     }

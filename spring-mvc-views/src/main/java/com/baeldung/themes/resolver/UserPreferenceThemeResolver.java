@@ -1,7 +1,7 @@
-package com.baeldung.theme.resolver;
+package com.baeldung.themes.resolver;
 
-import com.baeldung.domain.UserPreference;
-import com.baeldung.repository.UserPreferenceRepository;
+import com.baeldung.themes.domain.UserPreference;
+import com.baeldung.themes.repository.UserPreferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
