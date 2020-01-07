@@ -1,4 +1,4 @@
-package com.baeldung.config;
+package com.baeldung.themes.config;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

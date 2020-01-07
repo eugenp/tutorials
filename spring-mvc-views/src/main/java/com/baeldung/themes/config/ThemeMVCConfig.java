@@ -1,6 +1,6 @@
-package com.baeldung.config;
+package com.baeldung.themes.config;
 
-import com.baeldung.theme.resolver.UserPreferenceThemeResolver;
+import com.baeldung.themes.resolver.UserPreferenceThemeResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
