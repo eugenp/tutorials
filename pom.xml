@@ -467,6 +467,7 @@
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>drools</module>
+                <module>dropwizard</module>
                 <module>dubbo</module>
 
                 <module>ethereum</module>
@@ -1102,6 +1103,7 @@
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>drools</module>
+                <module>dropwizard</module>
                 <module>dubbo</module>
 
                 <module>ethereum</module>
