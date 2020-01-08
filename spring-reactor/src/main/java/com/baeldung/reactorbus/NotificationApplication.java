@@ -1,6 +1,6 @@
-package com.baeldung;
+package com.baeldung.reactorbus;
 
-import com.baeldung.consumer.NotificationConsumer;
+import com.baeldung.reactorbus.consumer.NotificationConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
