@@ -194,6 +194,7 @@
         <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
         <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
         <start-class>org.jooq.example.spring.Application</start-class>
+        <spring-boot.version>2.1.9.RELEASE</spring-boot.version>
     </properties>
 
 </project>
