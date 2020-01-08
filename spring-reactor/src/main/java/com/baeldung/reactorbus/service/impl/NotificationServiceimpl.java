@@ -1,9 +1,9 @@
-package com.baeldung.service.impl;
+package com.baeldung.reactorbus.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.baeldung.domain.NotificationData;
-import com.baeldung.service.NotificationService;
+import com.baeldung.reactorbus.domain.NotificationData;
+import com.baeldung.reactorbus.service.NotificationService;
 
 @Service
 public class NotificationServiceimpl implements NotificationService {

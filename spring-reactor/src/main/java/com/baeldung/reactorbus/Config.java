@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.reactorbus;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

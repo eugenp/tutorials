@@ -1,4 +1,4 @@
-package com.baeldung.domain;
+package com.baeldung.reactorbus.domain;
 
 public class NotificationData {
 

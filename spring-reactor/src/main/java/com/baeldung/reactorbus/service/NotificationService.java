@@ -1,6 +1,6 @@
-package com.baeldung.service;
+package com.baeldung.reactorbus.service;
 
-import com.baeldung.domain.NotificationData;
+import com.baeldung.reactorbus.domain.NotificationData;
 
 public interface NotificationService {
 
