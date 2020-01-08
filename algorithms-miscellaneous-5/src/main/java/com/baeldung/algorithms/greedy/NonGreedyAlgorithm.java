@@ -13,9 +13,8 @@ public class NonGreedyAlgorithm {
         this.tc = tc;
         this.currentLevel = level;
     }
-    
-    
-    public long findMostFollowersPath(String account) throws Exception {        
+      
+    public long findMostFollowersPath(String account) {
         List<SocialUser> followers = tc.getFollowers(account);
         long total = currentLevel > 0 ? followers.size() : 0;
 

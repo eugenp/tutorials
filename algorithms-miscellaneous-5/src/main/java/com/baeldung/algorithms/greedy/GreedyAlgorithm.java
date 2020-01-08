@@ -15,7 +15,7 @@ public class GreedyAlgorithm {
         this.fp = new FollowersPath();
     }
     
-    public long findMostFollowersPath(String account) throws Exception {        
+    public long findMostFollowersPath(String account) {
         long max = 0;
         SocialUser toFollow = null;
         
@@ -31,12 +31,8 @@ public class GreedyAlgorithm {
         if (currentLevel < maxLevel - 1) {
             currentLevel++;
             max += findMostFollowersPath(toFollow.getUsername());
-            //fp.addFollower(toFollow.getUsername(), max);
-            //fp.addCount(max);
             return max;
         } else {
-            //fp.addFollower(toFollow.getUsername(), max);
-            //fp.addCount(max);
             return max;
         }            
     }
