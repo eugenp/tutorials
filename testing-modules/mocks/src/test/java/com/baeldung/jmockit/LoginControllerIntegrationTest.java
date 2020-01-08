@@ -133,7 +133,6 @@ public class LoginControllerIntegrationTest {
     
     @Test
     public void partialMocking() {
-
         LoginService partialLoginService = new LoginService();
         partialLoginService.setLoginDao(loginDao);
         loginController.loginService = partialLoginService;
@@ -142,24 +141,22 @@ public class LoginControllerIntegrationTest {
         userForm.username = "foo";
         
         new Expectations(partialLoginService) {{
-            //let's mock loginDao#login() call 
+            // let's mock DAO call 
             loginDao.login(userForm); result = 1; 
             
-            //no expectation for partialLoginService#login() so that real implementation is used 
+            // no expectation for login method so that real implementation is used 
             
-            //mocking partialLoginService#setCurrentUser() 
+            // mock setCurrentUser call 
             partialLoginService.setCurrentUser("foo");
         }};
 
         String login = loginController.login(userForm);
 
         Assert.assertEquals("OK", login);
-        // verify that mocked partialLoginService#setCurrentUser("foo") is called 
-        new Verifications() {
-            {
-                partialLoginService.setCurrentUser("foo");
-            }
-        };
+        // verify mocked call 
+        new Verifications() {{
+            partialLoginService.setCurrentUser("foo");
+        }};
 
     }
 }
