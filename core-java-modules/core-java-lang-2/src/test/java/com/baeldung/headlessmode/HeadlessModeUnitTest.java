@@ -15,8 +15,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 
+import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -71,15 +71,17 @@ public class HeadlessModeUnitTest {
             frame.setVisible(true);
             frame.setSize(120, 120);
         });
+    }    
+
+    @Test
+    public void whenHeadless_thenFlexibleAppAdjustsItsBehavior() {
+        assertThat(FlexibleApp.iAmFlexible()).isEqualTo(FlexibleApp.HEADLESS);
     }
 
     @Test
-    public void whenGUIOnHeadless_thenConditionalPatternWorks() {
-        if (GraphicsEnvironment.isHeadless()) {
-            System.out.println("Hello World");
-        } else {
-            JOptionPane.showMessageDialog(null, "Hello World");
-        }
+    public void whenHeaded_thenFlexibleAppAdjustsItsBehavior() {
+        Assume.assumeFalse(GraphicsEnvironment.isHeadless());
+        assertThat(FlexibleApp.iAmFlexible()).isEqualTo(FlexibleApp.HEADED);
     }
 
 }
