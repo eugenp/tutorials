@@ -10,18 +10,18 @@ import java.util.stream.Collectors;
 public class BrandRepository {
     private final List<Brand> brands;
 
-    public BrandRepository(List<Brand> brands) {
+    public BrandRepository(final List<Brand> brands) {
         this.brands = ImmutableList.copyOf(brands);
     }
 
-    public List<Brand> findAll(int size) {
+    public List<Brand> findAll(final int size) {
         return brands
           .stream()
           .limit(size)
           .collect(Collectors.toList());
     }
 
-    public Optional<Brand> findById(Long id) {
+    public Optional<Brand> findById(final Long id) {
         return brands
           .stream()
           .filter(brand -> brand

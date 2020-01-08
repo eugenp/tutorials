@@ -14,20 +14,20 @@ public class BrandResource {
     private final int defaultSize;
     private final BrandRepository brandRepository;
 
-    public BrandResource(int defaultSize, BrandRepository brandRepository) {
+    public BrandResource(final int defaultSize, final BrandRepository brandRepository) {
         this.defaultSize = defaultSize;
         this.brandRepository = brandRepository;
 
     }
 
     @GET
-    public List<Brand> getBrands(@QueryParam("size") Optional<Integer> size) {
+    public List<Brand> getBrands(@QueryParam("size") final Optional<Integer> size) {
         return brandRepository.findAll(size.orElse(defaultSize));
     }
 
     @GET
     @Path("/{id}")
-    public Brand getById(@PathParam("id") Long id) {
+    public Brand getById(@PathParam("id") final Long id) {
         return brandRepository
           .findById(id)
           .orElseThrow(RuntimeException::new);

@@ -29,9 +29,9 @@ public class IntroductionApplication extends Application<BasicConfiguration> {
           .register(brandResource);
 
         final ApplicationHealthCheck healthCheck = new ApplicationHealthCheck();
-environment
-  .healthChecks()
-  .register("application", new ApplicationHealthCheck());
+        environment
+          .healthChecks()
+          .register("application", healthCheck);
     }
 
     @Override
