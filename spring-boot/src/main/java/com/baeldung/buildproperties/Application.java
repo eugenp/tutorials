@@ -8,6 +8,7 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication
 @ComponentScan(basePackages = "com.baeldung.buildproperties")
 @PropertySource("classpath:build.properties")
+//@PropertySource("classpath:build.yml")
 public class Application {
     
     public static void main(String[] args) {
