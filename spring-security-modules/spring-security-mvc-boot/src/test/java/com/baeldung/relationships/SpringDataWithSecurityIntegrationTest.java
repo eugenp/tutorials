@@ -82,7 +82,7 @@ public class SpringDataWithSecurityIntegrationTest {
             .setAuthentication(auth);
         Page<Tweet> page = null;
         do {
-            page = tweetRepository.getMyTweetsAndTheOnesILiked(new PageRequest(page != null ? page.getNumber() + 1 : 0, 5));
+            page = tweetRepository.getMyTweetsAndTheOnesILiked(PageRequest.of(page != null ? page.getNumber() + 1 : 0, 5));
             for (Tweet twt : page.getContent()) {
                 isTrue((twt.getOwner() == appUser.getUsername()) || (twt.getLikes()
                     .contains(appUser.getUsername())), "I do not have any Tweets");
@@ -94,7 +94,7 @@ public class SpringDataWithSecurityIntegrationTest {
     public void givenNoAppUser_whenPaginatedResultsRetrievalAttempted_shouldFail() {
         Page<Tweet> page = null;
         do {
-            page = tweetRepository.getMyTweetsAndTheOnesILiked(new PageRequest(page != null ? page.getNumber() + 1 : 0, 5));
+            page = tweetRepository.getMyTweetsAndTheOnesILiked(PageRequest.of(page != null ? page.getNumber() + 1 : 0, 5));
         } while (page != null && page.hasNext());
     }
 }
