@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "21be1c46-d3a6-4ef4-82df-6d34860123e1",
+		"name": "Hexagonal Architecture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET ALL Students",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "localhost:8080/hexagonal-architecture/students/"
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE New Student",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"firstName\": \"Jo\",\r\n    \"lastName\": \"Jo\"\r\n}"
+				},
+				"url": "localhost:8080/hexagonal-architecture/students/"
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE a Student",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "localhost:8080/hexagonal-architecture/students/4"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Single Student",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "localhost:8080/hexagonal-architecture/students/4"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
