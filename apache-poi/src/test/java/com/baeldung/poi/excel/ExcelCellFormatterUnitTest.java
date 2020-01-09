@@ -29,7 +29,7 @@ public class ExcelCellFormatterUnitTest {
     }
 
     @Test
-    public void gvieStringCell_whenGetCellStringValue_thenReturnStringValue() throws IOException {
+    public void givenStringCell_whenGetCellStringValue_thenReturnStringValue() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);
         Sheet sheet = workbook.getSheetAt(0);
         Row row = sheet.getRow(0);
@@ -40,7 +40,7 @@ public class ExcelCellFormatterUnitTest {
     }
 
     @Test
-    public void gvieBooleanCell_whenGetCellStringValue_thenReturnBooleanStringValue() throws IOException {
+    public void givenBooleanCell_whenGetCellStringValue_thenReturnBooleanStringValue() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);
         Sheet sheet = workbook.getSheetAt(0);
         Row row = sheet.getRow(0);
@@ -51,7 +51,7 @@ public class ExcelCellFormatterUnitTest {
     }
 
     @Test
-    public void gvieNumericCell_whenGetCellStringValue_thenReturnNumericStringValue() throws IOException {
+    public void givenNumericCell_whenGetCellStringValue_thenReturnNumericStringValue() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);
         Sheet sheet = workbook.getSheetAt(0);
         Row row = sheet.getRow(0);
@@ -63,7 +63,7 @@ public class ExcelCellFormatterUnitTest {
     }
 
     @Test
-    public void gvieFormualCell_whenGetCellStringValue_thenReturnOriginalFormulaString() throws IOException {
+    public void givenFormualCell_whenGetCellStringValue_thenReturnOriginalFormulaString() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);
         Sheet sheet = workbook.getSheetAt(0);
         Row row = sheet.getRow(0);
@@ -74,7 +74,7 @@ public class ExcelCellFormatterUnitTest {
     }
 
     @Test
-    public void gvieFormualCell_whenGetCellStringValueForFormula_thenReturnOriginalFormulatring() throws IOException {
+    public void givenFormualCell_whenGetCellStringValueForFormula_thenReturnOriginalFormulatring() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);
         Sheet sheet = workbook.getSheetAt(0);
         Row row = sheet.getRow(0);
