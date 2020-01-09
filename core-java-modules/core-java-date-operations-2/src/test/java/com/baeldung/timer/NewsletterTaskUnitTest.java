@@ -17,7 +17,7 @@ class NewsletterTaskUnitTest {
     void givenNewsletterTask_whenTimerScheduledEachSecondFixedDelay_thenNewsletterSentEachSecond() throws Exception {
         timer.schedule(new NewsletterTask(), 0, 1000);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             Thread.sleep(1000);
         }
     }
@@ -26,7 +26,7 @@ class NewsletterTaskUnitTest {
     void givenNewsletterTask_whenTimerScheduledEachSecondFixedRate_thenNewsletterSentEachSecond() throws Exception {
         timer.scheduleAtFixedRate(new NewsletterTask(), 0, 1000);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             Thread.sleep(1000);
         }
     }
