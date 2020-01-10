@@ -56,10 +56,10 @@ class MetaprogrammingUnitTest extends GroovyTestCase {
         assert "norman".capitalize() == "Norman"
     }
 
-    void testEmployeeExtension() {
-        Employee emp = new Employee(age: 28)
-        assert emp.getYearOfBirth() == 1991
-    }
+//    void testEmployeeExtension() {
+//        Employee emp = new Employee(age: 28)
+//        assert emp.getYearOfBirth() == 1991
+//    }
 
     void testJavaClassesExtensions() {
         5.printCounter()
