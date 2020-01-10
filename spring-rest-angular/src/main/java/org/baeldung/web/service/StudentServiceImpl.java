@@ -15,7 +15,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Page<Student> findPaginated(int page, int size) {
-        return dao.findAll(new PageRequest(page, size));
+        return dao.findAll(PageRequest.of(page, size));
     }
 
 }
