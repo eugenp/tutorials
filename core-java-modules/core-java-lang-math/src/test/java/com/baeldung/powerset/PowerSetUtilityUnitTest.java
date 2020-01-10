@@ -137,7 +137,7 @@ public class PowerSetUtilityUnitTest {
     }
 
     @Test
-    public void givenSet_WhenPowerSetIsCalculatedIterativePowerSetByLoopOverNumbersMinimalChange_ThenItContainsAllSubsetsInGrayOrder() {
+    public void givenSet_WhenPowerSetIsCalculatedIterativePowerSetByLoopOverNumbersWithMinimalChange_ThenItContainsAllSubsets() {
 
         Set<String> set = RandomSetOfStringGenerator.generateRandomSet();
         List<List<String>> powerSet = new PowerSetUtility<String>().iterativePowerSetByLoopOverNumbersMinimalChange(set);
@@ -170,42 +170,6 @@ public class PowerSetUtilityUnitTest {
                     diff++;
             Assertions.assertEquals(1, diff);
         }
-    }
-
-    @Test
-    public void givenSubset_WhenPowerSetIsInLexicographicalOrder_ReturnCorrectRank() {
-        int n = new Random().nextInt(5) + 5; //a number in [5, 10)
-        for(int i = 0; i < ( 1 << n); i++) {
-            Boolean[] subset = new Boolean[n];
-            for(int j=0; j < n; j++) {
-                subset[n - j - 1] = ((i & (1 << j)) > 0);
-            }
-            Assertions.assertEquals(i, PowerSetUtility.getRankInLexicographicalOrder(Arrays.asList(subset)));
-        }
-    }
-
-    @Test
-    public void givenRanking_WhenPowerSetIsInLexicographicalOrder_ReturnTheSubset() {
-        int n = new Random().nextInt(5) + 5; //a number in [5, 10)
-        List<List<Boolean>> powerSet = new ArrayList<>();
-        for(int i = 0; i < (1 << n); i++) {
-            powerSet.add(PowerSetUtility.getSubsetForRankInLexicographicalOrder(i, n));
-        }
-        //To make sure that the size of power set is (2 power n)
-        MatcherAssert.assertThat(powerSet, IsCollectionWithSize.hasSize((1 << n)));
-        //To make sure that number of occurrence of each index is (2 power n-1)
-        Map<Integer, Integer> counter = new HashMap<>();
-        for (List<Boolean> subset : powerSet) {
-            for (int i = 0; i < subset.size(); i++) {
-                if(subset.get(i)) {
-                    int num = counter.getOrDefault(i, 0);
-                    counter.put(i, num + 1);
-                }
-            }
-        }
-        counter.forEach((k, v) -> Assertions.assertEquals((1 << (n - 1)), v.intValue()));
-        //To make sure that one subset is not generated twice
-        Assertions.assertEquals(powerSet.size(), new HashSet<>(powerSet).size());
     }
 
     static class RandomSetOfStringGenerator {
