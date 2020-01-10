@@ -5,7 +5,7 @@
     <artifactId>spring-scheduling</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>spring-scheduling</name>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

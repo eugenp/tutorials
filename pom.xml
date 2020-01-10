@@ -400,7 +400,7 @@
                 <module>core-java-modules/core-java-lang-math</module>
                 <!-- We haven't upgraded to java 9.-->
                 <!--
-                <module>core-java-modules/core-java-datetime-computations</module>
+                <module>core-java-modules/core-java-date-operations-1</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>core-java-modules/core-java-datetime-java8</module>
                 <module>core-java-modules/core-java-datetime-string</module>
@@ -586,8 +586,9 @@
                 <!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
                 <module>mustache</module>
                 <module>mybatis</module>
+
                 <module>ninja</module>
-                <module>netflix</module>
+                <module>netflix-modules</module>
 
                 <module>optaplanner</module>
                 <module>orika</module>
@@ -669,7 +670,7 @@
             </build>
 
             <modules>
-                <module>netflix</module>
+                <module>netflix-modules</module>
 
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
@@ -1040,7 +1041,7 @@
                 <module>core-java-modules/core-java-lang-math</module>
                 <!-- We haven't upgraded to java 9.-->
                 <!--
-                <module>core-java-modules/core-java-datetime-computations</module>
+                <module>core-java-modules/core-java-date-operations-1</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>core-java-modules/core-java-datetime-java8</module>
                 <module>core-java-modules/core-java-datetime-string</module>
@@ -1218,8 +1219,9 @@
                 <!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
                 <module>mustache</module>
                 <module>mybatis</module>
+
                 <module>ninja</module>
-                <module>netflix</module>
+                <module>netflix-modules</module>
 
                 <module>optaplanner</module>
                 <module>orika</module>
