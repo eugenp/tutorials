@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class BalancedBracketsUsingDeque {
 
         public boolean isBalanced(String str) {
-                if (null == str || str.length() == 0 || ((str.length() % 2) != 0)) {
+                if (null == str || ((str.length() % 2) != 0)) {
                         return false;
                 } else {
                         char[] ch = str.toCharArray();

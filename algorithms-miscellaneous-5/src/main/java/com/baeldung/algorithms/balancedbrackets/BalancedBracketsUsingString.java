@@ -3,7 +3,7 @@ package com.baeldung.algorithms.balancedbrackets;
 public class BalancedBracketsUsingString {
 
         public boolean isBalanced(String str) {
-                if (null == str || str.length() == 0 || ((str.length() % 2) != 0)) {
+                if (null == str || ((str.length() % 2) != 0)) {
                         return false;
                 } else {
                         char[] ch = str.toCharArray();
