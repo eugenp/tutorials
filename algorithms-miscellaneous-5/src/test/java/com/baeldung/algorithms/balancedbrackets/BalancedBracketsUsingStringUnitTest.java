@@ -21,9 +21,9 @@ public class BalancedBracketsUsingStringUnitTest {
         }
 
         @Test
-        public void givenEmptyString_whenCheckingForBalance_shouldReturnFalse() {
+        public void givenEmptyString_whenCheckingForBalance_shouldReturnTrue() {
                 boolean result = balancedBracketsUsingString.isBalanced("");
-                assertThat(result).isFalse();
+                assertThat(result).isTrue();
         }
 
         @Test
