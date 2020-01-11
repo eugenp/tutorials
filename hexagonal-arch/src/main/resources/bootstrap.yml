@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: hexa-service
+  main:
+    allow-bean-definition-overriding: true
+  config:
+    location: /Users/kapil.soni/Documents/baeldung/tutorials/hexagonal-arch/src/main/resources/application.yml
+server:
+  port: 8323
+  servlet:
+    context-path: /dxpcore/
+
+info:
+  version: '@project.version@'
+  Description: '@project.description@'
+  Name: '@project.name@'
+  ArtifactId: '@project.artifactId@'
+  GroupId: '@project.groupId@'
+management.endpoints.web.base-path: /

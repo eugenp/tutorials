@@ -1,0 +1,5 @@
+spring.datasource.hikari.driver-class-name: org.postgresql.Driver
+spring.datasource.hikari.username: kapil.soni
+spring.datasource.hikari.password: yellow*99
+spring.datasource.hikari.database_url: jdbc:postgresql://localhost:31352/
+spring.datasource.hikari.databaseName: postgres
