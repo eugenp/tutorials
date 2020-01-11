@@ -1,14 +1,12 @@
 spring:
   application:
     name: hexa-service
-  main:
-    allow-bean-definition-overriding: true
   config:
     location: /Users/kapil.soni/Documents/baeldung/tutorials/hexagonal-arch/src/main/resources/application.yml
 server:
-  port: 8323
+  port: 8080
   servlet:
-    context-path: /dxpcore/
+    context-path: /hexa-service/
 
 info:
   version: '@project.version@'

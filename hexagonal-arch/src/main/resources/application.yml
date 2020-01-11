@@ -1,5 +1,8 @@
 spring.datasource.hikari.driver-class-name: org.postgresql.Driver
-spring.datasource.hikari.username: kapil.soni
-spring.datasource.hikari.password: yellow*99
-spring.datasource.hikari.database_url: jdbc:postgresql://localhost:31352/
-spring.datasource.hikari.databaseName: postgres
+spring.datasource.hikari.jdbc-url: jdbc:postgresql://localhost:5432/hexa
+spring.jpa.hibernate.ddl-auto: create-drop
+hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+hibernate.show_sql: false
+spring.data.jpa.repositories.enabled: true
+hibernate.format_sql: false
+javax.persistence.schema-generation.database.action: true

@@ -4,10 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
+@Table(name = "restaurant", schema = "hexa")
 public class Restaurant {
 
     @Id
@@ -21,6 +23,10 @@ public class Restaurant {
     @Column(name = "city")
     private String city;
     
+    public Restaurant() {
+        super();
+    }
+
     public Restaurant(String id, String name, String city) {
         super();
         this.id = id;
