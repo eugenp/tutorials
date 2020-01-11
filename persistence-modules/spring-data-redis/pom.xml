@@ -101,6 +101,7 @@
         <nosqlunit.version>0.10.0</nosqlunit.version>
         <spring-data-commons.version>2.0.3.RELEASE</spring-data-commons.version>
         <embedded-redis.version>0.6</embedded-redis.version>
+        <spring-boot.version>2.1.9.RELEASE</spring-boot.version>
     </properties>
 
 </project>
