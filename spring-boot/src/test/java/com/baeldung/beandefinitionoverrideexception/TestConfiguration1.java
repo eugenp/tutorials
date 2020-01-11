@@ -1,11 +1,9 @@
 package com.baeldung.beandefinitionoverrideexception;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan()
 public class TestConfiguration1 {
 
     class TestBean1 {
@@ -16,10 +14,13 @@ public class TestConfiguration1 {
             return name;
         }
 
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 
     @Bean
-    public TestBean1 testBean(){
+    public TestBean1 testBean() {
         return new TestBean1();
     }
 
