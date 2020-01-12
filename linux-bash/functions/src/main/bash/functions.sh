@@ -1,10 +1,6 @@
 #!/bin/bash
 
-
-# simple input and output
-# variable shadowing
-# nesting and recursion
-
+# Subsection 2.1
 simple_function() {
     echo "First"
     for ((i=0;i<5;++i)) do
@@ -19,42 +15,9 @@ function simple_function {
     done
 }
 
-# missing brackets still works
-# as long as we have compound commands
 function simple_for_loop()
     for ((i=0;i<5;++i)) do
         echo -n " "$i" ";
-    done
-
-function simple_inputs() {
-    echo "This is the first argument [$1]"
-    echo "This is the second argument [$2]"
-    echo "Calling function with $# aruments"
-}
-
-# global_variable="lorem"
-# sum=0
-# function simple_outputs() {
-#     sum=$(($1+$2)) 
-#     global_variable="dolor"
-# }
-
-function simple_outputs() {
-    sum=$(($1+$2)) 
-    echo $sum
-}
-
-function ref_outputs() {
-    declare -n sum_ref=$3
-    sum_ref=$(($1+$2)) 
-}
-
-# missing brackets still works
-# as long as we have compound commands
-function simple_for_loop()
-    # echo "Looping through numbers"
-    for ((i=0;i<5;++i)) do
-        echo -n " "$i;
     done
 
 function simple_comparison()
@@ -64,47 +27,58 @@ function simple_comparison()
         echo "$1 is greater than 5"
     fi
 
-# command groups with subshells 
-# with the limitation of new enviornments
-sum=0
-function simple_subshell()
-    (
-        declare -n sum_ref=$3
-        sum_ref=$(($1+$2))
-        # sum=$(($1+$2))
-    )
+# Subsection 2.2
+function simple_inputs() {
+    echo "This is the first argument [$1]"
+    echo "This is the second argument [$2]"
+    echo "Calling function with $# aruments"
+}
 
-# variable shadowing
+# Subsection 2.3
+sum=0
+function simple_outputs() {
+    sum=$(($1+$2)) 
+}
+
+function simple_outputs() {
+    sum=$(($1+$2)) 
+    echo $sum
+}
+
+# Subsection 2.4
+function ref_outputs() {
+    declare -n sum_ref=$3
+    sum_ref=$(($1+$2)) 
+}
+
+# Subsection 3.1
 variable="baeldung"
+function variable_scope2(){
+    echo "Variable inside function variable_scope2 : [$variable]"
+    local variable="ipsum"
+}
+
 function variable_scope(){
     local variable="lorem"
     echo "Variable inside function variable_scope : [$variable]"
     variable_scope2
 }
 
-function variable_scope2(){
-    echo "Variable inside function variable_scope2 : [$variable]"
-    local variable="ipsum"
-    variable_scope3
-}
+# Subsection 3.2
+sum=0
+function simple_subshell()
+    (
+        sum=$(($1+$2))
+    )
 
-function variable_scope3(){
-    echo "Variable inside function variable_scope3 : [$variable]"
-}
+function simple_subshell_ref() 
+    (
+        declare -n sum_ref=$3
+        sum_ref=$(($1+$2))
+    )
 
-function fibonnaci_recursion() {
-    argument=$1
-    if [[ "$argument" -eq 0 ]] || [[ "$argument" -eq 1 ]]; then
-        echo $argument
-    else
-        first=$(fibonnaci_recursion $(($argument-1)))
-        second=$(fibonnaci_recursion $(($argument-2)))
-        echo $(( $first + $second ))
-    fi 
-}
-
+# Subsection 3.3
 function redirection_in() {
-    # echo "$1"
     while read input;
         do
             echo "$input"
@@ -112,12 +86,12 @@ function redirection_in() {
 } < infile
 
 function redirection_in_ps() {
-    while read input;
+    read
+    while read -a input;
         do
-            echo "$input"
+            echo "${input[2]} ${input[8]}"
         done
 } < <(ls -ll /)
-
 
 function redirection_out_ps(){
     declare -a output=("baeldung" "lorem" "ipsum" "caracg")
@@ -135,6 +109,18 @@ function redirection_out() {
         done
 } > outfile
 
+# Subsection 3.4
+function fibonnaci_recursion() {
+    argument=$1
+    if [[ "$argument" -eq 0 ]] || [[ "$argument" -eq 1 ]]; then
+        echo $argument
+    else
+        first=$(fibonnaci_recursion $(($argument-1)))
+        second=$(fibonnaci_recursion $(($argument-2)))
+        echo $(( $first + $second ))
+    fi 
+}
+
 #simple_function
 # simple_inputs one 'two three'
 # sum=$(simple_outputs 1 2)
@@ -145,8 +131,8 @@ function redirection_out() {
 # simple_for_loop
 # simple_comparison 6
 # simple_comparison 4
-simple_subshell 1 2 sum
-echo "Sum is $sum"
+# simple_subshell 1 2 sum
+# echo "Sum is $sum"
 
 #variable_scope
 # echo "Variable outside function variable_scope : [$variable]"
