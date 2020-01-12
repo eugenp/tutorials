@@ -2,14 +2,12 @@
 
 # Subsection 2.1
 simple_function() {
-    echo "First"
     for ((i=0;i<5;++i)) do
         echo -n " "$i" ";
     done
 }
 
-function simple_function {
-    echo "Second"
+function simple_function_no_parantheses {
     for ((i=0;i<5;++i)) do
         echo -n " "$i" ";
     done
@@ -35,18 +33,18 @@ function simple_inputs() {
 }
 
 # Subsection 2.3
-sum=0
-function simple_outputs() {
-    sum=$(($1+$2)) 
+global_sum=0
+function global_sum_outputs() {
+    global_sum=$(($1+$2)) 
 }
 
-function simple_outputs() {
-    sum=$(($1+$2)) 
+function cs_sum_outputs() {
+    sum=$(($1+$2))
     echo $sum
 }
 
 # Subsection 2.4
-function ref_outputs() {
+function arg_ref_sum_outputs() {
     declare -n sum_ref=$3
     sum_ref=$(($1+$2)) 
 }
@@ -54,27 +52,29 @@ function ref_outputs() {
 # Subsection 3.1
 variable="baeldung"
 function variable_scope2(){
-    echo "Variable inside function variable_scope2 : [$variable]"
+    echo "Variable inside function variable_scope2: [$variable]"
     local variable="ipsum"
 }
 
 function variable_scope(){
     local variable="lorem"
-    echo "Variable inside function variable_scope : [$variable]"
+    echo "Variable inside function variable_scope: [$variable]"
     variable_scope2
 }
 
 # Subsection 3.2
-sum=0
-function simple_subshell()
+subshell_sum=0
+function simple_subshell_sum()
     (
-        sum=$(($1+$2))
+        subshell_sum=$(($1+$2))
+        echo "Value of sum in function with global variables: [$subshell_sum]"
     )
 
-function simple_subshell_ref() 
+function simple_subshell_ref_sum() 
     (
         declare -n sum_ref=$3
         sum_ref=$(($1+$2))
+        echo "Value of sum in function with ref arguments: [$sum_ref]"
     )
 
 # Subsection 3.3
@@ -120,6 +120,86 @@ function fibonnaci_recursion() {
         echo $(( $first + $second ))
     fi 
 }
+
+# main menu entry point
+echo "****Functions samples menu*****"
+PS3="Your choice (1,2,3 etc.):"
+options=("function_definitions" "function_input_args" "function_outputs" \
+         "function_variables" "function_subshells" "function_redirections" \
+         "function_recursion" "quit")
+select option in "${options[@]}"
+do
+    case $option in
+        "function_definitions")
+            echo -e "\n"
+            echo "**Different ways to define a function**"
+            echo -e "No function keyword:"
+            simple_function
+            echo -e "\nNo function parantheses:"
+            simple_function_no_parantheses
+            echo -e "\nOmitting curly braces:"
+            simple_for_loop
+            echo -e "\n"
+            ;;
+        "function_input_args")
+            echo -e "\n"
+            echo "**Passing inputs to a function**"
+            simple_inputs lorem ipsum
+            echo -e "\n"
+            ;;
+        "function_outputs")
+            echo -e "\n"
+            echo "**Getting outputs from a function**"
+            global_sum_outputs 1 2
+            echo -e "1+2 using global variables: [$global_sum]"
+            cs_sum=$(cs_sum_outputs 1 2)
+            echo -e "1+2 using command substitution: [$cs_sum]"
+            arg_ref_sum_outputs 1 2 arg_ref_sum
+            echo -e "1+2 using argument references: [$arg_ref_sum]"
+            echo -e "\n"
+            ;;
+        "function_variables")
+            echo -e "\n"
+            echo "**Overriding variable scopes**"
+            echo "Global value of variable: [$variable]"
+            variable_scope
+            echo -e "\n"
+            ;;
+        "function_subshells")
+            echo -e "\n"
+            echo "**Running function in subshell**"
+            echo "Global value of sum: [$subshell_sum]"
+            simple_subshell_sum 1 2
+            echo "Value of sum after subshell function with \
+global variables: [$subshell_sum]"
+            subshell_sum_arg_ref=0
+            simple_subshell_ref_sum 1 2 subshell_sum_arg_ref
+            echo "Value of sum after subshell function with \
+ref arguments: [$subshell_sum_arg_ref]"
+            echo -e "\n"
+            ;;
+        "function_redirections")
+            echo -e "\n"
+            echo "**Function redirections**"
+            echo -e "File input redirection:"
+            redirection_in
+            echo -e "Command input redirection:"
+            redirection_in_ps
+            ;;
+        # "timeout_input_read")
+        #     echo "Enter something in 5 seconds or less"
+        #     timeout_input_read
+        #     ;;
+        # "exactly_n_read")
+        #     echo "Enter at least 11 characters or wait 5 seconds"
+        #     exactly_n_read
+        #     ;;
+        "quit")
+            break
+            ;;
+        *) echo "Invalid option";;
+    esac
+done
 
 #simple_function
 # simple_inputs one 'two three'
