@@ -26,7 +26,7 @@ class FileLocksTest {
 	}
 	
 	/**
-	 * Getting and exclusive lock from a RandomAccessFile
+	 * Getting an exclusive lock from a RandomAccessFile
 	 * @throws IOException
 	 */
 	@Test
@@ -48,6 +48,18 @@ class FileLocksTest {
 	}
 	
 	
+	// Shared locks
+	
+	/**
+	 * Getting a shared (read) lock on the entire file.
+	 * Fails when getting the lock from a FileChannel obtained through a FileOutputStream.
+	 */
+	@Test
+	void givenAFileOutputStream_whenGetSharedLock_throwNonReadableChannelException() {
+		assertThrows(NonReadableChannelException.class, 
+				() -> FileLocks.getReadLockFromOutputStream(0, 10));
+	}
+	
 	/**
 	 * Getting a shared (read) lock works fine when getting the lock from a FileChannel obtained through a FileInputStream.
 	 * @throws IOException
@@ -60,13 +72,10 @@ class FileLocksTest {
 		
 	}
 	
-	
-	@Test
-	void givenAFileOutputStream_whenGetSharedLock_throwNonReadableChannelException() {
-		assertThrows(NonReadableChannelException.class, 
-				() -> FileLocks.getReadLockFromOutputStream(0, 10));
-	}
-	
+	/**
+	 * Getting a shared lock from a RandomAccessFile
+	 * @throws IOException
+	 */
 	@Test
 	void givenARandomAccessFile_whenGetSharedLock_lock() throws IOException {
 		FileLock lock = FileLocks.getReadLockFromRandomAccessFile(0,  10);
