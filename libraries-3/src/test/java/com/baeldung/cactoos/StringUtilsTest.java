@@ -22,7 +22,7 @@ public class StringUtilsTest {
 	}
 	
 	@Test
-	public void whenStringISPassesdToLoweredOrUpperClass_thenCorrespondingStringIsReturned() throws Exception {
+	public void whenStringIsPassesdToLoweredOrUpperClass_thenCorrespondingStringIsReturned() throws Exception {
 
 		StringUtils obj = new StringUtils();
 
@@ -37,7 +37,7 @@ public class StringUtilsTest {
 	}
 	
 	@Test
-	public void whenEmptyStringISPassesd_thenISBlankReturnsTrue() throws Exception {
+	public void whenEmptyStringIsPassesd_thenIsBlankReturnsTrue() throws Exception {
 
 		StringUtils obj = new StringUtils();
 
