@@ -1,6 +1,11 @@
 package com.baeldung.jndi.exceptions;
 
-import org.junit.Ignore;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import javax.naming.InitialContext;
+import javax.naming.NameNotFoundException;
+import javax.naming.NoInitialContextException;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -9,16 +14,10 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.jndi.JndiTemplate;
 import org.springframework.mock.jndi.SimpleNamingContextBuilder;
 
-import javax.naming.InitialContext;
-import javax.naming.NameNotFoundException;
-import javax.naming.NoInitialContextException;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class JndiExceptionsUnitTest {
 
-	@Disabled
+    @Disabled
     @Test
     @Order(1)
     void givenNoContext_whenLookupObject_thenThrowNoInitialContext() {
