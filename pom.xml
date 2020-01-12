@@ -636,6 +636,7 @@
                 <module>webrtc</module>
                 <module>wildfly</module>
                 <module>quarkus-extension</module>
+				<module>security-jaas</module>
             </modules>
 
         </profile>

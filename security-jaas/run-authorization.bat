@@ -1,0 +1,1 @@
+java -Djava.security.manager -Djava.security.policy=jaas.policy -Djava.security.auth.login.config=jaas.login.config -classpath %JAVA_HOME%\lib;jaas-app/target/jaas-app.jar;jaas-login-module/target/jaas-login-module.jar com.baeldung.security.jaas.app.JaasAuthorization
