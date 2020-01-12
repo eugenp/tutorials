@@ -1,105 +1,233 @@
 package com.baeldung.lock;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
-import java.nio.charset.StandardCharsets;
+import java.nio.channels.NonReadableChannelException;
+import java.nio.channels.NonWritableChannelException;
+import java.nio.channels.OverlappingFileLockException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Stream;
 
-import jnr.ffi.LibraryLoader;
-import jnr.ffi.Memory;
-import jnr.ffi.Pointer;
-import jnr.ffi.types.pid_t;
+import com.google.common.base.Charsets;
 
 public class FileLocks {
 
-	public static interface LibC {
-
-		public static final int O_NONBLOCK = jnr.constants.platform.OpenFlags.O_NONBLOCK.intValue();
-		public static final int O_RDWR = jnr.constants.platform.OpenFlags.O_RDWR.intValue();
-		public static final int O_EXLOCK = jnr.constants.platform.OpenFlags.O_EXLOCK.intValue();
-
-		public long write(int fd, Pointer data, long len);
-
-		@pid_t
-		long getpid();
-
-		int open(String filename, int flags);
-
-		int close(int fd);
+	// Write locks
+	/**
+	 * Trying to get an exclusive lock on a read-only FileChannel won't work.
+	 */
+	static void getExclusiveLockFromInputStream() throws IOException, NonWritableChannelException {
+		Path path = Files.createTempFile("foo", "txt");
+		try (FileInputStream fis = new FileInputStream(path.toFile()); FileLock lock = fis.getChannel().lock()) {
+			System.out.println("This won't happen");
+		} catch (NonWritableChannelException e) {
+			System.err.println(
+					"The channel obtained through a FileInputStream isn't writable. "
+					+ "You can't obtain an exclusive lock on it!");
+			throw e;
+		}
 	}
 
-	public static void main(String[] args) throws IOException, InterruptedException {
-		
-		Path path = Paths.get("/tmp/foo");
-		
-		// Delete the file if it exists
-		Files.deleteIfExists(path);
-		
-		// Start with a fresh empty file
-		Files.createFile(path);
-		
-		// Prepare some external libc calls. Will only work on systems that have libc.
-		LibC libc = LibraryLoader.create(LibC.class).load("c");
-		byte[] bytes = "Hello from C\n".getBytes("UTF-8");
-		jnr.ffi.Runtime runtime = jnr.ffi.Runtime.getRuntime(libc);
-		Pointer buffer = Memory.allocateDirect(runtime, bytes.length);
-		buffer.put(0, bytes, 0, bytes.length);
-		
-		// Open the file through a libc call. This returns a file descriptor.
-		int fd = libc.open(path.toString(), libc.O_RDWR + libc.O_EXLOCK + libc.O_NONBLOCK);
-		System.out.println("Opened the file through a libc call that locks it.");
-		
-		// Our java method will see the lock. Itd will be well behaved and won't write to the file.
-		// Note that external processes on POSIX systems would still be able to write to this file ignoring any locks.
-		writeToRandomAccessFile(path, "I won't write this", 0L);
-		
-		// Libc opened the file, it can write to its corresponding file handle.
-		libc.write(fd, buffer, bytes.length);
-		
-		// Now let's close the file through a libc call, to release its lock.	
-		libc.close(fd);
-		System.out.println("Invoked libc's close() method");
-		
-		// This time our method won't see the lock and will write to the file.
-		writeToRandomAccessFile(path, "Hello from java", bytes.length);
-		
-		System.out.println("Now that all the locks are gone, here are the file contents:");
-		System.out.println("------------------------------------------------------------");
-		Files.lines(path).forEach(System.out::println);
-
+	
+	/**
+	 * Getting an exclusive lock from a RandomAccessFile works if the file is in write mode.
+	 * @param from beginning of the locked region
+	 * @param size how many bytes to lock
+	 * @return
+	 * @throws IOException
+	 */
+	static FileLock getExclusiveLockFromRandomAccessFile(long from, long size) throws IOException {
+		Path path = Files.createTempFile("foo", "txt");
+		try (RandomAccessFile file = new RandomAccessFile(path.toFile(), "rw");
+				FileLock lock = file.getChannel().lock(from, size, false)) {
+			if (lock.isValid()) {
+				System.out.println("This is a valid exclusive lock");
+				return lock;
+			}
+			return null;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
 	}
 	
-	public static RandomAccessFile writeToRandomAccessFile(Path path, String data, long position) {
-		RandomAccessFile file = null;
-		try {
-			file = new RandomAccessFile(path.toFile(), "rws");
-			FileChannel channel = file.getChannel();
-			// Try to acquire a lock
-			try (FileLock lock = channel.tryLock()) {
-				if (lock == null) {
-					System.out.println("Tried to lock through the FileChannel's lock() method. This file is already locked! It's my responsibility to not write to it, even if the OS would let me!");
-				} else {
-					System.out.println("I don't see a lock on this file anymore. Now I can write to it.");
-					int i = 0;
-					channel.write(
-							ByteBuffer.wrap((data).getBytes(StandardCharsets.UTF_8)), position);
-				}
-			} catch (Exception e) {
-				System.out.println("Error while locking");
+	/**
+	 * Getting a write lock on a file region
+	 */
+	static FileLock getExclusiveLockFromFileChannelOpen(long from, long size) throws IOException {
+		Path path = Files.createTempFile("foo", "txt");
+		try (FileChannel channel = FileChannel.open(path, StandardOpenOption.APPEND);
+				FileLock lock = channel.lock(from, size, false)) {
+			String text = "Hello, world.";
+			ByteBuffer buffer = ByteBuffer.allocate(text.length() + System.lineSeparator().length());
+			buffer.put((text + System.lineSeparator()).getBytes(Charsets.UTF_8));
+			buffer.flip();
+			while (buffer.hasRemaining()) {
+				channel.write(buffer, channel.size());
+			}
+			System.out.println("This was written to the file");
+			Files.lines(path).forEach(System.out::println);
+			return lock;
+		}
+	}
+
+	// Read locks
+	/**
+	 * Trying to get a shared lock on a write-only FileChannel won't work.
+	 */
+	static void getReadLockFromOutputStream(long from, long size) throws IOException {
+		Path path = Files.createTempFile("foo", "txt");
+		try (FileOutputStream fis = new FileOutputStream(path.toFile());
+				FileLock lock = fis.getChannel().lock(0, Long.MAX_VALUE, true)) {
+			System.out.println("This won't happen");
+		} catch (NonReadableChannelException e) {
+			System.err.println(
+					"The channel obtained through a FileOutputStream isn't readable. "
+					+ "You can't obtain an shared lock on it!");
+			throw e;
+		}
+	}
+	
+	/**
+	 * Locking a file for reading doesn't require a writable FileChannel.
+	 * 
+	 * @param from beginning of the locked region
+	 * @param size how many bytes to lock
+	 * @return
+	 * @throws IOException
+	 */
+	static FileLock getReadLockFromInputStream(long from, long size) throws IOException {
+		Path path = Files.createTempFile("foo", "txt");
+		try (FileInputStream fis = new FileInputStream(path.toFile());
+				FileLock lock = fis.getChannel().lock(from, size, true)) {
+			if (lock.isValid()) {
+				System.out.println("This is a valid shared lock");
+				return lock;
+			}
+			return null;
+		}
+	}
+	
+	
+	/**
+	 * Getting an exclusive lock from a RandomAccessFile works if the file is in read mode.
+	 * @param from beginning of the locked region
+	 * @param size how many bytes to lock
+	 * @return
+	 * @throws IOException
+	 */
+	static FileLock getReadLockFromRandomAccessFile(long from, long size) throws IOException {
+		Path path = Files.createTempFile("foo", "txt");
+		try (RandomAccessFile file = new RandomAccessFile(path.toFile(), "r"); // could also be "rw", but "r" is sufficient for reading
+				FileLock lock = file.getChannel().lock(from, size, true)) {
+			if (lock.isValid()) {
+				System.out.println("This is a valid shared lock");
+				return lock;
+			}
+			return null;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+
+	
+
+	static class Writer implements Runnable {
+
+		private Path path;
+
+		private volatile RandomAccessFile file;
+
+		private String text;
+
+		private volatile CountDownLatch countDownLatch;
+
+		/**
+		 * 
+		 * @param path           The path to the file we will write into
+		 * @param text           The text to write
+		 * @param countDownLatch A counter for thread synchronization
+		 * 
+		 */
+		public Writer(Path path, String text, CountDownLatch countDownLatch) {
+			this.path = path;
+			this.text = text;
+			this.countDownLatch = countDownLatch;
+		}
+
+		@Override
+		public void run() {
+			try {
+				lockAndWrite();
+			} catch (InterruptedException | FileNotFoundException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			System.out.println("Other Error.");
-			e.printStackTrace();
+			countDownLatch.countDown();
 		}
-		return file;
-	}
-	
-	
 
+		private void lockAndWrite() throws InterruptedException, FileNotFoundException {
+			ByteBuffer buffer = null;
+			if (file == null) {
+				file = new RandomAccessFile(path.toFile(), "rw");
+			}
+			try (FileChannel channel = file.getChannel()) {
+
+				try (FileLock lock = channel.tryLock(channel.size(),
+						channel.size() + text.length() + System.lineSeparator().length(), true)) {
+					if (lock != null) {
+						String text = "Hello, world.";
+						buffer = ByteBuffer.allocate(text.length() + System.lineSeparator().length());
+						buffer.put((text + System.lineSeparator()).getBytes(Charsets.UTF_8));
+						buffer.flip();
+						while (buffer.hasRemaining()) {
+							channel.write(buffer, channel.size());
+						}
+					}
+				} catch (OverlappingFileLockException e) {
+					// Failed to lock. Try again later.
+					Thread.sleep(50);
+					lockAndWrite();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+	public static void main(String[] args) throws InterruptedException, IOException {
+		Path path = Paths.get("/tmp/foo");
+		Files.deleteIfExists(path);
+		Files.createFile(path);
+		int concurrentWriters = 5;
+		CountDownLatch countDownLatch = new CountDownLatch(concurrentWriters);
+		// Launch 10 writers in parallel
+		final AtomicInteger count = new AtomicInteger(0);
+		Stream.generate(() -> new Thread(new Writer(path, "foo " + count.incrementAndGet(), countDownLatch)))
+				.limit(concurrentWriters).forEach(Thread::start);
+
+		countDownLatch.await();
+		AtomicInteger lineCount = new AtomicInteger(0);
+		Files.lines(path).forEach((line) -> {
+			lineCount.incrementAndGet();
+			System.out.println(line);
+		});
+		System.out.println("Total lines written = " + lineCount.get());
+
+	}
 }
