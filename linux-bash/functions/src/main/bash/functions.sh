@@ -89,7 +89,7 @@ function redirection_in_ps() {
     read
     while read -a input;
         do
-            echo "${input[2]} ${input[8]}"
+            echo "User[${input[2]}]->File[${input[8]}]"
         done
 } < <(ls -ll /)
 
@@ -151,11 +151,11 @@ do
             echo -e "\n"
             echo "**Getting outputs from a function**"
             global_sum_outputs 1 2
-            echo -e "1+2 using global variables: [$global_sum]"
+            echo -e ">1+2 using global variables: [$global_sum]"
             cs_sum=$(cs_sum_outputs 1 2)
-            echo -e "1+2 using command substitution: [$cs_sum]"
+            echo -e ">1+2 using command substitution: [$cs_sum]"
             arg_ref_sum_outputs 1 2 arg_ref_sum
-            echo -e "1+2 using argument references: [$arg_ref_sum]"
+            echo -e ">1+2 using argument references: [$arg_ref_sum]"
             echo -e "\n"
             ;;
         "function_variables")
@@ -181,45 +181,30 @@ ref arguments: [$subshell_sum_arg_ref]"
         "function_redirections")
             echo -e "\n"
             echo "**Function redirections**"
-            echo -e "File input redirection:"
+            echo -e ">Function input redirection from file:"
             redirection_in
-            echo -e "Command input redirection:"
+            echo -e ">Function input redirection from command:"
             redirection_in_ps
+            echo -e ">Function output redirection to file:"
+            redirection_out
+            cat outfile
+            echo -e ">Function output redirection to command:"
+            red_ps=$(redirection_out_ps)
+            echo "$red_ps"
+            echo -e "\n"
             ;;
-        # "timeout_input_read")
-        #     echo "Enter something in 5 seconds or less"
-        #     timeout_input_read
-        #     ;;
-        # "exactly_n_read")
-        #     echo "Enter at least 11 characters or wait 5 seconds"
-        #     exactly_n_read
-        #     ;;
+        "function_recursion")
+            echo -e "\n"
+            echo "**Function recursion**"
+            fibo_res1=$(fibonnaci_recursion 7)
+            echo "The 7th Fibonnaci number: [$fibo_res1]"
+            fibo_res2=$(fibonnaci_recursion 15)
+            echo "The 15th Fibonnaci number: [$fibo_res2]"
+            echo -e "\n"
+            ;;
         "quit")
             break
             ;;
         *) echo "Invalid option";;
     esac
 done
-
-#simple_function
-# simple_inputs one 'two three'
-# sum=$(simple_outputs 1 2)
-# echo "Sum is $sum"
-# sum=0
-# ref_outputs 1 9 sumt
-# echo "Sum is $sumt"
-# simple_for_loop
-# simple_comparison 6
-# simple_comparison 4
-# simple_subshell 1 2 sum
-# echo "Sum is $sum"
-
-#variable_scope
-# echo "Variable outside function variable_scope : [$variable]"
-# FUNCNEST=5
-# echo $(fibonnaci_recursion 7)
-# echo $(fibonnaci_recursion 15)
-# redirection_in 
-# redirection_in_ps
-# redirection_out
-# redirection_out_ps
