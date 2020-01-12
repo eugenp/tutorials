@@ -11,4 +11,5 @@ This module contains articles about core Kotlin.
 - [Guide to JVM Platform Annotations in Kotlin](https://www.baeldung.com/kotlin-jvm-annotations)
 - [Finding an Element in a List Using Kotlin](https://www.baeldung.com/kotlin-finding-element-in-list)
 - [Kotlin Ternary Conditional Operator](https://www.baeldung.com/kotlin-ternary-conditional-operator)
+- [Sequences in Kotlin](https://www.baeldung.com/sequences-in-kotlin)
 - More articles: [[<-- prev]](/core-kotlin)
