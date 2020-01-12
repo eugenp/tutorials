@@ -14,22 +14,5 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-java</relativePath>
     </parent>
-    
-    <dependencies>
-    	<!-- https://mvnrepository.com/artifact/com.github.jnr/jnr-ffi -->
-		<dependency>
-		    <groupId>com.github.jnr</groupId>
-		    <artifactId>jnr-ffi</artifactId>
-		    <version>2.1.11</version>
-		</dependency>
-		    	
-		<!-- https://mvnrepository.com/artifact/com.github.jnr/jnr-constants -->
-		<dependency>
-		    <groupId>com.github.jnr</groupId>
-		    <artifactId>jnr-constants</artifactId>
-		    <version>0.9.14</version>
-		</dependency>
-				
-    </dependencies>
 
 </project>
