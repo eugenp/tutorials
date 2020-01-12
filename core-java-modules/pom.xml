@@ -18,7 +18,7 @@
         <module>core-java-optional</module>
         <module>core-java-lang-operators</module>
         <module>core-java-networking-2</module>
-        <module>core-java-date-operations</module>
+        <module>core-java-date-operations-2</module>
     </modules>
 
 </project>
