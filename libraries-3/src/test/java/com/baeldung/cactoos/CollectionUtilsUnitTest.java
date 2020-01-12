@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-public class CollectionUtilsTest {
+public class CollectionUtilsUnitTest {
 
 	@Test
 	public void whenFilteredClassIsCalledWithSpecificArgs_thenCorrespondingFilteredCollectionShouldBeReturned() throws IOException {

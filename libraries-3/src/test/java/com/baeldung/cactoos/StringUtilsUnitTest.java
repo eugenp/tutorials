@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-public class StringUtilsTest {
+public class StringUtilsUnitTest {
 
 	@Test
 	public void whenFormattedTextIsPassedWithArgs_thenFormattedStringIsReturned() throws IOException {
