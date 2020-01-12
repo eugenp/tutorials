@@ -18,7 +18,7 @@
         <module>spring-security-angular/server</module>
         <module>spring-security-cache-control</module>
         <module>spring-security-core</module>
-        <!-- <module>spring-security-cors</module> -->  <!-- PMD violation -->
+        <module>spring-security-cors</module>
         <module>spring-security-kerberos</module>
         <module>spring-security-mvc</module>
         <module>spring-security-mvc-boot</module>
@@ -30,7 +30,7 @@
         <module>spring-security-mvc-persisted-remember-me</module>
         <module>spring-security-mvc-socket</module>
         <module>spring-security-oidc</module>
-        <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
+        <!--<module>spring-security-react</module> --> <!-- Module broken, fixing in BAEL-20772 -->
 
         <module>spring-security-rest</module>
         <module>spring-security-rest-basic-auth</module>
