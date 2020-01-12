@@ -344,7 +344,7 @@
                 <module>algorithms-miscellaneous-5</module>
                 <module>algorithms-searching</module>
                 <module>algorithms-sorting</module>
-
+                <module>algorithms-sorting-2</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
@@ -360,6 +360,7 @@
                 <module>apache-opennlp</module>
                 <module>apache-poi</module>
                 <module>apache-pulsar</module>
+                <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-solrj</module>
                 <module>apache-spark</module>
@@ -461,6 +462,7 @@
                 <module>java-math-2</module> <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
+                <module>java-numbers-3</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -531,7 +533,7 @@
                 <module>mustache</module>
                 <module>mybatis</module>
 
-                <module>netflix</module>
+                <module>netflix-modules</module>
                 <module>ninja</module>
 
                 <module>oauth2-framework-impl</module>
@@ -891,7 +893,7 @@
                 <module>algorithms-miscellaneous-5</module>
                 <module>algorithms-searching</module>
                 <module>algorithms-sorting</module>
-
+                <module>algorithms-sorting-2</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
@@ -907,6 +909,7 @@
                 <module>apache-opennlp</module>
                 <module>apache-poi</module>
                 <module>apache-pulsar</module>
+                <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-solrj</module>
                 <module>apache-spark</module>
@@ -1008,6 +1011,7 @@
                 <module>java-math-2</module> <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
+                <module>java-numbers-3</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -1078,7 +1082,7 @@
                 <module>mustache</module>
                 <module>mybatis</module>
 
-                <module>netflix</module>
+                <module>netflix-modules</module>
                 <module>ninja</module>
 
                 <module>oauth2-framework-impl</module>

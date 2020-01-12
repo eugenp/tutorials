@@ -49,7 +49,8 @@
         <module>core-java-concurrency-basic-2</module>
         <module>core-java-concurrency-collections</module>
 
-        <module>core-java-date-operations</module>
+        <module>core-java-date-operations-1</module>
+        <module>core-java-date-operations-2</module>
         <!-- We haven't upgraded to java 9.-->
         <!--
         <module>core-java-datetime-computations</module>
@@ -98,7 +99,6 @@
         <module>core-java-reflection</module>
 
         <module>core-java-security</module>
-        <module>core-java-security-manager</module>
         <module>core-java-streams</module>
         <module>core-java-streams-2</module>
         <module>core-java-streams-3</module>
