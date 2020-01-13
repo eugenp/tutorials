@@ -635,6 +635,7 @@
                 <module>webrtc</module>
                 <module>wildfly</module>
                 <module>quarkus-extension</module>
+                <module>hexagonal</module>
             </modules>
 
         </profile>
@@ -1254,6 +1255,7 @@
                 <module>spring-boot-properties</module>
                 <module>spring-mvc-basics</module>
                 <!-- <module>Twitter4J</module> --> <!-- Builds locally, but fails in Jenkins, Failed to parse POMs -->
+                <module>hexagonal</module>
 
             </modules>
 
