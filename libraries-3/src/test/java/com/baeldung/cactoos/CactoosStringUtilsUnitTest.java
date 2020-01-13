@@ -6,12 +6,12 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-public class StringUtilsUnitTest {
+public class CactoosStringUtilsUnitTest {
 
 	@Test
 	public void whenFormattedTextIsPassedWithArgs_thenFormattedStringIsReturned() throws IOException {
 
-		StringUtils obj = new StringUtils();
+		CactoosStringUtils obj = new CactoosStringUtils();
 
 		// when
 		String formattedString = obj.createdFormattedString("John");
@@ -24,7 +24,7 @@ public class StringUtilsUnitTest {
 	@Test
 	public void whenStringIsPassesdToLoweredOrUpperClass_thenCorrespondingStringIsReturned() throws Exception {
 
-		StringUtils obj = new StringUtils();
+		CactoosStringUtils obj = new CactoosStringUtils();
 
 		// when
 		String lowerCaseString = obj.toLowerCase("TeSt StrIng");
@@ -39,7 +39,7 @@ public class StringUtilsUnitTest {
 	@Test
 	public void whenEmptyStringIsPassesd_thenIsBlankReturnsTrue() throws Exception {
 
-		StringUtils obj = new StringUtils();
+		CactoosStringUtils obj = new CactoosStringUtils();
 
 		// when
 		boolean isBlankEmptyString = obj.isBlank("");

@@ -11,9 +11,9 @@ import org.cactoos.text.FormattedText;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CollectionUtils {
+public class CactoosCollectionUtils {
 
-	final Logger LOGGER = LoggerFactory.getLogger(CollectionUtils.class);
+	final Logger LOGGER = LoggerFactory.getLogger(CactoosCollectionUtils.class);
 
 	public void iterateCollection(List<String> strings) throws Exception {
 		new And((String input) -> LOGGER.info(new FormattedText("%s\n", input).asString()), strings).value();

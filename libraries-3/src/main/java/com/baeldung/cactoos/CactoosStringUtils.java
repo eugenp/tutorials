@@ -8,7 +8,7 @@ import org.cactoos.text.Lowered;
 import org.cactoos.text.TextOf;
 import org.cactoos.text.Upper;
 
-public class StringUtils {
+public class CactoosStringUtils {
 
 	public String createString() throws IOException {
 		String testString = new TextOf("Test String").asString();

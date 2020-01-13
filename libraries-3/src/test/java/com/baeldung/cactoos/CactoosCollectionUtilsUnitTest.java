@@ -8,12 +8,12 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-public class CollectionUtilsUnitTest {
+public class CactoosCollectionUtilsUnitTest {
 
 	@Test
 	public void whenFilteredClassIsCalledWithSpecificArgs_thenCorrespondingFilteredCollectionShouldBeReturned() throws IOException {
 
-		CollectionUtils obj = new CollectionUtils();
+		CactoosCollectionUtils obj = new CactoosCollectionUtils();
 
 		// when
 		List<String> strings = new ArrayList<String>() { 
