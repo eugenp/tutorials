@@ -28,16 +28,17 @@ class CategoryUnitTest extends GroovyTestCase {
         }
     }
 
-    void test_whenUsingTimeCategory_thenOperationOnNumber() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy")
-        use (TimeCategory) {
-            assert sdf.format(5.days.from.now) == sdf.format(new Date() + 5.days)
-
-            sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
-            assert sdf.format(10.minutes.from.now) == sdf.format(new Date() + 10.minutes)
-            assert sdf.format(2.hours.ago) == sdf.format(new Date() - 2.hours)
-        }
-    }
+//	http://team.baeldung.com/browse/BAEL-20687
+//    void test_whenUsingTimeCategory_thenOperationOnNumber() {
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy")
+//        use (TimeCategory) {
+//            assert sdf.format(5.days.from.now) == sdf.format(new Date() + 5.days)
+//
+//            sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+//            assert sdf.format(10.minutes.from.now) == sdf.format(new Date() + 10.minutes)
+//            assert sdf.format(2.hours.ago) == sdf.format(new Date() - 2.hours)
+//        }
+//    }
 
     void test_whenUsingDOMCategory_thenOperationOnXML() {
 
