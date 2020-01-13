@@ -38,6 +38,11 @@
             <version>${mysql-connector.version}</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -48,6 +53,7 @@
         <javaee.version>8.0</javaee.version>
         <hibernate-core.version>5.2.16.Final</hibernate-core.version>
         <mysql-connector.version>6.0.6</mysql-connector.version>
+        <guava.version>23.0</guava.version>
     </properties>
 
 </project>
