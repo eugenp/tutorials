@@ -14,9 +14,9 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackageClasses = CarSellingApplication.class)
 public class BeanConfiguration {
 
-	@Autowired
-	private CarStoreRepository repository;
-	
+    @Autowired
+    private CarStoreRepository repository;
+
     @Bean
     ICarStoreService carStoreService() {
         return new CustomCarStoreService(repository);

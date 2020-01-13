@@ -7,15 +7,15 @@ import com.baeldung.dddhexagonalquickexample.domain.CarStore;
 
 public interface ICarStoreService {
 
-	void createStore(CarStore store);
-	
-	CarStore getStore(Long idStore);
-	
-	Car getCar(Long idStore, Long idCar);
+    void createStore(CarStore store);
 
-	List<Car> getCars(Long idStore);
-	
-	void sellCar(Long idStore, Long idCar);
+    CarStore getStore(Long idStore);
 
-	void addCarToCatalog(Long idStore, Car car);
+    Car getCar(Long idStore, Long idCar);
+
+    List<Car> getCars(Long idStore);
+
+    void sellCar(Long idStore, Long idCar);
+
+    void addCarToCatalog(Long idStore, Car car);
 }

@@ -9,21 +9,21 @@ import com.baeldung.dddhexagonalquickexample.infraestructure.adapter.CrudCarStor
 
 @Component
 public class CarStoreRepository implements ICarStoreRepository {
-	
-	@Autowired
-	private CrudCarStoreRepository carStoreRepository;
 
-	@Override
-	public CarStore findStoreById(Long idStore) {
-		return carStoreRepository.findById(idStore).get();
-	}
-	@Override
-	public void saveStore(CarStore store) {
-		carStoreRepository.save(store);
-	}
-	
+    @Autowired
+    private CrudCarStoreRepository carStoreRepository;
 
-	public void setCarStoreRepository(CrudCarStoreRepository carStoreRepository) {
-		this.carStoreRepository = carStoreRepository;
-	}
+    @Override
+    public CarStore findStoreById(Long idStore) {
+        return carStoreRepository.findById(idStore).get();
+    }
+    @Override
+    public void saveStore(CarStore store) {
+        carStoreRepository.save(store);
+    }
+
+
+    public void setCarStoreRepository(CrudCarStoreRepository carStoreRepository) {
+        this.carStoreRepository = carStoreRepository;
+    }
 }
