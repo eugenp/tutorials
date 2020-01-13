@@ -11,6 +11,7 @@ public class RandomNumbersGeneratorUnitTest {
 
     private static final int MIN_RANGE = 1;
     private static final int MAX_RANGE = 10;
+    private static final int MIN_RANGE_NEGATIVE = -10;    
     private static final int ITERATIONS = 50;
     private static final long STREAM_SIZE = 50;
 
@@ -19,7 +20,7 @@ public class RandomNumbersGeneratorUnitTest {
         RandomNumbersGenerator generator = new RandomNumbersGenerator();
         for (int i = 0; i < ITERATIONS; i++) {
             int randomNumer = generator.generateRandomWithMathRandom(MIN_RANGE, MAX_RANGE);
-            assertTrue(isInRange(randomNumer, Integer.MIN_VALUE, Integer.MAX_VALUE));
+            assertTrue(isInRange(randomNumer, MIN_RANGE, MAX_RANGE));
         }
     }
 
@@ -97,10 +98,17 @@ public class RandomNumbersGeneratorUnitTest {
     public void whenGenerateRandomWithSplittableRandom_returnsSuccessfully() {
         RandomNumbersGenerator generator = new RandomNumbersGenerator();
         for (int i = 0; i < ITERATIONS; i++) {
-            int randomNumber = generator.generateRandomWithSplittableRandom(MIN_RANGE, MAX_RANGE);
-            assertTrue(isInRange(randomNumber, MIN_RANGE, MAX_RANGE));
+            int randomNumber = generator.generateRandomWithSplittableRandom(MIN_RANGE_NEGATIVE, MAX_RANGE);
+            assertTrue(isInRange(randomNumber, MIN_RANGE_NEGATIVE, MAX_RANGE));
         }
     }
+    
+    @Test
+    public void whenGenerateRandomWithSplittableRandomLimitedIntStreamWithinARange_returnsSuccessfully() {
+        RandomNumbersGenerator generator = new RandomNumbersGenerator();
+        generator.generateRandomWithSplittableRandomLimitedIntStreamWithinARange(MIN_RANGE, MAX_RANGE, STREAM_SIZE)
+            .forEach(randomNumber -> assertTrue(isInRange(randomNumber, MIN_RANGE, MAX_RANGE)));
+    }        
 
     @Test
     public void whenGenerateRandomWithSecureRandom_returnsSuccessfully() {
@@ -108,6 +116,15 @@ public class RandomNumbersGeneratorUnitTest {
         for (int i = 0; i < ITERATIONS; i++) {
             int randomNumber = generator.generateRandomWithSecureRandom();
             assertTrue(isInRange(randomNumber, Integer.MIN_VALUE, Integer.MAX_VALUE));
+        }
+    }
+    
+    @Test
+    public void whenGenerateRandomWithSecureRandomWithinARange_returnsSuccessfully() {
+        RandomNumbersGenerator generator = new RandomNumbersGenerator();
+        for (int i = 0; i < ITERATIONS; i++) {
+            int randomNumber = generator.generateRandomWithSecureRandomWithinARange(MIN_RANGE, MAX_RANGE);
+            assertTrue(isInRange(randomNumber, MIN_RANGE, MAX_RANGE));
         }
     }
 
