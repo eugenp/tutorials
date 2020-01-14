@@ -43,7 +43,7 @@ public class StringConcatenationUnitTest {
             "oops");
 
 
-    assertEquals("I ate 2,51 blueberry pies, oops...", myString);
+    assertEquals("I ate 2.51 blueberry pies, oops...", myString);
   }
 
   @Test
