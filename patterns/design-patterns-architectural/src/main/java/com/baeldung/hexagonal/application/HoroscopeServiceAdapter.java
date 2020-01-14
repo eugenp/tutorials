@@ -5,7 +5,7 @@ import com.baeldung.hexagonal.domain.HoroscopeServicePort;
 
 public class HoroscopeServiceAdapter implements HoroscopeServicePort {
     
-private HoroscopeRepositoryPort horoscopeRepositoryPort;
+    private HoroscopeRepositoryPort horoscopeRepositoryPort;
     
     public HoroscopeServiceAdapter(HoroscopeRepositoryPort horoscopeRepositoryPort) {
         this.horoscopeRepositoryPort = horoscopeRepositoryPort;
