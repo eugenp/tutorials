@@ -47,13 +47,6 @@ public class EmployeeFunctionalConfig {
     }
 
     @Bean
-    RouterFunction<ServerResponse> composedRoutes() {
-      return getAllEmployeesRoute()
-          .and(getEmployeeByIdRoute())
-          .and(updateEmployeeRoute());
-    }
-
-    @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.csrf()
             .disable()
