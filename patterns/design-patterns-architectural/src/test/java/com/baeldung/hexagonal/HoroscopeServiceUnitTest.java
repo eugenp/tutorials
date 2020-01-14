@@ -1,9 +1,12 @@
 package com.baeldung.hexagonal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.Test;
+
+import com.baeldung.hexagonal.application.HoroscopeServiceAdapter;
 import com.baeldung.hexagonal.domain.HoroscopeRepositoryPort;
-import com.baeldung.hexagonal.domain.HoroscopeService;
+import com.baeldung.hexagonal.domain.HoroscopeServicePort;
 import com.baeldung.hexagonal.infrastructure.InMemoryHoroscopeRepositoryAdapter;
 
 public class HoroscopeServiceUnitTest {
@@ -12,13 +15,13 @@ public class HoroscopeServiceUnitTest {
     
     @Test
     public void givenHoroscopeRepository_whenCalledApplyWithCorrectZodiac_thenReturnsExpectedHorocope() {
-        HoroscopeService horoscopeService = new HoroscopeService(horoscopeRepository);
-        assertEquals("You are likely to hit at least one obstacle today", horoscopeService.apply("ARIES"));
+        HoroscopeServicePort horoscopeService = new HoroscopeServiceAdapter(horoscopeRepository);
+        assertEquals("You are likely to hit at least one obstacle today", horoscopeService.execute("ARIES"));
     }
  
     @Test
     public void givenHoroscopeRepository_whenCalledApplyWithIncorrectZodiac_thenReturnsErrorText() {
-        HoroscopeService horoscopeService = new HoroscopeService(horoscopeRepository);
-        assertEquals("The input zodiac sign [XYZ] is not valid", horoscopeService.apply("XYZ"));
+        HoroscopeServicePort horoscopeService = new HoroscopeServiceAdapter(horoscopeRepository);
+        assertEquals("The input zodiac sign [XYZ] is not valid", horoscopeService.execute("XYZ"));
     }
 }
