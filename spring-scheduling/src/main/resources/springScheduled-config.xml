@@ -16,7 +16,7 @@
     <bean id="myscheduler" class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler"/>
 
     <!-- Configure the fixedDealy, fixedRate or cron based scheduled tasks -->
-    <bean id="schedulingWithXmlConfig" class="org.baeldung.scheduling.SchedulingWithXmlConfig"/>
+    <bean id="schedulingWithXmlConfig" class="com.baeldung.scheduling.SchedulingWithXmlConfig"/>
 
     <task:scheduled-tasks scheduler="myScheduler">
         <task:scheduled ref="schedulingWithXmlConfig" method="scheduleFixedDelayTask"
