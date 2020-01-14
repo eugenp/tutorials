@@ -12,6 +12,14 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-java</relativePath>
     </parent>
+    
+    <dependencies>
+    	<dependency>
+            <groupId>it.unimi.dsi</groupId>
+            <artifactId>dsiutils</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+    </dependencies>
    
     <build>
         <finalName>java-numbers-3</finalName>
