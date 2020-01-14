@@ -51,12 +51,12 @@ function arg_ref_sum_outputs() {
 
 # Subsection 3.1
 variable="baeldung"
-function variable_scope2(){
+function variable_scope2() {
     echo "Variable inside function variable_scope2: [$variable]"
     local variable="ipsum"
 }
 
-function variable_scope(){
+function variable_scope() {
     local variable="lorem"
     echo "Variable inside function variable_scope: [$variable]"
     variable_scope2
@@ -64,18 +64,16 @@ function variable_scope(){
 
 # Subsection 3.2
 subshell_sum=0
-function simple_subshell_sum()
-    (
-        subshell_sum=$(($1+$2))
-        echo "Value of sum in function with global variables: [$subshell_sum]"
-    )
+function simple_subshell_sum() (
+    subshell_sum=$(($1+$2))
+    echo "Value of sum in function with global variables: [$subshell_sum]"
+)
 
-function simple_subshell_ref_sum() 
-    (
-        declare -n sum_ref=$3
-        sum_ref=$(($1+$2))
-        echo "Value of sum in function with ref arguments: [$sum_ref]"
-    )
+function simple_subshell_ref_sum() (
+    declare -n sum_ref=$3
+    sum_ref=$(($1+$2))
+    echo "Value of sum in function with ref arguments: [$sum_ref]"
+)
 
 # Subsection 3.3
 function redirection_in() {
@@ -93,7 +91,7 @@ function redirection_in_ps() {
         done
 } < <(ls -ll /)
 
-function redirection_out_ps(){
+function redirection_out_ps() {
     declare -a output=("baeldung" "lorem" "ipsum" "caracg")
     for element in "${output[@]}"
         do
