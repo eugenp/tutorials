@@ -13,10 +13,12 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.net.URL;
+import java.util.regex.Pattern;
 
 import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @RunWith(SpringRunner.class)
@@ -42,15 +44,18 @@ public class CustomConfigAuthorizationServerIntegrationTest extends OAuth2Integr
         assertNotNull(accessToken);
     }
 
-    @Test
-    public void givenOAuth2Context_whenAccessingAuthentication_ThenRespondBaeldung() {
-        ClientCredentialsResourceDetails resourceDetails = getClientCredentialsResourceDetails("baeldung", singletonList("read"));
-        OAuth2RestTemplate restTemplate = getOAuth2RestTemplate(resourceDetails);
+@Test
+public void givenOAuth2Context_whenAccessingAuthentication_ThenRespondTokenDetails() {
+    ClientCredentialsResourceDetails resourceDetails = getClientCredentialsResourceDetails("baeldung", singletonList("read"));
+    OAuth2RestTemplate restTemplate = getOAuth2RestTemplate(resourceDetails);
 
-        String authentication = executeGetRequest(restTemplate, "/authentication");
+    String authentication = executeGetRequest(restTemplate, "/authentication");
 
-        assertEquals("baeldung", authentication);
-    }
+    Pattern pattern = Pattern.compile("\\{\"remoteAddress\":\".*" +
+            "\",\"sessionId\":null,\"tokenValue\":\".*" +
+            "\",\"tokenType\":\"Bearer\",\"decodedDetails\":null}");
+    assertTrue("authentication", pattern.matcher(authentication).matches());
+}
 
     @Test
     public void givenOAuth2Context_whenAccessingPrincipal_ThenRespondBaeldung() {

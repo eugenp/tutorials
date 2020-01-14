@@ -33,9 +33,9 @@ public class SpringBootAuthorizationServerApplication {
         }
 
         @GetMapping("/authentication")
-        public String getAuthentication(@CurrentSecurityContext(expression = "authentication") Authentication authentication) {
+        public Object getAuthentication(@CurrentSecurityContext(expression = "authentication") Authentication authentication) {
             logger.info("authentication -> {}", authentication);
-            return authentication.getName();
+            return authentication.getDetails();
         }
 
         @GetMapping("/principal")
