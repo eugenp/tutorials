@@ -17,3 +17,4 @@ This module contains articles about core java exceptions
 - [Common Java Exceptions](https://www.baeldung.com/java-common-exceptions)
 - [How to Find an Exception’s Root Cause in Java](https://www.baeldung.com/java-exception-root-cause)
 - [Is It a Bad Practice to Catch Throwable?](https://www.baeldung.com/java-catch-throwable-bad-practice)
+- [[Next -->]](/core-java-modules/core-java-exceptions-2)
