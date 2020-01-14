@@ -48,19 +48,9 @@ public class EmployeeFunctionalConfig {
 
     @Bean
     RouterFunction<ServerResponse> composedRoutes() {
-      return 
-          route(GET("/employees"), 
-            req -> ok().body(
-              employeeRepository().findAllEmployees(), Employee.class))
-            
-          .and(route(GET("/employees/{id}"), 
-            req -> ok().body(
-              employeeRepository().findEmployeeById(req.pathVariable("id")), Employee.class)))
-            
-          .and(route(POST("/employees/update"), 
-            req -> req.body(toMono(Employee.class))
-                      .doOnNext(employeeRepository()::updateEmployee)
-                      .then(ok().build())));
+      return getAllEmployeesRoute()
+          .and(getEmployeeByIdRoute())
+          .and(updateEmployeeRoute());
     }
 
     @Bean
