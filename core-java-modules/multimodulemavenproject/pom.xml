@@ -45,10 +45,10 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.0</version>
+                    <version>${compiler.plugin.version}</version>
                     <configuration>
-                        <source>1.9</source>
-                        <target>1.9</target>
+                        <source>${source.version}</source>
+                        <target>${target.version}</target>
                     </configuration>
                 </plugin>
             </plugins>
@@ -56,6 +56,9 @@
     </build>
 
     <properties>
+        <compiler.plugin.version>3.8.0</compiler.plugin.version>
+        <source.version>1.9</source.version>
+        <target.version>1.9</target.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <assertj-core.version>3.12.2</assertj-core.version>
     </properties>
