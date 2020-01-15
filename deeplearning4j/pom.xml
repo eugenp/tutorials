@@ -44,12 +44,13 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.3.5</version>
+            <version>${httpclient.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <dl4j.version>0.9.1</dl4j.version> <!-- Latest non beta version -->
+        <httpclient.version>4.3.5</httpclient.version>
     </properties>
 
 </project>

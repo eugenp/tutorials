@@ -25,7 +25,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>28.1-jre</version>
+			<version>${guava.version}</version>
 		</dependency>
 
 		<dependency>
@@ -62,7 +62,7 @@
 	<properties>
 		<commons-lang3.version>3.8.1</commons-lang3.version>
 		<assertj.version>3.6.1</assertj.version>
-		<guava.version>27.0.1-jre</guava.version>
+		<guava.version>28.1-jre</guava.version>
 		<junit-jupiter-api.version>5.3.1</junit-jupiter-api.version>
 	</properties>
 
