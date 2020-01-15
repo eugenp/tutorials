@@ -7,6 +7,8 @@ import com.github.jknack.handlebars.Template;
 import com.github.jknack.handlebars.io.ClassPathTemplateLoader;
 import com.github.jknack.handlebars.io.TemplateLoader;
 import java.io.IOException;
+import java.util.regex.Pattern;
+
 import org.junit.Test;
 
 /**
@@ -27,7 +29,7 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<h4>I live in World</h4>\n");
+        assertThat(templateString).matches(Pattern.compile("\\s+<h4>I live in World</h4>\\s+"));
     }
 
     @Test
@@ -39,7 +41,7 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<h4>I live in World</h4>\n");
+        assertThat(templateString).matches(Pattern.compile("\\s+<h4>I live in World</h4>\\s+"));
     }
 
     @Test
@@ -54,8 +56,8 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<span>Java is my friend.</span>\n"
-                                               + "\n<span>Spring is my friend.</span>\n");
+        assertThat(templateString).matches(Pattern.compile("\\s+<span>Java is my friend.</span>\\s+"
+                                               + "\\s+<span>Spring is my friend.</span>\\s+"));
     }
 
     @Test
@@ -70,8 +72,8 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<span>Java is my friend.</span>\n"
-                                               + "\n<span>Spring is my friend.</span>\n");
+        assertThat(templateString).matches(Pattern.compile("\\s+<span>Java is my friend.</span>\\s+"
+                                               + "\\s+<span>Spring is my friend.</span>\\s+"));
     }
 
     @Test
@@ -83,7 +85,7 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<h4>Baeldung is busy.</h4>\n");
+        assertThat(templateString).matches(Pattern.compile("\\s+<h4>Baeldung is busy.</h4>\\s+"));
     }
 
     @Test
@@ -95,7 +97,7 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<h4>Baeldung is busy.</h4>\n");
+        assertThat(templateString).matches(Pattern.compile("\\s+<h4>Baeldung is busy.</h4>\\s+"));
     }
 
     private Person getPerson(String name) {

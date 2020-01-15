@@ -7,6 +7,8 @@ import com.github.jknack.handlebars.Template;
 import com.github.jknack.handlebars.io.ClassPathTemplateLoader;
 import com.github.jknack.handlebars.io.TemplateLoader;
 import java.io.IOException;
+import java.util.regex.Pattern;
+
 import org.junit.Test;
 
 /**
@@ -27,7 +29,7 @@ public class ReusingTemplatesUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("<h4>Hi Baeldung!</h4>\n<p>This is the page Baeldung</p>");
+        assertThat(templateString).matches(Pattern.compile("<h4>Hi Baeldung!</h4>\\s+<p>This is the page Baeldung</p>"));
     }
 
     @Test
@@ -39,11 +41,11 @@ public class ReusingTemplatesUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<html>\n"
-                                               + "<body>\n"
-                                               + "\n  This is the intro\n\n"
-                                               + "\n  Hi there!\n\n"
-                                               + "</body>\n"
-                                               + "</html>");
+        assertThat(templateString).matches(Pattern.compile("\\s+<html>\\s+"
+                                               + "<body>\\s+"
+                                               + "\\s+This is the intro\\s+"
+                                               + "\\s+Hi there!\\s+"
+                                               + "</body>\\s+"
+                                               + "</html>"));
     }
 }
