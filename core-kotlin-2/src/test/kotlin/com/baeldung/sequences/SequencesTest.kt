@@ -7,14 +7,14 @@ import java.time.Instant
 class SequencesTest {
 
     @Test
-    fun shouldBuildSequenceFromElements() {
+    fun shouldBuildSequenceWhenUsingFromElements() {
         val seqOfElements = sequenceOf("first" ,"second", "third")
                 .toList()
         assertEquals(3, seqOfElements.count())
     }
 
     @Test
-    fun shouldBuildSequenceFromFunction() {
+    fun shouldBuildSequenceWhenUsingFromFunction() {
         val seqFromFunction = generateSequence(Instant.now()) {it.plusSeconds(1)}
                 .take(3)
                 .toList()
@@ -22,7 +22,7 @@ class SequencesTest {
     }
 
     @Test
-    fun shouldBuildSequenceFromChunks() {
+    fun shouldBuildSequenceWhenUsingFromChunks() {
         val seqFromChunks = sequence {
             yield(1)
             yieldAll((2..5).toList())
@@ -31,7 +31,7 @@ class SequencesTest {
     }
 
     @Test
-    fun shouldBuildSequenceFromCollection() {
+    fun shouldBuildSequenceWhenUsingFromCollection() {
         val seqFromIterable = (1..10)
                 .asSequence()
                 .toList()
@@ -39,7 +39,7 @@ class SequencesTest {
     }
 
     @Test
-    fun shouldShowNoCountDiffWithAndWithoutSequence() {
+    fun shouldShowNoCountDiffWhenUsingWithAndWithoutSequence() {
         val withSequence = (1..10).asSequence()
                 .filter{it % 2 == 1}
                 .map { it * 2 }
