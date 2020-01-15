@@ -16,7 +16,7 @@
         <dependency>
             <groupId>com.baeldung.servicemodule</groupId>
             <artifactId>servicemodule</artifactId>
-            <version>1.0</version>
+            <version>${servicemodule.version}</version>
         </dependency>
     </dependencies>
 
@@ -28,5 +28,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <servicemodule.version>1.0</servicemodule.version>
+    </properties>
 
 </project>
