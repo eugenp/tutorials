@@ -183,7 +183,7 @@
             <plugin>
                 <groupId>io.ebean</groupId>
                 <artifactId>ebean-maven-plugin</artifactId>
-                <version>11.11.2</version>
+                <version>${ebean.plugin.version}</version>
                 <executions>
                     <!-- enhance main classes -->
                     <execution>
@@ -202,6 +202,7 @@
     </build>
 
     <properties>
+        <ebean.plugin.version>11.11.2</ebean.plugin.version>
         <reladomo.version>16.5.1</reladomo.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
