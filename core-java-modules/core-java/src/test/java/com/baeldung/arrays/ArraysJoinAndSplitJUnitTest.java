@@ -1,4 +1,4 @@
-package org.baeldung.java.arrays;
+package com.baeldung.arrays;
 
 import java.util.Arrays;
 

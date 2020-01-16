@@ -1,4 +1,4 @@
-package org.baeldung.java.rawtypes;
+package com.baeldung.rawtypes;
 
 import java.util.ArrayList;
 import java.util.List;
