@@ -1,4 +1,4 @@
-package org.baeldung.java.streams;
+package com.baeldung.java.stream;
 
 import org.junit.Test;
 
