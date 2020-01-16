@@ -1,4 +1,4 @@
-package org.baeldung;
+package com.baeldung.list.random;
 
 import com.google.common.collect.Lists;
 import org.junit.Test;
