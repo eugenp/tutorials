@@ -9,78 +9,55 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<failOnMissingWebXml>false</failOnMissingWebXml>
-		<!-- Plugin versions -->
-		<version.liberty-maven-plugin>3.1</version.liberty-maven-plugin>
-		<version.maven-war-plugin>3.2.3</version.maven-war-plugin>
-		<version.maven-surefire-plugin>2.22.2</version.maven-surefire-plugin>
-		<version.maven-failsafe-plugin>2.22.2</version.maven-failsafe-plugin>
-		<!-- Liberty configuration -->
-		<liberty.var.default.http.port>9080</liberty.var.default.http.port>
-		<liberty.var.default.https.port>9443</liberty.var.default.https.port>
-		<liberty.var.app.context.root>openliberty</liberty.var.app.context.root>
-	</properties>
-
 	<dependencies>
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derby</artifactId>
-			<version>10.14.2.0</version>
-		</dependency>
-		<dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.186</version>
-        </dependency>
-		<!-- Provided dependencies -->
 		<dependency>
 			<groupId>jakarta.platform</groupId>
 			<artifactId>jakarta.jakartaee-web-api</artifactId>
-			<version>8.0.0</version>
+			<version>${version.jakarta.jakartaee-web-api}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.microprofile</groupId>
 			<artifactId>microprofile</artifactId>
-			<version>3.0</version>
+			<version>${version.microprofile}</version>
 			<type>pom</type>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<version>${version.derby}</version>
+		</dependency>
+
 		<!-- For tests -->
 		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.5.2</version>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>yasson</artifactId>
+			<version>${version.yasson}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-rs-client</artifactId>
-			<version>3.3.4</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-rs-extension-providers</artifactId>
-			<version>3.3.4</version>
+			<version>${version.cxf-rt-rs-client}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.json</artifactId>
-			<version>1.1.4</version>
+			<version>${version.javax.json}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- Support for JDK 9 and above -->
 		<dependency>
-			<groupId>javax.xml.bind</groupId>
-			<artifactId>jaxb-api</artifactId>
-			<version>2.3.1</version>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-mp-client</artifactId>
+			<version>${version.cxf-rt-rs-mp-client}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -96,25 +73,58 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${version.maven-dependency-plugin}</version>
+				<executions>
+					<execution>
+						<id>copy-derby-dependency</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeArtifactIds>derby</includeArtifactIds>
+							<outputDirectory>${project.build.directory}/liberty/wlp/usr/shared/resources/</outputDirectory>
+							<systemPropertyVariables>
+								<liberty.test.port>${testServerHttpPort}</liberty.test.port>
+							</systemPropertyVariables>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${version.maven-war-plugin}</version>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${version.maven-surefire-plugin}</version>
-			</plugin>
-			<!-- Plugin to run functional tests -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>${version.maven-failsafe-plugin}</version>
-				<configuration>
-					<systemPropertyVariables>
-						<http.port>${liberty.var.default.http.port}</http.port>
-					</systemPropertyVariables>
-				</configuration>
-			</plugin>
+
 		</plugins>
 	</build>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+
+		<!-- versions -->
+		<version.jakarta.jakartaee-web-api>8.0.0</version.jakarta.jakartaee-web-api>
+		<version.microprofile>3.2</version.microprofile>
+		<version.derby>10.14.2.0</version.derby>
+		<version.liberty-maven-plugin>3.1</version.liberty-maven-plugin>
+		<version.maven-dependency-plugin>2.10</version.maven-dependency-plugin>
+		<version.maven-war-plugin>3.2.3</version.maven-war-plugin>
+		<version.junit>4.12</version.junit>
+		<version.yasson>1.0.5</version.yasson>
+		<version.cxf-rt-rs-client>3.2.6</version.cxf-rt-rs-client>
+		<version.javax.json>1.0.4</version.javax.json>
+		<version.cxf-rt-rs-mp-client>3.3.1</version.cxf-rt-rs-mp-client>
+
+		<!-- Liberty configuration -->
+		<liberty.var.app.context.root>openliberty</liberty.var.app.context.root>
+		<liberty.var.default.http.port>9080</liberty.var.default.http.port>
+		<liberty.var.default.https.port>9443</liberty.var.default.https.port>
+		<testServerHttpPort>9080</testServerHttpPort>
+	</properties>
 </project>
