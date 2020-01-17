@@ -1,4 +1,4 @@
-package com.baeldung.openliberty;
+package com.baeldung.openliberty.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
