@@ -14,18 +14,18 @@ import com.baeldung.hexagonal.service.UserServicePort;
 @RequestMapping("/api/user")
 public class UserControllerAdapter implements UserControllerPort {
 
-	@Autowired
-	UserServicePort userServicePort;
+    @Autowired
+    UserServicePort userServicePort;
 
-	@Override
-	public void createUser(@RequestBody User userObj) {
-		userServicePort.createUser(userObj.getUserName());
-	}
+    @Override
+    public void createUser(@RequestBody User userObj) {
+        userServicePort.createUser(userObj.getUserName());
+    }
 
-	@Override
-	public User getUser(@PathVariable Long userId) {
+    @Override
+    public User getUser(@PathVariable Long userId) {
 
-		User user = userServicePort.getUser(userId);
-		return user;
-	}
+        User user = userServicePort.getUser(userId);
+        return user;
+    }
 }

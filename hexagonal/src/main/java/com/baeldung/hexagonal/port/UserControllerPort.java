@@ -9,9 +9,9 @@ import com.baeldung.hexagonal.domain.User;
 
 public interface UserControllerPort {
 
-	@PostMapping("/createUser")
-	public void createUser(@RequestBody User request);
+    @PostMapping("/createUser")
+    public void createUser(@RequestBody User request);
 
-	@GetMapping("/getUser/{userId}")
-	public User getUser(@PathVariable Long userId);
+    @GetMapping("/getUser/{userId}")
+    public User getUser(@PathVariable Long userId);
 }

@@ -4,8 +4,8 @@ import com.baeldung.hexagonal.domain.User;
 
 public interface UserRepoPort {
 
-	public void createUser(User user);
+    public void createUser(User user);
 
-	public User getUser(Long userId);
+    public User getUser(Long userId);
 
 }

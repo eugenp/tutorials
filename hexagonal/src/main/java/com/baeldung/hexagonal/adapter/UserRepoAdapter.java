@@ -11,16 +11,16 @@ import com.baeldung.hexagonal.port.UserRepoPort;
 @Repository
 public class UserRepoAdapter implements UserRepoPort {
 
-	@PersistenceContext
-	private EntityManager entityManager;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-	@Override
-	public void createUser(User user) {
-		entityManager.persist(user);
-	}
+    @Override
+    public void createUser(User user) {
+        entityManager.persist(user);
+    }
 
-	@Override
-	public User getUser(Long userId) {
-		return entityManager.find(User.class, userId);
-	}
+    @Override
+    public User getUser(Long userId) {
+        return entityManager.find(User.class, userId);
+    }
 }
