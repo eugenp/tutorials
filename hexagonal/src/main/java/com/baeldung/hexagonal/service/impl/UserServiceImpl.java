@@ -10,7 +10,7 @@ import com.baeldung.hexagonal.port.UserRepoPort;
 import com.baeldung.hexagonal.service.UserServicePort;
 
 @Service
-public class UserServiceAdapter implements UserServicePort {
+public class UserServiceImpl implements UserServicePort {
 
     @Autowired
     UserRepoPort userRepoPort;
