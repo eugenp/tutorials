@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 import org.junit.jupiter.api.Test;
 
-public class RegexMatcherFindVsMatchesTest {
+public class MatcherUnitTest {
 
     @Test
     public void whenFindFourDigitWorks_thenCorrect() {
