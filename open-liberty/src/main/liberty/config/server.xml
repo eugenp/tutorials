@@ -8,7 +8,6 @@
         <feature>cdi-2.0</feature>
         <feature>jpa-2.2</feature>
         <feature>beanValidation-2.0</feature>
-        <feature>mpConfig-1.3</feature>
         <feature>mpRestClient-1.3</feature>
     </featureManager>
 
