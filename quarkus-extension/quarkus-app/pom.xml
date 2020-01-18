@@ -23,7 +23,7 @@
         <dependency>
             <groupId>com.baeldung.quarkus.liquibase</groupId>
             <artifactId>quarkus-liquibase</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${liquibase.version}</version>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -71,6 +71,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <liquibase.version>1.0-SNAPSHOT</liquibase.version>
     </properties>
 
 </project>

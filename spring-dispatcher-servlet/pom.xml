@@ -63,7 +63,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>1.5.10.RELEASE</version>
+            <version>${springboot.test.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -95,6 +95,7 @@
 
     <properties>
         <tomcat8-maven-plugin.version>3.0-r1655215</tomcat8-maven-plugin.version>
+        <springboot.test.version>1.5.10.RELEASE</springboot.test.version>
     </properties>
 
 </project>

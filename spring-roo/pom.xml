@@ -253,7 +253,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.7.0</version>
+                    <version>${compiler.plugin.version}</version>
                     <configuration>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
@@ -342,7 +342,7 @@
                 <plugin>
                     <groupId>com.mysema.maven</groupId>
                     <artifactId>apt-maven-plugin</artifactId>
-                    <version>1.1.3</version>
+                    <version>${apt.plugin.version}</version>
                     <executions>
                         <execution>
                             <goals>
@@ -640,6 +640,8 @@
         <html5shiv.version>3.7.3</html5shiv.version>
         <bootstrap.ie10-viewport-bug-workaround.version>1.0.3</bootstrap.ie10-viewport-bug-workaround.version>
         <querydsl-processor.version>2.0.0.RELEASE</querydsl-processor.version>
+        <compiler.plugin.version>3.7.0</compiler.plugin.version>
+        <apt.plugin.version>1.1.3</apt.plugin.version>
     </properties>
 
 </project>

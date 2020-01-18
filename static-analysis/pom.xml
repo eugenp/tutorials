@@ -17,7 +17,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.7</version>
+                <version>${pmd.plugin.version}</version>
                 <configuration>
                     <rulesets>
                         <ruleset>rulesets/java/braces.xml</ruleset>
@@ -27,5 +27,9 @@
             </plugin>
         </plugins>
     </reporting>
+
+    <properties>
+        <pmd.plugin.version>3.7</pmd.plugin.version>
+	</properties>
 
 </project>

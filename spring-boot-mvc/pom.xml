@@ -122,12 +122,12 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>1.9.1</version>
+            <version>${aspectjrt.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.9.1</version>
+            <version>${aspectjrt.version}</version>
         </dependency>
 
     </dependencies>
@@ -151,6 +151,7 @@
         <rome.version>1.10.0</rome.version>
         <javax.faces.version>2.3.7</javax.faces.version>
         <start-class>com.baeldung.springbootmvc.SpringBootMvcApplication</start-class>
+        <aspectjrt.version>1.9.1</aspectjrt.version>
     </properties>
 
 </project>

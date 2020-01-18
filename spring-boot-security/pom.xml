@@ -22,12 +22,12 @@
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
-            <version>2.3.3.RELEASE</version>
+            <version>${spring.security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security.oauth.boot</groupId>
             <artifactId>spring-security-oauth2-autoconfigure</artifactId>
-            <version>2.1.2.RELEASE</version>
+            <version>${spring.security.oauth2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -64,7 +64,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>2.1.1.RELEASE</version>
+            <version>${spring.autoconfigure.version}</version>
         </dependency>
     </dependencies>
 
@@ -79,6 +79,9 @@
 
     <properties>
         <start-class>com.baeldung.springbootsecurity.basic_auth.SpringBootSecurityApplication</start-class>
+        <spring.security.version>2.3.3.RELEASE</spring.security.version>
+        <spring.security.oauth2.version>2.1.2.RELEASE</spring.security.oauth2.version>
+        <spring.autoconfigure.version>2.1.1.RELEASE</spring.autoconfigure.version>
     </properties>
 
 </project>

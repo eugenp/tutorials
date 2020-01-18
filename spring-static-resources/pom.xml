@@ -189,7 +189,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.2</version>
+                <version>${war.plugin.version}</version>
                 <configuration>
                     <webResources>
                         <resource>
@@ -214,6 +214,7 @@
 
         <!-- Maven plugins -->
         <yuicompressor-maven-plugin.version>1.5.1</yuicompressor-maven-plugin.version>
+        <war.plugin.version>3.2.2</war.plugin.version>
     </properties>
 
 </project>

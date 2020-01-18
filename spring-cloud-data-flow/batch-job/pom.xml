@@ -21,7 +21,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Brixton.SR5</version>
+                <version>${springcloud.dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -49,6 +49,7 @@
 
     <properties>
         <spring-cloud-task-starter.version>1.0.3.RELEASE</spring-cloud-task-starter.version>
+        <springcloud.dependencies.version>Brixton.SR5</springcloud.dependencies.version>
     </properties>
 
 </project>

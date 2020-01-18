@@ -128,7 +128,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.18</version>
+                <version>${failsafe.plugin.version}</version>
                 <executions>
                     <!-- Invokes both the integration-test and the verify goals of the Failsafe 
                         Maven plugin -->
@@ -198,6 +198,7 @@
         <subethasmtp.version>3.1.7</subethasmtp.version>
         <springcloud.version>2.0.2.RELEASE</springcloud.version>
         <httpclient.version>4.5.8</httpclient.version>
+        <failsafe.plugin.version>2.18</failsafe.plugin.version>
     </properties>
 
 </project>

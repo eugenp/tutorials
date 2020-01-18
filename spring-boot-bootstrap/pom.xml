@@ -175,12 +175,12 @@
                 <dependency>
                     <groupId>org.springframework.cloud</groupId>
                     <artifactId>spring-cloud-gcp-starter</artifactId>
-                    <version>1.0.0.RELEASE</version>
+                    <version>${spring.cloud.gcp.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.springframework.cloud</groupId>
                     <artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
-                    <version>1.0.0.RELEASE</version>
+                    <version>${spring.cloud.gcp.sql.version}</version>
                 </dependency>
             </dependencies>
             <build>
@@ -197,7 +197,7 @@
                     <plugin>
                         <groupId>com.google.cloud.tools</groupId>
                         <artifactId>appengine-maven-plugin</artifactId>
-                        <version>1.3.2</version>
+                        <version>${appengine.plugin.version}</version>
                     </plugin>
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
@@ -330,6 +330,9 @@
 
     <properties>
         <servlet.version>4.0.0</servlet.version>
+        <spring.cloud.gcp.version>1.0.0.RELEASE</spring.cloud.gcp.version>
+        <spring.cloud.gcp.sql.version>1.0.0.RELEASE</spring.cloud.gcp.sql.version>
+        <appengine.plugin.version>1.3.2</appengine.plugin.version>
     </properties>
 
 </project>

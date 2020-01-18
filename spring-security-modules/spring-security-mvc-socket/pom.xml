@@ -152,7 +152,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>1.5.10.RELEASE</version>
+            <version>${springboot.test.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -163,7 +163,7 @@
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
+                <version>${tomcat.plugin.version}</version>
                 <configuration>
                     <path>/spring-security-mvc-socket</path>
                 </configuration>
@@ -171,7 +171,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>${war.plugin.version}</version>
                 <configuration>
                     <warSourceDirectory>src/main/webapp</warSourceDirectory>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -185,6 +185,9 @@
         <spring-security.version>4.2.3.RELEASE</spring-security.version>
         <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
         <logback-classic.version>1.2.3</logback-classic.version>
+        <springboot.test.version>1.5.10.RELEASE</springboot.test.version>
+        <tomcat.plugin.version>2.2</tomcat.plugin.version>
+        <war.plugin.version>3.0.0</war.plugin.version>
     </properties>
 
 </project>

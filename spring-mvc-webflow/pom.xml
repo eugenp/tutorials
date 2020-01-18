@@ -57,7 +57,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>1.5.10.RELEASE</version>
+            <version>${springboot.test.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -96,6 +96,7 @@
         <!-- Maven plugins -->
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <springboot.test.version>1.5.10.RELEASE</springboot.test.version>
     </properties>
 
 </project>

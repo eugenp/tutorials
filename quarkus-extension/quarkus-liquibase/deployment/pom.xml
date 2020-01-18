@@ -40,7 +40,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
@@ -53,5 +53,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <compiler.plugin.version>3.8.1</compiler.plugin.version>
+    </properties>
 
 </project>

@@ -19,7 +19,7 @@
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-releasetrain</artifactId>
-                <version>Hopper-SR10</version>
+                <version>${releasetrain.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -194,6 +194,7 @@
         <dynamodblocal.version>1.11.86</dynamodblocal.version>
         <dynamodblocal.repository.url>https://s3-us-west-2.amazonaws.com/dynamodb-local/release</dynamodblocal.repository.url>
         <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
+        <releasetrain.version>Hopper-SR10</releasetrain.version>
     </properties>
 
 </project>

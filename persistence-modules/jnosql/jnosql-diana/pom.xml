@@ -55,7 +55,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <version>${maven.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>document</id>
@@ -88,5 +88,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <maven.plugin.version>1.6.0</maven.plugin.version>
+    </properties>
 
 </project>

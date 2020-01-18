@@ -83,7 +83,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.0.2</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -115,6 +115,7 @@
         <hsqldb.version>2.5.0</hsqldb.version>
         <hibernate.version>5.4.9.Final</hibernate.version>
         <deploy-path>enter-location-of-server</deploy-path>
+        <compiler.plugin.version>2.0.2</compiler.plugin.version>
     </properties>
 
 </project>

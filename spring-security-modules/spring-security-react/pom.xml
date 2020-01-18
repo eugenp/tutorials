@@ -87,7 +87,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>1.5.10.RELEASE</version>
+            <version>${springboot.test.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -156,7 +156,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.11.v20180605</version>
+                <version>${jetty.plugin.version}</version>
             </plugin>
 
         </plugins>
@@ -164,6 +164,8 @@
     </build>
 
     <properties>
+        <springboot.test.version>1.5.10.RELEASE</springboot.test.version>
+        <jetty.plugin.version>9.4.11.v20180605</jetty.plugin.version>
         <!-- Spring -->
         <org.springframework.version>4.3.6.RELEASE</org.springframework.version>
         <org.springframework.security.version>4.2.1.RELEASE</org.springframework.security.version>

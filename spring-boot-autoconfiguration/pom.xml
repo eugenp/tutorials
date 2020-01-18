@@ -42,7 +42,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
-            <version>2.1.6.RELEASE</version>
+            <version>${spring.configuration.version}</version>
             <optional>true</optional>
         </dependency>
 
@@ -113,6 +113,7 @@
         <bootstrap.version>3.3.7-1</bootstrap.version>
         <subethasmtp.version>3.1.7</subethasmtp.version>
         <tomee-servlet-api.version>8.5.11</tomee-servlet-api.version>
+        <spring.configuration.version>2.1.6.RELEASE</spring.configuration.version>
     </properties>
 
 </project>

@@ -126,7 +126,7 @@
             <plugin>
                 <groupId>com.github.temyers</groupId>
                 <artifactId>cucumber-jvm-parallel-plugin</artifactId>
-                <version>5.0.0</version>
+                <version>${cucumber.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>generateRunners</id>
@@ -162,6 +162,7 @@
         <httpclient.version>4.5.2</httpclient.version>
 
         <jbehave.version>4.1</jbehave.version>
+        <cucumber.plugin.version>5.0.0</cucumber.plugin.version>
     </properties>
 
 </project>
