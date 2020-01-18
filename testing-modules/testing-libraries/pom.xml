@@ -40,7 +40,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.2.0.RELEASE</version>
+            <version>${springboot.web.version}</version>
         </dependency>
 
     </dependencies>
@@ -90,6 +90,7 @@
         <lambda-behave.version>0.4</lambda-behave.version>
         <cucumber.version>4.8.0</cucumber.version>
         <checkstyle-maven-plugin.version>3.0.0</checkstyle-maven-plugin.version>
+        <springboot.web.version>2.2.0.RELEASE</springboot.web.version>
     </properties>
 
 </project>
