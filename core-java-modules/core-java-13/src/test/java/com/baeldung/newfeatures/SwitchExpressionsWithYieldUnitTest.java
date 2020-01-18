@@ -21,7 +21,7 @@ public class SwitchExpressionsWithYieldUnitTest {
         default -> me;
         };
 
-        assertEquals(result, 16);
+        assertEquals(16, result);
     }
 
 }
