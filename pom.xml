@@ -588,6 +588,7 @@
                 <module>mybatis</module>
                 <module>ninja</module>
                 <module>netflix</module>
+                <module>open-liberty</module>
 
                 <module>optaplanner</module>
                 <module>orika</module>
@@ -1220,6 +1221,7 @@
                 <module>mybatis</module>
                 <module>ninja</module>
                 <module>netflix</module>
+                <module>open-liberty</module>
 
                 <module>optaplanner</module>
                 <module>orika</module>
