@@ -30,7 +30,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compiler.plugin.version}3.8.0</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
                     <release>${maven.release.version}</release>
                     <encoding>${project.build.sourceEncoding}</encoding>
