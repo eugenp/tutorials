@@ -14,10 +14,7 @@ public class Person {
     @Id
     private int id;
     
-    @NotBlank
     private String username;
-   
-    @Email
     private String email;
     
     public int getId() {
