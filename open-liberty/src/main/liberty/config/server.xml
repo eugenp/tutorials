@@ -7,11 +7,7 @@
         <feature>jsonb-1.0</feature>
         <feature>cdi-2.0</feature>
         <feature>jpa-2.2</feature>
-        <feature>beanValidation-2.0</feature>
-        <feature>mpRestClient-1.3</feature>
     </featureManager>
-
-    <keyStore id="defaultKeyStore" password="Liberty" />
 
     <webApplication location="open-liberty.war" contextRoot="/" />
 
@@ -20,8 +16,7 @@
     <httpEndpoint host="*" httpPort="${default.http.port}" httpsPort="${default.https.port}" id="defaultHttpEndpoint" />
 
     <library id="derbyJDBCLib">
-        <!-- <fileset dir="${project.build.directory}/open-liberty/WEB-INF/lib" includes="derby*.jar" /> -->
-        <fileset dir="/Users/anshulbansal/eclipse-workspace/tutorials/open-liberty/target/open-liberty/WEB-INF/lib" includes="derby*.jar" />
+        <fileset dir="${shared.resource.dir}" includes="derby*.jar"/> 
     </library>
 
     <!-- Datasource Configuration -->

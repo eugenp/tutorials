@@ -23,23 +23,13 @@ public class RestClientTest {
     
     @Test
     public void testSuite() {
-        //uncomment when liberty server starts
+        //run the test only when liberty server is started
         //this.whenConsumeWithJsonb_thenGetPerson();
-        //this.whenConsumeWithRestBuilder_thenGetPerson();
     }
 
     public void whenConsumeWithJsonb_thenGetPerson() {
         String url = BASE_URL + API_PERSON;
         String result = RestConsumer.consumeWithJsonb(url);        
-
-        Person person = JsonbBuilder.create().fromJson(result, Person.class);
-        assert person.getId() == 1;
-        assertEquals(person.getUsername(), "normanlewis");
-        assertEquals(person.getEmail(), "normanlewis@email.com");
-    }
-
-    public void whenConsumeWithRestBuilder_thenGetPerson() {
-        String result = RestConsumer.consumeWithRestBuilder(BASE_URL);   
 
         Person person = JsonbBuilder.create().fromJson(result, Person.class);
         assert person.getId() == 1;
