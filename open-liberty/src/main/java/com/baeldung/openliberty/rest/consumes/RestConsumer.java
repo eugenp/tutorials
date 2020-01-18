@@ -20,7 +20,7 @@ public class RestConsumer {
     }
 
     public static String consumeWithRestBuilder(String targetUrl) {
-        URI target = URI.create(targetUrl);;
+        URI target = URI.create(targetUrl);
         PersonClient person = RestClientBuilder.newBuilder()
           .baseUri(target)
           .build(PersonClient.class);

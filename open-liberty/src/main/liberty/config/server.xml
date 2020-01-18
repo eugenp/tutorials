@@ -4,7 +4,7 @@
         <feature>servlet-4.0</feature>
         <feature>jaxrs-2.1</feature>
         <feature>jsonp-1.1</feature>
-        <!-- <feature>jsonb-1.0</feature> -->
+        <feature>jsonb-1.0</feature>
         <feature>cdi-2.0</feature>
         <feature>jpa-2.2</feature>
         <feature>beanValidation-2.0</feature>

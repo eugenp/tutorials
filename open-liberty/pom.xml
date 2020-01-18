@@ -111,7 +111,7 @@
 		<!-- versions -->
 		<version.jakarta.jakartaee-web-api>8.0.0</version.jakarta.jakartaee-web-api>
 		<version.microprofile>3.2</version.microprofile>
-		<version.derby>10.14.2.0</version.derby>
+		<version.derby>10.15.1.3</version.derby>
 		<version.liberty-maven-plugin>3.1</version.liberty-maven-plugin>
 		<version.maven-dependency-plugin>2.10</version.maven-dependency-plugin>
 		<version.maven-war-plugin>3.2.3</version.maven-war-plugin>
