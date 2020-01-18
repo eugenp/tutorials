@@ -21,7 +21,7 @@ public class DataframesExperiments {
             .appName("Java Spark Dataframes example")
             .getOrCreate();
 
-        Dataset<Row> df = session.read().json("C:\\Programas\\spark-2.4.4-bin-hadoop2.7\\examples\\src\\main\\resources\\people.json");
+        Dataset<Row> df = session.read().json("{SPARK_HOME}/examples/src/main/resources/people.json");
         df.show();
 
         df.select("name").show();
