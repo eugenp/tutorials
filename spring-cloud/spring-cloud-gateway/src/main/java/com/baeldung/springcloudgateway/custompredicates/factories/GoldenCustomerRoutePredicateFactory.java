@@ -41,27 +41,25 @@ public class GoldenCustomerRoutePredicateFactory extends AbstractRoutePredicateF
         
         return (ServerWebExchange t) -> {
             List<HttpCookie> cookies = t.getRequest()
-                .getCookies()
-                .get(config.getCustomerIdCookie());
+              .getCookies()
+              .get(config.getCustomerIdCookie());
               
-              boolean isGolden; 
-              if ( cookies == null || cookies.isEmpty()) {
-                  isGolden = false;
-              }
-              else {                
-                  String customerId = cookies.get(0).getValue();                
-                  isGolden = goldenCustomerService.isGoldenCustomer(customerId);
-              }
+            boolean isGolden; 
+            if ( cookies == null || cookies.isEmpty()) {
+                isGolden = false;
+            }
+            else {                
+                String customerId = cookies.get(0).getValue();                
+                isGolden = goldenCustomerService.isGoldenCustomer(customerId);
+            }
               
-              return config.isGolden()?isGolden:!isGolden;           
+            return config.isGolden()?isGolden:!isGolden;           
         };
-        
     }
     
     
     @Validated
-    public static class Config {
-        
+    public static class Config {        
         boolean isGolden = true;
         
         @NotEmpty
