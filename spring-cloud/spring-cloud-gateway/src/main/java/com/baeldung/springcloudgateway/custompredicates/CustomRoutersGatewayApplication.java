@@ -8,8 +8,8 @@ public class CustomRoutersGatewayApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(CustomRoutersGatewayApplication.class)
-        .profiles("customroutes")
-        .run(args);
+          .profiles("customroutes")
+          .run(args);
     }
 
 }
