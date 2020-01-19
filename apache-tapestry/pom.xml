@@ -81,10 +81,10 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${source.version}</source>
+                    <target>${target.version}</target>
                     <optimize>true</optimize>
                 </configuration>
             </plugin>
@@ -92,7 +92,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.7.2</version>
+                <version>${compiler.surefire.version}</version>
                 <configuration>
                     <systemPropertyVariables>
                         <tapestry.execution-mode>Qa</tapestry.execution-mode>
@@ -104,7 +104,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.16</version>
+                <version>${compiler.jetty.version}</version>
                 <configuration>
                     <!-- Log to the console. -->
                     <requestLog implementation="org.mortbay.jetty.NCSARequestLog">
@@ -140,6 +140,11 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
     </repositories>
 
     <properties>
+        <compiler.jetty.version>6.1.16</compiler.jetty.version>
+        <compiler.surefire.version>2.7.2</compiler.surefire.version>
+        <compiler.plugin.version>2.3.2</compiler.plugin.version>
+        <source.version>1.8</source.version>
+        <target.version>1.8</target.version>
         <tapestry-release-version>5.4.5</tapestry-release-version>
         <servlet-api-release-version>2.5</servlet-api-release-version>
         <testng-release-version>6.8.21</testng-release-version>
