@@ -23,6 +23,11 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+        <dependency>
+		  <groupId>com.github.rvesse</groupId>
+		  <artifactId>airline</artifactId>
+		  <version>2.7.2</version>
+		</dependency>
     </dependencies>
 
     <properties>
