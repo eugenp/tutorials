@@ -19,34 +19,34 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.5.1</version>
+            <version>${jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>5.0.9.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.0.9.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>5.0.9.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>5.0.9.RELEASE</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.199</version>
+            <version>${h2.version}</version>
         </dependency>
     </dependencies>
 
@@ -56,11 +56,19 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${source.version}</source>
+                    <target>${target.version}</target>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+    
+    <properties>
+        <spring.version>5.0.9.RELEASE</spring.version>
+        <h2.version>1.4.199</h2.version>
+        <jupiter.version>5.5.1</jupiter.version>
+        <source.version>1.8</source.version>
+        <target.version>1.8</target.version>
+    </properties>
 
 </project>
