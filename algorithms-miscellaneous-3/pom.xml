@@ -46,13 +46,13 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.8.1</version>
+            <version>${commons.lang3.version}</version>
         </dependency>
 
         <dependency>
             <groupId>pl.pragmatists</groupId>
             <artifactId>JUnitParams</artifactId>
-            <version>1.1.0</version>
+            <version>${JUnitParams.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -91,6 +91,8 @@
         <retrofit.version>2.6.0</retrofit.version>
         <jmh-core.version>1.19</jmh-core.version>
         <jmh-generator.version>1.19</jmh-generator.version>
+        <commons.lang3.version>3.8.1</commons.lang3.version>
+        <JUnitParams.version>1.1.0</JUnitParams.version>
     </properties>
 
 </project>

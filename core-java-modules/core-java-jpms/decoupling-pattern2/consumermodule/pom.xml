@@ -17,12 +17,12 @@
         <dependency>
             <groupId>com.baeldung.servicemodule</groupId>
             <artifactId>servicemodule</artifactId>
-            <version>1.0</version>
+            <version>${servicemodule.version}</version>
         </dependency>
         <dependency>
             <groupId>com.baeldung.providermodule</groupId>
             <artifactId>providermodule</artifactId>
-            <version>1.0</version>
+            <version>${providermodule.version}</version>
         </dependency>
     </dependencies>
 
@@ -34,5 +34,10 @@
             </plugin>
         </plugins>
     </build>
+	
+    <properties>
+        <servicemodule.version>1.0</servicemodule.version>
+        <providermodule.version>1.0</providermodule.version>
+    </properties>
 
 </project>

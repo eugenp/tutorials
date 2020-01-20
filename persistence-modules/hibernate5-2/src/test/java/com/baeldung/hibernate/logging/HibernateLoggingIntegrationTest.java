@@ -1,4 +1,4 @@
-package com.baeldung.hibernatelogging;
+package com.baeldung.hibernate.logging;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
