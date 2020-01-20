@@ -1,5 +1,8 @@
 package com.baeldung.openliberty.person.resource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -16,7 +19,7 @@ import com.baeldung.openliberty.person.dao.PersonDao;
 import com.baeldung.openliberty.person.model.Person;
 
 @RequestScoped
-@Path("person")
+@Path("persons")
 public class PersonResource {
 
     @Inject
@@ -24,9 +27,11 @@ public class PersonResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Person getPerson() {
-        Person person = new Person(1, "normanlewis", "normanlewis@email.com"); 
-        return person;
+    public List<Person> getAllPerson() {
+        Person person = new Person(1, "normanlewis", "normanlewis@email.com");
+        List<Person> persons = new ArrayList<>();
+        persons.add(person);
+        return persons;
     }
 
     @POST
@@ -35,7 +40,7 @@ public class PersonResource {
     public Response addPerson(Person person) {
         personDao.createPerson(person);
         String respMessage = "Person #" + person.getId() + " created successfully.";
-        return Response.status(Response.Status.OK).entity(respMessage).build();
+        return Response.status(Response.Status.CREATED).entity(respMessage).build();
     }
 
     @GET
