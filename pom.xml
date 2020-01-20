@@ -814,7 +814,7 @@
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
-<!--                <module>spring-roo</module>-->
+                <module>spring-roo</module>
                 <module>spring-scheduling</module>
                 <module>spring-security-modules/spring-security-acl</module>
                 <module>spring-security-modules/spring-security-angular/server</module>
@@ -1416,7 +1416,7 @@
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
-<!--                <module>spring-roo</module>-->
+                <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
                 <module>spring-security-modules/spring-security-acl</module>
