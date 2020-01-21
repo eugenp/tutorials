@@ -621,6 +621,7 @@
 
                 <module>tensorflow-java</module>
                 <module>spf4j</module>
+                <module>spring-boot-modules</module>
                 <module>spring-boot-config-jpa-error</module>
                 <module>spring-boot-flowable</module>
                 <module>spring-boot-mvc-2</module>
@@ -707,6 +708,7 @@
                 <module>spring-bom</module>
 
                 <module>spring-boot</module>
+                <module>spring-boot-modules</module>
                 <module>spring-boot-admin</module>
                 <module>spring-boot-angular</module>
                 <module>spring-boot-autoconfiguration</module>
@@ -733,7 +735,6 @@
                 <module>spring-boot-runtime/disabling-console-log4j2</module>
                 <module>spring-boot-runtime/disabling-console-logback</module>
                 <module>spring-boot-artifacts</module>
-                <module>spring-boot-rest</module>
                 <module>spring-boot-data</module>
                 <module>spring-boot-parent</module>
                 <module>spring-boot-property-exp</module>
@@ -1252,6 +1253,7 @@
                 <module>rxjava-libraries</module>
                 <module>oauth2-framework-impl</module>
                 <module>spf4j</module>
+                <module>spring-boot-modules</module>
                 <module>spring-boot-performance</module>
                 <module>spring-boot-properties</module>
                 <module>spring-mvc-basics</module>
@@ -1316,6 +1318,7 @@
                 <module>spring-bom</module>
 
                 <module>spring-boot</module>
+                <module>spring-boot-modules</module>
                 <module>spring-boot-admin</module>
                 <module>spring-boot-angular</module>
                 <module>spring-boot-autoconfiguration</module>
@@ -1339,7 +1342,6 @@
                 <module>spring-boot-runtime/disabling-console-log4j2</module>
                 <module>spring-boot-runtime/disabling-console-logback</module>
                 <module>spring-boot-artifacts</module>
-                <module>spring-boot-rest</module>
                 <module>spring-boot-data</module>
                 <module>spring-boot-parent</module>
                 <module>spring-boot-property-exp</module>
