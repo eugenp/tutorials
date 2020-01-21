@@ -1,3 +1,3 @@
-## Core Java Modules
+## Spring Boot Modules
 
-This module contains modules about Sprint Boot
+This module contains various modules of Spring Boot
