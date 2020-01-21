@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <awaitility.version>3.1.2</awaitility.version>
     </properties>
 
     <dependencies>
@@ -31,7 +32,7 @@
         <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
-            <version>3.1.2</version>
+            <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
