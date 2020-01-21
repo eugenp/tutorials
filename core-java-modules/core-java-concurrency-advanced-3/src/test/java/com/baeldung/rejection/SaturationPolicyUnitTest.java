@@ -31,7 +31,7 @@ public class SaturationPolicyUnitTest {
     @Test
     public void givenAbortPolicy_WhenSaturated_ThenShouldThrowRejectedExecutionException() {
         executor = new ThreadPoolExecutor(1, 1, 0, MILLISECONDS, new SynchronousQueue<>(), new AbortPolicy());
-        executor.execute(() -> waitFor(100));
+        executor.execute(() -> waitFor(250));
 
         assertThatThrownBy(() -> executor.execute(() -> System.out.println("Will be rejected"))).isInstanceOf(RejectedExecutionException.class);
     }
@@ -39,13 +39,13 @@ public class SaturationPolicyUnitTest {
     @Test
     public void givenCallerRunsPolicy_WhenSaturated_ThenTheCallerThreadRunsTheTask() {
         executor = new ThreadPoolExecutor(1, 1, 0, MILLISECONDS, new SynchronousQueue<>(), new CallerRunsPolicy());
-        executor.execute(() -> waitFor(100));
+        executor.execute(() -> waitFor(250));
 
-        long startTime = System.nanoTime();
-        executor.execute(() -> waitFor(100));
-        double blockedDuration = (System.nanoTime() - startTime) / 1_000_000.0;
+        long startTime = System.currentTimeMillis();
+        executor.execute(() -> waitFor(500));
+        long blockedDuration = System.currentTimeMillis() - startTime;
 
-        assertThat(blockedDuration).isGreaterThanOrEqualTo(100);
+        assertThat(blockedDuration).isGreaterThanOrEqualTo(500);
     }
 
     @Test
