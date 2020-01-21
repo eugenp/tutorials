@@ -70,10 +70,22 @@ public class RandomNumbersGenerator {
         return randomWithSplittableRandom;
     }
 
+    public IntStream generateRandomWithSplittableRandomLimitedIntStreamWithinARange(int min, int max, long streamSize) {
+        SplittableRandom splittableRandom = new SplittableRandom();
+        IntStream limitedIntStreamWithinARangeWithSplittableRandom = splittableRandom.ints(streamSize, min, max);
+        return limitedIntStreamWithinARangeWithSplittableRandom;
+    }
+
     public Integer generateRandomWithSecureRandom() {
         SecureRandom secureRandom = new SecureRandom();
         int randomWithSecureRandom = secureRandom.nextInt();
         return randomWithSecureRandom;
+    }
+
+    public Integer generateRandomWithSecureRandomWithinARange(int min, int max) {
+        SecureRandom secureRandom = new SecureRandom();
+        int randomWithSecureRandomWithinARange = secureRandom.nextInt(max - min) + min;
+        return randomWithSecureRandomWithinARange;
     }
 
     public Integer generateRandomWithRandomDataGenerator(int min, int max) {
