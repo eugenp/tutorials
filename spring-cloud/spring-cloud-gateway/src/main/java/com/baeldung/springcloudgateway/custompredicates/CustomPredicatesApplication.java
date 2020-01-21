@@ -4,10 +4,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication
-public class CustomRoutersGatewayApplication {
+public class CustomPredicatesApplication {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(CustomRoutersGatewayApplication.class)
+        new SpringApplicationBuilder(CustomPredicatesApplication.class)
           .profiles("customroutes")
           .run(args);
     }
