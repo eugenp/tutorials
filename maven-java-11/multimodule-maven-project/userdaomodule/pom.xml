@@ -14,16 +14,21 @@
         <version>1.0</version>
     </parent>
 
+    <properties>
+        <entitymodule.version>1.0</entitymodule.version>
+        <daomodule.version>1.0</daomodule.version>
+	</properties>
+
     <dependencies>
         <dependency>
             <groupId>com.baeldung.entitymodule</groupId>
             <artifactId>entitymodule</artifactId>
-            <version>1.0</version>
+            <version>${entitymodule.version}1.0</version>
         </dependency>
         <dependency>
             <groupId>com.baeldung.daomodule</groupId>
             <artifactId>daomodule</artifactId>
-            <version>1.0</version>
+            <version>${daomodule.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

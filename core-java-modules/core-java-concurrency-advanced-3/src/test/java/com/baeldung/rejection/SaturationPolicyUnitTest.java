@@ -1,6 +1,7 @@
 package com.baeldung.rejection;
 
 import org.junit.After;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class SaturationPolicyUnitTest {
         }
     }
 
+    @Ignore
     @Test
     public void givenAbortPolicy_WhenSaturated_ThenShouldThrowRejectedExecutionException() {
         executor = new ThreadPoolExecutor(1, 1, 0, MILLISECONDS, new SynchronousQueue<>(), new AbortPolicy());
@@ -36,6 +38,7 @@ public class SaturationPolicyUnitTest {
         assertThatThrownBy(() -> executor.execute(() -> System.out.println("Will be rejected"))).isInstanceOf(RejectedExecutionException.class);
     }
 
+    @Ignore
     @Test
     public void givenCallerRunsPolicy_WhenSaturated_ThenTheCallerThreadRunsTheTask() {
         executor = new ThreadPoolExecutor(1, 1, 0, MILLISECONDS, new SynchronousQueue<>(), new CallerRunsPolicy());

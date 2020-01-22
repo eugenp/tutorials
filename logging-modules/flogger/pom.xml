@@ -15,26 +15,26 @@
         <dependency>
             <groupId>com.google.flogger</groupId>
             <artifactId>flogger</artifactId>
-            <version>0.4</version>
+            <version>${flogger.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.google.flogger</groupId>
             <artifactId>flogger-system-backend</artifactId>
-            <version>0.4</version>
+            <version>${flogger.version}</version>
             <scope>runtime</scope>
         </dependency>
 
         <dependency>
             <groupId>com.google.flogger</groupId>
             <artifactId>flogger-slf4j-backend</artifactId>
-            <version>0.4</version>
+            <version>${flogger.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.google.flogger</groupId>
             <artifactId>flogger-log4j-backend</artifactId>
-            <version>0.4</version>
+            <version>${flogger.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.sun.jmx</groupId>
@@ -54,13 +54,18 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <version>${log4j.version}</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>apache-log4j-extras</artifactId>
-            <version>1.2.17</version>
+            <version>${log4j.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <flogger.version>0.4</flogger.version>
+        <log4j.version>1.2.17</log4j.version>
+	</properties>
 
 </project>

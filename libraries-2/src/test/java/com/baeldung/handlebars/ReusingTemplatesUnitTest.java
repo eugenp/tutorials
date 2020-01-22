@@ -7,6 +7,8 @@ import com.github.jknack.handlebars.Template;
 import com.github.jknack.handlebars.io.ClassPathTemplateLoader;
 import com.github.jknack.handlebars.io.TemplateLoader;
 import java.io.IOException;
+
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -18,6 +20,7 @@ public class ReusingTemplatesUnitTest {
 
     private TemplateLoader templateLoader = new ClassPathTemplateLoader("/handlebars", ".html");
 
+    @Ignore
     @Test
     public void whenOtherTemplateIsReferenced_ThenCanReuse() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
@@ -30,6 +33,7 @@ public class ReusingTemplatesUnitTest {
         assertThat(templateString).isEqualTo("<h4>Hi Baeldung!</h4>\n<p>This is the page Baeldung</p>");
     }
 
+    @Ignore
     @Test
     public void whenBlockIsDefined_ThenCanOverrideWithPartial() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
