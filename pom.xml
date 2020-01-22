@@ -660,7 +660,6 @@
                 <module>spring-boot-libraries</module>
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc-2</module>
-                <module>spring-boot-mvc-2</module>
                 <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-nashorn</module>
                 <module>spring-boot-parent</module>
