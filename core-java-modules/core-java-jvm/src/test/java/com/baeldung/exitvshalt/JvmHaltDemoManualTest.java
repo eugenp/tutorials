@@ -2,7 +2,7 @@ package com.baeldung.exitvshalt;
 
 import org.junit.Test;
 
-public class JvmHaltDemoUnitTest {
+public class JvmHaltDemoManualTest {
 
     JvmExitAndHaltDemo jvmExitAndHaltDemo = new JvmExitAndHaltDemo();
 
