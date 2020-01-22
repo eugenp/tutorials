@@ -19,7 +19,13 @@ import static org.springframework.http.HttpMethod.GET;
 
 public class OAuth2IntegrationTestSupport {
 
-    @Value("${local.server.port}") protected int port;
+    public static final ResponseExtractor<String> EXTRACT_BODY_AS_STRING = clientHttpResponse ->
+            IOUtils.toString(clientHttpResponse.getBody(), Charset.defaultCharset());
+    private static final RequestCallback DO_NOTHING_CALLBACK = request -> {
+    };
+
+    @Value("${local.server.port}")
+    protected int port;
 
     protected URL base;
 
@@ -41,16 +47,7 @@ public class OAuth2IntegrationTestSupport {
     }
 
     protected String executeGetRequest(OAuth2RestTemplate restTemplate, String path) {
-        return restTemplate.execute(base.toString() + path, GET, getRequestCallback(), getStringResponseExtractor());
-    }
-
-    protected RequestCallback getRequestCallback() {
-        return clientHttpRequest -> {
-        };
-    }
-
-    protected ResponseExtractor<String> getStringResponseExtractor() {
-        return clientHttpResponse -> IOUtils.toString(clientHttpResponse.getBody(), Charset.defaultCharset());
+        return restTemplate.execute(base.toString() + path, GET, DO_NOTHING_CALLBACK, EXTRACT_BODY_AS_STRING);
     }
 
 }

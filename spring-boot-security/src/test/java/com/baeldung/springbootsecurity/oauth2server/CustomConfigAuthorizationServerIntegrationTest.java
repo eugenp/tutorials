@@ -44,18 +44,18 @@ public class CustomConfigAuthorizationServerIntegrationTest extends OAuth2Integr
         assertNotNull(accessToken);
     }
 
-@Test
-public void givenOAuth2Context_whenAccessingAuthentication_ThenRespondTokenDetails() {
-    ClientCredentialsResourceDetails resourceDetails = getClientCredentialsResourceDetails("baeldung", singletonList("read"));
-    OAuth2RestTemplate restTemplate = getOAuth2RestTemplate(resourceDetails);
+    @Test
+    public void givenOAuth2Context_whenAccessingAuthentication_ThenRespondTokenDetails() {
+        ClientCredentialsResourceDetails resourceDetails = getClientCredentialsResourceDetails("baeldung", singletonList("read"));
+        OAuth2RestTemplate restTemplate = getOAuth2RestTemplate(resourceDetails);
 
-    String authentication = executeGetRequest(restTemplate, "/authentication");
+        String authentication = executeGetRequest(restTemplate, "/authentication");
 
-    Pattern pattern = Pattern.compile("\\{\"remoteAddress\":\".*" +
-            "\",\"sessionId\":null,\"tokenValue\":\".*" +
-            "\",\"tokenType\":\"Bearer\",\"decodedDetails\":null}");
-    assertTrue("authentication", pattern.matcher(authentication).matches());
-}
+        Pattern pattern = Pattern.compile("\\{\"remoteAddress\":\".*" +
+                "\",\"sessionId\":null,\"tokenValue\":\".*" +
+                "\",\"tokenType\":\"Bearer\",\"decodedDetails\":null}");
+        assertTrue("authentication", pattern.matcher(authentication).matches());
+    }
 
     @Test
     public void givenOAuth2Context_whenAccessingPrincipal_ThenRespondBaeldung() {
