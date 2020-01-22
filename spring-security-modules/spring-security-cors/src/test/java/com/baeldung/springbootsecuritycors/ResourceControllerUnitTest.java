@@ -18,7 +18,7 @@ import com.baeldung.springbootsecuritycors.basicauth.SpringBootSecurityApplicati
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { SpringBootSecurityApplication.class })
-public class ResourceControllerTest {
+public class ResourceControllerUnitTest {
 
     private MockMvc mockMvc;
 
