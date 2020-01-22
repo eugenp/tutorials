@@ -838,8 +838,6 @@
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
 
-                <module>core-kotlin</module> <!-- long running? -->
-
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
                 <module>jws</module>
@@ -1369,8 +1367,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
-
-                <module>core-kotlin</module> <!-- long running? -->
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
