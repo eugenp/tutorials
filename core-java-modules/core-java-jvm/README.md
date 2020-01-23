@@ -10,3 +10,4 @@ This module contains articles about working with the Java Virtual Machine (JVM).
 - [Class Loaders in Java](https://www.baeldung.com/java-classloaders)
 - [A Guide to System.exit()](https://www.baeldung.com/java-system-exit)
 - [Guide to System.gc()](https://www.baeldung.com/java-system-gc)
+- [Runtime.getRuntime().halt() vs System.exit() in Java](https://www.baeldung.com/java-runtime-halt-vs-system-exit)
