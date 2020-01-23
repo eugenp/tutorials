@@ -24,9 +24,9 @@
             <version>${lombok.version}</version>
         </dependency>
         <dependency>
-		    <groupId>com.github.rvesse</groupId>
-		    <artifactId>airline</artifactId>
-		    <version>${airline.version}</version>
+            <groupId>com.github.rvesse</groupId>
+            <artifactId>airline</artifactId>
+            <version>${airline.version}</version>
 		</dependency>
         <dependency>
             <groupId>org.cactoos</groupId>
