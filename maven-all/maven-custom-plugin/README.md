@@ -1,3 +1,3 @@
 ### Relevant Articles:
 
-- [https://www.baeldung.com/maven-plugin](https://www.baeldung.com/maven-plugin)
+- [How to Create a Maven Plugin](https://www.baeldung.com/maven-plugin)
