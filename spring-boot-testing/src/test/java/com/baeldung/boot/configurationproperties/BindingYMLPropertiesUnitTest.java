@@ -1,6 +1,9 @@
 package com.baeldung.boot.configurationproperties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
@@ -18,13 +21,17 @@ public class BindingYMLPropertiesUnitTest {
 		
 		assertEquals("node2", serverConfig.getName());
 
-		assertEquals(Set.of("img1.png", "img2.png"),
-				serverConfig.getImgIds());
+		Set<String> expectedImgs = new HashSet<>();
+		expectedImgs.add("img1.png");
+		expectedImgs.add("img2.png");
+		assertEquals(expectedImgs, serverConfig.getImgIds());
 
 		assertEquals("192.168.0.2", serverConfig.getAddress().getIp());
 		assertEquals(5000, serverConfig.getAddress().getPort());
 
-		assertEquals(Map.of("imgs", "/etc/imgs", "html", "/etc/html"), 
-				serverConfig.getDirs());
+		Map<String, String> expectedDirs = new HashMap<>();
+		expectedDirs.put("imgs", "/etc/imgs");
+		expectedDirs.put("html", "/etc/html");
+		assertEquals(expectedDirs, serverConfig.getDirs());
 	}
 }
