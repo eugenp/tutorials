@@ -24,10 +24,10 @@
             <version>${lombok.version}</version>
         </dependency>
         <dependency>
-		        <groupId>com.github.rvesse</groupId>
-		        <artifactId>airline</artifactId>
-		        <version>2.7.2</version>
-		    </dependency>
+		    <groupId>com.github.rvesse</groupId>
+		    <artifactId>airline</artifactId>
+		    <version>${airline.version}</version>
+		</dependency>
         <dependency>
             <groupId>org.cactoos</groupId>
             <artifactId>cactoos</artifactId>
@@ -39,5 +39,6 @@
         <jcommander.version>1.78</jcommander.version>
         <lombok.version>1.18.6</lombok.version>
         <cactoos.version>0.43</cactoos.version>
+        <airline.version>2.7.2</airline.version>
     </properties>
 </project>
