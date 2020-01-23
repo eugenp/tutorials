@@ -19,7 +19,6 @@ public class HexagonalApplication {
     @Bean
     public CommandLineRunner bootstrapData(BankAccountRepository repository) {
         return (args) -> {
-            // save a few customers
             BigDecimal initialBalance = BigDecimal.valueOf(1000);
             BankAccount bankAccount = new BankAccount(0L, initialBalance);
             repository.save(bankAccount);
