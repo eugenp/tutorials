@@ -27,7 +27,7 @@
             <groupId>com.github.rvesse</groupId>
             <artifactId>airline</artifactId>
             <version>${airline.version}</version>
-		</dependency>
+        </dependency>
         <dependency>
             <groupId>org.cactoos</groupId>
             <artifactId>cactoos</artifactId>
