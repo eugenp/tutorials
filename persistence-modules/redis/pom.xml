@@ -38,7 +38,7 @@
     </dependencies>
 
     <properties>
-        <jedis.version>2.9.0</jedis.version>
+        <jedis.version>3.2.0</jedis.version>
         <embedded-redis.version>0.6</embedded-redis.version>
         <redisson.version>3.3.0</redisson.version>
         <lettuce-core.version>5.0.1.RELEASE</lettuce-core.version>
