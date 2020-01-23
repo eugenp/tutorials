@@ -12,4 +12,5 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [How to Determine if a Binary Tree is Balanced](https://www.baeldung.com/java-balanced-binary-tree)
 - [The Caesar Cipher in Java](https://www.baeldung.com/java-caesar-cipher)
 - [Overview of Combinatorial Problems in Java](https://www.baeldung.com/java-combinatorial-algorithms)
+- [Prim’s Algorithm](https://www.baeldung.com/java-prim-algorithm)
 - More articles: [[<-- prev]](/../algorithms-miscellaneous-4)
