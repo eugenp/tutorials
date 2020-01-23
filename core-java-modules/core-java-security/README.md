@@ -15,4 +15,5 @@ This module contains articles about core Java Security
 - [The Java SecureRandom Class](https://www.baeldung.com/java-secure-random)
 - [An Introduction to Java SASL](https://www.baeldung.com/java-sasl)
 - [A Guide to Java GSS API](https://www.baeldung.com/java-gss)
+- [Intro to the Java SecurityManager](https://www.baeldung.com/java-security-manager)
 
