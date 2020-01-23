@@ -1,0 +1,11 @@
+server:
+  name: node2
+  address:
+    ip: 192.168.0.2
+    port: 5000
+  dirs:
+    imgs: /etc/imgs
+    html: /etc/html
+  imgIds:
+  - img1.png
+  - img2.png
