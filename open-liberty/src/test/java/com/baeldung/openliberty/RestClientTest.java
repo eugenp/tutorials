@@ -32,9 +32,9 @@ public class RestClientTest {
         String result = RestConsumer.consumeWithJsonb(url);        
 
         Person person = JsonbBuilder.create().fromJson(result, Person.class);
-        assertEquals(person.getId(), 1);
-        assertEquals(person.getUsername(), "normanlewis");
-        assertEquals(person.getEmail(), "normanlewis@email.com");
+        assertEquals(1, person.getId());
+        assertEquals("normanlewis", person.getUsername());
+        assertEquals("normanlewis@email.com", person.getEmail());
     }
 
 }
