@@ -13,8 +13,4 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <modules>
-        <module>spring-boot-rest</module>
-    </modules>
-
 </project>
