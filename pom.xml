@@ -550,7 +550,7 @@
                 <module>protobuffer</module>
 
                 <module>quarkus</module>
-                <!-- <module>quarkus-extension</module> --> <!-- Fixing in BAEL-20714 -->
+                <module>quarkus-extension</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
@@ -1099,7 +1099,7 @@
                 <module>protobuffer</module>
 
                 <module>quarkus</module>
-                <!-- <module>quarkus-extension</module> --> <!-- Fixing in BAEL-20714 -->
+                <module>quarkus-extension</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
