@@ -670,6 +670,7 @@
                 <module>spring-boot-properties</module>
                 <module>spring-boot-property-exp</module>
 
+                <module>spring-boot-rest</module>
                 <module>spring-boot-runtime</module>
                 <module>spring-boot-runtime/disabling-console-jul</module>
                 <module>spring-boot-runtime/disabling-console-log4j2</module>
