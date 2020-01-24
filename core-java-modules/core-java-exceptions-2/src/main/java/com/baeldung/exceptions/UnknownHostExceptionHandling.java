@@ -7,7 +7,7 @@ import java.net.UnknownHostException;
 
 public class UnknownHostExceptionHandling {
 
-    public int getResponseCode(String hostname) throws IOException {
+    public static int getResponseCode(String hostname) throws IOException {
         URL url = new URL(hostname.trim());
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         int resCode = -1;
@@ -16,6 +16,13 @@ public class UnknownHostExceptionHandling {
         } catch (UnknownHostException e){
             con.disconnect();
         }
+        return resCode;
+    }
+    
+    public static int getResponseCodeUnhandled(String hostname) throws IOException {
+        URL url = new URL(hostname.trim());
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        int resCode = con.getResponseCode();
         return resCode;
     }
 }
