@@ -20,14 +20,20 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.0</version>
+                    <version>${compiler.plugin.version}</version>
                     <configuration>
-                        <source>11</source>
-                        <target>11</target>
+                        <source>${source.version}</source>
+                        <target>${target.version}</target>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
+	
+    <properties>
+        <compiler.plugin.version>3.8.0</compiler.plugin.version>
+        <source.version>11</source.version>
+        <target.version>11</target.version>
+    </properties>
 
 </project>

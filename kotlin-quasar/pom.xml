@@ -103,7 +103,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>${dependency.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>getClasspathFilenames</id>
@@ -116,7 +116,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.1</version>
+                <version>${surefire.plugin.version}</version>
                 <configuration>
                     <argLine>-Dco.paralleluniverse.fibers.verifyInstrumentation=true</argLine>
                     <argLine>-javaagent:${co.paralleluniverse:quasar-core:jar}</argLine>
@@ -125,7 +125,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.3.2</version>
+                <version>${exec.plugin.version}</version>
                 <configuration>
                     <workingDirectory>target/classes</workingDirectory>
                     <executable>echo</executable>
@@ -145,6 +145,9 @@
         <kotlin.version>1.3.31</kotlin.version>
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <logback.version>1.1.7</logback.version>
+        <dependency.plugin.version>3.1.1</dependency.plugin.version> 
+        <surefire.plugin.version>2.22.1</surefire.plugin.version>
+        <exec.plugin.version>1.3.2</exec.plugin.version>
     </properties>
 
 </project>

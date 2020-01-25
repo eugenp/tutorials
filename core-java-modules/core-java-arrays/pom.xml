@@ -183,8 +183,8 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${source.version}</source>
+                    <target>${target.version}</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -373,6 +373,8 @@
         <maven-shade-plugin.version>3.1.1</maven-shade-plugin.version>
         <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+        <source.version>1.8</source.version>
+        <target.version>1.8</target.version>
     </properties>
 
 </project>

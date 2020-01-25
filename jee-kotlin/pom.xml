@@ -253,7 +253,7 @@
                 <dependency>
                     <groupId>org.wildfly.arquillian</groupId>
                     <artifactId>wildfly-arquillian-container-remote</artifactId>
-                    <version>2.2.0.Final</version>
+                    <version>${wildfly.arquillian.version}</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -261,6 +261,7 @@
     </profiles>
 
     <properties>
+        <wildfly.arquillian.version>2.2.0.Final</wildfly.arquillian.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <javaee-api.version>8.0</javaee-api.version>

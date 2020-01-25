@@ -41,7 +41,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M3</version>
+                <version>${surefire.plugin.version}</version>
                 <configuration>
                     <argLine>--enable-preview</argLine>
                 </configuration>
@@ -53,6 +53,7 @@
         <maven.compiler.source.version>13</maven.compiler.source.version>
         <maven.compiler.target.version>13</maven.compiler.target.version>
         <assertj.version>3.6.1</assertj.version>
+        <surefire.plugin.version>3.0.0-M3</surefire.plugin.version>
     </properties>
 
 </project>
