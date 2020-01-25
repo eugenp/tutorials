@@ -8,9 +8,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>spring-boot-disable-console-logging</artifactId>
+        <artifactId>spring-boot-runtime</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
