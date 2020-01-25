@@ -39,6 +39,37 @@
             <artifactId>kotlinx-collections-immutable</artifactId>
             <version>${kotlinx-collections-immutable.version}</version>
         </dependency>
+        <dependency>
+            <groupId>uy.kohesive.injekt</groupId>
+            <artifactId>injekt-core</artifactId>
+            <version>${injekt-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kittinunf.fuel</groupId>
+            <artifactId>fuel</artifactId>
+            <version>${fuel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kittinunf.fuel</groupId>
+            <artifactId>fuel-gson</artifactId>
+            <version>${fuel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kittinunf.fuel</groupId>
+            <artifactId>fuel-rxjava</artifactId>
+            <version>${fuel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kittinunf.fuel</groupId>
+            <artifactId>fuel-coroutines</artifactId>
+            <version>${fuel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nl.komponents.kovenant</groupId>
+            <artifactId>kovenant</artifactId>
+            <version>${kovenant.version}</version>
+            <type>pom</type>
+        </dependency>
         <!-- MockK dependencies-->
         <dependency>
             <groupId>io.mockk</groupId>
@@ -49,6 +80,9 @@
     </dependencies>
 
     <properties>
+        <injekt-core.version>1.16.1</injekt-core.version>
+        <fuel.version>1.15.0</fuel.version>
+        <kovenant.version>3.3.0</kovenant.version>
         <guava.version>27.1-jre</guava.version>
         <mockk.version>1.9.3</mockk.version>
         <kotlinx-collections-immutable.version>0.1</kotlinx-collections-immutable.version>
