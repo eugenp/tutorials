@@ -22,7 +22,7 @@
     <dependencies>
         <dependency>
             <groupId>com.baeldung.quarkus.liquibase</groupId>
-            <artifactId>quarkus-liquibase</artifactId>
+            <artifactId>quarkus-liquibase-runtime</artifactId>
             <version>${liquibase.version}</version>
         </dependency>
         <dependency>

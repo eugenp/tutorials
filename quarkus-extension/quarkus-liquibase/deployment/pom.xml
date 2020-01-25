@@ -30,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>com.baeldung.quarkus.liquibase</groupId>
-            <artifactId>quarkus-liquibase</artifactId>
+            <artifactId>quarkus-liquibase-runtime</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

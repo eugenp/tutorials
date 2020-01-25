@@ -15,6 +15,8 @@
     </parent>
 
     <modules>
+        <module>core-kotlin</module>
+        <module>core-kotlin-2</module>
         <module>core-kotlin-advanced</module>
         <module>core-kotlin-annotations</module>
         <module>core-kotlin-collections</module>
