@@ -58,6 +58,12 @@
             <artifactId>javase</artifactId>
             <version>${qrgen.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.cactoos</groupId>
+            <artifactId>cactoos</artifactId>
+            <version>${cactoos.version}</version>
+
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -74,6 +80,7 @@
         <barcode4j.version>2.1</barcode4j.version>
         <zxing.version>3.3.0</zxing.version>
         <qrgen.version>2.6.0</qrgen.version>
-    </properties>
 
+        <cactoos.version>0.43</cactoos.version>
+    </properties>
 </project>

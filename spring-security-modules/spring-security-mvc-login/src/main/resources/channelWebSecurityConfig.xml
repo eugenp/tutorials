@@ -2,9 +2,9 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
     xsi:schemaLocation="
 		http://www.springframework.org/schema/security 
-        http://www.springframework.org/schema/security/spring-security-4.2.xsd
+        https://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans 
-        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"
+        https://www.springframework.org/schema/beans/spring-beans.xsd"
 >
 
     <http use-expressions="true">

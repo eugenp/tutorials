@@ -1,6 +1,7 @@
 package com.baeldung.file
 
 import spock.lang.Specification
+import spock.lang.Ignore
 
 class ReadFileUnitTest extends Specification {
 
@@ -32,6 +33,7 @@ class ReadFileUnitTest extends Specification {
             assert lines.size(), 3
     }
     
+    @Ignore
     def 'Should return file content in string using ReadFile.readFileString given filePath' () {
         given:
             def filePath = "src/main/resources/fileContent.txt"
