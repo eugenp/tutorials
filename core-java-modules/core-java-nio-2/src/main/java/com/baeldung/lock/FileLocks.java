@@ -19,9 +19,15 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.base.Charsets;
 
+
 public class FileLocks {
+	
+	private static Logger log = LoggerFactory.getLogger(FileLocks.class);
 
 	// Write locks
 	/**
@@ -30,9 +36,9 @@ public class FileLocks {
 	static void getExclusiveLockFromInputStream() throws IOException, NonWritableChannelException {
 		Path path = Files.createTempFile("foo", "txt");
 		try (FileInputStream fis = new FileInputStream(path.toFile()); FileLock lock = fis.getChannel().lock()) {
-			System.out.println("This won't happen");
+			log.debug("This won't happen");
 		} catch (NonWritableChannelException e) {
-			System.err.println(
+			log.error(
 					"The channel obtained through a FileInputStream isn't writable. "
 					+ "You can't obtain an exclusive lock on it!");
 			throw e;
@@ -52,7 +58,7 @@ public class FileLocks {
 		try (RandomAccessFile file = new RandomAccessFile(path.toFile(), "rw");
 				FileLock lock = file.getChannel().lock(from, size, false)) {
 			if (lock.isValid()) {
-				System.out.println("This is a valid exclusive lock");
+				log.debug("This is a valid exclusive lock");
 				return lock;
 			}
 			return null;
@@ -76,7 +82,7 @@ public class FileLocks {
 			while (buffer.hasRemaining()) {
 				channel.write(buffer, channel.size());
 			}
-			System.out.println("This was written to the file");
+			log.debug("This was written to the file");
 			Files.lines(path).forEach(System.out::println);
 			return lock;
 		}
@@ -90,9 +96,9 @@ public class FileLocks {
 		Path path = Files.createTempFile("foo", "txt");
 		try (FileOutputStream fis = new FileOutputStream(path.toFile());
 				FileLock lock = fis.getChannel().lock(0, Long.MAX_VALUE, true)) {
-			System.out.println("This won't happen");
+			log.debug("This won't happen");
 		} catch (NonReadableChannelException e) {
-			System.err.println(
+			log.error(
 					"The channel obtained through a FileOutputStream isn't readable. "
 					+ "You can't obtain an shared lock on it!");
 			throw e;
@@ -112,7 +118,7 @@ public class FileLocks {
 		try (FileInputStream fis = new FileInputStream(path.toFile());
 				FileLock lock = fis.getChannel().lock(from, size, true)) {
 			if (lock.isValid()) {
-				System.out.println("This is a valid shared lock");
+				log.debug("This is a valid shared lock");
 				return lock;
 			}
 			return null;
@@ -132,12 +138,12 @@ public class FileLocks {
 		try (RandomAccessFile file = new RandomAccessFile(path.toFile(), "r"); // could also be "rw", but "r" is sufficient for reading
 				FileLock lock = file.getChannel().lock(from, size, true)) {
 			if (lock.isValid()) {
-				System.out.println("This is a valid shared lock");
+				log.debug("This is a valid shared lock");
 				return lock;
 			}
 			return null;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 		return null;
 	}
@@ -227,7 +233,7 @@ public class FileLocks {
 			lineCount.incrementAndGet();
 			System.out.println(line);
 		});
-		System.out.println("Total lines written = " + lineCount.get());
+		log.info("Total lines written = " + lineCount.get());
 
 	}
 }
