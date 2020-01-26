@@ -678,7 +678,6 @@
                 <module>spring-boot-security</module>
                 <module>spring-boot-springdoc</module>
                 <module>spring-boot-testing</module>
-                <module>spring-boot-vue</module>
 
                 <module>spring-caching</module>
 
@@ -1218,7 +1217,6 @@
                 <module>spring-boot-security</module>
                 <module>spring-boot-springdoc</module>
                 <module>spring-boot-testing</module>
-                <module>spring-boot-vue</module>
 
                 <module>spring-caching</module>
 
