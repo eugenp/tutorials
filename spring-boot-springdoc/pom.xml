@@ -17,6 +17,7 @@
     </parent>
 
     <properties>
+<!--        <spring-boot.version>2.1.9.RELEASE</spring-boot.version>-->
         <java.version>1.8</java.version>
     </properties>
 
@@ -36,12 +37,23 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-core</artifactId>
-            <version>1.1.45</version>
+            <version>1.1.49</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.github.classgraph</groupId>
+                    <artifactId>classgraph</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.1.45</version>
+            <version>1.1.49</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.classgraph</groupId>
+            <artifactId>classgraph</artifactId>
+            <version>4.8.44</version>
         </dependency>
     </dependencies>
 
@@ -62,7 +74,7 @@
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
-                        <version>2.1.8.RELEASE</version>
+                        <version>2.2.2.RELEASE</version>
                         <executions>
                             <execution>
                                 <id>pre-integration-test</id>

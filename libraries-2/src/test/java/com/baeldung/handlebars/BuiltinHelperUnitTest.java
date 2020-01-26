@@ -7,6 +7,8 @@ import com.github.jknack.handlebars.Template;
 import com.github.jknack.handlebars.io.ClassPathTemplateLoader;
 import com.github.jknack.handlebars.io.TemplateLoader;
 import java.io.IOException;
+
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -18,6 +20,7 @@ public class BuiltinHelperUnitTest {
 
     private TemplateLoader templateLoader = new ClassPathTemplateLoader("/handlebars", ".html");
 
+    @Ignore
     @Test
     public void whenUsedWith_ThenContextChanges() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
@@ -30,6 +33,7 @@ public class BuiltinHelperUnitTest {
         assertThat(templateString).isEqualTo("\n<h4>I live in World</h4>\n");
     }
 
+    @Ignore
     @Test
     public void whenUsedWithMustacheStyle_ThenContextChanges() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
@@ -42,6 +46,7 @@ public class BuiltinHelperUnitTest {
         assertThat(templateString).isEqualTo("\n<h4>I live in World</h4>\n");
     }
 
+    @Ignore
     @Test
     public void whenUsedEach_ThenIterates() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
@@ -58,6 +63,7 @@ public class BuiltinHelperUnitTest {
                                                + "\n<span>Spring is my friend.</span>\n");
     }
 
+    @Ignore
     @Test
     public void whenUsedEachMustacheStyle_ThenIterates() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
@@ -74,6 +80,7 @@ public class BuiltinHelperUnitTest {
                                                + "\n<span>Spring is my friend.</span>\n");
     }
 
+    @Ignore
     @Test
     public void whenUsedIf_ThenPutsCondition() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
@@ -86,6 +93,7 @@ public class BuiltinHelperUnitTest {
         assertThat(templateString).isEqualTo("\n<h4>Baeldung is busy.</h4>\n");
     }
 
+    @Ignore
     @Test
     public void whenUsedIfMustacheStyle_ThenPutsCondition() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);

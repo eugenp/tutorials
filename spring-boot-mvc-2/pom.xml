@@ -9,10 +9,10 @@
     <description>Module For Spring Boot MVC Web Fn</description>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.0.BUILD-SNAPSHOT</version>
-        <relativePath /> <!-- lookup parent from repository -->
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -102,6 +102,7 @@
         <spring.fox.version>3.0.0-SNAPSHOT</spring.fox.version>
         <start-class>com.baeldung.swagger2boot.SpringBootSwaggerApplication</start-class>
         <!-- <start-class>com.baeldung.springbootmvc.SpringBootMvcFnApplication</start-class> -->
+        <spring-boot.version>2.2.0.BUILD-SNAPSHOT</spring-boot.version>
     </properties>
 
 </project>
