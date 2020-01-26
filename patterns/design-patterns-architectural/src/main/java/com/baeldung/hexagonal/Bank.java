@@ -1,14 +1,16 @@
 package com.baeldung.hexagonal;
 
 public class Bank {
-    public static void main(String[] args) {
-        IBankOutputPort outputPort = new BankOutputAdapter();
+        public static void main(String[] args) {
+                IBankOutputPort outputPort = new BankOutputAdapter();
 
-        IBankInputPort inputPort = new BankInputAdapter(outputPort);
+                BankDomainService domainService = new BankDomainService(outputPort);
 
-        BankApplication application = new BankApplication(inputPort);
+                IBankInputPort inputPort = new BankInputAdapter(domainService);
 
-        application.addAmount("acc", 10.0);
-        application.withdrawAmount("acc", 5.0);
-    }
+                BankApplication application = new BankApplication(inputPort);
+
+                application.addAmount("acc", 10.0);
+                application.withdrawAmount("acc", 5.0);
+        }
 }
