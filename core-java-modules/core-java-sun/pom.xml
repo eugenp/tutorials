@@ -49,7 +49,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
-                            <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
+                            <mainClass>com.baeldung.executable.ExecutableMavenJar</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

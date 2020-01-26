@@ -1,4 +1,4 @@
-package org.baeldung.java.sandbox;
+package com.baeldung.sandbox;
 
 import org.junit.Test;
 import org.slf4j.Logger;

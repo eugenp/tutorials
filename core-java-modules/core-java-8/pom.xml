@@ -61,7 +61,7 @@
                         </goals>
                         <configuration>
                             <classifier>spring-boot</classifier>
-                            <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
+                            <mainClass>com.baeldung.executable.ExecutableMavenJar</mainClass>
                         </configuration>
                     </execution>
                 </executions>
