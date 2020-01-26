@@ -448,6 +448,7 @@
                 <module>immutables</module>
 
                 <module>jackson-modules</module>
+                <module>jackson-simple</module>
                 <module>java-blockchain</module>
 
                 <module>java-collections-conversions</module>
@@ -996,6 +997,7 @@
                 <module>immutables</module>
 
                 <module>jackson-modules</module>
+                <module>jackson-simple</module>
                 <module>java-blockchain</module>
 
                 <module>java-collections-conversions</module>

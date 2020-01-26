@@ -8,11 +8,18 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>jackson-modules</artifactId>
+        <artifactId>parent-java</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-java</relativePath>
     </parent>
 
     <dependencies>
+        <!--jackson for xml -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
         <!-- test scoped -->
         <dependency>
             <groupId>org.assertj</groupId>
