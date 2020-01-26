@@ -13,4 +13,9 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <modules>
+        <module>spring-boot-mvc-birt</module>
+        <module>spring-boot-vue</module>
+    </modules>
+
 </project>
