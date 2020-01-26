@@ -677,7 +677,6 @@
                 <module>spring-boot-runtime/disabling-console-logback</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-springdoc</module>
-                <module>spring-boot-testing</module>
 
                 <module>spring-caching</module>
 
@@ -1216,7 +1215,6 @@
                 <module>spring-boot-runtime/disabling-console-logback</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-springdoc</module>
-                <module>spring-boot-testing</module>
 
                 <module>spring-caching</module>
 
