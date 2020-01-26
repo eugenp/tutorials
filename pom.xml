@@ -448,6 +448,7 @@
                 <module>immutables</module>
 
                 <module>jackson-modules</module>
+                <module>jackson-simple</module>
                 <module>java-blockchain</module>
 
                 <module>java-collections-conversions</module>
@@ -663,7 +664,6 @@
                 <module>spring-boot-libraries</module>
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc-2</module>
-                <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-nashorn</module>
                 <module>spring-boot-parent</module>
                 <module>spring-boot-performance</module>
@@ -995,6 +995,7 @@
                 <module>immutables</module>
 
                 <module>jackson-modules</module>
+                <module>jackson-simple</module>
                 <module>java-blockchain</module>
 
                 <module>java-collections-conversions</module>
@@ -1202,7 +1203,6 @@
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-mvc-2</module>
-                <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-nashorn</module>
                 <module>spring-boot-parent</module>
                 <module>spring-boot-performance</module>
