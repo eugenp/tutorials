@@ -1,4 +1,4 @@
-package org.baeldung.java.lists;
+package com.baeldung.java.list;
 
 import org.junit.Test;
 

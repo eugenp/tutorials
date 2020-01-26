@@ -1,4 +1,4 @@
-package org.baeldung.java.collections;
+package com.baeldung.collections;
 
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.collections4.ListUtils;
