@@ -223,6 +223,8 @@
     </profiles>
 
     <properties>
+        <spring-boot.version>2.1.9.RELEASE</spring-boot.version>
+        
         <thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
 
         <!-- persistence -->
