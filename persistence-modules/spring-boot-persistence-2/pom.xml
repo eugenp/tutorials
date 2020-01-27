@@ -21,7 +21,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.1.8.RELEASE</version>
+                <version>${spring.boot.dependencies}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -97,6 +97,7 @@
     <properties>
         <java.version>1.8</java.version>
         <jdbi.version>3.9.1</jdbi.version>
+        <spring.boot.dependencies>2.1.8.RELEASE</spring.boot.dependencies>
     </properties>
 
 </project>

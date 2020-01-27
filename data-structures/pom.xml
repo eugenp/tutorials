@@ -23,7 +23,7 @@
         <dependency>
             <groupId>com.leansoft</groupId>
             <artifactId>bigqueue</artifactId>
-            <version>0.7.0</version>
+            <version>${bigqueue.version}</version>
         </dependency>
     </dependencies>
 
@@ -38,5 +38,9 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <properties>
+        <bigqueue.version>0.7.0</bigqueue.version>
+    </properties>
 
 </project>
