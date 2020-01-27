@@ -1,4 +1,4 @@
-package com.baeldung.containscaseinsensitive;
+package com.baeldung.contains;
 
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
@@ -19,7 +19,7 @@ import org.openjdk.jmh.annotations.State;
 @State(Scope.Benchmark)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-public class ContainsWorkarounds {
+public class CaseInsensitiveWorkarounds {
 
     private String src;
     private String dest;
@@ -49,23 +49,26 @@ public class ContainsWorkarounds {
         return src.matches("(?i).*" + dest + ".*");
     }
 
-    // String regionMatches()
-    @Benchmark
-    public boolean regionMatches() {
+    public boolean processRegionMatches(String localSrc, String localDest) {
+        final char firstLo = Character.toLowerCase(localDest.charAt(0));
+        final char firstUp = Character.toUpperCase(localDest.charAt(0));
 
-        final char firstLo = Character.toLowerCase(dest.charAt(0));
-        final char firstUp = Character.toUpperCase(dest.charAt(0));
-
-        for (int i = src.length() - dest.length(); i >= 0; i--) {
-            final char ch = src.charAt(i);
+        for (int i = localSrc.length() - localDest.length(); i >= 0; i--) {
+            final char ch = localSrc.charAt(i);
             if (ch != firstLo && ch != firstUp)
                 continue;
 
-            if (src.regionMatches(true, i, dest, 0, dest.length()))
+            if (localSrc.regionMatches(true, i, localDest, 0, localDest.length()))
                 return true;
         }
 
-        return false;
+        return false;        
+    }
+    
+    // String regionMatches()
+    @Benchmark
+    public boolean regionMatches() {
+        return processRegionMatches(src, dest);
     }
 
     // Pattern CASE_INSENSITIVE with regexp
