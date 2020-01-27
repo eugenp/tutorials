@@ -14,12 +14,12 @@ import static org.mockito.Mockito.*;
 
 class MongoDbOrderRepositoryUnitTest {
 
-    private SpringDataOrderRepository springDataOrderRepository;
+    private SpringDataMongoOrderRepository springDataOrderRepository;
     private MongoDbOrderRepository tested;
 
     @BeforeEach
     void setUp(){
-        springDataOrderRepository = mock(SpringDataOrderRepository.class);
+        springDataOrderRepository = mock(SpringDataMongoOrderRepository.class);
 
         tested = new MongoDbOrderRepository(springDataOrderRepository);
     }

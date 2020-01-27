@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface SpringDataOrderRepository extends MongoRepository<Order, UUID> {
+public interface SpringDataMongoOrderRepository extends MongoRepository<Order, UUID> {
 }

@@ -11,10 +11,10 @@ import java.util.UUID;
 @Component
 public class MongoDbOrderRepository implements OrderRepository {
 
-    private final SpringDataOrderRepository orderRepository;
+    private final SpringDataMongoOrderRepository orderRepository;
 
     @Autowired
-    public MongoDbOrderRepository(final SpringDataOrderRepository orderRepository) {
+    public MongoDbOrderRepository(final SpringDataMongoOrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
