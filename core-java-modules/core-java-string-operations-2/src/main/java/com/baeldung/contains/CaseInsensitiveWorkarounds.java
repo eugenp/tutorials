@@ -50,18 +50,9 @@ public class CaseInsensitiveWorkarounds {
     }
 
     public boolean processRegionMatches(String localSrc, String localDest) {
-        final char firstLo = Character.toLowerCase(localDest.charAt(0));
-        final char firstUp = Character.toUpperCase(localDest.charAt(0));
-
-        for (int i = localSrc.length() - localDest.length(); i >= 0; i--) {
-            final char ch = localSrc.charAt(i);
-            if (ch != firstLo && ch != firstUp)
-                continue;
-
+        for (int i = localSrc.length() - localDest.length(); i >= 0; i--)
             if (localSrc.regionMatches(true, i, localDest, 0, localDest.length()))
                 return true;
-        }
-
         return false;        
     }
     
