@@ -15,6 +15,7 @@
 
     <modules>
         <module>spring-boot-mvc-birt</module>
+        <module>spring-boot-properties</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-vue</module>
     </modules>
