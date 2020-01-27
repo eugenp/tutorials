@@ -12,3 +12,8 @@ services:
       MONGO_INITDB_DATABASE: order-database
     volumes:
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+  order-cassandra-database:
+    image: cassandra:3.11.5
+    restart: always
+    ports: 
+        - 9042:9042
