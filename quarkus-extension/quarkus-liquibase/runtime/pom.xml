@@ -26,7 +26,7 @@
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-            <version>3.8.1</version>
+            <version>${liquibase.version}</version>
         </dependency>
     </dependencies>
 
@@ -51,7 +51,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
@@ -65,4 +65,8 @@
         </plugins>
     </build>
 
+    <properties>
+        <compiler.plugin.version>3.8.1</compiler.plugin.version>
+        <liquibase.version>3.8.1</liquibase.version>
+    </properties>
 </project>
