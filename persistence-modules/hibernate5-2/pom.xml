@@ -19,7 +19,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.4.7.Final</version>
+            <version>${hibernate.core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -51,19 +51,22 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.200</version>
+            <version>${h2.version}</version>
         </dependency>
 
         <dependency>
         	<groupId>org.apache.commons</groupId>
         	<artifactId>commons-lang3</artifactId>
-        	<version>3.8.1</version>
+        	<version>${commons.lang3.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <maven.deploy.skip>true</maven.deploy.skip>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
+        <hibernate.core.version>5.4.7.Final</hibernate.core.version>
+        <h2.version>1.4.200</h2.version>
+        <commons.lang3.version>3.8.1</commons.lang3.version>
     </properties>
 
 </project>

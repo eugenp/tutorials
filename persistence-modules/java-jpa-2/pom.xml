@@ -63,7 +63,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
                     <compilerArgument>-proc:none</compilerArgument>
                 </configuration>
@@ -71,7 +71,7 @@
             <plugin>
                 <groupId>org.bsc.maven</groupId>
                 <artifactId>maven-processor-plugin</artifactId>
-                <version>3.3.3</version>
+                <version>${processor.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>process</id>
@@ -91,7 +91,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>${helper.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>add-source</id>
@@ -116,6 +116,9 @@
         <postgres.version>42.2.5</postgres.version>
         <javax.persistence-api.version>2.2</javax.persistence-api.version>
         <assertj.version>3.11.1</assertj.version>
+        <compiler.plugin.version>3.5.1</compiler.plugin.version>
+        <processor.plugin.version>3.3.3</processor.plugin.version>
+        <helper.plugin.version>3.0.0</helper.plugin.version>
     </properties>
 
 </project>
