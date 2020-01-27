@@ -35,8 +35,8 @@ public class CoreJavaCollectionsUnitTest {
     @Test(expected = UnsupportedOperationException.class)
     public final void givenUsingTheJava9_whenUnmodifiableListIsCreated_thenNotModifiable() {
         final List<String> list = new ArrayList<>(Arrays.asList("one", "two", "three"));
-        // final List<String> unmodifiableList = // Java 9 List.of code goes here
-        // unmodifiableList.add("four");
+        final List<String> unmodifiableList = List.of(list.toArray(new String[]{}));
+        unmodifiableList.add("four");
     }
 
     @Test(expected = UnsupportedOperationException.class)
