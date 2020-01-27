@@ -59,6 +59,11 @@
             <version>${qrgen.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.github.rvesse</groupId>
+            <artifactId>airline</artifactId>
+            <version>${airline.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.cactoos</groupId>
             <artifactId>cactoos</artifactId>
             <version>${cactoos.version}</version>
@@ -82,5 +87,6 @@
         <qrgen.version>2.6.0</qrgen.version>
 
         <cactoos.version>0.43</cactoos.version>
+        <airline.version>2.7.2</airline.version>
     </properties>
 </project>
