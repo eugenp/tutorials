@@ -189,7 +189,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>${war.plugin.version}</version>
                 <configuration>
                     <warSourceDirectory>src/main/webapp</warSourceDirectory>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -218,5 +218,6 @@
         <compiler.plugin.version>3.1</compiler.plugin.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
+        <war.plugin.version>3.0.0</war.plugin.version>
     </properties>
 </project>
