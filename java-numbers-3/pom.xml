@@ -17,7 +17,7 @@
     	<dependency>
             <groupId>it.unimi.dsi</groupId>
             <artifactId>dsiutils</artifactId>
-            <version>2.6.0</version>
+            <version>${dsiutils.version}</version>
         </dependency>
     </dependencies>
    
@@ -30,5 +30,9 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <dsiutils.version>2.6.0</dsiutils.version>
+    <properties>
 
 </project>
