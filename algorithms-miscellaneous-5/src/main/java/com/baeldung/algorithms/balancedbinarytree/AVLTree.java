@@ -2,10 +2,11 @@ package com.baeldung.algorithms.balancedbinarytree;
 
 public class AVLTree {
 
-    public static class Node {
+    public class Node {
         int key;
         int height;
-        Node left, right;
+        Node left;
+        Node right;
 
         Node(int key) {
             this.key = key;
@@ -18,11 +19,11 @@ public class AVLTree {
         Node current = root;
         while (current != null) {
             if (current.key == key) {
-                return current;
+               break;
             }
             current = current.key < key ? current.right : current.left;
         }
-        return null;
+        return current;
     }
 
     public void insert(int key) {
@@ -37,8 +38,8 @@ public class AVLTree {
         return root;
     }
 
-    public int height(){
-        return root == null ? -1: root.height;
+    public int height() {
+        return root == null ? -1 : root.height;
     }
 
     private Node insert(Node node, int key) {
@@ -76,41 +77,41 @@ public class AVLTree {
         return node;
     }
 
-    private Node mostLeftChild(Node node)
-    {
+    private Node mostLeftChild(Node node) {
         Node current = node;
         /* loop down to find the leftmost leaf */
-        while (current.left != null)
+        while (current.left != null) {
             current = current.left;
+        }
         return current;
     }
 
-    private Node rebalance(Node n) {
-        updateHeight(n);
-        int balance = getBalance(n);
+    private Node rebalance(Node z) {
+        updateHeight(z);
+        int balance = getBalance(z);
         if (balance > 1) {
-            if (height(n.right.right) > height(n.right.left)) {
-                n = rotateLeft(n);
+            if (height(z.right.right) > height(z.right.left)) {
+                z = rotateLeft(z);
             } else {
-                n.right = rotateRight(n.right);
-                n = rotateLeft(n);
+                z.right = rotateRight(z.right);
+                z = rotateLeft(z);
             }
         } else if (balance < -1) {
-            if (height(n.left.left) > height(n.left.right))
-                n = rotateRight(n);
-            else {
-                n.left = rotateLeft(n.left);
-                n = rotateRight(n);
+            if (height(z.left.left) > height(z.left.right)) {
+                z = rotateRight(z);
+            } else {
+                z.left = rotateLeft(z.left);
+                z = rotateRight(z);
             }
         }
-        return n;
+        return z;
     }
 
     private Node rotateRight(Node y) {
         Node x = y.left;
-        Node t2 = x.right;
+        Node z = x.right;
         x.right = y;
-        y.left = t2;
+        y.left = z;
         updateHeight(y);
         updateHeight(x);
         return x;
@@ -118,9 +119,9 @@ public class AVLTree {
 
     private Node rotateLeft(Node y) {
         Node x = y.right;
-        Node t2 = x.left;
+        Node z = x.left;
         x.left = y;
-        y.right = t2;
+        y.right = z;
         updateHeight(y);
         updateHeight(x);
         return x;
