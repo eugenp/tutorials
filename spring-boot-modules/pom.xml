@@ -14,6 +14,7 @@
     </parent>
 
     <modules>
+        <module>spring-boot-artifacts</module>
         <module>spring-boot-autoconfiguration</module>
         <module>spring-boot-data</module>
         <module>spring-boot-mvc-birt</module>

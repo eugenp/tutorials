@@ -642,7 +642,6 @@
                 <module>spring-boot-modules</module>
                 <module>spring-boot-admin</module>
                 <module>spring-boot-angular</module>
-                <module>spring-boot-artifacts</module>
                 <module>spring-boot-bootstrap</module>
                 <module>spring-boot-camel</module>
                 <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
@@ -1176,7 +1175,6 @@
                 <module>spring-boot-modules</module>
                 <module>spring-boot-admin</module>
                 <module>spring-boot-angular</module>
-                <module>spring-boot-artifacts</module>
                 <module>spring-boot-bootstrap</module>
                 <module>spring-boot-camel</module>
                 <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
