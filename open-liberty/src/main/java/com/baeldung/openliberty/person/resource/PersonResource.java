@@ -1,6 +1,7 @@
 package com.baeldung.openliberty.person.resource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -27,11 +28,8 @@ public class PersonResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Person> getAllPerson() {
-        Person person = new Person(1, "normanlewis", "normanlewis@email.com");
-        List<Person> persons = new ArrayList<>();
-        persons.add(person);
-        return persons;
+    public List<Person> getAllPersons() {
+        return Arrays.asList(new Person(1, "normanlewis", "normanlewis@email.com"));
     }
 
     @POST
