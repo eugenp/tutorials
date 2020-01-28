@@ -653,7 +653,6 @@
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-custom-starter</module>
                 <module>spring-boot-deployment</module>
-                <module>spring-boot-di</module>
                 <module>spring-boot-environment</module>
                 <module>spring-boot-flowable</module>
                 <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
@@ -1188,7 +1187,6 @@
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-custom-starter</module>
                 <module>spring-boot-deployment</module>
-                <module>spring-boot-di</module>
                 <module>spring-boot-environment</module>
                 <module>spring-boot-flowable</module>
                 <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
