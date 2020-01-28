@@ -1,8 +1,8 @@
 grant codebase "file:./jaas-app/target/jaas-app.jar" {
-   permission javax.security.auth.AuthPermission "createLoginContext.jaasApplication";
-   permission javax.security.auth.AuthPermission "doAsPrivileged";
-   permission java.lang.RuntimePermission "readFileDescriptor";
-   permission java.lang.RuntimePermission "writeFileDescriptor";
+    permission javax.security.auth.AuthPermission "createLoginContext.jaasApplication";
+    permission javax.security.auth.AuthPermission "doAsPrivileged";
+    permission java.lang.RuntimePermission "readFileDescriptor";
+    permission java.lang.RuntimePermission "writeFileDescriptor";
 };
 
 grant codebase "file:./jaas-login-module/target/jaas-login-module.jar" {
@@ -10,5 +10,5 @@ grant codebase "file:./jaas-login-module/target/jaas-login-module.jar" {
 };
 
 grant principal com.sun.security.auth.UserPrincipal "testuser" {
-      permission com.baeldung.security.jaas.app.ResourcePermission "test_resource";
+    permission com.baeldung.security.jaas.app.ResourcePermission "test_resource";
 };

@@ -25,9 +25,7 @@ public class InMemoryLoginModule implements LoginModule {
     private Principal userPrincipal;
 
     @Override
-    public void initialize(Subject subject,
-                           CallbackHandler callbackHandler,
-                           Map<String, ?> sharedState,
+    public void initialize(Subject subject, CallbackHandler callbackHandler, Map<String, ?> sharedState,
                            Map<String, ?> options) {
         this.subject = subject;
         this.callbackHandler = callbackHandler;
