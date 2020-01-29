@@ -638,7 +638,6 @@
                 <module>spring-batch</module>
                 <module>spring-bom</module>
 
-                <module>spring-boot</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-admin</module>
                 <module>spring-boot-angular</module>
@@ -1171,7 +1170,6 @@
                 <module>spring-batch</module>
                 <module>spring-bom</module>
 
-                <module>spring-boot</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-admin</module>
                 <module>spring-boot-angular</module>
