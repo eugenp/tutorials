@@ -10,14 +10,18 @@ public class Main {
             .toArray();
 
         SortResultRepositoryPort sortResultRepo = new ConsoleSortResultRepositoryAdapter();
-        
-        SortImplementationPort mergeSort = new MergeSortAdapter();
-        SortService service1 = new SortService(mergeSort, sortResultRepo);
-        service1.sort(Arrays.copyOf(arr, arr.length));
 
-        SortImplementationPort quickSort = new QuickSortAdapter();
-        SortService service2 = new SortService(quickSort, sortResultRepo);
-        service2.sort(Arrays.copyOf(arr, arr.length));
+        SortImplementationPort guavaSort = new GuavaSortAdapter();
+        SortService service1 = new DelegatingSortService(guavaSort, sortResultRepo);
+
+        SimpleSortServiceClientAdapter client1 = new SimpleSortServiceClientAdapter(service1);
+        client1.sort(Arrays.copyOf(arr, arr.length));
+
+        SortImplementationPort jdkSort = new JDKSortAdapter();
+        SortService service2 = new DelegatingSortService(jdkSort, sortResultRepo);
+
+        SimpleSortServiceClientAdapter client2 = new SimpleSortServiceClientAdapter(service2);
+        client2.sort(Arrays.copyOf(arr, arr.length));
     }
 
 }

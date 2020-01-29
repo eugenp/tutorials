@@ -38,6 +38,11 @@
             <version>${mysql-connector.version}</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+        	<groupId>com.google.guava</groupId>
+        	<artifactId>guava</artifactId>
+        	<version>${guava.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>

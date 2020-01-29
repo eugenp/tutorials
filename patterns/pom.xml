@@ -56,6 +56,7 @@
     </build>
 
     <properties>
+    	<guava.version>28.2-jre</guava.version>
         <jetty-maven-plugin.version>9.4.0.v20161208</jetty-maven-plugin.version>
     </properties>
 
