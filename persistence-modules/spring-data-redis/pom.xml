@@ -98,6 +98,7 @@
         <cglib.version>3.2.4</cglib.version>
         <nosqlunit.version>0.10.0</nosqlunit.version>
         <embedded-redis.version>0.6</embedded-redis.version>
+        <spring-boot.version>2.1.9.RELEASE</spring-boot.version>
     </properties>
 
 </project>

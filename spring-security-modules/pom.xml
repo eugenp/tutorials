@@ -30,7 +30,7 @@
         <module>spring-security-mvc-persisted-remember-me</module>
         <module>spring-security-mvc-socket</module>
         <module>spring-security-oidc</module>
-        <!--<module>spring-security-react</module> --> <!-- Module broken, fixing in BAEL-20772 -->
+        <module>spring-security-react</module>   
 
         <module>spring-security-rest</module>
         <module>spring-security-rest-basic-auth</module>
