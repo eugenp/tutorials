@@ -3,44 +3,44 @@ package com.baeldung.java14.textblocks;
 public class TextBlocks13 {
     public String getBlockOfHtml() {
         return """
-                <html>
+            <html>
 
-                    <body>
-                        <p>example text</p>
-                    </body>
-                </html>""";
+                <body>
+                    <p>example text</p>
+                </body>
+            </html>""";
     }
 
     public String getNonStandardIndent() {
         return """
-                    Indent
-                """;
+                Indent
+            """;
     }
 
     public String getQuery() {
         return """
-                select "id", "user"
-                from "table"
-                """;
+            select "id", "user"
+            from "table"
+            """;
     }
 
     public String getTextWithCarriageReturns() {
         return """
-                separated with\r
-                carriage returns""";
+            separated with\r
+            carriage returns""";
     }
 
     public String getTextWithEscapes() {
         return """
-                fun with\n
-                whitespace\t\r
-                and other escapes \"""
-                """;
+            fun with\n
+            whitespace\t\r
+            and other escapes \"""
+            """;
     }
 
     public String getFormattedText(String parameter) {
         return """
-                Some parameter: %s
-                """.formatted(parameter);
+            Some parameter: %s
+            """.formatted(parameter);
     }
 }
