@@ -448,6 +448,7 @@
                 <module>immutables</module>
 
                 <module>jackson-modules</module>
+                <module>jackson-simple</module>
                 <module>java-blockchain</module>
 
                 <module>java-collections-conversions</module>
@@ -641,7 +642,6 @@
                 <module>spring-boot-modules</module>
                 <module>spring-boot-admin</module>
                 <module>spring-boot-angular</module>
-                <module>spring-boot-artifacts</module>
                 <module>spring-boot-autoconfiguration</module>
                 <module>spring-boot-bootstrap</module>
                 <module>spring-boot-camel</module>
@@ -651,7 +651,6 @@
                 <module>spring-boot-crud</module>
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-custom-starter</module>
-                <module>spring-boot-data</module>
                 <module>spring-boot-deployment</module>
                 <module>spring-boot-di</module>
                 <module>spring-boot-environment</module>
@@ -663,11 +662,9 @@
                 <module>spring-boot-libraries</module>
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc-2</module>
-                <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-nashorn</module>
                 <module>spring-boot-parent</module>
                 <module>spring-boot-performance</module>
-                <module>spring-boot-properties</module>
                 <module>spring-boot-property-exp</module>
 
                 <module>spring-boot-rest</module>
@@ -677,8 +674,6 @@
                 <module>spring-boot-runtime/disabling-console-logback</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-springdoc</module>
-                <module>spring-boot-testing</module>
-                <module>spring-boot-vue</module>
 
                 <module>spring-caching</module>
 
@@ -996,6 +991,7 @@
                 <module>immutables</module>
 
                 <module>jackson-modules</module>
+                <module>jackson-simple</module>
                 <module>java-blockchain</module>
 
                 <module>java-collections-conversions</module>
@@ -1180,7 +1176,6 @@
                 <module>spring-boot-modules</module>
                 <module>spring-boot-admin</module>
                 <module>spring-boot-angular</module>
-                <module>spring-boot-artifacts</module>
                 <module>spring-boot-autoconfiguration</module>
                 <module>spring-boot-bootstrap</module>
                 <module>spring-boot-camel</module>
@@ -1190,7 +1185,6 @@
                 <module>spring-boot-crud</module>
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-custom-starter</module>
-                <module>spring-boot-data</module>
                 <module>spring-boot-deployment</module>
                 <module>spring-boot-di</module>
                 <module>spring-boot-environment</module>
@@ -1203,11 +1197,9 @@
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-mvc-2</module>
-                <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-nashorn</module>
                 <module>spring-boot-parent</module>
                 <module>spring-boot-performance</module>
-                <module>spring-boot-properties</module>
                 <module>spring-boot-property-exp</module>
 
                 <module>spring-boot-rest</module>
@@ -1217,8 +1209,6 @@
                 <module>spring-boot-runtime/disabling-console-logback</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-springdoc</module>
-                <module>spring-boot-testing</module>
-                <module>spring-boot-vue</module>
 
                 <module>spring-caching</module>
 
