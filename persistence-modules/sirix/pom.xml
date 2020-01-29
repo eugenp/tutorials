@@ -30,7 +30,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
                     <release>${maven.release.version}</release>
                     <encoding>${project.build.sourceEncoding}</encoding>
@@ -39,7 +39,7 @@
                     <dependency>
                         <groupId>org.ow2.asm</groupId>
                         <artifactId>asm</artifactId>
-                        <version>6.1</version> <!-- Use newer version of ASM -->
+                        <version>${asm.version}</version> <!-- Use newer version of ASM -->
                     </dependency>
                 </dependencies>
             </plugin>
@@ -50,6 +50,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.release.version>11</maven.release.version>
         <sirix-core.version>0.9.3</sirix-core.version>
+        <compiler.plugin.version>3.8.0</compiler.plugin.version>
+        <asm.version>6.1</asm.version>
     </properties>
 
 </project>
