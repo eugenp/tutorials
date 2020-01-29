@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  * Class showcasing the usage of the Java 14 @Serial annotation.
- * 
+ *
  * @author Donato Rimenti
  */
 public class MySerialClass implements Serializable {
