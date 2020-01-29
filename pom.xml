@@ -667,10 +667,6 @@
                 <module>spring-boot-property-exp</module>
 
                 <module>spring-boot-rest</module>
-                <module>spring-boot-runtime</module>
-                <module>spring-boot-runtime/disabling-console-jul</module>
-                <module>spring-boot-runtime/disabling-console-log4j2</module>
-                <module>spring-boot-runtime/disabling-console-logback</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-springdoc</module>
 
@@ -1201,10 +1197,6 @@
                 <module>spring-boot-property-exp</module>
 
                 <module>spring-boot-rest</module>
-                <module>spring-boot-runtime</module>
-                <module>spring-boot-runtime/disabling-console-jul</module>
-                <module>spring-boot-runtime/disabling-console-log4j2</module>
-                <module>spring-boot-runtime/disabling-console-logback</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-springdoc</module>
 
