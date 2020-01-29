@@ -652,18 +652,17 @@
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-custom-starter</module>
                 <module>spring-boot-deployment</module>
+                <module>spring-boot-di</module>
                 <module>spring-boot-environment</module>
                 <module>spring-boot-flowable</module>
                 <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
                 <module>spring-boot-jasypt</module>
-                <module>spring-boot-keycloak</module>
                 <module>spring-boot-kotlin</module>
                 <module>spring-boot-libraries</module>
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc-2</module>
                 <module>spring-boot-nashorn</module>
                 <module>spring-boot-parent</module>
-                <module>spring-boot-performance</module>
                 <module>spring-boot-property-exp</module>
 
                 <module>spring-boot-rest</module>
@@ -672,8 +671,7 @@
                 <module>spring-boot-runtime/disabling-console-log4j2</module>
                 <module>spring-boot-runtime/disabling-console-logback</module>
                 <module>spring-boot-security</module>
-                <module>spring-boot-springdoc</module>
-
+              
                 <module>spring-caching</module>
 
                 <module>spring-cloud</module>
@@ -1185,11 +1183,11 @@
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-custom-starter</module>
                 <module>spring-boot-deployment</module>
+                <module>spring-boot-di</module>
                 <module>spring-boot-environment</module>
                 <module>spring-boot-flowable</module>
                 <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
                 <module>spring-boot-jasypt</module>
-                <module>spring-boot-keycloak</module>
                 <module>spring-boot-kotlin</module>
                 <module>spring-boot-libraries</module>
                 <module>spring-boot-logging-log4j2</module>
@@ -1197,7 +1195,6 @@
                 <module>spring-boot-mvc-2</module>
                 <module>spring-boot-nashorn</module>
                 <module>spring-boot-parent</module>
-                <module>spring-boot-performance</module>
                 <module>spring-boot-property-exp</module>
 
                 <module>spring-boot-rest</module>
@@ -1206,7 +1203,6 @@
                 <module>spring-boot-runtime/disabling-console-log4j2</module>
                 <module>spring-boot-runtime/disabling-console-logback</module>
                 <module>spring-boot-security</module>
-                <module>spring-boot-springdoc</module>
 
                 <module>spring-caching</module>
 
