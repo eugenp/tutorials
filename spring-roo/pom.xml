@@ -413,7 +413,7 @@
         <repository>
             <id>spring-roo-repository</id>
             <name>Spring Roo Repository</name>
-            <url>http://repo.spring.io/spring-roo</url>
+            <url>https://repo.spring.io/spring-roo</url>
         </repository>
     </repositories>
 
