@@ -7,10 +7,9 @@
     <name>greeter-spring-boot-autoconfigure</name>
 
     <parent>
-        <groupId>com.baeldung</groupId>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
         <artifactId>spring-boot-custom-starter</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../spring-boot-custom-starter</relativePath>
     </parent>
 
     <dependencies>
@@ -34,7 +33,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.baeldung</groupId>
+            <groupId>com.baeldung.spring-boot-modules</groupId>
             <artifactId>greeter-library</artifactId>
             <version>${greeter.version}</version>
             <optional>true</optional>

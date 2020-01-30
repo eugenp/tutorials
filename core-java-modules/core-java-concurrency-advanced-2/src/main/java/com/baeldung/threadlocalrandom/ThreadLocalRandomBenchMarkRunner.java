@@ -1,22 +1,27 @@
 package com.baeldung.threadlocalrandom;
 
 import org.openjdk.jmh.runner.Runner;
-import org.openjdk.jmh.runner.options.Options;
+import org.openjdk.jmh.runner.options.ChainedOptionsBuilder;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+
+import com.google.common.collect.ImmutableList;
 
 public class ThreadLocalRandomBenchMarkRunner {
 
     public static void main(String[] args) throws Exception {
 
-        Options options = new OptionsBuilder().include(ThreadLocalRandomBenchMarker.class.getSimpleName())
-            .threads(1)
+        ChainedOptionsBuilder options = new OptionsBuilder().include(ThreadLocalRandomBenchMarker.class.getSimpleName())
             .forks(1)
             .shouldFailOnError(true)
             .shouldDoGC(true)
-            .jvmArgs("-server")
-            .build();
+            .jvmArgs("-server");
 
-        new Runner(options).run();
-
+        for (Integer i : ImmutableList.of(1, 2, 8, 32)) {
+            new Runner(
+                    options
+                            .threads(i)
+                            .build())
+                    .run();
+        }
     }
 }
