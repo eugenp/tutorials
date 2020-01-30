@@ -669,7 +669,6 @@
                 <module>spring-boot-runtime/disabling-console-jul</module>
                 <module>spring-boot-runtime/disabling-console-log4j2</module>
                 <module>spring-boot-runtime/disabling-console-logback</module>
-                <module>spring-boot-security</module>
               
                 <module>spring-caching</module>
 
@@ -1200,7 +1199,6 @@
                 <module>spring-boot-runtime/disabling-console-jul</module>
                 <module>spring-boot-runtime/disabling-console-log4j2</module>
                 <module>spring-boot-runtime/disabling-console-logback</module>
-                <module>spring-boot-security</module>
 
                 <module>spring-caching</module>
 
