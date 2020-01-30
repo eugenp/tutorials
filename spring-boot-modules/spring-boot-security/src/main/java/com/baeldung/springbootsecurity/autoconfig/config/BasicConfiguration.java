@@ -22,7 +22,7 @@ public class BasicConfiguration extends WebSecurityConfigurerAdapter {
           .roles("USER")
           .and()
           .withUser("admin")
-          .password(encoder.encode("admin"))cl
+          .password(encoder.encode("admin"))
           .roles("USER", "ADMIN");
     }
 
