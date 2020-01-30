@@ -10,12 +10,12 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-1</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-1</relativePath>
+        <relativePath>../../../parent-boot-1</relativePath>
     </parent>
 	
     <dependencies>
         <dependency>
-            <groupId>com.baeldung</groupId>
+            <groupId>com.baeldung.spring-boot-modules</groupId>
             <artifactId>greeter-spring-boot-starter</artifactId>
             <version>${greeter-starter.version}</version>
         </dependency>
