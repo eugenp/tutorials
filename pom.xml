@@ -648,7 +648,6 @@
                 <module>spring-boot-config-jpa-error</module>
                 <module>spring-boot-crud</module>
                 <module>spring-boot-ctx-fluent</module>
-                <module>spring-boot-custom-starter</module>
                 <module>spring-boot-deployment</module>
                 <module>spring-boot-di</module>
                 <module>spring-boot-environment</module>
@@ -1177,7 +1176,6 @@
                 <module>spring-boot-config-jpa-error</module>
                 <module>spring-boot-crud</module>
                 <module>spring-boot-ctx-fluent</module>
-                <module>spring-boot-custom-starter</module>
                 <module>spring-boot-deployment</module>
                 <module>spring-boot-di</module>
                 <module>spring-boot-environment</module>
