@@ -4,7 +4,7 @@ import com.baeldung.architecture.hexagonal.adapter.BlogControllerAdapter;
 import com.baeldung.architecture.hexagonal.adapter.BlogServiceAdapter;
 import com.baeldung.architecture.hexagonal.model.Blog;
 import com.baeldung.architecture.hexagonal.port.BlogUIPort;
-import com.baeldung.architecture.hexagonal.service.BlogService;
+import com.baeldung.architecture.hexagonal.service.DefaultBlogService;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -16,7 +16,7 @@ public class ArchitectureUnitTest {
 
     @BeforeClass
     public static void beforeClass() {
-        blogUIPort = new BlogControllerAdapter(new BlogService(new BlogServiceAdapter()));
+        blogUIPort = new BlogControllerAdapter(new DefaultBlogService(new BlogServiceAdapter()));
     }
 
     @Test
