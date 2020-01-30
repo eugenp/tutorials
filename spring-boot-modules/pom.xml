@@ -18,6 +18,7 @@
         <module>spring-boot-custom-starter</module>
         <module>spring-boot-artifacts</module>
         <module>spring-boot-autoconfiguration</module>
+        <module>spring-boot-crud</module>
         <module>spring-boot-data</module>
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-keycloak</module>
