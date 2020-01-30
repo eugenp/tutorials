@@ -27,13 +27,11 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.6.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.6.0</version>
             <scope>test</scope>
         </dependency>
         <!-- JUnit platform launcher -->
@@ -41,7 +39,6 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
-            <version>1.6.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -96,7 +93,7 @@
 
     <properties>
         <joda-money.version>1.0.1</joda-money.version>
-        <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
+        <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
     </properties>
 
 </project>
