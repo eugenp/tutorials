@@ -17,6 +17,7 @@
         <module>spring-boot-admin</module>
         <module>spring-boot-artifacts</module>
         <module>spring-boot-data</module>
+        <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-keycloak</module>
         <module>spring-boot-mvc-birt</module>
         <module>spring-boot-performance</module>
