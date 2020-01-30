@@ -10,7 +10,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-1</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-1</relativePath>
+        <relativePath>../../../parent-boot-1</relativePath>
     </parent>
     
 </project>

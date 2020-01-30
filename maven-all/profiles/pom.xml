@@ -73,7 +73,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-help-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>${help.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>show-profiles</id>
@@ -86,5 +86,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+       <help.plugin.version>3.2.0</help.plugin.version>
+    </properties>
 
 </project>
