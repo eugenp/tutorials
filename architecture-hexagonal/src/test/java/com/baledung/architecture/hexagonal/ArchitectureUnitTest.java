@@ -19,11 +19,12 @@ public class ArchitectureUnitTest {
     }
 
     @Test
-    public void testCreateAndFindBlog() {
+    public void whenCreateBlog_andFindBlog_thenVerifyEquals() {
         final Blog blog = new Blog(1L, "Test");
         adapter.createBlog(blog);
 
         final Blog found = adapter.findByName("Test");
+
         Assert.assertNotNull(found);
         Assert.assertEquals(blog.getId(), found.getId());
         Assert.assertEquals(blog.getName(), found.getName());
