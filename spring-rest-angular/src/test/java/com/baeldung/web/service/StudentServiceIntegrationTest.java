@@ -1,4 +1,4 @@
-package org.baeldung.web.service;
+package com.baeldung.web.service;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
@@ -6,7 +6,7 @@ import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.baeldung.web.main.Application;
+import com.baeldung.web.main.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

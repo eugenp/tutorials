@@ -1,7 +1,7 @@
-package org.baeldung.web.service;
+package com.baeldung.web.service;
 
-import org.baeldung.web.dao.StudentRepository;
-import org.baeldung.web.entity.Student;
+import com.baeldung.web.dao.StudentRepository;
+import com.baeldung.web.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

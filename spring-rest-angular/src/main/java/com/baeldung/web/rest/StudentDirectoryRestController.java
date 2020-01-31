@@ -1,8 +1,8 @@
-package org.baeldung.web.rest;
+package com.baeldung.web.rest;
 
-import org.baeldung.web.entity.Student;
-import org.baeldung.web.exception.MyResourceNotFoundException;
-import org.baeldung.web.service.StudentService;
+import com.baeldung.web.entity.Student;
+import com.baeldung.web.exception.MyResourceNotFoundException;
+import com.baeldung.web.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RequestMapping;

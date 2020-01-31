@@ -1,4 +1,4 @@
-package org.baeldung.web.service;
+package com.baeldung.web.service;
 
 import org.springframework.data.domain.Page;
 
