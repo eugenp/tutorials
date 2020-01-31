@@ -1,4 +1,4 @@
-package org.baeldung.web.entity;
+package com.baeldung.web.entity;
 
 import java.io.Serializable;
 
