@@ -10,7 +10,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Component
-@Primary
 public class MongoDbOrderRepository implements OrderRepository {
 
     private final SpringDataMongoOrderRepository orderRepository;
