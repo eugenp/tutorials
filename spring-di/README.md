@@ -13,4 +13,3 @@ This module contains articles about dependency injection with Spring
 - [Controlling Bean Creation Order with @DependsOn Annotation](https://www.baeldung.com/spring-depends-on)
 - [Unsatisfied Dependency in Spring](https://www.baeldung.com/spring-unsatisfied-dependency)
 - [Circular Dependencies in Spring](https://www.baeldung.com/circular-dependencies-in-spring)
-- [Spring Component Scanning](https://www.baeldung.com/spring-component-scanning)
