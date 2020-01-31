@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.baeldung.dddhexagonalspring.domain.Order;
 
 @Repository
-public interface SpringDataCassandraOrderRepository extends CassandraRepository<Order, UUID>{
+public interface SpringDataCassandraOrderRepository extends CassandraRepository<OrderEntity, UUID>{
 
 }
