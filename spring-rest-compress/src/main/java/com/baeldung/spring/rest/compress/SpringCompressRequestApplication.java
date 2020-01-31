@@ -1,4 +1,4 @@
-package org.baeldung.spring.rest.compress;
+package com.baeldung.spring.rest.compress;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

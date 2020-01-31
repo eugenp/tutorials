@@ -1,4 +1,4 @@
-package org.baeldung.spring.rest.compress;
+package com.baeldung.spring.rest.compress;
 
 import org.eclipse.jetty.server.handler.HandlerCollection;
 import org.eclipse.jetty.server.handler.gzip.GzipHandler;

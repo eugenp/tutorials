@@ -1,4 +1,4 @@
-package org.baeldung.spring.rest.compress;
+package com.baeldung.spring.rest.compress;
 
 public class Message {
 
