@@ -1,4 +1,4 @@
-package org.baeldung.spring.rest.compress;
+package com.baeldung.spring.rest.compress;
 
 import org.apache.commons.codec.Charsets;
 import org.apache.commons.io.IOUtils;
