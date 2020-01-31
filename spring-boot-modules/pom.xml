@@ -22,7 +22,6 @@
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-keycloak</module>
         <module>spring-boot-mvc-birt</module>
-        <module>spring-boot-performance</module>
         <module>spring-boot-properties</module>
         <module>spring-boot-springdoc</module>
         <module>spring-boot-testing</module>
