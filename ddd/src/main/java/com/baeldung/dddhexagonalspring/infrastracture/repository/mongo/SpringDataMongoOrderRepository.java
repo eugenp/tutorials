@@ -1,4 +1,4 @@
-package com.baeldung.dddhexagonalspring.infrastracture.repository;
+package com.baeldung.dddhexagonalspring.infrastracture.repository.mongo;
 
 import com.baeldung.dddhexagonalspring.domain.Order;
 import org.springframework.data.mongodb.repository.MongoRepository;
