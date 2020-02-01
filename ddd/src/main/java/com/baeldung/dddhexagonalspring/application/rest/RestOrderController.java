@@ -1,4 +1,4 @@
-package com.baeldung.dddhexagonalspring.application.controller;
+package com.baeldung.dddhexagonalspring.application.rest;
 
 import com.baeldung.dddhexagonalspring.application.request.AddProductRequest;
 import com.baeldung.dddhexagonalspring.application.request.CreateOrderRequest;
@@ -12,12 +12,12 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/orders")
-public class OrderController {
+public class RestOrderController {
 
     private final OrderService orderService;
 
     @Autowired
-    public OrderController(OrderService orderService) {
+    public RestOrderController(OrderService orderService) {
         this.orderService = orderService;
     }
 

@@ -11,7 +11,6 @@ import com.baeldung.dddhexagonalspring.domain.Order;
 import com.baeldung.dddhexagonalspring.domain.repository.OrderRepository;
 
 @Component
-@Primary
 public class CassandraDbOrderRepository implements OrderRepository {
 
     private final SpringDataCassandraOrderRepository orderRepository;
