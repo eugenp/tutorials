@@ -75,7 +75,6 @@ class WebserviceManualTest extends GroovyTestCase {
         assert stories.size() == 5
     }
     
-    /* see BAEL-3753
     void test_whenConsumingSoap_thenReceiveResponse() {
         def url = "http://www.dataaccess.com/webservicesserver/numberconversion.wso"
         def soapClient = new SOAPClient(url)
@@ -90,7 +89,6 @@ class WebserviceManualTest extends GroovyTestCase {
         def words = response.NumberToWordsResponse
         assert words == "one thousand two hundred and thirty four "
     }
-    */
 
     void test_whenConsumingRestGet_thenReceiveResponse() {
         def path = "/get"
