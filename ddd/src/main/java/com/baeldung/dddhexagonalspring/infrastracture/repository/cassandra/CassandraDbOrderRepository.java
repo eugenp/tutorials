@@ -4,7 +4,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import com.baeldung.dddhexagonalspring.domain.Order;
@@ -24,7 +23,8 @@ public class CassandraDbOrderRepository implements OrderRepository {
     public Optional<Order> findById(UUID id) {
         Optional<OrderEntity> orderEntity = orderRepository.findById(id);
         if (orderEntity.isPresent()) {
-            return Optional.of(orderEntity.get().toOrder());
+            return Optional.of(orderEntity.get()
+                .toOrder());
         } else {
             return Optional.empty();
         }
