@@ -28,7 +28,6 @@ public class CliOrderController{
 
     public void deleteProduct(UUID orderId, UUID productId) {
         orderService.deleteProduct(orderId, productId);
-
     }
 
     public void completeOrder(UUID orderId) {
