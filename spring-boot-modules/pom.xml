@@ -24,6 +24,7 @@
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-keycloak</module>
         <module>spring-boot-logging-log4j2</module>
+        <module>spring-boot-kotlin</module>
         <module>spring-boot-mvc-birt</module>
         <module>spring-boot-nashorn</module>
         <module>spring-boot-properties</module>

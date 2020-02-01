@@ -651,7 +651,6 @@
                 <module>spring-boot-environment</module>
                 <module>spring-boot-flowable</module>
                 <module>spring-boot-jasypt</module>
-                <module>spring-boot-kotlin</module>
                 <module>spring-boot-libraries</module>
                 <module>spring-boot-mvc-2</module>
                 <module>spring-boot-parent</module>
@@ -1175,7 +1174,6 @@
                 <module>spring-boot-environment</module>
                 <module>spring-boot-flowable</module>
                 <module>spring-boot-jasypt</module>
-                <module>spring-boot-kotlin</module>
                 <module>spring-boot-libraries</module>
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-mvc-2</module>
