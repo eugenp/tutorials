@@ -2,9 +2,6 @@ package com.baeldung.beanvalidation.application;
 
 import com.baeldung.beanvalidation.application.controllers.UserController;
 import com.baeldung.beanvalidation.application.repositories.UserRepository;
-
-import java.nio.charset.Charset;
-import static org.assertj.core.api.Assertions.assertThat;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +14,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import java.nio.charset.Charset;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest
@@ -40,9 +41,9 @@ public class UserControllerIntegrationTest {
     @Test
     public void whenGetRequestToUsers_thenCorrectResponse() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/users")
-                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8));
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON));
     
     }
     
@@ -52,7 +53,7 @@ public class UserControllerIntegrationTest {
         String user = "{\"name\": \"bob\", \"email\" : \"bob@domain.com\"}";
         mockMvc.perform(MockMvcRequestBuilders.post("/users")
                 .content(user)
-                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(textPlainUtf8));
     }
@@ -62,9 +63,9 @@ public class UserControllerIntegrationTest {
         String user = "{\"name\": \"\", \"email\" : \"bob@domain.com\"}";
         mockMvc.perform(MockMvcRequestBuilders.post("/users")
                 .content(user)
-                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name", Is.is("Name is mandatory")))
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8));
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON));
     }
 }
