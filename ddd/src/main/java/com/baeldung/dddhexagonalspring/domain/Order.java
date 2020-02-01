@@ -41,13 +41,11 @@ public class Order {
     }
 
     private OrderItem getOrderItem(final UUID id) {
-        return orderItems
-          .stream()
-          .filter(orderItem -> orderItem
-            .getProductId()
-            .equals(id))
-          .findFirst()
-          .orElseThrow(() -> new DomainException("Product with " + id + " doesn't exist."));
+        return orderItems.stream()
+            .filter(orderItem -> orderItem.getProductId()
+                .equals(id))
+            .findFirst()
+            .orElseThrow(() -> new DomainException("Product with " + id + " doesn't exist."));
     }
 
     private void validateState() {
@@ -78,7 +76,6 @@ public class Order {
         return Collections.unmodifiableList(orderItems);
     }
 
-
     @Override
     public int hashCode() {
         return Objects.hash(id, orderItems, price, status);
@@ -93,7 +90,7 @@ public class Order {
         Order other = (Order) obj;
         return Objects.equals(id, other.id) && Objects.equals(orderItems, other.orderItems) && Objects.equals(price, other.price) && status == other.status;
     }
-    
+
     private Order() {
     }
 }

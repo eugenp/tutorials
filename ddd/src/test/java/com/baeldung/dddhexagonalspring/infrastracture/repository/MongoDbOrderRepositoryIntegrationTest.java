@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.junit.After;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import com.baeldung.dddhexagonalspring.domain.Order;
 import com.baeldung.dddhexagonalspring.domain.Product;
 import com.baeldung.dddhexagonalspring.domain.repository.OrderRepository;
+import com.baeldung.dddhexagonalspring.infrastracture.repository.mongo.SpringDataMongoOrderRepository;
 
 @SpringJUnitConfig
 @SpringBootTest
@@ -24,22 +25,22 @@ class MongoDbOrderRepositoryIntegrationTest {
 
     @Autowired
     private SpringDataMongoOrderRepository mongoOrderRepository;
-    
+
     @Autowired
     private OrderRepository orderRepository;
-    
-    @After
-    void cleanUp(){
+
+    @AfterEach
+    void cleanUp() {
         mongoOrderRepository.deleteAll();
     }
 
     @Test
     void shouldFindById_thenReturnOrder() {
-        
+
         // given
         final UUID id = UUID.randomUUID();
         final Order order = createOrder(id);
-        
+
         // when
         orderRepository.save(order);
 
