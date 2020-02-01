@@ -16,5 +16,5 @@ This module contains articles about core Spring functionality
 - [Spring Null-Safety Annotations](https://www.baeldung.com/spring-null-safety-annotations)
 - [Using @Autowired in Abstract Classes](https://www.baeldung.com/spring-autowired-abstract-class)
 - [Guide to the Spring BeanFactory](https://www.baeldung.com/spring-beanfactory)
-- [Read HttpServletRequest Multiple Times](https://www.baeldung.com/spring-reading-httpservletrequest-multiple-times)
+- [Reading HttpServletRequest Multiple Times in Spring](https://www.baeldung.com/spring-reading-httpservletrequest-multiple-times)
 - More articles: [[<-- prev]](/spring-core)[[next -->]](/spring-core-3)

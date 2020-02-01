@@ -65,7 +65,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>${shade.plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -109,6 +109,7 @@
         <uberjar.name>benchmarks</uberjar.name>
         <jmh.version>1.22</jmh.version>
         <eclipse.collections.version>10.0.0</eclipse.collections.version>
+        <shade.plugin.version>10.0.0</shade.plugin.version>
     </properties>
 
 </project>

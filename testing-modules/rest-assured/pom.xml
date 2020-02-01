@@ -215,6 +215,8 @@
         <rest-assured-json-schema-validator.version>3.0.1</rest-assured-json-schema-validator.version>
 
         <scribejava.version>2.5.3</scribejava.version>
+
+        <spring-boot.version>2.1.9.RELEASE</spring-boot.version>
     </properties>
 
 </project>
