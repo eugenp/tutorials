@@ -645,7 +645,6 @@
                 <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
                 <module>spring-boot-client</module>
                 <module>spring-boot-config-jpa-error</module>
-                <module>spring-boot-crud</module>
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-deployment</module>
                 <module>spring-boot-di</module>
@@ -1170,7 +1169,6 @@
                 <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
                 <module>spring-boot-client</module>
                 <module>spring-boot-config-jpa-error</module>
-                <module>spring-boot-crud</module>
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-deployment</module>
                 <module>spring-boot-di</module>
