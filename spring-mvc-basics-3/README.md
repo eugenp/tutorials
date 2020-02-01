@@ -11,5 +11,5 @@ This module contains articles about Spring MVC
 - [Using Enums as Request Parameters in Spring](https://www.baeldung.com/spring-enum-request-param)
 - [Excluding URLs for a Filter in a Spring Web Application](https://www.baeldung.com/spring-exclude-filter)
 - [Guide to Flash Attributes in a Spring Web Application](https://www.baeldung.com/spring-web-flash-attributes)
-- More articles: [[more -->]](/spring-mvc-basics-4)
-- More articles: [[<-- prev]](/spring-mvc-basics-2)
+- [Handling URL Encoded Form Data in Spring REST](https://www.baeldung.com/spring-url-encoded-form-data)
+- More articles: [[<-- prev]](/spring-mvc-basics-2)[[more -->]](/spring-mvc-basics-4)
