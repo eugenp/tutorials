@@ -3,14 +3,17 @@ package com.baeldung.models;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Tweet")
 public class Tweet {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -18,7 +21,8 @@ public class Tweet {
     private String tweet;
     private String owner;
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
-    private Set<String> likes = new HashSet();
+    @CollectionTable(name = "Tweet_Likes")
+    private Set<String> likes = new HashSet<>();
 
     public long getId() {
         return id;
