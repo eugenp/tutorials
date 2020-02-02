@@ -645,13 +645,11 @@
                 <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
                 <module>spring-boot-client</module>
                 <module>spring-boot-config-jpa-error</module>
-                <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-deployment</module>
                 <module>spring-boot-di</module>
                 <module>spring-boot-environment</module>
                 <module>spring-boot-flowable</module>
                 <module>spring-boot-jasypt</module>
-                <module>spring-boot-kotlin</module>
                 <module>spring-boot-libraries</module>
                 <module>spring-boot-mvc-2</module>
                 <module>spring-boot-parent</module>
@@ -1169,13 +1167,11 @@
                 <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
                 <module>spring-boot-client</module>
                 <module>spring-boot-config-jpa-error</module>
-                <module>spring-boot-ctx-fluent</module>
                 <module>spring-boot-deployment</module>
                 <module>spring-boot-di</module>
                 <module>spring-boot-environment</module>
                 <module>spring-boot-flowable</module>
                 <module>spring-boot-jasypt</module>
-                <module>spring-boot-kotlin</module>
                 <module>spring-boot-libraries</module>
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-mvc-2</module>
