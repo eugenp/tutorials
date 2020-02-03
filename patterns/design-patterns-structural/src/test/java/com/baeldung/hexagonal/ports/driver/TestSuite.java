@@ -7,6 +7,7 @@ import com.baeldung.hexagonal.adapter.driver.ProductProvider;
 import com.baeldung.hexagonal.bridge.ProductRequest;
 import com.baeldung.hexagonal.bridge.ProductService;
 import com.baeldung.hexagonal.domain.ProductVO;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -19,15 +20,12 @@ public class TestSuite {
     ProductProvider productProvider = new ProductProvider(productService);
     ProductCreator productCreator = new ProductCreator(productService, new EmailNotifyingAdapter());
 
-    public void setup() {
+    @BeforeClass public static void setup() {
         ProductRepositoryAdapter.getInstance().create(new ProductVO("PS"));
         ProductRepositoryAdapter.getInstance().create(new ProductVO("XBOX360"));
     }
 
-    @Test
-    public void givenProductsExist_whenAskedToList_thenShouldListThem() {
-        setup();
-
+    @Test public void givenProductsExist_whenAskedToList_thenShouldListThem() {
         assertEquals(productProvider.list().size(), 2);
     }
 
