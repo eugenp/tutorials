@@ -45,7 +45,7 @@ public class InMemoryLoginModule implements LoginModule {
                 loginSucceeded = true;
             }
         } catch (IOException | UnsupportedCallbackException e) {
-            //...
+            throw new LoginException("Can't login");
         }
         return loginSucceeded;
     }
