@@ -12,12 +12,12 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/orders")
-public class RestOrderController {
+public class OrderController {
 
     private final OrderService orderService;
 
     @Autowired
-    public RestOrderController(OrderService orderService) {
+    public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
 
