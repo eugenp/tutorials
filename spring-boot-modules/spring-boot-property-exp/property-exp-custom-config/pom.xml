@@ -8,7 +8,7 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>com.baeldung</groupId>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
         <artifactId>spring-boot-property-exp</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
