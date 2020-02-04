@@ -781,6 +781,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
+                <module>yaml</module>
             </modules>
 
         </profile>
@@ -1304,6 +1305,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
+                <module>yaml</module>
             </modules>
 
         </profile>
