@@ -24,13 +24,13 @@ public class CaseInsensitiveWorkaroundsUnitTest {
     }
     
     @Test
-    public void givenString_whenCallingStringMatches_shouldReturnTrue() {
+    public void givenString_whenCallingStringMatches_thenReturnsTrue() {
         // Use String Matches to avoid case insensitive issues
         Assert.assertTrue(src.matches("(?i).*" + dest + ".*"));
     }
     
     @Test
-    public void givenString_whenCallingStringRegionMatches_shouldReturnTrue() {
+    public void givenString_whenCallingStringRegionMatches_thenReturnsTrue() {
         // Use String Region Matches to avoid case insensitive issues
         CaseInsensitiveWorkarounds comparator = new CaseInsensitiveWorkarounds();
         Assert.assertTrue(comparator.processRegionMatches(src, dest));
@@ -38,14 +38,14 @@ public class CaseInsensitiveWorkaroundsUnitTest {
     
     
     @Test
-    public void givenString_whenCallingPaternCompileMatcherFind_shouldReturnTrue() {
+    public void givenString_whenCallingPaternCompileMatcherFind_thenReturnsTrue() {
         // Use Pattern Compile Matcher and Find to avoid case insensitive issues
         Assert.assertTrue(Pattern.compile(Pattern.quote(dest), 
             Pattern.CASE_INSENSITIVE) .matcher(src) .find());
     }
     
     @Test
-    public void givenString_whenCallingStringUtilsContainsIgnoreCase_shouldReturnTrue() {
+    public void givenString_whenCallingStringUtilsContainsIgnoreCase_thenReturnsTrue() {
         // Use StringUtils containsIgnoreCase to avoid case insensitive issues
         Assert.assertTrue(StringUtils.containsIgnoreCase(src, dest));
     }
