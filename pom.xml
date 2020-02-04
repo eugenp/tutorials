@@ -538,6 +538,7 @@
 
                 <module>netflix-modules</module>
                 <module>ninja</module>
+                <module>open-liberty</module>
 
                 <module>oauth2-framework-impl</module>
                 <module>optaplanner</module>
@@ -1069,6 +1070,7 @@
 
                 <module>netflix-modules</module>
                 <module>ninja</module>
+                <module>open-liberty</module>
 
                 <module>oauth2-framework-impl</module>
                 <module>optaplanner</module>
