@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>hexagon architecture</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+
+
+
+
+	<div class="container">
+		<h2>What to do today</h2>
+		<p>This is an example of Hexagon Architecture</p>
+		<p>To delete a 'To Do', just update it with empty content</p>
+		<form action="/" method='POST' th:object="${toDo}" id="main_form">
+			<div class="form-group">
+				<label for="what">What to do?</label> 
+				<input type="text"  th:field="*{what}" class="form-control" id="what_field">
+				<input type="hidden"  th:field="*{id}" id="id_field">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+		<p th:text="${error != null} ? ${error}" class="bg-danger text-white">erro msg</p>
+		<div style="padding: 20px 0px;">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>what</th>
+						<th>action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="nextToDo: ${todoList}">
+						<td th:text="${nextToDo.id}" />
+						<td th:text="${nextToDo.what}" />
+						<td> <button type="button" class="btn btn-success" th:entityId="${nextToDo.id}" th:entityWhat="${nextToDo.what}" th:onclick="javascript:setUpdateForm(this.getAttribute('entityId'), this.getAttribute('entityWhat'));">update</button> 
+							<td/>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script>
+	function setUpdateForm(id, text){
+		console.log("setUpdateForm: "+id + ' -> '+text);
+		$("#id_field").val(id);
+		$("#what_field").val(text);
+	}	
+	</script>
+</body>
+</html>
