@@ -13,6 +13,15 @@
     <properties>
         <ninja.version>6.5.0</ninja.version>
         <jetty.version>9.4.18.v20190429</jetty.version>
+        <bootstrap.version>3.3.4</bootstrap.version>
+        <jquery.version>2.1.3</jquery.version>
+        <h2.version>1.4.186</h2.version>
+        <compiler.plugin.version>3.2</compiler.plugin.version>
+        <source.version>1.8</source.version>
+        <target.version>1.8</target.version>
+        <enforcer.plugin.version>1.3.1</enforcer.plugin.version>
+        <deploy.plugin.version>2.8.2</deploy.plugin.version>
+        <shade.plugin.version>2.2</shade.plugin.version>
     </properties>
 
     <build>
@@ -20,16 +29,16 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.2</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${source.version}</source>
+                    <target>${target.version}</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>1.3.1</version>
+                <version>${enforcer.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>enforce-banned-dependencies</id>
@@ -92,7 +101,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.2</version>
+                <version>${deploy.plugin.version}</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
@@ -100,7 +109,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.2</version>
+                <version>${shade.plugin.version}</version>
                 <configuration>
                     <createDependencyReducedPom>true</createDependencyReducedPom>
                     <filters>
@@ -156,17 +165,17 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
-            <version>3.3.4</version>
+            <version>${bootstrap.version}</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <version>2.1.3</version>
+            <version>${jquery.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.186</version>
+            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.ninjaframework</groupId>

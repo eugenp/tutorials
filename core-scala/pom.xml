@@ -28,7 +28,7 @@
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
-                <version>3.3.2</version>
+                <version>${scala.plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -49,6 +49,7 @@
 
     <properties>
         <scala.version>2.12.7</scala.version>
+        <scala.plugin.version>3.3.2</scala.plugin.version>
     </properties>
 </project>
 

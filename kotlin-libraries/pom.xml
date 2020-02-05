@@ -33,19 +33,19 @@
         <dependency>
             <groupId>org.jetbrains.spek</groupId>
             <artifactId>spek-api</artifactId>
-            <version>1.1.5</version>
+            <version>${spek.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.spek</groupId>
             <artifactId>spek-subject-extension</artifactId>
-            <version>1.1.5</version>
+            <version>${spek.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.spek</groupId>
             <artifactId>spek-junit-platform-engine</artifactId>
-            <version>1.1.5</version>
+            <version>${spek.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -166,6 +166,7 @@
         <objenesis.version>2.6</objenesis.version>
         <rxkotlin.version>2.3.0</rxkotlin.version>
         <arrow-core.version>0.7.3</arrow-core.version>
+        <spek.version>1.1.5</spek.version>
     </properties>
 
 </project>

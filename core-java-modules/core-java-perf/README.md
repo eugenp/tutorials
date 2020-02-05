@@ -9,3 +9,4 @@ This module contains articles about performance of Java applications
 - [OutOfMemoryError: GC Overhead Limit Exceeded](http://www.baeldung.com/java-gc-overhead-limit-exceeded)
 - [Basic Introduction to JMX](http://www.baeldung.com/java-management-extensions)
 - [Monitoring Java Applications with Flight Recorder](https://www.baeldung.com/java-flight-recorder-monitoring)
+- [Branch Prediction in Java](https://www.baeldung.com/java-branch-prediction)

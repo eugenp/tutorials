@@ -7,16 +7,17 @@
     <name>spring-boot</name>
     <packaging>war</packaging>
     <description>This is simple boot application for Spring boot actuator test</description>
+    <version>0.0.1-SNAPSHOT</version>
 
     <parent>
-        <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-2</artifactId>
+        <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
-
+      
         <!-- JUnit Jupiter dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -198,6 +199,16 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <delimiters>
+                        <delimiter>@</delimiter>
+                    </delimiters>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                </configuration>
+            </plugin>
         </plugins>
 
     </build>
@@ -251,6 +262,7 @@
         <graphql-java-tools.version>5.2.4</graphql-java-tools.version>
         <guava.version>18.0</guava.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
+        <resource.delimiter>@</resource.delimiter>
     </properties>
 
 </project>
