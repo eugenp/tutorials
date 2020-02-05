@@ -15,5 +15,4 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [Creating a Triangle with for Loops in Java](https://www.baeldung.com/java-print-triangle)
 - [Efficient Word Frequency Calculator in Java](https://www.baeldung.com/java-word-frequency)
 - [The K-Means Clustering Algorithm in Java](https://www.baeldung.com/java-k-means-clustering-algorithm)
-- [Creating a Custom Annotation in Java](https://www.baeldung.com/java-custom-annotation)
 - More articles: [[<-- prev]](/algorithms-miscellaneous-2) [[next -->]](/algorithms-miscellaneous-4)

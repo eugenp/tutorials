@@ -63,7 +63,7 @@
             <plugin>
                 <groupId>net.ltgt.gwt.maven</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>1.0-rc-8</version>
+                <version>${gwt.plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -78,7 +78,7 @@
                     <failOnError>true</failOnError>
                     <!-- GWT compiler 2.8 requires 1.8, hence define sourceLevel here if
                         you use a different source language for java compilation -->
-                    <sourceLevel>1.8</sourceLevel>
+                    <sourceLevel>${maven.compiler.source}</sourceLevel>
                     <!-- Compiler configuration -->
                     <compilerArgs>
                         <!-- Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile) -->
@@ -98,7 +98,7 @@
             <!-- Skip normal test execution, we use gwt:test instead -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.17</version>
+                <version>${surefire.plugin.version}</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
@@ -119,6 +119,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <gwt.version>2.8.2</gwt.version>
+        <gwt.plugin.version>1.0-rc-8</gwt.plugin.version>
+        <surefire.plugin.version>2.17</surefire.plugin.version>
     </properties>
 
 </project>
