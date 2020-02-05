@@ -14,4 +14,5 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [Overview of Combinatorial Problems in Java](https://www.baeldung.com/java-combinatorial-algorithms)
 - [Prim’s Algorithm](https://www.baeldung.com/java-prim-algorithm)
 - [Maximum Subarray Problem](https://www.baeldung.com/java-maximum-subarray)
+- [How to Merge Two Sorted Arrays](https://www.baeldung.com/java-merge-sorted-arrays)
 - More articles: [[<-- prev]](/../algorithms-miscellaneous-4)
