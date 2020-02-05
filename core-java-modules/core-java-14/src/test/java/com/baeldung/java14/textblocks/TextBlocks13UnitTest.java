@@ -9,7 +9,12 @@ class TextBlocks13UnitTest {
 
     @Test
     void givenAnOldStyleMultilineString_whenComparing_thenEqualsTextBlock() {
-        String expected = "<html>\n" + "\n" + "    <body>\n" + "        <p>example text</p>\n" + "    </body>\n" + "</html>";
+        String expected = "<html>\n"
+          + "\n"
+          + "    <body>\n"
+          + "        <p>example text</p>\n"
+          + "    </body>\n"
+          + "</html>";
         assertThat(subject.getBlockOfHtml()).isEqualTo(expected);
     }
 
