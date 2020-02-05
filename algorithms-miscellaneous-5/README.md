@@ -15,4 +15,5 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [Prim’s Algorithm](https://www.baeldung.com/java-prim-algorithm)
 - [Maximum Subarray Problem](https://www.baeldung.com/java-maximum-subarray)
 - [How to Merge Two Sorted Arrays](https://www.baeldung.com/java-merge-sorted-arrays)
+- [Median of Stream of Integers using Heap](https://www.baeldung.com/java-stream-integers-median-using-heap)
 - More articles: [[<-- prev]](/../algorithms-miscellaneous-4)
