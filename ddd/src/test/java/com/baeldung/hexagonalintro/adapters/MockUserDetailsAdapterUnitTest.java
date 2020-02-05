@@ -3,12 +3,12 @@ package com.baeldung.hexagonalintro.adapters;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static com.baeldung.hexagonalintro.adapters.MockUserDetailsAdapterTest.Fixture.otherPassword;
-import static com.baeldung.hexagonalintro.adapters.MockUserDetailsAdapterTest.Fixture.password;
-import static com.baeldung.hexagonalintro.adapters.MockUserDetailsAdapterTest.Fixture.username;
+import static com.baeldung.hexagonalintro.adapters.MockUserDetailsAdapterUnitTest.Fixture.otherPassword;
+import static com.baeldung.hexagonalintro.adapters.MockUserDetailsAdapterUnitTest.Fixture.password;
+import static com.baeldung.hexagonalintro.adapters.MockUserDetailsAdapterUnitTest.Fixture.username;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class MockUserDetailsAdapterTest {
+class MockUserDetailsAdapterUnitTest {
 
     private MockUserDetailsAdapter mockUserDetailsAdapter;
 

@@ -7,13 +7,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.baeldung.hexagonalintro.adapters.UserDetailsControllerTest.Fixture.newPassword;
-import static com.baeldung.hexagonalintro.adapters.UserDetailsControllerTest.Fixture.oldPassword;
-import static com.baeldung.hexagonalintro.adapters.UserDetailsControllerTest.Fixture.username;
+import static com.baeldung.hexagonalintro.adapters.UserDetailsControllerUnitTest.Fixture.newPassword;
+import static com.baeldung.hexagonalintro.adapters.UserDetailsControllerUnitTest.Fixture.oldPassword;
+import static com.baeldung.hexagonalintro.adapters.UserDetailsControllerUnitTest.Fixture.username;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class UserDetailsControllerTest {
+class UserDetailsControllerUnitTest {
 
     @InjectMocks
     private UserDetailsController userDetailsController;

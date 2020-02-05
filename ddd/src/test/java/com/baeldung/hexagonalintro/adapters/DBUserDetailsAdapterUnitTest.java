@@ -10,15 +10,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.persistence.EntityManager;
 
-import static com.baeldung.hexagonalintro.adapters.DBUserDetailsAdapterTest.Fixture.newPassword;
-import static com.baeldung.hexagonalintro.adapters.DBUserDetailsAdapterTest.Fixture.oldPassword;
-import static com.baeldung.hexagonalintro.adapters.DBUserDetailsAdapterTest.Fixture.username;
+import static com.baeldung.hexagonalintro.adapters.DBUserDetailsAdapterUnitTest.Fixture.newPassword;
+import static com.baeldung.hexagonalintro.adapters.DBUserDetailsAdapterUnitTest.Fixture.oldPassword;
+import static com.baeldung.hexagonalintro.adapters.DBUserDetailsAdapterUnitTest.Fixture.username;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class DBUserDetailsAdapterTest {
+class DBUserDetailsAdapterUnitTest {
 
     @InjectMocks
     private DBUserDetailsAdapter dbUserDetailsAdapter;

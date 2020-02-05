@@ -7,16 +7,16 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.baeldung.hexagonalintro.core.UserDetailsServiceTest.Fixture.newPassword;
-import static com.baeldung.hexagonalintro.core.UserDetailsServiceTest.Fixture.oldPassword;
-import static com.baeldung.hexagonalintro.core.UserDetailsServiceTest.Fixture.username;
+import static com.baeldung.hexagonalintro.core.UserDetailsServiceUnitTest.Fixture.newPassword;
+import static com.baeldung.hexagonalintro.core.UserDetailsServiceUnitTest.Fixture.oldPassword;
+import static com.baeldung.hexagonalintro.core.UserDetailsServiceUnitTest.Fixture.username;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class UserDetailsServiceTest {
+class UserDetailsServiceUnitTest {
 
     @InjectMocks
     private UserDetailsService userDetailsService;
