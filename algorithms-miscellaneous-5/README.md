@@ -13,4 +13,5 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [The Caesar Cipher in Java](https://www.baeldung.com/java-caesar-cipher)
 - [Overview of Combinatorial Problems in Java](https://www.baeldung.com/java-combinatorial-algorithms)
 - [Prim’s Algorithm](https://www.baeldung.com/java-prim-algorithm)
+- [Maximum Subarray Problem](https://www.baeldung.com/java-maximum-subarray)
 - More articles: [[<-- prev]](/../algorithms-miscellaneous-4)
