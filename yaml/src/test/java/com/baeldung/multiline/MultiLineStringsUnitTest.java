@@ -21,70 +21,70 @@ public class MultiLineStringsUnitTest {
 
     @Test
     public void whenLiteral_ThenLineBreaksArePresent() {
-        String key = parseYamlKey("literal.yaml");
+        String key = parseYamlKey("literal.yaml", "key");
         assertEquals("Line1\nLine2\nLine3", key);
     }
 
     @Test
     public void whenLiteral_ThenEndingBreaksAreReducedToOne() {
-        String key = parseYamlKey("literal2.yaml");
+        String key = parseYamlKey("literal2.yaml", "key");
         assertEquals("\n\nLine1\n\nLine2\n\nLine3\n", key);
     }
 
     @Test
     public void whenFolded_ThenLineBreaksAreReplaced() {
-        String key = parseYamlKey("folded.yaml");
+        String key = parseYamlKey("folded.yaml", "key");
         assertEquals("Line1 Line2 Line3", key);
     }
 
     @Test
     public void whenFolded_ThenEmptyLinesAreReducedToOne() {
-        String key = parseYamlKey("folded2.yaml");
-        assertEquals("Line1\nLine2\n\nLine3\n", key);
+        String key = parseYamlKey("folded2.yaml", "key");
+        assertEquals("Line1 Line2\n\nLine3\n", key);
     }
 
     @Test
     public void whenLiteralKeep_ThenLastEmptyLinesArePresent() {
-        String key = parseYamlKey("literal_keep.yaml");
+        String key = parseYamlKey("literal_keep.yaml", "key");
         assertEquals("Line1\nLine2\nLine3\n\n", key);
     }
 
     @Test
     public void whenLiteralStrip_ThenLastEmptyLinesAreRemoved() {
-        String key = parseYamlKey("literal_strip.yaml");
+        String key = parseYamlKey("literal_strip.yaml", "key");
         assertEquals("Line1\nLine2\nLine3", key);
     }
 
     @Test
     public void whenFoldedKeep_ThenLastEmptyLinesArePresent() {
-        String key = parseYamlKey("folded_keep.yaml");
+        String key = parseYamlKey("folded_keep.yaml", "key");
         assertEquals("Line1 Line2 Line3\n\n\n", key);
     }
 
     @Test
     public void whenFoldedStrip_ThenLastEmptyLinesAreRemoved() {
-        String key = parseYamlKey("folded_strip.yaml");
+        String key = parseYamlKey("folded_strip.yaml", "key");
         assertEquals("Line1 Line2 Line3", key);
     }
 
     @Test
     public void whenDoubleQuotes_ThenExplicitBreaksArePreserved() {
-        String key = parseYamlKey("plain_double_quotes.yaml");
+        String key = parseYamlKey("plain_double_quotes.yaml", "key");
         assertEquals("Line1\nLine2\nLine3", key);
     }
 
     @Test
     public void whenSingleQuotes_ThenExplicitBreaksAreIgnored() {
-        String key = parseYamlKey("plain_single_quotes.yaml");
+        String key = parseYamlKey("plain_single_quotes.yaml", "key");
         assertEquals("Line1\\nLine2\nLine3", key);
     }
 
-    private String parseYamlKey(String fileName) {
+    String parseYamlKey(String fileName, String key) {
         InputStream inputStream = this.getClass()
                 .getClassLoader()
                 .getResourceAsStream("multi-line" + File.separator + fileName);
         Map<String, String> parsed = yaml.load(inputStream);
-        return parsed.get("key");
+        return parsed.get(key);
     }
 
 }
