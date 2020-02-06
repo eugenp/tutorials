@@ -27,11 +27,11 @@ class DBUserDetailsAdapterUnitTest {
     private EntityManager entityManager;
 
     @Captor
-    private ArgumentCaptor<UserDetails> userDetailsArgumentCaptor;
+    private ArgumentCaptor<UserDetailsEntity> userDetailsEntityArgumentCaptor;
 
     @Test
     void givenNoUserCouldBeFound_thenItShouldReturnFalse() {
-        given(entityManager.find(UserDetails.class, username)).willReturn(null);
+        given(entityManager.find(UserDetailsEntity.class, username)).willReturn(null);
 
         boolean correctPassword = dbUserDetailsAdapter.isCorrectPassword(username, oldPassword);
         assertThat(correctPassword).isFalse();
@@ -39,7 +39,7 @@ class DBUserDetailsAdapterUnitTest {
 
     @Test
     void givenThePasswordsMatch_thenItShouldReturnTrue() {
-        given(entityManager.find(UserDetails.class, username)).willReturn(new UserDetails(null, oldPassword));
+        given(entityManager.find(UserDetailsEntity.class, username)).willReturn(new UserDetailsEntity(null, oldPassword));
 
         boolean correctPassword = dbUserDetailsAdapter.isCorrectPassword(username, oldPassword);
         assertThat(correctPassword).isTrue();
@@ -47,7 +47,7 @@ class DBUserDetailsAdapterUnitTest {
 
     @Test
     void givenThePasswordsDoNotMatch_thenItShouldReturnFalse() {
-        given(entityManager.find(UserDetails.class, username)).willReturn(new UserDetails(null, oldPassword));
+        given(entityManager.find(UserDetailsEntity.class, username)).willReturn(new UserDetailsEntity(null, oldPassword));
 
         boolean correctPassword = dbUserDetailsAdapter.isCorrectPassword(username, newPassword);
         assertThat(correctPassword).isFalse();
@@ -56,10 +56,10 @@ class DBUserDetailsAdapterUnitTest {
     @Test
     void whenUpdatingThePassword_thenItShouldStoreTheExpectedUserDetails() {
         dbUserDetailsAdapter.updatePassword(username, newPassword);
-        verify(entityManager).persist(userDetailsArgumentCaptor.capture());
-        UserDetails actualUserDetails = userDetailsArgumentCaptor.getValue();
-        assertThat(actualUserDetails.getUsername()).isEqualTo(username);
-        assertThat(actualUserDetails.getPassword()).isEqualTo(newPassword);
+        verify(entityManager).persist(userDetailsEntityArgumentCaptor.capture());
+        UserDetailsEntity actualUserDetailsEntity = userDetailsEntityArgumentCaptor.getValue();
+        assertThat(actualUserDetailsEntity.getUsername()).isEqualTo(username);
+        assertThat(actualUserDetailsEntity.getPassword()).isEqualTo(newPassword);
     }
 
     interface Fixture {

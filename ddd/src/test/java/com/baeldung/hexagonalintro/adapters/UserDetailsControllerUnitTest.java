@@ -1,6 +1,7 @@
 package com.baeldung.hexagonalintro.adapters;
 
-import com.baeldung.hexagonalintro.core.UserDetailsService;
+import com.baeldung.hexagonalintro.core.UserDetails;
+import com.baeldung.hexagonalintro.ports.UpdatePasswordRequest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,13 +20,13 @@ class UserDetailsControllerUnitTest {
     private UserDetailsController userDetailsController;
 
     @Mock
-    private UserDetailsService userDetailsService;
+    private UserDetails userDetails;
 
     @Test
     void whenUpdatingThePassword_thenItShouldDelegateToHaveItUpdated() {
         UpdatePasswordRequest updatePasswordRequest = new UpdatePasswordRequest(username, oldPassword, newPassword);
         userDetailsController.updatePassword(updatePasswordRequest);
-        verify(userDetailsService).updatePassword(username, oldPassword, newPassword);
+        verify(userDetails).updatePassword(username, oldPassword, newPassword);
     }
 
     interface Fixture {

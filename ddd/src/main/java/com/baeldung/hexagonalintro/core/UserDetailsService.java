@@ -8,10 +8,11 @@ import static lombok.AccessLevel.PACKAGE;
 
 @Service
 @RequiredArgsConstructor(access = PACKAGE)
-public class UserDetailsService {
+class UserDetailsService implements UserDetails {
 
     private final UserDetailsPort userDetailsPort;
 
+    @Override
     public void updatePassword(String username, String oldPassword, String newPassword) {
         if (userDetailsPort.isCorrectPassword(username, oldPassword)) {
             userDetailsPort.updatePassword(username, newPassword);

@@ -1,9 +1,9 @@
-package com.baeldung.hexagonalintro.adapters;
+package com.baeldung.hexagonalintro.ports;
 
 import lombok.Value;
 
 @Value
-class UpdatePasswordRequest {
+public class UpdatePasswordRequest {
 
     String username;
 

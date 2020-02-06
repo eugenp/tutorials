@@ -103,7 +103,7 @@
     <properties>
         <joda-money.version>1.0.1</joda-money.version>
         <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
-        <lombok.version>1.18.4</lombok.version>
+        <lombok.version>1.18.10</lombok.version>
     </properties>
 
 </project>

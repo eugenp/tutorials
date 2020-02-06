@@ -17,7 +17,7 @@ class DBUserDetailsAdapter implements UserDetailsPort {
 
     @Override
     public boolean isCorrectPassword(String username, String newPassword) {
-        UserDetails userDetails = entityManager.find(UserDetails.class, username);
+        UserDetailsEntity userDetails = entityManager.find(UserDetailsEntity.class, username);
         if (userDetails == null) {
             return false;
         }
@@ -26,6 +26,6 @@ class DBUserDetailsAdapter implements UserDetailsPort {
 
     @Override
     public void updatePassword(String username, String newPassword) {
-        entityManager.persist(new UserDetails(username, newPassword));
+        entityManager.persist(new UserDetailsEntity(username, newPassword));
     }
 }
