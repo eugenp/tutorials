@@ -1,2 +1,27 @@
 # Hexagonal Architecture
 
+## How to run
+```sh
+# Mac or Linux
+./mvnw
+
+# Windos
+mvnw
+```
+
+## Example requests
+
+**POST**
+http://localhost:8080/book
+```
+{
+	"id": 1,
+    "title": "The Witcher"
+}
+```
+
+**GET**
+http://localhost:8080/book/1
+
+**DELETE**
+http://localhost:8080/book/1
