@@ -8,6 +8,7 @@ public class GreetingsPrinterStub implements IPrintGreetings {
         @Override public void printGreetings(String[] greetings) {
                 this.greetings = greetings;
         }
+
         public String[] getGreetings() {
                 return greetings;
         }

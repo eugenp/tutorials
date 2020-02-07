@@ -9,10 +9,9 @@ import com.baeldung.hexagonalarchitecture.domain.helper.RandomGreetingPicker;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-public class DisplayRandomGreeting implements Consumer<RequestGreeting> {
+public class DisplayRandomGreeting {
 
         private IObtainGreetings greetingsObtainer;
         private RandomGreetingPicker greetingPicker;
@@ -24,7 +23,7 @@ public class DisplayRandomGreeting implements Consumer<RequestGreeting> {
                 this.greetingsPrinter = greetingsPrinter;
         }
 
-        @Override public void accept(RequestGreeting requestGreeting) {
+        public void displayGreeting(RequestGreeting requestGreeting) {
                 List<Greeting> greetingList = obtainGreetings(requestGreeting);
                 Optional<Greeting> greeting = greetingPicker.pickGreeting(greetingList);
                 printLines(greeting);
@@ -34,7 +33,6 @@ public class DisplayRandomGreeting implements Consumer<RequestGreeting> {
                 String language = requestGreeting.getLanguage();
                 String[] greetings = greetingsObtainer.getGreetingsForLanguage(language);
                 return Arrays.stream(greetings).map(Greeting::new).collect(Collectors.toList());
-
         }
 
         private void printLines(Optional<Greeting> greeting) {

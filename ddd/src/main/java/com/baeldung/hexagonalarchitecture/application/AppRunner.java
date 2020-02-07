@@ -10,10 +10,8 @@ public class AppRunner {
                 // Instantiate driven, right-side adapters
                 GreetingsDictionary greetingsDictionary = new GreetingsDictionary();
                 GreetingsPrinter greetingsPrinter = new GreetingsPrinter();
-
                 // Inject driven adapters into boundary
                 Boundary boundary = new Boundary(greetingsDictionary, greetingsPrinter);
-
                 // Start the driver adapter for the application
                 new GreetingsMachine(boundary).run();
         }

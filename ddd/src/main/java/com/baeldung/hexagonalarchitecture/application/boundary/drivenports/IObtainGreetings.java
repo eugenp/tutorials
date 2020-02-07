@@ -5,5 +5,5 @@ package com.baeldung.hexagonalarchitecture.application.boundary.drivenports;
  * the hexagon.
  */
 public interface IObtainGreetings {
-       String[] getGreetingsForLanguage(String language);
+        String[] getGreetingsForLanguage(String language);
 }
