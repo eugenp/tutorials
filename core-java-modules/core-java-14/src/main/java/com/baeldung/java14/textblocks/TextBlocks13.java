@@ -6,7 +6,7 @@ public class TextBlocks13 {
             <html>
 
                 <body>
-                    <p>example text</p>
+                    <span>example text</span>
                 </body>
             </html>""";
     }

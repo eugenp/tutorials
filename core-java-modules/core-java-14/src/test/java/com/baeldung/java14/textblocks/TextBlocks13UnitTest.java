@@ -12,7 +12,7 @@ class TextBlocks13UnitTest {
         String expected = "<html>\n"
           + "\n"
           + "    <body>\n"
-          + "        <p>example text</p>\n"
+          + "        <span>example text</span>\n"
           + "    </body>\n"
           + "</html>";
         assertThat(subject.getBlockOfHtml()).isEqualTo(expected);
@@ -20,7 +20,7 @@ class TextBlocks13UnitTest {
 
     @Test
     void givenAnOldStyleString_whenComparing_thenEqualsTextBlock() {
-        String expected = "<html>\n\n    <body>\n        <p>example text</p>\n    </body>\n</html>";
+        String expected = "<html>\n\n    <body>\n        <span>example text</span>\n    </body>\n</html>";
         assertThat(subject.getBlockOfHtml()).isEqualTo(expected);
     }
 
