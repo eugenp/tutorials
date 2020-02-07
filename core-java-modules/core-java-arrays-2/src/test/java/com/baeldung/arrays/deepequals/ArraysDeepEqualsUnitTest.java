@@ -1,4 +1,4 @@
-package com.baeldung.arrays;
+package com.baeldung.arrays.deepequals;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
