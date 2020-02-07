@@ -50,7 +50,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-aws</artifactId>
-                <version>2.0.1.RELEASE</version>
+                <version>${spring-cloud}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -60,6 +60,7 @@
     <properties>
         <start-class>com.baeldung.spring.cloud.aws.SpringCloudAwsApplication</start-class>
         <spring-cloud.version>Dalston.SR4</spring-cloud.version>
+        <spring-cloud>2.0.1.RELEASE</spring-cloud>
     </properties>
     
 </project>
