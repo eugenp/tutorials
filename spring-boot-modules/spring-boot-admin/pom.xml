@@ -19,8 +19,4 @@
         <module>spring-boot-admin-client</module>
     </modules>
 
-    <properties>
-        <spring-boot.version>2.1.9.RELEASE</spring-boot.version>
-    </properties>
-
 </project>
