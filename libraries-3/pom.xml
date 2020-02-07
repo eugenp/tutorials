@@ -67,7 +67,12 @@
             <groupId>org.cactoos</groupId>
             <artifactId>cactoos</artifactId>
             <version>${cactoos.version}</version>
-
+        </dependency>
+        <dependency>
+            <groupId>org.cache2k</groupId>
+            <artifactId>cache2k-base-bom</artifactId>
+            <version>${cache2k.version}</version>
+            <type>pom</type>
         </dependency>
     </dependencies>
 
@@ -88,5 +93,6 @@
 
         <cactoos.version>0.43</cactoos.version>
         <airline.version>2.7.2</airline.version>
+        <cache2k.version>1.2.3.Final</cache2k.version>
     </properties>
 </project>
