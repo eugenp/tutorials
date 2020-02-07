@@ -45,6 +45,11 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
+        
         <!-- Spring HATEOAS -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -90,6 +95,7 @@
         <guava.version>27.0.1-jre</guava.version>
         <xstream.version>1.4.11.1</xstream.version>
         <modelmapper.version>2.3.5</modelmapper.version>
+        <spring-boot.version>2.1.9.RELEASE</spring-boot.version>
     </properties>
     
 </project>

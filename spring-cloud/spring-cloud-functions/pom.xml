@@ -65,7 +65,7 @@
                     <dependency>
                         <groupId>org.springframework.boot.experimental</groupId>
                         <artifactId>spring-boot-thin-layout</artifactId>
-                        <version>1.0.10.RELEASE</version>
+                        <version>${spring-boot-thin.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -88,6 +88,7 @@
         <aws-lambda-events.version>2.0.2</aws-lambda-events.version>
         <aws-lambda-java-core.version>1.1.0</aws-lambda-java-core.version>
         <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
+        <spring-boot-thin.version>1.0.10.RELEASE</spring-boot-thin.version>
     </properties>
 
 </project>

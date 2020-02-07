@@ -15,4 +15,5 @@ This module contains articles about numbers in Java.
 - [Binary Numbers in Java](https://www.baeldung.com/java-binary-numbers)
 - [Generating Random Numbers in a Range in Java](https://www.baeldung.com/java-generating-random-numbers)
 - [Listing Numbers Within a Range in Java](https://www.baeldung.com/java-listing-numbers-within-a-range)
+- [Fibonacci Series in Java](https://www.baeldung.com/java-fibonacci)
 - More articles: [[<-- prev]](/../java-numbers)

@@ -9,7 +9,7 @@ import wslite.soap.SOAPMessageBuilder
 import wslite.http.auth.HTTPBasicAuthorization
 import org.junit.Test
 
-class WebserviceUnitTest extends GroovyTestCase {
+class WebserviceManualTest extends GroovyTestCase {
 
     JsonSlurper jsonSlurper = new JsonSlurper()
 
