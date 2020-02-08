@@ -1,4 +1,5 @@
-package com.baeldung.jcabi_aspectj;
+package com.baeldung.jcabi;
+
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
@@ -11,40 +12,42 @@ import com.jcabi.aspects.Loggable;
 import com.jcabi.aspects.Parallel;
 import com.jcabi.aspects.Quietly;
 import com.jcabi.aspects.RetryOnFailure;
+import com.jcabi.aspects.Timeable;
 import com.jcabi.aspects.UnitedThrow;
 
-//@Loggable
-public class Example {
+public class JcabiAspectJ {
 
     public static void main(String[] args) {
         try {
-            tryAsync();
-            asyncFactorial(10).get();
-            System.out.println("calling 2...");
-            System.out.println(called2());    
-            //called3();
-            called4();
-            System.out.println(called2());
-            System.out.println(called2());
-            called6();
-            //called7();
+            displayFactorial(10);
+            getFactorial(10).get();
             
+            Double number = cacheRandomNumber();
+            if (number != cacheRandomNumber()) {
+                System.out.println(number);
+            }
+            
+            divideByZero();
             
         } catch(Exception e) {
-
+            e.printStackTrace();
         }
-        called5();
-        called8();
+        
+        divideByZeroQuietly();
+        parallelExecution();
+        
     }
 
+    @Loggable
     @Async
-    public static void tryAsync() {
-        long result = factorial(10);
+    public static void displayFactorial(int number) {
+        long result = factorial(number);
         System.out.println(result);
     }
     
+    @Loggable
     @Async
-    public static Future<Long> asyncFactorial(int number) {
+    public static Future<Long> getFactorial(int number) {
         Future<Long> factorialFuture = CompletableFuture.supplyAsync(() -> factorial(number));
         return factorialFuture;
     }
@@ -62,42 +65,27 @@ public class Example {
         return result; 
     }
 
-    @Cacheable(lifetime = 5, unit = TimeUnit.SECONDS)
-    public static Double called2() {
+    @Loggable
+    @Cacheable(lifetime = 2, unit = TimeUnit.SECONDS)
+    public static Double cacheRandomNumber() {
         return Math.random();
     }
-
+    
+    @UnitedThrow(IllegalStateException.class)
     @LogExceptions
-    public static void called3() {
-        System.out.println(1/0);
-    }
-
-    @Loggable
-    public static void called4() {
-        System.out.println("checking loggable");
-    }
-
-    @Quietly
-    public static void called5() {
+    public static void divideByZero() {
         int x = 1/0;
     }
-
+    
+    @RetryOnFailure(attempts = 2, types = {java.lang.NumberFormatException.class})
+    @Quietly
+    public static void divideByZeroQuietly() {
+        int x = 1/0;
+    }
+    
     @Parallel(threads = 4)
-    public static void called6() {
-        System.out.println("called6");
-    }
-    
-    @RetryOnFailure
-    //@Quietly
-    public static void called7() {
-        System.out.println("called7...");
-        int y = 1/0;
-    }
-    
-    @UnitedThrow //(IllegalStateException.class)
-    public static void called8() {
-        System.out.println("called8...");
-        int y = 1/0;
+    public static void parallelExecution() {
+        System.out.println("Calling Parallel...");
     }
 
 }
