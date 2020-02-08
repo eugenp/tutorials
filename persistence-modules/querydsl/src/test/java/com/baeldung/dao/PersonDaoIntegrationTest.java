@@ -1,8 +1,8 @@
-package org.baeldung.dao;
+package com.baeldung.dao;
 
 import java.util.Map;
 
-import org.baeldung.entity.Person;
+import com.baeldung.entity.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

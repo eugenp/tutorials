@@ -1,7 +1,7 @@
 /*
  * (c) Центр ИТ, 2016. Все права защищены.
  */
-package org.baeldung.querydsl.intro.entities;
+package com.baeldung.querydsl.intro.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
