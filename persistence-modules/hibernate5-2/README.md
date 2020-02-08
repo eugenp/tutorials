@@ -7,4 +7,5 @@ This module contains articles about Hibernate 5.
 - [FetchMode in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-fetchmode)
 - [JPA/Hibernate Persistence Context](https://www.baeldung.com/jpa-hibernate-persistence-context)
 - [FetchMode in Hibernate](https://www.baeldung.com/hibernate-fetchmode)
+- [Various Logging Levels in Hibernate](https://www.baeldung.com/hibernate-logging-levels)
 - [[<-- Prev]](/hibernate5)
