@@ -1,6 +1,5 @@
-package com.baeldung.web.controller;
+package com.baeldung.cache;
 
-import com.baeldung.spring.web.config.WebConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,9 +14,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import static org.springframework.http.HttpHeaders.IF_UNMODIFIED_SINCE;
 

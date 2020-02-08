@@ -1,4 +1,4 @@
-package com.baeldung.web.controller;
+package com.baeldung.cache;
 
 import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
