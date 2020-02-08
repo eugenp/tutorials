@@ -5,9 +5,11 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -21,7 +23,8 @@ public class ZuulPostFilterLiveTest {
     @Test
     public void whenClientCallApi_thenLogAndReturnResponseBody() {
         String url = "http://localhost:" + port + SIMPLE_GREETING;
-        String response = restTemplate.getForEntity(url, String.class).getBody();
-        assertEquals(response, "Hi");
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+        assertTrue(response.getStatusCode().is2xxSuccessful());
+        assertEquals(response.getBody(), "Hi");
     }
 }
