@@ -1,4 +1,4 @@
-## Hexagonal Architecture with Spring (DDD)
+## Hexagonal Architecture with Spring 
 
 This module contains articles about Hexagonal Architecture with Spring
 
