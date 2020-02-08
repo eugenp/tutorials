@@ -14,8 +14,6 @@ import org.springframework.web.filter.ShallowEtagHeaderFilter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-// If we want to enable xml configurations for message-converter:
-// @ImportResource("classpath:WEB-INF/api-servlet.xml")
 public class WebConfig implements WebMvcConfigurer {
 
     // @Override
