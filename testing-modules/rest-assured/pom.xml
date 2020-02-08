@@ -148,16 +148,6 @@
             <version>${wiremock.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.fge</groupId>
-            <artifactId>json-schema-validator</artifactId>
-            <version>${github-json-schema-validator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.fge</groupId>
-            <artifactId>json-schema-core</artifactId>
-            <version>${json-schema-core.version}</version>
-        </dependency>
-        <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
             <version>${commons-collections.version}</version>
@@ -207,12 +197,6 @@
         <btf.version>1.2</btf.version>
         <groovy.version>2.4.7</groovy.version>
         <wiremock.version>2.4.1</wiremock.version>
-
-        <github-json-schema-validator.version>2.2.6</github-json-schema-validator.version>
-        <json-schema-core.version>1.2.5</json-schema-core.version>
-
-        <rest-assured.version>3.0.1</rest-assured.version>
-        <rest-assured-json-schema-validator.version>3.0.1</rest-assured-json-schema-validator.version>
 
         <scribejava.version>2.5.3</scribejava.version>
     </properties>

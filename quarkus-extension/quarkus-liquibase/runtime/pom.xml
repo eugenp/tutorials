@@ -50,7 +50,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
@@ -66,6 +66,8 @@
 
     <properties>
         <liquibase-core.version>3.8.1</liquibase-core.version>
+        <compiler.plugin.version>3.8.1</compiler.plugin.version>
+        <liquibase.version>3.8.1</liquibase.version>
     </properties>
 
 </project>
