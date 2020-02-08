@@ -1,9 +1,7 @@
-package org.baeldung.examples.r2dbc;
+package com.baeldung.examples.r2dbc;
 
 import java.math.BigDecimal;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import io.r2dbc.spi.Connection;
