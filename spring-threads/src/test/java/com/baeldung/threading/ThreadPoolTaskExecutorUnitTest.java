@@ -55,7 +55,7 @@ public class ThreadPoolTaskExecutorUnitTest {
     }
 
     @Test
-    public void whenCorePoolSizeFive_andMaxPoolSizeTen_thenFiveThreads() {
+    public void whenCorePoolSizeFiveAndMaxPoolSizeTen_thenFiveThreads() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5);
         taskExecutor.setMaxPoolSize(10);
@@ -79,7 +79,7 @@ public class ThreadPoolTaskExecutorUnitTest {
     }
 
     @Test
-    public void whenCorePoolSizeFive_andMaxPoolSizeTen_andQueueCapacityZero_thenTenThreads() {
+    public void whenCorePoolSizeFiveAndMaxPoolSizeTenAndQueueCapacityZero_thenTenThreads() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5);
         taskExecutor.setMaxPoolSize(10);
@@ -104,7 +104,7 @@ public class ThreadPoolTaskExecutorUnitTest {
     }
 
     @Test
-    public void whenCorePoolSizeFive_andMaxPoolSizeTen_andQueueCapacityTen_thenTenThreads() {
+    public void whenCorePoolSizeFiveAndMaxPoolSizeTenAndQueueCapacityTen_thenTenThreads() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5);
         taskExecutor.setMaxPoolSize(10);
