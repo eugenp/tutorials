@@ -1,16 +1,14 @@
-package org.baeldung.examples.r2dbc;
+package com.baeldung.examples.r2dbc;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.util.StringUtils;
 
 import io.netty.util.internal.StringUtil;
 import io.r2dbc.spi.ConnectionFactories;
 import io.r2dbc.spi.ConnectionFactory;
 import io.r2dbc.spi.ConnectionFactoryOptions;
 import io.r2dbc.spi.ConnectionFactoryOptions.Builder;
-import io.r2dbc.spi.Option;
 import reactor.core.publisher.Flux;
 
 import static io.r2dbc.spi.ConnectionFactoryOptions.*;
