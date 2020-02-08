@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.spring-boot-modules</groupId>
+    <artifactId>spring-boot-modules</artifactId>
+    <name>spring-boot-modules</name>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>spring-boot</module>
+        <module>spring-boot-admin</module>
+        <module>spring-boot-angular</module>
+        <module>spring-boot-artifacts</module>
+        <module>spring-boot-autoconfiguration</module>
+        <module>spring-boot-bootstrap</module>
+        <module>spring-boot-client</module>
+        <module>spring-boot-config-jpa-error</module>
+        <module>spring-boot-ctx-fluent</module>
+        <module>spring-boot-deployment</module>
+        <module>spring-boot-di</module>
+        <module>spring-boot-camel</module>
+        <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
+        <module>spring-boot-custom-starter</module>
+        <module>spring-boot-crud</module>
+        <module>spring-boot-data</module>
+        <module>spring-boot-environment</module>
+        <module>spring-boot-flowable</module>
+        <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
+        <module>spring-boot-jasypt</module>
+        <module>spring-boot-keycloak</module>
+        <module>spring-boot-libraries</module>
+        <module>spring-boot-logging-log4j2</module>
+        <module>spring-boot-kotlin</module>
+        <module>spring-boot-mvc</module>
+        <module>spring-boot-mvc-2</module>
+        <module>spring-boot-mvc-birt</module>
+        <module>spring-boot-nashorn</module>
+        <module>spring-boot-performance</module>
+        <module>spring-boot-properties</module>
+        <module>spring-boot-property-exp</module>
+        <module>spring-boot-runtime</module>
+        <module>spring-boot-springdoc</module>
+        <module>spring-boot-testing</module>
+        <module>spring-boot-vue</module>
+    </modules>
+
+</project>
