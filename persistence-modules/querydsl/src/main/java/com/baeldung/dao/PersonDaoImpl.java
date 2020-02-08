@@ -1,17 +1,15 @@
-package org.baeldung.dao;
+package com.baeldung.dao;
 
-import java.util.List;
-import java.util.Map;
+import com.baeldung.entity.Person;
+import com.baeldung.entity.QPerson;
+import com.querydsl.core.group.GroupBy;
+import com.querydsl.jpa.impl.JPAQuery;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import org.baeldung.entity.Person;
-import org.baeldung.entity.QPerson;
-import org.springframework.stereotype.Repository;
-
-import com.querydsl.core.group.GroupBy;
-import com.querydsl.jpa.impl.JPAQuery;
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public class PersonDaoImpl implements PersonDao {

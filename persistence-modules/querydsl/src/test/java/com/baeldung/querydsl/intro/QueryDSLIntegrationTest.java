@@ -1,17 +1,17 @@
 /*
  * (c) Центр ИТ, 2016. Все права защищены.
  */
-package org.baeldung.querydsl.intro;
+package com.baeldung.querydsl.intro;
 
+import com.baeldung.querydsl.intro.entities.BlogPost;
+import com.baeldung.querydsl.intro.entities.QBlogPost;
+import com.baeldung.querydsl.intro.entities.QUser;
+import com.baeldung.querydsl.intro.entities.User;
 import com.querydsl.core.Tuple;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import org.baeldung.querydsl.intro.entities.BlogPost;
-import org.baeldung.querydsl.intro.entities.QBlogPost;
-import org.baeldung.querydsl.intro.entities.QUser;
-import org.baeldung.querydsl.intro.entities.User;
 import org.junit.*;
 
 import javax.persistence.EntityManager;
@@ -31,7 +31,7 @@ public class QueryDSLIntegrationTest {
 
     @BeforeClass
     public static void populateDatabase() {
-        emf = Persistence.createEntityManagerFactory("org.baeldung.querydsl.intro");
+        emf = Persistence.createEntityManagerFactory("com.baeldung.querydsl.intro");
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
