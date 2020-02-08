@@ -12,7 +12,6 @@ import com.jcabi.aspects.Loggable;
 import com.jcabi.aspects.Parallel;
 import com.jcabi.aspects.Quietly;
 import com.jcabi.aspects.RetryOnFailure;
-import com.jcabi.aspects.Timeable;
 import com.jcabi.aspects.UnitedThrow;
 
 public class JcabiAspectJ {
@@ -28,14 +27,12 @@ public class JcabiAspectJ {
             }
             
             divideByZero();
-            
         } catch(Exception e) {
             e.printStackTrace();
         }
         
         divideByZeroQuietly();
-        parallelExecution();
-        
+        parallelExecution();  
     }
 
     @Loggable
