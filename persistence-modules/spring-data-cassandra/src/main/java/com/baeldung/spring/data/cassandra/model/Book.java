@@ -1,4 +1,4 @@
-package org.baeldung.spring.data.cassandra.model;
+package com.baeldung.spring.data.cassandra.model;
 
 import java.util.HashSet;
 import java.util.Set;
