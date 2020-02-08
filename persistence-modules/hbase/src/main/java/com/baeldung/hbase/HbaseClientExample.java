@@ -1,4 +1,4 @@
-package org.baeldung.hbase;
+package com.baeldung.hbase;
 
 
 import com.google.protobuf.ServiceException;
