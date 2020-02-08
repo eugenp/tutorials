@@ -1,4 +1,4 @@
-package org.baeldung.spring.data.cassandra.repository;
+package com.baeldung.spring.data.cassandra.repository;
 
 import static junit.framework.TestCase.assertNull;
 import static org.hamcrest.CoreMatchers.is;
@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.baeldung.spring.data.cassandra.config.CassandraConfig;
+import com.baeldung.spring.data.cassandra.model.Book;
 import org.apache.cassandra.exceptions.ConfigurationException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.thrift.transport.TTransportException;
-import org.baeldung.spring.data.cassandra.config.CassandraConfig;
-import org.baeldung.spring.data.cassandra.model.Book;
 import org.cassandraunit.utils.EmbeddedCassandraServerHelper;
 import org.junit.After;
 import org.junit.AfterClass;

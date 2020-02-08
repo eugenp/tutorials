@@ -1,12 +1,12 @@
-package org.baeldung;
+package com.baeldung;
 
 import java.io.IOException;
 import java.util.HashMap;
 
 import org.apache.cassandra.exceptions.ConfigurationException;
 import org.apache.thrift.transport.TTransportException;
-import org.baeldung.spring.data.cassandra.config.CassandraConfig;
-import org.baeldung.spring.data.cassandra.model.Book;
+import com.baeldung.spring.data.cassandra.config.CassandraConfig;
+import com.baeldung.spring.data.cassandra.model.Book;
 import org.cassandraunit.utils.EmbeddedCassandraServerHelper;
 import org.junit.After;
 import org.junit.AfterClass;
