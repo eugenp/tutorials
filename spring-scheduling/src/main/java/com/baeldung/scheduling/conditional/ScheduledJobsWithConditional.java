@@ -1,4 +1,4 @@
-package com.baeldung.scheduling;
+package com.baeldung.scheduling.conditional;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
