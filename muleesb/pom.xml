@@ -112,8 +112,6 @@
                 <configuration>
                     <muleVersion>${mule.version}</muleVersion>
                     <applications>/home/abir/AnypointStudio/workspace/variablescopetest</applications>
-                    <muleDistribution></muleDistribution>
-                    <muleHome></muleHome>
                 </configuration>
                 <executions>
                     <execution>
