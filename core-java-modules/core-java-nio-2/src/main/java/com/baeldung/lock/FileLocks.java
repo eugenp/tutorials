@@ -1,5 +1,8 @@
 package com.baeldung.lock;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,11 +17,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.common.base.Charsets;
-
 public class FileLocks {
 
     private static final Logger LOG = LoggerFactory.getLogger(FileLocks.class);
@@ -30,7 +28,9 @@ public class FileLocks {
      */
     static void getExclusiveLockFromInputStream() throws IOException {
         Path path = Files.createTempFile("foo", "txt");
-        try (FileInputStream fis = new FileInputStream(path.toFile()); FileLock lock = fis.getChannel().lock()) {
+        try (FileInputStream fis = new FileInputStream(path.toFile());
+            FileLock lock = fis.getChannel()
+                .lock()) {
             LOG.debug("This won't happen");
         } catch (NonWritableChannelException e) {
             LOG.error("The channel obtained through a FileInputStream isn't writable. You can't obtain an exclusive lock on it!");
@@ -47,7 +47,9 @@ public class FileLocks {
      */
     static FileLock getExclusiveLockFromRandomAccessFile(long from, long size) throws IOException {
         Path path = Files.createTempFile("foo", "txt");
-        try (RandomAccessFile file = new RandomAccessFile(path.toFile(), "rw"); FileLock lock = file.getChannel().lock(from, size, false)) {
+        try (RandomAccessFile file = new RandomAccessFile(path.toFile(), "rw");
+            FileLock lock = file.getChannel()
+                .lock(from, size, false)) {
             if (lock.isValid()) {
                 LOG.debug("This is a valid exclusive lock");
                 return lock;
@@ -70,14 +72,16 @@ public class FileLocks {
         Path path = Files.createTempFile("foo", "txt");
         try (FileChannel channel = FileChannel.open(path, StandardOpenOption.APPEND); FileLock lock = channel.lock(from, size, false)) {
             String text = "Hello, world.";
-            ByteBuffer buffer = ByteBuffer.allocate(text.length() + System.lineSeparator().length());
+            ByteBuffer buffer = ByteBuffer.allocate(text.length() + System.lineSeparator()
+                .length());
             buffer.put((text + System.lineSeparator()).getBytes(StandardCharsets.UTF_8));
             buffer.flip();
             while (buffer.hasRemaining()) {
                 channel.write(buffer, channel.size());
             }
             LOG.debug("This was written to the file");
-            Files.lines(path).forEach(LOG::debug);
+            Files.lines(path)
+                .forEach(LOG::debug);
             return lock;
         }
     }
@@ -89,7 +93,9 @@ public class FileLocks {
      */
     static void getReadLockFromOutputStream() throws IOException {
         Path path = Files.createTempFile("foo", "txt");
-        try (FileOutputStream fis = new FileOutputStream(path.toFile()); FileLock lock = fis.getChannel().lock(0, Long.MAX_VALUE, true)) {
+        try (FileOutputStream fis = new FileOutputStream(path.toFile());
+            FileLock lock = fis.getChannel()
+                .lock(0, Long.MAX_VALUE, true)) {
             LOG.debug("This won't happen");
         } catch (NonReadableChannelException e) {
             LOG.error("The channel obtained through a FileOutputStream isn't readable. " + "You can't obtain an shared lock on it!");
@@ -106,7 +112,9 @@ public class FileLocks {
      */
     static FileLock getReadLockFromInputStream(long from, long size) throws IOException {
         Path path = Files.createTempFile("foo", "txt");
-        try (FileInputStream fis = new FileInputStream(path.toFile()); FileLock lock = fis.getChannel().lock(from, size, true)) {
+        try (FileInputStream fis = new FileInputStream(path.toFile());
+            FileLock lock = fis.getChannel()
+                .lock(from, size, true)) {
             if (lock.isValid()) {
                 LOG.debug("This is a valid shared lock");
                 return lock;
@@ -125,7 +133,8 @@ public class FileLocks {
     static FileLock getReadLockFromRandomAccessFile(long from, long size) throws IOException {
         Path path = Files.createTempFile("foo", "txt");
         try (RandomAccessFile file = new RandomAccessFile(path.toFile(), "r"); // could also be "rw", but "r" is sufficient for reading
-            FileLock lock = file.getChannel().lock(from, size, true)) {
+            FileLock lock = file.getChannel()
+                .lock(from, size, true)) {
             if (lock.isValid()) {
                 LOG.debug("This is a valid shared lock");
                 return lock;
