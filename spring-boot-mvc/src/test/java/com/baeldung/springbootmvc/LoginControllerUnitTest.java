@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.baeldung.springbootmvc.config.CustomMessageSourceConfiguration;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(value = LoginController.class, secure = false)
+@WebMvcTest(value = LoginController.class)
 @ContextConfiguration(classes = { SpringBootMvcApplication.class, CustomMessageSourceConfiguration.class })
 public class LoginControllerUnitTest {
 

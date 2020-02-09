@@ -75,7 +75,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
-                            <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
+                            <mainClass>com.baeldung.executable.ExecutableMavenJar</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -94,7 +94,7 @@
                             <archiveBaseDirectory>${project.basedir}</archiveBaseDirectory>
                             <archive>
                                 <manifest>
-                                    <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
+                                    <mainClass>com.baeldung.executable.ExecutableMavenJar</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>
@@ -118,7 +118,7 @@
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
+                                    <mainClass>com.baeldung.executable.ExecutableMavenJar</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
@@ -133,7 +133,7 @@
                 <executions>
                     <execution>
                         <configuration>
-                            <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
+                            <mainClass>com.baeldung.executable.ExecutableMavenJar</mainClass>
                             <attachToBuild>true</attachToBuild>
                             <filename>${project.build.finalName}-onejar.${project.packaging}</filename>
                         </configuration>
@@ -155,7 +155,7 @@
                         </goals>
                         <configuration>
                             <classifier>spring-boot</classifier>
-                            <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
+                            <mainClass>com.baeldung.executable.ExecutableMavenJar</mainClass>
                         </configuration>
                     </execution>
                 </executions>
@@ -183,8 +183,8 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${source.version}</source>
+                    <target>${target.version}</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -373,6 +373,8 @@
         <maven-shade-plugin.version>3.1.1</maven-shade-plugin.version>
         <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+        <source.version>1.8</source.version>
+        <target.version>1.8</target.version>
     </properties>
 
 </project>

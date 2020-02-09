@@ -17,17 +17,17 @@
         <dependency>
             <groupId>com.baeldung.entitymodule</groupId>
             <artifactId>entitymodule</artifactId>
-            <version>1.0</version>
+            <version>${entitymodule.version}</version>
         </dependency>
         <dependency>
             <groupId>com.baeldung.daomodule</groupId>
             <artifactId>daomodule</artifactId>
-            <version>1.0</version>
+            <version>${daomodule.version}</version>
         </dependency>
         <dependency>
             <groupId>com.baeldung.userdaomodule</groupId>
             <artifactId>userdaomodule</artifactId>
-            <version>1.0</version>
+            <version>${userdaomodule.version}</version>
         </dependency>
     </dependencies>
 
@@ -43,6 +43,9 @@
     <properties>
         <maven.compiler.source>9</maven.compiler.source>
         <maven.compiler.target>9</maven.compiler.target>
+        <entitymodule.version>1.0</entitymodule.version>
+        <daomodule.version>1.0</daomodule.version>
+        <userdaomodule.version>1.0</userdaomodule.version>
     </properties>
 
 </project>

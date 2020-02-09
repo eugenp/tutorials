@@ -11,11 +11,16 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <modules>
         <module>spring-boot-admin-server</module>
         <module>spring-boot-admin-client</module>
     </modules>
+
+    <properties>
+        <spring-boot.version>2.1.9.RELEASE</spring-boot.version>
+    </properties>
 
 </project>

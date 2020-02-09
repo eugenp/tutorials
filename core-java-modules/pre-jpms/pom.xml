@@ -29,16 +29,16 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${source.version}</source>
+                    <target>${target.version}</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>${dependency.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>
@@ -69,5 +69,12 @@
             </plugin>
         </plugins>
     </build>
+	
+    <properties>
+        <dependency.plugin.version>3.1.1</dependency.plugin.version>
+        <compiler.plugin.version>3.8.0</compiler.plugin.version>
+        <source.version>1.8</source.version>
+        <target.version>1.8</target.version>
+    </properties>
 
 </project>
