@@ -18,6 +18,8 @@ public class App {
         final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.register(SpringConfig.class);
         context.register(SpringBatchConfig.class);
+        context.register(SpringBatchRetryConfig.class);
+
         context.refresh();
 
         // Spring xml config
