@@ -1,17 +1,14 @@
 package org.baeldung.batch;
 
-import org.apache.http.conn.ConnectTimeoutException;
 import org.baeldung.batch.model.Transaction;
 import org.baeldung.batch.service.CustomItemProcessor;
 import org.baeldung.batch.service.CustomSkipPolicy;
 import org.baeldung.batch.service.MissingUsernameException;
 import org.baeldung.batch.service.NegativeAmountException;
 import org.baeldung.batch.service.RecordFieldSetMapper;
-import org.baeldung.batch.service.RetryItemProcessor;
 import org.baeldung.batch.service.SkippingItemProcessor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.item.ItemProcessor;
@@ -26,15 +23,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
-import org.springframework.dao.DeadlockLoserDataAccessException;
 import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 import java.text.ParseException;
-@Configuration
-@EnableBatchProcessing
+
 public class SpringBatchConfig {
     @Autowired
     private JobBuilderFactory jobBuilderFactory;
@@ -73,11 +67,6 @@ public class SpringBatchConfig {
     @Bean
     public ItemProcessor<Transaction, Transaction> skippingItemProcessor() {
         return new SkippingItemProcessor();
-    }
-
-    @Bean
-    public ItemProcessor<Transaction, Transaction> retryItemProcessor() {
-        return new RetryItemProcessor();
     }
 
     @Bean
@@ -128,36 +117,12 @@ public class SpringBatchConfig {
                 .build();
     }
 
-    @Bean
-    public Step retryStep(@Qualifier("retryItemProcessor") ItemProcessor<Transaction, Transaction> processor,
-        ItemWriter<Transaction> writer) throws ParseException {
-        return stepBuilderFactory
-            .get("retryStep")
-            .<Transaction, Transaction>chunk(10)
-            .reader(itemReader(inputCsv))
-            .processor(processor)
-            .writer(writer)
-            .faultTolerant()
-            .retryLimit(3)
-            .retry(ConnectTimeoutException.class)
-            .retry(DeadlockLoserDataAccessException.class)
-            .build();
-    }
-
     @Bean(name = "skippingBatchJob")
     public Job skippingJob(@Qualifier("skippingStep") Step skippingStep) {
         return jobBuilderFactory
                 .get("skippingBatchJob")
                 .start(skippingStep)
                 .build();
-    }
-
-    @Bean(name = "retryBatchJob")
-    public Job retryJob(@Qualifier("retryStep") Step retryStep) {
-        return jobBuilderFactory
-            .get("retryBatchJob")
-            .start(retryStep)
-            .build();
     }
 
     @Bean
