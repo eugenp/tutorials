@@ -1,10 +1,10 @@
 package com.baeldung.accessparamsjs;
 
-import java.util.Map;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Map;
 
 /**
  * Sample rest controller for the tutorial article 
