@@ -108,19 +108,15 @@
             <plugin>
                 <groupId>org.mule.tools</groupId>
                 <artifactId>muleesb-maven-plugin</artifactId>
-                <version>${muleesb-maven-plugin.version}</version>
                 <configuration>
-                    <muleVersion>${mule.version}</muleVersion>
-                    <applications>/home/abir/AnypointStudio/workspace/variablescopetest</applications>
+                    <muleDistribution>
+                        <groupId>com.mulesoft.muleesb.distributions</groupId>
+                        <artifactId>mule-ee-distribution-standalone</artifactId>
+                        <version>${mule.version}</version>
+                        <type>tar.gz</type>
+                    </muleDistribution>
+                    <clusterSize>2</clusterSize>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>deploy</id>
-                        <goals>
-                            <goal>start</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
