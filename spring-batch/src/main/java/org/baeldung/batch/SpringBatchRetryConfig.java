@@ -38,7 +38,7 @@ public class SpringBatchRetryConfig {
     @Autowired
     private StepBuilderFactory stepBuilderFactory;
 
-    @Value("input/record.csv")
+    @Value("input/recordRetry.csv")
     private Resource inputCsv;
 
     @Value("file:xml/retryOutput.xml")

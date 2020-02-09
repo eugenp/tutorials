@@ -92,7 +92,10 @@ public class SpringBatchRetryIntegrationTest {
 
         //fails for first two calls and passes third time onwards
         when(httpResponse.getEntity()).thenReturn(new StringEntity("{ \"age\":10, \"postCode\":\"430222\" }"));
-        when(httpClient.execute(any())).thenThrow(new ConnectTimeoutException("Timeout count 1")).thenThrow(new ConnectTimeoutException("Timeout count 2")).thenReturn(httpResponse);
+        when(httpClient.execute(any()))
+            .thenThrow(new ConnectTimeoutException("Timeout count 1"))
+            .thenThrow(new ConnectTimeoutException("Timeout count 2"))
+            .thenReturn(httpResponse);
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(defaultJobParameters());
         JobInstance actualJobInstance = jobExecution.getJobInstance();
