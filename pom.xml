@@ -638,6 +638,7 @@
 
                 <module>spring-batch</module>
                 <module>spring-bom</module>
+                <module>spring-boot-modules</module>
                 <module>spring-boot-parent</module>
                 <module>spring-boot-rest</module>
                 <module>spring-boot-security</module>
@@ -1140,6 +1141,7 @@
 
                 <module>spring-batch</module>
                 <module>spring-bom</module>
+                <module>spring-boot-modules</module>
                 <module>spring-boot-parent</module>
                 <module>spring-boot-rest</module>
                 <module>spring-boot-security</module>
