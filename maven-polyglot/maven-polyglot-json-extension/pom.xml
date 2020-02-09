@@ -34,7 +34,7 @@
             <plugin>
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-component-metadata</artifactId>
-                <version>1.7.1</version>
+                <version>${plexus.component.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -48,6 +48,7 @@
 
     <properties>
         <maven-core.version>3.5.4</maven-core.version>
+        <plexus.component.version>1.7.1</plexus.component.version>
     </properties>
 
 </project>

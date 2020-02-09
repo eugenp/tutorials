@@ -12,9 +12,6 @@ import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 @SpringBootApplication
-@EnableJpaRepositories("com.baeldung.repository")
-@ComponentScan("com.baeldung")
-@EntityScan("com.baeldung.entity")
 public class App extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
@@ -31,19 +28,16 @@ public class App extends SpringBootServletInitializer {
 
         @Override
         protected Class<?>[] getRootConfigClasses() {
-            // TODO Auto-generated method stub
             return null;
         }
 
         @Override
         protected Class<?>[] getServletConfigClasses() {
-            // TODO Auto-generated method stub
             return null;
         }
 
         @Override
         protected String[] getServletMappings() {
-            // TODO Auto-generated method stub
             return null;
         }
     }
