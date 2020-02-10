@@ -4,6 +4,15 @@ import static java.time.temporal.ChronoUnit.SECONDS;
 import static org.junit.Assert.assertEquals;
 import static play.mvc.Http.Status.SERVICE_UNAVAILABLE;
 
+import akka.Done;
+import akka.actor.ActorSystem;
+import akka.stream.ActorMaterializer;
+import akka.stream.javadsl.Sink;
+import akka.util.ByteString;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.Duration;
 import java.util.OptionalInt;
 import java.util.concurrent.CompletionStage;
@@ -94,7 +103,7 @@ public class HomeControllerTest extends WithServer {
           "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
         latch.await();
         assertEquals(1, completedReqs.get());
-        log.debug("All requests have1 been completed. Exiting test.");
+        log.debug("All requests have been completed. Exiting test.");
     }
 
     @Test
@@ -185,9 +194,48 @@ public class HomeControllerTest extends WithServer {
                 return result;
             }
         });
-        res.thenAccept(result -> {
-            assertEquals(TimeoutException.class, result);
-        });
+        res.thenAccept(result -> assertEquals(TimeoutException.class, result));
+
+        log.debug(
+          "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
+        latch.await();
+        assertEquals(1, completedReqs.get());
+        log.debug("All requests have been completed. Exiting test.");
+    }
+
+    @Test
+    public void givenMultigigabyteResponseConsumeWithStreams() throws Exception {
+        AtomicInteger completedReqs = new AtomicInteger(0);
+        CountDownLatch latch = new CountDownLatch(1);
+        final ActorSystem system = ActorSystem.create();
+        final ActorMaterializer materializer = ActorMaterializer.create(system);
+        final Path path = Files.createTempFile("tmp_", ".out");
+
+        WSClient ws = play.test.WSTestClient.newClient(port);
+        log.info("Starting test server on url: " + url);
+        ws.url(url)
+          .stream()
+          .thenAccept(
+            response -> {
+                try {
+                    OutputStream outputStream = java.nio.file.Files.newOutputStream(path);
+                    Sink<ByteString, CompletionStage<Done>> outputWriter =
+                      Sink.foreach(bytes -> {
+                          log.info("Reponse: " + bytes.utf8String());
+                          outputStream.write(bytes.toArray());
+                      });
+
+                    response.getBodyAsSource()
+                            .runWith(outputWriter, materializer);
+
+                } catch (IOException e) {
+                    log.error("An error happened while opening the output stream", e);
+                }
+            })
+          .whenComplete((value, error) -> {
+              completedReqs.incrementAndGet();
+              latch.countDown();
+          });
 
         log.debug(
           "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
