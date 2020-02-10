@@ -15,4 +15,5 @@ This module contains articles about Java syntax
 - [Breaking Out of Nested Loops](https://www.baeldung.com/java-breaking-out-nested-loop)
 - [Java Do-While Loop](https://www.baeldung.com/java-do-while-loop)
 - [Java While Loop](https://www.baeldung.com/java-while-loop)
+- [Java For Loop](https://www.baeldung.com/java-for-loop)
 - [[More -->]](/core-java-modules/core-java-lang-syntax-2)
