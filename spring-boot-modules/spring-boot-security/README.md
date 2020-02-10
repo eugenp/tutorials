@@ -7,6 +7,7 @@ This module contains articles about Spring Boot Security
 - [Spring Boot Security Auto-Configuration](https://www.baeldung.com/spring-boot-security-autoconfiguration)
 - [Spring Security for Spring Boot Integration Tests](https://www.baeldung.com/spring-security-integration-tests)
 - [Introduction to Spring Security Taglibs](https://www.baeldung.com/spring-security-taglibs)
+- [Guide to @CurrentSecurityContext in Spring Security](https://www.baeldung.com/spring-currentsecuritycontext)
 
 ### Spring Boot Security Auto-Configuration
 
