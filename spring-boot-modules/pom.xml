@@ -46,7 +46,6 @@
         <module>spring-boot-properties</module>
         <module>spring-boot-property-exp</module>
         <module>spring-boot-runtime</module>
-        <module>spring-boot-security</module>
         <module>spring-boot-springdoc</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-vue</module>
