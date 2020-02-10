@@ -19,4 +19,5 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [Kruskal’s Algorithm for Spanning Trees](https://www.baeldung.com/java-spanning-trees-kruskal)
 - [Balanced Brackets Algorithm in Java](https://www.baeldung.com/java-balanced-brackets-algorithm)
 - [Efficiently Merge Sorted Java Sequences](https://www.baeldung.com/java-merge-sorted-sequences)
+- [Introduction to Greedy Algorithms with Java](https://www.baeldung.com/java-greedy-algorithms)
 - More articles: [[<-- prev]](/../algorithms-miscellaneous-4)
