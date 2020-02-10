@@ -12,5 +12,4 @@ This module contains articles about Java syntax
 - [Variable Scope in Java](https://www.baeldung.com/java-variable-scope)
 - [Introduction to Basic Syntax in Java](https://www.baeldung.com/java-syntax)
 - [Java ‘protected’ Access Modifier](https://www.baeldung.com/java-protected-access-modifier)
-- [Using the Not Operator in If Conditions in Java](https://www.baeldung.com/java-using-not-in-if-conditions)
 - [[<-- Prev]](/core-java-modules/core-java-lang-syntax)
