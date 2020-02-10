@@ -9,3 +9,4 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 
 ### Relevant Articles:
 - [Parsing Command-Line Parameters with JCommander](https://www.baeldung.com/jcommander-parsing-command-line-parameters)
+- [Guide to the Cactoos Library](https://www.baeldung.com/java-cactoos)
