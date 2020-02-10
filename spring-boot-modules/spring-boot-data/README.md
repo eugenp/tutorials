@@ -9,3 +9,4 @@ This module contains articles about Spring Boot with Spring Data
 - [Disable Spring Data Auto Configuration](https://www.baeldung.com/spring-data-disable-auto-config)
 - [Repositories with Multiple Spring Data Modules](https://www.baeldung.com/spring-multiple-data-modules)
 - [Spring Custom Property Editor](https://www.baeldung.com/spring-mvc-custom-property-editor)
+- [Using @JsonComponent in Spring Boot](https://www.baeldung.com/spring-boot-jsoncomponent)
