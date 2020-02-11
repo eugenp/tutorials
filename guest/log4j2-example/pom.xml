@@ -41,7 +41,7 @@
     </build>
 
     <properties>
-        <jackson.version>2.9.7</jackson.version>
+        <jackson.version>2.10.0</jackson.version>
         <log4j-core.version>2.8.2</log4j-core.version>
     </properties>
 
