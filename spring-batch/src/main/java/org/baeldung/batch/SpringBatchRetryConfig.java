@@ -1,6 +1,9 @@
 package org.baeldung.batch;
 
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.conn.ConnectTimeoutException;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.baeldung.batch.model.Transaction;
 import org.baeldung.batch.service.RecordFieldSetMapper;
 import org.baeldung.batch.service.RetryItemProcessor;
@@ -12,7 +15,6 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
-import org.springframework.batch.item.UnexpectedInputException;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
@@ -35,6 +37,8 @@ public class SpringBatchRetryConfig {
     
     private static final String[] tokens = { "username", "userid", "transactiondate", "amount" };
 
+    private static final int TWO_SECONDS = 2000;
+
     @Autowired
     private JobBuilderFactory jobBuilderFactory;
 
@@ -47,7 +51,7 @@ public class SpringBatchRetryConfig {
     @Value("file:xml/retryOutput.xml")
     private Resource outputXml;
 
-    public ItemReader<Transaction> itemReader(Resource inputData) throws Exception {
+    public ItemReader<Transaction> itemReader(Resource inputData) throws ParseException {
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
         tokenizer.setNames(tokens);
         DefaultLineMapper<Transaction> lineMapper = new DefaultLineMapper<>();
@@ -58,6 +62,12 @@ public class SpringBatchRetryConfig {
         reader.setLinesToSkip(1);
         reader.setLineMapper(lineMapper);
         return reader;
+    }
+
+    @Bean
+    public CloseableHttpClient closeableHttpClient() {
+        final RequestConfig config = RequestConfig.custom().setConnectTimeout(TWO_SECONDS).build();
+        return HttpClientBuilder.create().setDefaultRequestConfig(config).build();
     }
 
     @Bean
