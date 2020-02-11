@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
+import org.apache.http.HttpStatus;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -62,7 +63,7 @@ public class HomeControllerTest extends WithServer {
 
     @Test
     public void givenASingleGetRequestWhenResponseThenBlockWithCompletableAndLog()
-      throws InterruptedException, ExecutionException {
+      throws Exception {
         WSClient ws = play.test.WSTestClient.newClient(port);
         WSResponse wsResponse = ws.url(url)
                                   .setRequestFilter(new AhcCurlRequestLogger())
@@ -77,13 +78,12 @@ public class HomeControllerTest extends WithServer {
           + wsResponse.getStatus()
           + " | Response: " + wsResponse.getBody() + " | Current Time:"
           + System.currentTimeMillis());
+        assert (HttpStatus.SC_OK == wsResponse.getStatus());
     }
 
     @Test
     public void givenASingleGetRequestWhenResponseThenLog() throws Exception {
-        AtomicInteger completedReqs = new AtomicInteger(0);
         CountDownLatch latch = new CountDownLatch(1);
-
         WSClient ws = play.test.WSTestClient.newClient(port);
         ws.url(url)
           .setRequestFilter(new AhcCurlRequestLogger())
@@ -96,21 +96,18 @@ public class HomeControllerTest extends WithServer {
                 + r.getStatus()
                 + " | Response: " + r.getBody() + " | Current Time:" + System.currentTimeMillis());
               latch.countDown();
-              completedReqs.incrementAndGet();
           });
 
         log.debug(
           "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
-        latch.await();
-        assertEquals(1, completedReqs.get());
+        latch.await(5, TimeUnit.SECONDS );
+        assertEquals(0, latch.getCount());
         log.debug("All requests have been completed. Exiting test.");
     }
 
     @Test
     public void givenASinglePostRequestWhenResponseThenLog() throws Exception {
-        AtomicInteger completedReqs = new AtomicInteger(0);
         CountDownLatch latch = new CountDownLatch(1);
-
         WSClient ws = play.test.WSTestClient.newClient(port);
         ws.url(url)
           .setContentType("application/x-www-form-urlencoded")
@@ -121,21 +118,18 @@ public class HomeControllerTest extends WithServer {
                 + r.getStatus()
                 + " | Response: " + r.getBody() + " | Current Time:" + System.currentTimeMillis());
               latch.countDown();
-              completedReqs.incrementAndGet();
           });
 
         log.debug(
           "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
-        latch.await();
-        assertEquals(1, completedReqs.get());
+        latch.await(5, TimeUnit.SECONDS );
+        assertEquals(0, latch.getCount());
         log.debug("All requests have been completed. Exiting test.");
     }
 
     @Test
     public void givenMultipleRequestsWhenResponseThenLog() throws Exception {
-        AtomicInteger completedReqs = new AtomicInteger(0);
         CountDownLatch latch = new CountDownLatch(100);
-
         WSClient ws = play.test.WSTestClient.newClient(port);
         IntStream.range(0, 100)
                  .parallel()
@@ -151,22 +145,19 @@ public class HomeControllerTest extends WithServer {
                              + " | Response: " + r.getBody() + " | Current Time:"
                              + System.currentTimeMillis());
                          latch.countDown();
-                         completedReqs.incrementAndGet();
                      })
                  );
 
         log.debug(
           "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
-        latch.await();
-        assertEquals(100, completedReqs.get());
+        latch.await(5, TimeUnit.SECONDS );
+        assertEquals(0, latch.getCount());
         log.debug("All requests have been completed. Exiting test.");
     }
 
     @Test
     public void givenLongResponseWhenTimeoutThenHandle() throws Exception {
-        AtomicInteger completedReqs = new AtomicInteger(0);
         CountDownLatch latch = new CountDownLatch(1);
-
         WSClient ws = play.test.WSTestClient.newClient(port);
         Futures futures = app.injector()
                              .instanceOf(Futures.class);
@@ -187,7 +178,6 @@ public class HomeControllerTest extends WithServer {
         CompletionStage<Object> res = f.handleAsync((result, e) -> {
             if (e != null) {
                 log.error("Exception thrown", e);
-                completedReqs.incrementAndGet();
                 latch.countDown();
                 return e.getCause();
             } else {
@@ -198,14 +188,13 @@ public class HomeControllerTest extends WithServer {
 
         log.debug(
           "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
-        latch.await();
-        assertEquals(1, completedReqs.get());
+        latch.await(5, TimeUnit.SECONDS );
+        assertEquals(0, latch.getCount());
         log.debug("All requests have been completed. Exiting test.");
     }
 
     @Test
     public void givenMultigigabyteResponseConsumeWithStreams() throws Exception {
-        AtomicInteger completedReqs = new AtomicInteger(0);
         CountDownLatch latch = new CountDownLatch(1);
         final ActorSystem system = ActorSystem.create();
         final ActorMaterializer materializer = ActorMaterializer.create(system);
@@ -232,15 +221,12 @@ public class HomeControllerTest extends WithServer {
                     log.error("An error happened while opening the output stream", e);
                 }
             })
-          .whenComplete((value, error) -> {
-              completedReqs.incrementAndGet();
-              latch.countDown();
-          });
+          .whenComplete((value, error) -> latch.countDown());
 
         log.debug(
           "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
-        latch.await();
-        assertEquals(1, completedReqs.get());
+        latch.await(5, TimeUnit.SECONDS );
+        assertEquals(0, latch.getCount());
         log.debug("All requests have been completed. Exiting test.");
     }
 }

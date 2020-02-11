@@ -3,6 +3,7 @@ package controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
+import java.util.Collections;
 import java.util.Map;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -29,7 +30,7 @@ public class HomeController extends Controller {
         Map<String, Object> map = ImmutableMap.of(
           "Result", "ok",
           "GetParams", request.queryString(),
-          "PostParams", stringMap == null ? "null" : stringMap,
+          "PostParams", stringMap == null ? Collections.emptyMap() : stringMap,
           "Headers", request.getHeaders().toMap()
         );
         return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(map);
