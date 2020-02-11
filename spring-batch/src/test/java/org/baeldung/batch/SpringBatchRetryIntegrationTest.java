@@ -47,7 +47,7 @@ public class SpringBatchRetryIntegrationTest {
     private CloseableHttpResponse httpResponse;
 
     @Test
-    public void whenEndpointAlwaysFailing_thenJobFails() throws Exception {
+    public void whenEndpointAlwaysFail_thenJobFails() throws Exception {
         when(closeableHttpClient.execute(any()))
           .thenThrow(new ConnectTimeoutException("Endpoint is down"));
 
@@ -61,7 +61,7 @@ public class SpringBatchRetryIntegrationTest {
     }
 
     @Test
-    public void whenEndpointFailsTwiceAndPassesThirdTime_thenSuccess() throws Exception {
+    public void whenEndpointFailsTwicePasses3rdTime_thenSuccess() throws Exception {
         FileSystemResource expectedResult = new FileSystemResource(EXPECTED_OUTPUT);
         FileSystemResource actualResult = new FileSystemResource(TEST_OUTPUT);
 
