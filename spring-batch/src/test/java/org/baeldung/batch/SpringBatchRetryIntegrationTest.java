@@ -6,6 +6,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobInstance;
@@ -42,7 +43,7 @@ public class SpringBatchRetryIntegrationTest {
     @MockBean
     private CloseableHttpClient closeableHttpClient;
 
-    @MockBean
+    @Mock
     private CloseableHttpResponse httpResponse;
 
     @Test
