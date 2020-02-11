@@ -47,7 +47,7 @@ public class SpringBatchRetryConfig {
     @Value("file:xml/retryOutput.xml")
     private Resource outputXml;
 
-    public ItemReader<Transaction> itemReader(Resource inputData) throws UnexpectedInputException, ParseException {
+    public ItemReader<Transaction> itemReader(Resource inputData) throws Exception {
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
         tokenizer.setNames(tokens);
         DefaultLineMapper<Transaction> lineMapper = new DefaultLineMapper<>();
