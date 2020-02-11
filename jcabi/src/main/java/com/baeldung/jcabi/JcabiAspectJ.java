@@ -1,6 +1,14 @@
 package com.baeldung.jcabi;
 
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -9,7 +17,6 @@ import com.jcabi.aspects.Async;
 import com.jcabi.aspects.Cacheable;
 import com.jcabi.aspects.LogExceptions;
 import com.jcabi.aspects.Loggable;
-import com.jcabi.aspects.Parallel;
 import com.jcabi.aspects.Quietly;
 import com.jcabi.aspects.RetryOnFailure;
 import com.jcabi.aspects.UnitedThrow;
@@ -20,19 +27,24 @@ public class JcabiAspectJ {
         try {
             displayFactorial(10);
             getFactorial(10).get();
-            
-            Double number = cacheRandomNumber();
-            if (number != cacheRandomNumber()) {
-                System.out.println(number);
+
+            String result = cacheExchangeRates();
+            if (result != cacheExchangeRates()) {
+                System.out.println(result);
             }
-            
+
             divideByZero();
         } catch(Exception e) {
             e.printStackTrace();
         }
-        
+
         divideByZeroQuietly();
-        parallelExecution();  
+        try {
+            processFile();  
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Loggable
@@ -41,14 +53,14 @@ public class JcabiAspectJ {
         long result = factorial(number);
         System.out.println(result);
     }
-    
+
     @Loggable
     @Async
     public static Future<Long> getFactorial(int number) {
         Future<Long> factorialFuture = CompletableFuture.supplyAsync(() -> factorial(number));
         return factorialFuture;
     }
-    
+
     /**
      * Finds factorial of a number
      * @param number
@@ -64,25 +76,37 @@ public class JcabiAspectJ {
 
     @Loggable
     @Cacheable(lifetime = 2, unit = TimeUnit.SECONDS)
-    public static Double cacheRandomNumber() {
-        return Math.random();
+    public static String cacheExchangeRates() {
+        String result = null;
+        try {
+            URL exchangeRateUrl = new URL("https://api.exchangeratesapi.io/latest");
+            URLConnection con = exchangeRateUrl.openConnection();
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            result = in.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
-    
-    @UnitedThrow(IllegalStateException.class)
+
     @LogExceptions
     public static void divideByZero() {
         int x = 1/0;
     }
-    
+
     @RetryOnFailure(attempts = 2, types = {java.lang.NumberFormatException.class})
     @Quietly
     public static void divideByZeroQuietly() {
         int x = 1/0;
     }
-    
-    @Parallel(threads = 4)
-    public static void parallelExecution() {
-        System.out.println("Calling Parallel...");
+
+    @UnitedThrow(IllegalStateException.class)
+    public static void processFile() throws IOException, InterruptedException {
+        BufferedReader reader = new BufferedReader(new FileReader("baeldung.txt"));
+        reader.readLine();
+        
+        Thread thread = new Thread();
+        thread.wait(2000);
     }
 
 }
