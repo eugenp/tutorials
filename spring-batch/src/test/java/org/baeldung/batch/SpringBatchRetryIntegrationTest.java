@@ -66,12 +66,6 @@ public class SpringBatchRetryIntegrationTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    private JobParameters defaultJobParameters() {
-        JobParametersBuilder paramsBuilder = new JobParametersBuilder();
-        paramsBuilder.addString("jobID", String.valueOf(System.currentTimeMillis()));
-        return paramsBuilder.toJobParameters();
-    }
-
     @Test
     public void whenEndpointAlwaysFailing_thenJobFails() throws Exception {
         when(httpClient.execute(any())).thenThrow(new ConnectTimeoutException("Endpoint is down"));
@@ -104,5 +98,11 @@ public class SpringBatchRetryIntegrationTest {
         assertThat(actualJobInstance.getJobName(), is("retryBatchJob"));
         assertThat(actualJobExitStatus.getExitCode(), is("COMPLETED"));
         AssertFile.assertFileEquals(expectedResult, actualResult);
+    }
+    
+    private JobParameters defaultJobParameters() {
+        JobParametersBuilder paramsBuilder = new JobParametersBuilder();
+        paramsBuilder.addString("jobID", String.valueOf(System.currentTimeMillis()));
+        return paramsBuilder.toJobParameters();
     }
 }
