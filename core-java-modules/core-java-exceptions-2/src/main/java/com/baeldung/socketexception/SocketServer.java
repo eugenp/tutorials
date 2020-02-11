@@ -28,7 +28,7 @@ public class SocketServer {
             close();
             stop();
         } catch (IOException e) {
-
+            
         }
     }
 
