@@ -16,6 +16,7 @@ bin/
 .prefs
 *.prefs
 .metadata/
+.sts4-cache
 
 # Intellij
 .idea/
@@ -92,3 +93,4 @@ apache-fop/src/test/resources/output_html2fo.pdf
 apache-fop/src/test/resources/output_jtidy.pdf
 
 launch.bat
+lombok.jar
