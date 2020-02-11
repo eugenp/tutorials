@@ -32,6 +32,9 @@ import java.text.ParseException;
 @Configuration
 @EnableBatchProcessing
 public class SpringBatchRetryConfig {
+    
+    private static final String[] tokens = { "username", "userid", "transactiondate", "amount" };
+
     @Autowired
     private JobBuilderFactory jobBuilderFactory;
 
@@ -45,14 +48,13 @@ public class SpringBatchRetryConfig {
     private Resource outputXml;
 
     public ItemReader<Transaction> itemReader(Resource inputData) throws UnexpectedInputException, ParseException {
-        FlatFileItemReader<Transaction> reader = new FlatFileItemReader<>();
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
-        String[] tokens = { "username", "userid", "transactiondate", "amount" };
         tokenizer.setNames(tokens);
-        reader.setResource(inputData);
         DefaultLineMapper<Transaction> lineMapper = new DefaultLineMapper<>();
         lineMapper.setLineTokenizer(tokenizer);
         lineMapper.setFieldSetMapper(new RecordFieldSetMapper());
+        FlatFileItemReader<Transaction> reader = new FlatFileItemReader<>();
+        reader.setResource(inputData);
         reader.setLinesToSkip(1);
         reader.setLineMapper(lineMapper);
         return reader;
@@ -80,23 +82,25 @@ public class SpringBatchRetryConfig {
     }
 
     @Bean
-    public Step retryStep(
-        @Qualifier("retryItemProcessor")
-            ItemProcessor<Transaction, Transaction> processor, ItemWriter<Transaction> writer) throws ParseException {
-        return stepBuilderFactory.get("retryStep").<Transaction, Transaction>chunk(10).reader(itemReader(inputCsv))
-            .processor(processor)
-            .writer(writer)
-            .faultTolerant()
-            .retryLimit(3)
-            .retry(ConnectTimeoutException.class)
-            .retry(DeadlockLoserDataAccessException.class)
-            .build();
+    public Step retryStep(@Qualifier("retryItemProcessor") ItemProcessor<Transaction, Transaction> processor
+      , ItemWriter<Transaction> writer) throws ParseException {
+        return stepBuilderFactory.get("retryStep")
+          .<Transaction, Transaction>chunk(10)
+          .reader(itemReader(inputCsv))
+          .processor(processor)
+          .writer(writer)
+          .faultTolerant()
+          .retryLimit(3)
+          .retry(ConnectTimeoutException.class)
+          .retry(DeadlockLoserDataAccessException.class)
+          .build();
     }
 
     @Bean(name = "retryBatchJob")
-    public Job retryJob(
-        @Qualifier("retryStep")
-            Step retryStep) {
-        return jobBuilderFactory.get("retryBatchJob").start(retryStep).build();
+    public Job retryJob(@Qualifier("retryStep") Step retryStep) {
+        return jobBuilderFactory
+          .get("retryBatchJob")
+          .start(retryStep)
+          .build();
     }
 }
