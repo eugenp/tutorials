@@ -1,4 +1,4 @@
-package org.baeldung.boot.jsoncomponent;
+package com.baeldung.boot.jsoncomponent;
 
 import javafx.scene.paint.Color;
 
