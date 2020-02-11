@@ -24,19 +24,19 @@
         </repository>
         <repository>
             <id>kotlin-eap</id>
-            <url>http://dl.bintray.com/kotlin/kotlin-eap</url>
+            <url>https://dl.bintray.com/kotlin/kotlin-eap</url>
         </repository>
         <repository>
             <id>spring-milestone</id>
             <name>Spring Milestone Repository</name>
-            <url>http://repo.spring.io/milestone</url>
+            <url>https://repo.spring.io/milestone</url>
         </repository>
     </repositories>
 
     <pluginRepositories>
         <pluginRepository>
             <id>kotlin-eap</id>
-            <url>http://dl.bintray.com/kotlin/kotlin-eap</url>
+            <url>https://dl.bintray.com/kotlin/kotlin-eap</url>
         </pluginRepository>
     </pluginRepositories>
 

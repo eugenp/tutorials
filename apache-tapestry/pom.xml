@@ -128,7 +128,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
     <repositories>
         <repository>
             <id>jboss</id>
-            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
         </repository>
 
         <!-- This repository is only needed when the Tapestry version is a preview release, rather

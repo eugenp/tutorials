@@ -495,7 +495,7 @@
         <repository>
             <id>bintray-mvc-spec-maven</id>
             <name>bintray</name>
-            <url>http://dl.bintray.com/mvc-spec/maven</url>
+            <url>https://dl.bintray.com/mvc-spec/maven</url>
             <releases>
                 <enabled>true</enabled>
             </releases>

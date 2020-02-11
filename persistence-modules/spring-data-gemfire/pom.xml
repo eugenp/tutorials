@@ -53,7 +53,7 @@
     <repositories>
         <repository>
             <id>gemstone</id>
-            <url>http://dist.gemstone.com.s3.amazonaws.com/maven/release/</url>
+            <url>https://dist.gemstone.com.s3.amazonaws.com/maven/release/</url>
         </repository>
     </repositories>
 

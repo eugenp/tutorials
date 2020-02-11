@@ -134,7 +134,7 @@
         <repository>
             <id>nm-repo</id>
             <name>Numerical Method's Maven Repository</name>
-            <url>http://repo.numericalmethod.com/maven/</url>
+            <url>https://repo.numericalmethod.com/maven/</url>
             <layout>default</layout>
         </repository>
     </repositories>

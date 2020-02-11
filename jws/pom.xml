@@ -17,7 +17,7 @@
     <repositories>
         <repository>
             <id>OpenNMS Repository</id>
-            <url>http://repo.opennms.org/maven2/</url>
+            <url>https://repo.opennms.org/maven2/</url>
         </repository>
     </repositories>
 

@@ -72,7 +72,7 @@
         <repository>
             <id>geodb-repo</id>
             <name>GeoDB repository</name>
-            <url>http://repo.boundlessgeo.com/main/</url>
+            <url>https://repo.boundlessgeo.com/main/</url>
         </repository>
     </repositories>
 
