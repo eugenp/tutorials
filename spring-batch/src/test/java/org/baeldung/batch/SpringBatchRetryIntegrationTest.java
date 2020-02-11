@@ -52,13 +52,12 @@ public class SpringBatchRetryIntegrationTest {
     private JobLauncherTestUtils jobLauncherTestUtils;
 
     @Mock
-    private CloseableHttpClient httpClient;
+    private CloseableHttpClient closeableHttpClient;
 
     @Mock
     private CloseableHttpResponse httpResponse;
 
     @InjectMocks
-    @Autowired
     private RetryItemProcessor retryItemProcessor;
 
     @Before
@@ -68,7 +67,7 @@ public class SpringBatchRetryIntegrationTest {
 
     @Test
     public void whenEndpointAlwaysFailing_thenJobFails() throws Exception {
-        when(httpClient.execute(any())).thenThrow(new ConnectTimeoutException("Endpoint is down"));
+        when(closeableHttpClient.execute(any())).thenThrow(new ConnectTimeoutException("Endpoint is down"));
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(defaultJobParameters());
         JobInstance actualJobInstance = jobExecution.getJobInstance();
@@ -86,7 +85,7 @@ public class SpringBatchRetryIntegrationTest {
 
         //fails for first two calls and passes third time onwards
         when(httpResponse.getEntity()).thenReturn(new StringEntity("{ \"age\":10, \"postCode\":\"430222\" }"));
-        when(httpClient.execute(any()))
+        when(closeableHttpClient.execute(any()))
             .thenThrow(new ConnectTimeoutException("Timeout count 1"))
             .thenThrow(new ConnectTimeoutException("Timeout count 2"))
             .thenReturn(httpResponse);
