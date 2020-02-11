@@ -1,9 +1,9 @@
-package org.baeldung.boot.jsoncomponent;
+package com.baeldung.boot.jsoncomponent;
 
+import com.baeldung.boot.jsoncomponent.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.scene.paint.Color;
 
-import org.baeldung.boot.jsoncomponent.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
