@@ -36,7 +36,6 @@ import java.text.ParseException;
 public class SpringBatchRetryConfig {
     
     private static final String[] tokens = { "username", "userid", "transactiondate", "amount" };
-
     private static final int TWO_SECONDS = 2000;
 
     @Autowired
@@ -66,7 +65,9 @@ public class SpringBatchRetryConfig {
 
     @Bean
     public CloseableHttpClient closeableHttpClient() {
-        final RequestConfig config = RequestConfig.custom().setConnectTimeout(TWO_SECONDS).build();
+        final RequestConfig config = RequestConfig.custom()
+          .setConnectTimeout(TWO_SECONDS)
+          .build();
         return HttpClientBuilder.create().setDefaultRequestConfig(config).build();
     }
 
@@ -92,8 +93,8 @@ public class SpringBatchRetryConfig {
     }
 
     @Bean
-    public Step retryStep(@Qualifier("retryItemProcessor") ItemProcessor<Transaction, Transaction> processor
-      , ItemWriter<Transaction> writer) throws ParseException {
+    public Step retryStep(@Qualifier("retryItemProcessor") ItemProcessor<Transaction, Transaction> processor,
+      ItemWriter<Transaction> writer) throws ParseException {
         return stepBuilderFactory.get("retryStep")
           .<Transaction, Transaction>chunk(10)
           .reader(itemReader(inputCsv))
