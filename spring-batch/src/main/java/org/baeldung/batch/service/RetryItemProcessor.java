@@ -18,18 +18,19 @@ import java.io.IOException;
 public class RetryItemProcessor implements ItemProcessor<Transaction, Transaction> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RetryItemProcessor.class);
-
+    
+    private static final int TWO_SECONDS = 2000;
+    
     private CloseableHttpClient client;
 
     public RetryItemProcessor() {
-        final RequestConfig config = RequestConfig.custom().setConnectTimeout(2 * 1000).build();
+        final RequestConfig config = RequestConfig.custom().setConnectTimeout(TWO_SECONDS).build();
         client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
     }
 
     @Override
     public Transaction process(Transaction transaction) throws IOException, JSONException {
         LOGGER.info("Attempting to process user with id={}", transaction.getUserId());
-        System.out.println("Attempting to process user with id=" + transaction.getUserId());
         HttpResponse response = fetchMoreUserDetails(transaction.getUserId());
 
         //parse user's age and postCode from response and update transaction
