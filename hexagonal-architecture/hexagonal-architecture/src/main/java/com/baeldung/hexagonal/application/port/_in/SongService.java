@@ -1,4 +1,4 @@
-package com.baeldung.hexagonal.application.port.in;
+package com.baeldung.hexagonal.application.port._in;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.baeldung.hexagonal.application.domain.Song;
-import com.baeldung.hexagonal.application.port.out.SongPersistencePort;
+import com.baeldung.hexagonal.application.port._out.SongPersistencePort;
 
 @Service
 public class SongService implements SongUseCase {

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.hexagonal.application.domain.Song;
-import com.baeldung.hexagonal.application.port.in.SongUseCase;
+import com.baeldung.hexagonal.application.port._in.SongUseCase;
 
 import lombok.RequiredArgsConstructor;
 

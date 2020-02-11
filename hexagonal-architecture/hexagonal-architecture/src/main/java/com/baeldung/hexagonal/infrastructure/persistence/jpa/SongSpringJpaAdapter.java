@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.baeldung.hexagonal.application.domain.Song;
-import com.baeldung.hexagonal.application.port.out.SongPersistencePort;
+import com.baeldung.hexagonal.application.port._out.SongPersistencePort;
 
 import lombok.RequiredArgsConstructor;
 

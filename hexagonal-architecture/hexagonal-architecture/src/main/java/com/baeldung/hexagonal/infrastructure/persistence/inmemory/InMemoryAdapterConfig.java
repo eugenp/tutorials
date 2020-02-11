@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import com.baeldung.hexagonal.application.port.out.SongPersistencePort;
+import com.baeldung.hexagonal.application.port._out.SongPersistencePort;
 
 @Configuration
 //@Profile("in-memory")

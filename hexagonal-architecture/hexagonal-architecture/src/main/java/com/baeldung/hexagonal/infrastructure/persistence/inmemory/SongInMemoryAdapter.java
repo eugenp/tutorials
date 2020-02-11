@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.baeldung.hexagonal.application.domain.Song;
-import com.baeldung.hexagonal.application.port.out.SongPersistencePort;
+import com.baeldung.hexagonal.application.port._out.SongPersistencePort;
 
 //@Component
 //@Profile("in-memory")

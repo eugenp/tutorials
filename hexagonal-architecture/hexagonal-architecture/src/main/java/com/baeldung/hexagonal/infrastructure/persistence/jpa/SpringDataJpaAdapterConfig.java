@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.baeldung.hexagonal.application.port.out.SongPersistencePort;
+import com.baeldung.hexagonal.application.port._out.SongPersistencePort;
 
 @Configuration
 @EnableJpaRepositories

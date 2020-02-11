@@ -1,4 +1,4 @@
-package com.baeldung.hexagonal.application.port.in;
+package com.baeldung.hexagonal.application.port._in;
 
 import java.util.List;
 
