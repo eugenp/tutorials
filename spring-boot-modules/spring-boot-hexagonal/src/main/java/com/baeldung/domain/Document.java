@@ -1,4 +1,4 @@
-package com.ajay.documentservice.domain;
+package com.baeldung.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

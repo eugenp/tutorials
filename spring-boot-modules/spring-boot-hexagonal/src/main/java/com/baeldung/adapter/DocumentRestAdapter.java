@@ -1,4 +1,4 @@
-package com.ajay.documentservice.adapter;
+package com.baeldung.adapter;
 
 import com.ajay.documentservice.domain.Document;
 import com.ajay.documentservice.port.DocumentService;
