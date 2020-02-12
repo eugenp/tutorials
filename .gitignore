@@ -65,6 +65,7 @@ core-java-io/target_link.txt
 core-java/src/main/java/com/baeldung/manifest/MANIFEST.MF
 ethereum/logs/
 jmeter/src/main/resources/*-JMeter.csv
+ninja/devDb.mv.db
 
 **/node_modules/
 **/dist
