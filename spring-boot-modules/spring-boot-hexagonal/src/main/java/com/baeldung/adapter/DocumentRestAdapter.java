@@ -1,9 +1,11 @@
 package com.baeldung.adapter;
 
-import com.ajay.documentservice.domain.Document;
-import com.ajay.documentservice.port.DocumentService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.baeldung.domain.Document;
+import com.baeldung.port.DocumentService;
 
 @RestController
 @RequestMapping("/doc")

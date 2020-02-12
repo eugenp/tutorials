@@ -1,10 +1,11 @@
 package com.baeldung.port.impl;
 
-import com.ajay.documentservice.domain.Document;
-import com.ajay.documentservice.port.DocumentRepo;
-import com.ajay.documentservice.port.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.baeldung.domain.Document;
+import com.baeldung.port.DocumentRepo;
+import com.baeldung.port.DocumentService;
 
 @Service
 public class DocumentServiceImpl implements DocumentService {

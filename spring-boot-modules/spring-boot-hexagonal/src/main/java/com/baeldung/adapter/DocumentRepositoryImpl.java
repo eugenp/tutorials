@@ -1,8 +1,9 @@
 package com.baeldung.adapter;
 
-import com.ajay.documentservice.domain.Document;
-import com.ajay.documentservice.port.DocumentRepo;
 import org.springframework.stereotype.Repository;
+
+import com.baeldung.domain.Document;
+import com.baeldung.port.DocumentRepo;
 
 import java.util.HashMap;
 import java.util.Map;
