@@ -18,16 +18,19 @@ import static java.lang.String.format;
 
 public class EventFileRepository implements EventRepository {
 
-    private static final String FILE_PATH = "/tmp/events";
     private static final String SEPARATOR = ":";
     private static final String EVENT_FILE_FORMAT = "%s:%s";
 
-    private final File eventsFile = new File(FILE_PATH);
+    private String filePath;
+
+    public EventFileRepository(String filePath) {
+        this.filePath = filePath;
+    }
 
     @Override
     public void saveEvent(Event event) {
         try (PrintWriter printWriter
-            = new PrintWriter(new FileOutputStream(eventsFile, true))) {
+            = new PrintWriter(new FileOutputStream(new File(this.filePath), true))) {
             printWriter.println(format(EVENT_FILE_FORMAT, event.getId(), event.getName()));
         } catch (FileNotFoundException e) {
             throw new IllegalStateException("Could not save events");
@@ -37,7 +40,7 @@ public class EventFileRepository implements EventRepository {
     @Override
     public List<Event> getAllEvents() {
         List<Event> events = new ArrayList<>();
-        try (Stream<String> lines = Files.lines(Paths.get(FILE_PATH))) {
+        try (Stream<String> lines = Files.lines(Paths.get(this.filePath))) {
             events = lines.map(line -> {
                 String[] eventData = line.split(SEPARATOR);
                 return new Event(Long.parseLong(eventData[0]), eventData[1]);

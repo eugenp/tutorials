@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MockEventRepository implements EventRepository {
 
-    private final List<Event> events = new ArrayList<>();
+    private List<Event> events = new ArrayList<>();
 
     @Override
     public void saveEvent(Event event) {

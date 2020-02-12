@@ -27,6 +27,7 @@ public class EventServiceUnitTest {
     public void givenEventService_whenEventIsSaved_thenSuccess() {
         Event event = new Event(1, "Meeting");
         eventService.save(event);
+
         assertThat(eventService.getAllEvents().size()).isEqualTo(1);
     }
 }
