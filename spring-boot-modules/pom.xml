@@ -49,6 +49,7 @@
         <module>spring-boot-springdoc</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-vue</module>
+        <module>spring-boot-hexagonal</module> <!-- Need to find a better place for this -->
     </modules>
 
 </project>
