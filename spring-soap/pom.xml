@@ -3,20 +3,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-soap</artifactId>
-    <name>spring-soap</name>
     <version>1.0.0</version>
+    <name>spring-soap</name>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
-
-    <properties>
-        <java.version>1.8</java.version>
-        <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
-    </properties>
 
     <dependencies>
         <!-- tag::springws[] -->
@@ -65,5 +60,9 @@
             <!-- end::xsd[] -->
         </plugins>
     </build>
+
+    <properties>
+        <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
+    </properties>
 
 </project>

@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.spring.cloud</groupId>
     <artifactId>spring-cloud-eureka</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>spring-cloud-eureka</name>
-    <description>Spring Cloud Eureka Server and Sample Clients</description>
     <packaging>pom</packaging>
-
-    <modules>
-        <module>spring-cloud-eureka-server</module>
-        <module>spring-cloud-eureka-client</module>
-        <module>spring-cloud-eureka-feign-client</module>
-    </modules>
+    <description>Spring Cloud Eureka Server and Sample Clients</description>
 
     <parent>
         <groupId>com.baeldung.spring.cloud</groupId>
@@ -21,7 +14,13 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
-    
+
+    <modules>
+        <module>spring-cloud-eureka-server</module>
+        <module>spring-cloud-eureka-client</module>
+        <module>spring-cloud-eureka-feign-client</module>
+    </modules>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -32,8 +31,8 @@
     </dependencies>
 
     <properties>
-        <spring-boot.version>2.0.1.RELEASE</spring-boot.version>
-        <spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
+        <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
+        <spring-cloud-dependencies.version>Greenwich.RELEASE</spring-cloud-dependencies.version>
     </properties>
 
 </project>

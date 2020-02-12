@@ -29,6 +29,6 @@ public class CourseService {
     }
 
     public static void copyProperties(Course course, CourseEntity courseEntity) throws IllegalAccessException, InvocationTargetException {
-        BeanUtils.copyProperties(course, courseEntity);
+        BeanUtils.copyProperties(courseEntity, course);
     }
 }

@@ -92,7 +92,7 @@ class JpaOrder {
     }
 
     void removeLineItem(int line) {
-        JpaOrderLine removedLine = orderLines.remove(line);
+        orderLines.remove(line);
     }
 
     void setCurrencyUnit(String currencyUnit) {

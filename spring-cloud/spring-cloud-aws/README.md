@@ -5,10 +5,11 @@
 - [Spring Cloud AWS – EC2](https://www.baeldung.com/spring-cloud-aws-ec2)
 - [Spring Cloud AWS – RDS](https://www.baeldung.com/spring-cloud-aws-rds)
 - [Spring Cloud AWS – Messaging Support](https://www.baeldung.com/spring-cloud-aws-messaging)
+- [Instance Profile Credentials using Spring Cloud](http://www.baeldung.com/spring-cloud-instance-profiles)
 
 #### Running the Integration Tests
 
-To run the Integration Tests, we need to have an AWS account and have API keys generated for programmatic access. Edit 
+To run the Live Tests, we need to have an AWS account and have API keys generated for programmatic access. Edit 
 the `application.properties` file to add the following properties:
 
 ```

@@ -17,4 +17,7 @@ listener "tcp" {
   tls_key_file = "./src/test/vault-config/localhost.key"
 }
 
+// Audit to stdout
+
+
 

@@ -8,8 +8,8 @@
     <description>Flyway Callbacks Demo</description>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-1</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-1</relativePath>
     </parent>
@@ -65,7 +65,6 @@
     <properties>
         <flyway-core.version>5.0.2</flyway-core.version>
         <flyway-maven-plugin.version>5.0.2</flyway-maven-plugin.version>
-        <h2.version>1.4.195</h2.version>
     </properties>
 
 </project>

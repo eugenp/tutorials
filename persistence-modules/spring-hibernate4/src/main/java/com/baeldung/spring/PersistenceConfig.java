@@ -47,7 +47,7 @@ import com.google.common.base.Preconditions;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = { "com.baeldung.persistence" }, transactionManagerRef = "jpaTransactionManager")
 @EnableJpaAuditing
-@PropertySource({ "classpath:persistence-mysql.properties" })
+@PropertySource({ "classpath:persistence-h2.properties" })
 @ComponentScan({ "com.baeldung.persistence" })
 public class PersistenceConfig {
 

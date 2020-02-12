@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>remoting-jms-server</artifactId>
-	<name>remoting-jms-server</name>
-	
+    <name>remoting-jms-server</name>
+
     <parent>
-        <artifactId>remoting-jms</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>remoting-jms</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 

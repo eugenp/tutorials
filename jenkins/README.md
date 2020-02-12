@@ -1,3 +1,3 @@
-## Relevant articles:
+## Jenkins
 
-- [Writing a Jenkins Plugin](http://www.baeldung.com/jenkins-custom-plugin)
+This is an aggregator modules for Jenkins-related modules.

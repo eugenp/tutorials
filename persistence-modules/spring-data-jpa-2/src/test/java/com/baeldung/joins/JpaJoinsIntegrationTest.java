@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.baeldung.joins.model.Department;
 import com.baeldung.joins.model.Phone;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -79,11 +80,11 @@ public class JpaJoinsIntegrationTest {
 
     @Test
     public void whenCollectionValuedAssociationIsJoined_ThenCanSelect() {
-        TypedQuery<Phone> query = entityManager.createQuery("SELECT ph FROM Employee e JOIN e.phones ph ", Phone.class);
+        TypedQuery<Phone> query = entityManager.createQuery("SELECT ph FROM Employee e JOIN e.phones ph WHERE ph LIKE '1%'", Phone.class);
 
         List<Phone> resultList = query.getResultList();
 
-        assertThat(resultList).hasSize(3);
+        assertThat(resultList).hasSize(1);
     }
 
     @Test
@@ -122,9 +123,20 @@ public class JpaJoinsIntegrationTest {
     @Test
     public void whenLeftAndFetchKeywordsAreSpecified_ThenCreatesOuterFetchJoin() {
         TypedQuery<Department> query = entityManager.createQuery("SELECT d FROM Department d LEFT JOIN FETCH d.employees", Department.class);
+
         List<Department> resultList = query.getResultList();
+
         assertThat(resultList).hasSize(4);
         assertThat(resultList).extracting("name")
             .containsOnly("Infra", "Accounting", "Accounting", "Management");
+    }
+
+    @Test
+    public void whenCollectionValuedAssociationIsSpecifiedInSelect_ThenReturnsCollections() {
+        TypedQuery<Collection> query = entityManager.createQuery("SELECT e.phones FROM Employee e", Collection.class);
+
+        List<Collection> resultList = query.getResultList();
+
+        assertThat(resultList).extracting("number").containsOnly("111", "222", "333");
     }
 }

@@ -23,7 +23,10 @@
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
-            <version>${spring-security-oauth2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
         </dependency>
 
         <dependency>
@@ -33,9 +36,23 @@
         </dependency>
 
         <dependency>
+            <groupId>com.google.crypto.tink</groupId>
+            <artifactId>tink</artifactId>
+            <version>${tink.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>${bouncycastle.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk15on</artifactId>
+            <version>${bouncycastle.version}</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -48,13 +65,20 @@
             <artifactId>cryptacular</artifactId>
             <version>${cryptacular.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jasypt</groupId>
+            <artifactId>jasypt</artifactId>
+            <version>${jasypt.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
         <scribejava.version>5.6.0</scribejava.version>
-		<spring-security-oauth2.version>2.3.3.RELEASE</spring-security-oauth2.version>
-		<passay.version>1.3.1</passay.version>
-		<cryptacular.version>1.2.2</cryptacular.version>
+        <passay.version>1.3.1</passay.version>
+        <tink.version>1.2.2</tink.version>
+        <cryptacular.version>1.2.2</cryptacular.version>
+        <jasypt.version>1.9.2</jasypt.version>
+        <bouncycastle.version>1.58</bouncycastle.version>
     </properties>
+
 </project>

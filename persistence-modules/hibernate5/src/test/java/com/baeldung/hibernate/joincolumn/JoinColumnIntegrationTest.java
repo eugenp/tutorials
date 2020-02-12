@@ -32,7 +32,7 @@ public class JoinColumnIntegrationTest {
     public void givenOfficeEntity_setAddress_shouldPersist() {
         Office office = new Office();
 
-        Address address = new Address();
+        OfficeAddress address = new OfficeAddress();
         address.setZipCode("11-111");
         office.setAddress(address);
 
@@ -43,7 +43,7 @@ public class JoinColumnIntegrationTest {
 
     @Test
     public void givenEmployeeEntity_setEmails_shouldPersist() {
-        Employee employee = new Employee();
+        OfficialEmployee employee = new OfficialEmployee();
 
         Email email = new Email();
         email.setAddress("example@email.com");

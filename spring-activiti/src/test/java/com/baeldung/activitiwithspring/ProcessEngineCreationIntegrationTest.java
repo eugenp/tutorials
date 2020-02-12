@@ -4,7 +4,7 @@ import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngineConfiguration;
 import org.activiti.engine.ProcessEngines;
 import org.junit.Test;
-
+import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -61,5 +61,10 @@ public class ProcessEngineCreationIntegrationTest {
           .buildProcessEngine();
         assertNotNull(processEngine);
         assertEquals("sa", processEngine.getProcessEngineConfiguration().getJdbcUsername());
+    }
+    
+    @After
+    public void cleanup() {
+        ProcessEngines.destroy();
     }
 }

@@ -1,17 +1,23 @@
 package com.baeldung.hibernate.optimisticlocking;
 
-import com.baeldung.hibernate.HibernateUtil;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import java.io.IOException;
+import java.util.Arrays;
 
 import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 import javax.persistence.OptimisticLockException;
-import java.io.IOException;
-import java.util.Arrays;
+
+import org.hibernate.SessionFactory;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.baeldung.hibernate.HibernateUtil;
 
 public class OptimisticLockingIntegrationTest {
+    
+    private static SessionFactory sessionFactory;
 
     @Before
     public void setUp() throws IOException {
@@ -124,11 +130,17 @@ public class OptimisticLockingIntegrationTest {
 
     protected static EntityManager getEntityManagerWithOpenTransaction() throws IOException {
         String propertyFileName = "hibernate-pessimistic-locking.properties";
-        EntityManager entityManager = HibernateUtil.getSessionFactory(propertyFileName)
-            .openSession();
-        entityManager.getTransaction()
-            .begin();
+        if (sessionFactory == null) {
+            sessionFactory = HibernateUtil.getSessionFactory(propertyFileName);
+        }
+        EntityManager entityManager = sessionFactory.openSession();
+        entityManager.getTransaction().begin();
 
         return entityManager;
+    }
+    
+    @AfterClass
+    public static void afterTests() {
+        sessionFactory.close();
     }
 }

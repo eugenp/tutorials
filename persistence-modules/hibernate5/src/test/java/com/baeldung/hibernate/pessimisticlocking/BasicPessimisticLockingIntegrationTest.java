@@ -2,6 +2,9 @@ package com.baeldung.hibernate.pessimisticlocking;
 
 import com.baeldung.hibernate.HibernateUtil;
 import com.vividsolutions.jts.util.Assert;
+
+import org.hibernate.SessionFactory;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -10,6 +13,8 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class BasicPessimisticLockingIntegrationTest {
+    
+    private static SessionFactory sessionFactory;
 
     @BeforeClass
     public static void setUp() throws IOException {
@@ -140,12 +145,18 @@ public class BasicPessimisticLockingIntegrationTest {
 
     protected static EntityManager getEntityManagerWithOpenTransaction() throws IOException {
         String propertyFileName = "hibernate-pessimistic-locking.properties";
-        EntityManager entityManager = HibernateUtil.getSessionFactory(propertyFileName)
-            .openSession();
-        entityManager.getTransaction()
-            .begin();
+        if (sessionFactory == null) {
+            sessionFactory = HibernateUtil.getSessionFactory(propertyFileName);
+        }
+        EntityManager entityManager = sessionFactory.openSession();
+        entityManager.getTransaction().begin();
 
         return entityManager;
+    }
+    
+    @AfterClass
+    public static void afterTests() {
+        sessionFactory.close();
     }
 
 }

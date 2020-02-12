@@ -1,20 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.gateway</groupId>
-    <artifactId>gateway-app</artifactId>
-    <name>gateway-app</name>
-    <packaging>war</packaging>
 
     <parent>
         <artifactId>jhipster-microservice</artifactId>
         <groupId>com.baeldung.jhipster</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+    <groupId>com.gateway</groupId>
+    <artifactId>gateway-app</artifactId>
+    <packaging>war</packaging>
+    <name>gateway-app</name>
 
     <prerequisites>
         <maven>${maven.version}</maven>
     </prerequisites>
+
+    <properties>
+        <argLine>-Djava.security.egd=file:/dev/./urandom -Xmx256m</argLine>
+        <assertj.version>3.6.2</assertj.version>
+        <awaitility.version>2.0.0</awaitility.version>
+        <cassandra-driver.version>3.6.0</cassandra-driver.version>
+        <commons-codec.version>1.10</commons-codec.version>
+        <commons-io.version>2.5</commons-io.version>
+        <commons-lang.version>3.5</commons-lang.version>
+        <docker-maven-plugin.version>0.4.13</docker-maven-plugin.version>
+        <frontend-maven-plugin.version>1.3</frontend-maven-plugin.version>
+        <hazelcast-hibernate52.version>1.2</hazelcast-hibernate52.version>
+        <hibernate.version>5.2.8.Final</hibernate.version>
+        <hikaricp.version>2.6.0</hikaricp.version>
+        <jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
+        <javassist.version>3.21.0-GA</javassist.version>
+        <jcache.version>1.0.0</jcache.version>
+        <jhipster.server.version>1.1.0</jhipster.server.version>
+        <jjwt.version>0.7.0</jjwt.version>
+        <liquibase-hibernate5.version>3.6</liquibase-hibernate5.version>
+        <liquibase-slf4j.version>2.0.0</liquibase-slf4j.version>
+        <liquibase.version>3.6.2</liquibase.version>
+        <logstash-logback-encoder.version>4.8</logstash-logback-encoder.version>
+        <lz4.version>1.3.0</lz4.version>
+        <m2e.apt.activation>jdt_apt</m2e.apt.activation>
+        <mapstruct.version>1.1.0.Final</mapstruct.version>
+        <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
+        <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
+        <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+        <maven.version>3.0.0</maven.version>
+        <metrics-spring.version>3.1.3</metrics-spring.version>
+        <node.version>v6.10.0</node.version>
+        <!-- These remain empty unless the corresponding profile is active -->
+        <profile.no-liquibase />
+        <profile.swagger />
+        <!-- Sonar properties -->
+        <project.testresult.directory>${project.build.directory}/test-results</project.testresult.directory>
+        <prometheus-simpleclient.version>0.0.20</prometheus-simpleclient.version>
+        <run.addResources>false</run.addResources>
+        <scala-maven-plugin.version>3.2.2</scala-maven-plugin.version>
+        <scala.version>2.12.1</scala.version>
+        <sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>
+
+        <sonar.exclusions>src/main/webapp/content/**/*.*, src/main/webapp/bower_components/**/*.*, src/main/webapp/i18n/*.js, target/www/**/*.*</sonar.exclusions>
+
+        <sonar.issue.ignore.multicriteria>S3437,UndocumentedApi,BoldAndItalicTagsCheck</sonar.issue.ignore.multicriteria>
+
+        <!-- Rule https://sonarqube.com/coding_rules#rule_key=Web%3ABoldAndItalicTagsCheck is ignored. Even if we agree that using the "i" tag is an awful practice, this is what is 
+            recommended by http://fontawesome.io/examples/ -->
+        <sonar.issue.ignore.multicriteria.BoldAndItalicTagsCheck.resourceKey>src/main/webapp/app/**/*.*</sonar.issue.ignore.multicriteria.BoldAndItalicTagsCheck.resourceKey>
+        <sonar.issue.ignore.multicriteria.BoldAndItalicTagsCheck.ruleKey>Web:BoldAndItalicTagsCheck</sonar.issue.ignore.multicriteria.BoldAndItalicTagsCheck.ruleKey>
+        <!-- Rule https://sonarqube.com/coding_rules#rule_key=squid%3AS3437 is ignored, as a JPA-managed field cannot be transient -->
+        <sonar.issue.ignore.multicriteria.S3437.resourceKey>src/main/java/**/*</sonar.issue.ignore.multicriteria.S3437.resourceKey>
+        <sonar.issue.ignore.multicriteria.S3437.ruleKey>squid:S3437</sonar.issue.ignore.multicriteria.S3437.ruleKey>
+        <!-- Rule http://sonarqube.com/coding_rules#rule_key=squid%3AUndocumentedApi is ignored, as we want to follow "clean code" guidelines and classes, methods and arguments names 
+            should be self-explanatory -->
+        <sonar.issue.ignore.multicriteria.UndocumentedApi.resourceKey>src/main/java/**/*</sonar.issue.ignore.multicriteria.UndocumentedApi.resourceKey>
+        <sonar.issue.ignore.multicriteria.UndocumentedApi.ruleKey>squid:UndocumentedApi</sonar.issue.ignore.multicriteria.UndocumentedApi.ruleKey>
+
+        <sonar.jacoco.itReportPath>${project.testresult.directory}/coverage/jacoco/jacoco-it.exec</sonar.jacoco.itReportPath>
+        <sonar.jacoco.reportPath>${project.testresult.directory}/coverage/jacoco/jacoco.exec</sonar.jacoco.reportPath>
+        <sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
+
+        <sonar.javascript.jstestdriver.reportsPath>${project.testresult.directory}/karma</sonar.javascript.jstestdriver.reportsPath>
+        <!-- For Sonar < 6.2 -->
+        <sonar.javascript.lcov.reportPath>${project.testresult.directory}/coverage/report-lcov/lcov.info</sonar.javascript.lcov.reportPath>
+        <!-- For Sonar >= 6.2 -->
+        <sonar.javascript.lcov.reportPaths>${project.testresult.directory}/coverage/report-lcov/lcov.info</sonar.javascript.lcov.reportPaths>
+
+        <sonar.sources>${project.basedir}/src/main/</sonar.sources>
+        <sonar.surefire.reportsPath>${project.testresult.directory}/surefire-reports</sonar.surefire.reportsPath>
+        <sonar.tests>${project.basedir}/src/test/</sonar.tests>
+
+        <sortpom-maven-plugin.version>2.5.0</sortpom-maven-plugin.version>
+        <!-- Spring properties -->
+        <spring-cloud.version>Camden.SR5</spring-cloud.version>
+        <springfox.version>2.6.1</springfox.version>
+        <undertow.version>1.4.10.Final</undertow.version>
+        <validation-api.version>1.1.0.Final</validation-api.version>
+        <yarn.version>v0.21.3</yarn.version>
+        <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
+    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -387,7 +470,7 @@
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
+                    <version>${lifecycle.mapping.version}</version>
                     <configuration>
                         <lifecycleMappingMetadata>
                             <pluginExecutions>
@@ -925,87 +1008,5 @@
             </dependencies>
         </profile>
     </profiles>
-	
-    <properties>
-        <argLine>-Djava.security.egd=file:/dev/./urandom -Xmx256m</argLine>
-        <assertj.version>3.6.2</assertj.version>
-        <awaitility.version>2.0.0</awaitility.version>
-        <cassandra-driver.version>3.6.0</cassandra-driver.version>
-        <commons-codec.version>1.10</commons-codec.version>
-        <commons-io.version>2.5</commons-io.version>
-        <commons-lang.version>3.5</commons-lang.version>
-        <docker-maven-plugin.version>0.4.13</docker-maven-plugin.version>
-        <frontend-maven-plugin.version>1.3</frontend-maven-plugin.version>
-        <hazelcast-hibernate52.version>1.2</hazelcast-hibernate52.version>
-        <hibernate.version>5.2.8.Final</hibernate.version>
-        <hikaricp.version>2.6.0</hikaricp.version>
-        <jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
-        <javassist.version>3.21.0-GA</javassist.version>
-        <jcache.version>1.0.0</jcache.version>
-        <jhipster.server.version>1.1.0</jhipster.server.version>
-        <jjwt.version>0.7.0</jjwt.version>
-        <liquibase-hibernate5.version>3.6</liquibase-hibernate5.version>
-        <liquibase-slf4j.version>2.0.0</liquibase-slf4j.version>
-        <liquibase.version>3.6.2</liquibase.version>
-        <logstash-logback-encoder.version>4.8</logstash-logback-encoder.version>
-        <lz4.version>1.3.0</lz4.version>
-        <m2e.apt.activation>jdt_apt</m2e.apt.activation>
-        <mapstruct.version>1.1.0.Final</mapstruct.version>
-        <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
-        <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
-        <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
-        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
-        <maven.version>3.0.0</maven.version>
-        <metrics-spring.version>3.1.3</metrics-spring.version>
-        <node.version>v6.10.0</node.version>
-        <!-- These remain empty unless the corresponding profile is active -->
-        <profile.no-liquibase />
-        <profile.swagger />
-        <!-- Sonar properties -->
-        <project.testresult.directory>${project.build.directory}/test-results</project.testresult.directory>
-        <prometheus-simpleclient.version>0.0.20</prometheus-simpleclient.version>
-        <run.addResources>false</run.addResources>
-        <scala-maven-plugin.version>3.2.2</scala-maven-plugin.version>
-        <scala.version>2.12.1</scala.version>
-        <sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>
-
-        <sonar.exclusions>src/main/webapp/content/**/*.*, src/main/webapp/bower_components/**/*.*, src/main/webapp/i18n/*.js, target/www/**/*.*</sonar.exclusions>
-
-        <sonar.issue.ignore.multicriteria>S3437,UndocumentedApi,BoldAndItalicTagsCheck</sonar.issue.ignore.multicriteria>
-
-        <!-- Rule https://sonarqube.com/coding_rules#rule_key=Web%3ABoldAndItalicTagsCheck is ignored. Even if we agree that using the "i" tag is an awful practice, this is what is 
-            recommended by http://fontawesome.io/examples/ -->
-        <sonar.issue.ignore.multicriteria.BoldAndItalicTagsCheck.resourceKey>src/main/webapp/app/**/*.*</sonar.issue.ignore.multicriteria.BoldAndItalicTagsCheck.resourceKey>
-        <sonar.issue.ignore.multicriteria.BoldAndItalicTagsCheck.ruleKey>Web:BoldAndItalicTagsCheck</sonar.issue.ignore.multicriteria.BoldAndItalicTagsCheck.ruleKey>
-        <!-- Rule https://sonarqube.com/coding_rules#rule_key=squid%3AS3437 is ignored, as a JPA-managed field cannot be transient -->
-        <sonar.issue.ignore.multicriteria.S3437.resourceKey>src/main/java/**/*</sonar.issue.ignore.multicriteria.S3437.resourceKey>
-        <sonar.issue.ignore.multicriteria.S3437.ruleKey>squid:S3437</sonar.issue.ignore.multicriteria.S3437.ruleKey>
-        <!-- Rule http://sonarqube.com/coding_rules#rule_key=squid%3AUndocumentedApi is ignored, as we want to follow "clean code" guidelines and classes, methods and arguments names 
-            should be self-explanatory -->
-        <sonar.issue.ignore.multicriteria.UndocumentedApi.resourceKey>src/main/java/**/*</sonar.issue.ignore.multicriteria.UndocumentedApi.resourceKey>
-        <sonar.issue.ignore.multicriteria.UndocumentedApi.ruleKey>squid:UndocumentedApi</sonar.issue.ignore.multicriteria.UndocumentedApi.ruleKey>
-
-        <sonar.jacoco.itReportPath>${project.testresult.directory}/coverage/jacoco/jacoco-it.exec</sonar.jacoco.itReportPath>
-        <sonar.jacoco.reportPath>${project.testresult.directory}/coverage/jacoco/jacoco.exec</sonar.jacoco.reportPath>
-        <sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
-
-        <sonar.javascript.jstestdriver.reportsPath>${project.testresult.directory}/karma</sonar.javascript.jstestdriver.reportsPath>
-        <!-- For Sonar < 6.2 -->
-        <sonar.javascript.lcov.reportPath>${project.testresult.directory}/coverage/report-lcov/lcov.info</sonar.javascript.lcov.reportPath>
-        <!-- For Sonar >= 6.2 -->
-        <sonar.javascript.lcov.reportPaths>${project.testresult.directory}/coverage/report-lcov/lcov.info</sonar.javascript.lcov.reportPaths>
-
-        <sonar.sources>${project.basedir}/src/main/</sonar.sources>
-        <sonar.surefire.reportsPath>${project.testresult.directory}/surefire-reports</sonar.surefire.reportsPath>
-        <sonar.tests>${project.basedir}/src/test/</sonar.tests>
-
-        <sortpom-maven-plugin.version>2.5.0</sortpom-maven-plugin.version>
-        <!-- Spring properties -->
-        <spring-cloud.version>Camden.SR5</spring-cloud.version>
-        <springfox.version>2.6.1</springfox.version>
-        <undertow.version>1.4.10.Final</undertow.version>
-        <validation-api.version>1.1.0.Final</validation-api.version>
-        <yarn.version>v0.21.3</yarn.version>
-    </properties>
 
 </project>

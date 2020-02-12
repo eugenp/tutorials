@@ -13,6 +13,7 @@ import com.baeldung.axon.coreapi.commands.ShipOrderCommand;
 import com.baeldung.axon.coreapi.events.OrderConfirmedEvent;
 import com.baeldung.axon.coreapi.events.OrderPlacedEvent;
 import com.baeldung.axon.coreapi.events.OrderShippedEvent;
+import com.baeldung.axon.coreapi.exceptions.UnconfirmedOrderException;
 
 @Aggregate
 public class OrderAggregate {
@@ -34,7 +35,7 @@ public class OrderAggregate {
     @CommandHandler
     public void handle(ShipOrderCommand command) {
         if (!orderConfirmed) {
-            throw new IllegalStateException("Cannot ship an order which has not been confirmed yet.");
+            throw new UnconfirmedOrderException();
         }
 
         apply(new OrderShippedEvent(orderId));
@@ -43,12 +44,12 @@ public class OrderAggregate {
     @EventSourcingHandler
     public void on(OrderPlacedEvent event) {
         this.orderId = event.getOrderId();
-        orderConfirmed = false;
+        this.orderConfirmed = false;
     }
 
     @EventSourcingHandler
     public void on(OrderConfirmedEvent event) {
-        orderConfirmed = true;
+        this.orderConfirmed = true;
     }
 
     protected OrderAggregate() {

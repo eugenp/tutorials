@@ -1,13 +1,23 @@
 package com.baeldung.cassandra.reactive;
 
-import com.baeldung.cassandra.reactive.model.Employee;
-import com.baeldung.cassandra.reactive.repository.EmployeeRepository;
+import org.cassandraunit.spring.CassandraDataSet;
+import org.cassandraunit.spring.CassandraUnitDependencyInjectionTestExecutionListener;
+import org.cassandraunit.spring.CassandraUnitTestExecutionListener;
+import org.cassandraunit.spring.EmbeddedCassandra;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
+import org.springframework.test.context.web.ServletTestExecutionListener;
+
+import com.baeldung.cassandra.reactive.model.Employee;
+import com.baeldung.cassandra.reactive.repository.EmployeeRepository;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
@@ -15,6 +25,15 @@ import reactor.test.StepVerifier;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@TestExecutionListeners(listeners = {
+        CassandraUnitDependencyInjectionTestExecutionListener.class,
+        CassandraUnitTestExecutionListener.class,
+        ServletTestExecutionListener.class,
+        DependencyInjectionTestExecutionListener.class,
+        DirtiesContextTestExecutionListener.class
+})
+@EmbeddedCassandra(timeout = 60000, configuration = "cassandra-server.yaml")
+@CassandraDataSet(value = {"cassandra-init.cql"}, keyspace = "practice")
 public class ReactiveEmployeeRepositoryIntegrationTest {
 
 	@Autowired

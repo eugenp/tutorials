@@ -2,7 +2,10 @@ import extensions.TimeoutTest
 import spock.lang.Issue
 
 runner {
-    filterStackTrace true
+
+    if (System.getenv("FILTER_STACKTRACE") == null) {
+        filterStackTrace false
+    }
 
     report {
         issueNamePrefix 'Bug '

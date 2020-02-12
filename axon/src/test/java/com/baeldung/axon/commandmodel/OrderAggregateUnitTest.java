@@ -2,6 +2,7 @@ package com.baeldung.axon.commandmodel;
 
 import java.util.UUID;
 
+import com.baeldung.axon.coreapi.exceptions.UnconfirmedOrderException;
 import org.axonframework.test.aggregate.AggregateTestFixture;
 import org.axonframework.test.aggregate.FixtureConfiguration;
 import org.junit.*;
@@ -41,12 +42,12 @@ public class OrderAggregateUnitTest {
     }
 
     @Test
-    public void givenOrderPlacedEvent_whenShipOrderCommand_thenShouldThrowIllegalStateException() {
+    public void givenOrderPlacedEvent_whenShipOrderCommand_thenShouldThrowUnconfirmedOrderException() {
         String orderId = UUID.randomUUID().toString();
         String product = "Deluxe Chair";
         fixture.given(new OrderPlacedEvent(orderId, product))
                .when(new ShipOrderCommand(orderId))
-               .expectException(IllegalStateException.class);
+               .expectException(UnconfirmedOrderException.class);
     }
 
     @Test

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Enums in Thymeleaf</title>
+</head>
+<body>
+    <form th:action="@{/widget/add}" method="post" th:object="${widget}">
+        <h3>Add New Widget</h3>
+        <label for="name">Name: </label>
+        <input type="text" name="name"/>
+        <label for="color">Color: </label>
+        <select name="color">
+            <option th:each="colorOpt : ${T(com.baeldung.thymeleaf.enums.Color).values()}" th:value="${colorOpt}" th:text="${colorOpt.displayValue}"></option>
+        </select>
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>

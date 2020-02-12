@@ -1,13 +1,9 @@
 package com.baeldung.boot.config;
 
-import java.util.Properties;
-
-import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -17,10 +13,20 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+import java.util.Properties;
+
 @Configuration
 @EnableJpaRepositories(basePackages = { "com.baeldung.boot.repository", "com.baeldung.repository" })
 @PropertySource("classpath:persistence-generic-entity.properties")
+//@PropertySource("classpath:persistence-derby.properties")
+//@PropertySource("classpath:persistence-hsqldb.properties")
+//@PropertySource("classpath:persistence-sqlite.properties")
 @EnableTransactionManagement
+@Profile("default") //only required to allow H2JpaConfig and H2TestProfileJPAConfig to coexist in same project
+                    //this demo project is showcasing several ways to achieve the same end, and class-level
+                    //Profile annotations are only necessary because the different techniques are sharing a project
 public class H2JpaConfig {
 
     @Autowired

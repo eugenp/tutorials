@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import com.baeldung.axon.coreapi.queries.FindAllOrderedProductsQuery;
 import com.baeldung.axon.coreapi.queries.OrderedProduct;
 
 @Service
+@ProcessingGroup("ordered-products")
 public class OrderedProductsEventHandler {
 
     private final Map<String, OrderedProduct> orderedProducts = new HashMap<>();

@@ -15,7 +15,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.baeldung.web.controller" })
+@ComponentScan(basePackages = { "com.baeldung.web.controller.message" })
 public class TestConfig implements WebMvcConfigurer {
 
     @Autowired
@@ -44,5 +44,4 @@ public class TestConfig implements WebMvcConfigurer {
         templateEngine.setTemplateResolver(templateResolver());
         return templateEngine;
     }
-
 }

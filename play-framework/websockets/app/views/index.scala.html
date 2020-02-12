@@ -1,0 +1,97 @@
+@(url: String)
+@main("Welcome to Play") {
+    <h1>Welcome to Play WebSockets!</h1>
+        <div id="messageContent"></div>
+        <form>
+            <textarea id="messageInput"></textarea>
+            <button id="sendButton">Send</button>
+        </form>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+        <script>
+        var webSocket;
+        var messageInput;
+
+        function init() {
+            initWebSocket();
+        }
+
+        function initWebSocket() {
+            webSocket = new WebSocket("@url");
+            webSocket.onopen = onOpen;
+            webSocket.onclose = onClose;
+            webSocket.onmessage = onMessage;
+            webSocket.onerror = onError;
+        }
+
+        function onOpen(evt) {
+            writeToScreen("CONNECTED");
+        }
+
+        function onClose(evt) {
+            writeToScreen("DISCONNECTED");
+            appendMessageToView(":", "DISCONNECTED");
+        }
+
+        function onError(evt) {
+            writeToScreen("ERROR: " + evt.data);
+            writeToScreen("ERROR: " + JSON.stringify(evt));
+        }
+
+        function onMessage(evt) {
+            var receivedData = JSON.parse(evt.data);
+            console.log("New Data: ", receivedData);
+            appendMessageToView("Server", receivedData.body);
+        }
+
+        function appendMessageToView(title, message) {
+            $("#messageContent").append("<p>" + title + ": " + message + "</p>");
+        }
+
+        function writeToScreen(message) {
+            console.log("New message: ", message);
+        }
+
+        function doSend(protocolMessage) {
+            if(webSocket.readyState == WebSocket.OPEN) {
+                writeToScreen("SENT: " + protocolMessage.message);
+                webSocket.send(JSON.stringify(protocolMessage));
+            } else {
+                writeToScreen("Could not send data. Websocket is not open.");
+            }
+        }
+
+        window.addEventListener("load", init, false);
+
+
+        $(".sendButton").click(function () {
+            console.log("Submitting.");
+            newMessage();
+        });
+
+        $(window).on("keydown", function (e) {
+            if (e.which == 13) {
+                console.log("Enter pressed.");
+                newMessage();
+                return false;
+            }
+        });
+
+        function newMessage() {
+            messageInput = $("#messageInput").val();
+            $("#messageInput").val("");
+            if ($.trim(messageInput) == "") {
+                return false;
+            }
+
+            appendMessageToView("Me", messageInput);
+
+            var message = {
+                message: messageInput
+            };
+
+            doSend(message);
+        }
+    </script>
+}

@@ -1,12 +1,11 @@
-=========
+## Spring with Hibernate 3
 
-## Spring with Hibernate 3 Example Project
+This module contains articles about Spring with Hibernate 3
 
- 
-### Relevant ArticleS: 
+### Relevant Articles: 
+
 - [Hibernate 3 with Spring](http://www.baeldung.com/hibernate3-spring)
 - [HibernateException: No Hibernate Session Bound to Thread in Hibernate 3](http://www.baeldung.com/no-hibernate-session-bound-to-thread-exception)
-
 
 ### Quick Start
 

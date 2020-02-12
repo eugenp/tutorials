@@ -1,0 +1,88 @@
+<web-app
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+        version="3.0">
+
+    <!-- Uncommented, this disallows org.springframework.web.SpringServletContainerInitializer to run and execute
+         application initializers. -->
+    <!--<absolute-ordering>
+    </absolute-ordering>-->
+
+    <!-- root application context -->
+    <!--<listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>-->
+    <!--<context-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/rootApplicationContext.xml</param-value>
+  </context-param>-->
+    <!--<context-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+    </context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>com.baeldung.contexts.config.RootApplicationConfig, com.baeldung.contexts.config.NormalWebAppConfig</param-value>
+    </context-param>-->
+    <!--<context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>org.baeldung.bean.config</param-value>
+    </context-param>-->
+
+    <!-- secure web app context -->
+    <!--<servlet>
+        <servlet-name>secure-webapp</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/secure-webapp-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>secure-webapp</servlet-name>
+        <url-pattern>/s/api/*</url-pattern>
+    </servlet-mapping>-->
+
+    <!-- normal web app context -->
+    <!--<servlet>
+        <servlet-name>normal-webapp</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>normal-webapp</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>-->
+    <!-- normal webapp with annotations-based context -->
+    <servlet>
+        <servlet-name>normal-webapp-annotations</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <init-param>
+            <param-name>contextClass</param-name>
+            <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+        </init-param>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>com.baeldung.contexts.config.NormalWebAppConfig</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>normal-webapp-annotations</servlet-name>
+        <url-pattern>/api-ann/*</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>/WEB-INF/index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

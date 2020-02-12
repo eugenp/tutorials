@@ -45,7 +45,7 @@ public class TypeSafeCriteriaIntegrationTest {
         CriteriaQuery<Student> criteriaQuery = cb.createQuery(Student.class);
 
         Root<Student> root = criteriaQuery.from(Student.class);
-        criteriaQuery.select(root).where(cb.equal(root.get(Student_.gradYear), 1965));
+        criteriaQuery.select(root).where(cb.equal(root.get("gradYear"), 1965));
 
         Query<Student> query = session.createQuery(criteriaQuery);
         List<Student> results = query.getResultList();

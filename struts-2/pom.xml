@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>struts-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>struts-2</name>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.version}</version>
+            <version>${javax.servlet-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -65,13 +65,11 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <properties>
         <struts2.version>2.5.5</struts2.version>
         <struts2-convention-plugin.version>2.5.8</struts2-convention-plugin.version>
-        <servlet.version>3.0.1</servlet.version>
         <spring.version>4.3.6.RELEASE</spring.version>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
     </properties>
 
 </project>

@@ -1,3 +1,7 @@
+## Tensorflow
+
+This module contains articles about Tensorflow
+
 ## Relevant articles:
 
-- [TensorFlow for Java](https://www.baeldung.com/tensorflow-java)
+- [Introduction to Tensorflow for Java](https://www.baeldung.com/tensorflow-java)

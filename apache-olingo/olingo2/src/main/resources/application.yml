@@ -1,0 +1,12 @@
+server:
+  port: 8080
+  
+spring:
+  jersey:
+    application-path: /odata
+    
+  jpa:
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: update

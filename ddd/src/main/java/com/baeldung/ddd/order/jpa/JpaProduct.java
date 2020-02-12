@@ -15,7 +15,7 @@ class JpaProduct {
     public JpaProduct(BigDecimal price, String currencyUnit) {
         super();
         this.price = price;
-        currencyUnit = currencyUnit;
+        this.currencyUnit = currencyUnit;
     }
 
     @Override

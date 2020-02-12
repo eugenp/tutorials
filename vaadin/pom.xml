@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.test</groupId>
     <artifactId>vaadin</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Vaadin</name>
+    <name>vaadin</name>
     <packaging>war</packaging>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
-    
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -26,7 +26,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
+
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -36,20 +36,23 @@
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-server</artifactId>
+            <version>${vaadin-server.version}</version>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-push</artifactId>
+            <version>${vaadin-push.version}</version>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-client-compiled</artifactId>
+            <version>${vaadin-client-compiled.version}</version>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-themes</artifactId>
+            <version>${vaadin-themes.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -86,17 +89,6 @@
                 <groupId>com.vaadin</groupId>
                 <artifactId>vaadin-maven-plugin</artifactId>
                 <version>${vaadin.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>update-theme</goal>
-                            <goal>update-widgetset</goal>
-                            <goal>compile</goal>
-                            <!-- Comment out compile-theme goal to use on-the-fly theme compilation -->
-                            <goal>compile-theme</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -182,17 +174,19 @@
     </profiles>
 
     <properties>
-        <servlet.version>3.0.1</servlet.version>
-        <vaadin.version>7.7.10</vaadin.version>
-        <vaadin.plugin.version>8.0.6</vaadin.plugin.version>
-        <vaadin-spring-boot-starter.version>10.0.1</vaadin-spring-boot-starter.version>
+        <vaadin.version>13.0.9</vaadin.version>
+        <vaadin.plugin.version>13.0.9</vaadin.plugin.version>
+        <vaadin-spring-boot-starter.version>13.0.9</vaadin-spring-boot-starter.version>
+        <vaadin-server.version>8.8.5</vaadin-server.version>
+        <vaadin-push.version>8.8.5</vaadin-push.version>
+        <vaadin-client-compiled.version>8.8.5</vaadin-client-compiled.version>
+        <vaadin-themes.version>8.8.5</vaadin-themes.version>
         <jetty.plugin.version>9.3.9.v20160517</jetty.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <vaadin.widgetset.mode>local</vaadin.widgetset.mode>
         <vaadin.theme>mytheme</vaadin.theme>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
         <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
     </properties>
 

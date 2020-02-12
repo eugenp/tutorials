@@ -19,7 +19,7 @@ public class Email {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
-    private Employee employee;
+    private OfficialEmployee employee;
 
     public Long getId() {
         return id;
@@ -37,11 +37,11 @@ public class Email {
         this.address = address;
     }
 
-    public Employee getEmployee() {
+    public OfficialEmployee getEmployee() {
         return employee;
     }
 
-    public void setEmployee(Employee employee) {
+    public void setEmployee(OfficialEmployee employee) {
         this.employee = employee;
     }
 }

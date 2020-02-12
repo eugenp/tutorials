@@ -4,7 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
+import java.util.Properties;
 
 import javax.persistence.Query;
 
@@ -24,6 +27,8 @@ import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
 import com.vividsolutions.jts.util.GeometricShapeFactory;
 
+import geodb.GeoDB;
+
 public class HibernateSpatialIntegrationTest {
 
     private Session session;
@@ -34,6 +39,7 @@ public class HibernateSpatialIntegrationTest {
         session = HibernateUtil.getSessionFactory("hibernate-spatial.properties")
           .openSession();
         transaction = session.beginTransaction();
+        session.doWork(conn -> { GeoDB.InitGeoDB(conn); });
     }
 
     @After
@@ -140,5 +146,16 @@ public class HibernateSpatialIntegrationTest {
         shapeFactory.setCentre(new Coordinate(x, y));
         shapeFactory.setSize(radius * 2);
         return shapeFactory.createCircle();
+    }
+    
+    public static Properties getProperties(String propertyFile) throws IOException {
+        Properties properties = new Properties();
+        URL propertiesURL = Thread.currentThread()
+          .getContextClassLoader()
+          .getResource(propertyFile);
+        try (FileInputStream inputStream = new FileInputStream(propertiesURL.getFile())) {
+            properties.load(inputStream);
+        }
+        return properties;
     }
 }
