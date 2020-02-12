@@ -1,4 +1,4 @@
-package com.ajay.documentservice.port.impl;
+package com.baeldung.port.impl;
 
 import com.ajay.documentservice.domain.Document;
 import com.ajay.documentservice.port.DocumentRepo;
