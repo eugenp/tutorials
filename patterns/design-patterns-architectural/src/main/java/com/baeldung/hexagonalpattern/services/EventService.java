@@ -8,7 +8,7 @@ import java.util.List;
 
 public class EventService {
 
-    private final EventRepository eventRepository;
+    private EventRepository eventRepository;
 
     public EventService(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
