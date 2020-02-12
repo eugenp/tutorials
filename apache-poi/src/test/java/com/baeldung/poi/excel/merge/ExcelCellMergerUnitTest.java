@@ -1,4 +1,4 @@
-package com.baeldung.poi.excel;
+package com.baeldung.poi.excel.merge;
 
 import static org.junit.Assert.assertEquals;
 
