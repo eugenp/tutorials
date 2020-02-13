@@ -203,7 +203,7 @@
     <properties>
         <start-class>com.baeldung.sample.App</start-class>
         <!-- Spring -->
-        <org.springframework.version>5.0.6.RELEASE</org.springframework.version>
+        <org.springframework.version>5.2.2.RELEASE</org.springframework.version>
         <annotation-api.version>1.3.2</annotation-api.version>
         <!-- persistence -->
         <hibernate.version>5.2.5.Final</hibernate.version>
