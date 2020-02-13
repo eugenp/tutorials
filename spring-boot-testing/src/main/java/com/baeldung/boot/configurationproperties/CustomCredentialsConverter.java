@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationPropertiesBinding
 public class CustomCredentialsConverter implements Converter<String, Credentials> {
-	
+
 	@Override
 	public Credentials convert(String source) {
 		String data[] = source.split(",");

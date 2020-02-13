@@ -17,14 +17,14 @@ public class PropertyConversion {
 
 	@DataSizeUnit(DataUnit.GIGABYTES)
 	private DataSize downloadSpeed;
-		
+
 	private Duration backupDay;
-	
+
 	@DurationUnit(ChronoUnit.HOURS)
 	private Duration backupHour;
-	
+
 	private Credentials credentials;
-	
+
 	public Duration getBackupDay() {
 		return backupDay;
 	}
@@ -60,7 +60,7 @@ public class PropertyConversion {
 	public Credentials getCredentials() {
 		return credentials;
 	}
-	
+
 	public void setCredentials(Credentials credentials) {
 		this.credentials = credentials;
 	}

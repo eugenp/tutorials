@@ -1,37 +1,33 @@
 package com.baeldung.boot.configurationproperties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.test.context.ConfigFileApplicationContextInitializer;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@SpringBootTest
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(initializers = ConfigFileApplicationContextInitializer.class)
+@EnableConfigurationProperties(value = ServerConfig.class)
+@ActiveProfiles("test")
 public class BindingYMLPropertiesUnitTest {
-	
+
 	@Autowired
 	private ServerConfig serverConfig;
-	
+
 	@Test
 	void whenBindingYMLConfigFile_thenAllFieldsAreSet() {
-		
-		assertEquals("node2", serverConfig.getName());
 
-		Set<String> expectedImgs = new HashSet<>();
-		expectedImgs.add("img1.png");
-		expectedImgs.add("img2.png");
-		assertEquals(expectedImgs, serverConfig.getImgIds());
+		assertEquals("192.168.0.4", serverConfig.getAddress().getIp());
 
-		assertEquals("192.168.0.2", serverConfig.getAddress().getIp());
-		assertEquals(5000, serverConfig.getAddress().getPort());
-
-		Map<String, String> expectedDirs = new HashMap<>();
-		expectedDirs.put("imgs", "/etc/imgs");
-		expectedDirs.put("html", "/etc/html");
-		assertEquals(expectedDirs, serverConfig.getDirs());
+		Map<String, String> expectedResourcesPath = new HashMap<>();
+		expectedResourcesPath.put("imgs", "/etc/test/imgs");
+		assertEquals(expectedResourcesPath, serverConfig.getResourcesPath());
 	}
 }

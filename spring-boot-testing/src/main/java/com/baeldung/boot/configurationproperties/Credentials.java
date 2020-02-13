@@ -4,8 +4,6 @@ public class Credentials {
 
 	private String username;
 	private String password;
-	
-	public Credentials() {System.out.println("### INIT2 ###");}
 
 	public Credentials(String username, String password) {
 		this.username = username;
