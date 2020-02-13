@@ -1,4 +1,7 @@
-This module is for Spring Session with JDBC tutorial.
-Jira BAEL-1911
+## Spring Session with JDBC
+
+This module contains articles about Spring Session with JDBC.
 
 ### Relevant Articles: 
+
+- [Spring Session with JDBC](https://www.baeldung.com/spring-session-jdbc)

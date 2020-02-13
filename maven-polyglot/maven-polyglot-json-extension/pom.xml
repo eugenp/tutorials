@@ -6,7 +6,7 @@
     <groupId>com.baeldung.maven.polyglot</groupId>
     <artifactId>maven-polyglot-json-extension</artifactId>
     <version>1.0-SNAPSHOT</version>
-	<name>maven-polyglot-json-extension</name>
+    <name>maven-polyglot-json-extension</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -34,7 +34,7 @@
             <plugin>
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-component-metadata</artifactId>
-                <version>1.7.1</version>
+                <version>${plexus.component.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -45,11 +45,10 @@
             </plugin>
         </plugins>
     </build>
-	
+
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <maven-core.version>3.5.4</maven-core.version>
+        <plexus.component.version>1.7.1</plexus.component.version>
     </properties>
 
 </project>

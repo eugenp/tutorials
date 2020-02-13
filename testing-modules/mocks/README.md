@@ -9,3 +9,4 @@
 - [JMockit Advanced Usage](http://www.baeldung.com/jmockit-advanced-usage)
 - [Introduction to Jukito](http://www.baeldung.com/jukito)
 - [A Guide to JavaFaker](https://www.baeldung.com/java-faker)
+- [File System Mocking with Jimfs](https://www.baeldung.com/jimfs-file-system-mocking)

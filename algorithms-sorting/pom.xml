@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>algorithms-sorting</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -29,6 +30,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter-api.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${org.assertj.core.version}</version>
@@ -52,6 +59,7 @@
         <commons-math3.version>3.6.1</commons-math3.version>
         <org.assertj.core.version>3.9.0</org.assertj.core.version>
         <commons-codec.version>1.11</commons-codec.version>
+        <junit-jupiter-api.version>5.3.1</junit-jupiter-api.version>
     </properties>
 
 </project>

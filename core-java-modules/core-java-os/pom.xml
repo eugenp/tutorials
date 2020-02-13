@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>core-java-os</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <name>core-java-os</name>
@@ -42,6 +42,16 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.unix4j</groupId>
+            <artifactId>unix4j-command</artifactId>
+            <version>${unix4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.grep4j</groupId>
+            <artifactId>grep4j</artifactId>
+            <version>${grep4j.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -54,7 +64,7 @@
         </resources>
 
         <plugins>
-         <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
@@ -70,12 +80,15 @@
         <!-- util -->
         <commons-collections4.version>4.1</commons-collections4.version>
         <collections-generic.version>4.01</collections-generic.version>
-    
+
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <asspectj.version>1.8.9</asspectj.version>
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>
         <guava.version>25.1-jre</guava.version>
+        <unix4j.version>0.4</unix4j.version>
+        <grep4j.version>1.8.7</grep4j.version>
     </properties>
+
 </project>

@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-io</artifactId>
     <version>0.1.0-SNAPSHOT</version>
@@ -14,76 +15,6 @@
     </parent>
 
     <dependencies>
-        <!-- utils -->
-        <dependency>
-            <groupId>net.sourceforge.collections</groupId>
-            <artifactId>collections-generic</artifactId>
-            <version>${collections-generic.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-            <version>${commons-collections4.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math3</artifactId>
-            <version>${commons-math3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.decimal4j</groupId>
-            <artifactId>decimal4j</artifactId>
-            <version>${decimal4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>${bouncycastle.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.unix4j</groupId>
-            <artifactId>unix4j-command</artifactId>
-            <version>${unix4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.grep4j</groupId>
-            <artifactId>grep4j</artifactId>
-            <version>${grep4j.version}</version>
-        </dependency>
-        <!-- web -->
-        <!-- marshalling -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <!-- logging -->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
         <!-- test scoped -->
         <dependency>
             <groupId>org.assertj</groupId>
@@ -92,67 +23,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.jayway.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>${avaitility.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>${commons-codec.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.javamoney</groupId>
-            <artifactId>moneta</artifactId>
-            <version>${moneta.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.owasp.esapi</groupId>
-            <artifactId>esapi</artifactId>
-            <version>${esapi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.messaging.mq</groupId>
-            <artifactId>fscontext</artifactId>
-            <version>${fscontext.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.codepoetics</groupId>
-            <artifactId>protonpack</artifactId>
-            <version>${protonpack.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>one.util</groupId>
-            <artifactId>streamex</artifactId>
-            <version>${streamex.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.vavr</groupId>
-            <artifactId>vavr</artifactId>
-            <version>${vavr.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh-generator-annprocess.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
             <scope>runtime</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
-        <dependency>
-            <groupId>org.asynchttpclient</groupId>
-            <artifactId>async-http-client</artifactId>
-            <version>${async-http-client.version}</version>
         </dependency>
         <dependency>
             <groupId>com.opencsv</groupId>
@@ -170,6 +44,12 @@
             <groupId>net.sf.jmimemagic</groupId>
             <artifactId>jmimemagic</artifactId>
             <version>${jmime-magic.version}</version>
+        </dependency>
+        <!-- Context Libraries -->
+        <dependency>
+            <groupId>com.sun.messaging.mq</groupId>
+            <artifactId>fscontext</artifactId>
+            <version>${fscontext.version}</version>
         </dependency>
     </dependencies>
 
@@ -193,7 +73,7 @@
                         <argument>-Xmx300m</argument>
                         <argument>-XX:+UseParallelGC</argument>
                         <argument>-classpath</argument>
-                        <classpath />
+                        <classpath/>
                         <argument>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</argument>
                     </arguments>
                 </configuration>
@@ -207,7 +87,7 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <!-- Build an executable JAR -->
                 <groupId>org.apache.maven.plugins</groupId>
@@ -247,7 +127,7 @@
                                     <executable>java</executable>
                                     <arguments>
                                         <argument>-classpath</argument>
-                                        <classpath />
+                                        <classpath/>
                                         <argument>org.openjdk.jmh.Main</argument>
                                         <argument>.*</argument>
                                     </arguments>
@@ -261,36 +141,18 @@
     </profiles>
 
     <properties>
-
         <!-- util -->
-        <bouncycastle.version>1.55</bouncycastle.version>
-        <commons-codec.version>1.10</commons-codec.version>
-        <commons-math3.version>3.6.1</commons-math3.version>
-        <decimal4j.version>1.0.3</decimal4j.version>
-        <commons-collections4.version>4.1</commons-collections4.version>
-        <collections-generic.version>4.01</collections-generic.version>
-        <unix4j.version>0.4</unix4j.version>
-        <grep4j.version>1.8.7</grep4j.version>
-        <fscontext.version>4.6-b01</fscontext.version>
-        <protonpack.version>1.13</protonpack.version>
-        <streamex.version>0.6.5</streamex.version>
-        <vavr.version>0.9.0</vavr.version>
         <opencsv.version>4.1</opencsv.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
-        <avaitility.version>1.7.0</avaitility.version>
-
         <!-- maven plugins -->
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <hsqldb.version>2.4.0</hsqldb.version>
-        <esapi.version>2.1.0.1</esapi.version>
-        <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
-        <async-http-client.version>2.4.5</async-http-client.version>
         <!-- Mime Type Libraries -->
         <tika.version>1.18</tika.version>
         <jmime-magic.version>0.1.5</jmime-magic.version>
         <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
-
+        <fscontext.version>4.4.2</fscontext.version>
     </properties>
 
 </project>
