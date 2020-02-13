@@ -9,10 +9,10 @@
     <name>spring-boot-with-starter-parent</name>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.5.RELEASE</version>
-        <!-- lookup parent from repository -->
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencyManagement>
@@ -38,7 +38,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
+        <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
         <junit.version>4.11</junit.version>
     </properties>
 

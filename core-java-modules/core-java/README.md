@@ -2,7 +2,6 @@
 
 ### Relevant Articles: 
 - [Java Timer](http://www.baeldung.com/java-timer-and-timertask)
-- [A Guide To Java Regular Expressions API](http://www.baeldung.com/regular-expressions-java)
 - [Getting Started with Java Properties](http://www.baeldung.com/java-properties)
 - [Introduction to Nashorn](http://www.baeldung.com/java-nashorn)
 - [Java Money and the Currency API](http://www.baeldung.com/java-money-and-currency)
@@ -11,7 +10,6 @@
 - [How to Get a Name of a Method Being Executed?](http://www.baeldung.com/java-name-of-executing-method)
 - [Introduction to Java Serialization](http://www.baeldung.com/java-serialization)
 - [Guide to UUID in Java](http://www.baeldung.com/java-uuid)
-- [Guide to Escaping Characters in Java RegExps](http://www.baeldung.com/java-regexp-escape-char)
 - [Creating a Java Compiler Plugin](http://www.baeldung.com/java-build-compiler-plugin)
 - [Quick Guide to Java Stack](http://www.baeldung.com/java-stack)
 - [Compiling Java *.class Files with javac](http://www.baeldung.com/javac)
