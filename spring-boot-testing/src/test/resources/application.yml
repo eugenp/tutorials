@@ -1,11 +1,15 @@
+spring:
+   profiles: test
 server:
-  name: node2
-  address:
-    ip: 192.168.0.2
-    port: 5000
-  dirs:
-    imgs: /etc/imgs
-    html: /etc/html
-  imgIds:
-  - img1.png
-  - img2.png
+   address:
+      ip: 192.168.0.4
+   resources_path:
+      imgs: /etc/test/imgs      
+---
+spring:
+   profiles: dev
+server:
+   address:
+      ip: 192.168.0.5
+   resources_path:
+      imgs: /etc/dev/imgs
