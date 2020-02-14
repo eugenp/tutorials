@@ -24,6 +24,7 @@
         <module>spring-boot-config-jpa-error</module>
         <module>spring-boot-ctx-fluent</module>
         <module>spring-boot-deployment</module>
+        <module>spring-boot-di</module>
         <module>spring-boot-camel</module>
         <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
         <module>spring-boot-custom-starter</module>
@@ -41,9 +42,11 @@
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-birt</module>
         <module>spring-boot-nashorn</module>
+        <module>spring-boot-performance</module>
         <module>spring-boot-properties</module>
         <module>spring-boot-property-exp</module>
         <module>spring-boot-runtime</module>
+        <module>spring-boot-security</module>
         <module>spring-boot-springdoc</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-vue</module>
