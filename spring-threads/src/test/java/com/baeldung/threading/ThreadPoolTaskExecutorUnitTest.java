@@ -9,7 +9,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 public class ThreadPoolTaskExecutorUnitTest {
 
-    private void startThreads(ThreadPoolTaskExecutor taskExecutor, CountDownLatch countDownLatch, int numThreads) {
+    void startThreads(ThreadPoolTaskExecutor taskExecutor, CountDownLatch countDownLatch, int numThreads) {
         for (int i = 0; i < numThreads; i++) {
             taskExecutor.execute(() -> {
                 try {
