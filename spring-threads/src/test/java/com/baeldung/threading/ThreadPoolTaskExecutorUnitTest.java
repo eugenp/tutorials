@@ -9,22 +9,26 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 public class ThreadPoolTaskExecutorUnitTest {
 
-    @Test
-    public void whenUsingDefaults_thenSingleThread() {
-        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
-        taskExecutor.afterPropertiesSet();
-
-        CountDownLatch countDownLatch = new CountDownLatch(10);
-        for (int i = 0; i < 10; i++) {
+    private void startThreads(ThreadPoolTaskExecutor taskExecutor, CountDownLatch countDownLatch, int numThreads) {
+        for (int i = 0; i < numThreads; i++) {
             taskExecutor.execute(() -> {
                 try {
-                    Thread.sleep(10L * ThreadLocalRandom.current().nextLong(1, 10));
+                    Thread.sleep(100L * ThreadLocalRandom.current().nextLong(1, 10));
                     countDownLatch.countDown();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
             });
         }
+    }
+
+    @Test
+    public void whenUsingDefaults_thenSingleThread() {
+        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+        taskExecutor.afterPropertiesSet();
+
+        CountDownLatch countDownLatch = new CountDownLatch(10);
+        this.startThreads(taskExecutor, countDownLatch, 10);
 
         while (countDownLatch.getCount() > 0) {
             Assert.assertEquals(1, taskExecutor.getPoolSize());
@@ -38,16 +42,7 @@ public class ThreadPoolTaskExecutorUnitTest {
         taskExecutor.afterPropertiesSet();
 
         CountDownLatch countDownLatch = new CountDownLatch(10);
-        for (int i = 0; i < 10; i++) {
-            taskExecutor.execute(() -> {
-                try {
-                    Thread.sleep(100L * ThreadLocalRandom.current().nextLong(1, 10));
-                    countDownLatch.countDown();
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            });
-        }
+        this.startThreads(taskExecutor, countDownLatch, 10);
 
         while (countDownLatch.getCount() > 0) {
             Assert.assertEquals(5, taskExecutor.getPoolSize());
@@ -62,16 +57,7 @@ public class ThreadPoolTaskExecutorUnitTest {
         taskExecutor.afterPropertiesSet();
 
         CountDownLatch countDownLatch = new CountDownLatch(10);
-        for (int i = 0; i < 10; i++) {
-            taskExecutor.execute(() -> {
-                try {
-                    Thread.sleep(100L * ThreadLocalRandom.current().nextLong(1, 10));
-                    countDownLatch.countDown();
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            });
-        }
+        this.startThreads(taskExecutor, countDownLatch, 10);
 
         while (countDownLatch.getCount() > 0) {
             Assert.assertEquals(5, taskExecutor.getPoolSize());
@@ -87,16 +73,7 @@ public class ThreadPoolTaskExecutorUnitTest {
         taskExecutor.afterPropertiesSet();
 
         CountDownLatch countDownLatch = new CountDownLatch(10);
-        for (int i = 0; i < 10; i++) {
-            taskExecutor.execute(() -> {
-                try {
-                    Thread.sleep(100L * ThreadLocalRandom.current().nextLong(1, 10));
-                    countDownLatch.countDown();
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            });
-        }
+        this.startThreads(taskExecutor, countDownLatch, 10);
 
         while (countDownLatch.getCount() > 0) {
             Assert.assertEquals(10, taskExecutor.getPoolSize());
@@ -111,17 +88,8 @@ public class ThreadPoolTaskExecutorUnitTest {
         taskExecutor.setQueueCapacity(10);
         taskExecutor.afterPropertiesSet();
 
-        CountDownLatch countDownLatch = new CountDownLatch(10);
-        for (int i = 0; i < 20; i++) {
-            taskExecutor.execute(() -> {
-                try {
-                    Thread.sleep(100L * ThreadLocalRandom.current().nextLong(1, 10));
-                    countDownLatch.countDown();
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            });
-        }
+        CountDownLatch countDownLatch = new CountDownLatch(20);
+        this.startThreads(taskExecutor, countDownLatch, 20);
 
         while (countDownLatch.getCount() > 0) {
             Assert.assertEquals(10, taskExecutor.getPoolSize());
