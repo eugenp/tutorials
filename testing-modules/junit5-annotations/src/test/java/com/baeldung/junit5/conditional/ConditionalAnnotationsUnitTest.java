@@ -29,6 +29,18 @@ public class ConditionalAnnotationsUnitTest {
     }
 
     @Test
+    @EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_13)
+    public void shouldOnlyRunOnJava8UntilJava13() {
+        System.out.println("runs with Java 8, 9, 10, 11, 12 and 13!");
+    }
+
+    @Test
+    @DisabledForJreRange(min = JRE.JAVA_14, max = JRE.JAVA_15)
+    public void shouldNotBeRunOnJava14AndJava15() {
+        System.out.println("Shouldn't be run on Java 14 and 15.");
+    }
+
+    @Test
     @DisabledOnJre(JRE.OTHER)
     public void thisTestOnlyRunsWithUpToDateJREs() {
         System.out.println("this test will only run on java8, 9, 10 and 11.");
