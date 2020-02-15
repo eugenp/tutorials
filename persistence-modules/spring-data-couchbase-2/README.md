@@ -1,9 +1,9 @@
 ## Spring Data Couchbase Tutorial Project
 
 ### Relevant Articles:
-- [Intro to Spring Data Couchbase](http://www.baeldung.com/spring-data-couchbase)
-- [Entity Validation, Optimistic Locking, and Query Consistency in Spring Data Couchbase](http://www.baeldung.com/entity-validation-locking-and-query-consistency-in-spring-data-couchbase)
-- [Multiple Buckets and Spatial View Queries in Spring Data Couchbase](http://www.baeldung.com/spring-data-couchbase-buckets-and-spatial-view-queries)
+- [Intro to Spring Data Couchbase](https://www.baeldung.com/spring-data-couchbase)
+- [Entity Validation, Optimistic Locking, and Query Consistency in Spring Data Couchbase](https://www.baeldung.com/entity-validation-locking-and-query-consistency-in-spring-data-couchbase)
+- [Multiple Buckets and Spatial View Queries in Spring Data Couchbase](https://www.baeldung.com/spring-data-couchbase-buckets-and-spatial-view-queries)
 
 ### Overview
 This Maven project contains the Java code for Spring Data Couchbase
@@ -25,14 +25,14 @@ mvn clean install
 
 ### Package Organization
 Java classes for the first two tutorials listed above are in src/main/java in the package hierarchy
-org.baeldung.spring.data.couchbase
+com.baeldung.spring.data.couchbase
 
 Java classes for the multiple-bucket tutorials are in src/main/java in the package hierarchy
-org.baeldung.spring.data.couchbase2b
+com.baeldung.spring.data.couchbase2b
 
 ### Running the tests
 The test classes for the single-bucket tutorials are in src/test/java in the package
-org.baeldung.spring.data.couchbase.service:
+com.baeldung.spring.data.couchbase.service:
 - PersonServiceTest (abstract)
 - PersonRepositoryTest (concrete)
 - PersonTemplateServiceTest (concrete)
@@ -41,7 +41,7 @@ org.baeldung.spring.data.couchbase.service:
 - StudentTemplateServiceTest (concrete)
 
 The concrete test classes for the multiple-bucket tutorial are in src/test/java in the package
-org.baeldung.spring.data.couchbase2b.service:
+com.baeldung.spring.data.couchbase2b.service:
 - CampusRepositoryServiceImplTest
 - PersonRepositoryServiceImplTest
 - StudentRepositoryServiceImplTest
