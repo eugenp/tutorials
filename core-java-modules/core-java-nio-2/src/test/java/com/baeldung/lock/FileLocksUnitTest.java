@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class FileLocksUnitTest {
 
     @Test
-    void givenAnInputStream_whenGetWriteLock_throwNonWritableChannelException() {
+    void givenAnInputStream_whenGetWriteLock_thenThrowNonWritableChannelException() {
         assertThrows(NonWritableChannelException.class, () -> FileLocks.getExclusiveLockFromInputStream());
     }
 
