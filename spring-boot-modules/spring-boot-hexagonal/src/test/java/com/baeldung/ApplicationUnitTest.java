@@ -8,9 +8,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 class ApplicationUnitTest {
-	
-	@Test
-	public void contextLoads() {
-	}
-	
+
+    @Test
+    public void contextLoads() {
+    }
+
 }
