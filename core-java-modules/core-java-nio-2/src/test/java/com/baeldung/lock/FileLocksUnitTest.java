@@ -20,7 +20,7 @@ class FileLocksUnitTest {
     }
 
     @Test
-    void givenARandomAccessFileWithReadWriteAccess_whenGetWriteLock_lock() throws IOException {
+    void givenARandomAccessFileWithReadWriteAccess_whenGetWriteLock_thenLock() throws IOException {
         FileLock lock = FileLocks.getExclusiveLockFromRandomAccessFile(0, 10);
         assertNotNull(lock);
         assertFalse(lock.isShared());
