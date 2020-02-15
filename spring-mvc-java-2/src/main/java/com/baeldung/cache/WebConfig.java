@@ -35,7 +35,7 @@ public class WebConfig implements WebMvcConfigurer {
         WebContentInterceptor interceptor = new WebContentInterceptor();
         interceptor.addCacheMapping(CacheControl.maxAge(60, TimeUnit.SECONDS)
           .noTransform()
-          .mustRevalidate(), "/cache/*");
+          .mustRevalidate(), "/login/*");
         registry.addInterceptor(interceptor);
     }
 }
