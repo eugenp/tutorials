@@ -49,8 +49,8 @@ public class ResponseLogFilter extends ZuulFilter {
 
             context.setResponseBody(responseData);
         }
-        catch (Throwable e) {
-            e.printStackTrace();
+        catch (Exception e) {
+            logger.error("error occurred at response log filter", e);
         }
 
         return null;
