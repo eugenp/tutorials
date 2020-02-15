@@ -34,7 +34,7 @@ class FileLocksUnitTest {
     }
 
     @Test
-    void givenAFileOutputStream_whenGetSharedLock_throwNonReadableChannelException() {
+    void givenAFileOutputStream_whenGetSharedLock_thenThrowNonReadableChannelException() {
         assertThrows(NonReadableChannelException.class, FileLocks::getReadLockFromOutputStream);
     }
 
