@@ -113,7 +113,7 @@
         <module>core-java-strings</module>
         <module>core-java-sun</module>
 
-        <module>core-java-text</module>
+        <module>core-java-regex</module>
         <!-- <module>core-java-time-measurements</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
 
         <!-- <module>multimodulemavenproject</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
