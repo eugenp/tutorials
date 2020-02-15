@@ -27,7 +27,7 @@ class FileLocksUnitTest {
     }
 
     @Test
-    void givenAPath_whenGetExclusiveLock_lock() throws IOException {
+    void givenAPath_whenGetExclusiveLock_thenLock() throws IOException {
         FileLock lock = FileLocks.getExclusiveLockFromFileChannelOpen(0, 10);
         assertNotNull(lock);
         assertFalse(lock.isShared());
