@@ -39,7 +39,7 @@ class FileLocksUnitTest {
     }
 
     @Test
-    void givenAnInputStream_whenGetSharedLock_lock() throws IOException {
+    void givenAnInputStream_whenGetSharedLock_thenLock() throws IOException {
         FileLock lock = FileLocks.getReadLockFromInputStream(0, 10);
         assertNotNull(lock);
         assertTrue(lock.isShared());
