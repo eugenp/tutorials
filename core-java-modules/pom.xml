@@ -31,7 +31,7 @@
         <module>core-java-annotations</module>
         <module>core-java-arrays</module>
         <module>core-java-arrays-2</module>
-		<module>core-java-arrays-3</module>
+        <module>core-java-arrays-3</module>
 
         <module>core-java-collections</module>
         <module>core-java-collections-2</module>
