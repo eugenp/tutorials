@@ -1,20 +1,23 @@
-package com.baeldung.dddhexagonalspring.infrastracture.repository;
-
-import com.baeldung.dddhexagonalspring.domain.Order;
-import com.baeldung.dddhexagonalspring.domain.repository.OrderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+package com.baeldung.dddhexagonalspring.infrastracture.repository.mongo;
 
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+
+import com.baeldung.dddhexagonalspring.domain.Order;
+import com.baeldung.dddhexagonalspring.domain.repository.OrderRepository;
+
 @Component
+@Primary
 public class MongoDbOrderRepository implements OrderRepository {
 
-    private final SpringDataOrderRepository orderRepository;
+    private final SpringDataMongoOrderRepository orderRepository;
 
     @Autowired
-    public MongoDbOrderRepository(final SpringDataOrderRepository orderRepository) {
+    public MongoDbOrderRepository(final SpringDataMongoOrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
