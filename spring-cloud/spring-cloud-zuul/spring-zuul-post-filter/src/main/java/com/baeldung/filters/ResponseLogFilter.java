@@ -6,6 +6,7 @@ import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
@@ -50,7 +51,7 @@ public class ResponseLogFilter extends ZuulFilter {
             context.setResponseBody(responseData);
         }
         catch (Exception e) {
-            logger.error("error occurred at response log filter", e);
+            throw new ZuulException(e, HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage());
         }
 
         return null;
