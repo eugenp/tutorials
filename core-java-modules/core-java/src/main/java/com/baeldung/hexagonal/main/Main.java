@@ -7,12 +7,12 @@ import com.baeldung.hexagonal.domain.QuotationSupplier;
 import com.baeldung.hexagonal.infra.FileQuotationSupplierAdapter;
 
 public class Main {
-	private static String location = "quote.txt";
-	
-	public static void main(String[] args) {
-		QuotationSupplier quotationSupplier = new FileQuotationSupplierAdapter(location);
-		QuotationPublisher quotationPublisher = new QuotationReader(quotationSupplier);
-		ConsoleAdapter consoleAdapter = new ConsoleAdapter(quotationPublisher);
-		System.out.println(consoleAdapter.getQuotationPublisher().publish());
-	}
+    private static String location = "quote.txt";
+    
+    public static void main(String[] args) {
+        QuotationSupplier quotationSupplier = new FileQuotationSupplierAdapter(location);
+        QuotationPublisher quotationPublisher = new QuotationReader(quotationSupplier);
+        ConsoleAdapter consoleAdapter = new ConsoleAdapter(quotationPublisher);
+        System.out.println(consoleAdapter.getQuotationPublisher().publish());
+    }
 }
