@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class ApplicationCoreUnitTest {
     @Test
-    public void logSaves() {
+    public void whenWriteLog_thenLogSaved() {
         FakeTestLogger fakeLogger = new FakeTestLogger();
         ApplicationCore core = new ApplicationCore(fakeLogger);
         core.run();
