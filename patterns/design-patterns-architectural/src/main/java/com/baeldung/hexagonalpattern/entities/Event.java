@@ -5,6 +5,9 @@ public class Event {
     long id;
     String name;
 
+    public Event() {
+    }
+
     public Event(long id, String name) {
         this.id = id;
         this.name = name;

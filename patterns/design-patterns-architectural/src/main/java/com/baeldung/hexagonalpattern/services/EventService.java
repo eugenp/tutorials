@@ -6,7 +6,7 @@ import com.baeldung.hexagonalpattern.repositories.EventRepository;
 import java.util.Collections;
 import java.util.List;
 
-public class EventService {
+public class EventService implements EventPersister {
 
     private EventRepository eventRepository;
 
@@ -14,6 +14,7 @@ public class EventService {
         this.eventRepository = eventRepository;
     }
 
+    @Override
     public void save(Event event) {
         if (event == null) {
             throw new IllegalArgumentException("Empty event");

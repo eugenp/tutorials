@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: event-application
+server:
+  port: 8080
+
+events:
+  file-path: /tmp/events
