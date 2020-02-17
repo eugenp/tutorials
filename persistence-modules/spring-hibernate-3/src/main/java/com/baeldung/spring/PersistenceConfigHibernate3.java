@@ -1,4 +1,4 @@
-package org.baeldung.spring;
+package com.baeldung.spring;
 
 import java.util.Properties;
 
@@ -12,9 +12,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.orm.hibernate3.HibernateTransactionManager;
-import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
+import org.springframework.orm.hibernate3.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.google.common.base.Preconditions;
@@ -22,26 +24,27 @@ import com.google.common.base.Preconditions;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-h2.properties" })
-@ComponentScan({ "org.baeldung.persistence.dao", "org.baeldung.persistence.service" })
-public class PersistenceConfig {
-
+@ComponentScan({ "com.baeldung.persistence.dao", "com.baeldung.persistence.service" })
+public class PersistenceConfigHibernate3 {
+    
     @Autowired
     private Environment env;
 
-    public PersistenceConfig() {
+    public PersistenceConfigHibernate3() {
         super();
     }
-
+    
     @Bean
-    public AnnotationSessionFactoryBean sessionFactory() {
-        final AnnotationSessionFactoryBean sessionFactory = new AnnotationSessionFactoryBean();
+    public LocalSessionFactoryBean sessionFactory() {
+        final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+        Resource config = new ClassPathResource("exceptionDemo.cfg.xml");
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "org.baeldung.persistence.model" });
+        sessionFactory.setConfigLocation(config);
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
     }
-
+    
     @Bean
     public DataSource dataSource() {
         final BasicDataSource dataSource = new BasicDataSource();
