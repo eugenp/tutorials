@@ -36,7 +36,7 @@ class MNISTDataSet {
         return load(new File(TRAIN_LABELS), new File(TRAIN_IMAGES));
     }
 
-    public static RecordReaderDataSetIterator load(File labelsFile, File imagesFile) throws IOException, InterruptedException {
+    private static RecordReaderDataSetIterator load(File labelsFile, File imagesFile) throws IOException, InterruptedException {
         byte[] labelBytes = readAllBytes(labelsFile.toPath());
         byte[] imageBytes = readAllBytes(imagesFile.toPath());
 
