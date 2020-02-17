@@ -48,7 +48,7 @@ public class CNNforMNIST extends MultiLayerNetwork {
         System.out.println("Training Model...");
         int numEpochs = 2;
         System.out.println("Loading Training Set...");
-        RecordReaderDataSetIterator trainingSet = MNISTDataSet.load(false);
+        RecordReaderDataSetIterator trainingSet = MNISTDataSet.loadTraining();
         for (int i = 0; i < numEpochs; i++) {
             System.out.println(String.format("Starting epoch n° %s", i + 1));
             this.fit(trainingSet);

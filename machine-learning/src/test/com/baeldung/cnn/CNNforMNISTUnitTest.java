@@ -16,7 +16,7 @@ class CNNforMNISTUnitTest {
     @Test
     void whenAModelAlreadyExists_ThenTheResultIsQuickAndAccurate() throws IOException, InterruptedException {
         Evaluation eval = new Evaluation(10);
-        RecordReaderDataSetIterator mnistTest = MNISTDataSet.load(true);
+        RecordReaderDataSetIterator mnistTest = MNISTDataSet.loadTest();
         MultiLayerNetwork mnistCNN = CNNforMNIST.getInstance("src/main/resources/mnist/mnistCNN");
 
         while (mnistTest.hasNext()) {

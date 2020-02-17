@@ -28,10 +28,15 @@ class MNISTDataSet {
     private static int IMAGE_OFFSET = 16;
     private static int IMAGE_SIZE = ROWS * COLUMNS;
 
-    public static RecordReaderDataSetIterator load(boolean test) throws IOException, InterruptedException {
-        File labelsFile = new File(test ? TEST_LABELS : TRAIN_LABELS);
-        File imagesFile = new File(test ? TEST_IMAGES : TRAIN_IMAGES);
+    public static RecordReaderDataSetIterator loadTest() throws IOException, InterruptedException {
+        return load(new File(TEST_LABELS), new File(TEST_IMAGES));
+    }
 
+    public static RecordReaderDataSetIterator loadTraining() throws IOException, InterruptedException {
+        return load(new File(TRAIN_LABELS), new File(TRAIN_IMAGES));
+    }
+
+    public static RecordReaderDataSetIterator load(File labelsFile, File imagesFile) throws IOException, InterruptedException {
         byte[] labelBytes = readAllBytes(labelsFile.toPath());
         byte[] imageBytes = readAllBytes(imagesFile.toPath());
 
