@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.baeldung.hexagonal.adapter.out.NotificationRepositoryImplementation;
 import com.baeldung.hexagonal.core.model.Notification;
 import com.baeldung.hexagonal.port.in.NotificationService;
+import com.baeldung.hexagonal.port.out.NotificationRepository;
 
 /**
  * Implementation of Service
@@ -20,7 +21,7 @@ import com.baeldung.hexagonal.port.in.NotificationService;
 public class NotificationServiceImpl implements NotificationService {
 
     @Autowired
-    private NotificationRepositoryImplementation notificationRepository;
+    private NotificationRepository notificationRepository;
 
     @Override
     public void createNotification(Notification notification) {
