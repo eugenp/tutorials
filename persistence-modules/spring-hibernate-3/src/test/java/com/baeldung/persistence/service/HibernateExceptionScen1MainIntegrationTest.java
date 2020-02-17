@@ -1,7 +1,7 @@
-package org.baeldung.persistence.service;
+package com.baeldung.persistence.service;
 
-import org.baeldung.persistence.model.Event;
-import org.baeldung.spring.PersistenceConfig;
+import com.baeldung.persistence.model.Event;
+import com.baeldung.spring.PersistenceConfigHibernate3;
 import org.hamcrest.core.IsInstanceOf;
 import org.hibernate.HibernateException;
 import org.junit.Ignore;
@@ -14,11 +14,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class HibernateExceptionScen2MainIntegrationTest {
-    
+@ContextConfiguration(classes = { PersistenceConfigHibernate3.class }, loader = AnnotationConfigContextLoader.class)
+public class HibernateExceptionScen1MainIntegrationTest {
+
     @Autowired
     EventService service;
     
@@ -27,7 +26,7 @@ public class HibernateExceptionScen2MainIntegrationTest {
     
     @Test
     public final void whenEntityIsCreated_thenNoExceptions() {
-        service.create(new Event("from AnnotationSessionFactoryBean"));
+        service.create(new Event("from LocalSessionFactoryBean"));
     }
     
     @Test
@@ -37,7 +36,6 @@ public class HibernateExceptionScen2MainIntegrationTest {
         expectedEx.expectMessage("No Hibernate Session bound to thread, "
              + "and configuration does not allow creation "
              + "of non-transactional one here");
-        service.create(new Event("from AnnotationSessionFactoryBean"));
+        service.create(new Event("from LocalSessionFactoryBean"));
     }
-
 }

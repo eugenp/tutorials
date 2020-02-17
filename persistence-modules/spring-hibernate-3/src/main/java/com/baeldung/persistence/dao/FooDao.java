@@ -1,6 +1,6 @@
-package org.baeldung.persistence.dao;
+package com.baeldung.persistence.dao;
 
-import org.baeldung.persistence.model.Foo;
+import com.baeldung.persistence.model.Foo;
 import org.springframework.stereotype.Repository;
 
 @Repository
