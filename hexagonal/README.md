@@ -2,11 +2,7 @@
 
 ## How to run
 ```sh
-# Mac or Linux
-./mvnw
-
-# Windos
-mvnw
+mvn spring-boot:run
 ```
 
 ## Example requests
