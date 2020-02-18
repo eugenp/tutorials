@@ -65,10 +65,10 @@
 
     <properties>
         <jcabi-aspects.version>0.22.6</jcabi-aspects.version>
-        <aspectjrt.version>1.9.5</aspectjrt.version>
+        <aspectjrt.version>1.9.2</aspectjrt.version>
         <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
-        <aspectjtools.version>1.9.1</aspectjtools.version>
-        <aspectjweaver.version>1.9.1</aspectjweaver.version>
+        <aspectjtools.version>1.9.2</aspectjtools.version>
+        <aspectjweaver.version>1.9.2</aspectjweaver.version>
     </properties>
 
 </project>
