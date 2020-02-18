@@ -10,7 +10,7 @@ public class SuppressedExceptionsDemo {
         try {
             fileIn = new FileInputStream(filePath);
         } catch (IOException e) {
-            
+            throw new IOException(e.getMessage());
         } finally {
             fileIn.close();
         }
