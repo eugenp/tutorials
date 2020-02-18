@@ -472,7 +472,6 @@
                 <module>javax-servlets</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>jcabi</module>
                 <module>jee-7</module>
                 <module>jee-7-security</module>
                 <module>jee-kotlin</module>
@@ -983,7 +982,6 @@
                 <module>javax-servlets</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>jcabi</module>
                 <module>jee-7</module>
                 <module>jee-7-security</module>
                 <module>jee-kotlin</module>
