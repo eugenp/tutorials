@@ -11,7 +11,7 @@
 
     <bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="org.baeldung.persistence.model"/>
+        <property name="packagesToScan" value="com.baeldung.persistence.model"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
             <!-- <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" /> <property name="generateDdl" value="${jpa.generateDdl}" /> <property name="databasePlatform" 
