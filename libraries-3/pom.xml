@@ -73,6 +73,11 @@
             <version>${cache2k.version}</version>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>org.takes</groupId>
+            <artifactId>takes</artifactId>
+            <version>1.19</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -81,6 +86,37 @@
             <url>https://jitpack.io</url>
         </repository>
     </repositories>
+    
+    <profiles>
+        <profile>
+            <id>hit-refresh</id>
+            <build>
+		        <plugins>
+		            <plugin>
+		                <groupId>org.codehaus.mojo</groupId>
+		                <artifactId>exec-maven-plugin</artifactId>
+		                <version>1.6.0</version>
+		                <executions>
+		                    <execution>
+		                        <id>start-server</id>
+		                        <phase>pre-integration-test</phase>
+		                        <goals>
+		                            <goal>java</goal>
+		                        </goals>
+		                    </execution>
+		                </executions>
+		                <configuration>
+		                    <mainClass>com.baeldung.takes.TakesApp</mainClass>
+		                    <cleanupDaemonThreads>false</cleanupDaemonThreads>
+		                    <arguments>
+		                        <argument>--port=${port}</argument>
+		                    </arguments>
+		                </configuration>
+		            </plugin>
+		        </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <properties>
         <jcommander.version>1.78</jcommander.version>
