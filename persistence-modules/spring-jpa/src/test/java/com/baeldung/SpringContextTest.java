@@ -1,6 +1,6 @@
 package com.baeldung;
 
-import org.baeldung.config.PersistenceJPAConfig;
+import com.baeldung.config.PersistenceJPAConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.annotation.DirtiesContext;
