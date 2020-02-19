@@ -1,4 +1,4 @@
-package com.baeldung.scheduling;
+package com.baeldung.scheduling.conditional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
