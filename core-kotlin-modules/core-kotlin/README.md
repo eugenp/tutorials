@@ -15,4 +15,5 @@ This module contains articles about Kotlin core features.
 - [Converting Kotlin Data Class from JSON using GSON](https://www.baeldung.com/kotlin-json-convert-data-class)
 - [Fuel HTTP Library with Kotlin](https://www.baeldung.com/kotlin-fuel)
 - [Introduction to Kovenant Library for Kotlin](https://www.baeldung.com/kotlin-kovenant)
+- [Dependency Injection for Kotlin with Injekt](https://www.baeldung.com/kotlin-dependency-injection-with-injekt)
 - [[More --> ]](/core-kotlin-modules/core-kotlin-2)
