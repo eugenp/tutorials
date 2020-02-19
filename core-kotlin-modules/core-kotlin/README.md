@@ -14,4 +14,5 @@ This module contains articles about Kotlin core features.
 - [JUnit 5 for Kotlin Developers](https://www.baeldung.com/junit-5-kotlin)
 - [Converting Kotlin Data Class from JSON using GSON](https://www.baeldung.com/kotlin-json-convert-data-class)
 - [Fuel HTTP Library with Kotlin](https://www.baeldung.com/kotlin-fuel)
+- [Introduction to Kovenant Library for Kotlin](https://www.baeldung.com/kotlin-kovenant)
 - [[More --> ]](/core-kotlin-modules/core-kotlin-2)
