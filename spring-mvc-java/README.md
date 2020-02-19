@@ -16,3 +16,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring MVC @PathVariable with a dot (.) gets truncated](https://www.baeldung.com/spring-mvc-pathvariable-dot)
 - [Working with Date Parameters in Spring](https://www.baeldung.com/spring-date-parameters)
 - [A Java Web Application Without a web.xml](https://www.baeldung.com/java-web-app-without-web-xml)
+- [Accessing Spring MVC Model Objects in JavaScript](https://www.baeldung.com/spring-mvc-model-objects-js)

@@ -106,7 +106,7 @@
                             <arguments>
                                 <argument>java</argument>
                                 <argument>-jar</argument>
-                                <argument>sample-blade-app.jar</argument>
+                                <argument>blade.jar</argument>
                             </arguments>
                         </configuration>
                     </execution>
