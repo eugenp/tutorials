@@ -638,10 +638,10 @@
 
                 <module>spring-batch</module>
                 <module>spring-bom</module>
+                <module>spring-boot-modules</module>
                 <module>spring-boot-parent</module>
                 <module>spring-boot-rest</module>
-                <module>spring-boot-security</module>
-
+              
                 <module>spring-caching</module>
 
                 <module>spring-cloud</module>
@@ -692,6 +692,7 @@
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
+                <module>spring-mvc-java-2</module>
                 <module>spring-mvc-kotlin</module>
 
                 <module>spring-mvc-velocity</module>
@@ -1140,9 +1141,9 @@
 
                 <module>spring-batch</module>
                 <module>spring-bom</module>
+                <module>spring-boot-modules</module>
                 <module>spring-boot-parent</module>
                 <module>spring-boot-rest</module>
-                <module>spring-boot-security</module>
 
                 <module>spring-caching</module>
 
@@ -1194,6 +1195,7 @@
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
+				<module>spring-mvc-java-2</module>
                 <module>spring-mvc-kotlin</module>
 
                 <module>spring-mvc-velocity</module>
