@@ -1,5 +1,6 @@
-package com.baeldung.hexagonalarchitecture;
+package com.baeldung.hexagonalarchitecture.adapters.driven;
 
+import com.baeldung.hexagonalarchitecture.application.ports.LoggerPort;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 

@@ -1,6 +1,6 @@
 package com.baeldung.hexagonalarchitecture.test;
 
-import com.baeldung.hexagonalarchitecture.LoggerPort;
+import com.baeldung.hexagonalarchitecture.application.ports.LoggerPort;
 
 import java.util.ArrayList;
 import java.util.List;
