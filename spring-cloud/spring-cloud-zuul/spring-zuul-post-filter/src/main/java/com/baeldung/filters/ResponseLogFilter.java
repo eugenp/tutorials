@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.POST_TYPE;
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
 @Component
 public class ResponseLogFilter extends ZuulFilter {
@@ -50,7 +51,7 @@ public class ResponseLogFilter extends ZuulFilter {
             context.setResponseBody(responseData);
         }
         catch (Exception e) {
-            logger.error("error occurred at response log filter", e);
+            throw new ZuulException(e, INTERNAL_SERVER_ERROR.value(), e.getMessage());
         }
 
         return null;
