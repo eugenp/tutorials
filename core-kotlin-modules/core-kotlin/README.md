@@ -13,4 +13,5 @@ This module contains articles about Kotlin core features.
 - [Implementing a Binary Tree in Kotlin](https://www.baeldung.com/kotlin-binary-tree)
 - [JUnit 5 for Kotlin Developers](https://www.baeldung.com/junit-5-kotlin)
 - [Converting Kotlin Data Class from JSON using GSON](https://www.baeldung.com/kotlin-json-convert-data-class)
+- [Fuel HTTP Library with Kotlin](https://www.baeldung.com/kotlin-fuel)
 - [[More --> ]](/core-kotlin-modules/core-kotlin-2)
