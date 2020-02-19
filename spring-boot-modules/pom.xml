@@ -17,6 +17,7 @@
         <module>spring-boot</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
+        <module>spring-boot-annotations</module>
         <module>spring-boot-artifacts</module>
         <module>spring-boot-autoconfiguration</module>
         <module>spring-boot-bootstrap</module>
