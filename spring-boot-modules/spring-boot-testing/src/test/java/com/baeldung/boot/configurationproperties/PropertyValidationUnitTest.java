@@ -18,20 +18,22 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @TestPropertySource("classpath:property-validation-test.properties")
 public class PropertyValidationUnitTest {
 
-	@Autowired
-	private MailServer mailServer;
+    @Autowired
+    private MailServer mailServer;
 
-	private static Validator propertyValidator;
+    private static Validator propertyValidator;
 
-	@BeforeAll
-	public static void setup() {
-		propertyValidator = Validation.buildDefaultValidatorFactory().getValidator();
-	}
+    @BeforeAll
+    public static void setup() {
+        propertyValidator = Validation.buildDefaultValidatorFactory()
+            .getValidator();
+    }
 
-	@Test
-	void whenBindingPropertiesToValidatedBeans_thenConstrainsAreChecked() {
-
-		assertEquals(0, propertyValidator.validate(mailServer.getPropertiesMap()).size());
-		assertEquals(0, propertyValidator.validate(mailServer.getMailConfig()).size());
-	}
+    @Test
+    void whenBindingPropertiesToValidatedBeans_thenConstrainsAreChecked() {
+        assertEquals(0, propertyValidator.validate(mailServer.getPropertiesMap())
+            .size());
+        assertEquals(0, propertyValidator.validate(mailServer.getMailConfig())
+            .size());
+    }
 }
