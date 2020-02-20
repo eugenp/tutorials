@@ -28,10 +28,24 @@ public class ExamplePostController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @PostMapping(value = "/response", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping("/response")
     @ResponseBody
     public ResponseTransfer postResponseController(@RequestBody LoginForm loginForm) {
         log.debug("POST received - serializing LoginForm: " + loginForm.getPassword() + " " + loginForm.getUsername());
         return new ResponseTransfer("Thanks For Posting!!!");
+    }
+
+    @PostMapping(value = "/content", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseTransfer postResponseJsonContent(@RequestBody LoginForm loginForm) {
+        log.debug("POST received - serializing LoginForm: " + loginForm.getPassword() + " " + loginForm.getUsername());
+        return new ResponseTransfer("JSON Content!");
+    }
+
+    @PostMapping(value = "/content", produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    public ResponseTransfer postResponseXmlContent(@RequestBody LoginForm loginForm) {
+        log.debug("POST received - serializing LoginForm: " + loginForm.getPassword() + " " + loginForm.getUsername());
+        return new ResponseTransfer("XML Content!");
     }
 }
