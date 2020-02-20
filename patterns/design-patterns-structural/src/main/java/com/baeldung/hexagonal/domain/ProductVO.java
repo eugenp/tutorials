@@ -1,6 +1,6 @@
 package com.baeldung.hexagonal.domain;
 
-public class ProductVO implements IValueObject {
+public class ProductVO {
     private String name;
 
     public ProductVO(String name) {
@@ -8,7 +8,6 @@ public class ProductVO implements IValueObject {
     }
 
     //getters and setters...
-    @Override
     public String getName() {
         return name;
     }

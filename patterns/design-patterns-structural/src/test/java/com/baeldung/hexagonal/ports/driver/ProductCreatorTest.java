@@ -29,7 +29,7 @@ class ProductCreatorTest {
         ProductRequest request = new ProductRequest(vo);
 
         //when
-        ProductCreator creator = new ProductCreator(service, notifier);
+        ProductCreator creator = new ProductCreator(service);
         ProductResponse response = creator.execute(request);
 
         //then

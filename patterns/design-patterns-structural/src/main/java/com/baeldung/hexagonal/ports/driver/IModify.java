@@ -1,7 +1,9 @@
 package com.baeldung.hexagonal.ports.driver;
 
-public interface IModify<INPUT, OUTPUT> {
+import com.baeldung.hexagonal.bridge.IBridge;
 
+public interface IModify<INPUT, OUTPUT> {
     OUTPUT execute(INPUT params);
 
+    IBridge<INPUT, OUTPUT> getBridge();
 }

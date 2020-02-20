@@ -1,5 +1,6 @@
 package com.baeldung.hexagonal.adapter.driver;
 
+import com.baeldung.hexagonal.bridge.IBridge;
 import com.baeldung.hexagonal.bridge.ProductRequest;
 import com.baeldung.hexagonal.bridge.ProductResponse;
 import com.baeldung.hexagonal.bridge.ProductService;
@@ -15,8 +16,11 @@ public class ProductProvider implements IProvide<ProductRequest, ProductResponse
         this.service = service;
     }
 
-    @Override
-    public List<ProductResponse> list() {
+    @Override public List<ProductResponse> list() {
         return service.list();
+    }
+
+    @Override public IBridge<ProductRequest, ProductResponse> getBridge() {
+        return service;
     }
 }

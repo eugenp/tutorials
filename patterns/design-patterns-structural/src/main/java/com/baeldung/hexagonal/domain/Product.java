@@ -2,20 +2,18 @@ package com.baeldung.hexagonal.domain;
 
 import java.util.UUID;
 
-public class Product implements IEntity {
+public class Product {
 
     private UUID id;
     private String name;
 
     // getters setters
 
-
     public Product(String name) {
         this.id = UUID.randomUUID();
         this.name = name;
     }
 
-    @Override
     public UUID getId() {
         return id;
     }
@@ -24,7 +22,6 @@ public class Product implements IEntity {
         this.id = id;
     }
 
-    @Override
     public String getName() {
         return name;
     }
