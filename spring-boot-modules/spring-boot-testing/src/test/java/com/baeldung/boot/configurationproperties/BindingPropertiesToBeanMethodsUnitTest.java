@@ -19,16 +19,18 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @TestPropertySource("classpath:server-config-test.properties")
 public class BindingPropertiesToBeanMethodsUnitTest {
 
-	@Autowired
-	private ServerConfigFactory configFactory;
+    @Autowired
+    private ServerConfigFactory configFactory;
 
-	@Test
-	void givenBeanAnnotatedMethod_whenBindingProperties_thenAllFieldsAreSet() {
+    @Test
+    void givenBeanAnnotatedMethod_whenBindingProperties_thenAllFieldsAreSet() {
+        assertEquals("192.168.0.2", configFactory.getDefaultConfigs()
+            .getAddress()
+            .getIp());
 
-		assertEquals("192.168.0.2", configFactory.getDefaultConfigs().getAddress().getIp());
-
-		Map<String, String> expectedResourcesPath = new HashMap<>();
-		expectedResourcesPath.put("imgs", "/root/def/imgs");
-		assertEquals(expectedResourcesPath, configFactory.getDefaultConfigs().getResourcesPath());
-	}
+        Map<String, String> expectedResourcesPath = new HashMap<>();
+        expectedResourcesPath.put("imgs", "/root/def/imgs");
+        assertEquals(expectedResourcesPath, configFactory.getDefaultConfigs()
+            .getResourcesPath());
+    }
 }

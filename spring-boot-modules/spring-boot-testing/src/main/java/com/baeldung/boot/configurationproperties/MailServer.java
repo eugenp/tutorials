@@ -19,41 +19,41 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class MailServer {
 
-	@NotNull
-	@NotEmpty
-	private Map<String, @NotBlank String> propertiesMap;
+    @NotNull
+    @NotEmpty
+    private Map<String, @NotBlank String> propertiesMap;
 
-	@Valid
-	private MailConfig mailConfig = new MailConfig();
+    @Valid
+    private MailConfig mailConfig = new MailConfig();
 
-	public static class MailConfig {
+    public static class MailConfig {
 
-		@NotBlank
-		@Email
-		private String address;
+        @NotBlank
+        @Email
+        private String address;
 
-		public String getAddress() {
-			return address;
-		}
+        public String getAddress() {
+            return address;
+        }
 
-		public void setAddress(String address) {
-			this.address = address;
-		}
-	}
+        public void setAddress(String address) {
+            this.address = address;
+        }
+    }
 
-	public Map<String, String> getPropertiesMap() {
-		return propertiesMap;
-	}
+    public Map<String, String> getPropertiesMap() {
+        return propertiesMap;
+    }
 
-	public void setPropertiesMap(Map<String, String> propertiesMap) {
-		this.propertiesMap = propertiesMap;
-	}
+    public void setPropertiesMap(Map<String, String> propertiesMap) {
+        this.propertiesMap = propertiesMap;
+    }
 
-	public MailConfig getMailConfig() {
-		return mailConfig;
-	}
+    public MailConfig getMailConfig() {
+        return mailConfig;
+    }
 
-	public void setMailConfig(MailConfig mailConfig) {
-		this.mailConfig = mailConfig;
-	}
+    public void setMailConfig(MailConfig mailConfig) {
+        this.mailConfig = mailConfig;
+    }
 }

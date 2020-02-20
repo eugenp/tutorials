@@ -13,55 +13,55 @@ import org.springframework.util.unit.DataUnit;
 @ConfigurationProperties(prefix = "server")
 public class PropertyConversion {
 
-	private DataSize uploadSpeed;
+    private DataSize uploadSpeed;
 
-	@DataSizeUnit(DataUnit.GIGABYTES)
-	private DataSize downloadSpeed;
+    @DataSizeUnit(DataUnit.GIGABYTES)
+    private DataSize downloadSpeed;
 
-	private Duration backupDay;
+    private Duration backupDay;
 
-	@DurationUnit(ChronoUnit.HOURS)
-	private Duration backupHour;
+    @DurationUnit(ChronoUnit.HOURS)
+    private Duration backupHour;
 
-	private Credentials credentials;
+    private Credentials credentials;
 
-	public Duration getBackupDay() {
-		return backupDay;
-	}
+    public Duration getBackupDay() {
+        return backupDay;
+    }
 
-	public void setBackupDay(Duration backupDay) {
-		this.backupDay = backupDay;
-	}
+    public void setBackupDay(Duration backupDay) {
+        this.backupDay = backupDay;
+    }
 
-	public Duration getBackupHour() {
-		return backupHour;
-	}
+    public Duration getBackupHour() {
+        return backupHour;
+    }
 
-	public void setBackupHour(Duration backupHour) {
-		this.backupHour = backupHour;
-	}
+    public void setBackupHour(Duration backupHour) {
+        this.backupHour = backupHour;
+    }
 
-	public DataSize getUploadSpeed() {
-		return uploadSpeed;
-	}
+    public DataSize getUploadSpeed() {
+        return uploadSpeed;
+    }
 
-	public void setUploadSpeed(DataSize uploadSpeed) {
-		this.uploadSpeed = uploadSpeed;
-	}
+    public void setUploadSpeed(DataSize uploadSpeed) {
+        this.uploadSpeed = uploadSpeed;
+    }
 
-	public DataSize getDownloadSpeed() {
-		return downloadSpeed;
-	}
+    public DataSize getDownloadSpeed() {
+        return downloadSpeed;
+    }
 
-	public void setDownloadSpeed(DataSize downloadSpeed) {
-		this.downloadSpeed = downloadSpeed;
-	}
+    public void setDownloadSpeed(DataSize downloadSpeed) {
+        this.downloadSpeed = downloadSpeed;
+    }
 
-	public Credentials getCredentials() {
-		return credentials;
-	}
+    public Credentials getCredentials() {
+        return credentials;
+    }
 
-	public void setCredentials(Credentials credentials) {
-		this.credentials = credentials;
-	}
+    public void setCredentials(Credentials credentials) {
+        this.credentials = credentials;
+    }
 }

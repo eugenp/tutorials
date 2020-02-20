@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ServerConfigFactory {
 
-	@Bean
-	@ConfigurationProperties(prefix = "server.default")
-	public ServerConfig getDefaultConfigs() {
-		return new ServerConfig();
-	}
+    @Bean
+    @ConfigurationProperties(prefix = "server.default")
+    public ServerConfig getDefaultConfigs() {
+        return new ServerConfig();
+    }
 }

@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 @ConfigurationPropertiesBinding
 public class CustomCredentialsConverter implements Converter<String, Credentials> {
 
-	@Override
-	public Credentials convert(String source) {
-		String data[] = source.split(",");
-		return new Credentials(data[0], data[1]);
-	}
+    @Override
+    public Credentials convert(String source) {
+        String[] data = source.split(",");
+        return new Credentials(data[0], data[1]);
+    }
 }

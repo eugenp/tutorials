@@ -18,16 +18,16 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ActiveProfiles("test")
 public class BindingYMLPropertiesUnitTest {
 
-	@Autowired
-	private ServerConfig serverConfig;
+    @Autowired
+    private ServerConfig serverConfig;
 
-	@Test
-	void whenBindingYMLConfigFile_thenAllFieldsAreSet() {
+    @Test
+    void whenBindingYMLConfigFile_thenAllFieldsAreSet() {
+        assertEquals("192.168.0.4", serverConfig.getAddress()
+            .getIp());
 
-		assertEquals("192.168.0.4", serverConfig.getAddress().getIp());
-
-		Map<String, String> expectedResourcesPath = new HashMap<>();
-		expectedResourcesPath.put("imgs", "/etc/test/imgs");
-		assertEquals(expectedResourcesPath, serverConfig.getResourcesPath());
-	}
+        Map<String, String> expectedResourcesPath = new HashMap<>();
+        expectedResourcesPath.put("imgs", "/etc/test/imgs");
+        assertEquals(expectedResourcesPath, serverConfig.getResourcesPath());
+    }
 }
