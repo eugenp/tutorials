@@ -12,17 +12,17 @@ import org.junit.Test;
 
 public class ArrayUnitTest {
     @Test
-    public void serialize() {
+    public void whenSerializingList_thenJsonArrayProduced() {
         Moshi moshi = new Moshi.Builder().build();
         Type type = Types.newParameterizedType(List.class, String.class);
         JsonAdapter<List<String>> jsonAdapter = moshi.adapter(type);
 
-String json = jsonAdapter.toJson(Arrays.asList("One", "Two", "Three"));
+        String json = jsonAdapter.toJson(Arrays.asList("One", "Two", "Three"));
         System.out.println(json);
     }
 
     @Test
-    public void deserialize() throws IOException {
+    public void whenDeserializingJsonArray_thenListProduced() throws IOException {
         Moshi moshi = new Moshi.Builder().build();
         Type type = Types.newParameterizedType(List.class, String.class);
         JsonAdapter<List<String>> jsonAdapter = moshi.adapter(type);

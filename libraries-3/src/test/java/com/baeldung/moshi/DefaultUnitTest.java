@@ -11,7 +11,7 @@ import org.junit.Test;
 public class DefaultUnitTest {
 
     @Test
-    public void deserialize() throws IOException {
+    public void whenDeserializing_thenFieldsGetDefaultValues() throws IOException {
         Moshi moshi = new Moshi.Builder()
             .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);

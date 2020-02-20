@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class PrimitiveUnitTest {
     @Test
-    public void serialize() {
+    public void whenSerializing_thenCorrectJsonProduced() {
         Moshi moshi = new Moshi.Builder().build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
@@ -19,7 +19,7 @@ public class PrimitiveUnitTest {
     }
 
     @Test
-    public void deserialize() throws IOException {
+    public void whenDeserializing_thenCorrectJsonConsumed() throws IOException {
         Moshi moshi = new Moshi.Builder().build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 

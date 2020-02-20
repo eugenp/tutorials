@@ -14,7 +14,7 @@ import org.junit.Test;
 
 public class ComplexAdapterUnitTest {
     @Test
-    public void serialize() {
+    public void whenSerializing_thenCorrectJsonProduced() {
         Moshi moshi = new Moshi.Builder()
             .add(new JsonDateTimeAdapter())
             .build();
@@ -25,7 +25,7 @@ public class ComplexAdapterUnitTest {
     }
 
     @Test
-    public void deserialize() throws IOException {
+    public void whenDeserializing_thenCorrectJsonConsumed() throws IOException {
         Moshi moshi = new Moshi.Builder()
             .add(new JsonDateTimeAdapter())
             .build();

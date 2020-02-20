@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 public class TransientUnitTest {
 
     @Test
-    public void serialize() {
+    public void whenSerializing_thenTransientFieldIgnored() {
         Moshi moshi = new Moshi.Builder()
             .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
@@ -21,7 +21,7 @@ public class TransientUnitTest {
     }
 
     @Test
-    public void deserialize() throws IOException {
+    public void whenDeserializing_thenTransientFieldIgnored() throws IOException {
         Moshi moshi = new Moshi.Builder()
             .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);

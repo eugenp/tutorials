@@ -17,7 +17,7 @@ import org.junit.Test;
 
 public class AlternativeAdapterUnitTest {
     @Test
-    public void serialize() {
+    public void whenSerializing_thenAlternativeAdapterUsed() {
         Moshi moshi = new Moshi.Builder()
             .add(new EpochMillisAdapter())
             .build();
@@ -28,7 +28,7 @@ public class AlternativeAdapterUnitTest {
     }
 
     @Test
-    public void deserialize() throws IOException {
+    public void whenDeserializing_thenAlternativeAdapterUsed() throws IOException {
         Moshi moshi = new Moshi.Builder()
             .add(new EpochMillisAdapter())
             .build();

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class RenameUnitTest {
 
     @Test
-    public void serialize() {
+    public void whenSerializing_thenFieldsGetRenamed() {
         Moshi moshi = new Moshi.Builder()
             .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
@@ -22,7 +22,7 @@ public class RenameUnitTest {
     }
 
     @Test
-    public void deserialize() throws IOException {
+    public void whenSerializing_thenRenamedFieldsGetConsumed() throws IOException {
         Moshi moshi = new Moshi.Builder()
             .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);

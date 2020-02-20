@@ -13,7 +13,7 @@ import org.junit.Test;
 
 public class SimpleAdapterUnitTest {
     @Test
-    public void serialize() {
+    public void whenSerializing_thenAdapterUsed() {
         Moshi moshi = new Moshi.Builder()
             .add(new AuthorAdapter())
             .build();
@@ -25,7 +25,7 @@ public class SimpleAdapterUnitTest {
     }
 
     @Test
-    public void deserialize() throws IOException {
+    public void whenDeserializing_thenAdapterUsed() throws IOException {
         Moshi moshi = new Moshi.Builder()
             .add(new AuthorAdapter())
             .build();
