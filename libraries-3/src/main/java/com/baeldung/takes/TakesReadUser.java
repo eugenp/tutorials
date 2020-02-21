@@ -13,7 +13,6 @@ import org.takes.Request;
 import org.takes.Response;
 import org.takes.Take;
 import org.takes.misc.Href;
-import org.takes.misc.VerboseIterable;
 import org.takes.rq.RqHref;
 import org.takes.rs.RsJson;
 

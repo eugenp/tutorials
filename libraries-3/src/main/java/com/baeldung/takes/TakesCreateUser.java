@@ -1,7 +1,6 @@
 package com.baeldung.takes;
 
 import java.io.IOException;
-import java.net.URI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -9,12 +8,9 @@ import java.sql.SQLException;
 import org.takes.Request;
 import org.takes.Response;
 import org.takes.Take;
-import org.takes.misc.Href;
 import org.takes.rq.RqForm;
-import org.takes.rq.RqHref;
 import org.takes.rq.form.RqFormSmart;
-import org.takes.rs.RsHtml;
-import org.takes.rs.RsVelocity;
+import org.takes.rs.RsWithStatus;
 
 public final class TakesCreateUser implements Take {
     
@@ -43,7 +39,7 @@ public final class TakesCreateUser implements Take {
             e.printStackTrace();
         }
 
-        return new RsHtml(new RsVelocity(this.getClass().getResource("/templates/index.vm") ,new RsVelocity.Pair("userName", "Anshul")));
+        return new RsWithStatus(200);
     }
 
 }
