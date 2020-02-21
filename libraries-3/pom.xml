@@ -78,6 +78,28 @@
             <artifactId>takes</artifactId>
             <version>1.19</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+        <dependency>
+		    <groupId>javax.json</groupId>
+		    <artifactId>javax.json-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+		    <artifactId>javax.json</artifactId>
+		    <version>1.1</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -87,10 +109,29 @@
         </repository>
     </repositories>
     
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/webapp</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+    
     <profiles>
         <profile>
             <id>hit-refresh</id>
             <build>
+	            <resources>
+	                <resource>
+	                    <directory>src/main/resources</directory>
+	                    <filtering>true</filtering>
+	                </resource>
+	            </resources>
 		        <plugins>
 		            <plugin>
 		                <groupId>org.codehaus.mojo</groupId>
