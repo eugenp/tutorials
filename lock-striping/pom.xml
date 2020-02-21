@@ -1,31 +1,31 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.baeldung.concurrent.lock</groupId>
-  <artifactId>lock-striping</artifactId>
+  <artifactId>core-java-concurrency-collections-2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
+
   <properties>
       <jmh.version>1.21</jmh.version>
       <guava.version>28.2-jre</guava.version>
   </properties>
-    
+
   <dependencies>
-	<dependency>
-	    <groupId>com.google.guava</groupId>
-	    <artifactId>guava</artifactId>
-	    <version>${guava.version}</version>
-	</dependency>	
-	<dependency>
-	    <groupId>org.openjdk.jmh</groupId>
-	    <artifactId>jmh-core</artifactId>
-	    <version>${jmh.version}</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.openjdk.jmh</groupId>
-	    <artifactId>jmh-generator-annprocess</artifactId>
-	    <version>${jmh.version}</version>
-	</dependency>
-	
+    <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+    </dependency>    
+    <dependency>
+        <groupId>org.openjdk.jmh</groupId>
+        <artifactId>jmh-core</artifactId>
+        <version>${jmh.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.openjdk.jmh</groupId>
+        <artifactId>jmh-generator-annprocess</artifactId>
+        <version>${jmh.version}</version>
+    </dependency>
+
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
