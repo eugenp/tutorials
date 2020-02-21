@@ -69,7 +69,7 @@ public class SortComparisonUnitTest {
     }
 
     @Test
-    public void givenArrayOfIntegers_whenUsingArraysSortMethodWithRange_thenSortRangeOfArrayInAscendingOrder() {
+    public void givenArrayOfIntegers_whenUsingArraysSortWithRange_thenSortRangeOfArrayAsc() {
         int[] array = { 10, 4, 6, 2, 1, 9, 7, 8, 3, 5 };
         int[] expected = { 10, 4, 1, 2, 6, 7, 8, 9, 3, 5 };
 
@@ -89,7 +89,7 @@ public class SortComparisonUnitTest {
     }
 
     @Test
-    public void givenArrayOfIntegers_whenUsingArraysParallelSortMethodWithRange_thenSortRangeOfArrayInAscendingOrder() {
+    public void givenArrayOfIntegers_whenUsingArraysParallelSortWithRange_thenSortRangeOfArrayAsc() {
         int[] array = { 10, 4, 6, 2, 1, 9, 7, 8, 3, 5 };
         int[] expected = { 10, 4, 1, 2, 6, 7, 8, 9, 3, 5 };
 

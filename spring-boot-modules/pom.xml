@@ -17,6 +17,7 @@
         <module>spring-boot</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
+        <module>spring-boot-annotations</module>
         <module>spring-boot-artifacts</module>
         <module>spring-boot-autoconfiguration</module>
         <module>spring-boot-bootstrap</module>
@@ -46,6 +47,7 @@
         <module>spring-boot-properties</module>
         <module>spring-boot-property-exp</module>
         <module>spring-boot-runtime</module>
+        <module>spring-boot-security</module>
         <module>spring-boot-springdoc</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-vue</module>

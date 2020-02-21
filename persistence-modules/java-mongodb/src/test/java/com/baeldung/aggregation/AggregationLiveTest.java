@@ -57,11 +57,11 @@ public class AggregationLiveTest {
     }
 
     @Test
-    public void givenCountryCollection_whenNAFTACountriesCounted_thenThree() {
-        Document naftaCountries = collection.aggregate(Arrays.asList(match(Filters.eq("regionalBlocs.acronym", "NAFTA")), count()))
+    public void givenCountryCollection_whenEnglishSpeakingCountriesCounted_thenNinetyOne() {
+        Document englishSpeakingCountries = collection.aggregate(Arrays.asList(match(Filters.eq("languages.name", "English")), count()))
             .first();
 
-        assertEquals(3, naftaCountries.get("count"));
+        assertEquals(91, englishSpeakingCountries.get("count"));
     }
 
     @Test
