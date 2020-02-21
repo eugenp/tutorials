@@ -45,11 +45,7 @@ public class SimpleAdapterUnitTest {
         @FromJson
         public Author fromJson(String author) {
             Matcher matcher = pattern.matcher(author);
-            if (matcher.find()) {
-                return new Author(matcher.group(1), matcher.group(2));
-            } else {
-                return null;
-            }
+            return matcher.find() ? new Author(matcher.group(1), matcher.group(2)) : null;
         }
     }
 
