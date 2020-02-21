@@ -13,7 +13,7 @@ public class DefaultUnitTest {
     @Test
     public void whenDeserializing_thenFieldsGetDefaultValues() throws IOException {
         Moshi moshi = new Moshi.Builder()
-            .build();
+          .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
         String json = "{\"title\":\"My Post\"}";

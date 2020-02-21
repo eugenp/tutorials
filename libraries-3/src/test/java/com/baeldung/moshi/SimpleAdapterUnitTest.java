@@ -15,8 +15,8 @@ public class SimpleAdapterUnitTest {
     @Test
     public void whenSerializing_thenAdapterUsed() {
         Moshi moshi = new Moshi.Builder()
-            .add(new AuthorAdapter())
-            .build();
+          .add(new AuthorAdapter())
+          .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
         Post post = new Post("My Post", new Author("Baeldung", "baeldung@example.com"), "This is my post");
@@ -27,8 +27,8 @@ public class SimpleAdapterUnitTest {
     @Test
     public void whenDeserializing_thenAdapterUsed() throws IOException {
         Moshi moshi = new Moshi.Builder()
-            .add(new AuthorAdapter())
-            .build();
+          .add(new AuthorAdapter())
+          .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
         String json = "{\"author\":\"Baeldung <baeldung@example.com>\",\"text\":\"This is my post\",\"title\":\"My Post\"}";
@@ -127,7 +127,7 @@ public class SimpleAdapterUnitTest {
         @Override
         public String toString() {
             return new ToStringBuilder(this).append("title", title).append("author", author).append("text", text)
-                .toString();
+              .toString();
         }
     }
 }

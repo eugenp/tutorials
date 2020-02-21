@@ -19,8 +19,8 @@ public class AlternativeAdapterUnitTest {
     @Test
     public void whenSerializing_thenAlternativeAdapterUsed() {
         Moshi moshi = new Moshi.Builder()
-            .add(new EpochMillisAdapter())
-            .build();
+          .add(new EpochMillisAdapter())
+          .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
         String json = jsonAdapter.toJson(new Post("Introduction to Moshi Json", "Baeldung", Instant.now()));
@@ -30,8 +30,8 @@ public class AlternativeAdapterUnitTest {
     @Test
     public void whenDeserializing_thenAlternativeAdapterUsed() throws IOException {
         Moshi moshi = new Moshi.Builder()
-            .add(new EpochMillisAdapter())
-            .build();
+          .add(new EpochMillisAdapter())
+          .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
         String json = "{\"author\":\"Baeldung\",\"posted\":1582095269204,\"title\":\"Introduction to Moshi Json\"}";

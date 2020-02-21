@@ -13,7 +13,8 @@ import org.junit.Test;
 public class ArrayUnitTest {
     @Test
     public void whenSerializingList_thenJsonArrayProduced() {
-        Moshi moshi = new Moshi.Builder().build();
+        Moshi moshi = new Moshi.Builder()
+          .build();
         Type type = Types.newParameterizedType(List.class, String.class);
         JsonAdapter<List<String>> jsonAdapter = moshi.adapter(type);
 
@@ -23,7 +24,8 @@ public class ArrayUnitTest {
 
     @Test
     public void whenDeserializingJsonArray_thenListProduced() throws IOException {
-        Moshi moshi = new Moshi.Builder().build();
+        Moshi moshi = new Moshi.Builder()
+          .build();
         Type type = Types.newParameterizedType(List.class, String.class);
         JsonAdapter<List<String>> jsonAdapter = moshi.adapter(type);
 
