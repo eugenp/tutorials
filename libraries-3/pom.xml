@@ -121,19 +121,6 @@
     </repositories>
     
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/webapp</directory>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
-    
-    <build>
         <finalName>libraries-3</finalName>
         <plugins>
             <plugin>
@@ -161,6 +148,16 @@
                 </dependencies>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/webapp</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
     
     <profiles>
@@ -172,6 +169,10 @@
 	                    <directory>src/main/resources</directory>
 	                    <filtering>true</filtering>
 	                </resource>
+		            <resource>
+		                <directory>src/main/webapp</directory>
+		                <filtering>true</filtering>
+		            </resource>
 	            </resources>
 		        <plugins>
 		            <plugin>
