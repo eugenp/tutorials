@@ -141,7 +141,7 @@
     
     <profiles>
         <profile>
-            <id>hit-refresh</id>
+            <id>reload</id>
             <build>
                 <resources>
                     <resource>
