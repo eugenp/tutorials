@@ -10,7 +10,7 @@ public class TakesContactUnitTest {
 
     @Test
     public void givenTake_whenInvokeActMethod_thenRespond() throws Exception {
-        String resp = new RsPrint(new TakesContact().act(new RqFake())).printBody();
+        final String resp = new RsPrint(new TakesContact().act(new RqFake())).printBody();
         assertEquals("Contact us at https://www.baeldung.com", resp);
     }
 
