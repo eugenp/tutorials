@@ -13,7 +13,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>..</relativePath>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <modules>
