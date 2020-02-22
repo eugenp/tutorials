@@ -1,12 +1,11 @@
-package org.baeldung;
+package com.baeldung;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.spring.cloud.bootstrap.svcrating.RatingServiceApplication;
-
+import com.baeldung.spring.cloud.bootstrap.gateway.GatewayApplication;
 
 /**
  * 
@@ -15,7 +14,7 @@ import com.baeldung.spring.cloud.bootstrap.svcrating.RatingServiceApplication;
  *
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = RatingServiceApplication.class)
+@SpringBootTest(classes = GatewayApplication.class)
 public class SpringContextLiveTest {
 
     @Test
