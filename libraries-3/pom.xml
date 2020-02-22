@@ -87,29 +87,12 @@
         <dependency>
             <groupId>org.takes</groupId>
             <artifactId>takes</artifactId>
-            <version>1.19</version>
+            <version>${takes.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
-            <version>2.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-            </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-        <dependency>
-		    <groupId>javax.json</groupId>
-		    <artifactId>javax.json-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish</groupId>
-		    <artifactId>javax.json</artifactId>
-		    <version>1.1</version>
+            <version>${velocity-engine-core.version}</version>
         </dependency>
     </dependencies>
 
@@ -150,57 +133,12 @@
         </plugins>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
                 <directory>src/main/webapp</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
     </build>
     
-    <profiles>
-        <profile>
-            <id>hit-refresh</id>
-            <build>
-	            <resources>
-	                <resource>
-	                    <directory>src/main/resources</directory>
-	                    <filtering>true</filtering>
-	                </resource>
-		            <resource>
-		                <directory>src/main/webapp</directory>
-		                <filtering>true</filtering>
-		            </resource>
-	            </resources>
-		        <plugins>
-		            <plugin>
-		                <groupId>org.codehaus.mojo</groupId>
-		                <artifactId>exec-maven-plugin</artifactId>
-		                <version>1.6.0</version>
-		                <executions>
-		                    <execution>
-		                        <id>start-server</id>
-		                        <phase>pre-integration-test</phase>
-		                        <goals>
-		                            <goal>java</goal>
-		                        </goals>
-		                    </execution>
-		                </executions>
-		                <configuration>
-		                    <mainClass>com.baeldung.takes.TakesApp</mainClass>
-		                    <cleanupDaemonThreads>false</cleanupDaemonThreads>
-		                    <arguments>
-		                        <argument>--port=${port}</argument>
-		                    </arguments>
-		                </configuration>
-		            </plugin>
-		        </plugins>
-            </build>
-        </profile>
-    </profiles>
-
     <properties>
         <jcommander.version>1.78</jcommander.version>
         <lombok.version>1.18.6</lombok.version>
@@ -218,5 +156,8 @@
         <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
         <aspectjtools.version>1.9.2</aspectjtools.version>
         <aspectjweaver.version>1.9.2</aspectjweaver.version>
+        
+        <takes.version>1.19</takes.version>
+        <velocity-engine-core.version>2.2</velocity-engine-core.version>
     </properties>
 </project>
