@@ -1,6 +1,6 @@
-package org.baeldung.spring.cloud.vaultsample;
+package com.baeldung.spring.cloud.vaultsample;
 
-import org.baeldung.spring.cloud.vaultsample.domain.Account;
+import com.baeldung.spring.cloud.vaultsample.domain.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.baeldung.spring.cloud.vaultsample;
+package com.baeldung.spring.cloud.vaultsample;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

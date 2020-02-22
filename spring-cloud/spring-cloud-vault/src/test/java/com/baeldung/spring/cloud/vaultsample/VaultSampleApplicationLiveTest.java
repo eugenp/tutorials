@@ -1,4 +1,4 @@
-package org.baeldung.spring.cloud.vaultsample;
+package com.baeldung.spring.cloud.vaultsample;
 
 import static org.junit.Assert.assertEquals;
 
