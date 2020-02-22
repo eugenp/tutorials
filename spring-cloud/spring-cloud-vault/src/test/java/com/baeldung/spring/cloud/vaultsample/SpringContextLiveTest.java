@@ -1,5 +1,6 @@
-package org.baeldung.spring.cloud.vaultsample;
+package com.baeldung.spring.cloud.vaultsample;
 
+import com.baeldung.spring.cloud.vaultsample.VaultSampleApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

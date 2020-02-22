@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.baeldung.spring.cloud.vaultsample.domain;
+package com.baeldung.spring.cloud.vaultsample.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
