@@ -17,7 +17,6 @@
     </parent>
 
     <properties>
-<!--        <spring-boot.version>2.1.9.RELEASE</spring-boot.version>-->
         <java.version>1.8</java.version>
     </properties>
 
