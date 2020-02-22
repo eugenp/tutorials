@@ -18,6 +18,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <springdoc.version>1.2.32</springdoc.version>
     </properties>
 
     <dependencies>
@@ -35,24 +36,8 @@
         <!-- SpringDoc -->
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-core</artifactId>
-            <version>1.1.49</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>io.github.classgraph</groupId>
-                    <artifactId>classgraph</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.1.49</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.classgraph</groupId>
-            <artifactId>classgraph</artifactId>
-            <version>4.8.44</version>
+            <version>${springdoc.version}</version>
         </dependency>
     </dependencies>
 
