@@ -28,7 +28,7 @@ public final class TakesApp {
             new TkFallback(
                 new TkSlf4j(
                     new TkFork(
-                        new FkRegex("/", "Hello, World!"),
+                        new FkRegex("/", new TakesHelloWorld()),
                         new FkRegex("/index", new TakesIndex()),
                         new FkRegex("/contact", new TakesContact()),
                         new FkRegex("/createUser", new TakesCreateUser(TakesApp.dbConnection())),
@@ -46,8 +46,7 @@ public final class TakesApp {
                                 );
                         }
                     })
-                ),
-            6060
+                ), 6060
             ).start(Exit.NEVER);
     }
 

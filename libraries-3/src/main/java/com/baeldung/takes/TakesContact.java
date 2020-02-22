@@ -1,8 +1,5 @@
 package com.baeldung.takes;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 import org.takes.Request;
 import org.takes.Response;
 import org.takes.Take;
@@ -13,7 +10,7 @@ import org.takes.rs.RsWithType;
 public final class TakesContact implements Take {
     
     @Override
-    public Response act(Request req) throws IOException, SQLException {
+    public Response act(Request req) {
         return new RsWithStatus(new RsWithType(new RsWithBody("<html>"
             + "<head>"
             + "<title>Takes Application - Contact</title></head>"
@@ -21,6 +18,5 @@ public final class TakesContact implements Take {
             + "Contact us at @baeldung.com"
             + "</body></html>"), "text/html"), 200);
     }
-
 
 }
