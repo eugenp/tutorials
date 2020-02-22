@@ -1,11 +1,11 @@
-package org.baeldung;
+package com.baeldung;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.spring.cloud.bootstrap.svcbook.BookServiceApplication;
+import com.baeldung.spring.cloud.bootstrap.discovery.DiscoveryApplication;
 
 /**
  * 
@@ -14,7 +14,7 @@ import com.baeldung.spring.cloud.bootstrap.svcbook.BookServiceApplication;
  *
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = BookServiceApplication.class)
+@SpringBootTest(classes = DiscoveryApplication.class)
 public class SpringContextLiveTest {
 
     @Test
