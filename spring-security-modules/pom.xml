@@ -21,7 +21,8 @@
         <module>spring-security-cors</module>
         <module>spring-security-kerberos</module>
         <module>spring-security-mvc</module>
-        <module>spring-security-mvc-boot</module>
+        <module>spring-security-mvc-boot-1</module>
+        <module>spring-security-mvc-boot-2</module>
         <module>spring-security-mvc-custom</module>
         <module>spring-security-mvc-digest-auth</module>
         <module>spring-security-mvc-jsonview</module>
