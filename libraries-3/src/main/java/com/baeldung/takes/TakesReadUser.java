@@ -18,15 +18,15 @@ import org.takes.rs.RsJson;
 
 
 public final class TakesReadUser implements Take {
-    
+
     public static Connection con;
-    
+
     TakesReadUser(Connection connection) {
         con = connection;
     }
 
     @Override
-    public Response act(final Request req) throws IOException, SQLException {
+    public Response act(final Request req) throws IOException {
         Href href = new RqHref.Base(req).href();
         Iterable<String> ids = href.param("id");
         int id = Integer.parseInt((String) ids.iterator().next());
@@ -43,7 +43,7 @@ public final class TakesReadUser implements Take {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return new RsJson(json);        
     }
 

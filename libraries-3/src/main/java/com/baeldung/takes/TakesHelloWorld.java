@@ -5,7 +5,7 @@ import org.takes.Response;
 import org.takes.Take;
 import org.takes.rs.RsText;
 
-public final class TkRoute implements Take {
+public class TakesHelloWorld implements Take {
     
     @Override
     public Response act(final Request request) {

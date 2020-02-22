@@ -21,7 +21,7 @@ public final class TakesCreateUser implements Take {
     }
 
     @Override
-    public Response act(final Request req) throws IOException, SQLException {
+    public Response act(final Request req) throws IOException {
         
         RqForm form = new RqFormSmart(req);
         Iterable<String> idParam = form.param("id");

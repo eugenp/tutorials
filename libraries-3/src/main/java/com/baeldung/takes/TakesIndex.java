@@ -1,7 +1,6 @@
 package com.baeldung.takes;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import org.takes.Request;
 import org.takes.Response;
@@ -12,7 +11,7 @@ import org.takes.rs.RsVelocity;
 public final class TakesIndex implements Take {
     
     @Override
-    public Response act(final Request req) throws IOException, SQLException {
+    public Response act(final Request req) throws IOException {
 
         return new RsHtml(new RsVelocity(this.getClass().getResource("/templates/index.vm") ,new RsVelocity.Pair("userName", "Anshul")));
     }
