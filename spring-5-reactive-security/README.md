@@ -11,3 +11,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Security 5 for Reactive Applications](https://www.baeldung.com/spring-security-5-reactive)
 - [Guide to Spring 5 WebFlux](https://www.baeldung.com/spring-webflux)
 - [Introduction to the Functional Web Framework in Spring 5](https://www.baeldung.com/spring-5-functional-web)
+- [Guide to the AuthenticationManagerResolver in Spring Security](https://www.baeldung.com/spring-security-authenticationmanagerresolver)
