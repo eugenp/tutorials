@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.timer;
 
 import org.junit.Test;
 import org.slf4j.Logger;
