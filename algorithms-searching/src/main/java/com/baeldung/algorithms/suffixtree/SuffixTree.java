@@ -14,16 +14,12 @@ public class SuffixTree {
     private Node root;
     private String fullText;
 
-    public SuffixTree() {
+    public SuffixTree(String text) {
         root = new Node("", POSITION_UNDEFINED);
-        fullText = "";
-    }
-
-    public void addText(String text) {
         for (int i = 0; i < text.length(); i++) {
             addSuffix(text.substring(i) + WORD_TERMINATION, i);
         }
-        fullText += text;
+        fullText = text;
     }
 
     public List<String> searchText(String pattern) {
@@ -151,8 +147,9 @@ public class SuffixTree {
                 int compareLength = Math.min(nodeText.length(), pattern.length());
                 for (int j = 1; j < compareLength; j++) {
                     if (pattern.charAt(j) != nodeText.charAt(j)) {
-                        if (isAllowPartialMatch)
+                        if (isAllowPartialMatch) {
                             nodes.add(currentNode);
+                        }
                         return nodes;
                     }
                 }
@@ -160,11 +157,11 @@ public class SuffixTree {
                 nodes.add(currentNode);
                 if (pattern.length() > compareLength) {
                     List<Node> nodes2 = getAllNodesInTraversePath(pattern.substring(compareLength), currentNode, isAllowPartialMatch);
-                    if (nodes2.size() == 0 && !isAllowPartialMatch) {
+                    if (nodes2.size() > 0) {
+                        nodes.addAll(nodes2);
+                    } else if (!isAllowPartialMatch) {
                         nodes.add(null);
-                        return nodes;
                     }
-                    nodes.addAll(nodes2);
                 }
                 return nodes;
             }
