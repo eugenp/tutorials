@@ -15,11 +15,12 @@ import javax.websocket.server.PathParam;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 
-@Controller public class UserController {
+@Controller
+public class UserController {
 
     public UserController() {
-                super();
-        } //@formatter:off
+        super();
+    } //@formatter:off
 
     @RequestMapping(method = RequestMethod.POST, value = "/createUser", produces = "application/json; charset=UTF-8")
     @ResponseStatus(HttpStatus.CREATED)
