@@ -1,8 +1,8 @@
 package com.baeldung;
 
-import org.baeldung.boot.Application;
-import org.baeldung.boot.domain.GenericEntity;
-import org.baeldung.boot.repository.GenericEntityRepository;
+import com.baeldung.boot.Application;
+import com.baeldung.boot.domain.GenericEntity;
+import com.baeldung.boot.repository.GenericEntityRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
