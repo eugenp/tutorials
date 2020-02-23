@@ -36,12 +36,12 @@
 
     <profiles>
         <profile>
-            <id>default-tools.jar</id>
+            <id>default-profile</id>
             <activation>
-                <property>
-                    <name>java.vendor</name>
-                    <value>Oracle Corporation</value>
-                </property>
+                <activeByDefault>true</activeByDefault>
+                <file>
+                    <exists>${java.home}/../lib/tools.jar</exists>
+                </file>
             </activation>
             <dependencies>
                 <dependency>
@@ -50,6 +50,24 @@
                     <version>${java.version}</version>
                     <scope>system</scope>
                     <systemPath>${java.home}/../lib/tools.jar</systemPath>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>mac-profile</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <file>
+                    <exists>${java.home}/../Classes/classes.jar</exists>
+                </file>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>com.sun</groupId>
+                    <artifactId>tools</artifactId>
+                    <version>${java.version}</version>
+                    <scope>system</scope>
+                    <systemPath>${java.home}/../Classes/classes.jar</systemPath>
                 </dependency>
             </dependencies>
         </profile>

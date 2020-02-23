@@ -24,7 +24,6 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -74,6 +73,28 @@
             <version>${cache2k.version}</version>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>com.squareup.moshi</groupId>
+            <artifactId>moshi</artifactId>
+            <version>${moshi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.moshi</groupId>
+            <artifactId>moshi-adapters</artifactId>
+            <version>${moshi.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.jcabi</groupId>
+            <artifactId>jcabi-aspects</artifactId>
+            <version>${jcabi-aspects.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectjrt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -82,6 +103,36 @@
             <url>https://jitpack.io</url>
         </repository>
     </repositories>
+    
+    <build>
+        <finalName>libraries-3</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.jcabi</groupId>
+                <artifactId>jcabi-maven-plugin</artifactId>
+                <version>${jcabi-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>ajc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjtools</artifactId>
+                        <version>${aspectjtools.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectjweaver.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <jcommander.version>1.78</jcommander.version>
@@ -94,5 +145,11 @@
         <cactoos.version>0.43</cactoos.version>
         <airline.version>2.7.2</airline.version>
         <cache2k.version>1.2.3.Final</cache2k.version>
+        <moshi.version>1.9.2</moshi.version>
+        <jcabi-aspects.version>0.22.6</jcabi-aspects.version>
+        <aspectjrt.version>1.9.2</aspectjrt.version>
+        <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
+        <aspectjtools.version>1.9.2</aspectjtools.version>
+        <aspectjweaver.version>1.9.2</aspectjweaver.version>
     </properties>
 </project>
