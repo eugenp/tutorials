@@ -641,7 +641,7 @@
                 <module>spring-boot-modules</module>
                 <module>spring-boot-parent</module>
                 <module>spring-boot-rest</module>
-              
+
                 <module>spring-caching</module>
 
                 <module>spring-cloud</module>
@@ -1336,7 +1336,7 @@
         <mockito.version>2.21.0</mockito.version>
 
         <!-- logging -->
-        <org.slf4j.version>1.7.21</org.slf4j.version>
+        <org.slf4j.version>1.7.30</org.slf4j.version>
         <logback.version>1.1.7</logback.version>
 
         <!-- plugins -->
