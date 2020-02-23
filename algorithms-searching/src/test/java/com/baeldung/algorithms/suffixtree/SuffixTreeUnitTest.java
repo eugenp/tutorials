@@ -16,8 +16,7 @@ public class SuffixTreeUnitTest {
 
     @BeforeClass
     public static void setUp() {
-        suffixTree = new SuffixTree();
-        suffixTree.addText("bananabanana");
+        suffixTree = new SuffixTree("havanabanana");
         printTree();
     }
 
@@ -26,7 +25,7 @@ public class SuffixTreeUnitTest {
         List<String> matches = suffixTree.searchText("a");
         matches.stream()
             .forEach(m -> LOGGER.info(m));
-        Assert.assertArrayEquals(new String[] { "b[a]nanabanana", "ban[a]nabanana", "banan[a]banana", "bananab[a]nana", "bananaban[a]na", "bananabanan[a]" }, matches.toArray());
+        Assert.assertArrayEquals(new String[] { "h[a]vanabanana", "hav[a]nabanana", "havan[a]banana", "havanab[a]nana", "havanaban[a]na", "havanabanan[a]" }, matches.toArray());
     }
 
     @Test
@@ -34,7 +33,7 @@ public class SuffixTreeUnitTest {
         List<String> matches = suffixTree.searchText("nab");
         matches.stream()
             .forEach(m -> LOGGER.info(m));
-        Assert.assertArrayEquals(new String[] { "bana[nab]anana" }, matches.toArray());
+        Assert.assertArrayEquals(new String[] { "hava[nab]anana" }, matches.toArray());
     }
 
     @Test
@@ -47,10 +46,10 @@ public class SuffixTreeUnitTest {
 
     @Test
     public void givenSuffixTree_whenSearchingForBanana_thenReturn2Matches() {
-        List<String> matches = suffixTree.searchText("banana");
+        List<String> matches = suffixTree.searchText("ana");
         matches.stream()
             .forEach(m -> LOGGER.info(m));
-        Assert.assertArrayEquals(new String[] { "[banana]banana", "banana[banana]" }, matches.toArray());
+        Assert.assertArrayEquals(new String[] { "hav[ana]banana", "havanab[ana]na", "havanaban[ana]" }, matches.toArray());
     }
 
     @Test
@@ -58,7 +57,7 @@ public class SuffixTreeUnitTest {
         List<String> matches = suffixTree.searchText("na");
         matches.stream()
             .forEach(m -> LOGGER.info(m));
-        Assert.assertArrayEquals(new String[] { "ba[na]nabanana", "bana[na]banana", "bananaba[na]na", "bananabana[na]" }, matches.toArray());
+        Assert.assertArrayEquals(new String[] { "hava[na]banana", "havanaba[na]na", "havanabana[na]" }, matches.toArray());
     }
 
     @Test
