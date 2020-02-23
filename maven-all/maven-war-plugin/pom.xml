@@ -14,7 +14,7 @@
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <!-- Update maven war plugin to 3.1.0 or higher -->
-                <version>3.1.0</version>
+                <version>${war.plugin.version}</version>
                 <configuration>
                     <!-- Set failOnMissingWebXml configuration for maven war plugin -->
                     <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -26,6 +26,7 @@
     <!-- Set failOnMissingWebXml as false in properties section -->
     <properties>
         <failOnMissingWebXml>false</failOnMissingWebXml>
+        <war.plugin.version>3.1.0</war.plugin.version>
     </properties>
 
 </project>
