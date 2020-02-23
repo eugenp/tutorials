@@ -19,6 +19,7 @@
         <module>spring-zuul-foos-resource</module>
         <module>spring-zuul-ui</module>
         <module>spring-zuul-rate-limiting</module>
+        <module>spring-zuul-post-filter</module>
     </modules>
 
     <dependencyManagement>

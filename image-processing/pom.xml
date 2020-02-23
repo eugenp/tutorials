@@ -36,6 +36,11 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.openpnp</groupId>
+            <artifactId>opencv</artifactId>
+            <version>3.4.2-0</version>
+        </dependency>
+        <dependency>
             <groupId>com.twelvemonkeys.imageio</groupId>
             <artifactId>imageio-core</artifactId>
             <version>${imageio.version}</version>

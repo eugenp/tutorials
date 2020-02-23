@@ -21,6 +21,11 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh-generator.version}</version>
         </dependency>
+        <dependency>
+            <groupId>it.unimi.dsi</groupId>
+            <artifactId>dsiutils</artifactId>
+            <version>${dsiutils.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -32,5 +37,9 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <dsiutils.version>2.6.0</dsiutils.version>
+    </properties>
 
 </project>
