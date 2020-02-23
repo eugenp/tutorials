@@ -10,5 +10,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Guide to UriComponentsBuilder in Spring](https://www.baeldung.com/spring-uricomponentsbuilder)
 - [How to Set a Header on a Response with Spring 5](https://www.baeldung.com/spring-response-header) - The tests contained for this article rely on the sample application within the [spring-resttemplate](/spring-resttemplate) module
 - [Returning Custom Status Codes from Spring Controllers](https://www.baeldung.com/spring-mvc-controller-custom-http-status-code)
-- [Spring @RequestMapping](https://www.baeldung.com/spring-requestmapping)
+- [Spring RequestMapping](https://www.baeldung.com/spring-requestmapping)
 - [Guide to DeferredResult in Spring](https://www.baeldung.com/spring-deferred-result)

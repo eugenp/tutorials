@@ -1,4 +1,4 @@
-## Spring `Exception`s
+## Spring Exceptions
 
 This module contains articles about Spring `Exception`s
 
