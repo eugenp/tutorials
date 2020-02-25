@@ -1,7 +1,4 @@
-package com.baeldung.scala
-
-import org.junit.Test
-import org.junit.Assert.assertEquals
+package com.baeldung.scala.regex
 
 class RegexUnitTest {
   private val polishPostalCode = "([0-9]{2})\\-([0-9]{3})".r
