@@ -331,7 +331,7 @@ public final class FooProtos {
                 return com.baeldung.web.dto.FooProtos.internal_static_baeldung_Foo_fieldAccessorTable.ensureFieldAccessorsInitialized(com.baeldung.web.dto.FooProtos.Foo.class, com.baeldung.web.dto.FooProtos.Foo.Builder.class);
             }
 
-            // Construct using org.baeldung.web.dto.FooProtos.Foo.newBuilder()
+            // Construct using com.baeldung.web.dto.FooProtos.Foo.newBuilder()
             private Builder() {
                 maybeForceBuilderInitialization();
             }
@@ -581,7 +581,7 @@ public final class FooProtos {
 
     private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
     static {
-        java.lang.String[] descriptorData = { "\n\017FooProtos.proto\022\010baeldung\"\037\n\003Foo\022\n\n\002id" + "\030\001 \002(\003\022\014\n\004name\030\002 \002(\tB!\n\024org.baeldung.web" + ".dtoB\tFooProtos" };
+        java.lang.String[] descriptorData = { "\n\017FooProtos.proto\022\010baeldung\"\037\n\003Foo\022\n\n\002id" + "\030\001 \002(\003\022\014\n\004name\030\002 \002(\tB!\n\024com.baeldung.web" + ".dtoB\tFooProtos" };
         com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
             public com.google.protobuf.ExtensionRegistry assignDescriptors(com.google.protobuf.Descriptors.FileDescriptor root) {
                 descriptor = root;
