@@ -34,7 +34,7 @@ public class BreweryServiceAdapter implements BreweryPort {
     }
 
     private List<Brewery> convertDtosToDomains (List<BreweryDto> breweryDtos){
-        final List<Brewery> breweries = new ArrayList<Brewery>();
+        List<Brewery> breweries = new ArrayList<Brewery>();
         breweryDtos.forEach(breweryDto -> breweries.add(convertDtoToDomain(breweryDto)));
         return breweries;
     }
