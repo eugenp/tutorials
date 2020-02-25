@@ -20,70 +20,70 @@
         <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-spring-config</artifactId>
-            <version>${mule.version}</version>
+            <version>${mule.dependecies.version}</version>
             <scope>provided</scope>
         </dependency>
         <!-- Mule Transports -->
         <dependency>
             <groupId>org.mule.transports</groupId>
             <artifactId>mule-transport-file</artifactId>
-            <version>${mule.version}</version>
+            <version>${mule.dependecies.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.mule.transports</groupId>
             <artifactId>mule-transport-http</artifactId>
-            <version>${mule.version}</version>
+            <version>${mule.dependecies.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.mule.transports</groupId>
             <artifactId>mule-transport-jdbc</artifactId>
-            <version>${mule.version}</version>
+            <version>${mule.dependecies.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.mule.transports</groupId>
             <artifactId>mule-transport-jms</artifactId>
-            <version>${mule.version}</version>
+            <version>${mule.dependecies.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.mule.transports</groupId>
             <artifactId>mule-transport-vm</artifactId>
-            <version>${mule.version}</version>
+            <version>${mule.dependecies.version}</version>
             <scope>provided</scope>
         </dependency>
         <!-- Mule Modules -->
         <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-scripting</artifactId>
-            <version>${mule.version}</version>
+            <version>${mule.dependecies.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-xml</artifactId>
-            <version>${mule.version}</version>
+            <version>${mule.dependecies.version}</version>
             <scope>provided</scope>
         </dependency>
         <!-- for testing -->
         <dependency>
             <groupId>org.mule.tests</groupId>
             <artifactId>mule-tests-functional</artifactId>
-            <version>${mule.version}</version>
+            <version>${mule.dependecies.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-apikit</artifactId>
-            <version>${mule.version}</version>
+            <version>${mule.dependecies.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.mulesoft.munit</groupId>
             <artifactId>mule-munit-support</artifactId>
-            <version>${mule.munit.support.version}</version>
+            <version>${mule.dependecies.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -106,17 +106,22 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.mule.tools</groupId>
-                <artifactId>muleesb-maven-plugin</artifactId>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-maven-plugin</artifactId>
+                <version>2.2.1</version>
                 <configuration>
-                    <muleDistribution>
-                        <groupId>com.mulesoft.muleesb.distributions</groupId>
-                        <artifactId>mule-ee-distribution-standalone</artifactId>
-                        <version>${mule.version}</version>
-                        <type>tar.gz</type>
-                    </muleDistribution>
-                    <clusterSize>2</clusterSize>
+                    <deploymentType>standalone</deploymentType>
+                    <muleVersion>${mule.version}</muleVersion>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -206,11 +211,10 @@
     </pluginRepositories>
 
     <properties>
-        <mule.version>3.8.1</mule.version>
+        <mule.version>4.2.1</mule.version>
         <mule.tools.version>1.2</mule.tools.version>
         <munit.version>1.3.6</munit.version>
-        <mule.munit.support.version>3.9.0</mule.munit.support.version>
-        <muleesb-maven-plugin.version>1.0</muleesb-maven-plugin.version>
+        <mule.dependecies.version>3.9.0</mule.dependecies.version>
         <build-helper-maven-plugin.version>1.7</build-helper-maven-plugin.version>
     </properties>
 
