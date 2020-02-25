@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>design-patterns-architectural</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <name>design-patterns-architectural</name>
     <packaging>jar</packaging>
 
@@ -32,12 +32,23 @@
             <version>${mysql-connector.version}</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <assertj-core.version>3.9.1</assertj-core.version>
         <hibernate-core.version>5.2.16.Final</hibernate-core.version>
         <mysql-connector.version>6.0.6</mysql-connector.version>
+        <jackson.version>2.9.8</jackson.version>
     </properties>
 
 </project>
