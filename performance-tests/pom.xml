@@ -38,7 +38,7 @@
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
-            <version>1.2.0.Final</version>
+            <version>${mapstruct-jdk8.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -93,6 +93,15 @@
             Name of the benchmark Uber-JAR to generate.
           -->
         <uberjar.name>benchmarks</uberjar.name>
+        <compiler.plugin.version>3.1</compiler.plugin.version>
+        <shade.plugin.version>2.2</shade.plugin.version>
+        <install.version>2.5.1</install.version>
+        <jar.plugin.version>2.4</jar.plugin.version>
+        <javadoc.plugin.version>2.9.1</javadoc.plugin.version>
+        <resources.plugin.version>2.6</resources.plugin.version>
+        <site.plugin.version>3.3</site.plugin.version>
+        <source.plugin.version>2.2.1</source.plugin.version>
+        <surefire.plugin.version>2.17</surefire.plugin.version>
     </properties>
 
     <build>
@@ -100,7 +109,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
                     <compilerVersion>${javac.target}</compilerVersion>
                     <source>${javac.target}</source>
@@ -117,7 +126,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.2</version>
+                <version>${shade.plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -162,31 +171,31 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-install-plugin</artifactId>
-                    <version>2.5.1</version>
+                    <version>${install.version}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>${jar.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.9.1</version>
+                    <version>${javadoc.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>${resources.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>3.3</version>
+                    <version>${site.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>2.2.1</version>
+                    <version>${source.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.17</version>
+                    <version>${surefire.plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

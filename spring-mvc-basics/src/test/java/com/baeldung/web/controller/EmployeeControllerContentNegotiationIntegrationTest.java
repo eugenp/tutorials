@@ -1,9 +1,5 @@
 package com.baeldung.web.controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -11,6 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -23,7 +23,7 @@ public class EmployeeControllerContentNegotiationIntegrationTest {
     public void whenEndpointUsingJsonSuffixCalled_thenJsonResponseObtained() throws Exception {
         this.mockMvc.perform(get("/employee/1.json"))
             .andExpect(status().isOk())
-            .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE));
+            .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class EmployeeControllerContentNegotiationIntegrationTest {
     public void whenEndpointUsingJsonParameterCalled_thenJsonResponseObtained() throws Exception {
         this.mockMvc.perform(get("/employee/1?mediaType=json"))
             .andExpect(status().isOk())
-            .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE));
+            .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class EmployeeControllerContentNegotiationIntegrationTest {
     public void whenEndpointUsingJsonAcceptHeaderCalled_thenJsonResponseObtained() throws Exception {
         this.mockMvc.perform(get("/employee/1").header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE))
             .andExpect(status().isOk())
-            .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE));
+            .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE));
     }
 
     @Test
