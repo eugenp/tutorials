@@ -350,6 +350,7 @@
                 <module>antlr</module>
 
                 <module>apache-avro</module>
+                <module>apache-beam</module>
                 <module>apache-bval</module>
                 <module>apache-curator</module>
                 <module>apache-cxf</module>
