@@ -54,4 +54,19 @@
             </batch:tasklet>
         </batch:step>
     </batch:job>
+
+    <batch:job id="retryBatchJob">
+        <batch:step id="retryStep">
+            <batch:tasklet>
+                <batch:chunk reader="itemReader" writer="itemWriter"
+                             processor="retryItemProcessor" commit-interval="10"
+                             retry-limit="3">
+                    <batch:retryable-exception-classes>
+                        <batch:include class="org.apache.http.conn.ConnectTimeoutException"/>
+                        <batch:include class="org.springframework.dao.DeadlockLoserDataAccessException"/>
+                    </batch:retryable-exception-classes>
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+    </batch:job>
 </beans>
