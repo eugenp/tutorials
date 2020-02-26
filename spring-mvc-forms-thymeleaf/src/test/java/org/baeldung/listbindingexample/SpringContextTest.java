@@ -1,4 +1,4 @@
-package org.baeldung.listbindingexample;
+package com.baeldung.listbindingexample;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
