@@ -1,10 +1,10 @@
-package com.baeldung.consumer;
+package com.baeldung.reactorbus.consumer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.doman.NotificationData;
-import com.baeldung.service.NotificationService;
+import com.baeldung.reactorbus.domain.NotificationData;
+import com.baeldung.reactorbus.service.NotificationService;
 
 import reactor.bus.Event;
 import reactor.fn.Consumer;
