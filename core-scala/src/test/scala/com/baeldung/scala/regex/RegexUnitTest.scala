@@ -1,4 +1,4 @@
-package com.baeldung.scala
+package com.baeldung.scala.regex
 
 import org.junit.Test
 import org.junit.Assert.assertEquals
