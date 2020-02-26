@@ -3,7 +3,7 @@
 This module contains articles about core Java input and output (IO)
 
 ### Relevant Articles: 
-- [Java – Read from File](https://www.baeldung.com/java-read-file)
+- [How to Read a File in Java](https://www.baeldung.com/reading-file-in-java)
 - [Read a File into an ArrayList](https://www.baeldung.com/java-file-to-arraylist)
 - [Java – Directory Size](https://www.baeldung.com/java-folder-size)
 - [File Size in Java](https://www.baeldung.com/java-file-size)
