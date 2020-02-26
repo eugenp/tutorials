@@ -741,6 +741,7 @@
                     </annotationProcessorPaths>
                     <compilerArgs>
                         <arg>-Xep:NullAway:ERROR</arg>
+                        <arg>-XepExcludedPaths:(.*)/test/.*</arg>
                         <arg>-XepOpt:NullAway:AnnotatedPackages=com.baeldung.nullaway</arg>
                     </compilerArgs>
                 </configuration>
