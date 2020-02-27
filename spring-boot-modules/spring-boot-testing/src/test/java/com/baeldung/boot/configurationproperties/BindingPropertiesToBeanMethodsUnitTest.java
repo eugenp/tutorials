@@ -8,6 +8,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -20,17 +21,16 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public class BindingPropertiesToBeanMethodsUnitTest {
 
     @Autowired
-    private ServerConfigFactory configFactory;
+    @Qualifier("default_bean")
+    private ServerConfig serverConfig;
 
     @Test
     void givenBeanAnnotatedMethod_whenBindingProperties_thenAllFieldsAreSet() {
-        assertEquals("192.168.0.2", configFactory.getDefaultConfigs()
-            .getAddress()
+        assertEquals("192.168.0.2", serverConfig.getAddress()
             .getIp());
 
         Map<String, String> expectedResourcesPath = new HashMap<>();
         expectedResourcesPath.put("imgs", "/root/def/imgs");
-        assertEquals(expectedResourcesPath, configFactory.getDefaultConfigs()
-            .getResourcesPath());
+        assertEquals(expectedResourcesPath, serverConfig.getResourcesPath());
     }
 }
