@@ -9,6 +9,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Transaction {
     private String username;
     private int userId;
+    private int age;
+    private String postCode;
     private Date transactionDate;
     private double amount;
 
@@ -46,9 +48,25 @@ public class Transaction {
         this.amount = amount;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
     @Override
     public String toString() {
-        return "Transaction [username=" + username + ", userId=" + userId + ", transactionDate=" + transactionDate + ", amount=" + amount + "]";
+        return "Transaction [username=" + username + ", userId=" + userId + ", age=" + age + ", postCode=" + postCode + ", transactionDate=" + transactionDate + ", amount=" + amount + "]";
     }
 
 }

@@ -1,4 +1,4 @@
-package org.baeldung.controller;
+package com.baeldung.controller;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,7 +15,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * This is the test class for {@link org.baeldung.controller.controller.PassParametersController} class.
+ * This is the test class for {@link com.baeldung.controller.controller.PassParametersController} class.
  * 09/09/2017
  *
  * @author Ahmet Cetin
