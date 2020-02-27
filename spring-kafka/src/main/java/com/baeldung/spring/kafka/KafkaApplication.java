@@ -158,7 +158,7 @@ public class KafkaApplication {
             latch.countDown();
         }
 
-        @KafkaListener(topicPartitions = @TopicPartition(topic = "${partitioned.topic.name}", partitions = { "0", "3" }))
+        @KafkaListener(topicPartitions = @TopicPartition(topic = "${partitioned.topic.name}", partitions = { "0", "3" }), containerFactory = "partitionsKafkaListenerContainerFactory")
         public void listenToParition(@Payload String message, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
             System.out.println("Received Message: " + message + " from partition: " + partition);
             this.partitionLatch.countDown();
