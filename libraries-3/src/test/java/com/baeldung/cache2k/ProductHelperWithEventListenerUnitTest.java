@@ -6,10 +6,9 @@ import org.junit.Test;
 
 public class ProductHelperWithEventListenerUnitTest {
 
-    ProductHelperWithEventListener productHelper = new ProductHelperWithEventListener();
-
     @Test
     public void whenEntryAddedInCache_thenEventListenerCalled() {
+        ProductHelperWithEventListener productHelper = new ProductHelperWithEventListener();
         assertTrue(productHelper.getDiscount("Sports") == 20);
     }
 
