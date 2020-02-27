@@ -1,4 +1,4 @@
-package org.baeldung.controller.controller;
+package com.baeldung.controller.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

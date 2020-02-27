@@ -29,7 +29,7 @@
     </context-param>-->
     <!--<context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>org.baeldung.bean.config</param-value>
+        <param-value>com.baeldung.bean.config</param-value>
     </context-param>-->
 
     <!-- secure web app context -->
