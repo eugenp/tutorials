@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ShoppingCartBean {
 
+    private String name;
     private List<String> shoppingCart;
 
     public ShoppingCartBean() {
@@ -25,4 +26,11 @@ public class ShoppingCartBean {
         return shoppingCart;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

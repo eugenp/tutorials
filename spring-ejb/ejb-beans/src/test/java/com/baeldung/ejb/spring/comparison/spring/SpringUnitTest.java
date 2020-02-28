@@ -1,9 +1,7 @@
 package com.baeldung.ejb.spring.comparison.spring;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import javax.naming.NamingException;
 
@@ -46,29 +44,34 @@ public class SpringUnitTest {
 
     @Test
     public void whenCounterInvoked_thenCountIsIncremented() throws NamingException {
-        CounterBean counterBean = context.getBean(CounterBean.class);
 
+        CounterBean firstCounter = context.getBean(CounterBean.class);
+        firstCounter.setName("first");
         int count = 0;
-        for (int i = 0; i < 10; i++)
-            count = counterBean.count();
+        for (int i = 0; i < 10; i++) {
+            count = firstCounter.count();
+        }
 
-        assertThat(count, is(not(1)));
-    }
+        assertEquals(10, count);
+        assertEquals("first", firstCounter.getName());
 
-    @Test
-    public void whenCounterInvokedAgain_thenCountIsIncremented() throws NamingException {
-        CounterBean counterBean = context.getBean(CounterBean.class);
+        CounterBean secondCounter = context.getBean(CounterBean.class);
 
-        int count = 0;
-        for (int i = 0; i < 10; i++)
-            count = counterBean.count();
+        int count2 = 0;
+        for (int i = 0; i < 10; i++) {
+            count2 = secondCounter.count();
+        }
 
-        assertThat(count, is(not(1)));
+        assertEquals(20, count2);
+        assertEquals("first", secondCounter.getName());
+
     }
 
     @Test
     public void whenBathingCartWithThreeItemsAdded_thenItemsSizeIsThree() throws NamingException {
         ShoppingCartBean bathingCart = context.getBean(ShoppingCartBean.class);
+
+        bathingCart.setName("bathingCart");
 
         bathingCart.addItem("soap");
         bathingCart.addItem("shampoo");
@@ -76,10 +79,9 @@ public class SpringUnitTest {
 
         assertEquals(3, bathingCart.getItems()
             .size());
-    }
 
-    @Test
-    public void whenFruitCartWithTwoItemsAdded_thenItemsSizeIsTwo() throws NamingException {
+        assertEquals("bathingCart", bathingCart.getName());
+
         ShoppingCartBean fruitCart = context.getBean(ShoppingCartBean.class);
 
         fruitCart.addItem("apples");
@@ -87,6 +89,7 @@ public class SpringUnitTest {
 
         assertEquals(2, fruitCart.getItems()
             .size());
+        assertNull(fruitCart.getName());
     }
 
     @Test
@@ -98,10 +101,7 @@ public class SpringUnitTest {
     }
 
     @AfterClass
-    public static void checkTotalCountAndcloseContext() throws NamingException {
-        CounterBean counterBean = context.getBean(CounterBean.class);
-        int count = counterBean.count();
-        assertEquals(21, count);
+    public static void closeContext() throws NamingException {
         context.close();
     }
 
