@@ -50,6 +50,6 @@ public class CollectorUtilsUnitTest {
 
     @Test(expected = NonUniqueValueException.class)
     public void givenIntegerStream_withCollectorUnique_shouldThrowNonUniqueValueException() {
-        Optional<Integer> collect = Stream.of(1, 2, 3).filter(i -> i > 1).collect(CollectorUtils.unique());
+        Stream.of(1, 2, 3).filter(i -> i > 1).collect(CollectorUtils.unique());
     }
 }

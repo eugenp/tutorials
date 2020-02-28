@@ -17,10 +17,10 @@ public class StreamEX {
     public static void main(String[] args) {
         // Collector shortcut methods (toList, toSet, groupingBy, joining, etc.)
         List<User> users = Arrays.asList(new User("name"), new User(), new User());
-        List<String> collect = users.stream().map(User::getName).collect(Collectors.toList());
+        users.stream().map(User::getName).collect(Collectors.toList());
         List<String> userNames = StreamEx.of(users).map(User::getName).toList();
         Map<Role, List<User>> role2users = StreamEx.of(users).groupingBy(User::getRole);
-        String joining = StreamEx.of(1, 2, 3).joining("; ");// "1; 2; 3"
+        StreamEx.of(1, 2, 3).joining("; ");// "1; 2; 3"
         // Selecting stream elements of specific type
         List usersAndRoles = Arrays.asList(new User(), new Role());
         List<Role> roles = IntStreamEx.range(usersAndRoles.size()).mapToObj(usersAndRoles::get).select(Role.class).toList();
@@ -28,7 +28,7 @@ public class StreamEX {
         // adding elements to Stream
         List<String> appendedUsers = StreamEx.of(users).map(User::getName).prepend("(none)").append("LAST").toList();
         System.out.println(appendedUsers);
-        // Removing unwanted elements and using the stream as Iterable:
+        // Removing unwanted elements and using the ””stream as Iterable:
         for (String line : StreamEx.of(users).map(User::getName).nonNull()) {
             System.out.println(line);
         }
