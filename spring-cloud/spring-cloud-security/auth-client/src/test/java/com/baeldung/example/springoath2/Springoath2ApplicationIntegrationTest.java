@@ -1,4 +1,4 @@
-package org.baeldung;
+package com.baeldung.example.springoath2;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +9,7 @@ import com.baeldung.CloudSite;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CloudSite.class)
-public class SpringContextTest {
+public class Springoath2ApplicationIntegrationTest {
 
 	@Test
 	public void contextLoads() {
