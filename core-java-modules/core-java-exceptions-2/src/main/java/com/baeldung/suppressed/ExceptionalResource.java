@@ -3,7 +3,7 @@ package com.baeldung.suppressed;
 public class ExceptionalResource implements AutoCloseable {
     
     public void processSomething() {
-        throw new NullPointerException("Thrown from processSomething()");
+        throw new IllegalArgumentException("Thrown from processSomething()");
     }
 
     @Override

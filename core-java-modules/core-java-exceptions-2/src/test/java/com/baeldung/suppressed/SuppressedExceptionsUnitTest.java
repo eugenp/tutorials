@@ -21,6 +21,7 @@ public class SuppressedExceptionsUnitTest {
         try {
             SuppressedExceptionsDemo.demoAddSuppressedException("/non-existent-path/non-existent-file.txt");
         } catch (Exception e) {
+            assertThat(e, instanceOf(NullPointerException.class));
             assertEquals(1, e.getSuppressed().length);
             assertThat(e.getSuppressed()[0], instanceOf(FileNotFoundException.class));
         }
@@ -31,8 +32,10 @@ public class SuppressedExceptionsUnitTest {
         try {
             SuppressedExceptionsDemo.demoExceptionalResource();
         } catch (Exception e) {
+            assertThat(e, instanceOf(IllegalArgumentException.class));
             assertEquals("Thrown from processSomething()", e.getMessage());
             assertEquals(1, e.getSuppressed().length);
+            assertThat(e.getSuppressed()[0], instanceOf(NullPointerException.class));
             assertEquals("Thrown from close()", e.getSuppressed()[0].getMessage());
         }
     }

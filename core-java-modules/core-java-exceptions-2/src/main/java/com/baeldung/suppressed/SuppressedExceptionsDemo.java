@@ -1,6 +1,7 @@
 package com.baeldung.suppressed;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class SuppressedExceptionsDemo {
@@ -9,8 +10,8 @@ public class SuppressedExceptionsDemo {
         FileInputStream fileIn = null;
         try {
             fileIn = new FileInputStream(filePath);
-        } catch (IOException e) {
-            throw new IOException(e.getMessage());
+        } catch (FileNotFoundException e) {
+            throw new IOException(e);
         } finally {
             fileIn.close();
         }
@@ -30,6 +31,7 @@ public class SuppressedExceptionsDemo {
                 if (firstException != null) {
                     npe.addSuppressed(firstException);
                 }
+                throw npe;
             }
         }
     }
