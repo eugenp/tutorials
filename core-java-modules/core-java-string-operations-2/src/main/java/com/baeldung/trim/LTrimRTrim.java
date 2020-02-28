@@ -39,7 +39,7 @@ public class LTrimRTrim {
         ltrimResult = "White spaces left and right          ";
         rtrimResult = "       White spaces left and right";
     }
-    
+
     public static String whileLtrim(String s) {
         int i = 0;
         while (i < s.length() && Character.isWhitespace(s.charAt(i))) {
@@ -49,13 +49,13 @@ public class LTrimRTrim {
     }
 
     public static String whileRtrim(String s) {
-        int i = s.length()-1;
+        int i = s.length() - 1;
         while (i >= 0 && Character.isWhitespace(s.charAt(i))) {
             i--;
         }
-        return s.substring(0,i+1);
+        return s.substring(0, i + 1);
     }
-    
+
     private static boolean checkStrings(String ltrim, String rtrim) {
         boolean result = false;
 
@@ -64,7 +64,7 @@ public class LTrimRTrim {
 
         return result;
     }
-    
+
     // Going through the String detecting Whitespaces
     @Benchmark
     public boolean whileCharacters() {
@@ -84,13 +84,15 @@ public class LTrimRTrim {
     }
 
     public static String patternLtrim(String s) {
-        return LTRIM.matcher(s).replaceAll("");
+        return LTRIM.matcher(s)
+            .replaceAll("");
     }
-    
+
     public static String patternRtrim(String s) {
-        return RTRIM.matcher(s).replaceAll("");
+        return RTRIM.matcher(s)
+            .replaceAll("");
     }
-    
+
     // Pattern matches() with replaceAll
     @Benchmark
     public boolean patternMatchesLTtrimRTrim() {
@@ -100,15 +102,16 @@ public class LTrimRTrim {
         return checkStrings(ltrim, rtrim);
     }
 
-
     public static String guavaLtrim(String s) {
-        return CharMatcher.whitespace().trimLeadingFrom(s);
+        return CharMatcher.whitespace()
+            .trimLeadingFrom(s);
     }
-    
+
     public static String guavaRtrim(String s) {
-        return CharMatcher.whitespace().trimTrailingFrom(s);
+        return CharMatcher.whitespace()
+            .trimTrailingFrom(s);
     }
-    
+
     // Guava CharMatcher trimLeadingFrom / trimTrailingFrom
     @Benchmark
     public boolean guavaCharMatcher() {
@@ -117,7 +120,7 @@ public class LTrimRTrim {
 
         return checkStrings(ltrim, rtrim);
     }
-    
+
     public static String stringUtilsRTrim(String str) {
         return org.apache.commons.lang3.StringUtils.stripEnd(str, " ");
     }
@@ -133,6 +136,6 @@ public class LTrimRTrim {
         String rtrim = stringUtilsRTrim(src);
 
         return checkStrings(ltrim, rtrim);
-    } 
+    }
 
 }
