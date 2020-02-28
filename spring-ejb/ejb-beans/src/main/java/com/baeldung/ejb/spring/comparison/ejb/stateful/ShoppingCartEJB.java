@@ -7,7 +7,6 @@ import javax.ejb.Stateful;
 
 @Stateful
 public class ShoppingCartEJB implements ShoppingCartEJBRemote {
-    
     private String name;
     private List<String> shoppingCart;
 
@@ -30,5 +29,4 @@ public class ShoppingCartEJB implements ShoppingCartEJBRemote {
     public String getName() {
         return name;
     }
-
 }

@@ -70,13 +70,16 @@ public class SpringUnitTest {
     @Test
     public void whenBathingCartWithThreeItemsAdded_thenItemsSizeIsThree() throws NamingException {
         ShoppingCartBean bathingCart = context.getBean(ShoppingCartBean.class);
+
         bathingCart.setName("bathingCart");
+
         bathingCart.addItem("soap");
         bathingCart.addItem("shampoo");
         bathingCart.addItem("oil");
 
         assertEquals(3, bathingCart.getItems()
             .size());
+
         assertEquals("bathingCart", bathingCart.getName());
 
         ShoppingCartBean fruitCart = context.getBean(ShoppingCartBean.class);

@@ -87,7 +87,7 @@ public class EJBUnitTest {
         ShoppingCartEJBRemote bathingCart = (ShoppingCartEJBRemote) context.lookup("java:global/ejb-beans/ShoppingCartEJB");
 
         bathingCart.setName("bathingCart");
-        
+
         bathingCart.addItem("soap");
         bathingCart.addItem("shampoo");
         bathingCart.addItem("oil");
