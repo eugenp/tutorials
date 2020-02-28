@@ -28,7 +28,7 @@ public class StreamEX {
         // adding elements to Stream
         List<String> appendedUsers = StreamEx.of(users).map(User::getName).prepend("(none)").append("LAST").toList();
         System.out.println(appendedUsers);
-        // Removing unwanted elements and using the ””stream as Iterable:
+        // Removing unwanted elements and using the stream as Iterable:
         for (String line : StreamEx.of(users).map(User::getName).nonNull()) {
             System.out.println(line);
         }
