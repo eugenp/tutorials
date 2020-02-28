@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
-            <version>${org.hamcrest.version}</version>
+            <version>${hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
