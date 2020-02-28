@@ -1333,7 +1333,7 @@
         <gib.enabled>false</gib.enabled>
 
         <junit.version>4.12</junit.version>
-        <org.hamcrest.version>1.3</org.hamcrest.version>
+        <org.hamcrest.version>2.2</org.hamcrest.version>
         <mockito.version>2.21.0</mockito.version>
 
         <!-- logging -->
