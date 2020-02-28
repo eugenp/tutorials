@@ -8,5 +8,5 @@ This module contains articles about string operations.
 - [String Initialization in Java](https://www.baeldung.com/java-string-initialization)
 - [String toLowerCase and toUpperCase Methods in Java](https://www.baeldung.com/java-string-convert-case)
 - [Java String equalsIgnoreCase()](https://www.baeldung.com/java-string-equalsignorecase)
-- [How to avoid String contains() Case Insensitive in Java](https://www.baeldung.com/how-to-avoid-string-contains-case-insensitive-in-java)
+- [Case-Insensitive String Matching in Java](https://www.baeldung.com/java-case-insensitive-string-matching)
 - More articles: [[<-- prev]](../core-java-string-operations)
