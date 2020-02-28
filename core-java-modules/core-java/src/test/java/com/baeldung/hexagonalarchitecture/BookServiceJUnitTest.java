@@ -1,4 +1,4 @@
-package com.baeldung.hexagonalarchitecturecom.baeldung.hexagonalarchitecture;
+package com.baeldung.hexagonalarchitecture;
 
 import static org.junit.Assert.assertEquals;
 
