@@ -10,4 +10,8 @@ public interface ShoppingCartEJBRemote {
     void addItem(String item);
 
     List<String> getItems();
+    
+    void setName(String name);
+    
+    String getName();
 }
