@@ -24,12 +24,12 @@ public class LazyLoadNoTransPropertyOffIntegrationTest {
     private static final long EXPECTED_DOCS_COLLECTION_SIZE = 6;
 
     @Test(expected = LazyInitializationException.class)
-    public void should_call_non_transactional_method() {
+    public void whenCallNonTransactionalMethodWithPropertyOffThenThrowException() {
         serviceLayer.countAllDocsNonTransactional();
     }
 
     @Test
-    public void should_call_transactional_method() {
+    public void whenCallTransactionalMethodWithPropertyOffThenTestPass() {
         SQLStatementCountValidator.reset();
         long docsCount = serviceLayer.countAllDocsTransactional();
         assertEquals(EXPECTED_DOCS_COLLECTION_SIZE, docsCount);
