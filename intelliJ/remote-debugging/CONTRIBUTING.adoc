@@ -1,2 +1,0 @@
-If you have not previously done so, please fill out and
-submit the https://cla.pivotal.io/sign/spring[Contributor License Agreement].
