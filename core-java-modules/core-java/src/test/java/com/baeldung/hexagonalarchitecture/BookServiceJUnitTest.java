@@ -1,6 +1,7 @@
 package com.baeldung.hexagonalarchitecture;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -38,12 +39,28 @@ public class BookServiceJUnitTest {
 	@Test
     public void mostPopularGenreShoudBeHorror() {
     	BookGenre mostPopularGenre = bookService.getMostPopularGenre();
-		assertEquals(BookGenre.HORROR , mostPopularGenre);
+		
+    	assertEquals(BookGenre.HORROR , mostPopularGenre);
     }
 	
 	@Test
     public void mostReadBookShoudBeBlueMoon() {
     	Book mostReadBook = bookService.getMostReadBook();
-		assertEquals(Integer.valueOf(5), mostReadBook.getBookId());
+		
+    	assertEquals(Integer.valueOf(5), mostReadBook.getBookId());
     }
+	
+	@Test
+	public void aggingTwoDramaBooksShouldMakeDramaTheMostPopularGenre() {
+		Book theTempest = new Book(6, "The tempes", BookGenre.DRAMA, 15);
+		Book othello = new Book(7, "Othello", BookGenre.DRAMA, 31);
+		
+		bookService.saveBook(theTempest);
+		bookService.saveBook(othello);
+		
+		BookGenre mostPopularGenre = bookService.getMostPopularGenre();
+		
+		assertNotEquals(BookGenre.HORROR , mostPopularGenre);
+		assertEquals(BookGenre.DRAMA , mostPopularGenre);	
+	}
 }
