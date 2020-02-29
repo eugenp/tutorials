@@ -1,4 +1,4 @@
-package com.baeldung.security.jaas.app;
+package com.baeldung.jaas;
 
 import javax.security.auth.Subject;
 import javax.security.auth.login.LoginContext;

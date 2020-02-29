@@ -1,13 +1,17 @@
-package com.baeldung.security.jaas.app;
+package com.baeldung.jaas;
 
 import javax.security.auth.Subject;
 import javax.security.auth.login.LoginException;
+import java.security.PrivilegedAction;
 
-public class JaasAuthentication {
+public class JaasAuthorization {
 
     public static void main(String[] args) throws LoginException {
+
         LoginService loginService = new LoginService();
         Subject subject = loginService.login();
-        System.out.println(subject.getPrincipals().iterator().next() + " sucessfully logeed in");
+
+        PrivilegedAction privilegedAction = new ResourceAction();
+        Subject.doAsPrivileged(subject, privilegedAction, null);
     }
 }
