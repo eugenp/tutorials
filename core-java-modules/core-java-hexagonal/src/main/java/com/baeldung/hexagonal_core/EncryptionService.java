@@ -4,7 +4,7 @@ import com.baeldung.ports.OutputPort;
 
 public class EncryptionService {
 
-    public void encryptAndStore(String input, OutputPort outputPort){
+    public void encryptAndStore(String input, OutputPort outputPort) {
         outputPort.storeEncryptedData(encryptInputData(input));
     }
 
