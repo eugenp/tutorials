@@ -1,4 +1,4 @@
-package com.baeldung.web.controller;
+package com.baeldung.web.controller.customer;
 
 import com.baeldung.model.Customer;
 import com.baeldung.service.CustomerService;
