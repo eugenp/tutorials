@@ -20,12 +20,12 @@ public class InMemoryBookRepository implements BookRepository {
 
     @Override
     public void save(Book book) {
-        booksDataStore.putIfAbsent(book.getBookId(), book);
+        booksDataStore.putIfAbsent(book.getId(), book);
     }
 
     @Override
-    public Book findByBookId(Integer bookId) {
-        return booksDataStore.get(bookId);
+    public Book findById(Integer id) {
+        return booksDataStore.get(id);
     }
 
 	@Override

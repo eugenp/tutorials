@@ -47,7 +47,7 @@ public class BookServiceJUnitTest {
     public void mostReadBookShoudBeBlueMoon() {
     	Book mostReadBook = bookService.getMostReadBook();
 		
-    	assertEquals(Integer.valueOf(5), mostReadBook.getBookId());
+    	assertEquals(Integer.valueOf(5), mostReadBook.getId());
     }
 	
 	@Test

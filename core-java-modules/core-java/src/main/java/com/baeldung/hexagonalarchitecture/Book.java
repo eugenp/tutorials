@@ -2,33 +2,32 @@ package com.baeldung.hexagonalarchitecture;
 
 public class Book {
 	
-	private Integer bookId;
-	private String bookName;	
+	private Integer id;
+	private String name;	
 	private BookGenre genre;
 	private Integer numberOfReaders;
 
-	public Book(Integer bookId, String bookName, 
-	  BookGenre genre, Integer numberOfReaders) {
-		this.bookId = bookId;
-		this.bookName = bookName;
+	public Book(Integer id, String name, BookGenre genre, Integer numberOfReaders) {
+		this.id = id;
+		this.name = name;
 		this.genre = genre;
 		this.numberOfReaders = numberOfReaders;
 	}
 
-	public Integer getBookId() {
-		return bookId;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setBookId(Integer bookId) {
-		this.bookId = bookId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public String getBookName() {
-		return bookName;
+	public String getName() {
+		return name;
 	}
 
-	public void setBookName(String bookName) {
-		this.bookName = bookName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public BookGenre getGenre() {

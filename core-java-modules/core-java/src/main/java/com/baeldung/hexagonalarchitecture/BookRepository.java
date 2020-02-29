@@ -8,7 +8,7 @@ public interface BookRepository {
 	
 	void save(Book book);
 	
-	Book findByBookId(Integer bookId);
+	Book findById(Integer id);
 	
 	List <Book> findByGenre(BookGenre genre);	
 }
