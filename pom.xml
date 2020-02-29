@@ -728,6 +728,7 @@
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
 
+                <module>spring-threads</module>
                 <module>spring-thymeleaf</module>
                 <module>spring-thymeleaf-2</module>
 
