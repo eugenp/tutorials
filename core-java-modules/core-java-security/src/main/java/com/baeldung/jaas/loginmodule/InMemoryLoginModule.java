@@ -1,4 +1,4 @@
-package com.baeldung.security.jaas.authentication;
+package com.baeldung.jaas.loginmodule;
 
 import com.sun.security.auth.UserPrincipal;
 

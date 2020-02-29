@@ -16,4 +16,5 @@ This module contains articles about core Java Security
 - [An Introduction to Java SASL](https://www.baeldung.com/java-sasl)
 - [A Guide to Java GSS API](https://www.baeldung.com/java-gss)
 - [Intro to the Java SecurityManager](https://www.baeldung.com/java-security-manager)
+- [Guide To The Java Authentication And Authorization Service (JAAS)](https://www.baeldung.com/java-security-jaas)
 

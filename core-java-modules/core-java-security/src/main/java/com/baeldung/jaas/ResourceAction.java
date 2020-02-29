@@ -1,4 +1,4 @@
-package com.baeldung.security.jaas.app;
+package com.baeldung.jaas;
 
 import java.security.PrivilegedAction;
 

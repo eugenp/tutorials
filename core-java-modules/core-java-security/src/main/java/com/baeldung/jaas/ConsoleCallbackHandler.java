@@ -1,4 +1,4 @@
-package com.baeldung.security.jaas.app;
+package com.baeldung.jaas;
 
 import javax.security.auth.callback.*;
 import java.io.Console;
