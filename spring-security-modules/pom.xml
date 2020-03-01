@@ -23,6 +23,7 @@
         <module>spring-security-mvc</module>
         <module>spring-security-mvc-boot-1</module>
         <module>spring-security-mvc-boot-2</module>
+        <module>spring-security-mvc-boot-3</module>
         <module>spring-security-mvc-custom</module>
         <module>spring-security-mvc-digest-auth</module>
         <module>spring-security-mvc-jsonview</module>
