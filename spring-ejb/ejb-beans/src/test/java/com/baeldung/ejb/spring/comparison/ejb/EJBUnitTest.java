@@ -1,9 +1,7 @@
 package com.baeldung.ejb.spring.comparison.ejb;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import javax.annotation.Resource;
 import javax.ejb.EJB;
@@ -51,7 +49,7 @@ public class EJBUnitTest {
     public static void start() throws NamingException {
         ejbContainer = EJBContainer.createEJBContainer();
     }
-    
+
     @Before
     public void initializeContext() throws NamingException {
         context = ejbContainer.getContext();
@@ -60,31 +58,35 @@ public class EJBUnitTest {
 
     @Test
     public void givenSingletonBean_whenCounterInvoked_thenCountIsIncremented() throws NamingException {
-        
+
         int count = 0;
-        CounterEJBRemote counterEJB = (CounterEJBRemote) context.lookup("java:global/ejb-beans/CounterEJB");
+        CounterEJBRemote firstCounter = (CounterEJBRemote) context.lookup("java:global/ejb-beans/CounterEJB");
+        firstCounter.setName("first");
         
-        for (int i = 0; i < 10; i++)
-            count = counterEJB.count();
-
-        assertThat(count, is(not(1)));
-    }
-
-    @Test
-    public void givenSingletonBean_whenCounterInvokedAgain_thenCountIsIncremented() throws NamingException {
-
-        CounterEJBRemote counterEJB = (CounterEJBRemote) context.lookup("java:global/ejb-beans/CounterEJB");
+        for (int i = 0; i < 10; i++) {
+            count = firstCounter.count();
+        }
         
-        int count = 0;
-        for (int i = 0; i < 10; i++)
-            count = counterEJB.count();
+        assertEquals(10, count);
+        assertEquals("first", firstCounter.getName());
 
-        assertThat(count, is(not(1)));
+        CounterEJBRemote secondCounter = (CounterEJBRemote) context.lookup("java:global/ejb-beans/CounterEJB");
+
+        int count2 = 0;
+        for (int i = 0; i < 10; i++) {
+            count2 = secondCounter.count();
+        }
+
+        assertEquals(20, count2);
+        assertEquals("first", secondCounter.getName());
+
     }
 
     @Test
     public void givenStatefulBean_whenBathingCartWithThreeItemsAdded_thenItemsSizeIsThree() throws NamingException {
         ShoppingCartEJBRemote bathingCart = (ShoppingCartEJBRemote) context.lookup("java:global/ejb-beans/ShoppingCartEJB");
+
+        bathingCart.setName("bathingCart");
 
         bathingCart.addItem("soap");
         bathingCart.addItem("shampoo");
@@ -92,10 +94,8 @@ public class EJBUnitTest {
 
         assertEquals(3, bathingCart.getItems()
             .size());
-    }
+        assertEquals("bathingCart", bathingCart.getName());
 
-    @Test
-    public void givenStatefulBean_whenFruitCartWithTwoItemsAdded_thenItemsSizeIsTwo() throws NamingException {
         ShoppingCartEJBRemote fruitCart = (ShoppingCartEJBRemote) context.lookup("java:global/ejb-beans/ShoppingCartEJB");
 
         fruitCart.addItem("apples");
@@ -103,6 +103,7 @@ public class EJBUnitTest {
 
         assertEquals(2, fruitCart.getItems()
             .size());
+        assertNull(fruitCart.getName());
     }
 
     @Test
@@ -131,10 +132,7 @@ public class EJBUnitTest {
     }
 
     @AfterClass
-    public static void checkTotalCountAndcloseContext() throws NamingException {
-        CounterEJBRemote counterEJB = (CounterEJBRemote) context.lookup("java:global/ejb-beans/CounterEJB");
-        assertEquals(21, counterEJB.count());
-        
+    public static void closeContext() throws NamingException {
         context.close();
         ejbContainer.close();
     }
