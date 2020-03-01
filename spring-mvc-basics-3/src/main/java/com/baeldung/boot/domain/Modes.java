@@ -1,4 +1,4 @@
-package org.baeldung.boot.domain;
+package com.baeldung.boot.domain;
 
 public enum Modes {
 
