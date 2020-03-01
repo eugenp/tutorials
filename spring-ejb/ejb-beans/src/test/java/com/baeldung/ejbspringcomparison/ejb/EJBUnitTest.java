@@ -1,4 +1,4 @@
-package com.baeldung.ejb.spring.comparison.ejb;
+package com.baeldung.ejbspringcomparison.ejb;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -23,9 +23,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.baeldung.ejb.spring.comparison.ejb.singleton.CounterEJBRemote;
-import com.baeldung.ejb.spring.comparison.ejb.stateful.ShoppingCartEJBRemote;
-import com.baeldung.ejb.spring.comparison.ejb.stateless.FinderEJBRemote;
+import com.baeldung.ejbspringcomparison.ejb.singleton.CounterEJBRemote;
+import com.baeldung.ejbspringcomparison.ejb.stateful.ShoppingCartEJBRemote;
+import com.baeldung.ejbspringcomparison.ejb.stateless.FinderEJBRemote;
 
 public class EJBUnitTest {
 

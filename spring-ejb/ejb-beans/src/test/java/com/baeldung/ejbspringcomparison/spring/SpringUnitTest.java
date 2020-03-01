@@ -1,4 +1,4 @@
-package com.baeldung.ejb.spring.comparison.spring;
+package com.baeldung.ejbspringcomparison.spring;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -13,10 +13,10 @@ import org.junit.ClassRule;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.baeldung.ejb.spring.comparison.spring.config.ApplicationConfig;
-import com.baeldung.ejb.spring.comparison.spring.messagedriven.Producer;
-import com.baeldung.ejb.spring.comparison.spring.singleton.CounterBean;
-import com.baeldung.ejb.spring.comparison.spring.stateful.ShoppingCartBean;
+import com.baeldung.ejbspringcomparison.spring.config.ApplicationConfig;
+import com.baeldung.ejbspringcomparison.spring.messagedriven.Producer;
+import com.baeldung.ejbspringcomparison.spring.singleton.CounterBean;
+import com.baeldung.ejbspringcomparison.spring.stateful.ShoppingCartBean;
 
 public class SpringUnitTest {
 

@@ -1,4 +1,4 @@
-package com.baeldung.ejb.spring.comparison.ejb.singleton;
+package com.baeldung.ejbspringcomparison.ejb.singleton;
 
 import javax.ejb.Singleton;
 

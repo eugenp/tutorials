@@ -1,4 +1,4 @@
-package com.baeldung.ejb.spring.comparison.spring.config;
+package com.baeldung.ejbspringcomparison.spring.config;
 
 import javax.jms.ConnectionFactory;
 
@@ -11,7 +11,7 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.core.JmsTemplate;
 
 @Configuration
-@ComponentScan(basePackages = "com.baeldung.ejb.spring.comparison.spring")
+@ComponentScan(basePackages = "com.baeldung.ejbspringcomparison.spring")
 @EnableJms
 public class ApplicationConfig {
 

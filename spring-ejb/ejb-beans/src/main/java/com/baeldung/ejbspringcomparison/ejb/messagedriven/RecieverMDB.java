@@ -1,4 +1,4 @@
-package com.baeldung.ejb.spring.comparison.ejb.messagedriven;
+package com.baeldung.ejbspringcomparison.ejb.messagedriven;
 
 import javax.annotation.Resource;
 import javax.ejb.ActivationConfigProperty;
