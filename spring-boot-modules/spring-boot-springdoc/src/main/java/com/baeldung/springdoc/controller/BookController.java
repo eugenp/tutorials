@@ -45,8 +45,7 @@ public class BookController {
 
     @GetMapping("/filter")
     public Page<Book> filterBooks(Pageable pageable) {
-        // Call appropriate repository
-        return null;
+        return repository.getBooks(pageable);
     }
 
     @PutMapping("/{id}")
