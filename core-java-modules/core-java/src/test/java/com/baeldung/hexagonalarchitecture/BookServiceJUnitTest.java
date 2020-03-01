@@ -50,7 +50,7 @@ public class BookServiceJUnitTest {
     }
 
     @Test
-    public void aggingTwoDramaBooksShouldMakeDramaTheMostPopularGenre() {
+    public void addingTwoDramaBooksShouldMakeDramaTheMostPopularGenre() {
         Book theTempest = new Book(6, "The tempes", BookGenre.DRAMA, 15);
         Book othello = new Book(7, "Othello", BookGenre.DRAMA, 31);
 
