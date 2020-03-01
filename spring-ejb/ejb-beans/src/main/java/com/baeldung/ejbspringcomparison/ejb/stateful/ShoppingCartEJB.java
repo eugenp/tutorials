@@ -1,20 +1,16 @@
-package com.baeldung.ejb.spring.comparison.spring.stateful;
+package com.baeldung.ejbspringcomparison.ejb.stateful;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import javax.ejb.Stateful;
 
-@Component
-@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class ShoppingCartBean {
-
+@Stateful
+public class ShoppingCartEJB implements ShoppingCartEJBRemote {
     private String name;
     private List<String> shoppingCart;
 
-    public ShoppingCartBean() {
+    public ShoppingCartEJB() {
         shoppingCart = new ArrayList<String>();
     }
 
