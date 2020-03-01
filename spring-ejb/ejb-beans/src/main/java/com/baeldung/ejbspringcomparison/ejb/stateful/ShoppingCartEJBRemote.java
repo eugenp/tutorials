@@ -1,4 +1,4 @@
-package com.baeldung.ejb.spring.comparison.ejb.stateful;
+package com.baeldung.ejbspringcomparison.ejb.stateful;
 
 import java.util.List;
 

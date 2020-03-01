@@ -1,4 +1,4 @@
-package com.baeldung.ejb.spring.comparison.ejb.stateless;
+package com.baeldung.ejbspringcomparison.ejb.stateless;
 
 import java.util.HashMap;
 import java.util.Map;

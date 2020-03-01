@@ -1,4 +1,4 @@
-package com.baeldung.ejb.spring.comparison.spring.messagedriven;
+package com.baeldung.ejbspringcomparison.spring.messagedriven;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;

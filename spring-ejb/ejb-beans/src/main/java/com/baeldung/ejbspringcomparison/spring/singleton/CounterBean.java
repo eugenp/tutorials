@@ -1,4 +1,4 @@
-package com.baeldung.ejb.spring.comparison.spring.singleton;
+package com.baeldung.ejbspringcomparison.spring.singleton;
 
 import org.springframework.stereotype.Component;
 
