@@ -12,8 +12,7 @@ public class InMemoryBookRepository implements BookRepository {
 
     @Override
     public List<Book> findAll() {
-        return booksDataStore
-          .values()
+        return booksDataStore.values()
           .stream()
           .collect(Collectors.toList());
     }
@@ -28,12 +27,11 @@ public class InMemoryBookRepository implements BookRepository {
         return booksDataStore.get(id);
     }
 
-	@Override
-	public List<Book> findByGenre(BookGenre genre) {
-		Collection<Book> books = booksDataStore.values();
-		return books
-		  .stream()
-		  .filter(b -> b.getGenre().equals(genre))
-		  .collect(Collectors.toList());
-	}
+    @Override
+    public List<Book> findByGenre(BookGenre genre) {
+        Collection<Book> books = booksDataStore.values();
+        return books.stream()
+          .filter(b -> b.getGenre().equals(genre))
+          .collect(Collectors.toList());
+    }
 }

@@ -20,35 +20,32 @@ public class BookService {
 
     public BookGenre getMostPopularGenre() {
         List<Book> books = bookRepository.findAll();
-        
+
         Map<BookGenre, List<Book>> booksByGenre = books.stream()
           .collect(Collectors.groupingBy(Book::getGenre));
 
-        Comparator<Entry<BookGenre, List<Book>>> comparingGenreOccurences = 
-          Comparator.comparingInt(entry -> entry.getValue().size());
-		
-        BookGenre mostPopularGenre = 
-          booksByGenre
-            .entrySet()
-            .stream()
-            .max(comparingGenreOccurences)
-            .map(Map.Entry::getKey)
-            .orElse(null);
+        Comparator<Entry<BookGenre, List<Book>>> comparingGenreOccurences 
+          = Comparator.comparingInt(entry -> entry.getValue().size());
+
+        BookGenre mostPopularGenre = booksByGenre.entrySet()
+          .stream()
+          .max(comparingGenreOccurences)
+          .map(Map.Entry::getKey)
+          .orElse(null);
 
         return mostPopularGenre;
     }
 
     public Book getMostReadBook() {
         List<Book> books = bookRepository.findAll();
-        
-        Comparator<Book> comparingNumberOfReaders = 
-         Comparator.comparingInt(Book::getNumberOfReaders);
-		
-        Book mostReadBook = 
-          books.stream()
-            .max(comparingNumberOfReaders)
-            .orElse(null);
-        
+
+        Comparator<Book> comparingNumberOfReaders 
+          = Comparator.comparingInt(Book::getNumberOfReaders);
+
+        Book mostReadBook = books.stream()
+          .max(comparingNumberOfReaders)
+          .orElse(null);
+
         return mostReadBook;
     }
 }
