@@ -10,16 +10,16 @@ public class PatternMatchingForInstanceOf {
          }
     }
 
-    private abstract class Animal {
+    abstract class Animal {
     }
 
-    private final class Cat extends Animal {
-        private void meow() {
+    final class Cat extends Animal {
+        void meow() {
         }
     }
 
-    private final class Dog extends Animal {
-        private void woof() {
+    final class Dog extends Animal {
+        void woof() {
         }
     }
 
