@@ -1,4 +1,4 @@
-package com.baeldung.hexagonal.architecture.core;
+package com.baeldung.hexagonal.architecture.core.domain;
 
 public class Brewery {
     private int id;
@@ -8,6 +8,20 @@ public class Brewery {
     private String state;
     private String country;
     private String websiteUrl;
+
+    public String getBrewTypes() {
+        if (this.breweryType.equals("brewpub")) {
+            return "Brown Ale, Pale Ale, India Pale Ale";
+        }
+        return "Porter, Stout, Belgian-Style Ale";
+    }
+
+    public boolean acceptsBitcoinAsPayMethod() {
+        if (this.breweryType.equals("micro")) {
+            return true;
+        }
+        return false;
+    }
 
     public int getId() {
         return id;

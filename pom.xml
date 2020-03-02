@@ -6,6 +6,9 @@
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>hexagonal-architecture</module>
+    </modules>
     <name>parent-modules</name>
     <packaging>pom</packaging>
 
@@ -1110,6 +1113,7 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
+                <module>hexagonal-architecture</module>
 
                 <module>saas</module>
                 <module>software-security/sql-injection-samples</module>

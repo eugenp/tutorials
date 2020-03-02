@@ -1,28 +1,14 @@
-package com.baeldung.hexagonal.architecture.dtos;
+package com.baeldung.hexagonal.architecture.application.dtos;
 
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "id",
-        "name",
-        "brewery_type",
-        "street",
-        "city",
-        "state",
-        "postal_code",
-        "country",
-        "longitude",
-        "latitude",
-        "phone",
-        "website_url",
-        "updated_at",
-        "tag_list"
-})
-public class BreweryDto {
+@JsonPropertyOrder({ "id", "name", "brewery_type", "street", "city", "state", "postal_code", "country", "longitude", "latitude", "phone", "website_url", "updated_at", "tag_list" })
+public class OpenBreweryDto {
 
     @JsonProperty("id")
     private Integer id;

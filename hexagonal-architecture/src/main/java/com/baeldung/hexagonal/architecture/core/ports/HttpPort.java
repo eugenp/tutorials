@@ -1,4 +1,4 @@
-package com.baeldung.hexagonal.architecture.ports;
+package com.baeldung.hexagonal.architecture.core.ports;
 
 import java.io.IOException;
 
