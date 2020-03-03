@@ -2,8 +2,8 @@ package com.baeldung.gson.jsoncompare;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import org.junit.Assert;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class JsonCompareUnitTest {
     @Test
@@ -12,9 +12,9 @@ public class JsonCompareUnitTest {
         String string1 = "{\"customer\": {\"id\": \"44521\",\"fullName\": \"Emily Jenkins\", \"age\": 27 }}";
         String string2 = "{\"customer\": {\"id\": \"44521\", \"fullName\": \"Emily Jenkins\",\"age\": 27}}";
 
-        Assert.assertTrue(parser.parse(string1)
+        assertTrue(parser.parse(string1)
             .isJsonObject());
-        Assert.assertEquals(parser.parse(string1), parser.parse(string2));
+        assertEquals(parser.parse(string1), parser.parse(string2));
     }
 
     @Test
@@ -26,8 +26,7 @@ public class JsonCompareUnitTest {
         JsonElement json1 = parser.parse(string1);
         JsonElement json2 = parser.parse(string2);
 
-        Assert.assertTrue(json1.isJsonObject());
-        Assert.assertEquals(json1, json2);
+        assertEquals(json1, json2);
     }
 
     @Test
@@ -36,9 +35,9 @@ public class JsonCompareUnitTest {
         String string1 = "[10, 20, 30]";
         String string2 = "[10, 20, 30]";
 
-        Assert.assertTrue(parser.parse(string1)
+        assertTrue(parser.parse(string1)
             .isJsonArray());
-        Assert.assertEquals(parser.parse(string1), parser.parse(string2));
+        assertEquals(parser.parse(string1), parser.parse(string2));
     }
 
     @Test
@@ -47,9 +46,7 @@ public class JsonCompareUnitTest {
         String string1 = "[20, 10, 30]";
         String string2 = "[10, 20, 30]";
 
-        Assert.assertTrue(parser.parse(string1)
-            .isJsonArray());
-        Assert.assertNotEquals(parser.parse(string1), parser.parse(string2));
+        assertNotEquals(parser.parse(string1), parser.parse(string2));
     }
 
     @Test
@@ -61,8 +58,7 @@ public class JsonCompareUnitTest {
         JsonElement json1 = parser.parse(string1);
         JsonElement json2 = parser.parse(string2);
 
-        Assert.assertTrue(json1.isJsonObject());
-        Assert.assertEquals(json1, json2);
+        assertEquals(json1, json2);
     }
 
     @Test
@@ -74,8 +70,7 @@ public class JsonCompareUnitTest {
         JsonElement json1 = parser.parse(string1);
         JsonElement json2 = parser.parse(string2);
 
-        Assert.assertTrue(json1.isJsonObject());
-        Assert.assertEquals(json1, json2);
+        assertEquals(json1, json2);
     }
 
     @Test
@@ -87,7 +82,6 @@ public class JsonCompareUnitTest {
         JsonElement json1 = parser.parse(string1);
         JsonElement json2 = parser.parse(string2);
 
-        Assert.assertTrue(json1.isJsonObject());
-        Assert.assertNotEquals(json1, json2);
+        assertNotEquals(json1, json2);
     }
 }
