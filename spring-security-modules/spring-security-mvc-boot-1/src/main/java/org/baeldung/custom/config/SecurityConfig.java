@@ -16,11 +16,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         http.csrf()
             .disable()
-            .authorizeRequests().anyRequest().authenticated()
+            .authorizeRequests()
+            .anyRequest()
+            .authenticated()
             .and()
-            .formLogin().permitAll();
+            .formLogin()
+            .permitAll();
     }
-    
+
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder(11);
