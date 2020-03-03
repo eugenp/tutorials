@@ -13,7 +13,7 @@ import io.restassured.specification.RequestSpecification;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
-
+// In order to execute these tests, org.baeldung.custom.Application needs to be running.
 public class ApplicationLiveTest {
     
     @Test
