@@ -8,6 +8,7 @@ import io.restassured.response.Response;
 import org.junit.Test;
 
 
+// In order to execute these tests, org.baeldung.ip.IpApplication needs to be running.
 public class IpLiveTest {
 
     @Test
