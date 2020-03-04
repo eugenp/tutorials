@@ -72,7 +72,7 @@ public class MultiLayerPerceptronForMNIST extends MultiLayerNetwork {
                 new NeuralNetConfiguration.Builder()
                         .seed(SEED)
                         .l2(0.0005)
-                        .updater(new Adam(learningRate, DEFAULT_ADAM_BETA1_MEAN_DECAY, DEFAULT_ADAM_BETA2_VAR_DECAY, DEFAULT_ADAM_EPSILON))
+                        .updater(adam(learningRate))
                         .weightInit(WeightInit.XAVIER)
                         .list()
                         .layer(0, buildDenseLayer())
@@ -84,6 +84,10 @@ public class MultiLayerPerceptronForMNIST extends MultiLayerNetwork {
                         .layer(6, buildOutputLayer())
                         .build()
         );
+    }
+
+    private static Adam adam(double learningRate) {
+        return new Adam(learningRate, DEFAULT_ADAM_BETA1_MEAN_DECAY, DEFAULT_ADAM_BETA2_VAR_DECAY, DEFAULT_ADAM_EPSILON);
     }
 
     private static DenseLayer buildDenseLayer() {
