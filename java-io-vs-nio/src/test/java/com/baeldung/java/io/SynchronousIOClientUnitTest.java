@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 public class SynchronousIOClientUnitTest {
     private static final String REQUESTED_RESOURCE = "/test.json";
 
-    @Rule public WireMockRule wireMockRule = new WireMockRule(wireMockConfig().dynamicPort());
+    @Rule WireMockRule wireMockRule = new WireMockRule(wireMockConfig().dynamicPort());
 
     @Before
     public void setup() {
@@ -38,7 +38,7 @@ public class SynchronousIOClientUnitTest {
             writer.print("GET " + REQUESTED_RESOURCE + " HTTP/1.0\r\n\r\n");
             writer.flush(); // important - without this the request is never sent, and the test will hang on readLine()
 
-            for (String line; (line = reader.readLine()) != null;) {
+            for (String line; (line = reader.readLine()) != null; ) {
                 ourStore.append(line);
             }
         }

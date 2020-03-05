@@ -21,8 +21,7 @@ import static org.junit.Assert.assertTrue;
 public class AsynchronousIOClientUnitTest {
     private String REQUESTED_RESOURCE = "/test.json";
 
-    @Rule public WireMockRule wireMockRule = new WireMockRule(wireMockConfig()
-      .dynamicPort());
+    @Rule WireMockRule wireMockRule = new WireMockRule(wireMockConfig().dynamicPort());
 
     @Before
     public void setup() {
