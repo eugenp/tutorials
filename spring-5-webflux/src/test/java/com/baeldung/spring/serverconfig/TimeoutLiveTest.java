@@ -4,7 +4,6 @@ import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.SSLException;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -53,7 +52,6 @@ public class TimeoutLiveTest {
         webTestClient.get()
           .uri("/timeout/{timeout}", 3)
           .exchange();
-        Assert.fail();
     }
 
     @Test
