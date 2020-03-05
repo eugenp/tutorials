@@ -12,7 +12,6 @@
     <groupId>com.baeldung.apache</groupId>
     <artifactId>apache-beam</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>apache-beam</name>
 
     <dependencies>
         <dependency>
