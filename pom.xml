@@ -408,6 +408,7 @@
                 <module>dagger</module>
                 <module>data-structures</module>
                 <module>ddd</module>
+                <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
@@ -640,7 +641,7 @@
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
-              
+
                 <module>spring-caching</module>
 
                 <module>spring-cloud</module>
@@ -728,6 +729,7 @@
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
 
+                <module>spring-threads</module>
                 <module>spring-thymeleaf</module>
                 <module>spring-thymeleaf-2</module>
 
@@ -918,6 +920,7 @@
                 <module>dagger</module>
                 <module>data-structures</module>
                 <module>ddd</module>
+                <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
@@ -1334,7 +1337,7 @@
         <mockito.version>2.21.0</mockito.version>
 
         <!-- logging -->
-        <org.slf4j.version>1.7.21</org.slf4j.version>
+        <org.slf4j.version>1.7.30</org.slf4j.version>
         <logback.version>1.1.7</logback.version>
 
         <!-- plugins -->
