@@ -6,7 +6,9 @@ import javax.net.ssl.SSLException;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -35,6 +37,9 @@ public class TimeoutLiveTest {
 
     private WebTestClient webTestClient;
 
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
+
     @Before
     public void setup() throws SSLException {
         webTestClient = WebTestClient.bindToServer(getConnector())
@@ -44,28 +49,22 @@ public class TimeoutLiveTest {
 
     @Test
     public void shouldTimeout() {
-        try {
-            webTestClient.get()
-              .uri("/timeout/{timeout}", 3)
-              .exchange();
-            Assert.fail();
-        } catch (ReadTimeoutException ignore) {
-        }
+        exception.expect(ReadTimeoutException.class);
+        webTestClient.get()
+          .uri("/timeout/{timeout}", 3)
+          .exchange();
+        Assert.fail();
     }
 
     @Test
     public void shouldNotTimeout() {
-        try {
-            WebTestClient.ResponseSpec response = webTestClient.get()
-              .uri("/timeout/{timeout}", 1)
-              .exchange();
-            response.expectStatus()
-              .isOk()
-              .expectBody(String.class)
-              .isEqualTo("OK");
-        } catch (ReadTimeoutException e) {
-            Assert.fail();
-        }
+        WebTestClient.ResponseSpec response = webTestClient.get()
+          .uri("/timeout/{timeout}", 1)
+          .exchange();
+        response.expectStatus()
+          .isOk()
+          .expectBody(String.class)
+          .isEqualTo("OK");
     }
 
     private ReactorClientHttpConnector getConnector() throws SSLException {
