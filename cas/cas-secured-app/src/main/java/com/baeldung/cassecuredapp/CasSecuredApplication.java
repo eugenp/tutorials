@@ -40,15 +40,9 @@ public class CasSecuredApplication {
     public SingleSignOutFilter singleSignOutFilter() {
         SingleSignOutFilter singleSignOutFilter = new SingleSignOutFilter();
         singleSignOutFilter.setCasServerUrlPrefix("https://localhost:8443");
-        singleSignOutFilter.setLogoutCallbackPath("/logout/cas");
+        singleSignOutFilter.setLogoutCallbackPath("/exit/cas");
         singleSignOutFilter.setIgnoreInitConfiguration(true);
         return singleSignOutFilter;
-    }
-
-    @EventListener(HttpSessionEvent.class)
-    public void singleSignOutHttpSessionListener(HttpSessionEvent event) {
-        SingleSignOutHttpSessionListener sessionListener = new SingleSignOutHttpSessionListener();
-        sessionListener.sessionDestroyed(event);
     }
 
 }

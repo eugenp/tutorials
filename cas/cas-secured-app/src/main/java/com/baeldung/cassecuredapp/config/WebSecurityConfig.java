@@ -72,7 +72,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public ServiceProperties serviceProperties() {
         logger.info("service properties");
         ServiceProperties serviceProperties = new ServiceProperties();
-        serviceProperties.setService("http://localhost:8900/login/cas");
+        serviceProperties.setService("http://cas-client:8900/login/cas");
         serviceProperties.setSendRenew(false);
         return serviceProperties;
     }
