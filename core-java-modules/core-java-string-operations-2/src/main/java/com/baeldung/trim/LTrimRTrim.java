@@ -102,38 +102,20 @@ public class LTrimRTrim {
         return checkStrings(ltrim, rtrim);
     }
 
-    public static String guavaLtrim(String s) {
-        return CharMatcher.whitespace()
-            .trimLeadingFrom(s);
-    }
-
-    public static String guavaRtrim(String s) {
-        return CharMatcher.whitespace()
-            .trimTrailingFrom(s);
-    }
-
     // Guava CharMatcher trimLeadingFrom / trimTrailingFrom
     @Benchmark
     public boolean guavaCharMatcher() {
-        String ltrim = guavaLtrim(src);
-        String rtrim = guavaRtrim(src);
+        String ltrim = CharMatcher.whitespace().trimLeadingFrom(src);
+        String rtrim = CharMatcher.whitespace().trimTrailingFrom(src);
 
         return checkStrings(ltrim, rtrim);
-    }
-
-    public static String stringUtilsRTrim(String str) {
-        return org.apache.commons.lang3.StringUtils.stripEnd(str, " ");
-    }
-
-    public static String stringUtilsLTrim(String str) {
-        return org.apache.commons.lang3.StringUtils.stripStart(str, " ");
     }
 
     // Apache Commons StringUtils containsIgnoreCase
     @Benchmark
     public boolean apacheCommonsStringUtils() {
-        String ltrim = stringUtilsLTrim(src);
-        String rtrim = stringUtilsRTrim(src);
+        String ltrim = org.apache.commons.lang3.StringUtils.stripStart(src, " ");
+        String rtrim = org.apache.commons.lang3.StringUtils.stripEnd(src, " ");
 
         return checkStrings(ltrim, rtrim);
     }
