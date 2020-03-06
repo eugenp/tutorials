@@ -4,6 +4,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.google.common.base.CharMatcher;
+
 import java.util.regex.Pattern;
 
 /**
@@ -53,8 +55,8 @@ public class LTrimRTrimUnitTest {
     @Test
     public void givenString_whenCallingGuavaCharMatcher_thenReturnsTrue() {
         // Use StringUtils containsIgnoreCase to avoid case insensitive issues
-        String ltrim = LTrimRTrim.guavaLtrim(src);
-        String rtrim = LTrimRTrim.guavaRtrim(src);
+        String ltrim = CharMatcher.whitespace().trimLeadingFrom(src);;
+        String rtrim = CharMatcher.whitespace().trimTrailingFrom(src);
 
         // Compare the Strings obtained and the expected
         Assert.assertTrue(ltrimResult.equalsIgnoreCase(ltrim));
@@ -65,8 +67,8 @@ public class LTrimRTrimUnitTest {
     @Test
     public void givenString_whenCallingStringUtilsStripStartEnd_thenReturnsTrue() {
         // Use StringUtils containsIgnoreCase to avoid case insensitive issues
-        String ltrim = LTrimRTrim.stringUtilsLTrim(src);
-        String rtrim = LTrimRTrim.stringUtilsRTrim(src);
+        String ltrim = org.apache.commons.lang3.StringUtils.stripStart(src, " ");
+        String rtrim = org.apache.commons.lang3.StringUtils.stripEnd(src, " ");
 
         // Compare the Strings obtained and the expected
         Assert.assertTrue(ltrimResult.equalsIgnoreCase(ltrim));
