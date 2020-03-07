@@ -3,7 +3,7 @@
 This module contains articles about Java 8 core features
 
 ### Relevant Articles: 
-- [Anonymous Classes in Java](https://www.baeldung.com/java-anonymous-classes)
+
 - [How to Delay Code Execution in Java](https://www.baeldung.com/java-delay-code-execution)
 - [Run a Java Application from the Command Line](https://www.baeldung.com/java-run-jar-with-arguments)
 - [Java 8 Stream skip() vs limit()](https://www.baeldung.com/java-stream-skip-vs-limit)
