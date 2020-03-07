@@ -17,6 +17,7 @@
         <module>spring-boot</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
+        <module>spring-boot-annotations</module>
         <module>spring-boot-artifacts</module>
         <module>spring-boot-autoconfiguration</module>
         <module>spring-boot-bootstrap</module>
@@ -42,6 +43,7 @@
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-birt</module>
         <module>spring-boot-nashorn</module>
+        <module>spring-boot-parent</module>
         <module>spring-boot-performance</module>
         <module>spring-boot-properties</module>
         <module>spring-boot-property-exp</module>
