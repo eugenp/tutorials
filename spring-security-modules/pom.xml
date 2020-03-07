@@ -21,17 +21,17 @@
         <module>spring-security-cors</module>
         <module>spring-security-kerberos</module>
         <module>spring-security-mvc</module>
-        <module>spring-security-mvc-boot</module>
+        <module>spring-security-mvc-boot-1</module>
+        <module>spring-security-mvc-boot-2</module>
         <module>spring-security-mvc-custom</module>
         <module>spring-security-mvc-digest-auth</module>
         <module>spring-security-mvc-jsonview</module>
-        <module>spring-security-mvc-ldap</module>
+        <module>spring-security-ldap</module>
         <module>spring-security-mvc-login</module>
         <module>spring-security-mvc-persisted-remember-me</module>
         <module>spring-security-mvc-socket</module>
         <module>spring-security-oidc</module>
-        <!--<module>spring-security-react</module> --> <!-- Module broken, fixing in BAEL-20772 -->
-
+        <module>spring-security-react</module>   
         <module>spring-security-rest</module>
         <module>spring-security-rest-basic-auth</module>
         <module>spring-security-rest-custom</module>

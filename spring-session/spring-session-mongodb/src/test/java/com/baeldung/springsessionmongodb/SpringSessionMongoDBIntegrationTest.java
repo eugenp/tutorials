@@ -10,7 +10,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.session.data.mongo.MongoOperationsSessionRepository;
+import org.springframework.session.data.mongo.MongoIndexedSessionRepository;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Base64;
@@ -24,7 +24,7 @@ public class SpringSessionMongoDBIntegrationTest {
     private int port;
 
     @Autowired
-    private MongoOperationsSessionRepository repository;
+    private MongoIndexedSessionRepository repository;
 
     private TestRestTemplate restTemplate = new TestRestTemplate();
 

@@ -17,7 +17,6 @@ import org.springframework.mock.jndi.SimpleNamingContextBuilder;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class JndiExceptionsUnitTest {
 
-    @Disabled
     @Test
     @Order(1)
     void givenNoContext_whenLookupObject_thenThrowNoInitialContext() {
