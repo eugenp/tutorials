@@ -21,7 +21,6 @@ public class TesseractPlatformExample {
         } catch(Exception e) {
            e.printStackTrace();
         }
-        
     }
 
 }
