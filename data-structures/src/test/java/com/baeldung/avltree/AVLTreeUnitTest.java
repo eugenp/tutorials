@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.balancedbinarytree;
+package com.baeldung.avltree;
 
 import org.junit.Assert;
 import org.junit.Test;
