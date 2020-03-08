@@ -24,6 +24,7 @@
         <module>front-controller</module>
         <module>intercepting-filter</module>
         <module>solid</module>
+        <module>hexagonal-architecture-example</module>
     </modules>
 
     <dependencyManagement>
