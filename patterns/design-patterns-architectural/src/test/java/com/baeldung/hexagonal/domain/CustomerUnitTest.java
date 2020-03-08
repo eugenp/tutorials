@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.mockito.Mockito.*;
 
-public class CustomerTest {
+public class CustomerUnitTest {
 
     @Test
     public void whenCustomerNameIsChanged_thenPublishMessage() {
