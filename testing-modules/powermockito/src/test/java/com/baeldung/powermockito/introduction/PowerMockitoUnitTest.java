@@ -68,7 +68,7 @@ public class PowerMockitoUnitTest {
 
         when(mock.finalMethod()).thenReturn("I am a final mock method.");
         returnValue = mock.finalMethod();
-        verify(mock,times(3)).finalMethod();
+        verify(mock).finalMethod();
         assertEquals("I am a final mock method.", returnValue);
 
         when(mock, "privateMethod").thenReturn("I am a private mock method.");
