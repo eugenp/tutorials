@@ -7,6 +7,14 @@ import static org.junit.Assert.*;
 
 public class JsonCompareUnitTest {
     @Test
+    public void givenJsonStrings_whenCompared_thenNotEqual() {
+        String string1 = "{\"fullName\": \"Emily Jenkins\", \"age\": 27    }";
+        String string2 = "{\"fullName\": \"Emily Jenkins\", \"age\": 27}";
+
+        assertNotEquals(string1, string2);
+    }
+
+    @Test
     public void givenIdenticalSimpleObjects_whenCompared_thenEqual() {
         JsonParser parser = new JsonParser();
         String string1 = "{\"customer\": {\"id\": \"44521\",\"fullName\": \"Emily Jenkins\", \"age\": 27 }}";
