@@ -117,6 +117,9 @@ public class LTrimRTrim {
         String ltrim = org.apache.commons.lang3.StringUtils.stripStart(src, " ");
         String rtrim = org.apache.commons.lang3.StringUtils.stripEnd(src, " ");
 
+        ltrim = org.apache.commons.lang3.StringUtils.stripStart(src, null);
+        rtrim = org.apache.commons.lang3.StringUtils.stripEnd(src, null);
+
         return checkStrings(ltrim, rtrim);
     }
 
