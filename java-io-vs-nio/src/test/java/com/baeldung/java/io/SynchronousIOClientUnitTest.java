@@ -44,6 +44,8 @@ public class SynchronousIOClientUnitTest {
         }
 
         // then we read and saved our data
-        assertTrue(ourStore.toString().contains("It worked!"));
+        assertTrue(ourStore
+          .toString()
+          .contains("It worked!"));
     }
 }

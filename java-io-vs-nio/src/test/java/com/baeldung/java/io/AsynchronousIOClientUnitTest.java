@@ -52,7 +52,9 @@ public class AsynchronousIOClientUnitTest {
         socketChannel.close();
 
         // then we read and saved our data
-        assertTrue(ourStore.toString().contains("It worked!"));
+        assertTrue(ourStore
+          .toString()
+          .contains("It worked!"));
     }
 
     @Test
@@ -77,7 +79,9 @@ public class AsynchronousIOClientUnitTest {
         socket.close();
 
         // then we read and saved our data
-        assertTrue(ourStore.toString().contains("It worked!"));
+        assertTrue(ourStore
+          .toString()
+          .contains("It worked!"));
     }
 
     void storeBufferContents(ByteBuffer buffer, CharBuffer charBuffer, CharsetDecoder decoder, StringBuilder ourStore) {
