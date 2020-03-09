@@ -1,13 +1,9 @@
-package com.baeldung.concurrent.lock;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+package main.java.com.baeldung.concurrent.lock;
 import java.util.concurrent.TimeUnit;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Param;
@@ -17,45 +13,36 @@ import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
 
 @State(Scope.Thread)
-@Fork(value = 2)
-@Warmup(iterations = 3)
+@Fork(value = 1)
+@Warmup(iterations = 0)
 public class BenchMark {
     ConcurrentAccessMap accessMyMap;
+    static final int SLOTS = 4;
+    static final int THREADS = 1000;
+    static final int BUCKETS = Runtime.getRuntime().availableProcessors() * SLOTS;
     
-    @Param({"HashMap with Lock", "HashMap with Striped Lock", 
-      "ConcurrentHashMap with Lock", "ConcurrentHashMap with Striped Lock"})
-    private String type;
+    @Param({"Single Lock", "Striped Lock"})
+    private String lockType;
 
+    @Param({"HashMap", "ConcurrentHashMap"})
+      private String mapType;
+    
     @Setup
     public void setup() {
-        switch (type) {
-            case "HashMap with Lock":
-                accessMyMap = new CoarseGrained(getHashMap());
+        switch (lockType) {
+            case "Single Lock":
+                accessMyMap = new SingleLock();
                 break;
-            case "ConcurrentHashMap with Lock":
-                accessMyMap = new CoarseGrained(getConcurrentHashMap());
-                break;
-            case "HashMap with Striped Lock":
-                accessMyMap = new LockStriped(getHashMap());
-                break;
-            case "ConcurrentHashMap with Striped Lock":
-                accessMyMap = new LockStriped(getConcurrentHashMap());
+            case "Striped Lock":
+                accessMyMap = new StripedLock(BUCKETS);
                 break;
         }
-    }
-
-    private Map<String, String> getHashMap() {
-        return new HashMap<String,String>();
-    }
-
-    private Map<String, String> getConcurrentHashMap() {
-        return new ConcurrentHashMap<String,String>();
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     public void test() throws InterruptedException {
-        accessMyMap.doWork(type);
+        accessMyMap.doWork(mapType, THREADS, SLOTS);
     }
 }
