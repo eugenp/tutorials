@@ -1,33 +1,48 @@
-package com.baeldung.concurrent.lock;
+package main.java.com.baeldung.concurrent.lock;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.google.common.base.Supplier;
 
 public abstract class ConcurrentAccessMap {
-    static final int SLOTS = 4;
-    static final int THREADS = 10000;
-    static final int BUCKETS = Runtime.getRuntime().availableProcessors() * SLOTS;
-    private CompletableFuture<?>[] requests;
-    protected Map<String, String> map;
     
-    public ConcurrentAccessMap(Map<String, String> map) {
-        this.map = map;
+    public ConcurrentAccessMap() {
+    }
+    
+    private Map<String, String> getHashMap() {
+        return new HashMap<String,String>();
     }
 
-    public final void doWork(String type) {
-        requests = new CompletableFuture<?>[THREADS * SLOTS];
+    private Map<String, String> getConcurrentHashMap() {
+        return new ConcurrentHashMap<String,String>();
+    }
+    
+    private Map<String,String> setup(String type) {
+        switch (type) {
+            case "HashMap":
+                return getHashMap();
+            case "ConcurrentHashMap":
+                return getConcurrentHashMap();
+        }
+        return null;
+    }
 
-        for (int i = 0; i < THREADS; i++) {
-            requests[SLOTS * i + 0] = CompletableFuture.supplyAsync(putSupplier(i));
-            requests[SLOTS * i + 1] = CompletableFuture.supplyAsync(getSupplier(i));
-            requests[SLOTS * i + 2] = CompletableFuture.supplyAsync(getSupplier(i));
-            requests[SLOTS * i + 3] = CompletableFuture.supplyAsync(getSupplier(i)); 	
-		}
+    public final void doWork(String type, int threads, int slots) {
+         CompletableFuture<?>[] requests = new CompletableFuture<?>[threads * slots];
+         Map<String,String> map = setup(type);
+
+        for (int i = 0; i < threads; i++) {
+            requests[slots * i + 0] = CompletableFuture.supplyAsync(putSupplier(map, i));
+            requests[slots * i + 1] = CompletableFuture.supplyAsync(getSupplier(map, i));
+            requests[slots * i + 2] = CompletableFuture.supplyAsync(getSupplier(map, i));
+            requests[slots * i + 3] = CompletableFuture.supplyAsync(getSupplier(map, i));      
+          }
         CompletableFuture.allOf(requests).join();
     }
 
-    protected abstract Supplier<?> putSupplier(int x);
-    protected abstract Supplier<?> getSupplier(int x);
+    protected abstract Supplier<?> putSupplier(Map<String,String> map, int key);
+    protected abstract Supplier<?> getSupplier(Map<String,String> map, int key);
 }
