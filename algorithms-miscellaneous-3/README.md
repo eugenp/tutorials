@@ -13,6 +13,5 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [Checking if a Java Graph has a Cycle](https://www.baeldung.com/java-graph-has-a-cycle)
 - [A Guide to the Folding Technique in Java](https://www.baeldung.com/folding-hashing-technique)
 - [Creating a Triangle with for Loops in Java](https://www.baeldung.com/java-print-triangle)
-- [Efficient Word Frequency Calculator in Java](https://www.baeldung.com/java-word-frequency)
 - [The K-Means Clustering Algorithm in Java](https://www.baeldung.com/java-k-means-clustering-algorithm)
 - More articles: [[<-- prev]](/algorithms-miscellaneous-2) [[next -->]](/algorithms-miscellaneous-4)
