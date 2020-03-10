@@ -17,7 +17,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-h2.properties" })
+@PropertySource({"classpath:persistence-h2.properties"})
 public class HibernateConf {
 
     @Autowired
@@ -27,7 +27,7 @@ public class HibernateConf {
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.baeldung.hibernate.bootstrap.model" });
+        sessionFactory.setPackagesToScan(new String[]{"com.baeldung.hibernate.bootstrap.model"});
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;

@@ -1,6 +1,7 @@
 package com.baeldung.filters;
 
 import javax.servlet.http.HttpServletRequest;
+
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.ZuulFilter;
 

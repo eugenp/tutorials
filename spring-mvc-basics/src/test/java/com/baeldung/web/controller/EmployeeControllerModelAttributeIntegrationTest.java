@@ -32,9 +32,9 @@ public class EmployeeControllerModelAttributeIntegrationTest {
         String urlEncodedFormData = EntityUtils.toString(new UrlEncodedFormEntity(formData));
 
         mockMvc.perform(post("/addEmployee").contentType(MediaType.APPLICATION_FORM_URLENCODED)
-            .content(urlEncodedFormData))
-            .andExpect(status().isOk())
-            .andExpect(view().name("employeeView"))
-            .andExpect(model().attribute("msg", "Welcome to the Netherlands!"));
+                .content(urlEncodedFormData))
+                .andExpect(status().isOk())
+                .andExpect(view().name("employeeView"))
+                .andExpect(model().attribute("msg", "Welcome to the Netherlands!"));
     }
 }

@@ -16,10 +16,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.querydsl.core.types.Predicate;
 
 /**
- * 
  * This test requires:
  * * mongodb instance running on the environment
- *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)

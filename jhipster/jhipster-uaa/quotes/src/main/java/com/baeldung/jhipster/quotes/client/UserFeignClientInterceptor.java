@@ -8,7 +8,7 @@ import org.springframework.security.oauth2.provider.authentication.OAuth2Authent
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 
-public class UserFeignClientInterceptor implements RequestInterceptor{
+public class UserFeignClientInterceptor implements RequestInterceptor {
 
     private static final String AUTHORIZATION_HEADER = "Authorization";
 

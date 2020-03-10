@@ -30,9 +30,9 @@ public class WordCountingApp {
 
     public static void main(String[] args) throws InterruptedException {
         Logger.getLogger("org")
-            .setLevel(Level.OFF);
+                .setLevel(Level.OFF);
         Logger.getLogger("akka")
-            .setLevel(Level.OFF);
+                .setLevel(Level.OFF);
 
         Map<String, Object> kafkaParams = new HashMap<>();
         kafkaParams.put("bootstrap.servers", "localhost:9092");
@@ -51,26 +51,26 @@ public class WordCountingApp {
 
         JavaStreamingContext streamingContext = new JavaStreamingContext(sparkConf, Durations.seconds(1));
 
-        JavaInputDStream<ConsumerRecord<String, String>> messages = KafkaUtils.createDirectStream(streamingContext, LocationStrategies.PreferConsistent(), ConsumerStrategies.<String, String> Subscribe(topics, kafkaParams));
+        JavaInputDStream<ConsumerRecord<String, String>> messages = KafkaUtils.createDirectStream(streamingContext, LocationStrategies.PreferConsistent(), ConsumerStrategies.<String, String>Subscribe(topics, kafkaParams));
 
         JavaPairDStream<String, String> results = messages.mapToPair(record -> new Tuple2<>(record.key(), record.value()));
 
         JavaDStream<String> lines = results.map(tuple2 -> tuple2._2());
 
         JavaDStream<String> words = lines.flatMap(x -> Arrays.asList(x.split("\\s+"))
-            .iterator());
+                .iterator());
 
         JavaPairDStream<String, Integer> wordCounts = words.mapToPair(s -> new Tuple2<>(s, 1))
-            .reduceByKey((i1, i2) -> i1 + i2);
+                .reduceByKey((i1, i2) -> i1 + i2);
 
         wordCounts.foreachRDD(javaRdd -> {
             Map<String, Integer> wordCountMap = javaRdd.collectAsMap();
             for (String key : wordCountMap.keySet()) {
                 List<Word> wordList = Arrays.asList(new Word(key, wordCountMap.get(key)));
                 JavaRDD<Word> rdd = streamingContext.sparkContext()
-                    .parallelize(wordList);
+                        .parallelize(wordList);
                 javaFunctions(rdd).writerBuilder("vocabulary", "words", mapToRow(Word.class))
-                    .saveToCassandra();
+                        .saveToCassandra();
             }
         });
 

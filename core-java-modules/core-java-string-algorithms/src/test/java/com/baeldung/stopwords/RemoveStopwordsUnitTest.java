@@ -26,7 +26,7 @@ public class RemoveStopwordsUnitTest {
     @Test
     public void whenRemoveStopwordsManually_thenSuccess() {
         String[] allWords = original.toLowerCase()
-            .split(" ");
+                .split(" ");
         StringBuilder builder = new StringBuilder();
         for (String word : allWords) {
             if (!stopwords.contains(word)) {
@@ -42,8 +42,8 @@ public class RemoveStopwordsUnitTest {
     @Test
     public void whenRemoveStopwordsUsingRemoveAll_thenSuccess() {
         ArrayList<String> allWords = Stream.of(original.toLowerCase()
-            .split(" "))
-            .collect(Collectors.toCollection(ArrayList<String>::new));
+                .split(" "))
+                .collect(Collectors.toCollection(ArrayList<String>::new));
         allWords.removeAll(stopwords);
         String result = allWords.stream().collect(Collectors.joining(" "));
         assertEquals(result, target);
@@ -52,7 +52,7 @@ public class RemoveStopwordsUnitTest {
     @Test
     public void whenRemoveStopwordsUsingRegex_thenSuccess() {
         String stopwordsRegex = stopwords.stream()
-            .collect(Collectors.joining("|", "\\b(", ")\\b\\s?"));
+                .collect(Collectors.joining("|", "\\b(", ")\\b\\s?"));
         String result = original.toLowerCase().replaceAll(stopwordsRegex, "");
         assertEquals(result, target);
     }

@@ -41,8 +41,8 @@ public class DateToStringFormatterUnitTest {
     @Test
     public void whenDateConvertedUsingDateFormatToString_thenCorrect() {
         String formattedDate = DateFormat
-          .getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT, Locale.US)
-          .format(date);
+                .getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT, Locale.US)
+                .format(date);
 
         assertEquals(EXPECTED_STRING_DATE, formattedDate);
     }
@@ -59,8 +59,8 @@ public class DateToStringFormatterUnitTest {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern(DATE_FORMAT);
         Instant instant = date.toInstant();
         LocalDateTime ldt = instant
-          .atZone(ZoneId.of("CET"))
-          .toLocalDateTime();
+                .atZone(ZoneId.of("CET"))
+                .toLocalDateTime();
         String formattedDate = ldt.format(fmt);
 
         assertEquals(EXPECTED_STRING_DATE, formattedDate);

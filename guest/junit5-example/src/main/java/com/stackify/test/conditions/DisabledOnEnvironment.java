@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 
-@Target({ ElementType.METHOD })
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @ExtendWith(DisabledOnEnvironmentCondition.class)
 public @interface DisabledOnEnvironment {

@@ -28,20 +28,20 @@ import redis.embedded.RedisServerBuilder;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringRedisReactiveApplication.class)
 @DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
 public class RedisTemplateValueOpsIntegrationTest {
-    
+
     private static redis.embedded.RedisServer redisServer;
 
     @Autowired
     private ReactiveRedisTemplate<String, Employee> redisTemplate;
 
     private ReactiveValueOperations<String, Employee> reactiveValueOps;
-    
+
     @BeforeClass
     public static void startRedisServer() throws IOException {
         redisServer = new RedisServerBuilder().port(6379).setting("maxmemory 256M").build();
         redisServer.start();
     }
-    
+
     @AfterClass
     public static void stopRedisServer() throws IOException {
         redisServer.stop();
@@ -58,8 +58,8 @@ public class RedisTemplateValueOpsIntegrationTest {
         Mono<Boolean> result = reactiveValueOps.set("123", new Employee("123", "Bill", "Accounts"));
 
         StepVerifier.create(result)
-            .expectNext(true)
-            .verifyComplete();
+                .expectNext(true)
+                .verifyComplete();
     }
 
     @Test
@@ -68,8 +68,8 @@ public class RedisTemplateValueOpsIntegrationTest {
         Mono<Employee> fetchedEmployee = reactiveValueOps.get("123");
 
         StepVerifier.create(fetchedEmployee)
-            .expectNext(new Employee("123", "Bill", "Accounts"))
-            .verifyComplete();
+                .expectNext(new Employee("123", "Bill", "Accounts"))
+                .verifyComplete();
     }
 
     @Test
@@ -80,14 +80,14 @@ public class RedisTemplateValueOpsIntegrationTest {
         Mono<Employee> fetchedEmployee = reactiveValueOps.get("129");
 
         StepVerifier.create(result)
-            .expectNext(true)
-            .verifyComplete();
+                .expectNext(true)
+                .verifyComplete();
 
         Thread.sleep(2000L);
 
         StepVerifier.create(fetchedEmployee)
-            .expectNextCount(0L)
-            .verifyComplete();
+                .expectNextCount(0L)
+                .verifyComplete();
     }
 
 }

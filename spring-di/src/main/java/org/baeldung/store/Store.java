@@ -3,12 +3,13 @@ package org.baeldung.store;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class Store {
-    
+
     @Autowired
     private Item item;
-    
-    public Store() {}
-    
+
+    public Store() {
+    }
+
     public Store(Item item) {
         this.item = item;
     }

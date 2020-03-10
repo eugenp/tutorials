@@ -1,5 +1,3 @@
-
-
 group 'com.baeldung.ktor'
 version '1.0-SNAPSHOT'
 
@@ -36,8 +34,8 @@ repositories {
     maven { url "https://dl.bintray.com/kotlin/ktor" }
 }
 sourceSets {
-    main{
-        kotlin{
+    main {
+        kotlin {
             srcDirs 'com/baeldung/ktor'
         }
     }
@@ -58,5 +56,5 @@ dependencies {
 
 task runServer(type: JavaExec) {
     main = 'APIServer'
-   classpath = sourceSets.main.runtimeClasspath
+    classpath = sourceSets.main.runtimeClasspath
 }

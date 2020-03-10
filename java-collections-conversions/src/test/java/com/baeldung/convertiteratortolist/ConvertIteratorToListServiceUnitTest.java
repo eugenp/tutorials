@@ -25,7 +25,7 @@ public class ConvertIteratorToListServiceUnitTest {
     @Before
     public void setUp() throws Exception {
         iterator = Arrays.asList(1, 2, 3)
-            .iterator();
+                .iterator();
     }
 
     @Test
@@ -61,8 +61,8 @@ public class ConvertIteratorToListServiceUnitTest {
 
         // Extract List from stream
         List<Integer> actualList = StreamSupport
-            .stream(iterable.spliterator(), false)
-            .collect(Collectors.toList());
+                .stream(iterable.spliterator(), false)
+                .collect(Collectors.toList());
 
         assertThat(actualList, hasSize(3));
         assertThat(actualList, containsInAnyOrder(1, 2, 3));

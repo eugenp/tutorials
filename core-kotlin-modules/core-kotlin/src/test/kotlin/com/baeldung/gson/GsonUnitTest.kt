@@ -24,7 +24,7 @@ class GsonUnitTest {
     }
 
     data class TestModel(
-        val id: Int,
-        val description: String
+            val id: Int,
+            val description: String
     )
 }

@@ -1,4 +1,5 @@
 package com.baeldung.jhipster5.service;
+
 import com.baeldung.jhipster5.config.Constants;
 
 import com.baeldung.jhipster5.BookstoreApp;

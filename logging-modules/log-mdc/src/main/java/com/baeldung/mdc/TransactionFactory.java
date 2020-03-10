@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class TransactionFactory {
 
-    private static final String[] NAMES = { "John", "Susan", "Marc", "Samantha" };
+    private static final String[] NAMES = {"John", "Susan", "Marc", "Samantha"};
     private static long nextId = 1;
 
     public Transfer newInstance() {

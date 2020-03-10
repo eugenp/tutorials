@@ -24,40 +24,40 @@ public class AutomapClassIntegrationTest {
     @Before
     public void setup() {
         create = db.update("CREATE TABLE IF NOT EXISTS MANAGER(id int primary key, name varchar(255))")
-          .count();
+                .count();
         insert1 = db.update("INSERT INTO MANAGER(id, name) VALUES(1, 'Alan')")
-          .dependsOn(create)
-          .count();
+                .dependsOn(create)
+                .count();
         insert2 = db.update("INSERT INTO MANAGER(id, name) VALUES(2, 'Sarah')")
-          .dependsOn(create)
-          .count();
+                .dependsOn(create)
+                .count();
     }
 
     @Test
     public void whenSelectManagersAndAutomap_thenCorrect() {
         List<Manager> managers = db.select("select id, name from MANAGER")
-          .dependsOn(create)
-          .dependsOn(insert1)
-          .dependsOn(insert2)
-          .autoMap(Manager.class)
-          .toList()
-          .toBlocking()
-          .single();
+                .dependsOn(create)
+                .dependsOn(insert1)
+                .dependsOn(insert2)
+                .autoMap(Manager.class)
+                .toList()
+                .toBlocking()
+                .single();
 
         assertThat(managers.get(0)
-          .getId()).isEqualTo(1);
+                .getId()).isEqualTo(1);
         assertThat(managers.get(0)
-          .getName()).isEqualTo("Alan");
+                .getName()).isEqualTo("Alan");
         assertThat(managers.get(1)
-           .getId()).isEqualTo(2);
+                .getId()).isEqualTo(2);
         assertThat(managers.get(1)
-          .getName()).isEqualTo("Sarah");
+                .getName()).isEqualTo("Sarah");
     }
 
     @After
     public void close() {
         db.update("DROP TABLE MANAGER")
-          .dependsOn(create);
+                .dependsOn(create);
         connectionProvider.close();
     }
 }

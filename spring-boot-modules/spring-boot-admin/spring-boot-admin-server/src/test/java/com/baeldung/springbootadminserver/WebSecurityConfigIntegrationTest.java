@@ -20,40 +20,41 @@ import static org.springframework.security.test.web.servlet.response.SecurityMoc
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class WebSecurityConfigIntegrationTest {
 
-    @Autowired WebApplicationContext wac;
+    @Autowired
+    WebApplicationContext wac;
 
     private MockMvc mockMvc;
 
     @Before
     public void setup() {
         mockMvc = MockMvcBuilders
-          .webAppContextSetup(wac)
-          .build();
+                .webAppContextSetup(wac)
+                .build();
     }
 
     @Test
     public void whenApplicationStarts_ThenGetLoginPageWithSuccess() throws Exception {
         mockMvc
-          .perform(get("/login.html"))
-          .andExpect(status().is2xxSuccessful());
+                .perform(get("/login.html"))
+                .andExpect(status().is2xxSuccessful());
     }
 
     @Test
     public void whenFormLoginAttempted_ThenSuccess() throws Exception {
         mockMvc.perform(formLogin("/login")
-          .user("admin")
-          .password("admin"));
+                .user("admin")
+                .password("admin"));
     }
 
     @Test
     public void whenFormLoginWithSuccess_ThenApiEndpointsAreAccessible() throws Exception {
         mockMvc.perform(formLogin("/login")
-          .user("admin")
-          .password("admin"));
+                .user("admin")
+                .password("admin"));
 
         mockMvc
-          .perform(get("/applications/"))
-          .andExpect(status().is2xxSuccessful());
+                .perform(get("/applications/"))
+                .andExpect(status().is2xxSuccessful());
 
     }
 
@@ -65,8 +66,8 @@ public class WebSecurityConfigIntegrationTest {
     @Test
     public void whenInvalidHttpBasicAttempted_ThenUnauthorized() throws Exception {
         mockMvc
-          .perform(get("/actuator/env").with(httpBasic("admin", "invalid")))
-          .andExpect(unauthenticated());
+                .perform(get("/actuator/env").with(httpBasic("admin", "invalid")))
+                .andExpect(unauthenticated());
     }
 
 }

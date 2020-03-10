@@ -46,7 +46,7 @@ public class HttpRequestLiveTest {
 
         assertEquals("status code incorrect", status, 200);
         assertTrue("content incorrect", content.toString()
-            .contains("Example Domain"));
+                .contains("Example Domain"));
     }
 
     @Test
@@ -88,23 +88,23 @@ public class HttpRequestLiveTest {
         if (cookiesHeader != null) {
             List<HttpCookie> cookies = HttpCookie.parse(cookiesHeader);
             cookies.forEach(cookie -> cookieManager.getCookieStore()
-                .add(null, cookie));
+                    .add(null, cookie));
             usernameCookie = cookies.stream()
-                .findAny()
-                .filter(cookie -> cookie.getName()
-                    .equals("username"));
+                    .findAny()
+                    .filter(cookie -> cookie.getName()
+                            .equals("username"));
         }
 
         if (usernameCookie == null) {
             cookieManager.getCookieStore()
-                .add(null, new HttpCookie("username", "john"));
+                    .add(null, new HttpCookie("username", "john"));
         }
 
         con.disconnect();
 
         con = (HttpURLConnection) url.openConnection();
         con.setRequestProperty("Cookie", StringUtils.join(cookieManager.getCookieStore()
-            .getCookies(), ";"));
+                .getCookies(), ";"));
 
         int status = con.getResponseCode();
 
@@ -160,7 +160,7 @@ public class HttpRequestLiveTest {
 
         assertEquals("status code incorrect", status, 411);
         assertTrue("error content", content.toString()
-            .contains("411 - Length Required"));
+                .contains("411 - Length Required"));
     }
 
     @Test

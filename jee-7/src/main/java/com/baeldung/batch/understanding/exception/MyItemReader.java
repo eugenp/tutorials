@@ -16,7 +16,7 @@ public class MyItemReader extends AbstractItemReader {
         tokens = new StringTokenizer("1,2,3,4,5,6,7,8,9,10", ",");
         if (checkpoint != null) {
             while (!Integer.valueOf(tokens.nextToken())
-                .equals(((MyInputRecord) checkpoint).getId())) {
+                    .equals(((MyInputRecord) checkpoint).getId())) {
             }
         }
     }

@@ -15,8 +15,8 @@ public class KeyspaceRepository {
 
     public void createKeyspace(String keyspaceName, int numberOfReplicas) {
         CreateKeyspace createKeyspace = SchemaBuilder.createKeyspace(keyspaceName)
-          .ifNotExists()
-          .withSimpleStrategy(numberOfReplicas);
+                .ifNotExists()
+                .withSimpleStrategy(numberOfReplicas);
 
         session.execute(createKeyspace.build());
     }

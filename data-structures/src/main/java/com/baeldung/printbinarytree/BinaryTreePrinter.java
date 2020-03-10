@@ -29,7 +29,7 @@ public class BinaryTreePrinter {
     }
 
     private void traverseNodes(StringBuilder sb, String padding, String pointer, BinaryTreeModel node,
-        boolean hasRightSibling) {
+                               boolean hasRightSibling) {
 
         if (node != null) {
 

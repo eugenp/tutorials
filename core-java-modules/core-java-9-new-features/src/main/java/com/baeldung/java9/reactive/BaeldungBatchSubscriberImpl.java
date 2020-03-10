@@ -54,9 +54,9 @@ public class BaeldungBatchSubscriberImpl<T> implements Subscriber<String> {
         // Process all items in the buffer. Here, we just print it and sleep for 1 second.
         System.out.print("Processed items: ");
         buffer.stream()
-            .forEach(item -> {
-                System.out.print(" " + item);
-            });
+                .forEach(item -> {
+                    System.out.print(" " + item);
+                });
         System.out.println();
         try {
             Thread.sleep(1000);

@@ -51,12 +51,12 @@ public class TemplateMethodPatternIntegrationTest {
         standardComputerBuilder.buildComputer();
         assertEquals(2, standardComputerBuilder.getComputerParts().size());
     }
-    
+
     @Test
     public void givenAllStandardParts_whenComputerisBuilt_thenComputerInstance() {
         assertThat(standardComputerBuilder.buildComputer(), instanceOf(Computer.class));
     }
-    
+
     @Test
     public void givenHighEnddMotherBoard_whenAddingMotherBoard_thenEqualAssertion() {
         highEndComputerBuilder.addMotherboard();
@@ -75,14 +75,14 @@ public class TemplateMethodPatternIntegrationTest {
         highEndComputerBuilder.addProcessor();
         assertEquals("High-end Processor", highEndComputerBuilder.getComputerParts().get("Processor"));
     }
-    
+
     @Test
     public void givenAllHighEnddParts_whenBuildingComputer_thenTwoParts() {
         highEndComputerBuilder.buildComputer();
         assertEquals(2, highEndComputerBuilder.getComputerParts().size());
     }
-    
-     @Test
+
+    @Test
     public void givenAllHighEndParts_whenComputerisBuilt_thenComputerInstance() {
         assertThat(standardComputerBuilder.buildComputer(), instanceOf(Computer.class));
     }

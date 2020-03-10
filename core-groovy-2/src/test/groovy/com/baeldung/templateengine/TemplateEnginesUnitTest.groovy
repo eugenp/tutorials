@@ -9,39 +9,39 @@ import groovy.text.markup.MarkupTemplateEngine
 import groovy.text.markup.TemplateConfiguration
 
 class TemplateEnginesUnitTest extends GroovyTestCase {
-    
+
     def bindMap = [user: "Norman", signature: "Baeldung"]
-    
+
     void testSimpleTemplateEngine() {
         def smsTemplate = 'Dear <% print user %>, Thanks for reading our Article. ${signature}'
         def smsText = new SimpleTemplateEngine().createTemplate(smsTemplate).make(bindMap)
 
         assert smsText.toString() == "Dear Norman, Thanks for reading our Article. Baeldung"
     }
-    
+
     void testStreamingTemplateEngine() {
         def articleEmailTemplate = new File('src/main/resources/articleEmail.template')
         bindMap.articleText = """1. Overview
 This is a tutorial article on Template Engines""" //can be a string larger than 64k
-        
+
         def articleEmailText = new StreamingTemplateEngine().createTemplate(articleEmailTemplate).make(bindMap)
-        
+
         assert articleEmailText.toString() == """Dear Norman,
 Please read the requested article below.
 1. Overview
 This is a tutorial article on Template Engines
 From,
 Baeldung"""
-        
+
     }
-    
+
     void testGStringTemplateEngine() {
         def emailTemplate = new File('src/main/resources/email.template')
         def emailText = new GStringTemplateEngine().createTemplate(emailTemplate).make(bindMap)
-        
+
         assert emailText.toString() == "Dear Norman,\nThanks for subscribing our services.\nBaeldung"
     }
-    
+
     void testXmlTemplateEngine() {
         def emailXmlTemplate = '''<xs xmlns:gsp='groovy-server-pages'>
                                       <gsp:scriptlet>def emailContent = "Thanks for subscribing our services."</gsp:scriptlet>
@@ -54,7 +54,7 @@ Baeldung"""
         def emailXml = new XmlTemplateEngine().createTemplate(emailXmlTemplate).make(bindMap)
         println emailXml.toString()
     }
-    
+
     void testMarkupTemplateEngineHtml() {
         def emailHtmlTemplate = """html {
                                        head {
@@ -66,13 +66,13 @@ Baeldung"""
                                            p('Baeldung')
                                        }
                                    }"""
-        
-        
+
+
         def emailHtml = new MarkupTemplateEngine().createTemplate(emailHtmlTemplate).make()
         println emailHtml.toString()
-        
+
     }
-    
+
     void testMarkupTemplateEngineXml() {
         def emailXmlTemplate = """xmlDeclaration()  
                                       xs{
@@ -89,8 +89,8 @@ Baeldung"""
         config.autoNewLine = true
 
         def emailXml = new MarkupTemplateEngine(config).createTemplate(emailXmlTemplate).make()
-        
+
         println emailXml.toString()
     }
-    
+
 }

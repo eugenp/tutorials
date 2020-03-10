@@ -7,12 +7,12 @@
         </encoder>
     </appender>
 
-	<logger name="org.hibernate" level="INFO" />
-	<logger name="org.hibernate.SQL" level="DEBUG" />
-    <logger name="org.hibernate.type.descriptor.sql" level="TRACE" />
-	<logger name="org.hibernate.stat" level="DEBUG" />
-	
+    <logger name="org.hibernate" level="INFO"/>
+    <logger name="org.hibernate.SQL" level="DEBUG"/>
+    <logger name="org.hibernate.type.descriptor.sql" level="TRACE"/>
+    <logger name="org.hibernate.stat" level="DEBUG"/>
+
     <root level="INFO">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

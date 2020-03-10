@@ -6,7 +6,7 @@ import org.jbehave.core.annotations.BeforeStory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
-@ContextConfiguration(classes = { AdderController.class, AdderService.class })
+@ContextConfiguration(classes = {AdderController.class, AdderService.class})
 public class AdderIntegrationTest extends SerenityStory {
 
     @Autowired

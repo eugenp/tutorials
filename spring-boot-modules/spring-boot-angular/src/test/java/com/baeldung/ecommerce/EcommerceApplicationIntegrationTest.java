@@ -26,25 +26,29 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasProperty;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { EcommerceApplication.class }, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = {EcommerceApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class EcommerceApplicationIntegrationTest {
 
-    @Autowired private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
-    @LocalServerPort private int port;
+    @LocalServerPort
+    private int port;
 
-    @Autowired private ProductController productController;
+    @Autowired
+    private ProductController productController;
 
-    @Autowired private OrderController orderController;
+    @Autowired
+    private OrderController orderController;
 
     @Test
     public void contextLoads() {
         Assertions
-          .assertThat(productController)
-          .isNotNull();
+                .assertThat(productController)
+                .isNotNull();
         Assertions
-          .assertThat(orderController)
-          .isNotNull();
+                .assertThat(orderController)
+                .isNotNull();
     }
 
     @Test
@@ -53,8 +57,8 @@ public class EcommerceApplicationIntegrationTest {
         });
         Iterable<Product> products = responseEntity.getBody();
         Assertions
-          .assertThat(products)
-          .hasSize(7);
+                .assertThat(products)
+                .hasSize(7);
 
         assertThat(products, hasItem(hasProperty("name", is("TV Set"))));
         assertThat(products, hasItem(hasProperty("name", is("Game Console"))));
@@ -72,8 +76,8 @@ public class EcommerceApplicationIntegrationTest {
 
         Iterable<Order> orders = responseEntity.getBody();
         Assertions
-          .assertThat(orders)
-          .hasSize(0);
+                .assertThat(orders)
+                .hasSize(0);
     }
 
     @Test
@@ -81,8 +85,8 @@ public class EcommerceApplicationIntegrationTest {
         final ResponseEntity<Order> postResponse = restTemplate.postForEntity("http://localhost:" + port + "/api/orders", prepareOrderForm(), Order.class);
         Order order = postResponse.getBody();
         Assertions
-          .assertThat(postResponse.getStatusCode())
-          .isEqualByComparingTo(HttpStatus.CREATED);
+                .assertThat(postResponse.getStatusCode())
+                .isEqualByComparingTo(HttpStatus.CREATED);
 
         assertThat(order, hasProperty("status", is("PAID")));
         assertThat(order.getOrderProducts(), hasItem(hasProperty("quantity", is(2))));

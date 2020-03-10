@@ -17,10 +17,11 @@ import de.codecentric.boot.admin.server.notify.RemindingNotifier;
 import de.codecentric.boot.admin.server.notify.filter.FilteringNotifier;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { NotifierConfiguration.class, SpringBootAdminServerApplication.class }, webEnvironment = NONE) 
+@SpringBootTest(classes = {NotifierConfiguration.class, SpringBootAdminServerApplication.class}, webEnvironment = NONE)
 public class NotifierConfigurationIntegrationTest {
 
-    @Autowired private ApplicationContext applicationContext;
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @Test
     public void whenApplicationContextStart_ThenNotifierBeanExists() {

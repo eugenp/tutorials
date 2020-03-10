@@ -1,9 +1,9 @@
 
 /**
-  This class loads the logging configuration from the xml defined in 
-  src/main/resources and uses the same configuration  generated through 
-  programmatic configuration as defined in simple-configuration example.
-**/
+ * This class loads the logging configuration from the xml defined in
+ * src/main/resources and uses the same configuration  generated through
+ * programmatic configuration as defined in simple-configuration example.
+ **/
 
 package com.baeldung.logging.log4j2.xmlconfiguration;
 

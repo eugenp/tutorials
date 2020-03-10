@@ -18,17 +18,17 @@ public class CodeSnippets {
     private static final Logger logger = Logger.getLogger(CodeSnippets.class.getName());
 
     public static List<JsonNode> extractJsonResult(N1qlQueryResult result) {
-      return result.allRows().stream()
-        .map(row -> {
-            try {
-              return objectMapper.readTree(row.value().toString());
-            }catch (IOException e) {
-               logger.log(Level.WARNING, e.getLocalizedMessage());
-               return null;
-            }
-        })
-        .filter(Objects::nonNull)
-        .collect(Collectors.toList());
+        return result.allRows().stream()
+                .map(row -> {
+                    try {
+                        return objectMapper.readTree(row.value().toString());
+                    } catch (IOException e) {
+                        logger.log(Level.WARNING, e.getLocalizedMessage());
+                        return null;
+                    }
+                })
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
     }
 
 }

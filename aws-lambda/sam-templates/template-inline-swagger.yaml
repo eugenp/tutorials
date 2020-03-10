@@ -6,8 +6,8 @@ Resources:
     Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey:
-          Name: id
-          Type: Number
+        Name: id
+        Type: Number
       TableName: Person
   StorePersonFunction:
     Type: AWS::Serverless::Function
@@ -30,7 +30,7 @@ Resources:
             Path: /persons
             Method: PUT
             RestApiId:
-                Ref: MyApi
+              Ref: MyApi
   GetPersonByHTTPParamFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -52,14 +52,14 @@ Resources:
             Path: /persons/{id}
             Method: GET
             RestApiId:
-                Ref: MyApi
+              Ref: MyApi
         GetByQueryApi:
           Type: Api
           Properties:
             Path: /persons
             Method: GET
             RestApiId:
-                Ref: MyApi
+              Ref: MyApi
   MyApi:
     Type: AWS::Serverless::Api
     Properties:
@@ -73,10 +73,10 @@ Resources:
           /persons:
             get:
               parameters:
-              - name: "id"
-                in: "query"
-                required: true
-                type: "string"
+                - name: "id"
+                  in: "query"
+                  required: true
+                  type: "string"
               x-amazon-apigateway-request-validator: "Validate query string parameters and\
                 \ headers"
               x-amazon-apigateway-integration:
@@ -95,10 +95,10 @@ Resources:
           /persons/{id}:
             get:
               parameters:
-              - name: "id"
-                in: "path"
-                required: true
-                type: "string"
+                - name: "id"
+                  in: "path"
+                  required: true
+                  type: "string"
               responses: {}
               x-amazon-apigateway-integration:
                 uri:

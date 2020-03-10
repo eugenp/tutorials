@@ -10,18 +10,18 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.springframework.boot.jackson.JsonComponent;
 
 privileged aspect DomainModelModule_Roo_DomainModelModule {
-    
-    declare parents: DomainModelModule extends SimpleModule;
-    
-    declare @type: DomainModelModule: @JsonComponent;
-    
+
+    declare parents:DomainModelModule extends SimpleModule;
+
+    declare @type: DomainModelModule:@JsonComponent;
+
     /**
      * TODO Auto-generated constructor documentation
-     * 
+     *
      */
     public DomainModelModule.new() {
         // Mixin registration
-        
+
         setMixInAnnotation(Book.class, BookJsonMixin.class);
     }
 

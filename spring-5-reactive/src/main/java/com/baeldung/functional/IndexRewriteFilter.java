@@ -12,12 +12,12 @@ class IndexRewriteFilter implements WebFilter {
     public Mono<Void> filter(ServerWebExchange serverWebExchange, WebFilterChain webFilterChain) {
         ServerHttpRequest request = serverWebExchange.getRequest();
         if (request.getURI()
-            .getPath()
-            .equals("/")) {
+                .getPath()
+                .equals("/")) {
             return webFilterChain.filter(serverWebExchange.mutate()
-                .request(builder -> builder.method(request.getMethod())
-                    .path("/test"))
-                .build());
+                    .request(builder -> builder.method(request.getMethod())
+                            .path("/test"))
+                    .build());
         }
         return webFilterChain.filter(serverWebExchange);
     }

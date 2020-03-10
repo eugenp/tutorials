@@ -1,8 +1,10 @@
 package com.baeldung.persistence.service.transactional;
 
 import com.baeldung.persistence.model.Foo;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,12 +22,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionTemplate;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceTransactionalTestConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceTransactionalTestConfig.class}, loader = AnnotationConfigContextLoader.class)
 @DirtiesContext
 public class FooTransactionalUnitTest {
 
     static abstract class BasicFooDao {
-        @PersistenceContext private EntityManager entityManager;
+        @PersistenceContext
+        private EntityManager entityManager;
 
         public Foo findOne(final long id) {
             return entityManager.find(Foo.class, id);
@@ -105,26 +108,35 @@ public class FooTransactionalUnitTest {
         }
     }
 
-    @Autowired private TransactionTemplate transactionTemplate;
+    @Autowired
+    private TransactionTemplate transactionTemplate;
 
-    @Autowired private RequiredTransactionalFooDao requiredTransactionalFooDao;
+    @Autowired
+    private RequiredTransactionalFooDao requiredTransactionalFooDao;
 
-    @Autowired private RequiresNewTransactionalFooDao requiresNewTransactionalFooDao;
+    @Autowired
+    private RequiresNewTransactionalFooDao requiresNewTransactionalFooDao;
 
-    @Autowired private SupportTransactionalFooDao supportTransactionalFooDao;
+    @Autowired
+    private SupportTransactionalFooDao supportTransactionalFooDao;
 
-    @Autowired private MandatoryTransactionalFooDao mandatoryTransactionalFooDao;
+    @Autowired
+    private MandatoryTransactionalFooDao mandatoryTransactionalFooDao;
 
-    @Autowired private MandatoryTransactionalFooService mandatoryTransactionalFooService;
+    @Autowired
+    private MandatoryTransactionalFooService mandatoryTransactionalFooService;
 
-    @Autowired private NeverTransactionalFooService neverTransactionalFooService;
+    @Autowired
+    private NeverTransactionalFooService neverTransactionalFooService;
 
-    @Autowired private NotSupportedTransactionalFooService notSupportedTransactionalFooService;
+    @Autowired
+    private NotSupportedTransactionalFooService notSupportedTransactionalFooService;
 
-    @Autowired private SupportTransactionalFooService supportTransactionalFooService;
+    @Autowired
+    private SupportTransactionalFooService supportTransactionalFooService;
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         PersistenceTransactionalTestConfig.clearSpy();
     }
 
@@ -135,7 +147,6 @@ public class FooTransactionalUnitTest {
         Assert.assertEquals(0, transactionSpy.getSuspend());
         Assert.assertEquals(1, transactionSpy.getCreate());
     }
-
 
 
     @Test

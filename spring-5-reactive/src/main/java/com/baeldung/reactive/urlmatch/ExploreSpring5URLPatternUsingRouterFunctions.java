@@ -25,17 +25,17 @@ public class ExploreSpring5URLPatternUsingRouterFunctions {
     private RouterFunction<ServerResponse> routingFunction() {
 
         return route(GET("/p?ths"), serverRequest -> ok().body(fromObject("/p?ths"))).andRoute(GET("/test/{*id}"), serverRequest -> ok().body(fromObject(serverRequest.pathVariable("id"))))
-            .andRoute(GET("/*card"), serverRequest -> ok().body(fromObject("/*card path was accessed")))
-            .andRoute(GET("/{var1}_{var2}"), serverRequest -> ok().body(fromObject(serverRequest.pathVariable("var1") + " , " + serverRequest.pathVariable("var2"))))
-            .andRoute(GET("/{baeldung:[a-z]+}"), serverRequest -> ok().body(fromObject("/{baeldung:[a-z]+} was accessed and baeldung=" + serverRequest.pathVariable("baeldung"))))
-            .and(RouterFunctions.resources("/files/{*filepaths}", new ClassPathResource("files/")));
+                .andRoute(GET("/*card"), serverRequest -> ok().body(fromObject("/*card path was accessed")))
+                .andRoute(GET("/{var1}_{var2}"), serverRequest -> ok().body(fromObject(serverRequest.pathVariable("var1") + " , " + serverRequest.pathVariable("var2"))))
+                .andRoute(GET("/{baeldung:[a-z]+}"), serverRequest -> ok().body(fromObject("/{baeldung:[a-z]+} was accessed and baeldung=" + serverRequest.pathVariable("baeldung"))))
+                .and(RouterFunctions.resources("/files/{*filepaths}", new ClassPathResource("files/")));
     }
 
     WebServer start() throws Exception {
         WebHandler webHandler = (WebHandler) toHttpHandler(routingFunction());
         HttpHandler httpHandler = WebHttpHandlerBuilder.webHandler(webHandler)
-            .filter(new IndexRewriteFilter())
-            .build();
+                .filter(new IndexRewriteFilter())
+                .build();
 
         Tomcat tomcat = new Tomcat();
         tomcat.setHostname("localhost");

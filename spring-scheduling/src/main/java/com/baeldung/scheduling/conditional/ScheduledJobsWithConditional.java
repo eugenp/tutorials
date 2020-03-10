@@ -5,11 +5,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ScheduledJobsWithConditional
-{
+public class ScheduledJobsWithConditional {
     /**
      * This uses @ConditionalOnProperty to conditionally create a bean, which itself
      * is a scheduled job.
+     *
      * @return ScheduledJob
      */
     @Bean

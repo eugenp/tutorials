@@ -59,7 +59,7 @@ class NullSafetyTest {
     @Test
     fun givenCollectionWithNulls_whenLetWithSafeCallOperator_thenItOmitsNulls() {
         val list: List<String?> = listOf("a", "b", null)
-        for(elem in list) {
+        for (elem in list) {
             elem?.let { assertNotNull(it) }
         }
     }

@@ -85,34 +85,34 @@ public final class BaeldungTraining {
                 while (!done) {
                     int tag = input.readTag();
                     switch (tag) {
-                    case 0:
-                        done = true;
-                        break;
-                    default: {
-                        if (!input.skipField(tag)) {
+                        case 0:
                             done = true;
+                            break;
+                        default: {
+                            if (!input.skipField(tag)) {
+                                done = true;
+                            }
+                            break;
                         }
-                        break;
-                    }
-                    case 8: {
+                        case 8: {
 
-                        id_ = input.readInt32();
-                        break;
-                    }
-                    case 18: {
-                        java.lang.String s = input.readStringRequireUtf8();
-
-                        courseName_ = s;
-                        break;
-                    }
-                    case 26: {
-                        if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                            student_ = new java.util.ArrayList<com.baeldung.protobuf.BaeldungTraining.Student>();
-                            mutable_bitField0_ |= 0x00000004;
+                            id_ = input.readInt32();
+                            break;
                         }
-                        student_.add(input.readMessage(com.baeldung.protobuf.BaeldungTraining.Student.parser(), extensionRegistry));
-                        break;
-                    }
+                        case 18: {
+                            java.lang.String s = input.readStringRequireUtf8();
+
+                            courseName_ = s;
+                            break;
+                        }
+                        case 26: {
+                            if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                                student_ = new java.util.ArrayList<com.baeldung.protobuf.BaeldungTraining.Student>();
+                                mutable_bitField0_ |= 0x00000004;
+                            }
+                            student_.add(input.readMessage(com.baeldung.protobuf.BaeldungTraining.Student.parser(), extensionRegistry));
+                            break;
+                        }
                     }
                 }
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -821,6 +821,7 @@ public final class BaeldungTraining {
 
         // @@protoc_insertion_point(class_scope:baeldung.Course)
         private static final com.baeldung.protobuf.BaeldungTraining.Course DEFAULT_INSTANCE;
+
         static {
             DEFAULT_INSTANCE = new com.baeldung.protobuf.BaeldungTraining.Course();
         }
@@ -947,46 +948,46 @@ public final class BaeldungTraining {
                 while (!done) {
                     int tag = input.readTag();
                     switch (tag) {
-                    case 0:
-                        done = true;
-                        break;
-                    default: {
-                        if (!input.skipField(tag)) {
+                        case 0:
                             done = true;
+                            break;
+                        default: {
+                            if (!input.skipField(tag)) {
+                                done = true;
+                            }
+                            break;
                         }
-                        break;
-                    }
-                    case 8: {
+                        case 8: {
 
-                        id_ = input.readInt32();
-                        break;
-                    }
-                    case 18: {
-                        java.lang.String s = input.readStringRequireUtf8();
-
-                        firstName_ = s;
-                        break;
-                    }
-                    case 26: {
-                        java.lang.String s = input.readStringRequireUtf8();
-
-                        lastName_ = s;
-                        break;
-                    }
-                    case 34: {
-                        java.lang.String s = input.readStringRequireUtf8();
-
-                        email_ = s;
-                        break;
-                    }
-                    case 42: {
-                        if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                            phone_ = new java.util.ArrayList<com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber>();
-                            mutable_bitField0_ |= 0x00000010;
+                            id_ = input.readInt32();
+                            break;
                         }
-                        phone_.add(input.readMessage(com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber.parser(), extensionRegistry));
-                        break;
-                    }
+                        case 18: {
+                            java.lang.String s = input.readStringRequireUtf8();
+
+                            firstName_ = s;
+                            break;
+                        }
+                        case 26: {
+                            java.lang.String s = input.readStringRequireUtf8();
+
+                            lastName_ = s;
+                            break;
+                        }
+                        case 34: {
+                            java.lang.String s = input.readStringRequireUtf8();
+
+                            email_ = s;
+                            break;
+                        }
+                        case 42: {
+                            if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                                phone_ = new java.util.ArrayList<com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber>();
+                                mutable_bitField0_ |= 0x00000010;
+                            }
+                            phone_.add(input.readMessage(com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber.parser(), extensionRegistry));
+                            break;
+                        }
                     }
                 }
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1020,7 +1021,8 @@ public final class BaeldungTraining {
             /**
              * <code>LANDLINE = 1;</code>
              */
-            LANDLINE(1), UNRECOGNIZED(-1),;
+            LANDLINE(1), UNRECOGNIZED(-1),
+            ;
 
             /**
              * <code>MOBILE = 0;</code>
@@ -1048,12 +1050,12 @@ public final class BaeldungTraining {
 
             public static PhoneType forNumber(int value) {
                 switch (value) {
-                case 0:
-                    return MOBILE;
-                case 1:
-                    return LANDLINE;
-                default:
-                    return null;
+                    case 0:
+                        return MOBILE;
+                    case 1:
+                        return LANDLINE;
+                    default:
+                        return null;
                 }
             }
 
@@ -1154,27 +1156,27 @@ public final class BaeldungTraining {
                     while (!done) {
                         int tag = input.readTag();
                         switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        default: {
-                            if (!input.skipField(tag)) {
+                            case 0:
                                 done = true;
+                                break;
+                            default: {
+                                if (!input.skipField(tag)) {
+                                    done = true;
+                                }
+                                break;
                             }
-                            break;
-                        }
-                        case 10: {
-                            java.lang.String s = input.readStringRequireUtf8();
+                            case 10: {
+                                java.lang.String s = input.readStringRequireUtf8();
 
-                            number_ = s;
-                            break;
-                        }
-                        case 16: {
-                            int rawValue = input.readEnum();
+                                number_ = s;
+                                break;
+                            }
+                            case 16: {
+                                int rawValue = input.readEnum();
 
-                            type_ = rawValue;
-                            break;
-                        }
+                                type_ = rawValue;
+                                break;
+                            }
                         }
                     }
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1582,6 +1584,7 @@ public final class BaeldungTraining {
 
             // @@protoc_insertion_point(class_scope:baeldung.Student.PhoneNumber)
             private static final com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber DEFAULT_INSTANCE;
+
             static {
                 DEFAULT_INSTANCE = new com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber();
             }
@@ -2524,6 +2527,7 @@ public final class BaeldungTraining {
 
         // @@protoc_insertion_point(class_scope:baeldung.Student)
         private static final com.baeldung.protobuf.BaeldungTraining.Student DEFAULT_INSTANCE;
+
         static {
             DEFAULT_INSTANCE = new com.baeldung.protobuf.BaeldungTraining.Student();
         }
@@ -2565,24 +2569,25 @@ public final class BaeldungTraining {
     }
 
     private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
     static {
-        java.lang.String[] descriptorData = { "\n\030resources/baeldung.proto\022\010baeldung\"M\n\006" + "Course\022\n\n\002id\030\001 \001(\005\022\023\n\013course_name\030\002 \001(\t\022"
+        java.lang.String[] descriptorData = {"\n\030resources/baeldung.proto\022\010baeldung\"M\n\006" + "Course\022\n\n\002id\030\001 \001(\005\022\023\n\013course_name\030\002 \001(\t\022"
                 + "\"\n\007student\030\003 \003(\0132\021.baeldung.Student\"\352\001\n\007" + "Student\022\n\n\002id\030\001 \001(\005\022\022\n\nfirst_name\030\002 \001(\t\022"
                 + "\021\n\tlast_name\030\003 \001(\t\022\r\n\005email\030\004 \001(\t\022,\n\005pho" + "ne\030\005 \003(\0132\035.baeldung.Student.PhoneNumber\032" + "H\n\013PhoneNumber\022\016\n\006number\030\001 \001(\t\022)\n\004type\030\002"
-                + " \001(\0162\033.baeldung.Student.PhoneType\"%\n\tPho" + "neType\022\n\n\006MOBILE\020\000\022\014\n\010LANDLINE\020\001B)\n\025com." + "baeldung.protobufB\020BaeldungTrainingb\006pro", "to3" };
+                + " \001(\0162\033.baeldung.Student.PhoneType\"%\n\tPho" + "neType\022\n\n\006MOBILE\020\000\022\014\n\010LANDLINE\020\001B)\n\025com." + "baeldung.protobufB\020BaeldungTrainingb\006pro", "to3"};
         com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
             public com.google.protobuf.ExtensionRegistry assignDescriptors(com.google.protobuf.Descriptors.FileDescriptor root) {
                 descriptor = root;
                 return null;
             }
         };
-        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {}, assigner);
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[]{}, assigner);
         internal_static_baeldung_Course_descriptor = getDescriptor().getMessageTypes().get(0);
-        internal_static_baeldung_Course_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_baeldung_Course_descriptor, new java.lang.String[] { "Id", "CourseName", "Student", });
+        internal_static_baeldung_Course_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_baeldung_Course_descriptor, new java.lang.String[]{"Id", "CourseName", "Student",});
         internal_static_baeldung_Student_descriptor = getDescriptor().getMessageTypes().get(1);
-        internal_static_baeldung_Student_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_baeldung_Student_descriptor, new java.lang.String[] { "Id", "FirstName", "LastName", "Email", "Phone", });
+        internal_static_baeldung_Student_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_baeldung_Student_descriptor, new java.lang.String[]{"Id", "FirstName", "LastName", "Email", "Phone",});
         internal_static_baeldung_Student_PhoneNumber_descriptor = internal_static_baeldung_Student_descriptor.getNestedTypes().get(0);
-        internal_static_baeldung_Student_PhoneNumber_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_baeldung_Student_PhoneNumber_descriptor, new java.lang.String[] { "Number", "Type", });
+        internal_static_baeldung_Student_PhoneNumber_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_baeldung_Student_PhoneNumber_descriptor, new java.lang.String[]{"Number", "Type",});
     }
 
     // @@protoc_insertion_point(outer_class_scope)

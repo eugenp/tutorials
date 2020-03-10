@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public class MyKey {
     private static final Logger LOG = LoggerFactory.getLogger(MyKey.class);
-    
+
     private String name;
     private int id;
 

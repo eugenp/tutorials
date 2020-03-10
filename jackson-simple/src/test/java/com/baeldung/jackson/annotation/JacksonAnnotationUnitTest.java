@@ -114,7 +114,7 @@ public class JacksonAnnotationUnitTest {
         final String json = "{\"id\":1,\"theName\":\"My bean\"}";
 
         final BeanWithCreator bean = new ObjectMapper().readerFor(BeanWithCreator.class)
-            .readValue(json);
+                .readValue(json);
         assertEquals("My bean", bean.name);
     }
 
@@ -124,8 +124,8 @@ public class JacksonAnnotationUnitTest {
         final InjectableValues inject = new InjectableValues.Std().addValue(int.class, 1);
 
         final BeanWithInject bean = new ObjectMapper().reader(inject)
-            .forType(BeanWithInject.class)
-            .readValue(json);
+                .forType(BeanWithInject.class)
+                .readValue(json);
         assertEquals("My bean", bean.name);
         assertEquals(1, bean.id);
     }
@@ -135,10 +135,10 @@ public class JacksonAnnotationUnitTest {
         final String json = "{\"name\":\"My bean\",\"attr2\":\"val2\",\"attr1\":\"val1\"}";
 
         final ExtendableBean bean = new ObjectMapper().readerFor(ExtendableBean.class)
-            .readValue(json);
+                .readValue(json);
         assertEquals("My bean", bean.name);
         assertEquals("val2", bean.getProperties()
-            .get("attr2"));
+                .get("attr2"));
     }
 
     @Test
@@ -146,7 +146,7 @@ public class JacksonAnnotationUnitTest {
         final String json = "{\"id\":1,\"name\":\"My bean\"}";
 
         final BeanWithGetter bean = new ObjectMapper().readerFor(BeanWithGetter.class)
-            .readValue(json);
+                .readValue(json);
         assertEquals("My bean", bean.getTheName());
     }
 
@@ -157,7 +157,7 @@ public class JacksonAnnotationUnitTest {
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 
         final EventWithSerializer event = new ObjectMapper().readerFor(EventWithSerializer.class)
-            .readValue(json);
+                .readValue(json);
         assertEquals("20-12-2014 02:30:00", df.format(event.eventDate));
     }
 
@@ -229,7 +229,7 @@ public class JacksonAnnotationUnitTest {
         final String json = "{\"animal\":{\"name\":\"lacy\",\"type\":\"cat\"}}";
 
         final Zoo zoo = new ObjectMapper().readerFor(Zoo.class)
-            .readValue(json);
+                .readValue(json);
 
         assertEquals("lacy", zoo.animal.name);
         assertEquals(Zoo.Cat.class, zoo.animal.getClass());
@@ -245,7 +245,7 @@ public class JacksonAnnotationUnitTest {
         assertThat(result, containsString("1"));
 
         final BeanWithGetter resultBean = new ObjectMapper().readerFor(BeanWithGetter.class)
-            .readValue(result);
+                .readValue(result);
         assertEquals("My bean", resultBean.getTheName());
     }
 
@@ -277,7 +277,7 @@ public class JacksonAnnotationUnitTest {
         final Item item = new Item(2, "book", "John");
 
         final String result = new ObjectMapper().writerWithView(Views.Public.class)
-            .writeValueAsString(item);
+                .writeValueAsString(item);
 
         assertThat(result, containsString("book"));
         assertThat(result, containsString("2"));
@@ -317,7 +317,7 @@ public class JacksonAnnotationUnitTest {
         final FilterProvider filters = new SimpleFilterProvider().addFilter("myFilter", SimpleBeanPropertyFilter.filterOutAllExcept("name"));
 
         final String result = new ObjectMapper().writer(filters)
-            .writeValueAsString(bean);
+                .writeValueAsString(bean);
 
         assertThat(result, containsString("My bean"));
         assertThat(result, not(containsString("id")));
@@ -361,7 +361,7 @@ public class JacksonAnnotationUnitTest {
         assertThat(result, containsString("1"));
         assertThat(result, containsString("name"));
     }
-    
+
     @Test
     public void whenDeserializingUsingJsonAlias_thenCorrect() throws IOException {
 
@@ -374,7 +374,7 @@ public class JacksonAnnotationUnitTest {
         // assert
         assertThat(aliasBean.getFirstName(), is("John"));
     }
-    
+
     @Test
     public void whenSerializingUsingXMLRootNameWithNameSpace_thenCorrect() throws JsonProcessingException {
 
@@ -399,7 +399,6 @@ public class JacksonAnnotationUnitTest {
         */
 
     }
-    
-    
+
 
 }

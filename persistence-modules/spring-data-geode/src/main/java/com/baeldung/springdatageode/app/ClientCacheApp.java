@@ -21,12 +21,12 @@ import com.baeldung.springdatageode.service.AuthorService;
 @EnableIndexing
 @EnableGemfireRepositories(basePackageClasses = AuthorRepository.class)
 @ComponentScan(basePackageClasses = {AppController.class, AuthorService.class})
-@EnableClusterConfiguration(useHttp = true, requireHttps=false)
+@EnableClusterConfiguration(useHttp = true, requireHttps = false)
 @EnableContinuousQueries
 public class ClientCacheApp {
-    
+
     public static void main(String[] args) {
         SpringApplication.run(ClientCacheApp.class, args);
     }
-    
+
 }

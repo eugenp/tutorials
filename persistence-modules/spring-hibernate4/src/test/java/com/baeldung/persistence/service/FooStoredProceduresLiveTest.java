@@ -25,7 +25,7 @@ import com.baeldung.persistence.model.Foo;
 import com.baeldung.spring.PersistenceConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class FooStoredProceduresLiveTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FooStoredProceduresLiveTest.class);

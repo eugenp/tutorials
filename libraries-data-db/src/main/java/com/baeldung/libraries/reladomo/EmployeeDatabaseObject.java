@@ -1,4 +1,4 @@
 package com.baeldung.libraries.reladomo;
-public class EmployeeDatabaseObject extends EmployeeDatabaseObjectAbstract
-{
+
+public class EmployeeDatabaseObject extends EmployeeDatabaseObjectAbstract {
 }

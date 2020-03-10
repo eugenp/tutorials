@@ -32,7 +32,7 @@ public class DealerResource {
     private final Logger log = LoggerFactory.getLogger(DealerResource.class);
 
     private static final String ENTITY_NAME = "dealer";
-        
+
     private final DealerRepository dealerRepository;
 
     public DealerResource(DealerRepository dealerRepository) {
@@ -55,8 +55,8 @@ public class DealerResource {
         }
         Dealer result = dealerRepository.save(dealer);
         return ResponseEntity.created(new URI("/api/dealers/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+                .body(result);
     }
 
     /**
@@ -77,8 +77,8 @@ public class DealerResource {
         }
         Dealer result = dealerRepository.save(dealer);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, dealer.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, dealer.getId().toString()))
+                .body(result);
     }
 
     /**

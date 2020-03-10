@@ -14,82 +14,82 @@ public class MiddleElementLookupUnitTest {
     @Test
     public void whenFindingMiddleLinkedList_thenMiddleFound() {
         assertEquals("3", MiddleElementLookup
-          .findMiddleElementLinkedList(createLinkedList(5))
-          .get());
+                .findMiddleElementLinkedList(createLinkedList(5))
+                .get());
         assertEquals("2", MiddleElementLookup
-          .findMiddleElementLinkedList(createLinkedList(4))
-          .get());
+                .findMiddleElementLinkedList(createLinkedList(4))
+                .get());
     }
 
     @Test
     public void whenFindingMiddleFromHead_thenMiddleFound() {
         assertEquals("3", MiddleElementLookup
-          .findMiddleElementFromHead(createNodesList(5))
-          .get());
+                .findMiddleElementFromHead(createNodesList(5))
+                .get());
         assertEquals("2", MiddleElementLookup
-          .findMiddleElementFromHead(createNodesList(4))
-          .get());
+                .findMiddleElementFromHead(createNodesList(4))
+                .get());
     }
 
     @Test
     public void whenFindingMiddleFromHead1PassRecursively_thenMiddleFound() {
         assertEquals("3", MiddleElementLookup
-          .findMiddleElementFromHead1PassRecursively(createNodesList(5))
-          .get());
+                .findMiddleElementFromHead1PassRecursively(createNodesList(5))
+                .get());
         assertEquals("2", MiddleElementLookup
-          .findMiddleElementFromHead1PassRecursively(createNodesList(4))
-          .get());
+                .findMiddleElementFromHead1PassRecursively(createNodesList(4))
+                .get());
     }
 
     @Test
     public void whenFindingMiddleFromHead1PassIteratively_thenMiddleFound() {
         assertEquals("3", MiddleElementLookup
-          .findMiddleElementFromHead1PassIteratively(createNodesList(5))
-          .get());
+                .findMiddleElementFromHead1PassIteratively(createNodesList(5))
+                .get());
         assertEquals("2", MiddleElementLookup
-          .findMiddleElementFromHead1PassIteratively(createNodesList(4))
-          .get());
+                .findMiddleElementFromHead1PassIteratively(createNodesList(4))
+                .get());
     }
 
     @Test
     public void whenListEmptyOrNull_thenMiddleNotFound() {
         // null list
         assertFalse(MiddleElementLookup
-          .findMiddleElementLinkedList(null)
-          .isPresent());
+                .findMiddleElementLinkedList(null)
+                .isPresent());
         assertFalse(MiddleElementLookup
-          .findMiddleElementFromHead(null)
-          .isPresent());
+                .findMiddleElementFromHead(null)
+                .isPresent());
         assertFalse(MiddleElementLookup
-          .findMiddleElementFromHead1PassIteratively(null)
-          .isPresent());
+                .findMiddleElementFromHead1PassIteratively(null)
+                .isPresent());
         assertFalse(MiddleElementLookup
-          .findMiddleElementFromHead1PassRecursively(null)
-          .isPresent());
+                .findMiddleElementFromHead1PassRecursively(null)
+                .isPresent());
 
         // empty LinkedList
         assertFalse(MiddleElementLookup
-          .findMiddleElementLinkedList(new LinkedList<>())
-          .isPresent());
+                .findMiddleElementLinkedList(new LinkedList<>())
+                .isPresent());
 
         // LinkedList with nulls
         LinkedList<String> nullsList = new LinkedList<>();
         nullsList.add(null);
         nullsList.add(null);
         assertFalse(MiddleElementLookup
-          .findMiddleElementLinkedList(nullsList)
-          .isPresent());
+                .findMiddleElementLinkedList(nullsList)
+                .isPresent());
 
         // nodes with null values
         assertFalse(MiddleElementLookup
-          .findMiddleElementFromHead(new Node(null))
-          .isPresent());
+                .findMiddleElementFromHead(new Node(null))
+                .isPresent());
         assertFalse(MiddleElementLookup
-          .findMiddleElementFromHead1PassIteratively(new Node(null))
-          .isPresent());
+                .findMiddleElementFromHead1PassIteratively(new Node(null))
+                .isPresent());
         assertFalse(MiddleElementLookup
-          .findMiddleElementFromHead1PassRecursively(new Node(null))
-          .isPresent());
+                .findMiddleElementFromHead1PassRecursively(new Node(null))
+                .isPresent());
     }
 
     private static LinkedList<String> createLinkedList(int n) {

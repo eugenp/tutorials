@@ -30,14 +30,13 @@ public class StoreApiLiveTest {
 
     private final StoreApi api = new StoreApi();
 
-    
+
     /**
      * Delete purchase order by ID
-     *
+     * <p>
      * For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteOrderTest() {
@@ -46,14 +45,13 @@ public class StoreApiLiveTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Returns pet inventories by status
-     *
+     * <p>
      * Returns a map of status codes to quantities
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getInventoryTest() {
@@ -61,14 +59,13 @@ public class StoreApiLiveTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Find purchase order by ID
-     *
+     * <p>
      * For valid response try integer IDs with value &gt;&#x3D; 1 and &lt;&#x3D; 10. Other values will generated exceptions
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getOrderByIdTest() {
@@ -77,14 +74,11 @@ public class StoreApiLiveTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Place an order for a pet
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void placeOrderTest() {
@@ -93,5 +87,5 @@ public class StoreApiLiveTest {
 
         // TODO: test validations
     }
-    
+
 }

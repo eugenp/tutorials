@@ -9,6 +9,7 @@ public class RatpackErrorHandlingApp {
 
     /**
      * Try hitting http://localhost:5050/error to see the error handler in action
+     *
      * @param args
      * @throws Exception
      */
@@ -18,10 +19,10 @@ public class RatpackErrorHandlingApp {
         RatpackServer.start(def -> def.registryOf(regSpec -> regSpec.add(ServerErrorHandler.class, (ctx, throwable) -> {
             ctx.render("Error caught by handler : " + throwable.getMessage());
         }))
-            .handlers(chain -> chain.get("error", ctx -> {
-                Observable.<String> error(new Exception("Error from observable"))
-                    .subscribe(s -> {
-                    });
-            })));
+                .handlers(chain -> chain.get("error", ctx -> {
+                    Observable.<String>error(new Exception("Error from observable"))
+                            .subscribe(s -> {
+                            });
+                })));
     }
 }

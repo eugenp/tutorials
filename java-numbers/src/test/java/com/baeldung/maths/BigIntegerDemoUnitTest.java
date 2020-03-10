@@ -14,9 +14,9 @@ public class BigIntegerDemoUnitTest {
     public void whenBigIntegerCreatedFromConstructor_thenExpectedResult() {
         BigInteger biFromString = new BigInteger("1234567890987654321");
         BigInteger biFromByteArray = new BigInteger(
-            new byte[] { 64, 64, 64, 64, 64, 64 });
+                new byte[]{64, 64, 64, 64, 64, 64});
         BigInteger biFromSignMagnitude = new BigInteger(-1,
-            new byte[] { 64, 64, 64, 64, 64, 64 });
+                new byte[]{64, 64, 64, 64, 64, 64});
 
         assertEquals("1234567890987654321", biFromString.toString());
         assertEquals("70644700037184", biFromByteArray.toString());
@@ -108,7 +108,7 @@ public class BigIntegerDemoUnitTest {
 
         BigInteger gcd = j.gcd(k);
         BigInteger multiplyAndmod = j.multiply(k)
-            .mod(i);
+                .mod(i);
         BigInteger modInverse = j.modInverse(i);
         BigInteger modPow = j.modPow(k, i);
 

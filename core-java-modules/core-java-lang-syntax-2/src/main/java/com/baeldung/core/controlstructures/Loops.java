@@ -32,6 +32,7 @@ public class Loops {
 
     /**
      * Splits a sentence in words, and prints each word in a new line.
+     *
      * @param sentence Sentence to print as independent words.
      */
     public static void printWordByWord(String sentence) {
@@ -42,8 +43,9 @@ public class Loops {
 
     /**
      * Prints text an N amount of times. Shows usage of the {@code break} branching statement.
+     *
      * @param textToPrint Text to repeatedly print.
-     * @param times Amount to times to print received text.
+     * @param times       Amount to times to print received text.
      */
     public static void printTextNTimes(String textToPrint, int times) {
         int counter = 1;
@@ -57,8 +59,9 @@ public class Loops {
 
     /**
      * Prints text an N amount of times, up to 50. Shows usage of the {@code break} branching statement.
+     *
      * @param textToPrint Text to repeatedly print.
-     * @param times Amount to times to print received text. If times is higher than 50, textToPrint will only be printed 50 times.
+     * @param times       Amount to times to print received text. If times is higher than 50, textToPrint will only be printed 50 times.
      */
     public static void printTextNTimesUpTo50(String textToPrint, int times) {
         int counter = 1;
@@ -72,13 +75,14 @@ public class Loops {
 
     /**
      * Finds the index of {@code name} in a list
-     * @param name The name to look for
+     *
+     * @param name  The name to look for
      * @param names The list of names
      * @return The index where the name was found or -1 otherwise
      */
     public static int findFirstInstanceOfName(String name, String[] names) {
         int index = 0;
-        for ( ; index < names.length; index++) {
+        for (; index < names.length; index++) {
             if (names[index].equals(name)) {
                 break;
             }
@@ -89,7 +93,7 @@ public class Loops {
     /**
      * Takes several names and makes a list, skipping the specified {@code name}.
      *
-     * @param name The name to skip
+     * @param name  The name to skip
      * @param names The list of names
      * @return The list of names as a single string, missing the specified {@code name}.
      */
@@ -106,6 +110,7 @@ public class Loops {
 
     /**
      * Prints an specified amount of even numbers. Shows usage of both {@code break} and {@code continue} branching statements.
+     *
      * @param amountToPrint Amount of even numbers to print.
      */
     public static void printEvenNumbers(int amountToPrint) {
@@ -131,6 +136,7 @@ public class Loops {
 
     /**
      * Prints an specified amount of even numbers, up to 100. Shows usage of both {@code break} and {@code continue} branching statements.
+     *
      * @param amountToPrint Amount of even numbers to print.
      */
     public static void printEvenNumbersToAMaxOf100(int amountToPrint) {

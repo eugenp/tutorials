@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-@SpringBootApplication(scanBasePackages = { "com.baeldung.activiti.security.config", "com.baeldung.activiti.security.withactiviti" })
+@SpringBootApplication(scanBasePackages = {"com.baeldung.activiti.security.config", "com.baeldung.activiti.security.withactiviti"})
 public class SpringSecurityActivitiApplication {
 
     public static void main(String[] args) {

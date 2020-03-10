@@ -28,20 +28,20 @@ public class MealResource {
     public Response all() {
         Map map = Collections.singletonMap("meals", mealService.findAll());
         String html = MustacheTemplateEngine.instance()
-            .render("meals.mustache", map);
+                .render("meals.mustache", map);
         return Response.ok()
-            .type(MediaType.TEXT_HTML)
-            .entity(html)
-            .build();
+                .type(MediaType.TEXT_HTML)
+                .entity(html)
+                .build();
     }
 
     @GET
     @Path("/{id}")
-    @Produces({ "text/xml" })
+    @Produces({"text/xml"})
     public Response meal(@PathParam("id") int id) {
         return Response.ok()
-            .entity(mealService.find(id))
-            .build();
+                .entity(mealService.find(id))
+                .build();
     }
 
 }

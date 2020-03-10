@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Subscription } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {Subscription} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
+import {JhiEventManager, JhiAlertService} from 'ng-jhipster';
 
-import { IBook } from 'app/shared/model/book.model';
-import { AccountService } from 'app/core';
-import { BookService } from './book.service';
+import {IBook} from 'app/shared/model/book.model';
+import {AccountService} from 'app/core';
+import {BookService} from './book.service';
 
 @Component({
     selector: 'jhi-book',
@@ -22,7 +22,8 @@ export class BookComponent implements OnInit, OnDestroy {
         protected jhiAlertService: JhiAlertService,
         protected eventManager: JhiEventManager,
         protected accountService: AccountService
-    ) {}
+    ) {
+    }
 
     loadAll() {
         this.bookService

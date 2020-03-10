@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringBeansConfig {
 
-	@Bean
-	public AudioBookService audioBookServiceGenerator() {
-		return new AudioBookServiceImpl();
-	}
+    @Bean
+    public AudioBookService audioBookServiceGenerator() {
+        return new AudioBookServiceImpl();
+    }
 
 }

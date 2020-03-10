@@ -23,6 +23,7 @@ import java.util.Map;
 
 import static org.apache.http.conn.util.InetAddressUtils.isIPv4Address;
 import static org.apache.http.conn.util.InetAddressUtils.isIPv6Address;
+
 import org.apache.http.conn.util.PublicSuffixMatcher;
 import org.apache.http.conn.util.PublicSuffixMatcherLoader;
 
@@ -46,7 +47,7 @@ public class OAuth2CookieHelper {
      * The names of the Cookies we set.
      */
     private static final List<String> COOKIE_NAMES = Arrays.asList(ACCESS_TOKEN_COOKIE, REFRESH_TOKEN_COOKIE,
-        SESSION_TOKEN_COOKIE);
+            SESSION_TOKEN_COOKIE);
     /**
      * Number of seconds to expire refresh token cookies before the enclosed token expires.
      * This makes sure we don't run into race conditions where the cookie is still there but
@@ -129,7 +130,7 @@ public class OAuth2CookieHelper {
         Cookie refreshTokenCookie = createRefreshTokenCookie(refreshToken, rememberMe);
         setCookieProperties(refreshTokenCookie, request.isSecure(), domain);
         log.debug("created refresh token cookie '{}', age: {}", refreshTokenCookie.getName(), refreshTokenCookie
-            .getMaxAge());
+                .getMaxAge());
 
         result.setCookies(accessTokenCookie, refreshTokenCookie);
     }

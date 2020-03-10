@@ -1,6 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
-import { GatewayQuoteModule as QuotesQuoteModule } from './quotes/quote/quote.module';
+import {GatewayQuoteModule as QuotesQuoteModule} from './quotes/quote/quote.module';
+
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -14,4 +15,5 @@ import { GatewayQuoteModule as QuotesQuoteModule } from './quotes/quote/quote.mo
     providers: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class GatewayEntityModule {}
+export class GatewayEntityModule {
+}

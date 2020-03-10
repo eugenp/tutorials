@@ -13,7 +13,8 @@ import static org.junit.Assert.assertEquals;
 @ContextConfiguration(initializers = PropertyOverrideContextInitializer.class, classes = Application.class)
 public class ContextPropertySourceResolverIntegrationTest {
 
-    @Autowired private PropertySourceResolver propertySourceResolver;
+    @Autowired
+    private PropertySourceResolver propertySourceResolver;
 
     @Test
     public void shouldContext_overridePropertyValues() {

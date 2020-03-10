@@ -44,33 +44,33 @@ public class EmailService {
 
         try {
 
-                Message message = new MimeMessage(session);
-                message.setFrom(new InternetAddress("from@gmail.com"));
-                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("to@gmail.com"));
-                message.setSubject("Mail Subject");
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("from@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("to@gmail.com"));
+            message.setSubject("Mail Subject");
 
-                String msg = "This is my first email using JavaMailer";
+            String msg = "This is my first email using JavaMailer";
 
-                MimeBodyPart mimeBodyPart = new MimeBodyPart();
-                mimeBodyPart.setContent(msg, "text/html");
+            MimeBodyPart mimeBodyPart = new MimeBodyPart();
+            mimeBodyPart.setContent(msg, "text/html");
 
-                MimeBodyPart attachmentBodyPart = new MimeBodyPart();
-                attachmentBodyPart.attachFile(new File("pom.xml"));
+            MimeBodyPart attachmentBodyPart = new MimeBodyPart();
+            attachmentBodyPart.attachFile(new File("pom.xml"));
 
-                Multipart multipart = new MimeMultipart();
-                multipart.addBodyPart(mimeBodyPart);
-                multipart.addBodyPart(attachmentBodyPart);
+            Multipart multipart = new MimeMultipart();
+            multipart.addBodyPart(mimeBodyPart);
+            multipart.addBodyPart(attachmentBodyPart);
 
-                message.setContent(multipart);
+            message.setContent(multipart);
 
-                Transport.send(message);
+            Transport.send(message);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void main(String ... args) {
+    public static void main(String... args) {
         new EmailService("smtp.mailtrap.io", 25, "87ba3d9555fae8", "91cb4379af43ed");
     }
 

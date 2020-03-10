@@ -4,7 +4,7 @@ server:
 # for example purposes of Camel version 2.18 and below
 baeldung:
   api:
-    path: '/camel' 
+    path: '/camel'
 
 camel:
   springboot:

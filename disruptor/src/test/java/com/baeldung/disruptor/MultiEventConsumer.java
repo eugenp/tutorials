@@ -14,7 +14,7 @@ public class MultiEventConsumer implements EventConsumer {
     public EventHandler<ValueEvent>[] getEventHandler() {
         final EventHandler<ValueEvent> eventHandler = (event, sequence, endOfBatch) -> assertExpectedValue(event.getValue());
         final EventHandler<ValueEvent> otherEventHandler = (event, sequence, endOfBatch) -> assertOtherExpectedValue(event.getValue());
-        return new EventHandler[] { eventHandler, otherEventHandler };
+        return new EventHandler[]{eventHandler, otherEventHandler};
     }
 
     private void assertExpectedValue(final int id) {

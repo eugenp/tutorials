@@ -12,14 +12,14 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 public class CombiningLists {
-    
+
     public static List<Object> usingNativeJava(List<Object> first, List<Object> second) {
         List<Object> combined = new ArrayList<>();
         combined.addAll(first);
         combined.addAll(second);
         return combined;
     }
-    
+
     public static List<Object> usingJava8ObjectStream(List<Object> first, List<Object> second) {
         List<Object> combined = Stream.concat(first.stream(), second.stream()).collect(Collectors.toList());
         return combined;
@@ -29,7 +29,7 @@ public class CombiningLists {
         List<Object> combined = Stream.of(first, second).flatMap(Collection::stream).collect(Collectors.toList());
         return combined;
     }
-    
+
     public static List<Object> usingApacheCommons(List<Object> first, List<Object> second) {
         List<Object> combined = ListUtils.union(first, second);
         return combined;
@@ -37,10 +37,10 @@ public class CombiningLists {
 
     public static List<Object> usingGuava(List<Object> first, List<Object> second) {
         Iterable<Object> combinedIterables = Iterables.unmodifiableIterable(
-        Iterables.concat(first, second));
-        
+                Iterables.concat(first, second));
+
         List<Object> combined = Lists.newArrayList(combinedIterables);
         return combined;
     }
-    
+
 }

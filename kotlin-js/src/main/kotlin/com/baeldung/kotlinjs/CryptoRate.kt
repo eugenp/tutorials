@@ -17,11 +17,12 @@ fun main(args: Array<String>) {
         println("Listening on port 3000")
     })
 }
-fun generateCryptoRates(): Array<CryptoCurrency>{
+
+fun generateCryptoRates(): Array<CryptoCurrency> {
     val cryptoCurrency = arrayOf<CryptoCurrency>(
             CryptoCurrency("Bitcoin", 90000F),
-            CryptoCurrency("ETH",1000F),
-            CryptoCurrency("TRX",10F)
+            CryptoCurrency("ETH", 1000F),
+            CryptoCurrency("TRX", 10F)
     );
     return cryptoCurrency
 }

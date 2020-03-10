@@ -1,7 +1,13 @@
 {
-    "library": "My Personal Library",
-    "books": [
-        { "title":"Title 1", "author":"Jane Doe" },
-        { "title":"Title 2", "author":"John Doe" }
-    ]
+  "library": "My Personal Library",
+  "books": [
+    {
+      "title": "Title 1",
+      "author": "Jane Doe"
+    },
+    {
+      "title": "Title 2",
+      "author": "John Doe"
+    }
+  ]
 }

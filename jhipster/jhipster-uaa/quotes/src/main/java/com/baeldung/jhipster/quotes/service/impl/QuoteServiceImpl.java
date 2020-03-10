@@ -59,7 +59,7 @@ public class QuoteServiceImpl implements QuoteService {
     public Page<QuoteDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Quotes");
         return quoteRepository.findAll(pageable)
-            .map(quoteMapper::toDto);
+                .map(quoteMapper::toDto);
     }
 
 
@@ -74,7 +74,7 @@ public class QuoteServiceImpl implements QuoteService {
     public Optional<QuoteDTO> findOne(Long id) {
         log.debug("Request to get Quote : {}", id);
         return quoteRepository.findById(id)
-            .map(quoteMapper::toDto);
+                .map(quoteMapper::toDto);
     }
 
     /**

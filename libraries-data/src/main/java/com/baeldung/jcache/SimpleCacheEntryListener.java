@@ -10,7 +10,7 @@ import javax.cache.event.CacheEntryUpdatedListener;
 public class SimpleCacheEntryListener implements CacheEntryCreatedListener<String, String>, CacheEntryUpdatedListener<String, String>, Serializable {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -712657810462878763L;
     private boolean updated;

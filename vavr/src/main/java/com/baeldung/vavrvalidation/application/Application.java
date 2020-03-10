@@ -13,5 +13,5 @@ public class Application {
         Validation<Seq<String>, User> validation = userValidator.validateUser("John", "john@domain.com");
 
         // process validation results here
-    }	
+    }
 }

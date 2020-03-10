@@ -8,6 +8,7 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
+
 import org.junit.Test;
 
 public class HashtableUnitTest {
@@ -231,7 +232,7 @@ public class HashtableUnitTest {
     public void whenCompute_thenForAllKeys() {
 
         Hashtable<String, Integer> table = new Hashtable<String, Integer>();
-        String[] animals = { "cat", "dog", "dog", "cat", "bird", "mouse", "mouse" };
+        String[] animals = {"cat", "dog", "dog", "cat", "bird", "mouse", "mouse"};
         for (String animal : animals) {
             table.compute(animal, (key, value) -> (value == null ? 1 : value + 1));
         }
@@ -243,7 +244,7 @@ public class HashtableUnitTest {
     public void whenInsteadOfCompute_thenMerge() {
 
         Hashtable<String, Integer> table = new Hashtable<String, Integer>();
-        String[] animals = { "cat", "dog", "dog", "cat", "bird", "mouse", "mouse" };
+        String[] animals = {"cat", "dog", "dog", "cat", "bird", "mouse", "mouse"};
         for (String animal : animals) {
             table.merge(animal, 1, (oldValue, value) -> (oldValue + value));
         }

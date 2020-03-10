@@ -13,10 +13,10 @@ import com.baeldung.debugging.server.handlers.ServerHandler;
 @Configuration
 public class ServerRouter {
 
-	@Bean
-	public RouterFunction<ServerResponse> responseRoute(@Autowired ServerHandler handler) {
-		return RouterFunctions.route(RequestPredicates.GET("/functional-reactive/periodic-foo"), handler::useHandler)
-				.andRoute(RequestPredicates.GET("/functional-reactive/periodic-foo-2"), handler::useHandlerFinite);
-	}
+    @Bean
+    public RouterFunction<ServerResponse> responseRoute(@Autowired ServerHandler handler) {
+        return RouterFunctions.route(RequestPredicates.GET("/functional-reactive/periodic-foo"), handler::useHandler)
+                .andRoute(RequestPredicates.GET("/functional-reactive/periodic-foo-2"), handler::useHandlerFinite);
+    }
 
 }

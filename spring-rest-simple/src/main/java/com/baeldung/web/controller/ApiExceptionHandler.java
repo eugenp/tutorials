@@ -13,10 +13,10 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(BookNotFoundException.class)
     public ResponseEntity<ApiErrorResponse> handleApiException(
-        BookNotFoundException ex) {
-        ApiErrorResponse response = 
-            new ApiErrorResponse("error-0001",
-                "No book found with ID " + ex.getId());
+            BookNotFoundException ex) {
+        ApiErrorResponse response =
+                new ApiErrorResponse("error-0001",
+                        "No book found with ID " + ex.getId());
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 }

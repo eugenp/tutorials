@@ -22,7 +22,6 @@ kubectl create -f travel-agency-service/mongo-deployment.yaml
 kubectl delete -f travel-agency-service/travel-agency-deployment.yaml
 kubectl create -f travel-agency-service/travel-agency-deployment.yaml
 
-
 ### client-service
 kubectl delete configmap client-service
 kubectl delete -f client-service/client-service-deployment.yaml

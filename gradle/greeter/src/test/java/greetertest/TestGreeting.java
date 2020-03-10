@@ -1,11 +1,7 @@
 
 
 
+public class TestGreeting {
 
-public class TestGreeting{
-    
-    
-    
-    
-    
+
 }

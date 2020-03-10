@@ -29,16 +29,16 @@ public class InMemoryBookService implements BookService {
         }
 
         Map<Long, Book> bookMap = books.stream()
-            .collect(Collectors.toMap(Book::getId, Function.identity()));
+                .collect(Collectors.toMap(Book::getId, Function.identity()));
 
         booksDB.putAll(bookMap);
     }
 
     private Long getNextId() {
         return booksDB.keySet()
-            .stream()
-            .mapToLong(value -> value)
-            .max()
-            .orElse(0) + 1;
+                .stream()
+                .mapToLong(value -> value)
+                .max()
+                .orElse(0) + 1;
     }
 }

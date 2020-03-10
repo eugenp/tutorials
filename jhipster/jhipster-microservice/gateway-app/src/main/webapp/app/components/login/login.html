@@ -1,6 +1,7 @@
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-            ng-click="vm.cancel()">&times;</button>
+            ng-click="vm.cancel()">&times;
+    </button>
     <h4 class="modal-title">Sign in</h4>
 </div>
 <div class="modal-body">
@@ -17,7 +18,8 @@
             <form class="form" role="form" ng-submit="vm.login($event)">
                 <div class="form-group">
                     <label for="username">Login</label>
-                    <input type="text" class="form-control" id="username" placeholder="Your username" ng-model="vm.username">
+                    <input type="text" class="form-control" id="username" placeholder="Your username"
+                           ng-model="vm.username">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
@@ -37,7 +39,8 @@
                 <a class="alert-link" href="" ng-click="vm.requestResetPassword()">Did you forget your password?</a>
             </div>
             <div class="alert alert-warning">
-                You don't have an account yet? <a class="alert-link" href="" ng-click="vm.register()">Register a new account</a>
+                You don't have an account yet? <a class="alert-link" href="" ng-click="vm.register()">Register a new
+                account</a>
             </div>
         </div>
     </div>

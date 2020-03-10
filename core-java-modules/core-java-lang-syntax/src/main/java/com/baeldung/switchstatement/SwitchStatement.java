@@ -21,16 +21,16 @@ public class SwitchStatement {
         String result;
 
         switch (animal) {
-        case "DOG":
-        case "CAT":
-            result = "domestic animal";
-            break;
-        case "TIGER":
-            result = "wild animal";
-            break;
-        default:
-            result = "unknown animal";
-            break;
+            case "DOG":
+            case "CAT":
+                result = "domestic animal";
+                break;
+            case "TIGER":
+                result = "wild animal";
+                break;
+            default:
+                result = "unknown animal";
+                break;
         }
         return result;
     }
@@ -41,13 +41,13 @@ public class SwitchStatement {
 
         switch (animal) {
 
-        case "DOG":
-            System.out.println("domestic animal");
-            result = "domestic animal";
+            case "DOG":
+                System.out.println("domestic animal");
+                result = "domestic animal";
 
-        default:
-            System.out.println("unknown animal");
-            result = "unknown animal";
+            default:
+                System.out.println("unknown animal");
+                result = "unknown animal";
 
         }
         return result;
@@ -61,8 +61,8 @@ public class SwitchStatement {
 
         switch (animal) {
 
-        case dog:
-            result = "domestic animal";
+            case dog:
+                result = "domestic animal";
         }
         return result;
     }

@@ -8,6 +8,7 @@ import com.lmax.disruptor.RingBuffer;
 public interface EventProducer {
     /**
      * Start the producer that would start producing the values.
+     *
      * @param ringBuffer
      * @param count
      */

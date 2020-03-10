@@ -5,7 +5,8 @@ public class CustomResponse {
     private int id;
     private String note;
 
-    public CustomResponse() {}
+    public CustomResponse() {
+    }
 
     public CustomResponse(int id, String note) {
         this.id = id;

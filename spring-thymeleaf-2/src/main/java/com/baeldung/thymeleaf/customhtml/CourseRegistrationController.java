@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Handles requests for the student model.
- * 
  */
 @Controller
 public class CourseRegistrationController {

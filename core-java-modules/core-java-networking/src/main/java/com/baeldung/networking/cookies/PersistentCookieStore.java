@@ -10,7 +10,7 @@ public class PersistentCookieStore implements CookieStore, Runnable {
         store = new CookieManager().getCookieStore();
         // deserialize cookies into store
         Runtime.getRuntime()
-            .addShutdownHook(new Thread(this));
+                .addShutdownHook(new Thread(this));
     }
 
     @Override

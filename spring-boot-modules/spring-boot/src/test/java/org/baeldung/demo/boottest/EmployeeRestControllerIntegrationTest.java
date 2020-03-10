@@ -29,7 +29,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = DemoApplication.class)
-@AutoConfigureMockMvc 
+@AutoConfigureMockMvc
 // @TestPropertySource(locations = "classpath:application-integrationtest.properties")
 @AutoConfigureTestDatabase
 public class EmployeeRestControllerIntegrationTest {
@@ -61,12 +61,12 @@ public class EmployeeRestControllerIntegrationTest {
 
         // @formatter:off
         mvc.perform(get("/api/employees").contentType(MediaType.APPLICATION_JSON))
-          .andDo(print())
-          .andExpect(status().isOk())
-          .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-          .andExpect(jsonPath("$", hasSize(greaterThanOrEqualTo(2))))
-          .andExpect(jsonPath("$[0].name", is("bob")))
-          .andExpect(jsonPath("$[1].name", is("alex")));
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$", hasSize(greaterThanOrEqualTo(2))))
+                .andExpect(jsonPath("$[0].name", is("bob")))
+                .andExpect(jsonPath("$[1].name", is("alex")));
         // @formatter:on
     }
 

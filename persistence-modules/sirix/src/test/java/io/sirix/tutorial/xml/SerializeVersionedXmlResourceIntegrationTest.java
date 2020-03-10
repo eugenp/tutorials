@@ -56,42 +56,42 @@ public class SerializeVersionedXmlResourceIntegrationTest {
     private static void serializeRevisionOneAndTwo(final XmlResourceManager manager) throws IOException {
         final var outputStream = new ByteArrayOutputStream();
         final var serializerForRevisionOneAndTwo =
-            XmlSerializer.newBuilder(manager, outputStream, 1, 2).emitIDs()
-                                                                 .prettyPrint()
-                                                                 .build();
+                XmlSerializer.newBuilder(manager, outputStream, 1, 2).emitIDs()
+                        .prettyPrint()
+                        .build();
         serializerForRevisionOneAndTwo.call();
         final var expectedXml = Files.readAllLines(XML_TEST_RESULT_DIRECTORY.resolve("revision1And2.xml"),
-                                                   StandardCharsets.UTF_8)
-                                     .stream()
-                                     .collect(Collectors.joining(System.lineSeparator()));
+                StandardCharsets.UTF_8)
+                .stream()
+                .collect(Collectors.joining(System.lineSeparator()));
         assertEquals(expectedXml, outputStream.toString(StandardCharsets.UTF_8));
     }
 
     private static void serializeMostRecentRevision(final XmlResourceManager manager) throws IOException {
         final var outputStream = new ByteArrayOutputStream();
         final var serializerForMostRecentRevision =
-            XmlSerializer.newBuilder(manager, outputStream).emitIDs()
-                                                           .prettyPrint()
-                                                           .build();
+                XmlSerializer.newBuilder(manager, outputStream).emitIDs()
+                        .prettyPrint()
+                        .build();
         serializerForMostRecentRevision.call();
         final var expectedXml = Files.readAllLines(XML_TEST_RESULT_DIRECTORY.resolve("mostRecentRevision.xml"),
-                                                   StandardCharsets.UTF_8)
-                                     .stream()
-                                     .collect(Collectors.joining(System.lineSeparator()));
+                StandardCharsets.UTF_8)
+                .stream()
+                .collect(Collectors.joining(System.lineSeparator()));
         assertEquals(expectedXml, outputStream.toString(StandardCharsets.UTF_8));
     }
 
     private static void serializeAllRevisions(final XmlResourceManager manager) throws IOException {
         final var outputStream = new ByteArrayOutputStream();
         final var serializerForAllRevisions =
-            XmlSerializer.newBuilder(manager, outputStream, -1).emitIDs()
-                                                               .prettyPrint()
-                                                               .build();
+                XmlSerializer.newBuilder(manager, outputStream, -1).emitIDs()
+                        .prettyPrint()
+                        .build();
         serializerForAllRevisions.call();
         final var expectedXml = Files.readAllLines(XML_TEST_RESULT_DIRECTORY.resolve("allRevisions.xml"),
-                                                   StandardCharsets.UTF_8)
-                                     .stream()
-                                     .collect(Collectors.joining(System.lineSeparator()));
+                StandardCharsets.UTF_8)
+                .stream()
+                .collect(Collectors.joining(System.lineSeparator()));
         assertEquals(expectedXml, outputStream.toString(StandardCharsets.UTF_8));
     }
 }

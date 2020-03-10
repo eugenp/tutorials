@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { Application.class, H2TestProfileJPAConfig.class })
+@SpringBootTest(classes = {Application.class, H2TestProfileJPAConfig.class})
 @ActiveProfiles("test")
 public class SpringBootProfileIntegrationTest {
     @Autowired

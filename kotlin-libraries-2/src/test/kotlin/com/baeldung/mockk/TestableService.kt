@@ -6,7 +6,7 @@ class TestableService {
         return "Value from DB"
     }
 
-    fun doSomethingElse(testParameter: String): String  {
+    fun doSomethingElse(testParameter: String): String {
         return "I don't want to!"
     }
 }

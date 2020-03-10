@@ -9,11 +9,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 /**
  * This live test requires:
  * vault server up and running on the environment
- * 
+ *
  * <br>
  * For more info on setting up the vault server:
  * https://www.baeldung.com/vault
- * 
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = VaultSampleApplication.class)

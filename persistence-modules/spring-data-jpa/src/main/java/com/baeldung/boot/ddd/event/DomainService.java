@@ -21,11 +21,11 @@ public class DomainService {
     @Transactional
     public void serviceDomainOperation(long entityId) {
         repository.findById(entityId)
-            .ifPresent(entity -> {
-                entity.domainOperation();
-                repository.save(entity);
-                eventPublisher.publishEvent(new DomainEvent());
-            });
+                .ifPresent(entity -> {
+                    entity.domainOperation();
+                    repository.save(entity);
+                    eventPublisher.publishEvent(new DomainEvent());
+                });
     }
 
 }

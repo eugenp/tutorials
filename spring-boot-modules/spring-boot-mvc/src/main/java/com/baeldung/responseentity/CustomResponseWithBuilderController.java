@@ -22,11 +22,11 @@ public class CustomResponseWithBuilderController {
     public ResponseEntity<String> age(@RequestParam("yearOfBirth") int yearOfBirth) {
         if (isInFuture(yearOfBirth)) {
             return ResponseEntity.badRequest()
-                .body("Year of birth cannot be in the future");
+                    .body("Year of birth cannot be in the future");
         }
 
         return ResponseEntity.status(HttpStatus.OK)
-            .body("Your age is " + calculateAge(yearOfBirth));
+                .body("Your age is " + calculateAge(yearOfBirth));
     }
 
     private int calculateAge(int yearOfBirth) {
@@ -39,14 +39,14 @@ public class CustomResponseWithBuilderController {
 
     private int currentYear() {
         return Year.now()
-            .getValue();
+                .getValue();
     }
 
     @GetMapping("/customHeader")
     public ResponseEntity<String> customHeader() {
         return ResponseEntity.ok()
-            .header("Custom-Header", "foo")
-            .body("Custom header set");
+                .header("Custom-Header", "foo")
+                .body("Custom header set");
     }
 
 }

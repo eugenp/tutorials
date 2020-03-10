@@ -8,8 +8,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
-@ComponentScan(basePackages = { "org.baeldung.persistence.service", "org.baeldung.persistence.dao" })
-@Import({ MvcConfig.class, SecSecurityConfig.class })
+@ComponentScan(basePackages = {"org.baeldung.persistence.service", "org.baeldung.persistence.dao"})
+@Import({MvcConfig.class, SecSecurityConfig.class})
 @PropertySource("classpath:application.properties")
 public class AppConfig {
 

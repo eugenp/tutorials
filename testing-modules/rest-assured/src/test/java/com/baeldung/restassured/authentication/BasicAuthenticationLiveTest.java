@@ -9,8 +9,8 @@ import org.springframework.http.HttpStatus;
 /**
  * For this Live Test we need:
  * * a running instance of the service located in the spring-security-rest-basic-auth module.
+ *
  * @see <a href="https://github.com/eugenp/tutorials/tree/master/spring-security-rest-basic-auth">spring-security-rest-basic-auth module</a>
- * 
  */
 public class BasicAuthenticationLiveTest {
 
@@ -21,18 +21,18 @@ public class BasicAuthenticationLiveTest {
     @Test
     public void givenNoAuthentication_whenRequestSecuredResource_thenUnauthorizedResponse() {
         get(SVC_URL).then()
-            .assertThat()
-            .statusCode(HttpStatus.UNAUTHORIZED.value());
+                .assertThat()
+                .statusCode(HttpStatus.UNAUTHORIZED.value());
     }
 
     @Test
     public void givenBasicAuthentication_whenRequestSecuredResource_thenResourceRetrieved() {
         given().auth()
-            .basic(USER, PASSWORD)
-            .when()
-            .get(SVC_URL)
-            .then()
-            .assertThat()
-            .statusCode(HttpStatus.OK.value());
+                .basic(USER, PASSWORD)
+                .when()
+                .get(SVC_URL)
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK.value());
     }
 }

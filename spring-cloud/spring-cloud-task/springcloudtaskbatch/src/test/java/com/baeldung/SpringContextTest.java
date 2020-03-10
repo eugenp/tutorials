@@ -12,7 +12,7 @@ import com.baeldung.task.TaskDemo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootApplication
-@ContextConfiguration(classes = { JobConfiguration.class, TaskDemo.class }, initializers = { ConfigFileApplicationContextInitializer.class })
+@ContextConfiguration(classes = {JobConfiguration.class, TaskDemo.class}, initializers = {ConfigFileApplicationContextInitializer.class})
 public class SpringContextTest {
 
     @Test

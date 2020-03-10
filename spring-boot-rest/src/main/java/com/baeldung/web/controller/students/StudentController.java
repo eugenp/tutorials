@@ -44,12 +44,12 @@ public class StudentController {
         Student createdStudent = service.create(student);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-            .path("/{id}")
-            .buildAndExpand(createdStudent.getId())
-            .toUri();
+                .path("/{id}")
+                .buildAndExpand(createdStudent.getId())
+                .toUri();
 
         return ResponseEntity.created(uri)
-            .body(createdStudent);
+                .body(createdStudent);
 
     }
 

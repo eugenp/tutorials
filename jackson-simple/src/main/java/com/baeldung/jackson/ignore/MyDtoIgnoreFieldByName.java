@@ -2,7 +2,7 @@ package com.baeldung.jackson.ignore;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(value = { "intValue" })
+@JsonIgnoreProperties(value = {"intValue"})
 public class MyDtoIgnoreFieldByName {
 
     private String stringValue;

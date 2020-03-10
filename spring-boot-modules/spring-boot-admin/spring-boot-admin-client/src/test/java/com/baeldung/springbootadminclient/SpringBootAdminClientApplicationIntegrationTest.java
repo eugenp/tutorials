@@ -21,17 +21,19 @@ import static org.springframework.security.test.web.servlet.response.SecurityMoc
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 public class SpringBootAdminClientApplicationIntegrationTest {
 
-    @Autowired Environment environment;
+    @Autowired
+    Environment environment;
 
-    @Autowired WebApplicationContext wac;
+    @Autowired
+    WebApplicationContext wac;
 
     private MockMvc mockMvc;
 
     @Before
     public void setup() {
         mockMvc = MockMvcBuilders
-          .webAppContextSetup(wac)
-          .build();
+                .webAppContextSetup(wac)
+                .build();
     }
 
     @Test
@@ -49,7 +51,7 @@ public class SpringBootAdminClientApplicationIntegrationTest {
     @Test
     public void whenInvalidHttpBasicAttempted_ThenUnauthorized() throws Exception {
         mockMvc
-          .perform(get("/actuator/env").with(httpBasic("client", "invalid")))
-          .andExpect(unauthenticated());
+                .perform(get("/actuator/env").with(httpBasic("client", "invalid")))
+                .andExpect(unauthenticated());
     }
 }

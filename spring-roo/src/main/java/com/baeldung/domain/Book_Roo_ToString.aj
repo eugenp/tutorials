@@ -6,21 +6,21 @@ package com.baeldung.domain;
 import com.baeldung.domain.Book;
 
 privileged aspect Book_Roo_ToString {
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return String
      */
     public String Book.toString() {
-        return "Book {" + 
-                "id='" + id + '\'' + 
-                ", version='" + version + '\'' + 
-                ", title='" + title + '\'' + 
-                ", author='" + author + '\'' + 
-                ", isbn='" + isbn + '\'' + 
-                ", ITERABLE_TO_ADD_CANT_BE_NULL_MESSAGE='" + ITERABLE_TO_ADD_CANT_BE_NULL_MESSAGE + '\'' + 
+        return "Book {" +
+                "id='" + id + '\'' +
+                ", version='" + version + '\'' +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", ITERABLE_TO_ADD_CANT_BE_NULL_MESSAGE='" + ITERABLE_TO_ADD_CANT_BE_NULL_MESSAGE + '\'' +
                 ", ITERABLE_TO_REMOVE_CANT_BE_NULL_MESSAGE='" + ITERABLE_TO_REMOVE_CANT_BE_NULL_MESSAGE + '\'' + "}" + super.toString();
     }
-    
+
 }

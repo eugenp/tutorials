@@ -37,7 +37,7 @@ class ListToMapTest {
     @Test
     fun givenStringList_whenAssociate_thenResult() {
         val myList = listOf("a", "b", "c", "c", "b")
-        val myMap = myList.associate{ it to it }
+        val myMap = myList.associate { it to it }
 
         assertTrue(myMap.get("a") == "a")
     }
@@ -47,7 +47,7 @@ class ListToMapTest {
         val myList = listOf("a", "b", "c", "c", "b")
         val myMap = mutableMapOf<String, String>()
 
-        myList.associateTo(myMap) {it to it}
+        myList.associateTo(myMap) { it to it }
 
         assertTrue(myMap.get("a") == "a")
     }
@@ -57,7 +57,7 @@ class ListToMapTest {
         val myList = listOf(user1, user2, user3, user4)
         val myMap = mutableMapOf<String, Int>()
 
-        myList.associateByTo(myMap, {it.name}, {it.age})
+        myList.associateByTo(myMap, { it.name }, { it.age })
 
         assertTrue(myMap.get("Dave") == 34)
     }
@@ -67,7 +67,7 @@ class ListToMapTest {
         val myList = listOf(user1, user2, user3, user4)
         val myMap = mutableMapOf<String, User>()
 
-        myList.associateByTo(myMap) {it.name}
+        myList.associateByTo(myMap) { it.name }
 
         assertTrue(myMap.get("Dave")!!.age == 34)
     }

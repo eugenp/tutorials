@@ -1,20 +1,21 @@
-import { Injectable } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
-import { UserRouteAccessService } from 'app/core';
-import { Observable, of } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-import { Book } from 'app/shared/model/book.model';
-import { BookService } from './book.service';
-import { BookComponent } from './book.component';
-import { BookDetailComponent } from './book-detail.component';
-import { BookUpdateComponent } from './book-update.component';
-import { BookDeletePopupComponent } from './book-delete-dialog.component';
-import { IBook } from 'app/shared/model/book.model';
+import {Injectable} from '@angular/core';
+import {HttpResponse} from '@angular/common/http';
+import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes} from '@angular/router';
+import {UserRouteAccessService} from 'app/core';
+import {Observable, of} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
+import {Book} from 'app/shared/model/book.model';
+import {BookService} from './book.service';
+import {BookComponent} from './book.component';
+import {BookDetailComponent} from './book-detail.component';
+import {BookUpdateComponent} from './book-update.component';
+import {BookDeletePopupComponent} from './book-delete-dialog.component';
+import {IBook} from 'app/shared/model/book.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class BookResolve implements Resolve<IBook> {
-    constructor(private service: BookService) {}
+    constructor(private service: BookService) {
+    }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IBook> {
         const id = route.params['id'] ? route.params['id'] : null;

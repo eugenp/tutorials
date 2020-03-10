@@ -9,7 +9,7 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Constraint(validatedBy = FieldsValueMatchValidator.class)
-@Target({ ElementType.TYPE })
+@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface FieldsValueMatch {
 
@@ -23,7 +23,7 @@ public @interface FieldsValueMatch {
 
     String fieldMatch();
 
-    @Target({ ElementType.TYPE })
+    @Target({ElementType.TYPE})
     @Retention(RetentionPolicy.RUNTIME)
     @interface List {
         FieldsValueMatch[] value();

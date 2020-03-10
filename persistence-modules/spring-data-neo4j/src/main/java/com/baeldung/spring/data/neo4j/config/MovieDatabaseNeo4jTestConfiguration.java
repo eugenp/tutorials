@@ -12,14 +12,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = { "com.baeldung.spring.data.neo4j.services" })
+@ComponentScan(basePackages = {"com.baeldung.spring.data.neo4j.services"})
 @EnableNeo4jRepositories(basePackages = "com.baeldung.spring.data.neo4j.repository")
-@Profile({ "embedded", "test" })
+@Profile({"embedded", "test"})
 public class MovieDatabaseNeo4jTestConfiguration {
 
     @Bean
     public org.neo4j.ogm.config.Configuration getConfiguration() {
-    	org.neo4j.ogm.config.Configuration config = new Builder().build();
+        org.neo4j.ogm.config.Configuration config = new Builder().build();
         return config;
     }
 
@@ -27,7 +27,7 @@ public class MovieDatabaseNeo4jTestConfiguration {
     public SessionFactory getSessionFactory() {
         return new SessionFactory(getConfiguration(), "com.baeldung.spring.data.neo4j.domain");
     }
-    
+
     @Bean
     public Neo4jTransactionManager transactionManager() {
         return new Neo4jTransactionManager(getSessionFactory());

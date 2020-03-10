@@ -12,7 +12,8 @@ import com.google.common.io.BaseEncoding;
 public class HexStringConverter {
 
     /**
-     * Create a byte Array from String of hexadecimal digits using Character conversion 
+     * Create a byte Array from String of hexadecimal digits using Character conversion
+     *
      * @param hexString - Hexadecimal digits as String
      * @return Desired byte Array
      */
@@ -30,6 +31,7 @@ public class HexStringConverter {
 
     /**
      * Create a String of hexadecimal digits from a byte Array using Character conversion
+     *
      * @param byteArray - The byte Array
      * @return Desired String of hexadecimal digits in lower case
      */
@@ -56,8 +58,8 @@ public class HexStringConverter {
 
     private int toDigit(char hexChar) {
         int digit = Character.digit(hexChar, 16);
-        if(digit == -1) {
-            throw new IllegalArgumentException("Invalid Hexadecimal Character: "+ hexChar);
+        if (digit == -1) {
+            throw new IllegalArgumentException("Invalid Hexadecimal Character: " + hexChar);
         }
         return digit;
     }
@@ -100,11 +102,11 @@ public class HexStringConverter {
 
     public String encodeUsingGuava(byte[] bytes) {
         return BaseEncoding.base16()
-            .encode(bytes);
+                .encode(bytes);
     }
 
     public byte[] decodeUsingGuava(String hexString) {
         return BaseEncoding.base16()
-            .decode(hexString.toUpperCase());
+                .decode(hexString.toUpperCase());
     }
 }

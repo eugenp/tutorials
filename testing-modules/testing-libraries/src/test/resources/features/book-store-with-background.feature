@@ -1,4 +1,5 @@
 Feature: Book Store With Background
+
   Background: The Book Store
     Given I have the following books in the store
       | The Devil in the White City          | Erik Larson |

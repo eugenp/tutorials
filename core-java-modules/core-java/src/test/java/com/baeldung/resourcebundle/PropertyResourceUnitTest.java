@@ -18,7 +18,7 @@ public class PropertyResourceUnitTest {
         ResourceBundle bundle = ResourceBundle.getBundle("resourcebundle.resource", new Locale("pl", "PL"));
 
         assertTrue(bundle.keySet()
-            .containsAll(Arrays.asList("backButton", "helloLabel", "cancelButton", "continueButton", "helloLabelNoEncoding")));
+                .containsAll(Arrays.asList("backButton", "helloLabel", "cancelButton", "continueButton", "helloLabelNoEncoding")));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class PropertyResourceUnitTest {
         ResourceBundle bundle = ResourceBundle.getBundle("resourcebundle.resource", new Locale("fr", "FR"));
 
         assertTrue(bundle.keySet()
-            .containsAll(Arrays.asList("deleteButton", "helloLabel", "cancelButton", "continueButton")));
+                .containsAll(Arrays.asList("deleteButton", "helloLabel", "cancelButton", "continueButton")));
     }
 
     @Test
@@ -38,7 +38,7 @@ public class PropertyResourceUnitTest {
         ResourceBundle bundle = ResourceBundle.getBundle("resourcebundle.resource", new Locale("fr", "FR"));
 
         assertTrue(bundle.keySet()
-            .containsAll(Arrays.asList("continueButton", "helloLabel", "cancelButton")));
+                .containsAll(Arrays.asList("continueButton", "helloLabel", "cancelButton")));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class PropertyResourceUnitTest {
         ResourceBundle bundle = ResourceBundle.getBundle("resourcebundle.resource", new Locale("fr", "FR"), new ExampleControl());
 
         assertTrue(bundle.keySet()
-            .containsAll(Arrays.asList("backButton", "helloLabel")));
+                .containsAll(Arrays.asList("backButton", "helloLabel")));
     }
 
     @Test

@@ -14,7 +14,7 @@ public class ProgrammaticSequencesUnitTest {
         List<String> elements = new ArrayList<>();
         ProgrammaticSequences producer = new ProgrammaticSequences();
         producer.statefulImutableGenerate()
-            .subscribe(elements::add);
+                .subscribe(elements::add);
         assertThat(elements).hasSize(101);
         assertThat(elements).contains("2 + 1 = 3", "2 + 101 = 103");
     }
@@ -24,7 +24,7 @@ public class ProgrammaticSequencesUnitTest {
         List<String> elements = new ArrayList<>();
         ProgrammaticSequences producer = new ProgrammaticSequences();
         producer.statefulMutableGenerate()
-            .subscribe(elements::add);
+                .subscribe(elements::add);
         assertThat(elements).hasSize(102);
         assertThat(elements).contains("2 + 0 = 2", "2 + 101 = 103");
     }
@@ -34,7 +34,7 @@ public class ProgrammaticSequencesUnitTest {
         List<String> elements = new ArrayList<>();
         ProgrammaticSequences producer = new ProgrammaticSequences();
         producer.handle()
-            .subscribe(elements::add);
+                .subscribe(elements::add);
         assertThat(elements).hasSize(5);
         assertThat(elements).contains("Elephant nr 2", "Elephant nr 10");
     }

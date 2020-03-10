@@ -25,6 +25,6 @@ public class HttpMediaTypeNotAcceptableExceptionControllerIntegrationTest {
     @Test
     public void whenHttpMediaTypeNotAcceptableExceptionTriggered_thenExceptionHandled() throws Exception {
         mockMvc.perform(post("/test").contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_PDF))
-            .andExpect(content().string("acceptable MIME type:application/json"));
+                .andExpect(content().string("acceptable MIME type:application/json"));
     }
 }

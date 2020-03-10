@@ -80,7 +80,7 @@ public class MyJiraClient {
 
     private List<Comment> getAllComments(String issueKey) {
         return StreamSupport.stream(getIssue(issueKey).getComments().spliterator(), false)
-          .collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 
     private void updateIssueDescription(String issueKey, String newDescription) {
@@ -94,7 +94,7 @@ public class MyJiraClient {
 
     private JiraRestClient getJiraRestClient() {
         return new AsynchronousJiraRestClientFactory()
-          .createWithBasicHttpAuthentication(getJiraUri(), this.username, this.password);
+                .createWithBasicHttpAuthentication(getJiraUri(), this.username, this.password);
     }
 
     private URI getJiraUri() {

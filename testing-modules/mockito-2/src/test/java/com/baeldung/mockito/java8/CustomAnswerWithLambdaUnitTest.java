@@ -40,7 +40,7 @@ public class CustomAnswerWithLambdaUnitTest {
         MockitoAnnotations.initMocks(this);
 
         when(jobService.listJobs(any(Person.class))).then((i) ->
-          Stream.of(new JobPosition("Teacher"))
-          .filter(p -> ((Person) i.getArgument(0)).getName().equals("Peter")));
+                Stream.of(new JobPosition("Teacher"))
+                        .filter(p -> ((Person) i.getArgument(0)).getName().equals("Peter")));
     }
 }

@@ -56,7 +56,7 @@ public class MergePropertiesUnitTest {
 
     private Properties mergePropertiesByUsingStreamApi(Properties... properties) {
         return Stream.of(properties)
-            .collect(Properties::new, Map::putAll, Map::putAll);
+                .collect(Properties::new, Map::putAll, Map::putAll);
     }
 
     private Properties propertiesA() {

@@ -38,7 +38,7 @@ import org.slf4j.LoggerFactory;
 public class HibernateExceptionUnitTest {
 
     private static final Logger logger = LoggerFactory
-        .getLogger(HibernateExceptionUnitTest.class);
+            .getLogger(HibernateExceptionUnitTest.class);
     private SessionFactory sessionFactory;
 
     @Before
@@ -52,11 +52,11 @@ public class HibernateExceptionUnitTest {
     private Configuration getConfiguration() {
         Configuration cfg = new Configuration();
         cfg.setProperty(AvailableSettings.DIALECT,
-            "org.hibernate.dialect.H2Dialect");
+                "org.hibernate.dialect.H2Dialect");
         cfg.setProperty(AvailableSettings.HBM2DDL_AUTO, "none");
         cfg.setProperty(AvailableSettings.DRIVER, "org.h2.Driver");
         cfg.setProperty(AvailableSettings.URL,
-            "jdbc:h2:mem:myexceptiondb2;DB_CLOSE_DELAY=-1");
+                "jdbc:h2:mem:myexceptiondb2;DB_CLOSE_DELAY=-1");
         cfg.setProperty(AvailableSettings.USER, "sa");
         cfg.setProperty(AvailableSettings.PASS, "");
         return cfg;
@@ -69,7 +69,7 @@ public class HibernateExceptionUnitTest {
 
         Session session = sessionFactory.openSession();
         NativeQuery<String> query = session
-            .createNativeQuery("select name from PRODUCT", String.class);
+                .createNativeQuery("select name from PRODUCT", String.class);
         query.getResultList();
     }
 
@@ -78,7 +78,7 @@ public class HibernateExceptionUnitTest {
     public void whenQueryExecuted_thenOK() {
         Session session = sessionFactory.openSession();
         NativeQuery query = session
-            .createNativeQuery("select name from PRODUCT");
+                .createNativeQuery("select name from PRODUCT");
         List results = query.getResultList();
         assertNotNull(results);
     }
@@ -112,13 +112,13 @@ public class HibernateExceptionUnitTest {
 
         Configuration cfg = getConfiguration();
         cfg.setProperty(AvailableSettings.DIALECT,
-            "org.hibernate.dialect.MySQLDialect");
+                "org.hibernate.dialect.MySQLDialect");
         cfg.setProperty(AvailableSettings.HBM2DDL_AUTO, "update");
 
         // This does not work due to hibernate bug
         // cfg.setProperty(AvailableSettings.HBM2DDL_HALT_ON_ERROR,"true");
         cfg.getProperties()
-            .put(AvailableSettings.HBM2DDL_HALT_ON_ERROR, true);
+                .put(AvailableSettings.HBM2DDL_HALT_ON_ERROR, true);
 
         cfg.addAnnotatedClass(Product.class);
         cfg.buildSessionFactory();
@@ -129,7 +129,7 @@ public class HibernateExceptionUnitTest {
         thrown.expect(isA(PersistenceException.class));
         thrown.expectCause(isA(SQLGrammarException.class));
         thrown
-            .expectMessage("SQLGrammarException: could not prepare statement");
+                .expectMessage("SQLGrammarException: could not prepare statement");
 
         Configuration cfg = getConfiguration();
         cfg.addAnnotatedClass(Product.class);
@@ -160,11 +160,11 @@ public class HibernateExceptionUnitTest {
         thrown.expect(isA(PersistenceException.class));
         thrown.expectCause(isA(SQLGrammarException.class));
         thrown
-            .expectMessage("SQLGrammarException: could not prepare statement");
+                .expectMessage("SQLGrammarException: could not prepare statement");
 
         Session session = sessionFactory.openSession();
         NativeQuery<Product> query = session.createNativeQuery(
-            "select * from NON_EXISTING_TABLE", Product.class);
+                "select * from NON_EXISTING_TABLE", Product.class);
         query.getResultList();
     }
 
@@ -173,7 +173,7 @@ public class HibernateExceptionUnitTest {
         thrown.expect(isA(PersistenceException.class));
         thrown.expectCause(isA(ConstraintViolationException.class));
         thrown.expectMessage(
-            "ConstraintViolationException: could not execute statement");
+                "ConstraintViolationException: could not execute statement");
 
         Session session = null;
         Transaction transaction = null;
@@ -200,7 +200,7 @@ public class HibernateExceptionUnitTest {
     public void givenNotNullPropertyNotSet_whenEntityIdSaved_thenPropertyValueException() {
         thrown.expect(isA(PropertyValueException.class));
         thrown.expectMessage(
-            "not-null property references a null or transient value");
+                "not-null property references a null or transient value");
 
         Session session = null;
         Transaction transaction = null;
@@ -226,11 +226,11 @@ public class HibernateExceptionUnitTest {
     public void givenQueryWithDataTypeMismatch_WhenQueryExecuted_thenDataException() {
         thrown.expectCause(isA(DataException.class));
         thrown.expectMessage(
-            "org.hibernate.exception.DataException: could not prepare statement");
+                "org.hibernate.exception.DataException: could not prepare statement");
 
         Session session = sessionFactory.openSession();
         NativeQuery<Product> query = session.createNativeQuery(
-            "select * from PRODUCT where id='wrongTypeId'", Product.class);
+                "select * from PRODUCT where id='wrongTypeId'", Product.class);
         query.getResultList();
     }
 
@@ -238,7 +238,7 @@ public class HibernateExceptionUnitTest {
     public void givenSessionContainingAnId_whenIdAssociatedAgain_thenNonUniqueObjectException() {
         thrown.expect(isA(NonUniqueObjectException.class));
         thrown.expectMessage(
-            "A different object with the same identifier value was already associated with the session");
+                "A different object with the same identifier value was already associated with the session");
 
         Session session = null;
         Transaction transaction = null;
@@ -270,7 +270,7 @@ public class HibernateExceptionUnitTest {
     public void whenDeletingADeletedObject_thenOptimisticLockException() {
         thrown.expect(isA(OptimisticLockException.class));
         thrown.expectMessage(
-            "Batch update returned unexpected row count from update");
+                "Batch update returned unexpected row count from update");
         thrown.expectCause(isA(StaleStateException.class));
 
         Session session = null;
@@ -291,7 +291,7 @@ public class HibernateExceptionUnitTest {
             transaction = session.beginTransaction();
             Product product2 = session.get(Product.class, 12);
             session.createNativeQuery("delete from Product where id=12")
-                .executeUpdate();
+                    .executeUpdate();
             // We need to refresh to fix the error.
             // session.refresh(product2);
             session.delete(product2);
@@ -308,7 +308,7 @@ public class HibernateExceptionUnitTest {
     public void whenUpdatingNonExistingObject_thenStaleStateException() {
         thrown.expect(isA(OptimisticLockException.class));
         thrown
-            .expectMessage("Row was updated or deleted by another transaction");
+                .expectMessage("Row was updated or deleted by another transaction");
         thrown.expectCause(isA(StaleObjectStateException.class));
 
         Session session = null;
@@ -391,7 +391,7 @@ public class HibernateExceptionUnitTest {
         thrown.expect(isA(PersistenceException.class));
         thrown.expectCause(isA(HibernateException.class));
         thrown.expectMessage(
-            "identifier of an instance of com.baeldung.hibernate.exception.Product was altered");
+                "identifier of an instance of com.baeldung.hibernate.exception.Product was altered");
 
         Session session = null;
         Transaction transaction = null;

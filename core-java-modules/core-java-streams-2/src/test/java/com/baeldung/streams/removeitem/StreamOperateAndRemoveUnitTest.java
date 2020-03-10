@@ -28,7 +28,7 @@ public class StreamOperateAndRemoveUnitTest {
     public void givenAListOf10Items_whenFilteredForQualifiedItems_thenFilteredListContains5Items() {
 
         final List<Item> filteredList = itemList.stream().filter(item -> item.isQualified())
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         Assert.assertEquals(5, filteredList.size());
     }

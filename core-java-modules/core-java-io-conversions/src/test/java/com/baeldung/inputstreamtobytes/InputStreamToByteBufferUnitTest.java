@@ -18,7 +18,7 @@ public class InputStreamToByteBufferUnitTest {
 
     @Test
     public void givenUsingCoreClasses_whenByteArrayInputStreamToAByteBuffer_thenLengthMustMatch() throws IOException {
-        byte[] input = new byte[] { 0, 1, 2 };
+        byte[] input = new byte[]{0, 1, 2};
         InputStream initialStream = new ByteArrayInputStream(input);
         ByteBuffer byteBuffer = ByteBuffer.allocate(3);
         while (initialStream.available() > 0) {
@@ -31,8 +31,8 @@ public class InputStreamToByteBufferUnitTest {
     @Test
     public void givenUsingGuava__whenByteArrayInputStreamToAByteBuffer_thenLengthMustMatch() throws IOException {
         InputStream initialStream = ByteSource
-          .wrap(new byte[] { 0, 1, 2 })
-          .openStream();
+                .wrap(new byte[]{0, 1, 2})
+                .openStream();
         byte[] targetArray = ByteStreams.toByteArray(initialStream);
         ByteBuffer bufferByte = ByteBuffer.wrap(targetArray);
         while (bufferByte.hasRemaining()) {
@@ -44,7 +44,7 @@ public class InputStreamToByteBufferUnitTest {
 
     @Test
     public void givenUsingCommonsIo_whenByteArrayInputStreamToAByteBuffer_thenLengthMustMatch() throws IOException {
-        byte[] input = new byte[] { 0, 1, 2 };
+        byte[] input = new byte[]{0, 1, 2};
         InputStream initialStream = new ByteArrayInputStream(input);
         ByteBuffer byteBuffer = ByteBuffer.allocate(3);
         ReadableByteChannel channel = newChannel(initialStream);

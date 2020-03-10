@@ -17,9 +17,9 @@ public class HtmlOrderViewCreatorUnitTest {
     // @formatter:off 
     @DisplayName(
             "given collection of regular and special orders, " +
-            "when create HTML view using visitor for each order, " +
-            "then the dedicated view is created for each order"   
-        )
+                    "when create HTML view using visitor for each order, " +
+                    "then the dedicated view is created for each order"
+    )
     // @formatter:on
     @Test
     void test() throws Exception {
@@ -30,10 +30,10 @@ public class HtmlOrderViewCreatorUnitTest {
 
         // when
         orders.get(0)
-            .accept(htmlOrderViewCreator);
+                .accept(htmlOrderViewCreator);
         String regularOrderHtml = htmlOrderViewCreator.getHtml();
         orders.get(1)
-            .accept(htmlOrderViewCreator);
+                .accept(htmlOrderViewCreator);
         String specialOrderHtml = htmlOrderViewCreator.getHtml();
 
         // then

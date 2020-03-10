@@ -56,9 +56,9 @@ class DateTimeComparisonUtilsUnitTest {
     @Test
     void givenZonedDateTimes_whenIsSameHour_thenCompareTrue() {
         ZonedDateTime zonedTimestamp = ZonedDateTime.of(2019, 8, 10, 8, 0, 0, 30,
-          ZoneId.of("America/New_York"));
+                ZoneId.of("America/New_York"));
         ZonedDateTime zonedTimestampToCompare = ZonedDateTime.of(2019, 8, 10, 14, 0, 0, 0,
-          ZoneId.of("Europe/Berlin"));
+                ZoneId.of("Europe/Berlin"));
 
         assertThat(DateTimeComparisonUtils.isSameHour(zonedTimestamp, zonedTimestampToCompare), is(true));
     }
@@ -66,7 +66,7 @@ class DateTimeComparisonUtilsUnitTest {
     @Test
     void givenZonedDateTimeAndLocalDateTime_whenIsSameHour_thenCompareTrue() {
         ZonedDateTime zonedTimestamp = ZonedDateTime.of(2019, 8, 10, 8, 15, 0, 0,
-          ZoneId.of("America/New_York"));
+                ZoneId.of("America/New_York"));
         LocalDateTime localTimestamp = LocalDateTime.of(2019, 8, 10, 14, 20, 0);
         ZoneId zoneId = ZoneId.of("Europe/Berlin");
 

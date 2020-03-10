@@ -10,7 +10,6 @@ import org.junit.Test;
 
 /**
  * Demonstrates Thread.join behavior.
- *
  */
 public class ThreadJoinUnitTest {
 
@@ -51,8 +50,8 @@ public class ThreadJoinUnitTest {
     }
 
     @Test
-    public void givenStartedThread_whenJoinCalled_waitsTillCompletion() 
-      throws InterruptedException {
+    public void givenStartedThread_whenJoinCalled_waitsTillCompletion()
+            throws InterruptedException {
         Thread t2 = new SampleThread(1);
         t2.start();
         LOGGER.info("Invoking join.");
@@ -62,8 +61,8 @@ public class ThreadJoinUnitTest {
     }
 
     @Test
-    public void givenStartedThread_whenTimedJoinCalled_waitsUntilTimedout() 
-      throws InterruptedException {
+    public void givenStartedThread_whenTimedJoinCalled_waitsUntilTimedout()
+            throws InterruptedException {
         Thread t3 = new SampleThread(10);
         t3.start();
         t3.join(1000);
@@ -72,19 +71,19 @@ public class ThreadJoinUnitTest {
 
     @Test
     @Ignore
-    public void givenThreadTerminated_checkForEffect_notGuaranteed() 
-      throws InterruptedException {
+    public void givenThreadTerminated_checkForEffect_notGuaranteed()
+            throws InterruptedException {
         SampleThread t4 = new SampleThread(10);
         t4.start();
-      //not guaranteed to stop even if t4 finishes.
+        //not guaranteed to stop even if t4 finishes.
         do {
-            
-        } while (t4.processingCount > 0);  
+
+        } while (t4.processingCount > 0);
     }
 
     @Test
-    public void givenJoinWithTerminatedThread_checkForEffect_guaranteed() 
-      throws InterruptedException {
+    public void givenJoinWithTerminatedThread_checkForEffect_guaranteed()
+            throws InterruptedException {
         SampleThread t4 = new SampleThread(10);
         t4.start();
         do {

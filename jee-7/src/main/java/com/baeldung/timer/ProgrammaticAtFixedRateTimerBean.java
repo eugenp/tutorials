@@ -21,7 +21,7 @@ public class ProgrammaticAtFixedRateTimerBean {
 
     @PostConstruct
     public void initialize() {
-        timerService.createTimer(0,1000, "Every second timer");
+        timerService.createTimer(0, 1000, "Every second timer");
     }
 
     @Timeout

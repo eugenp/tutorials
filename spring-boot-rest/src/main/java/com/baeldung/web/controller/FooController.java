@@ -42,7 +42,7 @@ import com.google.common.base.Preconditions;
 public class FooController {
 
     private static final Logger logger = LoggerFactory.getLogger(FooController.class);
-    
+
     @Autowired
     private ApplicationEventPublisher eventPublisher;
 
@@ -54,17 +54,17 @@ public class FooController {
     }
 
     // API
-    
+
     // Note: the global filter overrides the ETag value we set here. We can still analyze its behaviour in the Integration Test.
     @GetMapping(value = "/{id}/custom-etag")
     public ResponseEntity<Foo> findByIdWithCustomEtag(@PathVariable("id") final Long id,
-        final HttpServletResponse response) {
+                                                      final HttpServletResponse response) {
         final Foo foo = RestPreconditions.checkFound(service.findById(id));
 
         eventPublisher.publishEvent(new SingleResourceRetrievedEvent(this, response));
         return ResponseEntity.ok()
-            .eTag(Long.toString(foo.getVersion()))
-            .body(foo);
+                .eTag(Long.toString(foo.getVersion()))
+                .body(foo);
     }
 
     // read - one
@@ -76,10 +76,9 @@ public class FooController {
 
             eventPublisher.publishEvent(new SingleResourceRetrievedEvent(this, response));
             return resourceById;
-        }
-        catch (MyResourceNotFoundException exc) {
+        } catch (MyResourceNotFoundException exc) {
             throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Foo Not Found", exc);
+                    HttpStatus.NOT_FOUND, "Foo Not Found", exc);
         }
 
     }
@@ -91,28 +90,28 @@ public class FooController {
         return service.findAll();
     }
 
-    @GetMapping(params = { "page", "size" })
+    @GetMapping(params = {"page", "size"})
     public List<Foo> findPaginated(@RequestParam("page") final int page, @RequestParam("size") final int size,
-        final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
+                                   final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
         final Page<Foo> resultPage = service.findPaginated(page, size);
         if (page > resultPage.getTotalPages()) {
             throw new MyResourceNotFoundException();
         }
         eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<Foo>(Foo.class, uriBuilder, response, page,
-            resultPage.getTotalPages(), size));
+                resultPage.getTotalPages(), size));
 
         return resultPage.getContent();
     }
 
     @GetMapping("/pageable")
     public List<Foo> findPaginatedWithPageable(Pageable pageable, final UriComponentsBuilder uriBuilder,
-        final HttpServletResponse response) {
+                                               final HttpServletResponse response) {
         final Page<Foo> resultPage = service.findPaginated(pageable);
         if (pageable.getPageNumber() > resultPage.getTotalPages()) {
             throw new MyResourceNotFoundException();
         }
         eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<Foo>(Foo.class, uriBuilder, response,
-            pageable.getPageNumber(), resultPage.getTotalPages(), pageable.getPageSize()));
+                pageable.getPageNumber(), resultPage.getTotalPages(), pageable.getPageSize()));
 
         return resultPage.getContent();
     }
@@ -144,8 +143,8 @@ public class FooController {
     public void delete(@PathVariable("id") final Long id) {
         service.deleteById(id);
     }
-    
-    @ExceptionHandler({ CustomException1.class, CustomException2.class })
+
+    @ExceptionHandler({CustomException1.class, CustomException2.class})
     public void handleException(final Exception ex) {
         final String error = "Application specific error handling";
         logger.error(error, ex);

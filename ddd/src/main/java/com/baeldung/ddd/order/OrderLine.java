@@ -53,7 +53,7 @@ public class OrderLine {
 
     Money cost() {
         return product.getPrice()
-            .multipliedBy(quantity);
+                .multipliedBy(quantity);
     }
 
     Product getProduct() {

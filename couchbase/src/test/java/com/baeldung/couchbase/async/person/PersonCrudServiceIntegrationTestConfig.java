@@ -12,12 +12,12 @@ import com.couchbase.client.java.env.DefaultCouchbaseEnvironment;
 @Configuration
 @ComponentScan(basePackages = {"com.baeldung.couchbase.async.service", "com.baeldung.couchbase.n1ql"})
 public class PersonCrudServiceIntegrationTestConfig {
-    
+
     @Bean
     public Cluster cluster() {
         CouchbaseEnvironment env = DefaultCouchbaseEnvironment.builder()
-          .connectTimeout(60000)
-          .build();
+                .connectTimeout(60000)
+                .build();
         return CouchbaseCluster.create(env, "127.0.0.1");
     }
 

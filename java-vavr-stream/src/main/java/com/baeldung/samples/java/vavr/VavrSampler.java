@@ -1,13 +1,13 @@
 package com.baeldung.samples.java.vavr;
 
 import io.vavr.collection.Stream;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
 /**
- *
  * @author baeldung
  */
 public class VavrSampler {
@@ -49,7 +49,7 @@ public class VavrSampler {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        
+
         Stream<Integer> wrapped = Stream.ofAll(intArray);
         intArray[2] = 5;
         wrapped.forEach(i -> System.out.println("Vavr looped " + i));
@@ -63,8 +63,8 @@ public class VavrSampler {
         IntStream mapToInt = Arrays.stream(intOfInts)
                 .map(intArr -> Arrays.stream(intArr))
                 .flatMapToInt(val -> val.map(n -> {
-            return n * n;
-        }))
+                    return n * n;
+                }))
                 .peek(n -> System.out.println("Peeking at " + n));
         //Uncomment to execute pipeline
         //mapToInt.forEach(n -> System.out.println("FlatMapped Result "+n));

@@ -6,6 +6,7 @@
         .controller('HomeController', HomeController);
 
     HomeController.$inject = ['$window', '$http', '$scope'];
+
     function HomeController($window, $http, $scope) {
         var vm = this;
 
@@ -20,12 +21,12 @@
                 method: "GET"
             }).then(function (response) {
                 vm.user = response.data.name;
-            },function(error){
+            }, function (error) {
                 console.log(error);
             });
         };
 
-        $scope.logout = function(){
+        $scope.logout = function () {
             $window.sessionStorage.setItem('userData', '');
             $http.defaults.headers.common['Authorization'] = 'Basic';
         }

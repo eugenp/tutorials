@@ -54,12 +54,13 @@ public final class CreateVersionedXmlResourceAndQueryIntegrationTest {
                  final var rtx = manager.beginNodeReadOnlyTrx()) {
 
                 final var axis = new NonStructuralWrapperAxis(
-                    VisitorDescendantAxis.newBuilder(rtx)
-                                         .includeSelf()
-                                         .visitor(new MyXmlNodeVisitor(manager, rtx))
-                                         .build());
+                        VisitorDescendantAxis.newBuilder(rtx)
+                                .includeSelf()
+                                .visitor(new MyXmlNodeVisitor(manager, rtx))
+                                .build());
 
-                axis.forEach((unused) -> {});
+                axis.forEach((unused) -> {
+                });
             }
         }
     }
@@ -95,19 +96,19 @@ public final class CreateVersionedXmlResourceAndQueryIntegrationTest {
             // Axis to iterate over the node in past revisions (if the node existed back then).
             final var pastAxis = new PastAxis<>(manager, trx);
             pastAxis.forEachRemaining((trx) ->
-                System.out.println("Element in the past (revision " + trx.getRevisionNumber() + "): " + trx.getName()));
+                    System.out.println("Element in the past (revision " + trx.getRevisionNumber() + "): " + trx.getName()));
 
             for (int i = 0, attributes = trx.getAttributeCount(); i < attributes; i++) {
                 trx.moveToAttribute(i);
 
                 System.out.println("Attribute (most recent revision " + trx.getRevisionNumber() + "):"
-                                   + trx.getName() + " ='" + trx.getValue() + "'");
+                        + trx.getName() + " ='" + trx.getValue() + "'");
 
                 // Axis to iterate over the node in past revisions (if the node existed back then).
                 final var pastAttributeAxis = new PastAxis<>(manager, trx);
                 pastAttributeAxis.forEachRemaining((trx) ->
-                    System.out.println("Attribute in the past (revision " + trx.getRevisionNumber() + "): "
-                                       + trx.getName() + " ='" + trx.getValue() + "'"));
+                        System.out.println("Attribute in the past (revision " + trx.getRevisionNumber() + "): "
+                                + trx.getName() + " ='" + trx.getValue() + "'"));
 
                 trx.moveToParent();
             }
@@ -122,7 +123,7 @@ public final class CreateVersionedXmlResourceAndQueryIntegrationTest {
             // Axis to iterate over the node in past revisions (if the node existed back then).
             final var pastAxis = new PastAxis<>(manager, trx);
             pastAxis.forEachRemaining((trx) ->
-                System.out.println("Text in the past (revision " + trx.getRevisionNumber() + "): " + trx.getValue()));
+                    System.out.println("Text in the past (revision " + trx.getRevisionNumber() + "): " + trx.getValue()));
 
             return VisitResultType.CONTINUE;
         }

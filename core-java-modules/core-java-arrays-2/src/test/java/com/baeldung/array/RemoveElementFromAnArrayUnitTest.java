@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RemoveElementFromAnArrayUnitTest {
 
     private final RemoveElementFromAnArray sut = new RemoveElementFromAnArray();
-    private final int[] inputArray = new int[] { 40, 10, 20, 30, 40, 50 };
+    private final int[] inputArray = new int[]{40, 10, 20, 30, 40, 50};
 
     @Test
     void testRemoveAnElementWithAGivenIndex() {
@@ -53,7 +53,7 @@ class RemoveElementFromAnArrayUnitTest {
     @Test
     void testRemoveAllGivenElements() {
         int duplicateElement = 40;
-        int[] elements = new int[] { duplicateElement, 10, 50 };
+        int[] elements = new int[]{duplicateElement, 10, 50};
         int[] modifiedArray = sut.removeAllGivenElements(inputArray, elements);
 
         assertTrue(ArrayUtils.contains(modifiedArray, duplicateElement));

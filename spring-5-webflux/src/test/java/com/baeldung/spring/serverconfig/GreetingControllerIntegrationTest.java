@@ -32,10 +32,10 @@ public class GreetingControllerIntegrationTest {
     @Test
     public void shouldGreet() {
         webClient.get().uri("/greet/{name}", name)
-                 .exchange()
-                 .expectStatus()
-                 .isOk()
-                 .expectBody(String.class)
-                 .isEqualTo("Greeting Baeldung");
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBody(String.class)
+                .isEqualTo("Greeting Baeldung");
     }
 }

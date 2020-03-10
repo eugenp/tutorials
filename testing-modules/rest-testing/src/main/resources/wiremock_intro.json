@@ -1,5 +1,5 @@
 {
-	"testing-library": "WireMock",
-	"creator": "Tom Akehurst",
-	"website": "wiremock.org"
+  "testing-library": "WireMock",
+  "creator": "Tom Akehurst",
+  "website": "wiremock.org"
 }

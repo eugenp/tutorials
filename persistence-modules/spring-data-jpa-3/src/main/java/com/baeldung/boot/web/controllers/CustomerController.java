@@ -14,9 +14,8 @@ import com.baeldung.boot.domain.Customer;
 /**
  * A simple controller to test the JPA CrudRepository operations
  * controllers
- * 
- * @author ysharma2512
  *
+ * @author ysharma2512
  */
 @RestController
 public class CustomerController {

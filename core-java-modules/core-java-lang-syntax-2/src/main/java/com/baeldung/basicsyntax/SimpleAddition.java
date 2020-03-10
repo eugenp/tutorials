@@ -6,6 +6,6 @@ public class SimpleAddition {
         int a = 10;
         int b = 5;
         double c = a + b;
-        System.out.println( a + " + " + b + " = " + c);
+        System.out.println(a + " + " + b + " = " + c);
     }
 }

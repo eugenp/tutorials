@@ -34,10 +34,10 @@
 
     <int:channel id="videoChannel"/>
 
-   <!-- <int:service-activator input-channel="videoChannel" output-channel="destFileFolder" method="handleMessage"
-                           ref="customActivator"/>
+    <!-- <int:service-activator input-channel="videoChannel" output-channel="destFileFolder" method="handleMessage"
+                            ref="customActivator"/>
 
-    <bean name="customActivator" class="com.baeldung.samples.endpoints.ActivatorImpl"/>-->
+     <bean name="customActivator" class="com.baeldung.samples.endpoints.ActivatorImpl"/>-->
 
 
 </beans>

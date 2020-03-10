@@ -19,8 +19,8 @@ public class CountdownLatchExampleIntegrationTest {
         List<String> outputScraper = Collections.synchronizedList(new ArrayList<>());
         CountDownLatch countDownLatch = new CountDownLatch(5);
         List<Thread> workers = Stream.generate(() -> new Thread(new Worker(outputScraper, countDownLatch)))
-          .limit(5)
-          .collect(toList());
+                .limit(5)
+                .collect(toList());
 
         // When
         workers.forEach(Thread::start);
@@ -37,8 +37,8 @@ public class CountdownLatchExampleIntegrationTest {
         List<String> outputScraper = Collections.synchronizedList(new ArrayList<>());
         CountDownLatch countDownLatch = new CountDownLatch(5);
         List<Thread> workers = Stream.generate(() -> new Thread(new BrokenWorker(outputScraper, countDownLatch)))
-          .limit(5)
-          .collect(toList());
+                .limit(5)
+                .collect(toList());
 
         // When
         workers.forEach(Thread::start);

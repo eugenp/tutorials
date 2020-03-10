@@ -5,16 +5,16 @@ public class Todo {
     private int id;
     private String message;
     private int priority;
-	
-	public int getId() {
-		return id;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public String getMessage() {
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getMessage() {
         return message;
     }
 

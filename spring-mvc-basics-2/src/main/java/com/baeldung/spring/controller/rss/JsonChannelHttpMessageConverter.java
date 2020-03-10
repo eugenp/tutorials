@@ -16,7 +16,7 @@ import org.springframework.http.converter.HttpMessageNotWritableException;
 import java.io.IOException;
 
 public class JsonChannelHttpMessageConverter extends AbstractHttpMessageConverter<Channel> {
-    public JsonChannelHttpMessageConverter(){
+    public JsonChannelHttpMessageConverter() {
         super(new MediaType("application", "rss+json"));
     }
 

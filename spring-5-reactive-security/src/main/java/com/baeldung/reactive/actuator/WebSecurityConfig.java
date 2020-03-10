@@ -12,17 +12,17 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @Configuration
 @EnableWebFluxSecurity
 public class WebSecurityConfig {
- 
-    
+
+
     @Bean
     public SecurityWebFilterChain securitygWebFilterChain(
-      ServerHttpSecurity http) {
-        return  http
-     
-            .authorizeExchange()
+            ServerHttpSecurity http) {
+        return http
+
+                .authorizeExchange()
                 .matchers(EndpointRequest.to(
-                       FeaturesEndpoint.class
+                        FeaturesEndpoint.class
                 )).permitAll().anyExchange().permitAll().and().csrf().disable().build();
     }
-    
+
 }

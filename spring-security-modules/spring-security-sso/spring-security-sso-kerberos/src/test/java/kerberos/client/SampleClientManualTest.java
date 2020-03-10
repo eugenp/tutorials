@@ -23,17 +23,17 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SampleClientManualTest {
 
-	@Autowired
-	private SampleClient sampleClient;
+    @Autowired
+    private SampleClient sampleClient;
 
-	@Test
-	public void givenKerberizedRestTemplate_whenServiceCall_thenSuccess() {
-		assertEquals("data from kerberized server", sampleClient.getData());
-	}
+    @Test
+    public void givenKerberizedRestTemplate_whenServiceCall_thenSuccess() {
+        assertEquals("data from kerberized server", sampleClient.getData());
+    }
 
-	@Test
-	public void givenRestTemplate_whenServiceCall_thenFail() {
-		sampleClient.setRestTemplate(new RestTemplate());
-		assertThrows(RestClientException.class, sampleClient::getData);
-	}
+    @Test
+    public void givenRestTemplate_whenServiceCall_thenFail() {
+        sampleClient.setRestTemplate(new RestTemplate());
+        assertThrows(RestClientException.class, sampleClient::getData);
+    }
 }

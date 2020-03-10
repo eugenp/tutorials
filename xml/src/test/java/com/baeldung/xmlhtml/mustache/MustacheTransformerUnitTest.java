@@ -16,8 +16,8 @@ public class MustacheTransformerUnitTest {
     @Test
     public void givenXml_whenTransform_thenGetHtml() throws IOException, URISyntaxException, XMLStreamException {
         String expectedHtml = new String(Files.readAllBytes((Paths.get(getClass()
-          .getResource("/xmlhtml/notification.html")
-          .toURI()))));
+                .getResource("/xmlhtml/notification.html")
+                .toURI()))));
         StaxTransformer staxTransformer = new StaxTransformer("src/test/resources/xmlhtml/notification.xml");
         String templateFile = "src/test/resources/templates/template.mustache";
         MustacheTransformer transformer = new MustacheTransformer(staxTransformer, templateFile);

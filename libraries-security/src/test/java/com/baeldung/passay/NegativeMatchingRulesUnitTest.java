@@ -34,7 +34,7 @@ public class NegativeMatchingRulesUnitTest {
 
     @Test
     public void givenDictionaryRules_whenValidatePassword_thenFoundIllegalWordsFromDictionary() {
-        ArrayWordList arrayWordList = new ArrayWordList(new String[] { "bar", "foobar" });
+        ArrayWordList arrayWordList = new ArrayWordList(new String[]{"bar", "foobar"});
 
         WordListDictionary wordListDictionary = new WordListDictionary(arrayWordList);
 
@@ -66,7 +66,7 @@ public class NegativeMatchingRulesUnitTest {
 
     @Test
     public void givenSeveralIllegalRules_whenValidatePassword_thenFoundSeveralIllegalPatterns() {
-        IllegalCharacterRule illegalCharacterRule = new IllegalCharacterRule(new char[] { 'a' });
+        IllegalCharacterRule illegalCharacterRule = new IllegalCharacterRule(new char[]{'a'});
         IllegalRegexRule illegalRegexRule = new IllegalRegexRule("\\w{2}\\d{2}");
         IllegalSequenceRule illegalSequenceRule = new IllegalSequenceRule(EnglishSequenceData.Alphabetical, 3, true);
         NumberRangeRule numberRangeRule = new NumberRangeRule(1, 10);
@@ -142,8 +142,8 @@ public class NegativeMatchingRulesUnitTest {
 
     private String getDetail(RuleResult validate, int i) {
         return validate.getDetails()
-            .get(i)
-            .toString();
+                .get(i)
+                .toString();
     }
 
 }

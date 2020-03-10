@@ -9,8 +9,8 @@ class UrlConnectionUtils {
 
     public static String contentAsString(URLConnection con) throws IOException {
         StringBuilder builder = new StringBuilder();
-        try (BufferedReader reader 
-                = new BufferedReader(new InputStreamReader(con.getInputStream()))){
+        try (BufferedReader reader
+                     = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
             while (reader.ready()) {
                 builder.append(reader.readLine());
             }

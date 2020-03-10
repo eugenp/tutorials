@@ -1,4 +1,5 @@
 package com.baeldung.initializationguide;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ public class UserUnitTest {
     @Test
     public void givenUserInstance_whenInitializedWithReflection_thenInstanceIsNotNull() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
         User user = User.class.getConstructor(String.class, int.class)
-            .newInstance("Alice", 2);
+                .newInstance("Alice", 2);
         assertThat(user).isNotNull();
     }
 

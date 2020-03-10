@@ -12,12 +12,12 @@ public class RemoveLeadingAndTrailingZeroesUnitTest {
 
     public static Stream<Arguments> leadingZeroTestProvider() {
         return Stream.of(Arguments.of("", ""), Arguments.of("abc", "abc"), Arguments.of("123", "123"), Arguments.of("0abc", "abc"), Arguments.of("0123", "123"), Arguments.of("0000123", "123"), Arguments.of("1230", "1230"), Arguments.of("01230", "1230"), Arguments.of("01", "1"),
-            Arguments.of("0001", "1"), Arguments.of("0", "0"), Arguments.of("00", "0"), Arguments.of("0000", "0"), Arguments.of("12034", "12034"), Arguments.of("1200034", "1200034"), Arguments.of("0012034", "12034"), Arguments.of("1203400", "1203400"));
+                Arguments.of("0001", "1"), Arguments.of("0", "0"), Arguments.of("00", "0"), Arguments.of("0000", "0"), Arguments.of("12034", "12034"), Arguments.of("1200034", "1200034"), Arguments.of("0012034", "12034"), Arguments.of("1203400", "1203400"));
     }
 
     public static Stream<Arguments> trailingZeroTestProvider() {
         return Stream.of(Arguments.of("", ""), Arguments.of("abc", "abc"), Arguments.of("123", "123"), Arguments.of("abc0", "abc"), Arguments.of("1230", "123"), Arguments.of("1230000", "123"), Arguments.of("0123", "0123"), Arguments.of("01230", "0123"), Arguments.of("10", "1"),
-            Arguments.of("1000", "1"), Arguments.of("0", "0"), Arguments.of("00", "0"), Arguments.of("0000", "0"), Arguments.of("12034", "12034"), Arguments.of("1200034", "1200034"), Arguments.of("0012034", "0012034"), Arguments.of("1203400", "12034"));
+                Arguments.of("1000", "1"), Arguments.of("0", "0"), Arguments.of("00", "0"), Arguments.of("0000", "0"), Arguments.of("12034", "12034"), Arguments.of("1200034", "1200034"), Arguments.of("0012034", "0012034"), Arguments.of("1203400", "12034"));
     }
 
     @ParameterizedTest

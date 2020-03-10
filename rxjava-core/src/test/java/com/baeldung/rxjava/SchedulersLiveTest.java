@@ -48,7 +48,7 @@ public class SchedulersLiveTest {
         worker.schedule(() -> result += "Second_Action");
 
         await()
-          .until(() -> assertTrue(result.equals("First_Action")));
+                .until(() -> assertTrue(result.equals("First_Action")));
     }
 
     @Ignore //it's not safe, not every time is running correctly
@@ -64,26 +64,26 @@ public class SchedulersLiveTest {
         });
 
         await()
-          .until(() -> assertTrue(result.equals("RxNewThreadScheduler-1_Start_End_worker_")));
+                .until(() -> assertTrue(result.equals("RxNewThreadScheduler-1_Start_End_worker_")));
     }
 
     @Test
     public void givenObservable_whenObserveOnNewThread_thenRunOnDifferentThreadEachTime() throws InterruptedException {
         System.out.println("newThread_2");
         Observable.just("Hello")
-          .observeOn(Schedulers.newThread())
-          .doOnNext(s ->
-            result2 += Thread.currentThread().getName()
-          )
-          .observeOn(Schedulers.newThread())
-          .subscribe(s ->
-            result1 += Thread.currentThread().getName()
-          );
+                .observeOn(Schedulers.newThread())
+                .doOnNext(s ->
+                        result2 += Thread.currentThread().getName()
+                )
+                .observeOn(Schedulers.newThread())
+                .subscribe(s ->
+                        result1 += Thread.currentThread().getName()
+                );
         await()
-          .until(() -> {
-              assertTrue(result1.equals("RxNewThreadScheduler-1"));
-              assertTrue(result2.equals("RxNewThreadScheduler-2"));
-          });
+                .until(() -> {
+                    assertTrue(result1.equals("RxNewThreadScheduler-1"));
+                    assertTrue(result2.equals("RxNewThreadScheduler-2"));
+                });
     }
 
     @Test
@@ -98,34 +98,34 @@ public class SchedulersLiveTest {
         });
 
         await()
-          .until(() -> assertTrue(result.equals("main_Start_worker__End")));
+                .until(() -> assertTrue(result.equals("main_Start_worker__End")));
     }
 
     @Test
     public void givenObservable_whenImmediateScheduled_thenExecuteOnMainThread() throws InterruptedException {
         System.out.println("immediate_2");
         Observable.just("Hello")
-          .subscribeOn(Schedulers.immediate())
-          .subscribe(s ->
-            result += Thread.currentThread().getName()
-          );
+                .subscribeOn(Schedulers.immediate())
+                .subscribe(s ->
+                        result += Thread.currentThread().getName()
+                );
 
         await()
-          .until(() -> assertTrue(result.equals("main")));
+                .until(() -> assertTrue(result.equals("main")));
     }
 
     @Test
     public void givenObservable_whenTrampolineScheduled_thenExecuteOnMainThread() throws InterruptedException {
         System.out.println("trampoline_1");
         Observable.just(2, 4, 6, 8)
-          .subscribeOn(Schedulers.trampoline())
-          .subscribe(i -> result += "" + i);
+                .subscribeOn(Schedulers.trampoline())
+                .subscribe(i -> result += "" + i);
         Observable.just(1, 3, 5, 7, 9)
-          .subscribeOn(Schedulers.trampoline())
-          .subscribe(i -> result += "" + i);
+                .subscribeOn(Schedulers.trampoline())
+                .subscribe(i -> result += "" + i);
 
         await()
-          .until(() -> assertTrue(result.equals("246813579")));
+                .until(() -> assertTrue(result.equals("246813579")));
     }
 
     @Test
@@ -138,7 +138,7 @@ public class SchedulersLiveTest {
             worker.schedule(() -> {
                 result += "_middleStart";
                 worker.schedule(() ->
-                  result += "_worker_"
+                        result += "_worker_"
                 );
                 result += "_middleEnd";
             });
@@ -146,13 +146,13 @@ public class SchedulersLiveTest {
         });
 
         await()
-          .until(() -> assertTrue(result.equals("mainStart_mainEnd_middleStart_middleEnd_worker_")));
+                .until(() -> assertTrue(result.equals("mainStart_mainEnd_middleStart_middleEnd_worker_")));
     }
 
     private ThreadFactory threadFactory(String pattern) {
         return new ThreadFactoryBuilder()
-          .setNameFormat(pattern)
-          .build();
+                .setNameFormat(pattern)
+                .build();
     }
 
     @Test
@@ -170,27 +170,27 @@ public class SchedulersLiveTest {
         });
 
         observable
-          .subscribeOn(schedulerA)
-          .subscribeOn(schedulerB)
-          .subscribe(
-            x -> result += Thread.currentThread().getName() + x + "_",
-            Throwable::printStackTrace,
-            () -> result += "_Completed"
-          );
+                .subscribeOn(schedulerA)
+                .subscribeOn(schedulerB)
+                .subscribe(
+                        x -> result += Thread.currentThread().getName() + x + "_",
+                        Throwable::printStackTrace,
+                        () -> result += "_Completed"
+                );
 
         await()
-          .until(() -> assertTrue(result.equals("Sched-A-0Alfa_Sched-A-0Beta__Completed")));
+                .until(() -> assertTrue(result.equals("Sched-A-0Alfa_Sched-A-0Beta__Completed")));
     }
 
     @Test
     public void givenObservable_whenIoScheduling_thenReturnThreadName() throws InterruptedException {
         System.out.println("io");
         Observable.just("io")
-          .subscribeOn(Schedulers.io())
-          .subscribe(i -> result += Thread.currentThread().getName());
+                .subscribeOn(Schedulers.io())
+                .subscribe(i -> result += Thread.currentThread().getName());
 
         await()
-          .until(() -> assertTrue(result.equals("RxIoScheduler-2")));
+                .until(() -> assertTrue(result.equals("RxIoScheduler-2")));
     }
 
     @Test
@@ -198,11 +198,11 @@ public class SchedulersLiveTest {
     public void givenObservable_whenComputationScheduling_thenReturnThreadName() throws InterruptedException {
         System.out.println("computation");
         Observable.just("computation")
-          .subscribeOn(Schedulers.computation())
-          .subscribe(i -> result += Thread.currentThread().getName());
+                .subscribeOn(Schedulers.computation())
+                .subscribe(i -> result += Thread.currentThread().getName());
 
         await()
-          .until(() -> assertTrue(result.equals("RxComputationScheduler-1")));
+                .until(() -> assertTrue(result.equals("RxComputationScheduler-1")));
     }
 
     @Test
@@ -214,9 +214,9 @@ public class SchedulersLiveTest {
         Observable<Long> tick = Observable.interval(1, TimeUnit.SECONDS, scheduler);
 
         Observable.from(letters)
-          .zipWith(tick, (string, index) -> index + "-" + string)
-          .subscribeOn(scheduler)
-          .subscribe(subscriber);
+                .zipWith(tick, (string, index) -> index + "-" + string)
+                .subscribeOn(scheduler)
+                .subscribe(subscriber);
 
         subscriber.assertNoValues();
         subscriber.assertNotCompleted();
@@ -238,10 +238,10 @@ public class SchedulersLiveTest {
         ExecutorService poolA = newFixedThreadPool(10, threadFactory("Sched1-"));
         Scheduler schedulerA = Schedulers.from(poolA);
         Observable.just('A', 'B')
-          .delay(1, TimeUnit.SECONDS, schedulerA)
-          .subscribe(i -> result += Thread.currentThread().getName() + i + " ");
+                .delay(1, TimeUnit.SECONDS, schedulerA)
+                .subscribe(i -> result += Thread.currentThread().getName() + i + " ");
 
         await()
-          .until(() -> assertTrue(result.equals("Sched1-A Sched1-B ")));
+                .until(() -> assertTrue(result.equals("Sched1-A Sched1-B ")));
     }
 }

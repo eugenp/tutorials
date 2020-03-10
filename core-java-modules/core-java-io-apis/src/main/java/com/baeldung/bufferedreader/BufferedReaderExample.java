@@ -22,7 +22,7 @@ public class BufferedReaderExample {
     public String readAllLinesWithStream(BufferedReader reader) {
         return reader
                 .lines()
-                    .collect(Collectors.joining(System.lineSeparator()));
+                .collect(Collectors.joining(System.lineSeparator()));
     }
 
     public String readAllCharsOneByOne(BufferedReader reader) throws IOException {
@@ -43,7 +43,7 @@ public class BufferedReaderExample {
 
         String result;
         if (charsRead != -1) {
-            result = new String(chars, 0,  charsRead);
+            result = new String(chars, 0, charsRead);
         } else {
             result = "";
         }

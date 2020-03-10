@@ -8,13 +8,14 @@ public enum OutputType {
     INVALID("invalid");
 
     String val;
+
     OutputType(String val) {
         this.val = val;
     }
 
     public static OutputType from(String text) {
         for (OutputType output : values()) {
-            if(output.val.equalsIgnoreCase(text)) return output;
+            if (output.val.equalsIgnoreCase(text)) return output;
         }
         return INVALID;
     }

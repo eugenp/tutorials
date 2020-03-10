@@ -10,9 +10,8 @@ import org.junit.Test;
 /**
  * Unit test for {@link SyntheticFieldDemo}, {@link SyntheticMethodDemo},
  * {@link SyntheticConstructorDemo} and {@link BridgeMethodDemo} classes.
- * 
- * @author Donato Rimenti
  *
+ * @author Donato Rimenti
  */
 public class SyntheticUnitTest {
 
@@ -91,7 +90,7 @@ public class SyntheticUnitTest {
                 Assert.assertTrue("The synthetic method in this class should also be a bridge method", m.isBridge());
             }
         }
-        
+
         // Checks that there's exactly one synthetic bridge method.
         Assert.assertEquals("There should be exactly 1 synthetic bridge method in this class", 1, syntheticMethods);
     }

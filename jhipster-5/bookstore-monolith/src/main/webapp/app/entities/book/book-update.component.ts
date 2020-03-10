@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {HttpResponse, HttpErrorResponse} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 import * as moment from 'moment';
-import { IBook } from 'app/shared/model/book.model';
-import { BookService } from './book.service';
+import {IBook} from 'app/shared/model/book.model';
+import {BookService} from './book.service';
 
 @Component({
     selector: 'jhi-book-update',
@@ -16,11 +16,12 @@ export class BookUpdateComponent implements OnInit {
     isSaving: boolean;
     publishedDp: any;
 
-    constructor(protected bookService: BookService, protected activatedRoute: ActivatedRoute) {}
+    constructor(protected bookService: BookService, protected activatedRoute: ActivatedRoute) {
+    }
 
     ngOnInit() {
         this.isSaving = false;
-        this.activatedRoute.data.subscribe(({ book }) => {
+        this.activatedRoute.data.subscribe(({book}) => {
             this.book = book;
         });
     }

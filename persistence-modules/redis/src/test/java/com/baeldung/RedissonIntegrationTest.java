@@ -63,12 +63,12 @@ public class RedissonIntegrationTest {
         RKeys keys = client.getKeys();
 
         Iterable<String> keysWithPattern
-          = keys.getKeysByPattern("key*");
+                = keys.getKeysByPattern("key*");
 
         List keyWithPatternList
-          = StreamSupport.stream(
-            keysWithPattern.spliterator(),
-              false).collect(Collectors.toList());
+                = StreamSupport.stream(
+                keysWithPattern.spliterator(),
+                false).collect(Collectors.toList());
 
         assertTrue(keyWithPatternList.size() == 3);
     }
@@ -83,16 +83,16 @@ public class RedissonIntegrationTest {
         Ledger returnedLedger = bucket.get();
 
         assertTrue(
-          returnedLedger != null
-            && returnedLedger.getName().equals("ledger1"));
+                returnedLedger != null
+                        && returnedLedger.getName().equals("ledger1"));
     }
 
     @Test
-    public void givenALong_thenSaveLongToRedisAndAtomicallyIncrement(){
+    public void givenALong_thenSaveLongToRedisAndAtomicallyIncrement() {
         Long value = 5L;
 
         RAtomicLong atomicLong
-          = client.getAtomicLong("myAtomicLong");
+                = client.getAtomicLong("myAtomicLong");
         atomicLong.set(value);
         Long returnValue = atomicLong.incrementAndGet();
 
@@ -108,14 +108,14 @@ public class RedissonIntegrationTest {
 
         RTopic<CustomMessage> publishTopic = client.getTopic("baeldung");
         long clientsReceivedMessage
-          = publishTopic.publish(new CustomMessage("This is a message"));
+                = publishTopic.publish(new CustomMessage("This is a message"));
 
         assertEquals("This is a message", future.get());
 
     }
 
     @Test
-    public void givenAMap_thenSaveMapToRedis(){
+    public void givenAMap_thenSaveMapToRedis() {
         RMap<String, Ledger> map = client.getMap("ledger");
         map.put("123", new Ledger("ledger"));
 
@@ -123,7 +123,7 @@ public class RedissonIntegrationTest {
     }
 
     @Test
-    public void givenASet_thenSaveSetToRedis(){
+    public void givenASet_thenSaveSetToRedis() {
         RSet<Ledger> ledgerSet = client.getSet("ledgerSet");
         ledgerSet.add(new Ledger("ledger"));
 
@@ -131,7 +131,7 @@ public class RedissonIntegrationTest {
     }
 
     @Test
-    public void givenAList_thenSaveListToRedis(){
+    public void givenAList_thenSaveListToRedis() {
         RList<Ledger> ledgerList = client.getList("ledgerList");
         ledgerList.add(new Ledger("ledger"));
 
@@ -139,7 +139,7 @@ public class RedissonIntegrationTest {
     }
 
     @Test
-    public void givenLockSet_thenEnsureCanUnlock(){
+    public void givenLockSet_thenEnsureCanUnlock() {
         RLock lock = client.getLock("lock");
         lock.lock();
         assertTrue(lock.isLocked());
@@ -149,7 +149,7 @@ public class RedissonIntegrationTest {
     }
 
     @Test
-    public void givenMultipleLocksSet_thenEnsureAllCanUnlock(){
+    public void givenMultipleLocksSet_thenEnsureAllCanUnlock() {
         RedissonClient clientInstance1 = Redisson.create();
         RedissonClient clientInstance2 = Redisson.create();
         RedissonClient clientInstance3 = Redisson.create();
@@ -167,7 +167,7 @@ public class RedissonIntegrationTest {
     }
 
     @Test
-    public void givenRemoteServiceMethodRegistered_thenInvokeMethod(){
+    public void givenRemoteServiceMethodRegistered_thenInvokeMethod() {
         RRemoteService remoteService = client.getRemoteService();
         LedgerServiceImpl ledgerServiceImpl = new LedgerServiceImpl();
 
@@ -183,7 +183,7 @@ public class RedissonIntegrationTest {
     }
 
     @Test
-    public void givenLiveObjectPersisted_thenGetLiveObject(){
+    public void givenLiveObjectPersisted_thenGetLiveObject() {
         RLiveObjectService service = client.getLiveObjectService();
 
         LedgerLiveObject ledger = new LedgerLiveObject();
@@ -192,13 +192,13 @@ public class RedissonIntegrationTest {
         ledger = service.persist(ledger);
 
         LedgerLiveObject returnLedger
-          = service.get(LedgerLiveObject.class, "ledger1");
+                = service.get(LedgerLiveObject.class, "ledger1");
 
         assertTrue(ledger.getName().equals(returnLedger.getName()));
     }
 
     @Test
-    public void givenMultipleOperations_thenDoAllAtomically(){
+    public void givenMultipleOperations_thenDoAllAtomically() {
         RBatch batch = client.createBatch();
         batch.getMap("ledgerMap").fastPutAsync("1", "2");
         batch.getMap("ledgerMap").putAsync("2", "5");
@@ -210,7 +210,7 @@ public class RedissonIntegrationTest {
     }
 
     @Test
-    public void givenLUAScript_thenExecuteScriptOnRedis(){
+    public void givenLUAScript_thenExecuteScriptOnRedis() {
         client.getBucket("foo").set("bar");
         String result = client.getScript().eval(RScript.Mode.READ_ONLY,
                 "return redis.call('get', 'foo')", RScript.ReturnType.VALUE);
@@ -219,7 +219,7 @@ public class RedissonIntegrationTest {
     }
 
     @Test
-    public void givenLowLevelRedisCommands_thenExecuteLowLevelCommandsOnRedis(){
+    public void givenLowLevelRedisCommands_thenExecuteLowLevelCommandsOnRedis() {
         RedisClient client = new RedisClient("localhost", 6379);
         RedisConnection conn = client.connect();
         conn.sync(StringCodec.INSTANCE, RedisCommands.SET, "test", 0);

@@ -83,7 +83,7 @@ public class JavaFolderSizeUnitTest {
         final File folder = new File(path);
         final long size = getFolderSize(folder);
 
-        final String[] units = new String[] { "B", "KB", "MB", "GB", "TB" };
+        final String[] units = new String[]{"B", "KB", "MB", "GB", "TB"};
         final int unitIndex = (int) (Math.log10(size) / 3);
         final double unitValue = 1 << (unitIndex * 10);
 

@@ -22,7 +22,7 @@ public class UserProfile {
     public void setProfileId(long profileId) {
         this.profileId = profileId;
     }
-    
+
     public User getUser() {
         return user;
     }
@@ -30,5 +30,5 @@ public class UserProfile {
     public void setUser(User user) {
         this.user = user;
     }
-    
+
 }

@@ -49,7 +49,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
-        
+
         <!-- Spring HATEOAS -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -96,5 +96,5 @@
         <xstream.version>1.4.11.1</xstream.version>
         <modelmapper.version>2.3.5</modelmapper.version>
     </properties>
-    
+
 </project>

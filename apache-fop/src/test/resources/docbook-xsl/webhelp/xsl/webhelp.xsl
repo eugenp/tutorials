@@ -3,20 +3,20 @@
                 xmlns:doc="http://nwalsh.com/xsl/documentation/1.0"
                 xmlns:exsl="http://exslt.org/common"
                 xmlns:set="http://exslt.org/sets"
-		version="1.0"
+                version="1.0"
                 exclude-result-prefixes="doc exsl set">
 
-<!-- ********************************************************************
-     $Id$
-     ******************************************************************** 
+    <!-- ********************************************************************
+         $Id$
+         ********************************************************************
 
-     This file is part customization layer on top of the XSL DocBook
-     Stylesheet distribution that generates webhelp output.
+         This file is part customization layer on top of the XSL DocBook
+         Stylesheet distribution that generates webhelp output.
 
-     ******************************************************************** -->
+         ******************************************************************** -->
 
-<xsl:import href="../../xhtml/chunk.xsl"/>
-<xsl:include href="webhelp-common.xsl"/>
-<xsl:include href="titlepage.templates.xsl"/>
+    <xsl:import href="../../xhtml/chunk.xsl"/>
+    <xsl:include href="webhelp-common.xsl"/>
+    <xsl:include href="titlepage.templates.xsl"/>
 
 </xsl:stylesheet>

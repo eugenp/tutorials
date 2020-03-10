@@ -72,7 +72,7 @@ class SqlSelectBuilder {
         }
         if (this.columns.isNotEmpty()) {
             throw IllegalStateException("Detected an attempt to re-define columns to fetch. Current columns list: "
-                                        + "${this.columns}, new columns list: $columns")
+                    + "${this.columns}, new columns list: $columns")
         }
         this.columns.addAll(columns)
     }

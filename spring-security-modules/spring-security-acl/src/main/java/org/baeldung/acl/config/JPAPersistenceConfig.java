@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "org.baeldung.acl.persistence.dao")
 @PropertySource("classpath:org.baeldung.acl.datasource.properties")
-@EntityScan(basePackages={ "org.baeldung.acl.persistence.entity" })
+@EntityScan(basePackages = {"org.baeldung.acl.persistence.entity"})
 public class JPAPersistenceConfig {
-    
+
 }

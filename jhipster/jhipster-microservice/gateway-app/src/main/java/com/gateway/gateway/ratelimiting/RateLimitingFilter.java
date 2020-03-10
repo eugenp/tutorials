@@ -59,7 +59,7 @@ public class RateLimitingFilter extends ZuulFilter {
         // check current rate limit
         // default limit per user is 100,000 API calls per hour
         Long count = rateLimitingRepository.getCounter(id, TIME_PERIOD, date);
-        log.debug("Rate limiting for user {} at {} - {}",  id, date, count);
+        log.debug("Rate limiting for user {} at {} - {}", id, date, count);
         if (count > rateLimit) {
             apiLimitExceeded();
         } else {
@@ -86,7 +86,7 @@ public class RateLimitingFilter extends ZuulFilter {
         if (login != null) {
             return login;
         } else {
-          return httpServletRequest.getRemoteAddr();
+            return httpServletRequest.getRemoteAddr();
         }
     }
 

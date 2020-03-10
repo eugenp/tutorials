@@ -9,7 +9,8 @@ import javax.validation.constraints.NotNull;
 @Validated
 public interface OrderService {
 
-    @NotNull Iterable<Order> getAllOrders();
+    @NotNull
+    Iterable<Order> getAllOrders();
 
     Order create(@NotNull(message = "The order cannot be null.") @Valid Order order);
 

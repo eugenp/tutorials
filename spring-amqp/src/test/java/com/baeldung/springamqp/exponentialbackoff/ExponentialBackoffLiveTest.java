@@ -11,12 +11,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * This live test requires:
- * 
+ * <p>
  * - A running RabbitMQ instance on localhost (e.g. docker run -p 5672:5672 -p 15672:15672 --name rabbit rabbitmq:3-management)
- * 
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { RabbitConfiguration.class })
+@ContextConfiguration(classes = {RabbitConfiguration.class})
 public class ExponentialBackoffLiveTest {
 
     @Autowired

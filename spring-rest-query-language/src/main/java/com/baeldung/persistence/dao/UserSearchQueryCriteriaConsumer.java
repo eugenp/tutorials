@@ -8,17 +8,17 @@ import javax.persistence.criteria.Root;
 
 import com.baeldung.web.util.SearchCriteria;
 
-public class UserSearchQueryCriteriaConsumer implements Consumer<SearchCriteria>{
+public class UserSearchQueryCriteriaConsumer implements Consumer<SearchCriteria> {
 
     private Predicate predicate;
     private CriteriaBuilder builder;
     private Root r;
-    
+
     public UserSearchQueryCriteriaConsumer(Predicate predicate, CriteriaBuilder builder, Root r) {
         super();
         this.predicate = predicate;
         this.builder = builder;
-        this.r= r;
+        this.r = r;
     }
 
     @Override

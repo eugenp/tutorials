@@ -12,7 +12,7 @@ import org.apache.storm.topology.base.BaseWindowedBolt;
 
 public class TopologyRunner {
     public static void main(String[] args) {
-       runTopology();
+        runTopology();
     }
 
     public static void runTopology() {
@@ -21,9 +21,9 @@ public class TopologyRunner {
         builder.setSpout("randomNumberSpout", new RandomNumberSpout());
         builder.setBolt("filteringBolt", new FilteringBolt()).shuffleGrouping("randomNumberSpout");
         builder.setBolt("aggregatingBolt", new AggregatingBolt()
-          .withTimestampField("timestamp")
-          .withLag(BaseWindowedBolt.Duration.seconds(1))
-          .withWindow(BaseWindowedBolt.Duration.seconds(5))).shuffleGrouping("filteringBolt");
+                .withTimestampField("timestamp")
+                .withLag(BaseWindowedBolt.Duration.seconds(1))
+                .withWindow(BaseWindowedBolt.Duration.seconds(5))).shuffleGrouping("filteringBolt");
         builder.setBolt("fileBolt", new FileWritingBolt(filePath)).shuffleGrouping("aggregatingBolt");
 
         Config config = new Config();

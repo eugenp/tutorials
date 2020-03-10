@@ -16,7 +16,7 @@ import spock.lang.Title
 @Narrative("The Specification of the behaviour of the WebController. It can greet a person, change the name and reset it to 'world'")
 @SpringBootTest
 @AutoConfigureMockMvc
-@EnableAutoConfiguration(exclude= SecurityAutoConfiguration.class)
+@EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
 class WebControllerTest extends Specification {
 
     @Autowired

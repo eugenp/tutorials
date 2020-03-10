@@ -67,8 +67,8 @@ public class SearchArrayUnitTest {
     }
 
     private boolean searchList(String[] strings, String searchString) {
-      return Arrays.asList(strings).contains(searchString);
-  }
+        return Arrays.asList(strings).contains(searchString);
+    }
 
     private boolean searchSet(String[] strings, String searchString) {
         Set<String> set = new HashSet<>(Arrays.asList(strings));
@@ -78,7 +78,7 @@ public class SearchArrayUnitTest {
     private boolean searchLoop(String[] strings, String searchString) {
         for (String s : strings) {
             if (s.equals(searchString))
-            return true;
+                return true;
         }
         return false;
     }
@@ -86,8 +86,7 @@ public class SearchArrayUnitTest {
     private static String[] seedArray(int length) {
         String[] strings = new String[length];
         Random random = new Random();
-        for (int i = 0; i < length; i++)
-        {
+        for (int i = 0; i < length; i++) {
             strings[i] = String.valueOf(random.nextInt());
         }
         return strings;

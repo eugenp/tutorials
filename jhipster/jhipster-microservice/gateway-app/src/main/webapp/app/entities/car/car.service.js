@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
     angular
         .module('gatewayApp')
@@ -6,11 +6,11 @@
 
     Car.$inject = ['$resource'];
 
-    function Car ($resource) {
-        var resourceUrl =  'carapp/' + 'api/cars/:id';
+    function Car($resource) {
+        var resourceUrl = 'carapp/' + 'api/cars/:id';
 
         return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true},
+            'query': {method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
@@ -20,7 +20,7 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': {method: 'PUT'}
         });
     }
 })();

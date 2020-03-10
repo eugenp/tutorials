@@ -4,7 +4,7 @@ spring:
     port: 5672
     username: guest
     password: guest
-    
+
 destinations:
   queues:
     NYSE:
@@ -13,8 +13,8 @@ destinations:
     IBOV:
       exchange: ibov
       routing-key: IBOV
-      
-      
+
+
   topics:
     weather:
       exchange: alerts

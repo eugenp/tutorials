@@ -7,11 +7,11 @@ package com.baeldung.scala
  *
  */
 object ControlStructuresDemo {
-  def gcd(x : Int, y : Int) : Int = {
+  def gcd(x: Int, y: Int): Int = {
     if (y == 0) x else gcd(y, x % y)
   }
 
-  def gcdIter(x : Int, y : Int) : Int = {
+  def gcdIter(x: Int, y: Int): Int = {
     var a = x
     var b = y
     while (b > 0) {
@@ -23,7 +23,7 @@ object ControlStructuresDemo {
     a
   }
 
-  def rangeSum(a : Int, b : Int) = {
+  def rangeSum(a: Int, b: Int) = {
     var sum = 0;
     for (i <- a to b) {
       sum += i
@@ -31,7 +31,7 @@ object ControlStructuresDemo {
     sum
   }
 
-  def factorial(a : Int) : Int = {
+  def factorial(a: Int): Int = {
     var result = 1;
     var i = 1;
     do {

@@ -9,7 +9,8 @@ import javax.persistence.PersistenceContext;
 @ApplicationScoped
 public class SecondaryEntityManagerProducer {
 
-    @PersistenceContext(unitName = "secondary") private EntityManager entityManager;
+    @PersistenceContext(unitName = "secondary")
+    private EntityManager entityManager;
 
     @Produces
     @RequestScoped

@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component;
 public class FunctionImpl {
 
     @GemfireFunction
-    public void greeting(String message){
-        System.out.println("Message "+message);
+    public void greeting(String message) {
+        System.out.println("Message " + message);
     }
 
     @GemfireFunction
-    public String sayHello(String message){
-        return "Hello "+message;
+    public String sayHello(String message) {
+        return "Hello " + message;
     }
 }

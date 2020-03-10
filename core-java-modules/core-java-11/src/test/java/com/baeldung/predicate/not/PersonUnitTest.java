@@ -17,17 +17,17 @@ class PersonUnitTest {
     @BeforeEach
     void preparePeople() {
         people = Arrays.asList(
-          new Person(1),
-          new Person(18),
-          new Person(2)
+                new Person(1),
+                new Person(18),
+                new Person(2)
         );
     }
 
     @Test
     void givenPeople_whenFilterIsAdult_thenOneResult() {
         List<Person> adults = people.stream()
-          .filter(Person::isAdult)
-          .collect(Collectors.toList());
+                .filter(Person::isAdult)
+                .collect(Collectors.toList());
 
         assertThat(adults).size().isEqualTo(1);
     }
@@ -35,8 +35,8 @@ class PersonUnitTest {
     @Test
     void givenPeople_whenFilterIsAdultNegated_thenTwoResults() {
         List<Person> nonAdults = people.stream()
-          .filter(person -> !person.isAdult())
-          .collect(Collectors.toList());
+                .filter(person -> !person.isAdult())
+                .collect(Collectors.toList());
 
         assertThat(nonAdults).size().isEqualTo(2);
     }
@@ -44,8 +44,8 @@ class PersonUnitTest {
     @Test
     void givenPeople_whenFilterIsNotAdult_thenTwoResults() {
         List<Person> nonAdults = people.stream()
-          .filter(Person::isNotAdult)
-          .collect(Collectors.toList());
+                .filter(Person::isNotAdult)
+                .collect(Collectors.toList());
 
         assertThat(nonAdults).size().isEqualTo(2);
     }
@@ -53,8 +53,8 @@ class PersonUnitTest {
     @Test
     void givenPeople_whenFilterNotIsAdult_thenTwoResults() {
         List<Person> nonAdults = people.stream()
-          .filter(not(Person::isAdult))
-          .collect(Collectors.toList());
+                .filter(not(Person::isAdult))
+                .collect(Collectors.toList());
 
         assertThat(nonAdults).size().isEqualTo(2);
     }

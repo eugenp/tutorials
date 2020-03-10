@@ -45,7 +45,7 @@ public class RxAggregateOperatorsUnitTest {
 
         // when
         Observable<Integer> sourceObservable = Observable.from(lettersList)
-          .count();
+                .count();
         sourceObservable.subscribe(subscriber);
 
         // then
@@ -64,7 +64,7 @@ public class RxAggregateOperatorsUnitTest {
 
         // when
         Observable<String> reduceObservable = Observable.from(list)
-          .reduce((letter1, letter2) -> letter2 + letter1);
+                .reduce((letter1, letter2) -> letter2 + letter1);
         reduceObservable.subscribe(subscriber);
 
         // then
@@ -83,7 +83,7 @@ public class RxAggregateOperatorsUnitTest {
 
         // when
         Observable<HashSet<String>> reduceListObservable = Observable.from(list)
-          .collect(HashSet::new, HashSet::add);
+                .collect(HashSet::new, HashSet::add);
         reduceListObservable.subscribe(subscriber);
 
         // then
@@ -148,15 +148,15 @@ public class RxAggregateOperatorsUnitTest {
     public void givenObservable_whenUsingToMap_thenObtainedAMap() {
         // given
         Observable<Book> bookObservable = Observable
-          .just(
-            new Book("The North Water", 2016),
-            new Book("Origin", 2017),
-            new Book("Sleeping Beauties", 2017));
+                .just(
+                        new Book("The North Water", 2016),
+                        new Book("Origin", 2017),
+                        new Book("Sleeping Beauties", 2017));
         TestSubscriber<Map> subscriber = TestSubscriber.create();
 
         // when
         Observable<Map<String, Integer>> mapObservable = bookObservable
-          .toMap(Book::getTitle, Book::getYear, HashMap::new);
+                .toMap(Book::getTitle, Book::getYear, HashMap::new);
 
         mapObservable.subscribe(subscriber);
 
@@ -177,15 +177,15 @@ public class RxAggregateOperatorsUnitTest {
     public void givenObservable_whenUsingToMultiMap_thenObtainedAMultiMap() {
         // given
         Observable<Book> bookObservable = Observable
-          .just(
-            new Book("The North Water", 2016),
-            new Book("Origin", 2017),
-            new Book("Sleeping Beauties", 2017));
+                .just(
+                        new Book("The North Water", 2016),
+                        new Book("Origin", 2017),
+                        new Book("Sleeping Beauties", 2017));
         TestSubscriber<Map> subscriber = TestSubscriber.create();
 
         // when
         Observable multiMapObservable = bookObservable
-          .toMultimap(Book::getYear, Book::getTitle, () -> new HashMap<>(), (key) -> new ArrayList<>());
+                .toMultimap(Book::getYear, Book::getTitle, () -> new HashMap<>(), (key) -> new ArrayList<>());
 
         multiMapObservable.subscribe(subscriber);
 

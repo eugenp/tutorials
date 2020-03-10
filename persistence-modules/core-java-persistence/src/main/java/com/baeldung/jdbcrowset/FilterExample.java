@@ -8,15 +8,15 @@ import javax.sql.RowSet;
 import javax.sql.rowset.Predicate;
 
 public class FilterExample implements Predicate {
-    
+
     private Pattern pattern;
-    
+
     public FilterExample(String regexQuery) {
         if (regexQuery != null && !regexQuery.isEmpty()) {
             pattern = Pattern.compile(regexQuery);
         }
     }
- 
+
     public boolean evaluate(RowSet rs) {
         try {
             if (!rs.isAfterLast()) {
@@ -33,11 +33,11 @@ public class FilterExample implements Predicate {
             return false;
         }
     }
- 
+
     public boolean evaluate(Object value, int column) throws SQLException {
         throw new UnsupportedOperationException("This operation is unsupported.");
     }
- 
+
     public boolean evaluate(Object value, String columnName)
             throws SQLException {
         throw new UnsupportedOperationException("This operation is unsupported.");

@@ -1,7 +1,7 @@
 package com.baeldug.groovyconfig;
 
 public class JavaPersonBean {
-    
+
     public String jj;
 
     private String firstName;

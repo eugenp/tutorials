@@ -1,7 +1,7 @@
 package com.baeldung.contexts;
 
 public class Greeting {
-    
+
     private String message;
 
     public String getMessage() {

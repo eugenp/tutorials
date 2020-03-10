@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { BookstoreSharedModule } from 'app/shared';
+import {BookstoreSharedModule} from 'app/shared';
 
 import {
     PasswordStrengthBarComponent,
@@ -27,4 +27,5 @@ import {
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class BookstoreAccountModule {}
+export class BookstoreAccountModule {
+}

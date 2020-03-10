@@ -16,6 +16,6 @@ public class UseDateTimeFormatter {
 
     public String formatWithStyleAndLocale(LocalDateTime localDateTime, FormatStyle formatStyle, Locale locale) {
         return localDateTime.format(DateTimeFormatter.ofLocalizedDateTime(formatStyle)
-            .withLocale(locale));
+                .withLocale(locale));
     }
 }

@@ -78,11 +78,11 @@ public class WebConfigurer implements ServletContextInitializer, WebServerFactor
          * for more information.
          */
         if (jHipsterProperties.getHttp().getVersion().equals(JHipsterProperties.Http.Version.V_2_0) &&
-            server instanceof UndertowServletWebServerFactory) {
+                server instanceof UndertowServletWebServerFactory) {
 
             ((UndertowServletWebServerFactory) server)
-                .addBuilderCustomizers(builder ->
-                    builder.setServerOption(UndertowOptions.ENABLE_HTTP2, true));
+                    .addBuilderCustomizers(builder ->
+                            builder.setServerOption(UndertowOptions.ENABLE_HTTP2, true));
         }
     }
 
@@ -137,8 +137,8 @@ public class WebConfigurer implements ServletContextInitializer, WebServerFactor
                                               EnumSet<DispatcherType> disps) {
         log.debug("Registering Caching HTTP Headers Filter");
         FilterRegistration.Dynamic cachingHttpHeadersFilter =
-            servletContext.addFilter("cachingHttpHeadersFilter",
-                new CachingHttpHeadersFilter(jHipsterProperties));
+                servletContext.addFilter("cachingHttpHeadersFilter",
+                        new CachingHttpHeadersFilter(jHipsterProperties));
 
         cachingHttpHeadersFilter.addMappingForUrlPatterns(disps, true, "/i18n/*");
         cachingHttpHeadersFilter.addMappingForUrlPatterns(disps, true, "/content/*");

@@ -1,9 +1,11 @@
 package com.baeldung.array.operations;
 
 import java.util.Arrays;
+
 import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertArrayEquals;
 
@@ -16,10 +18,10 @@ public class ArrayOperationsUnitTest {
 
     @BeforeEach
     public void setupDefaults() {
-        defaultObjectArray = new Integer[] { 3, 5, 2, 5, 14, 4 };
-        defaultIntArray = new int[] { 3, 5, 2, 5, 14, 4 };
-        defaultJaggedObjectArray = new Integer[][] { { 1, 3 }, { 5 }, {} };
-        defaultJaggedIntArray = new int[][] { { 1, 3 }, { 5 }, {} };
+        defaultObjectArray = new Integer[]{3, 5, 2, 5, 14, 4};
+        defaultIntArray = new int[]{3, 5, 2, 5, 14, 4};
+        defaultJaggedObjectArray = new Integer[][]{{1, 3}, {5}, {}};
+        defaultJaggedIntArray = new int[][]{{1, 3}, {5}, {}};
     }
 
     // Get the first and last item of an array
@@ -57,7 +59,7 @@ public class ArrayOperationsUnitTest {
         Integer[] output = ArrayOperations.appendObject(defaultObjectArray, 7);
 
         assertThat(output).endsWith(4, 7)
-            .hasSize(7);
+                .hasSize(7);
     }
 
     @Test
@@ -66,16 +68,16 @@ public class ArrayOperationsUnitTest {
         int[] outputUsingUtils = ArrayOperations.appendIntWithUtils(defaultIntArray, 7);
 
         assertThat(output).endsWith(4, 7)
-            .hasSize(7);
+                .hasSize(7);
         assertThat(outputUsingUtils).endsWith(4, 7)
-            .hasSize(7);
+                .hasSize(7);
     }
 
     // Compare two arrays to check if they have the same elements
     @Test
     public void whenCompareObjectArrays_thenReturnBoolean() {
-        Integer[] array2 = { 8, 7, 6 };
-        Integer[] sameArray = { 3, 5, 2, 5, 14, 4 };
+        Integer[] array2 = {8, 7, 6};
+        Integer[] sameArray = {3, 5, 2, 5, 14, 4};
         boolean output = ArrayOperations.compareObjectArrays(defaultObjectArray, array2);
         boolean output2 = ArrayOperations.compareObjectArrays(defaultObjectArray, sameArray);
 
@@ -85,8 +87,8 @@ public class ArrayOperationsUnitTest {
 
     @Test
     public void whenCompareIntArrays_thenReturnBoolean() {
-        int[] array2 = { 8, 7, 6 };
-        int[] sameArray = { 3, 5, 2, 5, 14, 4 };
+        int[] array2 = {8, 7, 6};
+        int[] sameArray = {3, 5, 2, 5, 14, 4};
         boolean output = ArrayOperations.compareIntArrays(defaultIntArray, array2);
         boolean output2 = ArrayOperations.compareIntArrays(defaultIntArray, sameArray);
 
@@ -97,8 +99,8 @@ public class ArrayOperationsUnitTest {
     // Deep compare
     @Test
     public void whenDeepCompareObjectArrays_thenReturnBoolean() {
-        Integer[][] sameArray = { { 1, 3 }, { 5 }, {} };
-        Integer[][] array2 = { { 1, 3 }, { 5 }, { 3 } };
+        Integer[][] sameArray = {{1, 3}, {5}, {}};
+        Integer[][] array2 = {{1, 3}, {5}, {3}};
         boolean output = ArrayOperations.deepCompareObjectArrayUsingArrays(defaultJaggedObjectArray, array2);
         boolean output2 = ArrayOperations.deepCompareObjectArrayUsingArrays(defaultJaggedObjectArray, sameArray);
         // Because arrays are Objects, we could wrongly use the non-deep approach
@@ -112,8 +114,8 @@ public class ArrayOperationsUnitTest {
 
     @Test
     public void whenDeepCompareIntArrays_thenReturnBoolean() {
-        int[][] sameArray = { { 1, 3 }, { 5 }, {} };
-        int[][] array2 = { { 1, 3 }, { 5 }, { 3 } };
+        int[][] sameArray = {{1, 3}, {5}, {}};
+        int[][] array2 = {{1, 3}, {5}, {3}};
         boolean output = ArrayOperations.deepCompareIntArrayUsingArrays(defaultJaggedIntArray, array2);
         boolean output2 = ArrayOperations.deepCompareIntArrayUsingArrays(defaultJaggedIntArray, sameArray);
 
@@ -126,9 +128,9 @@ public class ArrayOperationsUnitTest {
     public void whenIsEmptyObjectArray_thenReturnBoolean() {
         Integer[] array2 = {};
         Integer[] array3 = null;
-        Integer[] array4 = { null, null, null };
-        Integer[] array5 = { null };
-        Integer[][] array6 = { {}, {}, {} };
+        Integer[] array4 = {null, null, null};
+        Integer[] array5 = {null};
+        Integer[][] array6 = {{}, {}, {}};
         boolean output = ArrayOperations.isEmptyObjectArrayUsingUtils(defaultObjectArray);
         boolean output2 = ArrayOperations.isEmptyObjectArrayUsingUtils(array2);
         boolean output3 = ArrayOperations.isEmptyObjectArrayUsingUtils(array3);
@@ -161,8 +163,8 @@ public class ArrayOperationsUnitTest {
         Integer[] output = ArrayOperations.removeDuplicateObjects(defaultObjectArray);
 
         assertThat(output).containsOnlyOnce(5)
-            .hasSize(5)
-            .doesNotHaveDuplicates();
+                .hasSize(5)
+                .doesNotHaveDuplicates();
     }
 
     @Test
@@ -170,29 +172,29 @@ public class ArrayOperationsUnitTest {
         int[] output = ArrayOperations.removeDuplicateInts(defaultIntArray);
 
         assertThat(output).containsOnlyOnce(5)
-            .hasSize(5)
-            .doesNotHaveDuplicates();
+                .hasSize(5)
+                .doesNotHaveDuplicates();
     }
 
     // Remove Duplicates Preserving order
     @Test
     public void whenRemoveDuplicatePreservingOrderObjectArray_thenReturnArrayWithNoDuplicates() {
-        Integer[] array2 = { 3, 5, 2, 14, 4 };
+        Integer[] array2 = {3, 5, 2, 14, 4};
         Integer[] output = ArrayOperations.removeDuplicateWithOrderObjectArray(defaultObjectArray);
 
         assertThat(output).containsOnlyOnce(5)
-            .hasSize(5)
-            .containsExactly(array2);
+                .hasSize(5)
+                .containsExactly(array2);
     }
 
     @Test
     public void whenRemoveDuplicatePreservingOrderIntArray_thenReturnArrayWithNoDuplicates() {
-        int[] array2 = { 3, 5, 2, 14, 4 };
+        int[] array2 = {3, 5, 2, 14, 4};
         int[] output = ArrayOperations.removeDuplicateWithOrderIntArray(defaultIntArray);
 
         assertThat(output).containsOnlyOnce(5)
-            .hasSize(5)
-            .containsExactly(array2);
+                .hasSize(5)
+                .containsExactly(array2);
     }
 
     // Print
@@ -245,7 +247,7 @@ public class ArrayOperationsUnitTest {
     // Map values
     @Test
     public void whenMapMultiplyingObjectArray_thenReturnMultipliedArray() {
-        Integer[] multipliedExpectedArray = new Integer[] { 6, 10, 4, 10, 28, 8 };
+        Integer[] multipliedExpectedArray = new Integer[]{6, 10, 4, 10, 28, 8};
         Integer[] output = ArrayOperations.mapObjectArray(defaultObjectArray, value -> value * 2, Integer.class);
 
         assertThat(output).containsExactly(multipliedExpectedArray);
@@ -253,7 +255,7 @@ public class ArrayOperationsUnitTest {
 
     @Test
     public void whenMapDividingObjectArray_thenReturnDividedArray() {
-        Double[] multipliedExpectedArray = new Double[] { 1.5, 2.5, 1.0, 2.5, 7.0, 2.0 };
+        Double[] multipliedExpectedArray = new Double[]{1.5, 2.5, 1.0, 2.5, 7.0, 2.0};
         Double[] output = ArrayOperations.mapObjectArray(defaultObjectArray, value -> value / 2.0, Double.class);
 
         assertThat(output).containsExactly(multipliedExpectedArray);
@@ -261,7 +263,7 @@ public class ArrayOperationsUnitTest {
 
     @Test
     public void whenMapIntArrayToString_thenReturnArray() {
-        String[] expectedArray = new String[] { "Value: 3", "Value: 5", "Value: 2", "Value: 5", "Value: 14", "Value: 4" };
+        String[] expectedArray = new String[]{"Value: 3", "Value: 5", "Value: 2", "Value: 5", "Value: 14", "Value: 4"};
         String[] output = ArrayOperations.mapIntArrayToString(defaultIntArray);
 
         assertThat(output).containsExactly(expectedArray);
@@ -270,7 +272,7 @@ public class ArrayOperationsUnitTest {
     // Filter values
     @Test
     public void whenFilterObjectArray_thenReturnFilteredArray() {
-        Integer[] multipliedExpectedArray = new Integer[] { 2, 14, 4 };
+        Integer[] multipliedExpectedArray = new Integer[]{2, 14, 4};
         Integer[] output = ArrayOperations.filterObjectArray(defaultObjectArray, value -> value % 2 == 0);
 
         assertThat(output).containsExactly(multipliedExpectedArray);
@@ -278,7 +280,7 @@ public class ArrayOperationsUnitTest {
 
     @Test
     public void whenFilterIntArray_thenReturnFilteredArray() {
-        int[] expectedArray = new int[] { 2, 14, 4 };
+        int[] expectedArray = new int[]{2, 14, 4};
         int[] output = ArrayOperations.filterIntArray(defaultIntArray, value -> (int) value % 2 == 0);
 
         assertThat(output).containsExactly(expectedArray);
@@ -287,7 +289,7 @@ public class ArrayOperationsUnitTest {
     // Insert between
     @Test
     public void whenInsertBetweenIntArrayToString_thenReturnNewArray() {
-        int[] expectedArray = { 3, 5, 77, 88, 2, 5, 14, 4 };
+        int[] expectedArray = {3, 5, 77, 88, 2, 5, 14, 4};
         int[] output = ArrayOperations.insertBetweenIntArray(defaultIntArray, 77, 88);
 
         assertThat(output).containsExactly(expectedArray);
@@ -295,7 +297,7 @@ public class ArrayOperationsUnitTest {
 
     @Test
     public void whenInsertBetweenObjectArrayToString_thenReturnNewArray() {
-        Integer[] expectedArray = { 3, 5, 77, 99, 2, 5, 14, 4 };
+        Integer[] expectedArray = {3, 5, 77, 99, 2, 5, 14, 4};
         Integer[] output = ArrayOperations.insertBetweenObjectArray(defaultObjectArray, 77, 99);
 
         assertThat(output).containsExactly(expectedArray);
@@ -357,18 +359,18 @@ public class ArrayOperationsUnitTest {
 
     @Test
     public void givenSourceArrayAndElement_whenAddElementUsingPureJavaIsInvoked_thenNewElementMustBeAdded() {
-        Integer[] sourceArray = { 1, 2, 3, 4 };
+        Integer[] sourceArray = {1, 2, 3, 4};
         int elementToAdd = 5;
 
         Integer[] destArray = ArrayOperations.addElementUsingPureJava(sourceArray, elementToAdd);
 
-        Integer[] expectedArray = { 1, 2, 3, 4, 5 };
+        Integer[] expectedArray = {1, 2, 3, 4, 5};
         assertArrayEquals(expectedArray, destArray);
     }
 
     @Test
     public void whenInsertAnElementAtAGivenIndexCalled_thenShiftTheFollowingElementsAndInsertTheElementInArray() {
-        int[] expectedArray = { 1, 4, 2, 3, 0 };
+        int[] expectedArray = {1, 4, 2, 3, 0};
         int[] anArray = new int[4];
         anArray[0] = 1;
         anArray[1] = 2;

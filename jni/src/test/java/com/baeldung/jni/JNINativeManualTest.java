@@ -8,25 +8,25 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class JNINativeManualTest {
-    
+
     @Before
     public void setup() {
         System.loadLibrary("native");
     }
-    
+
     @Test
     public void whenNativeHelloWorld_thenOutputIsAsExpected() {
         HelloWorldJNI helloWorld = new HelloWorldJNI();
         String helloFromNative = helloWorld.sayHello();
         assertTrue(!helloFromNative.isEmpty() && helloFromNative.equals("Hello from C++ !!"));
     }
-    
+
     @Test
     public void whenSumNative_thenResultIsArithmeticallyCorrect() {
         ExampleParametersJNI parametersNativeMethods = new ExampleParametersJNI();
         assertTrue(parametersNativeMethods.sumIntegers(200, 400) == 600L);
     }
-    
+
     @Test
     public void whenSayingNativeHelloToMe_thenResultIsAsExpected() {
         ExampleParametersJNI parametersNativeMethods = new ExampleParametersJNI();
@@ -43,7 +43,7 @@ public class JNINativeManualTest {
         assertEquals(userFromNative.name, name);
         assertTrue(userFromNative.balance == balance);
     }
-    
+
     @Test
     public void whenNativeCallingObjectMethod_thenResultIsAsExpected() {
         String name = "Sergio Ramos";
@@ -54,5 +54,5 @@ public class JNINativeManualTest {
         userData.balance = balance;
         assertEquals(objectsNativeMethods.printUserData(userData), "[name]=" + name + ", [balance]=" + balance);
     }
-    
+
 }

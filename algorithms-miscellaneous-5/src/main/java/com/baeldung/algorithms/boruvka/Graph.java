@@ -21,16 +21,16 @@ public class Graph {
         int edgesFromInput = jsonGraph.getEdges();
         for (int i = 0; i < edgesFromInput; i++) {
             int first = jsonGraph.getEdgeList()
-                .get(i)
-                .getFirst();
+                    .get(i)
+                    .getFirst();
             int second = jsonGraph.getEdgeList()
-                .get(i)
-                .getSecond();
+                    .get(i)
+                    .getSecond();
             int weight = jsonGraph.getEdgeList()
-                .get(i)
-                .getWeight();
+                    .get(i)
+                    .getWeight();
             Edge edge = new Edge(first, second, weight);
-            
+
             trees[first].addEdge(edge);
             trees[second].addEdge(edge);
             edges++;

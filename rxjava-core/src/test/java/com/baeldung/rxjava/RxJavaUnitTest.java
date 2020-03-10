@@ -22,7 +22,7 @@ public class RxJavaUnitTest {
         List<String> letters = Arrays.asList("A", "B", "C", "D", "E");
         List<String> results = new ArrayList<>();
         Observable<String> observable = Observable.from(letters)
-          .zipWith(Observable.range(1, Integer.MAX_VALUE), (string, index) -> index + "-" + string);
+                .zipWith(Observable.range(1, Integer.MAX_VALUE), (string, index) -> index + "-" + string);
 
         // when
         observable.subscribe(results::add);
@@ -40,7 +40,7 @@ public class RxJavaUnitTest {
         TestSubscriber<String> subscriber = new TestSubscriber<>();
 
         Observable<String> observable = Observable.from(letters)
-          .zipWith(Observable.range(1, Integer.MAX_VALUE), ((string, index) -> index + "-" + string));
+                .zipWith(Observable.range(1, Integer.MAX_VALUE), ((string, index) -> index + "-" + string));
 
         // when
         observable.subscribe(subscriber);
@@ -59,8 +59,8 @@ public class RxJavaUnitTest {
         TestSubscriber<String> subscriber = new TestSubscriber<>();
 
         Observable<String> observable = Observable.from(letters)
-          .zipWith(Observable.range(1, Integer.MAX_VALUE), ((string, index) -> index + "-" + string))
-          .concatWith(Observable.error(new RuntimeException("error in Observable")));
+                .zipWith(Observable.range(1, Integer.MAX_VALUE), ((string, index) -> index + "-" + string))
+                .concatWith(Observable.error(new RuntimeException("error in Observable")));
 
         // when
         observable.subscribe(subscriber);

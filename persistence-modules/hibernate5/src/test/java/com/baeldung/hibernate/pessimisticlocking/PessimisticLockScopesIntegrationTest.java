@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PessimisticLockScopesIntegrationTest {
-    
+
     private static SessionFactory sessionFactory;
 
     @Test
@@ -25,14 +25,14 @@ public class PessimisticLockScopesIntegrationTest {
         PessimisticLockingEmployee employee = new PessimisticLockingEmployee(1L, "JOHN", "SMITH", new BigDecimal(4.5));
         em.persist(employee);
         em.getTransaction()
-            .commit();
+                .commit();
         em.close();
 
         // NORMAL SCOPE
         EntityManager em2 = getEntityManagerWithOpenTransaction();
         PessimisticLockingEmployee foundEmployee = em2.find(PessimisticLockingEmployee.class, 1L, LockModeType.PESSIMISTIC_WRITE);
         em2.getTransaction()
-            .rollback();
+                .rollback();
 
         // EXTENDED SCOPE
         Map<String, Object> map = new HashMap<>();
@@ -41,7 +41,7 @@ public class PessimisticLockScopesIntegrationTest {
         EntityManager em3 = getEntityManagerWithOpenTransaction();
         foundEmployee = em3.find(PessimisticLockingEmployee.class, 1L, LockModeType.PESSIMISTIC_WRITE, map);
         em3.getTransaction()
-            .rollback();
+                .rollback();
 
         em2.close();
         em3.close();
@@ -54,14 +54,14 @@ public class PessimisticLockScopesIntegrationTest {
         Customer customer = new Customer(1L, "JOE", "DOE", Arrays.asList(address));
         em.persist(customer);
         em.getTransaction()
-            .commit();
+                .commit();
         em.close();
 
         // NORMAL SCOPE
         EntityManager em2 = getEntityManagerWithOpenTransaction();
         Customer foundCustomer = em2.find(Customer.class, 1L, LockModeType.PESSIMISTIC_WRITE);
         em2.getTransaction()
-            .rollback();
+                .rollback();
 
         // EXTENDED SCOPE
         Map<String, Object> map = new HashMap<>();
@@ -70,7 +70,7 @@ public class PessimisticLockScopesIntegrationTest {
         EntityManager em3 = getEntityManagerWithOpenTransaction();
         foundCustomer = em3.find(Customer.class, 1L, LockModeType.PESSIMISTIC_WRITE, map);
         em2.getTransaction()
-            .rollback();
+                .rollback();
 
         em2.close();
         em3.close();
@@ -85,14 +85,14 @@ public class PessimisticLockScopesIntegrationTest {
         em.persist(course);
         em.persist(student);
         em.getTransaction()
-            .commit();
+                .commit();
         em.close();
 
         // NORMAL SCOPE
         EntityManager em2 = getEntityManagerWithOpenTransaction();
         PessimisticLockingCourse foundCourse = em2.find(PessimisticLockingCourse.class, 1L, LockModeType.PESSIMISTIC_WRITE);
         em2.getTransaction()
-            .rollback();
+                .rollback();
 
         // EXTENDED SCOPE
         Map<String, Object> map = new HashMap<>();
@@ -101,7 +101,7 @@ public class PessimisticLockScopesIntegrationTest {
         EntityManager em3 = getEntityManagerWithOpenTransaction();
         foundCourse = em3.find(PessimisticLockingCourse.class, 1L, LockModeType.PESSIMISTIC_WRITE, map);
         em3.getTransaction()
-            .rollback();
+                .rollback();
 
         em2.close();
         em3.close();
@@ -117,7 +117,7 @@ public class PessimisticLockScopesIntegrationTest {
 
         return entityManager;
     }
-    
+
     @AfterClass
     public static void afterTests() {
         sessionFactory.close();

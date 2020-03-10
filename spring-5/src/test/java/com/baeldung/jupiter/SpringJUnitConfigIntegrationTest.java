@@ -10,10 +10,8 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 /**
  * @SpringJUnitConfig(SpringJUnitConfigTest.Config.class) is equivalent to:
- * 
  * @ExtendWith(SpringExtension.class)
  * @ContextConfiguration(classes = SpringJUnitConfigTest.Config.class )
- *
  */
 @SpringJUnitConfig(SpringJUnitConfigIntegrationTest.Config.class)
 public class SpringJUnitConfigIntegrationTest {

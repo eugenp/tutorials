@@ -11,5 +11,5 @@ public class EchoController {
     public String echo(@RequestParam("msg") String msg) {
         return "echoing " + msg;
     }
-    
+
 }

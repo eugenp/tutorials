@@ -24,8 +24,8 @@ class TemporaryDirectoryUnitTest {
         Files.write(numbers, lines);
 
         assertAll(
-            () -> assertTrue("File should exist", Files.exists(numbers)),
-            () -> assertLinesMatch(lines, Files.readAllLines(numbers)));
+                () -> assertTrue("File should exist", Files.exists(numbers)),
+                () -> assertLinesMatch(lines, Files.readAllLines(numbers)));
     }
 
     @TempDir
@@ -39,10 +39,10 @@ class TemporaryDirectoryUnitTest {
         List<String> lines = Arrays.asList("x", "y", "z");
 
         Files.write(letters.toPath(), lines);
-        
+
         assertAll(
-            () -> assertTrue("File should exist", Files.exists(letters.toPath())),
-            () -> assertLinesMatch(lines, Files.readAllLines(letters.toPath())));
+                () -> assertTrue("File should exist", Files.exists(letters.toPath())),
+                () -> assertLinesMatch(lines, Files.readAllLines(letters.toPath())));
     }
 
 }

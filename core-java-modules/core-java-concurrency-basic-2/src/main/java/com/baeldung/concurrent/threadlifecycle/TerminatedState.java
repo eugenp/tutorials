@@ -7,7 +7,7 @@ public class TerminatedState implements Runnable {
         Thread.sleep(1000);
         System.out.println(t1.getState());
     }
-    
+
     @Override
     public void run() {
         // No processing in this block

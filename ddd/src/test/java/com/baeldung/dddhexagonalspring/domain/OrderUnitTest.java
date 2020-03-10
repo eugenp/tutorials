@@ -24,16 +24,16 @@ class OrderUnitTest {
     void shouldAddProduct_thenUpdatePrice() {
         final Order order = OrderProvider.getCreatedOrder();
         final int orderOriginalProductSize = order
-          .getOrderItems()
-          .size();
+                .getOrderItems()
+                .size();
         final BigDecimal orderOriginalPrice = order.getPrice();
         final Product productToAdd = new Product(UUID.randomUUID(), new BigDecimal("20"), "secondProduct");
 
         order.addOrder(productToAdd);
 
         assertEquals(orderOriginalProductSize + 1, order
-          .getOrderItems()
-          .size());
+                .getOrderItems()
+                .size());
         assertEquals(orderOriginalPrice.add(productToAdd.getPrice()), order.getPrice());
     }
 
@@ -51,15 +51,15 @@ class OrderUnitTest {
     void shouldRemoveProduct_thenUpdatePrice() {
         final Order order = OrderProvider.getCreatedOrder();
         final UUID productId = order
-          .getOrderItems()
-          .get(0)
-          .getProductId();
-        
+                .getOrderItems()
+                .get(0)
+                .getProductId();
+
         order.removeOrder(productId);
 
         assertEquals(0, order
-          .getOrderItems()
-          .size());
+                .getOrderItems()
+                .size());
         assertEquals(BigDecimal.ZERO, order.getPrice());
     }
 }

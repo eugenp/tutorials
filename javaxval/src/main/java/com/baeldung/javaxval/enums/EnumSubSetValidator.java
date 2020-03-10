@@ -20,6 +20,6 @@ public abstract class EnumSubSetValidator<T extends Annotation, U> implements Co
         }
 
         return Arrays.asList(subset)
-            .contains(value);
+                .contains(value);
     }
 }

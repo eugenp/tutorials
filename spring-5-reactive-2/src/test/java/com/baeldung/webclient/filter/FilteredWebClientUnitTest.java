@@ -33,12 +33,12 @@ public class FilteredWebClientUnitTest {
 
     @Rule
     public WireMockRule wireMockRule = new WireMockRule(wireMockConfig().dynamicPort()
-        .dynamicHttpsPort());
+            .dynamicHttpsPort());
 
     @Test
     public void whenNoUrlModifyingFilter_thenPathUnchanged() {
         stubFor(get(urlPathEqualTo(PATH)).willReturn(aResponse().withStatus(200)
-            .withBody("done")));
+                .withBody("done")));
 
         WebClient webClient = WebClient.create();
         String actual = sendGetRequest(webClient);
@@ -50,11 +50,11 @@ public class FilteredWebClientUnitTest {
     @Test
     public void whenUrlModifyingFilter_thenPathModified() {
         stubFor(get(urlPathEqualTo(PATH + "/1.0")).willReturn(aResponse().withStatus(200)
-            .withBody("done")));
+                .withBody("done")));
 
         WebClient webClient = WebClient.builder()
-            .filter(urlModifyingFilter("1.0"))
-            .build();
+                .filter(urlModifyingFilter("1.0"))
+                .build();
         String actual = sendGetRequest(webClient);
 
         assertThat(actual).isEqualTo("done");
@@ -64,12 +64,12 @@ public class FilteredWebClientUnitTest {
     @Test
     public void givenCountingFilter_whenGet_thenIncreaseCounter() {
         stubFor(get(urlPathEqualTo(PATH)).willReturn(aResponse().withStatus(200)
-            .withBody("done")));
+                .withBody("done")));
         AtomicInteger counter = new AtomicInteger(10);
 
         WebClient webClient = WebClient.builder()
-            .filter(countingFilter(counter))
-            .build();
+                .filter(countingFilter(counter))
+                .build();
         String actual = sendGetRequest(webClient);
 
         assertThat(actual).isEqualTo("done");
@@ -79,12 +79,12 @@ public class FilteredWebClientUnitTest {
     @Test
     public void givenCountingFilter_whenPost_thenDoNotIncreaseCounter() {
         stubFor(post(urlPathEqualTo(PATH)).willReturn(aResponse().withStatus(200)
-            .withBody("done")));
+                .withBody("done")));
         AtomicInteger counter = new AtomicInteger(10);
 
         WebClient webClient = WebClient.builder()
-            .filter(countingFilter(counter))
-            .build();
+                .filter(countingFilter(counter))
+                .build();
         String actual = sendPostRequest(webClient);
 
         assertThat(actual).isEqualTo("done");
@@ -94,12 +94,12 @@ public class FilteredWebClientUnitTest {
     @Test
     public void testLoggingFilter() throws IOException {
         stubFor(get(urlPathEqualTo(PATH)).willReturn(aResponse().withStatus(200)
-            .withBody("done")));
+                .withBody("done")));
 
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream(); PrintStream ps = new PrintStream(baos);) {
             WebClient webClient = WebClient.builder()
-                .filter(loggingFilter(ps))
-                .build();
+                    .filter(loggingFilter(ps))
+                    .build();
             String actual = sendGetRequest(webClient);
 
             assertThat(actual).isEqualTo("done");
@@ -110,11 +110,11 @@ public class FilteredWebClientUnitTest {
     @Test
     public void testBasicAuthFilter() {
         stubFor(get(urlPathEqualTo(PATH)).willReturn(aResponse().withStatus(200)
-            .withBody("authorized")));
+                .withBody("authorized")));
 
         WebClient webClient = WebClient.builder()
-            .filter(ExchangeFilterFunctions.basicAuthentication("user", "password"))
-            .build();
+                .filter(ExchangeFilterFunctions.basicAuthentication("user", "password"))
+                .build();
         String actual = sendGetRequest(webClient);
 
         assertThat(actual).isEqualTo("authorized");
@@ -123,18 +123,18 @@ public class FilteredWebClientUnitTest {
 
     private String sendGetRequest(WebClient webClient) {
         return webClient.get()
-            .uri(getUrl())
-            .retrieve()
-            .bodyToMono(String.class)
-            .block();
+                .uri(getUrl())
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
     }
 
     private String sendPostRequest(WebClient webClient) {
         return webClient.post()
-            .uri(URI.create(getUrl()))
-            .retrieve()
-            .bodyToMono(String.class)
-            .block();
+                .uri(URI.create(getUrl()))
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
     }
 
     private String getUrl() {

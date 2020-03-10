@@ -34,7 +34,7 @@ public class CustomClassIntegrationTest {
         transaction.commit();
         transaction = session.beginTransaction();
     }
-    
+
     @Test
     public void whenAllManagersAreSelected_ThenObjectGraphIsReturned() {
         Query<DeptEmployee> query = session.createQuery("from com.baeldung.hibernate.entities.DeptEmployee");
@@ -43,7 +43,7 @@ public class CustomClassIntegrationTest {
         assertEquals("John Smith", deptEmployee.getName());
         assertEquals("Sales", deptEmployee.getDepartment().getName());
     }
-    
+
     @Test
     public void whenIndividualPropertiesAreSelected_ThenObjectArrayIsReturned() {
         Query query = session.createQuery("select m.name, m.department.name from com.baeldung.hibernate.entities.DeptEmployee m");
@@ -52,7 +52,7 @@ public class CustomClassIntegrationTest {
         assertEquals("John Smith", manager[0]);
         assertEquals("Sales", manager[1]);
     }
-    
+
     @Test
     public void whenResultConstructorInSelect_ThenListOfResultIsReturned() {
         Query<Result> query = session.createQuery("select new com.baeldung.hibernate.pojo.Result(m.name, m.department.name) "
@@ -62,7 +62,7 @@ public class CustomClassIntegrationTest {
         assertEquals("John Smith", result.getEmployeeName());
         assertEquals("Sales", result.getDepartmentName());
     }
-    
+
     @Test
     public void whenResultTransformerOnQuery_ThenListOfResultIsReturned() {
         Query query = session.createQuery("select m.name as employeeName, m.department.name as departmentName "
@@ -71,7 +71,7 @@ public class CustomClassIntegrationTest {
         List<Result> results = query.list();
         Result result = results.get(0);
         assertEquals("John Smith", result.getEmployeeName());
-        assertEquals("Sales", result.getDepartmentName());   
+        assertEquals("Sales", result.getDepartmentName());
     }
 
 

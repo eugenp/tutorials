@@ -8,7 +8,7 @@ import javax.ejb.Local;
 public interface CountryState {
 
     public List<String> getStates(String country);
-    
+
     public void setStates(String country, List<String> states);
 
 }

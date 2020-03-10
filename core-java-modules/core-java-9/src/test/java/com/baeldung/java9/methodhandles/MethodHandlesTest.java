@@ -135,8 +135,8 @@ public class MethodHandlesTest {
 
         MethodHandle methodHandle = equalsMH.asSpreader(Object[].class, 2);
 
-        assertTrue((boolean) methodHandle.invoke(new Object[] { "java", "java" }));
-        assertFalse((boolean) methodHandle.invoke(new Object[] { "java", "jova" }));
+        assertTrue((boolean) methodHandle.invoke(new Object[]{"java", "java"}));
+        assertFalse((boolean) methodHandle.invoke(new Object[]{"java", "jova"}));
     }
 
     @Test

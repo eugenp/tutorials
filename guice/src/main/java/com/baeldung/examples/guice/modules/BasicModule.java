@@ -9,11 +9,11 @@ import com.baeldung.examples.guice.IMCommunicationMode;
 import com.baeldung.examples.guice.SMSCommunicationMode;
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author baeldung
  */
 public class BasicModule extends AbstractModule {

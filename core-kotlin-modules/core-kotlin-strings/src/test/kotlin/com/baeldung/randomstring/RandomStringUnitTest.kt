@@ -15,7 +15,7 @@ const val STRING_LENGTH = 10
 const val ALPHANUMERIC_REGEX = "[a-zA-Z0-9]+"
 
 class RandomStringUnitTest {
-    private val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+    private val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
 
     @Test
     fun givenAStringLength_whenUsingJava_thenReturnAlphanumericString() {
@@ -54,7 +54,7 @@ class RandomStringUnitTest {
         random.nextBytes(bytes)
 
         var randomString = (0..bytes.size - 1).map { i ->
-            charPool.get((bytes[i] and 0xFF.toByte() and (charPool.size-1).toByte()).toInt())
+            charPool.get((bytes[i] and 0xFF.toByte() and (charPool.size - 1).toByte()).toInt())
         }.joinToString("")
 
         assert(randomString.matches(Regex(ALPHANUMERIC_REGEX)))

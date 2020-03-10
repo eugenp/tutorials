@@ -37,6 +37,7 @@ public class ConditionalBranches {
 
     /**
      * Ternary Operator example.
+     *
      * @see ConditionalBranches#ifElseStatementsExamples()
      */
     public static void ternaryExample() {
@@ -50,18 +51,18 @@ public class ConditionalBranches {
     public static void switchExample() {
         int count = 3;
         switch (count) {
-        case 0:
-            System.out.println("Count is equal to 0");
-            break;
-        case 1:
-            System.out.println("Count is equal to 1");
-            break;
-        case 2:
-            System.out.println("Count is equal to 2");
-            break;
-        default:
-            System.out.println("Count is either negative, or higher than 2");
-            break;
+            case 0:
+                System.out.println("Count is equal to 0");
+                break;
+            case 1:
+                System.out.println("Count is equal to 1");
+                break;
+            case 2:
+                System.out.println("Count is equal to 2");
+                break;
+            default:
+                System.out.println("Count is either negative, or higher than 2");
+                break;
         }
     }
 

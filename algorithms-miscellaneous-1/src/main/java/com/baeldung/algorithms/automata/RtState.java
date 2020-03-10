@@ -14,7 +14,7 @@ public final class RtState implements State {
     public RtState() {
         this(false);
     }
-    
+
     public RtState(final boolean isFinal) {
         this.transitions = new ArrayList<>();
         this.isFinal = isFinal;
@@ -22,11 +22,11 @@ public final class RtState implements State {
 
     public State transit(final CharSequence c) {
         return transitions
-          .stream()
-          .filter(t -> t.isPossible(c))
-          .map(Transition::state)
-          .findAny()
-          .orElseThrow(() -> new IllegalArgumentException("Input not accepted: " + c));
+                .stream()
+                .filter(t -> t.isPossible(c))
+                .map(Transition::state)
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("Input not accepted: " + c));
     }
 
     public boolean isFinal() {

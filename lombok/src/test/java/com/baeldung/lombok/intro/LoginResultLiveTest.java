@@ -12,8 +12,9 @@ public class LoginResultLiveTest {
 
     @Test
     public void givenAnnotatedLoginResult_thenHasConstructorForAllFinalFields()
-    throws MalformedURLException {
-        /* LoginResult loginResult = */ new LoginResult(
+            throws MalformedURLException {
+        /* LoginResult loginResult = */
+        new LoginResult(
                 Instant.now(),
                 "apitoken",
                 Duration.ofHours(1),
@@ -22,7 +23,7 @@ public class LoginResultLiveTest {
 
     @Test
     public void givenAnnotatedLoginResult_thenHasFluentGetters()
-    throws MalformedURLException {
+            throws MalformedURLException {
         Instant loginTs = Instant.now();
         LoginResult loginResult = new LoginResult(
                 loginTs,
@@ -38,7 +39,7 @@ public class LoginResultLiveTest {
 
     @Test
     public void givenAnnotatedLoginResult_whenSameApiToken_thenEqualInstances()
-    throws MalformedURLException {
+            throws MalformedURLException {
         String theSameApiToken = "testapitoken";
 
         LoginResult loginResult1 = new LoginResult(

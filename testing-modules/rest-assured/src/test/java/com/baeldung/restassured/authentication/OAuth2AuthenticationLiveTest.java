@@ -10,11 +10,11 @@ import org.springframework.http.HttpStatus;
 /**
  * For this Live Test we need:
  * * a running instance of the authorization server located in the spring-security-oauth repo - oauth-authorization-server module.
+ *
  * @see <a href="https://github.com/Baeldung/spring-security-oauth/tree/master/oauth-authorization-server">spring-security-oauth/oauth-authorization-server module</a>
- * 
+ * <p>
  * * a running instance of the service located in the spring-security-oauth repo - oauth-resource-server-1 module.
  * @see <a href="https://github.com/Baeldung/spring-security-oauth/tree/master/oauth-resource-server-1">spring-security-oauth/oauth-resource-server-1 module</a>
- * 
  */
 public class OAuth2AuthenticationLiveTest {
 
@@ -28,34 +28,34 @@ public class OAuth2AuthenticationLiveTest {
     @Test
     public void givenNoAuthentication_whenRequestSecuredResource_thenUnauthorizedResponse() {
         get(RESOURCE_SVC_URL).then()
-            .assertThat()
-            .statusCode(HttpStatus.UNAUTHORIZED.value());
+                .assertThat()
+                .statusCode(HttpStatus.UNAUTHORIZED.value());
     }
 
     @Test
     public void givenAccessTokenAuthentication_whenRequestSecuredResource_thenResourceRetrieved() {
         String accessToken = given().auth()
-            .basic(CLIENT_ID, SECRET)
-            .formParam("grant_type", "password")
-            .formParam("username", USER)
-            .formParam("password", PASSWORD)
-            .formParam("scope", "read foo")
-            .when()
-            .post(AUTH_SVC_TOKEN_URL)
-            .then()
-            .assertThat()
-            .statusCode(HttpStatus.OK.value())
-            .extract()
-            .path("access_token");
+                .basic(CLIENT_ID, SECRET)
+                .formParam("grant_type", "password")
+                .formParam("username", USER)
+                .formParam("password", PASSWORD)
+                .formParam("scope", "read foo")
+                .when()
+                .post(AUTH_SVC_TOKEN_URL)
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK.value())
+                .extract()
+                .path("access_token");
 
         given().auth()
-            .oauth2(accessToken)
-            .when()
-            .get(RESOURCE_SVC_URL)
-            .then()
-            .assertThat()
-            .statusCode(HttpStatus.OK.value())
-            .body("$", hasKey("id"))
-            .body("$", hasKey("name"));
+                .oauth2(accessToken)
+                .when()
+                .get(RESOURCE_SVC_URL)
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK.value())
+                .body("$", hasKey("id"))
+                .body("$", hasKey("name"));
     }
 }

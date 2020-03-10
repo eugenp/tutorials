@@ -11,7 +11,8 @@ public class CsvTransfer {
 
     private List<CsvBean> csvList;
 
-    public CsvTransfer() {}
+    public CsvTransfer() {
+    }
 
     public List<String[]> getCsvStringList() {
         if (csvStringList != null) return csvStringList;

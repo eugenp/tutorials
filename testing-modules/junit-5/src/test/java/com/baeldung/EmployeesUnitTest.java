@@ -16,7 +16,7 @@ import com.baeldung.helpers.EmployeeJdbcDao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith({ EnvironmentExtension.class, EmployeeDatabaseSetupExtension.class, EmployeeDaoParameterResolver.class })
+@ExtendWith({EnvironmentExtension.class, EmployeeDatabaseSetupExtension.class, EmployeeDaoParameterResolver.class})
 @ExtendWith(LoggingExtension.class)
 @ExtendWith(IgnoreFileNotFoundExceptionExtension.class)
 public class EmployeesUnitTest {
@@ -34,13 +34,13 @@ public class EmployeesUnitTest {
         Employee emp = new Employee(1, "john");
         employeeDao.add(emp);
         assertEquals(1, employeeDao.findAll()
-            .size());
+                .size());
     }
 
     @Test
     public void whenGetEmployees_thenEmptyList() throws SQLException {
         assertEquals(0, employeeDao.findAll()
-            .size());
+                .size());
     }
 
     public void setLogger(Logger logger) {

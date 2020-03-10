@@ -17,9 +17,10 @@ public class CompletableUnitTest {
     @Before
     public void setUpCompletables() {
         first = Completable.fromSingle(Single.just(1));
-        second = Completable.fromRunnable(() -> {});
+        second = Completable.fromRunnable(() -> {
+        });
         error = Single.error(throwable)
-          .ignoreElement();
+                .ignoreElement();
     }
 
     @Test
@@ -39,74 +40,74 @@ public class CompletableUnitTest {
         Flowable<String> flowable = Flowable.just("request received", "user logged in");
         Completable flowableCompletable = Completable.fromPublisher(flowable);
         Completable singleCompletable = Single.just(1)
-          .ignoreElement();
+                .ignoreElement();
 
         completed.andThen(flowableCompletable)
-          .andThen(singleCompletable)
-          .test()
-          .assertComplete();
+                .andThen(singleCompletable)
+                .test()
+                .assertComplete();
     }
 
     @Test
     public void whenCombiningCompletables_thenCompletedSuccessfully() {
         first.andThen(second)
-          .test()
-          .assertComplete();
+                .test()
+                .assertComplete();
     }
 
     @Test
     public void whenCombinedWithError_thenCompletedWithError() {
         first.andThen(second)
-          .andThen(error)
-          .test()
-          .assertError(throwable);
+                .andThen(error)
+                .test()
+                .assertError(throwable);
     }
 
     @Test
     public void whenCombinedWithNever_thenDoesNotComplete() {
         first.andThen(second)
-          .andThen(Completable.never())
-          .test()
-          .assertNotComplete();
+                .andThen(Completable.never())
+                .test()
+                .assertNotComplete();
     }
 
     @Test
     public void whenMergedCompletables_thenCompletedSuccessfully() {
         Completable.mergeArray(first, second)
-          .test()
-          .assertComplete();
+                .test()
+                .assertComplete();
     }
 
     @Test
     public void whenMergedWithError_thenCompletedWithError() {
         Completable.mergeArray(first, second, error)
-          .test()
-          .assertError(throwable);
+                .test()
+                .assertError(throwable);
     }
 
     @Test
     public void whenFlatMaped_thenCompletedSuccessfully() {
         Completable allElementsCompletable = Flowable.just("request received", "user logged in")
-          .flatMapCompletable(message -> Completable
-              .fromRunnable(() -> System.out.println(message))
-          );
+                .flatMapCompletable(message -> Completable
+                        .fromRunnable(() -> System.out.println(message))
+                );
         allElementsCompletable
-          .test()
-          .assertComplete();
+                .test()
+                .assertComplete();
     }
 
     @Test
     public void whenAmbWithNever_thenCompletedSuccessfully() {
         Completable.ambArray(first, Completable.never(), second)
-          .test()
-          .assertComplete();
+                .test()
+                .assertComplete();
     }
 
     @Test
     public void whenAmbWithError_thenCompletedWithError() {
         Completable.ambArray(error, first, second)
-          .test()
-          .assertError(throwable);
+                .test()
+                .assertError(throwable);
     }
 
 }

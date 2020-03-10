@@ -16,7 +16,7 @@ public class Router5 {
     @Bean
     public RouterFunction<ServerResponse> routeRequest5(Handler5 handler) {
         return RouterFunctions.route(RequestPredicates.GET("/api/endpoint5")
-            .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)), handler::handleRequest5);
+                .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)), handler::handleRequest5);
     }
 
 }

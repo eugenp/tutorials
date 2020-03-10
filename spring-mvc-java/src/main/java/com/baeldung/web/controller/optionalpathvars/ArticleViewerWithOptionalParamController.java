@@ -17,12 +17,12 @@ public class ArticleViewerWithOptionalParamController {
     @RequestMapping(value = {"/article", "/article/{id}"})
     public Article getArticle(@PathVariable(name = "id") Optional<Integer> optionalArticleId) {
 
-        if(optionalArticleId.isPresent()) {
+        if (optionalArticleId.isPresent()) {
             Integer articleId = optionalArticleId.get();
             return new Article(articleId);
-        }else {
+        } else {
             return DEFAULT_ARTICLE;
         }
     }
-    
+
 }

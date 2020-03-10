@@ -6,8 +6,8 @@ public class ExampleResource extends ListResourceBundle {
 
     @Override
     protected Object[][] getContents() {
-        return new Object[][] { 
-            { "greeting", "hello" } 
+        return new Object[][]{
+                {"greeting", "hello"}
         };
     }
 

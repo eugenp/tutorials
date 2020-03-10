@@ -29,69 +29,71 @@
   
   ======================================================================
 -->
-<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
-  <start combine="choice">
-    <ref name="db.annotation"/>
-  </start>
-  <define name="db.ubiq.inlines" combine="choice">
-    <ref name="db.annotation"/>
-  </define>
-  <define name="db.all.blocks" combine="choice">
-    <ref name="db.annotation"/>
-  </define>
-  <define name="db.info.elements" combine="choice">
-    <ref name="db.annotation"/>
-  </define>
-  <define name="db.annotations.attribute">
-    <attribute name="annotations">
-      <db:refpurpose>Identifies one or more annotations that apply to this element</db:refpurpose>
-    </attribute>
-  </define>
-  <define name="db.common.attributes" combine="interleave">
-    <optional>
-      <ref name="db.annotations.attribute"/>
-    </optional>
-  </define>
-  <define name="db.common.idreq.attributes" combine="interleave">
-    <optional>
-      <ref name="db.annotations.attribute"/>
-    </optional>
-  </define>
-  <!-- ====================================================================== -->
-  <div>
-    <db:refname>annotation</db:refname>
-    <db:refpurpose>An annotation</db:refpurpose>
-    <ctrl:exclude from="db.annotation" exclude="db.annotation"/>
-    <define name="db.annotation.role.attribute">
-      <attribute name="role"/>
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook"
+         xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0"
+         xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
+    <start combine="choice">
+        <ref name="db.annotation"/>
+    </start>
+    <define name="db.ubiq.inlines" combine="choice">
+        <ref name="db.annotation"/>
     </define>
-    <define name="db.annotation.annotates.attribute">
-      <attribute name="annotates">
-        <db:refpurpose>Identifies one ore more elements to which this annotation applies</db:refpurpose>
-      </attribute>
+    <define name="db.all.blocks" combine="choice">
+        <ref name="db.annotation"/>
     </define>
-    <define name="db.annotation.attlist">
-      <interleave>
+    <define name="db.info.elements" combine="choice">
+        <ref name="db.annotation"/>
+    </define>
+    <define name="db.annotations.attribute">
+        <attribute name="annotations">
+            <db:refpurpose>Identifies one or more annotations that apply to this element</db:refpurpose>
+        </attribute>
+    </define>
+    <define name="db.common.attributes" combine="interleave">
         <optional>
-          <ref name="db.annotation.role.attribute"/>
+            <ref name="db.annotations.attribute"/>
         </optional>
+    </define>
+    <define name="db.common.idreq.attributes" combine="interleave">
         <optional>
-          <ref name="db.annotation.annotates.attribute"/>
+            <ref name="db.annotations.attribute"/>
         </optional>
-        <ref name="db.common.attributes"/>
-      </interleave>
     </define>
-    <define name="db.annotation.info">
-      <ref name="db._info.title.only"/>
-    </define>
-    <define name="db.annotation">
-      <element name="annotation">
-        <ref name="db.annotation.attlist"/>
-        <ref name="db.annotation.info"/>
-        <oneOrMore>
-          <ref name="db.all.blocks"/>
-        </oneOrMore>
-      </element>
-    </define>
-  </div>
+    <!-- ====================================================================== -->
+    <div>
+        <db:refname>annotation</db:refname>
+        <db:refpurpose>An annotation</db:refpurpose>
+        <ctrl:exclude from="db.annotation" exclude="db.annotation"/>
+        <define name="db.annotation.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.annotation.annotates.attribute">
+            <attribute name="annotates">
+                <db:refpurpose>Identifies one ore more elements to which this annotation applies</db:refpurpose>
+            </attribute>
+        </define>
+        <define name="db.annotation.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.annotation.role.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.annotation.annotates.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+            </interleave>
+        </define>
+        <define name="db.annotation.info">
+            <ref name="db._info.title.only"/>
+        </define>
+        <define name="db.annotation">
+            <element name="annotation">
+                <ref name="db.annotation.attlist"/>
+                <ref name="db.annotation.info"/>
+                <oneOrMore>
+                    <ref name="db.all.blocks"/>
+                </oneOrMore>
+            </element>
+        </define>
+    </div>
 </grammar>

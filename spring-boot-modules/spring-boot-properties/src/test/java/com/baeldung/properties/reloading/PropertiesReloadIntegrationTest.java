@@ -4,7 +4,9 @@ import com.baeldung.properties.reloading.beans.ConfigurationPropertiesRefreshCon
 import com.baeldung.properties.reloading.beans.EnvironmentConfigBean;
 import com.baeldung.properties.reloading.beans.PropertiesConfigBean;
 import com.baeldung.properties.reloading.beans.ValueRefreshConfigBean;
+
 import java.io.FileOutputStream;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -53,8 +55,8 @@ public class PropertiesReloadIntegrationTest {
     @Before
     public void setUp() throws Exception {
         mvc = MockMvcBuilders
-          .webAppContextSetup(webApplicationContext)
-          .build();
+                .webAppContextSetup(webApplicationContext)
+                .build();
         createConfig("extra.properties", "application.theme.color", "blue");
         createConfig("extra2.properties", "application.theme.background", "red");
         Thread.sleep(refreshDelay);
@@ -143,10 +145,10 @@ public class PropertiesReloadIntegrationTest {
 
     public void callRefresh() throws Exception {
         MvcResult mvcResult = mvc
-          .perform(MockMvcRequestBuilders
-            .post("/actuator/refresh")
-            .accept(MediaType.APPLICATION_JSON_VALUE))
-          .andReturn();
+                .perform(MockMvcRequestBuilders
+                        .post("/actuator/refresh")
+                        .accept(MediaType.APPLICATION_JSON_VALUE))
+                .andReturn();
         MockHttpServletResponse response = mvcResult.getResponse();
         Assert.assertEquals(response.getStatus(), 200);
     }
@@ -154,8 +156,8 @@ public class PropertiesReloadIntegrationTest {
     public void createConfig(String file, String key, String value) throws Exception {
         FileOutputStream fo = new FileOutputStream(file);
         fo.write(String
-          .format("%s=%s", key, value)
-          .getBytes());
+                .format("%s=%s", key, value)
+                .getBytes());
         fo.close();
     }
 }

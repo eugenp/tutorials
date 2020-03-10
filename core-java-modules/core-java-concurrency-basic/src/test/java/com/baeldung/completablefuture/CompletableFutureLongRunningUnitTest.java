@@ -31,11 +31,11 @@ public class CompletableFutureLongRunningUnitTest {
         CompletableFuture<String> completableFuture = new CompletableFuture<>();
 
         Executors.newCachedThreadPool()
-            .submit(() -> {
-                Thread.sleep(500);
-                completableFuture.complete("Hello");
-                return null;
-            });
+                .submit(() -> {
+                    Thread.sleep(500);
+                    completableFuture.complete("Hello");
+                    return null;
+                });
 
         return completableFuture;
     }
@@ -52,11 +52,11 @@ public class CompletableFutureLongRunningUnitTest {
         CompletableFuture<String> completableFuture = new CompletableFuture<>();
 
         Executors.newCachedThreadPool()
-            .submit(() -> {
-                Thread.sleep(500);
-                completableFuture.cancel(false);
-                return null;
-            });
+                .submit(() -> {
+                    Thread.sleep(500);
+                    completableFuture.cancel(false);
+                    return null;
+                });
 
         return completableFuture;
     }
@@ -104,7 +104,7 @@ public class CompletableFutureLongRunningUnitTest {
     @Test
     public void whenUsingThenCompose_thenFuturesExecuteSequentially() throws ExecutionException, InterruptedException {
         CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Hello")
-            .thenCompose(s -> CompletableFuture.supplyAsync(() -> s + " World"));
+                .thenCompose(s -> CompletableFuture.supplyAsync(() -> s + " World"));
 
         assertEquals("Hello World", completableFuture.get());
     }
@@ -112,7 +112,7 @@ public class CompletableFutureLongRunningUnitTest {
     @Test
     public void whenUsingThenCombine_thenWaitForExecutionOfBothFutures() throws ExecutionException, InterruptedException {
         CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Hello")
-            .thenCombine(CompletableFuture.supplyAsync(() -> " World"), (s1, s2) -> s1 + s2);
+                .thenCombine(CompletableFuture.supplyAsync(() -> " World"), (s1, s2) -> s1 + s2);
 
         assertEquals("Hello World", completableFuture.get());
     }
@@ -120,7 +120,7 @@ public class CompletableFutureLongRunningUnitTest {
     @Test
     public void whenUsingThenAcceptBoth_thenWaitForExecutionOfBothFutures() throws ExecutionException, InterruptedException {
         CompletableFuture.supplyAsync(() -> "Hello")
-            .thenAcceptBoth(CompletableFuture.supplyAsync(() -> " World"), (s1, s2) -> LOG.debug(s1 + s2));
+                .thenAcceptBoth(CompletableFuture.supplyAsync(() -> " World"), (s1, s2) -> LOG.debug(s1 + s2));
     }
 
     @Test
@@ -140,8 +140,8 @@ public class CompletableFutureLongRunningUnitTest {
         assertTrue(future3.isDone());
 
         String combined = Stream.of(future1, future2, future3)
-            .map(CompletableFuture::join)
-            .collect(Collectors.joining(" "));
+                .map(CompletableFuture::join)
+                .collect(Collectors.joining(" "));
 
         assertEquals("Hello Beautiful World", combined);
     }
@@ -158,7 +158,7 @@ public class CompletableFutureLongRunningUnitTest {
             }
             return "Hello, " + name;
         })
-            .handle((s, t) -> s != null ? s : "Hello, Stranger!");
+                .handle((s, t) -> s != null ? s : "Hello, Stranger!");
 
         assertEquals("Hello, Stranger!", completableFuture.get());
     }
@@ -184,24 +184,24 @@ public class CompletableFutureLongRunningUnitTest {
 
         assertEquals("Hello World", future.get());
     }
-    
+
     @Test
     public void whenPassingTransformation_thenFunctionExecutionWithThenApply() throws InterruptedException, ExecutionException {
         CompletableFuture<Integer> finalResult = compute().thenApply(s -> s + 1);
         assertTrue(finalResult.get() == 11);
     }
-    
+
     @Test
     public void whenPassingPreviousStage_thenFunctionExecutionWithThenCompose() throws InterruptedException, ExecutionException {
         CompletableFuture<Integer> finalResult = compute().thenCompose(this::computeAnother);
         assertTrue(finalResult.get() == 20);
     }
-    
-    public CompletableFuture<Integer> compute(){
+
+    public CompletableFuture<Integer> compute() {
         return CompletableFuture.supplyAsync(() -> 10);
     }
-    
-    public CompletableFuture<Integer> computeAnother(Integer i){
+
+    public CompletableFuture<Integer> computeAnother(Integer i) {
         return CompletableFuture.supplyAsync(() -> 10 + i);
     }
 

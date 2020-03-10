@@ -87,9 +87,9 @@
         <c:out value="<sql:param> Example"/>
     </h3>
 
-    <sql:update dataSource = "${dataSource}" var = "count">
+    <sql:update dataSource="${dataSource}" var="count">
         DELETE FROM USERS WHERE email = ?
-        <sql:param value = "gracea@domain.com" />
+        <sql:param value="gracea@domain.com"/>
     </sql:update>
     <sql:query dataSource="${dataSource}" var="result">
         SELECT * from USERS;
@@ -125,10 +125,10 @@
         String email = "patrick@baeldung.com";
     %>
 
-    <sql:update dataSource = "${dataSource}" var = "count">
+    <sql:update dataSource="${dataSource}" var="count">
         UPDATE Users SET registered = ? WHERE email = ?
-        <sql:dateParam value = "<%=registered%>" type = "DATE" />
-        <sql:param value = "<%=email%>" />
+        <sql:dateParam value="<%=registered%>" type="DATE"/>
+        <sql:param value="<%=email%>"/>
     </sql:update>
     <sql:query dataSource="${dataSource}" var="result">
         SELECT * from USERS;
@@ -158,16 +158,16 @@
     <h3>
         <c:out value="<sql:transaction> Example"/>
     </h3>
-    <sql:transaction dataSource = "${dataSource}">
-        <sql:update var = "count">
+    <sql:transaction dataSource="${dataSource}">
+        <sql:update var="count">
             UPDATE Users SET first_name = 'Patrick-Ellis' WHERE email='patrick@baeldung.com'
         </sql:update>
 
-        <sql:update var = "count">
+        <sql:update var="count">
             UPDATE Users SET last_name = 'Nelson' WHERE email = 'patrick@baeldung.com'
         </sql:update>
 
-        <sql:update var = "count">
+        <sql:update var="count">
             INSERT INTO Users(first_name, last_name, email) VALUES ('Grace', 'Adams', 'gracea@domain.com');
         </sql:update>
     </sql:transaction>

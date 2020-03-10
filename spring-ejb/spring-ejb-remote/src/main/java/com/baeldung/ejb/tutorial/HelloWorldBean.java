@@ -15,5 +15,5 @@ public class HelloWorldBean implements HelloWorld {
         return "Welcome to EJB Tutorial!";
     }
 
-    
+
 }

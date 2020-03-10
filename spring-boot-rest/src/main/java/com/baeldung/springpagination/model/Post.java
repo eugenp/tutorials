@@ -9,29 +9,29 @@ import javax.persistence.Id;
 
 @Entity
 public class Post {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String title;
 
     private String url;
 
     private String date;
-    
+
     private String redditID;
-    
+
     private Date submissionDate;
-    
+
     private boolean sent;
-    
+
     private String userName;
-    
+
     public Post() {
-        
+
     }
-    
+
     public boolean isSent() {
         return sent;
     }
@@ -39,7 +39,7 @@ public class Post {
     public void setSent(boolean sent) {
         this.sent = sent;
     }
-    
+
     public String getRedditID() {
         return redditID;
     }
@@ -47,7 +47,7 @@ public class Post {
     public void setRedditID(String redditID) {
         this.redditID = redditID;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -79,7 +79,7 @@ public class Post {
     public void setDate(String date) {
         this.date = date;
     }
-    
+
     public Date getSubmissionDate() {
         return submissionDate;
     }

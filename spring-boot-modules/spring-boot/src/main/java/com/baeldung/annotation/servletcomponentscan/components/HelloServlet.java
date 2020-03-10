@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/hello", initParams = { @WebInitParam(name = "msg", value = "hello") })
+@WebServlet(urlPatterns = "/hello", initParams = {@WebInitParam(name = "msg", value = "hello")})
 public class HelloServlet extends HttpServlet {
 
     private ServletConfig servletConfig;

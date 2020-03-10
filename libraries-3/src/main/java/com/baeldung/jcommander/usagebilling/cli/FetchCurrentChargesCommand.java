@@ -15,8 +15,8 @@ import static com.baeldung.jcommander.usagebilling.cli.UsageBasedBilling.*;
 import static com.baeldung.jcommander.usagebilling.service.FetchCurrentChargesService.getDefault;
 
 @Parameters(
-  commandNames = { FETCH_CMD },
-  commandDescription = "Fetch charges for a customer in the current month, can be itemized or aggregated"
+        commandNames = {FETCH_CMD},
+        commandDescription = "Fetch charges for a customer in the current month, can be itemized or aggregated"
 )
 @Getter
 class FetchCurrentChargesCommand {
@@ -30,36 +30,36 @@ class FetchCurrentChargesCommand {
     private boolean help;
 
     @Parameter(
-      names = { "--customer", "-C" },
-      description = "Id of the Customer who's using the services",
-      validateWith = UUIDValidator.class,
-      order = 1,
-      required = true
+            names = {"--customer", "-C"},
+            description = "Id of the Customer who's using the services",
+            validateWith = UUIDValidator.class,
+            order = 1,
+            required = true
     )
     private String customerId;
 
     @Parameter(
-      names = { "--subscription", "-S" },
-      description = "Filter charges for specific subscription Ids, includes all subscriptions if no value is specified",
-      variableArity = true,
-      splitter = ColonParameterSplitter.class,
-      order = 2
+            names = {"--subscription", "-S"},
+            description = "Filter charges for specific subscription Ids, includes all subscriptions if no value is specified",
+            variableArity = true,
+            splitter = ColonParameterSplitter.class,
+            order = 2
     )
     private List<String> subscriptionIds;
 
     @Parameter(
-      names = { "--itemized" },
-      description = "Whether the response should contain breakdown by subscription, only aggregate values are returned by default",
-      order = 3
+            names = {"--itemized"},
+            description = "Whether the response should contain breakdown by subscription, only aggregate values are returned by default",
+            order = 3
     )
     private boolean itemized;
 
     void fetch() {
         CurrentChargesRequest req = CurrentChargesRequest.builder()
-          .customerId(customerId)
-          .subscriptionIds(subscriptionIds)
-          .itemized(itemized)
-          .build();
+                .customerId(customerId)
+                .subscriptionIds(subscriptionIds)
+                .itemized(itemized)
+                .build();
 
         CurrentChargesResponse response = service.fetch(req);
         System.out.println(response);

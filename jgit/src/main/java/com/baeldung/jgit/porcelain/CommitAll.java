@@ -3,6 +3,7 @@ package com.baeldung.jgit.porcelain;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import com.baeldung.jgit.helper.Helper;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -10,8 +11,6 @@ import org.eclipse.jgit.lib.Repository;
 
 /**
  * Simple snippet which shows how to commit all files
- *
- * 
  */
 public class CommitAll {
 
@@ -21,7 +20,7 @@ public class CommitAll {
             try (Git git = new Git(repository)) {
                 // create the file
                 File myfile = new File(repository.getDirectory().getParent(), "testfile");
-                if(!myfile.createNewFile()) {
+                if (!myfile.createNewFile()) {
                     throw new IOException("Could not create file " + myfile);
                 }
 
@@ -33,7 +32,7 @@ public class CommitAll {
                         .setMessage("Commit all changes including additions")
                         .call();
 
-                try(PrintWriter writer = new PrintWriter(myfile)) {
+                try (PrintWriter writer = new PrintWriter(myfile)) {
                     writer.append("Hello, world!");
                 }
 

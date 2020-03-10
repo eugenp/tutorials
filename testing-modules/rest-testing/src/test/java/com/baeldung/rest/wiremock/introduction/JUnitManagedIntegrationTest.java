@@ -35,26 +35,26 @@ public class JUnitManagedIntegrationTest {
     private static final String BAELDUNG_WIREMOCK_PATH = "/baeldung/wiremock";
     private static final String APPLICATION_JSON = "application/json";
     static int port;
-    
+
     static {
-        
+
         try {
             // Get a free port
             ServerSocket s = new ServerSocket(0);
             port = s.getLocalPort();
             s.close();
-            
+
         } catch (IOException e) {
             // No OPS
         }
     }
-    
+
     @Rule
     public WireMockRule wireMockRule = new WireMockRule(port);
 
     @Test
     public void givenJUnitManagedServer_whenMatchingURL_thenCorrect() throws IOException {
-        
+
         stubFor(get(urlPathMatching("/baeldung/.*"))
                 .willReturn(aResponse()
                         .withStatus(200)

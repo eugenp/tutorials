@@ -28,12 +28,12 @@ public class MyLoggerApplicationIntegrationTest {
     @Test
     public void whenSendMessage_thenResponseShouldUpdateText() {
         pipe.input()
-            .send(MessageBuilder.withPayload(new LogMessage("This is my message"))
-                .build());
+                .send(MessageBuilder.withPayload(new LogMessage("This is my message"))
+                        .build());
 
         Object payload = messageCollector.forChannel(pipe.output())
-            .poll()
-            .getPayload();
+                .poll()
+                .getPayload();
 
         assertEquals("[1]: This is my message", payload.toString());
     }

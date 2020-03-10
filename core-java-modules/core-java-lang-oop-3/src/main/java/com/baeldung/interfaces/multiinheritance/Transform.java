@@ -4,7 +4,7 @@ public interface Transform {
 
     void transform();
 
-    default void printSpecs(){
+    default void printSpecs() {
         System.out.println("Transform Specification");
     }
 }

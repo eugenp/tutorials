@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
+
 import jdk.incubator.http.HttpClient;
 import jdk.incubator.http.HttpRequest;
 import jdk.incubator.http.HttpRequest.BodyProcessor;
@@ -21,11 +22,10 @@ import jdk.incubator.http.HttpResponse;
 import jdk.incubator.http.HttpResponse.BodyHandler;
 
 /**
- *
  * @author pkaria
  */
 public class HttpClientExample {
-    
+
     public static void main(String[] args) throws Exception {
         httpGetRequest();
         httpPostRequest();
@@ -37,7 +37,7 @@ public class HttpClientExample {
         HttpClient client = HttpClient.newHttpClient();
         URI httpURI = new URI("http://jsonplaceholder.typicode.com/posts/1");
         HttpRequest request = HttpRequest.newBuilder(httpURI).GET()
-          .headers("Accept-Enconding", "gzip, deflate").build();
+                .headers("Accept-Enconding", "gzip, deflate").build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
         String responseBody = response.body();
         int responseStatusCode = response.statusCode();
@@ -72,13 +72,13 @@ public class HttpClientExample {
         List<CompletableFuture<File>> futures = targets
                 .stream()
                 .map(target -> client
-                .sendAsync(
-                        HttpRequest.newBuilder(target)
-                                .GET()
-                                .build(),
-                        BodyHandler.asFile(Paths.get("base", target.getPath())))
-                .thenApply(response -> response.body())
-                .thenApply(path -> path.toFile()))
+                        .sendAsync(
+                                HttpRequest.newBuilder(target)
+                                        .GET()
+                                        .build(),
+                                BodyHandler.asFile(Paths.get("base", target.getPath())))
+                        .thenApply(response -> response.body())
+                        .thenApply(path -> path.toFile()))
                 .collect(Collectors.toList());
     }
 }

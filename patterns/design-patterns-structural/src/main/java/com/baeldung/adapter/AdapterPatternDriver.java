@@ -3,10 +3,10 @@ package com.baeldung.adapter;
 import static com.baeldung.util.LoggerUtil.LOG;
 
 public class AdapterPatternDriver {
-    
+
     public static void main(String args[]) {
-    	Movable bugattiVeyron = new BugattiVeyron();
-    	MovableAdapter bugattiVeyronAdapter = new MovableAdapterImpl(bugattiVeyron);
+        Movable bugattiVeyron = new BugattiVeyron();
+        MovableAdapter bugattiVeyronAdapter = new MovableAdapterImpl(bugattiVeyron);
         LOG.info("Bugatti Veyron Super Sport's top speed is " + bugattiVeyronAdapter.getSpeed() + " Kmph.");
 
         Movable mcLaren = new McLaren();

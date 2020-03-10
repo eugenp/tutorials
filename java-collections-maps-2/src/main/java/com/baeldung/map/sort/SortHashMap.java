@@ -34,7 +34,7 @@ public class SortHashMap {
 
     private static void sortGuava() {
         final Ordering naturalOrdering =
-        Ordering.natural().onResultOf(Functions.forMap(map, null));
+                Ordering.natural().onResultOf(Functions.forMap(map, null));
 
         System.out.println(ImmutableSortedMap.copyOf(map, naturalOrdering));
     }
@@ -47,7 +47,7 @@ public class SortHashMap {
         Map<String, Employee> result = map.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-                (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
 
         result.entrySet().forEach(System.out::println);
     }

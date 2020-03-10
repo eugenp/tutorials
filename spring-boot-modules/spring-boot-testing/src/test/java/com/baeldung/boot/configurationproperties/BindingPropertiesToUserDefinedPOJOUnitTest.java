@@ -23,7 +23,7 @@ public class BindingPropertiesToUserDefinedPOJOUnitTest {
     @Test
     void givenUserDefinedPOJO_whenBindingPropertiesFile_thenAllFieldsAreSet() {
         assertEquals("192.168.0.1", serverConfig.getAddress()
-            .getIp());
+                .getIp());
 
         Map<String, String> expectedResourcesPath = new HashMap<>();
         expectedResourcesPath.put("imgs", "/root/imgs");

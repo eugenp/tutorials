@@ -21,5 +21,5 @@ class Transaction {
 
     public void invalidMethod() {
         // this.amount = 102.03; // Results in a compiler error. You cannot change the value of a final variable.
-    }    
+    }
 }

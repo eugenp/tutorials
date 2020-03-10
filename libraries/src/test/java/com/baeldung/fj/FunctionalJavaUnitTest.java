@@ -77,10 +77,10 @@ public class FunctionalJavaUnitTest {
     public void checkForLowerCase_givenStringArray_returnResult() {
         Array<String> array = Array.array("Welcome", "To", "baeldung");
         assertTrue(array.exists(s -> List.fromString(s).forall(Characters.isLowerCase)));
- 
+
         Array<String> array2 = Array.array("Welcome", "To", "Baeldung");
         assertFalse(array2.exists(s -> List.fromString(s).forall(Characters.isLowerCase)));
- 
+
         assertFalse(array.forall(s -> List.fromString(s).forall(Characters.isLowerCase)));
     }
 
@@ -112,5 +112,5 @@ public class FunctionalJavaUnitTest {
 
         assertEquals(148, sumEven);
     }
-    
+
 }

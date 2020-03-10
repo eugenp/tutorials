@@ -21,28 +21,28 @@ public class IntegerBucketSorter implements Sorter<Integer> {
 
         List<List<Integer>> buckets = splitIntoUnsortedBuckets(arrayToSort);
 
-        for(List<Integer> bucket  : buckets){
+        for (List<Integer> bucket : buckets) {
             bucket.sort(comparator);
         }
 
         return concatenateSortedBuckets(buckets);
     }
 
-    private List<Integer> concatenateSortedBuckets(List<List<Integer>> buckets){
+    private List<Integer> concatenateSortedBuckets(List<List<Integer>> buckets) {
         List<Integer> sortedArray = new LinkedList<>();
-        for(List<Integer> bucket : buckets){
+        for (List<Integer> bucket : buckets) {
             sortedArray.addAll(bucket);
         }
         return sortedArray;
     }
 
-    private List<List<Integer>> splitIntoUnsortedBuckets(List<Integer> initialList){
+    private List<List<Integer>> splitIntoUnsortedBuckets(List<Integer> initialList) {
 
         final int max = findMax(initialList);
         final int numberOfBuckets = (int) Math.sqrt(initialList.size());
 
         List<List<Integer>> buckets = new ArrayList<>();
-        for(int i = 0; i < numberOfBuckets; i++) buckets.add(new ArrayList<>());
+        for (int i = 0; i < numberOfBuckets; i++) buckets.add(new ArrayList<>());
 
         //distribute the data
         for (int i : initialList) {
@@ -52,9 +52,9 @@ public class IntegerBucketSorter implements Sorter<Integer> {
 
     }
 
-    private int findMax(List<Integer> input){
+    private int findMax(List<Integer> input) {
         int m = Integer.MIN_VALUE;
-        for (int i : input){
+        for (int i : input) {
             m = Math.max(i, m);
         }
         return m;

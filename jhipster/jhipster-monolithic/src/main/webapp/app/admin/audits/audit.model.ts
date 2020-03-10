@@ -1,4 +1,4 @@
-import { AuditData } from './audit-data.model';
+import {AuditData} from './audit-data.model';
 
 export class Audit {
     constructor(
@@ -6,5 +6,6 @@ export class Audit {
         public principal: string,
         public timestamp: string,
         public type: string
-    ) { }
+    ) {
+    }
 }

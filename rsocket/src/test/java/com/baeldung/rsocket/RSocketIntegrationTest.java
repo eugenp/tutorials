@@ -2,10 +2,13 @@ package com.baeldung.rsocket;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import reactor.core.Disposable;
@@ -53,23 +56,26 @@ public class RSocketIntegrationTest {
 
         // assert that the data received is the same as the data sent
         Disposable subscription = streamClient.getDataStream()
-          .index()
-          .subscribe(
-            tuple -> {
-                assertEquals("Wrong value", data.get(tuple.getT1().intValue()), tuple.getT2());
-                dataReceived.add(tuple.getT2());
-            },
-            err -> LOG.error(err.getMessage())
-          );
+                .index()
+                .subscribe(
+                        tuple -> {
+                            assertEquals("Wrong value", data.get(tuple.getT1().intValue()), tuple.getT2());
+                            dataReceived.add(tuple.getT2());
+                        },
+                        err -> LOG.error(err.getMessage())
+                );
 
         // start sending the data
         fnfClient.sendData();
 
         // wait a short time for the data to complete then dispose everything
-        try { Thread.sleep(500); } catch (Exception x) {}
+        try {
+            Thread.sleep(500);
+        } catch (Exception x) {
+        }
         subscription.dispose();
         fnfClient.dispose();
-        
+
         // verify the item count
         assertEquals("Wrong data count received", data.size(), dataReceived.size());
     }

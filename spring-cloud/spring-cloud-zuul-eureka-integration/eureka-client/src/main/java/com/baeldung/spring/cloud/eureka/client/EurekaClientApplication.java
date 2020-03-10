@@ -32,6 +32,6 @@ public class EurekaClientApplication implements GreetingController {
     public String greeting() {
         System.out.println("Request received on port number " + portNumber);
         return String.format("Hello from '%s with Port Number %s'!", eurekaClient.getApplication(appName)
-            .getName(), portNumber);
+                .getName(), portNumber);
     }
 }

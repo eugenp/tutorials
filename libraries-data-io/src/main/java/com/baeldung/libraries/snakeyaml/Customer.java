@@ -48,6 +48,6 @@ public class Customer {
 
     public void setHomeAddress(Address homeAddress) {
         this.homeAddress = homeAddress;
-    }    
+    }
 
 }

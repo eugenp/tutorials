@@ -16,10 +16,10 @@ public class InMemoryModesUnitTest {
         DB heapDB = DBMaker.heapDB().make();
 
         HTreeMap<Integer, String> map = heapDB
-          .hashMap("myMap")
-          .keySerializer(Serializer.INTEGER)
-          .valueSerializer(Serializer.STRING)
-          .createOrOpen();
+                .hashMap("myMap")
+                .keySerializer(Serializer.INTEGER)
+                .valueSerializer(Serializer.STRING)
+                .createOrOpen();
 
         map.put(1, "ONE");
 
@@ -33,10 +33,10 @@ public class InMemoryModesUnitTest {
         DB heapDB = DBMaker.memoryDB().make();
 
         HTreeMap<Integer, String> map = heapDB
-          .hashMap("myMap")
-          .keySerializer(Serializer.INTEGER)
-          .valueSerializer(Serializer.STRING)
-          .createOrOpen();
+                .hashMap("myMap")
+                .keySerializer(Serializer.INTEGER)
+                .valueSerializer(Serializer.STRING)
+                .createOrOpen();
 
         map.put(1, "ONE");
 
@@ -49,10 +49,10 @@ public class InMemoryModesUnitTest {
         DB heapDB = DBMaker.memoryDirectDB().make();
 
         HTreeMap<Integer, String> map = heapDB
-          .hashMap("myMap")
-          .keySerializer(Serializer.INTEGER)
-          .valueSerializer(Serializer.STRING)
-          .createOrOpen();
+                .hashMap("myMap")
+                .keySerializer(Serializer.INTEGER)
+                .valueSerializer(Serializer.STRING)
+                .createOrOpen();
 
         map.put(1, "ONE");
 

@@ -15,8 +15,8 @@ public class CustomAuthenticationToken extends UsernamePasswordAuthenticationTok
         super.setAuthenticated(false);
     }
 
-    public CustomAuthenticationToken(Object principal, Object credentials, String domain, 
-        Collection<? extends GrantedAuthority> authorities) {
+    public CustomAuthenticationToken(Object principal, Object credentials, String domain,
+                                     Collection<? extends GrantedAuthority> authorities) {
         super(principal, credentials, authorities);
         this.domain = domain;
         super.setAuthenticated(true); // must use super, as we override

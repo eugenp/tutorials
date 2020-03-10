@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Employee implements Serializable {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -21,7 +21,8 @@ public class Employee implements Serializable {
     @Column(name = "first_name")
     private String firstName;
 
-    public Employee() { }
+    public Employee() {
+    }
 
     public Employee(Company workplace, String firstName) {
         this.workplace = workplace;

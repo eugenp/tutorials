@@ -14,7 +14,7 @@ import static org.zalando.problem.Status.BAD_REQUEST;
  * <pre>
  * throw new CustomParameterizedException(&quot;myCustomError&quot;, &quot;hello&quot;, &quot;world&quot;);
  * </pre>
- *
+ * <p>
  * Can be translated with:
  *
  * <pre>

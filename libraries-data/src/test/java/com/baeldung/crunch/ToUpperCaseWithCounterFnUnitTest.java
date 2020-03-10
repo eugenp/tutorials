@@ -25,7 +25,7 @@ public class ToUpperCaseWithCounterFnUnitTest {
 
         assertEquals(ImmutableList.of("THIS", "IS", "A", "TEST", "STRING"), Lists.newArrayList(upperCaseStrings.materialize()));
         assertEquals(4L, MemPipeline.getCounters()
-            .findCounter("UpperCase", "modified")
-            .getValue());
+                .findCounter("UpperCase", "modified")
+                .getValue());
     }
 }

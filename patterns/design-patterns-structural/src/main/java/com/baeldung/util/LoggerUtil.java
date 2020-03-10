@@ -11,25 +11,25 @@ import org.apache.log4j.PropertyConfigurator;
 public class LoggerUtil {
 
     public final static Logger LOG = Logger.getLogger("GLOBAL");
-    
+
     static {
-    	configuration();
+        configuration();
     }
-    
+
     private static void configuration() {
-    	Properties props = new Properties();
-    	try {
-			props.load(
-			  new BufferedReader(
-			    new InputStreamReader(
-			      LoggerUtil.class.getResourceAsStream("/log4jstructuraldp.properties")
-			    )
-			  )
-			);
-		} catch (IOException e) {
-			System.out.println("log4jstructuraldp.properties file not configured properly");
-			System.exit(0);
-		}
-    	PropertyConfigurator.configure(props);
+        Properties props = new Properties();
+        try {
+            props.load(
+                    new BufferedReader(
+                            new InputStreamReader(
+                                    LoggerUtil.class.getResourceAsStream("/log4jstructuraldp.properties")
+                            )
+                    )
+            );
+        } catch (IOException e) {
+            System.out.println("log4jstructuraldp.properties file not configured properly");
+            System.exit(0);
+        }
+        PropertyConfigurator.configure(props);
     }
 }

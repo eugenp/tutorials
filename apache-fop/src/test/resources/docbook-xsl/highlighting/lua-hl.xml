@@ -29,112 +29,112 @@ freely, subject to the following restrictions:
 -->
 
 <highlighters>
-  <highlighter type="keywords">
-    <keyword>and</keyword>
-    <keyword>break</keyword>
-    <keyword>do</keyword>
-    <keyword>else</keyword>
-    <keyword>elseif</keyword>
-    <keyword>end</keyword>
-    <keyword>false</keyword>
-    <keyword>for</keyword>
-    <keyword>function</keyword>
-    <keyword>goto</keyword>
-    <keyword>if</keyword>
-    <keyword>in</keyword>
-    <keyword>local</keyword>
-    <keyword>nil</keyword>
-    <keyword>not</keyword>
-    <keyword>or</keyword>
-    <keyword>repeat</keyword>
-    <keyword>return</keyword>
-    <keyword>then</keyword>
-    <keyword>true</keyword>
-    <keyword>until</keyword>
-    <keyword>while</keyword>
-  </highlighter>
-  
-  <!-- Multiline comments can have any number of equal signs 
-    between brackets. Let's support up to 4 -->
-  <highlighter type="multiline-comment">
-    <start>--[[</start>
-    <end>]]</end>
-  </highlighter>
-  <highlighter type="multiline-comment">
-    <start>--[=[</start>
-    <end>]=]</end>
-  </highlighter>
-  <highlighter type="multiline-comment">
-    <start>--[==[</start>
-    <end>]==]</end>
-  </highlighter>
-  <highlighter type="multiline-comment">
-    <start>--[===[</start>
-    <end>]===]</end>
-  </highlighter>
-  <highlighter type="multiline-comment">
-    <start>--[====[</start>
-    <end>]====]</end>
-  </highlighter>
+    <highlighter type="keywords">
+        <keyword>and</keyword>
+        <keyword>break</keyword>
+        <keyword>do</keyword>
+        <keyword>else</keyword>
+        <keyword>elseif</keyword>
+        <keyword>end</keyword>
+        <keyword>false</keyword>
+        <keyword>for</keyword>
+        <keyword>function</keyword>
+        <keyword>goto</keyword>
+        <keyword>if</keyword>
+        <keyword>in</keyword>
+        <keyword>local</keyword>
+        <keyword>nil</keyword>
+        <keyword>not</keyword>
+        <keyword>or</keyword>
+        <keyword>repeat</keyword>
+        <keyword>return</keyword>
+        <keyword>then</keyword>
+        <keyword>true</keyword>
+        <keyword>until</keyword>
+        <keyword>while</keyword>
+    </highlighter>
 
-  <highlighter type="oneline-comment">
-    --
-  </highlighter>
-  
-  <highlighter type="string">
-    <string>"</string>
-    <endString>"</endString>
-    <escape>\</escape>
-    <spanNewLines/>
-  </highlighter>
-  
-  <highlighter type="string">
-    <string>'</string>
-    <endString>'</endString>
-    <escape>\</escape>
-    <spanNewLines/>
-  </highlighter>
+    <!-- Multiline comments can have any number of equal signs
+      between brackets. Let's support up to 4 -->
+    <highlighter type="multiline-comment">
+        <start>--[[</start>
+        <end>]]</end>
+    </highlighter>
+    <highlighter type="multiline-comment">
+        <start>--[=[</start>
+        <end>]=]</end>
+    </highlighter>
+    <highlighter type="multiline-comment">
+        <start>--[==[</start>
+        <end>]==]</end>
+    </highlighter>
+    <highlighter type="multiline-comment">
+        <start>--[===[</start>
+        <end>]===]</end>
+    </highlighter>
+    <highlighter type="multiline-comment">
+        <start>--[====[</start>
+        <end>]====]</end>
+    </highlighter>
 
-  <!-- Long strings can also have any number of equal signs. -->
-  <highlighter type="string">
-    <string>[[</string>
-    <endString>]]</endString>
-    <spanNewLines/>
-  </highlighter>
-  <highlighter type="string">
-    <string>[=[</string>
-    <endString>]=]</endString>
-    <spanNewLines/>
-  </highlighter>
-  <highlighter type="string">
-    <string>[==[</string>
-    <endString>]==]</endString>
-    <spanNewLines/>
-  </highlighter>
-  <highlighter type="string">
-    <string>[===[</string>
-    <endString>]===]</endString>
-    <spanNewLines/>
-  </highlighter>
-  <highlighter type="string">
-    <string>[====[</string>
-    <endString>]====]</endString>
-    <spanNewLines/>
-  </highlighter>
+    <highlighter type="oneline-comment">
+        --
+    </highlighter>
 
-  <highlighter type="number">
-    <point>.</point>
-    <pointStarts />
-    <exponent>e</exponent>
-    <ignoreCase />
-  </highlighter>
+    <highlighter type="string">
+        <string>"</string>
+        <endString>"</endString>
+        <escape>\</escape>
+        <spanNewLines/>
+    </highlighter>
 
-  <highlighter type="hexnumber">
-    <prefix>0x</prefix>
-    <point>.</point>
-    <pointStarts />
-    <exponent>p</exponent>
-    <ignoreCase />
-  </highlighter>
-  
+    <highlighter type="string">
+        <string>'</string>
+        <endString>'</endString>
+        <escape>\</escape>
+        <spanNewLines/>
+    </highlighter>
+
+    <!-- Long strings can also have any number of equal signs. -->
+    <highlighter type="string">
+        <string>[[</string>
+        <endString>]]</endString>
+        <spanNewLines/>
+    </highlighter>
+    <highlighter type="string">
+        <string>[=[</string>
+        <endString>]=]</endString>
+        <spanNewLines/>
+    </highlighter>
+    <highlighter type="string">
+        <string>[==[</string>
+        <endString>]==]</endString>
+        <spanNewLines/>
+    </highlighter>
+    <highlighter type="string">
+        <string>[===[</string>
+        <endString>]===]</endString>
+        <spanNewLines/>
+    </highlighter>
+    <highlighter type="string">
+        <string>[====[</string>
+        <endString>]====]</endString>
+        <spanNewLines/>
+    </highlighter>
+
+    <highlighter type="number">
+        <point>.</point>
+        <pointStarts/>
+        <exponent>e</exponent>
+        <ignoreCase/>
+    </highlighter>
+
+    <highlighter type="hexnumber">
+        <prefix>0x</prefix>
+        <point>.</point>
+        <pointStarts/>
+        <exponent>p</exponent>
+        <ignoreCase/>
+    </highlighter>
+
 </highlighters>

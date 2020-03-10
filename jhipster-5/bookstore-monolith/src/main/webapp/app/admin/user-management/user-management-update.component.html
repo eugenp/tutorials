@@ -9,28 +9,28 @@
                 <div class="form-group" [hidden]="!user.id">
                     <label>ID</label>
                     <input type="text" class="form-control" name="id"
-                        [(ngModel)]="user.id" readonly>
+                           [(ngModel)]="user.id" readonly>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label">Login</label>
                     <input type="text" class="form-control" name="login" #loginInput="ngModel"
-                        [(ngModel)]="user.login" required minlength="1" maxlength="50" pattern="^[_.@A-Za-z0-9-]*$">
+                           [(ngModel)]="user.login" required minlength="1" maxlength="50" pattern="^[_.@A-Za-z0-9-]*$">
 
                     <div *ngIf="loginInput.dirty && loginInput.invalid">
                         <small class="form-text text-danger"
-                        *ngIf="loginInput.errors.required">
+                               *ngIf="loginInput.errors.required">
                             This field is required.
                         </small>
 
                         <small class="form-text text-danger"
-                        *ngIf="loginInput.errors.maxlength"
-                       >
+                               *ngIf="loginInput.errors.maxlength"
+                        >
                             This field cannot be longer than 50 characters.
                         </small>
 
                         <small class="form-text text-danger"
-                        *ngIf="loginInput.errors.pattern">
+                               *ngIf="loginInput.errors.pattern">
                             This field can only contain letters, digits and e-mail addresses.
                         </small>
                     </div>
@@ -38,12 +38,12 @@
                 <div class="form-group">
                     <label class="form-control-label">First Name</label>
                     <input type="text" class="form-control" name="firstName" #firstNameInput="ngModel"
-                        [(ngModel)]="user.firstName" maxlength="50">
+                           [(ngModel)]="user.firstName" maxlength="50">
 
                     <div *ngIf="firstNameInput.dirty && firstNameInput.invalid">
                         <small class="form-text text-danger"
-                        *ngIf="firstNameInput.errors.maxlength"
-                       >
+                               *ngIf="firstNameInput.errors.maxlength"
+                        >
                             This field cannot be longer than 50 characters.
                         </small>
                     </div>
@@ -51,12 +51,12 @@
                 <div class="form-group">
                     <label>Last Name</label>
                     <input type="text" class="form-control" name="lastName" #lastNameInput="ngModel"
-                        [(ngModel)]="user.lastName" maxlength="50">
+                           [(ngModel)]="user.lastName" maxlength="50">
 
                     <div *ngIf="lastNameInput.dirty && lastNameInput.invalid">
                         <small class="form-text text-danger"
-                        *ngIf="lastNameInput.errors.maxlength"
-                       >
+                               *ngIf="lastNameInput.errors.maxlength"
+                        >
                             This field cannot be longer than 50 characters.
                         </small>
                     </div>
@@ -64,35 +64,36 @@
                 <div class="form-group">
                     <label class="form-control-label">Email</label>
                     <input type="email" class="form-control" name="email" #emailInput="ngModel"
-                        [(ngModel)]="user.email" minlength="5" required maxlength="254" email>
+                           [(ngModel)]="user.email" minlength="5" required maxlength="254" email>
 
                     <div *ngIf="emailInput.dirty && emailInput.invalid">
                         <small class="form-text text-danger"
-                        *ngIf="emailInput.errors.required">
+                               *ngIf="emailInput.errors.required">
                             This field is required.
                         </small>
 
                         <small class="form-text text-danger"
-                        *ngIf="emailInput.errors.maxlength"
-                       >
+                               *ngIf="emailInput.errors.maxlength"
+                        >
                             This field cannot be longer than 100 characters.
                         </small>
 
                         <small class="form-text text-danger"
-                        *ngIf="emailInput.errors.minlength"
-                       >
+                               *ngIf="emailInput.errors.minlength"
+                        >
                             This field is required to be at least 5 characters.
                         </small>
 
                         <small class="form-text text-danger"
-                        *ngIf="emailInput.errors.email">
+                               *ngIf="emailInput.errors.email">
                             Your email is invalid.
                         </small>
                     </div>
                 </div>
                 <div class="form-check">
                     <label class="form-check-label" for="activated">
-                        <input class="form-check-input" [disabled]="user.id === null" type="checkbox" id="activated" name="activated" [(ngModel)]="user.activated">
+                        <input class="form-check-input" [disabled]="user.id === null" type="checkbox" id="activated"
+                               name="activated" [(ngModel)]="user.activated">
                         <span>Activated</span>
                     </label>
                 </div>
@@ -107,7 +108,7 @@
             <div>
                 <button type="button" class="btn btn-secondary" (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span
-                   >Cancel</span>
+                >Cancel</span>
                 </button>
                 <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
                     <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>

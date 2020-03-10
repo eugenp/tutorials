@@ -32,6 +32,7 @@ public class PriceCalculationEnvironmentPostProcessor implements EnvironmentPost
     List<String> names = Arrays.asList(CALCUATION_MODE, GROSS_CALCULATION_TAX_RATE);
 
     private static Map<String, Object> defaults = new LinkedHashMap<>();
+
     static {
         defaults.put(CALCUATION_MODE, CALCUATION_MODE_DEFAULT_VALUE);
         defaults.put(GROSS_CALCULATION_TAX_RATE, GROSS_CALCULATION_TAX_RATE_DEFAULT_VALUE);
@@ -41,25 +42,25 @@ public class PriceCalculationEnvironmentPostProcessor implements EnvironmentPost
     public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
 
         PropertySource<?> system = environment.getPropertySources()
-            .get(SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME);
+                .get(SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME);
 
         Map<String, Object> prefixed = new LinkedHashMap<>();
 
         if (!hasOurPriceProperties(system)) {
             // Baeldung-internal code so this doesn't break other examples
             logger.warn("System environment variables [calculation_mode,gross_calculation_tax_rate] not detected, fallback to default value [calcuation_mode={},gross_calcuation_tax_rate={}]", CALCUATION_MODE_DEFAULT_VALUE,
-                GROSS_CALCULATION_TAX_RATE_DEFAULT_VALUE);
+                    GROSS_CALCULATION_TAX_RATE_DEFAULT_VALUE);
             prefixed = names.stream()
-                .collect(Collectors.toMap(this::rename, this::getDefaultValue));
+                    .collect(Collectors.toMap(this::rename, this::getDefaultValue));
             environment.getPropertySources()
-                .addAfter(SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME, new MapPropertySource("prefixer", prefixed));
+                    .addAfter(SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME, new MapPropertySource("prefixer", prefixed));
             return;
         }
 
         prefixed = names.stream()
-            .collect(Collectors.toMap(this::rename, system::getProperty));
+                .collect(Collectors.toMap(this::rename, system::getProperty));
         environment.getPropertySources()
-            .addAfter(SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME, new MapPropertySource("prefixer", prefixed));
+                .addAfter(SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME, new MapPropertySource("prefixer", prefixed));
 
     }
 

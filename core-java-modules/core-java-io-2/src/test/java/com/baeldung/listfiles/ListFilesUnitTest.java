@@ -31,7 +31,7 @@ public class ListFilesUnitTest {
 
     @Test
     public void givenDir_whenWalkingTree_thenListAllFiles() throws IOException {
-        assertEquals(EXPECTED_FILE_LIST, listFiles.listFilesUsingFileWalk(DIRECTORY,DEPTH));
+        assertEquals(EXPECTED_FILE_LIST, listFiles.listFilesUsingFileWalk(DIRECTORY, DEPTH));
     }
 
     @Test

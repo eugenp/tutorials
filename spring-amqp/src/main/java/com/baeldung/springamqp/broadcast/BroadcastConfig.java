@@ -27,12 +27,12 @@ public class BroadcastConfig {
         TopicExchange topicExchange = new TopicExchange(TOPIC_EXCHANGE_NAME, NON_DURABLE, false);
 
         return new Declarables(topicQueue1, topicQueue2, topicExchange, BindingBuilder
-          .bind(topicQueue1)
-          .to(topicExchange)
-          .with(BINDING_PATTERN_IMPORTANT), BindingBuilder
-          .bind(topicQueue2)
-          .to(topicExchange)
-          .with(BINDING_PATTERN_ERROR));
+                .bind(topicQueue1)
+                .to(topicExchange)
+                .with(BINDING_PATTERN_IMPORTANT), BindingBuilder
+                .bind(topicQueue2)
+                .to(topicExchange)
+                .with(BINDING_PATTERN_ERROR));
     }
 
     @Bean
@@ -43,10 +43,10 @@ public class BroadcastConfig {
         FanoutExchange fanoutExchange = new FanoutExchange(FANOUT_EXCHANGE_NAME, NON_DURABLE, false);
 
         return new Declarables(fanoutQueue1, fanoutQueue2, fanoutExchange, BindingBuilder
-          .bind(fanoutQueue1)
-          .to(fanoutExchange), BindingBuilder
-          .bind(fanoutQueue2)
-          .to(fanoutExchange));
+                .bind(fanoutQueue1)
+                .to(fanoutExchange), BindingBuilder
+                .bind(fanoutQueue2)
+                .to(fanoutExchange));
     }
 
 }

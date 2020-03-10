@@ -13,10 +13,10 @@ public class ProductHelper {
 
     public ProductHelper() {
         cachedDiscounts = Cache2kBuilder.of(String.class, Integer.class)
-            .name("discount")
-            .eternal(true)
-            .entryCapacity(100)
-            .build();
+                .name("discount")
+                .eternal(true)
+                .entryCapacity(100)
+                .build();
     }
 
     public Integer getDiscount(String productType) {

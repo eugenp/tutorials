@@ -11,7 +11,7 @@ public class ExampleStructure {
 
     static JsonNode getExampleRoot() throws IOException {
         InputStream exampleInput = ExampleStructure.class.getClassLoader()
-            .getResourceAsStream("node_example.json");
+                .getResourceAsStream("node_example.json");
         JsonNode rootNode = mapper.readTree(exampleInput);
         return rootNode;
     }

@@ -15,7 +15,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class,
-  classes = ApplicationContextTestResourceNameType.class)
+        classes = ApplicationContextTestResourceNameType.class)
 public class NamedResourceIntegrationTest {
 
     @Resource(name = "namedFile")

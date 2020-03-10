@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class VersionObtainerUnitTest {
 
     public VersionObtainer version = new VersionObtainer();
-    
+
     @Test
     public void testGetSpringVersion() {
         String res = version.getSpringVersion();

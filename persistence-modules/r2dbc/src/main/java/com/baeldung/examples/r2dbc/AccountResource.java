@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.baeldung.examples.r2dbc;
 
@@ -31,8 +31,8 @@ public class AccountResource {
     public Mono<ResponseEntity<Account>> getAccount(@PathVariable("id") Long id) {
 
         return accountDao.findById(id)
-          .map(acc -> new ResponseEntity<>(acc, HttpStatus.OK))
-          .switchIfEmpty(Mono.just(new ResponseEntity<>(null, HttpStatus.NOT_FOUND)));
+                .map(acc -> new ResponseEntity<>(acc, HttpStatus.OK))
+                .switchIfEmpty(Mono.just(new ResponseEntity<>(null, HttpStatus.NOT_FOUND)));
     }
 
     @GetMapping("/accounts")
@@ -43,8 +43,8 @@ public class AccountResource {
     @PostMapping("/accounts")
     public Mono<ResponseEntity<Account>> postAccount(@RequestBody Account account) {
         return accountDao.createAccount(account)
-          .map(acc -> new ResponseEntity<>(acc, HttpStatus.CREATED))
-          .log();
+                .map(acc -> new ResponseEntity<>(acc, HttpStatus.CREATED))
+                .log();
     }
 
 }

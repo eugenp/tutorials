@@ -3,8 +3,10 @@ package controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
+
 import java.util.Collections;
 import java.util.Map;
+
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -26,12 +28,12 @@ public class HomeController extends Controller {
 
     private String printStats(Http.Request request) throws JsonProcessingException {
         Map<String, String[]> stringMap = request.body()
-                                                 .asFormUrlEncoded();
+                .asFormUrlEncoded();
         Map<String, Object> map = ImmutableMap.of(
-          "Result", "ok",
-          "GetParams", request.queryString(),
-          "PostParams", stringMap == null ? Collections.emptyMap() : stringMap,
-          "Headers", request.getHeaders().toMap()
+                "Result", "ok",
+                "GetParams", request.queryString(),
+                "PostParams", stringMap == null ? Collections.emptyMap() : stringMap,
+                "Headers", request.getHeaders().toMap()
         );
         return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(map);
     }

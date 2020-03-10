@@ -21,7 +21,7 @@ public class EmployeeService {
     }
 
     public Flux<Employee> getAllEmployees() {
-        Flux<Employee> employees =  employeeRepository.findAll();
+        Flux<Employee> employees = employeeRepository.findAll();
         return employees;
     }
 

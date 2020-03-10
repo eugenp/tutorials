@@ -102,8 +102,8 @@ public class Maze {
 
     public void printPath(List<Coordinate> path) {
         int[][] tempMaze = Arrays.stream(maze)
-            .map(int[]::clone)
-            .toArray(int[][]::new);
+                .map(int[]::clone)
+                .toArray(int[][]::new);
         for (Coordinate coordinate : path) {
             if (isStart(coordinate.getX(), coordinate.getY()) || isExit(coordinate.getX(), coordinate.getY())) {
                 continue;

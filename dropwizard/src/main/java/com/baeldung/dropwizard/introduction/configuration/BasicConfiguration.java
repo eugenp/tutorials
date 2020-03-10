@@ -7,7 +7,8 @@ import io.dropwizard.Configuration;
 import javax.validation.constraints.NotNull;
 
 public class BasicConfiguration extends Configuration {
-    @NotNull private final int defaultSize;
+    @NotNull
+    private final int defaultSize;
 
     @JsonCreator
     public BasicConfiguration(@JsonProperty("defaultSize") final int defaultSize) {

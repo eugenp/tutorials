@@ -21,7 +21,7 @@ public class Foo implements Serializable {
 
     @Column(nullable = false)
     private String name;
-    
+
     @Version
     private long version;
 
@@ -60,7 +60,7 @@ public class Foo implements Serializable {
     public void setVersion(long version) {
         this.version = version;
     }
-    
+
     //
 
     @Override

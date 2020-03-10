@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.util.Map;
 
 /**
- * 
  * This is a test class to initialize Vault.
  */
 public class VaultInitializer implements Closeable {
@@ -43,7 +42,7 @@ public class VaultInitializer implements Closeable {
         map.put("VAULT_ADDR", "http://127.0.0.1:8200");
         try {
             Process p = pb.inheritIO()
-                .start();
+                    .start();
             p.waitFor();
         } catch (IOException e) {
             System.out.println("unable to enableSecrets" + e);

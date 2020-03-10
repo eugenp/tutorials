@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     JhiConfigurationService.$inject = ['$filter', '$http'];
 
-    function JhiConfigurationService ($filter, $http) {
+    function JhiConfigurationService($filter, $http) {
         var service = {
             get: get,
             getEnv: getEnv
@@ -15,10 +15,10 @@
 
         return service;
 
-        function get () {
+        function get() {
             return $http.get('management/configprops').then(getConfigPropsComplete);
 
-            function getConfigPropsComplete (response) {
+            function getConfigPropsComplete(response) {
                 var properties = [];
                 angular.forEach(response.data, function (data) {
                     properties.push(data);
@@ -28,15 +28,15 @@
             }
         }
 
-        function getEnv () {
+        function getEnv() {
             return $http.get('management/env').then(getEnvComplete);
 
-            function getEnvComplete (response) {
+            function getEnvComplete(response) {
                 var properties = {};
-                angular.forEach(response.data, function (val,key) {
+                angular.forEach(response.data, function (val, key) {
                     var vals = [];
-                    angular.forEach(val, function (v,k) {
-                        vals.push({ key:k, val:v });
+                    angular.forEach(val, function (v, k) {
+                        vals.push({key: k, val: v});
                     });
                     properties[key] = vals;
                 });

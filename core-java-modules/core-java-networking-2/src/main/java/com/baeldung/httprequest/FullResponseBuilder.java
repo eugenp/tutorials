@@ -13,32 +13,32 @@ public class FullResponseBuilder {
         StringBuilder fullResponseBuilder = new StringBuilder();
 
         fullResponseBuilder.append(con.getResponseCode())
-            .append(" ")
-            .append(con.getResponseMessage())
-            .append("\n");
+                .append(" ")
+                .append(con.getResponseMessage())
+                .append("\n");
 
         con.getHeaderFields()
-            .entrySet()
-            .stream()
-            .filter(entry -> entry.getKey() != null)
-            .forEach(entry -> {
+                .entrySet()
+                .stream()
+                .filter(entry -> entry.getKey() != null)
+                .forEach(entry -> {
 
-                fullResponseBuilder.append(entry.getKey())
-                    .append(": ");
+                    fullResponseBuilder.append(entry.getKey())
+                            .append(": ");
 
-                List<String> headerValues = entry.getValue();
-                Iterator<String> it = headerValues.iterator();
-                if (it.hasNext()) {
-                    fullResponseBuilder.append(it.next());
+                    List<String> headerValues = entry.getValue();
+                    Iterator<String> it = headerValues.iterator();
+                    if (it.hasNext()) {
+                        fullResponseBuilder.append(it.next());
 
-                    while (it.hasNext()) {
-                        fullResponseBuilder.append(", ")
-                            .append(it.next());
+                        while (it.hasNext()) {
+                            fullResponseBuilder.append(", ")
+                                    .append(it.next());
+                        }
                     }
-                }
 
-                fullResponseBuilder.append("\n");
-            });
+                    fullResponseBuilder.append("\n");
+                });
 
         Reader streamReader = null;
 
@@ -58,7 +58,7 @@ public class FullResponseBuilder {
         in.close();
 
         fullResponseBuilder.append("Response: ")
-            .append(content);
+                .append(content);
 
         return fullResponseBuilder.toString();
     }

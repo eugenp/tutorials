@@ -62,7 +62,7 @@ public class ShapeFile {
 
         builder.add("Location", Point.class);
         builder.length(15)
-          .add("Name", String.class);
+                .add("Name", String.class);
 
         return builder.buildFeatureType();
     }
@@ -98,15 +98,15 @@ public class ShapeFile {
         GeometryFactory geometryFactory = JTSFactoryFinder.getGeometryFactory(null);
 
         locations.entrySet().stream()
-          .map(toFeature(CITY, geometryFactory))
-          .forEach(collection::add);
+                .map(toFeature(CITY, geometryFactory))
+                .forEach(collection::add);
     }
 
     private static Function<Map.Entry<String, List<Double>>, SimpleFeature> toFeature(SimpleFeatureType CITY, GeometryFactory geometryFactory) {
         return location -> {
             Point point = geometryFactory.createPoint(
-              new Coordinate(location.getValue()
-                .get(0), location.getValue().get(1)));
+                    new Coordinate(location.getValue()
+                            .get(0), location.getValue().get(1)));
 
             SimpleFeatureBuilder featureBuilder = new SimpleFeatureBuilder(CITY);
             featureBuilder.add(point);
@@ -141,7 +141,7 @@ public class ShapeFile {
 
     private static ShapefileDataStore setDataStoreParams(ShapefileDataStoreFactory dataStoreFactory, Map<String, Serializable> params, File shapeFile, SimpleFeatureType CITY) throws Exception {
         params.put("url", shapeFile.toURI()
-          .toURL());
+                .toURL());
         params.put("create spatial index", Boolean.TRUE);
 
         ShapefileDataStore dataStore = (ShapefileDataStore) dataStoreFactory.createNewDataStore(params);

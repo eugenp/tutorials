@@ -45,7 +45,7 @@ public class MapIteration {
 
     public void iterateUsingIteratorAndEntry(Map<String, Integer> map) {
         Iterator<Map.Entry<String, Integer>> iterator = map.entrySet()
-            .iterator();
+                .iterator();
         while (iterator.hasNext()) {
             Map.Entry<String, Integer> pair = iterator.next();
             System.out.println(pair.getKey() + ":" + pair.getValue());
@@ -60,8 +60,8 @@ public class MapIteration {
 
     public void iterateUsingStreamAPI(Map<String, Integer> map) {
         map.entrySet()
-            .stream()
-            .forEach(e -> System.out.println(e.getKey() + ":" + e.getValue()));
+                .stream()
+                .forEach(e -> System.out.println(e.getKey() + ":" + e.getValue()));
     }
 
     public void iterateKeys(Map<String, Integer> map) {

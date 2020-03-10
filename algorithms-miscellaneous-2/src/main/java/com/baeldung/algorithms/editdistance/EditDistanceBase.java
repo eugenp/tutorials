@@ -10,6 +10,6 @@ public class EditDistanceBase {
 
     static int min(int... numbers) {
         return Arrays.stream(numbers)
-          .min().orElse(Integer.MAX_VALUE);
+                .min().orElse(Integer.MAX_VALUE);
     }
 }

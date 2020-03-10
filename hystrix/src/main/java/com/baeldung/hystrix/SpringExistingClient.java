@@ -10,11 +10,11 @@ public class SpringExistingClient {
     private int remoteServiceDelay;
 
     @HystrixCircuitBreaker
-    public String invokeRemoteServiceWithHystrix() throws InterruptedException{
+    public String invokeRemoteServiceWithHystrix() throws InterruptedException {
         return new RemoteServiceTestSimulator(remoteServiceDelay).execute();
     }
 
-    public String invokeRemoteServiceWithOutHystrix() throws InterruptedException{
+    public String invokeRemoteServiceWithOutHystrix() throws InterruptedException {
         return new RemoteServiceTestSimulator(remoteServiceDelay).execute();
     }
 }

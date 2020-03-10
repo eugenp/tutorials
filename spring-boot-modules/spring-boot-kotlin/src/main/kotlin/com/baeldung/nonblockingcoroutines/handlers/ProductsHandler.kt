@@ -20,12 +20,12 @@ import org.springframework.web.reactive.function.server.json
 
 @Component
 class ProductsHandler(
-  @Autowired var webClient: WebClient,
-  @Autowired var productRepository: ProductRepositoryCoroutines) {
+        @Autowired var webClient: WebClient,
+        @Autowired var productRepository: ProductRepositoryCoroutines) {
 
     @FlowPreview
     suspend fun findAll(request: ServerRequest): ServerResponse =
-      ServerResponse.ok().json().bodyAndAwait(productRepository.getAllProducts())
+            ServerResponse.ok().json().bodyAndAwait(productRepository.getAllProducts())
 
     suspend fun findOneInStock(request: ServerRequest): ServerResponse {
         val id = request.pathVariable("id").toInt()
@@ -35,9 +35,9 @@ class ProductsHandler(
         }
         val quantity: Deferred<Int> = GlobalScope.async {
             webClient.get()
-              .uri("/stock-service/product/$id/quantity")
-              .accept(MediaType.APPLICATION_JSON)
-              .awaitExchange().awaitBody<Int>()
+                    .uri("/stock-service/product/$id/quantity")
+                    .accept(MediaType.APPLICATION_JSON)
+                    .awaitExchange().awaitBody<Int>()
         }
         return ServerResponse.ok().json().bodyAndAwait(ProductStockView(product.await()!!, quantity.await()))
     }

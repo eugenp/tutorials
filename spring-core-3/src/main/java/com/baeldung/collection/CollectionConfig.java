@@ -16,13 +16,13 @@ public class CollectionConfig {
     }
 
     @Bean
-    public List<String> nameList(){
+    public List<String> nameList() {
         return Arrays.asList("John", "Adam", "Harry", null);
     }
 
     @Bean
-    public Map<Integer, String> nameMap(){
-        Map<Integer, String>  nameMap = new HashMap<>();
+    public Map<Integer, String> nameMap() {
+        Map<Integer, String> nameMap = new HashMap<>();
         nameMap.put(1, "John");
         nameMap.put(2, "Adam");
         nameMap.put(3, "Harry");

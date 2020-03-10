@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { AccountService } from './account.service';
+import {Injectable} from '@angular/core';
+import {Observable, Subject} from 'rxjs';
+import {AccountService} from './account.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class Principal {
     private userIdentity: any;
     private authenticated = false;
     private authenticationState = new Subject<any>();
 
-    constructor(private account: AccountService) {}
+    constructor(private account: AccountService) {
+    }
 
     authenticate(identity) {
         this.userIdentity = identity;

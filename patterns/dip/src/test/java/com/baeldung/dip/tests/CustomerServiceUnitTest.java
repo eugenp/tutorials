@@ -3,11 +3,14 @@ package com.baeldung.dip.tests;
 import com.baeldung.dip.daoimplementations.SimpleCustomerDao;
 import com.baeldung.dip.entities.Customer;
 import com.baeldung.dip.services.CustomerService;
+
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Before;
 import org.junit.Test;
 

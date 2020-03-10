@@ -8,7 +8,7 @@ import org.junit.Test;
 public class FindKthLargestUnitTest {
 
     private FindKthLargest findKthLargest;
-    private Integer[] arr = { 3, 7, 1, 2, 8, 10, 4, 5, 6, 9 };
+    private Integer[] arr = {3, 7, 1, 2, 8, 10, 4, 5, 6, 9};
 
     @Before
     public void setup() {

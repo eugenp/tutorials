@@ -15,12 +15,12 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.baeldung.web.controller.message" })
+@ComponentScan(basePackages = {"com.baeldung.web.controller.message"})
 public class TestConfig implements WebMvcConfigurer {
 
     @Autowired
     private ServletContext ctx;
-    
+
     @Bean
     public ViewResolver thymeleafViewResolver() {
         final ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();

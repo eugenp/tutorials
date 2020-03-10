@@ -37,7 +37,7 @@ public class RestTemplateLiveTest {
 
         assertThat(responseEntity.getStatusCode(), is(equalTo(HttpStatus.OK)));
         assertThat(responseEntity.getHeaders()
-            .get("Foo")
-            .get(0), is(equalTo("bar")));
+                .get("Foo")
+                .get(0), is(equalTo("bar")));
     }
 }

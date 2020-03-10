@@ -15,7 +15,7 @@ public class PrimitiveCollections {
 
     public static void main(String[] args) {
 
-        int[] primitives = new int[] {5, 10, 0, 2, -8};
+        int[] primitives = new int[]{5, 10, 0, 2, -8};
 
         guavaPrimitives(primitives);
 

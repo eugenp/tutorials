@@ -31,16 +31,16 @@ public class ListJUnitTest {
         Set<String> commonElements = new HashSet(Arrays.asList("red", "green"));
 
         Set<String> result = list.stream()
-          .distinct()
-          .filter(otherList::contains)
-          .collect(Collectors.toSet());
+                .distinct()
+                .filter(otherList::contains)
+                .collect(Collectors.toSet());
 
         Assert.assertEquals(commonElements, result);
 
         Set<String> inverseResult = otherList.stream()
-          .distinct()
-          .filter(list::contains)
-          .collect(Collectors.toSet());
+                .distinct()
+                .filter(list::contains)
+                .collect(Collectors.toSet());
 
         Assert.assertEquals(commonElements, inverseResult);
     }

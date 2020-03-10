@@ -45,11 +45,11 @@ public class SimpleServerVerticleUnitTest {
         final Async async = testContext.async();
 
         vertx.createHttpClient()
-            .getNow(port, "localhost", "/", response -> response.handler(responseBody -> {
-                testContext.assertTrue(responseBody.toString()
-                    .contains("Welcome"));
-                async.complete();
-            }));
+                .getNow(port, "localhost", "/", response -> response.handler(responseBody -> {
+                    testContext.assertTrue(responseBody.toString()
+                            .contains("Welcome"));
+                    async.complete();
+                }));
     }
 
 }

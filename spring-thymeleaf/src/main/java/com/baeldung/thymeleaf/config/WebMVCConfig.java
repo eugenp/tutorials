@@ -34,12 +34,12 @@ import com.baeldung.thymeleaf.utils.ArrayUtil;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({ "com.baeldung.thymeleaf" })
+@ComponentScan({"com.baeldung.thymeleaf"})
 /**
  * Java configuration file that is used for Spring MVC and Thymeleaf
  * configurations
  */
-public class WebMVCConfig implements WebMvcConfigurer,  ApplicationContextAware {
+public class WebMVCConfig implements WebMvcConfigurer, ApplicationContextAware {
 
     private ApplicationContext applicationContext;
 
@@ -144,7 +144,7 @@ public class WebMVCConfig implements WebMvcConfigurer,  ApplicationContextAware 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**", "/css/**")
-            .addResourceLocations("/WEB-INF/resources/", "/WEB-INF/css/");
+                .addResourceLocations("/WEB-INF/resources/", "/WEB-INF/css/");
     }
 
     @Override

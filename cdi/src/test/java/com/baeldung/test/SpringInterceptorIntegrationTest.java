@@ -15,7 +15,7 @@ import com.baeldung.spring.configuration.AppConfig;
 import com.baeldung.spring.service.SpringSuperService;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = { AppConfig.class })
+@ContextConfiguration(classes = {AppConfig.class})
 public class SpringInterceptorIntegrationTest {
     @Autowired
     SpringSuperService springSuperService;

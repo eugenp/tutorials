@@ -12,12 +12,12 @@ public class PizzaService {
 
     public Pizza orderHouseSpecial() {
         return builder.name("Special")
-            .size(PizzaSize.LARGE)
-            .withExtraTopping("Mushrooms")
-            .withStuffedCrust(true)
-            .withExtraTopping("Chilli")
-            .willCollect(true)
-            .applyDiscount(20)
-            .build();
+                .size(PizzaSize.LARGE)
+                .withExtraTopping("Mushrooms")
+                .withStuffedCrust(true)
+                .withExtraTopping("Chilli")
+                .willCollect(true)
+                .applyDiscount(20)
+                .build();
     }
 }

@@ -19,7 +19,7 @@ public class Edge {
     public int getFirst() {
         return first;
     }
-    
+
     public int getSecond() {
         return second;
     }

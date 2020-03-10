@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface TodoRepository extends Repository<Todo, String> {
     List<Todo> findByName(String name);
+
     List<Todo> findAll();
 }

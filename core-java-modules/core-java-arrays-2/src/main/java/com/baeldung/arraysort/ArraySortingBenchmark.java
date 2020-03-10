@@ -28,12 +28,12 @@ public class ArraySortingBenchmark {
     @State(Scope.Benchmark)
     public static class ArrayContainer {
 
-        @Param({ "1000", "10000", "100000", "1000000" })
+        @Param({"1000", "10000", "100000", "1000000"})
         int arraySize;
 
         // initial unsorted array
         int[] unsortedArray;
-        
+
         //cloned array to sort
         int[] arrayToSort;
 

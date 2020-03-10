@@ -27,6 +27,6 @@ public class TaxiFareConfiguration {
         KieModule kieModule = kieBuilder.getKieModule();
 
         return kieServices.newKieContainer(kieModule.getReleaseId());
-        
+
     }
 }

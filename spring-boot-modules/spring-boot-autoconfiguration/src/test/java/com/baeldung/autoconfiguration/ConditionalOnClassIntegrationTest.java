@@ -17,42 +17,42 @@ public class ConditionalOnClassIntegrationTest {
     @Test
     public void whenDependentClassIsPresent_thenBeanCreated() {
         this.contextRunner.withUserConfiguration(ConditionalOnClassConfiguration.class)
-            .run(context -> {
-                assertThat(context).hasBean("created");
-                assertThat(context.getBean("created")).isEqualTo("This is created when ConditionalOnClassIntegrationTest is present on the classpath");
-            });
+                .run(context -> {
+                    assertThat(context).hasBean("created");
+                    assertThat(context.getBean("created")).isEqualTo("This is created when ConditionalOnClassIntegrationTest is present on the classpath");
+                });
     }
 
     @Test
     public void whenDependentClassIsPresent_thenBeanMissing() {
         this.contextRunner.withUserConfiguration(ConditionalOnMissingClassConfiguration.class)
-            .run(context -> {
-                assertThat(context).doesNotHaveBean("missed");
-            });
+                .run(context -> {
+                    assertThat(context).doesNotHaveBean("missed");
+                });
     }
 
     @Test
     public void whenDependentClassIsNotPresent_thenBeanMissing() {
         this.contextRunner.withUserConfiguration(ConditionalOnClassConfiguration.class)
-            .withClassLoader(new FilteredClassLoader(ConditionalOnClassIntegrationTest.class))
-            .run((context) -> {
-                assertThat(context).doesNotHaveBean("created");
-                assertThat(context).doesNotHaveBean(ConditionalOnClassIntegrationTest.class);
+                .withClassLoader(new FilteredClassLoader(ConditionalOnClassIntegrationTest.class))
+                .run((context) -> {
+                    assertThat(context).doesNotHaveBean("created");
+                    assertThat(context).doesNotHaveBean(ConditionalOnClassIntegrationTest.class);
 
-            });
+                });
     }
 
     @Test
     public void whenDependentClassIsNotPresent_thenBeanCreated() {
         this.contextRunner.withUserConfiguration(ConditionalOnMissingClassConfiguration.class)
-            .withClassLoader(new FilteredClassLoader(ConditionalOnClassIntegrationTest.class))
-            .run((context) -> {
-                assertThat(context).hasBean("missed");
-                assertThat(context).getBean("missed")
-                    .isEqualTo("This is missed when ConditionalOnClassIntegrationTest is present on the classpath");
-                assertThat(context).doesNotHaveBean(ConditionalOnClassIntegrationTest.class);
+                .withClassLoader(new FilteredClassLoader(ConditionalOnClassIntegrationTest.class))
+                .run((context) -> {
+                    assertThat(context).hasBean("missed");
+                    assertThat(context).getBean("missed")
+                            .isEqualTo("This is missed when ConditionalOnClassIntegrationTest is present on the classpath");
+                    assertThat(context).doesNotHaveBean(ConditionalOnClassIntegrationTest.class);
 
-            });
+                });
     }
 
     @Configuration

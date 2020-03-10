@@ -36,8 +36,8 @@ public class Pangram {
         // filtered character stream
         String strUpper = str.toUpperCase();
         Stream<Character> filteredCharStream = strUpper.chars()
-            .filter(item -> ((item >= 'A' && item <= 'Z')))
-            .mapToObj(c -> (char) c);
+                .filter(item -> ((item >= 'A' && item <= 'Z')))
+                .mapToObj(c -> (char) c);
         Map<Character, Boolean> alphabetMap = filteredCharStream.collect(Collectors.toMap(item -> item, k -> Boolean.TRUE, (p1, p2) -> p1));
 
         return (alphabetMap.size() == ALPHABET_COUNT);
@@ -50,12 +50,12 @@ public class Pangram {
         // filtered character stream
         String strUpper = str.toUpperCase();
         Stream<Character> filteredCharStream = strUpper.chars()
-            .filter(item -> ((item >= 'A' && item <= 'Z')))
-            .mapToObj(c -> (char) c);
+                .filter(item -> ((item >= 'A' && item <= 'Z')))
+                .mapToObj(c -> (char) c);
         Map<Character, Long> alphabetFrequencyMap = filteredCharStream.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
         return (alphabetFrequencyMap.size() == ALPHABET_COUNT && alphabetFrequencyMap.values()
-            .stream()
-            .allMatch(item -> item == 1));
+                .stream()
+                .allMatch(item -> item == 1));
     }
 }

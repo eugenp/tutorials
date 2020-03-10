@@ -20,6 +20,6 @@ public class BookController {
     @GetMapping("/{id}")
     public Book findById(@PathVariable long id) {
         return repository.findById(id)
-            .orElseThrow(() -> new BookNotFoundException(id));
+                .orElseThrow(() -> new BookNotFoundException(id));
     }
 }

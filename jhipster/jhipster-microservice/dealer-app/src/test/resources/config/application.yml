@@ -14,61 +14,61 @@
 # ===================================================================
 
 eureka:
-    client:
-        enabled: false
-    instance:
-        appname: dealerapp
-        instanceId: dealerapp:${spring.application.instance_id:${random.value}}
+  client:
+    enabled: false
+  instance:
+    appname: dealerapp
+    instanceId: dealerapp:${spring.application.instance_id:${random.value}}
 
 spring:
-    application:
-        name: dealerapp
-    jackson:
-        serialization.write_dates_as_timestamps: false
-    cache:
-        type: none
-    datasource:
-        type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:mem:dealerapp;DB_CLOSE_DELAY=-1
-        name:
-        username:
-        password:
-    jpa:
-        database-platform: io.github.jhipster.domain.util.FixedH2Dialect
-        database: H2
-        open-in-view: false
-        show-sql: true
-        hibernate:
-            ddl-auto: none
-            naming:
-                physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-                implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
-        properties:
-            hibernate.id.new_generator_mappings: true
-            hibernate.cache.use_second_level_cache: false
-            hibernate.cache.use_query_cache: false
-            hibernate.generate_statistics: true
-            hibernate.hbm2ddl.auto: validate
-    mail:
-        host: localhost
-    messages:
-        basename: i18n/messages
-    mvc:
-        favicon:
-            enabled: false
-    thymeleaf:
-        mode: XHTML
+  application:
+    name: dealerapp
+  jackson:
+    serialization.write_dates_as_timestamps: false
+  cache:
+    type: none
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:dealerapp;DB_CLOSE_DELAY=-1
+    name:
+    username:
+    password:
+  jpa:
+    database-platform: io.github.jhipster.domain.util.FixedH2Dialect
+    database: H2
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    properties:
+      hibernate.id.new_generator_mappings: true
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false
+      hibernate.generate_statistics: true
+      hibernate.hbm2ddl.auto: validate
+  mail:
+    host: localhost
+  messages:
+    basename: i18n/messages
+  mvc:
+    favicon:
+      enabled: false
+  thymeleaf:
+    mode: XHTML
 
 liquibase:
-    contexts: test
+  contexts: test
 
 security:
-    basic:
-        enabled: false
+  basic:
+    enabled: false
 
 server:
-    port: 10344
-    address: localhost
+  port: 10344
+  address: localhost
 
 # ===================================================================
 # JHipster specific properties
@@ -77,18 +77,18 @@ server:
 # ===================================================================
 
 jhipster:
-    async:
-        core-pool-size: 2
-        max-pool-size: 50
-        queue-capacity: 10000
-    security:
-        authentication:
-            jwt:
-                secret: d4c73e937677223a85c7fcebae7a6ce0c48c3b01
-                # Token is valid 24 hours
-                token-validity-in-seconds: 86400
-    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
-        jmx.enabled: true
+  async:
+    core-pool-size: 2
+    max-pool-size: 50
+    queue-capacity: 10000
+  security:
+    authentication:
+      jwt:
+        secret: d4c73e937677223a85c7fcebae7a6ce0c48c3b01
+        # Token is valid 24 hours
+        token-validity-in-seconds: 86400
+  metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
+    jmx.enabled: true
 
 # ===================================================================
 # Application specific properties

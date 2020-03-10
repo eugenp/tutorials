@@ -16,7 +16,8 @@ import java.util.UUID;
 @SpringBootTest(properties = {"spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration"})
 public class N1QLSortingPersonRepositoryLiveTest {
 
-    @Autowired private N1QLSortingPersonRepository personRepository;
+    @Autowired
+    private N1QLSortingPersonRepository personRepository;
 
     @Test
     public void shouldFindAll_sortedByFirstName() {
@@ -25,23 +26,23 @@ public class N1QLSortingPersonRepositoryLiveTest {
         final Person secondPerson = new Person(UUID.randomUUID(), "Mikki");
         wrap(() -> {
             personRepository
-              .save(firstPerson)
-              .subscribe();
+                    .save(firstPerson)
+                    .subscribe();
             personRepository
-              .save(secondPerson)
-              .subscribe();
+                    .save(secondPerson)
+                    .subscribe();
             //When
             final Flux<Person> allByFirstName = personRepository.findAll(Sort.by(Sort.Direction.DESC, "firstName"));
             //Then
             StepVerifier
-              .create(allByFirstName)
-              .expectNextMatches(person -> person
-                .getFirstName()
-                .equals(secondPerson.getFirstName()))
-              .expectNextMatches(person -> person
-                .getFirstName()
-                .equals(firstPerson.getFirstName()))
-              .verifyComplete();
+                    .create(allByFirstName)
+                    .expectNextMatches(person -> person
+                            .getFirstName()
+                            .equals(secondPerson.getFirstName()))
+                    .expectNextMatches(person -> person
+                            .getFirstName()
+                            .equals(firstPerson.getFirstName()))
+                    .verifyComplete();
         }, firstPerson, secondPerson);
     }
 
@@ -52,8 +53,8 @@ public class N1QLSortingPersonRepositoryLiveTest {
         } finally {
             for (final Person person : people) {
                 personRepository
-                  .delete(person)
-                  .subscribe();
+                        .delete(person)
+                        .subscribe();
             }
         }
     }

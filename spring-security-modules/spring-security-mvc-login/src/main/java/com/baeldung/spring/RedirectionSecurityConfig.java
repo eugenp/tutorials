@@ -18,21 +18,21 @@ public class RedirectionSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-            .withUser("user1")
-            .password("user1Pass")
-            .roles("USER");
+                .withUser("user1")
+                .password("user1Pass")
+                .roles("USER");
     }
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/login*")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .successHandler(new SavedRequestAwareAuthenticationSuccessHandler());
+                .antMatchers("/login*")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .successHandler(new SavedRequestAwareAuthenticationSuccessHandler());
         // .successHandler(new RefererAuthenticationSuccessHandler())
     }
 

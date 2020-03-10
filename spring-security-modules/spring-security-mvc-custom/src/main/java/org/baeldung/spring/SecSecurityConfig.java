@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 //@ImportResource({ "classpath:webSecurityConfig.xml" })
 @EnableWebSecurity
 public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
-    
+
     public SecSecurityConfig() {
         super();
     }
@@ -23,16 +23,16 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean("authenticationManager")
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
-            return super.authenticationManagerBean();
+        return super.authenticationManagerBean();
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         // @formatter:off
         auth.inMemoryAuthentication()
-            .withUser("user1").password("{noop}user1Pass").roles("USER")
-            .and()
-            .withUser("admin1").password("{noop}admin1Pass").roles("ADMIN");
+                .withUser("user1").password("{noop}user1Pass").roles("USER")
+                .and()
+                .withUser("admin1").password("{noop}admin1Pass").roles("ADMIN");
         // @formatter:on
     }
 
@@ -40,31 +40,31 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
         http.authorizeRequests()
-            .antMatchers("/anonymous*").anonymous()
-            .antMatchers("/login*").permitAll()
-            .anyRequest().authenticated()
-            
-            .and()
-            .formLogin()
-            .loginPage("/login.html")
-            .loginProcessingUrl("/login")
-            .successHandler(myAuthenticationSuccessHandler())
-            .failureUrl("/login.html?error=true")
-            
-            .and()
-            .logout().deleteCookies("JSESSIONID")
-            
-            .and()
-            .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400)
-            
-            .and()
-            .csrf().disable()
-            ;
+                .antMatchers("/anonymous*").anonymous()
+                .antMatchers("/login*").permitAll()
+                .anyRequest().authenticated()
+
+                .and()
+                .formLogin()
+                .loginPage("/login.html")
+                .loginProcessingUrl("/login")
+                .successHandler(myAuthenticationSuccessHandler())
+                .failureUrl("/login.html?error=true")
+
+                .and()
+                .logout().deleteCookies("JSESSIONID")
+
+                .and()
+                .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400)
+
+                .and()
+                .csrf().disable()
+        ;
         // @formatter:on
     }
-    
+
     @Bean
-    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler() {
         return new MySimpleUrlAuthenticationSuccessHandler();
     }
 }

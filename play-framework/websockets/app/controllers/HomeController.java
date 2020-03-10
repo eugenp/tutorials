@@ -44,19 +44,19 @@ public class HomeController extends Controller {
     }
 
     private CompletionStage<F.Either<Result, Flow<JsonNode, JsonNode, ?>>> createActorFlow(
-      Http.RequestHeader request) {
+            Http.RequestHeader request) {
         return CompletableFuture.completedFuture(F.Either.Right(createFlowForActor()));
     }
 
     private CompletionStage<F.Either<Result, Flow<JsonNode, JsonNode, ?>>>
-      createActorFlow2(Http.RequestHeader request) {
+    createActorFlow2(Http.RequestHeader request) {
         return CompletableFuture.completedFuture(
-          request.session()
-          .getOptional("username")
-          .map(username ->
-            F.Either.<Result, Flow<JsonNode, JsonNode, ?>>Right(
-              createFlowForActor()))
-          .orElseGet(() -> F.Either.Left(forbidden())));
+                request.session()
+                        .getOptional("username")
+                        .map(username ->
+                                F.Either.<Result, Flow<JsonNode, JsonNode, ?>>Right(
+                                        createFlowForActor()))
+                        .orElseGet(() -> F.Either.Left(forbidden())));
     }
 
     private Flow<JsonNode, JsonNode, ?> createFlowForActor() {
@@ -65,15 +65,15 @@ public class HomeController extends Controller {
 
     public WebSocket akkaStreamsSocket() {
         return WebSocket.Json.accept(
-          request -> {
-              Sink<JsonNode, ?> in = Sink.foreach(System.out::println);
-              MessageDTO messageDTO = new MessageDTO("1", "1", "Title", "Test Body");
-              Source<JsonNode, ?> out = Source.tick(
-                Duration.ofSeconds(2),
-                Duration.ofSeconds(2),
-                MessageConverter.messageToJsonNode(messageDTO)
-              );
-              return Flow.fromSinkAndSource(in, out);
-        });
+                request -> {
+                    Sink<JsonNode, ?> in = Sink.foreach(System.out::println);
+                    MessageDTO messageDTO = new MessageDTO("1", "1", "Title", "Test Body");
+                    Source<JsonNode, ?> out = Source.tick(
+                            Duration.ofSeconds(2),
+                            Duration.ofSeconds(2),
+                            MessageConverter.messageToJsonNode(messageDTO)
+                    );
+                    return Flow.fromSinkAndSource(in, out);
+                });
     }
 }

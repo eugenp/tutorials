@@ -14,17 +14,17 @@ import java.util.Calendar;
 public class Transaction {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Integer customerRewardsId;
     private Integer customerId;
     private Date transactionDate;
 
-    public Transaction(){
+    public Transaction() {
         transactionDate = Calendar.getInstance().getTime();
     }
 
-    public void setTransactionDate(Date transactionDate){
+    public void setTransactionDate(Date transactionDate) {
         this.transactionDate = transactionDate;
     }
 }

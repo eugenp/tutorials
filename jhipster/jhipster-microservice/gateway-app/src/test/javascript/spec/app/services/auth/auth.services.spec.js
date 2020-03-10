@@ -7,7 +7,7 @@ describe('Service Tests', function () {
     describe('Auth', function () {
         var $httpBackend, localStorageService, sessionStorageService, authService, spiedAuthServerProvider;
 
-        beforeEach(inject(function($injector, $localStorage, $sessionStorage, Auth, AuthServerProvider) {
+        beforeEach(inject(function ($injector, $localStorage, $sessionStorage, Auth, AuthServerProvider) {
             $httpBackend = $injector.get('$httpBackend');
             localStorageService = $localStorage;
             sessionStorageService = $sessionStorage;
@@ -16,11 +16,11 @@ describe('Service Tests', function () {
         }));
         //make sure no expectations were missed in your tests.
         //(e.g. expectGET or expectPOST)
-        afterEach(function() {
+        afterEach(function () {
             $httpBackend.verifyNoOutstandingExpectation();
             $httpBackend.verifyNoOutstandingRequest();
         });
-        it('should call backend on logout then call authServerProvider.logout', function(){
+        it('should call backend on logout then call authServerProvider.logout', function () {
             //GIVEN
             //Set spy
             spyOn(spiedAuthServerProvider, 'logout').and.callThrough();

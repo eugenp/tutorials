@@ -41,28 +41,30 @@ public class MemberRegistrationLiveTest {
     @Deployment
     public static Archive<?> createTestArchive() {
         File[] files = Maven
-          .resolver()
-          .loadPomFromFile("pom.xml")
-          .importRuntimeDependencies()
-          .resolve()
-          .withTransitivity()
-          .asFile();
+                .resolver()
+                .loadPomFromFile("pom.xml")
+                .importRuntimeDependencies()
+                .resolve()
+                .withTransitivity()
+                .asFile();
 
         return ShrinkWrap
-          .create(WebArchive.class, "test.war")
-          .addClasses(EntityManagerProducer.class, Member.class, MemberRegistration.class, MemberRepository.class, Resources.class, QueryDslRepositoryExtension.class, QueryDslSupport.class, SecondaryPersistenceUnit.class, SecondaryEntityManagerProducer.class,
-            SecondaryEntityManagerResolver.class)
-          .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
-          .addAsResource("META-INF/apache-deltaspike.properties")
-          .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-          .addAsWebInfResource("test-ds.xml")
-          .addAsWebInfResource("test-secondary-ds.xml")
-          .addAsLibraries(files);
+                .create(WebArchive.class, "test.war")
+                .addClasses(EntityManagerProducer.class, Member.class, MemberRegistration.class, MemberRepository.class, Resources.class, QueryDslRepositoryExtension.class, QueryDslSupport.class, SecondaryPersistenceUnit.class, SecondaryEntityManagerProducer.class,
+                        SecondaryEntityManagerResolver.class)
+                .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
+                .addAsResource("META-INF/apache-deltaspike.properties")
+                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+                .addAsWebInfResource("test-ds.xml")
+                .addAsWebInfResource("test-secondary-ds.xml")
+                .addAsLibraries(files);
     }
 
-    @Inject MemberRegistration memberRegistration;
+    @Inject
+    MemberRegistration memberRegistration;
 
-    @Inject Logger log;
+    @Inject
+    Logger log;
 
     @Test
     public void testRegister() throws Exception {

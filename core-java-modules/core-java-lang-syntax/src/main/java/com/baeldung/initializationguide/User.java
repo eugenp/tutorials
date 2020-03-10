@@ -14,7 +14,7 @@ public class User implements Serializable, Cloneable {
     }
 
     static {
-    	forum = "Java";
+        forum = "Java";
         System.out.println("Static Initializer");
     }
 

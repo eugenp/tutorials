@@ -76,10 +76,10 @@ public class XMLSerializeDeserializeUnitTest {
         Person value = xmlMapper.readValue(xml, Person.class);
 
         assertTrue(value.getAddress()
-            .get(0)
-            .getCity()
-            .equalsIgnoreCase("city1")
-            && value.getAddress()
+                .get(0)
+                .getCity()
+                .equalsIgnoreCase("city1")
+                && value.getAddress()
                 .get(1)
                 .getCity()
                 .equalsIgnoreCase("city2"));

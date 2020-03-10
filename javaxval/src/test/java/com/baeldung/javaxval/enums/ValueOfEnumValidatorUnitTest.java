@@ -20,13 +20,13 @@ public class ValueOfEnumValidatorUnitTest {
     @BeforeClass
     public static void setupValidatorInstance() {
         validator = Validation.buildDefaultValidatorFactory()
-            .getValidator();
+                .getValidator();
     }
 
     @Test
     public void whenStringAnyOfEnum_thenShouldNotReportConstraintViolations() {
         Customer customer = new Customer.Builder().withCustomerTypeString("DEFAULT")
-            .build();
+                .build();
         Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
         assertThat(violations.isEmpty()).isTrue();
     }
@@ -34,7 +34,7 @@ public class ValueOfEnumValidatorUnitTest {
     @Test
     public void whenStringNull_thenShouldNotReportConstraintViolations() {
         Customer customer = new Customer.Builder().withCustomerTypeString(null)
-            .build();
+                .build();
         Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
         assertThat(violations.isEmpty()).isTrue();
     }
@@ -42,11 +42,11 @@ public class ValueOfEnumValidatorUnitTest {
     @Test
     public void whenStringNotAnyOfEnum_thenShouldGiveOccurrenceOfConstraintViolations() {
         Customer customer = new Customer.Builder().withCustomerTypeString("test")
-            .build();
+                .build();
         Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
         assertThat(violations.size()).isEqualTo(1);
 
         assertThat(violations).anyMatch(CustomerUnitTest.havingPropertyPath("customerTypeString")
-            .and(CustomerUnitTest.havingMessage("must be any of enum class com.baeldung.javaxval.enums.demo.CustomerType")));
+                .and(CustomerUnitTest.havingMessage("must be any of enum class com.baeldung.javaxval.enums.demo.CustomerType")));
     }
 }

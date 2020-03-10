@@ -40,7 +40,7 @@ public class AntColonyOptimization {
         trails = new double[numberOfCities][numberOfCities];
         probabilities = new double[numberOfCities];
         IntStream.range(0, numberOfAnts)
-            .forEach(i -> ants.add(new Ant(numberOfCities)));
+                .forEach(i -> ants.add(new Ant(numberOfCities)));
     }
 
     /**
@@ -49,8 +49,8 @@ public class AntColonyOptimization {
     public double[][] generateRandomMatrix(int n) {
         double[][] randomMatrix = new double[n][n];
         IntStream.range(0, n)
-            .forEach(i -> IntStream.range(0, n)
-                .forEach(j -> randomMatrix[i][j] = Math.abs(random.nextInt(100) + 1)));
+                .forEach(i -> IntStream.range(0, n)
+                        .forEach(j -> randomMatrix[i][j] = Math.abs(random.nextInt(100) + 1)));
         return randomMatrix;
     }
 
@@ -59,10 +59,10 @@ public class AntColonyOptimization {
      */
     public void startAntOptimization() {
         IntStream.rangeClosed(1, 3)
-            .forEach(i -> {
-                System.out.println("Attempt #" + i);
-                solve();
-            });
+                .forEach(i -> {
+                    System.out.println("Attempt #" + i);
+                    solve();
+                });
     }
 
     /**
@@ -72,11 +72,11 @@ public class AntColonyOptimization {
         setupAnts();
         clearTrails();
         IntStream.range(0, maxIterations)
-            .forEach(i -> {
-                moveAnts();
-                updateTrails();
-                updateBest();
-            });
+                .forEach(i -> {
+                    moveAnts();
+                    updateTrails();
+                    updateBest();
+                });
         System.out.println("Best tour length: " + (bestTourLength - numberOfCities));
         System.out.println("Best tour order: " + Arrays.toString(bestTourOrder));
         return bestTourOrder.clone();
@@ -87,12 +87,12 @@ public class AntColonyOptimization {
      */
     private void setupAnts() {
         IntStream.range(0, numberOfAnts)
-            .forEach(i -> {
-                ants.forEach(ant -> {
-                    ant.clear();
-                    ant.visitCity(-1, random.nextInt(numberOfCities));
+                .forEach(i -> {
+                    ants.forEach(ant -> {
+                        ant.clear();
+                        ant.visitCity(-1, random.nextInt(numberOfCities));
+                    });
                 });
-            });
         currentIndex = 0;
     }
 
@@ -101,10 +101,10 @@ public class AntColonyOptimization {
      */
     private void moveAnts() {
         IntStream.range(currentIndex, numberOfCities - 1)
-            .forEach(i -> {
-                ants.forEach(ant -> ant.visitCity(currentIndex, selectNextCity(ant)));
-                currentIndex++;
-            });
+                .forEach(i -> {
+                    ants.forEach(ant -> ant.visitCity(currentIndex, selectNextCity(ant)));
+                    currentIndex++;
+                });
     }
 
     /**
@@ -114,8 +114,8 @@ public class AntColonyOptimization {
         int t = random.nextInt(numberOfCities - currentIndex);
         if (random.nextDouble() < randomFactor) {
             OptionalInt cityIndex = IntStream.range(0, numberOfCities)
-                .filter(i -> i == t && !ant.visited(i))
-                .findFirst();
+                    .filter(i -> i == t && !ant.visited(i))
+                    .findFirst();
             if (cityIndex.isPresent()) {
                 return cityIndex.getAsInt();
             }
@@ -179,7 +179,7 @@ public class AntColonyOptimization {
         if (bestTourOrder == null) {
             bestTourOrder = ants.get(0).trail;
             bestTourLength = ants.get(0)
-                .trailLength(graph);
+                    .trailLength(graph);
         }
         for (Ant a : ants) {
             if (a.trailLength(graph) < bestTourLength) {
@@ -194,10 +194,10 @@ public class AntColonyOptimization {
      */
     private void clearTrails() {
         IntStream.range(0, numberOfCities)
-            .forEach(i -> {
-                IntStream.range(0, numberOfCities)
-                    .forEach(j -> trails[i][j] = c);
-            });
+                .forEach(i -> {
+                    IntStream.range(0, numberOfCities)
+                            .forEach(j -> trails[i][j] = c);
+                });
     }
 
 }

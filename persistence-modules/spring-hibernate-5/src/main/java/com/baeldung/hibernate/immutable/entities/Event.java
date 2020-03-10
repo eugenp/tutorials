@@ -23,7 +23,8 @@ public class Event {
     @Immutable
     private Set<String> guestList;
 
-    public Event() {}
+    public Event() {
+    }
 
     public Event(Long id, String title, Set<String> guestList) {
         this.id = id;
@@ -47,7 +48,7 @@ public class Event {
         this.title = title;
     }
 
-    @Cascade({ CascadeType.SAVE_UPDATE, CascadeType.DELETE })
+    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     public Set<String> getGuestList() {
         return guestList;
     }

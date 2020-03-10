@@ -16,7 +16,7 @@ class CaesarCipherUnitTest {
         String cipheredSentence = algorithm.cipher(SENTENCE, 3);
 
         assertThat(cipheredSentence)
-          .isEqualTo(SENTENCE_SHIFTED_THREE);
+                .isEqualTo(SENTENCE_SHIFTED_THREE);
     }
 
     @Test
@@ -24,7 +24,7 @@ class CaesarCipherUnitTest {
         String cipheredSentence = algorithm.cipher(SENTENCE, 10);
 
         assertThat(cipheredSentence)
-          .isEqualTo(SENTENCE_SHIFTED_TEN);
+                .isEqualTo(SENTENCE_SHIFTED_TEN);
     }
 
     @Test
@@ -32,7 +32,7 @@ class CaesarCipherUnitTest {
         String cipheredSentence = algorithm.cipher(SENTENCE, 36);
 
         assertThat(cipheredSentence)
-          .isEqualTo(SENTENCE_SHIFTED_TEN);
+                .isEqualTo(SENTENCE_SHIFTED_TEN);
     }
 
     @Test
@@ -40,7 +40,7 @@ class CaesarCipherUnitTest {
         String decipheredSentence = algorithm.decipher(SENTENCE_SHIFTED_THREE, 3);
 
         assertThat(decipheredSentence)
-          .isEqualTo(SENTENCE);
+                .isEqualTo(SENTENCE);
     }
 
     @Test
@@ -48,7 +48,7 @@ class CaesarCipherUnitTest {
         String decipheredSentence = algorithm.decipher(SENTENCE_SHIFTED_TEN, 10);
 
         assertThat(decipheredSentence)
-          .isEqualTo(SENTENCE);
+                .isEqualTo(SENTENCE);
     }
 
     @Test
@@ -56,7 +56,7 @@ class CaesarCipherUnitTest {
         String decipheredSentence = algorithm.decipher(SENTENCE_SHIFTED_TEN, 36);
 
         assertThat(decipheredSentence)
-          .isEqualTo(SENTENCE);
+                .isEqualTo(SENTENCE);
     }
 
     @Test
@@ -64,10 +64,10 @@ class CaesarCipherUnitTest {
         int offset = algorithm.breakCipher(SENTENCE_SHIFTED_THREE);
 
         assertThat(offset)
-          .isEqualTo(3);
+                .isEqualTo(3);
 
         assertThat(algorithm.decipher(SENTENCE_SHIFTED_THREE, offset))
-          .isEqualTo(SENTENCE);
+                .isEqualTo(SENTENCE);
     }
 
     @Test
@@ -75,9 +75,9 @@ class CaesarCipherUnitTest {
         int offset = algorithm.breakCipher(SENTENCE_SHIFTED_TEN);
 
         assertThat(offset)
-          .isEqualTo(10);
+                .isEqualTo(10);
 
         assertThat(algorithm.decipher(SENTENCE_SHIFTED_TEN, offset))
-          .isEqualTo(SENTENCE);
+                .isEqualTo(SENTENCE);
     }
 }

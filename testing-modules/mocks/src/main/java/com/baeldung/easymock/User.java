@@ -6,11 +6,11 @@ public class User {
     private String lastName;
     private double age;
     private String email;
-    
+
     public User() {
         super();
     }
-        
+
     public User(String firstName, String lastName) {
         super();
         this.firstName = firstName;
@@ -18,34 +18,43 @@ public class User {
     }
 
     //
-    
+
     public long getId() {
         return id;
     }
+
     public void setId(long id) {
         this.id = id;
     }
+
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     public double getAge() {
         return age;
     }
+
     public void setAge(double age) {
         this.age = age;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }

@@ -10,9 +10,9 @@ public class FruitExceptionMapper implements ExceptionMapper<ConstraintViolation
     @Override
     public Response toResponse(final ConstraintViolationException exception) {
         return Response.status(Response.Status.BAD_REQUEST)
-            .entity(prepareMessage(exception))
-            .type("text/plain")
-            .build();
+                .entity(prepareMessage(exception))
+                .type("text/plain")
+                .build();
     }
 
     private String prepareMessage(ConstraintViolationException exception) {

@@ -76,5 +76,5 @@ public class StreamMapUnitTest {
         assertTrue(titlesForKeyPattern.contains("Design patterns : elements of reusable object-oriented software"));
         assertTrue(titlesForKeyPattern.contains("Effective Java"));
     }
-    
+
 }

@@ -77,10 +77,10 @@ public class CookieCollection implements Collection<Cookie> {
     @Override
     public boolean remove(Object o) {
         if (o instanceof String) {
-            return cookieMap.remove((String)o) != null;
+            return cookieMap.remove((String) o) != null;
         }
         if (o instanceof Cookie) {
-            Cookie c = (Cookie)o;
+            Cookie c = (Cookie) o;
             return cookieMap.remove(c.getName()) != null;
         }
         return false;
@@ -92,7 +92,7 @@ public class CookieCollection implements Collection<Cookie> {
 
     @Override
     public boolean containsAll(Collection<?> collection) {
-        for(Object o : collection) {
+        for (Object o : collection) {
             if (!contains(o)) {
                 return false;
             }
@@ -103,8 +103,8 @@ public class CookieCollection implements Collection<Cookie> {
     @Override
     public boolean addAll(Collection<? extends Cookie> collection) {
         boolean result = false;
-        for(Cookie cookie : collection) {
-            result|= add(cookie);
+        for (Cookie cookie : collection) {
+            result |= add(cookie);
         }
         return result;
     }
@@ -112,8 +112,8 @@ public class CookieCollection implements Collection<Cookie> {
     @Override
     public boolean removeAll(Collection<?> collection) {
         boolean result = false;
-        for(Object cookie : collection) {
-            result|= remove(cookie);
+        for (Object cookie : collection) {
+            result |= remove(cookie);
         }
         return result;
     }
@@ -122,7 +122,7 @@ public class CookieCollection implements Collection<Cookie> {
     public boolean retainAll(Collection<?> collection) {
         boolean result = false;
         Iterator<Map.Entry<String, Cookie>> it = cookieMap.entrySet().iterator();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             Map.Entry<String, Cookie> e = it.next();
             if (!collection.contains(e.getKey()) && !collection.contains(e.getValue())) {
                 it.remove();

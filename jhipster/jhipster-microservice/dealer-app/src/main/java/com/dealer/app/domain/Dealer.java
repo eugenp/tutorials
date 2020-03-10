@@ -84,9 +84,9 @@ public class Dealer implements Serializable {
     @Override
     public String toString() {
         return "Dealer{" +
-            "id=" + id +
-            ", name='" + name + "'" +
-            ", address='" + address + "'" +
-            '}';
+                "id=" + id +
+                ", name='" + name + "'" +
+                ", address='" + address + "'" +
+                '}';
     }
 }

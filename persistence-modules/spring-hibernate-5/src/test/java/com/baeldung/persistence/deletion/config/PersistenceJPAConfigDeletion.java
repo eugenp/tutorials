@@ -10,6 +10,6 @@ public class PersistenceJPAConfigDeletion extends PersistenceJPAConfigL2Cache {
 
     @Override
     protected String[] getPackagesToScan() {
-        return new String[] { "com.baeldung.persistence.deletion.model", "com.baeldung.persistence.model" };
+        return new String[]{"com.baeldung.persistence.deletion.model", "com.baeldung.persistence.model"};
     }
 }

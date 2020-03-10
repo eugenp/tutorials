@@ -20,23 +20,23 @@ abstract class MetricTestBase {
         System.setProperty("servo.pollers", "1000");
         observer = new MemoryMetricObserver();
         PollScheduler
-          .getInstance()
-          .start();
+                .getInstance()
+                .start();
         MetricFilter metricFilter = new BasicMetricFilter(true);
         PollRunnable task = new PollRunnable(new MonitorRegistryMetricPoller(), metricFilter, observer);
         PollScheduler
-          .getInstance()
-          .addPoller(task, 1, SECONDS);
+                .getInstance()
+                .addPoller(task, 1, SECONDS);
     }
 
     @After
     public void stopScheduler() {
         if (PollScheduler
-          .getInstance()
-          .isStarted()) {
+                .getInstance()
+                .isStarted()) {
             PollScheduler
-              .getInstance()
-              .stop();
+                    .getInstance()
+                    .stop();
         }
     }
 }

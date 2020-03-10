@@ -27,13 +27,13 @@ exports.config = {
         defaultTimeoutInterval: 30000
     },
 
-    beforeLaunch: function() {
+    beforeLaunch: function () {
         require('ts-node').register({
             project: ''
         });
     },
 
-    onPrepare: function() {
+    onPrepare: function () {
         browser.driver.manage().window().setSize(1280, 1024);
         jasmine.getEnv().addReporter(new JasmineReporters.JUnitXmlReporter({
             savePath: 'target/reports/e2e',

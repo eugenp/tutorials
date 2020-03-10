@@ -8,7 +8,6 @@ import org.springframework.vault.config.AbstractVaultConfiguration;
 
 /**
  * Example class to configure Vault beans using AbstractVaultConfiguration
- *
  */
 @Configuration
 public class VaultConfig extends AbstractVaultConfiguration {

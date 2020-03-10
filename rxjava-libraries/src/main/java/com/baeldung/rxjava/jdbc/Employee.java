@@ -9,5 +9,5 @@ public interface Employee {
 
     @Column("name")
     String name();
-    
+
 }

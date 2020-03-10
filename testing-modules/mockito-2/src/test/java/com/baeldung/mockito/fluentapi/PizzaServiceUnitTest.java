@@ -72,14 +72,14 @@ public class PizzaServiceUnitTest {
     @Test
     public void givenDeepStubs_whenServiceInvoked_thenPizzaIsBuilt() {
         Mockito.when(anotherbuilder.name(anyString())
-            .size(any(Pizza.PizzaSize.class))
-            .withExtraTopping(anyString())
-            .withStuffedCrust(anyBoolean())
-            .withExtraTopping(anyString())
-            .willCollect(anyBoolean())
-            .applyDiscount(anyInt())
-            .build())
-            .thenReturn(expectedPizza);
+                .size(any(Pizza.PizzaSize.class))
+                .withExtraTopping(anyString())
+                .withStuffedCrust(anyBoolean())
+                .withExtraTopping(anyString())
+                .willCollect(anyBoolean())
+                .applyDiscount(anyInt())
+                .build())
+                .thenReturn(expectedPizza);
 
         PizzaService service = new PizzaService(anotherbuilder);
         assertEquals("Expected Pizza", expectedPizza, service.orderHouseSpecial());

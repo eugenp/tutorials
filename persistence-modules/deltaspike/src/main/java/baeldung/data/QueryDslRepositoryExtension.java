@@ -8,7 +8,8 @@ import javax.inject.Inject;
 
 public class QueryDslRepositoryExtension<E> implements QueryDslSupport, DelegateQueryHandler {
 
-    @Inject private QueryInvocationContext context;
+    @Inject
+    private QueryInvocationContext context;
 
     @Override
     public JPAQuery jpaQuery() {

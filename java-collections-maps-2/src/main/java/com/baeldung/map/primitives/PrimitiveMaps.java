@@ -54,8 +54,8 @@ public class PrimitiveMaps {
     }
 
     private static void troveMap() {
-        double[] doubles = new double[] {1.2, 4.5, 0.3};
-        int[] ints = new int[] {1, 4, 0};
+        double[] doubles = new double[]{1.2, 4.5, 0.3};
+        int[] ints = new int[]{1, 4, 0};
 
         TDoubleIntMap doubleIntMap = new TDoubleIntHashMap(doubles, ints);
 

@@ -4,28 +4,35 @@
           xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
           version="5.0" xml:id="admon.style">
-<refmeta>
-<refentrytitle>admon.style</refentrytitle>
-<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
-</refmeta>
-<refnamediv>
-<refname>admon.style</refname>
-<refpurpose>Specifies the CSS style attribute that should be added to
-admonitions.</refpurpose>
-</refnamediv>
+    <refmeta>
+        <refentrytitle>admon.style</refentrytitle>
+        <refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname>admon.style</refname>
+        <refpurpose>Specifies the CSS style attribute that should be added to
+            admonitions.
+        </refpurpose>
+    </refnamediv>
 
-<refsynopsisdiv>
-<src:fragment xml:id="admon.style.frag"><xsl:param name="admon.style">
-  <xsl:value-of select="concat('margin-', $direction.align.start,
+    <refsynopsisdiv>
+        <src:fragment xml:id="admon.style.frag">
+            <xsl:param name="admon.style">
+                <xsl:value-of select="concat('margin-', $direction.align.start,
            ': 0.5in; margin-', $direction.align.end, ': 0.5in;')"/>
-</xsl:param></src:fragment>
-</refsynopsisdiv>
+            </xsl:param>
+        </src:fragment>
+    </refsynopsisdiv>
 
-<refsection><info><title>Description</title></info>
+    <refsection>
+        <info>
+            <title>Description</title>
+        </info>
 
-<para>Specifies the value of the CSS <tag class="attribute">style</tag>
-attribute that should be added to admonitions.
-</para>
+        <para>Specifies the value of the CSS
+            <tag class="attribute">style</tag>
+            attribute that should be added to admonitions.
+        </para>
 
-</refsection>
+    </refsection>
 </refentry>

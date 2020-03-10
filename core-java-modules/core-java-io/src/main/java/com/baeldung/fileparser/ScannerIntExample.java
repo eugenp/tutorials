@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class ScannerIntExample {
 
     protected static ArrayList<Integer> generateArrayListFromFile(String filename) throws IOException {
-        
+
         ArrayList<Integer> result = new ArrayList<>();
 
         try (Scanner s = new Scanner(new FileReader(filename))) {

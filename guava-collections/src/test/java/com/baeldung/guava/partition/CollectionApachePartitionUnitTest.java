@@ -22,7 +22,7 @@ public class CollectionApachePartitionUnitTest {
 
         // When
         final List<Integer> lastPartition = subSets.get(2);
-        final List<Integer> expectedLastPartition = Lists.<Integer> newArrayList(7, 8);
+        final List<Integer> expectedLastPartition = Lists.<Integer>newArrayList(7, 8);
         assertThat(subSets.size(), equalTo(3));
         assertThat(lastPartition, equalTo(expectedLastPartition));
     }
@@ -36,7 +36,7 @@ public class CollectionApachePartitionUnitTest {
         // When
         intList.add(9);
         final List<Integer> lastPartition = subSets.get(2);
-        final List<Integer> expectedLastPartition = Lists.<Integer> newArrayList(7, 8, 9);
+        final List<Integer> expectedLastPartition = Lists.<Integer>newArrayList(7, 8, 9);
         assertThat(lastPartition, equalTo(expectedLastPartition));
     }
 

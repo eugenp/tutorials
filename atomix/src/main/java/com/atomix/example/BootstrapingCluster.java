@@ -13,13 +13,13 @@ public class BootstrapingCluster {
 
     public static void main(String[] args) {
         Storage storage = Storage.builder()
-          .withDirectory(new File("log"))
-          .withStorageLevel(StorageLevel.DISK)
-          .build();
+                .withDirectory(new File("log"))
+                .withStorageLevel(StorageLevel.DISK)
+                .build();
         AtomixReplica replica = AtomixReplica.builder(new Address("localhost", 8700))
-          .withStorage(storage)
-          .withTransport(new NettyTransport())
-          .build();
+                .withStorage(storage)
+                .withTransport(new NettyTransport())
+                .build();
 
         CompletableFuture<AtomixReplica> completableFuture = replica.bootstrap();
         completableFuture.join();

@@ -51,7 +51,7 @@ public class CopySets {
     // Collectors.toSet
     public static <T extends Serializable> Set<T> copyByCollectorsToSet(Set<T> original) {
         Set<T> copy = original.stream()
-            .collect(Collectors.toSet());
+                .collect(Collectors.toSet());
 
         return copy;
     }

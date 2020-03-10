@@ -40,7 +40,7 @@ public class FileWritingBolt extends BaseRichBolt {
         long beginningTimestamp = tuple.getLongByField("beginningTimestamp");
         long endTimestamp = tuple.getLongByField("endTimestamp");
 
-        if(sumOfOperations > 200) {
+        if (sumOfOperations > 200) {
             AggregatedWindow aggregatedWindow = new AggregatedWindow(sumOfOperations, beginningTimestamp, endTimestamp);
             try {
                 writer.write(objectMapper.writeValueAsString(aggregatedWindow));

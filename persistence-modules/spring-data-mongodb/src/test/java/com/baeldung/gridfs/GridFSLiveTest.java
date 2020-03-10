@@ -32,10 +32,8 @@ import com.mongodb.DBObject;
 import com.mongodb.client.gridfs.model.GridFSFile;
 
 /**
- * 
  * This test requires:
  * * mongodb instance running on the environment
- *
  */
 @ContextConfiguration("file:src/main/resources/mongoConfig.xml")
 @RunWith(SpringJUnit4ClassRunner.class)

@@ -37,9 +37,9 @@ public class WordCountingAppWithCheckpoint {
     public static void main(String[] args) throws InterruptedException {
 
         Logger.getLogger("org")
-            .setLevel(Level.OFF);
+                .setLevel(Level.OFF);
         Logger.getLogger("akka")
-            .setLevel(Level.OFF);
+                .setLevel(Level.OFF);
 
         Map<String, Object> kafkaParams = new HashMap<>();
         kafkaParams.put("bootstrap.servers", "localhost:9092");
@@ -62,17 +62,17 @@ public class WordCountingAppWithCheckpoint {
 
         streamingContext.checkpoint("./.checkpoint");
 
-        JavaInputDStream<ConsumerRecord<String, String>> messages = KafkaUtils.createDirectStream(streamingContext, LocationStrategies.PreferConsistent(), ConsumerStrategies.<String, String> Subscribe(topics, kafkaParams));
+        JavaInputDStream<ConsumerRecord<String, String>> messages = KafkaUtils.createDirectStream(streamingContext, LocationStrategies.PreferConsistent(), ConsumerStrategies.<String, String>Subscribe(topics, kafkaParams));
 
         JavaPairDStream<String, String> results = messages.mapToPair(record -> new Tuple2<>(record.key(), record.value()));
 
         JavaDStream<String> lines = results.map(tuple2 -> tuple2._2());
 
         JavaDStream<String> words = lines.flatMap(x -> Arrays.asList(x.split("\\s+"))
-            .iterator());
+                .iterator());
 
         JavaPairDStream<String, Integer> wordCounts = words.mapToPair(s -> new Tuple2<>(s, 1))
-            .reduceByKey((Function2<Integer, Integer, Integer>) (i1, i2) -> i1 + i2);
+                .reduceByKey((Function2<Integer, Integer, Integer>) (i1, i2) -> i1 + i2);
 
         JavaMapWithStateDStream<String, Integer, Integer, Tuple2<String, Integer>> cumulativeWordCounts = wordCounts.mapWithState(StateSpec.function((word, one, state) -> {
             int sum = one.orElse(0) + (state.exists() ? state.get() : 0);
@@ -87,7 +87,7 @@ public class WordCountingAppWithCheckpoint {
                 List<Word> wordList = Arrays.asList(new Word(tuple._1, tuple._2));
                 JavaRDD<Word> rdd = sparkContext.parallelize(wordList);
                 javaFunctions(rdd).writerBuilder("vocabulary", "words", mapToRow(Word.class))
-                    .saveToCassandra();
+                        .saveToCassandra();
             }
         });
 

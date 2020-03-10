@@ -21,7 +21,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
         registry.addViewController("/")
-            .setViewName("index");
+                .setViewName("index");
     }
 
     @Bean
@@ -56,12 +56,12 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void configureContentNegotiation(final ContentNegotiationConfigurer configurer) {
         configurer.favorPathExtension(true)
-            .favorParameter(true)
-            .parameterName("mediaType")
-            .ignoreAcceptHeader(false)
-            .useRegisteredExtensionsOnly(false)
-            .defaultContentType(MediaType.APPLICATION_JSON)
-            .mediaType("xml", MediaType.APPLICATION_XML)
-            .mediaType("json", MediaType.APPLICATION_JSON);
+                .favorParameter(true)
+                .parameterName("mediaType")
+                .ignoreAcceptHeader(false)
+                .useRegisteredExtensionsOnly(false)
+                .defaultContentType(MediaType.APPLICATION_JSON)
+                .mediaType("xml", MediaType.APPLICATION_XML)
+                .mediaType("json", MediaType.APPLICATION_JSON);
     }
 }

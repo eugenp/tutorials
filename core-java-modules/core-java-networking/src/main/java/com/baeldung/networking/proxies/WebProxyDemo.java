@@ -13,10 +13,10 @@ public class WebProxyDemo {
     public static void main(String... args) throws IOException {
 
         URL weburl = new URL(URL_STRING);
-        Proxy webProxy 
-          = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 3128));
-        HttpURLConnection webProxyConnection 
-            = (HttpURLConnection) weburl.openConnection(webProxy);
+        Proxy webProxy
+                = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 3128));
+        HttpURLConnection webProxyConnection
+                = (HttpURLConnection) weburl.openConnection(webProxy);
         System.out.println(UrlConnectionUtils.contentAsString(webProxyConnection));
     }
 

@@ -24,7 +24,7 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceJPAConfigDeletion.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceJPAConfigDeletion.class}, loader = AnnotationConfigContextLoader.class)
 @DirtiesContext
 public class DeletionIntegrationTest {
 

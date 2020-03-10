@@ -36,21 +36,21 @@ public class FruitResourceIntegrationTest extends JerseyTest {
     @Test
     public void givenGetAllFruit_whenCorrectRequest_thenAllTemplateInvoked() {
         final String response = target("/fruit/all").request()
-            .get(String.class);
+                .get(String.class);
         assertThat(response, allOf(containsString("banana"), containsString("apple"), containsString("kiwi")));
     }
 
     @Test
     public void givenGetFruit_whenCorrectRequest_thenIndexTemplateInvoked() {
         final String response = target("/fruit").request()
-            .get(String.class);
+                .get(String.class);
         assertThat(response, containsString("Welcome Fruit Index Page!"));
     }
 
     @Test
     public void givenGetFruitByName_whenFruitUnknown_thenErrorTemplateInvoked() {
         final String response = target("/fruit/orange").request()
-            .get(String.class);
+                .get(String.class);
         assertThat(response, containsString("Error -  Fruit not found: orange!"));
     }
 
@@ -60,16 +60,16 @@ public class FruitResourceIntegrationTest extends JerseyTest {
         form.param("name", "apple");
         form.param("colour", null);
         Response response = target("fruit/create").request(MediaType.APPLICATION_FORM_URLENCODED)
-            .post(Entity.form(form));
+                .post(Entity.form(form));
 
         assertEquals("Http Response should be 400 ", 400, response.getStatus());
         assertThat(response.readEntity(String.class), containsString("Fruit colour must not be null"));
     }
-    
+
     @Test
     public void givenCreateFruit_whenJsonIsCorrect_thenResponseCodeIsCreated() {
         Response response = target("fruit/created").request()
-            .post(Entity.json("{\"name\":\"strawberry\",\"weight\":20}"));
+                .post(Entity.json("{\"name\":\"strawberry\",\"weight\":20}"));
 
         assertEquals("Http Response should be 201 ", Status.CREATED.getStatusCode(), response.getStatus());
         assertThat(response.readEntity(String.class), containsString("Fruit saved : Fruit [name: strawberry colour: null]"));
@@ -81,7 +81,7 @@ public class FruitResourceIntegrationTest extends JerseyTest {
         form.param("serial", "2345-2345");
 
         Response response = target("fruit/update").request(MediaType.APPLICATION_FORM_URLENCODED)
-            .put(Entity.form(form));
+                .put(Entity.form(form));
 
         assertEquals("Http Response should be 400 ", 400, response.getStatus());
         assertThat(response.readEntity(String.class), containsString("Fruit serial number is not valid"));
@@ -93,7 +93,7 @@ public class FruitResourceIntegrationTest extends JerseyTest {
         fruit.setWeight(1);
 
         Response response = target("fruit/create").request(MediaType.APPLICATION_JSON_TYPE)
-            .post(Entity.entity(fruit, MediaType.APPLICATION_JSON_TYPE));
+                .post(Entity.entity(fruit, MediaType.APPLICATION_JSON_TYPE));
 
         assertEquals("Http Response should be 400 ", 400, response.getStatus());
         assertThat(response.readEntity(String.class), containsString("Fruit weight must be 10 or greater"));
@@ -105,27 +105,27 @@ public class FruitResourceIntegrationTest extends JerseyTest {
         fruit.setName("strawberry");
         fruit.setWeight(20);
         Response response = target("fruit/create").request(MediaType.APPLICATION_JSON_TYPE)
-            .post(Entity.entity(fruit, MediaType.APPLICATION_JSON_TYPE));
+                .post(Entity.entity(fruit, MediaType.APPLICATION_JSON_TYPE));
 
         assertEquals("Http Response should be 204 ", 204, response.getStatus());
 
         final String json = target("fruit/search/strawberry").request()
-            .get(String.class);
+                .get(String.class);
         assertThat(json, containsString("{\"name\":\"strawberry\",\"weight\":20}"));
     }
-    
+
     @Test
     public void givenFruitExists_whenSearching_thenResponseContainsFruitEntity() {
         Fruit fruit = new Fruit();
         fruit.setName("strawberry");
         fruit.setWeight(20);
         Response response = target("fruit/create").request(MediaType.APPLICATION_JSON_TYPE)
-            .post(Entity.entity(fruit, MediaType.APPLICATION_JSON_TYPE));
+                .post(Entity.entity(fruit, MediaType.APPLICATION_JSON_TYPE));
 
         assertEquals("Http Response should be 204 ", 204, response.getStatus());
 
         final Fruit entity = target("fruit/search/strawberry").request()
-            .get(Fruit.class);
+                .get(Fruit.class);
 
         assertEquals("Fruit name: ", "strawberry", entity.getName());
         assertEquals("Fruit weight: ", Integer.valueOf(20), entity.getWeight());
@@ -134,7 +134,7 @@ public class FruitResourceIntegrationTest extends JerseyTest {
     @Test
     public void givenFruit_whenFruitIsInvalid_thenReponseContainsCustomExceptions() {
         final Response response = target("fruit/exception").request()
-            .get();
+                .get();
 
         assertEquals("Http Response should be 400 ", 400, response.getStatus());
         String responseString = response.readEntity(String.class);

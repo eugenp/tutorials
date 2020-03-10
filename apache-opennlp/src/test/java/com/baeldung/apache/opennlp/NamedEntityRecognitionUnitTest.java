@@ -4,21 +4,24 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import opennlp.tools.namefind.NameFinderME;
 import opennlp.tools.namefind.TokenNameFinderModel;
 import opennlp.tools.tokenize.SimpleTokenizer;
 import opennlp.tools.util.Span;
+
 import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 
 public class NamedEntityRecognitionUnitTest {
 
     @Test
     public void givenEnglishPersonModel_whenNER_thenPersonsAreDetected() throws Exception {
-        
+
         SimpleTokenizer tokenizer = SimpleTokenizer.INSTANCE;
         String[] tokens = tokenizer.tokenize("John is 26 years old. His best friend's name is Leonard. He has a sister named Penny.");
-        
+
         InputStream inputStreamNameFinder = getClass().getResourceAsStream("/models/en-ner-person.bin");
         TokenNameFinderModel model = new TokenNameFinderModel(inputStreamNameFinder);
         NameFinderME nameFinderME = new NameFinderME(model);
@@ -33,7 +36,7 @@ public class NamedEntityRecognitionUnitTest {
             }
             k++;
         }
-        assertThat(names).contains("John","Leonard","Penny");
+        assertThat(names).contains("John", "Leonard", "Penny");
     }
 
 }

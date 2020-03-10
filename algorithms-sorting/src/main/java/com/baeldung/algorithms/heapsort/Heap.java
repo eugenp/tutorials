@@ -66,7 +66,7 @@ public class Heap<E extends Comparable<E>> {
     public boolean isEmpty() {
         return elements.isEmpty();
     }
-    
+
     private boolean isRoot(int index) {
         return index == 0;
     }
@@ -74,7 +74,7 @@ public class Heap<E extends Comparable<E>> {
     private int smallerChildIndex(int index) {
         int leftChildIndex = leftChildIndex(index);
         int rightChildIndex = rightChildIndex(index);
-        
+
         if (!isValidIndex(rightChildIndex)) {
             return leftChildIndex;
         }

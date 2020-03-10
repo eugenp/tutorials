@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
 
 @Configuration
-@ComponentScan(basePackages="com.baeldung")
+@ComponentScan(basePackages = "com.baeldung")
 @EnableWebMvc
 public class ThemeMVCConfig implements WebMvcConfigurer {
 

@@ -47,7 +47,7 @@ public class BirtReportService implements ApplicationContextAware, DisposableBea
         config.getAppContext().put("spring", this.context);
         Platform.startup(config);
         IReportEngineFactory factory = (IReportEngineFactory) Platform
-          .createFactoryObject(IReportEngineFactory.EXTENSION_REPORT_ENGINE_FACTORY);
+                .createFactoryObject(IReportEngineFactory.EXTENSION_REPORT_ENGINE_FACTORY);
         birtEngine = factory.createReportEngine(config);
         imageFolder = System.getProperty("user.dir") + File.separatorChar + reportsPath + imagesPath;
         loadReports();
@@ -60,7 +60,6 @@ public class BirtReportService implements ApplicationContextAware, DisposableBea
 
     /**
      * Load report files to memory
-     *
      */
     public void loadReports() throws EngineException {
         File folder = new File(reportsPath);
@@ -70,7 +69,7 @@ public class BirtReportService implements ApplicationContextAware, DisposableBea
             }
 
             reports.put(file.replace(".rptdesign", ""),
-              birtEngine.openReportDesign(folder.getAbsolutePath() + File.separator + file));
+                    birtEngine.openReportDesign(folder.getAbsolutePath() + File.separator + file));
 
         }
     }
@@ -84,7 +83,7 @@ public class BirtReportService implements ApplicationContextAware, DisposableBea
             for (Object h : task.getParameterDefns(false)) {
                 IParameterDefn def = (IParameterDefn) h;
                 reportItem.getParameters()
-                  .add(new Report.Parameter(def.getPromptText(), def.getName(), getParameterType(def)));
+                        .add(new Report.Parameter(def.getPromptText(), def.getName(), getParameterType(def)));
             }
             response.add(reportItem);
         }
@@ -100,14 +99,14 @@ public class BirtReportService implements ApplicationContextAware, DisposableBea
 
     public void generateMainReport(String reportName, OutputType output, HttpServletResponse response, HttpServletRequest request) {
         switch (output) {
-        case HTML:
-            generateHTMLReport(reports.get(reportName), response, request);
-            break;
-        case PDF:
-            generatePDFReport(reports.get(reportName), response, request);
-            break;
-        default:
-            throw new IllegalArgumentException("Output type not recognized:" + output);
+            case HTML:
+                generateHTMLReport(reports.get(reportName), response, request);
+                break;
+            case PDF:
+                generatePDFReport(reports.get(reportName), response, request);
+                break;
+            default:
+                throw new IllegalArgumentException("Output type not recognized:" + output);
         }
     }
 

@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "CAR")
 @NamedStoredProcedureQueries({
-        @NamedStoredProcedureQuery(name = "findByYearProcedure", procedureName = "FIND_CAR_BY_YEAR", resultClasses = { Car.class }, parameters = { @StoredProcedureParameter(name = "p_year", type = Integer.class, mode = ParameterMode.IN) }) })
+        @NamedStoredProcedureQuery(name = "findByYearProcedure", procedureName = "FIND_CAR_BY_YEAR", resultClasses = {Car.class}, parameters = {@StoredProcedureParameter(name = "p_year", type = Integer.class, mode = ParameterMode.IN)})})
 public class Car {
 
     private long id;

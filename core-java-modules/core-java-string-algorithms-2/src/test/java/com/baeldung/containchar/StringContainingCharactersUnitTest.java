@@ -24,8 +24,8 @@ public class StringContainingCharactersUnitTest {
         boolean inputMatches = true;
         for (Pattern inputRegex : inputRegexes) {
             if (!inputRegex
-              .matcher(input)
-              .matches()) {
+                    .matcher(input)
+                    .matches()) {
                 inputMatches = false;
             }
         }
@@ -102,35 +102,35 @@ public class StringContainingCharactersUnitTest {
     public void givenSingleRegex_whenMatchingCorrectString_thenMatches() {
         String validInput = "Ab3;";
         assertTrue(Pattern
-          .compile(regex)
-          .matcher(validInput)
-          .matches());
+                .compile(regex)
+                .matcher(validInput)
+                .matches());
     }
 
     @Test
     public void givenSingleRegex_whenMatchingWrongStrings_thenNotMatching() {
         String invalidInput = "Ab3";
         assertFalse(Pattern
-          .compile(regex)
-          .matcher(invalidInput)
-          .matches());
+                .compile(regex)
+                .matcher(invalidInput)
+                .matches());
 
         invalidInput = "Ab;";
         assertFalse(Pattern
-          .compile(regex)
-          .matcher(invalidInput)
-          .matches());
+                .compile(regex)
+                .matcher(invalidInput)
+                .matches());
 
         invalidInput = "A3;";
         assertFalse(Pattern
-          .compile(regex)
-          .matcher(invalidInput)
-          .matches());
+                .compile(regex)
+                .matcher(invalidInput)
+                .matches());
 
         invalidInput = "b3;";
         assertFalse(Pattern
-          .compile(regex)
-          .matcher(invalidInput)
-          .matches());
+                .compile(regex)
+                .matcher(invalidInput)
+                .matches());
     }
 }

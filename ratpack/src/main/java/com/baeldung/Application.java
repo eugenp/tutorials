@@ -38,35 +38,35 @@ public class Application {
         final Action<BindingsSpec> bindingsSpecAction = bindings -> bindings.module(HikariModule.class, hikariConfigAction);
         final HttpClient httpClient = HttpClient.of(httpClientSpec -> {
             httpClientSpec.poolSize(10)
-                .connectTimeout(Duration.of(60, ChronoUnit.SECONDS))
-                .maxContentLength(ServerConfig.DEFAULT_MAX_CONTENT_LENGTH)
-                .responseMaxChunkSize(16384)
-                .readTimeout(Duration.of(60, ChronoUnit.SECONDS))
-                .byteBufAllocator(PooledByteBufAllocator.DEFAULT);
+                    .connectTimeout(Duration.of(60, ChronoUnit.SECONDS))
+                    .maxContentLength(ServerConfig.DEFAULT_MAX_CONTENT_LENGTH)
+                    .responseMaxChunkSize(16384)
+                    .readTimeout(Duration.of(60, ChronoUnit.SECONDS))
+                    .byteBufAllocator(PooledByteBufAllocator.DEFAULT);
         });
         final Function<Registry, Registry> registryFunction = Guice.registry(bindingsSpecAction);
 
         final Action<Chain> chainAction = chain -> chain.all(new RequestValidatorFilter())
-            .get(ctx -> ctx.render("Welcome to baeldung ratpack!!!"))
-            .get("data/employees", ctx -> ctx.render(Jackson.json(createEmpList())))
-            .get(":name", ctx -> ctx.render("Hello " + ctx.getPathTokens()
-                .get("name") + "!!!"))
-            .post(":amount", ctx -> ctx.render(" Amount $" + ctx.getPathTokens()
-                .get("amount") + " added successfully !!!"));
+                .get(ctx -> ctx.render("Welcome to baeldung ratpack!!!"))
+                .get("data/employees", ctx -> ctx.render(Jackson.json(createEmpList())))
+                .get(":name", ctx -> ctx.render("Hello " + ctx.getPathTokens()
+                        .get("name") + "!!!"))
+                .post(":amount", ctx -> ctx.render(" Amount $" + ctx.getPathTokens()
+                        .get("amount") + " added successfully !!!"));
 
         final Action<Chain> routerChainAction = routerChain -> {
             routerChain.path("redirect", new RedirectHandler())
-                .prefix("employee", empChain -> {
-                    empChain.get(":id", new EmployeeHandler());
-                });
+                    .prefix("employee", empChain -> {
+                        empChain.get(":id", new EmployeeHandler());
+                    });
         };
         final Action<RatpackServerSpec> ratpackServerSpecAction = serverSpec -> serverSpec.registry(registryFunction)
-            .registryOf(registrySpec -> {
-                registrySpec.add(EmployeeRepository.class, new EmployeeRepositoryImpl());
-                registrySpec.add(HttpClient.class, httpClient);
-            })
-            .handlers(chain -> chain.insert(routerChainAction)
-                .insert(chainAction));
+                .registryOf(registrySpec -> {
+                    registrySpec.add(EmployeeRepository.class, new EmployeeRepositoryImpl());
+                    registrySpec.add(HttpClient.class, httpClient);
+                })
+                .handlers(chain -> chain.insert(routerChainAction)
+                        .insert(chainAction));
 
         RatpackServer.start(ratpackServerSpecAction);
     }

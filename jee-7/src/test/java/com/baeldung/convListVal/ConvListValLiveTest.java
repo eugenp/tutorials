@@ -28,31 +28,31 @@ public class ConvListValLiveTest {
     private URL deploymentUrl;
 
     private static final String WEBAPP_SRC = "src/main/webapp";
-    
+
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
-        return ( ShrinkWrap.create(
-        		WebArchive.class, "jee7.war").
-        		addClasses(ConvListVal.class, MyListener.class)).
-        		addAsWebResource(new File(WEBAPP_SRC, "ConvListVal.xhtml")).
-        		addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
+        return (ShrinkWrap.create(
+                WebArchive.class, "jee7.war").
+                addClasses(ConvListVal.class, MyListener.class)).
+                addAsWebResource(new File(WEBAPP_SRC, "ConvListVal.xhtml")).
+                addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }
-    
+
     @Drone
     WebDriver browser;
-    
+
     @ArquillianResource
     URL contextPath;
 
-    @FindBy(id="myForm:age")
+    @FindBy(id = "myForm:age")
     private WebElement ageInput;
 
-    @FindBy(id="myForm:average")
+    @FindBy(id = "myForm:average")
     private WebElement averageInput;
-    
-    @FindBy(id="myForm:send")
+
+    @FindBy(id = "myForm:send")
     private WebElement sendButton;
-    
+
     @Test
     @RunAsClient
     public void givenAge_whenAgeInvalid_thenErrorMessage() throws Exception {
@@ -60,7 +60,7 @@ public class ConvListValLiveTest {
         ageInput.sendKeys("stringage");
         guardHttp(sendButton).click();
         Assert.assertTrue("Show Age error message", browser.findElements(By.id("myForm:ageError")).size() > 0);
-    }	
+    }
 
     @Test
     @RunAsClient
@@ -69,7 +69,7 @@ public class ConvListValLiveTest {
         averageInput.sendKeys("stringaverage");
         guardHttp(sendButton).click();
         Assert.assertTrue("Show Average error message", browser.findElements(By.id("myForm:averageError")).size() > 0);
-    }	
+    }
 
     @Test
     @RunAsClient
@@ -78,7 +78,7 @@ public class ConvListValLiveTest {
         averageInput.sendKeys("123");
         guardHttp(sendButton).click();
         Assert.assertTrue("Show Date error message", browser.findElements(By.id("myForm:myDateError")).size() > 0);
-    }	
+    }
 
     @Test
     @RunAsClient
@@ -87,7 +87,7 @@ public class ConvListValLiveTest {
         averageInput.sendKeys("aaa");
         guardHttp(sendButton).click();
         Assert.assertTrue("Show Surname error message", browser.findElements(By.id("myForm:surnameError")).size() > 0);
-    }	
+    }
 
     @Test
     @RunAsClient
@@ -96,6 +96,6 @@ public class ConvListValLiveTest {
         averageInput.sendKeys("aaaaabbbbbc");
         guardHttp(sendButton).click();
         Assert.assertTrue("Show Surname error message", browser.findElements(By.id("myForm:surnameError")).size() > 0);
-    }	
-    
+    }
+
 }

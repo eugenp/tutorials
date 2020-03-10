@@ -10,20 +10,26 @@ import org.springframework.remoting.caucho.BurlapServiceExporter;
 import org.springframework.remoting.caucho.HessianServiceExporter;
 import org.springframework.remoting.support.RemoteExporter;
 
-@Configuration @ComponentScan @EnableAutoConfiguration public class Server {
+@Configuration
+@ComponentScan
+@EnableAutoConfiguration
+public class Server {
 
-    @Bean CabBookingService bookingService() {
+    @Bean
+    CabBookingService bookingService() {
         return new CabBookingServiceImpl();
     }
 
-    @Bean(name = "/booking") RemoteExporter hessianService(CabBookingService service) {
+    @Bean(name = "/booking")
+    RemoteExporter hessianService(CabBookingService service) {
         HessianServiceExporter exporter = new HessianServiceExporter();
         exporter.setService(bookingService());
         exporter.setServiceInterface(CabBookingService.class);
         return exporter;
     }
 
-    @Bean(name = "/b_booking") RemoteExporter burlapService(CabBookingService service) {
+    @Bean(name = "/b_booking")
+    RemoteExporter burlapService(CabBookingService service) {
         BurlapServiceExporter exporter = new BurlapServiceExporter();
         exporter.setService(bookingService());
         exporter.setServiceInterface(CabBookingService.class);

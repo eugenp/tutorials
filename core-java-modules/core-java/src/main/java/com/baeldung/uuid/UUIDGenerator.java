@@ -39,8 +39,8 @@ public class UUIDGenerator {
 
     /**
      * Type 3 UUID Generation
-     * 
-     * @throws UnsupportedEncodingException 
+     *
+     * @throws UnsupportedEncodingException
      */
     public static UUID generateType3UUID(String namespace, String name) throws UnsupportedEncodingException {
         String source = namespace + name;
@@ -51,8 +51,8 @@ public class UUIDGenerator {
 
     /**
      * Type 5 UUID Generation
-     * 
-     * @throws UnsupportedEncodingException 
+     *
+     * @throws UnsupportedEncodingException
      */
     public static UUID generateType5UUID(String namespace, String name) throws UnsupportedEncodingException {
         String source = namespace + name;
@@ -91,15 +91,15 @@ public class UUIDGenerator {
 
     /**
      * Unique Keys Generation Using Message Digest and Type 4 UUID
-     * 
-     * @throws NoSuchAlgorithmException 
-     * @throws UnsupportedEncodingException 
+     *
+     * @throws NoSuchAlgorithmException
+     * @throws UnsupportedEncodingException
      */
     public static String generateUniqueKeysWithUUIDAndMessageDigest() throws NoSuchAlgorithmException, UnsupportedEncodingException {
         MessageDigest salt = MessageDigest.getInstance("SHA-256");
         salt.update(UUID.randomUUID()
-            .toString()
-            .getBytes("UTF-8"));
+                .toString()
+                .getBytes("UTF-8"));
         String digest = bytesToHex(salt.digest());
         return digest;
     }

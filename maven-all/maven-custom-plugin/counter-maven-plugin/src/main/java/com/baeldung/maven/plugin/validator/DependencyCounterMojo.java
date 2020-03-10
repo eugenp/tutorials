@@ -13,9 +13,8 @@ import org.apache.maven.project.MavenProject;
 
 /**
  * Counts the number of maven dependencies of a project.
- * 
+ * <p>
  * It can be filtered by scope.
- *
  */
 @Mojo(name = "dependency-counter", defaultPhase = LifecyclePhase.COMPILE)
 public class DependencyCounterMojo extends AbstractMojo {
@@ -36,8 +35,8 @@ public class DependencyCounterMojo extends AbstractMojo {
         List<Dependency> dependencies = project.getDependencies();
 
         long numDependencies = dependencies.stream()
-            .filter(d -> (scope == null || scope.isEmpty()) || scope.equals(d.getScope()))
-            .count();
+                .filter(d -> (scope == null || scope.isEmpty()) || scope.equals(d.getScope()))
+                .count();
 
         getLog().info("Number of dependencies: " + numDependencies);
     }

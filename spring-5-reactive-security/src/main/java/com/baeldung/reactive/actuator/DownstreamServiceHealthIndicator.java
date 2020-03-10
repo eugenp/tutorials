@@ -11,7 +11,7 @@ public class DownstreamServiceHealthIndicator implements ReactiveHealthIndicator
     @Override
     public Mono<Health> health() {
         return checkDownstreamServiceHealth().onErrorResume(
-          ex -> Mono.just(new Health.Builder().down(ex).build())
+                ex -> Mono.just(new Health.Builder().down(ex).build())
         );
     }
 

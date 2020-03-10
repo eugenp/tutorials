@@ -21,7 +21,7 @@ public class ParticipantController {
             Model model
     ) {
         model.addAttribute("id", id);
-        List<Integer> userIds = asList(1,2,3,4);
+        List<Integer> userIds = asList(1, 2, 3, 4);
         model.addAttribute("userIds", userIds);
         return "participants";
     }

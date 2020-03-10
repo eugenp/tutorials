@@ -37,7 +37,7 @@ class UseLocalDate {
 
     LocalDate getFirstDayOfMonth() {
         LocalDate firstDayOfMonth = LocalDate.now()
-            .with(TemporalAdjusters.firstDayOfMonth());
+                .with(TemporalAdjusters.firstDayOfMonth());
         return firstDayOfMonth;
     }
 

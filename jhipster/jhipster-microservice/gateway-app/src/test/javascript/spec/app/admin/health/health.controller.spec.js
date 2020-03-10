@@ -12,7 +12,7 @@ describe('Controller Tests', function () {
             var locals = {
                 '$scope': $scope
             };
-            createController = function() {
+            createController = function () {
                 $injector.get('$controller')('JhiHealthCheckController as vm', locals);
             };
             createController();

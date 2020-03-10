@@ -18,8 +18,8 @@ public enum ConfigElement {
 
     public static ConfigElement from(String value) {
         return Arrays.stream(values())
-          .filter(element -> element.value.equals(value))
-          .findFirst()
-          .orElseThrow(() -> new IllegalArgumentException("The argument " + value + " doesn't match any ConfigElement"));
+                .filter(element -> element.value.equals(value))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("The argument " + value + " doesn't match any ConfigElement"));
     }
 }

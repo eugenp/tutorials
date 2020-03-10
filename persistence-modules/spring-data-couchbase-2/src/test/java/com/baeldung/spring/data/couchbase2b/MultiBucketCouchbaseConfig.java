@@ -17,7 +17,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import com.couchbase.client.java.Bucket;
 
 @Configuration
-@EnableCouchbaseRepositories(basePackages = { "com.baeldung.spring.data.couchbase2b" })
+@EnableCouchbaseRepositories(basePackages = {"com.baeldung.spring.data.couchbase2b"})
 public class MultiBucketCouchbaseConfig extends AbstractCouchbaseConfiguration {
 
     public static final List<String> NODE_LIST = Arrays.asList("localhost");

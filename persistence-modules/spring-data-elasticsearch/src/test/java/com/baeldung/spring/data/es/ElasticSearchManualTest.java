@@ -28,11 +28,9 @@ import com.baeldung.spring.data.es.model.Author;
 import com.baeldung.spring.data.es.service.ArticleService;
 
 /**
- * 
  * This Manual test requires:
  * * Elasticsearch instance running on host
  * * with cluster name = elasticsearch
- *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Config.class)
@@ -89,7 +87,7 @@ public class ElasticSearchManualTest {
     public void givenPersistedArticles_whenSearchByAuthorsName_thenRightFound() {
 
         final Page<Article> articleByAuthorName = articleService
-          .findByAuthorName(johnSmith.getName(), PageRequest.of(0, 10));
+                .findByAuthorName(johnSmith.getName(), PageRequest.of(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
@@ -115,7 +113,7 @@ public class ElasticSearchManualTest {
     public void givenPersistedArticles_whenUseRegexQuery_thenRightArticlesFound() {
 
         final SearchQuery searchQuery = new NativeSearchQueryBuilder().withFilter(regexpQuery("title", ".*data.*"))
-          .build();
+                .build();
         final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
 
         assertEquals(1, articles.size());
@@ -142,7 +140,7 @@ public class ElasticSearchManualTest {
         final String articleTitle = "Spring Data Elasticsearch";
 
         final SearchQuery searchQuery = new NativeSearchQueryBuilder()
-          .withQuery(matchQuery("title", articleTitle).minimumShouldMatch("75%")).build();
+                .withQuery(matchQuery("title", articleTitle).minimumShouldMatch("75%")).build();
         final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
         assertEquals(1, articles.size());
         final long count = articleService.count();
@@ -155,7 +153,7 @@ public class ElasticSearchManualTest {
     @Test
     public void givenSavedDoc_whenOneTermMatches_thenFindByTitle() {
         final SearchQuery searchQuery = new NativeSearchQueryBuilder()
-          .withQuery(matchQuery("title", "Search engines").operator(AND)).build();
+                .withQuery(matchQuery("title", "Search engines").operator(AND)).build();
         final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
         assertEquals(1, articles.size());
     }

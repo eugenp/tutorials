@@ -32,50 +32,50 @@ public class EC2Application {
     static {
         // put your accesskey and secretkey here
         credentials = new BasicAWSCredentials(
-            "<AWS accesskey>", 
-            "<AWS secretkey>"
+                "<AWS accesskey>",
+                "<AWS secretkey>"
         );
     }
 
     public static void main(String[] args) {
-       
+
         // Set up the client
         AmazonEC2 ec2Client = AmazonEC2ClientBuilder.standard()
-            .withCredentials(new AWSStaticCredentialsProvider(credentials))
-            .withRegion(Regions.US_EAST_1)
-            .build();
+                .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                .withRegion(Regions.US_EAST_1)
+                .build();
 
         // Create a security group
         CreateSecurityGroupRequest createSecurityGroupRequest = new CreateSecurityGroupRequest().withGroupName("BaeldungSecurityGroup")
-            .withDescription("Baeldung Security Group");
+                .withDescription("Baeldung Security Group");
         ec2Client.createSecurityGroup(createSecurityGroupRequest);
 
         // Allow HTTP and SSH traffic
         IpRange ipRange1 = new IpRange().withCidrIp("0.0.0.0/0");
 
-        IpPermission ipPermission1 = new IpPermission().withIpv4Ranges(Arrays.asList(new IpRange[] { ipRange1 }))
-            .withIpProtocol("tcp")
-            .withFromPort(80)
-            .withToPort(80);
+        IpPermission ipPermission1 = new IpPermission().withIpv4Ranges(Arrays.asList(new IpRange[]{ipRange1}))
+                .withIpProtocol("tcp")
+                .withFromPort(80)
+                .withToPort(80);
 
-        IpPermission ipPermission2 = new IpPermission().withIpv4Ranges(Arrays.asList(new IpRange[] { ipRange1 }))
-            .withIpProtocol("tcp")
-            .withFromPort(22)
-            .withToPort(22);
+        IpPermission ipPermission2 = new IpPermission().withIpv4Ranges(Arrays.asList(new IpRange[]{ipRange1}))
+                .withIpProtocol("tcp")
+                .withFromPort(22)
+                .withToPort(22);
 
         AuthorizeSecurityGroupIngressRequest authorizeSecurityGroupIngressRequest = new AuthorizeSecurityGroupIngressRequest()
-            .withGroupName("BaeldungSecurityGroup")
-            .withIpPermissions(ipPermission1, ipPermission2);
+                .withGroupName("BaeldungSecurityGroup")
+                .withIpPermissions(ipPermission1, ipPermission2);
 
         ec2Client.authorizeSecurityGroupIngress(authorizeSecurityGroupIngressRequest);
 
         // Create KeyPair
         CreateKeyPairRequest createKeyPairRequest = new CreateKeyPairRequest()
-            .withKeyName("baeldung-key-pair");
+                .withKeyName("baeldung-key-pair");
         CreateKeyPairResult createKeyPairResult = ec2Client.createKeyPair(createKeyPairRequest);
         String privateKey = createKeyPairResult
-            .getKeyPair()
-            .getKeyMaterial(); // make sure you keep it, the private key, Amazon doesn't store the private key
+                .getKeyPair()
+                .getKeyMaterial(); // make sure you keep it, the private key, Amazon doesn't store the private key
 
         // See what key-pairs you've got
         DescribeKeyPairsRequest describeKeyPairsRequest = new DescribeKeyPairsRequest();
@@ -83,55 +83,55 @@ public class EC2Application {
 
         // Launch an Amazon Instance
         RunInstancesRequest runInstancesRequest = new RunInstancesRequest().withImageId("ami-97785bed") // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html | https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/usingsharedamis-finding.html
-            .withInstanceType("t2.micro") // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html
-            .withMinCount(1)
-            .withMaxCount(1)
-            .withKeyName("baeldung-key-pair") // optional - if not present, can't connect to instance
-            .withSecurityGroups("BaeldungSecurityGroup");
+                .withInstanceType("t2.micro") // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html
+                .withMinCount(1)
+                .withMaxCount(1)
+                .withKeyName("baeldung-key-pair") // optional - if not present, can't connect to instance
+                .withSecurityGroups("BaeldungSecurityGroup");
 
         String yourInstanceId = ec2Client.runInstances(runInstancesRequest).getReservation().getInstances().get(0).getInstanceId();
 
         // Start an Instance
         StartInstancesRequest startInstancesRequest = new StartInstancesRequest()
-            .withInstanceIds(yourInstanceId);
+                .withInstanceIds(yourInstanceId);
 
         ec2Client.startInstances(startInstancesRequest);
 
         // Monitor Instances
         MonitorInstancesRequest monitorInstancesRequest = new MonitorInstancesRequest()
-            .withInstanceIds(yourInstanceId);
+                .withInstanceIds(yourInstanceId);
 
         ec2Client.monitorInstances(monitorInstancesRequest);
 
         UnmonitorInstancesRequest unmonitorInstancesRequest = new UnmonitorInstancesRequest()
-            .withInstanceIds(yourInstanceId);
+                .withInstanceIds(yourInstanceId);
 
         ec2Client.unmonitorInstances(unmonitorInstancesRequest);
 
         // Reboot an Instance
 
         RebootInstancesRequest rebootInstancesRequest = new RebootInstancesRequest()
-            .withInstanceIds(yourInstanceId);
+                .withInstanceIds(yourInstanceId);
 
         ec2Client.rebootInstances(rebootInstancesRequest);
 
         // Stop an Instance
         StopInstancesRequest stopInstancesRequest = new StopInstancesRequest()
-            .withInstanceIds(yourInstanceId);
+                .withInstanceIds(yourInstanceId);
 
         ec2Client.stopInstances(stopInstancesRequest)
-            .getStoppingInstances()
-            .get(0)
-            .getPreviousState()
-            .getName();
+                .getStoppingInstances()
+                .get(0)
+                .getPreviousState()
+                .getName();
 
         // Describe an Instance
         DescribeInstancesRequest describeInstancesRequest = new DescribeInstancesRequest();
         DescribeInstancesResult response = ec2Client.describeInstances(describeInstancesRequest);
         System.out.println(response.getReservations()
-            .get(0)
-            .getInstances()
-            .get(0)
-            .getKernelId());
+                .get(0)
+                .getInstances()
+                .get(0)
+                .getKernelId());
     }
 }

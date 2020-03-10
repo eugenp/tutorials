@@ -15,7 +15,7 @@ public class Animal {
     }
 
     public void makeNoise(Integer repetitions) {
-        while(repetitions != 0) {
+        while (repetitions != 0) {
             logger.info("generic animal noise countdown " + repetitions);
             repetitions -= 1;
         }

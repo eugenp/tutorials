@@ -35,49 +35,49 @@ public class MathNewMethodsUnitTest {
     public void whenNegateExactInteger_thenExpectCorrectArithmeticResult() {
         assertEquals(-100, Math.negateExact(100));                // Returns -100
     }
-    
-    @Test(expected = ArithmeticException.class) 
+
+    @Test(expected = ArithmeticException.class)
     public void whenAddToMaxInteger_thenThrowsArithmeticException() {
         Math.addExact(Integer.MAX_VALUE, 1);                      // Throws ArithmeticException
     }
-    
-    @Test(expected = ArithmeticException.class) 
+
+    @Test(expected = ArithmeticException.class)
     public void whenDecrementMinInteger_thenThrowsArithmeticException() {
         Math.decrementExact(Integer.MIN_VALUE);                   // Throws ArithmeticException
     }
-    
-    @Test(expected = ArithmeticException.class) 
+
+    @Test(expected = ArithmeticException.class)
     public void whenIncrementMaxLong_thenThrowsArithmeticException() {
         Math.incrementExact(Long.MAX_VALUE);                      // Throws ArithmeticException
     }
-    
-    @Test(expected = ArithmeticException.class) 
+
+    @Test(expected = ArithmeticException.class)
     public void whenMultiplyMaxLong_thenThrowsArithmeticException() {
         Math.multiplyExact(Long.MAX_VALUE, 2);                    // Throws ArithmeticException
     }
-    
-    @Test(expected = ArithmeticException.class) 
+
+    @Test(expected = ArithmeticException.class)
     public void whenNegateMinInteger_thenThrowsArithmeticException() {
         Math.negateExact(Integer.MIN_VALUE);                      // MinInt value: −2.147.483.648, but MaxInt Value: 2.147.483.647  => Throws ArithmeticException
     }
-    
-    @Test(expected = ArithmeticException.class) 
+
+    @Test(expected = ArithmeticException.class)
     public void whenSubstractFromMinInteger_thenThrowsArithmeticException() {
         Math.subtractExact(Integer.MIN_VALUE, 1);
     }
-    
+
     @Test
     public void whenFloorDivTwoIntegers_thenExpectCorrectArithmeticResult() {
         assertEquals(3, Math.floorDiv(7, 2));                     // Exact quotient is 3.5 so floor(3.5) == 3
         assertEquals(-4, Math.floorDiv(-7, 2));                   // Exact quotient is -3.5 so floor(-3.5) == -4
     }
-    
+
     @Test
     public void whenModDivTwoIntegers_thenExpectCorrectArithmeticResult() {
         assertEquals(2, Math.floorMod(5, 3));                     // Returns 2: floorMod for positive numbers returns the same as % operator
         assertEquals(1, Math.floorMod(-5, 3));                    // Returns 1 and not 2 because floorDiv(-5, 3) is -2 and not -1 and (-2*3) + (1) = -5
     }
-    
+
     @Test
     public void whenNextDownOfDouble_thenExpectCorrectNumber() {
         double number = 3.0;
@@ -85,5 +85,5 @@ public class MathNewMethodsUnitTest {
         double delta = 0.00000001;
         assertEquals(expected, Math.nextDown(number), delta);     // The delta defines the accepted error range
     }
-    
+
 }

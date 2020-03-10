@@ -11,10 +11,9 @@ import org.springframework.vault.config.EnvironmentVaultConfiguration;
 
 /**
  * Example class to configure Vault beans using EnvironmentVaultConfiguration
- *
  */
 @Configuration
-@PropertySource(value = { "vault-config.properties" })
+@PropertySource(value = {"vault-config.properties"})
 @Import(value = EnvironmentVaultConfiguration.class)
 public class VaultEnvironmentConfig {
 

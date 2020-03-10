@@ -32,9 +32,9 @@ public class ReactiveIntegrationTest {
     @Test
     public void whenFluxReactiveEndpointIsConsumed_thenCorrectOutput() throws InterruptedException {
         client.get().uri("/foos")
-            .retrieve()
-            .bodyToFlux(Foo.class).log()
-            .subscribe(System.out::println);
+                .retrieve()
+                .bodyToFlux(Foo.class).log()
+                .subscribe(System.out::println);
 
         System.out.println();
     }

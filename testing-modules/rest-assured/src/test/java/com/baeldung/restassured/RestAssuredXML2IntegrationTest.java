@@ -29,22 +29,22 @@ public class RestAssuredXML2IntegrationTest {
         RestAssured.port = PORT;
         configureFor("localhost", PORT);
         stubFor(get(urlEqualTo(EVENTS_PATH)).willReturn(
-          aResponse().withStatus(200)
-            .withHeader("Content-Type", APPLICATION_XML)
-            .withBody(TEACHERS)));
+                aResponse().withStatus(200)
+                        .withHeader("Content-Type", APPLICATION_XML)
+                        .withBody(TEACHERS)));
     }
 
     @Test
     public void givenUrl_whenVerifiesScienceTeacherFromXml_thenCorrect() {
         get("/teachers")
-          .then()
-          .body("teachers.teacher.find { it.@department == 'science' }.subject",
-            hasItems("math", "physics"));
+                .then()
+                .body("teachers.teacher.find { it.@department == 'science' }.subject",
+                        hasItems("math", "physics"));
     }
 
     private static String getXml() {
         return Util.inputStreamToString(RestAssuredXML2IntegrationTest.class
-          .getResourceAsStream("/teachers.xml"));
+                .getResourceAsStream("/teachers.xml"));
     }
 
     @AfterClass

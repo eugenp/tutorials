@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { MethodValidationConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {MethodValidationConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class ContainerValidationIntegrationTest {
 
     @Autowired
@@ -38,7 +38,7 @@ public class ContainerValidationIntegrationTest {
     public void whenValidationWithValidMethodParameters_thenNoException() {
 
         reservationManagement.createReservation(LocalDate.now()
-            .plusDays(1), 1, new Customer("William", "Smith"));
+                .plusDays(1), 1, new Customer("William", "Smith"));
     }
 
     @Test
@@ -52,10 +52,10 @@ public class ContainerValidationIntegrationTest {
     public void whenCrossParameterValidationWithValidParameters_thenNoException() {
 
         reservationManagement.createReservation(LocalDate.now()
-            .plusDays(1),
-            LocalDate.now()
-                .plusDays(2),
-            new Customer("William", "Smith"));
+                        .plusDays(1),
+                LocalDate.now()
+                        .plusDays(2),
+                new Customer("William", "Smith"));
     }
 
     @Test
@@ -72,10 +72,10 @@ public class ContainerValidationIntegrationTest {
         customer.setFirstName("John");
         customer.setLastName("Doe");
         Reservation reservation = new Reservation(LocalDate.now()
-            .plusDays(1),
-            LocalDate.now()
-                .plusDays(2),
-            customer, 1);
+                .plusDays(1),
+                LocalDate.now()
+                        .plusDays(2),
+                customer, 1);
 
         exception.expect(ConstraintViolationException.class);
         reservationManagement.createReservation(reservation);
@@ -88,10 +88,10 @@ public class ContainerValidationIntegrationTest {
         customer.setFirstName("William");
         customer.setLastName("Smith");
         Reservation reservation = new Reservation(LocalDate.now()
-            .plusDays(1),
-            LocalDate.now()
-                .plusDays(2),
-            customer, 1);
+                .plusDays(1),
+                LocalDate.now()
+                        .plusDays(2),
+                customer, 1);
 
         reservationManagement.createReservation(reservation);
     }

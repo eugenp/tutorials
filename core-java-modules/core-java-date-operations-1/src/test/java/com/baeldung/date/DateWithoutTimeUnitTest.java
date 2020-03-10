@@ -73,11 +73,11 @@ public class DateWithoutTimeUnitTest {
 
         // get the millis of our LocalDate
         long millisLocalDate = localDate
-          .atStartOfDay()
-          .toInstant(OffsetDateTime
-            .now()
-            .getOffset())
-          .toEpochMilli();
+                .atStartOfDay()
+                .toInstant(OffsetDateTime
+                        .now()
+                        .getOffset())
+                .toEpochMilli();
 
         Calendar calendar = Calendar.getInstance();
         // if we add the millis of one day minus 1 we should get the same day

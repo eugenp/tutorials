@@ -1,12 +1,12 @@
 /* tslint:disable max-line-length */
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { HttpResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {HttpResponse} from '@angular/common/http';
+import {Observable, of} from 'rxjs';
 
-import { GatewayTestModule } from '../../../../test.module';
-import { QuoteUpdateComponent } from 'app/entities/quotes/quote/quote-update.component';
-import { QuoteService } from 'app/entities/quotes/quote/quote.service';
-import { Quote } from 'app/shared/model/quotes/quote.model';
+import {GatewayTestModule} from '../../../../test.module';
+import {QuoteUpdateComponent} from 'app/entities/quotes/quote/quote-update.component';
+import {QuoteService} from 'app/entities/quotes/quote/quote.service';
+import {Quote} from 'app/shared/model/quotes/quote.model';
 
 describe('Component Tests', () => {
     describe('Quote Management Update Component', () => {
@@ -33,7 +33,7 @@ describe('Component Tests', () => {
                 fakeAsync(() => {
                     // GIVEN
                     const entity = new Quote(123);
-                    spyOn(service, 'update').and.returnValue(of(new HttpResponse({ body: entity })));
+                    spyOn(service, 'update').and.returnValue(of(new HttpResponse({body: entity})));
                     comp.quote = entity;
                     // WHEN
                     comp.save();
@@ -50,7 +50,7 @@ describe('Component Tests', () => {
                 fakeAsync(() => {
                     // GIVEN
                     const entity = new Quote();
-                    spyOn(service, 'create').and.returnValue(of(new HttpResponse({ body: entity })));
+                    spyOn(service, 'create').and.returnValue(of(new HttpResponse({body: entity})));
                     comp.quote = entity;
                     // WHEN
                     comp.save();

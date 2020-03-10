@@ -38,5 +38,5 @@ public class User {
         return hash;
     }
     // getters and setters here
-    
+
 }

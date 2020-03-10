@@ -25,7 +25,7 @@ public class ImageProcessorUnitTest {
         Weld weld = new Weld();
         WeldContainer container = weld.initialize();
         imageFileProcessor = container.select(ImageFileProcessor.class)
-            .get();
+                .get();
         container.shutdown();
     }
 

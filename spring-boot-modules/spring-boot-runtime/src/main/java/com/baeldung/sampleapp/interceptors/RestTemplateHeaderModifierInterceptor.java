@@ -11,7 +11,7 @@ public class RestTemplateHeaderModifierInterceptor implements ClientHttpRequestI
 
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
-        ClientHttpResponse response = execution.execute(request, body); 
+        ClientHttpResponse response = execution.execute(request, body);
         response.getHeaders().add("Foo", "bar");
         return response;
     }

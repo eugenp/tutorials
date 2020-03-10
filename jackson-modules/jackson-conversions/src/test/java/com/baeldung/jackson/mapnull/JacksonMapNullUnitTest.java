@@ -64,7 +64,7 @@ public class JacksonMapNullUnitTest {
     public final void givenAllowingMapObjectWithNullKey_whenWriting_thenCorrect() throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
         mapper.getSerializerProvider()
-            .setNullKeySerializer(new MyDtoNullKeySerializer());
+                .setNullKeySerializer(new MyDtoNullKeySerializer());
 
         final MyDto dtoObject1 = new MyDto();
         dtoObject1.setStringValue("dtoObjectString1");
@@ -87,7 +87,7 @@ public class JacksonMapNullUnitTest {
     public final void givenAllowingMapObjectOneNullKey_whenWritingMapObjectWithTwoNullKeys_thenOverride() throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
         mapper.getSerializerProvider()
-            .setNullKeySerializer(new MyDtoNullKeySerializer());
+                .setNullKeySerializer(new MyDtoNullKeySerializer());
 
         final MyDto dtoObject1 = new MyDto();
         dtoObject1.setStringValue("dtoObject1String");

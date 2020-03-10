@@ -8,7 +8,7 @@ public class ServiceDiscoveryApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(ServiceDiscoveryApplication.class).web(true)
-            .run(args);
+                .run(args);
     }
 
 }

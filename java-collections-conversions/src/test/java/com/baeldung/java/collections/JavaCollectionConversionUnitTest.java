@@ -25,7 +25,7 @@ public class JavaCollectionConversionUnitTest {
 
     @Test
     public final void givenUsingCoreJava_whenArrayConvertedToList_thenCorrect() {
-        final Integer[] sourceArray = { 0, 1, 2, 3, 4, 5 };
+        final Integer[] sourceArray = {0, 1, 2, 3, 4, 5};
         final List<Integer> targetList = Arrays.asList(sourceArray);
     }
 
@@ -37,7 +37,7 @@ public class JavaCollectionConversionUnitTest {
 
     @Test
     public final void givenUsingGuava_whenArrayConvertedToList_thenCorrect() {
-        final Integer[] sourceArray = { 0, 1, 2, 3, 4, 5 };
+        final Integer[] sourceArray = {0, 1, 2, 3, 4, 5};
         final List<Integer> targetList = Lists.newArrayList(sourceArray);
     }
 
@@ -49,7 +49,7 @@ public class JavaCollectionConversionUnitTest {
 
     @Test
     public final void givenUsingCommonsCollections_whenArrayConvertedToList_thenCorrect() {
-        final Integer[] sourceArray = { 0, 1, 2, 3, 4, 5 };
+        final Integer[] sourceArray = {0, 1, 2, 3, 4, 5};
         final List<Integer> targetList = new ArrayList<>(6);
         CollectionUtils.addAll(targetList, sourceArray);
     }
@@ -58,13 +58,13 @@ public class JavaCollectionConversionUnitTest {
 
     @Test
     public final void givenUsingCoreJavaV1_whenArrayConvertedToSet_thenCorrect() {
-        final Integer[] sourceArray = { 0, 1, 2, 3, 4, 5 };
+        final Integer[] sourceArray = {0, 1, 2, 3, 4, 5};
         final Set<Integer> targetSet = new HashSet<Integer>(Arrays.asList(sourceArray));
     }
 
     @Test
     public final void givenUsingCoreJavaV2_whenArrayConvertedToSet_thenCorrect() {
-        final Integer[] sourceArray = { 0, 1, 2, 3, 4, 5 };
+        final Integer[] sourceArray = {0, 1, 2, 3, 4, 5};
         final Set<Integer> targetSet = new HashSet<Integer>();
         Collections.addAll(targetSet, sourceArray);
     }
@@ -77,7 +77,7 @@ public class JavaCollectionConversionUnitTest {
 
     @Test
     public final void givenUsingGuava_whenArrayConvertedToSet_thenCorrect() {
-        final Integer[] sourceArray = { 0, 1, 2, 3, 4, 5 };
+        final Integer[] sourceArray = {0, 1, 2, 3, 4, 5};
         final Set<Integer> targetSet = Sets.newHashSet(sourceArray);
     }
 
@@ -89,7 +89,7 @@ public class JavaCollectionConversionUnitTest {
 
     @Test
     public final void givenUsingCommonsCollections_whenArrayConvertedToSet_thenCorrect() {
-        final Integer[] sourceArray = { 0, 1, 2, 3, 4, 5 };
+        final Integer[] sourceArray = {0, 1, 2, 3, 4, 5};
         final Set<Integer> targetSet = new HashSet<>(6);
         CollectionUtils.addAll(targetSet, sourceArray);
     }

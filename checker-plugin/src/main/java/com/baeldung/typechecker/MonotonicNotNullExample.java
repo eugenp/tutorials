@@ -10,7 +10,8 @@ public class MonotonicNotNullExample {
     // so it starts as null but once it becomes not null
     // it cannot return null.
     // In these cases, we can use @MonotonicNonNull
-    @MonotonicNonNull private Date firstCall;
+    @MonotonicNonNull
+    private Date firstCall;
 
     public Date getFirstCall() {
         if (firstCall == null) {

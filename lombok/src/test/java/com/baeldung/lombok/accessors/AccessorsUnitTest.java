@@ -41,8 +41,8 @@ public class AccessorsUnitTest {
     @Test
     public void givenChainedFluentAccount_thenUseChainedFluentAccessors() {
         ChainedFluentAccount account = new ChainedFluentAccount()
-          .name("Fluent Account")
-          .balance(BigDecimal.TEN);
+                .name("Fluent Account")
+                .balance(BigDecimal.TEN);
 
         assertEquals("Fluent Account", account.name());
         assertEquals(BigDecimal.TEN, account.balance());
@@ -64,8 +64,8 @@ public class AccessorsUnitTest {
     public void givenPrefixedFluentAccount_thenRemovePrefixFromAccessors() {
         PrefixedFluentAccount account = new PrefixedFluentAccount();
         account
-          .name("Prefixed Fluent Fields")
-          .balance(BigDecimal.TEN);
+                .name("Prefixed Fluent Fields")
+                .balance(BigDecimal.TEN);
 
         assertEquals("Prefixed Fluent Fields", account.name());
         assertEquals(BigDecimal.TEN, account.balance());

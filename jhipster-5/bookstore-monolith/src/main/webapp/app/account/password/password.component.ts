@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { AccountService } from 'app/core';
-import { PasswordService } from './password.service';
+import {AccountService} from 'app/core';
+import {PasswordService} from './password.service';
 
 @Component({
     selector: 'jhi-password',
@@ -16,7 +16,8 @@ export class PasswordComponent implements OnInit {
     newPassword: string;
     confirmPassword: string;
 
-    constructor(private passwordService: PasswordService, private accountService: AccountService) {}
+    constructor(private passwordService: PasswordService, private accountService: AccountService) {
+    }
 
     ngOnInit() {
         this.accountService.identity().then(account => {

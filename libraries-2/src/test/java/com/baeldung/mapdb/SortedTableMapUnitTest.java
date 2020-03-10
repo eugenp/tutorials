@@ -20,15 +20,15 @@ public class SortedTableMapUnitTest {
 
         //create sink to feed the map with data
         SortedTableMap.Sink<Integer, String> sink =
-          SortedTableMap.create(
-            vol,
-            Serializer.INTEGER,
-            Serializer.STRING
-          ).createFromSink();
+                SortedTableMap.create(
+                        vol,
+                        Serializer.INTEGER,
+                        Serializer.STRING
+                ).createFromSink();
 
         //add content
-        for(int i = 0; i < 100; i++){
-          sink.put(i, "Value " + Integer.toString(i));
+        for (int i = 0; i < 100; i++) {
+            sink.put(i, "Value " + Integer.toString(i));
         }
 
         sink.create();
@@ -37,9 +37,9 @@ public class SortedTableMapUnitTest {
         Volume openVol = MappedFileVol.FACTORY.makeVolume(VOLUME_LOCATION, true);
 
         SortedTableMap<Integer, String> sortedTableMap = SortedTableMap.open(
-          openVol,
-          Serializer.INTEGER,
-          Serializer.STRING
+                openVol,
+                Serializer.INTEGER,
+                Serializer.STRING
         );
 
         assertEquals(100, sortedTableMap.size());

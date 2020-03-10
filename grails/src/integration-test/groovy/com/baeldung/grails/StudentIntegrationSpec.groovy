@@ -13,9 +13,9 @@ class StudentIntegrationSpec extends Specification {
     SessionFactory sessionFactory
 
     private Long setupData() {
-        new Student(firstName: 'John',lastName: 'Doe').save(flush: true, failOnError: true)
-        new Student(firstName: 'Max',lastName: 'Foo').save(flush: true, failOnError: true)
-        Student student = new Student(firstName: 'Alex',lastName: 'Bar').save(flush: true, failOnError: true)
+        new Student(firstName: 'John', lastName: 'Doe').save(flush: true, failOnError: true)
+        new Student(firstName: 'Max', lastName: 'Foo').save(flush: true, failOnError: true)
+        Student student = new Student(firstName: 'Alex', lastName: 'Bar').save(flush: true, failOnError: true)
         student.id
     }
 
@@ -58,7 +58,7 @@ class StudentIntegrationSpec extends Specification {
 
     void "test save"() {
         when:
-        Student student = new Student(firstName: 'John',lastName: 'Doe')
+        Student student = new Student(firstName: 'John', lastName: 'Doe')
         studentService.save(student)
 
         then:

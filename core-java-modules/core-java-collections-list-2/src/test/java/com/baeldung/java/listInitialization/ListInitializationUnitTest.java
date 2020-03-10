@@ -43,7 +43,7 @@ public class ListInitializationUnitTest {
 
     @Test
     public void givenArraysAsList_whenCreated_thenShareReference() {
-        String[] array = { "foo", "bar" };
+        String[] array = {"foo", "bar"};
         List<String> list = Arrays.asList(array);
         array[0] = "baz";
         Assert.assertEquals("baz", list.get(0));
@@ -52,7 +52,7 @@ public class ListInitializationUnitTest {
     @Test
     public void givenStream_thenInitializeList() {
         List<String> list = Stream.of("foo", "bar")
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         Assert.assertTrue(list.contains("foo"));
     }

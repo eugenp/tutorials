@@ -10,7 +10,6 @@ import org.springframework.web.socket.messaging.WebSocketStompClient;
 
 /**
  * Stand alone WebSocketStompClient.
- *
  */
 public class StompClient {
 

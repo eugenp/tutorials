@@ -20,12 +20,12 @@ public class PropertyController {
     private static String NAME_STATIC;
 
     @Value("${name}")
-    public void setNameStatic(String name){
+    public void setNameStatic(String name) {
         PropertyController.NAME_STATIC = name;
     }
 
     @GetMapping("/properties")
-    public List<String> getProperties(){
-        return Arrays.asList(this.name, NAME_STATIC, NAME_NULL)  ;
+    public List<String> getProperties() {
+        return Arrays.asList(this.name, NAME_STATIC, NAME_NULL);
     }
 }

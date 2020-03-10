@@ -10,4 +10,5 @@ import java.lang.annotation.Target;
 @Qualifier
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.CLASS)
-public @interface PoundToKilogramMapper {}
+public @interface PoundToKilogramMapper {
+}

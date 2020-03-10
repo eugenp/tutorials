@@ -1,1 +1,7 @@
-{"fruit":{"name":"apple","color":"green","price":1.20}}
+{
+  "fruit": {
+    "name": "apple",
+    "color": "green",
+    "price": 1.20
+  }
+}

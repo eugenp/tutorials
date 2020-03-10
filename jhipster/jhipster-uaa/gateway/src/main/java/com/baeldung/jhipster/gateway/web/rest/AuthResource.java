@@ -44,10 +44,10 @@ public class AuthResource {
      * @return the access token of the authenticated user. Will return an error code if it fails to authenticate the user.
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType
-        .APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+            .APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<OAuth2AccessToken> authenticate(HttpServletRequest request, HttpServletResponse response, @RequestBody
-        Map<String, String> params) {
+            Map<String, String> params) {
         return authenticationService.authenticate(request, response, params);
     }
 

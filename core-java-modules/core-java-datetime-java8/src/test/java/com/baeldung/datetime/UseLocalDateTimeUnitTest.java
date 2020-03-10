@@ -18,9 +18,9 @@ public class UseLocalDateTimeUnitTest {
     @Test
     public void givenString_whenUsingParse_thenLocalDateTime() {
         assertEquals(LocalDate.of(2016, Month.MAY, 10), useLocalDateTime.getLocalDateTimeUsingParseMethod("2016-05-10T06:30")
-            .toLocalDate());
+                .toLocalDate());
         assertEquals(LocalTime.of(6, 30), useLocalDateTime.getLocalDateTimeUsingParseMethod("2016-05-10T06:30")
-            .toLocalTime());
+                .toLocalTime());
     }
 
     @Test

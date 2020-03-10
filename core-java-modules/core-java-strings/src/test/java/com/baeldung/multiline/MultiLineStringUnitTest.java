@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 public class MultiLineStringUnitTest {
 
-    
+
     @Test
     public void whenCompareMultiLineStrings_thenTheyAreAllTheSame() throws IOException {
         MultiLineString ms = new MultiLineString();
@@ -17,5 +17,5 @@ public class MultiLineStringUnitTest {
         assertEquals(ms.stringBuilder(), ms.guavaJoiner());
         assertEquals(ms.guavaJoiner(), ms.loadFromFile());
     }
-    
+
 }

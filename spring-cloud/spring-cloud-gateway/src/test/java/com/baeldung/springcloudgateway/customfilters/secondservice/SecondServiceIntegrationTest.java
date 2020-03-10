@@ -16,11 +16,11 @@ public class SecondServiceIntegrationTest {
     @Test
     public void whenResourceLanguageEndpointCalled_thenRetrievesSpanishLanguageString() throws Exception {
         this.webClient.get()
-            .uri("/resource/language")
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectBody(String.class)
-            .isEqualTo("es");
+                .uri("/resource/language")
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBody(String.class)
+                .isEqualTo("es");
     }
 }

@@ -21,7 +21,7 @@ public class AddHoursToDate {
 
     public Date addHoursToDateUsingInstant(Date date, int hours) {
         return Date.from(date.toInstant()
-            .plus(Duration.ofHours(hours)));
+                .plus(Duration.ofHours(hours)));
     }
 
     public LocalDateTime addHoursToLocalDateTime(LocalDateTime localDateTime, int hours) {

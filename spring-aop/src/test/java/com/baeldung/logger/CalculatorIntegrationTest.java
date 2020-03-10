@@ -1,6 +1,7 @@
 package com.baeldung.logger;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class CalculatorIntegrationTest {
 
         assertEquals(24, addedValue);
     }
-    
-    @Test (expected = IllegalArgumentException.class)
+
+    @Test(expected = IllegalArgumentException.class)
     public void whenAddInValidValues_throwsException() {
         sampleAdder.add(12, -12);
     }

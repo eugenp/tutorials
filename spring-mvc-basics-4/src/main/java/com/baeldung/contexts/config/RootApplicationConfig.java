@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import com.baeldung.contexts.Greeting;
 
 @Configuration
-@ComponentScan(basePackages = { "com.baeldung.contexts.services" })
+@ComponentScan(basePackages = {"com.baeldung.contexts.services"})
 public class RootApplicationConfig {
 
     @Bean

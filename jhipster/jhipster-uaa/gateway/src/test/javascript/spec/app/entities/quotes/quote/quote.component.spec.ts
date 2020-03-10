@@ -1,13 +1,13 @@
 /* tslint:disable max-line-length */
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Observable, of } from 'rxjs';
-import { HttpHeaders, HttpResponse } from '@angular/common/http';
-import { ActivatedRoute, Data } from '@angular/router';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {Observable, of} from 'rxjs';
+import {HttpHeaders, HttpResponse} from '@angular/common/http';
+import {ActivatedRoute, Data} from '@angular/router';
 
-import { GatewayTestModule } from '../../../../test.module';
-import { QuoteComponent } from 'app/entities/quotes/quote/quote.component';
-import { QuoteService } from 'app/entities/quotes/quote/quote.service';
-import { Quote } from 'app/shared/model/quotes/quote.model';
+import {GatewayTestModule} from '../../../../test.module';
+import {QuoteComponent} from 'app/entities/quotes/quote/quote.component';
+import {QuoteService} from 'app/entities/quotes/quote/quote.service';
+import {Quote} from 'app/shared/model/quotes/quote.model';
 
 describe('Component Tests', () => {
     describe('Quote Management Component', () => {
@@ -62,7 +62,7 @@ describe('Component Tests', () => {
 
             // THEN
             expect(service.query).toHaveBeenCalled();
-            expect(comp.quotes[0]).toEqual(jasmine.objectContaining({ id: 123 }));
+            expect(comp.quotes[0]).toEqual(jasmine.objectContaining({id: 123}));
         });
 
         it('should load a page', () => {
@@ -82,7 +82,7 @@ describe('Component Tests', () => {
 
             // THEN
             expect(service.query).toHaveBeenCalled();
-            expect(comp.quotes[0]).toEqual(jasmine.objectContaining({ id: 123 }));
+            expect(comp.quotes[0]).toEqual(jasmine.objectContaining({id: 123}));
         });
 
         it('should not load a page is the page is the same as the previous page', () => {
@@ -114,7 +114,7 @@ describe('Component Tests', () => {
             // THEN
             expect(comp.page).toEqual(0);
             expect(service.query).toHaveBeenCalledTimes(2);
-            expect(comp.quotes[0]).toEqual(jasmine.objectContaining({ id: 123 }));
+            expect(comp.quotes[0]).toEqual(jasmine.objectContaining({id: 123}));
         });
         it('should calculate the sort attribute for an id', () => {
             // WHEN

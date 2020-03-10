@@ -7,7 +7,8 @@ import java.util.UUID;
 
 @RedisHash("user")
 public class User {
-    @Id private UUID id;
+    @Id
+    private UUID id;
     private String name;
 
     public User(UUID id, String name) {

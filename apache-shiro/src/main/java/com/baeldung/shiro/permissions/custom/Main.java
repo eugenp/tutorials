@@ -30,34 +30,34 @@ public class Main {
         Subject currentUser = SecurityUtils.getSubject();
 
         if (!currentUser.isAuthenticated()) {
-          UsernamePasswordToken token = new UsernamePasswordToken("paul.reader", "password4");
-          token.setRememberMe(true);
-          try {
-              currentUser.login(token);
-          } catch (UnknownAccountException uae) {
-              log.error("Username Not Found!", uae);
-          } catch (IncorrectCredentialsException ice) {
-              log.error("Invalid Credentials!", ice);
-          } catch (LockedAccountException lae) {
-              log.error("Your Account is Locked!", lae);
-          } catch (AuthenticationException ae) {
-              log.error("Unexpected Error!", ae);
-          }
+            UsernamePasswordToken token = new UsernamePasswordToken("paul.reader", "password4");
+            token.setRememberMe(true);
+            try {
+                currentUser.login(token);
+            } catch (UnknownAccountException uae) {
+                log.error("Username Not Found!", uae);
+            } catch (IncorrectCredentialsException ice) {
+                log.error("Invalid Credentials!", ice);
+            } catch (LockedAccountException lae) {
+                log.error("Your Account is Locked!", lae);
+            } catch (AuthenticationException ae) {
+                log.error("Unexpected Error!", ae);
+            }
         }
 
         log.info("User [" + currentUser.getPrincipal() + "] logged in successfully.");
 
         if (currentUser.hasRole("admin")) {
             log.info("Welcome Admin");
-        } else if(currentUser.hasRole("editor")) {
+        } else if (currentUser.hasRole("editor")) {
             log.info("Welcome, Editor!");
-        } else if(currentUser.hasRole("author")) {
+        } else if (currentUser.hasRole("author")) {
             log.info("Welcome, Author");
         } else {
             log.info("Welcome, Guest");
         }
 
-        if(currentUser.isPermitted("/articles/drafts/new-article")) {
+        if (currentUser.isPermitted("/articles/drafts/new-article")) {
             log.info("You can access articles");
         } else {
             log.info("You cannot access articles!");

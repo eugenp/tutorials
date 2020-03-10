@@ -53,15 +53,15 @@ public class ObjectToJsonConverter {
         }
 
         String jsonString = jsonElementsMap.entrySet()
-            .stream()
-            .map(entry -> "\"" + entry.getKey() + "\":\"" + entry.getValue() + "\"")
-            .collect(Collectors.joining(","));
+                .stream()
+                .map(entry -> "\"" + entry.getKey() + "\":\"" + entry.getValue() + "\"")
+                .collect(Collectors.joining(","));
         return "{" + jsonString + "}";
     }
 
     private String getKey(Field field) {
         String value = field.getAnnotation(JsonElement.class)
-            .key();
+                .key();
         return value.isEmpty() ? field.getName() : value;
     }
 }

@@ -42,7 +42,7 @@ public class QuerydslIntegrationTest {
     public void givenRequest_whenQueryUserFilteringByCountrySpain_thenGetJohn() throws Exception {
         mockMvc.perform(get("/users?address.country=Spain")).andExpect(status().isOk()).andExpect(content()
                 .contentType
-                (contentType))
+                        (contentType))
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].name", is("John")))
                 .andExpect(jsonPath("$[0].address.address", is("Fake Street 1")))

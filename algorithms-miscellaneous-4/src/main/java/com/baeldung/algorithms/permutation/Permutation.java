@@ -3,7 +3,7 @@ package com.baeldung.algorithms.permutation;
 import java.util.Arrays;
 import java.util.Collections;
 
-public  class Permutation {
+public class Permutation {
 
     public static <T> void printAllRecursive(T[] elements, char delimiter) {
         printAllRecursive(elements.length, elements, delimiter);
@@ -11,15 +11,15 @@ public  class Permutation {
 
     public static <T> void printAllRecursive(int n, T[] elements, char delimiter) {
 
-        if(n == 1) {
+        if (n == 1) {
             printArray(elements, delimiter);
         } else {
-            for(int i = 0; i < n-1; i++) {
+            for (int i = 0; i < n - 1; i++) {
                 printAllRecursive(n - 1, elements, delimiter);
-                if(n % 2 == 0) {
-                    swap(elements, i, n-1);
+                if (n % 2 == 0) {
+                    swap(elements, i, n - 1);
                 } else {
-                    swap(elements, 0, n-1);
+                    swap(elements, 0, n - 1);
                 }
             }
             printAllRecursive(n - 1, elements, delimiter);
@@ -38,12 +38,11 @@ public  class Permutation {
         int i = 0;
         while (i < n) {
             if (indexes[i] < i) {
-                swap(elements, i % 2 == 0 ?  0: indexes[i], i);
+                swap(elements, i % 2 == 0 ? 0 : indexes[i], i);
                 printArray(elements, delimiter);
                 indexes[i]++;
                 i = 0;
-            }
-            else {
+            } else {
                 indexes[i] = 0;
                 i++;
             }
@@ -55,7 +54,7 @@ public  class Permutation {
         Arrays.sort(elements);
         boolean hasNext = true;
 
-        while(hasNext) {
+        while (hasNext) {
             printArray(elements, delimiter);
             int k = 0, l = 0;
             hasNext = false;
@@ -95,7 +94,7 @@ public  class Permutation {
     private static <T> void printArray(T[] elements, char delimiter) {
 
         String delimiterSpace = delimiter + " ";
-        for(int i = 0; i < elements.length; i++) {
+        for (int i = 0; i < elements.length; i++) {
             System.out.print(elements[i] + delimiterSpace);
         }
         System.out.print('\n');
@@ -103,7 +102,7 @@ public  class Permutation {
 
     public static void main(String[] argv) {
 
-        Integer[] elements = {1,2,3,4};
+        Integer[] elements = {1, 2, 3, 4};
 
         System.out.println("Rec:");
         printAllRecursive(elements, ';');

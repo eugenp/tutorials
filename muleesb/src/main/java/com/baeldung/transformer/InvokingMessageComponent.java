@@ -6,11 +6,11 @@ import org.mule.transformer.AbstractMessageTransformer;
 
 public class InvokingMessageComponent extends AbstractMessageTransformer {
 
-	@Override
-	public Object transformMessage(MuleMessage message, String outputEncoding) throws TransformerException {
-		// TODO Auto-generated method stub	
-		String InboundProp = (String) message.getInboundProperty("outboundKey");
-		System.out.println("InboundProp:" + InboundProp);		
-		return InboundProp;
-	}
+    @Override
+    public Object transformMessage(MuleMessage message, String outputEncoding) throws TransformerException {
+        // TODO Auto-generated method stub
+        String InboundProp = (String) message.getInboundProperty("outboundKey");
+        System.out.println("InboundProp:" + InboundProp);
+        return InboundProp;
+    }
 }

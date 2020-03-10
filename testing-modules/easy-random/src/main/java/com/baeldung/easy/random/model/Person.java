@@ -23,8 +23,8 @@ public class Person {
     @Override
     public String toString() {
         return new StringJoiner(", ", Person.class.getSimpleName() + "[", "]").add("firstName='" + firstName + "'")
-            .add("lastName='" + lastName + "'")
-            .add("age=" + age)
-            .toString();
+                .add("lastName='" + lastName + "'")
+                .add("age=" + age)
+                .toString();
     }
 }

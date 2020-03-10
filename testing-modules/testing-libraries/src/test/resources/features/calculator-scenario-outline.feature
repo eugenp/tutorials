@@ -8,9 +8,9 @@ Feature: Calculator
     When I add <num1> and <num2>
     Then the result should be <total>
 
-    Examples: 
-    | num1 | num2 | total |
-    | -2 | 3 | 1 |
-    | 10 | 15 | 25 |
-    | 99 | -99 | 0 |
-    | -1 | -10 | -11 |
+    Examples:
+      | num1 | num2 | total |
+      | -2   | 3    | 1     |
+      | 10   | 15   | 25    |
+      | 99   | -99  | 0     |
+      | -1   | -10  | -11   |

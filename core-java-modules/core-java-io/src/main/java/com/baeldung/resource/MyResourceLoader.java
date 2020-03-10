@@ -14,7 +14,7 @@ public class MyResourceLoader {
         try (FileReader fileReader = new FileReader("src/main/resources/input.txt");
              BufferedReader reader = new BufferedReader(fileReader)) {
             String contents = reader.lines()
-                .collect(Collectors.joining(System.lineSeparator()));
+                    .collect(Collectors.joining(System.lineSeparator()));
             System.out.println(contents);
         }
 
@@ -25,7 +25,7 @@ public class MyResourceLoader {
         try (InputStream inputStream = getClass().getResourceAsStream("/input.txt");
              BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             String contents = reader.lines()
-                .collect(Collectors.joining(System.lineSeparator()));
+                    .collect(Collectors.joining(System.lineSeparator()));
             System.out.println(contents);
         }
     }

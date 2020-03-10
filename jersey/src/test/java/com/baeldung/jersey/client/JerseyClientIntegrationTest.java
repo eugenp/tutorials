@@ -28,7 +28,7 @@ public class JerseyClientIntegrationTest {
     @Test
     public void givenGreetingResource_whenCallingCustomGreeting_thenCustomGreetingReturned() {
         Response response = JerseyClient.getCustomGreeting();
-        
+
         Assert.assertEquals(HTTP_OK, response.getStatus());
     }
 

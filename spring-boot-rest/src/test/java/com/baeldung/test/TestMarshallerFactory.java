@@ -24,12 +24,12 @@ public class TestMarshallerFactory implements FactoryBean<IMarshaller> {
         final String testMime = env.getProperty("test.mime");
         if (testMime != null) {
             switch (testMime) {
-            case "json":
-                return new JacksonMarshaller();
-            case "xml":
-                return new XStreamMarshaller();
-            default:
-                throw new IllegalStateException();
+                case "json":
+                    return new JacksonMarshaller();
+                case "xml":
+                    return new XStreamMarshaller();
+                default:
+                    throw new IllegalStateException();
             }
         }
 

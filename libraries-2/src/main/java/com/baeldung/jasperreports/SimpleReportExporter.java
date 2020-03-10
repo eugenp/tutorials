@@ -65,7 +65,7 @@ public class SimpleReportExporter {
         exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(fileName));
 
         SimpleXlsxReportConfiguration reportConfig = new SimpleXlsxReportConfiguration();
-        reportConfig.setSheetNames(new String[] { sheetName });
+        reportConfig.setSheetNames(new String[]{sheetName});
 
         exporter.setConfiguration(reportConfig);
 

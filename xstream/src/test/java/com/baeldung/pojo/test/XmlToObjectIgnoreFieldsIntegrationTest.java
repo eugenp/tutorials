@@ -26,8 +26,8 @@ public class XmlToObjectIgnoreFieldsIntegrationTest {
     public void convertXmlToObjectFromFile() throws FileNotFoundException {
         ClassLoader classLoader = getClass().getClassLoader();
         FileReader reader = new FileReader(classLoader
-          .getResource("data-file-ignore-field.xml")
-          .getFile());
+                .getResource("data-file-ignore-field.xml")
+                .getFile());
         Customer customer = (Customer) xstream.fromXML(reader);
         Assert.assertNotNull(customer);
         // System.out.println(customer);

@@ -14,8 +14,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.context.support.GenericWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-public class MainWebAppInitializer implements WebApplicationInitializer
-{
+public class MainWebAppInitializer implements WebApplicationInitializer {
 
     /**
      * Register and configure all Servlet container components necessary to power the web application.
@@ -32,8 +31,8 @@ public class MainWebAppInitializer implements WebApplicationInitializer
         sc.addListener(new ContextLoaderListener(root));
 
         DispatcherServlet dv = new DispatcherServlet(root);
-        
-        final ServletRegistration.Dynamic appServlet = sc.addServlet("mvc",dv);
+
+        final ServletRegistration.Dynamic appServlet = sc.addServlet("mvc", dv);
         appServlet.setLoadOnStartup(1);
         final Set<String> mappingConflicts = appServlet.addMapping("/");
         if (!mappingConflicts.isEmpty()) {

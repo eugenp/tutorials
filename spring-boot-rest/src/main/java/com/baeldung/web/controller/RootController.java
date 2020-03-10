@@ -24,7 +24,7 @@ public class RootController {
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void adminRoot(final HttpServletRequest request, final HttpServletResponse response) {
         final String rootUri = request.getRequestURL()
-            .toString();
+                .toString();
 
         final URI fooUri = new UriTemplate("{rootUri}{resource}").expand(rootUri, "foos");
         final String linkToFoos = LinkUtil.createLinkHeader(fooUri.toASCIIString(), "collection");

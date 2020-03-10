@@ -23,10 +23,10 @@ public class ExamRepository {
 
         EntityManager entityManager = emf.createEntityManager();
         entityManager.getTransaction()
-            .begin();
+                .begin();
         exam = entityManager.merge(exam);
         entityManager.getTransaction()
-            .commit();
+                .commit();
         entityManager.close();
 
         return exam;

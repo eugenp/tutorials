@@ -12,7 +12,7 @@ public class LoggingCommand implements Runnable {
     @Inject
     private HelpOption<LoggingCommand> help;
 
-    @Option(name = { "-v", "--verbose" }, description = "Set log verbosity on/off")
+    @Option(name = {"-v", "--verbose"}, description = "Set log verbosity on/off")
     private boolean verbose = false;
 
     @Override

@@ -41,8 +41,8 @@ public class FileDownload {
     public static void downloadWithJavaNIO(String fileURL, String localFilename) throws IOException {
 
         URL url = new URL(fileURL);
-        try (ReadableByteChannel readableByteChannel = Channels.newChannel(url.openStream()); 
-            FileOutputStream fileOutputStream = new FileOutputStream(localFilename); FileChannel fileChannel = fileOutputStream.getChannel()) {
+        try (ReadableByteChannel readableByteChannel = Channels.newChannel(url.openStream());
+             FileOutputStream fileOutputStream = new FileOutputStream(localFilename); FileChannel fileChannel = fileOutputStream.getChannel()) {
 
             fileChannel.transferFrom(readableByteChannel, 0, Long.MAX_VALUE);
             fileOutputStream.close();
@@ -67,21 +67,21 @@ public class FileDownload {
         AsyncHttpClient client = Dsl.asyncHttpClient();
 
         client.prepareGet(url)
-            .execute(new AsyncCompletionHandler<FileOutputStream>() {
+                .execute(new AsyncCompletionHandler<FileOutputStream>() {
 
-                @Override
-                public State onBodyPartReceived(HttpResponseBodyPart bodyPart) throws Exception {
-                    stream.getChannel()
-                        .write(bodyPart.getBodyByteBuffer());
-                    return State.CONTINUE;
-                }
+                    @Override
+                    public State onBodyPartReceived(HttpResponseBodyPart bodyPart) throws Exception {
+                        stream.getChannel()
+                                .write(bodyPart.getBodyByteBuffer());
+                        return State.CONTINUE;
+                    }
 
-                @Override
-                public FileOutputStream onCompleted(Response response) throws Exception {
-                    return stream;
-                }
-            })
-            .get();
+                    @Override
+                    public FileOutputStream onCompleted(Response response) throws Exception {
+                        return stream;
+                    }
+                })
+                .get();
 
         stream.getChannel().close();
         client.close();

@@ -15,7 +15,8 @@ public class ExampleHTML {
 
     private Body body;
 
-    public ExampleHTML() { }
+    public ExampleHTML() {
+    }
 
     public List<Meta> getHead() {
         return head;

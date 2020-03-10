@@ -21,8 +21,8 @@ public class HomeControllerUnitTest {
     @Test
     public void whenUserIsAuthenticatedThenAuthenticatedSectionsShowOnSite() throws Exception {
         String body = this.restTemplate.withBasicAuth("testUser", "password")
-            .getForEntity("/", String.class)
-            .getBody();
+                .getForEntity("/", String.class)
+                .getBody();
 
         // test <sec:authorize access="!isAuthenticated()">
         assertFalse(body.contains("Login"));
@@ -49,7 +49,7 @@ public class HomeControllerUnitTest {
     @Test
     public void whenUserIsNotAuthenticatedThenOnlyAnonymousSectionsShowOnSite() throws Exception {
         String body = this.restTemplate.getForEntity("/", String.class)
-            .getBody();
+                .getBody();
 
         // test <sec:authorize access="!isAuthenticated()">
         assertTrue(body.contains("Login"));

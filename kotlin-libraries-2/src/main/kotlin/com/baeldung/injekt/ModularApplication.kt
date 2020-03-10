@@ -20,7 +20,8 @@ class ModularApplication {
 
     companion object : InjektMain() {
         private val LOG = LoggerFactory.getLogger(Server::class.java)
-        @JvmStatic fun main(args: Array<String>) {
+        @JvmStatic
+        fun main(args: Array<String>) {
             ModularApplication().run()
         }
 

@@ -65,7 +65,7 @@ public class RouteExampleController {
     @GetRoute("/load-configuration-in-a-route")
     public void loadConfigurationInARoute(Response response) {
         String authors = WebContext.blade()
-            .env("app.authors", "Unknown authors");
+                .env("app.authors", "Unknown authors");
         log.info("[/load-configuration-in-a-route] Loading 'app.authors' from configuration, value: " + authors);
         response.render("index.html");
     }

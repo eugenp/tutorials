@@ -9,7 +9,9 @@ class PipeDemo {
 
     public enum Result {
         SUCCESS, FAILURE
-    };
+    }
+
+    ;
 
     private static Result status;
 

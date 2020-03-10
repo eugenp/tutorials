@@ -2,7 +2,6 @@ package org.baeldung.security;
 
 /**
  * Simple enum of Security Roles available.
- *
  */
 public enum SecurityRole {
 

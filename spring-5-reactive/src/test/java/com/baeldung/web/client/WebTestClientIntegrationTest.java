@@ -26,39 +26,39 @@ public class WebTestClientIntegrationTest {
     private int port;
 
     private final RouterFunction ROUTER_FUNCTION = RouterFunctions.route(RequestPredicates.GET("/resource"), request -> ServerResponse.ok()
-        .build());
+            .build());
     private final WebHandler WEB_HANDLER = exchange -> Mono.empty();
 
     @Test
     public void testWebTestClientWithServerWebHandler() {
         WebTestClient.bindToWebHandler(WEB_HANDLER)
-            .build();
+                .build();
     }
 
     @Test
     public void testWebTestClientWithRouterFunction() {
         WebTestClient.bindToRouterFunction(ROUTER_FUNCTION)
-            .build()
-            .get()
-            .uri("/resource")
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectBody()
-            .isEmpty();
+                .build()
+                .get()
+                .uri("/resource")
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBody()
+                .isEmpty();
     }
 
     @Test
     public void testWebTestClientWithServerURL() {
         WebTestClient.bindToServer()
-            .baseUrl("http://localhost:" + port)
-            .build()
-            .get()
-            .uri("/resource")
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectBody();
+                .baseUrl("http://localhost:" + port)
+                .build()
+                .get()
+                .uri("/resource")
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBody();
     }
 
 }

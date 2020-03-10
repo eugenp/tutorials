@@ -6,11 +6,11 @@
         <port auto-increment="true" port-count="20">5701</port>
         <join>
             <multicast enabled="false">
-	        </multicast>
-	      	<tcp-ip enabled="true">
-	        	<member>machine1</member>
-		        <member>localhost</member>
-	      	</tcp-ip>
+            </multicast>
+            <tcp-ip enabled="true">
+                <member>machine1</member>
+                <member>localhost</member>
+            </tcp-ip>
         </join>
     </network>
 </hazelcast>

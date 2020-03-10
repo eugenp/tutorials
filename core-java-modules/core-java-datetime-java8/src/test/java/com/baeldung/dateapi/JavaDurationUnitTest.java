@@ -19,7 +19,7 @@ public class JavaDurationUnitTest {
         LocalTime finalTime = initialTime.plus(Duration.ofSeconds(30));
 
         long seconds = Duration.between(initialTime, finalTime)
-            .getSeconds();
+                .getSeconds();
 
         assertThat(seconds).isEqualTo(30);
     }
@@ -53,14 +53,14 @@ public class JavaDurationUnitTest {
         assertEquals(1, fromMinutes.toHours());
 
         assertEquals(120, duration.plusSeconds(60)
-            .getSeconds());
+                .getSeconds());
         assertEquals(30, duration.minusSeconds(30)
-            .getSeconds());
+                .getSeconds());
 
         assertEquals(120, duration.plus(60, ChronoUnit.SECONDS)
-            .getSeconds());
+                .getSeconds());
         assertEquals(30, duration.minus(30, ChronoUnit.SECONDS)
-            .getSeconds());
+                .getSeconds());
 
         Duration fromChar1 = Duration.parse("P1DT1H10M10.5S");
         Duration fromChar2 = Duration.parse("PT10M");

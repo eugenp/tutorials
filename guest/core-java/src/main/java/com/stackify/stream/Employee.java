@@ -4,10 +4,10 @@ public class Employee {
     private Integer id;
     private String name;
     private Double salary;
-    
+
     public Employee(Integer id, String name, Double salary) {
         this.id = id;
-        this.name = name;        
+        this.name = name;
         this.salary = salary;
     }
 
@@ -26,7 +26,7 @@ public class Employee {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public Double getSalary() {
         return salary;
     }
@@ -34,7 +34,7 @@ public class Employee {
     public void setSalary(Double salary) {
         this.salary = salary;
     }
-    
+
     public void salaryIncrement(Double percentage) {
         Double newSalary = salary + percentage * salary / 100;
         setSalary(newSalary);

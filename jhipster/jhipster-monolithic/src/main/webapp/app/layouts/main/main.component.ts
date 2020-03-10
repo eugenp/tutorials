@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, NavigationEnd, RoutesRecognized } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRouteSnapshot, NavigationEnd, RoutesRecognized} from '@angular/router';
 
-import { JhiLanguageHelper, StateStorageService } from '../../shared';
+import {JhiLanguageHelper, StateStorageService} from '../../shared';
 
 @Component({
     selector: 'jhi-main',
@@ -13,7 +13,8 @@ export class JhiMainComponent implements OnInit {
         private jhiLanguageHelper: JhiLanguageHelper,
         private router: Router,
         private $storageService: StateStorageService,
-    ) {}
+    ) {
+    }
 
     private getPageTitle(routeSnapshot: ActivatedRouteSnapshot) {
         let title: string = (routeSnapshot.data && routeSnapshot.data['pageTitle']) ? routeSnapshot.data['pageTitle'] : 'baeldungApp';

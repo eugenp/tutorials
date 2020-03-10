@@ -11,15 +11,15 @@ public interface GreetingCommand extends Jsonable {
 
     @SuppressWarnings("serial")
     @JsonDeserialize
-    public final class ReceivedGreetingCommand implements GreetingCommand, 
-      CompressedJsonable, PersistentEntity.ReplyType<String> {
-        private final String fromUser;       
+    public final class ReceivedGreetingCommand implements GreetingCommand,
+            CompressedJsonable, PersistentEntity.ReplyType<String> {
+        private final String fromUser;
 
         @JsonCreator
         public ReceivedGreetingCommand(String fromUser) {
             this.fromUser = Preconditions.checkNotNull(fromUser, "fromUser");
         }
-        
+
         public String getFromUser() {
             return fromUser;
         }

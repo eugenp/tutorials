@@ -21,7 +21,7 @@ public class MessageController {
     private MessageService messageService;
 
     @PostMapping
-    public Message createMessage (@RequestBody MessageApi messageDTO) {
+    public Message createMessage(@RequestBody MessageApi messageDTO) {
         Message message = new Message();
         message.setText(messageDTO.getText());
         message.setFrom(messageDTO.getFrom());

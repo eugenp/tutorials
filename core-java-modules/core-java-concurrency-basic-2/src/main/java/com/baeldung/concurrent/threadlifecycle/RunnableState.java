@@ -7,9 +7,9 @@ public class RunnableState implements Runnable {
         t.start();
         System.out.println(t.getState());
     }
-    
+
     @Override
     public void run() {
-        
+
     }
 }

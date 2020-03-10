@@ -17,22 +17,22 @@ public class ThreadSafeCounterIntegrationTest {
         SafeCounterWithLock safeCounter = new SafeCounterWithLock();
 
         IntStream.range(0, 1000)
-          .forEach(count -> service.submit(safeCounter::increment));
+                .forEach(count -> service.submit(safeCounter::increment));
         service.awaitTermination(100, TimeUnit.MILLISECONDS);
 
         assertEquals(1000, safeCounter.getValue());
     }
-    
+
     @Test
     public void givenMultiThread_whenSafeCounterWithoutLockIncrement() throws InterruptedException {
         ExecutorService service = Executors.newFixedThreadPool(3);
         SafeCounterWithoutLock safeCounter = new SafeCounterWithoutLock();
 
         IntStream.range(0, 1000)
-          .forEach(count -> service.submit(safeCounter::increment));
+                .forEach(count -> service.submit(safeCounter::increment));
         service.awaitTermination(100, TimeUnit.MILLISECONDS);
 
         assertEquals(1000, safeCounter.getValue());
     }
-    
+
 }

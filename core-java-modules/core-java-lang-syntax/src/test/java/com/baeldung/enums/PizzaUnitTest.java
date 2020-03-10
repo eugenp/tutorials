@@ -75,5 +75,5 @@ public class PizzaUnitTest {
         pz.setStatus(Pizza.PizzaStatusEnum.READY);
         pz.deliver();
         assertTrue(pz.getStatus() == Pizza.PizzaStatusEnum.DELIVERED);
-    }   
+    }
 }

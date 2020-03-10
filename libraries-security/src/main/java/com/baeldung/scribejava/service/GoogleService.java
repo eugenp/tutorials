@@ -6,6 +6,7 @@ import com.github.scribejava.core.oauth.OAuth20Service;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+
 @Component
 public class GoogleService {
 
@@ -16,8 +17,8 @@ public class GoogleService {
     private final String CALLBACK = "http://localhost:8080/auth/google";
 
     @PostConstruct
-    private void init(){
-        this.service  = new ServiceBuilder(API_KEY)
+    private void init() {
+        this.service = new ServiceBuilder(API_KEY)
                 .apiSecret(API_SECRET)
                 .scope(SCOPE)
                 .callback(CALLBACK)

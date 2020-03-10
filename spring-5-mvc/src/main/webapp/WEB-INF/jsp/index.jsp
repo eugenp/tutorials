@@ -21,66 +21,66 @@
 </body>
 <script>
 
-  /**
-   * AJAX Helpers.
-   */
+    /**
+     * AJAX Helpers.
+     */
 
-  var xhr = function(url) {
-    return new Promise(function(resolve, reject) {
-      try {
-        var xmhr = new XMLHttpRequest();
+    var xhr = function (url) {
+        return new Promise(function (resolve, reject) {
+            try {
+                var xmhr = new XMLHttpRequest();
 
-        //Listen for API Response
-        xmhr.onreadystatechange = function() {
-          if (xmhr.readyState == XMLHttpRequest.DONE && xmhr.status == 200) return resolve(xmhr.responseText);
-        };
+                //Listen for API Response
+                xmhr.onreadystatechange = function () {
+                    if (xmhr.readyState == XMLHttpRequest.DONE && xmhr.status == 200) return resolve(xmhr.responseText);
+                };
 
-        //Open connection
-        xmhr.open("GET", url, true);
-        //Additional headers as needed
-        //x.withCredentials = true;
-        //x.setRequestHeader("Accept", "application/json");
-        //x.setRequestHeader("Content-Type", "text/plain");
+                //Open connection
+                xmhr.open("GET", url, true);
+                //Additional headers as needed
+                //x.withCredentials = true;
+                //x.setRequestHeader("Accept", "application/json");
+                //x.setRequestHeader("Content-Type", "text/plain");
 
-        //Perform the actual AJAX call
-        xmhr.send();
+                //Perform the actual AJAX call
+                xmhr.send();
 
-      } catch (ex) {
-        reject("Exception: Oh CORS's you've made a mistake!");
-      }
+            } catch (ex) {
+                reject("Exception: Oh CORS's you've made a mistake!");
+            }
+        });
+    };
+
+    /**
+     * RBE
+     */
+
+    xhr('http://localhost:8080/rbe').then(function (success) {
+        var el = document.getElementById('rbe');
+        el.appendChild(document.createTextNode(success));
+        el.appendChild(document.createElement('br'))
     });
-  };
 
-  /**
-   * RBE
-   */
+    /**
+     * SSE
+     */
 
-  xhr('http://localhost:8080/rbe').then(function(success){
-    var el = document.getElementById('rbe');
-    el.appendChild(document.createTextNode(success));
-    el.appendChild(document.createElement('br'))
-  });
+    var sse = new EventSource('http://localhost:8080/sse');
+    sse.onmessage = function (evt) {
+        var el = document.getElementById('sse');
+        el.appendChild(document.createTextNode(evt.data));
+        el.appendChild(document.createElement('br'))
+    };
 
-  /**
-   * SSE
-   */
+    /**
+     * SRB
+     */
 
-  var sse = new EventSource('http://localhost:8080/sse');
-  sse.onmessage = function (evt) {
-    var el = document.getElementById('sse');
-    el.appendChild(document.createTextNode(evt.data));
-    el.appendChild(document.createElement('br'))
-  };
-
-  /**
-   * SRB
-   */
-
-  xhr('http://localhost:8080/srb').then(function(success){
-    var el = document.getElementById('srb');
-    el.appendChild(document.createTextNode(success));
-    el.appendChild(document.createElement('br'))
-  });
+    xhr('http://localhost:8080/srb').then(function (success) {
+        var el = document.getElementById('srb');
+        el.appendChild(document.createTextNode(success));
+        el.appendChild(document.createElement('br'))
+    });
 
 </script>
 </html>

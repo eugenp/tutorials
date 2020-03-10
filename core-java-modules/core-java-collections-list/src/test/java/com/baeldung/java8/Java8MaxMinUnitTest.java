@@ -22,9 +22,9 @@ public class Java8MaxMinUnitTest {
 
         //then
         final Integer max = listOfIntegers
-          .stream()
-          .mapToInt(v -> v)
-          .max().orElseThrow(NoSuchElementException::new);
+                .stream()
+                .mapToInt(v -> v)
+                .max().orElseThrow(NoSuchElementException::new);
 
         assertEquals("Should be 89", expectedResult, max);
     }
@@ -39,20 +39,20 @@ public class Java8MaxMinUnitTest {
 
         //then
         final Person minByAge = people
-          .stream()
-          .min(Comparator.comparing(Person::getAge))
-          .orElseThrow(NoSuchElementException::new);
+                .stream()
+                .min(Comparator.comparing(Person::getAge))
+                .orElseThrow(NoSuchElementException::new);
 
         assertEquals("Should be Alex", alex, minByAge);
     }
 
     @Test
     public void whenArrayIsOfIntegerThenMinUsesIntegerComparator() {
-        int[] integers = new int[] { 20, 98, 12, 7, 35 };
+        int[] integers = new int[]{20, 98, 12, 7, 35};
 
         int min = Arrays.stream(integers)
-            .min()
-            .getAsInt();
+                .min()
+                .getAsInt();
 
         assertEquals(7, min);
     }
@@ -63,11 +63,11 @@ public class Java8MaxMinUnitTest {
         final Car ferrari = new Car("Ferrari 288 GTO", 303);
         final Car bugatti = new Car("Bugatti Veyron 16.4 Super Sport", 415);
         final Car mcLaren = new Car("McLaren F1", 355);
-        final Car[] fastCars = { porsche, ferrari, bugatti, mcLaren };
+        final Car[] fastCars = {porsche, ferrari, bugatti, mcLaren};
 
         final Car maxBySpeed = Arrays.stream(fastCars)
-            .max(Comparator.comparing(Car::getTopSpeed))
-            .orElseThrow(NoSuchElementException::new);
+                .max(Comparator.comparing(Car::getTopSpeed))
+                .orElseThrow(NoSuchElementException::new);
 
         assertEquals(bugatti, maxBySpeed);
     }

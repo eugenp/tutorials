@@ -47,15 +47,15 @@ public abstract class AbstractDiscoverabilityLiveTest<T extends Serializable> ex
         // When
         final Foo newResource = new Foo(randomAlphabetic(6));
         final Response createResp = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(newResource)
-            .post(getURL());
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(newResource)
+                .post(getURL());
         final String uriOfNewResource = createResp.getHeader(HttpHeaders.LOCATION);
 
         // Then
         final Response response = RestAssured.given()
-            .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
-            .get(uriOfNewResource);
+                .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+                .get(uriOfNewResource);
 
         final Foo resourceFromServer = response.body().as(Foo.class);
         assertThat(newResource, equalTo(resourceFromServer));

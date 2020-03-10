@@ -42,15 +42,15 @@ public class SessionControllerIntegrationTest {
         redisServer = new RedisServer(6379);
         redisServer.start();
     }
-    
+
     @AfterClass
     public static void stopRedisServer() {
         redisServer.stop();
     }
-    
+
     @Before
     public void clearRedisData() {
-        
+
         testRestTemplate = new TestRestTemplate();
         testRestTemplateWithAuth = new TestRestTemplate("admin", "password");
 
@@ -92,7 +92,7 @@ public class SessionControllerIntegrationTest {
         assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());// access denied after sessions are removed in redis
     }
 
-    private String getTestUrl(){
+    private String getTestUrl() {
         return "http://localhost:" + port;
     }
 }

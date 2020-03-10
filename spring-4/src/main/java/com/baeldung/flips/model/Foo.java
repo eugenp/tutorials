@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class Foo {
-    @NonNull private final String name;
-    @NonNull private final int id;
+    @NonNull
+    private final String name;
+    @NonNull
+    private final int id;
 }

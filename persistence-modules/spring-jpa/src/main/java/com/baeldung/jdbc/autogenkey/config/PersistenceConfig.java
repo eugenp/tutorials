@@ -11,7 +11,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 @Configuration
 public class PersistenceConfig {
-    
+
     @Bean
     public DataSource dataSource(Environment env) {
         return new EmbeddedDatabaseBuilder()
@@ -19,10 +19,10 @@ public class PersistenceConfig {
                 .addScript("autogenkey-schema.sql")
                 .build();
     }
-    
+
     @Bean
     public JdbcTemplate jdbcTemplate(DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
-    
+
 }

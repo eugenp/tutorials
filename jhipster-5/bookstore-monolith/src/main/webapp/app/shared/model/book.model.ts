@@ -1,4 +1,4 @@
-import { Moment } from 'moment';
+import {Moment} from 'moment';
 
 export interface IBook {
     id?: number;
@@ -17,5 +17,6 @@ export class Book implements IBook {
         public published?: Moment,
         public quantity?: number,
         public price?: number
-    ) {}
+    ) {
+    }
 }

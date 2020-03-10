@@ -1,11 +1,11 @@
 {
-    "logs": {
-        "title": "Logs",
-        "nbloggers": "Existem {{ total }} loggers.",
-        "filter": "Filtro",
-        "table": {
-            "name": "Nome",
-            "level": "Nível"
-        }
+  "logs": {
+    "title": "Logs",
+    "nbloggers": "Existem {{ total }} loggers.",
+    "filter": "Filtro",
+    "table": {
+      "name": "Nome",
+      "level": "Nível"
     }
+  }
 }

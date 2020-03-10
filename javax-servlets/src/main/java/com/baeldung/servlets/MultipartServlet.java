@@ -16,8 +16,8 @@ import java.io.IOException;
 import static com.baeldung.Constants.UPLOAD_DIRECTORY;
 
 @WebServlet(
-    name = "MultiPartServlet",
-    urlPatterns = {"/multiPartServlet"}
+        name = "MultiPartServlet",
+        urlPatterns = {"/multiPartServlet"}
 )
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class MultipartServlet extends HttpServlet {

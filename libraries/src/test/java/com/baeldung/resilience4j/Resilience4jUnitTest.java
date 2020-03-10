@@ -40,11 +40,11 @@ public class Resilience4jUnitTest {
     @Test
     public void whenCircuitBreakerIsUsed_thenItWorksAsExpected() {
         CircuitBreakerConfig config = CircuitBreakerConfig.custom()
-                                                          // Percentage of failures to start short-circuit
-                                                          .failureRateThreshold(20)
-                                                          // Min number of call attempts
-                                                          .ringBufferSizeInClosedState(5)
-                                                          .build();
+                // Percentage of failures to start short-circuit
+                .failureRateThreshold(20)
+                // Min number of call attempts
+                .ringBufferSizeInClosedState(5)
+                .build();
         CircuitBreakerRegistry registry = CircuitBreakerRegistry.of(config);
         CircuitBreaker circuitBreaker = registry.circuitBreaker("my");
         Function<Integer, Integer> decorated = CircuitBreaker.decorateFunction(circuitBreaker, service::process);

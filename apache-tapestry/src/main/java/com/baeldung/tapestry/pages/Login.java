@@ -24,7 +24,7 @@ public class Login {
     private String password;
 
     void onValidateFromLogin() {
-        if(email == null || password == null) {
+        if (email == null || password == null) {
             alertManager.error("Email/Password is null");
             login.recordError("Validation failed");
         }

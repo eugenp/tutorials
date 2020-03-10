@@ -1,6 +1,7 @@
 package com.baeldung.async;
 
 import static com.ea.async.Async.await;
+
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
@@ -19,12 +20,12 @@ public class EAAsyncExample {
 
     public static void usingCompletableFuture() throws InterruptedException, ExecutionException, Exception {
         CompletableFuture<Void> completableFuture = hello()
-            .thenComposeAsync(hello -> mergeWorld(hello))
-            .thenAcceptAsync(helloWorld -> print(helloWorld))
-            .exceptionally( throwable -> {
-                System.out.println(throwable.getCause()); 
-                return null;
-            });
+                .thenComposeAsync(hello -> mergeWorld(hello))
+                .thenAcceptAsync(helloWorld -> print(helloWorld))
+                .exceptionally(throwable -> {
+                    System.out.println(throwable.getCause());
+                    return null;
+                });
         completableFuture.get();
     }
 

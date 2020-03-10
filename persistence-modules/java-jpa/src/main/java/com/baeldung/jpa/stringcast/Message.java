@@ -3,9 +3,9 @@ package com.baeldung.jpa.stringcast;
 import javax.persistence.*;
 
 @SqlResultSetMapping(name = "textQueryMapping", classes = {
-  @ConstructorResult(targetClass = Message.class, columns = {
-    @ColumnResult(name = "text")
-  })
+        @ConstructorResult(targetClass = Message.class, columns = {
+                @ColumnResult(name = "text")
+        })
 })
 @Entity
 public class Message {

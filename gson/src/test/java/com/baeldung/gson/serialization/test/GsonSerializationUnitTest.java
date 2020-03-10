@@ -23,7 +23,7 @@ public class GsonSerializationUnitTest {
 
     @Test
     public void givenArrayOfObjects_whenSerializing_thenCorrect() {
-        final SourceClass[] sourceArray = { new SourceClass(1, "one"), new SourceClass(2, "two") };
+        final SourceClass[] sourceArray = {new SourceClass(1, "one"), new SourceClass(2, "two")};
         final String jsonString = new Gson().toJson(sourceArray);
 
         // test

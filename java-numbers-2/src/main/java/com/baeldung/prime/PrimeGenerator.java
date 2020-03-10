@@ -47,13 +47,13 @@ public class PrimeGenerator {
 
     public static List<Integer> primeNumbersTill(int max) {
         return IntStream.rangeClosed(2, max)
-            .filter(x -> isPrime(x))
-            .boxed()
-            .collect(Collectors.toList());
+                .filter(x -> isPrime(x))
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     private static boolean isPrime(int x) {
         return IntStream.rangeClosed(2, (int) (Math.sqrt(x)))
-            .allMatch(n -> x % n != 0);
+                .allMatch(n -> x % n != 0);
     }
 }

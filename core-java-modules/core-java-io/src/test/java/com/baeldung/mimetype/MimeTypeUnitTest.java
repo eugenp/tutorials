@@ -23,8 +23,8 @@ import net.sf.jmimemagic.MagicParseException;
 
 /**
  * Test class demonstrating various strategies to resolve MIME type of a file.
- * @author tritty
  *
+ * @author tritty
  */
 public class MimeTypeUnitTest {
     /**
@@ -39,7 +39,7 @@ public class MimeTypeUnitTest {
 
     /**
      * Test method, demonstrating usage in Java 7.
-     * 
+     *
      * @throws IOException
      */
     @Test
@@ -51,7 +51,7 @@ public class MimeTypeUnitTest {
 
     /**
      * Test method demonstrating the usage of URLConnection to resolve MIME type.
-     * 
+     *
      * @throws MalformedURLException
      * @throws IOException
      */
@@ -59,14 +59,13 @@ public class MimeTypeUnitTest {
     public void whenUsingGetContentType_thenSuccess() throws MalformedURLException, IOException {
         final File file = new File(FILE_LOC);
         final URLConnection connection = file.toURL()
-            .openConnection();
+                .openConnection();
         final String mimeType = connection.getContentType();
         assertEquals(mimeType, PNG_EXT);
     }
 
     /**
      * Test method demonstrating the usage of URLConnection to resolve MIME type.
-     * 
      */
     @Test
     public void whenUsingGuessContentTypeFromName_thenSuccess() {
@@ -78,7 +77,6 @@ public class MimeTypeUnitTest {
     /**
      * Test method demonstrating the usage of FileNameMap from URLConnection
      * to resolve MIME type of a file.
-     * 
      */
     @Test
     public void whenUsingGetFileNameMap_thenSuccess() {
@@ -89,9 +87,8 @@ public class MimeTypeUnitTest {
     }
 
     /**
-     * Test method demonstrating the usage of MimeTypesFileTypeMap for resolution of 
+     * Test method demonstrating the usage of MimeTypesFileTypeMap for resolution of
      * MIME type.
-     * 
      */
     @Test
     public void whenUsingMimeTypesFileTypeMap_thenSuccess() {
@@ -103,7 +100,7 @@ public class MimeTypeUnitTest {
 
     /**
      * Test method demonstrating usage of jMimeMagic.
-     * 
+     *
      * @throws MagicParseException
      * @throws MagicMatchNotFoundException
      * @throws MagicException
@@ -118,7 +115,7 @@ public class MimeTypeUnitTest {
 
     /**
      * Test method demonstrating usage of Apache Tika.
-     * 
+     *
      * @throws IOException
      */
     @Test

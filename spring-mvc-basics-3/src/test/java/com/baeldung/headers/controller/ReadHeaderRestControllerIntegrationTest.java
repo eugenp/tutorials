@@ -32,55 +32,55 @@ public class ReadHeaderRestControllerIntegrationTest {
     @BeforeEach
     public void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(new ReadHeaderRestController())
-            .build();
+                .build();
     }
 
     @Test
     public void whenGetRequestSentToAllHeaders_thenStatusOkAndTextReturned() throws Exception {
         mockMvc.perform(get("/listHeaders").header("my-header", "Test"))
-            .andExpect(status().isOk())
-            .andExpect(content().string("Listed 1 headers"));
+                .andExpect(status().isOk())
+                .andExpect(content().string("Listed 1 headers"));
     }
 
     @Test
     public void whenGetRequestSentToMultiValue_thenStatusOkAndTextReturned() throws Exception {
         mockMvc.perform(get("/multiValue").header("my-header", "ABC", "DEF", "GHI"))
-            .andExpect(status().isOk())
-            .andExpect(content().string("Listed 1 headers"));
+                .andExpect(status().isOk())
+                .andExpect(content().string("Listed 1 headers"));
     }
 
     @Test
     public void whenGetRequestSentToGreeting_thenStatusOKAndGreetingReturned() throws Exception {
         mockMvc.perform(get("/greeting").header("accept-language", "de"))
-            .andExpect(status().isOk())
-            .andExpect(content().string("Hallo!"));
+                .andExpect(status().isOk())
+                .andExpect(content().string("Hallo!"));
     }
 
     @Test
     public void whenGetRequestSentToDouble_thenStatusOKAndCorrectResultReturned() throws Exception {
         mockMvc.perform(get("/double").header("my-number", 2))
-            .andExpect(status().isOk())
-            .andExpect(content().string("2 * 2 = 4"));
+                .andExpect(status().isOk())
+                .andExpect(content().string("2 * 2 = 4"));
     }
 
     @Test
     public void whenGetRequestSentToGetBaseUrl_thenStatusOkAndHostReturned() throws Exception {
         mockMvc.perform(get("/getBaseUrl").header("host", "localhost:8080"))
-            .andExpect(status().isOk())
-            .andExpect(content().string("Base URL = http://localhost:8080"));
+                .andExpect(status().isOk())
+                .andExpect(content().string("Base URL = http://localhost:8080"));
     }
 
     @Test
     public void whenGetRequestSentToNonRequiredHeaderWithoutHeader_thenStatusOKAndMessageReturned() throws Exception {
         mockMvc.perform(get("/nonRequiredHeader"))
-            .andExpect(status().isOk())
-            .andExpect(content().string("Was the optional header present? No!"));
+                .andExpect(status().isOk())
+                .andExpect(content().string("Was the optional header present? No!"));
     }
 
     @Test
     public void whenGetRequestSentToDefaultWithoutHeader_thenStatusOKAndMessageReturned() throws Exception {
         mockMvc.perform(get("/default"))
-            .andExpect(status().isOk())
-            .andExpect(content().string("Optional Header is 3600"));
+                .andExpect(status().isOk())
+                .andExpect(content().string("Optional Header is 3600"));
     }
 }

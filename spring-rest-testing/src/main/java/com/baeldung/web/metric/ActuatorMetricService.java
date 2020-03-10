@@ -95,7 +95,7 @@ public class ActuatorMetricService implements IActuatorMetricService {
             appendStatusIfNotExist(status, statusCount);
             index = statusList.indexOf(status);
             oldCount = statusCount.get(index) == null ? 0 : statusCount.get(index);
-            statusCount.set(index, (int)((Counter) counterMetric).count() + oldCount);
+            statusCount.set(index, (int) ((Counter) counterMetric).count() + oldCount);
         }
     }
 

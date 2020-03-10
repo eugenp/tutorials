@@ -17,9 +17,9 @@ public class CheckoutCommand extends FrontCommand {
         } else {
             Order order = (Order) session.getAttribute("order");
             Double total = order.getItems().entrySet().stream()
-              .map(entry -> entry.getKey().getPrice() * entry.getValue())
-              .reduce((p1, p2) -> p1 + p2)
-              .orElse(0.00);
+                    .map(entry -> entry.getKey().getPrice() * entry.getValue())
+                    .reduce((p1, p2) -> p1 + p2)
+                    .orElse(0.00);
             request.setAttribute("total", total);
             forward("shopping-cart");
         }

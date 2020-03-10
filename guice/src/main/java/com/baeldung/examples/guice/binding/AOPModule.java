@@ -7,7 +7,6 @@ import com.google.inject.AbstractModule;
 import com.google.inject.matcher.Matchers;
 
 /**
- *
  * @author baeldung
  */
 public class AOPModule extends AbstractModule {

@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/api")
+@RequestMapping(value = "/api")
 public class RequestMethodController {
 
     @Autowired
     EmployeeService service;
 
-    @RequestMapping(value = "/employees", produces = "application/json", method={RequestMethod.GET,RequestMethod.POST})
+    @RequestMapping(value = "/employees", produces = "application/json", method = {RequestMethod.GET, RequestMethod.POST})
     public List<Employee> findEmployees()
             throws InvalidRequestException {
         return service.getEmployeeList();

@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class EmployeeBean implements Serializable {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -3760445487636086034L;
 

@@ -24,8 +24,8 @@ public class XmlToObjectIntegrationTest {
     public void convertXmlToObjectFromFile() throws Exception {
         ClassLoader classLoader = getClass().getClassLoader();
         FileReader reader = new FileReader(classLoader
-          .getResource("data-file.xml")
-          .getFile());
+                .getResource("data-file.xml")
+                .getFile());
         Customer customer = (Customer) xstream.fromXML(reader);
         Assert.assertNotNull(customer);
     }

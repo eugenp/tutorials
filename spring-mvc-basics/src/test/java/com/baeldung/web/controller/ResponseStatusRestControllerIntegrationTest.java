@@ -16,37 +16,37 @@ public class ResponseStatusRestControllerIntegrationTest {
     @BeforeEach
     public void setup() {
         this.mockMvc = MockMvcBuilders.standaloneSetup(new ResponseStatusRestController())
-            .build();
+                .build();
     }
 
     @Test
     public void whenTeapotEndpointCalled_thenTeapotResponseObtained() throws Exception {
         this.mockMvc.perform(get("/teapot"))
-            .andExpect(status().isIAmATeapot());
+                .andExpect(status().isIAmATeapot());
     }
 
     @Test
     public void whenEmptyNoContentEndpointCalled_thenNoContentResponseObtained() throws Exception {
         this.mockMvc.perform(get("/empty"))
-            .andExpect(status().isNoContent());
+                .andExpect(status().isNoContent());
     }
 
     @Test
     public void whenEmptyWithoutResponseStatusEndpointCalled_then200ResponseObtained() throws Exception {
         this.mockMvc.perform(get("/empty-no-responsestatus"))
-            .andExpect(status().isOk());
+                .andExpect(status().isOk());
     }
 
     @Test
     public void whenCreateWithCreatedEndpointCalled_thenCreatedResponseObtained() throws Exception {
         this.mockMvc.perform(post("/create"))
-            .andExpect(status().isCreated());
+                .andExpect(status().isCreated());
     }
 
     @Test
     public void whenCreateWithoutResponseStatusEndpointCalled_thenCreatedResponseObtained() throws Exception {
         this.mockMvc.perform(post("/create-no-responsestatus"))
-            .andExpect(status().isOk());
+                .andExpect(status().isOk());
     }
 
 }

@@ -26,7 +26,7 @@ public class Block {
     public String mineBlock(int prefix) {
         String prefixString = new String(new char[prefix]).replace('\0', '0');
         while (!hash.substring(0, prefix)
-            .equals(prefixString)) {
+                .equals(prefixString)) {
             nonce++;
             hash = calculateBlockHash();
         }

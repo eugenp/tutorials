@@ -4,24 +4,27 @@
           xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
           version="5.0" xml:id="column.count.titlepage">
-<refmeta>
-<refentrytitle>column.count.titlepage</refentrytitle>
-<refmiscinfo class="other" otherclass="datatype">integer</refmiscinfo>
-</refmeta>
-<refnamediv>
-<refname>column.count.titlepage</refname>
-<refpurpose>Number of columns on a title page</refpurpose>
-</refnamediv>
+    <refmeta>
+        <refentrytitle>column.count.titlepage</refentrytitle>
+        <refmiscinfo class="other" otherclass="datatype">integer</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname>column.count.titlepage</refname>
+        <refpurpose>Number of columns on a title page</refpurpose>
+    </refnamediv>
 
-<refsynopsisdiv>
-<src:fragment xml:id="column.count.titlepage.frag">
-<xsl:param name="column.count.titlepage" select="1"/>
-</src:fragment>
-</refsynopsisdiv>
+    <refsynopsisdiv>
+        <src:fragment xml:id="column.count.titlepage.frag">
+            <xsl:param name="column.count.titlepage" select="1"/>
+        </src:fragment>
+    </refsynopsisdiv>
 
-<refsection><info><title>Description</title></info>
+    <refsection>
+        <info>
+            <title>Description</title>
+        </info>
 
-<para>Number of columns on a title page</para>
+        <para>Number of columns on a title page</para>
 
-</refsection>
+    </refsection>
 </refentry>

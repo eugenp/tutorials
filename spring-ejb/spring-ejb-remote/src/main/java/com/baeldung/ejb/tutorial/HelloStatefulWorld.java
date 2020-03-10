@@ -6,6 +6,7 @@ import javax.ejb.Remote;
 public interface HelloStatefulWorld {
 
     int howManyTimes();
+
     String getHelloWorld();
-    
+
 }

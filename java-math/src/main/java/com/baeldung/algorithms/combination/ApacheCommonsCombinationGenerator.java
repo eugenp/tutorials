@@ -10,8 +10,9 @@ public class ApacheCommonsCombinationGenerator {
     private static final int N = 6;
     private static final int R = 3;
 
-    /** 
+    /**
      * Print all combinations of r elements from a set
+     *
      * @param n - number of elements in set
      * @param r - number of elements in selection
      */

@@ -18,12 +18,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 @Configuration
-@ComponentScan(basePackages = { "org.baeldung.rolesauthorities" })
+@ComponentScan(basePackages = {"org.baeldung.rolesauthorities"})
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -43,41 +43,41 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-            .antMatchers("/resources/**");
+                .antMatchers("/resources/**");
     }
 
-    
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	
+
         // @formatter:off
         http
-            .csrf().disable()
-            .authorizeRequests()
+                .csrf().disable()
+                .authorizeRequests()
                 .antMatchers("/login*", "/logout*", "/protectedbynothing*", "/home*").permitAll()
                 .antMatchers("/protectedbyrole").hasRole("USER")
                 .antMatchers("/protectedbyauthority").hasAuthority("READ_PRIVILEGE")
                 .and()
-            .formLogin()
+                .formLogin()
                 .loginPage("/login")
                 .failureUrl("/login?error=true")
                 .permitAll()
                 .and()
-            .logout()
+                .logout()
                 .logoutSuccessHandler(myLogoutSuccessHandler)
                 .invalidateHttpSession(false)
                 .logoutSuccessUrl("/logout.html?logSucc=true")
                 .deleteCookies("JSESSIONID")
                 .permitAll();
-    // @formatter:on
+        // @formatter:on
     }
 
     // beans
 
     @Bean
     public DaoAuthenticationProvider authProvider() {
-        final CustomAuthenticationProvider authProvider 
-        	= new CustomAuthenticationProvider(userRepository, userDetailsService);
+        final CustomAuthenticationProvider authProvider
+                = new CustomAuthenticationProvider(userRepository, userDetailsService);
         authProvider.setPasswordEncoder(encoder());
         return authProvider;
     }

@@ -36,7 +36,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * This test requires a localhost server over HTTPS <br>
  * It should only be manually run, not part of the automated build
- * */
+ */
 public class RestClientLiveManualTest {
 
     final String urlOverHttps = "http://localhost:8082/httpclient-simple/api/bars/1";
@@ -58,7 +58,7 @@ public class RestClientLiveManualTest {
         final ResponseEntity<String> response = new RestTemplate(requestFactory).exchange(urlOverHttps, HttpMethod.GET, null, String.class);
         assertThat(response.getStatusCode().value(), equalTo(200));
     }
-    
+
     // new httpClient : 4.4 and above
     @Test
     public final void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenOk_2() throws GeneralSecurityException {
@@ -66,7 +66,7 @@ public class RestClientLiveManualTest {
         final TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
         final SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy).build();
         final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
-        final Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory> create()
+        final Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create()
                 .register("https", sslsf)
                 .register("http", new PlainConnectionSocketFactory())
                 .build();

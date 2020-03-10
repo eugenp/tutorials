@@ -41,7 +41,7 @@ public class ArchaiusAdditionalSourcesLiveTest {
 
     private <T> Map<T, T> exchangeAsMap(String uri, ParameterizedTypeReference<Map<T, T>> responseType) {
         return template.exchange(uri, HttpMethod.GET, null, responseType)
-            .getBody();
+                .getBody();
     }
 
     @Test

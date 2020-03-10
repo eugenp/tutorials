@@ -28,7 +28,7 @@ import org.springframework.web.server.adapter.WebHttpHandlerBuilder;
 import reactor.core.publisher.Flux;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.baeldung.functional" })
+@ComponentScan(basePackages = {"com.baeldung.functional"})
 public class FunctionalSpringBootApplication {
 
     private static final Actor BRAD_PITT = new Actor("Brad", "Pitt");
@@ -39,27 +39,27 @@ public class FunctionalSpringBootApplication {
         FormHandler formHandler = new FormHandler();
 
         RouterFunction<ServerResponse> restfulRouter = route(GET("/"),
-            serverRequest -> ok().body(Flux.fromIterable(actors), Actor.class)).andRoute(POST("/"),
+                serverRequest -> ok().body(Flux.fromIterable(actors), Actor.class)).andRoute(POST("/"),
                 serverRequest -> serverRequest.bodyToMono(Actor.class)
-                    .doOnNext(actors::add)
-                    .then(ok().build()));
+                        .doOnNext(actors::add)
+                        .then(ok().build()));
 
         return route(GET("/test"), serverRequest -> ok().body(fromObject("helloworld")))
-            .andRoute(POST("/login"), formHandler::handleLogin)
-            .andRoute(POST("/upload"), formHandler::handleUpload)
-            .and(RouterFunctions.resources("/files/**", new ClassPathResource("files/")))
-            .andNest(path("/actor"), restfulRouter)
-            .filter((request, next) -> {
-                System.out.println("Before handler invocation: " + request.path());
-                return next.handle(request);
-            });
+                .andRoute(POST("/login"), formHandler::handleLogin)
+                .andRoute(POST("/upload"), formHandler::handleUpload)
+                .and(RouterFunctions.resources("/files/**", new ClassPathResource("files/")))
+                .andNest(path("/actor"), restfulRouter)
+                .filter((request, next) -> {
+                    System.out.println("Before handler invocation: " + request.path());
+                    return next.handle(request);
+                });
     }
 
     @Bean
     public ServletRegistrationBean servletRegistrationBean() throws Exception {
         HttpHandler httpHandler = WebHttpHandlerBuilder.webHandler((WebHandler) toHttpHandler(routingFunction()))
-            .filter(new IndexRewriteFilter())
-            .build();
+                .filter(new IndexRewriteFilter())
+                .build();
         ServletRegistrationBean registrationBean = new ServletRegistrationBean<>(new RootServlet(httpHandler), "/");
         registrationBean.setLoadOnStartup(1);
         registrationBean.setAsyncSupported(true);

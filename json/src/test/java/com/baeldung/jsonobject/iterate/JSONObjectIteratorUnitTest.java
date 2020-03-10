@@ -31,11 +31,11 @@ public class JSONObjectIteratorUnitTest {
         assertThat(keyValuePairs.get("Type")).isEqualTo("Maple");
         assertThat(keyValuePairs.get("tId")).isEqualTo("5001");
         assertThat(keyValuePairs.get("batters")
-            .toString()).isEqualTo("[{\"rType\":\"Regular\",\"rId\":\"1001\"},{\"cType\":\"Chocolate\",\"cId\":\"1002\"},{\"bType\":\"BlueBerry\",\"bId\":\"1003\"}]");
+                .toString()).isEqualTo("[{\"rType\":\"Regular\",\"rId\":\"1001\"},{\"cType\":\"Chocolate\",\"cId\":\"1002\"},{\"bType\":\"BlueBerry\",\"bId\":\"1003\"}]");
         assertThat(keyValuePairs.get("cakeShapes")
-            .toString()).isEqualTo("[\"square\",\"circle\",\"heart\"]");
+                .toString()).isEqualTo("[\"square\",\"circle\",\"heart\"]");
         assertThat(keyValuePairs.get("topping")
-            .toString()).isEqualTo("{\"Type\":\"Maple\",\"tId\":\"5001\"}");
+                .toString()).isEqualTo("{\"Type\":\"Maple\",\"tId\":\"5001\"}");
     }
 
     private JSONObject getJsonObject() {

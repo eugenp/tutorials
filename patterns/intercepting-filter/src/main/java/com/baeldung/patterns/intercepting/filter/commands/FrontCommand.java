@@ -32,7 +32,7 @@ public abstract class FrontCommand implements OnIntercept {
         }
         String path = String.format("/WEB-INF/jsp/%s.jsp", target);
         RequestDispatcher dispatcher = request.getServletContext()
-          .getRequestDispatcher(path);
+                .getRequestDispatcher(path);
         dispatcher.forward(request, response);
     }
 

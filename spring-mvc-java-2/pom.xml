@@ -7,14 +7,14 @@
     <version>0.1-SNAPSHOT</version>
     <name>spring-mvc-java-2</name>
     <packaging>war</packaging>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
-    
+
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -28,12 +28,11 @@
         </dependency>
 
     </dependencies>
-    
+
     <properties>
         <javax.version>4.0.1</javax.version>
         <spring.mvc.version>5.2.2.RELEASE</spring.mvc.version>
     </properties>
 
 
-    
 </project>

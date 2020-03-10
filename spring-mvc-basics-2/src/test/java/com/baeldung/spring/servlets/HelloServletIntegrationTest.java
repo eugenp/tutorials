@@ -3,6 +3,7 @@ package com.baeldung.spring.servlets;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
+
 import javax.servlet.ServletException;
 import java.io.IOException;
 

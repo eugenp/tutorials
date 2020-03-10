@@ -13,10 +13,10 @@ public class PersonMapperUnitTest {
 
     @Test
     public void givenPersonEntitytoPersonWithExpression_whenMaps_thenCorrect() {
-        
-        Person entity  = new Person();
+
+        Person entity = new Person();
         entity.setName("Micheal");
-        
+
         PersonDTO personDto = PersonMapper.INSTANCE.personToPersonDTO(entity);
 
         assertNull(entity.getId());

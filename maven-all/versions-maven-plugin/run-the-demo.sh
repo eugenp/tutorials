@@ -1,9 +1,12 @@
 #!/bin/bash
 #function to display commands
-exe() { echo -e "\$ $@\n" ; "$@" ; }
+exe() {
+  echo -e "\$ $@\n"
+  "$@"
+}
 
 TEXT_COLOR='\033[1;33m' #Yellow
-NO_COLOR='\033[0m' # No Color
+NO_COLOR='\033[0m'      # No Color
 
 clear
 
@@ -19,14 +22,14 @@ rm -f pom.xml.versionsBackup
 cp original/pom.xml pom.xml
 ls -lt pom.*
 echo -e "${TEXT_COLOR}\n--------------------------------------------------------------------------------------"
-echo -e " Checking for newer versions of the Maven dependencies:" 
+echo -e " Checking for newer versions of the Maven dependencies:"
 echo -e "--------------------------------------------------------------------------------------${NO_COLOR}"
 exe mvn versions:display-dependency-updates
 echo
 read -p "Press enter to continue"
 
 echo -e "${TEXT_COLOR}\n--------------------------------------------------------------------------------------"
-echo -e " Updating SNAPSHOT dependencies to their RELEASE version, if any:" 
+echo -e " Updating SNAPSHOT dependencies to their RELEASE version, if any:"
 echo -e "--------------------------------------------------------------------------------------${NO_COLOR}"
 exe mvn versions:use-releases
 echo -e "${TEXT_COLOR}\n--------------------------------------------------------------------------------------"
@@ -37,7 +40,7 @@ echo
 read -p "Press enter to continue"
 
 echo -e "${TEXT_COLOR}\n--------------------------------------------------------------------------------------"
-echo -e " Updating RELEASE dependencies to their *next* RELEASE version:" 
+echo -e " Updating RELEASE dependencies to their *next* RELEASE version:"
 echo -e "--------------------------------------------------------------------------------------${NO_COLOR}"
 exe mvn versions:use-next-releases
 echo

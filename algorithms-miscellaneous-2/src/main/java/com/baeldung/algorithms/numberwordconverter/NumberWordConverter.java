@@ -8,19 +8,19 @@ public class NumberWordConverter {
 
     public static final String INVALID_INPUT_GIVEN = "Invalid input given";
 
-    public static final String[] ones = { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+    public static final String[] ones = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
 
     public static final String[] tens = {
-      "", // 0
-      "", // 1
-      "twenty", // 2
-      "thirty", // 3
-      "forty", // 4
-      "fifty", // 5
-      "sixty", // 6
-      "seventy", // 7
-      "eighty", // 8
-      "ninety" // 9
+            "", // 0
+            "", // 1
+            "twenty", // 2
+            "thirty", // 3
+            "forty", // 4
+            "fifty", // 5
+            "sixty", // 6
+            "seventy", // 7
+            "eighty", // 8
+            "ninety" // 9
     };
 
     public static String getMoneyIntoWords(String input) {

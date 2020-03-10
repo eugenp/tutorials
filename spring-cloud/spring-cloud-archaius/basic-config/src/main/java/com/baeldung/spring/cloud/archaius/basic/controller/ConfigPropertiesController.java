@@ -27,19 +27,19 @@ public class ConfigPropertiesController {
     private String propertyFourWithValue;
 
     private DynamicStringProperty propertyOneWithDynamic = DynamicPropertyFactory.getInstance()
-        .getStringProperty("baeldung.archaius.properties.one", "not found!");
+            .getStringProperty("baeldung.archaius.properties.one", "not found!");
 
     private DynamicStringProperty propertyTwoWithDynamic = DynamicPropertyFactory.getInstance()
-        .getStringProperty("baeldung.archaius.properties.two", "not found!");
+            .getStringProperty("baeldung.archaius.properties.two", "not found!");
 
     private DynamicStringProperty propertyThreeWithDynamic = DynamicPropertyFactory.getInstance()
-        .getStringProperty("baeldung.archaius.properties.three", "not found!");
+            .getStringProperty("baeldung.archaius.properties.three", "not found!");
 
     private DynamicStringProperty propertyFourWithDynamic = DynamicPropertyFactory.getInstance()
-        .getStringProperty("baeldung.archaius.properties.four", "not found!");
+            .getStringProperty("baeldung.archaius.properties.four", "not found!");
 
     private DynamicIntProperty intPropertyWithDynamic = DynamicPropertyFactory.getInstance()
-        .getIntProperty("baeldung.archaius.properties.int", 0);
+            .getIntProperty("baeldung.archaius.properties.int", 0);
 
     @GetMapping("/properties-from-value")
     public Map<String, String> getPropertiesFromValue() {

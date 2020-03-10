@@ -13,40 +13,41 @@ import java.util.Date;
 @Table(name = "users")
 public class User {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private int id;
-  
-  @NotNull
-  @Size(min=3, max=255)
-  private String name;
-  
-  @Column(unique = true)
-  @NotNull @Email
-  private String email;
-  
-  @NotNull
-  @Size(min=6, max=255)
-  private String password;
-  
-  @Column(name = "created_at")
-  private Date createdAt;
-  
-  @Column(name = "updated_at")
-  private Date updatedAt;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-  public User() {
-    updatedAt = new Date();
-    createdAt = new Date();
-  }
-  
-  public User(String name, String email, String password) {
-    this.name = name;
-    this.email = email;
-    this.password = password;
-    createdAt = new Date();
-    updatedAt = new Date();
-  }
+    @NotNull
+    @Size(min = 3, max = 255)
+    private String name;
+
+    @Column(unique = true)
+    @NotNull
+    @Email
+    private String email;
+
+    @NotNull
+    @Size(min = 6, max = 255)
+    private String password;
+
+    @Column(name = "created_at")
+    private Date createdAt;
+
+    @Column(name = "updated_at")
+    private Date updatedAt;
+
+    public User() {
+        updatedAt = new Date();
+        createdAt = new Date();
+    }
+
+    public User(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        createdAt = new Date();
+        updatedAt = new Date();
+    }
 
     public int getId() {
         return id;

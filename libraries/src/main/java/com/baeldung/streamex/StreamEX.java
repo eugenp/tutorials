@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import one.util.streamex.DoubleStreamEx;
 import one.util.streamex.EntryStream;
 import one.util.streamex.IntStreamEx;
@@ -42,7 +43,7 @@ public class StreamEX {
         Map<User, List<Role>> users2roles = transformMap(role2users);
         Map<String, String> mapToString = EntryStream.of(users2roles).mapKeys(String::valueOf).mapValues(String::valueOf).toMap();
         // Support of byte/char/short/float types:
-        short[] src = { 1, 2, 3 };
+        short[] src = {1, 2, 3};
         char[] output = IntStreamEx.of(src).map(x -> x * 5).toCharArray();
     }
 

@@ -1,6 +1,7 @@
 package com.baeldung.jackson.enums.deserialization.customdeserializer;
 
 import java.io.IOException;
+
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -28,10 +29,10 @@ public class CustomEnumDeserializer extends StdDeserializer<Distance> {
         double meters = node.get("meters").asDouble();
 
         for (Distance distance : Distance.values()) {
-           
-            if (distance.getUnit().equals(unit) && 
-                Double.compare(distance.getMeters(), meters) == 0) {
-                
+
+            if (distance.getUnit().equals(unit) &&
+                    Double.compare(distance.getMeters(), meters) == 0) {
+
                 return distance;
             }
         }

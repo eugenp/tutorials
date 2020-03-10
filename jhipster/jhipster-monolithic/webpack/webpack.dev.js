@@ -14,7 +14,7 @@ if (!fs.existsSync(ddlPath)) {
     execSync('webpack --config webpack/webpack.vendor.js');
 }
 
-module.exports = webpackMerge(commonConfig({ env: ENV }), {
+module.exports = webpackMerge(commonConfig({env: ENV}), {
     devtool: 'inline-source-map',
     devServer: {
         contentBase: './target/www',

@@ -7,7 +7,7 @@ public class OutputStreamExample {
 
     public static void main(String[] args) {
         Logger log = Logger.getLogger(OutputStreamExample.class.getName());
-        log.log(Level.INFO, Integer.toString(sum(1,2)));
+        log.log(Level.INFO, Integer.toString(sum(1, 2)));
     }
 
     public static int sum(int a, int b) {

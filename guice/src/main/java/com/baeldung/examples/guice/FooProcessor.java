@@ -4,6 +4,6 @@ import com.google.inject.Inject;
 
 public class FooProcessor {
 
-	@Inject
-	private Foo foo;
+    @Inject
+    private Foo foo;
 }

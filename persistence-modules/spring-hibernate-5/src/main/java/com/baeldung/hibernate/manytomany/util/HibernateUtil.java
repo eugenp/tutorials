@@ -20,7 +20,7 @@ public class HibernateUtil {
             System.out.println("Hibernate Annotation Configuration loaded");
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
-                .build();
+                    .build();
             System.out.println("Hibernate Annotation serviceRegistry created");
 
             SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);

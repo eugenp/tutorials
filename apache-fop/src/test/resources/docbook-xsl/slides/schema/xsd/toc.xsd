@@ -29,88 +29,90 @@
   
   ======================================================================
 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docbook.org/ns/docbook" xmlns:dbs="http://docbook.org/ns/docbook-slides" xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <xs:import namespace="http://docbook.org/ns/docbook-slides" schemaLocation="slides.xsd"/>
-  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
-  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
-  <xs:attributeGroup name="db.toc.pagenum.attribute">
-    <xs:attribute name="pagenum" use="required"/>
-  </xs:attributeGroup>
-  <!-- ====================================================================== -->
-  <xs:attributeGroup name="db.toc.role.attribute">
-    <xs:attribute name="role" use="required"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="db.toc.attlist">
-    <xs:attribute name="role"/>
-    <xs:attributeGroup ref="dbs:db.common.attributes"/>
-    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
-  </xs:attributeGroup>
-  <xs:group name="db.toc.info">
-    <xs:sequence>
-      <xs:group ref="db:db._info.title.only"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="toc">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:group ref="db:db.toc.info"/>
-        <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.all.blocks"/>
-        <xs:choice minOccurs="0" maxOccurs="unbounded">
-          <xs:element ref="db:tocdiv"/>
-          <xs:element ref="db:tocentry"/>
-        </xs:choice>
-      </xs:sequence>
-      <xs:attributeGroup ref="db:db.toc.attlist"/>
-    </xs:complexType>
-  </xs:element>
-  <!-- ====================================================================== -->
-  <xs:attributeGroup name="db.tocdiv.role.attribute">
-    <xs:attribute name="role" use="required"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="db.tocdiv.pagenum.attribute">
-    <xs:attributeGroup ref="db:db.toc.pagenum.attribute"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="db.tocdiv.attlist">
-    <xs:attribute name="role"/>
-    <xs:attributeGroup ref="dbs:db.common.attributes"/>
-    <xs:attribute name="pagenum"/>
-    <xs:attribute name="linkend" type="xs:IDREF"/>
-  </xs:attributeGroup>
-  <xs:group name="db.tocdiv.info">
-    <xs:sequence>
-      <xs:group ref="db:db._info"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="tocdiv">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:group ref="db:db.tocdiv.info"/>
-        <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.all.blocks"/>
-        <xs:choice maxOccurs="unbounded">
-          <xs:element ref="db:tocdiv"/>
-          <xs:element ref="db:tocentry"/>
-        </xs:choice>
-      </xs:sequence>
-      <xs:attributeGroup ref="db:db.tocdiv.attlist"/>
-    </xs:complexType>
-  </xs:element>
-  <!-- ====================================================================== -->
-  <xs:attributeGroup name="db.tocentry.role.attribute">
-    <xs:attribute name="role" use="required"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="db.tocentry.pagenum.attribute">
-    <xs:attributeGroup ref="db:db.toc.pagenum.attribute"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="db.tocentry.attlist">
-    <xs:attribute name="role"/>
-    <xs:attributeGroup ref="dbs:db.common.attributes"/>
-    <xs:attribute name="pagenum"/>
-    <xs:attribute name="linkend" type="xs:IDREF"/>
-  </xs:attributeGroup>
-  <xs:element name="tocentry">
-    <xs:complexType mixed="true">
-      <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.all.inlines"/>
-      <xs:attributeGroup ref="db:db.tocentry.attlist"/>
-    </xs:complexType>
-  </xs:element>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           targetNamespace="http://docbook.org/ns/docbook" xmlns:dbs="http://docbook.org/ns/docbook-slides"
+           xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <xs:import namespace="http://docbook.org/ns/docbook-slides" schemaLocation="slides.xsd"/>
+    <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+    <xs:attributeGroup name="db.toc.pagenum.attribute">
+        <xs:attribute name="pagenum" use="required"/>
+    </xs:attributeGroup>
+    <!-- ====================================================================== -->
+    <xs:attributeGroup name="db.toc.role.attribute">
+        <xs:attribute name="role" use="required"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="db.toc.attlist">
+        <xs:attribute name="role"/>
+        <xs:attributeGroup ref="dbs:db.common.attributes"/>
+        <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    </xs:attributeGroup>
+    <xs:group name="db.toc.info">
+        <xs:sequence>
+            <xs:group ref="db:db._info.title.only"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="toc">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:group ref="db:db.toc.info"/>
+                <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.all.blocks"/>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="db:tocdiv"/>
+                    <xs:element ref="db:tocentry"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attributeGroup ref="db:db.toc.attlist"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- ====================================================================== -->
+    <xs:attributeGroup name="db.tocdiv.role.attribute">
+        <xs:attribute name="role" use="required"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="db.tocdiv.pagenum.attribute">
+        <xs:attributeGroup ref="db:db.toc.pagenum.attribute"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="db.tocdiv.attlist">
+        <xs:attribute name="role"/>
+        <xs:attributeGroup ref="dbs:db.common.attributes"/>
+        <xs:attribute name="pagenum"/>
+        <xs:attribute name="linkend" type="xs:IDREF"/>
+    </xs:attributeGroup>
+    <xs:group name="db.tocdiv.info">
+        <xs:sequence>
+            <xs:group ref="db:db._info"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="tocdiv">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:group ref="db:db.tocdiv.info"/>
+                <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.all.blocks"/>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="db:tocdiv"/>
+                    <xs:element ref="db:tocentry"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attributeGroup ref="db:db.tocdiv.attlist"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- ====================================================================== -->
+    <xs:attributeGroup name="db.tocentry.role.attribute">
+        <xs:attribute name="role" use="required"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="db.tocentry.pagenum.attribute">
+        <xs:attributeGroup ref="db:db.toc.pagenum.attribute"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="db.tocentry.attlist">
+        <xs:attribute name="role"/>
+        <xs:attributeGroup ref="dbs:db.common.attributes"/>
+        <xs:attribute name="pagenum"/>
+        <xs:attribute name="linkend" type="xs:IDREF"/>
+    </xs:attributeGroup>
+    <xs:element name="tocentry">
+        <xs:complexType mixed="true">
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.all.inlines"/>
+            <xs:attributeGroup ref="db:db.tocentry.attlist"/>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

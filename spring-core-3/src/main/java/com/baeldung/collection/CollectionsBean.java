@@ -27,7 +27,7 @@ public class CollectionsBean {
 
     @Value("${names.list:}#{T(java.util.Collections).emptyList()}")
     private List<String> nameListWithDefaultValue;
-    
+
     public CollectionsBean() {
     }
 
@@ -55,7 +55,7 @@ public class CollectionsBean {
     public void printBeanList() {
         System.out.println(beanList);
     }
-    
+
     public void printNameListWithDefaults() {
         System.out.println(nameListWithDefaultValue);
     }

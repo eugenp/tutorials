@@ -20,7 +20,7 @@ public class RxMathematicalOperatorsUnitTest {
 
         // when
         MathObservable.averageInteger(sourceObservable)
-            .subscribe(subscriber);
+                .subscribe(subscriber);
 
         // then
         subscriber.assertCompleted();
@@ -37,7 +37,7 @@ public class RxMathematicalOperatorsUnitTest {
 
         // when
         MathObservable.sumInteger(sourceObservable)
-            .subscribe(subscriber);
+                .subscribe(subscriber);
 
         // then
         subscriber.assertCompleted();
@@ -55,7 +55,7 @@ public class RxMathematicalOperatorsUnitTest {
 
         // when
         MathObservable.max(sourceObservable)
-            .subscribe(subscriber);
+                .subscribe(subscriber);
 
         // then
         subscriber.assertCompleted();
@@ -72,7 +72,7 @@ public class RxMathematicalOperatorsUnitTest {
 
         // when
         MathObservable.min(sourceObservable)
-            .subscribe(subscriber);
+                .subscribe(subscriber);
 
         // then
         subscriber.assertCompleted();
@@ -92,8 +92,8 @@ public class RxMathematicalOperatorsUnitTest {
 
         // when
         MathObservable.from(itemObservable)
-            .max(Comparator.comparing(Item::getId))
-            .subscribe(subscriber);
+                .max(Comparator.comparing(Item::getId))
+                .subscribe(subscriber);
 
         // then
         subscriber.assertCompleted();
@@ -113,8 +113,8 @@ public class RxMathematicalOperatorsUnitTest {
 
         // when
         MathObservable.from(itemObservable)
-            .min(Comparator.comparing(Item::getId))
-            .subscribe(subscriber);
+                .min(Comparator.comparing(Item::getId))
+                .subscribe(subscriber);
 
         // then
         subscriber.assertCompleted();

@@ -68,8 +68,8 @@ public class CopyListServiceUnitTest {
 
     @Test
     public void givenAList_whenListsHaveSameSize_thenReturnAnotherListWithTheSameElementsByCopyMethod() {
-        List<Integer> source = Arrays.asList(1,2,3);
-        List<Integer> dest = Arrays.asList(4,5,6);
+        List<Integer> source = Arrays.asList(1, 2, 3);
+        List<Integer> dest = Arrays.asList(4, 5, 6);
 
         dest = copyListService.copyListByCopyMethod(source, dest);
         assertEquals(dest.size(), source.size());
@@ -78,8 +78,8 @@ public class CopyListServiceUnitTest {
 
     @Test
     public void givenAList_whenListsHaveDifferentSize_thenReturnAnotherListWithTheSameElementsByCopyMethod() {
-        List<Integer> source = Arrays.asList(1,2,3);
-        List<Integer> dest = Arrays.asList(5,6,7,8,9,10);
+        List<Integer> source = Arrays.asList(1, 2, 3);
+        List<Integer> dest = Arrays.asList(5, 6, 7, 8, 9, 10);
 
         dest = copyListService.copyListByCopyMethod(source, dest);
         assertNotEquals(dest.size(), source.size());

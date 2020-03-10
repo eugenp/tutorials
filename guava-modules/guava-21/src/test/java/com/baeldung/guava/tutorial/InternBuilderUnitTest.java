@@ -10,9 +10,9 @@ public class InternBuilderUnitTest {
     @Test
     public void interBuilderTest() {
 
-        Interner<Integer> interners = Interners.<Integer> newBuilder()
-          .concurrencyLevel(2)
-          .strong().<Integer> build();
+        Interner<Integer> interners = Interners.<Integer>newBuilder()
+                .concurrencyLevel(2)
+                .strong().<Integer>build();
 
         Assert.assertNotNull(interners);
     }

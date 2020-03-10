@@ -29,7 +29,7 @@ public class ReusingTemplatesUnitTest {
         String templateString = template.apply(person);
 
         assertThat(templateString)
-          .contains("<h4>Hi Baeldung!</h4>", "<p>This is the page Baeldung</p>");
+                .contains("<h4>Hi Baeldung!</h4>", "<p>This is the page Baeldung</p>");
     }
 
     @Test
@@ -42,10 +42,10 @@ public class ReusingTemplatesUnitTest {
         String templateString = template.apply(person);
 
         assertThat(templateString).contains("<html>",
-          "<body>",
-          "This is the intro",
-          "Hi there!",
-          "</body>",
-          "</html>");
+                "<body>",
+                "This is the intro",
+                "Hi there!",
+                "</body>",
+                "</html>");
     }
 }

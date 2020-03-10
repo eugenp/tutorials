@@ -27,9 +27,9 @@ public class UserRepositoryTCLiveTest extends UserRepositoryCommon {
 
     @ClassRule
     public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer("postgres:11.1")
-      .withDatabaseName("integration-tests-db")
-      .withUsername("sa")
-      .withPassword("sa");
+            .withDatabaseName("integration-tests-db")
+            .withUsername("sa")
+            .withPassword("sa");
 
     @Test
     @Transactional
@@ -46,12 +46,12 @@ public class UserRepositoryTCLiveTest extends UserRepositoryCommon {
     }
 
     static class Initializer
-      implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+            implements ApplicationContextInitializer<ConfigurableApplicationContext> {
         public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
             TestPropertyValues.of(
-              "spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
-              "spring.datasource.username=" + postgreSQLContainer.getUsername(),
-              "spring.datasource.password=" + postgreSQLContainer.getPassword()
+                    "spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
+                    "spring.datasource.username=" + postgreSQLContainer.getUsername(),
+                    "spring.datasource.password=" + postgreSQLContainer.getPassword()
             ).applyTo(configurableApplicationContext.getEnvironment());
         }
     }

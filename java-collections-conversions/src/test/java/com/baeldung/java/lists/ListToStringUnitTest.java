@@ -19,13 +19,13 @@ public class ListToStringUnitTest {
     public void whenCollectorsJoining_thenPrintCustom() {
         List<Integer> intList = Arrays.asList(1, 2, 3);
         System.out.println(intList.stream()
-            .map(n -> String.valueOf(n))
-            .collect(Collectors.joining("-", "{", "}")));
+                .map(n -> String.valueOf(n))
+                .collect(Collectors.joining("-", "{", "}")));
     }
-    
+
     @Test
     public void whenStringUtilsJoin_thenPrintCustom() {
         List<Integer> intList = Arrays.asList(1, 2, 3);
-       System.out.println(StringUtils.join(intList, "|"));
+        System.out.println(StringUtils.join(intList, "|"));
     }
 }

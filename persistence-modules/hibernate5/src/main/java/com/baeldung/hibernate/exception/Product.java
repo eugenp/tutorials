@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class Product {
 
     private int id;
-    
+
     private String name;
     private String description;
 
@@ -20,8 +20,8 @@ public class Product {
     public void setId(int id) {
         this.id = id;
     }
-    
-    @Column(nullable=false)
+
+    @Column(nullable = false)
     public String getName() {
         return name;
     }

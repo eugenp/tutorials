@@ -35,7 +35,7 @@ public class GuavaSetOperationsUnitTest {
             @Override
             public final String apply(final List<Character> input) {
                 return Joiner
-                  .on(" ").join(input);
+                        .on(" ").join(input);
             }
         };
 
@@ -66,7 +66,7 @@ public class GuavaSetOperationsUnitTest {
         final Set<Character> chars = ImmutableSet.of('a', 'b');
         final Set<Set<Character>> result = Sets.powerSet(chars);
 
-        final Set<Character> empty = ImmutableSet.<Character> builder().build();
+        final Set<Character> empty = ImmutableSet.<Character>builder().build();
         final Set<Character> a = ImmutableSet.of('a');
         final Set<Character> b = ImmutableSet.of('b');
         final Set<Character> aB = ImmutableSet.of('a', 'b');

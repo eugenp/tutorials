@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,18 +7,18 @@
 
     UserManagementDeleteController.$inject = ['$uibModalInstance', 'entity', 'User'];
 
-    function UserManagementDeleteController ($uibModalInstance, entity, User) {
+    function UserManagementDeleteController($uibModalInstance, entity, User) {
         var vm = this;
 
         vm.user = entity;
         vm.clear = clear;
         vm.confirmDelete = confirmDelete;
 
-        function clear () {
+        function clear() {
             $uibModalInstance.dismiss('cancel');
         }
 
-        function confirmDelete (login) {
+        function confirmDelete(login) {
             User.delete({login: login},
                 function () {
                     $uibModalInstance.close(true);

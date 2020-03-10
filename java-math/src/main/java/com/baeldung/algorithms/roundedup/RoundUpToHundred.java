@@ -15,6 +15,8 @@ public class RoundUpToHundred {
     static long round(double input) {
         long i = (long) Math.ceil(input);
         return ((i + 99) / 100) * 100;
-    };
+    }
+
+    ;
 
 }

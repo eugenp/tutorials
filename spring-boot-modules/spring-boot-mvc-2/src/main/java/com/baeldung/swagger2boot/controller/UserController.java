@@ -28,11 +28,11 @@ public class UserController {
     @ApiOperation(value = "Create user",
             notes = "This method creates a new user")
     public User createUser(@ApiParam(
-                    name =  "firstName",
-                    type = "String",
-                    value = "First Name of the user",
-                    example = "Vatsal",
-                    required = true) @RequestParam String firstName) { //@formatter:on
+            name = "firstName",
+            type = "String",
+            value = "First Name of the user",
+            example = "Vatsal",
+            required = true) @RequestParam String firstName) { //@formatter:on
         User user = new User(firstName);
         return user;
     }

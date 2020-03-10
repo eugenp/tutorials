@@ -31,6 +31,7 @@ p {
 .button:hover {
     background-color: #ffb15e;
 }
+
 .button a, a:visited, a:hover, a:active {
     color: #fff;
     text-decoration: none;
@@ -99,7 +100,7 @@ p {
     color: #a1ed82;
 }
 
-.device.Electronics {   
+.device.Electronics {
     background-color: #0f90d1;
 }
 

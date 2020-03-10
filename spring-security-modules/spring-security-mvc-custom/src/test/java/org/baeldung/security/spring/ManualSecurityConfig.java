@@ -30,7 +30,7 @@ public class ManualSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(final WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/resources/**");
     }
-    
+
     @Bean("authenticationManager")
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -41,15 +41,15 @@ public class ManualSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
         http
-        .authorizeRequests()
-        .mvcMatchers("/custom/login").permitAll()
-        .anyRequest().authenticated()
-        .and()
-        .httpBasic()
-        .and()
-        .headers().cacheControl().disable()
-        .and()
-        .csrf().disable()
+                .authorizeRequests()
+                .mvcMatchers("/custom/login").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .httpBasic()
+                .and()
+                .headers().cacheControl().disable()
+                .and()
+                .csrf().disable()
         ;
         // @formatter:on
     }

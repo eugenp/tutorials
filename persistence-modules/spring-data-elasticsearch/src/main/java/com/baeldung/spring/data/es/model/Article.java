@@ -19,7 +19,7 @@ public class Article {
     @Id
     private String id;
 
-    @MultiField(mainField = @Field(type = Text, fielddata = true), otherFields = { @InnerField(suffix = "verbatim", type = Keyword) })
+    @MultiField(mainField = @Field(type = Text, fielddata = true), otherFields = {@InnerField(suffix = "verbatim", type = Keyword)})
     private String title;
 
     @Field(type = Nested, includeInParent = true)

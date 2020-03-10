@@ -27,18 +27,18 @@ public class NamingStrategyLiveTest {
 
             Properties properties = new Properties();
             properties.load(Thread.currentThread()
-                .getContextClassLoader()
-                .getResourceAsStream("hibernate-namingstrategy.properties"));
+                    .getContextClassLoader()
+                    .getResourceAsStream("hibernate-namingstrategy.properties"));
 
             configuration.setProperties(properties);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
-                .build();
+                    .build();
             MetadataSources metadataSources = new MetadataSources(serviceRegistry);
             metadataSources.addAnnotatedClass(Customer.class);
 
             SessionFactory factory = metadataSources.buildMetadata()
-                .buildSessionFactory();
+                    .buildSessionFactory();
 
             session = factory.openSession();
         } catch (HibernateException | IOException e) {
@@ -68,8 +68,8 @@ public class NamingStrategyLiveTest {
         session.clear();
 
         Object[] result = (Object[]) session.createNativeQuery("select c.first_name, c.last_name, c.email from customers c where c.id = :id")
-            .setParameter("id", id)
-            .getSingleResult();
+                .setParameter("id", id)
+                .getSingleResult();
 
     }
 }

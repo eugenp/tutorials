@@ -35,7 +35,7 @@ public abstract class MultitenancyIntegrationTest {
         MockitoAnnotations.initMocks(this);
 
         Mockito.when(currentTenantIdentifierResolver.validateExistingCurrentSessions())
-            .thenReturn(false);
+                .thenReturn(false);
 
         Properties properties = getHibernateProperties();
         properties.put(AvailableSettings.MULTI_TENANT_IDENTIFIER_RESOLVER, currentTenantIdentifierResolver);
@@ -53,7 +53,7 @@ public abstract class MultitenancyIntegrationTest {
 
     protected void whenCurrentTenantIs(String tenantId) {
         Mockito.when(currentTenantIdentifierResolver.resolveCurrentTenantIdentifier())
-            .thenReturn(tenantId);
+                .thenReturn(tenantId);
     }
 
     protected void whenAddCar(String brand) {
@@ -80,9 +80,9 @@ public abstract class MultitenancyIntegrationTest {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         session.createSQLQuery("drop table Car if exists")
-            .executeUpdate();
+                .executeUpdate();
         session.createSQLQuery("create table Car (brand varchar(255) primary key)")
-            .executeUpdate();
+                .executeUpdate();
         tx.commit();
     }
 
@@ -94,11 +94,11 @@ public abstract class MultitenancyIntegrationTest {
 
     private static SessionFactory buildSessionFactory(Properties properties) {
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(properties)
-            .build();
+                .build();
         MetadataSources metadataSources = new MetadataSources(serviceRegistry);
         metadataSources.addAnnotatedClass(Car.class);
         return metadataSources.buildMetadata()
-            .buildSessionFactory();
+                .buildSessionFactory();
     }
 
 }

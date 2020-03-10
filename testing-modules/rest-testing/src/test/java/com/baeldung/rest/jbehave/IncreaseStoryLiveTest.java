@@ -19,10 +19,10 @@ public class IncreaseStoryLiveTest extends JUnitStories {
     @Override
     public Configuration configuration() {
         return new MostUsefulConfiguration()
-          .useStoryLoader(new LoadFromClasspath(this.getClass()))
-          .useStoryReporterBuilder(new StoryReporterBuilder()
-            .withCodeLocation(codeLocationFromClass(this.getClass()))
-            .withFormats(CONSOLE));
+                .useStoryLoader(new LoadFromClasspath(this.getClass()))
+                .useStoryReporterBuilder(new StoryReporterBuilder()
+                        .withCodeLocation(codeLocationFromClass(this.getClass()))
+                        .withFormats(CONSOLE));
     }
 
     @Override

@@ -41,5 +41,5 @@
     <properties>
         <spring-cloud-dependencies.version>2.0.1.RELEASE</spring-cloud-dependencies.version>
     </properties>
-    
+
 </project>

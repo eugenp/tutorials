@@ -54,14 +54,14 @@ public class Product {
     public static void forEach() {
 
         HashMap<String, Product> productsByName = new HashMap<>();
-        productsByName.forEach( (key, product)
+        productsByName.forEach((key, product)
                         -> System.out.println("Key: " + key + " Product:" + product.getDescription())
                 //do something with the key and value
         );
 
         //Prior to Java 8:
-        for(Map.Entry<String, Product> entry : productsByName.entrySet()) {
-            Product product =  entry.getValue();
+        for (Map.Entry<String, Product> entry : productsByName.entrySet()) {
+            Product product = entry.getValue();
             String key = entry.getKey();
             //do something with the key and value
         }
@@ -90,7 +90,7 @@ public class Product {
         productsByName.putIfAbsent("E-Bike", chocolate);
 
         //Prior to Java 8:
-        if(productsByName.containsKey("E-Bike")) {
+        if (productsByName.containsKey("E-Bike")) {
             productsByName.put("E-Bike", chocolate);
         }
     }
@@ -103,7 +103,7 @@ public class Product {
         productsByName.merge("E-Bike", eBike2, Product::addTagsOfOtherProdcut);
 
         //Prior to Java 8:
-        if(productsByName.containsKey("E-Bike")) {
+        if (productsByName.containsKey("E-Bike")) {
             productsByName.get("E-Bike").addTagsOfOtherProdcut(eBike2);
         } else {
             productsByName.put("E-Bike", eBike2);
@@ -115,8 +115,8 @@ public class Product {
         HashMap<String, Product> productsByName = new HashMap<>();
         Product eBike2 = new Product("E-Bike", "A bike with a battery");
 
-        productsByName.compute("E-Bike", (k,v) -> {
-            if(v != null) {
+        productsByName.compute("E-Bike", (k, v) -> {
+            if (v != null) {
                 return v.addTagsOfOtherProdcut(eBike2);
             } else {
                 return eBike2;
@@ -124,7 +124,7 @@ public class Product {
         });
 
         //Prior to Java 8:
-        if(productsByName.containsKey("E-Bike")) {
+        if (productsByName.containsKey("E-Bike")) {
             productsByName.get("E-Bike").addTagsOfOtherProdcut(eBike2);
         } else {
             productsByName.put("E-Bike", eBike2);

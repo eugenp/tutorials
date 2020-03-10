@@ -1,4 +1,5 @@
 package com.baeldung.jhipster5.web.rest;
+
 import com.baeldung.jhipster5.service.BookService;
 import com.baeldung.jhipster5.web.rest.errors.BadRequestAlertException;
 import com.baeldung.jhipster5.web.rest.util.HeaderUtil;
@@ -48,8 +49,8 @@ public class BookResource {
         }
         BookDTO result = bookService.save(bookDTO);
         return ResponseEntity.created(new URI("/api/books/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+                .body(result);
     }
 
     /**
@@ -69,8 +70,8 @@ public class BookResource {
         }
         BookDTO result = bookService.save(bookDTO);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, bookDTO.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, bookDTO.getId().toString()))
+                .body(result);
     }
 
     /**

@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { of, throwError } from 'rxjs';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {HttpResponse, HttpErrorResponse} from '@angular/common/http';
+import {of, throwError} from 'rxjs';
 
-import { GatewayTestModule } from '../../../test.module';
-import { JhiMetricsMonitoringComponent } from 'app/admin/metrics/metrics.component';
-import { JhiMetricsService } from 'app/admin/metrics/metrics.service';
+import {GatewayTestModule} from '../../../test.module';
+import {JhiMetricsMonitoringComponent} from 'app/admin/metrics/metrics.component';
+import {JhiMetricsService} from 'app/admin/metrics/metrics.service';
 
 describe('Component Tests', () => {
     describe('JhiMetricsMonitoringComponent', () => {
@@ -51,8 +51,8 @@ describe('Component Tests', () => {
 
                 // THEN
                 expect(service.getMetrics).toHaveBeenCalled();
-                expect(comp.servicesStats).toEqual({ service: 'test' });
-                expect(comp.cachesStats).toEqual({ jcache: { name: 17, value: 2 } });
+                expect(comp.servicesStats).toEqual({service: 'test'});
+                expect(comp.cachesStats).toEqual({jcache: {name: 17, value: 2}});
             });
         });
 

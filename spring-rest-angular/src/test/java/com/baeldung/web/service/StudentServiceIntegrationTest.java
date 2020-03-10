@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class StudentServiceIntegrationTest {
-    
+
     @LocalServerPort
     int port;
 
@@ -26,7 +26,7 @@ public class StudentServiceIntegrationTest {
     @Test
     public void givenRequestForStudents_whenPageIsOne_expectContainsNames() {
         given().params("page", "0", "size", "2").get(String.format(ENDPOINT, port)).then().assertThat()
-          .body("content.name", hasItems("Bryan", "Ben"));
+                .body("content.name", hasItems("Bryan", "Ben"));
     }
 
     @Test

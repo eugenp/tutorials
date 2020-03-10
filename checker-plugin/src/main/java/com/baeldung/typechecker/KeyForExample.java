@@ -25,7 +25,7 @@ public class KeyForExample {
         // Obviously that will fail because such key is not present
         // in the map.
         @KeyFor("config") String key = "port";
-        System.out.println( config.get(key) );
+        System.out.println(config.get(key));
     }
 
 }

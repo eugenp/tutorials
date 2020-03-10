@@ -40,25 +40,25 @@ public class TravelingSalesman {
 
     private static double dist(final int[] path) {
         return IntStream.range(0, STOPS)
-            .mapToDouble(i -> ADJACENCE[path[i]][path[(i + 1) % STOPS]])
-            .sum();
+                .mapToDouble(i -> ADJACENCE[path[i]][path[(i + 1) % STOPS]])
+                .sum();
     }
 
     public static void main(String[] args) {
         final Engine<EnumGene<Integer>, Double> engine = Engine.builder(TravelingSalesman::dist, codecs.ofPermutation(STOPS))
-            .optimize(Optimize.MINIMUM)
-            .maximalPhenotypeAge(11)
-            .populationSize(500)
-            .alterers(new SwapMutator<>(0.2), new PartiallyMatchedCrossover<>(0.35))
-            .build();
+                .optimize(Optimize.MINIMUM)
+                .maximalPhenotypeAge(11)
+                .populationSize(500)
+                .alterers(new SwapMutator<>(0.2), new PartiallyMatchedCrossover<>(0.35))
+                .build();
 
         final EvolutionStatistics<Double, ?> statistics = EvolutionStatistics.ofNumber();
 
         final Phenotype<EnumGene<Integer>, Double> best = engine.stream()
-            .limit(bySteadyFitness(15))
-            .limit(250)
-            .peek(statistics)
-            .collect(toBestPhenotype());
+                .limit(bySteadyFitness(15))
+                .limit(250)
+                .peek(statistics)
+                .collect(toBestPhenotype());
 
         System.out.println(statistics);
         System.out.println(best);

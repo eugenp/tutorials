@@ -20,8 +20,8 @@ public class ParameterInjectionExampleControllerLiveTest {
         final HttpUriRequest request = new HttpGet(builder.build());
 
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("Andrea Ligios");
         }
     }
@@ -31,8 +31,8 @@ public class ParameterInjectionExampleControllerLiveTest {
         final HttpUriRequest request = new HttpGet("http://localhost:9000/params/path/1337");
 
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("1337");
         }
     }
@@ -61,19 +61,19 @@ public class ParameterInjectionExampleControllerLiveTest {
         final HttpUriRequest request = new HttpGet("http://localhost:9000/params/header");
         request.addHeader("customheader", "foobar");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("foobar");
         }
     }
 
     @Test
     public void givenNoCookie_whenCalled_thenReadDefaultValue() throws Exception {
-        
+
         final HttpUriRequest request = new HttpGet("http://localhost:9000/params/cookie");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("default value");
         }
 

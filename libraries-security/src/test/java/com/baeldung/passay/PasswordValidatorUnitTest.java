@@ -32,16 +32,16 @@ public class PasswordValidatorUnitTest {
         assertEquals(false, validate.isValid());
 
         RuleResultDetail ruleResultDetail = validate.getDetails()
-            .get(0);
+                .get(0);
         assertEquals("TOO_SHORT", ruleResultDetail.getErrorCode());
         assertEquals(5, ruleResultDetail.getParameters()
-            .get("minimumLength"));
+                .get("minimumLength"));
         assertEquals(5, ruleResultDetail.getParameters()
-            .get("maximumLength"));
+                .get("maximumLength"));
 
         Integer lengthCount = validate.getMetadata()
-            .getCounts()
-            .get(RuleResultMetadata.CountCategory.Length);
+                .getCounts()
+                .get(RuleResultMetadata.CountCategory.Length);
         assertEquals(Integer.valueOf(4), lengthCount);
     }
 
@@ -54,15 +54,15 @@ public class PasswordValidatorUnitTest {
         RuleResult validate = passwordValidator.validate(passwordData);
         assertFalse(validate.isValid());
         Assert.assertEquals("TOO_LONG", validate.getDetails()
-            .get(0)
-            .getErrorCode());
+                .get(0)
+                .getErrorCode());
     }
 
     @Test
     public void givenPasswordValidatorWithLengthRule_whenValidation_thenCustomizedMeesagesAvailable() throws IOException {
         URL resource = this.getClass()
-            .getClassLoader()
-            .getResource("messages.properties");
+                .getClassLoader()
+                .getResource("messages.properties");
         Properties props = new Properties();
         props.load(new FileInputStream(resource.getPath()));
 
@@ -73,9 +73,9 @@ public class PasswordValidatorUnitTest {
         RuleResult tooLong = validator.validate(new PasswordData("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"));
 
         assertEquals("Password must not contain less characters than 16.", validator.getMessages(tooShort)
-            .get(0));
+                .get(0));
         assertEquals("Password must not have more characters than 16.", validator.getMessages(tooLong)
-            .get(0));
+                .get(0));
     }
 
 }

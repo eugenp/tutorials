@@ -57,7 +57,7 @@ public class SortedListChecker {
         if (index < 2) {
             return true;
         } else if (listOfStrings.get(index - 2)
-            .compareTo(listOfStrings.get(index - 1)) > 0) {
+                .compareTo(listOfStrings.get(index - 1)) > 0) {
             return false;
         } else {
             return isSortedRecursive(listOfStrings, index - 1);
@@ -65,23 +65,23 @@ public class SortedListChecker {
     }
 
     public static boolean checkIfSortedUsingOrderingClass(List<String> listOfStrings) {
-        return Ordering.<String> natural()
-            .isOrdered(listOfStrings);
+        return Ordering.<String>natural()
+                .isOrdered(listOfStrings);
     }
 
     public static boolean checkIfSortedUsingOrderingClass(List<Employee> employees, Comparator<Employee> employeeComparator) {
         return Ordering.from(employeeComparator)
-            .isOrdered(employees);
+                .isOrdered(employees);
     }
 
     public static boolean checkIfSortedUsingOrderingClassHandlingNull(List<String> listOfStrings) {
-        return Ordering.<String> natural()
-            .nullsLast()
-            .isOrdered(listOfStrings);
+        return Ordering.<String>natural()
+                .nullsLast()
+                .isOrdered(listOfStrings);
     }
 
     public static boolean checkIfSortedUsingComparators(List<String> listOfStrings) {
-        return Comparators.isInOrder(listOfStrings, Comparator.<String> naturalOrder());
+        return Comparators.isInOrder(listOfStrings, Comparator.<String>naturalOrder());
     }
 
 }

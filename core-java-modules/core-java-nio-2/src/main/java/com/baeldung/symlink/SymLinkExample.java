@@ -29,9 +29,9 @@ public class SymLinkExample {
 
     public Path createTextFile() throws IOException {
         byte[] content = IntStream.range(0, 10000)
-            .mapToObj(i -> i + System.lineSeparator())
-            .reduce("", String::concat)
-            .getBytes(StandardCharsets.UTF_8);
+                .mapToObj(i -> i + System.lineSeparator())
+                .reduce("", String::concat)
+                .getBytes(StandardCharsets.UTF_8);
         Path filePath = Paths.get(".", "target_link.txt");
         Files.write(filePath, content, CREATE, TRUNCATE_EXISTING);
         return filePath;

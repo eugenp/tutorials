@@ -19,9 +19,9 @@ public class FirstPreLastPostGlobalFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         logger.info("First Pre Global Filter");
         return chain.filter(exchange)
-            .then(Mono.fromRunnable(() -> {
-                logger.info("Last Post Global Filter");
-            }));
+                .then(Mono.fromRunnable(() -> {
+                    logger.info("Last Post Global Filter");
+                }));
     }
 
     @Override

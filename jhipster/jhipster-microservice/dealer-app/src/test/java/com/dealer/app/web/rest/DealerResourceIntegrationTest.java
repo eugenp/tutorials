@@ -67,21 +67,21 @@ public class DealerResourceIntegrationTest {
         MockitoAnnotations.initMocks(this);
         DealerResource dealerResource = new DealerResource(dealerRepository);
         this.restDealerMockMvc = MockMvcBuilders.standaloneSetup(dealerResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setMessageConverters(jacksonMessageConverter).build();
+                .setCustomArgumentResolvers(pageableArgumentResolver)
+                .setControllerAdvice(exceptionTranslator)
+                .setMessageConverters(jacksonMessageConverter).build();
     }
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
     public static Dealer createEntity(EntityManager em) {
         Dealer dealer = new Dealer()
-            .name(DEFAULT_NAME)
-            .address(DEFAULT_ADDRESS);
+                .name(DEFAULT_NAME)
+                .address(DEFAULT_ADDRESS);
         return dealer;
     }
 
@@ -97,9 +97,9 @@ public class DealerResourceIntegrationTest {
 
         // Create the Dealer
         restDealerMockMvc.perform(post("/api/dealers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(dealer)))
-            .andExpect(status().isCreated());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(dealer)))
+                .andExpect(status().isCreated());
 
         // Validate the Dealer in the database
         List<Dealer> dealerList = dealerRepository.findAll();
@@ -119,9 +119,9 @@ public class DealerResourceIntegrationTest {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restDealerMockMvc.perform(post("/api/dealers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(dealer)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(dealer)))
+                .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
         List<Dealer> dealerList = dealerRepository.findAll();
@@ -136,11 +136,11 @@ public class DealerResourceIntegrationTest {
 
         // Get all the dealerList
         restDealerMockMvc.perform(get("/api/dealers?sort=id,desc"))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(dealer.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.[*].id").value(hasItem(dealer.getId().intValue())))
+                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+                .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())));
     }
 
     @Test
@@ -151,11 +151,11 @@ public class DealerResourceIntegrationTest {
 
         // Get the dealer
         restDealerMockMvc.perform(get("/api/dealers/{id}", dealer.getId()))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(dealer.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.id").value(dealer.getId().intValue()))
+                .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+                .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()));
     }
 
     @Test
@@ -163,7 +163,7 @@ public class DealerResourceIntegrationTest {
     public void getNonExistingDealer() throws Exception {
         // Get the dealer
         restDealerMockMvc.perform(get("/api/dealers/{id}", Long.MAX_VALUE))
-            .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -176,13 +176,13 @@ public class DealerResourceIntegrationTest {
         // Update the dealer
         Dealer updatedDealer = dealerRepository.findOne(dealer.getId());
         updatedDealer
-            .name(UPDATED_NAME)
-            .address(UPDATED_ADDRESS);
+                .name(UPDATED_NAME)
+                .address(UPDATED_ADDRESS);
 
         restDealerMockMvc.perform(put("/api/dealers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(updatedDealer)))
-            .andExpect(status().isOk());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(updatedDealer)))
+                .andExpect(status().isOk());
 
         // Validate the Dealer in the database
         List<Dealer> dealerList = dealerRepository.findAll();
@@ -201,9 +201,9 @@ public class DealerResourceIntegrationTest {
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
         restDealerMockMvc.perform(put("/api/dealers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(dealer)))
-            .andExpect(status().isCreated());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(dealer)))
+                .andExpect(status().isCreated());
 
         // Validate the Dealer in the database
         List<Dealer> dealerList = dealerRepository.findAll();
@@ -219,8 +219,8 @@ public class DealerResourceIntegrationTest {
 
         // Get the dealer
         restDealerMockMvc.perform(delete("/api/dealers/{id}", dealer.getId())
-            .accept(TestUtil.APPLICATION_JSON_UTF8))
-            .andExpect(status().isOk());
+                .accept(TestUtil.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk());
 
         // Validate the database is empty
         List<Dealer> dealerList = dealerRepository.findAll();

@@ -24,7 +24,7 @@ import org.springframework.messaging.MessageHandler;
 
 /**
  * JavaDSLFileCopyConfig contains various Integration Flows created from various spring integration components.
- * Activate only one flow at a time by un-commenting @Bean annotation from IntegrationFlow beans. 
+ * Activate only one flow at a time by un-commenting @Bean annotation from IntegrationFlow beans.
  * <p>
  * Different flows are :<br>
  * - {@link #fileMover()} - default app - activated<br>
@@ -54,8 +54,8 @@ public class JavaDSLFileCopyConfig {
 
             @Override
             public boolean accept(File source) {
-              return source.getName()
-                .endsWith(".jpg");
+                return source.getName()
+                        .endsWith(".jpg");
             }
         };
     }
@@ -66,37 +66,37 @@ public class JavaDSLFileCopyConfig {
         handler.setExpectReply(false); // end of pipeline, reply not needed
         return handler;
     }
-    
+
     @Bean
     public IntegrationFlow fileMover() {
         return IntegrationFlows.from(sourceDirectory(), configurer -> configurer.poller(Pollers.fixedDelay(10000)))
-            .filter(onlyJpgs())
-            .handle(targetDirectory())
-            .get();
+                .filter(onlyJpgs())
+                .handle(targetDirectory())
+                .get();
     }
 
     // @Bean
     public IntegrationFlow fileMoverWithLambda() {
         return IntegrationFlows.from(sourceDirectory(), configurer -> configurer.poller(Pollers.fixedDelay(10000)))
-            .filter(message -> ((File) message).getName()
-                .endsWith(".jpg"))
-            .handle(targetDirectory())
-            .get();
+                .filter(message -> ((File) message).getName()
+                        .endsWith(".jpg"))
+                .handle(targetDirectory())
+                .get();
     }
 
     @Bean
     public PriorityChannel alphabetically() {
         return new PriorityChannel(1000, (left, right) -> ((File) left.getPayload()).getName()
-            .compareTo(((File) right.getPayload()).getName()));
+                .compareTo(((File) right.getPayload()).getName()));
     }
 
     // @Bean
     public IntegrationFlow fileMoverWithPriorityChannel() {
         return IntegrationFlows.from(sourceDirectory())
-            .filter(onlyJpgs())
-            .channel("alphabetically")
-            .handle(targetDirectory())
-            .get();
+                .filter(onlyJpgs())
+                .channel("alphabetically")
+                .handle(targetDirectory())
+                .get();
     }
 
     @Bean
@@ -110,29 +110,29 @@ public class JavaDSLFileCopyConfig {
     public MessageChannel holdingTank() {
         return MessageChannels.queue().get();
     }
-    
+
     // @Bean
     public IntegrationFlow fileReader() {
         return IntegrationFlows.from(sourceDirectory(), configurer -> configurer.poller(Pollers.fixedDelay(10)))
-            .filter(onlyJpgs())
-            .channel("holdingTank")
-            .get();
+                .filter(onlyJpgs())
+                .channel("holdingTank")
+                .get();
     }
 
     // @Bean
     public IntegrationFlow fileWriter() {
         return IntegrationFlows.from("holdingTank")
-            .bridge(e -> e.poller(Pollers.fixedRate(1, TimeUnit.SECONDS, 20)))
-            .handle(targetDirectory())
-            .get();
+                .bridge(e -> e.poller(Pollers.fixedRate(1, TimeUnit.SECONDS, 20)))
+                .handle(targetDirectory())
+                .get();
     }
 
     // @Bean
     public IntegrationFlow anotherFileWriter() {
         return IntegrationFlows.from("holdingTank")
-            .bridge(e -> e.poller(Pollers.fixedRate(2, TimeUnit.SECONDS, 10)))
-            .handle(anotherTargetDirectory())
-            .get();
+                .bridge(e -> e.poller(Pollers.fixedRate(2, TimeUnit.SECONDS, 10)))
+                .handle(anotherTargetDirectory())
+                .get();
     }
 
     public static void main(final String... args) {

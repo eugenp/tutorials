@@ -19,11 +19,11 @@ public class OAuth2SessionManagementSecurityConfig extends WebSecurityConfigurer
     @Override
     protected void configure(HttpSecurity http) throws Exception { // @formatter:off
         http.authorizeRequests(authorizeRequests -> authorizeRequests.mvcMatchers("/home")
-              .permitAll()
-              .anyRequest()
+                .permitAll()
+                .anyRequest()
                 .authenticated())
-            .oauth2Login(oauthLogin -> oauthLogin.permitAll())
-            .logout(logout -> logout.logoutSuccessHandler(oidcLogoutSuccessHandler()));
+                .oauth2Login(oauthLogin -> oauthLogin.permitAll())
+                .logout(logout -> logout.logoutSuccessHandler(oidcLogoutSuccessHandler()));
     }  // @formatter:on
 
 

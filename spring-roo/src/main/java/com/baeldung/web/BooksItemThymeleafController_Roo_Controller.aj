@@ -7,29 +7,29 @@ import com.baeldung.service.api.BookService;
 import com.baeldung.web.BooksItemThymeleafController;
 
 privileged aspect BooksItemThymeleafController_Roo_Controller {
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     private BookService BooksItemThymeleafController.bookService;
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return BookService
      */
     public BookService BooksItemThymeleafController.getBookService() {
         return bookService;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param bookService
      */
     public void BooksItemThymeleafController.setBookService(BookService bookService) {
         this.bookService = bookService;
     }
-    
+
 }

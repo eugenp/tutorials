@@ -78,7 +78,7 @@ public class ResponseHeaderLiveTest {
         assertThat(responseHeaders).isNotEmpty();
         assertThat(responseHeaders).containsEntry(SERVICE_SINGLE_RESPONSE_HEADER, Arrays.asList("Value-ResponseEntityBuilderWithHttpHeaders"));
     }
-    
+
     @Test
     public void whenFilterWithNoExtraHeaderRequest_thenObtainResponseWithCorrectHeader() {
         final String requestUrl = "/no-extra-header";
@@ -88,7 +88,7 @@ public class ResponseHeaderLiveTest {
         assertThat(responseHeaders).isNotEmpty();
         assertThat(responseHeaders).containsEntry(SERVICE_FILTER_RESPONSE_HEADER, Arrays.asList("Value-Filter"));
     }
-    
+
     @Test
     public void whenFilterWithExtraHeaderRequest_thenObtainResponseWithCorrectHeaders() {
         final String requestUrl = "/extra-header";

@@ -1,6 +1,7 @@
 package com.baeldung.shell;
 
 import java.io.IOException;
+
 import org.springframework.shell.Bootstrap;
 
 public class Main {

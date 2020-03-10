@@ -25,8 +25,8 @@ public class CayenneAdvancedOperationLiveTest {
     @BeforeClass
     public static void setupTheCayenneContext() {
         ServerRuntime cayenneRuntime = ServerRuntime.builder()
-          .addConfig("cayenne-project.xml")
-          .build();
+                .addConfig("cayenne-project.xml")
+                .build();
         context = cayenneRuntime.newContext();
     }
 
@@ -123,8 +123,8 @@ public class CayenneAdvancedOperationLiveTest {
     @Test
     public void givenAuthors_onContainsObjS_thenWeGetOneRecord() {
         List<Author> authors = ObjectSelect.query(Author.class)
-          .where(Author.NAME.contains("Paul"))
-          .select(context);
+                .where(Author.NAME.contains("Paul"))
+                .select(context);
 
         assertEquals(authors.size(), 1);
     }
@@ -132,8 +132,8 @@ public class CayenneAdvancedOperationLiveTest {
     @Test
     public void givenAuthors_whenLikeObjS_thenWeGetTwoAuthors() {
         List<Author> authors = ObjectSelect.query(Author.class)
-          .where(Author.NAME.likeIgnoreCase("Paul%"))
-          .select(context);
+                .where(Author.NAME.likeIgnoreCase("Paul%"))
+                .select(context);
 
         assertEquals(authors.size(), 2);
     }
@@ -141,8 +141,8 @@ public class CayenneAdvancedOperationLiveTest {
     @Test
     public void givenTwoAuthor_whenEndsWithObjS_thenWeGetOrderedAuthors() {
         List<Author> authors = ObjectSelect.query(Author.class)
-          .where(Author.NAME.endsWith("Sarra"))
-          .select(context);
+                .where(Author.NAME.endsWith("Sarra"))
+                .select(context);
         Author firstAuthor = authors.get(0);
 
         assertEquals(authors.size(), 1);
@@ -174,8 +174,8 @@ public class CayenneAdvancedOperationLiveTest {
     @Test
     public void givenTwoAuthor_whenIsNotNullObjS_thenWeGetAuthors() {
         List<Author> authors = ObjectSelect.query(Author.class)
-          .where(Author.NAME.isNotNull())
-          .select(context);
+                .where(Author.NAME.isNotNull())
+                .select(context);
 
         assertEquals(authors.size(), 3);
     }
@@ -212,7 +212,7 @@ public class CayenneAdvancedOperationLiveTest {
 
     @Test
     public void givenAuthors_whenSeletingNamesEJBQL_thenWeGetListWithSizeThree() {
-        String [] args = {"Paul Xavier", "pAuL Smith", "Vicky Sarra"};
+        String[] args = {"Paul Xavier", "pAuL Smith", "Vicky Sarra"};
         List<String> names = Arrays.asList(args);
         EJBQLQuery query = new EJBQLQuery("select a.name FROM Author a");
         List<String> nameList = context.performQuery(query);
@@ -239,8 +239,8 @@ public class CayenneAdvancedOperationLiveTest {
     @Test
     public void givenAuthors_whenInsertingSQLExec_thenWeGetNewAuthor() {
         int inserted = SQLExec
-          .query("INSERT INTO Author (name) VALUES ('Baeldung')")
-          .update(context);
+                .query("INSERT INTO Author (name) VALUES ('Baeldung')")
+                .update(context);
 
         assertEquals(inserted, 1);
     }
@@ -248,8 +248,8 @@ public class CayenneAdvancedOperationLiveTest {
     @Test
     public void givenAuthors_whenUpdatingSQLExec_thenItsUpdated() {
         int updated = SQLExec
-          .query("UPDATE Author SET name = 'Baeldung' WHERE name = 'Vicky Sarra'")
-          .update(context);
+                .query("UPDATE Author SET name = 'Baeldung' WHERE name = 'Vicky Sarra'")
+                .update(context);
 
         assertEquals(updated, 1);
     }

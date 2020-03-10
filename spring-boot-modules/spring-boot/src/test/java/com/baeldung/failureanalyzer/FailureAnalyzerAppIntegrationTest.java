@@ -32,13 +32,13 @@ public class FailureAnalyzerAppIntegrationTest {
             SpringApplication.run(FailureAnalyzerApplication.class);
         } catch (BeanCreationException e) {
             Collection<String> allLoggedEntries = ListAppender.getEvents()
-                .stream()
-                .map(ILoggingEvent::getFormattedMessage)
-                .collect(Collectors.toList());
+                    .stream()
+                    .map(ILoggingEvent::getFormattedMessage)
+                    .collect(Collectors.toList());
             assertThat(allLoggedEntries).anyMatch(entry -> entry.contains(EXPECTED_ANALYSIS_DESCRIPTION_TITLE))
-                .anyMatch(entry -> entry.contains(EXPECTED_ANALYSIS_DESCRIPTION_CONTENT))
-                .anyMatch(entry -> entry.contains(EXPECTED_ANALYSIS_ACTION_TITLE))
-                .anyMatch(entry -> entry.contains(EXPECTED_ANALYSIS_ACTION_CONTENT));
+                    .anyMatch(entry -> entry.contains(EXPECTED_ANALYSIS_DESCRIPTION_CONTENT))
+                    .anyMatch(entry -> entry.contains(EXPECTED_ANALYSIS_ACTION_TITLE))
+                    .anyMatch(entry -> entry.contains(EXPECTED_ANALYSIS_ACTION_CONTENT));
             return;
         }
         throw new IllegalStateException("Context load should be failing due to a BeanCreationException!");

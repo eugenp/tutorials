@@ -43,10 +43,10 @@ public class BroadcastingClient {
             }
 
             broadcastList.addAll(networkInterface.getInterfaceAddresses()
-                .stream()
-                .filter(address -> address.getBroadcast() != null)
-                .map(address -> address.getBroadcast())
-                .collect(Collectors.toList()));
+                    .stream()
+                    .filter(address -> address.getBroadcast() != null)
+                    .map(address -> address.getBroadcast())
+                    .collect(Collectors.toList()));
         }
         return broadcastList;
     }

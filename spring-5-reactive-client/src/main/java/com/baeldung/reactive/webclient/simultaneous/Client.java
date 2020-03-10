@@ -22,38 +22,38 @@ public class Client {
         LOG.info(String.format("Calling getUser(%d)", id));
 
         return webClient.get()
-            .uri("/user/{id}", id)
-            .retrieve()
-            .bodyToMono(User.class);
+                .uri("/user/{id}", id)
+                .retrieve()
+                .bodyToMono(User.class);
     }
 
     public Mono<Item> getItem(int id) {
         return webClient.get()
-            .uri("/item/{id}", id)
-            .retrieve()
-            .bodyToMono(Item.class);
+                .uri("/item/{id}", id)
+                .retrieve()
+                .bodyToMono(Item.class);
     }
 
     public Mono<User> getOtherUser(int id) {
         return webClient.get()
-            .uri("/otheruser/{id}", id)
-            .retrieve()
-            .bodyToMono(User.class);
+                .uri("/otheruser/{id}", id)
+                .retrieve()
+                .bodyToMono(User.class);
     }
 
     public Flux<User> fetchUsers(List<Integer> userIds) {
         return Flux.fromIterable(userIds)
-            .parallel()
-            .runOn(Schedulers.elastic())
-            .flatMap(this::getUser)
-            .ordered((u1, u2) -> u2.id() - u1.id());
+                .parallel()
+                .runOn(Schedulers.elastic())
+                .flatMap(this::getUser)
+                .ordered((u1, u2) -> u2.id() - u1.id());
     }
 
     public Flux<User> fetchUserAndOtherUser(int id) {
         return Flux.merge(getUser(id), getOtherUser(id))
-            .parallel()
-            .runOn(Schedulers.elastic())
-            .ordered((u1, u2) -> u2.id() - u1.id());
+                .parallel()
+                .runOn(Schedulers.elastic())
+                .ordered((u1, u2) -> u2.id() - u1.id());
     }
 
     public Mono<UserWithItem> fetchUserAndItem(int userId, int itemId) {

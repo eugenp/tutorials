@@ -25,12 +25,12 @@ public class YamlLoaderInitializer implements ApplicationContextInitializer<Conf
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
         String yamlFile = (this.file == null) ? applicationContext.getEnvironment()
-            .getProperty("custom.configyaml.file") : this.file;
+                .getProperty("custom.configyaml.file") : this.file;
         Resource path = new ClassPathResource(yamlFile);
         PropertySource<?> propertySource = loadYaml(path);
         applicationContext.getEnvironment()
-            .getPropertySources()
-            .addLast(propertySource);
+                .getPropertySources()
+                .addLast(propertySource);
     }
 
     private PropertySource<?> loadYaml(Resource path) {
@@ -39,7 +39,7 @@ public class YamlLoaderInitializer implements ApplicationContextInitializer<Conf
         }
         try {
             return this.loader.load("custom-resource", path)
-                .get(0);
+                    .get(0);
         } catch (IOException ex) {
             throw new IllegalStateException("Failed to load yaml configuration from" + path, ex);
         }

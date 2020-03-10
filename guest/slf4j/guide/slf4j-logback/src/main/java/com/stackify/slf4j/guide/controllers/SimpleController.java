@@ -85,7 +85,7 @@ public class SimpleController {
 
         // Use the log() method instead of print() to use the logger (for testing purposes here)
         myProfiler.stop()
-            .log();
+                .log();
         return "finished";
     }
 
@@ -93,7 +93,7 @@ public class SimpleController {
         List<Integer> generated = new ArrayList<>();
         for (int i = 0; i < 5000; i++) {
             generated.add(ThreadLocalRandom.current()
-                .nextInt(2000));
+                    .nextInt(2000));
         }
         return generated;
     }
@@ -108,7 +108,7 @@ public class SimpleController {
         data.setEventDateTime(new Date());
         data.setEventType("sending");
         String confirm = UUID.randomUUID()
-            .toString();
+                .toString();
         data.setEventId(confirm);
         data.put("from", sender);
         data.put("to", receiver);

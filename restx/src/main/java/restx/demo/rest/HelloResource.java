@@ -15,12 +15,13 @@ import restx.security.RestxSession;
 
 import javax.validation.constraints.NotNull;
 
-@Component @RestxResource
+@Component
+@RestxResource
 public class HelloResource {
 
     /**
      * Say hello to currently logged in user.
-     *
+     * <p>
      * Authorized only for principals with Roles.HELLO_ROLE role.
      *
      * @return a Message to say hello
@@ -36,7 +37,7 @@ public class HelloResource {
 
     /**
      * Say hello to anybody.
-     *
+     * <p>
      * Does not require authentication.
      *
      * @return a Message to say hello
@@ -52,13 +53,20 @@ public class HelloResource {
     public static class MyPOJO {
         @NotNull
         String value;
-        public String getValue(){ return value; }
-        public void setValue(String value){ this.value = value; }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
     }
+
     @POST("/mypojo")
     @PermitAll
-    public MyPOJO helloPojo(MyPOJO pojo){
-        pojo.setValue("hello "+pojo.getValue());
+    public MyPOJO helloPojo(MyPOJO pojo) {
+        pojo.setValue("hello " + pojo.getValue());
         return pojo;
     }
 }

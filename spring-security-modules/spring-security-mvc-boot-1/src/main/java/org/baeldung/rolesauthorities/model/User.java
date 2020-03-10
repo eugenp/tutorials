@@ -140,7 +140,7 @@ public class User {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("User [id=").append(id).append(", firstName=")
-        	.append(firstName).append(", lastName=").append(lastName).append(", email=").append(email).append(", password=").append(password).append(", enabled=").append(enabled).append(", roles=").append(roles).append("]");
+                .append(firstName).append(", lastName=").append(lastName).append(", email=").append(email).append(", password=").append(password).append(", enabled=").append(enabled).append(", roles=").append(roles).append("]");
         return builder.toString();
     }
 

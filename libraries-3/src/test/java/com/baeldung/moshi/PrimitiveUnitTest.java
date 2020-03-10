@@ -11,7 +11,7 @@ public class PrimitiveUnitTest {
     @Test
     public void whenSerializing_thenCorrectJsonProduced() {
         Moshi moshi = new Moshi.Builder()
-          .build();
+                .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
         Post post = new Post("My Post", "Baeldung", "This is my post");
@@ -22,7 +22,7 @@ public class PrimitiveUnitTest {
     @Test
     public void whenDeserializing_thenCorrectJsonConsumed() throws IOException {
         Moshi moshi = new Moshi.Builder()
-          .build();
+                .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
         String json = "{\"author\":\"Baeldung\",\"text\":\"This is my post\",\"title\":\"My Post\"}";
@@ -71,7 +71,7 @@ public class PrimitiveUnitTest {
         @Override
         public String toString() {
             return new ToStringBuilder(this).append("title", title).append("author", author).append("text", text)
-                .toString();
+                    .toString();
         }
     }
 }

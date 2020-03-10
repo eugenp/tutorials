@@ -17,12 +17,12 @@ import com.baeldung.web.log.app.Application;
 import com.baeldung.web.log.data.TaxiRide;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { Application.class, TaxiFareControllerIntegrationTest.SecurityConfig.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = {Application.class, TaxiFareControllerIntegrationTest.SecurityConfig.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class TaxiFareControllerIntegrationTest {
-    
+
     @LocalServerPort
     private int port;
-    
+
     @Test
     public void givenRequest_whenFetchTaxiFareRateCard_thanOK() {
 
@@ -31,9 +31,9 @@ public class TaxiFareControllerIntegrationTest {
         TestRestTemplate testRestTemplate = new TestRestTemplate();
         TaxiRide taxiRide = new TaxiRide(true, 10l);
         String fare = testRestTemplate.postForObject(
-          URL + "/taxifare/calculate/", 
-          taxiRide, String.class);
-      
+                URL + "/taxifare/calculate/",
+                taxiRide, String.class);
+
         assertThat(fare, equalTo("200"));
     }
 

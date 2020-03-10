@@ -11,7 +11,8 @@ public class MyClass {
         this.name = name;
     }
 
-    public MyClass() { }
+    public MyClass() {
+    }
 
     public int getId() {
         return id;

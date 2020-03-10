@@ -64,11 +64,11 @@ public class AVLTreeUnitTest {
     }
 
     private boolean isAVL(AVLTree tree) {
-       return isAVL(tree, tree.getRoot());
+        return isAVL(tree, tree.getRoot());
     }
 
     private boolean isAVL(AVLTree tree, AVLTree.Node node) {
-        if ( node == null )
+        if (node == null)
             return true;
         int balance = tree.getBalance(node);
         return (balance <= 1 && balance >= -1) && isAVL(tree, node.left) && isAVL(tree, node.right);

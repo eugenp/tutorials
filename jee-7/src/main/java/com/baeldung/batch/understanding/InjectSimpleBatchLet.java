@@ -21,7 +21,7 @@ public class InjectSimpleBatchLet extends AbstractBatchlet {
 
     @Inject
     StepContext stepContext;
-    private Properties stepProperties;    
+    private Properties stepProperties;
     @Inject
     JobContext jobContext;
     private Properties jobProperties;
@@ -31,8 +31,8 @@ public class InjectSimpleBatchLet extends AbstractBatchlet {
         logger.info("BatchProperty : " + nameString);
         stepProperties = stepContext.getProperties();
         jobProperties = jobContext.getProperties();
-        logger.info("Step property : "+ stepProperties.getProperty("stepProp1"));
-        logger.info("job property : "+jobProperties.getProperty("jobProp1"));
+        logger.info("Step property : " + stepProperties.getProperty("stepProp1"));
+        logger.info("job property : " + jobProperties.getProperty("jobProp1"));
         return BatchStatus.COMPLETED.toString();
     }
 }

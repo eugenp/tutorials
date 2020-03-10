@@ -85,8 +85,8 @@ public class RxJavaBackpressureLongRunningUnitTest {
 
         // when
         source.sample(100, TimeUnit.MILLISECONDS)
-          // .throttleFirst(100, TimeUnit.MILLISECONDS)
-          .observeOn(Schedulers.computation()).subscribe(testSubscriber);
+                // .throttleFirst(100, TimeUnit.MILLISECONDS)
+                .observeOn(Schedulers.computation()).subscribe(testSubscriber);
 
         IntStream.range(0, 1_000).forEach(source::onNext);
 
@@ -116,7 +116,7 @@ public class RxJavaBackpressureLongRunningUnitTest {
 
         // when
         Observable.range(1, 1_000_000).onBackpressureDrop().observeOn(Schedulers.computation())
-          .subscribe(testSubscriber);
+                .subscribe(testSubscriber);
 
         // then
         testSubscriber.awaitTerminalEvent(2, TimeUnit.SECONDS);

@@ -2,6 +2,7 @@ package com.baeldung.persistence.query;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
@@ -49,7 +50,7 @@ public class JPASpecificationLiveTest {
     public void givenFirstOrLastName_whenGettingListOfUsers_thenCorrect() {
         final Response response = RestAssured.get(EURL_PREFIX + "firstName:john,'lastName:doe");
         final String result = response.body()
-            .asString();
+                .asString();
         assertTrue(result.contains(userJohn.getEmail()));
         assertTrue(result.contains(userTom.getEmail()));
     }
@@ -58,7 +59,7 @@ public class JPASpecificationLiveTest {
     public void givenFirstAndLastName_whenGettingListOfUsers_thenCorrect() {
         final Response response = RestAssured.get(URL_PREFIX + "firstName:john,lastName:doe");
         final String result = response.body()
-            .asString();
+                .asString();
 
         assertTrue(result.contains(userJohn.getEmail()));
         assertFalse(result.contains(userTom.getEmail()));
@@ -68,7 +69,7 @@ public class JPASpecificationLiveTest {
     public void givenFirstNameInverse_whenGettingListOfUsers_thenCorrect() {
         final Response response = RestAssured.get(URL_PREFIX + "firstName!john");
         final String result = response.body()
-            .asString();
+                .asString();
 
         assertTrue(result.contains(userTom.getEmail()));
         assertFalse(result.contains(userJohn.getEmail()));
@@ -78,7 +79,7 @@ public class JPASpecificationLiveTest {
     public void givenMinAge_whenGettingListOfUsers_thenCorrect() {
         final Response response = RestAssured.get(URL_PREFIX + "age>25");
         final String result = response.body()
-            .asString();
+                .asString();
 
         assertTrue(result.contains(userTom.getEmail()));
         assertFalse(result.contains(userJohn.getEmail()));
@@ -88,7 +89,7 @@ public class JPASpecificationLiveTest {
     public void givenFirstNamePrefix_whenGettingListOfUsers_thenCorrect() {
         final Response response = RestAssured.get(URL_PREFIX + "firstName:jo*");
         final String result = response.body()
-            .asString();
+                .asString();
 
         assertTrue(result.contains(userJohn.getEmail()));
         assertFalse(result.contains(userTom.getEmail()));
@@ -98,7 +99,7 @@ public class JPASpecificationLiveTest {
     public void givenFirstNameSuffix_whenGettingListOfUsers_thenCorrect() {
         final Response response = RestAssured.get(URL_PREFIX + "firstName:*n");
         final String result = response.body()
-            .asString();
+                .asString();
 
         assertTrue(result.contains(userJohn.getEmail()));
         assertFalse(result.contains(userTom.getEmail()));
@@ -108,7 +109,7 @@ public class JPASpecificationLiveTest {
     public void givenFirstNameSubstring_whenGettingListOfUsers_thenCorrect() {
         final Response response = RestAssured.get(URL_PREFIX + "firstName:*oh*");
         final String result = response.body()
-            .asString();
+                .asString();
 
         assertTrue(result.contains(userJohn.getEmail()));
         assertFalse(result.contains(userTom.getEmail()));
@@ -118,7 +119,7 @@ public class JPASpecificationLiveTest {
     public void givenAgeRange_whenGettingListOfUsers_thenCorrect() {
         final Response response = RestAssured.get(URL_PREFIX + "age>20,age<25");
         final String result = response.body()
-            .asString();
+                .asString();
 
         assertTrue(result.contains(userJohn.getEmail()));
         assertFalse(result.contains(userTom.getEmail()));
@@ -130,7 +131,7 @@ public class JPASpecificationLiveTest {
     public void givenFirstOrLastName_whenGettingAdvListOfUsers_thenCorrect() {
         final Response response = RestAssured.get(ADV_URL_PREFIX + "firstName:john OR lastName:doe");
         final String result = response.body()
-            .asString();
+                .asString();
         assertTrue(result.contains(userJohn.getEmail()));
         assertTrue(result.contains(userTom.getEmail()));
     }
@@ -139,7 +140,7 @@ public class JPASpecificationLiveTest {
     public void givenFirstOrFirstNameAndAge_whenGettingAdvListOfUsers_thenCorrect() {
         final Response response = RestAssured.get(ADV_URL_PREFIX + "( firstName:john OR firstName:tom ) AND age>22");
         final String result = response.body()
-            .asString();
+                .asString();
         assertFalse(result.contains(userJohn.getEmail()));
         assertTrue(result.contains(userTom.getEmail()));
     }

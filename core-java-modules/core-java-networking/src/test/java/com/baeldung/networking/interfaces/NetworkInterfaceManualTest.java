@@ -23,7 +23,7 @@ public class NetworkInterfaceManualTest {
 
     @Test
     public void givenIP_whenReturnsNetworkInterface_thenCorrect() throws SocketException, UnknownHostException {
-        byte[] ip = new byte[] { 127, 0, 0, 1 };
+        byte[] ip = new byte[]{127, 0, 0, 1};
         NetworkInterface nif = NetworkInterface.getByInetAddress(InetAddress.getByAddress(ip));
         assertNotNull(nif);
     }

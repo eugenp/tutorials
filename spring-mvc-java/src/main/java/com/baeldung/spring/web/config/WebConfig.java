@@ -30,14 +30,14 @@ import com.baeldung.excel.ExcelPOIHelper;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = { "com.baeldung.web.controller" })
+@ComponentScan(basePackages = {"com.baeldung.web.controller"})
 public class WebConfig implements WebMvcConfigurer {
-	
+
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
     }
-    
+
     @Bean
     public ViewResolver thymeleafViewResolver() {
         final ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();

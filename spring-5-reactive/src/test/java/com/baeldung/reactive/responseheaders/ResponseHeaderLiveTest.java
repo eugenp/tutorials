@@ -21,40 +21,40 @@ public class ResponseHeaderLiveTest {
     @BeforeAll
     public static void setup() {
         client = WebTestClient.bindToServer()
-            .baseUrl(BASE_URL)
-            .build();
+                .baseUrl(BASE_URL)
+                .build();
     }
 
     @Test
     public void whenUsingResponseEntityBuilderRequest_thenObtainResponseWithCorrectHeaders() {
         client = WebTestClient.bindToServer()
-            .baseUrl(BASE_URL)
-            .build();
+                .baseUrl(BASE_URL)
+                .build();
         ResponseSpec response = client.get()
-            .uri(ANNOTATION_BASE_URL + "/response-entity")
-            .exchange();
+                .uri(ANNOTATION_BASE_URL + "/response-entity")
+                .exchange();
 
         response.expectHeader().valueEquals(SERVICE_SINGLE_RESPONSE_HEADER, "Value-ResponseEntityBuilder")
-            .expectHeader().valueEquals(SERVICE_FILTER_RESPONSE_HEADER, SERVICE_FILTER_RESPONSE_HEADER_VALUE);
+                .expectHeader().valueEquals(SERVICE_FILTER_RESPONSE_HEADER, SERVICE_FILTER_RESPONSE_HEADER_VALUE);
     }
 
     @Test
     public void whenUsingServerHttpResponseRequest_thenObtainResponseWithCorrectHeaders() {
         ResponseSpec response = client.get()
-            .uri(ANNOTATION_BASE_URL + "/server-http-response")
-            .exchange();
+                .uri(ANNOTATION_BASE_URL + "/server-http-response")
+                .exchange();
 
         response.expectHeader().valueEquals(SERVICE_SINGLE_RESPONSE_HEADER, "Value-ServerHttpResponse")
-            .expectHeader().valueEquals(SERVICE_FILTER_RESPONSE_HEADER, SERVICE_FILTER_RESPONSE_HEADER_VALUE);
+                .expectHeader().valueEquals(SERVICE_FILTER_RESPONSE_HEADER, SERVICE_FILTER_RESPONSE_HEADER_VALUE);
     }
 
     @Test
     public void whenUsingFunctionalHandlerRequest_thenObtainResponseWithCorrectHeaders() {
         ResponseSpec response = client.get()
-            .uri(FUNCTIONAL_BASE_URL + "/single-handler")
-            .exchange();
+                .uri(FUNCTIONAL_BASE_URL + "/single-handler")
+                .exchange();
 
         response.expectHeader().valueEquals(SERVICE_SINGLE_RESPONSE_HEADER, "Value-Handler")
-            .expectHeader().valueEquals(SERVICE_FILTER_RESPONSE_HEADER, SERVICE_FILTER_RESPONSE_HEADER_VALUE);
+                .expectHeader().valueEquals(SERVICE_FILTER_RESPONSE_HEADER, SERVICE_FILTER_RESPONSE_HEADER_VALUE);
     }
 }

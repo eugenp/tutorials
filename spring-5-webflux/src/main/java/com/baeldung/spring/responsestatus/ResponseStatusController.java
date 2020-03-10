@@ -49,16 +49,16 @@ public class ResponseStatusController {
     @GetMapping(value = "/unauthorized")
     public ResponseEntity<Mono<String>> unathorized() {
         return ResponseEntity
-          .status(HttpStatus.UNAUTHORIZED)
-          .header("X-Reason", "user-invalid")
-          .body(Mono.just("unauthorized"));
+                .status(HttpStatus.UNAUTHORIZED)
+                .header("X-Reason", "user-invalid")
+                .body(Mono.just("unauthorized"));
     }
 
     @Bean
     public RouterFunction<ServerResponse> notFound() {
         return RouterFunctions.route(GET("/statuses/not-found"), request -> ServerResponse
-          .notFound()
-          .build());
+                .notFound()
+                .build());
     }
 
 }

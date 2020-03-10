@@ -9,9 +9,9 @@ public class JvmExitAndHaltDemo {
 
     static {
         Runtime.getRuntime()
-            .addShutdownHook(new Thread(() -> {
-                LOGGER.info("Shutdown hook initiated.");
-            }));
+                .addShutdownHook(new Thread(() -> {
+                    LOGGER.info("Shutdown hook initiated.");
+                }));
     }
 
     public void processAndExit() {
@@ -24,7 +24,7 @@ public class JvmExitAndHaltDemo {
         process();
         LOGGER.info("Calling Runtime.getRuntime().halt().");
         Runtime.getRuntime()
-            .halt(0);
+                .halt(0);
     }
 
     private void process() {

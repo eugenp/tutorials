@@ -27,14 +27,14 @@ public class MachineLearningApp {
 
         // 1. Setting the Spark Context
         SparkConf conf = new SparkConf().setAppName("Main")
-            .setMaster("local[2]")
-            .set("spark.executor.memory", "3g")
-            .set("spark.driver.memory", "3g");
+                .setMaster("local[2]")
+                .set("spark.executor.memory", "3g")
+                .set("spark.driver.memory", "3g");
         JavaSparkContext sc = new JavaSparkContext(conf);
         Logger.getLogger("org")
-            .setLevel(Level.OFF);
+                .setLevel(Level.OFF);
         Logger.getLogger("akka")
-            .setLevel(Level.OFF);
+                .setLevel(Level.OFF);
 
         // 2. Loading the Data-set
         String dataFile = "data\\iris.data";
@@ -80,14 +80,14 @@ public class MachineLearningApp {
         });
 
         // 5. Data Splitting into 80% Training and 20% Test Sets
-        JavaRDD<LabeledPoint>[] splits = parsedData.randomSplit(new double[] { 0.8, 0.2 }, 11L);
+        JavaRDD<LabeledPoint>[] splits = parsedData.randomSplit(new double[]{0.8, 0.2}, 11L);
         JavaRDD<LabeledPoint> trainingData = splits[0].cache();
         JavaRDD<LabeledPoint> testData = splits[1];
 
         // 6. Modeling
         // 6.1. Model Training
         LogisticRegressionModel model = new LogisticRegressionWithLBFGS().setNumClasses(3)
-            .run(trainingData.rdd());
+                .run(trainingData.rdd());
         // 6.2. Model Evaluation
         JavaPairRDD<Object, Object> predictionAndLabels = testData.mapToPair(p -> new Tuple2<>(model.predict(p.features()), p.label()));
         MulticlassMetrics metrics = new MulticlassMetrics(predictionAndLabels.rdd());
@@ -100,7 +100,7 @@ public class MachineLearningApp {
         // 7.2. Model Loading
         LogisticRegressionModel sameModel = LogisticRegressionModel.load(sc.sc(), "model\\logistic-regression");
         // 7.3. Prediction on New Data
-        Vector newData = Vectors.dense(new double[] { 1, 1, 1, 1 });
+        Vector newData = Vectors.dense(new double[]{1, 1, 1, 1});
         double prediction = sameModel.predict(newData);
         System.out.println("Model Prediction on New Data = " + prediction);
 

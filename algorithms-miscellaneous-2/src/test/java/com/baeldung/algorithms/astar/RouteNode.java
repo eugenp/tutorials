@@ -61,7 +61,7 @@ class RouteNode<T extends GraphNode> implements Comparable<RouteNode> {
     @Override
     public String toString() {
         return new StringJoiner(", ", RouteNode.class.getSimpleName() + "[", "]").add("current=" + current)
-            .add("previous=" + previous).add("routeScore=" + routeScore).add("estimatedScore=" + estimatedScore)
-            .toString();
+                .add("previous=" + previous).add("routeScore=" + routeScore).add("estimatedScore=" + estimatedScore)
+                .toString();
     }
 }

@@ -11,7 +11,7 @@
     <properties>
         <commons.lang3.version>3.9</commons.lang3.version>
         <junit.version>4.12</junit.version>
-	</properties>
+    </properties>
 
     <dependencies>
         <dependency>

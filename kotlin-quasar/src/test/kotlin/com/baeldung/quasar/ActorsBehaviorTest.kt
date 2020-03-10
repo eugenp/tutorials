@@ -60,7 +60,7 @@ class ActorsBehaviorTest {
     }
 
     interface Summer {
-        fun sum(a: Int, b: Int) : Int
+        fun sum(a: Int, b: Int): Int
     }
 
     @Test
@@ -111,8 +111,8 @@ class ActorsBehaviorTest {
             }
 
             @Suspendable
-            fun lockedState() : SuspendableCallable<SuspendableCallable<*>> {
-                return receive {msg ->
+            fun lockedState(): SuspendableCallable<SuspendableCallable<*>> {
+                return receive { msg ->
                     when (msg) {
                         "PUSH" -> {
                             LOG.info("Still locked")
@@ -128,8 +128,8 @@ class ActorsBehaviorTest {
             }
 
             @Suspendable
-            fun unlockedState() : SuspendableCallable<SuspendableCallable<*>> {
-                return receive {msg ->
+            fun unlockedState(): SuspendableCallable<SuspendableCallable<*>> {
+                return receive { msg ->
                     when (msg) {
                         "PUSH" -> {
                             LOG.info("Locking")

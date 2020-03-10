@@ -7,7 +7,7 @@ import static picocli.CommandLine.Command;
 import static picocli.CommandLine.Parameters;
 
 @Command(
-  name = "config"
+        name = "config"
 )
 @Component
 public class GitConfigCommand implements Runnable {

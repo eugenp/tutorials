@@ -9,7 +9,7 @@ import org.apache.flink.api.common.typeinfo.TypeInformation;
 import java.io.IOException;
 
 public class InputMessageDeserializationSchema implements
-      DeserializationSchema<InputMessage> {
+        DeserializationSchema<InputMessage> {
 
     static ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 

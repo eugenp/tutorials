@@ -27,11 +27,9 @@ import java.util.concurrent.CountDownLatch;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * 
  * To run this Live Test, we need to have an AWS account and have API keys generated for programmatic access.
- * 
+ * <p>
  * Check the README file in this module for more information.
- *
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -84,15 +82,15 @@ public class SpringCloudSQSLiveTest {
             }
         } while (result.getMessages().size() == 0);
         assertThat(result.getMessages().get(0).getBody()).isEqualTo(message);
-        
+
         // Delete message so that it doen't interfere with other test
         amazonSQS.deleteMessage(sendQueueURl, result.getMessages().get(0).getReceiptHandle());
-        
+
     }
 
     @Test
     public void whenConvertedMessageSentAndVerified_thenSuccess() throws InterruptedException, IOException {
-        
+
         Greeting message = new Greeting("Hello", "World");
         springCloudSQS.send(sendQueueName, message);
 
@@ -109,11 +107,11 @@ public class SpringCloudSQSLiveTest {
             }
         } while (result.getMessages().size() == 0);
         assertThat(new ObjectMapper().readValue(result.getMessages().get(0).getBody(), Greeting.class)).isEqualTo(message);
-        
+
         // Delete message so that it doen't interfere with other test
         amazonSQS.deleteMessage(sendQueueURl, result.getMessages().get(0).getReceiptHandle());
     }
-    
+
     @Test
     public void givenMessageSent_whenMessageReceived_thenSuccess() throws InterruptedException {
         CountDownLatch countDownLatch = new CountDownLatch(5);

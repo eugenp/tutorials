@@ -189,7 +189,7 @@ public class OrikaUnitTest {
     public void givenSrcWithListAndDestWithPrimitiveAttributes_whenMaps_thenCorrect() {
         mapperFactory.classMap(PersonNameList.class, PersonNameParts.class).field("nameList[0]", "firstName").field("nameList[1]", "lastName").register();
         MapperFacade mapper = mapperFactory.getMapperFacade();
-        List<String> nameList = Arrays.asList(new String[] { "Sylvester", "Stallone" });
+        List<String> nameList = Arrays.asList(new String[]{"Sylvester", "Stallone"});
         PersonNameList src = new PersonNameList(nameList);
         PersonNameParts dest = mapper.map(src, PersonNameParts.class);
         assertEquals(dest.getFirstName(), "Sylvester");
@@ -200,7 +200,7 @@ public class OrikaUnitTest {
     public void givenSrcWithArrayAndDestWithPrimitiveAttributes_whenMaps_thenCorrect() {
         mapperFactory.classMap(PersonNameArray.class, PersonNameParts.class).field("nameArray[0]", "firstName").field("nameArray[1]", "lastName").register();
         MapperFacade mapper = mapperFactory.getMapperFacade();
-        String[] nameArray = new String[] { "Vin", "Diesel" };
+        String[] nameArray = new String[]{"Vin", "Diesel"};
         PersonNameArray src = new PersonNameArray(nameArray);
         PersonNameParts dest = mapper.map(src, PersonNameParts.class);
         assertEquals(dest.getFirstName(), "Vin");
@@ -322,9 +322,9 @@ public class OrikaUnitTest {
         Personne3 personne3 = mapper.map(person3, Personne3.class);
         long timestampToTest = personne3.getDtob();
         /*
-        	 * since different timezones will resolve the datetime to a different
-        	 * unix timestamp, we must provide a range of tolerance
-        	 */
+         * since different timezones will resolve the datetime to a different
+         * unix timestamp, we must provide a range of tolerance
+         */
         assertTrue(timestampToTest == timestamp || timestampToTest >= timestamp - GMT_DIFFERENCE || timestampToTest <= timestamp + GMT_DIFFERENCE);
 
     }

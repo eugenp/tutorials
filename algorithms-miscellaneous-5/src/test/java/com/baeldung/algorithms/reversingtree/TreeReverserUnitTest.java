@@ -15,7 +15,7 @@ public class TreeReverserUnitTest {
         reverser.reverseRecursive(treeNode);
 
         assertEquals("4 7 9 6 2 3 1", reverser.toString(treeNode)
-            .trim());
+                .trim());
     }
 
     @Test
@@ -27,7 +27,7 @@ public class TreeReverserUnitTest {
         reverser.reverseIterative(treeNode);
 
         assertEquals("4 7 9 6 2 3 1", reverser.toString(treeNode)
-            .trim());
+                .trim());
     }
 
     private TreeNode createBinaryTree() {

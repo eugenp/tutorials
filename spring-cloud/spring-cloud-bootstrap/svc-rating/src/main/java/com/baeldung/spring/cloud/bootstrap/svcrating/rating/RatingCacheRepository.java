@@ -30,15 +30,15 @@ public class RatingCacheRepository implements InitializingBean {
 
     public List<Rating> findCachedRatingsByBookId(Long bookId) {
         return setOps.members("book-" + bookId)
-            .stream()
-            .map(rtId -> {
-                try {
-                    return jsonMapper.readValue(valueOps.get(rtId), Rating.class);
-                } catch (IOException ex) {
-                    return null;
-                }
-            })
-            .collect(Collectors.toList());
+                .stream()
+                .map(rtId -> {
+                    try {
+                        return jsonMapper.readValue(valueOps.get(rtId), Rating.class);
+                    } catch (IOException ex) {
+                        return null;
+                    }
+                })
+                .collect(Collectors.toList());
     }
 
     public Rating findCachedRatingById(Long ratingId) {
@@ -55,17 +55,17 @@ public class RatingCacheRepository implements InitializingBean {
         List<Rating> ratings = null;
 
         ratings = redisTemplate.keys("rating*")
-            .stream()
-            .map(rtId -> {
-                try {
+                .stream()
+                .map(rtId -> {
+                    try {
 
-                    return jsonMapper.readValue(valueOps.get(rtId), Rating.class);
+                        return jsonMapper.readValue(valueOps.get(rtId), Rating.class);
 
-                } catch (IOException e) {
-                    return null;
-                }
-            })
-            .collect(Collectors.toList());
+                    } catch (IOException e) {
+                        return null;
+                    }
+                })
+                .collect(Collectors.toList());
 
         return ratings;
     }

@@ -30,18 +30,18 @@ public class PersistJSONUnitTest {
 
             Properties properties = new Properties();
             properties.load(Thread.currentThread()
-                .getContextClassLoader()
-                .getResourceAsStream("hibernate-persistjson.properties"));
+                    .getContextClassLoader()
+                    .getResourceAsStream("hibernate-persistjson.properties"));
 
             configuration.setProperties(properties);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
-                .build();
+                    .build();
             MetadataSources metadataSources = new MetadataSources(serviceRegistry);
             metadataSources.addAnnotatedClass(Customer.class);
 
             SessionFactory factory = metadataSources.buildMetadata()
-                .buildSessionFactory();
+                    .buildSessionFactory();
 
             session = factory.openSession();
         } catch (HibernateException | IOException e) {
@@ -101,11 +101,11 @@ public class PersistJSONUnitTest {
         session.clear();
 
         Customer result = session.createNativeQuery("select * from Customers where Customers.id = :id", Customer.class)
-            .setParameter("id", id)
-            .getSingleResult();
+                .setParameter("id", id)
+                .getSingleResult();
 
         assertEquals(2, result.getCustomerAttributes()
-            .size());
+                .size());
     }
 
 }

@@ -23,7 +23,7 @@ public class UserRepositoryIntegrationTest {
 
     @Autowired
     private UserRepository userRepository;
-    
+
     @Before
     public void setup() {
         User user = new User();
@@ -32,12 +32,12 @@ public class UserRepositoryIntegrationTest {
         user.setUserName("jsmith123");
         userRepository.save(user);
     }
-    
+
     @After
     public void cleanup() {
         userRepository.deleteAll();
     }
-    
+
     @Test
     public void whenNewUserProvided_userIsAdded() {
         User user = new User();
@@ -47,14 +47,14 @@ public class UserRepositoryIntegrationTest {
         user = userRepository.save(user);
         assertTrue(user.getId() > 0);
     }
-    
+
     @Test
     public void whenUserNameProvided_userIsLoaded() {
         User user = userRepository.findByUserName("jsmith123");
         assertNotNull(user);
         assertEquals("jsmith123", user.getUserName());
     }
-    
+
     @Test
     public void whenExistingUserProvided_userIsUpdated() {
         User user = userRepository.findByUserName("jsmith123");
@@ -62,7 +62,7 @@ public class UserRepositoryIntegrationTest {
         user = userRepository.save(user);
         assertEquals("Joe", user.getFirstName());
     }
-    
+
     @Test
     public void whenExistingUserDeleted_userIsDeleted() {
         User user = userRepository.findByUserName("jsmith123");
@@ -70,7 +70,7 @@ public class UserRepositoryIntegrationTest {
         user = userRepository.findByUserName("jsmith123");
         assertNull(user);
     }
-    
+
     @Test
     public void whenExistingUserLoaded_fullNameIsAvailable() {
         String expectedFullName = "Jane Smith";

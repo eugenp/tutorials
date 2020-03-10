@@ -4,7 +4,7 @@ artifactId: maven-polyglot-yml-app
 version: 1.0-SNAPSHOT
 name: 'YAML Demo'
 
-parent: 
+parent:
   groupId: "com.baeldung"
   artifactId: "parent-modules"
   version: "1.0.0-SNAPSHOT"

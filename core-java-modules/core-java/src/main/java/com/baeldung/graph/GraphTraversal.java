@@ -17,7 +17,7 @@ public class GraphTraversal {
             String vertex = stack.pop();
             if (!visited.contains(vertex)) {
                 visited.add(vertex);
-                for (Vertex v : graph.getAdjVertices(vertex)) {              
+                for (Vertex v : graph.getAdjVertices(vertex)) {
                     stack.push(v.label);
                 }
             }

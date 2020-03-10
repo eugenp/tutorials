@@ -46,7 +46,7 @@ public class ValuesApp {
 
     @Value("#{'${listOfValues}'.split(',')}")
     private List<String> valuesList;
-	
+
     @Value("#{${valuesMap}}")
     private Map<String, Integer> valuesMap;
 

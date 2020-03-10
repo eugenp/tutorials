@@ -8,7 +8,7 @@ public class FuelInjector {
 
     private FuelPump fuelPump = new FuelPump();
 
-    public void on(){
+    public void on() {
         LOGGER.info("Fuel injector ready to inject fuel.");
     }
 

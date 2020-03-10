@@ -16,10 +16,10 @@ public class SpringBootSecurityTagLibsConfig extends WebSecurityConfigurerAdapte
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         BCryptPasswordEncoder encoder = passwordEncoder();
         auth.inMemoryAuthentication()
-            .passwordEncoder(encoder)
-            .withUser("testUser")
-            .password(encoder.encode("password"))
-            .roles("ADMIN");
+                .passwordEncoder(encoder)
+                .withUser("testUser")
+                .password(encoder.encode("password"))
+                .roles("ADMIN");
     }
 
     @Override
@@ -27,12 +27,12 @@ public class SpringBootSecurityTagLibsConfig extends WebSecurityConfigurerAdapte
         // @formatter:off
         http.csrf()
                 .and()
-            .authorizeRequests()
+                .authorizeRequests()
                 .antMatchers("/userManagement").hasRole("ADMIN")
                 .anyRequest().permitAll().and().httpBasic();
         // @formatter:on
     }
-    
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

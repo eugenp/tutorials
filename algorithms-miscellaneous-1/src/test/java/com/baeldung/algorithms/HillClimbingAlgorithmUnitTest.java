@@ -19,8 +19,8 @@ public class HillClimbingAlgorithmUnitTest {
 
     @Before
     public void initStacks() {
-        String blockArr[] = { "B", "C", "D", "A" };
-        String goalBlockArr[] = { "A", "B", "C", "D" };
+        String blockArr[] = {"B", "C", "D", "A"};
+        String goalBlockArr[] = {"A", "B", "C", "D"};
         initStack = new Stack<>();
         for (String block : blockArr)
             initStack.push(block);
@@ -38,8 +38,8 @@ public class HillClimbingAlgorithmUnitTest {
             path = hillClimbing.getRouteWithHillClimbing(initStack, goalStack);
             assertNotNull(path);
             assertEquals(path.get(path.size() - 1)
-                .getState()
-                .get(0), goalStack);
+                    .getState()
+                    .get(0), goalStack);
         } catch (Exception e) {
             e.printStackTrace();
         }

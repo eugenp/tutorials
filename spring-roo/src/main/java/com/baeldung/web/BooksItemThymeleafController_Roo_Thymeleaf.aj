@@ -10,8 +10,10 @@ import com.baeldung.web.BooksItemThymeleafLinkFactory;
 import io.springlets.web.NotFoundException;
 import io.springlets.web.mvc.util.ControllerMethodLinkBuilderFactory;
 import io.springlets.web.mvc.util.MethodLinkBuilderFactory;
+
 import java.util.Locale;
 import javax.validation.Valid;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -36,26 +38,26 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponents;
 
 privileged aspect BooksItemThymeleafController_Roo_Thymeleaf {
-    
-    declare @type: BooksItemThymeleafController: @Controller;
-    
-    declare @type: BooksItemThymeleafController: @RequestMapping(value = "/books/{book}", name = "BooksItemThymeleafController", produces = MediaType.TEXT_HTML_VALUE);
-    
+
+    declare @type: BooksItemThymeleafController:@Controller;
+
+    declare @type: BooksItemThymeleafController:@RequestMapping(value = "/books/{book}", name = "BooksItemThymeleafController", produces = MediaType.TEXT_HTML_VALUE);
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     private MessageSource BooksItemThymeleafController.messageSource;
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     private MethodLinkBuilderFactory<BooksItemThymeleafController> BooksItemThymeleafController.itemLink;
-    
+
     /**
      * TODO Auto-generated constructor documentation
-     * 
+     *
      * @param bookService
      * @param messageSource
      * @param linkBuilder
@@ -69,43 +71,43 @@ privileged aspect BooksItemThymeleafController_Roo_Thymeleaf {
 
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return MessageSource
      */
     public MessageSource BooksItemThymeleafController.getMessageSource() {
         return messageSource;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param messageSource
      */
     public void BooksItemThymeleafController.setMessageSource(MessageSource messageSource) {
         this.messageSource = messageSource;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return MethodLinkBuilderFactory
      */
     public MethodLinkBuilderFactory<BooksItemThymeleafController> BooksItemThymeleafController.getItemLink() {
         return itemLink;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param itemLink
      */
     public void BooksItemThymeleafController.setItemLink(MethodLinkBuilderFactory<BooksItemThymeleafController> itemLink) {
         this.itemLink = itemLink;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param id
      * @param locale
      * @param method
@@ -119,17 +121,17 @@ privileged aspect BooksItemThymeleafController_Roo_Thymeleaf {
         } else {
             book = bookService.findOne(id);
         }
-        
+
         if (book == null) {
-            String message = messageSource.getMessage("error_NotFound", new Object[] {"Book", id}, "The record couldn't be found", locale);
+            String message = messageSource.getMessage("error_NotFound", new Object[]{"Book", id}, "The record couldn't be found", locale);
             throw new NotFoundException(message);
         }
         return book;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param book
      * @param model
      * @return ModelAndView
@@ -139,10 +141,10 @@ privileged aspect BooksItemThymeleafController_Roo_Thymeleaf {
         model.addAttribute("book", book);
         return new ModelAndView("books/show");
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param book
      * @param model
      * @return ModelAndView
@@ -152,38 +154,38 @@ privileged aspect BooksItemThymeleafController_Roo_Thymeleaf {
         model.addAttribute("book", book);
         return new ModelAndView("books/showInline :: inline-content");
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param dataBinder
      */
     @InitBinder("book")
     public void BooksItemThymeleafController.initBookBinder(WebDataBinder dataBinder) {
         dataBinder.setDisallowedFields("id");
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param model
      */
     public void BooksItemThymeleafController.populateFormats(Model model) {
         model.addAttribute("application_locale", LocaleContextHolder.getLocale().getLanguage());
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param model
      */
     public void BooksItemThymeleafController.populateForm(Model model) {
         populateFormats(model);
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param book
      * @param model
      * @return ModelAndView
@@ -191,14 +193,14 @@ privileged aspect BooksItemThymeleafController_Roo_Thymeleaf {
     @GetMapping(value = "/edit-form", name = "editForm")
     public ModelAndView BooksItemThymeleafController.editForm(@ModelAttribute Book book, Model model) {
         populateForm(model);
-        
+
         model.addAttribute("book", book);
         return new ModelAndView("books/edit");
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param book
      * @param version
      * @param concurrencyControl
@@ -211,22 +213,22 @@ privileged aspect BooksItemThymeleafController_Roo_Thymeleaf {
         // Check if provided form contain errors
         if (result.hasErrors()) {
             populateForm(model);
-            
+
             return new ModelAndView("books/edit");
         }
         // Concurrency control
         Book existingBook = getBookService().findOne(book.getId());
-        if(book.getVersion() != existingBook.getVersion() && StringUtils.isEmpty(concurrencyControl)){
+        if (book.getVersion() != existingBook.getVersion() && StringUtils.isEmpty(concurrencyControl)) {
             populateForm(model);
             model.addAttribute("book", book);
             model.addAttribute("concurrency", true);
             return new ModelAndView("books/edit");
-        } else if(book.getVersion() != existingBook.getVersion() && "discard".equals(concurrencyControl)){
+        } else if (book.getVersion() != existingBook.getVersion() && "discard".equals(concurrencyControl)) {
             populateForm(model);
             model.addAttribute("book", existingBook);
             model.addAttribute("concurrency", false);
             return new ModelAndView("books/edit");
-        } else if(book.getVersion() != existingBook.getVersion() && "apply".equals(concurrencyControl)){
+        } else if (book.getVersion() != existingBook.getVersion() && "apply".equals(concurrencyControl)) {
             // Update the version field to be able to override the existing values
             book.setVersion(existingBook.getVersion());
         }
@@ -234,10 +236,10 @@ privileged aspect BooksItemThymeleafController_Roo_Thymeleaf {
         UriComponents showURI = getItemLink().to(BooksItemThymeleafLinkFactory.SHOW).with("book", savedBook.getId()).toUri();
         return new ModelAndView("redirect:" + showURI.toUriString());
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param book
      * @return ResponseEntity
      */
@@ -247,5 +249,5 @@ privileged aspect BooksItemThymeleafController_Roo_Thymeleaf {
         getBookService().delete(book);
         return ResponseEntity.ok().build();
     }
-    
+
 }

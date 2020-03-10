@@ -26,7 +26,7 @@ public class BookStoreWithHooksRunSteps implements En {
     public void haveBooksInTheStore(DataTable table) {
         List<List<String>> rows = table.asLists(String.class);
 
-        for (List<String> columns: rows) {
+        for (List<String> columns : rows) {
             store.addBook(new Book(columns.get(0), columns.get(1)));
         }
     }

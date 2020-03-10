@@ -1,7 +1,9 @@
 package com.baeldung.web;
 
 import com.baeldung.Constants;
+
 import java.util.Date;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,6 @@ public class StreamingResponseBodyController {
             out.write(msg.getBytes());
         };
         return new ResponseEntity(stream, HttpStatus.OK);
-      }
+    }
 
 }

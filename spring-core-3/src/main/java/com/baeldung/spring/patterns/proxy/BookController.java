@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class BookController {
-    
+
     @Autowired
     private BookManager manager;
 

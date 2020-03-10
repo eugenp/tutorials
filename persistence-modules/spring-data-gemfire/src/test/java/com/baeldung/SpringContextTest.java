@@ -9,7 +9,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import com.baeldung.spring.data.gemfire.function.GemfireConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes=GemfireConfiguration.class, loader=AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = GemfireConfiguration.class, loader = AnnotationConfigContextLoader.class)
 public class SpringContextTest {
 
     @Test

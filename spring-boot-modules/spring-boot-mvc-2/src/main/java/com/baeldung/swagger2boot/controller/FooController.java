@@ -26,7 +26,7 @@ public class FooController {
     @RequestMapping(method = RequestMethod.POST, value = "/foos")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    @ApiImplicitParams({ @ApiImplicitParam(name = "foo", value = "List of strings", paramType = "body", dataType = "Foo") })
+    @ApiImplicitParams({@ApiImplicitParam(name = "foo", value = "List of strings", paramType = "body", dataType = "Foo")})
     public Foo create(@RequestBody final Foo foo) {
         foo.setId(Long.parseLong(randomNumeric(2)));
         return foo;

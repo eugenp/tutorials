@@ -2,7 +2,7 @@ package com.baeldung.guava.entity;
 
 import com.google.common.base.MoreObjects;
 
-public class Administrator extends User{
+public class Administrator extends User {
     public Administrator(long id, String name, int age) {
         super(id, name, age);
     }

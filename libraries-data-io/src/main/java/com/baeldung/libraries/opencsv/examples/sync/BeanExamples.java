@@ -29,8 +29,8 @@ public class BeanExamples {
 
             Reader reader = Files.newBufferedReader(path);
             CsvToBean cb = new CsvToBeanBuilder(reader).withType(clazz)
-                .withMappingStrategy(ms)
-                .build();
+                    .withMappingStrategy(ms)
+                    .build();
 
             csvTransfer.setCsvList(cb.parse());
             reader.close();
@@ -46,7 +46,7 @@ public class BeanExamples {
             Writer writer = new FileWriter(path.toString());
 
             StatefulBeanToCsv sbc = new StatefulBeanToCsvBuilder(writer).withSeparator(CSVWriter.DEFAULT_SEPARATOR)
-                .build();
+                    .build();
 
             List<CsvBean> list = new ArrayList<>();
             list.add(new WriteExampleBean("Test1", "sfdsf", "fdfd"));

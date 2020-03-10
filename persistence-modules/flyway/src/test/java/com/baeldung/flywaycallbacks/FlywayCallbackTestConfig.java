@@ -14,8 +14,8 @@ public class FlywayCallbackTestConfig {
     public DataSource createDatasource() {
         EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
         return dbBuilder.setType(EmbeddedDatabaseType.H2)
-            .setName("DATABASE")
-            .build();
+                .setName("DATABASE")
+                .build();
     }
 
 }

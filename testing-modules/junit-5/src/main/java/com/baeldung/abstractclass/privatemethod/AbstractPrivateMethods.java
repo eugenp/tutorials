@@ -12,6 +12,6 @@ public abstract class AbstractPrivateMethods {
 
     private String getCurrentDateTime() {
         return LocalDateTime.now()
-            .toString();
+                .toString();
     }
 }

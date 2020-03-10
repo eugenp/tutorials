@@ -42,7 +42,7 @@ public class BidiMapUnitTest {
         map.put("key1", "value1");
         assertEquals(map.getKey("value1"), "key1");
     }
-    
+
     @Test
     public void givenKeyValue_whenAddValue_thenReplaceFirstKey() {
         BidiMap<String, String> map = new DualHashBidiMap<>();

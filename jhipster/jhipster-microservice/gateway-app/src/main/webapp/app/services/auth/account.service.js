@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,11 +7,12 @@
 
     Account.$inject = ['$resource'];
 
-    function Account ($resource) {
+    function Account($resource) {
         var service = $resource('api/account', {}, {
-            'get': { method: 'GET', params: {}, isArray: false,
+            'get': {
+                method: 'GET', params: {}, isArray: false,
                 interceptor: {
-                    response: function(response) {
+                    response: function (response) {
                         // expose response
                         return response;
                     }

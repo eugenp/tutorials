@@ -33,7 +33,7 @@ import rx.Observable;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { IntegrationTestConfig.class })
+@ContextConfiguration(classes = {IntegrationTestConfig.class})
 public class N1QLLiveTest {
 
 
@@ -150,7 +150,7 @@ public class N1QLLiveTest {
                 x("t.city, t.airportname")
                         .concat(s(" (")).concat(x("t.faa")).concat(s(")")).as("portname_faa"))
                 .from(i("travel-sample").as("t"))
-                .where( x("t.type").eq(s("airport"))
+                .where(x("t.type").eq(s("airport"))
                         .and(x("t.country").like(s("%States")))
                         .and(x("t.geo.lat").gte(70)))
                 .limit(2);
@@ -186,23 +186,23 @@ public class N1QLLiveTest {
     public void givenDocuments_whenBatchInsert_thenResult() {
         Bucket bucket = bucketFactory.getTravelSampleBucket();
 
-        List<JsonDocument> documents = IntStream.rangeClosed(0,10)
-          .mapToObj( i -> {
-            JsonObject content = JsonObject.create()
-              .put("id", i)
-              .put("type", "airline")
-              .put("name", "Sample Airline "  + i);
-            return JsonDocument.create("cust_" + i, content);
-          })
-          .collect(Collectors.toList());
+        List<JsonDocument> documents = IntStream.rangeClosed(0, 10)
+                .mapToObj(i -> {
+                    JsonObject content = JsonObject.create()
+                            .put("id", i)
+                            .put("type", "airline")
+                            .put("name", "Sample Airline " + i);
+                    return JsonDocument.create("cust_" + i, content);
+                })
+                .collect(Collectors.toList());
 
         List<JsonDocument> r5 = Observable
-          .from(documents)
-          .flatMap(doc -> bucket.async().insert(doc))
-          .toList()
-          .last()
-          .toBlocking()
-          .single();
+                .from(documents)
+                .flatMap(doc -> bucket.async().insert(doc))
+                .toList()
+                .last()
+                .toBlocking()
+                .single();
 
         r5.forEach(System.out::println);
     }

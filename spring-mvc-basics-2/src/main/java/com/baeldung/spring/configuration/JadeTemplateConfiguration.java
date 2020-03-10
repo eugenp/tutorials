@@ -12,7 +12,7 @@ import de.neuland.jade4j.spring.view.JadeViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.baeldung.springmvcforms", "com.baeldung.spring.controller", "com.baeldung.spring.validator" })
+@ComponentScan(basePackages = {"com.baeldung.springmvcforms", "com.baeldung.spring.controller", "com.baeldung.spring.validator"})
 public class JadeTemplateConfiguration {
     @Bean
     public SpringTemplateLoader templateLoader() {

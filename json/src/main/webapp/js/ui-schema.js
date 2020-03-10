@@ -7,15 +7,15 @@ app.value('UISchema',
         "elements": [
             {
                 "type": "Control",
-                "scope": { "$ref": "#/properties/id" }
+                "scope": {"$ref": "#/properties/id"}
             },
             {
                 "type": "Control",
-                "scope": { "$ref": "#/properties/name" }
+                "scope": {"$ref": "#/properties/name"}
             },
             {
                 "type": "Control",
-                "scope": { "$ref": "#/properties/price" }
+                "scope": {"$ref": "#/properties/price"}
             },
         ]
     }

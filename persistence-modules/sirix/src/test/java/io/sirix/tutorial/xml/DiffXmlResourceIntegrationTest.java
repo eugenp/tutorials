@@ -48,10 +48,10 @@ public class DiffXmlResourceIntegrationTest {
                  final var rtxOnThirdRevision = manager.beginNodeReadOnlyTrx(3)) {
                 final var observer = new MyXmlDiffObserver();
                 DiffFactory.invokeFullXmlDiff(
-                    new DiffFactory.Builder<>(manager, 3, 1, manager.getResourceConfig().hashType == HashType.NONE
-                        ? DiffOptimized.NO
-                        : DiffOptimized.HASHED,
-                    ImmutableSet.of(observer)).skipSubtrees(true));
+                        new DiffFactory.Builder<>(manager, 3, 1, manager.getResourceConfig().hashType == HashType.NONE
+                                ? DiffOptimized.NO
+                                : DiffOptimized.HASHED,
+                                ImmutableSet.of(observer)).skipSubtrees(true));
 
                 final var diffs = observer.getDiffTuples();
 

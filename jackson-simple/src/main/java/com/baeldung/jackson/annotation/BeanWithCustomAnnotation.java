@@ -30,7 +30,7 @@ public class BeanWithCustomAnnotation {
     @Retention(RetentionPolicy.RUNTIME)
     @JacksonAnnotationsInside
     @JsonInclude(Include.NON_NULL)
-    @JsonPropertyOrder({ "name", "id", "dateCreated" })
+    @JsonPropertyOrder({"name", "id", "dateCreated"})
     public @interface CustomAnnotation {
 
     }

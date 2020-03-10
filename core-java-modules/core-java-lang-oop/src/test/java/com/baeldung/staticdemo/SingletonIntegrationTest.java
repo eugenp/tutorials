@@ -9,7 +9,7 @@ public class SingletonIntegrationTest {
     public void givenStaticInnerClass_whenMultipleTimesInstanceCalled_thenOnlyOneTimeInitialized() {
         Singleton object1 = Singleton.getInstance();
         Singleton object2 = Singleton.getInstance();
-        
+
         Assert.assertSame(object1, object2);
     }
 }

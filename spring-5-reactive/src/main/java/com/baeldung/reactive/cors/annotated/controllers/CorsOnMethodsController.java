@@ -22,26 +22,26 @@ public class CorsOnMethodsController {
         return Mono.just("CORS enabled endpoint");
     }
 
-    @CrossOrigin({ "http://allowed-origin.com" })
+    @CrossOrigin({"http://allowed-origin.com"})
     @PutMapping("/cors-enabled-origin-restrictive-endpoint")
     public Mono<String> corsEnabledOriginRestrictiveEndpoint() {
         return Mono.just("CORS enabled endpoint - Origin Restrictive");
     }
 
-    @CrossOrigin(allowedHeaders = { "Baeldung-Allowed" })
+    @CrossOrigin(allowedHeaders = {"Baeldung-Allowed"})
     @PutMapping("/cors-enabled-header-restrictive-endpoint")
     public Mono<String> corsEnabledHeaderRestrictiveEndpoint() {
         return Mono.just("CORS enabled endpoint - Header Restrictive");
     }
 
-    @CrossOrigin(exposedHeaders = { "Baeldung-Exposed" })
+    @CrossOrigin(exposedHeaders = {"Baeldung-Exposed"})
     @PutMapping("/cors-enabled-exposed-header-endpoint")
     public Mono<String> corsEnabledExposedHeadersEndpoint() {
         return Mono.just("CORS enabled endpoint - Exposed Header");
     }
 
     @PutMapping("/cors-enabled-mixed-config-endpoint")
-    @CrossOrigin(allowedHeaders = { "Baeldung-Allowed", "Baeldung-Other-Allowed" }, exposedHeaders = { "Baeldung-Allowed", "Baeldung-Exposed" }, maxAge = 3600)
+    @CrossOrigin(allowedHeaders = {"Baeldung-Allowed", "Baeldung-Other-Allowed"}, exposedHeaders = {"Baeldung-Allowed", "Baeldung-Exposed"}, maxAge = 3600)
     public Mono<String> corsEnabledHeaderExposedEndpoint() {
         return Mono.just("CORS enabled endpoint - Mixed Config");
     }

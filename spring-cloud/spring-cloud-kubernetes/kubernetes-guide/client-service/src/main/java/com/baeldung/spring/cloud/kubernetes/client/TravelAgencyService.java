@@ -15,7 +15,7 @@ public class TravelAgencyService {
     }
 
     @HystrixCommand(fallbackMethod = "getFallbackName", commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000") })
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000")})
     public String getDeals() {
         return this.restTemplate.getForObject("http://travel-agency-service:8080/deals", String.class);
     }

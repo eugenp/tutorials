@@ -15,7 +15,7 @@ import static com.baeldung.serenity.spring.RandomNumberUtil.randomInt;
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.AFTER_CLASS;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ AdderClassDirtiesContextIntegrationTest.DirtiesContextIntegrationTest.class, AdderClassDirtiesContextIntegrationTest.AnotherDirtiesContextIntegrationTest.class })
+@Suite.SuiteClasses({AdderClassDirtiesContextIntegrationTest.DirtiesContextIntegrationTest.class, AdderClassDirtiesContextIntegrationTest.AnotherDirtiesContextIntegrationTest.class})
 public class AdderClassDirtiesContextIntegrationTest {
 
     @RunWith(SerenityRunner.class)

@@ -41,7 +41,7 @@ public class LoggingConfiguration {
     private final JHipsterProperties jHipsterProperties;
 
     public LoggingConfiguration(@Value("${spring.application.name}") String appName, @Value("${server.port}") String serverPort,
-         JHipsterProperties jHipsterProperties) {
+                                JHipsterProperties jHipsterProperties) {
         this.appName = appName;
         this.serverPort = serverPort;
         this.jHipsterProperties = jHipsterProperties;
@@ -106,7 +106,7 @@ public class LoggingConfiguration {
         metricsFilter.start();
 
         for (ch.qos.logback.classic.Logger logger : context.getLoggerList()) {
-            for (Iterator<Appender<ILoggingEvent>> it = logger.iteratorForAppenders(); it.hasNext();) {
+            for (Iterator<Appender<ILoggingEvent>> it = logger.iteratorForAppenders(); it.hasNext(); ) {
                 Appender<ILoggingEvent> appender = it.next();
                 if (!appender.getName().equals(ASYNC_LOGSTASH_APPENDER_NAME)) {
                     log.debug("Filter metrics logs from the {} appender", appender.getName());

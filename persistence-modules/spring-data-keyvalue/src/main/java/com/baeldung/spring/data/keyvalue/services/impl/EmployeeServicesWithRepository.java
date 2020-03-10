@@ -12,7 +12,7 @@ import com.baeldung.spring.data.keyvalue.vo.Employee;
 @Service("employeeServicesWithRepository")
 public class EmployeeServicesWithRepository implements EmployeeService {
 
-	@Autowired
+    @Autowired
     EmployeeRepository employeeRepository;
 
 

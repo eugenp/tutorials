@@ -16,6 +16,7 @@ public class FloggerIntegrationTest {
 //        System.setProperty("flogger.backend_factory", "com.google.common.flogger.backend.log4j.Log4jBackendFactory#getInstance");
         System.setProperty("flogger.backend_factory", "com.google.common.flogger.backend.slf4j.Slf4jBackendFactory#getInstance");
     }
+
     private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
     @Test

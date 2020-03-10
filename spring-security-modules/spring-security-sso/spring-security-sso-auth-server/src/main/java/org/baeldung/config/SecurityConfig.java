@@ -11,31 +11,31 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @Order(1)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    
+
     @Override
     protected void configure(HttpSecurity http) throws Exception { // @formatter:off
         http.requestMatchers()
-            .antMatchers("/login", "/oauth/authorize")
-            .and()
-            .authorizeRequests()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .permitAll()
-            .and().csrf().disable();
+                .antMatchers("/login", "/oauth/authorize")
+                .and()
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .permitAll()
+                .and().csrf().disable();
     } // @formatter:on
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception { // @formatter:off
         auth.inMemoryAuthentication()
-            .withUser("john")
-            .password(passwordEncoder().encode("123"))
-            .roles("USER");
+                .withUser("john")
+                .password(passwordEncoder().encode("123"))
+                .roles("USER");
     } // @formatter:on
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

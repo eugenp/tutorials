@@ -6,8 +6,8 @@ import com.baeldung.spring.bom.HelloWorldApp;
 
 public class SpringContextTest {
 
-	@Test
+    @Test
     public final void testMain() throws Exception {
-		HelloWorldApp.main(null);
-	}
+        HelloWorldApp.main(null);
+    }
 }

@@ -1,5 +1,5 @@
-import { Directive, OnInit, ElementRef, Renderer, Input } from '@angular/core';
-import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import {Directive, OnInit, ElementRef, Renderer, Input} from '@angular/core';
+import {TranslateService, LangChangeEvent} from '@ngx-translate/core';
 
 @Directive({
     selector: '[jhiActiveMenu]'
@@ -7,7 +7,8 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 export class ActiveMenuDirective implements OnInit {
     @Input() jhiActiveMenu: string;
 
-    constructor(private el: ElementRef, private renderer: Renderer, private translateService: TranslateService) {}
+    constructor(private el: ElementRef, private renderer: Renderer, private translateService: TranslateService) {
+    }
 
     ngOnInit() {
         this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {

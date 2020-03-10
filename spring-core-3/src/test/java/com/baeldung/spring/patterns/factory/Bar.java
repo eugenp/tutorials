@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class Bar {
-    
+
     private String name;
 
     public Bar(String name) {

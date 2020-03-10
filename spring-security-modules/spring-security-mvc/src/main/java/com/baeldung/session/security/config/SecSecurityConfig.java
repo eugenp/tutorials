@@ -25,9 +25,9 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         // @formatter:off
         auth.inMemoryAuthentication()
-        .withUser("user1").password(passwordEncoder().encode("user1Pass")).roles("USER")
-        .and()
-        .withUser("admin1").password(passwordEncoder().encode("admin1Pass")).roles("ADMIN");
+                .withUser("user1").password(passwordEncoder().encode("user1Pass")).roles("USER")
+                .and()
+                .withUser("admin1").password(passwordEncoder().encode("admin1Pass")).roles("ADMIN");
         // @formatter:on
     }
 
@@ -35,28 +35,28 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
         http
-        .csrf().disable()
-        .authorizeRequests()
-        .antMatchers("/anonymous*").anonymous()
-        .antMatchers("/login*","/invalidSession*", "/sessionExpired*", "/foo/**").permitAll()
-        .anyRequest().authenticated()
-        .and()
-        .formLogin()
-        .loginPage("/login.html")
-        .loginProcessingUrl("/login")
-        .successHandler(successHandler())
-        .failureUrl("/login.html?error=true")
-        .and()
-        .logout().deleteCookies("JSESSIONID")
-        .and()
-        .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400)
-        .and()
-        .sessionManagement()
-        .sessionFixation().migrateSession()
-        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-        .invalidSessionUrl("/invalidSession.html")
-        .maximumSessions(2)
-        .expiredUrl("/sessionExpired.html");
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/anonymous*").anonymous()
+                .antMatchers("/login*", "/invalidSession*", "/sessionExpired*", "/foo/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login.html")
+                .loginProcessingUrl("/login")
+                .successHandler(successHandler())
+                .failureUrl("/login.html?error=true")
+                .and()
+                .logout().deleteCookies("JSESSIONID")
+                .and()
+                .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400)
+                .and()
+                .sessionManagement()
+                .sessionFixation().migrateSession()
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                .invalidSessionUrl("/invalidSession.html")
+                .maximumSessions(2)
+                .expiredUrl("/sessionExpired.html");
 
         // @formatter:on
     }

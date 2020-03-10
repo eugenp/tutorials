@@ -15,7 +15,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication auth) throws AuthenticationException {
         final String username = auth.getName();
         final String password = auth.getCredentials()
-            .toString();
+                .toString();
 
         if ("externaluser".equals(username) && "pass".equals(password)) {
             return new UsernamePasswordAuthenticationToken(username, password, Collections.emptyList());

@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import static org.hamcrest.CoreMatchers.*;
 
 @RunWith(SpringRunner.class)
@@ -22,8 +23,8 @@ public class ComponentScanRegexFilterAppIntegrationTest {
     public void whenRegexFilterIsUsed_thenComponentScanShouldRegisterBeanMatchingRegex() {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ComponentScanRegexFilterApp.class);
         List<String> beans = Arrays.stream(applicationContext.getBeanDefinitionNames())
-            .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanRegexFilterApp"))
-            .collect(Collectors.toList());
+                .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanRegexFilterApp"))
+                .collect(Collectors.toList());
         assertThat(beans.size(), equalTo(1));
         assertThat(beans.contains("elephant"), equalTo(true));
     }

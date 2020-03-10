@@ -70,9 +70,9 @@ public class TxIntegrationConfig {
     @Bean
     public PollerMetadata pollerMetadata() {
         return Pollers.fixedDelay(5000)
-                 .advice(transactionInterceptor())
-                 .transactionSynchronizationFactory(transactionSynchronizationFactory)
-                 .get();
+                .advice(transactionInterceptor())
+                .transactionSynchronizationFactory(transactionSynchronizationFactory)
+                .get();
     }
 
     private TransactionInterceptor transactionInterceptor() {
@@ -82,18 +82,18 @@ public class TxIntegrationConfig {
     @Bean
     public TransactionSynchronizationFactory transactionSynchronizationFactory() {
         ExpressionEvaluatingTransactionSynchronizationProcessor processor =
-            new ExpressionEvaluatingTransactionSynchronizationProcessor();
+                new ExpressionEvaluatingTransactionSynchronizationProcessor();
 
         SpelExpressionParser spelParser = new SpelExpressionParser();
         processor.setAfterCommitExpression(
-            spelParser.parseExpression(
-                "payload.renameTo(new java.io.File(payload.absolutePath + '.PASSED'))"));
+                spelParser.parseExpression(
+                        "payload.renameTo(new java.io.File(payload.absolutePath + '.PASSED'))"));
         processor.setAfterRollbackExpression(
-            spelParser.parseExpression(
-                "payload.renameTo(new java.io.File(payload.absolutePath + '.FAILED'))"));
+                spelParser.parseExpression(
+                        "payload.renameTo(new java.io.File(payload.absolutePath + '.FAILED'))"));
 
         return new DefaultTransactionSynchronizationFactory(processor);
-        }
+    }
 
     @Bean
     @Transformer(inputChannel = "inputChannel", outputChannel = "toServiceChannel")

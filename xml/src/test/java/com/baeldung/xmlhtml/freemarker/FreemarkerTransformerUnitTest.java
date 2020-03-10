@@ -17,8 +17,8 @@ public class FreemarkerTransformerUnitTest {
     @Test
     public void givenXml_whenTransform_thenGetHtml() throws IOException, URISyntaxException, XMLStreamException, TemplateException {
         String expectedHtml = new String(Files.readAllBytes((Paths.get(getClass()
-          .getResource("/xmlhtml/notification.html")
-          .toURI()))));
+                .getResource("/xmlhtml/notification.html")
+                .toURI()))));
         StaxTransformer staxTransformer = new StaxTransformer("src/test/resources/xmlhtml/notification.xml");
         String templateFile = "freemarker.html";
         String templateDirectory = "src/test/resources/templates";

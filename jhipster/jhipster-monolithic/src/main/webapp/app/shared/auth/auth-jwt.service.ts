@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Http, Response, Headers, URLSearchParams } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import { LocalStorageService, SessionStorageService } from 'ng2-webstorage';
+import {Injectable} from '@angular/core';
+import {Http, Response, Headers, URLSearchParams} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import {LocalStorageService, SessionStorageService} from 'ng2-webstorage';
 
 @Injectable()
 export class AuthServerProvider {
@@ -9,13 +9,14 @@ export class AuthServerProvider {
         private http: Http,
         private $localStorage: LocalStorageService,
         private $sessionStorage: SessionStorageService
-    ) {}
+    ) {
+    }
 
-    getToken () {
+    getToken() {
         return this.$localStorage.retrieve('authenticationToken') || this.$sessionStorage.retrieve('authenticationToken');
     }
 
-    login (credentials): Observable<any> {
+    login(credentials): Observable<any> {
 
         let data = {
             username: credentials.username,
@@ -24,7 +25,7 @@ export class AuthServerProvider {
         };
         return this.http.post('api/authenticate', data).map(authenticateSuccess.bind(this));
 
-        function authenticateSuccess (resp) {
+        function authenticateSuccess(resp) {
             let bearerToken = resp.headers.get('Authorization');
             if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
                 let jwt = bearerToken.slice(7, bearerToken.length);
@@ -51,7 +52,7 @@ export class AuthServerProvider {
         }
     }
 
-    logout (): Observable<any> {
+    logout(): Observable<any> {
         return new Observable(observer => {
             this.$localStorage.clear('authenticationToken');
             this.$sessionStorage.clear('authenticationToken');

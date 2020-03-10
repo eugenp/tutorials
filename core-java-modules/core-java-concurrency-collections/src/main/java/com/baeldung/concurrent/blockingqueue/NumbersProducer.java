@@ -20,14 +20,14 @@ public class NumbersProducer implements Runnable {
             generateNumbers();
         } catch (InterruptedException e) {
             Thread.currentThread()
-                .interrupt();
+                    .interrupt();
         }
     }
 
     private void generateNumbers() throws InterruptedException {
         for (int i = 0; i < 100; i++) {
             numbersQueue.put(ThreadLocalRandom.current()
-                .nextInt(100));
+                    .nextInt(100));
         }
         for (int j = 0; j < poisonPillPerProducer; j++) {
             numbersQueue.put(poisonPill);

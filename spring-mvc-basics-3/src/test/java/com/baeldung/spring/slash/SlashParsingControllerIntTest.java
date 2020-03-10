@@ -28,11 +28,11 @@ public class SlashParsingControllerIntTest {
         final String stringWithoutSlashes = "noslash";
 
         MvcResult mvcResult = mockMvc.perform(get("/slash/mypaths/" + stringWithoutSlashes))
-            .andExpect(status().isOk())
-            .andReturn();
+                .andExpect(status().isOk())
+                .andReturn();
 
         assertEquals(stringWithoutSlashes, mvcResult.getResponse()
-            .getContentAsString());
+                .getContentAsString());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class SlashParsingControllerIntTest {
         final String stringWithSlashes = "url/with/slashes";
 
         mockMvc.perform(get("/slash/mypaths/" + stringWithSlashes))
-            .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -48,11 +48,11 @@ public class SlashParsingControllerIntTest {
         final String stringWithSlashes = "url/for/testing/purposes";
 
         MvcResult mvcResult = mockMvc.perform(get("/slash/all/" + stringWithSlashes))
-            .andExpect(status().isOk())
-            .andReturn();
+                .andExpect(status().isOk())
+                .andReturn();
 
         assertEquals(stringWithSlashes, mvcResult.getResponse()
-            .getContentAsString());
+                .getContentAsString());
     }
 
     @Test
@@ -60,16 +60,16 @@ public class SlashParsingControllerIntTest {
         final String stringWithSlashes = "http://myurl.com";
 
         MvcResult mvcResult = mockMvc.perform(get("/slash/all/" + stringWithSlashes))
-            .andExpect(status().isOk())
-            .andReturn();
+                .andExpect(status().isOk())
+                .andReturn();
 
         String stringWithSlashesNormalized = URI.create("/slash/all/" + stringWithSlashes)
-            .normalize()
-            .toString()
-            .split("/slash/all/")[1];
+                .normalize()
+                .toString()
+                .split("/slash/all/")[1];
 
         assertEquals(stringWithSlashesNormalized, mvcResult.getResponse()
-            .getContentAsString());
+                .getContentAsString());
     }
 
     @Test
@@ -77,11 +77,11 @@ public class SlashParsingControllerIntTest {
         final String stringWithSlashes = "url/for////testing/purposes";
 
         MvcResult mvcResult = mockMvc.perform(get("/slash/all").param("param", stringWithSlashes))
-            .andExpect(status().isOk())
-            .andReturn();
+                .andExpect(status().isOk())
+                .andReturn();
 
         assertEquals(stringWithSlashes, mvcResult.getResponse()
-            .getContentAsString());
+                .getContentAsString());
     }
 
 }

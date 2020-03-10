@@ -36,8 +36,8 @@ public class SortingUnitTest {
 
     private void test(long top, boolean shuffle) {
         List<Long> numbers = LongStream.range(0, top)
-            .boxed()
-            .collect(Collectors.toList());
+                .boxed()
+                .collect(Collectors.toList());
 
         if (shuffle) {
             Collections.shuffle(numbers);
@@ -55,6 +55,6 @@ public class SortingUnitTest {
         long end = System.currentTimeMillis();
 
         LOG.info("Counted {}/{} {} numbers in {}ms",
-            count, top, shuffle ? "shuffled" : "sorted", end - start);
+                count, top, shuffle ? "shuffled" : "sorted", end - start);
     }
 }

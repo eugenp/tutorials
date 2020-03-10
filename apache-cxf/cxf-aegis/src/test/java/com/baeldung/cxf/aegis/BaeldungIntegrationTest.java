@@ -46,7 +46,7 @@ public class BaeldungIntegrationTest {
         assertEquals(new Date(1456789000000L), securityCourse.getEnrolmentDate());
         assertNull(securityCourse.getInstructor());
     }
-    
+
     private void initializeContext() {
         context = new AegisContext();
         Set<Type> rootClasses = new HashSet<Type>();
@@ -58,7 +58,7 @@ public class BaeldungIntegrationTest {
         context.setWriteXsiTypes(true);
         context.initialize();
     }
-    
+
     private CourseRepoImpl initCourseRepo() {
         Course restCourse = new Course();
         restCourse.setId(1);
@@ -76,7 +76,7 @@ public class BaeldungIntegrationTest {
         courseRepo.addCourse(securityCourse);
         return courseRepo;
     }
-    
+
     private void marshalCourseRepo(CourseRepo courseRepo) throws Exception {
         AegisWriter<XMLStreamWriter> writer = context.createXMLStreamWriter();
         AegisType aegisType = context.getTypeMapping().getType(CourseRepo.class);
@@ -85,7 +85,7 @@ public class BaeldungIntegrationTest {
         xmlWriter.close();
     }
 
-    private CourseRepo unmarshalCourseRepo() throws Exception {       
+    private CourseRepo unmarshalCourseRepo() throws Exception {
         AegisReader<XMLStreamReader> reader = context.createXMLStreamReader();
         XMLStreamReader xmlReader = XMLInputFactory.newInstance().createXMLStreamReader(new FileInputStream(fileName));
         CourseRepo courseRepo = (CourseRepo) reader.read(xmlReader, context.getTypeMapping().getType(CourseRepo.class));
@@ -94,10 +94,10 @@ public class BaeldungIntegrationTest {
     }
 
     @After
-    public void cleanup(){
+    public void cleanup() {
         File testFile = new File(fileName);
         if (testFile.exists()) {
-           testFile.delete();     
+            testFile.delete();
         }
     }
 }

@@ -16,11 +16,13 @@ import javax.jms.Queue;
 @SpringBootApplication
 public class JmsClient {
 
-    @Bean Queue queue() {
-    return new ActiveMQQueue("remotingQueue");
-}
+    @Bean
+    Queue queue() {
+        return new ActiveMQQueue("remotingQueue");
+    }
 
-    @Bean FactoryBean invoker(ConnectionFactory factory, Queue queue) {
+    @Bean
+    FactoryBean invoker(ConnectionFactory factory, Queue queue) {
         JmsInvokerProxyFactoryBean factoryBean = new JmsInvokerProxyFactoryBean();
         factoryBean.setConnectionFactory(factory);
         factoryBean.setServiceInterface(CabBookingService.class);

@@ -8,14 +8,14 @@ class SequencesTest {
 
     @Test
     fun shouldBuildSequenceWhenUsingFromElements() {
-        val seqOfElements = sequenceOf("first" ,"second", "third")
+        val seqOfElements = sequenceOf("first", "second", "third")
                 .toList()
         assertEquals(3, seqOfElements.count())
     }
 
     @Test
     fun shouldBuildSequenceWhenUsingFromFunction() {
-        val seqFromFunction = generateSequence(Instant.now()) {it.plusSeconds(1)}
+        val seqFromFunction = generateSequence(Instant.now()) { it.plusSeconds(1) }
                 .take(3)
                 .toList()
         assertEquals(3, seqFromFunction.count())
@@ -41,11 +41,11 @@ class SequencesTest {
     @Test
     fun shouldShowNoCountDiffWhenUsingWithAndWithoutSequence() {
         val withSequence = (1..10).asSequence()
-                .filter{it % 2 == 1}
+                .filter { it % 2 == 1 }
                 .map { it * 2 }
                 .toList()
         val withoutSequence = (1..10)
-                .filter{it % 2 == 1}
+                .filter { it % 2 == 1 }
                 .map { it * 2 }
                 .toList()
         assertEquals(withSequence.count(), withoutSequence.count())

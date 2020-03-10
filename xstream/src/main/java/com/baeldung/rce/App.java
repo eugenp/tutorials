@@ -23,7 +23,7 @@ import java.util.Set;
  * <li>{@code POST} XML for adding a new {@link Person} to the set
  * <li>{@code GET} for retrieving the set of {@link Person} models as XML
  * </ol>
- *
+ * <p>
  * The {@code POST} handler is vulnerable to an RCE exploit.
  */
 public final class App {
@@ -33,7 +33,7 @@ public final class App {
         xstream.addPermission(NoTypePermission.NONE);
         xstream.addPermission(NullPermission.NULL);
         xstream.addPermission(PrimitiveTypePermission.PRIMITIVES);
-        xstream.allowTypes(new Class<?>[] { Person.class });
+        xstream.allowTypes(new Class<?>[]{Person.class});
         return new App(port, xstream);
     }
 
@@ -58,20 +58,20 @@ public final class App {
         server = HttpServer.create(new InetSocketAddress("localhost", port), 0);
         server.createContext("/persons", exchange -> {
             switch (exchange.getRequestMethod()) {
-            case "POST":
-                final Person person = (Person) xstream.fromXML(exchange.getRequestBody());
-                persons.add(person);
-                exchange.sendResponseHeaders(201, 0);
-                exchange.close();
-                break;
-            case "GET":
-                exchange.sendResponseHeaders(200, 0);
-                xstream.toXML(persons, exchange.getResponseBody());
-                exchange.close();
-                break;
-            default:
-                exchange.sendResponseHeaders(405, 0);
-                exchange.close();
+                case "POST":
+                    final Person person = (Person) xstream.fromXML(exchange.getRequestBody());
+                    persons.add(person);
+                    exchange.sendResponseHeaders(201, 0);
+                    exchange.close();
+                    break;
+                case "GET":
+                    exchange.sendResponseHeaders(200, 0);
+                    xstream.toXML(persons, exchange.getResponseBody());
+                    exchange.close();
+                    break;
+                default:
+                    exchange.sendResponseHeaders(405, 0);
+                    exchange.close();
             }
         });
         server.start();
@@ -87,6 +87,6 @@ public final class App {
         if (server == null)
             throw new IllegalStateException("Server not started");
         return server.getAddress()
-            .getPort();
+                .getPort();
     }
 }

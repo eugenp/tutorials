@@ -17,7 +17,7 @@ public class ZoneDateTimeExampleUnitTest {
         ZonedDateTime time = zoneDateTimeExample.getCurrentTimeByZoneId(zone);
 
         assertTrue(time.getZone()
-            .equals(ZoneId.of(zone)));
+                .equals(ZoneId.of(zone)));
     }
 
     @Test
@@ -26,8 +26,8 @@ public class ZoneDateTimeExampleUnitTest {
         String destZone = "Asia/Tokyo";
         ZonedDateTime sourceDate = zoneDateTimeExample.getCurrentTimeByZoneId(sourceZone);
         ZonedDateTime destDate = zoneDateTimeExample.convertZonedDateTime(sourceDate, destZone);
-        
+
         assertTrue(sourceDate.toInstant()
-            .compareTo(destDate.toInstant()) == 0);
+                .compareTo(destDate.toInstant()) == 0);
     }
 }

@@ -13,7 +13,7 @@ import com.baeldung.web.util.LinkUtil;
 import com.google.common.base.Preconditions;
 import com.google.common.net.HttpHeaders;
 
-@SuppressWarnings({ "rawtypes" })
+@SuppressWarnings({"rawtypes"})
 @Component
 class PaginatedResultsRetrievedDiscoverabilityListener implements ApplicationListener<PaginatedResultsRetrievedEvent> {
 
@@ -30,13 +30,13 @@ class PaginatedResultsRetrievedDiscoverabilityListener implements ApplicationLis
         Preconditions.checkNotNull(ev);
 
         addLinkHeaderOnPagedResourceRetrieval(ev.getUriBuilder(), ev.getResponse(), ev.getClazz(), ev.getPage(),
-            ev.getTotalPages(), ev.getPageSize());
+                ev.getTotalPages(), ev.getPageSize());
     }
 
     // - note: at this point, the URI is transformed into plural (added `s`) in a hardcoded way - this will change in the future
     final void addLinkHeaderOnPagedResourceRetrieval(final UriComponentsBuilder uriBuilder,
-        final HttpServletResponse response, final Class clazz, final int page, final int totalPages,
-        final int pageSize) {
+                                                     final HttpServletResponse response, final Class clazz, final int page, final int totalPages,
+                                                     final int pageSize) {
         plural(uriBuilder, clazz);
 
         final StringJoiner linkHeader = new StringJoiner(", ");
@@ -64,34 +64,34 @@ class PaginatedResultsRetrievedDiscoverabilityListener implements ApplicationLis
 
     final String constructNextPageUri(final UriComponentsBuilder uriBuilder, final int page, final int size) {
         return uriBuilder.replaceQueryParam(PAGE, page + 1)
-            .replaceQueryParam("size", size)
-            .build()
-            .encode()
-            .toUriString();
+                .replaceQueryParam("size", size)
+                .build()
+                .encode()
+                .toUriString();
     }
 
     final String constructPrevPageUri(final UriComponentsBuilder uriBuilder, final int page, final int size) {
         return uriBuilder.replaceQueryParam(PAGE, page - 1)
-            .replaceQueryParam("size", size)
-            .build()
-            .encode()
-            .toUriString();
+                .replaceQueryParam("size", size)
+                .build()
+                .encode()
+                .toUriString();
     }
 
     final String constructFirstPageUri(final UriComponentsBuilder uriBuilder, final int size) {
         return uriBuilder.replaceQueryParam(PAGE, 0)
-            .replaceQueryParam("size", size)
-            .build()
-            .encode()
-            .toUriString();
+                .replaceQueryParam("size", size)
+                .build()
+                .encode()
+                .toUriString();
     }
 
     final String constructLastPageUri(final UriComponentsBuilder uriBuilder, final int totalPages, final int size) {
         return uriBuilder.replaceQueryParam(PAGE, totalPages)
-            .replaceQueryParam("size", size)
-            .build()
-            .encode()
-            .toUriString();
+                .replaceQueryParam("size", size)
+                .build()
+                .encode()
+                .toUriString();
     }
 
     final boolean hasNextPage(final int page, final int totalPages) {
@@ -114,7 +114,7 @@ class PaginatedResultsRetrievedDiscoverabilityListener implements ApplicationLis
 
     protected void plural(final UriComponentsBuilder uriBuilder, final Class clazz) {
         final String resourceName = clazz.getSimpleName()
-            .toLowerCase() + "s";
+                .toLowerCase() + "s";
         uriBuilder.path("/" + resourceName);
     }
 

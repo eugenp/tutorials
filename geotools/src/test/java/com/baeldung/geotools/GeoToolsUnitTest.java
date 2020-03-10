@@ -18,5 +18,5 @@ public class GeoToolsUnitTest {
 
         assertNotNull(collection);
     }
-    
+
 }

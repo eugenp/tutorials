@@ -17,11 +17,11 @@ public class ProductRepositoryIntegrationTest {
     public static void once() throws IOException {
         productRepository = new ProductRepository();
     }
-    
+
     @Test
     public void givenProductData_whenIdAndNameProjectionUsingJPQL_thenListOfObjectArrayReturned() {
         List<Object[]> resultList = productRepository.findAllIdAndNamesUsingJPQL();
-        
+
         assertNotNull(resultList);
         assertEquals(4, resultList.size());
         assertEquals(1L, resultList.get(0)[0]);
@@ -33,11 +33,11 @@ public class ProductRepositoryIntegrationTest {
         assertEquals(4L, resultList.get(3)[0]);
         assertEquals("Product Name 4", resultList.get(3)[1]);
     }
-    
+
     @Test
     public void givenProductData_whenIdAndNameProjectionUsingCriteriaBuilder_thenListOfObjectArrayReturned() {
         List<Object[]> resultList = productRepository.findAllIdAndNamesUsingCriteriaBuilderArray();
-                
+
         assertNotNull(resultList);
         assertEquals(4, resultList.size());
         assertEquals(1L, resultList.get(0)[0]);
@@ -49,12 +49,12 @@ public class ProductRepositoryIntegrationTest {
         assertEquals(4L, resultList.get(3)[0]);
         assertEquals("Product Name 4", resultList.get(3)[1]);
     }
-    
+
     @SuppressWarnings("rawtypes")
     @Test
     public void givenProductData_whenNameProjectionUsingJPQL_thenListOfStringReturned() {
         List resultList = productRepository.findAllNamesUsingJPQL();
-        
+
         assertNotNull(resultList);
         assertEquals(4, resultList.size());
         assertEquals("Product Name 1", resultList.get(0));
@@ -62,11 +62,11 @@ public class ProductRepositoryIntegrationTest {
         assertEquals("Product Name 3", resultList.get(2));
         assertEquals("Product Name 4", resultList.get(3));
     }
-    
+
     @Test
     public void givenProductData_whenNameProjectionUsingCriteriaBuilder_thenListOfStringReturned() {
         List<String> resultList = productRepository.findAllNamesUsingCriteriaBuilder();
-        
+
         assertNotNull(resultList);
         assertEquals(4, resultList.size());
         assertEquals("Product Name 1", resultList.get(0));
@@ -74,7 +74,7 @@ public class ProductRepositoryIntegrationTest {
         assertEquals("Product Name 3", resultList.get(2));
         assertEquals("Product Name 4", resultList.get(3));
     }
-    
+
     @Test
     public void givenProductData_whenCountByCategoryUsingJPQL_thenOK() {
         List<Object[]> resultList = productRepository.findCountByCategoryUsingJPQL();

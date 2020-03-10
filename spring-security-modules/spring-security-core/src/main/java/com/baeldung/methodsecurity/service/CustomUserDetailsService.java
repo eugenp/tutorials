@@ -9,10 +9,10 @@ import com.baeldung.methodsecurity.repository.UserRoleRepository;
 
 @Service("userDetailService")
 public class CustomUserDetailsService implements UserDetailsService {
-   
+
     @Autowired
     UserRoleRepository userRoleRepo;
-    
+
     @Override
     public UserDetails loadUserByUsername(String username) {
         return userRoleRepo.loadUserByUserName(username);

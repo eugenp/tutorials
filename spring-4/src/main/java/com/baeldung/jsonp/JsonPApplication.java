@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication(exclude = {
         DataSourceAutoConfiguration.class,
         DataSourceTransactionManagerAutoConfiguration.class,
-        HibernateJpaAutoConfiguration.class })
+        HibernateJpaAutoConfiguration.class})
 @PropertySource("classpath:jsonp-application.properties")
 public class JsonPApplication extends SpringBootServletInitializer {
 

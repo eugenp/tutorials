@@ -106,10 +106,10 @@ public class GuavaRangeSetUnitTest {
 
     @Test
     public void givenImmutableRangeSet_whenQueryWithinRange_returnsSucessfully() {
-        final RangeSet<Integer> numberRangeSet = ImmutableRangeSet.<Integer> builder()
-	    .add(Range.closed(0, 2))
-	    .add(Range.closed(3, 5))
-	    .add(Range.closed(6, 8)).build();
+        final RangeSet<Integer> numberRangeSet = ImmutableRangeSet.<Integer>builder()
+                .add(Range.closed(0, 2))
+                .add(Range.closed(3, 5))
+                .add(Range.closed(6, 8)).build();
 
         assertTrue(numberRangeSet.contains(6));
         assertFalse(numberRangeSet.contains(15));
@@ -117,9 +117,9 @@ public class GuavaRangeSetUnitTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void givenImmutableRangeMap_whenRangeOverlaps_ThrowsException() {
-        ImmutableRangeSet.<Integer> builder()
-	    .add(Range.closed(0, 2))
-	    .add(Range.closed(3, 5))
-	    .add(Range.closed(5, 8)).build();
+        ImmutableRangeSet.<Integer>builder()
+                .add(Range.closed(0, 2))
+                .add(Range.closed(3, 5))
+                .add(Range.closed(5, 8)).build();
     }
 }

@@ -15,7 +15,6 @@ import java.util.stream.Stream;
 import org.junit.Test;
 
 /**
- *
  * @author Kwaje Anthony <kwajeanthony@gmail.com>
  */
 public class NullSafeCollectionStreamsUsingJava8OptionalContainerUnitTest {
@@ -35,7 +34,7 @@ public class NullSafeCollectionStreamsUsingJava8OptionalContainerUnitTest {
     public void whenCollectionHasElements_thenExpectAStreamOfExactlyTheSameElements() {
 
         Collection<String> collection = Arrays.asList("a", "b", "c");
-        Stream<String> expResult = Arrays.stream(new String[] { "a", "b", "c" });
+        Stream<String> expResult = Arrays.stream(new String[]{"a", "b", "c"});
         Stream<String> result = instance.collectionAsStream(collection);
         assertStreamEquals(expResult, result);
     }

@@ -36,7 +36,6 @@ public class InMemoryLuceneIndex {
     }
 
     /**
-     * 
      * @param title
      * @param body
      */

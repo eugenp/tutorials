@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { GatewaySharedModule } from 'app/shared';
+import {GatewaySharedModule} from 'app/shared';
 import {
     QuoteComponent,
     QuoteDetailComponent,
@@ -20,4 +20,5 @@ const ENTITY_STATES = [...quoteRoute, ...quotePopupRoute];
     entryComponents: [QuoteComponent, QuoteUpdateComponent, QuoteDeleteDialogComponent, QuoteDeletePopupComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class GatewayQuoteModule {}
+export class GatewayQuoteModule {
+}

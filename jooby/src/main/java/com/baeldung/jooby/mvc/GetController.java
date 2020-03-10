@@ -8,15 +8,15 @@ import org.jooby.mvc.Path;
 @Path("/hello")
 public class GetController {
 
-	@GET
-	public String hello() {
-		return "Hello Baeldung";
-	}
+    @GET
+    public String hello() {
+        return "Hello Baeldung";
+    }
 
-	@GET
-	@Path("/home")
-	public Result home() {
-		return Results.html("welcome").put("model", new Object());
-	}
+    @GET
+    @Path("/home")
+    public Result home() {
+        return Results.html("welcome").put("model", new Object());
+    }
 
 }

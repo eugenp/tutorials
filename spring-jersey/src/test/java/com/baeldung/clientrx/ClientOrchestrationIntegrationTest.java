@@ -34,7 +34,6 @@ import io.reactivex.Flowable;
 import rx.Observable;
 
 /**
- *
  * @author baeldung
  */
 public class ClientOrchestrationIntegrationTest {

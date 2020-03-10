@@ -29,8 +29,8 @@ class Aggregate3EventsIntegrationTest {
 
     // @formatter:off
     @DisplayName("given aggregate extending AbstractAggregateRoot,"
-        + " when do domain operation and save twice,"
-        + " then an event is published only for the first time")
+            + " when do domain operation and save twice,"
+            + " then an event is published only for the first time")
     // @formatter:on
     @Test
     void afterDomainEvents() {
@@ -48,8 +48,8 @@ class Aggregate3EventsIntegrationTest {
 
     // @formatter:off
     @DisplayName("given aggregate extending AbstractAggregateRoot,"
-        + " when do domain operation and save,"
-        + " then an event is published")
+            + " when do domain operation and save,"
+            + " then an event is published")
     // @formatter:on
     @Test
     void domainEvents() {

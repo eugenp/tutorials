@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.baeldung.entitygraph.model.Characteristic;
 
 public interface CharacteristicsRepository extends JpaRepository<Characteristic, Long> {
-    
+
     @EntityGraph(attributePaths = {"item"})
-    Characteristic findByType(String type);    
-    
+    Characteristic findByType(String type);
+
 }

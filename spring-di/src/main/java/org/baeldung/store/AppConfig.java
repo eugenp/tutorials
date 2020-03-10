@@ -8,12 +8,12 @@ public class AppConfig {
     public Item item1() {
         return new ItemImpl1();
     }
- 
+
     @Bean
     public Store storeThroughConstructorInjection() {
         return new Store(item1());
     }
-    
+
     @Bean
     public Store storeThroughSetterInjection() {
         Store store = new Store();

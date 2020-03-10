@@ -16,16 +16,16 @@ import static com.baeldung.springamqp.errorhandling.configuration.SimpleDLQAmqpC
 
 @Configuration
 @ConditionalOnProperty(
-  value = "amqp.configuration.current",
-  havingValue = "dlx-custom")
+        value = "amqp.configuration.current",
+        havingValue = "dlx-custom")
 public class DLXCustomAmqpConfiguration {
     public static final String DLX_EXCHANGE_MESSAGES = QUEUE_MESSAGES + ".dlx";
 
     @Bean
     Queue messagesQueue() {
         return QueueBuilder.durable(QUEUE_MESSAGES)
-          .withArgument("x-dead-letter-exchange", DLX_EXCHANGE_MESSAGES)
-          .build();
+                .withArgument("x-dead-letter-exchange", DLX_EXCHANGE_MESSAGES)
+                .build();
     }
 
     @Bean

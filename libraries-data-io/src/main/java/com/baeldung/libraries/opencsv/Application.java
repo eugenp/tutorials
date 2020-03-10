@@ -13,9 +13,9 @@ import java.nio.file.Path;
 
 public class Application {
 
-        /*
-         *  Bean Examples.
-         */
+    /*
+     *  Bean Examples.
+     */
 
     public static String simpleSyncPositionBeanExample() {
         Path path = null;
@@ -47,9 +47,9 @@ public class Application {
         return BeanExamples.writeCsvFromBean(path);
     }
 
-        /*
-         *  CSV Reader Examples.
-         */
+    /*
+     *  CSV Reader Examples.
+     */
 
     public static String oneByOneSyncExample() {
         Reader reader = null;
@@ -71,9 +71,9 @@ public class Application {
         return CsvReaderExamples.readAll(reader).toString();
     }
 
-         /*
-         *  CSV Writer Examples.
-         */
+    /*
+     *  CSV Writer Examples.
+     */
 
 
     public static String csvWriterSyncOneByOne() {

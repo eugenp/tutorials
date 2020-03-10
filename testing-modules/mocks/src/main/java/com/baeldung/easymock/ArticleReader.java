@@ -22,11 +22,11 @@ public class ArticleReader {
 
     public List<BaeldungArticle> ofTopic(String topic) {
         return articles
-          .stream()
-          .filter(article -> article
-            .title()
-            .contains(topic))
-          .collect(toList());
+                .stream()
+                .filter(article -> article
+                        .title()
+                        .contains(topic))
+                .collect(toList());
     }
 
     public BaeldungArticle next() {

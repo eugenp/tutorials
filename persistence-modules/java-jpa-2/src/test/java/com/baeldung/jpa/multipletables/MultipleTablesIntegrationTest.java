@@ -28,10 +28,10 @@ public class MultipleTablesIntegrationTest {
     @Test
     public void entityManager_shouldLoadMealAsSingleEntity() {
         // given
-        
+
         // when
         MealAsSingleEntity meal = em.find(MealAsSingleEntity.class, 1L);
-        
+
         // then
         assertThat(meal).isNotNull();
         assertThat(meal.getId()).isEqualTo(1L);
@@ -42,10 +42,10 @@ public class MultipleTablesIntegrationTest {
     @Test
     public void entityManager_shouldLoadMealWithEmbeddedAllergens() {
         // given
-        
+
         // when
         MealWithEmbeddedAllergens meal = em.find(MealWithEmbeddedAllergens.class, 1L);
-        
+
         // then
         assertThat(meal).isNotNull();
         assertThat(meal.getId()).isEqualTo(1L);
@@ -57,10 +57,10 @@ public class MultipleTablesIntegrationTest {
     @Test
     public void entityManager_shouldLoadMealWithAllergensEntity() {
         // given
-        
+
         // when
         MealWithMultipleEntities meal = em.find(MealWithMultipleEntities.class, 1L);
-        
+
         // then
         assertThat(meal).isNotNull();
         assertThat(meal.getId()).isEqualTo(1L);

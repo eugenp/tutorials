@@ -17,10 +17,10 @@ enum RomanNumeral {
     public int getValue() {
         return value;
     }
-    
+
     public static List<RomanNumeral> getReverseSortedValues() {
         return Arrays.stream(values())
-          .sorted(Comparator.comparing((RomanNumeral e) -> e.value).reversed())
-          .collect(Collectors.toList());
+                .sorted(Comparator.comparing((RomanNumeral e) -> e.value).reversed())
+                .collect(Collectors.toList());
     }
 }

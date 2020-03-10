@@ -26,7 +26,8 @@ public class ReportDesignApplication implements CommandLineRunner {
         new SpringApplicationBuilder(ReportDesignApplication.class).web(WebApplicationType.NONE).build().run(args);
     }
 
-    @Override public void run(String... args) throws Exception {
+    @Override
+    public void run(String... args) throws Exception {
         buildReport();
     }
 
@@ -37,7 +38,7 @@ public class ReportDesignApplication implements CommandLineRunner {
         try {
             Platform.startup(config);
             IDesignEngineFactory factory = (IDesignEngineFactory) Platform
-              .createFactoryObject(IDesignEngineFactory.EXTENSION_DESIGN_ENGINE_FACTORY);
+                    .createFactoryObject(IDesignEngineFactory.EXTENSION_DESIGN_ENGINE_FACTORY);
             engine = factory.createDesignEngine(config);
 
         } catch (Exception ex) {

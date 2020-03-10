@@ -16,19 +16,19 @@ import org.testcontainers.containers.GenericContainer;
 public class GenericContainerLiveTest {
     @ClassRule
     public static GenericContainer simpleWebServer =
-      new GenericContainer("alpine:3.2")
-        .withExposedPorts(80)
-        .withCommand("/bin/sh", "-c", "while true; do echo "
-          + "\"HTTP/1.1 200 OK\n\nHello World!\" | nc -l -p 80; done");
+            new GenericContainer("alpine:3.2")
+                    .withExposedPorts(80)
+                    .withCommand("/bin/sh", "-c", "while true; do echo "
+                            + "\"HTTP/1.1 200 OK\n\nHello World!\" | nc -l -p 80; done");
 
     @Test
     public void givenSimpleWebServerContainer_whenGetReuqest_thenReturnsResponse()
-      throws Exception {
-        String address = "http://" 
-          + simpleWebServer.getContainerIpAddress() 
-          + ":" + simpleWebServer.getMappedPort(80);
+            throws Exception {
+        String address = "http://"
+                + simpleWebServer.getContainerIpAddress()
+                + ":" + simpleWebServer.getMappedPort(80);
         String response = simpleGetRequest(address);
-        
+
         assertEquals(response, "Hello World!");
     }
 
@@ -38,7 +38,7 @@ public class GenericContainerLiveTest {
         con.setRequestMethod("GET");
 
         BufferedReader in = new BufferedReader(
-          new InputStreamReader(con.getInputStream()));
+                new InputStreamReader(con.getInputStream()));
         String inputLine;
         StringBuffer content = new StringBuffer();
         while ((inputLine = in.readLine()) != null) {

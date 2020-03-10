@@ -32,16 +32,16 @@ public class ResponseStatusRestController {
     public Book createEntity() {
         // here we would create and persist an entity
         int randomInt = ThreadLocalRandom.current()
-            .nextInt(1, 100);
+                .nextInt(1, 100);
         Book entity = new Book(randomInt, "author" + randomInt, "title" + randomInt);
         return entity;
     }
-    
+
     @PostMapping("create-no-responsestatus")
     public Book createEntityWithoutResponseStatus() {
         // here we would create and persist an entity
         int randomInt = ThreadLocalRandom.current()
-            .nextInt(1, 100);
+                .nextInt(1, 100);
         Book entity = new Book(randomInt, "author" + randomInt, "title" + randomInt);
         return entity;
     }

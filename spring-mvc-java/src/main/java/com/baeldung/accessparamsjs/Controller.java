@@ -7,18 +7,17 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Map;
 
 /**
- * Sample rest controller for the tutorial article 
+ * Sample rest controller for the tutorial article
  * "Access Spring MVC Model object in JavaScript".
- * 
- * @author Andrew Shcherbakov
  *
+ * @author Andrew Shcherbakov
  */
 @RestController
 public class Controller {
 
     /**
      * Define two model objects (one integer and one string) and pass them to the view.
-     *  
+     *
      * @param model
      * @return
      */

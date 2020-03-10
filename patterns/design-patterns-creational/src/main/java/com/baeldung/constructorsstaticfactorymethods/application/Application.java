@@ -1,7 +1,7 @@
 package com.baeldung.constructorsstaticfactorymethods.application;
 
 import com.baeldung.constructorsstaticfactorymethods.entities.User;
- 
+
 public class Application {
 
     public static void main(String[] args) {

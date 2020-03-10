@@ -12,10 +12,10 @@ public class SpringBootOAuth2ResourceApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder()
-          .profiles("resource")
-          .sources(SpringBootOAuth2ResourceApplication.class)
-          .build()
-          .run(args);
+                .profiles("resource")
+                .sources(SpringBootOAuth2ResourceApplication.class)
+                .build()
+                .run(args);
     }
 
     @RestController

@@ -33,7 +33,7 @@ public class SleuthService {
             Thread.sleep(1000L);
             logger.info("I'm in the new span doing some cool work that needs its own span");
         } finally {
-        	newSpan.finish();
+            newSpan.finish();
         }
 
         logger.info("I'm in the original span");

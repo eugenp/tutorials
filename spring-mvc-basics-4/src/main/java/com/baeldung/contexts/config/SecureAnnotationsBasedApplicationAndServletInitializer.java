@@ -5,7 +5,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 
 public class SecureAnnotationsBasedApplicationAndServletInitializer// extends AbstractDispatcherServletInitializer 
 {
-    
+
     //uncomment to run the multiple contexts example
     //@Override
     protected WebApplicationContext createRootApplicationContext() {
@@ -21,7 +21,7 @@ public class SecureAnnotationsBasedApplicationAndServletInitializer// extends Ab
 
     //@Override
     protected String[] getServletMappings() {
-        return new String[] { "/s/api/*" };
+        return new String[]{"/s/api/*"};
     }
 
 

@@ -42,7 +42,7 @@ public class UserJWTController {
     public ResponseEntity authorize(@Valid @RequestBody LoginVM loginVM, HttpServletResponse response) {
 
         UsernamePasswordAuthenticationToken authenticationToken =
-            new UsernamePasswordAuthenticationToken(loginVM.getUsername(), loginVM.getPassword());
+                new UsernamePasswordAuthenticationToken(loginVM.getUsername(), loginVM.getPassword());
 
         try {
             Authentication authentication = this.authenticationManager.authenticate(authenticationToken);
@@ -54,7 +54,7 @@ public class UserJWTController {
         } catch (AuthenticationException ae) {
             log.trace("Authentication exception trace: {}", ae);
             return new ResponseEntity<>(Collections.singletonMap("AuthenticationException",
-                ae.getLocalizedMessage()), HttpStatus.UNAUTHORIZED);
+                    ae.getLocalizedMessage()), HttpStatus.UNAUTHORIZED);
         }
     }
 }

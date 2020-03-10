@@ -9,8 +9,8 @@ import javax.validation.Payload;
 
 import static java.lang.annotation.ElementType.*;
 
-@Constraint(validatedBy = { PasswordValidator.class })
-@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
+@Constraint(validatedBy = {PasswordValidator.class})
+@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Password {
     String message() default "Invalid password";

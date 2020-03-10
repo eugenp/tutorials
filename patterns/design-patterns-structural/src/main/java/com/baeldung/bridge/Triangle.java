@@ -8,6 +8,6 @@ public class Triangle extends Shape {
 
     @Override
     public String draw() {
-        return "Triangle drawn. "+ color.fill();
+        return "Triangle drawn. " + color.fill();
     }
 }

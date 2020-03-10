@@ -21,8 +21,12 @@ import static java.lang.Thread.sleep;
 public class CabBookingServiceIntegrationTest {
 
     static Logger log = LoggerFactory.getLogger(CabBookingServiceIntegrationTest.class);
-    @Autowired @Qualifier("burlapInvoker") CabBookingService burlapClient;
-    @Autowired @Qualifier("hessianInvoker")  CabBookingService hessianClient;
+    @Autowired
+    @Qualifier("burlapInvoker")
+    CabBookingService burlapClient;
+    @Autowired
+    @Qualifier("hessianInvoker")
+    CabBookingService hessianClient;
     static Thread serverThread;
 
     @BeforeClass
@@ -62,7 +66,7 @@ public class CabBookingServiceIntegrationTest {
     }
 
     static Thread serverThread() {
-        Thread serverThread = new Thread(()-> {
+        Thread serverThread = new Thread(() -> {
             log.info("Starting Burlap and Hessian server");
             Server.main(new String[]{});
             log.info("Burlap and Hessian server terminated");

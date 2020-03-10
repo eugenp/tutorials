@@ -37,6 +37,6 @@ public class Station implements GraphNode {
     @Override
     public String toString() {
         return new StringJoiner(", ", Station.class.getSimpleName() + "[", "]").add("id='" + id + "'")
-            .add("name='" + name + "'").add("latitude=" + latitude).add("longitude=" + longitude).toString();
+                .add("name='" + name + "'").add("latitude=" + latitude).add("longitude=" + longitude).toString();
     }
 }

@@ -16,7 +16,7 @@ public class GuavaMapsUnitTest {
 
     @Test
     public void whenCreateImmutableMap_thenCreated() {
-        final Map<String, Integer> salary = ImmutableMap.<String, Integer> builder().put("John", 1000).put("Jane", 1500).put("Adam", 2000).put("Tom", 2000).build();
+        final Map<String, Integer> salary = ImmutableMap.<String, Integer>builder().put("John", 1000).put("Jane", 1500).put("Adam", 2000).put("Tom", 2000).build();
 
         assertEquals(1000, salary.get("John").intValue());
         assertEquals(2000, salary.get("Tom").intValue());

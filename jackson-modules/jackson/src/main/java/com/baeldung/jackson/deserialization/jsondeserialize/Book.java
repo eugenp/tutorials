@@ -48,7 +48,7 @@ public class Book {
     public void setPages(BigDecimal pages) {
         this.pages = pages;
     }
-    
+
     public UUID getId() {
         return id;
     }

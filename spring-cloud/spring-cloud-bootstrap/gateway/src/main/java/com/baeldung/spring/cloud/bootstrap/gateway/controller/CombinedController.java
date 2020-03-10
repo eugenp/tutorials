@@ -23,9 +23,9 @@ public class CombinedController {
     }
 
     @GetMapping
-    public Book getCombinedResponse(@RequestParam Long bookId, @CookieValue("SESSION") String session){
+    public Book getCombinedResponse(@RequestParam Long bookId, @CookieValue("SESSION") String session) {
         Book book = booksClient.getBookById(bookId);
-        List<Rating> ratings = ratingsClient.getRatingsByBookId(bookId, "SESSION="+session);
+        List<Rating> ratings = ratingsClient.getRatingsByBookId(bookId, "SESSION=" + session);
         book.setRatings(ratings);
         return book;
     }

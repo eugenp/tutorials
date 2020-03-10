@@ -31,7 +31,7 @@ class EasyRandomUnitTest {
     void givenDefaultConfiguration_thenGenerateObjectsList() {
         EasyRandom generator = new EasyRandom();
         List<Person> persons = generator.objects(Person.class, 5)
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         assertEquals(5, persons.size());
     }

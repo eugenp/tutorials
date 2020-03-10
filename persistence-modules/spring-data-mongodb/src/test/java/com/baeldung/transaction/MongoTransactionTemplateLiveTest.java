@@ -25,10 +25,8 @@ import com.baeldung.config.MongoConfig;
 import com.baeldung.model.User;
 
 /**
- * 
  * This test requires:
  * * mongodb instance running on the environment
- *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
@@ -36,7 +34,7 @@ public class MongoTransactionTemplateLiveTest {
 
     @Autowired
     private MongoTemplate mongoTemplate;
-    
+
     @Autowired
     private MongoTransactionManager mongoTransactionManager;
 
@@ -54,21 +52,23 @@ public class MongoTransactionTemplateLiveTest {
 
     @Test
     public void givenTransactionTemplate_whenPerformTransaction_thenSuccess() {
-        mongoTemplate.setSessionSynchronization(SessionSynchronization.ALWAYS);                                     
+        mongoTemplate.setSessionSynchronization(SessionSynchronization.ALWAYS);
         TransactionTemplate transactionTemplate = new TransactionTemplate(mongoTransactionManager);
         transactionTemplate.execute(new TransactionCallbackWithoutResult() {
             @Override
             protected void doInTransactionWithoutResult(TransactionStatus status) {
                 mongoTemplate.insert(new User("Kim", 20));
                 mongoTemplate.insert(new User("Jack", 45));
-            };
+            }
+
+            ;
         });
 
         Query query = new Query().addCriteria(Criteria.where("name")
-            .is("Jack"));
+                .is("Jack"));
         List<User> users = mongoTemplate.find(query, User.class);
-        
+
         assertThat(users.size(), is(1));
     }
-   
+
 }

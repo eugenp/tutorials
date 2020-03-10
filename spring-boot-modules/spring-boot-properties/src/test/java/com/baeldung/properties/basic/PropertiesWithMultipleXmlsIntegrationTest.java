@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:basicConfigForPropertiesOne.xml", "classpath:basicConfigForPropertiesTwo.xml" })
+@ContextConfiguration(locations = {"classpath:basicConfigForPropertiesOne.xml", "classpath:basicConfigForPropertiesTwo.xml"})
 public class PropertiesWithMultipleXmlsIntegrationTest {
 
     @Autowired

@@ -4,7 +4,7 @@ public class NegativeAmountException extends RuntimeException {
 
     private double amount;
 
-    public NegativeAmountException(double amount){
+    public NegativeAmountException(double amount) {
         this.amount = amount;
     }
 

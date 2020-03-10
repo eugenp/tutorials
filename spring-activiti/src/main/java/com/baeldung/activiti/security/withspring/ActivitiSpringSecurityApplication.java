@@ -14,7 +14,7 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import com.baeldung.activiti.security.config.SpringSecurityGroupManager;
 import com.baeldung.activiti.security.config.SpringSecurityUserManager;
 
-@SpringBootApplication(exclude = SecurityAutoConfiguration.class, scanBasePackages = { "com.baeldung.activiti.security.config", "com.baeldung.activiti.security.withspring" })
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class, scanBasePackages = {"com.baeldung.activiti.security.config", "com.baeldung.activiti.security.withspring"})
 public class ActivitiSpringSecurityApplication {
 
     public static void main(String[] args) {

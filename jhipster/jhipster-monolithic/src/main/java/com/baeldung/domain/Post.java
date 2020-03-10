@@ -124,10 +124,10 @@ public class Post implements Serializable {
     @Override
     public String toString() {
         return "Post{" +
-            "id=" + id +
-            ", title='" + title + "'" +
-            ", content='" + content + "'" +
-            ", creationDate='" + creationDate + "'" +
-            '}';
+                "id=" + id +
+                ", title='" + title + "'" +
+                ", content='" + content + "'" +
+                ", creationDate='" + creationDate + "'" +
+                '}';
     }
 }

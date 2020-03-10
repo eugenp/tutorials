@@ -6,9 +6,9 @@ public class OrderLine {
     private String item;
     private int quantity;
     private BigDecimal unitPrice;
-    
+
     public OrderLine() {
-        
+
     }
 
     public OrderLine(String item, int quantity, BigDecimal unitPrice) {

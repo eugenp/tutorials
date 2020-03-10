@@ -65,7 +65,8 @@
         <commons-dbcp2.version>2.4.0</commons-dbcp2.version>
         <HikariCP.version>3.2.0</HikariCP.version>
         <c3p0.version>0.9.5.2</c3p0.version>
-        <springframework.boot.spring-boot-starter.version>1.5.8.RELEASE</springframework.boot.spring-boot-starter.version>
+        <springframework.boot.spring-boot-starter.version>1.5.8.RELEASE
+        </springframework.boot.spring-boot-starter.version>
         <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
     </properties>
 

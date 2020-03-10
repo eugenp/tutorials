@@ -16,7 +16,7 @@ public class GlobalExceptionHandler extends DefaultExceptionHandler {
             String msg = baeldungException.getMessage();
             log.error("[GlobalExceptionHandler] Intercepted an exception to threat with additional logic. Error message: " + msg);
             WebContext.response()
-                .render("index.html");
+                    .render("index.html");
 
         } else {
             super.handle(e);

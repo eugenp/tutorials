@@ -10,29 +10,29 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /**
- *
  * @author chris
  */
 public class Element3UnitTest {
-    
+
     public Element3UnitTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -53,5 +53,5 @@ public class Element3UnitTest {
             assertEquals(e3.label, e3.toString());
         }
     }
-    
+
 }

@@ -15,9 +15,9 @@ public class RedirectHandler implements Handler {
         URI uri = URI.create("http://localhost:5050/employee/1");
         Promise<ReceivedResponse> responsePromise = client.get(uri);
         responsePromise.map(response -> response.getBody()
-            .getText()
-            .toUpperCase())
-            .then(responseText -> ctx.getResponse()
-                .send(responseText));
+                .getText()
+                .toUpperCase())
+                .then(responseText -> ctx.getResponse()
+                        .send(responseText));
     }
 }

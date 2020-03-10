@@ -8,7 +8,7 @@ import org.junit.Test;
 import com.baeldung.apache.beam.intro.WordCount;
 
 public class WordCountUnitTest {
-    
+
     @Test
     // @Ignore
     public void givenInputFile_whenWordCountRuns_thenJobFinishWithoutError() {

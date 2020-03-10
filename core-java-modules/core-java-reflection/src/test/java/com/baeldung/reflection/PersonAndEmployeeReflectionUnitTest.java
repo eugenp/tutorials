@@ -30,12 +30,12 @@ public class PersonAndEmployeeReflectionUnitTest {
         assertEquals(2, allFields.length);
 
         assertTrue(Arrays.stream(allFields).anyMatch(field ->
-          field.getName().equals(LAST_NAME_FIELD)
-            && field.getType().equals(String.class))
+                field.getName().equals(LAST_NAME_FIELD)
+                        && field.getType().equals(String.class))
         );
         assertTrue(Arrays.stream(allFields).anyMatch(field ->
-          field.getName().equals(FIRST_NAME_FIELD)
-            && field.getType().equals(String.class))
+                field.getName().equals(FIRST_NAME_FIELD)
+                        && field.getType().equals(String.class))
         );
     }
 
@@ -48,8 +48,8 @@ public class PersonAndEmployeeReflectionUnitTest {
         assertEquals(1, allFields.length);
 
         assertTrue(Arrays.stream(allFields).anyMatch(field ->
-          field.getName().equals(EMPLOYEE_ID_FIELD)
-            && field.getType().equals(int.class))
+                field.getName().equals(EMPLOYEE_ID_FIELD)
+                        && field.getType().equals(int.class))
         );
     }
 
@@ -62,12 +62,12 @@ public class PersonAndEmployeeReflectionUnitTest {
         assertEquals(2, allFields.length);
 
         assertTrue(Arrays.stream(allFields).anyMatch(field ->
-          field.getName().equals(LAST_NAME_FIELD)
-            && field.getType().equals(String.class))
+                field.getName().equals(LAST_NAME_FIELD)
+                        && field.getType().equals(String.class))
         );
         assertTrue(Arrays.stream(allFields).anyMatch(field ->
-          field.getName().equals(FIRST_NAME_FIELD)
-            && field.getType().equals(String.class))
+                field.getName().equals(FIRST_NAME_FIELD)
+                        && field.getType().equals(String.class))
         );
     }
 
@@ -83,16 +83,16 @@ public class PersonAndEmployeeReflectionUnitTest {
         assertEquals(3, allFields.length);
 
         assertTrue(Arrays.stream(allFields).anyMatch(field ->
-          field.getName().equals(LAST_NAME_FIELD)
-            && field.getType().equals(String.class))
+                field.getName().equals(LAST_NAME_FIELD)
+                        && field.getType().equals(String.class))
         );
         assertTrue(Arrays.stream(allFields).anyMatch(field ->
-          field.getName().equals(FIRST_NAME_FIELD)
-            && field.getType().equals(String.class))
+                field.getName().equals(FIRST_NAME_FIELD)
+                        && field.getType().equals(String.class))
         );
         assertTrue(Arrays.stream(allFields).anyMatch(field ->
-          field.getName().equals(EMPLOYEE_ID_FIELD)
-            && field.getType().equals(int.class))
+                field.getName().equals(EMPLOYEE_ID_FIELD)
+                        && field.getType().equals(int.class))
         );
     }
 
@@ -100,15 +100,15 @@ public class PersonAndEmployeeReflectionUnitTest {
     public void givenEmployeeClass_whenGetDeclaredFieldsOnEmployeeSuperclassWithModifiersFilter_thenOneFields() {
         // When
         List<Field> personFields = Arrays.stream(Employee.class.getSuperclass().getDeclaredFields())
-          .filter(f -> Modifier.isPublic(f.getModifiers()) || Modifier.isProtected(f.getModifiers()))
-          .collect(Collectors.toList());
+                .filter(f -> Modifier.isPublic(f.getModifiers()) || Modifier.isProtected(f.getModifiers()))
+                .collect(Collectors.toList());
 
         // Then
         assertEquals(1, personFields.size());
 
         assertTrue(personFields.stream().anyMatch(field ->
-          field.getName().equals(LAST_NAME_FIELD)
-            && field.getType().equals(String.class))
+                field.getName().equals(LAST_NAME_FIELD)
+                        && field.getType().equals(String.class))
         );
     }
 
@@ -121,16 +121,16 @@ public class PersonAndEmployeeReflectionUnitTest {
         assertEquals(3, allFields.size());
 
         assertTrue(allFields.stream().anyMatch(field ->
-          field.getName().equals(LAST_NAME_FIELD)
-            && field.getType().equals(String.class))
+                field.getName().equals(LAST_NAME_FIELD)
+                        && field.getType().equals(String.class))
         );
         assertTrue(allFields.stream().anyMatch(field ->
-          field.getName().equals(EMPLOYEE_ID_FIELD)
-            && field.getType().equals(int.class))
+                field.getName().equals(EMPLOYEE_ID_FIELD)
+                        && field.getType().equals(int.class))
         );
         assertTrue(allFields.stream().anyMatch(field ->
-          field.getName().equals(MONTH_EMPLOYEE_REWARD_FIELD)
-            && field.getType().equals(double.class))
+                field.getName().equals(MONTH_EMPLOYEE_REWARD_FIELD)
+                        && field.getType().equals(double.class))
         );
     }
 
@@ -141,8 +141,8 @@ public class PersonAndEmployeeReflectionUnitTest {
 
         List<Field> result = new ArrayList<>(getAllFields(clazz.getSuperclass()));
         List<Field> filteredFields = Arrays.stream(clazz.getDeclaredFields())
-          .filter(f -> Modifier.isPublic(f.getModifiers()) || Modifier.isProtected(f.getModifiers()))
-          .collect(Collectors.toList());
+                .filter(f -> Modifier.isPublic(f.getModifiers()) || Modifier.isProtected(f.getModifiers()))
+                .collect(Collectors.toList());
         result.addAll(filteredFields);
         return result;
     }

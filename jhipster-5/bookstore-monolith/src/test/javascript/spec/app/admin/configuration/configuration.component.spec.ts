@@ -1,12 +1,12 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { of } from 'rxjs';
-import { HttpHeaders, HttpResponse } from '@angular/common/http';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {of} from 'rxjs';
+import {HttpHeaders, HttpResponse} from '@angular/common/http';
 
-import { BookstoreTestModule } from '../../../test.module';
-import { JhiConfigurationComponent } from 'app/admin/configuration/configuration.component';
-import { JhiConfigurationService } from 'app/admin/configuration/configuration.service';
-import { ITEMS_PER_PAGE } from 'app/shared';
-import { Log } from 'app/admin';
+import {BookstoreTestModule} from '../../../test.module';
+import {JhiConfigurationComponent} from 'app/admin/configuration/configuration.component';
+import {JhiConfigurationService} from 'app/admin/configuration/configuration.service';
+import {ITEMS_PER_PAGE} from 'app/shared';
+import {Log} from 'app/admin';
 
 describe('Component Tests', () => {
     describe('JhiConfigurationComponent', () => {
@@ -39,8 +39,8 @@ describe('Component Tests', () => {
             });
             it('Should call load all on init', () => {
                 // GIVEN
-                const body = [{ config: 'test', properties: 'test' }, { config: 'test2' }];
-                const envConfig = { envConfig: 'test' };
+                const body = [{config: 'test', properties: 'test'}, {config: 'test2'}];
+                const envConfig = {envConfig: 'test'};
                 spyOn(service, 'get').and.returnValue(of(body));
                 spyOn(service, 'getEnv').and.returnValue(of(envConfig));
 

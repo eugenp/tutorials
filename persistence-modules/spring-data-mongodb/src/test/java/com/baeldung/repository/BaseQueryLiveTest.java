@@ -8,10 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 
 /**
- * 
  * This test requires:
  * * mongodb instance running on the environment
- *
  */
 public class BaseQueryLiveTest {
 

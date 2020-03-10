@@ -8,7 +8,8 @@ public class RegexExample {
     // contains at least one capturing group.
     // However, we do an error and we forgot to define such
     // capturing group in it.
-    @Regex(1) private static String findNumbers = "\\d*";
+    @Regex(1)
+    private static String findNumbers = "\\d*";
 
     public static void main(String[] args) {
         String message = "My phone number is +3911223344.";

@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class IgniteApp {
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.register(SpringDataConfig.class);
         context.refresh();

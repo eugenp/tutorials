@@ -10,7 +10,7 @@ public class HelloService {
     @ConfigProperty(name = "greeting")
     String greeting;
 
-    public String politeHello(String name){
+    public String politeHello(String name) {
         return greeting + " " + name;
     }
 }

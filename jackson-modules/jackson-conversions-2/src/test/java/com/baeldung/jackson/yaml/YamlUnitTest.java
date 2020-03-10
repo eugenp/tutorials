@@ -40,7 +40,7 @@ public class YamlUnitTest {
         assertEquals(LocalDate.parse("2019-04-17", DateTimeFormatter.ISO_DATE), order.getDate());
         assertEquals("Customer, Joe", order.getCustomerName());
         assertEquals(2, order.getOrderLines()
-            .size());
+                .size());
     }
 
     @Test
@@ -49,10 +49,10 @@ public class YamlUnitTest {
         lines.add(new OrderLine("Copper Wire (200ft)", 1, new BigDecimal(50.67).setScale(2, RoundingMode.HALF_UP)));
         lines.add(new OrderLine("Washers (1/4\")", 24, new BigDecimal(.15).setScale(2, RoundingMode.HALF_UP)));
         Order order = new Order(
-            "B-9910", 
-            LocalDate.parse("2019-04-18", DateTimeFormatter.ISO_DATE), 
-            "Customer, Jane", 
-            lines);
+                "B-9910",
+                LocalDate.parse("2019-04-18", DateTimeFormatter.ISO_DATE),
+                "Customer, Jane",
+                lines);
         mapper.writeValue(new File("src/test/resources/yaml/orderOutput.yaml"), order);
 
         File outputYaml = new File("src/test/resources/yaml/orderOutput.yaml");

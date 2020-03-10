@@ -37,12 +37,12 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
 
         }
         query.select(user)
-            .where(cb.or(predicates.toArray(new Predicate[predicates.size()])));
+                .where(cb.or(predicates.toArray(new Predicate[predicates.size()])));
 
         return entityManager.createQuery(query)
-            .getResultList();
+                .getResultList();
     }
-    
+
     @Override
     public List<User> findAllUsersByPredicates(Collection<java.util.function.Predicate<User>> predicates) {
         List<User> allUsers = entityManager.createQuery("select u from User u", User.class).getResultList();

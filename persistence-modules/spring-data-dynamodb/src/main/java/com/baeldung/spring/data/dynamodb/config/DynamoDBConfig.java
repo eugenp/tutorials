@@ -26,7 +26,7 @@ public class DynamoDBConfig {
 
     @Value("${amazon.aws.secretkey}")
     private String amazonAWSSecretKey;
-    
+
     @Autowired
     private ApplicationContext context;
 
@@ -45,7 +45,7 @@ public class DynamoDBConfig {
     }
 
     @Bean(name = "mvcHandlerMappingIntrospector")
-	public HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
-		return new HandlerMappingIntrospector(context);
-	}
+    public HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
+        return new HandlerMappingIntrospector(context);
+    }
 }

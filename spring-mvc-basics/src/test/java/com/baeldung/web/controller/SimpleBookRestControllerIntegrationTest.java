@@ -21,10 +21,10 @@ public class SimpleBookRestControllerIntegrationTest {
     @Test
     public void givenBookId_whenMockMVC_thenVerifyResponse() throws Exception {
         this.mockMvc
-            .perform(get("/books-rest/42"))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(42));
+                .perform(get("/books-rest/42"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(jsonPath("$.id").value(42));
     }
 
 }

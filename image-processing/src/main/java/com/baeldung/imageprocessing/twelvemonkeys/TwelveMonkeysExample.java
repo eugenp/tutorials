@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 
 public class TwelveMonkeysExample {
     public static void main(String[] args) throws IOException {
-        BufferedImage image  = loadImage();
+        BufferedImage image = loadImage();
         drawRectangle(image);
         displayImage(image);
     }

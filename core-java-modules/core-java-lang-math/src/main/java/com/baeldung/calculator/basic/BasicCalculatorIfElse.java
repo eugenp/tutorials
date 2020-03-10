@@ -14,7 +14,7 @@ public class BasicCalculatorIfElse {
         try {
             System.out.println("Enter an operator: (+ OR - OR * OR /) ");
             char operation = scanner.next()
-                .charAt(0);
+                    .charAt(0);
 
             if (!(operation == '+' || operation == '-' || operation == '*' || operation == 'x' || operation == '/')) {
                 System.err.println("Invalid Operator. Please use only + or - or * or /");

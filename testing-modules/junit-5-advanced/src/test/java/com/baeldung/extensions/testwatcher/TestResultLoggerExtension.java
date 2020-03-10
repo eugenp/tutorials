@@ -54,7 +54,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
     @Override
     public void afterAll(ExtensionContext context) throws Exception {
         Map<TestResultStatus, Long> summary = testResultsStatus.stream()
-            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
         LOG.info("Test result summary for {} {}", context.getDisplayName(), summary.toString());
     }

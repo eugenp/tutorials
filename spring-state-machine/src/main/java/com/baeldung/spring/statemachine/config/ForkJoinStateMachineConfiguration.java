@@ -32,14 +32,14 @@ public class ForkJoinStateMachineConfiguration extends StateMachineConfigurerAda
                 .end("SF")
                 .and()
                 .withStates()
-                    .parent("SFork")
-                    .initial("Sub1-1")
-                    .end("Sub1-2")
+                .parent("SFork")
+                .initial("Sub1-1")
+                .end("Sub1-2")
                 .and()
                 .withStates()
-                    .parent("SFork")
-                    .initial("Sub2-1")
-                    .end("Sub2-2");
+                .parent("SFork")
+                .initial("Sub2-1")
+                .end("Sub2-2");
     }
 
     @Override
@@ -47,19 +47,19 @@ public class ForkJoinStateMachineConfiguration extends StateMachineConfigurerAda
         transitions.withExternal()
                 .source("SI").target("SFork").event("E1")
                 .and().withExternal()
-                    .source("Sub1-1").target("Sub1-2").event("sub1")
+                .source("Sub1-1").target("Sub1-2").event("sub1")
                 .and().withExternal()
-                    .source("Sub2-1").target("Sub2-2").event("sub2")
+                .source("Sub2-1").target("Sub2-2").event("sub2")
                 .and()
                 .withFork()
-                    .source("SFork")
-                    .target("Sub1-1")
-                    .target("Sub2-1")
+                .source("SFork")
+                .target("Sub1-1")
+                .target("Sub2-1")
                 .and()
                 .withJoin()
-                    .source("Sub1-2")
-                    .source("Sub2-2")
-                    .target("SJoin");
+                .source("Sub1-2")
+                .source("Sub2-2")
+                .target("SJoin");
     }
 
     @Bean

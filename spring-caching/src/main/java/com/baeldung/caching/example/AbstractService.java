@@ -15,19 +15,19 @@ public abstract class AbstractService {
 
     /**
      * The method returns the customer's address,
-       only it doesn't find it the cache- addresses and directory.
+     * only it doesn't find it the cache- addresses and directory.
      *
      * @param customer the customer
      * @return the address
      */
-    @Cacheable({ "addresses", "directory" })
+    @Cacheable({"addresses", "directory"})
     public String getAddress1(final Customer customer) {
         return customer.getAddress();
     }
 
     /**
      * The method returns the customer's address,
-        but refreshes all the entries in the cache to load new ones.
+     * but refreshes all the entries in the cache to load new ones.
      *
      * @param customer the customer
      * @return the address
@@ -39,12 +39,12 @@ public abstract class AbstractService {
 
     /**
      * The method returns the customer's address,
-        but not before selectively evicting the cache as per specified paramters.
+     * but not before selectively evicting the cache as per specified paramters.
      *
      * @param customer the customer
      * @return the address
      */
-    @Caching(evict = { @CacheEvict("addresses"), @CacheEvict(value = "directory", key = "#customer.name") })
+    @Caching(evict = {@CacheEvict("addresses"), @CacheEvict(value = "directory", key = "#customer.name")})
     public String getAddress3(final Customer customer) {
         return customer.getAddress();
     }

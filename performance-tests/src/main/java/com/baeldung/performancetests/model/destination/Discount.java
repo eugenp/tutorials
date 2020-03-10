@@ -24,12 +24,12 @@ public class Discount {
         if (o == null) return false;
         if (o.getClass() == com.baeldung.performancetests.model.source.Discount.class) {
             com.baeldung.performancetests.model.source.Discount discount =
-              (com.baeldung.performancetests.model.source.Discount) o;
+                    (com.baeldung.performancetests.model.source.Discount) o;
             return Objects.equal(startTime, discount.getStartTime()) &&
-              Objects.equal(endTime, discount.getEndTime()) &&
-              Objects.equal(discountPrice, discount.getDiscountPrice());
+                    Objects.equal(endTime, discount.getEndTime()) &&
+                    Objects.equal(discountPrice, discount.getDiscountPrice());
         }
-        if(o.getClass() != getClass()) return false;
+        if (o.getClass() != getClass()) return false;
         Discount discount = (Discount) o;
         return Objects.equal(startTime, discount.startTime) &&
                 Objects.equal(endTime, discount.endTime) &&

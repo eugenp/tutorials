@@ -36,12 +36,12 @@ public class SimpleControllerIntegrationTest {
 
         SoftAssertions errorCollector = new SoftAssertions();
         errorCollector.assertThat(ListAppender.getEvents())
-            .haveAtLeastOne(eventContains("Client requested process the following list: []", Level.INFO))
-            .haveAtLeastOne(eventContains("Starting process", Level.DEBUG))
-            .haveAtLeastOne(eventContains("Finished processing", Level.INFO))
-            .haveExactly(0, eventOfLevel(Level.ERROR));
+                .haveAtLeastOne(eventContains("Client requested process the following list: []", Level.INFO))
+                .haveAtLeastOne(eventContains("Starting process", Level.DEBUG))
+                .haveAtLeastOne(eventContains("Finished processing", Level.INFO))
+                .haveExactly(0, eventOfLevel(Level.ERROR));
         errorCollector.assertThat(output)
-            .isEqualTo("done");
+                .isEqualTo("done");
         errorCollector.assertAll();
     }
 
@@ -57,15 +57,15 @@ public class SimpleControllerIntegrationTest {
 
         SoftAssertions errorCollector = new SoftAssertions();
         errorCollector.assertThat(ListAppender.getEvents())
-            .allMatch(entry -> {
-                return clientId.equals(entry.getMDCPropertyMap()
-                    .get("clientId"));
-            })
-            .haveAtLeastOne(eventContains("Client id-1234 has made a request", Level.INFO))
-            .haveAtLeastOne(eventContains("Starting request", Level.INFO))
-            .haveAtLeastOne(eventContains("Finished request", Level.INFO));
+                .allMatch(entry -> {
+                    return clientId.equals(entry.getMDCPropertyMap()
+                            .get("clientId"));
+                })
+                .haveAtLeastOne(eventContains("Client id-1234 has made a request", Level.INFO))
+                .haveAtLeastOne(eventContains("Starting request", Level.INFO))
+                .haveAtLeastOne(eventContains("Finished request", Level.INFO));
         errorCollector.assertThat(output)
-            .isEqualTo("finished");
+                .isEqualTo("finished");
         errorCollector.assertAll();
     }
 
@@ -75,12 +75,12 @@ public class SimpleControllerIntegrationTest {
 
         SoftAssertions errorCollector = new SoftAssertions();
         errorCollector.assertThat(ListAppender.getEvents())
-            .haveAtLeastOne(eventContains("client has made a request", Level.INFO))
-            .haveAtLeastOne(eventContains("Starting request", Level.INFO, "MYMARKER"))
-            .haveAtLeastOne(eventContains("Finished request", Level.DEBUG, "MYMARKER"))
-            .haveExactly(2, eventContains(null, null, "MYMARKER"));
+                .haveAtLeastOne(eventContains("client has made a request", Level.INFO))
+                .haveAtLeastOne(eventContains("Starting request", Level.INFO, "MYMARKER"))
+                .haveAtLeastOne(eventContains("Finished request", Level.DEBUG, "MYMARKER"))
+                .haveExactly(2, eventContains(null, null, "MYMARKER"));
         errorCollector.assertThat(output)
-            .isEqualTo("finished");
+                .isEqualTo("finished");
         errorCollector.assertAll();
     }
 
@@ -90,10 +90,10 @@ public class SimpleControllerIntegrationTest {
 
         SoftAssertions errorCollector = new SoftAssertions();
         errorCollector.assertThat(ListAppender.getEvents())
-            .haveAtLeastOne(eventContains("client has made a request", Level.INFO))
-            .haveAtLeastOne(eventContains("Profiler [MYPROFILER]", Level.DEBUG));
+                .haveAtLeastOne(eventContains("client has made a request", Level.INFO))
+                .haveAtLeastOne(eventContains("Profiler [MYPROFILER]", Level.DEBUG));
         errorCollector.assertThat(output)
-            .isEqualTo("finished");
+                .isEqualTo("finished");
         errorCollector.assertAll();
     }
 
@@ -105,12 +105,12 @@ public class SimpleControllerIntegrationTest {
 
         SoftAssertions errorCollector = new SoftAssertions();
         errorCollector.assertThat(ListAppender.getEvents())
-            .haveAtLeastOne(eventContains("sending from sender to receiver", Level.INFO))
-            .haveAtLeastOne(eventContains("<object class=\"java.util.HashMap\">", Level.INFO))
-            .haveAtLeastOne(eventContains("<string>sender</string>", Level.INFO))
-            .haveAtLeastOne(eventContains("<string>receiver</string>", Level.INFO));
+                .haveAtLeastOne(eventContains("sending from sender to receiver", Level.INFO))
+                .haveAtLeastOne(eventContains("<object class=\"java.util.HashMap\">", Level.INFO))
+                .haveAtLeastOne(eventContains("<string>sender</string>", Level.INFO))
+                .haveAtLeastOne(eventContains("<string>receiver</string>", Level.INFO));
         errorCollector.assertThat(output)
-            .isEqualTo("finished");
+                .isEqualTo("finished");
         errorCollector.assertAll();
     }
 
@@ -121,11 +121,11 @@ public class SimpleControllerIntegrationTest {
 
         SoftAssertions errorCollector = new SoftAssertions();
         errorCollector.assertThat(ListAppender.getEvents())
-            .haveAtLeastOne(eventContains("El cliente parametrizedClientId ha realizado una solicitud usando locale es-ES", Level.INFO))
-            .haveAtLeastOne(eventContains("Solicitud iniciada", Level.DEBUG))
-            .haveAtLeastOne(eventContains("Solicitud finalizada", Level.INFO));
+                .haveAtLeastOne(eventContains("El cliente parametrizedClientId ha realizado una solicitud usando locale es-ES", Level.INFO))
+                .haveAtLeastOne(eventContains("Solicitud iniciada", Level.DEBUG))
+                .haveAtLeastOne(eventContains("Solicitud finalizada", Level.INFO));
         errorCollector.assertThat(output)
-            .isEqualTo("finished");
+                .isEqualTo("finished");
         errorCollector.assertAll();
     }
 
@@ -136,11 +136,11 @@ public class SimpleControllerIntegrationTest {
 
         SoftAssertions errorCollector = new SoftAssertions();
         errorCollector.assertThat(ListAppender.getEvents())
-            .haveAtLeastOne(eventContains("Client parametrizedClientId has made a request using locale en-US", Level.INFO))
-            .haveAtLeastOne(eventContains("Request started", Level.DEBUG))
-            .haveAtLeastOne(eventContains("Request finished", Level.INFO));
+                .haveAtLeastOne(eventContains("Client parametrizedClientId has made a request using locale en-US", Level.INFO))
+                .haveAtLeastOne(eventContains("Request started", Level.DEBUG))
+                .haveAtLeastOne(eventContains("Request finished", Level.INFO));
         errorCollector.assertThat(output)
-            .isEqualTo("finished");
+                .isEqualTo("finished");
         errorCollector.assertAll();
     }
 
@@ -155,9 +155,9 @@ public class SimpleControllerIntegrationTest {
     private Condition<ILoggingEvent> eventContains(String substring, Level level, String markerName) {
 
         return new Condition<ILoggingEvent>(entry -> (substring == null || (entry.getFormattedMessage() != null && entry.getFormattedMessage()
-            .contains(substring))) && (level == null || level.equals(entry.getLevel())) && (markerName == null || (entry.getMarker() != null
+                .contains(substring))) && (level == null || level.equals(entry.getLevel())) && (markerName == null || (entry.getMarker() != null
                 && markerName.equals(entry.getMarker()
-                    .getName()))),
-            String.format("entry with message '%s', level %s and marker %s", substring, level, markerName));
+                .getName()))),
+                String.format("entry with message '%s', level %s and marker %s", substring, level, markerName));
     }
 }

@@ -8,7 +8,9 @@ import com.github.jknack.handlebars.Options;
 import com.github.jknack.handlebars.Template;
 import com.github.jknack.handlebars.io.ClassPathTemplateLoader;
 import com.github.jknack.handlebars.io.TemplateLoader;
+
 import java.io.IOException;
+
 import org.junit.Test;
 
 /**

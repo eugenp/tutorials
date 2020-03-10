@@ -13,9 +13,9 @@ public class HelloWorldApp {
     public static void main(String[] args) {
         HelloWorldArgs jArgs = new HelloWorldArgs();
         JCommander helloCmd = JCommander
-          .newBuilder()
-          .addObject(jArgs)
-          .build();
+                .newBuilder()
+                .addObject(jArgs)
+                .build();
 
         helloCmd.parse(args);
         System.out.println("Hello " + jArgs.getName());
@@ -25,9 +25,9 @@ public class HelloWorldApp {
 class HelloWorldArgs {
 
     @Parameter(
-      names = "--name",
-      description = "User name",
-      required = true
+            names = "--name",
+            description = "User name",
+            required = true
     )
     private String name;
 

@@ -43,7 +43,7 @@ public class GuavaCollectionsExamplesUnitTest {
         System.out.println(selectedProducts);
     }
 
-    @SuppressWarnings({ "unchecked" })
+    @SuppressWarnings({"unchecked"})
     @Test
     public final void whenDowncastingGenerifiedCollectionToNewGenerifiedCollection_thenCastIsOK2() {
         final List<Number> originalList = Lists.newArrayList();
@@ -165,13 +165,13 @@ public class GuavaCollectionsExamplesUnitTest {
     @Test
     public final void whenTransformingCollectionsToImmutableViaBuilders_thenNoExceptions() {
         final List<String> muttableList = Lists.newArrayList();
-        final ImmutableList<String> immutableList = ImmutableList.<String> builder().addAll(muttableList).build();
+        final ImmutableList<String> immutableList = ImmutableList.<String>builder().addAll(muttableList).build();
 
         final Set<String> muttableSet = Sets.newHashSet();
-        final ImmutableSet<String> immutableSet = ImmutableSet.<String> builder().addAll(muttableSet).build();
+        final ImmutableSet<String> immutableSet = ImmutableSet.<String>builder().addAll(muttableSet).build();
 
         final Map<String, String> muttableMap = Maps.newHashMap();
-        final ImmutableMap<String, String> imuttableMap = ImmutableMap.<String, String> builder().putAll(muttableMap).build();
+        final ImmutableMap<String, String> imuttableMap = ImmutableMap.<String, String>builder().putAll(muttableMap).build();
     }
 
     // unmodifiable

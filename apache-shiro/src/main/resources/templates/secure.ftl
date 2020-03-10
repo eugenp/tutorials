@@ -9,7 +9,7 @@
 <p>${permission}</p>
 <br>
 <form role="form" action="/logout" method="POST">
-   <input type="Submit" value="Logout" />
+    <input type="Submit" value="Logout"/>
 </form>
 </body>
 </html>

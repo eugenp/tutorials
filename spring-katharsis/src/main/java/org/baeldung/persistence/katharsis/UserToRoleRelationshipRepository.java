@@ -61,7 +61,7 @@ public class UserToRoleRelationshipRepository implements RelationshipRepositoryV
     @Override
     public ResourceList<Role> findManyTargets(Long sourceId, String fieldName, QuerySpec querySpec) {
         final User user = userRepository.findOne(sourceId);
-        return  querySpec.apply(user.getRoles());
+        return querySpec.apply(user.getRoles());
     }
 
     @Override

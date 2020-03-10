@@ -26,7 +26,7 @@ public class UaaSignatureVerifierClient implements OAuth2SignatureVerifierClient
     protected final OAuth2Properties oAuth2Properties;
 
     public UaaSignatureVerifierClient(DiscoveryClient discoveryClient, @Qualifier("loadBalancedRestTemplate") RestTemplate restTemplate,
-                                  OAuth2Properties oAuth2Properties) {
+                                      OAuth2Properties oAuth2Properties) {
         this.restTemplate = restTemplate;
         this.oAuth2Properties = oAuth2Properties;
         // Load available UAA servers
@@ -43,8 +43,8 @@ public class UaaSignatureVerifierClient implements OAuth2SignatureVerifierClient
         try {
             HttpEntity<Void> request = new HttpEntity<Void>(new HttpHeaders());
             String key = (String) restTemplate
-                .exchange(getPublicKeyEndpoint(), HttpMethod.GET, request, Map.class).getBody()
-                .get("value");
+                    .exchange(getPublicKeyEndpoint(), HttpMethod.GET, request, Map.class).getBody()
+                    .get("value");
             return new RsaVerifier(key);
         } catch (IllegalStateException ex) {
             log.warn("could not contact UAA to get public key");
@@ -52,7 +52,9 @@ public class UaaSignatureVerifierClient implements OAuth2SignatureVerifierClient
         }
     }
 
-    /** Returns the configured endpoint URI to retrieve the public key. */
+    /**
+     * Returns the configured endpoint URI to retrieve the public key.
+     */
     private String getPublicKeyEndpoint() {
         String tokenEndpointUrl = oAuth2Properties.getSignatureVerification().getPublicKeyEndpointUri();
         if (tokenEndpointUrl == null) {

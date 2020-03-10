@@ -32,7 +32,7 @@ public class EmployeeServiceUnitTest {
     public void givenMockingIsDoneByMockito_whenGetIsCalled_shouldReturnMockedObject() throws Exception {
         Employee emp = new Employee("E001", "Eric Simmons");
         Mockito.when(restTemplate.getForEntity("http://localhost:8080/employee/E001", Employee.class))
-          .thenReturn(new ResponseEntity(emp, HttpStatus.OK));
+                .thenReturn(new ResponseEntity(emp, HttpStatus.OK));
 
         Employee employee = empService.getEmployee("E001");
 

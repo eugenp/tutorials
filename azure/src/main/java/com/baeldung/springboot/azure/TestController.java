@@ -19,7 +19,8 @@ public class TestController {
         return "hello azure!";
     }
 
-    @Autowired private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @PostMapping("/user")
     public String register(@RequestParam String name) {

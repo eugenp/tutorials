@@ -45,7 +45,7 @@ public class User {
         if (o == null) return false;
         if (o.getClass() == com.baeldung.performancetests.model.source.User.class) {
             com.baeldung.performancetests.model.source.User user =
-              (com.baeldung.performancetests.model.source.User) o;
+                    (com.baeldung.performancetests.model.source.User) o;
             return Objects.equal(username, user.getUsername()) &&
                     Objects.equal(email, user.getEmail()) &&
                     userAccountStatus.ordinal() == user.getUserAccountStatus().ordinal();
@@ -53,8 +53,8 @@ public class User {
         if (o.getClass() != getClass()) return false;
         User user = (User) o;
         return Objects.equal(username, user.username) &&
-          Objects.equal(email, user.email) &&
-          userAccountStatus == user.userAccountStatus;
+                Objects.equal(email, user.email) &&
+                userAccountStatus == user.userAccountStatus;
     }
 
     @Override
@@ -70,7 +70,7 @@ public class User {
     @JMapConversion(from = "userAccountStatus", to = "userAccountStatus")
     public AccountStatus conversion(com.baeldung.performancetests.model.source.AccountStatus status) {
         AccountStatus accountStatus = null;
-        switch(status) {
+        switch (status) {
             case ACTIVE:
                 accountStatus = AccountStatus.ACTIVE;
                 break;

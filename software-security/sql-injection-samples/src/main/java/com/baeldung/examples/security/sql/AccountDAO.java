@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.baeldung.examples.security.sql;
 
@@ -46,7 +46,7 @@ public class AccountDAO {
 
     /**
      * Return all accounts owned by a given customer,given his/her external id
-     * 
+     *
      * @param customerId
      * @return
      */
@@ -55,16 +55,16 @@ public class AccountDAO {
         String sql = "select " + "customer_id,acc_number,branch_id,balance from Accounts where customer_id = '" + customerId + "'";
 
         try (Connection c = dataSource.getConnection();
-            ResultSet rs = c.createStatement()
-                .executeQuery(sql)) {
+             ResultSet rs = c.createStatement()
+                     .executeQuery(sql)) {
             List<AccountDTO> accounts = new ArrayList<>();
             while (rs.next()) {
                 AccountDTO acc = AccountDTO.builder()
-                    .customerId(rs.getString("customer_id"))
-                    .branchId(rs.getString("branch_id"))
-                    .accNumber(rs.getString("acc_number"))
-                    .balance(rs.getBigDecimal("balance"))
-                    .build();
+                        .customerId(rs.getString("customer_id"))
+                        .branchId(rs.getString("branch_id"))
+                        .accNumber(rs.getString("acc_number"))
+                        .balance(rs.getBigDecimal("balance"))
+                        .build();
 
                 accounts.add(acc);
             }
@@ -77,7 +77,7 @@ public class AccountDAO {
 
     /**
      * Return all accounts owned by a given customer,given his/her external id - JPA version
-     * 
+     *
      * @param customerId
      * @return
      */
@@ -85,19 +85,19 @@ public class AccountDAO {
         String jql = "from Account where customerId = '" + customerId + "'";
         TypedQuery<Account> q = em.createQuery(jql, Account.class);
         return q.getResultList()
-            .stream()
-            .map(a -> AccountDTO.builder()
-                .accNumber(a.getAccNumber())
-                .balance(a.getBalance())
-                .branchId(a.getAccNumber())
-                .customerId(a.getCustomerId())
-                .build())
-            .collect(Collectors.toList());
+                .stream()
+                .map(a -> AccountDTO.builder()
+                        .accNumber(a.getAccNumber())
+                        .balance(a.getBalance())
+                        .branchId(a.getAccNumber())
+                        .customerId(a.getCustomerId())
+                        .build())
+                .collect(Collectors.toList());
     }
 
     /**
      * Return all accounts owned by a given customer,given his/her external id
-     * 
+     *
      * @param customerId
      * @return
      */
@@ -111,11 +111,11 @@ public class AccountDAO {
             List<AccountDTO> accounts = new ArrayList<>();
             while (rs.next()) {
                 AccountDTO acc = AccountDTO.builder()
-                    .customerId(rs.getString("customerId"))
-                    .branchId(rs.getString("branch_id"))
-                    .accNumber(rs.getString("acc_number"))
-                    .balance(rs.getBigDecimal("balance"))
-                    .build();
+                        .customerId(rs.getString("customerId"))
+                        .branchId(rs.getString("branch_id"))
+                        .accNumber(rs.getString("acc_number"))
+                        .balance(rs.getBigDecimal("balance"))
+                        .build();
 
                 accounts.add(acc);
             }
@@ -127,7 +127,7 @@ public class AccountDAO {
 
     /**
      * Return all accounts owned by a given customer,given his/her external id - JPA version
-     * 
+     *
      * @param customerId
      * @return
      */
@@ -135,22 +135,22 @@ public class AccountDAO {
 
         String jql = "from Account where customerId = :customerId";
         TypedQuery<Account> q = em.createQuery(jql, Account.class)
-            .setParameter("customerId", customerId);
+                .setParameter("customerId", customerId);
 
         return q.getResultList()
-            .stream()
-            .map(a -> AccountDTO.builder()
-                .accNumber(a.getAccNumber())
-                .balance(a.getBalance())
-                .branchId(a.getAccNumber())
-                .customerId(a.getCustomerId())
-                .build())
-            .collect(Collectors.toList());
+                .stream()
+                .map(a -> AccountDTO.builder()
+                        .accNumber(a.getAccNumber())
+                        .balance(a.getBalance())
+                        .branchId(a.getAccNumber())
+                        .customerId(a.getCustomerId())
+                        .build())
+                .collect(Collectors.toList());
     }
 
     /**
      * Return all accounts owned by a given customer,given his/her external id - JPA version
-     * 
+     *
      * @param customerId
      * @return
      */
@@ -160,28 +160,28 @@ public class AccountDAO {
         CriteriaQuery<Account> cq = cb.createQuery(Account.class);
         Root<Account> root = cq.from(Account.class);
         cq.select(root)
-            .where(cb.equal(root.get(Account_.customerId), customerId));
+                .where(cb.equal(root.get(Account_.customerId), customerId));
 
         TypedQuery<Account> q = em.createQuery(cq);
 
         return q.getResultList()
-            .stream()
-            .map(a -> AccountDTO.builder()
-                .accNumber(a.getAccNumber())
-                .balance(a.getBalance())
-                .branchId(a.getAccNumber())
-                .customerId(a.getCustomerId())
-                .build())
-            .collect(Collectors.toList());
+                .stream()
+                .map(a -> AccountDTO.builder()
+                        .accNumber(a.getAccNumber())
+                        .balance(a.getBalance())
+                        .branchId(a.getAccNumber())
+                        .customerId(a.getCustomerId())
+                        .build())
+                .collect(Collectors.toList());
     }
 
     private static final Set<String> VALID_COLUMNS_FOR_ORDER_BY = Stream.of("acc_number", "branch_id", "balance")
-        .collect(Collectors.toCollection(HashSet::new));
+            .collect(Collectors.toCollection(HashSet::new));
 
-    
+
     /**
      * Return all accounts owned by a given customer,given his/her external id
-     * 
+     *
      * @param customerId
      * @return
      */
@@ -202,11 +202,11 @@ public class AccountDAO {
             List<AccountDTO> accounts = new ArrayList<>();
             while (rs.next()) {
                 AccountDTO acc = AccountDTO.builder()
-                    .customerId(rs.getString("customerId"))
-                    .branchId(rs.getString("branch_id"))
-                    .accNumber(rs.getString("acc_number"))
-                    .balance(rs.getBigDecimal("balance"))
-                    .build();
+                        .customerId(rs.getString("customerId"))
+                        .branchId(rs.getString("branch_id"))
+                        .accNumber(rs.getString("acc_number"))
+                        .balance(rs.getBigDecimal("balance"))
+                        .build();
 
                 accounts.add(acc);
             }
@@ -217,52 +217,52 @@ public class AccountDAO {
         }
     }
 
-    
-    private static final Map<String,SingularAttribute<Account,?>> VALID_JPA_COLUMNS_FOR_ORDER_BY = Stream.of(
-        new AbstractMap.SimpleEntry<>(Account_.ACC_NUMBER, Account_.accNumber),
-        new AbstractMap.SimpleEntry<>(Account_.BRANCH_ID, Account_.branchId),
-        new AbstractMap.SimpleEntry<>(Account_.BALANCE, Account_.balance)
+
+    private static final Map<String, SingularAttribute<Account, ?>> VALID_JPA_COLUMNS_FOR_ORDER_BY = Stream.of(
+            new AbstractMap.SimpleEntry<>(Account_.ACC_NUMBER, Account_.accNumber),
+            new AbstractMap.SimpleEntry<>(Account_.BRANCH_ID, Account_.branchId),
+            new AbstractMap.SimpleEntry<>(Account_.BALANCE, Account_.balance)
     )
-    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
     /**
      * Return all accounts owned by a given customer,given his/her external id
-     * 
+     *
      * @param customerId
      * @return
      */
     public List<AccountDTO> safeJpaFindAccountsByCustomerId(String customerId, String orderBy) {
 
-SingularAttribute<Account,?> orderByAttribute = VALID_JPA_COLUMNS_FOR_ORDER_BY.get(orderBy);
-if ( orderByAttribute == null) {
-    throw new IllegalArgumentException("Nice try!");
-}
+        SingularAttribute<Account, ?> orderByAttribute = VALID_JPA_COLUMNS_FOR_ORDER_BY.get(orderBy);
+        if (orderByAttribute == null) {
+            throw new IllegalArgumentException("Nice try!");
+        }
 
-CriteriaBuilder cb = em.getCriteriaBuilder();
-CriteriaQuery<Account> cq = cb.createQuery(Account.class);
-Root<Account> root = cq.from(Account.class);
-cq.select(root)
-  .where(cb.equal(root.get(Account_.customerId), customerId))
-  .orderBy(cb.asc(root.get(orderByAttribute)));
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Account> cq = cb.createQuery(Account.class);
+        Root<Account> root = cq.from(Account.class);
+        cq.select(root)
+                .where(cb.equal(root.get(Account_.customerId), customerId))
+                .orderBy(cb.asc(root.get(orderByAttribute)));
 
-TypedQuery<Account> q = em.createQuery(cq);
+        TypedQuery<Account> q = em.createQuery(cq);
 
         return q.getResultList()
-            .stream()
-            .map(a -> AccountDTO.builder()
-                .accNumber(a.getAccNumber())
-                .balance(a.getBalance())
-                .branchId(a.getAccNumber())
-                .customerId(a.getCustomerId())
-                .build())
-            .collect(Collectors.toList());
-        
+                .stream()
+                .map(a -> AccountDTO.builder()
+                        .accNumber(a.getAccNumber())
+                        .balance(a.getBalance())
+                        .branchId(a.getAccNumber())
+                        .customerId(a.getCustomerId())
+                        .build())
+                .collect(Collectors.toList());
+
     }
-    
+
     /**
      * Invalid placeholder usage example 
-     * 
-     * @param tableName 
+     *
+     * @param tableName
      * @return
      */
     public Long wrongCountRecordsByTableName(String tableName) {
@@ -281,15 +281,15 @@ TypedQuery<Account> q = em.createQuery(cq);
 
     /**
      * Invalid placeholder usage example - JPA
-     * 
-     * @param tableName 
+     *
+     * @param tableName
      * @return
      */
     public Long wrongJpaCountRecordsByTableName(String tableName) {
 
         String jql = "select count(*) from :tableName";
         TypedQuery<Long> q = em.createQuery(jql, Long.class)
-            .setParameter("tableName", tableName);
+                .setParameter("tableName", tableName);
 
         return q.getSingleResult();
 

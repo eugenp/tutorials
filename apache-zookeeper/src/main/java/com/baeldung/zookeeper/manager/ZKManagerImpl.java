@@ -15,7 +15,9 @@ public class ZKManagerImpl implements ZKManager {
         initialize();
     }
 
-    /** * Initialize connection */
+    /**
+     * Initialize connection
+     */
     private void initialize() {
         try {
             zkConnection = new ZKConnection();
@@ -52,7 +54,7 @@ public class ZKManagerImpl implements ZKManager {
 
     public void update(String path, byte[] data) throws KeeperException, InterruptedException {
         int version = zkeeper.exists(path, true)
-            .getVersion();
+                .getVersion();
         zkeeper.setData(path, data, version);
     }
 }

@@ -69,14 +69,14 @@ public final class CreateXmlDatabaseIntegrationTest {
             try (final var manager = database.openResourceManager("resource");
                  final var outputStream = new ByteArrayOutputStream()) {
                 final var serializer = XmlSerializer.newBuilder(manager, outputStream)
-                                                    .emitXMLDeclaration()
-                                                    .build();
+                        .emitXMLDeclaration()
+                        .build();
                 serializer.call();
 
                 final var expectedXml = Files.readAllLines(XML_TEST_RESULT_DIRECTORY.resolve("orga.xml"),
-                                                           StandardCharsets.UTF_8)
-                                             .stream()
-                                             .collect(Collectors.joining());
+                        StandardCharsets.UTF_8)
+                        .stream()
+                        .collect(Collectors.joining());
                 assertEquals(expectedXml, outputStream.toString(StandardCharsets.UTF_8));
             }
         }

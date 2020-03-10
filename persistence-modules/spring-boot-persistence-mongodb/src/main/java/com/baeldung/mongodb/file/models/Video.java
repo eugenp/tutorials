@@ -5,7 +5,7 @@ import java.io.InputStream;
 public class Video {
     private String title;
     private InputStream stream;
-    
+
     public Video() {
         super();
     }

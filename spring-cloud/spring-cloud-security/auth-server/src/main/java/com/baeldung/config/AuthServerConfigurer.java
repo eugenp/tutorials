@@ -36,42 +36,42 @@ public class AuthServerConfigurer extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
-    
+
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public void configure(
-        ClientDetailsServiceConfigurer clients)
-        throws Exception {
+            ClientDetailsServiceConfigurer clients)
+            throws Exception {
         clients
-            .inMemory()
-            .withClient("authserver")
-            .secret(passwordEncoder.encode("passwordforauthserver"))
-            .redirectUris("http://localhost:8080/login")
-            .authorizedGrantTypes("authorization_code",
-                "refresh_token")
-            .scopes("myscope")
-            .autoApprove(true)
-            .accessTokenValiditySeconds(30)
-            .refreshTokenValiditySeconds(1800);
+                .inMemory()
+                .withClient("authserver")
+                .secret(passwordEncoder.encode("passwordforauthserver"))
+                .redirectUris("http://localhost:8080/login")
+                .authorizedGrantTypes("authorization_code",
+                        "refresh_token")
+                .scopes("myscope")
+                .autoApprove(true)
+                .accessTokenValiditySeconds(30)
+                .refreshTokenValiditySeconds(1800);
     }
 
     @Override
     public void configure(
-        AuthorizationServerEndpointsConfigurer endpoints)
-        throws Exception {
+            AuthorizationServerEndpointsConfigurer endpoints)
+            throws Exception {
         endpoints
-            .accessTokenConverter(jwtAccessTokenConverter())
-            .userDetailsService(userDetailsService);
+                .accessTokenConverter(jwtAccessTokenConverter())
+                .userDetailsService(userDetailsService);
     }
 
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(
-            keystore, keystorePassword.toCharArray());
+                keystore, keystorePassword.toCharArray());
         KeyPair keyPair = keyStoreKeyFactory.getKeyPair(
-            keyAlias, keyPassword.toCharArray());
+                keyAlias, keyPassword.toCharArray());
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         converter.setKeyPair(keyPair);
         return converter;

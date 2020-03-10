@@ -1,6 +1,7 @@
 package com.baeldung.rsocket;
 
 import static com.baeldung.rsocket.support.Constants.*;
+
 import io.rsocket.Payload;
 import io.rsocket.RSocket;
 import io.rsocket.RSocketFactory;
@@ -13,17 +14,17 @@ public class ReqResClient {
 
     public ReqResClient() {
         this.socket = RSocketFactory.connect()
-          .transport(TcpClientTransport.create("localhost", TCP_PORT))
-          .start()
-          .block();
+                .transport(TcpClientTransport.create("localhost", TCP_PORT))
+                .start()
+                .block();
     }
 
     public String callBlocking(String string) {
         return socket
-          .requestResponse(DefaultPayload.create(string))
-          .map(Payload::getDataUtf8)
-          .onErrorReturn(ERROR_MSG)
-          .block();
+                .requestResponse(DefaultPayload.create(string))
+                .map(Payload::getDataUtf8)
+                .onErrorReturn(ERROR_MSG)
+                .block();
     }
 
     public void dispose() {

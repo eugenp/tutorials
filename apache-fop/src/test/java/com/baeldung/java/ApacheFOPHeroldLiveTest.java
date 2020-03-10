@@ -33,7 +33,7 @@ import org.w3c.dom.Document;
 
 public class ApacheFOPHeroldLiveTest {
     private final String[] inputUrls = {// @formatter:off
-           // "http://www.baeldung.com/spring-security-basic-authentication",
+            // "http://www.baeldung.com/spring-security-basic-authentication",
             "http://www.baeldung.com/spring-security-digest-authentication"
             //"http://www.baeldung.com/spring-httpmessageconverter-rest",
             //"http://www.baeldung.com/2011/11/06/restful-web-service-discoverability-part-4/",

@@ -14,7 +14,7 @@ public class JavaBeanConfig {
         jPerson.setAge("31");
         jPerson.setEyesColor("green");
         jPerson.setHairColor("blond");
-        
+
         return jPerson;
     }
 

@@ -12,25 +12,25 @@ public class UseLocalTimeUnitTest {
     @Test
     public void givenValues_whenUsingFactoryOf_thenLocalTime() {
         Assert.assertEquals("07:07:07", useLocalTime.getLocalTimeUsingFactoryOfMethod(7, 7, 7)
-            .toString());
+                .toString());
     }
 
     @Test
     public void givenValues_whenUsingFactoryOfWithoutSeconds_thenLocalTime() {
         Assert.assertEquals("07:07", useLocalTime.getLocalTimeUsingFactoryOfMethod(7, 7)
-            .toString());
+                .toString());
     }
 
     @Test
     public void givenString_whenUsingParse_thenLocalTime() {
         Assert.assertEquals("06:30", useLocalTime.getLocalTimeUsingParseMethod("06:30")
-            .toString());
+                .toString());
     }
 
     @Test
     public void givenTime_whenAddHour_thenLocalTime() {
         Assert.assertEquals("07:30", useLocalTime.addAnHour(LocalTime.of(6, 30))
-            .toString());
+                .toString());
     }
 
     @Test

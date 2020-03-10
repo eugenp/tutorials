@@ -10,10 +10,10 @@ public class LogoutCommand extends FrontCommand {
     public void process() throws ServletException, IOException {
         super.process();
         Optional.ofNullable(request.getSession(false))
-          .ifPresent(session -> {
-              session.removeAttribute("username");
-              session.removeAttribute("order");
-          });
+                .ifPresent(session -> {
+                    session.removeAttribute("username");
+                    session.removeAttribute("order");
+                });
         response.sendRedirect("/?command=Home");
     }
 }

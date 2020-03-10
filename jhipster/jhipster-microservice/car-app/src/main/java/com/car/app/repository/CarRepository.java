@@ -10,6 +10,6 @@ import java.util.List;
  * Spring Data JPA repository for the Car entity.
  */
 @SuppressWarnings("unused")
-public interface CarRepository extends JpaRepository<Car,Long> {
+public interface CarRepository extends JpaRepository<Car, Long> {
 
 }

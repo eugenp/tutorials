@@ -5,15 +5,15 @@ import java.util.Collections;
 import java.util.List;
 
 public class DFSMazeSolver {
-    private static final int[][] DIRECTIONS = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };
+    private static final int[][] DIRECTIONS = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
     public List<Coordinate> solve(Maze maze) {
         List<Coordinate> path = new ArrayList<>();
         if (explore(maze, maze.getEntry()
-            .getX(),
-            maze.getEntry()
-                .getY(),
-            path)) {
+                        .getX(),
+                maze.getEntry()
+                        .getY(),
+                path)) {
             return path;
         }
         return Collections.emptyList();

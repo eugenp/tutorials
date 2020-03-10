@@ -17,7 +17,8 @@ public class User {
 
     private String lastName;
 
-    public User() { }
+    public User() {
+    }
 
     public int getId() {
         return id;

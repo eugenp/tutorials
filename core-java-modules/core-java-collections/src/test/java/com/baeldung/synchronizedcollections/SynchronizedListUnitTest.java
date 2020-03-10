@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 import org.junit.Test;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class SynchronizedListUnitTest {
@@ -22,10 +24,10 @@ public class SynchronizedListUnitTest {
         thread2.start();
         thread1.join();
         thread2.join();
-        
+
         assertThat(syncList.size()).isEqualTo(12);
     }
-    
+
     @Test
     public void givenStringList_whenTwoThreadsIterateOnSynchronizedList_thenCorrectResult() throws InterruptedException {
         List<String> syncCollection = Collections.synchronizedList(Arrays.asList("a", "b", "c"));
@@ -38,14 +40,14 @@ public class SynchronizedListUnitTest {
                 });
             }
         };
-        
+
         Thread thread1 = new Thread(listOperations);
         Thread thread2 = new Thread(listOperations);
         thread1.start();
         thread2.start();
         thread1.join();
         thread2.join();
-        
+
         assertThat(uppercasedCollection.get(0)).isEqualTo("A");
     }
 }

@@ -33,8 +33,8 @@ public class FlipController {
 
     @RequestMapping(value = "/foo/{id}", method = RequestMethod.GET)
     @FlipOnDaysOfWeek(daysOfWeek = {
-        DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY,
-        DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY
+            DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY,
+            DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY
     })
     public Foo getFooByNewId(@PathVariable int id) {
         return flipService.getFooById(id).orElse(new Foo("Not Found", -1));

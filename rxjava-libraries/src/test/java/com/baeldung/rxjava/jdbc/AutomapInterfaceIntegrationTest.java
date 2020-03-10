@@ -24,41 +24,41 @@ public class AutomapInterfaceIntegrationTest {
     @Before
     public void setup() {
         Observable<Integer> create = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int primary key, name varchar(255))")
-          .count();
+                .count();
         truncate = db.update("TRUNCATE TABLE EMPLOYEE")
-           .dependsOn(create)
-           .count();
+                .dependsOn(create)
+                .count();
         insert1 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(1, 'Alan')")
-          .dependsOn(truncate)
-          .count();
+                .dependsOn(truncate)
+                .count();
         insert2 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(2, 'Sarah')")
-          .dependsOn(insert1)
-          .count();
+                .dependsOn(insert1)
+                .count();
     }
 
     @Test
     public void whenSelectFromTableAndAutomap_thenCorrect() {
         List<Employee> employees = db.select("select id, name from EMPLOYEE")
-          .dependsOn(insert2)
-          .autoMap(Employee.class)
-          .toList()
-          .toBlocking()
-          .single();
+                .dependsOn(insert2)
+                .autoMap(Employee.class)
+                .toList()
+                .toBlocking()
+                .single();
 
         assertThat(employees.get(0)
-          .id()).isEqualTo(1);
+                .id()).isEqualTo(1);
         assertThat(employees.get(0)
-          .name()).isEqualTo("Alan");
+                .name()).isEqualTo("Alan");
         assertThat(employees.get(1)
-          .id()).isEqualTo(2);
+                .id()).isEqualTo(2);
         assertThat(employees.get(1)
-          .name()).isEqualTo("Sarah");
+                .name()).isEqualTo("Sarah");
     }
 
     @After
     public void close() {
         db.update("DROP TABLE EMPLOYEE")
-          .dependsOn(truncate);
+                .dependsOn(truncate);
         connectionProvider.close();
     }
 }

@@ -4,7 +4,7 @@ import javax.ejb.Stateless;
 
 @Stateless
 public class CapsConvertor {
-    public ConvertToLowerCase getLowerCase(){
+    public ConvertToLowerCase getLowerCase() {
         return new ConvertToLowerCase();
     }
 }

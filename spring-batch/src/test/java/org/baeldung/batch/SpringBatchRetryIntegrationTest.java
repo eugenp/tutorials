@@ -31,7 +31,7 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringRunner.class)
 @SpringBatchTest
 @EnableAutoConfiguration
-@ContextConfiguration(classes = { SpringBatchRetryConfig.class })
+@ContextConfiguration(classes = {SpringBatchRetryConfig.class})
 public class SpringBatchRetryIntegrationTest {
 
     private static final String TEST_OUTPUT = "xml/retryOutput.xml";
@@ -49,7 +49,7 @@ public class SpringBatchRetryIntegrationTest {
     @Test
     public void whenEndpointAlwaysFail_thenJobFails() throws Exception {
         when(closeableHttpClient.execute(any()))
-          .thenThrow(new ConnectTimeoutException("Endpoint is down"));
+                .thenThrow(new ConnectTimeoutException("Endpoint is down"));
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(defaultJobParameters());
         JobInstance actualJobInstance = jobExecution.getJobInstance();
@@ -67,11 +67,11 @@ public class SpringBatchRetryIntegrationTest {
 
         //fails for first two calls and passes third time onwards
         when(httpResponse.getEntity())
-          .thenReturn(new StringEntity("{ \"age\":10, \"postCode\":\"430222\" }"));
+                .thenReturn(new StringEntity("{ \"age\":10, \"postCode\":\"430222\" }"));
         when(closeableHttpClient.execute(any()))
-          .thenThrow(new ConnectTimeoutException("Timeout count 1"))
-          .thenThrow(new ConnectTimeoutException("Timeout count 2"))
-          .thenReturn(httpResponse);
+                .thenThrow(new ConnectTimeoutException("Timeout count 1"))
+                .thenThrow(new ConnectTimeoutException("Timeout count 2"))
+                .thenReturn(httpResponse);
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(defaultJobParameters());
         JobInstance actualJobInstance = jobExecution.getJobInstance();
@@ -81,7 +81,7 @@ public class SpringBatchRetryIntegrationTest {
         assertThat(actualJobExitStatus.getExitCode(), is("COMPLETED"));
         AssertFile.assertFileEquals(expectedResult, actualResult);
     }
-    
+
     private JobParameters defaultJobParameters() {
         JobParametersBuilder paramsBuilder = new JobParametersBuilder();
         paramsBuilder.addString("jobID", String.valueOf(System.currentTimeMillis()));

@@ -14,7 +14,7 @@ class WebserviceManualTest extends GroovyTestCase {
     JsonSlurper jsonSlurper = new JsonSlurper()
 
     static RESTClient client = new RESTClient("https://postman-echo.com")
-    
+
     static {
         client.defaultAcceptHeader = ContentType.JSON
         client.httpClient.sslTrustAllCerts = true
@@ -37,7 +37,7 @@ class WebserviceManualTest extends GroovyTestCase {
         postConnection.requestMethod = 'POST'
         assert postConnection.responseCode == 200
     }
-    
+
     void test_whenSendingPostWithParams_thenRespose200() {
         def postmanPost = new URL('https://postman-echo.com/post')
         def form = "param1=This is request parameter."
@@ -54,7 +54,7 @@ class WebserviceManualTest extends GroovyTestCase {
         assert postConnection.responseCode == 200
         assert jsonSlurper.parseText(text)?.json.param1 == "This is request parameter."
     }
-    
+
     void test_whenReadingRSS_thenReceiveFeed() {
         def rssFeed = new XmlParser().parse("https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en")
         def stories = []
@@ -74,7 +74,7 @@ class WebserviceManualTest extends GroovyTestCase {
         }
         assert stories.size() == 5
     }
-    
+
     void test_whenConsumingSoap_thenReceiveResponse() {
         def url = "http://www.dataaccess.com/webservicesserver/numberconversion.wso"
         def soapClient = new SOAPClient(url)
@@ -104,7 +104,7 @@ class WebserviceManualTest extends GroovyTestCase {
 
     void test_whenConsumingRestPost_thenReceiveResponse() {
         def path = "/post"
-        def params = ["foo":1,"bar":2]
+        def params = ["foo": 1, "bar": 2]
         def response
         try {
             response = client.post(path: path) {
@@ -138,7 +138,7 @@ class WebserviceManualTest extends GroovyTestCase {
         oAuthClient.httpClient.sslTrustAllCerts = true
 
         def path = "/oauth1"
-        def params = [oauth_consumer_key: "RKCGzna7bv9YD57c", oauth_signature_method: "HMAC-SHA1", oauth_timestamp:1567089944, oauth_nonce: "URT7v4", oauth_version: 1.0, oauth_signature: 'RGgR/ktDmclkM0ISWaFzebtlO0A=']
+        def params = [oauth_consumer_key: "RKCGzna7bv9YD57c", oauth_signature_method: "HMAC-SHA1", oauth_timestamp: 1567089944, oauth_nonce: "URT7v4", oauth_version: 1.0, oauth_signature: 'RGgR/ktDmclkM0ISWaFzebtlO0A=']
         def response
         try {
             response = oAuthClient.get(path: path, query: params)

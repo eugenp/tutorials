@@ -12,7 +12,7 @@ public class TransientUnitTest {
     @Test
     public void whenSerializing_thenTransientFieldIgnored() {
         Moshi moshi = new Moshi.Builder()
-          .build();
+                .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
         Post post = new Post("My Post", "Baeldung");
@@ -23,13 +23,14 @@ public class TransientUnitTest {
     @Test
     public void whenDeserializing_thenTransientFieldIgnored() throws IOException {
         Moshi moshi = new Moshi.Builder()
-          .build();
+                .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
         String json = "{\"authored_by\":\"Baeldung\",\"title\":\"My Post\"}";
         Post post = jsonAdapter.fromJson(json);
         System.out.println(post);
     }
+
     public static class Post {
         private String title;
         private transient String author;

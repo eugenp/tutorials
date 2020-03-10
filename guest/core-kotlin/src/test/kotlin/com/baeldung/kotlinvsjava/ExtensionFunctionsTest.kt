@@ -20,7 +20,7 @@ class ExtensionFunctionsTest {
         assertEquals(3, sampleString.size)
     }
 
-    fun String.appendString(str : String): String {
+    fun String.appendString(str: String): String {
         return plus(str)
     }
 

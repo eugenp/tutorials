@@ -40,13 +40,13 @@ public class TitleCaseConverter {
         }
 
         return Arrays
-          .stream(text.split(WORD_SEPARATOR))
-          .map(word -> word.isEmpty()
-            ? word
-            : Character.toTitleCase(word.charAt(0)) + word
-              .substring(1)
-              .toLowerCase())
-          .collect(Collectors.joining(WORD_SEPARATOR));
+                .stream(text.split(WORD_SEPARATOR))
+                .map(word -> word.isEmpty()
+                        ? word
+                        : Character.toTitleCase(word.charAt(0)) + word
+                        .substring(1)
+                        .toLowerCase())
+                .collect(Collectors.joining(WORD_SEPARATOR));
     }
 
     public static String convertToTitleCaseIcu4j(String text) {

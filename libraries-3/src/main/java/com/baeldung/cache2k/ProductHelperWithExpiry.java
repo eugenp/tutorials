@@ -14,10 +14,10 @@ public class ProductHelperWithExpiry {
 
     public ProductHelperWithExpiry() {
         cachedDiscounts = Cache2kBuilder.of(String.class, Integer.class)
-            .name("discount-expiry")
-            .expireAfterWrite(5, TimeUnit.MILLISECONDS)
-            .entryCapacity(100)
-            .build();
+                .name("discount-expiry")
+                .expireAfterWrite(5, TimeUnit.MILLISECONDS)
+                .entryCapacity(100)
+                .build();
 
     }
 

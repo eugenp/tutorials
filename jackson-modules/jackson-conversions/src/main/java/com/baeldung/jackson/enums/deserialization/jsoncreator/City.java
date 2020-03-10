@@ -11,5 +11,5 @@ public class City {
     public void setDistance(Distance distance) {
         this.distance = distance;
     }
-    
+
 }

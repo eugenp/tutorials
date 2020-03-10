@@ -1,5 +1,5 @@
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
-import { Principal } from 'app/core/auth/principal.service';
+import {Directive, Input, TemplateRef, ViewContainerRef} from '@angular/core';
+import {Principal} from 'app/core/auth/principal.service';
 
 /**
  * @whatItDoes Conditionally includes an HTML element if current user has any
@@ -18,7 +18,8 @@ import { Principal } from 'app/core/auth/principal.service';
 export class HasAnyAuthorityDirective {
     private authorities: string[];
 
-    constructor(private principal: Principal, private templateRef: TemplateRef<any>, private viewContainerRef: ViewContainerRef) {}
+    constructor(private principal: Principal, private templateRef: TemplateRef<any>, private viewContainerRef: ViewContainerRef) {
+    }
 
     @Input()
     set jhiHasAnyAuthority(value: string | string[]) {

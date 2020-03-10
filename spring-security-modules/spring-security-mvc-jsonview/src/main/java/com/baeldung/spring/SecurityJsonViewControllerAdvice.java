@@ -33,7 +33,7 @@ public class SecurityJsonViewControllerAdvice extends AbstractMappingJacksonResp
                 bodyContainer.setSerializationView(jsonViews.get(0));
                 return;
             }
-            throw new IllegalArgumentException("Ambiguous @JsonView declaration for roles "+ authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(",")));
+            throw new IllegalArgumentException("Ambiguous @JsonView declaration for roles " + authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(",")));
         }
     }
 }

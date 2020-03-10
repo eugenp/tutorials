@@ -24,7 +24,7 @@ public class HibernateOneToManyAnnotationMain {
         itemsSet.add(item2);
 
         cart.setItems(itemsSet);
-        
+
 
         SessionFactory sessionFactory = null;
         Session session = null;

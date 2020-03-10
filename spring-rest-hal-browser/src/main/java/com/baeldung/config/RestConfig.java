@@ -10,14 +10,14 @@ import org.springframework.validation.Validator;
 @Configuration
 public class RestConfig extends RepositoryRestConfigurerAdapter {
 
-  //access to global validator
-  @Autowired
-  @Lazy
-  private Validator validator;
+    //access to global validator
+    @Autowired
+    @Lazy
+    private Validator validator;
 
-  @Override
-  public void configureValidatingRepositoryEventListener(ValidatingRepositoryEventListener validatingListener) {
-    validatingListener.addValidator("beforeCreate", validator );
-    validatingListener.addValidator("beforeSave", validator);
-  }
+    @Override
+    public void configureValidatingRepositoryEventListener(ValidatingRepositoryEventListener validatingListener) {
+        validatingListener.addValidator("beforeCreate", validator);
+        validatingListener.addValidator("beforeSave", validator);
+    }
 }

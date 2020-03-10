@@ -21,20 +21,20 @@ public class MultipleAuthProvidersSecurityConfig extends WebSecurityConfigurerAd
         auth.authenticationProvider(customAuthProvider);
 
         auth.inMemoryAuthentication()
-            .withUser("memuser")
-            .password(passwordEncoder().encode("pass"))
-            .roles("USER");
+                .withUser("memuser")
+                .password(passwordEncoder().encode("pass"))
+                .roles("USER");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic()
-            .and()
-            .authorizeRequests()
-            .antMatchers("/api/**")
-            .authenticated();
+                .and()
+                .authorizeRequests()
+                .antMatchers("/api/**")
+                .authenticated();
     }
-    
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

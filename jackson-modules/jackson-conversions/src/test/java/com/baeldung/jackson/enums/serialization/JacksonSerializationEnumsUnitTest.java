@@ -60,7 +60,7 @@ public class JacksonSerializationEnumsUnitTest {
     @Test
     public final void whenSerializingArrayOfEnums_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String json = mapper.writeValueAsString(new DistanceEnumWithJsonFormat[] { DistanceEnumWithJsonFormat.MILE, DistanceEnumWithJsonFormat.KILOMETER });
+        final String json = mapper.writeValueAsString(new DistanceEnumWithJsonFormat[]{DistanceEnumWithJsonFormat.MILE, DistanceEnumWithJsonFormat.KILOMETER});
 
         assertThat(json, containsString("\"meters\":1609.34"));
     }

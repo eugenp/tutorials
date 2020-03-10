@@ -20,25 +20,29 @@ import static org.junit.Assert.assertNotNull;
 
 public class FlowableIntegrationTest {
 
-    @Test public void whenFlowableIsCreated_thenItIsProperlyInitialized() {
+    @Test
+    public void whenFlowableIsCreated_thenItIsProperlyInitialized() {
         Flowable<Integer> integerFlowable = Flowable.just(1, 2, 3, 4);
         assertNotNull(integerFlowable);
     }
 
-    @Test public void whenFlowableIsCreatedFromObservable_thenItIsProperlyInitialized() throws InterruptedException {
+    @Test
+    public void whenFlowableIsCreatedFromObservable_thenItIsProperlyInitialized() throws InterruptedException {
         Observable<Integer> integerObservable = Observable.just(1, 2, 3);
         Flowable<Integer> integerFlowable = integerObservable.toFlowable(BackpressureStrategy.BUFFER);
         assertNotNull(integerFlowable);
 
     }
 
-    @Test public void whenFlowableIsCreatedFromFlowableOnSubscribe_thenItIsProperlyInitialized() throws InterruptedException {
+    @Test
+    public void whenFlowableIsCreatedFromFlowableOnSubscribe_thenItIsProperlyInitialized() throws InterruptedException {
         FlowableOnSubscribe<Integer> flowableOnSubscribe = flowableEmitter -> flowableEmitter.onNext(1);
         Flowable<Integer> integerFlowable = Flowable.create(flowableOnSubscribe, BackpressureStrategy.BUFFER);
         assertNotNull(integerFlowable);
     }
 
-    @Test public void thenAllValuesAreBufferedAndReceived() {
+    @Test
+    public void thenAllValuesAreBufferedAndReceived() {
         List testList = IntStream.range(0, 100000).boxed().collect(Collectors.toList());
         Observable observable = Observable.fromIterable(testList);
         TestSubscriber<Integer> testSubscriber = observable.toFlowable(BackpressureStrategy.BUFFER).observeOn(Schedulers.computation()).test();
@@ -50,7 +54,8 @@ public class FlowableIntegrationTest {
         assertEquals(testList, receivedInts);
     }
 
-    @Test public void whenDropStrategyUsed_thenOnBackpressureDropped() {
+    @Test
+    public void whenDropStrategyUsed_thenOnBackpressureDropped() {
         List testList = IntStream.range(0, 100000).boxed().collect(Collectors.toList());
 
         Observable observable = Observable.fromIterable(testList);
@@ -62,7 +67,8 @@ public class FlowableIntegrationTest {
         assertThat(!receivedInts.contains(100000));
     }
 
-    @Test public void whenMissingStrategyUsed_thenException() {
+    @Test
+    public void whenMissingStrategyUsed_thenException() {
         Observable observable = Observable.range(1, 100000);
         TestSubscriber subscriber = observable.toFlowable(BackpressureStrategy.MISSING).observeOn(Schedulers.computation()).test();
 
@@ -70,15 +76,17 @@ public class FlowableIntegrationTest {
         subscriber.assertError(MissingBackpressureException.class);
     }
 
-    @Test public void  whenErrorStrategyUsed_thenExceptionIsThrown() {
-            Observable observable = Observable.range(1, 100000);
+    @Test
+    public void whenErrorStrategyUsed_thenExceptionIsThrown() {
+        Observable observable = Observable.range(1, 100000);
         TestSubscriber subscriber = observable.toFlowable(BackpressureStrategy.ERROR).observeOn(Schedulers.computation()).test();
 
         subscriber.awaitTerminalEvent();
         subscriber.assertError(MissingBackpressureException.class);
     }
 
-    @Test public void whenLatestStrategyUsed_thenTheLastElementReceived() {
+    @Test
+    public void whenLatestStrategyUsed_thenTheLastElementReceived() {
         List testList = IntStream.range(0, 100000).boxed().collect(Collectors.toList());
         Observable observable = Observable.fromIterable(testList);
         TestSubscriber<Integer> testSubscriber = observable.toFlowable(BackpressureStrategy.LATEST).observeOn(Schedulers.computation()).test();

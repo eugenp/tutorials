@@ -35,8 +35,8 @@ public class APIDemoHandler implements RequestStreamHandler {
                 Person person = new Person((String) event.get("body"));
 
                 dynamoDb.getTable(DYNAMODB_TABLE_NAME)
-                    .putItem(new PutItemSpec().withItem(new Item().withNumber("id", person.getId())
-                        .withString("name", person.getName())));
+                        .putItem(new PutItemSpec().withItem(new Item().withNumber("id", person.getId())
+                                .withString("name", person.getName())));
             }
 
             JSONObject responseBody = new JSONObject();
@@ -79,7 +79,7 @@ public class APIDemoHandler implements RequestStreamHandler {
 
                     int id = Integer.parseInt((String) pps.get("id"));
                     result = dynamoDb.getTable(DYNAMODB_TABLE_NAME)
-                        .getItem("id", id);
+                            .getItem("id", id);
                 }
 
             } else if (event.get("queryStringParameters") != null) {
@@ -89,7 +89,7 @@ public class APIDemoHandler implements RequestStreamHandler {
 
                     int id = Integer.parseInt((String) qps.get("id"));
                     result = dynamoDb.getTable(DYNAMODB_TABLE_NAME)
-                        .getItem("id", id);
+                            .getItem("id", id);
                 }
             }
             if (result != null) {

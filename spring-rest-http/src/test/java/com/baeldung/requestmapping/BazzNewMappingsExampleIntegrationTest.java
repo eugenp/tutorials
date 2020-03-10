@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,9 +30,9 @@ import com.baeldung.config.MvcConfig;
 @WebAppConfiguration
 @AutoConfigureWebClient
 public class BazzNewMappingsExampleIntegrationTest {
-    
+
     private MockMvc mockMvc;
-    
+
     @Autowired
     private WebApplicationContext webApplicationContext;
 
@@ -39,44 +40,44 @@ public class BazzNewMappingsExampleIntegrationTest {
     public void setUp() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
-    
+
     @Test
-    public void whenGettingAllBazz_thenSuccess() throws Exception{
+    public void whenGettingAllBazz_thenSuccess() throws Exception {
         mockMvc.perform(get("/bazz"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$", hasSize(4)))
-            .andExpect(jsonPath("$[1].id", is("2")))
-            .andExpect(jsonPath("$[1].name", is("Bazz2")));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(4)))
+                .andExpect(jsonPath("$[1].id", is("2")))
+                .andExpect(jsonPath("$[1].name", is("Bazz2")));
     }
-    
+
     @Test
-    public void whenGettingABazz_thenSuccess() throws Exception{
+    public void whenGettingABazz_thenSuccess() throws Exception {
         mockMvc.perform(get("/bazz/1"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.id", is("1")))
-            .andExpect(jsonPath("$.name", is("Bazz1")));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", is("1")))
+                .andExpect(jsonPath("$.name", is("Bazz1")));
     }
-    
+
     @Test
-    public void whenAddingABazz_thenSuccess() throws Exception{
+    public void whenAddingABazz_thenSuccess() throws Exception {
         mockMvc.perform(post("/bazz").param("name", "Bazz5"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.id", is("5")))
-            .andExpect(jsonPath("$.name", is("Bazz5")));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", is("5")))
+                .andExpect(jsonPath("$.name", is("Bazz5")));
     }
-    
+
     @Test
-    public void whenUpdatingABazz_thenSuccess() throws Exception{
+    public void whenUpdatingABazz_thenSuccess() throws Exception {
         mockMvc.perform(put("/bazz/5").param("name", "Bazz6"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.id", is("5")))
-            .andExpect(jsonPath("$.name", is("Bazz6")));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", is("5")))
+                .andExpect(jsonPath("$.name", is("Bazz6")));
     }
-    
+
     @Test
-    public void whenDeletingABazz_thenSuccess() throws Exception{
+    public void whenDeletingABazz_thenSuccess() throws Exception {
         mockMvc.perform(delete("/bazz/5"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.id", is("5")));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", is("5")));
     }
 }

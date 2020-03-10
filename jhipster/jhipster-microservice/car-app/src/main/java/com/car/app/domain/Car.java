@@ -100,10 +100,10 @@ public class Car implements Serializable {
     @Override
     public String toString() {
         return "Car{" +
-            "id=" + id +
-            ", make='" + make + "'" +
-            ", brand='" + brand + "'" +
-            ", price='" + price + "'" +
-            '}';
+                "id=" + id +
+                ", make='" + make + "'" +
+                ", brand='" + brand + "'" +
+                ", price='" + price + "'" +
+                '}';
     }
 }

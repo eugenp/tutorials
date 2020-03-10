@@ -28,15 +28,15 @@ public class ELSampleBean {
     public void init() {
         pageCounter = randomIntGen.nextInt();
         FacesContext.getCurrentInstance()
-            .getApplication()
-            .addELContextListener(new ELContextListener() {
-                @Override
-                public void contextCreated(ELContextEvent evt) {
-                    evt.getELContext()
-                        .getImportHandler()
-                        .importClass("com.baeldung.springintegration.controllers.ELSampleBean");
-                }
-            });
+                .getApplication()
+                .addELContextListener(new ELContextListener() {
+                    @Override
+                    public void contextCreated(ELContextEvent evt) {
+                        evt.getELContext()
+                                .getImportHandler()
+                                .importClass("com.baeldung.springintegration.controllers.ELSampleBean");
+                    }
+                });
     }
 
     public void save() {
@@ -53,7 +53,7 @@ public class ELSampleBean {
 
     public Long multiplyValue(LambdaExpression expr) {
         Long theResult = (Long) expr.invoke(FacesContext.getCurrentInstance()
-            .getELContext(), pageCounter);
+                .getELContext(), pageCounter);
         return theResult;
     }
 

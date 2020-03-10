@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.baeldung.boot.domain.Article;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest(properties="spring.datasource.data=classpath:import_entities.sql")
+@DataJpaTest(properties = "spring.datasource.data=classpath:import_entities.sql")
 public class ArticleRepositoryIntegrationTest {
 
     @Autowired
@@ -24,43 +24,43 @@ public class ArticleRepositoryIntegrationTest {
 
     @Test
     public void givenImportedArticlesWhenFindAllByPublicationDateThenArticles1And2Returned()
-      throws Exception {
+            throws Exception {
         List<Article> result = repository.findAllByPublicationDate(
-          new SimpleDateFormat("yyyy-MM-dd").parse("2018-01-01")
+                new SimpleDateFormat("yyyy-MM-dd").parse("2018-01-01")
         );
 
         assertEquals(2, result.size());
         assertTrue(result.stream()
-          .map(Article::getId)
-          .allMatch(id -> Arrays.asList(1, 2).contains(id))
+                .map(Article::getId)
+                .allMatch(id -> Arrays.asList(1, 2).contains(id))
         );
     }
 
     @Test
     public void givenImportedArticlesWhenFindAllByPublicationTimeBetweenThenArticles2And3Returned()
-      throws Exception {
+            throws Exception {
         List<Article> result = repository.findAllByPublicationTimeBetween(
-          new SimpleDateFormat("HH:mm").parse("15:15"),
-          new SimpleDateFormat("HH:mm").parse("16:30")
+                new SimpleDateFormat("HH:mm").parse("15:15"),
+                new SimpleDateFormat("HH:mm").parse("16:30")
         );
 
         assertEquals(2, result.size());
         assertTrue(result.stream()
-          .map(Article::getId)
-          .allMatch(id -> Arrays.asList(2, 3).contains(id))
+                .map(Article::getId)
+                .allMatch(id -> Arrays.asList(2, 3).contains(id))
         );
     }
 
     @Test
     public void givenImportedArticlesWhenFindAllWithCreationDateTimeBeforeThenArticles2And3Returned() throws Exception {
         List<Article> result = repository.findAllWithCreationDateTimeBefore(
-          new SimpleDateFormat("yyyy-MM-dd HH:mm").parse("2017-12-15 10:00")
+                new SimpleDateFormat("yyyy-MM-dd HH:mm").parse("2017-12-15 10:00")
         );
 
         assertEquals(2, result.size());
         assertTrue(result.stream()
-          .map(Article::getId)
-          .allMatch(id -> Arrays.asList(2, 3).contains(id))
+                .map(Article::getId)
+                .allMatch(id -> Arrays.asList(2, 3).contains(id))
         );
     }
 

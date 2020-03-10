@@ -15,7 +15,8 @@ import java.util.List;
 @RequestMapping("/permissions")
 public class PermissionsController {
 
-    @Autowired private PermissionsService permissionsService;
+    @Autowired
+    private PermissionsService permissionsService;
 
     @GetMapping
     public List<String> getAllPermissions() {

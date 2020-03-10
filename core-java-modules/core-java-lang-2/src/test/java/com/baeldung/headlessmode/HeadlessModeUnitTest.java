@@ -71,7 +71,7 @@ public class HeadlessModeUnitTest {
             frame.setVisible(true);
             frame.setSize(120, 120);
         });
-    }    
+    }
 
     @Test
     public void whenHeadless_thenFlexibleAppAdjustsItsBehavior() {

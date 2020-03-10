@@ -14,7 +14,7 @@ public class MarkerInterfaceUnitTest {
         boolean result = shapeDao.delete(rectangle);
         assertEquals(true, result);
     }
-    
+
     @Test
     public void givenNonDeletableObjectThenFalseReturned() {
         ShapeDao shapeDao = new ShapeDao();

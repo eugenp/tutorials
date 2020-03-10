@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class PercentageCalculator {
 
-    public double calculatePercentage(double obtained,double total){
-        return obtained*100/total;
+    public double calculatePercentage(double obtained, double total) {
+        return obtained * 100 / total;
     }
 
     public static void main(String[] args) {
@@ -14,8 +14,8 @@ public class PercentageCalculator {
         System.out.println("Enter obtained marks:");
         double obtained = in.nextDouble();
         System.out.println("Enter total marks:");
-         double total =in.nextDouble();
-        System.out.println("Percentage obtained :"+pc.calculatePercentage(obtained,total));
+        double total = in.nextDouble();
+        System.out.println("Percentage obtained :" + pc.calculatePercentage(obtained, total));
     }
 
 }

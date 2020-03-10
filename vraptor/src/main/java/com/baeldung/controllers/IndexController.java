@@ -13,28 +13,25 @@ import javax.inject.Inject;
 @Controller
 public class IndexController {
 
-	private PostDao postDao;
-	private final Result result;
-	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
+    private PostDao postDao;
+    private final Result result;
+    private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
-	public IndexController() {
-		this(null, null);
-	}
+    public IndexController() {
+        this(null, null);
+    }
 
-	@Inject
-	public IndexController(Result result, PostDao postDao) {
-	    this.result = result;
-	    this.postDao = postDao;
-	}
+    @Inject
+    public IndexController(Result result, PostDao postDao) {
+        this.result = result;
+        this.postDao = postDao;
+    }
 
-	@Path("/")
-	public void index() {
-		result.include("posts", postDao.all());
-	    result.use(FreemarkerView.class).withTemplate("index");
-	}
-
-
-
+    @Path("/")
+    public void index() {
+        result.include("posts", postDao.all());
+        result.use(FreemarkerView.class).withTemplate("index");
+    }
 
 
 }

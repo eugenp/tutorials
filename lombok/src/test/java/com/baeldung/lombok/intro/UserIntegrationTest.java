@@ -12,7 +12,8 @@ public class UserIntegrationTest {
 
     @Test
     public void givenAnnotatedUser_thenHasEmptyConstructor() {
-        /* User user = */ new User();
+        /* User user = */
+        new User();
     }
 
     @Test

@@ -11,8 +11,8 @@ public class BackwardChaining {
         Result result = new BackwardChaining().backwardChaining();
         System.out.println(result.getValue());
         result.getFacts()
-            .stream()
-            .forEach(System.out::println);
+                .stream()
+                .forEach(System.out::println);
     }
 
     public Result backwardChaining() {

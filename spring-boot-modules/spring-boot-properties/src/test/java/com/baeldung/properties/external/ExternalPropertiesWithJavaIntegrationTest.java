@@ -14,7 +14,7 @@ import com.baeldung.properties.external.ExternalPropertiesWithJavaConfig;
 import com.baeldung.properties.spring.PropertiesWithJavaConfigOther;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ExternalPropertiesWithJavaConfig.class, PropertiesWithJavaConfigOther.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {ExternalPropertiesWithJavaConfig.class, PropertiesWithJavaConfigOther.class}, loader = AnnotationConfigContextLoader.class)
 @Ignore("manual only")
 public class ExternalPropertiesWithJavaIntegrationTest {
 

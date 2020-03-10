@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller Tests', function() {
+describe('Controller Tests', function () {
 
     beforeEach(mockApiAccountCall);
     beforeEach(mockI18nCalls);
 
-    describe('RequestResetController', function() {
+    describe('RequestResetController', function () {
 
         var $rootScope, $scope, $q; // actual implementations
         var MockState, MockTimeout, MockAuth; // mocks
         var createController; // local utility function
 
-        beforeEach(inject(function($injector) {
+        beforeEach(inject(function ($injector) {
             $q = $injector.get('$q');
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
@@ -26,12 +26,12 @@ describe('Controller Tests', function() {
                 '$timeout': MockTimeout,
                 'Auth': MockAuth
             };
-            createController = function() {
+            createController = function () {
                 return $injector.get('$controller')('RequestResetController as vm', locals);
             };
         }));
 
-        it('should define its initial state', function() {
+        it('should define its initial state', function () {
             // given
             createController();
 
@@ -42,12 +42,12 @@ describe('Controller Tests', function() {
             expect($scope.vm.resetAccount).toEqual({});
         });
 
-        it('registers a timeout handler set set focus', function() {
+        it('registers a timeout handler set set focus', function () {
             // given
             var MockAngular = jasmine.createSpyObj('MockAngular', ['element']);
             var MockElement = jasmine.createSpyObj('MockElement', ['focus']);
             MockAngular.element.and.returnValue(MockElement);
-            MockTimeout.and.callFake(function(callback) {
+            MockTimeout.and.callFake(function (callback) {
                 withMockedAngular(MockAngular, callback)();
             });
             createController();
@@ -58,7 +58,7 @@ describe('Controller Tests', function() {
             expect(MockElement.focus).toHaveBeenCalled();
         });
 
-        it('notifies of success upon successful requestReset', function() {
+        it('notifies of success upon successful requestReset', function () {
             // given
             MockAuth.resetPasswordInit.and.returnValue($q.resolve());
             createController();
@@ -71,7 +71,7 @@ describe('Controller Tests', function() {
             expect($scope.vm.error).toBeNull();
             expect($scope.vm.errorEmailNotExists).toBeNull();
         });
-        it('notifies of unknown email upon e-mail address not registered/400', function() {
+        it('notifies of unknown email upon e-mail address not registered/400', function () {
             // given
             MockAuth.resetPasswordInit.and.returnValue($q.reject({
                 status: 400,
@@ -88,7 +88,7 @@ describe('Controller Tests', function() {
             expect($scope.vm.errorEmailNotExists).toEqual('ERROR');
         });
 
-        it('notifies of error upon error response', function() {
+        it('notifies of error upon error response', function () {
             // given
             MockAuth.resetPasswordInit.and.returnValue($q.reject({
                 status: 503,

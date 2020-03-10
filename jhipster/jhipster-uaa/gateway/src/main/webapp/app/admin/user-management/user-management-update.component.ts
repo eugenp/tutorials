@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
-import { JhiLanguageHelper, User, UserService } from 'app/core';
+import {JhiLanguageHelper, User, UserService} from 'app/core';
 
 @Component({
     selector: 'jhi-user-mgmt-update',
@@ -18,11 +18,12 @@ export class UserMgmtUpdateComponent implements OnInit {
         private userService: UserService,
         private route: ActivatedRoute,
         private router: Router
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.isSaving = false;
-        this.route.data.subscribe(({ user }) => {
+        this.route.data.subscribe(({user}) => {
             this.user = user.body ? user.body : user;
         });
         this.authorities = [];

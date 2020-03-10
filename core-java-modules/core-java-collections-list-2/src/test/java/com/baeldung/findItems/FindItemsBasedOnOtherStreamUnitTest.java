@@ -23,14 +23,14 @@ public class FindItemsBasedOnOtherStreamUnitTest {
         populate(employeeList, departmentList);
 
         List<Employee> filteredList = employeeList.stream()
-            .filter(empl -> departmentList.stream()
-                .anyMatch(dept -> dept.getDepartment()
-                    .equals("sales") && empl.getEmployeeId()
-                    .equals(dept.getEmployeeId())))
-            .collect(Collectors.toList());
+                .filter(empl -> departmentList.stream()
+                        .anyMatch(dept -> dept.getDepartment()
+                                .equals("sales") && empl.getEmployeeId()
+                                .equals(dept.getEmployeeId())))
+                .collect(Collectors.toList());
 
         assertEquals(expectedId, filteredList.get(0)
-            .getEmployeeId());
+                .getEmployeeId());
     }
 
     private void populate(List<Employee> EmplList, List<Department> deptList) {

@@ -11,7 +11,8 @@ import uy.kohesive.injekt.api.get
 class SimpleApplication {
     companion object : InjektMain() {
         private val LOG = LoggerFactory.getLogger(Server::class.java)
-        @JvmStatic fun main(args: Array<String>) {
+        @JvmStatic
+        fun main(args: Array<String>) {
             SimpleApplication().run()
         }
 

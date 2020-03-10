@@ -28,9 +28,9 @@ public class ClientRestController {
     @GetMapping("/auth-code")
     Mono<String> useOauthWithAuthCode() {
         Mono<String> retrievedResource = webClient.get()
-            .uri(RESOURCE_URI)
-            .retrieve()
-            .bodyToMono(String.class);
+                .uri(RESOURCE_URI)
+                .retrieve()
+                .bodyToMono(String.class);
         return retrievedResource.map(string -> "We retrieved the following resource using Oauth: " + string);
     }
 
@@ -38,30 +38,30 @@ public class ClientRestController {
     Mono<String> useOauthWithNoClient() {
         // This call will fail, since we don't have the client properly set for this webClient
         Mono<String> retrievedResource = otherWebClient.get()
-            .uri(RESOURCE_URI)
-            .retrieve()
-            .bodyToMono(String.class);
+                .uri(RESOURCE_URI)
+                .retrieve()
+                .bodyToMono(String.class);
         return retrievedResource.map(string -> "We retrieved the following resource using Oauth: " + string);
     }
 
     @GetMapping("/auth-code-annotated")
     Mono<String> useOauthWithAuthCodeAndAnnotation(@RegisteredOAuth2AuthorizedClient("bael") OAuth2AuthorizedClient authorizedClient) {
         Mono<String> retrievedResource = otherWebClient.get()
-            .uri(RESOURCE_URI)
-            .attributes(oauth2AuthorizedClient(authorizedClient))
-            .retrieve()
-            .bodyToMono(String.class);
+                .uri(RESOURCE_URI)
+                .attributes(oauth2AuthorizedClient(authorizedClient))
+                .retrieve()
+                .bodyToMono(String.class);
         return retrievedResource.map(string -> "We retrieved the following resource using Oauth: " + string + ". Principal associated: " + authorizedClient.getPrincipalName() + ". Token will expire at: " + authorizedClient.getAccessToken()
-            .getExpiresAt());
+                .getExpiresAt());
     }
 
     @GetMapping("/auth-code-explicit-client")
     Mono<String> useOauthWithExpicitClient() {
         Mono<String> retrievedResource = otherWebClient.get()
-            .uri(RESOURCE_URI)
-            .attributes(clientRegistrationId("bael"))
-            .retrieve()
-            .bodyToMono(String.class);
+                .uri(RESOURCE_URI)
+                .attributes(clientRegistrationId("bael"))
+                .retrieve()
+                .bodyToMono(String.class);
         return retrievedResource.map(string -> "We retrieved the following resource using Oauth: " + string);
     }
 

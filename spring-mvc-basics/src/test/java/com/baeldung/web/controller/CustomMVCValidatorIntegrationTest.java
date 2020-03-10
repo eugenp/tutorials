@@ -20,24 +20,24 @@ public class CustomMVCValidatorIntegrationTest {
     @BeforeEach
     public void setup() {
         this.mockMvc = MockMvcBuilders.standaloneSetup(new ValidatedPhoneController())
-            .build();
+                .build();
     }
 
     @Test
     public void givenPhonePageUri_whenMockMvc_thenReturnsPhonePage() throws Exception {
         this.mockMvc.perform(get("/validatePhone"))
-            .andExpect(view().name("phoneHome"));
+                .andExpect(view().name("phoneHome"));
     }
 
     @Test
     public void givenPhoneURIWithPostAndFormData_whenMockMVC_thenVerifyErrorResponse() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/addValidatePhone")
-            .accept(MediaType.TEXT_HTML)
-            .param("phoneInput", "123"))
-            .andExpect(model().attributeHasFieldErrorCode("validatedPhone", "phone", "ContactNumberConstraint"))
-            .andExpect(view().name("phoneHome"))
-            .andExpect(status().isOk())
-            .andDo(print());
+                .accept(MediaType.TEXT_HTML)
+                .param("phoneInput", "123"))
+                .andExpect(model().attributeHasFieldErrorCode("validatedPhone", "phone", "ContactNumberConstraint"))
+                .andExpect(view().name("phoneHome"))
+                .andExpect(status().isOk())
+                .andDo(print());
     }
 
 }

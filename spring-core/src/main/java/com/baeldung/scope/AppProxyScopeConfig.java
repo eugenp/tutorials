@@ -20,5 +20,5 @@ public class AppProxyScopeConfig {
     public SingletonBean singletonBean() {
         return new SingletonBean();
     }
-    
+
 }

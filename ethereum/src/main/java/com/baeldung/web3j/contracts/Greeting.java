@@ -3,6 +3,7 @@ package com.baeldung.web3j.contracts;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collections;
+
 import org.web3j.abi.FunctionEncoder;
 import org.web3j.abi.TypeReference;
 import org.web3j.abi.datatypes.Function;
@@ -46,7 +47,8 @@ public class Greeting extends Contract {
     public RemoteCall<String> greet() {
         final Function function = new Function("greet",
                 Arrays.<Type>asList(),
-                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {
+                }));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
 

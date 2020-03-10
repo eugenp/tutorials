@@ -11,8 +11,8 @@ import com.baeldung.spring.cloud.kubernetes.frontend.KubernetesFrontendApplicati
 @SpringBootTest(classes = KubernetesFrontendApplication.class)
 public class SpringContextTest {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+    }
 
 }

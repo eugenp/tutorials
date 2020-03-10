@@ -14,8 +14,8 @@ public class UserSchema {
 
     public UserSchema() throws IllegalAccessException, NoSuchMethodException, InstantiationException {
         schema = newSchema().query(GraphQLAnnotations.object(UserQuery.class))
-            .mutation(GraphQLAnnotations.object(UserMutation.class))
-            .build();
+                .mutation(GraphQLAnnotations.object(UserMutation.class))
+                .build();
     }
 
     public GraphQLSchema getSchema() {

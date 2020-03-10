@@ -1,7 +1,7 @@
 import com.baeldung.strings.Concatenate;
 
 class ConcatenateTest extends GroovyTestCase {
-    
+
     void testSimpleConcat() {
         def name = new Concatenate()
         name.first = 'Joe';
@@ -9,7 +9,7 @@ class ConcatenateTest extends GroovyTestCase {
         def expected = 'My name is Joe Smith'
         assertToString(name.doSimpleConcat(), expected)
     }
-    
+
     void testConcatUsingGString() {
         def name = new Concatenate()
         name.first = "Joe";
@@ -17,7 +17,7 @@ class ConcatenateTest extends GroovyTestCase {
         def expected = "My name is Joe Smith"
         assertToString(name.doConcatUsingGString(), expected)
     }
-    
+
     void testConcatUsingGStringClosures() {
         def name = new Concatenate()
         name.first = "Joe";
@@ -25,7 +25,7 @@ class ConcatenateTest extends GroovyTestCase {
         def expected = "My name is Joe Smith"
         assertToString(name.doConcatUsingGStringClosures(), expected)
     }
-    
+
     void testConcatUsingStringConcatMethod() {
         def name = new Concatenate()
         name.first = "Joe";
@@ -86,7 +86,7 @@ class ConcatenateTest extends GroovyTestCase {
         assertToString(name.doConcatUsingStringConcatMethod(), expected)
     }
 
-    void testGStringvsClosure(){
+    void testGStringvsClosure() {
         def first = "Joe";
         def last = "Smith";
         def eagerGString = "My name is $first $last"
@@ -97,5 +97,5 @@ class ConcatenateTest extends GroovyTestCase {
         first = "David";
         assert eagerGString == "My name is Joe Smith"
         assert lazyGString == "My name is David Smith"
-    }  
+    }
 }

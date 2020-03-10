@@ -24,22 +24,22 @@ public class RatpackHystrixAppFallbackLiveTest {
     @Test
     public void whenFetchReactive_thenGotFallbackProfile() {
         assertThat(appUnderTest
-          .getHttpClient()
-          .getText("rx"), containsString("reactive fallback profile"));
+                .getHttpClient()
+                .getText("rx"), containsString("reactive fallback profile"));
     }
 
     @Test
     public void whenFetchAsync_thenGotFallbackProfile() {
         assertThat(appUnderTest
-          .getHttpClient()
-          .getText("async"), containsString("async fallback profile"));
+                .getHttpClient()
+                .getText("async"), containsString("async fallback profile"));
     }
 
     @Test
     public void whenFetchSync_thenGotFallbackProfile() {
         assertThat(appUnderTest
-          .getHttpClient()
-          .getText("sync"), containsString("sync fallback profile"));
+                .getHttpClient()
+                .getText("sync"), containsString("sync fallback profile"));
     }
 
     @AfterClass

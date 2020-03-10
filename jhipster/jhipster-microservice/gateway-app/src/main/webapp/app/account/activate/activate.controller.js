@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     ActivationController.$inject = ['$stateParams', 'Auth', 'LoginService'];
 
-    function ActivationController ($stateParams, Auth, LoginService) {
+    function ActivationController($stateParams, Auth, LoginService) {
         var vm = this;
 
         Auth.activateAccount({key: $stateParams.key}).then(function () {

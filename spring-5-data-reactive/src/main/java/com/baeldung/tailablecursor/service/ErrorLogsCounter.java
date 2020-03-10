@@ -39,15 +39,15 @@ public class ErrorLogsCounter implements LogsCounter {
     @SuppressWarnings("unchecked")
     private TailableCursorRequest<Log> getTailableCursorRequest() {
         MessageListener<Document, Log> listener = message -> {
-          log.info("ERROR log received: {}", message.getBody());
-          counter.incrementAndGet();
+            log.info("ERROR log received: {}", message.getBody());
+            counter.incrementAndGet();
         };
 
         return TailableCursorRequest.builder()
-          .collection(collectionName)
-          .filter(query(where(LEVEL_FIELD_NAME).is(LogLevel.ERROR)))
-          .publishTo(listener)
-          .build();
+                .collection(collectionName)
+                .filter(query(where(LEVEL_FIELD_NAME).is(LogLevel.ERROR)))
+                .publishTo(listener)
+                .build();
     }
 
     @Override

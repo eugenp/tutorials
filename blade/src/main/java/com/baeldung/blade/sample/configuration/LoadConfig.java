@@ -13,10 +13,10 @@ public class LoadConfig implements BladeLoader {
     @Override
     public void load(Blade blade) {
         String version = WebContext.blade()
-            .env("app.version")
-            .orElse("N/D");
+                .env("app.version")
+                .orElse("N/D");
         String authors = WebContext.blade()
-            .env("app.authors", "Unknown authors");
+                .env("app.authors", "Unknown authors");
 
         log.info("[LoadConfig] loaded 'app.version' (" + version + ") and 'app.authors' (" + authors + ") in a configuration bean");
     }

@@ -48,34 +48,34 @@ public class RedissonConfigurationIntegrationTest {
     public void givenJavaConfig_thenRedissonConnectToRedis() {
         Config config = new Config();
         config.useSingleServer()
-          .setAddress(String.format("127.0.0.1:%s", port));
+                .setAddress(String.format("127.0.0.1:%s", port));
 
         client = Redisson.create(config);
 
-        assert(client != null && client.getKeys().count() >= 0);
+        assert (client != null && client.getKeys().count() >= 0);
     }
 
     @Test
     public void givenJSONFileConfig_thenRedissonConnectToRedis() throws IOException {
-        
+
         File configFile = new File(getClass().getClassLoader().getResource("singleNodeConfig.json").getFile());
         String configContent = Files.toString(configFile, Charset.defaultCharset()).replace("6379", String.valueOf(port));
-        
+
         Config config = Config.fromJSON(configContent);
         client = Redisson.create(config);
 
-        assert(client != null && client.getKeys().count() >= 0);
+        assert (client != null && client.getKeys().count() >= 0);
     }
 
     @Test
     public void givenYAMLFileConfig_thenRedissonConnectToRedis() throws IOException {
-        
+
         File configFile = new File(getClass().getClassLoader().getResource("singleNodeConfig.yaml").getFile());
         String configContent = Files.toString(configFile, Charset.defaultCharset()).replace("6379", String.valueOf(port));
-        
+
         Config config = Config.fromYAML(configContent);
         client = Redisson.create(config);
 
-        assert(client != null && client.getKeys().count() >= 0);
+        assert (client != null && client.getKeys().count() >= 0);
     }
 }

@@ -17,12 +17,12 @@ public class OptaPlannerUnitTest {
 
         unsolvedCourseSchedule = new CourseSchedule();
 
-        for(int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             unsolvedCourseSchedule.getLectureList().add(new Lecture());
         }
 
-        unsolvedCourseSchedule.getPeriodList().addAll(Arrays.asList(new Integer[] { 1, 2, 3 }));
-        unsolvedCourseSchedule.getRoomList().addAll(Arrays.asList(new Integer[] { 1, 2 }));
+        unsolvedCourseSchedule.getPeriodList().addAll(Arrays.asList(new Integer[]{1, 2, 3}));
+        unsolvedCourseSchedule.getRoomList().addAll(Arrays.asList(new Integer[]{1, 2}));
     }
 
     @Test

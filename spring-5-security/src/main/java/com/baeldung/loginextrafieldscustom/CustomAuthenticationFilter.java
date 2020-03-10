@@ -13,12 +13,12 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
     public static final String SPRING_SECURITY_FORM_DOMAIN_KEY = "domain";
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) 
-        throws AuthenticationException {
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
+            throws AuthenticationException {
 
         if (!request.getMethod().equals("POST")) {
-            throw new AuthenticationServiceException("Authentication method not supported: " 
-              + request.getMethod());
+            throw new AuthenticationServiceException("Authentication method not supported: "
+                    + request.getMethod());
         }
 
         CustomAuthenticationToken authRequest = getAuthRequest(request);

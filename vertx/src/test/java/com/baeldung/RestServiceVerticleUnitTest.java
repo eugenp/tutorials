@@ -54,13 +54,13 @@ public class RestServiceVerticleUnitTest {
         final Async async = testContext.async();
 
         vertx.createHttpClient()
-            .getNow(port, "localhost", "/api/baeldung/articles/article/12345", response -> {
-                response.handler(responseBody -> {
-                    testContext.assertTrue(responseBody.toString()
-                        .contains("\"id\" : \"12345\""));
-                    async.complete();
+                .getNow(port, "localhost", "/api/baeldung/articles/article/12345", response -> {
+                    response.handler(responseBody -> {
+                        testContext.assertTrue(responseBody.toString()
+                                .contains("\"id\" : \"12345\""));
+                        async.complete();
+                    });
                 });
-            });
     }
 
 }

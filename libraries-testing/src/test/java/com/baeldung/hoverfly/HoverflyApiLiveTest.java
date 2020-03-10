@@ -35,9 +35,9 @@ public class HoverflyApiLiveTest {
 
     private static final SimulationSource source = dsl(service("http://www.baeldung.com").get("/api/courses/1").willReturn(success().body(jsonWithSingleQuotes("{'id':'1','name':'HCI'}")))
 
-            .post("/api/courses").willReturn(success())
+                    .post("/api/courses").willReturn(success())
 
-            .andDelay(3, TimeUnit.SECONDS).forMethod("POST"),
+                    .andDelay(3, TimeUnit.SECONDS).forMethod("POST"),
 
             service(matches("www.*dung.com")).get(startsWith("/api/student")).queryParam("page", any()).willReturn(success())
 

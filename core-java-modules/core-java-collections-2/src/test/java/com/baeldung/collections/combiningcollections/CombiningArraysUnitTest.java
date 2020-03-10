@@ -1,30 +1,31 @@
 package com.baeldung.collections.combiningcollections;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class CombiningArraysUnitTest {
     private static final String first[] = {
-            "One", 
-            "Two", 
+            "One",
+            "Two",
             "Three"
     };
-    
+
     private static final String second[] = {
-            "Four", 
-            "Five", 
+            "Four",
+            "Five",
             "Six"
     };
 
     private static final String expected[] = {
-            "One", 
-            "Two", 
+            "One",
+            "Two",
             "Three",
-            "Four", 
-            "Five", 
+            "Four",
+            "Five",
             "Six"
     };
-    
+
     @Test
     public void givenTwoArrays_whenUsingNativeJava_thenArraysCombined() {
         assertArrayEquals(expected, CombiningArrays.usingNativeJava(first, second));

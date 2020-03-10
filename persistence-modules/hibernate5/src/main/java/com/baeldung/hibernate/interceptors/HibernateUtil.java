@@ -39,15 +39,15 @@ public class HibernateUtil {
         if (sessionFactory == null) {
             ServiceRegistry serviceRegistry = configureServiceRegistry();
             sessionFactory = getSessionFactoryBuilder(serviceRegistry).applyInterceptor(interceptor)
-                .build();
+                    .build();
         }
         return sessionFactory;
     }
 
     public static Session getSessionWithInterceptor(Interceptor interceptor) throws IOException {
         return getSessionFactory().withOptions()
-            .interceptor(interceptor)
-            .openSession();
+                .interceptor(interceptor)
+                .openSession();
     }
 
     private static SessionFactoryBuilder getSessionFactoryBuilder(ServiceRegistry serviceRegistry) {
@@ -63,14 +63,14 @@ public class HibernateUtil {
     private static ServiceRegistry configureServiceRegistry() throws IOException {
         Properties properties = getProperties();
         return new StandardServiceRegistryBuilder().applySettings(properties)
-            .build();
+                .build();
     }
 
     private static Properties getProperties() throws IOException {
         Properties properties = new Properties();
         URL propertiesURL = Thread.currentThread()
-            .getContextClassLoader()
-            .getResource(StringUtils.defaultString(PROPERTY_FILE_NAME, "hibernate-interceptors.properties"));
+                .getContextClassLoader()
+                .getResource(StringUtils.defaultString(PROPERTY_FILE_NAME, "hibernate-interceptors.properties"));
         try (FileInputStream inputStream = new FileInputStream(propertiesURL.getFile())) {
             properties.load(inputStream);
         }

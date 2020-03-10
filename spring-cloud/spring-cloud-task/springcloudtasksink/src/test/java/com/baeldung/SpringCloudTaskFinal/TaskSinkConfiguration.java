@@ -12,7 +12,7 @@ public class TaskSinkConfiguration {
 
     @Bean
     public TaskLauncher taskLauncher() {
-        return  mock(TaskLauncher.class);
-  }
-    
+        return mock(TaskLauncher.class);
+    }
+
 }

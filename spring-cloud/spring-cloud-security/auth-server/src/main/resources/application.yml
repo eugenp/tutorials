@@ -1,7 +1,7 @@
 # Make the application available at http://localhost:7070/authserver
 server:
   port: 7070
-  servlet: 
+  servlet:
     context-path: /authserver
 
 # Our certificate settings for enabling JWT tokens

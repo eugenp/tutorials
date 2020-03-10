@@ -18,7 +18,7 @@ public class UseLocalDateTime {
 
     LocalDateTime getEndOfDayFromLocalDateTime(LocalDateTime localDateTime) {
         LocalDateTime endOfDate = localDateTime.toLocalDate()
-            .atTime(LocalTime.MAX);
+                .atTime(LocalTime.MAX);
         return endOfDate;
     }
 

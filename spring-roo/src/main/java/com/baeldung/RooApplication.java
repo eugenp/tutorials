@@ -5,9 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * = RooApplication
- *
+ * <p>
  * TODO Auto-generated class documentation
- *
  */
 @SpringBootApplication
 public class RooApplication {

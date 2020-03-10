@@ -4,7 +4,7 @@
     "name": "document",
     "provider": "org.jnosql.diana.mongodb.document.MongoDBDocumentConfiguration",
     "settings": {
-      "mongodb-server-host-1":"localhost:27019"
+      "mongodb-server-host-1": "localhost:27019"
     }
   }
 ]

@@ -16,9 +16,9 @@ public class CustomUserRepository implements UserRepository {
             return null;
         } else {
             Collection<? extends GrantedAuthority> authorities = new ArrayList<>();
-            User user =  new User(username, domain, 
-                "$2a$10$U3GhSMpsMSOE8Kqsbn58/edxDBKlVuYMh7qk/7ErApYFjJzi2VG5K", true, 
-                true, true, true, authorities);
+            User user = new User(username, domain,
+                    "$2a$10$U3GhSMpsMSOE8Kqsbn58/edxDBKlVuYMh7qk/7ErApYFjJzi2VG5K", true,
+                    true, true, true, authorities);
             return user;
         }
     }

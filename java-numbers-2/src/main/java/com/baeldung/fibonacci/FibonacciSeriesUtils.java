@@ -27,8 +27,8 @@ public class FibonacciSeriesUtils {
 
     public static int nthFibonacciTermUsingBinetsFormula(int n) {
         final double squareRootOf5 = Math.sqrt(5);
-        final double phi = (1 + squareRootOf5)/2;
-        int nthTerm = (int) ((Math.pow(phi, n) - Math.pow(-phi, -n))/squareRootOf5);
+        final double phi = (1 + squareRootOf5) / 2;
+        int nthTerm = (int) ((Math.pow(phi, n) - Math.pow(-phi, -n)) / squareRootOf5);
         return nthTerm;
     }
 }

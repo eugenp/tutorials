@@ -1,8 +1,10 @@
 package com.baeldung.boot.configurationproperties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,7 @@ public class BindingYMLPropertiesUnitTest {
     @Test
     void whenBindingYMLConfigFile_thenAllFieldsAreSet() {
         assertEquals("192.168.0.4", serverConfig.getAddress()
-            .getIp());
+                .getIp());
 
         Map<String, String> expectedResourcesPath = new HashMap<>();
         expectedResourcesPath.put("imgs", "/etc/test/imgs");

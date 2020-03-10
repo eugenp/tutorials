@@ -23,12 +23,12 @@ public class SpringBatchSchedulerIntegrationTest {
     public void stopJobsWhenSchedulerDisabled() throws Exception {
         SpringBatchScheduler schedulerBean = context.getBean(SpringBatchScheduler.class);
         await().untilAsserted(() -> Assert.assertEquals(2, schedulerBean.getBatchRunCounter()
-            .get()));
+                .get()));
         schedulerBean.stop();
         await().atLeast(3, SECONDS);
 
         Assert.assertEquals(2, schedulerBean.getBatchRunCounter()
-            .get());
+                .get());
     }
 
     @Test
@@ -36,24 +36,24 @@ public class SpringBatchSchedulerIntegrationTest {
         ScheduledAnnotationBeanPostProcessor bean = context.getBean(ScheduledAnnotationBeanPostProcessor.class);
         SpringBatchScheduler schedulerBean = context.getBean(SpringBatchScheduler.class);
         await().untilAsserted(() -> Assert.assertEquals(2, schedulerBean.getBatchRunCounter()
-            .get()));
+                .get()));
         bean.postProcessBeforeDestruction(schedulerBean, "SpringBatchScheduler");
         await().atLeast(3, SECONDS);
 
         Assert.assertEquals(2, schedulerBean.getBatchRunCounter()
-            .get());
+                .get());
     }
 
     @Test
     public void stopJobSchedulerWhenFutureTasksCancelled() throws Exception {
         SpringBatchScheduler schedulerBean = context.getBean(SpringBatchScheduler.class);
         await().untilAsserted(() -> Assert.assertEquals(2, schedulerBean.getBatchRunCounter()
-            .get()));
+                .get()));
         schedulerBean.cancelFutureSchedulerTasks();
         await().atLeast(3, SECONDS);
 
         Assert.assertEquals(2, schedulerBean.getBatchRunCounter()
-            .get());
+                .get());
     }
 
 

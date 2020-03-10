@@ -10,8 +10,8 @@ Resources:
     Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey:
-          Name: id
-          Type: Number
+        Name: id
+        Type: Number
       TableName: Person
   StorePersonFunction:
     Type: AWS::Serverless::Function

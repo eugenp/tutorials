@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * Mapper for the entity User and its DTO called UserDTO.
- *
+ * <p>
  * Normal mappers are generated using MapStruct, this one is hand-coded as MapStruct
  * support is still in beta, and requires a manual step with an IDE.
  */
@@ -20,9 +20,9 @@ public class UserMapper {
 
     public List<UserDTO> usersToUserDTOs(List<User> users) {
         return users.stream()
-            .filter(Objects::nonNull)
-            .map(this::userToUserDTO)
-            .collect(Collectors.toList());
+                .filter(Objects::nonNull)
+                .map(this::userToUserDTO)
+                .collect(Collectors.toList());
     }
 
     public UserDTO userToUserDTO(User user) {
@@ -31,9 +31,9 @@ public class UserMapper {
 
     public List<User> userDTOsToUsers(List<UserDTO> userDTOs) {
         return userDTOs.stream()
-            .filter(Objects::nonNull)
-            .map(this::userDTOToUser)
-            .collect(Collectors.toList());
+                .filter(Objects::nonNull)
+                .map(this::userDTOToUser)
+                .collect(Collectors.toList());
     }
 
     public User userDTOToUser(UserDTO userDTO) {
@@ -59,7 +59,7 @@ public class UserMapper {
     private Set<Authority> authoritiesFromStrings(Set<String> authoritiesAsString) {
         Set<Authority> authorities = new HashSet<>();
 
-        if(authoritiesAsString != null){
+        if (authoritiesAsString != null) {
             authorities = authoritiesAsString.stream().map(string -> {
                 Authority auth = new Authority();
                 auth.setName(string);

@@ -10,7 +10,7 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.baeldung.springmvcforms", "com.baeldung.spring.controller", "com.baeldung.spring.validator" })
+@ComponentScan(basePackages = {"com.baeldung.springmvcforms", "com.baeldung.spring.controller", "com.baeldung.spring.validator"})
 public class ThymeleafConfiguration {
     @Bean
     public SpringTemplateEngine templateEngine() {

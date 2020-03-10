@@ -1,4 +1,4 @@
 spring:
-    cloud:
-        config:
-            enabled: false
+  cloud:
+    config:
+      enabled: false

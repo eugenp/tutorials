@@ -2,6 +2,7 @@ package com.baeldung.jackson.enums.serialization;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
+
 import java.io.IOException;
 
 import org.junit.Test;
@@ -16,5 +17,5 @@ public class JacksonEnumSerializationUnitTest {
 
         assertThat(dtoAsString, containsString("1609.34"));
     }
-    
+
 }

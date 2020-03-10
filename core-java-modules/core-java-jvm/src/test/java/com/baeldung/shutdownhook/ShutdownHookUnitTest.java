@@ -18,23 +18,25 @@ public class ShutdownHookUnitTest {
         Thread longRunningHook = new Thread(() -> {
             try {
                 Thread.sleep(300);
-            } catch (InterruptedException ignored) {}
+            } catch (InterruptedException ignored) {
+            }
         });
         longRunningHook.start();
 
         assertThatThrownBy(() -> Runtime.getRuntime().addShutdownHook(longRunningHook))
-          .isInstanceOf(IllegalArgumentException.class)
-          .hasMessage("Hook already running");
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Hook already running");
     }
 
     @Test
     public void addingAHook_WhenAlreadyExists_ThenAnExceptionWouldBeThrown() {
-        Thread unfortunateHook = new Thread(() -> {});
+        Thread unfortunateHook = new Thread(() -> {
+        });
         Runtime.getRuntime().addShutdownHook(unfortunateHook);
 
         assertThatThrownBy(() -> Runtime.getRuntime().addShutdownHook(unfortunateHook))
-          .isInstanceOf(IllegalArgumentException.class)
-          .hasMessage("Hook previously registered");
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Hook previously registered");
     }
 
     @Test

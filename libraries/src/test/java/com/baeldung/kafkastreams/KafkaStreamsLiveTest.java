@@ -49,7 +49,7 @@ public class KafkaStreamsLiveTest {
         String outputTopic = "outputTopic";
         final Serde<String> stringSerde = Serdes.String();
         final Serde<String> longSerde = Serdes.String();
-        textLines.to(outputTopic, Produced.with(stringSerde,longSerde));
+        textLines.to(outputTopic, Produced.with(stringSerde, longSerde));
 
         KafkaStreams streams = new KafkaStreams(new Topology(), streamsConfiguration);
         streams.start();

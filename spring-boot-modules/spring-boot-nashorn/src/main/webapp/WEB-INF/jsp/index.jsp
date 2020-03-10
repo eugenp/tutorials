@@ -10,8 +10,8 @@
 <div id="root">${content}</div>
 <script type="text/javascript" src="app.js"></script>
 <script type="text/javascript">
-	ReactDOM.render(
-        React.createElement(App, {data: [0,1,1]}),
+    ReactDOM.render(
+        React.createElement(App, {data: [0, 1, 1]}),
         document.getElementById("root")
     );
 </script>

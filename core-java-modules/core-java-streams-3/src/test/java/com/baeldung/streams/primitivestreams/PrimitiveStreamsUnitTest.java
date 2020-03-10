@@ -16,7 +16,7 @@ public class PrimitiveStreamsUnitTest {
 
     @Test
     public void givenAnArrayOfIntegersWhenMinIsCalledThenCorrectMinIsReturned() {
-        int[] integers = new int[] { 20, 98, 12, 7, 35 };
+        int[] integers = new int[]{20, 98, 12, 7, 35};
         int min = streams.min(integers); // returns 7
 
         assertEquals(7, min);

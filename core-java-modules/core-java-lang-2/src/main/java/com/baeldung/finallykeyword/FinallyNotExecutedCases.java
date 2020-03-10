@@ -15,7 +15,7 @@ public class FinallyNotExecutedCases {
         try {
             System.out.println("Inside try");
             Runtime.getRuntime()
-                .halt(1);
+                    .halt(1);
         } finally {
             System.out.println("Inside finally");
         }

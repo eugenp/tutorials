@@ -70,7 +70,7 @@ public final class JsonFilterIntegrationTest {
                 final var axis = new DescendantAxis(wtx, IncludeSelf.YES);
                 final var filter = new JsonNameFilter(wtx, "associatedDrug");
 
-                for (var filterAxis = new FilterAxis<JsonNodeReadOnlyTrx>(axis, filter); filterAxis.hasNext();) {
+                for (var filterAxis = new FilterAxis<JsonNodeReadOnlyTrx>(axis, filter); filterAxis.hasNext(); ) {
                     filterAxis.next();
                     foundTimes++;
                 }

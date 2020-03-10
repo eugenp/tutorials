@@ -25,21 +25,21 @@ public abstract class AbstractValidationHandler<T, U extends Validator> {
 
     public final Mono<ServerResponse> handleRequest(final ServerRequest request) {
         return request.bodyToMono(this.validationClass)
-            .flatMap(body -> {
-                Errors errors = new BeanPropertyBindingResult(body, this.validationClass.getName());
-                this.validator.validate(body, errors);
+                .flatMap(body -> {
+                    Errors errors = new BeanPropertyBindingResult(body, this.validationClass.getName());
+                    this.validator.validate(body, errors);
 
-                if (errors == null || errors.getAllErrors()
-                    .isEmpty()) {
-                    return processBody(body, request);
-                } else {
-                    return onValidationErrors(errors, body, request);
-                }
-            });
+                    if (errors == null || errors.getAllErrors()
+                            .isEmpty()) {
+                        return processBody(body, request);
+                    } else {
+                        return onValidationErrors(errors, body, request);
+                    }
+                });
     }
 
     protected Mono<ServerResponse> onValidationErrors(Errors errors, T invalidBody, final ServerRequest request) {
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, errors.getAllErrors()
-            .toString());
+                .toString());
     }
 }

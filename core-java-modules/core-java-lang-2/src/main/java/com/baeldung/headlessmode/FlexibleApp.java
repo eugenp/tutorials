@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 public class FlexibleApp {
     public static final int HEADLESS = 0;
     public static final int HEADED = 1;
+
     public FlexibleApp() {
 
         if (GraphicsEnvironment.isHeadless()) {
@@ -16,7 +17,7 @@ public class FlexibleApp {
         }
 
     }
-    
+
     public static int iAmFlexible() {
         if (GraphicsEnvironment.isHeadless()) {
             return HEADLESS;

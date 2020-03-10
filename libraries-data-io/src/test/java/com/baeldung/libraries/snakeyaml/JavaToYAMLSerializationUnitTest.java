@@ -17,7 +17,7 @@ public class JavaToYAMLSerializationUnitTest {
         Map<String, Object> data = new LinkedHashMap<String, Object>();
         data.put("name", "Silenthand Olleander");
         data.put("race", "Human");
-        data.put("traits", new String[] { "ONE_HAND", "ONE_EYE" });
+        data.put("traits", new String[]{"ONE_HAND", "ONE_EYE"});
         Yaml yaml = new Yaml();
         StringWriter writer = new StringWriter();
         yaml.dump(data, writer);
@@ -33,7 +33,7 @@ public class JavaToYAMLSerializationUnitTest {
         customer.setLastName("McDowell");
         Yaml yaml = new Yaml();
         StringWriter writer = new StringWriter();
-        yaml.dump(customer, writer);        
+        yaml.dump(customer, writer);
         String expectedYaml = "!!com.baeldung.libraries.snakeyaml.Customer {age: 45, contactDetails: null, firstName: Greg,\n  homeAddress: null, lastName: McDowell}\n";
         assertEquals(expectedYaml, writer.toString());
     }

@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Created by adi on 8/2/18.
  */
-@SpringBootApplication(scanBasePackages = { "com.baeldung.chaosmonkey" })
+@SpringBootApplication(scanBasePackages = {"com.baeldung.chaosmonkey"})
 public class SpringBootChaosMonkeyApp {
 
     public static void main(String[] args) {

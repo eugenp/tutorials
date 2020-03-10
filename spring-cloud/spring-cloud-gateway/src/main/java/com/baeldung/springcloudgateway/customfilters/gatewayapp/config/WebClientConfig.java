@@ -10,7 +10,7 @@ public class WebClientConfig {
     @Bean
     WebClient client() {
         return WebClient.builder()
-            .build();
+                .build();
     }
 
 }

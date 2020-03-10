@@ -17,9 +17,9 @@ public class TransactionsUnitTest {
         DB db = DBMaker.memoryDB().transactionEnable().make();
 
         NavigableSet<String> set = db
-          .treeSet("mySet")
-          .serializer(Serializer.STRING)
-          .createOrOpen();
+                .treeSet("mySet")
+                .serializer(Serializer.STRING)
+                .createOrOpen();
 
         set.add("One");
         set.add("Two");

@@ -1,7 +1,6 @@
 package com.baeldung.jhipster5.domain;
 
 
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -17,7 +16,7 @@ import java.util.Objects;
 public class Book implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -142,12 +141,12 @@ public class Book implements Serializable {
     @Override
     public String toString() {
         return "Book{" +
-            "id=" + getId() +
-            ", title='" + getTitle() + "'" +
-            ", author='" + getAuthor() + "'" +
-            ", published='" + getPublished() + "'" +
-            ", quantity=" + getQuantity() +
-            ", price=" + getPrice() +
-            "}";
+                "id=" + getId() +
+                ", title='" + getTitle() + "'" +
+                ", author='" + getAuthor() + "'" +
+                ", published='" + getPublished() + "'" +
+                ", quantity=" + getQuantity() +
+                ", price=" + getPrice() +
+                "}";
     }
 }

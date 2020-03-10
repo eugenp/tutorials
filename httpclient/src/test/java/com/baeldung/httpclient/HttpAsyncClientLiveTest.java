@@ -66,7 +66,7 @@ public class HttpAsyncClientLiveTest {
         final PoolingNHttpClientConnectionManager cm = new PoolingNHttpClientConnectionManager(ioReactor);
         final CloseableHttpAsyncClient client = HttpAsyncClients.custom().setConnectionManager(cm).build();
         client.start();
-        final String[] toGet = { "http://www.google.com/", "http://www.apache.org/", "http://www.bing.com/" };
+        final String[] toGet = {"http://www.google.com/", "http://www.apache.org/", "http://www.bing.com/"};
 
         final GetThread[] threads = new GetThread[toGet.length];
         for (int i = 0; i < threads.length; i++) {

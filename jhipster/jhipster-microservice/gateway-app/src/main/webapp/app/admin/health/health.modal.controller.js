@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('gatewayApp')
@@ -6,7 +6,7 @@
 
     HealthModalController.$inject = ['$uibModalInstance', 'currentHealth', 'baseName', 'subSystemName'];
 
-    function HealthModalController ($uibModalInstance, currentHealth, baseName, subSystemName) {
+    function HealthModalController($uibModalInstance, currentHealth, baseName, subSystemName) {
         var vm = this;
 
         vm.cancel = cancel;

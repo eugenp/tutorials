@@ -26,9 +26,9 @@ public class RestLoaderRequestDeserializer extends StdDeserializer<RestLoaderReq
             final ObjectCodec objectCodec = jp.getCodec();
             final JsonNode node = objectCodec.readTree(jp);
             final String className = node.get("className")
-                .textValue();
+                    .textValue();
             final String fieldName = node.get("fieldName")
-                .textValue();
+                    .textValue();
 
             final Class<?> clazz = Class.forName(className);
 

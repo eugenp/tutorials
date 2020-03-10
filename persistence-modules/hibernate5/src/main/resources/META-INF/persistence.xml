@@ -5,7 +5,7 @@
              version="2.0">
     <persistence-unit name="com.baeldung.movie_catalog">
         <description>Hibernate EntityManager Demo</description>
-        <class>com.baeldung.hibernate.pojo.Movie</class> 
+        <class>com.baeldung.hibernate.pojo.Movie</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>

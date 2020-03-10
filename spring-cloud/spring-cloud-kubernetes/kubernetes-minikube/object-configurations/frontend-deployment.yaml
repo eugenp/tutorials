@@ -6,9 +6,9 @@ spec:
   selector:
     app: demo-frontend
   ports:
-  - protocol: TCP
-    port: 8081
-    nodePort: 30001
+    - protocol: TCP
+      port: 8081
+      nodePort: 30001
   type: NodePort
 ---
 apiVersion: apps/v1
@@ -17,8 +17,8 @@ metadata:
   name: demo-frontend
 spec:
   selector:
-      matchLabels:
-        app: demo-frontend
+    matchLabels:
+      app: demo-frontend
   replicas: 3
   template:
     metadata:

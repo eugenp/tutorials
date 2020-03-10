@@ -19,8 +19,8 @@ public class TypeInferenceUnitTest {
     public void givenNoTypeInference_whenInvokingGenericMethodsWithTypeParameters_ObjectsAreCreated() {
         // Without type inference. code is verbose.
         Map<String, Map<String, String>> mapOfMaps = new HashMap<String, Map<String, String>>();
-        List<String> strList = Collections.<String> emptyList();
-        List<Integer> intList = Collections.<Integer> emptyList();
+        List<String> strList = Collections.<String>emptyList();
+        List<Integer> intList = Collections.<Integer>emptyList();
 
         assertTrue(mapOfMaps.isEmpty());
         assertTrue(strList.isEmpty());
@@ -44,7 +44,7 @@ public class TypeInferenceUnitTest {
 
         assertTrue(mapOfMapsInferred.isEmpty());
         assertEquals("public class java.util.HashMap<K,V>", mapOfMapsInferred.getClass()
-            .toGenericString());
+                .toGenericString());
     }
 
     static <T> List<T> add(List<T> list, T a, T b) {
@@ -61,7 +61,7 @@ public class TypeInferenceUnitTest {
         List<Number> numListGeneralized = add(new ArrayList<>(), 1, 2.0);
 
         assertEquals("public class java.util.ArrayList<E>", strListGeneralized.getClass()
-            .toGenericString());
+                .toGenericString());
         assertFalse(intListGeneralized.isEmpty());
         assertEquals(2, numListGeneralized.size());
     }

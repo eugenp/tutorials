@@ -1,7 +1,7 @@
 <employees>
-	<employee category="skilled">
-		<first-name>Jane</first-name>
-		<last-name>Daisy</last-name>
-		<sex>f</sex>
-	</employee>
+    <employee category="skilled">
+        <first-name>Jane</first-name>
+        <last-name>Daisy</last-name>
+        <sex>f</sex>
+    </employee>
 </employees>

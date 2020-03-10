@@ -72,7 +72,7 @@ public class HttpClientRedirectLiveTest {
             @Override
             protected boolean isRedirectable(final String method) {
                 return Arrays.stream(REDIRECT_METHODS)
-                  .anyMatch(m -> m.equalsIgnoreCase(method));
+                        .anyMatch(m -> m.equalsIgnoreCase(method));
             }
         }).build();
 

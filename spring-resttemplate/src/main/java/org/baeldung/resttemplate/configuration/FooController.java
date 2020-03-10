@@ -26,7 +26,7 @@ import com.google.common.collect.Maps;
 
 @Controller
 public class FooController {
-    
+
     private Map<Long, Foo> fooRepository = Maps.newHashMap(ImmutableMap.of(1L, new Foo(1L, randomAlphabetic(4))));
 
     public FooController() {
@@ -45,12 +45,12 @@ public class FooController {
     @ResponseBody
     public Foo findById(@PathVariable final long id) throws HttpClientErrorException {
         Foo foo = fooRepository.get(id);
-        
+
         if (foo == null) {
             throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
         } else {
             return foo;
-        }    
+        }
     }
 
     // API - write
@@ -62,7 +62,7 @@ public class FooController {
         fooRepository.put(id, foo);
         return foo;
     }
-    
+
     @RequestMapping(method = RequestMethod.PATCH, value = "/foos/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -70,12 +70,12 @@ public class FooController {
         fooRepository.put(id, foo);
         return foo;
     }
-    
+
     @RequestMapping(method = RequestMethod.POST, value = "/foos")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public ResponseEntity<Foo> postFoo(@RequestBody final Foo foo) {
-        
+
         fooRepository.put(foo.getId(), foo);
         final URI location = ServletUriComponentsBuilder
                 .fromCurrentServletMapping()
@@ -83,14 +83,14 @@ public class FooController {
                 .build()
                 .expand(foo.getId())
                 .toUri();
-        
+
         final HttpHeaders headers = new HttpHeaders();
         headers.setLocation(location);
-        
+
         final ResponseEntity<Foo> entity = new ResponseEntity<Foo>(foo, headers, HttpStatus.CREATED);
         return entity;
     }
-    
+
     @RequestMapping(method = RequestMethod.HEAD, value = "/foos")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody

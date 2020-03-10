@@ -16,8 +16,8 @@ public abstract class UserRepository extends AbstractEntityRepository<User, Long
 
     public List<User> findByFirstName(String firstName) {
         return typedQuery("select u from User u where u.firstName = ?1")
-          .setParameter(1, firstName)
-          .getResultList();
+                .setParameter(1, firstName)
+                .getResultList();
     }
 
     public abstract List<User> findByLastName(String lastName);

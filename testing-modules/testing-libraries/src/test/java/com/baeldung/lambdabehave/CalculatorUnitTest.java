@@ -26,29 +26,29 @@ public class CalculatorUnitTest {
                 });
             });
             it.uses(2, 3, 5)
-              .and(23, 10, 33)
-              .toShow("%d + %d = %d", (expect, a, b, c) -> {
-                  expect.that(calculator.add(a, b)).is(c);
-              });
+                    .and(23, 10, 33)
+                    .toShow("%d + %d = %d", (expect, a, b, c) -> {
+                        expect.that(calculator.add(a, b)).is(c);
+                    });
             it.requires(2)
-              .example(Generator.asciiStrings())
-              .toShow("Reversing a String twice returns the original String", (expect, str) -> {
-                  String same = new StringBuilder(str).reverse()
-                    .reverse()
-                    .toString();
-                  expect.that(same)
-                    .isEqualTo(str);
-              });
+                    .example(Generator.asciiStrings())
+                    .toShow("Reversing a String twice returns the original String", (expect, str) -> {
+                        String same = new StringBuilder(str).reverse()
+                                .reverse()
+                                .toString();
+                        expect.that(same)
+                                .isEqualTo(str);
+                    });
             it.requires(2)
-              .withSource(SourceGenerator.deterministicNumbers(5626689007407L))
-              .example(Generator.asciiStrings())
-              .toShow("Reversing a String twice returns the original String", (expect, str) -> {
-                  String same = new StringBuilder(str).reverse()
-                    .reverse()
-                    .toString();
-                  expect.that(same)
-                    .isEqualTo(str);
-              });
+                    .withSource(SourceGenerator.deterministicNumbers(5626689007407L))
+                    .example(Generator.asciiStrings())
+                    .toShow("Reversing a String twice returns the original String", (expect, str) -> {
+                        String same = new StringBuilder(str).reverse()
+                                .reverse()
+                                .toString();
+                        expect.that(same)
+                                .isEqualTo(str);
+                    });
         });
     }
 }

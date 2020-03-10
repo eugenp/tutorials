@@ -58,7 +58,7 @@ public class NaturalOrderComparatorsUnitTest {
 
         List<String> testStrings = Arrays.asList("a1b2c5", "b3ght3.2", "something65.thensomething5"); //125, 33.2, 65.5
 
-        List<String> expected = Arrays.asList("b3ght3.2", "something65.thensomething5", "a1b2c5" );
+        List<String> expected = Arrays.asList("b3ght3.2", "something65.thensomething5", "a1b2c5");
 
         testStrings.sort(NaturalOrderComparators.createNaturalOrderRegexComparator());
 

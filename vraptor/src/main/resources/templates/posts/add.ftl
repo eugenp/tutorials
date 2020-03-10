@@ -19,8 +19,10 @@
 
     <!-- Custom Fonts -->
     <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,7 +40,8 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 Menu <i class="fa fa-bars"></i>
             </button>
@@ -73,25 +76,27 @@
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <p>Compose the Next Viral Message!</p>
             <h5 style="color:darkred;">${error!""} ${status!""}</h5>
-        <#if errors??>
-            <#list errors as error>
-                <h5 style="color:darkred">${error.category?upper_case}: ${error.message}</h5>
+            <#if errors??>
+                <#list errors as error>
+                    <h5 style="color:darkred">${error.category?upper_case}: ${error.message}</h5>
+                <#else>
+                </#list>
             <#else>
-            </#list>
-        <#else>
-        </#if>
+            </#if>
             <form action="/post/add" method="POST">
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
                         <label>Title</label>
-                        <input type="text" class="form-control" placeholder="Title" id="title" name="post.title" required />
+                        <input type="text" class="form-control" placeholder="Title" id="title" name="post.title"
+                               required/>
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
                         <label>Post</label>
-                        <textarea rows="10" class="form-control" placeholder="Post" id="post" name="post.post" required></textarea>
+                        <textarea rows="10" class="form-control" placeholder="Post" id="post" name="post.post"
+                                  required></textarea>
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>

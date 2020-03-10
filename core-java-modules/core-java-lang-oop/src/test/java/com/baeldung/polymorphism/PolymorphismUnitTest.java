@@ -3,6 +3,7 @@ package com.baeldung.polymorphism;
 import static org.junit.Assert.*;
 
 import java.awt.image.BufferedImage;
+
 import org.junit.Test;
 
 public class PolymorphismUnitTest {
@@ -10,7 +11,7 @@ public class PolymorphismUnitTest {
     @Test
     public void givenImageFile_whenFileCreated_shouldSucceed() {
         ImageFile imageFile = FileManager.createImageFile("SampleImageFile", 200, 100, new BufferedImage(100, 200, BufferedImage.TYPE_INT_RGB).toString()
-            .getBytes(), "v1.0.0");
+                .getBytes(), "v1.0.0");
         assertEquals(200, imageFile.getHeight());
     }
 

@@ -4,6 +4,7 @@ import com.baeldung.performancetests.model.source.Address;
 import com.googlecode.jmapper.annotations.JGlobalMap;
 
 import java.util.List;
+
 @JGlobalMap
 public class Shop {
 
@@ -28,7 +29,7 @@ public class Shop {
         this.shopAddres = shopAddres;
     }
 
-    public String  getShopUrl() {
+    public String getShopUrl() {
         return shopUrl;
     }
 

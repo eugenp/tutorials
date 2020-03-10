@@ -27,21 +27,21 @@ public class EmployeeResource {
     private EmployeeRepository employeeRepository;
 
     @GET
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Employee> getAllEmployees() {
         return employeeRepository.getAllEmployees();
     }
 
     @GET
     @Path("/{id}")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Employee getEmployee(@PathParam("id") int id) {
         return employeeRepository.getEmployee(id);
     }
 
     @PUT
     @Path("/{id}")
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Response updateEmployee(Employee employee, @PathParam("id") int id) {
         employeeRepository.updateEmployee(employee, id);
         return Response.status(Response.Status.OK.getStatusCode()).build();
@@ -49,14 +49,14 @@ public class EmployeeResource {
 
     @DELETE
     @Path("/{id}")
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Response deleteEmployee(@PathParam("id") int id) {
         employeeRepository.deleteEmployee(id);
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 
     @POST
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Response addEmployee(Employee employee, @Context UriInfo uriInfo) {
         employeeRepository.addEmployee(new Employee(employee.getId(), employee.getFirstName()));
         return Response.status(Response.Status.CREATED.getStatusCode()).header("Location", String.format("%s/%s", uriInfo.getAbsolutePath().toString(), employee.getId())).build();

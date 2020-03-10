@@ -25,7 +25,7 @@ class SharedPrinter {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-        System.out.println(Thread.currentThread().getName() + ":"+num);
+        System.out.println(Thread.currentThread().getName() + ":" + num);
         semOdd.release();
     }
 
@@ -35,7 +35,7 @@ class SharedPrinter {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-        System.out.println(Thread.currentThread().getName() + ":"+ num);
+        System.out.println(Thread.currentThread().getName() + ":" + num);
         semEven.release();
     }
 }

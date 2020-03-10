@@ -18,7 +18,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import com.baeldung.persistence.dao.common.IOperations;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class FooServicePersistenceIntegrationTest extends AbstractServicePersistenceIntegrationTest<Foo> {
 
     @Autowired

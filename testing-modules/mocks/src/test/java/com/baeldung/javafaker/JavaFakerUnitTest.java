@@ -31,13 +31,13 @@ public class JavaFakerUnitTest {
         Faker faker = new Faker();
 
         String streetName = faker.address()
-            .streetName();
+                .streetName();
         String number = faker.address()
-            .buildingNumber();
+                .buildingNumber();
         String city = faker.address()
-            .city();
+                .city();
         String country = faker.address()
-            .country();
+                .country();
 
         System.out.println(String.format("%s\n%s\n%s\n%s", number, streetName, city, country));
 
@@ -50,9 +50,9 @@ public class JavaFakerUnitTest {
         Faker faker2 = new Faker(new Random(24));
 
         assertEquals(faker1.name()
-            .firstName(),
-            faker2.name()
-                .firstName());
+                        .firstName(),
+                faker2.name()
+                        .firstName());
     }
 
     @Test
@@ -62,19 +62,19 @@ public class JavaFakerUnitTest {
         Faker usFaker = new Faker(new Locale("en-US"));
 
         System.out.println(String.format("American zipcode: %s", usFaker.address()
-            .zipCode()));
+                .zipCode()));
         System.out.println(String.format("British postcode: %s", ukFaker.address()
-            .zipCode()));
+                .zipCode()));
 
         Pattern ukPattern = Pattern.compile("([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))\\s?[0-9][A-Za-z]{2})");
         Matcher ukMatcher = ukPattern.matcher(ukFaker.address()
-            .zipCode());
+                .zipCode());
 
         assertTrue(ukMatcher.find());
 
         Matcher usMatcher = Pattern.compile("^\\d{5}(?:[-\\s]\\d{4})?$")
-            .matcher(usFaker.address()
-                .zipCode());
+                .matcher(usFaker.address()
+                        .zipCode());
 
         assertTrue(usMatcher.find());
 
@@ -91,7 +91,7 @@ public class JavaFakerUnitTest {
         Faker faker = new Faker(new Random(randomService.nextLong()));
 
         System.out.println(faker.address()
-            .city());
+                .city());
 
     }
 
@@ -102,12 +102,12 @@ public class JavaFakerUnitTest {
 
         String email = fakeValuesService.bothify("????##@gmail.com");
         Matcher emailMatcher = Pattern.compile("\\w{4}\\d{2}@gmail.com")
-            .matcher(email);
+                .matcher(email);
         assertTrue(emailMatcher.find());
 
         String alphaNumericString = fakeValuesService.regexify("[a-z1-9]{10}");
         Matcher alphaNumericMatcher = Pattern.compile("[a-z1-9]{10}")
-            .matcher(alphaNumericString);
+                .matcher(alphaNumericString);
         assertTrue(alphaNumericMatcher.find());
 
     }

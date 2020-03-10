@@ -9,7 +9,8 @@ import java.util.UUID;
 @Document
 public class Person {
 
-    @Id private UUID id;
+    @Id
+    private UUID id;
     private String firstName;
 
     public Person(final UUID id, final String firstName) {

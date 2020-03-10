@@ -59,5 +59,5 @@ public class PrototypeBeanInjectionIntegrationTest {
 
         Assert.assertTrue("New instance expected", firstInstance != secondInstance);
     }
-    
+
 }

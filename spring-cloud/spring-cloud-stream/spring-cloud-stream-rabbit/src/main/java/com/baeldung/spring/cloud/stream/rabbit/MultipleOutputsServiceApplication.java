@@ -24,15 +24,15 @@ public class MultipleOutputsServiceApplication {
     public void routeValues(Integer val) {
         if (val < 10) {
             processor.anOutput()
-                .send(message(val));
+                    .send(message(val));
         } else {
             processor.anotherOutput()
-                .send(message(val));
+                    .send(message(val));
         }
     }
 
     private static final <T> Message<T> message(T val) {
         return MessageBuilder.withPayload(val)
-            .build();
+                .build();
     }
 }

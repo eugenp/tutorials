@@ -22,14 +22,14 @@ public class ArraysUnitTest {
 
     @Before
     public void setup() {
-        intro = new String[] { "once", "upon", "a", "time" };
+        intro = new String[]{"once", "upon", "a", "time"};
     }
 
     @Test
     public void whenCopyOfRange_thenAbridgedArray() {
         String[] abridgement = Arrays.copyOfRange(intro, 0, 3);
 
-        assertArrayEquals(new String[] { "once", "upon", "a" }, abridgement);
+        assertArrayEquals(new String[]{"once", "upon", "a"}, abridgement);
         assertFalse(Arrays.equals(intro, abridgement));
     }
 
@@ -52,15 +52,15 @@ public class ArraysUnitTest {
 
     @Test
     public void whenEqualsContent_thenMatch() {
-        assertTrue(Arrays.equals(new String[] { "once", "upon", "a", "time" }, intro));
-        assertFalse(Arrays.equals(new String[] { "once", "upon", "a", null }, intro));
+        assertTrue(Arrays.equals(new String[]{"once", "upon", "a", "time"}, intro));
+        assertFalse(Arrays.equals(new String[]{"once", "upon", "a", null}, intro));
     }
 
     @Test
     public void whenNestedArrays_thenDeepEqualsPass() {
-        String[] end = { "the", "end" };
-        Object[] story = new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
-        Object[] copy = new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
+        String[] end = {"the", "end"};
+        Object[] story = new Object[]{intro, new String[]{"chapter one", "chapter two"}, end};
+        Object[] copy = new Object[]{intro, new String[]{"chapter one", "chapter two"}, end};
 
         assertTrue(Arrays.deepEquals(story, copy));
         assertFalse(Arrays.equals(story, copy));
@@ -71,7 +71,7 @@ public class ArraysUnitTest {
         String[] sorted = Arrays.copyOf(intro, 4);
         Arrays.sort(sorted);
 
-        assertArrayEquals(new String[] { "a", "once", "time", "upon" }, sorted);
+        assertArrayEquals(new String[]{"a", "once", "time", "upon"}, sorted);
     }
 
     @Test
@@ -100,7 +100,7 @@ public class ArraysUnitTest {
 
     @Test
     public void whenNestedArrayNullElement_thenEqualsFailDeepHashPass() {
-        Object[] looping = new Object[] { intro, intro };
+        Object[] looping = new Object[]{intro, intro};
         int deepHashBefore = Arrays.deepHashCode(looping);
         int hashBefore = Arrays.hashCode(looping);
 
@@ -126,7 +126,7 @@ public class ArraysUnitTest {
         String[] longAgo = new String[4];
         Arrays.setAll(longAgo, i -> intro[i].toUpperCase());
 
-        assertArrayEquals(longAgo, new String[] { "ONCE", "UPON", "A", "TIME" });
+        assertArrayEquals(longAgo, new String[]{"ONCE", "UPON", "A", "TIME"});
     }
 
     @Test
@@ -136,8 +136,8 @@ public class ArraysUnitTest {
 
     @Test
     public void whenNestedArrayDeepString_thenFormattedArraysString() {
-        String[] end = { "the", "end" };
-        Object[] story = new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
+        String[] end = {"the", "end"};
+        Object[] story = new Object[]{intro, new String[]{"chapter one", "chapter two"}, end};
 
         assertEquals("[[once, upon, a, time], [chapter one, chapter two], [the, end]]", Arrays.deepToString(story));
     }
@@ -156,23 +156,23 @@ public class ArraysUnitTest {
 
     @Test
     public void givenIntArray_whenPrefixAdd_thenAllAccumulated() {
-        int[] arri = new int[] { 1, 2, 3, 4};
+        int[] arri = new int[]{1, 2, 3, 4};
         Arrays.parallelPrefix(arri, (left, right) -> left + right);
-        assertThat(arri, is(new int[] { 1, 3, 6, 10}));
+        assertThat(arri, is(new int[]{1, 3, 6, 10}));
     }
 
     @Test
     public void givenStringArray_whenPrefixConcat_thenAllMerged() {
-        String[] arrs = new String[] { "1", "2", "3" };
+        String[] arrs = new String[]{"1", "2", "3"};
         Arrays.parallelPrefix(arrs, (left, right) -> left + right);
-        assertThat(arrs, is(new String[] { "1", "12", "123" }));
+        assertThat(arrs, is(new String[]{"1", "12", "123"}));
     }
 
     @Test
     public void whenPrefixAddWithRange_thenRangeAdded() {
-        int[] arri = new int[] { 1, 2, 3, 4, 5 };
+        int[] arri = new int[]{1, 2, 3, 4, 5};
         Arrays.parallelPrefix(arri, 1, 4, (left, right) -> left + right);
-        assertThat(arri, is(new int[] { 1, 2, 5, 9, 5 }));
+        assertThat(arri, is(new int[]{1, 2, 5, 9, 5}));
     }
 
     @Test
@@ -189,7 +189,7 @@ public class ArraysUnitTest {
                 arrB[i] = nonassociativeFunc(arrB[i - 1], arrB[i]);
             }
             consistent = Arrays.equals(arrA, arrB);
-            if(!consistent) break;
+            if (!consistent) break;
         }
         assertFalse(consistent);
     }
@@ -198,7 +198,7 @@ public class ArraysUnitTest {
      * non-associative int binary operator
      */
     private int nonassociativeFunc(int left, int right) {
-        return left + right*left;
+        return left + right * left;
     }
 
 }

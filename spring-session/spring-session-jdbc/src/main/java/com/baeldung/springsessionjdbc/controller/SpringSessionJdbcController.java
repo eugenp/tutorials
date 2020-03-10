@@ -29,8 +29,8 @@ public class SpringSessionJdbcController {
         if (!StringUtils.isEmpty(color)) {
             favoriteColors.add(color);
             request
-              .getSession()
-              .setAttribute("favoriteColors", favoriteColors);
+                    .getSession()
+                    .setAttribute("favoriteColors", favoriteColors);
         }
         return "redirect:/";
     }

@@ -19,10 +19,10 @@ public class HelloWorldController {
 
     @Autowired
     private GreeterService greeterService;
-    
+
     private void processContext() {
         WebApplicationContext rootContext = ContextLoader.getCurrentWebApplicationContext();
-        
+
         System.out.println("root context : " + rootContext);
         System.out.println("root context Beans: " + Arrays.asList(rootContext.getBeanDefinitionNames()));
 

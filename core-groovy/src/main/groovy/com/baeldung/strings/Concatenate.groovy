@@ -3,7 +3,7 @@ package com.baeldung.strings;
 class Concatenate {
     String first = 'Hello'
     String last = 'Groovy'
-  
+
     String doSimpleConcat() {
         return 'My name is ' + first + ' ' + last
     }
@@ -23,16 +23,16 @@ class Concatenate {
     String doConcatUsingLeftShiftOperator() {
         return 'My name is ' << first << ' ' << last
     }
-    
+
     String doConcatUsingArrayJoinMethod() {
         return ['My name is', first, last].join(' ')
     }
 
     String doConcatUsingArrayInjectMethod() {
-        return  [first,' ', last]
-          .inject(new StringBuffer('My name is '), { initial, name -> initial.append(name); return initial }).toString()
+        return [first, ' ', last]
+                .inject(new StringBuffer('My name is '), { initial, name -> initial.append(name); return initial }).toString()
     }
- 
+
     String doConcatUsingStringBuilder() {
         return new StringBuilder().append('My name is ').append(first).append(' ').append(last)
     }

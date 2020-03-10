@@ -4,26 +4,29 @@
           xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
           version="5.0" xml:id="linenumbering.width">
-<refmeta>
-<refentrytitle>linenumbering.width</refentrytitle>
-<refmiscinfo class="other" otherclass="datatype">integer</refmiscinfo>
-</refmeta>
-<refnamediv>
-<refname>linenumbering.width</refname>
-<refpurpose>Indicates the width of line numbers</refpurpose>
-</refnamediv>
+    <refmeta>
+        <refentrytitle>linenumbering.width</refentrytitle>
+        <refmiscinfo class="other" otherclass="datatype">integer</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname>linenumbering.width</refname>
+        <refpurpose>Indicates the width of line numbers</refpurpose>
+    </refnamediv>
 
-<refsynopsisdiv>
-<src:fragment xml:id="linenumbering.width.frag">
-<xsl:param name="linenumbering.width">3</xsl:param>
-</src:fragment>
-</refsynopsisdiv>
+    <refsynopsisdiv>
+        <src:fragment xml:id="linenumbering.width.frag">
+            <xsl:param name="linenumbering.width">3</xsl:param>
+        </src:fragment>
+    </refsynopsisdiv>
 
-<refsection><info><title>Description</title></info>
+    <refsection>
+        <info>
+            <title>Description</title>
+        </info>
 
-<para>If line numbering is enabled, line numbers will appear right
-justified in a field "width" characters wide.
-</para>
+        <para>If line numbering is enabled, line numbers will appear right
+            justified in a field "width" characters wide.
+        </para>
 
-</refsection>
+    </refsection>
 </refentry>

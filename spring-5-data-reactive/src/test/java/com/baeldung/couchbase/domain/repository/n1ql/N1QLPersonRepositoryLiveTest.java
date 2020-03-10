@@ -15,7 +15,8 @@ import java.util.UUID;
 @SpringBootTest(properties = {"spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration"})
 public class N1QLPersonRepositoryLiveTest {
 
-    @Autowired private N1QLPersonRepository personRepository;
+    @Autowired
+    private N1QLPersonRepository personRepository;
 
     @Test
     public void shouldFindAll_byLastName() {
@@ -25,18 +26,18 @@ public class N1QLPersonRepositoryLiveTest {
         final Person nonMatchingPerson = new Person(UUID.randomUUID(), "NotJohn");
         wrap(() -> {
             personRepository
-              .save(matchingPerson)
-              .subscribe();
+                    .save(matchingPerson)
+                    .subscribe();
             personRepository
-              .save(nonMatchingPerson)
-              .subscribe();
+                    .save(nonMatchingPerson)
+                    .subscribe();
             //When
             final Flux<Person> allByFirstName = personRepository.findAllByFirstName(firstName);
             //Then
             StepVerifier
-              .create(allByFirstName)
-              .expectNext(matchingPerson)
-              .verifyComplete();
+                    .create(allByFirstName)
+                    .expectNext(matchingPerson)
+                    .verifyComplete();
 
         }, matchingPerson, nonMatchingPerson);
     }
@@ -47,8 +48,8 @@ public class N1QLPersonRepositoryLiveTest {
         } finally {
             for (final Person person : people) {
                 personRepository
-                  .delete(person)
-                  .subscribe();
+                        .delete(person)
+                        .subscribe();
             }
         }
     }

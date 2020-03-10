@@ -36,7 +36,7 @@ public class Neo4JServerLiveTest {
         session.close();
         driver.close();
     }
-    
+
     @Test
     public void standAloneJdbc() throws Exception {
         Connection con = DriverManager.getConnection("jdbc:neo4j:bolt://localhost/?user=neo4j,password=12345,scheme=basic");

@@ -14,12 +14,14 @@ import com.baeldung.sampleapp.web.dto.BaeldungItemV2;
 public class CustomMediaTypeController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/public/api/items/{id}", produces = "application/vnd.baeldung.api.v1+json")
-    public @ResponseBody BaeldungItem getItem(@PathVariable("id") String id) {
+    public @ResponseBody
+    BaeldungItem getItem(@PathVariable("id") String id) {
         return new BaeldungItem("itemId1");
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/public/api/items/{id}", produces = "application/vnd.baeldung.api.v2+json")
-    public @ResponseBody BaeldungItemV2 getItemSecondAPIVersion(@PathVariable("id") String id) {
+    public @ResponseBody
+    BaeldungItemV2 getItemSecondAPIVersion(@PathVariable("id") String id) {
         return new BaeldungItemV2("itemName");
     }
 }

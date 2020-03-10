@@ -25,8 +25,8 @@ public class ProcessExecutionIntegrationTest {
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         RepositoryService repositoryService = processEngine.getRepositoryService();
         repositoryService.createDeployment()
-          .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
-          .deploy();
+                .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
+                .deploy();
         Long count = repositoryService.createProcessDefinitionQuery().count();
         assertTrue(count >= 1);
     }
@@ -36,8 +36,8 @@ public class ProcessExecutionIntegrationTest {
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         RepositoryService repositoryService = processEngine.getRepositoryService();
         repositoryService.createDeployment()
-          .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
-          .deploy();
+                .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
+                .deploy();
 
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("employeeName", "Kermit");
@@ -46,7 +46,7 @@ public class ProcessExecutionIntegrationTest {
 
         RuntimeService runtimeService = processEngine.getRuntimeService();
         ProcessInstance processInstance = runtimeService
-          .startProcessInstanceByKey("vacationRequest", variables);
+                .startProcessInstanceByKey("vacationRequest", variables);
 
         Long count = runtimeService.createProcessInstanceQuery().count();
         assertTrue(count >= 1);
@@ -57,8 +57,8 @@ public class ProcessExecutionIntegrationTest {
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         RepositoryService repositoryService = processEngine.getRepositoryService();
         repositoryService.createDeployment()
-          .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
-          .deploy();
+                .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
+                .deploy();
 
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("employeeName", "Kermit");
@@ -67,7 +67,7 @@ public class ProcessExecutionIntegrationTest {
 
         RuntimeService runtimeService = processEngine.getRuntimeService();
         ProcessInstance processInstance = runtimeService
-          .startProcessInstanceByKey("vacationRequest", variables);
+                .startProcessInstanceByKey("vacationRequest", variables);
 
         TaskService taskService = processEngine.getTaskService();
         List<Task> tasks = taskService.createTaskQuery().taskCandidateGroup("management").list();
@@ -88,8 +88,8 @@ public class ProcessExecutionIntegrationTest {
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         RepositoryService repositoryService = processEngine.getRepositoryService();
         repositoryService.createDeployment()
-          .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
-          .deploy();
+                .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
+                .deploy();
 
         RuntimeService runtimeService = processEngine.getRuntimeService();
         repositoryService.suspendProcessDefinitionByKey("vacationRequest");

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan({ "com.baeldung.web" })
+@ComponentScan({"com.baeldung.web"})
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
 
     @Bean

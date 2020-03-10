@@ -10,6 +10,7 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
 
     <!-- remote service proxy, acting like a local bean while invoking -->
-    <dubbo:reference interface="com.baeldung.dubbo.remote.GreetingsService" id="greetingsService" retries="2" timeout="10000" loadbalance="roundrobin" />
+    <dubbo:reference interface="com.baeldung.dubbo.remote.GreetingsService" id="greetingsService" retries="2"
+                     timeout="10000" loadbalance="roundrobin"/>
 
 </beans>

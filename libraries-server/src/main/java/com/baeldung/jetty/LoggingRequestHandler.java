@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Handler implementation which simply logs that a request has been received.
- * 
+ *
  * @author Donato Rimenti
  */
 public class LoggingRequestHandler implements Handler {
@@ -26,7 +26,7 @@ public class LoggingRequestHandler implements Handler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jetty.util.component.LifeCycle#addLifeCycleListener(org.
      * eclipse.jetty.util.component.LifeCycle.Listener)
      */
@@ -36,7 +36,7 @@ public class LoggingRequestHandler implements Handler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jetty.util.component.LifeCycle#isFailed()
      */
     @Override
@@ -46,7 +46,7 @@ public class LoggingRequestHandler implements Handler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jetty.util.component.LifeCycle#isRunning()
      */
     @Override
@@ -56,7 +56,7 @@ public class LoggingRequestHandler implements Handler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jetty.util.component.LifeCycle#isStarted()
      */
     @Override
@@ -66,7 +66,7 @@ public class LoggingRequestHandler implements Handler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jetty.util.component.LifeCycle#isStarting()
      */
     @Override
@@ -76,7 +76,7 @@ public class LoggingRequestHandler implements Handler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jetty.util.component.LifeCycle#isStopped()
      */
     @Override
@@ -86,7 +86,7 @@ public class LoggingRequestHandler implements Handler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jetty.util.component.LifeCycle#isStopping()
      */
     @Override
@@ -96,7 +96,7 @@ public class LoggingRequestHandler implements Handler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.eclipse.jetty.util.component.LifeCycle#removeLifeCycleListener(org.
      * eclipse.jetty.util.component.LifeCycle.Listener)
@@ -107,7 +107,7 @@ public class LoggingRequestHandler implements Handler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jetty.util.component.LifeCycle#start()
      */
     @Override
@@ -116,7 +116,7 @@ public class LoggingRequestHandler implements Handler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jetty.util.component.LifeCycle#stop()
      */
     @Override
@@ -125,7 +125,7 @@ public class LoggingRequestHandler implements Handler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jetty.server.Handler#destroy()
      */
     @Override
@@ -134,7 +134,7 @@ public class LoggingRequestHandler implements Handler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jetty.server.Handler#getServer()
      */
     @Override
@@ -144,7 +144,7 @@ public class LoggingRequestHandler implements Handler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jetty.server.Handler#handle(java.lang.String,
      * org.eclipse.jetty.server.Request, javax.servlet.http.HttpServletRequest,
      * javax.servlet.http.HttpServletResponse)
@@ -156,7 +156,7 @@ public class LoggingRequestHandler implements Handler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jetty.server.Handler#setServer(org.eclipse.jetty.server.
      * Server)
      */

@@ -17,10 +17,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 /**
- * 
  * This test requires:
  * * mongodb instance running on the environment
- *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SimpleMongoConfig.class)
@@ -48,14 +46,14 @@ public class MongoTemplateProjectionLiveTest {
 
         final Query query = new Query();
         query.fields()
-          .include("name");
+                .include("name");
 
         mongoTemplate.find(query, User.class)
-          .forEach(user -> {
-              assertNotNull(user.getName());
-              assertTrue(user.getAge()
-                .equals(0));
-          });
+                .forEach(user -> {
+                    assertNotNull(user.getName());
+                    assertTrue(user.getAge()
+                            .equals(0));
+                });
     }
 
     @Test
@@ -65,13 +63,13 @@ public class MongoTemplateProjectionLiveTest {
 
         final Query query = new Query();
         query.fields()
-          .exclude("_id");
+                .exclude("_id");
 
         mongoTemplate.find(query, User.class)
-          .forEach(user -> {
-              assertNull(user.getId());
-              assertNotNull(user.getAge());
-          });
+                .forEach(user -> {
+                    assertNull(user.getId());
+                    assertNotNull(user.getAge());
+                });
 
     }
 

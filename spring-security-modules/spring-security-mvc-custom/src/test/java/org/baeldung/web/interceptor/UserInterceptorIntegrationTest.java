@@ -20,8 +20,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { SecurityWithoutCsrfConfig.class, MvcConfig.class })
-@WithMockUser(username = "admin", roles = { "USER", "ADMIN" })
+@ContextConfiguration(classes = {SecurityWithoutCsrfConfig.class, MvcConfig.class})
+@WithMockUser(username = "admin", roles = {"USER", "ADMIN"})
 public class UserInterceptorIntegrationTest {
 
     @Autowired
@@ -44,7 +44,7 @@ public class UserInterceptorIntegrationTest {
     @Test
     public void testInterceptors() throws Exception {
         mockMvc.perform(get("/auth/foos"))
-            .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is2xxSuccessful());
     }
 
 }

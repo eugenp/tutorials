@@ -19,17 +19,17 @@ public class ListFiles {
 
     public Set<String> listFilesUsingJavaIO(String dir) {
         return Stream.of(new File(dir).listFiles())
-            .filter(file -> !file.isDirectory())
-            .map(File::getName)
-            .collect(Collectors.toSet());
+                .filter(file -> !file.isDirectory())
+                .map(File::getName)
+                .collect(Collectors.toSet());
     }
 
     public Set<String> listFilesUsingFileWalk(String dir, int depth) throws IOException {
         try (Stream<Path> stream = Files.walk(Paths.get(dir), depth)) {
             return stream.filter(file -> !Files.isDirectory(file))
-                .map(Path::getFileName)
-                .map(Path::toString)
-                .collect(Collectors.toSet());
+                    .map(Path::getFileName)
+                    .map(Path::toString)
+                    .collect(Collectors.toSet());
         }
     }
 
@@ -40,7 +40,7 @@ public class ListFiles {
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 if (!Files.isDirectory(file)) {
                     fileList.add(file.getFileName()
-                        .toString());
+                            .toString());
                 }
                 return FileVisitResult.CONTINUE;
             }
@@ -54,7 +54,7 @@ public class ListFiles {
             for (Path path : stream) {
                 if (!Files.isDirectory(path)) {
                     fileList.add(path.getFileName()
-                        .toString());
+                            .toString());
                 }
             }
         }

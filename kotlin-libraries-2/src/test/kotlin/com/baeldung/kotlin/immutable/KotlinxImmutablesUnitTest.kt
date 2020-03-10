@@ -7,21 +7,21 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.ExpectedException
 
-class KotlinxImmutablesUnitTest{
+class KotlinxImmutablesUnitTest {
 
 
-  @Rule
-  @JvmField
-  var ee : ExpectedException = ExpectedException.none()
+    @Rule
+    @JvmField
+    var ee: ExpectedException = ExpectedException.none()
 
-  @Test
-  fun givenKICLList_whenAddTried_checkExceptionThrown(){
+    @Test
+    fun givenKICLList_whenAddTried_checkExceptionThrown() {
 
-      val list: ImmutableList<String> = immutableListOf("I", "am", "immutable")
+        val list: ImmutableList<String> = immutableListOf("I", "am", "immutable")
 
-      list.add("My new item")
+        list.add("My new item")
 
-      assertEquals(listOf("I", "am", "immutable"), list)
+        assertEquals(listOf("I", "am", "immutable"), list)
 
-  }
+    }
 }

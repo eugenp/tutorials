@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 public class RandomPasswordGenerator {
 
     /**
-     *  Special characters allowed in password.
+     * Special characters allowed in password.
      */
     public static final String ALLOWED_SPL_CHARACTERS = "!@#$%^&*()_+";
 
@@ -54,16 +54,16 @@ public class RandomPasswordGenerator {
 
     public String generateCommonTextPassword() {
         String pwString = generateRandomSpecialCharacters(2).concat(generateRandomNumbers(2))
-            .concat(generateRandomAlphabet(2, true))
-            .concat(generateRandomAlphabet(2, false))
-            .concat(generateRandomCharacters(2));
+                .concat(generateRandomAlphabet(2, true))
+                .concat(generateRandomAlphabet(2, false))
+                .concat(generateRandomCharacters(2));
         List<Character> pwChars = pwString.chars()
-            .mapToObj(data -> (char) data)
-            .collect(Collectors.toList());
+                .mapToObj(data -> (char) data)
+                .collect(Collectors.toList());
         Collections.shuffle(pwChars);
         String password = pwChars.stream()
-            .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
-            .toString();
+                .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
+                .toString();
         return password;
     }
 
@@ -74,16 +74,16 @@ public class RandomPasswordGenerator {
         String specialChar = RandomStringUtils.random(2, 33, 47, false, false);
         String totalChars = RandomStringUtils.randomAlphanumeric(2);
         String combinedChars = upperCaseLetters.concat(lowerCaseLetters)
-            .concat(numbers)
-            .concat(specialChar)
-            .concat(totalChars);
+                .concat(numbers)
+                .concat(specialChar)
+                .concat(totalChars);
         List<Character> pwdChars = combinedChars.chars()
-            .mapToObj(c -> (char) c)
-            .collect(Collectors.toList());
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.toList());
         Collections.shuffle(pwdChars);
         String password = pwdChars.stream()
-            .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
-            .toString();
+                .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
+                .toString();
         return password;
     }
 
@@ -92,26 +92,26 @@ public class RandomPasswordGenerator {
         List<Character> charList = pwdStream.collect(Collectors.toList());
         Collections.shuffle(charList);
         String password = charList.stream()
-            .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
-            .toString();
+                .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
+                .toString();
         return password;
     }
 
     public String generateRandomSpecialCharacters(int length) {
         RandomStringGenerator pwdGenerator = new RandomStringGenerator.Builder().withinRange(33, 45)
-            .build();
+                .build();
         return pwdGenerator.generate(length);
     }
 
     public String generateRandomNumbers(int length) {
         RandomStringGenerator pwdGenerator = new RandomStringGenerator.Builder().withinRange(48, 57)
-            .build();
+                .build();
         return pwdGenerator.generate(length);
     }
 
     public String generateRandomCharacters(int length) {
         RandomStringGenerator pwdGenerator = new RandomStringGenerator.Builder().withinRange(48, 57)
-            .build();
+                .build();
         return pwdGenerator.generate(length);
     }
 
@@ -126,7 +126,7 @@ public class RandomPasswordGenerator {
             hi = 90;
         }
         RandomStringGenerator pwdGenerator = new RandomStringGenerator.Builder().withinRange(low, hi)
-            .build();
+                .build();
         return pwdGenerator.generate(length);
     }
 

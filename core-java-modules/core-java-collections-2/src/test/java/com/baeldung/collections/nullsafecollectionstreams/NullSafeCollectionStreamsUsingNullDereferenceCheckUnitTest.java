@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.stream.Stream;
+
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class NullSafeCollectionStreamsUsingNullDereferenceCheckUnitTest {
@@ -23,7 +25,7 @@ public class NullSafeCollectionStreamsUsingNullDereferenceCheckUnitTest {
     @Test
     public void whenCollectionHasElements_thenExpectAStreamOfExactlyTheSameElements() {
         Collection<String> collection = Arrays.asList("a", "b", "c");
-        Stream<String> expResult = Arrays.stream(new String[] { "a", "b", "c" });
+        Stream<String> expResult = Arrays.stream(new String[]{"a", "b", "c"});
         Stream<String> result = instance.collectionAsStream(collection);
         assertStreamEquals(expResult, result);
     }

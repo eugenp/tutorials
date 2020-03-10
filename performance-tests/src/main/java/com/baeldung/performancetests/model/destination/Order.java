@@ -6,6 +6,7 @@ import com.googlecode.jmapper.annotations.JMap;
 import com.googlecode.jmapper.annotations.JMapConversion;
 
 import java.util.List;
+
 public class Order {
     @JMap
     private User orderingUser;
@@ -37,7 +38,7 @@ public class Order {
         if (o == null) return false;
         if (o.getClass() == SourceOrder.class) {
             SourceOrder order =
-              (SourceOrder) o;
+                    (SourceOrder) o;
             return Objects.equal(orderingUser, order.getOrderingUser()) &&
                     Objects.equal(orderedProducts, order.getOrderedProducts()) &&
                     orderStatus.ordinal() == order.getStatus().ordinal() &&
@@ -160,11 +161,10 @@ public class Order {
     }
 
 
-
     @JMapConversion(from = "status", to = "orderStatus")
     public OrderStatus conversion(com.baeldung.performancetests.model.source.OrderStatus status) {
         OrderStatus orderStatus = null;
-        switch(status) {
+        switch (status) {
             case CREATED:
                 orderStatus = OrderStatus.CREATED;
                 break;
@@ -190,7 +190,7 @@ public class Order {
     @JMapConversion(from = "paymentType", to = "paymentType")
     public PaymentType conversion(com.baeldung.performancetests.model.source.PaymentType type) {
         PaymentType paymentType = null;
-        switch(type) {
+        switch (type) {
             case CARD:
                 paymentType = PaymentType.CARD;
                 break;

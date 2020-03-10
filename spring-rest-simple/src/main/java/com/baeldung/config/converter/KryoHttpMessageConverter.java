@@ -16,45 +16,45 @@ import com.esotericsoftware.kryo.io.Output;
  * An {@code HttpMessageConverter} that can read and write Kryo messages.
  */
 public class KryoHttpMessageConverter extends
-		AbstractHttpMessageConverter<Object> {
+        AbstractHttpMessageConverter<Object> {
 
-	public static final MediaType KRYO = new MediaType("application", "x-kryo");
+    public static final MediaType KRYO = new MediaType("application", "x-kryo");
 
-	private static final ThreadLocal<Kryo> kryoThreadLocal = new ThreadLocal<Kryo>() {
-		@Override
-		protected Kryo initialValue() {
-			final Kryo kryo = new Kryo();
-			kryo.register(Foo.class, 1);
-			return kryo;
-		}
-	};
+    private static final ThreadLocal<Kryo> kryoThreadLocal = new ThreadLocal<Kryo>() {
+        @Override
+        protected Kryo initialValue() {
+            final Kryo kryo = new Kryo();
+            kryo.register(Foo.class, 1);
+            return kryo;
+        }
+    };
 
-	public KryoHttpMessageConverter() {
-		super(KRYO);
-	}
+    public KryoHttpMessageConverter() {
+        super(KRYO);
+    }
 
-	@Override
-	protected boolean supports(final Class<?> clazz) {
-		return Object.class.isAssignableFrom(clazz);
-	}
+    @Override
+    protected boolean supports(final Class<?> clazz) {
+        return Object.class.isAssignableFrom(clazz);
+    }
 
-	@Override
-	protected Object readInternal(final Class<? extends Object> clazz,
-			final HttpInputMessage inputMessage) throws IOException {
-		final Input input = new Input(inputMessage.getBody());
-		return kryoThreadLocal.get().readClassAndObject(input);
-	}
+    @Override
+    protected Object readInternal(final Class<? extends Object> clazz,
+                                  final HttpInputMessage inputMessage) throws IOException {
+        final Input input = new Input(inputMessage.getBody());
+        return kryoThreadLocal.get().readClassAndObject(input);
+    }
 
-	@Override
-	protected void writeInternal(final Object object,
-			final HttpOutputMessage outputMessage) throws IOException {
-		final Output output = new Output(outputMessage.getBody());
-		kryoThreadLocal.get().writeClassAndObject(output, object);
-		output.flush();
-	}
+    @Override
+    protected void writeInternal(final Object object,
+                                 final HttpOutputMessage outputMessage) throws IOException {
+        final Output output = new Output(outputMessage.getBody());
+        kryoThreadLocal.get().writeClassAndObject(output, object);
+        output.flush();
+    }
 
-	@Override
-	protected MediaType getDefaultContentType(final Object object) {
-		return KRYO;
-	}
+    @Override
+    protected MediaType getDefaultContentType(final Object object) {
+        return KRYO;
+    }
 }

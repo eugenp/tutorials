@@ -25,31 +25,31 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class JdbiConfiguration {
     @Bean
-    public Jdbi jdbi(DataSource ds,List<JdbiPlugin> jdbiPlugins, List<RowMapper<?>> rowMappers) {        
-        TransactionAwareDataSourceProxy proxy = new TransactionAwareDataSourceProxy(ds);        
+    public Jdbi jdbi(DataSource ds, List<JdbiPlugin> jdbiPlugins, List<RowMapper<?>> rowMappers) {
+        TransactionAwareDataSourceProxy proxy = new TransactionAwareDataSourceProxy(ds);
         Jdbi jdbi = Jdbi.create(proxy);
-        
+
         // Register all available plugins
         log.info("[I27] Installing plugins... ({} found)", jdbiPlugins.size());
         jdbiPlugins.forEach(plugin -> jdbi.installPlugin(plugin));
-        
+
         // Register all available rowMappers
         log.info("[I31] Installing rowMappers... ({} found)", rowMappers.size());
         rowMappers.forEach(mapper -> jdbi.registerRowMapper(mapper));
-        
+
         return jdbi;
     }
-    
+
     @Bean
     public JdbiPlugin sqlObjectPlugin() {
         return new SqlObjectPlugin();
-    }    
-    
-    @Bean
-    public CarMakerDao carMakerDao(Jdbi jdbi) {        
-        return jdbi.onDemand(CarMakerDao.class);       
     }
-    
+
+    @Bean
+    public CarMakerDao carMakerDao(Jdbi jdbi) {
+        return jdbi.onDemand(CarMakerDao.class);
+    }
+
     @Bean
     public CarModelDao carModelDao(Jdbi jdbi) {
         return jdbi.onDemand(CarModelDao.class);

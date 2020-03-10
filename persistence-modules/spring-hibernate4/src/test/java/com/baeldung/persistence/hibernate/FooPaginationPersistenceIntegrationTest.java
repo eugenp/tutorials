@@ -29,7 +29,7 @@ import com.baeldung.spring.config.PersistenceTestConfig;
 import com.google.common.collect.Lists;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceTestConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class FooPaginationPersistenceIntegrationTest {
 
     @Autowired

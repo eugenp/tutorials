@@ -12,7 +12,7 @@ import static com.baeldung.springamqp.broadcast.BroadcastConfig.*;
 /**
  * Simple test application to send messages to rabbitMQ.
  *
- *<p>To run this particular application with mvn you use the following command:</p>
+ * <p>To run this particular application with mvn you use the following command:</p>
  * {@code
  * mvn spring-boot:run -Dstart-class=com.baeldung.springamqp.broadcast.BroadcastMessageApp
  * }
@@ -37,22 +37,22 @@ public class BroadcastMessageApp {
         };
     }
 
-    @RabbitListener(queues = { FANOUT_QUEUE_1_NAME })
+    @RabbitListener(queues = {FANOUT_QUEUE_1_NAME})
     public void receiveMessageFromFanout1(String message) {
         System.out.println("Received fanout 1 message: " + message);
     }
 
-    @RabbitListener(queues = { FANOUT_QUEUE_2_NAME })
+    @RabbitListener(queues = {FANOUT_QUEUE_2_NAME})
     public void receiveMessageFromFanout2(String message) {
         System.out.println("Received fanout 2 message: " + message);
     }
 
-    @RabbitListener(queues = { TOPIC_QUEUE_1_NAME })
+    @RabbitListener(queues = {TOPIC_QUEUE_1_NAME})
     public void receiveMessageFromTopic1(String message) {
         System.out.println("Received topic 1 (" + BINDING_PATTERN_IMPORTANT + ") message: " + message);
     }
 
-    @RabbitListener(queues = { TOPIC_QUEUE_2_NAME })
+    @RabbitListener(queues = {TOPIC_QUEUE_2_NAME})
     public void receiveMessageFromTopic2(String message) {
         System.out.println("Received topic 2 (" + BINDING_PATTERN_ERROR + ") message: " + message);
     }

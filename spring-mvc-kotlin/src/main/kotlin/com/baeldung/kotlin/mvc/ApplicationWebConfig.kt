@@ -32,7 +32,7 @@ open class ApplicationWebConfig : WebMvcConfigurerAdapter(), ApplicationContextA
     open fun templateResolver(): SpringResourceTemplateResolver {
         return SpringResourceTemplateResolver()
                 .apply { prefix = "/WEB-INF/view/" }
-                .apply { suffix = ".html"}
+                .apply { suffix = ".html" }
                 .apply { templateMode = TemplateMode.HTML }
                 .apply { setApplicationContext(applicationContext) }
     }

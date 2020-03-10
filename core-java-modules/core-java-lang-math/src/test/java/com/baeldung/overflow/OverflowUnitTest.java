@@ -14,9 +14,9 @@ public class OverflowUnitTest {
 
         assertTrue(a == b);
 
-        assertTrue(1/a == Double.POSITIVE_INFINITY);
-        assertTrue(1/b == Double.NEGATIVE_INFINITY);
+        assertTrue(1 / a == Double.POSITIVE_INFINITY);
+        assertTrue(1 / b == Double.NEGATIVE_INFINITY);
 
-        assertTrue(1/a != 1/b);
+        assertTrue(1 / a != 1 / b);
     }
 }

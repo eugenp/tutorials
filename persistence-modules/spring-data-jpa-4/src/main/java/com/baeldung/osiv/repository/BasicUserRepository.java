@@ -12,7 +12,7 @@ import com.baeldung.osiv.model.BasicUser;
 @Repository
 @Transactional
 public interface BasicUserRepository extends JpaRepository<BasicUser, Long> {
-    
+
     @EntityGraph(attributePaths = "permissions")
     Optional<BasicUser> findDetailedByUsername(String username);
 

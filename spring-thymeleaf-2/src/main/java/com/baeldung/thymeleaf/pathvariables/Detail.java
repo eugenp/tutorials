@@ -3,7 +3,7 @@ package com.baeldung.thymeleaf.pathvariables;
 public class Detail {
     private int id;
     private String description;
-    
+
     public Detail(int id, String description) {
         super();
         this.id = id;
@@ -24,5 +24,5 @@ public class Detail {
 
     public void setDescription(String description) {
         this.description = description;
-    }    
+    }
 }

@@ -20,7 +20,7 @@ public class RequestClientWriterInterceptor implements WriterInterceptor {
         LOG.info("request writer interceptor in the client side");
 
         context.getOutputStream()
-            .write(("Message added in the writer interceptor in the client side").getBytes());
+                .write(("Message added in the writer interceptor in the client side").getBytes());
 
         context.proceed();
     }

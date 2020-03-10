@@ -15,7 +15,7 @@ class BuildInfoServiceIntegrationTest {
 
     @Autowired
     private BuildInfoService service;
-    
+
     @Test
     void whenGetApplicationDescription_thenSuccess() {
         assertThat(service.getApplicationDescription(), Matchers.is("This is simple boot application for Spring boot actuator test"));

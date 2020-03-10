@@ -40,7 +40,7 @@ public class TestJPAServlet extends HttpServlet {
         Query q = em.createNamedQuery("User.findAll");
         List<User> users = q.getResultList();
         response.getWriter()
-            .append("JPA users returned: " + users.size());
+                .append("JPA users returned: " + users.size());
     }
 
     /**

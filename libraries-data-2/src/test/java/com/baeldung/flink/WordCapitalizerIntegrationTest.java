@@ -17,16 +17,16 @@ public class WordCapitalizerIntegrationTest {
         ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
         List<String> data = Arrays.asList("dog", "cat", "wolf", "pig");
 
-         DataSet<String> testDataSet = env.fromCollection(data);
+        DataSet<String> testDataSet = env.fromCollection(data);
 
 
         List<String> dataProcessed = testDataSet
-          .map(new WordsCapitalizer())
-          .collect();
+                .map(new WordsCapitalizer())
+                .collect();
 
         List<String> testDataCapitalized = data.stream()
-          .map(String::toUpperCase)
-          .collect(Collectors.toList());
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
 
         Assert.assertEquals(testDataCapitalized, dataProcessed);
     }

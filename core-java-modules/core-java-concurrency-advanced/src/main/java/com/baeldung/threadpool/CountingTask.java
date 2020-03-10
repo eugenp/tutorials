@@ -14,9 +14,9 @@ public class CountingTask extends RecursiveTask<Integer> {
     @Override
     protected Integer compute() {
         return node.getValue() + node.getChildren().stream()
-          .map(childNode -> new CountingTask(childNode).fork())
-          .mapToInt(ForkJoinTask::join)
-          .sum();
+                .map(childNode -> new CountingTask(childNode).fork())
+                .mapToInt(ForkJoinTask::join)
+                .sum();
     }
 
 }

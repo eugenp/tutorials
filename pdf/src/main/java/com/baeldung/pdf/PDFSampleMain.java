@@ -20,9 +20,9 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class PDFSampleMain {
 
     public static void main(String[] args) {
-        
+
         try {
-            
+
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream("iTextTable.pdf"));
 
@@ -35,7 +35,7 @@ public class PDFSampleMain {
 
             document.add(table);
             document.close();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,13 +43,13 @@ public class PDFSampleMain {
 
     private static void addTableHeader(PdfPTable table) {
         Stream.of("column header 1", "column header 2", "column header 3")
-        .forEach(columnTitle -> {
-            PdfPCell header = new PdfPCell();
-            header.setBackgroundColor(BaseColor.LIGHT_GRAY);
-            header.setBorderWidth(2);
-            header.setPhrase(new Phrase(columnTitle));
-            table.addCell(header);
-        });
+                .forEach(columnTitle -> {
+                    PdfPCell header = new PdfPCell();
+                    header.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                    header.setBorderWidth(2);
+                    header.setPhrase(new Phrase(columnTitle));
+                    table.addCell(header);
+                });
     }
 
     private static void addRows(PdfPTable table) {

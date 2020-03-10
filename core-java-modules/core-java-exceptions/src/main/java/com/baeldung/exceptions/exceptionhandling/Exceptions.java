@@ -20,19 +20,19 @@ public class Exceptions {
         List<String> players = Files.readAllLines(path);
 
         return players.stream()
-          .map(Player::new)
-          .collect(Collectors.toList());
+                .map(Player::new)
+                .collect(Collectors.toList());
     }
 
-    public List<Player> loadAllPlayers(String playersFile) throws IOException{
+    public List<Player> loadAllPlayers(String playersFile) throws IOException {
         try {
             throw new IOException();
-        } catch(IOException ex) {
+        } catch (IOException ex) {
             throw new IllegalStateException();
         }
     }
 
-    public int getPlayerScoreThrows(String playerFile) throws FileNotFoundException {		 
+    public int getPlayerScoreThrows(String playerFile) throws FileNotFoundException {
         Scanner contents = new Scanner(new File(playerFile));
         return Integer.parseInt(contents.nextLine());
     }
@@ -50,7 +50,7 @@ public class Exceptions {
         try {
             Scanner contents = new Scanner(new File(playerFile));
             return Integer.parseInt(contents.nextLine());
-        } catch ( FileNotFoundException noFile ) {
+        } catch (FileNotFoundException noFile) {
             logger.warning("File not found, resetting score.");
             return 0;
         }
@@ -71,7 +71,7 @@ public class Exceptions {
     public int getPlayerScoreTryWithResources(String playerFile) {
         try (Scanner contents = new Scanner(new File(playerFile))) {
             return Integer.parseInt(contents.nextLine());
-        } catch (FileNotFoundException e ) {
+        } catch (FileNotFoundException e) {
             logger.warning("File not found, resetting score.");
             return 0;
         }
@@ -90,7 +90,7 @@ public class Exceptions {
     }
 
     public int getPlayerScoreMultipleCatchBlocksAlternative(String playerFile) {
-        try (Scanner contents = new Scanner(new File(playerFile)) ) {
+        try (Scanner contents = new Scanner(new File(playerFile))) {
             return Integer.parseInt(contents.nextLine());
         } catch (FileNotFoundException e) {
             logger.warning("Player file not found!");
@@ -119,11 +119,11 @@ public class Exceptions {
         while (!tooLong) {
             // ... potentially long operation
         }
-            throw new TimeoutException("This operation took too long");
+        throw new TimeoutException("This operation took too long");
     }
 
     public List<Player> loadAllPlayersThrowingUnchecked(String playersFile) throws TimeoutException {
-        if(!isFilenameValid(playersFile)) {
+        if (!isFilenameValid(playersFile)) {
             throw new IllegalArgumentException("Filename isn't valid!");
         }
         return null;
@@ -132,17 +132,17 @@ public class Exceptions {
     }
 
     public List<Player> loadAllPlayersWrapping(String playersFile) throws IOException {
-        try { 
+        try {
             throw new IOException();
-        } catch (IOException io) { 		
+        } catch (IOException io) {
             throw io;
         }
     }
 
     public List<Player> loadAllPlayersRethrowing(String playersFile) throws PlayerLoadException {
-        try { 
+        try {
             throw new IOException();
-        } catch (IOException io) { 		
+        } catch (IOException io) {
             throw new PlayerLoadException(io);
         }
     }
@@ -150,7 +150,7 @@ public class Exceptions {
     public List<Player> loadAllPlayersThrowable(String playersFile) {
         try {
             throw new NullPointerException();
-        } catch ( Throwable t ) {
+        } catch (Throwable t) {
             throw t;
         }
     }
@@ -168,25 +168,26 @@ public class Exceptions {
             // bunch of code
             throw new MyException();
             // second bunch of code
-        } catch ( MyException e ) {
+        } catch (MyException e) {
             // third bunch of code
         }
     }
 
     public int getPlayerScoreSwallowingExceptionAntiPattern(String playerFile) {
         try {
-        // ...
-        } catch (Exception e) {} // <== catch and swallow
-            return 0;
+            // ...
+        } catch (Exception e) {
+        } // <== catch and swallow
+        return 0;
     }
 
     public int getPlayerScoreSwallowingExceptionAntiPatternAlternative(String playerFile) {
         try {
             // ...
         } catch (Exception e) {
-             e.printStackTrace();
+            e.printStackTrace();
         }
-      return 0;
+        return 0;
     }
 
     public int getPlayerScoreSwallowingExceptionAntiPatternAlternative2(String playerFile) throws PlayerScoreException {

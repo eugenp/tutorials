@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller Tests', function() {
+describe('Controller Tests', function () {
     beforeEach(mockApiAccountCall);
     beforeEach(mockI18nCalls);
 
-    describe('PasswordController', function() {
+    describe('PasswordController', function () {
 
         var $scope, $httpBackend, $q;
         var MockAuth;
         var createController;
 
-        beforeEach(inject(function($injector) {
+        beforeEach(inject(function ($injector) {
             $scope = $injector.get('$rootScope').$new();
             $q = $injector.get('$q');
             $httpBackend = $injector.get('$httpBackend');
@@ -20,12 +20,12 @@ describe('Controller Tests', function() {
                 '$scope': $scope,
                 'Auth': MockAuth
             };
-            createController = function() {
+            createController = function () {
                 $injector.get('$controller')('PasswordController as vm', locals);
             }
         }));
 
-        it('should show error if passwords do not match', function() {
+        it('should show error if passwords do not match', function () {
             //GIVEN
             createController();
             $scope.vm.password = 'password1';
@@ -37,7 +37,7 @@ describe('Controller Tests', function() {
             expect($scope.vm.error).toBeNull();
             expect($scope.vm.success).toBeNull();
         });
-        it('should call Auth.changePassword when passwords match', function() {
+        it('should call Auth.changePassword when passwords match', function () {
             //GIVEN
             MockAuth.changePassword.and.returnValue($q.resolve());
             createController();
@@ -50,7 +50,7 @@ describe('Controller Tests', function() {
             expect(MockAuth.changePassword).toHaveBeenCalledWith('myPassword');
         });
 
-        it('should set success to OK upon success', function() {
+        it('should set success to OK upon success', function () {
             //GIVEN
             MockAuth.changePassword.and.returnValue($q.resolve());
             createController();
@@ -65,7 +65,7 @@ describe('Controller Tests', function() {
             expect($scope.vm.success).toBe('OK');
         });
 
-        it('should notify of error if change password fails', function() {
+        it('should notify of error if change password fails', function () {
             //GIVEN
             MockAuth.changePassword.and.returnValue($q.reject());
             createController();

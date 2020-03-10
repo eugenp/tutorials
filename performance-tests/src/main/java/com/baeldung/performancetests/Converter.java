@@ -7,5 +7,6 @@ import com.baeldung.performancetests.model.destination.Order;
 
 public interface Converter {
     Order convert(SourceOrder sourceOrder);
+
     DestinationCode convert(SourceCode sourceCode);
 }

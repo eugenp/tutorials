@@ -7,20 +7,20 @@ import org.springframework.web.client.RestTemplate;
 @Service
 class SampleClient {
 
-	@Value("${app.access-url}")
-	private String endpoint;
+    @Value("${app.access-url}")
+    private String endpoint;
 
-	private RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
-	public SampleClient(RestTemplate restTemplate) {
-		this.restTemplate = restTemplate;
-	}
+    public SampleClient(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
-	void setRestTemplate(RestTemplate restTemplate) {
-		this.restTemplate = restTemplate;
-	}
+    void setRestTemplate(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
-	String getData() {
-		return restTemplate.getForObject(endpoint, String.class);
-	}
+    String getData() {
+        return restTemplate.getForObject(endpoint, String.class);
+    }
 }

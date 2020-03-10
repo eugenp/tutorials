@@ -33,7 +33,7 @@ public class VaultSampleApplicationLiveTest {
         assertEquals("test-bar", fooValue);
 
     }
-    
+
     @Test
     public void whenKvBackendEnabled_thenEnvHasAccessToVaultSecrets() {
 
@@ -42,7 +42,7 @@ public class VaultSampleApplicationLiveTest {
 
 
     }
-    
+
 
     @Test
     public void whenDatabaseBackendEnabled_thenDatasourceUsesVaultCredentials() {
@@ -50,8 +50,8 @@ public class VaultSampleApplicationLiveTest {
         try (Connection c = datasource.getConnection()) {
 
             ResultSet rs = c.createStatement()
-              .executeQuery("select 1");
-            
+                    .executeQuery("select 1");
+
             rs.next();
             Long value = rs.getLong(1);
 

@@ -11,9 +11,8 @@ import org.springframework.web.util.UriComponentsBuilder;
  * Event that is fired when a paginated search is performed.
  * <p/>
  * This event object contains all the information needed to create the URL for the paginated results
- * 
- * @param <T>
- *            Type of the result that is being handled (commonly Entities).
+ *
+ * @param <T> Type of the result that is being handled (commonly Entities).
  */
 public final class PaginatedResultsRetrievedEvent<T extends Serializable> extends ApplicationEvent {
     private final UriComponentsBuilder uriBuilder;
@@ -56,7 +55,7 @@ public final class PaginatedResultsRetrievedEvent<T extends Serializable> extend
 
     /**
      * The object on which the Event initially occurred.
-     * 
+     *
      * @return The object on which the Event initially occurred.
      */
     @SuppressWarnings("unchecked")

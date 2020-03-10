@@ -17,11 +17,9 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.ec2.AmazonEC2;
 
 /**
- * 
  * To run this Live Test, we need to have an AWS account and have API keys generated for programmatic access.
- * 
+ * <p>
  * Check the README file in this module for more information.
- *
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)

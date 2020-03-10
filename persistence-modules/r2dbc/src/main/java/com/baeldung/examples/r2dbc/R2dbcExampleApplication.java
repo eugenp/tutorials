@@ -11,7 +11,6 @@ public class R2dbcExampleApplication {
     public static void main(String[] args) {
         SpringApplication.run(R2dbcExampleApplication.class, args);
     }
-    
-    
+
 
 }

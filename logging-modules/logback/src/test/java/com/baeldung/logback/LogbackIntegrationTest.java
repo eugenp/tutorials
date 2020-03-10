@@ -16,7 +16,7 @@ public class LogbackIntegrationTest {
 
         parentLogger.setLevel(Level.INFO);
 
-        Logger childlogger = (ch.qos.logback.classic.Logger)LoggerFactory.getLogger("com.baeldung.logback.tests");
+        Logger childlogger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger("com.baeldung.logback.tests");
 
         parentLogger.warn("This message is logged because WARN > INFO.");
 
@@ -37,7 +37,7 @@ public class LogbackIntegrationTest {
 
         logger.debug("Hi there!");
 
-        Logger rootLogger = (ch.qos.logback.classic.Logger)LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME);
+        Logger rootLogger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME);
 
         logger.debug("This message is logged because DEBUG == DEBUG.");
 
@@ -80,10 +80,6 @@ public class LogbackIntegrationTest {
 
 
     }
-
-
-
-
 
 
 }

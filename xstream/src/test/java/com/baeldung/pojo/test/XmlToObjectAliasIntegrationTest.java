@@ -25,8 +25,8 @@ public class XmlToObjectAliasIntegrationTest {
     public void convertXmlToObjectFromFile() throws FileNotFoundException {
         ClassLoader classLoader = getClass().getClassLoader();
         FileReader reader = new FileReader(classLoader
-          .getResource("data-file-alias.xml")
-          .getFile());
+                .getResource("data-file-alias.xml")
+                .getFile());
         Customer customer = (Customer) xstream.fromXML(reader);
         Assert.assertNotNull(customer);
     }

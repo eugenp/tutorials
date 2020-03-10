@@ -23,7 +23,7 @@ public class LiveTest {
     @Before
     public void setup() {
         RestAssured.config = config().redirect(RedirectConfig.redirectConfig()
-            .followRedirects(false));
+                .followRedirects(false));
     }
 
     @Test
@@ -43,9 +43,9 @@ public class LiveTest {
     @Test
     public void whenAccessProtectedResourceAfterLogin_thenSuccess() {
         final Response response = RestAssured.given()
-            .auth()
-            .form("user", "password", formConfig)
-            .get(ROOT_URI + "/book-service/books/1");
+                .auth()
+                .form("user", "password", formConfig)
+                .get(ROOT_URI + "/book-service/books/1");
         Assert.assertEquals(HttpStatus.OK.value(), response.getStatusCode());
         Assert.assertNotNull(response.getBody());
     }
@@ -53,9 +53,9 @@ public class LiveTest {
     @Test
     public void whenAccessAdminProtectedResource_thenForbidden() {
         final Response response = RestAssured.given()
-            .auth()
-            .form("user", "password", formConfig)
-            .get(ROOT_URI + "/rating-service/ratings");
+                .auth()
+                .form("user", "password", formConfig)
+                .get(ROOT_URI + "/rating-service/ratings");
         Assert.assertEquals(HttpStatus.FORBIDDEN.value(), response.getStatusCode());
 
     }
@@ -63,9 +63,9 @@ public class LiveTest {
     @Test
     public void whenAdminAccessProtectedResource_thenSuccess() {
         final Response response = RestAssured.given()
-            .auth()
-            .form("admin", "admin", formConfig)
-            .get(ROOT_URI + "/rating-service/ratings");
+                .auth()
+                .form("admin", "admin", formConfig)
+                .get(ROOT_URI + "/rating-service/ratings");
         Assert.assertEquals(HttpStatus.OK.value(), response.getStatusCode());
         Assert.assertNotNull(response.getBody());
     }
@@ -73,9 +73,9 @@ public class LiveTest {
     @Test
     public void whenAdminAccessDiscoveryResource_thenSuccess() {
         final Response response = RestAssured.given()
-            .auth()
-            .form("admin", "admin", formConfig)
-            .get(ROOT_URI + "/discovery");
+                .auth()
+                .form("admin", "admin", formConfig)
+                .get(ROOT_URI + "/discovery");
         Assert.assertEquals(HttpStatus.OK.value(), response.getStatusCode());
     }
 
@@ -88,12 +88,12 @@ public class LiveTest {
 
         // request the protected resource
         final Response ratingResponse = RestAssured.given()
-            .auth()
-            .form("admin", "admin", formConfig)
-            .and()
-            .contentType(ContentType.JSON)
-            .body(rating)
-            .post(ROOT_URI + "/rating-service/ratings");
+                .auth()
+                .form("admin", "admin", formConfig)
+                .and()
+                .contentType(ContentType.JSON)
+                .body(rating)
+                .post(ROOT_URI + "/rating-service/ratings");
         final Rating result = ratingResponse.as(Rating.class);
         Assert.assertEquals(HttpStatus.OK.value(), ratingResponse.getStatusCode());
         Assert.assertEquals(rating.getBookId(), result.getBookId());
@@ -108,12 +108,12 @@ public class LiveTest {
 
         // request the protected resource
         final Response bookResponse = RestAssured.given()
-            .auth()
-            .form("admin", "admin", formConfig)
-            .and()
-            .contentType(ContentType.JSON)
-            .body(book)
-            .post(ROOT_URI + "/book-service/books");
+                .auth()
+                .form("admin", "admin", formConfig)
+                .and()
+                .contentType(ContentType.JSON)
+                .body(book)
+                .post(ROOT_URI + "/book-service/books");
         final Book result = bookResponse.as(Book.class);
         Assert.assertEquals(HttpStatus.OK.value(), bookResponse.getStatusCode());
         Assert.assertEquals(book.getAuthor(), result.getAuthor());
@@ -124,9 +124,9 @@ public class LiveTest {
     @Test
     public void accessCombinedEndpoint() {
         final Response response = RestAssured.given()
-            .auth()
-            .form("user", "password", formConfig)
-            .get(ROOT_URI + "/combined?bookId=1");
+                .auth()
+                .form("user", "password", formConfig)
+                .get(ROOT_URI + "/combined?bookId=1");
         Assert.assertEquals(HttpStatus.OK.value(), response.getStatusCode());
         Assert.assertNotNull(response.getBody());
         final Book result = response.as(Book.class);

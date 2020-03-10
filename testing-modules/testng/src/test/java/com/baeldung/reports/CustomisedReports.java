@@ -26,17 +26,17 @@ public class CustomisedReports implements IReporter {
         String reportTemplate = initReportTemplate();
 
         final String body = suites
-          .stream()
-          .flatMap(suiteToResults())
-          .collect(Collectors.joining());
+                .stream()
+                .flatMap(suiteToResults())
+                .collect(Collectors.joining());
 
         saveReportTemplate(outputDirectory, reportTemplate.replaceFirst("</tbody>", String.format("%s</tbody>", body)));
     }
 
     private Function<ISuite, Stream<? extends String>> suiteToResults() {
         return suite -> suite.getResults().entrySet()
-          .stream()
-          .flatMap(resultsToRows(suite));
+                .stream()
+                .flatMap(resultsToRows(suite));
     }
 
     private Function<Map.Entry<String, ISuiteResult>, Stream<? extends String>> resultsToRows(ISuite suite) {
@@ -44,27 +44,27 @@ public class CustomisedReports implements IReporter {
             ITestContext testContext = e.getValue().getTestContext();
 
             Set<ITestResult> failedTests = testContext
-              .getFailedTests()
-              .getAllResults();
+                    .getFailedTests()
+                    .getAllResults();
             Set<ITestResult> passedTests = testContext
-              .getPassedTests()
-              .getAllResults();
+                    .getPassedTests()
+                    .getAllResults();
             Set<ITestResult> skippedTests = testContext
-              .getSkippedTests()
-              .getAllResults();
+                    .getSkippedTests()
+                    .getAllResults();
 
             String suiteName = suite.getName();
 
             return Stream
-              .of(failedTests, passedTests, skippedTests)
-              .flatMap(results -> generateReportRows(e.getKey(), suiteName, results).stream());
+                    .of(failedTests, passedTests, skippedTests)
+                    .flatMap(results -> generateReportRows(e.getKey(), suiteName, results).stream());
         };
     }
 
     private List<String> generateReportRows(String testName, String suiteName, Set<ITestResult> allTestResults) {
         return allTestResults.stream()
-          .map(testResultToResultRow(testName, suiteName))
-          .collect(toList());
+                .map(testResultToResultRow(testName, suiteName))
+                .collect(toList());
     }
 
     private Function<ITestResult, String> testResultToResultRow(String testName, String suiteName) {
@@ -81,7 +81,7 @@ public class CustomisedReports implements IReporter {
 
                 default:
                     return "";
-                }
+            }
         };
     }
 

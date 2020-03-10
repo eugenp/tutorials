@@ -10,6 +10,7 @@
     <dubbo:registry address="127.0.0.1:9090"/>
 
     <!-- remote service proxy, acting like a local bean while invoking -->
-    <dubbo:reference interface="com.baeldung.dubbo.remote.GreetingsService" id="greetingsService" cluster="failover" retries="2"/>
+    <dubbo:reference interface="com.baeldung.dubbo.remote.GreetingsService" id="greetingsService" cluster="failover"
+                     retries="2"/>
 
 </beans>

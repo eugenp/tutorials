@@ -11,6 +11,6 @@ public class CorsWithWebFilterHandler {
 
     public Mono<ServerResponse> useHandler(final ServerRequest request) {
         return ServerResponse.ok()
-            .body(Mono.just("Functional Endpoint"), String.class);
+                .body(Mono.just("Functional Endpoint"), String.class);
     }
 }

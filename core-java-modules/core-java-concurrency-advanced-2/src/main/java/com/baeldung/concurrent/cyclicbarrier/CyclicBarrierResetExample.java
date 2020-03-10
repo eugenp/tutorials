@@ -29,7 +29,7 @@ public class CyclicBarrierResetExample {
                 try {
                     if (cyclicBarrier.getNumberWaiting() > 0) {
                         updateCount.incrementAndGet();
-                    }   
+                    }
                     cyclicBarrier.await();
                 } catch (InterruptedException | BrokenBarrierException e) {
                     e.printStackTrace();

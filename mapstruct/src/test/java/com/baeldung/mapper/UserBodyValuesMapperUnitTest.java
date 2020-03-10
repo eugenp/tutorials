@@ -12,7 +12,7 @@ public class UserBodyValuesMapperUnitTest {
 
     @Test
     public void givenUserBodyImperialValuesDTOToUserBodyValuesObject_whenMaps_thenCorrect() {
-        UserBodyImperialValuesDTO dto  = new UserBodyImperialValuesDTO();
+        UserBodyImperialValuesDTO dto = new UserBodyImperialValuesDTO();
         dto.setInch(10);
         dto.setPound(100);
 

@@ -7,6 +7,7 @@ import java.util.Optional;
 public class OperatorFactory {
 
     static Map<String, Operation> operationMap = new HashMap<>();
+
     static {
         operationMap.put("add", new Addition());
         operationMap.put("divide", new Division());

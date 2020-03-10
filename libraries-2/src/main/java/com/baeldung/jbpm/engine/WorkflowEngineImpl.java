@@ -56,11 +56,11 @@ public class WorkflowEngineImpl implements WorkflowEngine {
         JBPMHelper.setupDataSource();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnit);
         RuntimeEnvironmentBuilder runtimeEnvironmentBuilder = RuntimeEnvironmentBuilder.Factory.get()
-            .newDefaultBuilder();
+                .newDefaultBuilder();
         RuntimeEnvironment runtimeEnvironment = runtimeEnvironmentBuilder.entityManagerFactory(emf)
-            .knowledgeBase(kbase)
-            .get();
+                .knowledgeBase(kbase)
+                .get();
         return RuntimeManagerFactory.Factory.get()
-            .newSingletonRuntimeManager(runtimeEnvironment);
+                .newSingletonRuntimeManager(runtimeEnvironment);
     }
 }

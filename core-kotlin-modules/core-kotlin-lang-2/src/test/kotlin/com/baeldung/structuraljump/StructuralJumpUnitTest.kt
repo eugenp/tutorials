@@ -16,6 +16,7 @@ class StructuralJumpUnitTest {
         }
         assertEquals("hello", value)
     }
+
     @Test
     fun givenLoop_whenBreakWithLabel_thenComplete() {
         var value = ""
@@ -39,6 +40,7 @@ class StructuralJumpUnitTest {
         }
         assertEquals("helloworld", result)
     }
+
     @Test
     fun givenLoop_whenContinueWithLabel_thenComplete() {
         var result = ""

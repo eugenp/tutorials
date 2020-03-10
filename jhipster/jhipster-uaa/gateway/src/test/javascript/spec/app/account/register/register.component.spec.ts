@@ -1,12 +1,12 @@
-import { ComponentFixture, TestBed, async, inject, tick, fakeAsync } from '@angular/core/testing';
-import { Observable, of, throwError } from 'rxjs';
+import {ComponentFixture, TestBed, async, inject, tick, fakeAsync} from '@angular/core/testing';
+import {Observable, of, throwError} from 'rxjs';
 
-import { JhiLanguageService } from 'ng-jhipster';
-import { MockLanguageService } from '../../../helpers/mock-language.service';
-import { GatewayTestModule } from '../../../test.module';
-import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from 'app/shared';
-import { Register } from 'app/account/register/register.service';
-import { RegisterComponent } from 'app/account/register/register.component';
+import {JhiLanguageService} from 'ng-jhipster';
+import {MockLanguageService} from '../../../helpers/mock-language.service';
+import {GatewayTestModule} from '../../../test.module';
+import {EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE} from 'app/shared';
+import {Register} from 'app/account/register/register.service';
+import {RegisterComponent} from 'app/account/register/register.component';
 
 describe('Component Tests', () => {
     describe('RegisterComponent', () => {
@@ -72,7 +72,7 @@ describe('Component Tests', () => {
                     spyOn(service, 'save').and.returnValue(
                         throwError({
                             status: 400,
-                            error: { type: LOGIN_ALREADY_USED_TYPE }
+                            error: {type: LOGIN_ALREADY_USED_TYPE}
                         })
                     );
                     comp.registerAccount.password = comp.confirmPassword = 'password';
@@ -95,7 +95,7 @@ describe('Component Tests', () => {
                     spyOn(service, 'save').and.returnValue(
                         throwError({
                             status: 400,
-                            error: { type: EMAIL_ALREADY_USED_TYPE }
+                            error: {type: EMAIL_ALREADY_USED_TYPE}
                         })
                     );
                     comp.registerAccount.password = comp.confirmPassword = 'password';

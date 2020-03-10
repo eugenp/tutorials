@@ -10,12 +10,12 @@ import static picocli.CommandLine.*;
 import static picocli.CommandLine.Command;
 
 @Command(
-  name = "git",
-  subcommands = {
-    GitAddCommand.class,
-    GitCommitCommand.class,
-    GitConfigCommand.class
-  }
+        name = "git",
+        subcommands = {
+                GitAddCommand.class,
+                GitCommitCommand.class,
+                GitConfigCommand.class
+        }
 )
 public class GitCommand implements Runnable {
     public static void main(String[] args) {

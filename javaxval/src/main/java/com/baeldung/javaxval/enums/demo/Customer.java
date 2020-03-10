@@ -11,7 +11,7 @@ public class Customer {
     private String customerTypeString;
 
     @NotNull
-    @CustomerTypeSubset(anyOf = { CustomerType.NEW, CustomerType.OLD })
+    @CustomerTypeSubset(anyOf = {CustomerType.NEW, CustomerType.OLD})
     private CustomerType customerTypeOfSubset;
 
     @EnumNamePattern(regexp = "NEW|DEFAULT")

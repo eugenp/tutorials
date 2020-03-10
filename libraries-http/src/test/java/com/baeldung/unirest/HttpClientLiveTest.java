@@ -69,9 +69,9 @@ public class HttpClientLiveTest {
     @Test
     public void shouldReturnStatusOkay() throws UnirestException {
         HttpResponse<JsonNode> jsonResponse = Unirest.get("http://www.mocky.io/v2/5a9ce37b3100004f00ab5154")
-            .header("accept", "application/json")
-            .queryString("apiKey", "123")
-            .asJson();
+                .header("accept", "application/json")
+                .queryString("apiKey", "123")
+                .asJson();
         assertNotNull(jsonResponse.getBody());
         assertEquals(200, jsonResponse.getStatus());
     }
@@ -88,9 +88,9 @@ public class HttpClientLiveTest {
         fields.put("id", "PSP123");
 
         HttpResponse<JsonNode> jsonResponse = Unirest.put("http://www.mocky.io/v2/5a9ce7853100002a00ab515e")
-            .headers(headers)
-            .fields(fields)
-            .asJson();
+                .headers(headers)
+                .fields(fields)
+                .asJson();
         assertNotNull(jsonResponse.getBody());
         assertEquals(202, jsonResponse.getStatus());
     }
@@ -99,8 +99,8 @@ public class HttpClientLiveTest {
     public void givenRequestBodyWhenCreatedThenCorrect() throws UnirestException {
 
         HttpResponse<JsonNode> jsonResponse = Unirest.post("http://www.mocky.io/v2/5a9ce7663100006800ab515d")
-            .body("{\"name\":\"Sam Baeldung\", \"city\":\"viena\"}")
-            .asJson();
+                .body("{\"name\":\"Sam Baeldung\", \"city\":\"viena\"}")
+                .asJson();
         assertEquals(201, jsonResponse.getStatus());
     }
 
@@ -108,24 +108,24 @@ public class HttpClientLiveTest {
     @Ignore
     public void whenAysncRequestShouldReturnOk() throws InterruptedException, ExecutionException {
         Future<HttpResponse<JsonNode>> future = Unirest.post("http://www.mocky.io/v2/5a9ce37b3100004f00ab5154?mocky-delay=10000ms")
-            .header("accept", "application/json")
-            .asJsonAsync(new Callback<JsonNode>() {
+                .header("accept", "application/json")
+                .asJsonAsync(new Callback<JsonNode>() {
 
-                public void failed(UnirestException e) {
-                    // Do something if the request failed
-                }
+                    public void failed(UnirestException e) {
+                        // Do something if the request failed
+                    }
 
-                public void completed(HttpResponse<JsonNode> response) {
-                    // Do something if the request is successful
-                }
+                    public void completed(HttpResponse<JsonNode> response) {
+                        // Do something if the request is successful
+                    }
 
-                public void cancelled() {
-                    // Do something if the request is cancelled
-                }
+                    public void cancelled() {
+                        // Do something if the request is cancelled
+                    }
 
-            });
+                });
         assertEquals(200, future.get()
-            .getStatus());
+                .getStatus());
 
     }
 
@@ -133,8 +133,8 @@ public class HttpClientLiveTest {
     public void givenArticleWhenCreatedThenCorrect() throws UnirestException {
         Article article = new Article("ID1213", "Guide to Rest", "baeldung");
         HttpResponse<JsonNode> jsonResponse = Unirest.post("http://www.mocky.io/v2/5a9ce7663100006800ab515d")
-            .body(article)
-            .asJson();
+                .body(article)
+                .asJson();
         assertEquals(201, jsonResponse.getStatus());
     }
 
@@ -142,8 +142,8 @@ public class HttpClientLiveTest {
     public void givenFileWhenUploadedThenCorrect() throws UnirestException {
 
         HttpResponse<JsonNode> jsonResponse = Unirest.post("http://www.mocky.io/v2/5a9ce7663100006800ab515d")
-            .field("file", new File("/path/to/file"))
-            .asJson();
+                .field("file", new File("/path/to/file"))
+                .asJson();
         assertEquals(201, jsonResponse.getStatus());
     }
 
@@ -153,8 +153,8 @@ public class HttpClientLiveTest {
             byte[] bytes = new byte[inputStream.available()];
             inputStream.read(bytes);
             HttpResponse<JsonNode> jsonResponse = Unirest.post("http://www.mocky.io/v2/5a9ce7663100006800ab515d")
-                .field("file", bytes, "article.txt")
-                .asJson();
+                    .field("file", bytes, "article.txt")
+                    .asJson();
             assertEquals(201, jsonResponse.getStatus());
         }
 
@@ -165,8 +165,8 @@ public class HttpClientLiveTest {
         try (InputStream inputStream = new FileInputStream(new File("/path/to/file/artcile.txt"))) {
 
             HttpResponse<JsonNode> jsonResponse = Unirest.post("http://www.mocky.io/v2/5a9ce7663100006800ab515d")
-                .field("file", inputStream, ContentType.APPLICATION_OCTET_STREAM, "article.txt")
-                .asJson();
+                    .field("file", inputStream, ContentType.APPLICATION_OCTET_STREAM, "article.txt")
+                    .asJson();
             assertEquals(201, jsonResponse.getStatus());
 
         }

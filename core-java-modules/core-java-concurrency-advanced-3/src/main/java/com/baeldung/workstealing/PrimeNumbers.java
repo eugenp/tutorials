@@ -13,7 +13,7 @@ public class PrimeNumbers extends RecursiveAction {
     private int upperBound;
     private int granularity;
     static final List<Integer> GRANULARITIES
-      = Arrays.asList(1, 10, 100, 1000, 10000);
+            = Arrays.asList(1, 10, 100, 1000, 10000);
     private AtomicInteger noOfPrimeNumbers;
 
     PrimeNumbers(int lowerBound, int upperBound, int granularity, AtomicInteger noOfPrimeNumbers) {

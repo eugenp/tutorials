@@ -14,21 +14,21 @@ import com.google.gson.Gson;
 
 @WebServlet(name = "EmployeeServlet", urlPatterns = "/employeeServlet")
 public class EmployeeServlet extends HttpServlet {
-	
-	private Gson gson = new Gson();
 
-	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-		throws IOException {
+    private Gson gson = new Gson();
 
-		Employee employee = new Employee(1, "Karan", "IT", 5000);
-		String employeeJsonString = this.gson.toJson(employee);
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
 
-		PrintWriter out = response.getWriter();
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		out.print(employeeJsonString);
-		out.flush();   
-	}
+        Employee employee = new Employee(1, "Karan", "IT", 5000);
+        String employeeJsonString = this.gson.toJson(employee);
+
+        PrintWriter out = response.getWriter();
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        out.print(employeeJsonString);
+        out.flush();
+    }
 
 }

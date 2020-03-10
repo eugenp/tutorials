@@ -59,8 +59,8 @@ public class ModuleAPIUnitTest {
     @Test
     public void whenRetrievingClassLoader_thenClassLoaderIsReturned() {
         assertThat(
-          module.getClassLoader().getClass().getName(),
-          is("jdk.internal.loader.ClassLoaders$AppClassLoader")
+                module.getClassLoader().getClass().getName(),
+                is("jdk.internal.loader.ClassLoaders$AppClassLoader")
         );
     }
 
@@ -104,8 +104,8 @@ public class ModuleAPIUnitTest {
         Set<Requires> javaSqlRequires = javaSqlModule.getDescriptor().requires();
 
         Set<String> javaSqlRequiresNames = javaSqlRequires.stream()
-          .map(Requires::name)
-          .collect(Collectors.toSet());
+                .map(Requires::name)
+                .collect(Collectors.toSet());
 
         assertThat(javaBaseRequires, empty());
         assertThat(javaSqlRequires.size(), is(3));
@@ -131,8 +131,8 @@ public class ModuleAPIUnitTest {
         Set<Exports> javaSqlExports = javaSqlModule.getDescriptor().exports();
 
         Set<String> javaSqlExportsSource = javaSqlExports.stream()
-          .map(Exports::source)
-          .collect(Collectors.toSet());
+                .map(Exports::source)
+                .collect(Collectors.toSet());
 
         assertThat(javaBaseExports.size(), is(108));
         assertThat(javaSqlExports.size(), is(3));

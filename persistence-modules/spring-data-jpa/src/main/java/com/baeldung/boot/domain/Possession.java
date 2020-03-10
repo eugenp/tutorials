@@ -1,6 +1,7 @@
 package com.baeldung.boot.domain;
 
 import javax.persistence.*;
+
 import com.baeldung.boot.domain.Possession;
 
 @Entity

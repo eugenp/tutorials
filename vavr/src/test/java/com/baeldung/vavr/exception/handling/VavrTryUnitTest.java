@@ -28,8 +28,8 @@ public class VavrTryUnitTest {
         //when
         Try<Response> response = new VavrTry(httpClient).getResponse();
         Integer chainedResult = response
-          .map(this::actionThatTakesResponse)
-          .getOrElse(defaultChainedResult);
+                .map(this::actionThatTakesResponse)
+                .getOrElse(defaultChainedResult);
         Stream<String> stream = response.toStream().map(it -> it.id);
 
         //then
@@ -51,8 +51,8 @@ public class VavrTryUnitTest {
         //when
         Try<Response> response = new VavrTry(httpClient).getResponse();
         Integer chainedResult = response
-          .map(this::actionThatTakesResponse)
-          .getOrElse(defaultChainedResult);
+                .map(this::actionThatTakesResponse)
+                .getOrElse(defaultChainedResult);
         Option<Response> optionalResponse = response.toOption();
 
         //then
@@ -72,9 +72,9 @@ public class VavrTryUnitTest {
 
         //when
         Try<Response> recovered = new VavrTry(httpClient).getResponse()
-          .recover(r -> Match(r).of(
-            Case($(instanceOf(ClientException.class)), defaultResponse)
-          ));
+                .recover(r -> Match(r).of(
+                        Case($(instanceOf(ClientException.class)), defaultResponse)
+                ));
 
         //then
         assertTrue(recovered.isFailure());
@@ -94,10 +94,10 @@ public class VavrTryUnitTest {
 
         //when
         Try<Response> recovered = new VavrTry(httpClient).getResponse()
-          .recover(r -> Match(r).of(
-            Case($(instanceOf(ClientException.class)), defaultResponse),
-            Case($(instanceOf(IllegalArgumentException.class)), defaultResponse)
-          ));
+                .recover(r -> Match(r).of(
+                        Case($(instanceOf(ClientException.class)), defaultResponse),
+                        Case($(instanceOf(IllegalArgumentException.class)), defaultResponse)
+                ));
 
         //then
         assertTrue(recovered.isSuccess());

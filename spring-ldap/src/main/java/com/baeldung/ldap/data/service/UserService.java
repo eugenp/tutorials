@@ -31,12 +31,12 @@ public class UserService {
         }
 
         return userList.stream()
-          .map(User::getUsername)
-          .collect(Collectors.toList());
+                .map(User::getUsername)
+                .collect(Collectors.toList());
     }
 
     public void create(final String username, final String password) {
-        User newUser = new User(username,digestSHA(password));
+        User newUser = new User(username, digestSHA(password));
         newUser.setId(LdapUtils.emptyLdapName());
         userRepository.save(newUser);
 
@@ -54,7 +54,7 @@ public class UserService {
             MessageDigest digest = MessageDigest.getInstance("SHA");
             digest.update(password.getBytes());
             base64 = Base64.getEncoder()
-                .encodeToString(digest.digest());
+                    .encodeToString(digest.digest());
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }

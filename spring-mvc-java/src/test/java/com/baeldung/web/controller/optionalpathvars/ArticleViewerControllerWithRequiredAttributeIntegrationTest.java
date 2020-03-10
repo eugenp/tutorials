@@ -18,12 +18,12 @@ import com.baeldung.spring.web.config.WebConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { WebConfig.class })
+@ContextConfiguration(classes = {WebConfig.class})
 public class ArticleViewerControllerWithRequiredAttributeIntegrationTest {
 
     @Autowired
     private WebApplicationContext wac;
- 
+
     private MockMvc mockMvc;
 
     @Before
@@ -33,23 +33,23 @@ public class ArticleViewerControllerWithRequiredAttributeIntegrationTest {
 
     @Test
     public void givenRequiredAttributeIsFalse_whenIdPathVariableIsPassed_thenResponseOK() throws Exception {
-    
+
         int articleId = 154;
-        
+
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/requiredAttribute/article/{id}", articleId))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(articleId));
-                
+                .perform(MockMvcRequestBuilders.get("/requiredAttribute/article/{id}", articleId))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(articleId));
+
     }
-    
+
     @Test
     public void givenRequiredAttributeIsFalse_whenIdPathVariableIsNotPassed_thenResponseOK() throws Exception {
-            
+
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/requiredAttribute/article"))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(Article.DEFAULT_ARTICLE.getId()));
-                
+                .perform(MockMvcRequestBuilders.get("/requiredAttribute/article"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(Article.DEFAULT_ARTICLE.getId()));
+
     }
 }

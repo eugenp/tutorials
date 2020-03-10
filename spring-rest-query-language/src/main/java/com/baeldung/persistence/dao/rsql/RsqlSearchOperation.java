@@ -17,8 +17,8 @@ public enum RsqlSearchOperation {
 
     public static RsqlSearchOperation getSimpleOperator(final ComparisonOperator operator) {
         return Arrays.stream(values())
-          .filter(operation -> operation.getOperator() == operator)
-          .findAny().orElse(null);
+                .filter(operation -> operation.getOperator() == operator)
+                .findAny().orElse(null);
     }
 
     public ComparisonOperator getOperator() {

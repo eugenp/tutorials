@@ -4,18 +4,18 @@ import javax.persistence.*;
 
 
 @SqlResultSetMapping(
-        name="EmployeeResult",
-        entities={
+        name = "EmployeeResult",
+        entities = {
                 @EntityResult(
                         entityClass = com.baeldung.jpa.sqlresultsetmapping.Employee.class,
-                        fields={@FieldResult(name="id",column="employeeNumber"),
-                                 @FieldResult(name="name", column="name")}
+                        fields = {@FieldResult(name = "id", column = "employeeNumber"),
+                                @FieldResult(name = "name", column = "name")}
                 )
         }
 )
 @NamedNativeQuery(
-        name="Employees",
-        query="SELECT id as employeeNumber, name FROM EMPLOYEE",
+        name = "Employees",
+        query = "SELECT id as employeeNumber, name FROM EMPLOYEE",
         resultSetMapping = "EmployeeResult"
 )
 @Entity

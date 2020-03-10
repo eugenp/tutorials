@@ -4,9 +4,9 @@ import com.baeldung.bootique.service.HelloService;
 
 public class HelloServiceImpl implements HelloService {
 
-	@Override
-	public boolean save() {
-		return true;
-	}
+    @Override
+    public boolean save() {
+        return true;
+    }
 
 }

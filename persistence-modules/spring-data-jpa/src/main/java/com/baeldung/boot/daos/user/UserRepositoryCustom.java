@@ -9,6 +9,6 @@ import com.baeldung.boot.domain.User;
 
 public interface UserRepositoryCustom {
     List<User> findUserByEmails(Set<String> emails);
-    
+
     List<User> findAllUsersByPredicates(Collection<Predicate<User>> predicates);
 }

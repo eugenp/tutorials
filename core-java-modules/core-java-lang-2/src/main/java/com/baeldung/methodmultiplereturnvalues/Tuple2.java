@@ -1,12 +1,13 @@
 package com.baeldung.methodmultiplereturnvalues;
 
-public class Tuple2 <K, V> {
+public class Tuple2<K, V> {
 
     private K first;
     private V second;
-    
-    public Tuple2() {}
-    
+
+    public Tuple2() {
+    }
+
     public Tuple2(K first, V second) {
         this.first = first;
         this.second = second;
@@ -15,7 +16,7 @@ public class Tuple2 <K, V> {
     public K getFirst() {
         return first;
     }
-    
+
     public V getSecond() {
         return second;
     }

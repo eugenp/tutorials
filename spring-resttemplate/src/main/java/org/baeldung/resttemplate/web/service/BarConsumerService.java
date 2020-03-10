@@ -15,8 +15,8 @@ public class BarConsumerService {
     @Autowired
     public BarConsumerService(RestTemplateBuilder restTemplateBuilder) {
         restTemplate = restTemplateBuilder
-          .errorHandler(new RestTemplateResponseErrorHandler())
-          .build();
+                .errorHandler(new RestTemplateResponseErrorHandler())
+                .build();
     }
 
     public Bar fetchBarById(String barId) {

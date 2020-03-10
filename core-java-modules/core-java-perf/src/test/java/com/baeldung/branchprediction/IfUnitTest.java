@@ -66,13 +66,13 @@ public class IfUnitTest {
 
     private void test(long top, double cutoffPercentage, boolean shuffle) {
         List<Long> numbers = LongStream.range(0, top)
-            .boxed()
-            .collect(Collectors.toList());
+                .boxed()
+                .collect(Collectors.toList());
         if (shuffle) {
             Collections.shuffle(numbers);
         }
 
-        long cutoff = (long)(top * cutoffPercentage);
+        long cutoff = (long) (top * cutoffPercentage);
         long low = 0;
         long high = 0;
 

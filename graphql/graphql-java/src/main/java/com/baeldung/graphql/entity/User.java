@@ -62,17 +62,17 @@ public class User {
     public static Long genId() {
         Long id = 1L;
         try {
-            List<User> users =  new UserHandler().getUsers();
+            List<User> users = new UserHandler().getUsers();
             for (User user : users)
                 id = (user.getId() > id ? user.getId() : id) + 1;
-           
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         return id;
     }
-    
+
     public String toString() {
-        return "[id=" + id + ", name=" + name + ", email="+email+ ", age="+ age +"]";
+        return "[id=" + id + ", name=" + name + ", email=" + email + ", age=" + age + "]";
     }
 }

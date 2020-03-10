@@ -10,8 +10,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OtherEntity {
-    
+
     private String item;
     private Integer quantity;
-    
+
 }

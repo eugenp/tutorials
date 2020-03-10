@@ -78,10 +78,10 @@ public class QuoteDTO implements Serializable {
     @Override
     public String toString() {
         return "QuoteDTO{" +
-            "id=" + getId() +
-            ", symbol='" + getSymbol() + "'" +
-            ", price=" + getPrice() +
-            ", lastTrade='" + getLastTrade() + "'" +
-            "}";
+                "id=" + getId() +
+                ", symbol='" + getSymbol() + "'" +
+                ", price=" + getPrice() +
+                ", lastTrade='" + getLastTrade() + "'" +
+                "}";
     }
 }

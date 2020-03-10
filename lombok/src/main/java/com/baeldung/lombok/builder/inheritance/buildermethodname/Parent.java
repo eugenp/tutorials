@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class Parent {    
+public class Parent {
     private final String parentName;
     private final int parentAge;
 }

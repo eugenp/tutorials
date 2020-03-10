@@ -23,7 +23,7 @@ public class InstanceOfUnitTest {
         Assert.assertTrue("circle is instance of Circle ", circle instanceof Circle);
     }
 
-  
+
     @Test
     public void giveWhenInstanceIsOfSubtype_thenReturnTrue() {
         Circle circle = new Circle();
@@ -35,7 +35,7 @@ public class InstanceOfUnitTest {
         Circle circle = new Circle();
         Assert.assertTrue("circle is instance of Shape", circle instanceof Shape);
     }
-    
+
     @Test
     public void giveWhenTypeIsOfObjectType_thenReturnTrue() {
         Thread thread = new Thread();

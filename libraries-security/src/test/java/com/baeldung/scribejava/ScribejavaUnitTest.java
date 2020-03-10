@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class ScribejavaUnitTest {
 
     @Test
-    public void contextLoad(){
+    public void contextLoad() {
 
     }
 

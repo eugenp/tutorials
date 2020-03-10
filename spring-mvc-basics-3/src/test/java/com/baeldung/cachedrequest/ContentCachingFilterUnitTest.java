@@ -33,7 +33,7 @@ public class ContentCachingFilterUnitTest extends TestCase {
 
         // then
         Mockito.verify(mockedFilterChain, Mockito.times(1))
-            .doFilter(Mockito.any(CachedBodyHttpServletRequest.class), Mockito.any(MockHttpServletResponse.class));
+                .doFilter(Mockito.any(CachedBodyHttpServletRequest.class), Mockito.any(MockHttpServletResponse.class));
     }
 
 }

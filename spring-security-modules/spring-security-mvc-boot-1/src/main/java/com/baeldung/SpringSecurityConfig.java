@@ -42,31 +42,31 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
-            .passwordEncoder(encoder())
-            .and()
-            .authenticationProvider(authenticationProvider())
-            .jdbcAuthentication()
-            .dataSource(dataSource);
+                .passwordEncoder(encoder())
+                .and()
+                .authenticationProvider(authenticationProvider())
+                .jdbcAuthentication()
+                .dataSource(dataSource);
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-            .antMatchers("/resources/**");
+                .antMatchers("/resources/**");
     }
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/login")
-            .permitAll()
-            .and()
-            .formLogin()
-            .permitAll()
-            .successHandler(successHandler)
-            .and()
-            .csrf()
-            .disable();
+                .antMatchers("/login")
+                .permitAll()
+                .and()
+                .formLogin()
+                .permitAll()
+                .successHandler(successHandler)
+                .and()
+                .csrf()
+                .disable();
     }
 
     @Bean

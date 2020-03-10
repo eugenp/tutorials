@@ -14,7 +14,7 @@ public class App {
 
     public static void main(String[] args) {
         Module module = binder -> JerseyModule.extend(binder).addResource(IndexController.class)
-          .addResource(SaveController.class);
+                .addResource(SaveController.class);
         Bootique.app(args).module(module).module(ModuleBinder.class).bootLogger(new BootLogger() {
             @Override
             public void trace(Supplier<String> arg0) {

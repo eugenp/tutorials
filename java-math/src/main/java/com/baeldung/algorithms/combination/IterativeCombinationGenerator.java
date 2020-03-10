@@ -11,6 +11,7 @@ public class IterativeCombinationGenerator {
 
     /**
      * Generate all combinations of r elements from a set
+     *
      * @param n the number of elements in input set
      * @param r the number of elements in a combination
      * @return the list containing all combinations

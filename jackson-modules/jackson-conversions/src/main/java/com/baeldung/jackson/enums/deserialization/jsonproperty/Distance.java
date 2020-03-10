@@ -5,20 +5,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public enum Distance {
 
     @JsonProperty("distance-in-km")
-    KILOMETER("km", 1000), 
-    
+    KILOMETER("km", 1000),
+
     @JsonProperty("distance-in-miles")
     MILE("miles", 1609.34),
-    
+
     @JsonProperty("distance-in-meters")
-    METER("meters", 1), 
-    
+    METER("meters", 1),
+
     @JsonProperty("distance-in-inches")
-    INCH("inches", 0.0254), 
-    
+    INCH("inches", 0.0254),
+
     @JsonProperty("distance-in-cm")
-    CENTIMETER("cm", 0.01), 
-    
+    CENTIMETER("cm", 0.01),
+
     @JsonProperty("distance-in-mm")
     MILLIMETER("mm", 0.001);
 
@@ -33,7 +33,7 @@ public enum Distance {
     public void setMeters(double meters) {
         this.meters = meters;
     }
-    
+
     public double getMeters() {
         return meters;
     }

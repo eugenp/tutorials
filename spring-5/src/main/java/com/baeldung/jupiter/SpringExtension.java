@@ -35,8 +35,8 @@ public class SpringExtension implements BeforeAllCallback, AfterAllCallback, Tes
             getTestContextManager(context).afterTestClass();
         } finally {
             context.getStore(namespace)
-                .remove(context.getTestClass()
-                    .get());
+                    .remove(context.getTestClass()
+                            .get());
         }
     }
 
@@ -49,7 +49,7 @@ public class SpringExtension implements BeforeAllCallback, AfterAllCallback, Tes
     public void beforeEach(ExtensionContext context) throws Exception {
         Object testInstance = context.getTestInstance();
         Method testMethod = context.getTestMethod()
-            .get();
+                .get();
         getTestContextManager(context).beforeTestMethod(testInstance, testMethod);
     }
 
@@ -57,9 +57,9 @@ public class SpringExtension implements BeforeAllCallback, AfterAllCallback, Tes
     public void afterEach(ExtensionContext context) throws Exception {
         Object testInstance = context.getTestInstance();
         Method testMethod = context.getTestMethod()
-            .get();
+                .get();
         Throwable testException = context.getExecutionException()
-            .orElse(null);
+                .orElse(null);
         getTestContextManager(context).afterTestMethod(testInstance, testMethod, testException);
     }
 
@@ -74,20 +74,20 @@ public class SpringExtension implements BeforeAllCallback, AfterAllCallback, Tes
     public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
         Parameter parameter = parameterContext.getParameter();
         Class<?> testClass = extensionContext.getTestClass()
-            .get();
+                .get();
         ApplicationContext applicationContext = getApplicationContext(extensionContext);
         return ParameterAutowireUtils.resolveDependency(parameter, testClass, applicationContext);
     }
 
     private ApplicationContext getApplicationContext(ExtensionContext context) {
         return getTestContextManager(context).getTestContext()
-            .getApplicationContext();
+                .getApplicationContext();
     }
 
     private TestContextManager getTestContextManager(ExtensionContext context) {
         Assert.notNull(context, "ExtensionContext must not be null");
         Class<?> testClass = context.getTestClass()
-            .get();
+                .get();
         ExtensionContext.Store store = context.getStore(namespace);
         return store.getOrComputeIfAbsent(testClass, TestContextManager::new, TestContextManager.class);
     }

@@ -62,11 +62,11 @@ public class EJBUnitTest {
         int count = 0;
         CounterEJBRemote firstCounter = (CounterEJBRemote) context.lookup("java:global/ejb-beans/CounterEJB");
         firstCounter.setName("first");
-        
+
         for (int i = 0; i < 10; i++) {
             count = firstCounter.count();
         }
-        
+
         assertEquals(10, count);
         assertEquals("first", firstCounter.getName());
 
@@ -93,7 +93,7 @@ public class EJBUnitTest {
         bathingCart.addItem("oil");
 
         assertEquals(3, bathingCart.getItems()
-            .size());
+                .size());
         assertEquals("bathingCart", bathingCart.getName());
 
         ShoppingCartEJBRemote fruitCart = (ShoppingCartEJBRemote) context.lookup("java:global/ejb-beans/ShoppingCartEJB");
@@ -102,7 +102,7 @@ public class EJBUnitTest {
         fruitCart.addItem("oranges");
 
         assertEquals(2, fruitCart.getItems()
-            .size());
+                .size());
         assertNull(fruitCart.getName());
     }
 

@@ -16,16 +16,16 @@ public class DateIncrementer {
 
     public static String addOneDay(String date) {
         return LocalDate
-          .parse(date)
-          .plusDays(INCREMENT_BY_IN_DAYS)
-          .toString();
+                .parse(date)
+                .plusDays(INCREMENT_BY_IN_DAYS)
+                .toString();
     }
 
     public static String addOneDayJodaTime(String date) {
         DateTime dateTime = new DateTime(date);
         return dateTime
-          .plusDays(INCREMENT_BY_IN_DAYS)
-          .toString("yyyy-MM-dd");
+                .plusDays(INCREMENT_BY_IN_DAYS)
+                .toString("yyyy-MM-dd");
     }
 
     public static String addOneDayCalendar(String date) throws ParseException {
@@ -44,8 +44,8 @@ public class DateIncrementer {
 
     public static void main(String[] args) throws ParseException {
         String date = LocalDate
-          .now()
-          .toString();
+                .now()
+                .toString();
         log.info("Current date = " + date);
 
         String incrementedDateJava8 = DateIncrementer.addOneDay(date);

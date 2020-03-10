@@ -19,7 +19,7 @@ public class UserNotBlankUnitTest {
     @BeforeClass
     public static void setupValidatorInstance() {
         validator = Validation.buildDefaultValidatorFactory()
-            .getValidator();
+                .getValidator();
     }
 
     @Test

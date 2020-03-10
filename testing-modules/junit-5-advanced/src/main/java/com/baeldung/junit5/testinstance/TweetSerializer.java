@@ -31,8 +31,8 @@ public class TweetSerializer {
     }
 
     private byte[] serializeTweet() throws IOException {
-        try (ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream(); 
-                ObjectOutputStream objectStream = new ObjectOutputStream(arrayOutputStream)) {
+        try (ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
+             ObjectOutputStream objectStream = new ObjectOutputStream(arrayOutputStream)) {
             objectStream.writeObject(tweet);
             return arrayOutputStream.toByteArray();
         }

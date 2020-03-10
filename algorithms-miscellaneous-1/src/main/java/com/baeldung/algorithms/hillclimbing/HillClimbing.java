@@ -9,9 +9,9 @@ import java.util.Stack;
 public class HillClimbing {
     public static void main(String[] args) {
         HillClimbing hillClimbing = new HillClimbing();
-        String blockArr[] = { "B", "C", "D", "A" };
+        String blockArr[] = {"B", "C", "D", "A"};
         Stack<String> startState = hillClimbing.getStackWithValues(blockArr);
-        String goalBlockArr[] = { "A", "B", "C", "D" };
+        String goalBlockArr[] = {"A", "B", "C", "D"};
         Stack<String> goalState = hillClimbing.getStackWithValues(goalBlockArr);
         try {
             List<State> solutionSequence = hillClimbing.getRouteWithHillClimbing(startState, goalState);
@@ -54,8 +54,8 @@ public class HillClimbing {
         State currentState = initState;
         boolean noStateFound = false;
         while (!currentState.getState()
-            .get(0)
-            .equals(goalStateStack) || noStateFound) {
+                .get(0)
+                .equals(goalStateStack) || noStateFound) {
             noStateFound = true;
             State nextState = findNextState(currentState, goalStateStack);
             if (nextState != null) {
@@ -77,12 +77,12 @@ public class HillClimbing {
         int currentStateHeuristics = currentState.getHeuristics();
 
         return listOfStacks.stream()
-            .map(stack -> {
-                return applyOperationsOnState(listOfStacks, stack, currentStateHeuristics, goalStateStack);
-            })
-            .filter(Objects::nonNull)
-            .findFirst()
-          .orElse(null);
+                .map(stack -> {
+                    return applyOperationsOnState(listOfStacks, stack, currentStateHeuristics, goalStateStack);
+                })
+                .filter(Objects::nonNull)
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -102,7 +102,7 @@ public class HillClimbing {
             stack.push(block);
         return tempState;
     }
-    
+
     /**
      * Operation to be applied on a state in order to find new states. This
      * operation pushes an element into a new stack
@@ -130,16 +130,16 @@ public class HillClimbing {
     private State pushElementToExistingStacks(Stack currentStack, List<Stack<String>> currentStackList, String block, int currentStateHeuristics, Stack<String> goalStateStack) {
 
         Optional<State> newState = currentStackList.stream()
-            .filter(stack -> stack != currentStack)
-            .map(stack -> {
-                return pushElementToStack(stack, block, currentStackList, currentStateHeuristics, goalStateStack);
-            })
-            .filter(Objects::nonNull)
-            .findFirst();
+                .filter(stack -> stack != currentStack)
+                .map(stack -> {
+                    return pushElementToStack(stack, block, currentStackList, currentStateHeuristics, goalStateStack);
+                })
+                .filter(Objects::nonNull)
+                .findFirst();
 
         return newState.orElse(null);
     }
-    
+
     /**
      * This method pushes a block to the stack and returns new state if its closer to goal
      */
@@ -160,13 +160,13 @@ public class HillClimbing {
     public int getHeuristicsValue(List<Stack<String>> currentState, Stack<String> goalStateStack) {
         Integer heuristicValue;
         heuristicValue = currentState.stream()
-            .mapToInt(stack -> {
-                return getHeuristicsValueForStack(stack, currentState, goalStateStack);
-            })
-            .sum();
+                .mapToInt(stack -> {
+                    return getHeuristicsValueForStack(stack, currentState, goalStateStack);
+                })
+                .sum();
         return heuristicValue;
     }
-    
+
     /**
      * This method returns heuristics value for a particular stack
      */

@@ -10,5 +10,5 @@ public class JDIExampleDebuggee {
         String text = "Today, we'll dive into " + jdi;
         System.out.println(text);
     }
-    
+
 }

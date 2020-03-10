@@ -44,7 +44,9 @@ public class Java8ForEachUnitTest {
         Consumer<String> printConsumer = new Consumer<String>() {
             public void accept(String name) {
                 System.out.println(name);
-            };
+            }
+
+            ;
         };
 
         names.forEach(printConsumer);
@@ -95,7 +97,7 @@ public class Java8ForEachUnitTest {
         namesMap.put(3, "James");
 
         namesMap.entrySet()
-            .forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
+                .forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
     }
 
     @Test

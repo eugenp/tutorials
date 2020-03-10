@@ -14,18 +14,18 @@ public class SimpleAuthenticationFilter extends UsernamePasswordAuthenticationFi
     public static final String SPRING_SECURITY_FORM_DOMAIN_KEY = "domain";
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) 
-        throws AuthenticationException {
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
+            throws AuthenticationException {
 
         if (!request.getMethod()
-            .equals("POST")) {
+                .equals("POST")) {
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         }
 
         UsernamePasswordAuthenticationToken authRequest = getAuthRequest(request);
         setDetails(request, authRequest);
         return this.getAuthenticationManager()
-            .authenticate(authRequest);
+                .authenticate(authRequest);
     }
 
     private UsernamePasswordAuthenticationToken getAuthRequest(HttpServletRequest request) {
@@ -43,9 +43,9 @@ public class SimpleAuthenticationFilter extends UsernamePasswordAuthenticationFi
             domain = "";
         }
 
-        String usernameDomain = String.format("%s%s%s", username.trim(), 
-            String.valueOf(Character.LINE_SEPARATOR), domain);
-        return new UsernamePasswordAuthenticationToken(usernameDomain, password);        
+        String usernameDomain = String.format("%s%s%s", username.trim(),
+                String.valueOf(Character.LINE_SEPARATOR), domain);
+        return new UsernamePasswordAuthenticationToken(usernameDomain, password);
     }
 
     private String obtainDomain(HttpServletRequest request) {

@@ -18,7 +18,7 @@ public class RemovingEmojiFromStringUnitTest {
         System.out.println(result);
         assertEquals(result, "la conférence, commencera à 10 heures ");
     }
-    
+
     @Test
     public void whenReplaceEmojiUsingLibrary_thenSuccess() {
         String result = EmojiParser.parseToAliases(text);
@@ -37,7 +37,7 @@ public class RemovingEmojiFromStringUnitTest {
     public void whenRemoveEmojiUsingMatcher_thenSuccess() {
         Pattern pattern = Pattern.compile(regex, Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(text);
-        
+
         String result = matcher.replaceAll("");
         System.out.println(result);
         assertEquals(result, "la conférence, commencera à 10 heures ");

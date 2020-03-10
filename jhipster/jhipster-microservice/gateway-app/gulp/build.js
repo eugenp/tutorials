@@ -28,7 +28,7 @@ var cssTask = lazypipe()
     .pipe(prefix)
     .pipe(cssnano);
 
-module.exports = function() {
+module.exports = function () {
     var templates = fs.readFileSync(config.tmp + '/templates.js');
     var manifest = gulp.src(config.revManifest);
 

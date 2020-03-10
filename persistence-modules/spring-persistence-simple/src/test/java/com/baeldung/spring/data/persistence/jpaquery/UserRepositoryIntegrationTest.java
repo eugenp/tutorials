@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by adam.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceConfig.class}, loader = AnnotationConfigContextLoader.class)
 @DirtiesContext
 public class UserRepositoryIntegrationTest extends UserRepositoryCommon {
 

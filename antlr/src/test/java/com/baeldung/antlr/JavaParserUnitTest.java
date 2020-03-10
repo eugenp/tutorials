@@ -6,13 +6,14 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.junit.Test;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class JavaParserUnitTest {
 
     @Test
-    public void whenOneMethodStartsWithUpperCase_thenOneErrorReturned() throws Exception{
+    public void whenOneMethodStartsWithUpperCase_thenOneErrorReturned() throws Exception {
 
         String javaClassContent = "public class SampleClass { void DoSomething(){} }";
         Java8Lexer java8Lexer = new Java8Lexer(CharStreams.fromString(javaClassContent));

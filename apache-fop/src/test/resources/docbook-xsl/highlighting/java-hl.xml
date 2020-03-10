@@ -29,89 +29,89 @@ Michiel Hendriks <elmuerte at users.sourceforge.net>
 
 -->
 <highlighters>
-	<highlighter type="multiline-comment">
-		<start>/**</start>
-		<end>*/</end>
-		<style>doccomment</style>
-	</highlighter>
-	<highlighter type="multiline-comment">
-		<start>/*</start>
-		<end>*/</end>
-	</highlighter>
-	<highlighter type="oneline-comment">//</highlighter>
-	<highlighter type="string">
-		<string>"</string>
-		<escape>\</escape>
-	</highlighter>
-	<highlighter type="string">
-		<string>'</string>
-		<escape>\</escape>
-	</highlighter>
-	<highlighter type="annotation">
-		<start>@</start>
-		<valueStart>(</valueStart>
-		<valueEnd>)</valueEnd>
-	</highlighter>
-	<highlighter type="hexnumber">
-		<prefix>0x</prefix>
-		<ignoreCase />
-	</highlighter>
-	<highlighter type="number">
-		<point>.</point>
-		<exponent>e</exponent>
-		<suffix>f</suffix>
-		<suffix>d</suffix>
-		<suffix>l</suffix>
-		<ignoreCase />
-	</highlighter>
-	<highlighter type="keywords">
-		<keyword>abstract</keyword>
-		<keyword>boolean</keyword>
-		<keyword>break</keyword>
-		<keyword>byte</keyword>
-		<keyword>case</keyword>
-		<keyword>catch</keyword>
-		<keyword>char</keyword>
-		<keyword>class</keyword>
-		<keyword>const</keyword>
-		<keyword>continue</keyword>
-		<keyword>default</keyword>
-		<keyword>do</keyword>
-		<keyword>double</keyword>
-		<keyword>else</keyword>
-		<keyword>extends</keyword>
-		<keyword>final</keyword>
-		<keyword>finally</keyword>
-		<keyword>float</keyword>
-		<keyword>for</keyword>
-		<keyword>goto</keyword>
-		<keyword>if</keyword>
-		<keyword>implements</keyword>
-		<keyword>import</keyword>
-		<keyword>instanceof</keyword>
-		<keyword>int</keyword>
-		<keyword>interface</keyword>
-		<keyword>long</keyword>
-		<keyword>native</keyword>
-		<keyword>new</keyword>
-		<keyword>package</keyword>
-		<keyword>private</keyword>
-		<keyword>protected</keyword>
-		<keyword>public</keyword>
-		<keyword>return</keyword>
-		<keyword>short</keyword>
-		<keyword>static</keyword>
-		<keyword>strictfp</keyword>
-		<keyword>super</keyword>
-		<keyword>switch</keyword>
-		<keyword>synchronized</keyword>
-		<keyword>this</keyword>
-		<keyword>throw</keyword>
-		<keyword>throws</keyword>
-		<keyword>transient</keyword>
-		<keyword>try</keyword>
-		<keyword>void</keyword>
-		<keyword>volatile</keyword>
-		<keyword>while</keyword>
-	</highlighter>
+    <highlighter type="multiline-comment">
+        <start>/**</start>
+        <end>*/</end>
+        <style>doccomment</style>
+    </highlighter>
+    <highlighter type="multiline-comment">
+        <start>/*</start>
+        <end>*/</end>
+    </highlighter>
+    <highlighter type="oneline-comment">//</highlighter>
+    <highlighter type="string">
+        <string>"</string>
+        <escape>\</escape>
+    </highlighter>
+    <highlighter type="string">
+        <string>'</string>
+        <escape>\</escape>
+    </highlighter>
+    <highlighter type="annotation">
+        <start>@</start>
+        <valueStart>(</valueStart>
+        <valueEnd>)</valueEnd>
+    </highlighter>
+    <highlighter type="hexnumber">
+        <prefix>0x</prefix>
+        <ignoreCase/>
+    </highlighter>
+    <highlighter type="number">
+        <point>.</point>
+        <exponent>e</exponent>
+        <suffix>f</suffix>
+        <suffix>d</suffix>
+        <suffix>l</suffix>
+        <ignoreCase/>
+    </highlighter>
+    <highlighter type="keywords">
+        <keyword>abstract</keyword>
+        <keyword>boolean</keyword>
+        <keyword>break</keyword>
+        <keyword>byte</keyword>
+        <keyword>case</keyword>
+        <keyword>catch</keyword>
+        <keyword>char</keyword>
+        <keyword>class</keyword>
+        <keyword>const</keyword>
+        <keyword>continue</keyword>
+        <keyword>default</keyword>
+        <keyword>do</keyword>
+        <keyword>double</keyword>
+        <keyword>else</keyword>
+        <keyword>extends</keyword>
+        <keyword>final</keyword>
+        <keyword>finally</keyword>
+        <keyword>float</keyword>
+        <keyword>for</keyword>
+        <keyword>goto</keyword>
+        <keyword>if</keyword>
+        <keyword>implements</keyword>
+        <keyword>import</keyword>
+        <keyword>instanceof</keyword>
+        <keyword>int</keyword>
+        <keyword>interface</keyword>
+        <keyword>long</keyword>
+        <keyword>native</keyword>
+        <keyword>new</keyword>
+        <keyword>package</keyword>
+        <keyword>private</keyword>
+        <keyword>protected</keyword>
+        <keyword>public</keyword>
+        <keyword>return</keyword>
+        <keyword>short</keyword>
+        <keyword>static</keyword>
+        <keyword>strictfp</keyword>
+        <keyword>super</keyword>
+        <keyword>switch</keyword>
+        <keyword>synchronized</keyword>
+        <keyword>this</keyword>
+        <keyword>throw</keyword>
+        <keyword>throws</keyword>
+        <keyword>transient</keyword>
+        <keyword>try</keyword>
+        <keyword>void</keyword>
+        <keyword>volatile</keyword>
+        <keyword>while</keyword>
+    </highlighter>
 </highlighters>

@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -24,12 +24,13 @@
 
         loadAll();
 
-        function loadAll () {
+        function loadAll() {
             Car.query({
                 page: vm.page,
                 size: vm.itemsPerPage,
                 sort: sort()
             }, onSuccess, onError);
+
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
                 if (vm.predicate !== 'id') {
@@ -51,7 +52,7 @@
             }
         }
 
-        function reset () {
+        function reset() {
             vm.page = 0;
             vm.cars = [];
             loadAll();

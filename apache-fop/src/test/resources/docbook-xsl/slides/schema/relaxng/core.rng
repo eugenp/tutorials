@@ -30,17 +30,17 @@
   ======================================================================
 -->
 <grammar ns="http://docbook.org/ns/docbook" xmlns="http://relaxng.org/ns/structure/1.0">
-  <start>
-    <choice>
-      <ref name="db.set"/>
-      <ref name="db.book"/>
-      <ref name="db.divisions"/>
-      <ref name="db.components"/>
-      <ref name="db.navigation.components"/>
-      <ref name="db.section"/>
-      <ref name="db.para"/>
-    </choice>
-  </start>
-  <include href="pool.rng"/>
-  <include href="hier.rng"/>
+    <start>
+        <choice>
+            <ref name="db.set"/>
+            <ref name="db.book"/>
+            <ref name="db.divisions"/>
+            <ref name="db.components"/>
+            <ref name="db.navigation.components"/>
+            <ref name="db.section"/>
+            <ref name="db.para"/>
+        </choice>
+    </start>
+    <include href="pool.rng"/>
+    <include href="hier.rng"/>
 </grammar>

@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.baeldung.subflows.publishsubscribechannel.PublishSubscibeChannelExample.NumbersClassifier;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PublishSubscibeChannelExample.class })
+@ContextConfiguration(classes = {PublishSubscibeChannelExample.class})
 public class PublishSubscribeChannelUnitTest {
     @Autowired
     private QueueChannel multipleofThreeChannel;
@@ -33,7 +33,7 @@ public class PublishSubscribeChannelUnitTest {
     public void whenSendMessagesToFlow_thenNumbersAreClassified() {
 
         numbersClassifier.classify(Arrays.asList(1, 2, 3, 4, 5, 6));
-       
+
         Message<?> outMessage = multipleofThreeChannel.receive(0);
 
         assertEquals(outMessage.getPayload(), 3);
@@ -41,14 +41,14 @@ public class PublishSubscribeChannelUnitTest {
         outMessage = multipleofThreeChannel.receive(0);
 
         assertEquals(outMessage.getPayload(), 6);
-       
+
         outMessage = remainderIsOneChannel.receive(0);
 
         assertEquals(outMessage.getPayload(), 1);
         outMessage = remainderIsOneChannel.receive(0);
 
         assertEquals(outMessage.getPayload(), 4);
-      
+
         outMessage = remainderIsTwoChannel.receive(0);
 
         assertEquals(outMessage.getPayload(), 2);

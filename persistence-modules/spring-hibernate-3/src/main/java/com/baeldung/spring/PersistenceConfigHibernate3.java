@@ -23,17 +23,17 @@ import com.google.common.base.Preconditions;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-h2.properties" })
-@ComponentScan({ "com.baeldung.persistence.dao", "com.baeldung.persistence.service" })
+@PropertySource({"classpath:persistence-h2.properties"})
+@ComponentScan({"com.baeldung.persistence.dao", "com.baeldung.persistence.service"})
 public class PersistenceConfigHibernate3 {
-    
+
     @Autowired
     private Environment env;
 
     public PersistenceConfigHibernate3() {
         super();
     }
-    
+
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
@@ -44,7 +44,7 @@ public class PersistenceConfigHibernate3 {
 
         return sessionFactory;
     }
-    
+
     @Bean
     public DataSource dataSource() {
         final BasicDataSource dataSource = new BasicDataSource();

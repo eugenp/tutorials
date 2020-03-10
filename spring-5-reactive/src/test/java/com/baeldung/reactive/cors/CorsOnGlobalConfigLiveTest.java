@@ -20,77 +20,77 @@ public class CorsOnGlobalConfigLiveTest {
     @BeforeAll
     public static void setup() {
         client = WebTestClient.bindToServer()
-            .baseUrl(BASE_URL)
-            .defaultHeader("Origin", CORS_DEFAULT_ORIGIN)
-            .build();
+                .baseUrl(BASE_URL)
+                .defaultHeader("Origin", CORS_DEFAULT_ORIGIN)
+                .build();
     }
 
     @Test
     public void whenRequestingRegularEndpoint_thenObtainResponseWithCorsHeaders() {
         ResponseSpec response = client.put()
-            .uri(BASE_REGULAR_URL + "/regular-put-endpoint")
-            .exchange();
+                .uri(BASE_REGULAR_URL + "/regular-put-endpoint")
+                .exchange();
 
         response.expectHeader()
-            .valueEquals("Access-Control-Allow-Origin", CORS_DEFAULT_ORIGIN);
+                .valueEquals("Access-Control-Allow-Origin", CORS_DEFAULT_ORIGIN);
     }
 
     @Test
     public void whenRequestingRegularDeleteEndpoint_thenObtainForbiddenResponse() {
         ResponseSpec response = client.delete()
-            .uri(BASE_REGULAR_URL + "/regular-delete-endpoint")
-            .exchange();
+                .uri(BASE_REGULAR_URL + "/regular-delete-endpoint")
+                .exchange();
 
         response.expectStatus()
-            .isForbidden();
+                .isForbidden();
     }
 
     @Test
     public void whenPreflightAllowedDeleteEndpoint_thenObtainResponseWithCorsHeaders() {
         ResponseSpec response = client.options()
-            .uri(BASE_EXTRA_CORS_CONFIG_URL + "/further-mixed-config-endpoint")
-            .header("Access-Control-Request-Method", "DELETE")
-            .header("Access-Control-Request-Headers", "Baeldung-Not-Allowed, Baeldung-Allowed, Baeldung-Other-Allowed")
-            .exchange();
+                .uri(BASE_EXTRA_CORS_CONFIG_URL + "/further-mixed-config-endpoint")
+                .header("Access-Control-Request-Method", "DELETE")
+                .header("Access-Control-Request-Headers", "Baeldung-Not-Allowed, Baeldung-Allowed, Baeldung-Other-Allowed")
+                .exchange();
 
         response.expectHeader()
-            .valueEquals("Access-Control-Allow-Origin", CORS_DEFAULT_ORIGIN);
+                .valueEquals("Access-Control-Allow-Origin", CORS_DEFAULT_ORIGIN);
         response.expectHeader()
-            .valueEquals("Access-Control-Allow-Methods", "PUT,DELETE");
+                .valueEquals("Access-Control-Allow-Methods", "PUT,DELETE");
         response.expectHeader()
-            .valueEquals("Access-Control-Allow-Headers", "Baeldung-Allowed, Baeldung-Other-Allowed");
+                .valueEquals("Access-Control-Allow-Headers", "Baeldung-Allowed, Baeldung-Other-Allowed");
         response.expectHeader()
-            .exists("Access-Control-Max-Age");
+                .exists("Access-Control-Max-Age");
     }
 
     @Test
     public void whenRequestAllowedDeleteEndpoint_thenObtainResponseWithCorsHeaders() {
         ResponseSpec response = client.delete()
-            .uri(BASE_EXTRA_CORS_CONFIG_URL + "/further-mixed-config-endpoint")
-            .exchange();
+                .uri(BASE_EXTRA_CORS_CONFIG_URL + "/further-mixed-config-endpoint")
+                .exchange();
 
         response.expectStatus()
-            .isOk();
+                .isOk();
     }
 
     @Test
     public void whenPreflightFunctionalEndpoint_thenObtain404Response() {
         ResponseSpec response = client.options()
-            .uri(BASE_FUNCTIONALS_URL + "/cors-disabled-functional-endpoint")
-            .header("Access-Control-Request-Method", "PUT")
-            .exchange();
+                .uri(BASE_FUNCTIONALS_URL + "/cors-disabled-functional-endpoint")
+                .header("Access-Control-Request-Method", "PUT")
+                .exchange();
 
         response.expectStatus()
-            .isNotFound();
+                .isNotFound();
     }
 
     @Test
     public void whenRequestFunctionalEndpoint_thenObtainResponseWithCorsHeaders() {
         ResponseSpec response = client.put()
-            .uri(BASE_FUNCTIONALS_URL + "/cors-disabled-functional-endpoint")
-            .exchange();
+                .uri(BASE_FUNCTIONALS_URL + "/cors-disabled-functional-endpoint")
+                .exchange();
 
         response.expectHeader()
-            .valueEquals("Access-Control-Allow-Origin", CORS_DEFAULT_ORIGIN);
+                .valueEquals("Access-Control-Allow-Origin", CORS_DEFAULT_ORIGIN);
     }
 }

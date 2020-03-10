@@ -20,7 +20,7 @@ public class SlashParsingController {
     @GetMapping("all/**")
     public String allDirectories(HttpServletRequest request) {
         return request.getRequestURI()
-            .split(request.getContextPath() + "/all/")[1];
+                .split(request.getContextPath() + "/all/")[1];
     }
 
     @GetMapping("all")

@@ -6,9 +6,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
- * 
  * Simple student POJO with few fields
- *
  */
 public class Student implements Serializable {
 

@@ -12,15 +12,16 @@ public class TransactionController {
     @Autowired
     private TransactionRepository transactionRepository;
 
-    @PostMapping(path="/addTransaction")
+    @PostMapping(path = "/addTransaction")
     public @ResponseBody
-    String saveTransactions(@RequestBody Transaction trnsctn){
+    String saveTransactions(@RequestBody Transaction trnsctn) {
         transactionRepository.save(trnsctn);
         return "Saved Transaction.";
     }
 
-    @GetMapping(path="/findAll/{rewardId}")
-    public @ResponseBody Iterable<Transaction> getTransactions(@RequestParam Integer id){
+    @GetMapping(path = "/findAll/{rewardId}")
+    public @ResponseBody
+    Iterable<Transaction> getTransactions(@RequestParam Integer id) {
         return transactionRepository.findByCustomerRewardsId(id);
     }
 }

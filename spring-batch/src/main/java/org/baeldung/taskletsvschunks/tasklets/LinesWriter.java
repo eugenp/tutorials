@@ -25,8 +25,8 @@ public class LinesWriter implements Tasklet, StepExecutionListener {
     @Override
     public void beforeStep(StepExecution stepExecution) {
         ExecutionContext executionContext = stepExecution
-          .getJobExecution()
-          .getExecutionContext();
+                .getJobExecution()
+                .getExecutionContext();
         this.lines = (List<Line>) executionContext.get("lines");
         fu = new FileUtils("output.csv");
         logger.debug("Lines Writer initialized.");

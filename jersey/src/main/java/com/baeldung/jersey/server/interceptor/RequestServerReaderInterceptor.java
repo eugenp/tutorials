@@ -26,7 +26,7 @@ public class RequestServerReaderInterceptor implements ReaderInterceptor {
 
         InputStream is = context.getInputStream();
         String body = new BufferedReader(new InputStreamReader(is)).lines()
-            .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining("\n"));
 
         context.setInputStream(new ByteArrayInputStream((body + " message added in server reader interceptor").getBytes()));
 

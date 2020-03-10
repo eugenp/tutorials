@@ -77,9 +77,9 @@ class DomainOrderServiceUnitTest {
     void shouldDeleteProduct_thenSaveOrder() {
         final Order order = spy(OrderProvider.getCreatedOrder());
         final UUID productId = order
-          .getOrderItems()
-          .get(0)
-          .getProductId();
+                .getOrderItems()
+                .get(0)
+                .getProductId();
 
         when(orderRepository.findById(order.getId())).thenReturn(Optional.of(order));
 

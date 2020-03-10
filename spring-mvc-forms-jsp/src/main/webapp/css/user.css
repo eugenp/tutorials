@@ -1,38 +1,38 @@
 .form-label {
-	display:block;
-	margin-top:16px;
-	font-weight:bold;
+    display: block;
+    margin-top: 16px;
+    font-weight: bold;
 }
 
 .form-input {
-	border-radius:5px;
-	display:inline;
+    border-radius: 5px;
+    display: inline;
 }
 
 .form-input p {
-	margin:0;
+    margin: 0;
 }
 
 .form-button {
-	margin:5px;
+    margin: 5px;
 }
 
 .form-error input.ng-invalid {
-    border-color:red;
+    border-color: red;
 }
-        
+
 .check {
-  display:inline;
-  color:green;
-  font-weight:bold;
+    display: inline;
+    color: green;
+    font-weight: bold;
 }
 
 .error-messages {
-	color:red;
+    color: red;
 }
 
 .error-messages p {
-	margin:0;
+    margin: 0;
 }
 
 #customers {
@@ -43,12 +43,14 @@
 
 #users td, #users th {
     border: 1px solid dodgerblue;
-    border-collapse:collapse;
+    border-collapse: collapse;
     padding: 4px;
-    width:200px;
+    width: 200px;
 }
 
-#users tr:nth-child(even){background-color: lavender;}
+#users tr:nth-child(even) {
+    background-color: lavender;
+}
 
 #users th {
     padding-top: 10px;
@@ -58,20 +60,20 @@
 }
 
 #users {
-	border-collapse:collapse;
+    border-collapse: collapse;
 }
 
 button {
-	border-radius:5px;
-	cursor:pointer;
-	margin:10px;
-	padding:5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    padding: 5px;
 }
 
 .form-button-save {
-	background-color:lightgreen;
+    background-color: lightgreen;
 }
 
 .form-button-reset {
-	background-color:lightpink;
+    background-color: lightpink;
 }

@@ -83,16 +83,17 @@ public class BinaryNumbers {
         }
 
         return Integer.valueOf(output.reverse()
-            .toString());
+                .toString());
     }
 
     /**
-    * This method takes two binary number as input and subtract second number from the first number.
-    * example:- firstNum: 1000, secondNum: 11, output: 101
-    * @param firstNum
-    * @param secondNum
-    * @return Result of subtraction of secondNum from first
-    */
+     * This method takes two binary number as input and subtract second number from the first number.
+     * example:- firstNum: 1000, secondNum: 11, output: 101
+     *
+     * @param firstNum
+     * @param secondNum
+     * @return Result of subtraction of secondNum from first
+     */
     public Integer substractBinaryNumber(Integer firstNum, Integer secondNum) {
 
         int onesComplement = Integer.valueOf(getOnesComplement(secondNum));
@@ -112,7 +113,7 @@ public class BinaryNumbers {
         }
 
         String additionOfFirstNumAndOnesComplement = output.reverse()
-            .toString();
+                .toString();
 
         if (carry == 1) {
             return addBinaryNumber(Integer.valueOf(additionOfFirstNumAndOnesComplement), carry);
@@ -134,7 +135,7 @@ public class BinaryNumbers {
             num = num / 10;
         }
         return Integer.valueOf(onesComplement.reverse()
-            .toString());
+                .toString());
     }
 
 }

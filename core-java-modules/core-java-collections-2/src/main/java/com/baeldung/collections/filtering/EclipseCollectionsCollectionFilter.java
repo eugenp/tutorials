@@ -11,7 +11,7 @@ public class EclipseCollectionsCollectionFilter {
     static public Collection<Integer> findEvenNumbers(Collection<Integer> baseCollection) {
         Predicate<Integer> eclipsePredicate = item -> item % 2 == 0;
         Collection<Integer> filteredList = Lists.mutable.ofAll(baseCollection)
-            .select(eclipsePredicate);
+                .select(eclipsePredicate);
 
         return filteredList;
     }

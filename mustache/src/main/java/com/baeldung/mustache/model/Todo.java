@@ -65,8 +65,8 @@ public class Todo {
 
     public long doneSince() {
         return done ? Duration
-          .between(createdOn.toInstant(), completedOn.toInstant())
-          .toMinutes() : 0;
+                .between(createdOn.toInstant(), completedOn.toInstant())
+                .toMinutes() : 0;
     }
 
     public Function<Object, Object> handleDone() {

@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ArticleWithConstructorInjection {
 
-	private TextFormatter formatter;
+    private TextFormatter formatter;
 
-	@Autowired
+    @Autowired
     public ArticleWithConstructorInjection(TextFormatter formatter) {
         this.formatter = formatter;
     }

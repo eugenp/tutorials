@@ -23,7 +23,7 @@ public class JavaTimerLongRunningUnitTest {
             @Override
             public void run() {
                 LOG.debug("Task performed on: " + new Date() + "\n" + "Thread's name: " + Thread.currentThread()
-                    .getName());
+                        .getName());
             }
         };
         final Timer timer = new Timer("Timer");

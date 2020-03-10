@@ -15,15 +15,15 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 
 public class XMLDocumentWriter {
-    
+
     public void write(Document document, String fileName, boolean excludeDeclaration, boolean prettyPrint) {
-        try(FileWriter writer = new FileWriter(new File(fileName))) {
+        try (FileWriter writer = new FileWriter(new File(fileName))) {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            if(excludeDeclaration) {
+            if (excludeDeclaration) {
                 transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
             }
-            if(prettyPrint) {
+            if (prettyPrint) {
                 transformer.setOutputProperty(OutputKeys.INDENT, "yes");
                 transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
             }

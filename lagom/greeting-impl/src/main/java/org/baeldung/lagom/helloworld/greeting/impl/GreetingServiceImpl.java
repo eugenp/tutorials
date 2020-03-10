@@ -33,12 +33,12 @@ public class GreetingServiceImpl implements GreetingService {
             // Look up the hello world entity for the given ID.
             PersistentEntityRef<GreetingCommand> ref = persistentEntityRegistry.refFor(GreetingEntity.class, user);
             CompletableFuture<String> greetingResponse = ref.ask(new ReceivedGreetingCommand(user))
-              .toCompletableFuture();
-            CompletableFuture<WeatherStats> todaysWeatherInfo = 
-              (CompletableFuture<WeatherStats>) weatherService.weatherStatsForToday().invoke();
+                    .toCompletableFuture();
+            CompletableFuture<WeatherStats> todaysWeatherInfo =
+                    (CompletableFuture<WeatherStats>) weatherService.weatherStatsForToday().invoke();
             try {
-                return CompletableFuture.completedFuture(greetingResponse.get() + 
-                  " Today's weather stats: " + todaysWeatherInfo.get().getMessage());
+                return CompletableFuture.completedFuture(greetingResponse.get() +
+                        " Today's weather stats: " + todaysWeatherInfo.get().getMessage());
             } catch (InterruptedException | ExecutionException e) {
                 return CompletableFuture.completedFuture("Sorry Some Error at our end, working on it");
             }

@@ -19,14 +19,14 @@ public class GreetServerIntegrationTest {
 
     @BeforeClass
     public static void start() throws InterruptedException, IOException {
-        
+
         // Take an available port
         ServerSocket s = new ServerSocket(0);
         port = s.getLocalPort();
         s.close();
-        
+
         Executors.newSingleThreadExecutor()
-            .submit(() -> new GreetServer().start(port));
+                .submit(() -> new GreetServer().start(port));
         Thread.sleep(500);
     }
 

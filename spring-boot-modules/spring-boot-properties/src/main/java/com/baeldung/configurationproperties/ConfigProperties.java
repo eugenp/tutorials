@@ -115,10 +115,10 @@ public class ConfigProperties {
     public void setAdditionalHeaders(Map<String, String> additionalHeaders) {
         this.additionalHeaders = additionalHeaders;
     }
-    
+
     @Bean
     @ConfigurationProperties(prefix = "item")
-    public Item item(){
+    public Item item() {
         return new Item();
     }
 }

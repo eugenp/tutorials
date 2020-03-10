@@ -1,6 +1,6 @@
 /**
- * 
+ *
  */
-Todos.Router.map(function() {
-  this.resource('todos', { path: '/' });
+Todos.Router.map(function () {
+    this.resource('todos', {path: '/'});
 });

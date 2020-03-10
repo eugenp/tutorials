@@ -10,7 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MockAnnotationUnitTest {
-    
+
     @Mock
     UserRepository mockRepository;
 
@@ -23,7 +23,7 @@ public class MockAnnotationUnitTest {
         Assert.assertEquals(123L, userCount);
         Mockito.verify(mockRepository).count();
     }
-    
+
     @Test
     public void givenCountMethodMocked_WhenCountInvoked_ThenMockedValueReturned() {
         UserRepository localMockRepository = Mockito.mock(UserRepository.class);

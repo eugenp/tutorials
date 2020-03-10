@@ -12,8 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
-    // instead of setting this property, we can exclude the dependency to org.apache.tomcat:tomcat-jdbc in pom.xml
-    properties = "spring.datasource.type=com.zaxxer.hikari.HikariDataSource")
+        // instead of setting this property, we can exclude the dependency to org.apache.tomcat:tomcat-jdbc in pom.xml
+        properties = "spring.datasource.type=com.zaxxer.hikari.HikariDataSource")
 public class HikariIntegrationTest {
 
     @Autowired
@@ -22,7 +22,7 @@ public class HikariIntegrationTest {
     @Test
     public void hikariConnectionPoolIsConfigured() {
         assertEquals("com.zaxxer.hikari.HikariDataSource", dataSource.getClass()
-            .getName());
+                .getName());
     }
 
 }

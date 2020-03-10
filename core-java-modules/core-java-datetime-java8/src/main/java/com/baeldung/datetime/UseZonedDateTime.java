@@ -18,7 +18,7 @@ class UseZonedDateTime {
 
     ZonedDateTime getStartOfDay(LocalDate localDate, ZoneId zone) {
         ZonedDateTime startOfDay = localDate.atStartOfDay()
-            .atZone(zone);
+                .atZone(zone);
         return startOfDay;
     }
 
@@ -29,8 +29,8 @@ class UseZonedDateTime {
 
     ZonedDateTime getStartOfDayFromZonedDateTime(ZonedDateTime zonedDateTime) {
         ZonedDateTime startOfDay = zonedDateTime.toLocalDateTime()
-            .toLocalDate()
-            .atStartOfDay(zonedDateTime.getZone());
+                .toLocalDate()
+                .atStartOfDay(zonedDateTime.getZone());
         return startOfDay;
     }
 

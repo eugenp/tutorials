@@ -8,7 +8,7 @@ import com.baeldung.ejb.tutorial.HelloStatelessWorld;
 
 @RestController
 public class HomeEndpoint {
-    
+
     private HelloStatelessWorld helloStatelessWorld;
     private HelloStatefulWorld helloStatefulWorld;
 
@@ -21,7 +21,7 @@ public class HomeEndpoint {
     public String getStateless() {
         return helloStatelessWorld.getHelloWorld();
     }
-    
+
     @GetMapping("/stateful")
     public String getStateful() {
         return helloStatefulWorld.getHelloWorld() + " called " + helloStatefulWorld.howManyTimes() + " times";

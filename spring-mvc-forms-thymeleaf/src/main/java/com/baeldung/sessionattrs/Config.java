@@ -25,16 +25,16 @@ public class Config implements WebMvcConfigurer {
 
     @Bean
     @Scope(
-        value = WebApplicationContext.SCOPE_SESSION, 
-        proxyMode = ScopedProxyMode.TARGET_CLASS)
+            value = WebApplicationContext.SCOPE_SESSION,
+            proxyMode = ScopedProxyMode.TARGET_CLASS)
     public TodoList todos() {
         return new TodoList();
     }
 
     @Bean
     public ITemplateResolver templateResolver() {
-        ClassLoaderTemplateResolver resolver 
-            = new ClassLoaderTemplateResolver();
+        ClassLoaderTemplateResolver resolver
+                = new ClassLoaderTemplateResolver();
         resolver.setPrefix("templates/sessionattrs/");
         resolver.setSuffix(".html");
         resolver.setTemplateMode(TemplateMode.HTML);

@@ -1,4 +1,5 @@
 Feature: Book Store With Hooks
+
   Background: The Book Store
     Given The following books are available in the store
       | The Devil in the White City          | Erik Larson |

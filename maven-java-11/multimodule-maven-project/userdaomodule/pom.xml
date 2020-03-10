@@ -17,7 +17,7 @@
     <properties>
         <entitymodule.version>1.0</entitymodule.version>
         <daomodule.version>1.0</daomodule.version>
-	</properties>
+    </properties>
 
     <dependencies>
         <dependency>

@@ -78,20 +78,20 @@ public class CountCharsExampleUnitTest {
     public void givenString_whenUsingJava8Features_thenCountChars() {
         String someString = "elephant";
         long count = someString.chars()
-            .filter(ch -> ch == 'e')
-            .count();
+                .filter(ch -> ch == 'e')
+                .count();
         assertEquals(2, count);
 
         long count2 = someString.codePoints()
-            .filter(ch -> ch == 'e')
-            .count();
+                .filter(ch -> ch == 'e')
+                .count();
         assertEquals(2, count2);
     }
 
     @Test
     public void givenString_whenUsingGuavaCharMatcher_thenCountChars() {
         int count = CharMatcher.is('e')
-            .countIn("elephant");
+                .countIn("elephant");
         assertEquals(2, count);
     }
 

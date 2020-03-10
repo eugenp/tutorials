@@ -1,6 +1,6 @@
-﻿import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Http } from '@angular/http';
+﻿import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {Http} from '@angular/http';
 
 @Component({
     selector: 'login',
@@ -13,7 +13,8 @@ export class LoginComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private http: Http) { }
+        private http: Http) {
+    }
 
     ngOnInit() {
         sessionStorage.setItem('token', '');

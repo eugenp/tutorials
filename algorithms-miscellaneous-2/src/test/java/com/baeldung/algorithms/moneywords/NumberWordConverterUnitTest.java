@@ -27,19 +27,19 @@ public class NumberWordConverterUnitTest {
     public void whenOnlyCentsGiven_thenReturnWords() {
         assertEquals("sixty cents", NumberWordConverter.getMoneyIntoWords(0.6));
     }
-    
+
     @Test
     public void whenAlmostAMillioDollarsGiven_thenReturnWords() {
         String expectedResult = "nine hundred ninety nine thousand nine hundred ninety nine dollars";
         assertEquals(expectedResult, NumberWordConverter.getMoneyIntoWords(999_999));
     }
-    
+
     @Test
     public void whenThirtyMillionDollarsGiven_thenReturnWords() {
         String expectedResult = "thirty three million three hundred forty eight thousand nine hundred seventy eight dollars";
         assertEquals(expectedResult, NumberWordConverter.getMoneyIntoWords(33_348_978));
     }
-    
+
     @Test
     public void whenTwoBillionDollarsGiven_thenReturnWords() {
         String expectedResult = "two billion one hundred thirty three million two hundred forty seven thousand eight hundred ten dollars";

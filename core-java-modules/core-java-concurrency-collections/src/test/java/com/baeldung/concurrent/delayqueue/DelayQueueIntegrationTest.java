@@ -23,7 +23,7 @@ public class DelayQueueIntegrationTest {
         int delayOfEachProducedMessageMilliseconds = 500;
         DelayQueueConsumer consumer = new DelayQueueConsumer(queue, numberOfElementsToProduce);
         DelayQueueProducer producer
-          = new DelayQueueProducer(queue, numberOfElementsToProduce, delayOfEachProducedMessageMilliseconds);
+                = new DelayQueueProducer(queue, numberOfElementsToProduce, delayOfEachProducedMessageMilliseconds);
 
         //when
         executor.submit(producer);
@@ -45,7 +45,7 @@ public class DelayQueueIntegrationTest {
         int delayOfEachProducedMessageMilliseconds = 10_000;
         DelayQueueConsumer consumer = new DelayQueueConsumer(queue, numberOfElementsToProduce);
         DelayQueueProducer producer
-          = new DelayQueueProducer(queue, numberOfElementsToProduce, delayOfEachProducedMessageMilliseconds);
+                = new DelayQueueProducer(queue, numberOfElementsToProduce, delayOfEachProducedMessageMilliseconds);
 
         //when
         executor.submit(producer);
@@ -67,7 +67,7 @@ public class DelayQueueIntegrationTest {
         int delayOfEachProducedMessageMilliseconds = -10_000;
         DelayQueueConsumer consumer = new DelayQueueConsumer(queue, numberOfElementsToProduce);
         DelayQueueProducer producer
-          = new DelayQueueProducer(queue, numberOfElementsToProduce, delayOfEachProducedMessageMilliseconds);
+                = new DelayQueueProducer(queue, numberOfElementsToProduce, delayOfEachProducedMessageMilliseconds);
 
         //when
         executor.submit(producer);

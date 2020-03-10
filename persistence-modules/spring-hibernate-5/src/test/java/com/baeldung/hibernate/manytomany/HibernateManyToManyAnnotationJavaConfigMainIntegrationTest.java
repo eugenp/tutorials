@@ -2,6 +2,7 @@ package com.baeldung.hibernate.manytomany;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -17,7 +18,7 @@ import com.baeldung.hibernate.manytomany.model.Project;
 import com.baeldung.manytomany.spring.PersistenceConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class HibernateManyToManyAnnotationJavaConfigMainIntegrationTest {
 
     @Autowired

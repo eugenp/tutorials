@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller Tests', function() {
+describe('Controller Tests', function () {
 
     beforeEach(mockApiAccountCall);
     beforeEach(mockI18nCalls);
 
-    describe('ActivationController', function() {
+    describe('ActivationController', function () {
 
         var $scope, $httpBackend, $q; // actual implementations
         var MockAuth, MockStateParams; // mocks
         var createController; // local utility function
 
-        beforeEach(inject(function($injector) {
+        beforeEach(inject(function ($injector) {
             $q = $injector.get('$q');
             $scope = $injector.get('$rootScope').$new();
             $httpBackend = $injector.get('$httpBackend');
@@ -24,12 +24,12 @@ describe('Controller Tests', function() {
                 '$stateParams': MockStateParams,
                 'Auth': MockAuth
             };
-            createController = function() {
+            createController = function () {
                 $injector.get('$controller')('ActivationController as vm', locals);
             };
         }));
 
-        it('calls Auth.activateAccount with the key from stateParams', function() {
+        it('calls Auth.activateAccount with the key from stateParams', function () {
             // given
             MockAuth.activateAccount.and.returnValue($q.resolve());
             // when
@@ -40,7 +40,7 @@ describe('Controller Tests', function() {
             });
         });
 
-        it('should set set success to OK upon successful activation', function() {
+        it('should set set success to OK upon successful activation', function () {
             // given
             MockAuth.activateAccount.and.returnValue($q.resolve());
             // when
@@ -50,7 +50,7 @@ describe('Controller Tests', function() {
             expect($scope.vm.success).toEqual('OK');
         });
 
-        it('should set set error to ERROR upon activation failure', function() {
+        it('should set set error to ERROR upon activation failure', function () {
             // given
             MockAuth.activateAccount.and.returnValue($q.reject());
             // when

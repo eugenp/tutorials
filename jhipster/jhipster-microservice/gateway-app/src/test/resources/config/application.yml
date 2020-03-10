@@ -14,72 +14,72 @@
 # ===================================================================
 
 eureka:
-    client:
-        enabled: false
-    instance:
-        appname: gateway
-        instanceId: gateway:${spring.application.instance_id:${random.value}}
+  client:
+    enabled: false
+  instance:
+    appname: gateway
+    instanceId: gateway:${spring.application.instance_id:${random.value}}
 
 spring:
-    application:
-        name: gateway
-    autoconfigure:
-        exclude: org.springframework.boot.autoconfigure.data.cassandra.CassandraDataAutoConfiguration, org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration
-    jackson:
-        serialization.write_dates_as_timestamps: false
-    cache:
-        type: none
-    datasource:
-        type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:mem:gateway;DB_CLOSE_DELAY=-1
-        name:
-        username:
-        password:
-    jpa:
-        database-platform: io.github.jhipster.domain.util.FixedH2Dialect
-        database: H2
-        open-in-view: false
-        show-sql: true
-        hibernate:
-            ddl-auto: none
-            naming:
-                physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-                implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
-        properties:
-            hibernate.id.new_generator_mappings: true
-            hibernate.cache.use_second_level_cache: false
-            hibernate.cache.use_query_cache: false
-            hibernate.generate_statistics: true
-            hibernate.hbm2ddl.auto: validate
-    data:
-        cassandra:
-            contactPoints: localhost
-            port: 0
-            protocolVersion: V4
-            compression: NONE
-            keyspaceName: cassandra_unit_keyspace
-            repositories:
-                enabled: false
-    mail:
-        host: localhost
-    messages:
-        basename: i18n/messages
-    mvc:
-        favicon:
-            enabled: false
-    thymeleaf:
-        mode: XHTML
+  application:
+    name: gateway
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.data.cassandra.CassandraDataAutoConfiguration, org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration
+  jackson:
+    serialization.write_dates_as_timestamps: false
+  cache:
+    type: none
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:gateway;DB_CLOSE_DELAY=-1
+    name:
+    username:
+    password:
+  jpa:
+    database-platform: io.github.jhipster.domain.util.FixedH2Dialect
+    database: H2
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    properties:
+      hibernate.id.new_generator_mappings: true
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false
+      hibernate.generate_statistics: true
+      hibernate.hbm2ddl.auto: validate
+  data:
+    cassandra:
+      contactPoints: localhost
+      port: 0
+      protocolVersion: V4
+      compression: NONE
+      keyspaceName: cassandra_unit_keyspace
+      repositories:
+        enabled: false
+  mail:
+    host: localhost
+  messages:
+    basename: i18n/messages
+  mvc:
+    favicon:
+      enabled: false
+  thymeleaf:
+    mode: XHTML
 
 liquibase:
-    contexts: test
+  contexts: test
 
 security:
-    basic:
-        enabled: false
+  basic:
+    enabled: false
 
 server:
-    port: 10344
-    address: localhost
+  port: 10344
+  address: localhost
 
 # ===================================================================
 # JHipster specific properties
@@ -88,18 +88,18 @@ server:
 # ===================================================================
 
 jhipster:
-    async:
-        core-pool-size: 2
-        max-pool-size: 50
-        queue-capacity: 10000
-    security:
-        authentication:
-            jwt:
-                secret: cd875958b5c9a8fa965803fd599da3c13abf1015
-                # Token is valid 24 hours
-                token-validity-in-seconds: 86400
-    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
-        jmx.enabled: true
+  async:
+    core-pool-size: 2
+    max-pool-size: 50
+    queue-capacity: 10000
+  security:
+    authentication:
+      jwt:
+        secret: cd875958b5c9a8fa965803fd599da3c13abf1015
+        # Token is valid 24 hours
+        token-validity-in-seconds: 86400
+  metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
+    jmx.enabled: true
 
 # ===================================================================
 # Application specific properties

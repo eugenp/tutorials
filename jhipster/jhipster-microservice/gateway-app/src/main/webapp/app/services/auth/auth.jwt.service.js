@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     AuthServerProvider.$inject = ['$http', '$localStorage', '$sessionStorage', '$q'];
 
-    function AuthServerProvider ($http, $localStorage, $sessionStorage, $q) {
+    function AuthServerProvider($http, $localStorage, $sessionStorage, $q) {
         var service = {
             getToken: getToken,
             login: login,
@@ -18,11 +18,11 @@
 
         return service;
 
-        function getToken () {
+        function getToken() {
             return $localStorage.authenticationToken || $sessionStorage.authenticationToken;
         }
 
-        function login (credentials) {
+        function login(credentials) {
 
             var data = {
                 username: credentials.username,
@@ -31,7 +31,7 @@
             };
             return $http.post('api/authenticate', data).success(authenticateSuccess);
 
-            function authenticateSuccess (data, status, headers) {
+            function authenticateSuccess(data, status, headers) {
                 var bearerToken = headers('Authorization');
                 if (angular.isDefined(bearerToken) && bearerToken.slice(0, 7) === 'Bearer ') {
                     var jwt = bearerToken.slice(7, bearerToken.length);
@@ -55,14 +55,14 @@
         }
 
         function storeAuthenticationToken(jwt, rememberMe) {
-            if(rememberMe){
+            if (rememberMe) {
                 $localStorage.authenticationToken = jwt;
             } else {
                 $sessionStorage.authenticationToken = jwt;
             }
         }
 
-        function logout () {
+        function logout() {
             delete $localStorage.authenticationToken;
             delete $sessionStorage.authenticationToken;
         }

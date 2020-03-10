@@ -12,13 +12,13 @@ import java.net.UnknownHostException;
 @RestController
 public class KubernetesBackendApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(KubernetesBackendApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(KubernetesBackendApplication.class, args);
+    }
 
-	@GetMapping("")
+    @GetMapping("")
     public String helloWorld() throws UnknownHostException {
 
-	    return "Hello from " + InetAddress.getLocalHost().getHostName();
+        return "Hello from " + InetAddress.getLocalHost().getHostName();
     }
 }

@@ -20,11 +20,11 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 /**
- * By default, the persistence-multiple-db.properties file is read for 
- * non auto configuration in PersistenceUserConfiguration. 
+ * By default, the persistence-multiple-db.properties file is read for
+ * non auto configuration in PersistenceUserConfiguration.
  * <p>
- * If we need to use persistence-multiple-db-boot.properties and auto configuration 
- * then uncomment the below @Configuration class and comment out PersistenceUserConfiguration. 
+ * If we need to use persistence-multiple-db-boot.properties and auto configuration
+ * then uncomment the below @Configuration class and comment out PersistenceUserConfiguration.
  */
 //@Configuration
 @PropertySource({"classpath:persistence-multiple-db-boot.properties"})
@@ -59,7 +59,7 @@ public class PersistenceUserAutoConfiguration {
 
     @Bean
     @Primary
-    @ConfigurationProperties(prefix="spring.datasource")
+    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource userDataSource() {
         return DataSourceBuilder.create().build();
     }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stackify.models.User;
+
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
@@ -32,7 +33,7 @@ public class UserController {
     public List<User> getUsers() {
         users.forEach(user -> {
             Link selfLink = linkTo(methodOn(UserController.class).getUsers()).slash(user.getEmail())
-                .withSelfRel();
+                    .withSelfRel();
             user.getLinks().clear();
             user.add(selfLink);
         });
@@ -42,10 +43,10 @@ public class UserController {
     @GetMapping("/users/{email}")
     public User getUser(@PathVariable String email) {
         User us = users.stream()
-            .filter(user -> !user.getEmail()
-                .equals(email))
-            .findAny()
-            .orElse(null);
+                .filter(user -> !user.getEmail()
+                        .equals(email))
+                .findAny()
+                .orElse(null);
         return us;
     }
 

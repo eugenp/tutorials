@@ -23,8 +23,8 @@ public class TodoDao implements Dao<Todo> {
     @Override
     public Collection<Todo> getAll() {
         return todoList.stream()
-            .filter(Objects::nonNull)
-            .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
+                .filter(Objects::nonNull)
+                .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
     }
 
     @Override

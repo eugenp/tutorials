@@ -26,8 +26,7 @@ public class HibernateManyisOwningSide {
 
         cart.setItems(itemsSet);
 
-        
-        
+
         SessionFactory sessionFactory = null;
         Session session = null;
         Transaction tx = null;
@@ -51,12 +50,12 @@ public class HibernateManyisOwningSide {
             item1 = (Items) session.get(Items.class, new Long(1));
             item2 = (Items) session.get(Items.class, new Long(2));
             tx.commit();
-            
-         
+
+
             System.out.println("item1 ID=" + item1.getId() + ", Foreign Key CartOIO ID=" + item1.getCart()
-                .getId());
+                    .getId());
             System.out.println("item2 ID=" + item2.getId() + ", Foreign Key CartOIO ID=" + item2.getCart()
-                .getId());
+                    .getId());
 
         } catch (Exception e) {
             System.out.println("Exception occured. " + e.getMessage());

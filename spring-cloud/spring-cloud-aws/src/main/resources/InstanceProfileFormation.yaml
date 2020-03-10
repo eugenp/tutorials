@@ -63,7 +63,7 @@ Resources:
       InstanceType: t2.micro
       IamInstanceProfile: !Ref InstanceProfileBaeldung
       KeyName: Satish-Ohio
-      UserData: !Base64 
+      UserData: !Base64
         'Fn::Join':
           - ''
           - - |

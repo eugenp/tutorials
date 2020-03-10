@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class PetController {
-    
+
     @Autowired
     private PetService petService;
-    
+
 
     @RequestMapping("/pets")
     @ResponseBody
@@ -18,9 +18,9 @@ public class PetController {
         StringBuilder sb = new StringBuilder("<h1>Available pets:</h1>");
         sb.append("<ul>");
         petService.findAvailablePets()
-          .forEach( p -> sb.append("<li>" + p.getName() + "</li>"));
+                .forEach(p -> sb.append("<li>" + p.getName() + "</li>"));
         sb.append("</ul>");
         return sb.toString();
     }
-    
+
 }

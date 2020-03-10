@@ -5,8 +5,8 @@
                 exclude-result-prefixes="sweb xweb"
                 version="1.0">
 
-<xsl:import href="website.xsl"/>
-<xsl:import href="../html/chunker.xsl"/>
-<xsl:include href="chunk-common.xsl"/>
+    <xsl:import href="website.xsl"/>
+    <xsl:import href="../html/chunker.xsl"/>
+    <xsl:include href="chunk-common.xsl"/>
 
 </xsl:stylesheet>

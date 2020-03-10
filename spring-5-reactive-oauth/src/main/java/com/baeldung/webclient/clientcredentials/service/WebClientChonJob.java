@@ -21,11 +21,11 @@ public class WebClientChonJob {
     public void logResourceServiceResponse() {
 
         webClient.get()
-            .uri(RESOURCE_URI)
-            .retrieve()
-            .bodyToMono(String.class)
-            .map(string -> "We retrieved the following resource using Client Credentials Grant Type: " + string)
-            .subscribe(logger::info);
+                .uri(RESOURCE_URI)
+                .retrieve()
+                .bodyToMono(String.class)
+                .map(string -> "We retrieved the following resource using Client Credentials Grant Type: " + string)
+                .subscribe(logger::info);
     }
 
 }

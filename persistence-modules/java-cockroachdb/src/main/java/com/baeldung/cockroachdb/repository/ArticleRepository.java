@@ -24,9 +24,9 @@ public class ArticleRepository {
      */
     public void createTable() throws SQLException {
         StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ").append(TABLE_NAME)
-          .append("(id uuid PRIMARY KEY, ")
-          .append("title string,")
-          .append("author string)");
+                .append("(id uuid PRIMARY KEY, ")
+                .append("title string,")
+                .append("author string)");
 
         final String query = sb.toString();
         Statement stmt = connection.createStatement();
@@ -42,10 +42,10 @@ public class ArticleRepository {
      */
     public void alterTable(String columnName, String columnType) throws SQLException {
         StringBuilder sb = new StringBuilder("ALTER TABLE ").append(TABLE_NAME)
-          .append(" ADD ")
-          .append(columnName)
-          .append(" ")
-          .append(columnType);
+                .append(" ADD ")
+                .append(columnName)
+                .append(" ")
+                .append(columnType);
 
         final String query = sb.toString();
         Statement stmt = connection.createStatement();
@@ -60,8 +60,8 @@ public class ArticleRepository {
      */
     public void insertArticle(Article article) throws SQLException {
         StringBuilder sb = new StringBuilder("INSERT INTO ").append(TABLE_NAME)
-          .append("(id, title, author) ")
-          .append("VALUES (?,?,?)");
+                .append("(id, title, author) ")
+                .append("VALUES (?,?,?)");
 
         final String query = sb.toString();
         PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -80,7 +80,7 @@ public class ArticleRepository {
      */
     public Article selectByTitle(String title) throws SQLException {
         StringBuilder sb = new StringBuilder("SELECT * FROM ").append(TABLE_NAME)
-          .append(" WHERE title = ?");
+                .append(" WHERE title = ?");
 
         final String query = sb.toString();
         PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -92,10 +92,10 @@ public class ArticleRepository {
 
             while (rs.next()) {
                 Article article = new Article(
-                    UUID.fromString(rs.getString("id")), 
-                    rs.getString("title"), 
-                    rs.getString("author")
-                    );
+                        UUID.fromString(rs.getString("id")),
+                        rs.getString("title"),
+                        rs.getString("author")
+                );
                 articles.add(article);
             }
             return articles.get(0);
@@ -120,10 +120,10 @@ public class ArticleRepository {
 
             while (rs.next()) {
                 Article article = new Article(
-                  UUID.fromString(rs.getString("id")), 
-                  rs.getString("title"), 
-                  rs.getString("author")
-                  );
+                        UUID.fromString(rs.getString("id")),
+                        rs.getString("title"),
+                        rs.getString("author")
+                );
                 articles.add(article);
             }
             return articles;
@@ -138,7 +138,7 @@ public class ArticleRepository {
      */
     public void deleteArticleByTitle(String title) throws SQLException {
         StringBuilder sb = new StringBuilder("DELETE FROM ").append(TABLE_NAME)
-          .append(" WHERE title = ?");
+                .append(" WHERE title = ?");
 
         final String query = sb.toString();
         PreparedStatement preparedStatement = connection.prepareStatement(query);

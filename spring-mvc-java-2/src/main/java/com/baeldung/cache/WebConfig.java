@@ -25,17 +25,17 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/")
-          .setCacheControl(CacheControl.maxAge(60, TimeUnit.SECONDS)
-            .noTransform()
-            .mustRevalidate());
+                .setCacheControl(CacheControl.maxAge(60, TimeUnit.SECONDS)
+                        .noTransform()
+                        .mustRevalidate());
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         WebContentInterceptor interceptor = new WebContentInterceptor();
         interceptor.addCacheMapping(CacheControl.maxAge(60, TimeUnit.SECONDS)
-          .noTransform()
-          .mustRevalidate(), "/login/*");
+                .noTransform()
+                .mustRevalidate(), "/login/*");
         registry.addInterceptor(interceptor);
     }
 }

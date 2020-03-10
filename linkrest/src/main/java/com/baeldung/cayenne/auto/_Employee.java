@@ -13,7 +13,7 @@ import com.baeldung.cayenne.Department;
  */
 public abstract class _Employee extends CayenneDataObject {
 
-    private static final long serialVersionUID = 1L; 
+    private static final long serialVersionUID = 1L;
 
     public static final String EMP_ID_PK_COLUMN = "emp_id";
 
@@ -23,8 +23,9 @@ public abstract class _Employee extends CayenneDataObject {
     public void setName(String name) {
         writeProperty("name", name);
     }
+
     public String getName() {
-        return (String)readProperty("name");
+        return (String) readProperty("name");
     }
 
     public void setDepartment(Department department) {
@@ -32,7 +33,7 @@ public abstract class _Employee extends CayenneDataObject {
     }
 
     public Department getDepartment() {
-        return (Department)readProperty("department");
+        return (Department) readProperty("department");
     }
 
 

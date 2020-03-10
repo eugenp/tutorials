@@ -25,20 +25,20 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
-          .inMemory()
-          .withClient("baeldung")
-          .secret(passwordEncoder().encode("baeldung"))
-          .authorizedGrantTypes("client_credentials", "password", "authorization_code")
-          .scopes("openid", "read")
-          .autoApprove(true)
-          .and()
-          .withClient("baeldung-admin")
-          .secret(passwordEncoder().encode("baeldung"))
-          .authorizedGrantTypes("authorization_code", "client_credentials", "refresh_token")
-          .scopes("read", "write")
-          .autoApprove(true);
+                .inMemory()
+                .withClient("baeldung")
+                .secret(passwordEncoder().encode("baeldung"))
+                .authorizedGrantTypes("client_credentials", "password", "authorization_code")
+                .scopes("openid", "read")
+                .autoApprove(true)
+                .and()
+                .withClient("baeldung-admin")
+                .secret(passwordEncoder().encode("baeldung"))
+                .authorizedGrantTypes("authorization_code", "client_credentials", "refresh_token")
+                .scopes("read", "write")
+                .autoApprove(true);
     }
-    
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

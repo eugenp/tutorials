@@ -25,7 +25,8 @@
     <binding name="EmployeeServiceTopDownSOAP" type="tns:EmployeeServiceTopDown">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
         <operation name="countEmployees">
-            <soap:operation soapAction="http://topdown.server.jaxws.baeldung.com/EmployeeServiceTopDown/countEmployees"/>
+            <soap:operation
+                    soapAction="http://topdown.server.jaxws.baeldung.com/EmployeeServiceTopDown/countEmployees"/>
             <input>
                 <soap:body use="literal"/>
             </input>

@@ -34,7 +34,7 @@ public class SpringBootBootstrapLiveTest {
         final Response response = RestAssured.get(API_ROOT + "/title/" + book.getTitle());
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
         assertTrue(response.as(List.class)
-            .size() > 0);
+                .size() > 0);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class SpringBootBootstrapLiveTest {
         final Response response = RestAssured.get(location);
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
         assertEquals(book.getTitle(), response.jsonPath()
-            .get("title"));
+                .get("title"));
     }
 
     @Test
@@ -60,9 +60,9 @@ public class SpringBootBootstrapLiveTest {
         final Book book = createRandomBook();
 
         final Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(book)
-            .post(API_ROOT);
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(book)
+                .post(API_ROOT);
         assertEquals(HttpStatus.CREATED.value(), response.getStatusCode());
     }
 
@@ -72,9 +72,9 @@ public class SpringBootBootstrapLiveTest {
         book.setAuthor(null);
 
         final Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(book)
-            .post(API_ROOT);
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(book)
+                .post(API_ROOT);
         assertEquals(HttpStatus.BAD_REQUEST.value(), response.getStatusCode());
     }
 
@@ -86,15 +86,15 @@ public class SpringBootBootstrapLiveTest {
         book.setId(Long.parseLong(location.split("api/books/")[1]));
         book.setAuthor("newAuthor");
         Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(book)
-            .put(location);
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(book)
+                .put(location);
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
 
         response = RestAssured.get(location);
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
         assertEquals("newAuthor", response.jsonPath()
-            .get("author"));
+                .get("author"));
 
     }
 
@@ -121,11 +121,11 @@ public class SpringBootBootstrapLiveTest {
 
     private String createBookAsUri(Book book) {
         final Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(book)
-            .post(API_ROOT);
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(book)
+                .post(API_ROOT);
         return API_ROOT + "/" + response.jsonPath()
-            .get("id");
+                .get("id");
     }
 
 }

@@ -5,16 +5,16 @@
 # $Id: docbook-xsl-update 9628 2012-10-20 23:52:01Z dcramer $
 
 if [ -z $DOCBOOK_MIRROR ]; then
-  myhost=docbook.xml-doc.org:5873;
+  myhost=docbook.xml-doc.org:5873
 else
-  myhost=$DOCBOOK_MIRROR;
+  myhost=$DOCBOOK_MIRROR
 fi
 
 mydir=$(readlink -f $(dirname $0))
 mydocbook_xsl_base=$(readlink -f $(dirname $0)/../..)
 
-if [ ! -f $mydocbook_xsl_base/VERSION.xsl ]; then 
-  cat <<- EOF
+if [ ! -f $mydocbook_xsl_base/VERSION.xsl ]; then
+  cat <<-EOF
 $(basename $0): error: not in snapshot directory. Stopping.
 
 The $(basename $0) script must be installed within its original
@@ -37,10 +37,12 @@ usage="Usage:
 
 while getopts "h:" opt; do
   case $opt in
-    h  ) myhost=$OPTARG ;;
-    \? ) printf "$usage"
-         printf "$opts_admon"
-         exit 1 ;;
+  h) myhost=$OPTARG ;;
+  \?)
+    printf "$usage"
+    printf "$opts_admon"
+    exit 1
+    ;;
   esac
 done
 

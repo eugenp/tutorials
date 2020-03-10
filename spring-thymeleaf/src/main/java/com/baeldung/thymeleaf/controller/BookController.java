@@ -36,8 +36,8 @@ public class BookController {
         int totalPages = bookPage.getTotalPages();
         if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-                .boxed()
-                .collect(Collectors.toList());
+                    .boxed()
+                    .collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
         }
 

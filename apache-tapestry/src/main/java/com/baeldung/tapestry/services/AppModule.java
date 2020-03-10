@@ -31,7 +31,7 @@ public class AppModule {
     }
 
     public static void contributeFactoryDefaults(
-        MappedConfiguration<String, Object> configuration) {
+            MappedConfiguration<String, Object> configuration) {
         // The values defined here (as factory default overrides) are themselves
         // overridden with application defaults by DevelopmentModule and QaModule.
 
@@ -45,7 +45,7 @@ public class AppModule {
     }
 
     public static void contributeApplicationDefaults(
-        MappedConfiguration<String, Object> configuration) {
+            MappedConfiguration<String, Object> configuration) {
         // Contributions to ApplicationDefaults will override any contributions to
         // FactoryDefaults (with the same key). Here we're restricting the supported
         // locales to just "en" (English). As you add localised message catalogs and other assets,
@@ -77,13 +77,13 @@ public class AppModule {
      * RequestHandler service configuration. Tapestry IoC is responsible for passing in an
      * appropriate Logger instance. Requests for static resources are handled at a higher level, so
      * this filter will only be invoked for Tapestry related requests.
-     *
-     *
+     * <p>
+     * <p>
      * Service builder methods are useful when the implementation is inline as an inner class
      * (as here) or require some other kind of special initialization. In most cases,
      * use the static bind() method instead.
-     *
-     *
+     * <p>
+     * <p>
      * If this method was named "build", then the service id would be taken from the
      * service interface and would be "RequestFilter".  Since Tapestry already defines
      * a service named "RequestFilter" we use an explicit service id that we can reference
@@ -92,7 +92,7 @@ public class AppModule {
     public RequestFilter buildTimingFilter(final Logger log) {
         return new RequestFilter() {
             public boolean service(Request request, Response response, RequestHandler handler)
-                throws IOException {
+                    throws IOException {
                 long startTime = System.currentTimeMillis();
 
                 try {

@@ -18,9 +18,9 @@ public class Responder {
         String message = "This is a text response";
 
         return Response
-          .status(Response.Status.OK)
-          .entity(message)
-          .build();
+                .status(Response.Status.OK)
+                .entity(message)
+                .build();
     }
 
     @GET
@@ -30,9 +30,9 @@ public class Responder {
         String message = "There was an internal server error";
 
         return Response
-          .status(Response.Status.INTERNAL_SERVER_ERROR)
-          .entity(message)
-          .build();
+                .status(Response.Status.INTERNAL_SERVER_ERROR)
+                .entity(message)
+                .build();
     }
 
     @GET
@@ -42,23 +42,23 @@ public class Responder {
         String message = "This is a plain text response";
 
         return Response
-          .status(Response.Status.OK)
-          .entity(message)
-          .type(MediaType.TEXT_PLAIN)
-          .build();
+                .status(Response.Status.OK)
+                .entity(message)
+                .type(MediaType.TEXT_PLAIN)
+                .build();
     }
 
     @GET
     @Path("/text_plain_annotation")
-    @Produces({ MediaType.TEXT_PLAIN })
+    @Produces({MediaType.TEXT_PLAIN})
     public Response getTextResponseTypeAnnotated() {
 
         String message = "This is a plain text response via annotation";
 
         return Response
-          .status(Response.Status.OK)
-          .entity(message)
-          .build();
+                .status(Response.Status.OK)
+                .entity(message)
+                .build();
     }
 
     @GET
@@ -68,9 +68,9 @@ public class Responder {
         Person person = new Person("Abh", "Nepal");
 
         return Response
-          .status(Response.Status.OK)
-          .entity(person)
-          .build();
+                .status(Response.Status.OK)
+                .entity(person)
+                .build();
     }
 
     @GET
@@ -80,10 +80,10 @@ public class Responder {
         String message = "{\"hello\": \"This is a JSON response\"}";
 
         return Response
-          .status(Response.Status.OK)
-          .entity(message)
-          .type(MediaType.APPLICATION_JSON)
-          .build();
+                .status(Response.Status.OK)
+                .entity(message)
+                .type(MediaType.APPLICATION_JSON)
+                .build();
     }
 
     @GET

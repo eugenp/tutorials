@@ -1,10 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef" xmlns:modeler="http://activiti.com/modeler" modeler:version="1.0ev" modeler:exportDateTime="20170726123124" modeler:modelId="1005315" modeler:modelVersion="1" modeler:modelLastUpdated="1501068675875">
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.activiti.org/processdef" xmlns:modeler="http://activiti.com/modeler"
+             modeler:version="1.0ev" modeler:exportDateTime="20170726123124" modeler:modelId="1005315"
+             modeler:modelVersion="1" modeler:modelLastUpdated="1501068675875">
     <process id="my-process" name="say-hello-process" isExecutable="true">
         <startEvent id="startEvent" name="startEvent">
         </startEvent>
         <sequenceFlow id="sequence-flow-1" sourceRef="startEvent" targetRef="A">
-        </sequenceFlow>     
+        </sequenceFlow>
         <userTask id="A" name="A" activiti:assignee="$INITIATOR">
         </userTask>
         <sequenceFlow id="sequence-flow-2" sourceRef="A" targetRef="endEvent">

@@ -28,7 +28,7 @@ public class InfluxDBConnectionLiveTest {
     private InfluxDB connectDatabase() {
 
         // Connect to database assumed on localhost with default credentials.
-        return  InfluxDBFactory.connect("http://127.0.0.1:8086", "admin", "admin");
+        return InfluxDBFactory.connect("http://127.0.0.1:8086", "admin", "admin");
 
     }
 
@@ -123,7 +123,6 @@ public class InfluxDBConnectionLiveTest {
         InfluxDBResultMapper resultMapper = new InfluxDBResultMapper();
         return resultMapper.toPOJO(queryResult, MemoryPoint.class);
     }
-
 
 
     @Test

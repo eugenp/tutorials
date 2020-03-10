@@ -6,6 +6,6 @@ public interface UnemploymentService {
 
     boolean personIsEntitledToUnemploymentSupport(Person person);
 
-    Optional<JobPosition> searchJob(Person person, String searchString); 
+    Optional<JobPosition> searchJob(Person person, String searchString);
 
 }

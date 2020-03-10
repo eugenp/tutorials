@@ -29,10 +29,10 @@ public class HierarchicalStateMachineConfiguration extends StateMachineConfigure
                 .end("SF")
                 .and()
                 .withStates()
-                    .parent("SI")
-                    .initial("SUB1")
-                    .state("SUB2")
-                    .end("SUBEND");
+                .parent("SI")
+                .initial("SUB1")
+                .state("SUB2")
+                .end("SUBEND");
     }
 
     @Override

@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Http, Response, URLSearchParams, BaseRequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
+import {Injectable} from '@angular/core';
+import {Http, Response, URLSearchParams, BaseRequestOptions} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
 
-import { Comment } from './comment.model';
-import { DateUtils } from 'ng-jhipster';
+import {Comment} from './comment.model';
+import {DateUtils} from 'ng-jhipster';
+
 @Injectable()
 export class CommentService {
 
     private resourceUrl = 'api/comments';
 
-    constructor(private http: Http, private dateUtils: DateUtils) { }
+    constructor(private http: Http, private dateUtils: DateUtils) {
+    }
 
     create(comment: Comment): Observable<Comment> {
         let copy: Comment = Object.assign({}, comment);
@@ -42,7 +44,7 @@ export class CommentService {
         let options = this.createRequestOption(req);
         return this.http.get(this.resourceUrl, options)
             .map((res: any) => this.convertResponse(res))
-        ;
+            ;
     }
 
     delete(id: number): Observable<Response> {

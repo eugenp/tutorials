@@ -55,7 +55,7 @@ public class MainController {
     @ResponseBody
     public Organization findOrgById(@PathVariable final long id) {
         return organizationRepository.findById(id)
-            .orElse(null);
+                .orElse(null);
     }
 
     @PreAuthorize("hasPermission(#id, 'Foo', 'read')")

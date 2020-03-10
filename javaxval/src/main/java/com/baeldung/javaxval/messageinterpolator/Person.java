@@ -11,7 +11,7 @@ public class Person {
 
     @Min(value = 18, message = "Age should not be less than {value}")
     private int age;
-    
+
     @Email(message = "Email address should be in a correct format: ${validatedValue}")
     private String email;
 
@@ -30,11 +30,11 @@ public class Person {
     public void setAge(int age) {
         this.age = age;
     }
-    
+
     public String getEmail() {
         return email;
     }
-    
+
     public void setEmail(String email) {
         this.email = email;
     }

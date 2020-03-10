@@ -10,7 +10,7 @@ public class Log4j2ComparisonSysout {
         PrintStream outStream = new PrintStream(new File("outFile.txt"));
         System.setOut(outStream);
         System.out.println("This is a baeldung article");
-        
+
         PrintStream errStream = new PrintStream(new File("errFile.txt"));
         System.setErr(errStream);
         System.err.println("This is a baeldung article error");

@@ -13,10 +13,8 @@ import com.baeldung.config.MongoReactiveConfig;
 import com.baeldung.model.User;
 
 /**
- * 
  * This test requires:
  * * mongodb instance running on the environment
- *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoReactiveConfig.class)
@@ -28,7 +26,7 @@ public class MongoTransactionReactiveLiveTest {
     @Before
     public void testSetup() {
         if (!reactiveOps.collectionExists(User.class)
-            .block()) {
+                .block()) {
             reactiveOps.createCollection(User.class);
         }
     }
@@ -36,8 +34,8 @@ public class MongoTransactionReactiveLiveTest {
     @After
     public void tearDown() {
         System.out.println(reactiveOps.findAll(User.class)
-            .count()
-            .block());
+                .count()
+                .block());
         reactiveOps.dropCollection(User.class);
     }
 
@@ -46,8 +44,8 @@ public class MongoTransactionReactiveLiveTest {
         User user1 = new User("Jane", 23);
         User user2 = new User("John", 34);
         reactiveOps.inTransaction()
-            .execute(action -> action.insert(user1)
-                .then(action.insert(user2)));
+                .execute(action -> action.insert(user1)
+                        .then(action.insert(user2)));
     }
-    
+
 }

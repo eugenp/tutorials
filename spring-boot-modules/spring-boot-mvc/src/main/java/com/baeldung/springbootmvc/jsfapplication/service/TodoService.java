@@ -30,9 +30,9 @@ public class TodoService {
 
     public Collection<Todo> getAllTodoSortedByPriority() {
         return todoDao.getAll()
-            .stream()
-            .sorted(Comparator.comparingInt(Todo::getId))
-            .collect(Collectors.toList());
+                .stream()
+                .sorted(Comparator.comparingInt(Todo::getId))
+                .collect(Collectors.toList());
     }
 
     public int saveTodo(Todo todo) {

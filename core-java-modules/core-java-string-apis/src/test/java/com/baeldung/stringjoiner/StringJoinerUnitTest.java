@@ -49,8 +49,8 @@ public class StringJoinerUnitTest {
     public void whenAddElements_thenJoinElements() {
         StringJoiner rgbJoiner = new StringJoiner(DELIMITER_COMMA, PREFIX, SUFFIX);
         rgbJoiner.add("Red")
-          .add("Green")
-          .add("Blue");
+                .add("Green")
+                .add("Blue");
 
         assertEquals(rgbJoiner.toString(), "[Red,Green,Blue]");
     }
@@ -77,12 +77,12 @@ public class StringJoinerUnitTest {
         StringJoiner cmybJoiner = new StringJoiner(DELIMITER_HYPHEN, PREFIX, SUFFIX);
 
         rgbJoiner.add("Red")
-          .add("Green")
-          .add("Blue");
+                .add("Green")
+                .add("Blue");
         cmybJoiner.add("Cyan")
-          .add("Magenta")
-          .add("Yellow")
-          .add("Black");
+                .add("Magenta")
+                .add("Yellow")
+                .add("Black");
 
         rgbJoiner.merge(cmybJoiner);
 
@@ -93,8 +93,8 @@ public class StringJoinerUnitTest {
     public void whenUsedWithinCollectors_thenJoin() {
         List<String> rgbList = Arrays.asList("Red", "Green", "Blue");
         String commaSeparatedRGB = rgbList.stream()
-          .map(color -> color.toString())
-          .collect(Collectors.joining(","));
+                .map(color -> color.toString())
+                .collect(Collectors.joining(","));
 
         assertEquals(commaSeparatedRGB, "Red,Green,Blue");
     }

@@ -22,7 +22,7 @@ public class GreetingsResourceIntegrationTest extends JerseyTest {
     @Test
     public void givenGetHiGreeting_whenCorrectRequest_thenResponseIsOkAndContainsHi() {
         Response response = target("/greetings/hi").request()
-            .get();
+                .get();
 
         assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
         assertEquals("Http Content-Type should be: ", MediaType.TEXT_HTML, response.getHeaderString(HttpHeaders.CONTENT_TYPE));

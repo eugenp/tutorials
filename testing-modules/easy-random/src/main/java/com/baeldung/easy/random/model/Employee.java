@@ -60,11 +60,11 @@ public class Employee {
     @Override
     public String toString() {
         return new StringJoiner(", ", Employee.class.getSimpleName() + "[", "]").add("id=" + id)
-            .add("firstName='" + firstName + "'")
-            .add("lastName='" + lastName + "'")
-            .add("department=" + department)
-            .add("coworkers size=" + ((coworkers == null) ? 0 : coworkers.size()))
-            .add("quarterGrades=" + quarterGrades)
-            .toString();
+                .add("firstName='" + firstName + "'")
+                .add("lastName='" + lastName + "'")
+                .add("department=" + department)
+                .add("coworkers size=" + ((coworkers == null) ? 0 : coworkers.size()))
+                .add("quarterGrades=" + quarterGrades)
+                .toString();
     }
 }

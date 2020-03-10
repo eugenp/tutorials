@@ -31,9 +31,9 @@ public class StringUnitTest {
         byte[] byteArray1 = "abcd".getBytes();
         byte[] byteArray2 = "efgh".getBytes(StandardCharsets.US_ASCII);
         byte[] byteArray3 = "ijkl".getBytes("UTF-8");
-        byte[] expected1 = new byte[] { 97, 98, 99, 100 };
-        byte[] expected2 = new byte[] { 101, 102, 103, 104 };
-        byte[] expected3 = new byte[] { 105, 106, 107, 108 };
+        byte[] expected1 = new byte[]{97, 98, 99, 100};
+        byte[] expected2 = new byte[]{101, 102, 103, 104};
+        byte[] expected3 = new byte[]{105, 106, 107, 108};
 
         assertArrayEquals(expected1, byteArray1);
         assertArrayEquals(expected2, byteArray2);
@@ -43,14 +43,14 @@ public class StringUnitTest {
     @Test
     public void whenGetBytesUsingASCII_thenCorrect() {
         byte[] byteArray = "efgh".getBytes(StandardCharsets.US_ASCII);
-        byte[] expected = new byte[] { 101, 102, 103, 104 };
+        byte[] expected = new byte[]{101, 102, 103, 104};
 
         assertArrayEquals(expected, byteArray);
     }
 
     @Test
     public void whenCreateStringUsingByteArray_thenCorrect() {
-        byte[] array = new byte[] { 97, 98, 99, 100 };
+        byte[] array = new byte[]{97, 98, 99, 100};
         String s = new String(array);
 
         assertEquals("abcd", s);
@@ -86,7 +86,7 @@ public class StringUnitTest {
 
     @Test
     public void whenCallCopyValueOf_thenStringConstructed() {
-        char[] array = new char[] { 'a', 'b', 'c', 'd' };
+        char[] array = new char[]{'a', 'b', 'c', 'd'};
 
         assertEquals("abcd", String.copyValueOf(array));
     }
@@ -148,7 +148,7 @@ public class StringUnitTest {
     @Test
     public void whenSplit_thenCorrect() {
         String s = "Welcome to Baeldung";
-        String[] array = new String[] { "Welcome", "to", "Baeldung" };
+        String[] array = new String[]{"Welcome", "to", "Baeldung"};
 
         assertArrayEquals(array, s.split(" "));
     }

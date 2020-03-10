@@ -40,7 +40,7 @@ public class FooControllerCustomEtagIntegrationTest {
     private static String createFooJson() throws Exception {
         return serializeFoo(new Foo(randomAlphabetic(6)));
     }
-    
+
     private static Foo deserializeFoo(String fooJson) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(fooJson, Foo.class);
@@ -48,40 +48,40 @@ public class FooControllerCustomEtagIntegrationTest {
 
     @Test
     public void givenResourceExists_whenRetrievingResourceUsingCustomEtagEndpoint_thenEtagIsAlsoReturned()
-        throws Exception {
+            throws Exception {
         // Given
         String createdResourceUri = this.mvc.perform(post(FOOS_ENDPOINT).contentType(MediaType.APPLICATION_JSON)
-            .content(createFooJson()))
-            .andExpect(status().isCreated())
-            .andReturn()
-            .getResponse()
-            .getHeader(HttpHeaders.LOCATION);
+                .content(createFooJson()))
+                .andExpect(status().isCreated())
+                .andReturn()
+                .getResponse()
+                .getHeader(HttpHeaders.LOCATION);
 
         // When
         ResultActions result = this.mvc
-            .perform(get(createdResourceUri + CUSTOM_ETAG_ENDPOINT_SUFFIX).contentType(MediaType.APPLICATION_JSON));
+                .perform(get(createdResourceUri + CUSTOM_ETAG_ENDPOINT_SUFFIX).contentType(MediaType.APPLICATION_JSON));
 
         // Then
         result.andExpect(status().isOk())
-            .andExpect(header().string(HttpHeaders.ETAG, "\"0\""));
+                .andExpect(header().string(HttpHeaders.ETAG, "\"0\""));
     }
 
     @Test
     public void givenResourceWasRetrieved_whenRetrievingAgainWithEtagUsingCustomEtagEndpoint_thenNotModifiedReturned() throws Exception {
-     // Given
+        // Given
         String createdResourceUri = this.mvc.perform(post(FOOS_ENDPOINT).contentType(MediaType.APPLICATION_JSON)
-            .content(createFooJson()))
-            .andExpect(status().isCreated())
-            .andReturn()
-            .getResponse()
-            .getHeader(HttpHeaders.LOCATION);
+                .content(createFooJson()))
+                .andExpect(status().isCreated())
+                .andReturn()
+                .getResponse()
+                .getHeader(HttpHeaders.LOCATION);
         ResultActions findOneResponse = this.mvc
-            .perform(get(createdResourceUri + CUSTOM_ETAG_ENDPOINT_SUFFIX).contentType(MediaType.APPLICATION_JSON));
+                .perform(get(createdResourceUri + CUSTOM_ETAG_ENDPOINT_SUFFIX).contentType(MediaType.APPLICATION_JSON));
         String etag = findOneResponse.andReturn().getResponse().getHeader(HttpHeaders.ETAG);
 
         // When
         ResultActions result = this.mvc
-            .perform(get(createdResourceUri + CUSTOM_ETAG_ENDPOINT_SUFFIX).contentType(MediaType.APPLICATION_JSON).header(HttpHeaders.IF_NONE_MATCH, etag));
+                .perform(get(createdResourceUri + CUSTOM_ETAG_ENDPOINT_SUFFIX).contentType(MediaType.APPLICATION_JSON).header(HttpHeaders.IF_NONE_MATCH, etag));
 
         // Then
         result.andExpect(status().isNotModified());
@@ -89,28 +89,28 @@ public class FooControllerCustomEtagIntegrationTest {
 
     @Test
     public void givenResourceWasRetrievedThenModified_whenRetrievingAgainWithEtagUsingCustomEtagEndpoint_thenResourceIsReturned() throws Exception {
-     // Given
+        // Given
         String createdResourceUri = this.mvc.perform(post(FOOS_ENDPOINT).contentType(MediaType.APPLICATION_JSON)
-            .content(createFooJson()))
-            .andExpect(status().isCreated())
-            .andReturn()
-            .getResponse()
-            .getHeader(HttpHeaders.LOCATION);
+                .content(createFooJson()))
+                .andExpect(status().isCreated())
+                .andReturn()
+                .getResponse()
+                .getHeader(HttpHeaders.LOCATION);
         ResultActions findOneResponse = this.mvc
-            .perform(get(createdResourceUri + CUSTOM_ETAG_ENDPOINT_SUFFIX).contentType(MediaType.APPLICATION_JSON));
+                .perform(get(createdResourceUri + CUSTOM_ETAG_ENDPOINT_SUFFIX).contentType(MediaType.APPLICATION_JSON));
         String etag = findOneResponse.andReturn().getResponse().getHeader(HttpHeaders.ETAG);
         Foo createdFoo = deserializeFoo(findOneResponse.andReturn().getResponse().getContentAsString());
         createdFoo.setName("updated name");
         this.mvc
-        .perform(put(createdResourceUri).contentType(MediaType.APPLICATION_JSON).content(serializeFoo(createdFoo)));
+                .perform(put(createdResourceUri).contentType(MediaType.APPLICATION_JSON).content(serializeFoo(createdFoo)));
 
         // When
         ResultActions result = this.mvc
-            .perform(get(createdResourceUri + CUSTOM_ETAG_ENDPOINT_SUFFIX).contentType(MediaType.APPLICATION_JSON).header(HttpHeaders.IF_NONE_MATCH, etag));
+                .perform(get(createdResourceUri + CUSTOM_ETAG_ENDPOINT_SUFFIX).contentType(MediaType.APPLICATION_JSON).header(HttpHeaders.IF_NONE_MATCH, etag));
 
         // Then
         result.andExpect(status().isOk())
-        .andExpect(header().string(HttpHeaders.ETAG, "\"1\""));
+                .andExpect(header().string(HttpHeaders.ETAG, "\"1\""));
     }
 
 }

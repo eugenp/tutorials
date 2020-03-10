@@ -14,7 +14,7 @@ public class ColumnFamilyApp {
         EmbeddedCassandraServerHelper.startEmbeddedCassandra();
 
         ColumnConfiguration configuration = new CassandraConfiguration();
-        try(ColumnFamilyManagerFactory entityManagerFactory = configuration.get()) {
+        try (ColumnFamilyManagerFactory entityManagerFactory = configuration.get()) {
             ColumnFamilyManager entityManager = entityManagerFactory.get(KEY_SPACE);
             ColumnEntity columnEntity = ColumnEntity.of(COLUMN_FAMILY);
             Column key = Columns.of("id", 10L);

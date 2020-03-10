@@ -32,12 +32,12 @@ public class GuavaCacheLoaderUnitTest {
     public void givenCacheLoader_whenGettingItemTwice_shouldOnlyCallOnce() throws ExecutionException {
 
         final LoadingCache<String, String> loadingCache = CacheBuilder.newBuilder()
-            .build(new CacheLoader<String, String>() {
-                @Override
-                public String load(final String s) throws Exception {
-                    return slowMethod(s);
-                }
-            });
+                .build(new CacheLoader<String, String>() {
+                    @Override
+                    public String load(final String s) throws Exception {
+                        return slowMethod(s);
+                    }
+                });
 
         String value = loadingCache.get("key");
         value = loadingCache.get("key");
@@ -50,12 +50,12 @@ public class GuavaCacheLoaderUnitTest {
     public void givenCacheLoader_whenRefreshingItem_shouldCallAgain() throws ExecutionException {
 
         final LoadingCache<String, String> loadingCache = CacheBuilder.newBuilder()
-            .build(new CacheLoader<String, String>() {
-                @Override
-                public String load(final String s) throws Exception {
-                    return slowMethod(s);
-                }
-            });
+                .build(new CacheLoader<String, String>() {
+                    @Override
+                    public String load(final String s) throws Exception {
+                        return slowMethod(s);
+                    }
+                });
 
         String value = loadingCache.get("key");
         loadingCache.refresh("key");

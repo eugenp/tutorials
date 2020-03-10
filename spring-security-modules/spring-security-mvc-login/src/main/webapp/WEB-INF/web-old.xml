@@ -10,8 +10,8 @@
     <context-param>
         <param-name>contextClass</param-name>
         <param-value>
-        	org.springframework.web.context.support.AnnotationConfigWebApplicationContext
-      	</param-value>
+            org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+        </param-value>
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -47,11 +47,10 @@
         <error-code>403</error-code>
         <location>/accessDenied</location>
     </error-page>
-	
+
     <!-- <welcome-file-list> -->
     <!-- <welcome-file>index.html</welcome-file> -->
     <!-- </welcome-file-list> -->
-    
-   
+
 
 </web-app>

@@ -40,7 +40,7 @@ public class CaseInsensitiveWorkarounds {
     @Benchmark
     public boolean lowerCaseContains() {
         return src.toLowerCase()
-            .contains(dest.toLowerCase());
+                .contains(dest.toLowerCase());
     }
 
     // matches() with Regular Expressions
@@ -53,9 +53,9 @@ public class CaseInsensitiveWorkarounds {
         for (int i = localSrc.length() - localDest.length(); i >= 0; i--)
             if (localSrc.regionMatches(true, i, localDest, 0, localDest.length()))
                 return true;
-        return false;        
+        return false;
     }
-    
+
     // String regionMatches()
     @Benchmark
     public boolean regionMatches() {
@@ -66,7 +66,7 @@ public class CaseInsensitiveWorkarounds {
     @Benchmark
     public boolean patternCaseInsensitiveRegexp() {
         return pattern.matcher(src)
-            .find();
+                .find();
     }
 
     // Apache Commons StringUtils containsIgnoreCase

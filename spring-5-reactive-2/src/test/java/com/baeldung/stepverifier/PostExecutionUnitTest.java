@@ -24,11 +24,11 @@ public class PostExecutionUnitTest {
     @Test
     public void droppedElements() {
         StepVerifier.create(source)
-          .expectNext(2)
-          .expectComplete()
-          .verifyThenAssertThat()
-          .hasDropped(4)
-          .tookLessThan(Duration.ofMillis(1500));
+                .expectNext(2)
+                .expectComplete()
+                .verifyThenAssertThat()
+                .hasDropped(4)
+                .tookLessThan(Duration.ofMillis(1500));
     }
 
 }

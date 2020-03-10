@@ -31,7 +31,7 @@ public class ConsumerUnitTest {
 
 
         // Once the consumer is created, it can be used for the entire application lifecycle
-        System.out.println("Created consumer for the topic "+ TOPIC_NAME);
+        System.out.println("Created consumer for the topic " + TOPIC_NAME);
 
         do {
             // Wait until a message is available
@@ -39,7 +39,7 @@ public class ConsumerUnitTest {
 
             // Extract the message as a printable string and then log
             String content = new String(msg.getData());
-            System.out.println("Received message '"+content+"' with ID "+msg.getMessageId());
+            System.out.println("Received message '" + content + "' with ID " + msg.getMessageId());
 
             // Acknowledge processing of the message so that it can be deleted
             consumer.acknowledge(msg);

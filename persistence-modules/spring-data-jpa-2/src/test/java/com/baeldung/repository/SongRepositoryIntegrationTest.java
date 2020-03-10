@@ -16,10 +16,11 @@ import com.baeldung.entity.Song;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Sql(scripts = { "/test-song-data.sql" })
+@Sql(scripts = {"/test-song-data.sql"})
 public class SongRepositoryIntegrationTest {
 
-    @Autowired private SongRepository songRepository;
+    @Autowired
+    private SongRepository songRepository;
 
     @Transactional
     @Test

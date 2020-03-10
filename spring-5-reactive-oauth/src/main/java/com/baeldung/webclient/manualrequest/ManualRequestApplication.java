@@ -5,11 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 /**
- * 
  * Note: This app is configured to use the authorization service and the resource service located in Baeldung/spring-security-oauth repo
- * 
- * @author rozagerardo
  *
+ * @author rozagerardo
  */
 @PropertySource("classpath:webclient-manual-request-oauth-application.properties")
 @SpringBootApplication

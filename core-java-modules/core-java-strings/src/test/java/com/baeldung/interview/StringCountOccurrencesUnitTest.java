@@ -22,7 +22,7 @@ public class StringCountOccurrencesUnitTest {
 
     public void givenString_whenUsingJava8_thenCountingOfCharCorrect() {
         String str = "united states";
-        long count = str.chars().filter(ch -> (char)ch == 't').count();
+        long count = str.chars().filter(ch -> (char) ch == 't').count();
         assertEquals(3, count);
     }
 }

@@ -50,9 +50,9 @@ public class HibernateOneisOwningSide {
             tx.commit();
 
             System.out.println("item1 ID=" + item1.getId() + ", Foreign Key CartOIO ID=" + item1.getCartOIO()
-                .getId());
+                    .getId());
             System.out.println("item2 ID=" + item2.getId() + ", Foreign Key CartOIO ID=" + item2.getCartOIO()
-                .getId());
+                    .getId());
 
         } catch (Exception e) {
             System.out.println("Exception occured. " + e.getMessage());

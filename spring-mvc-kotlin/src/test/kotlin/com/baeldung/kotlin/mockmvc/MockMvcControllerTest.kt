@@ -19,16 +19,18 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 @WebMvcTest
 class MockMvcControllerTest {
 
-    @Autowired lateinit var mockMvc: MockMvc
-    @Autowired lateinit var mapper: ObjectMapper
+    @Autowired
+    lateinit var mockMvc: MockMvc
+    @Autowired
+    lateinit var mapper: ObjectMapper
 
     @Test
     fun `when supported user is given then raw MockMvc-based validation is successful`() {
         mockMvc.perform(MockMvcRequestBuilders
-                                .post("/mockmvc/validate")
-                                .accept(MediaType.APPLICATION_JSON)
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(mapper.writeValueAsString(Request(Name("admin", "")))))
+                .post("/mockmvc/validate")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(mapper.writeValueAsString(Request(Name("admin", "")))))
                 .andExpect(MockMvcResultMatchers.status().isOk)
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.content().string("{}"))

@@ -31,16 +31,16 @@ public class AttributeBenchMark {
 
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder().include(AttributeBenchMark.class.getSimpleName())
-            .forks(1)
-            .build();
+                .forks(1)
+                .build();
         new Runner(opt).run();
     }
 
     @Benchmark
     public String dom4jBenchmark() throws DocumentException, TransformerException, SAXException {
         String path = this.getClass()
-            .getResource("/xml/attribute.xml")
-            .toString();
+                .getResource("/xml/attribute.xml")
+                .toString();
         Dom4jTransformer transformer = new Dom4jTransformer(path);
         String attribute = "customer";
         String oldValue = "true";
@@ -52,8 +52,8 @@ public class AttributeBenchMark {
     @Benchmark
     public String jooxBenchmark() throws IOException, SAXException {
         String path = this.getClass()
-            .getResource("/xml/attribute.xml")
-            .toString();
+                .getResource("/xml/attribute.xml")
+                .toString();
         JooxTransformer transformer = new JooxTransformer(path);
         String attribute = "customer";
         String oldValue = "true";
@@ -65,8 +65,8 @@ public class AttributeBenchMark {
     @Benchmark
     public String jaxpBenchmark() throws TransformerException, ParserConfigurationException, SAXException, IOException, XPathExpressionException {
         String path = this.getClass()
-            .getResource("/xml/attribute.xml")
-            .toString();
+                .getResource("/xml/attribute.xml")
+                .toString();
         JaxpTransformer transformer = new JaxpTransformer(path);
         String attribute = "customer";
         String oldValue = "true";

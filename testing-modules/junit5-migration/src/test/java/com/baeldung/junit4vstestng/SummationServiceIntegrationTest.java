@@ -39,7 +39,7 @@ public class SummationServiceIntegrationTest {
     @Test
     public void givenNumbers_sumEquals_thenCorrect() {
         int sum = numbers.stream()
-            .reduce(0, Integer::sum);
+                .reduce(0, Integer::sum);
         Assert.assertEquals(6, sum);
     }
 
@@ -47,7 +47,7 @@ public class SummationServiceIntegrationTest {
     @Test
     public void givenEmptyList_sumEqualsZero_thenCorrect() {
         int sum = numbers.stream()
-            .reduce(0, Integer::sum);
+                .reduce(0, Integer::sum);
         Assert.assertEquals(6, sum);
     }
 

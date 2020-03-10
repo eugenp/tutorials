@@ -16,13 +16,13 @@ public class BookStore {
 
     public List<Book> booksByAuthor(String author) {
         return books.stream()
-          .filter(book -> Objects.equals(author, book.getAuthor()))
-          .collect(Collectors.toList());
+                .filter(book -> Objects.equals(author, book.getAuthor()))
+                .collect(Collectors.toList());
     }
 
     public Optional<Book> bookByTitle(String title) {
         return books.stream()
-          .filter(book -> book.getTitle().equals(title))
-          .findFirst();
+                .filter(book -> book.getTitle().equals(title))
+                .findFirst();
     }
 }

@@ -31,7 +31,7 @@ public class FunctionalJavaIOMain {
 
         F<String, String> toUpperCase = i -> i.toUpperCase();
 
-        F<String, IO<Unit>> transformInput = F1Functions.<String, IO<Unit>, String> o(printLetters).f(toUpperCase);
+        F<String, IO<Unit>> transformInput = F1Functions.<String, IO<Unit>, String>o(printLetters).f(toUpperCase);
 
         IO<Unit> readAndPrintResult = IOFunctions.bind(readInput, transformInput);
 

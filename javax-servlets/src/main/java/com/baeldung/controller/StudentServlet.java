@@ -20,7 +20,7 @@ public class StudentServlet extends HttpServlet {
         if (studentID != null) {
             int id = Integer.parseInt(studentID);
             studentService.getStudent(id)
-              .ifPresent(s -> request.setAttribute("studentRecord", s));
+                    .ifPresent(s -> request.setAttribute("studentRecord", s));
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/student-record.jsp");

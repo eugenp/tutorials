@@ -14,11 +14,11 @@ import org.junit.Test;
 public class Java10FeaturesUnitTest {
 
     private List<Integer> someIntList;
-    
+
     @Before
     public void setup() {
         someIntList = new ArrayList<>();
-        
+
         someIntList.add(1);
         someIntList.add(2);
         someIntList.add(3);
@@ -32,7 +32,8 @@ public class Java10FeaturesUnitTest {
 
     @Test
     public void whenVarInitWithAnonymous_thenGetAnonymousType() {
-        var obj = new Object() {};
+        var obj = new Object() {
+        };
         assertFalse(obj.getClass().equals(Object.class));
     }
 
@@ -45,17 +46,17 @@ public class Java10FeaturesUnitTest {
     @Test(expected = UnsupportedOperationException.class)
     public void whenModifyToUnmodifiableList_thenThrowsException() {
         List<Integer> evenList = someIntList.stream()
-          .filter(i -> i % 2 == 0)
-          .collect(Collectors.toUnmodifiableList());
+                .filter(i -> i % 2 == 0)
+                .collect(Collectors.toUnmodifiableList());
         evenList.add(4);
     }
 
     @Test
     public void whenListContainsInteger_OrElseThrowReturnsInteger() {
         Integer firstEven = someIntList.stream()
-          .filter(i -> i % 2 == 0)
-          .findFirst()
-          .orElseThrow();
+                .filter(i -> i % 2 == 0)
+                .findFirst()
+                .orElseThrow();
         is(firstEven).equals(Integer.valueOf(2));
     }
 }

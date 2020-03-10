@@ -1,7 +1,9 @@
 package com.baeldung.casting;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,7 +67,7 @@ public class CastingUnitTest {
             cat.meow();
         }
     }
-    
+
     @Test
     public void whenParameterCat_thenOnlyCatsFed() {
         List<Animal> animals = new ArrayList<>();

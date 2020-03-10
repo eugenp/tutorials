@@ -47,7 +47,7 @@ public class StockService {
 
                     int r = new Random().nextInt(30);
                     try {
-                        Thread.currentThread().sleep(r*1000);
+                        Thread.currentThread().sleep(r * 1000);
                     } catch (InterruptedException ex) {
                         // ...
                     }
@@ -65,11 +65,11 @@ public class StockService {
     BigDecimal generateOpenPrice() {
         float min = 70;
         float max = 120;
-        return BigDecimal.valueOf(min + new Random().nextFloat() * (max - min)).setScale(4,RoundingMode.CEILING);
+        return BigDecimal.valueOf(min + new Random().nextFloat() * (max - min)).setScale(4, RoundingMode.CEILING);
     }
 
     BigDecimal changePrice(BigDecimal price) {
-        return Math.random() >= 0.5 ? price.multiply(UP).setScale(4,RoundingMode.CEILING) : price.multiply(DOWN).setScale(4,RoundingMode.CEILING);
+        return Math.random() >= 0.5 ? price.multiply(UP).setScale(4, RoundingMode.CEILING) : price.multiply(DOWN).setScale(4, RoundingMode.CEILING);
     }
 
     private BigDecimal getLastPrice(String stockName) {

@@ -1,15 +1,15 @@
 <form>
-Email: <input type="text" [(ngModel)]="user.email" name="email"/><br />
-Name: <input type="text" [(ngModel)]="user.name" name="name"/><br />
-<input type="submit" (click)="addUser()" value="Add User"/>
+    Email: <input type="text" [(ngModel)]="user.email" name="email"/><br/>
+    Name: <input type="text" [(ngModel)]="user.name" name="name"/><br/>
+    <input type="submit" (click)="addUser()" value="Add User"/>
 </form>
 
-<br />
+<br/>
 <table>
-<tr *ngFor="let user of res" >
-<td>{{user.email}}
-</td>
-<td>{{user.name}}</td>
-</tr>
+    <tr *ngFor="let user of res">
+        <td>{{user.email}}
+        </td>
+        <td>{{user.name}}</td>
+    </tr>
 </table>
 

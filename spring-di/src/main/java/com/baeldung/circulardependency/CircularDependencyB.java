@@ -6,17 +6,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class CircularDependencyB {
 
-	private CircularDependencyA circA;
+    private CircularDependencyA circA;
 
-	private String message = "Hi!";
+    private String message = "Hi!";
 
-	@Autowired
-	public void setCircA(final CircularDependencyA circA) {
-		this.circA = circA;
-	}
+    @Autowired
+    public void setCircA(final CircularDependencyA circA) {
+        this.circA = circA;
+    }
 
-	public String getMessage() {
-		return message;
-	}
+    public String getMessage() {
+        return message;
+    }
 
 }

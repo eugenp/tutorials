@@ -4,11 +4,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.baeldung.joins.model.Department;
 import com.baeldung.joins.model.Phone;
+
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -31,7 +33,7 @@ public class JpaJoinsIntegrationTest {
 
         assertThat(resultList).hasSize(3);
         assertThat(resultList).extracting("name")
-            .containsOnly("Infra", "Accounting", "Accounting");
+                .containsOnly("Infra", "Accounting", "Accounting");
     }
 
     @Test
@@ -42,7 +44,7 @@ public class JpaJoinsIntegrationTest {
 
         assertThat(resultList).hasSize(3);
         assertThat(resultList).extracting("name")
-            .containsOnly("Infra", "Accounting", "Accounting");
+                .containsOnly("Infra", "Accounting", "Accounting");
     }
 
     @Test
@@ -53,7 +55,7 @@ public class JpaJoinsIntegrationTest {
 
         assertThat(resultList).hasSize(3);
         assertThat(resultList).extracting("name")
-            .containsOnly("Infra", "Accounting", "Accounting");
+                .containsOnly("Infra", "Accounting", "Accounting");
     }
 
     @Test
@@ -64,7 +66,7 @@ public class JpaJoinsIntegrationTest {
 
         assertThat(resultList).hasSize(3);
         assertThat(resultList).extracting("name")
-            .containsOnly("Infra", "Accounting", "Accounting");
+                .containsOnly("Infra", "Accounting", "Accounting");
     }
 
     @Test
@@ -75,7 +77,7 @@ public class JpaJoinsIntegrationTest {
 
         assertThat(resultList).hasSize(9);
         assertThat(resultList).extracting("name")
-            .containsOnly("Infra", "Accounting", "Management", "Infra", "Accounting", "Management", "Infra", "Accounting", "Management");
+                .containsOnly("Infra", "Accounting", "Management", "Infra", "Accounting", "Management", "Infra", "Accounting", "Management");
     }
 
     @Test
@@ -95,7 +97,7 @@ public class JpaJoinsIntegrationTest {
 
         assertThat(resultList).hasSize(3);
         assertThat(resultList).extracting("number")
-            .containsOnly("111", "222", "333");
+                .containsOnly("111", "222", "333");
     }
 
     @Test
@@ -106,7 +108,7 @@ public class JpaJoinsIntegrationTest {
 
         assertThat(resultList).hasSize(3);
         assertThat(resultList).extracting("name")
-            .containsOnly("Infra", "Accounting", "Management");
+                .containsOnly("Infra", "Accounting", "Management");
     }
 
     @Test
@@ -117,7 +119,7 @@ public class JpaJoinsIntegrationTest {
 
         assertThat(resultList).hasSize(3);
         assertThat(resultList).extracting("name")
-            .containsOnly("Infra", "Accounting", "Accounting");
+                .containsOnly("Infra", "Accounting", "Accounting");
     }
 
     @Test
@@ -128,7 +130,7 @@ public class JpaJoinsIntegrationTest {
 
         assertThat(resultList).hasSize(4);
         assertThat(resultList).extracting("name")
-            .containsOnly("Infra", "Accounting", "Accounting", "Management");
+                .containsOnly("Infra", "Accounting", "Accounting", "Management");
     }
 
     @Test

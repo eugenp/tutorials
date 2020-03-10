@@ -15,17 +15,17 @@ public class AppConfigFunctionBean {
     @Bean
     public Function<String, PrototypeBean> beanFactory() {
         return name -> prototypeBeanWithParam(name);
-    } 
+    }
 
     @Bean
     @Scope(value = "prototype")
     public PrototypeBean prototypeBeanWithParam(String name) {
-       return new PrototypeBean(name);
+        return new PrototypeBean(name);
     }
-    
+
     @Bean
     public SingletonFunctionBean singletonFunctionBean() {
         return new SingletonFunctionBean();
     }
-    
+
 }

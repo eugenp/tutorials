@@ -1,8 +1,8 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { ParseLinks } from 'ng-jhipster';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {ParseLinks} from 'ng-jhipster';
 
-import { BaeldungSharedModule } from '../shared';
+import {BaeldungSharedModule} from '../shared';
 
 import {
     adminState,
@@ -34,7 +34,7 @@ import {
 @NgModule({
     imports: [
         BaeldungSharedModule,
-        RouterModule.forRoot(adminState, { useHash: true })
+        RouterModule.forRoot(adminState, {useHash: true})
     ],
     declarations: [
         AuditsComponent,
@@ -70,4 +70,5 @@ import {
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class BaeldungAdminModule {}
+export class BaeldungAdminModule {
+}

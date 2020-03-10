@@ -12,11 +12,11 @@ import lombok.Data;
 public class CustomerRewardsAccount {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Integer customerId;
 
-    public Integer getCustomerId(){
+    public Integer getCustomerId() {
         return this.customerId;
     }
 }

@@ -22,18 +22,18 @@ public class TestLauncher {
                 .configurationParameter("junit.conditions.deactivate", "com.baeldung.extensions.*")
                 .configurationParameter("junit.jupiter.extensions.autodetection.enabled", "true")
                 .build();
-        
+
         //@formatter:on
 
         TestPlan plan = LauncherFactory.create()
-            .discover(request);
+                .discover(request);
         Launcher launcher = LauncherFactory.create();
         SummaryGeneratingListener summaryGeneratingListener = new SummaryGeneratingListener();
-        launcher.execute(request, new TestExecutionListener[] { summaryGeneratingListener });
+        launcher.execute(request, new TestExecutionListener[]{summaryGeneratingListener});
         launcher.execute(request);
 
         summaryGeneratingListener.getSummary()
-            .printTo(new PrintWriter(System.out));
+                .printTo(new PrintWriter(System.out));
 
     }
 }

@@ -13,12 +13,12 @@ import com.baeldung.properties.external.ExternalPropertiesWithXmlManualTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({ //@formatter:off
-    PropertiesWithXmlIntegrationTest.class,
-    ExternalPropertiesWithJavaIntegrationTest.class,
-    ExternalPropertiesWithMultipleXmlsIntegrationTest.class,
-    ExternalPropertiesWithXmlManualTest.class,
-    ExtendedPropertiesWithJavaIntegrationTest.class,
-    PropertiesWithMultipleXmlsIntegrationTest.class,
+        PropertiesWithXmlIntegrationTest.class,
+        ExternalPropertiesWithJavaIntegrationTest.class,
+        ExternalPropertiesWithMultipleXmlsIntegrationTest.class,
+        ExternalPropertiesWithXmlManualTest.class,
+        ExtendedPropertiesWithJavaIntegrationTest.class,
+        PropertiesWithMultipleXmlsIntegrationTest.class,
 })// @formatter:on
 public final class IntegrationTestSuite {
     //

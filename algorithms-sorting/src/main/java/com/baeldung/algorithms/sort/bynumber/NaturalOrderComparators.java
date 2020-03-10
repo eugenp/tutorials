@@ -14,15 +14,15 @@ public final class NaturalOrderComparators {
         return Comparator.comparingDouble(NaturalOrderComparators::parseStringToNumber);
     }
 
-    private static double parseStringToNumber(String input){
+    private static double parseStringToNumber(String input) {
 
         final String digitsOnly = input.replaceAll(DIGIT_AND_DECIMAL_REGEX, "");
 
-        if("".equals(digitsOnly)) return 0;
+        if ("".equals(digitsOnly)) return 0;
 
-        try{
+        try {
             return Double.parseDouble(digitsOnly);
-        }catch (NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             return 0;
         }
     }

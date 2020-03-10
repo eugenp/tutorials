@@ -19,12 +19,12 @@ public class DeliveryAddressMapperUnitTest {
 
         // given a customer
         Customer customer = new Customer().setFirstName("Max")
-            .setLastName("Powers");
+                .setLastName("Powers");
 
         // and some address
         Address homeAddress = new Address().setStreet("123 Some Street")
-            .setCounty("Nevada")
-            .setPostalcode("89123");
+                .setCounty("Nevada")
+                .setPostalcode("89123");
 
         // when calling DeliveryAddressMapper::from
         DeliveryAddress deliveryAddress = deliveryAddressMapper.from(customer, homeAddress);
@@ -43,15 +43,15 @@ public class DeliveryAddressMapperUnitTest {
 
         // given a delivery address
         DeliveryAddress deliveryAddress = new DeliveryAddress().setForename("Max")
-            .setSurname("Powers")
-            .setStreet("123 Some Street")
-            .setCounty("Nevada")
-            .setPostalcode("89123");
+                .setSurname("Powers")
+                .setStreet("123 Some Street")
+                .setCounty("Nevada")
+                .setPostalcode("89123");
 
         // and some new address
         Address newAddress = new Address().setStreet("456 Some other street")
-            .setCounty("Arizona")
-            .setPostalcode("12345");
+                .setCounty("Arizona")
+                .setPostalcode("12345");
 
         // when calling DeliveryAddressMapper::updateAddress
         DeliveryAddress updatedDeliveryAddress = deliveryAddressMapper.updateAddress(deliveryAddress, newAddress);

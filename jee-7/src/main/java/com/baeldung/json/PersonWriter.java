@@ -20,10 +20,10 @@ public class PersonWriter {
 
     public String write() throws IOException {
         JsonObjectBuilder objectBuilder = Json
-          .createObjectBuilder()
-          .add("firstName", person.getFirstName())
-          .add("lastName", person.getLastName())
-          .add("birthdate", dateFormat.format(person.getBirthdate()));
+                .createObjectBuilder()
+                .add("firstName", person.getFirstName())
+                .add("lastName", person.getLastName())
+                .add("birthdate", dateFormat.format(person.getBirthdate()));
 
         final JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
 
@@ -43,8 +43,8 @@ public class PersonWriter {
         String jsonString;
         try (Writer writer = new StringWriter()) {
             writerFactory
-              .createWriter(writer)
-              .write(jsonObject);
+                    .createWriter(writer)
+                    .write(jsonObject);
             jsonString = writer.toString();
         }
         return jsonString;

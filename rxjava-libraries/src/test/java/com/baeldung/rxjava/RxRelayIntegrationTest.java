@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class RxRelayIntegrationTest {
 
     @Test
-    public void whenObserverSubscribedToPublishRelay_thenItReceivesEmittedEvents () {
+    public void whenObserverSubscribedToPublishRelay_thenItReceivesEmittedEvents() {
         PublishRelay<Integer> publishRelay = PublishRelay.create();
         TestObserver<Integer> firstObserver = TestObserver.create();
         TestObserver<Integer> secondObserver = TestObserver.create();
@@ -46,7 +46,7 @@ public class RxRelayIntegrationTest {
     }
 
     @Test
-    public void whenObserverSubscribedToBehaviorRelay_thenItReceivesEmittedEvents () {
+    public void whenObserverSubscribedToBehaviorRelay_thenItReceivesEmittedEvents() {
         BehaviorRelay<Integer> behaviorRelay = BehaviorRelay.create();
         TestObserver<Integer> firstObserver = TestObserver.create();
         TestObserver<Integer> secondObserver = TestObserver.create();
@@ -58,8 +58,9 @@ public class RxRelayIntegrationTest {
         firstObserver.assertValues(5, 10, 15);
         secondObserver.assertValues(10, 15);
     }
+
     @Test
-    public void whenObserverSubscribedToReplayRelay_thenItReceivesEmittedEvents () {
+    public void whenObserverSubscribedToReplayRelay_thenItReceivesEmittedEvents() {
         ReplayRelay<Integer> replayRelay = ReplayRelay.create();
         TestObserver<Integer> firstObserver = TestObserver.create();
         TestObserver<Integer> secondObserver = TestObserver.create();
@@ -74,7 +75,7 @@ public class RxRelayIntegrationTest {
     }
 
     @Test
-    public void whenObserverSubscribedToReplayRelayWithLimitedSize_thenItReceivesEmittedEvents () {
+    public void whenObserverSubscribedToReplayRelayWithLimitedSize_thenItReceivesEmittedEvents() {
         ReplayRelay<Integer> replayRelay = ReplayRelay.createWithSize(2);
         TestObserver<Integer> firstObserver = TestObserver.create();
         replayRelay.accept(5);
@@ -89,7 +90,7 @@ public class RxRelayIntegrationTest {
 
 
     @Test
-    public void whenObserverSubscribedToReplayRelayWithMaxAge_thenItReceivesEmittedEvents () throws InterruptedException {
+    public void whenObserverSubscribedToReplayRelayWithMaxAge_thenItReceivesEmittedEvents() throws InterruptedException {
         ReplayRelay<Integer> replayRelay = ReplayRelay.createWithTime(2000, TimeUnit.MILLISECONDS, new SingleScheduler());
         TestObserver<Integer> firstObserver = TestObserver.create();
         replayRelay.accept(5);
@@ -102,14 +103,14 @@ public class RxRelayIntegrationTest {
     }
 
     @Test
-    public void whenTwoObserversSubscribedToRandomRelay_thenOnlyOneReceivesEvent () {
+    public void whenTwoObserversSubscribedToRandomRelay_thenOnlyOneReceivesEvent() {
         RandomRelay randomRelay = new RandomRelay();
         TestObserver<Integer> firstObserver = TestObserver.create();
         TestObserver<Integer> secondObserver = TestObserver.create();
         randomRelay.subscribe(firstObserver);
         randomRelay.subscribe(secondObserver);
         randomRelay.accept(5);
-        if(firstObserver.values().isEmpty()) {
+        if (firstObserver.values().isEmpty()) {
             secondObserver.assertValue(5);
         } else {
             firstObserver.assertValue(5);

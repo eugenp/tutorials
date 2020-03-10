@@ -5,14 +5,17 @@ import org.derive4j.Derive;
 import org.derive4j.Make;
 
 @Data(value = @Derive(
-    inClass = "{ClassName}Impl",
-    make = {Make.lazyConstructor, Make.constructors, Make.getters}
+        inClass = "{ClassName}Impl",
+        make = {Make.lazyConstructor, Make.constructors, Make.getters}
 ))
 public interface LazyRequest {
-    interface Cases<R>{
+    interface Cases<R> {
         R GET(String path);
+
         R POST(String path, String body);
+
         R PUT(String path, String body);
+
         R DELETE(String path);
     }
 

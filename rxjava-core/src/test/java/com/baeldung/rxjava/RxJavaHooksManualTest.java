@@ -13,7 +13,7 @@ public class RxJavaHooksManualTest {
 
     private boolean initHookCalled = false;
     private boolean hookCalled = false;
-    
+
     @Test
     public void givenIOScheduler_whenCalled_shouldExecuteTheHooks() {
 
@@ -28,9 +28,9 @@ public class RxJavaHooksManualTest {
         });
 
         Observable.range(1, 10)
-            .map(v -> v * 2)
-            .subscribeOn(Schedulers.io())
-            .test();
+                .map(v -> v * 2)
+                .subscribeOn(Schedulers.io())
+                .test();
         assertTrue(hookCalled && initHookCalled);
     }
 
@@ -48,9 +48,9 @@ public class RxJavaHooksManualTest {
         });
 
         Observable.range(1, 15)
-            .map(v -> v * 2)
-            .subscribeOn(Schedulers.newThread())
-            .test();
+                .map(v -> v * 2)
+                .subscribeOn(Schedulers.newThread())
+                .test();
         assertTrue(hookCalled && initHookCalled);
     }
 
@@ -68,13 +68,13 @@ public class RxJavaHooksManualTest {
         });
 
         Observable.range(1, 10)
-            .map(v -> v * 2)
-            .subscribeOn(Schedulers.single())
-            .test();
+                .map(v -> v * 2)
+                .subscribeOn(Schedulers.single())
+                .test();
         assertTrue(hookCalled && initHookCalled);
 
     }
-    
+
     @After
     public void reset() {
         hookCalled = false;

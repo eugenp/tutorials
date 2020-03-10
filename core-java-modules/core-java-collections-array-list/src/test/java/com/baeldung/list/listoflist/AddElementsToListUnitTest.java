@@ -4,7 +4,9 @@ import com.baeldung.java.list.Flower;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.*;
+
 import static org.junit.Assert.*;
 
 public class AddElementsToListUnitTest {
@@ -18,6 +20,7 @@ public class AddElementsToListUnitTest {
                 new Flower("Anemone", 8),
                 new Flower("Catmint", 12)));
     }
+
     @Test
     public void givenAList_whenTargetListIsEmpty_thenReturnTargetListWithNewItems() {
         List<Flower> anotherList = new ArrayList<>();
@@ -25,6 +28,7 @@ public class AddElementsToListUnitTest {
         assertEquals(anotherList.size(), flowers.size());
         Assert.assertTrue(anotherList.containsAll(flowers));
     }
+
     @Test
     public void givenAList_whenTargetListIsEmpty_thenReturnTargetListWithOneModifiedElementByConstructor() {
         List<Flower> anotherList = new ArrayList<>();
@@ -34,12 +38,14 @@ public class AddElementsToListUnitTest {
         assertEquals(anotherList.size(), flowers.size());
         Assert.assertTrue(anotherList.containsAll(flowers));
     }
+
     @Test
     public void givenAListAndElements_whenUseCollectionsAddAll_thenAddElementsToTargetList() {
         List<Flower> target = new ArrayList<>();
         Collections.addAll(target, flowers.get(0), flowers.get(1), flowers.get(2), flowers.get(0));
         assertEquals(target.size(), 4);
     }
+
     @Test
     public void givenTwoList_whenSourceListDoesNotHaveNullElements_thenAddElementsToTargetListSkipFirstElementByStreamProcess() {
         List<Flower> flowerVase = new ArrayList<>();
@@ -49,6 +55,7 @@ public class AddElementsToListUnitTest {
         assertEquals(flowerVase.size() + 1, flowers.size());
         assertFalse(flowerVase.containsAll(flowers));
     }
+
     @Test
     public void givenTwoList_whenSourceListDoesNotHaveNullElements_thenAddElementsToTargetListFilteringElementsByStreamProcess() {
         List<Flower> flowerVase = new ArrayList<>();
@@ -58,6 +65,7 @@ public class AddElementsToListUnitTest {
         assertEquals(flowerVase.size() + 1, flowers.size());
         assertFalse(flowerVase.containsAll(flowers));
     }
+
     @Test
     public void givenAList_whenListIsNotNull_thenAddElementsToListByStreamProcessWihtOptional() {
         List<Flower> target = new ArrayList<>();

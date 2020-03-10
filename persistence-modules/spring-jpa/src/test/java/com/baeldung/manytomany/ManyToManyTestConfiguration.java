@@ -23,8 +23,8 @@ public class ManyToManyTestConfiguration {
     public DataSource dataSource() {
         EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
         return dbBuilder.setType(EmbeddedDatabaseType.H2)
-            .addScript("classpath:/manytomany/db.sql")
-            .build();
+                .addScript("classpath:/manytomany/db.sql")
+                .build();
     }
 
     @Bean

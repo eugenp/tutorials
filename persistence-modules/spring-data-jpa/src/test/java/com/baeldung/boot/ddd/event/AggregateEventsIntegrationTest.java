@@ -37,8 +37,8 @@ class AggregateEventsIntegrationTest {
 
     // @formatter:off
     @DisplayName("given existing aggregate,"
-        + " when do domain operation directly on aggregate,"
-        + " then domain event is NOT published")
+            + " when do domain operation directly on aggregate,"
+            + " then domain event is NOT published")
     // @formatter:on
     @Test
     void aggregateEventsTest() {
@@ -47,8 +47,8 @@ class AggregateEventsIntegrationTest {
 
         // when
         repository.findById(existingDomainEntity.getId())
-            .get()
-            .domainOperation();
+                .get()
+                .domainOperation();
 
         // then
         verifyZeroInteractions(eventHandler);
@@ -61,8 +61,8 @@ class AggregateEventsIntegrationTest {
 
     // @formatter:off
     @DisplayName("given existing aggregate,"
-        + " when do domain operation on service,"
-        + " then domain event is published")
+            + " when do domain operation on service,"
+            + " then domain event is published")
     // @formatter:on
     @Test
     void serviceEventsTest() {

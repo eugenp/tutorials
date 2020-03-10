@@ -10,7 +10,7 @@ public class Application {
 
     public static void main(String[] args) {
 
-       logger.info("Hello at Baeldung!");
+        logger.info("Hello at Baeldung!");
     }
 
 }

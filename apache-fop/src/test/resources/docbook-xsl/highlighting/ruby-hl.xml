@@ -29,81 +29,81 @@ Michiel Hendriks <elmuerte at users.sourceforge.net>
 
 -->
 <highlighters>
-	<highlighter type="oneline-comment">#</highlighter>
-	<highlighter type="heredoc">
-		<start>&lt;&lt;</start>
-		<noWhiteSpace/>
-	</highlighter>
-	<highlighter type="string">
-		<string>"</string>
-		<escape>\</escape>
-	</highlighter>
-	<highlighter type="string">
-		<string>%Q{</string>
-		<endString>}</endString>
-		<escape>\</escape>
-	</highlighter>
-	<highlighter type="string">
-		<string>%/</string>
-		<endString>/</endString>
-		<escape>\</escape>
-	</highlighter>
-	<highlighter type="string">
-		<string>'</string>
-		<escape>\</escape>
-	</highlighter>
-	<highlighter type="string">
-		<string>%q{</string>
-		<endString>}</endString>
-		<escape>\</escape>
-	</highlighter>
-	<highlighter type="hexnumber">
-		<prefix>0x</prefix>
-		<ignoreCase />
-	</highlighter>
-	<highlighter type="number">
-		<point>.</point>
-		<exponent>e</exponent>
-		<ignoreCase />
-	</highlighter>
-	<highlighter type="keywords">
-		<keyword>alias</keyword>
-		<keyword>and</keyword>
-		<keyword>BEGIN</keyword>
-		<keyword>begin</keyword>
-		<keyword>break</keyword>
-		<keyword>case</keyword>
-		<keyword>class</keyword>
-		<keyword>def</keyword>
-		<keyword>defined</keyword>
-		<keyword>do</keyword>
-		<keyword>else</keyword>
-		<keyword>elsif</keyword>
-		<keyword>END</keyword>
-		<keyword>end</keyword>
-		<keyword>ensure</keyword>
-		<keyword>false</keyword>
-		<keyword>for</keyword>
-		<keyword>if</keyword>
-		<keyword>in</keyword>
-		<keyword>module</keyword>
-		<keyword>next</keyword>
-		<keyword>nil</keyword>
-		<keyword>not</keyword>
-		<keyword>or</keyword>
-		<keyword>redo</keyword>
-		<keyword>rescue</keyword>
-		<keyword>retry</keyword>
-		<keyword>return</keyword>
-		<keyword>self</keyword>
-		<keyword>super</keyword>
-		<keyword>then</keyword>
-		<keyword>true</keyword>
-		<keyword>undef</keyword>
-		<keyword>unless</keyword>
-		<keyword>until</keyword>
-		<keyword>when</keyword>
-		<keyword>while</keyword>
-		<keyword>yield</keyword>
-	</highlighter>
+    <highlighter type="oneline-comment">#</highlighter>
+    <highlighter type="heredoc">
+        <start>&lt;&lt;</start>
+        <noWhiteSpace/>
+    </highlighter>
+    <highlighter type="string">
+        <string>"</string>
+        <escape>\</escape>
+    </highlighter>
+    <highlighter type="string">
+        <string>%Q{</string>
+        <endString>}</endString>
+        <escape>\</escape>
+    </highlighter>
+    <highlighter type="string">
+        <string>%/</string>
+        <endString>/</endString>
+        <escape>\</escape>
+    </highlighter>
+    <highlighter type="string">
+        <string>'</string>
+        <escape>\</escape>
+    </highlighter>
+    <highlighter type="string">
+        <string>%q{</string>
+        <endString>}</endString>
+        <escape>\</escape>
+    </highlighter>
+    <highlighter type="hexnumber">
+        <prefix>0x</prefix>
+        <ignoreCase/>
+    </highlighter>
+    <highlighter type="number">
+        <point>.</point>
+        <exponent>e</exponent>
+        <ignoreCase/>
+    </highlighter>
+    <highlighter type="keywords">
+        <keyword>alias</keyword>
+        <keyword>and</keyword>
+        <keyword>BEGIN</keyword>
+        <keyword>begin</keyword>
+        <keyword>break</keyword>
+        <keyword>case</keyword>
+        <keyword>class</keyword>
+        <keyword>def</keyword>
+        <keyword>defined</keyword>
+        <keyword>do</keyword>
+        <keyword>else</keyword>
+        <keyword>elsif</keyword>
+        <keyword>END</keyword>
+        <keyword>end</keyword>
+        <keyword>ensure</keyword>
+        <keyword>false</keyword>
+        <keyword>for</keyword>
+        <keyword>if</keyword>
+        <keyword>in</keyword>
+        <keyword>module</keyword>
+        <keyword>next</keyword>
+        <keyword>nil</keyword>
+        <keyword>not</keyword>
+        <keyword>or</keyword>
+        <keyword>redo</keyword>
+        <keyword>rescue</keyword>
+        <keyword>retry</keyword>
+        <keyword>return</keyword>
+        <keyword>self</keyword>
+        <keyword>super</keyword>
+        <keyword>then</keyword>
+        <keyword>true</keyword>
+        <keyword>undef</keyword>
+        <keyword>unless</keyword>
+        <keyword>until</keyword>
+        <keyword>when</keyword>
+        <keyword>while</keyword>
+        <keyword>yield</keyword>
+    </highlighter>
 </highlighters>

@@ -36,8 +36,8 @@ public class OrderMongoIntegrationTest {
         List<Order> foundOrders = repo.findAll();
         assertThat(foundOrders).hasSize(1);
         List<OrderLine> foundOrderLines = foundOrders.iterator()
-            .next()
-            .getOrderLines();
+                .next()
+                .getOrderLines();
         assertThat(foundOrderLines).hasSize(2);
         assertThat(foundOrderLines).containsOnlyElementsOf(order.getOrderLines());
     }

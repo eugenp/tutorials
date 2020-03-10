@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Controller to test expression utility objects: dates,
- * 
  */
 @Controller
 public class ExpressionUtilityObjectsController {
@@ -25,7 +24,7 @@ public class ExpressionUtilityObjectsController {
         model.addAttribute("string", "new text");
         model.addAttribute("emptyString", "");
         model.addAttribute("nullString", null);
-        model.addAttribute("array", new int[] { 1, 3, 4, 5 });
+        model.addAttribute("array", new int[]{1, 3, 4, 5});
         model.addAttribute("set", new HashSet<Integer>(Arrays.asList(1, 3, 8)));
         return "objects.html";
     }

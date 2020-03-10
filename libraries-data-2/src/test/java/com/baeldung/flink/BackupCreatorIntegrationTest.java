@@ -67,13 +67,13 @@ public class BackupCreatorIntegrationTest {
         DataStreamSource<InputMessage> testDataSet = env.fromCollection(inputMessages);
         CollectingSink sink = new CollectingSink();
         testDataSet.assignTimestampsAndWatermarks(new InputMessageTimestampAssigner())
-          .timeWindowAll(Time.hours(24))
-          .aggregate(new BackupAggregator())
-          .addSink(sink);
+                .timeWindowAll(Time.hours(24))
+                .aggregate(new BackupAggregator())
+                .addSink(sink);
 
         env.execute();
 
-        Awaitility.await().until(() ->  sink.backups.size() == 2);
+        Awaitility.await().until(() -> sink.backups.size() == 2);
         assertEquals(2, sink.backups.size());
         assertEquals(firstBackupMessages, sink.backups.get(0).getInputMessages());
         assertEquals(secondBackupMessages, sink.backups.get(1).getInputMessages());
@@ -88,12 +88,12 @@ public class BackupCreatorIntegrationTest {
         byte[] backupSerialized = mapper.writeValueAsBytes(backup);
         SerializationSchema<Backup> serializationSchema = new BackupSerializationSchema();
         byte[] backupProcessed = serializationSchema.serialize(backup);
-        
+
         assertArrayEquals(backupSerialized, backupProcessed);
     }
 
     private static class CollectingSink implements SinkFunction<Backup> {
-        
+
         public static List<Backup> backups = new ArrayList<>();
 
         @Override

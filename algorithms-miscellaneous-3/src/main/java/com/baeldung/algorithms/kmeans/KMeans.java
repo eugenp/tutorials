@@ -75,10 +75,10 @@ public class KMeans {
      */
     private static List<Centroid> relocateCentroids(Map<Centroid, List<Record>> clusters) {
         return clusters
-          .entrySet()
-          .stream()
-          .map(e -> average(e.getKey(), e.getValue()))
-          .collect(toList());
+                .entrySet()
+                .stream()
+                .map(e -> average(e.getKey(), e.getValue()))
+                .collect(toList());
     }
 
     /**
@@ -105,17 +105,17 @@ public class KMeans {
         // The average function works correctly if we clear all coordinates corresponding
         // to present record attributes
         records
-          .stream()
-          .flatMap(e -> e
-            .getFeatures()
-            .keySet()
-            .stream())
-          .forEach(k -> average.put(k, 0.0));
+                .stream()
+                .flatMap(e -> e
+                        .getFeatures()
+                        .keySet()
+                        .stream())
+                .forEach(k -> average.put(k, 0.0));
 
         for (Record record : records) {
             record
-              .getFeatures()
-              .forEach((k, v) -> average.compute(k, (k1, currentValue) -> v + currentValue));
+                    .getFeatures()
+                    .forEach((k, v) -> average.compute(k, (k1, currentValue) -> v + currentValue));
         }
 
         average.forEach((k, v) -> average.put(k, v / records.size()));
@@ -185,23 +185,23 @@ public class KMeans {
 
         for (Record record : records) {
             record
-              .getFeatures()
-              .forEach((key, value) -> {
-                  // compares the value with the current max and choose the bigger value between them
-                  maxs.compute(key, (k1, max) -> max == null || value > max ? value : max);
+                    .getFeatures()
+                    .forEach((key, value) -> {
+                        // compares the value with the current max and choose the bigger value between them
+                        maxs.compute(key, (k1, max) -> max == null || value > max ? value : max);
 
-                  // compare the value with the current min and choose the smaller value between them
-                  mins.compute(key, (k1, min) -> min == null || value < min ? value : min);
-              });
+                        // compare the value with the current min and choose the smaller value between them
+                        mins.compute(key, (k1, min) -> min == null || value < min ? value : min);
+                    });
         }
 
         Set<String> attributes = records
-          .stream()
-          .flatMap(e -> e
-            .getFeatures()
-            .keySet()
-            .stream())
-          .collect(toSet());
+                .stream()
+                .flatMap(e -> e
+                        .getFeatures()
+                        .keySet()
+                        .stream())
+                .collect(toSet());
         for (int i = 0; i < k; i++) {
             Map<String, Double> coordinates = new HashMap<>();
             for (String attribute : attributes) {

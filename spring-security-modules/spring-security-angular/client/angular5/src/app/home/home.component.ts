@@ -1,9 +1,9 @@
-﻿import { Component, OnInit } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+﻿import {Component, OnInit} from '@angular/core';
+import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map'
 
 @Component({
-    selector:'home',
+    selector: 'home',
     templateUrl: './home.component.html'
 })
 
@@ -11,19 +11,20 @@ export class HomeComponent implements OnInit {
 
     userName: string;
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) {
+    }
 
     ngOnInit() {
         let url = 'http://localhost:8082/user';
 
-           let headers:Headers = new Headers({
-                'Authorization': 'Basic ' + sessionStorage.getItem('token')
-            })
+        let headers: Headers = new Headers({
+            'Authorization': 'Basic ' + sessionStorage.getItem('token')
+        })
         let options = new RequestOptions({headers: headers});
-        this.http.post(url,{}, options).map(
+        this.http.post(url, {}, options).map(
             res => res.json(),
             error => {
-                if(error.status == 401)
+                if (error.status == 401)
                     alert('Unauthorized');
             }
         ).subscribe(principal => {

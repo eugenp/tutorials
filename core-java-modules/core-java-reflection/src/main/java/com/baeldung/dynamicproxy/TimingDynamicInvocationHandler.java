@@ -18,7 +18,7 @@ public class TimingDynamicInvocationHandler implements InvocationHandler {
     TimingDynamicInvocationHandler(Object target) {
         this.target = target;
 
-        for(Method method: target.getClass().getDeclaredMethods()) {
+        for (Method method : target.getClass().getDeclaredMethods()) {
             this.methods.put(method.getName(), method);
         }
     }

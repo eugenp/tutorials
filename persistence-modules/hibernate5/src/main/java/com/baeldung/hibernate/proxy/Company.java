@@ -20,7 +20,8 @@ public class Company implements Serializable {
     @JoinColumn(name = "workplace_id")
     private Set<Employee> employees = new HashSet<>();
 
-    public Company() { }
+    public Company() {
+    }
 
     public Company(String name) {
         this.name = name;

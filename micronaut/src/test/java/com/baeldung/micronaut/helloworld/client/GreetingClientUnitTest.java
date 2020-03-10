@@ -13,15 +13,13 @@ public class GreetingClientUnitTest {
     private GreetingClient client;
 
     @Before
-    public void setup()
-    {
+    public void setup() {
         server = ApplicationContext.run(EmbeddedServer.class);
         client = server.getApplicationContext().getBean(GreetingClient.class);
     }
 
     @After
-    public void cleanup()
-    {
+    public void cleanup() {
         server.stop();
     }
 

@@ -13,40 +13,40 @@ import static junit.framework.Assert.assertEquals;
 
 public class CustomerUnitTest {
 
-	@Test
-	public void whenUnmarshalXML_ThenFieldsAreMapped() throws JiBXException, FileNotFoundException {
-		IBindingFactory bfact = BindingDirectory.getFactory(Customer.class);
-		IUnmarshallingContext uctx = bfact.createUnmarshallingContext();
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		InputStream inputStream = classLoader.getResourceAsStream("Customer1.xml");
-		Customer customer = (Customer) uctx.unmarshalDocument(inputStream, null);
+    @Test
+    public void whenUnmarshalXML_ThenFieldsAreMapped() throws JiBXException, FileNotFoundException {
+        IBindingFactory bfact = BindingDirectory.getFactory(Customer.class);
+        IUnmarshallingContext uctx = bfact.createUnmarshallingContext();
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream("Customer1.xml");
+        Customer customer = (Customer) uctx.unmarshalDocument(inputStream, null);
 
-		assertEquals("Stefan Jaeger", customer.getPerson().getName());
-		assertEquals("Davos Dorf", customer.getCity());
+        assertEquals("Stefan Jaeger", customer.getPerson().getName());
+        assertEquals("Davos Dorf", customer.getCity());
 
-	}
+    }
 
-	@Test
-	public void WhenUnmarshal_ThenMappingInherited() throws JiBXException, FileNotFoundException {
-		IBindingFactory bfact = BindingDirectory.getFactory(Customer.class);
-		IUnmarshallingContext uctx = bfact.createUnmarshallingContext();
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		InputStream inputStream = classLoader.getResourceAsStream("Customer1.xml");
-		Customer customer = (Customer) uctx.unmarshalDocument(inputStream, null);
+    @Test
+    public void WhenUnmarshal_ThenMappingInherited() throws JiBXException, FileNotFoundException {
+        IBindingFactory bfact = BindingDirectory.getFactory(Customer.class);
+        IUnmarshallingContext uctx = bfact.createUnmarshallingContext();
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream("Customer1.xml");
+        Customer customer = (Customer) uctx.unmarshalDocument(inputStream, null);
 
-		assertEquals(12345, customer.getPerson().getCustomerId());
+        assertEquals(12345, customer.getPerson().getCustomerId());
 
-	}
+    }
 
-	@Test
-	public void WhenUnmarshal_ThenPhoneMappingRead() throws JiBXException, FileNotFoundException {
-		IBindingFactory bfact = BindingDirectory.getFactory(Customer.class);
-		IUnmarshallingContext uctx = bfact.createUnmarshallingContext();
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		InputStream inputStream = classLoader.getResourceAsStream("Customer1.xml");
-		Customer customer = (Customer) uctx.unmarshalDocument(inputStream, null);
-		
-		assertEquals("234678", customer.getHomePhone().getNumber());
+    @Test
+    public void WhenUnmarshal_ThenPhoneMappingRead() throws JiBXException, FileNotFoundException {
+        IBindingFactory bfact = BindingDirectory.getFactory(Customer.class);
+        IUnmarshallingContext uctx = bfact.createUnmarshallingContext();
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream("Customer1.xml");
+        Customer customer = (Customer) uctx.unmarshalDocument(inputStream, null);
 
-	}
+        assertEquals("234678", customer.getHomePhone().getNumber());
+
+    }
 }

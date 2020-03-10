@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.baeldung.datetolocaldate;
 
@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  * Class which shows a way to convert java.util.Date into java.time.LocalDate.
- * 
+ *
  * @author abialas
  *
  */
@@ -18,8 +18,8 @@ public class DateToLocalDateConverter {
 
     public static LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
         return dateToConvert.toInstant()
-            .atZone(ZoneId.systemDefault())
-            .toLocalDate();
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
     }
 
     public static LocalDate convertToLocalDateViaSqlDate(Date dateToConvert) {
@@ -28,8 +28,8 @@ public class DateToLocalDateConverter {
 
     public static LocalDate convertToLocalDateViaMilisecond(Date dateToConvert) {
         return Instant.ofEpochMilli(dateToConvert.getTime())
-            .atZone(ZoneId.systemDefault())
-            .toLocalDate();
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
     }
 
     public static LocalDate convertToLocalDate(Date dateToConvert) {

@@ -26,9 +26,9 @@ module.exports = (options) => ({
                 options: {
                     minimize: true,
                     caseSensitive: true,
-                    removeAttributeQuotes:false,
-                    minifyJS:false,
-                    minifyCSS:false
+                    removeAttributeQuotes: false,
+                    minifyJS: false,
+                    minifyCSS: false
                 },
                 exclude: ['./src/main/webapp/index.html']
             },
@@ -49,7 +49,7 @@ module.exports = (options) => ({
                 }
             },
             // Ignore warnings about System.import in Angular
-            { test: /[\/\\]@angular[\/\\].+\.js$/, parser: { system: true } },
+            {test: /[\/\\]@angular[\/\\].+\.js$/, parser: {system: true}},
         ]
     },
     plugins: [
@@ -67,22 +67,22 @@ module.exports = (options) => ({
             }
         }),
         new CopyWebpackPlugin([
-            { from: './node_modules/swagger-ui/dist/css', to: 'swagger-ui/dist/css' },
-            { from: './node_modules/swagger-ui/dist/lib', to: 'swagger-ui/dist/lib' },
-            { from: './node_modules/swagger-ui/dist/swagger-ui.min.js', to: 'swagger-ui/dist/swagger-ui.min.js' },
-            { from: './src/main/webapp/swagger-ui/', to: 'swagger-ui' },
-            { from: './src/main/webapp/content/', to: 'content' },
-            { from: './src/main/webapp/favicon.ico', to: 'favicon.ico' },
-            { from: './src/main/webapp/manifest.webapp', to: 'manifest.webapp' },
+            {from: './node_modules/swagger-ui/dist/css', to: 'swagger-ui/dist/css'},
+            {from: './node_modules/swagger-ui/dist/lib', to: 'swagger-ui/dist/lib'},
+            {from: './node_modules/swagger-ui/dist/swagger-ui.min.js', to: 'swagger-ui/dist/swagger-ui.min.js'},
+            {from: './src/main/webapp/swagger-ui/', to: 'swagger-ui'},
+            {from: './src/main/webapp/content/', to: 'content'},
+            {from: './src/main/webapp/favicon.ico', to: 'favicon.ico'},
+            {from: './src/main/webapp/manifest.webapp', to: 'manifest.webapp'},
             // jhipster-needle-add-assets-to-webpack - JHipster will add/remove third-party resources in this array
-            { from: './src/main/webapp/robots.txt', to: 'robots.txt' }
+            {from: './src/main/webapp/robots.txt', to: 'robots.txt'}
         ]),
         new MergeJsonWebpackPlugin({
             output: {
                 groupBy: [
-                    { pattern: "./src/main/webapp/i18n/en/*.json", fileName: "./i18n/en.json" },
-                    { pattern: "./src/main/webapp/i18n/fr/*.json", fileName: "./i18n/fr.json" },
-                    { pattern: "./src/main/webapp/i18n/pt-br/*.json", fileName: "./i18n/pt-br.json" }
+                    {pattern: "./src/main/webapp/i18n/en/*.json", fileName: "./i18n/en.json"},
+                    {pattern: "./src/main/webapp/i18n/fr/*.json", fileName: "./i18n/fr.json"},
+                    {pattern: "./src/main/webapp/i18n/pt-br/*.json", fileName: "./i18n/pt-br.json"}
                     // jhipster-needle-i18n-language-webpack - JHipster will add/remove languages in this array
                 ]
             }

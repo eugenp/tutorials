@@ -16,17 +16,17 @@ public class BrandRepository {
 
     public List<Brand> findAll(final int size) {
         return brands
-          .stream()
-          .limit(size)
-          .collect(Collectors.toList());
+                .stream()
+                .limit(size)
+                .collect(Collectors.toList());
     }
 
     public Optional<Brand> findById(final Long id) {
         return brands
-          .stream()
-          .filter(brand -> brand
-            .getId()
-            .equals(id))
-          .findFirst();
+                .stream()
+                .filter(brand -> brand
+                        .getId()
+                        .equals(id))
+                .findFirst();
     }
 }

@@ -16,7 +16,7 @@ import com.baeldung.boot.Application;
 import com.baeldung.boot.domain.Foo;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=Application.class)
+@SpringBootTest(classes = Application.class)
 public class FooServicePersistenceIntegrationTest extends AbstractServicePersistenceIntegrationTest<Foo> {
 
     @Autowired

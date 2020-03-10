@@ -9,7 +9,7 @@ public class Poem {
 
     public static boolean isValidPoem(Poem poem) {
         return poem != null && Strings.isNotBlank(poem.getAuthor()) && Strings.isNotBlank(poem.getBody())
-          && Strings.isNotBlank(poem.getTitle());
+                && Strings.isNotBlank(poem.getTitle());
     }
 
     public String getTitle() {

@@ -18,7 +18,7 @@ public enum Distance {
     public void setMeters(double meters) {
         this.meters = meters;
     }
-    
+
     public double getMeters() {
         return meters;
     }

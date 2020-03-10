@@ -5,27 +5,27 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Engine for a vehicle.
- * 
+ *
  * @author Donato Rimenti
  */
 public class Engine {
 
-	/**
-	 * Logger.
-	 */
-	private final static Logger LOG = LoggerFactory.getLogger(Engine.class);
+    /**
+     * Logger.
+     */
+    private final static Logger LOG = LoggerFactory.getLogger(Engine.class);
 
-	/**
-	 * Starts the engine.
-	 */
-	public void start() {
-		LOG.info("Engine is starting!");
-	}
+    /**
+     * Starts the engine.
+     */
+    public void start() {
+        LOG.info("Engine is starting!");
+    }
 
-	/**
-	 * Stops the engine.
-	 */
-	public void stop() {
-		LOG.info("Engine is stopping!");
-	}
+    /**
+     * Stops the engine.
+     */
+    public void stop() {
+        LOG.info("Engine is stopping!");
+    }
 }

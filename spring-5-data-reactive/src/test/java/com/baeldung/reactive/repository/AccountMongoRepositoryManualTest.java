@@ -58,7 +58,7 @@ public class AccountMongoRepositoryManualTest {
                 .create(accountMono)
                 .assertNext(account -> {
                     assertEquals("john", account.getOwner());
-                    assertEquals(Double.valueOf(12.3),  account.getValue());
+                    assertEquals(Double.valueOf(12.3), account.getValue());
                     assertNotNull(account.getId());
                 })
                 .expectComplete()

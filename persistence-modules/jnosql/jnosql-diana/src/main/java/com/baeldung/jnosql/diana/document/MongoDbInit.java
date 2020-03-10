@@ -24,7 +24,7 @@ public abstract class MongoDbInit {
         _mongod = _mongodExe.start();
     }
 
-    public static void stopMongoDb(){
+    public static void stopMongoDb() {
         _mongod.stop();
         _mongodExe.stop();
     }

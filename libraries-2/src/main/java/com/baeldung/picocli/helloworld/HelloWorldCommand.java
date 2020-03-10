@@ -5,8 +5,8 @@ import picocli.CommandLine;
 import static picocli.CommandLine.Command;
 
 @Command(
-  name = "hello",
-  description = "Says hello"
+        name = "hello",
+        description = "Says hello"
 )
 public class HelloWorldCommand implements Runnable {
     public static void main(String[] args) {

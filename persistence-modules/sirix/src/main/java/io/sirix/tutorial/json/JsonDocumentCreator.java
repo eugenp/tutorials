@@ -44,33 +44,33 @@ public final class JsonDocumentCreator {
         wtx.insertObjectAsFirstChild();
 
         wtx.insertObjectRecordAsFirstChild("foo", new ArrayValue())
-           .insertStringValueAsFirstChild("bar")
-           .insertNullValueAsRightSibling()
-           .insertNumberValueAsRightSibling(2.33);
+                .insertStringValueAsFirstChild("bar")
+                .insertNullValueAsRightSibling()
+                .insertNumberValueAsRightSibling(2.33);
 
         wtx.moveToParent().trx().moveToParent();
 
         wtx.insertObjectRecordAsRightSibling("bar", new ObjectValue())
-           .insertObjectRecordAsFirstChild("hello", new StringValue("world"))
-           .moveToParent();
+                .insertObjectRecordAsFirstChild("hello", new StringValue("world"))
+                .moveToParent();
         wtx.insertObjectRecordAsRightSibling("helloo", new BooleanValue(true))
-           .moveToParent().trx().moveToParent().trx().moveToParent();
+                .moveToParent().trx().moveToParent().trx().moveToParent();
 
         wtx.insertObjectRecordAsRightSibling("baz", new StringValue("hello"))
-           .moveToParent();
+                .moveToParent();
 
         wtx.insertObjectRecordAsRightSibling("tada", new ArrayValue())
-           .insertObjectAsFirstChild()
-           .insertObjectRecordAsFirstChild("foo", new StringValue("bar"))
-           .moveToParent().trx().moveToParent();
+                .insertObjectAsFirstChild()
+                .insertObjectRecordAsFirstChild("foo", new StringValue("bar"))
+                .moveToParent().trx().moveToParent();
 
         wtx.insertObjectAsRightSibling()
-           .insertObjectRecordAsFirstChild("baz", new BooleanValue(false))
-           .moveToParent().trx().moveToParent();
+                .insertObjectRecordAsFirstChild("baz", new BooleanValue(false))
+                .moveToParent().trx().moveToParent();
 
         wtx.insertStringValueAsRightSibling("boo")
-           .insertObjectAsRightSibling()
-           .insertArrayAsRightSibling();
+                .insertObjectAsRightSibling()
+                .insertArrayAsRightSibling();
 
         wtx.moveToDocumentRoot();
     }

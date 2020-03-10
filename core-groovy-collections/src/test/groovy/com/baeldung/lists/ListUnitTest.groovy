@@ -43,7 +43,7 @@ class ListUnitTest {
     }
 
     @Test
-    void testGetItemsFromList(){
+    void testGetItemsFromList() {
 
         def list = ["Hello", "World"]
 
@@ -79,14 +79,14 @@ class ListUnitTest {
     @Test
     void testUpdateItemsInList() {
 
-        def list =[1, "Apple", 80, "App"]
+        def list = [1, "Apple", 80, "App"]
         list[1] = "Box"
-        list.set(2,90)
+        list.set(2, 90)
         assertTrue(list == [1, "Box", 90, "App"])
     }
 
     @Test
-    void testRemoveItemsFromList(){
+    void testRemoveItemsFromList() {
 
         def list = [1, 2, 3, 4, 5, 5, 6, 6, 7]
 
@@ -100,64 +100,64 @@ class ListUnitTest {
     }
 
     @Test
-    void testIteratingOnAList(){
+    void testIteratingOnAList() {
 
         def list = [1, "App", 3, 4]
-        list.each{ println it * 2}
+        list.each { println it * 2 }
 
-        list.eachWithIndex{ it, i -> println "$i : $it" }
+        list.eachWithIndex { it, i -> println "$i : $it" }
     }
 
     @Test
-    void testCollectingToAnotherList(){
+    void testCollectingToAnotherList() {
 
         def list = ["Kay", "Henry", "Justin", "Tom"]
-        assertTrue(list.collect{"Hi " + it} == ["Hi Kay", "Hi Henry", "Hi Justin", "Hi Tom"])
+        assertTrue(list.collect { "Hi " + it } == ["Hi Kay", "Hi Henry", "Hi Justin", "Hi Tom"])
     }
 
     @Test
-    void testJoinItemsInAList(){
+    void testJoinItemsInAList() {
         assertTrue(["One", "Two", "Three"].join(",") == "One,Two,Three")
     }
 
     @Test
-    void testFilteringOnLists(){
+    void testFilteringOnLists() {
         def filterList = [2, 1, 3, 4, 5, 6, 76]
 
-        assertTrue(filterList.find{it > 3} == 4)
+        assertTrue(filterList.find { it > 3 } == 4)
 
-        assertTrue(filterList.findAll{it > 3} == [4, 5, 6, 76])
+        assertTrue(filterList.findAll { it > 3 } == [4, 5, 6, 76])
 
-        assertTrue(filterList.findAll{ it instanceof Number} == [2, 1, 3, 4, 5, 6, 76])
+        assertTrue(filterList.findAll { it instanceof Number } == [2, 1, 3, 4, 5, 6, 76])
 
-        assertTrue(filterList.grep( Number )== [2, 1, 3, 4, 5, 6, 76])
+        assertTrue(filterList.grep(Number) == [2, 1, 3, 4, 5, 6, 76])
 
-        assertTrue(filterList.grep{ it> 6 }== [76])
+        assertTrue(filterList.grep { it > 6 } == [76])
 
         def conditionList = [2, 1, 3, 4, 5, 6, 76]
 
-        assertFalse(conditionList.every{ it < 6})
+        assertFalse(conditionList.every { it < 6 })
 
-        assertTrue(conditionList.any{ it%2 == 0})
+        assertTrue(conditionList.any { it % 2 == 0 })
 
     }
 
     @Test
-    void testGetUniqueItemsInAList(){
+    void testGetUniqueItemsInAList() {
         assertTrue([1, 3, 3, 4].toUnique() == [1, 3, 4])
 
         def uniqueList = [1, 3, 3, 4]
         uniqueList.unique()
         assertTrue(uniqueList == [1, 3, 4])
 
-        assertTrue(["A", "B", "Ba", "Bat", "Cat"].toUnique{ it.size()} == ["A", "Ba", "Bat"])
+        assertTrue(["A", "B", "Ba", "Bat", "Cat"].toUnique { it.size() } == ["A", "Ba", "Bat"])
     }
 
     @Test
-    void testSorting(){
+    void testSorting() {
 
         assertTrue([1, 2, 1, 0].sort() == [0, 1, 1, 2])
-        Comparator mc = {a,b -> a == b? 0: a < b? 1 : -1}
+        Comparator mc = { a, b -> a == b ? 0 : a < b ? 1 : -1 }
 
         def list = [1, 2, 1, 0]
         list.sort(mc)
@@ -166,7 +166,7 @@ class ListUnitTest {
         def strList = ["na", "ppp", "as"]
         assertTrue(strList.max() == "ppp")
 
-        Comparator minc = {a,b -> a == b? 0: a < b? -1 : 1}
+        Comparator minc = { a, b -> a == b ? 0 : a < b ? -1 : 1 }
         def numberList = [3, 2, 0, 7]
         assertTrue(numberList.min(minc) == 0)
     }

@@ -15,7 +15,7 @@ public class Screenshot {
 
     public void getScreenshot(int timeToWait) throws Exception {
         Rectangle rectangle = new Rectangle(Toolkit.getDefaultToolkit()
-            .getScreenSize());
+                .getScreenSize());
         Robot robot = new Robot();
         BufferedImage img = robot.createScreenCapture(rectangle);
         ImageIO.write(img, "jpg", new File(path));

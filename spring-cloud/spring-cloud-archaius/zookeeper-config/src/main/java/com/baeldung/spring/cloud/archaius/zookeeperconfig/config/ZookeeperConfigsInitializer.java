@@ -7,10 +7,8 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 /**
- * 
  * Ideally, we wouldn't need to initialize the zookeeper config values.
  * Here we do it to verify that configurations are being retrieved.
- *
  */
 @Component
 public class ZookeeperConfigsInitializer {
@@ -34,25 +32,25 @@ public class ZookeeperConfigsInitializer {
 
     private void setValue(String path, String value) throws Exception {
         if (client.checkExists()
-            .forPath(path) == null) {
+                .forPath(path) == null) {
             client.create()
-                .forPath(path, value.getBytes());
+                    .forPath(path, value.getBytes());
         } else {
             client.setData()
-                .forPath(path, value.getBytes());
+                    .forPath(path, value.getBytes());
         }
     }
 
     private void createBaseNodes() throws Exception {
         if (client.checkExists()
-            .forPath(CONFIG_BASE_NODE_PATH) == null) {
+                .forPath(CONFIG_BASE_NODE_PATH) == null) {
             client.create()
-                .forPath(CONFIG_BASE_NODE_PATH);
+                    .forPath(CONFIG_BASE_NODE_PATH);
         }
         if (client.checkExists()
-            .forPath(APPLICATION_BASE_NODE_PATH) == null) {
+                .forPath(APPLICATION_BASE_NODE_PATH) == null) {
             client.create()
-                .forPath(APPLICATION_BASE_NODE_PATH);
+                    .forPath(APPLICATION_BASE_NODE_PATH);
         }
     }
 }

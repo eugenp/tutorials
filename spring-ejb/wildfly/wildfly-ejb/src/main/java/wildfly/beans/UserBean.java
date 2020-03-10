@@ -19,6 +19,6 @@ public class UserBean implements UserBeanRemote, UserBeanLocal {
     @Override
     public List<User> getUsers() {
         return em.createNamedQuery("User.findAll")
-            .getResultList();
+                .getResultList();
     }
 }

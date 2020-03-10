@@ -58,7 +58,7 @@ public class HamcrestExamplesUnitTest {
         final List<String> collection = Lists.newArrayList();
         assertThat(collection, empty());
     }
-    
+
     @Test
     public final void givenIterableIsEmpty_whenChecking_thenEmpty() {
         final Iterable<String> collection = Lists.newArrayList();
@@ -79,7 +79,7 @@ public class HamcrestExamplesUnitTest {
 
     @Test
     public final void givenArrayIsEmpty_whenChecking_thenEmpty() {
-        final String[] array = new String[] { "ab" };
+        final String[] array = new String[]{"ab"};
         assertThat(array, not(emptyArray()));
     }
 
@@ -92,7 +92,7 @@ public class HamcrestExamplesUnitTest {
     @Test
     public final void whenIterableSizeIsChecked_thenCorrect() {
         final Iterable<String> collection = Lists.newArrayList("ab", "cd", "ef");
-        assertThat(collection, Matchers.<String> iterableWithSize(3));
+        assertThat(collection, Matchers.<String>iterableWithSize(3));
     }
 
     @Test

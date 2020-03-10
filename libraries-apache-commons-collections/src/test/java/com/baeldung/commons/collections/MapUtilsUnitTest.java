@@ -19,8 +19,8 @@ import static org.junit.Assert.assertThat;
 
 public class MapUtilsUnitTest {
 
-    private String[][] color2DArray = new String[][] { { "RED", "#FF0000" }, { "GREEN", "#00FF00" }, { "BLUE", "#0000FF" } };
-    private String[] color1DArray = new String[] { "RED", "#FF0000", "GREEN", "#00FF00", "BLUE", "#0000FF" };
+    private String[][] color2DArray = new String[][]{{"RED", "#FF0000"}, {"GREEN", "#00FF00"}, {"BLUE", "#0000FF"}};
+    private String[] color1DArray = new String[]{"RED", "#FF0000", "GREEN", "#00FF00", "BLUE", "#0000FF"};
     private Map<String, String> colorMap;
 
     @Before

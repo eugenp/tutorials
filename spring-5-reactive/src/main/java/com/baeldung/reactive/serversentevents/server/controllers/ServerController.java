@@ -18,18 +18,18 @@ public class ServerController {
     @GetMapping("/stream-sse")
     public Flux<ServerSentEvent<String>> streamEvents() {
         return Flux.interval(Duration.ofSeconds(1))
-            .map(sequence -> ServerSentEvent.<String> builder()
-                .id(String.valueOf(sequence))
-                .event("periodic-event")
-                .data("SSE - " + LocalTime.now()
-                    .toString())
-                .build());
+                .map(sequence -> ServerSentEvent.<String>builder()
+                        .id(String.valueOf(sequence))
+                        .event("periodic-event")
+                        .data("SSE - " + LocalTime.now()
+                                .toString())
+                        .build());
     }
 
     @GetMapping(path = "/stream-flux", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> streamFlux() {
         return Flux.interval(Duration.ofSeconds(1))
-            .map(sequence -> "Flux - " + LocalTime.now()
-                .toString());
+                .map(sequence -> "Flux - " + LocalTime.now()
+                        .toString());
     }
 }

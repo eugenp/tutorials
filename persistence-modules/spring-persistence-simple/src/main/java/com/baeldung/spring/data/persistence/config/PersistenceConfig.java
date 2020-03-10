@@ -23,10 +23,10 @@ import com.google.common.base.Preconditions;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-${envTarget:h2}.properties" })
-@ComponentScan({ "com.baeldung.spring.data.persistence" })
+@PropertySource({"classpath:persistence-${envTarget:h2}.properties"})
+@ComponentScan({"com.baeldung.spring.data.persistence"})
 // @ImportResource("classpath*:springDataPersistenceConfig.xml")
-@EnableJpaRepositories(basePackages = { "com.baeldung.spring.data.persistence.dao", "com.baeldung.spring.data.persistence.jpaquery" })
+@EnableJpaRepositories(basePackages = {"com.baeldung.spring.data.persistence.dao", "com.baeldung.spring.data.persistence.jpaquery"})
 public class PersistenceConfig {
 
     @Autowired
@@ -40,7 +40,7 @@ public class PersistenceConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "com.baeldung.spring.data.persistence.model" });
+        em.setPackagesToScan(new String[]{"com.baeldung.spring.data.persistence.model"});
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         // vendorAdapter.set

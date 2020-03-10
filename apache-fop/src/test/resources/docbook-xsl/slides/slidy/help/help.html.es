@@ -1,26 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
-<head>
- <!-- Traducida por Emmanuelle Gutiérrez y Restrepo - Fundación Sidar --> 
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Ayuda de Slidy</title>
-  <style type="text/css">
-     body {
-        font-family: sans-serif;
-        margin: 10%;
-     }
-     .copyright { font-size: smaller }
-  </style>
-  <script type="text/javascript">
-    window.onload = load;
-    function load()
-    {
-      var back = document.getElementById("back");
-      back.focus();
-    }
-  </script>
+<
+!DOCTYPE
+html
+PUBLIC
+"-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+< html
+xmlns = "http://www.w3.org/1999/xhtml"
+xml:lang = "es"
+lang = "es" >
+        < head >
+        < !--Traducida
+por
+Emmanuelle
+Gutiérrez
+y
+Restrepo - Fundación
+Sidar-- >
+< meta
+http - equiv = "Content-Type"
+content = "text/html; charset=utf-8" / >
+        < title > Ayuda
+de
+Slidy < /title>
+<style type="text/css">
+    body {
+    font - family: sans-serif;
+    margin: 10%;
+}
+    .copyright {font - size: smaller}
+</style>
+< script
+type = "text/javascript" >
+window.onload = load;
+
+function load() {
+    var back = document.getElementById("back");
+    back.focus();
+}
+
+</script>
 </head>
 <body>
 <h1>Ayuda de "<span lang="en">Slidy</span>"</h1>

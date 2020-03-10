@@ -36,11 +36,11 @@ public class WebClientFilters {
     public static ExchangeFilterFunction urlModifyingFilter(String version) {
         ExchangeFilterFunction urlModifyingFilter = (clientRequest, nextFilter) -> {
             String oldUrl = clientRequest.url()
-                .toString();
+                    .toString();
             URI newUrl = URI.create(oldUrl + "/" + version);
             ClientRequest filteredRequest = ClientRequest.from(clientRequest)
-                .url(newUrl)
-                .build();
+                    .url(newUrl)
+                    .build();
             return nextFilter.exchange(filteredRequest);
         };
         return urlModifyingFilter;

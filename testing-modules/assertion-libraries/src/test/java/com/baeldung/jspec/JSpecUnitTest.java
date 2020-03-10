@@ -21,7 +21,7 @@ public class JSpecUnitTest {
         the(1 + 2).shouldEqual(3);
         it(1 + 2).shouldEqual(3);
     }
-    
+
     @Test
     public void messageShouldContainJSpec() {
         String message = "Welcome to JSpec demo";
@@ -43,7 +43,7 @@ public class JSpecUnitTest {
         $(guessedNumber).shouldEqual(hiddenNumber);
         $(guessedNumber).shouldNotBeTheSameAs(hiddenNumber);
     }
-    
+
     @Test
     public void dividingByThero_shouldThrowArithmeticException() {
         expect(new ExceptionExpectation<ArithmeticException>(ArithmeticException.class) {
@@ -51,7 +51,7 @@ public class JSpecUnitTest {
             public void exec() throws ArithmeticException {
                 System.out.println(1 / 0);
             }
-        } );
+        });
     }
 
 }

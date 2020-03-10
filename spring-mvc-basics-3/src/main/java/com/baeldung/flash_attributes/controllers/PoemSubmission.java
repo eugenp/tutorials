@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.RedirectView;
+
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,9 +30,9 @@ public class PoemSubmission {
 
     @PostMapping("/poem/submit")
     public RedirectView submitPost(
-        HttpServletRequest request, 
-        @ModelAttribute Poem poem, 
-        RedirectAttributes redirectAttributes) {
+            HttpServletRequest request,
+            @ModelAttribute Poem poem,
+            RedirectAttributes redirectAttributes) {
         if (Poem.isValidPoem(poem)) {
             redirectAttributes.addFlashAttribute("poem", poem);
             return new RedirectView("/poem/success", true);

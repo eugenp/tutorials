@@ -46,7 +46,7 @@ public class Foo {
 
     public Foo deepCopy() {
         return new Foo(
-          this.id, this.name, this.parent != null ? this.parent.deepCopy() : null);
+                this.id, this.name, this.parent != null ? this.parent.deepCopy() : null);
     }
 
 }

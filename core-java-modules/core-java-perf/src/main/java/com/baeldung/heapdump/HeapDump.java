@@ -13,7 +13,7 @@ public class HeapDump {
     public static void dumpHeap(String filePath, boolean live) throws IOException {
         MBeanServer server = ManagementFactory.getPlatformMBeanServer();
         HotSpotDiagnosticMXBean mxBean = ManagementFactory.newPlatformMXBeanProxy(
-          server, "com.sun.management:type=HotSpotDiagnostic", HotSpotDiagnosticMXBean.class);
+                server, "com.sun.management:type=HotSpotDiagnostic", HotSpotDiagnosticMXBean.class);
         mxBean.dumpHeap(filePath, live);
     }
 

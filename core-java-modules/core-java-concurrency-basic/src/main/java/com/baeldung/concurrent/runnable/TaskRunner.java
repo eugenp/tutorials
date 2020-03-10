@@ -14,7 +14,7 @@ public class TaskRunner {
     }
 
     private static void executeTask() {
-        executorService= Executors.newSingleThreadExecutor();
+        executorService = Executors.newSingleThreadExecutor();
 
         EventLoggingTask task = new EventLoggingTask();
 

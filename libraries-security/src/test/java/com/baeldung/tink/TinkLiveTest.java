@@ -96,7 +96,7 @@ public class TinkLiveTest {
 
         byte[] plaintextDecrypted = hybridDecrypt.decrypt(ciphertext, contextInfo.getBytes());
 
-        Assert.assertEquals(PLAINTEXT,new String(plaintextDecrypted));
+        Assert.assertEquals(PLAINTEXT, new String(plaintextDecrypted));
     }
 }
 

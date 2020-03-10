@@ -91,7 +91,7 @@ public class NotOperator {
     public static void exitEarlyExample() {
         boolean isValid = false;
 
-        if(!isValid) {
+        if (!isValid) {
             throw new IllegalArgumentException("Invalid input");
         }
         // Code to execute when isValid == true goes here

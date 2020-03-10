@@ -22,7 +22,7 @@ public class MockitoExceptionUnitTest {
     public void whenConfigVoidRetunMethodToThrowEx_thenExIsThrown() {
         MyDictionary dictMock = mock(MyDictionary.class);
         doThrow(IllegalStateException.class).when(dictMock)
-            .add(anyString(), anyString());
+                .add(anyString(), anyString());
 
         dictMock.add("word", "meaning");
     }
@@ -39,7 +39,7 @@ public class MockitoExceptionUnitTest {
     public void whenConfigVoidRetunMethodToThrowExWithNewExObj_thenExIsThrown() {
         MyDictionary dictMock = mock(MyDictionary.class);
         doThrow(new IllegalStateException("Error occurred")).when(dictMock)
-            .add(anyString(), anyString());
+                .add(anyString(), anyString());
 
         dictMock.add("word", "meaning");
     }

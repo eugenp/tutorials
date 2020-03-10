@@ -9,25 +9,25 @@ public class StringSplitUnitTest {
     @Test
     public void givenCoreJava_whenSplittingStrings_thenSplitted() {
         String expected[] = {
-          "john",
-          "peter",
-          "mary"
+                "john",
+                "peter",
+                "mary"
         };
-        
+
         String[] splitted = "john,peter,mary".split(",");
-        assertArrayEquals( expected, splitted );
+        assertArrayEquals(expected, splitted);
     }
-    
+
     @Test
     public void givenApacheCommons_whenSplittingStrings_thenSplitted() {
         String expected[] = {
-          "john",
-          "peter",
-          "mary"
+                "john",
+                "peter",
+                "mary"
         };
         String[] splitted = StringUtils.split("john peter mary");
-        assertArrayEquals( expected, splitted );
+        assertArrayEquals(expected, splitted);
     }
-    
-    
+
+
 }

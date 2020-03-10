@@ -12,7 +12,7 @@ public class StandardProcessor implements Processor {
     public String getModel() {
         return model;
     }
-    
+
     @Override
     public String toString() {
         return "Processor{" + "model=" + model + "}";

@@ -19,7 +19,7 @@ public class CRDTUnitTest {
         crdtStore1.connect(crdtStore2);
 
         final GSet<String> replica1 = crdtStore1.createGSet("ID_1");
-        final GSet<String> replica2 = crdtStore2.<String> findGSet("ID_1").get();
+        final GSet<String> replica2 = crdtStore2.<String>findGSet("ID_1").get();
 
         // when
         replica1.add("apple");
@@ -121,7 +121,7 @@ public class CRDTUnitTest {
         crdtStore1.connect(crdtStore2);
 
         final LWWRegister<String> replica1 = crdtStore1.createLWWRegister("ID_1");
-        final LWWRegister<String> replica2 = crdtStore2.<String> findLWWRegister("ID_1").get();
+        final LWWRegister<String> replica2 = crdtStore2.<String>findLWWRegister("ID_1").get();
 
         // when
         replica1.set("apple");

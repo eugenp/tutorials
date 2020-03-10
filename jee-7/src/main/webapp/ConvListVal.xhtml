@@ -11,40 +11,40 @@
     <h:form id="myForm">
         <h:outputLabel value="Age:"/>
         <h:inputText id="age" value="#{convListVal.age}">
-            <f:converter converterId="javax.faces.Integer" />
+            <f:converter converterId="javax.faces.Integer"/>
         </h:inputText>
-        <h:message id="ageError" for="age" />
+        <h:message id="ageError" for="age"/>
         <br/>
         <h:outputLabel value="Average:"/>
         <h:inputText id="average" value="#{convListVal.average}">
-            <f:converter converterId="javax.faces.Double" />
+            <f:converter converterId="javax.faces.Double"/>
         </h:inputText>
-        <h:message id = "averageError" for="average" />
+        <h:message id="averageError" for="average"/>
         <br/>
-		<h:outputLabel value="Date:"/>
+        <h:outputLabel value="Date:"/>
         <h:inputText id="myDate" value="#{convListVal.myDate}">
-        	<f:convertDateTime pattern="dd/MM/yyyy" />
+            <f:convertDateTime pattern="dd/MM/yyyy"/>
         </h:inputText>
-        <h:message id="myDateError" for="myDate" />
+        <h:message id="myDateError" for="myDate"/>
         <br/>
         <h:outputText value="#{convListVal.myDate}">
-	        <f:convertDateTime dateStyle="full" locale="en"/>
+            <f:convertDateTime dateStyle="full" locale="en"/>
         </h:outputText>
         <br/>
         <h:outputLabel value="Name:"/>
-		<h:inputText id="name" size="30" value="#{convListVal.name}">
-    		<f:valueChangeListener type="com.baeldung.convListVal.MyListener" />
-		</h:inputText>
+        <h:inputText id="name" size="30" value="#{convListVal.name}">
+            <f:valueChangeListener type="com.baeldung.convListVal.MyListener"/>
+        </h:inputText>
         <br/>
-		<h:outputLabel value="surname" for="surname"/>
-		<h:panelGroup>
-		    <h:inputText id="surname" value="#{convListVal.surname}">
-		        <f:validateLength minimum="5" maximum="10"/>
-		    </h:inputText>
-		    <h:message id="surnameError" for="surname" errorStyle="color:red"  />
-		</h:panelGroup>
+        <h:outputLabel value="surname" for="surname"/>
+        <h:panelGroup>
+            <h:inputText id="surname" value="#{convListVal.surname}">
+                <f:validateLength minimum="5" maximum="10"/>
+            </h:inputText>
+            <h:message id="surnameError" for="surname" errorStyle="color:red"/>
+        </h:panelGroup>
         <br/>
-        <h:commandButton id="send" value="submit" type="submit" />
+        <h:commandButton id="send" value="submit" type="submit"/>
     </h:form>
 </h:body>
 </html>

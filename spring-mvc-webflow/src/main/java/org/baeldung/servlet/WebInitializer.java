@@ -14,7 +14,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     // API
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] { WebMvcConfig.class, WebFlowConfig.class };
+        return new Class<?>[]{WebMvcConfig.class, WebFlowConfig.class};
     }
 
     @Override
@@ -24,7 +24,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected String[] getServletMappings() {
-        return new String[] { "/" };
+        return new String[]{"/"};
     }
 
     @Override

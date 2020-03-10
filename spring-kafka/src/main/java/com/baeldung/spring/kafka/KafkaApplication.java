@@ -29,7 +29,7 @@ public class KafkaApplication {
         MessageProducer producer = context.getBean(MessageProducer.class);
         MessageListener listener = context.getBean(MessageListener.class);
         /*
-         * Sending a Hello World message to topic 'baeldung'. 
+         * Sending a Hello World message to topic 'baeldung'.
          * Must be recieved by both listeners with group foo
          * and bar with containerFactory fooKafkaListenerContainerFactory
          * and barKafkaListenerContainerFactory respectively.
@@ -61,7 +61,7 @@ public class KafkaApplication {
 
         /*
          * Sending message to 'greeting' topic. This will send
-         * and recieved a java object with the help of 
+         * and recieved a java object with the help of
          * greetingKafkaListenerContainerFactory.
          */
         producer.sendGreetingMessage(new Greeting("Greetings", "World!"));
@@ -109,7 +109,7 @@ public class KafkaApplication {
                 @Override
                 public void onSuccess(SendResult<String, String> result) {
                     System.out.println("Sent message=[" + message + "] with offset=[" + result.getRecordMetadata()
-                        .offset() + "]");
+                            .offset() + "]");
                 }
 
                 @Override
@@ -160,7 +160,7 @@ public class KafkaApplication {
             latch.countDown();
         }
 
-        @KafkaListener(topicPartitions = @TopicPartition(topic = "${partitioned.topic.name}", partitions = { "0", "3" }), containerFactory = "partitionsKafkaListenerContainerFactory")
+        @KafkaListener(topicPartitions = @TopicPartition(topic = "${partitioned.topic.name}", partitions = {"0", "3"}), containerFactory = "partitionsKafkaListenerContainerFactory")
         public void listenToParition(@Payload String message, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
             System.out.println("Received Message: " + message + " from partition: " + partition);
             this.partitionLatch.countDown();

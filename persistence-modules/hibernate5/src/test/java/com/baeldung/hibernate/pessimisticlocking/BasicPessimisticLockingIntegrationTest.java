@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class BasicPessimisticLockingIntegrationTest {
-    
+
     private static SessionFactory sessionFactory;
 
     @BeforeClass
@@ -25,7 +25,7 @@ public class BasicPessimisticLockingIntegrationTest {
         entityManager.persist(course);
         entityManager.persist(student);
         entityManager.getTransaction()
-            .commit();
+                .commit();
         entityManager.close();
     }
 
@@ -113,7 +113,7 @@ public class BasicPessimisticLockingIntegrationTest {
             resultStudent2.setName("Change");
             entityManager2.persist(resultStudent2);
             entityManager2.getTransaction()
-                .commit();
+                    .commit();
 
             entityManager.close();
             entityManager2.close();
@@ -134,7 +134,7 @@ public class BasicPessimisticLockingIntegrationTest {
             resultStudent2.setName("Change");
             entityManager2.persist(resultStudent2);
             entityManager2.getTransaction()
-                .commit();
+                    .commit();
 
             entityManager.close();
             entityManager2.close();
@@ -153,7 +153,7 @@ public class BasicPessimisticLockingIntegrationTest {
 
         return entityManager;
     }
-    
+
     @AfterClass
     public static void afterTests() {
         sessionFactory.close();

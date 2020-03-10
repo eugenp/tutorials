@@ -5,36 +5,36 @@ import java.util.List;
 
 public class Person {
 
-	private Integer personId;
-	private String name;
-	private List<Address> addresses;
+    private Integer personId;
+    private String name;
+    private List<Address> addresses;
 
-	public Person() {
-	}
+    public Person() {
+    }
 
-	public Person(Integer personId, String name) {
-		this.personId = personId;
-		this.name = name;
-		addresses = new ArrayList<Address>();
-	}
+    public Person(Integer personId, String name) {
+        this.personId = personId;
+        this.name = name;
+        addresses = new ArrayList<Address>();
+    }
 
-	public Person(String name) {
-		this.name = name;
-	}
+    public Person(String name) {
+        this.name = name;
+    }
 
-	public Integer getPersonId() {
-		return personId;
-	}
+    public Integer getPersonId() {
+        return personId;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void addAddress(Address address) {
-		addresses.add(address);
-	}
+    public void addAddress(Address address) {
+        addresses.add(address);
+    }
 
-	public List<Address> getAddresses() {
-		return addresses;
-	}
+    public List<Address> getAddresses() {
+        return addresses;
+    }
 }

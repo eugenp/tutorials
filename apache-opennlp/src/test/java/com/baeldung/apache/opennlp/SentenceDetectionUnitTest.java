@@ -1,9 +1,12 @@
 package com.baeldung.apache.opennlp;
 
 import java.io.InputStream;
+
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
+
 import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 
 public class SentenceDetectionUnitTest {

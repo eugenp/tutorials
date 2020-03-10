@@ -29,7 +29,7 @@ import com.baeldung.thymeleaf.config.WebMVCSecurity;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { WebApp.class, WebMVCConfig.class, WebMVCSecurity.class, InitSecurity.class })
+@ContextConfiguration(classes = {WebApp.class, WebMVCConfig.class, WebMVCSecurity.class, InitSecurity.class})
 public class FragmentsIntegrationTest {
 
     @Autowired
@@ -50,38 +50,40 @@ public class FragmentsIntegrationTest {
     public void setup() {
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).addFilters(springSecurityFilterChain).build();
     }
+
     @Test
     public void whenAccessingFragmentsRoute_thenViewHasExpectedContent() throws Exception {
         this.mockMvc
-            .perform(get("/fragments").with(testUser()))
-            .andDo(print())
-            .andExpect(status().isOk())
-            .andExpect(content().string(containsString("<title>Thymeleaf Fragments: home</title>")));
+                .perform(get("/fragments").with(testUser()))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("<title>Thymeleaf Fragments: home</title>")));
     }
-    
+
     @Test
     public void whenAccessingParamsRoute_thenViewHasExpectedContent() throws Exception {
         this.mockMvc
-            .perform(get("/params").with(testUser()))
-            .andDo(print())
-            .andExpect(status().isOk())
-            .andExpect(content().string(containsString("<span>Name</span>")));
+                .perform(get("/params").with(testUser()))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("<span>Name</span>")));
     }
-    
+
     @Test
     public void whenAccessingMarkupRoute_thenViewHasExpectedContent() throws Exception {
         this.mockMvc
-            .perform(get("/markup").with(testUser()))
-            .andDo(print())
-            .andExpect(status().isOk())
-            .andExpect(content().string(containsString("<div class=\"another\">This is another sidebar</div>")));
+                .perform(get("/markup").with(testUser()))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("<div class=\"another\">This is another sidebar</div>")));
     }
+
     @Test
     public void whenAccessingOtherRoute_thenViewHasExpectedContent() throws Exception {
         this.mockMvc
-            .perform(get("/other").with(testUser()))
-            .andDo(print())
-            .andExpect(status().isOk())
-            .andExpect(content().string(containsString("<td>John Smith</td>")));
+                .perform(get("/other").with(testUser()))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("<td>John Smith</td>")));
     }
 }

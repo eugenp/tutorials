@@ -36,15 +36,15 @@ public class LogsResourceIntTest {
     public void setup() {
         LogsResource logsResource = new LogsResource();
         this.restLogsMockMvc = MockMvcBuilders
-            .standaloneSetup(logsResource)
-            .build();
+                .standaloneSetup(logsResource)
+                .build();
     }
 
     @Test
     public void getAllLogs() throws Exception {
         restLogsMockMvc.perform(get("/management/logs"))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
     }
 
     @Test
@@ -54,9 +54,9 @@ public class LogsResourceIntTest {
         logger.setName("ROOT");
 
         restLogsMockMvc.perform(put("/management/logs")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(logger)))
-            .andExpect(status().isNoContent());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(logger)))
+                .andExpect(status().isNoContent());
     }
 
     @Test

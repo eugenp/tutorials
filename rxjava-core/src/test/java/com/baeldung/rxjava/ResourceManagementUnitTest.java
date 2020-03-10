@@ -12,18 +12,18 @@ public class ResourceManagementUnitTest {
 
         String[] result = {""};
         Observable<Character> values = Observable.using(
-          () -> "MyResource",
-          r -> Observable.create(o -> {
-              for (Character c : r.toCharArray())
-                  o.onNext(c);
-              o.onCompleted();
-          }),
-          r -> System.out.println("Disposed: " + r)
+                () -> "MyResource",
+                r -> Observable.create(o -> {
+                    for (Character c : r.toCharArray())
+                        o.onNext(c);
+                    o.onCompleted();
+                }),
+                r -> System.out.println("Disposed: " + r)
         );
 
         values.subscribe(
-          v -> result[0] += v,
-          e -> result[0] += e
+                v -> result[0] += v,
+                e -> result[0] += e
         );
         assertTrue(result[0].equals("MyResource"));
     }

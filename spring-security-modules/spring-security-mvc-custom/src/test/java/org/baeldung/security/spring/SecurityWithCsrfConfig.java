@@ -22,7 +22,7 @@ public class SecurityWithCsrfConfig extends WebSecurityConfigurerAdapter {
     @Bean("authenticationManager")
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
-            return super.authenticationManagerBean();
+        return super.authenticationManagerBean();
     }
 
     @Override
@@ -39,13 +39,13 @@ public class SecurityWithCsrfConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
         http
-        .authorizeRequests()
-        .antMatchers("/auth/admin/*").hasAnyRole("ROLE_ADMIN")
-        .anyRequest().authenticated()
-        .and()
-        .httpBasic()
-        .and()
-        .headers().cacheControl().disable()
+                .authorizeRequests()
+                .antMatchers("/auth/admin/*").hasAnyRole("ROLE_ADMIN")
+                .anyRequest().authenticated()
+                .and()
+                .httpBasic()
+                .and()
+                .headers().cacheControl().disable()
         ;
         // @formatter:on
     }

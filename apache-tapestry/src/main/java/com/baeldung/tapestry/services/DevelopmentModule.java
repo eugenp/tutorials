@@ -9,7 +9,7 @@ import org.apache.tapestry5.ioc.MappedConfiguration;
  */
 public class DevelopmentModule {
     public static void contributeApplicationDefaults(
-        MappedConfiguration<String, Object> configuration) {
+            MappedConfiguration<String, Object> configuration) {
         // The factory default is true but during the early stages of an application
         // overriding to false is a good idea. In addition, this is often overridden
         // on the command line as -Dtapestry.production-mode=false

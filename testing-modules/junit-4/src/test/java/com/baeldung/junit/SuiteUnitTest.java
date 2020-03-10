@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-  AdditionUnitTest.class,
-  SubstractionUnitTest.class})
+        AdditionUnitTest.class,
+        SubstractionUnitTest.class})
 public class SuiteUnitTest {
 }

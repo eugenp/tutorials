@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Component("loggingFilter")
 public class CustomFilter implements Filter {
-    
+
     private static Logger LOGGER = LoggerFactory.getLogger(CustomFilter.class);
 
     @Override
@@ -24,8 +24,8 @@ public class CustomFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, 
-            FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response,
+                         FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         LOGGER.info("Request Info : " + req);
         chain.doFilter(request, response);

@@ -11,7 +11,7 @@ class IsOperatorTest {
     fun givenSampleValue_whenUsingIsOperatorInIfStatement_thenItCastsAutomaticallyToString() {
         val value: Any = "string"
 
-        if(value is String) {
+        if (value is String) {
             assertEquals(6, value.length)
         }
     }
@@ -27,7 +27,7 @@ class IsOperatorTest {
     fun givenSampleValue_whenUsingWithWhenOperator_thenItCastsAutomaticallyToString() {
         val value: Any = "string"
 
-        when(value) {
+        when (value) {
             is String -> assertEquals(6, value.length)
             is Int -> assertEquals(6, value.absoluteValue)
         }

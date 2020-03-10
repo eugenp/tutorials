@@ -20,31 +20,31 @@ public class ShiroSpringController {
 
     @GetMapping("/")
     public String index() {
-       return "index";
+        return "index";
     }
 
-    @RequestMapping( value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
     public String login(HttpServletRequest req, UserCredentials cred, RedirectAttributes attr) {
 
-      if(req.getMethod().equals(RequestMethod.GET.toString())) {
-        return "login";
-      } else {
-        Subject subject = SecurityUtils.getSubject();
+        if (req.getMethod().equals(RequestMethod.GET.toString())) {
+            return "login";
+        } else {
+            Subject subject = SecurityUtils.getSubject();
 
-        if(!subject.isAuthenticated()) {
-          UsernamePasswordToken token = new UsernamePasswordToken(
-            cred.getUsername(), cred.getPassword(), cred.isRememberMe());
-          try {
-            subject.login(token);
-          } catch (AuthenticationException ae) {
-              ae.printStackTrace();
-              attr.addFlashAttribute("error", "Invalid Credentials");
-              return "redirect:/login";
-          }
+            if (!subject.isAuthenticated()) {
+                UsernamePasswordToken token = new UsernamePasswordToken(
+                        cred.getUsername(), cred.getPassword(), cred.isRememberMe());
+                try {
+                    subject.login(token);
+                } catch (AuthenticationException ae) {
+                    ae.printStackTrace();
+                    attr.addFlashAttribute("error", "Invalid Credentials");
+                    return "redirect:/login";
+                }
+            }
+
+            return "redirect:/secure";
         }
-
-        return "redirect:/secure";
-      }
     }
 
 
@@ -54,30 +54,28 @@ public class ShiroSpringController {
         Subject currentUser = SecurityUtils.getSubject();
         String role = "", permission = "";
 
-        if(currentUser.hasRole("admin")) {
-            role = role  + "You are an Admin";
-        }
-        else if(currentUser.hasRole("editor")) {
+        if (currentUser.hasRole("admin")) {
+            role = role + "You are an Admin";
+        } else if (currentUser.hasRole("editor")) {
             role = role + "You are an Editor";
-        }
-        else if(currentUser.hasRole("author")) {
+        } else if (currentUser.hasRole("author")) {
             role = role + "You are an Author";
         }
 
-        if(currentUser.isPermitted("articles:compose")) {
+        if (currentUser.isPermitted("articles:compose")) {
             permission = permission + "You can compose an article, ";
         } else {
             permission = permission + "You are not permitted to compose an article!, ";
         }
 
-        if(currentUser.isPermitted("articles:save")) {
+        if (currentUser.isPermitted("articles:save")) {
             permission = permission + "You can save articles, ";
         } else {
             permission = permission + "\nYou can not save articles, ";
         }
 
-        if(currentUser.isPermitted("articles:publish")) {
-            permission = permission  + "\nYou can publish articles";
+        if (currentUser.isPermitted("articles:publish")) {
+            permission = permission + "\nYou can publish articles";
         } else {
             permission = permission + "\nYou can not publish articles";
         }
@@ -92,9 +90,9 @@ public class ShiroSpringController {
 
     @PostMapping("/logout")
     public String logout() {
-       Subject subject = SecurityUtils.getSubject();
-       subject.logout();
-       return "redirect:/";
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return "redirect:/";
     }
 
 }

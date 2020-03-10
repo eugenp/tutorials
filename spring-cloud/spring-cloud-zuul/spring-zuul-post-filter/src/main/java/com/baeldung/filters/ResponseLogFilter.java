@@ -18,7 +18,7 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 public class ResponseLogFilter extends ZuulFilter {
 
     private Logger logger = LoggerFactory.getLogger(ResponseLogFilter.class);
-    
+
     @Override
     public String filterType() {
         return POST_TYPE;
@@ -40,7 +40,7 @@ public class ResponseLogFilter extends ZuulFilter {
         RequestContext context = RequestContext.getCurrentContext();
         try (final InputStream responseDataStream = context.getResponseDataStream()) {
 
-            if(responseDataStream == null) {
+            if (responseDataStream == null) {
                 logger.info("BODY: {}", "");
                 return null;
             }
@@ -49,8 +49,7 @@ public class ResponseLogFilter extends ZuulFilter {
             logger.info("BODY: {}", responseData);
 
             context.setResponseBody(responseData);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new ZuulException(e, INTERNAL_SERVER_ERROR.value(), e.getMessage());
         }
 

@@ -14,10 +14,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * 
  * This test requires:
  * * mongodb instance running on the environment
- *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
@@ -47,10 +45,10 @@ public class UserRepositoryProjectionLiveTest {
         mongoOps.insert(new User("Ringo", 35));
 
         userRepository.findNameAndId()
-            .forEach(user -> {
-                assertNotNull(user.getName());
-                assertTrue(user.getAge().equals(0));
-            });
+                .forEach(user -> {
+                    assertNotNull(user.getName());
+                    assertTrue(user.getAge().equals(0));
+                });
     }
 
     @Test
@@ -59,10 +57,10 @@ public class UserRepositoryProjectionLiveTest {
         mongoOps.insert(new User("Ringo", 35));
 
         userRepository.findNameAndAgeExcludeId()
-            .forEach(user -> {
-                assertNull(user.getId());
-                assertNotNull(user.getAge());
-            });
+                .forEach(user -> {
+                    assertNull(user.getId());
+                    assertNotNull(user.getAge());
+                });
     }
 
 }

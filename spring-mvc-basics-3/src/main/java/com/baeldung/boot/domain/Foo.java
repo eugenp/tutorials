@@ -1,10 +1,11 @@
 package com.baeldung.boot.domain;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
+
 public class Foo extends AbstractEntity {
 
     private String name;
-    
+
     public Foo(long id) {
         super(id);
         name = randomAlphanumeric(4);
@@ -27,5 +28,5 @@ public class Foo extends AbstractEntity {
     public String toString() {
         return "Foo [name=" + name + ", id=" + id + "]";
     }
-    
+
 }

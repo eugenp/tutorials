@@ -16,7 +16,7 @@ public class HelloWorldService {
     private final Cache<String, String> passivatingHelloWorldCache;
 
     public HelloWorldService(HelloWorldRepository repository, CacheListener listener, Cache<String, String> simpleHelloWorldCache, Cache<String, String> expiringHelloWorldCache, Cache<String, String> evictingHelloWorldCache,
-            Cache<String, String> passivatingHelloWorldCache) {
+                             Cache<String, String> passivatingHelloWorldCache) {
 
         this.repository = repository;
 

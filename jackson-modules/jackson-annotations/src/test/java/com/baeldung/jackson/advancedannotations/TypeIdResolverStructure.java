@@ -105,11 +105,11 @@ public class TypeIdResolverStructure {
         public String idFromValueAndType(Object obj, Class<?> subType) {
             String typeId = null;
             switch (subType.getSimpleName()) {
-            case "FirstBean":
-                typeId = "bean1";
-                break;
-            case "LastBean":
-                typeId = "bean2";
+                case "FirstBean":
+                    typeId = "bean1";
+                    break;
+                case "LastBean":
+                    typeId = "bean2";
             }
             return typeId;
         }
@@ -118,11 +118,11 @@ public class TypeIdResolverStructure {
         public JavaType typeFromId(DatabindContext context, String id) {
             Class<?> subType = null;
             switch (id) {
-            case "bean1":
-                subType = FirstBean.class;
-                break;
-            case "bean2":
-                subType = LastBean.class;
+                case "bean1":
+                    subType = FirstBean.class;
+                    break;
+                case "bean2":
+                    subType = LastBean.class;
             }
             return context.constructSpecializedType(superType, subType);
         }

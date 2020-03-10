@@ -20,7 +20,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 public class SecuredDirectChannel {
 
     @Bean(name = "startDirectChannel")
-    @SecuredChannel(interceptor = "channelSecurityInterceptor", sendAccess = { "ROLE_VIEWER", "jane" })
+    @SecuredChannel(interceptor = "channelSecurityInterceptor", sendAccess = {"ROLE_VIEWER", "jane"})
     public DirectChannel startDirectChannel() {
         return new DirectChannel();
     }
@@ -33,7 +33,7 @@ public class SecuredDirectChannel {
     }
 
     @Bean(name = "endDirectChannel")
-    @SecuredChannel(interceptor = "channelSecurityInterceptor", sendAccess = { "ROLE_EDITOR" })
+    @SecuredChannel(interceptor = "channelSecurityInterceptor", sendAccess = {"ROLE_EDITOR"})
     public DirectChannel endDirectChannel() {
         return new DirectChannel();
     }

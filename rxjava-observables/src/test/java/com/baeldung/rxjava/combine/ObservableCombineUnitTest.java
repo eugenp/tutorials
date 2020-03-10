@@ -15,8 +15,8 @@ public class ObservableCombineUnitTest {
         TestSubscriber<String> testSubscriber = new TestSubscriber<>();
 
         Observable.merge(
-          Observable.from(asList("Hello", "World")),
-          Observable.from(asList("I love", "RxJava"))
+                Observable.from(asList("Hello", "World")),
+                Observable.from(asList("I love", "RxJava"))
         ).subscribe(testSubscriber);
 
         testSubscriber.assertValues("Hello", "World", "I love", "RxJava");
@@ -27,10 +27,10 @@ public class ObservableCombineUnitTest {
         TestSubscriber<String> testSubscriber = new TestSubscriber<>();
 
         Observable.zip(
-          Observable.from(asList("Simple", "Moderate", "Complex")),
-          Observable.from(asList("Solutions", "Success", "Hierarchy")),
-          (str1, str2) -> String.format("%s %s", str1, str2))
-          .subscribe(testSubscriber);
+                Observable.from(asList("Simple", "Moderate", "Complex")),
+                Observable.from(asList("Solutions", "Success", "Hierarchy")),
+                (str1, str2) -> String.format("%s %s", str1, str2))
+                .subscribe(testSubscriber);
 
         testSubscriber.assertValues("Simple Solutions", "Moderate Success", "Complex Hierarchy");
     }
@@ -40,9 +40,9 @@ public class ObservableCombineUnitTest {
         TestSubscriber<String> testSubscriber = new TestSubscriber<>();
 
         Observable.mergeDelayError(
-          Observable.from(asList("hello", "world")),
-          Observable.error(new RuntimeException("Some exception")),
-          Observable.from(asList("rxjava"))
+                Observable.from(asList("hello", "world")),
+                Observable.error(new RuntimeException("Some exception")),
+                Observable.from(asList("rxjava"))
         ).subscribe(testSubscriber);
 
         testSubscriber.assertValues("hello", "world", "rxjava");
@@ -57,8 +57,8 @@ public class ObservableCombineUnitTest {
         Observable<Long> interval = Observable.interval(1L, TimeUnit.SECONDS);
 
         Observable
-          .zip(data, interval, (strData, tick) -> String.format("[%d]=%s", tick, strData))
-          .toBlocking().subscribe(testSubscriber);
+                .zip(data, interval, (strData, tick) -> String.format("[%d]=%s", tick, strData))
+                .toBlocking().subscribe(testSubscriber);
 
         testSubscriber.assertCompleted();
         testSubscriber.assertValueCount(5);

@@ -8,7 +8,7 @@ import org.junit.Test
 class LibraryManagementTestMockitoKotlin {
     @Test(expected = IllegalStateException::class)
     fun whenBookIsNotAvailable_thenAnExceptionIsThrown() {
-        val mockBookService = mock<BookService>() 
+        val mockBookService = mock<BookService>()
 
         whenever(mockBookService.inStock(100)).thenReturn(false)
 
@@ -19,7 +19,7 @@ class LibraryManagementTestMockitoKotlin {
 
     @Test
     fun whenBookIsAvailable_thenLendMethodIsCalled() {
-        val mockBookService : BookService = mock()
+        val mockBookService: BookService = mock()
 
         whenever(mockBookService.inStock(100)).thenReturn(true)
 

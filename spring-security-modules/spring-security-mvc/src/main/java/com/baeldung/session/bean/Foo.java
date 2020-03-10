@@ -16,7 +16,7 @@ public class Foo {
 
     public Foo() {
         this.created = LocalDateTime.now()
-            .format(DateTimeFormatter.ISO_DATE_TIME);
+                .format(DateTimeFormatter.ISO_DATE_TIME);
     }
 
     public Foo(Foo theFoo) {

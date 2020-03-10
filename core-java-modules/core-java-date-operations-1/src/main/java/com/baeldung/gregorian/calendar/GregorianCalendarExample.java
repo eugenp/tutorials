@@ -16,23 +16,22 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 public class GregorianCalendarExample {
 
-   
+
     public Date setMonth(GregorianCalendar calendar, int amount) {
         calendar.set(Calendar.MONTH, amount);
         return calendar.getTime();
     }
 
-   
+
     public Date rollAdd(GregorianCalendar calendar, int amount) {
         calendar.roll(GregorianCalendar.MONTH, amount);
         return calendar.getTime();
     }
 
-    public  boolean isLeapYearExample(int year) {
+    public boolean isLeapYearExample(int year) {
         GregorianCalendar cal = (GregorianCalendar) GregorianCalendar.getInstance();
         return cal.isLeapYear(year);
     }
-
 
 
     public Date subtractDays(GregorianCalendar calendar, int daysToSubtract) {
@@ -54,7 +53,7 @@ public class GregorianCalendarExample {
 
     public Date toDate(XMLGregorianCalendar calendar) {
         return calendar.toGregorianCalendar()
-            .getTime();
+                .getTime();
     }
 
     public int compareDates(GregorianCalendar firstDate, GregorianCalendar secondDate) {
@@ -63,7 +62,7 @@ public class GregorianCalendarExample {
 
     public String formatDate(GregorianCalendar calendar) {
         return calendar.toZonedDateTime()
-            .format(DateTimeFormatter.ofPattern("d MMM uuuu"));
+                .format(DateTimeFormatter.ofPattern("d MMM uuuu"));
     }
 
 }

@@ -12,7 +12,7 @@ public class ArrayConvertToListUnitTest {
 
     @Test
     public void givenAnStringArray_whenConvertArrayToList_thenListCreated() {
-        String[] flowers = { "Ageratum", "Allium", "Poppy", "Catmint" };
+        String[] flowers = {"Ageratum", "Allium", "Poppy", "Catmint"};
         List<String> flowerList = Arrays.asList(flowers);
 
         assertNotNull(flowerList);
@@ -25,7 +25,7 @@ public class ArrayConvertToListUnitTest {
 
     @Test
     public void givenAnIntArray_whenConvertArrayToList_thenListWithOneElementCreated() {
-        int[] primitives = { 1, 2, 3, 4 };
+        int[] primitives = {1, 2, 3, 4};
         List numbers = Arrays.asList(primitives);
 
         assertNotNull(numbers);
@@ -35,7 +35,7 @@ public class ArrayConvertToListUnitTest {
 
     @Test(expected = UnsupportedOperationException.class)
     public void givenAnStringArray_whenConvertArrayToListAndAddAnElement_thenThrowUnsupportedOperationException() {
-        String[] flowers = { "Ageratum", "Allium", "Poppy", "Catmint" };
+        String[] flowers = {"Ageratum", "Allium", "Poppy", "Catmint"};
         List<String> flowerList = Arrays.asList(flowers);
 
         assertNotNull(flowerList);
@@ -50,7 +50,7 @@ public class ArrayConvertToListUnitTest {
 
     @Test(expected = UnsupportedOperationException.class)
     public void givenAnStringArray_whenConvertArrayToListAndRemoveAnElement_thenThrowUnsupportedOperationException() {
-        String[] flowers = { "Ageratum", "Allium", "Poppy", "Catmint" };
+        String[] flowers = {"Ageratum", "Allium", "Poppy", "Catmint"};
         List<String> flowerList = Arrays.asList(flowers);
 
         assertNotNull(flowerList);
@@ -65,7 +65,7 @@ public class ArrayConvertToListUnitTest {
 
     @Test
     public void givenAnStringArray_whenCreateListFromArrayAndAddAnElement_thenListOk() {
-        String[] flowers = { "Ageratum", "Allium", "Poppy", "Catmint" };
+        String[] flowers = {"Ageratum", "Allium", "Poppy", "Catmint"};
         List<String> flowerList = Arrays.asList(flowers);
 
         assertNotNull(flowerList);
@@ -93,10 +93,10 @@ public class ArrayConvertToListUnitTest {
 
     @Test
     public void givenAnStringArray_whenIterateArrayAndAddTheElementsToNewListAndAddAnElement_thenListOk() {
-        String[] flowers = { "Ageratum", "Allium", "Poppy", "Catmint" };
+        String[] flowers = {"Ageratum", "Allium", "Poppy", "Catmint"};
 
         List<String> flowerList = new ArrayList<>();
-        for(String flower: flowers) {
+        for (String flower : flowers) {
             flowerList.add(flower);
         }
 

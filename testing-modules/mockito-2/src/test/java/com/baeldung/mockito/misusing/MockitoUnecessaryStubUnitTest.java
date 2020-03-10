@@ -20,7 +20,7 @@ public class MockitoUnecessaryStubUnitTest {
 
     @Rule
     public ExpectedTestFailureRule rule = new ExpectedTestFailureRule(MockitoJUnit.rule()
-        .strictness(Strictness.STRICT_STUBS));
+            .strictness(Strictness.STRICT_STUBS));
 
     @Mock
     private ArrayList<String> mockList;
@@ -43,7 +43,7 @@ public class MockitoUnecessaryStubUnitTest {
     @Test
     public void givenLenientdStub_whenInvokingGetThenDontThrowUnnecessaryStubbingException() {
         lenient().when(mockList.add("one"))
-            .thenReturn(true);
+                .thenReturn(true);
         when(mockList.get(anyInt())).thenReturn("hello");
 
         assertEquals("List should contain hello", "hello", mockList.get(1));

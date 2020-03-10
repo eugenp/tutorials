@@ -8,16 +8,16 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class User {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String name;
-    
+
     @OneToOne
     Preference preference;
-    
+
     public String getName() {
         return name;
     }

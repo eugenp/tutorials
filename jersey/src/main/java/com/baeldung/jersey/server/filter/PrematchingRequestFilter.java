@@ -20,7 +20,7 @@ public class PrematchingRequestFilter implements ContainerRequestFilter {
     public void filter(ContainerRequestContext ctx) throws IOException {
         LOG.info("prematching filter");
         if (ctx.getMethod()
-            .equals("DELETE")) {
+                .equals("DELETE")) {
             LOG.info("\"Deleting request");
         }
     }

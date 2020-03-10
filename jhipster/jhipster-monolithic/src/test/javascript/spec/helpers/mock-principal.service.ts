@@ -1,5 +1,5 @@
-import { SpyObject } from './spyobject';
-import { Principal } from '../../../../main/webapp/app/shared/auth/principal.service';
+import {SpyObject} from './spyobject';
+import {Principal} from '../../../../main/webapp/app/shared/auth/principal.service';
 import Spy = jasmine.Spy;
 
 export class MockPrincipal extends SpyObject {

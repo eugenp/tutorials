@@ -23,17 +23,17 @@ public class MultipleOutputsWithConditionsServiceApplication {
     @StreamListener(target = MyProcessor.INPUT, condition = "payload < 10")
     public void routeValuesToAnOutput(Integer val) {
         processor.anOutput()
-            .send(message(val));
+                .send(message(val));
     }
 
     @StreamListener(target = MyProcessor.INPUT, condition = "payload >= 10")
     public void routeValuesToAnotherOutput(Integer val) {
         processor.anotherOutput()
-            .send(message(val));
+                .send(message(val));
     }
 
     private static final <T> Message<T> message(T val) {
         return MessageBuilder.withPayload(val)
-            .build();
+                .build();
     }
 }

@@ -22,7 +22,7 @@ public class CourseSchedule {
     private List<Lecture> lectureList;
     private HardSoftScore score;
 
-    public CourseSchedule(){
+    public CourseSchedule() {
         roomList = new ArrayList<>();
         periodList = new ArrayList<>();
         lectureList = new ArrayList<>();

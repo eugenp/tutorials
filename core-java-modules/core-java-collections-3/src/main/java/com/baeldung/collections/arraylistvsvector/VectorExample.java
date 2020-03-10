@@ -14,7 +14,7 @@ public class VectorExample {
         vector.add("example");
 
         Enumeration e = vector.elements();
-        while(e.hasMoreElements()){
+        while (e.hasMoreElements()) {
             System.out.println(e.nextElement());
         }
 

@@ -58,9 +58,9 @@ public class SerializeVersionedJsonResourceIntegrationTest {
         final var serializer = JsonSerializer.newBuilder(manager, writer, 1, 2).build();
         serializer.call();
         final var expectedJson = Files.readAllLines(JSON_TEST_RESULT_DIRECTORY.resolve("revision1And2.json"),
-                                                    StandardCharsets.UTF_8)
-                                      .stream()
-                                      .collect(Collectors.joining());
+                StandardCharsets.UTF_8)
+                .stream()
+                .collect(Collectors.joining());
         assertEquals(expectedJson, writer.toString());
     }
 
@@ -69,9 +69,9 @@ public class SerializeVersionedJsonResourceIntegrationTest {
         final var serializer = JsonSerializer.newBuilder(manager, writer).build();
         serializer.call();
         final var expectedJson = Files.readAllLines(JSON_TEST_RESULT_DIRECTORY.resolve("mostRecentRevision.json"),
-                                                    StandardCharsets.UTF_8)
-                                      .stream()
-                                      .collect(Collectors.joining());
+                StandardCharsets.UTF_8)
+                .stream()
+                .collect(Collectors.joining());
         assertEquals(expectedJson, writer.toString());
     }
 
@@ -80,9 +80,9 @@ public class SerializeVersionedJsonResourceIntegrationTest {
         final var serializer = JsonSerializer.newBuilder(manager, writer, -1).build();
         serializer.call();
         final var expectedJson = Files.readAllLines(JSON_TEST_RESULT_DIRECTORY.resolve("allRevisions.json"),
-                                                    StandardCharsets.UTF_8)
-                                      .stream()
-                                      .collect(Collectors.joining());
+                StandardCharsets.UTF_8)
+                .stream()
+                .collect(Collectors.joining());
         assertEquals(expectedJson, writer.toString());
     }
 }

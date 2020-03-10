@@ -50,7 +50,7 @@ public class GuavaMultiMapUnitTest {
 
         //when
         List<String> values = map.get(key);
-        if(values == null){
+        if (values == null) {
             values = new LinkedList<>();
             values.add("firstValue");
             values.add("secondValue");

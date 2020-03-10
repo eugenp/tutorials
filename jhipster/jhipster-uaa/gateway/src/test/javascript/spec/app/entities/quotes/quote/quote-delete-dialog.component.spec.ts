@@ -1,12 +1,12 @@
 /* tslint:disable max-line-length */
-import { ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable, of } from 'rxjs';
-import { JhiEventManager } from 'ng-jhipster';
+import {ComponentFixture, TestBed, inject, fakeAsync, tick} from '@angular/core/testing';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {Observable, of} from 'rxjs';
+import {JhiEventManager} from 'ng-jhipster';
 
-import { GatewayTestModule } from '../../../../test.module';
-import { QuoteDeleteDialogComponent } from 'app/entities/quotes/quote/quote-delete-dialog.component';
-import { QuoteService } from 'app/entities/quotes/quote/quote.service';
+import {GatewayTestModule} from '../../../../test.module';
+import {QuoteDeleteDialogComponent} from 'app/entities/quotes/quote/quote-delete-dialog.component';
+import {QuoteService} from 'app/entities/quotes/quote/quote.service';
 
 describe('Component Tests', () => {
     describe('Quote Management Delete Component', () => {

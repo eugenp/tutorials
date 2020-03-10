@@ -21,7 +21,7 @@ import com.baeldung.si.security.SecuredDirectChannel;
 import com.baeldung.si.security.SecurityConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SecurityConfig.class, SecuredDirectChannel.class, MessageConsumer.class })
+@ContextConfiguration(classes = {SecurityConfig.class, SecuredDirectChannel.class, MessageConsumer.class})
 public class TestSpringIntegrationSecurityIntegrationTest {
 
     @Rule
@@ -41,9 +41,9 @@ public class TestSpringIntegrationSecurityIntegrationTest {
     }
 
     @Test
-    @WithMockUser(username = "jane", roles = { "LOGGER" })
+    @WithMockUser(username = "jane", roles = {"LOGGER"})
     public void givenRoleLogger_whenSendMessageToDirectChannel_thenAccessDenied() {
-        expectedException.expectCause(IsInstanceOf.<Throwable> instanceOf(AccessDeniedException.class));
+        expectedException.expectCause(IsInstanceOf.<Throwable>instanceOf(AccessDeniedException.class));
 
         startDirectChannel.send(new GenericMessage<String>(DIRECT_CHANNEL_MESSAGE));
     }
@@ -51,28 +51,28 @@ public class TestSpringIntegrationSecurityIntegrationTest {
     @Test
     @WithMockUser(username = "jane")
     public void givenJane_whenSendMessageToDirectChannel_thenAccessDenied() {
-        expectedException.expectCause(IsInstanceOf.<Throwable> instanceOf(AccessDeniedException.class));
+        expectedException.expectCause(IsInstanceOf.<Throwable>instanceOf(AccessDeniedException.class));
 
         startDirectChannel.send(new GenericMessage<String>(DIRECT_CHANNEL_MESSAGE));
     }
 
     @Test
-    @WithMockUser(roles = { "VIEWER" })
+    @WithMockUser(roles = {"VIEWER"})
     public void givenRoleViewer_whenSendToDirectChannel_thenAccessDenied() {
-        expectedException.expectCause(IsInstanceOf.<Throwable> instanceOf(AccessDeniedException.class));
+        expectedException.expectCause(IsInstanceOf.<Throwable>instanceOf(AccessDeniedException.class));
 
         startDirectChannel.send(new GenericMessage<String>(DIRECT_CHANNEL_MESSAGE));
     }
 
     @Test
-    @WithMockUser(roles = { "LOGGER", "VIEWER", "EDITOR" })
+    @WithMockUser(roles = {"LOGGER", "VIEWER", "EDITOR"})
     public void givenRoleLoggerAndUser_whenSendMessageToDirectChannel_thenFlowCompletedSuccessfully() {
         startDirectChannel.send(new GenericMessage<String>(DIRECT_CHANNEL_MESSAGE));
         assertEquals(DIRECT_CHANNEL_MESSAGE, messageConsumer.getMessageContent());
     }
 
     @Test
-    @WithMockUser(username = "jane", roles = { "LOGGER", "EDITOR" })
+    @WithMockUser(username = "jane", roles = {"LOGGER", "EDITOR"})
     public void givenJaneLoggerEditor_whenSendToDirectChannel_thenFlowCompleted() {
         startDirectChannel.send(new GenericMessage<String>(DIRECT_CHANNEL_MESSAGE));
         assertEquals(DIRECT_CHANNEL_MESSAGE, messageConsumer.getMessageContent());

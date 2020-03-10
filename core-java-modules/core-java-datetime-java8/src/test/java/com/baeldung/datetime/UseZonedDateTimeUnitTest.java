@@ -43,12 +43,12 @@ public class UseZonedDateTimeUnitTest {
         ZonedDateTime startOfOfDayAtMidnightTime = zonedDateTime.getStartOfDayAtMidnightTime(zonedGiven);
 
         assertThat(startOfOfDayWithMethod).isEqualTo(startOfOfDayWithShorthandMethod)
-            .isEqualTo(startOfOfDayFromZonedDateTime)
-            .isEqualTo(startOfOfDayAtMinTime)
-            .isEqualTo(startOfOfDayAtMidnightTime);
+                .isEqualTo(startOfOfDayFromZonedDateTime)
+                .isEqualTo(startOfOfDayAtMinTime)
+                .isEqualTo(startOfOfDayAtMidnightTime);
         assertThat(startOfOfDayWithMethod.toLocalTime()).isEqualTo(LocalTime.MIDNIGHT);
         assertThat(startOfOfDayWithMethod.toLocalTime()
-            .toString()).isEqualTo("00:00");
+                .toString()).isEqualTo("00:00");
     }
 
     @Test

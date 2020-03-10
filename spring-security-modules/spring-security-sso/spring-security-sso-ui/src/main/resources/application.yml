@@ -1,10 +1,10 @@
 server:
-    port: 8082
-    servlet:
-      context-path: /ui
-    session:
-      cookie:
-        name: UISESSION
+  port: 8082
+  servlet:
+    context-path: /ui
+  session:
+    cookie:
+      name: UISESSION
 security:
   basic:
     enabled: false

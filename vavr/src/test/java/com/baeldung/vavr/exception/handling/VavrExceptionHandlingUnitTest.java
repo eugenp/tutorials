@@ -53,28 +53,28 @@ public class VavrExceptionHandlingUnitTest {
     @Test
     public void exceptionCausingMethod_UsingLift_ThenSuccess() {
         validIntegersOnly.stream().map(CheckedFunction1.lift(i -> readFromFile(i)))
-          .map(i -> i.getOrElse(-1))
-          .forEach(i -> {
-              Assert.assertNotSame(-1, i);
-              LOG.debug("{}", i);
-          });
+                .map(i -> i.getOrElse(-1))
+                .forEach(i -> {
+                    Assert.assertNotSame(-1, i);
+                    LOG.debug("{}", i);
+                });
     }
 
     @Test
     public void exceptionCausingMethod_UsingLift_ThenFailure() {
         integers.stream()
-          .map(CheckedFunction1.lift(i -> readFromFile(i)))
-          .map(i -> i.getOrElse(-1))
-          .forEach(i -> LOG.debug("{}", i));
+                .map(CheckedFunction1.lift(i -> readFromFile(i)))
+                .map(i -> i.getOrElse(-1))
+                .forEach(i -> LOG.debug("{}", i));
 
     }
 
     @Test
     public void exceptionCausingMethod_UsingTry_ThenSuccess() {
         integers.stream()
-          .map(CheckedFunction1.liftTry(VavrExceptionHandlingUnitTest::readFromFile))
-          .flatMap(Value::toJavaStream)
-          .forEach(i -> LOG.debug("{}", i));
+                .map(CheckedFunction1.liftTry(VavrExceptionHandlingUnitTest::readFromFile))
+                .flatMap(Value::toJavaStream)
+                .forEach(i -> LOG.debug("{}", i));
     }
 
     private static Integer readFromFile(Integer i) throws IOException {

@@ -5,12 +5,11 @@ import java.util.List;
 
 /**
  * Code snippet that illustrates the usage of anonymous classes.
- * 
+ * <p>
  * Note that use of Runnable instances in this example does not demonstrate their
  * common use.
- * 
- * @author A. Shcherbakov
  *
+ * @author A. Shcherbakov
  */
 public class Main {
 

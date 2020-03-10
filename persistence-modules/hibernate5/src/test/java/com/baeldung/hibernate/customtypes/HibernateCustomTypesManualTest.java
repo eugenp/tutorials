@@ -70,7 +70,7 @@ public class HibernateCustomTypesManualTest {
             session.save(e);
 
             Query query = session.createQuery("FROM OfficeEmployee OE WHERE OE.empAddress.zipcode = :pinCode");
-            query.setParameter("pinCode",100);
+            query.setParameter("pinCode", 100);
             int size = query.list().size();
 
             Assert.assertEquals(1, size);

@@ -22,13 +22,13 @@ public class EnumNamePatternValidatorUnitTest {
     @BeforeClass
     public static void setupValidatorInstance() {
         validator = Validation.buildDefaultValidatorFactory()
-            .getValidator();
+                .getValidator();
     }
 
     @Test
     public void whenEnumMatchesRegex_thenShouldNotReportConstraintViolations() {
         Customer customer = new Customer.Builder().withCustomerTypeMatchesPattern(DEFAULT)
-            .build();
+                .build();
         Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
         assertThat(violations.isEmpty()).isTrue();
     }
@@ -36,7 +36,7 @@ public class EnumNamePatternValidatorUnitTest {
     @Test
     public void whenEnumNull_thenShouldNotReportConstraintViolations() {
         Customer customer = new Customer.Builder().withCustomerTypeMatchesPattern(null)
-            .build();
+                .build();
         Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
         assertThat(violations.isEmpty()).isTrue();
     }
@@ -44,11 +44,11 @@ public class EnumNamePatternValidatorUnitTest {
     @Test
     public void whenEnumDoesNotMatchRegex_thenShouldGiveOccurrenceOfConstraintViolations() {
         Customer customer = new Customer.Builder().withCustomerTypeMatchesPattern(OLD)
-            .build();
+                .build();
         Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
         assertThat(violations.size()).isEqualTo(1);
 
         assertThat(violations).anyMatch(CustomerUnitTest.havingPropertyPath("customerTypeMatchesPattern")
-            .and(CustomerUnitTest.havingMessage("must match \"NEW|DEFAULT\"")));
+                .and(CustomerUnitTest.havingMessage("must match \"NEW|DEFAULT\"")));
     }
 }

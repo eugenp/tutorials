@@ -31,10 +31,10 @@ public class CourseControllerIntegrationTest {
         String nonMatchingCourseCode = "nonMatchingCourseCode";
 
         given()
-        .when()
-          .get("/courses/" + nonMatchingCourseCode)
-        .then()
-          .log().ifValidationFails()
-          .statusCode(NOT_FOUND.value());
+                .when()
+                .get("/courses/" + nonMatchingCourseCode)
+                .then()
+                .log().ifValidationFails()
+                .statusCode(NOT_FOUND.value());
     }
 }

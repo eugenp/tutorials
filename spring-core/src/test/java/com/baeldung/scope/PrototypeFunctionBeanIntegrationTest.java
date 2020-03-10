@@ -30,5 +30,5 @@ public class PrototypeFunctionBeanIntegrationTest {
 
         Assert.assertTrue("New instance expected", firstInstance != secondInstance);
     }
-    
+
 }

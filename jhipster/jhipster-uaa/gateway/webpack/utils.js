@@ -8,6 +8,7 @@ module.exports = {
 };
 
 const parseString = require('xml2js').parseString;
+
 // return the version number from `pom.xml` file
 function parseVersion() {
     let version = null;
@@ -31,8 +32,8 @@ function parseVersion() {
 const _root = path.resolve(__dirname, '..');
 
 function root(args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [_root].concat(args));
+    args = Array.prototype.slice.call(arguments, 0);
+    return path.join.apply(path, [_root].concat(args));
 }
 
 function isExternalLib(module, check = /node_modules/) {

@@ -7,7 +7,7 @@ class RomanArabicConverter {
     public static int romanToArabic(String input) {
         String romanNumeral = input.toUpperCase();
         int result = 0;
-        
+
         List<RomanNumeral> romanNumerals = RomanNumeral.getReverseSortedValues();
 
         int i = 0;

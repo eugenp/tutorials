@@ -22,18 +22,18 @@ public class PushControllerIntegrationTest {
     @BeforeEach
     public void setup() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webAppContext)
-            .build();
+                .build();
     }
 
     @Test
     public void whenDemoWithPushGETisPerformed_thenRetrievedStatusOk() throws Exception {
         mockMvc.perform(get("/demoWithPush"))
-            .andExpect(status().isOk());
+                .andExpect(status().isOk());
     }
 
     @Test
     public void whenDemoWithoutPushGETisPerformed_thenRetrievedStatusOk() throws Exception {
         mockMvc.perform(get("/demoWithoutPush"))
-            .andExpect(status().isOk());
+                .andExpect(status().isOk());
     }
 }

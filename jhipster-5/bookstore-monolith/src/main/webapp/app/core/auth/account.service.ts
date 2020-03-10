@@ -1,24 +1,25 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {Observable, Subject} from 'rxjs';
 
-import { SERVER_API_URL } from 'app/app.constants';
-import { Account } from 'app/core/user/account.model';
+import {SERVER_API_URL} from 'app/app.constants';
+import {Account} from 'app/core/user/account.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class AccountService {
     private userIdentity: any;
     private authenticated = false;
     private authenticationState = new Subject<any>();
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+    }
 
     fetch(): Observable<HttpResponse<Account>> {
-        return this.http.get<Account>(SERVER_API_URL + 'api/account', { observe: 'response' });
+        return this.http.get<Account>(SERVER_API_URL + 'api/account', {observe: 'response'});
     }
 
     save(account: any): Observable<HttpResponse<any>> {
-        return this.http.post(SERVER_API_URL + 'api/account', account, { observe: 'response' });
+        return this.http.post(SERVER_API_URL + 'api/account', account, {observe: 'response'});
     }
 
     authenticate(identity) {

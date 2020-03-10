@@ -30,11 +30,11 @@ public class AssertionsExampleUnitTest {
         List<Integer> list = Arrays.asList(1, 2, 3);
 
         Assertions.assertAll("List is not incremental", () -> Assertions.assertEquals(list.get(0)
-            .intValue(), 1), () -> Assertions.assertEquals(
+                        .intValue(), 1), () -> Assertions.assertEquals(
                 list.get(1)
-                    .intValue(),
+                        .intValue(),
                 2),
-            () -> Assertions.assertEquals(list.get(2)
-                .intValue(), 3));
+                () -> Assertions.assertEquals(list.get(2)
+                        .intValue(), 3));
     }
 }

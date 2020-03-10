@@ -104,7 +104,8 @@ public class Lang3UtilsUnitTest {
         final ExceptionEventSource src = new ExceptionEventSource();
         try {
             EventUtils.addEventListener(src, PropertyChangeListener.class, (PropertyChangeEvent e) -> {
-                /* Change event*/});
+                /* Change event*/
+            });
             fail("Add method should have thrown an exception, so method should fail.");
         } catch (final RuntimeException e) {
 

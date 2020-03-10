@@ -12,12 +12,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@NoArgsConstructor @Getter @Setter
+@NoArgsConstructor
+@Getter
+@Setter
 public class UserEvent implements Serializable {
 
     // This class is just for sample purposes.
 
-    private @Id @Setter(AccessLevel.PROTECTED) Long id;
+    private @Id
+    @Setter(AccessLevel.PROTECTED)
+    Long id;
 
     @ManyToOne
     private User user;

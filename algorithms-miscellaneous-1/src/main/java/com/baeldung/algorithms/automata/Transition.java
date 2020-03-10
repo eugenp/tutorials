@@ -7,6 +7,7 @@ public interface Transition {
 
     /**
      * Is the transition possible with the given character?
+     *
      * @param c char.
      * @return true or false.
      */
@@ -14,6 +15,7 @@ public interface Transition {
 
     /**
      * The state to which this transition leads.
+     *
      * @return State.
      */
     State state();

@@ -20,7 +20,8 @@ public class ApplicationIntegrationTest {
 
     private Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
 
-    @LocalServerPort private int port = 0;
+    @LocalServerPort
+    private int port = 0;
 
     @Before
     public void init() throws Exception {

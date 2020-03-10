@@ -12,7 +12,9 @@
     #set( $count = 1 )
     <TABLE class="gridtable">
         <TR>
-            <TH>Serial #</TH><TH>Product Name</TH><TH>Price</TH>
+            <TH>Serial #</TH>
+            <TH>Product Name</TH>
+            <TH>Price</TH>
         </TR>
         #foreach( $product in $products )
             <TR>

@@ -28,7 +28,7 @@ public class ValidationIntegrationTest {
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         this.executableValidator = factory.getValidator()
-            .forExecutables();
+                .forExecutables();
     }
 
     @Test
@@ -36,7 +36,7 @@ public class ValidationIntegrationTest {
 
         ReservationManagement object = new ReservationManagement();
         Method method = ReservationManagement.class.getMethod("createReservation", LocalDate.class, int.class, Customer.class);
-        Object[] parameterValues = { LocalDate.now(), 0, null };
+        Object[] parameterValues = {LocalDate.now(), 0, null};
         Set<ConstraintViolation<ReservationManagement>> violations = executableValidator.validateParameters(object, method, parameterValues);
 
         assertEquals(3, violations.size());
@@ -47,8 +47,8 @@ public class ValidationIntegrationTest {
 
         ReservationManagement object = new ReservationManagement();
         Method method = ReservationManagement.class.getMethod("createReservation", LocalDate.class, int.class, Customer.class);
-        Object[] parameterValues = { LocalDate.now()
-            .plusDays(1), 1, new Customer("John", "Doe") };
+        Object[] parameterValues = {LocalDate.now()
+                .plusDays(1), 1, new Customer("John", "Doe")};
         Set<ConstraintViolation<ReservationManagement>> violations = executableValidator.validateParameters(object, method, parameterValues);
 
         assertEquals(0, violations.size());
@@ -59,7 +59,7 @@ public class ValidationIntegrationTest {
 
         ReservationManagement object = new ReservationManagement();
         Method method = ReservationManagement.class.getMethod("createReservation", LocalDate.class, LocalDate.class, Customer.class);
-        Object[] parameterValues = { LocalDate.now(), LocalDate.now(), new Customer("John", "Doe") };
+        Object[] parameterValues = {LocalDate.now(), LocalDate.now(), new Customer("John", "Doe")};
         Set<ConstraintViolation<ReservationManagement>> violations = executableValidator.validateParameters(object, method, parameterValues);
 
         assertEquals(1, violations.size());
@@ -70,11 +70,11 @@ public class ValidationIntegrationTest {
 
         ReservationManagement object = new ReservationManagement();
         Method method = ReservationManagement.class.getMethod("createReservation", LocalDate.class, LocalDate.class, Customer.class);
-        Object[] parameterValues = { LocalDate.now()
-            .plusDays(1),
+        Object[] parameterValues = {LocalDate.now()
+                .plusDays(1),
                 LocalDate.now()
-                    .plusDays(2),
-                new Customer("John", "Doe") };
+                        .plusDays(2),
+                new Customer("John", "Doe")};
         Set<ConstraintViolation<ReservationManagement>> violations = executableValidator.validateParameters(object, method, parameterValues);
 
         assertEquals(0, violations.size());
@@ -84,7 +84,7 @@ public class ValidationIntegrationTest {
     public void whenValidationWithInvalidConstructorParameters_thenCorrectNumberOfVoilations() throws NoSuchMethodException {
 
         Constructor<Customer> constructor = Customer.class.getConstructor(String.class, String.class);
-        Object[] parameterValues = { "John", "Doe" };
+        Object[] parameterValues = {"John", "Doe"};
         Set<ConstraintViolation<Customer>> violations = executableValidator.validateConstructorParameters(constructor, parameterValues);
 
         assertEquals(2, violations.size());
@@ -94,7 +94,7 @@ public class ValidationIntegrationTest {
     public void whenValidationWithValidConstructorParameters_thenZeroVoilations() throws NoSuchMethodException {
 
         Constructor<Customer> constructor = Customer.class.getConstructor(String.class, String.class);
-        Object[] parameterValues = { "William", "Smith" };
+        Object[] parameterValues = {"William", "Smith"};
         Set<ConstraintViolation<Customer>> violations = executableValidator.validateConstructorParameters(constructor, parameterValues);
 
         assertEquals(0, violations.size());
@@ -104,7 +104,7 @@ public class ValidationIntegrationTest {
     public void whenCrossParameterValidationWithInvalidConstructorParameters_thenCorrectNumberOfVoilations() throws NoSuchMethodException {
 
         Constructor<Reservation> constructor = Reservation.class.getConstructor(LocalDate.class, LocalDate.class, Customer.class, int.class);
-        Object[] parameterValues = { LocalDate.now(), LocalDate.now(), new Customer("William", "Smith"), 1 };
+        Object[] parameterValues = {LocalDate.now(), LocalDate.now(), new Customer("William", "Smith"), 1};
         Set<ConstraintViolation<Reservation>> violations = executableValidator.validateConstructorParameters(constructor, parameterValues);
 
         assertEquals(1, violations.size());
@@ -114,11 +114,11 @@ public class ValidationIntegrationTest {
     public void whenCrossParameterValidationWithValidConstructorParameters_thenZeroVoilations() throws NoSuchMethodException {
 
         Constructor<Reservation> constructor = Reservation.class.getConstructor(LocalDate.class, LocalDate.class, Customer.class, int.class);
-        Object[] parameterValues = { LocalDate.now()
-            .plusDays(1),
+        Object[] parameterValues = {LocalDate.now()
+                .plusDays(1),
                 LocalDate.now()
-                    .plusDays(2),
-                new Customer("William", "Smith"), 1 };
+                        .plusDays(2),
+                new Customer("William", "Smith"), 1};
         Set<ConstraintViolation<Reservation>> violations = executableValidator.validateConstructorParameters(constructor, parameterValues);
 
         assertEquals(0, violations.size());
@@ -129,7 +129,7 @@ public class ValidationIntegrationTest {
 
         ReservationManagement object = new ReservationManagement();
         Method method = ReservationManagement.class.getMethod("getAllCustomers");
-        Object returnValue = Collections.<Customer> emptyList();
+        Object returnValue = Collections.<Customer>emptyList();
         Set<ConstraintViolation<ReservationManagement>> violations = executableValidator.validateReturnValue(object, method, returnValue);
 
         assertEquals(1, violations.size());
@@ -161,10 +161,10 @@ public class ValidationIntegrationTest {
 
         Constructor<Reservation> constructor = Reservation.class.getConstructor(LocalDate.class, LocalDate.class, Customer.class, int.class);
         Reservation createdObject = new Reservation(LocalDate.now()
-            .plusDays(1),
-            LocalDate.now()
-                .plusDays(2),
-            new Customer("William", "Smith"), 1);
+                .plusDays(1),
+                LocalDate.now()
+                        .plusDays(2),
+                new Customer("William", "Smith"), 1);
         Set<ConstraintViolation<Reservation>> violations = executableValidator.validateConstructorReturnValue(constructor, createdObject);
 
         assertEquals(0, violations.size());
@@ -179,11 +179,11 @@ public class ValidationIntegrationTest {
         customer.setFirstName("John");
         customer.setLastName("Doe");
         Reservation reservation = new Reservation(LocalDate.now()
-            .plusDays(1),
-            LocalDate.now()
-                .plusDays(2),
-            customer, 1);
-        Object[] parameterValues = { reservation };
+                .plusDays(1),
+                LocalDate.now()
+                        .plusDays(2),
+                customer, 1);
+        Object[] parameterValues = {reservation};
         Set<ConstraintViolation<ReservationManagement>> violations = executableValidator.validateParameters(object, method, parameterValues);
 
         assertEquals(2, violations.size());
@@ -198,11 +198,11 @@ public class ValidationIntegrationTest {
         customer.setFirstName("William");
         customer.setLastName("Smith");
         Reservation reservation = new Reservation(LocalDate.now()
-            .plusDays(1),
-            LocalDate.now()
-                .plusDays(2),
-            customer, 1);
-        Object[] parameterValues = { reservation };
+                .plusDays(1),
+                LocalDate.now()
+                        .plusDays(2),
+                customer, 1);
+        Object[] parameterValues = {reservation};
         Set<ConstraintViolation<ReservationManagement>> violations = executableValidator.validateParameters(object, method, parameterValues);
 
         assertEquals(0, violations.size());

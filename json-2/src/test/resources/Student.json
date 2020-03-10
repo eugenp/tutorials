@@ -1,1 +1,7 @@
-{"id":1,"name":{"firstName": "Joe", "surname":"Blogg"}}
+{
+  "id": 1,
+  "name": {
+    "firstName": "Joe",
+    "surname": "Blogg"
+  }
+}

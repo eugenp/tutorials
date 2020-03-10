@@ -1,4 +1,4 @@
-    package com.baeldung.examples.olingo2;
+package com.baeldung.examples.olingo2;
 
 import java.io.IOException;
 
@@ -25,36 +25,36 @@ import org.springframework.stereotype.Component;
 
 /**
  * Jersey JAX-RS configuration
- * @author Philippe
  *
+ * @author Philippe
  */
 @Component
 @ApplicationPath("/odata")
 public class JerseyConfig extends ResourceConfig {
-    
-    
-    public JerseyConfig(CarsODataJPAServiceFactory serviceFactory, EntityManagerFactory emf) {        
-        
+
+
+    public JerseyConfig(CarsODataJPAServiceFactory serviceFactory, EntityManagerFactory emf) {
+
         ODataApplication app = new ODataApplication();
-        
+
         app
-          .getClasses()
-          .forEach( c -> {
-              // Avoid using the default RootLocator, as we want
-              // a Spring Managed one
-              if ( !ODataRootLocator.class.isAssignableFrom(c)) {
-                  register(c);
-              }
-          });
-        
-        register(new CarsRootLocator(serviceFactory)); 
-        register( new EntityManagerFilter(emf));
+                .getClasses()
+                .forEach(c -> {
+                    // Avoid using the default RootLocator, as we want
+                    // a Spring Managed one
+                    if (!ODataRootLocator.class.isAssignableFrom(c)) {
+                        register(c);
+                    }
+                });
+
+        register(new CarsRootLocator(serviceFactory));
+        register(new EntityManagerFilter(emf));
     }
-    
+
     /**
      * This filter handles the EntityManager transaction lifecycle.
-     * @author Philippe
      *
+     * @author Philippe
      */
     @Provider
     public static class EntityManagerFilter implements ContainerRequestFilter, ContainerResponseFilter {
@@ -80,7 +80,7 @@ public class JerseyConfig extends ResourceConfig {
             // Start a new transaction unless we have a simple GET
             if (!"GET".equalsIgnoreCase(ctx.getMethod())) {
                 em.getTransaction()
-                    .begin();
+                        .begin();
             }
         }
 

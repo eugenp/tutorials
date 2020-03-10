@@ -27,78 +27,78 @@ public class JsonUnitTest {
     private Person person;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-    private String personJson; 
-    private String petshopJson; 
-    
+    private String personJson;
+    private String petshopJson;
+
     @Test
     public void whenPersonIsConvertedToString_thenAValidJsonStringIsReturned() throws IOException {
         String generatedJsonString = new PersonWriter(person).write();
-        
+
         assertEquals(
-                "Generated String has the expected format and content", 
-                personJson, 
+                "Generated String has the expected format and content",
+                personJson,
                 generatedJsonString);
     }
-    
+
     @Test
     public void whenJsonStringIsConvertedToPerson_thenAValidObjectIsReturned(
-            ) throws IOException, ParseException {        
+    ) throws IOException, ParseException {
         Person person = new PersonBuilder(personJson).build();
-        
+
         assertEquals("First name has expected value", "Michael", person.getFirstName());
         assertEquals("Last name has expected value", "Scott", person.getLastName());
         assertEquals(
-                "Birthdate has expected value", 
-                dateFormat.parse("06/15/1978"), 
+                "Birthdate has expected value",
+                dateFormat.parse("06/15/1978"),
                 person.getBirthdate());
         assertThat(
-                "Email list has two items", 
-                person.getEmails(), 
+                "Email list has two items",
+                person.getEmails(),
                 hasItems("michael.scott@dd.com", "michael.scarn@gmail.com"));
     }
 
     @Test
     public void whenUsingObjectModelToQueryForSpecificProperty_thenExpectedValueIsReturned(
-            ) throws IOException, ParseException {
+    ) throws IOException, ParseException {
         JsonReader reader = Json.createReader(new StringReader(petshopJson));
 
         JsonObject jsonObject = reader.readObject();
-        
+
         assertEquals(
-                "The query should return the 'name' property of the third pet from the list", 
-                "Jake", 
+                "The query should return the 'name' property of the third pet from the list",
+                "Jake",
                 jsonObject.getJsonArray("pets").getJsonObject(2).getString("name"));
     }
-    
+
     @Test
     public void whenUsingStreamingApiToQueryForSpecificProperty_thenExpectedValueIsReturned(
-            ) throws IOException, ParseException {
+    ) throws IOException, ParseException {
         JsonParser jsonParser = Json.createParser(new StringReader(petshopJson));
-        
+
         int count = 0;
         String result = null;
-        
-        while(jsonParser.hasNext()) {
+
+        while (jsonParser.hasNext()) {
             Event e = jsonParser.next();
-            
+
             if (e == Event.KEY_NAME) {
-                if(jsonParser.getString().equals("name")) {
-                   jsonParser.next();
-                   
-                   if(++count == 3) {
-                       result = jsonParser.getString();
-                       break;
-                   }
-                }   
+                if (jsonParser.getString().equals("name")) {
+                    jsonParser.next();
+
+                    if (++count == 3) {
+                        result = jsonParser.getString();
+                        break;
+                    }
+                }
             }
         }
-        
+
         assertEquals(
-                "The query should return the 'name' property of the third pet from the list", 
-                "Jake", 
+                "The query should return the 'name' property of the third pet from the list",
+                "Jake",
                 result);
-    }    
-    
+    }
+
     @Before
     public void init() throws ParseException {
         // Creates a Person object
@@ -120,16 +120,16 @@ public class JsonUnitTest {
                 "        \"michael.scarn@gmail.com\"\n" +
                 "    ]\n" +
                 "}";
-        
+
         // Initializes the Pet Shop Json
         petshopJson = "\n" +
-        "{\n" +
-        "    \"ownerId\":\"1\", \n" +
-        "    \"pets\":[ \n" +
-        "        {\"name\": \"Kitty\", \"type\": \"cat\"}, \n" +
-        "        {\"name\": \"Rex\", \"type\": \"dog\"}, \n" +
-        "        {\"name\": \"Jake\", \"type\": \"dog\"} \n" +
-        "    ]\n" +
-        "}";
+                "{\n" +
+                "    \"ownerId\":\"1\", \n" +
+                "    \"pets\":[ \n" +
+                "        {\"name\": \"Kitty\", \"type\": \"cat\"}, \n" +
+                "        {\"name\": \"Rex\", \"type\": \"dog\"}, \n" +
+                "        {\"name\": \"Jake\", \"type\": \"dog\"} \n" +
+                "    ]\n" +
+                "}";
     }
 }

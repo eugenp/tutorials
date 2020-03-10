@@ -13,8 +13,8 @@ public class MainClass {
 
     public static void main(String[] args) throws IOException {
         SlackClientRuntimeConfig runtimeConfig = SlackClientRuntimeConfig.builder()
-            .setTokenSupplier(() -> "<Your API Token>")
-            .build();
+                .setTokenSupplier(() -> "<Your API Token>")
+                .build();
 
         SlackClient slackClient = SlackClientFactory.defaultFactory().build(runtimeConfig);
 

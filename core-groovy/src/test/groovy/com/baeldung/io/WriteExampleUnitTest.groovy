@@ -11,60 +11,60 @@ class WriteExampleUnitTest {
         new File('src/main/resources/ioOutput.txt').text = ''
         new File('src/main/resources/ioBinaryOutput.bin').delete()
     }
-    
+
     @Test
     void whenUsingWithWriter_thenFileCreated() {
         def outputLines = [
-            'Line one of output example',
-            'Line two of output example',
-            'Line three of output example'
+                'Line one of output example',
+                'Line two of output example',
+                'Line three of output example'
         ]
-        
+
         def outputFileName = 'src/main/resources/ioOutput.txt'
         new File(outputFileName).withWriter { writer ->
             outputLines.each { line ->
                 writer.writeLine line
             }
         }
-        def writtenLines = new File(outputFileName).collect {it}
+        def writtenLines = new File(outputFileName).collect { it }
         assertEquals(outputLines, writtenLines)
     }
-    
+
     @Test
     void whenUsingNewWriter_thenFileCreated() {
         def outputLines = [
-            'Line one of output example',
-            'Line two of output example',
-            'Line three of output example'
+                'Line one of output example',
+                'Line two of output example',
+                'Line three of output example'
         ]
-        
+
         def outputFileName = 'src/main/resources/ioOutput.txt'
         def writer = new File(outputFileName).newWriter()
-        outputLines.forEach {line ->
+        outputLines.forEach { line ->
             writer.writeLine line
         }
         writer.flush()
         writer.close()
-        
-        def writtenLines = new File(outputFileName).collect {it}
+
+        def writtenLines = new File(outputFileName).collect { it }
         assertEquals(outputLines, writtenLines)
     }
-    
+
     @Test
     void whenUsingDoubleLessThanOperator_thenFileCreated() {
         def outputLines = [
-            'Line one of output example',
-            'Line two of output example',
-            'Line three of output example'
+                'Line one of output example',
+                'Line two of output example',
+                'Line three of output example'
         ]
-        
+
         def ln = System.getProperty('line.separator')
         def outputFileName = 'src/main/resources/ioOutput.txt'
         new File(outputFileName) << "Line one of output example${ln}Line two of output example${ln}Line three of output example"
-        def writtenLines = new File(outputFileName).collect {it}
+        def writtenLines = new File(outputFileName).collect { it }
         assertEquals(outputLines.size(), writtenLines.size())
     }
-    
+
     @Test
     void whenUsingBytes_thenBinaryFileCreated() {
         def outputFileName = 'src/main/resources/ioBinaryOutput.bin'
@@ -73,7 +73,7 @@ class WriteExampleUnitTest {
         outputFile.bytes = outBytes
         assertEquals(3, new File(outputFileName).size())
     }
-    
+
     @Test
     void whenUsingWithOutputStream_thenBinaryFileCreated() {
         def outputFileName = 'src/main/resources/ioBinaryOutput.bin'
@@ -83,7 +83,7 @@ class WriteExampleUnitTest {
         }
         assertEquals(3, new File(outputFileName).size())
     }
-    
+
     @Test
     void whenUsingNewOutputStream_thenBinaryFileCreated() {
         def outputFileName = 'src/main/resources/ioBinaryOutput.bin'

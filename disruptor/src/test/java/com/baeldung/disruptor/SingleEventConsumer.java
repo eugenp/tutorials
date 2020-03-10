@@ -12,7 +12,7 @@ public class SingleEventConsumer implements EventConsumer {
     @SuppressWarnings("unchecked")
     public EventHandler<ValueEvent>[] getEventHandler() {
         final EventHandler<ValueEvent> eventHandler = (event, sequence, endOfBatch) -> assertExpectedValue(event.getValue());
-        return new EventHandler[] { eventHandler };
+        return new EventHandler[]{eventHandler};
     }
 
     private void assertExpectedValue(final int id) {

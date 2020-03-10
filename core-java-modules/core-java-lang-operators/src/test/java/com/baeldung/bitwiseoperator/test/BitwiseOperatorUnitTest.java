@@ -1,6 +1,7 @@
 package com.baeldung.bitwiseoperator.test;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 public class BitwiseOperatorUnitTest {

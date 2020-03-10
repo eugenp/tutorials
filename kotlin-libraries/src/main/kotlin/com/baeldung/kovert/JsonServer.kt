@@ -42,6 +42,7 @@ class JsonServer {
                 name = "Tony Stark",
                 job = "Iron Man"
         )
+
         fun RoutingContext.putPersonById(id: String, person: Person) = person
     }
 

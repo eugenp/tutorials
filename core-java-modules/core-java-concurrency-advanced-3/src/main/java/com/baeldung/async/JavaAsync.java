@@ -26,7 +26,7 @@ public class JavaAsync {
 
     private static final ExecutorService threadpool = Executors.newCachedThreadPool();
 
-    public static void main (String[] args) throws InterruptedException, ExecutionException {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
         int number = 20;
 
         //Thread Example
@@ -62,19 +62,21 @@ public class JavaAsync {
 
     /**
      * Finds factorial of a number
+     *
      * @param number
      * @return
      */
     public static long factorial(int number) {
-        long result = 1; 
-        for(int i=number;i>0;i--) {
-            result *= i; 
-        } 
-        return result; 
+        long result = 1;
+        for (int i = number; i > 0; i--) {
+            result *= i;
+        }
+        return result;
     }
 
     /**
      * Finds factorial of a number using Thread
+     *
      * @param number
      * @return
      */
@@ -89,22 +91,24 @@ public class JavaAsync {
 
     /**
      * Finds factorial of a number using FutureTask
+     *
      * @param number
      * @return
      */
     @Loggable
     public static Future<Long> factorialUsingFutureTask(int number) {
-        Future<Long> futureTask = threadpool.submit(() -> factorial(number)); 
+        Future<Long> futureTask = threadpool.submit(() -> factorial(number));
 
-        while (!futureTask.isDone()) { 
-            System.out.println("FutureTask is not finished yet..."); 
-        } 
+        while (!futureTask.isDone()) {
+            System.out.println("FutureTask is not finished yet...");
+        }
 
         return futureTask;
     }
 
     /**
      * Finds factorial of a number using CompletableFuture
+     *
      * @param number
      * @return
      */
@@ -116,6 +120,7 @@ public class JavaAsync {
 
     /**
      * Finds factorial of a number using EA Async
+     *
      * @param number
      * @return
      */
@@ -128,6 +133,7 @@ public class JavaAsync {
 
     /**
      * Finds factorial of a number using Async of Cactoos
+     *
      * @param number
      * @return
      * @throws InterruptedException
@@ -142,18 +148,20 @@ public class JavaAsync {
 
     /**
      * Finds factorial of a number using Guava's ListeningExecutorService.submit()
+     *
      * @param number
      * @return
      */
     @Loggable
     public static ListenableFuture<Long> factorialUsingGuavaServiceSubmit(int number) {
         ListeningExecutorService service = MoreExecutors.listeningDecorator(threadpool);
-        ListenableFuture<Long> factorialFuture = (ListenableFuture<Long>) service.submit(()-> factorial(number));
+        ListenableFuture<Long> factorialFuture = (ListenableFuture<Long>) service.submit(() -> factorial(number));
         return factorialFuture;
     }
 
     /**
      * Finds factorial of a number using Guava's Futures.submitAsync()
+     *
      * @param number
      * @return
      */
@@ -170,6 +178,7 @@ public class JavaAsync {
 
     /**
      * Finds factorial of a number using @Async of jcabi-aspects
+     *
      * @param number
      * @return
      */

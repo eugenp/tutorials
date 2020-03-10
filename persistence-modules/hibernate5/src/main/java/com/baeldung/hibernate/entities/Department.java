@@ -12,7 +12,7 @@ public class Department {
 
     private String name;
 
-    @OneToMany(mappedBy="department")
+    @OneToMany(mappedBy = "department")
     private List<DeptEmployee> employees;
 
     public Department(String name) {

@@ -35,15 +35,15 @@ public class TodoControllerWithSessionAttributesIntegrationTest {
     @Before
     public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac)
-            .build();
+                .build();
     }
 
     @Test
     public void whenFirstRequest_thenContainsUnintializedTodo() throws Exception {
         MvcResult result = mockMvc.perform(get("/sessionattributes/form"))
-            .andExpect(status().isOk())
-            .andExpect(model().attributeExists("todo"))
-            .andReturn();
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("todo"))
+                .andReturn();
 
         TodoItem item = (TodoItem) result.getModelAndView().getModel().get("todo");
         assertTrue(StringUtils.isEmpty(item.getDescription()));
@@ -52,15 +52,15 @@ public class TodoControllerWithSessionAttributesIntegrationTest {
     @Test
     public void whenSubmit_thenSubsequentFormRequestContainsMostRecentTodo() throws Exception {
         FlashMap flashMap = mockMvc.perform(post("/sessionattributes/form")
-            .param("description", "newtodo"))
-            .andExpect(status().is3xxRedirection())
-            .andReturn().getFlashMap();
+                .param("description", "newtodo"))
+                .andExpect(status().is3xxRedirection())
+                .andReturn().getFlashMap();
 
         MvcResult result = mockMvc.perform(get("/sessionattributes/form")
-            .sessionAttrs(flashMap))
-            .andExpect(status().isOk())
-            .andExpect(model().attributeExists("todo"))
-            .andReturn();
+                .sessionAttrs(flashMap))
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("todo"))
+                .andReturn();
         TodoItem item = (TodoItem) result.getModelAndView().getModel().get("todo");
         assertEquals("newtodo", item.getDescription());
     }

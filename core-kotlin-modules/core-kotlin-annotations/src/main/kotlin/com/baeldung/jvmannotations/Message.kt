@@ -1,11 +1,13 @@
 @file:JvmName("MessageHelper")
-@file:JvmMultifileClass //used
+@file:JvmMultifileClass
+
+//used
 package com.baeldung.jvmannotations
 
 import java.util.*
 
 @JvmName("getMyUsername")
-fun getMyName() : String {
+fun getMyName(): String {
     return "myUserId"
 }
 
@@ -22,8 +24,8 @@ object MessageBroker {
     @JvmStatic
     @JvmOverloads
     @Throws(Exception::class)
-    fun findMessages(sender : String, type : String = "text", maxResults : Int = 10) : List<Message> {
-        if(sender.isEmpty()) {
+    fun findMessages(sender: String, type: String = "text", maxResults: Int = 10): List<Message> {
+        if (sender.isEmpty()) {
             throw Exception()
         }
         return ArrayList()
@@ -38,11 +40,11 @@ class Message {
 
     // this works as name is overridden
     @JvmName("getSenderName")
-    fun getSender() : String = "from:$sender"
+    fun getSender(): String = "from:$sender"
 
     @get:JvmName("getReceiverName")
     @set:JvmName("setReceiverName")
-    var receiver : String = ""
+    var receiver: String = ""
 
     @get:JvmName("getContent")
     @set:JvmName("setContent")
@@ -57,10 +59,10 @@ class Message {
 
     var isEncrypted = true
 
-    fun setReceivers(receiverNames : List<String>) {
+    fun setReceivers(receiverNames: List<String>) {
     }
 
     @JvmName("setReceiverIds")
-    fun setReceivers(receiverNames : List<Int>) {
+    fun setReceivers(receiverNames: List<Int>) {
     }
 }

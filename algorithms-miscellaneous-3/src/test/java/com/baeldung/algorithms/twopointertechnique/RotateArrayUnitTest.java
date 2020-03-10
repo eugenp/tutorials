@@ -15,12 +15,12 @@ public class RotateArrayUnitTest {
     @Test
     public void givenAnArrayOfIntegers_whenRotateKsteps_thenCorrect() {
 
-        inputArray = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+        inputArray = new int[]{1, 2, 3, 4, 5, 6, 7};
         step = 4;
 
         rotateArray.rotate(inputArray, step);
 
-        assertThat(inputArray).containsExactly(new int[] { 4, 5, 6, 7, 1, 2, 3 });
+        assertThat(inputArray).containsExactly(new int[]{4, 5, 6, 7, 1, 2, 3});
     }
 
 }

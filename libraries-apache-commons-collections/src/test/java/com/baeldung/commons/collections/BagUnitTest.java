@@ -18,7 +18,7 @@ public class BagUnitTest {
 
     @Test
     public void givenMultipleCopies_whenAdded_theCountIsKept() {
-        Bag<Integer> bag = new HashBag<>(Arrays.asList(new Integer[] { 1, 2, 3, 3, 3, 1, 4 }));
+        Bag<Integer> bag = new HashBag<>(Arrays.asList(new Integer[]{1, 2, 3, 3, 3, 1, 4}));
 
         assertThat(bag.getCount(1), equalTo(2));
     }
@@ -64,7 +64,7 @@ public class BagUnitTest {
 
     @Test
     public void givenMultipleCopies_whenRemove_allAreRemoved() {
-        Bag<Integer> bag = new HashBag<>(Arrays.asList(new Integer[] { 1, 2, 3, 3, 3, 1, 4 }));
+        Bag<Integer> bag = new HashBag<>(Arrays.asList(new Integer[]{1, 2, 3, 3, 3, 1, 4}));
 
         // From 3 we delete 1, 2 remain
         bag.remove(3, 1);
@@ -77,7 +77,7 @@ public class BagUnitTest {
 
     @Test
     public void givenTree_whenDuplicateElementsAdded_thenSort() {
-        TreeBag<Integer> bag = new TreeBag<>(Arrays.asList(new Integer[] { 7, 5, 1, 7, 2, 3, 3, 3, 1, 4, 7 }));
+        TreeBag<Integer> bag = new TreeBag<>(Arrays.asList(new Integer[]{7, 5, 1, 7, 2, 3, 3, 3, 1, 4, 7}));
 
         assertThat(bag.first(), equalTo(1));
         assertThat(bag.getCount(bag.first()), equalTo(2));
@@ -95,7 +95,7 @@ public class BagUnitTest {
 
     @Test
     public void givenSortedBag_whenDuplicateElementsAdded_thenSort() {
-        SynchronizedSortedBag<Integer> bag = SynchronizedSortedBag.synchronizedSortedBag(new TreeBag<>(Arrays.asList(new Integer[] { 7, 5, 1, 7, 2, 3, 3, 3, 1, 4, 7 })));
+        SynchronizedSortedBag<Integer> bag = SynchronizedSortedBag.synchronizedSortedBag(new TreeBag<>(Arrays.asList(new Integer[]{7, 5, 1, 7, 2, 3, 3, 3, 1, 4, 7})));
 
         assertThat(bag.first(), equalTo(1));
         assertThat(bag.getCount(bag.first()), equalTo(2));

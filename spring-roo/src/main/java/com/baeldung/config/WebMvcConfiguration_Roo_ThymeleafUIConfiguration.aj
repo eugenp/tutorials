@@ -15,68 +15,68 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
 privileged aspect WebMvcConfiguration_Roo_ThymeleafUIConfiguration {
-    
-    declare parents: WebMvcConfiguration implements ApplicationContextAware;
-    
+
+    declare parents:WebMvcConfiguration implements ApplicationContextAware;
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     @Autowired
     private ThymeleafProperties WebMvcConfiguration.thymeleafProperties;
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     @Autowired
     private TemplateEngine WebMvcConfiguration.templateEngine;
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     private ApplicationContext WebMvcConfiguration.applicationContext;
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return ThymeleafProperties
      */
     public ThymeleafProperties WebMvcConfiguration.getThymeleafProperties() {
         return thymeleafProperties;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return TemplateEngine
      */
     public TemplateEngine WebMvcConfiguration.getTemplateEngine() {
         return templateEngine;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return ApplicationContext
      */
     public ApplicationContext WebMvcConfiguration.getApplicationContext() {
         return applicationContext;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param applicationContext
      */
     public void WebMvcConfiguration.setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return ThymeleafViewResolver
      */
     @Bean
@@ -85,14 +85,14 @@ privileged aspect WebMvcConfiguration_Roo_ThymeleafUIConfiguration {
         resolver.setTemplateEngine(getTemplateEngine());
         resolver.setCharacterEncoding("UTF-8");
         resolver.setContentType("application/javascript");
-        resolver.setViewNames(new String[] {"*.js"});
+        resolver.setViewNames(new String[]{"*.js"});
         resolver.setCache(getThymeleafProperties().isCache());
         return resolver;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return SpringResourceTemplateResolver
      */
     @Bean
@@ -106,5 +106,5 @@ privileged aspect WebMvcConfiguration_Roo_ThymeleafUIConfiguration {
         resolver.setCacheable(getThymeleafProperties().isCache());
         return resolver;
     }
-    
+
 }

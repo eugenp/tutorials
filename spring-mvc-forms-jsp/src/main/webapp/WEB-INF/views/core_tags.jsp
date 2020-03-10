@@ -20,12 +20,12 @@
     <h3>
         <c:out value="<c:catch> Example"/>
     </h3>
-    <c:catch var ="exceptionThrown">
+    <c:catch var="exceptionThrown">
         <% int x = Integer.valueOf("a");%>
     </c:catch>
 
-    <c:if test = "${exceptionThrown != null}">
-        <p>The exception is : ${exceptionThrown} <br />
+    <c:if test="${exceptionThrown != null}">
+        <p>The exception is : ${exceptionThrown} <br/>
             There is an exception: ${exceptionThrown.message}</p>
     </c:if>
 </div>
@@ -54,8 +54,8 @@
         <c:out value="<c:import> Example"/>
     </h3>
 
-    <c:import var = "data" url = "http://www.example.com"/>
-    <c:out value = "${data}"/>
+    <c:import var="data" url="http://www.example.com"/>
+    <c:out value="${data}"/>
 </div>
 <div>
 
@@ -63,8 +63,8 @@
         <c:out value="<c:forEach> Example"/>
     </h3>
 
-    <c:forEach var = "i" items="1,4,5,6,7,8,9">
-    Item <c:out value = "No. ${i}"/><p>
+    <c:forEach var="i" items="1,4,5,6,7,8,9">
+    Item <c:out value="No. ${i}"/><p>
     </c:forEach>
 </div>
 <div>
@@ -73,8 +73,8 @@
         <c:out value="<c:forToken> Example"/>
     </h3>
 
-    <c:forTokens items = "Patrick:Wilson:Ibrahima:Chris" delims = ":" var = "name">
-    <c:out value = "Name: ${name}"/><p>
+    <c:forTokens items="Patrick:Wilson:Ibrahima:Chris" delims=":" var="name">
+    <c:out value="Name: ${name}"/><p>
     </c:forTokens>
 </div>
 <div>
@@ -82,11 +82,11 @@
     <h3>
         <c:out value="<c:url> and <c:param> Example"/>
     </h3>
-    <c:url value = "/core_tags" var = "myURL">
-        <c:param name = "parameter_1" value = "1234"/>
-        <c:param name = "parameter_2" value = "abcd"/>
+    <c:url value="/core_tags" var="myURL">
+        <c:param name="parameter_1" value="1234"/>
+        <c:param name="parameter_2" value="abcd"/>
     </c:url>
-    <c:out value = "URL: ${myURL}"/>
+    <c:out value="URL: ${myURL}"/>
 </div>
 </body>
 </html>

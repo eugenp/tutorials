@@ -35,8 +35,8 @@ public class NewStringAPIUnitTest {
         String multilineStr = "This is\n \n a multiline\n string.";
 
         long lineCount = multilineStr.lines()
-          .filter(String::isBlank)
-          .count();
+                .filter(String::isBlank)
+                .count();
 
         is(lineCount).equals(3L);
     }

@@ -50,7 +50,7 @@ public class RemoveAll {
     }
 
     static void removeWithForLoopIncrementIfRemains(List<Integer> list, int element) {
-        for (int i = 0; i < list.size();) {
+        for (int i = 0; i < list.size(); ) {
             if (Objects.equals(element, list.get(i))) {
                 list.remove(i);
             } else {
@@ -68,7 +68,7 @@ public class RemoveAll {
     }
 
     static void removeWithIterator(List<Integer> list, int element) {
-        for (Iterator<Integer> i = list.iterator(); i.hasNext();) {
+        for (Iterator<Integer> i = list.iterator(); i.hasNext(); ) {
             Integer number = i.next();
             if (Objects.equals(number, element)) {
                 i.remove();
@@ -100,8 +100,8 @@ public class RemoveAll {
 
     static List<Integer> removeWithStreamFilter(List<Integer> list, Integer element) {
         return list.stream()
-            .filter(e -> !Objects.equals(e, element))
-            .collect(Collectors.toList());
+                .filter(e -> !Objects.equals(e, element))
+                .collect(Collectors.toList());
     }
 
     static void removeWithRemoveIf(List<Integer> list, Integer element) {

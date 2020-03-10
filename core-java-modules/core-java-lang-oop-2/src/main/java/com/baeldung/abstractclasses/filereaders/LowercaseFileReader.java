@@ -11,5 +11,5 @@ public class LowercaseFileReader extends BaseFileReader {
     @Override
     public String mapFileLine(String line) {
         return line.toLowerCase();
-    }   
+    }
 }

@@ -31,8 +31,8 @@ public class SubsetSum implements Problem<ISeq<Integer>, EnumGene<Integer>, Inte
     @Override
     public Function<ISeq<Integer>, Integer> fitness() {
         return subset -> Math.abs(subset.stream()
-            .mapToInt(Integer::intValue)
-            .sum());
+                .mapToInt(Integer::intValue)
+                .sum());
     }
 
     @Override
@@ -42,23 +42,23 @@ public class SubsetSum implements Problem<ISeq<Integer>, EnumGene<Integer>, Inte
 
     public static SubsetSum of(int n, int k, Random random) {
         return new SubsetSum(random.doubles()
-            .limit(n)
-            .mapToObj(d -> (int) ((d - 0.5) * n))
-            .collect(ISeq.toISeq()), k);
+                .limit(n)
+                .mapToObj(d -> (int) ((d - 0.5) * n))
+                .collect(ISeq.toISeq()), k);
     }
 
     public static void main(String[] args) {
         SubsetSum problem = of(500, 15, new LCG64ShiftRandom(101010));
 
         Engine<EnumGene<Integer>, Integer> engine = Engine.builder(problem)
-            .minimizing()
-            .maximalPhenotypeAge(5)
-            .alterers(new PartiallyMatchedCrossover<>(0.4), new Mutator<>(0.3))
-            .build();
+                .minimizing()
+                .maximalPhenotypeAge(5)
+                .alterers(new PartiallyMatchedCrossover<>(0.4), new Mutator<>(0.3))
+                .build();
 
         Phenotype<EnumGene<Integer>, Integer> result = engine.stream()
-            .limit(limit.bySteadyFitness(55))
-            .collect(EvolutionResult.toBestPhenotype());
+                .limit(limit.bySteadyFitness(55))
+                .collect(EvolutionResult.toBestPhenotype());
 
         System.out.print(result);
     }

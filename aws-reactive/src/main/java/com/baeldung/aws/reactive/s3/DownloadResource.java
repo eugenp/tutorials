@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.baeldung.aws.reactive.s3;
 
@@ -40,38 +40,38 @@ import software.amazon.awssdk.services.s3.model.GetObjectResponse;
 @RequestMapping("/inbox")
 @Slf4j
 public class DownloadResource {
-    
-    
+
+
     private final S3AsyncClient s3client;
     private final S3ClientConfigurarionProperties s3config;
 
     public DownloadResource(S3AsyncClient s3client, S3ClientConfigurarionProperties s3config) {
         this.s3client = s3client;
-        this.s3config = s3config;        
+        this.s3config = s3config;
     }
-    
-    
-    @GetMapping(path="/{filekey}")
-    public Mono<ResponseEntity<Flux<ByteBuffer>>> downloadFile(@PathVariable("filekey") String filekey) {
-        
-        GetObjectRequest request = GetObjectRequest.builder()
-          .bucket(s3config.getBucket())
-          .key(filekey)
-          .build();
-        
-        return Mono.fromFuture(s3client.getObject(request,new FluxResponseProvider()))
-          .map( (response) -> {
-            checkResult(response.sdkResponse);
-            String filename = getMetadataItem(response.sdkResponse,"filename",filekey);            
 
-            log.info("[I65] filename={}, length={}",filename, response.sdkResponse.contentLength() );
-            
-            return ResponseEntity.ok()
-              .header(HttpHeaders.CONTENT_TYPE, response.sdkResponse.contentType())
-              .header(HttpHeaders.CONTENT_LENGTH, Long.toString(response.sdkResponse.contentLength()))
-              .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
-              .body(response.flux);
-          });
+
+    @GetMapping(path = "/{filekey}")
+    public Mono<ResponseEntity<Flux<ByteBuffer>>> downloadFile(@PathVariable("filekey") String filekey) {
+
+        GetObjectRequest request = GetObjectRequest.builder()
+                .bucket(s3config.getBucket())
+                .key(filekey)
+                .build();
+
+        return Mono.fromFuture(s3client.getObject(request, new FluxResponseProvider()))
+                .map((response) -> {
+                    checkResult(response.sdkResponse);
+                    String filename = getMetadataItem(response.sdkResponse, "filename", filekey);
+
+                    log.info("[I65] filename={}, length={}", filename, response.sdkResponse.contentLength());
+
+                    return ResponseEntity.ok()
+                            .header(HttpHeaders.CONTENT_TYPE, response.sdkResponse.contentType())
+                            .header(HttpHeaders.CONTENT_LENGTH, Long.toString(response.sdkResponse.contentLength()))
+                            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
+                            .body(response.flux);
+                });
     }
 
     /**
@@ -82,8 +82,8 @@ public class DownloadResource {
      * @return
      */
     private String getMetadataItem(GetObjectResponse sdkResponse, String key, String defaultValue) {
-        for( Entry<String, String> entry : sdkResponse.metadata().entrySet()) {
-            if ( entry.getKey().equalsIgnoreCase(key)) {
+        for (Entry<String, String> entry : sdkResponse.metadata().entrySet()) {
+            if (entry.getKey().equalsIgnoreCase(key)) {
                 return entry.getValue();
             }
         }
@@ -94,16 +94,16 @@ public class DownloadResource {
     // Helper used to check return codes from an API call
     private static void checkResult(GetObjectResponse response) {
         SdkHttpResponse sdkResponse = response.sdkHttpResponse();
-        if ( sdkResponse != null && sdkResponse.isSuccessful()) {
+        if (sdkResponse != null && sdkResponse.isSuccessful()) {
             return;
         }
-        
+
         throw new DownloadFailedException(response);
     }
-    
-    
-    static class FluxResponseProvider implements AsyncResponseTransformer<GetObjectResponse,FluxResponse> {
-        
+
+
+    static class FluxResponseProvider implements AsyncResponseTransformer<GetObjectResponse, FluxResponse> {
+
         private FluxResponse response;
 
         @Override
@@ -113,29 +113,29 @@ public class DownloadResource {
         }
 
         @Override
-        public void onResponse(GetObjectResponse sdkResponse) {            
+        public void onResponse(GetObjectResponse sdkResponse) {
             this.response.sdkResponse = sdkResponse;
         }
 
         @Override
         public void onStream(SdkPublisher<ByteBuffer> publisher) {
             response.flux = Flux.from(publisher);
-            response.cf.complete(response);            
+            response.cf.complete(response);
         }
 
         @Override
         public void exceptionOccurred(Throwable error) {
             response.cf.completeExceptionally(error);
         }
-        
+
     }
-    
+
     /**
      * Holds the API response and stream
      * @author Philippe
      */
     static class FluxResponse {
-        
+
         final CompletableFuture<FluxResponse> cf = new CompletableFuture<>();
         GetObjectResponse sdkResponse;
         Flux<ByteBuffer> flux;

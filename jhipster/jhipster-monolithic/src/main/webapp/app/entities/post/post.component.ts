@@ -1,13 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Response } from '@angular/http';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs/Rx';
-import { EventManager, ParseLinks, PaginationUtil, JhiLanguageService, AlertService } from 'ng-jhipster';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Response} from '@angular/http';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs/Rx';
+import {EventManager, ParseLinks, PaginationUtil, JhiLanguageService, AlertService} from 'ng-jhipster';
 
-import { Post } from './post.model';
-import { PostService } from './post.service';
-import { ITEMS_PER_PAGE, Principal } from '../../shared';
-import { PaginationConfig } from '../../blocks/config/uib-pagination.config';
+import {Post} from './post.model';
+import {PostService} from './post.service';
+import {ITEMS_PER_PAGE, Principal} from '../../shared';
+import {PaginationConfig} from '../../blocks/config/uib-pagination.config';
 
 @Component({
     selector: 'jhi-post',
@@ -45,7 +45,7 @@ export class PostComponent implements OnInit, OnDestroy {
         this.jhiLanguageService.setLocations(['post']);
     }
 
-    loadAll () {
+    loadAll() {
         this.postService.query({
             page: this.page,
             size: this.itemsPerPage,
@@ -56,7 +56,7 @@ export class PostComponent implements OnInit, OnDestroy {
         );
     }
 
-    reset () {
+    reset() {
         this.page = 0;
         this.posts = [];
         this.loadAll();
@@ -66,6 +66,7 @@ export class PostComponent implements OnInit, OnDestroy {
         this.page = page;
         this.loadAll();
     }
+
     ngOnInit() {
         this.loadAll();
         this.principal.identity().then((account) => {
@@ -78,17 +79,16 @@ export class PostComponent implements OnInit, OnDestroy {
         this.eventManager.destroy(this.eventSubscriber);
     }
 
-    trackId (index: number, item: Post) {
+    trackId(index: number, item: Post) {
         return item.id;
     }
-
 
 
     registerChangeInPosts() {
         this.eventSubscriber = this.eventManager.subscribe('postListModification', (response) => this.reset());
     }
 
-    sort () {
+    sort() {
         let result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
         if (this.predicate !== 'id') {
             result.push('id');
@@ -104,7 +104,7 @@ export class PostComponent implements OnInit, OnDestroy {
         }
     }
 
-    private onError (error) {
+    private onError(error) {
         this.alertService.error(error.message, null, null);
     }
 }

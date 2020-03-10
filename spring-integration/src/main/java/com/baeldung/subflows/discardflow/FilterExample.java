@@ -1,6 +1,7 @@
 package com.baeldung.subflows.discardflow;
 
 import java.util.Collection;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.integration.annotation.Gateway;
 import org.springframework.integration.annotation.IntegrationComponentScan;
@@ -32,6 +33,7 @@ public class FilterExample {
     QueueChannel remainderIsTwoChannel() {
         return new QueueChannel();
     }
+
     boolean isMultipleOfThree(Integer number) {
         return number % 3 == 0;
     }
@@ -43,15 +45,16 @@ public class FilterExample {
     boolean isRemainderTwo(Integer number) {
         return number % 3 == 2;
     }
+
     @Bean
     public IntegrationFlow classify() {
         return flow -> flow.split()
-            .<Integer> filter(this::isMultipleOfThree, notMultiple  -> notMultiple 
-                .discardFlow(oneflow  -> oneflow 
-                    .<Integer> filter(this::isRemainderOne, 
-                    twoflow  -> twoflow .discardChannel("remainderIsTwoChannel"))
-                .channel("remainderIsOneChannel")))
-            .channel("multipleofThreeChannel");
+                .<Integer>filter(this::isMultipleOfThree, notMultiple -> notMultiple
+                        .discardFlow(oneflow -> oneflow
+                                .<Integer>filter(this::isRemainderOne,
+                                        twoflow -> twoflow.discardChannel("remainderIsTwoChannel"))
+                                .channel("remainderIsOneChannel")))
+                .channel("multipleofThreeChannel");
     }
 
 }

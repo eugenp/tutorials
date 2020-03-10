@@ -12,14 +12,14 @@ public class SimpleStorageService {
     public static void storeFruit(final Fruit fruit) {
         fruits.put(fruit.getName(), fruit);
     }
-    
+
     public static Fruit findByName(final String name) {
         return fruits.entrySet()
-            .stream()
-            .filter(map -> name.equals(map.getKey()))
-            .map(map -> map.getValue())
-            .findFirst()
-            .get();
+                .stream()
+                .filter(map -> name.equals(map.getKey()))
+                .map(map -> map.getValue())
+                .findFirst()
+                .get();
     }
 
 }

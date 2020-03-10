@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class RunAsService {
 
-    @Secured({ "ROLE_RUN_AS_REPORTER" })
+    @Secured({"ROLE_RUN_AS_REPORTER"})
     public Authentication getCurrentUser() {
-        Authentication authentication = 
+        Authentication authentication =
                 SecurityContextHolder.getContext().getAuthentication();
         return authentication;
     }

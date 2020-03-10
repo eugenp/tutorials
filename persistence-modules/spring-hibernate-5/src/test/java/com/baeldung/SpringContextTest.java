@@ -9,7 +9,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import com.baeldung.spring.PersistenceConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class SpringContextTest {
 
     @Test

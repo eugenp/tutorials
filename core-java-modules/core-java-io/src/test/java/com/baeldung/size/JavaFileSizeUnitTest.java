@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +19,7 @@ public class JavaFileSizeUnitTest {
     @Before
     public void init() {
         final String separator = File.separator;
-        filePath = String.join(separator, new String[] { "src", "test", "resources", "size", "sample_file_1.in" });
+        filePath = String.join(separator, new String[]{"src", "test", "resources", "size", "sample_file_1.in"});
     }
 
     @Test

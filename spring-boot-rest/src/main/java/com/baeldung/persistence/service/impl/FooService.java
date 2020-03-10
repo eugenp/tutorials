@@ -39,7 +39,7 @@ public class FooService extends AbstractService<Foo> implements IFooService {
     public Page<Foo> findPaginated(Pageable pageable) {
         return dao.findAll(pageable);
     }
-    
+
     // overridden to be secured
 
     @Override

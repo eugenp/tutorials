@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { JhiLanguageService } from 'ng-jhipster';
-import { Comment } from './comment.model';
-import { CommentService } from './comment.service';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {JhiLanguageService} from 'ng-jhipster';
+import {Comment} from './comment.model';
+import {CommentService} from './comment.service';
 
 @Component({
     selector: 'jhi-comment-detail',
@@ -27,11 +27,12 @@ export class CommentDetailComponent implements OnInit, OnDestroy {
         });
     }
 
-    load (id) {
+    load(id) {
         this.commentService.find(id).subscribe(comment => {
             this.comment = comment;
         });
     }
+
     previousState() {
         window.history.back();
     }

@@ -1,17 +1,17 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {ActivatedRoute} from '@angular/router';
+import {of} from 'rxjs';
 
-import { BookstoreTestModule } from '../../../test.module';
-import { UserMgmtDetailComponent } from 'app/admin/user-management/user-management-detail.component';
-import { User } from 'app/core';
+import {BookstoreTestModule} from '../../../test.module';
+import {UserMgmtDetailComponent} from 'app/admin/user-management/user-management-detail.component';
+import {User} from 'app/core';
 
 describe('Component Tests', () => {
     describe('User Management Detail Component', () => {
         let comp: UserMgmtDetailComponent;
         let fixture: ComponentFixture<UserMgmtDetailComponent>;
         const route = ({
-            data: of({ user: new User(1, 'user', 'first', 'last', 'first@last.com', true, 'en', ['ROLE_USER'], 'admin', null, null, null) })
+            data: of({user: new User(1, 'user', 'first', 'last', 'first@last.com', true, 'en', ['ROLE_USER'], 'admin', null, null, null)})
         } as any) as ActivatedRoute;
 
         beforeEach(async(() => {

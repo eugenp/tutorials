@@ -11,7 +11,7 @@
     <dubbo:registry address="multicast://224.1.1.1:9090"/>
 
     <!-- protocol and port used to expose service -->
-    <dubbo:protocol name="dubbo" port="20881" />
+    <dubbo:protocol name="dubbo" port="20881"/>
 
     <!-- the service interface to expose -->
     <dubbo:service interface="com.baeldung.dubbo.remote.GreetingsService" ref="greetingsService"/>

@@ -24,11 +24,9 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * 
  * To run this Live Test, we need to have an AWS account and have API keys generated for programmatic access.
- * 
+ * <p>
  * Check the README file in this module for more information.
- *
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -52,7 +50,7 @@ public class SpringCloudS3LiveTest {
         testFileToDownload = "test-file-download.txt";
         testFileToUpload = "test-file-upload.txt";
 
-        filesWithSimilarName = new String[] { "foo/hello-apple.txt", "foo/hello-orange.txt", "bar/hello-grapes.txt", };
+        filesWithSimilarName = new String[]{"foo/hello-apple.txt", "foo/hello-orange.txt", "bar/hello-grapes.txt",};
 
         similarNameFiles = new ArrayList<>();
         for (String name : filesWithSimilarName) {

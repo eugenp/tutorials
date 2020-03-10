@@ -26,14 +26,14 @@ public class MongoDbSpringIntegrationTest {
     public void test(@Autowired MongoTemplate mongoTemplate) {
         // given
         DBObject objectToSave = BasicDBObjectBuilder.start()
-            .add("key", "value")
-            .get();
+                .add("key", "value")
+                .get();
 
         // when
         mongoTemplate.save(objectToSave, "collection");
 
         // then
         assertThat(mongoTemplate.findAll(DBObject.class, "collection")).extracting("key")
-            .containsOnly("value");
+                .containsOnly("value");
     }
 }

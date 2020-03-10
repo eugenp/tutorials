@@ -18,7 +18,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ImportResource({ "classpath:hibernate5Configuration.xml" })
+@ImportResource({"classpath:hibernate5Configuration.xml"})
 public class HibernateXMLConf {
 
 }

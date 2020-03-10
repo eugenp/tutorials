@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { JhiLanguageService } from 'ng-jhipster';
-import { Post } from './post.model';
-import { PostService } from './post.service';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {JhiLanguageService} from 'ng-jhipster';
+import {Post} from './post.model';
+import {PostService} from './post.service';
 
 @Component({
     selector: 'jhi-post-detail',
@@ -27,11 +27,12 @@ export class PostDetailComponent implements OnInit, OnDestroy {
         });
     }
 
-    load (id) {
+    load(id) {
         this.postService.find(id).subscribe(post => {
             this.post = post;
         });
     }
+
     previousState() {
         window.history.back();
     }

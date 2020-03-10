@@ -19,8 +19,8 @@ public class GoogleController {
     private GoogleService service;
 
 
-    @GetMapping(value ="/me/google")
-    public void me(HttpServletResponse response){
+    @GetMapping(value = "/me/google")
+    public void me(HttpServletResponse response) {
         String auth = service.getService().getAuthorizationUrl();
 
         response.setHeader("Location", auth);
@@ -29,7 +29,7 @@ public class GoogleController {
     }
 
     @GetMapping(value = "/auth/google")
-    public String google(@RequestParam String code, HttpServletResponse servletResponse){
+    public String google(@RequestParam String code, HttpServletResponse servletResponse) {
 
         try {
             OAuth2AccessToken token = service.getService().getAccessToken(code);
@@ -39,7 +39,7 @@ public class GoogleController {
             Response response = service.getService().execute(request);
             return response.getBody();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             servletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
 

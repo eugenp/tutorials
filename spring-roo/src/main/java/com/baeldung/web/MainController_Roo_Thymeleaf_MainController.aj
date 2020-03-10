@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 privileged aspect MainController_Roo_Thymeleaf_MainController {
-    
-    declare @type: MainController: @Controller;
-    
+
+    declare @type: MainController:@Controller;
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param model
      * @return String
      */
@@ -29,10 +29,10 @@ privileged aspect MainController_Roo_Thymeleaf_MainController {
         model.addAttribute("application_locale", LocaleContextHolder.getLocale().getLanguage());
         return "index";
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param model
      * @return String
      */
@@ -41,10 +41,10 @@ privileged aspect MainController_Roo_Thymeleaf_MainController {
         model.addAttribute("application_locale", LocaleContextHolder.getLocale().getLanguage());
         return "accessibility";
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param template
      * @return String
      */
@@ -55,5 +55,5 @@ privileged aspect MainController_Roo_Thymeleaf_MainController {
         }
         throw new NotFoundException("File not found");
     }
-    
+
 }

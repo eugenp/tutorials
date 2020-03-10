@@ -13,11 +13,11 @@ public class PetStoreIntegrationConfig {
     public PetApi petpi() {
         return new PetApi(apiClient());
     }
-    
+
     @Bean
     public ApiClient apiClient() {
         ApiClient apiClient = new ApiClient();
         return apiClient;
     }
-    
+
 }

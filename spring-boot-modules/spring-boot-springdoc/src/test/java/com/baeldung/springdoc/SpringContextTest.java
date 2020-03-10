@@ -11,7 +11,7 @@ public class SpringContextTest {
 
     @Test
     public void whenSpringContextIsBootstrapped_thenNoExceptions() {
-    
+
     }
 
 }

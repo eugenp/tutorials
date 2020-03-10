@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     RequestResetController.$inject = ['$timeout', 'Auth'];
 
-    function RequestResetController ($timeout, Auth) {
+    function RequestResetController($timeout, Auth) {
         var vm = this;
 
         vm.error = null;
@@ -16,9 +16,11 @@
         vm.resetAccount = {};
         vm.success = null;
 
-        $timeout(function (){angular.element('#email').focus();});
+        $timeout(function () {
+            angular.element('#email').focus();
+        });
 
-        function requestReset () {
+        function requestReset() {
 
             vm.error = null;
             vm.errorEmailNotExists = null;

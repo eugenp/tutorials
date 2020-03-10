@@ -54,7 +54,7 @@ public class JacksonDateUnitTest {
 
         final ObjectMapper mapper = new ObjectMapper();
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        
+
         // StdDateFormat is ISO8601 since jackson 2.9
         mapper.setDateFormat(new StdDateFormat().withColonInTimeZone(true));
 
@@ -133,7 +133,7 @@ public class JacksonDateUnitTest {
         mapper.setDateFormat(df);
 
         final Event event = mapper.readerFor(Event.class)
-            .readValue(json);
+                .readValue(json);
         assertEquals("20-12-2014 02:30:00", df.format(event.eventDate));
     }
 
@@ -145,7 +145,7 @@ public class JacksonDateUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
 
         final EventWithSerializer event = mapper.readerFor(EventWithSerializer.class)
-            .readValue(json);
+                .readValue(json);
         assertEquals("20-12-2014 02:30:00", df.format(event.eventDate));
     }
 

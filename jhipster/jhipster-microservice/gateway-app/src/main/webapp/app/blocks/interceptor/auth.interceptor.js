@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,14 +7,14 @@
 
     authInterceptor.$inject = ['$rootScope', '$q', '$location', '$localStorage', '$sessionStorage'];
 
-    function authInterceptor ($rootScope, $q, $location, $localStorage, $sessionStorage) {
+    function authInterceptor($rootScope, $q, $location, $localStorage, $sessionStorage) {
         var service = {
             request: request
         };
 
         return service;
 
-        function request (config) {
+        function request(config) {
             /*jshint camelcase: false */
             config.headers = config.headers || {};
             var token = $localStorage.authenticationToken || $sessionStorage.authenticationToken;

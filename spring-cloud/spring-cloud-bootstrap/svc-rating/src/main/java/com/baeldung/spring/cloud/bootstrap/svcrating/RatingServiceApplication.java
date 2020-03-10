@@ -27,7 +27,7 @@ import zipkin.Span;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableHystrix
-@EnableTransactionManagement(order=Ordered.LOWEST_PRECEDENCE, mode=AdviceMode.ASPECTJ)
+@EnableTransactionManagement(order = Ordered.LOWEST_PRECEDENCE, mode = AdviceMode.ASPECTJ)
 public class RatingServiceApplication {
     @Autowired
     private EurekaClient eurekaClient;
@@ -60,11 +60,11 @@ public class RatingServiceApplication {
             }
         };
     }
-    
+
     @Bean
     @Primary
-    @Order(value=Ordered.HIGHEST_PRECEDENCE)
+    @Order(value = Ordered.HIGHEST_PRECEDENCE)
     public HystrixCommandAspect hystrixAspect() {
-      return new HystrixCommandAspect();
+        return new HystrixCommandAspect();
     }
 }

@@ -2,40 +2,40 @@ package com.baeldung.jdbc.joins;
 
 class ArticleWithAuthor {
 
-        private String title;
+    private String title;
 
-        private String authorFirstName;
+    private String authorFirstName;
 
-        private String authorLastName;
+    private String authorLastName;
 
-        public ArticleWithAuthor(String title, String authorFirstName, String authorLastName) {
-                this.title = title;
-                this.authorFirstName = authorFirstName;
-                this.authorLastName = authorLastName;
-        }
+    public ArticleWithAuthor(String title, String authorFirstName, String authorLastName) {
+        this.title = title;
+        this.authorFirstName = authorFirstName;
+        this.authorLastName = authorLastName;
+    }
 
-        public String getTitle() {
-                return title;
-        }
+    public String getTitle() {
+        return title;
+    }
 
-        public void setTitle(String title) {
-                this.title = title;
-        }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-        public String getAuthorFirstName() {
-                return authorFirstName;
-        }
+    public String getAuthorFirstName() {
+        return authorFirstName;
+    }
 
-        public void setAuthorFirstName(String authorFirstName) {
-                this.authorFirstName = authorFirstName;
-        }
+    public void setAuthorFirstName(String authorFirstName) {
+        this.authorFirstName = authorFirstName;
+    }
 
-        public String getAuthorLastName() {
-                return authorLastName;
-        }
+    public String getAuthorLastName() {
+        return authorLastName;
+    }
 
-        public void setAuthorLastName(String authorLastName) {
-                this.authorLastName = authorLastName;
-        }
+    public void setAuthorLastName(String authorLastName) {
+        this.authorLastName = authorLastName;
+    }
 
 }

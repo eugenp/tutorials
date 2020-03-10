@@ -2,7 +2,7 @@ package com.baeldung.adapter;
 
 public class MovableAdapterImpl implements MovableAdapter {
     private Movable luxuryCars;
-    
+
     public MovableAdapterImpl(Movable luxuryCars) {
         this.luxuryCars = luxuryCars;
     }
@@ -12,7 +12,7 @@ public class MovableAdapterImpl implements MovableAdapter {
         double mph = luxuryCars.getSpeed();
         return convertMPHtoKMPH(mph);
     }
-    
+
     private double convertMPHtoKMPH(double mph) {
         return mph * 1.60934;
     }

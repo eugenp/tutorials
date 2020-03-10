@@ -8,10 +8,10 @@ public class ConfProperties {
 
     @Value("${db.url}")
     private String url;
-    
+
     @Value("${db.username}")
     private String username;
-    
+
     @Value("${db.password}")
     private String password;
 
@@ -39,5 +39,5 @@ public class ConfProperties {
         this.password = password;
     }
 
-    
+
 }

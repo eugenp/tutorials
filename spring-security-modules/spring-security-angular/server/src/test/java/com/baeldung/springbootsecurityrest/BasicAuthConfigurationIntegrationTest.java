@@ -28,7 +28,8 @@ public class BasicAuthConfigurationIntegrationTest {
     TestRestTemplate restTemplate;
     URL base;
 
-    @LocalServerPort int port;
+    @LocalServerPort
+    int port;
 
     @Before
     public void setUp() throws MalformedURLException {
@@ -38,50 +39,50 @@ public class BasicAuthConfigurationIntegrationTest {
 
     @Test
     public void givenCorrectCredentials_whenLogin_ThenSuccess() throws IllegalStateException, IOException {
-    	restTemplate = new TestRestTemplate();
-    	User user = new User();
-    	user.setUserName("user");
-    	user.setPassword("password");
-        ResponseEntity<String> response = restTemplate.postForEntity(base.toString()+"/login",user, String.class);
+        restTemplate = new TestRestTemplate();
+        User user = new User();
+        user.setUserName("user");
+        user.setPassword("password");
+        ResponseEntity<String> response = restTemplate.postForEntity(base.toString() + "/login", user, String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertTrue(response
-          .getBody()
-          .contains("true"));
+                .getBody()
+                .contains("true"));
     }
-    
+
     @Test
     public void givenWrongCredentials_whenLogin_ThenReturnFalse() throws IllegalStateException, IOException {
-    	restTemplate = new TestRestTemplate();
-    	User user = new User();
-    	user.setUserName("user");
-    	user.setPassword("wrongpassword");
-        ResponseEntity<String> response = restTemplate.postForEntity(base.toString()+"/login",user, String.class);
+        restTemplate = new TestRestTemplate();
+        User user = new User();
+        user.setUserName("user");
+        user.setPassword("wrongpassword");
+        ResponseEntity<String> response = restTemplate.postForEntity(base.toString() + "/login", user, String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertTrue(response
-          .getBody()
-          .contains("false"));
+                .getBody()
+                .contains("false"));
     }
-    
+
     @Test
     public void givenLoggedInUser_whenRequestsHomePage_ThenSuccess() throws IllegalStateException, IOException {
-        ResponseEntity<String> response = restTemplate.getForEntity(base.toString()+"/user", String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity(base.toString() + "/user", String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertTrue(response
-          .getBody()
-          .contains("user"));
+                .getBody()
+                .contains("user"));
     }
 
     @Test
     public void givenWrongCredentials_whenRequestsHomePage_ThenUnauthorized() throws IllegalStateException, IOException {
         restTemplate = new TestRestTemplate("user", "wrongpassword");
-        ResponseEntity<String> response = restTemplate.getForEntity(base.toString()+"/user", String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity(base.toString() + "/user", String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
         assertTrue(response
-          .getBody()
-          .contains("Unauthorized"));
+                .getBody()
+                .contains("Unauthorized"));
     }
 }

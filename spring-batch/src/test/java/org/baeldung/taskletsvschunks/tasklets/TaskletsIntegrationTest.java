@@ -15,7 +15,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(classes = TaskletsConfig.class)
 public class TaskletsIntegrationTest {
 
-    @Autowired private JobLauncherTestUtils jobLauncherTestUtils;
+    @Autowired
+    private JobLauncherTestUtils jobLauncherTestUtils;
 
     @Test
     public void givenTaskletsJob_WhenJobEnds_ThenStatusCompleted() throws Exception {

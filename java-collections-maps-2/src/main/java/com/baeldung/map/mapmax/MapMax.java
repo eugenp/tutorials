@@ -12,7 +12,7 @@ public class MapMax {
         for (Map.Entry<K, V> entry : map.entrySet()) {
 
             if (maxEntry == null || entry.getValue()
-                .compareTo(maxEntry.getValue()) > 0) {
+                    .compareTo(maxEntry.getValue()) > 0) {
                 maxEntry = entry;
             }
         }
@@ -25,7 +25,7 @@ public class MapMax {
         Entry<K, V> maxEntry = Collections.max(map.entrySet(), new Comparator<Entry<K, V>>() {
             public int compare(Entry<K, V> e1, Entry<K, V> e2) {
                 return e1.getValue()
-                    .compareTo(e2.getValue());
+                        .compareTo(e2.getValue());
             }
         });
 
@@ -35,7 +35,7 @@ public class MapMax {
     public <K, V extends Comparable<V>> V maxUsingCollectionsMaxAndLambda(Map<K, V> map) {
 
         Entry<K, V> maxEntry = Collections.max(map.entrySet(), (Entry<K, V> e1, Entry<K, V> e2) -> e1.getValue()
-            .compareTo(e2.getValue()));
+                .compareTo(e2.getValue()));
 
         return maxEntry.getValue();
     }
@@ -50,22 +50,22 @@ public class MapMax {
     public <K, V extends Comparable<V>> V maxUsingStreamAndLambda(Map<K, V> map) {
 
         Optional<Entry<K, V>> maxEntry = map.entrySet()
-            .stream()
-            .max((Entry<K, V> e1, Entry<K, V> e2) -> e1.getValue()
-                .compareTo(e2.getValue()));
+                .stream()
+                .max((Entry<K, V> e1, Entry<K, V> e2) -> e1.getValue()
+                        .compareTo(e2.getValue()));
 
         return maxEntry.get()
-            .getValue();
+                .getValue();
     }
 
     public <K, V extends Comparable<V>> V maxUsingStreamAndMethodReference(Map<K, V> map) {
 
         Optional<Entry<K, V>> maxEntry = map.entrySet()
-            .stream()
-            .max(Comparator.comparing(Map.Entry::getValue));
+                .stream()
+                .max(Comparator.comparing(Map.Entry::getValue));
 
         return maxEntry.get()
-            .getValue();
+                .getValue();
     }
 
     public static void main(String[] args) {
@@ -77,7 +77,7 @@ public class MapMax {
         map.put(3, 5);
         map.put(4, 6);
         map.put(5, 7);
-        
+
         MapMax mapMax = new MapMax();
 
         System.out.println(mapMax.maxUsingIteration(map));

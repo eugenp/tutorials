@@ -22,7 +22,7 @@ public class SimplePositionBean extends CsvBean {
         return exampleColTwo;
     }
 
-    private void setExampleCsvTwo (String exampleColTwo) {
+    private void setExampleCsvTwo(String exampleColTwo) {
         this.exampleColTwo = exampleColTwo;
     }
 

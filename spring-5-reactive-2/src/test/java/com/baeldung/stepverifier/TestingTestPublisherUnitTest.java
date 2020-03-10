@@ -10,16 +10,16 @@ public class TestingTestPublisherUnitTest {
     @Test
     public void testPublisher() {
         TestPublisher
-          .<String>create()
-          .next("First", "Second", "Third")
-          .error(new RuntimeException("Message"));
+                .<String>create()
+                .next("First", "Second", "Third")
+                .error(new RuntimeException("Message"));
     }
 
     @Test
     public void nonCompliant() {
         TestPublisher
-          .createNoncompliant(TestPublisher.Violation.ALLOW_NULL)
-          .emit("1", "2", null, "3");
+                .createNoncompliant(TestPublisher.Violation.ALLOW_NULL)
+                .emit("1", "2", null, "3");
     }
 
     @Test
@@ -29,9 +29,9 @@ public class TestingTestPublisherUnitTest {
         UppercaseConverter uppercaseConverter = new UppercaseConverter(testPublisher.flux());
 
         StepVerifier.create(uppercaseConverter.getUpperCase())
-          .then(() -> testPublisher.emit("aA", "bb", "ccc"))
-          .expectNext("AA", "BB", "CCC")
-          .verifyComplete();
+                .then(() -> testPublisher.emit("aA", "bb", "ccc"))
+                .expectNext("AA", "BB", "CCC")
+                .verifyComplete();
     }
 
 }

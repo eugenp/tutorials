@@ -20,7 +20,7 @@ public class BufferedReaderUnitTest {
 
         try (BufferedReader reader = new BufferedReader(new StringReader("1__2__3__4__5"))) {
             int value;
-            while((value = reader.read()) != -1) {
+            while ((value = reader.read()) != -1) {
                 result.append((char) value);
                 reader.skip(2L);
             }
@@ -36,7 +36,7 @@ public class BufferedReaderUnitTest {
         try (BufferedReader reader = new BufferedReader(new StringReader("    Lorem ipsum dolor sit amet."))) {
             do {
                 reader.mark(1);
-            } while(Character.isWhitespace(reader.read()));
+            } while (Character.isWhitespace(reader.read()));
 
             reader.reset();
             result = reader.readLine();
@@ -47,7 +47,7 @@ public class BufferedReaderUnitTest {
 
     @Test
     public void whenCreatesNewBufferedReader_thenOk() throws IOException {
-        try(BufferedReader reader = Files.newBufferedReader(Paths.get(FILE_PATH))) {
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get(FILE_PATH))) {
             assertNotNull(reader);
             assertTrue(reader.ready());
         }

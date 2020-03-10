@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
-@SpringBootApplication(exclude = { MongoAutoConfiguration.class,
+@SpringBootApplication(exclude = {MongoAutoConfiguration.class,
         MongoDataAutoConfiguration.class,
         MongoReactiveDataAutoConfiguration.class,
-        MongoReactiveAutoConfiguration.class }
+        MongoReactiveAutoConfiguration.class}
 )
 public class CorsGlobalConfigApplication {
 

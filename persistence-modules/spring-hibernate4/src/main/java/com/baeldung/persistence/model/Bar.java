@@ -59,7 +59,9 @@ public class Bar implements Serializable {
             }
             return operation;
         }
-    };
+    }
+
+    ;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

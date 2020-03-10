@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
-@SpringBootApplication(exclude = { MongoAutoConfiguration.class,
+@SpringBootApplication(exclude = {MongoAutoConfiguration.class,
         MongoDataAutoConfiguration.class,
-        MongoReactiveDataAutoConfiguration.class, 
-        MongoReactiveAutoConfiguration.class }
+        MongoReactiveDataAutoConfiguration.class,
+        MongoReactiveAutoConfiguration.class}
 )
 public class CorsWebFilterApplication {
 
@@ -24,7 +24,7 @@ public class CorsWebFilterApplication {
         app.setDefaultProperties(Collections.singletonMap("server.port", "8083"));
         app.run(args);
     }
-    
+
     @Bean
     public SecurityWebFilterChain corsWebfilterSpringSecurityFilterChain(ServerHttpSecurity http) {
         http.csrf().disable();

@@ -3,7 +3,7 @@ package com.baeldung.java.set;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import org.junit.jupiter.api.Test;
-  
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -22,7 +22,7 @@ public class HashSetInitalizingUnitTest {
 
     @Test
     public void whenUsingJava_usingAnonymousClass_thenCorrectSize() {
-        Set<String> set = new HashSet<String>(){{
+        Set<String> set = new HashSet<String>() {{
             add("a");
             add("b");
             add("c");
@@ -44,7 +44,7 @@ public class HashSetInitalizingUnitTest {
 
     @Test
     public void whenUsingJava_usingCustomStaticUtilMethod_thenCorrectSize() {
-        Set<String> set = newHashSet("a","b","c");
+        Set<String> set = newHashSet("a", "b", "c");
         assertEquals(3, set.size());
     }
 
@@ -65,6 +65,6 @@ public class HashSetInitalizingUnitTest {
         Set<String> set = ImmutableSet.of("a", "b", "c");
         assertEquals(3, set.size());
     }
-  
+
 }
 

@@ -5,7 +5,7 @@ describe('Directive Tests', function () {
 
     var elm, scope, $httpBackend;
 
-    beforeEach(inject(function($compile, $rootScope, $injector) {
+    beforeEach(inject(function ($compile, $rootScope, $injector) {
         $httpBackend = $injector.get('$httpBackend');
 
         var html = '<password-strength-bar password-to-check="password"></password-strength-bar>';
@@ -15,13 +15,13 @@ describe('Directive Tests', function () {
     }));
 
     describe('Password strength', function () {
-        it("Should display the password strength bar", function() {
+        it("Should display the password strength bar", function () {
             expect(elm.find('ul').length).toEqual(1);
             expect(elm.find('li').length).toEqual(5);
         });
 
-        it("Should change the first 2 points of the strength bar", function() {
-            scope.$apply(function() {
+        it("Should change the first 2 points of the strength bar", function () {
+            scope.$apply(function () {
                 scope.password = "morethan5chars"; // that should trigger the 2 first points
             });
 
@@ -35,8 +35,8 @@ describe('Directive Tests', function () {
             expect(thirdpointStyle).toContain('background-color: rgb(221, 221, 221)');
         });
 
-        it("Should change the first 4 points of the strength bar", function() {
-            scope.$apply(function() {
+        it("Should change the first 4 points of the strength bar", function () {
+            scope.$apply(function () {
                 scope.password = "mo5ch$=!"; // that should trigger the 3 first points
             });
 

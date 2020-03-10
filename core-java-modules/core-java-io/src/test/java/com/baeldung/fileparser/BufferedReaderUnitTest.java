@@ -10,7 +10,7 @@ import org.junit.Test;
 public class BufferedReaderUnitTest {
 
     protected static final String TEXT_FILENAME = "src/test/resources/sampleTextFile.txt";
-    
+
     @Test
     public void whenParsingExistingTextFile_thenGetArrayList() throws IOException {
         List<String> lines = BufferedReaderExample.generateArrayListFromFile(TEXT_FILENAME);

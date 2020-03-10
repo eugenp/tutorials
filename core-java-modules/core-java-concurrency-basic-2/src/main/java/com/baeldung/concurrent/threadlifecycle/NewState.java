@@ -6,9 +6,9 @@ public class NewState implements Runnable {
         Thread t = new Thread(runnable);
         System.out.println(t.getState());
     }
-    
+
     @Override
     public void run() {
-        
+
     }
 }

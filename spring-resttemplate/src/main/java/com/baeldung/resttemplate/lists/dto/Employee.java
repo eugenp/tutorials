@@ -5,13 +5,11 @@ public class Employee {
     public long id;
     public String title;
 
-    public Employee()
-    {
+    public Employee() {
 
     }
 
-    public Employee(long id, String title)
-    {
+    public Employee(long id, String title) {
         this.id = id;
         this.title = title;
     }
@@ -33,8 +31,7 @@ public class Employee {
     }
 
     @Override
-    public String toString()
-    {
-        return "Employee #" + id + "["  + title + "]";
+    public String toString() {
+        return "Employee #" + id + "[" + title + "]";
     }
 }

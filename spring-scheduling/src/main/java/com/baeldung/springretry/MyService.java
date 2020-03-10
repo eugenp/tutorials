@@ -11,7 +11,7 @@ public interface MyService {
     @Retryable
     void retryService();
 
-    @Retryable(value = { SQLException.class }, maxAttempts = 2, backoff = @Backoff(delay = 5000))
+    @Retryable(value = {SQLException.class}, maxAttempts = 2, backoff = @Backoff(delay = 5000))
     void retryServiceWithRecovery(String sql) throws SQLException;
 
     @Recover

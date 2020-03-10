@@ -29,7 +29,7 @@ public class PriceCalculationApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         List<String> params = Arrays.stream(args)
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
         if (verifyArguments(params)) {
             double singlePrice = Double.valueOf(params.get(0));
             int quantity = Integer.valueOf(params.get(1));

@@ -22,28 +22,28 @@ public class UserController {
         model.addAttribute("user", new User());
         return "registration-thymeleaf";
     }
-    
+
     @GetMapping("/registration-freemarker")
     public String getRegistrationFreemarker(Model model) {
         model.addAttribute("user", new User());
         return "registration-freemarker";
     }
-    
+
     @GetMapping("/registration-groovy")
     public String getRegistrationGroovy(Model model) {
         model.addAttribute("user", new User());
         return "registration-groovy";
     }
-    
+
     @GetMapping("/registration-jade")
     public String getRegistrationJade(Model model) {
         model.addAttribute("user", new User());
         return "registration-jade";
     }
-    
+
     @PostMapping("/register")
     @ResponseBody
-    public void register(User user){
+    public void register(User user) {
         System.out.println(user.getEmail());
     }
 

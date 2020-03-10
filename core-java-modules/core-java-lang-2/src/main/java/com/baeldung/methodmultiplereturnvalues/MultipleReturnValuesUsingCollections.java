@@ -20,7 +20,7 @@ class MultipleReturnValuesUsingCollections {
     static Map<String, Number> getCoordinatesMap() {
 
         Map<String, Number> coordinates = new HashMap<>();
-        
+
         coordinates.put("longitude", 10);
         coordinates.put("latitude", 12.5);
 

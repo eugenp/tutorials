@@ -17,31 +17,31 @@ import static org.mockito.Mockito.when;
 
 
 public class CustomAnswerWithoutLambdaUnitTest {
-    
+
     private class PersonAnswer implements Answer<Stream<JobPosition>> {
 
         @Override
         public Stream<JobPosition> answer(InvocationOnMock invocation) throws Throwable {
             Person person = invocation.getArgument(0);
-            
-            if(person.getName().equals("Peter")) {
+
+            if (person.getName().equals("Peter")) {
                 return Stream.<JobPosition>builder().add(new JobPosition("Teacher")).build();
-            } 
-            
+            }
+
             return Stream.empty();
         }
     }
-    
+
     @InjectMocks
     private UnemploymentServiceImpl unemploymentService;
-    
+
     @Mock
     private JobService jobService;
 
     @Test
     public void whenPersonWithJobHistory_thenSearchReturnsValue() {
         Person peter = new Person("Peter");
-        
+
         assertEquals("Teacher", unemploymentService.searchJob(peter, "").get().getTitle());
     }
 
@@ -55,7 +55,7 @@ public class CustomAnswerWithoutLambdaUnitTest {
     @Before
     public void init() {
         MockitoAnnotations.initMocks(this);
-        
+
         when(jobService.listJobs(any(Person.class))).then(new PersonAnswer());
     }
 }

@@ -13,6 +13,7 @@ fun main(args: Array<String>) {
             println("Hello")
         }
     }
+
     val result = Fiber<Void>(Runnable()).start()
     result.join()
     println("World")

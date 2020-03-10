@@ -48,7 +48,7 @@ public class DateFormatUnitTest {
         DateFormat mediumInstance = DateFormat.getTimeInstance(DateFormat.MEDIUM, Locale.ITALY);
 
         Assert.assertEquals("10.15.20 CET", fullInstance.format(date));
-        Assert.assertEquals("10.15.20" , mediumInstance.format(date));
+        Assert.assertEquals("10.15.20", mediumInstance.format(date));
     }
 
     @Test
@@ -89,7 +89,7 @@ public class DateFormatUnitTest {
         SimpleDateFormat shortMonthsimpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SSS");
 
         Assert.assertEquals("01-lutego-2018 10:15:20:000", fullMonthDateFormat.format(date));
-        Assert.assertEquals("01-02-2018 10:15:20:000" , shortMonthsimpleDateFormat.format(date));
+        Assert.assertEquals("01-02-2018 10:15:20:000", shortMonthsimpleDateFormat.format(date));
     }
 
     @Test

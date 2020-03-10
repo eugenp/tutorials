@@ -2,7 +2,7 @@ package com.baeldung.guava.entity;
 
 import com.google.common.base.MoreObjects;
 
-public class User{
+public class User {
     private long id;
     private String name;
     private int age;

@@ -16,10 +16,9 @@ import org.springframework.stereotype.Component;
 
 /**
  * This Application requires:
- * *  a MySql instance running, that allows a root user with no password, and with a database named 
- * 
+ * *  a MySql instance running, that allows a root user with no password, and with a database named
+ * <p>
  * (e.g. with the following command `docker run -p 3306:3306 --name bael-mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true -e MYSQL_DATABASE=springcloud mysql:latest`)
- *
  */
 @SpringBootApplication
 @EnableTask
@@ -27,14 +26,13 @@ import org.springframework.stereotype.Component;
 public class TaskDemo {
 
     private final static Logger LOGGER = Logger
-        .getLogger(TaskDemo.class.getName());
+            .getLogger(TaskDemo.class.getName());
 
     @Autowired
     private DataSource dataSource;
 
     @Bean
-    public HelloWorldTaskConfigurer getTaskConfigurer()
-    {
+    public HelloWorldTaskConfigurer getTaskConfigurer() {
         return new HelloWorldTaskConfigurer(dataSource);
     }
 
@@ -49,15 +47,15 @@ public class TaskDemo {
 
     @Component
     public static class HelloWorldApplicationRunner
-        implements
-        ApplicationRunner {
+            implements
+            ApplicationRunner {
 
         @Override
         public void run(ApplicationArguments arg0)
-            throws Exception {
+                throws Exception {
             // TODO Auto-generated method stub
             LOGGER
-                .info("Hello World from Spring Cloud Task!");
+                    .info("Hello World from Spring Cloud Task!");
         }
     }
 }

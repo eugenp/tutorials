@@ -1,7 +1,7 @@
-import { Component, OnDestroy } from '@angular/core';
-import { TranslateService } from 'ng2-translate';
-import { EventManager, AlertService } from 'ng-jhipster';
-import { Subscription } from 'rxjs/Rx';
+import {Component, OnDestroy} from '@angular/core';
+import {TranslateService} from 'ng2-translate';
+import {EventManager, AlertService} from 'ng-jhipster';
+import {Subscription} from 'rxjs/Rx';
 
 @Component({
     selector: 'jhi-alert-error',
@@ -82,7 +82,7 @@ export class JhiAlertErrorComponent implements OnDestroy {
         }
     }
 
-    addErrorAlert (message, key?, data?) {
+    addErrorAlert(message, key?, data?) {
         key = key && key !== null ? key : message;
         this.alerts.push(
             this.alertService.addAlert(

@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @Builder
 public class AccountDTO {
-    
+
     private String customerId;
     private String accNumber;
     private String branchId;

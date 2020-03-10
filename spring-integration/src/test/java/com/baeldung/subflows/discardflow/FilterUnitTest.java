@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.baeldung.subflows.discardflow.FilterExample.NumbersClassifier;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { FilterExample.class })
+@ContextConfiguration(classes = {FilterExample.class})
 public class FilterUnitTest {
     @Autowired
     private QueueChannel multipleofThreeChannel;

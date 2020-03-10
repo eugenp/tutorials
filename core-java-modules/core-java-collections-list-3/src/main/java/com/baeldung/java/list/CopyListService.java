@@ -15,7 +15,7 @@ public class CopyListService {
 
     public List<Flower> copyListByConstructorAndEditOneFlowerInTheNewList(List<Flower> source) {
         List<Flower> flowers = new ArrayList<>(source);
-        if(flowers.size() > 0) {
+        if (flowers.size() > 0) {
             flowers.get(0).setPetals(flowers.get(0).getPetals() * 3);
         }
 
@@ -32,7 +32,7 @@ public class CopyListService {
         List<Flower> flowers = new ArrayList<>();
         flowers.addAll(source);
 
-        if(flowers.size() > 0) {
+        if (flowers.size() > 0) {
             flowers.get(0).setPetals(flowers.get(0).getPetals() * 3);
         }
 
@@ -58,9 +58,9 @@ public class CopyListService {
 
     public List<Flower> copyListByStreamWithOptional(List<Flower> source) {
         return Optional.ofNullable(source)
-                 .map(List::stream)
-                 .orElseGet(Stream::empty)
-                 .collect(Collectors.toList());
+                .map(List::stream)
+                .orElseGet(Stream::empty)
+                .collect(Collectors.toList());
     }
 
     public List<Flower> copyListByStreamWithOptionalAndSkip(List<Flower> source) {

@@ -10,11 +10,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 /**
  * @SpringJUnitWebConfig(SpringJUnitWebConfigTest.Config.class) is equivalent to:
- * 
  * @ExtendWith(SpringExtension.class)
  * @WebAppConfiguration
  * @ContextConfiguration(classes = SpringJUnitWebConfigTest.Config.class )
- *
  */
 @SpringJUnitWebConfig(SpringJUnitWebConfigIntegrationTest.Config.class)
 public class SpringJUnitWebConfigIntegrationTest {

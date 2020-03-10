@@ -27,12 +27,12 @@ public class ProgrammaticSequences {
 
     public Flux<String> handle() {
         return Flux.just(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-            .handle((i, sink) -> {
-                String animal = "Elephant nr " + i;
-                if (i % 2 == 0) {
-                    sink.next(animal);
-                }
-            });
+                .handle((i, sink) -> {
+                    String animal = "Elephant nr " + i;
+                    if (i % 2 == 0) {
+                        sink.next(animal);
+                    }
+                });
     }
 
 }

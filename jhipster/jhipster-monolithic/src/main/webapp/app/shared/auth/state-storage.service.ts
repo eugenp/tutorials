@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import { SessionStorageService } from 'ng2-webstorage';
+import {Injectable} from '@angular/core';
+import {SessionStorageService} from 'ng2-webstorage';
 
 @Injectable()
 export class StateStorageService {
     constructor(
         private $sessionStorage: SessionStorageService
-    ) {}
+    ) {
+    }
 
     getPreviousState() {
         return this.$sessionStorage.retrieve('previousState');
@@ -16,7 +17,7 @@ export class StateStorageService {
     }
 
     storePreviousState(previousStateName, previousStateParams) {
-        let previousState = { 'name': previousStateName, 'params': previousStateParams };
+        let previousState = {'name': previousStateName, 'params': previousStateParams};
         this.$sessionStorage.store('previousState', previousState);
     }
 
@@ -33,7 +34,7 @@ export class StateStorageService {
             'params': destinationStateParams,
             'from': {
                 'name': fromState.name,
-             }
+            }
         };
         this.$sessionStorage.store('destinationState', destinationInfo);
     }

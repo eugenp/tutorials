@@ -6,9 +6,10 @@ import java.util.Map;
 public class Response {
     private String result;
     private Map<String, String> map = new HashMap<>();
-    
-    public Response() { }
-    
+
+    public Response() {
+    }
+
     public String getResult() {
         return result;
     }

@@ -16,8 +16,8 @@ public class StaxTransformerUnitTest {
     public void givenXml_whenTransform_thenGetHtml() throws IOException, URISyntaxException, XMLStreamException {
         String path = "src/test/resources/xmlhtml/notification.xml";
         String expectedHtml = new String(Files.readAllBytes((Paths.get(getClass()
-          .getResource("/xmlhtml/notification.html")
-          .toURI()))));
+                .getResource("/xmlhtml/notification.html")
+                .toURI()))));
         StaxTransformer transformer = new StaxTransformer(path);
 
         String result = transformer.html();

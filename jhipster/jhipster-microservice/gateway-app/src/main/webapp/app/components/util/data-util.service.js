@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     DataUtils.$inject = ['$window'];
 
-    function DataUtils ($window) {
+    function DataUtils($window) {
 
         var service = {
             abbreviate: abbreviate,
@@ -18,7 +18,7 @@
 
         return service;
 
-        function abbreviate (text) {
+        function abbreviate(text) {
             if (!angular.isString(text)) {
                 return '';
             }
@@ -28,7 +28,7 @@
             return text ? (text.substring(0, 15) + '...' + text.slice(-10)) : '';
         }
 
-        function byteSize (base64String) {
+        function byteSize(base64String) {
             if (!angular.isString(base64String)) {
                 return '';
             }
@@ -58,11 +58,11 @@
             return formatAsBytes(size(base64String));
         }
 
-        function openFile (type, data) {
+        function openFile(type, data) {
             $window.open('data:' + type + ';base64,' + data, '_blank', 'height=300,width=400');
         }
 
-        function toBase64 (file, cb) {
+        function toBase64(file, cb) {
             var fileReader = new FileReader();
             fileReader.readAsDataURL(file);
             fileReader.onload = function (e) {

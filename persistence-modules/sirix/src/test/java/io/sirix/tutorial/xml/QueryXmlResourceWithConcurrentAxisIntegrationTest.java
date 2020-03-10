@@ -81,17 +81,17 @@ public class QueryXmlResourceWithConcurrentAxisIntegrationTest {
 
                 /* query: //regions/africa//location */
                 final Axis axis =
-                    new NestedAxis(
                         new NestedAxis(
-                            new ConcurrentAxis<>(firstConcurrRtx,
-                                new FilterAxis<>(new DescendantAxis(firstRtx, IncludeSelf.YES),
-                                    new XdmNameFilter(firstRtx, "regions"))),
-                            new ConcurrentAxis<>(secondConcurrRtx,
-                                new FilterAxis<>(new ChildAxis(secondRtx),
-                                    new XdmNameFilter(secondRtx, "africa")))),
-                        new ConcurrentAxis<>(thirdConcurrRtx,
-                            new FilterAxis<>(new DescendantAxis(thirdRtx, IncludeSelf.YES),
-                                new XdmNameFilter(thirdRtx, "location"))));
+                                new NestedAxis(
+                                        new ConcurrentAxis<>(firstConcurrRtx,
+                                                new FilterAxis<>(new DescendantAxis(firstRtx, IncludeSelf.YES),
+                                                        new XdmNameFilter(firstRtx, "regions"))),
+                                        new ConcurrentAxis<>(secondConcurrRtx,
+                                                new FilterAxis<>(new ChildAxis(secondRtx),
+                                                        new XdmNameFilter(secondRtx, "africa")))),
+                                new ConcurrentAxis<>(thirdConcurrRtx,
+                                        new FilterAxis<>(new DescendantAxis(thirdRtx, IncludeSelf.YES),
+                                                new XdmNameFilter(thirdRtx, "location"))));
 
                 final var resultNumber = 55;
 

@@ -16,6 +16,7 @@ import java.nio.file.StandardCopyOption;
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class FileCopierIntegrationTest {

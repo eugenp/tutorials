@@ -14,7 +14,7 @@ public class TypeErasureUnitTest {
 
     @Test
     public void givenAnyArray_whenInvokedPrintArray_shouldSucceed() {
-        Integer[] scores = new Integer[] { 100, 200, 10, 99, 20 };
+        Integer[] scores = new Integer[]{100, 200, 10, 99, 20};
         ArrayContentPrintUtil.printArray(scores);
     }
 

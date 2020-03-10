@@ -20,8 +20,8 @@ public class FeedbackForm {
     }
 
     @PostMapping(
-      path = "/web/feedback",
-      consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+            path = "/web/feedback",
+            consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     public String handleBrowserSubmissions(Feedback feedback) throws Exception {
         // Save feedback data
         return "redirect:/feedback/success";
@@ -33,8 +33,8 @@ public class FeedbackForm {
     }
 
     @PostMapping(
-      path = "/feedback",
-      consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+            path = "/feedback",
+            consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     public ResponseEntity<String> handleNonBrowserSubmissions(@RequestParam MultiValueMap paramMap) throws Exception {
         // Save feedback data
         return new ResponseEntity<String>("Thank you for submitting feedback", HttpStatus.OK);

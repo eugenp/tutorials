@@ -26,9 +26,9 @@ public class Tree {
     @Override
     public String toString() {
         return String.format("[%s, %s, %s]",
-            value,
-            left == null ? "null" : left.toString(),
-            right == null ? "null" : right.toString()
+                value,
+                left == null ? "null" : left.toString(),
+                right == null ? "null" : right.toString()
         );
     }
 }

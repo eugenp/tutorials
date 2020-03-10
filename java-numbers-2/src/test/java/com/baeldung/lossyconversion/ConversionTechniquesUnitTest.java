@@ -9,7 +9,7 @@ public class ConversionTechniquesUnitTest {
 
     @Test
     public void testPrimitiveConversion() {
-        
+
         long longNum = 24;
         short shortNum = (short) longNum;
         assertEquals(24, shortNum);
@@ -17,19 +17,19 @@ public class ConversionTechniquesUnitTest {
         double doubleNum = 15.6;
         int integerNum = (int) doubleNum;
         assertEquals(15, integerNum);
-        
+
         long largeLongNum = 32768;
         short minShortNum = (short) largeLongNum;
         assertEquals(-32768, minShortNum);
-        
+
         long smallLongNum = -32769;
         short maxShortNum = (short) smallLongNum;
         assertEquals(32767, maxShortNum);
-        
+
         long maxLong = Long.MAX_VALUE;
         int minInt = (int) maxLong;
         assertEquals(-1, minInt);
-        
+
         long minLong = Long.MIN_VALUE;
         int maxInt = (int) minLong;
         assertEquals(0, maxInt);
@@ -54,7 +54,7 @@ public class ConversionTechniquesUnitTest {
         long longNum = Math.round(doubleNum);
         assertEquals(16, longNum);
     }
-    
+
     @Test
     public void testWrapperConversion() {
 
@@ -64,5 +64,5 @@ public class ConversionTechniquesUnitTest {
         Integer intNum = Integer.valueOf(intgr);
         assertEquals(Integer.valueOf(10), intNum);
     }
-    
+
 }

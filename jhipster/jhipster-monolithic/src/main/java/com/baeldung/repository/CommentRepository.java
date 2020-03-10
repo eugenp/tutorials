@@ -10,6 +10,6 @@ import java.util.List;
  * Spring Data JPA repository for the Comment entity.
  */
 @SuppressWarnings("unused")
-public interface CommentRepository extends JpaRepository<Comment,Long> {
+public interface CommentRepository extends JpaRepository<Comment, Long> {
 
 }

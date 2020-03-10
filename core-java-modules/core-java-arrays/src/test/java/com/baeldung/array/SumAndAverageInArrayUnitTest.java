@@ -6,7 +6,7 @@ import org.junit.Test;
 public class SumAndAverageInArrayUnitTest {
     @Test
     public void givenAnIntArray_whenNotUsingStream_thenFindSum() {
-        int[] array = { 1, 3, 4, 8, 19, 20 };
+        int[] array = {1, 3, 4, 8, 19, 20};
         int expectedSumOfArray = 55;
         int actualSumOfArray = SumAndAverageInArray.findSumWithoutUsingStream(array);
         Assert.assertEquals(expectedSumOfArray, actualSumOfArray);
@@ -14,7 +14,7 @@ public class SumAndAverageInArrayUnitTest {
 
     @Test
     public void givenAnIntArray_whenUsingStream_thenFindSum() {
-        int[] array = { 1, 3, 4, 8, 19, 20 };
+        int[] array = {1, 3, 4, 8, 19, 20};
         int expectedSumOfArray = 55;
         int actualSumOfArray = SumAndAverageInArray.findSumUsingStream(array);
 
@@ -32,7 +32,7 @@ public class SumAndAverageInArrayUnitTest {
 
     @Test
     public void givenAnIntArray_whenNotUsingStream_thenFindAverage() {
-        int[] array = { 1, 3, 4, 8, 19, 20 };
+        int[] array = {1, 3, 4, 8, 19, 20};
         double expectedAvgOfArray = 9.17;
         double actualAvgOfArray = SumAndAverageInArray.findAverageWithoutUsingStream(array);
 
@@ -41,7 +41,7 @@ public class SumAndAverageInArrayUnitTest {
 
     @Test
     public void givenAnIntArray_whenUsingStream_thenFindAverage() {
-        int[] array = { 1, 3, 4, 8, 19, 20 };
+        int[] array = {1, 3, 4, 8, 19, 20};
         double expectedAvgOfArray = 9.17;
         double actualAvgOfArray = SumAndAverageInArray.findAverageUsingStream(array);
 

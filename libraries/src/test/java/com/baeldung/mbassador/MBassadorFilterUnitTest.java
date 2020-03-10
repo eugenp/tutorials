@@ -70,12 +70,12 @@ public class MBassadorFilterUnitTest {
         assertEquals(-1, ((RejectMessage) subMessage).getCode());
     }
 
-    @Handler(filters = { @Filter(Filters.RejectSubtypes.class) })
+    @Handler(filters = {@Filter(Filters.RejectSubtypes.class)})
     public void handleBaseMessage(Message message) {
         this.baseMessage = message;
     }
 
-    @Handler(filters = { @Filter(Filters.SubtypesOnly.class) })
+    @Handler(filters = {@Filter(Filters.SubtypesOnly.class)})
     public void handleSubMessage(Message message) {
         this.subMessage = message;
     }

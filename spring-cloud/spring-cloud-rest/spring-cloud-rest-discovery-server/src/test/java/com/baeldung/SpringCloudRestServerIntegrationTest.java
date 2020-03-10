@@ -18,11 +18,11 @@ public class SpringCloudRestServerIntegrationTest {
     @Test
     public void contextLoads() {
     }
-    
+
     @EnableRedisHttpSession
     @Configuration
     static class Config {
-        
+
         @Bean
         @SuppressWarnings("unchecked")
         public RedisSerializer<Object> defaultRedisSerializer() {
@@ -31,7 +31,7 @@ public class SpringCloudRestServerIntegrationTest {
 
         @Bean
         public RedisConnectionFactory connectionFactory() {
-            
+
             RedisConnectionFactory factory = Mockito.mock(RedisConnectionFactory.class);
             RedisConnection connection = Mockito.mock(RedisConnection.class);
             Mockito.when(factory.getConnection()).thenReturn(connection);

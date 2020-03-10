@@ -27,10 +27,10 @@ public class TranslationServiceUnitTest {
     @Test
     public void whenServiceLoaderLoadsGoogleService_thenGoogleIsLoaded() {
         TranslationService googleService = StreamSupport.stream(loader.spliterator(), false)
-          .filter(p -> p.getClass().getSimpleName().equals("GoogleTranslationServiceProvider"))
-          .findFirst()
-          .get();
-		
+                .filter(p -> p.getClass().getSimpleName().equals("GoogleTranslationServiceProvider"))
+                .findFirst()
+                .get();
+
         String message = "message";
         assertEquals(message + " (translated by Google)", googleService.translate(message, null, null));
     }

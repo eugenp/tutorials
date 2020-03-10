@@ -1,4 +1,5 @@
 package com.baeldung.jhipster.uaa.service;
+
 import com.baeldung.jhipster.uaa.config.Constants;
 
 import com.baeldung.jhipster.uaa.UaaApp;

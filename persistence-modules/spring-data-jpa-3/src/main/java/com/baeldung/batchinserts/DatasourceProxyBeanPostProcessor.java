@@ -2,6 +2,7 @@ package com.baeldung.batchinserts;
 
 import java.lang.reflect.Method;
 import javax.sql.DataSource;
+
 import net.ttddyy.dsproxy.support.ProxyDataSourceBuilder;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;

@@ -1,9 +1,9 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { LogsService } from 'app/admin/logs/logs.service';
-import { Log } from 'app/admin/logs/log.model';
-import { SERVER_API_URL } from 'app/app.constants';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {LogsService} from 'app/admin/logs/logs.service';
+import {Log} from 'app/admin/logs/log.model';
+import {SERVER_API_URL} from 'app/app.constants';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('Service Tests', () => {
     describe('Logs Service', () => {
@@ -25,9 +25,10 @@ describe('Service Tests', () => {
 
         describe('Service methods', () => {
             it('should call correct URL', () => {
-                service.findAll().subscribe(() => {});
+                service.findAll().subscribe(() => {
+                });
 
-                const req = httpMock.expectOne({ method: 'GET' });
+                const req = httpMock.expectOne({method: 'GET'});
                 const resourceUrl = SERVER_API_URL + 'management/logs';
                 expect(req.request.url).toEqual(resourceUrl);
             });
@@ -39,7 +40,7 @@ describe('Service Tests', () => {
                     expect(received.body[0]).toEqual(log);
                 });
 
-                const req = httpMock.expectOne({ method: 'GET' });
+                const req = httpMock.expectOne({method: 'GET'});
                 req.flush([log]);
             });
 
@@ -50,7 +51,7 @@ describe('Service Tests', () => {
                     expect(received.body[0]).toEqual(log);
                 });
 
-                const req = httpMock.expectOne({ method: 'PUT' });
+                const req = httpMock.expectOne({method: 'PUT'});
                 req.flush([log]);
             });
         });

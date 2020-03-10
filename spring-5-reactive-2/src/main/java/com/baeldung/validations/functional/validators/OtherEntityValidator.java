@@ -21,7 +21,7 @@ public class OtherEntityValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "quantity", "field.required");
         OtherEntity request = (OtherEntity) target;
         if (request.getQuantity() != null && request.getQuantity() < MIN_ITEM_QUANTITY) {
-            errors.rejectValue("quantity", "field.min.length", new Object[] { Integer.valueOf(MIN_ITEM_QUANTITY) }, "There must be at least one item");
+            errors.rejectValue("quantity", "field.min.length", new Object[]{Integer.valueOf(MIN_ITEM_QUANTITY)}, "There must be at least one item");
         }
     }
 }

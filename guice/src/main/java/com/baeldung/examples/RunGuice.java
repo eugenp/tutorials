@@ -6,10 +6,10 @@ import com.baeldung.examples.guice.binding.AOPModule;
 import com.baeldung.examples.guice.modules.BasicModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+
 import java.util.Scanner;
 
 /**
- *
  * @author baeldung
  */
 public class RunGuice {

@@ -34,7 +34,7 @@ public class TokenProviderTest {
         jHipsterProperties = Mockito.mock(JHipsterProperties.class);
         tokenProvider = new TokenProvider(jHipsterProperties);
         key = Keys.hmacShaKeyFor(Decoders.BASE64
-            .decode("fd54a45s65fds737b9aafcb3412e07ed99b267f33413274720ddbb7f6c5e64e9f14075f2d7ed041592f0b7657baf8"));
+                .decode("fd54a45s65fds737b9aafcb3412e07ed99b267f33413274720ddbb7f6c5e64e9f14075f2d7ed041592f0b7657baf8"));
 
         ReflectionTestUtils.setField(tokenProvider, "key", key);
         ReflectionTestUtils.setField(tokenProvider, "tokenValidityInMilliseconds", ONE_MINUTE);
@@ -93,19 +93,19 @@ public class TokenProviderTest {
 
     private String createUnsupportedToken() {
         return Jwts.builder()
-            .setPayload("payload")
-            .signWith(key, SignatureAlgorithm.HS512)
-            .compact();
+                .setPayload("payload")
+                .signWith(key, SignatureAlgorithm.HS512)
+                .compact();
     }
 
     private String createTokenWithDifferentSignature() {
         Key otherKey = Keys.hmacShaKeyFor(Decoders.BASE64
-            .decode("Xfd54a45s65fds737b9aafcb3412e07ed99b267f33413274720ddbb7f6c5e64e9f14075f2d7ed041592f0b7657baf8"));
+                .decode("Xfd54a45s65fds737b9aafcb3412e07ed99b267f33413274720ddbb7f6c5e64e9f14075f2d7ed041592f0b7657baf8"));
 
         return Jwts.builder()
-            .setSubject("anonymous")
-            .signWith(otherKey, SignatureAlgorithm.HS512)
-            .setExpiration(new Date(new Date().getTime() + ONE_MINUTE))
-            .compact();
+                .setSubject("anonymous")
+                .signWith(otherKey, SignatureAlgorithm.HS512)
+                .setExpiration(new Date(new Date().getTime() + ONE_MINUTE))
+                .compact();
     }
 }

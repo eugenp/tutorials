@@ -8,7 +8,7 @@ import com.baeldung.boot.domain.Foo;
 public interface IFooService extends IOperations<Foo> {
 
     Foo retrieveByName(String name);
-    
+
     Page<Foo> findPaginated(Pageable pageable);
 
 }

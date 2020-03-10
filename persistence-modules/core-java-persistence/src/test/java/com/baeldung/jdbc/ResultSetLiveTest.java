@@ -182,7 +182,7 @@ public class ResultSetLiveTest {
             ResultSet rs = pstmt.executeQuery("select * from employees");
             while (rs.next()) {
                 if (rs.getString("name")
-                    .equalsIgnoreCase("john")) {
+                        .equalsIgnoreCase("john")) {
                     rs.updateString("position", "Senior Engineer");
                     rs.updateRow();
                     dbConnection.commit();
@@ -204,7 +204,7 @@ public class ResultSetLiveTest {
             ResultSet rs = pstmt.executeQuery("select * from employees");
             while (rs.next()) {
                 if (rs.getString("name")
-                    .equalsIgnoreCase("john")) {
+                        .equalsIgnoreCase("john")) {
                     rs.updateString("name", "John Doe");
                     rs.updateRow();
                     dbConnection.commit();

@@ -5,7 +5,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = "/hello", description = "a filter for hello servlet", initParams = { @WebInitParam(name = "msg", value = "filtering ") }, filterName = "hello filter", servletNames = { "echo servlet" })
+@WebFilter(urlPatterns = "/hello", description = "a filter for hello servlet", initParams = {@WebInitParam(name = "msg", value = "filtering ")}, filterName = "hello filter", servletNames = {"echo servlet"})
 public class HelloFilter implements Filter {
 
     private FilterConfig filterConfig;

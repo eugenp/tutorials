@@ -11,7 +11,8 @@ import org.springframework.jms.remoting.JmsInvokerServiceExporter;
 import javax.jms.ConnectionFactory;
 import javax.jms.Queue;
 
-@SpringBootApplication public class JmsServer {
+@SpringBootApplication
+public class JmsServer {
 
     /*
     This server needs to be connected to an ActiveMQ server.
@@ -20,22 +21,26 @@ import javax.jms.Queue;
     docker run -p 61616:61616 -p 8161:8161 rmohr/activemq:5.14.3
      */
 
-    @Bean CabBookingService bookingService() {
+    @Bean
+    CabBookingService bookingService() {
         return new CabBookingServiceImpl();
     }
 
-    @Bean Queue queue() {
-    return new ActiveMQQueue("remotingQueue");
-}
+    @Bean
+    Queue queue() {
+        return new ActiveMQQueue("remotingQueue");
+    }
 
-    @Bean JmsInvokerServiceExporter exporter(CabBookingService implementation) {
+    @Bean
+    JmsInvokerServiceExporter exporter(CabBookingService implementation) {
         JmsInvokerServiceExporter exporter = new JmsInvokerServiceExporter();
         exporter.setServiceInterface(CabBookingService.class);
         exporter.setService(implementation);
         return exporter;
     }
 
-    @Bean SimpleMessageListenerContainer listener(ConnectionFactory factory, JmsInvokerServiceExporter exporter) {
+    @Bean
+    SimpleMessageListenerContainer listener(ConnectionFactory factory, JmsInvokerServiceExporter exporter) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(factory);
         container.setDestinationName("remotingQueue");

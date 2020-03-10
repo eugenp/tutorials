@@ -28,7 +28,7 @@ public class PersistOrderIntegrationTest {
 
         // then
         JpaOrder foundOrder = repository.findById(savedOrder.getId())
-            .get();
+                .get();
         assertThat(foundOrder.getOrderLines()).hasSize(2);
     }
 

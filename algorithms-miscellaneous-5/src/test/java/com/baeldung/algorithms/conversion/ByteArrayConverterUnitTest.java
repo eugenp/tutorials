@@ -24,7 +24,7 @@ public class ByteArrayConverterUnitTest {
     public void shouldEncodeByteArrayToHexStringUsingBigIntegerToString() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
-        if(hexString.charAt(0) == '0') {
+        if (hexString.charAt(0) == '0') {
             hexString = hexString.substring(1);
         }
         String output = hexStringConverter.encodeUsingBigIntegerToString(bytes);
@@ -46,7 +46,7 @@ public class ByteArrayConverterUnitTest {
         byte[] output = hexStringConverter.decodeUsingBigInteger(hexString);
         assertArrayEquals(bytes, output);
     }
-    
+
     @Test
     public void shouldEncodeByteArrayToHexStringUsingCharacterConversion() {
         byte[] bytes = getSampleBytes();
@@ -62,8 +62,8 @@ public class ByteArrayConverterUnitTest {
         byte[] output = hexStringConverter.decodeHexString(hexString);
         assertArrayEquals(bytes, output);
     }
-    
-    @Test(expected=IllegalArgumentException.class)
+
+    @Test(expected = IllegalArgumentException.class)
     public void shouldDecodeHexToByteWithInvalidHexCharacter() {
         hexStringConverter.hexToByte("fg");
     }
@@ -121,7 +121,7 @@ public class ByteArrayConverterUnitTest {
     }
 
     private byte[] getSampleBytes() {
-        return new byte[] { 10, -11, 12, 14, 45, 16 };
+        return new byte[]{10, -11, 12, 14, 45, 16};
     }
 
 }

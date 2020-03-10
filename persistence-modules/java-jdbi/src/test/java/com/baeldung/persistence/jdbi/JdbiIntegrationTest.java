@@ -327,7 +327,8 @@ public class JdbiIntegrationTest {
 
                     throw new Exception("rollback");
                 });
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
             List<Map<String, Object>> list = handle.select("SELECT * FROM PROJECT_14").mapToMap().list();
 
             assertFalse(handle.isInTransaction());

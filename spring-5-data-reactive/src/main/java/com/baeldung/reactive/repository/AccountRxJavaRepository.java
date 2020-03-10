@@ -7,7 +7,7 @@ import org.springframework.data.repository.reactive.RxJava2CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AccountRxJavaRepository extends RxJava2CrudRepository<Account, String>{
+public interface AccountRxJavaRepository extends RxJava2CrudRepository<Account, String> {
 
     public Observable<Account> findAllByValue(Double value);
 

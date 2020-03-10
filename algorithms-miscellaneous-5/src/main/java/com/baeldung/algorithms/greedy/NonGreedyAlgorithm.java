@@ -5,20 +5,20 @@ import java.util.List;
 public class NonGreedyAlgorithm {
 
     int currentLevel = 0;
-    final int maxLevel = 3; 
+    final int maxLevel = 3;
     SocialConnector tc;
-    
+
     public NonGreedyAlgorithm(SocialConnector tc, int level) {
         super();
         this.tc = tc;
         this.currentLevel = level;
     }
-      
+
     public long findMostFollowersPath(String account) {
         List<SocialUser> followers = tc.getFollowers(account);
         long total = currentLevel > 0 ? followers.size() : 0;
 
-        if (currentLevel < maxLevel ) {
+        if (currentLevel < maxLevel) {
             currentLevel++;
 
             long[] count = new long[followers.size()];
@@ -28,16 +28,16 @@ public class NonGreedyAlgorithm {
                 count[i] = sub.findMostFollowersPath(el.getUsername());
                 i++;
             }
-            
+
             long max = 0;
             for (; i > 0; i--) {
-                if (count[i-1] > max )
-                    max = count[i-1];
+                if (count[i - 1] > max)
+                    max = count[i - 1];
             }
-            
+
             return total + max;
         }
-        
+
         return total;
     }
 }

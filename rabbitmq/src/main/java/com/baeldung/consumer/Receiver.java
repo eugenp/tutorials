@@ -9,7 +9,7 @@ public class Receiver {
 
     private static final String QUEUE_NAME = "products_queue";
 
-    public static void main (String[] args) throws IOException, TimeoutException {
+    public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
         Connection connection = factory.newConnection();

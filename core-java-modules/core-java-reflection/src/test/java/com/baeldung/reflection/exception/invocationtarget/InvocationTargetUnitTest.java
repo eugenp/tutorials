@@ -15,9 +15,9 @@ public class InvocationTargetUnitTest {
 
         InvocationTargetExample targetExample = new InvocationTargetExample();
         Method method = InvocationTargetExample.class.getMethod("divideByZeroExample");
-        
+
         Exception exception = assertThrows(InvocationTargetException.class, () -> method.invoke(targetExample));
-        
+
         assertEquals(ArithmeticException.class, exception.getCause().getClass());
     }
 }

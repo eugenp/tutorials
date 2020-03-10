@@ -8,7 +8,7 @@ import java.util.List;
 import static picocli.CommandLine.*;
 
 @Command(
-  name = "add"
+        name = "add"
 )
 @Component
 public class GitAddCommand implements Runnable {

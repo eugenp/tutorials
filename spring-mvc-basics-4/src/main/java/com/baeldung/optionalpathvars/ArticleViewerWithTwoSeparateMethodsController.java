@@ -12,10 +12,10 @@ public class ArticleViewerWithTwoSeparateMethodsController {
 
     @RequestMapping(value = "/article/{id}")
     public Article getArticle(@PathVariable(name = "id") Integer articleId) {
-        
-        return new Article(articleId);        
+
+        return new Article(articleId);
     }
-    
+
     @RequestMapping(value = "/article")
     public Article getDefaultArticle() {
 

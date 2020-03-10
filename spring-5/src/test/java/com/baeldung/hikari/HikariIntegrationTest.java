@@ -20,7 +20,7 @@ public class HikariIntegrationTest {
     @Test
     public void hikariConnectionPoolIsConfigured() {
         assertEquals("com.zaxxer.hikari.HikariDataSource", dataSource.getClass()
-            .getName());
+                .getName());
     }
 
 }

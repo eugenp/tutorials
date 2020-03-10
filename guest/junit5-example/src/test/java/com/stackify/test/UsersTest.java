@@ -112,7 +112,7 @@ public class UsersTest implements DatabaseConnectionTest {
     }
 
     @Test
-    @DisabledOnEnvironment({ "dev", "prod")
+    @DisabledOnEnvironment({"dev", "prod")
     void testFail() {
         fail("this test fails");
     }
@@ -129,7 +129,7 @@ public class UsersTest implements DatabaseConnectionTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = { "john@gmail.com", "ana@gmail.com" })
+    @ValueSource(strings = {"john@gmail.com", "ana@gmail.com"})
     public void testParameterized(String email) {
         assertNotNull(userDAO.findOne(email));
     }

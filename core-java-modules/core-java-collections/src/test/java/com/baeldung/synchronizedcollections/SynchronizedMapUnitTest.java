@@ -3,7 +3,9 @@ package com.baeldung.synchronizedcollections;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.junit.Test;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class SynchronizedMapUnitTest {
@@ -16,7 +18,7 @@ public class SynchronizedMapUnitTest {
             syncMap.put(1, "one");
             syncMap.put(2, "two");
             syncMap.put(3, "three");
-            
+
         };
         Thread thread1 = new Thread(mapOperations);
         Thread thread2 = new Thread(mapOperations);
@@ -24,7 +26,7 @@ public class SynchronizedMapUnitTest {
         thread2.start();
         thread1.join();
         thread2.join();
-        
+
         assertThat(syncMap.size()).isEqualTo(3);
     }
 }

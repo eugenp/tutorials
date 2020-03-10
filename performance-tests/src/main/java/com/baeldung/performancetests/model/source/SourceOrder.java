@@ -2,6 +2,7 @@ package com.baeldung.performancetests.model.source;
 
 
 import java.util.List;
+
 public class SourceOrder {
     private String orderFinishDate;
     private PaymentType paymentType;
@@ -13,6 +14,7 @@ public class SourceOrder {
     private int orderId;
     private OrderStatus status;
     private String orderDate;
+
     public SourceOrder() {
     }
 
@@ -87,9 +89,6 @@ public class SourceOrder {
     public void setOfferingShop(Shop offeringShop) {
         this.offeringShop = offeringShop;
     }
-
-
-
 
 
     public int getOrderId() {

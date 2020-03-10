@@ -48,10 +48,10 @@ public class MorphiaIntegrationTest {
         datastore.save(book);
 
         List<Book> books = datastore.createQuery(Book.class)
-            .field("title")
-            .contains("Learning Java")
-            .find()
-            .toList();
+                .field("title")
+                .contains("Learning Java")
+                .find()
+                .toList();
         assertEquals(1, books.size());
         assertEquals(book, books.get(0));
     }
@@ -62,18 +62,18 @@ public class MorphiaIntegrationTest {
         Book book = new Book("9781565927186", "Learning Java", "Tom Kirkman", 3.95, publisher);
         datastore.save(book);
         Query<Book> query = datastore.createQuery(Book.class)
-            .field("title")
-            .contains("Learning Java");
+                .field("title")
+                .contains("Learning Java");
         UpdateOperations<Book> updates = datastore.createUpdateOperations(Book.class)
-            .inc("price", 1);
+                .inc("price", 1);
         datastore.update(query, updates);
         List<Book> books = datastore.createQuery(Book.class)
-            .field("title")
-            .contains("Learning Java")
-            .find()
-            .toList();
+                .field("title")
+                .contains("Learning Java")
+                .find()
+                .toList();
         assertEquals(4.95, books.get(0)
-            .getCost());
+                .getCost());
     }
 
     @Test
@@ -82,14 +82,14 @@ public class MorphiaIntegrationTest {
         Book book = new Book("9781565927186", "Learning Java", "Tom Kirkman", 3.95, publisher);
         datastore.save(book);
         Query<Book> query = datastore.createQuery(Book.class)
-            .field("title")
-            .contains("Learning Java");
+                .field("title")
+                .contains("Learning Java");
         datastore.delete(query);
         List<Book> books = datastore.createQuery(Book.class)
-            .field("title")
-            .contains("Learning Java")
-            .find()
-            .toList();
+                .field("title")
+                .contains("Learning Java")
+                .find()
+                .toList();
         assertEquals(0, books.size());
     }
 
@@ -103,8 +103,8 @@ public class MorphiaIntegrationTest {
         datastore.save(new Book("9781784392338", "Learning Go", "Jonathan Sawyer", 8.95, publisher));
 
         Iterator<Author> authors = datastore.createAggregation(Book.class)
-            .group("author", grouping("books", push("title")))
-            .out(Author.class);
+                .group("author", grouping("books", push("title")))
+                .out(Author.class);
 
         assertTrue(authors.hasNext());
 
@@ -116,16 +116,16 @@ public class MorphiaIntegrationTest {
         Book book = new Book("9781565927186", "Learning Java", "Tom Kirkman", 3.95, publisher);
         datastore.save(book);
         List<Book> books = datastore.createQuery(Book.class)
-            .field("title")
-            .contains("Learning Java")
-            .project("title", true)
-            .find()
-            .toList();
+                .field("title")
+                .contains("Learning Java")
+                .project("title", true)
+                .find()
+                .toList();
         assertEquals(books.size(), 1);
         assertEquals("Learning Java", books.get(0)
-            .getTitle());
+                .getTitle());
         assertNull(books.get(0)
-            .getAuthor());
+                .getAuthor());
     }
 
 }

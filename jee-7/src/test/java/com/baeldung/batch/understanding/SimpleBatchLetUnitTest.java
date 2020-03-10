@@ -21,7 +21,7 @@ class SimpleBatchLetUnitTest {
         jobExecution = BatchTestHelper.keepTestAlive(jobExecution);
         assertEquals(jobExecution.getBatchStatus(), BatchStatus.COMPLETED);
     }
-    
+
     @Test
     public void givenBatchLetProperty_thenBatch_CompleteWithSuccess() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();
@@ -30,7 +30,7 @@ class SimpleBatchLetUnitTest {
         jobExecution = BatchTestHelper.keepTestAlive(jobExecution);
         assertEquals(jobExecution.getBatchStatus(), BatchStatus.COMPLETED);
     }
-    
+
     @Test
     public void givenBatchLetPartition_thenBatch_CompleteWithSuccess() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();
@@ -39,7 +39,7 @@ class SimpleBatchLetUnitTest {
         jobExecution = BatchTestHelper.keepTestAlive(jobExecution);
         assertEquals(jobExecution.getBatchStatus(), BatchStatus.COMPLETED);
     }
-    
+
     @Test
     public void givenBatchLetStarted_whenStopped_thenBatchStopped() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();
@@ -49,7 +49,7 @@ class SimpleBatchLetUnitTest {
         jobExecution = BatchTestHelper.keepTestStopped(jobExecution);
         assertEquals(jobExecution.getBatchStatus(), BatchStatus.STOPPED);
     }
-    
+
     @Test
     public void givenBatchLetStopped_whenRestarted_thenBatchCompletesSuccess() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();

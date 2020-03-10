@@ -51,7 +51,7 @@ ratpack {
         }
 
         get('fetchUsers') {
-            def db = [url:'jdbc:h2:mem:devDB']
+            def db = [url: 'jdbc:h2:mem:devDB']
             def sql = Sql.newInstance(db.url, db.user, db.password)
             def users = sql.rows("SELECT * FROM USER");
             render(Jackson.json(users))
@@ -59,17 +59,17 @@ ratpack {
 
         post('addUser') {
             parse(Jackson.fromJson(User))
-                .then { u ->
-                    def db = [url:'jdbc:h2:mem:devDB']
-                    Sql sql = Sql.newInstance(db.url, db.user, db.password)
-                    sql.executeInsert("INSERT INTO USER VALUES (?,?,?,?)", [
-                        u.id,
-                        u.title,
-                        u.name,
-                        u.country
-                    ])
-                    render "User $u.name inserted"
-                }
+                    .then { u ->
+                        def db = [url: 'jdbc:h2:mem:devDB']
+                        Sql sql = Sql.newInstance(db.url, db.user, db.password)
+                        sql.executeInsert("INSERT INTO USER VALUES (?,?,?,?)", [
+                                u.id,
+                                u.title,
+                                u.name,
+                                u.country
+                        ])
+                        render "User $u.name inserted"
+                    }
         }
     }
 }

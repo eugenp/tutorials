@@ -20,11 +20,11 @@ public class UpperCaseNames implements Function<Boolean> {
         for (Map.Entry<CustomerKey, Customer> entry : region.entrySet()) {
             Customer customer = entry.getValue();
             customer.setFirstName(customer.getFirstName()
-                .toUpperCase());
+                    .toUpperCase());
         }
 
         context.getResultSender()
-            .lastResult(true);
+                .lastResult(true);
     }
 
     @Override

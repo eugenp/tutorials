@@ -21,14 +21,14 @@ import static com.baeldung.springamqp.errorhandling.configuration.SimpleDLQAmqpC
 
 @Configuration
 @ConditionalOnProperty(
-  value = "amqp.configuration.current",
-  havingValue = "fatal-error-strategy")
+        value = "amqp.configuration.current",
+        havingValue = "fatal-error-strategy")
 public class FatalExceptionStrategyAmqpConfiguration {
 
     @Bean
     public SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory(
-      ConnectionFactory connectionFactory,
-      SimpleRabbitListenerContainerFactoryConfigurer configurer) {
+            ConnectionFactory connectionFactory,
+            SimpleRabbitListenerContainerFactoryConfigurer configurer) {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
         factory.setErrorHandler(errorHandler());
@@ -48,7 +48,7 @@ public class FatalExceptionStrategyAmqpConfiguration {
     @Bean
     Queue messagesQueue() {
         return QueueBuilder.durable(QUEUE_MESSAGES)
-          .build();
+                .build();
     }
 
     @Bean

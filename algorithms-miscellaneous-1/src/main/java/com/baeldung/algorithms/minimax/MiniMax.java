@@ -54,7 +54,7 @@ public class MiniMax {
         Comparator<Node> byScoreComparator = Comparator.comparing(Node::getScore);
 
         return children.stream()
-          .max(isMaxPlayer ? byScoreComparator : byScoreComparator.reversed())
-          .orElseThrow(NoSuchElementException::new);
+                .max(isMaxPlayer ? byScoreComparator : byScoreComparator.reversed())
+                .orElseThrow(NoSuchElementException::new);
     }
 }

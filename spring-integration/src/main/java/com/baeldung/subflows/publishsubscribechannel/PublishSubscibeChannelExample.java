@@ -34,6 +34,7 @@ public class PublishSubscibeChannelExample {
     QueueChannel remainderIsTwoChannel() {
         return new QueueChannel();
     }
+
     boolean isMultipleOfThree(Integer number) {
         return number % 3 == 0;
     }
@@ -45,16 +46,17 @@ public class PublishSubscibeChannelExample {
     boolean isRemainderTwo(Integer number) {
         return number % 3 == 2;
     }
+
     @Bean
     public IntegrationFlow classify() {
         return flow -> flow.split()
-            .publishSubscribeChannel(subscription -> subscription.subscribe(subflow -> subflow.<Integer> filter(this::isMultipleOfThree)
-                .channel("multipleofThreeChannel"))
-                .subscribe(subflow -> subflow.<Integer> filter(this::isRemainderOne)
-                    .channel("remainderIsOneChannel"))
-                .subscribe(subflow -> subflow.<Integer> filter(this::isRemainderTwo)
-                    .channel("remainderIsTwoChannel")));
+                .publishSubscribeChannel(subscription -> subscription.subscribe(subflow -> subflow.<Integer>filter(this::isMultipleOfThree)
+                        .channel("multipleofThreeChannel"))
+                        .subscribe(subflow -> subflow.<Integer>filter(this::isRemainderOne)
+                                .channel("remainderIsOneChannel"))
+                        .subscribe(subflow -> subflow.<Integer>filter(this::isRemainderTwo)
+                                .channel("remainderIsTwoChannel")));
     }
-    
+
 
 }

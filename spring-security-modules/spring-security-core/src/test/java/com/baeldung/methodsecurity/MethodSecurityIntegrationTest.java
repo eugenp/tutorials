@@ -40,74 +40,74 @@ public class MethodSecurityIntegrationTest {
     }
 
     @Test
-    @WithMockUser(username = "john", roles = { "VIEWER" })
+    @WithMockUser(username = "john", roles = {"VIEWER"})
     public void givenRoleViewer_whenCallGetUsername_thenReturnUsername() {
         String userName = userRoleService.getUsername();
         assertEquals("john", userName);
     }
 
     @Test
-    @WithMockUser(username = "john", roles = { "EDITOR" })
+    @WithMockUser(username = "john", roles = {"EDITOR"})
     public void givenUsernameJohn_whenCallIsValidUsername_thenReturnTrue() {
         boolean isValid = userRoleService.isValidUsername("john");
         assertEquals(true, isValid);
     }
 
     @Test(expected = AccessDeniedException.class)
-    @WithMockUser(username = "john", roles = { "ADMIN" })
+    @WithMockUser(username = "john", roles = {"ADMIN"})
     public void givenRoleAdmin_whenCallGetUsername_thenReturnAccessDenied() {
         userRoleService.getUsername();
     }
 
     @Test(expected = AccessDeniedException.class)
-    @WithMockUser(username = "john", roles = { "USER" })
+    @WithMockUser(username = "john", roles = {"USER"})
     public void givenRoleUser_whenCallGetUsername2_thenReturnAccessDenied() {
         userRoleService.getUsername2();
     }
 
     @Test
-    @WithMockUser(username = "john", roles = { "VIEWER", "EDITOR" })
+    @WithMockUser(username = "john", roles = {"VIEWER", "EDITOR"})
     public void givenRoleViewer_whenCallGetUsername2_thenReturnUsername() {
         String userName = userRoleService.getUsername2();
         assertEquals("john", userName);
     }
 
     @Test
-    @WithMockUser(username = "john", roles = { "VIEWER" })
+    @WithMockUser(username = "john", roles = {"VIEWER"})
     public void givenUsernameJerry_whenCallIsValidUsername2_thenReturnFalse() {
         boolean isValid = userRoleService.isValidUsername2("jerry");
         assertEquals(false, isValid);
     }
 
     @Test
-    @WithMockUser(username = "JOHN", authorities = { "SYS_ADMIN" })
+    @WithMockUser(username = "JOHN", authorities = {"SYS_ADMIN"})
     public void givenAuthoritySysAdmin_whenCallGetUsernameLC_thenReturnUsername() {
         String username = userRoleService.getUsernameLC();
         assertEquals("john", username);
     }
 
     @Test
-    @WithMockUser(username = "john", roles = { "ADMIN", "USER", "VIEWER" })
+    @WithMockUser(username = "john", roles = {"ADMIN", "USER", "VIEWER"})
     public void givenUserJohn_whenCallGetMyRolesWithJohn_thenReturnRoles() {
         String roles = userRoleService.getMyRoles("john");
         assertEquals("ROLE_ADMIN,ROLE_USER,ROLE_VIEWER", roles);
     }
 
     @Test(expected = AccessDeniedException.class)
-    @WithMockUser(username = "john", roles = { "ADMIN", "USER", "VIEWER" })
+    @WithMockUser(username = "john", roles = {"ADMIN", "USER", "VIEWER"})
     public void givenUserJane_whenCallGetMyRolesWithJane_thenAccessDenied() {
         userRoleService.getMyRoles("jane");
     }
-    
+
     @Test
-    @WithMockUser(username = "john", roles = { "ADMIN", "USER", "VIEWER" })
+    @WithMockUser(username = "john", roles = {"ADMIN", "USER", "VIEWER"})
     public void givenUserJohn_whenCallGetMyRoles2WithJohn_thenReturnRoles() {
         String roles = userRoleService.getMyRoles2("john");
         assertEquals("ROLE_ADMIN,ROLE_USER,ROLE_VIEWER", roles);
     }
 
     @Test(expected = AccessDeniedException.class)
-    @WithMockUser(username = "john", roles = { "ADMIN", "USER", "VIEWER" })
+    @WithMockUser(username = "john", roles = {"ADMIN", "USER", "VIEWER"})
     public void givenUserJane_whenCallGetMyRoles2WithJane_thenAccessDenied() {
         userRoleService.getMyRoles2("jane");
     }
@@ -162,7 +162,7 @@ public class MethodSecurityIntegrationTest {
     }
 
     @Test
-    @WithMockUser(username = "john", roles = { "VIEWER" })
+    @WithMockUser(username = "john", roles = {"VIEWER"})
     public void givenRoleViewer_whenCallGetUsername4_thenReturnUsername() {
         String userName = userRoleService.getUsername4();
         assertEquals("john", userName);

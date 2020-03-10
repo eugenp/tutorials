@@ -16,7 +16,7 @@ public class LazyVerificationUnitTest {
     @Test
     public void whenLazilyVerified_thenReportsMultipleFailures() {
         VerificationCollector collector = MockitoJUnit.collector()
-            .assertLazily();
+                .assertLazily();
 
         List mockList = mock(List.class);
         verify(mockList).add("one");
@@ -26,9 +26,9 @@ public class LazyVerificationUnitTest {
             collector.collectAndReport();
         } catch (MockitoAssertionError error) {
             assertTrue(error.getMessage()
-                .contains("1. Wanted but not invoked:"));
+                    .contains("1. Wanted but not invoked:"));
             assertTrue(error.getMessage()
-                .contains("2. Wanted but not invoked:"));
+                    .contains("2. Wanted but not invoked:"));
         }
     }
 }

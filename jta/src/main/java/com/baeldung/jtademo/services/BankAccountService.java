@@ -24,7 +24,7 @@ public class BankAccountService {
     }
 
     public BigDecimal balanceOf(String accountId) {
-        return jdbcTemplate.query("select BALANCE from ACCOUNT where ID=?", new Object[] { accountId }, (ResultSetExtractor<BigDecimal>) (rs) -> {
+        return jdbcTemplate.query("select BALANCE from ACCOUNT where ID=?", new Object[]{accountId}, (ResultSetExtractor<BigDecimal>) (rs) -> {
             rs.next();
             return new BigDecimal(rs.getDouble(1));
         });

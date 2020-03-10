@@ -46,11 +46,11 @@ public class StringReplaceAndRemoveUnitTest {
 
         builder.delete(startIndex, stopIndex);
         assertFalse(builder.toString()
-            .contains(target));
+                .contains(target));
 
         builder.replace(startIndex, stopIndex, replacement);
         assertTrue(builder.toString()
-            .contains(replacement));
+                .contains(replacement));
 
     }
 

@@ -2,6 +2,7 @@ package com.baeldung.collections.nullsafecollectionstreams;
 
 import java.util.Collection;
 import java.util.stream.Stream;
+
 import static org.apache.commons.collections4.CollectionUtils.emptyIfNull;
 
 public class NullSafeCollectionStreamsUsingCommonsEmptyIfNull {

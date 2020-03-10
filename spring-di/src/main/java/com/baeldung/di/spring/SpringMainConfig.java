@@ -6,13 +6,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import({ SpringBeansConfig.class })
+@Import({SpringBeansConfig.class})
 @ComponentScan("com.baeldung.di.spring")
 public class SpringMainConfig {
 
-	@Bean
-	public BookService bookServiceGenerator() {
-		return new BookServiceImpl();
-	}
+    @Bean
+    public BookService bookServiceGenerator() {
+        return new BookServiceImpl();
+    }
 
 }

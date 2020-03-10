@@ -34,13 +34,13 @@ public class JaxpTransformer {
         factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
         factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
         this.input = factory.newDocumentBuilder()
-            .parse(resourcePath);
+                .parse(resourcePath);
     }
 
     public String modifyAttribute(String attribute, String oldValue, String newValue) throws XPathExpressionException, TransformerFactoryConfigurationError, TransformerException {
         // 2- Locate the node(s) with xpath
         XPath xpath = XPathFactory.newInstance()
-            .newXPath();
+                .newXPath();
         NodeList nodes = (NodeList) xpath.evaluate(String.format("//*[contains(@%s, '%s')]", attribute, oldValue), this.input, XPathConstants.NODESET);
         // 3- Make the change on the selected nodes
         for (int i = 0; i < nodes.getLength(); i++) {

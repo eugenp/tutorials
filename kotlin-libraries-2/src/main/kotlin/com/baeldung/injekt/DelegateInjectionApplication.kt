@@ -8,7 +8,8 @@ import java.util.*
 class DelegateInjectionApplication {
     companion object : InjektMain() {
         private val LOG = LoggerFactory.getLogger(DelegateInjectionApplication::class.java)
-        @JvmStatic fun main(args: Array<String>) {
+        @JvmStatic
+        fun main(args: Array<String>) {
             DelegateInjectionApplication().run()
         }
 

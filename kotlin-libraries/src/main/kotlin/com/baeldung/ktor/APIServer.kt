@@ -62,10 +62,10 @@ fun main(args: Array<String>) {
                     call.respond(toDoList);
                 }
             }
-        get("/author"){
-            call.respond(Author("Baeldung","baeldung.com"));
+            get("/author") {
+                call.respond(Author("Baeldung", "baeldung.com"));
 
-        }
+            }
 
 
         }

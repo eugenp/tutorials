@@ -16,7 +16,7 @@ public class Router1 {
     @Bean
     public RouterFunction<ServerResponse> routeRequest1(Handler1 handler) {
         return RouterFunctions.route(RequestPredicates.GET("/api/endpoint1")
-            .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)), handler::handleRequest1);
+                .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)), handler::handleRequest1);
     }
 
 }

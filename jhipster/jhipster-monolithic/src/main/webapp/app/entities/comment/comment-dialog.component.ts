@@ -1,14 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Response } from '@angular/http';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Response} from '@angular/http';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
+import {NgbActiveModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {EventManager, AlertService, JhiLanguageService} from 'ng-jhipster';
 
-import { Comment } from './comment.model';
-import { CommentPopupService } from './comment-popup.service';
-import { CommentService } from './comment.service';
-import { Post, PostService } from '../post';
+import {Comment} from './comment.model';
+import {CommentPopupService} from './comment-popup.service';
+import {CommentService} from './comment.service';
+import {Post, PostService} from '../post';
+
 @Component({
     selector: 'jhi-comment-dialog',
     templateUrl: './comment-dialog.component.html'
@@ -20,6 +21,7 @@ export class CommentDialogComponent implements OnInit {
     isSaving: boolean;
 
     posts: Post[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
@@ -35,13 +37,16 @@ export class CommentDialogComponent implements OnInit {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.postService.query().subscribe(
-            (res: Response) => { this.posts = res.json(); }, (res: Response) => this.onError(res.json()));
+            (res: Response) => {
+                this.posts = res.json();
+            }, (res: Response) => this.onError(res.json()));
     }
-    clear () {
+
+    clear() {
         this.activeModal.dismiss('cancel');
     }
 
-    save () {
+    save() {
         this.isSaving = true;
         if (this.comment.id !== undefined) {
             this.commentService.update(this.comment)
@@ -54,18 +59,18 @@ export class CommentDialogComponent implements OnInit {
         }
     }
 
-    private onSaveSuccess (result: Comment) {
-        this.eventManager.broadcast({ name: 'commentListModification', content: 'OK'});
+    private onSaveSuccess(result: Comment) {
+        this.eventManager.broadcast({name: 'commentListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
 
-    private onSaveError (error) {
+    private onSaveError(error) {
         this.isSaving = false;
         this.onError(error);
     }
 
-    private onError (error) {
+    private onError(error) {
         this.alertService.error(error.message, null, null);
     }
 
@@ -83,14 +88,15 @@ export class CommentPopupComponent implements OnInit, OnDestroy {
     modalRef: NgbModalRef;
     routeSub: any;
 
-    constructor (
+    constructor(
         private route: ActivatedRoute,
         private commentPopupService: CommentPopupService
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe(params => {
-            if ( params['id'] ) {
+            if (params['id']) {
                 this.modalRef = this.commentPopupService
                     .open(CommentDialogComponent, params['id']);
             } else {

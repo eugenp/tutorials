@@ -7,10 +7,12 @@ import com.baeldung.gson.entities.Dog;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import com.baeldung.gson.entities.Animal;
 import com.baeldung.gson.entities.Cow;
 import com.baeldung.gson.entities.MyClass;
@@ -45,7 +47,8 @@ public class GsonAdvanceUnitTest {
         String inputString = "[{\"id\":1,\"name\":\"name1\"},{\"id\":2,\"name\":\"name2\"}]";
         List<MyClass> inputList = Arrays.asList(new MyClass(1, "name1"), new MyClass(2, "name2"));
 
-        Type listOfMyClassObject = new TypeToken<ArrayList<MyClass>>() {}.getType();
+        Type listOfMyClassObject = new TypeToken<ArrayList<MyClass>>() {
+        }.getType();
 
         Gson gson = new Gson();
         List<MyClass> outputList = gson.fromJson(inputString, listOfMyClassObject);
@@ -74,10 +77,11 @@ public class GsonAdvanceUnitTest {
         deserializer.registerBarnType("Dog", Dog.class);
         deserializer.registerBarnType("Cow", Cow.class);
         Gson gson = new GsonBuilder()
-          .registerTypeAdapter(Animal.class, deserializer)
-          .create();
+                .registerTypeAdapter(Animal.class, deserializer)
+                .create();
 
-        List<Animal> outList = gson.fromJson(inputString, new TypeToken<List<Animal>>(){}.getType());
+        List<Animal> outList = gson.fromJson(inputString, new TypeToken<List<Animal>>() {
+        }.getType());
 
         assertEquals(2, outList.size());
         assertTrue(outList.get(0) instanceof Dog);
@@ -100,11 +104,12 @@ public class GsonAdvanceUnitTest {
     public void givenPolymorphicList_whenDeserializeWithRuntimeTypeAdapter_thenCorrect() {
         String inputString = "[{\"petName\":\"Milo\",\"type\":\"Dog\"},{\"breed\":\"Jersey\",\"type\":\"Cow\"}]";
 
-        Type listOfAnimals = new TypeToken<ArrayList<Animal>>() {}.getType();
+        Type listOfAnimals = new TypeToken<ArrayList<Animal>>() {
+        }.getType();
 
         RuntimeTypeAdapterFactory<Animal> adapter = RuntimeTypeAdapterFactory.of(Animal.class, "type")
-          .registerSubtype(Dog.class)
-          .registerSubtype(Cow.class);
+                .registerSubtype(Dog.class)
+                .registerSubtype(Cow.class);
 
         Gson gson = new GsonBuilder().registerTypeAdapterFactory(adapter).create();
 

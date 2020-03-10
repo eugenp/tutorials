@@ -4,26 +4,31 @@
           xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
           version="5.0" xml:id="webhelp.base.dir">
-<refmeta>
-<refentrytitle>webhelp.base.dir</refentrytitle>
-<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
-</refmeta>
-<refnamediv>
-<refname>webhelp.base.dir</refname>
-<refpurpose>The base directory for webhelp output.</refpurpose>
-</refnamediv>
+    <refmeta>
+        <refentrytitle>webhelp.base.dir</refentrytitle>
+        <refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname>webhelp.base.dir</refname>
+        <refpurpose>The base directory for webhelp output.</refpurpose>
+    </refnamediv>
 
-<refsynopsisdiv>
-<src:fragment xml:id="webhelp.base.dir.frag">
-<xsl:param name="webhelp.base.dir">docs</xsl:param>
-</src:fragment>
-</refsynopsisdiv>
+    <refsynopsisdiv>
+        <src:fragment xml:id="webhelp.base.dir.frag">
+            <xsl:param name="webhelp.base.dir">docs</xsl:param>
+        </src:fragment>
+    </refsynopsisdiv>
 
-<refsection><info><title>Description</title></info>
-<para>If specified, the <parameter>webhelp.base.dir</parameter>
-parameter identifies the output directory for webhelp. (If not
-specified, the output directory is system dependent.) By default, this
-parameter is set to <filename>docs</filename>.</para>
+    <refsection>
+        <info>
+            <title>Description</title>
+        </info>
+        <para>If specified, the
+            <parameter>webhelp.base.dir</parameter>
+            parameter identifies the output directory for webhelp. (If not
+            specified, the output directory is system dependent.) By default, this
+            parameter is set to <filename>docs</filename>.
+        </para>
 
-</refsection>
+    </refsection>
 </refentry>

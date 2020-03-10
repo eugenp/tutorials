@@ -51,8 +51,8 @@ public class BookRepository {
     }
 
     /**
-     * Insert a row in the table books. 
-     * 
+     * Insert a row in the table books.
+     *
      * @param book
      */
     public void insertbook(Book book) {
@@ -65,6 +65,7 @@ public class BookRepository {
 
     /**
      * Insert a row in the table booksByTitle.
+     *
      * @param book
      */
     public void insertbookByTitle(Book book) {
@@ -76,7 +77,7 @@ public class BookRepository {
 
     /**
      * Insert a book into two identical tables using a batch query.
-     * 
+     *
      * @param book
      */
     public void insertBookBatch(Book book) {
@@ -90,7 +91,7 @@ public class BookRepository {
 
     /**
      * Select book by id.
-     * 
+     *
      * @return
      */
     public Book selectByTitle(String title) {
@@ -112,7 +113,7 @@ public class BookRepository {
 
     /**
      * Select all books from books
-     * 
+     *
      * @return
      */
     public List<Book> selectAll() {
@@ -132,6 +133,7 @@ public class BookRepository {
 
     /**
      * Select all books from booksByTitle
+     *
      * @return
      */
     public List<Book> selectAllBookByTitle() {
@@ -161,7 +163,7 @@ public class BookRepository {
 
     /**
      * Delete table.
-     * 
+     *
      * @param tableName the name of the table to delete.
      */
     public void deleteTable(String tableName) {

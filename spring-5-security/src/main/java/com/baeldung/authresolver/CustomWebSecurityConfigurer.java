@@ -2,6 +2,7 @@ package com.baeldung.authresolver;
 
 import java.util.Collections;
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationManagerResolver;
@@ -26,8 +27,8 @@ public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     public AuthenticationManagerResolver<HttpServletRequest> resolver() {
         return request -> {
             if (request
-              .getPathInfo()
-              .startsWith("/employee")) {
+                    .getPathInfo()
+                    .startsWith("/employee")) {
                 return employeesAuthenticationManager();
             }
             return customersAuthenticationManager();
@@ -38,35 +39,36 @@ public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         return authentication -> {
             if (isCustomer(authentication)) {
                 return new UsernamePasswordAuthenticationToken(
-                  authentication.getPrincipal(),
-                  authentication.getCredentials(),
-                  Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
+                        authentication.getPrincipal(),
+                        authentication.getCredentials(),
+                        Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
                 );
             }
             throw new UsernameNotFoundException(authentication
-              .getPrincipal()
-              .toString());
+                    .getPrincipal()
+                    .toString());
         };
     }
 
     private boolean isCustomer(Authentication authentication) {
         return (authentication
-          .getPrincipal()
-          .toString()
-          .startsWith("customer"));
+                .getPrincipal()
+                .toString()
+                .startsWith("customer"));
     }
 
     private boolean isEmployee(Authentication authentication) {
         return (authentication
-          .getPrincipal()
-          .toString()
-          .startsWith("employee"));
+                .getPrincipal()
+                .toString()
+                .startsWith("employee"));
     }
 
     private AuthenticationFilter authenticationFilter() {
         AuthenticationFilter filter = new AuthenticationFilter(
-          resolver(), authenticationConverter());
-        filter.setSuccessHandler((request, response, auth) -> {});
+                resolver(), authenticationConverter());
+        filter.setSuccessHandler((request, response, auth) -> {
+        });
         return filter;
     }
 
@@ -74,22 +76,22 @@ public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         return authentication -> {
             if (isEmployee(authentication)) {
                 return new UsernamePasswordAuthenticationToken(
-                  authentication.getPrincipal(),
-                  authentication.getCredentials(),
-                  Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
+                        authentication.getPrincipal(),
+                        authentication.getCredentials(),
+                        Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
                 );
             }
             throw new UsernameNotFoundException(authentication
-              .getPrincipal()
-              .toString());
+                    .getPrincipal()
+                    .toString());
         };
     }
 
     @Override
     protected void configure(HttpSecurity http) {
         http.addFilterBefore(
-          authenticationFilter(),
-          BasicAuthenticationFilter.class
+                authenticationFilter(),
+                BasicAuthenticationFilter.class
         );
     }
 

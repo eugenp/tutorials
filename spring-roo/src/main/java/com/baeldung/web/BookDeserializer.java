@@ -1,4 +1,5 @@
 package com.baeldung.web;
+
 import com.baeldung.domain.Book;
 import com.baeldung.service.api.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,21 +10,18 @@ import org.springframework.roo.addon.web.mvc.controller.annotations.config.RooDe
 
 /**
  * = BookDeserializer
- TODO Auto-generated class documentation
- *
+ * TODO Auto-generated class documentation
  */
 @RooDeserializer(entity = Book.class)
 public class BookDeserializer extends JsonObjectDeserializer<Book> {
 
     /**
      * TODO Auto-generated attribute documentation
-     *
      */
     private BookService bookService;
 
     /**
      * TODO Auto-generated attribute documentation
-     *
      */
     private ConversionService conversionService;
 

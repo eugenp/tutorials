@@ -45,13 +45,13 @@ public class SpringSecurityUserManager extends UserEntityManagerImpl {
         List<User> users = null;
         if (query.getGroupId() != null) {
             users = userManager.findUsersInGroup(query.getGroupId())
-                .stream()
-                .map(username -> {
-                    User user = new UserEntityImpl();
-                    user.setId(username);
-                    return user;
-                })
-                .collect(Collectors.toList());
+                    .stream()
+                    .map(username -> {
+                        User user = new UserEntityImpl();
+                        user.setId(username);
+                        return user;
+                    })
+                    .collect(Collectors.toList());
             if (page != null) {
                 return users.subList(page.getFirstResult(), page.getFirstResult() + page.getMaxResults());
 
@@ -98,7 +98,7 @@ public class SpringSecurityUserManager extends UserEntityManagerImpl {
         UserEntity userEntity = (UserEntity) user;
         if (userEntity.getPictureByteArrayRef() != null) {
             userEntity.getPictureByteArrayRef()
-                .delete();
+                    .delete();
         }
     }
 
@@ -115,14 +115,14 @@ public class SpringSecurityUserManager extends UserEntityManagerImpl {
         UserDetails userDetails = userManager.loadUserByUsername(userId);
         if (userDetails != null) {
             List<Group> groups = userDetails.getAuthorities()
-                .stream()
-                .map(a -> a.getAuthority())
-                .map(a -> {
-                    Group g = new GroupEntityImpl();
-                    g.setId(a);
-                    return g;
-                })
-                .collect(Collectors.toList());
+                    .stream()
+                    .map(a -> a.getAuthority())
+                    .map(a -> {
+                        Group g = new GroupEntityImpl();
+                        g.setId(a);
+                        return g;
+                    })
+                    .collect(Collectors.toList());
             return groups;
         }
         return null;

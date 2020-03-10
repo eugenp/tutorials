@@ -6,8 +6,8 @@ import com.baeldung.parent.App;
 
 public class SpringContextTest {
 
-	@Test
+    @Test
     public final void testMain() throws Exception {
-        App.main(new String[] {});
-	}
+        App.main(new String[]{});
+    }
 }

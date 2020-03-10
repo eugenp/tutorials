@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @Configuration
-@ComponentScan({ "org.baeldung.web" })
+@ComponentScan({"org.baeldung.web"})
 public class TestConfig {
 
     @Bean

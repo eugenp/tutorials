@@ -40,15 +40,15 @@ public class ProtonpackUnitTest {
         String[] clubs = {"Juventus", "Barcelona", "Liverpool", "PSG"};
         String[] players = {"Ronaldo", "Messi", "Salah"};
         Set<String> zippedFrom2Sources = StreamUtils
-          .zip(stream(clubs), stream(players), (club, player) -> club + " " + player)
-          .collect(Collectors.toSet());
+                .zip(stream(clubs), stream(players), (club, player) -> club + " " + player)
+                .collect(Collectors.toSet());
         assertThat(zippedFrom2Sources).contains("Juventus Ronaldo", "Barcelona Messi", "Liverpool Salah");
 
         String[] leagues = {"Serie A", "La Liga", "Premier League"};
         Set<String> zippedFrom3Sources = StreamUtils.zip(stream(clubs), stream(players), stream(leagues),
-          (club, player, league) -> club + " " + player + " " + league).collect(Collectors.toSet());
+                (club, player, league) -> club + " " + player + " " + league).collect(Collectors.toSet());
         assertThat(zippedFrom3Sources).contains("Juventus Ronaldo Serie A", "Barcelona Messi La Liga",
-          "Liverpool Salah Premier League");
+                "Liverpool Salah Premier League");
     }
 
     @Test
@@ -56,7 +56,7 @@ public class ProtonpackUnitTest {
         Stream<String> streamOfClubs = Stream.of("Juventus", "Barcelona", "Liverpool");
         Set<Indexed<String>> zipsWithIndex = StreamUtils.zipWithIndex(streamOfClubs).collect(Collectors.toSet());
         assertThat(zipsWithIndex).contains(Indexed.index(0, "Juventus"), Indexed.index(1, "Barcelona"),
-          Indexed.index(2, "Liverpool"));
+                Indexed.index(2, "Liverpool"));
     }
 
     @Test
@@ -66,11 +66,11 @@ public class ProtonpackUnitTest {
         Stream<String> streamOfLeagues = Stream.of("Serie A", "La Liga", "Premier League");
 
         Set<String> merged = StreamUtils.merge(() -> "", (valOne, valTwo) -> valOne + " " + valTwo, streamOfClubs,
-          streamOfPlayers, streamOfLeagues).collect(Collectors.toSet());
+                streamOfPlayers, streamOfLeagues).collect(Collectors.toSet());
 
         assertThat(merged)
-          .contains(" Juventus Ronaldo Serie A", " Barcelona Messi La Liga", " Liverpool Salah Premier League",
-            " PSG");
+                .contains(" Juventus Ronaldo Serie A", " Barcelona Messi La Liga", " Liverpool Salah Premier League",
+                        " PSG");
     }
 
     @Test
@@ -79,7 +79,7 @@ public class ProtonpackUnitTest {
         Stream<String> streamOfPlayers = Stream.of("Ronaldo", "Messi");
 
         List<List<String>> mergedListOfList = StreamUtils.mergeToList(streamOfClubs, streamOfPlayers)
-          .collect(Collectors.toList());
+                .collect(Collectors.toList());
         assertThat(mergedListOfList.get(0)).isInstanceOf(List.class);
         assertThat(mergedListOfList.get(0)).containsExactly("Juventus", "Ronaldo");
         assertThat(mergedListOfList.get(1)).containsExactly("Barcelona", "Messi");
@@ -93,23 +93,23 @@ public class ProtonpackUnitTest {
         Stream<String> streamOfLeagues = Stream.of("Serie A", "La Liga");
 
         List<String> interleavedList = StreamUtils
-          .interleave(Selectors.roundRobin(), streamOfClubs, streamOfPlayers, streamOfLeagues)
-          .collect(Collectors.toList());
+                .interleave(Selectors.roundRobin(), streamOfClubs, streamOfPlayers, streamOfLeagues)
+                .collect(Collectors.toList());
 
         assertThat(interleavedList)
-          .hasSize(7)
-          .containsExactly("Juventus", "Ronaldo", "Serie A", "Barcelona", "Messi", "La Liga", "Liverpool");
+                .hasSize(7)
+                .containsExactly("Juventus", "Ronaldo", "Serie A", "Barcelona", "Messi", "La Liga", "Liverpool");
     }
 
     @Test
     public void whenSkippedUntil_thenSkippedUntil() {
         Integer[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         List<Integer> skippedUntilGreaterThan5 = StreamUtils.skipUntil(stream(numbers), i -> i > 5)
-          .collect(Collectors.toList());
+                .collect(Collectors.toList());
         assertThat(skippedUntilGreaterThan5).containsExactly(6, 7, 8, 9, 10);
 
         List<Integer> skippedUntilLessThanEquals5 = StreamUtils.skipUntil(stream(numbers), i -> i <= 5)
-          .collect(Collectors.toList());
+                .collect(Collectors.toList());
         assertThat(skippedUntilLessThanEquals5).containsExactly(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     }
 
@@ -117,11 +117,11 @@ public class ProtonpackUnitTest {
     public void whenSkippedWhile_thenSkippedWhile() {
         Integer[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         List<Integer> skippedWhileLessThanEquals5 = StreamUtils.skipWhile(stream(numbers), i -> i <= 5)
-          .collect(Collectors.toList());
+                .collect(Collectors.toList());
         assertThat(skippedWhileLessThanEquals5).containsExactly(6, 7, 8, 9, 10);
 
         List<Integer> skippedWhileGreaterThan5 = StreamUtils.skipWhile(stream(numbers), i -> i > 5)
-          .collect(Collectors.toList());
+                .collect(Collectors.toList());
         assertThat(skippedWhileGreaterThan5).containsExactly(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     }
 
@@ -137,13 +137,13 @@ public class ProtonpackUnitTest {
         Integer[] numbers = {1, 2, 3, 4, 5, 6, 7};
 
         List<List<Integer>> windowedWithSkip1 = StreamUtils.windowed(stream(numbers), 3, 1)
-          .collect(Collectors.toList());
+                .collect(Collectors.toList());
         assertThat(windowedWithSkip1)
-          .containsExactly(asList(1, 2, 3), asList(2, 3, 4), asList(3, 4, 5), asList(4, 5, 6),
-            asList(5, 6, 7));
+                .containsExactly(asList(1, 2, 3), asList(2, 3, 4), asList(3, 4, 5), asList(4, 5, 6),
+                        asList(5, 6, 7));
 
         List<List<Integer>> windowedWithSkip2 = StreamUtils.windowed(stream(numbers), 3, 2)
-          .collect(Collectors.toList());
+                .collect(Collectors.toList());
         assertThat(windowedWithSkip2).containsExactly(asList(1, 2, 3), asList(3, 4, 5), asList(5, 6, 7));
     }
 
@@ -151,8 +151,8 @@ public class ProtonpackUnitTest {
     public void whenAggregated_thenAggregated() {
         Integer[] numbers = {1, 2, 2, 3, 4, 4, 4, 5};
         List<List<Integer>> aggregated = StreamUtils
-          .aggregate(stream(numbers), (int1, int2) -> int1.compareTo(int2) == 0)
-          .collect(Collectors.toList());
+                .aggregate(stream(numbers), (int1, int2) -> int1.compareTo(int2) == 0)
+                .collect(Collectors.toList());
         assertThat(aggregated).containsExactly(asList(1), asList(2, 2), asList(3), asList(4, 4, 4), asList(5));
 
         List<List<Integer>> aggregatedFixSize = StreamUtils.aggregate(stream(numbers), 5).collect(Collectors.toList());
@@ -174,7 +174,7 @@ public class ProtonpackUnitTest {
     public void whenAggregatedOnListCondition_thenAggregatedOnListCondition() {
         Integer[] numbers = {1, 1, 2, 3, 4, 4, 5};
         Stream<List<Integer>> aggregated = StreamUtils.aggregateOnListCondition(stream(numbers),
-          (currentList, nextInt) -> currentList.stream().mapToInt(Integer::intValue).sum() + nextInt <= 5);
+                (currentList, nextInt) -> currentList.stream().mapToInt(Integer::intValue).sum() + nextInt <= 5);
         assertThat(aggregated).containsExactly(asList(1, 1, 2), asList(3), asList(4), asList(4), asList(5));
     }
 

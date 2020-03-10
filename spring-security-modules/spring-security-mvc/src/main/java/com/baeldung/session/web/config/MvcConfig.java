@@ -19,7 +19,7 @@ public class MvcConfig implements WebMvcConfigurer {
     }
 
 
-    /* 
+    /*
      * Spring Boot supports configuring a ViewResolver with properties
      */
 //    @Bean

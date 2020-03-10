@@ -16,9 +16,9 @@ public class RuleEngine {
     public Result process(Expression expression) {
 
         Rule rule = rules.stream()
-            .filter(r -> r.evaluate(expression))
-            .findFirst()
-            .orElseThrow(() -> new IllegalArgumentException("Expression does not matches any Rule"));
+                .filter(r -> r.evaluate(expression))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Expression does not matches any Rule"));
         return rule.getResult();
     }
 }

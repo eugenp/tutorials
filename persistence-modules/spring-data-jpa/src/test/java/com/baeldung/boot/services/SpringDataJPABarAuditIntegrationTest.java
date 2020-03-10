@@ -24,7 +24,7 @@ import com.baeldung.boot.Application;
 import com.baeldung.boot.domain.Bar;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=Application.class)
+@SpringBootTest(classes = Application.class)
 public class SpringDataJPABarAuditIntegrationTest {
 
     private static Logger logger = LoggerFactory.getLogger(SpringDataJPABarAuditIntegrationTest.class);

@@ -6,6 +6,6 @@ public class DateValidatorUsingApacheValidator implements DateValidator {
 
     @Override
     public boolean isValid(String dateStr) {
-        return GenericValidator.isDate(dateStr, "yyyy-MM-dd", true); 
+        return GenericValidator.isDate(dateStr, "yyyy-MM-dd", true);
     }
 }

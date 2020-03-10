@@ -9,20 +9,20 @@
         <feature>jpa-2.2</feature>
     </featureManager>
 
-    <webApplication location="open-liberty.war" contextRoot="/" />
+    <webApplication location="open-liberty.war" contextRoot="/"/>
 
-    <logging traceSpecification="com.ibm.ws.microprofile.health.*=all" hideMessage="SRVE9967W" />
+    <logging traceSpecification="com.ibm.ws.microprofile.health.*=all" hideMessage="SRVE9967W"/>
 
-    <httpEndpoint host="*" httpPort="${default.http.port}" httpsPort="${default.https.port}" id="defaultHttpEndpoint" />
+    <httpEndpoint host="*" httpPort="${default.http.port}" httpsPort="${default.https.port}" id="defaultHttpEndpoint"/>
 
     <library id="derbyJDBCLib">
-        <fileset dir="${shared.resource.dir}" includes="derby*.jar"/> 
+        <fileset dir="${shared.resource.dir}" includes="derby*.jar"/>
     </library>
 
     <!-- Datasource Configuration -->
     <dataSource id="jpadatasource" jndiName="jdbc/jpadatasource">
-        <jdbcDriver libraryRef="derbyJDBCLib" />
-        <properties.derby.embedded databaseName="libertyDB" createDatabase="create" />
+        <jdbcDriver libraryRef="derbyJDBCLib"/>
+        <properties.derby.embedded databaseName="libertyDB" createDatabase="create"/>
     </dataSource>
 
 </server>

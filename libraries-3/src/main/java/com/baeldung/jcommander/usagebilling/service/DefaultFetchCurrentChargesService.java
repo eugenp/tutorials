@@ -37,27 +37,27 @@ class DefaultFetchCurrentChargesService implements FetchCurrentChargesService {
     private CurrentChargesResponse mockCharges(String customerId, List<String> subscriptions, boolean itemized) {
         List<LineItem> lineItems = mockLineItems(subscriptions);
         BigDecimal amountDue = lineItems
-          .stream()
-          .map(li -> li.getAmount())
-          .reduce(new BigDecimal("0"), BigDecimal::add);
+                .stream()
+                .map(li -> li.getAmount())
+                .reduce(new BigDecimal("0"), BigDecimal::add);
 
         return CurrentChargesResponse
-          .builder()
-          .customerId(customerId)
-          .lineItems(itemized ? lineItems : emptyList())
-          .amountDue(amountDue)
-          .build();
+                .builder()
+                .customerId(customerId)
+                .lineItems(itemized ? lineItems : emptyList())
+                .amountDue(amountDue)
+                .build();
     }
 
     private List<LineItem> mockLineItems(List<String> subscriptions) {
         return subscriptions
-          .stream()
-          .map(subscription -> LineItem.builder()
-            .subscriptionId(subscription)
-            .quantity(current().nextInt(20))
-            .amount(new BigDecimal(current().nextDouble(1_000)))
-            .build())
-          .collect(toList());
+                .stream()
+                .map(subscription -> LineItem.builder()
+                        .subscriptionId(subscription)
+                        .quantity(current().nextInt(20))
+                        .amount(new BigDecimal(current().nextDouble(1_000)))
+                        .build())
+                .collect(toList());
     }
 
     private List<String> mockSubscriptions() {

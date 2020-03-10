@@ -9,9 +9,9 @@ public class BuilderUnitTest {
     @Test
     public void givenBuilder_WidgetIsBuilt() {
         Widget testWidget = Widget.builder()
-            .name("foo")
-            .id(1)
-            .build();
+                .name("foo")
+                .id(1)
+                .build();
         assertThat(testWidget.getName()).isEqualTo("foo");
         assertThat(testWidget.getId()).isEqualTo(1);
     }
@@ -20,13 +20,13 @@ public class BuilderUnitTest {
     public void givenToBuilder_whenToBuilder_BuilderIsCreated() {
 
         Widget testWidget = Widget.builder()
-            .name("foo")
-            .id(1)
-            .build();
+                .name("foo")
+                .id(1)
+                .build();
         Widget.WidgetBuilder widgetBuilder = testWidget.toBuilder();
 
         Widget newWidget = widgetBuilder.id(2)
-            .build();
+                .build();
         assertThat(newWidget.getName()).isEqualTo("foo");
         assertThat(newWidget.getId()).isEqualTo(2);
     }
@@ -34,9 +34,9 @@ public class BuilderUnitTest {
     @Test
     public void givenBuilderMethod_ClientIsBuilt() {
         ImmutableClient testImmutableClient = ClientBuilder.builder()
-            .name("foo")
-            .id(1)
-            .build();
+                .name("foo")
+                .id(1)
+                .build();
         assertThat(testImmutableClient.getName()).isEqualTo("foo");
         assertThat(testImmutableClient.getId()).isEqualTo(1);
     }

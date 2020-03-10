@@ -18,18 +18,15 @@ public class ConnectionUtil {
     public static Connection getConnection() {
         try {
             String jndiName = "java:/comp/env/jdbc/MyDataSource";
-            
-            Context initialContext = new InitialContext();
-            DataSource datasource = (DataSource)initialContext.lookup(jndiName);
-            if (datasource != null) {
-              return datasource.getConnection();
-            }
-            else {
-              logger.error("Failed to lookup datasource.");
-            }
-        }
 
-        catch (NamingException | SQLException exc) {
+            Context initialContext = new InitialContext();
+            DataSource datasource = (DataSource) initialContext.lookup(jndiName);
+            if (datasource != null) {
+                return datasource.getConnection();
+            } else {
+                logger.error("Failed to lookup datasource.");
+            }
+        } catch (NamingException | SQLException exc) {
             logger.error(exc.getMessage());
         }
         return null;

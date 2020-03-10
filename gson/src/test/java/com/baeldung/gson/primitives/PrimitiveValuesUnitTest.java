@@ -9,30 +9,32 @@ import java.lang.reflect.Type;
 import static junit.framework.TestCase.*;
 
 public class PrimitiveValuesUnitTest {
-    @Test public void whenSerializingToJSON_thenShouldCreateJSON() {
+    @Test
+    public void whenSerializingToJSON_thenShouldCreateJSON() {
         PrimitiveBundle primitiveBundle = new PrimitiveBundle();
 
         // @formatter:off
-        primitiveBundle.byteValue    = (byte) 0x00001111;
-        primitiveBundle.shortValue   = (short) 3;
-        primitiveBundle.intValue     = 3;
-        primitiveBundle.longValue    = 3;
-        primitiveBundle.floatValue   = 3.5f;
-        primitiveBundle.doubleValue  = 3.5;
+        primitiveBundle.byteValue = (byte) 0x00001111;
+        primitiveBundle.shortValue = (short) 3;
+        primitiveBundle.intValue = 3;
+        primitiveBundle.longValue = 3;
+        primitiveBundle.floatValue = 3.5f;
+        primitiveBundle.doubleValue = 3.5;
         primitiveBundle.booleanValue = true;
-        primitiveBundle.charValue    = 'a';
+        primitiveBundle.charValue = 'a';
         // @formatter:on
 
         Gson gson = new Gson();
 
         String expected = "{\"byteValue\":17,\"shortValue\":3,\"intValue\":3,"
-            + "\"longValue\":3,\"floatValue\":3.5" + ",\"doubleValue\":3.5"
-            + ",\"booleanValue\":true,\"charValue\":\"a\"}";
+                + "\"longValue\":3,\"floatValue\":3.5" + ",\"doubleValue\":3.5"
+                + ",\"booleanValue\":true,\"charValue\":\"a\"}";
 
         assertEquals(expected, gson.toJson(primitiveBundle));
     }
 
-    @Test(expected = IllegalArgumentException.class) public void
+    @Test(expected = IllegalArgumentException.class)
+    public void
     whenSerializingInfinity_thenShouldRaiseAnException() {
         InfinityValuesExample model = new InfinityValuesExample();
         model.negativeInfinity = Float.NEGATIVE_INFINITY;
@@ -43,8 +45,9 @@ public class PrimitiveValuesUnitTest {
         gson.toJson(model);
     }
 
-    @Test(expected = IllegalArgumentException.class) public void
-        whenSerializingNaN_thenShouldRaiseAnException() {
+    @Test(expected = IllegalArgumentException.class)
+    public void
+    whenSerializingNaN_thenShouldRaiseAnException() {
         FloatExample model = new FloatExample();
         model.value = Float.NaN;
 
@@ -52,34 +55,37 @@ public class PrimitiveValuesUnitTest {
         gson.toJson(model);
     }
 
-    @Test public void whenDeserializingFromJSON_thenShouldParseTheValueInTheString() {
+    @Test
+    public void whenDeserializingFromJSON_thenShouldParseTheValueInTheString() {
         String json = "{\"byteValue\": 17, \"shortValue\": 3, \"intValue\": 3, "
-            + "\"longValue\": 3, \"floatValue\": 3.5" + ", \"doubleValue\": 3.5"
-            + ", \"booleanValue\": true, \"charValue\": \"a\"}";
+                + "\"longValue\": 3, \"floatValue\": 3.5" + ", \"doubleValue\": 3.5"
+                + ", \"booleanValue\": true, \"charValue\": \"a\"}";
 
         Gson gson = new Gson();
         PrimitiveBundle model = gson.fromJson(json, PrimitiveBundle.class);
 
         // @formatter:off
-        assertEquals(17,  model.byteValue);
-        assertEquals(3,   model.shortValue);
-        assertEquals(3,   model.intValue);
-        assertEquals(3,   model.longValue);
+        assertEquals(17, model.byteValue);
+        assertEquals(3, model.shortValue);
+        assertEquals(3, model.intValue);
+        assertEquals(3, model.longValue);
         assertEquals(3.5, model.floatValue, 0.0001);
         assertEquals(3.5, model.doubleValue, 0.0001);
-        assertTrue(       model.booleanValue);
+        assertTrue(model.booleanValue);
         assertEquals('a', model.charValue);
         // @formatter:on
     }
 
-    @Test public void whenDeserializingHighPrecissionNumberIntoFloat_thenShouldPerformRounding() {
+    @Test
+    public void whenDeserializingHighPrecissionNumberIntoFloat_thenShouldPerformRounding() {
         String json = "{\"value\": 12.123425589123456}";
         Gson gson = new Gson();
         FloatExample model = gson.fromJson(json, FloatExample.class);
         assertEquals(12.123426f, model.value, 0.000001);
     }
 
-    @Test public void whenDeserializingHighPrecissiongNumberIntoDouble_thenShouldPerformRounding() {
+    @Test
+    public void whenDeserializingHighPrecissiongNumberIntoDouble_thenShouldPerformRounding() {
         String json = "{\"value\": 12.123425589123556}";
         Gson gson = new Gson();
         DoubleExample model = gson.fromJson(json, DoubleExample.class);
@@ -87,7 +93,8 @@ public class PrimitiveValuesUnitTest {
     }
 
 
-    @Test public void whenDeserializingValueThatOverflows_thenShouldOverflowSilently() {
+    @Test
+    public void whenDeserializingValueThatOverflows_thenShouldOverflowSilently() {
         Gson gson = new Gson();
         String json = "{\"value\": \"300\"}";
         ByteExample model = gson.fromJson(json, ByteExample.class);
@@ -95,7 +102,8 @@ public class PrimitiveValuesUnitTest {
         assertEquals(44, model.value);
     }
 
-    @Test public void whenDeserializingRealIntoByte_thenShouldRaiseAnException() {
+    @Test
+    public void whenDeserializingRealIntoByte_thenShouldRaiseAnException() {
         Gson gson = new Gson();
         String json = "{\"value\": 2.3}";
         try {
@@ -109,7 +117,8 @@ public class PrimitiveValuesUnitTest {
         fail();
     }
 
-    @Test public void whenDeserializingRealIntoLong_thenShouldRaiseAnException() {
+    @Test
+    public void whenDeserializingRealIntoLong_thenShouldRaiseAnException() {
         Gson gson = new Gson();
         String json = "{\"value\": 2.3}";
         try {
@@ -123,14 +132,16 @@ public class PrimitiveValuesUnitTest {
         fail();
     }
 
-    @Test public void whenDeserializingRealWhoseDecimalPartIs0_thenShouldParseItCorrectly() {
+    @Test
+    public void whenDeserializingRealWhoseDecimalPartIs0_thenShouldParseItCorrectly() {
         Gson gson = new Gson();
         String json = "{\"value\": 2.0}";
         LongExample model = gson.fromJson(json, LongExample.class);
         assertEquals(2, model.value);
     }
 
-    @Test public void whenDeserializingUnicodeChar_thenShouldParseItCorrectly() {
+    @Test
+    public void whenDeserializingUnicodeChar_thenShouldParseItCorrectly() {
         Gson gson = new Gson();
         String json = "{\"value\": \"\\u00AE\"}";
         CharExample model = gson.fromJson(json, CharExample.class);
@@ -138,15 +149,16 @@ public class PrimitiveValuesUnitTest {
         assertEquals('\u00AE', model.value);
     }
 
-    @Test public void whenDeserializingNullValues_thenShouldIgnoreThoseFields() {
+    @Test
+    public void whenDeserializingNullValues_thenShouldIgnoreThoseFields() {
         Gson gson = new Gson();
         // @formatter:off
         String json = "{\"byteValue\": null, \"shortValue\": null, "
-            + "\"intValue\": null, " + "\"longValue\": null, \"floatValue\": null"
-            + ", \"doubleValue\": null}";
+                + "\"intValue\": null, " + "\"longValue\": null, \"floatValue\": null"
+                + ", \"doubleValue\": null}";
         // @formatter:on
         PrimitiveBundleInitialized model = gson.fromJson(json,
-            PrimitiveBundleInitialized.class);
+                PrimitiveBundleInitialized.class);
 
         assertEquals(1, model.byteValue);
         assertEquals(1, model.shortValue);
@@ -156,18 +168,20 @@ public class PrimitiveValuesUnitTest {
         assertEquals(1, model.doubleValue, 0.0001);
     }
 
-    @Test(expected = JsonSyntaxException.class) public void
+    @Test(expected = JsonSyntaxException.class)
+    public void
     whenDeserializingTheEmptyString_thenShouldRaiseAnException() {
         Gson gson = new Gson();
         // @formatter:off
         String json = "{\"byteValue\": \"\", \"shortValue\": \"\", "
-            + "\"intValue\": \"\", " + "\"longValue\": \"\", \"floatValue\": \"\""
-            + ", \"doubleValue\": \"\"" + ", \"booleanValue\": \"\"}";
+                + "\"intValue\": \"\", " + "\"longValue\": \"\", \"floatValue\": \"\""
+                + ", \"doubleValue\": \"\"" + ", \"booleanValue\": \"\"}";
         // @formatter:on
         gson.fromJson(json, PrimitiveBundleInitialized.class);
     }
 
-    @Test public void whenDeserializingTheEmptyStringIntoChar_thenShouldHaveTheEmtpyChar() {
+    @Test
+    public void whenDeserializingTheEmptyStringIntoChar_thenShouldHaveTheEmtpyChar() {
         Gson gson = new Gson();
         // @formatter:off
         String json = "{\"charValue\": \"\"}";
@@ -177,15 +191,16 @@ public class PrimitiveValuesUnitTest {
         assertEquals(Character.MIN_VALUE, model.value);
     }
 
-    @Test public void whenDeserializingValidValueAppearingInAString_thenShouldParseTheValue() {
+    @Test
+    public void whenDeserializingValidValueAppearingInAString_thenShouldParseTheValue() {
         Gson gson = new Gson();
         // @formatter:off
         String json = "{\"byteValue\": \"15\", \"shortValue\": \"15\", "
-            + "\"intValue\": \"15\", " + "\"longValue\": \"15\", \"floatValue\": \"15.0\""
-            + ", \"doubleValue\": \"15.0\"}";
+                + "\"intValue\": \"15\", " + "\"longValue\": \"15\", \"floatValue\": \"15.0\""
+                + ", \"doubleValue\": \"15.0\"}";
         // @formatter:on
         PrimitiveBundleInitialized model = gson.fromJson(json,
-            PrimitiveBundleInitialized.class);
+                PrimitiveBundleInitialized.class);
 
         assertEquals(15, model.byteValue);
         assertEquals(15, model.shortValue);
@@ -195,7 +210,8 @@ public class PrimitiveValuesUnitTest {
         assertEquals(15, model.doubleValue, 0.0001);
     }
 
-    @Test public void whenDeserializingABooleanFrom0Or1Integer_thenShouldRaiseAnException() {
+    @Test
+    public void whenDeserializingABooleanFrom0Or1Integer_thenShouldRaiseAnException() {
         String json = "{\"value\": 1}";
         Gson gson = new Gson();
 
@@ -210,11 +226,12 @@ public class PrimitiveValuesUnitTest {
         fail();
     }
 
-    @Test public void whenDeserializingWithCustomDeserializerABooleanFrom0Or1Integer_thenShouldWork() {
+    @Test
+    public void whenDeserializingWithCustomDeserializerABooleanFrom0Or1Integer_thenShouldWork() {
         String json = "{\"value\": 1}";
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(BooleanExample.class,
-            new BooleanAs2ValueIntegerDeserializer());
+                new BooleanAs2ValueIntegerDeserializer());
 
         Gson gson = builder.create();
 
@@ -225,10 +242,11 @@ public class PrimitiveValuesUnitTest {
 
     // @formatter:off
     static class BooleanAs2ValueIntegerDeserializer implements JsonDeserializer<BooleanExample> {
-        @Override public BooleanExample deserialize(
-            JsonElement jsonElement,
-            Type type,
-            JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+        @Override
+        public BooleanExample deserialize(
+                JsonElement jsonElement,
+                Type type,
+                JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
 
             BooleanExample model = new BooleanExample();
             int value = jsonElement.getAsJsonObject().getAsJsonPrimitive("value").getAsInt();
@@ -238,7 +256,7 @@ public class PrimitiveValuesUnitTest {
                 model.value = true;
             } else {
                 throw new JsonParseException("Unexpected value. Trying to deserialize "
-                    + "a boolean from an integer different than 0 and 1.");
+                        + "a boolean from an integer different than 0 and 1.");
             }
 
             return model;

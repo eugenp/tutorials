@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoCo
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableAutoConfiguration(exclude = { EmbeddedMongoAutoConfiguration.class })
+@EnableAutoConfiguration(exclude = {EmbeddedMongoAutoConfiguration.class})
 public class TestMongoConfig {
-    
+
 }

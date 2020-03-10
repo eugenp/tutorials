@@ -7,8 +7,8 @@ public class WriteCsvFileExample {
 
     public String convertToCSV(String[] data) {
         return Stream.of(data)
-            .map(this::escapeSpecialCharacters)
-            .collect(Collectors.joining(","));
+                .map(this::escapeSpecialCharacters)
+                .collect(Collectors.joining(","));
     }
 
     public String escapeSpecialCharacters(String data) {

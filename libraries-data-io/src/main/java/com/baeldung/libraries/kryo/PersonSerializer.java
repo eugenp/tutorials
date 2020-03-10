@@ -13,7 +13,7 @@ public class PersonSerializer extends Serializer<Person> {
     public void write(Kryo kryo, Output output, Person object) {
         output.writeString(object.getName());
         output.writeLong(object.getBirthDate()
-            .getTime());
+                .getTime());
     }
 
     @Override

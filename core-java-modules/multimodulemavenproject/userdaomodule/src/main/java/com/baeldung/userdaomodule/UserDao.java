@@ -2,6 +2,7 @@ package com.baeldung.userdaomodule;
 
 import com.baeldung.daomodule.Dao;
 import com.baeldung.entitymodule.User;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

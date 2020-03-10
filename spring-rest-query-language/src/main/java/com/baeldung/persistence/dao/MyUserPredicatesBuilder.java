@@ -25,22 +25,22 @@ public final class MyUserPredicatesBuilder {
         if (params.size() == 0) {
             return null;
         }
-        
+
         final List<BooleanExpression> predicates = params.stream().map(param -> {
             MyUserPredicate predicate = new MyUserPredicate(param);
             return predicate.getPredicate();
         }).filter(Objects::nonNull).collect(Collectors.toList());
-        
+
         BooleanExpression result = Expressions.asBoolean(true).isTrue();
         for (BooleanExpression predicate : predicates) {
             result = result.and(predicate);
         }
-        
+
         return result;
     }
-    
+
     static class BooleanExpressionWrapper {
-        
+
         private BooleanExpression result;
 
         public BooleanExpressionWrapper(final BooleanExpression result) {
@@ -51,6 +51,7 @@ public final class MyUserPredicatesBuilder {
         public BooleanExpression getResult() {
             return result;
         }
+
         public void setResult(BooleanExpression result) {
             this.result = result;
         }

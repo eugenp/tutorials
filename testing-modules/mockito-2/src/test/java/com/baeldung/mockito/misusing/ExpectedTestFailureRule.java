@@ -21,7 +21,7 @@ public class ExpectedTestFailureRule implements MethodRule {
             public void evaluate() throws Throwable {
                 try {
                     testedRule.apply(base, method, target)
-                        .evaluate();
+                            .evaluate();
                 } catch (Throwable t) {
                     if (failureAssert == null) {
                         throw t;

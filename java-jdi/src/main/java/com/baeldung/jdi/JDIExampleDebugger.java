@@ -31,7 +31,7 @@ import com.sun.jdi.request.StepRequest;
 
 public class JDIExampleDebugger {
 
-    private Class debugClass; 
+    private Class debugClass;
     private int[] breakPointLines;
 
     public Class getDebugClass() {
@@ -52,6 +52,7 @@ public class JDIExampleDebugger {
 
     /**
      * Sets the debug class as the main argument in the connector and launches the VM
+     *
      * @return VirtualMachine
      * @throws IOException
      * @throws IllegalConnectorArgumentsException
@@ -67,6 +68,7 @@ public class JDIExampleDebugger {
 
     /**
      * Creates a request to prepare the debug class, add filter as the debug class and enables it
+     *
      * @param vm
      */
     public void enableClassPrepareRequest(VirtualMachine vm) {
@@ -77,13 +79,14 @@ public class JDIExampleDebugger {
 
     /**
      * Sets the break points at the line numbers mentioned in breakPointLines array
+     *
      * @param vm
      * @param event
      * @throws AbsentInformationException
      */
     public void setBreakPoints(VirtualMachine vm, ClassPrepareEvent event) throws AbsentInformationException {
         ClassType classType = (ClassType) event.referenceType();
-        for(int lineNumber: breakPointLines) {
+        for (int lineNumber : breakPointLines) {
             Location location = classType.locationsOfLine(lineNumber).get(0);
             BreakpointRequest bpReq = vm.eventRequestManager().createBreakpointRequest(location);
             bpReq.enable();
@@ -92,15 +95,16 @@ public class JDIExampleDebugger {
 
     /**
      * Displays the visible variables
+     *
      * @param event
      * @throws IncompatibleThreadStateException
      * @throws AbsentInformationException
      */
     public void displayVariables(LocatableEvent event) throws IncompatibleThreadStateException, AbsentInformationException {
         StackFrame stackFrame = event.thread().frame(0);
-        if(stackFrame.location().toString().contains(debugClass.getName())) {
+        if (stackFrame.location().toString().contains(debugClass.getName())) {
             Map<LocalVariable, Value> visibleVariables = stackFrame.getValues(stackFrame.visibleVariables());
-            System.out.println("Variables at " +stackFrame.location().toString() +  " > ");
+            System.out.println("Variables at " + stackFrame.location().toString() + " > ");
             for (Map.Entry<LocalVariable, Value> entry : visibleVariables.entrySet()) {
                 System.out.println(entry.getKey().name() + " = " + entry.getValue());
             }
@@ -109,14 +113,15 @@ public class JDIExampleDebugger {
 
     /**
      * Enables step request for a break point
+     *
      * @param vm
      * @param event
      */
     public void enableStepRequest(VirtualMachine vm, BreakpointEvent event) {
         //enable step request for last break point
-        if(event.location().toString().contains(debugClass.getName()+":"+breakPointLines[breakPointLines.length-1])) {
+        if (event.location().toString().contains(debugClass.getName() + ":" + breakPointLines[breakPointLines.length - 1])) {
             StepRequest stepRequest = vm.eventRequestManager().createStepRequest(event.thread(), StepRequest.STEP_LINE, StepRequest.STEP_OVER);
-            stepRequest.enable();    
+            stepRequest.enable();
         }
     }
 
@@ -136,13 +141,13 @@ public class JDIExampleDebugger {
             while ((eventSet = vm.eventQueue().remove()) != null) {
                 for (Event event : eventSet) {
                     if (event instanceof ClassPrepareEvent) {
-                        debuggerInstance.setBreakPoints(vm, (ClassPrepareEvent)event);
+                        debuggerInstance.setBreakPoints(vm, (ClassPrepareEvent) event);
                     }
 
                     if (event instanceof BreakpointEvent) {
                         event.request().disable();
                         debuggerInstance.displayVariables((BreakpointEvent) event);
-                        debuggerInstance.enableStepRequest(vm, (BreakpointEvent)event);
+                        debuggerInstance.enableStepRequest(vm, (BreakpointEvent) event);
                     }
 
                     if (event instanceof StepEvent) {
@@ -155,8 +160,7 @@ public class JDIExampleDebugger {
             System.out.println("Virtual Machine is disconnected.");
         } catch (Exception e) {
             e.printStackTrace();
-        } 
-        finally {
+        } finally {
             InputStreamReader reader = new InputStreamReader(vm.process().getInputStream());
             OutputStreamWriter writer = new OutputStreamWriter(System.out);
             char[] buf = new char[512];

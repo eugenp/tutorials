@@ -22,15 +22,15 @@
  *
  * For details please refer to: https://www.apache.org/licenses/LICENSE-2.0
  */
-(function(factory) {
+(function (factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD
-        define(['jquery', 'datatables.net'], function($) {
+        define(['jquery', 'datatables.net'], function ($) {
             return factory($, window, document);
         });
     } else if (typeof exports === 'object') {
         // CommonJS
-        module.exports = function(root, $) {
+        module.exports = function (root, $) {
             if (!root) {
                 root = window;
             }
@@ -45,7 +45,7 @@
         // Browser
         factory(jQuery, window, document);
     }
-}(function($, window, document, undefined) {
+}(function ($, window, document, undefined) {
     'use strict';
     var DataTable = $.fn.dataTable;
 
@@ -54,7 +54,7 @@
 
     DataTable.advanced.version = '1.0.0';
 
-    DataTable.advanced.init = function(settings) {
+    DataTable.advanced.init = function (settings) {
 
         // Getting dt element
         var dt = new DataTable.Api(settings);
@@ -90,13 +90,13 @@
                 // displayed.
                 var hiddenButtons = [];
                 for (var i in opts.buttons) {
-                  if (opts.buttons.hasOwnProperty(i)) {
-                    var button = opts.buttons[i];
-                    if (!button) {
-                      opts.buttons[i] = DataTable.defaults.advanced.buttons[i];
-                      hiddenButtons.push(i);
+                    if (opts.buttons.hasOwnProperty(i)) {
+                        var button = opts.buttons[i];
+                        if (!button) {
+                            opts.buttons[i] = DataTable.defaults.advanced.buttons[i];
+                            hiddenButtons.push(i);
+                        }
                     }
-                  }
                 }
 
             }
@@ -148,9 +148,9 @@
             if (init.stateSave !== undefined) {
                 opts.stateSave = init.stateSave;
             }
-            
+
             if (init.defaultButtons !== undefined) {
-            	opts.defaultButtons = init.defaultButtons;
+                opts.defaultButtons = init.defaultButtons;
             }
 
         }
@@ -274,10 +274,10 @@
             'extend': 'colvis',
             'className': 'btn-action',
         },
-        {
-            'extend': 'pageLength',
-            'className': 'btn-action',
-        }],
+            {
+                'extend': 'pageLength',
+                'className': 'btn-action',
+            }],
         "deferRender": true,
         "dom": 'Bfrtip',
         "loadData": loadData,
@@ -349,7 +349,7 @@
             } else {
             */
             return {
-                'action': function(e, datatables, node, config) {
+                'action': function (e, datatables, node, config) {
                     var createUrl = getCreateUrl(datatables);
                     if (createUrl) {
                         location.href = createUrl;
@@ -375,14 +375,14 @@
 
         if (deleteBatchUrl) {
             return {
-                'action': function(e, datatables, node, config) {
+                'action': function (e, datatables, node, config) {
                     var tableId = getTableId(datatables);
                     var $deleteConfirm = $('#' + tableId + 'DeleteBatchConfirm');
 
                     // When the delete element modal is opened, copy the current
                     // element id to be deleted to the 'TABLE_ID + DeleteRowId'
                     // element
-                    $deleteConfirm.on('show.bs.modal', function(e) {
+                    $deleteConfirm.on('show.bs.modal', function (e) {
                         // Get data-row-id attribute of the clicked element
                         var rows_selected = datatables.columns().checkboxes.selected();
 
@@ -390,7 +390,7 @@
                         $('#' + tableId + 'DeleteBatchRowId').data('row-id', rows_selected.join(","));
                     });
 
-                    $('#' + tableId + 'DeleteBatchButton').on('click', function() {
+                    $('#' + tableId + 'DeleteBatchButton').on('click', function () {
                         deleteBatchElement(datatables);
                     });
 
@@ -420,21 +420,21 @@
         var url = getDeleteBatchUrl(datatables, rowIds);
 
         $.ajax({
-                url: url,
-                type: 'DELETE',
-                beforeSend: function(request) {
-                    if ($token != null && $token.length > 0 && $header != null && $header.length > 0) {
-                        request.setRequestHeader($header.attr("content"), $token.attr("content"));
-                    }
+            url: url,
+            type: 'DELETE',
+            beforeSend: function (request) {
+                if ($token != null && $token.length > 0 && $header != null && $header.length > 0) {
+                    request.setRequestHeader($header.attr("content"), $token.attr("content"));
                 }
-            })
-            .done(function(result) {
+            }
+        })
+            .done(function (result) {
                 var $deleteSuccess = $('#' + tableId + 'DeleteBatchSuccess');
                 $deleteSuccess.modal();
                 datatables.columns().checkboxes.deselect();
                 datatables.ajax.reload(); // Refresh Datatables
             })
-            .fail(function(jqXHR, status) {
+            .fail(function (jqXHR, status) {
                 var $deleteError = $('#' + tableId + 'DeleteBatchError');
                 $deleteError.modal();
             });
@@ -487,12 +487,12 @@
      * @param datatables DataTable on which the calling should act upon
      * @param url The url where export button will load
      * @param type The type of the export button. Will be used to set
-     * 			the button name
+     *            the button name
      * @return a new export button with the provided configuration
      */
     function getExportButton(datatables, url, type) {
         return {
-            'action': function(e, datatables, node, config) {
+            'action': function (e, datatables, node, config) {
                 // Check if current datatable has some records. If not,
                 // show an error modal and prevent to continue
                 if (datatables.context[0]._iRecordsDisplay === 0) {
@@ -553,7 +553,7 @@
 
         var prefix = 'loadUrlParam';
         var dataAttrs = getAllDataValues(datatables);
-        $.each(dataAttrs, function(property, value) {
+        $.each(dataAttrs, function (property, value) {
             if (property.length > prefix.length && property.lastIndexOf(prefix, 0) === 0) {
                 var param = toLowerCaseFirst(property.substring(prefix.length));
                 data[param] = value;
@@ -561,21 +561,21 @@
         });
 
         $.ajax({
-                url: url,
-                type: 'GET',
-                data: data,
-                dataType: 'json',
-                headers: {
-                    Accept: "application/vnd.datatables+json",
-                },
-                context: datatables,
-                beforeSend: function(request) {
-                    if ($token != null && $token.length > 0 && $header != null && $header.length > 0) {
-                        request.setRequestHeader($header.attr("content"), $token.attr("content"));
-                    }
+            url: url,
+            type: 'GET',
+            data: data,
+            dataType: 'json',
+            headers: {
+                Accept: "application/vnd.datatables+json",
+            },
+            context: datatables,
+            beforeSend: function (request) {
+                if ($token != null && $token.length > 0 && $header != null && $header.length > 0) {
+                    request.setRequestHeader($header.attr("content"), $token.attr("content"));
                 }
-            })
-            .done(function(result) {
+            }
+        })
+            .done(function (result) {
                 callback(result);
                 if (datatables.state.loaded()) {
                     var rowSelectedId = datatables.state.loaded().rowSelectedId;
@@ -587,7 +587,7 @@
                     }
                 }
             })
-            .fail(function(jqXHR, status) {
+            .fail(function (jqXHR, status) {
                 if (jqXHR.responseJSON != null && jqXHR.responseJSON.status === 403) {
                     var settings = this.settings()[0];
                     settings.oLanguage.sEmptyTable = "<p>Your session has expired or you have insufficient permissions</p>" +
@@ -807,20 +807,20 @@
         var url = getDeleteUrl(datatables, rowId);
 
         $.ajax({
-                url: url,
-                type: 'DELETE',
-                beforeSend: function(request) {
-                    if ($token != null && $token.length > 0 && $header != null && $header.length > 0) {
-                        request.setRequestHeader($header.attr("content"), $token.attr("content"));
-                    }
+            url: url,
+            type: 'DELETE',
+            beforeSend: function (request) {
+                if ($token != null && $token.length > 0 && $header != null && $header.length > 0) {
+                    request.setRequestHeader($header.attr("content"), $token.attr("content"));
                 }
-            })
-            .done(function(result) {
+            }
+        })
+            .done(function (result) {
                 var $deleteSuccess = $('#' + tableId + 'DeleteSuccess');
                 $deleteSuccess.modal();
                 datatables.ajax.reload(); // Refresh Datatables
             })
-            .fail(function(jqXHR, status) {
+            .fail(function (jqXHR, status) {
                 var $deleteError = $('#' + tableId + 'DeleteError');
                 $deleteError.modal();
             });
@@ -1033,14 +1033,14 @@
      */
     function saveSelectedRowToState(datatables, oSettings, json) {
         var state = datatables.state;
-        datatables.on('select', function(e, dt, type, indexes) {
+        datatables.on('select', function (e, dt, type, indexes) {
             if (type === 'row') {
                 var rowSelectedId = datatables.rows(indexes).ids()[0];
                 state.loaded().rowSelectedId = rowSelectedId;
                 state.save();
             }
         });
-        datatables.on('deselect', function(e, dt, type, indexes) {
+        datatables.on('deselect', function (e, dt, type, indexes) {
             if (type === 'row') {
                 state.loaded().rowSelectedId = undefined;
                 state.save();
@@ -1093,7 +1093,7 @@
     function registerOnDrawFinishesEvents(datatables) {
         // When this datatable is re-drawed, the
         // following actions will be executed
-        datatables.on('draw.dt', function() {
+        datatables.on('draw.dt', function () {
             // Register events to the new included checkboxes
             registerCheckBoxesEvents(datatables);
         });
@@ -1110,8 +1110,8 @@
         var checkBoxes = jQuery("#" + tableId + " input:checkbox");
         // Register change event for every checkbox. Every time that some checkbox
         // changes, validates if the delete batch button should be enabled or not
-        jQuery.each(checkBoxes, function(item) {
-            jQuery(this).change(function() {
+        jQuery.each(checkBoxes, function (item) {
+            jQuery(this).change(function () {
                 var rows_selected = datatables.columns().checkboxes.selected();
                 if (rows_selected.join(",") === "") {
                     datatables.button('delete:name').disable();
@@ -1142,14 +1142,14 @@
         // When the delete element modal is opened, copy the current
         // element id to be deleted to the 'TABLE_ID + DeleteRowId'
         // element
-        $deleteConfirm.on('show.bs.modal', function(e) {
+        $deleteConfirm.on('show.bs.modal', function (e) {
             // Get data-row-id attribute of the clicked element
             var rowId = jQuery(e.relatedTarget).data('row-id');
             // Populate the row-id data attribute in the modal
             $('#' + tableId + 'DeleteRowId').data('row-id', rowId)
         });
 
-        $('#' + tableId + 'DeleteButton').on('click', function() {
+        $('#' + tableId + 'DeleteButton').on('click', function () {
             deleteElement(datatables);
         });
     }
@@ -1164,19 +1164,19 @@
 
         if (parentDatatables) {
             // Register to de/select events
-            parentDatatables.on('select', function() {
+            parentDatatables.on('select', function () {
                 datatables.button('add:name').enable();
                 datatables.ajax.reload();
             });
 
-            parentDatatables.on('deselect', function() {
+            parentDatatables.on('deselect', function () {
                 datatables.button('add:name').disable();
                 datatables.ajax.reload();
             });
 
             // Register to reload finished event, needed when the selected row has
             // been deleted in the parent table or any other change
-            parentDatatables.on('xhr.dt', function() {
+            parentDatatables.on('xhr.dt', function () {
                 datatables.ajax.reload();
             });
 
@@ -1195,7 +1195,7 @@
         if (parentDatatables) {
             var tableId = getTableId(datatables);
 
-            $('#' + tableId + 'AddButton').on('click', function() {
+            $('#' + tableId + 'AddButton').on('click', function () {
                 var url = getCreateUrl(datatables);
                 $addForm = $('#' + tableId + 'AddForm');
                 var params = $addForm.serialize();
@@ -1203,7 +1203,7 @@
                     type: $addForm.attr('method'),
                     url: url,
                     data: params,
-                    success: function(data) {
+                    success: function (data) {
                         datatables.ajax.reload();
                     }
                 });
@@ -1227,8 +1227,8 @@
         if (showUrl && !showInline) {
             buttons = buttons.concat('<a class="btn btn-action btn-sm" href="')
                 .concat(showUrl).concat('" ><span class="glyphicon glyphicon-eye-open"></span></a>');
-        }else if(showUrl && showInline){
-        	buttons = buttons.concat('<a aria-expanded="false" class="btn btn-action btn-sm" href="#" onclick="event.preventDefault();jQuery(\'#').concat(tableId).concat('\').DataTable().advanced.showInline(this, jQuery(\'#').concat(tableId).concat('\').DataTable(),\'').concat(showUrl).concat('\')" role="button"><span class="glyphicon glyphicon-eye-open"></span></a>');
+        } else if (showUrl && showInline) {
+            buttons = buttons.concat('<a aria-expanded="false" class="btn btn-action btn-sm" href="#" onclick="event.preventDefault();jQuery(\'#').concat(tableId).concat('\').DataTable().advanced.showInline(this, jQuery(\'#').concat(tableId).concat('\').DataTable(),\'').concat(showUrl).concat('\')" role="button"><span class="glyphicon glyphicon-eye-open"></span></a>');
         }
 
         var editUrl = getEditUrl(datatables, rowId);
@@ -1247,32 +1247,31 @@
         buttons = buttons.concat('</div>');
         return buttons;
     }
-    
-    
+
+
     /**
      * This method tries to display the show view of the selected record
      * expanding the selected row.
      */
-    function showInline(showButton, datatables, showUrl){
-    	var tr = showButton.closest('tr');
-        var row = datatables.row( tr );
-        if ( row.child.isShown() ) {
+    function showInline(showButton, datatables, showUrl) {
+        var tr = showButton.closest('tr');
+        var row = datatables.row(tr);
+        if (row.child.isShown()) {
             // This row is already open - close it
             $(showButton).attr("aria-expanded", "false");
             row.child.hide();
-        }
-        else {
-           $(showButton).attr("aria-expanded", "true");
-           $.ajax({
-    		      url: showUrl + "/inline",
-    		      dataType: 'html'
-    		    }).done(function(data) {
-    			    // Open this row
-    			    row.child(data).show();
-    		    }).fail(function(data){
-    			    // Show error in new row
-    			    row.child("<div class='alert alert-danger'>ERROR: An error occurred while trying to obtain more info.</div>").show();
-    		    });
+        } else {
+            $(showButton).attr("aria-expanded", "true");
+            $.ajax({
+                url: showUrl + "/inline",
+                dataType: 'html'
+            }).done(function (data) {
+                // Open this row
+                row.child(data).show();
+            }).fail(function (data) {
+                // Show error in new row
+                row.child("<div class='alert alert-danger'>ERROR: An error occurred while trying to obtain more info.</div>").show();
+            });
         }
     }
 
@@ -1286,8 +1285,8 @@
     // Local variables to improve compression
     var apiRegister = DataTable.Api.register;
 
-    apiRegister('advanced()', function() {
-        return this.iterator('table', function(settings) {
+    apiRegister('advanced()', function () {
+        return this.iterator('table', function (settings) {
             DataTable.advanced.init(settings);
         });
     });
@@ -1306,9 +1305,8 @@
     apiRegister('advanced.getExportCsvButton()', exportCsvButton);
     apiRegister('advanced.getExportExcelButton()', exportExcelButton);
     apiRegister('advanced.getExportPdfButton()', exportPdfButton);
-    
-    apiRegister('advanced.showInline()', showInline);
 
+    apiRegister('advanced.showInline()', showInline);
 
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -1316,7 +1314,7 @@
      */
 
     // DataTables creation - check if advanced has been defined in the options.
-    $(document).on('preInit.dt.dtadvanced', function(e, settings) {
+    $(document).on('preInit.dt.dtadvanced', function (e, settings) {
         if (e.namespace !== 'dt') {
             return;
         }

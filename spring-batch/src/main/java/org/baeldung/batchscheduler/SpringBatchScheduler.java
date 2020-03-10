@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+
 import org.baeldung.batchscheduler.model.Book;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,7 +62,7 @@ public class SpringBatchScheduler {
         logger.debug("scheduler starts at " + date);
         if (enabled.get()) {
             JobExecution jobExecution = jobLauncher().run(job(), new JobParametersBuilder().addDate("launchDate", date)
-                .toJobParameters());
+                    .toJobParameters());
             batchRunCounter.incrementAndGet();
             logger.debug("Batch job ends with status as " + jobExecution.getStatus());
         }
@@ -108,8 +109,8 @@ public class SpringBatchScheduler {
     @Bean
     public Job job() {
         return jobBuilderFactory.get("job")
-            .start(readBooks())
-            .build();
+                .start(readBooks())
+                .build();
     }
 
     @Bean
@@ -130,24 +131,24 @@ public class SpringBatchScheduler {
     @Bean
     protected Step readBooks() {
         return stepBuilderFactory.get("readBooks")
-            .<Book, Book> chunk(2)
-            .reader(reader())
-            .writer(writer())
-            .build();
+                .<Book, Book>chunk(2)
+                .reader(reader())
+                .writer(writer())
+                .build();
     }
 
     @Bean
     public FlatFileItemReader<Book> reader() {
         return new FlatFileItemReaderBuilder<Book>().name("bookItemReader")
-            .resource(new ClassPathResource("books.csv"))
-            .delimited()
-            .names(new String[] { "id", "name" })
-            .fieldSetMapper(new BeanWrapperFieldSetMapper<Book>() {
-                {
-                    setTargetType(Book.class);
-                }
-            })
-            .build();
+                .resource(new ClassPathResource("books.csv"))
+                .delimited()
+                .names(new String[]{"id", "name"})
+                .fieldSetMapper(new BeanWrapperFieldSetMapper<Book>() {
+                    {
+                        setTargetType(Book.class);
+                    }
+                })
+                .build();
     }
 
     @Bean

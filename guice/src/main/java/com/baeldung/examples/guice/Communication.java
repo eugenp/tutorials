@@ -3,13 +3,13 @@ package com.baeldung.examples.guice;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.logging.Logger;
 
 /**
- *
  * @author baeldung
  */
 public class Communication {
@@ -29,10 +29,10 @@ public class Communication {
     }
 
     public boolean sendMessage(String message) {
-      
+
         return communicator.sendMessage(message);
     }
- 
+
     public DefaultCommunicator getCommunicator() {
         return this.communicator;
     }

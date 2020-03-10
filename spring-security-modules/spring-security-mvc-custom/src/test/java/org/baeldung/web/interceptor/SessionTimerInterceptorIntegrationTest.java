@@ -23,8 +23,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { SecurityWithoutCsrfConfig.class, MvcConfig.class })
-@WithMockUser(username = "admin", roles = { "USER", "ADMIN" })
+@ContextConfiguration(classes = {SecurityWithoutCsrfConfig.class, MvcConfig.class})
+@WithMockUser(username = "admin", roles = {"USER", "ADMIN"})
 public class SessionTimerInterceptorIntegrationTest {
 
     @Autowired
@@ -45,13 +45,13 @@ public class SessionTimerInterceptorIntegrationTest {
     @Test
     public void testInterceptors() throws Exception {
         HttpSession session = mockMvc.perform(get("/auth/foos"))
-            .andExpect(status().is2xxSuccessful())
-            .andReturn()
-            .getRequest()
-            .getSession();
+                .andExpect(status().is2xxSuccessful())
+                .andReturn()
+                .getRequest()
+                .getSession();
         Thread.sleep(51000);
         mockMvc.perform(get("/auth/foos").session((MockHttpSession) session))
-            .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is2xxSuccessful());
     }
 
 }

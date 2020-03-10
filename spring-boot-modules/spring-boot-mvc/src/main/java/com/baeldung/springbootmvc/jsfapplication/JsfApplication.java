@@ -14,7 +14,7 @@ import com.baeldung.springbootmvc.jsfapplication.model.TodoDao;
 import com.baeldung.springbootmvc.jsfapplication.service.TodoService;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = { JsfController.class, TodoDao.class, TodoService.class })
+@ComponentScan(basePackageClasses = {JsfController.class, TodoDao.class, TodoService.class})
 public class JsfApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

@@ -18,7 +18,7 @@ public class SecurityConfiguration {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
-            .dataSource(dataSource);
+                .dataSource(dataSource);
     }
 
     @Bean

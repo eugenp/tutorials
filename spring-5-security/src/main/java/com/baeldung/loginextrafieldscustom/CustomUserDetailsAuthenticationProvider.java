@@ -37,22 +37,22 @@ public class CustomUserDetailsAuthenticationProvider extends AbstractUserDetails
     }
 
     @Override
-    protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) 
-        throws AuthenticationException {
+    protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication)
+            throws AuthenticationException {
 
         if (authentication.getCredentials() == null) {
             logger.debug("Authentication failed: no credentials provided");
             throw new BadCredentialsException(
-                messages.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"));
+                    messages.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"));
         }
 
         String presentedPassword = authentication.getCredentials()
-            .toString();
+                .toString();
 
         if (!passwordEncoder.matches(presentedPassword, userDetails.getPassword())) {
             logger.debug("Authentication failed: password does not match stored value");
             throw new BadCredentialsException(
-                messages.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"));
+                    messages.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"));
         }
     }
 
@@ -63,18 +63,18 @@ public class CustomUserDetailsAuthenticationProvider extends AbstractUserDetails
     }
 
     @Override
-    protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication) 
-        throws AuthenticationException {
+    protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication)
+            throws AuthenticationException {
         CustomAuthenticationToken auth = (CustomAuthenticationToken) authentication;
         UserDetails loadedUser;
 
         try {
             loadedUser = this.userDetailsService.loadUserByUsernameAndDomain(auth.getPrincipal()
-                .toString(), auth.getDomain());
+                    .toString(), auth.getDomain());
         } catch (UsernameNotFoundException notFound) {
             if (authentication.getCredentials() != null) {
                 String presentedPassword = authentication.getCredentials()
-                    .toString();
+                        .toString();
                 passwordEncoder.matches(presentedPassword, userNotFoundEncodedPassword);
             }
             throw notFound;
@@ -84,7 +84,7 @@ public class CustomUserDetailsAuthenticationProvider extends AbstractUserDetails
 
         if (loadedUser == null) {
             throw new InternalAuthenticationServiceException("UserDetailsService returned null, "
-                + "which is an interface contract violation");
+                    + "which is an interface contract violation");
         }
         return loadedUser;
     }

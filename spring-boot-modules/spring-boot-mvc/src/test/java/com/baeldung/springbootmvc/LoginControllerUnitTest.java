@@ -16,7 +16,7 @@ import com.baeldung.springbootmvc.config.CustomMessageSourceConfiguration;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = LoginController.class)
-@ContextConfiguration(classes = { SpringBootMvcApplication.class, CustomMessageSourceConfiguration.class })
+@ContextConfiguration(classes = {SpringBootMvcApplication.class, CustomMessageSourceConfiguration.class})
 public class LoginControllerUnitTest {
 
     @Autowired

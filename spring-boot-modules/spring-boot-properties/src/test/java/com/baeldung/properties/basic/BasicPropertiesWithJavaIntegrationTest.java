@@ -12,7 +12,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import com.baeldung.properties.spring.BasicPropertiesWithJavaConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { BasicPropertiesWithJavaConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {BasicPropertiesWithJavaConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class BasicPropertiesWithJavaIntegrationTest {
 
     @Autowired

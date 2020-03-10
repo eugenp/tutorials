@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ViewController {
 
-    @RequestMapping({ "/index", "/" })
+    @RequestMapping({"/index", "/"})
     public String index() {
         return "index";
     }
-    
-    @RequestMapping({ "/runashome" })
+
+    @RequestMapping({"/runashome"})
     public String run() {
         return "runas";
     }

@@ -53,8 +53,8 @@ public class BinaryTree {
         }
 
         return value < current.value
-          ? containsNodeRecursive(current.left, value)
-          : containsNodeRecursive(current.right, value);
+                ? containsNodeRecursive(current.left, value)
+                : containsNodeRecursive(current.right, value);
     }
 
     public void delete(int value) {
@@ -148,41 +148,41 @@ public class BinaryTree {
         }
     }
 
-    
+
     public void traverseInOrderWithoutRecursion() {
         Stack<Node> stack = new Stack<Node>();
         Node current = root;
         stack.push(root);
-        while(! stack.isEmpty()) {
-            while(current.left != null) {
-                current = current.left;                
-                stack.push(current);                
+        while (!stack.isEmpty()) {
+            while (current.left != null) {
+                current = current.left;
+                stack.push(current);
             }
             current = stack.pop();
             visit(current.value);
-            if(current.right != null) {
-                current = current.right;                
+            if (current.right != null) {
+                current = current.right;
                 stack.push(current);
             }
         }
     }
-    
+
     public void traversePreOrderWithoutRecursion() {
         Stack<Node> stack = new Stack<Node>();
         Node current = root;
         stack.push(root);
-        while(! stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             current = stack.pop();
             visit(current.value);
-            
-            if(current.right != null)
+
+            if (current.right != null)
                 stack.push(current.right);
-                
-            if(current.left != null)
+
+            if (current.left != null)
                 stack.push(current.left);
-        }        
+        }
     }
-    
+
     public void traversePostOrderWithoutRecursion() {
         Stack<Node> stack = new Stack<Node>();
         Node prev = root;
@@ -206,13 +206,13 @@ public class BinaryTree {
                     stack.push(current.left);
                 }
             }
-        }   
-    }    
-    
-    private void visit(int value) {
-        System.out.print(" " + value);        
+        }
     }
-    
+
+    private void visit(int value) {
+        System.out.print(" " + value);
+    }
+
     class Node {
         int value;
         Node left;

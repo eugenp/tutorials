@@ -23,7 +23,7 @@ public class QueryExecutor {
         }
 
         if (results.get(0) instanceof String) {
-            return ((List<String>) results).stream().map(s -> new String[] { s }).collect(Collectors.toList());
+            return ((List<String>) results).stream().map(s -> new String[]{s}).collect(Collectors.toList());
         } else {
             return (List<String[]>) results;
         }

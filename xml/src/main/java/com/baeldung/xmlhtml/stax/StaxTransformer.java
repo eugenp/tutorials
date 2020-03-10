@@ -30,8 +30,8 @@ public class StaxTransformer {
     public String html() throws XMLStreamException, IOException {
         try (Writer output = new StringWriter()) {
             XMLStreamWriter writer = XMLOutputFactory
-              .newInstance()
-              .createXMLStreamWriter(output);
+                    .newInstance()
+                    .createXMLStreamWriter(output);
             //Head
             writer.writeDTD("<!DOCTYPE html>");
             writer.writeCharacters(String.format("%n"));
@@ -74,18 +74,18 @@ public class StaxTransformer {
             input.next();
             if (input.isStartElement()) {
                 if (input
-                  .getLocalName()
-                  .equals("heading")) {
+                        .getLocalName()
+                        .equals("heading")) {
                     tempMap.put("heading", input.getElementText());
                 }
                 if (input
-                  .getLocalName()
-                  .equals("from")) {
+                        .getLocalName()
+                        .equals("from")) {
                     tempMap.put("from", String.format("from: %s", input.getElementText()));
                 }
                 if (input
-                  .getLocalName()
-                  .equals("content")) {
+                        .getLocalName()
+                        .equals("content")) {
                     tempMap.put("content", input.getElementText());
                 }
             }

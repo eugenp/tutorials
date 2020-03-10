@@ -43,14 +43,14 @@ public class SpringSecurityGroupManager extends GroupEntityManagerImpl {
         System.out.println("group manager");
         if (userDetails != null) {
             List<Group> groups = userDetails.getAuthorities()
-                .stream()
-                .map(a -> a.getAuthority())
-                .map(a -> {
-                    Group g = new GroupEntityImpl();
-                    g.setId(a);
-                    return g;
-                })
-                .collect(Collectors.toList());
+                    .stream()
+                    .map(a -> a.getAuthority())
+                    .map(a -> {
+                        Group g = new GroupEntityImpl();
+                        g.setId(a);
+                        return g;
+                    })
+                    .collect(Collectors.toList());
             return groups;
         }
         return null;

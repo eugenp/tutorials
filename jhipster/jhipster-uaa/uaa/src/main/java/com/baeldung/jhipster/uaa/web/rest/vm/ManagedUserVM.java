@@ -1,6 +1,7 @@
 package com.baeldung.jhipster.uaa.web.rest.vm;
 
 import com.baeldung.jhipster.uaa.service.dto.UserDTO;
+
 import javax.validation.constraints.Size;
 
 /**
@@ -30,6 +31,6 @@ public class ManagedUserVM extends UserDTO {
     @Override
     public String toString() {
         return "ManagedUserVM{" +
-            "} " + super.toString();
+                "} " + super.toString();
     }
 }

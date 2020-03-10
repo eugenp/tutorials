@@ -84,7 +84,8 @@
                         </goals>
                         <configuration>
                             <includeArtifactIds>derby</includeArtifactIds>
-                            <outputDirectory>${project.build.directory}/liberty/wlp/usr/shared/resources/</outputDirectory>
+                            <outputDirectory>${project.build.directory}/liberty/wlp/usr/shared/resources/
+                            </outputDirectory>
                             <systemPropertyVariables>
                                 <liberty.test.port>${testServerHttpPort}</liberty.test.port>
                             </systemPropertyVariables>

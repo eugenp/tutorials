@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler({ RepositoryConstraintViolationException.class })
+    @ExceptionHandler({RepositoryConstraintViolationException.class})
     public ResponseEntity<Object> handleAccessDeniedException(Exception ex, WebRequest request) {
         RepositoryConstraintViolationException nevEx = (RepositoryConstraintViolationException) ex;
 

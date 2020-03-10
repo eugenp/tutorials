@@ -98,7 +98,7 @@ public class CayenneOperationLiveTest {
 
         Author savedAuthor = ObjectSelect.query(Author.class)
                 .where(Author.NAME.eq("Paul")).selectOne(context);
-        if(savedAuthor != null) {
+        if (savedAuthor != null) {
             context.deleteObjects(author);
             context.commitChanges();
         }

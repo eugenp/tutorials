@@ -13,9 +13,9 @@ import reactor.core.publisher.Mono;
 public class FurtherCorsConfigsController {
 
     @DeleteMapping("/further-mixed-config-endpoint")
-    @CrossOrigin(methods = { RequestMethod.DELETE },
-        allowedHeaders = { "Baeldung-Other-Allowed" },
-        exposedHeaders = { "Baeldung-Other-Exposed" }
+    @CrossOrigin(methods = {RequestMethod.DELETE},
+            allowedHeaders = {"Baeldung-Other-Allowed"},
+            exposedHeaders = {"Baeldung-Other-Exposed"}
     )
     public Mono<String> corsEnabledHeaderExposedEndpoint() {
         return Mono.just("CORS Global Configured + Request Configs.");

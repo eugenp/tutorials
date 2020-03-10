@@ -33,7 +33,7 @@ public class QuadTree {
         boolean isPointAdded;
         for (int i = 0; i < 4; i++) {
             isPointAdded = this.quadTrees.get(i)
-                .addPoint(point);
+                    .addPoint(point);
             if (isPointAdded)
                 return true;
         }
@@ -53,9 +53,9 @@ public class QuadTree {
         if (matches == null) {
             matches = new ArrayList<Point>();
             searchTraversePath.append(depthIndicator)
-                .append("Search Boundary =")
-                .append(searchRegion)
-                .append("\n");
+                    .append("Search Boundary =")
+                    .append(searchRegion)
+                    .append("\n");
         }
         if (!this.area.doesOverlap(searchRegion)) {
             return matches;
@@ -63,23 +63,23 @@ public class QuadTree {
             for (Point point : points) {
                 if (searchRegion.containsPoint(point)) {
                     searchTraversePath.append(depthIndicator)
-                    .append("Found match " + point)
-                    .append("\n");
+                            .append("Found match " + point)
+                            .append("\n");
                     matches.add(point);
                 }
             }
             if (this.quadTrees.size() > 0) {
                 for (int i = 0; i < 4; i++) {
                     searchTraversePath.append(depthIndicator)
-                        .append("Q")
-                        .append(i)
-                        .append("-->")
-                        .append(quadTrees.get(i).area)
-                        .append("\n");
+                            .append("Q")
+                            .append(i)
+                            .append("-->")
+                            .append(quadTrees.get(i).area)
+                            .append("\n");
                     quadTrees.get(i)
-                        .search(searchRegion, matches, depthIndicator + "\t");
+                            .search(searchRegion, matches, depthIndicator + "\t");
                     this.searchTraversePath.append(quadTrees.get(i)
-                        .printSearchTraversePath());
+                            .printSearchTraversePath());
                 }
             }
         }
@@ -98,7 +98,7 @@ public class QuadTree {
         for (int i = 0; i < quadTrees.size(); i++) {
             str += depthIndicator + "Q" + String.valueOf(i) + "-->" + quadTrees.get(i).area.toString() + "\n";
             str += quadTrees.get(i)
-                .printTree(depthIndicator + "\t");
+                    .printTree(depthIndicator + "\t");
         }
         return str;
     }

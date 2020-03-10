@@ -1,4 +1,4 @@
 spring:
-   application:
-      name: weather-service
+  application:
+    name: weather-service
 

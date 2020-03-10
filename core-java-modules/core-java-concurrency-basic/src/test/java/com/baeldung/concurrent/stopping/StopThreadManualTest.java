@@ -28,7 +28,7 @@ public class StopThreadManualTest {
         // Stop it and make sure the flags have been reversed
         controlSubThread.stop();
         await()
-          .until(() -> assertTrue(controlSubThread.isStopped()));
+                .until(() -> assertTrue(controlSubThread.isStopped()));
     }
 
     @Test
@@ -49,8 +49,8 @@ public class StopThreadManualTest {
 
         // Wait less than the time we would normally sleep, and make sure we exited.
         Awaitility.await()
-            .pollDelay(2, TimeUnit.MILLISECONDS)
-          .atMost(interval/ 10, TimeUnit.MILLISECONDS)
-          .until(controlSubThread::isStopped);
+                .pollDelay(2, TimeUnit.MILLISECONDS)
+                .atMost(interval / 10, TimeUnit.MILLISECONDS)
+                .until(controlSubThread::isStopped);
     }
 }

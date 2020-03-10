@@ -5,16 +5,16 @@
 -->
 
 <configuration>
-	<include resource="org/springframework/boot/logging/logback/base.xml"/>
-	<logger name="feign" level="DEBUG"/>
-	<logger name="org.springframework.cloud.sleuth" level="TRACE"/>
-	<logger name="org.springframework.boot.autoconfigure.logging" level="INFO"/>
-	<logger name="org.springframework.cloud.sleuth.log" level="DEBUG"/>
-	<logger name="org.springframework.cloud.sleuth.trace" level="DEBUG"/>
-	<logger name="org.springframework.cloud.sleuth.instrument.rxjava" level="DEBUG"/>
-	<logger name="org.springframework.cloud.sleuth.instrument.reactor" level="TRACE"/>
-	<root level="INFO">
-		<appender-ref ref="CONSOLE"/>
-		<appender-ref ref="FILE"/>
-	</root>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="feign" level="DEBUG"/>
+    <logger name="org.springframework.cloud.sleuth" level="TRACE"/>
+    <logger name="org.springframework.boot.autoconfigure.logging" level="INFO"/>
+    <logger name="org.springframework.cloud.sleuth.log" level="DEBUG"/>
+    <logger name="org.springframework.cloud.sleuth.trace" level="DEBUG"/>
+    <logger name="org.springframework.cloud.sleuth.instrument.rxjava" level="DEBUG"/>
+    <logger name="org.springframework.cloud.sleuth.instrument.reactor" level="TRACE"/>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
 </configuration>

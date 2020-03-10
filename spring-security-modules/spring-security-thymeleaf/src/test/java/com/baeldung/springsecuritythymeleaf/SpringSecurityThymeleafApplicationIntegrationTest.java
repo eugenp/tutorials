@@ -13,15 +13,15 @@ import org.springframework.web.context.WebApplicationContext;
 @SpringBootTest
 public class SpringSecurityThymeleafApplicationIntegrationTest {
 
-	@Autowired
-	ViewController viewController;
-	@Autowired
-	WebApplicationContext wac;
-	
-	@Test
-	public void whenConfigured_thenLoadsContext() {
-		assertNotNull(viewController);
-		assertNotNull(wac);
-	}
+    @Autowired
+    ViewController viewController;
+    @Autowired
+    WebApplicationContext wac;
+
+    @Test
+    public void whenConfigured_thenLoadsContext() {
+        assertNotNull(viewController);
+        assertNotNull(wac);
+    }
 
 }

@@ -15,11 +15,15 @@ import lombok.ToString;
 import lombok.experimental.Delegate;
 
 @Entity
-@Getter @Setter @NoArgsConstructor // <--- THIS is it
+@Getter
+@Setter
+@NoArgsConstructor // <--- THIS is it
 @ToString(exclude = {"events"})
 public class User implements Serializable, HasContactInformation {
 
-    private @Id @Setter(AccessLevel.PROTECTED) Long id; // will be set when persisting
+    private @Id
+    @Setter(AccessLevel.PROTECTED)
+    Long id; // will be set when persisting
 
     private String nickname;
 

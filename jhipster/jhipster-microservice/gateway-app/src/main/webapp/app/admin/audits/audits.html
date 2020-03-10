@@ -6,9 +6,11 @@
             <h4>Filter by date</h4>
             <p class="input-group">
                 <span class="input-group-addon">from</span>
-                <input type="date" class="input-sm form-control" name="start" ng-model="vm.fromDate" ng-change="vm.onChangeDate()" required/>
+                <input type="date" class="input-sm form-control" name="start" ng-model="vm.fromDate"
+                       ng-change="vm.onChangeDate()" required/>
                 <span class="input-group-addon">to</span>
-                <input type="date" class="input-sm form-control" name="end" ng-model="vm.toDate" ng-change="vm.onChangeDate()" required/>
+                <input type="date" class="input-sm form-control" name="end" ng-model="vm.toDate"
+                       ng-change="vm.onChangeDate()" required/>
             </p>
         </div>
     </div>
@@ -36,6 +38,7 @@
     </table>
 
     <div class="text-center">
-        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.loadPage(vm.page)"></uib-pagination>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page"
+                        ng-change="vm.loadPage(vm.page)"></uib-pagination>
     </div>
 </div>

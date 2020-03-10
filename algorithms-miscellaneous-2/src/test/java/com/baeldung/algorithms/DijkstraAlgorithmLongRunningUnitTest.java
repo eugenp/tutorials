@@ -55,31 +55,31 @@ public class DijkstraAlgorithmLongRunningUnitTest {
 
         for (Node node : graph.getNodes()) {
             switch (node.getName()) {
-            case "B":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeB));
-                break;
-            case "C":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeC));
-                break;
-            case "D":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeD));
-                break;
-            case "E":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeE));
-                break;
-            case "F":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeF));
-                break;
+                case "B":
+                    assertTrue(node
+                            .getShortestPath()
+                            .equals(shortestPathForNodeB));
+                    break;
+                case "C":
+                    assertTrue(node
+                            .getShortestPath()
+                            .equals(shortestPathForNodeC));
+                    break;
+                case "D":
+                    assertTrue(node
+                            .getShortestPath()
+                            .equals(shortestPathForNodeD));
+                    break;
+                case "E":
+                    assertTrue(node
+                            .getShortestPath()
+                            .equals(shortestPathForNodeE));
+                    break;
+                case "F":
+                    assertTrue(node
+                            .getShortestPath()
+                            .equals(shortestPathForNodeF));
+                    break;
             }
         }
     }

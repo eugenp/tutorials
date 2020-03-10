@@ -28,9 +28,8 @@ public class PersonValidatorUnitTest {
         /**
          * Repeat the test ten times, that way we have a good shot at
          * running all of the data through at least once.
-         * 
-         * @param person
-         *          A valid Person object to validate.
+         *
+         * @param person A valid Person object to validate.
          */
         @RepeatedTest(value = 10)
         @DisplayName("All first names are valid")
@@ -45,9 +44,8 @@ public class PersonValidatorUnitTest {
         /**
          * Repeat the test ten times, that way we have a good shot at
          * running all of the data through at least once.
-         * 
-         * @param person
-         *          A valid Person object to validate.
+         *
+         * @param person A valid Person object to validate.
          */
         @RepeatedTest(value = 10)
         @DisplayName("All last names are valid")
@@ -74,9 +72,8 @@ public class PersonValidatorUnitTest {
         /**
          * Repeat the test ten times, that way we have a good shot at
          * running all of the data through at least once.
-         * 
-         * @param person
-         *          An invalid Person object to validate.
+         *
+         * @param person An invalid Person object to validate.
          */
         @RepeatedTest(value = 10)
         @DisplayName("All first names are invalid")
@@ -87,9 +84,8 @@ public class PersonValidatorUnitTest {
         /**
          * Repeat the test ten times, that way we have a good shot at
          * running all of the data through at least once.
-         * 
-         * @param person
-         *          An invalid Person object to validate.
+         *
+         * @param person An invalid Person object to validate.
          */
         @RepeatedTest(value = 10)
         @DisplayName("All first names are invalid")

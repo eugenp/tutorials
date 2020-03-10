@@ -11,10 +11,10 @@ public class ThreadLocalRandomBenchMarkRunner {
     public static void main(String[] args) throws Exception {
 
         ChainedOptionsBuilder options = new OptionsBuilder().include(ThreadLocalRandomBenchMarker.class.getSimpleName())
-            .forks(1)
-            .shouldFailOnError(true)
-            .shouldDoGC(true)
-            .jvmArgs("-server");
+                .forks(1)
+                .shouldFailOnError(true)
+                .shouldDoGC(true)
+                .jvmArgs("-server");
 
         for (Integer i : ImmutableList.of(1, 2, 8, 32)) {
             new Runner(

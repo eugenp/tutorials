@@ -18,10 +18,10 @@ public class StrategyDesignPatternUnitTest {
         Discounter staffDiscounter = new EasterDiscounter();
 
         final BigDecimal discountedValue = staffDiscounter
-          .apply(BigDecimal.valueOf(100));
+                .apply(BigDecimal.valueOf(100));
 
         assertThat(discountedValue)
-          .isEqualByComparingTo(BigDecimal.valueOf(50));
+                .isEqualByComparingTo(BigDecimal.valueOf(50));
     }
 
     @Test
@@ -34,10 +34,10 @@ public class StrategyDesignPatternUnitTest {
         };
 
         final BigDecimal discountedValue = staffDiscounter
-          .apply(BigDecimal.valueOf(100));
+                .apply(BigDecimal.valueOf(100));
 
         assertThat(discountedValue)
-          .isEqualByComparingTo(BigDecimal.valueOf(50));
+                .isEqualByComparingTo(BigDecimal.valueOf(50));
     }
 
     @Test
@@ -45,10 +45,10 @@ public class StrategyDesignPatternUnitTest {
         Discounter staffDiscounter = amount -> amount.multiply(BigDecimal.valueOf(0.5));
 
         final BigDecimal discountedValue = staffDiscounter
-          .apply(BigDecimal.valueOf(100));
+                .apply(BigDecimal.valueOf(100));
 
         assertThat(discountedValue)
-          .isEqualByComparingTo(BigDecimal.valueOf(50));
+                .isEqualByComparingTo(BigDecimal.valueOf(50));
     }
 
     @Test
@@ -58,8 +58,8 @@ public class StrategyDesignPatternUnitTest {
         BigDecimal amount = BigDecimal.valueOf(100);
 
         final Discounter combinedDiscounter = discounters
-          .stream()
-          .reduce(v -> v, Discounter::combine);
+                .stream()
+                .reduce(v -> v, Discounter::combine);
 
         combinedDiscounter.apply(amount);
     }
@@ -67,8 +67,8 @@ public class StrategyDesignPatternUnitTest {
     @Test
     public void shouldChainDiscounters() {
         final Function<BigDecimal, BigDecimal> combinedDiscounters = Discounter
-          .christmas()
-          .andThen(newYear());
+                .christmas()
+                .andThen(newYear());
 
         combinedDiscounters.apply(BigDecimal.valueOf(100));
     }

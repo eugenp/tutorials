@@ -23,6 +23,7 @@ public class CompleteGraphUnitTest {
         CompleteGraphGenerator<String, DefaultEdge> completeGenerator = new CompleteGraphGenerator<String, DefaultEdge>(size);
         VertexFactory<String> vFactory = new VertexFactory<String>() {
             private int id = 0;
+
             public String createVertex() {
                 return "v" + id++;
             }

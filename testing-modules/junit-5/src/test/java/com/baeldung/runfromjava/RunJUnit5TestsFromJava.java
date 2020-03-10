@@ -19,9 +19,9 @@ public class RunJUnit5TestsFromJava {
 
     public void runOne() {
         LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder
-          .request()
-          .selectors(selectClass(FirstUnitTest.class))
-          .build();
+                .request()
+                .selectors(selectClass(FirstUnitTest.class))
+                .build();
         Launcher launcher = LauncherFactory.create();
         TestPlan testPlan = launcher.discover(request);
 
@@ -31,10 +31,10 @@ public class RunJUnit5TestsFromJava {
 
     public void runAll() {
         LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder
-          .request()
-          .selectors(selectPackage("com.baeldung.runfromjava"))
-          .filters(includeClassNamePatterns(".*Test"))
-          .build();
+                .request()
+                .selectors(selectPackage("com.baeldung.runfromjava"))
+                .filters(includeClassNamePatterns(".*Test"))
+                .build();
         Launcher launcher = LauncherFactory.create();
 
         TestPlan testPlan = launcher.discover(request);

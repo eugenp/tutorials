@@ -19,7 +19,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @SpringBootApplication
 @PropertySource({"classpath:persistence-h2.properties", "classpath:application-defaults.properties"})
-@EnableJpaRepositories(basePackages = { "com.baeldung.data.repositories" })
+@EnableJpaRepositories(basePackages = {"com.baeldung.data.repositories"})
 @EnableWebMvc
 @Import(SpringSecurityConfig.class)
 public class AppConfig extends WebMvcConfigurerAdapter {
@@ -41,7 +41,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "com.baeldung.models" });
+        em.setPackagesToScan(new String[]{"com.baeldung.models"});
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(additionalProperties());
         return em;

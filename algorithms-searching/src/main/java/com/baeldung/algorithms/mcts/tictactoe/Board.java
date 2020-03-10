@@ -63,34 +63,34 @@ public class Board {
         int maxIndex = boardSize - 1;
         int[] diag1 = new int[boardSize];
         int[] diag2 = new int[boardSize];
-        
+
         for (int i = 0; i < boardSize; i++) {
             int[] row = boardValues[i];
             int[] col = new int[boardSize];
             for (int j = 0; j < boardSize; j++) {
                 col[j] = boardValues[j][i];
             }
-            
+
             int checkRowForWin = checkForWin(row);
-            if(checkRowForWin!=0)
+            if (checkRowForWin != 0)
                 return checkRowForWin;
-            
+
             int checkColForWin = checkForWin(col);
-            if(checkColForWin!=0)
+            if (checkColForWin != 0)
                 return checkColForWin;
-            
+
             diag1[i] = boardValues[i][i];
             diag2[i] = boardValues[maxIndex - i][i];
         }
 
         int checkDia1gForWin = checkForWin(diag1);
-        if(checkDia1gForWin!=0)
+        if (checkDia1gForWin != 0)
             return checkDia1gForWin;
-        
+
         int checkDiag2ForWin = checkForWin(diag2);
-        if(checkDiag2ForWin!=0)
+        if (checkDiag2ForWin != 0)
             return checkDiag2ForWin;
-        
+
         if (getEmptyPositions().size() > 0)
             return IN_PROGRESS;
         else
@@ -108,7 +108,7 @@ public class Board {
             }
             previous = row[i];
         }
-        if(isEqual)
+        if (isEqual)
             return previous;
         else
             return 0;
@@ -138,18 +138,18 @@ public class Board {
 
     public void printStatus() {
         switch (this.checkStatus()) {
-        case P1:
-            System.out.println("Player 1 wins");
-            break;
-        case P2:
-            System.out.println("Player 2 wins");
-            break;
-        case DRAW:
-            System.out.println("Game Draw");
-            break;
-        case IN_PROGRESS:
-            System.out.println("Game In Progress");
-            break;
+            case P1:
+                System.out.println("Player 1 wins");
+                break;
+            case P2:
+                System.out.println("Player 2 wins");
+                break;
+            case DRAW:
+                System.out.println("Game Draw");
+                break;
+            case IN_PROGRESS:
+                System.out.println("Game In Progress");
+                break;
         }
     }
 }

@@ -45,7 +45,7 @@ class Passenger {
             return false;
         Passenger passenger = (Passenger) object;
         return getSeatNumber() == passenger.getSeatNumber() && Objects.equals(getFirstName(), passenger.getFirstName())
-          && Objects.equals(getLastName(), passenger.getLastName());
+                && Objects.equals(getLastName(), passenger.getLastName());
     }
 
     @Override

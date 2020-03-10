@@ -133,7 +133,7 @@ public class KongAdminAPILiveTest {
         final String consumerKey = "eugenp.pass";
         KeyAuthObject keyAuth = new KeyAuthObject(consumerKey);
         ResponseEntity<String> keyAuthResp = restTemplate.postForEntity("http://localhost:8001/consumers/eugenp/key-auth", new HttpEntity<>(keyAuth), String.class);
-        
+
         assertTrue(HttpStatus.CREATED == keyAuthResp.getStatusCode() || HttpStatus.CONFLICT == keyAuthResp.getStatusCode());
 
         HttpHeaders headers = new HttpHeaders();

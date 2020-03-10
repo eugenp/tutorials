@@ -15,10 +15,10 @@ import java.util.concurrent.TimeUnit;
 /**
  * This benchmark compares some of the approaches to formatting a floating-point
  * value into a {@link String} while removing the decimal part.
- *
+ * <p>
  * To run, simply run the {@link RemovingDecimalsManualTest#runBenchmarks()} test
  * at the end of this class.
- *
+ * <p>
  * The benchmark takes about 15 minutes to run. Since it is using {@link Mode#Throughput},
  * higher numbers mean better performance.
  */
@@ -28,7 +28,8 @@ import java.util.concurrent.TimeUnit;
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 @State(Scope.Benchmark)
 public class RemovingDecimalsManualTest {
-    @Param(value = {"345.56", "345345345.56", "345345345345345345.56"}) double doubleValue;
+    @Param(value = {"345.56", "345345345.56", "345345345345345345.56"})
+    double doubleValue;
 
     NumberFormat nf;
     DecimalFormat df;

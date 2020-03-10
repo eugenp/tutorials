@@ -3,7 +3,7 @@ package com.baeldung.spring.exception;
 public class InvalidRequestException extends RuntimeException {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 4088649120307193208L;
 

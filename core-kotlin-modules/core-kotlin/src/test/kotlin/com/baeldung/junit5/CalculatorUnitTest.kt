@@ -31,9 +31,9 @@ class CalculatorUnitTest {
 
     @TestFactory
     fun testSquaresFactory() = listOf(
-            DynamicTest.dynamicTest("when I calculate 1^2 then I get 1") { Assertions.assertEquals(1,calculator.square(1))},
-            DynamicTest.dynamicTest("when I calculate 2^2 then I get 4") { Assertions.assertEquals(4,calculator.square(2))},
-            DynamicTest.dynamicTest("when I calculate 3^2 then I get 9") { Assertions.assertEquals(9,calculator.square(3))}
+            DynamicTest.dynamicTest("when I calculate 1^2 then I get 1") { Assertions.assertEquals(1, calculator.square(1)) },
+            DynamicTest.dynamicTest("when I calculate 2^2 then I get 4") { Assertions.assertEquals(4, calculator.square(2)) },
+            DynamicTest.dynamicTest("when I calculate 3^2 then I get 9") { Assertions.assertEquals(9, calculator.square(3)) }
     )
 
     @TestFactory
@@ -63,6 +63,7 @@ class CalculatorUnitTest {
                     Assertions.assertEquals(expected, calculator.square(input))
                 }
             }
+
     @TestFactory
     fun testSquareRootsFactory3() = squaresTestData
             .map { (expected, input) ->

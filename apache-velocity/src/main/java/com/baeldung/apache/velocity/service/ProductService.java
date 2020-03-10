@@ -9,12 +9,12 @@ import java.util.List;
 
 public class ProductService {
 
-	Logger logger = LoggerFactory.getLogger(ProductService.class);
+    Logger logger = LoggerFactory.getLogger(ProductService.class);
 
-	public List<Product> getProducts() {
+    public List<Product> getProducts() {
         logger.debug("Product service returning list of products");
 
-		return Arrays.asList(new Product("Laptop", 31000.00), new Product("Mobile", 16000.00),
-				new Product("Tablet", 15000.00), new Product("Camera", 23000.00));
-	}
+        return Arrays.asList(new Product("Laptop", 31000.00), new Product("Mobile", 16000.00),
+                new Product("Tablet", 15000.00), new Product("Camera", 23000.00));
+    }
 }

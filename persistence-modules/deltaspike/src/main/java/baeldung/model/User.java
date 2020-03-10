@@ -16,7 +16,8 @@ public class User {
     private Long id;
     private String firstName;
     private String lastName;
-    @OneToOne private Address address;
+    @OneToOne
+    private Address address;
 
     public Long getId() {
         return id;

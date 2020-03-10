@@ -10,14 +10,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import org.w3._2001.xmlschema.Adapter1;
 
 
 /**
  * <p>Java class for UserResponse complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="UserResponse"&gt;
  *   &lt;complexContent&gt;
@@ -32,20 +33,17 @@ import org.w3._2001.xmlschema.Adapter1;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UserResponse", propOrder = {
-    "id",
-    "name",
-    "gender",
-    "created"
+        "id",
+        "name",
+        "gender",
+        "created"
 })
 @XmlRootElement(name = "userResponse")
 public class UserResponse
-    implements Serializable
-{
+        implements Serializable {
 
     private final static long serialVersionUID = -1L;
     protected int id;
@@ -54,13 +52,12 @@ public class UserResponse
     @XmlElement(required = true)
     protected String gender;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter1.class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar created;
 
     /**
      * Gets the value of the id property.
-     * 
      */
     public int getId() {
         return id;
@@ -68,7 +65,6 @@ public class UserResponse
 
     /**
      * Sets the value of the id property.
-     * 
      */
     public void setId(int value) {
         this.id = value;
@@ -76,11 +72,9 @@ public class UserResponse
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getName() {
         return name;
@@ -88,11 +82,9 @@ public class UserResponse
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -100,11 +92,9 @@ public class UserResponse
 
     /**
      * Gets the value of the gender property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getGender() {
         return gender;
@@ -112,11 +102,9 @@ public class UserResponse
 
     /**
      * Sets the value of the gender property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setGender(String value) {
         this.gender = value;
@@ -124,11 +112,9 @@ public class UserResponse
 
     /**
      * Gets the value of the created property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public Calendar getCreated() {
         return created;
@@ -136,11 +122,9 @@ public class UserResponse
 
     /**
      * Sets the value of the created property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setCreated(Calendar value) {
         this.created = value;

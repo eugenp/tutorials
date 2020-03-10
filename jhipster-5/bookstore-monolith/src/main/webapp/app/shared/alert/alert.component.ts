@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { JhiAlertService } from 'ng-jhipster';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {JhiAlertService} from 'ng-jhipster';
 
 @Component({
     selector: 'jhi-alert',
@@ -16,7 +16,8 @@ import { JhiAlertService } from 'ng-jhipster';
 export class JhiAlertComponent implements OnInit, OnDestroy {
     alerts: any[];
 
-    constructor(private alertService: JhiAlertService) {}
+    constructor(private alertService: JhiAlertService) {
+    }
 
     ngOnInit() {
         this.alerts = this.alertService.get();

@@ -35,7 +35,7 @@ public class LoginController {
     public String getLoginPage(Model model) {
         Iterable<ClientRegistration> clientRegistrations = null;
         ResolvableType type = ResolvableType.forInstance(clientRegistrationRepository)
-            .as(Iterable.class);
+                .as(Iterable.class);
         if (type != ResolvableType.NONE && ClientRegistration.class.isAssignableFrom(type.resolveGenerics()[0])) {
             clientRegistrations = (Iterable<ClientRegistration>) clientRegistrationRepository;
         }
@@ -52,15 +52,15 @@ public class LoginController {
         OAuth2AuthorizedClient client = authorizedClientService.loadAuthorizedClient(authentication.getAuthorizedClientRegistrationId(), authentication.getName());
 
         String userInfoEndpointUri = client.getClientRegistration()
-            .getProviderDetails()
-            .getUserInfoEndpoint()
-            .getUri();
+                .getProviderDetails()
+                .getUserInfoEndpoint()
+                .getUri();
 
         if (!StringUtils.isEmpty(userInfoEndpointUri)) {
             RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
             headers.add(HttpHeaders.AUTHORIZATION, "Bearer " + client.getAccessToken()
-                .getTokenValue());
+                    .getTokenValue());
 
             HttpEntity<String> entity = new HttpEntity<String>("", headers);
 

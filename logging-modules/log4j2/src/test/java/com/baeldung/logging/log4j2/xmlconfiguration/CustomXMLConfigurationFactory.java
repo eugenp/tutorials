@@ -12,13 +12,13 @@ import org.apache.logging.log4j.core.config.xml.XmlConfigurationFactory;
 @Order(50)
 public class CustomXMLConfigurationFactory extends XmlConfigurationFactory {
 
-	@Override
-	public Configuration getConfiguration(LoggerContext loggerContext, ConfigurationSource source) {
-		return new MyXMLConfiguration(loggerContext, source);
-	}
+    @Override
+    public Configuration getConfiguration(LoggerContext loggerContext, ConfigurationSource source) {
+        return new MyXMLConfiguration(loggerContext, source);
+    }
 
-	@Override
-	public String[] getSupportedTypes() {
-		return new String[] { ".xml", "*" };
-	}
+    @Override
+    public String[] getSupportedTypes() {
+        return new String[]{".xml", "*"};
+    }
 }

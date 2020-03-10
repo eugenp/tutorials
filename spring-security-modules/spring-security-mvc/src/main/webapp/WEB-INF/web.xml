@@ -9,23 +9,23 @@
     <session-config>
         <session-timeout>1</session-timeout>
         <tracking-mode>COOKIE</tracking-mode>
-<!--          <cookie-config>
-            <http-only>true</http-only>
-            <secure>true</secure>
-        </cookie-config>  -->
+        <!--          <cookie-config>
+                    <http-only>true</http-only>
+                    <secure>true</secure>
+                </cookie-config>  -->
     </session-config>
     <listener>
         <listener-class>com.baeldung.web.SessionListenerWithMetrics</listener-class>
     </listener>
-   <!--  <listener>
-        <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
-    </listener> -->
+    <!--  <listener>
+         <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+     </listener> -->
 
     <!-- Spring root -->
     <context-param>
         <param-name>contextClass</param-name>
         <param-value>
-        	org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+            org.springframework.web.context.support.AnnotationConfigWebApplicationContext
         </param-value>
     </context-param>
     <context-param>
@@ -57,15 +57,15 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    
-<!--      <filter>
-        <filter-name>SessionFilter</filter-name>
-        <filter-class>org.baeldung.security.SessionFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>SessionFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping> -->
+
+    <!--      <filter>
+            <filter-name>SessionFilter</filter-name>
+            <filter-class>org.baeldung.security.SessionFilter</filter-class>
+        </filter>
+        <filter-mapping>
+            <filter-name>SessionFilter</filter-name>
+            <url-pattern>/*</url-pattern>
+        </filter-mapping> -->
 
     <!-- <welcome-file-list> -->
     <!-- <welcome-file>index.html</welcome-file> -->

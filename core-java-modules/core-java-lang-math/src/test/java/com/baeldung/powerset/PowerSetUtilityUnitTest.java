@@ -25,14 +25,14 @@ public class PowerSetUtilityUnitTest {
         Set<Set<String>> powerSet = Sets.powerSet(set);
         Assertions.assertEquals((1 << set.size()), powerSet.size());
         MatcherAssert.assertThat(powerSet, Matchers.containsInAnyOrder(
-          ImmutableSet.of(),
-          ImmutableSet.of("APPLE"),
-          ImmutableSet.of("ORANGE"),
-          ImmutableSet.of("APPLE", "ORANGE"),
-          ImmutableSet.of("MANGO"),
-          ImmutableSet.of("APPLE", "MANGO"),
-          ImmutableSet.of("ORANGE", "MANGO"),
-          ImmutableSet.of("APPLE", "ORANGE", "MANGO")
+                ImmutableSet.of(),
+                ImmutableSet.of("APPLE"),
+                ImmutableSet.of("ORANGE"),
+                ImmutableSet.of("APPLE", "ORANGE"),
+                ImmutableSet.of("MANGO"),
+                ImmutableSet.of("APPLE", "MANGO"),
+                ImmutableSet.of("ORANGE", "MANGO"),
+                ImmutableSet.of("APPLE", "ORANGE", "MANGO")
         ));
     }
 
@@ -160,7 +160,7 @@ public class PowerSetUtilityUnitTest {
             Assertions.assertEquals(subset.size(), new HashSet<>(subset).size());
         }
         //To make sure that difference of consecutive subsets is exactly 1
-        for(int i=1; i<powerSet.size(); i++) {
+        for (int i = 1; i < powerSet.size(); i++) {
             int diff = 0;
             for (String s : powerSet.get(i - 1))
                 if (!powerSet.get(i).contains(s))
@@ -174,7 +174,7 @@ public class PowerSetUtilityUnitTest {
 
     static class RandomSetOfStringGenerator {
         private static List<String> fruits = Arrays.asList("Apples", "Avocados", "Banana", "Blueberry", "Cherry", "Clementine", "Cucumber", "Date", "Fig",
-          "Grapefruit"/*, "Grape", "Kiwi", "Lemon", "Mango", "Mulberry", "Melon", "Nectarine", "Olive", "Orange"*/);
+                "Grapefruit"/*, "Grape", "Kiwi", "Lemon", "Mango", "Mulberry", "Melon", "Nectarine", "Olive", "Orange"*/);
 
         static Set<String> generateRandomSet() {
             Set<String> set = new HashSet<>();

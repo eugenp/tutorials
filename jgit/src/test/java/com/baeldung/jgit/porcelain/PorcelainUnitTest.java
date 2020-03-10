@@ -7,11 +7,11 @@ public class PorcelainUnitTest {
     public void runSamples() throws Exception {
         // simply call all the samples to see any severe problems with the samples
         AddFile.main(null);
-        
+
         CommitAll.main(null);
-        
+
         CreateAndDeleteTag.main(null);
-         
-        Log.main(null);    
+
+        Log.main(null);
     }
 }

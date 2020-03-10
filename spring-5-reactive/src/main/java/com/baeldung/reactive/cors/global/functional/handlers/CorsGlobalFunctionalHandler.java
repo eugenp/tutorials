@@ -13,6 +13,6 @@ public class CorsGlobalFunctionalHandler {
         final String responseMessage = "CORS GLOBAL CONFIG IS NOT EFFECTIVE ON FUNCTIONAL ENDPOINTS!!!";
 
         return ServerResponse.ok()
-            .body(Mono.just(responseMessage), String.class);
+                .body(Mono.just(responseMessage), String.class);
     }
 }

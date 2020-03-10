@@ -19,6 +19,6 @@ public class CustomerTypeSubSetValidator implements ConstraintValidator<Customer
     @Override
     public boolean isValid(CustomerType value, ConstraintValidatorContext context) {
         return value == null || Arrays.asList(subset)
-            .contains(value);
+                .contains(value);
     }
 }

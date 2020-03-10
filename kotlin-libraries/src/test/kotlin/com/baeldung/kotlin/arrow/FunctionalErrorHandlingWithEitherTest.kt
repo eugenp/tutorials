@@ -11,12 +11,12 @@ class FunctionalErrorHandlingWithEitherTest {
     val operator = FunctionalErrorHandlingWithEither()
 
     @Test
-    fun givenInvalidInput_whenComputeInvoked_NotANumberIsPresent(){
+    fun givenInvalidInput_whenComputeInvoked_NotANumberIsPresent() {
         val computeWithEither = operator.computeWithEither("bar")
 
         Assert.assertTrue(computeWithEither.isLeft())
-        when(computeWithEither){
-            is Either.Left -> when(computeWithEither.a){
+        when (computeWithEither) {
+            is Either.Left -> when (computeWithEither.a) {
                 NotANumber -> "Ok."
                 else -> Assert.fail()
             }
@@ -25,12 +25,12 @@ class FunctionalErrorHandlingWithEitherTest {
     }
 
     @Test
-    fun givenOddNumberInput_whenComputeInvoked_OddNumberIsPresent(){
+    fun givenOddNumberInput_whenComputeInvoked_OddNumberIsPresent() {
         val computeWithEither = operator.computeWithEither("121")
 
         Assert.assertTrue(computeWithEither.isLeft())
-        when(computeWithEither){
-            is Either.Left -> when(computeWithEither.a){
+        when (computeWithEither) {
+            is Either.Left -> when (computeWithEither.a) {
                 OddNumber -> "Ok."
                 else -> Assert.fail()
             }
@@ -39,12 +39,12 @@ class FunctionalErrorHandlingWithEitherTest {
     }
 
     @Test
-    fun givenEvenNumberWithoutSquare_whenComputeInvoked_OddNumberIsPresent(){
+    fun givenEvenNumberWithoutSquare_whenComputeInvoked_OddNumberIsPresent() {
         val computeWithEither = operator.computeWithEither("100")
 
         Assert.assertTrue(computeWithEither.isRight())
-        when(computeWithEither){
-            is Either.Right -> when(computeWithEither.b){
+        when (computeWithEither) {
+            is Either.Right -> when (computeWithEither.b) {
                 false -> "Ok."
                 else -> Assert.fail()
             }
@@ -53,12 +53,12 @@ class FunctionalErrorHandlingWithEitherTest {
     }
 
     @Test
-    fun givenEvenNumberWithSquare_whenComputeInvoked_OddNumberIsPresent(){
+    fun givenEvenNumberWithSquare_whenComputeInvoked_OddNumberIsPresent() {
         val computeWithEither = operator.computeWithEither("98")
 
         Assert.assertTrue(computeWithEither.isRight())
-        when(computeWithEither){
-            is Either.Right -> when(computeWithEither.b){
+        when (computeWithEither) {
+            is Either.Right -> when (computeWithEither.b) {
                 true -> "Ok."
                 else -> Assert.fail()
             }

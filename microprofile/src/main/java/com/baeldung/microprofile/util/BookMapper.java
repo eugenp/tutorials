@@ -36,14 +36,14 @@ public class BookMapper {
     }
 
     public static Book map(InputStream is) {
-        try(JsonReader jsonReader = Json.createReader(is)) {
+        try (JsonReader jsonReader = Json.createReader(is)) {
             JsonObject jsonObject = jsonReader.readObject();
             Book book = new Book();
             book.setId(getStringFromJson("id", jsonObject));
             book.setIsbn(getStringFromJson("isbn", jsonObject));
             book.setName(getStringFromJson("name", jsonObject));
             book.setAuthor(getStringFromJson("author", jsonObject));
-            book.setPages(getIntFromJson("pages",jsonObject));
+            book.setPages(getIntFromJson("pages", jsonObject));
             return book;
         }
     }

@@ -89,9 +89,9 @@ public class BaeldungReaderUnitTest {
         ArticleReader mockArticleReader = mock(ArticleReader.class);
         baeldungReader = new BaeldungReader(mockArticleReader);
         expect(mockArticleReader.next())
-          .andReturn(null)
-          .times(2)
-          .andThrow(new NoSuchElementException());
+                .andReturn(null)
+                .times(2)
+                .andThrow(new NoSuchElementException());
         replay(mockArticleReader);
         try {
             for (int i = 0; i < 3; i++) {

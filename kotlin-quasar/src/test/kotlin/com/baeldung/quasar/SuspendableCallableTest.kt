@@ -18,6 +18,7 @@ class SuspendableCallableTest {
                 return "Hello"
             }
         }
+
         val result = Fiber<String>(Callable()).start()
 
         Assert.assertEquals("Hello", result.get())

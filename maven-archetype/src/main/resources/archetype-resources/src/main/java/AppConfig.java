@@ -1,4 +1,6 @@
-package ${package};
+package $
+
+{package};
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

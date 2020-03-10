@@ -22,7 +22,7 @@ public class OtherEntityValidationHandler extends AbstractValidationHandler<Othe
     protected Mono<ServerResponse> processBody(OtherEntity validBody, ServerRequest originalRequest) {
         String responseBody = String.format("Other object with item %s and quantity %s!", validBody.getItem(), validBody.getQuantity());
         return ServerResponse.ok()
-            .contentType(MediaType.APPLICATION_JSON)
-            .body(Mono.just(responseBody), String.class);
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Mono.just(responseBody), String.class);
     }
 }

@@ -33,16 +33,16 @@ public class ArticleWorkflowService {
     @Transactional
     public List<Article> getTasks(String assignee) {
         List<Task> tasks = taskService.createTaskQuery()
-          .taskCandidateGroup(assignee)
-          .list();
-        
+                .taskCandidateGroup(assignee)
+                .list();
+
         List<Article> articles = tasks.stream()
-          .map(task -> {
-              Map<String, Object> variables = taskService.getVariables(task.getId());
-              return new Article(
-                task.getId(), (String) variables.get("author"), (String) variables.get("url"));
-          })
-          .collect(Collectors.toList());
+                .map(task -> {
+                    Map<String, Object> variables = taskService.getVariables(task.getId());
+                    return new Article(
+                            task.getId(), (String) variables.get("author"), (String) variables.get("url"));
+                })
+                .collect(Collectors.toList());
         return articles;
     }
 

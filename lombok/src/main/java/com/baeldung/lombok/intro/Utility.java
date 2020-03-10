@@ -16,7 +16,7 @@ public class Utility {
         try (InputStream is = this.getClass().getResourceAsStream("sure_in_my_jar.txt")) {
             BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
             return br.lines().collect(Collectors.joining("\n"));
-        } 
+        }
     }
 
     @Synchronized

@@ -55,26 +55,26 @@ public class SpringbatchPartitionConfig {
     @Bean(name = "partitionerJob")
     public Job partitionerJob() throws UnexpectedInputException, MalformedURLException, ParseException {
         return jobs.get("partitionerJob")
-          .start(partitionStep())
-          .build();
+                .start(partitionStep())
+                .build();
     }
 
     @Bean
     public Step partitionStep() throws UnexpectedInputException, MalformedURLException, ParseException {
         return steps.get("partitionStep")
-          .partitioner("slaveStep", partitioner())
-          .step(slaveStep())
-          .taskExecutor(taskExecutor())
-          .build();
+                .partitioner("slaveStep", partitioner())
+                .step(slaveStep())
+                .taskExecutor(taskExecutor())
+                .build();
     }
 
     @Bean
     public Step slaveStep() throws UnexpectedInputException, MalformedURLException, ParseException {
         return steps.get("slaveStep")
-          .<Transaction, Transaction>chunk(1)
-          .reader(itemReader(null))
-          .writer(itemWriter(marshaller(), null))
-          .build();
+                .<Transaction, Transaction>chunk(1)
+                .reader(itemReader(null))
+                .writer(itemWriter(marshaller(), null))
+                .build();
     }
 
     @Bean
@@ -146,9 +146,9 @@ public class SpringbatchPartitionConfig {
     private DataSource dataSource() {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         return builder.setType(EmbeddedDatabaseType.HSQL)
-          .addScript("classpath:org/springframework/batch/core/schema-drop-h2.sql")
-          .addScript("classpath:org/springframework/batch/core/schema-h2.sql")
-          .build();
+                .addScript("classpath:org/springframework/batch/core/schema-drop-h2.sql")
+                .addScript("classpath:org/springframework/batch/core/schema-h2.sql")
+                .build();
     }
 
     private PlatformTransactionManager getTransactionManager() {

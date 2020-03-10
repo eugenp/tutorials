@@ -9,8 +9,8 @@ class FilePathReader {
     String getSystemPath(final Path path) {
         try {
             return path
-              .toRealPath()
-              .toString();
+                    .toRealPath()
+                    .toString();
         } catch (final IOException ex) {
             throw new UncheckedIOException(ex);
         }

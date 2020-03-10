@@ -82,7 +82,7 @@ public class CommonsIOUnitTest {
         String path = getClass().getClassLoader().getResource(testFile).getPath();
         File dir = FileUtils.getFile(FilenameUtils.getFullPath(path));
 
-        String[] possibleNames = { "NotThisOne", testFile };
+        String[] possibleNames = {"NotThisOne", testFile};
 
         Assert.assertEquals(testFile, dir.list(new NameFileFilter(possibleNames, IOCase.INSENSITIVE))[0]);
     }

@@ -18,14 +18,14 @@ public class RateLimitingRepository {
     public RateLimitingRepository(Session session) {
         this.session = session;
         this.rateLimitingIncrement = session.prepare(
-            "UPDATE gateway_ratelimiting\n" +
-                "  SET value = value + 1\n" +
-                "  WHERE id = :id AND time_unit = :time_unit AND time = :time");
+                "UPDATE gateway_ratelimiting\n" +
+                        "  SET value = value + 1\n" +
+                        "  WHERE id = :id AND time_unit = :time_unit AND time = :time");
 
         this.rateLimitingCount = session.prepare(
-            "SELECT value\n" +
-                "  FROM gateway_ratelimiting\n" +
-                "  WHERE id = :id AND time_unit = :time_unit AND time = :time"
+                "SELECT value\n" +
+                        "  FROM gateway_ratelimiting\n" +
+                        "  WHERE id = :id AND time_unit = :time_unit AND time = :time"
         );
     }
 

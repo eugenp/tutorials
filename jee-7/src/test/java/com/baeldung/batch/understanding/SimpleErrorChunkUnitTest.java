@@ -34,11 +34,11 @@ class SimpleErrorChunkUnitTest {
         List<StepExecution> stepExecutions = jobOperator.getStepExecutions(executionId);
         for (StepExecution stepExecution : stepExecutions) {
             if (stepExecution.getStepName()
-                .equals("errorStep")) {
+                    .equals("errorStep")) {
                 jobOperator.getStepExecutions(executionId)
-                .stream()
-                .map(BatchTestHelper::getProcessSkipCount)
-                .forEach(skipCount -> assertEquals(1L, skipCount.longValue()));
+                        .stream()
+                        .map(BatchTestHelper::getProcessSkipCount)
+                        .forEach(skipCount -> assertEquals(1L, skipCount.longValue()));
             }
         }
         assertEquals(jobExecution.getBatchStatus(), BatchStatus.COMPLETED);

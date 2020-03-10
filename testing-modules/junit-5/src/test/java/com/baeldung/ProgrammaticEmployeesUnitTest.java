@@ -14,13 +14,14 @@ import com.baeldung.helpers.EmployeeJdbcDao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith({ EnvironmentExtension.class, EmployeeDaoParameterResolver.class })
+@ExtendWith({EnvironmentExtension.class, EmployeeDaoParameterResolver.class})
 public class ProgrammaticEmployeesUnitTest {
 
     private EmployeeJdbcDao employeeDao;
 
-    @RegisterExtension static EmployeeDatabaseSetupExtension DB =
-      new EmployeeDatabaseSetupExtension("jdbc:h2:mem:AnotherDb;DB_CLOSE_DELAY=-1", "org.h2.Driver", "sa", "");
+    @RegisterExtension
+    static EmployeeDatabaseSetupExtension DB =
+            new EmployeeDatabaseSetupExtension("jdbc:h2:mem:AnotherDb;DB_CLOSE_DELAY=-1", "org.h2.Driver", "sa", "");
 
     public ProgrammaticEmployeesUnitTest(EmployeeJdbcDao employeeDao) {
         this.employeeDao = employeeDao;

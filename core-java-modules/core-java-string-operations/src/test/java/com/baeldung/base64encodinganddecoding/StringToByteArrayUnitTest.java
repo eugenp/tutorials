@@ -18,7 +18,7 @@ public class StringToByteArrayUnitTest {
         final String originalInput = "test input";
         byte[] result = originalInput.getBytes();
         System.out.println(Arrays.toString(result));
-        
+
         assertEquals(originalInput.length(), result.length);
     }
 
@@ -27,32 +27,32 @@ public class StringToByteArrayUnitTest {
         final String originalInput = "test input";
         byte[] result = originalInput.getBytes(StandardCharsets.UTF_16);
         System.out.println(Arrays.toString(result));
-        
+
         assertTrue(originalInput.length() < result.length);
     }
-    
+
     @Test
     public void whenConvertStringToByteArrayUsingBase64Decoder_thenOk() {
         final String originalInput = "dGVzdCBpbnB1dA==";
         byte[] result = Base64.getDecoder().decode(originalInput);
-        
+
         assertEquals("test input", new String(result));
     }
-    
+
     @Test
     public void whenConvertStringToByteArrayUsingDatatypeConverter_thenOk() {
         final String originalInput = "dGVzdCBpbnB1dA==";
         byte[] result = DatatypeConverter.parseBase64Binary(originalInput);
-        
+
         assertEquals("test input", new String(result));
-    }    
-    
+    }
+
     @Test
-    public void whenConvertStringToByteArray_thenOk(){
+    public void whenConvertStringToByteArray_thenOk() {
         String originalInput = "7465737420696E707574";
         byte[] result = DatatypeConverter.parseHexBinary(originalInput);
         System.out.println(Arrays.toString(result));
-        
+
         assertEquals("test input", new String(result));
     }
 }

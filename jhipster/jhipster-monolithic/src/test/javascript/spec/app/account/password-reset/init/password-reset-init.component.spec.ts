@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
-import { Renderer, ElementRef } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { BaeldungTestModule } from '../../../../test.module';
-import { PasswordResetInitComponent } from '../../../../../../../main/webapp/app/account/password-reset/init/password-reset-init.component';
-import { PasswordResetInit } from '../../../../../../../main/webapp/app/account/password-reset/init/password-reset-init.service';
+import {ComponentFixture, TestBed, inject} from '@angular/core/testing';
+import {Renderer, ElementRef} from '@angular/core';
+import {Observable} from 'rxjs/Rx';
+import {BaeldungTestModule} from '../../../../test.module';
+import {PasswordResetInitComponent} from '../../../../../../../main/webapp/app/account/password-reset/init/password-reset-init.component';
+import {PasswordResetInit} from '../../../../../../../main/webapp/app/account/password-reset/init/password-reset-init.service';
 
 
 describe('Component Tests', () => {
@@ -21,7 +21,8 @@ describe('Component Tests', () => {
                     {
                         provide: Renderer,
                         useValue: {
-                            invokeElementMethod(renderElement: any, methodName: string, args?: any[]) {}
+                            invokeElementMethod(renderElement: any, methodName: string, args?: any[]) {
+                            }
                         }
                     },
                     {
@@ -49,7 +50,8 @@ describe('Component Tests', () => {
             inject([ElementRef], (elementRef: ElementRef) => {
                 let element = fixture.nativeElement;
                 let node = {
-                    focus() {}
+                    focus() {
+                    }
                 };
 
                 elementRef.nativeElement = element;

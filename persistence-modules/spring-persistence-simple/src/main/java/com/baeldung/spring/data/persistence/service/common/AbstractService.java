@@ -39,12 +39,12 @@ public abstract class AbstractService<T extends Serializable> implements IOperat
     public T update(final T entity) {
         return getDao().save(entity);
     }
-    
+
     @Override
     public void delete(T entity) {
         getDao().delete(entity);
     }
-    
+
     @Override
     public void deleteById(long entityId) {
         T entity = findOne(entityId);

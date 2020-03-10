@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+
 import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 
 public class SynchronizedCollectionUnitTest {

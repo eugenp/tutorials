@@ -17,20 +17,20 @@ public class NumbersInARange {
 
     public List<Integer> getNumbersUsingIntStreamRange(int start, int end) {
         return IntStream.range(start, end)
-          .boxed()
-          .collect(Collectors.toList());
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     public List<Integer> getNumbersUsingIntStreamRangeClosed(int start, int end) {
         return IntStream.rangeClosed(start, end)
-          .boxed()
-          .collect(Collectors.toList());
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     public List<Integer> getNumbersUsingIntStreamIterate(int start, int limit) {
         return IntStream.iterate(start, i -> i + 1)
-          .limit(limit)
-          .boxed()
-          .collect(Collectors.toList());
+                .limit(limit)
+                .boxed()
+                .collect(Collectors.toList());
     }
 }

@@ -31,8 +31,8 @@ public class PersonBuilder {
         JsonArray emailsJson = jsonObject.getJsonArray("emails");
 
         List<String> emails = emailsJson.getValuesAs(JsonString.class).stream()
-          .map(JsonString::getString)
-          .collect(Collectors.toList());
+                .map(JsonString::getString)
+                .collect(Collectors.toList());
 
         person.setEmails(emails);
 

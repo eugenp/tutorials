@@ -24,7 +24,7 @@ public class AccountTemplateOperationsManualTest {
     @Test
     public void givenAccount_whenSave_thenSave() {
         Account account = accountTemplate.save(Mono.just(new Account(null, "Raul", 12.3))).block();
-        assertNotNull( account.getId() );
+        assertNotNull(account.getId());
     }
 
     @Test
@@ -41,8 +41,8 @@ public class AccountTemplateOperationsManualTest {
         Account account2 = accountTemplate.save(Mono.just(new Account(null, "Raul Torres", 13.3))).block();
         Flux<Account> accountFlux = accountTemplate.findAll();
         List<Account> accounts = accountFlux.collectList().block();
-        assertTrue(accounts.stream().anyMatch(x -> account1.getId().equals(x.getId()) ));
-        assertTrue(accounts.stream().anyMatch(x -> account2.getId().equals(x.getId()) ));
+        assertTrue(accounts.stream().anyMatch(x -> account1.getId().equals(x.getId())));
+        assertTrue(accounts.stream().anyMatch(x -> account2.getId().equals(x.getId())));
     }
 
 }

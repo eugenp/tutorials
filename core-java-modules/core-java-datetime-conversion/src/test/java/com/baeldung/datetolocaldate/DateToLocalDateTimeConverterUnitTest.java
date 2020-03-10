@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.baeldung.datetolocaldate;
 
@@ -16,7 +16,7 @@ import com.baeldung.datetolocaldate.DateToLocalDateTimeConverter;
 
 /**
  * JUnits for {@link DateToLocalDateTimeConverter} class.
- * 
+ *
  * @author abialas
  *
  */

@@ -34,11 +34,11 @@ public class CollectionFiltersUnitTest {
         Collection<Integer> filteredWithGuava = GuavaCollectionFilter.findEvenNumbers(BASE_INTEGER_COLLECTION);
 
         assertThat(filteredWithStreams1).hasSameElementsAs(filteredWithCollectionUtils)
-            .hasSameElementsAs(filteredWithEclipseCollections)
-            .hasSameElementsAs(filteredWithEclipseCollectionsUsingIterate)
-            .hasSameElementsAs(filteredWithEclipseCollectionsUsingIterate)
-            .hasSameElementsAs(filteredWithGuava)
-            .hasSameElementsAs(EXPECTED_EVEN_FILTERED_COLLECTION);
+                .hasSameElementsAs(filteredWithEclipseCollections)
+                .hasSameElementsAs(filteredWithEclipseCollectionsUsingIterate)
+                .hasSameElementsAs(filteredWithEclipseCollectionsUsingIterate)
+                .hasSameElementsAs(filteredWithGuava)
+                .hasSameElementsAs(EXPECTED_EVEN_FILTERED_COLLECTION);
     }
 
 }

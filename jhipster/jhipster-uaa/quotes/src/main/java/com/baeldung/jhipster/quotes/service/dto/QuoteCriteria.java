@@ -2,6 +2,7 @@ package com.baeldung.jhipster.quotes.service.dto;
 
 import java.io.Serializable;
 import java.util.Objects;
+
 import io.github.jhipster.service.filter.BooleanFilter;
 import io.github.jhipster.service.filter.DoubleFilter;
 import io.github.jhipster.service.filter.Filter;
@@ -78,19 +79,19 @@ public class QuoteCriteria implements Serializable {
         }
         final QuoteCriteria that = (QuoteCriteria) o;
         return
-            Objects.equals(id, that.id) &&
-            Objects.equals(symbol, that.symbol) &&
-            Objects.equals(price, that.price) &&
-            Objects.equals(lastTrade, that.lastTrade);
+                Objects.equals(id, that.id) &&
+                        Objects.equals(symbol, that.symbol) &&
+                        Objects.equals(price, that.price) &&
+                        Objects.equals(lastTrade, that.lastTrade);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-        id,
-        symbol,
-        price,
-        lastTrade
+                id,
+                symbol,
+                price,
+                lastTrade
         );
     }
 
@@ -101,7 +102,7 @@ public class QuoteCriteria implements Serializable {
                 (symbol != null ? "symbol=" + symbol + ", " : "") +
                 (price != null ? "price=" + price + ", " : "") +
                 (lastTrade != null ? "lastTrade=" + lastTrade + ", " : "") +
-            "}";
+                "}";
     }
 
 }

@@ -26,29 +26,29 @@ public class FoldingHashUnitTest {
     @Test
     public void givenSingleElementArray_whenOffset0Size2_thenSingleElement() throws Exception {
         final FoldingHash hasher = new FoldingHash();
-        final int[] value = hasher.extract(new int[] { 5 }, 0, 2);
-        assertArrayEquals(new int[] { 5 }, value);
+        final int[] value = hasher.extract(new int[]{5}, 0, 2);
+        assertArrayEquals(new int[]{5}, value);
     }
 
     @Test
     public void givenFiveElementArray_whenOffset0Size3_thenFirstThreeElements() throws Exception {
         final FoldingHash hasher = new FoldingHash();
-        final int[] value = hasher.extract(new int[] { 1, 2, 3, 4, 5 }, 0, 3);
-        assertArrayEquals(new int[] { 1, 2, 3 }, value);
+        final int[] value = hasher.extract(new int[]{1, 2, 3, 4, 5}, 0, 3);
+        assertArrayEquals(new int[]{1, 2, 3}, value);
     }
 
     @Test
     public void givenFiveElementArray_whenOffset1Size2_thenTwoElements() throws Exception {
         final FoldingHash hasher = new FoldingHash();
-        final int[] value = hasher.extract(new int[] { 1, 2, 3, 4, 5 }, 1, 2);
-        assertArrayEquals(new int[] { 2, 3 }, value);
+        final int[] value = hasher.extract(new int[]{1, 2, 3, 4, 5}, 1, 2);
+        assertArrayEquals(new int[]{2, 3}, value);
     }
 
     @Test
     public void givenFiveElementArray_whenOffset2SizeTooBig_thenElementsToTheEnd() throws Exception {
         final FoldingHash hasher = new FoldingHash();
-        final int[] value = hasher.extract(new int[] { 1, 2, 3, 4, 5 }, 2, 2000);
-        assertArrayEquals(new int[] { 3, 4, 5 }, value);
+        final int[] value = hasher.extract(new int[]{1, 2, 3, 4, 5}, 2, 2000);
+        assertArrayEquals(new int[]{3, 4, 5}, value);
     }
 
 }

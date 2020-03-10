@@ -43,7 +43,7 @@ public class Employee {
         this.manager = manager;
     }
 
-    
+
     public String getName() {
         return name;
     }
@@ -51,9 +51,9 @@ public class Employee {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public static Employee buildManager(String id, String name) {
         return new Employee(id, name, true);
     }
-    
+
 }

@@ -12,7 +12,7 @@ public class LoginForm {
         this.username = username;
         this.password = password;
     }
-    
+
     public String getUsername() {
         return username;
     }

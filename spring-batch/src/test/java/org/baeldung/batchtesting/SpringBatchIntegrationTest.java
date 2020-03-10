@@ -32,8 +32,8 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 @RunWith(SpringRunner.class)
 @SpringBatchTest
 @EnableAutoConfiguration
-@ContextConfiguration(classes = { SpringBatchConfiguration.class })
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class })
+@ContextConfiguration(classes = {SpringBatchConfiguration.class})
+@TestExecutionListeners({DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class})
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 public class SpringBatchIntegrationTest {
 

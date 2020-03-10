@@ -18,7 +18,7 @@ public class JavaSEFormat {
     public static void run(List<Locale> locales) {
         System.out.println("Java formatter");
         final Date date = new Date(System.currentTimeMillis());
-        locales.forEach(locale -> System.out.println(getLabel(locale, new Object[] { date, "Alice", 0 })));
-        locales.forEach(locale -> System.out.println(getLabel(locale, new Object[] { date, "Alice", 2 })));
+        locales.forEach(locale -> System.out.println(getLabel(locale, new Object[]{date, "Alice", 0})));
+        locales.forEach(locale -> System.out.println(getLabel(locale, new Object[]{date, "Alice", 2})));
     }
 }

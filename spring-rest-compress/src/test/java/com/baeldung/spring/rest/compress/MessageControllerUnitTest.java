@@ -20,37 +20,37 @@ import static org.junit.Assert.assertNotNull;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class MessageControllerUnitTest {
 
-	private static final Logger LOG = LoggerFactory.getLogger(MessageControllerUnitTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MessageControllerUnitTest.class);
 
-	@Autowired
-	private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
-	@LocalServerPort
-	private int randomServerPort;
+    @LocalServerPort
+    private int randomServerPort;
 
-	/**
-	 * As a further test you can intercept the request body, using a tool like
-	 * Wireshark, to see the request body is actually gzipped.
-	 *
-	 * @throws Exception
-	 */
-	@Test
-	public void givenRestTemplate_whenPostCompressedRequest_thenRespondsSuccessfully() throws Exception {
+    /**
+     * As a further test you can intercept the request body, using a tool like
+     * Wireshark, to see the request body is actually gzipped.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void givenRestTemplate_whenPostCompressedRequest_thenRespondsSuccessfully() throws Exception {
 
-		final String text = "Hello Baeldung!";
-		Message message = new Message(text);
+        final String text = "Hello Baeldung!";
+        Message message = new Message(text);
 
-		HttpEntity<Message> request = new HttpEntity<>(message);
-		String uri = String.format("http://localhost:%s/%s", randomServerPort, MessageController.REQUEST_MAPPING);
+        HttpEntity<Message> request = new HttpEntity<>(message);
+        String uri = String.format("http://localhost:%s/%s", randomServerPort, MessageController.REQUEST_MAPPING);
 
-		ResponseEntity<String> responseEntity = restTemplate.postForEntity(uri, request, String.class);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity(uri, request, String.class);
 
-		String response = responseEntity.getBody();
-		LOG.info("Got response [{}]", response);
+        String response = responseEntity.getBody();
+        LOG.info("Got response [{}]", response);
 
-		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-		assertNotNull(response);
-		assertEquals(MessageController.PROCESSED + text, response);
-	}
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertNotNull(response);
+        assertEquals(MessageController.PROCESSED + text, response);
+    }
 
 }

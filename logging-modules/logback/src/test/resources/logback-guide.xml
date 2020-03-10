@@ -22,11 +22,11 @@
 
 
     <root level="debug">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
-    <logger name="com.baeldung.logback" level="INFO" />
+    <logger name="com.baeldung.logback" level="INFO"/>
     <logger name="com.baeldung.logback.tests" level="WARN">
-        <appender-ref ref="FILE" />
+        <appender-ref ref="FILE"/>
     </logger>
 
 </configuration>

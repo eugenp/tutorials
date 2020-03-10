@@ -92,7 +92,7 @@ public class FooService {
     public void processUsingApproachFivePublishingToDifferentParallelThreads(Flux<Foo> flux) {
         logger.info("starting approach five-parallel!");
         flux = concatAndSubstringFooName(flux).publishOn(Schedulers.newParallel("five-parallel-foo"))
-            .log();
+                .log();
         flux = concatAndSubstringFooName(flux);
         flux = divideFooQuantity(flux);
         flux = reportResult(flux, "FIVE-PARALLEL").publishOn(Schedulers.newSingle("five-parallel-bar"));
@@ -100,13 +100,13 @@ public class FooService {
             logger.error("Approach 5-parallel failed!", error);
         });
         flux.subscribeOn(Schedulers.newParallel("five-parallel-starter"))
-            .subscribe();
+                .subscribe();
     }
 
     public void processUsingApproachFivePublishingToDifferentSingleThreads(Flux<Foo> flux) {
         logger.info("starting approach five-single!");
         flux = flux.log()
-            .subscribeOn(Schedulers.newSingle("five-single-starter"));
+                .subscribeOn(Schedulers.newSingle("five-single-starter"));
         flux = concatAndSubstringFooName(flux).publishOn(Schedulers.newSingle("five-single-foo"));
         flux = concatAndSubstringFooName(flux);
         flux = divideFooQuantity(flux);

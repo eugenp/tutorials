@@ -29,13 +29,16 @@ public class CurrentlyExecutedMethodFinderUnitTest {
 
     @Test
     public void givenObject_whenGetEnclosingMethod_thenFindMethod() {
-        String methodName = new Object() {}.getClass().getEnclosingMethod().getName();
+        String methodName = new Object() {
+        }.getClass().getEnclosingMethod().getName();
         assertEquals("givenObject_whenGetEnclosingMethod_thenFindMethod", methodName);
     }
 
     @Test
     public void givenLocal_whenGetEnclosingMethod_thenFindMethod() {
-        class Local {};
+        class Local {
+        }
+        ;
         String methodName = Local.class.getEnclosingMethod().getName();
         assertEquals("givenLocal_whenGetEnclosingMethod_thenFindMethod", methodName);
     }

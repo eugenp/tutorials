@@ -21,7 +21,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { BooksApiApplication.class }, webEnvironment = WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes = {BooksApiApplication.class}, webEnvironment = WebEnvironment.DEFINED_PORT)
 public class RestApiLiveTest {
 
     private static final String API_URI = "http://localhost:8084/books";

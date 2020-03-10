@@ -24,22 +24,22 @@ public class CarController {
     public long getTotalCarsByModelProcedureName(@RequestParam("model") String model) {
         return carService.getTotalCarsByModelProcedureName(model);
     }
-    
+
     @GetMapping(path = "/modelcountV")
     public long getTotalCarsByModelVaue(@RequestParam("model") String model) {
         return carService.getTotalCarsByModelValue(model);
     }
-    
+
     @GetMapping(path = "/modelcountEx")
     public long getTotalCarsByModelExplicit(@RequestParam("model") String model) {
         return carService.getTotalCarsByModelExplicit(model);
     }
-    
+
     @GetMapping(path = "/modelcountEn")
     public long getTotalCarsByModelEntity(@RequestParam("model") String model) {
         return carService.getTotalCarsByModelEntity(model);
     }
-    
+
     @GetMapping(path = "/carsafteryear")
     public List<Car> findCarsAfterYear(@RequestParam("year") Integer year) {
         return carService.findCarsAfterYear(year);

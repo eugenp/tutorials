@@ -31,7 +31,7 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    @JsonApiRelation(serialize=SerializeType.EAGER)
+    @JsonApiRelation(serialize = SerializeType.EAGER)
     private Set<Role> roles;
 
     public User() {

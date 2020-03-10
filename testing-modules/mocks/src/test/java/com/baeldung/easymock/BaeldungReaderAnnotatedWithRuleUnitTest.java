@@ -11,13 +11,17 @@ import static org.easymock.EasyMock.*;
 
 public class BaeldungReaderAnnotatedWithRuleUnitTest {
 
-    @Rule public EasyMockRule mockRule = new EasyMockRule(this);
+    @Rule
+    public EasyMockRule mockRule = new EasyMockRule(this);
 
-    @Mock ArticleReader mockArticleReader;
+    @Mock
+    ArticleReader mockArticleReader;
 
-    @Mock IArticleWriter mockArticleWriter;
+    @Mock
+    IArticleWriter mockArticleWriter;
 
-    @TestSubject BaeldungReader baeldungReader = new BaeldungReader();
+    @TestSubject
+    BaeldungReader baeldungReader = new BaeldungReader();
 
     @Test
     public void givenBaeldungReader_whenReadNext_thenNextArticleRead() {
@@ -27,7 +31,8 @@ public class BaeldungReaderAnnotatedWithRuleUnitTest {
         verify(mockArticleReader);
     }
 
-    @Mock BaeldungReader mockBaeldungReader;
+    @Mock
+    BaeldungReader mockBaeldungReader;
 
     @Test
     public void givenBaeldungReader_whenWrite_thenWriterCalled() {
@@ -40,9 +45,9 @@ public class BaeldungReaderAnnotatedWithRuleUnitTest {
     @Test
     public void givenArticlesInReader_whenReadTillEnd_thenThrowException() {
         expect(mockArticleReader.next())
-          .andReturn(null)
-          .times(2)
-          .andThrow(new NoSuchElementException());
+                .andReturn(null)
+                .times(2)
+                .andThrow(new NoSuchElementException());
         replay(mockArticleReader);
         try {
             for (int i = 0; i < 3; i++) {

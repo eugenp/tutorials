@@ -5,7 +5,6 @@ import com.baeldung.examples.guice.aop.MessageSentLoggable;
 import com.baeldung.examples.guice.constant.CommunicationModel;
 
 /**
- *
  * @author baeldung
  */
 public class EmailCommunicationMode implements CommunicationMode {

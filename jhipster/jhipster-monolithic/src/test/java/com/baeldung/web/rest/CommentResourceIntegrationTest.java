@@ -70,21 +70,21 @@ public class CommentResourceIntegrationTest {
         MockitoAnnotations.initMocks(this);
         CommentResource commentResource = new CommentResource(commentRepository);
         this.restCommentMockMvc = MockMvcBuilders.standaloneSetup(commentResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setMessageConverters(jacksonMessageConverter).build();
+                .setCustomArgumentResolvers(pageableArgumentResolver)
+                .setControllerAdvice(exceptionTranslator)
+                .setMessageConverters(jacksonMessageConverter).build();
     }
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
     public static Comment createEntity(EntityManager em) {
         Comment comment = new Comment()
-            .text(DEFAULT_TEXT)
-            .creationDate(DEFAULT_CREATION_DATE);
+                .text(DEFAULT_TEXT)
+                .creationDate(DEFAULT_CREATION_DATE);
         // Add required entity
         Post post = PostResourceIntegrationTest.createEntity(em);
         em.persist(post);
@@ -105,9 +105,9 @@ public class CommentResourceIntegrationTest {
 
         // Create the Comment
         restCommentMockMvc.perform(post("/api/comments")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(comment)))
-            .andExpect(status().isCreated());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(comment)))
+                .andExpect(status().isCreated());
 
         // Validate the Comment in the database
         List<Comment> commentList = commentRepository.findAll();
@@ -127,9 +127,9 @@ public class CommentResourceIntegrationTest {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restCommentMockMvc.perform(post("/api/comments")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(comment)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(comment)))
+                .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
         List<Comment> commentList = commentRepository.findAll();
@@ -146,9 +146,9 @@ public class CommentResourceIntegrationTest {
         // Create the Comment, which fails.
 
         restCommentMockMvc.perform(post("/api/comments")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(comment)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(comment)))
+                .andExpect(status().isBadRequest());
 
         List<Comment> commentList = commentRepository.findAll();
         assertThat(commentList).hasSize(databaseSizeBeforeTest);
@@ -164,9 +164,9 @@ public class CommentResourceIntegrationTest {
         // Create the Comment, which fails.
 
         restCommentMockMvc.perform(post("/api/comments")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(comment)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(comment)))
+                .andExpect(status().isBadRequest());
 
         List<Comment> commentList = commentRepository.findAll();
         assertThat(commentList).hasSize(databaseSizeBeforeTest);
@@ -180,11 +180,11 @@ public class CommentResourceIntegrationTest {
 
         // Get all the commentList
         restCommentMockMvc.perform(get("/api/comments?sort=id,desc"))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(comment.getId().intValue())))
-            .andExpect(jsonPath("$.[*].text").value(hasItem(DEFAULT_TEXT.toString())))
-            .andExpect(jsonPath("$.[*].creationDate").value(hasItem(DEFAULT_CREATION_DATE.toString())));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.[*].id").value(hasItem(comment.getId().intValue())))
+                .andExpect(jsonPath("$.[*].text").value(hasItem(DEFAULT_TEXT.toString())))
+                .andExpect(jsonPath("$.[*].creationDate").value(hasItem(DEFAULT_CREATION_DATE.toString())));
     }
 
     @Test
@@ -195,11 +195,11 @@ public class CommentResourceIntegrationTest {
 
         // Get the comment
         restCommentMockMvc.perform(get("/api/comments/{id}", comment.getId()))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(comment.getId().intValue()))
-            .andExpect(jsonPath("$.text").value(DEFAULT_TEXT.toString()))
-            .andExpect(jsonPath("$.creationDate").value(DEFAULT_CREATION_DATE.toString()));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.id").value(comment.getId().intValue()))
+                .andExpect(jsonPath("$.text").value(DEFAULT_TEXT.toString()))
+                .andExpect(jsonPath("$.creationDate").value(DEFAULT_CREATION_DATE.toString()));
     }
 
     @Test
@@ -207,7 +207,7 @@ public class CommentResourceIntegrationTest {
     public void getNonExistingComment() throws Exception {
         // Get the comment
         restCommentMockMvc.perform(get("/api/comments/{id}", Long.MAX_VALUE))
-            .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -220,13 +220,13 @@ public class CommentResourceIntegrationTest {
         // Update the comment
         Comment updatedComment = commentRepository.findOne(comment.getId());
         updatedComment
-            .text(UPDATED_TEXT)
-            .creationDate(UPDATED_CREATION_DATE);
+                .text(UPDATED_TEXT)
+                .creationDate(UPDATED_CREATION_DATE);
 
         restCommentMockMvc.perform(put("/api/comments")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(updatedComment)))
-            .andExpect(status().isOk());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(updatedComment)))
+                .andExpect(status().isOk());
 
         // Validate the Comment in the database
         List<Comment> commentList = commentRepository.findAll();
@@ -245,9 +245,9 @@ public class CommentResourceIntegrationTest {
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
         restCommentMockMvc.perform(put("/api/comments")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(comment)))
-            .andExpect(status().isCreated());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(comment)))
+                .andExpect(status().isCreated());
 
         // Validate the Comment in the database
         List<Comment> commentList = commentRepository.findAll();
@@ -263,8 +263,8 @@ public class CommentResourceIntegrationTest {
 
         // Get the comment
         restCommentMockMvc.perform(delete("/api/comments/{id}", comment.getId())
-            .accept(TestUtil.APPLICATION_JSON_UTF8))
-            .andExpect(status().isOk());
+                .accept(TestUtil.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk());
 
         // Validate the database is empty
         List<Comment> commentList = commentRepository.findAll();

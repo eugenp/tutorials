@@ -61,7 +61,7 @@ class XorUnitTest {
         boolean dieselXorManual = car.isDiesel() ^ car.isManual();
         assertThat(dieselXorManual).isFalse();
     }
-    
+
     @Test
     void givenNumbersOneAndThree_whenXor_thenTwo() {
         assertThat(1 ^ 3).isEqualTo(2);

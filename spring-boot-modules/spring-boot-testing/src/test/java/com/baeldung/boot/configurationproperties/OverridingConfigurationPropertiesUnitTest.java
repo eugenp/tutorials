@@ -14,7 +14,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @EnableConfigurationProperties(value = MailServer.class)
-@TestPropertySource(properties = { "validate.mail_config.address=new_user@test" })
+@TestPropertySource(properties = {"validate.mail_config.address=new_user@test"})
 public class OverridingConfigurationPropertiesUnitTest {
 
     @Autowired
@@ -23,7 +23,7 @@ public class OverridingConfigurationPropertiesUnitTest {
     @Test
     void givenUsingPropertiesAttribute_whenAssiginingNewValueToProprty_thenSpringUsesNewValue() {
         assertEquals("new_user@test", mailServer.getMailConfig()
-            .getAddress());
+                .getAddress());
 
         Map<String, String> expectedMap = new HashMap<>();
         expectedMap.put("first", "prop1");

@@ -26,9 +26,9 @@ public class ClientConfig {
     public RestTemplate restTemplate() {
         HttpHost host = new HttpHost("localhost", 8080, "http");
         CloseableHttpClient client = HttpClientBuilder.create().
-          setDefaultCredentialsProvider(provider()).useSystemProperties().build();
+                setDefaultCredentialsProvider(provider()).useSystemProperties().build();
         HttpComponentsClientHttpRequestFactory requestFactory =
-          new HttpComponentsClientHttpRequestFactoryDigestAuth(host, client);
+                new HttpComponentsClientHttpRequestFactoryDigestAuth(host, client);
 
         return new RestTemplate(requestFactory);
     }
@@ -36,7 +36,7 @@ public class ClientConfig {
     private CredentialsProvider provider() {
         CredentialsProvider provider = new BasicCredentialsProvider();
         UsernamePasswordCredentials credentials =
-          new UsernamePasswordCredentials("user1", "user1Pass");
+                new UsernamePasswordCredentials("user1", "user1Pass");
         provider.setCredentials(AuthScope.ANY, credentials);
         return provider;
     }

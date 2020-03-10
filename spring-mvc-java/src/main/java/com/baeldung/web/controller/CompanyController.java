@@ -29,8 +29,9 @@ public class CompanyController {
         return new ModelAndView("companyHome", "company", new Company());
     }
 
-    @RequestMapping(value = "/company/{Id}", produces = { "application/json", "application/xml" }, method = RequestMethod.GET)
-    public @ResponseBody Company getCompanyById(@PathVariable final long Id) {
+    @RequestMapping(value = "/company/{Id}", produces = {"application/json", "application/xml"}, method = RequestMethod.GET)
+    public @ResponseBody
+    Company getCompanyById(@PathVariable final long Id) {
         return companyMap.get(Id);
     }
 

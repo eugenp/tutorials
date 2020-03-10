@@ -3,11 +3,12 @@ package com.baeldung.mainapp;
 import com.baeldung.dao.Dao;
 import com.baeldung.entity.User;
 import com.baeldung.userdao.UserDao;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Application {
-    
+
     public static void main(String[] args) {
         Map<Integer, User> users = new HashMap<>();
         users.put(1, new User("Julie"));
@@ -15,5 +16,5 @@ public class Application {
         Dao userDao = new UserDao(users);
         userDao.findAll().forEach(System.out::println);
     }
-    
+
 }

@@ -8,10 +8,10 @@ class ReadExampleUnitTest {
     @Test
     void whenUsingEachLine_thenCorrectLinesReturned() {
         def expectedList = [
-            'First line of text', 
-            'Second line of text', 
-            'Third line of text', 
-            'Fourth line of text']
+                'First line of text',
+                'Second line of text',
+                'Third line of text',
+                'Fourth line of text']
 
         def lines = []
 
@@ -24,9 +24,9 @@ class ReadExampleUnitTest {
     @Test
     void whenUsingReadEachLineWithLineNumber_thenCorrectLinesReturned() {
         def expectedList = [
-            'Second line of text', 
-            'Third line of text', 
-            'Fourth line of text']
+                'Second line of text',
+                'Third line of text',
+                'Fourth line of text']
 
         def lineNoRange = 2..4
         def lines = []
@@ -38,13 +38,13 @@ class ReadExampleUnitTest {
         }
         assertEquals(expectedList, lines)
     }
-    
+
     @Test
     void whenUsingReadEachLineWithLineNumberStartAtZero_thenCorrectLinesReturned() {
         def expectedList = [
-            'Second line of text',
-            'Third line of text',
-            'Fourth line of text']
+                'Second line of text',
+                'Third line of text',
+                'Fourth line of text']
 
         def lineNoRange = 1..3
         def lines = []
@@ -62,7 +62,7 @@ class ReadExampleUnitTest {
         def expectedCount = 4
         def actualCount = 0
         new File('src/main/resources/ioInput.txt').withReader { reader ->
-            while(reader.readLine()) {
+            while (reader.readLine()) {
                 actualCount++
             }
         }
@@ -105,7 +105,7 @@ class ReadExampleUnitTest {
     void whenUsingCollect_thenCorrectListIsReturned() {
         def expectedList = ['First line of text', 'Second line of text', 'Third line of text', 'Fourth line of text']
 
-        def actualList = new File('src/main/resources/ioInput.txt').collect {it}
+        def actualList = new File('src/main/resources/ioInput.txt').collect { it }
         assertEquals(expectedList, actualList)
     }
 

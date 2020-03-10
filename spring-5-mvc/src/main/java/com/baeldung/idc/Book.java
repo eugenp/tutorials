@@ -12,7 +12,7 @@ public class Book {
     private final String author;
 
     private final String genre;
-    
+
     public Book() {
         this(-1, "", "", "");
     }

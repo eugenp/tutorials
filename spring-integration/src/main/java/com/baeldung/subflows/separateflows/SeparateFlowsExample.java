@@ -25,17 +25,17 @@ public class SeparateFlowsExample {
         @Gateway(requestChannel = "remainderIsTwoFlow.input")
         void remainderIsTwo(Collection<Integer> numbers);
     }
-    
+
     @Bean
     QueueChannel multipleOfThreeChannel() {
         return new QueueChannel();
     }
- 
+
     @Bean
     QueueChannel remainderIsOneChannel() {
         return new QueueChannel();
     }
- 
+
     @Bean
     QueueChannel remainderIsTwoChannel() {
         return new QueueChannel();
@@ -56,22 +56,22 @@ public class SeparateFlowsExample {
     @Bean
     public IntegrationFlow multipleOfThreeFlow() {
         return flow -> flow.split()
-            .<Integer> filter(this::isMultipleOfThree)
-            .channel("multipleOfThreeChannel");
+                .<Integer>filter(this::isMultipleOfThree)
+                .channel("multipleOfThreeChannel");
     }
 
     @Bean
     public IntegrationFlow remainderIsOneFlow() {
         return flow -> flow.split()
-            .<Integer> filter(this::isRemainderOne)
-            .channel("remainderIsOneChannel");
+                .<Integer>filter(this::isRemainderOne)
+                .channel("remainderIsOneChannel");
     }
 
     @Bean
     public IntegrationFlow remainderIsTwoFlow() {
         return flow -> flow.split()
-            .<Integer> filter(this::isRemainderTwo)
-            .channel("remainderIsTwoChannel");
+                .<Integer>filter(this::isRemainderTwo)
+                .channel("remainderIsTwoChannel");
     }
 
 }

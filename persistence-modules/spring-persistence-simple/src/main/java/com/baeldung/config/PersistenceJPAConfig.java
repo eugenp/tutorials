@@ -25,8 +25,8 @@ import com.google.common.base.Preconditions;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-h2.properties" })
-@ComponentScan({ "com.baeldung.persistence","com.baeldung.jpa.dao" })
+@PropertySource({"classpath:persistence-h2.properties"})
+@ComponentScan({"com.baeldung.persistence", "com.baeldung.jpa.dao"})
 @EnableJpaRepositories(basePackages = "com.baeldung.jpa.dao")
 public class PersistenceJPAConfig {
 
@@ -43,7 +43,7 @@ public class PersistenceJPAConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+        em.setPackagesToScan(new String[]{"com.baeldung.persistence.model"});
 
         final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -80,8 +80,8 @@ public class PersistenceJPAConfig {
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
         hibernateProperties.setProperty("hibernate.cache.use_second_level_cache", "false");
-        
-    
+
+
         return hibernateProperties;
     }
 

@@ -103,8 +103,8 @@ public class TemporalValuesUnitTest {
         temporalValues.setLocalDate(LocalDate.parse("2017-11-15"));
         temporalValues.setLocalTime(LocalTime.parse("15:30:18"));
         temporalValues.setOffsetTime(OffsetTime.parse("08:22:12+01:00"));
-        
-        System.out.println("********"+OffsetTime.parse("08:22:12+01:00").toString());
+
+        System.out.println("********" + OffsetTime.parse("08:22:12+01:00").toString());
         temporalValues.setInstant(Instant.parse("2017-11-15T08:22:12Z"));
         temporalValues.setLocalDateTime(LocalDateTime.parse("2017-11-15T08:22:12"));
         temporalValues.setOffsetDateTime(OffsetDateTime.parse("2017-11-15T08:22:12+01:00"));

@@ -6,7 +6,7 @@
     <artifactId>sse-jaxrs-server</artifactId>
     <name>sse-jaxrs-server</name>
     <packaging>war</packaging>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>sse-jaxrs</artifactId>

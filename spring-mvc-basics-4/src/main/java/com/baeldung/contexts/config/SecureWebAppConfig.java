@@ -11,9 +11,9 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.baeldung.contexts.secure" })
+@ComponentScan(basePackages = {"com.baeldung.contexts.secure"})
 public class SecureWebAppConfig implements WebMvcConfigurer {
-        
+
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();

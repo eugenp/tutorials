@@ -25,7 +25,7 @@ public class RxJavaCustomOperatorUnitTest {
         final List<String> results = new ArrayList<>();
 
         final Observable<String> observable = Observable.from(list)
-          .lift(toCleanString());
+                .lift(toCleanString());
 
         // when
         observable.subscribe(results::add);
@@ -42,7 +42,7 @@ public class RxJavaCustomOperatorUnitTest {
         final List<Integer> results = new ArrayList<>();
 
         final Observable<Integer> observable = Observable.from(list)
-          .compose(toLength());
+                .compose(toLength());
 
         // when
         observable.subscribe(results::add);
@@ -81,8 +81,8 @@ public class RxJavaCustomOperatorUnitTest {
 
         final List<String> results = new ArrayList<>();
         Observable.from(Arrays.asList("ap_p-l@e", "or-an?ge"))
-          .lift(cleanStringFn)
-          .subscribe(results::add);
+                .lift(cleanStringFn)
+                .subscribe(results::add);
 
         assertThat(results, notNullValue());
         assertThat(results, hasSize(2));
@@ -95,8 +95,8 @@ public class RxJavaCustomOperatorUnitTest {
 
         final List<Integer> results = new ArrayList<>();
         Observable.from(Arrays.asList("apple", "orange"))
-          .compose(toLengthFn)
-          .subscribe(results::add);
+                .compose(toLengthFn)
+                .subscribe(results::add);
 
         assertThat(results, notNullValue());
         assertThat(results, hasSize(2));

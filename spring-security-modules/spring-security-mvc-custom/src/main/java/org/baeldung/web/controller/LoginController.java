@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = "/custom")
 public class LoginController {
 
-    @Resource(name="authenticationManager")
+    @Resource(name = "authenticationManager")
     private AuthenticationManager authManager;
 
     public LoginController() {
@@ -33,7 +33,7 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void login(@RequestParam("username") final String username, @RequestParam("password") final String password, final HttpServletRequest request) {
         UsernamePasswordAuthenticationToken authReq =
-            new UsernamePasswordAuthenticationToken(username, password);
+                new UsernamePasswordAuthenticationToken(username, password);
         Authentication auth = authManager.authenticate(authReq);
         SecurityContext sc = SecurityContextHolder.getContext();
         sc.setAuthentication(auth);

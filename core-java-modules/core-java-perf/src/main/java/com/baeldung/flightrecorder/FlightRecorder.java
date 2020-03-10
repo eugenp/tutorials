@@ -5,10 +5,9 @@ import java.util.List;
 
 /**
  * Simple program that illustrates how to use Java Flight Recorder.
- * 
- * This programs creates a list, inserts objects in it until 
- * an OutOfMemoryError is thrown.   
- *
+ * <p>
+ * This programs creates a list, inserts objects in it until
+ * an OutOfMemoryError is thrown.
  */
 public class FlightRecorder {
 

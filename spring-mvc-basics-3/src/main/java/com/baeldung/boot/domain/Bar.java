@@ -3,7 +3,7 @@ package com.baeldung.boot.domain;
 public class Bar extends AbstractEntity {
 
     private int value;
-    
+
     public Bar(long id) {
         super(id);
     }
@@ -25,5 +25,5 @@ public class Bar extends AbstractEntity {
     public String toString() {
         return "Bar [value=" + value + ", id=" + id + "]";
     }
-    
+
 }

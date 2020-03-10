@@ -68,10 +68,10 @@ public class ConcurrentModificationUnitTest {
         Collection<Integer> integers = newArrayList(1, 2, 3);
 
         List<String> collected = integers
-          .stream()
-          .filter(i -> i != 2)
-          .map(Object::toString)
-          .collect(toList());
+                .stream()
+                .filter(i -> i != 2)
+                .map(Object::toString)
+                .collect(toList());
 
         assertThat(collected).containsExactly("1", "3");
     }

@@ -16,7 +16,7 @@ public class JpaPopulators {
     @Bean
     public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() throws Exception {
         Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
-        factory.setResources(new Resource[] { new ClassPathResource("fruit-data.json") });
+        factory.setResources(new Resource[]{new ClassPathResource("fruit-data.json")});
         return factory;
     }
 
@@ -28,7 +28,7 @@ public class JpaPopulators {
 
         UnmarshallerRepositoryPopulatorFactoryBean factory = new UnmarshallerRepositoryPopulatorFactoryBean();
         factory.setUnmarshaller(unmarshaller);
-        factory.setResources(new Resource[] { new ClassPathResource("apple-fruit-data.xml"), new ClassPathResource("guava-fruit-data.xml") });
+        factory.setResources(new Resource[]{new ClassPathResource("apple-fruit-data.xml"), new ClassPathResource("guava-fruit-data.xml")});
         return factory;
     }
 

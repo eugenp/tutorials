@@ -31,43 +31,54 @@ pre {
     margin-bottom: 0px;
     padding-right: 110px;
 }
+
 .navbar .container {
     margin: 10px;
 }
+
 .navbar-default a {
     color: #ffffff !important;
     font-size: 18px !important;
     text-decoration: none;
 }
+
 .grails-icon img {
     width: 40px;
 
 }
+
 .navbar-default, .navbar-static-top {
     background-color: #424649;
     border: 0px;
 }
+
 a.navbar-brand {
     color: white !important;
     font-size: 19px !important;
 }
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     background-color: transparent;
     color: white;
 }
-.navbar-nav>li.active>a {
+
+.navbar-nav > li.active > a {
     color: white !important;
 }
-.navbar-nav>li>a:hover {
+
+.navbar-nav > li > a:hover {
     background-color: #2559a7 !important;
     color: white !important;
 }
-.navbar-nav>li>a {
+
+.navbar-nav > li > a {
     color: #c0d3db;
 }
+
 .navbar-default .navbar-toggle .icon-bar {
     background-color: white;
 }
+
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
     background-color: #2559a7;
 }
@@ -90,7 +101,7 @@ a.navbar-brand {
     }
 }
 
-#fork-me{
+#fork-me {
     position: fixed;
     padding: 0px 50px 0px 50px;
     top: 40px;
@@ -113,7 +124,7 @@ a.navbar-brand {
 
 #band {
     /*grey =#808080*/
-    background: #2559a7  no-repeat 50% 30%;
+    background: #2559a7 no-repeat 50% 30%;
     height: 400px;
 }
 

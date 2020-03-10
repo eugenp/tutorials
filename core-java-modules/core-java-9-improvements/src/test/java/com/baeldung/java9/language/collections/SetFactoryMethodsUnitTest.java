@@ -51,7 +51,7 @@ public class SetFactoryMethodsUnitTest {
 
     @Test
     public void ifSetSizeIsOne_thenSuccess() {
-        int[] arr = { 1, 2, 3, 4 };
+        int[] arr = {1, 2, 3, 4};
         Set<int[]> set = Set.of(arr);
         assertEquals(1, set.size());
         assertArrayEquals(arr, set.iterator().next());

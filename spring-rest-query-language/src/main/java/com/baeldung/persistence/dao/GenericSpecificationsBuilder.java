@@ -53,20 +53,20 @@ public class GenericSpecificationsBuilder<U> {
         }
 
         final List<Specification<U>> specs = params.stream()
-            .map(converter)
-            .collect(Collectors.toCollection(ArrayList::new));
+                .map(converter)
+                .collect(Collectors.toCollection(ArrayList::new));
 
         Specification<U> result = specs.get(0);
 
         for (int idx = 1; idx < specs.size(); idx++) {
             result = params.get(idx)
-                .isOrPredicate()
+                    .isOrPredicate()
                     ? Specification.where(result)
-                        .or(specs.get(idx))
+                    .or(specs.get(idx))
                     : Specification.where(result)
-                        .and(specs.get(idx));
+                    .and(specs.get(idx));
         }
-        
+
         return result;
     }
 
@@ -86,10 +86,10 @@ public class GenericSpecificationsBuilder<U> {
                 Specification<U> operand2 = specStack.pop();
                 if (mayBeOperand.equals(SearchOperation.AND_OPERATOR))
                     specStack.push(Specification.where(operand1)
-                        .and(operand2));
+                            .and(operand2));
                 else if (mayBeOperand.equals(SearchOperation.OR_OPERATOR))
                     specStack.push(Specification.where(operand1)
-                        .or(operand2));
+                            .or(operand2));
             }
 
         }

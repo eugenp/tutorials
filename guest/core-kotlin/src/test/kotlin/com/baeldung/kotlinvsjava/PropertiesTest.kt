@@ -27,6 +27,10 @@ class Product {
     val id: String? = "empty"
 
     var price: BigDecimal? = BigDecimal.ZERO
-        set(value) = if(value == null) { field = BigDecimal.ONE} else { field = value }
+        set(value) = if (value == null) {
+            field = BigDecimal.ONE
+        } else {
+            field = value
+        }
 
 }

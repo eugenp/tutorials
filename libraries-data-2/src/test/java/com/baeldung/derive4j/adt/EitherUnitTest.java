@@ -13,11 +13,11 @@ import java.util.function.Function;
 public class EitherUnitTest {
     @Test
     public void testEitherIsCreatedFromRight() {
-       Either<Exception, String> either = Eithers.right("Okay");
-       Optional<Exception> leftOptional = Eithers.getLeft(either);
-       Optional<String> rightOptional = Eithers.getRight(either);
-       Assertions.assertThat(leftOptional).isEmpty();
-       Assertions.assertThat(rightOptional).hasValue("Okay");
+        Either<Exception, String> either = Eithers.right("Okay");
+        Optional<Exception> leftOptional = Eithers.getLeft(either);
+        Optional<String> rightOptional = Eithers.getRight(either);
+        Assertions.assertThat(leftOptional).isEmpty();
+        Assertions.assertThat(rightOptional).hasValue("Okay");
 
     }
 

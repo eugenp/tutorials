@@ -17,14 +17,14 @@ public class ProductHelperUsingLoader {
 
     public ProductHelperUsingLoader() {
         cachedDiscounts = Cache2kBuilder.of(String.class, Integer.class)
-            .name("discount-loader")
-            .expireAfterWrite(10, TimeUnit.MILLISECONDS)
-            .entryCapacity(100)
-            .loader((key) -> {
-                cacheMissCount++;
-                return "Sports".equalsIgnoreCase(key) ? 20 : 10;
-            })
-            .build();
+                .name("discount-loader")
+                .expireAfterWrite(10, TimeUnit.MILLISECONDS)
+                .entryCapacity(100)
+                .loader((key) -> {
+                    cacheMissCount++;
+                    return "Sports".equalsIgnoreCase(key) ? 20 : 10;
+                })
+                .build();
     }
 
     public Integer getDiscount(String productType) {

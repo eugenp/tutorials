@@ -28,8 +28,8 @@ public class OrderAggregateUnitTest {
         String orderId = UUID.randomUUID().toString();
         String product = "Deluxe Chair";
         fixture.givenNoPriorActivity()
-               .when(new PlaceOrderCommand(orderId, product))
-               .expectEvents(new OrderPlacedEvent(orderId, product));
+                .when(new PlaceOrderCommand(orderId, product))
+                .expectEvents(new OrderPlacedEvent(orderId, product));
     }
 
     @Test
@@ -37,8 +37,8 @@ public class OrderAggregateUnitTest {
         String orderId = UUID.randomUUID().toString();
         String product = "Deluxe Chair";
         fixture.given(new OrderPlacedEvent(orderId, product))
-               .when(new ConfirmOrderCommand(orderId))
-               .expectEvents(new OrderConfirmedEvent(orderId));
+                .when(new ConfirmOrderCommand(orderId))
+                .expectEvents(new OrderConfirmedEvent(orderId));
     }
 
     @Test
@@ -46,8 +46,8 @@ public class OrderAggregateUnitTest {
         String orderId = UUID.randomUUID().toString();
         String product = "Deluxe Chair";
         fixture.given(new OrderPlacedEvent(orderId, product))
-               .when(new ShipOrderCommand(orderId))
-               .expectException(UnconfirmedOrderException.class);
+                .when(new ShipOrderCommand(orderId))
+                .expectException(UnconfirmedOrderException.class);
     }
 
     @Test
@@ -55,8 +55,8 @@ public class OrderAggregateUnitTest {
         String orderId = UUID.randomUUID().toString();
         String product = "Deluxe Chair";
         fixture.given(new OrderPlacedEvent(orderId, product), new OrderConfirmedEvent(orderId))
-               .when(new ShipOrderCommand(orderId))
-               .expectEvents(new OrderShippedEvent(orderId));
+                .when(new ShipOrderCommand(orderId))
+                .expectEvents(new OrderShippedEvent(orderId));
     }
 
 }

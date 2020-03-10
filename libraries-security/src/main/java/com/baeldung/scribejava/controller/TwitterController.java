@@ -18,8 +18,8 @@ public class TwitterController {
     private TwitterService service;
 
 
-    @GetMapping(value ="/me/twitter")
-    public String me(HttpServletResponse servletResponse){
+    @GetMapping(value = "/me/twitter")
+    public String me(HttpServletResponse servletResponse) {
         try {
             OAuth1RequestToken requestToken = service.getService().getRequestToken();
 
@@ -38,7 +38,7 @@ public class TwitterController {
 
             String oauthverifier = in.nextLine();
 
-            final OAuth1AccessToken accessToken = service.getService().getAccessToken(requestToken,oauthverifier);
+            final OAuth1AccessToken accessToken = service.getService().getAccessToken(requestToken, oauthverifier);
 
             OAuthRequest request = new OAuthRequest(Verb.GET, "https://api.twitter.com/1.1/account/verify_credentials.json");
             service.getService().signRequest(accessToken, request);
@@ -51,7 +51,6 @@ public class TwitterController {
 
         return null;
     }
-
 
 
 }

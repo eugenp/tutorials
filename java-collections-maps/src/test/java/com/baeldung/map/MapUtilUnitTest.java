@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.baeldung.map;
 
@@ -21,8 +21,8 @@ import static org.junit.Assert.assertEquals;
  *
  */
 public class MapUtilUnitTest {
-    
-    
+
+
     @Test
     public void whenUsingImperativeWayForSingleKey_shouldReturnSingleKey() {
         Map<String, String> capitalCountryMap = new HashMap<>();
@@ -30,7 +30,7 @@ public class MapUtilUnitTest {
         capitalCountryMap.put("New Delhi", "India");
         assertEquals("New Delhi", MapUtil.getKey(capitalCountryMap, "India"));
     }
-    
+
     @Test
     public void whenUsingImperativeWayForAllKeys_shouldReturnAllKeys() {
         Map<String, String> capitalCountryMap = new HashMap<>();
@@ -41,10 +41,10 @@ public class MapUtilUnitTest {
         capitalCountryMap.put("Bloemfontein", "South Africa");
 
         assertEquals(new HashSet<String>(Arrays.asList(
-                new String[] {"Cape Town", "Pretoria", "Bloemfontein"})), 
+                new String[]{"Cape Town", "Pretoria", "Bloemfontein"})),
                 MapUtil.getKeys(capitalCountryMap, "South Africa"));
     }
-    
+
     @Test
     public void whenUsingFunctionalWayForSingleKey_shouldReturnSingleKey() {
         Map<String, String> capitalCountryMap = new HashMap<>();
@@ -52,7 +52,7 @@ public class MapUtilUnitTest {
         capitalCountryMap.put("Berlin", "Germany");
         assertEquals("Berlin", MapUtil.keys(capitalCountryMap, "Germany").findFirst().get());
     }
-    
+
     @Test
     public void whenUsingFunctionalWayForAllKeys_shouldReturnAllKeys() {
         Map<String, String> capitalCountryMap = new HashMap<>();
@@ -62,10 +62,10 @@ public class MapUtilUnitTest {
         capitalCountryMap.put("Pretoria", "South Africa");
         capitalCountryMap.put("Bloemfontein", "South Africa");
         assertEquals(new HashSet<String>(Arrays.asList(
-                new String[] {"Cape Town", "Pretoria", "Bloemfontein"})), 
+                new String[]{"Cape Town", "Pretoria", "Bloemfontein"})),
                 MapUtil.keys(capitalCountryMap, "South Africa").collect(Collectors.toSet()));
     }
-    
+
     @Test
     public void whenUsingBidiMap_shouldReturnKey() {
         BidiMap<String, String> capitalCountryMap = new DualHashBidiMap<String, String>();
@@ -73,7 +73,7 @@ public class MapUtilUnitTest {
         capitalCountryMap.put("Cape Town", "South Africa");
         assertEquals("Berlin", capitalCountryMap.getKey("Germany"));
     }
-    
+
     @Test
     public void whenUsingBidiMapAddDuplicateValue_shouldRemoveOldEntry() {
         BidiMap<String, String> capitalCountryMap = new DualHashBidiMap<String, String>();
@@ -82,7 +82,7 @@ public class MapUtilUnitTest {
         capitalCountryMap.put("Pretoria", "South Africa");
         assertEquals("Pretoria", capitalCountryMap.getKey("South Africa"));
     }
-    
+
     @Test
     public void whenUsingBiMap_shouldReturnKey() {
         HashBiMap<String, String> capitalCountryMap = HashBiMap.create();
@@ -90,8 +90,8 @@ public class MapUtilUnitTest {
         capitalCountryMap.put("Cape Town", "South Africa");
         assertEquals("Berlin", capitalCountryMap.inverse().get("Germany"));
     }
-    
-    @Test(expected=IllegalArgumentException.class)
+
+    @Test(expected = IllegalArgumentException.class)
     public void whenUsingBiMapAddDuplicateValue_shouldThrowException() {
         HashBiMap<String, String> capitalCountryMap = HashBiMap.create();
         capitalCountryMap.put("Berlin", "Germany");

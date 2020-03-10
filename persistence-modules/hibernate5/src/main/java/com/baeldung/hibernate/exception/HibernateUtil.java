@@ -21,7 +21,7 @@ public class HibernateUtil {
     }
 
     public static SessionFactory getSessionFactory(String propertyFileName)
-        throws IOException {
+            throws IOException {
         PROPERTY_FILE_NAME = propertyFileName;
         if (sessionFactory == null) {
             ServiceRegistry serviceRegistry = configureServiceRegistry();
@@ -31,31 +31,31 @@ public class HibernateUtil {
     }
 
     private static SessionFactory makeSessionFactory(
-        ServiceRegistry serviceRegistry) {
+            ServiceRegistry serviceRegistry) {
         MetadataSources metadataSources = new MetadataSources(serviceRegistry);
         metadataSources.addAnnotatedClass(Product.class);
         Metadata metadata = metadataSources.getMetadataBuilder()
-            .build();
+                .build();
         return metadata.getSessionFactoryBuilder()
-            .build();
+                .build();
 
     }
 
     private static ServiceRegistry configureServiceRegistry()
-        throws IOException {
+            throws IOException {
         Properties properties = getProperties();
         return new StandardServiceRegistryBuilder().applySettings(properties)
-            .build();
+                .build();
     }
 
     private static Properties getProperties() throws IOException {
         Properties properties = new Properties();
         URL propertiesURL = Thread.currentThread()
-            .getContextClassLoader()
-            .getResource(StringUtils.defaultString(PROPERTY_FILE_NAME,
-                "hibernate-exception.properties"));
+                .getContextClassLoader()
+                .getResource(StringUtils.defaultString(PROPERTY_FILE_NAME,
+                        "hibernate-exception.properties"));
         try (FileInputStream inputStream = new FileInputStream(
-            propertiesURL.getFile())) {
+                propertiesURL.getFile())) {
             properties.load(inputStream);
         }
         return properties;

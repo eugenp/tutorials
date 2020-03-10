@@ -9,8 +9,8 @@ public interface FileTestProvider {
 
     default Path getResourceFilePath() {
         final String resourceFilePath = getClass()
-          .getResource("/" + RESOURCE_FILE_NAME)
-          .getPath();
+                .getResource("/" + RESOURCE_FILE_NAME)
+                .getPath();
         return Paths.get(resourceFilePath);
     }
 }

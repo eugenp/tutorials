@@ -10,32 +10,32 @@ import com.baeldung.akkahttp.UserMessages.GetUserMessage;
 
 class UserActor extends AbstractActor {
 
-  private UserService userService = new UserService();
+    private UserService userService = new UserService();
 
-  static Props props() {
-    return Props.create(UserActor.class);
-  }
+    static Props props() {
+        return Props.create(UserActor.class);
+    }
 
-  @Override
-  public Receive createReceive() {
-    return receiveBuilder()
-            .match(CreateUserMessage.class, handleCreateUser())
-            .match(GetUserMessage.class, handleGetUser())
-            .build();
-  }
+    @Override
+    public Receive createReceive() {
+        return receiveBuilder()
+                .match(CreateUserMessage.class, handleCreateUser())
+                .match(GetUserMessage.class, handleGetUser())
+                .build();
+    }
 
-  private FI.UnitApply<CreateUserMessage> handleCreateUser() {
-    return createUserMessageMessage -> {
-      userService.createUser(createUserMessageMessage.getUser());
-      sender().tell(new ActionPerformed(String.format("User %s created.", createUserMessageMessage.getUser()
-              .getName())), getSelf());
-    };
-  }
+    private FI.UnitApply<CreateUserMessage> handleCreateUser() {
+        return createUserMessageMessage -> {
+            userService.createUser(createUserMessageMessage.getUser());
+            sender().tell(new ActionPerformed(String.format("User %s created.", createUserMessageMessage.getUser()
+                    .getName())), getSelf());
+        };
+    }
 
-  private FI.UnitApply<GetUserMessage> handleGetUser() {
-    return getUserMessageMessage -> {
-      sender().tell(userService.getUser(getUserMessageMessage.getUserId()), getSelf());
-    };
-  }
+    private FI.UnitApply<GetUserMessage> handleGetUser() {
+        return getUserMessageMessage -> {
+            sender().tell(userService.getUser(getUserMessageMessage.getUserId()), getSelf());
+        };
+    }
 
 }

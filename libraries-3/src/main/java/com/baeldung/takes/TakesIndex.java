@@ -16,9 +16,9 @@ public final class TakesIndex implements Take {
         RqFormSmart form = new RqFormSmart(req);
         String username = form.single("username");
         return new RsHtml(
-            new RsVelocity(this.getClass().getResource("/templates/index.vm"), 
-                new RsVelocity.Pair("username", username))
-            );
+                new RsVelocity(this.getClass().getResource("/templates/index.vm"),
+                        new RsVelocity.Pair("username", username))
+        );
     }
 
 }

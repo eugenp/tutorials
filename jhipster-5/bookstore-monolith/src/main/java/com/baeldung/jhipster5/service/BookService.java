@@ -43,6 +43,7 @@ public interface BookService {
 
     /**
      * Simulates purchasing a book by reducing the stock of a book by 1.
+     *
      * @param id the id of the book
      * @return Updated BookDTO, empty if not found, or throws exception if an error occurs.
      */

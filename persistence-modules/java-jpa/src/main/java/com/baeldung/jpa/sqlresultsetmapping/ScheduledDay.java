@@ -3,17 +3,17 @@ package com.baeldung.jpa.sqlresultsetmapping;
 import javax.persistence.*;
 
 @SqlResultSetMappings(value = {
-    @SqlResultSetMapping(name = "ScheduleResult",
-        classes = { @ConstructorResult(targetClass = com.baeldung.jpa.sqlresultsetmapping.ScheduledDay.class,
-        columns = { @ColumnResult(name = "id", type = Long.class),
-                    @ColumnResult(name = "employeeId", type = Long.class),
-                    @ColumnResult(name = "dayOfWeek") }) }),
-    @SqlResultSetMapping(name = "FridayEmployeeResult",
-                         columns = { @ColumnResult(name = "employeeId") }),
-    @SqlResultSetMapping(name = "EmployeeScheduleResults",
-                         entities = { @EntityResult(entityClass = com.baeldung.jpa.sqlresultsetmapping.Employee.class),
-                                      @EntityResult(entityClass = com.baeldung.jpa.sqlresultsetmapping.ScheduledDay.class)
-    }) })
+        @SqlResultSetMapping(name = "ScheduleResult",
+                classes = {@ConstructorResult(targetClass = com.baeldung.jpa.sqlresultsetmapping.ScheduledDay.class,
+                        columns = {@ColumnResult(name = "id", type = Long.class),
+                                @ColumnResult(name = "employeeId", type = Long.class),
+                                @ColumnResult(name = "dayOfWeek")})}),
+        @SqlResultSetMapping(name = "FridayEmployeeResult",
+                columns = {@ColumnResult(name = "employeeId")}),
+        @SqlResultSetMapping(name = "EmployeeScheduleResults",
+                entities = {@EntityResult(entityClass = com.baeldung.jpa.sqlresultsetmapping.Employee.class),
+                        @EntityResult(entityClass = com.baeldung.jpa.sqlresultsetmapping.ScheduledDay.class)
+                })})
 @NamedNativeQuery(name = "FridayEmployees",
         query = "SELECT employeeId FROM schedule_days WHERE dayOfWeek = 'FRIDAY'",
         resultSetMapping = "FridayEmployeeResult")

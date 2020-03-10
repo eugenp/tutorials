@@ -29,94 +29,97 @@
   
   ======================================================================
 -->
-<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
-  <define name="db.equation.content" combine="choice">
-    <oneOrMore>
-      <ref name="db._any.mml"/>
-    </oneOrMore>
-  </define>
-  <define name="db.inlineequation.content" combine="choice">
-    <oneOrMore>
-      <ref name="db._any.mml"/>
-    </oneOrMore>
-  </define>
-  <define name="db.imageobject.content" combine="choice">
-    <ref name="db.imagedata.mathml"/>
-  </define>
-  <!-- ============================================================ -->
-  <div>
-    <db:refname>imagedata</db:refname>
-    <db:refpurpose>A MathML expression in a media object</db:refpurpose>
-    <define name="db.imagedata.mathml.role.attribute">
-      <attribute name="role"/>
-    </define>
-    <define name="db.imagedata.mathml.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.imagedata.mathml.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <optional>
-          <attribute name="format">
-            <db:refpurpose>Specifies that the format of the data is MathML</db:refpurpose>
-            <value>mathml</value>
-            <a:documentation>Specifies MathML.</a:documentation>
-          </attribute>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.align.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.valign.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.width.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.contentwidth.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.scalefit.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.scale.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.depth.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.contentdepth.attribute"/>
-        </optional>
-      </interleave>
-    </define>
-    <define name="db.imagedata.mathml.info">
-      <ref name="db._info.title.forbidden"/>
-    </define>
-    <define name="db.imagedata.mathml">
-      <element name="imagedata">
-        <ref name="db.imagedata.mathml.attlist"/>
-        <ref name="db.imagedata.mathml.info"/>
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook"
+         xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:mml="http://www.w3.org/1998/Math/MathML"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0"
+         xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
+    <define name="db.equation.content" combine="choice">
         <oneOrMore>
-          <ref name="db._any.mml"/>
+            <ref name="db._any.mml"/>
         </oneOrMore>
-      </element>
     </define>
-  </div>
-  <!-- ============================================================ -->
-  <div>
-    <db:refname>mml:*</db:refname>
-    <db:refpurpose>Any element from the MathML namespace</db:refpurpose>
-    <define name="db._any.mml">
-      <element>
-        <nsName ns="http://www.w3.org/1998/Math/MathML"/>
-        <zeroOrMore>
-          <choice>
-            <ref name="db._any.attribute"/>
-            <text/>
-            <ref name="db._any"/>
-          </choice>
-        </zeroOrMore>
-      </element>
+    <define name="db.inlineequation.content" combine="choice">
+        <oneOrMore>
+            <ref name="db._any.mml"/>
+        </oneOrMore>
     </define>
-  </div>
+    <define name="db.imageobject.content" combine="choice">
+        <ref name="db.imagedata.mathml"/>
+    </define>
+    <!-- ============================================================ -->
+    <div>
+        <db:refname>imagedata</db:refname>
+        <db:refpurpose>A MathML expression in a media object</db:refpurpose>
+        <define name="db.imagedata.mathml.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.imagedata.mathml.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.imagedata.mathml.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <optional>
+                    <attribute name="format">
+                        <db:refpurpose>Specifies that the format of the data is MathML</db:refpurpose>
+                        <value>mathml</value>
+                        <a:documentation>Specifies MathML.</a:documentation>
+                    </attribute>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.align.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.valign.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.width.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.contentwidth.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.scalefit.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.scale.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.depth.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.contentdepth.attribute"/>
+                </optional>
+            </interleave>
+        </define>
+        <define name="db.imagedata.mathml.info">
+            <ref name="db._info.title.forbidden"/>
+        </define>
+        <define name="db.imagedata.mathml">
+            <element name="imagedata">
+                <ref name="db.imagedata.mathml.attlist"/>
+                <ref name="db.imagedata.mathml.info"/>
+                <oneOrMore>
+                    <ref name="db._any.mml"/>
+                </oneOrMore>
+            </element>
+        </define>
+    </div>
+    <!-- ============================================================ -->
+    <div>
+        <db:refname>mml:*</db:refname>
+        <db:refpurpose>Any element from the MathML namespace</db:refpurpose>
+        <define name="db._any.mml">
+            <element>
+                <nsName ns="http://www.w3.org/1998/Math/MathML"/>
+                <zeroOrMore>
+                    <choice>
+                        <ref name="db._any.attribute"/>
+                        <text/>
+                        <ref name="db._any"/>
+                    </choice>
+                </zeroOrMore>
+            </element>
+        </define>
+    </div>
 </grammar>

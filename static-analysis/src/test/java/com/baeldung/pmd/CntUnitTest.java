@@ -9,9 +9,9 @@ public class CntUnitTest {
     private Cnt service;
 
     @Test
-    public void whenSecondParamIsZeroShouldReturnIntMax(){
+    public void whenSecondParamIsZeroShouldReturnIntMax() {
         service = new Cnt();
-        int answer = service.d(100,0);
+        int answer = service.d(100, 0);
         assertEquals(Integer.MAX_VALUE, answer);
     }
 }

@@ -40,7 +40,7 @@ public class User {
     private String website = "";
 
     @Directory
-    private File mainDirectory=new File(".");
+    private File mainDirectory = new File(".");
 
     public User() {
     }

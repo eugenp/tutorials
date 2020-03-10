@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>greeter-spring-boot-starter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-	<name>greeter-spring-boot-starter</name>
+    <name>greeter-spring-boot-starter</name>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>

@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
 import jxl.read.biff.BiffException;
+
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,21 +46,21 @@ public class JExcelIntegrationTest {
         Map<Integer, List<String>> data = jExcelHelper.readJExcel(fileLocation);
 
         assertEquals("Name", data.get(0)
-            .get(0));
+                .get(0));
         assertEquals("Age", data.get(0)
-            .get(1));
+                .get(1));
 
         assertEquals("John Smith", data.get(2)
-            .get(0));
+                .get(0));
         assertEquals("20", data.get(2)
-            .get(1));
+                .get(1));
     }
 
     @After
-    public void cleanup(){
+    public void cleanup() {
         File testFile = new File(fileLocation);
         if (testFile.exists()) {
-           testFile.delete();     
+            testFile.delete();
         }
     }
 }

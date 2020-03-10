@@ -4,6 +4,7 @@ import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
+
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jetty.client.api.Request;
 import org.eclipse.jetty.http.HttpField;
@@ -16,16 +17,16 @@ public class RequestLogEnhancer {
     public static Request enhance(Request request) {
         StringBuilder group = new StringBuilder();
         request.onRequestBegin(theRequest -> group
-          .append("Request ")
-          .append(theRequest.getMethod())
-          .append(" ")
-          .append(theRequest.getURI())
-          .append("\n"));
+                .append("Request ")
+                .append(theRequest.getMethod())
+                .append(" ")
+                .append(theRequest.getURI())
+                .append("\n"));
         request.onRequestHeaders(theRequest -> {
             for (HttpField header : theRequest.getHeaders())
                 group
-                  .append(header)
-                  .append("\n");
+                        .append(header)
+                        .append("\n");
         });
         request.onRequestContent((theRequest, content) -> {
             group.append(toString(content, getCharset(theRequest.getHeaders())));
@@ -37,22 +38,22 @@ public class RequestLogEnhancer {
         group.append("\n");
         request.onResponseBegin(theResponse -> {
             group
-              .append("Response \n")
-              .append(theResponse.getVersion())
-              .append(" ")
-              .append(theResponse.getStatus());
+                    .append("Response \n")
+                    .append(theResponse.getVersion())
+                    .append(" ")
+                    .append(theResponse.getStatus());
             if (theResponse.getReason() != null) {
                 group
-                  .append(" ")
-                  .append(theResponse.getReason());
+                        .append(" ")
+                        .append(theResponse.getReason());
             }
             group.append("\n");
         });
         request.onResponseHeaders(theResponse -> {
             for (HttpField header : theResponse.getHeaders())
                 group
-                  .append(header)
-                  .append("\n");
+                        .append(header)
+                        .append("\n");
         });
         request.onResponseContent((theResponse, content) -> {
             group.append(toString(content, getCharset(theResponse.getHeaders())));
@@ -79,8 +80,8 @@ public class RequestLogEnhancer {
         String contentType = headers.get(HttpHeader.CONTENT_TYPE);
         if (contentType != null) {
             String[] tokens = contentType
-              .toLowerCase(Locale.US)
-              .split("charset=");
+                    .toLowerCase(Locale.US)
+                    .split("charset=");
             if (tokens.length == 2) {
                 String encoding = tokens[1].replaceAll("[;\"]", "");
                 return Charset.forName(encoding);

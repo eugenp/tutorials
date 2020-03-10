@@ -29,15 +29,15 @@ public class JaxpTransformer {
         factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
         factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
         input = factory
-          .newDocumentBuilder()
-          .parse(resourcePath);
+                .newDocumentBuilder()
+                .parse(resourcePath);
     }
 
     public String html() throws ParserConfigurationException, TransformerException, IOException {
         Element xml = input.getDocumentElement();
         Document doc = factory
-          .newDocumentBuilder()
-          .newDocument();
+                .newDocumentBuilder()
+                .newDocument();
         //Build Map
         Map<String, String> map = buildMap(xml);
         //Head
@@ -67,17 +67,17 @@ public class JaxpTransformer {
     private Map<String, String> buildMap(Element xml) {
         Map<String, String> map = new HashMap<>();
         map.put("heading", xml
-          .getElementsByTagName("heading")
-          .item(0)
-          .getTextContent());
+                .getElementsByTagName("heading")
+                .item(0)
+                .getTextContent());
         map.put("from", String.format("from: %s", xml
-          .getElementsByTagName("from")
-          .item(0)
-          .getTextContent()));
+                .getElementsByTagName("from")
+                .item(0)
+                .getTextContent()));
         map.put("content", xml
-          .getElementsByTagName("content")
-          .item(0)
-          .getTextContent());
+                .getElementsByTagName("content")
+                .item(0)
+                .getTextContent());
         return map;
     }
 

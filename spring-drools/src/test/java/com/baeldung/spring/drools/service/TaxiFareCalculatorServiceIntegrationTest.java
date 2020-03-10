@@ -31,7 +31,7 @@ public class TaxiFareCalculatorServiceIntegrationTest {
         assertNotNull(totalCharge);
         assertEquals(Long.valueOf(70), totalCharge);
     }
-    
+
     @Test
     public void whenNightSurchargeTrueAndDistanceLessThan10_thenFixFareWithNightSurcharge() {
         TaxiRide taxiRide = new TaxiRide();
@@ -55,7 +55,7 @@ public class TaxiFareCalculatorServiceIntegrationTest {
         assertNotNull(totalCharge);
         assertEquals(Long.valueOf(170), totalCharge);
     }
-    
+
     @Test
     public void whenNightSurchargeTrueAndDistanceLessThan100_thenDoubleFareWithNightSurcharge() {
         TaxiRide taxiRide = new TaxiRide();
@@ -67,7 +67,7 @@ public class TaxiFareCalculatorServiceIntegrationTest {
         assertNotNull(totalCharge);
         assertEquals(Long.valueOf(250), totalCharge);
     }
-    
+
     @Test
     public void whenNightSurchargeFalseAndDistanceGreaterThan100_thenExtraPercentFareWithoutNightSurcharge() {
         TaxiRide taxiRide = new TaxiRide();
@@ -79,7 +79,7 @@ public class TaxiFareCalculatorServiceIntegrationTest {
         assertNotNull(totalCharge);
         assertEquals(Long.valueOf(220), totalCharge);
     }
-    
+
     @Test
     public void whenNightSurchargeTrueAndDistanceGreaterThan100_thenExtraPercentFareWithNightSurcharge() {
         TaxiRide taxiRide = new TaxiRide();

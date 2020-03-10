@@ -28,7 +28,7 @@ import com.baeldung.thymeleaf.config.WebMVCSecurity;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { WebApp.class, WebMVCConfig.class, WebMVCSecurity.class, InitSecurity.class })
+@ContextConfiguration(classes = {WebApp.class, WebMVCConfig.class, WebMVCSecurity.class, InitSecurity.class})
 public class ExpressionUtilityObjectsControllerIntegrationTest {
 
     @Autowired
@@ -59,7 +59,7 @@ public class ExpressionUtilityObjectsControllerIntegrationTest {
     public void testDates() throws Exception {
         mockMvc.perform(get("/dates").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("dates.html"));
     }
-    
+
     @Test
     public void testTeachers() throws Exception {
         mockMvc.perform(get("/listTeachers").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("listTeachers.html"));

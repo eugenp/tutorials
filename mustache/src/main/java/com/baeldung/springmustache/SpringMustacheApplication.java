@@ -23,9 +23,9 @@ public class SpringMustacheApplication {
         collector.setEnvironment(environment);
 
         return Mustache.compiler()
-          .defaultValue("Some Default Value")
-          .withLoader(templateLoader)
-          .withCollector(collector);
+                .defaultValue("Some Default Value")
+                .withLoader(templateLoader)
+                .withCollector(collector);
 
     }
 }

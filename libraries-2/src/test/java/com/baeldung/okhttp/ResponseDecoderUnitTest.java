@@ -17,9 +17,11 @@ import java.io.InputStreamReader;
 
 public class ResponseDecoderUnitTest {
 
-    @Rule public ExpectedException exceptionRule = ExpectedException.none();
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
 
-    @Rule public MockWebServer server = new MockWebServer();
+    @Rule
+    public MockWebServer server = new MockWebServer();
 
     SimpleEntity sampleResponse;
 
@@ -32,21 +34,21 @@ public class ResponseDecoderUnitTest {
         sampleResponse = new SimpleEntity("Baeldung");
         client = new OkHttpClient.Builder().build();
         mockResponse = new MockResponse()
-          .setResponseCode(200)
-          .setHeader("Content-Type", "application/json")
-          .setBody(new Gson().toJson(sampleResponse));
+                .setResponseCode(200)
+                .setHeader("Content-Type", "application/json")
+                .setBody(new Gson().toJson(sampleResponse));
     }
 
     @Test
     public void givenJacksonDecoder_whenGetStringOfResponse_thenExpectSimpleEntity() throws Exception {
         server.enqueue(mockResponse);
         Request request = new Request.Builder()
-          .url(server.url(""))
-          .build();
+                .url(server.url(""))
+                .build();
         ResponseBody responseBody = client
-          .newCall(request)
-          .execute()
-          .body();
+                .newCall(request)
+                .execute()
+                .body();
 
         Assert.assertNotNull(responseBody);
         Assert.assertNotEquals(0, responseBody.contentLength());
@@ -62,12 +64,12 @@ public class ResponseDecoderUnitTest {
     public void givenGsonDecoder_whenGetByteStreamOfResponse_thenExpectSimpleEntity() throws Exception {
         server.enqueue(mockResponse);
         Request request = new Request.Builder()
-          .url(server.url(""))
-          .build();
+                .url(server.url(""))
+                .build();
         ResponseBody responseBody = client
-          .newCall(request)
-          .execute()
-          .body();
+                .newCall(request)
+                .execute()
+                .body();
 
         Assert.assertNotNull(responseBody);
         Assert.assertNotEquals(0, responseBody.contentLength());
@@ -83,12 +85,12 @@ public class ResponseDecoderUnitTest {
     public void givenGsonDecoder_whenGetStringOfResponse_thenExpectSimpleEntity() throws Exception {
         server.enqueue(mockResponse);
         Request request = new Request.Builder()
-          .url(server.url(""))
-          .build();
+                .url(server.url(""))
+                .build();
         ResponseBody responseBody = client
-          .newCall(request)
-          .execute()
-          .body();
+                .newCall(request)
+                .execute()
+                .body();
 
         Assert.assertNotNull(responseBody);
 

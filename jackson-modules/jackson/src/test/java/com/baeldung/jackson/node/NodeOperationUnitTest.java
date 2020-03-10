@@ -29,9 +29,9 @@ public class NodeOperationUnitTest {
         final JsonNode node = mapper.valueToTree(fromValue);
 
         assertEquals(2016, node.get("id")
-            .intValue());
+                .intValue());
         assertEquals("baeldung.com", node.get("name")
-            .textValue());
+                .textValue());
     }
 
     @Test
@@ -75,20 +75,20 @@ public class NodeOperationUnitTest {
         final JsonNode rootNode = ExampleStructure.getExampleRoot();
         final ObjectNode addedNode = ((ObjectNode) rootNode).putObject("address");
         addedNode.put("city", "Seattle")
-            .put("state", "Washington")
-            .put("country", "United States");
+                .put("state", "Washington")
+                .put("country", "United States");
 
         assertFalse(rootNode.path("address")
-            .isMissingNode());
+                .isMissingNode());
         assertEquals("Seattle", rootNode.path("address")
-            .path("city")
-            .textValue());
+                .path("city")
+                .textValue());
         assertEquals("Washington", rootNode.path("address")
-            .path("state")
-            .textValue());
+                .path("state")
+                .textValue());
         assertEquals("United States", rootNode.path("address")
-            .path("country")
-            .textValue());
+                .path("country")
+                .textValue());
     }
 
     @Test
@@ -100,11 +100,11 @@ public class NodeOperationUnitTest {
         ((ObjectNode) rootNode).set("name", newNode);
 
         assertFalse(rootNode.path("name")
-            .path("nick")
-            .isMissingNode());
+                .path("nick")
+                .isMissingNode());
         assertEquals("cowtowncoder", rootNode.path("name")
-            .path("nick")
-            .textValue());
+                .path("nick")
+                .textValue());
     }
 
     @Test
@@ -113,7 +113,7 @@ public class NodeOperationUnitTest {
         ((ObjectNode) rootNode).remove("company");
 
         assertTrue(rootNode.path("company")
-            .isMissingNode());
+                .isMissingNode());
     }
 
 }

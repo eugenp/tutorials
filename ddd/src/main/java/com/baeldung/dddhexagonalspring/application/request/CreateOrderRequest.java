@@ -7,7 +7,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.validation.constraints.NotNull;
 
 public class CreateOrderRequest {
-    @NotNull private Product product;
+    @NotNull
+    private Product product;
 
     @JsonCreator
     public CreateOrderRequest(@JsonProperty("product") @NotNull final Product product) {

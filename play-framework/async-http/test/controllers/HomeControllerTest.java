@@ -9,6 +9,7 @@ import akka.actor.ActorSystem;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Sink;
 import akka.util.ByteString;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
@@ -22,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
+
 import org.apache.http.HttpStatus;
 import org.junit.Before;
 import org.junit.Test;
@@ -56,28 +58,28 @@ public class HomeControllerTest extends WithServer {
             url = "https://localhost:" + port;
         } else {
             port = testServer.getRunningHttpPort()
-                             .getAsInt();
+                    .getAsInt();
             url = "http://localhost:" + port;
         }
     }
 
     @Test
     public void givenASingleGetRequestWhenResponseThenBlockWithCompletableAndLog()
-      throws Exception {
+            throws Exception {
         WSClient ws = play.test.WSTestClient.newClient(port);
         WSResponse wsResponse = ws.url(url)
-                                  .setRequestFilter(new AhcCurlRequestLogger())
-                                  .addHeader("key", "value")
-                                  .addQueryParameter("num", "" + 1)
-                                  .get()
-                                  .toCompletableFuture()
-                                  .get();
+                .setRequestFilter(new AhcCurlRequestLogger())
+                .addHeader("key", "value")
+                .addQueryParameter("num", "" + 1)
+                .get()
+                .toCompletableFuture()
+                .get();
 
         log.debug("Thread#" + Thread.currentThread()
-                                    .getId() + " Request complete: Response code = "
-          + wsResponse.getStatus()
-          + " | Response: " + wsResponse.getBody() + " | Current Time:"
-          + System.currentTimeMillis());
+                .getId() + " Request complete: Response code = "
+                + wsResponse.getStatus()
+                + " | Response: " + wsResponse.getBody() + " | Current Time:"
+                + System.currentTimeMillis());
         assert (HttpStatus.SC_OK == wsResponse.getStatus());
     }
 
@@ -86,21 +88,21 @@ public class HomeControllerTest extends WithServer {
         CountDownLatch latch = new CountDownLatch(1);
         WSClient ws = play.test.WSTestClient.newClient(port);
         ws.url(url)
-          .setRequestFilter(new AhcCurlRequestLogger())
-          .addHeader("key", "value")
-          .addQueryParameter("num", "" + 1)
-          .get()
-          .thenAccept(r -> {
-              log.debug("Thread#" + Thread.currentThread()
-                                          .getId() + " Request complete: Response code = "
-                + r.getStatus()
-                + " | Response: " + r.getBody() + " | Current Time:" + System.currentTimeMillis());
-              latch.countDown();
-          });
+                .setRequestFilter(new AhcCurlRequestLogger())
+                .addHeader("key", "value")
+                .addQueryParameter("num", "" + 1)
+                .get()
+                .thenAccept(r -> {
+                    log.debug("Thread#" + Thread.currentThread()
+                            .getId() + " Request complete: Response code = "
+                            + r.getStatus()
+                            + " | Response: " + r.getBody() + " | Current Time:" + System.currentTimeMillis());
+                    latch.countDown();
+                });
 
         log.debug(
-          "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
-        latch.await(5, TimeUnit.SECONDS );
+                "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
+        latch.await(5, TimeUnit.SECONDS);
         assertEquals(0, latch.getCount());
         log.debug("All requests have been completed. Exiting test.");
     }
@@ -110,19 +112,19 @@ public class HomeControllerTest extends WithServer {
         CountDownLatch latch = new CountDownLatch(1);
         WSClient ws = play.test.WSTestClient.newClient(port);
         ws.url(url)
-          .setContentType("application/x-www-form-urlencoded")
-          .post("key1=value1&key2=value2")
-          .thenAccept(r -> {
-              log.debug("Thread#" + Thread.currentThread()
-                                          .getId() + " Request complete: Response code = "
-                + r.getStatus()
-                + " | Response: " + r.getBody() + " | Current Time:" + System.currentTimeMillis());
-              latch.countDown();
-          });
+                .setContentType("application/x-www-form-urlencoded")
+                .post("key1=value1&key2=value2")
+                .thenAccept(r -> {
+                    log.debug("Thread#" + Thread.currentThread()
+                            .getId() + " Request complete: Response code = "
+                            + r.getStatus()
+                            + " | Response: " + r.getBody() + " | Current Time:" + System.currentTimeMillis());
+                    latch.countDown();
+                });
 
         log.debug(
-          "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
-        latch.await(5, TimeUnit.SECONDS );
+                "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
+        latch.await(5, TimeUnit.SECONDS);
         assertEquals(0, latch.getCount());
         log.debug("All requests have been completed. Exiting test.");
     }
@@ -132,25 +134,25 @@ public class HomeControllerTest extends WithServer {
         CountDownLatch latch = new CountDownLatch(100);
         WSClient ws = play.test.WSTestClient.newClient(port);
         IntStream.range(0, 100)
-                 .parallel()
-                 .forEach(num ->
-                   ws.url(url)
-                     .setRequestFilter(new AhcCurlRequestLogger())
-                     .addHeader("key", "value")
-                     .addQueryParameter("num", "" + num)
-                     .get()
-                     .thenAccept(r -> {
-                         log.debug(
-                           "Thread#" + num + " Request complete: Response code = " + r.getStatus()
-                             + " | Response: " + r.getBody() + " | Current Time:"
-                             + System.currentTimeMillis());
-                         latch.countDown();
-                     })
-                 );
+                .parallel()
+                .forEach(num ->
+                        ws.url(url)
+                                .setRequestFilter(new AhcCurlRequestLogger())
+                                .addHeader("key", "value")
+                                .addQueryParameter("num", "" + num)
+                                .get()
+                                .thenAccept(r -> {
+                                    log.debug(
+                                            "Thread#" + num + " Request complete: Response code = " + r.getStatus()
+                                                    + " | Response: " + r.getBody() + " | Current Time:"
+                                                    + System.currentTimeMillis());
+                                    latch.countDown();
+                                })
+                );
 
         log.debug(
-          "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
-        latch.await(5, TimeUnit.SECONDS );
+                "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
+        latch.await(5, TimeUnit.SECONDS);
         assertEquals(0, latch.getCount());
         log.debug("All requests have been completed. Exiting test.");
     }
@@ -160,20 +162,20 @@ public class HomeControllerTest extends WithServer {
         CountDownLatch latch = new CountDownLatch(1);
         WSClient ws = play.test.WSTestClient.newClient(port);
         Futures futures = app.injector()
-                             .instanceOf(Futures.class);
+                .instanceOf(Futures.class);
         CompletionStage<Result> f = futures.timeout(
-          ws.url(url)
-            .setRequestTimeout(Duration.of(1, SECONDS))
-            .get()
-            .thenApply(result -> {
-                try {
-                    Thread.sleep(2000L);
-                    return Results.ok();
-                } catch (InterruptedException e) {
-                    return Results.status(
-                      SERVICE_UNAVAILABLE);
-                }
-            }), 1L, TimeUnit.SECONDS
+                ws.url(url)
+                        .setRequestTimeout(Duration.of(1, SECONDS))
+                        .get()
+                        .thenApply(result -> {
+                            try {
+                                Thread.sleep(2000L);
+                                return Results.ok();
+                            } catch (InterruptedException e) {
+                                return Results.status(
+                                        SERVICE_UNAVAILABLE);
+                            }
+                        }), 1L, TimeUnit.SECONDS
         );
         CompletionStage<Object> res = f.handleAsync((result, e) -> {
             if (e != null) {
@@ -187,8 +189,8 @@ public class HomeControllerTest extends WithServer {
         res.thenAccept(result -> assertEquals(TimeoutException.class, result));
 
         log.debug(
-          "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
-        latch.await(5, TimeUnit.SECONDS );
+                "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
+        latch.await(5, TimeUnit.SECONDS);
         assertEquals(0, latch.getCount());
         log.debug("All requests have been completed. Exiting test.");
     }
@@ -203,29 +205,29 @@ public class HomeControllerTest extends WithServer {
         WSClient ws = play.test.WSTestClient.newClient(port);
         log.info("Starting test server on url: " + url);
         ws.url(url)
-          .stream()
-          .thenAccept(
-            response -> {
-                try {
-                    OutputStream outputStream = java.nio.file.Files.newOutputStream(path);
-                    Sink<ByteString, CompletionStage<Done>> outputWriter =
-                      Sink.foreach(bytes -> {
-                          log.info("Reponse: " + bytes.utf8String());
-                          outputStream.write(bytes.toArray());
-                      });
+                .stream()
+                .thenAccept(
+                        response -> {
+                            try {
+                                OutputStream outputStream = java.nio.file.Files.newOutputStream(path);
+                                Sink<ByteString, CompletionStage<Done>> outputWriter =
+                                        Sink.foreach(bytes -> {
+                                            log.info("Reponse: " + bytes.utf8String());
+                                            outputStream.write(bytes.toArray());
+                                        });
 
-                    response.getBodyAsSource()
-                            .runWith(outputWriter, materializer);
+                                response.getBodyAsSource()
+                                        .runWith(outputWriter, materializer);
 
-                } catch (IOException e) {
-                    log.error("An error happened while opening the output stream", e);
-                }
-            })
-          .whenComplete((value, error) -> latch.countDown());
+                            } catch (IOException e) {
+                                log.error("An error happened while opening the output stream", e);
+                            }
+                        })
+                .whenComplete((value, error) -> latch.countDown());
 
         log.debug(
-          "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
-        latch.await(5, TimeUnit.SECONDS );
+                "Waiting for requests to be completed. Current Time: " + System.currentTimeMillis());
+        latch.await(5, TimeUnit.SECONDS);
         assertEquals(0, latch.getCount());
         log.debug("All requests have been completed. Exiting test.");
     }

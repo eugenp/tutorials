@@ -50,8 +50,8 @@ public class CollectionFilteringUnitTest {
         List<String> nameFilter = employeeNameFilter();
 
         filteredList = originalList.stream()
-            .filter(employee -> nameFilter.contains(employee.getName()))
-            .collect(Collectors.toList());
+                .filter(employee -> nameFilter.contains(employee.getName()))
+                .collect(Collectors.toList());
 
         Assert.assertThat(filteredList.size(), Matchers.is(nameFilter.size()));
     }
@@ -61,11 +61,11 @@ public class CollectionFilteringUnitTest {
         List<Employee> filteredList;
         List<Employee> originalList = buildEmployeeList();
         Set<String> nameFilterSet = employeeNameFilter().stream()
-            .collect(Collectors.toSet());
+                .collect(Collectors.toSet());
 
         filteredList = originalList.stream()
-            .filter(employee -> nameFilterSet.contains(employee.getName()))
-            .collect(Collectors.toList());
+                .filter(employee -> nameFilterSet.contains(employee.getName()))
+                .collect(Collectors.toList());
 
         Assert.assertThat(filteredList.size(), Matchers.is(nameFilterSet.size()));
     }

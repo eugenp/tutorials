@@ -6,10 +6,9 @@ import com.baeldung.domain.Book;
 
 /**
  * = BookRepositoryImpl
- *
+ * <p>
  * TODO Auto-generated class documentation
- *
- */ 
+ */
 @RooJpaRepositoryCustomImpl(repository = BookRepositoryCustom.class)
 public class BookRepositoryImpl extends QueryDslRepositorySupportExt<Book> {
 

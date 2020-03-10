@@ -19,7 +19,7 @@ public class AVLTree {
         Node current = root;
         while (current != null) {
             if (current.key == key) {
-               break;
+                break;
             }
             current = current.key < key ? current.right : current.left;
         }

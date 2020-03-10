@@ -24,7 +24,7 @@ public class MultipleLoginSecurityConfig {
         manager.createUser(User.withUsername("admin").password(encoder().encode("adminPass")).roles("ADMIN").build());
         return manager;
     }
-    
+
     @Bean
     public static PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();

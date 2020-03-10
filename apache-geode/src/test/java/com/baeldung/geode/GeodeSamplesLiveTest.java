@@ -31,11 +31,11 @@ public class GeodeSamplesLiveTest {
     @Before
     public void connect() {
         this.cache = new ClientCacheFactory().addPoolLocator("localhost", 10334)
-            .create();
-        this.region = this.cache.<String, String> createClientRegionFactory(ClientRegionShortcut.CACHING_PROXY)
-            .create("baeldung");
-        this.customerRegion = this.cache.<CustomerKey, Customer> createClientRegionFactory(ClientRegionShortcut.CACHING_PROXY)
-            .create("baeldung-customers");
+                .create();
+        this.region = this.cache.<String, String>createClientRegionFactory(ClientRegionShortcut.CACHING_PROXY)
+                .create("baeldung");
+        this.customerRegion = this.cache.<CustomerKey, Customer>createClientRegionFactory(ClientRegionShortcut.CACHING_PROXY)
+                .create("baeldung-customers");
     }
 
     @After
@@ -59,12 +59,12 @@ public class GeodeSamplesLiveTest {
 
         Supplier<Stream<String>> keys = () -> Stream.of("A", "B", "C", "D", "E");
         Map<String, String> values = keys.get()
-            .collect(Collectors.toMap(Function.identity(), String::toLowerCase));
+                .collect(Collectors.toMap(Function.identity(), String::toLowerCase));
 
         this.region.putAll(values);
 
         keys.get()
-            .forEach(k -> assertEquals(k.toLowerCase(), this.region.get(k)));
+                .forEach(k -> assertEquals(k.toLowerCase(), this.region.get(k)));
 
     }
 
@@ -95,7 +95,7 @@ public class GeodeSamplesLiveTest {
         QueryService queryService = this.cache.getQueryService();
         String query = "select * from /baeldung-customers c where c.firstName = 'Allan'";
         SelectResults<Customer> queryResults = (SelectResults<Customer>) queryService.newQuery(query)
-            .execute();
+                .execute();
         assertEquals(1, queryResults.size());
 
     }

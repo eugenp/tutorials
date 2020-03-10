@@ -59,7 +59,7 @@ public class RetryQueuesInterceptor implements MethodInterceptor {
     private void ack(MessageAndChannel mac) {
         try {
             mac.channel.basicAck(mac.message.getMessageProperties()
-                .getDeliveryTag(), false);
+                    .getDeliveryTag(), false);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -94,7 +94,7 @@ public class RetryQueuesInterceptor implements MethodInterceptor {
         });
 
         mac.channel.basicReject(mac.message.getMessageProperties()
-            .getDeliveryTag(), false);
+                .getDeliveryTag(), false);
     }
 
     private class MessageAndChannel {

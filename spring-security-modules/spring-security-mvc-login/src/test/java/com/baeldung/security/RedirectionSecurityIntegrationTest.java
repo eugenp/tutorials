@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "/RedirectionWebSecurityConfig.xml", "/mvc-servlet.xml" })
+@ContextConfiguration({"/RedirectionWebSecurityConfig.xml", "/mvc-servlet.xml"})
 @WebAppConfiguration
 public class RedirectionSecurityIntegrationTest {
 
@@ -41,46 +41,46 @@ public class RedirectionSecurityIntegrationTest {
     @Before
     public void setup() {
         mvc = MockMvcBuilders.webAppContextSetup(context)
-            .apply(springSecurity())
-            .build();
+                .apply(springSecurity())
+                .build();
         userDetails = userDetailsService.loadUserByUsername("user1");
     }
 
     @Test
     public void givenSecuredResource_whenAccessUnauthenticated_thenRequiresAuthentication() throws Exception {
         mvc.perform(get("/secured"))
-            .andExpect(status().is3xxRedirection())
-            .andExpect(redirectedUrlPattern("**/login"));
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrlPattern("**/login"));
 
     }
 
     @Test
     public void givenCredentials_whenAccessSecuredResource_thenSuccess() throws Exception {
         mvc.perform(get("/secured").with(user(userDetails)))
-            .andExpect(status().isOk());
+                .andExpect(status().isOk());
     }
 
     @Test
     public void givenAccessSecuredResource_whenAuthenticated_thenRedirectedBack() throws Exception {
         MockHttpServletRequestBuilder securedResourceAccess = get("/secured");
         MvcResult unauthenticatedResult = mvc.perform(securedResourceAccess)
-            .andExpect(status().is3xxRedirection())
-            .andReturn();
+                .andExpect(status().is3xxRedirection())
+                .andReturn();
 
         MockHttpSession session = (MockHttpSession) unauthenticatedResult.getRequest()
-            .getSession();
+                .getSession();
         String loginUrl = unauthenticatedResult.getResponse()
-            .getRedirectedUrl();
+                .getRedirectedUrl();
         mvc.perform(post(loginUrl).param("username", userDetails.getUsername())
-            .param("password", userDetails.getPassword())
-            .session(session)
-            .with(csrf()))
-            .andExpect(status().is3xxRedirection())
-            .andExpect(redirectedUrlPattern("**/secured"))
-            .andReturn();
+                .param("password", userDetails.getPassword())
+                .session(session)
+                .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrlPattern("**/secured"))
+                .andReturn();
 
         mvc.perform(securedResourceAccess.session(session))
-            .andExpect(status().isOk());
+                .andExpect(status().isOk());
 
     }
 

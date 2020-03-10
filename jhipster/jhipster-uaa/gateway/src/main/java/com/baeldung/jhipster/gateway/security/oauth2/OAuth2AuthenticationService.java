@@ -91,7 +91,7 @@ public class OAuth2AuthenticationService {
      * @return the new servlet request containing the updated cookies for relaying downstream.
      */
     public HttpServletRequest refreshToken(HttpServletRequest request, HttpServletResponse response, Cookie
-        refreshCookie) {
+            refreshCookie) {
         //check if non-remember-me session has expired
         if (cookieHelper.isSessionExpired(refreshCookie)) {
             log.info("session has expired due to inactivity");

@@ -57,14 +57,14 @@ public class MappingFrameworksPerformance {
     public void setUp() {
         User user = new User("John", "John@doe.com", AccountStatus.ACTIVE);
         RefundPolicy refundPolicy = new RefundPolicy(true, 30, Collections
-          .singletonList("Refundable only if not used!"));
+                .singletonList("Refundable only if not used!"));
 
         Product product = new Product(BigDecimal.valueOf(10.99),
-          100,
-          "Sample Product",
-          "Sample Product to be sold",
-          true,
-          refundPolicy
+                100,
+                "Sample Product",
+                "Sample Product to be sold",
+                true,
+                refundPolicy
         );
 
         Discount discount = new Discount(Instant.now().toString(), Instant.now().toString(), BigDecimal.valueOf(5.99));
@@ -83,15 +83,15 @@ public class MappingFrameworksPerformance {
         Shop shop = new Shop("Super Shop", shopAddress, "www.super-shop.com", reviewList);
 
         sourceOrder = new SourceOrder(OrderStatus.CONFIRMED,
-          Instant.now().toString(),
-          Instant.MAX.toString(),
-          PaymentType.TRANSFER,
-          discount,
-          deliveryData,
-          user,
-          Collections.singletonList(product),
-          shop,
-          1
+                Instant.now().toString(),
+                Instant.MAX.toString(),
+                PaymentType.TRANSFER,
+                discount,
+                deliveryData,
+                user,
+                Collections.singletonList(product),
+                shop,
+                1
         );
 
         sourceCode = new SourceCode("This is source code!");

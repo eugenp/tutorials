@@ -6,13 +6,13 @@ interface BaseInterface {
 
 interface FirstChildInterface : BaseInterface {
     override fun someMethod(): String {
-        return("Hello, from someMethod in FirstChildInterface")
+        return ("Hello, from someMethod in FirstChildInterface")
     }
 }
 
 interface SecondChildInterface : BaseInterface {
     override fun someMethod(): String {
-        return("Hello, from someMethod in SecondChildInterface")
+        return ("Hello, from someMethod in SecondChildInterface")
     }
 }
 

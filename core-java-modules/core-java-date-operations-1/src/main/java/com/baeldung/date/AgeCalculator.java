@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Date;
+
 import org.joda.time.Years;
 
 public class AgeCalculator {
@@ -12,7 +13,7 @@ public class AgeCalculator {
     public int calculateAge(LocalDate birthDate, LocalDate currentDate) {
         // validate inputs ...
         return Period.between(birthDate, currentDate)
-            .getYears();
+                .getYears();
     }
 
     public int calculateAgeWithJodaTime(org.joda.time.LocalDate birthDate, org.joda.time.LocalDate currentDate) {

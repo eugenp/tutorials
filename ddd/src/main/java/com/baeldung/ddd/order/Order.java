@@ -39,9 +39,9 @@ public class Order {
 
     private Money calculateTotalCost() {
         return orderLines.stream()
-            .map(OrderLine::cost)
-            .reduce(Money::plus)
-            .get();
+                .map(OrderLine::cost)
+                .reduce(Money::plus)
+                .get();
     }
 
     private static void checkNotNull(Object par) {

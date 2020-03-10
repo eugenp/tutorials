@@ -22,8 +22,7 @@ public class PowerPointHelper {
     /**
      * Read an existing presentation
      *
-     * @param fileLocation
-     *            File location of the presentation
+     * @param fileLocation File location of the presentation
      * @return instance of {@link XMLSlideShow}
      * @throws IOException
      */
@@ -34,8 +33,7 @@ public class PowerPointHelper {
     /**
      * Create a sample presentation
      *
-     * @param fileLocation
-     *            File location of the presentation
+     * @param fileLocation File location of the presentation
      * @throws IOException
      */
     public void createPresentation(String fileLocation) throws IOException {
@@ -127,10 +125,8 @@ public class PowerPointHelper {
     /**
      * Delete a slide from the presentation
      *
-     * @param ppt
-     *            The presentation
-     * @param slideNumber
-     *            The number of the slide to be deleted (0-based)
+     * @param ppt         The presentation
+     * @param slideNumber The number of the slide to be deleted (0-based)
      */
     public void deleteSlide(XMLSlideShow ppt, int slideNumber) {
         ppt.removeSlide(slideNumber);
@@ -139,12 +135,9 @@ public class PowerPointHelper {
     /**
      * Re-order the slides inside a presentation
      *
-     * @param ppt
-     *            The presentation
-     * @param slideNumber
-     *            The number of the slide to move
-     * @param newSlideNumber
-     *            The new position of the slide (0-base)
+     * @param ppt            The presentation
+     * @param slideNumber    The number of the slide to move
+     * @param newSlideNumber The new position of the slide (0-base)
      */
     public void reorderSlide(XMLSlideShow ppt, int slideNumber, int newSlideNumber) {
         List<XSLFSlide> slides = ppt.getSlides();
@@ -155,9 +148,8 @@ public class PowerPointHelper {
 
     /**
      * Retrieve the placeholder inside a slide
-     * 
-     * @param slide 
-     *          The slide
+     *
+     * @param slide The slide
      * @return List of placeholder inside a slide
      */
     public List<XSLFShape> retrieveTemplatePlaceholders(XSLFSlide slide) {
@@ -174,8 +166,7 @@ public class PowerPointHelper {
     /**
      * Create a table
      *
-     * @param slide
-     *            Slide
+     * @param slide Slide
      */
     private void createTable(XSLFSlide slide) {
 

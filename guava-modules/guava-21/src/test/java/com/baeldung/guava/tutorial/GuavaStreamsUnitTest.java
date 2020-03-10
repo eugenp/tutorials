@@ -99,9 +99,9 @@ public class GuavaStreamsUnitTest {
     @Test
     public void concatStreamsOfSameType() {
         List<Integer> oddNumbers = Arrays
-          .asList(1, 3, 5, 7, 9, 11, 13, 15, 17, 19);
+                .asList(1, 3, 5, 7, 9, 11, 13, 15, 17, 19);
         List<Integer> evenNumbers = Arrays
-          .asList(2, 4, 6, 8, 10, 12, 14, 16, 18, 20);
+                .asList(2, 4, 6, 8, 10, 12, 14, 16, 18, 20);
 
         Stream<Integer> combinedStreams = Streams.concat(oddNumbers.stream(), evenNumbers.stream());
 
@@ -140,8 +140,8 @@ public class GuavaStreamsUnitTest {
 
         //Assert.assertNotNull(mappedStream);
         assertEquals(mappedStream
-          .findFirst()
-          .get(), "a:0");
+                .findFirst()
+                .get(), "a:0");
 
     }
 
@@ -153,8 +153,8 @@ public class GuavaStreamsUnitTest {
 
         //Assert.assertNotNull(mappedStream);
         assertEquals(mappedStream
-          .findFirst()
-          .get(), "a:1");
+                .findFirst()
+                .get(), "a:1");
 
     }
 

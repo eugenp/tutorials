@@ -29,9 +29,9 @@ public class DynamoDbConfiguration {
     @Bean
     public AmazonDynamoDB amazonDynamoDB() {
         AmazonDynamoDB amazonDynamoDB = AmazonDynamoDBClientBuilder.standard()
-            .withCredentials(amazonAWSCredentials())
-            .withEndpointConfiguration(setupEndpointConfiguration())
-            .build();
+                .withCredentials(amazonAWSCredentials())
+                .withEndpointConfiguration(setupEndpointConfiguration())
+                .build();
 
         return amazonDynamoDB;
     }

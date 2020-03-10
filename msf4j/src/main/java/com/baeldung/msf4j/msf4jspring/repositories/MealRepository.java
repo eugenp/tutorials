@@ -2,6 +2,7 @@ package com.baeldung.msf4j.msf4jspring.repositories;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.stereotype.Component;
 import com.baeldung.msf4j.msf4jspring.domain.Meal;
 

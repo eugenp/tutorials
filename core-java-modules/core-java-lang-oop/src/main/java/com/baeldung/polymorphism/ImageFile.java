@@ -35,7 +35,7 @@ public class ImageFile extends GenericFile {
 
     public String read() {
         return this.getContent()
-            .toString();
+                .toString();
     }
 
 }

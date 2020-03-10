@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SimpleController {
 
     Logger logger = LoggerFactory.getLogger(SimpleController.class);
-    
+
     @GetMapping("/slf4j-guide-request")
     public String processList(List<String> list) {
         logger.info("Client requested process the following list: {}", list);
@@ -28,7 +28,7 @@ public class SimpleController {
         }
         return "done";
     }
-    
+
     @GetMapping("/slf4j-guide-mdc-request")
     public String clientMDCRequest(@RequestHeader String clientId) throws InterruptedException {
         MDC.put("clientId", clientId);

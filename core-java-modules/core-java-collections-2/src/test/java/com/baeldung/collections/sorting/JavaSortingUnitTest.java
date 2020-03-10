@@ -23,13 +23,13 @@ public class JavaSortingUnitTest {
     @Before
     public void initVariables() {
 
-        toSort = new int[] { 5, 1, 89, 255, 7, 88, 200, 123, 66 };
-        sortedInts = new int[] { 1, 5, 7, 66, 88, 89, 123, 200, 255 };
-        sortedRangeInts = new int[] { 5, 1, 89, 7, 88, 200, 255, 123, 66 };
+        toSort = new int[]{5, 1, 89, 255, 7, 88, 200, 123, 66};
+        sortedInts = new int[]{1, 5, 7, 66, 88, 89, 123, 200, 255};
+        sortedRangeInts = new int[]{5, 1, 89, 7, 88, 200, 255, 123, 66};
 
-        employees = new Employee[] { new Employee("John", 23, 5000), new Employee("Steve", 26, 6000), new Employee("Frank", 33, 7000), new Employee("Earl", 43, 10000), new Employee("Jessica", 23, 4000), new Employee("Pearl", 33, 6000) };
-        employeesSorted = new Employee[] { new Employee("Earl", 43, 10000), new Employee("Frank", 33, 70000), new Employee("Jessica", 23, 4000), new Employee("John", 23, 5000), new Employee("Pearl", 33, 4000), new Employee("Steve", 26, 6000) };
-        employeesSortedByAge = new Employee[] { new Employee("John", 23, 5000), new Employee("Jessica", 23, 4000), new Employee("Steve", 26, 6000), new Employee("Frank", 33, 70000), new Employee("Pearl", 33, 4000), new Employee("Earl", 43, 10000) };
+        employees = new Employee[]{new Employee("John", 23, 5000), new Employee("Steve", 26, 6000), new Employee("Frank", 33, 7000), new Employee("Earl", 43, 10000), new Employee("Jessica", 23, 4000), new Employee("Pearl", 33, 6000)};
+        employeesSorted = new Employee[]{new Employee("Earl", 43, 10000), new Employee("Frank", 33, 70000), new Employee("Jessica", 23, 4000), new Employee("John", 23, 5000), new Employee("Pearl", 33, 4000), new Employee("Steve", 26, 6000)};
+        employeesSortedByAge = new Employee[]{new Employee("John", 23, 5000), new Employee("Jessica", 23, 4000), new Employee("Steve", 26, 6000), new Employee("Frank", 33, 70000), new Employee("Pearl", 33, 4000), new Employee("Earl", 43, 10000)};
 
         map = new HashMap<>();
         map.put(55, "John");
@@ -104,7 +104,7 @@ public class JavaSortingUnitTest {
 
     @Test
     public void givenMap_whenSortingByKeys_thenSortedMap() {
-        Integer[] sortedKeys = new Integer[] { 6, 12, 22, 55, 66, 77 };
+        Integer[] sortedKeys = new Integer[]{6, 12, 22, 55, 66, 77};
 
         List<Map.Entry<Integer, String>> entries = new ArrayList<>(map.entrySet());
         entries.sort(Comparator.comparing(Entry::getKey));
@@ -114,12 +114,12 @@ public class JavaSortingUnitTest {
         }
 
         assertTrue(Arrays.equals(sortedMap.keySet()
-            .toArray(), sortedKeys));
+                .toArray(), sortedKeys));
     }
 
     @Test
     public void givenMap_whenSortingByValues_thenSortedMap() {
-        String[] sortedValues = new String[] { "Apple", "Earl", "George", "John", "Pearl", "Rocky" };
+        String[] sortedValues = new String[]{"Apple", "Earl", "George", "John", "Pearl", "Rocky"};
 
         List<Map.Entry<Integer, String>> entries = new ArrayList<>(map.entrySet());
         entries.sort(Comparator.comparing(Entry::getValue));
@@ -129,7 +129,7 @@ public class JavaSortingUnitTest {
         }
 
         assertTrue(Arrays.equals(sortedMap.values()
-            .toArray(), sortedValues));
+                .toArray(), sortedValues));
     }
 
     @Test

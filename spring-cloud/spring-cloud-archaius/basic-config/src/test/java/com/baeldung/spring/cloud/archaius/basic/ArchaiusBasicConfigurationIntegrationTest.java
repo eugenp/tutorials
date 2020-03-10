@@ -24,14 +24,14 @@ public class ArchaiusBasicConfigurationIntegrationTest {
     ConfigurableApplicationContext context;
 
     private DynamicStringProperty testPropertyWithDynamic = DynamicPropertyFactory.getInstance()
-        .getStringProperty("baeldung.archaius.test.properties.one", "not found!");
+            .getStringProperty("baeldung.archaius.test.properties.one", "not found!");
 
     @Test
     public void givenIntialPropertyValue_whenPropertyChanges_thenArchaiusRetrievesNewValue() {
         String initialValue = testPropertyWithDynamic.get();
 
         TestPropertyValues.of("baeldung.archaius.test.properties.one=new-value")
-            .applyTo(context);
+                .applyTo(context);
         context.publishEvent(new EnvironmentChangeEvent(Collections.singleton("baeldung.archaius.test.properties.one")));
         String finalValue = testPropertyWithDynamic.get();
 

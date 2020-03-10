@@ -31,8 +31,8 @@ public class AuthServiceConfig extends AuthorizationServerConfigurerAdapter {
         clients.inMemory()
                 .withClient("baeldung_api_key")
                 .secret("baeldung_api_secret")
-                .authorizedGrantTypes("password","refresh_token")
-                .scopes("read","write").autoApprove(true);
+                .authorizedGrantTypes("password", "refresh_token")
+                .scopes("read", "write").autoApprove(true);
     }
 
     @Override

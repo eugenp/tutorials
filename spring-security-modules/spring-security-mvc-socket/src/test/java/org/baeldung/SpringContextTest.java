@@ -13,8 +13,8 @@ import com.baeldung.springsecuredsockets.config.SocketBrokerConfig;
 import com.baeldung.springsecuredsockets.config.SocketSecurityConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { AppConfig.class, DataStoreConfig.class, SecurityConfig.class,
-		SocketBrokerConfig.class, SocketSecurityConfig.class })
+@ContextConfiguration(classes = {AppConfig.class, DataStoreConfig.class, SecurityConfig.class,
+        SocketBrokerConfig.class, SocketSecurityConfig.class})
 @WebAppConfiguration
 public class SpringContextTest {
 

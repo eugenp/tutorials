@@ -18,12 +18,12 @@ import com.baeldung.spring.web.config.WebConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { WebConfig.class })
+@ContextConfiguration(classes = {WebConfig.class})
 public class ArticleViewerControllerWithOptionalParamIntegrationTest {
 
     @Autowired
     private WebApplicationContext wac;
- 
+
     private MockMvc mockMvc;
 
     @Before
@@ -33,23 +33,23 @@ public class ArticleViewerControllerWithOptionalParamIntegrationTest {
 
     @Test
     public void givenOPtionalParam_whenIdPathVariableIsPassed_thenResponseOK() throws Exception {
-    
+
         int articleId = 154;
-        
+
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/optionalParam/article/{id}", articleId))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(articleId));
-                
+                .perform(MockMvcRequestBuilders.get("/optionalParam/article/{id}", articleId))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(articleId));
+
     }
-    
+
     @Test
     public void givenOPtionalParam_whenIdPathVariableIsNotPassed_thenResponseOK() throws Exception {
-            
+
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/optionalParam/article"))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(Article.DEFAULT_ARTICLE.getId()));
-                
+                .perform(MockMvcRequestBuilders.get("/optionalParam/article"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(Article.DEFAULT_ARTICLE.getId()));
+
     }
 }

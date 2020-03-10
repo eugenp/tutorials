@@ -7,11 +7,11 @@ import javax.persistence.Id;
 
 @Entity
 public class Preference {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String timezone;
 
     public Long getId() {

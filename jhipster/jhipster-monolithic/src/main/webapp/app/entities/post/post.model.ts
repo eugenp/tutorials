@@ -1,4 +1,5 @@
-import { User } from '../../shared';
+import {User} from '../../shared';
+
 export class Post {
     constructor(
         public id?: number,

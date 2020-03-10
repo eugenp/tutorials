@@ -35,7 +35,7 @@ public class JavasisstUnitTest {
         // given
         String classNameWithPackage = "com.baeldung.JavassistGeneratedClass";
         ClassFile cf = new ClassFile(false, classNameWithPackage, null);
-        cf.setInterfaces(new String[] { "java.lang.Cloneable" });
+        cf.setInterfaces(new String[]{"java.lang.Cloneable"});
 
         FieldInfo f = new FieldInfo(cf.getConstPool(), "id", "I");
         f.setAccessFlags(AccessFlag.PUBLIC);

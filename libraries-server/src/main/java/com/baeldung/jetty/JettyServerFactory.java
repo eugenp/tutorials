@@ -8,9 +8,8 @@ import org.eclipse.jetty.webapp.WebAppContext;
 
 /**
  * Simple factory for creating Jetty basic instances.
- * 
- * @author Donato Rimenti
  *
+ * @author Donato Rimenti
  */
 public class JettyServerFactory {
 
@@ -33,7 +32,7 @@ public class JettyServerFactory {
     /**
      * Returns a simple server listening on port 80 with a timeout of 30 seconds
      * for connections and no handlers.
-     * 
+     *
      * @return a server
      */
     public static Server createBaseServer() {
@@ -52,7 +51,7 @@ public class JettyServerFactory {
     /**
      * Creates a server which delegates the request handling to a web
      * application.
-     * 
+     *
      * @return a server
      */
     public static Server createWebAppServer() {
@@ -68,7 +67,7 @@ public class JettyServerFactory {
     /**
      * Creates a server which delegates the request handling to both a logging
      * handler and to a web application, in this order.
-     * 
+     *
      * @return a server
      */
     public static Server createMultiHandlerServer() {

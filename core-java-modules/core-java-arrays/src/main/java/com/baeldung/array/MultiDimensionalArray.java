@@ -6,15 +6,15 @@ import java.util.Scanner;
 public class MultiDimensionalArray {
 
     int[][] shortHandFormInitialization() {
-        int[][] multiDimensionalArray = { { 1, 2 }, { 3, 4, 5 }, { 6, 7, 8, 9 } };
+        int[][] multiDimensionalArray = {{1, 2}, {3, 4, 5}, {6, 7, 8, 9}};
         return multiDimensionalArray;
     }
 
     int[][] declarationAndThenInitialization() {
         int[][] multiDimensionalArray = new int[3][];
-        multiDimensionalArray[0] = new int[] { 1, 2 };
-        multiDimensionalArray[1] = new int[] { 3, 4, 5 };
-        multiDimensionalArray[2] = new int[] { 6, 7, 8, 9 };
+        multiDimensionalArray[0] = new int[]{1, 2};
+        multiDimensionalArray[1] = new int[]{3, 4, 5};
+        multiDimensionalArray[2] = new int[]{6, 7, 8, 9};
         return multiDimensionalArray;
     }
 
@@ -62,8 +62,8 @@ public class MultiDimensionalArray {
 
     Integer[] findLengthOfElements(Integer[][] multiDimensionalArray) {
         return Arrays.stream(multiDimensionalArray)
-          .map(array -> array.length)
-          .toArray(Integer[]::new);
+                .map(array -> array.length)
+                .toArray(Integer[]::new);
     }
 
     int[][] copy2DArray(int[][] arrayOfArrays) {
@@ -77,7 +77,7 @@ public class MultiDimensionalArray {
 
     Integer[][] copy2DArray(Integer[][] arrayOfArrays) {
         return Arrays.stream(arrayOfArrays)
-          .map(array -> Arrays.copyOf(array, array.length))
-          .toArray(Integer[][]::new);
+                .map(array -> Arrays.copyOf(array, array.length))
+                .toArray(Integer[][]::new);
     }
 }

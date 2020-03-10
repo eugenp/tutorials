@@ -1,7 +1,7 @@
 /**
-  This class invokes the configuration factory through the run time property,
-  as defined in section 4.2 of the "Programmatic Configuration with Log4j 2"
-**/
+ * This class invokes the configuration factory through the run time property,
+ * as defined in section 4.2 of the "Programmatic Configuration with Log4j 2"
+ **/
 package com.baeldung.logging.log4j2.simpleconfiguration;
 
 import com.baeldung.logging.log4j2.Log4j2BaseIntegrationTest;

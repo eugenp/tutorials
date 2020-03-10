@@ -37,8 +37,8 @@ public class SecuredControllerSpringBootIntegrationTest {
     @Test
     public void givenRequestOnPrivateService_shouldFailWith401() throws Exception {
         mvc.perform(get("/private/hello")
-                        .contentType(MediaType.APPLICATION_JSON))
-                    .andExpect(status().isUnauthorized());
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isUnauthorized());
     }
 
     @WithMockUser("spring")
@@ -46,7 +46,7 @@ public class SecuredControllerSpringBootIntegrationTest {
     public void givenAuthRequestOnPrivateService_shouldSucceedWith200() throws Exception {
         mvc.perform(get("/private/hello")
                 .contentType(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk());
+                .andExpect(status().isOk());
     }
 
 }

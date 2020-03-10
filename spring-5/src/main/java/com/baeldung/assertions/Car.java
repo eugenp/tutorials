@@ -99,7 +99,7 @@ public class Car {
         car.fuel();
 
         car.сhangeOil("oil");
-        
+
         CarBattery carBattery = new CarBattery();
         car.replaceBattery(carBattery);
 
@@ -117,7 +117,7 @@ public class Car {
         repairPartsMap.put("1", "part");
         car.repair(repairPartsMap);
 
-        String[] repairPartsArray = { "part" };
+        String[] repairPartsArray = {"part"};
         car.repair(repairPartsArray);
 
     }

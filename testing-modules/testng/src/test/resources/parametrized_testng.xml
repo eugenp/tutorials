@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="My test suite">
-<listeners>
-<listener class-name="com.baeldung.reports.CustomisedListener"></listener>
-</listeners>
+    <listeners>
+        <listener class-name="com.baeldung.reports.CustomisedListener"></listener>
+    </listeners>
     <test name="numbersXML">
         <parameter name="value" value="1"/>
         <parameter name="isEven" value="false"/>

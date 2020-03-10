@@ -46,11 +46,11 @@ public class EscapingCharsUnitTest {
     @Test
     public void givenRegexWithDollar_whenReplacing_thenNotReplace() {
         String strInput = "I gave $50 to my brother."
-          + "He bought candy for $35. Now he has $15 left.";
+                + "He bought candy for $35. Now he has $15 left.";
         String strRegex = "$";
         String strReplacement = "£";
         String output = "I gave £50 to my brother."
-          + "He bought candy for £35. Now he has £15 left.";
+                + "He bought candy for £35. Now he has £15 left.";
         Pattern p = Pattern.compile(strRegex);
         Matcher m = p.matcher(strInput);
 
@@ -60,11 +60,11 @@ public class EscapingCharsUnitTest {
     @Test
     public void givenRegexWithDollarEsc_whenReplacing_thenReplace() {
         String strInput = "I gave $50 to my brother."
-          + "He bought candy for $35. Now he has $15 left.";
+                + "He bought candy for $35. Now he has $15 left.";
         String strRegex = "\\$";
         String strReplacement = "£";
         String output = "I gave £50 to my brother."
-          + "He bought candy for £35. Now he has £15 left.";
+                + "He bought candy for £35. Now he has £15 left.";
         Pattern p = Pattern.compile(strRegex);
         Matcher m = p.matcher(strInput);
 

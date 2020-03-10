@@ -14,7 +14,7 @@ import com.baeldung.properties.external.ExternalPropertiesWithXmlConfigOne;
 import com.baeldung.properties.external.ExternalPropertiesWithXmlConfigTwo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ExternalPropertiesWithXmlConfigOne.class, ExternalPropertiesWithXmlConfigTwo.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {ExternalPropertiesWithXmlConfigOne.class, ExternalPropertiesWithXmlConfigTwo.class}, loader = AnnotationConfigContextLoader.class)
 @Ignore("manual only")
 public class ExternalPropertiesWithMultipleXmlsIntegrationTest {
 

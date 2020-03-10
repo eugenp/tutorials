@@ -22,12 +22,12 @@ person:
 # Proxies the calls to http://localhost:8080/api/* to our REST service at http://localhost:8081/*
 # and automatically includes our OAuth2 token in the request headers
 zuul:
-  sensitiveHeaders: Cookie,Set-Cookie  
+  sensitiveHeaders: Cookie,Set-Cookie
   routes:
     resource:
       path: /api/**
       url: http://localhost:9000
-    user: 
+    user:
       path: /user/**
       url: http://localhost:9000/user
 

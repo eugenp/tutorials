@@ -15,8 +15,8 @@ public class WebClientConfig {
         ServerOAuth2AuthorizedClientExchangeFilterFunction oauth = new ServerOAuth2AuthorizedClientExchangeFilterFunction(clientRegistrations, new UnAuthenticatedServerOAuth2AuthorizedClientRepository());
         oauth.setDefaultClientRegistrationId("bael");
         return WebClient.builder()
-            .filter(oauth)
-            .build();
+                .filter(oauth)
+                .build();
     }
 
 }

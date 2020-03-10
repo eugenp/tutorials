@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.baeldung.boot.jdbi.dao;
 
@@ -25,11 +25,11 @@ public interface CarMakerDao {
     @SqlUpdate
     @GetGeneratedKeys
     Long insert(@BindBean CarMaker carMaker);
-    
+
     @SqlBatch("insert")
     @GetGeneratedKeys
     List<Long> bulkInsert(@BindBean List<CarMaker> carMakers);
-    
+
     @SqlQuery
     CarMaker findById(@Bind("id") Long id);
 }

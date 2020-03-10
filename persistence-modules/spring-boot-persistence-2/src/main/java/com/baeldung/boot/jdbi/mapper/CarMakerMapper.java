@@ -17,10 +17,10 @@ public class CarMakerMapper implements RowMapper<CarMaker> {
     @Override
     public CarMaker map(ResultSet rs, StatementContext ctx) throws SQLException {
         CarMaker maker = CarMaker.builder()
-          .id(rs.getLong("id"))
-          .name(rs.getString("name"))
-          .models(new ArrayList<CarModel>())
-          .build();
+                .id(rs.getLong("id"))
+                .name(rs.getString("name"))
+                .models(new ArrayList<CarModel>())
+                .build();
 
         return maker;
     }

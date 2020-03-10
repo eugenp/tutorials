@@ -17,7 +17,7 @@ import com.google.common.base.Preconditions;
  */
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-h2.properties" })
+@PropertySource({"classpath:persistence-h2.properties"})
 public class PersistenceConfig {
 
     @Autowired

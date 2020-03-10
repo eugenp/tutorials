@@ -17,7 +17,7 @@
             <td><input type="text" name="height"/></td>
         </tr>
         <th><input type="submit" value="Submit" name="find"/></th>
-        <th><input type="reset" value="Reset" name="reset" /></th>
+        <th><input type="reset" value="Reset" name="reset"/></th>
     </table>
     <h2>${bmi}</h2>
 </form>

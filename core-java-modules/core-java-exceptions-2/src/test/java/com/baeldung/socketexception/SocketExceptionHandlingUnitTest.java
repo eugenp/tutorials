@@ -12,7 +12,7 @@ public class SocketExceptionHandlingUnitTest {
     @BeforeClass
     public static void runServer() throws IOException, InterruptedException {
         Executors.newSingleThreadExecutor()
-            .submit(() -> new SocketServer().start(6699));
+                .submit(() -> new SocketServer().start(6699));
         Thread.sleep(100);
     }
 

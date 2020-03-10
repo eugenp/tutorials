@@ -38,7 +38,8 @@ class VariableArgumentsProvider implements ArgumentsProvider, AnnotationConsumer
         Object value = null;
         try {
             value = field.get(null);
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
 
         return value == null ? null : (Stream<Arguments>) value;
     }

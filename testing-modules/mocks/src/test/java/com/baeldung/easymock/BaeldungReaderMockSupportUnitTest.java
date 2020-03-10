@@ -12,16 +12,19 @@ import static org.junit.Assert.assertEquals;
 @RunWith(EasyMockRunner.class)
 public class BaeldungReaderMockSupportUnitTest extends EasyMockSupport {
 
-    @TestSubject BaeldungReader baeldungReader = new BaeldungReader();
-    @Mock ArticleReader mockArticleReader;
-    @Mock IArticleWriter mockArticleWriter;
+    @TestSubject
+    BaeldungReader baeldungReader = new BaeldungReader();
+    @Mock
+    ArticleReader mockArticleReader;
+    @Mock
+    IArticleWriter mockArticleWriter;
 
     @Test
     public void givenBaeldungReader_whenReadAndWriteSequencially_thenWorks() {
         expect(mockArticleReader.next())
-          .andReturn(null)
-          .times(2)
-          .andThrow(new NoSuchElementException());
+                .andReturn(null)
+                .times(2)
+                .andThrow(new NoSuchElementException());
         expect(mockArticleWriter.write("title", "content")).andReturn("BAEL-201801");
         replayAll();
 

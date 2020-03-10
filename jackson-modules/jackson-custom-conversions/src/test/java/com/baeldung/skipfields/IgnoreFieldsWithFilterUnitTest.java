@@ -32,7 +32,7 @@ public class IgnoreFieldsWithFilterUnitTest {
         dtoObject.setIntValue(12);
 
         final String dtoAsString = mapper.writer(filters)
-            .writeValueAsString(dtoObject);
+                .writeValueAsString(dtoObject);
 
         assertThat(dtoAsString, not(containsString("intValue")));
         assertThat(dtoAsString, containsString("booleanValue"));
@@ -47,7 +47,7 @@ public class IgnoreFieldsWithFilterUnitTest {
             public final void serializeAsField(final Object pojo, final JsonGenerator jgen, final SerializerProvider provider, final PropertyWriter writer) throws Exception {
                 if (include(writer)) {
                     if (!writer.getName()
-                        .equals("intValue")) {
+                            .equals("intValue")) {
                         writer.serializeAsField(pojo, jgen, provider);
                         return;
                     }
@@ -78,7 +78,7 @@ public class IgnoreFieldsWithFilterUnitTest {
 
         final ObjectMapper mapper = new ObjectMapper();
         final String dtoAsString = mapper.writer(filters)
-            .writeValueAsString(dtoObject);
+                .writeValueAsString(dtoObject);
 
         assertThat(dtoAsString, not(containsString("intValue")));
         assertThat(dtoAsString, containsString("booleanValue"));

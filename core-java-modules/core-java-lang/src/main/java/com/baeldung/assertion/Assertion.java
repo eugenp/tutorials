@@ -5,22 +5,22 @@ package com.baeldung.assertion;
  */
 public class Assertion {
 
-  public static void main(String[] args) {
-    Assertion assertion = new Assertion();
-    assertion.setup();
-  }
+    public static void main(String[] args) {
+        Assertion assertion = new Assertion();
+        assertion.setup();
+    }
 
-  public void setup() {
-    Object conn = getConnection();
-    assert conn != null : "Connection is null";
+    public void setup() {
+        Object conn = getConnection();
+        assert conn != null : "Connection is null";
 
-    // continue with other setup ...
-  }
+        // continue with other setup ...
+    }
 
-  // Simulate failure to get a connection; using Object
-  // to avoid dependencies on JDBC or some other heavy
-  // 3rd party library
-  public Object getConnection() {
-    return null;
-  }
+    // Simulate failure to get a connection; using Object
+    // to avoid dependencies on JDBC or some other heavy
+    // 3rd party library
+    public Object getConnection() {
+        return null;
+    }
 }

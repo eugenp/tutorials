@@ -26,8 +26,8 @@ public class ConsumerDebuggingApplication {
     @Bean
     public SecurityWebFilterChain debuggingConsumerSpringSecurityFilterChain(ServerHttpSecurity http) {
         http.authorizeExchange()
-            .anyExchange()
-            .permitAll();
+                .anyExchange()
+                .permitAll();
         http.csrf().disable();
         return http.build();
     }

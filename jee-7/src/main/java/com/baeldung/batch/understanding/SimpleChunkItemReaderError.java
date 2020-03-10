@@ -10,7 +10,7 @@ import javax.inject.Named;
 
 @Named
 public class SimpleChunkItemReaderError extends AbstractItemReader {
-    @Inject 
+    @Inject
     JobContext jobContext;
     private StringTokenizer tokens;
     private Integer count = 0;

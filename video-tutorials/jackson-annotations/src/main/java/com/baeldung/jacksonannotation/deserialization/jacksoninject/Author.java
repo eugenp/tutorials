@@ -15,9 +15,10 @@ public class Author extends Person {
 
     List<Item> items = new ArrayList<>();
 
-    public Author(){
+    public Author() {
         super();
     }
+
     public Author(String firstName, String lastName) {
         super(firstName, lastName);
     }

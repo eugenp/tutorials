@@ -42,36 +42,36 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-            .withUser("admin").password(encoder().encode("adminPass")).roles("ADMIN")
-            .and()
-            .withUser("user").password(encoder().encode("userPass")).roles("USER");
+                .withUser("admin").password(encoder().encode("adminPass")).roles("ADMIN")
+                .and()
+                .withUser("user").password(encoder().encode("userPass")).roles("USER");
     }
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.csrf().disable()
-            .authorizeRequests()
-            .and()
-            .exceptionHandling()
-            .accessDeniedHandler(accessDeniedHandler)
-            .authenticationEntryPoint(restAuthenticationEntryPoint)
-            .and()
-            .authorizeRequests()
-            .antMatchers("/api/csrfAttacker*").permitAll()
-            .antMatchers("/api/customer/**").permitAll()
-            .antMatchers("/api/foos/**").authenticated()
-            .antMatchers("/api/async/**").permitAll()
-            .antMatchers("/api/admin/**").hasRole("ADMIN")
-            .and()
-            .formLogin()
-            .successHandler(mySuccessHandler)
-            .failureHandler(myFailureHandler)
-            .and()
-            .httpBasic()
-            .and()
-            .logout();
+                .authorizeRequests()
+                .and()
+                .exceptionHandling()
+                .accessDeniedHandler(accessDeniedHandler)
+                .authenticationEntryPoint(restAuthenticationEntryPoint)
+                .and()
+                .authorizeRequests()
+                .antMatchers("/api/csrfAttacker*").permitAll()
+                .antMatchers("/api/customer/**").permitAll()
+                .antMatchers("/api/foos/**").authenticated()
+                .antMatchers("/api/async/**").permitAll()
+                .antMatchers("/api/admin/**").hasRole("ADMIN")
+                .and()
+                .formLogin()
+                .successHandler(mySuccessHandler)
+                .failureHandler(myFailureHandler)
+                .and()
+                .httpBasic()
+                .and()
+                .logout();
     }
-    
+
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();

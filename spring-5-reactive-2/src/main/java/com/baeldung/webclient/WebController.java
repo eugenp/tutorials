@@ -30,8 +30,9 @@ public class WebController {
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<Tweet>> response = restTemplate.exchange(
-          uri, HttpMethod.GET, null,
-          new ParameterizedTypeReference<List<Tweet>>(){});
+                uri, HttpMethod.GET, null,
+                new ParameterizedTypeReference<List<Tweet>>() {
+                });
 
         List<Tweet> result = response.getBody();
         result.forEach(tweet -> log.info(tweet.toString()));
@@ -43,10 +44,10 @@ public class WebController {
     public Flux<Tweet> getTweetsNonBlocking() {
         log.info("Starting NON-BLOCKING Controller!");
         Flux<Tweet> tweetFlux = WebClient.create()
-          .get()
-          .uri(getSlowServiceUri())
-          .retrieve()
-          .bodyToFlux(Tweet.class);
+                .get()
+                .uri(getSlowServiceUri())
+                .retrieve()
+                .bodyToFlux(Tweet.class);
 
         tweetFlux.subscribe(tweet -> log.info(tweet.toString()));
         log.info("Exiting NON-BLOCKING Controller!");

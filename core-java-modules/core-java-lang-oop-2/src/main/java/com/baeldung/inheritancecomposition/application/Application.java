@@ -3,9 +3,9 @@ package com.baeldung.inheritancecomposition.application;
 import com.baeldung.inheritancecomposition.model.*;
 
 public class Application {
-    
+
     public static void main(String[] args) {
-        
+
         Person person = new Person("John", "john@domain.com", 35);
         Waitress waitress = new Waitress("Mary", "mary@domain.com", 22);
         System.out.println(waitress.serveStarter("mixed salad"));

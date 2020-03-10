@@ -11,8 +11,8 @@ import javax.validation.Payload;
 public @interface MaxSizeConstraint {
 
     String message() default "The input list cannot contain more than 4 movies.";
-    
+
     Class<?>[] groups() default {};
-    
+
     Class<? extends Payload>[] payload() default {};
 }

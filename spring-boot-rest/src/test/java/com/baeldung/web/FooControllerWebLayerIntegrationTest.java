@@ -30,9 +30,7 @@ import com.baeldung.web.exception.CustomException1;
 import com.baeldung.web.hateoas.event.PaginatedResultsRetrievedEvent;
 
 /**
- * 
- *  We'll start only the web layer.
- *
+ * We'll start only the web layer.
  */
 @RunWith(SpringRunner.class)
 @WebMvcTest(FooController.class)
@@ -52,22 +50,22 @@ public class FooControllerWebLayerIntegrationTest {
         Page<Foo> page = new PageImpl<>(Collections.singletonList(new Foo("fooName")));
         when(service.findPaginated(0, 2)).thenReturn(page);
         doNothing().when(publisher)
-            .publishEvent(any(PaginatedResultsRetrievedEvent.class));
+                .publishEvent(any(PaginatedResultsRetrievedEvent.class));
 
         this.mockMvc.perform(get("/foos").param("page", "0")
-            .param("size", "2"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$",Matchers.hasSize(1)));
+                .param("size", "2"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", Matchers.hasSize(1)));
     }
-    
+
     @Test
     public void delete_forException_fromService() throws Exception {
         Mockito.when(service.findAll()).thenThrow(new CustomException1());
-        this.mockMvc.perform(get("/foos")).andDo(h ->  {
+        this.mockMvc.perform(get("/foos")).andDo(h -> {
             final Exception expectedException = h.getResolvedException();
             Assert.assertTrue(expectedException instanceof CustomException1);
-            
+
         });
     }
-    
+
 }

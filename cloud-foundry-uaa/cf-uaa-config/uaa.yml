@@ -2,7 +2,7 @@ issuer:
   uri: http://localhost:8080/uaa
 
 spring_profiles: default,hsqldb
-  
+
 encryption:
   active_key_label: CHANGE-THIS-KEY
   encryption_keys:

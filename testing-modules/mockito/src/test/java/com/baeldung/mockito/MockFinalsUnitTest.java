@@ -10,8 +10,8 @@ import com.baeldung.mockito.MyList;
 
 public class MockFinalsUnitTest {
 
-      @Test
-      public void whenMockFinalClassMockWorks() {
+    @Test
+    public void whenMockFinalClassMockWorks() {
 
         FinalList finalList = new FinalList();
 
@@ -20,18 +20,18 @@ public class MockFinalsUnitTest {
 
         assertNotEquals(mock.size(), finalList.size());
 
-      }
+    }
 
     @Test
     public void whenMockFinalMethodMockWorks() {
 
-      MyList myList = new MyList();
+        MyList myList = new MyList();
 
-      MyList mock = mock(MyList.class);
-      when(mock.finalMethod()).thenReturn(1);
+        MyList mock = mock(MyList.class);
+        when(mock.finalMethod()).thenReturn(1);
 
-      assertNotEquals(mock.finalMethod(), myList.finalMethod());
+        assertNotEquals(mock.finalMethod(), myList.finalMethod());
     }
 
 
-  }
+}

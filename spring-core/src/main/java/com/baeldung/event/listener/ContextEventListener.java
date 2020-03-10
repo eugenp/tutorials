@@ -16,7 +16,7 @@ public class ContextEventListener {
     }
 
     @Order(1)
-    @EventListener(classes = { ContextStartedEvent.class, ContextStoppedEvent.class })
+    @EventListener(classes = {ContextStartedEvent.class, ContextStoppedEvent.class})
     public void handleMultipleEvents() {
         System.out.println("Multi-event listener invoked");
     }

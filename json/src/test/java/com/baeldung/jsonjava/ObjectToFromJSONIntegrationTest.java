@@ -12,7 +12,7 @@ public class ObjectToFromJSONIntegrationTest {
         demo.setId(1);
         demo.setName("lorem ipsum");
         demo.setActive(true);
-         
+
         JSONObject jo = new JSONObject(demo);
         assertEquals("{\"name\":\"lorem ipsum\",\"active\":true,\"id\":1}", jo.toString());
     }

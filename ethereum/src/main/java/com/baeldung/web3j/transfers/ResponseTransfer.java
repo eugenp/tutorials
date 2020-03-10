@@ -4,7 +4,8 @@ import java.time.Duration;
 
 public class ResponseTransfer {
 
-    public ResponseTransfer() {}
+    public ResponseTransfer() {
+    }
 
     private Duration performance;
     private String message;

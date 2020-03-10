@@ -30,9 +30,9 @@ public class StringToCharStreamUnitTest {
     @Test
     public void givenTestString_whenCodePoints_thenShowOccurences() throws Exception {
         Map<Character, Integer> map = testString.codePoints()
-          .mapToObj(c -> (char) c)
-          .filter(Character::isLetter)
-          .collect(Collectors.toMap(c -> c, c -> 1, Integer::sum));
+                .mapToObj(c -> (char) c)
+                .filter(Character::isLetter)
+                .collect(Collectors.toMap(c -> c, c -> 1, Integer::sum));
 
         System.out.println(map);
     }
@@ -40,9 +40,9 @@ public class StringToCharStreamUnitTest {
     @Test
     public void givenIntStream_whenMapToObj_thenReturnCharacterStream() {
         Stream<Character> characterStream = testString.chars()
-          .mapToObj(c -> (char) c);
+                .mapToObj(c -> (char) c);
         Stream<Character> characterStream1 = testString.codePoints()
-          .mapToObj(c -> (char) c);
+                .mapToObj(c -> (char) c);
         assertNotNull("IntStream returned by chars() did not map to Stream<Character>", characterStream);
         assertNotNull("IntStream returned by codePoints() did not map to Stream<Character>", characterStream1);
     }
@@ -50,8 +50,8 @@ public class StringToCharStreamUnitTest {
     @Test
     public void givenIntStream_whenMapToObj_thenReturnStringStream() {
         List<String> strings = testString.codePoints()
-          .mapToObj(c -> String.valueOf((char) c))
-          .collect(Collectors.toList());
+                .mapToObj(c -> String.valueOf((char) c))
+                .collect(Collectors.toList());
 
         assertEquals(strings.size(), 5);
     }

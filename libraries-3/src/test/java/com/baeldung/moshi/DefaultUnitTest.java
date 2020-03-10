@@ -13,13 +13,14 @@ public class DefaultUnitTest {
     @Test
     public void whenDeserializing_thenFieldsGetDefaultValues() throws IOException {
         Moshi moshi = new Moshi.Builder()
-          .build();
+                .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
         String json = "{\"title\":\"My Post\"}";
         Post post = jsonAdapter.fromJson(json);
         System.out.println(post);
     }
+
     public static class Post {
         private String title;
         private String author;
@@ -62,7 +63,7 @@ public class DefaultUnitTest {
         @Override
         public String toString() {
             return new ToStringBuilder(this).append("title", title).append("author", author).append("posted", posted)
-                .toString();
+                    .toString();
         }
     }
 }

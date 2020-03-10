@@ -34,5 +34,5 @@ public class Address {
 
     public void setCountry(Country country) {
         this.country = country;
-    }   
+    }
 }

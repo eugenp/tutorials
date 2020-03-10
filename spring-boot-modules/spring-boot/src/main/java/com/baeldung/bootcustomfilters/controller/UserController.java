@@ -14,22 +14,22 @@ import com.baeldung.bootcustomfilters.model.User;
 
 /**
  * Rest controller for User
- * @author hemant
  *
+ * @author hemant
  */
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
-	private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
 
-	@GetMapping("")
-	public List<User> getAllUsers() {
-		LOG.info("Fetching all the users");
-		return Arrays.asList(
-				new User(UUID.randomUUID().toString(), "User1", "user1@test.com"),
-				new User(UUID.randomUUID().toString(), "User1", "user1@test.com"),
-				new User(UUID.randomUUID().toString(), "User1", "user1@test.com"));
-	}
+    @GetMapping("")
+    public List<User> getAllUsers() {
+        LOG.info("Fetching all the users");
+        return Arrays.asList(
+                new User(UUID.randomUUID().toString(), "User1", "user1@test.com"),
+                new User(UUID.randomUUID().toString(), "User1", "user1@test.com"),
+                new User(UUID.randomUUID().toString(), "User1", "user1@test.com"));
+    }
 
 }

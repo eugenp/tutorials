@@ -4,15 +4,16 @@
 package com.baeldung.domain;
 
 import com.baeldung.domain.Book;
+
 import java.util.Objects;
 
 privileged aspect Book_Roo_Equals {
-    
+
     /**
      * This `equals` implementation is specific for JPA entities and uses 
      * the entity identifier for it, following the article in 
      * https://vladmihalcea.com/2016/06/06/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
-     * 
+     *
      * @param obj
      * @return Boolean
      */
@@ -26,16 +27,16 @@ privileged aspect Book_Roo_Equals {
         }
         return getId() != null && Objects.equals(getId(), ((Book) obj).getId());
     }
-    
+
     /**
      * This `hashCode` implementation is specific for JPA entities and uses a fixed `int` value to be able 
      * to identify the entity in collections after a new id is assigned to the entity, following the article in 
      * https://vladmihalcea.com/2016/06/06/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
-     * 
+     *
      * @return Integer
      */
     public int Book.hashCode() {
         return 31;
     }
-    
+
 }

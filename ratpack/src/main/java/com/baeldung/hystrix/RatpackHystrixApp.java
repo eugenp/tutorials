@@ -15,16 +15,16 @@ public class RatpackHystrixApp {
         final URI eugenGithubProfileUri = new URI("https://api.github.com/users/eugenp");
 
         RatpackServer.start(server -> server
-          .registry(Guice.registry(bindingsSpec -> bindingsSpec.module(new HystrixModule().sse())))
-          .handlers(chain -> chain
-            .get("rx", ctx -> new HystrixReactiveHttpCommand(ctx.get(HttpClient.class), eugenGithubProfileUri, timeout)
-              .toObservable()
-              .subscribe(ctx::render))
-            .get("async", ctx -> ctx.render(new HystrixAsyncHttpCommand(eugenGithubProfileUri, timeout)
-              .queue()
-              .get()))
-            .get("sync", ctx -> ctx.render(new HystrixSyncHttpCommand(eugenGithubProfileUri, timeout).execute()))
-            .get("hystrix", new HystrixMetricsEventStreamHandler())));
+                .registry(Guice.registry(bindingsSpec -> bindingsSpec.module(new HystrixModule().sse())))
+                .handlers(chain -> chain
+                        .get("rx", ctx -> new HystrixReactiveHttpCommand(ctx.get(HttpClient.class), eugenGithubProfileUri, timeout)
+                                .toObservable()
+                                .subscribe(ctx::render))
+                        .get("async", ctx -> ctx.render(new HystrixAsyncHttpCommand(eugenGithubProfileUri, timeout)
+                                .queue()
+                                .get()))
+                        .get("sync", ctx -> ctx.render(new HystrixSyncHttpCommand(eugenGithubProfileUri, timeout).execute()))
+                        .get("hystrix", new HystrixMetricsEventStreamHandler())));
 
     }
 }

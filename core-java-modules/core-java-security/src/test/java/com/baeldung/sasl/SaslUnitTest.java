@@ -37,7 +37,7 @@ public class SaslUnitTest {
         props.put(Sasl.QOP, QOP_LEVEL);
 
         saslServer = Sasl.createSaslServer(MECHANISM, PROTOCOL, SERVER_NAME, props, serverHandler);
-        saslClient = Sasl.createSaslClient(new String[] { MECHANISM }, AUTHORIZATION_ID, PROTOCOL, SERVER_NAME, props, clientHandler);
+        saslClient = Sasl.createSaslClient(new String[]{MECHANISM}, AUTHORIZATION_ID, PROTOCOL, SERVER_NAME, props, clientHandler);
 
     }
 

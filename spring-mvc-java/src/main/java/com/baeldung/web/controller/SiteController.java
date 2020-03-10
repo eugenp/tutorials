@@ -9,7 +9,7 @@ public class SiteController {
 
     @RequestMapping(value = "/{firstValue}/{secondValue}", method = RequestMethod.GET)
     public String requestWithError(@PathVariable("firstValue") String firstValue,
-                          @PathVariable("secondValue") String secondValue) {
+                                   @PathVariable("secondValue") String secondValue) {
 
         return firstValue + " - " + secondValue;
     }

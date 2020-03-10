@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     PasswordController.$inject = ['Auth', 'Principal'];
 
-    function PasswordController (Auth, Principal) {
+    function PasswordController(Auth, Principal) {
         var vm = this;
 
         vm.changePassword = changePassword;
@@ -15,11 +15,11 @@
         vm.error = null;
         vm.success = null;
 
-        Principal.identity().then(function(account) {
+        Principal.identity().then(function (account) {
             vm.account = account;
         });
 
-        function changePassword () {
+        function changePassword() {
             if (vm.password !== vm.confirmPassword) {
                 vm.error = null;
                 vm.success = null;

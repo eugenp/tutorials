@@ -16,10 +16,9 @@ import com.google.common.collect.Lists;
 import com.google.common.primitives.Ints;
 
 /**
- * Demonstrates setting defaults for @Value annotation.  Note that there are no properties 
+ * Demonstrates setting defaults for @Value annotation.  Note that there are no properties
  * defined in the specified property source.  We also assume that the user here
  * does not have a system property named some.key.
- *
  */
 @Configuration
 @PropertySource(name = "myProperties", value = "valueswithdefaults.properties")
@@ -33,9 +32,9 @@ public class ValuesWithDefaultsApp {
 
     @Value("${some.key:true}")
     private boolean booleanWithDefaultValue;
-    
+
     @Value("${some.key:42}")
-    private int intWithDefaultValue;  
+    private int intWithDefaultValue;
 
     @Value("${some.key:one,two,three}")
     private String[] stringArrayWithDefaults;
@@ -45,7 +44,7 @@ public class ValuesWithDefaultsApp {
 
     @Value("#{systemProperties['some.key'] ?: 'my default system property value'}")
     private String spelWithDefaultValue;
-    
+
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ValuesWithDefaultsApp.class);
@@ -53,23 +52,23 @@ public class ValuesWithDefaultsApp {
 
     @PostConstruct
     public void afterInitialize() {
-    	// strings
-    	Assert.isTrue(stringWithDefaultValue.equals("my default value"));
-    	Assert.isTrue(stringWithBlankDefaultValue.equals(""));
-    	
-    	// other primitives
-    	Assert.isTrue(booleanWithDefaultValue);
-    	Assert.isTrue(intWithDefaultValue == 42);
-    	
-    	// arrays
-    	List<String> stringListValues = Lists.newArrayList("one", "two", "three");
-    	Assert.isTrue(Arrays.asList(stringArrayWithDefaults).containsAll(stringListValues));
+        // strings
+        Assert.isTrue(stringWithDefaultValue.equals("my default value"));
+        Assert.isTrue(stringWithBlankDefaultValue.equals(""));
 
-    	List<Integer> intListValues = Lists.newArrayList(1, 2, 3);
-    	Assert.isTrue(Ints.asList(intArrayWithDefaults).containsAll(intListValues));
+        // other primitives
+        Assert.isTrue(booleanWithDefaultValue);
+        Assert.isTrue(intWithDefaultValue == 42);
 
-    	// SpEL
-    	Assert.isTrue(spelWithDefaultValue.equals("my default system property value"));
-    	
+        // arrays
+        List<String> stringListValues = Lists.newArrayList("one", "two", "three");
+        Assert.isTrue(Arrays.asList(stringArrayWithDefaults).containsAll(stringListValues));
+
+        List<Integer> intListValues = Lists.newArrayList(1, 2, 3);
+        Assert.isTrue(Ints.asList(intArrayWithDefaults).containsAll(intListValues));
+
+        // SpEL
+        Assert.isTrue(spelWithDefaultValue.equals("my default system property value"));
+
     }
 }

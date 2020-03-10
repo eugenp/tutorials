@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class ConstraintViolationExceptionHandler {
-    
+
     private final Logger logger = LoggerFactory.getLogger(ConstraintViolationExceptionHandler.class);
 
     @ExceptionHandler(ConstraintViolationException.class)

@@ -49,7 +49,7 @@ public class VaadinUI extends UI {
 
     private Label currentTime;
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout verticalLayout = new VerticalLayout();
@@ -248,15 +248,15 @@ public class VaadinUI extends UI {
         textValidatorLayout.setSpacing(true);
         textValidatorLayout.setMargin(true);
 
-        
+
         BindData stringValidatorBindData = new BindData("");
         TextField stringValidator = new TextField();
         Binder<BindData> stringValidatorBinder = new Binder<>();
         stringValidatorBinder.setBean(stringValidatorBindData);
         stringValidatorBinder.forField(stringValidator)
-        .withValidator(new StringLengthValidator("String must have 2-5 characters lenght", 2, 5))
-        .bind(BindData::getBindName, BindData::setBindName);
-        
+                .withValidator(new StringLengthValidator("String must have 2-5 characters lenght", 2, 5))
+                .bind(BindData::getBindName, BindData::setBindName);
+
         textValidatorLayout.addComponent(stringValidator);
         Button buttonStringValidator = new Button("Validate String");
         buttonStringValidator.addClickListener(e -> stringValidatorBinder.validate());

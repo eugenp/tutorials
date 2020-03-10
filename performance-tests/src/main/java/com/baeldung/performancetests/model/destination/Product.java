@@ -82,22 +82,22 @@ public class Product {
         if (o == null) return false;
         if (o.getClass() == com.baeldung.performancetests.model.source.Product.class) {
             com.baeldung.performancetests.model.source.Product product =
-              (com.baeldung.performancetests.model.source.Product) o;
+                    (com.baeldung.performancetests.model.source.Product) o;
             return quantity == product.getQuantity() &&
-              available == product.isAvailable() &&
-              Objects.equal(price, product.getPrice()) &&
-              Objects.equal(name, product.getName()) &&
-              Objects.equal(description, product.getDescription()) &&
-              Objects.equal(refundPolicy, product.getRefundPolicy());
+                    available == product.isAvailable() &&
+                    Objects.equal(price, product.getPrice()) &&
+                    Objects.equal(name, product.getName()) &&
+                    Objects.equal(description, product.getDescription()) &&
+                    Objects.equal(refundPolicy, product.getRefundPolicy());
         }
-        if(o.getClass() != getClass()) return false;
+        if (o.getClass() != getClass()) return false;
         Product product = (Product) o;
         return quantity == product.quantity &&
-          available == product.available &&
-          Objects.equal(price, product.price) &&
-          Objects.equal(name, product.name) &&
-          Objects.equal(description, product.description) &&
-          Objects.equal(refundPolicy, product.refundPolicy);
+                available == product.available &&
+                Objects.equal(price, product.price) &&
+                Objects.equal(name, product.name) &&
+                Objects.equal(description, product.description) &&
+                Objects.equal(refundPolicy, product.refundPolicy);
     }
 
     @Override

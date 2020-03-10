@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class HealthCheckIntegrationTest {
-    
+
     @Test
     public void whenUseHealthCheck_thenHealthChecked() {
         HealthCheckRegistry healthCheckRegistry = new HealthCheckRegistry();

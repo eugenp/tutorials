@@ -4,15 +4,14 @@ import java.util.Comparator;
 
 /**
  * Class which contains a synthetic bridge method.
- * 
- * @author Donato Rimenti
  *
+ * @author Donato Rimenti
  */
 public class BridgeMethodDemo implements Comparator<Integer> {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
      */
     @Override

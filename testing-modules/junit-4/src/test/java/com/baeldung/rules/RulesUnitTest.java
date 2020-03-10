@@ -40,10 +40,10 @@ public class RulesUnitTest {
 
     @Rule
     public final ErrorCollector errorCollector = new ErrorCollector();
-    
+
     @Rule
     public DisableOnDebug disableTimeout = new DisableOnDebug(Timeout.seconds(30));
-    
+
     @Rule
     public TestMethodNameLogger testLogger = new TestMethodNameLogger();
 

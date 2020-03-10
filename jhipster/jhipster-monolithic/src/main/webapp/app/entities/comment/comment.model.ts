@@ -1,4 +1,5 @@
-import { Post } from '../post';
+import {Post} from '../post';
+
 export class Comment {
     constructor(
         public id?: number,

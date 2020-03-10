@@ -3,7 +3,9 @@ package com.baeldung.spring.serverconfig;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
+
 import javax.net.ssl.SSLException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,8 +30,8 @@ public class GreetingLiveTest {
     @Before
     public void setup() throws SSLException {
         webTestClient = WebTestClient.bindToServer(getConnector())
-                                     .baseUrl(BASE_URL)
-                                     .build();
+                .baseUrl(BASE_URL)
+                .build();
     }
 
     @Test
@@ -37,8 +39,8 @@ public class GreetingLiveTest {
         final String name = "Baeldung";
 
         ResponseSpec response = webTestClient.get()
-                                             .uri("/greet/{name}", name)
-                                             .exchange();
+                .uri("/greet/{name}", name)
+                .exchange();
 
         response.expectStatus()
                 .isOk()

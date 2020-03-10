@@ -57,7 +57,7 @@ public class ActionHandlerUnitTest {
             assertNull("No data in invalid response: ", data);
             return null;
         }).when(service)
-            .doAction(anyString(), any(Callback.class));
+                .doAction(anyString(), any(Callback.class));
 
         ActionHandler handler = new ActionHandler(service);
         handler.doAction();

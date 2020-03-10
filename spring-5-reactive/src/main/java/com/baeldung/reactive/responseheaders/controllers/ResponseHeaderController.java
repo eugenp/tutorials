@@ -19,16 +19,16 @@ public class ResponseHeaderController {
         String responseBody = "Response with header using ResponseEntity (builder)";
 
         return Mono.just(ResponseEntity.ok()
-            .header(responseHeaderKey, responseHeaderValue)
-            .body(responseBody));
+                .header(responseHeaderKey, responseHeaderValue)
+                .body(responseBody));
     }
-    
+
     @GetMapping("/server-http-response")
     public Mono<String> usingServerHttpResponse(ServerHttpResponse response) {
         String responseHeaderKey = "Baeldung-Example-Header";
         String responseHeaderValue = "Value-ServerHttpResponse";
         String responseBody = "Response with header using ServerHttpResponse";
-        
+
         response.getHeaders().add(responseHeaderKey, responseHeaderValue);
         return Mono.just(responseBody);
     }

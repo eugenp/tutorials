@@ -12,7 +12,6 @@ import org.mapstruct.*;
 public interface QuoteMapper extends EntityMapper<QuoteDTO, Quote> {
 
 
-
     default Quote fromId(Long id) {
         if (id == null) {
             return null;

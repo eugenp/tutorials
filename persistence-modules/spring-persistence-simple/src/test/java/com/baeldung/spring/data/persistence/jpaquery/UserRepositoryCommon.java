@@ -38,7 +38,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceConfig.class}, loader = AnnotationConfigContextLoader.class)
 @DirtiesContext
 public class UserRepositoryCommon {
 
@@ -286,7 +286,7 @@ public class UserRepositoryCommon {
         List<User> usersSortByName = userRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
 
         assertThat(usersSortByName.get(0)
-          .getName()).isEqualTo(USER_NAME_ADAM);
+                .getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test(expected = PropertyReferenceException.class)
@@ -300,7 +300,7 @@ public class UserRepositoryCommon {
         List<User> usersSortByNameLength = userRepository.findAll(Sort.by("LENGTH(name)"));
 
         assertThat(usersSortByNameLength.get(0)
-          .getName()).isEqualTo(USER_NAME_ADAM);
+                .getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
@@ -314,7 +314,7 @@ public class UserRepositoryCommon {
         List<User> usersSortByNameLength = userRepository.findAllUsers(JpaSort.unsafe("LENGTH(name)"));
 
         assertThat(usersSortByNameLength.get(0)
-          .getName()).isEqualTo(USER_NAME_ADAM);
+                .getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
@@ -329,8 +329,8 @@ public class UserRepositoryCommon {
         Page<User> usersPage = userRepository.findAllUsersWithPagination(PageRequest.of(1, 3));
 
         assertThat(usersPage.getContent()
-          .get(0)
-          .getName()).isEqualTo("SAMPLE1");
+                .get(0)
+                .getName()).isEqualTo("SAMPLE1");
     }
 
     @Test
@@ -345,8 +345,8 @@ public class UserRepositoryCommon {
         Page<User> usersSortByNameLength = userRepository.findAllUsersWithPaginationNative(PageRequest.of(1, 3));
 
         assertThat(usersSortByNameLength.getContent()
-          .get(0)
-          .getName()).isEqualTo(USER_NAME_PETER);
+                .get(0)
+                .getName()).isEqualTo(USER_NAME_PETER);
     }
 
     @Test

@@ -82,26 +82,26 @@ public final class FooProtos {
                 while (!done) {
                     int tag = input.readTag();
                     switch (tag) {
-                    case 0:
-                        done = true;
-                        break;
-                    default: {
-                        if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                        case 0:
                             done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
                         }
-                        break;
-                    }
-                    case 8: {
-                        bitField0_ |= 0x00000001;
-                        id_ = input.readInt64();
-                        break;
-                    }
-                    case 18: {
-                        com.google.protobuf.ByteString bs = input.readBytes();
-                        bitField0_ |= 0x00000002;
-                        name_ = bs;
-                        break;
-                    }
+                        case 8: {
+                            bitField0_ |= 0x00000001;
+                            id_ = input.readInt64();
+                            break;
+                        }
+                        case 18: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            bitField0_ |= 0x00000002;
+                            name_ = bs;
+                            break;
+                        }
                     }
                 }
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -580,17 +580,18 @@ public final class FooProtos {
     }
 
     private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
     static {
-        java.lang.String[] descriptorData = { "\n\017FooProtos.proto\022\010baeldung\"\037\n\003Foo\022\n\n\002id" + "\030\001 \002(\003\022\014\n\004name\030\002 \002(\tB!\n\024com.baeldung.web" + ".dtoB\tFooProtos" };
+        java.lang.String[] descriptorData = {"\n\017FooProtos.proto\022\010baeldung\"\037\n\003Foo\022\n\n\002id" + "\030\001 \002(\003\022\014\n\004name\030\002 \002(\tB!\n\024com.baeldung.web" + ".dtoB\tFooProtos"};
         com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
             public com.google.protobuf.ExtensionRegistry assignDescriptors(com.google.protobuf.Descriptors.FileDescriptor root) {
                 descriptor = root;
                 return null;
             }
         };
-        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {}, assigner);
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[]{}, assigner);
         internal_static_baeldung_Foo_descriptor = getDescriptor().getMessageTypes().get(0);
-        internal_static_baeldung_Foo_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_baeldung_Foo_descriptor, new java.lang.String[] { "Id", "Name", });
+        internal_static_baeldung_Foo_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_baeldung_Foo_descriptor, new java.lang.String[]{"Id", "Name",});
     }
 
     // @@protoc_insertion_point(outer_class_scope)

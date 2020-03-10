@@ -20,15 +20,15 @@ public class StringDiffUnitTest {
     @Test
     public void givenTwoStrings_whenDiffMatchPatch_thenReturnCorrectDiff() {
         assertThat(diffMatchPatch.diffMain(text1, text2, false), containsInAnyOrder(
-            new DiffMatchPatch.Diff(Operation.EQUAL, "ABC"),
-            new DiffMatchPatch.Diff(Operation.DELETE, "DE"),
-            new DiffMatchPatch.Diff(Operation.INSERT, "FG"),
-            new DiffMatchPatch.Diff(Operation.EQUAL, "LMN")));
+                new DiffMatchPatch.Diff(Operation.EQUAL, "ABC"),
+                new DiffMatchPatch.Diff(Operation.DELETE, "DE"),
+                new DiffMatchPatch.Diff(Operation.INSERT, "FG"),
+                new DiffMatchPatch.Diff(Operation.EQUAL, "LMN")));
         assertThat(diffMatchPatch.diffMain(text2, text1, false), containsInAnyOrder(
-            new DiffMatchPatch.Diff(Operation.EQUAL, "ABC"),
-            new DiffMatchPatch.Diff(Operation.INSERT, "DE"),
-            new DiffMatchPatch.Diff(Operation.DELETE, "FG"),
-            new DiffMatchPatch.Diff(Operation.EQUAL, "LMN")));
+                new DiffMatchPatch.Diff(Operation.EQUAL, "ABC"),
+                new DiffMatchPatch.Diff(Operation.INSERT, "DE"),
+                new DiffMatchPatch.Diff(Operation.DELETE, "FG"),
+                new DiffMatchPatch.Diff(Operation.EQUAL, "LMN")));
     }
 
     @Test

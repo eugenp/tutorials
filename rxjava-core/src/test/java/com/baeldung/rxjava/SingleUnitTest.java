@@ -12,11 +12,11 @@ public class SingleUnitTest {
     public void givenSingleObservable_whenSuccess_thenGetMessage() throws InterruptedException {
         String[] result = {""};
         Single<String> single = Observable.just("Hello")
-          .toSingle()
-          .doOnSuccess(i -> result[0] += i)
-          .doOnError(error -> {
-              throw new RuntimeException(error.getMessage());
-          });
+                .toSingle()
+                .doOnSuccess(i -> result[0] += i)
+                .doOnError(error -> {
+                    throw new RuntimeException(error.getMessage());
+                });
         single.subscribe();
         assertTrue(result[0].equals("Hello"));
     }

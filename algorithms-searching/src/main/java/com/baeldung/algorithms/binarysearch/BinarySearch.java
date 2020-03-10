@@ -34,11 +34,11 @@ public class BinarySearch {
         }
 
         if (key == sortedArray[middle]) {
-          return middle;
+            return middle;
         } else if (key < sortedArray[middle]) {
-          return runBinarySearchRecursively(sortedArray, key, low, middle - 1);
+            return runBinarySearchRecursively(sortedArray, key, low, middle - 1);
         } else {
-          return runBinarySearchRecursively(sortedArray, key, middle + 1, high);
+            return runBinarySearchRecursively(sortedArray, key, middle + 1, high);
         }
     }
 

@@ -20,32 +20,36 @@ public class RewardsController {
     @Autowired
     private TransactionRepository transactionRepository;
 
-    @PostMapping(path="/transactions/add")
-    public @ResponseBody Transaction saveTransactions(@RequestBody Transaction trnsctn){
+    @PostMapping(path = "/transactions/add")
+    public @ResponseBody
+    Transaction saveTransactions(@RequestBody Transaction trnsctn) {
         trnsctn.setTransactionDate(Calendar.getInstance().getTime());
         Transaction result = transactionRepository.save(trnsctn);
         return result;
     }
 
-    @GetMapping(path="/transactions/findAll/{rewardId}")
-    public @ResponseBody Iterable<Transaction> getTransactions(@PathVariable Integer rewardId){
+    @GetMapping(path = "/transactions/findAll/{rewardId}")
+    public @ResponseBody
+    Iterable<Transaction> getTransactions(@PathVariable Integer rewardId) {
         return transactionRepository.findByCustomerRewardsId(rewardId);
     }
 
-    @PostMapping(path="/rewards/add")
-    public @ResponseBody CustomerRewardsAccount addRewardsAcount(@RequestBody CustomerRewardsAccount body) {
+    @PostMapping(path = "/rewards/add")
+    public @ResponseBody
+    CustomerRewardsAccount addRewardsAcount(@RequestBody CustomerRewardsAccount body) {
         Optional<CustomerRewardsAccount> acct = customerRewardsRepository.findByCustomerId(body.getCustomerId());
         return !acct.isPresent() ? customerRewardsRepository.save(body) : acct.get();
     }
 
-    @GetMapping(path="/rewards/find/{customerId}")
+    @GetMapping(path = "/rewards/find/{customerId}")
     public @ResponseBody
     Optional<CustomerRewardsAccount> find(@PathVariable Integer customerId) {
         return customerRewardsRepository.findByCustomerId(customerId);
     }
 
-    @GetMapping(path="/rewards/all")
-    public @ResponseBody List<CustomerRewardsAccount> findAll() {
+    @GetMapping(path = "/rewards/all")
+    public @ResponseBody
+    List<CustomerRewardsAccount> findAll() {
         return customerRewardsRepository.findAll();
     }
 }

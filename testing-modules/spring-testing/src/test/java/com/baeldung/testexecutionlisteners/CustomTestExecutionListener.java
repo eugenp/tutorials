@@ -8,23 +8,31 @@ import org.springframework.test.context.TestExecutionListener;
 
 public class CustomTestExecutionListener implements TestExecutionListener, Ordered {
     private static final Logger logger = LoggerFactory.getLogger(CustomTestExecutionListener.class);
-    
+
     public void beforeTestClass(TestContext testContext) throws Exception {
         logger.info("beforeTestClass : {}", testContext.getTestClass());
-    }; 
-    
+    }
+
+    ;
+
     public void prepareTestInstance(TestContext testContext) throws Exception {
         logger.info("prepareTestInstance : {}", testContext.getTestClass());
-    }; 
-    
+    }
+
+    ;
+
     public void beforeTestMethod(TestContext testContext) throws Exception {
         logger.info("beforeTestMethod : {}", testContext.getTestMethod());
-    }; 
-    
+    }
+
+    ;
+
     public void afterTestMethod(TestContext testContext) throws Exception {
         logger.info("afterTestMethod : {}", testContext.getTestMethod());
-    }; 
-    
+    }
+
+    ;
+
     public void afterTestClass(TestContext testContext) throws Exception {
         logger.info("afterTestClass : {}", testContext.getTestClass());
     }
@@ -32,5 +40,7 @@ public class CustomTestExecutionListener implements TestExecutionListener, Order
     @Override
     public int getOrder() {
         return Integer.MAX_VALUE;
-    };
+    }
+
+    ;
 }

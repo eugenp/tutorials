@@ -5,13 +5,13 @@ import java.util.UUID;
 
 public class BatchProcessing {
 
-    private final String[] EMPLOYEES = new String[]{"Zuck","Mike","Larry","Musk","Steve"};
-    private final String[] DESIGNATIONS = new String[]{"CFO","CSO","CTO","CEO","CMO"};
-    private final String[] ADDRESSES = new String[]{"China","York","Diego","Carolina","India"};
+    private final String[] EMPLOYEES = new String[]{"Zuck", "Mike", "Larry", "Musk", "Steve"};
+    private final String[] DESIGNATIONS = new String[]{"CFO", "CSO", "CTO", "CEO", "CMO"};
+    private final String[] ADDRESSES = new String[]{"China", "York", "Diego", "Carolina", "India"};
 
     private Connection connection;
 
-    public void getConnection(){
+    public void getConnection() {
         try {
             Class.forName("org.h2.Driver");
             connection = DriverManager.getConnection("jdbc:h2:mem:db", "SA", "");
@@ -21,7 +21,7 @@ public class BatchProcessing {
         }
     }
 
-    public void createTables(){
+    public void createTables() {
         try {
             connection.createStatement().executeUpdate("create table EMPLOYEE (ID VARCHAR(36), NAME VARCHAR(45), DESIGNATION VARCHAR(15))");
             connection.createStatement().executeUpdate("create table EMP_ADDRESS (ID VARCHAR(36), EMP_ID VARCHAR(36), ADDRESS VARCHAR(45))");
@@ -31,15 +31,15 @@ public class BatchProcessing {
         }
     }
 
-    public void useStatement(){
+    public void useStatement() {
         try {
             String insertEmployeeSQL = "INSERT INTO EMPLOYEE(ID, NAME, DESIGNATION) VALUES ('%s','%s','%s');";
             String insertEmployeeAddrSQL = "INSERT INTO EMP_ADDRESS(ID, EMP_ID, ADDRESS) VALUES ('%s','%s','%s');";
             Statement statement = connection.createStatement();
-            for(int i = 0; i < EMPLOYEES.length; i++){
+            for (int i = 0; i < EMPLOYEES.length; i++) {
                 String employeeId = UUID.randomUUID().toString();
-                statement.addBatch(String.format(insertEmployeeSQL, employeeId, EMPLOYEES[i],DESIGNATIONS[i]));
-                statement.addBatch(String.format(insertEmployeeAddrSQL, UUID.randomUUID().toString(),employeeId,ADDRESSES[i]));
+                statement.addBatch(String.format(insertEmployeeSQL, employeeId, EMPLOYEES[i], DESIGNATIONS[i]));
+                statement.addBatch(String.format(insertEmployeeAddrSQL, UUID.randomUUID().toString(), employeeId, ADDRESSES[i]));
             }
             statement.executeBatch();
             connection.commit();
@@ -54,22 +54,22 @@ public class BatchProcessing {
         }
     }
 
-    public void usePreparedStatement(){
+    public void usePreparedStatement() {
         try {
             String insertEmployeeSQL = "INSERT INTO EMPLOYEE(ID, NAME, DESIGNATION) VALUES (?,?,?);";
             String insertEmployeeAddrSQL = "INSERT INTO EMP_ADDRESS(ID, EMP_ID, ADDRESS) VALUES (?,?,?);";
             PreparedStatement employeeStmt = connection.prepareStatement(insertEmployeeSQL);
             PreparedStatement empAddressStmt = connection.prepareStatement(insertEmployeeAddrSQL);
-            for(int i = 0; i < EMPLOYEES.length; i++){
+            for (int i = 0; i < EMPLOYEES.length; i++) {
                 String employeeId = UUID.randomUUID().toString();
-                employeeStmt.setString(1,employeeId);
-                employeeStmt.setString(2,EMPLOYEES[i]);
-                employeeStmt.setString(3,DESIGNATIONS[i]);
+                employeeStmt.setString(1, employeeId);
+                employeeStmt.setString(2, EMPLOYEES[i]);
+                employeeStmt.setString(3, DESIGNATIONS[i]);
                 employeeStmt.addBatch();
 
-                empAddressStmt.setString(1,UUID.randomUUID().toString());
-                empAddressStmt.setString(2,employeeId);
-                empAddressStmt.setString(3,ADDRESSES[i]);
+                empAddressStmt.setString(1, UUID.randomUUID().toString());
+                empAddressStmt.setString(2, employeeId);
+                empAddressStmt.setString(3, ADDRESSES[i]);
                 empAddressStmt.addBatch();
             }
             employeeStmt.executeBatch();

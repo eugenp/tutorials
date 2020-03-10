@@ -18,8 +18,9 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping(value = { "", "/" })
-    public @NotNull Iterable<Product> getProducts() {
+    @GetMapping(value = {"", "/"})
+    public @NotNull
+    Iterable<Product> getProducts() {
         return productService.getAllProducts();
     }
 }

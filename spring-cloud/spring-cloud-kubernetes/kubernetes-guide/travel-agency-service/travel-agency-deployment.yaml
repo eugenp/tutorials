@@ -6,9 +6,9 @@ spec:
   selector:
     app: travel-agency-service
   ports:
-  - protocol: TCP
-    port: 8080
-    nodePort: 30081
+    - protocol: TCP
+      port: 8080
+      nodePort: 30081
   type: NodePort
 ---
 apiVersion: apps/v1
@@ -17,8 +17,8 @@ metadata:
   name: travel-agency-service
 spec:
   selector:
-      matchLabels:
-        app: travel-agency-service
+    matchLabels:
+      app: travel-agency-service
   replicas: 2
   template:
     metadata:
@@ -30,7 +30,7 @@ spec:
           image: travel-agency-service:latest
           imagePullPolicy: Never
           ports:
-          - containerPort: 8080
+            - containerPort: 8080
           env:
             - name: MONGO_USERNAME
               valueFrom:

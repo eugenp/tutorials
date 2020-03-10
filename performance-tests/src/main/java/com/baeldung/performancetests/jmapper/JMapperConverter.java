@@ -11,6 +11,7 @@ import com.googlecode.jmapper.api.JMapperAPI;
 public class JMapperConverter implements Converter {
     JMapper realLifeMapper;
     JMapper simpleMapper;
+
     public JMapperConverter() {
         JMapperAPI api = new JMapperAPI().add(JMapperAPI.mappedClass(Order.class));
         realLifeMapper = new JMapper(Order.class, SourceOrder.class, api);

@@ -26,8 +26,8 @@ public class CreationDateResolver {
             final FileTime creationTime = (FileTime) Files.getAttribute(path, "creationTime");
 
             return Optional
-              .ofNullable(creationTime)
-              .map((FileTime::toInstant));
+                    .ofNullable(creationTime)
+                    .map((FileTime::toInstant));
         } catch (IOException ex) {
             throw new RuntimeException("An issue occured went wrong when resolving creation time", ex);
         }

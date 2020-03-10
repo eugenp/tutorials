@@ -18,7 +18,7 @@ import org.springframework.social.connect.web.ProviderSignInController;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan(basePackages = { "org.baeldung.security" })
+@ComponentScan(basePackages = {"org.baeldung.security"})
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -42,14 +42,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
         http
-        .csrf().disable()
-        .authorizeRequests()
-        .antMatchers("/login*","/signin/**","/signup/**").permitAll()
-        .anyRequest().authenticated()
-        .and()
-        .formLogin().loginPage("/login").permitAll()
-        .and()
-        .logout();
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/login*", "/signin/**", "/signup/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().loginPage("/login").permitAll()
+                .and()
+                .logout();
     } // @formatter:on
 
     @Bean

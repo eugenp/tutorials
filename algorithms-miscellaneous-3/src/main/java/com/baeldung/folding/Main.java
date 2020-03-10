@@ -2,9 +2,8 @@ package com.baeldung.folding;
 
 /**
  * Code snippet for article "A Guide to the Folding Technique".
- *  
- * @author A.Shcherbakov
  *
+ * @author A.Shcherbakov
  */
 public class Main {
 

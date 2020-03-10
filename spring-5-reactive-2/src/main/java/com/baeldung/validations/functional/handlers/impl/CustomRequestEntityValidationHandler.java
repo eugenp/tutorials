@@ -23,15 +23,15 @@ public class CustomRequestEntityValidationHandler extends AbstractValidationHand
     protected Mono<ServerResponse> processBody(CustomRequestEntity validBody, ServerRequest originalRequest) {
         String responseBody = String.format("Hi, %s [%s]!", validBody.getName(), validBody.getCode());
         return ServerResponse.ok()
-            .contentType(MediaType.APPLICATION_JSON)
-            .body(Mono.just(responseBody), String.class);
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Mono.just(responseBody), String.class);
     }
 
     @Override
     protected Mono<ServerResponse> onValidationErrors(Errors errors, CustomRequestEntity invalidBody, final ServerRequest request) {
         return ServerResponse.badRequest()
-            .contentType(MediaType.APPLICATION_JSON)
-            .body(Mono.just(String.format("Custom message showing the errors: %s", errors.getAllErrors()
-                .toString())), String.class);
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Mono.just(String.format("Custom message showing the errors: %s", errors.getAllErrors()
+                        .toString())), String.class);
     }
 }

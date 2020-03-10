@@ -65,8 +65,8 @@ public class HamcrestBeansUnitTest {
         PropertyDescriptor descriptor = getPropertyDescriptor("state", city);
 
         assertThat(descriptor
-          .getReadMethod()
-          .getName(), is(equalTo("getState")));
+                .getReadMethod()
+                .getName(), is(equalTo("getState")));
     }
 
     @Test
@@ -74,11 +74,11 @@ public class HamcrestBeansUnitTest {
         City city = new City("San Francisco", "CA");
         PropertyDescriptor[] descriptors = propertyDescriptorsFor(city, Object.class);
         List<String> getters = Arrays
-          .stream(descriptors)
-          .map(x -> x
-            .getReadMethod()
-            .getName())
-          .collect(toList());
+                .stream(descriptors)
+                .map(x -> x
+                        .getReadMethod()
+                        .getName())
+                .collect(toList());
 
         assertThat(getters, containsInAnyOrder("getName", "getState"));
     }

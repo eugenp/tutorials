@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class BackupSerializationSchema
-  implements SerializationSchema<Backup> {
+        implements SerializationSchema<Backup> {
 
     static ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
@@ -18,7 +18,7 @@ public class BackupSerializationSchema
 
     @Override
     public byte[] serialize(Backup backupMessage) {
-        if(objectMapper == null) {
+        if (objectMapper == null) {
             objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
             objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
         }

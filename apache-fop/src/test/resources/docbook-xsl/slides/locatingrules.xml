@@ -8,24 +8,24 @@
 <!-- the root element of the document -->
 
 <locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
-  <namespace ns="http://docbook.org/ns/docbook-slides" uri="schema/relaxng/slides.rnc"/>
-  <documentElement localName="slides" uri="schema/relaxng/slides.rnc"/>
+    <namespace ns="http://docbook.org/ns/docbook-slides" uri="schema/relaxng/slides.rnc"/>
+    <documentElement localName="slides" uri="schema/relaxng/slides.rnc"/>
 
-  <namespace ns="http://docbook.org/ns/docbook" uri="schema/relaxng/docbook.rnc"/>
+    <namespace ns="http://docbook.org/ns/docbook" uri="schema/relaxng/docbook.rnc"/>
 </locatingRules>
 
-<!-- To use this file with Emacs/nXML mode, either: -->
+        <!-- To use this file with Emacs/nXML mode, either: -->
 
-<!-- - do M-x customize-variable rng-schema-locating-files -->
-<!--   and then add the absolute path to this file there -->
+        <!-- - do M-x customize-variable rng-schema-locating-files -->
+        <!--   and then add the absolute path to this file there -->
 
-<!--   OR -->
+        <!--   OR -->
 
-<!-- - put the following into your .emacs file: -->
+        <!-- - put the following into your .emacs file: -->
 
-<!--     (setq rng-schema-locating-files -->
-<!--       (append -->
-<!--         '("~/docbook-slides/locatingrules.xml"))) -->
+        <!--     (setq rng-schema-locating-files -->
+        <!--       (append -->
+        <!--         '("~/docbook-slides/locatingrules.xml"))) -->
 
-<!--   Of course, replace the ~/docbook-slides/locatingrules.xml -->
-<!--   pathname with the appropriate location for your system. -->
+        <!--   Of course, replace the ~/docbook-slides/locatingrules.xml -->
+        <!--   pathname with the appropriate location for your system. -->

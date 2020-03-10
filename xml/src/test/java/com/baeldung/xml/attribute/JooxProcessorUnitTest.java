@@ -25,7 +25,7 @@ public class JooxProcessorUnitTest {
     @Test
     public void givenXmlWithAttributes_whenModifyAttribute_thenGetXmlUpdated() throws IOException, SAXException, TransformerFactoryConfigurationError {
         String path = getClass().getResource("/xml/attribute.xml")
-            .toString();
+                .toString();
         JooxTransformer transformer = new JooxTransformer(path);
         String attribute = "customer";
         String oldValue = "true";
@@ -39,26 +39,26 @@ public class JooxProcessorUnitTest {
     @Test
     public void givenTwoXml_whenModifyAttribute_thenGetSimilarXml() throws IOException, TransformerFactoryConfigurationError, URISyntaxException, SAXException {
         String path = getClass().getResource("/xml/attribute.xml")
-            .toString();
+                .toString();
         JooxTransformer transformer = new JooxTransformer(path);
         String attribute = "customer";
         String oldValue = "true";
         String newValue = "false";
         String expectedXml = new String(Files.readAllBytes((Paths.get(getClass().getResource("/xml/attribute_expected.xml")
-            .toURI()))));
+                .toURI()))));
 
         String result = transformer
-          .modifyAttribute(attribute, oldValue, newValue)
-          .replaceAll("(?m)^[ \t]*\r?\n", "");//Delete extra spaces added by Java 11
+                .modifyAttribute(attribute, oldValue, newValue)
+                .replaceAll("(?m)^[ \t]*\r?\n", "");//Delete extra spaces added by Java 11
 
         assertThat(result).and(expectedXml)
-            .areSimilar();
+                .areSimilar();
     }
 
     @Test
     public void givenXmlXee_whenInit_thenThrowException() throws IOException, SAXException, ParserConfigurationException, XPathExpressionException, TransformerFactoryConfigurationError, TransformerException {
         String path = getClass().getResource("/xml/xee_attribute.xml")
-            .toString();
+                .toString();
 
         assertThatThrownBy(() -> {
 

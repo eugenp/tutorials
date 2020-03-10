@@ -31,9 +31,9 @@ public class Relationship implements Serializable {
     public String getDst() {
         return dst;
     }
-    
+
     @Override
     public String toString() {
-    	return getSrc() + " -- " + getType() + " --> " + getDst();
+        return getSrc() + " -- " + getType() + " --> " + getDst();
     }
 }

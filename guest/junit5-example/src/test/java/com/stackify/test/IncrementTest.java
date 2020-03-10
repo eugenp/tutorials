@@ -9,7 +9,7 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
 
 public class IncrementTest {
-    
+
     private static Logger logger = LogManager.getLogger(IncrementTest.class);
 
     @BeforeEach

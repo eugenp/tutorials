@@ -48,7 +48,7 @@ public class SimpleCLIIntegrationTest {
         shell.executeCommand("admin-enable");
         final CommandResult result = shell.executeCommand("web-save --url https://www.google.com --out contents.txt");
 
-        Assert.assertArrayEquals(new boolean[] { result.isSuccess(), new File("contents.txt").exists() }, new boolean[] { true, true });
+        Assert.assertArrayEquals(new boolean[]{result.isSuccess(), new File("contents.txt").exists()}, new boolean[]{true, true});
     }
 
     @Test
@@ -59,7 +59,7 @@ public class SimpleCLIIntegrationTest {
         final CommandResult resultAdminEnable = shell.executeCommand("admin-enable");
         final CommandResult resultWebSaveAvailable = shell.executeCommand("web-save --url https://www.google.com --out contents.txt");
 
-        Assert.assertArrayEquals(new boolean[] { resultAdminDisable.isSuccess(), resultWebSaveUnavailable.isSuccess(), resultAdminEnable.isSuccess(), resultWebSaveAvailable.isSuccess() }, new boolean[] { true, false, true, true });
+        Assert.assertArrayEquals(new boolean[]{resultAdminDisable.isSuccess(), resultWebSaveUnavailable.isSuccess(), resultAdminEnable.isSuccess(), resultWebSaveAvailable.isSuccess()}, new boolean[]{true, false, true, true});
     }
 
     @Test

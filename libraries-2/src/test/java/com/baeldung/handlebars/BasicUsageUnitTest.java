@@ -6,9 +6,11 @@ import com.github.jknack.handlebars.Handlebars;
 import com.github.jknack.handlebars.Template;
 import com.github.jknack.handlebars.io.ClassPathTemplateLoader;
 import com.github.jknack.handlebars.io.TemplateLoader;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.junit.Test;
 
 /**

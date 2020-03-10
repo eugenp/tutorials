@@ -26,10 +26,10 @@ public class CountdownLatchResetExample {
                 countDownLatch.countDown();
                 if (countDownLatch.getCount() != prevValue) {
                     updateCount.incrementAndGet();
-                }               
+                }
             });
         }
-        
+
         es.shutdown();
         return updateCount.get();
     }

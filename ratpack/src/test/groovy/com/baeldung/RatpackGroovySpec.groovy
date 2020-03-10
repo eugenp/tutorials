@@ -12,7 +12,8 @@ import ratpack.test.MainClassApplicationUnderTest
 class RatpackGroovySpec {
 
     ServerBackedApplicationUnderTest ratpackGroovyApp = new MainClassApplicationUnderTest(RatpackGroovyApp.class)
-    @Delegate TestHttpClient client = TestHttpClient.testHttpClient(ratpackGroovyApp)
+    @Delegate
+    TestHttpClient client = TestHttpClient.testHttpClient(ratpackGroovyApp)
 
     @Test
     void "test if app is started"() {

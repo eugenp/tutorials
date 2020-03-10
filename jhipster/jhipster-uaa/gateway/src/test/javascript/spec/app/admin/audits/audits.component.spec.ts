@@ -1,12 +1,12 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { Observable, of } from 'rxjs';
-import { HttpHeaders, HttpResponse } from '@angular/common/http';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {Observable, of} from 'rxjs';
+import {HttpHeaders, HttpResponse} from '@angular/common/http';
 
-import { GatewayTestModule } from '../../../test.module';
-import { AuditsComponent } from 'app/admin/audits/audits.component';
-import { AuditsService } from 'app/admin/audits/audits.service';
-import { Audit } from 'app/admin/audits/audit.model';
-import { ITEMS_PER_PAGE } from 'app/shared';
+import {GatewayTestModule} from '../../../test.module';
+import {AuditsComponent} from 'app/admin/audits/audits.component';
+import {AuditsService} from 'app/admin/audits/audits.service';
+import {Audit} from 'app/admin/audits/audit.model';
+import {ITEMS_PER_PAGE} from 'app/shared';
 
 function build2DigitsDatePart(datePart: number) {
     return `0${datePart}`.slice(-2);
@@ -84,7 +84,10 @@ describe('Component Tests', () => {
             it('Should call load all on init', () => {
                 // GIVEN
                 const headers = new HttpHeaders().append('link', 'link;link');
-                const audit = new Audit({ remoteAddress: '127.0.0.1', sessionId: '123' }, 'user', '20140101', 'AUTHENTICATION_SUCCESS');
+                const audit = new Audit({
+                    remoteAddress: '127.0.0.1',
+                    sessionId: '123'
+                }, 'user', '20140101', 'AUTHENTICATION_SUCCESS');
                 spyOn(service, 'query').and.returnValue(
                     of(
                         new HttpResponse({

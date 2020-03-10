@@ -10,8 +10,8 @@ import groovy.util.logging.*
 @Canonical
 @TupleConstructor
 @EqualsAndHashCode
-@ToString(includePackage=false, excludes=['id'])
-@Log 
+@ToString(includePackage = false, excludes = ['id'])
+@Log
 @AutoClone
 class Employee {
 
@@ -37,7 +37,7 @@ class Employee {
         log.info "$methodName is not defined"
         "method '$methodName' is not defined"
     }
-    
+
     def logEmp() {
         log.info "Employee: $lastName, $firstName is of $age years age"
     }

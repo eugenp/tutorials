@@ -61,7 +61,7 @@ public class MailController {
         props.put("additionalInfo", "To make sure that you send an attachment with this email, change the value for the 'attachment.invoice' in the application.properties file to the path to the attachment.");
         labels.put("sendAttachment", props);
     }
-    
+
     @RequestMapping(method = RequestMethod.GET)
     public String showEmailsPage() {
         return "emails";
@@ -100,8 +100,8 @@ public class MailController {
 
     @RequestMapping(value = "/sendTemplate", method = RequestMethod.POST)
     public String createMailWithTemplate(Model model,
-                             @ModelAttribute("mailObject") @Valid MailObject mailObject,
-                             Errors errors) {
+                                         @ModelAttribute("mailObject") @Valid MailObject mailObject,
+                                         Errors errors) {
         if (errors.hasErrors()) {
             return "mail/send";
         }
@@ -115,8 +115,8 @@ public class MailController {
 
     @RequestMapping(value = "/sendAttachment", method = RequestMethod.POST)
     public String createMailWithAttachment(Model model,
-                             @ModelAttribute("mailObject") @Valid MailObject mailObject,
-                             Errors errors) {
+                                           @ModelAttribute("mailObject") @Valid MailObject mailObject,
+                                           Errors errors) {
         if (errors.hasErrors()) {
             return "mail/send";
         }

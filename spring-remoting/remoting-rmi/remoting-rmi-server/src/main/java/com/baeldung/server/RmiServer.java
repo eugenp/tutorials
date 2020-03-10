@@ -6,13 +6,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.remoting.rmi.RmiServiceExporter;
 
-@SpringBootApplication public class RmiServer {
+@SpringBootApplication
+public class RmiServer {
 
-    @Bean CabBookingService bookingService() {
+    @Bean
+    CabBookingService bookingService() {
         return new CabBookingServiceImpl();
     }
 
-    @Bean RmiServiceExporter exporter(CabBookingService implementation) {
+    @Bean
+    RmiServiceExporter exporter(CabBookingService implementation) {
 
         // Expose a service via RMI. Remote obect URL is:
         // rmi://<HOST>:<PORT>/<SERVICE_NAME>

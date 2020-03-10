@@ -5,16 +5,16 @@ public class NumberOfDigits {
         int length = String.valueOf(number).length();
         return length;
     }
-    
+
     public int logarithmicApproach(int number) {
         int length = (int) Math.log10(number) + 1;
         return length;
     }
-    
+
     public int repeatedMultiplication(int number) {
         int length = 0;
         long temp = 1;
-        while(temp <= number) {
+        while (temp <= number) {
             length++;
             temp *= 10;
         }
@@ -24,13 +24,13 @@ public class NumberOfDigits {
     public int shiftOperators(int number) {
         int length = 0;
         long temp = 1;
-        while(temp <= number) {
+        while (temp <= number) {
             length++;
             temp = (temp << 3) + (temp << 1);
         }
         return length;
     }
-    
+
     public int dividingWithPowersOf2(int number) {
         int length = 1;
         if (number >= 100000000) {
@@ -50,21 +50,21 @@ public class NumberOfDigits {
         }
         return length;
     }
-    
+
     public int divideAndConquer(int number) {
-        if (number < 100000){
+        if (number < 100000) {
             // 5 digits or less
-            if (number < 100){
+            if (number < 100) {
                 // 1 or 2
                 if (number < 10)
                     return 1;
                 else
                     return 2;
-            }else{
+            } else {
                 // 3 to 5 digits
                 if (number < 1000)
                     return 3;
-                else{
+                else {
                     // 4 or 5 digits
                     if (number < 10000)
                         return 4;

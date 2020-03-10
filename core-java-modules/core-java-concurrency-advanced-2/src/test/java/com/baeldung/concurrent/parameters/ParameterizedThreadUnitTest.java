@@ -25,13 +25,13 @@ public class ParameterizedThreadUnitTest {
     @Test
     public void whenParametersToThreadWithLamda_thenParametersPassedCorrectly() throws Exception {
         ExecutorService executorService = Executors.newFixedThreadPool(2);
-        int[] numbers = new int[] { 4, 5, 6 };
+        int[] numbers = new int[]{4, 5, 6};
         try {
             Future<Integer> sumResult = executorService.submit(() -> IntStream.of(numbers)
-                .sum());
+                    .sum());
             Future<Double> averageResult = executorService.submit(() -> IntStream.of(numbers)
-                .average()
-                .orElse(0d));
+                    .average()
+                    .orElse(0d));
             assertEquals(Integer.valueOf(15), sumResult.get());
             assertEquals(Double.valueOf(5.0), averageResult.get());
         } finally {

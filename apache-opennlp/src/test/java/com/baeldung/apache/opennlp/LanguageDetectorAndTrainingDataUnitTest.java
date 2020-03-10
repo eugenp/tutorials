@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
+
 import opennlp.tools.langdetect.Language;
 import opennlp.tools.langdetect.LanguageDetector;
 import opennlp.tools.langdetect.LanguageDetectorFactory;
@@ -15,8 +16,10 @@ import opennlp.tools.util.MarkableFileInputStreamFactory;
 import opennlp.tools.util.ObjectStream;
 import opennlp.tools.util.PlainTextByLineStream;
 import opennlp.tools.util.TrainingParameters;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
+
 import org.junit.Test;
 
 public class LanguageDetectorAndTrainingDataUnitTest {
@@ -36,9 +39,9 @@ public class LanguageDetectorAndTrainingDataUnitTest {
 
         LanguageDetector ld = new LanguageDetectorME(model);
         Language[] languages = ld.predictLanguages("estava em uma marcenaria na Rua Bruno");
-        
+
         assertThat(Arrays.asList(languages)).extracting("lang", "confidence").contains(tuple("pob", 0.9999999950605625),
-                 tuple("ita", 4.939427661577956E-9), tuple("spa", 9.665954064665144E-15),
+                tuple("ita", 4.939427661577956E-9), tuple("spa", 9.665954064665144E-15),
                 tuple("fra", 8.250349924885834E-25));
     }
 }

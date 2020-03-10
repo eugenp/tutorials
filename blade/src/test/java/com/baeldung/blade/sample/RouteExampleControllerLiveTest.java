@@ -18,8 +18,8 @@ public class RouteExampleControllerLiveTest {
     public void givenRoute_whenGet_thenCorrectOutput() throws Exception {
         final HttpUriRequest request = new HttpGet("http://localhost:9000/route-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("GET called");
         }
     }
@@ -28,8 +28,8 @@ public class RouteExampleControllerLiveTest {
     public void givenRoute_whenPost_thenCorrectOutput() throws Exception {
         final HttpUriRequest request = new HttpPost("http://localhost:9000/route-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("POST called");
         }
     }
@@ -38,8 +38,8 @@ public class RouteExampleControllerLiveTest {
     public void givenRoute_whenPut_thenCorrectOutput() throws Exception {
         final HttpUriRequest request = new HttpPut("http://localhost:9000/route-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("PUT called");
         }
     }
@@ -48,8 +48,8 @@ public class RouteExampleControllerLiveTest {
     public void givenRoute_whenDelete_thenCorrectOutput() throws Exception {
         final HttpUriRequest request = new HttpDelete("http://localhost:9000/route-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("DELETE called");
         }
     }
@@ -58,8 +58,8 @@ public class RouteExampleControllerLiveTest {
     public void givenAnotherRoute_whenGet_thenCorrectOutput() throws Exception {
         final HttpUriRequest request = new HttpGet("http://localhost:9000/another-route-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("GET called");
         }
     }
@@ -68,8 +68,8 @@ public class RouteExampleControllerLiveTest {
     public void givenAllMatchRoute_whenGet_thenCorrectOutput() throws Exception {
         final HttpUriRequest request = new HttpGet("http://localhost:9000/allmatch-route-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("ALLMATCH called");
         }
     }
@@ -78,8 +78,8 @@ public class RouteExampleControllerLiveTest {
     public void givenAllMatchRoute_whenPost_thenCorrectOutput() throws Exception {
         final HttpUriRequest request = new HttpPost("http://localhost:9000/allmatch-route-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("ALLMATCH called");
         }
     }
@@ -88,8 +88,8 @@ public class RouteExampleControllerLiveTest {
     public void givenAllMatchRoute_whenPut_thenCorrectOutput() throws Exception {
         final HttpUriRequest request = new HttpPut("http://localhost:9000/allmatch-route-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("ALLMATCH called");
         }
     }
@@ -98,8 +98,8 @@ public class RouteExampleControllerLiveTest {
     public void givenAllMatchRoute_whenDelete_thenCorrectOutput() throws Exception {
         final HttpUriRequest request = new HttpDelete("http://localhost:9000/allmatch-route-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("ALLMATCH called");
         }
     }
@@ -108,10 +108,10 @@ public class RouteExampleControllerLiveTest {
     public void givenRequestAttribute_whenRenderedWithTemplate_thenCorrectlyEvaluateIt() throws Exception {
         final HttpUriRequest request = new HttpGet("http://localhost:9000/template-output-test");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("<h1>Hello, Blade!</h1>");
         }
     }
-    
+
 }

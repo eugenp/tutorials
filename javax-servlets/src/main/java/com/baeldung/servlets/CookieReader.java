@@ -7,7 +7,7 @@ import java.util.Optional;
 
 /**
  * Created by adam.
- *
+ * <p>
  * Class which simplifies reading cookies from request.
  */
 public class CookieReader {
@@ -31,9 +31,9 @@ public class CookieReader {
      */
     public Optional<String> readCookie(String key) {
         return Arrays.stream(request.getCookies())
-                 .filter(c -> key.equals(c.getName()))
-                 .map(Cookie::getValue)
-                 .findAny();
+                .filter(c -> key.equals(c.getName()))
+                .map(Cookie::getValue)
+                .findAny();
     }
 
 }

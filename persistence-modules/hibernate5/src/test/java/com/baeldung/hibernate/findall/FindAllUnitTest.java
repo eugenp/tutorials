@@ -18,7 +18,7 @@ public class FindAllUnitTest {
 
     private Session session;
     private Transaction transaction;
-    
+
     private FindAll findAll;
 
     @Before
@@ -54,7 +54,7 @@ public class FindAllUnitTest {
         List<Student> list = findAll.findAllWithCriteriaQuery();
         assertEquals(3, list.size());
     }
-    
+
     @Test
     public void givenJpql_WhenFindAll_ThenGetAllPersons() {
         List<Student> list = findAll.findAllWithJpql();

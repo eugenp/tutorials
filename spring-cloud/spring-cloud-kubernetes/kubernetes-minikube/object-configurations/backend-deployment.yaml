@@ -7,8 +7,8 @@ spec:
     app: demo-backend
     tier: backend
   ports:
-  - protocol: TCP
-    port: 8080
+    - protocol: TCP
+      port: 8080
   type: ClusterIP
 ---
 apiVersion: apps/v1
@@ -17,9 +17,9 @@ metadata:
   name: demo-backend
 spec:
   selector:
-      matchLabels:
-        app: demo-backend
-        tier: backend
+    matchLabels:
+      app: demo-backend
+      tier: backend
   replicas: 3
   template:
     metadata:

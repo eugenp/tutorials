@@ -13,7 +13,7 @@ public class MavenPolyglotApplication {
     }
 
     @GetMapping("/")
-    public String home(){
+    public String home() {
         return "Hello JSON Maven Model !";
     }
 }

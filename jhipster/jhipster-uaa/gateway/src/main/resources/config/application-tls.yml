@@ -8,11 +8,11 @@
 # at chrome://flags/#allow-insecure-localhost
 # ===================================================================
 server:
-    ssl:
-        key-store: classpath:config/tls/keystore.p12
-        key-store-password: password
-        key-store-type: PKCS12
-        key-alias: selfsigned
+  ssl:
+    key-store: classpath:config/tls/keystore.p12
+    key-store-password: password
+    key-store-type: PKCS12
+    key-alias: selfsigned
 jhipster:
-    http:
-        version: V_2_0
+  http:
+    version: V_2_0

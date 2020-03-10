@@ -45,7 +45,7 @@ public class JavaXToInputStreamUnitTest {
 
     @Test
     public final void givenUsingPlainJava_whenConvertingByteArrayToInputStream_thenCorrect() throws IOException {
-        final byte[] initialArray = { 0, 1, 2 };
+        final byte[] initialArray = {0, 1, 2};
         final InputStream targetStream = new ByteArrayInputStream(initialArray);
 
         IOUtils.closeQuietly(targetStream);
@@ -53,7 +53,7 @@ public class JavaXToInputStreamUnitTest {
 
     @Test
     public final void givenUsingGuava_whenConvertingByteArrayToInputStream_thenCorrect() throws IOException {
-        final byte[] initialArray = { 0, 1, 2 };
+        final byte[] initialArray = {0, 1, 2};
         final InputStream targetStream = ByteSource.wrap(initialArray).openStream();
 
         IOUtils.closeQuietly(targetStream);
@@ -76,14 +76,14 @@ public class JavaXToInputStreamUnitTest {
 
         IOUtils.closeQuietly(targetStream);
     }
-    
+
     @Test
     public final void givenUsingPlainJava_whenConvertingFileToSequenceInputStream_thenCorrect() throws IOException {
         final File initialFile = new File("src/test/resources/sample.txt");
         final File anotherFile = new File("src/test/resources/anothersample.txt");
         final InputStream targetStream = new FileInputStream(initialFile);
         final InputStream anotherTargetStream = new FileInputStream(anotherFile);
-        
+
         InputStream sequenceTargetStream = new SequenceInputStream(targetStream, anotherTargetStream);
 
         IOUtils.closeQuietly(targetStream);

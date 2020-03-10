@@ -24,9 +24,9 @@ class DatastoreConfig : AbstractR2dbcConfiguration() {
     @Bean
     override fun connectionFactory(): ConnectionFactory {
         return H2ConnectionFactory(H2ConnectionConfiguration.builder()
-          .inMemory(dbName)
-          .username(userName)
-          .password(password)
-          .build())
+                .inMemory(dbName)
+                .username(userName)
+                .password(password)
+                .build())
     }
 }

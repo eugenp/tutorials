@@ -28,22 +28,22 @@ public class LdapClient {
 
     public List<String> search(final String username) {
         return ldapTemplate.search(
-          "ou=users",
-          "cn=" + username,
-          (AttributesMapper<String>) attrs -> (String) attrs
-          .get("cn")
-          .get());
+                "ou=users",
+                "cn=" + username,
+                (AttributesMapper<String>) attrs -> (String) attrs
+                        .get("cn")
+                        .get());
     }
 
     public void create(final String username, final String password) {
         Name dn = LdapNameBuilder
-          .newInstance()
-          .add("ou", "users")
-          .add("cn", username)
-          .build();
+                .newInstance()
+                .add("ou", "users")
+                .add("cn", username)
+                .build();
         DirContextAdapter context = new DirContextAdapter(dn);
 
-        context.setAttributeValues("objectclass", new String[] { "top", "person", "organizationalPerson", "inetOrgPerson" });
+        context.setAttributeValues("objectclass", new String[]{"top", "person", "organizationalPerson", "inetOrgPerson"});
         context.setAttributeValue("cn", username);
         context.setAttributeValue("sn", username);
         context.setAttributeValue("userPassword", digestSHA(password));
@@ -53,13 +53,13 @@ public class LdapClient {
 
     public void modify(final String username, final String password) {
         Name dn = LdapNameBuilder
-          .newInstance()
-          .add("ou", "users")
-          .add("cn", username)
-          .build();
+                .newInstance()
+                .add("ou", "users")
+                .add("cn", username)
+                .build();
         DirContextOperations context = ldapTemplate.lookupContext(dn);
 
-        context.setAttributeValues("objectclass", new String[] { "top", "person", "organizationalPerson", "inetOrgPerson" });
+        context.setAttributeValues("objectclass", new String[]{"top", "person", "organizationalPerson", "inetOrgPerson"});
         context.setAttributeValue("cn", username);
         context.setAttributeValue("sn", username);
         context.setAttributeValue("userPassword", digestSHA(password));
@@ -73,8 +73,8 @@ public class LdapClient {
             MessageDigest digest = MessageDigest.getInstance("SHA");
             digest.update(password.getBytes());
             base64 = Base64
-              .getEncoder()
-              .encodeToString(digest.digest());
+                    .getEncoder()
+                    .encodeToString(digest.digest());
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }

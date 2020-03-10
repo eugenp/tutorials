@@ -14,10 +14,10 @@ class CalculatorUnitTest {
     void givenCalculator_whenGettingVoidMethodsByReflection_thenOnlyClearAndPrint() {
         Method[] calculatorMethods = Calculator.class.getDeclaredMethods();
         List<Method> calculatorVoidMethods = Arrays.stream(calculatorMethods)
-          .filter(method -> method.getReturnType().equals(Void.TYPE))
-          .collect(Collectors.toList());
+                .filter(method -> method.getReturnType().equals(Void.TYPE))
+                .collect(Collectors.toList());
 
         assertThat(calculatorVoidMethods)
-          .allMatch(method -> Arrays.asList("clear", "print").contains(method.getName()));
+                .allMatch(method -> Arrays.asList("clear", "print").contains(method.getName()));
     }
 }

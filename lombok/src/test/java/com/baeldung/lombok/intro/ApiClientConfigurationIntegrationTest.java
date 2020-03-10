@@ -12,15 +12,15 @@ public class ApiClientConfigurationIntegrationTest {
     @Test
     public void givenAnnotatedConfiguration_thenCanBeBuiltViaBuilder() {
         ApiClientConfiguration config =
-            new ApiClientConfigurationBuilder()
-                .host("api.server.com")
-                .port(443)
-                .useHttps(true)
-                .connectTimeout(15_000L)
-                .readTimeout(5_000L)
-                .username("myusername")
-                .password("secret")
-            .build();
+                new ApiClientConfigurationBuilder()
+                        .host("api.server.com")
+                        .port(443)
+                        .useHttps(true)
+                        .connectTimeout(15_000L)
+                        .readTimeout(5_000L)
+                        .username("myusername")
+                        .password("secret")
+                        .build();
 
         Assert.assertEquals(config.getHost(), "api.server.com");
         Assert.assertEquals(config.getPort(), 443);

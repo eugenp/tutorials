@@ -7,7 +7,7 @@ import kotlin.test.assertTrue
 class OperatorsOverloadingTest {
 
     @Test
-    fun givenThePlaneClassWithOverloadedIncrementationOperator_whenCallingTheOperator_thenItIncreasesSpeed(){
+    fun givenThePlaneClassWithOverloadedIncrementationOperator_whenCallingTheOperator_thenItIncreasesSpeed() {
         var plane = Plane(0.0)
 
         plane++
@@ -15,7 +15,7 @@ class OperatorsOverloadingTest {
     }
 
     @Test
-    fun givenThePlaneClassWithOverloadedMinusOperator_whenCallingTheOperator_thenItDecreaseSpeed(){
+    fun givenThePlaneClassWithOverloadedMinusOperator_whenCallingTheOperator_thenItDecreaseSpeed() {
         var plane = Plane(1000.0)
 
         plane - 500.0
@@ -23,7 +23,7 @@ class OperatorsOverloadingTest {
     }
 
     @Test
-    fun givenThePlaneClassWithOverloadedInvokeOperator_whenCallingTheOperator_thenItSetSpeed(){
+    fun givenThePlaneClassWithOverloadedInvokeOperator_whenCallingTheOperator_thenItSetSpeed() {
         var plane = Plane(0.0)
 
         plane(150.0)
@@ -31,7 +31,7 @@ class OperatorsOverloadingTest {
     }
 
     @Test
-    fun given2PlaneObjectWithOverloadedComparisonOperator_whenCallingTheOperator_thenItComparesSpeedValues(){
+    fun given2PlaneObjectWithOverloadedComparisonOperator_whenCallingTheOperator_thenItComparesSpeedValues() {
         var plane = Plane(0.0)
         var plane2 = Plane(150.0)
 
@@ -48,7 +48,7 @@ class Plane(var currentSpeed: Double) {
     }
 
     operator fun minus(number: Double) {
-        currentSpeed = if(currentSpeed < number) 0.0 else currentSpeed - number
+        currentSpeed = if (currentSpeed < number) 0.0 else currentSpeed - number
     }
 
     operator fun invoke(speed: Double) {

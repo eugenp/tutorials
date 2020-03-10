@@ -27,24 +27,24 @@ public class UtilityOperatorsIntegrationTest {
     public void givenObservable_whenObserveOnAfterOnNext_thenEmitsEventsOnComputeScheduler() throws InterruptedException {
 
         Observable.range(1, 5)
-          .map(i -> i * 100)
-          .doOnNext(i -> {
-              emittedTotal += i;
-              System.out.println("Emitting " + i
-                + " on thread " + Thread.currentThread().getName());
-          })
-          .observeOn(Schedulers.computation())
-          .map(i -> i * 10)
-          .subscribe(i -> {
-              receivedTotal += i;
-              System.out.println("Received " + i + " on thread "
-                + Thread.currentThread().getName());
-          });
+                .map(i -> i * 100)
+                .doOnNext(i -> {
+                    emittedTotal += i;
+                    System.out.println("Emitting " + i
+                            + " on thread " + Thread.currentThread().getName());
+                })
+                .observeOn(Schedulers.computation())
+                .map(i -> i * 10)
+                .subscribe(i -> {
+                    receivedTotal += i;
+                    System.out.println("Received " + i + " on thread "
+                            + Thread.currentThread().getName());
+                });
 
         await().until(() -> {
-              assertTrue(emittedTotal == 1500);
-              assertTrue(receivedTotal == 15000);
-          }
+                    assertTrue(emittedTotal == 1500);
+                    assertTrue(receivedTotal == 15000);
+                }
         );
     }
 
@@ -52,19 +52,19 @@ public class UtilityOperatorsIntegrationTest {
     public void givenObservable_whenObserveOnBeforeOnNext_thenEmitsEventsOnComputeScheduler() throws InterruptedException {
 
         Observable.range(1, 5)
-          .map(i -> i * 100)
-          .observeOn(Schedulers.computation())
-          .doOnNext(i -> {
-              emittedTotal += i;
-              System.out.println("Emitting " + i
-                + " on thread " + Thread.currentThread().getName());
-          })
-          .map(i -> i * 10)
-          .subscribe(i -> {
-              receivedTotal += i;
-              System.out.println("Received " + i + " on thread "
-                + Thread.currentThread().getName());
-          });
+                .map(i -> i * 100)
+                .observeOn(Schedulers.computation())
+                .doOnNext(i -> {
+                    emittedTotal += i;
+                    System.out.println("Emitting " + i
+                            + " on thread " + Thread.currentThread().getName());
+                })
+                .map(i -> i * 10)
+                .subscribe(i -> {
+                    receivedTotal += i;
+                    System.out.println("Received " + i + " on thread "
+                            + Thread.currentThread().getName());
+                });
 
         await().until(() -> {
             assertTrue(emittedTotal == 1500);
@@ -76,19 +76,19 @@ public class UtilityOperatorsIntegrationTest {
     public void givenObservable_whenSubscribeOn_thenEmitsEventsOnComputeScheduler() throws InterruptedException {
 
         Observable.range(1, 5)
-          .map(i -> i * 100)
-          .doOnNext(i -> {
-              emittedTotal += i;
-              System.out.println("Emitting " + i
-                + " on thread " + Thread.currentThread().getName());
-          })
-          .subscribeOn(Schedulers.computation())
-          .map(i -> i * 10)
-          .subscribe(i -> {
-              receivedTotal += i;
-              System.out.println("Received " + i + " on thread "
-                + Thread.currentThread().getName());
-          });
+                .map(i -> i * 100)
+                .doOnNext(i -> {
+                    emittedTotal += i;
+                    System.out.println("Emitting " + i
+                            + " on thread " + Thread.currentThread().getName());
+                })
+                .subscribeOn(Schedulers.computation())
+                .map(i -> i * 10)
+                .subscribe(i -> {
+                    receivedTotal += i;
+                    System.out.println("Received " + i + " on thread "
+                            + Thread.currentThread().getName());
+                });
 
         await().until(() -> {
             assertTrue(emittedTotal == 1500);
@@ -100,8 +100,8 @@ public class UtilityOperatorsIntegrationTest {
     public void givenObservableWithOneEvent_whenSingle_thenEmitEvent() {
 
         Observable.range(1, 1)
-          .single()
-          .subscribe(i -> receivedTotal += i);
+                .single()
+                .subscribe(i -> receivedTotal += i);
         assertTrue(receivedTotal == 1);
     }
 
@@ -109,9 +109,9 @@ public class UtilityOperatorsIntegrationTest {
     public void givenObservableWithNoEvents_whenSingle_thenThrowException() {
 
         Observable.range(1, 3)
-          .single()
-          .onErrorReturn(e -> receivedTotal += 10)
-          .subscribe();
+                .single()
+                .onErrorReturn(e -> receivedTotal += 10)
+                .subscribe();
         assertTrue(receivedTotal == 10);
     }
 
@@ -119,8 +119,8 @@ public class UtilityOperatorsIntegrationTest {
     public void givenObservableWihNoEvents_whenSingleOrDefault_thenDefaultMessage() {
 
         Observable.empty()
-          .singleOrDefault("Default")
-          .subscribe(i -> result += i);
+                .singleOrDefault("Default")
+                .subscribe(i -> result += i);
         assertTrue(result.equals("Default"));
     }
 
@@ -128,9 +128,9 @@ public class UtilityOperatorsIntegrationTest {
     public void givenObservableWithManyEvents_whenSingleOrDefault_thenThrowException() {
 
         Observable.range(1, 3)
-          .singleOrDefault(5)
-          .onErrorReturn(e -> receivedTotal += 10)
-          .subscribe();
+                .singleOrDefault(5)
+                .onErrorReturn(e -> receivedTotal += 10)
+                .subscribe();
         assertTrue(receivedTotal == 10);
     }
 
@@ -138,9 +138,9 @@ public class UtilityOperatorsIntegrationTest {
     public void givenObservable_whenDoOnNextAndDoOnCompleted_thenSumAllEventsAndShowMessage() {
 
         Observable.range(1, 10)
-          .doOnNext(r -> receivedTotal += r)
-          .doOnCompleted(() -> result = "Completed")
-          .subscribe();
+                .doOnNext(r -> receivedTotal += r)
+                .doOnCompleted(() -> result = "Completed")
+                .subscribe();
         assertTrue(receivedTotal == 55);
         assertTrue(result.equals("Completed"));
     }
@@ -149,24 +149,24 @@ public class UtilityOperatorsIntegrationTest {
     public void givenObservable_whenDoOnEachAndDoOnSubscribe_thenSumAllValuesAndShowMessage() {
 
         Observable.range(1, 10)
-          .doOnEach(new Observer<Integer>() {
-              @Override
-              public void onCompleted() {
-                  System.out.println("Complete");
-              }
+                .doOnEach(new Observer<Integer>() {
+                    @Override
+                    public void onCompleted() {
+                        System.out.println("Complete");
+                    }
 
-              @Override
-              public void onError(Throwable e) {
-                  e.printStackTrace();
-              }
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                    }
 
-              @Override
-              public void onNext(Integer value) {
-                  receivedTotal += value;
-              }
-          })
-          .doOnSubscribe(() -> result = "Subscribed")
-          .subscribe();
+                    @Override
+                    public void onNext(Integer value) {
+                        receivedTotal += value;
+                    }
+                })
+                .doOnSubscribe(() -> result = "Subscribed")
+                .subscribe();
         assertTrue(receivedTotal == 55);
         assertTrue(result.equals("Subscribed"));
     }
@@ -176,13 +176,13 @@ public class UtilityOperatorsIntegrationTest {
 
         thrown.expect(OnErrorNotImplementedException.class);
         Observable.empty()
-          .single()
-          .doOnError(throwable -> {
-              throw new RuntimeException("error");
-          })
-          .doOnTerminate(() -> result += "doOnTerminate")
-          .doAfterTerminate(() -> result += "_doAfterTerminate")
-          .subscribe();
+                .single()
+                .doOnError(throwable -> {
+                    throw new RuntimeException("error");
+                })
+                .doOnTerminate(() -> result += "doOnTerminate")
+                .doAfterTerminate(() -> result += "_doAfterTerminate")
+                .subscribe();
         assertTrue(result.equals("doOnTerminate_doAfterTerminate"));
     }
 
@@ -190,10 +190,10 @@ public class UtilityOperatorsIntegrationTest {
     public void givenObservable_whenTimestamp_thenEventsShouldAppearTimestamped() {
 
         Observable.range(1, 10)
-          .timestamp()
-          .map(o -> result = o.getClass().toString())
-          .last()
-          .subscribe();
+                .timestamp()
+                .map(o -> result = o.getClass().toString())
+                .last()
+                .subscribe();
         assertTrue(result.equals("class rx.schedulers.Timestamped"));
     }
 
@@ -201,20 +201,20 @@ public class UtilityOperatorsIntegrationTest {
     public void givenObservables_whenDelay_thenEventsStartAppearAfterATime() throws InterruptedException {
 
         Observable<Timestamped<Long>> source = Observable.interval(1, TimeUnit.SECONDS)
-          .take(5)
-          .timestamp();
+                .take(5)
+                .timestamp();
 
         Observable<Timestamped<Long>> delay = source.delaySubscription(2, TimeUnit.SECONDS);
 
         source.<Long>subscribe(
-          value -> System.out.println("source :" + value),
-          t -> System.out.println("source error"),
-          () -> System.out.println("source completed"));
+                value -> System.out.println("source :" + value),
+                t -> System.out.println("source error"),
+                () -> System.out.println("source completed"));
 
         delay.subscribe(
-          value -> System.out.println("delay : " + value),
-          t -> System.out.println("delay error"),
-          () -> System.out.println("delay completed"));
+                value -> System.out.println("delay : " + value),
+                t -> System.out.println("delay error"),
+                () -> System.out.println("delay completed"));
         //Thread.sleep(8000);
     }
 
@@ -222,8 +222,8 @@ public class UtilityOperatorsIntegrationTest {
     public void givenObservable_whenRepeat_thenSumNumbersThreeTimes() {
 
         Observable.range(1, 3)
-          .repeat(3)
-          .subscribe(i -> receivedTotal += i);
+                .repeat(3)
+                .subscribe(i -> receivedTotal += i);
         assertTrue(receivedTotal == 18);
     }
 
@@ -231,18 +231,18 @@ public class UtilityOperatorsIntegrationTest {
     public void givenObservable_whenUsing_thenReturnCreatedResource() {
 
         Observable<Character> values = Observable.using(
-          () -> "resource",
-          r -> Observable.create(o -> {
-              for (Character c : r.toCharArray()) {
-                  o.onNext(c);
-              }
-              o.onCompleted();
-          }),
-          r -> System.out.println("Disposed: " + r)
+                () -> "resource",
+                r -> Observable.create(o -> {
+                    for (Character c : r.toCharArray()) {
+                        o.onNext(c);
+                    }
+                    o.onCompleted();
+                }),
+                r -> System.out.println("Disposed: " + r)
         );
         values.subscribe(
-          v -> result += v,
-          e -> result += e
+                v -> result += v,
+                e -> result += e
         );
         assertTrue(result.equals("resource"));
     }
@@ -251,12 +251,12 @@ public class UtilityOperatorsIntegrationTest {
     public void givenObservableCached_whenSubscribesWith2Actions_thenEmitsCachedValues() {
 
         Observable<Integer> source =
-          Observable.<Integer>create(subscriber -> {
-                System.out.println("Create");
-                subscriber.onNext(receivedTotal += 5);
-                subscriber.onCompleted();
-            }
-          ).cache();
+                Observable.<Integer>create(subscriber -> {
+                            System.out.println("Create");
+                            subscriber.onNext(receivedTotal += 5);
+                            subscriber.onCompleted();
+                        }
+                ).cache();
         source.subscribe(i -> {
             System.out.println("element 1");
             receivedTotal += 1;

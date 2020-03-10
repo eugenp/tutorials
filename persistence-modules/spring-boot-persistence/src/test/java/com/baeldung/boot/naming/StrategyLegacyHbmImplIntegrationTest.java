@@ -20,8 +20,8 @@ import java.util.Collection;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @TestPropertySource(properties = {
-  "spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl",
-  "spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl",
+        "spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl",
+        "spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl",
 })
 @Import(Config.class)
 public class StrategyLegacyHbmImplIntegrationTest extends NamingConfig {
@@ -32,32 +32,32 @@ public class StrategyLegacyHbmImplIntegrationTest extends NamingConfig {
         String entity = Preference.class.getCanonicalName();
         PersistentClass persistentClass = metadata.getEntityBinding(entity);
         Collection<Table> tables = metadata
-          .getDatabase()
-          .getDefaultNamespace()
-          .getTables();
+                .getDatabase()
+                .getDefaultNamespace()
+                .getTables();
         Table preferenceTable = persistentClass.getTable();
         String tableNameExpected = "Account_preferences";
         Table accountPreferencesTable = tables
-          .stream()
-          .filter(table -> table
-            .getName()
-            .equals(tableNameExpected))
-          .findFirst()
-          .get();
+                .stream()
+                .filter(table -> table
+                        .getName()
+                        .equals(tableNameExpected))
+                .findFirst()
+                .get();
         String implicitNameExpected = "account";
 
         String implicitNameCreated = preferenceTable
-          .getColumn(3)
-          .getName();
+                .getColumn(3)
+                .getName();
         String tableNameCreated = accountPreferencesTable.getName();
 
         SoftAssertions.assertSoftly(softly -> {
             softly
-              .assertThat(implicitNameCreated)
-              .isEqualTo(implicitNameExpected);
+                    .assertThat(implicitNameCreated)
+                    .isEqualTo(implicitNameExpected);
             softly
-              .assertThat(tableNameCreated)
-              .isEqualTo(tableNameExpected);
+                    .assertThat(tableNameCreated)
+                    .isEqualTo(tableNameExpected);
         });
     }
 }

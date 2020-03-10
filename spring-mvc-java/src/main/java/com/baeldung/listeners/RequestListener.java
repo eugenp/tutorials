@@ -15,10 +15,10 @@ public class RequestListener implements ServletRequestListener {
 
     @Override
     public void requestDestroyed(ServletRequestEvent event) {
-        HttpServletRequest request = (HttpServletRequest)event.getServletRequest();
+        HttpServletRequest request = (HttpServletRequest) event.getServletRequest();
         if (!request.getServletPath().equals("/counter")) {
             ServletContext context = event.getServletContext();
-            context.setAttribute("counter", (int)context.getAttribute("counter") + 1);
+            context.setAttribute("counter", (int) context.getAttribute("counter") + 1);
         }
     }
 }

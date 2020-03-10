@@ -18,7 +18,7 @@ interface Engine {
     fun makeSound(): String
 }
 
-class V6Engine: Engine {
+class V6Engine : Engine {
     override fun makeSound(): String {
         return "Vroom"
     }

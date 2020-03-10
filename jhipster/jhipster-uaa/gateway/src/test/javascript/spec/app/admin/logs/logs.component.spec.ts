@@ -1,12 +1,12 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { of } from 'rxjs';
-import { HttpHeaders, HttpResponse } from '@angular/common/http';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {of} from 'rxjs';
+import {HttpHeaders, HttpResponse} from '@angular/common/http';
 
-import { GatewayTestModule } from '../../../test.module';
-import { LogsComponent } from 'app/admin/logs/logs.component';
-import { LogsService } from 'app/admin/logs/logs.service';
-import { ITEMS_PER_PAGE } from 'app/shared';
-import { Log } from 'app/admin';
+import {GatewayTestModule} from '../../../test.module';
+import {LogsComponent} from 'app/admin/logs/logs.component';
+import {LogsService} from 'app/admin/logs/logs.service';
+import {ITEMS_PER_PAGE} from 'app/shared';
+import {Log} from 'app/admin';
 
 describe('Component Tests', () => {
     describe('LogsComponent', () => {
@@ -64,7 +64,7 @@ describe('Component Tests', () => {
                 // GIVEN
                 const log = new Log('main', 'ERROR');
                 spyOn(service, 'changeLevel').and.returnValue(of(new HttpResponse()));
-                spyOn(service, 'findAll').and.returnValue(of(new HttpResponse({ body: [log] })));
+                spyOn(service, 'findAll').and.returnValue(of(new HttpResponse({body: [log]})));
 
                 // WHEN
                 comp.changeLevel('main', 'ERROR');

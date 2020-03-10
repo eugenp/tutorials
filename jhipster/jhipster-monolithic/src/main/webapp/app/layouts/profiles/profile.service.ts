@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
+import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
 
-import { ProfileInfo } from './profile-info.model';
+import {ProfileInfo} from './profile-info.model';
 
 @Injectable()
 export class ProfileService {
 
     private profileInfoUrl = 'api/profile-info';
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) {
+    }
 
     getProfileInfo(): Observable<ProfileInfo> {
         return this.http.get(this.profileInfoUrl)

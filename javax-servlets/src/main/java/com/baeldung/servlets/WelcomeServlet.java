@@ -28,7 +28,7 @@ public class WelcomeServlet extends HttpServlet {
             request.setAttribute("uiColor", uiColor.orElse("blue"));
             request.setAttribute("userName", userName.get());
             request.setAttribute("sessionAttribute", request.getSession()
-                .getAttribute("sampleKey"));
+                    .getAttribute("sampleKey"));
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp");
             dispatcher.forward(request, response);

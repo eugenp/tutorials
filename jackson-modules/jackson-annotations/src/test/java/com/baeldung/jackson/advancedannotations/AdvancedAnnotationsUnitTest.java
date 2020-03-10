@@ -48,7 +48,7 @@ public class AdvancedAnnotationsUnitTest {
 
         BeanWithoutAppend bean = new BeanWithoutAppend(2, "Bean Without Append Annotation");
         ObjectWriter writer = mapper.writerFor(BeanWithoutAppend.class)
-            .withAttribute("version", "1.0");
+                .withAttribute("version", "1.0");
         String jsonString = writer.writeValueAsString(bean);
 
         assertThat(jsonString, not(containsString("version")));
@@ -61,7 +61,7 @@ public class AdvancedAnnotationsUnitTest {
 
         BeanWithAppend bean = new BeanWithAppend(2, "Bean With Append Annotation");
         ObjectWriter writer = mapper.writerFor(BeanWithAppend.class)
-            .withAttribute("version", "1.0");
+                .withAttribute("version", "1.0");
         String jsonString = writer.writeValueAsString(bean);
 
         assertThat(jsonString, containsString("version"));

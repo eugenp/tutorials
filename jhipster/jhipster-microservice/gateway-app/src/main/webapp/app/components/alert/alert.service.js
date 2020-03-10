@@ -1,22 +1,22 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('gatewayApp')
         .provider('AlertService', AlertService);
 
-    function AlertService () {
+    function AlertService() {
         this.toast = false;
         /*jshint validthis: true */
         this.$get = getService;
 
-        this.showAsToast = function(isToast) {
+        this.showAsToast = function (isToast) {
             this.toast = isToast;
         };
 
         getService.$inject = ['$timeout', '$sce'];
 
-        function getService ($timeout, $sce) {
+        function getService($timeout, $sce) {
             var toast = this.toast,
                 alertId = 0, // unique id for each alert. Starts from 0.
                 alerts = [],
@@ -33,7 +33,7 @@
                 success: success,
                 error: error,
                 info: info,
-                warning : warning
+                warning: warning
             };
 
             function isToast() {
@@ -105,7 +105,7 @@
                         return closeAlert(this.id, alerts);
                     }
                 };
-                if(!alert.scoped) {
+                if (!alert.scoped) {
                     alerts.push(alert);
                 }
                 return alert;
@@ -125,7 +125,9 @@
 
             function closeAlert(id, extAlerts) {
                 var thisAlerts = extAlerts ? extAlerts : alerts;
-                return closeAlertByIndex(thisAlerts.map(function(e) { return e.id; }).indexOf(id), thisAlerts);
+                return closeAlertByIndex(thisAlerts.map(function (e) {
+                    return e.id;
+                }).indexOf(id), thisAlerts);
             }
 
             function closeAlertByIndex(index, thisAlerts) {

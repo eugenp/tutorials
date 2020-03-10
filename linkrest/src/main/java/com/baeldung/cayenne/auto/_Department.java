@@ -15,7 +15,7 @@ import com.baeldung.cayenne.Employee;
  */
 public abstract class _Department extends CayenneDataObject {
 
-    private static final long serialVersionUID = 1L; 
+    private static final long serialVersionUID = 1L;
 
     public static final String DEP_ID_PK_COLUMN = "dep_id";
 
@@ -25,19 +25,22 @@ public abstract class _Department extends CayenneDataObject {
     public void setName(String name) {
         writeProperty("name", name);
     }
+
     public String getName() {
-        return (String)readProperty("name");
+        return (String) readProperty("name");
     }
 
     public void addToEmployees(Employee obj) {
         addToManyTarget("employees", obj, true);
     }
+
     public void removeFromEmployees(Employee obj) {
         removeToManyTarget("employees", obj, true);
     }
+
     @SuppressWarnings("unchecked")
     public List<Employee> getEmployees() {
-        return (List<Employee>)readProperty("employees");
+        return (List<Employee>) readProperty("employees");
     }
 
 

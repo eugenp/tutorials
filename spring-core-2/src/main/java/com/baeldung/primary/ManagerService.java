@@ -5,7 +5,8 @@ import org.springframework.stereotype.Service;
 
 /**
  * Created by Gebruiker on 7/19/2018.
- */@Service
+ */
+@Service
 public class ManagerService {
 
     @Autowired

@@ -36,9 +36,11 @@ class ErrorServer {
         fun RoutingContext.getForbidden() {
             throw HttpErrorForbidden()
         }
+
         fun RoutingContext.getError() {
             throw HttpErrorCode("Something went wrong", 590)
         }
+
         fun RoutingContext.getErrorbody() {
             throw HttpErrorCodeWithBody("Something went wrong", 591, "Body here")
         }

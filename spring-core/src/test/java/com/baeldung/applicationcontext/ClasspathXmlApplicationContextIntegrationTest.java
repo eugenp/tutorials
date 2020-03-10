@@ -37,13 +37,13 @@ public class ClasspathXmlApplicationContextIntegrationTest {
 
         String enHello = resources.getMessage("hello", null, "Default", Locale.ENGLISH);
         String enYou = resources.getMessage("you", null, Locale.ENGLISH);
-        String enThanks = resources.getMessage("thanks", new Object[] { enYou }, Locale.ENGLISH);
+        String enThanks = resources.getMessage("thanks", new Object[]{enYou}, Locale.ENGLISH);
         assertThat(enHello, equalTo("hello"));
         assertThat(enThanks, equalTo("thank you"));
 
         String chHello = resources.getMessage("hello", null, "Default", Locale.SIMPLIFIED_CHINESE);
         String chYou = resources.getMessage("you", null, Locale.SIMPLIFIED_CHINESE);
-        String chThanks = resources.getMessage("thanks", new Object[] { chYou }, Locale.SIMPLIFIED_CHINESE);
+        String chThanks = resources.getMessage("thanks", new Object[]{chYou}, Locale.SIMPLIFIED_CHINESE);
         assertThat(chHello, equalTo("你好"));
         assertThat(chThanks, equalTo("谢谢你"));
     }

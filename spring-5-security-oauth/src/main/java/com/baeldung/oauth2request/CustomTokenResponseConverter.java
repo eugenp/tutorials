@@ -16,11 +16,11 @@ import org.springframework.util.StringUtils;
 
 public class CustomTokenResponseConverter implements Converter<Map<String, String>, OAuth2AccessTokenResponse> {
     private static final Set<String> TOKEN_RESPONSE_PARAMETER_NAMES = Stream.of(
-        OAuth2ParameterNames.ACCESS_TOKEN, 
-        OAuth2ParameterNames.TOKEN_TYPE, 
-        OAuth2ParameterNames.EXPIRES_IN, 
-        OAuth2ParameterNames.REFRESH_TOKEN, 
-        OAuth2ParameterNames.SCOPE) .collect(Collectors.toSet());
+            OAuth2ParameterNames.ACCESS_TOKEN,
+            OAuth2ParameterNames.TOKEN_TYPE,
+            OAuth2ParameterNames.EXPIRES_IN,
+            OAuth2ParameterNames.REFRESH_TOKEN,
+            OAuth2ParameterNames.SCOPE).collect(Collectors.toSet());
 
     @Override
     public OAuth2AccessTokenResponse convert(Map<String, String> tokenResponseParameters) {
@@ -28,7 +28,7 @@ public class CustomTokenResponseConverter implements Converter<Map<String, Strin
 
         OAuth2AccessToken.TokenType accessTokenType = null;
         if (OAuth2AccessToken.TokenType.BEARER.getValue()
-            .equalsIgnoreCase(tokenResponseParameters.get(OAuth2ParameterNames.TOKEN_TYPE))) {
+                .equalsIgnoreCase(tokenResponseParameters.get(OAuth2ParameterNames.TOKEN_TYPE))) {
             accessTokenType = OAuth2AccessToken.TokenType.BEARER;
         }
 
@@ -44,24 +44,24 @@ public class CustomTokenResponseConverter implements Converter<Map<String, Strin
         if (tokenResponseParameters.containsKey(OAuth2ParameterNames.SCOPE)) {
             String scope = tokenResponseParameters.get(OAuth2ParameterNames.SCOPE);
             scopes = Arrays.stream(StringUtils.delimitedListToStringArray(scope, " "))
-                .collect(Collectors.toSet());
+                    .collect(Collectors.toSet());
         }
 
         String refreshToken = tokenResponseParameters.get(OAuth2ParameterNames.REFRESH_TOKEN);
 
         Map<String, Object> additionalParameters = new LinkedHashMap<>();
         tokenResponseParameters.entrySet()
-            .stream()
-            .filter(e -> !TOKEN_RESPONSE_PARAMETER_NAMES.contains(e.getKey()))
-            .forEach(e -> additionalParameters.put(e.getKey(), e.getValue()));
+                .stream()
+                .filter(e -> !TOKEN_RESPONSE_PARAMETER_NAMES.contains(e.getKey()))
+                .forEach(e -> additionalParameters.put(e.getKey(), e.getValue()));
 
         return OAuth2AccessTokenResponse.withToken(accessToken)
-            .tokenType(accessTokenType)
-            .expiresIn(expiresIn)
-            .scopes(scopes)
-            .refreshToken(refreshToken)
-            .additionalParameters(additionalParameters)
-            .build();
+                .tokenType(accessTokenType)
+                .expiresIn(expiresIn)
+                .scopes(scopes)
+                .refreshToken(refreshToken)
+                .additionalParameters(additionalParameters)
+                .build();
     }
 
 }

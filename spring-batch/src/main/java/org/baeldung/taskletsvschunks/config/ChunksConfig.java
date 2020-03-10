@@ -27,9 +27,11 @@ import org.springframework.transaction.PlatformTransactionManager;
 @EnableBatchProcessing
 public class ChunksConfig {
 
-    @Autowired private JobBuilderFactory jobs;
+    @Autowired
+    private JobBuilderFactory jobs;
 
-    @Autowired private StepBuilderFactory steps;
+    @Autowired
+    private StepBuilderFactory steps;
 
     @Bean
     public JobLauncherTestUtils jobLauncherTestUtils() {
@@ -72,19 +74,19 @@ public class ChunksConfig {
 
     @Bean
     protected Step processLines(ItemReader<Line> reader, ItemProcessor<Line, Line> processor, ItemWriter<Line> writer) {
-        return steps.get("processLines").<Line, Line> chunk(2)
-          .reader(reader)
-          .processor(processor)
-          .writer(writer)
-          .build();
+        return steps.get("processLines").<Line, Line>chunk(2)
+                .reader(reader)
+                .processor(processor)
+                .writer(writer)
+                .build();
     }
 
     @Bean
     public Job job() {
         return jobs
-          .get("chunksJob")
-          .start(processLines(itemReader(), itemProcessor(), itemWriter()))
-          .build();
+                .get("chunksJob")
+                .start(processLines(itemReader(), itemProcessor(), itemWriter()))
+                .build();
     }
 
 }

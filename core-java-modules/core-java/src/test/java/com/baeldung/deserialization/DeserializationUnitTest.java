@@ -18,6 +18,7 @@ public class DeserializationUnitTest {
 
     /**
      * Tests the deserialization of the original "AppleProduct" (no exceptions are thrown)
+     *
      * @throws ClassNotFoundException
      * @throws IOException
      */
@@ -46,13 +47,13 @@ public class DeserializationUnitTest {
     /**
      * Tests the deserialization of the modified (non-compatible) "AppleProduct".
      * The test should result in an InvalidClassException being thrown.
-     * 
-     * Note: to run this test: 
-     *          1. Modify the value of the serialVersionUID identifier in AppleProduct.java
-     *          2. Remove the @Ignore annotation
-     *          3. Run the test individually (do not run the entire set of tests)
-     *          4. Revert the changes made in 1 & 2 (so that you're able to re-run the tests successfully)
-     *          
+     * <p>
+     * Note: to run this test:
+     * 1. Modify the value of the serialVersionUID identifier in AppleProduct.java
+     * 2. Remove the @Ignore annotation
+     * 3. Run the test individually (do not run the entire set of tests)
+     * 4. Revert the changes made in 1 & 2 (so that you're able to re-run the tests successfully)
+     *
      * @throws ClassNotFoundException
      * @throws IOException
      */

@@ -22,8 +22,8 @@ public class ReportEngineApplication implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
-          .addResourceHandler(reportsPath + imagesPath + "/**")
-          .addResourceLocations("file:///" + System.getProperty("user.dir") + "/" + reportsPath + imagesPath);
+                .addResourceHandler(reportsPath + imagesPath + "/**")
+                .addResourceLocations("file:///" + System.getProperty("user.dir") + "/" + reportsPath + imagesPath);
     }
 
 }

@@ -26,7 +26,7 @@ public class BoruvkaUnitTest {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 jsonStr.append(line)
-                    .append("\n");
+                        .append("\n");
             }
         }
 

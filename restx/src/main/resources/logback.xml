@@ -2,7 +2,7 @@
     <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
         <resetJUL>true</resetJUL>
     </contextListener>
-    <property name="LOGS_FOLDER" value="${logs.base:-logs}" />
+    <property name="LOGS_FOLDER" value="${logs.base:-logs}"/>
 
     <appender name="errorFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>${LOGS_FOLDER}/errors.log</File>
@@ -50,8 +50,8 @@
                 </triggeringPolicy>
             </appender>
             <root level="INFO">
-                <appender-ref ref="debugFile" />
-                <appender-ref ref="appLog" />
+                <appender-ref ref="debugFile"/>
+                <appender-ref ref="appLog"/>
             </root>
         </then>
         <else>
@@ -69,26 +69,26 @@
             </appender>
 
             <root level="INFO">
-                <appender-ref ref="STDOUT" />
-                <appender-ref ref="appLog" />
+                <appender-ref ref="STDOUT"/>
+                <appender-ref ref="appLog"/>
             </root>
         </else>
     </if>
 
     <!-- clean up container logs -->
-    <logger name="org.eclipse.jetty.server.AbstractConnector" level="WARN" />
-    <logger name="org.eclipse.jetty.server.handler.ContextHandler" level="WARN" />
-    <logger name="org.eclipse.jetty.webapp.StandardDescriptorProcessor" level="WARN" />
+    <logger name="org.eclipse.jetty.server.AbstractConnector" level="WARN"/>
+    <logger name="org.eclipse.jetty.server.handler.ContextHandler" level="WARN"/>
+    <logger name="org.eclipse.jetty.webapp.StandardDescriptorProcessor" level="WARN"/>
 
-    <logger name="org.hibernate.validator.internal.engine.ConfigurationImpl" level="WARN" />
-    <logger name="org.reflections.Reflections" level="WARN" />
+    <logger name="org.hibernate.validator.internal.engine.ConfigurationImpl" level="WARN"/>
+    <logger name="org.reflections.Reflections" level="WARN"/>
 
-    <logger name="restx.factory.Factory" level="WARN" />
+    <logger name="restx.factory.Factory" level="WARN"/>
 
     <!-- app logs - set DEBUG level, in prod it will go to a dedicated file -->
-    <logger name="restx.demo" level="DEBUG" />
+    <logger name="restx.demo" level="DEBUG"/>
 
     <root level="INFO">
-        <appender-ref ref="errorFile" />
+        <appender-ref ref="errorFile"/>
     </root>
 </configuration>

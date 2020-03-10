@@ -183,7 +183,8 @@ class SqlTest {
                     sql.executeInsert("INSERT INTO PROJECT_10 (NAME, URL) VALUES ('tutorials', 'https://github.com/eugenp/tutorials')")
                     throw new Exception('rollback')
                 }
-            } catch (ignored) {}
+            } catch (ignored) {
+            }
 
             def rows = sql.rows("SELECT * FROM PROJECT_10")
 
@@ -200,7 +201,8 @@ class SqlTest {
                     sql.executeInsert("INSERT INTO PROJECT_11 (NAME, URL) VALUES ('tutorials', 'https://github.com/eugenp/tutorials')")
                     throw new Exception('This does not rollback')
                 }
-            } catch (ignored) {}
+            } catch (ignored) {
+            }
 
             def rows = sql.rows("SELECT * FROM PROJECT_11")
 

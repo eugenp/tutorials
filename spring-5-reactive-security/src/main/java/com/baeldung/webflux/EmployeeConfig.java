@@ -25,7 +25,7 @@ public class EmployeeConfig {
         mapping.setOrder(10);
         return mapping;
     }
-    
+
     @Bean
     public WebSocketHandlerAdapter handlerAdapter() {
         return new WebSocketHandlerAdapter();

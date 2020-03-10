@@ -10,7 +10,7 @@ function connect() {
 }
 
 function sendName() {
-	stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
 }
 
 function showGreeting(message) {
@@ -18,9 +18,11 @@ function showGreeting(message) {
 }
 
 $(function () {
-	connect();
+    connect();
     $("form").on('submit', function (e) {
         e.preventDefault();
     });
-    $( "#send" ).click(function() { sendName(); });
+    $("#send").click(function () {
+        sendName();
+    });
 });

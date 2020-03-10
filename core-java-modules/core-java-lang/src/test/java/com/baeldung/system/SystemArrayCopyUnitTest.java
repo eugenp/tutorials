@@ -22,6 +22,6 @@ public class SystemArrayCopyUnitTest {
 
         // copy 2 elements from a, starting at a[1] to b, starting at b[3]
         System.arraycopy(a, 1, b, 3, 2);
-        Assert.assertArrayEquals(new int[] {0, 0, 0, 22, 44, 0}, b);
+        Assert.assertArrayEquals(new int[]{0, 0, 0, 22, 44, 0}, b);
     }
 }

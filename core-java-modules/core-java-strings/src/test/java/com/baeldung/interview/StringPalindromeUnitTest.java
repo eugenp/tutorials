@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringPalindromeUnitTest {
-    
+
     public boolean isPalindrome(String text) {
         int forward = 0;
         int backward = text.length() - 1;
@@ -17,7 +17,7 @@ public class StringPalindromeUnitTest {
         }
         return true;
     }
-    
+
     @Test
     public void givenIsPalindromeMethod_whenCheckingString_thenFindIfPalindrome() {
         assertThat(isPalindrome("madam")).isTrue();

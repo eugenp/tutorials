@@ -21,8 +21,8 @@ public class OAuth2LoginSecurityConfig extends WebSecurityConfigurerAdapter {// 
         googleUserService.setAccessibleScopes(googleScopes);
 
         http.authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest()
-              .authenticated())
-            .oauth2Login(oauthLogin -> oauthLogin.userInfoEndpoint()
-              .oidcUserService(googleUserService));
+                .authenticated())
+                .oauth2Login(oauthLogin -> oauthLogin.userInfoEndpoint()
+                        .oidcUserService(googleUserService));
     }// @formatter:on
 }

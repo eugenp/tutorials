@@ -46,11 +46,11 @@ public class BaeldungApp {
         Collection<String> activeProfiles = Arrays.asList(env.getActiveProfiles());
         if (activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT) && activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_PRODUCTION)) {
             log.error("You have misconfigured your application! It should not run " +
-                "with both the 'dev' and 'prod' profiles at the same time.");
+                    "with both the 'dev' and 'prod' profiles at the same time.");
         }
         if (activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT) && activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_CLOUD)) {
             log.error("You have misconfigured your application! It should not" +
-                "run with both the 'dev' and 'cloud' profiles at the same time.");
+                    "run with both the 'dev' and 'cloud' profiles at the same time.");
         }
     }
 
@@ -69,16 +69,16 @@ public class BaeldungApp {
             protocol = "https";
         }
         log.info("\n----------------------------------------------------------\n\t" +
-                "Application '{}' is running! Access URLs:\n\t" +
-                "Local: \t\t{}://localhost:{}\n\t" +
-                "External: \t{}://{}:{}\n\t" +
-                "Profile(s): \t{}\n----------------------------------------------------------",
-            env.getProperty("spring.application.name"),
-            protocol,
-            env.getProperty("server.port"),
-            protocol,
-            InetAddress.getLocalHost().getHostAddress(),
-            env.getProperty("server.port"),
-            env.getActiveProfiles());
+                        "Application '{}' is running! Access URLs:\n\t" +
+                        "Local: \t\t{}://localhost:{}\n\t" +
+                        "External: \t{}://{}:{}\n\t" +
+                        "Profile(s): \t{}\n----------------------------------------------------------",
+                env.getProperty("spring.application.name"),
+                protocol,
+                env.getProperty("server.port"),
+                protocol,
+                InetAddress.getLocalHost().getHostAddress(),
+                env.getProperty("server.port"),
+                env.getActiveProfiles());
     }
 }

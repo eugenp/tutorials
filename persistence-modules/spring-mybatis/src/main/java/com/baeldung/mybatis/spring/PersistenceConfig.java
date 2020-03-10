@@ -15,16 +15,16 @@ import javax.sql.DataSource;
 
 @Configuration
 @MapperScan("com.baeldung.mybatis")
-@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class, MybatisAutoConfiguration.class })
+@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, MybatisAutoConfiguration.class})
 public class PersistenceConfig {
 
     @Bean
     public DataSource dataSource() {
         return new EmbeddedDatabaseBuilder()
-          .setType(EmbeddedDatabaseType.H2)
-          .addScript("schema.sql")
-          .addScript("data.sql")
-          .build();
+                .setType(EmbeddedDatabaseType.H2)
+                .addScript("schema.sql")
+                .addScript("data.sql")
+                .build();
     }
 
     @Bean

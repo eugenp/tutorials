@@ -27,13 +27,13 @@ public class CameraStream extends Application {
 
     public void start(Stage stage) throws Exception {
         OpenCV.loadShared();
-        capture=  new VideoCapture(0); // The number is the ID of the camera
+        capture = new VideoCapture(0); // The number is the ID of the camera
         ImageView imageView = new ImageView();
         HBox hbox = new HBox(imageView);
         Scene scene = new Scene(hbox);
         stage.setScene(scene);
         stage.show();
-        new AnimationTimer(){
+        new AnimationTimer() {
             @Override
             public void handle(long l) {
                 imageView.setImage(getCapture());
@@ -58,7 +58,8 @@ public class CameraStream extends Application {
         MatOfByte bytes = new MatOfByte();
         Imgcodecs.imencode("img", mat, bytes);
         ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes.toArray());
-        Image img = new Image(inputStream); return img;
+        Image img = new Image(inputStream);
+        return img;
     }
 
     public static void main(String[] args) {
@@ -78,9 +79,9 @@ public class CameraStream extends Application {
                 new Size(minFaceSize, minFaceSize),
                 new Size()
         );
-        Rect[] facesArray =  facesDetected.toArray();
-        for(Rect face : facesArray) {
-            Imgproc.rectangle(inputImage, face.tl(), face.br(), new Scalar(0, 0, 255), 3 );
+        Rect[] facesArray = facesDetected.toArray();
+        for (Rect face : facesArray) {
+            Imgproc.rectangle(inputImage, face.tl(), face.br(), new Scalar(0, 0, 255), 3);
         }
         return inputImage;
     }

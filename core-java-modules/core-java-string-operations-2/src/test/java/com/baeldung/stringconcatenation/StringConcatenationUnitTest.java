@@ -11,95 +11,95 @@ import static org.junit.Assert.assertEquals;
 
 public class StringConcatenationUnitTest {
 
-  @Test
-  public void givenMultipleStrings_whenConcatUsingStringBuilder_checkStringCorrect() {
+    @Test
+    public void givenMultipleStrings_whenConcatUsingStringBuilder_checkStringCorrect() {
 
-    StringBuilder stringBuilder = new StringBuilder(100);
-    stringBuilder.append("Baeldung");
-    stringBuilder.append(" is");
-    stringBuilder.append(" awesome");
+        StringBuilder stringBuilder = new StringBuilder(100);
+        stringBuilder.append("Baeldung");
+        stringBuilder.append(" is");
+        stringBuilder.append(" awesome");
 
-    assertEquals("Baeldung is awesome", stringBuilder.toString());
+        assertEquals("Baeldung is awesome", stringBuilder.toString());
 
-  }
+    }
 
-  @Test
-  public void givenMultipleString_whenConcatUsingAdditionOperator_checkStringCorrect() {
+    @Test
+    public void givenMultipleString_whenConcatUsingAdditionOperator_checkStringCorrect() {
 
-    String myString = "The " + "quick " + "brown " + "fox...";
+        String myString = "The " + "quick " + "brown " + "fox...";
 
-    assertEquals("The quick brown fox...", myString);
-  }
-
-
-  @Test
-  public void givenMultipleStrings_whenConcatUsingStringFormat_checkStringCorrect() {
-
-    String myString = String.format("%s %s %.2f %s %s, %s...", "I",
-            "ate",
-            2.5056302,
-            "blueberry",
-            "pies",
-            "oops");
+        assertEquals("The quick brown fox...", myString);
+    }
 
 
-    assertEquals("I ate 2.51 blueberry pies, oops...", myString);
-  }
+    @Test
+    public void givenMultipleStrings_whenConcatUsingStringFormat_checkStringCorrect() {
 
-  @Test
-  public void givenMultipleStrings_whenStringConcatUsed_checkStringCorrect() {
-
-    String myString = "Both".concat(" fickle")
-            .concat(" dwarves")
-            .concat(" jinx")
-            .concat(" my")
-            .concat(" pig")
-            .concat(" quiz");
-
-    assertEquals("Both fickle dwarves jinx my pig quiz", myString);
+        String myString = String.format("%s %s %.2f %s %s, %s...", "I",
+                "ate",
+                2.5056302,
+                "blueberry",
+                "pies",
+                "oops");
 
 
-  }
+        assertEquals("I ate 2.51 blueberry pies, oops...", myString);
+    }
 
-  @Test
-  public void givenMultipleStrings_whenStringJoinUsed_checkStringCorrect() {
+    @Test
+    public void givenMultipleStrings_whenStringConcatUsed_checkStringCorrect() {
 
-    String[] strings = {"I'm", "running", "out", "of", "pangrams!"};
+        String myString = "Both".concat(" fickle")
+                .concat(" dwarves")
+                .concat(" jinx")
+                .concat(" my")
+                .concat(" pig")
+                .concat(" quiz");
 
-    String myString = String.join(" ", strings);
+        assertEquals("Both fickle dwarves jinx my pig quiz", myString);
 
-    assertEquals("I'm running out of pangrams!", myString);
 
-  }
+    }
 
-  @Test
-  public void givenMultipleStrings_whenStringJoinerUsed_checkStringCorrect() {
+    @Test
+    public void givenMultipleStrings_whenStringJoinUsed_checkStringCorrect() {
 
-    StringJoiner fruitJoiner = new StringJoiner(", ");
-    fruitJoiner.add("Apples");
-    fruitJoiner.add("Oranges");
-    fruitJoiner.add("Bananas");
+        String[] strings = {"I'm", "running", "out", "of", "pangrams!"};
 
-    assertEquals("Apples, Oranges, Bananas", fruitJoiner.toString());
-  }
+        String myString = String.join(" ", strings);
 
-  @Test
-  public void givenMultipleStrings_whenArrayJoiner_checkStringCorrect() {
+        assertEquals("I'm running out of pangrams!", myString);
 
-    String[] myFavouriteLanguages = {"Java", "JavaScript", "Python"};
+    }
 
-    String toString = Arrays.toString(myFavouriteLanguages);
+    @Test
+    public void givenMultipleStrings_whenStringJoinerUsed_checkStringCorrect() {
 
-    assertEquals("[Java, JavaScript, Python]", toString);
-  }
+        StringJoiner fruitJoiner = new StringJoiner(", ");
+        fruitJoiner.add("Apples");
+        fruitJoiner.add("Oranges");
+        fruitJoiner.add("Bananas");
 
-  @Test
-  public void givenArrayListOfStrings_whenCollectorsJoin_checkStringCorrect() {
+        assertEquals("Apples, Oranges, Bananas", fruitJoiner.toString());
+    }
 
-    List<String> awesomeAnimals = Arrays.asList("Shark", "Panda", "Armadillo");
+    @Test
+    public void givenMultipleStrings_whenArrayJoiner_checkStringCorrect() {
 
-    String animalString = awesomeAnimals.stream().collect(Collectors.joining(", "));
+        String[] myFavouriteLanguages = {"Java", "JavaScript", "Python"};
 
-    assertEquals("Shark, Panda, Armadillo", animalString);
-  }
+        String toString = Arrays.toString(myFavouriteLanguages);
+
+        assertEquals("[Java, JavaScript, Python]", toString);
+    }
+
+    @Test
+    public void givenArrayListOfStrings_whenCollectorsJoin_checkStringCorrect() {
+
+        List<String> awesomeAnimals = Arrays.asList("Shark", "Panda", "Armadillo");
+
+        String animalString = awesomeAnimals.stream().collect(Collectors.joining(", "));
+
+        assertEquals("Shark, Panda, Armadillo", animalString);
+    }
 }

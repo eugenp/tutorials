@@ -41,8 +41,8 @@ public class App {
             Class<?> caller = Reflection.getCallerClass(i++);
             do {
                 sbStack.append(i + ".")
-                    .append(caller.getName())
-                    .append("\n");
+                        .append(caller.getName())
+                        .append("\n");
                 caller = Reflection.getCallerClass(i++);
             } while (caller != null);
             LOGGER.info("2. Call Stack:\n{}", sbStack);
@@ -54,7 +54,7 @@ public class App {
     private static void getXmlFromObject(Book book) {
         try {
             Marshaller marshallerObj = JAXBContext.newInstance(Book.class)
-                .createMarshaller();
+                    .createMarshaller();
             marshallerObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             StringWriter sw = new StringWriter();

@@ -10,14 +10,14 @@ import java.io.IOException;
 
 public class ApplicantService {
 
-    KieSession kieSession=new DroolsBeanFactory().getKieSession();
+    KieSession kieSession = new DroolsBeanFactory().getKieSession();
 
-    public SuggestedRole suggestARoleForApplicant(Applicant applicant,SuggestedRole suggestedRole) throws IOException {
+    public SuggestedRole suggestARoleForApplicant(Applicant applicant, SuggestedRole suggestedRole) throws IOException {
         kieSession.insert(applicant);
-        kieSession.setGlobal("suggestedRole",suggestedRole);
+        kieSession.setGlobal("suggestedRole", suggestedRole);
         kieSession.fireAllRules();
         System.out.println(suggestedRole.getRole());
-        return  suggestedRole;
+        return suggestedRole;
 
     }
 }

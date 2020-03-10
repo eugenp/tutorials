@@ -12,17 +12,17 @@
 <script>
 
     var source = new EventSource('sse/stock/prices');
-    source.onopen = function(event) {
+    source.onopen = function (event) {
         console.log(event);
     };
-    source.addEventListener("stock", function(event) {
+    source.addEventListener("stock", function (event) {
         append(event.data);
     }, false);
 
-    source.onmessage = function(event) {
+    source.onmessage = function (event) {
         append(event.data);
     };
-    source.onerror = function(event) {
+    source.onerror = function (event) {
         console.log(event);
     };
 

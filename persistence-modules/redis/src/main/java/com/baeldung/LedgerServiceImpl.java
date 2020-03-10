@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class LedgerServiceImpl implements LedgerServiceInterface {
 
-    String[] returnArray = {"entry1","entry2","entry3"};
+    String[] returnArray = {"entry1", "entry2", "entry3"};
 
     @Override
     public List<String> getEntries(int count) {

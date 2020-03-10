@@ -4,17 +4,17 @@ import java.math.BigDecimal;
 
 public class ForecastProcessor {
     private WeatherService weatherService;
-    
+
     public BigDecimal getMaximumTemperature(String locationName) {
-        
+
         Location location = new Location(locationName);
-        
+
         try {
             weatherService.populateTemperature(location);
         } catch (ServiceUnavailableException e) {
-           return null;
+            return null;
         }
-        
+
         return location.getMaximumTemparature();
     }
 
@@ -24,5 +24,5 @@ public class ForecastProcessor {
 
     public void setWeatherService(WeatherService weatherService) {
         this.weatherService = weatherService;
-    }    
+    }
 }

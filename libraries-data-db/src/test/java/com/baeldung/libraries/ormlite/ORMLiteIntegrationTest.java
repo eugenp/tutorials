@@ -92,7 +92,7 @@ public class ORMLiteIntegrationTest {
         LibraryDao customLibraryDao = DaoManager.createDao(connectionSource, Library.class);
         customLibraryDao.create(library);
         assertEquals(1, customLibraryDao.findByName("My Library")
-            .size());
+                .size());
     }
 
     @Test
@@ -104,7 +104,7 @@ public class ORMLiteIntegrationTest {
 
         Dao<Address, Long> addressDao = DaoManager.createDao(connectionSource, Address.class);
         assertEquals(1, addressDao.queryForEq("addressLine", "Main Street nr 20")
-            .size());
+                .size());
     }
 
     @Test
@@ -114,14 +114,14 @@ public class ORMLiteIntegrationTest {
         libraryDao.create(library);
         libraryDao.refresh(library);
         library.getBooks()
-            .add(new Book("1984"));
+                .add(new Book("1984"));
 
         Book book = new Book("It");
         book.setLibrary(library);
         bookDao.create(book);
 
         assertEquals(2, bookDao.queryForEq("library_id", library)
-            .size());
+                .size());
     }
 
     @Test
@@ -137,19 +137,19 @@ public class ORMLiteIntegrationTest {
         libraryDao.refresh(library2);
 
         library.getBooks()
-            .add(new Book("Book1"));
+                .add(new Book("Book1"));
         library2.getBooks()
-            .add(new Book("Book2"));
+                .add(new Book("Book2"));
         library2.getBooks()
-            .add(new Book("Book3"));
+                .add(new Book("Book3"));
 
         List<Library> libraries = libraryDao.queryBuilder()
-            .where()
-            .in("libraryId", bookDao.queryBuilder()
-                .selectColumns("library_id")
-                .groupBy("library_id")
-                .having("count(*) > 1"))
-            .query();
+                .where()
+                .in("libraryId", bookDao.queryBuilder()
+                        .selectColumns("library_id")
+                        .groupBy("library_id")
+                        .having("count(*) > 1"))
+                .query();
         assertEquals(1, libraries.size());
 
     }

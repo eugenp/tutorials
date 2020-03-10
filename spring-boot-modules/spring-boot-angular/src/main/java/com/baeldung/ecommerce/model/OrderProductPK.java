@@ -45,15 +45,15 @@ public class OrderProductPK implements Serializable {
         int result = 1;
 
         result = prime * result + ((order.getId() == null)
-          ? 0
-          : order
-            .getId()
-            .hashCode());
+                ? 0
+                : order
+                .getId()
+                .hashCode());
         result = prime * result + ((product.getId() == null)
-          ? 0
-          : product
-            .getId()
-            .hashCode());
+                ? 0
+                : product
+                .getId()
+                .hashCode());
 
         return result;
     }

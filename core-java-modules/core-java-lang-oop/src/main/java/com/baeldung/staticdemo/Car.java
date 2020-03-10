@@ -2,19 +2,18 @@ package com.baeldung.staticdemo;
 
 /**
  * This class demonstrates the use of static fields and static methods
- * the instance variables engine and displacement are distinct for 
+ * the instance variables engine and displacement are distinct for
  * each and every object whereas static/class variable numberOfCars
  * is unique and is shared across all objects of this class.
- * 
- * @author baeldung
  *
+ * @author baeldung
  */
 public class Car {
     private String name;
     private String engine;
-    
+
     public static int numberOfCars;
-    
+
     public Car(String name, String engine) {
         this.name = name;
         this.engine = engine;

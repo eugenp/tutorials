@@ -36,9 +36,9 @@ class ProductControllerCoroutines {
         }
         val quantity: Deferred<Int> = async(start = CoroutineStart.LAZY) {
             webClient.get()
-              .uri("/stock-service/product/$id/quantity")
-              .accept(APPLICATION_JSON)
-              .awaitExchange().awaitBody<Int>()
+                    .uri("/stock-service/product/$id/quantity")
+                    .accept(APPLICATION_JSON)
+                    .awaitExchange().awaitBody<Int>()
         }
         ProductStockView(product.await()!!, quantity.await())
     }

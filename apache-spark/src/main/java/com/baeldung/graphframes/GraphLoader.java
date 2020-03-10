@@ -26,11 +26,11 @@ public class GraphLoader {
     public GraphFrame getGraphFrameUserRelationship() throws IOException {
         Path temp = Files.createTempDirectory("sparkGraphFrames");
         SparkSession session = SparkSession.builder()
-            .appName("SparkGraphFrameSample")
-            .config("spark.sql.warehouse.dir", temp.toString())
-            .sparkContext(getSparkContext().sc())
-            .master("local[*]")
-            .getOrCreate();
+                .appName("SparkGraphFrameSample")
+                .config("spark.sql.warehouse.dir", temp.toString())
+                .sparkContext(getSparkContext().sc())
+                .master("local[*]")
+                .getOrCreate();
         List<User> users = loadUsers();
 
         Dataset<Row> userDataset = session.createDataFrame(users, User.class);

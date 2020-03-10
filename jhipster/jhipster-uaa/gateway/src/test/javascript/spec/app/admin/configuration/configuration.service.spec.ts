@@ -1,9 +1,9 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { JhiConfigurationService } from 'app/admin/configuration/configuration.service';
-import { SERVER_API_URL } from 'app/app.constants';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpResponse } from '@angular/common/http';
+import {JhiConfigurationService} from 'app/admin/configuration/configuration.service';
+import {SERVER_API_URL} from 'app/app.constants';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {HttpResponse} from '@angular/common/http';
 
 describe('Service Tests', () => {
     describe('Logs Service', () => {
@@ -25,9 +25,10 @@ describe('Service Tests', () => {
 
         describe('Service methods', () => {
             it('should call correct URL', () => {
-                service.get().subscribe(() => {});
+                service.get().subscribe(() => {
+                });
 
-                const req = httpMock.expectOne({ method: 'GET' });
+                const req = httpMock.expectOne({method: 'GET'});
                 const resourceUrl = SERVER_API_URL + 'management/configprops';
                 expect(req.request.url).toEqual(resourceUrl);
             });
@@ -44,19 +45,19 @@ describe('Service Tests', () => {
                     expect(received.body[0]).toEqual(angularConfig);
                 });
 
-                const req = httpMock.expectOne({ method: 'GET' });
+                const req = httpMock.expectOne({method: 'GET'});
                 req.flush(angularConfig);
             });
 
             it('should get the env', () => {
                 const propertySources = new HttpResponse({
-                    body: [{ name: 'test1', properties: 'test1' }, { name: 'test2', properties: 'test2' }]
+                    body: [{name: 'test1', properties: 'test1'}, {name: 'test2', properties: 'test2'}]
                 });
                 service.get().subscribe(received => {
                     expect(received.body[0]).toEqual(propertySources);
                 });
 
-                const req = httpMock.expectOne({ method: 'GET' });
+                const req = httpMock.expectOne({method: 'GET'});
                 req.flush(propertySources);
             });
         });

@@ -21,8 +21,8 @@ import com.google.common.base.Preconditions;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-mysql.properties" })
-@ComponentScan({ "com.baeldung.ex.mappingexception.cause2.persistence" })
+@PropertySource({"classpath:persistence-mysql.properties"})
+@ComponentScan({"com.baeldung.ex.mappingexception.cause2.persistence"})
 public class Cause3PersistenceConfig {
 
     @Autowired
@@ -39,7 +39,7 @@ public class Cause3PersistenceConfig {
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         // sessionFactory.setPackagesToScan(new String[] { "com.baeldung.ex.mappingexception.cause2.persistence.model" });
-        sessionFactory.setAnnotatedClasses(new Class[] { Foo.class });
+        sessionFactory.setAnnotatedClasses(new Class[]{Foo.class});
 
         return sessionFactory;
     }

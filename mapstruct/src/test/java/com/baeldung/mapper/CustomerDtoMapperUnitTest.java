@@ -17,7 +17,7 @@ public class CustomerDtoMapperUnitTest {
 
         // given
         Customer customer = new Customer().setFirstName("Max")
-            .setLastName("Powers");
+                .setLastName("Powers");
 
         // when
         CustomerDto customerDto = customerDtoMapper.from(customer);

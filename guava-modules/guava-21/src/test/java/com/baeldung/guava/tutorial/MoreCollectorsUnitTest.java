@@ -16,9 +16,9 @@ public class MoreCollectorsUnitTest {
         List<Integer> numbers = Arrays.asList(1);
 
         Optional<Integer> number = numbers
-          .stream()
-          .map(e -> e * 2)
-          .collect(MoreCollectors.toOptional());
+                .stream()
+                .map(e -> e * 2)
+                .collect(MoreCollectors.toOptional());
 
         Assert.assertEquals(number.get(), new Integer(2));
     }
@@ -28,9 +28,9 @@ public class MoreCollectorsUnitTest {
         List<Integer> numbers = Arrays.asList(1);
 
         Integer number = numbers
-          .stream()
-          .map(e -> e * 2)
-          .collect(MoreCollectors.onlyElement());
+                .stream()
+                .map(e -> e * 2)
+                .collect(MoreCollectors.onlyElement());
 
         Assert.assertEquals(number, new Integer(2));
     }

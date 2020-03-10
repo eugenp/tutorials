@@ -6,13 +6,12 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
+
 import java.io.File;
 import java.io.IOException;
 
 /**
  * Simple snippet which shows how to open an existing repository
- *
- * 
  */
 public class OpenRepository {
 
@@ -40,7 +39,7 @@ public class OpenRepository {
 
             // create the file
             File myfile = new File(repository.getDirectory().getParent(), "testfile");
-            if(!myfile.createNewFile()) {
+            if (!myfile.createNewFile()) {
                 throw new IOException("Could not create file " + myfile);
             }
 

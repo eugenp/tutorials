@@ -16,7 +16,7 @@ public class OptimizedMatcherManualTest {
     private String action;
 
     private List<String> items;
-    
+
     private class TimeWrapper {
         private long time;
         private long mstimePreCompiled;
@@ -32,10 +32,10 @@ public class OptimizedMatcherManualTest {
         for (int i = 0; i < 100000; ++i) {
             StringBuilder s = new StringBuilder();
             int characters = random.nextInt(7) + 1;
-            for (int k = 0; k < characters; ++ k) {
-                char c = (char)(random.nextInt('Z' - 'A') + 'A');
+            for (int k = 0; k < characters; ++k) {
+                char c = (char) (random.nextInt('Z' - 'A') + 'A');
                 int rep = random.nextInt(95) + 5;
-                for (int j = 0; j < rep; ++ j)
+                for (int j = 0; j < rep; ++j)
                     s.append(c);
                 average += rep;
             }
@@ -76,8 +76,7 @@ public class OptimizedMatcherManualTest {
         for (String item : this.items) {
             if (item.matches(regex)) {
                 ++matched;
-            }
-            else {
+            } else {
                 ++unmatched;
             }
         }
@@ -96,8 +95,7 @@ public class OptimizedMatcherManualTest {
         for (String item : this.items) {
             if (matcher.reset(item).matches()) {
                 ++matched;
-            }
-            else {
+            } else {
                 ++unmatched;
             }
         }

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.baeldung.boot.jdbi.service;
 
@@ -19,20 +19,20 @@ import com.baeldung.boot.jdbi.domain.CarModel;
  */
 @Service
 public class CarMakerService {
-    
+
     private CarMakerDao carMakerDao;
     private CarModelDao carModelDao;
 
-    public CarMakerService(CarMakerDao carMakerDao,CarModelDao carModelDao) {
-        
+    public CarMakerService(CarMakerDao carMakerDao, CarModelDao carModelDao) {
+
         this.carMakerDao = carMakerDao;
         this.carModelDao = carModelDao;
     }
-    
+
     @Transactional
     public int bulkInsert(CarMaker carMaker) {
         Long carMakerId;
-        if (carMaker.getId() == null ) {
+        if (carMaker.getId() == null) {
             carMakerId = carMakerDao.insert(carMaker);
             carMaker.setId(carMakerId);
         }
@@ -41,8 +41,8 @@ public class CarMakerService {
         carMaker.getModels().forEach(m -> {
             m.setMakerId(carMaker.getId());
             carModelDao.insert(m);
-        });        
-        
+        });
+
         return carMaker.getModels().size();
     }
 }

@@ -21,12 +21,12 @@ public class CloudFunctionApplicationUnitTest {
     private TestRestTemplate testRestTemplate;
 
     @Test
-    public void givenAString_whenReverseStringCloudFunctionInvoked_thenStringIsReversed() {  
+    public void givenAString_whenReverseStringCloudFunctionInvoked_thenStringIsReversed() {
         assertThat(this.testRestTemplate.getForObject("http://localhost:" + port + "/reverseString/HelloWorld", String.class)).isEqualTo("dlroWolleH");
     }
 
     @Test
-    public void givenAString_whenGreeterCloudFunctionInvoked_thenPrintsGreeting() {        	  
+    public void givenAString_whenGreeterCloudFunctionInvoked_thenPrintsGreeting() {
         assertThat(this.testRestTemplate.getForObject("http://localhost:" + port + "/greeter/BaeldungUser", String.class)).isEqualTo("Hello BaeldungUser, and welcome to Spring Cloud Function!!!");
     }
 

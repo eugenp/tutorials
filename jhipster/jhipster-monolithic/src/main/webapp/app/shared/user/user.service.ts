@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
-import { Http, Response, URLSearchParams } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
+import {Injectable} from '@angular/core';
+import {Http, Response, URLSearchParams} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
 
-import { User } from './user.model';
+import {User} from './user.model';
 
 @Injectable()
 export class UserService {
     private resourceUrl = 'api/users';
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) {
+    }
 
     create(user: User): Observable<Response> {
         return this.http.post(this.resourceUrl, user);

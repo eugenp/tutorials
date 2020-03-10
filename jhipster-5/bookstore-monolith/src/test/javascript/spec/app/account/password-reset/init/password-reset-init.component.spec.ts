@@ -1,11 +1,11 @@
-import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
-import { Renderer, ElementRef } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import {ComponentFixture, TestBed, inject} from '@angular/core/testing';
+import {Renderer, ElementRef} from '@angular/core';
+import {Observable, of, throwError} from 'rxjs';
 
-import { BookstoreTestModule } from '../../../../test.module';
-import { PasswordResetInitComponent } from 'app/account/password-reset/init/password-reset-init.component';
-import { PasswordResetInitService } from 'app/account/password-reset/init/password-reset-init.service';
-import { EMAIL_NOT_FOUND_TYPE } from 'app/shared';
+import {BookstoreTestModule} from '../../../../test.module';
+import {PasswordResetInitComponent} from 'app/account/password-reset/init/password-reset-init.component';
+import {PasswordResetInitService} from 'app/account/password-reset/init/password-reset-init.service';
+import {EMAIL_NOT_FOUND_TYPE} from 'app/shared';
 
 describe('Component Tests', () => {
     describe('PasswordResetInitComponent', () => {
@@ -20,7 +20,8 @@ describe('Component Tests', () => {
                     {
                         provide: Renderer,
                         useValue: {
-                            invokeElementMethod(renderElement: any, methodName: string, args?: any[]) {}
+                            invokeElementMethod(renderElement: any, methodName: string, args?: any[]) {
+                            }
                         }
                     },
                     {
@@ -45,7 +46,8 @@ describe('Component Tests', () => {
         it('sets focus after the view has been initialized', inject([ElementRef], (elementRef: ElementRef) => {
             const element = fixture.nativeElement;
             const node = {
-                focus() {}
+                focus() {
+                }
             };
 
             elementRef.nativeElement = element;
@@ -76,7 +78,7 @@ describe('Component Tests', () => {
                 spyOn(service, 'save').and.returnValue(
                     throwError({
                         status: 400,
-                        error: { type: EMAIL_NOT_FOUND_TYPE }
+                        error: {type: EMAIL_NOT_FOUND_TYPE}
                     })
                 );
                 comp.resetAccount.email = 'user@domain.com';

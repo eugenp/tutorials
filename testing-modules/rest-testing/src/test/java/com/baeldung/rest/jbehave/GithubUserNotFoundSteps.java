@@ -33,23 +33,23 @@ public class GithubUserNotFoundSteps {
     @When("I look for the random user via the api")
     public void whenILookForTheUserViaTheApi() throws IOException {
         githubResponseCode = getGithubUserProfile(api, nonExistentUser)
-          .getStatusLine()
-          .getStatusCode();
+                .getStatusLine()
+                .getStatusCode();
     }
 
     @When("I look for $user via the api")
     public void whenILookForSomeNonExistentUserViaTheApi(String user) throws IOException {
         githubResponseCode = getGithubUserProfile(api, user)
-          .getStatusLine()
-          .getStatusCode();
+                .getStatusLine()
+                .getStatusCode();
     }
 
     static HttpResponse getGithubUserProfile(String api, String username) throws IOException {
         HttpUriRequest request = new HttpGet(String.format(api, username));
         return HttpClientBuilder
-          .create()
-          .build()
-          .execute(request);
+                .create()
+                .build()
+                .execute(request);
     }
 
     @Then("github respond: 404 not found")

@@ -22,7 +22,7 @@ import com.baeldung.spring.PersistenceConfig;
 import com.baeldung.web.util.SearchCriteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class })
+@ContextConfiguration(classes = {PersistenceConfig.class})
 @Transactional
 @Rollback
 public class JPACriteriaQueryIntegrationTest {

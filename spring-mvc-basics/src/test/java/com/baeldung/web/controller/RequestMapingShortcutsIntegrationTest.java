@@ -16,7 +16,7 @@ public class RequestMapingShortcutsIntegrationTest {
     @BeforeEach
     public void setup() {
         this.mockMvc = MockMvcBuilders.standaloneSetup(new RequestMappingShortcutsController())
-            .build();
+                .build();
     }
 
     @Test
@@ -25,12 +25,12 @@ public class RequestMapingShortcutsIntegrationTest {
         MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.get("/get");
 
         ResultMatcher contentMatcher = MockMvcResultMatchers.content()
-            .string("GET Response");
+                .string("GET Response");
 
         this.mockMvc.perform(builder)
-            .andExpect(contentMatcher)
-            .andExpect(MockMvcResultMatchers.status()
-                .isOk());
+                .andExpect(contentMatcher)
+                .andExpect(MockMvcResultMatchers.status()
+                        .isOk());
 
     }
 
@@ -40,12 +40,12 @@ public class RequestMapingShortcutsIntegrationTest {
         MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post("/post");
 
         ResultMatcher contentMatcher = MockMvcResultMatchers.content()
-            .string("POST Response");
+                .string("POST Response");
 
         this.mockMvc.perform(builder)
-            .andExpect(contentMatcher)
-            .andExpect(MockMvcResultMatchers.status()
-                .isOk());
+                .andExpect(contentMatcher)
+                .andExpect(MockMvcResultMatchers.status()
+                        .isOk());
 
     }
 
@@ -55,12 +55,12 @@ public class RequestMapingShortcutsIntegrationTest {
         MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.put("/put");
 
         ResultMatcher contentMatcher = MockMvcResultMatchers.content()
-            .string("PUT Response");
+                .string("PUT Response");
 
         this.mockMvc.perform(builder)
-            .andExpect(contentMatcher)
-            .andExpect(MockMvcResultMatchers.status()
-                .isOk());
+                .andExpect(contentMatcher)
+                .andExpect(MockMvcResultMatchers.status()
+                        .isOk());
 
     }
 
@@ -70,12 +70,12 @@ public class RequestMapingShortcutsIntegrationTest {
         MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.delete("/delete");
 
         ResultMatcher contentMatcher = MockMvcResultMatchers.content()
-            .string("DELETE Response");
+                .string("DELETE Response");
 
         this.mockMvc.perform(builder)
-            .andExpect(contentMatcher)
-            .andExpect(MockMvcResultMatchers.status()
-                .isOk());
+                .andExpect(contentMatcher)
+                .andExpect(MockMvcResultMatchers.status()
+                        .isOk());
 
     }
 
@@ -85,12 +85,12 @@ public class RequestMapingShortcutsIntegrationTest {
         MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.patch("/patch");
 
         ResultMatcher contentMatcher = MockMvcResultMatchers.content()
-            .string("PATCH Response");
+                .string("PATCH Response");
 
         this.mockMvc.perform(builder)
-            .andExpect(contentMatcher)
-            .andExpect(MockMvcResultMatchers.status()
-                .isOk());
+                .andExpect(contentMatcher)
+                .andExpect(MockMvcResultMatchers.status()
+                        .isOk());
 
     }
 

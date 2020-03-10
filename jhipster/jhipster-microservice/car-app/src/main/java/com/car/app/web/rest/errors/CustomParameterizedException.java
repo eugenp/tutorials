@@ -7,7 +7,7 @@ package com.car.app.web.rest.errors;
  * <pre>
  * throw new CustomParameterizedException(&quot;myCustomError&quot;, &quot;hello&quot;, &quot;world&quot;);
  * </pre>
- *
+ * <p>
  * Can be translated with:
  *
  * <pre>

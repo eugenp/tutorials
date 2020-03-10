@@ -23,7 +23,7 @@ public class EmployeeService {
     public Employee getEmployee(String id) {
 
         ResponseEntity<Employee> resp = restTemplate.getForEntity("http://localhost:8080/employee/" + id,
-          Employee.class);
+                Employee.class);
         return resp.getStatusCode() == HttpStatus.OK ? resp.getBody() : null;
     }
 }

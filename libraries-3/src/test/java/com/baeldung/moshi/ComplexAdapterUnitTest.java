@@ -16,8 +16,8 @@ public class ComplexAdapterUnitTest {
     @Test
     public void whenSerializing_thenCorrectJsonProduced() {
         Moshi moshi = new Moshi.Builder()
-          .add(new JsonDateTimeAdapter())
-          .build();
+                .add(new JsonDateTimeAdapter())
+                .build();
         JsonAdapter<ZonedDateTime> jsonAdapter = moshi.adapter(ZonedDateTime.class);
 
         String json = jsonAdapter.toJson(ZonedDateTime.now());
@@ -27,8 +27,8 @@ public class ComplexAdapterUnitTest {
     @Test
     public void whenDeserializing_thenCorrectJsonConsumed() throws IOException {
         Moshi moshi = new Moshi.Builder()
-          .add(new JsonDateTimeAdapter())
-          .build();
+                .add(new JsonDateTimeAdapter())
+                .build();
         JsonAdapter<ZonedDateTime> jsonAdapter = moshi.adapter(ZonedDateTime.class);
 
         String json = "{\"date\":\"2020-02-17\",\"time\":\"07:53:27.064\",\"timezone\":\"Europe/London\"}";
@@ -45,6 +45,7 @@ public class ComplexAdapterUnitTest {
             String timezone = input.getZone().toString();
             return new JsonDateTime(date, time, timezone);
         }
+
         @FromJson
         public ZonedDateTime fromJson(JsonDateTime input) {
             LocalDate date = LocalDate.parse(input.getDate());
@@ -53,6 +54,7 @@ public class ComplexAdapterUnitTest {
             return ZonedDateTime.of(date, time, timezone);
         }
     }
+
     public static class JsonDateTime {
         private String date;
         private String time;

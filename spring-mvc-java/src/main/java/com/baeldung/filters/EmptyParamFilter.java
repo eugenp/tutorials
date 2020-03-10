@@ -18,7 +18,7 @@ public class EmptyParamFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
-        FilterChain filterChain) throws IOException, ServletException {
+                         FilterChain filterChain) throws IOException, ServletException {
         String inputString = servletRequest.getParameter("input");
 
         if (inputString != null && inputString.matches("[A-Za-z0-9]+")) {

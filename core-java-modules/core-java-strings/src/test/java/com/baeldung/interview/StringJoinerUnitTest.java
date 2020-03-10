@@ -11,9 +11,9 @@ public class StringJoinerUnitTest {
     public void whenUsingStringJoiner_thenStringsJoined() {
         StringJoiner joiner = new StringJoiner(",", "[", "]");
         joiner.add("Red")
-          .add("Green")
-          .add("Blue");
-         
+                .add("Green")
+                .add("Blue");
+
         assertEquals(joiner.toString(), "[Red,Green,Blue]");
     }
 }

@@ -32,7 +32,7 @@ public class JavaKeyStore {
     }
 
     void createEmptyKeyStore() throws KeyStoreException, CertificateException, NoSuchAlgorithmException, IOException {
-        if(keyStoreType ==null || keyStoreType.isEmpty()){
+        if (keyStoreType == null || keyStoreType.isEmpty()) {
             keyStoreType = KeyStore.getDefaultType();
         }
         keyStore = KeyStore.getInstance(keyStoreType);

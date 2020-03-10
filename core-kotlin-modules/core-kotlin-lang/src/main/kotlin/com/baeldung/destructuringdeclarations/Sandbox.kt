@@ -2,9 +2,9 @@ package com.baeldung.destructuringdeclarations
 
 fun main(args: Array<String>) {
 
-        //2.1. Objects
+    //2.1. Objects
     val person = Person(1, "Jon Snow", 20)
-    val(id, name, age) = person
+    val (id, name, age) = person
 
     println(id)     //1
     println(name)   //Jon Snow
@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
 
     //2.2. Functions
     fun getPersonInfo() = Person(2, "Ned Stark", 45)
-    val(idf, namef, agef) = getPersonInfo()
+    val (idf, namef, agef) = getPersonInfo()
 
     fun twoValuesReturn(): Pair<Int, String> {
 
@@ -28,7 +28,7 @@ fun main(args: Array<String>) {
     var map: HashMap<Int, Person> = HashMap()
     map.put(1, person)
 
-    for((key, value) in map){
+    for ((key, value) in map) {
         println("Key: $key, Value: $value")
     }
 

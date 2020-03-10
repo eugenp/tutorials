@@ -22,7 +22,7 @@ public enum Distance {
     public void setMeters(double meters) {
         this.meters = meters;
     }
-    
+
     public String getUnit() {
         return unit;
     }

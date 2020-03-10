@@ -39,8 +39,8 @@ public class LoggerVM {
     @Override
     public String toString() {
         return "LoggerVM{" +
-            "name='" + name + '\'' +
-            ", level='" + level + '\'' +
-            '}';
+                "name='" + name + '\'' +
+                ", level='" + level + '\'' +
+                '}';
     }
 }

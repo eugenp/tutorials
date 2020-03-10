@@ -1,24 +1,26 @@
-import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes, CanActivate } from '@angular/router';
-import { JhiPaginationUtil, JhiResolvePagingParams } from 'ng-jhipster';
+import {Injectable} from '@angular/core';
+import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes, CanActivate} from '@angular/router';
+import {JhiPaginationUtil, JhiResolvePagingParams} from 'ng-jhipster';
 
-import { Principal, User, UserService } from 'app/core';
-import { UserMgmtComponent } from './user-management.component';
-import { UserMgmtDetailComponent } from './user-management-detail.component';
-import { UserMgmtUpdateComponent } from './user-management-update.component';
+import {Principal, User, UserService} from 'app/core';
+import {UserMgmtComponent} from './user-management.component';
+import {UserMgmtDetailComponent} from './user-management-detail.component';
+import {UserMgmtUpdateComponent} from './user-management-update.component';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class UserResolve implements CanActivate {
-    constructor(private principal: Principal) {}
+    constructor(private principal: Principal) {
+    }
 
     canActivate() {
         return this.principal.identity().then(account => this.principal.hasAnyAuthority(['ROLE_ADMIN']));
     }
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class UserMgmtResolve implements Resolve<any> {
-    constructor(private service: UserService) {}
+    constructor(private service: UserService) {
+    }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const id = route.params['login'] ? route.params['login'] : null;

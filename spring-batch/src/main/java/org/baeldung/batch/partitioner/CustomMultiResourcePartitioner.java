@@ -37,6 +37,7 @@ public class CustomMultiResourcePartitioner implements Partitioner {
     /**
      * The resources to assign to each partition. In Spring configuration you
      * can use a pattern to select multiple resources.
+     *
      * @param resources the resources to use
      */
     public void setResources(Resource[] resources) {
@@ -46,6 +47,7 @@ public class CustomMultiResourcePartitioner implements Partitioner {
     /**
      * The name of the key for the file name in each {@link ExecutionContext}.
      * Defaults to "fileName".
+     *
      * @param keyName the value of the key
      */
     public void setKeyName(String keyName) {

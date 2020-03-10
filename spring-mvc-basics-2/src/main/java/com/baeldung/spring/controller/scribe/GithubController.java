@@ -21,10 +21,10 @@ import java.util.concurrent.ExecutionException;
 public class GithubController {
     private OAuth20Service createService(String state) {
         return new ServiceBuilder("e1f8d4f1a5c71467a159")
-            .apiSecret("4851597541a8f33a4f1bf1c70f3cedcfefbeb13b")
-            .state(state)
-            .callback("http://localhost:8080/spring-mvc-simple/github/callback")
-            .build(GitHubApi.instance());
+                .apiSecret("4851597541a8f33a4f1bf1c70f3cedcfefbeb13b")
+                .state(state)
+                .callback("http://localhost:8080/spring-mvc-simple/github/callback")
+                .build(GitHubApi.instance());
     }
 
     @GetMapping(value = "/authorization")
@@ -43,7 +43,7 @@ public class GithubController {
     @ResponseBody
     public String callback(HttpServletRequest servletReq, @RequestParam("code") String code, @RequestParam("state") String state) throws InterruptedException, ExecutionException, IOException {
         String initialState = (String) servletReq.getSession().getAttribute("state");
-        if(initialState.equals(state)) {
+        if (initialState.equals(state)) {
             OAuth20Service githubService = createService(initialState);
             OAuth2AccessToken accessToken = githubService.getAccessToken(code);
 

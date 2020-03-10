@@ -22,7 +22,7 @@ class SharedTemporaryDirectoryUnitTest {
 
     @TempDir
     static Path sharedTempDir;
-    
+
     @Test
     @Order(1)
     void givenFieldWithSharedTempDirectoryPath_whenWriteToFile_thenContentIsCorrect() throws IOException {
@@ -32,9 +32,9 @@ class SharedTemporaryDirectoryUnitTest {
         Files.write(numbers, lines);
 
         assertAll(
-            () -> assertTrue("File should exist", Files.exists(numbers)),
-            () -> assertLinesMatch(lines, Files.readAllLines(numbers)));
-        
+                () -> assertTrue("File should exist", Files.exists(numbers)),
+                () -> assertLinesMatch(lines, Files.readAllLines(numbers)));
+
         Files.createTempDirectory("bpb");
     }
 

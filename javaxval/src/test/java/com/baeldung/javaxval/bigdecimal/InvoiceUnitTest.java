@@ -20,7 +20,7 @@ public class InvoiceUnitTest extends LocaleAwareUnitTest {
     @BeforeClass
     public static void setupValidatorInstance() {
         validator = Validation.buildDefaultValidatorFactory()
-            .getValidator();
+                .getValidator();
     }
 
     @Test

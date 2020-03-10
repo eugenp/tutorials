@@ -47,7 +47,7 @@ public class JavaMoney {
     MonetaryAmountFormat customFormat;
     String usFormatted;
     String customFormatted;
-    
+
     public JavaMoney() {
         USD = Monetary.getCurrency("USD");
         fstAmtUSD = Monetary.getDefaultAmountFactory().setCurrency(USD).setNumber(200.50).create();
@@ -55,14 +55,14 @@ public class JavaMoney {
         oneDolar = Monetary.getDefaultAmountFactory().setCurrency("USD").setNumber(1).create();
         moneyof = Money.of(12, USD);
         fastmoneyof = FastMoney.of(2, USD);
- 
+
         LOGGER.info("First Amount in USD : " + fstAmtUSD);
         LOGGER.info("First Amount in EUR : " + fstAmtEUR);
         LOGGER.info("One Dolar : " + oneDolar);
         LOGGER.info("MoneyOf : " + moneyof);
         LOGGER.info("FastMoneyOf : " + fastmoneyof);
-        
-        try{
+
+        try {
             @SuppressWarnings("unused")
             CurrencyUnit AAA = Monetary.getCurrency("AAA");
         } catch (UnknownCurrencyException e) {
@@ -81,11 +81,11 @@ public class JavaMoney {
 
         LOGGER.info("Money & FastMoney operations : " + calcMoneyFastMoney);
 
-        monetaryAmounts = 
-                new MonetaryAmount[] { 
-                        Money.of(100, "CHF"), 
-                        Money.of(10.20, "CHF"), 
-                        Money.of(1.15, "CHF"), };
+        monetaryAmounts =
+                new MonetaryAmount[]{
+                        Money.of(100, "CHF"),
+                        Money.of(10.20, "CHF"),
+                        Money.of(1.15, "CHF"),};
         sumAmtCHF = Money.of(0, "CHF");
         for (MonetaryAmount monetaryAmount : monetaryAmounts) {
             sumAmtCHF = sumAmtCHF.add(monetaryAmount);
@@ -99,12 +99,12 @@ public class JavaMoney {
         divideAmount = oneDolar.divide(0.25);
         LOGGER.info("Divide Amount : " + divideAmount);
 
-        try{
+        try {
             oneDivThree = oneDolar.divide(3);
-        }catch (ArithmeticException e) {
+        } catch (ArithmeticException e) {
             LOGGER.severe("One divide by Three is an infinite number");
         }
-        
+
         convEUR = MonetaryConversions.getConversion(ConversionQueryBuilder.of().setTermCurrency("EUR").build());
         convUSD = MonetaryConversions.getConversion(ConversionQueryBuilder.of().setTermCurrency(USD).build());
 
@@ -142,10 +142,10 @@ public class JavaMoney {
         customFormatted = customFormat.format(oneDolar);
         LOGGER.info("One dolar custom formatted : " + customFormatted);
     }
-    
+
     public static void main(String[] args) {
         @SuppressWarnings("unused")
         JavaMoney java9Money = new JavaMoney();
     }
-    
+
 }

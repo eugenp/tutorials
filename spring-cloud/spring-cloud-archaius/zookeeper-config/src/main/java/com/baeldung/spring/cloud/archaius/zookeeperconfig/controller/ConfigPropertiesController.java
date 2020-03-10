@@ -12,7 +12,7 @@ import com.netflix.config.DynamicStringProperty;
 
 @RestController
 public class ConfigPropertiesController {
-    
+
     @Value("${baeldung.archaius.properties.one:not found!}")
     private String propertyOneWithValue;
 
@@ -23,13 +23,13 @@ public class ConfigPropertiesController {
     private String propertyThreeWithValue;
 
     private DynamicStringProperty propertyOneWithDynamic = DynamicPropertyFactory.getInstance()
-        .getStringProperty("baeldung.archaius.properties.one", "not found!");
+            .getStringProperty("baeldung.archaius.properties.one", "not found!");
 
     private DynamicStringProperty propertyTwoWithDynamic = DynamicPropertyFactory.getInstance()
-        .getStringProperty("baeldung.archaius.properties.two", "not found!");
-    
+            .getStringProperty("baeldung.archaius.properties.two", "not found!");
+
     private DynamicStringProperty propertyThreeWithDynamic = DynamicPropertyFactory.getInstance()
-        .getStringProperty("baeldung.archaius.properties.three", "not found!");
+            .getStringProperty("baeldung.archaius.properties.three", "not found!");
 
     @GetMapping("/properties-from-dynamic")
     public Map<String, String> getPropertiesFromDynamic() {
@@ -39,7 +39,7 @@ public class ConfigPropertiesController {
         properties.put(propertyThreeWithDynamic.getName(), propertyThreeWithDynamic.get());
         return properties;
     }
-    
+
     @GetMapping("/properties-from-value")
     public Map<String, String> getPropertiesFromValue() {
         Map<String, String> properties = new HashMap<>();

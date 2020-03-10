@@ -45,7 +45,7 @@ public class GuavaMultiSetUnitTest {
     public void givenMultiSet_whenSettingNegativeCount_shouldThrowException() {
         Multiset<String> bookStore = HashMultiset.create();
         assertThatThrownBy(() -> bookStore.setCount("Potter", -1))
-          .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

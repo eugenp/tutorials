@@ -67,7 +67,7 @@ public class Iterators {
         map.put("Fourth", 40);
 
         Iterator<String> iterator = map.keySet()
-            .iterator();
+                .iterator();
 
         while (iterator.hasNext()) {
             String key = iterator.next();

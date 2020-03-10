@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     LoginService.$inject = ['$uibModal'];
 
-    function LoginService ($uibModal) {
+    function LoginService($uibModal) {
         var service = {
             open: open
         };
@@ -19,7 +19,7 @@
 
         return service;
 
-        function open () {
+        function open() {
             if (modalInstance !== null) return;
             modalInstance = $uibModal.open({
                 animation: true,

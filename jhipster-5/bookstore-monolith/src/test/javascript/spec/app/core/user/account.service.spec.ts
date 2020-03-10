@@ -1,9 +1,9 @@
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { TestBed } from '@angular/core/testing';
-import { SERVER_API_URL } from 'app/app.constants';
-import { AccountService } from 'app/core';
-import { JhiDateUtils } from 'ng-jhipster';
-import { SessionStorageService } from 'ngx-webstorage';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {TestBed} from '@angular/core/testing';
+import {SERVER_API_URL} from 'app/app.constants';
+import {AccountService} from 'app/core';
+import {JhiDateUtils} from 'ng-jhipster';
+import {SessionStorageService} from 'ngx-webstorage';
 
 describe('Service Tests', () => {
     describe('Account Service', () => {
@@ -26,16 +26,18 @@ describe('Service Tests', () => {
 
         describe('Service methods', () => {
             it('should call /account if user is undefined', () => {
-                service.identity().then(() => {});
-                const req = httpMock.expectOne({ method: 'GET' });
+                service.identity().then(() => {
+                });
+                const req = httpMock.expectOne({method: 'GET'});
                 const resourceUrl = SERVER_API_URL + 'api/account';
 
                 expect(req.request.url).toEqual(`${resourceUrl}`);
             });
 
             it('should call /account only once', () => {
-                service.identity().then(() => service.identity().then(() => {}));
-                const req = httpMock.expectOne({ method: 'GET' });
+                service.identity().then(() => service.identity().then(() => {
+                }));
+                const req = httpMock.expectOne({method: 'GET'});
                 const resourceUrl = SERVER_API_URL + 'api/account';
 
                 expect(req.request.url).toEqual(`${resourceUrl}`);

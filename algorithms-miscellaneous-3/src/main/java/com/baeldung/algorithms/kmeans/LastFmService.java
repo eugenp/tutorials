@@ -46,16 +46,16 @@ public interface LastFmService {
         @Override
         public Response intercept(Chain chain) throws IOException {
             HttpUrl url = chain
-              .request()
-              .url()
-              .newBuilder()
-              .addQueryParameter("api_key", apiKey)
-              .build();
+                    .request()
+                    .url()
+                    .newBuilder()
+                    .addQueryParameter("api_key", apiKey)
+                    .build();
             Request request = chain
-              .request()
-              .newBuilder()
-              .url(url)
-              .build();
+                    .request()
+                    .newBuilder()
+                    .url(url)
+                    .build();
 
             return chain.proceed(request);
         }
@@ -70,16 +70,17 @@ public interface LastFmService {
         public Set<String> all() {
             List<Map<String, Object>> topTags = (List<Map<String, Object>>) tags.get("tag");
             return topTags
-              .stream()
-              .map(e -> ((String) e.get("name")))
-              .collect(Collectors.toSet());
+                    .stream()
+                    .map(e -> ((String) e.get("name")))
+                    .collect(Collectors.toSet());
         }
     }
 
     @JsonAutoDetect(fieldVisibility = ANY)
     class Tags {
 
-        @JsonProperty("toptags") private Map<String, Object> topTags;
+        @JsonProperty("toptags")
+        private Map<String, Object> topTags;
 
         @SuppressWarnings("unchecked")
         public Map<String, Double> all() {
@@ -107,9 +108,9 @@ public interface LastFmService {
             try {
                 List<Map<String, Object>> artists = (List<Map<String, Object>>) this.artists.get("artist");
                 return artists
-                  .stream()
-                  .map(e -> ((String) e.get("name")))
-                  .collect(toList());
+                        .stream()
+                        .map(e -> ((String) e.get("name")))
+                        .collect(toList());
             } catch (Exception e) {
                 return Collections.emptyList();
             }

@@ -17,6 +17,7 @@ class SuspensableRunnableTest {
                 println("Inside Fiber")
             }
         }
+
         val result = Fiber<Void>(Runnable()).start()
         result.join()
     }

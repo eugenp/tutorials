@@ -10,8 +10,7 @@ public class TestRunner {
                       String methodName,
                       Class<?>[] argumentTypes,
                       Object... args)
-            throws Throwable
-    {
+            throws Throwable {
         ClassLoader classLoader = new ClassLoader() {
             @Override
             protected Class<?> findClass(String name) throws ClassNotFoundException {

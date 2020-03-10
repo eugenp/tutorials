@@ -46,7 +46,7 @@ public class OrderRestEndpoint {
     @GetMapping("/all-orders")
     public List<OrderedProduct> findAllOrderedProducts() {
         return queryGateway.query(new FindAllOrderedProductsQuery(), ResponseTypes.multipleInstancesOf(OrderedProduct.class))
-                           .join();
+                .join();
     }
 
 }

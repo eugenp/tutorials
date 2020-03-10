@@ -30,14 +30,13 @@ public class UserApiLiveTest {
 
     private final UserApi api = new UserApi();
 
-    
+
     /**
      * Create user
-     *
+     * <p>
      * This can only be done by the logged in user.
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createUserTest() {
@@ -46,14 +45,11 @@ public class UserApiLiveTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Creates list of users with given input array
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createUsersWithArrayInputTest() {
@@ -62,14 +58,11 @@ public class UserApiLiveTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Creates list of users with given input array
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createUsersWithListInputTest() {
@@ -78,14 +71,13 @@ public class UserApiLiveTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Delete user
-     *
+     * <p>
      * This can only be done by the logged in user.
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteUserTest() {
@@ -94,14 +86,11 @@ public class UserApiLiveTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Get user by user name
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getUserByNameTest() {
@@ -110,14 +99,11 @@ public class UserApiLiveTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Logs user into the system
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void loginUserTest() {
@@ -127,14 +113,11 @@ public class UserApiLiveTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Logs out current logged in user session
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void logoutUserTest() {
@@ -142,14 +125,13 @@ public class UserApiLiveTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Updated user
-     *
+     * <p>
      * This can only be done by the logged in user.
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateUserTest() {
@@ -159,5 +141,5 @@ public class UserApiLiveTest {
 
         // TODO: test validations
     }
-    
+
 }

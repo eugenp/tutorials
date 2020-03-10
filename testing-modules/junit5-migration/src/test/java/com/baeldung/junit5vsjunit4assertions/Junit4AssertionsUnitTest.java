@@ -30,7 +30,7 @@ public class Junit4AssertionsUnitTest {
 
     @Test
     public void whenAssertingArraysEquality_thenEqual() {
-        char[] expected = { 'J', 'u', 'n', 'i', 't' };
+        char[] expected = {'J', 'u', 'n', 'i', 't'};
         char[] actual = "Junit".toCharArray();
 
         assertArrayEquals(expected, actual);

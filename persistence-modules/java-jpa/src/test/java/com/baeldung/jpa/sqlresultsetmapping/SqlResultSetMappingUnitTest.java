@@ -45,8 +45,8 @@ public class SqlResultSetMappingUnitTest {
     @Test
     public void whenNamedQuery_thenMultipleEntityResult() {
         final Query query = em.createNativeQuery("SELECT e.id, e.name, d.id, d.employeeId, d.dayOfWeek "
-                                                    + " FROM employee e, schedule_days d "
-                                                    + " WHERE e.id = d.employeeId", "EmployeeScheduleResults");
+                + " FROM employee e, schedule_days d "
+                + " WHERE e.id = d.employeeId", "EmployeeScheduleResults");
         List<Object[]> results = query.getResultList();
         assertEquals(4, results.size());
         assertTrue(results.get(0).length == 2);

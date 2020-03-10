@@ -5,6 +5,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections4.IterableUtils;
 import org.apache.commons.collections4.IteratorUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -17,10 +18,10 @@ public class FindAStringInGivenList {
 
         List<String> matches = new ArrayList<String>();
 
-        String pattern = ".*"+search+".*";
+        String pattern = ".*" + search + ".*";
         Pattern p = Pattern.compile(pattern);
 
-        for(String str: list) {
+        for (String str : list) {
             if (p.matcher(str).matches()) {
                 matches.add(str);
             }
@@ -34,7 +35,7 @@ public class FindAStringInGivenList {
 
         List<String> matches = new ArrayList<String>();
 
-        for(String str: list) {
+        for (String str : list) {
             if (str.contains(search)) {
                 matches.add(str);
             }

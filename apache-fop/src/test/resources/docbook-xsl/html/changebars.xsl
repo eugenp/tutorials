@@ -2,25 +2,25 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="1.0">
 
-<!-- ********************************************************************
-     $Id: changebars.xsl 9286 2012-04-19 10:10:58Z bobstayton $
-     ********************************************************************
+    <!-- ********************************************************************
+         $Id: changebars.xsl 9286 2012-04-19 10:10:58Z bobstayton $
+         ********************************************************************
 
-     This file is part of the XSL DocBook Stylesheet distribution.
-     See ../README or http://docbook.sf.net/release/xsl/current/ for
-     copyright and other information.
+         This file is part of the XSL DocBook Stylesheet distribution.
+         See ../README or http://docbook.sf.net/release/xsl/current/ for
+         copyright and other information.
 
-     ******************************************************************** -->
+         ******************************************************************** -->
 
-<!-- ==================================================================== -->
-<xsl:import href="docbook.xsl"/>
+    <!-- ==================================================================== -->
+    <xsl:import href="docbook.xsl"/>
 
-<xsl:param name="show.revisionflag" select="'1'"/>
+    <xsl:param name="show.revisionflag" select="'1'"/>
 
-<xsl:template name="system.head.content">
-<xsl:param name="node" select="."/>
+    <xsl:template name="system.head.content">
+        <xsl:param name="node" select="."/>
 
-<style type="text/css">
+        <style type="text/css">
 <xsl:text>
 div.added    { background-color: #ffff99; 
                text-decoration: underline; }
@@ -36,18 +36,18 @@ span.deleted { text-decoration: line-through;
 span.changed { background-color: #99ff99; }
 span.off     {  }
 </xsl:text>
-</style>
-</xsl:template>
+        </style>
+    </xsl:template>
 
-<xsl:template match="*[@revisionflag]">
-  <xsl:call-template name="block.or.inline.revision"/>
-</xsl:template>
+    <xsl:template match="*[@revisionflag]">
+        <xsl:call-template name="block.or.inline.revision"/>
+    </xsl:template>
 
-<xsl:template name="block.or.inline.revision">
-  <xsl:param name="revisionflag" select="@revisionflag"/>
-  
-  <xsl:choose>
-    <xsl:when test="local-name(.) = 'para'
+    <xsl:template name="block.or.inline.revision">
+        <xsl:param name="revisionflag" select="@revisionflag"/>
+
+        <xsl:choose>
+            <xsl:when test="local-name(.) = 'para'
 		    or local-name(.) = 'formalpara'
 		    or local-name(.) = 'simpara'
 		    or local-name(.) = 'simplesect'
@@ -75,11 +75,11 @@ span.off     {  }
 		    or local-name(.) = 'bibliography'
 		    or local-name(.) = 'index'                    
 		    or local-name(.) = 'appendix'">
-      <div class='{$revisionflag}'>
-	<xsl:apply-imports/>
-      </div>
-    </xsl:when>
-    <xsl:when test="local-name(.) = 'phrase'
+                <div class='{$revisionflag}'>
+                    <xsl:apply-imports/>
+                </div>
+            </xsl:when>
+            <xsl:when test="local-name(.) = 'phrase'
 		    or local-name(.) = 'ulink'
 		    or local-name(.) = 'link'
 		    or local-name(.) = 'olink'
@@ -96,27 +96,27 @@ span.off     {  }
 		    or local-name(.) = 'emphasis'
 		    or local-name(.) = 'command'
 		    or local-name(.) = 'xref'">
-      <span class='{$revisionflag}'>
-	<xsl:apply-imports/>
-      </span>
-    </xsl:when>
-    <xsl:when test="local-name(.) = 'listitem'
+                <span class='{$revisionflag}'>
+                    <xsl:apply-imports/>
+                </span>
+            </xsl:when>
+            <xsl:when test="local-name(.) = 'listitem'
                     or local-name(.) = 'entry'
                     or local-name(.) = 'title'">
-      <!-- nop; these are handled directly in the stylesheet -->
-      <xsl:apply-imports/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:message>
-	<xsl:text>Revisionflag on unexpected element: </xsl:text>
-	<xsl:value-of select="local-name(.)"/>
-	<xsl:text> (Assuming block)</xsl:text>
-      </xsl:message>
-      <div class='{$revisionflag}'>
-	<xsl:apply-imports/>
-      </div>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
+                <!-- nop; these are handled directly in the stylesheet -->
+                <xsl:apply-imports/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:message>
+                    <xsl:text>Revisionflag on unexpected element: </xsl:text>
+                    <xsl:value-of select="local-name(.)"/>
+                    <xsl:text> (Assuming block)</xsl:text>
+                </xsl:message>
+                <div class='{$revisionflag}'>
+                    <xsl:apply-imports/>
+                </div>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
 
 </xsl:stylesheet>

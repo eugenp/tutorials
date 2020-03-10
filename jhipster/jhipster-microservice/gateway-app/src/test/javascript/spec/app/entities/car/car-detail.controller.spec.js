@@ -1,19 +1,19 @@
 'use strict';
 
-describe('Controller Tests', function() {
+describe('Controller Tests', function () {
 
-    describe('Car Management Detail Controller', function() {
+    describe('Car Management Detail Controller', function () {
         var $scope, $rootScope;
         var MockEntity, MockPreviousState, MockCar;
         var createController;
 
-        beforeEach(inject(function($injector) {
+        beforeEach(inject(function ($injector) {
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
             MockCar = jasmine.createSpy('MockCar');
-            
+
 
             var locals = {
                 '$scope': $scope,
@@ -22,14 +22,14 @@ describe('Controller Tests', function() {
                 'previousState': MockPreviousState,
                 'Car': MockCar
             };
-            createController = function() {
+            createController = function () {
                 $injector.get('$controller')("CarDetailController", locals);
             };
         }));
 
 
-        describe('Root Scope Listening', function() {
-            it('Unregisters root scope listener upon scope destruction', function() {
+        describe('Root Scope Listening', function () {
+            it('Unregisters root scope listener upon scope destruction', function () {
                 var eventType = 'gatewayApp:carUpdate';
 
                 createController();

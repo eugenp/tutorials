@@ -10,16 +10,16 @@ public class CompactStringDemo {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
         List strings = IntStream.rangeClosed(1, 10_000_000)
-          .mapToObj(Integer::toString).collect(toList());
+                .mapToObj(Integer::toString).collect(toList());
         long totalTime = System.currentTimeMillis() - startTime;
         System.out.println("Generated " + strings.size() + " strings in "
-          + totalTime + " ms.");
+                + totalTime + " ms.");
 
         startTime = System.currentTimeMillis();
         String appended = (String) strings.stream().limit(100_000)
-          .reduce("", (left, right) -> left.toString() + right.toString());
+                .reduce("", (left, right) -> left.toString() + right.toString());
         totalTime = System.currentTimeMillis() - startTime;
         System.out.println("Created string of length " + appended.length()
-          + " in " + totalTime + " ms.");
+                + " in " + totalTime + " ms.");
     }
 }

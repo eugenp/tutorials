@@ -1,12 +1,12 @@
 /* tslint:disable max-line-length */
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Observable, of } from 'rxjs';
-import { HttpHeaders, HttpResponse } from '@angular/common/http';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {Observable, of} from 'rxjs';
+import {HttpHeaders, HttpResponse} from '@angular/common/http';
 
-import { BookstoreTestModule } from '../../../test.module';
-import { BookComponent } from 'app/entities/book/book.component';
-import { BookService } from 'app/entities/book/book.service';
-import { Book } from 'app/shared/model/book.model';
+import {BookstoreTestModule} from '../../../test.module';
+import {BookComponent} from 'app/entities/book/book.component';
+import {BookService} from 'app/entities/book/book.service';
+import {Book} from 'app/shared/model/book.model';
 
 describe('Component Tests', () => {
     describe('Book Management Component', () => {
@@ -45,7 +45,7 @@ describe('Component Tests', () => {
 
             // THEN
             expect(service.query).toHaveBeenCalled();
-            expect(comp.books[0]).toEqual(jasmine.objectContaining({ id: 123 }));
+            expect(comp.books[0]).toEqual(jasmine.objectContaining({id: 123}));
         });
     });
 });

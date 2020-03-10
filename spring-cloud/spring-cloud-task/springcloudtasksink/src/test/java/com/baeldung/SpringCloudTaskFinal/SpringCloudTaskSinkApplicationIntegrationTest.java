@@ -23,7 +23,7 @@ import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
-    classes = SpringCloudTaskSinkApplication.class)
+        classes = SpringCloudTaskSinkApplication.class)
 public class SpringCloudTaskSinkApplicationIntegrationTest {
 
     @Autowired
@@ -36,37 +36,37 @@ public class SpringCloudTaskSinkApplicationIntegrationTest {
     public void testTaskLaunch() throws IOException {
 
         TaskLauncher taskLauncher =
-            context.getBean(TaskLauncher.class);
+                context.getBean(TaskLauncher.class);
 
         Map<String, String> prop = new HashMap<String, String>();
         prop.put("server.port", "0");
         TaskLaunchRequest request = new TaskLaunchRequest(
-            "maven://org.springframework.cloud.task.app:"
-                + "timestamp-task:jar:1.0.1.RELEASE", null,
-            prop,
-            null, null);
+                "maven://org.springframework.cloud.task.app:"
+                        + "timestamp-task:jar:1.0.1.RELEASE", null,
+                prop,
+                null, null);
         GenericMessage<TaskLaunchRequest> message = new GenericMessage<TaskLaunchRequest>(
-            request);
+                request);
         this.sink.input().send(message);
 
         ArgumentCaptor<AppDeploymentRequest> deploymentRequest = ArgumentCaptor
-            .forClass(AppDeploymentRequest.class);
+                .forClass(AppDeploymentRequest.class);
 
         verify(taskLauncher).launch(
-            deploymentRequest.capture());
+                deploymentRequest.capture());
 
         AppDeploymentRequest actualRequest = deploymentRequest
-            .getValue();
+                .getValue();
 
         // Verifying the co-ordinate of launched Task here.
         assertTrue(actualRequest.getCommandlineArguments()
-            .isEmpty());
+                .isEmpty());
         assertEquals("0", actualRequest.getDefinition()
-            .getProperties().get("server.port"));
+                .getProperties().get("server.port"));
         assertTrue(actualRequest
-            .getResource()
-            .toString()
-            .contains(
-                "org.springframework.cloud.task.app:timestamp-task:jar:1.0.1.RELEASE"));
+                .getResource()
+                .toString()
+                .contains(
+                        "org.springframework.cloud.task.app:timestamp-task:jar:1.0.1.RELEASE"));
     }
 }

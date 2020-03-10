@@ -8,8 +8,8 @@ import com.baeldung.entity.Car;
 
 @Mapper
 public interface CarMapper {
-    
+
     CarMapper INSTANCE = Mappers.getMapper(CarMapper.class);
-    
+
     CarDTO carToCarDTO(Car car);
 }

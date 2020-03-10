@@ -10,11 +10,11 @@ class TextBlocks13UnitTest {
     @Test
     void givenAnOldStyleMultilineString_whenComparing_thenEqualsTextBlock() {
         String expected = "<html>\n"
-          + "\n"
-          + "    <body>\n"
-          + "        <span>example text</span>\n"
-          + "    </body>\n"
-          + "</html>";
+                + "\n"
+                + "    <body>\n"
+                + "        <span>example text</span>\n"
+                + "    </body>\n"
+                + "</html>";
         assertThat(subject.getBlockOfHtml()).isEqualTo(expected);
     }
 
@@ -47,8 +47,8 @@ class TextBlocks13UnitTest {
     @Test
     void givenAStringWithEscapedWhitespace_thenItAppearsInTheResultingString() {
         assertThat(subject.getTextWithEscapes()).contains("fun with\n\n")
-            .contains("whitespace\t\r\n")
-            .contains("and other escapes \"\"\"");
+                .contains("whitespace\t\r\n")
+                .contains("and other escapes \"\"\"");
     }
 
     @Test

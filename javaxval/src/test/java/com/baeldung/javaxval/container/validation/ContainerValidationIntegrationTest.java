@@ -21,9 +21,9 @@ public class ContainerValidationIntegrationTest {
     @Before
     public void setup() {
         ValidatorFactory factory = Validation.byDefaultProvider()
-            .configure()
-            .addValueExtractor(new ProfileValueExtractor())
-            .buildValidatorFactory();
+                .configure()
+                .addValueExtractor(new ProfileValueExtractor())
+                .buildValidatorFactory();
         validator = factory.getValidator();
     }
 
@@ -35,8 +35,8 @@ public class ContainerValidationIntegrationTest {
         Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
         assertEquals(1, violations.size());
         assertEquals("Address must not be blank", violations.iterator()
-            .next()
-            .getMessage());
+                .next()
+                .getMessage());
     }
 
     @Test
@@ -46,8 +46,8 @@ public class ContainerValidationIntegrationTest {
         Set<ConstraintViolation<CustomerMap>> violations = validator.validate(map);
         assertEquals(1, violations.size());
         assertEquals("Must be a valid email", violations.iterator()
-            .next()
-            .getMessage());
+                .next()
+                .getMessage());
     }
 
     @Test

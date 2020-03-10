@@ -30,7 +30,7 @@ import com.baeldung.persistence.service.IFooAuditableService;
 import com.baeldung.spring.config.PersistenceTestConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceTestConfig.class}, loader = AnnotationConfigContextLoader.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 public class EnversFooBarAuditIntegrationTest {
 

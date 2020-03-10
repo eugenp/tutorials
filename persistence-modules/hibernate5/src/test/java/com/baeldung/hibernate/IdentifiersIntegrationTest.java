@@ -4,7 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.hibernate.Transaction;
+
 import java.io.IOException;
+
 import org.hibernate.Session;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,7 +28,7 @@ public class IdentifiersIntegrationTest {
     @Before
     public void setUp() throws IOException {
         session = HibernateUtil.getSessionFactory()
-            .openSession();
+                .openSession();
         transaction = session.beginTransaction();
     }
 
@@ -42,7 +44,7 @@ public class IdentifiersIntegrationTest {
         session.save(student);
         User user = new User();
         session.save(user);
-       
+
         assertThat(student.getStudentId()).isEqualTo(1L);
         assertThat(user.getUserId()).isEqualTo(4L);
 
@@ -72,7 +74,7 @@ public class IdentifiersIntegrationTest {
         session.save(entry);
 
         assertThat(entry.getEntryId()
-            .getOrderId()).isEqualTo(1L);
+                .getOrderId()).isEqualTo(1L);
     }
 
     @Test

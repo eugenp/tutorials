@@ -38,7 +38,7 @@ public class FooController {
     public Foo fromRaw() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attr.getRequest()
-            .getSession(true);
+                .getSession(true);
         return (Foo) session.getAttribute(Constants.FOO);
     }
 }

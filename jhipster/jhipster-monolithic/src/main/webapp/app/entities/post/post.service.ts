@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Http, Response, URLSearchParams, BaseRequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
+import {Injectable} from '@angular/core';
+import {Http, Response, URLSearchParams, BaseRequestOptions} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
 
-import { Post } from './post.model';
-import { DateUtils } from 'ng-jhipster';
+import {Post} from './post.model';
+import {DateUtils} from 'ng-jhipster';
+
 @Injectable()
 export class PostService {
 
     private resourceUrl = 'api/posts';
 
-    constructor(private http: Http, private dateUtils: DateUtils) { }
+    constructor(private http: Http, private dateUtils: DateUtils) {
+    }
 
     create(post: Post): Observable<Post> {
         let copy: Post = Object.assign({}, post);
@@ -42,7 +44,7 @@ export class PostService {
         let options = this.createRequestOption(req);
         return this.http.get(this.resourceUrl, options)
             .map((res: any) => this.convertResponse(res))
-        ;
+            ;
     }
 
     delete(id: number): Observable<Response> {

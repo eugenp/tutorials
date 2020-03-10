@@ -31,55 +31,55 @@ public class RestAssuredXMLIntegrationTest {
         configureFor("localhost", PORT);
         RestAssured.port = PORT;
         stubFor(post(urlEqualTo(EVENTS_PATH)).willReturn(
-          aResponse().withStatus(200)
-            .withHeader("Content-Type", APPLICATION_XML)
-            .withBody(EMPLOYEES)));
+                aResponse().withStatus(200)
+                        .withHeader("Content-Type", APPLICATION_XML)
+                        .withBody(EMPLOYEES)));
     }
 
     @Test
     public void givenUrl_whenXmlResponseValueTestsEqual_thenCorrect() {
         post("/employees").then().assertThat()
-          .body("employees.employee.first-name", equalTo("Jane"));
+                .body("employees.employee.first-name", equalTo("Jane"));
     }
 
     @Test
     public void givenUrl_whenMultipleXmlValuesTestEqual_thenCorrect() {
         post("/employees").then().assertThat()
-          .body("employees.employee.first-name", equalTo("Jane"))
-          .body("employees.employee.last-name", equalTo("Daisy"))
-          .body("employees.employee.sex", equalTo("f"));
+                .body("employees.employee.first-name", equalTo("Jane"))
+                .body("employees.employee.last-name", equalTo("Daisy"))
+                .body("employees.employee.sex", equalTo("f"));
     }
 
     @Test
     public void givenUrl_whenMultipleXmlValuesTestEqualInShortHand_thenCorrect() {
         post("/employees")
-          .then()
-          .assertThat()
-          .body("employees.employee.first-name", equalTo("Jane"),
-            "employees.employee.last-name", equalTo("Daisy"),
-            "employees.employee.sex", equalTo("f"));
+                .then()
+                .assertThat()
+                .body("employees.employee.first-name", equalTo("Jane"),
+                        "employees.employee.last-name", equalTo("Daisy"),
+                        "employees.employee.sex", equalTo("f"));
     }
 
     @Test
     public void givenUrl_whenValidatesXmlUsingXpath_thenCorrect() {
         post("/employees")
-          .then()
-          .assertThat()
-          .body(hasXPath("/employees/employee/first-name",
-            containsString("Ja")));
+                .then()
+                .assertThat()
+                .body(hasXPath("/employees/employee/first-name",
+                        containsString("Ja")));
     }
 
     @Test
     public void givenUrl_whenValidatesXmlUsingXpath2_thenCorrect() {
         post("/employees")
-          .then()
-          .assertThat()
-          .body(hasXPath("/employees/employee/first-name[text()='Jane']"));
+                .then()
+                .assertThat()
+                .body(hasXPath("/employees/employee/first-name[text()='Jane']"));
     }
 
     private static String getXml() {
         return Util
-          .inputStreamToString(RestAssuredXMLIntegrationTest.class.getResourceAsStream("/employees.xml"));
+                .inputStreamToString(RestAssuredXMLIntegrationTest.class.getResourceAsStream("/employees.xml"));
     }
 
     @AfterClass

@@ -32,7 +32,7 @@ public class SchemaMultiTenantConnectionProvider extends AbstractMultiTenantConn
     public Connection getConnection(String tenantIdentifier) throws SQLException {
         Connection connection = super.getConnection(tenantIdentifier);
         connection.createStatement()
-            .execute(String.format("SET SCHEMA %s;", tenantIdentifier));
+                .execute(String.format("SET SCHEMA %s;", tenantIdentifier));
         return connection;
     }
 

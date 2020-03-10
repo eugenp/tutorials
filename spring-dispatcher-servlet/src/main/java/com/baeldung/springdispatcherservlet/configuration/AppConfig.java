@@ -23,7 +23,9 @@ public class AppConfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("index");
     }
 
-    /** Multipart file uploading configuratioin */
+    /**
+     * Multipart file uploading configuratioin
+     */
     @Bean
     public CommonsMultipartResolver multipartResolver() throws IOException {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
@@ -31,7 +33,9 @@ public class AppConfig implements WebMvcConfigurer {
         return resolver;
     }
 
-    /** View resolver for JSP */
+    /**
+     * View resolver for JSP
+     */
     @Bean
     public UrlBasedViewResolver viewResolver() {
         UrlBasedViewResolver resolver = new UrlBasedViewResolver();
@@ -41,7 +45,9 @@ public class AppConfig implements WebMvcConfigurer {
         return resolver;
     }
 
-    /** Static resource locations including themes*/
+    /**
+     * Static resource locations including themes
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**/*")
@@ -51,9 +57,11 @@ public class AppConfig implements WebMvcConfigurer {
                 .addResolver(new PathResourceResolver());
     }
 
-    /** BEGIN theme configuration */
+    /**
+     * BEGIN theme configuration
+     */
     @Bean
-    public ResourceBundleThemeSource themeSource(){
+    public ResourceBundleThemeSource themeSource() {
         ResourceBundleThemeSource themeSource = new ResourceBundleThemeSource();
         themeSource.setDefaultEncoding("UTF-8");
         themeSource.setBasenamePrefix("themes.");
@@ -61,7 +69,7 @@ public class AppConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public CookieThemeResolver themeResolver(){
+    public CookieThemeResolver themeResolver() {
         CookieThemeResolver resolver = new CookieThemeResolver();
         resolver.setDefaultThemeName("default");
         resolver.setCookieName("example-theme-cookie");
@@ -69,7 +77,7 @@ public class AppConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public ThemeChangeInterceptor themeChangeInterceptor(){
+    public ThemeChangeInterceptor themeChangeInterceptor() {
         ThemeChangeInterceptor interceptor = new ThemeChangeInterceptor();
         interceptor.setParamName("theme");
         return interceptor;

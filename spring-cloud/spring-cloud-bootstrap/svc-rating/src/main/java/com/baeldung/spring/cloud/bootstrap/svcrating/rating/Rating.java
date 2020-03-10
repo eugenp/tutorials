@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Rating implements Serializable {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 3308900941650386473L;
     @Id

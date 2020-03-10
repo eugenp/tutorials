@@ -19,18 +19,18 @@ public class TakesAppIntegrationTest {
     @Test
     public void givenTake_whenRunRemoteServer_thenRespond() throws Exception {
         new FtRemote(new TakesContact()).exec(
-            new FtRemote.Script() {
-                @Override
-                public void exec(final URI home) throws IOException {
-                    HttpClient client = HttpClientBuilder.create().build();    
-                    HttpResponse response = client.execute(new HttpGet(home));
-                    int statusCode = response.getStatusLine().getStatusCode();
-                    HttpEntity entity = response.getEntity();
-                    String result = EntityUtils.toString(entity);
-                    
-                    assertEquals(200, statusCode);
-                    assertEquals("Contact us at https://www.baeldung.com", result);
-                }
-            });
+                new FtRemote.Script() {
+                    @Override
+                    public void exec(final URI home) throws IOException {
+                        HttpClient client = HttpClientBuilder.create().build();
+                        HttpResponse response = client.execute(new HttpGet(home));
+                        int statusCode = response.getStatusLine().getStatusCode();
+                        HttpEntity entity = response.getEntity();
+                        String result = EntityUtils.toString(entity);
+
+                        assertEquals(200, statusCode);
+                        assertEquals("Contact us at https://www.baeldung.com", result);
+                    }
+                });
     }
 }

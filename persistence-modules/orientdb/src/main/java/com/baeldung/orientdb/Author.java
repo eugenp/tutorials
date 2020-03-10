@@ -2,7 +2,7 @@ package com.baeldung.orientdb;
 
 import javax.persistence.Id;
 
-public class Author  {
+public class Author {
     @Id
     private Object id;
 

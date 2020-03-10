@@ -15,7 +15,7 @@ import com.baeldung.apachecayenne.persistent.Article;
  */
 public abstract class _Author extends CayenneDataObject {
 
-    private static final long serialVersionUID = 1L; 
+    private static final long serialVersionUID = 1L;
 
     public static final String ID_PK_COLUMN = "id";
 
@@ -25,19 +25,22 @@ public abstract class _Author extends CayenneDataObject {
     public void setName(String name) {
         writeProperty("name", name);
     }
+
     public String getName() {
-        return (String)readProperty("name");
+        return (String) readProperty("name");
     }
 
     public void addToArticles(Article obj) {
         addToManyTarget("articles", obj, true);
     }
+
     public void removeFromArticles(Article obj) {
         removeToManyTarget("articles", obj, true);
     }
+
     @SuppressWarnings("unchecked")
     public List<Article> getArticles() {
-        return (List<Article>)readProperty("articles");
+        return (List<Article>) readProperty("articles");
     }
 
 

@@ -3,6 +3,7 @@ package com.baeldung.allequalelements;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+
 import org.apache.commons.collections4.IterableUtils;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -27,13 +28,13 @@ public class VerifyAllEqualListElements {
 
     public boolean verifyAllEqualUsingStream(List<String> list) {
         return list.stream()
-            .distinct()
-            .count() <= 1;
+                .distinct()
+                .count() <= 1;
     }
 
     public boolean verifyAllEqualAnotherUsingStream(List<String> list) {
         return list.isEmpty() || list.stream()
-            .allMatch(list.get(0)::equals);
+                .allMatch(list.get(0)::equals);
     }
 
     public boolean verifyAllEqualUsingGuava(List<String> list) {

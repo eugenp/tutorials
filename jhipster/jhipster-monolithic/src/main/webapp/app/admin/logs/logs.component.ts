@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { JhiLanguageService } from 'ng-jhipster';
+import {Component, OnInit} from '@angular/core';
+import {JhiLanguageService} from 'ng-jhipster';
 
-import { Log } from './log.model';
-import { LogsService } from './logs.service';
+import {Log} from './log.model';
+import {LogsService} from './logs.service';
 
 @Component({
     selector: 'jhi-logs',
@@ -15,7 +15,7 @@ export class LogsComponent implements OnInit {
     orderProp: string;
     reverse: boolean;
 
-    constructor (
+    constructor(
         private jhiLanguageService: JhiLanguageService,
         private logsService: LogsService
     ) {
@@ -29,7 +29,7 @@ export class LogsComponent implements OnInit {
         this.logsService.findAll().subscribe(loggers => this.loggers = loggers);
     }
 
-    changeLevel (name: string, level: string) {
+    changeLevel(name: string, level: string) {
         let log = new Log(name, level);
         this.logsService.changeLevel(log).subscribe(() => {
             this.logsService.findAll().subscribe(loggers => this.loggers = loggers);

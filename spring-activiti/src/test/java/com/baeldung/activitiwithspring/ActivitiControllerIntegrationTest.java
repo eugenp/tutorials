@@ -39,10 +39,10 @@ public class ActivitiControllerIntegrationTest {
     @Before
     public void setUp() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac)
-          .build();
+                .build();
 
         for (ProcessInstance instance : runtimeService.createProcessInstanceQuery()
-          .list()) {
+                .list()) {
             runtimeService.deleteProcessInstance(instance.getId(), "Reset Processes");
         }
     }
@@ -51,21 +51,21 @@ public class ActivitiControllerIntegrationTest {
     public void givenProcess_whenStartProcess_thenIncreaseInProcessInstanceCount() throws Exception {
 
         String responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/start-process"))
-          .andReturn()
-          .getResponse()
-          .getContentAsString();
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
         assertEquals("Process started. Number of currently running process instances = 1", responseBody);
 
         responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/start-process"))
-          .andReturn()
-          .getResponse()
-          .getContentAsString();
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
         assertEquals("Process started. Number of currently running process instances = 2", responseBody);
 
         responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/start-process"))
-          .andReturn()
-          .getResponse()
-          .getContentAsString();
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
         assertEquals("Process started. Number of currently running process instances = 3", responseBody);
     }
 
@@ -73,19 +73,19 @@ public class ActivitiControllerIntegrationTest {
     public void givenProcess_whenProcessInstance_thenReceivedRunningTask() throws Exception {
 
         this.mockMvc.perform(MockMvcRequestBuilders.get("/start-process"))
-          .andReturn()
-          .getResponse();
+                .andReturn()
+                .getResponse();
         ProcessInstance pi = runtimeService.createProcessInstanceQuery()
-          .orderByProcessInstanceId()
-          .desc()
-          .list()
-          .get(0);
+                .orderByProcessInstanceId()
+                .desc()
+                .list()
+                .get(0);
 
         logger.info("process instance = " + pi.getId());
         String responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/get-tasks/" + pi.getId()))
-          .andReturn()
-          .getResponse()
-          .getContentAsString();
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
 
         ObjectMapper mapper = new ObjectMapper();
         List<TaskRepresentation> tasks = Arrays.asList(mapper.readValue(responseBody, TaskRepresentation[].class));
@@ -98,13 +98,13 @@ public class ActivitiControllerIntegrationTest {
     public void givenProcess_whenCompleteTaskA_thenReceivedNextTask() throws Exception {
 
         this.mockMvc.perform(MockMvcRequestBuilders.get("/start-process"))
-          .andReturn()
-          .getResponse();
+                .andReturn()
+                .getResponse();
         ProcessInstance pi = runtimeService.createProcessInstanceQuery()
-          .orderByProcessInstanceId()
-          .desc()
-          .list()
-          .get(0);
+                .orderByProcessInstanceId()
+                .desc()
+                .list()
+                .get(0);
 
         logger.info("process instance = " + pi.getId());
         this.mockMvc.perform(MockMvcRequestBuilders.get("/complete-task-A/" + pi.getId()))

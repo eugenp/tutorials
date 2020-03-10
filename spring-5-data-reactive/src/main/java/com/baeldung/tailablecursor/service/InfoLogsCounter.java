@@ -19,8 +19,8 @@ public class InfoLogsCounter implements LogsCounter {
     public InfoLogsCounter(LogsRepository repository) {
         Flux<Log> stream = repository.findByLevel(LogLevel.INFO);
         this.subscription = stream.subscribe(logEntity -> {
-          log.info("INFO log received: " + logEntity);
-          counter.incrementAndGet();
+            log.info("INFO log received: " + logEntity);
+            counter.incrementAndGet();
         });
     }
 

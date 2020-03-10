@@ -13,7 +13,7 @@ import com.baeldung.persistence.model.Foo;
 import com.baeldung.spring.ConfigIntegrationTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ConfigIntegrationTest.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {ConfigIntegrationTest.class}, loader = AnnotationConfigContextLoader.class)
 @ActiveProfiles("test")
 public class FooLiveTest extends AbstractBasicLiveTest<Foo> {
 

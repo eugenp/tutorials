@@ -6,22 +6,22 @@ public class SuperPublic {
     static public void publicMethod() {
         System.out.println(SuperPublic.class.getName() + " publicMethod()");
     }
-    
+
     // Available within the same package
     static void defaultMethod() {
         System.out.println(SuperPublic.class.getName() + " defaultMethod()");
     }
-    
+
     // Available within the same package and subclasses
     static protected void protectedMethod() {
         System.out.println(SuperPublic.class.getName() + " protectedMethod()");
     }
-    
+
     // Available within the same class only
     static private void privateMethod() {
         System.out.println(SuperPublic.class.getName() + " privateMethod()");
     }
-    
+
     // Method in the same class = has access to all members within the same class
     private void anotherPrivateMethod() {
         privateMethod();

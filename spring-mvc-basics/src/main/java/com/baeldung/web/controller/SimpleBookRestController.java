@@ -10,7 +10,7 @@ import com.baeldung.model.Book;
 @RestController
 @RequestMapping("books-rest")
 public class SimpleBookRestController {
-    
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public Book getBook(@PathVariable int id) {
         return findBookById(id);

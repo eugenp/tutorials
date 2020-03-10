@@ -55,9 +55,9 @@ public class ErrorLogsCounterManualTest {
 
     private MongoTemplate initMongoTemplate() throws IOException {
         mongodExecutable = starter.prepare(new MongodConfigBuilder()
-          .version(Version.Main.PRODUCTION)
-          .net(new Net(SERVER, PORT, Network.localhostIsIPv6()))
-          .build());
+                .version(Version.Main.PRODUCTION)
+                .net(new Net(SERVER, PORT, Network.localhostIsIPv6()))
+                .build());
         mongoDaemon = mongodExecutable.start();
 
         MongoClient mongoClient = new MongoClient(SERVER, PORT);
@@ -68,9 +68,9 @@ public class ErrorLogsCounterManualTest {
 
     private MongoCollection<Document> createCappedCollection() {
         db.createCollection(COLLECTION_NAME, new CreateCollectionOptions()
-          .capped(true)
-          .sizeInBytes(100000)
-          .maxDocuments(MAX_DOCUMENTS_IN_COLLECTION));
+                .capped(true)
+                .sizeInBytes(100000)
+                .maxDocuments(MAX_DOCUMENTS_IN_COLLECTION));
         return db.getCollection(COLLECTION_NAME);
     }
 
@@ -96,15 +96,15 @@ public class ErrorLogsCounterManualTest {
         MongoCollection<Document> collection = db.getCollection(COLLECTION_NAME);
 
         IntStream.range(1, 10)
-          .forEach(i -> persistDocument(collection,
-            i,
-            i > 5 ? LogLevel.ERROR : LogLevel.INFO,
-            "service" + i,
-            "Message from service " + i)
-          );
+                .forEach(i -> persistDocument(collection,
+                        i,
+                        i > 5 ? LogLevel.ERROR : LogLevel.INFO,
+                        "service" + i,
+                        "Message from service " + i)
+                );
 
         Thread.sleep(1000L); // wait to receive all messages from the reactive mongodb driver
-		
+
         assertThat(collection.countDocuments(), is((long) MAX_DOCUMENTS_IN_COLLECTION));
         assertThat(errorLogsCounter.count(), is(5));
     }

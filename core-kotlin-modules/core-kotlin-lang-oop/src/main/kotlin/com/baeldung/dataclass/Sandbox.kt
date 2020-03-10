@@ -19,8 +19,8 @@ fun main(args: Array<String>) {
     movie.component2() //studio
     movie.component3() //rating
 
-    val(name, studio, rating) = movie
+    val (name, studio, rating) = movie
 
     fun getMovieInfo() = movie
-    val(namef, studiof, ratingf) = getMovieInfo()
+    val (namef, studiof, ratingf) = getMovieInfo()
 }

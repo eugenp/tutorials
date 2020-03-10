@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class FactorialTask extends RecursiveTask<BigInteger> {
-    
+
     private static final Logger logger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 
     private static final long serialVersionUID = 1L;
@@ -33,12 +33,12 @@ public class FactorialTask extends RecursiveTask<BigInteger> {
     }
 
     @Override
-    protected BigInteger compute() {        
+    protected BigInteger compute() {
         if ((n - start) >= THRESHOLD) {
             return ForkJoinTask.invokeAll(createSubtasks())
-                .stream()
-                .map(ForkJoinTask::join)
-                .reduce(BigInteger.ONE, BigInteger::multiply);
+                    .stream()
+                    .map(ForkJoinTask::join)
+                    .reduce(BigInteger.ONE, BigInteger::multiply);
         } else {
             return calculate(start, n);
         }
@@ -57,8 +57,8 @@ public class FactorialTask extends RecursiveTask<BigInteger> {
     private BigInteger calculate(int start, int n) {
         logger.info("Calculate factorial from " + start + " to " + n);
         return IntStream.rangeClosed(start, n)
-            .mapToObj(BigInteger::valueOf)
-            .reduce(BigInteger.ONE, BigInteger::multiply);
+                .mapToObj(BigInteger::valueOf)
+                .reduce(BigInteger.ONE, BigInteger::multiply);
     }
 
 }

@@ -20,7 +20,7 @@ public class AvroSerealizer {
         Encoder jsonEncoder = null;
         try {
             jsonEncoder = EncoderFactory.get()
-                .jsonEncoder(AvroHttpRequest.getClassSchema(), stream);
+                    .jsonEncoder(AvroHttpRequest.getClassSchema(), stream);
             writer.write(request, jsonEncoder);
             jsonEncoder.flush();
             data = stream.toByteArray();
@@ -35,7 +35,7 @@ public class AvroSerealizer {
         byte[] data = new byte[0];
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         Encoder jsonEncoder = EncoderFactory.get()
-            .binaryEncoder(stream, null);
+                .binaryEncoder(stream, null);
         try {
             writer.write(request, jsonEncoder);
             jsonEncoder.flush();

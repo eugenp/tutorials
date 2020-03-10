@@ -24,7 +24,7 @@ class SerializationWithExclusionsUnitTest {
     public void givenClassAnnotated_whenSerializing_thenCorrectWithoutNotAnnotatedFields() {
         MyClassWithAnnotatedFields source = new MyClassWithAnnotatedFields(1L, "foo", "bar", new MySubClassWithAnnotatedFields(42L, "the answer", "Verbose field which we don't want to be serialized"));
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation()
-            .create();
+                .create();
         String jsonString = gson.toJson(source);
 
         assertEquals(expectedResult, jsonString);
@@ -37,10 +37,10 @@ class SerializationWithExclusionsUnitTest {
             @Override
             public boolean shouldSkipField(FieldAttributes field) {
                 if (field.getDeclaringClass() == MyClass.class && field.getName()
-                    .equals("other"))
+                        .equals("other"))
                     return true;
                 if (field.getDeclaringClass() == MySubClass.class && field.getName()
-                    .equals("otherVerboseInfo"))
+                        .equals("otherVerboseInfo"))
                     return true;
                 return false;
             }
@@ -52,7 +52,7 @@ class SerializationWithExclusionsUnitTest {
         };
 
         Gson gson = new GsonBuilder().addSerializationExclusionStrategy(strategy)
-            .create();
+                .create();
         String jsonString = gson.toJson(source);
 
         assertEquals(expectedResult, jsonString);
@@ -73,7 +73,7 @@ class SerializationWithExclusionsUnitTest {
             }
         };
         Gson gson = new GsonBuilder().setExclusionStrategies(strategy)
-            .create();
+                .create();
         String jsonString = gson.toJson(source);
 
         assertEquals(expectedResult, jsonString);
@@ -96,7 +96,7 @@ class SerializationWithExclusionsUnitTest {
         };
 
         Gson gson = new GsonBuilder().setExclusionStrategies(strategy)
-            .create();
+                .create();
         String jsonString = gson.toJson(source);
         assertEquals(expectedResult, jsonString);
     }

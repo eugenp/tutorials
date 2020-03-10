@@ -42,8 +42,8 @@ public class MultipleBooksController {
     public String showEditForm(Model model) {
         List<Book> books = new ArrayList<>();
         bookService.findAll()
-            .iterator()
-            .forEachRemaining(books::add);
+                .iterator()
+                .forEachRemaining(books::add);
 
         model.addAttribute("form", new BooksCreationDto(books));
 

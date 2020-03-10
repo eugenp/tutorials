@@ -20,8 +20,8 @@ import com.google.common.base.Preconditions;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-mysql.properties" })
-@ComponentScan({ "com.baeldung.ex.mappingexception.cause2.persistence" })
+@PropertySource({"classpath:persistence-mysql.properties"})
+@ComponentScan({"com.baeldung.ex.mappingexception.cause2.persistence"})
 public class Cause2PersistenceConfig {
 
     @Autowired

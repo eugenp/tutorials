@@ -22,34 +22,34 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 public class BazzNewMappingsExampleController {
 
     @GetMapping
-    public ResponseEntity<?> getBazzs() throws JsonProcessingException{
+    public ResponseEntity<?> getBazzs() throws JsonProcessingException {
         List<Bazz> data = Arrays.asList(
-            new Bazz("1", "Bazz1"),
-            new Bazz("2", "Bazz2"),
-            new Bazz("3", "Bazz3"),
-            new Bazz("4", "Bazz4"));
+                new Bazz("1", "Bazz1"),
+                new Bazz("2", "Bazz2"),
+                new Bazz("3", "Bazz3"),
+                new Bazz("4", "Bazz4"));
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
-    
+
     @GetMapping("/{id}")
-    public ResponseEntity<?> getBazz(@PathVariable String id){
-        return new ResponseEntity<>(new Bazz(id, "Bazz"+id), HttpStatus.OK);
+    public ResponseEntity<?> getBazz(@PathVariable String id) {
+        return new ResponseEntity<>(new Bazz(id, "Bazz" + id), HttpStatus.OK);
     }
-    
+
     @PostMapping
-    public ResponseEntity<?> newBazz(@RequestParam("name") String name){
+    public ResponseEntity<?> newBazz(@RequestParam("name") String name) {
         return new ResponseEntity<>(new Bazz("5", name), HttpStatus.OK);
     }
-    
+
     @PutMapping("/{id}")
     public ResponseEntity<?> updateBazz(@PathVariable String id,
-        @RequestParam("name") String name){
+                                        @RequestParam("name") String name) {
         return new ResponseEntity<>(new Bazz(id, name), HttpStatus.OK);
     }
-    
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteBazz(@PathVariable String id){
+    public ResponseEntity<?> deleteBazz(@PathVariable String id) {
         return new ResponseEntity<>(new Bazz(id), HttpStatus.OK);
     }
-    
+
 }

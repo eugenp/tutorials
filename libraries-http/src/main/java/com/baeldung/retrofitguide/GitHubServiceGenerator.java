@@ -1,6 +1,7 @@
 package com.baeldung.retrofitguide;
 
 import java.io.IOException;
+
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

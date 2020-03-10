@@ -17,11 +17,11 @@ public class OrderCommand extends FrontCommand {
         if (request.getMethod().equals("POST")) {
             HttpSession session = request.getSession(false);
             Order order = Optional
-              .ofNullable(session.getAttribute("order"))
-              .map(Order.class::cast)
-              .orElseGet(() -> new OrderImpl((String) session.getAttribute("username")));
+                    .ofNullable(session.getAttribute("order"))
+                    .map(Order.class::cast)
+                    .orElseGet(() -> new OrderImpl((String) session.getAttribute("username")));
             Bookshelf bookshelf = (Bookshelf) request.getServletContext()
-              .getAttribute("bookshelf");
+                    .getAttribute("bookshelf");
             String isbn = request.getParameter("isbn");
             Integer quantity = Integer.parseInt(request.getParameter("quantity"));
             Book book = bookshelf.get(isbn);

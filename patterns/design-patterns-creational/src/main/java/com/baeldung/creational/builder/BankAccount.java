@@ -14,13 +14,13 @@ public class BankAccount {
         this.email = builder.email;
         this.newsletter = builder.newsletter;
     }
-    
+
     public static class BankAccountBuilder {
         private String name;
         private String accountNumber;
         private String email;
         private boolean newsletter;
-        
+
         //All Mandatory parameters goes with this constructor
         public BankAccountBuilder(String name, String accountNumber) {
             this.name = name;
@@ -38,7 +38,7 @@ public class BankAccount {
             this.newsletter = newsletter;
             return this;
         }
-        
+
         //the actual build method that prepares and returns a BankAccount object
         public BankAccount build() {
             return new BankAccount(this);

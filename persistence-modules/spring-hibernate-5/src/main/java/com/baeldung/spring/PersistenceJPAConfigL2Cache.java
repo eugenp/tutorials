@@ -22,9 +22,9 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-h2.properties" })
-@ComponentScan({ "com.baeldung.hibernate.cache" })
-@EnableJpaRepositories(basePackages = { "com.baeldung.hibernate.cache.dao"})
+@PropertySource({"classpath:persistence-h2.properties"})
+@ComponentScan({"com.baeldung.hibernate.cache"})
+@EnableJpaRepositories(basePackages = {"com.baeldung.hibernate.cache.dao"})
 public class PersistenceJPAConfigL2Cache {
 
     @Autowired
@@ -50,7 +50,7 @@ public class PersistenceJPAConfigL2Cache {
     }
 
     protected String[] getPackagesToScan() {
-        return new String[] { "com.baeldung.hibernate.cache.model" };
+        return new String[]{"com.baeldung.hibernate.cache.model"};
     }
 
     @Bean

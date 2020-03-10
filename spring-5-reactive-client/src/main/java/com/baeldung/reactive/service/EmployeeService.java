@@ -1,4 +1,5 @@
 package com.baeldung.reactive.service;
+
 import com.baeldung.reactive.model.Employee;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -32,14 +33,14 @@ public class EmployeeService {
                 .uri(ADD_EMPLOYEE)
                 .syncBody(newEmployee)
                 .retrieve().
-                bodyToMono(Employee.class);
+                        bodyToMono(Employee.class);
     }
 
     public Mono<Employee> updateEmployee(Integer employeeId, Employee updateEmployee) {
 
-      return  webClient
+        return webClient
                 .put()
-                .uri(PATH_PARAM_BY_ID,employeeId)
+                .uri(PATH_PARAM_BY_ID, employeeId)
                 .syncBody(updateEmployee)
                 .retrieve()
                 .bodyToMono(Employee.class);
@@ -48,7 +49,7 @@ public class EmployeeService {
     public Mono<String> deleteEmployeeById(Integer employeeId) {
         return webClient
                 .delete()
-                .uri(PATH_PARAM_BY_ID,employeeId)
+                .uri(PATH_PARAM_BY_ID, employeeId)
                 .retrieve()
                 .bodyToMono(String.class);
     }

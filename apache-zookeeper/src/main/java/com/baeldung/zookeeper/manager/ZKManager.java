@@ -5,7 +5,7 @@ import org.apache.zookeeper.KeeperException;
 public interface ZKManager {
     /**
      * Create a Znode and save some data
-     * 
+     *
      * @param path
      * @param data
      * @throws KeeperException
@@ -15,7 +15,7 @@ public interface ZKManager {
 
     /**
      * Get ZNode Data
-     * 
+     *
      * @param path
      * @param boolean watchFlag
      * @throws KeeperException
@@ -25,7 +25,7 @@ public interface ZKManager {
 
     /**
      * Update the ZNode Data
-     * 
+     *
      * @param path
      * @param data
      * @throws KeeperException

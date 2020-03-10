@@ -14,13 +14,13 @@ import org.springframework.session.web.context.AbstractHttpSessionApplicationIni
 public class SessionConfig extends AbstractHttpSessionApplicationInitializer {
     @Autowired
     Environment properties;
-    
+
     @Bean
     @Primary
     public JedisConnectionFactory connectionFactory() {
         JedisConnectionFactory factory = new JedisConnectionFactory();
-        factory.setHostName(properties.getProperty("spring.redis.host","localhost"));
-        factory.setPort(properties.getProperty("spring.redis.port", Integer.TYPE,6379));
+        factory.setHostName(properties.getProperty("spring.redis.host", "localhost"));
+        factory.setPort(properties.getProperty("spring.redis.port", Integer.TYPE, 6379));
         factory.afterPropertiesSet();
         factory.setUsePool(true);
         return factory;

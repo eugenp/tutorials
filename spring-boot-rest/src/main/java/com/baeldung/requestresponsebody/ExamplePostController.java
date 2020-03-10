@@ -19,7 +19,8 @@ public class ExamplePostController {
 
     private static Logger log = LoggerFactory.getLogger(ExamplePostController.class);
 
-    @Autowired ExampleService exampleService;
+    @Autowired
+    ExampleService exampleService;
 
     @PostMapping("/request")
     public ResponseEntity postController(@RequestBody LoginForm loginForm) {

@@ -24,7 +24,7 @@ public class Main {
 
     public void process(Case aCase) {
         final EngineFactory<IRule> engineFactory = new RulesEngineFactory<IRule>(getClass().getClassLoader()
-            .getResource("openltablets/HelloUser.xls"), IRule.class);
+                .getResource("openltablets/HelloUser.xls"), IRule.class);
         instance = engineFactory.newEngineInstance();
         instance.helloUser(aCase, new Response());
     }

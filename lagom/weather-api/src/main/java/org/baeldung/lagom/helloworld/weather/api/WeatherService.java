@@ -20,8 +20,8 @@ public interface WeatherService extends Service {
 
     @Override
     default Descriptor descriptor() {
-      return named("weatherservice").withCalls(
-          restCall(Method.GET, "/api/weather", this::weatherStatsForToday)
+        return named("weatherservice").withCalls(
+                restCall(Method.GET, "/api/weather", this::weatherStatsForToday)
         ).withAutoAcl(true);
     }
 

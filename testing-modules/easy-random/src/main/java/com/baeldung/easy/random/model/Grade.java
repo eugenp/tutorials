@@ -17,6 +17,6 @@ public class Grade {
     @Override
     public String toString() {
         return new StringJoiner(", ", Grade.class.getSimpleName() + "[", "]").add("grade=" + grade)
-            .toString();
+                .toString();
     }
 }

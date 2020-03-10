@@ -4,5 +4,5 @@ module com.baeldung.dddmodules.ordercontext {
     exports com.baeldung.dddmodules.ordercontext.model;
     exports com.baeldung.dddmodules.ordercontext.repository;
     provides com.baeldung.dddmodules.ordercontext.service.OrderService
-      with com.baeldung.dddmodules.ordercontext.service.CustomerOrderService;
+            with com.baeldung.dddmodules.ordercontext.service.CustomerOrderService;
 }

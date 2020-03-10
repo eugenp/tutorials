@@ -21,13 +21,13 @@ public class CustomerTypeSubSetValidatorUnitTest {
     @BeforeClass
     public static void setupValidatorInstance() {
         validator = Validation.buildDefaultValidatorFactory()
-            .getValidator();
+                .getValidator();
     }
 
     @Test
     public void whenEnumAnyOfSubset_thenShouldNotReportConstraintViolations() {
         Customer customer = new Customer.Builder().withCustomerTypeOfSubset(CustomerType.NEW)
-            .build();
+                .build();
         Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
         assertThat(violations.isEmpty()).isTrue();
     }
@@ -35,11 +35,11 @@ public class CustomerTypeSubSetValidatorUnitTest {
     @Test
     public void whenEnumNotAnyOfSubset_thenShouldGiveOccurrenceOfConstraintViolations() {
         Customer customer = new Customer.Builder().withCustomerTypeOfSubset(CustomerType.DEFAULT)
-            .build();
+                .build();
         Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
         assertThat(violations.size()).isEqualTo(1);
 
         assertThat(violations).anyMatch(CustomerUnitTest.havingPropertyPath("customerTypeOfSubset")
-            .and(CustomerUnitTest.havingMessage("must be any of [NEW, OLD]")));
+                .and(CustomerUnitTest.havingMessage("must be any of [NEW, OLD]")));
     }
 }

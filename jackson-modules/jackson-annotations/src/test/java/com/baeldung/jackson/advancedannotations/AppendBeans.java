@@ -29,7 +29,7 @@ public class AppendBeans {
         }
     }
 
-    @JsonAppend(attrs = { @JsonAppend.Attr(value = "version") })
+    @JsonAppend(attrs = {@JsonAppend.Attr(value = "version")})
     public static class BeanWithAppend {
         private int id;
         private String name;

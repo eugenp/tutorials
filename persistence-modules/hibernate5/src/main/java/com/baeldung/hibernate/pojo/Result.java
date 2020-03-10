@@ -4,7 +4,7 @@ public class Result {
     private String employeeName;
 
     private String departmentName;
-    
+
     public Result(String employeeName, String departmentName) {
         this.employeeName = employeeName;
         this.departmentName = departmentName;

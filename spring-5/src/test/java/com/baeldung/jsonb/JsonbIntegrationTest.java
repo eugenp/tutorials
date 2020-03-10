@@ -26,15 +26,15 @@ public class JsonbIntegrationTest {
     @Test
     public void givenId_whenUriIsPerson_thenGetPerson() {
         ResponseEntity<Person> response = template
-            .getForEntity("/person/1", Person.class);
+                .getForEntity("/person/1", Person.class);
         Person person = response.getBody();
         assertTrue(person.equals(new Person(2, "Jhon", "jhon1@test.com", 0, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1500.0))));
     }
 
     @Test
     public void whenSendPostAPerson_thenGetOkStatus() {
-        ResponseEntity<Boolean> response = template.withBasicAuth("user","password").
-            postForEntity("/person", "{\"birthDate\":\"07-09-2017\",\"email\":\"jhon1@test.com\",\"person-name\":\"Jhon\",\"id\":10}", Boolean.class);
+        ResponseEntity<Boolean> response = template.withBasicAuth("user", "password").
+                postForEntity("/person", "{\"birthDate\":\"07-09-2017\",\"email\":\"jhon1@test.com\",\"person-name\":\"Jhon\",\"id\":10}", Boolean.class);
         assertTrue(response.getBody());
     }
 

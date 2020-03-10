@@ -53,10 +53,10 @@ public class LambdaVariables {
      * WARNING: always avoid this workaround!!
      */
     public void workaroundSingleThread() {
-        int[] holder = new int[] { 2 };
+        int[] holder = new int[]{2};
         IntStream sums = IntStream
-          .of(1, 2, 3)
-          .map(val -> val + holder[0]);
+                .of(1, 2, 3)
+                .map(val -> val + holder[0]);
 
         holder[0] = 0;
 
@@ -67,11 +67,11 @@ public class LambdaVariables {
      * WARNING: always avoid this workaround!!
      */
     public void workaroundMultithreading() {
-        int[] holder = new int[] { 2 };
+        int[] holder = new int[]{2};
         Runnable runnable = () -> System.out.println(IntStream
-          .of(1, 2, 3)
-          .map(val -> val + holder[0])
-          .sum());
+                .of(1, 2, 3)
+                .map(val -> val + holder[0])
+                .sum());
 
         new Thread(runnable).start();
 

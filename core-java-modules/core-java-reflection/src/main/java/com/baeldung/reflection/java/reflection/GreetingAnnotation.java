@@ -6,23 +6,23 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 public class GreetingAnnotation {
-   
+
     private static final String ANNOTATION_METHOD = "annotationData";
     private static final String ANNOTATION_FIELDS = "declaredAnnotations";
     private static final String ANNOTATIONS = "annotations";
 
-    public static void main(String ...args) {
+    public static void main(String... args) {
         Greeter greetings = Greetings.class.getAnnotation(Greeter.class);
         System.err.println("Hello there, " + greetings.greet() + " !!");
 
         Greeter targetValue = new DynamicGreeter("Good evening");
         //alterAnnotationValueJDK8(Greetings.class, Greeter.class, targetValue);
         alterAnnotationValueJDK7(Greetings.class, Greeter.class, targetValue);
-        
+
         greetings = Greetings.class.getAnnotation(Greeter.class);
         System.err.println("Hello there, " + greetings.greet() + " !!");
     }
-    
+
     @SuppressWarnings("unchecked")
     public static void alterAnnotationValueJDK8(Class<?> targetClass, Class<? extends Annotation> targetAnnotation, Annotation targetValue) {
         try {
@@ -30,7 +30,7 @@ public class GreetingAnnotation {
             method.setAccessible(true);
 
             Object annotationData = method.invoke(targetClass);
-            
+
             Field annotations = annotationData.getClass().getDeclaredField(ANNOTATIONS);
             annotations.setAccessible(true);
 
@@ -40,10 +40,10 @@ public class GreetingAnnotation {
             e.printStackTrace();
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     public static void alterAnnotationValueJDK7(Class<?> targetClass, Class<? extends Annotation> targetAnnotation, Annotation targetValue) {
-        try {            
+        try {
             Field annotations = Class.class.getDeclaredField(ANNOTATIONS);
             annotations.setAccessible(true);
 

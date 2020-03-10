@@ -5,9 +5,11 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
+
 import com.baeldung.gson.entities.Animal;
 
 public class AnimalDeserializer implements JsonDeserializer<Animal> {

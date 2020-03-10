@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({ "com.baeldung.web.controller" })
+@ComponentScan({"com.baeldung.web.controller"})
 public class ResourceServerWebConfig implements WebMvcConfigurer {
 
 }

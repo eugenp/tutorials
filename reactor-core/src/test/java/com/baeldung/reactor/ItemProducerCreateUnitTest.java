@@ -14,7 +14,7 @@ public class ItemProducerCreateUnitTest {
         List<String> elements = new ArrayList<>();
         ItemProducerCreate producer = new ItemProducerCreate();
         producer.create()
-            .subscribe(elements::add);
+                .subscribe(elements::add);
 
         Thread producerThread = new Thread(() -> {
             List<String> items = new ArrayList<>();

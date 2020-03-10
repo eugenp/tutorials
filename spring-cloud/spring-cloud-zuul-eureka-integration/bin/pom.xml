@@ -27,5 +27,5 @@
         <spring-boot-maven-plugin.version>1.4.2.RELEASE</spring-boot-maven-plugin.version>
         <commons-config.version>1.10</commons-config.version>
     </properties>
-    
+
 </project>

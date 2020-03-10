@@ -24,37 +24,37 @@ public class ListsControllerIntegrationTest {
     @Test
     public void whenCalledToList_ThenConvertsToList() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/lists/toList"))
-          .andExpect(status().isOk())
-          .andExpect(content().string(containsString("converted list size: <span>4</span>")));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("converted list size: <span>4</span>")));
     }
 
     @Test
     public void whenCalledContains_ThenChecksMembership() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/lists/contains"))
-          .andExpect(status().isOk())
-          .andExpect(content().string(containsString("myList contains red: <span>true</span>")))
-          .andExpect(content().string(containsString("myList contains red and green: <span>true</span>")));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("myList contains red: <span>true</span>")))
+                .andExpect(content().string(containsString("myList contains red and green: <span>true</span>")));
     }
 
     @Test
     public void whenCalledSize_ThenReturnsSize() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/lists/size"))
-          .andExpect(status().isOk())
-          .andExpect(content().string(containsString("size: <span>4</span>")));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("size: <span>4</span>")));
     }
 
     @Test
     public void whenCalledSort_ThenSortsItems() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/lists/sort"))
-          .andExpect(status().isOk())
-          .andExpect(content().string(containsString("sort: <span>[blue, green, red, yellow]</span>")))
-          .andExpect(content().string(containsString("sort with Comparator: <span>[yellow, red, green, blue]</span>")));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("sort: <span>[blue, green, red, yellow]</span>")))
+                .andExpect(content().string(containsString("sort with Comparator: <span>[yellow, red, green, blue]</span>")));
     }
 
     @Test
     public void whenCalledIsEmpty_ThenChecksAnyMembers() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/lists/isEmpty"))
-          .andExpect(status().isOk())
-          .andExpect(content().string(containsString("isEmpty Check : <span>false</span>")));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("isEmpty Check : <span>false</span>")));
     }
 }

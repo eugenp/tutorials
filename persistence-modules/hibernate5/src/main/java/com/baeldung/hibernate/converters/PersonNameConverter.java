@@ -18,13 +18,13 @@ public class PersonNameConverter implements AttributeConverter<PersonName, Strin
 
         StringBuilder sb = new StringBuilder();
         if (personName.getSurname() != null && !personName.getSurname()
-            .isEmpty()) {
+                .isEmpty()) {
             sb.append(personName.getSurname());
             sb.append(SEPARATOR);
         }
 
         if (personName.getName() != null && !personName.getName()
-            .isEmpty()) {
+                .isEmpty()) {
             sb.append(personName.getName());
         }
 
@@ -43,7 +43,7 @@ public class PersonNameConverter implements AttributeConverter<PersonName, Strin
             return null;
         }
 
-        PersonName personName = new PersonName();        
+        PersonName personName = new PersonName();
         String firstPiece = !pieces[0].isEmpty() ? pieces[0] : null;
         if (dbPersonName.contains(SEPARATOR)) {
             personName.setSurname(firstPiece);

@@ -29,7 +29,7 @@ class DemoThreadWS implements Runnable {
             Thread.currentThread().interrupt();
             e.printStackTrace();
         }
-        
+
         System.out.println(WaitingState.t1.getState());
     }
 }

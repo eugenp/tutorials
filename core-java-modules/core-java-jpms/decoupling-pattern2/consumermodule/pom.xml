@@ -34,7 +34,7 @@
             </plugin>
         </plugins>
     </build>
-	
+
     <properties>
         <servicemodule.version>1.0</servicemodule.version>
         <providermodule.version>1.0</providermodule.version>

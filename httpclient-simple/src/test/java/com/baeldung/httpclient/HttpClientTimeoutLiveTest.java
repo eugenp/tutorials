@@ -35,14 +35,14 @@ public class HttpClientTimeoutLiveTest {
     // tests
     @Test
     public final void givenUsingOldApi_whenSettingTimeoutViaParameter_thenCorrect() throws IOException {
-        
+
         DefaultHttpClient httpClient = new DefaultHttpClient();
         int timeout = 5; // seconds
         HttpParams httpParams = httpClient.getParams();
         httpParams.setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, timeout * 1000);
         httpParams.setParameter(CoreConnectionPNames.SO_TIMEOUT, timeout * 1000);
         httpParams.setParameter(ClientPNames.CONN_MANAGER_TIMEOUT, new Long(timeout * 1000));
-        
+
         final HttpGet request = new HttpGet("http://www.github.com");
         HttpResponse execute = httpClient.execute(request);
         assertThat(execute.getStatusLine().getStatusCode(), equalTo(200));
@@ -102,14 +102,14 @@ public class HttpClientTimeoutLiveTest {
         final HttpGet request = new HttpGet("http://www.google.com:81");
         client.execute(request);
     }
-    
+
     @Test
     public void whenSecuredRestApiIsConsumed_then200OK() throws IOException {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
         int timeout = 20; // seconds
         RequestConfig requestConfig = RequestConfig.custom().setConnectionRequestTimeout(timeout * 1000)
-          .setConnectTimeout(timeout * 1000).setSocketTimeout(timeout * 1000).build();
+                .setConnectTimeout(timeout * 1000).setSocketTimeout(timeout * 1000).build();
         HttpGet getMethod = new HttpGet("http://localhost:8082/httpclient-simple/api/bars/1");
         getMethod.setConfig(requestConfig);
 
@@ -125,5 +125,5 @@ public class HttpClientTimeoutLiveTest {
         HttpResponse response = httpClient.execute(getMethod);
         System.out.println("HTTP Status of response: " + response.getStatusLine().getStatusCode());
     }
-    
+
 }

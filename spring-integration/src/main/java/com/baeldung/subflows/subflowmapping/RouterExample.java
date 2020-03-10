@@ -1,6 +1,7 @@
 package com.baeldung.subflows.subflowmapping;
 
 import java.util.Collection;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.integration.annotation.Gateway;
 import org.springframework.integration.annotation.IntegrationComponentScan;
@@ -48,15 +49,15 @@ public class RouterExample {
     @Bean
     public IntegrationFlow classify() {
         return flow -> flow.split()
-            .<Integer, Integer> route(number -> number % 3, 
-                mapping -> mapping
-                  .channelMapping(0, "multipleofThreeChannel")
-                  .subFlowMapping(1, subflow -> subflow.channel("remainderIsOneChannel"))
-                  .subFlowMapping(2, subflow -> subflow
-                      .<Integer> handle((payload, headers) -> {
-                          // do extra work on the payload
-                         return payload;
-                      }))).channel("remainderIsTwoChannel");
+                .<Integer, Integer>route(number -> number % 3,
+                        mapping -> mapping
+                                .channelMapping(0, "multipleofThreeChannel")
+                                .subFlowMapping(1, subflow -> subflow.channel("remainderIsOneChannel"))
+                                .subFlowMapping(2, subflow -> subflow
+                                        .<Integer>handle((payload, headers) -> {
+                                            // do extra work on the payload
+                                            return payload;
+                                        }))).channel("remainderIsTwoChannel");
     }
 
 }

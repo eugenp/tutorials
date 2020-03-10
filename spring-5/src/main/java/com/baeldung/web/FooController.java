@@ -16,7 +16,7 @@ import java.util.List;
 public class FooController {
 
     @PostConstruct
-    public void init(){
+    public void init() {
         System.out.println("test");
     }
 
@@ -30,7 +30,7 @@ public class FooController {
     @Validated
     public Foo findById(@PathVariable @Min(0) final long id) {
         return repo.findById(id)
-            .orElse(null);
+                .orElse(null);
     }
 
     @GetMapping
@@ -39,12 +39,12 @@ public class FooController {
         return repo.findAll();
     }
 
-    @GetMapping(params = { "page", "size" })
+    @GetMapping(params = {"page", "size"})
     @ResponseBody
     @Validated
     public List<Foo> findPaginated(@RequestParam("page") @Min(0) final int page, @Max(100) @RequestParam("size") final int size) {
         return repo.findAll(PageRequest.of(page, size))
-            .getContent();
+                .getContent();
     }
 
     // API - write

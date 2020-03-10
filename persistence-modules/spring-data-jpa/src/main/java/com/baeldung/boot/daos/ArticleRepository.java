@@ -18,6 +18,6 @@ public interface ArticleRepository extends JpaRepository<Article, Integer> {
 
     @Query("select a from Article a where a.creationDateTime <= :creationDateTime")
     List<Article> findAllWithCreationDateTimeBefore(
-      @Param("creationDateTime") Date creationDateTime);
+            @Param("creationDateTime") Date creationDateTime);
 
 }

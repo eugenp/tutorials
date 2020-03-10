@@ -16,7 +16,7 @@ import com.baeldung.boot.Application;
 import com.baeldung.boot.domain.MerchandiseEntity;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=Application.class)
+@SpringBootTest(classes = Application.class)
 public class InventoryRepositoryIntegrationTest {
 
     private static final String ORIGINAL_TITLE = "Pair of Pants";

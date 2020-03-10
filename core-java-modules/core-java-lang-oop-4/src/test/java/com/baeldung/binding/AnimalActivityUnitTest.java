@@ -19,7 +19,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 
 /**
- *https://gist.github.com/bloodredsun/a041de13e57bf3c6c040
+ * https://gist.github.com/bloodredsun/a041de13e57bf3c6c040
  */
 @RunWith(MockitoJUnitRunner.class)
 

@@ -4,23 +4,28 @@
           xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
           version="5.0" xml:id="html.stylesheet.type">
-<refmeta>
-<refentrytitle>html.stylesheet.type</refentrytitle>
-<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
-</refmeta>
-<refnamediv>
-<refname>html.stylesheet.type</refname>
-<refpurpose>The type of the stylesheet used in the generated HTML</refpurpose>
-</refnamediv>
+    <refmeta>
+        <refentrytitle>html.stylesheet.type</refentrytitle>
+        <refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname>html.stylesheet.type</refname>
+        <refpurpose>The type of the stylesheet used in the generated HTML</refpurpose>
+    </refnamediv>
 
-<refsynopsisdiv>
-<src:fragment xml:id="html.stylesheet.type.frag"><xsl:param name="html.stylesheet.type">text/css</xsl:param></src:fragment>
-</refsynopsisdiv>
+    <refsynopsisdiv>
+        <src:fragment xml:id="html.stylesheet.type.frag">
+            <xsl:param name="html.stylesheet.type">text/css</xsl:param>
+        </src:fragment>
+    </refsynopsisdiv>
 
-<refsection><info><title>Description</title></info>
+    <refsection>
+        <info>
+            <title>Description</title>
+        </info>
 
-<para>The type of the stylesheet to place in the HTML <tag>link</tag> tag.
-</para>
+        <para>The type of the stylesheet to place in the HTML <tag>link</tag> tag.
+        </para>
 
-</refsection>
+    </refsection>
 </refentry>

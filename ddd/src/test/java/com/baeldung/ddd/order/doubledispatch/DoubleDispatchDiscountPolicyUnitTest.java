@@ -12,10 +12,10 @@ import com.baeldung.ddd.order.OrderFixtureUtils;
 public class DoubleDispatchDiscountPolicyUnitTest {
     // @formatter:off
     @DisplayName(
-        "given regular order with items worth $100 total, " +
-        "when apply 10% discount policy, " +
-        "then cost after discount is $90"
-        )
+            "given regular order with items worth $100 total, " +
+                    "when apply 10% discount policy, " +
+                    "then cost after discount is $90"
+    )
     // @formatter:on
     @Test
     void test() throws Exception {
@@ -43,10 +43,10 @@ public class DoubleDispatchDiscountPolicyUnitTest {
 
     // @formatter:off
     @DisplayName(
-        "given special order eligible for extra discount with items worth $100 total, " +
-        "when apply 20% discount policy for extra discount orders, " +
-        "then cost after discount is $80"
-        )
+            "given special order eligible for extra discount with items worth $100 total, " +
+                    "when apply 20% discount policy for extra discount orders, " +
+                    "then cost after discount is $80"
+    )
     // @formatter:on
     @Test
     void test1() throws Exception {

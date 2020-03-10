@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller Tests', function() {
+describe('Controller Tests', function () {
 
     beforeEach(mockApiAccountCall);
     beforeEach(mockI18nCalls);
 
-    describe('ResetFinishController', function() {
+    describe('ResetFinishController', function () {
 
         var $scope, $q; // actual implementations
         var MockStateParams, MockTimeout, MockAuth; // mocks
         var createController; // local utility function
 
-        beforeEach(inject(function($injector) {
+        beforeEach(inject(function ($injector) {
             $q = $injector.get('$q');
             $scope = $injector.get('$rootScope').$new();
             MockStateParams = jasmine.createSpy('MockStateParams');
@@ -25,12 +25,12 @@ describe('Controller Tests', function() {
                 '$timeout': MockTimeout,
                 'Auth': MockAuth
             };
-            createController = function() {
+            createController = function () {
                 return $injector.get('$controller')('ResetFinishController as vm', locals);
             };
         }));
 
-        it('should define its initial state', function() {
+        it('should define its initial state', function () {
             // given
             MockStateParams.key = 'XYZPDQ';
             createController();
@@ -42,12 +42,12 @@ describe('Controller Tests', function() {
             expect($scope.vm.resetAccount).toEqual({});
         });
 
-        it('registers a timeout handler set set focus', function() {
+        it('registers a timeout handler set set focus', function () {
             // given
             var MockAngular = jasmine.createSpyObj('MockAngular', ['element']);
             var MockElement = jasmine.createSpyObj('MockElement', ['focus']);
             MockAngular.element.and.returnValue(MockElement);
-            MockTimeout.and.callFake(function(callback) {
+            MockTimeout.and.callFake(function (callback) {
                 withMockedAngular(MockAngular, callback)();
             });
             createController();

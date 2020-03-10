@@ -23,21 +23,21 @@ public class RxFlatmapAndSwitchmapUnitTest {
 
         //when
         Observable.fromIterable(keywordToSearch)
-          .flatMap(s -> Observable
-            .just(s + " FirstResult", s + " SecondResult")
-            .delay(10, TimeUnit.SECONDS, scheduler))
-          .toList()
-          .doOnSuccess(s -> actualOutput.addAll(s))
-          .subscribe();
+                .flatMap(s -> Observable
+                        .just(s + " FirstResult", s + " SecondResult")
+                        .delay(10, TimeUnit.SECONDS, scheduler))
+                .toList()
+                .doOnSuccess(s -> actualOutput.addAll(s))
+                .subscribe();
 
         scheduler.advanceTimeBy(1, TimeUnit.MINUTES);
 
         //then
         assertThat(actualOutput, hasItems("b FirstResult", "b SecondResult",
-          "boo FirstResult", "boo SecondResult",
-          "bo FirstResult", "bo SecondResult",
-          "book FirstResult", "book SecondResult",
-          "books FirstResult", "books SecondResult"));
+                "boo FirstResult", "boo SecondResult",
+                "bo FirstResult", "bo SecondResult",
+                "book FirstResult", "book SecondResult",
+                "books FirstResult", "books SecondResult"));
     }
 
     @Test
@@ -49,12 +49,12 @@ public class RxFlatmapAndSwitchmapUnitTest {
 
         //when
         Observable.fromIterable(keywordToSearch)
-          .switchMap(s -> Observable
-            .just(s + " FirstResult", s + " SecondResult")
-            .delay(10, TimeUnit.SECONDS, scheduler))
-          .toList()
-          .doOnSuccess(s -> actualOutput.addAll(s))
-          .subscribe();
+                .switchMap(s -> Observable
+                        .just(s + " FirstResult", s + " SecondResult")
+                        .delay(10, TimeUnit.SECONDS, scheduler))
+                .toList()
+                .doOnSuccess(s -> actualOutput.addAll(s))
+                .subscribe();
 
         scheduler.advanceTimeBy(1, TimeUnit.MINUTES);
 

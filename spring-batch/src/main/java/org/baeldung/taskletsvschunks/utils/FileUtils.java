@@ -46,8 +46,8 @@ public class FileUtils {
             String[] lineStr = new String[2];
             lineStr[0] = line.getName();
             lineStr[1] = line
-              .getAge()
-              .toString();
+                    .getAge()
+                    .toString();
             CSVWriter.writeNext(lineStr);
         } catch (Exception e) {
             logger.error("Error while writing line in file: " + this.fileName);
@@ -56,11 +56,11 @@ public class FileUtils {
 
     private void initReader() throws Exception {
         ClassLoader classLoader = this
-          .getClass()
-          .getClassLoader();
+                .getClass()
+                .getClassLoader();
         if (file == null) file = new File(classLoader
-          .getResource(fileName)
-          .getFile());
+                .getResource(fileName)
+                .getFile());
         if (fileReader == null) fileReader = new FileReader(file);
         if (CSVReader == null) CSVReader = new CSVReader(fileReader);
     }

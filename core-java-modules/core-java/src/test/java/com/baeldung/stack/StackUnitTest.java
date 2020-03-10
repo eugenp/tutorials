@@ -9,6 +9,7 @@ import java.util.ListIterator;
 import java.util.Stack;
 
 import org.junit.Test;
+
 public class StackUnitTest {
 
     @Test
@@ -128,7 +129,7 @@ public class StackUnitTest {
         intStack.addAll(intList);
         ListIterator<Integer> it = intStack.listIterator();
         Stack<Integer> result = new Stack();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             result.push(it.next());
         }
 

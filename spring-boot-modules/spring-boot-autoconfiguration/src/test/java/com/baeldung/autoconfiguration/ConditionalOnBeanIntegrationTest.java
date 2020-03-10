@@ -16,36 +16,36 @@ public class ConditionalOnBeanIntegrationTest {
     @Test
     public void whenDependentBeanIsPresent_thenConditionalBeanCreated() {
         this.contextRunner.withUserConfiguration(BasicConfiguration.class, ConditionalOnBeanConfiguration.class)
-            .run((context) -> {
-                assertThat(context).hasBean("created");
-                assertThat(context).getBean("created")
-                    .isEqualTo("This is always created");
-                assertThat(context).hasBean("createOnBean");
-                assertThat(context).getBean("createOnBean")
-                    .isEqualTo("This is created when bean (name=created) is present");
-            });
+                .run((context) -> {
+                    assertThat(context).hasBean("created");
+                    assertThat(context).getBean("created")
+                            .isEqualTo("This is always created");
+                    assertThat(context).hasBean("createOnBean");
+                    assertThat(context).getBean("createOnBean")
+                            .isEqualTo("This is created when bean (name=created) is present");
+                });
     }
 
     @Test
     public void whenDependentBeanIsPresent_thenConditionalMissingBeanIgnored() {
         this.contextRunner.withUserConfiguration(BasicConfiguration.class, ConditionalOnMissingBeanConfiguration.class)
-            .run((context) -> {
-                assertThat(context).hasBean("created");
-                assertThat(context).getBean("created")
-                    .isEqualTo("This is always created");
-                assertThat(context).doesNotHaveBean("createOnMissingBean");
-            });
+                .run((context) -> {
+                    assertThat(context).hasBean("created");
+                    assertThat(context).getBean("created")
+                            .isEqualTo("This is always created");
+                    assertThat(context).doesNotHaveBean("createOnMissingBean");
+                });
     }
 
     @Test
     public void whenDependentBeanIsNotPresent_thenConditionalMissingBeanCreated() {
         this.contextRunner.withUserConfiguration(ConditionalOnMissingBeanConfiguration.class)
-            .run((context) -> {
-                assertThat(context).hasBean("createOnMissingBean");
-                assertThat(context).getBean("createOnMissingBean")
-                    .isEqualTo("This is created when bean (name=created) is missing");
-                assertThat(context).doesNotHaveBean("created");
-            });
+                .run((context) -> {
+                    assertThat(context).hasBean("createOnMissingBean");
+                    assertThat(context).getBean("createOnMissingBean")
+                            .isEqualTo("This is created when bean (name=created) is missing");
+                    assertThat(context).doesNotHaveBean("created");
+                });
     }
 
     @Configuration

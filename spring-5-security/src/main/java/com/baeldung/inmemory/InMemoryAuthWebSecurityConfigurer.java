@@ -12,23 +12,23 @@ public class InMemoryAuthWebSecurityConfigurer extends WebSecurityConfigurerAdap
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();        
+        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         auth.inMemoryAuthentication()
-            .passwordEncoder(encoder)
-            .withUser("spring")
-            .password(encoder.encode("secret"))            
-            .roles("USER");
+                .passwordEncoder(encoder)
+                .withUser("spring")
+                .password(encoder.encode("secret"))
+                .roles("USER");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/private/**")
-            .authenticated()
-            .antMatchers("/public/**")
-            .permitAll()
-            .and()
-            .httpBasic();
+                .antMatchers("/private/**")
+                .authenticated()
+                .antMatchers("/public/**")
+                .permitAll()
+                .and()
+                .httpBasic();
     }
 
 }

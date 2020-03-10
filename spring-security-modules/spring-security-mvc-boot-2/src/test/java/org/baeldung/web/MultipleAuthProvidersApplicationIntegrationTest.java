@@ -52,7 +52,7 @@ public class MultipleAuthProvidersApplicationIntegrationTest {
 
     private ResponseEntity<String> makeRestCallToGetPing(String username, String password) {
         return restTemplate.withBasicAuth(username, password)
-            .getForEntity("/api/ping", String.class, Collections.emptyMap());
+                .getForEntity("/api/ping", String.class, Collections.emptyMap());
     }
 
     private ResponseEntity<String> makeRestCallToGetPing() {

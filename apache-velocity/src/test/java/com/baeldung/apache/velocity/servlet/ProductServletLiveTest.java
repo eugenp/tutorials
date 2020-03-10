@@ -14,7 +14,7 @@ public class ProductServletLiveTest {
     public void whenRequestUsingHttpClient_thenCorrectResponse() throws Exception {
 
         HttpClient client = new DefaultHttpClient();
-        HttpGet method= new HttpGet("http://localhost:8080/");
+        HttpGet method = new HttpGet("http://localhost:8080/");
 
         HttpResponse httpResponse = client.execute(method);
 

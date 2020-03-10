@@ -36,10 +36,10 @@ public class LoggingGatewayFilterFactory extends AbstractGatewayFilterFactory<Lo
             if (config.isPreLogger())
                 logger.info("Pre GatewayFilter logging: " + config.getBaseMessage());
             return chain.filter(exchange)
-                .then(Mono.fromRunnable(() -> {
-                    if (config.isPostLogger())
-                        logger.info("Post GatewayFilter logging: " + config.getBaseMessage());
-                }));
+                    .then(Mono.fromRunnable(() -> {
+                        if (config.isPostLogger())
+                            logger.info("Post GatewayFilter logging: " + config.getBaseMessage());
+                    }));
         }, 1);
     }
 
@@ -49,7 +49,9 @@ public class LoggingGatewayFilterFactory extends AbstractGatewayFilterFactory<Lo
         private boolean postLogger;
 
         public Config() {
-        };
+        }
+
+        ;
 
         public Config(String baseMessage, boolean preLogger, boolean postLogger) {
             super();

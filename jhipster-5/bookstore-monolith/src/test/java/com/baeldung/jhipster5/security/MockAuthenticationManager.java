@@ -22,10 +22,9 @@ import java.util.Collections;
  */
 @Component
 @Primary
-public class MockAuthenticationManager implements AuthenticationManager
-{
+public class MockAuthenticationManager implements AuthenticationManager {
     private final static Collection<? extends GrantedAuthority> ROLES =
-        Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
+            Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -34,20 +33,18 @@ public class MockAuthenticationManager implements AuthenticationManager
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException
-    {
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(authentication.getName());
 
-        if(userDetails == null || !passwordEncoder.matches(authentication.getCredentials().toString(), userDetails.getPassword()))
-        {
+        if (userDetails == null || !passwordEncoder.matches(authentication.getCredentials().toString(), userDetails.getPassword())) {
             throw new BadCredentialsException("Invalid username/password");
         }
 
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-            authentication.getPrincipal().toString(),
-            authentication.getCredentials().toString(),
-            ROLES);
+                authentication.getPrincipal().toString(),
+                authentication.getCredentials().toString(),
+                ROLES);
 
         return token;
     }

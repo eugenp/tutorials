@@ -25,4 +25,4 @@ server:
 management:
   health:
     binders:
-       enabled: true
+      enabled: true

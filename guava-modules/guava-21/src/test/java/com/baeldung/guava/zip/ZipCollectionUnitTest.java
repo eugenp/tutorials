@@ -29,8 +29,8 @@ public class ZipCollectionUnitTest {
     @Test
     public void zipCollectionUsingGuava21() {
         List<String> output = Streams
-          .zip(names.stream(), ages.stream(), (name, age) -> name + ":" + age)
-          .collect(Collectors.toList());
+                .zip(names.stream(), ages.stream(), (name, age) -> name + ":" + age)
+                .collect(Collectors.toList());
 
         assertEquals(output, expectedOutput);
     }
@@ -38,9 +38,9 @@ public class ZipCollectionUnitTest {
     @Test
     public void zipCollectionUsingIntStream() {
         List<String> output = IntStream
-          .range(0, Math.min(names.size(), ages.size()))
-          .mapToObj(i -> names.get(i) + ":" + ages.get(i))
-          .collect(Collectors.toList());
+                .range(0, Math.min(names.size(), ages.size()))
+                .mapToObj(i -> names.get(i) + ":" + ages.get(i))
+                .collect(Collectors.toList());
 
         assertEquals(output, expectedOutput);
     }
@@ -48,8 +48,8 @@ public class ZipCollectionUnitTest {
     @Test
     public void zipCollectionUsingJool() {
         Seq<String> output = Seq
-          .of("John", "Jane", "Jack")
-          .zip(Seq.of(24, 25, 27), (x, y) -> x + ":" + y);
+                .of("John", "Jane", "Jack")
+                .zip(Seq.of(24, 25, 27), (x, y) -> x + ":" + y);
 
         assertEquals(output.toList(), expectedOutput);
     }
@@ -57,8 +57,8 @@ public class ZipCollectionUnitTest {
     @Test
     public void zipCollectionUsingJoolTuple() {
         Seq<Tuple2<String, Integer>> output = Seq
-          .of("John", "Jane", "Dennis")
-          .zip(Seq.of(24, 25, 27));
+                .of("John", "Jane", "Dennis")
+                .zip(Seq.of(24, 25, 27));
 
         Tuple2<String, Integer> element1 = new Tuple2<String, Integer>("John", 24);
         Tuple2<String, Integer> element2 = new Tuple2<String, Integer>("Jane", 25);
@@ -71,8 +71,8 @@ public class ZipCollectionUnitTest {
     @Test
     public void zipCollectionUsingJoolWithIndex() {
         Seq<Tuple2<String, Long>> output = Seq
-          .of("John", "Jane", "Dennis")
-          .zipWithIndex();
+                .of("John", "Jane", "Dennis")
+                .zipWithIndex();
 
         Tuple2<String, Long> element1 = new Tuple2<>("John", 0L);
         Tuple2<String, Long> element2 = new Tuple2<>("Jane", 1L);

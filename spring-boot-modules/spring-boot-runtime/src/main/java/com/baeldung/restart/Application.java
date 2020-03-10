@@ -7,7 +7,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-public class Application extends SpringBootServletInitializer {   
+public class Application extends SpringBootServletInitializer {
 
     private static ConfigurableApplicationContext context;
 

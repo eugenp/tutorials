@@ -17,14 +17,14 @@ public class VisitorCounterFilter implements Filter {
 
     @Override
     public void doFilter(
-      ServletRequest request,
-      ServletResponse response,
-      FilterChain chain
+            ServletRequest request,
+            ServletResponse response,
+            FilterChain chain
     ) throws IOException, ServletException {
         HttpSession session = ((HttpServletRequest) request).getSession(false);
         Optional.ofNullable(session.getAttribute("username"))
-          .map(Object::toString)
-          .ifPresent(users::add);
+                .map(Object::toString)
+                .ifPresent(users::add);
         request.setAttribute("counter", users.size());
         chain.doFilter(request, response);
     }

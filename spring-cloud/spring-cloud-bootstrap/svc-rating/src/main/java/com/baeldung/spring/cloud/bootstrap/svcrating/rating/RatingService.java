@@ -40,10 +40,10 @@ public class RatingService {
         return cacheRepository.findAllCachedRatings();
     }
 
-    @HystrixCommand(commandKey = "ratingsByIdFromDB", fallbackMethod = "findCachedRatingById", ignoreExceptions = { RatingNotFoundException.class })
+    @HystrixCommand(commandKey = "ratingsByIdFromDB", fallbackMethod = "findCachedRatingById", ignoreExceptions = {RatingNotFoundException.class})
     public Rating findRatingById(Long ratingId) {
         return Optional.ofNullable(ratingRepository.findOne(ratingId))
-            .orElseThrow(() -> new RatingNotFoundException("Rating not found. ID: " + ratingId));
+                .orElseThrow(() -> new RatingNotFoundException("Rating not found. ID: " + ratingId));
     }
 
     public Rating findCachedRatingById(Long ratingId) {
@@ -70,13 +70,13 @@ public class RatingService {
     public Rating updateRating(Map<String, String> updates, Long ratingId) {
         final Rating rating = findRatingById(ratingId);
         updates.keySet()
-            .forEach(key -> {
-                switch (key) {
-                case "stars":
-                    rating.setStars(Integer.parseInt(updates.get(key)));
-                    break;
-                }
-            });
+                .forEach(key -> {
+                    switch (key) {
+                        case "stars":
+                            rating.setStars(Integer.parseInt(updates.get(key)));
+                            break;
+                    }
+                });
         Rating persisted = ratingRepository.save(rating);
         cacheRepository.updateRating(persisted);
         return persisted;

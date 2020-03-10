@@ -12,11 +12,11 @@ import com.baeldung.filters.SimpleFilter;
 public class CloudSite {
     public static void main(String[] args) {
         SpringApplication.run(CloudSite.class, args);
-    }    
-    
+    }
+
     @Bean
     public SimpleFilter simpleFilter() {
-      return new SimpleFilter();
-    } 
-    
+        return new SimpleFilter();
+    }
+
 }

@@ -9,7 +9,7 @@ public class RangeDatesIteration {
     public void iterateBetweenDatesJava9(LocalDate startDate, LocalDate endDate) {
 
         startDate.datesUntil(endDate)
-            .forEach(this::processDate);
+                .forEach(this::processDate);
     }
 
     public void iterateBetweenDatesJava8(LocalDate start, LocalDate end) {

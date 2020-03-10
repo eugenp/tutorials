@@ -35,7 +35,7 @@ public class Java8StreamsUnitTest {
 
     @Test
     public void checkStreamCount_whenCreating_givenDifferentSources() {
-        String[] arr = new String[] { "a", "b", "c" };
+        String[] arr = new String[]{"a", "b", "c"};
         Stream<String> streamArr = Arrays.stream(arr);
         assertEquals(streamArr.count(), 3);
 

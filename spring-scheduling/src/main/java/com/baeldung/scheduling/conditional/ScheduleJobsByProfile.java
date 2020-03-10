@@ -13,8 +13,7 @@ public class ScheduleJobsByProfile {
 
     @Profile("prod")
     @Bean
-    public ScheduledJob scheduledJob()
-    {
+    public ScheduledJob scheduledJob() {
         return new ScheduledJob("@Profile");
     }
 }

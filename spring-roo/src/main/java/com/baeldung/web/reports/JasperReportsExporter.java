@@ -10,32 +10,27 @@ import net.sf.jasperreports.export.Exporter;
 
 /**
  * = JasperReportsExporter
- * 
+ * <p>
  * This interface defines the operations for a JasperReport exporter.
- * 
+ * <p>
  * JasperReports library already provides an Exporter interface called
  * {@link Exporter}. However, it doesn't provides an operation that writes the
  * exported JasperReport into the {@link HttpServletResponse}.
  */
 public interface JasperReportsExporter {
 
-	/**
-	 * This operation must be implemented by every JasperReport exporter to be
-	 * able to write a generated report into a the {@link HttpServletResponse}}.
-	 * 
-	 * @param jp
-	 *            The generated JasperReport.
-	 * @param fileName
-	 *            The fileName of the exported JasperReport
-	 * @param response
-	 *            The HttpServletResponse where generated report has been
-	 *            written
-	 * @throws JRException
-	 *             during JasperReport export.
-	 * @throws IOException
-	 *             when writes the ByteArrayOutputStream into the
-	 *             HttpServletResponse
-	 */
-	public void export(JasperPrint jp, String fileName, HttpServletResponse response) throws JRException, IOException;
+    /**
+     * This operation must be implemented by every JasperReport exporter to be
+     * able to write a generated report into a the {@link HttpServletResponse}}.
+     *
+     * @param jp       The generated JasperReport.
+     * @param fileName The fileName of the exported JasperReport
+     * @param response The HttpServletResponse where generated report has been
+     *                 written
+     * @throws JRException during JasperReport export.
+     * @throws IOException when writes the ByteArrayOutputStream into the
+     *                     HttpServletResponse
+     */
+    public void export(JasperPrint jp, String fileName, HttpServletResponse response) throws JRException, IOException;
 
 }

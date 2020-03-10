@@ -7,7 +7,7 @@ import com.esotericsoftware.kryo.Serializer;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 
-public class UserSerializer extends Serializer<User>{
+public class UserSerializer extends Serializer<User> {
     @Override
     public void write(Kryo kryo, Output output, User user) {
         output.writeString(user.getEmail());
@@ -25,6 +25,6 @@ public class UserSerializer extends Serializer<User>{
         user.setEmail(email);
         user.setUsername(name);
 
-        return  user;
+        return user;
     }
 }

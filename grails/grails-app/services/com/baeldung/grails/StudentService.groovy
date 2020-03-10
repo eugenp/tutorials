@@ -5,7 +5,7 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class StudentService {
 
-    def get(id){
+    def get(id) {
         Student.get(id)
     }
 
@@ -13,11 +13,11 @@ class StudentService {
         Student.list()
     }
 
-    def save(student){
+    def save(student) {
         student.save()
     }
 
-    def delete(id){
+    def delete(id) {
         Student.get(id).delete()
     }
 }

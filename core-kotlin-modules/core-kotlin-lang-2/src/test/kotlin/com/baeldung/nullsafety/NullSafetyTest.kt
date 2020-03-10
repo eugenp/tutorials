@@ -68,7 +68,7 @@ class NullSafetyTest {
         var res = listOf<String?>()
         for (item in names) {
             item?.let { res = res.plus(it); it }
-                    ?.also{it -> println("non nullable value: $it")}
+                    ?.also { it -> println("non nullable value: $it") }
         }
 
         //then
@@ -78,7 +78,7 @@ class NullSafetyTest {
     }
 
     @Test
-    fun fivenCollectionOfObject_whenUseRunOperator_thenExecuteActionOnNonNullValue(){
+    fun fivenCollectionOfObject_whenUseRunOperator_thenExecuteActionOnNonNullValue() {
         //given
         val firstName = "Tom"
         val secondName = "Michael"
@@ -87,7 +87,7 @@ class NullSafetyTest {
         //when
         var res = listOf<String?>()
         for (item in names) {
-            item?.run{res = res.plus(this)}
+            item?.run { res = res.plus(this) }
         }
 
         //then

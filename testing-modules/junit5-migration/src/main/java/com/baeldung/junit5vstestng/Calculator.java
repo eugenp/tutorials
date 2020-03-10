@@ -6,7 +6,7 @@ public class Calculator {
         if (b == 0) {
             throw new DivideByZeroException("Divider cannot be equal to zero!");
         }
-        return a/b;
+        return a / b;
     }
 
 }

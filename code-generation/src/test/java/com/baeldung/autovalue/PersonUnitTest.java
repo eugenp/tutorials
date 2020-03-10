@@ -20,18 +20,18 @@ public class PersonUnitTest {
         originalFavoriteMoviesList.add("Training Day");
         originalFavoriteMoviesList.add("Fast and the Furious");
         Person person = Person.builder()
-            .name("Dan")
-            .favoriteMovies(originalFavoriteMoviesList)
-            .build();
+                .name("Dan")
+                .favoriteMovies(originalFavoriteMoviesList)
+                .build();
 
         // WHEN modify original list
         originalFavoriteMoviesList.add("Friday");
 
         // THEN Person remains unaffected
         assertFalse(person.favoriteMovies()
-            .contains("Friday"));
+                .contains("Friday"));
         assertEquals(2, person.favoriteMovies()
-            .size());
+                .size());
     }
 
 }

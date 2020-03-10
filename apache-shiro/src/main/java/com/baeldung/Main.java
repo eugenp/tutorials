@@ -24,47 +24,47 @@ public class Main {
         Subject currentUser = SecurityUtils.getSubject();
 
         if (!currentUser.isAuthenticated()) {
-          UsernamePasswordToken token 
-            = new UsernamePasswordToken("user", "password");
-          token.setRememberMe(true);
-          try {
-              currentUser.login(token);
-          } catch (UnknownAccountException uae) {
-              log.error("Username Not Found!", uae);
-          } catch (IncorrectCredentialsException ice) {
-              log.error("Invalid Credentials!", ice);
-          } catch (LockedAccountException lae) {
-              log.error("Your Account is Locked!", lae);
-          } catch (AuthenticationException ae) {
-              log.error("Unexpected Error!", ae);
-          }
+            UsernamePasswordToken token
+                    = new UsernamePasswordToken("user", "password");
+            token.setRememberMe(true);
+            try {
+                currentUser.login(token);
+            } catch (UnknownAccountException uae) {
+                log.error("Username Not Found!", uae);
+            } catch (IncorrectCredentialsException ice) {
+                log.error("Invalid Credentials!", ice);
+            } catch (LockedAccountException lae) {
+                log.error("Your Account is Locked!", lae);
+            } catch (AuthenticationException ae) {
+                log.error("Unexpected Error!", ae);
+            }
         }
 
         log.info("User [" + currentUser.getPrincipal() + "] logged in successfully.");
 
         if (currentUser.hasRole("admin")) {
             log.info("Welcome Admin");
-        } else if(currentUser.hasRole("editor")) {
+        } else if (currentUser.hasRole("editor")) {
             log.info("Welcome, Editor!");
-        } else if(currentUser.hasRole("author")) {
+        } else if (currentUser.hasRole("author")) {
             log.info("Welcome, Author");
         } else {
             log.info("Welcome, Guest");
         }
 
-        if(currentUser.isPermitted("articles:compose")) {
+        if (currentUser.isPermitted("articles:compose")) {
             log.info("You can compose an article");
         } else {
             log.info("You are not permitted to compose an article!");
         }
 
-        if(currentUser.isPermitted("articles:save")) {
+        if (currentUser.isPermitted("articles:save")) {
             log.info("You can save articles");
         } else {
             log.info("You can not save articles");
         }
 
-        if(currentUser.isPermitted("articles:publish")) {
+        if (currentUser.isPermitted("articles:publish")) {
             log.info("You can publish articles");
         } else {
             log.info("You can not publish articles");

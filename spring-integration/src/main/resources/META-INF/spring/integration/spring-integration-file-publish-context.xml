@@ -32,12 +32,12 @@
     >
     </file:outbound-channel-adapter>
 
-    <int:publish-subscribe-channel id="videoChannel" />
+    <int:publish-subscribe-channel id="videoChannel"/>
 
-    <int:channel id="emailOutbound" />
+    <int:channel id="emailOutbound"/>
 
     <mail:outbound-channel-adapter channel="emailOutbound"
-                                   mail-sender="mailSender" />
+                                   mail-sender="mailSender"/>
 
     <file:file-to-bytes-transformer
             input-channel="videoChannel"
@@ -49,14 +49,14 @@
     </mail:header-enricher>
 
     <bean name="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-        <property name="host" value="smtp.gmail.com" />
-        <property name="port" value="587" />
-        <property name="username" value="${username}" />
-        <property name="password" value="${password}" />
+        <property name="host" value="smtp.gmail.com"/>
+        <property name="port" value="587"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
     </bean>
 
-    <int:bridge input-channel="videoChannel" output-channel="destFileFolder" />
-    <int:bridge input-channel="videoChannel" output-channel="emailOutbound" />
+    <int:bridge input-channel="videoChannel" output-channel="destFileFolder"/>
+    <int:bridge input-channel="videoChannel" output-channel="emailOutbound"/>
 
 
 </beans>

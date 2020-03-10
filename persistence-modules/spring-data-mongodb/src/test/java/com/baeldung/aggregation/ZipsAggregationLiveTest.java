@@ -45,10 +45,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 /**
- * 
  * This test requires:
  * * mongodb instance running on the environment
- *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
@@ -69,7 +67,7 @@ public class ZipsAggregationLiveTest {
         InputStream zipsJsonStream = ZipsAggregationLiveTest.class.getResourceAsStream("/zips.json");
         BufferedReader reader = new BufferedReader(new InputStreamReader(zipsJsonStream));
         reader.lines()
-          .forEach(line -> zipsCollection.insertOne(Document.parse(line)));
+                .forEach(line -> zipsCollection.insertOne(Document.parse(line)));
         reader.close();
     }
 
@@ -105,7 +103,7 @@ public class ZipsAggregationLiveTest {
          * decreasing population
          */
         List<StatePopulation> actualList = StreamSupport.stream(result.spliterator(), false)
-          .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         List<StatePopulation> expectedList = new ArrayList<>(actualList);
         Collections.sort(expectedList, (sp1, sp2) -> sp2.getStatePop() - sp1.getStatePop());
@@ -121,7 +119,7 @@ public class ZipsAggregationLiveTest {
         GroupOperation averageStatePop = group("_id.state").avg("cityPop").as("avgCityPop");
         SortOperation sortByAvgPopAsc = sort(new Sort(Direction.ASC, "avgCityPop"));
         ProjectionOperation projectToMatchModel = project().andExpression("_id").as("state")
-          .andExpression("avgCityPop").as("statePop");
+                .andExpression("avgCityPop").as("statePop");
         LimitOperation limitToOnlyFirstDoc = limit(1);
 
         Aggregation aggregation = newAggregation(sumTotalCityPop, averageStatePop, sortByAvgPopAsc, limitToOnlyFirstDoc, projectToMatchModel);
@@ -131,7 +129,7 @@ public class ZipsAggregationLiveTest {
 
         assertEquals("ND", smallestState.getState());
         assertTrue(smallestState.getStatePop()
-          .equals(1645));
+                .equals(1645));
     }
 
     @Test
@@ -140,8 +138,8 @@ public class ZipsAggregationLiveTest {
         GroupOperation sumZips = group("state").count().as("zipCount");
         SortOperation sortByCount = sort(Direction.ASC, "zipCount");
         GroupOperation groupFirstAndLast = group().first("_id").as("minZipState")
-          .first("zipCount").as("minZipCount").last("_id").as("maxZipState")
-          .last("zipCount").as("maxZipCount");
+                .first("zipCount").as("minZipCount").last("_id").as("maxZipState")
+                .last("zipCount").as("maxZipCount");
 
         Aggregation aggregation = newAggregation(sumZips, sortByCount, groupFirstAndLast);
 

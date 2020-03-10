@@ -14,7 +14,7 @@ class BrandRepositoryUnitTest {
 
     private static final Brand BRAND_1 = new Brand(1L, "Brand1");
 
-    private final BrandRepository brandRepository  = new BrandRepository(getBrands());
+    private final BrandRepository brandRepository = new BrandRepository(getBrands());
 
     @Test
     void givenSize_whenFindingAll_thenReturnList() {

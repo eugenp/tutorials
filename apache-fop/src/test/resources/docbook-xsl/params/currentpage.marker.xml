@@ -4,22 +4,25 @@
           xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
           version="5.0" xml:id="currentpage.marker">
-<refmeta>
-<refentrytitle>currentpage.marker</refentrytitle>
-<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
-</refmeta>
-<refnamediv>
-<refname>currentpage.marker</refname>
-<refpurpose>The text symbol used to mark the current page</refpurpose>
-</refnamediv>
+    <refmeta>
+        <refentrytitle>currentpage.marker</refentrytitle>
+        <refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname>currentpage.marker</refname>
+        <refpurpose>The text symbol used to mark the current page</refpurpose>
+    </refnamediv>
 
-<refsynopsisdiv>
-<src:fragment xml:id="currentpage.marker.frag">
-<xsl:param name="currentpage.marker">@</xsl:param>
-</src:fragment>
-</refsynopsisdiv>
+    <refsynopsisdiv>
+        <src:fragment xml:id="currentpage.marker.frag">
+            <xsl:param name="currentpage.marker">@</xsl:param>
+        </src:fragment>
+    </refsynopsisdiv>
 
-<refsection><info><title>Description</title></info>
-<para>Character to use as identifying the current page in </para>
-</refsection>
+    <refsection>
+        <info>
+            <title>Description</title>
+        </info>
+        <para>Character to use as identifying the current page in</para>
+    </refsection>
 </refentry>

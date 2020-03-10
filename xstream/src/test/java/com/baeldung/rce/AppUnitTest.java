@@ -22,14 +22,18 @@ public final class AppUnitTest {
 
     private App app;
 
-    /** start a new web server */
+    /**
+     * start a new web server
+     */
     @Before
     public void before() throws IOException {
         app = App.createVulnerable(0);
         app.start();
     }
 
-    /** stop the web server */
+    /**
+     * stop the web server
+     */
     @After
     public void after() {
         if (app != null)

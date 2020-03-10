@@ -20,7 +20,7 @@ class ProductController {
     @GetMapping("/{id}")
     fun findOne(@PathVariable id: Int): Mono<Product> {
         return productRepository
-          .getProductById(id)
+                .getProductById(id)
     }
 
     @GetMapping("/{id}/stock")
@@ -28,10 +28,10 @@ class ProductController {
         val product = productRepository.getProductById(id)
 
         val stockQuantity = webClient.get()
-          .uri("/stock-service/product/$id/quantity")
-          .accept(MediaType.APPLICATION_JSON)
-          .retrieve()
-          .bodyToMono<Int>()
+                .uri("/stock-service/product/$id/quantity")
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono<Int>()
         return product.zipWith(stockQuantity) { productInStock, stockQty ->
             ProductStockView(productInStock, stockQty)
         }

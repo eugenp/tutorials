@@ -1,9 +1,11 @@
 package com.baeldung.persistence.service.transactional;
 
 import com.google.common.base.Preconditions;
+
 import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -27,8 +29,8 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-h2.properties" })
-@ComponentScan({ "com.baeldung.persistence","com.baeldung.jpa.dao" })
+@PropertySource({"classpath:persistence-h2.properties"})
+@ComponentScan({"com.baeldung.persistence", "com.baeldung.jpa.dao"})
 @EnableJpaRepositories(basePackages = "com.baeldung.jpa.dao")
 public class PersistenceTransactionalTestConfig {
 
@@ -44,7 +46,7 @@ public class PersistenceTransactionalTestConfig {
         }
 
         public void create() {
-           create++;
+            create++;
         }
 
         @Override
@@ -60,7 +62,7 @@ public class PersistenceTransactionalTestConfig {
         protected void prepareSynchronization(DefaultTransactionStatus status, TransactionDefinition definition) {
             super.prepareSynchronization(status, definition);
             if (status.isNewTransaction()) {
-                if ( adapterSpyThreadLocal.get() == null ){
+                if (adapterSpyThreadLocal.get() == null) {
                     TransactionSynchronizationAdapterSpy spy = new TransactionSynchronizationAdapterSpy();
                     TransactionSynchronizationManager.registerSynchronization(spy);
                     adapterSpyThreadLocal.set(spy);
@@ -79,14 +81,14 @@ public class PersistenceTransactionalTestConfig {
         super();
     }
 
-    public static TransactionSynchronizationAdapterSpy getSpy(){
-        if ( adapterSpyThreadLocal.get() == null )
+    public static TransactionSynchronizationAdapterSpy getSpy() {
+        if (adapterSpyThreadLocal.get() == null)
             return new TransactionSynchronizationAdapterSpy();
         return adapterSpyThreadLocal.get();
     }
 
-    public static void clearSpy(){
-       adapterSpyThreadLocal.set(null);
+    public static void clearSpy() {
+        adapterSpyThreadLocal.set(null);
     }
 
     // beans
@@ -95,7 +97,7 @@ public class PersistenceTransactionalTestConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+        em.setPackagesToScan(new String[]{"com.baeldung.persistence.model"});
 
         final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -114,7 +116,6 @@ public class PersistenceTransactionalTestConfig {
 
         return dataSource;
     }
-
 
 
     @Bean
@@ -139,7 +140,7 @@ public class PersistenceTransactionalTestConfig {
 
 
     @Bean
-    public TransactionTemplate transactionTemplate(PlatformTransactionManager transactionManager){
+    public TransactionTemplate transactionTemplate(PlatformTransactionManager transactionManager) {
         TransactionTemplate template = new TransactionTemplate(transactionManager);
         template.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
         return template;

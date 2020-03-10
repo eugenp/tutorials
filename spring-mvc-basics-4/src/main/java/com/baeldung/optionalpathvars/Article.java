@@ -13,7 +13,7 @@ public class Article {
     public Integer getId() {
         return id;
     }
-    
+
     @Override
     public String toString() {
         return "Article [id=" + id + "]";

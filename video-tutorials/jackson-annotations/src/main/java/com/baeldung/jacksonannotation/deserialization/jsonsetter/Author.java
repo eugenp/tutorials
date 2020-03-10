@@ -18,7 +18,7 @@ public class Author extends Person {
 
     private List<Item> items = new ArrayList<>();
 
-    public Author(){
+    public Author() {
         super();
     }
 

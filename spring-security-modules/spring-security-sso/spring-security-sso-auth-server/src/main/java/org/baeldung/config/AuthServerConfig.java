@@ -12,25 +12,25 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 @Configuration
 @EnableAuthorizationServer
 public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
-    
-    @Autowired    
+
+    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-    
+
     @Override
     public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         oauthServer.tokenKeyAccess("permitAll()")
-            .checkTokenAccess("isAuthenticated()");
+                .checkTokenAccess("isAuthenticated()");
     }
 
     @Override
     public void configure(final ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-            .withClient("SampleClientId")
-            .secret(passwordEncoder.encode("secret"))
-            .authorizedGrantTypes("authorization_code")
-            .scopes("user_info")
-            .autoApprove(true)
-            .redirectUris("http://localhost:8082/ui/login","http://localhost:8083/ui2/login","http://localhost:8082/login","http://www.example.com/")
+                .withClient("SampleClientId")
+                .secret(passwordEncoder.encode("secret"))
+                .authorizedGrantTypes("authorization_code")
+                .scopes("user_info")
+                .autoApprove(true)
+                .redirectUris("http://localhost:8082/ui/login", "http://localhost:8083/ui2/login", "http://localhost:8082/login", "http://www.example.com/")
         // .accessTokenValiditySeconds(3600)
         ; // 1 hour
     }

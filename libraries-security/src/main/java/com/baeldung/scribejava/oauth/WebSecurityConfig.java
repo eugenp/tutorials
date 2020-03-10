@@ -16,9 +16,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .headers().frameOptions().disable()
-            .and()
-            .csrf().disable();
+                .headers().frameOptions().disable()
+                .and()
+                .csrf().disable();
     }
 
     @Override
@@ -43,10 +43,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         @Override
         public void configure(HttpSecurity http) throws Exception {
             http
-                .authorizeRequests()
-                .antMatchers("/user/me").authenticated()
-                .and()
-                .csrf().disable();
+                    .authorizeRequests()
+                    .antMatchers("/user/me").authenticated()
+                    .and()
+                    .csrf().disable();
         }
     }
 

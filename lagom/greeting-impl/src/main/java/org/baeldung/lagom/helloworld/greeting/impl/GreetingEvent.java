@@ -17,7 +17,7 @@ public interface GreetingEvent extends Jsonable {
         public String getFromUser() {
             return fromUser;
         }
-        
+
     }
 
 }

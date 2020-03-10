@@ -1,9 +1,9 @@
-import { Component, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular/core';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiLanguageService } from 'ng-jhipster';
+import {Component, OnInit, AfterViewInit, Renderer, ElementRef} from '@angular/core';
+import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {JhiLanguageService} from 'ng-jhipster';
 
-import { Register } from './register.service';
-import { LoginModalService } from '../../shared';
+import {Register} from './register.service';
+import {LoginModalService} from '../../shared';
 
 @Component({
     selector: 'jhi-register',

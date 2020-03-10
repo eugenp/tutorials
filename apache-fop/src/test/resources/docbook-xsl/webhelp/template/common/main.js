@@ -6,32 +6,32 @@
  */
 
 //Turn ON and OFF the animations for Show/Hide Sidebar. Extend this to other anime as well if any.
-var noAnimations=false;
+var noAnimations = false;
 
-$(document).ready(function() {
-	// When you click on a link to an anchor, scroll down 
-	// 105 px to cope with the fact that the banner
-	// hides the top 95px or so of the page.
-	// This code deals with the problem when 
-	// you click on a link within a page.
-	$('a[href*=#]').click(function() {
-		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
-		    && location.hostname == this.hostname) {
-		    var $target = $(this.hash);
-		    $target = $target.length && $target
-			|| $('[name=' + this.hash.slice(1) +']');
-		if (!(this.hash == "#searchDiv" || this.hash == "#treeDiv"  || this.hash == "") && $target.length) {
-			var targetOffset = $target.offset().top - 120;
-			$('html,body')
-			    .animate({scrollTop: targetOffset}, 200);
-			return false;
-		    }
-		}
-	    });
+$(document).ready(function () {
+    // When you click on a link to an anchor, scroll down
+    // 105 px to cope with the fact that the banner
+    // hides the top 95px or so of the page.
+    // This code deals with the problem when
+    // you click on a link within a page.
+    $('a[href*=#]').click(function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+            && location.hostname == this.hostname) {
+            var $target = $(this.hash);
+            $target = $target.length && $target
+                || $('[name=' + this.hash.slice(1) + ']');
+            if (!(this.hash == "#searchDiv" || this.hash == "#treeDiv" || this.hash == "") && $target.length) {
+                var targetOffset = $target.offset().top - 120;
+                $('html,body')
+                    .animate({scrollTop: targetOffset}, 200);
+                return false;
+            }
+        }
+    });
 
     //  $("#showHideHighlight").button(); //add jquery button styling to 'Go' button
     //Generate tabs in nav-pane with JQuery
-    $(function() {
+    $(function () {
         $("#tabs").tabs({
             cookie: {
                 expires: 2 // store cookie for 2 days.
@@ -53,10 +53,10 @@ $(document).ready(function() {
     //    $("#ulTreeDiv").attr("style","display:block;");
 
     //.searchButton is the css class applied to 'Go' button 
-    $(function() {
+    $(function () {
         $("button", ".searchButton").button();
 
-        $("button", ".searchButton").click(function() {
+        $("button", ".searchButton").click(function () {
             return false;
         });
     });
@@ -80,10 +80,10 @@ $(document).ready(function() {
     // This code deals with the problem when 
     // you click on a link from another page. 
     var hash = window.location.hash;
-    if(hash){ 
-	var targetOffset = $(hash).offset().top - 120;
-	$('html,body').animate({scrollTop: targetOffset}, 200);
-	return false;
+    if (hash) {
+        var targetOffset = $(hash).offset().top - 120;
+        $('html,body').animate({scrollTop: targetOffset}, 200);
+        return false;
     }
 });
 
@@ -119,7 +119,8 @@ function syncToc() {
                     var ulStyle = document.createAttribute("style");
                     ulStyle.nodeValue = "display: block; background-color: #D8D8D8 !important;";
                     ulNode.setAttributeNode(ulStyle);
-            }   }
+                }
+            }
             //adjust tree's + sign to -
             var divNode = a.getElementsByTagName("div")[0];
             if (divNode != undefined) {
@@ -129,7 +130,8 @@ function syncToc() {
                     var divClass = document.createAttribute("class");
                     divClass.nodeValue = "hitarea collapsable-hitarea";
                     divNode.setAttributeNode(divClass);
-            }   }
+                }
+            }
             //set persistence cookie when a node is auto expanded
             //     setCookieForExpandedNode("webhelp-currentid");
         }
@@ -163,7 +165,10 @@ function syncToc() {
                 parentNode.firstChild.setAttribute("class", "hitarea collapsable-hitarea ");
             }
             a = parentNode;
-}   }  }
+        }
+    }
+}
+
 /*
  function setCookieForExpandedNode(nodeName) {
  var tocDiv = document.getElementById("tree"); //get table of contents Div
@@ -202,28 +207,28 @@ function showHideToc() {
     var showHideButton = $("#showHideButton");
     var leftNavigation = $("#sidebar"); //hide the parent div of leftnavigation, ie sidebar
     var content = $("#content");
-    var animeTime=75
+    var animeTime = 75
 
     if (showHideButton != undefined && showHideButton.hasClass("pointLeft")) {
         //Hide TOC
         showHideButton.removeClass('pointLeft').addClass('pointRight');
-	
-        if(noAnimations) {
+
+        if (noAnimations) {
             leftNavigation.css("display", "none");
             content.css("margin", "125px 0 0 0");
         } else {
             leftNavigation.hide(animeTime);
-            content.animate( { "margin-left": 0 }, animeTime);
+            content.animate({"margin-left": 0}, animeTime);
         }
         showHideButton.attr("title", "Show Sidebar");
     } else {
         //Show the TOC
         showHideButton.removeClass('pointRight').addClass('pointLeft');
-        if(noAnimations) {
+        if (noAnimations) {
             content.css("margin", "125px 0 0 280px");
             leftNavigation.css("display", "block");
         } else {
-            content.animate( { "margin-left": '280px' }, animeTime);
+            content.animate({"margin-left": '280px'}, animeTime);
             leftNavigation.show(animeTime);
         }
         showHideButton.attr("title", "Hide Sidebar");
@@ -234,6 +239,7 @@ function showHideToc() {
  * Code for search highlighting
  */
 var highlightOn = true;
+
 function searchHighlight(searchText) {
     highlightOn = true;
     if (searchText != undefined) {

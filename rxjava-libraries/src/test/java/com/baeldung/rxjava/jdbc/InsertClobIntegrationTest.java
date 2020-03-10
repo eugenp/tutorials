@@ -28,7 +28,7 @@ public class InsertClobIntegrationTest {
     @Before
     public void setup() throws IOException {
         create = db.update("CREATE TABLE IF NOT EXISTS SERVERLOG_TABLE (id int primary key, document CLOB)")
-          .count();
+                .count();
 
         InputStream actualInputStream = new FileInputStream("src/test/resources/actual_clob");
         this.actualDocument = Utils.getStringFromInputStream(actualInputStream);
@@ -36,28 +36,28 @@ public class InsertClobIntegrationTest {
         InputStream expectedInputStream = new FileInputStream("src/test/resources/expected_clob");
         this.expectedDocument = Utils.getStringFromInputStream(expectedInputStream);
         this.insert = db.update("insert into SERVERLOG_TABLE(id,document) values(?,?)")
-          .parameter(1)
-          .parameter(Database.toSentinelIfNull(actualDocument))
-          .dependsOn(create)
-          .count();
+                .parameter(1)
+                .parameter(Database.toSentinelIfNull(actualDocument))
+                .dependsOn(create)
+                .count();
     }
 
     @Test
     public void whenSelectCLOB_thenCorrect() throws IOException {
         db.select("select document from SERVERLOG_TABLE where id = 1")
-          .dependsOn(create)
-          .dependsOn(insert)
-          .getAs(String.class)
-          .toList()
-          .toBlocking()
-          .single();
+                .dependsOn(create)
+                .dependsOn(insert)
+                .getAs(String.class)
+                .toList()
+                .toBlocking()
+                .single();
         assertEquals(expectedDocument, actualDocument);
     }
 
     @After
     public void close() {
         db.update("DROP TABLE SERVERLOG_TABLE")
-          .dependsOn(create);
+                .dependsOn(create);
         connectionProvider.close();
     }
 }

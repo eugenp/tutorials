@@ -59,8 +59,8 @@ public class BookServiceImpl implements BookService {
     public List<BookDTO> findAll() {
         log.debug("Request to get all Books");
         return bookRepository.findAll().stream()
-            .map(bookMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
+                .map(bookMapper::toDto)
+                .collect(Collectors.toCollection(LinkedList::new));
     }
 
 
@@ -75,7 +75,7 @@ public class BookServiceImpl implements BookService {
     public Optional<BookDTO> findOne(Long id) {
         log.debug("Request to get Book : {}", id);
         return bookRepository.findById(id)
-            .map(bookMapper::toDto);
+                .map(bookMapper::toDto);
     }
 
     /**
@@ -92,15 +92,14 @@ public class BookServiceImpl implements BookService {
     @Override
     public Optional<BookDTO> purchase(Long id) {
         Optional<BookDTO> bookDTO = findOne(id);
-        if(bookDTO.isPresent()) {
+        if (bookDTO.isPresent()) {
             int quantity = bookDTO.get().getQuantity();
-            if(quantity > 0) {
+            if (quantity > 0) {
                 bookDTO.get().setQuantity(quantity - 1);
                 Book book = bookMapper.toEntity(bookDTO.get());
                 book = bookRepository.save(book);
                 return bookDTO;
-            }
-            else {
+            } else {
                 throw new BadRequestAlertException("Book is not in stock", "book", "notinstock");
             }
         }

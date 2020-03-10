@@ -41,7 +41,7 @@ public class FugueUnitTest {
 
     @Test
     public void whenNullOption_thenSome() {
-        Option<String> some = Option.some("value") .map(String::toUpperCase);
+        Option<String> some = Option.some("value").map(String::toUpperCase);
 
         assertEquals("VALUE", some.get());
 
@@ -49,7 +49,7 @@ public class FugueUnitTest {
 
         assertNull(some.get());
         some.forEach(Assert::assertNull);
-        for(Object value : some) {
+        for (Object value : some) {
             assertNull(value);
         }
         assertEquals(1, some.toStream().count());
@@ -102,10 +102,10 @@ public class FugueUnitTest {
     public void whenLeft_thenEither() {
         Either<Integer, String> right = Either.right("value");
         Either<Integer, String> left = Either.left(-1);
-        if(right.isLeft()) {
+        if (right.isLeft()) {
             fail();
         }
-        if(left.isRight()) {
+        if (left.isRight()) {
             fail();
         }
 
@@ -142,7 +142,9 @@ public class FugueUnitTest {
 
     @Test
     public void givenFunctionThrowing_whenCheckedOf_thenFailure() {
-        assertTrue(Checked.of(() -> { throw new Exception("ko"); }).isFailure());
+        assertTrue(Checked.of(() -> {
+            throw new Exception("ko");
+        }).isFailure());
     }
 
     @Test

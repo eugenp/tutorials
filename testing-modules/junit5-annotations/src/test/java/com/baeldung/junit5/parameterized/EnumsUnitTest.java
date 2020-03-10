@@ -46,5 +46,5 @@ class EnumsUnitTest {
         final boolean isALeapYear = false;
         assertEquals(30, month.length(isALeapYear));
     }
-    
+
 }

@@ -18,6 +18,6 @@ public class ResponseServerFilter implements ContainerResponseFilter {
         LOG.info("Response server filter");
 
         responseContext.getHeaders()
-            .add("X-Test", "Filter test");
+                .add("X-Test", "Filter test");
     }
 }

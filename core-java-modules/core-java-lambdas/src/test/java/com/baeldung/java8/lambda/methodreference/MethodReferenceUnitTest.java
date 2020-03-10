@@ -14,7 +14,7 @@ public class MethodReferenceUnitTest {
     }
 
     ;
-    
+
     @Test
     public void referenceToStaticMethod() {
         List<String> messages = Arrays.asList("Hello", "Baeldung", "readers!");
@@ -26,18 +26,18 @@ public class MethodReferenceUnitTest {
     public void referenceToInstanceMethodOfParticularObject() {
         BicycleComparator bikeFrameSizeComparator = new BicycleComparator();
         createBicyclesList().stream()
-            .sorted((a, b) -> bikeFrameSizeComparator.compare(a, b));
+                .sorted((a, b) -> bikeFrameSizeComparator.compare(a, b));
         createBicyclesList().stream()
-            .sorted(bikeFrameSizeComparator::compare);
+                .sorted(bikeFrameSizeComparator::compare);
     }
 
     @Test
     public void referenceToInstanceMethodOfArbitratyObjectOfParticularType() {
         List<Integer> numbers = Arrays.asList(5, 3, 50, 24, 40, 2, 9, 18);
         numbers.stream()
-            .sorted((a, b) -> a.compareTo(b));
+                .sorted((a, b) -> a.compareTo(b));
         numbers.stream()
-            .sorted(Integer::compareTo);
+                .sorted(Integer::compareTo);
     }
 
     @Test
@@ -55,8 +55,8 @@ public class MethodReferenceUnitTest {
     public void referenceToConstructorSimpleExample() {
         List<String> bikeBrands = Arrays.asList("Giant", "Scott", "Trek", "GT");
         bikeBrands.stream()
-            .map(Bicycle::new)
-            .toArray(Bicycle[]::new);
+                .map(Bicycle::new)
+                .toArray(Bicycle[]::new);
     }
 
     @Test

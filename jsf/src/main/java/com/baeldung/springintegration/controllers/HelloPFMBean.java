@@ -19,7 +19,7 @@ public class HelloPFMBean {
 
     public String go() {
         if (this.magicWord != null && this.magicWord.toUpperCase()
-            .equals("BAELDUNG")) {
+                .equals("BAELDUNG")) {
             return "pm:success";
         }
         return "pm:failure";

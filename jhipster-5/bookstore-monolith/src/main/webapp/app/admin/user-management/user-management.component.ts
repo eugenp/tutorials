@@ -1,13 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {HttpResponse} from '@angular/common/http';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
-import { ActivatedRoute, Router } from '@angular/router';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import {ActivatedRoute, Router} from '@angular/router';
+import {JhiEventManager, JhiParseLinks, JhiAlertService} from 'ng-jhipster';
 
-import { ITEMS_PER_PAGE } from 'app/shared';
-import { AccountService, UserService, User } from 'app/core';
-import { UserMgmtDeleteDialogComponent } from 'app/admin';
+import {ITEMS_PER_PAGE} from 'app/shared';
+import {AccountService, UserService, User} from 'app/core';
+import {UserMgmtDeleteDialogComponent} from 'app/admin';
 
 @Component({
     selector: 'jhi-user-mgmt',
@@ -120,7 +120,7 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
     }
 
     deleteUser(user: User) {
-        const modalRef = this.modalService.open(UserMgmtDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+        const modalRef = this.modalService.open(UserMgmtDeleteDialogComponent, {size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.user = user;
         modalRef.result.then(
             result => {

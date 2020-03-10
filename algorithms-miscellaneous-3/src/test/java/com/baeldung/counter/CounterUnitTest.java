@@ -17,9 +17,9 @@ public class CounterUnitTest {
         CounterUtil.counterWithWrapperObject(counterMap);
 
         assertEquals(3, counterMap.get("China")
-            .intValue());
+                .intValue());
         assertEquals(2, counterMap.get("India")
-            .intValue());
+                .intValue());
     }
 
     @Test
@@ -28,9 +28,9 @@ public class CounterUnitTest {
         CounterUtil.counterWithLambdaAndWrapper(counterMap);
 
         assertEquals(3l, counterMap.get("China")
-            .longValue());
+                .longValue());
         assertEquals(2l, counterMap.get("India")
-            .longValue());
+                .longValue());
     }
 
     @Test
@@ -38,9 +38,9 @@ public class CounterUnitTest {
         Map<String, MutableInteger> counterMap = new HashMap<>();
         CounterUtil.counterWithMutableInteger(counterMap);
         assertEquals(3, counterMap.get("China")
-            .getCount());
+                .getCount());
         assertEquals(2, counterMap.get("India")
-            .getCount());
+                .getCount());
     }
 
     @Test

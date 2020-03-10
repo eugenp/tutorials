@@ -14,7 +14,7 @@ public class UsernameAccessDecisionVoter implements AccessDecisionVoter<Object> 
         if ((attribute.getAttribute() != null)
                 && !attribute.getAttribute().startsWith(rolePrefix)) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }

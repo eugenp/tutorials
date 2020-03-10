@@ -20,7 +20,7 @@ public class DifferentPairsUnitTest {
         /* Call service */
         final List<Integer> pairs = DifferentPairs.findPairsWithForLoop(input, sum);
         /* Check results */
-        assertThat(pairs).hasSize(2).contains(4,3).doesNotContain(8);
+        assertThat(pairs).hasSize(2).contains(4, 3).doesNotContain(8);
     }
 
     @Test
@@ -32,8 +32,8 @@ public class DifferentPairsUnitTest {
         final List<Integer> pairs = DifferentPairs.findPairsWithStreamApi(input, sum);
         /* Check results */
         assertNotNull(pairs);
-        assertEquals(pairs.size(),2);
+        assertEquals(pairs.size(), 2);
         assertEquals(pairs.get(0), new Integer(4));
-        assertThat(pairs).hasSize(2).contains(4,3).doesNotContain(8);
+        assertThat(pairs).hasSize(2).contains(4, 3).doesNotContain(8);
     }
 }

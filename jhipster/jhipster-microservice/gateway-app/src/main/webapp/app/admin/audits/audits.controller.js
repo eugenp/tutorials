@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     AuditsController.$inject = ['$filter', 'AuditsService', 'ParseLinks'];
 
-    function AuditsController ($filter, AuditsService, ParseLinks) {
+    function AuditsController($filter, AuditsService, ParseLinks) {
         var vm = this;
 
         vm.audits = null;
@@ -25,12 +25,17 @@
         vm.previousMonth();
         vm.onChangeDate();
 
-        function onChangeDate () {
+        function onChangeDate() {
             var dateFormat = 'yyyy-MM-dd';
             var fromDate = $filter('date')(vm.fromDate, dateFormat);
             var toDate = $filter('date')(vm.toDate, dateFormat);
 
-            AuditsService.query({page: vm.page -1, size: 20, fromDate: fromDate, toDate: toDate}, function(result, headers){
+            AuditsService.query({
+                page: vm.page - 1,
+                size: 20,
+                fromDate: fromDate,
+                toDate: toDate
+            }, function (result, headers) {
                 vm.audits = result;
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
@@ -38,13 +43,13 @@
         }
 
         // Date picker configuration
-        function today () {
+        function today() {
             // Today + 1 day - needed if the current day must be included
             var today = new Date();
             vm.toDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
         }
 
-        function previousMonth () {
+        function previousMonth() {
             var fromDate = new Date();
             if (fromDate.getMonth() === 0) {
                 fromDate = new Date(fromDate.getFullYear() - 1, 11, fromDate.getDate());
@@ -55,7 +60,7 @@
             vm.fromDate = fromDate;
         }
 
-        function loadPage (page) {
+        function loadPage(page) {
             vm.page = page;
             vm.onChangeDate();
         }

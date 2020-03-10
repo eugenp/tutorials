@@ -41,7 +41,7 @@ public class StringPerformance {
     }
 
     @Benchmark
-    public StringBuilder  benchmarkStringBuilder() {
+    public StringBuilder benchmarkStringBuilder() {
         StringBuilder stringBuilder = new StringBuilder(result);
         stringBuilder.append(baeldung);
         return stringBuilder;
@@ -100,12 +100,12 @@ public class StringPerformance {
     }
 
     @Benchmark
-    public String [] benchmarkStringSplit() {
+    public String[] benchmarkStringSplit() {
         return longString.split(emptyString);
     }
 
     @Benchmark
-    public String [] benchmarkStringSplitPattern() {
+    public String[] benchmarkStringSplitPattern() {
         return spacePattern.split(longString, 0);
     }
 
@@ -144,7 +144,7 @@ public class StringPerformance {
         return sampleNumber + "";
     }
 
-        @Benchmark
+    @Benchmark
     public String benchmarkStringFormat_d() {
         return String.format(formatDigit, sampleNumber);
     }

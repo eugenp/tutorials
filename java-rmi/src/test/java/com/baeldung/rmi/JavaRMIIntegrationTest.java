@@ -12,33 +12,33 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class JavaRMIIntegrationTest {
-	
-	@BeforeClass
-	public static void whenRunServer_thenServerStarts() {
-		
-		try {
-			MessengerServiceImpl server = new MessengerServiceImpl();
-			server.createStubAndBind();
-		} catch (RemoteException e) {
-			fail("Exception Occurred");
-		}
-	}
-	
-	@Test
-	public void whenClientSendsMessageToServer_thenServerSendsResponseMessage() {
-		
-		try {
-			Registry registry = LocateRegistry.getRegistry();	
-			MessengerService server = (MessengerService) registry.lookup("MessengerService");			
-			String responseMessage = server.sendMessage("Client Message");		
-			
-			String expectedMessage = "Server Message";			
-			assertEquals(responseMessage, expectedMessage);
-		} catch (RemoteException e) {
-			fail("Exception Occurred");
-		} catch (NotBoundException nb) {
-			fail("Exception Occurred");
-		}
-	}
-	
+
+    @BeforeClass
+    public static void whenRunServer_thenServerStarts() {
+
+        try {
+            MessengerServiceImpl server = new MessengerServiceImpl();
+            server.createStubAndBind();
+        } catch (RemoteException e) {
+            fail("Exception Occurred");
+        }
+    }
+
+    @Test
+    public void whenClientSendsMessageToServer_thenServerSendsResponseMessage() {
+
+        try {
+            Registry registry = LocateRegistry.getRegistry();
+            MessengerService server = (MessengerService) registry.lookup("MessengerService");
+            String responseMessage = server.sendMessage("Client Message");
+
+            String expectedMessage = "Server Message";
+            assertEquals(responseMessage, expectedMessage);
+        } catch (RemoteException e) {
+            fail("Exception Occurred");
+        } catch (NotBoundException nb) {
+            fail("Exception Occurred");
+        }
+    }
+
 }

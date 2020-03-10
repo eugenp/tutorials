@@ -93,12 +93,12 @@ public class ProcessBuilderUnitTest {
         Process process = processBuilder.start();
 
         assertEquals("If redirected, should be -1 ", -1, process.getInputStream()
-            .read());
+                .read());
         int exitCode = process.waitFor();
         assertEquals("No errors should be detected", 0, exitCode);
 
         List<String> lines = Files.lines(log.toPath())
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         assertThat("Results should not be empty", lines, is(not(empty())));
         assertThat("Results should contain java version: ", lines, hasItem(containsString("java version")));
@@ -115,13 +115,13 @@ public class ProcessBuilderUnitTest {
         Process process = processBuilder.start();
 
         assertEquals("If redirected output, should be -1 ", -1, process.getInputStream()
-            .read());
+                .read());
 
         int exitCode = process.waitFor();
         assertEquals("No errors should be detected", 0, exitCode);
 
         List<String> lines = Files.lines(log.toPath())
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         assertThat("Results should not be empty", lines, is(not(empty())));
         assertThat("Results should contain java version: ", lines, hasItem(containsString("java version")));
@@ -131,8 +131,8 @@ public class ProcessBuilderUnitTest {
     public void givenProcessBuilder_whenStartingPipeline_thenSuccess() throws IOException, InterruptedException {
         if (!isWindows()) {
             List<ProcessBuilder> builders = Arrays.asList(
-                new ProcessBuilder("find", "src", "-name", "*.java", "-type", "f"), 
-                new ProcessBuilder("wc", "-l"));
+                    new ProcessBuilder("find", "src", "-name", "*.java", "-type", "f"),
+                    new ProcessBuilder("wc", "-l"));
 
             List<Process> processes = ProcessBuilder.startPipeline(builders);
             Process last = processes.get(processes.size() - 1);
@@ -141,7 +141,7 @@ public class ProcessBuilderUnitTest {
             assertThat("Results should not be empty", output, is(not(empty())));
         }
     }
-    
+
     @Test
     public void givenProcessBuilder_whenInheritIO_thenSuccess() throws IOException, InterruptedException {
         List<String> command = getEchoCommand();
@@ -157,7 +157,7 @@ public class ProcessBuilderUnitTest {
     private List<String> readOutput(InputStream inputStream) throws IOException {
         try (BufferedReader output = new BufferedReader(new InputStreamReader(inputStream))) {
             return output.lines()
-                .collect(Collectors.toList());
+                    .collect(Collectors.toList());
         }
     }
 
@@ -175,8 +175,8 @@ public class ProcessBuilderUnitTest {
 
     private boolean isWindows() {
         return System.getProperty("os.name")
-            .toLowerCase()
-            .startsWith("windows");
+                .toLowerCase()
+                .startsWith("windows");
     }
 
 }

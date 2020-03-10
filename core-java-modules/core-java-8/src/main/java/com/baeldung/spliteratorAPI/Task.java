@@ -16,12 +16,12 @@ public class Task implements Callable<String> {
         int current = 0;
         while (spliterator.tryAdvance(article -> {
             article.setName(article.getName()
-                .concat(SUFFIX));
+                    .concat(SUFFIX));
         })) {
             current++;
         }
         ;
         return Thread.currentThread()
-            .getName() + ":" + current;
+                .getName() + ":" + current;
     }
 }

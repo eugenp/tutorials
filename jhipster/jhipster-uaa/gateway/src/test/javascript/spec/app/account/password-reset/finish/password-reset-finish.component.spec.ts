@@ -1,12 +1,12 @@
-import { ComponentFixture, TestBed, inject, tick, fakeAsync } from '@angular/core/testing';
-import { Observable, of, throwError } from 'rxjs';
-import { Renderer, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ComponentFixture, TestBed, inject, tick, fakeAsync} from '@angular/core/testing';
+import {Observable, of, throwError} from 'rxjs';
+import {Renderer, ElementRef} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
-import { GatewayTestModule } from '../../../../test.module';
-import { PasswordResetFinishComponent } from 'app/account/password-reset/finish/password-reset-finish.component';
-import { PasswordResetFinishService } from 'app/account/password-reset/finish/password-reset-finish.service';
-import { MockActivatedRoute } from '../../../../helpers/mock-route.service';
+import {GatewayTestModule} from '../../../../test.module';
+import {PasswordResetFinishComponent} from 'app/account/password-reset/finish/password-reset-finish.component';
+import {PasswordResetFinishService} from 'app/account/password-reset/finish/password-reset-finish.service';
+import {MockActivatedRoute} from '../../../../helpers/mock-route.service';
 
 describe('Component Tests', () => {
     describe('PasswordResetFinishComponent', () => {
@@ -20,12 +20,13 @@ describe('Component Tests', () => {
                 providers: [
                     {
                         provide: ActivatedRoute,
-                        useValue: new MockActivatedRoute({ key: 'XYZPDQ' })
+                        useValue: new MockActivatedRoute({key: 'XYZPDQ'})
                     },
                     {
                         provide: Renderer,
                         useValue: {
-                            invokeElementMethod(renderElement: any, methodName: string, args?: any[]) {}
+                            invokeElementMethod(renderElement: any, methodName: string, args?: any[]) {
+                            }
                         }
                     },
                     {
@@ -57,7 +58,8 @@ describe('Component Tests', () => {
             inject([ElementRef], (elementRef: ElementRef) => {
                 const element = fixture.nativeElement;
                 const node = {
-                    focus() {}
+                    focus() {
+                    }
                 };
 
                 elementRef.nativeElement = element;

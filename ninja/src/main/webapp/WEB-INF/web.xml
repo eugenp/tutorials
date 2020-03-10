@@ -25,17 +25,17 @@
 
     <display-name>ninja</display-name>
 
-	<listener>
-		<listener-class>ninja.servlet.NinjaServletListener</listener-class>
-	</listener>
+    <listener>
+        <listener-class>ninja.servlet.NinjaServletListener</listener-class>
+    </listener>
 
-	<filter>
-		<filter-name>guiceFilter</filter-name>
-		<filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>guiceFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+    <filter>
+        <filter-name>guiceFilter</filter-name>
+        <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>guiceFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 </web-app>

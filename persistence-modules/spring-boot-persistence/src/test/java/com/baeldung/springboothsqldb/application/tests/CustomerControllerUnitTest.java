@@ -4,7 +4,9 @@ import com.baeldung.springboothsqldb.application.entities.Customer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
+
 import java.nio.charset.Charset;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,21 +42,21 @@ public class CustomerControllerUnitTest {
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
         ObjectWriter objectWriter = mapper.writer().withDefaultPrettyPrinter();
         String requestJson = objectWriter.writeValueAsString(customer);
-        
+
         this.mockMvc
                 .perform(MockMvcRequestBuilders.post("/customers")
                         .contentType(MEDIA_TYPE_JSON)
                         .content(requestJson)
                 )
-                
+
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
-    
+
     @Test
     public void whenGetHttpRequesttoCustomers_thenStatusOK() throws Exception {
         this.mockMvc
                 .perform(MockMvcRequestBuilders.get("/customers"))
-                
+
                 .andExpect(MockMvcResultMatchers.content().contentType(MEDIA_TYPE_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }

@@ -20,14 +20,14 @@ import static java.util.stream.Collectors.toSet;
 public class LastFm {
 
     private static OkHttpClient okHttp = new OkHttpClient.Builder()
-      .addInterceptor(new LastFmService.Authenticator("put your API key here"))
-      .build();
+            .addInterceptor(new LastFmService.Authenticator("put your API key here"))
+            .build();
 
     private static Retrofit retrofit = new Retrofit.Builder()
-      .client(okHttp)
-      .addConverterFactory(JacksonConverterFactory.create())
-      .baseUrl("http://ws.audioscrobbler.com/")
-      .build();
+            .client(okHttp)
+            .addConverterFactory(JacksonConverterFactory.create())
+            .baseUrl("http://ws.audioscrobbler.com/")
+            .build();
 
     private static LastFmService lastFm = retrofit.create(LastFmService.class);
 
@@ -45,9 +45,9 @@ public class LastFm {
 
             System.out.println(sortedCentroid(key));
             String members = String.join(", ", value
-              .stream()
-              .map(Record::getDescription)
-              .collect(toSet()));
+                    .stream()
+                    .map(Record::getDescription)
+                    .collect(toSet()));
             System.out.print(members);
 
             System.out.println();
@@ -79,20 +79,20 @@ public class LastFm {
 
     private static String dominantGenre(Centroid centroid) {
         return centroid
-          .getCoordinates()
-          .keySet()
-          .stream()
-          .limit(2)
-          .collect(Collectors.joining(", "));
+                .getCoordinates()
+                .keySet()
+                .stream()
+                .limit(2)
+                .collect(Collectors.joining(", "));
     }
 
     private static Centroid sortedCentroid(Centroid key) {
         List<Map.Entry<String, Double>> entries = new ArrayList<>(key
-          .getCoordinates()
-          .entrySet());
+                .getCoordinates()
+                .entrySet());
         entries.sort((e1, e2) -> e2
-          .getValue()
-          .compareTo(e1.getValue()));
+                .getValue()
+                .compareTo(e1.getValue()));
 
         Map<String, Double> sorted = new LinkedHashMap<>();
         for (Map.Entry<String, Double> entry : entries) {
@@ -106,15 +106,15 @@ public class LastFm {
         List<Record> records = new ArrayList<>();
         for (String artist : artists) {
             Map<String, Double> tags = lastFm
-              .topTagsFor(artist)
-              .execute()
-              .body()
-              .all();
+                    .topTagsFor(artist)
+                    .execute()
+                    .body()
+                    .all();
 
             // Only keep popular tags.
             tags
-              .entrySet()
-              .removeIf(e -> !topTags.contains(e.getKey()));
+                    .entrySet()
+                    .removeIf(e -> !topTags.contains(e.getKey()));
 
             records.add(new Record(artist, tags));
         }
@@ -123,20 +123,20 @@ public class LastFm {
 
     private static Set<String> getTop100Tags() throws IOException {
         return lastFm
-          .topTags()
-          .execute()
-          .body()
-          .all();
+                .topTags()
+                .execute()
+                .body()
+                .all();
     }
 
     private static List<String> getTop100Artists() throws IOException {
         List<String> artists = new ArrayList<>();
         for (int i = 1; i <= 2; i++) {
             artists.addAll(lastFm
-              .topArtists(i)
-              .execute()
-              .body()
-              .all());
+                    .topArtists(i)
+                    .execute()
+                    .body()
+                    .all());
         }
 
         return artists;

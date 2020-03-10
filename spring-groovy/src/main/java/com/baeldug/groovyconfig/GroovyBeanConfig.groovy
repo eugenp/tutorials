@@ -4,15 +4,15 @@ beans {
     javaPesronBean(JavaPersonBean) {
         firstName = 'John'
         lastName = 'Doe'
-        age ='32'
+        age = '32'
         eyesColor = 'blue'
-        hairColor='black'
+        hairColor = 'black'
     }
 
-    bandsBean(BandsBean) { bean->
+    bandsBean(BandsBean) { bean ->
         bean.scope = "singleton"
-        bandsList=['Nirvana', 'Pearl Jam', 'Foo Fighters']
+        bandsList = ['Nirvana', 'Pearl Jam', 'Foo Fighters']
     }
 
-    registerAlias("bandsBean","bands")
+    registerAlias("bandsBean", "bands")
 }

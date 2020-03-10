@@ -36,7 +36,7 @@ public class Index {
     // Handle call with an unwanted context
     Object onActivate(EventContext eventContext) {
         return eventContext.getCount() > 0 ?
-            new HttpError(404, "Resource not found") :
+                new HttpError(404, "Resource not found") :
                 null;
     }
 

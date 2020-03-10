@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     ResetFinishController.$inject = ['$stateParams', '$timeout', 'Auth', 'LoginService'];
 
-    function ResetFinishController ($stateParams, $timeout, Auth, LoginService) {
+    function ResetFinishController($stateParams, $timeout, Auth, LoginService) {
         var vm = this;
 
         vm.keyMissing = angular.isUndefined($stateParams.key);
@@ -19,7 +19,9 @@
         vm.resetAccount = {};
         vm.success = null;
 
-        $timeout(function (){angular.element('#password').focus();});
+        $timeout(function () {
+            angular.element('#password').focus();
+        });
 
         function finishReset() {
             vm.doNotMatch = null;
@@ -27,7 +29,10 @@
             if (vm.resetAccount.password !== vm.confirmPassword) {
                 vm.doNotMatch = 'ERROR';
             } else {
-                Auth.resetPasswordFinish({key: $stateParams.key, newPassword: vm.resetAccount.password}).then(function () {
+                Auth.resetPasswordFinish({
+                    key: $stateParams.key,
+                    newPassword: vm.resetAccount.password
+                }).then(function () {
                     vm.success = 'OK';
                 }).catch(function () {
                     vm.success = null;

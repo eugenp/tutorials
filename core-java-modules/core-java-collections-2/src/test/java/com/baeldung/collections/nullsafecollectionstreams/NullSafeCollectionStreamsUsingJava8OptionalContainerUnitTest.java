@@ -4,13 +4,16 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.stream.Stream;
+
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class NullSafeCollectionStreamsUsingJava8OptionalContainerUnitTest {
 
     private final NullSafeCollectionStreamsUsingJava8OptionalContainer instance =
             new NullSafeCollectionStreamsUsingJava8OptionalContainer();
+
     @Test
     public void whenCollectionIsNull_thenExpectAnEmptyStream() {
         Collection<String> collection = null;
@@ -22,7 +25,7 @@ public class NullSafeCollectionStreamsUsingJava8OptionalContainerUnitTest {
     @Test
     public void whenCollectionHasElements_thenExpectAStreamOfExactlyTheSameElements() {
         Collection<String> collection = Arrays.asList("a", "b", "c");
-        Stream<String> expResult = Arrays.stream(new String[] { "a", "b", "c" });
+        Stream<String> expResult = Arrays.stream(new String[]{"a", "b", "c"});
         Stream<String> result = instance.collectionAsStream(collection);
         assertStreamEquals(expResult, result);
     }

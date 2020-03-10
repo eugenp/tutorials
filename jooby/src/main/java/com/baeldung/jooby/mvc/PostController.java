@@ -6,9 +6,9 @@ import org.jooby.mvc.Path;
 @Path("/submit")
 public class PostController {
 
-	@POST
-	public String hello() {
-		return "Submit Baeldung";
-	}
+    @POST
+    public String hello() {
+        return "Submit Baeldung";
+    }
 
 }

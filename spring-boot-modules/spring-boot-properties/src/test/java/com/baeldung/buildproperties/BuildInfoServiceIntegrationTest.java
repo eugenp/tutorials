@@ -15,7 +15,7 @@ class BuildInfoServiceIntegrationTest {
 
     @Autowired
     private BuildInfoService service;
-    
+
     @Test
     void whenGetApplicationDescription_thenSuccess() {
         assertThat(service.getApplicationDescription(), Matchers.is("Spring Boot Properties Module"));

@@ -6,21 +6,24 @@ import com.google.common.collect.Range;
 import com.google.common.collect.Table;
 import com.google.common.collect.TreeBasedTable;
 import com.google.common.collect.TreeMultiset;
+
 import static com.baeldung.truth.UserSubject.*;
 import static com.google.common.truth.Truth.*;
 import static com.google.common.truth.Truth8.*;
+
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map; 
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -52,7 +55,7 @@ public class GoogleTruthUnitTest {
         float aFloat = 23.04f;
 
         assertThat(aFloat).isWithin(1.3f)
-            .of(23.3f);
+                .of(23.3f);
     }
 
     @Test
@@ -60,7 +63,7 @@ public class GoogleTruthUnitTest {
         float aFloat = 23.04f;
 
         assertThat(aFloat).isNotWithin(1.3f)
-            .of(100f);
+                .of(100f);
     }
 
     @Test
@@ -68,7 +71,7 @@ public class GoogleTruthUnitTest {
         double aDouble = 22.18;
 
         assertThat(aDouble).isWithin(2)
-            .of(23d);
+                .of(23d);
     }
 
     @Test
@@ -76,7 +79,7 @@ public class GoogleTruthUnitTest {
         double aDouble = 22.08;
 
         assertThat(aDouble).isNotWithin(2)
-            .of(100);
+                .of(100);
     }
 
     @Test
@@ -102,16 +105,16 @@ public class GoogleTruthUnitTest {
 
     @Test
     public void whenComparingArrays_thenEqual() {
-        String[] firstArrayOfStrings = { "one", "two", "three" };
-        String[] secondArrayOfStrings = { "one", "two", "three" };
+        String[] firstArrayOfStrings = {"one", "two", "three"};
+        String[] secondArrayOfStrings = {"one", "two", "three"};
 
         assertThat(firstArrayOfStrings).isEqualTo(secondArrayOfStrings);
     }
 
     @Test
     public void whenComparingArrays_thenNotEqual() {
-        String[] firstArrayOfStrings = { "one", "two", "three" };
-        String[] secondArrayOfStrings = { "three", "two", "one" };
+        String[] firstArrayOfStrings = {"one", "two", "three"};
+        String[] secondArrayOfStrings = {"three", "two", "one"};
 
         assertThat(firstArrayOfStrings).isNotEqualTo(secondArrayOfStrings);
     }
@@ -125,17 +128,17 @@ public class GoogleTruthUnitTest {
 
     @Test
     public void whenCheckingArray_thenNotEmpty() {
-        String[] arrayOfStrings = { "One String " };
+        String[] arrayOfStrings = {"One String "};
 
         assertThat(arrayOfStrings).isNotEmpty();
     }
 
     @Test
     public void whenCheckingArrayOfDoubles_thenWithinPrecision() {
-        double[] arrayOfDoubles = { 1, 2, 3, 4, 5 };
+        double[] arrayOfDoubles = {1, 2, 3, 4, 5};
 
         assertThat(arrayOfDoubles).hasValuesWithin(5)
-            .of(6, 7, 8, 9, 10);
+                .of(6, 7, 8, 9, 10);
     }
 
     @Test
@@ -332,7 +335,7 @@ public class GoogleTruthUnitTest {
         List<String> anotherList = Arrays.asList("10", "20", "30");
 
         assertThat(aList).containsExactlyElementsIn(anotherList)
-            .inOrder();
+                .inOrder();
     }
 
     @Test
@@ -384,7 +387,7 @@ public class GoogleTruthUnitTest {
         Exception anException = new IllegalArgumentException(new NumberFormatException());
 
         assertThat(anException).hasCauseThat()
-            .isInstanceOf(NumberFormatException.class);
+                .isInstanceOf(NumberFormatException.class);
     }
 
     @Test
@@ -392,7 +395,7 @@ public class GoogleTruthUnitTest {
         Exception anException = new IllegalArgumentException("Bad value");
 
         assertThat(anException).hasMessageThat()
-            .startsWith("Bad");
+                .startsWith("Bad");
     }
 
     @Test
@@ -429,13 +432,13 @@ public class GoogleTruthUnitTest {
         Stream<Integer> anStream = Stream.of(1, 2, 3);
 
         assertThat(anStream).containsAllOf(1, 2, 3)
-            .inOrder();
+                .inOrder();
     }
 
     @Test
     public void whenCheckingStream_thenDoesNotContain() {
         Stream<Integer> anStream = IntStream.range(1, 100)
-            .boxed();
+                .boxed();
 
         assertThat(anStream).doesNotContain(0);
     }
@@ -455,7 +458,7 @@ public class GoogleTruthUnitTest {
         aMultimap.put("one", 2.0);
 
         assertThat(aMultimap).valuesForKey("one")
-            .hasSize(2);
+                .hasSize(2);
     }
 
     @Test
@@ -507,7 +510,7 @@ public class GoogleTruthUnitTest {
         User aUser = new User();
 
         assertThat(aUser).named("User [%s]", aUser.getName())
-            .isNull();
+                .isNull();
     }
 
     @Ignore
@@ -516,7 +519,7 @@ public class GoogleTruthUnitTest {
         User aUser = new User();
 
         assertWithMessage("TEST-985: Secret user subject was NOT null!").that(aUser)
-            .isNull();
+                .isNull();
     }
 
     @Ignore
@@ -524,7 +527,7 @@ public class GoogleTruthUnitTest {
     public void whenFailingAssertion_thenCustomMessageAndPrefix() {
         User aUser = new User();
 
-            assertWithMessage("TEST-985: Secret user subject was NOT null!").that(aUser)
+        assertWithMessage("TEST-985: Secret user subject was NOT null!").that(aUser)
                 .named("User [%s]", aUser.getName())
                 .isNull();
     }
@@ -555,7 +558,7 @@ public class GoogleTruthUnitTest {
         User aUser = new User();
 
         assertThat(aUser).emails()
-            .hasSize(2);
+                .hasSize(2);
     }
 
 }

@@ -55,6 +55,6 @@ public class ApiKeyAuth implements Authentication {
             queryParams.add(paramName, value);
         } else if (location.equals("header")) {
             headerParams.add(paramName, value);
-       }
+        }
     }
 }

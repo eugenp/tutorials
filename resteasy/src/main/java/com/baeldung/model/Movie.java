@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "movie", propOrder = { "imdbId", "title" })
+@XmlType(name = "movie", propOrder = {"imdbId", "title"})
 public class Movie {
 
     protected String imdbId;
@@ -16,7 +16,8 @@ public class Movie {
         this.title = title;
     }
 
-    public Movie() {}
+    public Movie() {
+    }
 
     public String getImdbId() {
         return imdbId;

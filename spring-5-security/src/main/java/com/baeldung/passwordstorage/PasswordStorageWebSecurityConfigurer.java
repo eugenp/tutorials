@@ -24,17 +24,17 @@ public class PasswordStorageWebSecurityConfigurer extends WebSecurityConfigurerA
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.eraseCredentials(false) // 4
-          .userDetailsService(getUserDefaultDetailsService())
-          .passwordEncoder(passwordEncoder());
+                .userDetailsService(getUserDefaultDetailsService())
+                .passwordEncoder(passwordEncoder());
     }
 
     @Bean
     public UserDetailsService getUserDefaultDetailsService() {
         return new InMemoryUserDetailsManager(User
-          .withUsername("baeldung")
-          .password("{noop}SpringSecurity5")
-          .authorities(Collections.emptyList())
-          .build());
+                .withUsername("baeldung")
+                .password("{noop}SpringSecurity5")
+                .authorities(Collections.emptyList())
+                .build());
     }
 
     @Bean

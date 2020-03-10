@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {DatePipe} from '@angular/common';
 
-import { CookieService } from 'angular2-cookie/services/cookies.service';
+import {CookieService} from 'angular2-cookie/services/cookies.service';
 import {
     BaeldungSharedLibsModule,
     BaeldungSharedCommonModule,
@@ -50,4 +50,5 @@ import {
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
-export class BaeldungSharedModule {}
+export class BaeldungSharedModule {
+}

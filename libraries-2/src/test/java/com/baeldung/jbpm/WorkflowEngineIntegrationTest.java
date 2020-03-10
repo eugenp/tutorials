@@ -12,7 +12,7 @@ import org.kie.internal.runtime.manager.context.ProcessInstanceIdContext;
 
 public class WorkflowEngineIntegrationTest extends JbpmJUnitBaseTestCase {
 
-    private String[] triggeredNodesArray = { "Start", "HelloWorld", "End" };
+    private String[] triggeredNodesArray = {"Start", "HelloWorld", "End"};
     private RuntimeManager manager = null;
     private RuntimeEngine runtimeEngine = null;
     private KieSession ksession = null;

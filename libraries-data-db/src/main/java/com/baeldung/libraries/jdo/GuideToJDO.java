@@ -129,7 +129,7 @@ public class GuideToJDO {
         }
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public void ListProducts() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -142,7 +142,7 @@ public class GuideToJDO {
             Iterator<Product> iter = products.iterator();
             while (iter.hasNext()) {
                 Product p = iter.next();
-                LOGGER.log(Level.WARNING, "Product name: {0} - Price: {1}", new Object[] { p.name, p.price });
+                LOGGER.log(Level.WARNING, "Product name: {0} - Price: {1}", new Object[]{p.name, p.price});
             }
             LOGGER.log(Level.INFO, "--------------------------------------------------------------");
             tx.commit();
@@ -155,7 +155,7 @@ public class GuideToJDO {
         }
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public void QueryJDOQL() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -173,7 +173,7 @@ public class GuideToJDO {
             Iterator<Product> iterDJDOQL = resultsqDJDOQL.iterator();
             while (iterDJDOQL.hasNext()) {
                 Product p = iterDJDOQL.next();
-                LOGGER.log(Level.WARNING, "Product name: {0} - Price: {1}", new Object[] { p.name, p.price });
+                LOGGER.log(Level.WARNING, "Product name: {0} - Price: {1}", new Object[]{p.name, p.price});
             }
             LOGGER.log(Level.INFO, "--------------------------------------------------------------");
 
@@ -187,7 +187,7 @@ public class GuideToJDO {
         }
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public void QuerySQL() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -204,7 +204,7 @@ public class GuideToJDO {
             Iterator<Product> iter = results.iterator();
             while (iter.hasNext()) {
                 Product p = iter.next();
-                LOGGER.log(Level.WARNING, "Product name: {0} - Price: {1}", new Object[] { p.name, p.price });
+                LOGGER.log(Level.WARNING, "Product name: {0} - Price: {1}", new Object[]{p.name, p.price});
             }
             LOGGER.log(Level.INFO, "--------------------------------------------------------------");
 
@@ -218,7 +218,7 @@ public class GuideToJDO {
         }
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public void QueryJPQL() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -234,7 +234,7 @@ public class GuideToJDO {
             Iterator<Product> iter = results.iterator();
             while (iter.hasNext()) {
                 Product p = iter.next();
-                LOGGER.log(Level.WARNING, "Product name: {0} - Price: {1}", new Object[] { p.name, p.price });
+                LOGGER.log(Level.WARNING, "Product name: {0} - Price: {1}", new Object[]{p.name, p.price});
             }
             LOGGER.log(Level.INFO, "--------------------------------------------------------------");
 
@@ -269,7 +269,7 @@ public class GuideToJDO {
         }
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public void listXMLProducts() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumdXML, null);
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -282,7 +282,7 @@ public class GuideToJDO {
             Iterator<ProductXML> iter = products.iterator();
             while (iter.hasNext()) {
                 ProductXML p = iter.next();
-                LOGGER.log(Level.WARNING, "Product name: {0} - Price: {1}", new Object[] { p.getName(), p.getPrice() });
+                LOGGER.log(Level.WARNING, "Product name: {0} - Price: {1}", new Object[]{p.getName(), p.getPrice()});
                 pm.deletePersistent(p);
             }
             LOGGER.log(Level.INFO, "--------------------------------------------------------------");

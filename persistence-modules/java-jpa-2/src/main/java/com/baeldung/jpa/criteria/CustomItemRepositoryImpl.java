@@ -41,7 +41,7 @@ public class CustomItemRepositoryImpl implements CustomItemRepository {
         criteriaQuery.where(finalPredicate);
 
         List<Item> items = entityManager.createQuery(criteriaQuery)
-            .getResultList();
+                .getResultList();
         return items;
     }
 
@@ -66,7 +66,7 @@ public class CustomItemRepositoryImpl implements CustomItemRepository {
         criteriaQuery.where(finalPredicate);
 
         List<Item> items = entityManager.createQuery(criteriaQuery)
-            .getResultList();
+                .getResultList();
         return items;
     }
 }

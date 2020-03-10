@@ -14,7 +14,7 @@ const commonConfig = require('./webpack.common.js');
 
 const ENV = 'development';
 
-module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
+module.exports = (options) => webpackMerge(commonConfig({env: ENV}), {
     devtool: 'eval-source-map',
     devServer: {
         contentBase: './target/www',
@@ -31,7 +31,7 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
             target: `http${options.tls ? 's' : ''}://127.0.0.1:8080`,
             secure: false,
             changeOrigin: options.tls,
-            headers: { host: 'localhost:9000' }
+            headers: {host: 'localhost:9000'}
         }],
         stats: options.stats,
         watchOptions: {
@@ -55,58 +55,58 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
             loader: 'tslint-loader',
             exclude: [/(node_modules)/, new RegExp('reflect-metadata\\' + path.sep + 'Reflect\\.ts')]
         },
-        {
-            test: /\.ts$/,
-            use: [
-                'angular2-template-loader',
-                {
-                    loader: 'cache-loader',
-                    options: {
-                      cacheDirectory: path.resolve('target/cache-loader')
-                    }
-                },
-                {
-                    loader: 'thread-loader',
-                    options: {
-                        // there should be 1 cpu for the fork-ts-checker-webpack-plugin
-                        workers: require('os').cpus().length - 1
-                    }
-                },
-                {
-                    loader: 'ts-loader',
-                    options: {
-                        transpileOnly: true,
-                        happyPackMode: true
-                    }
-                },
-                'angular-router-loader'
-            ],
-            exclude: /(node_modules)/
-        },
-        {
-            test: /\.scss$/,
-            use: ['to-string-loader', 'css-loader', {
-                loader: 'sass-loader',
-                options: { implementation: sass }
-            }],
-            exclude: /(vendor\.scss|global\.scss)/
-        },
-        {
-            test: /(vendor\.scss|global\.scss)/,
-            use: ['style-loader', 'css-loader', 'postcss-loader', {
-                loader: 'sass-loader',
-                options: { implementation: sass }
+            {
+                test: /\.ts$/,
+                use: [
+                    'angular2-template-loader',
+                    {
+                        loader: 'cache-loader',
+                        options: {
+                            cacheDirectory: path.resolve('target/cache-loader')
+                        }
+                    },
+                    {
+                        loader: 'thread-loader',
+                        options: {
+                            // there should be 1 cpu for the fork-ts-checker-webpack-plugin
+                            workers: require('os').cpus().length - 1
+                        }
+                    },
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            transpileOnly: true,
+                            happyPackMode: true
+                        }
+                    },
+                    'angular-router-loader'
+                ],
+                exclude: /(node_modules)/
+            },
+            {
+                test: /\.scss$/,
+                use: ['to-string-loader', 'css-loader', {
+                    loader: 'sass-loader',
+                    options: {implementation: sass}
+                }],
+                exclude: /(vendor\.scss|global\.scss)/
+            },
+            {
+                test: /(vendor\.scss|global\.scss)/,
+                use: ['style-loader', 'css-loader', 'postcss-loader', {
+                    loader: 'sass-loader',
+                    options: {implementation: sass}
+                }]
+            },
+            {
+                test: /\.css$/,
+                use: ['to-string-loader', 'css-loader'],
+                exclude: /(vendor\.css|global\.css)/
+            },
+            {
+                test: /(vendor\.css|global\.css)/,
+                use: ['style-loader', 'css-loader']
             }]
-        },
-        {
-            test: /\.css$/,
-            use: ['to-string-loader', 'css-loader'],
-            exclude: /(vendor\.css|global\.css)/
-        },
-        {
-            test: /(vendor\.css|global\.css)/,
-            use: ['style-loader', 'css-loader']
-        }]
     },
     stats: process.env.JHI_DISABLE_WEBPACK_LOGS ? 'none' : options.stats,
     plugins: [
@@ -114,7 +114,7 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
             ? null
             : new SimpleProgressWebpackPlugin({
                 format: options.stats === 'minimal' ? 'compact' : 'expanded'
-              }),
+            }),
         new FriendlyErrorsWebpackPlugin(),
         new ForkTsCheckerWebpackPlugin(),
         new BrowserSyncPlugin({

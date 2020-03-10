@@ -78,7 +78,7 @@ public class Java8StreamApiUnitTest {
         Stream<String> streamOfArray = Stream.of("a", "b", "c");
         assertEquals(3, streamOfArray.count());
 
-        String[] arr = new String[] { "a", "b", "c" };
+        String[] arr = new String[]{"a", "b", "c"};
         Stream<String> streamOfArrayPart = Arrays.stream(arr, 1, 3);
         assertEquals(2, streamOfArrayPart.count());
 
@@ -106,7 +106,7 @@ public class Java8StreamApiUnitTest {
         }
         assertEquals("a", streamOfStrings.findFirst().get());
 
-        Stream<String> streamBuilder = Stream.<String> builder().add("a").add("b").add("c").build();
+        Stream<String> streamBuilder = Stream.<String>builder().add("a").add("b").add("c").build();
         assertEquals(3, streamBuilder.count());
 
         Stream<String> streamGenerated = Stream.generate(() -> "element").limit(10);

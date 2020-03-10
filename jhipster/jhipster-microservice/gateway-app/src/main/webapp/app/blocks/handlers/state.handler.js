@@ -1,15 +1,15 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('gatewayApp')
         .factory('stateHandler', stateHandler);
 
-    stateHandler.$inject = ['$rootScope', '$state', '$sessionStorage',  '$window',
+    stateHandler.$inject = ['$rootScope', '$state', '$sessionStorage', '$window',
         'Auth', 'Principal', 'VERSION'];
 
-    function stateHandler($rootScope, $state, $sessionStorage,  $window,
-        Auth, Principal, VERSION) {
+    function stateHandler($rootScope, $state, $sessionStorage, $window,
+                          Auth, Principal, VERSION) {
         return {
             initialize: initialize
         };
@@ -34,8 +34,8 @@
 
             });
 
-            var stateChangeSuccess = $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
-                var titleKey = 'gateway' ;
+            var stateChangeSuccess = $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+                var titleKey = 'gateway';
 
                 // Set the page title key to the one configured in state or use default one
                 if (toState.data.pageTitle) {
@@ -45,10 +45,10 @@
             });
 
             $rootScope.$on('$destroy', function () {
-                if(angular.isDefined(stateChangeStart) && stateChangeStart !== null){
+                if (angular.isDefined(stateChangeStart) && stateChangeStart !== null) {
                     stateChangeStart();
                 }
-                if(angular.isDefined(stateChangeSuccess) && stateChangeSuccess !== null){
+                if (angular.isDefined(stateChangeSuccess) && stateChangeSuccess !== null) {
                     stateChangeSuccess();
                 }
             });

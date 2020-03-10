@@ -22,7 +22,7 @@ public class GetAutoGenKeyByJDBCIntTest {
     @Configuration
     @EnableAutoConfiguration
     @PropertySource("classpath:autogenkey-db.properties")
-    @ComponentScan(basePackages = { "com.baeldung.jdbc.autogenkey.repository" })
+    @ComponentScan(basePackages = {"com.baeldung.jdbc.autogenkey.repository"})
     public static class SpringConfig {
 
     }

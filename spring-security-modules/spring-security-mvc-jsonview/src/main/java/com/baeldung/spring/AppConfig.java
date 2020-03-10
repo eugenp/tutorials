@@ -43,7 +43,6 @@ public class AppConfig extends WebSecurityConfigurerAdapter implements WebMvcCon
     }
 
 
-
     public enum Role {
         ROLE_USER,
         ROLE_ADMIN

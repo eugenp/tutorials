@@ -17,7 +17,7 @@ import org.springframework.test.web.client.MockRestServiceServer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
-@RestClientTest({ DetailsServiceClient.class, Application.class })
+@RestClientTest({DetailsServiceClient.class, Application.class})
 public class DetailsServiceClientIntegrationTest {
 
     @Autowired
@@ -33,7 +33,7 @@ public class DetailsServiceClientIntegrationTest {
     public void setUp() throws Exception {
         String detailsString = objectMapper.writeValueAsString(new Details("John Smith", "john"));
         this.server.expect(requestTo("/john/details"))
-            .andRespond(withSuccess(detailsString, MediaType.APPLICATION_JSON));
+                .andRespond(withSuccess(detailsString, MediaType.APPLICATION_JSON));
     }
 
     @Test

@@ -36,7 +36,7 @@ public class JPAQueryParamsUnitTest {
         TypedQuery<Employee> query = entityManager.createQuery("SELECT e FROM Employee e WHERE e.empNumber = ?1", Employee.class);
         String empNumber = "A123";
         Employee employee = query.setParameter(1, empNumber)
-          .getSingleResult();
+                .getSingleResult();
         Assert.assertNotNull("Employee not found", employee);
     }
 
@@ -45,7 +45,7 @@ public class JPAQueryParamsUnitTest {
         TypedQuery<Employee> query = entityManager.createQuery("SELECT e FROM Employee e WHERE e.empNumber IN (?1)", Employee.class);
         List<String> empNumbers = Arrays.asList("A123", "A124");
         List<Employee> employees = query.setParameter(1, empNumbers)
-          .getResultList();
+                .getResultList();
         Assert.assertNotNull("Employees not found", employees);
         Assert.assertFalse("Employees not found", employees.isEmpty());
     }
@@ -55,7 +55,7 @@ public class JPAQueryParamsUnitTest {
         TypedQuery<Employee> query = entityManager.createQuery("SELECT e FROM Employee e WHERE e.empNumber = :number", Employee.class);
         String empNumber = "A123";
         Employee employee = query.setParameter("number", empNumber)
-          .getSingleResult();
+                .getSingleResult();
         Assert.assertNotNull("Employee not found", employee);
     }
 
@@ -64,7 +64,7 @@ public class JPAQueryParamsUnitTest {
         TypedQuery<Employee> query = entityManager.createQuery("SELECT e FROM Employee e WHERE e.empNumber IN (:numbers)", Employee.class);
         List<String> empNumbers = Arrays.asList("A123", "A124");
         List<Employee> employees = query.setParameter("numbers", empNumbers)
-          .getResultList();
+                .getResultList();
         Assert.assertNotNull("Employees not found", employees);
         Assert.assertFalse("Employees not found", employees.isEmpty());
     }
@@ -75,8 +75,8 @@ public class JPAQueryParamsUnitTest {
         String empName = "John Doe";
         int empAge = 55;
         List<Employee> employees = query.setParameter("name", empName)
-          .setParameter("empAge", empAge)
-          .getResultList();
+                .setParameter("empAge", empAge)
+                .getResultList();
         Assert.assertNotNull("Employees not found!", employees);
         Assert.assertTrue("Employees not found!", !employees.isEmpty());
     }
@@ -89,7 +89,7 @@ public class JPAQueryParamsUnitTest {
         Root<Employee> c = cQuery.from(Employee.class);
         ParameterExpression<String> paramEmpNumber = cb.parameter(String.class);
         cQuery.select(c)
-          .where(cb.equal(c.get(Employee_.empNumber), paramEmpNumber));
+                .where(cb.equal(c.get(Employee_.empNumber), paramEmpNumber));
 
         TypedQuery<Employee> query = entityManager.createQuery(cQuery);
         String empNumber = "A123";

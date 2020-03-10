@@ -24,7 +24,7 @@ import com.baeldung.multipledb.model.user.PossessionMultipleDB;
 import com.baeldung.multipledb.model.user.UserMultipleDB;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=MultipleDbApplication.class)
+@SpringBootTest(classes = MultipleDbApplication.class)
 @EnableTransactionManagement
 public class JpaMultipleDBIntegrationTest {
 

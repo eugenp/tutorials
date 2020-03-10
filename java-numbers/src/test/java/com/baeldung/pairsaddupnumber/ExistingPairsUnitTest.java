@@ -1,6 +1,7 @@
 package com.baeldung.pairsaddupnumber;
 
 import org.junit.Test;
+
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,7 +19,7 @@ public class ExistingPairsUnitTest {
         /* Call service */
         final List<Integer> pairs = ExistingPairs.findPairsWithForLoop(input, sum);
         /* Check results */
-        assertThat(pairs).hasSize(4).contains(2,4,3,3).doesNotContain(8);
+        assertThat(pairs).hasSize(4).contains(2, 4, 3, 3).doesNotContain(8);
     }
 
     @Test
@@ -29,6 +30,6 @@ public class ExistingPairsUnitTest {
         /* Call service */
         final List<Integer> pairs = ExistingPairs.findPairsWithStreamApi(input, sum);
         /* Check results */
-        assertThat(pairs).hasSize(4).contains(2,4,3,3).doesNotContain(8);
+        assertThat(pairs).hasSize(4).contains(2, 4, 3, 3).doesNotContain(8);
     }
 }

@@ -29,10 +29,10 @@ public class MainController {
         FilterChainProxy filterChainProxy = (FilterChainProxy) springSecurityFilterChain;
         List<SecurityFilterChain> list = filterChainProxy.getFilterChains();
         list.stream()
-              .flatMap(chain -> chain.getFilters().stream())
-              .forEach(filter -> System.out.println(filter.getClass()));
+                .flatMap(chain -> chain.getFilters().stream())
+                .forEach(filter -> System.out.println(filter.getClass()));
     }
-    
+
     @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
     @ResponseBody
     public Foo findById(@PathVariable final long id, HttpServletRequest request) {

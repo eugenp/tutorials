@@ -13,7 +13,7 @@ public class ItemProducerCreate {
         Flux<String> articlesFlux = Flux.create((sink) -> {
             ItemProducerCreate.this.listener = (items) -> {
                 items.stream()
-                    .forEach(article -> sink.next(article));
+                        .forEach(article -> sink.next(article));
             };
         });
         return articlesFlux;

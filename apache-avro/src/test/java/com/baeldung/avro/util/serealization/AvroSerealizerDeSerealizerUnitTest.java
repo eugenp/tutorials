@@ -25,9 +25,9 @@ public class AvroSerealizerDeSerealizerUnitTest {
         deSerealizer = new AvroDeSerealizer();
 
         ClientIdentifier clientIdentifier = ClientIdentifier.newBuilder()
-            .setHostName("localhost")
-            .setIpAddress("255.255.255.0")
-            .build();
+                .setHostName("localhost")
+                .setIpAddress("255.255.255.0")
+                .build();
 
         List<CharSequence> employees = new ArrayList();
         employees.add("James");
@@ -36,11 +36,11 @@ public class AvroSerealizerDeSerealizerUnitTest {
         employees.add("Han");
 
         request = AvroHttpRequest.newBuilder()
-            .setRequestTime(01l)
-            .setActive(Active.YES)
-            .setClientIdentifier(clientIdentifier)
-            .setEmployeeNames(employees)
-            .build();
+                .setRequestTime(01l)
+                .setActive(Active.YES)
+                .setClientIdentifier(clientIdentifier)
+                .setEmployeeNames(employees)
+                .build();
     }
 
     @After
@@ -67,7 +67,7 @@ public class AvroSerealizerDeSerealizerUnitTest {
         AvroHttpRequest actualRequest = deSerealizer.deSerealizeAvroHttpRequestJSON(data);
         assertEquals(actualRequest, request);
         assertTrue(actualRequest.getRequestTime()
-            .equals(request.getRequestTime()));
+                .equals(request.getRequestTime()));
     }
 
     @Test
@@ -76,8 +76,8 @@ public class AvroSerealizerDeSerealizerUnitTest {
         AvroHttpRequest actualRequest = deSerealizer.deSerealizeAvroHttpRequestBinary(data);
         assertEquals(actualRequest, request);
         assertTrue(actualRequest.getRequestTime()
-            .equals(request.getRequestTime()));
+                .equals(request.getRequestTime()));
     }
-    
+
 }
 

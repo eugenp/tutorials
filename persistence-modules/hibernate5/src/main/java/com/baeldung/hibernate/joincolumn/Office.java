@@ -18,8 +18,8 @@ public class Office {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
-            @JoinColumn(name="ADDR_ID", referencedColumnName="ID"),
-            @JoinColumn(name="ADDR_ZIP", referencedColumnName="ZIP")
+            @JoinColumn(name = "ADDR_ID", referencedColumnName = "ID"),
+            @JoinColumn(name = "ADDR_ZIP", referencedColumnName = "ZIP")
     })
     private OfficeAddress address;
 

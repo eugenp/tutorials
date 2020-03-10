@@ -42,10 +42,10 @@ public class Order {
 
     private OrderItem getOrderItem(final UUID id) {
         return orderItems.stream()
-            .filter(orderItem -> orderItem.getProductId()
-                .equals(id))
-            .findFirst()
-            .orElseThrow(() -> new DomainException("Product with " + id + " doesn't exist."));
+                .filter(orderItem -> orderItem.getProductId()
+                        .equals(id))
+                .findFirst()
+                .orElseThrow(() -> new DomainException("Product with " + id + " doesn't exist."));
     }
 
     private void validateState() {

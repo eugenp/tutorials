@@ -39,14 +39,14 @@ public class MultipleOutputsServiceApplicationIntegrationTest {
 
     private void whenSendMessage(Integer val) {
         pipe.myInput()
-            .send(MessageBuilder.withPayload(val)
-                .build());
+                .send(MessageBuilder.withPayload(val)
+                        .build());
     }
 
     private void thenPayloadInChannelIs(MessageChannel channel, Integer expectedValue) {
         Object payload = messageCollector.forChannel(channel)
-            .poll()
-            .getPayload();
+                .poll()
+                .getPayload();
         assertEquals(expectedValue, payload);
     }
 }

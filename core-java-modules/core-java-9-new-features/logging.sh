@@ -4,7 +4,6 @@
 # compile logging slf4j module
 javac --module-path mods -d mods/com.baeldung.logging.slf4j src/modules/com.baeldung.logging.slf4j/module-info.java src/modules/com.baeldung.logging.slf4j/com/baeldung/logging/slf4j/*.java
 
-
 # compile logging main app module
 javac --module-path mods -d mods/com.baeldung.logging.app src/modules/com.baeldung.logging.app/module-info.java src/modules/com.baeldung.logging.app/com/baeldung/logging/app/*.java
 

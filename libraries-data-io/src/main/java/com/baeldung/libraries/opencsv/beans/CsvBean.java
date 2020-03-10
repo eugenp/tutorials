@@ -1,3 +1,4 @@
 package com.baeldung.libraries.opencsv.beans;
 
-public class CsvBean { }
+public class CsvBean {
+}

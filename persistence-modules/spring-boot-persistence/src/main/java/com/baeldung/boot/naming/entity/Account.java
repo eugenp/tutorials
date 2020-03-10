@@ -9,11 +9,14 @@ import java.util.List;
 @Entity
 public class Account {
 
-    @Id private Long id;
+    @Id
+    private Long id;
 
     private String defaultEmail;
 
-    @OneToMany List<Preference> preferences;
+    @OneToMany
+    List<Preference> preferences;
 
-    @Column(name = "\"Secondary_Email\"") private String secondaryEmail;
+    @Column(name = "\"Secondary_Email\"")
+    private String secondaryEmail;
 }

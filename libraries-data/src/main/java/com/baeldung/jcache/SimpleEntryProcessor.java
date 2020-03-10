@@ -9,7 +9,7 @@ import javax.cache.processor.MutableEntry;
 public class SimpleEntryProcessor implements EntryProcessor<String, String, String>, Serializable {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -5616476363722945132L;
 

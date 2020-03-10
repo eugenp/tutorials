@@ -16,7 +16,7 @@ public class ItemService {
 
     List<Item> getAllItemsSortedByName(List<String> itemIds) {
         List<Item> items;
-        try{
+        try {
             items = itemProvider.getItems(itemIds);
         } catch (RuntimeException ex) {
             throw new ExternalItemProviderException();

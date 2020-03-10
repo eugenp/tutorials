@@ -10,10 +10,10 @@ import com.baeldung.thymeleaf.utils.TeacherUtils;
 @Controller
 public class TeacherController {
 
-	@RequestMapping(value = "/listTeachers", method = RequestMethod.GET)
-	public String getInfo(Model model) {
-		model.addAttribute("teachers", TeacherUtils.buildTeachers());
+    @RequestMapping(value = "/listTeachers", method = RequestMethod.GET)
+    public String getInfo(Model model) {
+        model.addAttribute("teachers", TeacherUtils.buildTeachers());
 
-		return "listTeachers.html";
-	}
+        return "listTeachers.html";
+    }
 }

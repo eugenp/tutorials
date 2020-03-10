@@ -22,6 +22,7 @@ public class MnistPrediction {
 
     /**
      * Opens a popup that allows to select a file from the filesystem.
+     *
      * @return
      */
     public static String fileChose() {

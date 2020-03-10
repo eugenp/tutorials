@@ -8,7 +8,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 
 /**
- *  REST API Resource Server.
+ * REST API Resource Server.
  */
 @Configuration
 @EnableResourceServer
@@ -18,10 +18,10 @@ public class ResourceConfigurer extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.NEVER)
-            .and()
-            .authorizeRequests()
-            .anyRequest().authenticated();
+                .sessionCreationPolicy(SessionCreationPolicy.NEVER)
+                .and()
+                .authorizeRequests()
+                .anyRequest().authenticated();
 
     }
 

@@ -2,6 +2,7 @@ package com.baeldung.boot.configurationproperties;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.convert.DataSizeUnit;
 import org.springframework.boot.convert.DurationUnit;

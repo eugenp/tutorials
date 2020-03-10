@@ -7,6 +7,7 @@ public class FileReader {
     public FileReader(File file) {
         file.setText("read");
     }
-    
-    public void readFile() {}
+
+    public void readFile() {
+    }
 }

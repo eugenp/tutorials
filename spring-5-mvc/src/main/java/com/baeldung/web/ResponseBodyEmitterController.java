@@ -1,9 +1,11 @@
 package com.baeldung.web;
 
 import com.baeldung.Constants;
+
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,17 +21,17 @@ public class ResponseBodyEmitterController {
     public ResponseEntity<ResponseBodyEmitter> handleRbe() {
         ResponseBodyEmitter emitter = new ResponseBodyEmitter();
 
-            nonBlockingService.execute(() -> {
-                try {
-                    emitter.send(Constants.API_RBE_MSG + " @ " + new Date(), MediaType.TEXT_PLAIN);
-                    emitter.complete();
-                } catch (Exception ex) {
-                      System.out.println(Constants.GENERIC_EXCEPTION);
-                      emitter.completeWithError(ex);
-                }
-            });
+        nonBlockingService.execute(() -> {
+            try {
+                emitter.send(Constants.API_RBE_MSG + " @ " + new Date(), MediaType.TEXT_PLAIN);
+                emitter.complete();
+            } catch (Exception ex) {
+                System.out.println(Constants.GENERIC_EXCEPTION);
+                emitter.completeWithError(ex);
+            }
+        });
 
-            return new ResponseEntity(emitter, HttpStatus.OK);
-        }
+        return new ResponseEntity(emitter, HttpStatus.OK);
+    }
 
 }

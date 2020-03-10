@@ -10,20 +10,20 @@ import java.io.IOException;
 
 public abstract class TemplateFilter extends BaseFilter {
     protected abstract void preFilter(
-      HttpServletRequest request,
-      HttpServletResponse response
+            HttpServletRequest request,
+            HttpServletResponse response
     ) throws IOException, ServletException;
 
     protected abstract void postFilter(
-      HttpServletRequest request,
-      HttpServletResponse response
+            HttpServletRequest request,
+            HttpServletResponse response
     ) throws IOException, ServletException;
 
     @Override
     public void doFilter(
-      ServletRequest request,
-      ServletResponse response,
-      FilterChain chain
+            ServletRequest request,
+            ServletResponse response,
+            FilterChain chain
     ) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;

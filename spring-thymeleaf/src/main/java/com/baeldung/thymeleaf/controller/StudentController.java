@@ -16,7 +16,6 @@ import com.baeldung.thymeleaf.utils.StudentUtils;
 
 /**
  * Handles requests for the student model.
- * 
  */
 @Controller
 public class StudentController {

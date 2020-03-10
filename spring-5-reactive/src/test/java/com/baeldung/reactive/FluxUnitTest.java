@@ -18,8 +18,8 @@ public class FluxUnitTest {
 
     @Test
     public void whenFluxIsConstructed_thenCorrect() {
-        final Flux<Foo> flux = Flux.<Foo> create(fluxSink -> {
-            for (int i = 0 ; i < 100 ; i++) {
+        final Flux<Foo> flux = Flux.<Foo>create(fluxSink -> {
+            for (int i = 0; i < 100; i++) {
                 fluxSink.next(new Foo(RANDOM.nextLong(), randomAlphabetic(6)));
             }
         }).sample(Duration.ofSeconds(1)).log();

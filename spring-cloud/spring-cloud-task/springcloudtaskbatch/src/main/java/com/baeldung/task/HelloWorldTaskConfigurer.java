@@ -5,8 +5,8 @@ import javax.sql.DataSource;
 import org.springframework.cloud.task.configuration.DefaultTaskConfigurer;
 
 public class HelloWorldTaskConfigurer
-    extends
-    DefaultTaskConfigurer {
+        extends
+        DefaultTaskConfigurer {
 
     public HelloWorldTaskConfigurer(DataSource dataSource) {
         super(dataSource);

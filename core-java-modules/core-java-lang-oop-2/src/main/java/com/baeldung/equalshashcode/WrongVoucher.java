@@ -1,11 +1,11 @@
 package com.baeldung.equalshashcode;
 
 /* (non-Javadoc)
-* This class extends the Money class that has overridden the equals method and once again overrides the equals method.
-*
-* To see which problems this leads to:
-* MoneyUnitTest.givenMoneyAndVoucherInstances_whenEquals_thenReturnValuesArentSymmetric
-*/
+ * This class extends the Money class that has overridden the equals method and once again overrides the equals method.
+ *
+ * To see which problems this leads to:
+ * MoneyUnitTest.givenMoneyAndVoucherInstances_whenEquals_thenReturnValuesArentSymmetric
+ */
 class WrongVoucher extends Money {
 
     private String store;
@@ -22,14 +22,14 @@ class WrongVoucher extends Money {
             return true;
         if (!(o instanceof WrongVoucher))
             return false;
-        WrongVoucher other = (WrongVoucher)o;
+        WrongVoucher other = (WrongVoucher) o;
         boolean currencyCodeEquals = (this.currencyCode == null && other.currencyCode == null)
-          || (this.currencyCode != null && this.currencyCode.equals(other.currencyCode));
+                || (this.currencyCode != null && this.currencyCode.equals(other.currencyCode));
         boolean storeEquals = (this.store == null && other.store == null)
-          || (this.store != null && this.store.equals(other.store));
+                || (this.store != null && this.store.equals(other.store));
         return this.amount == other.amount
-          && currencyCodeEquals
-          && storeEquals;
+                && currencyCodeEquals
+                && storeEquals;
     }
 
     @Override

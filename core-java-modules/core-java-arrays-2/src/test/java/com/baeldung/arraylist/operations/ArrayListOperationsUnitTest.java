@@ -1,8 +1,10 @@
 package com.baeldung.arraylist.operations;
 
 import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ArrayListOperationsUnitTest {

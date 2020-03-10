@@ -24,7 +24,7 @@ public class BookService {
 
     public Book findBookById(Long bookId) {
         return Optional.ofNullable(bookRepository.findOne(bookId))
-            .orElseThrow(() -> new BookNotFoundException("Book not found. ID: " + bookId));
+                .orElseThrow(() -> new BookNotFoundException("Book not found. ID: " + bookId));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -44,15 +44,15 @@ public class BookService {
     public Book updateBook(Map<String, String> updates, Long bookId) {
         final Book book = findBookById(bookId);
         updates.keySet()
-            .forEach(key -> {
-                switch (key) {
-                case "author":
-                    book.setAuthor(updates.get(key));
-                    break;
-                case "title":
-                    book.setTitle(updates.get(key));
-                }
-            });
+                .forEach(key -> {
+                    switch (key) {
+                        case "author":
+                            book.setAuthor(updates.get(key));
+                            break;
+                        case "title":
+                            book.setTitle(updates.get(key));
+                    }
+                });
         return bookRepository.save(book);
     }
 

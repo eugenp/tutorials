@@ -16,10 +16,8 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 
 /**
- * 
  * This test requires:
  * * mongodb instance running on the environment
- *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)

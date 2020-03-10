@@ -14,7 +14,7 @@ public class AverageCalculator implements Callable<Double> {
     @Override
     public Double call() throws Exception {
         return IntStream.of(this.numbers)
-            .average()
-            .orElse(0d);
+                .average()
+                .orElse(0d);
     }
 }

@@ -32,8 +32,8 @@ public class Author extends Person {
     }
 
     @JsonValue
-    public Map<String,String> toJson() {
-        Map<String,String> values = new HashMap<>();
+    public Map<String, String> toJson() {
+        Map<String, String> values = new HashMap<>();
         values.put("name", getFirstName() + " " + getLastName());
         return values;
     }

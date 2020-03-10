@@ -17,7 +17,7 @@ services:
     image: cassandra:3.11.5
     container_name: order-cassandra-db
     restart: always
-    ports: 
+    ports:
       - 9042:9042
   order-cassandra-init:
     image: cassandra:3.11.5

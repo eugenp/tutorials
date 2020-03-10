@@ -17,51 +17,51 @@ public class CarRepositoryImpl extends BaseJinqRepositoryImpl<Car> implements Ca
     @Override
     public Optional<Car> findByModel(String model) {
         return stream().where(c -> c.getModel()
-            .equals(model))
-            .findFirst();
+                .equals(model))
+                .findFirst();
     }
 
     @Override
     public List<Car> findByModelAndDescription(String model, String desc) {
         return stream().where(c -> c.getModel()
-            .equals(model)
-            && c.getDescription()
+                .equals(model)
+                && c.getDescription()
                 .contains(desc))
-            .toList();
+                .toList();
     }
 
     @Override
     public List<Tuple3<String, Integer, String>> findWithModelYearAndEngine() {
         return stream().select(c -> new Tuple3<>(c.getModel(), c.getYear(), c.getEngine()))
-            .toList();
+                .toList();
     }
 
     @Override
     public Optional<Manufacturer> findManufacturerByModel(String model) {
         return stream().where(c -> c.getModel()
-            .equals(model))
-            .select(c -> c.getManufacturer())
-            .findFirst();
+                .equals(model))
+                .select(c -> c.getManufacturer())
+                .findFirst();
     }
 
     @Override
     public List<Pair<Manufacturer, Car>> findCarsPerManufacturer() {
         return streamOf(Manufacturer.class).join(m -> JinqStream.from(m.getCars()))
-            .toList();
+                .toList();
     }
 
     @Override
     public long countCarsByModel(String model) {
         return stream().where(c -> c.getModel()
-            .equals(model))
-            .count();
+                .equals(model))
+                .count();
     }
 
     @Override
     public List<Car> findAll(int skip, int limit) {
         return stream().skip(skip)
-            .limit(limit)
-            .toList();
+                .limit(limit)
+                .toList();
     }
 
     @Override

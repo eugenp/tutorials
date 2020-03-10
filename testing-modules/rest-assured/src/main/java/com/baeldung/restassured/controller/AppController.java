@@ -38,7 +38,7 @@ public class AppController {
         Set<Movie> result = appService.getAll();
 
         return ResponseEntity.ok()
-            .body(result);
+                .body(result);
     }
 
     @PostMapping("/movie")
@@ -55,7 +55,7 @@ public class AppController {
         Movie movie = appService.findMovie(id);
         if (movie == null) {
             return ResponseEntity.badRequest()
-                .body("Invalid movie id");
+                    .body("Invalid movie id");
         }
 
         return ResponseEntity.ok(movie);
@@ -67,7 +67,7 @@ public class AppController {
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
         headers.add("sessionId", UUID.randomUUID()
-            .toString());
+                .toString());
 
         Cookie cookie = new Cookie("token", "some-token");
         cookie.setDomain("localhost");
@@ -75,8 +75,8 @@ public class AppController {
         response.addCookie(cookie);
 
         return ResponseEntity.noContent()
-            .headers(headers)
-            .build();
+                .headers(headers)
+                .build();
     }
 
     @GetMapping("/download/{id}")
@@ -86,15 +86,15 @@ public class AppController {
 
         if (file == null) {
             return ResponseEntity.notFound()
-                .build();
+                    .build();
         }
 
         InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
 
         return ResponseEntity.ok()
-            .contentLength(file.length())
-            .contentType(MediaType.parseMediaType("application/octet-stream"))
-            .body(resource);
+                .contentLength(file.length())
+                .contentType(MediaType.parseMediaType("application/octet-stream"))
+                .body(resource);
     }
 
 }

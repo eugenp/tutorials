@@ -9,11 +9,11 @@ public class VersionObtainer {
     public String getSpringVersion() {
         return SpringVersion.getVersion();
     }
-    
+
     public String getJavaVersion() {
         return JavaVersion.getJavaVersion().toString();
     }
-    
+
     public String getJdkVersion() {
         return SystemProperties.get("java.version");
     }

@@ -11,7 +11,7 @@ class CategoryUnitTest extends GroovyTestCase {
 
     void test_whenUsingTimeCategory_thenOperationOnDate() {
         def jan_1_2019 = new Date("01/01/2019")
-        use (TimeCategory) {
+        use(TimeCategory) {
             assert jan_1_2019 + 10.seconds == new Date("01/01/2019 00:00:10")
 
             assert jan_1_2019 + 20.minutes == new Date("01/01/2019 00:20:00")
@@ -30,7 +30,7 @@ class CategoryUnitTest extends GroovyTestCase {
 
     void test_whenUsingTimeCategory_thenOperationOnNumber() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy")
-        use (TimeCategory) {
+        use(TimeCategory) {
             assert sdf.format(5.days.from.now) == sdf.format(new Date() + 5.days)
 
             sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
@@ -57,7 +57,7 @@ class CategoryUnitTest extends GroovyTestCase {
 
         def root = baeldungArticlesDom.documentElement
 
-        use (DOMCategory) {
+        use(DOMCategory) {
             assert root.article.size() == 2
 
             def articles = root.article
@@ -75,22 +75,22 @@ class CategoryUnitTest extends GroovyTestCase {
             assert root.article[2].title.text() == "Metaprogramming in Groovy"
         }
     }
-    
+
     void test_whenUsingBaeldungCategory_thenCapitalizeString() {
-        use (BaeldungCategory) {
+        use(BaeldungCategory) {
             assert "norman".capitalize() == "Norman"
-        } 
+        }
     }
-    
+
     void test_whenUsingBaeldungCategory_thenOperationsOnNumber() {
-        use (BaeldungCategory) {
+        use(BaeldungCategory) {
             assert 50.toThePower(2) == 2500
             assert 2.4.toThePower(4) == 33.1776
         }
     }
-    
+
     void test_whenUsingNumberCategory_thenOperationsOnNumber() {
-        use (NumberCategory) {
+        use(NumberCategory) {
             assert 3.cube() == 27
             assert 25.divideWithRoundUp(6, true) == 5
             assert 120.23.divideWithRoundUp(6.1, true) == 20

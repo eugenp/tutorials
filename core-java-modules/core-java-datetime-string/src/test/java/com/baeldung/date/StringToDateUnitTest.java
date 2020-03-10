@@ -124,7 +124,7 @@ public class StringToDateUnitTest {
     @Test
     public void givenDateString_whenConvertedToDate_thenWeGetCorrectDateTime() throws ParseException {
         String dateInString = "07/06-2013";
-        Date date = DateUtils.parseDate(dateInString, new String[] { "yyyy-MM-dd HH:mm:ss", "dd/MM-yyyy" });
+        Date date = DateUtils.parseDate(dateInString, new String[]{"yyyy-MM-dd HH:mm:ss", "dd/MM-yyyy"});
 
         assertDateIsCorrect(date);
     }

@@ -41,7 +41,8 @@ public class BentleyMcIlroyPartioning {
                 swap(input, right, end - rightEqualKeysCount);
                 rightEqualKeysCount++;
             }
-            left++; right--;
+            left++;
+            right--;
         }
         right = left - 1;
         for (int k = begin; k < begin + leftEqualKeysCount; k++, right--) {

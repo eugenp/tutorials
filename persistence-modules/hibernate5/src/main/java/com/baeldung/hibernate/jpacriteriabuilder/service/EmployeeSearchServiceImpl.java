@@ -21,7 +21,7 @@ public class EmployeeSearchServiceImpl implements EmployeeSearchService {
     public EmployeeSearchServiceImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
         this.criteriaBuilder = entityManager.getCriteriaBuilder();
-        
+
     }
 
     @Override
@@ -33,7 +33,7 @@ public class EmployeeSearchServiceImpl implements EmployeeSearchService {
             inClause.value(title);
         }
         criteriaQuery.select(root)
-            .where(inClause);
+                .where(inClause);
         TypedQuery<DeptEmployee> query = entityManager.createQuery(criteriaQuery);
         return query.getResultList();
     }
@@ -43,8 +43,8 @@ public class EmployeeSearchServiceImpl implements EmployeeSearchService {
         CriteriaQuery<DeptEmployee> criteriaQuery = createCriteriaQuery(DeptEmployee.class);
         Root<DeptEmployee> root = criteriaQuery.from(DeptEmployee.class);
         criteriaQuery.select(root)
-            .where(root.get("title")
-                .in(titles));
+                .where(root.get("title")
+                        .in(titles));
         TypedQuery<DeptEmployee> query = entityManager.createQuery(criteriaQuery);
         return query.getResultList();
     }
@@ -57,19 +57,19 @@ public class EmployeeSearchServiceImpl implements EmployeeSearchService {
         Subquery<Department> subquery = criteriaQuery.subquery(Department.class);
         Root<Department> dept = subquery.from(Department.class);
         subquery.select(dept)
-            .distinct(true)
-            .where(criteriaBuilder.like(dept.get("name"), new StringBuffer("%").append(searchKey)
-                .append("%")
-                .toString()));
+                .distinct(true)
+                .where(criteriaBuilder.like(dept.get("name"), new StringBuffer("%").append(searchKey)
+                        .append("%")
+                        .toString()));
 
         criteriaQuery.select(emp)
-            .where(criteriaBuilder.in(emp.get("department"))
-                .value(subquery));
+                .where(criteriaBuilder.in(emp.get("department"))
+                        .value(subquery));
 
         TypedQuery<DeptEmployee> query = entityManager.createQuery(criteriaQuery);
         return query.getResultList();
     }
-    
+
     private <T> CriteriaQuery<T> createCriteriaQuery(Class<T> klass) {
         return criteriaBuilder.createQuery(klass);
     }

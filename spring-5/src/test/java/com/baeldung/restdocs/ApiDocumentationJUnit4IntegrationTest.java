@@ -59,17 +59,17 @@ public class ApiDocumentationJUnit4IntegrationTest {
     public void setUp() {
 
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
-            .apply(documentationConfiguration(this.restDocumentation))
-            .alwaysDo(document("{method-name}", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint())))
-            .build();
+                .apply(documentationConfiguration(this.restDocumentation))
+                .alwaysDo(document("{method-name}", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint())))
+                .build();
     }
 
     @Test
     public void indexExample() throws Exception {
         this.mockMvc.perform(get("/"))
-            .andExpect(status().isOk())
-            .andDo(document("index-example", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint()), links(linkWithRel("crud").description("The CRUD resource")), responseFields(subsectionWithPath("_links").description("Links to other resources")),
-                responseHeaders(headerWithName("Content-Type").description("The Content-Type of the payload, e.g. `application/hal+json`"))));
+                .andExpect(status().isOk())
+                .andDo(document("index-example", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint()), links(linkWithRel("crud").description("The CRUD resource")), responseFields(subsectionWithPath("_links").description("Links to other resources")),
+                        responseHeaders(headerWithName("Content-Type").description("The Content-Type of the payload, e.g. `application/hal+json`"))));
     }
 
     @Test
@@ -81,21 +81,21 @@ public class ApiDocumentationJUnit4IntegrationTest {
         crud.put("body", "http://www.baeldung.com/");
 
         String tagLocation = this.mockMvc.perform(get("/crud").contentType(MediaTypes.HAL_JSON)
-            .content(this.objectMapper.writeValueAsString(crud)))
-            .andExpect(status().isOk())
-            .andReturn()
-            .getResponse()
-            .getHeader("Location");
+                .content(this.objectMapper.writeValueAsString(crud)))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getHeader("Location");
 
         crud.put("tags", singletonList(tagLocation));
 
         ConstraintDescriptions desc = new ConstraintDescriptions(CrudInput.class);
 
         this.mockMvc.perform(get("/crud").contentType(MediaTypes.HAL_JSON)
-            .content(this.objectMapper.writeValueAsString(crud)))
-            .andExpect(status().isOk())
-            .andDo(document("crud-get-example", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint()), requestFields(fieldWithPath("id").description("The id of the input" + collectionToDelimitedString(desc.descriptionsForProperty("id"), ". ")),
-                fieldWithPath("title").description("The title of the input"), fieldWithPath("body").description("The body of the input"), fieldWithPath("tags").description("An array of tag resource URIs"))));
+                .content(this.objectMapper.writeValueAsString(crud)))
+                .andExpect(status().isOk())
+                .andDo(document("crud-get-example", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint()), requestFields(fieldWithPath("id").description("The id of the input" + collectionToDelimitedString(desc.descriptionsForProperty("id"), ". ")),
+                        fieldWithPath("title").description("The title of the input"), fieldWithPath("body").description("The body of the input"), fieldWithPath("tags").description("An array of tag resource URIs"))));
     }
 
     @Test
@@ -106,26 +106,26 @@ public class ApiDocumentationJUnit4IntegrationTest {
         crud.put("body", "http://www.baeldung.com/");
 
         String tagLocation = this.mockMvc.perform(post("/crud").contentType(MediaTypes.HAL_JSON)
-            .content(this.objectMapper.writeValueAsString(crud)))
-            .andExpect(status().isCreated())
-            .andReturn()
-            .getResponse()
-            .getHeader("Location");
+                .content(this.objectMapper.writeValueAsString(crud)))
+                .andExpect(status().isCreated())
+                .andReturn()
+                .getResponse()
+                .getHeader("Location");
 
         crud.put("tags", singletonList(tagLocation));
 
         this.mockMvc.perform(post("/crud").contentType(MediaTypes.HAL_JSON)
-            .content(this.objectMapper.writeValueAsString(crud)))
-            .andExpect(status().isCreated())
-            .andDo(document("crud-create-example", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint()), requestFields(fieldWithPath("id").description("The id of the input"), fieldWithPath("title").description("The title of the input"),
-                fieldWithPath("body").description("The body of the input"), fieldWithPath("tags").description("An array of tag resource URIs"))));
+                .content(this.objectMapper.writeValueAsString(crud)))
+                .andExpect(status().isCreated())
+                .andDo(document("crud-create-example", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint()), requestFields(fieldWithPath("id").description("The id of the input"), fieldWithPath("title").description("The title of the input"),
+                        fieldWithPath("body").description("The body of the input"), fieldWithPath("tags").description("An array of tag resource URIs"))));
     }
 
     @Test
     public void crudDeleteExample() throws Exception {
         this.mockMvc.perform(delete("/crud/{id}", 10))
-            .andExpect(status().isOk())
-            .andDo(document("crud-delete-example", pathParameters(parameterWithName("id").description("The id of the input to delete"))));
+                .andExpect(status().isOk())
+                .andDo(document("crud-delete-example", pathParameters(parameterWithName("id").description("The id of the input to delete"))));
     }
 
     @Test
@@ -135,11 +135,11 @@ public class ApiDocumentationJUnit4IntegrationTest {
         tag.put("name", "PATCH");
 
         String tagLocation = this.mockMvc.perform(patch("/crud/{id}", 10).contentType(MediaTypes.HAL_JSON)
-            .content(this.objectMapper.writeValueAsString(tag)))
-            .andExpect(status().isOk())
-            .andReturn()
-            .getResponse()
-            .getHeader("Location");
+                .content(this.objectMapper.writeValueAsString(tag)))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getHeader("Location");
 
         Map<String, Object> crud = new HashMap<>();
         crud.put("title", "Sample Model Patch");
@@ -147,8 +147,8 @@ public class ApiDocumentationJUnit4IntegrationTest {
         crud.put("tags", singletonList(tagLocation));
 
         this.mockMvc.perform(patch("/crud/{id}", 10).contentType(MediaTypes.HAL_JSON)
-            .content(this.objectMapper.writeValueAsString(crud)))
-            .andExpect(status().isOk());
+                .content(this.objectMapper.writeValueAsString(crud)))
+                .andExpect(status().isOk());
     }
 
     @Test
@@ -157,11 +157,11 @@ public class ApiDocumentationJUnit4IntegrationTest {
         tag.put("name", "PUT");
 
         String tagLocation = this.mockMvc.perform(put("/crud/{id}", 10).contentType(MediaTypes.HAL_JSON)
-            .content(this.objectMapper.writeValueAsString(tag)))
-            .andExpect(status().isAccepted())
-            .andReturn()
-            .getResponse()
-            .getHeader("Location");
+                .content(this.objectMapper.writeValueAsString(tag)))
+                .andExpect(status().isAccepted())
+                .andReturn()
+                .getResponse()
+                .getHeader("Location");
 
         Map<String, Object> crud = new HashMap<>();
         crud.put("title", "Sample Model");
@@ -169,8 +169,8 @@ public class ApiDocumentationJUnit4IntegrationTest {
         crud.put("tags", singletonList(tagLocation));
 
         this.mockMvc.perform(put("/crud/{id}", 10).contentType(MediaTypes.HAL_JSON)
-            .content(this.objectMapper.writeValueAsString(crud)))
-            .andExpect(status().isAccepted());
+                .content(this.objectMapper.writeValueAsString(crud)))
+                .andExpect(status().isAccepted());
     }
 
     @Test

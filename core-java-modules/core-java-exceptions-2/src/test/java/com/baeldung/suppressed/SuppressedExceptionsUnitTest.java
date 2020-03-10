@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.junit.Test;
+
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 public class SuppressedExceptionsUnitTest {
@@ -15,7 +16,7 @@ public class SuppressedExceptionsUnitTest {
     public void givenNonExistentFileName_whenAttemptFileOpen_thenNullPointerException() throws IOException {
         SuppressedExceptionsDemo.demoSuppressedException("/non-existent-path/non-existent-file.txt");
     }
-    
+
     @Test
     public void givenNonExistentFileName_whenAttemptFileOpenStoreSuppressed_thenSuppressedExceptionAvailable() {
         try {
@@ -26,7 +27,7 @@ public class SuppressedExceptionsUnitTest {
             assertThat(e.getSuppressed()[0], instanceOf(FileNotFoundException.class));
         }
     }
-    
+
     @Test
     public void whenUsingExceptionalResource_thenSuppressedExceptionAvailable() {
         try {

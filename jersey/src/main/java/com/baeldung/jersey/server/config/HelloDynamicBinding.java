@@ -21,8 +21,8 @@ public class HelloDynamicBinding implements DynamicFeature {
         LOG.info("Hello dynamic binding");
 
         if (Greetings.class.equals(resourceInfo.getResourceClass()) && resourceInfo.getResourceMethod()
-            .getName()
-            .contains("HiGreeting")) {
+                .getName()
+                .contains("HiGreeting")) {
             context.register(ResponseServerFilter.class);
         }
 

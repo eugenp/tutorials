@@ -9,7 +9,7 @@ public class CustomErrorDecoder implements ErrorDecoder {
     @Override
     public Exception decode(String methodKey, Response response) {
 
-        switch (response.status()){
+        switch (response.status()) {
             case 400:
                 return new BadRequestException();
             case 404:

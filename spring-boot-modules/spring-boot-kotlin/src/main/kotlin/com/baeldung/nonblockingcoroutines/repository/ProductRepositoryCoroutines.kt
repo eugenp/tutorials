@@ -13,28 +13,28 @@ import org.springframework.stereotype.Repository
 class ProductRepositoryCoroutines(private val client: DatabaseClient) {
 
     suspend fun getProductById(id: Int): Product? =
-      client.execute().sql("SELECT * FROM products WHERE id = $1")
-        .bind(0, id)
-        .`as`(Product::class.java)
-        .fetch()
-        .one()
-        .awaitFirstOrNull()
+            client.execute().sql("SELECT * FROM products WHERE id = $1")
+                    .bind(0, id)
+                    .`as`(Product::class.java)
+                    .fetch()
+                    .one()
+                    .awaitFirstOrNull()
 
     suspend fun addNewProduct(name: String, price: Float) =
-      client.execute()
-        .sql("INSERT INTO products (name, price) VALUES($1, $2)")
-        .bind(0, name)
-        .bind(1, price)
-        .then()
-        .awaitFirstOrNull()
+            client.execute()
+                    .sql("INSERT INTO products (name, price) VALUES($1, $2)")
+                    .bind(0, name)
+                    .bind(1, price)
+                    .then()
+                    .awaitFirstOrNull()
 
     @FlowPreview
     fun getAllProducts(): Flow<Product> =
-      client.select()
-        .from("products")
-        .`as`(Product::class.java)
-        .fetch()
-        .all()
-        .log()
-        .asFlow()
+            client.select()
+                    .from("products")
+                    .`as`(Product::class.java)
+                    .fetch()
+                    .all()
+                    .log()
+                    .asFlow()
 }

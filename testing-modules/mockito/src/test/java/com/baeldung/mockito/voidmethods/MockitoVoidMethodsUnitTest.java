@@ -60,7 +60,7 @@ public class MockitoVoidMethodsUnitTest {
         MyList myList = mock(MyList.class);
         doCallRealMethod().when(myList).add(any(Integer.class), any(String.class));
         myList.add(1, "real");
-        
+
         verify(myList, times(1)).add(1, "real");
     }
 }

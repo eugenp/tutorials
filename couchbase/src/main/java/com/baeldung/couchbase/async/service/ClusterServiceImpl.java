@@ -19,7 +19,7 @@ public class ClusterServiceImpl implements ClusterService {
 
     private Cluster cluster;
     private Map<String, Bucket> buckets = new ConcurrentHashMap<>();
-    
+
     @Autowired
     public ClusterServiceImpl(Cluster cluster) {
         this.cluster = cluster;

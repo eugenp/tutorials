@@ -24,22 +24,22 @@ public class RatpackHystrixAppLiveTest {
     @Test
     public void whenFetchReactive_thenGotEugenProfile() {
         assertThat(appUnderTest
-          .getHttpClient()
-          .getText("rx"), containsString("www.baeldung.com"));
+                .getHttpClient()
+                .getText("rx"), containsString("www.baeldung.com"));
     }
 
     @Test
     public void whenFetchAsync_thenGotEugenProfile() {
         assertThat(appUnderTest
-          .getHttpClient()
-          .getText("async"), containsString("www.baeldung.com"));
+                .getHttpClient()
+                .getText("async"), containsString("www.baeldung.com"));
     }
 
     @Test
     public void whenFetchSync_thenGotEugenProfile() {
         assertThat(appUnderTest
-          .getHttpClient()
-          .getText("sync"), containsString("www.baeldung.com"));
+                .getHttpClient()
+                .getText("sync"), containsString("www.baeldung.com"));
     }
 
     @AfterClass

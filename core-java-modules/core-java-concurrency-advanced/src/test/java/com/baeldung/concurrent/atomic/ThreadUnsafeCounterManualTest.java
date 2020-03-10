@@ -11,7 +11,7 @@ import org.junit.Test;
 
 /**
  * This test shows the behaviour of a thread-unsafe class in a multithreaded scenario. We are calling
- * the increment methods 1000 times from a pool of 3 threads. In most of the cases, the counter will 
+ * the increment methods 1000 times from a pool of 3 threads. In most of the cases, the counter will
  * less than 1000, because of lost updates, however, occasionally it may reach 1000, when no threads
  * called the method simultaneously. This may cause the build to fail occasionally. Hence excluding this
  * test from build by adding this in manual test
@@ -24,10 +24,10 @@ public class ThreadUnsafeCounterManualTest {
         UnsafeCounter unsafeCounter = new UnsafeCounter();
 
         IntStream.range(0, 1000)
-          .forEach(count -> service.submit(unsafeCounter::increment));
+                .forEach(count -> service.submit(unsafeCounter::increment));
         service.awaitTermination(100, TimeUnit.MILLISECONDS);
 
         assertEquals(1000, unsafeCounter.getValue());
     }
-    
+
 }

@@ -23,7 +23,7 @@ public class AdvancedCollaboratorIntegrationTest<MultiMock extends List<String> 
 
     @Tested
     private AdvancedCollaborator mock;
-    
+
     @Mocked
     private MultiMock multiMock;
 
@@ -68,8 +68,10 @@ public class AdvancedCollaboratorIntegrationTest<MultiMock extends List<String> 
     public void testMultipleInterfacesWholeTest() {
         new Expectations() {
             {
-                multiMock.get(5); result = "foo";
-                multiMock.compareTo((List<String>) any); result = 0;
+                multiMock.get(5);
+                result = "foo";
+                multiMock.compareTo((List<String>) any);
+                result = 0;
             }
         };
         assertEquals("foo", multiMock.get(5));
@@ -81,9 +83,11 @@ public class AdvancedCollaboratorIntegrationTest<MultiMock extends List<String> 
     public <M extends List<String> & Comparable<List<String>>> void testMultipleInterfacesOneMethod(@Mocked M mock) {
         new Expectations() {
             {
-                mock.get(5); result = "foo";
+                mock.get(5);
+                result = "foo";
                 mock.compareTo((List<String>) any);
-                result = 0; }
+                result = 0;
+            }
         };
         assertEquals("foo", mock.get(5));
         assertEquals(0, mock.compareTo(new ArrayList<>()));

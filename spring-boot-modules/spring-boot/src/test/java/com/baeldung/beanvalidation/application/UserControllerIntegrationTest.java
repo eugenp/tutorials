@@ -26,7 +26,7 @@ public class UserControllerIntegrationTest {
 
     @MockBean
     private UserRepository userRepository;
-    
+
     @Autowired
     UserController userController;
 
@@ -44,9 +44,9 @@ public class UserControllerIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON));
-    
+
     }
-    
+
     @Test
     public void whenPostRequestToUsersAndValidUser_thenCorrectResponse() throws Exception {
         MediaType textPlainUtf8 = new MediaType(MediaType.TEXT_PLAIN, Charset.forName("UTF-8"));
@@ -57,7 +57,7 @@ public class UserControllerIntegrationTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(textPlainUtf8));
     }
-    
+
     @Test
     public void whenPostRequestToUsersAndInValidUser_thenCorrectReponse() throws Exception {
         String user = "{\"name\": \"\", \"email\" : \"bob@domain.com\"}";

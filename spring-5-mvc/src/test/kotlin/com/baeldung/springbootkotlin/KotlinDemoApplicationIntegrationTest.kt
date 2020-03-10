@@ -12,41 +12,41 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @SpringBootTest(
-  classes = arrayOf(KotlinDemoApplication::class),
-  webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+        classes = arrayOf(KotlinDemoApplication::class),
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class KotlinDemoApplicationIntegrationTest {
 
-	@Autowired
-	lateinit var testRestTemplate: TestRestTemplate
+    @Autowired
+    lateinit var testRestTemplate: TestRestTemplate
 
-	@Test
-	fun whenCalled_thenShouldReturnHello() {
-		val result = testRestTemplate.withBasicAuth("user", "pass")
+    @Test
+    fun whenCalled_thenShouldReturnHello() {
+        val result = testRestTemplate.withBasicAuth("user", "pass")
                 .getForEntity("/hello", String::class.java)
 
-		assertNotNull(result)
-		assertEquals(HttpStatus.OK, result?.statusCode)
-		assertEquals("hello world", result?.body)
-	}
+        assertNotNull(result)
+        assertEquals(HttpStatus.OK, result?.statusCode)
+        assertEquals("hello world", result?.body)
+    }
 
-	@Test
-	fun whenCalled_thenShouldReturnHelloService() {
-		val result = testRestTemplate.withBasicAuth("user", "pass")
+    @Test
+    fun whenCalled_thenShouldReturnHelloService() {
+        val result = testRestTemplate.withBasicAuth("user", "pass")
                 .getForEntity("/hello-service", String::class.java)
 
-		assertNotNull(result)
-		assertEquals(HttpStatus.OK, result?.statusCode)
-		assertEquals(result?.body, "hello service")
-	}
+        assertNotNull(result)
+        assertEquals(HttpStatus.OK, result?.statusCode)
+        assertEquals(result?.body, "hello service")
+    }
 
-	@Test
-	fun whenCalled_thenShouldReturnJson() {
-		val result = testRestTemplate.withBasicAuth("user", "pass")
+    @Test
+    fun whenCalled_thenShouldReturnJson() {
+        val result = testRestTemplate.withBasicAuth("user", "pass")
                 .getForEntity("/hello-dto", HelloDto::class.java)
 
-		assertNotNull(result)
-		assertEquals(HttpStatus.OK, result?.statusCode)
-		assertEquals(result?.body, HelloDto("Hello from the dto"))
-	}
+        assertNotNull(result)
+        assertEquals(HttpStatus.OK, result?.statusCode)
+        assertEquals(result?.body, HelloDto("Hello from the dto"))
+    }
 
 }

@@ -24,29 +24,29 @@ public class MetricPollerManualTest {
         MemoryMetricObserver observer = new MemoryMetricObserver();
         PollRunnable pollRunnable = new PollRunnable(new JvmMetricPoller(), new BasicMetricFilter(true), observer);
         PollScheduler
-          .getInstance()
-          .start();
+                .getInstance()
+                .start();
         PollScheduler
-          .getInstance()
-          .addPoller(pollRunnable, 1, SECONDS);
+                .getInstance()
+                .addPoller(pollRunnable, 1, SECONDS);
 
         SECONDS.sleep(1);
 
         PollScheduler
-          .getInstance()
-          .stop();
+                .getInstance()
+                .stop();
         List<List<Metric>> metrics = observer.getObservations();
         assertThat(metrics, hasSize(greaterThanOrEqualTo(1)));
 
         List<String> args = metrics
-          .stream()
-          .filter(m -> !m.isEmpty())
-          .flatMap(ms -> ms
-            .stream()
-            .map(m -> m
-              .getConfig()
-              .getName()))
-          .collect(toList());
+                .stream()
+                .filter(m -> !m.isEmpty())
+                .flatMap(ms -> ms
+                        .stream()
+                        .map(m -> m
+                                .getConfig()
+                                .getName()))
+                .collect(toList());
         assertThat(args, hasItems("loadedClassCount", "initUsage", "maxUsage", "threadCount"));
     }
 

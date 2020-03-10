@@ -29,332 +29,334 @@
   
   ======================================================================
 -->
-<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
-  <start combine="choice">
-    <choice>
-      <ref name="db.sect1"/>
-      <ref name="db.sect2"/>
-      <ref name="db.sect3"/>
-      <ref name="db.sect4"/>
-      <ref name="db.sect5"/>
-    </choice>
-  </start>
-  <define name="db.toplevel.sections" combine="choice">
-    <oneOrMore>
-      <ref name="db.sect1"/>
-    </oneOrMore>
-    <zeroOrMore>
-      <ref name="db.simplesect"/>
-    </zeroOrMore>
-  </define>
-  <!-- ====================================================================== -->
-  <define name="db.sect1.sections">
-    <choice>
-      <group>
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook"
+         xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0"
+         xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
+    <start combine="choice">
+        <choice>
+            <ref name="db.sect1"/>
+            <ref name="db.sect2"/>
+            <ref name="db.sect3"/>
+            <ref name="db.sect4"/>
+            <ref name="db.sect5"/>
+        </choice>
+    </start>
+    <define name="db.toplevel.sections" combine="choice">
         <oneOrMore>
-          <ref name="db.sect2"/>
+            <ref name="db.sect1"/>
         </oneOrMore>
         <zeroOrMore>
-          <ref name="db.simplesect"/>
+            <ref name="db.simplesect"/>
         </zeroOrMore>
-      </group>
-      <oneOrMore>
-        <ref name="db.simplesect"/>
-      </oneOrMore>
-    </choice>
-  </define>
-  <div>
-    <db:refname>sect1</db:refname>
-    <db:refpurpose>A top-level section of document</db:refpurpose>
-    <define name="db.sect1.status.attribute">
-      <ref name="db.status.attribute"/>
     </define>
-    <define name="db.sect1.role.attribute">
-      <attribute name="role"/>
-    </define>
-    <define name="db.sect1.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.sect1.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <ref name="db.common.linking.attributes"/>
-        <optional>
-          <ref name="db.label.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.sect1.status.attribute"/>
-        </optional>
-      </interleave>
-    </define>
-    <define name="db.sect1.info">
-      <ref name="db._info.title.req"/>
-    </define>
-    <define name="db.sect1">
-      <element name="sect1">
-        <ref name="db.sect1.attlist"/>
-        <ref name="db.sect1.info"/>
+    <!-- ====================================================================== -->
+    <define name="db.sect1.sections">
         <choice>
-          <group>
+            <group>
+                <oneOrMore>
+                    <ref name="db.sect2"/>
+                </oneOrMore>
+                <zeroOrMore>
+                    <ref name="db.simplesect"/>
+                </zeroOrMore>
+            </group>
             <oneOrMore>
-              <ref name="db.all.blocks"/>
+                <ref name="db.simplesect"/>
             </oneOrMore>
-            <optional>
-              <ref name="db.sect1.sections"/>
-            </optional>
-          </group>
-          <ref name="db.sect1.sections"/>
         </choice>
-        <zeroOrMore>
-          <ref name="db.navigation.components"/>
-        </zeroOrMore>
-      </element>
     </define>
-  </div>
-  <!-- ====================================================================== -->
-  <define name="db.sect2.sections">
-    <choice>
-      <group>
+    <div>
+        <db:refname>sect1</db:refname>
+        <db:refpurpose>A top-level section of document</db:refpurpose>
+        <define name="db.sect1.status.attribute">
+            <ref name="db.status.attribute"/>
+        </define>
+        <define name="db.sect1.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.sect1.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.sect1.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <ref name="db.common.linking.attributes"/>
+                <optional>
+                    <ref name="db.label.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.sect1.status.attribute"/>
+                </optional>
+            </interleave>
+        </define>
+        <define name="db.sect1.info">
+            <ref name="db._info.title.req"/>
+        </define>
+        <define name="db.sect1">
+            <element name="sect1">
+                <ref name="db.sect1.attlist"/>
+                <ref name="db.sect1.info"/>
+                <choice>
+                    <group>
+                        <oneOrMore>
+                            <ref name="db.all.blocks"/>
+                        </oneOrMore>
+                        <optional>
+                            <ref name="db.sect1.sections"/>
+                        </optional>
+                    </group>
+                    <ref name="db.sect1.sections"/>
+                </choice>
+                <zeroOrMore>
+                    <ref name="db.navigation.components"/>
+                </zeroOrMore>
+            </element>
+        </define>
+    </div>
+    <!-- ====================================================================== -->
+    <define name="db.sect2.sections">
+        <choice>
+            <group>
+                <oneOrMore>
+                    <ref name="db.sect3"/>
+                </oneOrMore>
+                <zeroOrMore>
+                    <ref name="db.simplesect"/>
+                </zeroOrMore>
+            </group>
+            <oneOrMore>
+                <ref name="db.simplesect"/>
+            </oneOrMore>
+        </choice>
+    </define>
+    <div>
+        <db:refname>sect2</db:refname>
+        <db:refpurpose>A subsection within a sect1</db:refpurpose>
+        <define name="db.sect2.status.attribute">
+            <ref name="db.status.attribute"/>
+        </define>
+        <define name="db.sect2.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.sect2.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.sect2.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <ref name="db.common.linking.attributes"/>
+                <optional>
+                    <ref name="db.label.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.sect2.status.attribute"/>
+                </optional>
+            </interleave>
+        </define>
+        <define name="db.sect2.info">
+            <ref name="db._info.title.req"/>
+        </define>
+        <define name="db.sect2">
+            <element name="sect2">
+                <ref name="db.sect2.attlist"/>
+                <ref name="db.sect2.info"/>
+                <choice>
+                    <group>
+                        <oneOrMore>
+                            <ref name="db.all.blocks"/>
+                        </oneOrMore>
+                        <optional>
+                            <ref name="db.sect2.sections"/>
+                        </optional>
+                    </group>
+                    <ref name="db.sect2.sections"/>
+                </choice>
+                <zeroOrMore>
+                    <ref name="db.navigation.components"/>
+                </zeroOrMore>
+            </element>
+        </define>
+    </div>
+    <!-- ====================================================================== -->
+    <define name="db.sect3.sections">
+        <choice>
+            <group>
+                <oneOrMore>
+                    <ref name="db.sect4"/>
+                </oneOrMore>
+                <zeroOrMore>
+                    <ref name="db.simplesect"/>
+                </zeroOrMore>
+            </group>
+            <oneOrMore>
+                <ref name="db.simplesect"/>
+            </oneOrMore>
+        </choice>
+    </define>
+    <div>
+        <db:refname>sect3</db:refname>
+        <db:refpurpose>A subsection within a sect2</db:refpurpose>
+        <define name="db.sect3.status.attribute">
+            <ref name="db.status.attribute"/>
+        </define>
+        <define name="db.sect3.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.sect3.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.sect3.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <ref name="db.common.linking.attributes"/>
+                <optional>
+                    <ref name="db.label.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.sect3.status.attribute"/>
+                </optional>
+            </interleave>
+        </define>
+        <define name="db.sect3.info">
+            <ref name="db._info.title.req"/>
+        </define>
+        <define name="db.sect3">
+            <element name="sect3">
+                <ref name="db.sect3.attlist"/>
+                <ref name="db.sect3.info"/>
+                <choice>
+                    <group>
+                        <oneOrMore>
+                            <ref name="db.all.blocks"/>
+                        </oneOrMore>
+                        <optional>
+                            <ref name="db.sect3.sections"/>
+                        </optional>
+                    </group>
+                    <ref name="db.sect3.sections"/>
+                </choice>
+                <zeroOrMore>
+                    <ref name="db.navigation.components"/>
+                </zeroOrMore>
+            </element>
+        </define>
+    </div>
+    <!-- ====================================================================== -->
+    <define name="db.sect4.sections">
+        <choice>
+            <group>
+                <oneOrMore>
+                    <ref name="db.sect5"/>
+                </oneOrMore>
+                <zeroOrMore>
+                    <ref name="db.simplesect"/>
+                </zeroOrMore>
+            </group>
+            <oneOrMore>
+                <ref name="db.simplesect"/>
+            </oneOrMore>
+        </choice>
+    </define>
+    <div>
+        <db:refname>sect4</db:refname>
+        <db:refpurpose>A subsection within a sect3</db:refpurpose>
+        <define name="db.sect4.status.attribute">
+            <ref name="db.status.attribute"/>
+        </define>
+        <define name="db.sect4.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.sect4.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.sect4.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <ref name="db.common.linking.attributes"/>
+                <optional>
+                    <ref name="db.label.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.sect4.status.attribute"/>
+                </optional>
+            </interleave>
+        </define>
+        <define name="db.sect4.info">
+            <ref name="db._info.title.req"/>
+        </define>
+        <define name="db.sect4">
+            <element name="sect4">
+                <ref name="db.sect4.attlist"/>
+                <ref name="db.sect4.info"/>
+                <choice>
+                    <group>
+                        <oneOrMore>
+                            <ref name="db.all.blocks"/>
+                        </oneOrMore>
+                        <optional>
+                            <ref name="db.sect4.sections"/>
+                        </optional>
+                    </group>
+                    <ref name="db.sect4.sections"/>
+                </choice>
+                <zeroOrMore>
+                    <ref name="db.navigation.components"/>
+                </zeroOrMore>
+            </element>
+        </define>
+    </div>
+    <!-- ====================================================================== -->
+    <define name="db.sect5.sections">
         <oneOrMore>
-          <ref name="db.sect3"/>
+            <ref name="db.simplesect"/>
         </oneOrMore>
-        <zeroOrMore>
-          <ref name="db.simplesect"/>
-        </zeroOrMore>
-      </group>
-      <oneOrMore>
-        <ref name="db.simplesect"/>
-      </oneOrMore>
-    </choice>
-  </define>
-  <div>
-    <db:refname>sect2</db:refname>
-    <db:refpurpose>A subsection within a sect1</db:refpurpose>
-    <define name="db.sect2.status.attribute">
-      <ref name="db.status.attribute"/>
     </define>
-    <define name="db.sect2.role.attribute">
-      <attribute name="role"/>
-    </define>
-    <define name="db.sect2.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.sect2.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <ref name="db.common.linking.attributes"/>
-        <optional>
-          <ref name="db.label.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.sect2.status.attribute"/>
-        </optional>
-      </interleave>
-    </define>
-    <define name="db.sect2.info">
-      <ref name="db._info.title.req"/>
-    </define>
-    <define name="db.sect2">
-      <element name="sect2">
-        <ref name="db.sect2.attlist"/>
-        <ref name="db.sect2.info"/>
-        <choice>
-          <group>
-            <oneOrMore>
-              <ref name="db.all.blocks"/>
-            </oneOrMore>
-            <optional>
-              <ref name="db.sect2.sections"/>
-            </optional>
-          </group>
-          <ref name="db.sect2.sections"/>
-        </choice>
-        <zeroOrMore>
-          <ref name="db.navigation.components"/>
-        </zeroOrMore>
-      </element>
-    </define>
-  </div>
-  <!-- ====================================================================== -->
-  <define name="db.sect3.sections">
-    <choice>
-      <group>
-        <oneOrMore>
-          <ref name="db.sect4"/>
-        </oneOrMore>
-        <zeroOrMore>
-          <ref name="db.simplesect"/>
-        </zeroOrMore>
-      </group>
-      <oneOrMore>
-        <ref name="db.simplesect"/>
-      </oneOrMore>
-    </choice>
-  </define>
-  <div>
-    <db:refname>sect3</db:refname>
-    <db:refpurpose>A subsection within a sect2</db:refpurpose>
-    <define name="db.sect3.status.attribute">
-      <ref name="db.status.attribute"/>
-    </define>
-    <define name="db.sect3.role.attribute">
-      <attribute name="role"/>
-    </define>
-    <define name="db.sect3.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.sect3.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <ref name="db.common.linking.attributes"/>
-        <optional>
-          <ref name="db.label.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.sect3.status.attribute"/>
-        </optional>
-      </interleave>
-    </define>
-    <define name="db.sect3.info">
-      <ref name="db._info.title.req"/>
-    </define>
-    <define name="db.sect3">
-      <element name="sect3">
-        <ref name="db.sect3.attlist"/>
-        <ref name="db.sect3.info"/>
-        <choice>
-          <group>
-            <oneOrMore>
-              <ref name="db.all.blocks"/>
-            </oneOrMore>
-            <optional>
-              <ref name="db.sect3.sections"/>
-            </optional>
-          </group>
-          <ref name="db.sect3.sections"/>
-        </choice>
-        <zeroOrMore>
-          <ref name="db.navigation.components"/>
-        </zeroOrMore>
-      </element>
-    </define>
-  </div>
-  <!-- ====================================================================== -->
-  <define name="db.sect4.sections">
-    <choice>
-      <group>
-        <oneOrMore>
-          <ref name="db.sect5"/>
-        </oneOrMore>
-        <zeroOrMore>
-          <ref name="db.simplesect"/>
-        </zeroOrMore>
-      </group>
-      <oneOrMore>
-        <ref name="db.simplesect"/>
-      </oneOrMore>
-    </choice>
-  </define>
-  <div>
-    <db:refname>sect4</db:refname>
-    <db:refpurpose>A subsection within a sect3</db:refpurpose>
-    <define name="db.sect4.status.attribute">
-      <ref name="db.status.attribute"/>
-    </define>
-    <define name="db.sect4.role.attribute">
-      <attribute name="role"/>
-    </define>
-    <define name="db.sect4.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.sect4.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <ref name="db.common.linking.attributes"/>
-        <optional>
-          <ref name="db.label.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.sect4.status.attribute"/>
-        </optional>
-      </interleave>
-    </define>
-    <define name="db.sect4.info">
-      <ref name="db._info.title.req"/>
-    </define>
-    <define name="db.sect4">
-      <element name="sect4">
-        <ref name="db.sect4.attlist"/>
-        <ref name="db.sect4.info"/>
-        <choice>
-          <group>
-            <oneOrMore>
-              <ref name="db.all.blocks"/>
-            </oneOrMore>
-            <optional>
-              <ref name="db.sect4.sections"/>
-            </optional>
-          </group>
-          <ref name="db.sect4.sections"/>
-        </choice>
-        <zeroOrMore>
-          <ref name="db.navigation.components"/>
-        </zeroOrMore>
-      </element>
-    </define>
-  </div>
-  <!-- ====================================================================== -->
-  <define name="db.sect5.sections">
-    <oneOrMore>
-      <ref name="db.simplesect"/>
-    </oneOrMore>
-  </define>
-  <div>
-    <db:refname>sect5</db:refname>
-    <db:refpurpose>A subsection within a sect4</db:refpurpose>
-    <define name="db.sect5.status.attribute">
-      <ref name="db.status.attribute"/>
-    </define>
-    <define name="db.sect5.role.attribute">
-      <attribute name="role"/>
-    </define>
-    <define name="db.sect5.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.sect5.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <ref name="db.common.linking.attributes"/>
-        <optional>
-          <ref name="db.label.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.sect5.status.attribute"/>
-        </optional>
-      </interleave>
-    </define>
-    <define name="db.sect5.info">
-      <ref name="db._info.title.req"/>
-    </define>
-    <define name="db.sect5">
-      <element name="sect5">
-        <ref name="db.sect5.attlist"/>
-        <ref name="db.sect5.info"/>
-        <choice>
-          <group>
-            <oneOrMore>
-              <ref name="db.all.blocks"/>
-            </oneOrMore>
-            <optional>
-              <ref name="db.sect5.sections"/>
-            </optional>
-          </group>
-          <ref name="db.sect5.sections"/>
-        </choice>
-        <zeroOrMore>
-          <ref name="db.navigation.components"/>
-        </zeroOrMore>
-      </element>
-    </define>
-  </div>
+    <div>
+        <db:refname>sect5</db:refname>
+        <db:refpurpose>A subsection within a sect4</db:refpurpose>
+        <define name="db.sect5.status.attribute">
+            <ref name="db.status.attribute"/>
+        </define>
+        <define name="db.sect5.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.sect5.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.sect5.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <ref name="db.common.linking.attributes"/>
+                <optional>
+                    <ref name="db.label.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.sect5.status.attribute"/>
+                </optional>
+            </interleave>
+        </define>
+        <define name="db.sect5.info">
+            <ref name="db._info.title.req"/>
+        </define>
+        <define name="db.sect5">
+            <element name="sect5">
+                <ref name="db.sect5.attlist"/>
+                <ref name="db.sect5.info"/>
+                <choice>
+                    <group>
+                        <oneOrMore>
+                            <ref name="db.all.blocks"/>
+                        </oneOrMore>
+                        <optional>
+                            <ref name="db.sect5.sections"/>
+                        </optional>
+                    </group>
+                    <ref name="db.sect5.sections"/>
+                </choice>
+                <zeroOrMore>
+                    <ref name="db.navigation.components"/>
+                </zeroOrMore>
+            </element>
+        </define>
+    </div>
 </grammar>

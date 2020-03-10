@@ -61,8 +61,8 @@ public class QueryTypesExamples {
         CriteriaQuery<UserEntity> criteriaQuery = criteriaBuilder.createQuery(UserEntity.class);
         Root<UserEntity> userRoot = criteriaQuery.from(UserEntity.class);
         UserEntity queryResult = getEntityManager().createQuery(criteriaQuery.select(userRoot)
-            .where(criteriaBuilder.equal(userRoot.get("id"), id)))
-            .getSingleResult();
+                .where(criteriaBuilder.equal(userRoot.get("id"), id)))
+                .getSingleResult();
         return queryResult;
     }
 

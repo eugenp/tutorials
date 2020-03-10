@@ -11,21 +11,21 @@ import reactor.core.publisher.Mono;
 public class Handler3 {
 
     public Mono<ServerResponse> handleRequest3(ServerRequest request) {
-        return 
-            sayHello(request)
-              .flatMap(s -> ServerResponse.ok()
-                        .contentType(MediaType.TEXT_PLAIN)
-                        .syncBody(s))
-              .onErrorResume(e -> (Mono.just("Hi, I looked around for your name but found: " + 
-                    e.getMessage())).flatMap(s -> ServerResponse.ok()
-                .contentType(MediaType.TEXT_PLAIN)
-                .syncBody(s)));
+        return
+                sayHello(request)
+                        .flatMap(s -> ServerResponse.ok()
+                                .contentType(MediaType.TEXT_PLAIN)
+                                .syncBody(s))
+                        .onErrorResume(e -> (Mono.just("Hi, I looked around for your name but found: " +
+                                e.getMessage())).flatMap(s -> ServerResponse.ok()
+                                .contentType(MediaType.TEXT_PLAIN)
+                                .syncBody(s)));
     }
 
     private Mono<String> sayHello(ServerRequest request) {
         try {
             return Mono.just("Hello, " + request.queryParam("name")
-                .get());
+                    .get());
         } catch (Exception e) {
             return Mono.error(e);
         }

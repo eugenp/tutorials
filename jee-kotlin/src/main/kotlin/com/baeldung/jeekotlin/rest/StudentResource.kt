@@ -22,7 +22,7 @@ open class StudentResource {
     @GET
     @Path("/{id}")
     open fun read(@PathParam("id") id: Long): Response {
-        val student  = service.read(id)
+        val student = service.read(id)
         return Response.ok(student, MediaType.APPLICATION_JSON_TYPE).build()
     }
 

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { AccountService } from 'app/core';
+import {AccountService} from 'app/core';
 
 @Component({
     selector: 'jhi-settings',
@@ -12,7 +12,8 @@ export class SettingsComponent implements OnInit {
     settingsAccount: any;
     languages: any[];
 
-    constructor(private accountService: AccountService) {}
+    constructor(private accountService: AccountService) {
+    }
 
     ngOnInit() {
         this.accountService.identity().then(account => {

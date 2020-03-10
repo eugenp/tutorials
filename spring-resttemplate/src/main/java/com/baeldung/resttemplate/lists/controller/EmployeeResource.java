@@ -14,33 +14,28 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employees")
-public class EmployeeResource
-{
+public class EmployeeResource {
     @Autowired
     private EmployeeService employeeService;
 
     @RequestMapping(method = RequestMethod.GET, path = "/")
-    public List<Employee> getEmployees()
-    {
+    public List<Employee> getEmployees() {
         return employeeService.getAllEmployees();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/v2")
-    public EmployeeList getEmployeesUsingWrapperClass()
-    {
+    public EmployeeList getEmployeesUsingWrapperClass() {
         List<Employee> employees = employeeService.getAllEmployees();
         return new EmployeeList(employees);
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/")
-    public void addEmployees(@RequestBody List<Employee> employees)
-    {
+    public void addEmployees(@RequestBody List<Employee> employees) {
         employeeService.addEmployees(employees);
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/v2")
-    public void addEmployeesUsingWrapperClass(@RequestBody EmployeeList employeeWrapper)
-    {
+    public void addEmployeesUsingWrapperClass(@RequestBody EmployeeList employeeWrapper) {
         employeeService.addEmployees(employeeWrapper.getEmployees());
     }
 }

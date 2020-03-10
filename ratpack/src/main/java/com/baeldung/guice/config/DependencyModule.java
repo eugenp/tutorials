@@ -7,10 +7,10 @@ import com.google.inject.Scopes;
 
 public class DependencyModule extends AbstractModule {
 
-	@Override
-	protected void configure() {
-		bind(DataPumpService.class).to(DataPumpServiceImpl.class)
-		  .in(Scopes.SINGLETON);
-	}
+    @Override
+    protected void configure() {
+        bind(DataPumpService.class).to(DataPumpServiceImpl.class)
+                .in(Scopes.SINGLETON);
+    }
 
 }

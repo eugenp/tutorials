@@ -12,7 +12,7 @@ public class ParameterizedThreadExample {
             @Override
             public void run() {
                 System.out.println(Thread.currentThread()
-                    .getName() + " : " + parameter);
+                        .getName() + " : " + parameter);
             }
         });
 
@@ -21,12 +21,12 @@ public class ParameterizedThreadExample {
 
     public static Callable<Integer> sumCalculator(int... numbers) {
         return () -> numbers != null ? IntStream.of(numbers)
-            .sum() : 0;
+                .sum() : 0;
     }
 
     public static Callable<Double> averageCalculator(int... numbers) {
         return () -> numbers != null ? IntStream.of(numbers)
-            .average()
-            .orElse(0d) : 0d;
+                .average()
+                .orElse(0d) : 0d;
     }
 }

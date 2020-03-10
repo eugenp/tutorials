@@ -16,7 +16,7 @@ public class StudentDirectoryRestController {
     @Autowired
     private StudentService service;
 
-    @RequestMapping(value = "/student/get", params = { "page", "size" }, method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/student/get", params = {"page", "size"}, method = RequestMethod.GET, produces = "application/json")
     public Page<Student> findPaginated(@RequestParam("page") int page, @RequestParam("size") int size) {
 
         Page<Student> resultPage = service.findPaginated(page, size);

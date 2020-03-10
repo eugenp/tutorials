@@ -40,9 +40,9 @@ public class CustomerRestController {
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
         Customer customerCreated = customerService.createCustomer(customer);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                                                  .path("/{id}")
-                                                  .buildAndExpand(customerCreated.getId())
-                                                  .toUri();
+                .path("/{id}")
+                .buildAndExpand(customerCreated.getId())
+                .toUri();
         return ResponseEntity.created(location).build();
     }
 

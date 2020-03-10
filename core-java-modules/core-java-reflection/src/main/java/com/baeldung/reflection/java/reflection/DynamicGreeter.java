@@ -3,7 +3,7 @@ package com.baeldung.java.reflection;
 import java.lang.annotation.Annotation;
 
 public class DynamicGreeter implements Greeter {
-    
+
     private String greet;
 
     public DynamicGreeter(String greet) {

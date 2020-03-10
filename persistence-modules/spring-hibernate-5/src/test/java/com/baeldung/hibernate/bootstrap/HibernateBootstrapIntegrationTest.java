@@ -19,7 +19,7 @@ import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { HibernateConf.class })
+@ContextConfiguration(classes = {HibernateConf.class})
 @Transactional
 public class HibernateBootstrapIntegrationTest {
 

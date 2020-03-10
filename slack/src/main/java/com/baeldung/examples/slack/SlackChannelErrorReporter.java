@@ -21,10 +21,10 @@ public class SlackChannelErrorReporter implements ErrorReporter {
     public void reportProblem(String problem) {
         LOG.debug("Sending message to channel {}: {}", channel, problem);
         slackClient.postMessage(
-            ChatPostMessageParams.builder()
-                .setText(problem)
-                .setChannelId(channel)
-                .build()
+                ChatPostMessageParams.builder()
+                        .setText(problem)
+                        .setChannelId(channel)
+                        .build()
         ).join().unwrapOrElseThrow();
     }
 }

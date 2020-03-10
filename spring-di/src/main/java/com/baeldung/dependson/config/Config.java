@@ -15,24 +15,24 @@ import com.baeldung.dependson.shared.File;
 @Configuration
 @ComponentScan("com.baeldung.dependson")
 public class Config {
-    
+
     @Autowired
     File file;
-    
+
     @Bean("fileProcessor")
-    @DependsOn({"fileReader","fileWriter"})
+    @DependsOn({"fileReader", "fileWriter"})
     @Lazy
-    public FileProcessor fileProcessor(){
+    public FileProcessor fileProcessor() {
         return new FileProcessor(file);
     }
-    
+
     @Bean("fileReader")
-    public FileReader fileReader(){
+    public FileReader fileReader() {
         return new FileReader(file);
     }
-    
+
     @Bean("fileWriter")
-    public FileWriter fileWriter(){
+    public FileWriter fileWriter() {
         return new FileWriter(file);
     }
 }

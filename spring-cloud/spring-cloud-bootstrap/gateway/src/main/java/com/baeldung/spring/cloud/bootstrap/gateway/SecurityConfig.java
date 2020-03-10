@@ -14,24 +14,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-            .withUser("user").password("password").roles("USER")
+                .withUser("user").password("password").roles("USER")
                 .and()
-            .withUser("admin").password("admin").roles("ADMIN");
+                .withUser("admin").password("admin").roles("ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .formLogin()
-            .defaultSuccessUrl("/home/index.html", true)
-            .and()
-        .authorizeRequests()
-            .antMatchers("/book-service/**", "/rating-service/**", "/login*", "/").permitAll()
-            .antMatchers("/eureka/**").hasRole("ADMIN")
-            .anyRequest().authenticated()
-            .and()
-        .logout()
-            .and()
-        .csrf().disable();
+                .formLogin()
+                .defaultSuccessUrl("/home/index.html", true)
+                .and()
+                .authorizeRequests()
+                .antMatchers("/book-service/**", "/rating-service/**", "/login*", "/").permitAll()
+                .antMatchers("/eureka/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+                .and()
+                .logout()
+                .and()
+                .csrf().disable();
     }
 }

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {Component, OnInit} from '@angular/core';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
-import { JhiMetricsMonitoringModalComponent } from './metrics-modal.component';
-import { JhiMetricsService } from './metrics.service';
+import {JhiMetricsMonitoringModalComponent} from './metrics-modal.component';
+import {JhiMetricsService} from './metrics.service';
 
 @Component({
     selector: 'jhi-metrics',
@@ -55,7 +55,7 @@ export class JhiMetricsMonitoringComponent implements OnInit {
 
     refreshThreadDumpData() {
         this.metricsService.threadDump().subscribe(data => {
-            const modalRef = this.modalService.open(JhiMetricsMonitoringModalComponent, { size: 'lg' });
+            const modalRef = this.modalService.open(JhiMetricsMonitoringModalComponent, {size: 'lg'});
             modalRef.componentInstance.threadDump = data.threads;
             modalRef.result.then(
                 result => {

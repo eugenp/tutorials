@@ -21,10 +21,10 @@ public class BasicMathController {
         httpHeaders.add("Content-Type", "application/json");
 
         ResponseEntity<String> responseEntity = restTemplate.exchange(
-          "http://localhost:8090/validate/prime-number?number=" + number,
-          HttpMethod.GET,
-          new HttpEntity<>(httpHeaders),
-          String.class);
+                "http://localhost:8090/validate/prime-number?number=" + number,
+                HttpMethod.GET,
+                new HttpEntity<>(httpHeaders),
+                String.class);
 
         return responseEntity.getBody();
     }

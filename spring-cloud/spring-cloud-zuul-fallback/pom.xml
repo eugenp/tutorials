@@ -25,5 +25,5 @@
         <spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
         <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
     </properties>
-    
+
 </project>

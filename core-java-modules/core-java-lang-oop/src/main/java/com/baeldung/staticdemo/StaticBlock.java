@@ -11,7 +11,7 @@ public class StaticBlock {
         ranks.add("Captain");
         ranks.add("Major");
     }
-    
+
     static {
         ranks.add("Colonel");
         ranks.add("General");

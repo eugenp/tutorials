@@ -20,16 +20,16 @@ public class UserControllerLiveTest {
     public void givenExisting_whenRequestPrincipal_thenRetrieveData() throws Exception {
         SessionFilter filter = new SessionFilter();
         given().auth()
-            .form("user", "pass", new FormAuthConfig("/login", "username", "password").withCsrfFieldName("_csrf"))
-            .and()
-            .filter(filter)
-            .when()
-            .get(PRINCIPAL_SVC_URL)
-            .then()
-            .statusCode(HttpStatus.OK.value())
-            .and()
-            .body("authorities[0].authority", is("ROLE_USER"))
-            .body("principal.username", is("user"))
-            .body("name", is("user"));
+                .form("user", "pass", new FormAuthConfig("/login", "username", "password").withCsrfFieldName("_csrf"))
+                .and()
+                .filter(filter)
+                .when()
+                .get(PRINCIPAL_SVC_URL)
+                .then()
+                .statusCode(HttpStatus.OK.value())
+                .and()
+                .body("authorities[0].authority", is("ROLE_USER"))
+                .body("principal.username", is("user"))
+                .body("name", is("user"));
     }
 }

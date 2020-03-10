@@ -24,8 +24,8 @@ public class WarnLogsCounter implements LogsCounter {
     public WarnLogsCounter(ReactiveMongoOperations template) {
         Flux<Log> stream = template.tail(query(where(LEVEL_FIELD_NAME).is(LogLevel.WARN)), Log.class);
         subscription = stream.subscribe(logEntity -> {
-          log.warn("WARN log received: " + logEntity);
-          counter.incrementAndGet();
+            log.warn("WARN log received: " + logEntity);
+            counter.incrementAndGet();
         });
     }
 

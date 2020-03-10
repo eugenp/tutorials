@@ -102,7 +102,7 @@ public class OAuth2AuthenticationServiceTest {
         formParams.add("grant_type", "password");
         HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(formParams, reqHeaders);
         when(restTemplate.postForEntity("http://uaa/oauth/token", entity, OAuth2AccessToken.class))
-            .thenThrow(new HttpClientErrorException(HttpStatus.BAD_REQUEST));
+                .thenThrow(new HttpClientErrorException(HttpStatus.BAD_REQUEST));
     }
 
     private void mockPasswordGrant(OAuth2AccessToken accessToken) {
@@ -115,7 +115,7 @@ public class OAuth2AuthenticationServiceTest {
         formParams.add("grant_type", "password");
         HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(formParams, reqHeaders);
         when(restTemplate.postForEntity("http://uaa/oauth/token", entity, OAuth2AccessToken.class))
-            .thenReturn(new ResponseEntity<OAuth2AccessToken>(accessToken, HttpStatus.OK));
+                .thenReturn(new ResponseEntity<OAuth2AccessToken>(accessToken, HttpStatus.OK));
     }
 
     private void mockRefreshGrant() {
@@ -128,7 +128,7 @@ public class OAuth2AuthenticationServiceTest {
         HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(params, headers);
         OAuth2AccessToken newAccessToken = createAccessToken(NEW_ACCESS_TOKEN_VALUE, NEW_REFRESH_TOKEN_VALUE);
         when(restTemplate.postForEntity("http://uaa/oauth/token", entity, OAuth2AccessToken.class))
-            .thenReturn(new ResponseEntity<OAuth2AccessToken>(newAccessToken, HttpStatus.OK));
+                .thenReturn(new ResponseEntity<OAuth2AccessToken>(newAccessToken, HttpStatus.OK));
     }
 
     @Test

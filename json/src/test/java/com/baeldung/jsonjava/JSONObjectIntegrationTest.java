@@ -15,9 +15,9 @@ public class JSONObjectIntegrationTest {
         jo.put("name", "jon doe");
         jo.put("age", "22");
         jo.put("city", "chicago");
-             
+
         assertEquals("{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}", jo.toString());
-        
+
     }
 
     @Test
@@ -27,16 +27,16 @@ public class JSONObjectIntegrationTest {
         map.put("age", "22");
         map.put("city", "chicago");
         JSONObject jo = new JSONObject(map);
-         
+
         assertEquals("{\"name\":\"jon doe\",\"city\":\"chicago\",\"age\":\"22\"}", jo.toString());
     }
 
     @Test
     public void givenJsonString_thenCreateJSONObject() {
         JSONObject jo = new JSONObject(
-          "{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}"
+                "{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}"
         );
-        
+
         assertEquals("{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}", jo.toString());
     }
 }

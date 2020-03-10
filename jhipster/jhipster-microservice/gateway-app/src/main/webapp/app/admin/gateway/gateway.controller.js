@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     GatewayController.$inject = ['$filter', '$interval', 'GatewayRoutes'];
 
-    function GatewayController ($filter, $interval, GatewayRoutes) {
+    function GatewayController($filter, $interval, GatewayRoutes) {
         var vm = this;
 
         vm.gatewayRoutes = null;
@@ -16,9 +16,9 @@
 
         vm.refresh();
 
-        function refresh () {
+        function refresh() {
             vm.updatingRoutes = true;
-            GatewayRoutes.query(function(result) {
+            GatewayRoutes.query(function (result) {
                 vm.gatewayRoutes = result;
                 vm.updatingRoutes = false;
             });

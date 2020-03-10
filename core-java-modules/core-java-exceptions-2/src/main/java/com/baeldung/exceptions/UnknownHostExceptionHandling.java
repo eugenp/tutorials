@@ -13,12 +13,12 @@ public class UnknownHostExceptionHandling {
         int resCode = -1;
         try {
             resCode = con.getResponseCode();
-        } catch (UnknownHostException e){
+        } catch (UnknownHostException e) {
             con.disconnect();
         }
         return resCode;
     }
-    
+
     public static int getResponseCodeUnhandled(String hostname) throws IOException {
         URL url = new URL(hostname.trim());
         HttpURLConnection con = (HttpURLConnection) url.openConnection();

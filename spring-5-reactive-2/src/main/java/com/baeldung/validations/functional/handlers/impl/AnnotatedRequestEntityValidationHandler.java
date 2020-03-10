@@ -23,7 +23,7 @@ public class AnnotatedRequestEntityValidationHandler extends AbstractValidationH
     protected Mono<ServerResponse> processBody(AnnotatedRequestEntity validBody, ServerRequest originalRequest) {
         String responseBody = String.format("Hi, %s. Password: %s!", validBody.getUser(), validBody.getPassword());
         return ServerResponse.ok()
-            .contentType(MediaType.APPLICATION_JSON)
-            .body(Mono.just(responseBody), String.class);
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Mono.just(responseBody), String.class);
     }
 }

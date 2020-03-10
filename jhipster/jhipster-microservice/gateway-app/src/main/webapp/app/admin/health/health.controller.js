@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     JhiHealthCheckController.$inject = ['JhiHealthService', '$uibModal'];
 
-    function JhiHealthCheckController (JhiHealthService, $uibModal) {
+    function JhiHealthCheckController(JhiHealthService, $uibModal) {
         var vm = this;
 
         vm.updatingHealth = true;
@@ -19,7 +19,7 @@
 
         vm.refresh();
 
-        function getLabelClass (statusState) {
+        function getLabelClass(statusState) {
             if (statusState === 'UP') {
                 return 'label-success';
             } else {
@@ -27,31 +27,31 @@
             }
         }
 
-        function refresh () {
+        function refresh() {
             vm.updatingHealth = true;
             JhiHealthService.checkHealth().then(function (response) {
                 vm.healthData = JhiHealthService.transformHealthData(response);
                 vm.updatingHealth = false;
             }, function (response) {
-                vm.healthData =  JhiHealthService.transformHealthData(response.data);
+                vm.healthData = JhiHealthService.transformHealthData(response.data);
                 vm.updatingHealth = false;
             });
         }
 
-        function showHealth (health) {
+        function showHealth(health) {
             $uibModal.open({
                 templateUrl: 'app/admin/health/health.modal.html',
                 controller: 'HealthModalController',
                 controllerAs: 'vm',
                 size: 'lg',
                 resolve: {
-                    currentHealth: function() {
+                    currentHealth: function () {
                         return health;
                     },
-                    baseName: function() {
+                    baseName: function () {
                         return vm.baseName;
                     },
-                    subSystemName: function() {
+                    subSystemName: function () {
                         return vm.subSystemName;
                     }
 

@@ -62,5 +62,5 @@
         <spring-cloud.version>Dalston.SR4</spring-cloud.version>
         <spring-cloud>2.0.1.RELEASE</spring-cloud>
     </properties>
-    
+
 </project>

@@ -21,7 +21,7 @@ public class ProgrammaticWithInitialFixedDelayTimerBean {
 
     @PostConstruct
     public void initialize() {
-        timerService.createTimer(10000l,5000l, "Delay 10 seconds then every 5 second timer");
+        timerService.createTimer(10000l, 5000l, "Delay 10 seconds then every 5 second timer");
     }
 
     @Timeout

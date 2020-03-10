@@ -10,7 +10,7 @@ import com.baeldung.autoconfiguration.example.AutoconfigurationApplication;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = AutoconfigurationApplication.class)
-@EnableJpaRepositories(basePackages = { "com.baeldung.autoconfiguration.example" })
+@EnableJpaRepositories(basePackages = {"com.baeldung.autoconfiguration.example"})
 public class SpringContextLiveTest {
 
     @Test

@@ -18,15 +18,15 @@ public class FilenameFilterManualTest {
     @BeforeClass
     public static void setupClass() {
         directory = new File(FilenameFilterManualTest.class.getClassLoader()
-            .getResource("fileNameFilterManualTestFolder")
-            .getFile());
+                .getResource("fileNameFilterManualTestFolder")
+                .getFile());
     }
 
     @Test
     public void whenFilteringFilesEndingWithJson_thenEqualExpectedFiles() {
         FilenameFilter filter = (dir, name) -> name.endsWith(".json");
 
-        String[] expectedFiles = { "people.json", "students.json" };
+        String[] expectedFiles = {"people.json", "students.json"};
         String[] actualFiles = directory.list(filter);
 
         Assert.assertArrayEquals(expectedFiles, actualFiles);
@@ -36,10 +36,10 @@ public class FilenameFilterManualTest {
     public void whenFilteringFilesEndingWithXml_thenEqualExpectedFiles() {
         Predicate<String> predicate = (name) -> name.endsWith(".xml");
 
-        String[] expectedFiles = { "teachers.xml", "workers.xml" };
+        String[] expectedFiles = {"teachers.xml", "workers.xml"};
         List<String> files = Arrays.stream(directory.list())
-            .filter(predicate)
-            .collect(Collectors.toList());
+                .filter(predicate)
+                .collect(Collectors.toList());
         String[] actualFiles = files.toArray(new String[files.size()]);
 
         Assert.assertArrayEquals(expectedFiles, actualFiles);

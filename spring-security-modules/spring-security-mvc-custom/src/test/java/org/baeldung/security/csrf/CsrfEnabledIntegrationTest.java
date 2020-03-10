@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 
-@ContextConfiguration(classes = { SecurityWithCsrfConfig.class, MvcConfig.class })
+@ContextConfiguration(classes = {SecurityWithCsrfConfig.class, MvcConfig.class})
 public class CsrfEnabledIntegrationTest extends CsrfAbstractIntegrationTest {
 
     @Test

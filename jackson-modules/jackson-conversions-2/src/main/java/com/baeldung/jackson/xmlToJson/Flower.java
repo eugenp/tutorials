@@ -8,7 +8,8 @@ public class Flower {
 
     private Integer petals;
 
-    public Flower() { }
+    public Flower() {
+    }
 
     public Flower(String name, Color color, Integer petals) {
         this.name = name;

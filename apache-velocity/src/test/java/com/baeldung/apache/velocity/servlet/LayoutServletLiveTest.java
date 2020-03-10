@@ -15,7 +15,7 @@ public class LayoutServletLiveTest {
     public void whenRequestUsingHttpClient_thenCorrectResponse() throws Exception {
 
         HttpClient client = new DefaultHttpClient();
-        HttpGet method= new HttpGet("http://localhost:8080/layout");
+        HttpGet method = new HttpGet("http://localhost:8080/layout");
 
         HttpResponse httpResponse = client.execute(method);
 

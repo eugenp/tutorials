@@ -1,15 +1,15 @@
 package com.baeldung.forEach
 
 
-class Country(val name : String, val cities : List<City>)
+class Country(val name: String, val cities: List<City>)
 
-class City(val name : String, val streets : List<String>)
+class City(val name: String, val streets: List<String>)
 
-fun City.getStreetsWithCityName() : List<String> {
+fun City.getStreetsWithCityName(): List<String> {
     return streets.map { "$name, $it" }.toList()
 }
 
-fun Country.getCitiesWithCountryName() : List<String> {
+fun Country.getCitiesWithCountryName(): List<String> {
     return cities.flatMap { it.getStreetsWithCityName() }
             .map { "$name, $it" }
 }
@@ -17,7 +17,7 @@ fun Country.getCitiesWithCountryName() : List<String> {
 class World {
 
     private val streetsOfAmsterdam = listOf("Herengracht", "Prinsengracht")
-    private val streetsOfBerlin = listOf("Unter den Linden","Tiergarten")
+    private val streetsOfBerlin = listOf("Unter den Linden", "Tiergarten")
     private val streetsOfMaastricht = listOf("Grote Gracht", "Vrijthof")
     private val countries = listOf(
             Country("Netherlands", listOf(City("Maastricht", streetsOfMaastricht),
@@ -57,8 +57,8 @@ class World {
 
     fun allStreetsFlatMap() {
 
-        countries.flatMap { it.cities}
-                .flatMap { it.streets}
+        countries.flatMap { it.cities }
+                .flatMap { it.streets }
                 .forEach { println(it) }
     }
 
@@ -69,7 +69,7 @@ class World {
     }
 }
 
-fun main(args : Array<String>) {
+fun main(args: Array<String>) {
 
     val world = World()
 

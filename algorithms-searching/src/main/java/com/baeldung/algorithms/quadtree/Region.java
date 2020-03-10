@@ -21,24 +21,24 @@ public class Region {
 
         // 0=SW, 1=NW, 2=NE, 3=SE
         switch (quadrantIndex) {
-        case 0:
-            return new Region(x1, y1, x1 + quadrantWidth, y1 + quadrantHeight);
-        case 1:
-            return new Region(x1, y1 + quadrantHeight, x1 + quadrantWidth, y2);
-        case 2:
-            return new Region(x1 + quadrantWidth, y1 + quadrantHeight, x2, y2);
-        case 3:
-            return new Region(x1 + quadrantWidth, y1, x2, y1 + quadrantHeight);
+            case 0:
+                return new Region(x1, y1, x1 + quadrantWidth, y1 + quadrantHeight);
+            case 1:
+                return new Region(x1, y1 + quadrantHeight, x1 + quadrantWidth, y2);
+            case 2:
+                return new Region(x1 + quadrantWidth, y1 + quadrantHeight, x2, y2);
+            case 3:
+                return new Region(x1 + quadrantWidth, y1, x2, y1 + quadrantHeight);
         }
         return null;
     }
 
     public boolean containsPoint(Point point) {
         // Consider left and top side to be inclusive for points on border
-        return point.getX() >= this.x1 
-            && point.getX() < this.x2 
-            && point.getY() >= this.y1 
-            && point.getY() < this.y2;
+        return point.getX() >= this.x1
+                && point.getX() < this.x2
+                && point.getY() >= this.y1
+                && point.getY() < this.y2;
     }
 
     public boolean doesOverlap(Region testRegion) {

@@ -21,8 +21,8 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-h2.properties" })
-@ComponentScan({ "com.baeldung.persistence" })
+@PropertySource({"classpath:persistence-h2.properties"})
+@ComponentScan({"com.baeldung.persistence"})
 public class PersistenceConfig {
 
     @Autowired
@@ -32,7 +32,7 @@ public class PersistenceConfig {
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+        sessionFactory.setPackagesToScan(new String[]{"com.baeldung.persistence.model"});
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;

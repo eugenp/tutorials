@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Random;
+
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
@@ -28,7 +30,7 @@ public class TravelAgencyController {
         if (!travelDealList.isEmpty()) {
             int randomDeal = new Random().nextInt(travelDealList.size());
             return travelDealList.get(randomDeal)
-                .toString();
+                    .toString();
         } else {
             return "NO DEALS";
         }
@@ -40,16 +42,16 @@ public class TravelAgencyController {
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Host: ")
-            .append(InetAddress.getLocalHost()
-                .getHostName())
-            .append("<br/>");
+                .append(InetAddress.getLocalHost()
+                        .getHostName())
+                .append("<br/>");
         stringBuilder.append("IP: ")
-            .append(InetAddress.getLocalHost()
-                .getHostAddress())
-            .append("<br/>");
+                .append(InetAddress.getLocalHost()
+                        .getHostAddress())
+                .append("<br/>");
         stringBuilder.append("Type: ")
-            .append("Travel Agency")
-            .append("<br/>");
+                .append("Travel Agency")
+                .append("<br/>");
         return stringBuilder.toString();
     }
 }

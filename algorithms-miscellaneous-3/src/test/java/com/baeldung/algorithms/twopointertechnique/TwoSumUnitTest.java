@@ -16,7 +16,7 @@ public class TwoSumUnitTest {
     @Test
     public void givenASortedArrayOfIntegers_whenTwoSumSlow_thenPairExists() {
 
-        sortedArray = new int[] { 0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 9 };
+        sortedArray = new int[]{0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 9};
 
         targetValue = 12;
 
@@ -26,7 +26,7 @@ public class TwoSumUnitTest {
     @Test
     public void givenASortedArrayOfIntegers_whenTwoSumSlow_thenPairDoesNotExists() {
 
-        sortedArray = new int[] { 0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 9 };
+        sortedArray = new int[]{0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 9};
 
         targetValue = 20;
 
@@ -36,7 +36,7 @@ public class TwoSumUnitTest {
     @Test
     public void givenASortedArrayOfIntegers_whenTwoSum_thenPairExists() {
 
-        sortedArray = new int[] { 0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 9 };
+        sortedArray = new int[]{0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 9};
 
         targetValue = 12;
 
@@ -46,7 +46,7 @@ public class TwoSumUnitTest {
     @Test
     public void givenASortedArrayOfIntegers_whenTwoSum_thenPairDoesNotExists() {
 
-        sortedArray = new int[] { 0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 9 };
+        sortedArray = new int[]{0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 9};
 
         targetValue = 20;
 

@@ -14,8 +14,8 @@ public class FilterChainImpl implements FilterChain {
 
     @Override
     public void doFilter(
-      ServletRequest request,
-      ServletResponse response
+            ServletRequest request,
+            ServletResponse response
     ) throws IOException, ServletException {
         if (filters.hasNext()) {
             Filter filter = filters.next();

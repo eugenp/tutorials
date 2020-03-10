@@ -11,7 +11,7 @@ public class ViewController {
         return "login";
     }
 
-    @RequestMapping({ "/index", "/" })
+    @RequestMapping({"/index", "/"})
     public String index() {
         return "index";
     }

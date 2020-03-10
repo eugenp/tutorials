@@ -36,12 +36,12 @@ public abstract class AbstractService<T extends Serializable> implements IOperat
     }
 
     // write
-    
+
     @Override
     public T create(final T entity) {
         return getDao().save(entity);
     }
-    
+
     @Override
     public T update(final T entity) {
         return getDao().save(entity);

@@ -32,7 +32,7 @@ public class CarResource {
     private final Logger log = LoggerFactory.getLogger(CarResource.class);
 
     private static final String ENTITY_NAME = "car";
-        
+
     private final CarRepository carRepository;
 
     public CarResource(CarRepository carRepository) {
@@ -55,8 +55,8 @@ public class CarResource {
         }
         Car result = carRepository.save(car);
         return ResponseEntity.created(new URI("/api/cars/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+                .body(result);
     }
 
     /**
@@ -77,8 +77,8 @@ public class CarResource {
         }
         Car result = carRepository.save(car);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, car.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, car.getId().toString()))
+                .body(result);
     }
 
     /**

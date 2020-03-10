@@ -71,9 +71,9 @@ public class MiddleElementLookup {
         Node fastPointer = head;
 
         while (fastPointer.hasNext() && fastPointer.next()
-            .hasNext()) {
+                .hasNext()) {
             fastPointer = fastPointer.next()
-                .next();
+                    .next();
             slowPointer = slowPointer.next();
         }
 

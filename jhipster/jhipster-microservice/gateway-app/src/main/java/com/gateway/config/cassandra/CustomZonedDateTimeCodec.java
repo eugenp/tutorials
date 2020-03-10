@@ -71,23 +71,23 @@ public class CustomZonedDateTimeCodec extends TypeCodec<ZonedDateTime> {
 
     @Override
     public ZonedDateTime parse(String value) {
-            // strip enclosing single quotes, if any
-            if (ParseUtils.isQuoted(value)) {
-                value = ParseUtils.unquote(value);
-            }
-            if (isLongLiteral(value)) {
-                try {
-                    long millis = Long.parseLong(value);
-                    return ZonedDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneOffset.UTC);
-                } catch (NumberFormatException e) {
-                    throw new InvalidTypeException(String.format("Cannot parse timestamp value from \"%s\"", value));
-                }
-            }
+        // strip enclosing single quotes, if any
+        if (ParseUtils.isQuoted(value)) {
+            value = ParseUtils.unquote(value);
+        }
+        if (isLongLiteral(value)) {
             try {
-                return ZonedDateTime.from(FORMATTER.parse(value));
-            } catch (DateTimeParseException e) {
+                long millis = Long.parseLong(value);
+                return ZonedDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneOffset.UTC);
+            } catch (NumberFormatException e) {
                 throw new InvalidTypeException(String.format("Cannot parse timestamp value from \"%s\"", value));
             }
-     }
+        }
+        try {
+            return ZonedDateTime.from(FORMATTER.parse(value));
+        } catch (DateTimeParseException e) {
+            throw new InvalidTypeException(String.format("Cannot parse timestamp value from \"%s\"", value));
+        }
+    }
 
 }

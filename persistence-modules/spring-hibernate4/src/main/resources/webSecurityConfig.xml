@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
-    xsi:schemaLocation="
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xsi:schemaLocation="
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"
 >
 
     <http use-expressions="true">
-    	<access-denied-handler error-page="/access-denied.html"/>
+        <access-denied-handler error-page="/access-denied.html"/>
         <intercept-url pattern="/access-denied*" access="hasAnyRole('ROLE_LOCATION_WRITE','ROLE_POLYGON_WRITE')"/>
         <intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/organization/**" access="hasAnyRole('ROLE_ORGANIZATION')"/>
@@ -19,7 +21,8 @@
 
         <intercept-url pattern="/**" access="permitAll"/>
 
-        <form-login login-page='/login.html' default-target-url="/" always-use-default-target="false" authentication-failure-url="/login.html?error=true"/>
+        <form-login login-page='/login.html' default-target-url="/" always-use-default-target="false"
+                    authentication-failure-url="/login.html?error=true"/>
 
         <logout/>
 

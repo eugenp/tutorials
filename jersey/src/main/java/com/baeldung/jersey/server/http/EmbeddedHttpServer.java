@@ -20,16 +20,16 @@ public class EmbeddedHttpServer {
             final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, new ViewApplicationConfig(), false);
 
             Runtime.getRuntime()
-                .addShutdownHook(new Thread(() -> {
-                    server.shutdownNow();
-                }));
+                    .addShutdownHook(new Thread(() -> {
+                        server.shutdownNow();
+                    }));
 
             server.start();
 
             System.out.println(String.format("Application started.\nTry out %s\nStop the application using CTRL+C", BASE_URI + "fruit"));
         } catch (IOException ex) {
             Logger.getLogger(EmbeddedHttpServer.class.getName())
-                .log(Level.SEVERE, null, ex);
+                    .log(Level.SEVERE, null, ex);
         }
 
     }

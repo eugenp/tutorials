@@ -3,7 +3,7 @@ package com.baeldung.core.modifiers;
 public class FirstClass {
 
     protected String name;
-    
+
     protected FirstClass(String name) {
         this.name = name;
     }
@@ -13,6 +13,7 @@ public class FirstClass {
     }
 
     protected static class InnerClass {
-        public InnerClass() {}
+        public InnerClass() {
+        }
     }
 }

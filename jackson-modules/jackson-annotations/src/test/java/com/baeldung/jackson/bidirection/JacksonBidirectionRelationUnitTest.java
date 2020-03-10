@@ -82,7 +82,7 @@ public class JacksonBidirectionRelationUnitTest {
         final String json = "{\"id\":2,\"itemName\":\"book\",\"owner\":{\"id\":1,\"name\":\"John\",\"userItems\":[2]}}";
 
         final ItemWithIdentity item = new ObjectMapper().readerFor(ItemWithIdentity.class)
-            .readValue(json);
+                .readValue(json);
 
         assertEquals(2, item.id);
         assertEquals("book", item.itemName);
@@ -94,7 +94,7 @@ public class JacksonBidirectionRelationUnitTest {
         final String json = "{\"id\":2,\"itemName\":\"book\",\"owner\":{\"id\":1,\"name\":\"John\",\"userItems\":[2]}}";
 
         final ItemWithSerializer item = new ObjectMapper().readerFor(ItemWithSerializer.class)
-            .readValue(json);
+                .readValue(json);
         assertEquals(2, item.id);
         assertEquals("book", item.itemName);
         assertEquals("John", item.owner.name);
@@ -107,7 +107,7 @@ public class JacksonBidirectionRelationUnitTest {
         user.addItem(item);
 
         final String result = new ObjectMapper().writerWithView(Views.Public.class)
-            .writeValueAsString(item);
+                .writeValueAsString(item);
 
         assertThat(result, containsString("book"));
         assertThat(result, containsString("John"));
@@ -121,7 +121,7 @@ public class JacksonBidirectionRelationUnitTest {
         user.addItem(item);
 
         new ObjectMapper().writerWithView(Views.Internal.class)
-            .writeValueAsString(item);
+                .writeValueAsString(item);
     }
 
 }

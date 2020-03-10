@@ -21,17 +21,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        
+
         http
-            .addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-            .authorizeRequests()
+                .addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .authorizeRequests()
                 .antMatchers("/css/**", "/index").permitAll()
                 .antMatchers("/user/**").authenticated()
-            .and()
-            .formLogin().loginPage("/login")
-            .and()
-            .logout()
-            .logoutUrl("/logout");
+                .and()
+                .formLogin().loginPage("/login")
+                .and()
+                .logout()
+                .logoutUrl("/logout");
     }
 
     public CustomAuthenticationFilter authenticationFilter() throws Exception {
@@ -47,8 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     public AuthenticationProvider authProvider() {
-        CustomUserDetailsAuthenticationProvider provider 
-            = new CustomUserDetailsAuthenticationProvider(passwordEncoder(), userDetailsService);
+        CustomUserDetailsAuthenticationProvider provider
+                = new CustomUserDetailsAuthenticationProvider(passwordEncoder(), userDetailsService);
         return provider;
     }
 

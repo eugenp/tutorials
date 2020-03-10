@@ -21,9 +21,7 @@ public class ConnectionUtil {
             Class.forName(props.getProperty("jdbc.driver"));
             Connection con = DriverManager.getConnection(props.getProperty("jdbc.url"), props.getProperty("jdbc.user"), props.getProperty("jdbc.password"));
             return con;
-        }
-
-        catch (FileNotFoundException exc) {
+        } catch (FileNotFoundException exc) {
             logger.error(exc.getMessage());
         } catch (IOException exc) {
             logger.error(exc.getMessage());

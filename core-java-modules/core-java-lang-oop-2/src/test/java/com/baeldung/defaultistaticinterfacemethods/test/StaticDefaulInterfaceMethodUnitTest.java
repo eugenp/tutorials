@@ -5,6 +5,7 @@ import com.baeldung.defaultstaticinterfacemethods.model.Motorbike;
 import com.baeldung.defaultstaticinterfacemethods.model.Vehicle;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class StaticDefaulInterfaceMethodUnitTest {

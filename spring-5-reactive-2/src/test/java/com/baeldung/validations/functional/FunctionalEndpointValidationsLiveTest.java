@@ -24,8 +24,8 @@ public class FunctionalEndpointValidationsLiveTest {
     @BeforeAll
     public static void setup() {
         client = WebTestClient.bindToServer()
-            .baseUrl(BASE_URL)
-            .build();
+                .baseUrl(BASE_URL)
+                .build();
     }
 
     @Test
@@ -33,12 +33,12 @@ public class FunctionalEndpointValidationsLiveTest {
         CustomRequestEntity body = new CustomRequestEntity("name", "123");
 
         ResponseSpec response = client.post()
-            .uri(DRY_EP_URL)
-            .body(Mono.just(body), CustomRequestEntity.class)
-            .exchange();
+                .uri(DRY_EP_URL)
+                .body(Mono.just(body), CustomRequestEntity.class)
+                .exchange();
 
         response.expectStatus()
-            .isBadRequest();
+                .isBadRequest();
     }
 
     @Test
@@ -46,12 +46,12 @@ public class FunctionalEndpointValidationsLiveTest {
         CustomRequestEntity body = new CustomRequestEntity("name", "123");
 
         ResponseSpec response = client.post()
-            .uri(COMPLEX_EP_URL)
-            .body(Mono.just(body), CustomRequestEntity.class)
-            .exchange();
+                .uri(COMPLEX_EP_URL)
+                .body(Mono.just(body), CustomRequestEntity.class)
+                .exchange();
 
         response.expectStatus()
-            .isBadRequest();
+                .isBadRequest();
     }
 
     @Test
@@ -59,12 +59,12 @@ public class FunctionalEndpointValidationsLiveTest {
         AnnotatedRequestEntity body = new AnnotatedRequestEntity("user", "passwordlongerthan7digits");
 
         ResponseSpec response = client.post()
-            .uri(ANNOTATIONS_EP_URL)
-            .body(Mono.just(body), AnnotatedRequestEntity.class)
-            .exchange();
+                .uri(ANNOTATIONS_EP_URL)
+                .body(Mono.just(body), AnnotatedRequestEntity.class)
+                .exchange();
 
         response.expectStatus()
-            .isBadRequest();
+                .isBadRequest();
     }
 
     @Test
@@ -72,12 +72,12 @@ public class FunctionalEndpointValidationsLiveTest {
         CustomRequestEntity body = new CustomRequestEntity("name", "1234567");
 
         ResponseSpec response = client.post()
-            .uri(DRY_EP_URL)
-            .body(Mono.just(body), CustomRequestEntity.class)
-            .exchange();
+                .uri(DRY_EP_URL)
+                .body(Mono.just(body), CustomRequestEntity.class)
+                .exchange();
 
         response.expectStatus()
-            .isOk();
+                .isOk();
     }
 
     @Test
@@ -85,12 +85,12 @@ public class FunctionalEndpointValidationsLiveTest {
         CustomRequestEntity body = new CustomRequestEntity("name", "1234567");
 
         ResponseSpec response = client.post()
-            .uri(COMPLEX_EP_URL)
-            .body(Mono.just(body), CustomRequestEntity.class)
-            .exchange();
+                .uri(COMPLEX_EP_URL)
+                .body(Mono.just(body), CustomRequestEntity.class)
+                .exchange();
 
         response.expectStatus()
-            .isOk();
+                .isOk();
     }
 
     @Test
@@ -98,11 +98,11 @@ public class FunctionalEndpointValidationsLiveTest {
         AnnotatedRequestEntity body = new AnnotatedRequestEntity("user", "12345");
 
         ResponseSpec response = client.post()
-            .uri(ANNOTATIONS_EP_URL)
-            .body(Mono.just(body), AnnotatedRequestEntity.class)
-            .exchange();
+                .uri(ANNOTATIONS_EP_URL)
+                .body(Mono.just(body), AnnotatedRequestEntity.class)
+                .exchange();
 
         response.expectStatus()
-            .isOk();
+                .isOk();
     }
 }

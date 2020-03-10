@@ -5,7 +5,7 @@ import io.astefanutti.metrics.aspectj.Metrics;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Metrics( registry = ObjectRunner.REGISTRY_NAME)
+@Metrics(registry = ObjectRunner.REGISTRY_NAME)
 public class ObjectRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(ObjectRunner.class);

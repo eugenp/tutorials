@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 
-@ComponentScan(basePackages = { "com.baeldung.spring.data.neo4j.services" })
+@ComponentScan(basePackages = {"com.baeldung.spring.data.neo4j.services"})
 @Configuration
 @EnableNeo4jRepositories(basePackages = "com.baeldung.spring.data.neo4j.repository")
 public class MovieDatabaseNeo4jConfiguration {
@@ -16,7 +16,7 @@ public class MovieDatabaseNeo4jConfiguration {
 
     @Bean
     public org.neo4j.ogm.config.Configuration getConfiguration() {
-    	org.neo4j.ogm.config.Configuration config = new Builder().uri(URL).build();
+        org.neo4j.ogm.config.Configuration config = new Builder().uri(URL).build();
         return config;
     }
 

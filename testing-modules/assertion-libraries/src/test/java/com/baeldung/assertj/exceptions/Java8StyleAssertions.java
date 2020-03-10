@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.junit.Test;
 
 public class Java8StyleAssertions {
@@ -18,13 +19,13 @@ public class Java8StyleAssertions {
             ArrayList<String> myStringList = new ArrayList<String>(Arrays.asList("Strine one", "String two"));
             myStringList.get(2);
         }).isInstanceOf(IndexOutOfBoundsException.class)
-            .hasMessageStartingWith("Index: 2")
-            .hasMessageContaining("2")
-            .hasMessageEndingWith("Size: 2")
-            .hasMessageContaining("Index: 2, Size: 2")
-            .hasMessage("Index: %s, Size: %s", 2, 2)
-            .hasMessageMatching("Index: \\d+, Size: \\d+")
-            .hasNoCause();
+                .hasMessageStartingWith("Index: 2")
+                .hasMessageContaining("2")
+                .hasMessageEndingWith("Size: 2")
+                .hasMessageContaining("Index: 2, Size: 2")
+                .hasMessage("Index: %s, Size: %s", 2, 2)
+                .hasMessageMatching("Index: \\d+, Size: \\d+")
+                .hasNoCause();
     }
 
     @Test
@@ -36,8 +37,8 @@ public class Java8StyleAssertions {
                 throw new RuntimeException(e);
             }
         }).isInstanceOf(RuntimeException.class)
-            .hasCauseInstanceOf(IOException.class)
-            .hasStackTraceContaining("IOException");
+                .hasCauseInstanceOf(IOException.class)
+                .hasStackTraceContaining("IOException");
     }
 
     @Test
@@ -47,7 +48,7 @@ public class Java8StyleAssertions {
             int denominator = 0;
             int quotient = numerator / denominator;
         })
-            .withMessageContaining("/ by zero");
+                .withMessageContaining("/ by zero");
 
         // Alternatively:
 
@@ -60,7 +61,7 @@ public class Java8StyleAssertions {
 
         // then
         assertThat(thrown).isInstanceOf(ArithmeticException.class)
-            .hasMessageContaining("/ by zero");
+                .hasMessageContaining("/ by zero");
 
     }
 }

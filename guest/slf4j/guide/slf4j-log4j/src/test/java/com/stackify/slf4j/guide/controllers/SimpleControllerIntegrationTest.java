@@ -35,12 +35,12 @@ public class SimpleControllerIntegrationTest {
 
         SoftAssertions errorCollector = new SoftAssertions();
         errorCollector.assertThat(ListAppender.getEvents())
-            .haveAtLeastOne(eventContains("Client requested process the following list: []", Level.INFO))
-            .haveAtLeastOne(eventContains("Starting process", Level.DEBUG))
-            .haveAtLeastOne(eventContains("Finished processing", Level.INFO))
-            .haveExactly(0, eventOfLevel(Level.ERROR));
+                .haveAtLeastOne(eventContains("Client requested process the following list: []", Level.INFO))
+                .haveAtLeastOne(eventContains("Starting process", Level.DEBUG))
+                .haveAtLeastOne(eventContains("Finished processing", Level.INFO))
+                .haveExactly(0, eventOfLevel(Level.ERROR));
         errorCollector.assertThat(output)
-            .isEqualTo("done");
+                .isEqualTo("done");
         errorCollector.assertAll();
     }
 
@@ -56,14 +56,14 @@ public class SimpleControllerIntegrationTest {
 
         SoftAssertions errorCollector = new SoftAssertions();
         errorCollector.assertThat(ListAppender.getEvents())
-            .allMatch(entry -> {
-                return clientId.equals(entry.getMDC("clientId"));
-            })
-            .haveAtLeastOne(eventContains("Client id-1234 has made a request", Level.INFO))
-            .haveAtLeastOne(eventContains("Starting request", Level.INFO))
-            .haveAtLeastOne(eventContains("Finished request", Level.INFO));
+                .allMatch(entry -> {
+                    return clientId.equals(entry.getMDC("clientId"));
+                })
+                .haveAtLeastOne(eventContains("Client id-1234 has made a request", Level.INFO))
+                .haveAtLeastOne(eventContains("Starting request", Level.INFO))
+                .haveAtLeastOne(eventContains("Finished request", Level.INFO));
         errorCollector.assertThat(output)
-            .isEqualTo("finished");
+                .isEqualTo("finished");
         errorCollector.assertAll();
 
     }
@@ -75,6 +75,6 @@ public class SimpleControllerIntegrationTest {
     private Condition<LoggingEvent> eventContains(String substring, Level level) {
 
         return new Condition<LoggingEvent>(entry -> (substring == null || (entry.getRenderedMessage() != null && entry.getRenderedMessage()
-            .contains(substring))) && (level == null || level.equals(entry.getLevel())), String.format("entry with message '%s', level %s", substring, level));
+                .contains(substring))) && (level == null || level.equals(entry.getLevel())), String.format("entry with message '%s', level %s", substring, level));
     }
 }

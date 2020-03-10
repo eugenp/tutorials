@@ -72,8 +72,8 @@ public class Foo implements Serializable {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append("Foo [name=")
-            .append(name)
-            .append("]");
+                .append(name)
+                .append("]");
         return builder.toString();
     }
 

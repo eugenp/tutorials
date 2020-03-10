@@ -27,7 +27,7 @@ public abstract class AbstractServicePersistenceIntegrationTest<T extends Serial
     // find - one
 
     @Test
-    /**/public final void givenResourceDoesNotExist_whenResourceIsRetrieved_thenNoResourceIsReceived() {
+    /**/ public final void givenResourceDoesNotExist_whenResourceIsRetrieved_thenNoResourceIsReceived() {
         // When
         final Foo createdResource = getApi().findOne(IDUtil.randomPositiveLong());
 
@@ -65,30 +65,30 @@ public abstract class AbstractServicePersistenceIntegrationTest<T extends Serial
     // find - all
 
     @Test
-    /**/public void whenAllResourcesAreRetrieved_thenNoExceptions() {
+    /**/ public void whenAllResourcesAreRetrieved_thenNoExceptions() {
         getApi().findAll();
     }
 
     @Test
-    /**/public void whenAllResourcesAreRetrieved_thenTheResultIsNotNull() {
+    /**/ public void whenAllResourcesAreRetrieved_thenTheResultIsNotNull() {
         final List<Foo> resources = getApi().findAll();
 
         assertNotNull(resources);
     }
 
     @Test
-    /**/public void givenAtLeastOneResourceExists_whenAllResourcesAreRetrieved_thenRetrievedResourcesAreNotEmpty() {
+    /**/ public void givenAtLeastOneResourceExists_whenAllResourcesAreRetrieved_thenRetrievedResourcesAreNotEmpty() {
         persistNewEntity();
 
         // When
         final List<Foo> allResources = getApi().findAll();
 
         // Then
-        assertThat(allResources, not(Matchers.<Foo> empty()));
+        assertThat(allResources, not(Matchers.<Foo>empty()));
     }
 
     @Test
-    /**/public void givenAnResourceExists_whenAllResourcesAreRetrieved_thenTheExistingResourceIsIndeedAmongThem() {
+    /**/ public void givenAnResourceExists_whenAllResourcesAreRetrieved_thenTheExistingResourceIsIndeedAmongThem() {
         final Foo existingResource = persistNewEntity();
 
         final List<Foo> resources = getApi().findAll();
@@ -97,7 +97,7 @@ public abstract class AbstractServicePersistenceIntegrationTest<T extends Serial
     }
 
     @Test
-    /**/public void whenAllResourcesAreRetrieved_thenResourcesHaveIds() {
+    /**/ public void whenAllResourcesAreRetrieved_thenResourcesHaveIds() {
         persistNewEntity();
 
         // When
@@ -112,24 +112,24 @@ public abstract class AbstractServicePersistenceIntegrationTest<T extends Serial
     // create
 
     @Test(expected = RuntimeException.class)
-    /**/public void whenNullResourceIsCreated_thenException() {
+    /**/ public void whenNullResourceIsCreated_thenException() {
         getApi().create(null);
     }
 
     @Test
-    /**/public void whenResourceIsCreated_thenNoExceptions() {
+    /**/ public void whenResourceIsCreated_thenNoExceptions() {
         persistNewEntity();
     }
 
     @Test
-    /**/public void whenResourceIsCreated_thenResourceIsRetrievable() {
+    /**/ public void whenResourceIsCreated_thenResourceIsRetrievable() {
         final Foo existingResource = persistNewEntity();
 
         assertNotNull(getApi().findOne(existingResource.getId()));
     }
 
     @Test
-    /**/public void whenResourceIsCreated_thenSavedResourceIsEqualToOriginalResource() {
+    /**/ public void whenResourceIsCreated_thenSavedResourceIsEqualToOriginalResource() {
         final Foo originalResource = createNewEntity();
         final Foo savedResource = getApi().create(originalResource);
 
@@ -159,12 +159,12 @@ public abstract class AbstractServicePersistenceIntegrationTest<T extends Serial
     // update
 
     @Test(expected = RuntimeException.class)
-    /**/public void whenNullResourceIsUpdated_thenException() {
+    /**/ public void whenNullResourceIsUpdated_thenException() {
         getApi().update(null);
     }
 
     @Test
-    /**/public void givenResourceExists_whenResourceIsUpdated_thenNoExceptions() {
+    /**/ public void givenResourceExists_whenResourceIsUpdated_thenNoExceptions() {
         // Given
         final Foo existingResource = persistNewEntity();
 
@@ -184,7 +184,7 @@ public abstract class AbstractServicePersistenceIntegrationTest<T extends Serial
     }
 
     @Test
-    /**/public void givenResourceExists_whenResourceIsUpdated_thenUpdatesArePersisted() {
+    /**/ public void givenResourceExists_whenResourceIsUpdated_thenUpdatesArePersisted() {
         // Given
         final Foo existingResource = persistNewEntity();
 

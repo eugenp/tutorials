@@ -10,7 +10,7 @@ public class DistributedPropertiesApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(DistributedPropertiesApplication.class).web(true)
-            .run(args);
+                .run(args);
     }
 
 }

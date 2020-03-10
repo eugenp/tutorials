@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class ConvertContainerToAnotherUnitTest {
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     @Test
     public void whenConvertContainerToAnother_thenCorrect() {
         MutableList<String> cars = (MutableList) ConvertContainerToAnother.convertToList();

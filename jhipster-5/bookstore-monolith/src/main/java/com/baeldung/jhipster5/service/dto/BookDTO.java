@@ -1,4 +1,5 @@
 package com.baeldung.jhipster5.service.dto;
+
 import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -101,12 +102,12 @@ public class BookDTO implements Serializable {
     @Override
     public String toString() {
         return "BookDTO{" +
-            "id=" + getId() +
-            ", title='" + getTitle() + "'" +
-            ", author='" + getAuthor() + "'" +
-            ", published='" + getPublished() + "'" +
-            ", quantity=" + getQuantity() +
-            ", price=" + getPrice() +
-            "}";
+                "id=" + getId() +
+                ", title='" + getTitle() + "'" +
+                ", author='" + getAuthor() + "'" +
+                ", published='" + getPublished() + "'" +
+                ", quantity=" + getQuantity() +
+                ", price=" + getPrice() +
+                "}";
     }
 }

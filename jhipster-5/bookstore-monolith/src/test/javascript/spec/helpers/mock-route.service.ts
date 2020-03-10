@@ -1,6 +1,6 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { SpyObject } from './spyobject';
-import { Observable, of } from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
+import {SpyObject} from './spyobject';
+import {Observable, of} from 'rxjs';
 import Spy = jasmine.Spy;
 
 export class MockActivatedRoute extends ActivatedRoute {

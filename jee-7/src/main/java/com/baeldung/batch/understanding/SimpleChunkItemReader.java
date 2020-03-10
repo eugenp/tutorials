@@ -12,8 +12,8 @@ import javax.inject.Named;
 @Named
 public class SimpleChunkItemReader extends AbstractItemReader {
     private StringTokenizer tokens;
-    private Integer count=0;
-    
+    private Integer count = 0;
+
     @Inject
     JobContext jobContext;
 

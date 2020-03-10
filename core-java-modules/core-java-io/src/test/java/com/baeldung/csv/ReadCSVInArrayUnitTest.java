@@ -50,9 +50,9 @@ public class ReadCSVInArrayUnitTest {
         }
         for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
             Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
-                .toArray(),
-                records.get(i)
-                    .toArray());
+                            .toArray(),
+                    records.get(i)
+                            .toArray());
         }
     }
 
@@ -68,9 +68,9 @@ public class ReadCSVInArrayUnitTest {
         }
         for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
             Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
-                .toArray(),
-                records.get(i)
-                    .toArray());
+                            .toArray(),
+                    records.get(i)
+                            .toArray());
         }
     }
 
@@ -98,9 +98,9 @@ public class ReadCSVInArrayUnitTest {
         }
         for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
             Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
-                .toArray(),
-                records.get(i)
-                    .toArray());
+                            .toArray(),
+                    records.get(i)
+                            .toArray());
         }
     }
 }

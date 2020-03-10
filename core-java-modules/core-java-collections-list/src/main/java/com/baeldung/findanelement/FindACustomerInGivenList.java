@@ -46,16 +46,16 @@ public class FindACustomerInGivenList {
 
     public Customer findUsingStream(String name, List<Customer> customers) {
         return customers.stream()
-            .filter(customer -> customer.getName().equals(name))
-            .findFirst()
-            .orElse(null);
+                .filter(customer -> customer.getName().equals(name))
+                .findFirst()
+                .orElse(null);
     }
 
     public Customer findUsingParallelStream(String name, List<Customer> customers) {
         return customers.parallelStream()
-            .filter(customer -> customer.getName().equals(name))
-            .findAny()
-            .orElse(null);
+                .filter(customer -> customer.getName().equals(name))
+                .findAny()
+                .orElse(null);
     }
 
     public Customer findUsingGuava(String name, List<Customer> customers) {

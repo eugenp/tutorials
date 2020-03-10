@@ -95,7 +95,7 @@ class GenericsTest {
     @Test
     fun givenStartProjection_whenPassAnyType_thenCompile() {
         //given
-        val array = arrayOf(1,2,3)
+        val array = arrayOf(1, 2, 3)
 
         //then
         printArray(array)
@@ -107,18 +107,18 @@ class GenericsTest {
     }
 
     @Test
-    fun givenFunctionWithDefinedGenericConstraints_whenCallWithProperType_thenCompile(){
+    fun givenFunctionWithDefinedGenericConstraints_whenCallWithProperType_thenCompile() {
         //given
-        val listOfInts = listOf(5,2,3,4,1)
+        val listOfInts = listOf(5, 2, 3, 4, 1)
 
         //when
         val sorted = sort(listOfInts)
 
         //then
-        assertEquals(sorted, listOf(1,2,3,4,5))
+        assertEquals(sorted, listOf(1, 2, 3, 4, 5))
     }
 
-    fun <T: Comparable<T>> sort(list: List<T>): List<T>{
+    fun <T : Comparable<T>> sort(list: List<T>): List<T> {
         return list.sorted()
     }
 

@@ -14,7 +14,7 @@ import com.baeldung.models.AppUser;
 import com.baeldung.models.Tweet;
 
 public class DummyContentUtil {
-    
+
     public static final List<AppUser> generateDummyUsers() {
         List<AppUser> appUsers = new ArrayList<>();
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -35,17 +35,17 @@ public class DummyContentUtil {
         List<Tweet> tweets = new ArrayList<>();
         Random random = new Random();
         IntStream.range(0, 9)
-            .sequential()
-            .forEach(i -> {
-                Tweet twt = new Tweet(String.format("Tweet %d", i), users.get(random.nextInt(users.size()))
-                    .getUsername());
-                twt.getLikes()
-                    .addAll(users.subList(0, random.nextInt(users.size()))
-                        .stream()
-                        .map(AppUser::getUsername)
-                        .collect(Collectors.toSet()));
-                tweets.add(twt);
-            });
+                .sequential()
+                .forEach(i -> {
+                    Tweet twt = new Tweet(String.format("Tweet %d", i), users.get(random.nextInt(users.size()))
+                            .getUsername());
+                    twt.getLikes()
+                            .addAll(users.subList(0, random.nextInt(users.size()))
+                                    .stream()
+                                    .map(AppUser::getUsername)
+                                    .collect(Collectors.toSet()));
+                    tweets.add(twt);
+                });
         return tweets;
     }
 

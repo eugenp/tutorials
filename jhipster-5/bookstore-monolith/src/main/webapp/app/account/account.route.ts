@@ -1,6 +1,6 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 
-import { settingsRoute } from './';
+import {settingsRoute} from './';
 
 const ACCOUNT_ROUTES = [settingsRoute];
 

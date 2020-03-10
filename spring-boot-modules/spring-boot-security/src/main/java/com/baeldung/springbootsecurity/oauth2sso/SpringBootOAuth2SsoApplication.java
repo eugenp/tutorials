@@ -11,9 +11,9 @@ public class SpringBootOAuth2SsoApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder()
-          .profiles("sso")
-          .sources(SpringBootOAuth2SsoApplication.class)
-          .build()
-          .run(args);
+                .profiles("sso")
+                .sources(SpringBootOAuth2SsoApplication.class)
+                .build()
+                .run(args);
     }
 }

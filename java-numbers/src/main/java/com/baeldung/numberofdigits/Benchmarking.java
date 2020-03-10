@@ -20,45 +20,45 @@ public class Benchmarking {
     public static class ExecutionPlan {
         public int number = Integer.MAX_VALUE;
         public int length = 0;
-        public NumberOfDigits numberOfDigits= new NumberOfDigits();
+        public NumberOfDigits numberOfDigits = new NumberOfDigits();
     }
-    
-    @Benchmark 
+
+    @Benchmark
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
     public void stringBasedSolution(ExecutionPlan plan) {
         plan.length = plan.numberOfDigits.stringBasedSolution(plan.number);
     }
-    
-    @Benchmark 
+
+    @Benchmark
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
     public void logarithmicApproach(ExecutionPlan plan) {
         plan.length = plan.numberOfDigits.logarithmicApproach(plan.number);
     }
-    
-    @Benchmark 
+
+    @Benchmark
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
     public void repeatedMultiplication(ExecutionPlan plan) {
         plan.length = plan.numberOfDigits.repeatedMultiplication(plan.number);
     }
-    
-    @Benchmark 
+
+    @Benchmark
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
     public void shiftOperators(ExecutionPlan plan) {
         plan.length = plan.numberOfDigits.shiftOperators(plan.number);
     }
-    
-    @Benchmark 
+
+    @Benchmark
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
     public void dividingWithPowersOf2(ExecutionPlan plan) {
         plan.length = plan.numberOfDigits.dividingWithPowersOf2(plan.number);
     }
-    
-    @Benchmark 
+
+    @Benchmark
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
     public void divideAndConquer(ExecutionPlan plan) {

@@ -43,43 +43,43 @@ public class AtlasObserverLiveTest {
 
         PollRunnable task = new PollRunnable(new MonitorRegistryMetricPoller(), new BasicMetricFilter(true), observer);
         PollScheduler
-          .getInstance()
-          .start();
+                .getInstance()
+                .start();
         PollScheduler
-          .getInstance()
-          .addPoller(task, 1, SECONDS);
+                .getInstance()
+                .addPoller(task, 1, SECONDS);
     }
 
     @After
     public void stopScheduler() {
         if (PollScheduler
-          .getInstance()
-          .isStarted()) {
+                .getInstance()
+                .isStarted()) {
             PollScheduler
-              .getInstance()
-              .stop();
+                    .getInstance()
+                    .stop();
         }
     }
 
     private String atlasValuesOfTag(String tagname) throws Exception {
         HttpEntity entity = HttpClients
-          .createDefault()
-          .execute(get()
-            .setUri(atlasUri + "/tags/" + tagname)
-            .build())
-          .getEntity();
+                .createDefault()
+                .execute(get()
+                        .setUri(atlasUri + "/tags/" + tagname)
+                        .build())
+                .getEntity();
         return new BufferedReader(new InputStreamReader(entity.getContent())).readLine();
     }
 
     @Test
     public void givenAtlasAndCounter_whenRegister_thenPublishedToAtlas() throws Exception {
         Counter counter = new BasicCounter(MonitorConfig
-          .builder("test")
-          .withTag("servo", "counter")
-          .build());
+                .builder("test")
+                .withTag("servo", "counter")
+                .build());
         DefaultMonitorRegistry
-          .getInstance()
-          .register(counter);
+                .getInstance()
+                .register(counter);
         assertThat(atlasValuesOfTag("servo"), not(containsString("counter")));
 
         for (int i = 0; i < 3; i++) {

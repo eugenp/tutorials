@@ -10,7 +10,6 @@ import com.baeldung.springejbclient.SpringEjbClientApplication;
 /**
  * This Live Test requires:
  * * run the `spring-ejb-remote` module with the following command: `mvn clean package cargo:run -Pwildfly-standalone`
- *
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringEjbClientApplication.class)

@@ -33,11 +33,10 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Handwritten digit image classification based on LeNet-5 architecture by Yann LeCun.
- * 
- * This code accompanies the article "Logistic  regression in Java" and is heavily based on 
- * <a href="https://github.com/deeplearning4j/dl4j-examples/blob/master/dl4j-examples/src/main/java/org/deeplearning4j/examples/convolution/mnist/MnistClassifier.java">MnistClassifier</a>. 
+ * <p>
+ * This code accompanies the article "Logistic  regression in Java" and is heavily based on
+ * <a href="https://github.com/deeplearning4j/dl4j-examples/blob/master/dl4j-examples/src/main/java/org/deeplearning4j/examples/convolution/mnist/MnistClassifier.java">MnistClassifier</a>.
  * Some minor changes have been made in order to make article's flow smoother.
- * 
  */
 
 public class MnistClassifier {
@@ -112,37 +111,37 @@ public class MnistClassifier {
         learningRateSchedule.put(1000, 0.001);
 
         final ConvolutionLayer layer1 = new ConvolutionLayer.Builder(5, 5).nIn(channels)
-            .stride(1, 1)
-            .nOut(20)
-            .activation(Activation.IDENTITY)
-            .build();
+                .stride(1, 1)
+                .nOut(20)
+                .activation(Activation.IDENTITY)
+                .build();
         final SubsamplingLayer layer2 = new SubsamplingLayer.Builder(SubsamplingLayer.PoolingType.MAX).kernelSize(2, 2)
-            .stride(2, 2)
-            .build();
+                .stride(2, 2)
+                .build();
         // nIn need not specified in later layers
         final ConvolutionLayer layer3 = new ConvolutionLayer.Builder(5, 5).stride(1, 1)
-            .nOut(50)
-            .activation(Activation.IDENTITY)
-            .build();
+                .nOut(50)
+                .activation(Activation.IDENTITY)
+                .build();
         final DenseLayer layer4 = new DenseLayer.Builder().activation(Activation.RELU)
-            .nOut(500)
-            .build();
+                .nOut(500)
+                .build();
         final OutputLayer layer5 = new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD).nOut(outputClasses)
-            .activation(Activation.SOFTMAX)
-            .build();
+                .activation(Activation.SOFTMAX)
+                .build();
         final MultiLayerConfiguration config = new NeuralNetConfiguration.Builder().seed(seed)
-            .l2(0.0005) // ridge regression value
-            .updater(new Nesterovs()) //TODO new MapSchedule(ScheduleType.ITERATION, learningRateSchedule)
-            .weightInit(WeightInit.XAVIER)
-            .list()
-            .layer(0, layer1)
-            .layer(1, layer2)
-            .layer(2, layer3)
-            .layer(3, layer2)
-            .layer(4, layer4)
-            .layer(5, layer5)
-            .setInputType(InputType.convolutionalFlat(height, width, channels))
-            .build();
+                .l2(0.0005) // ridge regression value
+                .updater(new Nesterovs()) //TODO new MapSchedule(ScheduleType.ITERATION, learningRateSchedule)
+                .weightInit(WeightInit.XAVIER)
+                .list()
+                .layer(0, layer1)
+                .layer(1, layer2)
+                .layer(2, layer3)
+                .layer(3, layer2)
+                .layer(4, layer4)
+                .layer(5, layer5)
+                .setInputType(InputType.convolutionalFlat(height, width, channels))
+                .build();
 
         final MultiLayerNetwork model = new MultiLayerNetwork(config);
         model.init();

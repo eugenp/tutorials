@@ -3,7 +3,7 @@ package com.baeldung.primitive;
 import org.openjdk.jmh.annotations.*;
 
 @State(Scope.Thread)
-public class LongWrapperLookup extends Lookup{
+public class LongWrapperLookup extends Lookup {
     private Long[] elements;
     private final long pivot = 2;
 

@@ -3,7 +3,7 @@ package com.baeldung.exceptions;
 import java.util.Set;
 import java.util.UUID;
 
-public class CatchingThrowable  {
+public class CatchingThrowable {
 
     class CapacityException extends Exception {
         CapacityException(String message) {

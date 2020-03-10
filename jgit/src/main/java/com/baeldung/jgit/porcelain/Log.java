@@ -1,6 +1,7 @@
 package com.baeldung.jgit.porcelain;
 
 import java.io.IOException;
+
 import com.baeldung.jgit.helper.Helper;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -9,8 +10,6 @@ import org.eclipse.jgit.revwalk.RevCommit;
 
 /**
  * Simple snippet which shows how to get the commit-ids for a file to provide log information.
- *
- * 
  */
 public class Log {
 
@@ -35,7 +34,7 @@ public class Log {
                     System.out.println("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
                     count++;
                 }
-                System.out.println("Had " + count + " commits overall on "+git.getRepository().getFullBranch());
+                System.out.println("Had " + count + " commits overall on " + git.getRepository().getFullBranch());
 
                 logs = git.log()
                         .all()

@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.baeldung.contexts.normal" })
+@ComponentScan(basePackages = {"com.baeldung.contexts.normal"})
 public class NormalWebAppConfig implements WebMvcConfigurer {
 
     @Bean

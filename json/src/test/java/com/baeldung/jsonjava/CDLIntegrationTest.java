@@ -23,12 +23,12 @@ public class CDLIntegrationTest {
 
     @Test
     public void givenCommaDelimitedText_thenGetJSONArrayOfJSONObjects() {
-        String string = 
-          "name, city, age \n" +
-          "john, chicago, 22 \n" +
-          "gary, florida, 35 \n" +
-          "sal, vegas, 18";
-         
+        String string =
+                "name, city, age \n" +
+                        "john, chicago, 22 \n" +
+                        "gary, florida, 35 \n" +
+                        "sal, vegas, 18";
+
         JSONArray result = CDL.toJSONArray(string);
         assertEquals("[{\"name\":\"john\",\"city\":\"chicago\",\"age\":\"22\"},{\"name\":\"gary\",\"city\":\"florida\",\"age\":\"35\"},{\"name\":\"sal\",\"city\":\"vegas\",\"age\":\"18\"}]", result.toString());
     }
@@ -39,14 +39,14 @@ public class CDLIntegrationTest {
         ja.put("name");
         ja.put("city");
         ja.put("age");
-         
-        String string = 
-          "john, chicago, 22 \n" +
-          "gary, florida, 35 \n" +
-          "sal, vegas, 18";
-         
+
+        String string =
+                "john, chicago, 22 \n" +
+                        "gary, florida, 35 \n" +
+                        "sal, vegas, 18";
+
         JSONArray result = CDL.toJSONArray(ja, string);
         assertEquals("[{\"name\":\"john\",\"city\":\"chicago\",\"age\":\"22\"},{\"name\":\"gary\",\"city\":\"florida\",\"age\":\"35\"},{\"name\":\"sal\",\"city\":\"vegas\",\"age\":\"18\"}]", result.toString());
     }
-    
+
 }

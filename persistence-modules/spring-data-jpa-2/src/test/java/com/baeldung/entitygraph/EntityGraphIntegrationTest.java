@@ -18,19 +18,19 @@ import com.baeldung.entitygraph.repository.ItemRepository;
 @RunWith(SpringRunner.class)
 @Sql(scripts = "/entitygraph-data.sql")
 public class EntityGraphIntegrationTest {
-   
+
     @Autowired
     private ItemRepository itemRepo;
-    
+
     @Autowired
     private CharacteristicsRepository characteristicsRepo;
-    
+
     @Test
     public void givenEntityGraph_whenCalled_shouldRetrunDefinedFields() {
         Item item = itemRepo.findByName("Table");
         assertThat(item.getId()).isEqualTo(1L);
     }
-    
+
     @Test
     public void givenAdhocEntityGraph_whenCalled_shouldRetrunDefinedFields() {
         Characteristic characteristic = characteristicsRepo.findByType("Rigid");

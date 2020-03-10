@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.springbootsecurity.autoconfig.SpringBootSecurityApplication;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = SpringBootSecurityApplication.class)
 public class BasicConfigurationIntegrationTest {
@@ -27,7 +28,8 @@ public class BasicConfigurationIntegrationTest {
     TestRestTemplate restTemplate;
     URL base;
 
-    @LocalServerPort int port;
+    @LocalServerPort
+    int port;
 
     @Before
     public void setUp() throws MalformedURLException {
@@ -41,8 +43,8 @@ public class BasicConfigurationIntegrationTest {
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertTrue(response
-          .getBody()
-          .contains("Baeldung"));
+                .getBody()
+                .contains("Baeldung"));
     }
 
     @Test

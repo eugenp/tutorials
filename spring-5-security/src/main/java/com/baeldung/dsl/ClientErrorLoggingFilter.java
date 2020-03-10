@@ -30,7 +30,7 @@ public class ClientErrorLoggingFilter extends GenericFilterBean {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         Authentication auth = SecurityContextHolder.getContext()
-            .getAuthentication();
+                .getAuthentication();
 
         if (auth == null) {
             chain.doFilter(request, response);
@@ -46,7 +46,7 @@ public class ClientErrorLoggingFilter extends GenericFilterBean {
             logger.debug("User " + auth.getName() + " encountered error " + status);
         } else {
             if (errorCodes.stream()
-                .anyMatch(s -> s.value() == status)) {
+                    .anyMatch(s -> s.value() == status)) {
                 logger.debug("User " + auth.getName() + " encountered error " + status);
             }
         }

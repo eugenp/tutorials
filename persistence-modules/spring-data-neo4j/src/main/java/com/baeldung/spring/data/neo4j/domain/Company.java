@@ -9,7 +9,7 @@ public class Company {
 
     private String name;
 
-    @Relationship(type="owns")
+    @Relationship(type = "owns")
     private Car car;
 
     public Company(String name) {

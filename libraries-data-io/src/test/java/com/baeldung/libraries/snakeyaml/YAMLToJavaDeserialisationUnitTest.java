@@ -17,8 +17,8 @@ public class YAMLToJavaDeserialisationUnitTest {
     public void whenLoadYAMLDocument_thenLoadCorrectMap() {
         Yaml yaml = new Yaml();
         InputStream inputStream = this.getClass()
-            .getClassLoader()
-            .getResourceAsStream("yaml/customer.yaml");
+                .getClassLoader()
+                .getResourceAsStream("yaml/customer.yaml");
         Map<String, Object> obj = yaml.load(inputStream);
         assertEquals("John", obj.get("firstName"));
         assertEquals("Doe", obj.get("lastName"));
@@ -29,8 +29,8 @@ public class YAMLToJavaDeserialisationUnitTest {
     public void whenLoadYAMLDocumentWithTopLevelClass_thenLoadCorrectJavaObject() {
         Yaml yaml = new Yaml(new Constructor(Customer.class));
         InputStream inputStream = this.getClass()
-            .getClassLoader()
-            .getResourceAsStream("yaml/customer.yaml");
+                .getClassLoader()
+                .getResourceAsStream("yaml/customer.yaml");
         Customer customer = yaml.load(inputStream);
         assertEquals("John", customer.getFirstName());
         assertEquals("Doe", customer.getLastName());
@@ -41,8 +41,8 @@ public class YAMLToJavaDeserialisationUnitTest {
     public void whenLoadYAMLDocumentWithAssumedClass_thenLoadCorrectJavaObject() {
         Yaml yaml = new Yaml();
         InputStream inputStream = this.getClass()
-            .getClassLoader()
-            .getResourceAsStream("yaml/customer_with_type.yaml");
+                .getClassLoader()
+                .getResourceAsStream("yaml/customer_with_type.yaml");
         Customer customer = yaml.load(inputStream);
         assertEquals("John", customer.getFirstName());
         assertEquals("Doe", customer.getLastName());
@@ -63,8 +63,8 @@ public class YAMLToJavaDeserialisationUnitTest {
     public void whenLoadYAMLDocumentWithTopLevelClass_thenLoadCorrectJavaObjectWithNestedObjects() {
         Yaml yaml = new Yaml(new Constructor(Customer.class));
         InputStream inputStream = this.getClass()
-            .getClassLoader()
-            .getResourceAsStream("yaml/customer_with_contact_details_and_address.yaml");
+                .getClassLoader()
+                .getResourceAsStream("yaml/customer_with_contact_details_and_address.yaml");
         Customer customer = yaml.load(inputStream);
         assertNotNull(customer);
         assertEquals("John", customer.getFirstName());
@@ -73,20 +73,20 @@ public class YAMLToJavaDeserialisationUnitTest {
         assertNotNull(customer.getContactDetails());
         assertEquals(2, customer.getContactDetails().size());
         assertEquals("mobile", customer.getContactDetails()
-            .get(0)
-            .getType());
-        assertEquals(123456789,customer.getContactDetails()
-            .get(0)
-            .getNumber());
+                .get(0)
+                .getType());
+        assertEquals(123456789, customer.getContactDetails()
+                .get(0)
+                .getNumber());
         assertEquals("landline", customer.getContactDetails()
-            .get(1)
-            .getType());
+                .get(1)
+                .getType());
         assertEquals(456786868, customer.getContactDetails()
-            .get(1)
-            .getNumber());
+                .get(1)
+                .getNumber());
         assertNotNull(customer.getHomeAddress());
         assertEquals("Xyz, DEF Street", customer.getHomeAddress()
-            .getLine());
+                .getLine());
     }
 
     @Test
@@ -97,8 +97,8 @@ public class YAMLToJavaDeserialisationUnitTest {
         constructor.addTypeDescription(customTypeDescription);
         Yaml yaml = new Yaml(constructor);
         InputStream inputStream = this.getClass()
-            .getClassLoader()
-            .getResourceAsStream("yaml/customer_with_contact_details.yaml");
+                .getClassLoader()
+                .getResourceAsStream("yaml/customer_with_contact_details.yaml");
         Customer customer = yaml.load(inputStream);
         assertNotNull(customer);
         assertEquals("John", customer.getFirstName());
@@ -107,19 +107,19 @@ public class YAMLToJavaDeserialisationUnitTest {
         assertNotNull(customer.getContactDetails());
         assertEquals(2, customer.getContactDetails().size());
         assertEquals("mobile", customer.getContactDetails()
-            .get(0)
-            .getType());
+                .get(0)
+                .getType());
         assertEquals("landline", customer.getContactDetails()
-            .get(1)
-            .getType());
+                .get(1)
+                .getType());
     }
 
     @Test
     public void whenLoadMultipleYAMLDocuments_thenLoadCorrectJavaObjects() {
         Yaml yaml = new Yaml(new Constructor(Customer.class));
         InputStream inputStream = this.getClass()
-            .getClassLoader()
-            .getResourceAsStream("yaml/customers.yaml");
+                .getClassLoader()
+                .getResourceAsStream("yaml/customers.yaml");
         int count = 0;
         for (Object object : yaml.loadAll(inputStream)) {
             count++;

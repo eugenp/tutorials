@@ -5,7 +5,7 @@ import java.util.Random;
 import org.spf4j.annotations.PerformanceMonitor;
 
 public class App {
-    
+
     public static void main(String[] args) throws InterruptedException {
         Spf4jConfig.initialize();
         Random random = new Random();

@@ -9,11 +9,11 @@ public class CycleDetectionTestBase {
 
     @Parameters
     public static Collection<Object[]> getLists() {
-        return Arrays.asList(new Object[][] { 
-            { createList(), false }, 
-            { createListWithLoop(), true },
-            { createListWithFullCycle(), true }, 
-            { createListWithSingleNodeInCycle(), true } 
+        return Arrays.asList(new Object[][]{
+                {createList(), false},
+                {createListWithLoop(), true},
+                {createListWithFullCycle(), true},
+                {createListWithSingleNodeInCycle(), true}
         });
     }
 

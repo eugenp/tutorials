@@ -48,7 +48,7 @@ public class OrientDBDocumentAPILiveTest {
         authorTwo.save();
 
         List<ODocument> result = db.query(
-            new OSQLSynchQuery<ODocument>("select * from Author where level = 7"));
+                new OSQLSynchQuery<ODocument>("select * from Author where level = 7"));
 
         assertEquals(1, result.size());
     }

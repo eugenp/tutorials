@@ -20,10 +20,10 @@
 
     # Rolling appenders
     <appender name="roll-by-size"
-        class="ch.qos.logback.core.rolling.RollingFileAppender">
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>target/slf4j/roll-by-size/app.log</file>
         <rollingPolicy
-            class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+                class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
             <fileNamePattern>target/slf4j/roll-by-size/app.%i.log.zip
             </fileNamePattern>
             <minIndex>1</minIndex>
@@ -31,7 +31,7 @@
             <totalSizeCap>1MB</totalSizeCap>
         </rollingPolicy>
         <triggeringPolicy
-            class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+                class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <maxFileSize>5KB</maxFileSize>
         </triggeringPolicy>
         <encoder>
@@ -41,10 +41,10 @@
     </appender>
 
     <appender name="roll-by-time"
-        class="ch.qos.logback.core.rolling.RollingFileAppender">
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>target/slf4j/roll-by-time/app.log</file>
         <rollingPolicy
-            class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>target/slf4j/roll-by-time/app.%d{yyyy-MM-dd-HH-mm}.log.zip
             </fileNamePattern>
             <maxHistory>20</maxHistory>
@@ -56,10 +56,10 @@
     </appender>
 
     <appender name="roll-by-time-and-size"
-        class="ch.qos.logback.core.rolling.RollingFileAppender">
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>target/slf4j/roll-by-time-and-size/app.log</file>
         <rollingPolicy
-            class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>target/slf4j/roll-by-time-and-size/app.%d{yyyy-MM-dd-mm}.%i.log.zip
             </fileNamePattern>
             <maxFileSize>5KB</maxFileSize>

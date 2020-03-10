@@ -13,8 +13,8 @@ public class EmployeeDaoParameterResolver implements ParameterResolver {
     @Override
     public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
         return parameterContext.getParameter()
-            .getType()
-            .equals(EmployeeJdbcDao.class);
+                .getType()
+                .equals(EmployeeJdbcDao.class);
     }
 
     @Override

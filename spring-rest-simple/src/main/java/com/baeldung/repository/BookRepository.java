@@ -15,8 +15,8 @@ public class BookRepository {
 
     public Optional<Book> findById(long id) {
         return books.stream()
-            .filter(book -> book.getId() == id)
-            .findFirst();
+                .filter(book -> book.getId() == id)
+                .findFirst();
     }
 
     public void add(Book book) {

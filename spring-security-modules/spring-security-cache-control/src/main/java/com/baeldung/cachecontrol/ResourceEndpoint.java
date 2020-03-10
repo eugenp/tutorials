@@ -23,26 +23,26 @@ public class ResourceEndpoint {
     @GetMapping("/users/{name}")
     public ResponseEntity<UserDto> getUser(@PathVariable String name) {
         return ResponseEntity
-          .ok()
-          .cacheControl(CacheControl.maxAge(60, TimeUnit.SECONDS))
-          .body(new UserDto(name));
+                .ok()
+                .cacheControl(CacheControl.maxAge(60, TimeUnit.SECONDS))
+                .body(new UserDto(name));
     }
 
     @GetMapping("/timestamp")
     public ResponseEntity<TimestampDto> getServerTimestamp() {
         return ResponseEntity
-          .ok()
-          .cacheControl(CacheControl.noStore())
-          .body(new TimestampDto(LocalDateTime
-            .now()
-            .toInstant(ZoneOffset.UTC)
-            .toEpochMilli()));
+                .ok()
+                .cacheControl(CacheControl.noStore())
+                .body(new TimestampDto(LocalDateTime
+                        .now()
+                        .toInstant(ZoneOffset.UTC)
+                        .toEpochMilli()));
     }
 
     @GetMapping("/private/users/{name}")
     public ResponseEntity<UserDto> getUserNotCached(@PathVariable String name) {
         return ResponseEntity
-          .ok()
-          .body(new UserDto(name));
+                .ok()
+                .body(new UserDto(name));
     }
 }

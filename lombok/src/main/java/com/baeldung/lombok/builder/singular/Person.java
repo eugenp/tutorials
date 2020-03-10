@@ -19,7 +19,10 @@ public class Person {
     private final String familyName;
 
     private final List<String> tags;
-    @Singular private final List<String> interests;
-    @Singular private final Set<String> skills;
-    @Singular private final Map<String, LocalDate> awards;
+    @Singular
+    private final List<String> interests;
+    @Singular
+    private final Set<String> skills;
+    @Singular
+    private final Map<String, LocalDate> awards;
 }

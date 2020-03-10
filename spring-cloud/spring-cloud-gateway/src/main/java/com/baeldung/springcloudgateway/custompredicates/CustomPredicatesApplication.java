@@ -8,8 +8,8 @@ public class CustomPredicatesApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(CustomPredicatesApplication.class)
-          .profiles("customroutes")
-          .run(args);
+                .profiles("customroutes")
+                .run(args);
     }
 
 }

@@ -7,7 +7,7 @@ import io.cucumber.junit.CucumberOptions;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = { "classpath:features/shopping.feature" })
+@CucumberOptions(features = {"classpath:features/shopping.feature"})
 public class ShoppingIntegrationTest {
 
 }

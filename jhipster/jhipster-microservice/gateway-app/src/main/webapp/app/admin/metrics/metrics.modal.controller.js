@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     JhiMetricsMonitoringModalController.$inject = ['$uibModalInstance', 'threadDump'];
 
-    function JhiMetricsMonitoringModalController ($uibModalInstance, threadDump) {
+    function JhiMetricsMonitoringModalController($uibModalInstance, threadDump) {
         var vm = this;
 
         vm.cancel = cancel;
@@ -19,7 +19,7 @@
         vm.threadDumpTimedWaiting = 0;
         vm.threadDumpWaiting = 0;
 
-        angular.forEach(threadDump, function(value) {
+        angular.forEach(threadDump, function (value) {
             if (value.threadState === 'RUNNABLE') {
                 vm.threadDumpRunnable += 1;
             } else if (value.threadState === 'WAITING') {
@@ -34,11 +34,11 @@
         vm.threadDumpAll = vm.threadDumpRunnable + vm.threadDumpWaiting +
             vm.threadDumpTimedWaiting + vm.threadDumpBlocked;
 
-        function cancel () {
+        function cancel() {
             $uibModalInstance.dismiss('cancel');
         }
 
-        function getLabelClass (threadState) {
+        function getLabelClass(threadState) {
             if (threadState === 'RUNNABLE') {
                 return 'label-success';
             } else if (threadState === 'WAITING') {

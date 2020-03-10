@@ -25,10 +25,8 @@ import com.baeldung.repository.UserRepository;
 import com.mongodb.MongoCommandException;
 
 /**
- * 
  * This test requires:
  * * mongodb instance running on the environment
- *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
@@ -47,7 +45,7 @@ public class MongoTransactionalLiveTest {
         userRepository.save(new User("John", 30));
         userRepository.save(new User("Ringo", 35));
         Query query = new Query().addCriteria(Criteria.where("name")
-            .is("John"));
+                .is("John"));
         List<User> users = mongoTemplate.find(query, User.class);
 
         assertThat(users.size(), is(1));

@@ -13,6 +13,7 @@ public interface GitHubBasicApi {
 
     /**
      * List GitHub repositories of user
+     *
      * @param user GitHub Account
      * @return GitHub repositories
      */
@@ -21,6 +22,7 @@ public interface GitHubBasicApi {
 
     /**
      * List Contributors of a GitHub Repository
+     *
      * @param user GitHub Account
      * @param repo GitHub Repository
      * @return GitHub Repository Contributors

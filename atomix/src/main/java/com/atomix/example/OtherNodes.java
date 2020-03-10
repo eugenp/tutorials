@@ -15,28 +15,28 @@ public class OtherNodes {
 
     public static void main(String[] args) throws InterruptedException {
         List<Address> cluster = Arrays
-          .asList(
-            new Address("localhost", 8700),
-            new Address("localhost", 8701),
-            new Address("localhost", 8702));
+                .asList(
+                        new Address("localhost", 8700),
+                        new Address("localhost", 8701),
+                        new Address("localhost", 8702));
 
         Storage storage = Storage.builder()
-          .withDirectory(new File("log"))
-          .withStorageLevel(StorageLevel.DISK)
-          .build();
+                .withDirectory(new File("log"))
+                .withStorageLevel(StorageLevel.DISK)
+                .build();
 
         AtomixReplica replica2 = AtomixReplica.builder(new Address("localhost", 8701))
-          .withStorage(storage)
-          .withTransport(new NettyTransport())
-          .build();
+                .withStorage(storage)
+                .withTransport(new NettyTransport())
+                .build();
 
         WorkerThread WT1 = new WorkerThread(replica2, cluster);
         WT1.run();
 
         AtomixReplica replica3 = AtomixReplica.builder(new Address("localhost", 8702))
-          .withStorage(storage)
-          .withTransport(new NettyTransport())
-          .build();
+                .withStorage(storage)
+                .withTransport(new NettyTransport())
+                .build();
 
         WorkerThread WT2 = new WorkerThread(replica3, cluster);
         WT2.run();
@@ -44,14 +44,14 @@ public class OtherNodes {
         Thread.sleep(6000);
 
         DistributedLock lock = replica2.getLock("my-lock")
-          .join();
+                .join();
         lock.lock()
-          .thenRun(() -> System.out.println("Acquired a lock"));
+                .thenRun(() -> System.out.println("Acquired a lock"));
 
         replica2.getMap("map")
-          .thenCompose(m -> m.put("bar", "Hello world!"))
-          .thenRun(() -> System.out.println("Value is set in Distributed Map"))
-          .join();
+                .thenCompose(m -> m.put("bar", "Hello world!"))
+                .thenRun(() -> System.out.println("Value is set in Distributed Map"))
+                .join();
     }
 
     private static class WorkerThread extends Thread {
@@ -65,7 +65,7 @@ public class OtherNodes {
 
         public void run() {
             replica.join(cluster)
-              .join();
+                    .join();
         }
     }
 }

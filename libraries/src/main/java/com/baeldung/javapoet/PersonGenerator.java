@@ -42,122 +42,122 @@ public class PersonGenerator {
 
     public FieldSpec getDefaultNameField() {
         return FieldSpec
-          .builder(String.class, "DEFAULT_NAME")
-          .addModifiers(Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL)
-          .initializer("$S", "Alice")
-          .build();
+                .builder(String.class, "DEFAULT_NAME")
+                .addModifiers(Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL)
+                .initializer("$S", "Alice")
+                .build();
     }
 
     public MethodSpec getSortByLengthMethod() {
         return MethodSpec
-          .methodBuilder("sortByLength")
-          .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-          .addParameter(ParameterSpec
-            .builder(ParameterizedTypeName.get(ClassName.get(List.class), TypeName.get(String.class)), "strings")
-            .build())
-          .addStatement("$T.sort($N, $L)", Collections.class, "strings", getComparatorAnonymousClass())
-          .build();
+                .methodBuilder("sortByLength")
+                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                .addParameter(ParameterSpec
+                        .builder(ParameterizedTypeName.get(ClassName.get(List.class), TypeName.get(String.class)), "strings")
+                        .build())
+                .addStatement("$T.sort($N, $L)", Collections.class, "strings", getComparatorAnonymousClass())
+                .build();
     }
 
     public MethodSpec getPrintNameMultipleTimesMethod() {
         return MethodSpec
-          .methodBuilder("printNameMultipleTimes")
-          .addModifiers(Modifier.PUBLIC)
-          .addCode(getPrintNameMultipleTimesLambdaImpl())
-          .build();
+                .methodBuilder("printNameMultipleTimes")
+                .addModifiers(Modifier.PUBLIC)
+                .addCode(getPrintNameMultipleTimesLambdaImpl())
+                .build();
     }
 
     public CodeBlock getPrintNameMultipleTimesImpl() {
         return CodeBlock
-          .builder()
-          .beginControlFlow("for (int i = $L; i < $L; i++)")
-          .addStatement("System.out.println(name)")
-          .endControlFlow()
-          .build();
+                .builder()
+                .beginControlFlow("for (int i = $L; i < $L; i++)")
+                .addStatement("System.out.println(name)")
+                .endControlFlow()
+                .build();
     }
 
     public CodeBlock getPrintNameMultipleTimesLambdaImpl() {
         return CodeBlock
-          .builder()
-          .addStatement("$T<$T> names = new $T<>()", List.class, String.class, ArrayList.class)
-          .addStatement("$T.range($L, $L).forEach(i -> names.add(name))", IntStream.class, 0, 10)
-          .addStatement("names.forEach(System.out::println)")
-          .build();
+                .builder()
+                .addStatement("$T<$T> names = new $T<>()", List.class, String.class, ArrayList.class)
+                .addStatement("$T.range($L, $L).forEach(i -> names.add(name))", IntStream.class, 0, 10)
+                .addStatement("names.forEach(System.out::println)")
+                .build();
     }
 
     public TypeSpec getGenderEnum() {
         return TypeSpec
-          .enumBuilder("Gender")
-          .addModifiers(Modifier.PUBLIC)
-          .addEnumConstant("MALE")
-          .addEnumConstant("FEMALE")
-          .addEnumConstant("UNSPECIFIED")
-          .build();
+                .enumBuilder("Gender")
+                .addModifiers(Modifier.PUBLIC)
+                .addEnumConstant("MALE")
+                .addEnumConstant("FEMALE")
+                .addEnumConstant("UNSPECIFIED")
+                .build();
     }
 
     public TypeSpec getPersonInterface() {
         return TypeSpec
-          .interfaceBuilder("Person")
-          .addModifiers(Modifier.PUBLIC)
-          .addField(getDefaultNameField())
-          .addMethod(MethodSpec
-            .methodBuilder("getName")
-            .addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
-            .returns(String.class)
-            .build())
-          .addMethod(MethodSpec
-            .methodBuilder("getDefaultName")
-            .addModifiers(Modifier.PUBLIC, Modifier.DEFAULT)
-            .returns(String.class)
-            .addCode(CodeBlock
-              .builder()
-              .addStatement("return DEFAULT_NAME")
-              .build())
-            .build())
-          .build();
+                .interfaceBuilder("Person")
+                .addModifiers(Modifier.PUBLIC)
+                .addField(getDefaultNameField())
+                .addMethod(MethodSpec
+                        .methodBuilder("getName")
+                        .addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
+                        .returns(String.class)
+                        .build())
+                .addMethod(MethodSpec
+                        .methodBuilder("getDefaultName")
+                        .addModifiers(Modifier.PUBLIC, Modifier.DEFAULT)
+                        .returns(String.class)
+                        .addCode(CodeBlock
+                                .builder()
+                                .addStatement("return DEFAULT_NAME")
+                                .build())
+                        .build())
+                .build();
     }
 
     public TypeSpec getStudentClass() {
         return TypeSpec
-          .classBuilder("Student")
-          .addSuperinterface(ClassName.get(PERSON_PACKAGE_NAME, "Person"))
-          .addModifiers(Modifier.PUBLIC)
-          .addField(FieldSpec
-            .builder(String.class, "name")
-            .addModifiers(Modifier.PRIVATE)
-            .build())
-          .addMethod(MethodSpec
-            .methodBuilder("getName")
-            .addAnnotation(Override.class)
-            .addModifiers(Modifier.PUBLIC)
-            .returns(String.class)
-            .addStatement("return this.name")
-            .build())
-          .addMethod(MethodSpec
-            .methodBuilder("setName")
-            .addParameter(String.class, "name")
-            .addModifiers(Modifier.PUBLIC)
-            .addStatement("this.name = name")
-            .build())
-          .addMethod(getPrintNameMultipleTimesMethod())
-          .addMethod(getSortByLengthMethod())
-          .build();
+                .classBuilder("Student")
+                .addSuperinterface(ClassName.get(PERSON_PACKAGE_NAME, "Person"))
+                .addModifiers(Modifier.PUBLIC)
+                .addField(FieldSpec
+                        .builder(String.class, "name")
+                        .addModifiers(Modifier.PRIVATE)
+                        .build())
+                .addMethod(MethodSpec
+                        .methodBuilder("getName")
+                        .addAnnotation(Override.class)
+                        .addModifiers(Modifier.PUBLIC)
+                        .returns(String.class)
+                        .addStatement("return this.name")
+                        .build())
+                .addMethod(MethodSpec
+                        .methodBuilder("setName")
+                        .addParameter(String.class, "name")
+                        .addModifiers(Modifier.PUBLIC)
+                        .addStatement("this.name = name")
+                        .build())
+                .addMethod(getPrintNameMultipleTimesMethod())
+                .addMethod(getSortByLengthMethod())
+                .build();
     }
 
     public TypeSpec getComparatorAnonymousClass() {
         return TypeSpec
-          .anonymousClassBuilder("")
-          .addSuperinterface(ParameterizedTypeName.get(Comparator.class, String.class))
-          .addMethod(MethodSpec
-            .methodBuilder("compare")
-            .addModifiers(Modifier.PUBLIC)
-            .addAnnotation(Override.class)
-            .addParameter(String.class, "a")
-            .addParameter(String.class, "b")
-            .returns(int.class)
-            .addStatement("return a.length() - b.length()")
-            .build())
-          .build();
+                .anonymousClassBuilder("")
+                .addSuperinterface(ParameterizedTypeName.get(Comparator.class, String.class))
+                .addMethod(MethodSpec
+                        .methodBuilder("compare")
+                        .addModifiers(Modifier.PUBLIC)
+                        .addAnnotation(Override.class)
+                        .addParameter(String.class, "a")
+                        .addParameter(String.class, "b")
+                        .returns(int.class)
+                        .addStatement("return a.length() - b.length()")
+                        .build())
+                .build();
     }
 
     public void generateGenderEnum() throws IOException {
@@ -174,9 +174,9 @@ public class PersonGenerator {
 
     private void writeToOutputFile(String packageName, TypeSpec typeSpec) throws IOException {
         JavaFile javaFile = JavaFile
-          .builder(packageName, typeSpec)
-          .indent(FOUR_WHITESPACES)
-          .build();
+                .builder(packageName, typeSpec)
+                .indent(FOUR_WHITESPACES)
+                .build();
         javaFile.writeTo(outputFile);
     }
 

@@ -13,9 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 /**
- * 
- *  We'll start the whole context, but not the server. We'll mock the REST calls instead.
- *
+ * We'll start the whole context, but not the server. We'll mock the REST calls instead.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,9 +26,9 @@ public class FooControllerAppIntegrationTest {
     @Test
     public void whenFindPaginatedRequest_thenEmptyResponse() throws Exception {
         this.mockMvc.perform(get("/foos").param("page", "0")
-            .param("size", "2"))
-            .andExpect(status().isOk())
-            .andExpect(content().json("[]"));
+                .param("size", "2"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[]"));
     }
 
 }

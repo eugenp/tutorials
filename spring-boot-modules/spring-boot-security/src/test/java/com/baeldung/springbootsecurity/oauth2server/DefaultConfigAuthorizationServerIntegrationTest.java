@@ -14,7 +14,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = SpringBootAuthorizationServerApplication.class,
-                properties = { "security.oauth2.client.client-id=client", "security.oauth2.client.client-secret=baeldung" })
+        properties = {"security.oauth2.client.client-id=client", "security.oauth2.client.client-secret=baeldung"})
 public class DefaultConfigAuthorizationServerIntegrationTest extends OAuth2IntegrationTestSupport {
 
     @Test

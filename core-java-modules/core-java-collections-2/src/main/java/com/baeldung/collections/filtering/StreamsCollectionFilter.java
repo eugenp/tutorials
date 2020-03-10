@@ -8,8 +8,8 @@ public class StreamsCollectionFilter {
 
     public static <T> Collection<T> filterCollectionHelperMethod(Collection<T> baseCollection, Predicate<T> predicate) {
         return baseCollection.stream()
-            .filter(predicate)
-            .collect(Collectors.toList());
+                .filter(predicate)
+                .collect(Collectors.toList());
     }
 
     static public Collection<Integer> findEvenNumbersUsingHelperMethod(Collection<Integer> baseCollection) {
@@ -20,7 +20,7 @@ public class StreamsCollectionFilter {
         Predicate<Integer> streamsPredicate = item -> item % 2 == 0;
 
         return baseCollection.stream()
-            .filter(streamsPredicate)
-            .collect(Collectors.toList());
+                .filter(streamsPredicate)
+                .collect(Collectors.toList());
     }
 }

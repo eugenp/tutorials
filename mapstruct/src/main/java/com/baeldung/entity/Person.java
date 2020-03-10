@@ -1,14 +1,14 @@
 package com.baeldung.entity;
 
 public class Person {
-    
+
     private String id;
     private String name;
-    
+
     public Person() {
-        
+
     }
-    
+
     public Person(String id, String name) {
         super();
         this.id = id;

@@ -20,7 +20,7 @@ public class CustomerUnitTest extends LocaleAwareUnitTest {
     @BeforeClass
     public static void setupValidatorInstance() {
         validator = Validation.buildDefaultValidatorFactory()
-            .getValidator();
+                .getValidator();
     }
 
     @Test
@@ -61,6 +61,6 @@ public class CustomerUnitTest extends LocaleAwareUnitTest {
 
     public static Predicate<ConstraintViolation<Customer>> havingPropertyPath(String propertyPath) {
         return l -> propertyPath.equals(l.getPropertyPath()
-            .toString());
+                .toString());
     }
 }

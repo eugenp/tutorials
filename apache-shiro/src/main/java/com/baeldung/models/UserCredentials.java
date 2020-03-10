@@ -6,7 +6,8 @@ public class UserCredentials {
     private String password;
     private boolean rememberMe = false;
 
-    public UserCredentials() {}
+    public UserCredentials() {
+    }
 
     public String getUsername() {
         return username;

@@ -42,7 +42,7 @@ public class ReladomoApplication {
                 dep.cascadeInsert();
                 return null;
             });
-            
+
         } catch (java.io.IOException e) {
             e.printStackTrace();
         }

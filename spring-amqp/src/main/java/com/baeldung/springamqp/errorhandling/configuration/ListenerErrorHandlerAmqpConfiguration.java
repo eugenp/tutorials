@@ -19,8 +19,8 @@ import static com.baeldung.springamqp.errorhandling.configuration.SimpleDLQAmqpC
 
 @Configuration
 @ConditionalOnProperty(
-  value = "amqp.configuration.current",
-  havingValue = "listener-error")
+        value = "amqp.configuration.current",
+        havingValue = "listener-error")
 public class ListenerErrorHandlerAmqpConfiguration {
 
     @Bean
@@ -40,7 +40,7 @@ public class ListenerErrorHandlerAmqpConfiguration {
     @Bean
     Queue messagesQueue() {
         return QueueBuilder.durable(QUEUE_MESSAGES)
-          .build();
+                .build();
     }
 
     @Bean

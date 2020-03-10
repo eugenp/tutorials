@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, Renderer } from '@angular/core';
+import {Component, ElementRef, Input, Renderer} from '@angular/core';
 
 @Component({
     selector: 'jhi-password-strength-bar',
@@ -21,7 +21,8 @@ export class PasswordStrengthBarComponent {
 
     colors = ['#F00', '#F90', '#FF0', '#9F0', '#0F0'];
 
-    constructor(private renderer: Renderer, private elementRef: ElementRef) { }
+    constructor(private renderer: Renderer, private elementRef: ElementRef) {
+    }
 
     measureStrength(p: string): number {
 
@@ -34,7 +35,7 @@ export class PasswordStrengthBarComponent {
         let symbols = regex.test(p);
 
         let flags = [lowerLetters, upperLetters, numbers, symbols];
-        let passedMatches = flags.filter( (isMatchedFlag: boolean) => {
+        let passedMatches = flags.filter((isMatchedFlag: boolean) => {
             return isMatchedFlag === true;
         }).length;
 
@@ -73,8 +74,8 @@ export class PasswordStrengthBarComponent {
         if (password) {
             let c = this.getColor(this.measureStrength(password));
             let element = this.elementRef.nativeElement;
-            if ( element.className ) {
-                this.renderer.setElementClass(element, element.className , false);
+            if (element.className) {
+                this.renderer.setElementClass(element, element.className, false);
             }
             let lis = element.getElementsByTagName('li');
             for (let i = 0; i < lis.length; i++) {

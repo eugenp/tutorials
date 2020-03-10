@@ -6,14 +6,16 @@ import org.springframework.ldap.odm.annotations.Attribute;
 import org.springframework.ldap.odm.annotations.Entry;
 import org.springframework.ldap.odm.annotations.Id;
 
-@Entry(base = "ou=users", objectClasses = { "person", "inetOrgPerson", "top" })
-public class User  {
-        
+@Entry(base = "ou=users", objectClasses = {"person", "inetOrgPerson", "top"})
+public class User {
+
     @Id
     private Name id;
-    
-    private @Attribute(name = "cn") String username;
-    private @Attribute(name = "sn") String password;
+
+    private @Attribute(name = "cn")
+    String username;
+    private @Attribute(name = "sn")
+    String password;
 
     public User() {
     }

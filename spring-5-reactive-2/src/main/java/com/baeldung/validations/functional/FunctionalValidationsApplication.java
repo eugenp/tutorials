@@ -12,12 +12,12 @@ public class FunctionalValidationsApplication {
     public static void main(String[] args) {
         SpringApplication.run(FunctionalValidationsApplication.class, args);
     }
-    
+
     @Bean
     public SecurityWebFilterChain functionalValidationsSpringSecurityFilterChain(ServerHttpSecurity http) {
         http.authorizeExchange()
-            .anyExchange()
-            .permitAll();
+                .anyExchange()
+                .permitAll();
         http.csrf().disable();
         return http.build();
     }

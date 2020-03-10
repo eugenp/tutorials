@@ -16,7 +16,7 @@ public class AppConfigUnitTest {
     @Autowired
     @Qualifier("storeThroughConstructorInjection")
     private Store storeByConstructorInjection;
-    
+
     @Autowired
     @Qualifier("storeThroughSetterInjection")
     private Store storeBySetterInjection;

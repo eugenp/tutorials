@@ -14,8 +14,8 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
-  loader = AnnotationConfigContextLoader.class,
-  classes = ApplicationContextTestAutowiredName.class)
+        loader = AnnotationConfigContextLoader.class,
+        classes = ApplicationContextTestAutowiredName.class)
 public class FieldAutowiredNameIntegrationTest {
 
     @Autowired

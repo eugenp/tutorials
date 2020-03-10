@@ -32,11 +32,9 @@ public class DisjointSet {
 
         if (nodeRanks[node1Parent] < nodeRanks[node2Parent]) {
             nodeParents[node1Parent] = node2Parent;
-        }
-        else if (nodeRanks[node1Parent] > nodeRanks[node2Parent]) {
+        } else if (nodeRanks[node1Parent] > nodeRanks[node2Parent]) {
             nodeParents[node2Parent] = node1Parent;
-        }
-        else {
+        } else {
             nodeParents[node2Parent] = node1Parent;
             nodeRanks[node1Parent]++;
         }

@@ -4,5 +4,5 @@ module com.baeldung.dddmodules.shippingcontext {
     exports com.baeldung.dddmodules.shippingcontext.model;
     exports com.baeldung.dddmodules.shippingcontext.repository;
     provides com.baeldung.dddmodules.shippingcontext.service.ShippingService
-      with com.baeldung.dddmodules.shippingcontext.service.ParcelShippingService;
+            with com.baeldung.dddmodules.shippingcontext.service.ParcelShippingService;
 }

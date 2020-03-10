@@ -9,7 +9,7 @@ import com.baeldung.command.command.TextFileOperation;
 import com.baeldung.command.receiver.TextFile;
 
 public class SaveTextFileOperationUnitTest {
-    
+
     @Test
     public void givenSaveTextFileOperationIntance_whenCalledExecuteMethod_thenOneAssertion() {
         TextFileOperation openTextFileOperation = new SaveTextFileOperation(new TextFile("file1.txt"));

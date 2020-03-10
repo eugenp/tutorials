@@ -41,55 +41,55 @@ public final class CreateVersionedJsonResourceIntegrationTest {
 
             // Check first revision.
             try (final var manager = database.openResourceManager("resource");
-                final var rtx = manager.beginNodeReadOnlyTrx(1)) {
-               rtx.moveToDocumentRoot().trx().moveToFirstChild().trx().moveToFirstChild();
+                 final var rtx = manager.beginNodeReadOnlyTrx(1)) {
+                rtx.moveToDocumentRoot().trx().moveToFirstChild().trx().moveToFirstChild();
 
-               assertEquals(new QNm("foo"), rtx.getName());
+                assertEquals(new QNm("foo"), rtx.getName());
 
-               rtx.moveToFirstChild();
+                rtx.moveToFirstChild();
 
-               assertTrue(rtx.isArray());
+                assertTrue(rtx.isArray());
             }
 
             // Check second revision.
             try (final var manager = database.openResourceManager("resource");
-                final var rtx = manager.beginNodeReadOnlyTrx(2)) {
-               rtx.moveToDocumentRoot().trx().moveToFirstChild().trx().moveToFirstChild();
+                 final var rtx = manager.beginNodeReadOnlyTrx(2)) {
+                rtx.moveToDocumentRoot().trx().moveToFirstChild().trx().moveToFirstChild();
 
-               assertEquals(new QNm("revision2"), rtx.getName());
+                assertEquals(new QNm("revision2"), rtx.getName());
 
-               rtx.moveToFirstChild();
+                rtx.moveToFirstChild();
 
-               assertEquals("yes", rtx.getValue());
+                assertEquals("yes", rtx.getValue());
 
-               rtx.moveToParent().trx().moveToRightSibling();
+                rtx.moveToParent().trx().moveToRightSibling();
 
-               assertEquals(new QNm("foo"), rtx.getName());
+                assertEquals(new QNm("foo"), rtx.getName());
 
-               rtx.moveToFirstChild();
+                rtx.moveToFirstChild();
 
-               assertTrue(rtx.isArray());
+                assertTrue(rtx.isArray());
             }
 
 
             // Check final revision.
             try (final var manager = database.openResourceManager("resource");
-                final var rtx = manager.beginNodeReadOnlyTrx()) {
-               rtx.moveToDocumentRoot().trx().moveToFirstChild().trx().moveToFirstChild();
+                 final var rtx = manager.beginNodeReadOnlyTrx()) {
+                rtx.moveToDocumentRoot().trx().moveToFirstChild().trx().moveToFirstChild();
 
-               assertEquals(new QNm("revision2"), rtx.getName());
+                assertEquals(new QNm("revision2"), rtx.getName());
 
-               rtx.moveToFirstChild();
+                rtx.moveToFirstChild();
 
-               assertEquals("yes", rtx.getValue());
+                assertEquals("yes", rtx.getValue());
 
-               rtx.moveToParent().trx().moveToRightSibling();
+                rtx.moveToParent().trx().moveToRightSibling();
 
-               assertEquals(new QNm("revision3"), rtx.getName());
+                assertEquals(new QNm("revision3"), rtx.getName());
 
-               rtx.moveToFirstChild();
+                rtx.moveToFirstChild();
 
-               assertEquals("yes", rtx.getValue());
+                assertEquals("yes", rtx.getValue());
             }
         }
     }

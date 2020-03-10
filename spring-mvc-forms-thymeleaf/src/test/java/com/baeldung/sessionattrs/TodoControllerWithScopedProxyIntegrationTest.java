@@ -37,15 +37,15 @@ public class TodoControllerWithScopedProxyIntegrationTest {
     @Before
     public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac)
-            .build();   
+                .build();
     }
 
     @Test
     public void whenFirstRequest_thenContainsUnintializedTodo() throws Exception {
         MvcResult result = mockMvc.perform(get("/scopedproxy/form"))
-            .andExpect(status().isOk())
-            .andExpect(model().attributeExists("todo"))
-            .andReturn();
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("todo"))
+                .andReturn();
 
         TodoItem item = (TodoItem) result.getModelAndView().getModel().get("todo");
         assertFalse(StringUtils.isEmpty(item.getDescription()));
@@ -54,14 +54,14 @@ public class TodoControllerWithScopedProxyIntegrationTest {
     @Test
     public void whenSubmit_thenSubsequentFormRequestContainsMostRecentTodo() throws Exception {
         mockMvc.perform(post("/scopedproxy/form")
-            .param("description", "newtodo"))
-            .andExpect(status().is3xxRedirection())
-            .andReturn();
+                .param("description", "newtodo"))
+                .andExpect(status().is3xxRedirection())
+                .andReturn();
 
         MvcResult result = mockMvc.perform(get("/scopedproxy/form"))
-            .andExpect(status().isOk())
-            .andExpect(model().attributeExists("todo"))
-            .andReturn();
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("todo"))
+                .andReturn();
         TodoItem item = (TodoItem) result.getModelAndView().getModel().get("todo");
         assertEquals("newtodo", item.getDescription());
     }

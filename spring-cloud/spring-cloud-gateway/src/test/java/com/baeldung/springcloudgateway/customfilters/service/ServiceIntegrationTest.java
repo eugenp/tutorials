@@ -17,13 +17,13 @@ public class ServiceIntegrationTest {
     @Test
     public void whenResourceEndpointCalled_thenRetrievesResourceStringWithContentLanguageHeader() throws Exception {
         this.webClient.get()
-            .uri("/resource")
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectHeader()
-            .valueEquals(HttpHeaders.CONTENT_LANGUAGE, "en")
-            .expectBody(String.class)
-            .isEqualTo("Service Resource");
+                .uri("/resource")
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectHeader()
+                .valueEquals(HttpHeaders.CONTENT_LANGUAGE, "en")
+                .expectBody(String.class)
+                .isEqualTo("Service Resource");
     }
 }

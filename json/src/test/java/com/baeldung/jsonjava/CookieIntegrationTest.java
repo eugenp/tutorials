@@ -14,7 +14,7 @@ public class CookieIntegrationTest {
 
         assertEquals("{\"path\":\"/\",\"expires\":\"Thu, 18 Dec 2013 12:00:00 UTC\",\"name\":\"username\",\"value\":\"John Doe\"}", cookieJO.toString());
     }
-    
+
     @Test
     public void givenJSONObject_thenConvertToCookieString() {
         JSONObject cookieJO = new JSONObject();

@@ -62,9 +62,9 @@ public class ParametrizedLongRunningUnitTest {
         @Override
         public String toString() {
             return "EvenNumber{" +
-              "value=" + value +
-              ", isEven=" + isEven +
-              '}';
+                    "value=" + value +
+                    ", isEven=" + isEven +
+                    '}';
         }
     }
 }

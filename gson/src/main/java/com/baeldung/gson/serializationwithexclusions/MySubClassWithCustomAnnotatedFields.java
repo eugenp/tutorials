@@ -9,6 +9,6 @@ public class MySubClassWithCustomAnnotatedFields {
 
     private long id;
     private String description;
-    @Exclude 
+    @Exclude
     private String otherVerboseInfo;
 }

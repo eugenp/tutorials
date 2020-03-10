@@ -36,7 +36,7 @@ public class HibernateLifecycleUtil {
         connection = DriverManager.getConnection(hbConfigProp.getProperty("hibernate.connection.url"), hbConfigProp.getProperty("hibernate.connection.username"), hbConfigProp.getProperty("hibernate.connection.password"));
 
         try (InputStream h2InitStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("lifecycle-init.sql");
-            InputStreamReader h2InitReader = new InputStreamReader(h2InitStream)) {
+             InputStreamReader h2InitReader = new InputStreamReader(h2InitStream)) {
             RunScript.execute(connection, h2InitReader);
         }
 

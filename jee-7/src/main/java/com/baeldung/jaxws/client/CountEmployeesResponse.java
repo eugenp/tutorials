@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for countEmployeesResponse complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="countEmployeesResponse">
  *   &lt;complexContent>
@@ -23,12 +23,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "countEmployeesResponse", propOrder = {
-    "_return"
+        "_return"
 })
 public class CountEmployeesResponse {
 
@@ -37,7 +35,6 @@ public class CountEmployeesResponse {
 
     /**
      * Gets the value of the return property.
-     * 
      */
     public int getReturn() {
         return _return;
@@ -45,7 +42,6 @@ public class CountEmployeesResponse {
 
     /**
      * Sets the value of the return property.
-     * 
      */
     public void setReturn(int value) {
         this._return = value;

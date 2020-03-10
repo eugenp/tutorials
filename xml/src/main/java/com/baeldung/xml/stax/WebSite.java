@@ -1,4 +1,5 @@
 package com.baeldung.xml.stax;
+
 public class WebSite {
 
     private String url;

@@ -6,14 +6,13 @@ import java.util.List;
 import io.vavr.collection.Stream;
 
 /**
- *
  * @author baeldung
  */
 public class VavrSampler {
 
-    static int[] intArray = new int[] { 1, 2, 4 };
+    static int[] intArray = new int[]{1, 2, 4};
     static List<Integer> intList = new ArrayList<>();
-    static int[][] intOfInts = new int[][] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+    static int[][] intOfInts = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
     public static void main(String[] args) {
         vavrStreamElementAccess();

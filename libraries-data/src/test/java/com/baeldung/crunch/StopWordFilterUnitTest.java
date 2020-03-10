@@ -31,11 +31,11 @@ public class StopWordFilterUnitTest {
     @Test
     public void givenWordCollection_whenFiltered_thenStopWordsRemoved() {
         PCollection<String> words = MemPipeline.collectionOf("This", "is", "a",
-            "test", "sentence");
+                "test", "sentence");
 
         PCollection<String> noStopWords = words.filter(new StopWordFilter());
 
         assertEquals(ImmutableList.of("This", "test", "sentence"),
-            Lists.newArrayList(noStopWords.materialize()));
+                Lists.newArrayList(noStopWords.materialize()));
     }
 }

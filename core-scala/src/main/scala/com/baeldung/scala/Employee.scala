@@ -6,11 +6,11 @@ package com.baeldung.scala
  * @author Chandra Prakash
  *
  */
-class Employee(val name : String,
-               var salary : Int,
-               annualIncrement : Int = 20) {
+class Employee(val name: String,
+               var salary: Int,
+               annualIncrement: Int = 20) {
 
-  def incrementSalary() : Unit = {
+  def incrementSalary(): Unit = {
     salary += annualIncrement
   }
 

@@ -21,7 +21,7 @@ public class GetterBooleanUnitTest {
 
     @Test
     public void whenTwoBooleanFieldsCauseNamingConflict_thenLombokMapsToFirstDeclaredField() {
-        GetterBooleanPrimitiveSameAccessor  lombokExamples = new GetterBooleanPrimitiveSameAccessor();
+        GetterBooleanPrimitiveSameAccessor lombokExamples = new GetterBooleanPrimitiveSameAccessor();
         assertTrue(lombokExamples.isRunning() == lombokExamples.running);
         assertFalse(lombokExamples.isRunning() == lombokExamples.isRunning);
     }

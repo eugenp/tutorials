@@ -70,22 +70,22 @@ public class CarResourceIntegrationTest {
         MockitoAnnotations.initMocks(this);
         CarResource carResource = new CarResource(carRepository);
         this.restCarMockMvc = MockMvcBuilders.standaloneSetup(carResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setMessageConverters(jacksonMessageConverter).build();
+                .setCustomArgumentResolvers(pageableArgumentResolver)
+                .setControllerAdvice(exceptionTranslator)
+                .setMessageConverters(jacksonMessageConverter).build();
     }
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
     public static Car createEntity(EntityManager em) {
         Car car = new Car()
-            .make(DEFAULT_MAKE)
-            .brand(DEFAULT_BRAND)
-            .price(DEFAULT_PRICE);
+                .make(DEFAULT_MAKE)
+                .brand(DEFAULT_BRAND)
+                .price(DEFAULT_PRICE);
         return car;
     }
 
@@ -101,9 +101,9 @@ public class CarResourceIntegrationTest {
 
         // Create the Car
         restCarMockMvc.perform(post("/api/cars")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(car)))
-            .andExpect(status().isCreated());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(car)))
+                .andExpect(status().isCreated());
 
         // Validate the Car in the database
         List<Car> carList = carRepository.findAll();
@@ -124,9 +124,9 @@ public class CarResourceIntegrationTest {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restCarMockMvc.perform(post("/api/cars")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(car)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(car)))
+                .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
         List<Car> carList = carRepository.findAll();
@@ -141,12 +141,12 @@ public class CarResourceIntegrationTest {
 
         // Get all the carList
         restCarMockMvc.perform(get("/api/cars?sort=id,desc"))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(car.getId().intValue())))
-            .andExpect(jsonPath("$.[*].make").value(hasItem(DEFAULT_MAKE.toString())))
-            .andExpect(jsonPath("$.[*].brand").value(hasItem(DEFAULT_BRAND.toString())))
-            .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.[*].id").value(hasItem(car.getId().intValue())))
+                .andExpect(jsonPath("$.[*].make").value(hasItem(DEFAULT_MAKE.toString())))
+                .andExpect(jsonPath("$.[*].brand").value(hasItem(DEFAULT_BRAND.toString())))
+                .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())));
     }
 
     @Test
@@ -157,12 +157,12 @@ public class CarResourceIntegrationTest {
 
         // Get the car
         restCarMockMvc.perform(get("/api/cars/{id}", car.getId()))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(car.getId().intValue()))
-            .andExpect(jsonPath("$.make").value(DEFAULT_MAKE.toString()))
-            .andExpect(jsonPath("$.brand").value(DEFAULT_BRAND.toString()))
-            .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.id").value(car.getId().intValue()))
+                .andExpect(jsonPath("$.make").value(DEFAULT_MAKE.toString()))
+                .andExpect(jsonPath("$.brand").value(DEFAULT_BRAND.toString()))
+                .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()));
     }
 
     @Test
@@ -170,7 +170,7 @@ public class CarResourceIntegrationTest {
     public void getNonExistingCar() throws Exception {
         // Get the car
         restCarMockMvc.perform(get("/api/cars/{id}", Long.MAX_VALUE))
-            .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -183,14 +183,14 @@ public class CarResourceIntegrationTest {
         // Update the car
         Car updatedCar = carRepository.findOne(car.getId());
         updatedCar
-            .make(UPDATED_MAKE)
-            .brand(UPDATED_BRAND)
-            .price(UPDATED_PRICE);
+                .make(UPDATED_MAKE)
+                .brand(UPDATED_BRAND)
+                .price(UPDATED_PRICE);
 
         restCarMockMvc.perform(put("/api/cars")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(updatedCar)))
-            .andExpect(status().isOk());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(updatedCar)))
+                .andExpect(status().isOk());
 
         // Validate the Car in the database
         List<Car> carList = carRepository.findAll();
@@ -210,9 +210,9 @@ public class CarResourceIntegrationTest {
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
         restCarMockMvc.perform(put("/api/cars")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(car)))
-            .andExpect(status().isCreated());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(car)))
+                .andExpect(status().isCreated());
 
         // Validate the Car in the database
         List<Car> carList = carRepository.findAll();
@@ -228,8 +228,8 @@ public class CarResourceIntegrationTest {
 
         // Get the car
         restCarMockMvc.perform(delete("/api/cars/{id}", car.getId())
-            .accept(TestUtil.APPLICATION_JSON_UTF8))
-            .andExpect(status().isOk());
+                .accept(TestUtil.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk());
 
         // Validate the database is empty
         List<Car> carList = carRepository.findAll();

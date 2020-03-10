@@ -31,12 +31,12 @@ public class BigMatrixMultiplicationBenchmarking {
         Map<String, String> parameters = parseParameters(args);
 
         ChainedOptionsBuilder builder = new OptionsBuilder()
-          .include(BigMatrixMultiplicationBenchmarking.class.getSimpleName())
-          .mode(Mode.AverageTime)
-          .forks(forks(parameters))
-          .warmupIterations(warmupIterations(parameters))
-          .measurementIterations(measurementIterations(parameters))
-          .timeUnit(TimeUnit.SECONDS);
+                .include(BigMatrixMultiplicationBenchmarking.class.getSimpleName())
+                .mode(Mode.AverageTime)
+                .forks(forks(parameters))
+                .warmupIterations(warmupIterations(parameters))
+                .measurementIterations(measurementIterations(parameters))
+                .timeUnit(TimeUnit.SECONDS);
 
         parameters.forEach(builder::param);
 
@@ -45,11 +45,11 @@ public class BigMatrixMultiplicationBenchmarking {
 
     private static Map<String, String> parseParameters(String[] args) {
         return Arrays.stream(args)
-          .map(arg -> arg.split("="))
-          .collect(Collectors.toMap(
-            arg -> arg[0],
-            arg -> arg[1]
-          ));
+                .map(arg -> arg.split("="))
+                .collect(Collectors.toMap(
+                        arg -> arg[0],
+                        arg -> arg[1]
+                ));
     }
 
     private static int forks(Map<String, String> parameters) {

@@ -29,30 +29,30 @@ public class Employee implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
-      name = "Employee_Project", 
-      joinColumns = { @JoinColumn(name = "employee_id") }, 
-      inverseJoinColumns = { @JoinColumn(name = "project_id") }
+            name = "Employee_Project",
+            joinColumns = {@JoinColumn(name = "employee_id")},
+            inverseJoinColumns = {@JoinColumn(name = "project_id")}
     )
     Set<Project> projects = new HashSet<Project>();
-   
+
 
     public Employee() {
-       super();
+        super();
     }
 
     public Employee(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-    
+
     public Employee(String firstName, String lastName, Set<Project> projects) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.projects = projects;
     }
-    
+
 
     public Long getEmployeeId() {
         return employeeId;

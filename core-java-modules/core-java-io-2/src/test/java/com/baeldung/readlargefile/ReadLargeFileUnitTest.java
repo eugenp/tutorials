@@ -97,11 +97,11 @@ public class ReadLargeFileUnitTest {
 
     private final void logMemory() {
         logger.info("Max Memory: {} Mb", Runtime.getRuntime()
-            .maxMemory() / 1048576);
+                .maxMemory() / 1048576);
         logger.info("Total Memory: {} Mb", Runtime.getRuntime()
-            .totalMemory() / 1048576);
+                .totalMemory() / 1048576);
         logger.info("Free Memory: {} Mb", Runtime.getRuntime()
-            .freeMemory() / 1048576);
+                .freeMemory() / 1048576);
     }
 
 }

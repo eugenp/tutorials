@@ -20,7 +20,7 @@ public class OptionalChainingTest {
 
         assertEquals(result, "default");
     }
-    
+
     @Test
     public void whenChainingWithMethodReferences_thenOk() {
         User user = new User("anna@gmail.com", "1234");

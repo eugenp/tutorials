@@ -26,14 +26,14 @@ public class PropertyValidationUnitTest {
     @BeforeAll
     public static void setup() {
         propertyValidator = Validation.buildDefaultValidatorFactory()
-            .getValidator();
+                .getValidator();
     }
 
     @Test
     void whenBindingPropertiesToValidatedBeans_thenConstrainsAreChecked() {
         assertEquals(0, propertyValidator.validate(mailServer.getPropertiesMap())
-            .size());
+                .size());
         assertEquals(0, propertyValidator.validate(mailServer.getMailConfig())
-            .size());
+                .size());
     }
 }

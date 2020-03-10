@@ -12,7 +12,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { Cause2PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {Cause2PersistenceConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class Cause2MappingExceptionManualTest {
 
     @Autowired

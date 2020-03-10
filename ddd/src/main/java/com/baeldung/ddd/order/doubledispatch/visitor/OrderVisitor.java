@@ -5,5 +5,6 @@ import com.baeldung.ddd.order.doubledispatch.SpecialOrder;
 
 public interface OrderVisitor {
     void visit(Order order);
+
     void visit(SpecialOrder order);
 }

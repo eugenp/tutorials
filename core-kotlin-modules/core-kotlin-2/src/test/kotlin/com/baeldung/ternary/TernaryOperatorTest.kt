@@ -15,7 +15,7 @@ class TernaryOperatorTest {
     @Test
     fun `using When`() {
         val a = true
-        val result = when(a) {
+        val result = when (a) {
             true -> "yes"
             false -> "no"
         }

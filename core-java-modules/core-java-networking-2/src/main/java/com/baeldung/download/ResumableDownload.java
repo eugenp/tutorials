@@ -9,7 +9,7 @@ public class ResumableDownload {
 
         File outputFile = new File(saveAsFileName);
         URLConnection downloadFileConnection = new URI(downloadUrl).toURL()
-            .openConnection();
+                .openConnection();
         return transferDataAndGetBytesDownloaded(downloadFileConnection, outputFile);
     }
 
@@ -39,13 +39,13 @@ public class ResumableDownload {
     private static URLConnection addFileResumeFunctionality(String downloadUrl, File outputFile) throws IOException, URISyntaxException, ProtocolException, ProtocolException {
         long existingFileSize = 0L;
         URLConnection downloadFileConnection = new URI(downloadUrl).toURL()
-            .openConnection();
+                .openConnection();
 
         if (outputFile.exists() && downloadFileConnection instanceof HttpURLConnection) {
             HttpURLConnection httpFileConnection = (HttpURLConnection) downloadFileConnection;
 
             HttpURLConnection tmpFileConn = (HttpURLConnection) new URI(downloadUrl).toURL()
-                .openConnection();
+                    .openConnection();
             tmpFileConn.setRequestMethod("HEAD");
             long fileLength = tmpFileConn.getContentLengthLong();
             existingFileSize = outputFile.length();

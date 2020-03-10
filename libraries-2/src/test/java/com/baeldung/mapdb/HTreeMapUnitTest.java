@@ -16,10 +16,10 @@ public class HTreeMapUnitTest {
         DB db = DBMaker.memoryDB().make();
 
         HTreeMap<String, String> hTreeMap = db
-          .hashMap("myTreMap")
-          .keySerializer(Serializer.STRING)
-          .valueSerializer(Serializer.STRING)
-          .create();
+                .hashMap("myTreMap")
+                .keySerializer(Serializer.STRING)
+                .valueSerializer(Serializer.STRING)
+                .create();
 
         hTreeMap.put("key1", "value1");
         hTreeMap.put("key2", "value2");

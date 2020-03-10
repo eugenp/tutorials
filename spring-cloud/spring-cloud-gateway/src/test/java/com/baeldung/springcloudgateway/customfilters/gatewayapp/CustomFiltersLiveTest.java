@@ -20,7 +20,6 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
  * This test requires:
  * * the service in com.baeldung.service running
  * * the 'second service' in com.baeldung.secondservice running
- *
  */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class CustomFiltersLiveTest {
@@ -35,60 +34,60 @@ public class CustomFiltersLiveTest {
     public void clearLogList() {
         LoggerListAppender.clearEventList();
         client = WebTestClient.bindToServer()
-            .baseUrl("http://localhost:" + port)
-            .build();
+                .baseUrl("http://localhost:" + port)
+                .build();
     }
 
     @Test
     public void whenCallServiceThroughGateway_thenAllConfiguredFiltersGetExecuted() {
         ResponseSpec response = client.get()
-            .uri("/service/resource")
-            .exchange();
+                .uri("/service/resource")
+                .exchange();
 
         response.expectStatus()
-            .isOk()
-            .expectHeader()
-            .doesNotExist("Bael-Custom-Language-Header")
-            .expectBody(String.class)
-            .isEqualTo("Service Resource");
+                .isOk()
+                .expectHeader()
+                .doesNotExist("Bael-Custom-Language-Header")
+                .expectBody(String.class)
+                .isEqualTo("Service Resource");
 
         assertThat(LoggerListAppender.getEvents())
-            // Global Pre Filter
-            .haveAtLeastOne(eventContains("Global Pre Filter executed"))
-            // Global Post Filter
-            .haveAtLeastOne(eventContains("Global Post Filter executed"))
-            // Global Pre and Post Filter
-            .haveAtLeastOne(eventContains("First Pre Global Filter"))
-            .haveAtLeastOne(eventContains("Last Post Global Filter"))
-            // Logging Filter Factory
-            .haveAtLeastOne(eventContains("Pre GatewayFilter logging: My Custom Message"))
-            .haveAtLeastOne(eventContains("Post GatewayFilter logging: My Custom Message"))
-            // Modify Request
-            .haveAtLeastOne(eventContains("Modify request output - Request contains Accept-Language header:"))
-            .haveAtLeastOne(eventContainsExcept("Removed all query params: ", "locale"))
-            // Modify Response
-            .areNot(eventContains("Added custom header to Response"))
-            // Chain Request
-            .haveAtLeastOne(eventContains("Chain Request output - Request contains Accept-Language header:"));
+                // Global Pre Filter
+                .haveAtLeastOne(eventContains("Global Pre Filter executed"))
+                // Global Post Filter
+                .haveAtLeastOne(eventContains("Global Post Filter executed"))
+                // Global Pre and Post Filter
+                .haveAtLeastOne(eventContains("First Pre Global Filter"))
+                .haveAtLeastOne(eventContains("Last Post Global Filter"))
+                // Logging Filter Factory
+                .haveAtLeastOne(eventContains("Pre GatewayFilter logging: My Custom Message"))
+                .haveAtLeastOne(eventContains("Post GatewayFilter logging: My Custom Message"))
+                // Modify Request
+                .haveAtLeastOne(eventContains("Modify request output - Request contains Accept-Language header:"))
+                .haveAtLeastOne(eventContainsExcept("Removed all query params: ", "locale"))
+                // Modify Response
+                .areNot(eventContains("Added custom header to Response"))
+                // Chain Request
+                .haveAtLeastOne(eventContains("Chain Request output - Request contains Accept-Language header:"));
     }
 
     @Test
     public void givenRequestWithLocaleQueryParam_whenCallServiceThroughGateway_thenAllConfiguredFiltersGetExecuted() {
         ResponseSpec response = client.get()
-            .uri("/service/resource?locale=en")
-            .exchange();
+                .uri("/service/resource?locale=en")
+                .exchange();
 
         response.expectStatus()
-            .isOk()
-            .expectHeader()
-            .exists("Bael-Custom-Language-Header")
-            .expectBody(String.class)
-            .isEqualTo("Service Resource");
+                .isOk()
+                .expectHeader()
+                .exists("Bael-Custom-Language-Header")
+                .expectBody(String.class)
+                .isEqualTo("Service Resource");
 
         assertThat(LoggerListAppender.getEvents())
-            // Modify Response
-            .haveAtLeastOne(eventContains("Added custom header to Response"))
-            .haveAtLeastOne(eventContainsExcept("Removed all query params: ", "locale"));
+                // Modify Response
+                .haveAtLeastOne(eventContains("Added custom header to Response"))
+                .haveAtLeastOne(eventContainsExcept("Removed all query params: ", "locale"));
     }
 
     /**
@@ -96,7 +95,7 @@ public class CustomFiltersLiveTest {
      */
     private Condition<ILoggingEvent> eventContains(String substring) {
         return new Condition<ILoggingEvent>(entry -> (substring == null || (entry.getFormattedMessage() != null && entry.getFormattedMessage()
-            .contains(substring))), String.format("entry with message '%s'", substring));
+                .contains(substring))), String.format("entry with message '%s'", substring));
     }
 
     /**
@@ -104,9 +103,9 @@ public class CustomFiltersLiveTest {
      */
     private Condition<ILoggingEvent> eventContainsExcept(String substring, String except) {
         return new Condition<ILoggingEvent>(entry -> (substring == null || (entry.getFormattedMessage() != null && entry.getFormattedMessage()
-            .contains(substring)
-            && !entry.getFormattedMessage()
+                .contains(substring)
+                && !entry.getFormattedMessage()
                 .contains(except))),
-            String.format("entry with message '%s'", substring));
+                String.format("entry with message '%s'", substring));
     }
 }

@@ -69,16 +69,15 @@ public class AnimalUnitTest {
         int testValue = 3;
         animal.makeNoise(testValue);
 
-        verify(mockAppender,times(3)).doAppend(captorLoggingEvent.capture());
+        verify(mockAppender, times(3)).doAppend(captorLoggingEvent.capture());
 
         final List<LoggingEvent> loggingEvents = captorLoggingEvent.getAllValues();
 
-        for(LoggingEvent loggingEvent : loggingEvents)
-        {
+        for (LoggingEvent loggingEvent : loggingEvents) {
             assertThat(loggingEvent.getLevel(), is(Level.INFO));
 
             assertThat(loggingEvent.getFormattedMessage(),
-                    is("generic animal noise countdown "+testValue));
+                    is("generic animal noise countdown " + testValue));
 
             testValue--;
         }

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { JhiLanguageService } from 'ng-jhipster';
+import {Component, OnInit} from '@angular/core';
+import {JhiLanguageService} from 'ng-jhipster';
 
-import { JhiConfigurationService } from './configuration.service';
+import {JhiConfigurationService} from './configuration.service';
 
 @Component({
     selector: 'jhi-configuration',

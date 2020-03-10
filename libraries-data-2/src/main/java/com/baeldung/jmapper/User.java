@@ -4,17 +4,17 @@ import java.time.LocalDate;
 
 
 public class User {
-    
-    private long id;    
+
+    private long id;
     private String email;
     private LocalDate birthDate;
-    
+
     // constructors
-    
+
     public User() {
         super();
     }
-    
+
     public User(long id, String email, LocalDate birthDate) {
         super();
         this.id = id;
@@ -23,7 +23,7 @@ public class User {
     }
 
     // getters and setters
-    
+
     public long getId() {
         return id;
     }
@@ -52,5 +52,5 @@ public class User {
     public String toString() {
         return "User [id=" + id + ", email=" + email + ", birthDate=" + birthDate + "]";
     }
-    
+
 }

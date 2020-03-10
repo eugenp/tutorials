@@ -31,11 +31,11 @@ public class LargeFileDownloadIntegrationTest {
     public void givenResumableUrl_whenUrlCalledByHeadOption_thenExpectHeadersAvailable() {
         HttpHeaders headers = restTemplate.headForHeaders(FILE_URL);
         Assertions
-          .assertThat(headers.get("Accept-Ranges"))
-          .contains("bytes");
+                .assertThat(headers.get("Accept-Ranges"))
+                .contains("bytes");
         Assertions
-          .assertThat(headers.getContentLength())
-          .isGreaterThan(0);
+                .assertThat(headers.getContentLength())
+                .isGreaterThan(0);
     }
 
     @Test
@@ -50,16 +50,16 @@ public class LargeFileDownloadIntegrationTest {
 
         Assert.assertNotNull(file);
         Assertions
-          .assertThat(file.length())
-          .isEqualTo(contentLength);
+                .assertThat(file.length())
+                .isEqualTo(contentLength);
     }
 
     @Test
     public void givenResumableUrl_whenDownloadRange_thenExpectFileSizeEqualOrLessThanRange() {
         int range = 10;
         File file = restTemplate.execute(FILE_URL, HttpMethod.GET, clientHttpRequest -> clientHttpRequest
-          .getHeaders()
-          .set("Range", String.format("bytes=0-%d", range - 1)), clientHttpResponse -> {
+                .getHeaders()
+                .set("Range", String.format("bytes=0-%d", range - 1)), clientHttpResponse -> {
             File ret = File.createTempFile("download", "tmp");
             StreamUtils.copy(clientHttpResponse.getBody(), new FileOutputStream(ret));
             return ret;
@@ -67,8 +67,8 @@ public class LargeFileDownloadIntegrationTest {
 
         Assert.assertNotNull(file);
         Assertions
-          .assertThat(file.length())
-          .isLessThanOrEqualTo(range);
+                .assertThat(file.length())
+                .isLessThanOrEqualTo(range);
     }
 
     @Test
@@ -80,8 +80,8 @@ public class LargeFileDownloadIntegrationTest {
         long contentLength = headers.getContentLength();
 
         File file = restTemplate.execute(FILE_URL, HttpMethod.GET, clientHttpRequest -> clientHttpRequest
-          .getHeaders()
-          .set("Range", String.format("bytes=0-%d", range - 1)), clientHttpResponse -> {
+                .getHeaders()
+                .set("Range", String.format("bytes=0-%d", range - 1)), clientHttpResponse -> {
             File ret = File.createTempFile("download", "tmp");
             StreamUtils.copy(clientHttpResponse.getBody(), new FileOutputStream(ret));
             return ret;
@@ -90,19 +90,19 @@ public class LargeFileDownloadIntegrationTest {
         Assert.assertNotNull(file);
 
         Assertions
-          .assertThat(file.length())
-          .isLessThanOrEqualTo(range);
+                .assertThat(file.length())
+                .isLessThanOrEqualTo(range);
 
         restTemplate.execute(FILE_URL, HttpMethod.GET, clientHttpRequest -> clientHttpRequest
-          .getHeaders()
-          .set("Range", String.format("bytes=%d-%d", file.length(), contentLength)), clientHttpResponse -> {
+                .getHeaders()
+                .set("Range", String.format("bytes=%d-%d", file.length(), contentLength)), clientHttpResponse -> {
             StreamUtils.copy(clientHttpResponse.getBody(), new FileOutputStream(file, true));
             return file;
         });
 
         Assertions
-          .assertThat(file.length())
-          .isEqualTo(contentLength);
+                .assertThat(file.length())
+                .isEqualTo(contentLength);
 
     }
 

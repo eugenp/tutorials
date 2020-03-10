@@ -12,10 +12,11 @@ import static org.junit.Assert.assertNotEquals;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { HazelcastConfig.class }, webEnvironment = NONE)
+@SpringBootTest(classes = {HazelcastConfig.class}, webEnvironment = NONE)
 public class HazelcastConfigIntegrationTest {
 
-    @Autowired private ApplicationContext applicationContext;
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @Test
     public void whenApplicationContextStarts_HazelcastConfigBeanExists() {

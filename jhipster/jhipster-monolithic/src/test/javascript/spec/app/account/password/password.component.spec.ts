@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed, async, inject } from '@angular/core/testing';
-import { Observable } from 'rxjs/Rx';
-import { BaeldungTestModule } from '../../../test.module';
-import { PasswordComponent } from '../../../../../../main/webapp/app/account/password/password.component';
-import { Password } from '../../../../../../main/webapp/app/account/password/password.service';
-import { Principal } from '../../../../../../main/webapp/app/shared/auth/principal.service';
-import { AccountService } from '../../../../../../main/webapp/app/shared/auth/account.service';
+import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
+import {Observable} from 'rxjs/Rx';
+import {BaeldungTestModule} from '../../../test.module';
+import {PasswordComponent} from '../../../../../../main/webapp/app/account/password/password.component';
+import {Password} from '../../../../../../main/webapp/app/account/password/password.service';
+import {Principal} from '../../../../../../main/webapp/app/shared/auth/principal.service';
+import {AccountService} from '../../../../../../main/webapp/app/shared/auth/account.service';
 
 
 describe('Component Tests', () => {
@@ -61,7 +61,7 @@ describe('Component Tests', () => {
             expect(service.save).toHaveBeenCalledWith('myPassword');
         });
 
-        it('should set success to OK upon success', function() {
+        it('should set success to OK upon success', function () {
             // GIVEN
             spyOn(service, 'save').and.returnValue(Observable.of(true));
             comp.password = comp.confirmPassword = 'myPassword';
@@ -75,7 +75,7 @@ describe('Component Tests', () => {
             expect(comp.success).toBe('OK');
         });
 
-        it('should notify of error if change password fails', function() {
+        it('should notify of error if change password fails', function () {
             // GIVEN
             spyOn(service, 'save').and.returnValue(Observable.throw('ERROR'));
             comp.password = comp.confirmPassword = 'myPassword';

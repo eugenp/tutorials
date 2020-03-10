@@ -8,7 +8,7 @@ public class BruteForcePrimeChecker implements PrimeChecker<Integer> {
     public boolean isPrime(Integer number) {
 
         return number > 1 ? IntStream.range(2, number)
-            .noneMatch(n -> (number % n == 0)) : false;
+                .noneMatch(n -> (number % n == 0)) : false;
     }
 
 }

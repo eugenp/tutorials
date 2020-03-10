@@ -24,7 +24,7 @@ class DisplayNameGeneratorUnitTest {
         }
 
         @ParameterizedTest(name = "Number {0} is fizz.")
-        @ValueSource(ints = { 3, 12, 18 })
+        @ValueSource(ints = {3, 12, 18})
         void ifItIsOneOfTheFollowingNumbers(int number) {
         }
     }
@@ -37,7 +37,7 @@ class DisplayNameGeneratorUnitTest {
         }
 
         @ParameterizedTest(name = "Number {0} is buzz.")
-        @ValueSource(ints = { 5, 10, 20 })
+        @ValueSource(ints = {5, 10, 20})
         void ifItIsOneOfTheFollowingNumbers(int number) {
         }
     }
@@ -73,7 +73,7 @@ class DisplayNameGeneratorUnitTest {
         String replaceCamelCase(String camelCase) {
             StringBuilder result = new StringBuilder();
             result.append(camelCase.charAt(0));
-            for (int i=1; i<camelCase.length(); i++) {
+            for (int i = 1; i < camelCase.length(); i++) {
                 if (Character.isUpperCase(camelCase.charAt(i))) {
                     result.append(' ');
                     result.append(Character.toLowerCase(camelCase.charAt(i)));

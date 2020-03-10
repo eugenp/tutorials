@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class BFSMazeSolver {
-    private static final int[][] DIRECTIONS = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };
+    private static final int[][] DIRECTIONS = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
     public List<Coordinate> solve(Maze maze) {
         LinkedList<Coordinate> nextToVisit = new LinkedList<>();

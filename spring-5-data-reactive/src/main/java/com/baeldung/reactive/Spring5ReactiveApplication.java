@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 
 @SpringBootApplication
-public class Spring5ReactiveApplication{
+public class Spring5ReactiveApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(Spring5ReactiveApplication.class, args);

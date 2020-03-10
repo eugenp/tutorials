@@ -18,7 +18,7 @@ import javax.validation.Payload;
 import com.baeldung.javaxval.enums.CustomerTypeSubSetValidator;
 import com.baeldung.javaxval.enums.demo.CustomerType;
 
-@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
+@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
 @Documented
 @Constraint(validatedBy = CustomerTypeSubSetValidator.class)

@@ -63,7 +63,7 @@ class ItemServiceUnitTest extends Specification {
 
     def 'should throw ExternalItemProviderException when ItemProvider fails'() {
         given:
-        itemProvider.getItems(_) >> { new RuntimeException()}
+        itemProvider.getItems(_) >> { new RuntimeException() }
 
         when:
         itemService.getAllItemsSortedByName([])
@@ -100,7 +100,7 @@ class ItemServiceUnitTest extends Specification {
         itemService.saveItems(offerIds)
 
         then:
-        2 * eventPublisher.publish({ it != null && !it.isEmpty()})
+        2 * eventPublisher.publish({ it != null && !it.isEmpty() })
     }
 
     def 'should return items'() {

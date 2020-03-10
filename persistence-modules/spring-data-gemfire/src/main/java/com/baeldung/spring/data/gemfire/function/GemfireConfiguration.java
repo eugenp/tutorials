@@ -13,6 +13,7 @@ import org.springframework.data.gemfire.LocalRegionFactoryBean;
 import org.springframework.data.gemfire.function.config.EnableGemfireFunctionExecutions;
 import org.springframework.data.gemfire.function.config.EnableGemfireFunctions;
 import org.springframework.data.gemfire.repository.config.EnableGemfireRepositories;
+
 import java.util.Properties;
 
 @Configuration
@@ -48,7 +49,7 @@ public class GemfireConfiguration {
     }
 
 
-    @Bean(name="employee")
+    @Bean(name = "employee")
     @Autowired
     LocalRegionFactoryBean<String, Employee> getEmployee(final GemFireCache cache) {
         LocalRegionFactoryBean<String, Employee> employeeRegion = new LocalRegionFactoryBean<String, Employee>();

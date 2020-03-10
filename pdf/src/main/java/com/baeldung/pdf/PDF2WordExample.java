@@ -15,36 +15,36 @@ import com.itextpdf.text.pdf.parser.TextExtractionStrategy;
 
 public class PDF2WordExample {
 
-	private static final String FILENAME = "src/main/resources/pdf.pdf";
+    private static final String FILENAME = "src/main/resources/pdf.pdf";
 
-	public static void main(String[] args) {
-		try {
-			generateDocFromPDF(FILENAME);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+    public static void main(String[] args) {
+        try {
+            generateDocFromPDF(FILENAME);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	private static void generateDocFromPDF(String filename) throws IOException {
-		XWPFDocument doc = new XWPFDocument();
+    private static void generateDocFromPDF(String filename) throws IOException {
+        XWPFDocument doc = new XWPFDocument();
 
-		String pdf = filename;
-		PdfReader reader = new PdfReader(pdf);
-		PdfReaderContentParser parser = new PdfReaderContentParser(reader);
+        String pdf = filename;
+        PdfReader reader = new PdfReader(pdf);
+        PdfReaderContentParser parser = new PdfReaderContentParser(reader);
 
-		for (int i = 1; i <= reader.getNumberOfPages(); i++) {
-			TextExtractionStrategy strategy = parser.processContent(i, new SimpleTextExtractionStrategy());
-			String text = strategy.getResultantText();
-			XWPFParagraph p = doc.createParagraph();
-			XWPFRun run = p.createRun();
-			run.setText(text);
-			run.addBreak(BreakType.PAGE);
-		}
-		FileOutputStream out = new FileOutputStream("src/output/pdf.docx");
-		doc.write(out);
-		out.close();
-		reader.close();
-		doc.close();
-	}
+        for (int i = 1; i <= reader.getNumberOfPages(); i++) {
+            TextExtractionStrategy strategy = parser.processContent(i, new SimpleTextExtractionStrategy());
+            String text = strategy.getResultantText();
+            XWPFParagraph p = doc.createParagraph();
+            XWPFRun run = p.createRun();
+            run.setText(text);
+            run.addBreak(BreakType.PAGE);
+        }
+        FileOutputStream out = new FileOutputStream("src/output/pdf.docx");
+        doc.write(out);
+        out.close();
+        reader.close();
+        doc.close();
+    }
 
 }

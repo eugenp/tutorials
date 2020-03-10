@@ -23,9 +23,9 @@ public class WeatherControllerIntegrationTest {
     @Test
     public void whenWeatherControllerInvoked_thenReturnWeatherInformation() throws Exception {
         this.mockMvc.perform(get("/weather/today"))
-            .andDo(print())
-            .andExpect(status().isOk())
-            .andExpect(content().string(containsString("bright sunny day")));
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("bright sunny day")));
     }
 
 }

@@ -29,8 +29,8 @@ public class GithubUserResponseMediaTypeSteps {
     @When("I look for the user via the api")
     public void whenILookForTheUserViaTheApi() throws IOException {
         mediaType = ContentType
-          .getOrDefault(getGithubUserProfile(api, validUser).getEntity())
-          .getMimeType();
+                .getOrDefault(getGithubUserProfile(api, validUser).getEntity())
+                .getMimeType();
     }
 
     @Then("github respond data of type json")

@@ -40,7 +40,7 @@ public class WebController {
 
     private Optional<String> getDomain() {
         Authentication auth = SecurityContextHolder.getContext()
-            .getAuthentication(); 
+                .getAuthentication();
         String domain = null;
         if (auth != null && !auth.getClass().equals(AnonymousAuthenticationToken.class)) {
             User user = (User) auth.getPrincipal();

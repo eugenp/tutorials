@@ -1,5 +1,5 @@
-import { SpyObject } from './spyobject';
-import { AccountService } from 'app/core/auth/account.service';
+import {SpyObject} from './spyobject';
+import {AccountService} from 'app/core/auth/account.service';
 import Spy = jasmine.Spy;
 
 export class MockAccountService extends SpyObject {

@@ -37,15 +37,14 @@ public class AutomaticTimerBeanLiveTest {
     @Deployment
     public static WebArchive deploy() {
         File[] jars = Maven.resolver().loadPomFromFile("pom.xml")
-            .resolve("com.jayway.awaitility:awaitility")
-            .withTransitivity().asFile();
+                .resolve("com.jayway.awaitility:awaitility")
+                .withTransitivity().asFile();
 
         //only @AutomaticTimerBean is deployed not the other timers
         return ShrinkWrap.create(WebArchive.class)
-            .addAsLibraries(jars)
-            .addClasses(WithinWindowMatcher.class, TimerEvent.class, TimerEventListener.class, AutomaticTimerBean.class);
+                .addAsLibraries(jars)
+                .addClasses(WithinWindowMatcher.class, TimerEvent.class, TimerEventListener.class, AutomaticTimerBean.class);
     }
-
 
 
     @Test

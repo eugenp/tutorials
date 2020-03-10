@@ -34,7 +34,7 @@ public class BatchProcessingLiveTest {
     private PreparedStatement employeeAddressStatement;
 
     @Before
-    public void before(){
+    public void before() {
         MockitoAnnotations.initMocks(this);
     }
 

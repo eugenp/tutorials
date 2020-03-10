@@ -13,13 +13,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
+
 import java.sql.SQLException;
 
 @Configuration
 @EnableWebMvc
 @EnableJpaRepositories
 @ComponentScan("com.baeldung.springsecuredsockets")
-@Import({ SecurityConfig.class, DataStoreConfig.class, SocketBrokerConfig.class, SocketSecurityConfig.class })
+@Import({SecurityConfig.class, DataStoreConfig.class, SocketBrokerConfig.class, SocketSecurityConfig.class})
 public class AppConfig extends WebMvcConfigurerAdapter {
 
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -49,8 +50,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     }
 
     // View H2
-    @Bean(initMethod="start", destroyMethod="stop")
-    public Server h2Console () throws SQLException {
-        return Server.createWebServer("-web","-webAllowOthers","-webDaemon","-webPort", "8084");
+    @Bean(initMethod = "start", destroyMethod = "stop")
+    public Server h2Console() throws SQLException {
+        return Server.createWebServer("-web", "-webAllowOthers", "-webDaemon", "-webPort", "8084");
     }
 }

@@ -33,6 +33,7 @@ public class RouteToRecipientsExample {
     QueueChannel remainderIsTwoChannel() {
         return new QueueChannel();
     }
+
     boolean isMultipleOfThree(Integer number) {
         return number % 3 == 0;
     }
@@ -48,13 +49,13 @@ public class RouteToRecipientsExample {
     @Bean
     public IntegrationFlow classify() {
         return flow -> flow.split()
-            .routeToRecipients(route -> route
-                .recipientFlow(subflow -> subflow
-                    .<Integer> filter(this::isMultipleOfThree)
-                    .channel("multipleofThreeChannel"))
-                .<Integer> recipient("remainderIsOneChannel",this::isRemainderOne)
-                .<Integer> recipient("remainderIsTwoChannel",this::isRemainderTwo));
+                .routeToRecipients(route -> route
+                        .recipientFlow(subflow -> subflow
+                                .<Integer>filter(this::isMultipleOfThree)
+                                .channel("multipleofThreeChannel"))
+                        .<Integer>recipient("remainderIsOneChannel", this::isRemainderOne)
+                        .<Integer>recipient("remainderIsTwoChannel", this::isRemainderTwo));
     }
-   
+
 
 }

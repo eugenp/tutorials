@@ -36,28 +36,28 @@ public class LoopsUnitTest {
 
     @Test
     public void shouldRunForLoop() {
-        int[] expected = { 0, 1, 2, 3, 4 };
+        int[] expected = {0, 1, 2, 3, 4};
         int[] actual = loops.simple_for_loop();
         Assert.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldRunEnhancedForeachLoop() {
-        int[] expected = { 0, 1, 2, 3, 4 };
+        int[] expected = {0, 1, 2, 3, 4};
         int[] actual = loops.enhanced_for_each_loop();
         Assert.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldRunWhileLoop() {
-        int[] expected = { 0, 1, 2, 3, 4 };
+        int[] expected = {0, 1, 2, 3, 4};
         int[] actual = loops.while_loop();
         Assert.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldRunDoWhileLoop() {
-        int[] expected = { 0, 1, 2, 3, 4 };
+        int[] expected = {0, 1, 2, 3, 4};
         int[] actual = loops.do_while_loop();
         Assert.assertArrayEquals(expected, actual);
     }
@@ -92,10 +92,12 @@ public class LoopsUnitTest {
 
     @Test
     public void whenUsingSimpleFor_shouldRunLabelledLoop() {
-        aa: for (int i = 1; i <= 3; i++) {
+        aa:
+        for (int i = 1; i <= 3; i++) {
             if (i == 1)
                 continue;
-            bb: for (int j = 1; j <= 3; j++) {
+            bb:
+            for (int j = 1; j <= 3; j++) {
                 if (i == 2 && j == 2) {
                     break aa;
                 }

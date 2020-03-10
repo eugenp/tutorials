@@ -4,19 +4,19 @@ import com.googlecode.jmapper.annotations.JMap;
 
 
 public class User {
-    
+
     @JMap(classes = {UserDto1.class, UserDto2.class})
-    private long id;    
-    
+    private long id;
+
     @JMap(attributes = {"username", "email"}, classes = {UserDto1.class, UserDto2.class})
     private String email;
-    
+
     // constructors
-    
+
     public User() {
         super();
     }
-    
+
     public User(long id, String email) {
         super();
         this.id = id;
@@ -24,7 +24,7 @@ public class User {
     }
 
     // getters and setters
-    
+
     public long getId() {
         return id;
     }
@@ -45,5 +45,5 @@ public class User {
     public String toString() {
         return "User [id=" + id + ", email=" + email + "]";
     }
-    
+
 }

@@ -16,7 +16,7 @@ public class ArticleViewerWithMapParamController {
     public Article getArticle(@PathVariable Map<String, String> pathVarsMap) {
 
         String articleId = pathVarsMap.get("id");
-                
+
         if (articleId != null) {
             return new Article(Integer.valueOf(articleId));
         } else {

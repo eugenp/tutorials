@@ -35,7 +35,7 @@ class UseTest {
     fun givenAutoCloseable_whenUseIsCalled_thenItIsClosed() {
         val baos = ByteArrayOutputStream()
         val encoder = XMLEncoder(PrintStream(baos)) //XMLEncoder is AutoCloseable but not Closeable.
-                                                    //Here, we use a PrintStream because after close() it throws.
+        //Here, we use a PrintStream because after close() it throws.
         encoder.exceptionListener = ThrowingExceptionListener()
         encoder.use {
             assertEquals(encoder, it)
@@ -60,7 +60,7 @@ class UseTest {
 
 class ThrowingExceptionListener : ExceptionListener {
     override fun exceptionThrown(e: Exception?) {
-        if(e != null) {
+        if (e != null) {
             throw e
         }
     }

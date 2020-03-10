@@ -34,7 +34,7 @@ public class BaeldungBatchSubscriberImplIntegrationTest {
     @Test
     public void testReactiveStreamCount() {
         IntStream.range(0, ITEM_SIZE)
-            .forEach(item -> publisher.submit(item + ""));
+                .forEach(item -> publisher.submit(item + ""));
         publisher.close();
 
         do {
@@ -55,7 +55,7 @@ public class BaeldungBatchSubscriberImplIntegrationTest {
     @Test
     public void testReactiveStreamTime() {
         IntStream.range(0, ITEM_SIZE)
-            .forEach(item -> publisher.submit(item + ""));
+                .forEach(item -> publisher.submit(item + ""));
         publisher.close();
 
         do {

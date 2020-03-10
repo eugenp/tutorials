@@ -46,20 +46,20 @@ public class CustomerRestControllerIntegrationTest {
         communicationPreferences.put("post", true);
         communicationPreferences.put("email", true);
         Customer newCustomer = new Customer("001-555-1234", Arrays.asList("Milk", "Eggs"),
-                                          communicationPreferences);
+                communicationPreferences);
         Customer customer = customerService.createCustomer(newCustomer);
 
 
         String patchBody = "[ { \"op\": \"replace\", \"path\": \"/telephone\", \"value\": \"001-555-5678\" },\n"
-                           + "{\"op\": \"add\", \"path\": \"/favorites/0\", \"value\": \"Bread\" }]";
+                + "{\"op\": \"add\", \"path\": \"/favorites/0\", \"value\": \"Bread\" }]";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.valueOf("application/json-patch+json"));
         ResponseEntity<Customer> patchResponse
                 = testRestTemplate.exchange("/customers/{id}",
-                                            HttpMethod.PATCH,
-                                            new HttpEntity<>(patchBody, headers),
-                                            Customer.class,
-                                            customer.getId());
+                HttpMethod.PATCH,
+                new HttpEntity<>(patchBody, headers),
+                Customer.class,
+                customer.getId());
 
         Customer customerPatched = patchResponse.getBody();
         assertThat(patchResponse.getStatusCode()).isEqualTo(HttpStatus.OK);

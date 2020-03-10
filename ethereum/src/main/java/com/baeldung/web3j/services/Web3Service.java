@@ -60,7 +60,7 @@ public class Web3Service {
     public EthAccounts getEthAccounts() {
         EthAccounts result = new EthAccounts();
         try {
-             result = this.web3j.ethAccounts().sendAsync().get();
+            result = this.web3j.ethAccounts().sendAsync().get();
         } catch (Exception ex) {
             System.out.println(GENERIC_EXCEPTION);
         }
@@ -70,7 +70,7 @@ public class Web3Service {
     public EthGetTransactionCount getTransactionCount() {
         EthGetTransactionCount result = new EthGetTransactionCount();
         try {
-             result = this.web3j.ethGetTransactionCount(DEFAULT_ADDRESS, DefaultBlockParameter.valueOf("latest")).sendAsync().get();
+            result = this.web3j.ethGetTransactionCount(DEFAULT_ADDRESS, DefaultBlockParameter.valueOf("latest")).sendAsync().get();
         } catch (Exception ex) {
             System.out.println(GENERIC_EXCEPTION);
         }

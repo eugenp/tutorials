@@ -16,7 +16,7 @@ import com.baeldung.examples.security.sql.AccountDTO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ActiveProfiles({ "test" })
+@ActiveProfiles({"test"})
 public class SqlInjectionSamplesApplicationUnitTest {
 
     @Autowired
@@ -48,7 +48,7 @@ public class SqlInjectionSamplesApplicationUnitTest {
         assertThat(accounts).isNotEmpty();
         assertThat(accounts).hasSize(3);
     }
-    
+
     @Test
     public void givenASafeMethod_whenHackedCustomerId_thenReturnNoAccounts() {
 
@@ -73,20 +73,20 @@ public class SqlInjectionSamplesApplicationUnitTest {
         assertThat(accounts).isNotNull();
         assertThat(accounts).isEmpty();
     }
-    
+
     @Test(expected = IllegalArgumentException.class)
     public void givenASafeMethod_whenInvalidOrderBy_thenThroweException() {
         target.safeFindAccountsByCustomerId("C1", "INVALID");
     }
 
     @Test(expected = Exception.class)
-    public void givenWrongPlaceholderUsageMethod_whenNormalCall_thenThrowsException() {        
+    public void givenWrongPlaceholderUsageMethod_whenNormalCall_thenThrowsException() {
         target.wrongCountRecordsByTableName("Accounts");
     }
 
     @Test(expected = Exception.class)
-    public void givenWrongJpaPlaceholderUsageMethod_whenNormalCall_thenThrowsException() {        
+    public void givenWrongJpaPlaceholderUsageMethod_whenNormalCall_thenThrowsException() {
         target.wrongJpaCountRecordsByTableName("Accounts");
     }
-    
+
 }

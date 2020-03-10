@@ -1,19 +1,19 @@
 'use strict';
 
-describe('Controller Tests', function() {
+describe('Controller Tests', function () {
 
-    describe('Dealer Management Detail Controller', function() {
+    describe('Dealer Management Detail Controller', function () {
         var $scope, $rootScope;
         var MockEntity, MockPreviousState, MockDealer;
         var createController;
 
-        beforeEach(inject(function($injector) {
+        beforeEach(inject(function ($injector) {
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
             MockDealer = jasmine.createSpy('MockDealer');
-            
+
 
             var locals = {
                 '$scope': $scope,
@@ -22,14 +22,14 @@ describe('Controller Tests', function() {
                 'previousState': MockPreviousState,
                 'Dealer': MockDealer
             };
-            createController = function() {
+            createController = function () {
                 $injector.get('$controller')("DealerDetailController", locals);
             };
         }));
 
 
-        describe('Root Scope Listening', function() {
-            it('Unregisters root scope listener upon scope destruction', function() {
+        describe('Root Scope Listening', function () {
+            it('Unregisters root scope listener upon scope destruction', function () {
                 var eventType = 'gatewayApp:dealerUpdate';
 
                 createController();

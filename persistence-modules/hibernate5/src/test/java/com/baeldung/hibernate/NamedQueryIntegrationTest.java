@@ -14,9 +14,9 @@ public class NamedQueryIntegrationTest {
     private static Session session;
 
     private Transaction transaction;
-    
+
     private Long purchaseDeptId;
-    
+
     @BeforeClass
     public static void setUpClass() throws IOException {
         session = HibernateUtil.getSessionFactory("hibernate-namedquery.properties").openSession();
@@ -28,7 +28,7 @@ public class NamedQueryIntegrationTest {
         session.createNativeQuery("delete from deptemployee").executeUpdate();
         session.createNativeQuery("delete from department").executeUpdate();
         Department salesDepartment = new Department("Sales");
-        Department purchaseDepartment = new Department("Purchase");        
+        Department purchaseDepartment = new Department("Purchase");
         DeptEmployee employee1 = new DeptEmployee("John Wayne", "001", salesDepartment);
         DeptEmployee employee2 = new DeptEmployee("Sarah Vinton", "002", salesDepartment);
         DeptEmployee employee3 = new DeptEmployee("Lisa Carter", "003", salesDepartment);
@@ -41,10 +41,10 @@ public class NamedQueryIntegrationTest {
         transaction.commit();
         transaction = session.beginTransaction();
     }
-    
+
     @After
     public void tearDown() {
-        if(transaction.isActive()) {
+        if (transaction.isActive()) {
             transaction.rollback();
         }
     }
@@ -57,7 +57,7 @@ public class NamedQueryIntegrationTest {
         Assert.assertNotNull(result);
         Assert.assertEquals("John Wayne", result.getName());
     }
-       
+
     @Test
     public void whenNamedNativeQueryIsCalledUsingCreateNamedQuery_ThenOk() {
         Query<DeptEmployee> query = session.createNamedQuery("DeptEmployee_FindByEmployeeName", DeptEmployee.class);
@@ -66,7 +66,7 @@ public class NamedQueryIntegrationTest {
         Assert.assertNotNull(result);
         Assert.assertEquals("001", result.getEmployeeNumber());
     }
-    
+
     @Test
     public void whenNamedNativeQueryIsCalledUsingGetNamedNativeQuery_ThenOk() {
         @SuppressWarnings("rawtypes")
@@ -76,7 +76,7 @@ public class NamedQueryIntegrationTest {
         Assert.assertNotNull(result);
         Assert.assertEquals("001", result.getEmployeeNumber());
     }
-    
+
     @Test
     public void whenUpdateQueryIsCalledWithCreateNamedQuery_ThenOk() {
         Query spQuery = session.createNamedQuery("DeptEmployee_UpdateEmployeeDepartment");
@@ -84,15 +84,15 @@ public class NamedQueryIntegrationTest {
         Department newDepartment = session.find(Department.class, purchaseDeptId);
         spQuery.setParameter("newDepartment", newDepartment);
         spQuery.executeUpdate();
-        transaction.commit();        
-    } 
-    
+        transaction.commit();
+    }
+
     @Test
     public void whenNamedStoredProcedureIsCalledWithCreateNamedQuery_ThenOk() {
         Query spQuery = session.createNamedQuery("DeptEmployee_UpdateEmployeeDesignation");
         spQuery.setParameter("employeeNumber", "002");
         spQuery.setParameter("newDesignation", "Supervisor");
         spQuery.executeUpdate();
-        transaction.commit();        
-    }       
+        transaction.commit();
+    }
 }

@@ -12,7 +12,7 @@ public class DateHelper {
     public static boolean checkIfLeapYear(String dateStr) throws Exception {
         logger.info("Checking for leap year using Java 9 Date Api");
         return LocalDate.parse(dateStr)
-            .isLeapYear();
+                .isLeapYear();
     }
 
 }

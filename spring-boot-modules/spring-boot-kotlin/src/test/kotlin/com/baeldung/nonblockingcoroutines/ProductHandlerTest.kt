@@ -22,7 +22,7 @@ import reactor.core.publisher.Flux
 import org.springframework.test.context.ContextConfiguration
 
 @WebFluxTest(
-    excludeAutoConfiguration = [ReactiveUserDetailsServiceAutoConfiguration::class, ReactiveSecurityAutoConfiguration::class]
+        excludeAutoConfiguration = [ReactiveUserDetailsServiceAutoConfiguration::class, ReactiveSecurityAutoConfiguration::class]
 )
 @RunWith(SpringRunner::class)
 @ContextConfiguration(classes = [ProductsHandler::class, RouterConfiguration::class])
@@ -42,17 +42,17 @@ class ProductHandlerTest {
     @Test
     public fun `get all products`() {
         val productsFlow = Flux.just(
-          Product(1, "product1", 1000.0F),
-          Product(2, "product2", 2000.0F),
-          Product(3, "product3", 3000.0F)
+                Product(1, "product1", 1000.0F),
+                Product(2, "product2", 2000.0F),
+                Product(3, "product3", 3000.0F)
         ).asFlow()
         given(productsRepository.getAllProducts()).willReturn(productsFlow)
         client.get()
-          .uri("/")
-          .exchange()
-          .expectStatus()
-          .isOk
-          .expectBodyList<Product>()
+                .uri("/")
+                .exchange()
+                .expectStatus()
+                .isOk
+                .expectBodyList<Product>()
     }
 
 }

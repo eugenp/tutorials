@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
 
-@EnableAutoConfiguration(exclude = { MySQLAutoconfiguration.class})
+@EnableAutoConfiguration(exclude = {MySQLAutoconfiguration.class})
 @ComponentScan(basePackageClasses = {DatabaseProperties.class})
 public class AnnotationProcessorApplication {
     public static void main(String[] args) {

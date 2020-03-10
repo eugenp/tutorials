@@ -26,17 +26,17 @@ public class ArrayInitializer {
     }
 
     static String[] initializeArrayAtTimeOfDeclarationMethod1() {
-        String array[] = new String[] { "Toyota", "Mercedes", "BMW", "Volkswagen", "Skoda" };
+        String array[] = new String[]{"Toyota", "Mercedes", "BMW", "Volkswagen", "Skoda"};
         return array;
     }
 
     static int[] initializeArrayAtTimeOfDeclarationMethod2() {
-        int[] array = new int[] { 1, 2, 3, 4, 5 };
+        int[] array = new int[]{1, 2, 3, 4, 5};
         return array;
     }
 
     static int[] initializeArrayAtTimeOfDeclarationMethod3() {
-        int array[] = { 1, 2, 3, 4, 5 };
+        int array[] = {1, 2, 3, 4, 5};
         return array;
     }
 
@@ -53,13 +53,13 @@ public class ArrayInitializer {
     }
 
     static int[] initializeArrayUsingArraysCopy() {
-        int array[] = { 1, 2, 3, 4, 5 };
+        int array[] = {1, 2, 3, 4, 5};
         int[] copy = Arrays.copyOf(array, 5);
         return copy;
     }
 
     static int[] initializeLargerArrayUsingArraysCopy() {
-        int array[] = { 1, 2, 3, 4, 5 };
+        int array[] = {1, 2, 3, 4, 5};
         int[] copy = Arrays.copyOf(array, 6);
         return copy;
     }
@@ -72,7 +72,7 @@ public class ArrayInitializer {
     }
 
     static char[] initializeArrayUsingArraysUtilClone() {
-        char[] array = new char[] { 'a', 'b', 'c' };
+        char[] array = new char[]{'a', 'b', 'c'};
         return ArrayUtils.clone(array);
     }
 }

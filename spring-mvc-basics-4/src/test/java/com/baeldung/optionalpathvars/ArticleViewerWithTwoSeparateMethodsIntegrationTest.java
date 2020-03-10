@@ -16,7 +16,7 @@ import com.baeldung.controller.config.WebConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { WebConfig.class })
+@ContextConfiguration(classes = {WebConfig.class})
 public class ArticleViewerWithTwoSeparateMethodsIntegrationTest {
 
     @Autowired
@@ -31,24 +31,24 @@ public class ArticleViewerWithTwoSeparateMethodsIntegrationTest {
 
     @Test
     public void givenTwoSeparateMethods_whenIdPathVariableIsPassed_thenResponseOK() throws Exception {
-        
+
         int articleId = 5;
-        
+
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/seperateMethods/article/{id}", articleId))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(articleId));
-               
+                .perform(MockMvcRequestBuilders.get("/seperateMethods/article/{id}", articleId))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(articleId));
+
     }
 
     @Test
     public void givenTwoSeparateMethods_whenIdPathVariableIsNotPassed_thenResponseOK() throws Exception {
-                
+
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/seperateMethods/article"))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(Article.DEFAULT_ARTICLE.getId()));
-               
+                .perform(MockMvcRequestBuilders.get("/seperateMethods/article"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(Article.DEFAULT_ARTICLE.getId()));
+
     }
-        
+
 }

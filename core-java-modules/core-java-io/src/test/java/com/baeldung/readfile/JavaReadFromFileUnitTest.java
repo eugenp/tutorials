@@ -176,13 +176,13 @@ public class JavaReadFromFileUnitTest {
     @Test
     public void whenReadWithDataInputStream_thenCorrect() throws IOException {
         String expectedValue = "Hello, world!";
-        String file ="src/test/resources/fileTest.txt";
+        String file = "src/test/resources/fileTest.txt";
 
         String result = null;
 
         DataInputStream reader = new DataInputStream(new FileInputStream(file));
         int nBytesToRead = reader.available();
-        if(nBytesToRead > 0) {
+        if (nBytesToRead > 0) {
             byte[] bytes = new byte[nBytesToRead];
             reader.read(bytes);
             result = new String(bytes);

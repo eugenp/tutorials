@@ -31,8 +31,8 @@ public class MemPipelineUnitTest {
         PCollection<String> lines = pipeline.read(source);
 
         assertEquals(21, lines.asCollection()
-            .getValue()
-            .size());
+                .getValue()
+                .size());
     }
 
     @Test
@@ -42,24 +42,24 @@ public class MemPipelineUnitTest {
         PCollection<String> lines = pipeline.readTextFile(INPUT_FILE_PATH);
 
         assertEquals(21, lines.asCollection()
-            .getValue()
-            .size());
+                .getValue()
+                .size());
     }
 
     private String createOutputPath() throws IOException {
         Path path = Files.createTempDirectory("test");
         final String outputFilePath = path.toString() + File.separatorChar
-            + "output.text";
+                + "output.text";
         return outputFilePath;
     }
 
     @Test
     @Ignore("Requires Hadoop binaries")
     public void givenCollection_whenWriteCalled_fileWrittenSuccessfully()
-        throws IOException {
+            throws IOException {
         PCollection<String> inputStrings = MemPipeline.collectionOf("Hello",
-            "Apache", "Crunch", Calendar.getInstance()
-                .toString());
+                "Apache", "Crunch", Calendar.getInstance()
+                        .toString());
         final String outputFilePath = createOutputPath();
         Target target = To.textFile(outputFilePath);
 
@@ -73,11 +73,11 @@ public class MemPipelineUnitTest {
     @Test
     @Ignore("Requires Hadoop binaries")
     public void givenPipeLine_whenWriteTextFileCalled_fileWrittenSuccessfully()
-        throws IOException {
+            throws IOException {
         Pipeline pipeline = MemPipeline.getInstance();
         PCollection<String> inputStrings = MemPipeline.collectionOf("Hello",
-            "Apache", "Crunch", Calendar.getInstance()
-                .toString());
+                "Apache", "Crunch", Calendar.getInstance()
+                        .toString());
         final String outputFilePath = createOutputPath();
 
         pipeline.writeTextFile(inputStrings, outputFilePath);

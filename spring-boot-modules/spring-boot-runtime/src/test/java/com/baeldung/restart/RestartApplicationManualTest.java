@@ -20,18 +20,18 @@ public class RestartApplicationManualTest {
         Application.main(new String[0]);
 
         ResponseEntity response = restTemplate.exchange("http://localhost:8080/restart",
-           HttpMethod.POST, null, Object.class);
-        
+                HttpMethod.POST, null, Object.class);
+
         assertEquals(200, response.getStatusCode().value());
     }
-    
+
     @Test
     public void givenBootApp_whenRestartUsingActuator_thenOk() throws Exception {
-        Application.main(new String[] { "--server.port=8090" });
+        Application.main(new String[]{"--server.port=8090"});
 
         ResponseEntity response = restTemplate.exchange("http://localhost:8090/restartApp",
-           HttpMethod.POST, null, Object.class);
-        
+                HttpMethod.POST, null, Object.class);
+
         assertEquals(200, response.getStatusCode().value());
     }
 

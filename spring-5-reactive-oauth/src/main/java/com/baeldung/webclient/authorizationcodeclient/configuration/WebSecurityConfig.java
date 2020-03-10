@@ -10,12 +10,12 @@ public class WebSecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.authorizeExchange()
-            .anyExchange()
-            .authenticated()
-            .and()
-            .oauth2Client()
-            .and()
-            .formLogin();
+                .anyExchange()
+                .authenticated()
+                .and()
+                .oauth2Client()
+                .and()
+                .formLogin();
         return http.build();
     }
 

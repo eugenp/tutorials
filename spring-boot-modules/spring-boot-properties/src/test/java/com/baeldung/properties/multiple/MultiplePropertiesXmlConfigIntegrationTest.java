@@ -9,9 +9,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringJUnitConfig(locations = "classpath:configForProperties.xml")
 public class MultiplePropertiesXmlConfigIntegrationTest {
 
-    @Value("${key.something}") private String something;
+    @Value("${key.something}")
+    private String something;
 
-    @Value("${key.something2}") private String something2;
+    @Value("${key.something2}")
+    private String something2;
 
     @Test
     public void whenReadInjectedValues_thenGetCorrectValues() {

@@ -33,7 +33,7 @@ public class IgnoranceAnnotationStructure {
         }
     }
 
-    @JsonIgnoreProperties({ "model", "seatingCapacity" })
+    @JsonIgnoreProperties({"model", "seatingCapacity"})
     public static abstract class Car extends Vehicle {
         private int seatingCapacity;
         @JsonIgnore

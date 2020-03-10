@@ -13,7 +13,7 @@ public class BasicCalculatorSwitchCase {
         try {
             System.out.println("Enter an operator: (+ OR - OR * OR /) ");
             char operation = scanner.next()
-                .charAt(0);
+                    .charAt(0);
 
             if (!(operation == '+' || operation == '-' || operation == '*' || operation == 'x' || operation == '/')) {
                 System.err.println("Invalid Operator. Please use only + or - or * or /");
@@ -30,24 +30,24 @@ public class BasicCalculatorSwitchCase {
             }
 
             switch (operation) {
-            case '+':
-                System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
-                break;
-            case '-':
-                System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
-                break;
-            case '*':
-                System.out.println(num1 + " x " + num2 + " = " + (num1 * num2));
-                break;
-            case 'x':
-                System.out.println(num1 + " x " + num2 + " = " + (num1 * num2));
-                break;
-            case '/':
-                System.out.println(num1 + " / " + num2 + " = " + (num1 / num2));
-                break;
-            default:
-                System.err.println("Invalid Operator Specified.");
-                break;
+                case '+':
+                    System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
+                    break;
+                case '-':
+                    System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
+                    break;
+                case '*':
+                    System.out.println(num1 + " x " + num2 + " = " + (num1 * num2));
+                    break;
+                case 'x':
+                    System.out.println(num1 + " x " + num2 + " = " + (num1 * num2));
+                    break;
+                case '/':
+                    System.out.println(num1 + " / " + num2 + " = " + (num1 / num2));
+                    break;
+                default:
+                    System.err.println("Invalid Operator Specified.");
+                    break;
             }
         } catch (InputMismatchException exc) {
             System.err.println(exc.getMessage());

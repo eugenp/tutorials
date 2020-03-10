@@ -18,13 +18,13 @@ public class SecurityConfiguration {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
-            .dataSource(dataSource)
-            .usersByUsernameQuery("select email,password,enabled "
-                + "from bael_users "
-                + "where email = ?")
-            .authoritiesByUsernameQuery("select email,authority "
-                + "from authorities "
-                + "where email = ?");
+                .dataSource(dataSource)
+                .usersByUsernameQuery("select email,password,enabled "
+                        + "from bael_users "
+                        + "where email = ?")
+                .authoritiesByUsernameQuery("select email,authority "
+                        + "from authorities "
+                        + "where email = ?");
     }
 
     @Bean

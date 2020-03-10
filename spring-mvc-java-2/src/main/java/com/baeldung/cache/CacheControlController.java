@@ -18,11 +18,11 @@ public class CacheControlController {
     @GetMapping(value = "/hello/{name}")
     public ResponseEntity<String> hello(@PathVariable String name) {
         CacheControl cacheControl = CacheControl.maxAge(60, TimeUnit.SECONDS)
-          .noTransform()
-          .mustRevalidate();
+                .noTransform()
+                .mustRevalidate();
         return ResponseEntity.ok()
-          .cacheControl(cacheControl)
-          .body("Hello " + name);
+                .cacheControl(cacheControl)
+                .body("Hello " + name);
     }
 
     @GetMapping(value = "/home/{name}")
@@ -41,7 +41,7 @@ public class CacheControlController {
 
         ZoneId zoneId = ZoneId.of("GMT");
         long lastModifiedTimestamp = LocalDateTime.of(2020, 02, 4, 19, 57, 45)
-          .atZone(zoneId).toInstant().toEpochMilli();
+                .atZone(zoneId).toInstant().toEpochMilli();
 
         if (request.checkNotModified(lastModifiedTimestamp)) {
             return ResponseEntity.status(304).build();

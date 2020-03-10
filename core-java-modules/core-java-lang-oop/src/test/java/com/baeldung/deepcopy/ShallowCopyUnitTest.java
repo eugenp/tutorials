@@ -26,7 +26,7 @@ public class ShallowCopyUnitTest {
         User shallowCopy = new User(pm.getFirstName(), pm.getLastName(), pm.getAddress());
 
         address.setCountry("Great Britain");
-        
+
         assertThat(shallowCopy.getAddress().getCountry())
                 .isEqualTo(pm.getAddress().getCountry());
     }

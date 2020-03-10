@@ -26,5 +26,5 @@ public class DefaultPetService implements PetService {
     public List<Pet> findSoldPets() {
         return petApi.findPetsByStatus(Arrays.asList("sold"));
     }
-    
+
 }

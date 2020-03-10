@@ -36,9 +36,9 @@ public class CopyOnWriteBenchmark {
         }
     }
 
-        @Benchmark
+    @Benchmark
     public void testAdd(CopyOnWriteBenchmark.MyState state) {
-            state.employeeList.add(new Employee(state.iterations + 1, "John"));
+        state.employeeList.add(new Employee(state.iterations + 1, "John"));
     }
 
     @Benchmark

@@ -1,11 +1,11 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('gatewayApp')
         .directive('minbytes', minbytes);
 
-    function minbytes () {
+    function minbytes() {
         var directive = {
             restrict: 'A',
             require: '?ngModel',
@@ -14,7 +14,7 @@
 
         return directive;
 
-        function linkFunc (scope, element, attrs, ngModel) {
+        function linkFunc(scope, element, attrs, ngModel) {
             if (!ngModel) {
                 return;
             }

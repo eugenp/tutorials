@@ -28,9 +28,9 @@ public class SymLinkExampleManualTest {
         example.createHardLink(linkPath, filePath);
         assertFalse(Files.isSymbolicLink(linkPath));
         assertEquals(filePath.toFile()
-            .length(),
-            linkPath.toFile()
-                .length());
+                        .length(),
+                linkPath.toFile()
+                        .length());
     }
 
 }

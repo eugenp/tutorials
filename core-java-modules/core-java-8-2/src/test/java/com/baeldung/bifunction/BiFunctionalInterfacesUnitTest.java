@@ -59,7 +59,7 @@ public class BiFunctionalInterfacesUnitTest {
         List<Integer> list2 = Arrays.asList(1, 2, 3);
 
         List<String> result = new ArrayList<>();
-        for (int i=0; i < list1.size(); i++) {
+        for (int i = 0; i < list1.size(); i++) {
             result.add(list1.get(i) + list2.get(i));
         }
 
@@ -157,7 +157,7 @@ public class BiFunctionalInterfacesUnitTest {
 
         List<Boolean> result = listCombiner(list1, list2,
                 asBiFunction(Double::compareTo)
-                    .andThen(i -> i > 0));
+                        .andThen(i -> i > 0));
 
         assertThat(result).containsExactly(true, true, false);
     }

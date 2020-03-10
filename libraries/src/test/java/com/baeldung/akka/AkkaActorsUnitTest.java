@@ -73,10 +73,10 @@ public class AkkaActorsUnitTest {
             fail("Actor should respond with an exception instead of timing out !");
         }
     }
-    
+
     @Test
     public void givenAnAkkaSystem_countTheWordsInAText() {
-    	ActorSystem system = ActorSystem.create("test-system");
+        ActorSystem system = ActorSystem.create("test-system");
         ActorRef myActorRef = system.actorOf(Props.create(MyActor.class), "my-actor");
         myActorRef.tell("printit", null);
 //        system.stop(myActorRef);
@@ -88,7 +88,7 @@ public class AkkaActorsUnitTest {
 
 //        Future<Terminated> terminateResponse = system.terminate();
     }
-    
+
     private static String TEXT = "Lorem Ipsum is simply dummy text\n" +
             "of the printing and typesetting industry.\n" +
             "Lorem Ipsum has been the industry's standard dummy text\n" +

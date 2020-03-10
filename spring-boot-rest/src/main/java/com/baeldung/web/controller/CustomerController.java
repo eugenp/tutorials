@@ -40,12 +40,12 @@ public class CustomerController {
         return orderService.getOrderByIdForCustomer(customerId, orderId);
     }
 
-    @GetMapping(value = "/{customerId}/orders", produces = { "application/hal+json" })
+    @GetMapping(value = "/{customerId}/orders", produces = {"application/hal+json"})
     public CollectionModel<Order> getOrdersForCustomer(@PathVariable final String customerId) {
         final List<Order> orders = orderService.getAllOrdersForCustomer(customerId);
         for (final Order order : orders) {
             final Link selfLink = linkTo(
-                methodOn(CustomerController.class).getOrderById(customerId, order.getOrderId())).withSelfRel();
+                    methodOn(CustomerController.class).getOrderById(customerId, order.getOrderId())).withSelfRel();
             order.add(selfLink);
         }
 
@@ -54,19 +54,19 @@ public class CustomerController {
         return result;
     }
 
-    @GetMapping(produces = { "application/hal+json" })
+    @GetMapping(produces = {"application/hal+json"})
     public CollectionModel<Customer> getAllCustomers() {
         final List<Customer> allCustomers = customerService.allCustomers();
 
         for (final Customer customer : allCustomers) {
             String customerId = customer.getCustomerId();
             Link selfLink = linkTo(CustomerController.class).slash(customerId)
-                .withSelfRel();
+                    .withSelfRel();
             customer.add(selfLink);
             if (orderService.getAllOrdersForCustomer(customerId)
-                .size() > 0) {
+                    .size() > 0) {
                 final Link ordersLink = linkTo(methodOn(CustomerController.class).getOrdersForCustomer(customerId))
-                    .withRel("allOrders");
+                        .withRel("allOrders");
                 customer.add(ordersLink);
             }
         }

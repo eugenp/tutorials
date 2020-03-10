@@ -52,17 +52,17 @@ public class TodoMustacheServiceUnitTest {
         Mustache m = MustacheUtil.getMustacheFactory().compile("todos.mustache");
 
         List<Todo> todos = Arrays.asList(
-          new Todo("Todo 1", "Todo description"),
-          new Todo("Todo 2", "Todo description another"),
-          new Todo("Todo 3", "Todo description another")
+                new Todo("Todo 1", "Todo description"),
+                new Todo("Todo 2", "Todo description another"),
+                new Todo("Todo 3", "Todo description another")
         );
         Map<String, Object> context = new HashMap<>();
         context.put("todos", todos);
 
         assertThat(executeTemplate(m, context))
-          .contains("<h2>Todo 1</h2>")
-          .contains("<h2>Todo 2</h2>")
-          .contains("<h2>Todo 3</h2>");
+                .contains("<h2>Todo 1</h2>")
+                .contains("<h2>Todo 2</h2>")
+                .contains("<h2>Todo 3</h2>");
     }
 
     @Test
@@ -86,9 +86,9 @@ public class TodoMustacheServiceUnitTest {
     public void givenTodoList_whenGetHtmlUsingLamdba_thenHtml() throws IOException {
         Mustache m = MustacheUtil.getMustacheFactory().compile("todos-lambda.mustache");
         List<Todo> todos = Arrays.asList(
-          new Todo("Todo 1", "Todo description"),
-          new Todo("Todo 2", "Todo description another"),
-          new Todo("Todo 3", "Todo description another")
+                new Todo("Todo 1", "Todo description"),
+                new Todo("Todo 2", "Todo description another"),
+                new Todo("Todo 3", "Todo description another")
         );
         todos.get(2).setDone(true);
         todos.get(2).setCompletedOn(Date.from(Instant.now().plusSeconds(300)));

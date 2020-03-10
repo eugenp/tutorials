@@ -19,7 +19,7 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenSql2oCreated_thenSuccess() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.open()) {
+        try (Connection connection = sql2o.open()) {
             java.sql.Connection jdbcConnection = connection.getJdbcConnection();
             assertFalse(jdbcConnection.isClosed());
         } catch (SQLException e) {
@@ -30,7 +30,7 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenTableCreated_thenInsertIsPossible() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.open()) {
+        try (Connection connection = sql2o.open()) {
             connection.createQuery("create table PROJECT_1 (id integer identity, name varchar(50), url varchar(100))").executeUpdate();
             assertEquals(0, connection.getResult());
             connection.createQuery("INSERT INTO PROJECT_1 VALUES (1, 'tutorials', 'github.com/eugenp/tutorials')").executeUpdate();
@@ -42,7 +42,7 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenIdentityColumn_thenInsertReturnsNewId() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.open()) {
+        try (Connection connection = sql2o.open()) {
             connection.createQuery("create table PROJECT_2 (ID IDENTITY, NAME VARCHAR (50), URL VARCHAR (100))").executeUpdate();
             Query query = connection.createQuery(
                     "INSERT INTO PROJECT_2 (NAME, URL) VALUES ('tutorials', 'github.com/eugenp/tutorials')",
@@ -58,7 +58,7 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenSelect_thenResultsAreObjects() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.open()) {
+        try (Connection connection = sql2o.open()) {
             connection.createQuery("create table PROJECT_3 (ID IDENTITY, NAME VARCHAR (50), URL VARCHAR (100))").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_3 (NAME, URL) VALUES ('tutorials', 'github.com/eugenp/tutorials')").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_3 (NAME, URL) VALUES ('REST with Spring', 'github.com/eugenp/REST-With-Spring')").executeUpdate();
@@ -75,7 +75,7 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenSelectAlias_thenResultsAreObjects() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.open()) {
+        try (Connection connection = sql2o.open()) {
             connection.createQuery("create table PROJECT_4 (ID IDENTITY, NAME VARCHAR (50), URL VARCHAR (100), creation_date date)").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_4 (NAME, URL, creation_date) VALUES ('tutorials', 'github.com/eugenp/tutorials', '2019-01-01')").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_4 (NAME, URL, creation_date) VALUES ('REST with Spring', 'github.com/eugenp/REST-With-Spring', '2019-02-01')").executeUpdate();
@@ -92,7 +92,7 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenSelectMapping_thenResultsAreObjects() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.open()) {
+        try (Connection connection = sql2o.open()) {
             connection.createQuery("create table PROJECT_5 (ID IDENTITY, NAME VARCHAR (50), URL VARCHAR (100), creation_date date)").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_5 (NAME, URL, creation_date) VALUES ('tutorials', 'github.com/eugenp/tutorials', '2019-01-01')").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_5 (NAME, URL, creation_date) VALUES ('REST with Spring', 'github.com/eugenp/REST-With-Spring', '2019-02-01')").executeUpdate();
@@ -110,7 +110,7 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenSelectCount_thenResultIsScalar() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.open()) {
+        try (Connection connection = sql2o.open()) {
             connection.createQuery("create table PROJECT_6 (ID IDENTITY, NAME VARCHAR (50), URL VARCHAR (100), creation_date date)").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_6 (NAME, URL, creation_date) VALUES ('tutorials', 'github.com/eugenp/tutorials', '2019-01-01')").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_6 (NAME, URL, creation_date) VALUES ('REST with Spring', 'github.com/eugenp/REST-With-Spring', '2019-02-01')").executeUpdate();
@@ -123,7 +123,7 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenFetchTable_thenResultsAreMaps() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.open()) {
+        try (Connection connection = sql2o.open()) {
             connection.createQuery("create table PROJECT_5 (ID IDENTITY, NAME VARCHAR (50), URL VARCHAR (100), creation_date date)").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_5 (NAME, URL, creation_date) VALUES ('tutorials', 'github.com/eugenp/tutorials', '2019-01-01')").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_5 (NAME, URL, creation_date) VALUES ('REST with Spring', 'github.com/eugenp/REST-With-Spring', '2019-02-01')").executeUpdate();
@@ -141,7 +141,7 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenFetchTable_thenResultsAreRows() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.open()) {
+        try (Connection connection = sql2o.open()) {
             connection.createQuery("create table PROJECT_5 (ID IDENTITY, NAME VARCHAR (50), URL VARCHAR (100), creation_date date)").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_5 (NAME, URL, creation_date) VALUES ('tutorials', 'github.com/eugenp/tutorials', '2019-01-01')").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_5 (NAME, URL, creation_date) VALUES ('REST with Spring', 'github.com/eugenp/REST-With-Spring', '2019-02-01')").executeUpdate();
@@ -159,7 +159,7 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenParameters_thenReplacement() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.open()) {
+        try (Connection connection = sql2o.open()) {
             connection.createQuery("create table PROJECT_10 (ID IDENTITY, NAME VARCHAR (50), URL VARCHAR (100))").executeUpdate();
             Query query = connection.createQuery("INSERT INTO PROJECT_10 (NAME, URL) VALUES (:name, :url)")
                     .addParameter("name", "REST with Spring")
@@ -176,7 +176,7 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenPOJOParameters_thenReplacement() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.open()) {
+        try (Connection connection = sql2o.open()) {
             connection.createQuery("create table PROJECT_11 (ID IDENTITY, NAME VARCHAR (50), URL VARCHAR (100))").executeUpdate();
 
             Project project = new Project();
@@ -196,7 +196,7 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenTransactionRollback_thenNoDataInserted() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.beginTransaction()) {
+        try (Connection connection = sql2o.beginTransaction()) {
             connection.createQuery("create table PROJECT_12 (ID IDENTITY, NAME VARCHAR (50), URL VARCHAR (100))").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_12 (NAME, URL) VALUES ('tutorials', 'https://github.com/eugenp/tutorials')").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_12 (NAME, URL) VALUES ('REST with Spring', 'https://github.com/eugenp/REST-With-Spring')").executeUpdate();
@@ -209,7 +209,7 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenTransactionEnds_thenSubsequentStatementsNotRolledBack() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.beginTransaction()) {
+        try (Connection connection = sql2o.beginTransaction()) {
             connection.createQuery("create table PROJECT_13 (ID IDENTITY, NAME VARCHAR (50), URL VARCHAR (100))").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_13 (NAME, URL) VALUES ('tutorials', 'https://github.com/eugenp/tutorials')").executeUpdate();
             List<Map<String, Object>> list = connection.createQuery("SELECT * FROM PROJECT_13").executeAndFetchTable().asList();
@@ -222,7 +222,7 @@ public class Sql2oIntegrationTest {
             assertEquals(1, list.size());
             //No implicit rollback
         }
-        try(Connection connection = sql2o.beginTransaction()) {
+        try (Connection connection = sql2o.beginTransaction()) {
             List<Map<String, Object>> list = connection.createQuery("SELECT * FROM PROJECT_13").executeAndFetchTable().asList();
             assertEquals(1, list.size());
         }
@@ -231,7 +231,7 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenTransactionRollbackThenCommit_thenOnlyLastInserted() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.beginTransaction()) {
+        try (Connection connection = sql2o.beginTransaction()) {
             connection.createQuery("create table PROJECT_14 (ID IDENTITY, NAME VARCHAR (50), URL VARCHAR (100))").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_14 (NAME, URL) VALUES ('tutorials', 'https://github.com/eugenp/tutorials')").executeUpdate();
             List<Map<String, Object>> list = connection.createQuery("SELECT * FROM PROJECT_14").executeAndFetchTable().asList();
@@ -244,7 +244,7 @@ public class Sql2oIntegrationTest {
             assertEquals(1, list.size());
             //Implicit rollback
         }
-        try(Connection connection = sql2o.beginTransaction()) {
+        try (Connection connection = sql2o.beginTransaction()) {
             List<Map<String, Object>> list = connection.createQuery("SELECT * FROM PROJECT_14").executeAndFetchTable().asList();
             assertEquals(0, list.size());
             connection.createQuery("INSERT INTO PROJECT_14 (NAME, URL) VALUES ('tutorials', 'https://github.com/eugenp/tutorials')").executeUpdate();
@@ -253,7 +253,7 @@ public class Sql2oIntegrationTest {
             list = connection.createQuery("SELECT * FROM PROJECT_14").executeAndFetchTable().asList();
             assertEquals(2, list.size());
         }
-        try(Connection connection = sql2o.beginTransaction()) {
+        try (Connection connection = sql2o.beginTransaction()) {
             List<Map<String, Object>> list = connection.createQuery("SELECT * FROM PROJECT_14").executeAndFetchTable().asList();
             assertEquals(2, list.size());
         }
@@ -262,10 +262,10 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenBatch_thenMultipleInserts() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.beginTransaction()) {
+        try (Connection connection = sql2o.beginTransaction()) {
             connection.createQuery("create table PROJECT_15 (ID IDENTITY, NAME VARCHAR (50), URL VARCHAR (100))").executeUpdate();
             Query query = connection.createQuery("INSERT INTO PROJECT_15 (NAME, URL) VALUES (:name, :url)");
-            for(int i = 0; i < 1000; i++) {
+            for (int i = 0; i < 1000; i++) {
                 query.addParameter("name", "tutorials" + i);
                 query.addParameter("url", "https://github.com/eugenp/tutorials" + i);
                 query.addToBatch();
@@ -273,7 +273,7 @@ public class Sql2oIntegrationTest {
             query.executeBatch();
             connection.commit();
         }
-        try(Connection connection = sql2o.beginTransaction()) {
+        try (Connection connection = sql2o.beginTransaction()) {
             assertEquals(1000L, connection.createQuery("SELECT count(*) FROM PROJECT_15").executeScalar());
         }
     }
@@ -281,13 +281,13 @@ public class Sql2oIntegrationTest {
     @Test
     public void whenLazyFetch_thenResultsAreObjects() {
         Sql2o sql2o = new Sql2o("jdbc:hsqldb:mem:testDB", "sa", "");
-        try(Connection connection = sql2o.open()) {
+        try (Connection connection = sql2o.open()) {
             connection.createQuery("create table PROJECT_16 (ID IDENTITY, NAME VARCHAR (50), URL VARCHAR (100))").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_16 (NAME, URL) VALUES ('tutorials', 'github.com/eugenp/tutorials')").executeUpdate();
             connection.createQuery("INSERT INTO PROJECT_16 (NAME, URL) VALUES ('REST with Spring', 'github.com/eugenp/REST-With-Spring')").executeUpdate();
             Query query = connection.createQuery("select * from PROJECT_16 order by id");
-            try(ResultSetIterable<Project> projects = query.executeAndFetchLazy(Project.class)) {
-                for(Project p : projects) {
+            try (ResultSetIterable<Project> projects = query.executeAndFetchLazy(Project.class)) {
+                for (Project p : projects) {
                     assertNotNull(p.getName());
                     assertNotNull(p.getUrl());
                     assertNull(p.getCreationDate());

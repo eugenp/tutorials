@@ -23,6 +23,7 @@ class HigherOrderFunctionsExamplesUnitTest {
     val names = Seq("Alex Ferguson", "Bobby Charlton", "Frank Lampard")
 
     def prefixWithSir(name: String) = "sir " + name
+
     val sirNames = names.map(prefixWithSir)
 
     assertEquals(expected, sirNames)
@@ -64,14 +65,17 @@ class HigherOrderFunctionsExamplesUnitTest {
       name match {
         case "addition" => x + y
         case "multiplication" => x * y
-        case "division" => x/y
+        case "division" => x / y
         case "subtraction" => x - y
       }
     }
 
     def add: (Int, Int) => Int = mathOperation("addition")
+
     def mul: (Int, Int) => Int = mathOperation("multiplication")
+
     def div: (Int, Int) => Int = mathOperation("division")
+
     def sub: (Int, Int) => Int = mathOperation("subtraction")
 
     assertEquals(15, add(10, 5))

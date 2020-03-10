@@ -19,29 +19,29 @@ class ProcessUnderstandingUnitTest {
     @Test
     public void givenSourceProgram_whenExecutedFromAnotherProgram_thenSourceProgramOutput3() throws IOException {
         Process process = Runtime.getRuntime()
-            .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
+                .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
         process = Runtime.getRuntime()
-            .exec("java -cp  src/main/java com.baeldung.java9.process.OutputStreamExample");
+                .exec("java -cp  src/main/java com.baeldung.java9.process.OutputStreamExample");
         BufferedReader output = new BufferedReader(new InputStreamReader(process.getInputStream()));
         int value = Integer.parseInt(output.readLine());
-        assertEquals(3, value);            
+        assertEquals(3, value);
     }
 
     @Test
     public void givenSourceProgram_whenReadingInputStream_thenFirstLineEquals3() throws IOException {
         Process process = Runtime.getRuntime()
-            .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
+                .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
         process = Runtime.getRuntime()
-            .exec("java -cp  src/main/java com.baeldung.java9.process.OutputStreamExample");
+                .exec("java -cp  src/main/java com.baeldung.java9.process.OutputStreamExample");
         BufferedReader output = new BufferedReader(new InputStreamReader(process.getInputStream()));
         int value = Integer.parseInt(output.readLine());
-        assertEquals(3, value);                   
+        assertEquals(3, value);
     }
 
     @Test
     public void givenSubProcess_whenEncounteringError_thenErrorStreamNotNull() throws IOException {
         Process process = Runtime.getRuntime()
-            .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ProcessCompilationError.java");
+                .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ProcessCompilationError.java");
         BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
         String errorString = error.readLine();
         assertNotNull(errorString);
@@ -115,7 +115,7 @@ class ProcessUnderstandingUnitTest {
     @Test
     public void givenRunningProcesses_whenFilterOnProcessIdRange_thenGetSelectedProcessPid() {
         assertThat(((int) ProcessHandle.allProcesses()
-            .filter(ph -> (ph.pid() > 10000 && ph.pid() < 50000))
-            .count()) > 0);
+                .filter(ph -> (ph.pid() > 10000 && ph.pid() < 50000))
+                .count()) > 0);
     }
 }

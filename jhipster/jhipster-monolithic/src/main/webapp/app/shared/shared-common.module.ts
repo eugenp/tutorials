@@ -1,8 +1,8 @@
-import { NgModule, Sanitizer } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import {NgModule, Sanitizer} from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
-import { TranslateService } from 'ng2-translate';
-import { AlertService } from 'ng-jhipster';
+import {TranslateService} from 'ng2-translate';
+import {AlertService} from 'ng-jhipster';
 
 import {
     BaeldungSharedLibsModule,
@@ -44,4 +44,5 @@ export function alertServiceProvider(sanitizer: Sanitizer, translateService: Tra
         JhiAlertErrorComponent
     ]
 })
-export class BaeldungSharedCommonModule {}
+export class BaeldungSharedCommonModule {
+}

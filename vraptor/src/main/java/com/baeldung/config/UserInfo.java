@@ -11,7 +11,8 @@ public class UserInfo implements Serializable {
     private User user;
 
 
-    public UserInfo() {}
+    public UserInfo() {
+    }
 
     public User getUser() {
         return user;

@@ -14,11 +14,10 @@ import com.github.javafaker.Faker;
 
 /**
  * Repository for storing the books.
- * 
+ * <p>
  * It serves just for illustrative purposes and is completely in-memory. It uses Java Faker library in order to generate data.
- * 
- * @author A.Shcherbakov
  *
+ * @author A.Shcherbakov
  */
 @Component
 public class BookRepository {
@@ -30,9 +29,9 @@ public class BookRepository {
         Faker faker = new Faker(Locale.ENGLISH);
         final com.github.javafaker.Book book = faker.book();
         this.items = IntStream.range(1, faker.random()
-            .nextInt(10, 20))
-            .mapToObj(i -> new Book(i, book.title(), book.author(), book.genre()))
-            .collect(Collectors.toList());
+                .nextInt(10, 20))
+                .mapToObj(i -> new Book(i, book.title(), book.author(), book.genre()))
+                .collect(Collectors.toList());
 
     }
 
@@ -46,16 +45,16 @@ public class BookRepository {
 
     public Optional<Book> getById(int id) {
         return this.items.stream()
-            .filter(item -> id == item.getId())
-            .findFirst();
+                .filter(item -> id == item.getId())
+                .findFirst();
     }
 
     public void save(int id, Book book) {
         IntStream.range(0, items.size())
-            .filter(i -> items.get(i)
-                .getId() == id)
-            .findFirst()
-            .ifPresent(i -> this.items.set(i, book));
+                .filter(i -> items.get(i)
+                        .getId() == id)
+                .findFirst()
+                .ifPresent(i -> this.items.set(i, book));
     }
 
 }

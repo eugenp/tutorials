@@ -13,6 +13,7 @@
         border: 1px solid #ccc;
         box-sizing: border-box;
     }
+
     .container {
         width: 50%;
         padding: 16px;

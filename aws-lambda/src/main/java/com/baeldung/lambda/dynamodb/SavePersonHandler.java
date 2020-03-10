@@ -32,13 +32,13 @@ public class SavePersonHandler implements RequestHandler<PersonRequest, PersonRe
 
     private PutItemOutcome persistData(PersonRequest personRequest) throws ConditionalCheckFailedException {
         return this.dynamoDb.getTable(DYNAMODB_TABLE_NAME)
-          .putItem(
-            new PutItemSpec().withItem(new Item()
-              .withNumber("id", personRequest.getId())
-              .withString("firstName", personRequest.getFirstName())
-              .withString("lastName", personRequest.getLastName())
-              .withNumber("age", personRequest.getAge())
-              .withString("address", personRequest.getAddress())));
+                .putItem(
+                        new PutItemSpec().withItem(new Item()
+                                .withNumber("id", personRequest.getId())
+                                .withString("firstName", personRequest.getFirstName())
+                                .withString("lastName", personRequest.getLastName())
+                                .withNumber("age", personRequest.getAge())
+                                .withString("address", personRequest.getAddress())));
     }
 
     private void initDynamoDbClient() {

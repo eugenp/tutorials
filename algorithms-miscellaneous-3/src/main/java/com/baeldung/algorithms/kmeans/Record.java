@@ -40,8 +40,8 @@ public class Record {
     @Override
     public String toString() {
         String prefix = description == null || description
-          .trim()
-          .isEmpty() ? "Record" : description;
+                .trim()
+                .isEmpty() ? "Record" : description;
 
         return prefix + ": " + features;
     }

@@ -7,6 +7,7 @@ import com.baeldung.boot.Application;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;

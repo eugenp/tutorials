@@ -69,7 +69,7 @@
             </plugin>
         </plugins>
     </build>
-	
+
     <properties>
         <dependency.plugin.version>3.1.1</dependency.plugin.version>
         <compiler.plugin.version>3.8.0</compiler.plugin.version>

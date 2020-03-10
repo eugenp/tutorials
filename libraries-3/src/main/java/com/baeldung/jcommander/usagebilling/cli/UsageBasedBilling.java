@@ -17,10 +17,10 @@ public class UsageBasedBilling {
         this.submitUsageCmd = new SubmitUsageCommand();
         this.fetchChargesCmd = new FetchCurrentChargesCommand();
         jCommander = JCommander.newBuilder()
-          .addObject(this)
-          .addCommand(submitUsageCmd)
-          .addCommand(fetchChargesCmd)
-          .build();
+                .addObject(this)
+                .addCommand(submitUsageCmd)
+                .addCommand(fetchChargesCmd)
+                .build();
 
         setUsageFormatter(SUBMIT_CMD);
         setUsageFormatter(FETCH_CMD);
@@ -31,7 +31,7 @@ public class UsageBasedBilling {
         try {
             jCommander.parse(args);
             parsedCmdStr = jCommander.getParsedCommand();
-            
+
             switch (parsedCmdStr) {
                 case SUBMIT_CMD:
                     if (submitUsageCmd.isHelp()) {
@@ -47,9 +47,9 @@ public class UsageBasedBilling {
                     }
                     System.out.println("Preparing fetch query...");
                     fetchChargesCmd.fetch();
-                    
+
                     break;
-                    
+
                 default:
                     System.err.println("Invalid command: " + parsedCmdStr);
             }

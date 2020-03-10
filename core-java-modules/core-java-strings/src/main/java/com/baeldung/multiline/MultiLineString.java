@@ -10,9 +10,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class MultiLineString {
-    
+
     String newLine = System.getProperty("line.separator");
-    
+
     public String stringConcatenation() {
         return "Get busy living"
                 .concat(newLine)
@@ -22,15 +22,15 @@ public class MultiLineString {
                 .concat(newLine)
                 .concat("--Stephen King");
     }
-    
+
     public String stringJoin() {
         return String.join(newLine,
-                           "Get busy living",
-                           "or",
-                           "get busy dying.",
-                           "--Stephen King");
+                "Get busy living",
+                "or",
+                "get busy dying.",
+                "--Stephen King");
     }
-    
+
     public String stringBuilder() {
         return new StringBuilder()
                 .append("Get busy living")
@@ -42,7 +42,7 @@ public class MultiLineString {
                 .append("--Stephen King")
                 .toString();
     }
-    
+
     public String stringWriter() {
         StringWriter stringWriter = new StringWriter();
         PrintWriter printWriter = new PrintWriter(stringWriter);
@@ -52,14 +52,14 @@ public class MultiLineString {
         printWriter.println("--Stephen King");
         return stringWriter.toString();
     }
-    
+
     public String guavaJoiner() {
         return Joiner.on(newLine).join(ImmutableList.of("Get busy living",
-            "or",
-            "get busy dying.",
-            "--Stephen King"));
+                "or",
+                "get busy dying.",
+                "--Stephen King"));
     }
-    
+
     public String loadFromFile() throws IOException {
         return new String(Files.readAllBytes(Paths.get("src/main/resources/stephenking.txt")));
     }

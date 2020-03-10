@@ -21,7 +21,7 @@
 
         <property name="hbm2ddl.auto">create</property>
 
-		<mapping class="com.baeldung.hibernate.logging.Employee"/>
+        <mapping class="com.baeldung.hibernate.logging.Employee"/>
     </session-factory>
 
 </hibernate-configuration>

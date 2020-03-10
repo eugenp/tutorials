@@ -16,7 +16,7 @@ public interface IOperations<T extends Serializable> {
     // write
 
     T create(final T entity);
-    
+
     T update(final T entity);
 
 }

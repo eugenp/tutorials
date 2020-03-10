@@ -47,10 +47,10 @@ public final class NatsClient {
     private Connection initConnection(String uri) {
         try {
             Options options = new Options.Builder()
-              .errorCb(ex -> log.error("Connection Exception: ", ex))
-              .disconnectedCb(event -> log.error("Channel disconnected: {}", event.getConnection()))
-              .reconnectedCb(event -> log.error("Reconnected to server: {}", event.getConnection()))
-              .build();
+                    .errorCb(ex -> log.error("Connection Exception: ", ex))
+                    .disconnectedCb(event -> log.error("Channel disconnected: {}", event.getConnection()))
+                    .reconnectedCb(event -> log.error("Reconnected to server: {}", event.getConnection()))
+                    .build();
 
             return Nats.connect(uri, options);
         } catch (IOException ioe) {
@@ -70,7 +70,7 @@ public final class NatsClient {
     public void subscribeAsync(String topic) {
 
         AsyncSubscription subscription = natsConnection.subscribe(
-          topic, msg -> log.info("Received message on {}", msg.getSubject()));
+                topic, msg -> log.info("Received message on {}", msg.getSubject()));
 
         if (subscription == null) {
             log.error("Error subscribing to {}", topic);

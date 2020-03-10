@@ -40,8 +40,8 @@ public class ConvertStringToListUnitTest {
     @Test
     public void givenString_thenGetListOfStringByGuava() {
         List<String> convertedCountriesList = Splitter.on(",")
-            .trimResults()
-            .splitToList(countries);
+                .trimResults()
+                .splitToList(countries);
 
         assertEquals(expectedCountriesList, convertedCountriesList);
     }
@@ -49,7 +49,7 @@ public class ConvertStringToListUnitTest {
     @Test
     public void givenString_thenGetListOfStringByJava8() {
         List<String> convertedCountriesList = Stream.of(countries.split(",", -1))
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         assertEquals(expectedCountriesList, convertedCountriesList);
     }
@@ -68,13 +68,13 @@ public class ConvertStringToListUnitTest {
     @Test
     public void givenString_thenGetListOfIntegerByGuava() {
         List<Integer> convertedRankList = Lists.transform(Splitter.on(",")
-            .trimResults()
-            .splitToList(ranks), new Function<String, Integer>() {
-                @Override
-                public Integer apply(String input) {
-                    return Integer.parseInt(input.trim());
-                }
-            });
+                .trimResults()
+                .splitToList(ranks), new Function<String, Integer>() {
+            @Override
+            public Integer apply(String input) {
+                return Integer.parseInt(input.trim());
+            }
+        });
 
         assertEquals(expectedRanksList, convertedRankList);
     }
@@ -82,9 +82,9 @@ public class ConvertStringToListUnitTest {
     @Test
     public void givenString_thenGetListOfIntegerByJava8() {
         List<Integer> convertedRankList = Stream.of(ranks.split(","))
-            .map(String::trim)
-            .map(Integer::parseInt)
-            .collect(Collectors.toList());
+                .map(String::trim)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
 
         assertEquals(expectedRanksList, convertedRankList);
     }
@@ -117,8 +117,8 @@ public class ConvertStringToListUnitTest {
     @Test
     public void givenEmptyStrings_thenGetListOfStringByGuava() {
         List<String> convertedEmptyStringsList = Splitter.on(",")
-            .trimResults()
-            .splitToList(emptyStrings);
+                .trimResults()
+                .splitToList(emptyStrings);
 
         assertEquals(expectedEmptyStringsList, convertedEmptyStringsList);
     }
@@ -126,7 +126,7 @@ public class ConvertStringToListUnitTest {
     @Test
     public void givenEmptyStrings_thenGetListOfStringByJava8() {
         List<String> convertedEmptyStringsList = Stream.of(emptyStrings.split(",", -1))
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         assertEquals(expectedEmptyStringsList, convertedEmptyStringsList);
     }

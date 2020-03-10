@@ -1,16 +1,18 @@
-import { Injectable } from '@angular/core';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import {Injectable} from '@angular/core';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 
-import { JhiLoginModalComponent } from './login.component';
+import {JhiLoginModalComponent} from './login.component';
 
 @Injectable()
 export class LoginModalService {
     private isOpen = false;
-    constructor (
-        private modalService: NgbModal,
-    ) {}
 
-    open (): NgbModalRef {
+    constructor(
+        private modalService: NgbModal,
+    ) {
+    }
+
+    open(): NgbModalRef {
         if (this.isOpen) {
             return;
         }

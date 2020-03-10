@@ -17,7 +17,7 @@
 # This script is mainly intended to make things easier for you if
 # you want to install a particular XML/XSLT distribution that has
 # not (yet) been packaged for your OS distro (Debian, Fedora,
-# whatever), or to use "snapshot" or development releases 
+# whatever), or to use "snapshot" or development releases
 #
 # It works by updating your shell startup file (e.g., .bashrc and
 # .cshrc) and .emacs file and by finding or creating a writable
@@ -68,11 +68,11 @@ emit_message() {
 }
 
 if [ ! "${*#--batch}" = "$*" ]; then
-  batchmode="Yes";
+  batchmode="Yes"
 else
-  batchmode="No";
+  batchmode="No"
   emit_message
-  if [ ! "$1" = "--test" ]; then 
+  if [ ! "$1" = "--test" ]; then
     emit_message "NOTE: For non-interactive installs/uninstalls, use --batch"
     if [ ! "$1" = "--uninstall" ]; then
       emit_message
@@ -113,7 +113,7 @@ removeOldFiles() {
 }
 
 checkRoot() {
-  if [ $(id -u)  == "0" ]; then
+  if [ $(id -u) == "0" ]; then
     cat 1>&2 <<EOF
 
 WARNING: This install script is meant to be run as a non-root
@@ -123,10 +123,11 @@ EOF
     read -s -n1 -p "Are you sure you want to continue? [No] "
     emit_message "$REPLY"
     case $REPLY in
-      [yY])
+    [yY])
       emit_message
       ;;
-      *) emit_message "OK, exiting without making changes."
+    *)
+      emit_message "OK, exiting without making changes."
       exit
       ;;
     esac
@@ -157,14 +158,13 @@ EOF
       pathnames=$(echo $CLASSPATH | tr ":" " ")
     fi
     for path in $pathnames; do
-    if [ "$osName" = "Cygwin" ]; then
-      path=$(cygpath -u $path)
-    fi
+      if [ "$osName" = "Cygwin" ]; then
+        path=$(cygpath -u $path)
+      fi
       # strip out trailing slash from pathname
       path=$(echo $path | sed 's/\/$//')
       # find CatalogManager.properties file
-      if [ -f $path/CatalogManager.properties ];
-      then
+      if [ -f $path/CatalogManager.properties ]; then
         existingCatalogManager=$path/CatalogManager.properties
         break
       fi
@@ -212,10 +212,10 @@ EOF
         emit_message
       fi
       case $REPLY in
-        [nNqQ])
+      [nNqQ])
         emitNoChangeMsg
         ;;
-        *)
+      *)
         if [ ! -d "${thisCatalogManager%/*}" ]; then
           mkdir -p ${thisCatalogManager%/*}
         fi
@@ -234,8 +234,8 @@ EOF
   if [ -n "$myCatalogManager" ]; then
     etcXmlCatalog=
     catalogsLine=$(grep "^catalogs=" $myCatalogManager)
-    if [ -f /etc/xml/catalog ] && [ "$osName" != "Cygwin" ] \
-      && [ "${catalogsLine#*/etc/xml/catalog*}" = "$catalogsLine" ]; then
+    if [ -f /etc/xml/catalog ] && [ "$osName" != "Cygwin" ] &&
+      [ "${catalogsLine#*/etc/xml/catalog*}" = "$catalogsLine" ]; then
       cat 1>&2 <<EOF
 
 WARNING: /etc/xml/catalog exists but was not found in:
@@ -256,10 +256,10 @@ EOF
         emit_message "$REPLY"
       fi
       case $REPLY in
-        [nNqQ])
+      [nNqQ])
         emit_message
         ;;
-        *)
+      *)
         etcXmlCatalog=/etc/xml/catalog
         ;;
       esac
@@ -281,19 +281,19 @@ EOF
         emit_message
       fi
       case $REPLY in
-        [nNqQ])
+      [nNqQ])
         emitNoChangeMsg
         ;;
-        *)
-        if [ "$catalogsLine" ] ; then
+      *)
+        if [ "$catalogsLine" ]; then
           if [ "${catalogsLine#*$thisJavaXmlCatalog*}" != "$catalogsLine" ]; then
             emit_message "NOTE: $thisJavaXmlCatalog"
             emit_message "      already in:"
             emit_message "      $myCatalogManager"
           else
             mv $myCatalogManager $catalogBackup || exit 1
-            sed "s#^catalogs=\(.*\)\$#catalogs=$thisJavaXmlCatalog;\1;$etcXmlCatalog#" $catalogBackup \
-            | sed 's/;\+/;/' | sed 's/;$//' > $myCatalogManager || exit 1
+            sed "s#^catalogs=\(.*\)\$#catalogs=$thisJavaXmlCatalog;\1;$etcXmlCatalog#" $catalogBackup |
+              sed 's/;\+/;/' | sed 's/;$//' >$myCatalogManager || exit 1
             emit_message "NOTE: Successfully updated the following file:"
             emit_message "      $myCatalogManager"
             emit_message "      Backup written to:"
@@ -302,8 +302,8 @@ EOF
         else
           mv $myCatalogManager $catalogBackup || exit 1
           cp $catalogBackup $myCatalogManager
-          echo "catalogs=$thisJavaXmlCatalog;$etcXmlCatalog" \
-          | sed 's/;\+/;/' | sed 's/;$//' >> $myCatalogManager || exit 1
+          echo "catalogs=$thisJavaXmlCatalog;$etcXmlCatalog" |
+            sed 's/;\+/;/' | sed 's/;$//' >>$myCatalogManager || exit 1
           emit_message "NOTE: \"catalogs=\" line added to $myCatalogManager."
           emit_message "      Backup written to $catalogBackup"
         fi
@@ -322,7 +322,7 @@ EOF
 
 writeDotFiles() {
   while read; do
-    echo "$REPLY" >> $mydir/.profile.incl
+    echo "$REPLY" >>$mydir/.profile.incl
   done <<EOF
 # $thisBinDir is not in PATH, so add it
 if [ "\${PATH#*$thisBinDir*}" = "\$PATH" ]; then
@@ -360,9 +360,9 @@ fi
 export SGML_CATALOG_FILES
 EOF
 
-while read; do
-  echo "$REPLY" >> $mydir/.cshrc.incl
-done <<EOF
+  while read; do
+    echo "$REPLY" >>$mydir/.cshrc.incl
+  done <<EOF
 # $thisBinDir is not in PATH, so add it
 if ( "\\\`echo \$PATH | grep -v $thisBinDir\\\`" != "" ) then
   setenv PATH "$thisBinDir:\$PATH"
@@ -392,11 +392,11 @@ if ( -f /etc/sgml/catalog && "\\\`echo \$SGML_CATALOG_FILES | grep -v /etc/sgml/
 endif
 EOF
 
-if [ -n "$myCatalogManager" ]; then
-  myCatalogManagerDir=${myCatalogManager%/*}
-  while read; do
-    echo "$REPLY" >> $mydir/.profile.incl
-  done <<EOF
+  if [ -n "$myCatalogManager" ]; then
+    myCatalogManagerDir=${myCatalogManager%/*}
+    while read; do
+      echo "$REPLY" >>$mydir/.profile.incl
+    done <<EOF
 
 
 if [ -z "\$CLASSPATH" ]; then
@@ -410,9 +410,9 @@ fi
 export CLASSPATH
 EOF
 
-  while read; do
-    echo "$REPLY" >> $mydir/.cshrc.incl
-  done <<EOF
+    while read; do
+      echo "$REPLY" >>$mydir/.cshrc.incl
+    done <<EOF
 
 
 if ( ! $\?CLASSPATH ) then
@@ -424,11 +424,11 @@ endif
 endif
 EOF
 
-fi
+  fi
 
-while read; do
-  echo "$REPLY" >> $mydir/.emacs.el
-done <<EOF
+  while read; do
+    echo "$REPLY" >>$mydir/.emacs.el
+  done <<EOF
 (add-hook
   'nxml-mode-hook
   (lambda ()
@@ -437,12 +437,12 @@ done <<EOF
                   rng-schema-locating-files-default ))))
 EOF
 
-return 0
+  return 0
 }
 
 updateUserStartupFiles() {
   if [ ! "$batchmode" = "Yes" ]; then
-  cat 1>&2 <<EOF
+    cat 1>&2 <<EOF
 
 NOTE: To source your environment correctly for using the catalog
       files in this distribution, you need to update one or more
@@ -476,7 +476,7 @@ EOF
         emit_message "$REPLY"
       fi
       case $REPLY in
-        [nNqQ])
+      [nNqQ])
         cat 1>&2 <<EOF
 
 NOTE: No change made to $HOME/$file. You either need
@@ -488,12 +488,12 @@ $appendLine
 
 EOF
         ;;
-        *)
-        lineExists="$(grep "$appendLine" $HOME/$file )"
+      *)
+        lineExists="$(grep "$appendLine" $HOME/$file)"
         if [ ! "$lineExists" ]; then
-          mv $HOME/$file $dotFileBackup     || exit 1
-          cp $dotFileBackup $HOME/$file     || exit 1
-          echo "$appendLine" >> $HOME/$file || exit 1
+          mv $HOME/$file $dotFileBackup || exit 1
+          cp $dotFileBackup $HOME/$file || exit 1
+          echo "$appendLine" >>$HOME/$file || exit 1
           cat 1>&2 <<EOF
 NOTE: Successfully updated the following file:
       $HOME/$file 
@@ -530,7 +530,7 @@ EOF
 
 updateUserDotEmacs() {
   if [ -f $thisLocatingRules ]; then
-  cat 1>&2 <<EOF
+    cat 1>&2 <<EOF
 
 NOTE: This distribution includes a "schema locating rules" file
       for Emacs/nXML.  To use it, you should update either your
@@ -540,28 +540,28 @@ NOTE: This distribution includes a "schema locating rules" file
 
 EOF
 
-  emacsAppendLine="(load-file \"$mydir/.emacs.el\")"
-  myEmacsFile=
-  for file in .emacs .emacs.el; do
-    if [ -f "$HOME/$file" ]; then
-      myEmacsFile=$HOME/$file
-      break
-    fi
-  done
-  if [ ! -f "$myEmacsFile" ]; then
-    REPLY=""
-    if [ ! "$batchmode" = "Yes" ]; then
-      read -s -n1 -p "No .emacs or .emacs.el file. Create one? [No] "
-      emit_message "$REPLY"
-      emit_message
-    fi
-    case $REPLY in
+    emacsAppendLine="(load-file \"$mydir/.emacs.el\")"
+    myEmacsFile=
+    for file in .emacs .emacs.el; do
+      if [ -f "$HOME/$file" ]; then
+        myEmacsFile=$HOME/$file
+        break
+      fi
+    done
+    if [ ! -f "$myEmacsFile" ]; then
+      REPLY=""
+      if [ ! "$batchmode" = "Yes" ]; then
+        read -s -n1 -p "No .emacs or .emacs.el file. Create one? [No] "
+        emit_message "$REPLY"
+        emit_message
+      fi
+      case $REPLY in
       [yY])
-      myEmacsFile=$HOME/.emacs
-      touch $myEmacsFile
-      ;;
+        myEmacsFile=$HOME/.emacs
+        touch $myEmacsFile
+        ;;
       *)
-      cat 1>&2 <<EOF
+        cat 1>&2 <<EOF
 NOTE: No Emacs changes made. To use this distribution with,
       Emacs/nXML, you can create a .emacs file and manually add
       the following line to it, or you can run it as a command
@@ -570,19 +570,19 @@ NOTE: No Emacs changes made. To use this distribution with,
 $emacsAppendLine
 
 EOF
-      ;;
-    esac
-  fi
-  if [ -n "$myEmacsFile" ]; then
-    REPLY=""
-    if [ ! "$batchmode" = "Yes" ]; then
-      read -s -n1 -p  "Update $myEmacsFile? [Yes] "
-      emit_message "$REPLY"
-      emit_message
+        ;;
+      esac
     fi
-    case $REPLY in
+    if [ -n "$myEmacsFile" ]; then
+      REPLY=""
+      if [ ! "$batchmode" = "Yes" ]; then
+        read -s -n1 -p "Update $myEmacsFile? [Yes] "
+        emit_message "$REPLY"
+        emit_message
+      fi
+      case $REPLY in
       [nNqQ])
-      cat 1>&2 <<EOF
+        cat 1>&2 <<EOF
 
 NOTE: No change made to $myEmacsFile. To use this distribution
       with Emacs/nXML, you can manually add the following line
@@ -592,38 +592,38 @@ NOTE: No change made to $myEmacsFile. To use this distribution
 $emacsAppendLine
 
 EOF
-      ;;
+        ;;
       *)
-      lineExists="$(grep "$emacsAppendLine" $myEmacsFile)"
-      if [ ! "$lineExists" ]; then
-        dotEmacsBackup=$myEmacsFile.$$.bak
-        mv $myEmacsFile $dotEmacsBackup    || exit 1
-        cp $dotEmacsBackup $myEmacsFile    || exit 1
-        echo "$emacsAppendLine" >> $myEmacsFile || exit 1
-        cat 1>&2 <<EOF
+        lineExists="$(grep "$emacsAppendLine" $myEmacsFile)"
+        if [ ! "$lineExists" ]; then
+          dotEmacsBackup=$myEmacsFile.$$.bak
+          mv $myEmacsFile $dotEmacsBackup || exit 1
+          cp $dotEmacsBackup $myEmacsFile || exit 1
+          echo "$emacsAppendLine" >>$myEmacsFile || exit 1
+          cat 1>&2 <<EOF
 NOTE: Successfully updated the following file:
       $myEmacsFile
       Backup written to:
       $dotEmacsBackup
 EOF
-      else
-        cat 1>&2 <<EOF
+        else
+          cat 1>&2 <<EOF
 
 NOTE: The following file already contains information for this
       distribution, so I did not update it.
       $myEmacsFile
 
 EOF
-      fi
-      ;;
-    esac
+        fi
+        ;;
+      esac
+    fi
   fi
-fi
 }
 
 uninstall() {
   if [ ! "$batchmode" = "Yes" ]; then
-  cat 1>&2 <<EOF
+    cat 1>&2 <<EOF
 
 NOTE: To "uninstall" this distribution, the changes made to your
       CatalogManagers.properties, startup files, and/or .emacs
@@ -646,7 +646,7 @@ EOF
     myCatalogManager=${1#--catalogManager=}
     catalogBackup="$myCatalogManager.$$.bak"
     catalogsLine=$(grep "^catalogs=" $myCatalogManager)
-    if [ "$catalogsLine" ] ; then
+    if [ "$catalogsLine" ]; then
       if [ "${catalogsLine#*$thisXmlCatalog*}" != "$catalogsLine" ]; then
         REPLY=""
         if [ ! "$batchmode" = "Yes" ]; then
@@ -654,7 +654,7 @@ EOF
           emit_message "$REPLY"
         fi
         case $REPLY in
-          [nNqQ]*)
+        [nNqQ]*)
           cat 1>&2 <<EOF
 
 NOTE: No change made to $myCatalogManager. You need to manually
@@ -664,10 +664,10 @@ NOTE: No change made to $myCatalogManager. You need to manually
 
 EOF
           ;;
-          *)
+        *)
           mv $myCatalogManager $catalogBackup || exit 1
-          sed "s#^catalogs=\(.*\)$thisXmlCatalog\(.*\)\$#catalogs=\1\2#" $catalogBackup \
-          | sed 's/;\+/;/' | sed 's/;$//' | sed 's/=;/=/' > $myCatalogManager || exit 1
+          sed "s#^catalogs=\(.*\)$thisXmlCatalog\(.*\)\$#catalogs=\1\2#" $catalogBackup |
+            sed 's/;\+/;/' | sed 's/;$//' | sed 's/=;/=/' >$myCatalogManager || exit 1
           cat 1>&2 <<EOF
 NOTE: Successfully updated the following file:
       $myCatalogManager
@@ -691,7 +691,7 @@ EOF
     fi
   fi
 
-  if [ -n "$myEmacsFile" ]; then 
+  if [ -n "$myEmacsFile" ]; then
     # check to see if a non-empty value for --dotEmacs file was fed
     # to uninstaller.
     if [ -n ${2#--dotEmacs=} ]; then
@@ -706,7 +706,7 @@ EOF
           emit_message "$REPLY"
         fi
         case $REPLY in
-          [nNqQ]*)
+        [nNqQ]*)
           cat 1>&2 <<EOF
 
 NOTE: No change made to $myEmacsFile. You need to manually
@@ -716,9 +716,9 @@ remove the following line.
 
 EOF
           ;;
-          *)
+        *)
           dotEmacsBackup=$myEmacsFile.$$.bak
-          sed -e "/$revertLine/d" -i".$$.bak" $myEmacsFile  || exit 1
+          sed -e "/$revertLine/d" -i".$$.bak" $myEmacsFile || exit 1
           cat 1>&2 <<EOF
 NOTE: successfully reverted the following file:
       $myEmacsFile
@@ -740,16 +740,16 @@ EOF
   for file in $myStartupFiles; do
     if [ -e "$HOME/$file" ]; then
       case $file in
-        .tcshrc|.cshrc)
+      .tcshrc | .cshrc)
         revertLine="source $mydir/.cshrc.incl"
         revertLineEsc="source $escapedPwd\/\.cshrc\.incl"
         ;;
-        *)
+      *)
         revertLine=". $mydir/.profile.incl"
         revertLineEsc="\. $escapedPwd\/\.profile\.incl"
         ;;
       esac
-      lineExists="$(grep "$revertLineEsc" $HOME/$file )"
+      lineExists="$(grep "$revertLineEsc" $HOME/$file)"
       if [ "$lineExists" ]; then
         REPLY=""
         if [ ! "$batchmode" = "Yes" ]; then
@@ -757,7 +757,7 @@ EOF
           emit_message "$REPLY"
         fi
         case $REPLY in
-          [nNqQ]*)
+        [nNqQ]*)
           cat 1>&2 <<EOF
 
 NOTE: No change made to $HOME/$file. You need to manually remove
@@ -767,9 +767,9 @@ NOTE: No change made to $HOME/$file. You need to manually remove
 
 EOF
           ;;
-          *)
+        *)
           dotFileBackup=$HOME/$file.$$.bak
-          sed -e "/$revertLineEsc/d" -i".$$.bak" $HOME/$file  || exit 1
+          sed -e "/$revertLineEsc/d" -i".$$.bak" $HOME/$file || exit 1
           cat 1>&2 <<EOF
 NOTE: Successfully updated the following file:
       $HOME/$file
@@ -788,27 +788,27 @@ EOF
   done
   removeOldFiles
   emit_message "Done. Deleted uninstall.sh file."
-  rm -f $mydir/test.sh      || exit 1
+  rm -f $mydir/test.sh || exit 1
   rm -f $mydir/uninstall.sh || exit 1
 }
 
 writeUninstallFile() {
   uninstallFile=$mydir/uninstall.sh
-  echo '#!/bin/bash'                               > $uninstallFile || exit 1
-  echo 'mydir=$(cd -P $(dirname $0) && pwd -P)'   >> $uninstallFile || exit 1
-  echo "\$mydir/install.sh \\"                    >> $uninstallFile || exit 1
-  echo "  --uninstall \\"                         >> $uninstallFile || exit 1
-  echo "  --catalogManager=$myCatalogManager \\"  >> $uninstallFile || exit 1
-  echo "  --dotEmacs='$myEmacsFile' \\"           >> $uninstallFile || exit 1
-  echo '  $@'                                     >> $uninstallFile || exit 1
+  echo '#!/bin/bash' >$uninstallFile || exit 1
+  echo 'mydir=$(cd -P $(dirname $0) && pwd -P)' >>$uninstallFile || exit 1
+  echo "\$mydir/install.sh \\" >>$uninstallFile || exit 1
+  echo "  --uninstall \\" >>$uninstallFile || exit 1
+  echo "  --catalogManager=$myCatalogManager \\" >>$uninstallFile || exit 1
+  echo "  --dotEmacs='$myEmacsFile' \\" >>$uninstallFile || exit 1
+  echo '  $@' >>$uninstallFile || exit 1
   chmod 755 $uninstallFile || exit 1
 }
 
 writeTestFile() {
   testFile=$mydir/test.sh
-  echo "#!/bin/bash"                                > $testFile || exit 1
-  echo 'mydir=$(cd -P $(dirname $0) && pwd -P)'    >> $testFile || exit 1
-  echo '$mydir/install.sh --test'                  >> $testFile || exit 1
+  echo "#!/bin/bash" >$testFile || exit 1
+  echo 'mydir=$(cd -P $(dirname $0) && pwd -P)' >>$testFile || exit 1
+  echo '$mydir/install.sh --test' >>$testFile || exit 1
   chmod 755 $testFile || exit 1
 }
 
@@ -856,7 +856,7 @@ testCatalogs() {
 
 FATAL: $thisXmlCatalog file needed but not found. Stopping.
 EOF
-  exit
+    exit
   fi
 
   if [ -z "$XML_CATALOG_FILES" ]; then
@@ -865,7 +865,7 @@ EOF
   else
     xmlCatalogResponse="$(xmlcatalog 2>/dev/null)"
     if [ -z "$xmlCatalogResponse" ]; then
-    cat 1>&2 <<EOF
+      cat 1>&2 <<EOF
 
 WARNING: Cannot locate the "xmlcatalog" command. Make sure that
          you have libxml2 and its associated utilities installed.
@@ -886,7 +886,7 @@ EOF
         emit_message
         emit_message "  Tested: $uri"
         for catalog in $XML_CATALOG_FILES; do
-          response="$(xmlcatalog $catalog $uri| grep -v "No entry")"
+          response="$(xmlcatalog $catalog $uri | grep -v "No entry")"
           if [ -n "$response" ]; then
             if [ "$response" = "$path" ]; then
               emit_message "  Result: $path"
@@ -896,7 +896,7 @@ EOF
             fi
           fi
         done
-      done < $mydir/.urilist
+      done <$mydir/.urilist
     fi
   fi
 
@@ -932,20 +932,20 @@ EOF
           fi
           echo
         fi
-      done < $mydir/.urilist
+      done <$mydir/.urilist
     fi
   fi
 }
 
 # get opts and execute appropriate function
 case $1 in
-  *-uninstall)
+*-uninstall)
   uninstall $2 $3 $4
   ;;
-  *-test)
+*-test)
   testCatalogs
   ;;
-  *)
+*)
   main
   ;;
 esac
@@ -953,7 +953,7 @@ esac
 # Copyright
 # ---------
 # Copyright 2005-2007 Michael(tm) Smith <smith@sideshowbarker.net>
-# 
+#
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
 # files (the "Software"), to deal in the Software without
@@ -961,10 +961,10 @@ esac
 # modify, merge, publish, distribute, sublicense, and/or sell copies
 # of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be
 # included in all copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 # EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND

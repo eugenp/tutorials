@@ -10,7 +10,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.baeldung.junit5.Greetings;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = { SpringTestConfiguration.class })
+@ContextConfiguration(classes = {SpringTestConfiguration.class})
 public class GreetingsSpringUnitTest {
 
     @Test

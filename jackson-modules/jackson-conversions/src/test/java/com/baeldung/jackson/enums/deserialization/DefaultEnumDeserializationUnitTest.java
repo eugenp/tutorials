@@ -1,6 +1,7 @@
 package com.baeldung.jackson.enums.deserialization;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.IOException;
 
 import org.junit.Test;
@@ -13,7 +14,7 @@ public class DefaultEnumDeserializationUnitTest {
     public void givenEnum_whenDeserializingJson_thenCorrectRepresentation() throws JsonParseException, IOException {
         String json = "{\"distance\":\"KILOMETER\"}";
         City city = new ObjectMapper().readValue(json, City.class);
-        
+
         assertEquals(Distance.KILOMETER, city.getDistance());
     }
 

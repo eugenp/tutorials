@@ -17,11 +17,12 @@ import reactor.test.StepVerifier;
 import java.util.UUID;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = { "spring.couchbase.port=10010", "spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration,org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration" },
-                classes = { CouchbaseMockConfiguration.class, ViewReactiveCouchbaseConfiguration.class, CouchbaseProperties.class })
+@SpringBootTest(properties = {"spring.couchbase.port=10010", "spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration,org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration"},
+        classes = {CouchbaseMockConfiguration.class, ViewReactiveCouchbaseConfiguration.class, CouchbaseProperties.class})
 public class ViewPersonRepositoryIntegrationTest {
 
-    @Autowired private ViewPersonRepository personRepository;
+    @Autowired
+    private ViewPersonRepository personRepository;
 
     @Test
     public void shouldSavePerson_findById_thenDeleteIt() {
@@ -30,18 +31,18 @@ public class ViewPersonRepositoryIntegrationTest {
         final Person person = new Person(id, "John");
         wrap(() -> {
             personRepository
-              .save(person)
-              .subscribe();
+                    .save(person)
+                    .subscribe();
             //When
             final Mono<Person> byId = personRepository.findById(id);
             //Then
             StepVerifier
-              .create(byId)
-              .expectNextMatches(result -> result
-                .getId()
-                .equals(id))
-              .expectComplete()
-              .verify();
+                    .create(byId)
+                    .expectNextMatches(result -> result
+                            .getId()
+                            .equals(id))
+                    .expectComplete()
+                    .verify();
         }, person);
     }
 
@@ -52,18 +53,18 @@ public class ViewPersonRepositoryIntegrationTest {
         final Person secondPerson = new Person(UUID.randomUUID(), "Mikki");
         wrap(() -> {
             personRepository
-              .save(person)
-              .subscribe();
+                    .save(person)
+                    .subscribe();
             personRepository
-              .save(secondPerson)
-              .subscribe();
+                    .save(secondPerson)
+                    .subscribe();
             //When
             final Flux<Person> all = personRepository.findAll();
             //Then
             StepVerifier
-              .create(all)
-              .expectNextCount(2)
-              .verifyComplete();
+                    .create(all)
+                    .expectNextCount(2)
+                    .verifyComplete();
         }, person, secondPerson);
     }
 
@@ -73,8 +74,8 @@ public class ViewPersonRepositoryIntegrationTest {
         } finally {
             for (final Person person : people) {
                 personRepository
-                  .delete(person)
-                  .subscribe();
+                        .delete(person)
+                        .subscribe();
             }
         }
     }

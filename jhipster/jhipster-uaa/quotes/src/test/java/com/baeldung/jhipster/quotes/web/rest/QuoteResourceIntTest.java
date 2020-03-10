@@ -66,7 +66,7 @@ public class QuoteResourceIntTest {
 
     @Autowired
     private QuoteMapper quoteMapper;
-    
+
     @Autowired
     private QuoteService quoteService;
 
@@ -94,23 +94,23 @@ public class QuoteResourceIntTest {
         MockitoAnnotations.initMocks(this);
         final QuoteResource quoteResource = new QuoteResource(quoteService, quoteQueryService);
         this.restQuoteMockMvc = MockMvcBuilders.standaloneSetup(quoteResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
+                .setCustomArgumentResolvers(pageableArgumentResolver)
+                .setControllerAdvice(exceptionTranslator)
+                .setConversionService(createFormattingConversionService())
+                .setMessageConverters(jacksonMessageConverter).build();
     }
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
     public static Quote createEntity(EntityManager em) {
         Quote quote = new Quote()
-            .symbol(DEFAULT_SYMBOL)
-            .price(DEFAULT_PRICE)
-            .lastTrade(DEFAULT_LAST_TRADE);
+                .symbol(DEFAULT_SYMBOL)
+                .price(DEFAULT_PRICE)
+                .lastTrade(DEFAULT_LAST_TRADE);
         return quote;
     }
 
@@ -127,9 +127,9 @@ public class QuoteResourceIntTest {
         // Create the Quote
         QuoteDTO quoteDTO = quoteMapper.toDto(quote);
         restQuoteMockMvc.perform(post("/api/quotes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(quoteDTO)))
-            .andExpect(status().isCreated());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(quoteDTO)))
+                .andExpect(status().isCreated());
 
         // Validate the Quote in the database
         List<Quote> quoteList = quoteRepository.findAll();
@@ -151,9 +151,9 @@ public class QuoteResourceIntTest {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restQuoteMockMvc.perform(post("/api/quotes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(quoteDTO)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(quoteDTO)))
+                .andExpect(status().isBadRequest());
 
         // Validate the Quote in the database
         List<Quote> quoteList = quoteRepository.findAll();
@@ -171,9 +171,9 @@ public class QuoteResourceIntTest {
         QuoteDTO quoteDTO = quoteMapper.toDto(quote);
 
         restQuoteMockMvc.perform(post("/api/quotes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(quoteDTO)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(quoteDTO)))
+                .andExpect(status().isBadRequest());
 
         List<Quote> quoteList = quoteRepository.findAll();
         assertThat(quoteList).hasSize(databaseSizeBeforeTest);
@@ -190,9 +190,9 @@ public class QuoteResourceIntTest {
         QuoteDTO quoteDTO = quoteMapper.toDto(quote);
 
         restQuoteMockMvc.perform(post("/api/quotes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(quoteDTO)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(quoteDTO)))
+                .andExpect(status().isBadRequest());
 
         List<Quote> quoteList = quoteRepository.findAll();
         assertThat(quoteList).hasSize(databaseSizeBeforeTest);
@@ -209,9 +209,9 @@ public class QuoteResourceIntTest {
         QuoteDTO quoteDTO = quoteMapper.toDto(quote);
 
         restQuoteMockMvc.perform(post("/api/quotes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(quoteDTO)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(quoteDTO)))
+                .andExpect(status().isBadRequest());
 
         List<Quote> quoteList = quoteRepository.findAll();
         assertThat(quoteList).hasSize(databaseSizeBeforeTest);
@@ -225,14 +225,14 @@ public class QuoteResourceIntTest {
 
         // Get all the quoteList
         restQuoteMockMvc.perform(get("/api/quotes?sort=id,desc"))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(quote.getId().intValue())))
-            .andExpect(jsonPath("$.[*].symbol").value(hasItem(DEFAULT_SYMBOL.toString())))
-            .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.intValue())))
-            .andExpect(jsonPath("$.[*].lastTrade").value(hasItem(sameInstant(DEFAULT_LAST_TRADE))));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.[*].id").value(hasItem(quote.getId().intValue())))
+                .andExpect(jsonPath("$.[*].symbol").value(hasItem(DEFAULT_SYMBOL.toString())))
+                .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.intValue())))
+                .andExpect(jsonPath("$.[*].lastTrade").value(hasItem(sameInstant(DEFAULT_LAST_TRADE))));
     }
-    
+
     @Test
     @Transactional
     public void getQuote() throws Exception {
@@ -241,12 +241,12 @@ public class QuoteResourceIntTest {
 
         // Get the quote
         restQuoteMockMvc.perform(get("/api/quotes/{id}", quote.getId()))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(quote.getId().intValue()))
-            .andExpect(jsonPath("$.symbol").value(DEFAULT_SYMBOL.toString()))
-            .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.intValue()))
-            .andExpect(jsonPath("$.lastTrade").value(sameInstant(DEFAULT_LAST_TRADE)));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.id").value(quote.getId().intValue()))
+                .andExpect(jsonPath("$.symbol").value(DEFAULT_SYMBOL.toString()))
+                .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.intValue()))
+                .andExpect(jsonPath("$.lastTrade").value(sameInstant(DEFAULT_LAST_TRADE)));
     }
 
     @Test
@@ -397,18 +397,18 @@ public class QuoteResourceIntTest {
      */
     private void defaultQuoteShouldBeFound(String filter) throws Exception {
         restQuoteMockMvc.perform(get("/api/quotes?sort=id,desc&" + filter))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(quote.getId().intValue())))
-            .andExpect(jsonPath("$.[*].symbol").value(hasItem(DEFAULT_SYMBOL.toString())))
-            .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.intValue())))
-            .andExpect(jsonPath("$.[*].lastTrade").value(hasItem(sameInstant(DEFAULT_LAST_TRADE))));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.[*].id").value(hasItem(quote.getId().intValue())))
+                .andExpect(jsonPath("$.[*].symbol").value(hasItem(DEFAULT_SYMBOL.toString())))
+                .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.intValue())))
+                .andExpect(jsonPath("$.[*].lastTrade").value(hasItem(sameInstant(DEFAULT_LAST_TRADE))));
 
         // Check, that the count call also returns 1
         restQuoteMockMvc.perform(get("/api/quotes/count?sort=id,desc&" + filter))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(content().string("1"));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(content().string("1"));
     }
 
     /**
@@ -416,16 +416,16 @@ public class QuoteResourceIntTest {
      */
     private void defaultQuoteShouldNotBeFound(String filter) throws Exception {
         restQuoteMockMvc.perform(get("/api/quotes?sort=id,desc&" + filter))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$").isArray())
-            .andExpect(jsonPath("$").isEmpty());
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$").isEmpty());
 
         // Check, that the count call also returns 0
         restQuoteMockMvc.perform(get("/api/quotes/count?sort=id,desc&" + filter))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(content().string("0"));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(content().string("0"));
     }
 
 
@@ -434,7 +434,7 @@ public class QuoteResourceIntTest {
     public void getNonExistingQuote() throws Exception {
         // Get the quote
         restQuoteMockMvc.perform(get("/api/quotes/{id}", Long.MAX_VALUE))
-            .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -450,15 +450,15 @@ public class QuoteResourceIntTest {
         // Disconnect from session so that the updates on updatedQuote are not directly saved in db
         em.detach(updatedQuote);
         updatedQuote
-            .symbol(UPDATED_SYMBOL)
-            .price(UPDATED_PRICE)
-            .lastTrade(UPDATED_LAST_TRADE);
+                .symbol(UPDATED_SYMBOL)
+                .price(UPDATED_PRICE)
+                .lastTrade(UPDATED_LAST_TRADE);
         QuoteDTO quoteDTO = quoteMapper.toDto(updatedQuote);
 
         restQuoteMockMvc.perform(put("/api/quotes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(quoteDTO)))
-            .andExpect(status().isOk());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(quoteDTO)))
+                .andExpect(status().isOk());
 
         // Validate the Quote in the database
         List<Quote> quoteList = quoteRepository.findAll();
@@ -479,9 +479,9 @@ public class QuoteResourceIntTest {
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restQuoteMockMvc.perform(put("/api/quotes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(quoteDTO)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(quoteDTO)))
+                .andExpect(status().isBadRequest());
 
         // Validate the Quote in the database
         List<Quote> quoteList = quoteRepository.findAll();
@@ -498,8 +498,8 @@ public class QuoteResourceIntTest {
 
         // Get the quote
         restQuoteMockMvc.perform(delete("/api/quotes/{id}", quote.getId())
-            .accept(TestUtil.APPLICATION_JSON_UTF8))
-            .andExpect(status().isOk());
+                .accept(TestUtil.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk());
 
         // Validate the database is empty
         List<Quote> quoteList = quoteRepository.findAll();

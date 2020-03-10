@@ -31,9 +31,9 @@ public class TypeInfoInclusionUnitTest {
         TypeInfoStructure.Fleet deserializedFleet = mapper.readValue(jsonDataString, TypeInfoStructure.Fleet.class);
 
         assertThat(deserializedFleet.getVehicles()
-            .get(0), instanceOf(TypeInfoStructure.Car.class));
+                .get(0), instanceOf(TypeInfoStructure.Car.class));
         assertThat(deserializedFleet.getVehicles()
-            .get(1), instanceOf(TypeInfoStructure.Truck.class));
+                .get(1), instanceOf(TypeInfoStructure.Truck.class));
     }
 
     @Test
@@ -54,8 +54,8 @@ public class TypeInfoInclusionUnitTest {
         TypeInfoAnnotatedStructure.Fleet deserializedFleet = mapper.readValue(jsonDataString, TypeInfoAnnotatedStructure.Fleet.class);
 
         assertThat(deserializedFleet.getVehicles()
-            .get(0), instanceOf(TypeInfoAnnotatedStructure.Car.class));
+                .get(0), instanceOf(TypeInfoAnnotatedStructure.Car.class));
         assertThat(deserializedFleet.getVehicles()
-            .get(1), instanceOf(TypeInfoAnnotatedStructure.Truck.class));
+                .get(1), instanceOf(TypeInfoAnnotatedStructure.Truck.class));
     }
 }

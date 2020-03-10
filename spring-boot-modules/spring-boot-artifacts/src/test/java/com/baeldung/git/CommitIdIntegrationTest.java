@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = CommitIdApplication.class)
-@TestPropertySource(properties = { "spring.jmx.default-domain=test" })
+@TestPropertySource(properties = {"spring.jmx.default-domain=test"})
 public class CommitIdIntegrationTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(CommitIdIntegrationTest.class);

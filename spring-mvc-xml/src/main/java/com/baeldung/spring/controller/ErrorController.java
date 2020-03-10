@@ -22,24 +22,24 @@ public class ErrorController {
         int httpErrorCode = getErrorCode(httpRequest);
 
         switch (httpErrorCode) {
-        case 400: {
-            errorMsg = "Http Error Code : 400 . Bad Request";
-            break;
-        }
-        case 401: {
-            errorMsg = "Http Error Code : 401. Unauthorized";
-            break;
-        }
-        case 404: {
-            errorMsg = "Http Error Code : 404. Resource not found";
-            break;
-        }
-        // Handle other 4xx error codes.
-        case 500: {
-            errorMsg = "Http Error Code : 500. Internal Server Error";
-            break;
-        }
-        // Handle other 5xx error codes.
+            case 400: {
+                errorMsg = "Http Error Code : 400 . Bad Request";
+                break;
+            }
+            case 401: {
+                errorMsg = "Http Error Code : 401. Unauthorized";
+                break;
+            }
+            case 404: {
+                errorMsg = "Http Error Code : 404. Resource not found";
+                break;
+            }
+            // Handle other 4xx error codes.
+            case 500: {
+                errorMsg = "Http Error Code : 500. Internal Server Error";
+                break;
+            }
+            // Handle other 5xx error codes.
         }
         errorPage.addObject("errorMsg", errorMsg);
         return errorPage;

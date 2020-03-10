@@ -22,15 +22,15 @@ public final class CurrentDirectoryFetcher {
 
     public static String currentDirectoryUsingPaths() {
         return Paths.get("")
-            .toAbsolutePath()
-            .toString();
+                .toAbsolutePath()
+                .toString();
     }
 
     public static String currentDirectoryUsingFileSystems() {
         return FileSystems.getDefault()
-            .getPath("")
-            .toAbsolutePath()
-            .toString();
+                .getPath("")
+                .toAbsolutePath()
+                .toString();
     }
 
     public static String currentDirectoryUsingFile() {

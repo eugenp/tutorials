@@ -12,10 +12,10 @@ public class ValidatorProducer {
     @Produces
     public Validator createValidator() {
         return Validation
-          .byDefaultProvider()
-          .configure()
-          .buildValidatorFactory()
-          .getValidator();
+                .byDefaultProvider()
+                .configure()
+                .buildValidatorFactory()
+                .getValidator();
     }
 
 }

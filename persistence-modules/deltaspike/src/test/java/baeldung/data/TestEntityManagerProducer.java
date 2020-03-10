@@ -16,8 +16,8 @@ public class TestEntityManagerProducer extends EntityManagerProducer {
     @Specializes
     public EntityManager create() {
         return Persistence
-          .createEntityManagerFactory("pu-test")
-          .createEntityManager();
+                .createEntityManagerFactory("pu-test")
+                .createEntityManager();
     }
 
 }

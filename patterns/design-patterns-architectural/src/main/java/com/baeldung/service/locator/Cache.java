@@ -9,14 +9,14 @@ import java.util.List;
 public class Cache {
     private List<MessagingService> services;
 
-    public Cache(){
+    public Cache() {
         services = new ArrayList<MessagingService>();
     }
 
-    public MessagingService getService(String serviceName){
+    public MessagingService getService(String serviceName) {
 
         for (MessagingService service : services) {
-            if(service.getServiceName().equalsIgnoreCase(serviceName)){
+            if (service.getServiceName().equalsIgnoreCase(serviceName)) {
                 System.out.println("Returning cached  " + serviceName + " object");
                 return service;
             }
@@ -24,15 +24,15 @@ public class Cache {
         return null;
     }
 
-    public void addService(MessagingService newService){
+    public void addService(MessagingService newService) {
         boolean exists = false;
 
         for (MessagingService service : services) {
-            if(service.getServiceName().equalsIgnoreCase(newService.getServiceName())){
+            if (service.getServiceName().equalsIgnoreCase(newService.getServiceName())) {
                 exists = true;
             }
         }
-        if(!exists){
+        if (!exists) {
             services.add(newService);
         }
     }

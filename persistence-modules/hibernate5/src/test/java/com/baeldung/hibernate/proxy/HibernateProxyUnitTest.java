@@ -27,7 +27,7 @@ public class HibernateProxyUnitTest {
     private Employee charlotte;
 
     @Before
-    public void init(){
+    public void init() {
         try {
             factory = HibernateUtil.getSessionFactory("hibernate.properties");
             session = factory.openSession();
@@ -37,8 +37,8 @@ public class HibernateProxyUnitTest {
     }
 
     @After
-    public void close(){
-        if(session != null) {
+    public void close() {
+        if (session != null) {
             session.close();
         }
     }

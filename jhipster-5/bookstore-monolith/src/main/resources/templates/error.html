@@ -3,7 +3,7 @@
       xsi:schemaLocation="http://www.thymeleaf.org ">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="shortcut icon" href="${baseUrl}/favicon.ico" />
+    <link rel="shortcut icon" href="${baseUrl}/favicon.ico"/>
     <title>Your request cannot be processed</title>
     <style>
         ::-moz-selection {
@@ -147,7 +147,8 @@
 
     <p th:text="#{error.subtitle}">Sorry, an error has occurred.</p>
 
-    <span th:text="#{error.status}">Status:</span>&nbsp;<span th:text="${error}"></span>&nbsp;(<span th:text="${error}"></span>)<br/>
+    <span th:text="#{error.status}">Status:</span>&nbsp;<span th:text="${error}"></span>&nbsp;(<span
+        th:text="${error}"></span>)<br/>
     <span th:if="${!#strings.isEmpty(message)}">
         <span th:text="#{error.message}">Message:</span>&nbsp;<span th:text="${message}"></span><br/>
     </span>

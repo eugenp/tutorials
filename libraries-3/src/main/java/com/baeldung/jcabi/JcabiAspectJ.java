@@ -34,14 +34,14 @@ public class JcabiAspectJ {
             }
 
             divideByZero();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         divideByZeroQuietly();
         try {
-            processFile();  
-        } catch(Exception e) {
+            processFile();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -63,15 +63,16 @@ public class JcabiAspectJ {
 
     /**
      * Finds factorial of a number
+     *
      * @param number
      * @return
      */
     public static long factorial(int number) {
-        long result = 1; 
-        for(int i=number;i>0;i--) {
-            result *= i; 
-        } 
-        return result; 
+        long result = 1;
+        for (int i = number; i > 0; i--) {
+            result *= i;
+        }
+        return result;
     }
 
     @Loggable
@@ -91,20 +92,20 @@ public class JcabiAspectJ {
 
     @LogExceptions
     public static void divideByZero() {
-        int x = 1/0;
+        int x = 1 / 0;
     }
 
     @RetryOnFailure(attempts = 2, types = {java.lang.NumberFormatException.class})
     @Quietly
     public static void divideByZeroQuietly() {
-        int x = 1/0;
+        int x = 1 / 0;
     }
 
     @UnitedThrow(IllegalStateException.class)
     public static void processFile() throws IOException, InterruptedException {
         BufferedReader reader = new BufferedReader(new FileReader("baeldung.txt"));
         reader.readLine();
-        
+
         Thread thread = new Thread();
         thread.wait(2000);
     }

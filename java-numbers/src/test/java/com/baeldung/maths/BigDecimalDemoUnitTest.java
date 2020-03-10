@@ -19,7 +19,7 @@ public class BigDecimalDemoUnitTest {
     public void whenBigDecimalCreated_thenValueMatches() {
         BigDecimal bdFromString = new BigDecimal("0.1");
         BigDecimal bdFromCharArray = new BigDecimal(
-            new char[] { '3', '.', '1', '6', '1', '5' });
+                new char[]{'3', '.', '1', '6', '1', '5'});
         BigDecimal bdlFromInt = new BigDecimal(42);
         BigDecimal bdFromLong = new BigDecimal(123412345678901L);
         BigInteger bigInteger = BigInteger.probablePrime(100, new Random());
@@ -101,7 +101,7 @@ public class BigDecimalDemoUnitTest {
         BigDecimal bd = new BigDecimal("2.5");
         // Round to 1 digit using HALF_EVEN
         BigDecimal rounded = bd
-            .round(new MathContext(1, RoundingMode.HALF_EVEN));
+                .round(new MathContext(1, RoundingMode.HALF_EVEN));
 
         assertEquals("2", rounded.toString());
     }
@@ -114,7 +114,7 @@ public class BigDecimalDemoUnitTest {
         BigDecimal taxRate = new BigDecimal("0.0725");
 
         BigDecimal amountToBePaid = BigDecimalDemo
-            .calculateTotalAmount(quantity, unitPrice, discountRate, taxRate);
+                .calculateTotalAmount(quantity, unitPrice, discountRate, taxRate);
         assertEquals("11.68", amountToBePaid.toString());
     }
 }

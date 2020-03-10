@@ -25,7 +25,7 @@ public class InheritanceMappingIntegrationTest {
     @Before
     public void setUp() throws IOException {
         session = HibernateUtil.getSessionFactory()
-            .openSession();
+                .openSession();
         transaction = session.beginTransaction();
     }
 
@@ -43,8 +43,8 @@ public class InheritanceMappingIntegrationTest {
         session.save(pen);
 
         assertThat(session.createQuery("from MyProduct")
-            .getResultList()
-            .size()).isEqualTo(2);
+                .getResultList()
+                .size()).isEqualTo(2);
     }
 
     @Test
@@ -53,8 +53,8 @@ public class InheritanceMappingIntegrationTest {
         session.save(emp);
 
         assertThat(session.createQuery("from com.baeldung.hibernate.pojo.inheritance.Person")
-            .getResultList()
-            .size()).isEqualTo(1);
+                .getResultList()
+                .size()).isEqualTo(1);
     }
 
     @Test
@@ -63,8 +63,8 @@ public class InheritanceMappingIntegrationTest {
         session.save(pet);
 
         assertThat(session.createQuery("from Animal")
-            .getResultList()
-            .size()).isEqualTo(1);
+                .getResultList()
+                .size()).isEqualTo(1);
     }
 
     @Test
@@ -73,8 +73,8 @@ public class InheritanceMappingIntegrationTest {
         session.save(car);
 
         assertThat(session.createQuery("from Vehicle")
-            .getResultList()
-            .size()).isEqualTo(1);
+                .getResultList()
+                .size()).isEqualTo(1);
     }
 
     @Test
@@ -83,7 +83,7 @@ public class InheritanceMappingIntegrationTest {
         session.save(bag);
 
         assertThat(session.createQuery("from com.baeldung.hibernate.pojo.inheritance.Item")
-            .getResultList()
-            .size()).isEqualTo(0);
+                .getResultList()
+                .size()).isEqualTo(0);
     }
 }

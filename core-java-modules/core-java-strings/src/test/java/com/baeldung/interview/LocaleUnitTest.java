@@ -13,8 +13,8 @@ public class LocaleUnitTest {
     public void whenUsingLocal_thenCorrectResultsForDifferentLocale() {
         Locale usLocale = Locale.US;
         BigDecimal number = new BigDecimal(102_300.456d);
-         
-        NumberFormat usNumberFormat = NumberFormat.getCurrencyInstance(usLocale); 
+
+        NumberFormat usNumberFormat = NumberFormat.getCurrencyInstance(usLocale);
         assertEquals(usNumberFormat.format(number), "$102,300.46");
     }
 }

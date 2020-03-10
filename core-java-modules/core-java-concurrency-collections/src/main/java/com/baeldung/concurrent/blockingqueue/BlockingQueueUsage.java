@@ -20,8 +20,8 @@ public class BlockingQueueUsage {
         for (int j = 0; j < N_CONSUMERS; j++) {
             new Thread(new NumbersConsumer(queue, poisonPill)).start();
         }
-        
-        new Thread(new NumbersProducer(queue, poisonPill, poisonPillPerProducer+mod)).start();
+
+        new Thread(new NumbersProducer(queue, poisonPill, poisonPillPerProducer + mod)).start();
 
     }
 }

@@ -20,7 +20,8 @@ public class User {
 
     private String email;
 
-    public User() { }
+    public User() {
+    }
 
     public User(String firstName, String lastName, String email) {
         this.firstName = firstName;
@@ -59,7 +60,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
 
     @Override
     public String toString() {

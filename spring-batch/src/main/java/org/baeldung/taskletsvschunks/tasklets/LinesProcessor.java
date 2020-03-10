@@ -35,8 +35,8 @@ public class LinesProcessor implements Tasklet, StepExecutionListener {
     @Override
     public void beforeStep(StepExecution stepExecution) {
         ExecutionContext executionContext = stepExecution
-          .getJobExecution()
-          .getExecutionContext();
+                .getJobExecution()
+                .getExecutionContext();
         this.lines = (List<Line>) executionContext.get("lines");
         logger.debug("Lines Processor initialized.");
     }

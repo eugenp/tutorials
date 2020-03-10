@@ -17,11 +17,11 @@ public class ConcurretMapMemoryConsistencyManualTest {
         Map<String, Integer> map = new ConcurrentHashMap<>();
         List<Integer> sumList = parallelSum100(map, 1000);
         assertEquals(1, sumList.stream()
-            .distinct()
-            .count());
+                .distinct()
+                .count());
         long wrongResultCount = sumList.stream()
-            .filter(num -> num != 100)
-            .count();
+                .filter(num -> num != 100)
+                .count();
         assertEquals(0, wrongResultCount);
     }
 
@@ -30,11 +30,11 @@ public class ConcurretMapMemoryConsistencyManualTest {
         Map<String, Integer> map = new Hashtable<>();
         List<Integer> sumList = parallelSum100(map, 1000);
         assertEquals(1, sumList.stream()
-            .distinct()
-            .count());
+                .distinct()
+                .count());
         long wrongResultCount = sumList.stream()
-            .filter(num -> num != 100)
-            .count();
+                .filter(num -> num != 100)
+                .count();
         assertEquals(0, wrongResultCount);
     }
 
@@ -43,11 +43,11 @@ public class ConcurretMapMemoryConsistencyManualTest {
         Map<String, Integer> map = new HashMap<>();
         List<Integer> sumList = parallelSum100(map, 100);
         assertNotEquals(1, sumList.stream()
-            .distinct()
-            .count());
+                .distinct()
+                .count());
         long wrongResultCount = sumList.stream()
-            .filter(num -> num != 100)
-            .count();
+                .filter(num -> num != 100)
+                .count();
         assertTrue(wrongResultCount > 0);
     }
 

@@ -19,9 +19,9 @@ class BaeldungReflectionUtils {
         PropertyDescriptor[] propDescArr = Introspector.getBeanInfo(Customer.class, Object.class).getPropertyDescriptors();
 
         return Arrays.stream(propDescArr)
-          .filter(nulls(customer))
-          .map(PropertyDescriptor::getName)
-          .collect(Collectors.toList());
+                .filter(nulls(customer))
+                .map(PropertyDescriptor::getName)
+                .collect(Collectors.toList());
     }
 
     private static Predicate<PropertyDescriptor> nulls(Customer customer) {

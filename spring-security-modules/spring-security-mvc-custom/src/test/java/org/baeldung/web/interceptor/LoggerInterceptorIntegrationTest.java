@@ -19,7 +19,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { SecurityWithoutCsrfConfig.class, MvcConfig.class })
+@ContextConfiguration(classes = {SecurityWithoutCsrfConfig.class, MvcConfig.class})
 public class LoggerInterceptorIntegrationTest {
 
     @Autowired
@@ -44,7 +44,7 @@ public class LoggerInterceptorIntegrationTest {
     @Test
     public void testInterceptors() throws Exception {
         mockMvc.perform(get("/login.html"))
-            .andExpect(status().isOk());
+                .andExpect(status().isOk());
     }
 
 }

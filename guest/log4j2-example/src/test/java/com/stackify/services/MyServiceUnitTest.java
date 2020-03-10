@@ -57,7 +57,7 @@ public class MyServiceUnitTest {
         appender.start();
         config.addAppender(appender);
         AppenderRef ref = AppenderRef.createAppenderRef("programmaticFileAppender", null, null);
-        AppenderRef[] refs = new AppenderRef[] { ref };
+        AppenderRef[] refs = new AppenderRef[]{ref};
 
         LoggerConfig loggerConfig = LoggerConfig.createLogger(false, Level.INFO, "programmaticLogger", "true", refs, null, config, null);
 

@@ -41,9 +41,9 @@ public class FastJsonUnitTest {
         Person newPerson = JSON.parseObject(personJsonFormat, Person.class);
         assertEquals(newPerson.getAge(), 0); // serialize is set to false for age attribute
         assertEquals(newPerson.getFirstName(), listOfPersons.get(0)
-            .getFirstName());
+                .getFirstName());
         assertEquals(newPerson.getLastName(), listOfPersons.get(0)
-            .getLastName());
+                .getLastName());
     }
 
     @Test
@@ -81,15 +81,15 @@ public class FastJsonUnitTest {
         NameFilter formatName = new NameFilter() {
             public String process(Object object, String name, Object value) {
                 return name.toLowerCase()
-                    .replace(" ", "_");
+                        .replace(" ", "_");
             }
         };
         SerializeConfig.getGlobalInstance()
-            .addFilter(Person.class, formatName);
+                .addFilter(Person.class, formatName);
         String jsonOutput = JSON.toJSONStringWithDateFormat(listOfPersons, "yyyy-MM-dd");
         assertEquals(jsonOutput, "[{\"first_name\":\"Doe\",\"last_name\":\"John\"," + "\"date_of_birth\":\"2016-07-24\"},{\"first_name\":\"Doe\",\"last_name\":" + "\"Janette\",\"date_of_birth\":\"2016-07-24\"}]");
         // resetting custom serializer
         SerializeConfig.getGlobalInstance()
-            .put(Person.class, null);
+                .put(Person.class, null);
     }
 }

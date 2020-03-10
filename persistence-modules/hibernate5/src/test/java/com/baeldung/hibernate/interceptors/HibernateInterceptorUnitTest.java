@@ -21,21 +21,21 @@ public class HibernateInterceptorUnitTest {
     public void init() throws IOException {
         sessionFactory = HibernateUtil.getSessionFactoryWithInterceptor(null, new CustomInterceptor());
     }
-    
+
     @AfterClass
     public static void finish() {
-        if(userId != null) {
+        if (userId != null) {
             Session session = sessionFactory.getCurrentSession();
             Transaction transaction = session.beginTransaction();
             User user = session.load(User.class, userId);
-            if(user != null) {
+            if (user != null) {
                 session.delete(user);
             }
             transaction.commit();
             session.close();
         }
     }
-    
+
     @Test
     public void givenHibernateInterceptorAndSessionScoped_whenUserCreated_shouldSucceed() {
         Session session = sessionFactory.withOptions().interceptor(new CustomInterceptor()).openSession();
@@ -45,13 +45,13 @@ public class HibernateInterceptorUnitTest {
         transaction.commit();
         session.close();
     }
-    
+
     @Test
     public void givenHibernateInterceptorAndSessionFactoryScoped_whenUserModified_shouldSucceed() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         User user = session.load(User.class, userId);
-        if(user != null) {
+        if (user != null) {
             user.setAbout("I am a scientist.");
             session.update(user);
         }

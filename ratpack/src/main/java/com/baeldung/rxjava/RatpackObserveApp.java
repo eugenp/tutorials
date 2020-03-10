@@ -15,7 +15,7 @@ import ratpack.server.RatpackServer;
 public class RatpackObserveApp {
     /**
      * Try hitting http://localhost:5050/movies or http://localhost:5050/movie to see the application in action.
-     * 
+     *
      * @param args
      * @throws Exception
      */
@@ -26,19 +26,19 @@ public class RatpackObserveApp {
             MoviePromiseService promiseSvc = ctx.get(MoviePromiseService.class);
             Promise<Movie> moviePromise = promiseSvc.getMovie();
             RxRatpack.observe(moviePromise)
-                .subscribe(movie -> ctx.render(Jackson.json(movie)));
+                    .subscribe(movie -> ctx.render(Jackson.json(movie)));
         };
 
         Handler moviesPromiseHandler = ctx -> {
             MoviePromiseService promiseSvc = ctx.get(MoviePromiseService.class);
             Promise<List<Movie>> moviePromises = promiseSvc.getMovies();
             RxRatpack.observeEach(moviePromises)
-                .toList()
-                .subscribe(movie -> ctx.render(Jackson.json(movie)));
+                    .toList()
+                    .subscribe(movie -> ctx.render(Jackson.json(movie)));
         };
 
         RatpackServer.start(def -> def.registryOf(regSpec -> regSpec.add(MoviePromiseService.class, new MoviePromiseServiceImpl()))
-            .handlers(chain -> chain.get("movie", moviePromiseHandler)
-                .get("movies", moviesPromiseHandler)));
+                .handlers(chain -> chain.get("movie", moviePromiseHandler)
+                        .get("movies", moviesPromiseHandler)));
     }
 }

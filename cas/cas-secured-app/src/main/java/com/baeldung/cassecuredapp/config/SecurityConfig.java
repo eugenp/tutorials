@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public SecurityConfig(CasAuthenticationProvider casAuthenticationProvider, AuthenticationEntryPoint eP,
                           LogoutFilter lF
-                          , SingleSignOutFilter ssF
+            , SingleSignOutFilter ssF
     ) {
         this.authenticationProvider = casAuthenticationProvider;
         this.authenticationEntryPoint = eP;
@@ -43,41 +43,41 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-      http
-        .authorizeRequests()
-        .regexMatchers("/secured.*", "/login")
-        .authenticated()
-        .and()
-        .authorizeRequests()
-        .regexMatchers("/")
-        .permitAll()
-        .and()
-        .httpBasic()
-        .authenticationEntryPoint(authenticationEntryPoint)
-        .and()
-        .logout().logoutSuccessUrl("/logout")
-        .and()
-        .addFilterBefore(singleSignOutFilter, CasAuthenticationFilter.class)
-        .addFilterBefore(logoutFilter, LogoutFilter.class);
+        http
+                .authorizeRequests()
+                .regexMatchers("/secured.*", "/login")
+                .authenticated()
+                .and()
+                .authorizeRequests()
+                .regexMatchers("/")
+                .permitAll()
+                .and()
+                .httpBasic()
+                .authenticationEntryPoint(authenticationEntryPoint)
+                .and()
+                .logout().logoutSuccessUrl("/logout")
+                .and()
+                .addFilterBefore(singleSignOutFilter, CasAuthenticationFilter.class)
+                .addFilterBefore(logoutFilter, LogoutFilter.class);
 
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-      auth.authenticationProvider(authenticationProvider);
+        auth.authenticationProvider(authenticationProvider);
     }
 
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
-      return new ProviderManager(Arrays.asList(authenticationProvider));
+        return new ProviderManager(Arrays.asList(authenticationProvider));
     }
 
     @Bean
     public CasAuthenticationFilter casAuthenticationFilter(ServiceProperties sP) throws Exception {
-      CasAuthenticationFilter filter = new CasAuthenticationFilter();
-      filter.setServiceProperties(sP);
-      filter.setAuthenticationManager(authenticationManager());
-      return filter;
+        CasAuthenticationFilter filter = new CasAuthenticationFilter();
+        filter.setServiceProperties(sP);
+        filter.setAuthenticationManager(authenticationManager());
+        return filter;
     }
 
 }

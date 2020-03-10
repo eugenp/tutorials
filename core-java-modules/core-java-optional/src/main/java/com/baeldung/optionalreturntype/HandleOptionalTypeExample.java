@@ -6,6 +6,7 @@ import java.util.Optional;
 
 public class HandleOptionalTypeExample {
     static Map<String, User> usersByName = new HashMap();
+
     static {
         User user1 = new User();
         user1.setUserId(1l);

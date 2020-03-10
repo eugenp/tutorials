@@ -35,7 +35,7 @@ public class BaeldungSubscriberImplIntegrationTest {
     @Test
     public void testReactiveStreamCount() {
         IntStream.range(0, ITEM_SIZE)
-            .forEach(item -> publisher.submit(item + ""));
+                .forEach(item -> publisher.submit(item + ""));
         publisher.close();
 
         do {
@@ -56,7 +56,7 @@ public class BaeldungSubscriberImplIntegrationTest {
     @Test
     public void testReactiveStreamTime() {
         IntStream.range(0, ITEM_SIZE)
-            .forEach(item -> publisher.submit(item + ""));
+                .forEach(item -> publisher.submit(item + ""));
         publisher.close();
 
         do {
@@ -76,10 +76,10 @@ public class BaeldungSubscriberImplIntegrationTest {
     @Test
     public void testReactiveStreamOffer() {
         IntStream.range(0, ITEM_SIZE)
-            .forEach(item -> publisher.offer(item + "", (subscriber, string) -> {
-                // Returning false means this item will be dropped (no retry), if blocked.
-                return false;
-            }));
+                .forEach(item -> publisher.offer(item + "", (subscriber, string) -> {
+                    // Returning false means this item will be dropped (no retry), if blocked.
+                    return false;
+                }));
         publisher.close();
 
         do {

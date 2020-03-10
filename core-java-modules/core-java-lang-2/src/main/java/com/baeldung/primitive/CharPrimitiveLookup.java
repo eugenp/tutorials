@@ -42,5 +42,4 @@ public class CharPrimitiveLookup extends Lookup {
     }
 
 
-
 }

@@ -16,10 +16,10 @@ sudo mv hadoop-2.8.2 /usr/local/hadoop
 rm hadoop-2.8.2.tar.gz
 
 # Environmental Variables
-echo export JAVA_HOME=/usr/lib/jvm/java-8-oracle >> ~/.bashrc
-echo export HADOOP_PREFIX=/usr/local/hadoop >> ~/.bashrc
-echo export PATH=\$PATH:/usr/local/hadoop/bin >> ~/.bashrc
-echo export PATH=\$PATH:/usr/local/hadoop/sbin >> ~/.bashrc
+echo export JAVA_HOME=/usr/lib/jvm/java-8-oracle >>~/.bashrc
+echo export HADOOP_PREFIX=/usr/local/hadoop >>~/.bashrc
+echo export PATH=\$PATH:/usr/local/hadoop/bin >>~/.bashrc
+echo export PATH=\$PATH:/usr/local/hadoop/sbin >>~/.bashrc
 source ~/.bashrc
 
 # Copy configuration files

@@ -2,7 +2,9 @@ package com.baeldung.application;
 
 import com.baeldung.application.entities.User;
 import com.baeldung.application.repositories.UserRepository;
+
 import java.util.stream.Stream;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

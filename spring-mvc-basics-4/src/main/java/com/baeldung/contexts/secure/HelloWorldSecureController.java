@@ -22,16 +22,16 @@ public class HelloWorldSecureController {
 
     @Autowired
     private GreeterService greeterService;
-    
+
     @Autowired
     @Qualifier("contextAware")
-    private ApplicationContextUtilService contextUtilService; 
+    private ApplicationContextUtilService contextUtilService;
 
     private void processContext() {
         ApplicationContext context = contextUtilService.getApplicationContext();
         System.out.println("application context : " + context);
         System.out.println("application context Beans: " + Arrays.asList(context.getBeanDefinitionNames()));
-        
+
         WebApplicationContext rootContext = ContextLoader.getCurrentWebApplicationContext();
         System.out.println("context : " + rootContext);
         System.out.println("context Beans: " + Arrays.asList(rootContext.getBeanDefinitionNames()));

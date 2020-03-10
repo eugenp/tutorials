@@ -15,14 +15,16 @@ public interface FibonacciSequenceGeneratorFixture {
      */
     FibonacciSequenceGenerator provide();
 
-    @Test default void when_sequence_index_is_negative_then_throws() {
+    @Test
+    default void when_sequence_index_is_negative_then_throws() {
         final FibonacciSequenceGenerator generator = provide();
         assertThrows(IllegalArgumentException.class, () -> generator.generate(-1));
     }
 
-    @Test default void when_given_index_then_generates_fibonacci_number() {
+    @Test
+    default void when_given_index_then_generates_fibonacci_number() {
         final FibonacciSequenceGenerator generator = provide();
-        final int[] sequence = { 0, 1, 1, 2, 3, 5, 8 };
+        final int[] sequence = {0, 1, 1, 2, 3, 5, 8};
         for (int i = 0; i < sequence.length; i++) {
             assertEquals(sequence[i], generator.generate(i));
         }

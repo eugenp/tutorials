@@ -6,11 +6,11 @@
 <body>
 
 <div class="main">
-<#include "header.ftl" >
+    <#include "header.ftl" >
     <div class="content">
-    ${page_content}
+        ${page_content}
     </div>
-<#include "footer.ftl" >
+    <#include "footer.ftl" >
 </div>
 </body>
 </html>

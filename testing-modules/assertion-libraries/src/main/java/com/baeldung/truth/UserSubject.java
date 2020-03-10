@@ -21,20 +21,20 @@ public class UserSubject extends ComparableSubject<UserSubject, User> {
 
     public static UserSubject assertThat(User user) {
         return Truth.assertAbout(USER_SUBJECT_FACTORY)
-            .that(user);
+                .that(user);
     }
 
     // Our API begins here
     public void hasName(String name) {
         if (!actual().getName()
-            .equals(name)) {
+                .equals(name)) {
             fail("has name", name);
         }
     }
 
     public void hasNameIgnoringCase(String name) {
         if (!actual().getName()
-            .equalsIgnoreCase(name)) {
+                .equalsIgnoreCase(name)) {
             fail("has name ignoring case", name);
         }
     }

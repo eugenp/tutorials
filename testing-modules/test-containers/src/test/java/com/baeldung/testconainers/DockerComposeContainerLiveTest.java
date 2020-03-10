@@ -14,18 +14,18 @@ import org.testcontainers.containers.DockerComposeContainer;
 
 public class DockerComposeContainerLiveTest {
     @ClassRule
-    public static DockerComposeContainer compose = 
-      new DockerComposeContainer(
-        new File("src/test/resources/test-compose.yml"))
-          .withExposedService("simpleWebServer_1", 80);
+    public static DockerComposeContainer compose =
+            new DockerComposeContainer(
+                    new File("src/test/resources/test-compose.yml"))
+                    .withExposedService("simpleWebServer_1", 80);
 
     @Test
     public void givenSimpleWebServerContainer_whenGetReuqest_thenReturnsResponse()
-      throws Exception {
+            throws Exception {
         String address = "http://" + compose.getServiceHost("simpleWebServer_1", 80)
-          + ":" + compose.getServicePort("simpleWebServer_1", 80);
+                + ":" + compose.getServicePort("simpleWebServer_1", 80);
         String response = simpleGetRequest(address);
-        
+
         assertEquals(response, "Hello World!");
     }
 

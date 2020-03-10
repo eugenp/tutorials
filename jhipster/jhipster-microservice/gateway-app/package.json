@@ -56,7 +56,6 @@
     "proxy-middleware": "0.15.0",
     "run-sequence": "1.2.2",
     "xml2js": "0.4.17",
-
     "yargs": "5.0.0"
   },
   "engines": {

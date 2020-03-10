@@ -27,11 +27,11 @@ public class JooxTransformer {
         // 3 - Find node to modify
         String expr = String.format("//*[contains(@%s, '%s')]", attribute, oldValue);
         $
-            // .find("to") or with xpath
-            .xpath(expr)
-            .get()
-            .stream()
-            .forEach(e -> e.setAttribute(attribute, newValue));
+                // .find("to") or with xpath
+                .xpath(expr)
+                .get()
+                .stream()
+                .forEach(e -> e.setAttribute(attribute, newValue));
         // 4- Return result as String
         return $.toString();
     }

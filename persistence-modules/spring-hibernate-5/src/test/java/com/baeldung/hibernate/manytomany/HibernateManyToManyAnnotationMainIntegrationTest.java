@@ -2,9 +2,11 @@ package com.baeldung.hibernate.manytomany;
 
 import static org.junit.Assert.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -38,8 +40,8 @@ public class HibernateManyToManyAnnotationMainIntegrationTest {
 
     @Test
     public void givenData_whenInsert_thenCreatesMtoMrelationship() {
-        String[] employeeData = { "Peter Oven", "Allan Norman" };
-        String[] projectData = { "IT Project", "Networking Project" };
+        String[] employeeData = {"Peter Oven", "Allan Norman"};
+        String[] projectData = {"IT Project", "Networking Project"};
         Set<Project> projects = new HashSet<Project>();
 
         for (String proj : projectData) {
@@ -60,7 +62,7 @@ public class HibernateManyToManyAnnotationMainIntegrationTest {
         @SuppressWarnings("unchecked")
         List<Employee> employeeList = session.createQuery("FROM Employee").list();
         assertNotNull(employeeList);
-        for(Employee employee : employeeList) {
+        for (Employee employee : employeeList) {
             assertNotNull(employee.getProjects());
         }
     }
@@ -68,7 +70,7 @@ public class HibernateManyToManyAnnotationMainIntegrationTest {
     @After
     public void tearDown() {
         session.getTransaction()
-            .commit();
+                .commit();
         session.close();
     }
 

@@ -20,17 +20,17 @@ public class ProductService {
 
     public Product findById(int id) {
         return products.stream()
-            .filter(obj -> obj.getId() == id)
-            .findFirst()
-            .orElseThrow(() -> new ItemNotFoundException("Product not found"));
+                .filter(obj -> obj.getId() == id)
+                .findFirst()
+                .orElseThrow(() -> new ItemNotFoundException("Product not found"));
     }
 
     public Product findByName(String name) {
         return products.stream()
-            .filter(obj -> obj.getName()
-                .equalsIgnoreCase(name))
-            .findFirst()
-            .orElseThrow(() -> new ItemNotFoundException("Product not found"));
+                .filter(obj -> obj.getName()
+                        .equalsIgnoreCase(name))
+                .findFirst()
+                .orElseThrow(() -> new ItemNotFoundException("Product not found"));
     }
 
     public Set<Product> findAll() {
@@ -42,9 +42,9 @@ public class ProductService {
             throw new IllegalArgumentException();
         }
         int newId = products.stream()
-            .mapToInt(Product::getId)
-            .max()
-            .getAsInt() + 1;
+                .mapToInt(Product::getId)
+                .max()
+                .getAsInt() + 1;
         product.setId(newId);
         products.add(product);
         return product;
@@ -52,7 +52,7 @@ public class ProductService {
 
     public static class ItemNotFoundException extends RuntimeException {
         /**
-         * 
+         *
          */
         private static final long serialVersionUID = 1L;
 

@@ -8,11 +8,11 @@
     <!-- PersistenceUnit for datastore -->
     <persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
         <properties>
-            <property name="hibernate.hbm2ddl.auto" value="update" />
-            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.transaction.flush_before_completion"
-                      value="true" />
-            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
+                      value="true"/>
+            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider"/>
         </properties>
     </persistence-unit>
 
@@ -25,7 +25,7 @@
             <property name="hibernate.connection.username" value="sa"/>
             <property name="hibernate.connection.password" value=""/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
         </properties>
     </persistence-unit>
 

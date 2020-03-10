@@ -11,5 +11,5 @@ public class Class1UnitTest {
     public void testCase_InClass1UnitTest() {
         assertTrue(true);
     }
-    
+
 }

@@ -20,8 +20,8 @@ public class AsciidoctorDemo {
     public void generatePDFFromString(final String input) {
 
         final Map<String, Object> options = options().inPlace(true)
-          .backend("pdf")
-          .asMap();
+                .backend("pdf")
+                .asMap();
 
 
         final String outfile = asciidoctor.convertFile(new File("sample.adoc"), options);

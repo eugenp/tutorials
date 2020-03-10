@@ -23,9 +23,8 @@ public class MyCustomRule implements EnforcerRule {
                 throw new EnforcerRuleException("Project group id does not start with com.baeldung");
             }
 
-        }
-        catch (ExpressionEvaluationException ex ) {
-            throw new EnforcerRuleException( "Unable to lookup an expression " + ex.getLocalizedMessage(), ex );
+        } catch (ExpressionEvaluationException ex) {
+            throw new EnforcerRuleException("Unable to lookup an expression " + ex.getLocalizedMessage(), ex);
         }
     }
 

@@ -16,41 +16,41 @@ import com.baeldung.spring.data.keyvalue.vo.Employee;
 @Service("employeeServicesWithKeyValueTemplate")
 @DependsOn("keyValueTemplate")
 public class EmployeeServicesWithKeyValueTemplate implements EmployeeService {
-	
-	@Autowired
-	@Qualifier("keyValueTemplate")
-	KeyValueTemplate keyValueTemplate;
 
-	@Override
-	public void save(Employee employee) {
-		keyValueTemplate.insert(employee);
-	}
+    @Autowired
+    @Qualifier("keyValueTemplate")
+    KeyValueTemplate keyValueTemplate;
 
-	@Override
-	public Optional<Employee> get(Integer id) {
-		return keyValueTemplate.findById(id, Employee.class);
-	}
+    @Override
+    public void save(Employee employee) {
+        keyValueTemplate.insert(employee);
+    }
 
-	@Override
-	public Iterable<Employee> fetchAll() {
-		return keyValueTemplate.findAll(Employee.class);
-	}
+    @Override
+    public Optional<Employee> get(Integer id) {
+        return keyValueTemplate.findById(id, Employee.class);
+    }
 
-	@Override
-	public void update(Employee employee) {
-		keyValueTemplate.update(employee);
-	}
+    @Override
+    public Iterable<Employee> fetchAll() {
+        return keyValueTemplate.findAll(Employee.class);
+    }
 
-	@Override
-	public void delete(Integer id) {
-		keyValueTemplate.delete(id, Employee.class);
-	}
+    @Override
+    public void update(Employee employee) {
+        keyValueTemplate.update(employee);
+    }
 
-	@Override
-	public Iterable<Employee> getSortedListOfEmployeesBySalary() {
-		KeyValueQuery query = new KeyValueQuery();
-		query.setSort(Sort.by(Sort.Direction.DESC, "salary"));
-		return keyValueTemplate.find(query, Employee.class);
-	}
+    @Override
+    public void delete(Integer id) {
+        keyValueTemplate.delete(id, Employee.class);
+    }
+
+    @Override
+    public Iterable<Employee> getSortedListOfEmployeesBySalary() {
+        KeyValueQuery query = new KeyValueQuery();
+        query.setSort(Sort.by(Sort.Direction.DESC, "salary"));
+        return keyValueTemplate.find(query, Employee.class);
+    }
 
 }

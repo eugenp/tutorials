@@ -1,7 +1,7 @@
 package com.baeldung.dto;
 
 public class PersonDTO {
-    
+
     private String id;
     private String name;
 

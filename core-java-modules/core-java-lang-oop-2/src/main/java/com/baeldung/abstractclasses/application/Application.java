@@ -3,6 +3,7 @@ package com.baeldung.abstractclasses.application;
 import com.baeldung.abstractclasses.filereaders.BaseFileReader;
 import com.baeldung.abstractclasses.filereaders.LowercaseFileReader;
 import com.baeldung.abstractclasses.filereaders.UppercaseFileReader;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
@@ -16,14 +17,14 @@ public class Application {
         Path path = application.getPathFromResourcesFile("files/test.txt");
         BaseFileReader lowercaseFileReader = new LowercaseFileReader(path);
         lowercaseFileReader.readFile().forEach(line -> System.out.println(line));
-        
+
         BaseFileReader uppercaseFileReader = new UppercaseFileReader(path);
         uppercaseFileReader.readFile().forEach(line -> System.out.println(line));
 
     }
-    
+
     private Path getPathFromResourcesFile(String filePath) throws URISyntaxException {
         return Paths.get(getClass().getClassLoader().getResource(filePath).toURI());
-         
+
     }
 }

@@ -44,7 +44,7 @@ public class ArticleRssController {
         return channelData;
     }
 
-    private Channel buildChannel(List<Article> articles){
+    private Channel buildChannel(List<Article> articles) {
         Channel channel = new Channel("rss_2.0");
         channel.setLink("http://localhost:8080/spring-mvc-simple/rss");
         channel.setTitle("Article Feed");

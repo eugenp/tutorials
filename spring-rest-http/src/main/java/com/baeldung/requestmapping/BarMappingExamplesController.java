@@ -30,7 +30,7 @@ public class BarMappingExamplesController {
         return "Get a specific Bar with id=" + id;
     }
 
-    @RequestMapping(value = "/bars", params = { "id", "second" })
+    @RequestMapping(value = "/bars", params = {"id", "second"})
     @ResponseBody
     public String getBarBySimplePathWithExplicitRequestParams(@RequestParam("id") final long id) {
         return "Get a specific Bar with id=" + id;

@@ -11,10 +11,10 @@ import javax.jms.TextMessage;
  * Message-Driven Bean implementation class for: ReadMessageMDB
  */
 @MessageDriven(
-        activationConfig = { 
-            @ActivationConfigProperty(propertyName = "destination", propertyValue = "tutorialQueue"), 
-            @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
-})
+        activationConfig = {
+                @ActivationConfigProperty(propertyName = "destination", propertyValue = "tutorialQueue"),
+                @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
+        })
 public class ReadMessageMDB implements MessageListener {
 
     public void onMessage(Message message) {

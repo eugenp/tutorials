@@ -28,7 +28,7 @@ public class MapDeserializationUnitTest {
     public void whenUsingMapClass_thenShouldReturnMapWithDefaultClasses() {
 
         String jsonString = "{'employee.name':'Bob','employee.salary':10000, 'employee.active':true, "
-          + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
+                + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
 
         Gson gson = new Gson();
         Map map = gson.fromJson(jsonString, Map.class);
@@ -44,7 +44,7 @@ public class MapDeserializationUnitTest {
     public void whenUsingJsonStringWithDuplicateKey_thenShouldThrowJsonSyntaxException() {
 
         String jsonString = "{'employee.name':'Bob', 'employee.name':'Jenny','employee.salary':10000, "
-          + "'employee.active':true, " + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
+                + "'employee.active':true, " + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
 
         Gson gson = new Gson();
         Map map = gson.fromJson(jsonString, Map.class);
@@ -56,11 +56,12 @@ public class MapDeserializationUnitTest {
     public void whenUsingTypeToken_thenShouldReturnMapWithProperClass() {
 
         String jsonString = "{'Bob':{'id':10, 'name': 'Bob Willis', 'address':'UK'},"
-          + "'Jenny':{'id':10, 'name': 'Jenny McCarthy', 'address':'USA'}, "
-          + "'Steve':{'id':10, 'name': 'Steven Waugh', 'address':'Australia'}}";
+                + "'Jenny':{'id':10, 'name': 'Jenny McCarthy', 'address':'USA'}, "
+                + "'Steve':{'id':10, 'name': 'Steven Waugh', 'address':'Australia'}}";
 
         Gson gson = new Gson();
-        Type empMapType = new TypeToken<Map<String, Employee>>(){}.getType();
+        Type empMapType = new TypeToken<Map<String, Employee>>() {
+        }.getType();
         Map<String, Employee> nameEmployeeMap = gson.fromJson(jsonString, empMapType);
 
         logger.info("The converted map: {}", nameEmployeeMap);
@@ -72,12 +73,13 @@ public class MapDeserializationUnitTest {
     public void whenUsingCustomDeserializer_thenShouldReturnMapWithProperClass() {
 
         String jsonString = "{'employee.name':'Bob','employee.salary':10000, 'employee.active':true, "
-          + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
+                + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
 
-        Type type = new TypeToken<Map<String, Object>>(){}.getType();
+        Type type = new TypeToken<Map<String, Object>>() {
+        }.getType();
         Gson gson = new GsonBuilder()
-          .registerTypeAdapter(type, new MapDeserializer())
-          .create();
+                .registerTypeAdapter(type, new MapDeserializer())
+                .create();
         Map<String, Object> blendedMap = gson.fromJson(jsonString, type);
 
         logger.info("The converted map: {}", blendedMap);
@@ -90,10 +92,11 @@ public class MapDeserializationUnitTest {
     @Test
     public void whenUsingCustomDateDeserializer_thenShouldReturnMapWithDate() {
         String jsonString = "{'Bob': '2017/06/01', 'Jennie':'2015/01/03'}";
-        Type type = new TypeToken<Map<String, Date>>(){}.getType();
+        Type type = new TypeToken<Map<String, Date>>() {
+        }.getType();
         Gson gson = new GsonBuilder()
-          .registerTypeAdapter(type, new StringDateMapDeserializer())
-          .create();
+                .registerTypeAdapter(type, new StringDateMapDeserializer())
+                .create();
         Map<String, Date> empJoiningDateMap = gson.fromJson(jsonString, type);
 
         logger.info("The converted map: {}", empJoiningDateMap);

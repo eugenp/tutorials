@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Http, Response, URLSearchParams } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
+import {Injectable} from '@angular/core';
+import {Http, Response, URLSearchParams} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
 
 @Injectable()
 export class Activate {
 
-    constructor (private http: Http) {}
+    constructor(private http: Http) {
+    }
 
     get(key: string): Observable<any> {
         let params: URLSearchParams = new URLSearchParams();

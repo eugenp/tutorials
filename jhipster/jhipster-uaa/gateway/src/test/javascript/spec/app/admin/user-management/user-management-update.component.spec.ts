@@ -1,11 +1,11 @@
-import { ComponentFixture, TestBed, async, inject, fakeAsync, tick } from '@angular/core/testing';
-import { HttpResponse } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import {ComponentFixture, TestBed, async, inject, fakeAsync, tick} from '@angular/core/testing';
+import {HttpResponse} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
+import {Observable, of} from 'rxjs';
 
-import { GatewayTestModule } from '../../../test.module';
-import { UserMgmtUpdateComponent } from 'app/admin/user-management/user-management-update.component';
-import { UserService, User, JhiLanguageHelper } from 'app/core';
+import {GatewayTestModule} from '../../../test.module';
+import {UserMgmtUpdateComponent} from 'app/admin/user-management/user-management-update.component';
+import {UserService, User, JhiLanguageHelper} from 'app/core';
 
 describe('Component Tests', () => {
     describe('User Management Update Component', () => {
@@ -14,7 +14,7 @@ describe('Component Tests', () => {
         let service: UserService;
         let mockLanguageHelper: any;
         const route = ({
-            data: of({ user: new User(1, 'user', 'first', 'last', 'first@last.com', true, 'en', ['ROLE_USER'], 'admin', null, null, null) })
+            data: of({user: new User(1, 'user', 'first', 'last', 'first@last.com', true, 'en', ['ROLE_USER'], 'admin', null, null, null)})
         } as any) as ActivatedRoute;
 
         beforeEach(
@@ -96,7 +96,7 @@ describe('Component Tests', () => {
                     fakeAsync(() => {
                         // GIVEN
                         const entity = new User();
-                        spyOn(service, 'create').and.returnValue(of(new HttpResponse({ body: entity })));
+                        spyOn(service, 'create').and.returnValue(of(new HttpResponse({body: entity})));
                         comp.user = entity;
                         // WHEN
                         comp.save();

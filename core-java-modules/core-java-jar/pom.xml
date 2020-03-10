@@ -141,7 +141,8 @@
                         <configuration>
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>com.baeldung.executable.ExecutableMavenJar</mainClass>
                                 </transformer>
                             </transformers>
@@ -295,7 +296,8 @@
                                         <manifest>
                                             <addClasspath>true</addClasspath>
                                         </manifest>
-                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                                        </manifestFile>
                                     </archive>
 
                                     <includes>
@@ -329,12 +331,14 @@
                                         <manifest>
                                             <addClasspath>true</addClasspath>
                                         </manifest>
-                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                                        </manifestFile>
                                     </archive>
 
                                     <includes>
                                         <include>com/baeldung/instrumentation/application/MyAtm.class</include>
-                                        <include>com/baeldung/instrumentation/application/MyAtmApplication.class</include>
+                                        <include>com/baeldung/instrumentation/application/MyAtmApplication.class
+                                        </include>
                                         <include>com/baeldung/instrumentation/application/Launcher.class</include>
                                     </includes>
                                 </configuration>
@@ -364,12 +368,14 @@
                                         <manifest>
                                             <addClasspath>true</addClasspath>
                                         </manifest>
-                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                                        </manifestFile>
                                     </archive>
 
                                     <includes>
                                         <include>com/baeldung/instrumentation/agent/AtmTransformer.class</include>
-                                        <include>com/baeldung/instrumentation/agent/MyInstrumentationAgent.class</include>
+                                        <include>com/baeldung/instrumentation/agent/MyInstrumentationAgent.class
+                                        </include>
                                     </includes>
                                 </configuration>
                             </execution>

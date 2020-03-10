@@ -27,7 +27,7 @@ public class RxJavaHooksUnitTest {
         });
 
         Observable.error(new IllegalStateException())
-            .subscribe();
+                .subscribe();
         assertTrue(hookCalled);
     }
 
@@ -51,7 +51,7 @@ public class RxJavaHooksUnitTest {
         });
 
         Completable.fromSingle(Single.just(1))
-            .test();
+                .test();
         assertTrue(hookCalled);
     }
 
@@ -76,7 +76,7 @@ public class RxJavaHooksUnitTest {
         });
 
         Observable.range(1, 10)
-            .test();
+                .test();
         assertTrue(hookCalled);
     }
 
@@ -89,8 +89,8 @@ public class RxJavaHooksUnitTest {
         });
 
         ConnectableObservable.range(1, 10)
-            .publish()
-            .connect();
+                .publish()
+                .connect();
         assertTrue(hookCalled);
     }
 
@@ -115,7 +115,7 @@ public class RxJavaHooksUnitTest {
         });
 
         Flowable.range(1, 10)
-            .test();
+                .test();
         assertTrue(hookCalled);
     }
 
@@ -128,8 +128,8 @@ public class RxJavaHooksUnitTest {
         });
 
         ConnectableFlowable.range(1, 10)
-            .publish()
-            .connect();
+                .publish()
+                .connect();
         assertTrue(hookCalled);
     }
 
@@ -142,7 +142,7 @@ public class RxJavaHooksUnitTest {
         });
 
         Flowable.range(1, 10)
-            .parallel();
+                .parallel();
         assertTrue(hookCalled);
     }
 
@@ -167,7 +167,7 @@ public class RxJavaHooksUnitTest {
         });
 
         Maybe.just(1)
-            .test();
+                .test();
         assertTrue(hookCalled);
     }
 
@@ -192,7 +192,7 @@ public class RxJavaHooksUnitTest {
         });
 
         Single.just(1)
-            .test();
+                .test();
         assertTrue(hookCalled);
     }
 
@@ -205,14 +205,14 @@ public class RxJavaHooksUnitTest {
         });
 
         Observable.range(1, 10)
-            .map(v -> v * 2)
-            .subscribeOn(Schedulers.single())
-            .test();
+                .map(v -> v * 2)
+                .subscribeOn(Schedulers.single())
+                .test();
         hookCalled = false;
         Observable.range(1, 10)
-            .map(v -> v * 2)
-            .subscribeOn(Schedulers.computation())
-            .test();
+                .map(v -> v * 2)
+                .subscribeOn(Schedulers.computation())
+                .test();
         assertTrue(hookCalled);
     }
 
@@ -229,9 +229,9 @@ public class RxJavaHooksUnitTest {
         });
 
         Observable.range(1, 10)
-            .map(v -> v * 2)
-            .subscribeOn(Schedulers.computation())
-            .test();
+                .map(v -> v * 2)
+                .subscribeOn(Schedulers.computation())
+                .test();
         assertTrue(hookCalled && initHookCalled);
     }
 

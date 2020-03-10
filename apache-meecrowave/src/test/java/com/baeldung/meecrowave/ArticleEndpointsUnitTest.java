@@ -18,24 +18,24 @@ import okhttp3.Response;
 
 @RunWith(MonoMeecrowave.Runner.class)
 public class ArticleEndpointsUnitTest {
-    
+
     @ConfigurationInject
     private Meecrowave.Builder config;
     private static OkHttpClient client;
-    
+
     @BeforeClass
     public static void setup() {
         client = new OkHttpClient();
     }
-    
-   @Test
+
+    @Test
     public void whenRetunedArticle_thenCorrect() throws IOException {
-        final String base = "http://localhost:"+config.getHttpPort();
-        
+        final String base = "http://localhost:" + config.getHttpPort();
+
         Request request = new Request.Builder()
-          .url(base+"/article")
-          .build();
+                .url(base + "/article")
+                .build();
         Response response = client.newCall(request).execute();
-        assertEquals(200,  response.code());
+        assertEquals(200, response.code());
     }
 }

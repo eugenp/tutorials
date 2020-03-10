@@ -10,11 +10,11 @@
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
-        >
+>
 
-    <tx:annotation-driven />
-    <context:component-scan base-package="com.baeldung" />
+    <tx:annotation-driven/>
+    <context:component-scan base-package="com.baeldung"/>
 
-    <import resource="test-db.xml" />
+    <import resource="test-db.xml"/>
 
 </beans>

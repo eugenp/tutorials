@@ -30,12 +30,12 @@ public class ErrorHandlingIntegrationTest {
     public void givenErrorReturn_whenUsernamePresent_thenOk() throws IOException {
 
         String s = webTestClient.get()
-            .uri("/api/endpoint1?name={username}", "Tony")
-            .accept(MediaType.TEXT_PLAIN)
-            .exchange()
-            .returnResult(String.class)
-            .getResponseBody()
-            .blockFirst();
+                .uri("/api/endpoint1?name={username}", "Tony")
+                .accept(MediaType.TEXT_PLAIN)
+                .exchange()
+                .returnResult(String.class)
+                .getResponseBody()
+                .blockFirst();
 
         assertEquals("Hello, Tony", s);
 
@@ -45,12 +45,12 @@ public class ErrorHandlingIntegrationTest {
     public void givenErrorReturn_whenNoUsername_thenOk() throws IOException {
 
         String s = webTestClient.get()
-            .uri("/api/endpoint1")
-            .accept(MediaType.TEXT_PLAIN)
-            .exchange()
-            .returnResult(String.class)
-            .getResponseBody()
-            .blockFirst();
+                .uri("/api/endpoint1")
+                .accept(MediaType.TEXT_PLAIN)
+                .exchange()
+                .returnResult(String.class)
+                .getResponseBody()
+                .blockFirst();
 
         assertEquals("Hello, Stranger", s);
     }
@@ -59,12 +59,12 @@ public class ErrorHandlingIntegrationTest {
     public void givenResumeFallback_whenUsernamePresent_thenOk() throws IOException {
 
         String s = webTestClient.get()
-            .uri("/api/endpoint2?name={username}", "Tony")
-            .accept(MediaType.TEXT_PLAIN)
-            .exchange()
-            .returnResult(String.class)
-            .getResponseBody()
-            .blockFirst();
+                .uri("/api/endpoint2?name={username}", "Tony")
+                .accept(MediaType.TEXT_PLAIN)
+                .exchange()
+                .returnResult(String.class)
+                .getResponseBody()
+                .blockFirst();
 
         assertEquals("Hello, Tony", s);
     }
@@ -72,12 +72,12 @@ public class ErrorHandlingIntegrationTest {
     @Test
     public void givenResumeFallback_whenNoUsername_thenOk() throws IOException {
         String s = webTestClient.get()
-            .uri("/api/endpoint2")
-            .accept(MediaType.TEXT_PLAIN)
-            .exchange()
-            .returnResult(String.class)
-            .getResponseBody()
-            .blockFirst();
+                .uri("/api/endpoint2")
+                .accept(MediaType.TEXT_PLAIN)
+                .exchange()
+                .returnResult(String.class)
+                .getResponseBody()
+                .blockFirst();
 
         assertEquals("Hello, Stranger", s);
 
@@ -87,12 +87,12 @@ public class ErrorHandlingIntegrationTest {
     public void givenResumeDynamicValue_whenUsernamePresent_thenOk() throws IOException {
 
         String s = webTestClient.get()
-            .uri("/api/endpoint3?name={username}", "Tony")
-            .accept(MediaType.TEXT_PLAIN)
-            .exchange()
-            .returnResult(String.class)
-            .getResponseBody()
-            .blockFirst();
+                .uri("/api/endpoint3?name={username}", "Tony")
+                .accept(MediaType.TEXT_PLAIN)
+                .exchange()
+                .returnResult(String.class)
+                .getResponseBody()
+                .blockFirst();
 
         assertEquals("Hello, Tony", s);
     }
@@ -100,12 +100,12 @@ public class ErrorHandlingIntegrationTest {
     @Test
     public void givenResumeDynamicValue_whenNoUsername_thenOk() throws IOException {
         String s = webTestClient.get()
-            .uri("/api/endpoint3")
-            .accept(MediaType.TEXT_PLAIN)
-            .exchange()
-            .returnResult(String.class)
-            .getResponseBody()
-            .blockFirst();
+                .uri("/api/endpoint3")
+                .accept(MediaType.TEXT_PLAIN)
+                .exchange()
+                .returnResult(String.class)
+                .getResponseBody()
+                .blockFirst();
 
         assertEquals("Hi, I looked around for your name but found: No value present", s);
     }
@@ -113,12 +113,12 @@ public class ErrorHandlingIntegrationTest {
     @Test
     public void givenResumeRethrow_whenUsernamePresent_thenOk() throws IOException {
         String s = webTestClient.get()
-            .uri("/api/endpoint4?name={username}", "Tony")
-            .accept(MediaType.TEXT_PLAIN)
-            .exchange()
-            .returnResult(String.class)
-            .getResponseBody()
-            .blockFirst();
+                .uri("/api/endpoint4?name={username}", "Tony")
+                .accept(MediaType.TEXT_PLAIN)
+                .exchange()
+                .returnResult(String.class)
+                .getResponseBody()
+                .blockFirst();
 
         assertEquals("Hello, Tony", s);
     }
@@ -127,49 +127,49 @@ public class ErrorHandlingIntegrationTest {
     public void givenResumeRethrow_whenNoUsername_thenOk() throws IOException {
 
         webTestClient.get()
-            .uri("/api/endpoint4")
-            .accept(MediaType.TEXT_PLAIN)
-            .exchange()
-            .expectStatus()
-            .isBadRequest()
-            .expectHeader()
-            .contentType(MediaType.APPLICATION_JSON_UTF8)
-            .expectBody()
-            .jsonPath("$.message")
-            .isNotEmpty()
-            .jsonPath("$.message")
-            .isEqualTo("please provide a name");
+                .uri("/api/endpoint4")
+                .accept(MediaType.TEXT_PLAIN)
+                .exchange()
+                .expectStatus()
+                .isBadRequest()
+                .expectHeader()
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .expectBody()
+                .jsonPath("$.message")
+                .isNotEmpty()
+                .jsonPath("$.message")
+                .isEqualTo("please provide a name");
     }
 
     @Test
     public void givenGlobalErrorHandling_whenUsernamePresent_thenOk() throws IOException {
 
         String s = webTestClient.get()
-            .uri("/api/endpoint5?name={username}", "Tony")
-            .accept(MediaType.TEXT_PLAIN)
-            .exchange()
-            .returnResult(String.class)
-            .getResponseBody()
-            .blockFirst();
+                .uri("/api/endpoint5?name={username}", "Tony")
+                .accept(MediaType.TEXT_PLAIN)
+                .exchange()
+                .returnResult(String.class)
+                .getResponseBody()
+                .blockFirst();
 
         assertEquals("Hello, Tony", s);
     }
-    
+
     @Test
     public void givenGlobalErrorHandling_whenNoUsername_thenOk() throws IOException {
         webTestClient.get()
-            .uri("/api/endpoint5")
-            .accept(MediaType.TEXT_PLAIN)
-            .exchange()
-            .expectStatus()
-            .isBadRequest()
-            .expectHeader()
-            .contentType(MediaType.APPLICATION_JSON_UTF8)
-            .expectBody()
-            .jsonPath("$.message")
-            .isNotEmpty()
-            .jsonPath("$.message")
-            .isEqualTo("please provide a name");
+                .uri("/api/endpoint5")
+                .accept(MediaType.TEXT_PLAIN)
+                .exchange()
+                .expectStatus()
+                .isBadRequest()
+                .expectHeader()
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .expectBody()
+                .jsonPath("$.message")
+                .isNotEmpty()
+                .jsonPath("$.message")
+                .isEqualTo("please provide a name");
 
     }
 

@@ -19,10 +19,10 @@ public class HystrixReactiveHttpCommand extends HystrixObservableCommand<String>
 
     HystrixReactiveHttpCommand(HttpClient httpClient, URI uri, int timeoutMillis) {
         super(Setter
-          .withGroupKey(HystrixCommandGroupKey.Factory.asKey("hystrix-ratpack-reactive"))
-          .andCommandPropertiesDefaults(HystrixCommandProperties
-            .Setter()
-            .withExecutionTimeoutInMilliseconds(timeoutMillis)));
+                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("hystrix-ratpack-reactive"))
+                .andCommandPropertiesDefaults(HystrixCommandProperties
+                        .Setter()
+                        .withExecutionTimeoutInMilliseconds(timeoutMillis)));
         this.httpClient = httpClient;
         this.uri = uri;
     }
@@ -30,10 +30,10 @@ public class HystrixReactiveHttpCommand extends HystrixObservableCommand<String>
     @Override
     protected Observable<String> construct() {
         return RxRatpack.observe(httpClient
-          .get(uri, requestSpec -> requestSpec.headers(mutableHeaders -> mutableHeaders.add("User-Agent", "Baeldung HttpClient")))
-          .map(receivedResponse -> receivedResponse
-            .getBody()
-            .getText()));
+                .get(uri, requestSpec -> requestSpec.headers(mutableHeaders -> mutableHeaders.add("User-Agent", "Baeldung HttpClient")))
+                .map(receivedResponse -> receivedResponse
+                        .getBody()
+                        .getText()));
     }
 
     @Override

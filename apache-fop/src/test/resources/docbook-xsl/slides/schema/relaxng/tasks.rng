@@ -29,142 +29,144 @@
   
   ======================================================================
 -->
-<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
-  <start combine="choice">
-    <choice>
-      <ref name="db.task"/>
-      <ref name="db.taskprerequisites"/>
-      <ref name="db.taskrelated"/>
-      <ref name="db.tasksummary"/>
-    </choice>
-  </start>
-  <define name="db.technical.blocks" combine="choice">
-    <ref name="db.task"/>
-  </define>
-  <define name="db.task.info">
-    <ref name="db._info.title.req"/>
-  </define>
-  <!-- ====================================================================== -->
-  <div>
-    <db:refname>task</db:refname>
-    <db:refpurpose>A task to be completed</db:refpurpose>
-    <define name="db.task.role.attribute">
-      <attribute name="role"/>
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook"
+         xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0"
+         xmlns="http://relaxng.org/ns/structure/1.0">
+    <start combine="choice">
+        <choice>
+            <ref name="db.task"/>
+            <ref name="db.taskprerequisites"/>
+            <ref name="db.taskrelated"/>
+            <ref name="db.tasksummary"/>
+        </choice>
+    </start>
+    <define name="db.technical.blocks" combine="choice">
+        <ref name="db.task"/>
     </define>
-    <define name="db.task.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.task.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <ref name="db.common.linking.attributes"/>
-      </interleave>
+    <define name="db.task.info">
+        <ref name="db._info.title.req"/>
     </define>
-    <define name="db.task">
-      <element name="task">
-        <ref name="db.task.attlist"/>
-        <ref name="db.task.info"/>
-        <optional>
-          <ref name="db.tasksummary"/>
-        </optional>
-        <optional>
-          <ref name="db.taskprerequisites"/>
-        </optional>
-        <ref name="db.procedure"/>
-        <zeroOrMore>
-          <ref name="db.example"/>
-        </zeroOrMore>
-        <optional>
-          <ref name="db.taskrelated"/>
-        </optional>
-      </element>
-    </define>
-  </div>
-  <!-- ====================================================================== -->
-  <div>
-    <db:refname>tasksummary</db:refname>
-    <db:refpurpose>A summary of a task</db:refpurpose>
-    <define name="db.tasksummary.role.attribute">
-      <attribute name="role"/>
-    </define>
-    <define name="db.tasksummary.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.tasksummary.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <ref name="db.common.linking.attributes"/>
-      </interleave>
-    </define>
-    <define name="db.tasksummary.info">
-      <ref name="db._info.title.only"/>
-    </define>
-    <define name="db.tasksummary">
-      <element name="tasksummary">
-        <ref name="db.tasksummary.attlist"/>
-        <ref name="db.tasksummary.info"/>
-        <oneOrMore>
-          <ref name="db.all.blocks"/>
-        </oneOrMore>
-      </element>
-    </define>
-  </div>
-  <!-- ====================================================================== -->
-  <div>
-    <db:refname>taskprerequisites</db:refname>
-    <db:refpurpose>The prerequisites for a task</db:refpurpose>
-    <define name="db.taskprerequisites.role.attribute">
-      <attribute name="role"/>
-    </define>
-    <define name="db.taskprerequisites.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.taskprerequisites.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <ref name="db.common.linking.attributes"/>
-      </interleave>
-    </define>
-    <define name="db.taskprerequisites.info">
-      <ref name="db._info.title.only"/>
-    </define>
-    <define name="db.taskprerequisites">
-      <element name="taskprerequisites">
-        <ref name="db.taskprerequisites.attlist"/>
-        <ref name="db.taskprerequisites.info"/>
-        <oneOrMore>
-          <ref name="db.all.blocks"/>
-        </oneOrMore>
-      </element>
-    </define>
-  </div>
-  <!-- ====================================================================== -->
-  <div>
-    <db:refname>taskrelated</db:refname>
-    <db:refpurpose>Information related to a task</db:refpurpose>
-    <define name="db.taskrelated.role.attribute">
-      <attribute name="role"/>
-    </define>
-    <define name="db.taskrelated.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.taskrelated.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <ref name="db.common.linking.attributes"/>
-      </interleave>
-    </define>
-    <define name="db.taskrelated.info">
-      <ref name="db._info.title.only"/>
-    </define>
-    <define name="db.taskrelated">
-      <element name="taskrelated">
-        <ref name="db.taskrelated.attlist"/>
-        <ref name="db.taskrelated.info"/>
-        <oneOrMore>
-          <ref name="db.all.blocks"/>
-        </oneOrMore>
-      </element>
-    </define>
-  </div>
+    <!-- ====================================================================== -->
+    <div>
+        <db:refname>task</db:refname>
+        <db:refpurpose>A task to be completed</db:refpurpose>
+        <define name="db.task.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.task.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.task.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <ref name="db.common.linking.attributes"/>
+            </interleave>
+        </define>
+        <define name="db.task">
+            <element name="task">
+                <ref name="db.task.attlist"/>
+                <ref name="db.task.info"/>
+                <optional>
+                    <ref name="db.tasksummary"/>
+                </optional>
+                <optional>
+                    <ref name="db.taskprerequisites"/>
+                </optional>
+                <ref name="db.procedure"/>
+                <zeroOrMore>
+                    <ref name="db.example"/>
+                </zeroOrMore>
+                <optional>
+                    <ref name="db.taskrelated"/>
+                </optional>
+            </element>
+        </define>
+    </div>
+    <!-- ====================================================================== -->
+    <div>
+        <db:refname>tasksummary</db:refname>
+        <db:refpurpose>A summary of a task</db:refpurpose>
+        <define name="db.tasksummary.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.tasksummary.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.tasksummary.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <ref name="db.common.linking.attributes"/>
+            </interleave>
+        </define>
+        <define name="db.tasksummary.info">
+            <ref name="db._info.title.only"/>
+        </define>
+        <define name="db.tasksummary">
+            <element name="tasksummary">
+                <ref name="db.tasksummary.attlist"/>
+                <ref name="db.tasksummary.info"/>
+                <oneOrMore>
+                    <ref name="db.all.blocks"/>
+                </oneOrMore>
+            </element>
+        </define>
+    </div>
+    <!-- ====================================================================== -->
+    <div>
+        <db:refname>taskprerequisites</db:refname>
+        <db:refpurpose>The prerequisites for a task</db:refpurpose>
+        <define name="db.taskprerequisites.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.taskprerequisites.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.taskprerequisites.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <ref name="db.common.linking.attributes"/>
+            </interleave>
+        </define>
+        <define name="db.taskprerequisites.info">
+            <ref name="db._info.title.only"/>
+        </define>
+        <define name="db.taskprerequisites">
+            <element name="taskprerequisites">
+                <ref name="db.taskprerequisites.attlist"/>
+                <ref name="db.taskprerequisites.info"/>
+                <oneOrMore>
+                    <ref name="db.all.blocks"/>
+                </oneOrMore>
+            </element>
+        </define>
+    </div>
+    <!-- ====================================================================== -->
+    <div>
+        <db:refname>taskrelated</db:refname>
+        <db:refpurpose>Information related to a task</db:refpurpose>
+        <define name="db.taskrelated.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.taskrelated.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.taskrelated.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <ref name="db.common.linking.attributes"/>
+            </interleave>
+        </define>
+        <define name="db.taskrelated.info">
+            <ref name="db._info.title.only"/>
+        </define>
+        <define name="db.taskrelated">
+            <element name="taskrelated">
+                <ref name="db.taskrelated.attlist"/>
+                <ref name="db.taskrelated.info"/>
+                <oneOrMore>
+                    <ref name="db.all.blocks"/>
+                </oneOrMore>
+            </element>
+        </define>
+    </div>
 </grammar>

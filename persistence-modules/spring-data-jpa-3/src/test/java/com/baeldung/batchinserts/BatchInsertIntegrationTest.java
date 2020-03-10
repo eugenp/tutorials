@@ -18,23 +18,24 @@ import com.baeldung.boot.daos.CustomerRepository;
 import com.baeldung.boot.web.controllers.CustomerController;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=Application.class)
+@SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
 public class BatchInsertIntegrationTest {
 
     @Autowired
     private CustomerRepository customerRepository;
     private MockMvc mockMvc;
+
     @Before
     public void setUp() throws Exception {
-        mockMvc = MockMvcBuilders.standaloneSetup( new CustomerController(customerRepository))
-            .build();
+        mockMvc = MockMvcBuilders.standaloneSetup(new CustomerController(customerRepository))
+                .build();
     }
 
     @Test
     public void whenInsertingCustomers_thenCustomersAreCreated() throws Exception {
         this.mockMvc.perform(post("/customers"))
-            .andExpect(status().isOk());
-    }    
-   
+                .andExpect(status().isOk());
+    }
+
 }

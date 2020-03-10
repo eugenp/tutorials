@@ -30,7 +30,7 @@ public class KryoUnitTest {
             input = new Input(new FileInputStream("src/test/resources/file.dat"));
         } catch (FileNotFoundException ex) {
             Logger.getLogger(KryoUnitTest.class.getName())
-                .log(Level.SEVERE, null, ex);
+                    .log(Level.SEVERE, null, ex);
         }
     }
 
@@ -92,7 +92,7 @@ public class KryoUnitTest {
         assertEquals(readPerson.getName(), "John Doe");
         assertEquals(readPerson.getAge(), 18);
     }
-    
+
     @Test
     public void givenPerson_whenCustomSerialization_thenReadCorrectly() {
         Person person = new Person();

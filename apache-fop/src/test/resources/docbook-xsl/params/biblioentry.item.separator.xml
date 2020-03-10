@@ -4,23 +4,28 @@
           xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
           version="5.0" xml:id="biblioentry.item.separator">
-<refmeta>
-<refentrytitle>biblioentry.item.separator</refentrytitle>
-<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
-</refmeta>
-<refnamediv>
-<refname>biblioentry.item.separator</refname>
-<refpurpose>Text to separate bibliography entries</refpurpose>
-</refnamediv>
+    <refmeta>
+        <refentrytitle>biblioentry.item.separator</refentrytitle>
+        <refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname>biblioentry.item.separator</refname>
+        <refpurpose>Text to separate bibliography entries</refpurpose>
+    </refnamediv>
 
-<refsynopsisdiv>
-<src:fragment xml:id="biblioentry.item.separator.frag"><xsl:param name="biblioentry.item.separator">. </xsl:param></src:fragment>
-</refsynopsisdiv>
+    <refsynopsisdiv>
+        <src:fragment xml:id="biblioentry.item.separator.frag">
+            <xsl:param name="biblioentry.item.separator">.</xsl:param>
+        </src:fragment>
+    </refsynopsisdiv>
 
-<refsection><info><title>Description</title></info>
+    <refsection>
+        <info>
+            <title>Description</title>
+        </info>
 
-<para>Text to separate bibliography entries
-</para>
+        <para>Text to separate bibliography entries
+        </para>
 
-</refsection>
+    </refsection>
 </refentry>

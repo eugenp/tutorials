@@ -52,12 +52,12 @@ public class WebConfig implements WebMvcConfigurer {
     // AbstractAnnotationConfigDispatcherServletInitializer#getServletFilters
     @Bean
     public FilterRegistrationBean<ShallowEtagHeaderFilter> shallowEtagHeaderFilter() {
-        FilterRegistrationBean<ShallowEtagHeaderFilter> filterRegistrationBean = new FilterRegistrationBean<>( new ShallowEtagHeaderFilter());
+        FilterRegistrationBean<ShallowEtagHeaderFilter> filterRegistrationBean = new FilterRegistrationBean<>(new ShallowEtagHeaderFilter());
         filterRegistrationBean.addUrlPatterns("/foos/*");
         filterRegistrationBean.setName("etagFilter");
         return filterRegistrationBean;
     }
-    
+
     // We can also just declare the filter directly
     // @Bean
     // public ShallowEtagHeaderFilter shallowEtagHeaderFilter() {

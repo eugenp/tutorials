@@ -10,7 +10,7 @@ import org.junit.Test;
 public class FileReaderUnitTest {
 
     protected static final String TEXT_FILENAME = "src/test/resources/sampleTextFile.txt";
-    
+
     @Test
     public void whenParsingExistingTextFile_thenGetArrayList() throws IOException {
         List<String> lines = FileReaderExample.generateArrayListFromFile(TEXT_FILENAME);

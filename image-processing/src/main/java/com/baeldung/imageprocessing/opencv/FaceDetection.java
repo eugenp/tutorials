@@ -11,6 +11,7 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.objdetect.Objdetect;
 import javafx.scene.image.Image;
+
 import java.io.ByteArrayInputStream;
 
 public class FaceDetection {
@@ -39,9 +40,9 @@ public class FaceDetection {
                 new Size(minFaceSize, minFaceSize),
                 new Size()
         );
-        Rect[] facesArray =  facesDetected.toArray();
-        for(Rect face : facesArray) {
-            Imgproc.rectangle(loadedImage, face.tl(), face.br(), new Scalar(0, 0, 255), 3 );
+        Rect[] facesArray = facesDetected.toArray();
+        for (Rect face : facesArray) {
+            Imgproc.rectangle(loadedImage, face.tl(), face.br(), new Scalar(0, 0, 255), 3);
         }
         saveImage(loadedImage, targetImagePath);
     }
@@ -50,7 +51,8 @@ public class FaceDetection {
         MatOfByte bytes = new MatOfByte();
         Imgcodecs.imencode("img", mat, bytes);
         ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes.toArray());
-        Image img = new Image(inputStream); return img;
+        Image img = new Image(inputStream);
+        return img;
     }
 
 }

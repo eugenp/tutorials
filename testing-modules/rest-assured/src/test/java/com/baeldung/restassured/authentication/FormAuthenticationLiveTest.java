@@ -13,8 +13,8 @@ import io.restassured.authentication.FormAuthConfig;
 /**
  * For this Live Test we need:
  * * a running instance of the service located in the spring-security-mvc-login module.
+ *
  * @see <a href="https://github.com/eugenp/tutorials/tree/master/spring-security-mvc-login">spring-security-mvc-login module</a>
- * 
  */
 public class FormAuthenticationLiveTest {
 
@@ -25,33 +25,33 @@ public class FormAuthenticationLiveTest {
     @Test
     public void givenNoAuthentication_whenRequestSecuredResource_thenLoginFormResponse() {
         get(SVC_URL).then()
-            .assertThat()
-            .statusCode(HttpStatus.OK.value())
-            .content(containsString("<form"), containsString("action=\"perform_login\""));
+                .assertThat()
+                .statusCode(HttpStatus.OK.value())
+                .content(containsString("<form"), containsString("action=\"perform_login\""));
     }
 
     @Test
     public void givenParsingFormAuthentication_whenRequestSecuredResource_thenLoginFormResponse() {
         // Form can't be parsed correctly because the app is in servlet container, thus the form's 'action' attribute doesn't include the correct URI
         given().auth()
-            .form(USER, PASSWORD)
-            .when()
-            .get(SVC_URL)
-            .then()
-            .assertThat()
-            .statusCode(HttpStatus.OK.value())
-            .content(containsString("<form"), containsString("action=\"perform_login\""));
+                .form(USER, PASSWORD)
+                .when()
+                .get(SVC_URL)
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK.value())
+                .content(containsString("<form"), containsString("action=\"perform_login\""));
     }
 
     @Test
     public void givenFormAuthentication_whenRequestSecuredResource_thenResourceRetrieved() {
         given().auth()
-            .form(USER, PASSWORD, new FormAuthConfig("/spring-security-mvc-login/perform_login", "username", "password"))
-            .when()
-            .get(SVC_URL)
-            .then()
-            .assertThat()
-            .statusCode(HttpStatus.OK.value())
-            .content(isEmptyString());
+                .form(USER, PASSWORD, new FormAuthConfig("/spring-security-mvc-login/perform_login", "username", "password"))
+                .when()
+                .get(SVC_URL)
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK.value())
+                .content(isEmptyString());
     }
 }

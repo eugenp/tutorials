@@ -9,7 +9,7 @@ import com.baeldung.command.command.TextFileOperation;
 import com.baeldung.command.receiver.TextFile;
 
 public class OpenTextFileOperationUnitTest {
-    
+
     @Test
     public void givenOpenTextFileOperationIntance_whenCalledExecuteMethod_thenOneAssertion() {
         TextFileOperation openTextFileOperation = new OpenTextFileOperation(new TextFile("file1.txt"));

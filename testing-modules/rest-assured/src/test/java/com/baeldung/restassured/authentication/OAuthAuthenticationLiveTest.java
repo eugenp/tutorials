@@ -12,6 +12,7 @@ import io.restassured.http.ContentType;
 /**
  * For this Live Test we need to obtain a valid Access Token and Token Secret:
  * * start spring-mvc-simple application in debug mode
+ *
  * @see <a href="https://github.com/eugenp/tutorials/tree/master/spring-mvc-simple">spring-mvc-simple module</a>
  * * calling localhost:8080/spring-mvc-simple/twitter/authorization/ using the browser
  * * debug the callback function where we can obtain the fields
@@ -32,22 +33,22 @@ public class OAuthAuthenticationLiveTest {
     @Test
     public void givenNoAuthentication_whenRequestSecuredResource_thenUnauthorizedResponse() {
         get(TWITTER_ENDPOINT).then()
-            .assertThat()
-            .statusCode(HttpStatus.BAD_REQUEST.value());
+                .assertThat()
+                .statusCode(HttpStatus.BAD_REQUEST.value());
     }
 
     @Test
     public void givenAccessTokenAuthentication_whenRequestSecuredResource_thenResourceIsRequested() {
         given().accept(ContentType.JSON)
-            .auth()
-            .oauth(OAUTH_API_KEY, OAUTH_API_SECRET, ACCESS_TOKEN, TOKEN_SECRET)
-            .when()
-            .get(TWITTER_ENDPOINT)
-            .then()
-            .assertThat()
-            .statusCode(HttpStatus.OK.value())
-            .body("$", hasKey("geo_enabled"))
-            .body("$", hasKey("language"));
+                .auth()
+                .oauth(OAUTH_API_KEY, OAUTH_API_SECRET, ACCESS_TOKEN, TOKEN_SECRET)
+                .when()
+                .get(TWITTER_ENDPOINT)
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK.value())
+                .body("$", hasKey("geo_enabled"))
+                .body("$", hasKey("language"));
     }
 
 }

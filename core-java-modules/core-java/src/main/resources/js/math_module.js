@@ -6,10 +6,15 @@ var math = {
     failFunc: function () {
         try {
             throw "BOOM";
-        } catch (e if typeof e === 'string') {
+        } catch (e if
+        typeof e === 'string'
+    )
+        {
             print("String thrown: " + e);
         }
-        catch (e) {
+    catch
+        (e)
+        {
             print("this shouldn't happen!");
         }
     }

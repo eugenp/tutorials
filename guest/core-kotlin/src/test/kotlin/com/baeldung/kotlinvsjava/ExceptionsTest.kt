@@ -8,14 +8,22 @@ class ExceptionsTest {
 
     @Test
     fun givenATryExpression_whenReturning5InLastExpressionOfTryBlock_thenWeGet5() {
-        val value: Int = try { 5 } catch (e: IOException) { 6 }
+        val value: Int = try {
+            5
+        } catch (e: IOException) {
+            6
+        }
 
         assertEquals(5, value)
     }
 
     @Test
     fun givenATryExpression_whenReturning6InLastExpressionOfCatchBlock_thenWeGet6() {
-        val value: Int = try { funThrowingException() } catch (e: IOException) { 6 }
+        val value: Int = try {
+            funThrowingException()
+        } catch (e: IOException) {
+            6
+        }
 
         assertEquals(6, value)
     }

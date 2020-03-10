@@ -42,7 +42,7 @@ public class CollectionFactoryMethodsUnitTest {
     @Test
     public void givenATupleElement_whenCreated_thenCorrect() {
         Tuple3<Character, String, Integer> tuple = Tuple('a', "chain", 2);
-        assertTrue(tuple!=null);
+        assertTrue(tuple != null);
         assertEquals(tuple._1(), new Character('a'));
         assertEquals(tuple._2(), "chain");
         assertEquals(tuple._3().intValue(), 2);
@@ -53,10 +53,11 @@ public class CollectionFactoryMethodsUnitTest {
         Try<Integer> integer = Success(55);
         assertEquals(integer.get().intValue(), 55);
     }
+
     @Test
     public void givenAFailureObject_whenEvaluated_thenExceptionThrown() {
         Try<Integer> failure = Failure(new Exception("Exception X encapsulated here"));
-        
+
         try {
             Integer i = failure.get();// evaluate a failure raise the exception
             System.out.println(i);// not executed
@@ -64,43 +65,43 @@ public class CollectionFactoryMethodsUnitTest {
             assertEquals(e.getMessage(), "Exception X encapsulated here");
         }
     }
-    
+
     @Test
     public void givenAList_whenCreated_thenCorrect() {
         List<Integer> list = List(1, 2, 3, 4, 5);
-        
+
         assertEquals(list.size(), 5);
         assertEquals(list.get(0).intValue(), 1);
     }
-    
+
     @Test
     public void givenAnEmptyList_whenCreated_thenCorrect() {
         List<Integer> empty = List();
-        
+
         assertEquals(empty.size(), 0);
         assertEquals(empty, List.empty());
     }
-    
+
     @Test
     public void givenAnArray_whenCreated_thenCorrect() {
         Array<Integer> array = Array(1, 2, 3, 4, 5);
-        
+
         assertEquals(array.size(), 5);
         assertEquals(array.get(0).intValue(), 1);
     }
-    
+
     @Test
     public void givenAStream_whenCreated_thenCorrect() {
         Stream<Integer> stream = Stream(1, 2, 3, 4, 5);
-        
+
         assertEquals(stream.size(), 5);
         assertEquals(stream.get(0).intValue(), 1);
     }
-    
+
     @Test
     public void givenAVector_whenCreated_thenCorrect() {
         Vector<Integer> vector = Vector(1, 2, 3, 4, 5);
-        
+
         assertEquals(vector.size(), 5);
         assertEquals(vector.get(0).intValue(), 1);
     }

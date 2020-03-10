@@ -16,7 +16,7 @@ public class Manager extends Employee {
     public Manager(Manager manager) {
         super(manager.id, manager.name, manager.startDate);
         this.directReports = manager.directReports.stream()
-          .collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 
     @Override

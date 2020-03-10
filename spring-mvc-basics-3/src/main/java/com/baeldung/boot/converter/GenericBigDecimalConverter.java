@@ -11,7 +11,7 @@ public class GenericBigDecimalConverter implements GenericConverter {
     @Override
     public Set<ConvertiblePair> getConvertibleTypes() {
 
-        ConvertiblePair[] pairs = new ConvertiblePair[] { new ConvertiblePair(Number.class, BigDecimal.class), new ConvertiblePair(String.class, BigDecimal.class) };
+        ConvertiblePair[] pairs = new ConvertiblePair[]{new ConvertiblePair(Number.class, BigDecimal.class), new ConvertiblePair(String.class, BigDecimal.class)};
 
         return ImmutableSet.copyOf(pairs);
     }

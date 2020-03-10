@@ -16,10 +16,10 @@ public class UserMultipleDB {
     @Column(unique = true, nullable = false)
     private String email;
     private Integer status;
-    
+
     @OneToMany
     List<PossessionMultipleDB> possessionList;
-  
+
     public UserMultipleDB() {
         super();
     }

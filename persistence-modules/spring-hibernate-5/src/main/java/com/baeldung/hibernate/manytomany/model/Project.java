@@ -24,7 +24,7 @@ public class Project implements Serializable {
 
     @ManyToMany(mappedBy = "projects")
     private Set<Employee> employees = new HashSet<Employee>();
-    
+
     public Project() {
         super();
     }
@@ -56,6 +56,6 @@ public class Project implements Serializable {
     public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
     }
-    
-    
+
+
 }

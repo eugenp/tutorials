@@ -19,36 +19,36 @@ public class CsvUnitTest {
     @Test
     public void givenJsonInput_thenWriteCsv() throws JsonParseException, JsonMappingException, IOException {
         JsonCsvConverter.JsonToCsv(new File("src/main/resources/csv/orderLines.json"),
-            new File("src/main/resources/csv/csvFromJson.csv"));
-        
+                new File("src/main/resources/csv/csvFromJson.csv"));
+
         assertEquals(readFile("src/main/resources/csv/csvFromJson.csv"),
-            readFile("src/test/resources/csv/expectedCsvFromJson.csv"));
+                readFile("src/test/resources/csv/expectedCsvFromJson.csv"));
     }
-    
+
     @Test
     public void givenCsvInput_thenWritesJson() throws JsonParseException, JsonMappingException, IOException {
         JsonCsvConverter.csvToJson(new File("src/main/resources/csv/orderLines.csv"),
-            new File("src/main/resources/csv/jsonFromCsv.json"));
-        
+                new File("src/main/resources/csv/jsonFromCsv.json"));
+
         assertEquals(readFile("src/main/resources/csv/jsonFromCsv.json"),
-            readFile("src/test/resources/csv/expectedJsonFromCsv.json"));
-        
+                readFile("src/test/resources/csv/expectedJsonFromCsv.json"));
+
     }
-    
+
     @Test
     public void givenJsonInput_thenWriteFormattedCsvOutput() throws JsonParseException, JsonMappingException, IOException {
         JsonCsvConverter.JsonToFormattedCsv(new File("src/main/resources/csv/orderLines.json"),
-            new File("src/main/resources/csv/formattedCsvFromJson.csv"));
+                new File("src/main/resources/csv/formattedCsvFromJson.csv"));
 
         assertEquals(readFile("src/main/resources/csv/formattedCsvFromJson.csv"),
-            readFile("src/test/resources/csv/expectedFormattedCsvFromJson.csv"));
-        
+                readFile("src/test/resources/csv/expectedFormattedCsvFromJson.csv"));
+
     }
-    
+
     private List<String> readFile(String filename) throws IOException {
         return Files.readLines(new File(filename), Charset.forName("utf-8"));
     }
-    
-    
+
+
 }
 ;

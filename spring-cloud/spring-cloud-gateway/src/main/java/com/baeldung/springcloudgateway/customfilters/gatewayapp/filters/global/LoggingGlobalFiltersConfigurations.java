@@ -17,9 +17,9 @@ public class LoggingGlobalFiltersConfigurations {
     public GlobalFilter postGlobalFilter() {
         return (exchange, chain) -> {
             return chain.filter(exchange)
-                .then(Mono.fromRunnable(() -> {
-                    logger.info("Global Post Filter executed");
-                }));
+                    .then(Mono.fromRunnable(() -> {
+                        logger.info("Global Post Filter executed");
+                    }));
         };
     }
 }

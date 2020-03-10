@@ -29,15 +29,15 @@ public class JedisIntegrationTest {
 
     @BeforeClass
     public static void setUp() throws IOException {
-        
+
         // Take an available port
         ServerSocket s = new ServerSocket(0);
         port = s.getLocalPort();
         s.close();
-        
+
         redisServer = new RedisServer(port);
         redisServer.start();
-        
+
         // Configure JEDIS
         jedis = new Jedis("localhost", port);
     }

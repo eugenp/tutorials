@@ -10,17 +10,16 @@ public class SpringWebfluxAmqpLiveTest {
     public void whenSendingAMessageToQueue_thenAcceptedReturnCode() {
 
         WebTestClient client = WebTestClient.bindToServer()
-            .baseUrl("http://localhost:8080")
-            .build();
-        
+                .baseUrl("http://localhost:8080")
+                .build();
+
         client.post()
-            .uri("/queue/NYSE")
-            .syncBody("Test Message")
-            .exchange()
-            .expectStatus().isAccepted();
+                .uri("/queue/NYSE")
+                .syncBody("Test Message")
+                .exchange()
+                .expectStatus().isAccepted();
 
     }
-    
-    
+
 
 }

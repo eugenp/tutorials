@@ -45,7 +45,7 @@ public class IterableToCollectionUnitTest {
     @Test
     public void whenConvertIterableToListUsingJava8WithSpliterator_thenSuccess() {
         List<String> result = StreamSupport.stream(iterable.spliterator(), false)
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         assertThat(result, contains("john", "tom", "jane"));
     }
@@ -94,7 +94,7 @@ public class IterableToCollectionUnitTest {
     @Test
     public void whenConvertIteratorToListUsingJava8WithSpliterator_thenSuccess() {
         List<String> result = StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, Spliterator.ORDERED), false)
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         assertThat(result, contains("john", "tom", "jane"));
     }

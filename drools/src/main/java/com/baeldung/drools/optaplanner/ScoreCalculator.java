@@ -15,7 +15,7 @@ public class ScoreCalculator implements EasyScoreCalculator<CourseSchedule> {
 
         HashSet<String> occupiedRooms = new HashSet<>();
         for (Lecture lecture : courseSchedule.getLectureList()) {
-            if(lecture.getPeriod() != null && lecture.getRoomNumber() != null) {
+            if (lecture.getPeriod() != null && lecture.getRoomNumber() != null) {
                 String roomInUse = lecture.getPeriod().toString() + ":" + lecture.getRoomNumber().toString();
                 if (occupiedRooms.contains(roomInUse)) {
                     hardScore += -1;

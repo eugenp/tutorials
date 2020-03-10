@@ -20,31 +20,31 @@ public class StartupEventHandler {
 
     // logger, constructor
     private static Logger logger = LoggerFactory.getLogger(StartupEventHandler.class);
-    
+
     public StartupEventHandler(MeterRegistry registry) {
         this.meterRegistry = registry;
     }
-    
+
     private String[] METRICS = {
-      "jvm.memory.used", 
-      "jvm.classes.loaded", 
-      "jvm.threads.live"};
+            "jvm.memory.used",
+            "jvm.classes.loaded",
+            "jvm.threads.live"};
 
     private String METRIC_MSG_FORMAT = "Startup Metric >> {}={}";
-    
+
     private MeterRegistry meterRegistry;
 
     @EventListener
     public void getAndLogStartupMetrics(
-      ApplicationReadyEvent event) {
+            ApplicationReadyEvent event) {
         Arrays.asList(METRICS)
-          .forEach(this::getAndLogActuatorMetric);
+                .forEach(this::getAndLogActuatorMetric);
     }
 
     private void getAndLogActuatorMetric(String metric) {
         Meter meter = meterRegistry.find(metric).meter();
         Map<Statistic, Double> stats = getSamples(meter);
- 
+
         logger.info(METRIC_MSG_FORMAT, metric, stats.get(Statistic.VALUE).longValue());
     }
 
@@ -61,5 +61,5 @@ public class StartupEventHandler {
 
     private BiFunction<Double, Double, Double> mergeFunction(Statistic statistic) {
         return Statistic.MAX.equals(statistic) ? Double::max : Double::sum;
-    }    
+    }
 }

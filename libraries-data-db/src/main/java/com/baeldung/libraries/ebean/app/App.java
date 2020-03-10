@@ -27,7 +27,7 @@ public class App {
     }
 
     public static void crudOperations() {
-    	
+
         Address a1 = new Address("5, Wide Street", null, "New York");
         Customer c1 = new Customer("John Wide", a1);
 
@@ -56,11 +56,11 @@ public class App {
         Ebean.saveAll(Arrays.asList(c1, c2, c3));
 
         Customer customer = Ebean.find(Customer.class)
-            .select("name")
-            .fetch("address", "city")
-            .where()
-            .eq("city", "San Jose")
-            .findOne();
+                .select("name")
+                .fetch("address", "city")
+                .where()
+                .eq("city", "San Jose")
+                .findOne();
 
         Ebean.deleteAll(Arrays.asList(c1, c2, c3));
     }

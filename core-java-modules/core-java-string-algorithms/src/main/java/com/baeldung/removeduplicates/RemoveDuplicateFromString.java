@@ -45,7 +45,7 @@ public class RemoveDuplicateFromString {
 
     String removeDuplicatesUsingSorting(String str) {
         StringBuilder sb = new StringBuilder();
-        if(!str.isEmpty()) {
+        if (!str.isEmpty()) {
             char[] chars = str.toCharArray();
             Arrays.sort(chars);
 

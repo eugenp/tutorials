@@ -18,6 +18,6 @@ public class VisitorDemo {
 
     private static String generateUuid() {
         return UUID.randomUUID()
-            .toString();
+                .toString();
     }
 }

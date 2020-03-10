@@ -14,7 +14,7 @@ public class ArticleWithSetterInjection {
     public void setTextFormatter(TextFormatter formatter) {
         this.formatter = formatter;
     }
-    
+
     public String format(String text) {
         return formatter.format(text);
     }

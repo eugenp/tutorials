@@ -11,11 +11,11 @@ public class CarMapperUnitTest {
 
     @Test
     public void givenCarEntitytoCar_whenMaps_thenCorrect() {
-        
-        Car entity  = new Car();
+
+        Car entity = new Car();
         entity.setId(1);
         entity.setName("Toyota");
-        
+
         CarDTO carDto = CarMapper.INSTANCE.carToCarDTO(entity);
 
         assertEquals(carDto.getId(), entity.getId());

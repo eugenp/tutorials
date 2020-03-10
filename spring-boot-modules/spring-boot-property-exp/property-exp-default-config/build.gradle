@@ -32,6 +32,7 @@ springBoot {
 }
 
 import org.apache.tools.ant.filters.ReplaceTokens
+
 processResources {
     with copySpec {
         from 'src/main/resources'
@@ -41,8 +42,8 @@ processResources {
         project.properties.findAll().each { prop ->
 
             if (prop.value != null) {
-                filter(ReplaceTokens, tokens: [ (prop.key): prop.value])
-                filter(ReplaceTokens, tokens: [ ('project.' + prop.key): prop.value])
+                filter(ReplaceTokens, tokens: [(prop.key): prop.value])
+                filter(ReplaceTokens, tokens: [('project.' + prop.key): prop.value])
             }
 
         }

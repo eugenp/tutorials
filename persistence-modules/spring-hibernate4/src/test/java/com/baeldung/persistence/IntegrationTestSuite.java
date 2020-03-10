@@ -12,12 +12,12 @@ import com.baeldung.persistence.service.ParentServicePersistenceIntegrationTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ // @formatter:off
-    AuditTestSuite.class
-    ,FooServiceBasicPersistenceIntegrationTest.class
-    ,FooPaginationPersistenceIntegrationTest.class
-    ,FooServicePersistenceIntegrationTest.class
-    ,ParentServicePersistenceIntegrationTest.class
-    ,FooSortingPersistenceIntegrationTest.class
+        AuditTestSuite.class
+        , FooServiceBasicPersistenceIntegrationTest.class
+        , FooPaginationPersistenceIntegrationTest.class
+        , FooServicePersistenceIntegrationTest.class
+        , ParentServicePersistenceIntegrationTest.class
+        , FooSortingPersistenceIntegrationTest.class
 
 }) // @formatter:on
 public class IntegrationTestSuite {

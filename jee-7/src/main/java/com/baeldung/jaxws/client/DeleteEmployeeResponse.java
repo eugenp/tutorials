@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for deleteEmployeeResponse complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="deleteEmployeeResponse">
  *   &lt;complexContent>
@@ -23,12 +23,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "deleteEmployeeResponse", propOrder = {
-    "_return"
+        "_return"
 })
 public class DeleteEmployeeResponse {
 
@@ -37,7 +35,6 @@ public class DeleteEmployeeResponse {
 
     /**
      * Gets the value of the return property.
-     * 
      */
     public boolean isReturn() {
         return _return;
@@ -45,7 +42,6 @@ public class DeleteEmployeeResponse {
 
     /**
      * Sets the value of the return property.
-     * 
      */
     public void setReturn(boolean value) {
         this._return = value;

@@ -7,19 +7,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonPropertyOrder({
-    "count",
-    "name"
+        "count",
+        "name"
 })
 public abstract class OrderLineForCsv {
-    
+
     @JsonProperty("name")
-    private String item; 
-    
+    private String item;
+
     @JsonProperty("count")
-    private int quantity; 
-    
+    private int quantity;
+
     @JsonIgnore
     private BigDecimal unitPrice;
-    
+
 
 }

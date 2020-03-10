@@ -6,7 +6,7 @@ import org.junit.Ignore;
 import static org.junit.Assert.assertNotNull;
 
 public class TestFail {
-	
+
     @Ignore //ignored so the entire tutorials build passes
     @Test
     public void whenMessageAssigned_thenItIsNotNull() {
@@ -14,5 +14,5 @@ public class TestFail {
         message = null;
         assertNotNull(message);
     }
-    
+
 }

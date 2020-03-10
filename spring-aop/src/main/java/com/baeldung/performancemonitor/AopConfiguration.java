@@ -15,13 +15,15 @@ import java.time.Month;
 @Configuration
 @EnableAspectJAutoProxy
 public class AopConfiguration {
-    
+
     @Pointcut("execution(public String com.baeldung.performancemonitor.PersonService.getFullName(..))")
-    public void monitor() { }
-    
+    public void monitor() {
+    }
+
     @Pointcut("execution(public int com.baeldung.performancemonitor.PersonService.getAge(..))")
-    public void myMonitor() { }
-    
+    public void myMonitor() {
+    }
+
     @Bean
     public PerformanceMonitorInterceptor performanceMonitorInterceptor() {
         return new PerformanceMonitorInterceptor(true);
@@ -33,27 +35,27 @@ public class AopConfiguration {
         pointcut.setExpression("com.baeldung.performancemonitor.AopConfiguration.monitor()");
         return new DefaultPointcutAdvisor(pointcut, performanceMonitorInterceptor());
     }
-    
+
     @Bean
-    public Person person(){
-        return new Person("John","Smith", LocalDate.of(1980, Month.JANUARY, 12));
+    public Person person() {
+        return new Person("John", "Smith", LocalDate.of(1980, Month.JANUARY, 12));
     }
-    
+
     @Bean
-    public PersonService personService(){
+    public PersonService personService() {
         return new PersonService();
     }
-    
+
     @Bean
     public MyPerformanceMonitorInterceptor myPerformanceMonitorInterceptor() {
         return new MyPerformanceMonitorInterceptor(true);
     }
-    
+
     @Bean
     public Advisor myPerformanceMonitorAdvisor() {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
         pointcut.setExpression("com.baeldung.performancemonitor.AopConfiguration.myMonitor()");
         return new DefaultPointcutAdvisor(pointcut, myPerformanceMonitorInterceptor());
     }
-    
+
 }

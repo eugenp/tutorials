@@ -25,8 +25,8 @@ public class AsciiArt {
             }
 
             if (stringBuilder.toString()
-                .trim()
-                .isEmpty()) {
+                    .trim()
+                    .isEmpty()) {
                 continue;
             }
 

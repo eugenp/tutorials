@@ -29,9 +29,11 @@
   
   ======================================================================
 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docbook.org/ns/docbook-slides" xmlns:dbs="http://docbook.org/ns/docbook-slides" xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <xs:include schemaLocation="core.xsd"/>
-  <xs:import namespace="http://docbook.org/ns/docbook" schemaLocation="db.xsd"/>
-  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
-  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           targetNamespace="http://docbook.org/ns/docbook-slides" xmlns:dbs="http://docbook.org/ns/docbook-slides"
+           xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <xs:include schemaLocation="core.xsd"/>
+    <xs:import namespace="http://docbook.org/ns/docbook" schemaLocation="db.xsd"/>
+    <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
 </xs:schema>

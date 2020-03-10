@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 public class MapInitializer {
 
     public static Map<String, String> articleMapOne;
+
     static {
         articleMapOne = new HashMap<>();
         articleMapOne.put("ar01", "Intro to Map");
@@ -31,7 +32,7 @@ public class MapInitializer {
         Map<String, String> doubleBraceMap = new HashMap<String, String>() {
 
             /**
-             * 
+             *
              */
             private static final long serialVersionUID = 1L;
 
@@ -44,36 +45,36 @@ public class MapInitializer {
     }
 
     public Map<String, String> createMapUsingStreamStringArray() {
-        Map<String, String> map = Stream.of(new String[][] { { "Hello", "World" }, { "John", "Doe" }, })
-            .collect(Collectors.toMap(data -> data[0], data -> data[1]));
+        Map<String, String> map = Stream.of(new String[][]{{"Hello", "World"}, {"John", "Doe"},})
+                .collect(Collectors.toMap(data -> data[0], data -> data[1]));
 
         return map;
     }
 
     public Map<String, Integer> createMapUsingStreamObjectArray() {
-        Map<String, Integer> map = Stream.of(new Object[][] { { "data1", 1 }, { "data2", 2 }, })
-            .collect(Collectors.toMap(data -> (String) data[0], data -> (Integer) data[1]));
+        Map<String, Integer> map = Stream.of(new Object[][]{{"data1", 1}, {"data2", 2},})
+                .collect(Collectors.toMap(data -> (String) data[0], data -> (Integer) data[1]));
 
         return map;
     }
 
     public Map<String, Integer> createMapUsingStreamSimpleEntry() {
         Map<String, Integer> map = Stream.of(new AbstractMap.SimpleEntry<>("idea", 1), new AbstractMap.SimpleEntry<>("mobile", 2))
-            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         return map;
     }
 
     public Map<String, Integer> createMapUsingStreamSimpleImmutableEntry() {
         Map<String, Integer> map = Stream.of(new AbstractMap.SimpleImmutableEntry<>("idea", 1), new AbstractMap.SimpleImmutableEntry<>("mobile", 2))
-            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         return map;
     }
 
     public Map<String, String> createImmutableMapWithStreams() {
-        Map<String, String> map = Stream.of(new String[][] { { "Hello", "World" }, { "John", "Doe" }, })
-            .collect(Collectors.collectingAndThen(Collectors.toMap(data -> data[0], data -> data[1]), Collections::<String, String> unmodifiableMap));
+        Map<String, String> map = Stream.of(new String[][]{{"Hello", "World"}, {"John", "Doe"},})
+                .collect(Collectors.collectingAndThen(Collectors.toMap(data -> data[0], data -> data[1]), Collections::<String, String>unmodifiableMap));
         return map;
 
     }

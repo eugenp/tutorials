@@ -24,7 +24,8 @@ public class PostController {
     private UserInfo userInfo;
     private Validator validator;
 
-    public PostController() {}
+    public PostController() {
+    }
 
     @Inject
     public PostController(Result result, PostDao postDao, UserInfo userInfo, Validator validator) {
@@ -37,7 +38,7 @@ public class PostController {
     @Get("/post/add")
     public void addForm() {
 
-        if(Objects.isNull(userInfo.getUser())) {
+        if (Objects.isNull(userInfo.getUser())) {
             result.include("error", "Please Login to Proceed");
             result.redirectTo(AuthController.class).loginForm();
             return;
@@ -50,18 +51,18 @@ public class PostController {
     public void add(Post post) {
         post.setAuthor(userInfo.getUser());
         validator.validate(post);
-        if(validator.hasErrors())
+        if (validator.hasErrors())
             result.include("errors", validator.getErrors());
         validator.onErrorRedirectTo(this).addForm();
 
         Object id = postDao.add(post);
 
-        if(Objects.nonNull(id)) {
+        if (Objects.nonNull(id)) {
             result.include("status", "Post Added Successfully");
             result.redirectTo(IndexController.class).index();
         } else {
             result.include(
-              "error", "There was an error creating the post. Try Again");
+                    "error", "There was an error creating the post. Try Again");
             result.redirectTo(this).addForm();
         }
     }
@@ -71,7 +72,6 @@ public class PostController {
         result.include("post", postDao.findById(id));
         result.use(FreemarkerView.class).withTemplate("view");
     }
-
 
 
 }

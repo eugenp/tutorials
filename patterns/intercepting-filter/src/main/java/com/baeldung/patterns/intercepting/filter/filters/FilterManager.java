@@ -8,13 +8,13 @@ import java.io.IOException;
 
 public class FilterManager {
     public static void process(
-      HttpServletRequest request,
-      HttpServletResponse response,
-      OnIntercept callback
+            HttpServletRequest request,
+            HttpServletResponse response,
+            OnIntercept callback
     ) throws ServletException, IOException {
         FilterChain filterChain = new FilterChainImpl(
-          new AuthenticationFilter(callback),
-          new VisitorCounterFilter()
+                new AuthenticationFilter(callback),
+                new VisitorCounterFilter()
         );
         filterChain.doFilter(request, response);
     }

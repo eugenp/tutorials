@@ -19,17 +19,17 @@ public class InMemoryOrderStore implements CustomerOrderRepository, ShippingOrde
     @Override
     public void saveCustomerOrder(CustomerOrder order) {
         this.ordersDb.put(order.getOrderId(), new PersistenceOrder(order.getOrderId(),
-          order.getPaymentMethod(),
-          order.getAddress(),
-          order
-            .getOrderItems()
-            .stream()
-            .map(orderItem ->
-              new PersistenceOrder.OrderItem(orderItem.getProductId(),
-                orderItem.getQuantity(),
-                orderItem.getUnitWeight(),
-                orderItem.getUnitPrice()))
-            .collect(Collectors.toList())
+                order.getPaymentMethod(),
+                order.getAddress(),
+                order
+                        .getOrderItems()
+                        .stream()
+                        .map(orderItem ->
+                                new PersistenceOrder.OrderItem(orderItem.getProductId(),
+                                        orderItem.getQuantity(),
+                                        orderItem.getUnitWeight(),
+                                        orderItem.getUnitPrice()))
+                        .collect(Collectors.toList())
         ));
     }
 
@@ -38,11 +38,11 @@ public class InMemoryOrderStore implements CustomerOrderRepository, ShippingOrde
         if (!this.ordersDb.containsKey(orderId)) return Optional.empty();
         PersistenceOrder orderRecord = this.ordersDb.get(orderId);
         return Optional.of(
-          new ShippableOrder(orderRecord.orderId, orderRecord.orderItems
-            .stream().map(orderItem -> new PackageItem(orderItem.productId,
-              orderItem.itemWeight,
-              orderItem.quantity * orderItem.unitPrice)
-            ).collect(Collectors.toList())));
+                new ShippableOrder(orderRecord.orderId, orderRecord.orderItems
+                        .stream().map(orderItem -> new PackageItem(orderItem.productId,
+                                orderItem.itemWeight,
+                                orderItem.quantity * orderItem.unitPrice)
+                        ).collect(Collectors.toList())));
     }
 
     public static InMemoryOrderStore provider() {

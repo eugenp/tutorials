@@ -34,7 +34,7 @@ public class JsonPathUnitTest {
     public void shouldMatchCountOfObjects() {
         Map<String, String> objectMap = JsonPath.read(json, "$");
         assertEquals(3, objectMap.keySet()
-            .size());
+                .size());
     }
 
     @Test

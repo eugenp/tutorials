@@ -29,12 +29,12 @@ public class StringDiffBenchmarkUnitTest {
 
     public static void main(String[] args) throws RunnerException {
         Options opts = new OptionsBuilder().include(".*")
-            .warmupIterations(1)
-            .measurementIterations(50)
-            .jvmArgs("-Xms2g", "-Xmx2g")
-            .shouldDoGC(true)
-            .forks(1)
-            .build();
+                .warmupIterations(1)
+                .measurementIterations(50)
+                .jvmArgs("-Xms2g", "-Xmx2g")
+                .shouldDoGC(true)
+                .forks(1)
+                .build();
 
         new Runner(opts).run();
     }

@@ -38,7 +38,8 @@ class StringsUnitTest {
     }
 
     @ParameterizedTest
-    @MethodSource // Please note method name is not provided
+    @MethodSource
+        // Please note method name is not provided
     void isBlank_ShouldReturnTrueForNullOrBlankStringsOneArgument(String input) {
         assertTrue(Strings.isBlank(input));
     }
@@ -66,14 +67,16 @@ class StringsUnitTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"test,TEST", "tEst,TEST", "Java,JAVA"}) // Passing a CSV pair per test execution
+    @CsvSource({"test,TEST", "tEst,TEST", "Java,JAVA"})
+        // Passing a CSV pair per test execution
     void toUpperCase_ShouldGenerateTheExpectedUppercaseValue(String input, String expected) {
         String actualValue = input.toUpperCase();
         assertEquals(expected, actualValue);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"test:test", "tEst:test", "Java:java"}, delimiter =':') // Using : as the column separator.
+    @CsvSource(value = {"test:test", "tEst:test", "Java:java"}, delimiter = ':')
+        // Using : as the column separator.
     void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input, String expected) {
         String actualValue = input.toLowerCase();
         assertEquals(expected, actualValue);

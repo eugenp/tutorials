@@ -14,14 +14,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class EncryptorUnitTest {
     private String encKeyString;
     private String message;
-    private String  certificateString;
+    private String certificateString;
     private Encryptor encryptor;
 
     @Before
-    public void init(){
-        encKeyString =  "1234567890123456";
+    public void init() {
+        encKeyString = "1234567890123456";
         message = "This is a secret message";
-        encryptor =  new Encryptor();
+        encryptor = new Encryptor();
         certificateString = "-----BEGIN CERTIFICATE-----\n" +
                 "MIICVjCCAb8CAg37MA0GCSqGSIb3DQEBBQUAMIGbMQswCQYDVQQGEwJKUDEOMAwG\n" +
                 "A1UECBMFVG9reW8xEDAOBgNVBAcTB0NodW8ta3UxETAPBgNVBAoTCEZyYW5rNERE\n" +
@@ -41,10 +41,10 @@ public class EncryptorUnitTest {
 
     @Test
     public void givenEncryptionKey_whenMessageIsPassedToEncryptor_thenMessageIsEncrypted() throws Exception {
-        byte[] encryptedMessage = encryptor.encryptMessage(message.getBytes(),encKeyString.getBytes());
+        byte[] encryptedMessage = encryptor.encryptMessage(message.getBytes(), encKeyString.getBytes());
 
         assertThat(encryptedMessage).isNotNull();
-        assertThat(encryptedMessage.length  % 32).isEqualTo(0);
+        assertThat(encryptedMessage.length % 32).isEqualTo(0);
     }
 
     @Test
@@ -53,15 +53,15 @@ public class EncryptorUnitTest {
         InputStream is = new ByteArrayInputStream(certificateString.getBytes());
         X509Certificate certificate = (X509Certificate) factory.generateCertificate(is);
 
-        byte[] encryptedMessage = encryptor.encryptMessage(message.getBytes(),certificate);
+        byte[] encryptedMessage = encryptor.encryptMessage(message.getBytes(), certificate);
 
         assertThat(encryptedMessage).isNotNull();
-        assertThat(encryptedMessage.length  % 128).isEqualTo(0);
+        assertThat(encryptedMessage.length % 128).isEqualTo(0);
     }
 
     @Test
-    public void givenEncryptionKey_whenMessageIsEncrypted_thenDecryptMessage() throws Exception{
-        byte[] encryptedMessageBytes = encryptor.encryptMessage(message.getBytes(),encKeyString.getBytes());
+    public void givenEncryptionKey_whenMessageIsEncrypted_thenDecryptMessage() throws Exception {
+        byte[] encryptedMessageBytes = encryptor.encryptMessage(message.getBytes(), encKeyString.getBytes());
 
         byte[] clearMessageBytes = encryptor.decryptMessage(encryptedMessageBytes, encKeyString.getBytes());
 

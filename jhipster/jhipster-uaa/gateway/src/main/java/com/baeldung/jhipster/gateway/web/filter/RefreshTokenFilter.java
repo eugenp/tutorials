@@ -50,7 +50,7 @@ public class RefreshTokenFilter extends GenericFilterBean {
      */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
-        throws IOException, ServletException {
+            throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
         try {
@@ -73,7 +73,7 @@ public class RefreshTokenFilter extends GenericFilterBean {
      * @throws InvalidTokenException if the tokens could not be refreshed.
      */
     public HttpServletRequest refreshTokensIfExpiring(HttpServletRequest httpServletRequest, HttpServletResponse
-        httpServletResponse) {
+            httpServletResponse) {
         HttpServletRequest newHttpServletRequest = httpServletRequest;
         //get access token from cookie
         Cookie accessTokenCookie = OAuth2CookieHelper.getAccessTokenCookie(httpServletRequest);

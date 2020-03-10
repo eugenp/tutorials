@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class SwingRectExample {
     public static void main(String[] args) throws IOException {
-        BufferedImage image  = loadImage();
+        BufferedImage image = loadImage();
         drawRectangle(image);
         displayImage(image);
     }

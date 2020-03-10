@@ -8,7 +8,8 @@ public class Rating {
     double points;
     List<Review> reviews = new ArrayList<>();
 
-    public Rating() {}
+    public Rating() {
+    }
 
     public void add(Review review) {
         reviews.add(review);

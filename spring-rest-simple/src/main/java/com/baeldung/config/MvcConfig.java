@@ -26,7 +26,7 @@ import java.util.List;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan({ "com.baeldung.web", "com.baeldung.requestmapping" })
+@ComponentScan({"com.baeldung.web", "com.baeldung.requestmapping"})
 public class MvcConfig implements WebMvcConfigurer {
 
     public MvcConfig() {
@@ -39,10 +39,10 @@ public class MvcConfig implements WebMvcConfigurer {
     public void configureMessageConverters(final List<HttpMessageConverter<?>> messageConverters) {
         final Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
         builder.indentOutput(true)
-            .dateFormat(new SimpleDateFormat("dd-MM-yyyy hh:mm"));
+                .dateFormat(new SimpleDateFormat("dd-MM-yyyy hh:mm"));
         messageConverters.add(new MappingJackson2HttpMessageConverter(builder.build()));
         messageConverters.add(new MappingJackson2XmlHttpMessageConverter(builder.createXmlMapper(true)
-            .build()));
+                .build()));
 
         messageConverters.add(createXmlHttpMessageConverter());
         // messageConverters.add(new MappingJackson2HttpMessageConverter());

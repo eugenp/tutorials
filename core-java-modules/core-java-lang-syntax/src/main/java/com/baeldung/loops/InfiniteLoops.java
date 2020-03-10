@@ -9,7 +9,7 @@ public class InfiniteLoops {
     }
 
     public void infiniteLoopUsingFor() {
-        for (;;) {
+        for (; ; ) {
             System.out.println("Infinite loop using for");
         }
     }

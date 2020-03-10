@@ -21,7 +21,7 @@ public class CustomTraceRepository implements HttpTraceRepository {
     @Override
     public void add(HttpTrace trace) {
         if ("GET".equals(trace.getRequest()
-            .getMethod())) {
+                .getMethod())) {
             lastTrace.set(trace);
         }
     }

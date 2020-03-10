@@ -19,7 +19,7 @@ public class AvroDeSerealizer {
         Decoder decoder = null;
         try {
             decoder = DecoderFactory.get()
-                .jsonDecoder(AvroHttpRequest.getClassSchema(), new String(data));
+                    .jsonDecoder(AvroHttpRequest.getClassSchema(), new String(data));
             return reader.read(null, decoder);
         } catch (IOException e) {
             logger.error("Deserialization error" + e.getMessage());
@@ -30,7 +30,7 @@ public class AvroDeSerealizer {
     public AvroHttpRequest deSerealizeAvroHttpRequestBinary(byte[] data) {
         DatumReader<AvroHttpRequest> employeeReader = new SpecificDatumReader<>(AvroHttpRequest.class);
         Decoder decoder = DecoderFactory.get()
-            .binaryDecoder(data, null);
+                .binaryDecoder(data, null);
         try {
             return employeeReader.read(null, decoder);
         } catch (IOException e) {

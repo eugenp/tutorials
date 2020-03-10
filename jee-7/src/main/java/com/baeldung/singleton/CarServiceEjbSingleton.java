@@ -33,7 +33,7 @@ public class CarServiceEjbSingleton {
         LOG.info("Car service for {} is completed - serviceQueue: {}", car, serviceQueue);
         return serviceQueue;
     }
-    
+
     private void simulateService(Car car) {
         try {
             Thread.sleep(100);

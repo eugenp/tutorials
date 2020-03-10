@@ -21,8 +21,8 @@ public class SetUnitTest {
         set.add("Awesome");
         assertEquals(3, set.size());
         assertTrue(set.iterator()
-            .next()
-            .equals("Awesome"));
+                .next()
+                .equals("Awesome"));
     }
 
     @Test(expected = NullPointerException.class)

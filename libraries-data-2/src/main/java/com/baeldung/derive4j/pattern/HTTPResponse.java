@@ -1,7 +1,7 @@
 package com.baeldung.derive4j.pattern;
 
 public class HTTPResponse {
-    private int  statusCode;
+    private int statusCode;
     private String responseBody;
 
     public int getStatusCode() {

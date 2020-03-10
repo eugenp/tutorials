@@ -18,5 +18,6 @@ class AnnotationConfig {
         return new Lion("Hardcoded lion name");
     }
 
-    interface Animal {}
+    interface Animal {
+    }
 }

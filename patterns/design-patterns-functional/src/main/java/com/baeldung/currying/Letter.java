@@ -36,11 +36,11 @@ public class Letter {
         }
         Letter letter = (Letter) o;
         return Objects.equals(returningAddress, letter.returningAddress) &&
-          Objects.equals(insideAddress, letter.insideAddress) &&
-          Objects.equals(dateOfLetter, letter.dateOfLetter) &&
-          Objects.equals(salutation, letter.salutation) &&
-          Objects.equals(body, letter.body) &&
-          Objects.equals(closing, letter.closing);
+                Objects.equals(insideAddress, letter.insideAddress) &&
+                Objects.equals(dateOfLetter, letter.dateOfLetter) &&
+                Objects.equals(salutation, letter.salutation) &&
+                Objects.equals(body, letter.body) &&
+                Objects.equals(closing, letter.closing);
     }
 
     @Override
@@ -51,8 +51,8 @@ public class Letter {
     @Override
     public String toString() {
         return "Letter{" + "returningAddress='" + returningAddress + '\'' + ", insideAddress='" + insideAddress + '\''
-            + ", dateOfLetter=" + dateOfLetter + ", salutation='" + salutation + '\'' + ", body='" + body + '\''
-            + ", closing='" + closing + '\'' + '}';
+                + ", dateOfLetter=" + dateOfLetter + ", salutation='" + salutation + '\'' + ", body='" + body + '\''
+                + ", closing='" + closing + '\'' + '}';
     }
 
     static Letter createLetter(String salutation, String body) {
@@ -60,28 +60,28 @@ public class Letter {
     }
 
     static BiFunction<String, String, Letter> SIMPLE_LETTER_CREATOR = //
-        (salutation, body) -> new Letter(salutation, body);
+            (salutation, body) -> new Letter(salutation, body);
 
     static Function<String, Function<String, Letter>> SIMPLE_CURRIED_LETTER_CREATOR = //
-        saluation -> body -> new Letter(saluation, body);
+            saluation -> body -> new Letter(saluation, body);
 
     static Function<String, Function<String, Function<LocalDate, Function<String, Function<String, Function<String, Letter>>>>>> LETTER_CREATOR = //
-      returnAddress
-          -> closing
-          -> dateOfLetter
-          -> insideAddress
-          -> salutation
-          -> body
-          -> new Letter(returnAddress, insideAddress, dateOfLetter, salutation, body, closing);
+            returnAddress
+                    -> closing
+                    -> dateOfLetter
+                    -> insideAddress
+                    -> salutation
+                    -> body
+                    -> new Letter(returnAddress, insideAddress, dateOfLetter, salutation, body, closing);
 
     static AddReturnAddress builder() {
         return returnAddress
-            -> closing
-            -> dateOfLetter
-            -> insideAddress
-            -> salutation
-            -> body
-            -> new Letter(returnAddress, insideAddress, dateOfLetter, salutation, body, closing);
+                -> closing
+                -> dateOfLetter
+                -> insideAddress
+                -> salutation
+                -> body
+                -> new Letter(returnAddress, insideAddress, dateOfLetter, salutation, body, closing);
     }
 
     interface AddReturnAddress {

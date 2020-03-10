@@ -57,15 +57,15 @@ public class CustomerRestControllerUnitTest {
         given(mockCustomerService.createCustomer(customer)).willReturn(persistedCustomer);
 
         String createCustomerRequestBody = "{"
-                                           + "\"telephone\": \"001-555-1234\",\n"
-                                           + "\"favorites\": [\"Milk\", \"Eggs\"],\n"
-                                           + "\"communicationPreferences\": {\"post\":true, \"email\":true}\n"
-                                           + "}";
+                + "\"telephone\": \"001-555-1234\",\n"
+                + "\"favorites\": [\"Milk\", \"Eggs\"],\n"
+                + "\"communicationPreferences\": {\"post\":true, \"email\":true}\n"
+                + "}";
         mvc.perform(post("/customers")
-                            .contentType(APPLICATION_JSON)
-                            .content(createCustomerRequestBody))
-           .andExpect(status().isCreated())
-           .andExpect(redirectedUrlPattern("http://*/customers/1"));
+                .contentType(APPLICATION_JSON)
+                .content(createCustomerRequestBody))
+                .andExpect(status().isCreated())
+                .andExpect(redirectedUrlPattern("http://*/customers/1"));
     }
 
     @Test
@@ -74,9 +74,9 @@ public class CustomerRestControllerUnitTest {
 
         String patchInstructions = "[{\"op\":\"replace\",\"path\": \"/telephone\",\"value\":\"001-555-5678\"}]";
         mvc.perform(patch("/customers/1")
-                            .contentType(APPLICATION_JSON_PATCH_JSON)
-                            .content(patchInstructions))
-           .andExpect(status().isNotFound());
+                .contentType(APPLICATION_JSON_PATCH_JSON)
+                .content(patchInstructions))
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -90,12 +90,12 @@ public class CustomerRestControllerUnitTest {
 
         String patchInstructions = "[{\"op\":\"replace\",\"path\": \"/telephone\",\"value\":\"001-555-5678\"}]";
         mvc.perform(patch("/customers/1")
-                            .contentType(APPLICATION_JSON_PATCH_JSON)
-                            .content(patchInstructions))
-           .andExpect(status().isOk())
-           .andExpect(jsonPath("$.id", is("1")))
-           .andExpect(jsonPath("$.telephone", is("001-555-5678")))
-           .andExpect(jsonPath("$.favorites", is(asList("Milk", "Eggs"))))
-           .andExpect(jsonPath("$.communicationPreferences", is(communicationPreferences)));
+                .contentType(APPLICATION_JSON_PATCH_JSON)
+                .content(patchInstructions))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", is("1")))
+                .andExpect(jsonPath("$.telephone", is("001-555-5678")))
+                .andExpect(jsonPath("$.favorites", is(asList("Milk", "Eggs"))))
+                .andExpect(jsonPath("$.communicationPreferences", is(communicationPreferences)));
     }
 }

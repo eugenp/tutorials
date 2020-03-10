@@ -41,5 +41,4 @@ public class BooleanPrimitiveLookup extends Lookup {
     }
 
 
-
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BookController implements BookOperations {
 
     private BookRepository repo;
-    
+
     public BookController(BookRepository repo) {
         this.repo = repo;
     }

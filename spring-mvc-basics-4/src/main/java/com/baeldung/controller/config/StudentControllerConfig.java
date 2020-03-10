@@ -20,7 +20,7 @@ public class StudentControllerConfig //implements WebApplicationInitializer
         sc.addListener(new ContextLoaderListener(root));
 
         DispatcherServlet dv = new DispatcherServlet(root);
-        
+
         ServletRegistration.Dynamic appServlet = sc.addServlet("test-mvc", dv);
         appServlet.setLoadOnStartup(1);
         appServlet.addMapping("/test/*");

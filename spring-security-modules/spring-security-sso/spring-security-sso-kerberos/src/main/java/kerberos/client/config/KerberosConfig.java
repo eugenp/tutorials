@@ -9,14 +9,14 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 class KerberosConfig {
 
-	@Value("${app.user-principal}")
-	private String principal;
+    @Value("${app.user-principal}")
+    private String principal;
 
-	@Value("${app.keytab-location}")
-	private String keytabLocation;
+    @Value("${app.keytab-location}")
+    private String keytabLocation;
 
-	@Bean
-	public RestTemplate restTemplate() {
-		return new KerberosRestTemplate(keytabLocation, principal);
-	}
+    @Bean
+    public RestTemplate restTemplate() {
+        return new KerberosRestTemplate(keytabLocation, principal);
+    }
 }

@@ -3,14 +3,14 @@ package com.baeldung.jackson.annotation;
 import com.fasterxml.jackson.annotation.JsonAlias;
 
 public class AliasBean {
-    
-    @JsonAlias({ "fName", "f_name" })
+
+    @JsonAlias({"fName", "f_name"})
     private String firstName;
-    
+
     private String lastName;
-    
+
     public AliasBean() {
-    
+
     }
 
     public String getFirstName() {

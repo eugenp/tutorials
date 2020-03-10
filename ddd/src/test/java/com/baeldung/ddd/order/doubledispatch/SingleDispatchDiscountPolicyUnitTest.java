@@ -10,10 +10,10 @@ import com.baeldung.ddd.order.OrderFixtureUtils;
 public class SingleDispatchDiscountPolicyUnitTest {
     // @formatter:off
     @DisplayName(
-        "given two discount policies, " +
-        "when use these policies, " +
-        "then single dispatch chooses the implementation based on runtime type"
-        )
+            "given two discount policies, " +
+                    "when use these policies, " +
+                    "then single dispatch chooses the implementation based on runtime type"
+    )
     // @formatter:on    
     @Test
     void test() throws Exception {

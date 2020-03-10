@@ -66,7 +66,7 @@ public class StringConversionUnitTest {
     @Test
     public void whenConvertedToByteArr_thenCorrect() {
         String beforeConvStr = "abc";
-        byte[] afterConvByteArr = new byte[] { 'a', 'b', 'c' };
+        byte[] afterConvByteArr = new byte[]{'a', 'b', 'c'};
 
         assertEquals(Arrays.equals(beforeConvStr.getBytes(), afterConvByteArr), true);
     }
@@ -90,7 +90,7 @@ public class StringConversionUnitTest {
     @Test
     public void whenConvertedToCharArr_thenCorrect() {
         String beforeConvStr = "hello";
-        char[] afterConvCharArr = { 'h', 'e', 'l', 'l', 'o' };
+        char[] afterConvCharArr = {'h', 'e', 'l', 'l', 'o'};
 
         assertEquals(Arrays.equals(beforeConvStr.toCharArray(), afterConvCharArr), true);
     }

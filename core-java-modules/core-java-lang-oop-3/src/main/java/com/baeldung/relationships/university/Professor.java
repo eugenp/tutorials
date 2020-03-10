@@ -6,5 +6,5 @@ public class Professor {
 
     private List<Department> department;
     private List<Professor> friends;
-    
+
 }

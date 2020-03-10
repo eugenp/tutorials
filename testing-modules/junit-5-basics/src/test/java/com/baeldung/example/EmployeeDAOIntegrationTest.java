@@ -15,7 +15,7 @@ import com.baeldung.junit.tags.example.EmployeeDAO;
 import com.baeldung.junit.tags.example.SpringJdbcConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SpringJdbcConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {SpringJdbcConfig.class}, loader = AnnotationConfigContextLoader.class)
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 public class EmployeeDAOIntegrationTest {
 

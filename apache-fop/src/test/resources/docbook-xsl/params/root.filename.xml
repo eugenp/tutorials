@@ -4,26 +4,29 @@
           xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
           version="5.0" xml:id="root.filename">
-<refmeta>
-<refentrytitle>root.filename</refentrytitle>
-<refmiscinfo class="other" otherclass="datatype">uri</refmiscinfo>
-</refmeta>
-<refnamediv>
-<refname>root.filename</refname>
-<refpurpose>Identifies the name of the root HTML file when chunking</refpurpose>
-</refnamediv>
+    <refmeta>
+        <refentrytitle>root.filename</refentrytitle>
+        <refmiscinfo class="other" otherclass="datatype">uri</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname>root.filename</refname>
+        <refpurpose>Identifies the name of the root HTML file when chunking</refpurpose>
+    </refnamediv>
 
-<refsynopsisdiv>
-<src:fragment xml:id="root.filename.frag">
-<xsl:param name="root.filename">index</xsl:param>
-</src:fragment>
-</refsynopsisdiv>
+    <refsynopsisdiv>
+        <src:fragment xml:id="root.filename.frag">
+            <xsl:param name="root.filename">index</xsl:param>
+        </src:fragment>
+    </refsynopsisdiv>
 
-<refsection><info><title>Description</title></info>
+    <refsection>
+        <info>
+            <title>Description</title>
+        </info>
 
-<para>The <parameter>root.filename</parameter> is the base filename for
-the chunk created for the root of each document processed.
-</para>
+        <para>The <parameter>root.filename</parameter> is the base filename for
+            the chunk created for the root of each document processed.
+        </para>
 
-</refsection>
+    </refsection>
 </refentry>

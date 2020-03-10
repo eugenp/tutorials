@@ -18,7 +18,7 @@ public class RegistrationFormUnitTest extends LocaleAwareUnitTest {
     @BeforeClass
     public static void setupValidatorInstance() {
         validator = Validation.buildDefaultValidatorFactory()
-            .getValidator();
+                .getValidator();
     }
 
     @Test
@@ -30,7 +30,7 @@ public class RegistrationFormUnitTest extends LocaleAwareUnitTest {
         violations.forEach(action -> {
             assertThat(action.getMessage()).isEqualTo("must not be blank");
             assertThat(action.getPropertyPath()
-                .toString()).isEqualTo("firstName");
+                    .toString()).isEqualTo("firstName");
         });
     }
 
@@ -43,7 +43,7 @@ public class RegistrationFormUnitTest extends LocaleAwareUnitTest {
         violations.forEach(action -> {
             assertThat(action.getMessage()).isEqualTo("must not be blank");
             assertThat(action.getPropertyPath()
-                .toString()).isEqualTo("zipCode");
+                    .toString()).isEqualTo("zipCode");
         });
     }
 
@@ -56,7 +56,7 @@ public class RegistrationFormUnitTest extends LocaleAwareUnitTest {
         violations.forEach(action -> {
             assertThat(action.getMessage()).isEqualTo("must not be blank");
             assertThat(action.getPropertyPath()
-                .toString()).isEqualTo("captcha");
+                    .toString()).isEqualTo("captcha");
         });
     }
 
@@ -69,7 +69,7 @@ public class RegistrationFormUnitTest extends LocaleAwareUnitTest {
         violations.forEach(action -> {
             assertThat(action.getMessage()).isEqualTo("must not be blank");
             assertThat(action.getPropertyPath()
-                .toString()).isEqualTo("captcha");
+                    .toString()).isEqualTo("captcha");
         });
     }
 
@@ -82,7 +82,7 @@ public class RegistrationFormUnitTest extends LocaleAwareUnitTest {
         violations.forEach(action -> {
             assertThat(action.getMessage()).isEqualTo("must not be blank");
             assertThat(action.getPropertyPath()
-                .toString()).isEqualTo("firstName");
+                    .toString()).isEqualTo("firstName");
         });
     }
 
@@ -95,7 +95,7 @@ public class RegistrationFormUnitTest extends LocaleAwareUnitTest {
         violations.forEach(action -> {
             assertThat(action.getMessage()).isEqualTo("must not be blank");
             assertThat(action.getPropertyPath()
-                .toString()).isEqualTo("zipCode");
+                    .toString()).isEqualTo("zipCode");
         });
     }
 

@@ -27,18 +27,18 @@ public class Client implements BundleActivator, ServiceListener {
     public void serviceChanged(ServiceEvent serviceEvent) {
         int type = serviceEvent.getType();
         switch (type) {
-        case (ServiceEvent.REGISTERED):
-            System.out.println("Notification of service registered.");
-            serviceReference = serviceEvent.getServiceReference();
-            Greeter service = (Greeter) (ctx.getService(serviceReference));
-            System.out.println(service.sayHiTo("John"));
-            break;
-        case (ServiceEvent.UNREGISTERING):
-            System.out.println("Notification of service unregistered.");
-            ctx.ungetService(serviceEvent.getServiceReference());
-            break;
-        default:
-            break;
+            case (ServiceEvent.REGISTERED):
+                System.out.println("Notification of service registered.");
+                serviceReference = serviceEvent.getServiceReference();
+                Greeter service = (Greeter) (ctx.getService(serviceReference));
+                System.out.println(service.sayHiTo("John"));
+                break;
+            case (ServiceEvent.UNREGISTERING):
+                System.out.println("Notification of service unregistered.");
+                ctx.ungetService(serviceEvent.getServiceReference());
+                break;
+            default:
+                break;
         }
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @Configuration
 @EnableWebSecurity
-@ImportResource({ "classpath:webSecurityConfig.xml" })
+@ImportResource({"classpath:webSecurityConfig.xml"})
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public SecurityConfig() {

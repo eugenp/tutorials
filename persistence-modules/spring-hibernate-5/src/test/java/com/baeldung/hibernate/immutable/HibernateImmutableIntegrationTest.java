@@ -100,7 +100,7 @@ public class HibernateImmutableIntegrationTest {
     public void updateEventGenerated() {
         createEventGenerated();
         EventGeneratedId eventGeneratedId = (EventGeneratedId) session.createQuery("FROM EventGeneratedId WHERE name LIKE '%John%'").list().get(0);
-        
+
         eventGeneratedId.setName("Mike");
         session.update(eventGeneratedId);
         session.flush();

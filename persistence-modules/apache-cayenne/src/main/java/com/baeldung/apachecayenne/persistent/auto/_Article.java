@@ -13,7 +13,7 @@ import com.baeldung.apachecayenne.persistent.Author;
  */
 public abstract class _Article extends CayenneDataObject {
 
-    private static final long serialVersionUID = 1L; 
+    private static final long serialVersionUID = 1L;
 
     public static final String ID_PK_COLUMN = "id";
 
@@ -24,15 +24,17 @@ public abstract class _Article extends CayenneDataObject {
     public void setContent(String content) {
         writeProperty("content", content);
     }
+
     public String getContent() {
-        return (String)readProperty("content");
+        return (String) readProperty("content");
     }
 
     public void setTitle(String title) {
         writeProperty("title", title);
     }
+
     public String getTitle() {
-        return (String)readProperty("title");
+        return (String) readProperty("title");
     }
 
     public void setAuthor(Author author) {
@@ -40,7 +42,7 @@ public abstract class _Article extends CayenneDataObject {
     }
 
     public Author getAuthor() {
-        return (Author)readProperty("author");
+        return (Author) readProperty("author");
     }
 
 

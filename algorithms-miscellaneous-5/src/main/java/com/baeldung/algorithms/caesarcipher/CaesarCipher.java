@@ -53,20 +53,20 @@ public class CaesarCipher {
 
     private long[] observedLettersFrequencies(String message) {
         return IntStream.rangeClosed(LETTER_A, LETTER_Z)
-          .mapToLong(letter -> countLetter((char) letter, message))
-          .toArray();
+                .mapToLong(letter -> countLetter((char) letter, message))
+                .toArray();
     }
 
     private long countLetter(char letter, String message) {
         return message.chars()
-          .filter(character -> character == letter)
-          .count();
+                .filter(character -> character == letter)
+                .count();
     }
 
     private double[] expectedLettersFrequencies(int messageLength) {
         return Arrays.stream(ENGLISH_LETTERS_PROBABILITIES)
-          .map(probability -> probability * messageLength)
-          .toArray();
+                .map(probability -> probability * messageLength)
+                .toArray();
     }
 
     private int probableOffset(double[] chiSquares) {

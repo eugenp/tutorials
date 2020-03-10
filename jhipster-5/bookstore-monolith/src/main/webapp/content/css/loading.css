@@ -12,6 +12,7 @@
         transform: rotate(0deg);
     }
 }
+
 @-webkit-keyframes lds-pacman-1 {
     0% {
         -webkit-transform: rotate(0deg);
@@ -26,6 +27,7 @@
         transform: rotate(0deg);
     }
 }
+
 @keyframes lds-pacman-2 {
     0% {
         -webkit-transform: rotate(180deg);
@@ -40,6 +42,7 @@
         transform: rotate(180deg);
     }
 }
+
 @-webkit-keyframes lds-pacman-2 {
     0% {
         -webkit-transform: rotate(180deg);
@@ -54,6 +57,7 @@
         transform: rotate(180deg);
     }
 }
+
 @keyframes lds-pacman-3 {
     0% {
         -webkit-transform: translate(190px, 0);
@@ -69,6 +73,7 @@
         opacity: 1;
     }
 }
+
 @-webkit-keyframes lds-pacman-3 {
     0% {
         -webkit-transform: translate(190px, 0);
@@ -94,6 +99,7 @@
     justify-content: center;
     top: 10em;
 }
+
 .app-loading p {
     display: block;
     font-size: 1.17em;
@@ -110,6 +116,7 @@
     -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
     transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
 }
+
 .app-loading .lds-pacman > div:nth-child(2) div {
     position: absolute;
     top: 40px;
@@ -123,10 +130,12 @@
     -webkit-transform-origin: 60px 60px;
     transform-origin: 60px 60px;
 }
+
 .app-loading .lds-pacman > div:nth-child(2) div:nth-child(2) {
     -webkit-animation: lds-pacman-2 1s linear infinite;
     animation: lds-pacman-2 1s linear infinite;
 }
+
 .app-loading .lds-pacman > div:nth-child(1) div {
     position: absolute;
     top: 97px;
@@ -138,14 +147,17 @@
     -webkit-animation: lds-pacman-3 1s linear infinite;
     animation: lds-pacman-3 1.5s linear infinite;
 }
+
 .app-loading .lds-pacman > div:nth-child(1) div:nth-child(1) {
     -webkit-animation-delay: -0.67s;
     animation-delay: -1s;
 }
+
 .app-loading .lds-pacman > div:nth-child(1) div:nth-child(2) {
     -webkit-animation-delay: -0.33s;
     animation-delay: -0.5s;
 }
+
 .app-loading .lds-pacman > div:nth-child(1) div:nth-child(3) {
     -webkit-animation-delay: 0s;
     animation-delay: 0s;

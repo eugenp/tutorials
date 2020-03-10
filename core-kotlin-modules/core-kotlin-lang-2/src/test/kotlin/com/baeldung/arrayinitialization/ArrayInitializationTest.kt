@@ -41,7 +41,7 @@ class ArrayInitializationTest {
 
     @Test
     fun whenStringGenerated_thenValuesPresent() {
-        val generatedStringArray = Array(10) { i -> "Number of index: $i"  }
+        val generatedStringArray = Array(10) { i -> "Number of index: $i" }
 
         assertEquals("Number of index: 0", generatedStringArray[0])
     }

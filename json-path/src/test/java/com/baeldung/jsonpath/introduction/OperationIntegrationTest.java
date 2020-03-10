@@ -19,10 +19,10 @@ import static org.junit.Assert.assertThat;
 
 public class OperationIntegrationTest {
     private InputStream jsonInputStream = this.getClass()
-        .getClassLoader()
-        .getResourceAsStream("intro_api.json");
+            .getClassLoader()
+            .getResourceAsStream("intro_api.json");
     private String jsonDataSourceString = new Scanner(jsonInputStream, "UTF-8").useDelimiter("\\Z")
-        .next();
+            .next();
 
     @Test
     public void givenJsonPathWithoutPredicates_whenReading_thenCorrect() {
@@ -42,26 +42,26 @@ public class OperationIntegrationTest {
     @Test
     public void givenJsonPathWithFilterPredicate_whenReading_thenCorrect() {
         Filter expensiveFilter = Filter.filter(Criteria.where("price")
-            .gt(20.00));
+                .gt(20.00));
         List<Map<String, Object>> expensive = JsonPath.parse(jsonDataSourceString)
-            .read("$['book'][?]", expensiveFilter);
+                .read("$['book'][?]", expensiveFilter);
         predicateUsageAssertionHelper(expensive);
     }
 
     @Test
     public void givenJsonPathWithCustomizedPredicate_whenReading_thenCorrect() {
         Predicate expensivePredicate = context -> Float.valueOf(context.item(Map.class)
-            .get("price")
-            .toString()) > 20.00;
+                .get("price")
+                .toString()) > 20.00;
         List<Map<String, Object>> expensive = JsonPath.parse(jsonDataSourceString)
-            .read("$['book'][?]", expensivePredicate);
+                .read("$['book'][?]", expensivePredicate);
         predicateUsageAssertionHelper(expensive);
     }
 
     @Test
     public void givenJsonPathWithInlinePredicate_whenReading_thenCorrect() {
         List<Map<String, Object>> expensive = JsonPath.parse(jsonDataSourceString)
-            .read("$['book'][?(@['price'] > $['price range']['medium'])]");
+                .read("$['book'][?(@['price'] > $['price range']['medium'])]");
         predicateUsageAssertionHelper(expensive);
     }
 

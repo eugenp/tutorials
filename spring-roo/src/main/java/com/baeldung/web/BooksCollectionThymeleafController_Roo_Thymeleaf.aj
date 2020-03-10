@@ -26,11 +26,13 @@ import io.springlets.data.web.select2.Select2DataSupport;
 import io.springlets.data.web.select2.Select2DataWithConversion;
 import io.springlets.web.mvc.util.ControllerMethodLinkBuilderFactory;
 import io.springlets.web.mvc.util.MethodLinkBuilderFactory;
+
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Locale;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -62,32 +64,32 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponents;
 
 privileged aspect BooksCollectionThymeleafController_Roo_Thymeleaf {
-    
-    declare @type: BooksCollectionThymeleafController: @Controller;
-    
-    declare @type: BooksCollectionThymeleafController: @RequestMapping(value = "/books", name = "BooksCollectionThymeleafController", produces = MediaType.TEXT_HTML_VALUE);
-    
+
+    declare @type: BooksCollectionThymeleafController:@Controller;
+
+    declare @type: BooksCollectionThymeleafController:@RequestMapping(value = "/books", name = "BooksCollectionThymeleafController", produces = MediaType.TEXT_HTML_VALUE);
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     private MessageSource BooksCollectionThymeleafController.messageSource;
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     private MethodLinkBuilderFactory<BooksItemThymeleafController> BooksCollectionThymeleafController.itemLink;
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     private ConversionService BooksCollectionThymeleafController.conversionService;
-    
+
     /**
      * TODO Auto-generated constructor documentation
-     * 
+     *
      * @param bookService
      * @param conversionService
      * @param messageSource
@@ -103,61 +105,61 @@ privileged aspect BooksCollectionThymeleafController_Roo_Thymeleaf {
 
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return MessageSource
      */
     public MessageSource BooksCollectionThymeleafController.getMessageSource() {
         return messageSource;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param messageSource
      */
     public void BooksCollectionThymeleafController.setMessageSource(MessageSource messageSource) {
         this.messageSource = messageSource;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return MethodLinkBuilderFactory
      */
     public MethodLinkBuilderFactory<BooksItemThymeleafController> BooksCollectionThymeleafController.getItemLink() {
         return itemLink;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param itemLink
      */
     public void BooksCollectionThymeleafController.setItemLink(MethodLinkBuilderFactory<BooksItemThymeleafController> itemLink) {
         this.itemLink = itemLink;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return ConversionService
      */
     public ConversionService BooksCollectionThymeleafController.getConversionService() {
         return conversionService;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param conversionService
      */
     public void BooksCollectionThymeleafController.setConversionService(ConversionService conversionService) {
         this.conversionService = conversionService;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param model
      * @return ModelAndView
      */
@@ -165,10 +167,10 @@ privileged aspect BooksCollectionThymeleafController_Roo_Thymeleaf {
     public ModelAndView BooksCollectionThymeleafController.list(Model model) {
         return new ModelAndView("/books/list");
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param datatablesColumns
      * @param search
      * @param pageable
@@ -186,10 +188,10 @@ privileged aspect BooksCollectionThymeleafController_Roo_Thymeleaf {
         ConvertedDatatablesData<Book> datatablesData = new ConvertedDatatablesData<Book>(books, totalBooksCount, draw, getConversionService(), datatablesColumns);
         return ResponseEntity.ok(datatablesData);
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param search
      * @param pageable
      * @param locale
@@ -203,38 +205,38 @@ privileged aspect BooksCollectionThymeleafController_Roo_Thymeleaf {
         Select2DataSupport<Book> select2Data = new Select2DataWithConversion<Book>(books, idExpression, getConversionService());
         return ResponseEntity.ok(select2Data);
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param dataBinder
      */
     @InitBinder("book")
     public void BooksCollectionThymeleafController.initBookBinder(WebDataBinder dataBinder) {
         dataBinder.setDisallowedFields("id");
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param model
      */
     public void BooksCollectionThymeleafController.populateFormats(Model model) {
         model.addAttribute("application_locale", LocaleContextHolder.getLocale().getLanguage());
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param model
      */
     public void BooksCollectionThymeleafController.populateForm(Model model) {
         populateFormats(model);
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param book
      * @param result
      * @param model
@@ -244,57 +246,57 @@ privileged aspect BooksCollectionThymeleafController_Roo_Thymeleaf {
     public ModelAndView BooksCollectionThymeleafController.create(@Valid @ModelAttribute Book book, BindingResult result, Model model) {
         if (result.hasErrors()) {
             populateForm(model);
-            
+
             return new ModelAndView("/books/create");
         }
         Book newBook = getBookService().save(book);
         UriComponents showURI = getItemLink().to(BooksItemThymeleafLinkFactory.SHOW).with("book", newBook.getId()).toUri();
         return new ModelAndView("redirect:" + showURI.toUriString());
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param model
      * @return ModelAndView
      */
     @GetMapping(value = "/create-form", name = "createForm")
     public ModelAndView BooksCollectionThymeleafController.createForm(Model model) {
         populateForm(model);
-        
+
         model.addAttribute("book", new Book());
         return new ModelAndView("books/create");
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param ids
      * @return ResponseEntity
      */
     @DeleteMapping(value = "/batch/{ids}", name = "deleteBatch")
     @ResponseBody
     public ResponseEntity<?> BooksCollectionThymeleafController.deleteBatch(@PathVariable("ids") Collection<Long> ids) {
-        
+
         getBookService().delete(ids);
-        
+
         return ResponseEntity.ok().build();
     }
-    
+
     /**
      * Method that obtains the filtered and ordered records using the Datatables information and 
      * export them to a new report file. (It ignores the current pagination).
-     * 
+     *
      * To generate the report file it uses the `DynamicJasper` library
      * (http://dynamicjasper.com). This library allows developers to generate reports dynamically
      * without use an specific template to each entity.
-     * 
+     *
      * To customize the appearance of ALL generated reports, you could customize the 
      * "export_default.jrxml" template located in "src/main/resources/templates/reports/". However,
      * if you want to customize the appearance of this specific report, you could create a new
      * ".jrxml" file and provide it to the library replacing the `builder.setTemplateFile();`
      * operation used in this implementation.
-     * 
+     *
      * @param search GlobalSearch that contains the filter provided by the Datatables component.
      * @param pageable Pageable that contains the Sort info provided by the Datatabes component.
      * @param datatablesColumns Columns displayed in the Datatables component.
@@ -306,22 +308,22 @@ privileged aspect BooksCollectionThymeleafController_Roo_Thymeleaf {
     public void BooksCollectionThymeleafController.export(GlobalSearch search, @PageableDefault(size = 2147483647) Pageable pageable, String[] datatablesColumns, HttpServletResponse response, JasperReportsExporter exporter, String fileName, Locale locale) {
         // Obtain the filtered and ordered elements
         Page<Book> books = getBookService().findAll(search, pageable);
-        
+
         // Prevent generation of reports with empty data
         if (books == null || books.getContent().isEmpty()) {
             return;
         }
-        
+
         // Creates a new ReportBuilder using DynamicJasper library
         FastReportBuilder builder = new FastReportBuilder();
-        
+
         // IMPORTANT: By default, this application uses "export_default.jrxml"
         // to generate all reports. If you want to customize this specific report,
         // create a new ".jrxml" template and customize it. (Take in account the 
         // DynamicJasper restrictions: 
         // http://dynamicjasper.com/2010/10/06/how-to-use-custom-jrxml-templates/)
         builder.setTemplateFile("templates/reports/export_default.jrxml");
-        
+
         // The generated report will display the same columns as the Datatables component.
         // However, this is not mandatory. You could edit this code if you want to ignore
         // the provided datatablesColumns
@@ -332,52 +334,49 @@ privileged aspect BooksCollectionThymeleafController_Roo_Thymeleaf {
                 addColumnToReportBuilder(column, builder, locale, fileName);
             }
         }
-        
+
         // This property resizes the columns to use full width page.
         // Set false value if you want to use the specific width of each column.
         builder.setUseFullPageWidth(true);
-        
+
         // Creates a new Jasper Reports Datasource using the obtained elements
         JRDataSource ds = new JRBeanCollectionDataSource(books.getContent());
-        
+
         // Generates the JasperReport
         JasperPrint jp;
         try {
             jp = DynamicJasperHelper.generateJasperPrint(builder.build(), new ClassicLayoutManager(), ds);
-        }
-        catch (JRException e) {
-            String errorMessage = getMessageSource().getMessage("error_exportingErrorException", 
-                new Object[] {StringUtils.substringAfterLast(fileName, ".").toUpperCase()}, 
-                String.format("Error while exporting data to StringUtils file", StringUtils.
-                    substringAfterLast(fileName, ".").toUpperCase()), locale);
+        } catch (JRException e) {
+            String errorMessage = getMessageSource().getMessage("error_exportingErrorException",
+                    new Object[]{StringUtils.substringAfterLast(fileName, ".").toUpperCase()},
+                    String.format("Error while exporting data to StringUtils file", StringUtils.
+                            substringAfterLast(fileName, ".").toUpperCase()), locale);
             throw new ExportingErrorException(errorMessage);
         }
-        
+
         // Converts the JaspertReport element to a ByteArrayOutputStream and
         // write it into the response stream using the provided JasperReportExporter
         try {
             exporter.export(jp, fileName, response);
-        }
-        catch (JRException e) {
-            String errorMessage = getMessageSource().getMessage("error_exportingErrorException", 
-                new Object[] {StringUtils.substringAfterLast(fileName, ".").toUpperCase()}, 
-                String.format("Error while exporting data to StringUtils file", StringUtils.
-                    substringAfterLast(fileName, ".").toUpperCase()), locale);
+        } catch (JRException e) {
+            String errorMessage = getMessageSource().getMessage("error_exportingErrorException",
+                    new Object[]{StringUtils.substringAfterLast(fileName, ".").toUpperCase()},
+                    String.format("Error while exporting data to StringUtils file", StringUtils.
+                            substringAfterLast(fileName, ".").toUpperCase()), locale);
             throw new ExportingErrorException(errorMessage);
-        }
-        catch (IOException e) {
-            String errorMessage = getMessageSource().getMessage("error_exportingErrorException", 
-                new Object[] {StringUtils.substringAfterLast(fileName, ".").toUpperCase()}, 
-                String.format("Error while exporting data to StringUtils file", StringUtils.
-                    substringAfterLast(fileName, ".").toUpperCase()), locale);
+        } catch (IOException e) {
+            String errorMessage = getMessageSource().getMessage("error_exportingErrorException",
+                    new Object[]{StringUtils.substringAfterLast(fileName, ".").toUpperCase()},
+                    String.format("Error while exporting data to StringUtils file", StringUtils.
+                            substringAfterLast(fileName, ".").toUpperCase()), locale);
             throw new ExportingErrorException(errorMessage);
         }
     }
-    
+
     /**
      * It delegates in the `export` method providing the necessary information
      * to generate a CSV report.
-     * 
+     *
      * @param search The GlobalSearch that contains the filter provided by the Datatables component
      * @param pageable The Pageable that contains the Sort info provided by the Datatabes component
      * @param datatablesColumns The Columns displayed in the Datatables component
@@ -390,11 +389,11 @@ privileged aspect BooksCollectionThymeleafController_Roo_Thymeleaf {
         export(search, pageable, datatablesColumns, response, new JasperReportsCsvExporter(), "books_report.csv", locale);
         return ResponseEntity.ok().build();
     }
-    
+
     /**
      * It delegates in the `export` method providing the necessary information
      * to generate a PDF report.
-     * 
+     *
      * @param search The GlobalSearch that contains the filter provided by the Datatables component
      * @param pageable The Pageable that contains the Sort info provided by the Datatabes component
      * @param datatablesColumns The Columns displayed in the Datatables component
@@ -407,11 +406,11 @@ privileged aspect BooksCollectionThymeleafController_Roo_Thymeleaf {
         export(search, pageable, datatablesColumns, response, new JasperReportsPdfExporter(), "books_report.pdf", locale);
         return ResponseEntity.ok().build();
     }
-    
+
     /**
      * It delegates in the `export` method providing the necessary information
      * to generate a XLS report.
-     * 
+     *
      * @param search The GlobalSearch that contains the filter provided by the Datatables component
      * @param pageable The Pageable that contains the Sort info provided by the Datatabes component
      * @param datatablesColumns The Columns displayed in the Datatables component
@@ -424,47 +423,41 @@ privileged aspect BooksCollectionThymeleafController_Roo_Thymeleaf {
         export(search, pageable, datatablesColumns, response, new JasperReportsXlsExporter(), "books_report.xls", locale);
         return ResponseEntity.ok().build();
     }
-    
+
     /**
      * This method contains all the entity fields that are able to be displayed in a 
      * report. The developer could add a new column to the report builder providing the 
      * field name and the builder where the new field will be added as column.
-     * 
+     *
      * @param columnName the field name to show as column
      * @param builder The builder where the new field will be added as column.
      */
     public void BooksCollectionThymeleafController.addColumnToReportBuilder(String columnName, FastReportBuilder builder, Locale locale, String fileName) {
         try {
-        if (columnName.equals("id")) {
-            builder.addColumn(getMessageSource().getMessage("label_book_id", null, "Id", locale), "id", Long.class.getName(), 50);
-        }
-        else if (columnName.equals("version")) {
-            builder.addColumn(getMessageSource().getMessage("label_book_version", null, "Version", locale), "version", Integer.class.getName(), 100);
-        }
-        else if (columnName.equals("title")) {
-            builder.addColumn(getMessageSource().getMessage("label_book_title", null, "Title", locale), "title", String.class.getName(), 100);
-        }
-        else if (columnName.equals("author")) {
-            builder.addColumn(getMessageSource().getMessage("label_book_author", null, "Author", locale), "author", String.class.getName(), 100);
-        }
-        else if (columnName.equals("isbn")) {
-            builder.addColumn(getMessageSource().getMessage("label_book_isbn", null, "Isbn", locale), "isbn", String.class.getName(), 100);
-        }
-        }
-        catch (ColumnBuilderException e) {
-            String errorMessage = getMessageSource().getMessage("error_exportingErrorException", 
-                new Object[] {StringUtils.substringAfterLast(fileName, ".").toUpperCase()}, 
-                String.format("Error while exporting data to StringUtils file", StringUtils.
-                    substringAfterLast(fileName, ".").toUpperCase()), locale);
+            if (columnName.equals("id")) {
+                builder.addColumn(getMessageSource().getMessage("label_book_id", null, "Id", locale), "id", Long.class.getName(), 50);
+            } else if (columnName.equals("version")) {
+                builder.addColumn(getMessageSource().getMessage("label_book_version", null, "Version", locale), "version", Integer.class.getName(), 100);
+            } else if (columnName.equals("title")) {
+                builder.addColumn(getMessageSource().getMessage("label_book_title", null, "Title", locale), "title", String.class.getName(), 100);
+            } else if (columnName.equals("author")) {
+                builder.addColumn(getMessageSource().getMessage("label_book_author", null, "Author", locale), "author", String.class.getName(), 100);
+            } else if (columnName.equals("isbn")) {
+                builder.addColumn(getMessageSource().getMessage("label_book_isbn", null, "Isbn", locale), "isbn", String.class.getName(), 100);
+            }
+        } catch (ColumnBuilderException e) {
+            String errorMessage = getMessageSource().getMessage("error_exportingErrorException",
+                    new Object[]{StringUtils.substringAfterLast(fileName, ".").toUpperCase()},
+                    String.format("Error while exporting data to StringUtils file", StringUtils.
+                            substringAfterLast(fileName, ".").toUpperCase()), locale);
             throw new ExportingErrorException(errorMessage);
-        }
-        catch (ClassNotFoundException e) {
-            String errorMessage = getMessageSource().getMessage("error_exportingErrorException", 
-                new Object[] {StringUtils.substringAfterLast(fileName, ".").toUpperCase()}, 
-                String.format("Error while exporting data to StringUtils file", StringUtils.
-                    substringAfterLast(fileName, ".").toUpperCase()), locale);
+        } catch (ClassNotFoundException e) {
+            String errorMessage = getMessageSource().getMessage("error_exportingErrorException",
+                    new Object[]{StringUtils.substringAfterLast(fileName, ".").toUpperCase()},
+                    String.format("Error while exporting data to StringUtils file", StringUtils.
+                            substringAfterLast(fileName, ".").toUpperCase()), locale);
             throw new ExportingErrorException(errorMessage);
         }
     }
-    
+
 }

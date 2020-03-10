@@ -34,7 +34,7 @@ public class FooReactiveController {
 
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE, value = "/foos2")
     public Flux<Foo> getAllFoos() {
-        final Flux<Foo> flux = Flux.<Foo> create(fluxSink -> {
+        final Flux<Foo> flux = Flux.<Foo>create(fluxSink -> {
             while (true) {
                 fluxSink.next(new Foo(new Random().nextLong(), randomAlphabetic(6)));
             }

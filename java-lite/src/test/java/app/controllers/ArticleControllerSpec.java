@@ -24,7 +24,7 @@ public class ArticleControllerSpec extends ControllerSpec {
     @Test
     public void givenKeywordWhenFoundArticleThenCorrect() {
         request().param("key", "Java")
-            .get("search");
+                .get("search");
         a(responseContent()).shouldContain("<td>Article with Java</td>");
     }
 

@@ -44,7 +44,7 @@ class FileEncrypterDecrypter {
                     CipherInputStream cipherIn = new CipherInputStream(fileIn, cipher);
                     InputStreamReader inputReader = new InputStreamReader(cipherIn);
                     BufferedReader reader = new BufferedReader(inputReader)
-                ) {
+            ) {
 
                 StringBuilder sb = new StringBuilder();
                 String line;

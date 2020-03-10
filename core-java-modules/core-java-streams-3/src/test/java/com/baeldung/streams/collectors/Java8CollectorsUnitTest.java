@@ -87,11 +87,11 @@ public class Java8CollectorsUnitTest {
     @Test
     public void whenCollectingToMapwWithDuplicates_shouldCollectToMapMergingTheIdenticalItems() throws Exception {
         final Map<String, Integer> result = listWithDuplicates.stream().collect(
-          toMap(
-            Function.identity(),
-            String::length,
-            (item, identicalItem) -> item
-          )
+                toMap(
+                        Function.identity(),
+                        String::length,
+                        (item, identicalItem) -> item
+                )
         );
 
         assertThat(result).containsEntry("a", 1).containsEntry("bb", 2).containsEntry("c", 1).containsEntry("d", 1);

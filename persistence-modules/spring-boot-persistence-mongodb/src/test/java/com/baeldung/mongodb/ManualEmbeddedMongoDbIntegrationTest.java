@@ -36,8 +36,8 @@ class ManualEmbeddedMongoDbIntegrationTest {
         int randomPort = SocketUtils.findAvailableTcpPort();
 
         IMongodConfig mongodConfig = new MongodConfigBuilder().version(Version.Main.PRODUCTION)
-            .net(new Net(ip, randomPort, Network.localhostIsIPv6()))
-            .build();
+                .net(new Net(ip, randomPort, Network.localhostIsIPv6()))
+                .build();
 
         MongodStarter starter = MongodStarter.getDefaultInstance();
         mongodExecutable = starter.prepare(mongodConfig);
@@ -50,14 +50,14 @@ class ManualEmbeddedMongoDbIntegrationTest {
     void test() throws Exception {
         // given
         DBObject objectToSave = BasicDBObjectBuilder.start()
-            .add("key", "value")
-            .get();
+                .add("key", "value")
+                .get();
 
         // when
         mongoTemplate.save(objectToSave, "collection");
 
         // then
         assertThat(mongoTemplate.findAll(DBObject.class, "collection")).extracting("key")
-            .containsOnly("value");
+                .containsOnly("value");
     }
 }

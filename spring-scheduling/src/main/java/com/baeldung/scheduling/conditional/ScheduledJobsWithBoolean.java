@@ -21,7 +21,7 @@ public class ScheduledJobsWithBoolean {
      */
     @Scheduled(fixedDelay = 60000)
     public void cleanTempDirectory() {
-        if(isEnabled) {
+        if (isEnabled) {
             LOG.info("Cleaning temp directory via boolean flag");
         }
     }

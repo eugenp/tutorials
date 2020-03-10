@@ -51,7 +51,7 @@ public class AppConfig implements WebMvcConfigurer {
 
     /**
      * Configuration for async thread bean
-     *
+     * <p>
      * More: https://docs.spring.io/autorepo/docs/spring-framework/5.0.3.RELEASE/javadoc-api/org/springframework/scheduling/SchedulingTaskExecutor.html
      */
     @Bean

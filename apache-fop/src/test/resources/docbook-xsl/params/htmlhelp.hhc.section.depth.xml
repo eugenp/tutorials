@@ -4,24 +4,27 @@
           xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
           version="5.0" xml:id="htmlhelp.hhc.section.depth">
-<refmeta>
-<refentrytitle>htmlhelp.hhc.section.depth</refentrytitle>
-<refmiscinfo class="other" otherclass="datatype">integer</refmiscinfo>
-</refmeta>
-<refnamediv>
-<refname>htmlhelp.hhc.section.depth</refname>
-<refpurpose>Depth of TOC for sections in a left pane.</refpurpose>
-</refnamediv>
+    <refmeta>
+        <refentrytitle>htmlhelp.hhc.section.depth</refentrytitle>
+        <refmiscinfo class="other" otherclass="datatype">integer</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname>htmlhelp.hhc.section.depth</refname>
+        <refpurpose>Depth of TOC for sections in a left pane.</refpurpose>
+    </refnamediv>
 
-<refsynopsisdiv>
-<src:fragment xml:id="htmlhelp.hhc.section.depth.frag">
-<xsl:param name="htmlhelp.hhc.section.depth">5</xsl:param>
-</src:fragment>
-</refsynopsisdiv>
+    <refsynopsisdiv>
+        <src:fragment xml:id="htmlhelp.hhc.section.depth.frag">
+            <xsl:param name="htmlhelp.hhc.section.depth">5</xsl:param>
+        </src:fragment>
+    </refsynopsisdiv>
 
-<refsection><info><title>Description</title></info>
+    <refsection>
+        <info>
+            <title>Description</title>
+        </info>
 
-<para>Set the section depth in the left pane of HTML Help viewer. </para>
+        <para>Set the section depth in the left pane of HTML Help viewer.</para>
 
-</refsection>
+    </refsection>
 </refentry>

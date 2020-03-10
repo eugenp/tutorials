@@ -15,7 +15,7 @@ public class MockitoInitWithMockitoJUnitRuleUnitTest {
 
     @Rule
     public MockitoRule initRule = MockitoJUnit.rule();
-    
+
     @Mock
     private List<String> mockedList;
 

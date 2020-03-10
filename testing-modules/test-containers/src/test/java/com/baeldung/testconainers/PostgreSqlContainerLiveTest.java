@@ -31,6 +31,6 @@ public class PostgreSqlContainerLiveTest {
         String password = postgres.getPassword();
         Connection conn = DriverManager.getConnection(jdbcUrl, username, password);
         return conn.createStatement()
-            .executeQuery(query);
+                .executeQuery(query);
     }
 }

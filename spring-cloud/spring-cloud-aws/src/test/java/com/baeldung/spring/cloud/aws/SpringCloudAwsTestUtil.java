@@ -52,22 +52,22 @@ public class SpringCloudAwsTestUtil {
 
     public static AmazonS3 amazonS3() {
         return AmazonS3ClientBuilder.standard()
-            .withCredentials(awsCredentialsProvider())
-            .withRegion(defaultRegion)
-            .build();
+                .withCredentials(awsCredentialsProvider())
+                .withRegion(defaultRegion)
+                .build();
     }
 
     public static AmazonSNS amazonSNS() {
         return AmazonSNSClientBuilder.standard()
-            .withCredentials(awsCredentialsProvider())
-            .withRegion(defaultRegion)
-            .build();
+                .withCredentials(awsCredentialsProvider())
+                .withRegion(defaultRegion)
+                .build();
     }
 
     public static AmazonSQS amazonSQS() {
         return AmazonSQSClientBuilder.standard()
-            .withCredentials(awsCredentialsProvider())
-            .withRegion(defaultRegion)
-            .build();
+                .withCredentials(awsCredentialsProvider())
+                .withRegion(defaultRegion)
+                .build();
     }
 }

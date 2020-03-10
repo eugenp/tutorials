@@ -14,7 +14,7 @@ import javax.jms.Queue;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 
-@MessageDriven(activationConfig = { @ActivationConfigProperty(propertyName = "destination", propertyValue = "myQueue"), @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue") })
+@MessageDriven(activationConfig = {@ActivationConfigProperty(propertyName = "destination", propertyValue = "myQueue"), @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")})
 public class RecieverMDB implements MessageListener {
 
     @Resource

@@ -9,8 +9,8 @@ import javax.persistence.TableGenerator;
 @Entity
 public class Department {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator="table-generator")
-    @TableGenerator (name="table-generator", table="dep_ids", pkColumnName="seq_id", valueColumnName="seq_value")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "table-generator")
+    @TableGenerator(name = "table-generator", table = "dep_ids", pkColumnName = "seq_id", valueColumnName = "seq_value")
     private long depId;
 
     public long getDepId() {
@@ -20,6 +20,6 @@ public class Department {
     public void setDepId(long depId) {
         this.depId = depId;
     }
-    
-    
+
+
 }

@@ -19,23 +19,23 @@ public class FileProcessorIntegrationTest {
 
     @Autowired
     ApplicationContext context;
-    
+
     @Autowired
     File file;
-    
+
     @Test
     public void whenAllBeansCreated_FileTextEndsWithProcessed() {
         context.getBean("fileProcessor");
         assertTrue(file.getText().endsWith("processed"));
     }
 
-    @Test(expected=BeanCreationException.class)
-    public void whenDependentBeanNotAvailable_ThrowsNoSuchBeanDefinitionException(){
+    @Test(expected = BeanCreationException.class)
+    public void whenDependentBeanNotAvailable_ThrowsNoSuchBeanDefinitionException() {
         context.getBean("dummyFileProcessor");
     }
-    
-    @Test(expected=BeanCreationException.class)
-    public void whenCircularDependency_ThrowsBeanCreationException(){
+
+    @Test(expected = BeanCreationException.class)
+    public void whenCircularDependency_ThrowsBeanCreationException() {
         context.getBean("dummyFileReaderCircular");
     }
 }

@@ -31,32 +31,32 @@ public class MessagesConsumer {
 
     @Bean
     @ConditionalOnProperty(
-      value = "amqp.configuration.current",
-      havingValue = "simple-dlq")
+            value = "amqp.configuration.current",
+            havingValue = "simple-dlq")
     public SimpleDLQAmqpContainer simpleAmqpContainer() {
         return new SimpleDLQAmqpContainer(rabbitTemplate);
     }
 
     @Bean
     @ConditionalOnProperty(
-      value = "amqp.configuration.current",
-      havingValue = "routing-dlq")
+            value = "amqp.configuration.current",
+            havingValue = "routing-dlq")
     public RoutingDLQAmqpContainer routingDLQAmqpContainer() {
         return new RoutingDLQAmqpContainer(rabbitTemplate);
     }
 
     @Bean
     @ConditionalOnProperty(
-      value = "amqp.configuration.current",
-      havingValue = "dlx-custom")
+            value = "amqp.configuration.current",
+            havingValue = "dlx-custom")
     public DLQCustomAmqpContainer dlqAmqpContainer() {
         return new DLQCustomAmqpContainer(rabbitTemplate);
     }
 
     @Bean
     @ConditionalOnProperty(
-      value = "amqp.configuration.current",
-      havingValue = "parking-lot-dlx")
+            value = "amqp.configuration.current",
+            havingValue = "parking-lot-dlx")
     public ParkingLotDLQAmqpContainer parkingLotDLQAmqpContainer() {
         return new ParkingLotDLQAmqpContainer(rabbitTemplate);
     }

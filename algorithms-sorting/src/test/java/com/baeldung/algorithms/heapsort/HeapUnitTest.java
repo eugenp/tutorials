@@ -20,15 +20,15 @@ public class HeapUnitTest {
         // then
         assertThat(head).isEqualTo(1);
     }
-    
+
     @Test
     public void givenNotEmptyIterable_whenSortCalled_thenItShouldReturnElementsInSortedList() {
         // given
         List<Integer> elements = Arrays.asList(3, 5, 1, 4, 2);
-        
+
         // when
         List<Integer> sortedElements = Heap.sort(elements);
-        
+
         // then
         assertThat(sortedElements).isEqualTo(Arrays.asList(1, 2, 3, 4, 5));
     }

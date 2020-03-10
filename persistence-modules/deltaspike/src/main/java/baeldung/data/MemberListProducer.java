@@ -30,7 +30,8 @@ import java.util.List;
 @RequestScoped
 public class MemberListProducer {
 
-    @Inject private MemberRepository memberRepository;
+    @Inject
+    private MemberRepository memberRepository;
 
     private List<Member> members;
 

@@ -1,6 +1,6 @@
 package com.baeldung.algorithms.mercator;
 
-public class SphericalMercator extends  Mercator {
+public class SphericalMercator extends Mercator {
 
     @Override
     double xAxisProjection(double input) {

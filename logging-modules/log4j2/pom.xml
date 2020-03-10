@@ -105,7 +105,8 @@
                         <configuration>
                             <systemPropertyVariables>
                                 <test.mime>json</test.mime>
-                                <logging.folder.path>${java.io.tmpdir}/${maven.build.timestamp}/logfile.json</logging.folder.path>
+                                <logging.folder.path>${java.io.tmpdir}/${maven.build.timestamp}/logfile.json
+                                </logging.folder.path>
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>

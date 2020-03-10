@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for deleteEmployee complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="deleteEmployee">
  *   &lt;complexContent>
@@ -22,12 +22,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "deleteEmployee", propOrder = {
-    "arg0"
+        "arg0"
 })
 public class DeleteEmployee {
 
@@ -35,7 +33,6 @@ public class DeleteEmployee {
 
     /**
      * Gets the value of the arg0 property.
-     * 
      */
     public int getArg0() {
         return arg0;
@@ -43,7 +40,6 @@ public class DeleteEmployee {
 
     /**
      * Sets the value of the arg0 property.
-     * 
      */
     public void setArg0(int value) {
         this.arg0 = value;

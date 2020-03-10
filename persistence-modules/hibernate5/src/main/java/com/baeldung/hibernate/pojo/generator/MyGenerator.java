@@ -19,16 +19,16 @@ public class MyGenerator implements IdentifierGenerator, Configurable {
     @Override
     public Serializable generate(SharedSessionContractImplementor session, Object obj) throws HibernateException {
 
-        String query = String.format("select %s from %s", 
-            session.getEntityPersister(obj.getClass().getName(), obj).getIdentifierPropertyName(),
-            obj.getClass().getSimpleName());
+        String query = String.format("select %s from %s",
+                session.getEntityPersister(obj.getClass().getName(), obj).getIdentifierPropertyName(),
+                obj.getClass().getSimpleName());
 
         Stream<String> ids = session.createQuery(query).stream();
 
         Long max = ids.map(o -> o.replace(prefix + "-", ""))
-            .mapToLong(Long::parseLong)
-            .max()
-            .orElse(0L);
+                .mapToLong(Long::parseLong)
+                .max()
+                .orElse(0L);
 
         return prefix + "-" + (max + 1);
     }

@@ -29,7 +29,7 @@ public class FlywayApplicationUnitTest {
         Flyway flyway = new Flyway();
         flyway.setDataSource(dataSource);
         flyway.setLocations("db/migration");
-        flyway.migrate(); 
+        flyway.migrate();
     }
 
     @Test
@@ -48,7 +48,7 @@ public class FlywayApplicationUnitTest {
         Flyway flyway = new Flyway();
         flyway.setDataSource(dataSource);
         flyway.setLocations("db/migration", "db/callbacks");
-        flyway.migrate(); 
+        flyway.migrate();
     }
 
     @Test
@@ -58,11 +58,11 @@ public class FlywayApplicationUnitTest {
         flyway.setDataSource(dataSource);
         flyway.setLocations("db/migration", "db/callbacks");
         flyway.setCallbacks(new ExampleFlywayCallback());
-        flyway.migrate(); 
+        flyway.migrate();
     }
 
     private void logTestBoundary(String testName) {
         System.out.println("\n");
         log.info("> " + testName);
     }
- }
+}

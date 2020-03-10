@@ -10,11 +10,11 @@ public class TextBlocksUnitTest {
 
     @SuppressWarnings("preview")
     private static final String TEXT_BLOCK_JSON = """
-            {
-            "name" : "Baeldung",
-            "website" : "https://www.%s.com/"
-            }
-        """;
+                {
+                "name" : "Baeldung",
+                "website" : "https://www.%s.com/"
+                }
+            """;
 
     @Test
     public void whenTextBlocks_thenStringOperationsWork() {
@@ -29,11 +29,11 @@ public class TextBlocksUnitTest {
     @Test
     public void whenTextBlocks_thenFormattedWorksAsFormat() {
         assertThat(TEXT_BLOCK_JSON.formatted("baeldung")
-            .contains("www.baeldung.com")).isTrue();
+                .contains("www.baeldung.com")).isTrue();
 
         assertThat(String.format(JSON_STRING, "baeldung")
-            .contains("www.baeldung.com")).isTrue();
+                .contains("www.baeldung.com")).isTrue();
 
     }
-   
+
 }

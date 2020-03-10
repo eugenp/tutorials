@@ -2,8 +2,7 @@ package com.baeldung.algorithms.quicksort;
 
 public class ThreeWayQuickSort {
 
-    public static void threeWayQuickSort(int[] a, int begin, int end)
-    {
+    public static void threeWayQuickSort(int[] a, int begin, int end) {
         if (end <= begin) return;
 
         // partition
@@ -11,7 +10,7 @@ public class ThreeWayQuickSort {
         int less = begin;
         int greater = end;
 
-        while (i <= greater){
+        while (i <= greater) {
             if (a[i] < a[less]) {
                 int tmp = a[i];
                 a[i] = a[less];
@@ -19,15 +18,13 @@ public class ThreeWayQuickSort {
 
                 i++;
                 less++;
-            }
-            else if (a[less] < a[i])	{
+            } else if (a[less] < a[i]) {
                 int tmp = a[i];
                 a[i] = a[greater];
                 a[greater] = tmp;
 
                 greater--;
-            }
-            else {
+            } else {
                 i++;
             }
         }

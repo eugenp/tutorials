@@ -11,7 +11,7 @@ import com.baeldung.ddd.order.doubledispatch.visitor.Visitable;
 
 public class Order extends com.baeldung.ddd.order.Order implements Visitable<OrderVisitor> {
     public Order(List<OrderLine> orderLines) {
-        super(orderLines);        
+        super(orderLines);
     }
 
     public Money totalCost(SpecialDiscountPolicy discountPolicy) {
@@ -21,9 +21,9 @@ public class Order extends com.baeldung.ddd.order.Order implements Visitable<Ord
     protected double applyDiscountPolicy(SpecialDiscountPolicy discountPolicy) {
         return discountPolicy.discount(this);
     }
-    
+
     @Override
     public void accept(OrderVisitor visitor) {
-        visitor.visit(this);        
+        visitor.visit(this);
     }
 }

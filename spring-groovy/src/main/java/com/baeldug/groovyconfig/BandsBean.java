@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BandsBean {
-    
+
     private List<String> bandsList = new ArrayList<>();
 
     public List<String> getBandsList() {

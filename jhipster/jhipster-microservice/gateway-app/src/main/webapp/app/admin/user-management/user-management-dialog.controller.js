@@ -1,13 +1,13 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('gatewayApp')
-        .controller('UserManagementDialogController',UserManagementDialogController);
+        .controller('UserManagementDialogController', UserManagementDialogController);
 
     UserManagementDialogController.$inject = ['$stateParams', '$uibModalInstance', 'entity', 'User'];
 
-    function UserManagementDialogController ($stateParams, $uibModalInstance, entity, User) {
+    function UserManagementDialogController($stateParams, $uibModalInstance, entity, User) {
         var vm = this;
 
         vm.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
@@ -17,21 +17,20 @@
         vm.user = entity;
 
 
-
-        function clear () {
+        function clear() {
             $uibModalInstance.dismiss('cancel');
         }
 
-        function onSaveSuccess (result) {
+        function onSaveSuccess(result) {
             vm.isSaving = false;
             $uibModalInstance.close(result);
         }
 
-        function onSaveError () {
+        function onSaveError() {
             vm.isSaving = false;
         }
 
-        function save () {
+        function save() {
             vm.isSaving = true;
             if (vm.user.id !== null) {
                 User.update(vm.user, onSaveSuccess, onSaveError);

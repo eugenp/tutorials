@@ -9,6 +9,6 @@ public class NewsletterTask extends TimerTask {
     @Override
     public void run() {
         System.out.println("Email sent at: "
-          + LocalDateTime.ofInstant(Instant.ofEpochMilli(scheduledExecutionTime()), ZoneId.systemDefault()));
+                + LocalDateTime.ofInstant(Instant.ofEpochMilli(scheduledExecutionTime()), ZoneId.systemDefault()));
     }
 }

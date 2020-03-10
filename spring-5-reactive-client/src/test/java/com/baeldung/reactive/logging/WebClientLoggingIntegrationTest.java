@@ -5,7 +5,9 @@ import ch.qos.logback.core.Appender;
 import com.baeldung.reactive.logging.filters.LogFilters;
 import com.baeldung.reactive.logging.netty.CustomLogger;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.net.URI;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.eclipse.jetty.client.api.Request;
@@ -80,15 +82,15 @@ public class WebClientLoggingIntegrationTest {
         };
 
         WebClient
-          .builder()
-          .clientConnector(new JettyClientHttpConnector(httpClient))
-          .build()
-          .post()
-          .uri(sampleUrl)
-          .body(BodyInserters.fromObject(post))
-          .retrieve()
-          .bodyToMono(String.class)
-          .block();
+                .builder()
+                .clientConnector(new JettyClientHttpConnector(httpClient))
+                .build()
+                .post()
+                .uri(sampleUrl)
+                .body(BodyInserters.fromObject(post))
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
 
         verify(jettyAppender).doAppend(argThat(argument -> (((LoggingEvent) argument).getFormattedMessage()).contains(sampleResponseBody)));
     }
@@ -97,17 +99,17 @@ public class WebClientLoggingIntegrationTest {
     public void givenNettyHttpClientWithWiretap_whenEndpointIsConsumed_thenRequestAndResponseBodyLogged() {
 
         reactor.netty.http.client.HttpClient httpClient = HttpClient
-          .create()
-          .wiretap(true);
+                .create()
+                .wiretap(true);
         WebClient
-          .builder()
-          .clientConnector(new ReactorClientHttpConnector(httpClient))
-          .build()
-          .post()
-          .uri(sampleUrl)
-          .body(BodyInserters.fromObject(post))
-          .exchange()
-          .block();
+                .builder()
+                .clientConnector(new ReactorClientHttpConnector(httpClient))
+                .build()
+                .post()
+                .uri(sampleUrl)
+                .body(BodyInserters.fromObject(post))
+                .exchange()
+                .block();
 
         verify(nettyAppender).doAppend(argThat(argument -> (((LoggingEvent) argument).getFormattedMessage()).contains("00000300")));
     }
@@ -116,19 +118,19 @@ public class WebClientLoggingIntegrationTest {
     public void givenNettyHttpClientWithCustomLogger_whenEndpointIsConsumed_thenRequestAndResponseBodyLogged() {
 
         reactor.netty.http.client.HttpClient httpClient = HttpClient
-          .create()
-          .tcpConfiguration(
-            tc -> tc.bootstrap(
-              b -> BootstrapHandlers.updateLogSupport(b, new CustomLogger(HttpClient.class))));
+                .create()
+                .tcpConfiguration(
+                        tc -> tc.bootstrap(
+                                b -> BootstrapHandlers.updateLogSupport(b, new CustomLogger(HttpClient.class))));
         WebClient
-          .builder()
-          .clientConnector(new ReactorClientHttpConnector(httpClient))
-          .build()
-          .post()
-          .uri(sampleUrl)
-          .body(BodyInserters.fromObject(post))
-          .exchange()
-          .block();
+                .builder()
+                .clientConnector(new ReactorClientHttpConnector(httpClient))
+                .build()
+                .post()
+                .uri(sampleUrl)
+                .body(BodyInserters.fromObject(post))
+                .exchange()
+                .block();
 
         verify(nettyAppender).doAppend(argThat(argument -> (((LoggingEvent) argument).getFormattedMessage()).contains(sampleResponseBody)));
     }
@@ -136,16 +138,16 @@ public class WebClientLoggingIntegrationTest {
     @Test
     public void givenDefaultHttpClientWithFilter_whenEndpointIsConsumed_thenRequestAndResponseLogged() {
         WebClient
-          .builder()
-          .filters(exchangeFilterFunctions -> {
-              exchangeFilterFunctions.addAll(LogFilters.prepareFilters());
-          })
-          .build()
-          .post()
-          .uri(sampleUrl)
-          .body(BodyInserters.fromObject(post))
-          .exchange()
-          .block();
+                .builder()
+                .filters(exchangeFilterFunctions -> {
+                    exchangeFilterFunctions.addAll(LogFilters.prepareFilters());
+                })
+                .build()
+                .post()
+                .uri(sampleUrl)
+                .body(BodyInserters.fromObject(post))
+                .exchange()
+                .block();
 
         verify(mockAppender).doAppend(argThat(argument -> (((LoggingEvent) argument).getFormattedMessage()).contains("domain=.typicode.com;")));
     }

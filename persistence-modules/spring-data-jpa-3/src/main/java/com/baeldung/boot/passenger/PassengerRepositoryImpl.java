@@ -15,6 +15,6 @@ class PassengerRepositoryImpl implements CustomPassengerRepository {
     @Override
     public List<Passenger> findOrderedBySeatNumberLimitedTo(int limit) {
         return entityManager.createQuery("SELECT p FROM Passenger p ORDER BY p.seatNumber",
-          Passenger.class).setMaxResults(limit).getResultList();
+                Passenger.class).setMaxResults(limit).getResultList();
     }
 }

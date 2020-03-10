@@ -21,7 +21,8 @@ public class SpringBootH2IntegrationTest {
     private UserRepository userRepository;
 
     @Test
-    public void contextLoads() { }
+    public void contextLoads() {
+    }
 
     @Test
     public void givenUserProfile_whenAddUser_thenCreateNewUser() {
@@ -44,7 +45,7 @@ public class SpringBootH2IntegrationTest {
         assertEquals(user.getLastName(), lastName);
 
         userRepository.deleteById(user.getId());
-        assertTrue( ((List<User>) userRepository.findAll()).isEmpty());
+        assertTrue(((List<User>) userRepository.findAll()).isEmpty());
     }
 
 }

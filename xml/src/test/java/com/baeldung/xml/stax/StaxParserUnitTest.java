@@ -10,7 +10,7 @@ import org.junit.Test;
 
 
 public class StaxParserUnitTest {
-    
+
     @Test
     public void givenWebsitesXML_whenParsed_thenNotNull() {
         List<WebSite> websites = StaxParser.parse("src/test/resources/xml/websites.xml");
@@ -22,7 +22,7 @@ public class StaxParserUnitTest {
         List<WebSite> websites = StaxParser.parse("src/test/resources/xml/websites.xml");
         assertEquals(3, websites.size());
     }
-    
+
     @Test
     public void givenWebsitesXML_whenParsed_thenLocalhostExists() {
         List<WebSite> websites = StaxParser.parse("src/test/resources/xml/websites.xml");

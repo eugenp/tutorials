@@ -11,8 +11,8 @@ import org.springframework.data.map.MapKeyValueAdapter;
 
 @Configuration
 public class Configurations {
-	
-	//To be used only if @EnableMapRepositories is not used.
+
+    //To be used only if @EnableMapRepositories is not used.
     //Else @EnableMapRepositories gives us a template as well.    
     @Bean("keyValueTemplate")
     public KeyValueOperations keyValueTemplate() {
@@ -24,5 +24,5 @@ public class Configurations {
     public KeyValueAdapter keyValueAdapter() {
         return new MapKeyValueAdapter(ConcurrentHashMap.class);
     }
-	
+
 }

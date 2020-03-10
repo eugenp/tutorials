@@ -8,12 +8,12 @@ import com.baeldung.contexts.Greeting;
 
 @Service
 public class GreeterService {
-    
+
     @Resource
     private Greeting greeting;
-    
-    public String greet(){
+
+    public String greet() {
         return greeting.getMessage();
     }
-    
+
 }

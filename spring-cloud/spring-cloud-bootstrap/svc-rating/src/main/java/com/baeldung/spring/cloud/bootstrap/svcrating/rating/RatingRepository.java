@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-interface RatingRepository extends JpaRepository<Rating, Long>{
+interface RatingRepository extends JpaRepository<Rating, Long> {
     List<Rating> findRatingsByBookId(Long bookId);
 }

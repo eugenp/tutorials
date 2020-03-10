@@ -13,21 +13,21 @@ public class MapMultipleFieldsToSingleFieldUnitTest {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        Weather weather = mapper.readValue("{" + 
-            "\"location\": \"London\"," + 
-            "\"temp\": 15," + 
-            "\"weather\": \"Cloudy\"" + 
-            "}", Weather.class);
+        Weather weather = mapper.readValue("{" +
+                "\"location\": \"London\"," +
+                "\"temp\": 15," +
+                "\"weather\": \"Cloudy\"" +
+                "}", Weather.class);
 
         assertEquals("London", weather.getLocation());
         assertEquals("Cloudy", weather.getOutlook());
         assertEquals(15, weather.getTemp());
 
-        weather = mapper.readValue("{" + 
-            "\"place\": \"Lisbon\"," + 
-            "\"temperature\": 35," + 
-            "\"outlook\": \"Sunny\"" + 
-            "}", Weather.class);
+        weather = mapper.readValue("{" +
+                "\"place\": \"Lisbon\"," +
+                "\"temperature\": 35," +
+                "\"outlook\": \"Sunny\"" +
+                "}", Weather.class);
 
         assertEquals("Lisbon", weather.getLocation());
         assertEquals("Sunny", weather.getOutlook());

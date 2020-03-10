@@ -1,4 +1,4 @@
-(function() {
+(function () {
     /*jshint bitwise: false*/
     'use strict';
 
@@ -6,7 +6,7 @@
         .module('gatewayApp')
         .factory('Base64', Base64);
 
-    function Base64 () {
+    function Base64() {
         var keyStr = 'ABCDEFGHIJKLMNOP' +
             'QRSTUVWXYZabcdef' +
             'ghijklmnopqrstuv' +
@@ -14,13 +14,13 @@
             '=';
 
         var service = {
-            decode : decode,
-            encode : encode
+            decode: decode,
+            encode: encode
         };
 
         return service;
 
-        function encode (input) {
+        function encode(input) {
             var output = '',
                 chr1, chr2, chr3,
                 enc1, enc2, enc3, enc4,
@@ -52,7 +52,7 @@
             return output;
         }
 
-        function decode (input) {
+        function decode(input) {
             var output = '',
                 chr1, chr2, chr3,
                 enc1, enc2, enc3, enc4,

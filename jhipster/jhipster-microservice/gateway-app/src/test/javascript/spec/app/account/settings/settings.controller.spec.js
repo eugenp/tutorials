@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller Tests', function() {
+describe('Controller Tests', function () {
 
     beforeEach(mockApiAccountCall);
     beforeEach(mockI18nCalls);
 
-    describe('SettingsController', function() {
+    describe('SettingsController', function () {
 
         var $scope, $q; // actual implementations
         var MockPrincipal, MockAuth; // mocks
         var createController; // local utility functions
 
-        beforeEach(inject(function($injector) {
+        beforeEach(inject(function ($injector) {
             $q = $injector.get('$q');
             $scope = $injector.get("$rootScope").$new();
             MockAuth = jasmine.createSpyObj('MockAuth', ['updateAccount']);
@@ -21,12 +21,12 @@ describe('Controller Tests', function() {
                 'Principal': MockPrincipal,
                 'Auth': MockAuth
             };
-            createController = function() {
+            createController = function () {
                 $injector.get('$controller')('SettingsController as vm', locals);
             }
         }));
 
-        it('should send the current identity upon save', function() {
+        it('should send the current identity upon save', function () {
             //GIVEN
             var accountValues = {
                 firstName: "John",
@@ -50,7 +50,7 @@ describe('Controller Tests', function() {
             expect($scope.vm.settingsAccount).toEqual(accountValues);
         });
 
-        it('should notify of success upon successful save', function() {
+        it('should notify of success upon successful save', function () {
             //GIVEN
             var accountValues = {
                 firstName: "John",
@@ -68,7 +68,7 @@ describe('Controller Tests', function() {
             expect($scope.vm.success).toBe('OK');
         });
 
-        it('should notify of error upon failed save', function() {
+        it('should notify of error upon failed save', function () {
             //GIVEN
             MockPrincipal.identity.and.returnValue($q.resolve({}));
             MockAuth.updateAccount.and.returnValue($q.reject());

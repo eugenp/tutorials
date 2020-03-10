@@ -17,20 +17,20 @@ public class JerseyClient {
 
     public static String getHelloGreeting() {
         return createClient().target(URI_GREETINGS)
-            .request()
-            .get(String.class);
+                .request()
+                .get(String.class);
     }
 
     public static String getHiGreeting() {
         return createClient().target(URI_GREETINGS + "/hi")
-            .request()
-            .get(String.class);
+                .request()
+                .get(String.class);
     }
 
     public static Response getCustomGreeting() {
         return createClient().target(URI_GREETINGS + "/custom")
-            .request()
-            .post(Entity.text("custom"));
+                .request()
+                .post(Entity.text("custom"));
     }
 
     private static Client createClient() {

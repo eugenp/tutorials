@@ -35,8 +35,8 @@ public class JacksonExceptionsUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
 
         mapper.reader()
-            .forType(Zoo.class)
-            .readValue(json);
+                .forType(Zoo.class)
+                .readValue(json);
     }
 
     @Test
@@ -45,8 +45,8 @@ public class JacksonExceptionsUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
 
         mapper.reader()
-            .forType(ZooConfigured.class)
-            .readValue(json);
+                .forType(ZooConfigured.class)
+                .readValue(json);
     }
 
     // JsonMappingException: No serializer found for class
@@ -56,7 +56,7 @@ public class JacksonExceptionsUnitTest {
 
         final ObjectMapper mapper = new ObjectMapper();
         mapper.writer()
-            .writeValueAsString(user);
+                .writeValueAsString(user);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class JacksonExceptionsUnitTest {
         mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 
         final String result = mapper.writer()
-            .writeValueAsString(user);
+                .writeValueAsString(user);
         assertThat(result, containsString("John"));
     }
 
@@ -78,8 +78,8 @@ public class JacksonExceptionsUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
 
         mapper.reader()
-            .forType(UserWithNoDefaultConstructor.class)
-            .readValue(json);
+                .forType(UserWithNoDefaultConstructor.class)
+                .readValue(json);
     }
 
     @Test
@@ -88,8 +88,8 @@ public class JacksonExceptionsUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
 
         final User user = mapper.reader()
-            .forType(User.class)
-            .readValue(json);
+                .forType(User.class)
+                .readValue(json);
         assertEquals("John", user.name);
     }
 
@@ -102,8 +102,8 @@ public class JacksonExceptionsUnitTest {
         mapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
 
         mapper.reader()
-            .forType(User.class)
-            .readValue(json);
+                .forType(User.class)
+                .readValue(json);
     }
 
     @Test
@@ -114,8 +114,8 @@ public class JacksonExceptionsUnitTest {
         mapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
 
         final UserWithRoot user = mapper.reader()
-            .forType(UserWithRoot.class)
-            .readValue(json);
+                .forType(UserWithRoot.class)
+                .readValue(json);
         assertEquals("John", user.name);
     }
 
@@ -126,8 +126,8 @@ public class JacksonExceptionsUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
 
         mapper.reader()
-            .forType(User.class)
-            .readValue(json);
+                .forType(User.class)
+                .readValue(json);
     }
 
     @Test
@@ -136,9 +136,9 @@ public class JacksonExceptionsUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
 
         final List<User> users = mapper.reader()
-            .forType(new TypeReference<List<User>>() {
-            })
-            .readValue(json);
+                .forType(new TypeReference<List<User>>() {
+                })
+                .readValue(json);
 
         assertEquals(2, users.size());
     }
@@ -150,8 +150,8 @@ public class JacksonExceptionsUnitTest {
 
         final ObjectMapper mapper = new ObjectMapper();
         mapper.reader()
-            .forType(User.class)
-            .readValue(json);
+                .forType(User.class)
+                .readValue(json);
     }
 
     @Test
@@ -162,8 +162,8 @@ public class JacksonExceptionsUnitTest {
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
         final User user = mapper.reader()
-            .forType(User.class)
-            .readValue(json);
+                .forType(User.class)
+                .readValue(json);
         assertEquals("John", user.name);
     }
 
@@ -174,8 +174,8 @@ public class JacksonExceptionsUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
 
         mapper.reader()
-            .forType(User.class)
-            .readValue(json);
+                .forType(User.class)
+                .readValue(json);
     }
 
     @Test
@@ -187,8 +187,8 @@ public class JacksonExceptionsUnitTest {
         final ObjectMapper mapper = new ObjectMapper(factory);
 
         final User user = mapper.reader()
-            .forType(User.class)
-            .readValue(json);
+                .forType(User.class)
+                .readValue(json);
         assertEquals("John", user.name);
     }
 

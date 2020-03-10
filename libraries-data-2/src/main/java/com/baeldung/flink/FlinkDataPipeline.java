@@ -25,55 +25,55 @@ public class FlinkDataPipeline {
         String address = "localhost:9092";
 
         StreamExecutionEnvironment environment =
-          StreamExecutionEnvironment.getExecutionEnvironment();
+                StreamExecutionEnvironment.getExecutionEnvironment();
 
         FlinkKafkaConsumer011<String> flinkKafkaConsumer =
-          createStringConsumerForTopic(inputTopic, address, consumerGroup);
+                createStringConsumerForTopic(inputTopic, address, consumerGroup);
         flinkKafkaConsumer.setStartFromEarliest();
 
         DataStream<String> stringInputStream =
-          environment.addSource(flinkKafkaConsumer);
+                environment.addSource(flinkKafkaConsumer);
 
         FlinkKafkaProducer011<String> flinkKafkaProducer =
-        createStringProducer(outputTopic, address);
+                createStringProducer(outputTopic, address);
 
         stringInputStream
-          .map(new WordsCapitalizer())
-          .addSink(flinkKafkaProducer);
+                .map(new WordsCapitalizer())
+                .addSink(flinkKafkaProducer);
 
         environment.execute();
     }
 
-public static void createBackup () throws Exception {
-    String inputTopic = "flink_input";
-    String outputTopic = "flink_output";
-    String consumerGroup = "baeldung";
-    String kafkaAddress = "localhost:9092";
+    public static void createBackup() throws Exception {
+        String inputTopic = "flink_input";
+        String outputTopic = "flink_output";
+        String consumerGroup = "baeldung";
+        String kafkaAddress = "localhost:9092";
 
-    StreamExecutionEnvironment environment =
-      StreamExecutionEnvironment.getExecutionEnvironment();
+        StreamExecutionEnvironment environment =
+                StreamExecutionEnvironment.getExecutionEnvironment();
 
-    environment.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+        environment.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
-    FlinkKafkaConsumer011<InputMessage> flinkKafkaConsumer =
-      createInputMessageConsumer(inputTopic, kafkaAddress, consumerGroup);
-    flinkKafkaConsumer.setStartFromEarliest();
+        FlinkKafkaConsumer011<InputMessage> flinkKafkaConsumer =
+                createInputMessageConsumer(inputTopic, kafkaAddress, consumerGroup);
+        flinkKafkaConsumer.setStartFromEarliest();
 
-    flinkKafkaConsumer
-      .assignTimestampsAndWatermarks(new InputMessageTimestampAssigner());
-    FlinkKafkaProducer011<Backup> flinkKafkaProducer =
-      createBackupProducer(outputTopic, kafkaAddress);
+        flinkKafkaConsumer
+                .assignTimestampsAndWatermarks(new InputMessageTimestampAssigner());
+        FlinkKafkaProducer011<Backup> flinkKafkaProducer =
+                createBackupProducer(outputTopic, kafkaAddress);
 
-    DataStream<InputMessage> inputMessagesStream =
-      environment.addSource(flinkKafkaConsumer);
+        DataStream<InputMessage> inputMessagesStream =
+                environment.addSource(flinkKafkaConsumer);
 
-    inputMessagesStream
-      .timeWindowAll(Time.hours(24))
-      .aggregate(new BackupAggregator())
-      .addSink(flinkKafkaProducer);
+        inputMessagesStream
+                .timeWindowAll(Time.hours(24))
+                .aggregate(new BackupAggregator())
+                .addSink(flinkKafkaProducer);
 
-    environment.execute();
-}
+        environment.execute();
+    }
 
     public static void main(String[] args) throws Exception {
         createBackup();

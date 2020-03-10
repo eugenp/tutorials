@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,9 +7,9 @@
 
     GatewayRoutes.$inject = ['$resource'];
 
-    function GatewayRoutes ($resource) {
+    function GatewayRoutes($resource) {
         var service = $resource('api/gateway/routes/:id', {}, {
-            'query': { method: 'GET', isArray: true},
+            'query': {method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
@@ -17,7 +17,7 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': {method: 'PUT'}
         });
 
         return service;

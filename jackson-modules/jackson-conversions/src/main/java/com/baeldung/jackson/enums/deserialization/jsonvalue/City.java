@@ -1,7 +1,7 @@
 package com.baeldung.jackson.enums.deserialization.jsonvalue;
 
 public class City {
-    
+
     private Distance distance;
 
     public Distance getDistance() {
@@ -11,5 +11,5 @@ public class City {
     public void setDistance(Distance distance) {
         this.distance = distance;
     }
-    
+
 }

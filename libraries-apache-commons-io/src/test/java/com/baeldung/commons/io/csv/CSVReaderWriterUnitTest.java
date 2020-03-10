@@ -23,7 +23,7 @@ public class CSVReaderWriterUnitTest {
             put("Douglas Adams", "The Hitchhiker's Guide to the Galaxy");
         }
     });
-    public static final String[] HEADERS = { "author", "title" };
+    public static final String[] HEADERS = {"author", "title"};
     public static final String EXPECTED_FILESTREAM = "author,title\r\n" + "Dan Simmons,Hyperion\r\n" + "Douglas Adams,The Hitchhiker's Guide to the Galaxy";
 
     @Test

@@ -1,19 +1,21 @@
-import { Injectable, Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { Comment } from './comment.model';
-import { CommentService } from './comment.service';
+import {Injectable, Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {Comment} from './comment.model';
+import {CommentService} from './comment.service';
+
 @Injectable()
 export class CommentPopupService {
     private isOpen = false;
-    constructor (
+
+    constructor(
         private modalService: NgbModal,
         private router: Router,
         private commentService: CommentService
+    ) {
+    }
 
-    ) {}
-
-    open (component: Component, id?: number | any): NgbModalRef {
+    open(component: Component, id?: number | any): NgbModalRef {
         if (this.isOpen) {
             return;
         }
@@ -36,13 +38,13 @@ export class CommentPopupService {
     }
 
     commentModalRef(component: Component, comment: Comment): NgbModalRef {
-        let modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
+        let modalRef = this.modalService.open(component, {size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.comment = comment;
         modalRef.result.then(result => {
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
+            this.router.navigate([{outlets: {popup: null}}], {replaceUrl: true});
             this.isOpen = false;
         }, (reason) => {
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
+            this.router.navigate([{outlets: {popup: null}}], {replaceUrl: true});
             this.isOpen = false;
         });
         return modalRef;

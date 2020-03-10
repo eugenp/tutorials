@@ -13,7 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { CustomAnnotationConfiguration.class })
+@ContextConfiguration(classes = {CustomAnnotationConfiguration.class})
 public class DataAccessAnnotationIntegrationTest {
 
     @DataAccess(entity = Person.class)

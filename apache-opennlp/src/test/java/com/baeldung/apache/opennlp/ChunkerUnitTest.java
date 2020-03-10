@@ -2,12 +2,15 @@ package com.baeldung.apache.opennlp;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+
 import opennlp.tools.chunker.ChunkerME;
 import opennlp.tools.chunker.ChunkerModel;
 import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSTaggerME;
 import opennlp.tools.tokenize.SimpleTokenizer;
+
 import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 
 public class ChunkerUnitTest {

@@ -56,7 +56,7 @@ public class AccessControlFilter extends ZuulFilter {
             // If this route correspond to the current request URI
             // We do a substring to remove the "**" at the end of the route URL
             if (requestUri.startsWith(serviceUrl.substring(0, serviceUrl.length() - 2))) {
-				return !isAuthorizedRequest(serviceUrl, serviceName, requestUri);
+                return !isAuthorizedRequest(serviceUrl, serviceName, requestUri);
             }
         }
         return true;
@@ -64,12 +64,12 @@ public class AccessControlFilter extends ZuulFilter {
 
     private boolean isAuthorizedRequest(String serviceUrl, String serviceName, String requestUri) {
         Map<String, List<String>> authorizedMicroservicesEndpoints = jHipsterProperties.getGateway()
-            .getAuthorizedMicroservicesEndpoints();
+                .getAuthorizedMicroservicesEndpoints();
 
         // If the authorized endpoints list was left empty for this route, all access are allowed
         if (authorizedMicroservicesEndpoints.get(serviceName) == null) {
             log.debug("Access Control: allowing access for {}, as no access control policy has been set up for " +
-                "service: {}", requestUri, serviceName);
+                    "service: {}", requestUri, serviceName);
             return true;
         } else {
             List<String> authorizedEndpoints = authorizedMicroservicesEndpoints.get(serviceName);
@@ -80,7 +80,7 @@ public class AccessControlFilter extends ZuulFilter {
                 String gatewayEndpoint = serviceUrl.substring(0, serviceUrl.length() - 3) + endpoint;
                 if (requestUri.startsWith(gatewayEndpoint)) {
                     log.debug("Access Control: allowing access for {}, as it matches the following authorized " +
-                        "microservice endpoint: {}", requestUri, gatewayEndpoint);
+                            "microservice endpoint: {}", requestUri, gatewayEndpoint);
                     return true;
                 }
             }

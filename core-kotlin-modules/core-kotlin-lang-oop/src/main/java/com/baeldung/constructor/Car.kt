@@ -13,5 +13,5 @@ class Car {
 
 fun main(args: Array<String>) {
     val car = Car("1", "sport")
-    val s= Car("2", "suv")
+    val s = Car("2", "suv")
 }

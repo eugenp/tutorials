@@ -41,12 +41,12 @@ public class ZonedDateTimeUnitTest {
 
         log.info(zonedDateTime.format(DateTimeFormatter.ISO_ZONED_DATE_TIME));
     }
-    
+
     @Test
     public void givenString_whenParseZonedDateTimeWithoutZone_thenException() {
         assertThrows(DateTimeParseException.class, () -> ZonedDateTime.parse("2011-12-03T10:15:30", DateTimeFormatter.ISO_DATE_TIME));
     }
-    
+
     @Test
     public void givenString_whenParseLocalDateTimeAtZone_thenOk() {
         ZoneId timeZone = ZoneId.systemDefault();

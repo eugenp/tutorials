@@ -28,7 +28,7 @@ import com.baeldung.spring.controller.rss.JsonChannelHttpMessageConverter;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.baeldung.springmvcforms", "com.baeldung.spring.controller", "com.baeldung.spring.validator", "com.baeldung.spring.mail", "com.baeldung.spring.service" })
+@ComponentScan(basePackages = {"com.baeldung.springmvcforms", "com.baeldung.spring.controller", "com.baeldung.spring.validator", "com.baeldung.spring.mail", "com.baeldung.spring.service"})
 public class ApplicationConfiguration implements WebMvcConfigurer {
 
     @Override
@@ -42,7 +42,7 @@ public class ApplicationConfiguration implements WebMvcConfigurer {
         cnvResolver.setContentNegotiationManager(cnManager);
         List<ViewResolver> resolvers = new ArrayList<>();
 
-        InternalResourceViewResolver bean = new InternalResourceViewResolver("/WEB-INF/views/",".jsp");
+        InternalResourceViewResolver bean = new InternalResourceViewResolver("/WEB-INF/views/", ".jsp");
         ArticleRssFeedViewResolver articleRssFeedViewResolver = new ArticleRssFeedViewResolver();
 
         resolvers.add(bean);
@@ -65,29 +65,29 @@ public class ApplicationConfiguration implements WebMvcConfigurer {
         converters.add(new RssChannelHttpMessageConverter());
         converters.add(new JsonChannelHttpMessageConverter());
     }
-    
+
     @Bean
     public SimpleMailMessage templateSimpleMessage() {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setText("This is the test email template for your email:\n%s\n");
         return message;
     }
-    
+
     @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
-        
+
         mailSender.setUsername("my.gmail@gmail.com");
         mailSender.setPassword("password");
-        
+
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.debug", "true");
-        
+
         return mailSender;
     }
 }

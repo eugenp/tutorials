@@ -24,12 +24,12 @@ public class HttpRequestUnitTest {
     @Test
     public void shouldReturnStatusOKWhenSendGetRequest() throws IOException, InterruptedException, URISyntaxException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("https://postman-echo.com/get"))
-            .GET()
-            .build();
+                .uri(new URI("https://postman-echo.com/get"))
+                .GET()
+                .build();
 
         HttpResponse<String> response = HttpClient.newHttpClient()
-            .send(request, HttpResponse.BodyHandlers.ofString());
+                .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(response.statusCode(), equalTo(HttpURLConnection.HTTP_OK));
     }
@@ -37,12 +37,12 @@ public class HttpRequestUnitTest {
     @Test
     public void shouldUseHttp2WhenWebsiteUsesHttp2() throws IOException, InterruptedException, URISyntaxException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("https://stackoverflow.com"))
-            .version(HttpClient.Version.HTTP_2)
-            .GET()
-            .build();
+                .uri(new URI("https://stackoverflow.com"))
+                .version(HttpClient.Version.HTTP_2)
+                .GET()
+                .build();
         HttpResponse<String> response = HttpClient.newHttpClient()
-            .send(request, HttpResponse.BodyHandlers.ofString());
+                .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(response.statusCode(), equalTo(HttpURLConnection.HTTP_OK));
         assertThat(response.version(), equalTo(HttpClient.Version.HTTP_2));
@@ -51,13 +51,13 @@ public class HttpRequestUnitTest {
     @Test
     public void shouldFallbackToHttp1_1WhenWebsiteDoesNotUseHttp2() throws IOException, InterruptedException, URISyntaxException, NoSuchAlgorithmException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("https://postman-echo.com/get"))
-            .version(HttpClient.Version.HTTP_2)
-            .GET()
-            .build();
+                .uri(new URI("https://postman-echo.com/get"))
+                .version(HttpClient.Version.HTTP_2)
+                .GET()
+                .build();
 
         HttpResponse<String> response = HttpClient.newHttpClient()
-            .send(request, HttpResponse.BodyHandlers.ofString());
+                .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(response.version(), equalTo(HttpClient.Version.HTTP_1_1));
     }
@@ -65,13 +65,13 @@ public class HttpRequestUnitTest {
     @Test
     public void shouldReturnStatusOKWhenSendGetRequestWithDummyHeaders() throws IOException, InterruptedException, URISyntaxException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("https://postman-echo.com/get"))
-            .headers("key1", "value1", "key2", "value2")
-            .GET()
-            .build();
+                .uri(new URI("https://postman-echo.com/get"))
+                .headers("key1", "value1", "key2", "value2")
+                .GET()
+                .build();
 
         HttpResponse<String> response = HttpClient.newHttpClient()
-            .send(request, HttpResponse.BodyHandlers.ofString());
+                .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(response.statusCode(), equalTo(HttpURLConnection.HTTP_OK));
     }
@@ -79,13 +79,13 @@ public class HttpRequestUnitTest {
     @Test
     public void shouldReturnStatusOKWhenSendGetRequestTimeoutSet() throws IOException, InterruptedException, URISyntaxException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("https://postman-echo.com/get"))
-            .timeout(Duration.of(10, SECONDS))
-            .GET()
-            .build();
+                .uri(new URI("https://postman-echo.com/get"))
+                .timeout(Duration.of(10, SECONDS))
+                .GET()
+                .build();
 
         HttpResponse<String> response = HttpClient.newHttpClient()
-            .send(request, HttpResponse.BodyHandlers.ofString());
+                .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(response.statusCode(), equalTo(HttpURLConnection.HTTP_OK));
     }
@@ -93,12 +93,12 @@ public class HttpRequestUnitTest {
     @Test
     public void shouldReturnNoContentWhenPostWithNoBody() throws IOException, InterruptedException, URISyntaxException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("https://postman-echo.com/post"))
-            .POST(HttpRequest.BodyPublishers.noBody())
-            .build();
+                .uri(new URI("https://postman-echo.com/post"))
+                .POST(HttpRequest.BodyPublishers.noBody())
+                .build();
 
         HttpResponse<String> response = HttpClient.newHttpClient()
-            .send(request, HttpResponse.BodyHandlers.ofString());
+                .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(response.statusCode(), equalTo(HttpURLConnection.HTTP_OK));
     }
@@ -106,13 +106,13 @@ public class HttpRequestUnitTest {
     @Test
     public void shouldReturnSampleDataContentWhenPostWithBodyText() throws IOException, InterruptedException, URISyntaxException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("https://postman-echo.com/post"))
-            .headers("Content-Type", "text/plain;charset=UTF-8")
-            .POST(HttpRequest.BodyPublishers.ofString("Sample request body"))
-            .build();
+                .uri(new URI("https://postman-echo.com/post"))
+                .headers("Content-Type", "text/plain;charset=UTF-8")
+                .POST(HttpRequest.BodyPublishers.ofString("Sample request body"))
+                .build();
 
         HttpResponse<String> response = HttpClient.newHttpClient()
-            .send(request, HttpResponse.BodyHandlers.ofString());
+                .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(response.statusCode(), equalTo(HttpURLConnection.HTTP_OK));
         assertThat(response.body(), containsString("Sample request body"));
@@ -122,13 +122,13 @@ public class HttpRequestUnitTest {
     public void shouldReturnSampleDataContentWhenPostWithInputStream() throws IOException, InterruptedException, URISyntaxException {
         byte[] sampleData = "Sample request body".getBytes();
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("https://postman-echo.com/post"))
-            .headers("Content-Type", "text/plain;charset=UTF-8")
-            .POST(HttpRequest.BodyPublishers.ofInputStream(() -> new ByteArrayInputStream(sampleData)))
-            .build();
+                .uri(new URI("https://postman-echo.com/post"))
+                .headers("Content-Type", "text/plain;charset=UTF-8")
+                .POST(HttpRequest.BodyPublishers.ofInputStream(() -> new ByteArrayInputStream(sampleData)))
+                .build();
 
         HttpResponse<String> response = HttpClient.newHttpClient()
-            .send(request, HttpResponse.BodyHandlers.ofString());
+                .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(response.statusCode(), equalTo(HttpURLConnection.HTTP_OK));
         assertThat(response.body(), containsString("Sample request body"));
@@ -138,13 +138,13 @@ public class HttpRequestUnitTest {
     public void shouldReturnSampleDataContentWhenPostWithByteArrayProcessorStream() throws IOException, InterruptedException, URISyntaxException {
         byte[] sampleData = "Sample request body".getBytes();
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("https://postman-echo.com/post"))
-            .headers("Content-Type", "text/plain;charset=UTF-8")
-            .POST(HttpRequest.BodyPublishers.ofByteArray(sampleData))
-            .build();
+                .uri(new URI("https://postman-echo.com/post"))
+                .headers("Content-Type", "text/plain;charset=UTF-8")
+                .POST(HttpRequest.BodyPublishers.ofByteArray(sampleData))
+                .build();
 
         HttpResponse<String> response = HttpClient.newHttpClient()
-            .send(request, HttpResponse.BodyHandlers.ofString());
+                .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(response.statusCode(), equalTo(HttpURLConnection.HTTP_OK));
         assertThat(response.body(), containsString("Sample request body"));
@@ -153,13 +153,13 @@ public class HttpRequestUnitTest {
     @Test
     public void shouldReturnSampleDataContentWhenPostWithFileProcessorStream() throws IOException, InterruptedException, URISyntaxException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("https://postman-echo.com/post"))
-            .headers("Content-Type", "text/plain;charset=UTF-8")
-            .POST(HttpRequest.BodyPublishers.ofFile(Paths.get("src/test/resources/sample.txt")))
-            .build();
+                .uri(new URI("https://postman-echo.com/post"))
+                .headers("Content-Type", "text/plain;charset=UTF-8")
+                .POST(HttpRequest.BodyPublishers.ofFile(Paths.get("src/test/resources/sample.txt")))
+                .build();
 
         HttpResponse<String> response = HttpClient.newHttpClient()
-            .send(request, HttpResponse.BodyHandlers.ofString());
+                .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(response.statusCode(), equalTo(HttpURLConnection.HTTP_OK));
         assertThat(response.body(), containsString("Sample file content"));

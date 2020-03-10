@@ -26,17 +26,17 @@ public class Spring5ReactiveServerClientIntegrationTest {
     @BeforeAll
     public static void setUp() throws Exception {
         HttpServer server = HttpServer.create()
-            .host("localhost")
-            .port(8080);
+                .host("localhost")
+                .port(8080);
         RouterFunction<?> route = RouterFunctions.route(POST("/task/process"), request -> ServerResponse.ok()
-            .body(request.bodyToFlux(Task.class)
-                .map(ll -> new Task("TaskName", 1)), Task.class))
-            .and(RouterFunctions.route(GET("/task"), request -> ServerResponse.ok()
-                .body(Mono.just("server is alive"), String.class)));
+                .body(request.bodyToFlux(Task.class)
+                        .map(ll -> new Task("TaskName", 1)), Task.class))
+                .and(RouterFunctions.route(GET("/task"), request -> ServerResponse.ok()
+                        .body(Mono.just("server is alive"), String.class)));
         HttpHandler httpHandler = RouterFunctions.toHttpHandler(route);
         ReactorHttpHandlerAdapter adapter = new ReactorHttpHandlerAdapter(httpHandler);
         disposableServer = server.handle(adapter)
-            .bindNow();
+                .bindNow();
     }
 
     @AfterAll
@@ -90,8 +90,8 @@ public class Spring5ReactiveServerClientIntegrationTest {
 
     private static Flux<Task> getLatLngs() {
         return Flux.range(0, 3)
-            .zipWith(Flux.interval(Duration.ofSeconds(1)))
-            .map(x -> new Task("taskname", 1))
-            .doOnNext(ll -> System.out.println("Produced: {}" + ll));
+                .zipWith(Flux.interval(Duration.ofSeconds(1)))
+                .map(x -> new Task("taskname", 1))
+                .doOnNext(ll -> System.out.println("Produced: {}" + ll));
     }
 }

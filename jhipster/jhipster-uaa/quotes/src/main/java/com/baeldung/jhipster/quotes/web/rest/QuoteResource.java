@@ -61,8 +61,8 @@ public class QuoteResource {
         }
         QuoteDTO result = quoteService.save(quoteDTO);
         return ResponseEntity.created(new URI("/api/quotes/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+                .body(result);
     }
 
     /**
@@ -83,8 +83,8 @@ public class QuoteResource {
         }
         QuoteDTO result = quoteService.save(quoteDTO);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, quoteDTO.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, quoteDTO.getId().toString()))
+                .body(result);
     }
 
     /**
@@ -104,14 +104,14 @@ public class QuoteResource {
     }
 
     /**
-    * GET  /quotes/count : count all the quotes.
-    *
-    * @param criteria the criterias which the requested entities should match
-    * @return the ResponseEntity with status 200 (OK) and the count in body
-    */
+     * GET  /quotes/count : count all the quotes.
+     *
+     * @param criteria the criterias which the requested entities should match
+     * @return the ResponseEntity with status 200 (OK) and the count in body
+     */
     @GetMapping("/quotes/count")
     @Timed
-    public ResponseEntity<Long> countQuotes (QuoteCriteria criteria) {
+    public ResponseEntity<Long> countQuotes(QuoteCriteria criteria) {
         log.debug("REST request to count Quotes by criteria: {}", criteria);
         return ResponseEntity.ok().body(quoteQueryService.countByCriteria(criteria));
     }

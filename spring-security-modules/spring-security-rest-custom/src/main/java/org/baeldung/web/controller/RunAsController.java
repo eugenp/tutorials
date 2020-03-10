@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/runas")
 public class RunAsController {
 
-    @Secured({ "ROLE_USER", "RUN_AS_REPORTER" })
+    @Secured({"ROLE_USER", "RUN_AS_REPORTER"})
     @RequestMapping
     @ResponseBody
     public String tryRunAs() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return "Current User Authorities inside this RunAS method only " + 
-        auth.getAuthorities().toString();
+        return "Current User Authorities inside this RunAS method only " +
+                auth.getAuthorities().toString();
     }
 }

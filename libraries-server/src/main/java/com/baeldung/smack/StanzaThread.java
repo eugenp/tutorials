@@ -18,7 +18,7 @@ public class StanzaThread implements Runnable {
         XMPPTCPConnectionConfiguration config = null;
         try {
             config = XMPPTCPConnectionConfiguration.builder()
-                    .setUsernameAndPassword("baeldung2","baeldung2")
+                    .setUsernameAndPassword("baeldung2", "baeldung2")
                     .setXmppDomain("jabb3r.org")
                     .setHost("jabb3r.org")
                     .build();

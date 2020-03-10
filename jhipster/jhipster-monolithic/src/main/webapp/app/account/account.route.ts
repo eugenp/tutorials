@@ -1,6 +1,6 @@
-import { Routes, CanActivate } from '@angular/router';
+import {Routes, CanActivate} from '@angular/router';
 
-import { UserRouteAccessService } from '../shared';
+import {UserRouteAccessService} from '../shared';
 
 import {
     activateRoute,
@@ -12,12 +12,12 @@ import {
 } from './';
 
 let ACCOUNT_ROUTES = [
-   activateRoute,
-   passwordRoute,
-   passwordResetFinishRoute,
-   passwordResetInitRoute,
-   registerRoute,
-   settingsRoute
+    activateRoute,
+    passwordRoute,
+    passwordResetFinishRoute,
+    passwordResetInitRoute,
+    registerRoute,
+    settingsRoute
 ];
 
 export const accountState: Routes = [{

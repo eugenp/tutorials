@@ -5,15 +5,15 @@ runtime_config:
 env_variables:
   SPRING_PROFILES_ACTIVE: "gcp,mysql"
 handlers:
-- url: /.*
-  script: this field is required, but ignored
+  - url: /.*
+    script: this field is required, but ignored
 resources:
   cpu: 2
   memory_gb: 2
   disk_size_gb: 10
   volumes:
-  - name: ramdisk1
-    volume_type: tmpfs
-    size_gb: 0.5
+    - name: ramdisk1
+      volume_type: tmpfs
+      size_gb: 0.5
 manual_scaling:
   instances: 1

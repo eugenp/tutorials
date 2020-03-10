@@ -27,6 +27,6 @@ public class Greetings {
     @Path("/custom")
     public Response getCustomGreeting(String name) {
         return Response.status(Status.OK.getStatusCode())
-            .build();
+                .build();
     }
 }

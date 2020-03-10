@@ -31,10 +31,10 @@ public final class RandomUtil {
     }
 
     /**
-    * Generate a reset key.
-    *
-    * @return the generated reset key
-    */
+     * Generate a reset key.
+     *
+     * @return the generated reset key
+     */
     public static String generateResetKey() {
         return RandomStringUtils.randomNumeric(DEF_COUNT);
     }

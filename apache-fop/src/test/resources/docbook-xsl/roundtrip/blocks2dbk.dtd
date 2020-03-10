@@ -1,5 +1,5 @@
-  <!ENTITY components-extra ""> <!-- for customisation -->
-  <!ENTITY components "dbk:appendix |
+<!ENTITY components-extra ""> <!-- for customisation -->
+        <!ENTITY components "dbk:appendix |
     dbk:article |
     dbk:book |
     dbk:chapter |
@@ -13,8 +13,8 @@
     dbk:sect5
     &components-extra;">
 
-  <!ENTITY blocks-extra ""> <!-- for customisation -->
-  <!ENTITY blocks "dbk:bibliography |
+        <!ENTITY blocks-extra ""> <!-- for customisation -->
+        <!ENTITY blocks "dbk:bibliography |
     dbk:bibliodiv |
     dbk:glossary |
     dbk:glossdiv |
@@ -22,8 +22,8 @@
     dbk:qandadiv
     &blocks-extra;">
 
-  <!ENTITY metadata-extra ""> <!-- for customisation -->
-  <!ENTITY metadata-content 'contains(@rnd:style, "-title") or
+        <!ENTITY metadata-extra ""> <!-- for customisation -->
+        <!ENTITY metadata-content 'contains(@rnd:style, "-title") or
 			     contains(@rnd:style, "-subtitle") or
 			     @rnd:style = "abstract" or
 			     @rnd:style = "address" or
@@ -52,23 +52,23 @@
 			     @rnd:style = "volumenum"
 			     &metadata-extra;'>
 
-  <!ENTITY author-extra ""> <!-- for customisation -->
-  <!ENTITY author-content '@rnd:style = "personblurb" or
+        <!ENTITY author-extra ""> <!-- for customisation -->
+        <!ENTITY author-content '@rnd:style = "personblurb" or
 			   @rnd:style = "address" or
 			   @rnd:style = "affiliation" or
 			   @rnd:style = "contrib" or
 			   @rnd:style = "email"
 			   &author-extra;'>
 
-  <!ENTITY admonition-extra ""> <!-- for customisation -->
-  <!ENTITY admonition '@rnd:style = "caution" or
+        <!ENTITY admonition-extra ""> <!-- for customisation -->
+        <!ENTITY admonition '@rnd:style = "caution" or
     @rnd:style = "important" or
     @rnd:style = "note" or
     @rnd:style = "tip" or
     @rnd:style = "warning"
     &admonition-extra;'>
-  <!ENTITY admonition-title-extra ""> <!-- for customisation -->
-  <!ENTITY admonition-title '@rnd:style = "caution-title" or
+        <!ENTITY admonition-title-extra ""> <!-- for customisation -->
+        <!ENTITY admonition-title '@rnd:style = "caution-title" or
     @rnd:style = "important-title" or
     @rnd:style = "note-title" or
     @rnd:style = "tip-title" or

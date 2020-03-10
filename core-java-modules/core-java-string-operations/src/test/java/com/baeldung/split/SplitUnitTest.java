@@ -42,9 +42,9 @@ public class SplitUnitTest {
     public void givenString_whenSplit_thenReturnsList_Splitter() {
         // given
         List<String> resultList = Splitter.on(',')
-            .trimResults()
-            .omitEmptyStrings()
-            .splitToList("car,jeep,,   scooter");
+                .trimResults()
+                .omitEmptyStrings()
+                .splitToList("car,jeep,,   scooter");
 
         assertThat(resultList).containsExactly("car", "jeep", "scooter");
     }
@@ -52,14 +52,14 @@ public class SplitUnitTest {
     @Test
     public void givenStringContainsSpaces_whenSplitAndTrim_thenReturnsArray_using_Regex() {
         assertThat(" car , jeep,  scooter ".trim()
-            .split("\\s*,\\s*")).containsExactly("car", "jeep", "scooter");
+                .split("\\s*,\\s*")).containsExactly("car", "jeep", "scooter");
 
     }
 
     @Test
     public void givenStringContainsSpaces_whenSplitAndTrim_thenReturnsArray_using_java_8() {
         assertThat(Arrays.stream(" car , jeep,  scooter ".split(","))
-            .map(String::trim)
-            .toArray(String[]::new)).containsExactly("car", "jeep", "scooter");
+                .map(String::trim)
+                .toArray(String[]::new)).containsExactly("car", "jeep", "scooter");
     }
 }

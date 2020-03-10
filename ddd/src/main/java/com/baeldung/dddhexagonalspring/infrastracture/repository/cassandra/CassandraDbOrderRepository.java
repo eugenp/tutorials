@@ -24,7 +24,7 @@ public class CassandraDbOrderRepository implements OrderRepository {
         Optional<OrderEntity> orderEntity = orderRepository.findById(id);
         if (orderEntity.isPresent()) {
             return Optional.of(orderEntity.get()
-                .toOrder());
+                    .toOrder());
         } else {
             return Optional.empty();
         }

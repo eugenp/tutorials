@@ -20,5 +20,5 @@ public class ArticleViewerWithRequiredAttributeController {
         }
 
     }
-    
+
 }

@@ -1,12 +1,12 @@
 /* globals $ */
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('gatewayApp')
         .directive('passwordStrengthBar', passwordStrengthBar);
 
-    function passwordStrengthBar () {
+    function passwordStrengthBar() {
         var directive = {
             replace: true,
             restrict: 'E',
@@ -63,21 +63,17 @@
                     var idx;
                     if (s <= 10) {
                         idx = 0;
-                    }
-                    else if (s <= 20) {
+                    } else if (s <= 20) {
                         idx = 1;
-                    }
-                    else if (s <= 30) {
+                    } else if (s <= 30) {
                         idx = 2;
-                    }
-                    else if (s <= 40) {
+                    } else if (s <= 40) {
                         idx = 3;
-                    }
-                    else {
+                    } else {
                         idx = 4;
                     }
 
-                    return { idx: idx + 1, col: this.colors[idx] };
+                    return {idx: idx + 1, col: this.colors[idx]};
                 }
             };
             scope.$watch('passwordToCheck', function (password) {
@@ -85,9 +81,9 @@
                     var c = strength.getColor(strength.mesureStrength(password));
                     iElement.removeClass('ng-hide');
                     iElement.find('ul').children('li')
-                        .css({ 'background-color': '#DDD' })
+                        .css({'background-color': '#DDD'})
                         .slice(0, c.idx)
-                        .css({ 'background-color': c.col });
+                        .css({'background-color': c.col});
                 }
             });
         }

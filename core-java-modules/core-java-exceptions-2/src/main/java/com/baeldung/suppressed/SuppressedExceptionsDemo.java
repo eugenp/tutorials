@@ -16,7 +16,7 @@ public class SuppressedExceptionsDemo {
             fileIn.close();
         }
     }
-    
+
     public static void demoAddSuppressedException(String filePath) throws IOException {
         Throwable firstException = null;
         FileInputStream fileIn = null;
@@ -35,7 +35,7 @@ public class SuppressedExceptionsDemo {
             }
         }
     }
-    
+
     public static void demoExceptionalResource() throws Exception {
         try (ExceptionalResource exceptionalResource = new ExceptionalResource()) {
             exceptionalResource.processSomething();

@@ -33,7 +33,7 @@ public class DeferredResultController {
             }
             return "OK";
         })
-            .whenCompleteAsync((result, exc) -> deferredResult.setResult(ResponseEntity.ok(result)));
+                .whenCompleteAsync((result, exc) -> deferredResult.setResult(ResponseEntity.ok(result)));
 
         LOG.info("Servlet thread freed");
         return deferredResult;
@@ -50,7 +50,7 @@ public class DeferredResultController {
         LOG.info("Received async request with a configured timeout");
         DeferredResult<ResponseEntity<?>> deferredResult = new DeferredResult<>(500l);
         deferredResult.onTimeout(() -> deferredResult.setErrorResult(ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT)
-            .body("Request timeout occurred.")));
+                .body("Request timeout occurred.")));
 
         CompletableFuture.supplyAsync(() -> {
             LOG.info("Processing in separate thread");
@@ -61,7 +61,7 @@ public class DeferredResultController {
             }
             return "error";
         })
-            .whenCompleteAsync((result, exc) -> deferredResult.setResult(ResponseEntity.ok(result)));
+                .whenCompleteAsync((result, exc) -> deferredResult.setResult(ResponseEntity.ok(result)));
         LOG.info("servlet thread freed");
         return deferredResult;
     }
@@ -74,7 +74,7 @@ public class DeferredResultController {
             @Override
             public void accept(Throwable t) {
                 deferredResult.setErrorResult(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("An error occurred."));
+                        .body("An error occurred."));
             }
 
         });

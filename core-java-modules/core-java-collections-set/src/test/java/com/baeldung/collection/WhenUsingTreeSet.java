@@ -32,7 +32,7 @@ public class WhenUsingTreeSet {
 
     private Comparator<Element> comparator = (ele1, ele2) -> {
         return ele1.getId()
-            .compareTo(ele2.getId());
+                .compareTo(ele2.getId());
     };
 
     @Test

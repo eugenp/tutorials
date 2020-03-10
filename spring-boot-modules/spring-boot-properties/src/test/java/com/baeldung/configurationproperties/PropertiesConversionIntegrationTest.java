@@ -34,13 +34,13 @@ public class PropertiesConversionIntegrationTest {
     public void whenUseDataSizePropertyConversion_thenSuccess() throws Exception {
         assertEquals(DataSize.ofBytes(300), properties.getSizeInDefaultUnit());
         assertEquals(DataSize.ofGigabytes(2), properties.getSizeInGB());
-        assertEquals(DataSize.ofTerabytes(4), properties.getSizeInTB());        
+        assertEquals(DataSize.ofTerabytes(4), properties.getSizeInTB());
     }
-   
+
     @Test
     public void whenUseCustomPropertyConverter_thenSuccess() throws Exception {
         assertEquals("john", properties.getEmployee().getName());
         assertEquals(2000.0, properties.getEmployee().getSalary());
     }
-    
+
 }

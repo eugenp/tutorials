@@ -10,8 +10,8 @@ public class Example1 {
     @Test
     public void whenDebugging_thenInformationIsShown() {
         int[] listOutputSorted = IntStream.of(-3, 10, -4, 1, 3)
-            .sorted()
-            .toArray();
+                .sorted()
+                .toArray();
 
         assertThat(listOutputSorted).isSorted();
     }

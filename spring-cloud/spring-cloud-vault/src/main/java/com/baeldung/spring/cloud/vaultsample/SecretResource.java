@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.baeldung.spring.cloud.vaultsample;
 
@@ -18,20 +18,19 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class SecretResource {
-    
+
     @Autowired
     Environment env;
-    
+
     @GetMapping("/secret/{key}")
     public ResponseEntity<String> readSecret(@PathVariable("key") String key) {
-        
+
         String value = env.getProperty(key);
-        
-        if ( value != null ) {        
+
+        if (value != null) {
             return new ResponseEntity<String>(value, HttpStatus.OK);
-        }
-        else {
+        } else {
             return new ResponseEntity<String>("not found", HttpStatus.NOT_FOUND);
-        }              
+        }
     }
 }

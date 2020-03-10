@@ -27,7 +27,7 @@ import com.baeldung.spring.PersistenceJPAConfigL2Cache;
 import net.sf.ehcache.CacheManager;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceJPAConfigL2Cache.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceJPAConfigL2Cache.class}, loader = AnnotationConfigContextLoader.class)
 @DirtiesContext
 public class SecondLevelCacheIntegrationTest {
 

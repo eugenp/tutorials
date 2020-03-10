@@ -21,7 +21,7 @@ public class Spring5ReactiveOauthApplication {
     public WebClient webClient(ReactiveClientRegistrationRepository clientRegistrationRepo, ServerOAuth2AuthorizedClientRepository authorizedClientRepo) {
         ServerOAuth2AuthorizedClientExchangeFilterFunction filter = new ServerOAuth2AuthorizedClientExchangeFilterFunction(clientRegistrationRepo, authorizedClientRepo);
         return WebClient.builder()
-            .filter(filter)
-            .build();
+                .filter(filter)
+                .build();
     }
 }

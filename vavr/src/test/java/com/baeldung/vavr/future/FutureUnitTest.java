@@ -21,67 +21,67 @@ public class FutureUnitTest {
     @Test
     public void whenChangeExecutorService_thenCorrect() {
         String result = Future.of(newSingleThreadExecutor(), () -> HELLO)
-          .getOrElse(error);
+                .getOrElse(error);
 
         assertThat(result)
-          .isEqualTo(HELLO);
+                .isEqualTo(HELLO);
     }
 
     @Test
     public void whenAppendData_thenCorrect1() {
         String result = Future.of(() -> HELLO)
-          .getOrElse(error);
+                .getOrElse(error);
 
         assertThat(result)
-          .isEqualTo(HELLO);
+                .isEqualTo(HELLO);
     }
 
     @Test
     public void whenAppendData_thenCorrect2() {
         Future<String> resultFuture = Future.of(() -> HELLO)
-          .await();
+                .await();
 
         Option<Try<String>> futureOption = resultFuture.getValue();
         String result = futureOption.get().getOrElse(error);
 
         assertThat(result)
-          .isEqualTo(HELLO);
+                .isEqualTo(HELLO);
     }
 
     @Test
     public void whenAppendData_thenSuccess() {
         String result = Future.of(() -> HELLO)
-          .onSuccess(finalResult -> System.out.println("Successfully Completed - Result: " + finalResult))
-          .onFailure(finalResult -> System.out.println("Failed - Result: " + finalResult))
-          .getOrElse(error);
+                .onSuccess(finalResult -> System.out.println("Successfully Completed - Result: " + finalResult))
+                .onFailure(finalResult -> System.out.println("Failed - Result: " + finalResult))
+                .getOrElse(error);
 
         assertThat(result)
-          .isEqualTo(HELLO);
+                .isEqualTo(HELLO);
     }
-    
+
     @Test
     public void whenTransform_thenCorrect() {
         Future<Object> future = Future.of(() -> 5)
-          .transformValue(result -> Try.of(() -> HELLO + result.get()));
-            
+                .transformValue(result -> Try.of(() -> HELLO + result.get()));
+
         assertThat(future.get()).isEqualTo(HELLO + 5);
     }
 
     @Test
     public void whenChainingCallbacks_thenCorrect() {
         Future.of(() -> HELLO)
-          .andThen(r -> System.out.println("Completed - 1: " + r))
-          .andThen(r -> System.out.println("Completed - 2: " + r));
+                .andThen(r -> System.out.println("Completed - 1: " + r))
+                .andThen(r -> System.out.println("Completed - 2: " + r));
     }
 
     @Test
     public void whenCallAwait_thenCorrect() {
         Future<String> resultFuture = Future.of(() -> HELLO)
-          .await();
+                .await();
         String result = resultFuture.getValue().get().getOrElse(error);
 
         assertThat(result)
-          .isEqualTo(HELLO);
+                .isEqualTo(HELLO);
     }
 
     @Test
@@ -89,22 +89,22 @@ public class FutureUnitTest {
         Future<Integer> resultFuture = Future.of(() -> 10 / 0);
 
         assertThatThrownBy(resultFuture::get)
-          .isInstanceOf(ArithmeticException.class);
+                .isInstanceOf(ArithmeticException.class);
     }
 
     @Test
     public void whenDivideByZero_thenGetThrowable2() {
         Future<Integer> resultFuture = Future.of(() -> 10 / 0)
-          .await();
+                .await();
 
         assertThat(resultFuture.getCause().get().getMessage())
-          .isEqualTo("/ by zero");
+                .isEqualTo("/ by zero");
     }
 
     @Test
     public void whenDivideByZero_thenCorrect() {
         Future<Integer> resultFuture = Future.of(() -> 10 / 0)
-          .await();
+                .await();
 
         assertThat(resultFuture.isCompleted()).isTrue();
         assertThat(resultFuture.isSuccess()).isFalse();
@@ -114,10 +114,10 @@ public class FutureUnitTest {
     @Test
     public void whenAppendData_thenFutureNotEmpty() {
         Future<String> resultFuture = Future.of(() -> HELLO)
-          .await();
+                .await();
 
         assertThat(resultFuture.isEmpty())
-          .isFalse();
+                .isFalse();
     }
 
     @Test
@@ -126,52 +126,52 @@ public class FutureUnitTest {
         Future<String> f2 = Future.of(() -> "hello2");
 
         assertThat(f1.zip(f2).get())
-          .isEqualTo(Tuple.of("hello1", "hello2"));
+                .isEqualTo(Tuple.of("hello1", "hello2"));
     }
 
     @Test
     public void whenConvertToCompletableFuture_thenCorrect() throws InterruptedException, ExecutionException {
         CompletableFuture<String> convertedFuture = Future.of(() -> HELLO)
-          .toCompletableFuture();
+                .toCompletableFuture();
 
         assertThat(convertedFuture.get())
-          .isEqualTo(HELLO);
+                .isEqualTo(HELLO);
     }
 
     @Test
     public void whenCallMap_thenCorrect() {
         Future<String> futureResult = Future.of(() -> "from Baeldung")
-          .map(a -> "Hello " + a)
-          .await();
+                .map(a -> "Hello " + a)
+                .await();
 
         assertThat(futureResult.get())
-          .isEqualTo("Hello from Baeldung");
+                .isEqualTo("Hello from Baeldung");
     }
-    
+
     @Test
     public void whenCallFlatMap_thenCorrect() {
         Future<Object> futureMap = Future.of(() -> 1)
-          .flatMap((i) -> Future.of(() -> "Hello: " + i));
-     
+                .flatMap((i) -> Future.of(() -> "Hello: " + i));
+
         assertThat(futureMap.get()).isEqualTo("Hello: 1");
     }
 
     @Test
     public void whenFutureFails_thenGetErrorMessage() {
         Future<String> future = Future.of(() -> "Hello".substring(-1))
-          .recover(x -> "fallback value");
+                .recover(x -> "fallback value");
 
         assertThat(future.get())
-          .isEqualTo("fallback value");
+                .isEqualTo("fallback value");
     }
 
     @Test
     public void whenFutureFails_thenGetAnotherFuture() {
         Future<String> future = Future.of(() -> "Hello".substring(-1))
-          .recoverWith(x -> Future.of(() -> "fallback value"));
+                .recoverWith(x -> Future.of(() -> "fallback value"));
 
         assertThat(future.get())
-          .isEqualTo("fallback value");
+                .isEqualTo("fallback value");
     }
 
     @Test
@@ -183,7 +183,7 @@ public class FutureUnitTest {
         Future<Throwable> errorMessage = errorMessageFuture.failed();
 
         assertThat(
-          errorMessage.get().getMessage())
-          .isEqualTo("String index out of range: -1");
+                errorMessage.get().getMessage())
+                .isEqualTo("String index out of range: -1");
     }
 }

@@ -10,16 +10,16 @@ import org.springframework.stereotype.Component;
 import com.baeldung.boot.jdbi.domain.CarModel;
 
 @Component
-public class CarModelMapper implements RowMapper<CarModel>{
+public class CarModelMapper implements RowMapper<CarModel> {
 
     @Override
     public CarModel map(ResultSet rs, StatementContext ctx) throws SQLException {
         return CarModel.builder()
-            .id(rs.getLong("id"))
-            .name(rs.getString("name"))
-            .sku(rs.getString("sku"))
-            .year(rs.getInt("year"))
-            .build();
+                .id(rs.getLong("id"))
+                .name(rs.getString("name"))
+                .sku(rs.getString("sku"))
+                .year(rs.getInt("year"))
+                .build();
     }
 
 }

@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 public class MapUnitTest {
     private static final Logger LOG = LoggerFactory.getLogger(MapUnitTest.class);
 
-    
+
     @Test
     public void givenHashMap_whenRetrievesKeyset_thenCorrect() {
         Map<String, String> map = new HashMap<>();

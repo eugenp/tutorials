@@ -3,9 +3,8 @@ package com.baeldung.param;
 /**
  * Very simple Person entity.
  * Use the Fluent-style interface to set properties.
- * 
- * @author J Steven Perry
  *
+ * @author J Steven Perry
  */
 public class Person {
 

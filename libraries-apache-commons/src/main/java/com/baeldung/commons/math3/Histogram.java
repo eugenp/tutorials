@@ -48,28 +48,28 @@ public class Histogram {
     private Map processRawData() {
 
         List<Integer> datasetList = Arrays.asList(
-          36, 25, 38, 46, 55, 68, 72,
-          55, 36, 38, 67, 45, 22, 48,
-          91, 46, 52, 61, 58, 55);
+                36, 25, 38, 46, 55, 68, 72,
+                55, 36, 38, 67, 45, 22, 48,
+                91, 46, 52, 61, 58, 55);
         Frequency frequency = new Frequency();
         datasetList.forEach(d -> frequency.addValue(Double.parseDouble(d.toString())));
 
         datasetList.stream()
-          .map(d -> Double.parseDouble(d.toString()))
-          .distinct()
-          .forEach(observation -> {
-             long observationFrequency = frequency.getCount(observation);
-             int upperBoundary = (observation > classWidth)
-               ? Math.multiplyExact( (int) Math.ceil(observation / classWidth), classWidth)
-               : classWidth;
-             int lowerBoundary = (upperBoundary > classWidth)
-               ? Math.subtractExact(upperBoundary, classWidth)
-               : 0;
-             String bin = lowerBoundary + "-" + upperBoundary;
+                .map(d -> Double.parseDouble(d.toString()))
+                .distinct()
+                .forEach(observation -> {
+                    long observationFrequency = frequency.getCount(observation);
+                    int upperBoundary = (observation > classWidth)
+                            ? Math.multiplyExact((int) Math.ceil(observation / classWidth), classWidth)
+                            : classWidth;
+                    int lowerBoundary = (upperBoundary > classWidth)
+                            ? Math.subtractExact(upperBoundary, classWidth)
+                            : 0;
+                    String bin = lowerBoundary + "-" + upperBoundary;
 
-             updateDistributionMap(lowerBoundary, bin, observationFrequency);
+                    updateDistributionMap(lowerBoundary, bin, observationFrequency);
 
-          });
+                });
 
         return distributionMap;
     }
@@ -78,13 +78,12 @@ public class Histogram {
 
         int prevLowerBoundary = (lowerBoundary > classWidth) ? lowerBoundary - classWidth : 0;
         String prevBin = prevLowerBoundary + "-" + lowerBoundary;
-        if(!distributionMap.containsKey(prevBin))
+        if (!distributionMap.containsKey(prevBin))
             distributionMap.put(prevBin, 0);
 
-        if(!distributionMap.containsKey(bin)) {
+        if (!distributionMap.containsKey(bin)) {
             distributionMap.put(bin, observationFrequency);
-        }
-        else {
+        } else {
             long oldFrequency = Long.parseLong(distributionMap.get(bin).toString());
             distributionMap.replace(bin, oldFrequency + observationFrequency);
         }

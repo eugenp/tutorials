@@ -1,12 +1,12 @@
-import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
-import { Renderer, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { LoginModalService } from '../../../../../../../main/webapp/app/shared';
-import { Observable } from 'rxjs/Rx';
-import { BaeldungTestModule } from '../../../../test.module';
-import { PasswordResetFinishComponent } from '../../../../../../../main/webapp/app/account/password-reset/finish/password-reset-finish.component';
-import { PasswordResetFinish } from '../../../../../../../main/webapp/app/account/password-reset/finish/password-reset-finish.service';
-import { MockActivatedRoute } from '../../../../helpers/mock-route.service';
+import {ComponentFixture, TestBed, inject} from '@angular/core/testing';
+import {Renderer, ElementRef} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {LoginModalService} from '../../../../../../../main/webapp/app/shared';
+import {Observable} from 'rxjs/Rx';
+import {BaeldungTestModule} from '../../../../test.module';
+import {PasswordResetFinishComponent} from '../../../../../../../main/webapp/app/account/password-reset/finish/password-reset-finish.component';
+import {PasswordResetFinish} from '../../../../../../../main/webapp/app/account/password-reset/finish/password-reset-finish.service';
+import {MockActivatedRoute} from '../../../../helpers/mock-route.service';
 
 
 describe('Component Tests', () => {
@@ -33,7 +33,8 @@ describe('Component Tests', () => {
                     {
                         provide: Renderer,
                         useValue: {
-                            invokeElementMethod(renderElement: any, methodName: string, args?: any[]) {}
+                            invokeElementMethod(renderElement: any, methodName: string, args?: any[]) {
+                            }
                         }
                     },
                     {
@@ -61,7 +62,8 @@ describe('Component Tests', () => {
             inject([ElementRef], (elementRef: ElementRef) => {
                 let element = fixture.nativeElement;
                 let node = {
-                    focus() {}
+                    focus() {
+                    }
                 };
 
                 elementRef.nativeElement = element;

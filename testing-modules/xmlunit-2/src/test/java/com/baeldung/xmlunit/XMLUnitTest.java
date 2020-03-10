@@ -67,7 +67,7 @@ public class XMLUnitTest {
         Iterable<Node> i = new JAXPXPathEngine().selectNodes("//teacher", Input.fromFile(new File(classLoader.getResource("teachers.xml").getFile())).build());
         assertNotNull(i);
         int count = 0;
-        for (Iterator<Node> it = i.iterator(); it.hasNext();) {
+        for (Iterator<Node> it = i.iterator(); it.hasNext(); ) {
             count++;
             Node node = it.next();
             assertEquals("teacher", node.getNodeName());

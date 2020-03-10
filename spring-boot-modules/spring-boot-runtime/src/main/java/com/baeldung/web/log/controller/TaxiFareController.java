@@ -19,20 +19,20 @@ public class TaxiFareController {
 
     @Autowired
     private TaxiFareCalculatorService taxiFareCalculatorService;
-    
+
     private static final Logger LOGGER = LoggerFactory.getLogger(TaxiFareController.class);
-    
+
     @GetMapping("/taxifare/get/")
     public RateCard getTaxiFare() {
         LOGGER.debug("getTaxiFare() - START");
         return new RateCard();
     }
-    
+
     @PostMapping("/taxifare/calculate/")
     public String calculateTaxiFare(@RequestBody @Valid TaxiRide taxiRide) {
         LOGGER.debug("calculateTaxiFare() - START");
         String totalFare = taxiFareCalculatorService.calculateFare(taxiRide);
-        LOGGER.debug("calculateTaxiFare() - Total Fare : {}",totalFare);
+        LOGGER.debug("calculateTaxiFare() - Total Fare : {}", totalFare);
         LOGGER.debug("calculateTaxiFare() - END");
         return totalFare;
     }

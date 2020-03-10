@@ -32,7 +32,7 @@ class SimpleCalculatorUnitTest {
     }
 
     @Test
-    void whenDivideByZero_thenAssertException(){
+    void whenDivideByZero_thenAssertException() {
         assertThrows(ArithmeticException.class, () -> SimpleCalculator.divideNumbers(10, 0));
     }
 

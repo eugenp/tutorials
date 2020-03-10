@@ -81,7 +81,7 @@ public class RestTemplateBasicLiveTest {
     public void givenFooService_whenCallHeadForHeaders_thenReceiveAllHeadersForThatResource() {
         final HttpHeaders httpHeaders = restTemplate.headForHeaders(fooResourceUrl);
         assertTrue(httpHeaders.getContentType()
-            .includes(MediaType.APPLICATION_JSON));
+                .includes(MediaType.APPLICATION_JSON));
     }
 
     // POST
@@ -115,7 +115,7 @@ public class RestTemplateBasicLiveTest {
     @Test
     public void givenFooService_whenCallOptionsForAllow_thenReceiveValueOfAllowHeader() {
         final Set<HttpMethod> optionsForAllow = restTemplate.optionsForAllow(fooResourceUrl);
-        final HttpMethod[] supportedMethods = { HttpMethod.GET, HttpMethod.POST, HttpMethod.HEAD };
+        final HttpMethod[] supportedMethods = {HttpMethod.GET, HttpMethod.POST, HttpMethod.HEAD};
 
         assertTrue(optionsForAllow.containsAll(Arrays.asList(supportedMethods)));
     }
@@ -133,9 +133,9 @@ public class RestTemplateBasicLiveTest {
         // Update Resource
         final Foo updatedInstance = new Foo("newName");
         updatedInstance.setId(createResponse.getBody()
-            .getId());
+                .getId());
         final String resourceUrl = fooResourceUrl + '/' + createResponse.getBody()
-            .getId();
+                .getId();
         final HttpEntity<Foo> requestUpdate = new HttpEntity<>(updatedInstance, headers);
         restTemplate.exchange(resourceUrl, HttpMethod.PUT, requestUpdate, Void.class);
 
@@ -157,9 +157,9 @@ public class RestTemplateBasicLiveTest {
         // Update entity
         final Foo updatedInstance = new Foo("newName");
         updatedInstance.setId(response.getBody()
-            .getId());
+                .getId());
         final String resourceUrl = fooResourceUrl + '/' + response.getBody()
-            .getId();
+                .getId();
         restTemplate.execute(resourceUrl, HttpMethod.PUT, requestCallback(updatedInstance), clientHttpResponse -> null);
 
         // Check that entity was updated
@@ -181,9 +181,9 @@ public class RestTemplateBasicLiveTest {
         // Update Resource
         final Foo updatedResource = new Foo("newName");
         updatedResource.setId(createResponse.getBody()
-            .getId());
+                .getId());
         final String resourceUrl = fooResourceUrl + '/' + createResponse.getBody()
-            .getId();
+                .getId();
         final HttpEntity<Foo> requestUpdate = new HttpEntity<>(updatedResource, headers);
         final ClientHttpRequestFactory requestFactory = getSimpleClientHttpRequestFactory();
         final RestTemplate template = new RestTemplate(requestFactory);
@@ -205,7 +205,7 @@ public class RestTemplateBasicLiveTest {
         assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
 
         final String entityUrl = fooResourceUrl + "/" + response.getBody()
-            .getId();
+                .getId();
         restTemplate.delete(entityUrl);
         try {
             restTemplate.getForEntity(entityUrl, Foo.class);
@@ -220,12 +220,12 @@ public class RestTemplateBasicLiveTest {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
-        MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
+        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         map.add("id", "1");
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
-        ResponseEntity<String> response = restTemplate.postForEntity( fooResourceUrl+"/form", request , String.class);
+        ResponseEntity<String> response = restTemplate.postForEntity(fooResourceUrl + "/form", request, String.class);
 
         assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
         final String fooResponse = response.getBody();
@@ -251,9 +251,9 @@ public class RestTemplateBasicLiveTest {
             final ObjectMapper mapper = new ObjectMapper();
             mapper.writeValue(clientHttpRequest.getBody(), updatedInstance);
             clientHttpRequest.getHeaders()
-                .add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+                    .add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
             clientHttpRequest.getHeaders()
-                .add(HttpHeaders.AUTHORIZATION, "Basic " + getBase64EncodedLogPass());
+                    .add(HttpHeaders.AUTHORIZATION, "Basic " + getBase64EncodedLogPass());
         };
     }
 

@@ -6,7 +6,7 @@
     </information>
     <resources>
         <j2se version="1.2+"/>
-        <jar href="jws.jar" main="true" />
+        <jar href="jws.jar" main="true"/>
     </resources>
     <application-desc/>
 </jnlp>

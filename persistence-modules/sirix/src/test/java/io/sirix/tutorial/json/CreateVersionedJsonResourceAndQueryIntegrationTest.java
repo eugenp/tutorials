@@ -52,11 +52,12 @@ public final class CreateVersionedJsonResourceAndQueryIntegrationTest {
                  final var rtx = manager.beginNodeReadOnlyTrx()) {
 
                 final var axis = VisitorDescendantAxis.newBuilder(rtx)
-                                                      .includeSelf()
-                                                      .visitor(new MyJsonNodeVisitor(manager, rtx))
-                                                      .build();
+                        .includeSelf()
+                        .visitor(new MyJsonNodeVisitor(manager, rtx))
+                        .build();
 
-                axis.forEach((unused) -> {});
+                axis.forEach((unused) -> {
+                });
             }
         }
     }
@@ -92,7 +93,7 @@ public final class CreateVersionedJsonResourceAndQueryIntegrationTest {
             // Axis to iterate over the node in past revisions (if the node existed back then).
             final var pastAxis = new PastAxis<>(manager, trx);
             pastAxis.forEachRemaining((trx) ->
-                System.out.println("Object key node in the past (revision " + trx.getRevisionNumber() + "): " + trx.getName()));
+                    System.out.println("Object key node in the past (revision " + trx.getRevisionNumber() + "): " + trx.getName()));
 
             return VisitResultType.CONTINUE;
         }

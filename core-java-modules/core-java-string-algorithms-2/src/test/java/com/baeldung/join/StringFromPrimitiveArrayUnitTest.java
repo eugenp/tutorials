@@ -32,17 +32,17 @@ public class StringFromPrimitiveArrayUnitTest {
     @Test
     public void givenIntArray_whenJoinBySeparator_thenReturnsString_through_Java8CollectorsJoining() {
         assertThat(Arrays.stream(intArray)
-          .mapToObj(String::valueOf)
-          .collect(Collectors.joining(separator)))
-          .isEqualTo(expectedIntString);
+                .mapToObj(String::valueOf)
+                .collect(Collectors.joining(separator)))
+                .isEqualTo(expectedIntString);
     }
 
     @Test
     public void givenCharArray_whenJoinBySeparator_thenReturnsString_through_Java8CollectorsJoining() {
         assertThat(CharBuffer.wrap(charArray).chars()
-          .mapToObj(intChar -> String.valueOf((char) intChar))
-          .collect(Collectors.joining(separator)))
-          .isEqualTo(expectedCharString);
+                .mapToObj(intChar -> String.valueOf((char) intChar))
+                .collect(Collectors.joining(separator)))
+                .isEqualTo(expectedCharString);
     }
 
 
@@ -51,8 +51,8 @@ public class StringFromPrimitiveArrayUnitTest {
         StringJoiner intStringJoiner = new StringJoiner(separator);
 
         Arrays.stream(intArray)
-          .mapToObj(String::valueOf)
-          .forEach(intStringJoiner::add);
+                .mapToObj(String::valueOf)
+                .forEach(intStringJoiner::add);
 
         assertThat(intStringJoiner.toString()).isEqualTo(expectedIntString);
     }
@@ -62,8 +62,8 @@ public class StringFromPrimitiveArrayUnitTest {
         StringJoiner charStringJoiner = new StringJoiner(separator);
 
         CharBuffer.wrap(charArray).chars()
-          .mapToObj(intChar -> String.valueOf((char) intChar))
-          .forEach(charStringJoiner::add);
+                .mapToObj(intChar -> String.valueOf((char) intChar))
+                .forEach(charStringJoiner::add);
 
         assertThat(charStringJoiner.toString()).isEqualTo(expectedCharString);
     }

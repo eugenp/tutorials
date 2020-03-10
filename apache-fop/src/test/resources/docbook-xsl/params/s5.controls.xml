@@ -4,25 +4,29 @@
           xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
           version="5.0" xml:id="s5.controls">
-<refmeta>
-<refentrytitle>s5.controls</refentrytitle>
-<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
-</refmeta>
-<refnamediv>
-<refname>s5.controls</refname>
-<refpurpose>Specifies whether S5 controls are visible</refpurpose>
-</refnamediv>
+    <refmeta>
+        <refentrytitle>s5.controls</refentrytitle>
+        <refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname>s5.controls</refname>
+        <refpurpose>Specifies whether S5 controls are visible</refpurpose>
+    </refnamediv>
 
-<refsynopsisdiv>
-  <src:fragment xml:id="s5.controls.frag">
-    <xsl:param name="s5.controls">0</xsl:param>
-  </src:fragment>
-</refsynopsisdiv>
+    <refsynopsisdiv>
+        <src:fragment xml:id="s5.controls.frag">
+            <xsl:param name="s5.controls">0</xsl:param>
+        </src:fragment>
+    </refsynopsisdiv>
 
-<refsection><info><title>Description</title></info>
+    <refsection>
+        <info>
+            <title>Description</title>
+        </info>
 
-<para>This parameter specifies whether S5 navigation controls are
-  visible by default.</para>
+        <para>This parameter specifies whether S5 navigation controls are
+            visible by default.
+        </para>
 
-</refsection>
+    </refsection>
 </refentry>

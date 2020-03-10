@@ -7,18 +7,18 @@ import org.hamcrest.TypeSafeMatcher;
 
 public class IsPositiveInteger extends TypeSafeMatcher<Integer> {
 
-	public void describeTo(Description description) {
-		description.appendText("a positive integer");
-	}
+    public void describeTo(Description description) {
+        description.appendText("a positive integer");
+    }
 
-	@Factory
-	public static Matcher<Integer> isAPositiveInteger() {
-		return new IsPositiveInteger();
-	}
+    @Factory
+    public static Matcher<Integer> isAPositiveInteger() {
+        return new IsPositiveInteger();
+    }
 
-	@Override
-	protected boolean matchesSafely(Integer integer) {
-		return integer > 0;
-	}
+    @Override
+    protected boolean matchesSafely(Integer integer) {
+        return integer > 0;
+    }
 
 }

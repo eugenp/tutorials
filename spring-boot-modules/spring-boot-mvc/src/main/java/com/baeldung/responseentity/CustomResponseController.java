@@ -56,7 +56,7 @@ public class CustomResponseController {
         response.setHeader("Custom-Header", "foo");
         response.setStatus(200);
         response.getWriter()
-            .println("Hello World!");
+                .println("Hello World!");
     }
 
 }

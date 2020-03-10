@@ -18,7 +18,7 @@ public class PositiveMatchingRulesUnitTest {
 
     @Test
     public void givenPasswordValidationRules_whenValidatingPassword_thenPosswordIsNotValidWithSeveralErrors() {
-        PasswordValidator passwordValidator = new PasswordValidator(new AllowedCharacterRule(new char[] { 'a', 'b', 'c' }), new AllowedRegexRule("\\d{2}\\w{10}"), new CharacterRule(EnglishCharacterData.LowerCase, 5), new LengthRule(8, 10));
+        PasswordValidator passwordValidator = new PasswordValidator(new AllowedCharacterRule(new char[]{'a', 'b', 'c'}), new AllowedRegexRule("\\d{2}\\w{10}"), new CharacterRule(EnglishCharacterData.LowerCase, 5), new LengthRule(8, 10));
 
         RuleResult validate = passwordValidator.validate(new PasswordData("12abc"));
 
@@ -37,7 +37,7 @@ public class PositiveMatchingRulesUnitTest {
 
         LengthComplexityRule lengthComplexityRule = new LengthComplexityRule();
         lengthComplexityRule.addRules("[1,5]", new CharacterRule(EnglishCharacterData.LowerCase, 5));
-        lengthComplexityRule.addRules("[6,10]", new AllowedCharacterRule(new char[] { 'a', 'b', 'c', 'd' }));
+        lengthComplexityRule.addRules("[6,10]", new AllowedCharacterRule(new char[]{'a', 'b', 'c', 'd'}));
 
         PasswordValidator passwordValidator = new PasswordValidator(lengthComplexityRule);
 
@@ -57,7 +57,7 @@ public class PositiveMatchingRulesUnitTest {
         shortPassword.setPassword("12345abcde!");
 
         CharacterCharacteristicsRule characterCharacteristicsRule = new CharacterCharacteristicsRule(4, new CharacterRule(EnglishCharacterData.LowerCase, 5), new CharacterRule(EnglishCharacterData.UpperCase, 5), new CharacterRule(EnglishCharacterData.Digit),
-            new CharacterRule(EnglishCharacterData.Special));
+                new CharacterRule(EnglishCharacterData.Special));
 
         PasswordValidator passwordValidator = new PasswordValidator(characterCharacteristicsRule);
 
@@ -70,7 +70,7 @@ public class PositiveMatchingRulesUnitTest {
 
     private String getDetail(RuleResult validate, int i) {
         return validate.getDetails()
-            .get(i)
-            .toString();
+                .get(i)
+                .toString();
     }
 }

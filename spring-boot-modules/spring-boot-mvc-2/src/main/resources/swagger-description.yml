@@ -8,14 +8,14 @@ info:
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 basePath: "/localhost:8080/"
 tags:
-- name: "foo-controller"
-  description: "Foo controller"
+  - name: "foo-controller"
+    description: "Foo controller"
 
 paths:
   /foos:
     post:
       tags:
-      - "foo-controller"
+        - "foo-controller"
       summary: "create"
       description: ""
       parameters:

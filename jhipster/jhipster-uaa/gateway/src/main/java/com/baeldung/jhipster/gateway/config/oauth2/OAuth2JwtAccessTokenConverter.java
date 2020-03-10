@@ -78,6 +78,7 @@ public class OAuth2JwtAccessTokenConverter extends JwtAccessTokenConverter {
         }
         return false;
     }
+
     /**
      * Extract JWT claims and set it to OAuth2Authentication decoded details.
      * Here is how to get details:
@@ -97,6 +98,7 @@ public class OAuth2JwtAccessTokenConverter extends JwtAccessTokenConverter {
      *  }
      * </code>
      *  </pre>
+     *
      * @param claims OAuth2JWTToken claims
      * @return OAuth2Authentication
      */

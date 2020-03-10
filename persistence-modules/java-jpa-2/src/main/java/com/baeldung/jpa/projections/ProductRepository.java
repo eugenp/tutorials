@@ -18,21 +18,21 @@ public class ProductRepository {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("jpa-projections");
         entityManager = factory.createEntityManager();
     }
-    
+
     @SuppressWarnings("unchecked")
     public List<Object> findAllNamesUsingJPQL() {
         Query query = entityManager.createQuery("select name from Product");
         List<Object> resultList = query.getResultList();
         return resultList;
     }
-    
+
     @SuppressWarnings("unchecked")
     public List<Object> findAllIdsUsingJPQL() {
         Query query = entityManager.createQuery("select id from Product");
         List<Object> resultList = query.getResultList();
         return resultList;
     }
-    
+
     public List<String> findAllNamesUsingCriteriaBuilder() {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<String> query = builder.createQuery(String.class);
@@ -41,14 +41,14 @@ public class ProductRepository {
         List<String> resultList = entityManager.createQuery(query).getResultList();
         return resultList;
     }
-    
+
     @SuppressWarnings("unchecked")
     public List<Object[]> findAllIdAndNamesUsingJPQL() {
         Query query = entityManager.createQuery("select id, name from Product");
         List<Object[]> resultList = query.getResultList();
         return resultList;
     }
-    
+
     public List<Object[]> findAllIdAndNamesUsingCriteriaBuilderArray() {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
@@ -57,7 +57,7 @@ public class ProductRepository {
         List<Object[]> resultList = entityManager.createQuery(query).getResultList();
         return resultList;
     }
-    
+
     public List<Object[]> findAllIdNameUnitPriceUsingCriteriaQueryMultiselect() {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
@@ -66,7 +66,7 @@ public class ProductRepository {
         List<Object[]> resultList = entityManager.createQuery(query).getResultList();
         return resultList;
     }
-    
+
     public List<Tuple> findAllIdAndNamesUsingCriteriaBuilderTuple() {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Tuple> query = builder.createQuery(Tuple.class);
@@ -75,12 +75,12 @@ public class ProductRepository {
         List<Tuple> resultList = entityManager.createQuery(query).getResultList();
         return resultList;
     }
-    
+
     public List<Object[]> findCountByCategoryUsingJPQL() {
         Query query = entityManager.createQuery("select p.category, count(p) from Product p group by p.category");
         return query.getResultList();
     }
-    
+
     public List<Object[]> findCountByCategoryUsingCriteriaBuilder() {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);

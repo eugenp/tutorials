@@ -48,14 +48,14 @@ public class MyUserDetailsService implements UserDetailsService {
     // UTIL
 
     private final Collection<? extends GrantedAuthority> getAuthorities(Collection<Role> roles) {
-    	List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-    	for (Role role: roles) {
-    		authorities.add(new SimpleGrantedAuthority(role.getName()));
-    		authorities.addAll(role.getPrivileges()
-    				.stream()
-    				.map(p -> new SimpleGrantedAuthority(p.getName()))
-    				.collect(Collectors.toList()));
-    	}
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        for (Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+            authorities.addAll(role.getPrivileges()
+                    .stream()
+                    .map(p -> new SimpleGrantedAuthority(p.getName()))
+                    .collect(Collectors.toList()));
+        }
         return authorities;
     }
 }

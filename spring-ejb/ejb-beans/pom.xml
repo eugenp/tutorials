@@ -42,7 +42,7 @@
             <artifactId>spring-context</artifactId>
             <version>${springframework.version}</version>
         </dependency>
-         <!-- Dependency for EJB javax -->
+        <!-- Dependency for EJB javax -->
         <dependency>
             <groupId>javax.ejb</groupId>
             <artifactId>javax.ejb-api</artifactId>

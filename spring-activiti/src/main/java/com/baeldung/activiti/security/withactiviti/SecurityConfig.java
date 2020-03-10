@@ -14,21 +14,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/**")
-            .authorizeRequests()
-            .antMatchers("/protected-process*")
-            .authenticated()
-            .anyRequest()
-            .permitAll()
-            .and()
-            .formLogin()
-            .loginPage("/login")
-            .defaultSuccessUrl("/homepage")
-            .failureUrl("/login?error=true")
-            .and()
-            .csrf()
-            .disable()
-            .logout()
-            .logoutSuccessUrl("/login");
+                .authorizeRequests()
+                .antMatchers("/protected-process*")
+                .authenticated()
+                .anyRequest()
+                .permitAll()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/homepage")
+                .failureUrl("/login?error=true")
+                .and()
+                .csrf()
+                .disable()
+                .logout()
+                .logoutSuccessUrl("/login");
     }
 
     @Autowired

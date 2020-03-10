@@ -24,13 +24,13 @@ public class WarInitializerApplicationIntegrationTest {
     @Test
     public void whenContextRootUrlIsAccessed_thenStatusIsOk() throws Exception {
         mockMvc.perform(get("/"))
-            .andExpect(status().is(200));
+                .andExpect(status().is(200));
     }
 
     @Test
     public void whenContextRootUrlIsAccesed_thenCorrectStringIsReturned() throws Exception {
         mockMvc.perform(get("/"))
-            .andExpect(content().string(containsString("WarInitializerApplication is up and running!")));
+                .andExpect(content().string(containsString("WarInitializerApplication is up and running!")));
     }
 
 }

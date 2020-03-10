@@ -33,10 +33,10 @@ public final class XStreamBasicsUnitTest {
 
         // @formatter:off
         String expected = ""
-            + "<person>\n"
-            + "  <first>John</first>\n"
-            + "  <last>Smith</last>\n"
-            + "</person>";
+                + "<person>\n"
+                + "  <first>John</first>\n"
+                + "  <last>Smith</last>\n"
+                + "</person>";
         // @formatter:on
         assertEquals(expected, xml);
 
@@ -46,10 +46,10 @@ public final class XStreamBasicsUnitTest {
     public void whenReadXmlAsPerson_thenReturnsNewPerson() {
         // @formatter:off
         String xml = ""
-            + "<person>"
-            + "  <first>John</first>"
-            + "  <last>Smith</last>"
-            + "</person>";
+                + "<person>"
+                + "  <first>John</first>"
+                + "  <last>Smith</last>"
+                + "</person>";
         // @formatter:on
 
         Person person = (Person) xstream.fromXML(xml);
@@ -64,12 +64,12 @@ public final class XStreamBasicsUnitTest {
     public void givenXmlRepresentationOfMap_whenDeserialize_thenBuildsMap() {
         // @formatter:off
         String xml = ""
-            + "<map>"
-            + "  <element>"
-            + "    <string>foo</string>"
-            + "    <int>10</int>"
-            + "  </element>"
-            + "</map>";
+                + "<map>"
+                + "  <element>"
+                + "    <string>foo</string>"
+                + "    <int>10</int>"
+                + "  </element>"
+                + "</map>";
         // @formatter:on
         @SuppressWarnings("unchecked")
         Map<String, Integer> actual = (Map<String, Integer>) xstream.fromXML(xml);

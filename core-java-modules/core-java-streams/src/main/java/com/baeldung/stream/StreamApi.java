@@ -9,12 +9,12 @@ public class StreamApi {
         Stream<String> stream = valueList.stream();
         return stream.reduce((first, second) -> second).orElse(null);
     }
-    
+
     public static Integer getInfiniteStreamLastElementUsingReduce() {
         Stream<Integer> stream = Stream.iterate(0, i -> i + 1);
         return stream.limit(20).reduce((first, second) -> second).orElse(null);
     }
-    
+
     public static String getLastElementUsingSkip(List<String> valueList) {
         long count = (long) valueList.size();
         Stream<String> stream = valueList.stream();

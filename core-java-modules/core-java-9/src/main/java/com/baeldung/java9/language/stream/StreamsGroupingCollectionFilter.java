@@ -15,13 +15,13 @@ public class StreamsGroupingCollectionFilter {
         Function<Integer, Integer> getQuantityOfDigits = item -> (int) Math.log10(item) + 1;
 
         return baseCollection.stream()
-            .collect(groupingBy(getQuantityOfDigits, filtering(item -> item % 2 == 0, toList())));
+                .collect(groupingBy(getQuantityOfDigits, filtering(item -> item % 2 == 0, toList())));
     }
 
     static public Map<Integer, List<Integer>> findEvenNumbersBeforeGroupingByQuantityOfDigits(Collection<Integer> baseCollection) {
 
         return baseCollection.stream()
-            .filter(item -> item % 2 == 0)
-            .collect(groupingBy(item -> (int) Math.log10(item) + 1, toList()));
+                .filter(item -> item % 2 == 0)
+                .collect(groupingBy(item -> (int) Math.log10(item) + 1, toList()));
     }
 }

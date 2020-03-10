@@ -16,8 +16,10 @@ import ratpack.spring.config.EnableRatpack;
 @EnableRatpack
 public class EmbedRatpackApp {
 
-    @Autowired private Content content;
-    @Autowired private ArticleList list;
+    @Autowired
+    private Content content;
+    @Autowired
+    private ArticleList list;
 
     @Bean
     public Action<Chain> hello() {
@@ -27,16 +29,16 @@ public class EmbedRatpackApp {
     @Bean
     public Action<Chain> list() {
         return chain -> chain.get("list", ctx -> ctx.render(list
-          .articles()
-          .toString()));
+                .articles()
+                .toString()));
     }
 
     @Bean
     public ServerConfig ratpackServerConfig() {
         return ServerConfig
-          .builder()
-          .findBaseDir("public")
-          .build();
+                .builder()
+                .findBaseDir("public")
+                .build();
     }
 
     public static void main(String[] args) {

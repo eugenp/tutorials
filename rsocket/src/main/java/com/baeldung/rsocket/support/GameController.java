@@ -1,9 +1,12 @@
 package com.baeldung.rsocket.support;
 
 import static com.baeldung.rsocket.support.Constants.*;
+
 import io.rsocket.Payload;
 import io.rsocket.util.DefaultPayload;
+
 import java.util.List;
+
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
 import org.slf4j.Logger;
@@ -31,9 +34,9 @@ public class GameController implements Publisher<Payload> {
      */
     private List<Long> generateShotList() {
         return Flux.range(1, SHOT_COUNT)
-          .map(x -> (long) Math.ceil(Math.random() * 1000))
-          .collectList()
-          .block();
+                .map(x -> (long) Math.ceil(Math.random() * 1000))
+                .collectList()
+                .block();
     }
 
     @Override
@@ -48,7 +51,10 @@ public class GameController implements Publisher<Payload> {
     private void fireAtWill() {
         new Thread(() -> {
             for (Long shotDelay : shots) {
-                try { Thread.sleep(shotDelay); } catch (Exception x) {}
+                try {
+                    Thread.sleep(shotDelay);
+                } catch (Exception x) {
+                }
                 if (truce) {
                     break;
                 }

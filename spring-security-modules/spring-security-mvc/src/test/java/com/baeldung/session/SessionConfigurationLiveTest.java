@@ -28,7 +28,7 @@ public class SessionConfigurationLiveTest {
         Response resp2 = simpleResponseRequestUsingSessionNotFollowingRedirects(sessionFilter);
         assertThat(resp2.getStatusCode()).isEqualTo(HttpStatus.OK.value());
         assertThat(resp2.getBody()
-            .asString()).isEqualTo("Max Inactive Interval before Session expires: 60");
+                .asString()).isEqualTo("Max Inactive Interval before Session expires: 60");
 
         // session will be expired in 60 seconds...
         Thread.sleep(62000);
@@ -49,11 +49,11 @@ public class SessionConfigurationLiveTest {
 
         // now try to access a resource using expired session
         Response resp4 = given().filter(sessionFilter)
-            .and()
-            .redirects()
-            .follow(false)
-            .when()
-            .get(SESSION_SVC_URL);
+                .and()
+                .redirects()
+                .follow(false)
+                .when()
+                .get(SESSION_SVC_URL);
 
         assertThat(resp4.getStatusCode()).isEqualTo(HttpStatus.FOUND.value());
         assertThat(resp4.getHeader("Location")).isEqualTo("http://localhost:8080/sessionExpired.html");
@@ -68,25 +68,25 @@ public class SessionConfigurationLiveTest {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK.value());
         assertThat(response.getBody()
-            .asString()).isEqualTo("Max Inactive Interval before Session expires: 60");
+                .asString()).isEqualTo("Max Inactive Interval before Session expires: 60");
     }
 
     private static Response simpleResponseSvcRequestLoggingIn(Optional<SessionFilter> sessionFilter) {
         RequestSpecification spec = given().auth()
-            .form(USER, PASSWORD);
+                .form(USER, PASSWORD);
         sessionFilter.ifPresent(filter -> spec.and()
-            .filter(filter));
+                .filter(filter));
         return spec.when()
-            .get(SESSION_SVC_URL);
+                .get(SESSION_SVC_URL);
     }
 
     private static Response simpleResponseRequestUsingSessionNotFollowingRedirects(SessionFilter sessionFilter) {
         return given().filter(sessionFilter)
-            .and()
-            .redirects()
-            .follow(false)
-            .when()
-            .get(SESSION_SVC_URL);
+                .and()
+                .redirects()
+                .follow(false)
+                .when()
+                .get(SESSION_SVC_URL);
     }
 
 }

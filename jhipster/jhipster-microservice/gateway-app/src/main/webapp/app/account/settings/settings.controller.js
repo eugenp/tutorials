@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     SettingsController.$inject = ['Principal', 'Auth'];
 
-    function SettingsController (Principal, Auth) {
+    function SettingsController(Principal, Auth) {
         var vm = this;
 
         vm.error = null;
@@ -29,18 +29,18 @@
             };
         };
 
-        Principal.identity().then(function(account) {
+        Principal.identity().then(function (account) {
             vm.settingsAccount = copyAccount(account);
         });
 
-        function save () {
-            Auth.updateAccount(vm.settingsAccount).then(function() {
+        function save() {
+            Auth.updateAccount(vm.settingsAccount).then(function () {
                 vm.error = null;
                 vm.success = 'OK';
-                Principal.identity(true).then(function(account) {
+                Principal.identity(true).then(function (account) {
                     vm.settingsAccount = copyAccount(account);
                 });
-            }).catch(function() {
+            }).catch(function () {
                 vm.success = null;
                 vm.error = 'ERROR';
             });

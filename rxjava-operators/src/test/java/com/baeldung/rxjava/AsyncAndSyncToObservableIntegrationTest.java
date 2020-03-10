@@ -29,8 +29,8 @@ public class AsyncAndSyncToObservableIntegrationTest {
 
         for (int i = 1; i < 5; i++) {
             source.test()
-                .awaitDone(5, TimeUnit.SECONDS)
-                .assertResult(i);
+                    .awaitDone(5, TimeUnit.SECONDS)
+                    .assertResult(i);
 
             assertEquals(i, counter.get());
         }
@@ -44,8 +44,8 @@ public class AsyncAndSyncToObservableIntegrationTest {
 
         for (int i = 1; i < 5; i++) {
             source.test()
-                .awaitDone(5, TimeUnit.SECONDS)
-                .assertResult(1);
+                    .awaitDone(5, TimeUnit.SECONDS)
+                    .assertResult(1);
 
             assertEquals(1, counter.get());
         }
@@ -53,7 +53,7 @@ public class AsyncAndSyncToObservableIntegrationTest {
 
     /* Method will execute only once and cache its result.*/
     @Test
-    public void givenAsyncMethod_whenConvertedWithFromFuture_thenRetrunObservble() { 
+    public void givenAsyncMethod_whenConvertedWithFromFuture_thenRetrunObservble() {
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future<Integer> future = executor.submit(callable);
@@ -61,8 +61,8 @@ public class AsyncAndSyncToObservableIntegrationTest {
 
         for (int i = 1; i < 5; i++) {
             source.test()
-                .awaitDone(5, TimeUnit.SECONDS)
-                .assertResult(1);
+                    .awaitDone(5, TimeUnit.SECONDS)
+                    .assertResult(1);
 
             assertEquals(1, counter.get());
         }
@@ -79,8 +79,8 @@ public class AsyncAndSyncToObservableIntegrationTest {
 
         for (int i = 1; i < 5; i++) {
             source.test()
-                .awaitDone(5, TimeUnit.SECONDS)
-                .assertResult(i);
+                    .awaitDone(5, TimeUnit.SECONDS)
+                    .assertResult(i);
 
             assertEquals(i, counter.get());
         }
@@ -90,15 +90,15 @@ public class AsyncAndSyncToObservableIntegrationTest {
 
     /*Method will execute only once and cache its result.*/
     @Test
-    public void givenAsyncMethod_whenConvertedWithDeferFuture_thenRetrunObservble() { 
-        List<Integer> list = Arrays.asList(new Integer[] { counter.incrementAndGet(), counter.incrementAndGet(), counter.incrementAndGet() });
+    public void givenAsyncMethod_whenConvertedWithDeferFuture_thenRetrunObservble() {
+        List<Integer> list = Arrays.asList(new Integer[]{counter.incrementAndGet(), counter.incrementAndGet(), counter.incrementAndGet()});
         ExecutorService exec = Executors.newSingleThreadExecutor();
         Callable<Observable<Integer>> callable = () -> Observable.fromIterable(list);
         Observable<Integer> source = AsyncObservable.deferFuture(() -> exec.submit(callable));
         for (int i = 1; i < 4; i++) {
             source.test()
-                .awaitDone(5, TimeUnit.SECONDS)
-                .assertResult(1, 2, 3);
+                    .awaitDone(5, TimeUnit.SECONDS)
+                    .assertResult(1, 2, 3);
         }
 
         exec.shutdown();

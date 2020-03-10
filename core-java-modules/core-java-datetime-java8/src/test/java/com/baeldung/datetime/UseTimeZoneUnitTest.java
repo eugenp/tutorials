@@ -34,8 +34,8 @@ public class UseTimeZoneUnitTest {
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone(timeZone));
 
         System.out.println(String.format("Java7: Time now in '%s' is '%s'", nowAsiaSingapore.getTimeZone()
-            .getID(), simpleDateFormat.format(nowAsiaSingapore.getTime())));
-        
+                .getID(), simpleDateFormat.format(nowAsiaSingapore.getTime())));
+
         Assert.assertEquals(nowUtc.toInstant().getEpochSecond(), nowAsiaSingapore.toInstant().getEpochSecond());
         Assert.assertEquals(asiaSingapore, nowAsiaSingapore.getTimeZone());
 
@@ -48,8 +48,8 @@ public class UseTimeZoneUnitTest {
 
         ZonedDateTime nowAsiaSingapore = ZonedDateTime.ofInstant(nowUtc, asiaSingapore);
 
-        System.out.println(String.format("Java8: Time now in '%s' is '%s'", nowAsiaSingapore.getZone(), 
-            nowAsiaSingapore.format(DateTimeFormatter.ofPattern(PATTERN))));
+        System.out.println(String.format("Java8: Time now in '%s' is '%s'", nowAsiaSingapore.getZone(),
+                nowAsiaSingapore.format(DateTimeFormatter.ofPattern(PATTERN))));
 
         Assert.assertEquals(nowUtc.getEpochSecond(), nowAsiaSingapore.toEpochSecond());
         Assert.assertEquals(asiaSingapore, nowAsiaSingapore.getZone());
@@ -62,9 +62,9 @@ public class UseTimeZoneUnitTest {
 
         DateTime nowAsiaSingapore = nowUtc.toDateTime(asiaSingapore);
 
-        System.out.println(String.format("Joda-time: Time now in '%s' is '%s'", nowAsiaSingapore.getZone(), 
-            nowAsiaSingapore.toString(PATTERN)));
-        
+        System.out.println(String.format("Joda-time: Time now in '%s' is '%s'", nowAsiaSingapore.getZone(),
+                nowAsiaSingapore.toString(PATTERN)));
+
         Assert.assertEquals(nowUtc.toInstant().getMillis(), nowAsiaSingapore.toInstant().getMillis());
         Assert.assertEquals(asiaSingapore, nowAsiaSingapore.getZone());
     }

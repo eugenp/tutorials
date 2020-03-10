@@ -10,7 +10,7 @@ import com.baeldung.freemarker.config.SpringWebConfig;
 import com.baeldung.freemarker.config.WebConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SpringWebConfig.class, WebConfiguration.class })
+@ContextConfiguration(classes = {SpringWebConfig.class, WebConfiguration.class})
 @WebAppConfiguration
 public class SpringContextTest {
 

@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class Delay {
 
     public static void main(String args[]) throws InterruptedException {
-        
+
         threadSleep(4, 1);
 
         timeunitSleep(4, 1);

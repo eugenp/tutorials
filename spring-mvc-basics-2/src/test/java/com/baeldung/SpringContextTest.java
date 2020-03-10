@@ -10,7 +10,7 @@ import com.baeldung.spring.configuration.ApplicationConfiguration;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={ApplicationConfiguration.class})
+@ContextConfiguration(classes = {ApplicationConfiguration.class})
 @WebAppConfiguration
 public class SpringContextTest {
 

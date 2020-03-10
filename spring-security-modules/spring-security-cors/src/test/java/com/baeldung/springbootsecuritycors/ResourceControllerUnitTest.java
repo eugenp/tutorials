@@ -17,7 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.baeldung.springbootsecuritycors.basicauth.SpringBootSecurityApplication;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { SpringBootSecurityApplication.class })
+@SpringBootTest(classes = {SpringBootSecurityApplication.class})
 public class ResourceControllerUnitTest {
 
     private MockMvc mockMvc;
@@ -28,15 +28,15 @@ public class ResourceControllerUnitTest {
     @Before
     public void setUp() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(wac)
-            .apply(SecurityMockMvcConfigurers.springSecurity())
-            .build();
+                .apply(SecurityMockMvcConfigurers.springSecurity())
+                .build();
     }
 
     @Test
     public void givenPreFlightRequest_whenPerfomed_shouldReturnOK() throws Exception {
         mockMvc.perform(options("/user")
-            .header("Access-Control-Request-Method", "GET")
-            .header("Origin", "http://localhost:4200"))
-            .andExpect(status().isOk());
+                .header("Access-Control-Request-Method", "GET")
+                .header("Origin", "http://localhost:4200"))
+                .andExpect(status().isOk());
     }
 }

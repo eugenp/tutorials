@@ -11,7 +11,7 @@ public class EitherUnitTest {
     public void givenMarks_whenPassNumber_thenExpectNumber() {
         Either<String, Integer> result = EitherDemo.computeWithEither(100);
         int marks = result.right()
-          .getOrElseThrow(x -> new IllegalStateException());
+                .getOrElseThrow(x -> new IllegalStateException());
 
         assertEquals(100, marks);
     }
@@ -20,7 +20,7 @@ public class EitherUnitTest {
     public void givenMarks_whenFailNumber_thenExpectErrorMesssage() {
         Either<String, Integer> result = EitherDemo.computeWithEither(50);
         String error = result.left()
-          .getOrNull();
+                .getOrNull();
 
         assertEquals("Marks not acceptable", error);
     }
@@ -29,8 +29,8 @@ public class EitherUnitTest {
     public void givenPassMarks_whenModified_thenExpectNumber() {
         Either<String, Integer> result = EitherDemo.computeWithEither(90);
         int marks = result.right()
-          .map(x -> x * 2)
-          .get();
+                .map(x -> x * 2)
+                .get();
 
         assertEquals(180, marks);
     }

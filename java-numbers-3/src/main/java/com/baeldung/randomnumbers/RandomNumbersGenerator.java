@@ -48,19 +48,19 @@ public class RandomNumbersGenerator {
 
     public Integer generateRandomWithThreadLocalRandom() {
         int randomWithThreadLocalRandom = ThreadLocalRandom.current()
-            .nextInt();
+                .nextInt();
         return randomWithThreadLocalRandom;
     }
 
     public Integer generateRandomWithThreadLocalRandomInARange(int min, int max) {
         int randomWithThreadLocalRandomInARange = ThreadLocalRandom.current()
-            .nextInt(min, max);
+                .nextInt(min, max);
         return randomWithThreadLocalRandomInARange;
     }
 
     public Integer generateRandomWithThreadLocalRandomFromZero(int max) {
         int randomWithThreadLocalRandomFromZero = ThreadLocalRandom.current()
-            .nextInt(max);
+                .nextInt(max);
         return randomWithThreadLocalRandomFromZero;
     }
 

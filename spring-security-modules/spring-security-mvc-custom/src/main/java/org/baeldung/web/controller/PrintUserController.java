@@ -21,7 +21,7 @@ public class PrintUserController {
     @RequestMapping(value = "/print", method = RequestMethod.GET)
     public void printUser() {
         SecurityContext sc = SecurityContextHolder.getContext();
-        System.out.println("Logged User: "+sc.getAuthentication().getName());
+        System.out.println("Logged User: " + sc.getAuthentication().getName());
     }
 
 }

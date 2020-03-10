@@ -14,146 +14,146 @@ import org.slf4j.LoggerFactory;
 
 public class ClockUnitTest {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ClockUnitTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ClockUnitTest.class);
 
-	@Test
-	public void givenClock_withSytemUTC_retrievesInstant() {
-		
-		Clock clockUTC = Clock.systemUTC();
+    @Test
+    public void givenClock_withSytemUTC_retrievesInstant() {
 
-		assertEquals(clockUTC.getZone(), ZoneOffset.UTC);
-		assertEquals(clockUTC.instant().equals(null), false);
+        Clock clockUTC = Clock.systemUTC();
 
-		LOGGER.debug("UTC instant :: " + clockUTC.instant());
-	}
+        assertEquals(clockUTC.getZone(), ZoneOffset.UTC);
+        assertEquals(clockUTC.instant().equals(null), false);
 
-	@Test
-	public void givenClock_withSytem_retrievesInstant() {
+        LOGGER.debug("UTC instant :: " + clockUTC.instant());
+    }
 
-		Clock clockSystem = Clock.system(ZoneId.of("Asia/Calcutta"));
+    @Test
+    public void givenClock_withSytem_retrievesInstant() {
 
-		assertEquals(clockSystem.getZone(), ZoneId.of("Asia/Calcutta"));
-		assertEquals(clockSystem.instant().equals(null), false);
+        Clock clockSystem = Clock.system(ZoneId.of("Asia/Calcutta"));
 
-		LOGGER.debug("System zone :: " + clockSystem.getZone());
-	}
+        assertEquals(clockSystem.getZone(), ZoneId.of("Asia/Calcutta"));
+        assertEquals(clockSystem.instant().equals(null), false);
 
-	@Test
-	public void givenClock_withSytemDefaultZone_retrievesInstant() {
-		
-		Clock clockSystemDefault = Clock.systemDefaultZone();
+        LOGGER.debug("System zone :: " + clockSystem.getZone());
+    }
 
-		assertEquals(clockSystemDefault.getZone().equals(null), false);
-		assertEquals(clockSystemDefault.instant().equals(null), false);
+    @Test
+    public void givenClock_withSytemDefaultZone_retrievesInstant() {
 
-		LOGGER.debug("System Default instant :: " + clockSystemDefault.instant());
-	}
+        Clock clockSystemDefault = Clock.systemDefaultZone();
 
-	@Test
-	public void givenClock_withSytemUTC_retrievesTimeInMillis() {
-		
-		Clock clockMillis = Clock.systemDefaultZone();
+        assertEquals(clockSystemDefault.getZone().equals(null), false);
+        assertEquals(clockSystemDefault.instant().equals(null), false);
 
-		assertEquals(clockMillis.instant().equals(null), false);
-		assertTrue(clockMillis.millis() > 0);
+        LOGGER.debug("System Default instant :: " + clockSystemDefault.instant());
+    }
 
-		LOGGER.debug("System Default millis :: " + clockMillis.millis());
-	}
+    @Test
+    public void givenClock_withSytemUTC_retrievesTimeInMillis() {
 
-	@Test
-	public void givenClock_usingOffset_retrievesFutureDate() {
-		
-		Clock baseClock = Clock.systemDefaultZone();
+        Clock clockMillis = Clock.systemDefaultZone();
 
-		// result clock will be later than baseClock
-		Clock futureClock = Clock.offset(baseClock, Duration.ofHours(72));
+        assertEquals(clockMillis.instant().equals(null), false);
+        assertTrue(clockMillis.millis() > 0);
 
-		assertEquals(futureClock.instant().equals(null), false);
-		assertTrue(futureClock.millis() > baseClock.millis());
+        LOGGER.debug("System Default millis :: " + clockMillis.millis());
+    }
 
-		LOGGER.debug("Future Clock instant :: " + futureClock.instant());
-	}
+    @Test
+    public void givenClock_usingOffset_retrievesFutureDate() {
 
-	@Test
-	public void givenClock_usingOffset_retrievesPastDate() {
-		Clock baseClock = Clock.systemDefaultZone();
+        Clock baseClock = Clock.systemDefaultZone();
 
-		// result clock will be later than baseClock
-		Clock pastClock = Clock.offset(baseClock, Duration.ofHours(-72));
+        // result clock will be later than baseClock
+        Clock futureClock = Clock.offset(baseClock, Duration.ofHours(72));
 
-		assertEquals(pastClock.instant().equals(null), false);
-		assertTrue(pastClock.millis() < baseClock.millis());
+        assertEquals(futureClock.instant().equals(null), false);
+        assertTrue(futureClock.millis() > baseClock.millis());
 
-		LOGGER.debug("Past Clock instant :: " + pastClock.instant());
-	}
+        LOGGER.debug("Future Clock instant :: " + futureClock.instant());
+    }
 
-	@Test
-	public void givenClock_usingTick_retrievesInstant() {
-		Clock clockDefaultZone = Clock.systemDefaultZone();
-		Clock clocktick = Clock.tick(clockDefaultZone, Duration.ofSeconds(300));
+    @Test
+    public void givenClock_usingOffset_retrievesPastDate() {
+        Clock baseClock = Clock.systemDefaultZone();
 
-		assertEquals(clockDefaultZone.instant().equals(null), false);
-		assertEquals(clocktick.instant().equals(null), false);
-		assertTrue(clockDefaultZone.millis() > clocktick.millis());
+        // result clock will be later than baseClock
+        Clock pastClock = Clock.offset(baseClock, Duration.ofHours(-72));
 
-		LOGGER.debug("Clock Default Zone instant : " + clockDefaultZone.instant());
-		LOGGER.debug("Clock tick instant: " + clocktick.instant());
-	}
+        assertEquals(pastClock.instant().equals(null), false);
+        assertTrue(pastClock.millis() < baseClock.millis());
 
-	@Test(expected=IllegalArgumentException.class)
-	public void givenClock_usingTickDurationNegative_throwsException() {
-		
-		Clock clockDefaultZone = Clock.systemDefaultZone();
-		Clock.tick(clockDefaultZone, Duration.ofSeconds(-300));
+        LOGGER.debug("Past Clock instant :: " + pastClock.instant());
+    }
 
-	}
-	
-	@Test
-	public void givenClock_usingTickSeconds_retrievesInstant() {
-		ZoneId zoneId = ZoneId.of("Asia/Calcutta");
-		Clock tickSeconds = Clock.tickSeconds(zoneId);
+    @Test
+    public void givenClock_usingTick_retrievesInstant() {
+        Clock clockDefaultZone = Clock.systemDefaultZone();
+        Clock clocktick = Clock.tick(clockDefaultZone, Duration.ofSeconds(300));
 
-		assertEquals(tickSeconds.instant().equals(null), false);
-		LOGGER.debug("Clock tick seconds instant :: " + tickSeconds.instant());
+        assertEquals(clockDefaultZone.instant().equals(null), false);
+        assertEquals(clocktick.instant().equals(null), false);
+        assertTrue(clockDefaultZone.millis() > clocktick.millis());
 
-		tickSeconds = Clock.tick(Clock.system(ZoneId.of("Asia/Calcutta")), Duration.ofSeconds(100));
-		assertEquals(tickSeconds.instant().equals(null), false);
-	}
+        LOGGER.debug("Clock Default Zone instant : " + clockDefaultZone.instant());
+        LOGGER.debug("Clock tick instant: " + clocktick.instant());
+    }
 
-	@Test
-	public void givenClock_usingTickMinutes_retrievesInstant() {
-		
-		Clock tickMinutes = Clock.tickMinutes(ZoneId.of("Asia/Calcutta"));
+    @Test(expected = IllegalArgumentException.class)
+    public void givenClock_usingTickDurationNegative_throwsException() {
 
-		assertEquals(tickMinutes.instant().equals(null), false);
-		LOGGER.debug("Clock tick seconds instant :: " + tickMinutes.instant());
+        Clock clockDefaultZone = Clock.systemDefaultZone();
+        Clock.tick(clockDefaultZone, Duration.ofSeconds(-300));
 
-		tickMinutes = Clock.tick(Clock.system(ZoneId.of("Asia/Calcutta")), Duration.ofMinutes(5));
-		assertEquals(tickMinutes.instant().equals(null), false);
-	}
+    }
 
-	@Test
-	public void givenClock_usingWithZone_retrievesInstant() {
-		
-		ZoneId zoneSingapore = ZoneId.of("Asia/Singapore");
-		Clock clockSingapore = Clock.system(zoneSingapore);
+    @Test
+    public void givenClock_usingTickSeconds_retrievesInstant() {
+        ZoneId zoneId = ZoneId.of("Asia/Calcutta");
+        Clock tickSeconds = Clock.tickSeconds(zoneId);
 
-		assertEquals(clockSingapore.instant().equals(null), false);
-		LOGGER.debug("clockSingapore instant : " + clockSingapore.instant());
+        assertEquals(tickSeconds.instant().equals(null), false);
+        LOGGER.debug("Clock tick seconds instant :: " + tickSeconds.instant());
 
-		ZoneId zoneCalcutta = ZoneId.of("Asia/Calcutta");
-		Clock clockCalcutta = clockSingapore.withZone(zoneCalcutta);
-		assertEquals(clockCalcutta.instant().equals(null), false);
-		LOGGER.debug("clockCalcutta instant : " + clockSingapore.instant());
-	}
+        tickSeconds = Clock.tick(Clock.system(ZoneId.of("Asia/Calcutta")), Duration.ofSeconds(100));
+        assertEquals(tickSeconds.instant().equals(null), false);
+    }
 
-	@Test
-	public void givenClock_usingGetZone_retrievesZoneId() {
-		
-		Clock clockDefaultZone = Clock.systemDefaultZone();
-		ZoneId zone = clockDefaultZone.getZone();
+    @Test
+    public void givenClock_usingTickMinutes_retrievesInstant() {
 
-		assertEquals(zone.getId().equals(null), false);
-		LOGGER.debug("Default zone instant : " + clockDefaultZone.instant());
-	}
+        Clock tickMinutes = Clock.tickMinutes(ZoneId.of("Asia/Calcutta"));
+
+        assertEquals(tickMinutes.instant().equals(null), false);
+        LOGGER.debug("Clock tick seconds instant :: " + tickMinutes.instant());
+
+        tickMinutes = Clock.tick(Clock.system(ZoneId.of("Asia/Calcutta")), Duration.ofMinutes(5));
+        assertEquals(tickMinutes.instant().equals(null), false);
+    }
+
+    @Test
+    public void givenClock_usingWithZone_retrievesInstant() {
+
+        ZoneId zoneSingapore = ZoneId.of("Asia/Singapore");
+        Clock clockSingapore = Clock.system(zoneSingapore);
+
+        assertEquals(clockSingapore.instant().equals(null), false);
+        LOGGER.debug("clockSingapore instant : " + clockSingapore.instant());
+
+        ZoneId zoneCalcutta = ZoneId.of("Asia/Calcutta");
+        Clock clockCalcutta = clockSingapore.withZone(zoneCalcutta);
+        assertEquals(clockCalcutta.instant().equals(null), false);
+        LOGGER.debug("clockCalcutta instant : " + clockSingapore.instant());
+    }
+
+    @Test
+    public void givenClock_usingGetZone_retrievesZoneId() {
+
+        Clock clockDefaultZone = Clock.systemDefaultZone();
+        ZoneId zone = clockDefaultZone.getZone();
+
+        assertEquals(zone.getId().equals(null), false);
+        LOGGER.debug("Default zone instant : " + clockDefaultZone.instant());
+    }
 }

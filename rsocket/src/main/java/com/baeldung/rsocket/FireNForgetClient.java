@@ -1,17 +1,20 @@
 package com.baeldung.rsocket;
 
 import static com.baeldung.rsocket.support.Constants.*;
+
 import io.rsocket.Payload;
 import io.rsocket.RSocket;
 import io.rsocket.RSocketFactory;
 import io.rsocket.transport.netty.client.TcpClientTransport;
 import io.rsocket.util.DefaultPayload;
+
 import java.nio.ByteBuffer;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Flux;
@@ -25,9 +28,9 @@ public class FireNForgetClient {
 
     public FireNForgetClient() {
         this.socket = RSocketFactory.connect()
-          .transport(TcpClientTransport.create("localhost", TCP_PORT))
-          .start()
-          .block();
+                .transport(TcpClientTransport.create("localhost", TCP_PORT))
+                .start()
+                .block();
         this.data = Collections.unmodifiableList(generateData());
     }
 
@@ -36,10 +39,10 @@ public class FireNForgetClient {
      */
     public void sendData() {
         Flux.interval(Duration.ofMillis(50))
-          .take(data.size())
-          .map(this::createFloatPayload)
-          .flatMap(socket::fireAndForget)
-          .blockLast();
+                .take(data.size())
+                .map(this::createFloatPayload)
+                .flatMap(socket::fireAndForget)
+                .blockLast();
     }
 
     /**

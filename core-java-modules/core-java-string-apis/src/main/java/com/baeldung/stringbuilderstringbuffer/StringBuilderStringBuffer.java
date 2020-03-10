@@ -13,19 +13,19 @@ public class StringBuilderStringBuffer {
     public static void main(String[] args) throws RunnerException {
 
         Options opt = new OptionsBuilder()
-            .include(StringBuilderStringBuffer.class.getSimpleName())
-            .build();
+                .include(StringBuilderStringBuffer.class.getSimpleName())
+                .build();
 
         new Runner(opt).run();
     }
-    
+
     @State(Scope.Benchmark)
     public static class MyState {
         int iterations = 1000;
         String initial = "abc";
         String suffix = "def";
     }
-     
+
     @Benchmark
     public StringBuffer benchmarkStringBuffer(MyState state) {
         StringBuffer stringBuffer = new StringBuffer(state.initial);

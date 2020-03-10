@@ -22,7 +22,7 @@ public class UserService {
     public Response addUser(User user) {
         users.add(user);
         return Response.ok()
-            .build();
+                .build();
     }
 
     @GET

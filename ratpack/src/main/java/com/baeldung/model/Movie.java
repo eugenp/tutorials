@@ -1,7 +1,7 @@
 package com.baeldung.model;
+
 /**
- * 
- *POJO class for Movie object
+ * POJO class for Movie object
  */
 public class Movie {
 

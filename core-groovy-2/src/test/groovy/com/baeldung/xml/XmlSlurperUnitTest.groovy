@@ -89,8 +89,8 @@ class XmlSlurperUnitTest extends Specification {
 
         when: "Removing all articles but with id==3"
         articles.article
-          .findAll { it.author.'@id' != "3" }
-          .replaceNode {}
+                .findAll { it.author.'@id' != "3" }
+                .replaceNode {}
 
         articles = parser.parseText(XmlUtil.serialize(articles))
 

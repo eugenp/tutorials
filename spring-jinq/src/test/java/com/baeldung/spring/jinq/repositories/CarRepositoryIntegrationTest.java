@@ -20,19 +20,19 @@ public class CarRepositoryIntegrationTest {
     @Test
     public void givenACar_whenFilter_thenShouldBeFound() {
         assertThat(repository.findByModel("model1")
-            .isPresent()).isFalse();
+                .isPresent()).isFalse();
     }
 
     @Test
     public void givenACar_whenMultipleFilters_thenShouldBeFound() {
         assertThat(repository.findByModelAndDescription("model1", "desc")
-            .isEmpty()).isTrue();
+                .isEmpty()).isTrue();
     }
 
     @Test
     public void whenUseASelectClause() {
         assertThat(repository.findWithModelYearAndEngine()
-            .isEmpty()).isTrue();
+                .isEmpty()).isTrue();
     }
 
     @Test

@@ -18,7 +18,7 @@ public class GreeterSampleApplicationIntegrationTest {
 
     @Autowired
     private Greeter greeter;
-    
+
     @Test
     public void givenMorningTime_ifMorningMessage_thenSuccess() {
         String expected = "Hello Baeldung, Good Morning";
@@ -46,5 +46,5 @@ public class GreeterSampleApplicationIntegrationTest {
         String actual = greeter.greet(LocalDateTime.of(2017, 3, 1, 21, 0));
         assertEquals(expected, actual);
     }
-    
+
 }

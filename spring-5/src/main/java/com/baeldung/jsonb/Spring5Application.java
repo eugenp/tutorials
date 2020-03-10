@@ -13,7 +13,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.JsonbHttpMessageConverter;
 
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
-@ComponentScan(basePackages = { "com.baeldung.jsonb" })
+@ComponentScan(basePackages = {"com.baeldung.jsonb"})
 public class Spring5Application {
 
     public static void main(String[] args) {

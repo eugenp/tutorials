@@ -12,7 +12,7 @@ public class FormServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws IOException {
+            throws IOException {
 
         String height = request.getParameter("height");
         String weight = request.getParameter("weight");

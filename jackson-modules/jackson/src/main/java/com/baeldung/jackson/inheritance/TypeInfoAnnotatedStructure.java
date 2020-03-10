@@ -20,7 +20,7 @@ public class TypeInfoAnnotatedStructure {
     }
 
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
-    @JsonSubTypes({ @Type(value = Car.class, name = "car"), @Type(value = Truck.class, name = "truck") })
+    @JsonSubTypes({@Type(value = Car.class, name = "car"), @Type(value = Truck.class, name = "truck")})
     public static abstract class Vehicle {
         private String make;
         private String model;

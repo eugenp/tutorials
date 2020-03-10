@@ -21,13 +21,13 @@ public class WordCounter {
 
     private Pipeline createPipeLine() {
         Pipeline p = Pipeline.create();
-        p.drawFrom(Sources.<String> list(LIST_NAME))
-            .flatMap(word -> traverseArray(word.toLowerCase()
-                .split("\\W+")))
-            .filter(word -> !word.isEmpty())
-            .groupingKey(wholeItem())
-            .aggregate(counting())
-            .drainTo(Sinks.map(MAP_NAME));
+        p.drawFrom(Sources.<String>list(LIST_NAME))
+                .flatMap(word -> traverseArray(word.toLowerCase()
+                        .split("\\W+")))
+                .filter(word -> !word.isEmpty())
+                .groupingKey(wholeItem())
+                .aggregate(counting())
+                .drainTo(Sinks.map(MAP_NAME));
         return p;
     }
 
@@ -39,7 +39,7 @@ public class WordCounter {
             textList.addAll(sentences);
             Pipeline p = createPipeLine();
             jet.newJob(p)
-                .join();
+                    .join();
             Map<String, Long> counts = jet.getMap(MAP_NAME);
             count = counts.get(word);
         } finally {

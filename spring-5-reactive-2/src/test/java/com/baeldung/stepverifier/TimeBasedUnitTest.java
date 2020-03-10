@@ -11,12 +11,12 @@ public class TimeBasedUnitTest {
     @Test
     public void simpleExample() {
         StepVerifier
-          .withVirtualTime(() -> Flux.interval(Duration.ofSeconds(1)).take(2))
-          .expectSubscription()
-          .expectNoEvent(Duration.ofSeconds(1))
-          .expectNext(0L)
-          .thenAwait(Duration.ofSeconds(1))
-          .expectNext(1L)
-          .verifyComplete();
+                .withVirtualTime(() -> Flux.interval(Duration.ofSeconds(1)).take(2))
+                .expectSubscription()
+                .expectNoEvent(Duration.ofSeconds(1))
+                .expectNext(0L)
+                .thenAwait(Duration.ofSeconds(1))
+                .expectNext(1L)
+                .verifyComplete();
     }
 }

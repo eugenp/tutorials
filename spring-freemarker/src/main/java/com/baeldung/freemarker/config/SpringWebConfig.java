@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan({ "com.baeldung.freemarker" })
+@ComponentScan({"com.baeldung.freemarker"})
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
 
     @Override

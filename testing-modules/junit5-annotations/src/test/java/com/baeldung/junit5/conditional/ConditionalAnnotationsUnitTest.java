@@ -122,7 +122,7 @@ public class ConditionalAnnotationsUnitTest {
 
     @Target(ElementType.METHOD)
     @Retention(RetentionPolicy.RUNTIME)
-    // @DisabledIf("Math.random() >= 0.5")
+            // @DisabledIf("Math.random() >= 0.5")
     @interface CoinToss {
     }
 

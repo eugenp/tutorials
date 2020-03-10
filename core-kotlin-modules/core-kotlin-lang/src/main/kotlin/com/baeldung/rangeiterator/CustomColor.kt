@@ -2,7 +2,7 @@ package com.baeldung.rangeiterator
 
 import java.lang.IllegalStateException
 
-class CustomColor(val rgb: Int): Comparable<CustomColor> {
+class CustomColor(val rgb: Int) : Comparable<CustomColor> {
 
     override fun compareTo(other: CustomColor): Int {
         return this.rgb.compareTo(other.rgb)
@@ -15,7 +15,7 @@ class CustomColor(val rgb: Int): Comparable<CustomColor> {
     }
 
     init {
-        if(rgb < 0x000000 || rgb > 0xFFFFFF){
+        if (rgb < 0x000000 || rgb > 0xFFFFFF) {
             throw IllegalStateException("RGB must be between 0 and 16777215")
         }
     }
@@ -24,8 +24,9 @@ class CustomColor(val rgb: Int): Comparable<CustomColor> {
         return "CustomColor(rgb=$rgb)"
     }
 }
+
 class ColorRange(override val start: CustomColor,
-                 override val endInclusive: CustomColor) : ClosedRange<CustomColor>, Iterable<CustomColor>{
+                 override val endInclusive: CustomColor) : ClosedRange<CustomColor>, Iterable<CustomColor> {
 
     override fun iterator(): Iterator<CustomColor> {
         return ColorIterator(start, endInclusive)
@@ -50,7 +51,7 @@ fun main(args: Array<String>) {
     val b = CustomColor(-1)
     val c = CustomColor(0xABCDFF)
 
-    for(color in a..c){
+    for (color in a..c) {
         println(color)
     }
 }

@@ -10,9 +10,9 @@ public class CountUppercase {
             long total = 0, start = System.currentTimeMillis(), last = start;
             for (int i = 1; i < 10_000_000; i++) {
                 total += sentence
-                  .chars()
-                  .filter(Character::isUpperCase)
-                  .count();
+                        .chars()
+                        .filter(Character::isUpperCase)
+                        .count();
                 if (i % 1_000_000 == 0) {
                     long now = System.currentTimeMillis();
                     System.out.printf("%d (%d ms)%n", i / 1_000_000, now - last);

@@ -13,23 +13,23 @@ public class AnnotationConfigApplicationContextUnitTest {
     @Test
     @SuppressWarnings("resource")
     public void whenGetSimpleBean_thenReturnConstructedBean() {
-        
+
         ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-        
+
         Foo foo = context.getBean(Foo.class);
-        
+
         assertNotNull(foo);
     }
 
     @Test
     @SuppressWarnings("resource")
     public void whenGetPrototypeBean_thenReturnConstructedBean() {
-        
+
         String expectedName = "Some name";
         ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-        
+
         Bar bar = context.getBean(Bar.class, expectedName);
-        
+
         assertNotNull(bar);
         assertThat(bar.getName(), is(expectedName));
     }

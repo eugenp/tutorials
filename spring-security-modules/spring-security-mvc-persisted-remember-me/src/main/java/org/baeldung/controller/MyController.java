@@ -8,7 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Web Controller.
- * 
  */
 @Controller
 public class MyController {

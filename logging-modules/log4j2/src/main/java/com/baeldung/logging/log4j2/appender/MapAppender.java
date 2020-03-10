@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.baeldung.logging.log4j2.appender;
 
@@ -35,12 +35,12 @@ public class MapAppender extends AbstractAppender {
     @Override
     public void append(LogEvent event) {
         if (event.getLevel()
-            .isLessSpecificThan(Level.WARN)) {
+                .isLessSpecificThan(Level.WARN)) {
             error("Unable to log less than WARN level.");
             return;
         }
         eventMap.put(Instant.now()
-            .toString(), event);
+                .toString(), event);
     }
 
     public ConcurrentMap<String, LogEvent> getEventMap() {

@@ -26,7 +26,7 @@ import io.github.jhipster.config.JHipsterProperties;
 
 /**
  * Zuul filter for limiting the number of HTTP calls per client.
- *
+ * <p>
  * See the Bucket4j documentation at https://github.com/vladimir-bukhtoyarov/bucket4j
  * https://github.com/vladimir-bukhtoyarov/bucket4j/blob/master/doc-pages/jcache-usage
  * .md#example-1---limiting-access-to-http-server-by-ip-address
@@ -49,8 +49,8 @@ public class RateLimitingFilter extends ZuulFilter {
         CachingProvider cachingProvider = Caching.getCachingProvider();
         CacheManager cacheManager = cachingProvider.getCacheManager();
         CompleteConfiguration<String, GridBucketState> config =
-            new MutableConfiguration<String, GridBucketState>()
-                .setTypes(String.class, GridBucketState.class);
+                new MutableConfiguration<String, GridBucketState>()
+                        .setTypes(String.class, GridBucketState.class);
 
         this.cache = cacheManager.createCache(GATEWAY_RATE_LIMITING_CACHE_NAME, config);
         this.buckets = Bucket4j.extension(JCache.class).proxyManagerForCache(cache);
@@ -91,12 +91,12 @@ public class RateLimitingFilter extends ZuulFilter {
     private Supplier<BucketConfiguration> getConfigSupplier() {
         return () -> {
             JHipsterProperties.Gateway.RateLimiting rateLimitingProperties =
-                jHipsterProperties.getGateway().getRateLimiting();
+                    jHipsterProperties.getGateway().getRateLimiting();
 
             return Bucket4j.configurationBuilder()
-                .addLimit(Bandwidth.simple(rateLimitingProperties.getLimit(),
-                    Duration.ofSeconds(rateLimitingProperties.getDurationInSeconds())))
-                .build();
+                    .addLimit(Bandwidth.simple(rateLimitingProperties.getLimit(),
+                            Duration.ofSeconds(rateLimitingProperties.getDurationInSeconds())))
+                    .build();
         };
     }
 

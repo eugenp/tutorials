@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(loader = AnnotationConfigWebContextLoader.class, classes = { HttpRequestDemoConfig.class, ContentCachingFilter.class, PrintRequestContentFilter.class, PersonController.class })
+@ContextConfiguration(loader = AnnotationConfigWebContextLoader.class, classes = {HttpRequestDemoConfig.class, ContentCachingFilter.class, PrintRequestContentFilter.class, PersonController.class})
 @WebAppConfiguration
 public class PersonControllerIntegrationTest {
 

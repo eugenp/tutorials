@@ -3,6 +3,7 @@ package com.baeldung.reactive.logging.netty;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.logging.LoggingHandler;
+
 import java.nio.charset.Charset;
 
 import static io.netty.util.internal.PlatformDependent.allocateUninitializedArray;

@@ -45,10 +45,10 @@ import com.google.common.base.Preconditions;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = { "com.baeldung.persistence" }, transactionManagerRef = "jpaTransactionManager")
+@EnableJpaRepositories(basePackages = {"com.baeldung.persistence"}, transactionManagerRef = "jpaTransactionManager")
 @EnableJpaAuditing
-@PropertySource({ "classpath:persistence-h2.properties" })
-@ComponentScan({ "com.baeldung.persistence" })
+@PropertySource({"classpath:persistence-h2.properties"})
+@ComponentScan({"com.baeldung.persistence"})
 public class PersistenceConfig {
 
     @Autowired
@@ -62,7 +62,7 @@ public class PersistenceConfig {
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(restDataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+        sessionFactory.setPackagesToScan(new String[]{"com.baeldung.persistence.model"});
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
@@ -72,7 +72,7 @@ public class PersistenceConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(restDataSource());
-        emf.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+        emf.setPackagesToScan(new String[]{"com.baeldung.persistence.model"});
 
         final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         emf.setJpaVendorAdapter(vendorAdapter);

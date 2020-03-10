@@ -42,5 +42,4 @@ public class BytePrimitiveLookup extends Lookup {
     }
 
 
-
 }

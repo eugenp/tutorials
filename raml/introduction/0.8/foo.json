@@ -1,13 +1,20 @@
-{ "$schema": "http://json-schema.org/schema",
+{
+  "$schema": "http://json-schema.org/schema",
   "type": "object",
   "description": "Foo details",
   "properties": {
-    "id": { "type": integer },
-    "name": { "type": "string" },
-    "ownerName": { "type": "string" }
+    "id": {
+      "type": integer
+    },
+    "name": {
+      "type": "string"
+    },
+    "ownerName": {
+      "type": "string"
+    }
   },
   "required": [
-  	"id",
-  	"name"
+    "id",
+    "name"
   ]
 }

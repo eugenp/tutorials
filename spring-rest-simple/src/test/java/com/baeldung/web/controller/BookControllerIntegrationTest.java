@@ -44,8 +44,8 @@ public class BookControllerIntegrationTest {
         doReturn(Optional.empty()).when(repository).findById(eq(id));
 
         mvc.perform(get("/api/book/{id}", id))
-            .andExpect(status().isNotFound())
-            .andExpect(content().json(MAPPER.writeValueAsString(new ApiErrorResponse("error-0001", "No book found with ID " + id))));
+                .andExpect(status().isNotFound())
+                .andExpect(content().json(MAPPER.writeValueAsString(new ApiErrorResponse("error-0001", "No book found with ID " + id))));
     }
 
     @Test
@@ -57,8 +57,8 @@ public class BookControllerIntegrationTest {
         doReturn(Optional.of(book)).when(repository).findById(eq(id));
 
         mvc.perform(get("/api/book/{id}", id))
-            .andExpect(status().isOk())
-            .andExpect(content().json(MAPPER.writeValueAsString(book)));
+                .andExpect(status().isOk())
+                .andExpect(content().json(MAPPER.writeValueAsString(book)));
     }
 
     private static Book book(long id, String title, String author) {

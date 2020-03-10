@@ -32,13 +32,13 @@ public class EmployeeSearchServiceIntegrationTest {
     @Before
     public final void setup() throws HibernateException, IOException {
         session = HibernateUtil.getSessionFactory()
-            .openSession();
+                .openSession();
         entityManager = session.getEntityManagerFactory()
-            .createEntityManager();
+                .createEntityManager();
         searchService = new EmployeeSearchServiceImpl(entityManager);
 
         entityManager.getTransaction()
-            .begin();
+                .begin();
         Department department = new Department("Pre Sales");
         DeptEmployee employee = new DeptEmployee("John Smith", "001", "Manager", department);
         entityManager.persist(department);
@@ -75,7 +75,7 @@ public class EmployeeSearchServiceIntegrationTest {
     @After
     public final void teardown() {
         entityManager.getTransaction()
-            .rollback();
+                .rollback();
         entityManager.close();
     }
 
@@ -91,9 +91,9 @@ public class EmployeeSearchServiceIntegrationTest {
         List<DeptEmployee> result = searchService.filterbyTitleUsingCriteriaBuilder(titles);
         assertEquals("Number of Employees does not match with expected.", 6, result.size());
         assertThat(result.stream()
-            .map(DeptEmployee::getTitle)
-            .distinct()
-            .collect(Collectors.toList()), containsInAnyOrder(titles.toArray()));
+                .map(DeptEmployee::getTitle)
+                .distinct()
+                .collect(Collectors.toList()), containsInAnyOrder(titles.toArray()));
     }
 
     @Test
@@ -108,9 +108,9 @@ public class EmployeeSearchServiceIntegrationTest {
         List<DeptEmployee> result = searchService.filterbyTitleUsingExpression(titles);
         assertEquals("Number of Employees does not match with expected.", 6, result.size());
         assertThat(result.stream()
-            .map(DeptEmployee::getTitle)
-            .distinct()
-            .collect(Collectors.toList()), containsInAnyOrder(titles.toArray()));
+                .map(DeptEmployee::getTitle)
+                .distinct()
+                .collect(Collectors.toList()), containsInAnyOrder(titles.toArray()));
     }
 
     @Test

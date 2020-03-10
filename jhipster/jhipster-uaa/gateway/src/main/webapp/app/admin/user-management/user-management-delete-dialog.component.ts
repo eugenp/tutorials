@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import {Component} from '@angular/core';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {JhiEventManager} from 'ng-jhipster';
 
-import { User, UserService } from 'app/core';
+import {User, UserService} from 'app/core';
 
 @Component({
     selector: 'jhi-user-mgmt-delete-dialog',
@@ -11,7 +11,8 @@ import { User, UserService } from 'app/core';
 export class UserMgmtDeleteDialogComponent {
     user: User;
 
-    constructor(private userService: UserService, public activeModal: NgbActiveModal, private eventManager: JhiEventManager) {}
+    constructor(private userService: UserService, public activeModal: NgbActiveModal, private eventManager: JhiEventManager) {
+    }
 
     clear() {
         this.activeModal.dismiss('cancel');

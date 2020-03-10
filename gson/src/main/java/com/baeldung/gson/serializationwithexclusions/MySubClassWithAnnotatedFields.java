@@ -9,7 +9,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class MySubClassWithAnnotatedFields {
 
-    @Expose private long id;
-    @Expose private String description;
+    @Expose
+    private long id;
+    @Expose
+    private String description;
     private String otherVerboseInfo;
 }

@@ -30,7 +30,7 @@ public class AccountCrudRepositoryManualTest {
         StepVerifier.create(accountFlux)
                 .assertNext(account -> {
                     assertEquals("Bill", account.getOwner());
-                    assertEquals(Double.valueOf(12.3) , account.getValue());
+                    assertEquals(Double.valueOf(12.3), account.getValue());
                     assertNotNull(account.getId());
                 })
                 .expectComplete()
@@ -45,12 +45,11 @@ public class AccountCrudRepositoryManualTest {
         StepVerifier.create(accountMono)
                 .assertNext(account -> {
                     assertEquals("Bill", account.getOwner());
-                    assertEquals(Double.valueOf(12.3) , account.getValue());
+                    assertEquals(Double.valueOf(12.3), account.getValue());
                     assertNotNull(account.getId());
                 })
                 .expectComplete()
                 .verify();
-
 
 
     }

@@ -32,7 +32,7 @@ public class DisabledOnEnvironmentCondition implements TestExecutionCondition {
             }
         }
 
-        return ConditionEvaluationResult.enabled("Enabled on environment "+env);
+        return ConditionEvaluationResult.enabled("Enabled on environment " + env);
     }
 
 }

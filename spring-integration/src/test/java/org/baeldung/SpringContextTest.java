@@ -11,8 +11,8 @@ import com.baeldung.si.security.SecurityConfig;
 import com.baeldung.si.security.SecurityPubSubChannel;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SecurityConfig.class, SecuredDirectChannel.class, SecurityPubSubChannel.class,
-		MessageConsumer.class })
+@ContextConfiguration(classes = {SecurityConfig.class, SecuredDirectChannel.class, SecurityPubSubChannel.class,
+        MessageConsumer.class})
 public class SpringContextTest {
 
     @Test

@@ -29,69 +29,71 @@
   
   ======================================================================
 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docbook.org/ns/docbook" xmlns:dbs="http://docbook.org/ns/docbook-slides" xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <xs:import namespace="http://docbook.org/ns/docbook-slides" schemaLocation="slides.xsd"/>
-  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
-  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
-  <xs:element name="db.error.inlines" abstract="true"/>
-  <!-- ====================================================================== -->
-  <xs:attributeGroup name="db.errorcode.role.attribute">
-    <xs:attribute name="role" use="required"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="db.errorcode.attlist">
-    <xs:attribute name="role"/>
-    <xs:attributeGroup ref="dbs:db.common.attributes"/>
-    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
-  </xs:attributeGroup>
-  <xs:element name="errorcode" substitutionGroup="db:db.error.inlines">
-    <xs:complexType mixed="true">
-      <xs:group ref="db:db._text"/>
-      <xs:attributeGroup ref="db:db.errorcode.attlist"/>
-    </xs:complexType>
-  </xs:element>
-  <!-- ====================================================================== -->
-  <xs:attributeGroup name="db.errorname.role.attribute">
-    <xs:attribute name="role" use="required"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="db.errorname.attlist">
-    <xs:attribute name="role"/>
-    <xs:attributeGroup ref="dbs:db.common.attributes"/>
-    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
-  </xs:attributeGroup>
-  <xs:element name="errorname" substitutionGroup="db:db.error.inlines">
-    <xs:complexType mixed="true">
-      <xs:group ref="db:db._text"/>
-      <xs:attributeGroup ref="db:db.errorname.attlist"/>
-    </xs:complexType>
-  </xs:element>
-  <!-- ====================================================================== -->
-  <xs:attributeGroup name="db.errortext.role.attribute">
-    <xs:attribute name="role" use="required"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="db.errortext.attlist">
-    <xs:attribute name="role"/>
-    <xs:attributeGroup ref="dbs:db.common.attributes"/>
-    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
-  </xs:attributeGroup>
-  <xs:element name="errortext" substitutionGroup="db:db.error.inlines">
-    <xs:complexType mixed="true">
-      <xs:group ref="db:db._text"/>
-      <xs:attributeGroup ref="db:db.errortext.attlist"/>
-    </xs:complexType>
-  </xs:element>
-  <!-- ====================================================================== -->
-  <xs:attributeGroup name="db.errortype.role.attribute">
-    <xs:attribute name="role" use="required"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="db.errortype.attlist">
-    <xs:attribute name="role"/>
-    <xs:attributeGroup ref="dbs:db.common.attributes"/>
-    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
-  </xs:attributeGroup>
-  <xs:element name="errortype" substitutionGroup="db:db.error.inlines">
-    <xs:complexType mixed="true">
-      <xs:group ref="db:db._text"/>
-      <xs:attributeGroup ref="db:db.errortype.attlist"/>
-    </xs:complexType>
-  </xs:element>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           targetNamespace="http://docbook.org/ns/docbook" xmlns:dbs="http://docbook.org/ns/docbook-slides"
+           xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <xs:import namespace="http://docbook.org/ns/docbook-slides" schemaLocation="slides.xsd"/>
+    <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+    <xs:element name="db.error.inlines" abstract="true"/>
+    <!-- ====================================================================== -->
+    <xs:attributeGroup name="db.errorcode.role.attribute">
+        <xs:attribute name="role" use="required"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="db.errorcode.attlist">
+        <xs:attribute name="role"/>
+        <xs:attributeGroup ref="dbs:db.common.attributes"/>
+        <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    </xs:attributeGroup>
+    <xs:element name="errorcode" substitutionGroup="db:db.error.inlines">
+        <xs:complexType mixed="true">
+            <xs:group ref="db:db._text"/>
+            <xs:attributeGroup ref="db:db.errorcode.attlist"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- ====================================================================== -->
+    <xs:attributeGroup name="db.errorname.role.attribute">
+        <xs:attribute name="role" use="required"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="db.errorname.attlist">
+        <xs:attribute name="role"/>
+        <xs:attributeGroup ref="dbs:db.common.attributes"/>
+        <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    </xs:attributeGroup>
+    <xs:element name="errorname" substitutionGroup="db:db.error.inlines">
+        <xs:complexType mixed="true">
+            <xs:group ref="db:db._text"/>
+            <xs:attributeGroup ref="db:db.errorname.attlist"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- ====================================================================== -->
+    <xs:attributeGroup name="db.errortext.role.attribute">
+        <xs:attribute name="role" use="required"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="db.errortext.attlist">
+        <xs:attribute name="role"/>
+        <xs:attributeGroup ref="dbs:db.common.attributes"/>
+        <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    </xs:attributeGroup>
+    <xs:element name="errortext" substitutionGroup="db:db.error.inlines">
+        <xs:complexType mixed="true">
+            <xs:group ref="db:db._text"/>
+            <xs:attributeGroup ref="db:db.errortext.attlist"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- ====================================================================== -->
+    <xs:attributeGroup name="db.errortype.role.attribute">
+        <xs:attribute name="role" use="required"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="db.errortype.attlist">
+        <xs:attribute name="role"/>
+        <xs:attributeGroup ref="dbs:db.common.attributes"/>
+        <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    </xs:attributeGroup>
+    <xs:element name="errortype" substitutionGroup="db:db.error.inlines">
+        <xs:complexType mixed="true">
+            <xs:group ref="db:db._text"/>
+            <xs:attributeGroup ref="db:db.errortype.attlist"/>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

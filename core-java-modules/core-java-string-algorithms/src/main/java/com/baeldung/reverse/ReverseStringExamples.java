@@ -46,7 +46,7 @@ public class ReverseStringExamples {
         }
 
         return output.toString()
-            .trim();
+                .trim();
     }
 
     public static String reverseTheOrderOfWordsUsingApacheCommons(String sentence) {

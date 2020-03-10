@@ -20,16 +20,16 @@ public class Spring5ReactiveTestApplication {
     CommandLineRunner cmd(WebClient client) {
         return args -> {
             client.get().uri("/foos2")
-                .retrieve()
-                .bodyToFlux(Foo.class).log()
-                .subscribe(System.out::println);
+                    .retrieve()
+                    .bodyToFlux(Foo.class).log()
+                    .subscribe(System.out::println);
         };
     }
-    
+
     // 
-    
+
     public static void main(String[] args) {
         SpringApplication.run(Spring5ReactiveTestApplication.class, args);
     }
-    
+
 }

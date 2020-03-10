@@ -12,26 +12,31 @@ import org.springframework.context.annotation.Bean;
 
 import static java.lang.System.out;
 
-@SpringBootApplication public class AmqpClient {
+@SpringBootApplication
+public class AmqpClient {
 
-    @Bean Queue queue() {
+    @Bean
+    Queue queue() {
         return new Queue("remotingQueue");
     }
 
-    @Bean AmqpProxyFactoryBean amqpFactoryBean(AmqpTemplate amqpTemplate) {
+    @Bean
+    AmqpProxyFactoryBean amqpFactoryBean(AmqpTemplate amqpTemplate) {
         AmqpProxyFactoryBean factoryBean = new AmqpProxyFactoryBean();
         factoryBean.setServiceInterface(CabBookingService.class);
         factoryBean.setAmqpTemplate(amqpTemplate);
         return factoryBean;
     }
 
-    @Bean Exchange directExchange(Queue someQueue) {
+    @Bean
+    Exchange directExchange(Queue someQueue) {
         DirectExchange exchange = new DirectExchange("remoting.exchange");
         BindingBuilder.bind(someQueue).to(exchange).with("remoting.binding");
         return exchange;
     }
 
-    @Bean RabbitTemplate amqpTemplate(ConnectionFactory factory) {
+    @Bean
+    RabbitTemplate amqpTemplate(ConnectionFactory factory) {
         RabbitTemplate template = new RabbitTemplate(factory);
         template.setRoutingKey("remoting.binding");
         template.setExchange("remoting.exchange");

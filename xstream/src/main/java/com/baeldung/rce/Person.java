@@ -2,7 +2,9 @@ package com.baeldung.rce;
 
 import java.util.Objects;
 
-/** Person model */
+/**
+ * Person model
+ */
 public final class Person {
 
     private String first;

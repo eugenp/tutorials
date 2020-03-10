@@ -59,20 +59,20 @@ public class DeliveryData {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null) return false;
-        if(o.getClass() == com.baeldung.performancetests.model.source.DeliveryData.class) {
+        if (o.getClass() == com.baeldung.performancetests.model.source.DeliveryData.class) {
             com.baeldung.performancetests.model.source.DeliveryData deliveryData =
-              (com.baeldung.performancetests.model.source.DeliveryData) o;
+                    (com.baeldung.performancetests.model.source.DeliveryData) o;
             return isPrePaid == deliveryData.isPrePaid() &&
-              expectedDeliveryTimeInDays == deliveryData.getExpectedDeliveryTimeInDays() &&
-              Objects.equals(deliveryAddress, deliveryData.getDeliveryAddress()) &&
-              Objects.equals(trackingCode, deliveryData.getTrackingCode());
+                    expectedDeliveryTimeInDays == deliveryData.getExpectedDeliveryTimeInDays() &&
+                    Objects.equals(deliveryAddress, deliveryData.getDeliveryAddress()) &&
+                    Objects.equals(trackingCode, deliveryData.getTrackingCode());
         }
         if (o.getClass() != getClass()) return false;
         DeliveryData that = (DeliveryData) o;
         return isPrePaid == that.isPrePaid &&
-          expectedDeliveryTimeInDays == that.expectedDeliveryTimeInDays &&
-          Objects.equals(deliveryAddress, that.deliveryAddress) &&
-          Objects.equals(trackingCode, that.trackingCode);
+                expectedDeliveryTimeInDays == that.expectedDeliveryTimeInDays &&
+                Objects.equals(deliveryAddress, that.deliveryAddress) &&
+                Objects.equals(trackingCode, that.trackingCode);
     }
 
     @Override

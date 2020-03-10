@@ -4,24 +4,27 @@
           xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
           version="5.0" xml:id="highlight.default.language">
-<refmeta>
-<refentrytitle>highlight.default.language</refentrytitle>
-<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
-</refmeta>
-<refnamediv>
-<refname>highlight.default.language</refname>
-<refpurpose>Default language of programlisting</refpurpose>
-</refnamediv>
+    <refmeta>
+        <refentrytitle>highlight.default.language</refentrytitle>
+        <refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname>highlight.default.language</refname>
+        <refpurpose>Default language of programlisting</refpurpose>
+    </refnamediv>
 
-<refsynopsisdiv>
-<src:fragment xml:id="highlight.default.language.frag">
-<xsl:param name="highlight.default.language"></xsl:param>
-</src:fragment>
-</refsynopsisdiv>
+    <refsynopsisdiv>
+        <src:fragment xml:id="highlight.default.language.frag">
+            <xsl:param name="highlight.default.language"></xsl:param>
+        </src:fragment>
+    </refsynopsisdiv>
 
-<refsection><info><title>Description</title></info>
+    <refsection>
+        <info>
+            <title>Description</title>
+        </info>
 
-<para>This language is used when there is no language attribute on programlisting.</para>
+        <para>This language is used when there is no language attribute on programlisting.</para>
 
-</refsection>
+    </refsection>
 </refentry>

@@ -72,7 +72,7 @@ public class RemoveLeadingAndTrailingZeroes {
 
     public static String removeLeadingZeroesWithGuavaTrimLeadingFrom(String s) {
         String stripped = CharMatcher.is('0')
-            .trimLeadingFrom(s);
+                .trimLeadingFrom(s);
 
         if (stripped.isEmpty() && !s.isEmpty()) {
             return "0";
@@ -83,7 +83,7 @@ public class RemoveLeadingAndTrailingZeroes {
 
     public static String removeTrailingZeroesWithGuavaTrimTrailingFrom(String s) {
         String stripped = CharMatcher.is('0')
-            .trimTrailingFrom(s);
+                .trimTrailingFrom(s);
 
         if (stripped.isEmpty() && !s.isEmpty()) {
             return "0";

@@ -29,8 +29,8 @@ public class SecureServer {
         final IdentityManager idm = new CustomIdentityManager(users);
 
         Undertow server = Undertow.builder()
-          .addHttpListener(8080, "localhost")
-          .setHandler(addSecurity(SecureServer::setExchange, idm)).build();
+                .addHttpListener(8080, "localhost")
+                .setHandler(addSecurity(SecureServer::setExchange, idm)).build();
 
         server.start();
     }
@@ -45,7 +45,7 @@ public class SecureServer {
         handler = new AuthenticationCallHandler(handler);
         handler = new AuthenticationConstraintHandler(handler);
         final List<AuthenticationMechanism> mechanisms = Collections
-          .singletonList(new BasicAuthenticationMechanism("Baeldung_Realm"));
+                .singletonList(new BasicAuthenticationMechanism("Baeldung_Realm"));
         handler = new AuthenticationMechanismsHandler(handler, mechanisms);
         handler = new SecurityInitialHandler(AuthenticationMode.PRO_ACTIVE, identityManager, handler);
         return handler;

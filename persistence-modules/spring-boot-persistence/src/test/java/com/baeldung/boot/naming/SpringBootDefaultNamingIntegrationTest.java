@@ -17,8 +17,8 @@ import com.baeldung.boot.naming.entity.Account;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @TestPropertySource(properties = {
-  "spring.jpa.hibernate.naming.physical-strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy",
-  "spring.jpa.hibernate.naming.implicit-strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
+        "spring.jpa.hibernate.naming.physical-strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy",
+        "spring.jpa.hibernate.naming.implicit-strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
 })
 @Import(Config.class)
 public class SpringBootDefaultNamingIntegrationTest extends NamingConfig {
@@ -35,22 +35,22 @@ public class SpringBootDefaultNamingIntegrationTest extends NamingConfig {
 
         String tableNameCreated = table.getName();
         String physicalNameCreated = table
-          .getColumn(3)
-          .getName();
+                .getColumn(3)
+                .getName();
         String implicitNameCreated = table
-          .getColumn(2)
-          .getName();
+                .getColumn(2)
+                .getName();
 
         SoftAssertions softly = new SoftAssertions();
         softly
-          .assertThat(tableNameCreated)
-          .isEqualTo(tableNameExpected);
+                .assertThat(tableNameCreated)
+                .isEqualTo(tableNameExpected);
         softly
-          .assertThat(physicalNameCreated)
-          .isEqualTo(physicalNameExpected);
+                .assertThat(physicalNameCreated)
+                .isEqualTo(physicalNameExpected);
         softly
-          .assertThat(implicitNameCreated)
-          .isEqualTo(implicitNameExpected);
+                .assertThat(implicitNameCreated)
+                .isEqualTo(implicitNameExpected);
         softly.assertAll();
     }
 }

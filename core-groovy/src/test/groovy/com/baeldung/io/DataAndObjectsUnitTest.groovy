@@ -19,13 +19,13 @@ class DataAndObjectsUnitTest {
         String loadedMessage = ""
         int loadedLength
         boolean loadedValid
-        
+
         new File('src/main/resources/ioData.txt').withDataInputStream { is ->
             loadedMessage = is.readUTF()
             loadedLength = is.readInt()
             loadedValid = is.readBoolean()
         }
-        
+
         assertEquals(message, loadedMessage)
         assertEquals(length, loadedLength)
         assertEquals(valid, loadedValid)
@@ -33,7 +33,7 @@ class DataAndObjectsUnitTest {
 
     @Test
     void whenUsingWithObjectOutputStream_thenObjectIsSerializedToFile() {
-        Task task = new Task(description:'Take out the trash', startDate:new Date(), status:0)
+        Task task = new Task(description: 'Take out the trash', startDate: new Date(), status: 0)
         def serializedDataFile = new File('src/main/resources/ioSerializedObject.txt')
         serializedDataFile.createNewFile()
         serializedDataFile.withObjectOutputStream { out ->
@@ -41,11 +41,11 @@ class DataAndObjectsUnitTest {
         }
 
         Task taskRead
-        
+
         new File('src/main/resources/ioSerializedObject.txt').withObjectInputStream { is ->
             taskRead = is.readObject()
         }
-        
+
         assertEquals(task.description, taskRead.description)
         assertEquals(task.startDate, taskRead.startDate)
         assertEquals(task.status, taskRead.status)

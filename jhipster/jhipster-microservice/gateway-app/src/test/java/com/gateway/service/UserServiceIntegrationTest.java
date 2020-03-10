@@ -5,7 +5,9 @@ import com.gateway.domain.User;
 import com.gateway.config.Constants;
 import com.gateway.repository.UserRepository;
 import com.gateway.service.dto.UserDTO;
+
 import java.time.ZonedDateTime;
+
 import com.gateway.service.util.RandomUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+
 import java.util.Optional;
 import java.util.List;
 
@@ -123,7 +126,7 @@ public class UserServiceIntegrationTest {
         final PageRequest pageable = new PageRequest(0, (int) userRepository.count());
         final Page<UserDTO> allManagedUsers = userService.getAllManagedUsers(pageable);
         assertThat(allManagedUsers.getContent().stream()
-            .noneMatch(user -> Constants.ANONYMOUS_USER.equals(user.getLogin())))
-            .isTrue();
+                .noneMatch(user -> Constants.ANONYMOUS_USER.equals(user.getLogin())))
+                .isTrue();
     }
 }

@@ -12,7 +12,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration @ComponentScan @EnableAutoConfiguration
+@Configuration
+@ComponentScan
+@EnableAutoConfiguration
 public class AmqpServer {
 
     /*
@@ -23,15 +25,18 @@ public class AmqpServer {
     are automatically declared by SpringBoot.
      */
 
-    @Bean CabBookingService bookingService() {
+    @Bean
+    CabBookingService bookingService() {
         return new CabBookingServiceImpl();
     }
 
-    @Bean Queue queue() {
+    @Bean
+    Queue queue() {
         return new Queue("remotingQueue");
     }
 
-    @Bean AmqpInvokerServiceExporter exporter(CabBookingService implementation, AmqpTemplate template) {
+    @Bean
+    AmqpInvokerServiceExporter exporter(CabBookingService implementation, AmqpTemplate template) {
         AmqpInvokerServiceExporter exporter = new AmqpInvokerServiceExporter();
         exporter.setServiceInterface(CabBookingService.class);
         exporter.setService(implementation);
@@ -39,7 +44,8 @@ public class AmqpServer {
         return exporter;
     }
 
-    @Bean SimpleMessageListenerContainer listener(ConnectionFactory factory, AmqpInvokerServiceExporter exporter, Queue queue) {
+    @Bean
+    SimpleMessageListenerContainer listener(ConnectionFactory factory, AmqpInvokerServiceExporter exporter, Queue queue) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(factory);
         container.setMessageListener(exporter);
         container.setQueueNames(queue.getName());

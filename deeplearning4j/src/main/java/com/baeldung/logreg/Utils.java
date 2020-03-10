@@ -22,7 +22,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Utility class for digit classifier.
- * 
  */
 public class Utils {
 
@@ -33,12 +32,13 @@ public class Utils {
 
     /**
      * Download the content of the given url and save it into a file.
+     *
      * @param url
      * @param file
      */
     public static void downloadAndSave(String url, File file) throws IOException {
         CloseableHttpClient client = HttpClientBuilder.create()
-            .build();
+                .build();
         logger.info("Connecting to {}", url);
         try (CloseableHttpResponse response = client.execute(new HttpGet(url))) {
             HttpEntity entity = response.getEntity();
@@ -56,27 +56,29 @@ public class Utils {
 
     /**
      * Extract a "tar.gz" file into a given folder.
+     *
      * @param file
-     * @param folder 
+     * @param folder
      */
     public static void extractTarArchive(File file, String folder) throws IOException {
         logger.info("Extracting archive {} into folder {}", file.getName(), folder);
         // @formatter:off
         try (FileInputStream fis = new FileInputStream(file);
-            BufferedInputStream bis = new BufferedInputStream(fis);
-            GzipCompressorInputStream gzip = new GzipCompressorInputStream(bis); 
-            TarArchiveInputStream tar = new TarArchiveInputStream(gzip)) {
-       // @formatter:on
+             BufferedInputStream bis = new BufferedInputStream(fis);
+             GzipCompressorInputStream gzip = new GzipCompressorInputStream(bis);
+             TarArchiveInputStream tar = new TarArchiveInputStream(gzip)) {
+            // @formatter:on
             TarArchiveEntry entry;
             while ((entry = (TarArchiveEntry) tar.getNextEntry()) != null) {
                 extractEntry(entry, tar, folder);
             }
         }
-      logger.info("Archive extracted"); 
+        logger.info("Archive extracted");
     }
 
     /**
      * Extract an entry of the input stream into a given folder
+     *
      * @param entry
      * @param tar
      * @param folder
@@ -91,9 +93,9 @@ public class Utils {
             int count;
             byte[] data = new byte[bufferSize];
             // @formatter:off
-            try (FileOutputStream os = new FileOutputStream(path); 
-                BufferedOutputStream dest = new BufferedOutputStream(os, bufferSize)) {
-           // @formatter:off
+            try (FileOutputStream os = new FileOutputStream(path);
+                 BufferedOutputStream dest = new BufferedOutputStream(os, bufferSize)) {
+                // @formatter:off
                 while ((count = tar.read(data, 0, bufferSize)) != -1) {
                     dest.write(data, 0, count);
                 }

@@ -22,28 +22,28 @@ public class HystrixAsyncHttpCommand extends HystrixCommand<String> {
 
     HystrixAsyncHttpCommand(URI uri, int timeoutMillis) {
         super(Setter
-          .withGroupKey(HystrixCommandGroupKey.Factory.asKey("hystrix-ratpack-async"))
-          .andCommandPropertiesDefaults(HystrixCommandProperties
-            .Setter()
-            .withExecutionTimeoutInMilliseconds(timeoutMillis)));
+                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("hystrix-ratpack-async"))
+                .andCommandPropertiesDefaults(HystrixCommandProperties
+                        .Setter()
+                        .withExecutionTimeoutInMilliseconds(timeoutMillis)));
         requestConfig = RequestConfig
-          .custom()
-          .setSocketTimeout(timeoutMillis)
-          .setConnectTimeout(timeoutMillis)
-          .setConnectionRequestTimeout(timeoutMillis)
-          .build();
+                .custom()
+                .setSocketTimeout(timeoutMillis)
+                .setConnectTimeout(timeoutMillis)
+                .setConnectionRequestTimeout(timeoutMillis)
+                .build();
         this.uri = uri;
     }
 
     @Override
     protected String run() throws Exception {
         return EntityUtils.toString(HttpClientBuilder
-          .create()
-          .setDefaultRequestConfig(requestConfig)
-          .setDefaultHeaders(Collections.singleton(new BasicHeader("User-Agent", "Baeldung Blocking HttpClient")))
-          .build()
-          .execute(new HttpGet(uri))
-          .getEntity());
+                .create()
+                .setDefaultRequestConfig(requestConfig)
+                .setDefaultHeaders(Collections.singleton(new BasicHeader("User-Agent", "Baeldung Blocking HttpClient")))
+                .build()
+                .execute(new HttpGet(uri))
+                .getEntity());
     }
 
     @Override

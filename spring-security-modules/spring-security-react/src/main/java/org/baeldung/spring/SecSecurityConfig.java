@@ -21,11 +21,11 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         // @formatter:off
         auth.inMemoryAuthentication()
-        .withUser("user1").password("user1Pass").roles("USER")
-        .and()
-        .withUser("user2").password("user2Pass").roles("USER")
-        .and()
-        .withUser("admin").password("admin0Pass").roles("ADMIN");
+                .withUser("user1").password("user1Pass").roles("USER")
+                .and()
+                .withUser("user2").password("user2Pass").roles("USER")
+                .and()
+                .withUser("admin").password("admin0Pass").roles("ADMIN");
         // @formatter:on
     }
 
@@ -33,22 +33,22 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
         http
-        .csrf().disable()
-        .authorizeRequests()
-        .antMatchers("/admin/**").hasRole("ADMIN")
-        .antMatchers("/anonymous*").anonymous()
-        .antMatchers(HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico").permitAll()
-        .anyRequest().authenticated()
-        .and()
-        .formLogin()
-        .loginPage("/index.html")
-        .loginProcessingUrl("/perform_login")
-        .defaultSuccessUrl("/homepage.html",true)
-        .failureUrl("/index.html?error=true")
-        .and()
-        .logout()
-        .logoutUrl("/perform_logout")
-        .deleteCookies("JSESSIONID");
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/anonymous*").anonymous()
+                .antMatchers(HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/index.html")
+                .loginProcessingUrl("/perform_login")
+                .defaultSuccessUrl("/homepage.html", true)
+                .failureUrl("/index.html?error=true")
+                .and()
+                .logout()
+                .logoutUrl("/perform_logout")
+                .deleteCookies("JSESSIONID");
         // @formatter:on
     }
 

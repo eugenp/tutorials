@@ -13,6 +13,7 @@ public final class RtFiniteStateMachine implements FiniteStateMachine {
 
     /**
      * Ctor.
+     *
      * @param initial Initial state of this machine.
      */
     public RtFiniteStateMachine(final State initial) {

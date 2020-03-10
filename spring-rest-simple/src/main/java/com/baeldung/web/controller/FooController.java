@@ -47,21 +47,21 @@ public class FooController {
     public Foo updateFoo(@PathVariable("id") final String id, @RequestBody final Foo foo) {
         return foo;
     }
-    
+
     @RequestMapping(method = RequestMethod.PATCH, value = "/foos/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public Foo patchFoo(@PathVariable("id") final String id, @RequestBody final Foo foo) {
         return foo;
     }
-    
+
     @RequestMapping(method = RequestMethod.POST, value = "/foos")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Foo postFoo(@RequestBody final Foo foo) {
         return foo;
     }
-    
+
     @RequestMapping(method = RequestMethod.HEAD, value = "/foos")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -69,13 +69,13 @@ public class FooController {
         return new Foo(1, randomAlphabetic(4));
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}", produces = { "application/x-protobuf" })
+    @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}", produces = {"application/x-protobuf"})
     @ResponseBody
     public FooProtos.Foo findProtoById(@PathVariable final long id) {
         return FooProtos.Foo.newBuilder()
-            .setId(1)
-            .setName("Foo Name")
-            .build();
+                .setId(1)
+                .setName("Foo Name")
+                .build();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/foos/new")

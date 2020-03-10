@@ -10,19 +10,20 @@ import {BookListComponent} from "./book/book-list/book-list.component";
 import {HttpService} from "./http.service";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RatingComponent,
-    ClickStopPropagationDirective,
-    BookDetailComponent,
-    BookListComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule
-  ],
-  providers: [HttpService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        RatingComponent,
+        ClickStopPropagationDirective,
+        BookDetailComponent,
+        BookListComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule
+    ],
+    providers: [HttpService],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

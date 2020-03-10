@@ -53,7 +53,7 @@ public class AnalysisRunnerLiveTest {
         total = 0;
         for (
 
-            int i = 1; i <= n; i++) {
+                int i = 1; i <= n; i++) {
             for (int j = 1; j < n; j = j * 2) {
                 // System.out.println("Hey - I'm busy looking at: " + i + " and " + j);
                 total++;
@@ -70,7 +70,7 @@ public class AnalysisRunnerLiveTest {
         total = 0;
         for (
 
-            int i = 1; i <= n; i++) {
+                int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
                 // System.out.println("Hey - I'm busy looking at: " + i + " and " + j);
                 total++;
@@ -87,7 +87,7 @@ public class AnalysisRunnerLiveTest {
         total = 0;
         for (
 
-            int i = 1; i <= n; i++) {
+                int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
                 for (int k = 1; k <= n; k++) {
                     // System.out.println("Hey - I'm busy looking at: " + i + " and " + j + " and " + k);
@@ -106,7 +106,7 @@ public class AnalysisRunnerLiveTest {
         total = 0;
         for (
 
-            int i = 1; i <= Math.pow(2, n); i++) {
+                int i = 1; i <= Math.pow(2, n); i++) {
             // System.out.println("Hey - I'm busy looking at: " + i);
             total++;
         }
@@ -121,9 +121,9 @@ public class AnalysisRunnerLiveTest {
         total = 0;
         for (
 
-            int i = 1; i <=
+                int i = 1; i <=
 
-            factorial(n); i++) {
+                factorial(n); i++) {
             // System.out.println("Hey - I'm busy looking at: " + i);
             total++;
         }

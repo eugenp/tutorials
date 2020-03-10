@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.springframework.context.support.GenericGroovyApplicationContext;
 
 public class GroovyConfigurationUnitTest {
-    
+
     private static final String FILE_NAME = "GroovyBeanConfig.groovy";
     private static final String FILE_PATH = "src/main/java/com/baeldug/groovyconfig/";
 
@@ -28,7 +28,7 @@ public class GroovyConfigurationUnitTest {
 
     @Test
     public void whenGroovyConfig_thenCorrectListLength() throws Exception {
-        
+
         GenericGroovyApplicationContext ctx = new GenericGroovyApplicationContext();
         ctx.load("file:" + getPathPart() + FILE_NAME);
         ctx.refresh();
@@ -36,7 +36,7 @@ public class GroovyConfigurationUnitTest {
         BandsBean bb = ctx.getBean(BandsBean.class);
 
         assertEquals(3, bb.getBandsList()
-            .size());
+                .size());
     }
 
     private String getPathPart() {

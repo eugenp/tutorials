@@ -6,7 +6,7 @@ import org.apache.avro.SchemaBuilder;
 
 public class AvroSchemaBuilder {
 
-    public Schema createAvroHttpRequestSchema(){
+    public Schema createAvroHttpRequestSchema() {
 
         Schema clientIdentifier = SchemaBuilder.record("ClientIdentifier").namespace("com.baeldung.avro.model")
                 .fields().requiredString("hostName").requiredString("ipAddress").endRecord();

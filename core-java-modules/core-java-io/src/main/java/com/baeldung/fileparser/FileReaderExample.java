@@ -25,7 +25,7 @@ public class FileReaderExample {
                 result.add(sb.toString());
             }
         }
-        
+
         return result;
     }
 }

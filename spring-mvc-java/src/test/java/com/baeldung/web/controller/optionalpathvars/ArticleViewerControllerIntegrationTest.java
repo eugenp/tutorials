@@ -17,7 +17,7 @@ import com.baeldung.spring.web.config.WebConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { WebConfig.class })
+@ContextConfiguration(classes = {WebConfig.class})
 public class ArticleViewerControllerIntegrationTest {
 
     @Autowired
@@ -32,24 +32,24 @@ public class ArticleViewerControllerIntegrationTest {
 
     @Test
     public void whenIdPathVariableIsPassed_thenResponseOK() throws Exception {
-        
+
         int articleId = 5;
-        
+
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/article/{id}", articleId))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(articleId));
-               
+                .perform(MockMvcRequestBuilders.get("/article/{id}", articleId))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(articleId));
+
     }
 
     @Test
     public void whenIdPathVariableIsNotPassed_thenResponse500() throws Exception {
-                
+
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/article"))
-            .andExpect(MockMvcResultMatchers.status().isInternalServerError());
-               
+                .perform(MockMvcRequestBuilders.get("/article"))
+                .andExpect(MockMvcResultMatchers.status().isInternalServerError());
+
     }
 
-    
+
 }

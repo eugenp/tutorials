@@ -1,17 +1,17 @@
 package com.baeldung.inheritance;
 
 public class SpaceCar extends Car implements SpaceTraveller {
-	@Override
+    @Override
     public void floatOnWater() {
         System.out.println("SpaceCar floating!");
     }
-    
-	@Override
+
+    @Override
     public void fly() {
         System.out.println("SpaceCar flying!");
     }
-    
-	@Override
+
+    @Override
     public void remoteControl() {
         System.out.println("SpaceCar being controlled remotely!");
     }

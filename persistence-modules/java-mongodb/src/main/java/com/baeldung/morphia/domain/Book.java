@@ -15,7 +15,7 @@ import dev.morphia.annotations.Reference;
 import dev.morphia.annotations.Validation;
 
 @Entity("Books")
-@Indexes({ @Index(fields = @Field("title"), options = @IndexOptions(name = "book_title")) })
+@Indexes({@Index(fields = @Field("title"), options = @IndexOptions(name = "book_title"))})
 @Validation("{ price : { $gt : 0 } }")
 public class Book {
     @Id

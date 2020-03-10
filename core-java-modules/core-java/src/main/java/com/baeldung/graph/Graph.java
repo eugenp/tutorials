@@ -44,10 +44,10 @@ public class Graph {
     List<Vertex> getAdjVertices(String label) {
         return adjVertices.get(new Vertex(label));
     }
-    
+
     String printGraph() {
         StringBuffer sb = new StringBuffer();
-        for(Vertex v : adjVertices.keySet()) {
+        for (Vertex v : adjVertices.keySet()) {
             sb.append(v);
             sb.append(adjVertices.get(v));
         }
@@ -56,10 +56,11 @@ public class Graph {
 
     class Vertex {
         String label;
+
         Vertex(String label) {
             this.label = label;
         }
-        
+
         @Override
         public int hashCode() {
             final int prime = 31;
@@ -68,7 +69,7 @@ public class Graph {
             result = prime * result + ((label == null) ? 0 : label.hashCode());
             return result;
         }
-        
+
         @Override
         public boolean equals(Object obj) {
             if (this == obj)

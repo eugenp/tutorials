@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by adi on 1/10/18.
  */
-@WebServlet(name = "com.baeldung.tomcat.programmatic.MyServlet", urlPatterns = { "/my-servlet" })
+@WebServlet(name = "com.baeldung.tomcat.programmatic.MyServlet", urlPatterns = {"/my-servlet"})
 public class MyServlet extends HttpServlet {
 
     @Override

@@ -10,18 +10,18 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TraceRequestFilter extends HttpTraceFilter {
-  /**
-   * Create a new {@link HttpTraceFilter} instance.
-   *
-   * @param repository the trace repository
-   * @param tracer     used to trace exchanges
-   */
-  public TraceRequestFilter(HttpTraceRepository repository, HttpExchangeTracer tracer) {
-      super(repository, tracer);
-  }
+    /**
+     * Create a new {@link HttpTraceFilter} instance.
+     *
+     * @param repository the trace repository
+     * @param tracer     used to trace exchanges
+     */
+    public TraceRequestFilter(HttpTraceRepository repository, HttpExchangeTracer tracer) {
+        super(repository, tracer);
+    }
 
-  @Override
-  protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-      return request.getServletPath().contains("actuator");
-  }
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+        return request.getServletPath().contains("actuator");
+    }
 }

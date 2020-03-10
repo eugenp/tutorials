@@ -34,9 +34,11 @@ import javax.inject.Named;
 @Model
 public class MemberController {
 
-    @Inject private FacesContext facesContext;
+    @Inject
+    private FacesContext facesContext;
 
-    @Inject private MemberRegistration memberRegistration;
+    @Inject
+    private MemberRegistration memberRegistration;
 
     @Produces
     @Named

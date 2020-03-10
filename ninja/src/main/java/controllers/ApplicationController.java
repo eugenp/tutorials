@@ -30,21 +30,21 @@ import services.UserService;
 
 @Singleton
 public class ApplicationController {
-    
+
     @Inject
     Lang lang;
 
     @Inject
     Messages msg;
-    
+
     private static Log logger = LogFactory.getLog(ApplicationController.class);
-    
-    @Inject 
+
+    @Inject
     Provider<EntityManager> entityManagerProvider;
 
     @Inject
     UserService userService;
-    
+
     public Result index() {
         return Results.html();
     }
@@ -56,25 +56,25 @@ public class ApplicationController {
     }
 
     public Result helloWorld(Context context) {
-        Optional<String> language = Optional.of("fr");        
+        Optional<String> language = Optional.of("fr");
         String helloMsg = msg.get("helloMsg", language).get();
         return Results.text().render(helloMsg);
     }
-    
+
     public Result showFlashMsg(FlashScope flashScope) {
         flashScope.success("Success message");
         flashScope.error("Error message");
         return Results.redirect("/home");
     }
-    
+
     public Result home() {
         return Results.html();
     }
-    
+
     public Result createUser() {
         return Results.html();
     }
-    
+
     @UnitOfWork
     public Result fetchUsers() {
         EntityManager entityManager = entityManagerProvider.get();
@@ -82,11 +82,11 @@ public class ApplicationController {
         List<User> users = (List<User>) q.getResultList();
         return Results.json().render(users);
     }
-    
+
     @Transactional
     public Result insertUser(FlashScope flashScope, @JSR303Validation User user, Validation validation) {
-        logger.info("Inserting User : " +user);
-            
+        logger.info("Inserting User : " + user);
+
         if (validation.getViolations().size() > 0) {
             flashScope.error("Validation Error: User can't be created");
         } else {
@@ -95,7 +95,7 @@ public class ApplicationController {
             entityManager.flush();
             flashScope.success("User '" + user + "' is created successfully");
         }
-        
+
         return Results.redirect("/home");
     }
 

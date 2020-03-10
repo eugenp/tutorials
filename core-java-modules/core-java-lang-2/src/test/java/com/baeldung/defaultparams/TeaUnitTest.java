@@ -1,11 +1,12 @@
 package com.baeldung.defaultparams;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 
 
 public class TeaUnitTest {
-    
+
     @Test
     public void whenTeaWithOnlyName_thenCreateDefaultTea() {
         Tea blackTea = new Tea("Black Tea");

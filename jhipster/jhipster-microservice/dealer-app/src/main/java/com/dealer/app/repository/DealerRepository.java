@@ -10,6 +10,6 @@ import java.util.List;
  * Spring Data JPA repository for the Dealer entity.
  */
 @SuppressWarnings("unused")
-public interface DealerRepository extends JpaRepository<Dealer,Long> {
+public interface DealerRepository extends JpaRepository<Dealer, Long> {
 
 }

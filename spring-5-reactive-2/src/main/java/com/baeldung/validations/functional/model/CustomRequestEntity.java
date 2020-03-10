@@ -10,8 +10,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CustomRequestEntity {
-    
+
     private String name;
     private String code;
-    
+
 }

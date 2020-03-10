@@ -11,11 +11,10 @@ import java.lang.reflect.Type;
 
 /**
  * This class is an implementation for <code>StompSessionHandlerAdapter</code>.
- * Once a connection is established, We subscribe to /topic/messages and 
+ * Once a connection is established, We subscribe to /topic/messages and
  * send a sample message to server.
- * 
- * @author Kalyan
  *
+ * @author Kalyan
  */
 public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 
@@ -48,6 +47,7 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 
     /**
      * A sample message instance.
+     *
      * @return instance of <code>Message</code>
      */
     private Message getSampleMessage() {

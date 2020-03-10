@@ -12,7 +12,7 @@ public class ShowCommand extends FrontCommand {
     public void process() throws ServletException, IOException {
         super.process();
         Bookshelf bookshelf = (Bookshelf) request.getServletContext()
-          .getAttribute("bookshelf");
+                .getAttribute("bookshelf");
         String title = request.getParameter("isbn");
         Book book = bookshelf.get(title);
         request.setAttribute("books", Collections.singletonList(book));

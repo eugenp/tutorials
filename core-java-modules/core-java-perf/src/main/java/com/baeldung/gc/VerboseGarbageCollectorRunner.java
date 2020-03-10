@@ -6,10 +6,10 @@ import java.util.Map;
 /**
  * A simple Java program to demonstrate how to enable verbose Garbage Collection (GC) logging.
  * <p>
- * This simple program loads 3 million {@link java.lang.String} instances into a {@link java.util.HashMap} 
+ * This simple program loads 3 million {@link java.lang.String} instances into a {@link java.util.HashMap}
  * object before making an explicit call to the garbage collector using <code>System.gc()</code>.
  * <p>
- * Finally, it removes 2 million of the {@link java.lang.String} instances from the {@link java.util.HashMap}. 
+ * Finally, it removes 2 million of the {@link java.lang.String} instances from the {@link java.util.HashMap}.
  * We also explicitly use <code>System.out.println</code> to make interpreting the output easier.
  * <p>
  * Run this program with the following arguments to see verbose GC logging in its complete form:
@@ -30,7 +30,6 @@ import java.util.Map;
  * <p>
  * It should be noted that the first three arguments are not strictly necessary but for the purposes or the example
  * help really simplify things.
- *
  */
 public class VerboseGarbageCollectorRunner {
 

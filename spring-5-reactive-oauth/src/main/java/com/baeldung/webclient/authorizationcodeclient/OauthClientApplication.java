@@ -5,13 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 /**
- * 
  * Note: This app is configured to use the authorization service and the resource service located in Baeldung/spring-security-oauth repo
- * 
+ * <p>
  * As we usually do with other well-known auth providers (github/facebook/...) we have to log-in using user credentials (john/123) and client configurations handled by the auth server
- * 
- * @author rozagerardo
  *
+ * @author rozagerardo
  */
 @PropertySource("classpath:webclient-auth-code-client-application.properties")
 @SpringBootApplication

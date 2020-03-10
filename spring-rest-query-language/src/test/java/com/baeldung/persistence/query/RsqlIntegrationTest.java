@@ -25,7 +25,7 @@ import cz.jirutka.rsql.parser.RSQLParser;
 import cz.jirutka.rsql.parser.ast.Node;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class })
+@ContextConfiguration(classes = {PersistenceConfig.class})
 @Transactional
 @Rollback
 public class RsqlIntegrationTest {

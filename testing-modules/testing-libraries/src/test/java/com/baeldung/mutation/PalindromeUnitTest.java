@@ -15,20 +15,20 @@ public class PalindromeUnitTest {
     }
 
     @Test
-	public void whenPalindrom_thanAccept() {
-	    Palindrome palindromeTester = new Palindrome();
-	    assertTrue(palindromeTester.isPalindrome("noon"));
+    public void whenPalindrom_thanAccept() {
+        Palindrome palindromeTester = new Palindrome();
+        assertTrue(palindromeTester.isPalindrome("noon"));
     }
-    
+
     @Test
-    public void whenNotPalindrom_thanReject(){
-    	Palindrome palindromeTester = new Palindrome();
-    	assertFalse(palindromeTester.isPalindrome("box"));
+    public void whenNotPalindrom_thanReject() {
+        Palindrome palindromeTester = new Palindrome();
+        assertFalse(palindromeTester.isPalindrome("box"));
     }
-    
+
     @Test
-    public void whenNearPalindrom_thanReject(){
-    	Palindrome palindromeTester = new Palindrome();
-    	assertFalse(palindromeTester.isPalindrome("neon"));
+    public void whenNearPalindrom_thanReject() {
+        Palindrome palindromeTester = new Palindrome();
+        assertFalse(palindromeTester.isPalindrome("neon"));
     }
 }

@@ -12,13 +12,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 public class MockBeanAnnotationIntegrationTest {
-    
+
     @MockBean
     UserRepository mockRepository;
-    
+
     @Autowired
     ApplicationContext context;
-    
+
     @Test
     public void givenCountMethodMocked_WhenCountInvoked_ThenMockValueReturned() {
         Mockito.when(mockRepository.count()).thenReturn(123L);

@@ -38,11 +38,11 @@ public class OptionalParamsUnitTest {
     @Test
     public void whenCreateMultiVitaminWithBuilder_thenOk() {
         MultiVitaminWithBuilder vitamin = new MultiVitaminWithBuilder.MultiVitaminBuilder("Maximum Strength")
-          .withCalcium(100)
-          .withIron(200)
-          .withVitaminA(50)
-          .withVitaminC(1000)
-          .build();
+                .withCalcium(100)
+                .withIron(200)
+                .withVitaminA(50)
+                .withVitaminC(1000)
+                .build();
 
         assertThat(vitamin.getName()).isEqualTo("Maximum Strength");
         assertThat(vitamin.getCalcium()).isEqualTo(100);

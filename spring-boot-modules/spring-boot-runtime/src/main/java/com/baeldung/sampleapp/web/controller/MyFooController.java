@@ -33,13 +33,13 @@ public class MyFooController {
 
     // API - read
 
-    @RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
+    @RequestMapping(method = RequestMethod.GET, produces = {"application/json"})
     @ResponseBody
     public Collection<Foo> findAll() {
         return myfoos.values();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}", produces = { "application/json" })
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}", produces = {"application/json"})
     @ResponseBody
     public Foo findById(@PathVariable final long id) {
         final Foo foo = myfoos.get(id);
@@ -71,8 +71,8 @@ public class MyFooController {
     public Foo createFoo(@RequestBody final Foo foo, HttpServletResponse response) {
         myfoos.put(foo.getId(), foo);
         response.setHeader("Location", ServletUriComponentsBuilder.fromCurrentRequest()
-            .path("/" + foo.getId())
-            .toUriString());
+                .path("/" + foo.getId())
+                .toUriString());
         return foo;
     }
 

@@ -26,8 +26,8 @@ public class ComplexXmlToObjectAnnotationUnitTest {
     public void convertXmlToObjectFromFile() throws Exception {
         ClassLoader classLoader = getClass().getClassLoader();
         FileReader reader = new FileReader(classLoader
-          .getResource("data-file-alias-field-complex.xml")
-          .getFile());
+                .getResource("data-file-alias-field-complex.xml")
+                .getFile());
         Customer customer = (Customer) xstream.fromXML(reader);
 
         assertNotNull(customer);
@@ -38,8 +38,8 @@ public class ComplexXmlToObjectAnnotationUnitTest {
     public void convertXmlToObjectAttributeFromFile() throws Exception {
         ClassLoader classLoader = getClass().getClassLoader();
         FileReader reader = new FileReader(classLoader
-          .getResource("data-file-alias-field-complex.xml")
-          .getFile());
+                .getResource("data-file-alias-field-complex.xml")
+                .getFile());
         Customer customer = (Customer) xstream.fromXML(reader);
 
         assertNotNull(customer);

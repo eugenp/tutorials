@@ -1,1 +1,3 @@
-function increment(num) ++num;
+function increment(num)
+
+++num;

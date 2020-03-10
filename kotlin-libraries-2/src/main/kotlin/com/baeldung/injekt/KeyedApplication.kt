@@ -11,7 +11,8 @@ import uy.kohesive.injekt.api.get
 class KeyedApplication {
     companion object : InjektMain() {
         private val LOG = LoggerFactory.getLogger(KeyedApplication::class.java)
-        @JvmStatic fun main(args: Array<String>) {
+        @JvmStatic
+        fun main(args: Array<String>) {
             KeyedApplication().run()
         }
 
@@ -20,7 +21,7 @@ class KeyedApplication {
                     "google" to Config("googleClientId", "googleClientSecret"),
                     "twitter" to Config("twitterClientId", "twitterClientSecret")
             )
-            addPerKeyFactory<Config, String> {key -> configs[key]!! }
+            addPerKeyFactory<Config, String> { key -> configs[key]!! }
 
             addSingletonFactory { App() }
         }

@@ -52,7 +52,7 @@ public final class DataAccessFieldCallback implements FieldCallback {
     /**
      * For example, if user write:
      * <pre>
-     * &#064;DataAccess(entity=Person.class) 
+     * &#064;DataAccess(entity=Person.class)
      * private GenericDAO&lt;Account&gt; personGenericDAO;
      * </pre>
      * then this is should be failed.

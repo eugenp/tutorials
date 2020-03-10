@@ -62,7 +62,7 @@ public class ReflectionsApp {
 
     public Set<Class<? extends Scanner>> getReflectionsSubTypesUsingBuilder() {
         Reflections reflections = new Reflections(new ConfigurationBuilder().setUrls(ClasspathHelper.forPackage("org.reflections"))
-            .setScanners(new SubTypesScanner()));
+                .setScanners(new SubTypesScanner()));
 
         Set<Class<? extends Scanner>> scannersSet = reflections.getSubTypesOf(Scanner.class);
         return scannersSet;

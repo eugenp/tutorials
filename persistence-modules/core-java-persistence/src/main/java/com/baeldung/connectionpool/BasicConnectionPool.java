@@ -65,7 +65,7 @@ public class BasicConnectionPool implements ConnectionPool {
     public List<Connection> getConnectionPool() {
         return connectionPool;
     }
-    
+
     @Override
     public String getUrl() {
         return url;
@@ -80,7 +80,7 @@ public class BasicConnectionPool implements ConnectionPool {
     public String getPassword() {
         return password;
     }
-    
+
     @Override
     public void shutdown() throws SQLException {
         usedConnections.forEach(this::releaseConnection);

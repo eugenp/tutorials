@@ -64,7 +64,7 @@ public class PersonAPILiveTest {
         assertNotNull(personResultAsJsonStr);
         assertNotNull(root);
         assertNotNull(root.path("name")
-            .asText());
+                .asText());
 
         assertNotNull(person);
         assertNotNull(person.getName());
@@ -80,11 +80,11 @@ public class PersonAPILiveTest {
 
         assertNotNull(responseEntityStr.getBody());
         assertNotNull(root.path("name")
-            .asText());
+                .asText());
 
         assertNotNull(responseEntityPerson.getBody());
         assertNotNull(responseEntityPerson.getBody()
-            .getName());
+                .getName());
     }
 
     @Test

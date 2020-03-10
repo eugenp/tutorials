@@ -8,7 +8,7 @@ class ScopeFunctionsUnitTest {
 
     class Logger {
 
-        var called : Boolean = false
+        var called: Boolean = false
 
         fun info(message: String) {
             called = true
@@ -69,9 +69,9 @@ class ScopeFunctionsUnitTest {
     @Test
     fun shouldAllowBuilderStyleObjectDesignWhenApplyUsedInClassMethods() {
         val teacher = Teacher()
-            .setId(1000)
-            .setName("Martha")
-            .setSurname("Spector")
+                .setId(1000)
+                .setName("Martha")
+                .setSurname("Spector")
 
         assertTrue {
             teacher.surname.equals("Spector")
@@ -85,9 +85,9 @@ class ScopeFunctionsUnitTest {
         val logger = Logger()
 
         val headers = restClient
-            .getResponse()
-            .also { logger.info(it.toString()) }
-            .headers
+                .getResponse()
+                .also { logger.info(it.toString()) }
+                .headers
 
         assertTrue {
             logger.wasCalled() && headers.headerInfo.equals("some header info")
@@ -97,7 +97,7 @@ class ScopeFunctionsUnitTest {
 
     @Test
     fun shouldInitializeFieldWhenAlsoUsed() {
-        val aStudent = Student().also { it.name = "John"}
+        val aStudent = Student().also { it.name = "John" }
 
         assertTrue {
             aStudent.name.equals("John")
@@ -107,7 +107,7 @@ class ScopeFunctionsUnitTest {
     @Test
     fun shouldLogicallyGroupObjectCallsWhenUsingWith() {
         val bankAccount = BankAccount(1000)
-        with (bankAccount) {
+        with(bankAccount) {
             checkAuthorization("someone")
             addPayee("some payee")
             makePayment("payment information")

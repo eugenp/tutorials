@@ -10,10 +10,8 @@ import com.baeldung.config.MongoReactiveConfig;
 /**
  * This Live test requires:
  * * mongodb instance running on the environment
- * 
+ * <p>
  * (e.g. `docker run -d -p 27017:27017 --name bael-mongo mongo`)
- * 
- *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoReactiveConfig.class)

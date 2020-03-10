@@ -59,5 +59,5 @@ public class Greeting {
             return false;
         return true;
     }
-    
+
 }

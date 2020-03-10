@@ -1,6 +1,7 @@
 package com.baeldung.integrationtesting;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class SecuredControllerRestTemplateIntegrationTest {
     @Test
     public void givenAuthRequestOnPrivateService_shouldSucceedWith200() throws Exception {
         ResponseEntity<String> result = template.withBasicAuth("spring", "secret")
-            .getForEntity("/private/hello", String.class);
+                .getForEntity("/private/hello", String.class);
         assertEquals(HttpStatus.OK, result.getStatusCode());
     }
 

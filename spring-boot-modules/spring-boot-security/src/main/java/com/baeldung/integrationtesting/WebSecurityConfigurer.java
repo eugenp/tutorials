@@ -12,25 +12,25 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        
+
         BCryptPasswordEncoder encoder = passwordEncoder();
-        
+
         auth.inMemoryAuthentication()
-            .passwordEncoder(encoder)
-            .withUser("spring")
-            .password(encoder.encode("secret"))
-            .roles("USER");
+                .passwordEncoder(encoder)
+                .withUser("spring")
+                .password(encoder.encode("secret"))
+                .roles("USER");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/private/**")
-            .hasRole("USER")
-            .antMatchers("/public/**")
-            .permitAll()
-            .and()
-            .httpBasic();
+                .antMatchers("/private/**")
+                .hasRole("USER")
+                .antMatchers("/public/**")
+                .permitAll()
+                .and()
+                .httpBasic();
     }
 
     @Bean

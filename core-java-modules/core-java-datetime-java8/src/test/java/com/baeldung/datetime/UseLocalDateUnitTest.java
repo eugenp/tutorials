@@ -17,13 +17,13 @@ public class UseLocalDateUnitTest {
     @Test
     public void givenValues_whenUsingFactoryOf_thenLocalDate() {
         assertEquals("2016-05-10", useLocalDate.getLocalDateUsingFactoryOfMethod(2016, 5, 10)
-            .toString());
+                .toString());
     }
 
     @Test
     public void givenString_whenUsingParse_thenLocalDate() {
         assertEquals("2016-05-10", useLocalDate.getLocalDateUsingParseMethod("2016-05-10")
-            .toString());
+                .toString());
     }
 
     @Test
@@ -34,13 +34,13 @@ public class UseLocalDateUnitTest {
     @Test
     public void givenDate_whenUsingPlus_thenNextDay() {
         assertEquals(LocalDate.now()
-            .plusDays(1), useLocalDate.getNextDay(LocalDate.now()));
+                .plusDays(1), useLocalDate.getNextDay(LocalDate.now()));
     }
 
     @Test
     public void givenDate_whenUsingMinus_thenPreviousDay() {
         assertEquals(LocalDate.now()
-            .minusDays(1), useLocalDate.getPreviousDay(LocalDate.now()));
+                .minusDays(1), useLocalDate.getPreviousDay(LocalDate.now()));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class UseLocalDateUnitTest {
     @Test
     public void givenToday_whenUsingWithTemporalAdjuster_thenFirstDayOfMonth() {
         assertEquals(1, useLocalDate.getFirstDayOfMonth()
-            .getDayOfMonth());
+                .getDayOfMonth());
     }
 
     @Test
@@ -69,9 +69,9 @@ public class UseLocalDateUnitTest {
         LocalDateTime startOfDayWithMidnight = useLocalDate.getStartOfDayAtMidnightTime(given);
 
         assertThat(startOfDayWithMethod).isEqualTo(startOfDayWithMin)
-            .isEqualTo(startOfDayWithMidnight)
-            .isEqualTo(startOfDayOfLocalDate)
-            .isEqualTo(LocalDateTime.parse("2018-06-23T00:00:00"));
+                .isEqualTo(startOfDayWithMidnight)
+                .isEqualTo(startOfDayOfLocalDate)
+                .isEqualTo(LocalDateTime.parse("2018-06-23T00:00:00"));
         assertThat(startOfDayWithMin.toLocalTime()).isEqualTo(LocalTime.MIDNIGHT);
         assertThat(startOfDayWithMin.toString()).isEqualTo("2018-06-23T00:00");
     }

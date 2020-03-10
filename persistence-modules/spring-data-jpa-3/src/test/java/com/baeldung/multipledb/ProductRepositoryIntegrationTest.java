@@ -26,7 +26,7 @@ import com.baeldung.multipledb.dao.product.ProductRepository;
 import com.baeldung.multipledb.model.product.Product;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=MultipleDbApplication.class)
+@SpringBootTest(classes = MultipleDbApplication.class)
 @EnableTransactionManagement
 public class ProductRepositoryIntegrationTest {
 
@@ -51,9 +51,9 @@ public class ProductRepositoryIntegrationTest {
 
         assertThat(result.getContent(), hasSize(2));
         assertTrue(result.stream()
-            .map(Product::getId)
-            .allMatch(id -> Arrays.asList(1001, 1002)
-                .contains(id)));
+                .map(Product::getId)
+                .allMatch(id -> Arrays.asList(1001, 1002)
+                        .contains(id)));
     }
 
     @Test
@@ -64,9 +64,9 @@ public class ProductRepositoryIntegrationTest {
 
         assertThat(result.getContent(), hasSize(2));
         assertTrue(result.stream()
-            .map(Product::getId)
-            .allMatch(id -> Arrays.asList(1003, 1004)
-                .contains(id)));
+                .map(Product::getId)
+                .allMatch(id -> Arrays.asList(1003, 1004)
+                        .contains(id)));
     }
 
     @Test
@@ -77,9 +77,9 @@ public class ProductRepositoryIntegrationTest {
 
         assertThat(result.getContent(), hasSize(1));
         assertTrue(result.stream()
-            .map(Product::getId)
-            .allMatch(id -> Arrays.asList(1005)
-                .contains(id)));
+                .map(Product::getId)
+                .allMatch(id -> Arrays.asList(1005)
+                        .contains(id)));
     }
 
     @Test
@@ -90,40 +90,40 @@ public class ProductRepositoryIntegrationTest {
 
         assertThat(result.getContent(), hasSize(3));
         assertThat(result.getContent()
-            .stream()
-            .map(Product::getId)
-            .collect(Collectors.toList()), equalTo(Arrays.asList(1005, 1001, 1002)));
+                .stream()
+                .map(Product::getId)
+                .collect(Collectors.toList()), equalTo(Arrays.asList(1005, 1001, 1002)));
 
     }
 
     @Test
     public void whenSortingByPriceDescAndPaging_ThenReturnSortedPagedResult() {
         Pageable pageRequest = PageRequest.of(0, 3, Sort.by("price")
-            .descending());
+                .descending());
 
         Page<Product> result = productRepository.findAll(pageRequest);
 
         assertThat(result.getContent(), hasSize(3));
         assertThat(result.getContent()
-            .stream()
-            .map(Product::getId)
-            .collect(Collectors.toList()), equalTo(Arrays.asList(1004, 1003, 1001)));
+                .stream()
+                .map(Product::getId)
+                .collect(Collectors.toList()), equalTo(Arrays.asList(1004, 1003, 1001)));
 
     }
 
     @Test
     public void whenSortingByPriceDescAndNameAscAndPaging_ThenReturnSortedPagedResult() {
         Pageable pageRequest = PageRequest.of(0, 5, Sort.by("price")
-            .descending()
-            .and(Sort.by("name")));
+                .descending()
+                .and(Sort.by("name")));
 
         Page<Product> result = productRepository.findAll(pageRequest);
 
         assertThat(result.getContent(), hasSize(5));
         assertThat(result.getContent()
-            .stream()
-            .map(Product::getId)
-            .collect(Collectors.toList()), equalTo(Arrays.asList(1004, 1003, 1001, 1005, 1002)));
+                .stream()
+                .map(Product::getId)
+                .collect(Collectors.toList()), equalTo(Arrays.asList(1004, 1003, 1001, 1005, 1002)));
 
     }
 
@@ -135,8 +135,8 @@ public class ProductRepositoryIntegrationTest {
 
         assertThat(result, hasSize(2));
         assertTrue(result.stream()
-            .map(Product::getId)
-            .allMatch(id -> Arrays.asList(1002, 1005)
-                .contains(id)));
+                .map(Product::getId)
+                .allMatch(id -> Arrays.asList(1002, 1005)
+                        .contains(id)));
     }
 }

@@ -28,7 +28,7 @@ public class StringPaddingUtil {
 
     public static String padLeftZeros(String inputString, int length) {
         return String
-          .format("%1$" + length + "s", inputString)
-          .replace(' ', '0');
+                .format("%1$" + length + "s", inputString)
+                .replace(' ', '0');
     }
 }

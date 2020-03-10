@@ -25,19 +25,19 @@ class SimpleChunkUnitTest {
         List<StepExecution> stepExecutions = jobOperator.getStepExecutions(executionId);
         for (StepExecution stepExecution : stepExecutions) {
             if (stepExecution.getStepName()
-                .equals("firstChunkStep")) {
+                    .equals("firstChunkStep")) {
                 Map<Metric.MetricType, Long> metricsMap = BatchTestHelper.getMetricsMap(stepExecution.getMetrics());
                 assertEquals(10L, metricsMap.get(Metric.MetricType.READ_COUNT)
-                    .longValue());
+                        .longValue());
                 assertEquals(10L / 2L, metricsMap.get(Metric.MetricType.WRITE_COUNT)
-                    .longValue());
+                        .longValue());
                 assertEquals(10L / 3 + (10L % 3 > 0 ? 1 : 0), metricsMap.get(Metric.MetricType.COMMIT_COUNT)
-                    .longValue());
+                        .longValue());
             }
         }
         assertEquals(jobExecution.getBatchStatus(), BatchStatus.COMPLETED);
     }
-    
+
     @Test
     public void givenChunk__thenBatch_fetchInformation() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();

@@ -2,7 +2,9 @@ package com.baeldung.spring.rsocket.client;
 
 import com.baeldung.spring.rsocket.model.MarketData;
 import com.baeldung.spring.rsocket.model.MarketDataRequest;
+
 import java.util.Random;
+
 import org.reactivestreams.Publisher;
 import org.springframework.http.MediaType;
 import org.springframework.messaging.rsocket.RSocketRequester;
@@ -23,22 +25,22 @@ public class MarketDataRestController {
     @GetMapping(value = "/current/{stock}")
     public Publisher<MarketData> current(@PathVariable("stock") String stock) {
         return rSocketRequester.route("currentMarketData")
-                               .data(new MarketDataRequest(stock))
-                               .retrieveMono(MarketData.class);
+                .data(new MarketDataRequest(stock))
+                .retrieveMono(MarketData.class);
     }
 
     @GetMapping(value = "/feed/{stock}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Publisher<MarketData> feed(@PathVariable("stock") String stock) {
         return rSocketRequester.route("feedMarketData")
-                               .data(new MarketDataRequest(stock))
-                               .retrieveFlux(MarketData.class);
+                .data(new MarketDataRequest(stock))
+                .retrieveFlux(MarketData.class);
     }
 
     @GetMapping(value = "/collect")
     public Publisher<Void> collect() {
         return rSocketRequester.route("collectMarketData")
-                               .data(getMarketData())
-                               .send();
+                .data(getMarketData())
+                .send();
     }
 
     private MarketData getMarketData() {

@@ -21,9 +21,9 @@ public class TwitterController {
 
     private OAuth10aService createService() {
         return new ServiceBuilder("PSRszoHhRDVhyo2RIkThEbWko")
-            .apiSecret("prpJbz03DcGRN46sb4ucdSYtVxG8unUKhcnu3an5ItXbEOuenL")
-            .callback("http://localhost:8080/spring-mvc-simple/twitter/callback")
-            .build(TwitterApi.instance());
+                .apiSecret("prpJbz03DcGRN46sb4ucdSYtVxG8unUKhcnu3an5ItXbEOuenL")
+                .callback("http://localhost:8080/spring-mvc-simple/twitter/callback")
+                .build(TwitterApi.instance());
     }
 
     @GetMapping(value = "/authorization")

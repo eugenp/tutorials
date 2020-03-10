@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -43,9 +43,9 @@
             if (authority.length > 0) {
                 defineVisibility(true);
 
-                scope.$watch(function() {
+                scope.$watch(function () {
                     return Principal.isAuthenticated();
-                }, function() {
+                }, function () {
                     defineVisibility(true);
                 });
             }

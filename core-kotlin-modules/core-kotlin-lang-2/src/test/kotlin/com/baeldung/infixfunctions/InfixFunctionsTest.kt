@@ -39,7 +39,7 @@ class InfixFunctionsTest {
 
     @Test
     fun testNewStringMethod() {
-        infix fun String.substringMatches(r: Regex) : List<String> {
+        infix fun String.substringMatches(r: Regex): List<String> {
             return r.findAll(this)
                     .map { it.value }
                     .toList()

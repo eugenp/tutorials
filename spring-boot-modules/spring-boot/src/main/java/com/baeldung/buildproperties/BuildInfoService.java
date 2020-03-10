@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class BuildInfoService {
     @Value("${application-description}")
     private String applicationDescription;
-    
+
     @Value("${application-version}")
     private String applicationVersion;
 

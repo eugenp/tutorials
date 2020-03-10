@@ -26,7 +26,7 @@ public class ReplacingTokensUnitTest {
         }
 
         assertThat(matches)
-          .containsExactly("First", "Capital", "Words", "I", "Found");
+                .containsExactly("First", "Capital", "Words", "I", "Found");
     }
 
     @Test
@@ -42,15 +42,15 @@ public class ReplacingTokensUnitTest {
     @Test
     public void whenReplaceTokensWithLowerCase() {
         assertThat(ReplacingTokens.replaceTitleCaseWithLowerCase(EXAMPLE_INPUT))
-          .isEqualTo(EXAMPLE_INPUT_PROCESSED);
+                .isEqualTo(EXAMPLE_INPUT_PROCESSED);
     }
 
     @Test
     public void whenReplaceTokensWithLowerCaseUsingGeneralPurpose() {
         assertThat(replaceTokens("First 3 Capital Words! then 10 TLAs, I Found",
-          TITLE_CASE_PATTERN,
-          match -> match.group(1).toLowerCase()))
-          .isEqualTo("first 3 capital words! then 10 TLAs, i found");
+                TITLE_CASE_PATTERN,
+                match -> match.group(1).toLowerCase()))
+                .isEqualTo("first 3 capital words! then 10 TLAs, i found");
     }
 
     @Test
@@ -58,9 +58,9 @@ public class ReplacingTokensUnitTest {
         Pattern regexCharacters = Pattern.compile("[<(\\[{\\\\^\\-=$!|\\]})?*+.>]");
 
         assertThat(replaceTokens("A regex character like [",
-          regexCharacters,
-          match -> "\\" + match.group()))
-          .isEqualTo("A regex character like \\[");
+                regexCharacters,
+                match -> "\\" + match.group()))
+                .isEqualTo("A regex character like \\[");
     }
 
     @Test
@@ -72,8 +72,8 @@ public class ReplacingTokensUnitTest {
         placeholderValues.put("company", "Baeldung");
 
         assertThat(replaceTokens("Hi ${name} at ${company}",
-          placeholderPattern,
-          match -> placeholderValues.get(match.group("placeholder"))))
-          .isEqualTo("Hi Bill at Baeldung");
+                placeholderPattern,
+                match -> placeholderValues.get(match.group("placeholder"))))
+                .isEqualTo("Hi Bill at Baeldung");
     }
 }

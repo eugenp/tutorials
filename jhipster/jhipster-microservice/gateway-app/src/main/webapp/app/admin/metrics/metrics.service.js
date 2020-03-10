@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     JhiMetricsService.$inject = ['$rootScope', '$http'];
 
-    function JhiMetricsService ($rootScope, $http) {
+    function JhiMetricsService($rootScope, $http) {
         var service = {
             getMetrics: getMetrics,
             threadDump: threadDump
@@ -15,13 +15,13 @@
 
         return service;
 
-        function getMetrics () {
+        function getMetrics() {
             return $http.get('management/metrics').then(function (response) {
                 return response.data;
             });
         }
 
-        function threadDump () {
+        function threadDump() {
             return $http.get('management/dump').then(function (response) {
                 return response.data;
             });

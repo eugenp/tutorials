@@ -16,10 +16,10 @@ public class ConsoleConsoleClass {
         console.printf(progLanguauge + " is very interesting!");
 
         char[] pass = console.readPassword("To finish, enter password: ");
-        
+
         if ("BAELDUNG".equals(pass.toString().toUpperCase()))
             console.printf("Good! Regards!");
-        else 
+        else
             console.printf("Nice try. Regards.");
 
     }

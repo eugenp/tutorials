@@ -21,11 +21,11 @@ public class DatabasePropertiesIntegrationTest {
         Assert.assertEquals("Incorrectly bound Username property", "baeldung", databaseProperties.getUsername());
         Assert.assertEquals("Incorrectly bound Password property", "password", databaseProperties.getPassword());
     }
-    
+
     @Test
     public void whenNestedPropertyQueriedThenReturnsPropertyValue() throws Exception {
-    	Assert.assertEquals("Incorrectly bound Server IP nested property", "127.0.0.1", databaseProperties.getServer().getIp());
+        Assert.assertEquals("Incorrectly bound Server IP nested property", "127.0.0.1", databaseProperties.getServer().getIp());
         Assert.assertEquals("Incorrectly bound Server Port nested property", 3306, databaseProperties.getServer().getPort());
-    }   
+    }
 
 }

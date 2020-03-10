@@ -4,7 +4,7 @@
     <span>Filter (by prefix)</span> <input type="text" ng-model="filter" class="form-control">
     <label ng-hide="filteredConfig.length == 0">Spring configuration</label>
     <table class="table table-condensed table-striped table-bordered table-responsive"
-        style="table-layout:fixed" ng-hide="filteredConfig.length == 0">
+           style="table-layout:fixed" ng-hide="filteredConfig.length == 0">
         <thead>
         <tr>
             <th ng-click="predicate = 'prefix'; reverse=!reverse" class="col-sm-4"><span>Prefix</span></th>

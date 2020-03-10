@@ -1,6 +1,7 @@
 package com.baeldung.retrofitguide;
 
 import java.io.IOException;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -44,9 +44,9 @@ public class LinesReader implements Tasklet, StepExecutionListener {
     public ExitStatus afterStep(StepExecution stepExecution) {
         fu.closeReader();
         stepExecution
-          .getJobExecution()
-          .getExecutionContext()
-          .put("lines", this.lines);
+                .getJobExecution()
+                .getExecutionContext()
+                .put("lines", this.lines);
         logger.debug("Lines Reader ended.");
         return ExitStatus.COMPLETED;
     }

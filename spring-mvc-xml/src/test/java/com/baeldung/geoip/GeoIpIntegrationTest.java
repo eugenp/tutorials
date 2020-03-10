@@ -14,7 +14,7 @@ public class GeoIpIntegrationTest {
 
     @Test
     public void givenIP_whenFetchingCity_thenReturnsCityData() throws IOException, GeoIp2Exception {
-        
+
         ClassLoader classLoader = getClass().getClassLoader();
         File database = new File(classLoader.getResource("GeoLite2-City.mmdb").getFile());
         DatabaseReader dbReader = new DatabaseReader.Builder(database).build();

@@ -65,13 +65,13 @@ class SuanShuMath {
 
     public void addingMatrices() throws Exception {
         Matrix m1 = new DenseMatrix(new double[][]{
-            {1, 2, 3},
-            {4, 5, 6}
+                {1, 2, 3},
+                {4, 5, 6}
         });
 
         Matrix m2 = new DenseMatrix(new double[][]{
-            {3, 2, 1},
-            {6, 5, 4}
+                {3, 2, 1},
+                {6, 5, 4}
         });
 
         Matrix m3 = m1.add(m2);
@@ -80,14 +80,14 @@ class SuanShuMath {
 
     public void multiplyMatrices() throws Exception {
         Matrix m1 = new DenseMatrix(new double[][]{
-            {1, 2, 3},
-            {4, 5, 6}
+                {1, 2, 3},
+                {4, 5, 6}
         });
 
         Matrix m2 = new DenseMatrix(new double[][]{
-            {1, 4},
-            {2, 5},
-            {3, 6}
+                {1, 4},
+                {2, 5},
+                {3, 6}
         });
 
         Matrix m3 = m1.multiply(m2);
@@ -96,13 +96,13 @@ class SuanShuMath {
 
     public void multiplyIncorrectMatrices() throws Exception {
         Matrix m1 = new DenseMatrix(new double[][]{
-            {1, 2, 3},
-            {4, 5, 6}
+                {1, 2, 3},
+                {4, 5, 6}
         });
 
         Matrix m2 = new DenseMatrix(new double[][]{
-            {3, 2, 1},
-            {6, 5, 4}
+                {3, 2, 1},
+                {6, 5, 4}
         });
 
         Matrix m3 = m1.multiply(m2);
@@ -111,8 +111,8 @@ class SuanShuMath {
 
     public void inverseMatrix() {
         Matrix m1 = new DenseMatrix(new double[][]{
-            {1, 2},
-            {3, 4}
+                {1, 2},
+                {3, 4}
         });
 
         Inverse m2 = new Inverse(m1);

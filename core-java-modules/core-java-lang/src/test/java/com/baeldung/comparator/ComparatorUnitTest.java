@@ -29,9 +29,9 @@ public class ComparatorUnitTest {
         PlayerRankingComparator playerComparator = new PlayerRankingComparator();
         Collections.sort(footballTeam, playerComparator);
         assertEquals(footballTeam.get(0)
-            .getName(), "Steven");
+                .getName(), "Steven");
         assertEquals(footballTeam.get(2)
-            .getRanking(), 67);
+                .getRanking(), 67);
     }
 
     @Test
@@ -39,9 +39,9 @@ public class ComparatorUnitTest {
         PlayerAgeComparator playerComparator = new PlayerAgeComparator();
         Collections.sort(footballTeam, playerComparator);
         assertEquals(footballTeam.get(0)
-            .getName(), "John");
+                .getName(), "John");
         assertEquals(footballTeam.get(2)
-            .getRanking(), 45);
+                .getRanking(), 45);
     }
 
 }

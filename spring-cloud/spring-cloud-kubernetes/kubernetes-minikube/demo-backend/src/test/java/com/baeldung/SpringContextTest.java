@@ -11,8 +11,8 @@ import com.baeldung.spring.cloud.kubernetes.backend.KubernetesBackendApplication
 @SpringBootTest(classes = KubernetesBackendApplication.class)
 public class SpringContextTest {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+    }
 
 }

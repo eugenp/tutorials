@@ -27,10 +27,10 @@ public class SpringUnitTest {
         @Override
         protected void configure() {
             this.getBrokerService()
-                .setUseJmx(true);
+                    .setUseJmx(true);
             try {
                 this.getBrokerService()
-                    .addConnector("tcp://localhost:61616");
+                        .addConnector("tcp://localhost:61616");
             } catch (Exception e) {
                 Assert.fail(e.getMessage());
             }
@@ -78,7 +78,7 @@ public class SpringUnitTest {
         bathingCart.addItem("oil");
 
         assertEquals(3, bathingCart.getItems()
-            .size());
+                .size());
 
         assertEquals("bathingCart", bathingCart.getName());
 
@@ -88,7 +88,7 @@ public class SpringUnitTest {
         fruitCart.addItem("oranges");
 
         assertEquals(2, fruitCart.getItems()
-            .size());
+                .size());
         assertNull(fruitCart.getName());
     }
 

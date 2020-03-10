@@ -16,13 +16,13 @@ import lombok.extern.slf4j.Slf4j;
 // work directly with Log4j2)
 public class LombokLoggingController {
 
-	@GetMapping("/lombok")
-	public String index() {
-		log.trace("A TRACE Message");
-		log.debug("A DEBUG Message");
-		log.info("An INFO Message");
-		log.warn("A WARN Message");
-		log.error("An ERROR Message");
-		return "Howdy! Check out the Logs to see the output...";
-	}
+    @GetMapping("/lombok")
+    public String index() {
+        log.trace("A TRACE Message");
+        log.debug("A DEBUG Message");
+        log.info("An INFO Message");
+        log.warn("A WARN Message");
+        log.error("An ERROR Message");
+        return "Howdy! Check out the Logs to see the output...";
+    }
 }

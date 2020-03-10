@@ -34,7 +34,7 @@ public class PrintRequestContentFilterUnitTest extends TestCase {
 
         // then
         Mockito.verify(mockedFilterChain, Mockito.times(1))
-            .doFilter(cachedBodyHttpServletRequest, mockedResponse);
+                .doFilter(cachedBodyHttpServletRequest, mockedResponse);
     }
 
 }

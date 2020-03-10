@@ -10,7 +10,7 @@ public class SpringCloudTaskSinkApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(
-            SpringCloudTaskSinkApplication.class, args);
+                SpringCloudTaskSinkApplication.class, args);
     }
 
 }

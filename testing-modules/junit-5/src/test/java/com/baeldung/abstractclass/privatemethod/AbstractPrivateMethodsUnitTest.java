@@ -25,15 +25,15 @@ public class AbstractPrivateMethodsUnitTest {
         AbstractPrivateMethods mockClass = PowerMockito.mock(AbstractPrivateMethods.class);
 
         String dateTime = LocalDateTime
-          .now()
-          .toString();
+                .now()
+                .toString();
         PowerMockito
-          .doCallRealMethod()
-          .when(mockClass)
-          .defaultImpl();
+                .doCallRealMethod()
+                .when(mockClass)
+                .defaultImpl();
         PowerMockito
-          .doReturn(dateTime)
-          .when(mockClass, "getCurrentDateTime");// .thenReturn(dateTime);
+                .doReturn(dateTime)
+                .when(mockClass, "getCurrentDateTime");// .thenReturn(dateTime);
         String actual = mockClass.defaultImpl();
         Assertions.assertEquals(dateTime + "DEFAULT-1", actual);
     }

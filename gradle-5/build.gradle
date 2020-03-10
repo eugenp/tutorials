@@ -1,7 +1,7 @@
 plugins {
     id "application"
 }
-apply plugin :"java"
+apply plugin: "java"
 
 description = "Java MainClass execution examples"
 group = "com.baeldung"
@@ -10,13 +10,13 @@ sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
 
 ext {
-   javaMainClass = "com.baeldung.gradle.exec.MainClass"
+    javaMainClass = "com.baeldung.gradle.exec.MainClass"
 }
 
 jar {
     manifest {
         attributes(
-            "Main-Class": javaMainClass
+                "Main-Class": javaMainClass
         )
     }
 }
@@ -50,5 +50,5 @@ task runWithExecJarOnClassPath(type: Exec) {
     dependsOn jar
     group = "Execution"
     description = "Run the mainClass from the output jar in classpath with ExecTask"
-    commandLine "java", "-classpath", jar.archiveFile.get() , javaMainClass
+    commandLine "java", "-classpath", jar.archiveFile.get(), javaMainClass
 }

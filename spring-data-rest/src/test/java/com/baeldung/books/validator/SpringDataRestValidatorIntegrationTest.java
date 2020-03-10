@@ -43,7 +43,9 @@ public class SpringDataRestValidatorIntegrationTest {
     @Test
     public void whenStartingApplication_thenCorrectStatusCode() throws Exception {
         mockMvc.perform(get("/users")).andExpect(status().is2xxSuccessful());
-    };
+    }
+
+    ;
 
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)

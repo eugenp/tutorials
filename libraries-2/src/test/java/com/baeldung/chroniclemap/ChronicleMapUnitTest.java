@@ -28,30 +28,30 @@ public class ChronicleMapUnitTest {
 
     static ChronicleMap<Integer, Set<Integer>> multiMap = null;
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     @BeforeClass
     public static void init() {
         try {
             inMemoryCountryMap = ChronicleMap.of(LongValue.class, CharSequence.class)
-                .name("country-map")
-                .entries(50)
-                .averageValue("America")
-                .create();
+                    .name("country-map")
+                    .entries(50)
+                    .averageValue("America")
+                    .create();
 
             persistedCountryMap = ChronicleMap.of(LongValue.class, CharSequence.class)
-                .name("country-map")
-                .entries(50)
-                .averageValue("America")
-                .createPersistedTo(new File(System.getProperty("user.home") + "/country-details.dat"));
+                    .name("country-map")
+                    .entries(50)
+                    .averageValue("America")
+                    .createPersistedTo(new File(System.getProperty("user.home") + "/country-details.dat"));
 
             Set<Integer> averageValue = IntStream.of(1, 2)
-                .boxed()
-                .collect(Collectors.toSet());
+                    .boxed()
+                    .collect(Collectors.toSet());
             multiMap = ChronicleMap.of(Integer.class, (Class<Set<Integer>>) (Class) Set.class)
-                .name("multi-map")
-                .entries(50)
-                .averageValue(averageValue)
-                .create();
+                    .name("multi-map")
+                    .entries(50)
+                    .averageValue(averageValue)
+                    .create();
 
             LongValue qatarKey = Values.newHeapInstance(LongValue.class);
             qatarKey.setValue(1);
@@ -97,29 +97,29 @@ public class ChronicleMapUnitTest {
     }
 
     @Test
-    public void  givenMultipleKeyQuery_whenProcessed_shouldChangeTheValue() {
+    public void givenMultipleKeyQuery_whenProcessed_shouldChangeTheValue() {
         try (ExternalMapQueryContext<Integer, Set<Integer>, ?> fistContext = multiMap.queryContext(1)) {
             try (ExternalMapQueryContext<Integer, Set<Integer>, ?> secondContext = multiMap.queryContext(2)) {
                 fistContext.updateLock()
-                    .lock();
+                        .lock();
                 secondContext.updateLock()
-                    .lock();
+                        .lock();
                 MapEntry<Integer, Set<Integer>> firstEntry = fistContext.entry();
                 Set<Integer> firstSet = firstEntry.value()
-                    .get();
+                        .get();
                 firstSet.remove(2);
                 MapEntry<Integer, Set<Integer>> secondEntry = secondContext.entry();
                 Set<Integer> secondSet = secondEntry.value()
-                    .get();
+                        .get();
                 secondSet.add(4);
                 firstEntry.doReplaceValue(fistContext.wrapValueAsData(firstSet));
                 secondEntry.doReplaceValue(secondContext.wrapValueAsData(secondSet));
             }
         } finally {
             assertThat(multiMap.get(1)
-                .size(), is(equalTo(1)));
+                    .size(), is(equalTo(1)));
             assertThat(multiMap.get(2)
-                .size(), is(equalTo(2)));
+                    .size(), is(equalTo(2)));
         }
     }
 

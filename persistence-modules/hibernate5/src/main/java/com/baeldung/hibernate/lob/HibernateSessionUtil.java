@@ -16,7 +16,7 @@ import com.baeldung.hibernate.lob.model.User;
 
 public class HibernateSessionUtil {
 
-	private static SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory;
     private static String PROPERTY_FILE_NAME;
 
     public static SessionFactory getSessionFactory() throws IOException {
@@ -51,8 +51,8 @@ public class HibernateSessionUtil {
     private static Properties getProperties() throws IOException {
         Properties properties = new Properties();
         URL propertiesURL = Thread.currentThread()
-          .getContextClassLoader()
-          .getResource(StringUtils.defaultString(PROPERTY_FILE_NAME, "hibernate.properties"));
+                .getContextClassLoader()
+                .getResource(StringUtils.defaultString(PROPERTY_FILE_NAME, "hibernate.properties"));
         try (FileInputStream inputStream = new FileInputStream(propertiesURL.getFile())) {
             properties.load(inputStream);
         }

@@ -17,12 +17,12 @@ public class UppercaseMethodListener extends Java8BaseListener {
         TerminalNode node = ctx.Identifier();
         String methodName = node.getText();
 
-        if (Character.isUpperCase(methodName.charAt(0))){
+        if (Character.isUpperCase(methodName.charAt(0))) {
             errors.add(String.format("Method %s is uppercased!", methodName));
         }
     }
 
-    public List<String> getErrors(){
+    public List<String> getErrors() {
         return Collections.unmodifiableList(errors);
     }
 }

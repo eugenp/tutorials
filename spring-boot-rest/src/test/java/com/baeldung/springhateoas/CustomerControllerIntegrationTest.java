@@ -43,23 +43,23 @@ public class CustomerControllerIntegrationTest {
     @Test
     public void givenExistingCustomer_whenCustomerRequested_thenResourceRetrieved() throws Exception {
         given(this.customerService.getCustomerDetail(DEFAULT_CUSTOMER_ID))
-            .willReturn(new Customer(DEFAULT_CUSTOMER_ID, "customerJohn", "companyOne"));
+                .willReturn(new Customer(DEFAULT_CUSTOMER_ID, "customerJohn", "companyOne"));
 
         this.mvc.perform(get("/customers/" + DEFAULT_CUSTOMER_ID))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$._links").doesNotExist())
-            .andExpect(jsonPath("$.customerId", is(DEFAULT_CUSTOMER_ID)));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$._links").doesNotExist())
+                .andExpect(jsonPath("$.customerId", is(DEFAULT_CUSTOMER_ID)));
     }
 
     @Test
     public void givenExistingOrder_whenOrderRequested_thenResourceRetrieved() throws Exception {
         given(this.orderService.getOrderByIdForCustomer(DEFAULT_CUSTOMER_ID, DEFAULT_ORDER_ID))
-            .willReturn(new Order(DEFAULT_ORDER_ID, 1., 1));
+                .willReturn(new Order(DEFAULT_ORDER_ID, 1., 1));
 
         this.mvc.perform(get("/customers/" + DEFAULT_CUSTOMER_ID + "/" + DEFAULT_ORDER_ID))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$._links").doesNotExist())
-            .andExpect(jsonPath("$.orderId", is(DEFAULT_ORDER_ID)));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$._links").doesNotExist())
+                .andExpect(jsonPath("$.orderId", is(DEFAULT_ORDER_ID)));
     }
 
     @Test
@@ -69,10 +69,10 @@ public class CustomerControllerIntegrationTest {
         given(this.orderService.getAllOrdersForCustomer(DEFAULT_CUSTOMER_ID)).willReturn(orders);
 
         this.mvc.perform(get("/customers/" + DEFAULT_CUSTOMER_ID + "/orders").accept(MediaTypes.HAL_JSON_VALUE))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$._embedded.orders[0]._links.self.href",
-                is("http://localhost/customers/customer1/order1")))
-            .andExpect(jsonPath("$._links.self.href", is("http://localhost/customers/customer1/orders")));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$._embedded.orders[0]._links.self.href",
+                        is("http://localhost/customers/customer1/order1")))
+                .andExpect(jsonPath("$._links.self.href", is("http://localhost/customers/customer1/orders")));
     }
 
     @Test
@@ -87,12 +87,12 @@ public class CustomerControllerIntegrationTest {
         given(this.orderService.getAllOrdersForCustomer(DEFAULT_CUSTOMER_ID)).willReturn(orders);
 
         this.mvc.perform(get("/customers/").accept(MediaTypes.HAL_JSON_VALUE))
-            .andExpect(status().isOk())
-            .andExpect(
-                jsonPath("$._embedded.customers[0]._links.self.href", is("http://localhost/customers/customer1")))
-            .andExpect(jsonPath("$._embedded.customers[0]._links.allOrders.href",
-                is("http://localhost/customers/customer1/orders")))
-            .andExpect(jsonPath("$._links.self.href", is("http://localhost/customers")));
+                .andExpect(status().isOk())
+                .andExpect(
+                        jsonPath("$._embedded.customers[0]._links.self.href", is("http://localhost/customers/customer1")))
+                .andExpect(jsonPath("$._embedded.customers[0]._links.allOrders.href",
+                        is("http://localhost/customers/customer1/orders")))
+                .andExpect(jsonPath("$._links.self.href", is("http://localhost/customers")));
     }
 
 }

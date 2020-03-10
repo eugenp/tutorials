@@ -17,11 +17,9 @@ import com.baeldung.spring.cloud.aws.SpringCloudAwsTestUtil;
 import com.baeldung.spring.cloud.aws.sqs.Greeting;
 
 /**
- * 
  * To run this Live Test, we need to have an AWS account and have API keys generated for programmatic access.
- * 
+ * <p>
  * Check the README file in this module for more information.
- *
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -51,7 +49,7 @@ public class SpringCloudSNSLiveTest {
         String message = "Hello World";
         snsMessageSender.send(topicName, message, subject);
     }
-    
+
     @Test
     public void whenConvertedMessagePublished_thenSuccess() {
         String subject = "Test Message";

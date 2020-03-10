@@ -27,8 +27,8 @@ public class ParallelCollectorsUnitTest {
         List<Integer> ids = Arrays.asList(1, 2, 3);
 
         List<String> results = ids.parallelStream()
-          .map(i -> fetchById(i))
-          .collect(Collectors.toList());
+                .map(i -> fetchById(i))
+                .collect(Collectors.toList());
 
         System.out.println(results);
     }
@@ -40,7 +40,7 @@ public class ParallelCollectorsUnitTest {
         List<Integer> ids = Arrays.asList(1, 2, 3);
 
         CompletableFuture<List<String>> results = ids.stream()
-          .collect(parallelToList(i -> fetchById(i), executor, 4));
+                .collect(parallelToList(i -> fetchById(i), executor, 4));
 
         System.out.println(results.join());
     }
@@ -52,8 +52,8 @@ public class ParallelCollectorsUnitTest {
         List<Integer> ids = Arrays.asList(1, 2, 3);
 
         List<String> results = ids.stream()
-          .collect(parallelToList(i -> fetchById(i), executor, 4))
-          .join();
+                .collect(parallelToList(i -> fetchById(i), executor, 4))
+                .join();
 
         System.out.println(results); // [user-1, user-2, user-3]
     }
@@ -65,8 +65,8 @@ public class ParallelCollectorsUnitTest {
         List<Integer> ids = Arrays.asList(1, 2, 3);
 
         List<String> results = ids.stream()
-          .collect(parallelToCollection(i -> fetchById(i), LinkedList::new, executor, 4))
-          .join();
+                .collect(parallelToCollection(i -> fetchById(i), LinkedList::new, executor, 4))
+                .join();
 
         System.out.println(results); // [user-1, user-2, user-3]
     }
@@ -78,9 +78,9 @@ public class ParallelCollectorsUnitTest {
         List<Integer> ids = Arrays.asList(1, 2, 3);
 
         Map<Integer, List<String>> results = ids.stream()
-          .collect(parallelToStream(i -> fetchById(i), executor, 4))
-          .thenApply(stream -> stream.collect(Collectors.groupingBy(i -> i.length())))
-          .join();
+                .collect(parallelToStream(i -> fetchById(i), executor, 4))
+                .thenApply(stream -> stream.collect(Collectors.groupingBy(i -> i.length())))
+                .join();
 
         System.out.println(results); // [user-1, user-2, user-3]
     }
@@ -92,8 +92,8 @@ public class ParallelCollectorsUnitTest {
         List<Integer> ids = Arrays.asList(1, 2, 3);
 
         ids.stream()
-          .collect(parallel(i -> fetchByIdWithRandomDelay(i), executor, 4))
-          .forEach(System.out::println);
+                .collect(parallel(i -> fetchByIdWithRandomDelay(i), executor, 4))
+                .forEach(System.out::println);
     }
 
     @Test
@@ -103,8 +103,8 @@ public class ParallelCollectorsUnitTest {
         List<Integer> ids = Arrays.asList(1, 2, 3);
 
         ids.stream()
-          .collect(parallelOrdered(i -> fetchByIdWithRandomDelay(i), executor, 4))
-          .forEach(System.out::println);
+                .collect(parallelOrdered(i -> fetchByIdWithRandomDelay(i), executor, 4))
+                .forEach(System.out::println);
     }
 
     @Test
@@ -114,8 +114,8 @@ public class ParallelCollectorsUnitTest {
         List<Integer> ids = Arrays.asList(1, 2, 3);
 
         Map<Integer, String> results = ids.stream()
-          .collect(parallelToMap(i -> i, i -> fetchById(i), executor, 4))
-          .join();
+                .collect(parallelToMap(i -> i, i -> fetchById(i), executor, 4))
+                .join();
 
         System.out.println(results); // {1=user-1, 2=user-2, 3=user-3}
     }
@@ -127,8 +127,8 @@ public class ParallelCollectorsUnitTest {
         List<Integer> ids = Arrays.asList(1, 2, 3);
 
         Map<Integer, String> results = ids.stream()
-          .collect(parallelToMap(i -> i, i -> fetchById(i), TreeMap::new,  executor, 4))
-          .join();
+                .collect(parallelToMap(i -> i, i -> fetchById(i), TreeMap::new, executor, 4))
+                .join();
 
         System.out.println(results); // {1=user-1, 2=user-2, 3=user-3}
     }
@@ -140,8 +140,8 @@ public class ParallelCollectorsUnitTest {
         List<Integer> ids = Arrays.asList(1, 2, 3);
 
         Map<Integer, String> results = ids.stream()
-          .collect(parallelToMap(i -> i, i -> fetchById(i), TreeMap::new, (s1, s2) -> s1,   executor, 4))
-          .join();
+                .collect(parallelToMap(i -> i, i -> fetchById(i), TreeMap::new, (s1, s2) -> s1, executor, 4))
+                .join();
 
         System.out.println(results); // {1=user-1, 2=user-2, 3=user-3}
     }

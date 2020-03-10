@@ -24,9 +24,9 @@ import java.util.Properties;
 
 @EnableTransactionManagement
 @Configuration
-@PropertySource({ "classpath:persistence-h2.properties" })
-@EnableJpaRepositories(basePackages = { "com.baeldung.hibernatesearch" })
-@ComponentScan({ "com.baeldung.hibernatesearch" })
+@PropertySource({"classpath:persistence-h2.properties"})
+@EnableJpaRepositories(basePackages = {"com.baeldung.hibernatesearch"})
+@ComponentScan({"com.baeldung.hibernatesearch"})
 public class HibernateSearchConfig {
 
     @Autowired
@@ -36,7 +36,7 @@ public class HibernateSearchConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "com.baeldung.hibernatesearch.model" });
+        em.setPackagesToScan(new String[]{"com.baeldung.hibernatesearch.model"});
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

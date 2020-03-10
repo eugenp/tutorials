@@ -8,9 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.remoting.rmi.RmiProxyFactoryBean;
 
-@SpringBootApplication public class RmiClient {
+@SpringBootApplication
+public class RmiClient {
 
-    @Bean RmiProxyFactoryBean service() {
+    @Bean
+    RmiProxyFactoryBean service() {
         RmiProxyFactoryBean rmiProxyFactory = new RmiProxyFactoryBean();
         rmiProxyFactory.setServiceUrl("rmi://localhost:1099/CabBookingService");
         rmiProxyFactory.setServiceInterface(CabBookingService.class);

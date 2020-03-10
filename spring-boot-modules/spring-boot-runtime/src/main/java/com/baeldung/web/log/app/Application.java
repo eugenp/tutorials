@@ -26,7 +26,7 @@ public class Application extends SpringBootServletInitializer {
     public static void main(final String[] args) {
         SpringApplication.run(Application.class, args);
     }
-    
+
     @Override
     public void onStartup(ServletContext container) throws ServletException {
 
@@ -36,7 +36,7 @@ public class Application extends SpringBootServletInitializer {
 
         ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(context));
         dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping("/"); 
+        dispatcher.addMapping("/");
 
         container.addFilter("customRequestLoggingFilter", CustomeRequestLoggingFilter.class).addMappingForServletNames(null, false, "dispatcher");
     }

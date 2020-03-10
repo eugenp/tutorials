@@ -29,15 +29,15 @@ public class StudentRepositoryIntegrationTest {
 
     @Autowired
     private StudentRepository studentRepository;
-    
+
     private static redis.embedded.RedisServer redisServer;
-    
+
     @BeforeClass
     public static void startRedisServer() throws IOException {
         redisServer = new RedisServerBuilder().port(6379).setting("maxmemory 128M").build();
         redisServer.start();
     }
-    
+
     @AfterClass
     public static void stopRedisServer() throws IOException {
         redisServer.stop();

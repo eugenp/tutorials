@@ -18,14 +18,14 @@ public class ArgumentMatcherWithoutLambdaUnitTest {
         @Override
         public boolean matches(Person p) {
             return p
-              .getName()
-              .equals("Peter");
+                    .getName()
+                    .equals("Peter");
         }
     }
 
     @InjectMocks
     private UnemploymentServiceImpl unemploymentService;
-    
+
     @Mock
     private JobService jobService;
 
@@ -33,13 +33,13 @@ public class ArgumentMatcherWithoutLambdaUnitTest {
     public void whenPersonWithJob_thenIsNotEntitled() {
         Person peter = new Person("Peter");
         Person linda = new Person("Linda");
-        
+
         JobPosition teacher = new JobPosition("Teacher");
 
         when(jobService.findCurrentJobPosition(
                 ArgumentMatchers.argThat(new PeterArgumentMatcher()))
-             ).thenReturn(Optional.of(teacher));
-        
+        ).thenReturn(Optional.of(teacher));
+
         assertTrue(unemploymentService.personIsEntitledToUnemploymentSupport(linda));
         assertFalse(unemploymentService.personIsEntitledToUnemploymentSupport(peter));
     }

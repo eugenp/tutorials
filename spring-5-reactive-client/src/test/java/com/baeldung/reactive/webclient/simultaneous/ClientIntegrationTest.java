@@ -43,22 +43,22 @@ public class ClientIntegrationTest {
 
         for (int i = 1; i <= requestsNumber; i++) {
             stubFor(get(urlEqualTo("/user/" + i)).willReturn(aResponse().withFixedDelay(singleRequestTime)
-                .withStatus(200)
-                .withHeader("Content-Type", "application/json")
-                .withBody(String.format("{ \"id\": %d }", i))));
+                    .withStatus(200)
+                    .withHeader("Content-Type", "application/json")
+                    .withBody(String.format("{ \"id\": %d }", i))));
         }
 
         List<Integer> userIds = IntStream.rangeClosed(1, requestsNumber)
-            .boxed()
-            .collect(Collectors.toList());
+                .boxed()
+                .collect(Collectors.toList());
 
         Client client = new Client("http://localhost:8089");
 
         // Act
         long start = System.currentTimeMillis();
         List<User> users = client.fetchUsers(userIds)
-          .collectList()
-          .block();
+                .collectList()
+                .block();
         long end = System.currentTimeMillis();
 
         // Assert

@@ -18,21 +18,21 @@ import static org.hamcrest.collection.IsMapContaining.hasKey;
 import static org.junit.Assert.*;
 
 public class HashMapComparisonUnitTest {
-    
+
     Map<String, String> asiaCapital1;
     Map<String, String> asiaCapital2;
     Map<String, String> asiaCapital3;
-    
+
     Map<String, String[]> asiaCity1;
     Map<String, String[]> asiaCity2;
     Map<String, String[]> asiaCity3;
-    
+
     @Before
-    public void setup(){
+    public void setup() {
         asiaCapital1 = new HashMap<String, String>();
         asiaCapital1.put("Japan", "Tokyo");
         asiaCapital1.put("South Korea", "Seoul");
-        
+
         asiaCapital2 = new HashMap<String, String>();
         asiaCapital2.put("South Korea", "Seoul");
         asiaCapital2.put("Japan", "Tokyo");
@@ -40,18 +40,18 @@ public class HashMapComparisonUnitTest {
         asiaCapital3 = new HashMap<String, String>();
         asiaCapital3.put("Japan", "Tokyo");
         asiaCapital3.put("China", "Beijing");
-        
+
         asiaCity1 = new HashMap<String, String[]>();
-        asiaCity1.put("Japan", new String[] { "Tokyo", "Osaka" });
-        asiaCity1.put("South Korea", new String[] { "Seoul", "Busan" });
+        asiaCity1.put("Japan", new String[]{"Tokyo", "Osaka"});
+        asiaCity1.put("South Korea", new String[]{"Seoul", "Busan"});
 
         asiaCity2 = new HashMap<String, String[]>();
-        asiaCity2.put("South Korea", new String[] { "Seoul", "Busan" });
-        asiaCity2.put("Japan", new String[] { "Tokyo", "Osaka" });
+        asiaCity2.put("South Korea", new String[]{"Seoul", "Busan"});
+        asiaCity2.put("Japan", new String[]{"Tokyo", "Osaka"});
 
         asiaCity3 = new HashMap<String, String[]>();
-        asiaCity3.put("Japan", new String[] { "Tokyo", "Osaka" });
-        asiaCity3.put("China", new String[] { "Beijing", "Hong Kong" });
+        asiaCity3.put("Japan", new String[]{"Tokyo", "Osaka"});
+        asiaCity3.put("China", new String[]{"Beijing", "Hong Kong"});
     }
 
     @Test
@@ -96,7 +96,7 @@ public class HashMapComparisonUnitTest {
         asiaCapital4.put("China", "Beijing");
 
         Map<String, Boolean> result = areEqualKeyValues(asiaCapital3, asiaCapital4);
-        
+
         assertEquals(3, result.size());
         assertThat(result, hasEntry("Japan", false));
         assertThat(result, hasEntry("South Korea", true));
@@ -117,7 +117,7 @@ public class HashMapComparisonUnitTest {
 
         MapDifference<String, String> diff = Maps.difference(asia1, asia2);
         Map<String, ValueDifference<String>> entriesDiffering = diff.entriesDiffering();
-        
+
         assertFalse(diff.areEqual());
         assertEquals(1, entriesDiffering.size());
         assertThat(entriesDiffering, hasKey("India"));
@@ -188,7 +188,7 @@ public class HashMapComparisonUnitTest {
 
         MapDifference<String, String[]> diff = Maps.difference(asiaCity1, asiaCity2, eq);
         assertTrue(diff.areEqual());
-        
+
         diff = Maps.difference(asiaCity1, asiaCity3, eq);
         assertFalse(diff.areEqual());
     }
@@ -201,9 +201,9 @@ public class HashMapComparisonUnitTest {
         }
 
         return first.entrySet()
-            .stream()
-            .allMatch(e -> e.getValue()
-                .equals(second.get(e.getKey())));
+                .stream()
+                .allMatch(e -> e.getValue()
+                        .equals(second.get(e.getKey())));
     }
 
     private boolean areEqualWithArrayValue(Map<String, String[]> first, Map<String, String[]> second) {
@@ -212,14 +212,14 @@ public class HashMapComparisonUnitTest {
         }
 
         return first.entrySet()
-            .stream()
-            .allMatch(e -> Arrays.equals(e.getValue(), second.get(e.getKey())));
+                .stream()
+                .allMatch(e -> Arrays.equals(e.getValue(), second.get(e.getKey())));
     }
 
     private Map<String, Boolean> areEqualKeyValues(Map<String, String> first, Map<String, String> second) {
         return first.entrySet()
-            .stream()
-            .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue().equals(second.get(e.getKey()))));
+                .stream()
+                .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue().equals(second.get(e.getKey()))));
     }
 
 }

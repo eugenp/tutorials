@@ -16,7 +16,8 @@ public class BigMatrixProvider {
     private double[][] firstMatrix;
     private double[][] secondMatrix;
 
-    public BigMatrixProvider() {}
+    public BigMatrixProvider() {
+    }
 
     @Setup
     public void setup(BenchmarkParams parameters) {

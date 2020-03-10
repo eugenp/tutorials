@@ -24,11 +24,11 @@ public class SeleniumWithJUnitLiveTest {
 
     @Test
     public void whenAboutBaeldungIsLoaded_thenAboutEugenIsMentionedOnPage() {
-            seleniumExample.getAboutBaeldungPage();
-            String actualTitle = seleniumExample.getTitle();
-            assertNotNull(actualTitle);
-            assertEquals(expectedTitle, actualTitle);
-            assertTrue(seleniumExample.isAuthorInformationAvailable());
+        seleniumExample.getAboutBaeldungPage();
+        String actualTitle = seleniumExample.getTitle();
+        assertNotNull(actualTitle);
+        assertEquals(expectedTitle, actualTitle);
+        assertTrue(seleniumExample.isAuthorInformationAvailable());
     }
 
 }

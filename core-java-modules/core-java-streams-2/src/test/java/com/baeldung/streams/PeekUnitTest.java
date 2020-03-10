@@ -49,7 +49,7 @@ public class PeekUnitTest {
 
         // when
         nameStream.peek(out::append)
-            .forEach(this::noop);
+                .forEach(this::noop);
 
         // then
         assertThat(out.toString()).isEqualTo("AliceBobChuck");
@@ -62,7 +62,7 @@ public class PeekUnitTest {
 
         // when
         nameStream.peek(out::append)
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         // then
         assertThat(out.toString()).isEqualTo("AliceBobChuck");
@@ -75,7 +75,7 @@ public class PeekUnitTest {
 
         // when
         nameStream.peek(out::append)
-            .forEach(out::append);
+                .forEach(out::append);
 
         // then
         assertThat(out.toString()).isEqualTo("AliceAliceBobBobChuckChuck");
@@ -88,8 +88,8 @@ public class PeekUnitTest {
 
         // when
         userStream.peek(u -> u.setName(u.getName().toLowerCase()))
-            .map(User::getName)
-            .forEach(out::append);
+                .map(User::getName)
+                .forEach(out::append);
 
         // then
         assertThat(out.toString()).isEqualTo("alicebobchuck");

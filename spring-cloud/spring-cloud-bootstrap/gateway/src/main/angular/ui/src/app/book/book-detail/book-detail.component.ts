@@ -3,24 +3,25 @@ import {Book} from "../../book";
 import {Principal} from "../../principal";
 
 @Component({
-  selector: 'app-book-detail',
-  templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.css']
+    selector: 'app-book-detail',
+    templateUrl: './book-detail.component.html',
+    styleUrls: ['./book-detail.component.css']
 })
 export class BookDetailComponent implements OnInit {
 
-  @Input() selectedBook: Book = null;
-  @Input() principal: Principal = null;
-  @Output() closeBook: EventEmitter<any> = new EventEmitter<any>();
+    @Input() selectedBook: Book = null;
+    @Input() principal: Principal = null;
+    @Output() closeBook: EventEmitter<any> = new EventEmitter<any>();
 
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  closeBookDetail() {
-    this.closeBook.emit(null);
-  }
+    closeBookDetail() {
+        this.closeBook.emit(null);
+    }
 
 }

@@ -29,10 +29,10 @@ public class ItemDeserializerOnClass extends StdDeserializer<ItemWithSerializer>
     @Override
     public ItemWithSerializer deserialize(final JsonParser jp, final DeserializationContext ctxt) throws IOException, JsonProcessingException {
         final JsonNode node = jp.getCodec()
-            .readTree(jp);
+                .readTree(jp);
         final int id = (Integer) ((IntNode) node.get("id")).numberValue();
         final String itemName = node.get("itemName")
-            .asText();
+                .asText();
         final int userId = (Integer) ((IntNode) node.get("owner")).numberValue();
 
         return new ItemWithSerializer(id, itemName, new User(userId, null));

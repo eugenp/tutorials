@@ -12,8 +12,8 @@ import org.springframework.test.context.TestExecutionListeners.MergeMode;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@TestExecutionListeners(value = { CustomTestExecutionListener.class }, 
-    mergeMode = MergeMode.MERGE_WITH_DEFAULTS)
+@TestExecutionListeners(value = {CustomTestExecutionListener.class},
+        mergeMode = MergeMode.MERGE_WITH_DEFAULTS)
 @ContextConfiguration(classes = AdditionService.class)
 public class TestExecutionListenersWithMergeModeUnitTest {
     @Autowired

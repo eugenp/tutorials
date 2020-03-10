@@ -13,7 +13,7 @@ public class MapToString {
         for (Integer key : map.keySet()) {
             mapAsString.append(key + "=" + map.get(key) + ", ");
         }
-        mapAsString.delete(mapAsString.length()-2, mapAsString.length()).append("}");
+        mapAsString.delete(mapAsString.length() - 2, mapAsString.length()).append("}");
         return mapAsString.toString();
     }
 

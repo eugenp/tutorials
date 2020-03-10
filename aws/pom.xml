@@ -119,7 +119,8 @@
         <mockito-core.version>2.21.0</mockito-core.version>
         <assertj-core.version>3.8.0</assertj-core.version>
         <dynamodblocal.version>1.11.86</dynamodblocal.version>
-        <dynamodblocal.repository.url>https://s3-us-west-2.amazonaws.com/dynamodb-local/release</dynamodblocal.repository.url>
+        <dynamodblocal.repository.url>https://s3-us-west-2.amazonaws.com/dynamodb-local/release
+        </dynamodblocal.repository.url>
         <commons-codec-version>1.10.L001</commons-codec-version>
         <jets3t-version>0.9.4.0006L</jets3t-version>
         <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>

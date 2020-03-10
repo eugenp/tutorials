@@ -18,15 +18,15 @@ public class ArticleEndpoints {
     @GET
     public Response getArticle() {
         return Response.ok()
-            .entity(new Article("name", "author"))
-            .build();
+                .entity(new Article("name", "author"))
+                .build();
 
     }
 
     @POST
     public Response createArticle(Article article) {
         return Response.status(Status.CREATED)
-            .entity(articleService.createArticle(article))
-            .build();
+                .entity(articleService.createArticle(article))
+                .build();
     }
 }

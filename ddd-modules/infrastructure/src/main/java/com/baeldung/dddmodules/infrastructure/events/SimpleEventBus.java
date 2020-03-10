@@ -16,7 +16,7 @@ public class SimpleEventBus implements EventBus {
     public <E extends ApplicationEvent> void publish(E event) {
         if (subscribers.containsKey(event.getType())) {
             subscribers.get(event.getType())
-              .forEach(subscriber -> subscriber.onEvent(event));
+                    .forEach(subscriber -> subscriber.onEvent(event));
         }
     }
 

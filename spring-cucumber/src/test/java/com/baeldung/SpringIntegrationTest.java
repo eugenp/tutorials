@@ -50,13 +50,13 @@ public class SpringIntegrationTest {
 
         restTemplate.setErrorHandler(errorHandler);
         latestResponse = restTemplate
-          .execute("http://localhost:8082/baeldung", HttpMethod.POST, requestCallback, response -> {
-              if (errorHandler.hadError) {
-                  return (errorHandler.getResults());
-              } else {
-                  return (new ResponseResults(response));
-              }
-          });
+                .execute("http://localhost:8082/baeldung", HttpMethod.POST, requestCallback, response -> {
+                    if (errorHandler.hadError) {
+                        return (errorHandler.getResults());
+                    } else {
+                        return (new ResponseResults(response));
+                    }
+                });
     }
 
     private class ResponseResultErrorHandler implements ResponseErrorHandler {

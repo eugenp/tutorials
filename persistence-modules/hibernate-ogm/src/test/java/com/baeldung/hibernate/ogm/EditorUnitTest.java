@@ -51,15 +51,15 @@ public class EditorUnitTest {
         assertThat(loadedEditor).isNotNull();
         assertThat(loadedEditor.getEditorName()).isEqualTo("Tom");
         assertThat(loadedEditor.getAssignedAuthors()).onProperty("authorName")
-            .containsOnly("Maria", "Mike");
+                .containsOnly("Maria", "Mike");
         Map<String, Author> loadedAuthors = loadedEditor.getAssignedAuthors()
-            .stream()
-            .collect(Collectors.toMap(Author::getAuthorName, e -> e));
+                .stream()
+                .collect(Collectors.toMap(Author::getAuthorName, e -> e));
         assertThat(loadedAuthors.get("Maria")
-            .getAuthoredArticles()).onProperty("articleTitle")
+                .getAuthoredArticles()).onProperty("articleTitle")
                 .containsOnly("Basic of Hibernate OGM");
         assertThat(loadedAuthors.get("Mike")
-            .getAuthoredArticles()).onProperty("articleTitle")
+                .getAuthoredArticles()).onProperty("articleTitle")
                 .containsOnly("Intermediate of Hibernate OGM", "Advanced of Hibernate OGM");
         entityManager.close();
         transactionManager.commit();
@@ -73,19 +73,19 @@ public class EditorUnitTest {
         Article intermediate = new Article("Intermediate of Hibernate OGM");
         Article advanced = new Article("Advanced of Hibernate OGM");
         maria.getAuthoredArticles()
-            .add(basic);
+                .add(basic);
         basic.setAuthor(maria);
         mike.getAuthoredArticles()
-            .add(intermediate);
+                .add(intermediate);
         intermediate.setAuthor(mike);
         mike.getAuthoredArticles()
-            .add(advanced);
+                .add(advanced);
         advanced.setAuthor(mike);
         tom.getAssignedAuthors()
-            .add(maria);
+                .add(maria);
         maria.setEditor(tom);
         tom.getAssignedAuthors()
-            .add(mike);
+                .add(mike);
         mike.setEditor(tom);
         return tom;
     }

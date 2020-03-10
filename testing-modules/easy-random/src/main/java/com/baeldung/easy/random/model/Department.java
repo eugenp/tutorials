@@ -12,6 +12,6 @@ public class Department {
     @Override
     public String toString() {
         return new StringJoiner(", ", Department.class.getSimpleName() + "[", "]").add("depName='" + depName + "'")
-            .toString();
+                .toString();
     }
 }

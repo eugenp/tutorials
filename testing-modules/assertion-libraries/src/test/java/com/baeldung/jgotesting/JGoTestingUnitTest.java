@@ -1,12 +1,16 @@
 package com.baeldung.testing.jgotesting;
 
 import java.io.File;
+
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 import static org.hamcrest.Matchers.is;
+
 import org.jgotesting.rule.JGoTestRule;
+
 import static org.jgotesting.Assert.*; // same methods as org.junit.Assert.*
 import static org.jgotesting.Check.*; // ditto, with different names
 import static org.jgotesting.Testing.*;
+
 import org.jgotesting.Checker;
 import org.junit.Ignore;
 import org.junit.Rule;
@@ -56,8 +60,8 @@ public class JGoTestingUnitTest {
         String anotherString = "This Is A String";
 
         test.check(aString, equalToIgnoringCase(anotherString))
-            .check(aString.length() == 16)
-            .check(aString.startsWith("This"));
+                .check(aString.length() == 16)
+                .check(aString.startsWith("This"));
     }
 
     @Ignore

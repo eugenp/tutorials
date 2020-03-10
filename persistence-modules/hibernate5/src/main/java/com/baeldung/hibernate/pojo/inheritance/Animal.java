@@ -13,8 +13,9 @@ public class Animal {
     private long animalId;
 
     private String species;
-    
-    public Animal() {}    
+
+    public Animal() {
+    }
 
     public Animal(long animalId, String species) {
         this.animalId = animalId;

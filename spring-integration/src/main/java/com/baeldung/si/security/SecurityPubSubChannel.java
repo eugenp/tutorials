@@ -48,7 +48,7 @@ public class SecurityPubSubChannel {
     }
 
     @Bean
-    @GlobalChannelInterceptor(patterns = { "startPSChannel", "endDirectChannel" })
+    @GlobalChannelInterceptor(patterns = {"startPSChannel", "endDirectChannel"})
     public ChannelInterceptor securityContextPropagationInterceptor() {
         return new SecurityContextPropagationChannelInterceptor();
     }

@@ -20,7 +20,8 @@ public class ImageController {
     ServletContext servletContext;
 
     @RequestMapping(value = "/image-byte-array", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
-    public @ResponseBody byte[] getImageAsByteArray() throws IOException {
+    public @ResponseBody
+    byte[] getImageAsByteArray() throws IOException {
         final InputStream in = servletContext.getResourceAsStream("/WEB-INF/images/image-example.jpg");
         return IOUtils.toByteArray(in);
     }

@@ -8,8 +8,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 // @formatter:off
-    RestClientLiveManualTest.class
-    ,ClientLiveTest.class
+        RestClientLiveManualTest.class
+        , ClientLiveTest.class
 }) //
 public class LiveTestSuite {
 

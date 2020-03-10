@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan({ "com.baeldung.jooq.introduction.db.public_.tables" })
+@ComponentScan({"com.baeldung.jooq.introduction.db.public_.tables"})
 @EnableTransactionManagement
 @PropertySource("classpath:intro_config.properties")
 public class PersistenceContextIntegrationTest {
@@ -57,7 +57,7 @@ public class PersistenceContextIntegrationTest {
     public ExceptionTranslator exceptionTransformer() {
         return new ExceptionTranslator();
     }
-    
+
     @Bean
     public DefaultDSLContext dsl() {
         return new DefaultDSLContext(configuration());

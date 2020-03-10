@@ -8,16 +8,16 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@SpringBootApplication 
+@SpringBootApplication
 @EnableAutoConfiguration
-@ComponentScan(basePackages={"com.baeldung.crud"})
-@EnableJpaRepositories(basePackages="com.baeldung.crud.repositories")
+@ComponentScan(basePackages = {"com.baeldung.crud"})
+@EnableJpaRepositories(basePackages = "com.baeldung.crud.repositories")
 @EnableTransactionManagement
-@EntityScan(basePackages="com.baeldung.crud.entities")
+@EntityScan(basePackages = "com.baeldung.crud.entities")
 public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-    
+
 }

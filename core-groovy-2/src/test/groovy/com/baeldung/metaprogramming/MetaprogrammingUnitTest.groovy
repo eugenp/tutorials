@@ -17,7 +17,7 @@ class MetaprogrammingUnitTest extends GroovyTestCase {
         Employee emp = new Employee()
         try {
             emp.getFullName()
-        } catch(MissingMethodException e) {
+        } catch (MissingMethodException e) {
             println "method is not defined"
         }
         assert emp.getFullName() == "method 'getFullName' is not defined"
@@ -39,7 +39,7 @@ class MetaprogrammingUnitTest extends GroovyTestCase {
     void testMetaClassConstructor() {
         try {
             Employee emp = new Employee("Norman")
-        } catch(GroovyRuntimeException e) {
+        } catch (GroovyRuntimeException e) {
             assert e.message == "Could not find matching constructor for: com.baeldung.metaprogramming.Employee(String)"
         }
 
@@ -98,20 +98,20 @@ class MetaprogrammingUnitTest extends GroovyTestCase {
         assert snape.toString() == "Employee(snape, null, 0)"
 
     }
-    
+
     void testEqualsAndHashCodeAnnotation() {
         Employee norman = new Employee(1, "norman", "lewis", 28)
         Employee normanCopy = new Employee(1, "norman", "lewis", 28)
         assert norman.equals(normanCopy)
         assert norman.hashCode() == normanCopy.hashCode()
     }
-    
+
     void testAutoCloneAnnotation() {
         try {
             Employee norman = new Employee(1, "norman", "lewis", 28)
             def normanCopy = norman.clone()
             assert norman == normanCopy
-        } catch(CloneNotSupportedException e) {
+        } catch (CloneNotSupportedException e) {
             e.printStackTrace()
         }
     }

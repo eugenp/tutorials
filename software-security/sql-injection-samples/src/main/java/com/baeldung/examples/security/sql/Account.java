@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.baeldung.examples.security.sql;
 
@@ -18,14 +18,14 @@ import lombok.Data;
  *
  */
 @Entity
-@Table(name="Accounts")
+@Table(name = "Accounts")
 @Data
 public class Account {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String customerId;
     private String accNumber;
     private String branchId;

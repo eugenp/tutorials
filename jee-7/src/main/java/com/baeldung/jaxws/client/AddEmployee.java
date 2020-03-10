@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for addEmployee complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="addEmployee">
  *   &lt;complexContent>
@@ -23,13 +23,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "addEmployee", propOrder = {
-    "arg0",
-    "arg1"
+        "arg0",
+        "arg1"
 })
 public class AddEmployee {
 
@@ -38,7 +36,6 @@ public class AddEmployee {
 
     /**
      * Gets the value of the arg0 property.
-     * 
      */
     public int getArg0() {
         return arg0;
@@ -46,7 +43,6 @@ public class AddEmployee {
 
     /**
      * Sets the value of the arg0 property.
-     * 
      */
     public void setArg0(int value) {
         this.arg0 = value;
@@ -54,11 +50,9 @@ public class AddEmployee {
 
     /**
      * Gets the value of the arg1 property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getArg1() {
         return arg1;
@@ -66,11 +60,9 @@ public class AddEmployee {
 
     /**
      * Sets the value of the arg1 property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setArg1(String value) {
         this.arg1 = value;

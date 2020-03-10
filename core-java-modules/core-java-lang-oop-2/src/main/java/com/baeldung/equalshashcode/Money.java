@@ -16,11 +16,11 @@ class Money {
             return true;
         if (!(o instanceof Money))
             return false;
-        Money other = (Money)o;
+        Money other = (Money) o;
         boolean currencyCodeEquals = (this.currencyCode == null && other.currencyCode == null)
-          || (this.currencyCode != null && this.currencyCode.equals(other.currencyCode));
+                || (this.currencyCode != null && this.currencyCode.equals(other.currencyCode));
         return this.amount == other.amount
-          && currencyCodeEquals;
+                && currencyCodeEquals;
     }
 
     @Override

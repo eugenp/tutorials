@@ -29,7 +29,7 @@ public class BrandResource {
     @Path("/{id}")
     public Brand getById(@PathParam("id") final Long id) {
         return brandRepository
-          .findById(id)
-          .orElseThrow(RuntimeException::new);
+                .findById(id)
+                .orElseThrow(RuntimeException::new);
     }
 }

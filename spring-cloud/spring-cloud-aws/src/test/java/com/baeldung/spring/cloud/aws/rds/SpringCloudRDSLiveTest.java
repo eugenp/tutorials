@@ -15,11 +15,9 @@ import java.sql.Statement;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * 
  * To run this Live Test, we need to have an AWS account and have API keys generated for programmatic access.
- * 
+ * <p>
  * Check the README file in this module for more information.
- *
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -30,7 +28,7 @@ public class SpringCloudRDSLiveTest {
 
     @Test
     public void whenDataSourceCreated_thenSuccess() {
-       assertThat(dataSource).isNotNull();
+        assertThat(dataSource).isNotNull();
     }
 
     @Test

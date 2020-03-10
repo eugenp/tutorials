@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.ConfigurableEnvironment;
 
 @Configuration
-@ComponentScan(basePackages = { "com.baeldung.servlets.*" })
+@ComponentScan(basePackages = {"com.baeldung.servlets.*"})
 @PropertySource("classpath:custom.properties")
 public class PropertySourcesLoader {
 

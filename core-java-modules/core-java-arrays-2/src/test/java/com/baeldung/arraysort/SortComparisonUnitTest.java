@@ -15,14 +15,14 @@ import org.junit.runners.MethodSorters;
 
 /**
  * Time taken by JUnit test cases can be seen in JUnit Runner
- * @author rchaudhary23
  *
+ * @author rchaudhary23
  */
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SortComparisonUnitTest {
 
-    private int[] sizeOfArrays = { 1000, 10000, 100000, 1000000 };
+    private int[] sizeOfArrays = {1000, 10000, 100000, 1000000};
 
     private int[] _1000_elements_array;
     private int[] _10000_elements_array;
@@ -59,8 +59,8 @@ public class SortComparisonUnitTest {
     @Test
     public void givenArrayOfIntegers_whenUsingArraysSortMethod_thenSortFullArrayInAscendingOrder() {
 
-        int[] array = { 10, 4, 6, 2, 1, 9, 7, 8, 3, 5 };
-        int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        int[] array = {10, 4, 6, 2, 1, 9, 7, 8, 3, 5};
+        int[] expected = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         Arrays.sort(array);
 
@@ -70,8 +70,8 @@ public class SortComparisonUnitTest {
 
     @Test
     public void givenArrayOfIntegers_whenUsingArraysSortWithRange_thenSortRangeOfArrayAsc() {
-        int[] array = { 10, 4, 6, 2, 1, 9, 7, 8, 3, 5 };
-        int[] expected = { 10, 4, 1, 2, 6, 7, 8, 9, 3, 5 };
+        int[] array = {10, 4, 6, 2, 1, 9, 7, 8, 3, 5};
+        int[] expected = {10, 4, 1, 2, 6, 7, 8, 9, 3, 5};
 
         Arrays.sort(array, 2, 8);
 
@@ -80,8 +80,8 @@ public class SortComparisonUnitTest {
 
     @Test
     public void givenArrayOfIntegers_whenUsingArraysParallelSortMethod_thenSortFullArrayInAscendingOrder() {
-        int[] array = { 10, 4, 6, 2, 1, 9, 7, 8, 3, 5 };
-        int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        int[] array = {10, 4, 6, 2, 1, 9, 7, 8, 3, 5};
+        int[] expected = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         Arrays.parallelSort(array);
 
@@ -90,8 +90,8 @@ public class SortComparisonUnitTest {
 
     @Test
     public void givenArrayOfIntegers_whenUsingArraysParallelSortWithRange_thenSortRangeOfArrayAsc() {
-        int[] array = { 10, 4, 6, 2, 1, 9, 7, 8, 3, 5 };
-        int[] expected = { 10, 4, 1, 2, 6, 7, 8, 9, 3, 5 };
+        int[] array = {10, 4, 6, 2, 1, 9, 7, 8, 3, 5};
+        int[] expected = {10, 4, 1, 2, 6, 7, 8, 9, 3, 5};
 
         Arrays.parallelSort(array, 2, 8);
 

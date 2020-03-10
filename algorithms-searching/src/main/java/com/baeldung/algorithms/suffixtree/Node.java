@@ -45,7 +45,7 @@ public class Node {
 
         for (int i = 0; i < children.size(); i++) {
             str += children.get(i)
-                .printTree(depthIndicator + "\t");
+                    .printTree(depthIndicator + "\t");
         }
         return str;
     }

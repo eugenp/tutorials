@@ -24,22 +24,22 @@ public class HibernateLoggingIntegrationTest {
     @Before
     public void setUp() throws IOException {
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate-logging.cfg.xml")
-            .build();
+                .build();
         try {
             sessionFactory = new MetadataSources(registry).buildMetadata()
-                .buildSessionFactory();
+                    .buildSessionFactory();
             Session session = sessionFactory.openSession();
             session.beginTransaction();
             session.save(new Employee("John Smith", "001"));
             session.getTransaction()
-                .commit();
+                    .commit();
             session.close();
         } catch (Exception e) {
             fail(e);
             StandardServiceRegistryBuilder.destroy(registry);
         }
     }
-    
+
     @Test
     public void whenAllEmployeesAreSelected_ThenSuccess() {
         Query<Employee> query = sessionFactory.openSession().createQuery("from com.baeldung.hibernate.logging.Employee", Employee.class);

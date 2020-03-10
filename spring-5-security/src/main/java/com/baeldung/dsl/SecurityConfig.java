@@ -14,14 +14,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/admin*")
-            .hasAnyRole("ADMIN")
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .and()
-            .apply(clientErrorLogging());
+                .antMatchers("/admin*")
+                .hasAnyRole("ADMIN")
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .and()
+                .apply(clientErrorLogging());
     }
 
     @Bean
@@ -32,14 +32,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-            .passwordEncoder(passwordEncoder())
-            .withUser("user1")
-            .password(passwordEncoder().encode("user"))
-            .roles("USER")
-            .and()
-            .withUser("admin")
-            .password(passwordEncoder().encode("admin"))
-            .roles("ADMIN");
+                .passwordEncoder(passwordEncoder())
+                .withUser("user1")
+                .password(passwordEncoder().encode("user"))
+                .roles("USER")
+                .and()
+                .withUser("admin")
+                .password(passwordEncoder().encode("admin"))
+                .roles("ADMIN");
     }
 
     @Bean

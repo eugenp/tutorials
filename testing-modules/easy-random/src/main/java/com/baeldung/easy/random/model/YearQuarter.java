@@ -44,7 +44,7 @@ public class YearQuarter {
     @Override
     public String toString() {
         return new StringJoiner(", ", YearQuarter.class.getSimpleName() + "[", "]").add("startDate=" + startDate)
-            .add("endDate=" + endDate)
-            .toString();
+                .add("endDate=" + endDate)
+                .toString();
     }
 }

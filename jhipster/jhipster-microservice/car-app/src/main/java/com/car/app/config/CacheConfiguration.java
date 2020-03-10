@@ -27,8 +27,8 @@ import javax.annotation.PreDestroy;
 
 @Configuration
 @EnableCaching
-@AutoConfigureAfter(value = { MetricsConfiguration.class })
-@AutoConfigureBefore(value = { WebConfigurer.class, DatabaseConfiguration.class })
+@AutoConfigureAfter(value = {MetricsConfiguration.class})
+@AutoConfigureBefore(value = {WebConfigurer.class, DatabaseConfiguration.class})
 public class CacheConfiguration {
 
     private final Logger log = LoggerFactory.getLogger(CacheConfiguration.class);
@@ -70,7 +70,7 @@ public class CacheConfiguration {
         // In development, everything goes through 127.0.0.1, with a different port
         if (env.acceptsProfiles(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT)) {
             log.debug("Application is running with the \"dev\" profile, Hazelcast " +
-                      "cluster will only work with localhost instances");
+                    "cluster will only work with localhost instances");
 
             System.setProperty("hazelcast.local.localAddress", "127.0.0.1");
             config.getNetworkConfig().setPort(serverProperties.getPort() + 5701);

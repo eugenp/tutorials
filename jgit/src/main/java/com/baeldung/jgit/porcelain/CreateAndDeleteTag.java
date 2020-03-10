@@ -1,6 +1,7 @@
 package com.baeldung.jgit.porcelain;
 
 import java.io.IOException;
+
 import com.baeldung.jgit.helper.Helper;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -12,8 +13,6 @@ import org.eclipse.jgit.revwalk.RevWalk;
 
 /**
  * Simple snippet which shows how to create a tag
- *
- * 
  */
 public class CreateAndDeleteTag {
 

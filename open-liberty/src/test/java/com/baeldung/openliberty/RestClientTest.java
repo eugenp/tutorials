@@ -18,9 +18,9 @@ public class RestClientTest {
 
     @BeforeClass
     public static void oneTimeSetup() {
-        BASE_URL = "http://localhost:9080/"; 
+        BASE_URL = "http://localhost:9080/";
     }
-    
+
     @Test
     public void testSuite() {
         //run the test only when liberty server is started
@@ -29,7 +29,7 @@ public class RestClientTest {
 
     public void whenConsumeWithJsonb_thenGetPerson() {
         String url = BASE_URL + API_PERSON + "/1";
-        String result = RestConsumer.consumeWithJsonb(url);        
+        String result = RestConsumer.consumeWithJsonb(url);
 
         Person person = JsonbBuilder.create().fromJson(result, Person.class);
         assertEquals(1, person.getId());

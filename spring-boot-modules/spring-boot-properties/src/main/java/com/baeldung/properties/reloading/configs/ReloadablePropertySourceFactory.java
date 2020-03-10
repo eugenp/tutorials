@@ -1,6 +1,7 @@
 package com.baeldung.properties.reloading.configs;
 
 import java.io.IOException;
+
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.FileUrlResource;
@@ -17,8 +18,8 @@ public class ReloadablePropertySourceFactory extends DefaultPropertySourceFactor
         }
         if (internal instanceof FileUrlResource) {
             return new ReloadablePropertySource(s, ((FileUrlResource) internal)
-              .getURL()
-              .getPath());
+                    .getURL()
+                    .getPath());
         }
         return super.createPropertySource(s, encodedResource);
     }

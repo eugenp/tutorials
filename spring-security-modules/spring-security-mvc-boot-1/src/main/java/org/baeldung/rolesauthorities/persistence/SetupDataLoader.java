@@ -29,7 +29,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 
     @Autowired
     private PrivilegeRepository privilegeRepository;
-    
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -42,7 +42,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 
         // == create initial privileges
         Privilege readPrivilege = createPrivilegeIfNotFound("READ_PRIVILEGE");
-        Privilege writePrivilege = createPrivilegeIfNotFound("WRITE_PRIVILEGE"); 
+        Privilege writePrivilege = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
 
         // == create initial roles
         List<Privilege> adminPrivileges = Arrays.asList(readPrivilege, writePrivilege);

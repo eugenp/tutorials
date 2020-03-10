@@ -2,6 +2,7 @@ package com.baeldung.reactive.logging.filters;
 
 import java.util.Arrays;
 import java.util.List;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import reactor.core.publisher.Mono;
@@ -16,16 +17,16 @@ public class LogFilters {
         return ExchangeFilterFunction.ofRequestProcessor(clientRequest -> {
             if (log.isDebugEnabled()) {
                 StringBuilder sb = new StringBuilder("Request: \n")
-                  .append(clientRequest.method())
-                  .append(" ")
-                  .append(clientRequest.url());
+                        .append(clientRequest.method())
+                        .append(" ")
+                        .append(clientRequest.url());
                 clientRequest
-                  .headers()
-                  .forEach((name, values) -> values.forEach(value -> sb
-                    .append("\n")
-                    .append(name)
-                    .append(":")
-                    .append(value)));
+                        .headers()
+                        .forEach((name, values) -> values.forEach(value -> sb
+                                .append("\n")
+                                .append(name)
+                                .append(":")
+                                .append(value)));
                 log.debug(sb.toString());
             }
             return Mono.just(clientRequest);
@@ -36,16 +37,16 @@ public class LogFilters {
         return ExchangeFilterFunction.ofResponseProcessor(clientResponse -> {
             if (log.isDebugEnabled()) {
                 StringBuilder sb = new StringBuilder("Response: \n")
-                  .append("Status: ")
-                  .append(clientResponse.rawStatusCode());
+                        .append("Status: ")
+                        .append(clientResponse.rawStatusCode());
                 clientResponse
-                  .headers()
-                  .asHttpHeaders()
-                  .forEach((key, value1) -> value1.forEach(value -> sb
-                    .append("\n")
-                    .append(key)
-                    .append(":")
-                    .append(value)));
+                        .headers()
+                        .asHttpHeaders()
+                        .forEach((key, value1) -> value1.forEach(value -> sb
+                                .append("\n")
+                                .append(key)
+                                .append(":")
+                                .append(value)));
                 log.debug(sb.toString());
             }
             return Mono.just(clientResponse);

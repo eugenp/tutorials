@@ -1,13 +1,13 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('gatewayApp')
         .controller('JhiMetricsMonitoringController', JhiMetricsMonitoringController);
 
-    JhiMetricsMonitoringController.$inject = ['$scope','JhiMetricsService', '$uibModal'];
+    JhiMetricsMonitoringController.$inject = ['$scope', 'JhiMetricsService', '$uibModal'];
 
-    function JhiMetricsMonitoringController ($scope, JhiMetricsService, $uibModal) {
+    function JhiMetricsMonitoringController($scope, JhiMetricsService, $uibModal) {
         var vm = this;
 
         vm.metrics = {};
@@ -28,7 +28,7 @@
 
         });
 
-        function refresh () {
+        function refresh() {
             vm.updatingMetrics = true;
             JhiMetricsService.getMetrics().then(function (promise) {
                 vm.metrics = promise;
@@ -39,15 +39,15 @@
             });
         }
 
-        function refreshThreadDumpData () {
-            JhiMetricsService.threadDump().then(function(data) {
+        function refreshThreadDumpData() {
+            JhiMetricsService.threadDump().then(function (data) {
                 $uibModal.open({
                     templateUrl: 'app/admin/metrics/metrics.modal.html',
                     controller: 'JhiMetricsMonitoringModalController',
                     controllerAs: 'vm',
                     size: 'lg',
                     resolve: {
-                        threadDump: function() {
+                        threadDump: function () {
                             return data;
                         }
 

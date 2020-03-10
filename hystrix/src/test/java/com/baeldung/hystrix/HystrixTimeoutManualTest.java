@@ -19,44 +19,44 @@ public class HystrixTimeoutManualTest {
 
     @Test
     public void givenSvcTimeoutOf100AndDefaultSettings_whenRemoteSvcExecuted_thenReturnSuccess()
-      throws InterruptedException {
+            throws InterruptedException {
         HystrixCommand.Setter config = HystrixCommand
-          .Setter
-          .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroup2"));
+                .Setter
+                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroup2"));
 
         assertThat(new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(100)).execute(),
-          equalTo("Success"));
+                equalTo("Success"));
     }
 
     @Test(expected = HystrixRuntimeException.class)
     public void givenSvcTimeoutOf10000AndDefaultSettings__whenRemoteSvcExecuted_thenExpectHRE() throws InterruptedException {
         HystrixCommand.Setter config = HystrixCommand
-          .Setter
-          .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroupTest3"));
+                .Setter
+                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroupTest3"));
         new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(10_000)).execute();
     }
 
     @Test
     public void givenSvcTimeoutOf5000AndExecTimeoutOf10000_whenRemoteSvcExecuted_thenReturnSuccess()
-      throws InterruptedException {
+            throws InterruptedException {
 
         HystrixCommand.Setter config = HystrixCommand
-          .Setter
-          .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroupTest4"));
+                .Setter
+                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroupTest4"));
         HystrixCommandProperties.Setter commandProperties = HystrixCommandProperties.Setter();
         commandProperties.withExecutionTimeoutInMilliseconds(10_000);
         config.andCommandPropertiesDefaults(commandProperties);
 
         assertThat(new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(500)).execute(),
-          equalTo("Success"));
+                equalTo("Success"));
     }
 
     @Test(expected = HystrixRuntimeException.class)
     public void givenSvcTimeoutOf15000AndExecTimeoutOf5000__whenExecuted_thenExpectHRE()
-      throws InterruptedException {
+            throws InterruptedException {
         HystrixCommand.Setter config = HystrixCommand
-          .Setter
-          .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroupTest5"));
+                .Setter
+                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroupTest5"));
         HystrixCommandProperties.Setter commandProperties = HystrixCommandProperties.Setter();
         commandProperties.withExecutionTimeoutInMilliseconds(5_000);
         config.andCommandPropertiesDefaults(commandProperties);
@@ -65,45 +65,45 @@ public class HystrixTimeoutManualTest {
 
     @Test
     public void givenSvcTimeoutOf500AndExecTimeoutOf10000AndThreadPool__whenExecuted_thenReturnSuccess()
-      throws InterruptedException {
+            throws InterruptedException {
 
         HystrixCommand.Setter config = HystrixCommand
-          .Setter
-          .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroupThreadPool"));
+                .Setter
+                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroupThreadPool"));
         HystrixCommandProperties.Setter commandProperties = HystrixCommandProperties.Setter();
         commandProperties.withExecutionTimeoutInMilliseconds(10_000);
         config.andCommandPropertiesDefaults(commandProperties);
         config.andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
-          .withMaxQueueSize(10)
-          .withCoreSize(3)
-          .withQueueSizeRejectionThreshold(10));
+                .withMaxQueueSize(10)
+                .withCoreSize(3)
+                .withQueueSizeRejectionThreshold(10));
 
         assertThat(new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(500)).execute(),
-          equalTo("Success"));
+                equalTo("Success"));
     }
 
     @Test
     public void givenCircuitBreakerSetup__whenRemoteSvcCmdExecuted_thenReturnSuccess()
-      throws InterruptedException {
+            throws InterruptedException {
 
         HystrixCommand.Setter config = HystrixCommand
-          .Setter
-          .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroupCircuitBreaker"));
+                .Setter
+                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroupCircuitBreaker"));
         HystrixCommandProperties.Setter properties = HystrixCommandProperties.Setter();
         properties.withExecutionTimeoutInMilliseconds(1000);
 
         properties.withCircuitBreakerSleepWindowInMilliseconds(4000);
         properties.withExecutionIsolationStrategy(
-          HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+                HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
         properties.withCircuitBreakerEnabled(true);
         properties.withCircuitBreakerRequestVolumeThreshold(1);
 
         config.andCommandPropertiesDefaults(properties);
 
         config.andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
-          .withMaxQueueSize(1)
-          .withCoreSize(1)
-          .withQueueSizeRejectionThreshold(1));
+                .withMaxQueueSize(1)
+                .withCoreSize(1)
+                .withQueueSizeRejectionThreshold(1));
 
         assertThat(this.invokeRemoteService(config, 10_000), equalTo(null));
         assertThat(this.invokeRemoteService(config, 10_000), equalTo(null));
@@ -111,19 +111,19 @@ public class HystrixTimeoutManualTest {
         Thread.sleep(5000);
 
         assertThat(new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(500)).execute(),
-          equalTo("Success"));
+                equalTo("Success"));
         assertThat(new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(500)).execute(),
-          equalTo("Success"));
+                equalTo("Success"));
         assertThat(new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(500)).execute(),
-          equalTo("Success"));
+                equalTo("Success"));
     }
 
     public String invokeRemoteService(HystrixCommand.Setter config, int timeout)
-      throws InterruptedException {
+            throws InterruptedException {
         String response = null;
         try {
             response = new RemoteServiceTestCommand(config,
-              new RemoteServiceTestSimulator(timeout)).execute();
+                    new RemoteServiceTestSimulator(timeout)).execute();
         } catch (HystrixRuntimeException ex) {
             System.out.println("ex = " + ex);
         }

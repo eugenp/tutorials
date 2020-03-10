@@ -1,6 +1,7 @@
 package com.baeldung.jackson.enums.deserialization.jsoncreator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.IOException;
 
 import org.junit.Test;
@@ -16,5 +17,5 @@ public class EnumDeserializationUsingJsonCreatorUnitTest {
         City city = new ObjectMapper().readValue(json, City.class);
         assertEquals(Distance.MILE, city.getDistance());
     }
-    
+
 }

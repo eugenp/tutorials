@@ -44,24 +44,24 @@ public class AuthController {
 
         validator.validate(user);
 
-        if(validator.hasErrors()) {
+        if (validator.hasErrors()) {
             result.include("errors", validator.getErrors());
         }
 
         validator.onErrorRedirectTo(this).registrationForm();
 
-        if(!user.getPassword()
-             .equals(request.getParameter("password_confirmation"))) {
+        if (!user.getPassword()
+                .equals(request.getParameter("password_confirmation"))) {
             result.include("error", "Passwords Do Not Match");
             result.redirectTo(this).registrationForm();
         }
 
         user.setPassword(
-          BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+                BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
 
         Object resp = userDao.add(user);
 
-        if(resp != null) {
+        if (resp != null) {
             result.include("status", "Registration Successful! Now Login");
             result.redirectTo(this).loginForm();
         } else {
@@ -81,16 +81,16 @@ public class AuthController {
         String password = request.getParameter("user.password");
         String email = request.getParameter("user.email");
 
-        if(email.isEmpty() || password.isEmpty()) {
-          result.include("error", "Email/Password is Required!");
-          result.redirectTo(AuthController.class).loginForm();
+        if (email.isEmpty() || password.isEmpty()) {
+            result.include("error", "Email/Password is Required!");
+            result.redirectTo(AuthController.class).loginForm();
         }
 
         User user = userDao.findByEmail(email);
-        if(user != null && BCrypt.checkpw(password, user.getPassword())) {
-          userInfo.setUser(user);
-          result.include("status", "Login Successful!");
-          result.redirectTo(IndexController.class).index();
+        if (user != null && BCrypt.checkpw(password, user.getPassword())) {
+            userInfo.setUser(user);
+            result.include("status", "Login Successful!");
+            result.redirectTo(IndexController.class).index();
         } else {
             result.include("error", "Email/Password Does Not Match!");
             result.redirectTo(AuthController.class).loginForm();

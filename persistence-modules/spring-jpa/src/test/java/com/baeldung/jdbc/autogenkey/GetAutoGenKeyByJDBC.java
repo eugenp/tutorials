@@ -16,7 +16,7 @@ import com.baeldung.jdbc.autogenkey.repository.MessageRepositorySimpleJDBCInsert
 public class GetAutoGenKeyByJDBC {
 
     @Configuration
-    @ComponentScan(basePackages = { "com.baeldung.jdbc.autogenkey" })
+    @ComponentScan(basePackages = {"com.baeldung.jdbc.autogenkey"})
     public static class SpringConfig {
 
     }

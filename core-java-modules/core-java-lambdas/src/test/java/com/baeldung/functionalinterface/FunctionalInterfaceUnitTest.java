@@ -42,10 +42,10 @@ public class FunctionalInterfaceUnitTest {
     @Test
     public void whenUsingCustomFunctionalInterfaceForPrimitives_thenCanUseItAsLambda() {
 
-        short[] array = { (short) 1, (short) 2, (short) 3 };
+        short[] array = {(short) 1, (short) 2, (short) 3};
         byte[] transformedArray = transformArray(array, s -> (byte) (s * 2));
 
-        byte[] expectedArray = { (byte) 2, (byte) 4, (byte) 6 };
+        byte[] expectedArray = {(byte) 2, (byte) 4, (byte) 6};
         assertArrayEquals(expectedArray, transformedArray);
 
     }
@@ -73,7 +73,7 @@ public class FunctionalInterfaceUnitTest {
     @Test
     public void whenUsingSupplierToGenerateNumbers_thenCanUseItInStreamGenerate() {
 
-        int[] fibs = { 0, 1 };
+        int[] fibs = {0, 1};
         Stream<Integer> fibonacci = Stream.generate(() -> {
             int result = fibs[1];
             int fib3 = fibs[0] + fibs[1];
@@ -83,7 +83,7 @@ public class FunctionalInterfaceUnitTest {
         });
 
         List<Integer> fibonacci5 = fibonacci.limit(5)
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         assertEquals(new Integer(1), fibonacci5.get(0));
         assertEquals(new Integer(1), fibonacci5.get(1));
@@ -113,8 +113,8 @@ public class FunctionalInterfaceUnitTest {
         List<String> names = Arrays.asList("Angela", "Aaron", "Bob", "Claire", "David");
 
         List<String> namesWithA = names.stream()
-            .filter(name -> name.startsWith("A"))
-            .collect(Collectors.toList());
+                .filter(name -> name.startsWith("A"))
+                .collect(Collectors.toList());
 
         assertEquals(2, namesWithA.size());
         assertTrue(namesWithA.contains("Angela"));
@@ -138,7 +138,7 @@ public class FunctionalInterfaceUnitTest {
         List<Integer> values = Arrays.asList(3, 5, 8, 9, 12);
 
         int sum = values.stream()
-            .reduce(0, (i1, i2) -> i1 + i2);
+                .reduce(0, (i1, i2) -> i1 + i2);
 
         assertEquals(37, sum);
 

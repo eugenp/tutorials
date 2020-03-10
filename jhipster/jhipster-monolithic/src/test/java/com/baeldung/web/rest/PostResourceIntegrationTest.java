@@ -73,22 +73,22 @@ public class PostResourceIntegrationTest {
         MockitoAnnotations.initMocks(this);
         PostResource postResource = new PostResource(postRepository);
         this.restPostMockMvc = MockMvcBuilders.standaloneSetup(postResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setMessageConverters(jacksonMessageConverter).build();
+                .setCustomArgumentResolvers(pageableArgumentResolver)
+                .setControllerAdvice(exceptionTranslator)
+                .setMessageConverters(jacksonMessageConverter).build();
     }
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
     public static Post createEntity(EntityManager em) {
         Post post = new Post()
-            .title(DEFAULT_TITLE)
-            .content(DEFAULT_CONTENT)
-            .creationDate(DEFAULT_CREATION_DATE);
+                .title(DEFAULT_TITLE)
+                .content(DEFAULT_CONTENT)
+                .creationDate(DEFAULT_CREATION_DATE);
         // Add required entity
         User creator = UserResourceIntegrationTest.createEntity(em);
         em.persist(creator);
@@ -109,9 +109,9 @@ public class PostResourceIntegrationTest {
 
         // Create the Post
         restPostMockMvc.perform(post("/api/posts")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(post)))
-            .andExpect(status().isCreated());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(post)))
+                .andExpect(status().isCreated());
 
         // Validate the Post in the database
         List<Post> postList = postRepository.findAll();
@@ -132,9 +132,9 @@ public class PostResourceIntegrationTest {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restPostMockMvc.perform(post("/api/posts")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(post)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(post)))
+                .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
         List<Post> postList = postRepository.findAll();
@@ -151,9 +151,9 @@ public class PostResourceIntegrationTest {
         // Create the Post, which fails.
 
         restPostMockMvc.perform(post("/api/posts")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(post)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(post)))
+                .andExpect(status().isBadRequest());
 
         List<Post> postList = postRepository.findAll();
         assertThat(postList).hasSize(databaseSizeBeforeTest);
@@ -169,9 +169,9 @@ public class PostResourceIntegrationTest {
         // Create the Post, which fails.
 
         restPostMockMvc.perform(post("/api/posts")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(post)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(post)))
+                .andExpect(status().isBadRequest());
 
         List<Post> postList = postRepository.findAll();
         assertThat(postList).hasSize(databaseSizeBeforeTest);
@@ -187,9 +187,9 @@ public class PostResourceIntegrationTest {
         // Create the Post, which fails.
 
         restPostMockMvc.perform(post("/api/posts")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(post)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(post)))
+                .andExpect(status().isBadRequest());
 
         List<Post> postList = postRepository.findAll();
         assertThat(postList).hasSize(databaseSizeBeforeTest);
@@ -203,12 +203,12 @@ public class PostResourceIntegrationTest {
 
         // Get all the postList
         restPostMockMvc.perform(get("/api/posts?sort=id,desc"))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(post.getId().intValue())))
-            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
-            .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT.toString())))
-            .andExpect(jsonPath("$.[*].creationDate").value(hasItem(DEFAULT_CREATION_DATE.toString())));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.[*].id").value(hasItem(post.getId().intValue())))
+                .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
+                .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT.toString())))
+                .andExpect(jsonPath("$.[*].creationDate").value(hasItem(DEFAULT_CREATION_DATE.toString())));
     }
 
     @Test
@@ -219,12 +219,12 @@ public class PostResourceIntegrationTest {
 
         // Get the post
         restPostMockMvc.perform(get("/api/posts/{id}", post.getId()))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(post.getId().intValue()))
-            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
-            .andExpect(jsonPath("$.content").value(DEFAULT_CONTENT.toString()))
-            .andExpect(jsonPath("$.creationDate").value(DEFAULT_CREATION_DATE.toString()));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.id").value(post.getId().intValue()))
+                .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
+                .andExpect(jsonPath("$.content").value(DEFAULT_CONTENT.toString()))
+                .andExpect(jsonPath("$.creationDate").value(DEFAULT_CREATION_DATE.toString()));
     }
 
     @Test
@@ -232,7 +232,7 @@ public class PostResourceIntegrationTest {
     public void getNonExistingPost() throws Exception {
         // Get the post
         restPostMockMvc.perform(get("/api/posts/{id}", Long.MAX_VALUE))
-            .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -245,14 +245,14 @@ public class PostResourceIntegrationTest {
         // Update the post
         Post updatedPost = postRepository.findOne(post.getId());
         updatedPost
-            .title(UPDATED_TITLE)
-            .content(UPDATED_CONTENT)
-            .creationDate(UPDATED_CREATION_DATE);
+                .title(UPDATED_TITLE)
+                .content(UPDATED_CONTENT)
+                .creationDate(UPDATED_CREATION_DATE);
 
         restPostMockMvc.perform(put("/api/posts")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(updatedPost)))
-            .andExpect(status().isOk());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(updatedPost)))
+                .andExpect(status().isOk());
 
         // Validate the Post in the database
         List<Post> postList = postRepository.findAll();
@@ -272,9 +272,9 @@ public class PostResourceIntegrationTest {
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
         restPostMockMvc.perform(put("/api/posts")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(post)))
-            .andExpect(status().isCreated());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(post)))
+                .andExpect(status().isCreated());
 
         // Validate the Post in the database
         List<Post> postList = postRepository.findAll();
@@ -290,8 +290,8 @@ public class PostResourceIntegrationTest {
 
         // Get the post
         restPostMockMvc.perform(delete("/api/posts/{id}", post.getId())
-            .accept(TestUtil.APPLICATION_JSON_UTF8))
-            .andExpect(status().isOk());
+                .accept(TestUtil.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk());
 
         // Validate the database is empty
         List<Post> postList = postRepository.findAll();

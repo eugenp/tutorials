@@ -28,19 +28,19 @@ public class DynamicJWTController extends BaseController {
     @RequestMapping(value = "/dynamic-builder-general", method = POST)
     public JwtResponse dynamicBuilderGeneric(@RequestBody Map<String, Object> claims) throws UnsupportedEncodingException {
         String jws = Jwts.builder()
-            .setClaims(claims)
-            .signWith(SignatureAlgorithm.HS256, secretService.getHS256SecretBytes())
-            .compact();
+                .setClaims(claims)
+                .signWith(SignatureAlgorithm.HS256, secretService.getHS256SecretBytes())
+                .compact();
         return new JwtResponse(jws);
     }
 
     @RequestMapping(value = "/dynamic-builder-compress", method = POST)
     public JwtResponse dynamicBuildercompress(@RequestBody Map<String, Object> claims) throws UnsupportedEncodingException {
         String jws = Jwts.builder()
-            .setClaims(claims)
-            .compressWith(CompressionCodecs.DEFLATE)
-            .signWith(SignatureAlgorithm.HS256, secretService.getHS256SecretBytes())
-            .compact();
+                .setClaims(claims)
+                .compressWith(CompressionCodecs.DEFLATE)
+                .signWith(SignatureAlgorithm.HS256, secretService.getHS256SecretBytes())
+                .compact();
         return new JwtResponse(jws);
     }
 
@@ -50,36 +50,36 @@ public class DynamicJWTController extends BaseController {
 
         claims.forEach((key, value) -> {
             switch (key) {
-            case "iss":
-                ensureType(key, value, String.class);
-                builder.setIssuer((String) value);
-                break;
-            case "sub":
-                ensureType(key, value, String.class);
-                builder.setSubject((String) value);
-                break;
-            case "aud":
-                ensureType(key, value, String.class);
-                builder.setAudience((String) value);
-                break;
-            case "exp":
-                ensureType(key, value, Long.class);
-                builder.setExpiration(Date.from(Instant.ofEpochSecond(Long.parseLong(value.toString()))));
-                break;
-            case "nbf":
-                ensureType(key, value, Long.class);
-                builder.setNotBefore(Date.from(Instant.ofEpochSecond(Long.parseLong(value.toString()))));
-                break;
-            case "iat":
-                ensureType(key, value, Long.class);
-                builder.setIssuedAt(Date.from(Instant.ofEpochSecond(Long.parseLong(value.toString()))));
-                break;
-            case "jti":
-                ensureType(key, value, String.class);
-                builder.setId((String) value);
-                break;
-            default:
-                builder.claim(key, value);
+                case "iss":
+                    ensureType(key, value, String.class);
+                    builder.setIssuer((String) value);
+                    break;
+                case "sub":
+                    ensureType(key, value, String.class);
+                    builder.setSubject((String) value);
+                    break;
+                case "aud":
+                    ensureType(key, value, String.class);
+                    builder.setAudience((String) value);
+                    break;
+                case "exp":
+                    ensureType(key, value, Long.class);
+                    builder.setExpiration(Date.from(Instant.ofEpochSecond(Long.parseLong(value.toString()))));
+                    break;
+                case "nbf":
+                    ensureType(key, value, Long.class);
+                    builder.setNotBefore(Date.from(Instant.ofEpochSecond(Long.parseLong(value.toString()))));
+                    break;
+                case "iat":
+                    ensureType(key, value, Long.class);
+                    builder.setIssuedAt(Date.from(Instant.ofEpochSecond(Long.parseLong(value.toString()))));
+                    break;
+                case "jti":
+                    ensureType(key, value, String.class);
+                    builder.setId((String) value);
+                    break;
+                default:
+                    builder.claim(key, value);
             }
         });
 
@@ -93,7 +93,7 @@ public class DynamicJWTController extends BaseController {
 
         if (!isCorrectType) {
             String msg = "Expected type: " + expectedType.getCanonicalName() + " for registered claim: '" + registeredClaim + "', but got value: " + value + " of type: " + value.getClass()
-                .getCanonicalName();
+                    .getCanonicalName();
             throw new JwtException(msg);
         }
     }

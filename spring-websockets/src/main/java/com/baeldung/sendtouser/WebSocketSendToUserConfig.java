@@ -30,13 +30,14 @@ public class WebSocketSendToUserConfig implements WebSocketMessageBrokerConfigur
 
             //Get sessionId from request and set it in Map attributes
             public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
-                                             Map attributes) throws Exception {
+                                           Map attributes) throws Exception {
                 if (request instanceof ServletServerHttpRequest) {
                     ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
                     HttpSession session = servletRequest.getServletRequest().getSession();
                     attributes.put("sessionId", session.getId());
                 }
                 return true;
-            }}).withSockJS();
+            }
+        }).withSockJS();
     }
 }

@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 @Entity
 public class Song {
 
-    @Id private long id;
+    @Id
+    private long id;
     private String name;
     @Column(name = "length_in_seconds")
     private int lengthInSeconds;

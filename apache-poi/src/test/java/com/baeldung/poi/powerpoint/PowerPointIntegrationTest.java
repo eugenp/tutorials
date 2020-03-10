@@ -18,7 +18,7 @@ public class PowerPointIntegrationTest {
     private PowerPointHelper pph;
     private String fileLocation;
     private static final String FILE_NAME = "presentation.pptx";
-    
+
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
 

@@ -56,24 +56,24 @@ public class AppControllerIntegrationTest {
         when(appService.findMovie(1)).thenReturn(testMovie);
 
         get(uri + "/movie/" + testMovie.getId()).then()
-            .assertThat()
-            .statusCode(HttpStatus.OK.value())
-            .body("id", equalTo(testMovie.getId()))
-            .body("name", equalTo(testMovie.getName()))
-            .body("synopsis", notNullValue());
+                .assertThat()
+                .statusCode(HttpStatus.OK.value())
+                .body("id", equalTo(testMovie.getId()))
+                .body("name", equalTo(testMovie.getName()))
+                .body("synopsis", notNullValue());
 
         Movie result = get(uri + "/movie/" + testMovie.getId()).then()
-            .assertThat()
-            .statusCode(HttpStatus.OK.value())
-            .extract()
-            .as(Movie.class);
+                .assertThat()
+                .statusCode(HttpStatus.OK.value())
+                .extract()
+                .as(Movie.class);
         assertThat(result).isEqualTo(testMovie);
 
         String responseString = get(uri + "/movie/" + testMovie.getId()).then()
-            .assertThat()
-            .statusCode(HttpStatus.OK.value())
-            .extract()
-            .asString();
+                .assertThat()
+                .statusCode(HttpStatus.OK.value())
+                .extract()
+                .asString();
         assertThat(responseString).isNotEmpty();
     }
 
@@ -86,14 +86,14 @@ public class AppControllerIntegrationTest {
         when(appService.getAll()).thenReturn(movieSet);
 
         get(uri + "/movies").then()
-            .statusCode(HttpStatus.OK.value())
-            .assertThat()
-            .body("size()", is(2));
+                .statusCode(HttpStatus.OK.value())
+                .assertThat()
+                .body("size()", is(2));
 
         Movie[] movies = get(uri + "/movies").then()
-            .statusCode(200)
-            .extract()
-            .as(Movie[].class);
+                .statusCode(200)
+                .extract()
+                .as(Movie[].class);
         assertThat(movies.length).isEqualTo(2);
     }
 
@@ -106,14 +106,14 @@ public class AppControllerIntegrationTest {
         request.put("synopsis", "summary1");
 
         int movieId = given().contentType("application/json")
-            .body(request)
-            .when()
-            .post(uri + "/movie")
-            .then()
-            .assertThat()
-            .statusCode(HttpStatus.CREATED.value())
-            .extract()
-            .path("id");
+                .body(request)
+                .when()
+                .post(uri + "/movie")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.CREATED.value())
+                .extract()
+                .path("id");
         assertThat(movieId).isEqualTo(11);
 
     }
@@ -122,9 +122,9 @@ public class AppControllerIntegrationTest {
     public void whenCallingWelcomeEndpoint_thenCorrect() {
 
         get(uri + "/welcome").then()
-            .assertThat()
-            .header("sessionId", notNullValue())
-            .cookie("token", notNullValue());
+                .assertThat()
+                .header("sessionId", notNullValue())
+                .cookie("token", notNullValue());
 
         Response response = get(uri + "/welcome");
 

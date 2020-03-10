@@ -26,7 +26,8 @@ public class RetrievingClassNameUnitTest {
 
     @Test
     public void givenAnonymousClass_whenGetSimpleName_thenEmptyString() {
-        assertEquals("", new RetrievingClassName() {}.getClass().getSimpleName());
+        assertEquals("", new RetrievingClassName() {
+        }.getClass().getSimpleName());
     }
 
     // Retrieving Other Names
@@ -82,20 +83,25 @@ public class RetrievingClassNameUnitTest {
     @Test
     public void givenAnonymousClass_whenGetName_thenCallingClassCanonicalNameWithDollarSeparatorAndCountNumber() {
         // These are the second and third appearences of an anonymous class in RetrievingClassNameUnitTest, hence $2 and $3 expectations
-        assertEquals("com.baeldung.className.RetrievingClassNameUnitTest$2", new RetrievingClassName() {}.getClass().getName());
-        assertEquals("com.baeldung.className.RetrievingClassNameUnitTest$3", new RetrievingClassName() {}.getClass().getName());
+        assertEquals("com.baeldung.className.RetrievingClassNameUnitTest$2", new RetrievingClassName() {
+        }.getClass().getName());
+        assertEquals("com.baeldung.className.RetrievingClassNameUnitTest$3", new RetrievingClassName() {
+        }.getClass().getName());
     }
 
     @Test
     public void givenAnonymousClass_whenGetTypeName_thenCallingClassCanonicalNameWithDollarSeparatorAndCountNumber() {
         // These are the fourth and fifth appearences of an anonymous class in RetrievingClassNameUnitTest, hence $4 and $5 expectations
-        assertEquals("com.baeldung.className.RetrievingClassNameUnitTest$4", new RetrievingClassName() {}.getClass().getTypeName());
-        assertEquals("com.baeldung.className.RetrievingClassNameUnitTest$5", new RetrievingClassName() {}.getClass().getTypeName());
+        assertEquals("com.baeldung.className.RetrievingClassNameUnitTest$4", new RetrievingClassName() {
+        }.getClass().getTypeName());
+        assertEquals("com.baeldung.className.RetrievingClassNameUnitTest$5", new RetrievingClassName() {
+        }.getClass().getTypeName());
     }
 
     @Test
     public void givenAnonymousClass_whenGetCanonicalName_thenNull() {
-        assertNull(new RetrievingClassName() {}.getClass().getCanonicalName());
+        assertNull(new RetrievingClassName() {
+        }.getClass().getCanonicalName());
     }
 
     // - Arrays

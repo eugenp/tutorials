@@ -20,9 +20,9 @@ public class ParameterMessageInterpolaterIntegrationTest {
     @BeforeClass
     public static void beforeClass() {
         ValidatorFactory validatorFactory = Validation.byDefaultProvider()
-          .configure()
-          .messageInterpolator(new ParameterMessageInterpolator())
-          .buildValidatorFactory();
+                .configure()
+                .messageInterpolator(new ParameterMessageInterpolator())
+                .buildValidatorFactory();
 
         validator = validatorFactory.getValidator();
     }
@@ -52,17 +52,17 @@ public class ParameterMessageInterpolaterIntegrationTest {
         ConstraintViolation<Person> violation = violations.iterator().next();
         assertEquals("Age should not be less than 18", violation.getMessage());
     }
-    
+
     @Test
     public void givenEmailIsMalformed_whenValidate_thenValidationFails() {
         Person person = new Person();
         person.setName("John Stephaner Doe");
         person.setAge(18);
         person.setEmail("johndoe.dev");
-        
+
         Set<ConstraintViolation<Person>> violations = validator.validate(person);
         assertEquals(1, violations.size());
-        
+
         ConstraintViolation<Person> violation = violations.iterator().next();
         assertEquals("Email address should be in a correct format: ${validatedValue}", violation.getMessage());
     }

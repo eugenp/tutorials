@@ -11,8 +11,8 @@ import com.baeldung.CloudSite;
 @SpringBootTest(classes = CloudSite.class)
 public class SpringContextTest {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+    }
 
 }

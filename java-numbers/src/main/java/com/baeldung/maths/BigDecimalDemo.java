@@ -5,7 +5,9 @@ import java.math.RoundingMode;
 
 public class BigDecimalDemo {
 
-    /** Calculate total amount to be paid for an item rounded to cents..
+    /**
+     * Calculate total amount to be paid for an item rounded to cents..
+     *
      * @param quantity
      * @param unitPrice
      * @param discountRate
@@ -13,7 +15,7 @@ public class BigDecimalDemo {
      * @return
      */
     public static BigDecimal calculateTotalAmount(BigDecimal quantity,
-        BigDecimal unitPrice, BigDecimal discountRate, BigDecimal taxRate) {
+                                                  BigDecimal unitPrice, BigDecimal discountRate, BigDecimal taxRate) {
         BigDecimal amount = quantity.multiply(unitPrice);
         BigDecimal discount = amount.multiply(discountRate);
         BigDecimal discountedAmount = amount.subtract(discount);

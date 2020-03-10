@@ -17,8 +17,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CustomIpAuthenticationProvider implements AuthenticationProvider {
-    
-   Set<String> whitelist = new HashSet<String>();
+
+    Set<String> whitelist = new HashSet<String>();
 
     public CustomIpAuthenticationProvider() {
         super();
@@ -30,18 +30,17 @@ public class CustomIpAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication auth) throws AuthenticationException {
         WebAuthenticationDetails details = (WebAuthenticationDetails) auth.getDetails();
         String userIp = details.getRemoteAddress();
-        if(! whitelist.contains(userIp)){
+        if (!whitelist.contains(userIp)) {
             throw new BadCredentialsException("Invalid IP Address");
         }
         final String name = auth.getName();
         final String password = auth.getCredentials().toString();
-        
+
         if (name.equals("john") && password.equals("123")) {
-        List<GrantedAuthority> authorities =new ArrayList<GrantedAuthority>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-        return new UsernamePasswordAuthenticationToken(name, password, authorities);
-        }
-        else{
+            List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+            return new UsernamePasswordAuthenticationToken(name, password, authorities);
+        } else {
             throw new BadCredentialsException("Invalid username or password");
         }
     }

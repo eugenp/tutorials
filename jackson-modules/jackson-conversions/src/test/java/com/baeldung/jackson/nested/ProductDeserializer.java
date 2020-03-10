@@ -22,19 +22,19 @@ public class ProductDeserializer extends StdDeserializer<Product> {
     @Override
     public Product deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         JsonNode productNode = jp.getCodec()
-            .readTree(jp);
+                .readTree(jp);
         Product product = new Product();
         product.setId(productNode.get("id")
-            .textValue());
+                .textValue());
         product.setName(productNode.get("name")
-            .textValue());
+                .textValue());
         product.setBrandName(productNode.get("brand")
-            .get("name")
-            .textValue());
+                .get("name")
+                .textValue());
         product.setOwnerName(productNode.get("brand")
-            .get("owner")
-            .get("name")
-            .textValue());
+                .get("owner")
+                .get("name")
+                .textValue());
         return product;
     }
 }

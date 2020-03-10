@@ -38,10 +38,10 @@ public class SeleniumExample {
         List<WebElement> webElementList = this.config.getDriver().findElements(By.tagName("a"));
         if (webElementList != null) {
             webElementList.stream()
-              .filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title")))
-              .filter(WebElement::isDisplayed)
-              .findAny()
-              .ifPresent(WebElement::click);
+                    .filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title")))
+                    .filter(WebElement::isDisplayed)
+                    .findAny()
+                    .ifPresent(WebElement::click);
         }
     }
 

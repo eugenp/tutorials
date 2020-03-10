@@ -44,5 +44,5 @@
         <animal-sniffer-maven-plugin.version>1.16</animal-sniffer-maven-plugin.version>
         <org.codehaus.mojo.signature.java16.version>1.0</org.codehaus.mojo.signature.java16.version>
     </properties>
-    
+
 </project>

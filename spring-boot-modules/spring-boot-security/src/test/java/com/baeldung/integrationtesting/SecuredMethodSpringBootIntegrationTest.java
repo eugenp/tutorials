@@ -24,9 +24,9 @@ public class SecuredMethodSpringBootIntegrationTest {
         service.sayHelloSecured();
     }
 
-    @WithMockUser(username="spring")
+    @WithMockUser(username = "spring")
     @Test
     public void givenAuthenticated_whenCallServiceWithSecured_thenOk() {
         assertThat(service.sayHelloSecured()).isNotBlank();
-    }   
+    }
 }

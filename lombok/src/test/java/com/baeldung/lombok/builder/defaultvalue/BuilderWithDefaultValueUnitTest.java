@@ -8,7 +8,7 @@ public class BuilderWithDefaultValueUnitTest {
     @Test
     public void givenBuilderWithDefaultValue_ThanDefaultValueIsPresent() {
         Pojo build = new Pojo().toBuilder()
-            .build();
+                .build();
         Assert.assertEquals("foo", build.getName());
         Assert.assertTrue(build.isOriginal());
     }
@@ -16,7 +16,7 @@ public class BuilderWithDefaultValueUnitTest {
     @Test
     public void givenBuilderWithDefaultValue_NoArgsWorksAlso() {
         Pojo build = new Pojo().toBuilder()
-            .build();
+                .build();
         Pojo pojo = new Pojo();
         Assert.assertEquals(build.getName(), pojo.getName());
         Assert.assertTrue(build.isOriginal() == pojo.isOriginal());

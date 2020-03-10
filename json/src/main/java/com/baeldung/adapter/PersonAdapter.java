@@ -11,9 +11,9 @@ public class PersonAdapter implements JsonbAdapter<Person, JsonObject> {
     @Override
     public JsonObject adaptToJson(Person p) throws Exception {
         return Json.createObjectBuilder()
-            .add("id", p.getId())
-            .add("name", p.getName())
-            .build();
+                .add("id", p.getId())
+                .add("name", p.getName())
+                .build();
     }
 
     @Override

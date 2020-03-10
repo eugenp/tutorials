@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 public class BeanNameHandlerMappingController extends AbstractController {
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
-         ModelAndView model = new ModelAndView("bean-name-handler-mapping");
+        ModelAndView model = new ModelAndView("bean-name-handler-mapping");
         return model;
     }
 

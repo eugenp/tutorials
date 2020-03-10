@@ -10,9 +10,7 @@ import com.datastax.driver.core.Metadata;
 import com.datastax.driver.core.Session;
 
 /**
- * 
  * This is an implementation of a simple Java client.
- *
  */
 public class CassandraConnector {
     private static final Logger LOG = LoggerFactory.getLogger(CassandraConnector.class);

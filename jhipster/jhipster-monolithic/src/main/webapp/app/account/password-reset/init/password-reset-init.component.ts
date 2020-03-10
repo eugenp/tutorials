@@ -1,7 +1,7 @@
-import { Component, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular/core';
-import { JhiLanguageService } from 'ng-jhipster';
+import {Component, OnInit, AfterViewInit, Renderer, ElementRef} from '@angular/core';
+import {JhiLanguageService} from 'ng-jhipster';
 
-import { PasswordResetInit } from './password-reset-init.service';
+import {PasswordResetInit} from './password-reset-init.service';
 
 @Component({
     selector: 'jhi-password-reset-init',
@@ -30,7 +30,7 @@ export class PasswordResetInitComponent implements OnInit, AfterViewInit {
         this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#email'), 'focus', []);
     }
 
-    requestReset () {
+    requestReset() {
 
         this.error = null;
         this.errorEmailNotExists = null;

@@ -13,7 +13,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @XmlRootElement(name = "book")
-@XmlType(propOrder = { "id", "name", "date" })
+@XmlType(propOrder = {"id", "name", "date"})
 public class Book {
     private Long id;
     private String name;

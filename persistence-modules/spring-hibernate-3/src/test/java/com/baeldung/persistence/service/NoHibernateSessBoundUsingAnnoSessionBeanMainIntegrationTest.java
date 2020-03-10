@@ -15,27 +15,27 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceXmlConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceXmlConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class NoHibernateSessBoundUsingAnnoSessionBeanMainIntegrationTest {
-    
+
     @Autowired
     EventService service;
-    
+
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
-    
+
     @Test
     public final void whenEntityIsCreated_thenNoExceptions() {
         service.create(new Event("from Annotation Session Bean Factory"));
     }
-    
+
     @Test
     @Ignore
     public final void whenNoTransBoundToSession_thenException() {
         expectedEx.expect(HibernateSystemException.class);
         expectedEx.expectMessage("No Hibernate Session bound to thread, "
-            + "and configuration does not allow creation of "
-            + "non-transactional one here");
+                + "and configuration does not allow creation of "
+                + "non-transactional one here");
         service.create(new Event("from Annotation Session Bean Factory"));
     }
 

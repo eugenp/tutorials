@@ -13,7 +13,7 @@ import com.baeldung.parent.IHomeService;
 @PropertySource("classpath:ctx1.properties")
 @EnableAutoConfiguration
 public class Ctx1Config {
-    
+
     @Bean
     public IHomeService homeService() {
         return new GreetingService();

@@ -7,6 +7,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.function.ThrowingConsumer;
@@ -15,7 +16,7 @@ import com.stackify.daos.UserDAO;
 import com.stackify.models.User;
 
 public class DynamicTests {
-    
+
     @TestFactory
     public Collection<DynamicTest> dynamicTestCollection() {
         return Arrays.asList(DynamicTest.dynamicTest("Dynamic Test", () -> assertTrue(1 == 1)));

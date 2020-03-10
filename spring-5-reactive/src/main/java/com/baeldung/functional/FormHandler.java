@@ -18,18 +18,18 @@ public class FormHandler {
 
     Mono<ServerResponse> handleLogin(ServerRequest request) {
         return request.body(toFormData())
-            .map(MultiValueMap::toSingleValueMap)
-            .filter(formData -> "baeldung".equals(formData.get("user")))
-            .filter(formData -> "you_know_what_to_do".equals(formData.get("token")))
-            .flatMap(formData -> ok().body(Mono.just("welcome back!"), String.class))
-            .switchIfEmpty(ServerResponse.badRequest()
-                .build());
+                .map(MultiValueMap::toSingleValueMap)
+                .filter(formData -> "baeldung".equals(formData.get("user")))
+                .filter(formData -> "you_know_what_to_do".equals(formData.get("token")))
+                .flatMap(formData -> ok().body(Mono.just("welcome back!"), String.class))
+                .switchIfEmpty(ServerResponse.badRequest()
+                        .build());
     }
 
     Mono<ServerResponse> handleUpload(ServerRequest request) {
         return request.body(toDataBuffers())
-            .collectList()
-            .flatMap(dataBuffers -> ok().body(fromObject(extractData(dataBuffers).toString())));
+                .collectList()
+                .flatMap(dataBuffers -> ok().body(fromObject(extractData(dataBuffers).toString())));
     }
 
     private AtomicLong extractData(List<DataBuffer> dataBuffers) {

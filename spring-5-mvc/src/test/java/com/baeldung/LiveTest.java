@@ -17,16 +17,16 @@ public class LiveTest {
     @Test
     public void givenUser_whenResourceCreatedWithNullName_then400BadRequest() {
         final Response response = givenAuth("user", "pass").contentType(MediaType.APPLICATION_JSON.toString())
-            .body(resourceWithNullName())
-            .post(APP_ROOT + "/foos");
+                .body(resourceWithNullName())
+                .post(APP_ROOT + "/foos");
         assertEquals(400, response.getStatusCode());
     }
 
     @Test
     public void givenUser_whenResourceCreated_then201Created() {
         final Response response = givenAuth("user", "pass").contentType(MediaType.APPLICATION_JSON.toString())
-            .body(resourceString())
-            .post(APP_ROOT + "/foos");
+                .body(resourceString())
+                .post(APP_ROOT + "/foos");
         assertEquals(201, response.getStatusCode());
     }
 
@@ -48,9 +48,9 @@ public class LiveTest {
 
     private final RequestSpecification givenAuth(String username, String password) {
         return RestAssured.given()
-            .auth()
-            .preemptive()
-            .basic(username, password);
+                .auth()
+                .preemptive()
+                .basic(username, password);
     }
 
 }

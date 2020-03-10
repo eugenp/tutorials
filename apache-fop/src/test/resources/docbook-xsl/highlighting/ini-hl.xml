@@ -29,17 +29,17 @@ Michiel Hendriks <elmuerte at users.sourceforge.net>
 
 -->
 <highlighters>
-	<highlighter type="oneline-comment">;</highlighter>
-	<highlighter type="regex">	
-		<!-- ini sections -->
-		<pattern>^(\[.+\]\s*)$</pattern>
-		<style>keyword</style>
-		<flags>MULTILINE</flags>
-	</highlighter>
-	<highlighter type="regex">
-		<!-- the keys in an ini section -->
-		<pattern>^(.+)(?==)</pattern>
-		<style>attribute</style>
-		<flags>MULTILINE</flags>
-	</highlighter>
+    <highlighter type="oneline-comment">;</highlighter>
+    <highlighter type="regex">
+        <!-- ini sections -->
+        <pattern>^(\[.+\]\s*)$</pattern>
+        <style>keyword</style>
+        <flags>MULTILINE</flags>
+    </highlighter>
+    <highlighter type="regex">
+        <!-- the keys in an ini section -->
+        <pattern>^(.+)(?==)</pattern>
+        <style>attribute</style>
+        <flags>MULTILINE</flags>
+    </highlighter>
 </highlighters>

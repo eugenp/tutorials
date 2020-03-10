@@ -9,6 +9,7 @@ public class ReplacingTokens {
 
     /**
      * Iterate over the title case tokens in the input and replace them with lowercase
+     *
      * @param original the original string
      * @return a string with words replaced with their lowercase equivalents
      */
@@ -30,6 +31,7 @@ public class ReplacingTokens {
 
     /**
      * Convert a token found into its desired lowercase
+     *
      * @param token the token to convert
      * @return the converted token
      */
@@ -39,9 +41,10 @@ public class ReplacingTokens {
 
     /**
      * Replace all the tokens in an input using the algorithm provided for each
-     * @param original original string
+     *
+     * @param original     original string
      * @param tokenPattern the pattern to match with
-     * @param converter the conversion to apply
+     * @param converter    the conversion to apply
      * @return the substituted string
      */
     public static String replaceTokens(String original, Pattern tokenPattern,

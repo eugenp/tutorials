@@ -6,7 +6,7 @@ import com.baeldung.boot.domain.Foo;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.ConverterFactory;
 
-public class StringToAbstractEntityConverterFactory implements ConverterFactory<String, AbstractEntity>{
+public class StringToAbstractEntityConverterFactory implements ConverterFactory<String, AbstractEntity> {
 
     @Override
     public <T extends AbstractEntity> Converter<String, T> getConverter(Class<T> targetClass) {
@@ -26,10 +26,9 @@ public class StringToAbstractEntityConverterFactory implements ConverterFactory<
         @Override
         public T convert(String source) {
             long id = Long.parseLong(source);
-            if(this.targetClass == Foo.class) {
+            if (this.targetClass == Foo.class) {
                 return (T) new Foo(id);
-            }
-            else if(this.targetClass == Bar.class) {
+            } else if (this.targetClass == Bar.class) {
                 return (T) new Bar(id);
             } else {
                 return null;

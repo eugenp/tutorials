@@ -29,146 +29,148 @@
   
   ======================================================================
 -->
-<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
-  <start combine="choice">
-    <ref name="db.admonition.blocks"/>
-  </start>
-  <define name="db.nopara.blocks" combine="choice">
-    <ref name="db.admonition.blocks"/>
-  </define>
-  <!-- ====================================================================== -->
-  <ctrl:exclude from="db.formal.blocks" exclude="db.admonition.blocks"/>
-  <ctrl:exclude from="db.admonition.blocks" exclude="db.admonition.blocks"/>
-  <ctrl:exclude from="db.footnote" exclude="db.admonition.blocks"/>
-  <ctrl:exclude from="db.caption" exclude="db.admonition.blocks"/>
-  <define name="db.admonition.blocks">
-    <choice>
-      <ref name="db.caution"/>
-      <ref name="db.important"/>
-      <ref name="db.note"/>
-      <ref name="db.tip"/>
-      <ref name="db.warning"/>
-    </choice>
-  </define>
-  <define name="db.admonition.contentmodel">
-    <ref name="db._info.title.only"/>
-    <oneOrMore>
-      <ref name="db.all.blocks"/>
-    </oneOrMore>
-  </define>
-  <!-- ====================================================================== -->
-  <div>
-    <db:refname>caution</db:refname>
-    <db:refpurpose>A note of caution</db:refpurpose>
-    <define name="db.caution.role.attribute">
-      <attribute name="role"/>
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook"
+         xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0"
+         xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
+    <start combine="choice">
+        <ref name="db.admonition.blocks"/>
+    </start>
+    <define name="db.nopara.blocks" combine="choice">
+        <ref name="db.admonition.blocks"/>
     </define>
-    <define name="db.caution.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.caution.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <ref name="db.common.linking.attributes"/>
-      </interleave>
+    <!-- ====================================================================== -->
+    <ctrl:exclude from="db.formal.blocks" exclude="db.admonition.blocks"/>
+    <ctrl:exclude from="db.admonition.blocks" exclude="db.admonition.blocks"/>
+    <ctrl:exclude from="db.footnote" exclude="db.admonition.blocks"/>
+    <ctrl:exclude from="db.caption" exclude="db.admonition.blocks"/>
+    <define name="db.admonition.blocks">
+        <choice>
+            <ref name="db.caution"/>
+            <ref name="db.important"/>
+            <ref name="db.note"/>
+            <ref name="db.tip"/>
+            <ref name="db.warning"/>
+        </choice>
     </define>
-    <define name="db.caution">
-      <element name="caution">
-        <ref name="db.caution.attlist"/>
-        <ref name="db.admonition.contentmodel"/>
-      </element>
+    <define name="db.admonition.contentmodel">
+        <ref name="db._info.title.only"/>
+        <oneOrMore>
+            <ref name="db.all.blocks"/>
+        </oneOrMore>
     </define>
-  </div>
-  <!-- ====================================================================== -->
-  <div>
-    <db:refname>important</db:refname>
-    <db:refpurpose>An admonition set off from the text</db:refpurpose>
-    <define name="db.important.role.attribute">
-      <attribute name="role"/>
-    </define>
-    <define name="db.important.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.important.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <ref name="db.common.linking.attributes"/>
-      </interleave>
-    </define>
-    <define name="db.important">
-      <element name="important">
-        <ref name="db.important.attlist"/>
-        <ref name="db.admonition.contentmodel"/>
-      </element>
-    </define>
-  </div>
-  <!-- ====================================================================== -->
-  <div>
-    <db:refname>note</db:refname>
-    <db:refpurpose>A message set off from the text</db:refpurpose>
-    <define name="db.note.role.attribute">
-      <attribute name="role"/>
-    </define>
-    <define name="db.note.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.note.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <ref name="db.common.linking.attributes"/>
-      </interleave>
-    </define>
-    <define name="db.note">
-      <element name="note">
-        <ref name="db.note.attlist"/>
-        <ref name="db.admonition.contentmodel"/>
-      </element>
-    </define>
-  </div>
-  <!-- ====================================================================== -->
-  <div>
-    <db:refname>tip</db:refname>
-    <db:refpurpose>A suggestion to the user, set off from the text</db:refpurpose>
-    <define name="db.tip.role.attribute">
-      <attribute name="role"/>
-    </define>
-    <define name="db.tip.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.tip.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <ref name="db.common.linking.attributes"/>
-      </interleave>
-    </define>
-    <define name="db.tip">
-      <element name="tip">
-        <ref name="db.tip.attlist"/>
-        <ref name="db.admonition.contentmodel"/>
-      </element>
-    </define>
-  </div>
-  <!-- ====================================================================== -->
-  <div>
-    <db:refname>warning</db:refname>
-    <db:refpurpose>An admonition set off from the text</db:refpurpose>
-    <define name="db.warning.role.attribute">
-      <attribute name="role"/>
-    </define>
-    <define name="db.warning.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.warning.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <ref name="db.common.linking.attributes"/>
-      </interleave>
-    </define>
-    <define name="db.warning">
-      <element name="warning">
-        <ref name="db.warning.attlist"/>
-        <ref name="db.admonition.contentmodel"/>
-      </element>
-    </define>
-  </div>
+    <!-- ====================================================================== -->
+    <div>
+        <db:refname>caution</db:refname>
+        <db:refpurpose>A note of caution</db:refpurpose>
+        <define name="db.caution.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.caution.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.caution.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <ref name="db.common.linking.attributes"/>
+            </interleave>
+        </define>
+        <define name="db.caution">
+            <element name="caution">
+                <ref name="db.caution.attlist"/>
+                <ref name="db.admonition.contentmodel"/>
+            </element>
+        </define>
+    </div>
+    <!-- ====================================================================== -->
+    <div>
+        <db:refname>important</db:refname>
+        <db:refpurpose>An admonition set off from the text</db:refpurpose>
+        <define name="db.important.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.important.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.important.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <ref name="db.common.linking.attributes"/>
+            </interleave>
+        </define>
+        <define name="db.important">
+            <element name="important">
+                <ref name="db.important.attlist"/>
+                <ref name="db.admonition.contentmodel"/>
+            </element>
+        </define>
+    </div>
+    <!-- ====================================================================== -->
+    <div>
+        <db:refname>note</db:refname>
+        <db:refpurpose>A message set off from the text</db:refpurpose>
+        <define name="db.note.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.note.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.note.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <ref name="db.common.linking.attributes"/>
+            </interleave>
+        </define>
+        <define name="db.note">
+            <element name="note">
+                <ref name="db.note.attlist"/>
+                <ref name="db.admonition.contentmodel"/>
+            </element>
+        </define>
+    </div>
+    <!-- ====================================================================== -->
+    <div>
+        <db:refname>tip</db:refname>
+        <db:refpurpose>A suggestion to the user, set off from the text</db:refpurpose>
+        <define name="db.tip.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.tip.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.tip.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <ref name="db.common.linking.attributes"/>
+            </interleave>
+        </define>
+        <define name="db.tip">
+            <element name="tip">
+                <ref name="db.tip.attlist"/>
+                <ref name="db.admonition.contentmodel"/>
+            </element>
+        </define>
+    </div>
+    <!-- ====================================================================== -->
+    <div>
+        <db:refname>warning</db:refname>
+        <db:refpurpose>An admonition set off from the text</db:refpurpose>
+        <define name="db.warning.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.warning.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.warning.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <ref name="db.common.linking.attributes"/>
+            </interleave>
+        </define>
+        <define name="db.warning">
+            <element name="warning">
+                <ref name="db.warning.attlist"/>
+                <ref name="db.admonition.contentmodel"/>
+            </element>
+        </define>
+    </div>
 </grammar>

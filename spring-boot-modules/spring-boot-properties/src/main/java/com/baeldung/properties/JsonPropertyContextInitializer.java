@@ -32,8 +32,8 @@ public class JsonPropertyContextInitializer implements ApplicationContextInitial
             List<MapPropertySource> propertySources = convertEntrySet(set, Optional.empty());
             for (PropertySource propertySource : propertySources) {
                 configurableApplicationContext.getEnvironment()
-                    .getPropertySources()
-                    .addFirst(propertySource);
+                        .getPropertySources()
+                        .addFirst(propertySource);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -42,14 +42,14 @@ public class JsonPropertyContextInitializer implements ApplicationContextInitial
 
     private static List<MapPropertySource> convertEntrySet(Set<Map.Entry> entrySet, Optional<String> parentKey) {
         return entrySet.stream()
-            .map((Map.Entry e) -> convertToPropertySourceList(e, parentKey))
-            .flatMap(Collection::stream)
-            .collect(Collectors.toList());
+                .map((Map.Entry e) -> convertToPropertySourceList(e, parentKey))
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
     }
 
     private static List<MapPropertySource> convertToPropertySourceList(Map.Entry e, Optional<String> parentKey) {
         String key = parentKey.map(s -> s + ".")
-            .orElse("") + (String) e.getKey();
+                .orElse("") + (String) e.getKey();
         Object value = e.getValue();
         return covertToPropertySourceList(key, value);
     }

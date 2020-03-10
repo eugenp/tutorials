@@ -40,7 +40,7 @@ public class App {
         try {
             // To enable multiple execution of a job with the same parameters
             JobParameters jobParameters = new JobParametersBuilder().addString("jobID", String.valueOf(System.currentTimeMillis()))
-                .toJobParameters();
+                    .toJobParameters();
             final JobExecution execution = jobLauncher.run(job, jobParameters);
             LOGGER.info("Job Status : {}", execution.getStatus());
         } catch (final Exception e) {

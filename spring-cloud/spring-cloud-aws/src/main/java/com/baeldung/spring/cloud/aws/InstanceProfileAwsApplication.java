@@ -30,7 +30,7 @@ public class InstanceProfileAwsApplication {
 
     private static void setupResources() {
         bucketName = "baeldung-test-" + UUID.randomUUID()
-            .toString();
+                .toString();
         try {
             Files.write(Paths.get(fileName), "Hello World!".getBytes());
         } catch (IOException e) {
@@ -46,7 +46,7 @@ public class InstanceProfileAwsApplication {
         }
 
         SpringApplication application = new SpringApplicationBuilder(InstanceProfileAwsApplication.class).properties(applicationConfig)
-            .build();
+                .build();
         ConfigurableApplicationContext context = application.run(args);
         SpringCloudS3Service service = context.getBean(SpringCloudS3Service.class);
 

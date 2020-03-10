@@ -20,16 +20,16 @@ public abstract class NumberUtils {
                     return 0;
                 });
     }
-    
+
     public static int divideListElementsWithExtractedTryCatchBlock(List<Integer> values, int divider) {
         return values.stream().reduce(0, (a, b) -> divide(a, divider) + divide(b, divider));
     }
-    
+
     public static int divideListElementsWithApplyFunctionMethod(List<Integer> values, int divider) {
         BiFunction<Integer, Integer, Integer> division = (a, b) -> a / b;
         return values.stream().reduce(0, (a, b) -> applyFunction(division, a, divider) + applyFunction(division, b, divider));
     }
-    
+
     private static int divide(int value, int factor) {
         int result = 0;
         try {
@@ -39,12 +39,11 @@ public abstract class NumberUtils {
         }
         return result;
     }
-    
+
     private static int applyFunction(BiFunction<Integer, Integer, Integer> function, int a, int b) {
         try {
             return function.apply(a, b);
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             LOGGER.log(Level.INFO, "Exception occurred!");
         }
         return 0;

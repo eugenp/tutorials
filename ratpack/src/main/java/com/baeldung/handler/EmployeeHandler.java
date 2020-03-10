@@ -11,10 +11,10 @@ public class EmployeeHandler implements Handler {
     public void handle(Context ctx) throws Exception {
         EmployeeRepository repository = ctx.get(EmployeeRepository.class);
         Long id = Long.valueOf(ctx.getPathTokens()
-            .get("id"));
+                .get("id"));
         Promise<Employee> employeePromise = repository.findEmployeeById(id);
         employeePromise.map(employee -> employee.getName())
-            .then(name -> ctx.getResponse()
-                .send(name));
+                .then(name -> ctx.getResponse()
+                        .send(name));
     }
 }

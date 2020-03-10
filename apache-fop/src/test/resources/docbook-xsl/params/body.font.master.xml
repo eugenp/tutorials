@@ -4,27 +4,30 @@
           xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
           version="5.0" xml:id="body.font.master">
-<refmeta>
-<refentrytitle>body.font.master</refentrytitle>
-  <refmiscinfo class="other" otherclass="datatype">number</refmiscinfo>
-</refmeta>
-<refnamediv>
-<refname>body.font.master</refname>
-<refpurpose>Specifies the default point size for body text</refpurpose>
-</refnamediv>
+    <refmeta>
+        <refentrytitle>body.font.master</refentrytitle>
+        <refmiscinfo class="other" otherclass="datatype">number</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname>body.font.master</refname>
+        <refpurpose>Specifies the default point size for body text</refpurpose>
+    </refnamediv>
 
-<refsynopsisdiv>
-<src:fragment xml:id="body.font.master.frag">
-<xsl:param name="body.font.master">10</xsl:param>
-</src:fragment>
-</refsynopsisdiv>
+    <refsynopsisdiv>
+        <src:fragment xml:id="body.font.master.frag">
+            <xsl:param name="body.font.master">10</xsl:param>
+        </src:fragment>
+    </refsynopsisdiv>
 
-<refsection><info><title>Description</title></info>
+    <refsection>
+        <info>
+            <title>Description</title>
+        </info>
 
-<para>The body font size is specified in two parameters
-(<parameter>body.font.master</parameter> and <parameter>body.font.size</parameter>)
-so that math can be performed on the font size by XSLT.
-</para>
+        <para>The body font size is specified in two parameters
+            (<parameter>body.font.master</parameter> and <parameter>body.font.size</parameter>)
+            so that math can be performed on the font size by XSLT.
+        </para>
 
-</refsection>
+    </refsection>
 </refentry>

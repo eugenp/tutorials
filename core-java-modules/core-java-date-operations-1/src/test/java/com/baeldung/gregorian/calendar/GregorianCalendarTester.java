@@ -86,7 +86,7 @@ public class GregorianCalendarTester {
     @Test
     public void test_dateFormatdMMMuuuu() {
         String expectedDate = new GregorianCalendar(2018, 6, 28).toZonedDateTime()
-            .format(DateTimeFormatter.ofPattern("d MMM uuuu"));
+                .format(DateTimeFormatter.ofPattern("d MMM uuuu"));
         assertEquals("28 Jul 2018", expectedDate);
     }
 
@@ -103,7 +103,7 @@ public class GregorianCalendarTester {
     @Test
     public void test_whenAddOneDay_thenMonthIsChanged() {
         final int finalDay1 = 1;
-        final int finalMonthJul = 6; 
+        final int finalMonthJul = 6;
         GregorianCalendar calendarExpected = new GregorianCalendar(2018, 5, 30);
         calendarExpected.add(Calendar.DATE, 1);
         System.out.println(calendarExpected.getTime());
@@ -114,7 +114,7 @@ public class GregorianCalendarTester {
     @Test
     public void test_whenSubtractOneDay_thenMonthIsChanged() {
         final int finalDay31 = 31;
-        final int finalMonthMay = 4; 
+        final int finalMonthMay = 4;
         GregorianCalendar calendarExpected = new GregorianCalendar(2018, 5, 1);
         calendarExpected.add(Calendar.DATE, -1);
         assertEquals(calendarExpected.get(Calendar.DATE), finalDay31);
@@ -196,9 +196,9 @@ public class GregorianCalendarTester {
         GregorianCalendar calendarActual = new GregorianCalendar(2018, 6, 28);
         GregorianCalendar calendarExpected = new GregorianCalendar(2018, 6, 28);
         XMLGregorianCalendar expectedXMLGregorianCalendar = datatypeFactory
-            .newXMLGregorianCalendar(calendarExpected);
-        assertEquals(expectedXMLGregorianCalendar, 
-            calendarDemo.toXMLGregorianCalendar(calendarActual));
+                .newXMLGregorianCalendar(calendarExpected);
+        assertEquals(expectedXMLGregorianCalendar,
+                calendarDemo.toXMLGregorianCalendar(calendarActual));
     }
 
     @Test
@@ -214,15 +214,15 @@ public class GregorianCalendarTester {
         assertEquals(false, calendarDemo.isLeapYearExample(2018));
 
     }
-    
+
     @Test
     public void test_toDate() throws DatatypeConfigurationException {
         GregorianCalendar calendarActual = new GregorianCalendar(2018, 6, 28);
         DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
         XMLGregorianCalendar expectedXMLGregorianCalendar = datatypeFactory
-            .newXMLGregorianCalendar(calendarActual);
+                .newXMLGregorianCalendar(calendarActual);
         expectedXMLGregorianCalendar.toGregorianCalendar().getTime();
-        assertEquals(calendarActual.getTime(), 
-            expectedXMLGregorianCalendar.toGregorianCalendar().getTime() );
+        assertEquals(calendarActual.getTime(),
+                expectedXMLGregorianCalendar.toGregorianCalendar().getTime());
     }
 }

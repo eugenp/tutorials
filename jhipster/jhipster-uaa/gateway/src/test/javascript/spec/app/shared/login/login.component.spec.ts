@@ -1,14 +1,14 @@
-import { ComponentFixture, TestBed, async, inject, fakeAsync, tick } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import {ComponentFixture, TestBed, async, inject, fakeAsync, tick} from '@angular/core/testing';
+import {Router} from '@angular/router';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {JhiEventManager} from 'ng-jhipster';
 
-import { LoginService } from 'app/core/login/login.service';
-import { JhiLoginModalComponent } from 'app/shared/login/login.component';
-import { StateStorageService } from 'app/core/auth/state-storage.service';
-import { GatewayTestModule } from '../../../test.module';
-import { MockLoginService } from '../../../helpers/mock-login.service';
-import { MockStateStorageService } from '../../../helpers/mock-state-storage.service';
+import {LoginService} from 'app/core/login/login.service';
+import {JhiLoginModalComponent} from 'app/shared/login/login.component';
+import {StateStorageService} from 'app/core/auth/state-storage.service';
+import {GatewayTestModule} from '../../../test.module';
+import {MockLoginService} from '../../../helpers/mock-login.service';
+import {MockStateStorageService} from '../../../helpers/mock-state-storage.service';
 
 describe('Component Tests', () => {
     describe('LoginComponent', () => {
@@ -67,7 +67,7 @@ describe('Component Tests', () => {
                     comp.rememberMe = true;
                     comp.credentials = credentials;
                     mockLoginService.setResponse({});
-                    mockStateStorageService.setResponse({ redirect: 'dummy' });
+                    mockStateStorageService.setResponse({redirect: 'dummy'});
 
                     // WHEN/
                     comp.login();
@@ -80,7 +80,7 @@ describe('Component Tests', () => {
                     expect(mockLoginService.loginSpy).toHaveBeenCalledWith(credentials);
                     expect(mockStateStorageService.getUrlSpy).toHaveBeenCalledTimes(1);
                     expect(mockStateStorageService.storeUrlSpy).toHaveBeenCalledWith(null);
-                    expect(mockRouter.navigateSpy).toHaveBeenCalledWith([{ redirect: 'dummy' }]);
+                    expect(mockRouter.navigateSpy).toHaveBeenCalledWith([{redirect: 'dummy'}]);
                 })
             )
         );

@@ -16,7 +16,7 @@ import com.baeldung.subflows.routetorecipients.RouteToRecipientsExample;
 import com.baeldung.subflows.routetorecipients.RouteToRecipientsExample.NumbersClassifier;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { RouteToRecipientsExample.class })
+@ContextConfiguration(classes = {RouteToRecipientsExample.class})
 public class RouteToRecipientsUnitTest {
     @Autowired
     private QueueChannel multipleofThreeChannel;

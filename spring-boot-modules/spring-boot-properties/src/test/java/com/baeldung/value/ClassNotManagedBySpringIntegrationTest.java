@@ -18,7 +18,7 @@ public class ClassNotManagedBySpringIntegrationTest {
     @Before
     public void init() {
         when(initializerBean.initClass())
-          .thenReturn(new ClassNotManagedBySpring("This is only sample value", "Another configured value"));
+                .thenReturn(new ClassNotManagedBySpring("This is only sample value", "Another configured value"));
     }
 
     @Test

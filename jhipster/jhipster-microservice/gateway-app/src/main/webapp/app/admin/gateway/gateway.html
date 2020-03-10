@@ -29,8 +29,12 @@
                 <table class="table table-responsive">
                     <tr ng-repeat="instance in route.serviceInstances">
                         <td>{{instance.host}}:{{instance.port}}</td>
-                        <td ng-show="{{instance.instanceInfo.status == 'UP'}}"><div class="label label-success">{{instance.instanceInfo.status}}</div></td>
-                        <td ng-hide="{{instance.instanceInfo.status == 'UP'}}"><div class="label label-danger">{{instance.instanceInfo.status}}</div></td>
+                        <td ng-show="{{instance.instanceInfo.status == 'UP'}}">
+                            <div class="label label-success">{{instance.instanceInfo.status}}</div>
+                        </td>
+                        <td ng-hide="{{instance.instanceInfo.status == 'UP'}}">
+                            <div class="label label-danger">{{instance.instanceInfo.status}}</div>
+                        </td>
                     </tr>
                 </table>
             </td>

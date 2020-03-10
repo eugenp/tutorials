@@ -24,7 +24,7 @@ public class TransactionalMessageProducer {
 
         producer.initTransactions();
 
-        try{
+        try {
 
             producer.beginTransaction();
 
@@ -33,7 +33,7 @@ public class TransactionalMessageProducer {
 
             producer.commitTransaction();
 
-        }catch (KafkaException e){
+        } catch (KafkaException e) {
 
             producer.abortTransaction();
 

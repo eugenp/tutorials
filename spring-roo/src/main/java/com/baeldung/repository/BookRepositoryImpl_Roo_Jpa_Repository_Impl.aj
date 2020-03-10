@@ -16,54 +16,54 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect BookRepositoryImpl_Roo_Jpa_Repository_Impl {
-    
-    declare parents: BookRepositoryImpl implements BookRepositoryCustom;
-    
-    declare @type: BookRepositoryImpl: @Transactional(readOnly = true);
-    
+
+    declare parents:BookRepositoryImpl implements BookRepositoryCustom;
+
+    declare @type: BookRepositoryImpl:@Transactional(readOnly = true);
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BookRepositoryImpl.TITLE = "title";
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BookRepositoryImpl.AUTHOR = "author";
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BookRepositoryImpl.ISBN = "isbn";
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param globalSearch
      * @param pageable
      * @return Page
      */
     public Page<Book> BookRepositoryImpl.findAll(GlobalSearch globalSearch, Pageable pageable) {
-        
+
         QBook book = QBook.book;
-        
+
         JPQLQuery<Book> query = from(book);
-        
-        Path<?>[] paths = new Path<?>[] {book.title,book.author,book.isbn};        
+
+        Path<?>[] paths = new Path<?>[]{book.title, book.author, book.isbn};
         applyGlobalSearch(globalSearch, query, paths);
-        
+
         AttributeMappingBuilder mapping = buildMapper()
-			.map(TITLE, book.title)
-			.map(AUTHOR, book.author)
-			.map(ISBN, book.isbn);
-        
+                .map(TITLE, book.title)
+                .map(AUTHOR, book.author)
+                .map(ISBN, book.isbn);
+
         applyPagination(pageable, query, mapping);
         applyOrderById(query);
-        
+
         return loadPage(query, pageable, book);
     }
-    
+
 }

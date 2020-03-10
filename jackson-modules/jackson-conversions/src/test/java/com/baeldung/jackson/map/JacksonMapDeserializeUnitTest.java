@@ -45,7 +45,7 @@ public class JacksonMapDeserializeUnitTest {
         ClassWithAMap classWithMap = mapper.readValue(jsonInput, ClassWithAMap.class);
 
         Assert.assertEquals("Comedy", classWithMap.getMap()
-            .get(new MyPair("Abbott", "Costello")));
+                .get(new MyPair("Abbott", "Costello")));
     }
 
     @Test

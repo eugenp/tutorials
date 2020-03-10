@@ -13,7 +13,7 @@ public class CounterServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
 
-        int count = (int)request.getServletContext().getAttribute("counter");
+        int count = (int) request.getServletContext().getAttribute("counter");
 
         out.println("Request counter: " + count);
     }

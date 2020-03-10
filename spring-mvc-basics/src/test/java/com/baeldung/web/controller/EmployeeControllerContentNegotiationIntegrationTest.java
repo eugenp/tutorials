@@ -22,42 +22,42 @@ public class EmployeeControllerContentNegotiationIntegrationTest {
     @Test
     public void whenEndpointUsingJsonSuffixCalled_thenJsonResponseObtained() throws Exception {
         this.mockMvc.perform(get("/employee/1.json"))
-            .andExpect(status().isOk())
-            .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE));
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE));
     }
 
     @Test
     public void whenEndpointUsingXmlSuffixCalled_thenXmlResponseObtained() throws Exception {
         this.mockMvc.perform(get("/employee/1.xml"))
-            .andExpect(status().isOk())
-            .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE));
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE));
     }
 
     @Test
     public void whenEndpointUsingJsonParameterCalled_thenJsonResponseObtained() throws Exception {
         this.mockMvc.perform(get("/employee/1?mediaType=json"))
-            .andExpect(status().isOk())
-            .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE));
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE));
     }
 
     @Test
     public void whenEndpointUsingXmlParameterCalled_thenXmlResponseObtained() throws Exception {
         this.mockMvc.perform(get("/employee/1?mediaType=xml"))
-            .andExpect(status().isOk())
-            .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE));
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE));
     }
 
     @Test
     public void whenEndpointUsingJsonAcceptHeaderCalled_thenJsonResponseObtained() throws Exception {
         this.mockMvc.perform(get("/employee/1").header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(status().isOk())
-            .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE));
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE));
     }
 
     @Test
     public void whenEndpointUsingXmlAcceptHeaderCalled_thenXmlResponseObtained() throws Exception {
         this.mockMvc.perform(get("/employee/1").header(HttpHeaders.ACCEPT, MediaType.APPLICATION_XML_VALUE))
-            .andExpect(status().isOk())
-            .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE));
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE));
     }
 }

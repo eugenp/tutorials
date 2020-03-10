@@ -13,7 +13,7 @@ import com.baeldung.properties.spring.BasicPropertiesWithJavaConfig;
 import com.baeldung.properties.spring.PropertiesWithJavaConfigOther;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { BasicPropertiesWithJavaConfig.class, PropertiesWithJavaConfigOther.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {BasicPropertiesWithJavaConfig.class, PropertiesWithJavaConfigOther.class}, loader = AnnotationConfigContextLoader.class)
 public class ExtendedPropertiesWithJavaIntegrationTest {
 
     @Autowired

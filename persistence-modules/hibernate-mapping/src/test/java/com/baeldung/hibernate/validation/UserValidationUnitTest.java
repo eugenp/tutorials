@@ -1,12 +1,14 @@
 package com.baeldung.hibernate.validation;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.Set;
 import javax.persistence.PersistenceException;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
@@ -69,7 +71,7 @@ public class UserValidationUnitTest {
         User user = new User("john", "mathis", "butler", "japan");
         session.save(user);
         session.getTransaction()
-            .commit();
+                .commit();
     }
 
     @Test

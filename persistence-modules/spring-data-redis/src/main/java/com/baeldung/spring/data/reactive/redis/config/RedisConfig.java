@@ -27,7 +27,7 @@ public class RedisConfig {
         Jackson2JsonRedisSerializer<Employee> serializer = new Jackson2JsonRedisSerializer<>(Employee.class);
         RedisSerializationContext.RedisSerializationContextBuilder<String, Employee> builder = RedisSerializationContext.newSerializationContext(new StringRedisSerializer());
         RedisSerializationContext<String, Employee> context = builder.value(serializer)
-            .build();
+                .build();
         return new ReactiveRedisTemplate<>(factory, context);
     }
 
@@ -39,18 +39,18 @@ public class RedisConfig {
     @Bean
     public ReactiveKeyCommands keyCommands(final ReactiveRedisConnectionFactory reactiveRedisConnectionFactory) {
         return reactiveRedisConnectionFactory.getReactiveConnection()
-            .keyCommands();
+                .keyCommands();
     }
 
     @Bean
     public ReactiveStringCommands stringCommands(final ReactiveRedisConnectionFactory reactiveRedisConnectionFactory) {
         return reactiveRedisConnectionFactory.getReactiveConnection()
-            .stringCommands();
+                .stringCommands();
     }
 
     @PreDestroy
     public void cleanRedis() {
         factory.getConnection()
-            .flushDb();
+                .flushDb();
     }
 }

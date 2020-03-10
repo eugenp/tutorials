@@ -12,7 +12,6 @@ import org.mapstruct.*;
 public interface BookMapper extends EntityMapper<BookDTO, Book> {
 
 
-
     default Book fromId(Long id) {
         if (id == null) {
             return null;

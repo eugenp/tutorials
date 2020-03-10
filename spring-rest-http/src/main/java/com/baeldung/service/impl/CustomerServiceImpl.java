@@ -31,8 +31,8 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Optional<Customer> findCustomer(String id) {
         return customers.stream()
-                        .filter(customer -> customer.getId().equals(id))
-                        .findFirst();
+                .filter(customer -> customer.getId().equals(id))
+                .findFirst();
     }
 
     @Override

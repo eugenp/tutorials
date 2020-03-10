@@ -1,12 +1,12 @@
 /* tslint:disable max-line-length */
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { HttpResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {HttpResponse} from '@angular/common/http';
+import {Observable, of} from 'rxjs';
 
-import { BookstoreTestModule } from '../../../test.module';
-import { BookUpdateComponent } from 'app/entities/book/book-update.component';
-import { BookService } from 'app/entities/book/book.service';
-import { Book } from 'app/shared/model/book.model';
+import {BookstoreTestModule} from '../../../test.module';
+import {BookUpdateComponent} from 'app/entities/book/book-update.component';
+import {BookService} from 'app/entities/book/book.service';
+import {Book} from 'app/shared/model/book.model';
 
 describe('Component Tests', () => {
     describe('Book Management Update Component', () => {
@@ -31,7 +31,7 @@ describe('Component Tests', () => {
             it('Should call update service on save for existing entity', fakeAsync(() => {
                 // GIVEN
                 const entity = new Book(123);
-                spyOn(service, 'update').and.returnValue(of(new HttpResponse({ body: entity })));
+                spyOn(service, 'update').and.returnValue(of(new HttpResponse({body: entity})));
                 comp.book = entity;
                 // WHEN
                 comp.save();
@@ -45,7 +45,7 @@ describe('Component Tests', () => {
             it('Should call create service on save for new entity', fakeAsync(() => {
                 // GIVEN
                 const entity = new Book();
-                spyOn(service, 'create').and.returnValue(of(new HttpResponse({ body: entity })));
+                spyOn(service, 'create').and.returnValue(of(new HttpResponse({body: entity})));
                 comp.book = entity;
                 // WHEN
                 comp.save();

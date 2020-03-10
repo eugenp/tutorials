@@ -40,16 +40,16 @@ public class ExcelPOIHelper {
         }
 
         int maxNrCols = data.values().stream()
-          .mapToInt(List::size)
-          .max()
-          .orElse(0);
+                .mapToInt(List::size)
+                .max()
+                .orElse(0);
 
         data.values().stream()
-          .filter(ls -> ls.size() < maxNrCols)
-          .forEach(ls -> {
-              IntStream.range(ls.size(), maxNrCols)
-                .forEach(i -> ls.add(new MyCell("")));
-          });
+                .filter(ls -> ls.size() < maxNrCols)
+                .forEach(ls -> {
+                    IntStream.range(ls.size(), maxNrCols)
+                            .forEach(i -> ls.add(new MyCell("")));
+                });
 
         return data;
     }
@@ -57,24 +57,24 @@ public class ExcelPOIHelper {
     private String readCellContent(Cell cell) {
         String content;
         switch (cell.getCellTypeEnum()) {
-        case STRING:
-            content = cell.getStringCellValue();
-            break;
-        case NUMERIC:
-            if (DateUtil.isCellDateFormatted(cell)) {
-                content = cell.getDateCellValue() + "";
-            } else {
-                content = cell.getNumericCellValue() + "";
-            }
-            break;
-        case BOOLEAN:
-            content = cell.getBooleanCellValue() + "";
-            break;
-        case FORMULA:
-            content = cell.getCellFormula() + "";
-            break;
-        default:
-            content = "";
+            case STRING:
+                content = cell.getStringCellValue();
+                break;
+            case NUMERIC:
+                if (DateUtil.isCellDateFormatted(cell)) {
+                    content = cell.getDateCellValue() + "";
+                } else {
+                    content = cell.getNumericCellValue() + "";
+                }
+                break;
+            case BOOLEAN:
+                content = cell.getBooleanCellValue() + "";
+                break;
+            case FORMULA:
+                content = cell.getCellFormula() + "";
+                break;
+            default:
+                content = "";
         }
         return content;
     }
@@ -103,7 +103,7 @@ public class ExcelPOIHelper {
                                 myCell.setBgColor("rgb(" + rgbColor[0] + "," + rgbColor[1] + "," + rgbColor[2] + ")");
                             }
                             HSSFFont font = cell.getCellStyle()
-                                .getFont(workbook);
+                                    .getFont(workbook);
                             myCell.setTextSize(font.getFontHeightInPoints() + "");
                             if (font.getBold()) {
                                 myCell.setTextWeight("bold");
@@ -115,10 +115,10 @@ public class ExcelPOIHelper {
                             }
                             myCell.setContent(readCellContent(cell));
                             data.get(i)
-                                .add(myCell);
+                                    .add(myCell);
                         } else {
                             data.get(i)
-                                .add(new MyCell(""));
+                                    .add(new MyCell(""));
                         }
                     }
                 }
@@ -166,10 +166,10 @@ public class ExcelPOIHelper {
                             }
                             myCell.setContent(readCellContent(cell));
                             data.get(i)
-                                .add(myCell);
+                                    .add(myCell);
                         } else {
                             data.get(i)
-                                .add(new MyCell(""));
+                                    .add(new MyCell(""));
                         }
                     }
                 }

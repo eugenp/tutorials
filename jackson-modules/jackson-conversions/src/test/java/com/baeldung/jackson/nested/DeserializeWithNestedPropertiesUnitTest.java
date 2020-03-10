@@ -17,7 +17,7 @@ public class DeserializeWithNestedPropertiesUnitTest {
     @Test
     public void whenUsingAnnotations_thenOk() throws IOException {
         Product product = new ObjectMapper().readerFor(Product.class)
-            .readValue(SOURCE_JSON);
+                .readValue(SOURCE_JSON);
 
         assertEquals(product.getName(), "The Best Product");
         assertEquals(product.getBrandName(), "ACME Products");
@@ -30,16 +30,16 @@ public class DeserializeWithNestedPropertiesUnitTest {
 
         Product product = new Product();
         product.setId(productNode.get("id")
-            .textValue());
+                .textValue());
         product.setName(productNode.get("name")
-            .textValue());
+                .textValue());
         product.setBrandName(productNode.get("brand")
-            .get("name")
-            .textValue());
+                .get("name")
+                .textValue());
         product.setOwnerName(productNode.get("brand")
-            .get("owner")
-            .get("name")
-            .textValue());
+                .get("owner")
+                .get("name")
+                .textValue());
 
         assertEquals(product.getName(), "The Best Product");
         assertEquals(product.getBrandName(), "ACME Products");

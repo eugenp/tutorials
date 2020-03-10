@@ -3,7 +3,7 @@ package com.baeldung.core.modifiers.otherpackage;
 import com.baeldung.core.modifiers.FirstClass;
 
 public class SecondClass extends FirstClass {
-    
+
     public SecondClass(String name) {
         // accessing protected constructor
         super(name);
@@ -14,5 +14,5 @@ public class SecondClass extends FirstClass {
         // instantiating protected inner class -> add public constructor to InnerClass
         FirstClass.InnerClass innerClass = new FirstClass.InnerClass();
     }
-      
+
 }

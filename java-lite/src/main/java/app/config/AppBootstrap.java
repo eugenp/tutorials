@@ -11,6 +11,7 @@ import app.services.ArticleServiceModule;
 public class AppBootstrap extends Bootstrap {
     public void init(AppContext context) {
     }
+
     public Injector getInjector() {
         return Guice.createInjector(new ArticleServiceModule());
     }

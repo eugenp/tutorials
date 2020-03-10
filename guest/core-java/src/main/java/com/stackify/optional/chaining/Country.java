@@ -24,5 +24,5 @@ public class Country {
         this.isocode = isocode;
     }
 
-   
+
 }

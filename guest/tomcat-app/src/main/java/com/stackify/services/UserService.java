@@ -16,8 +16,8 @@ import com.stackify.models.User;
 @Path("/users")
 public class UserService {
     private UserDAO userDao = new UserDAO();
-    
-    public UserService (){
+
+    public UserService() {
         userDao.createTable();
     }
 
@@ -26,7 +26,7 @@ public class UserService {
     public Response addUser(User user) {
         userDao.add(user);
         return Response.ok()
-            .build();
+                .build();
     }
 
     @GET

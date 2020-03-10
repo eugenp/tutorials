@@ -31,8 +31,8 @@ public class TodoControllerWithSessionAttributes {
 
     @PostMapping("/form")
     public RedirectView create(
-            @ModelAttribute TodoItem todo, 
-            @ModelAttribute("todos") TodoList todos, 
+            @ModelAttribute TodoItem todo,
+            @ModelAttribute("todos") TodoList todos,
             RedirectAttributes attributes) {
         todo.setCreateDate(LocalDateTime.now());
         todos.add(todo);
@@ -42,7 +42,7 @@ public class TodoControllerWithSessionAttributes {
 
     @GetMapping("/todos.html")
     public String list(
-            Model model, 
+            Model model,
             @ModelAttribute("todos") TodoList todos) {
         model.addAttribute("todos", todos);
         return "sessionattributestodos";

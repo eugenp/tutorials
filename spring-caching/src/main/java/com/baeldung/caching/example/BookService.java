@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class BookService {
 
-    @Cacheable(value="books", keyGenerator="customKeyGenerator")
+    @Cacheable(value = "books", keyGenerator = "customKeyGenerator")
     public List<Book> getBooks() {
         List<Book> books = new ArrayList<Book>();
         books.add(new Book(1, "The Counterfeiters", "André Gide"));

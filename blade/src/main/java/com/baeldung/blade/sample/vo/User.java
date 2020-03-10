@@ -6,9 +6,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class User {
-    @Getter @Setter private String name;    
-    @Getter @Setter private String site;
-    
+    @Getter
+    @Setter
+    private String name;
+    @Getter
+    @Setter
+    private String site;
+
     @Override
     public String toString() {
         return ReflectionToStringBuilder.toString(this);

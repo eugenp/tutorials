@@ -7,82 +7,84 @@ import com.baeldung.web.BooksCollectionThymeleafController;
 import com.baeldung.web.BooksCollectionThymeleafLinkFactory;
 import io.springlets.web.mvc.util.MethodLinkFactory;
 import io.springlets.web.mvc.util.SpringletsMvcUriComponentsBuilder;
+
 import java.util.Map;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponents;
 
 privileged aspect BooksCollectionThymeleafLinkFactory_Roo_LinkFactory {
-    
-    declare parents: BooksCollectionThymeleafLinkFactory implements MethodLinkFactory<BooksCollectionThymeleafController>;
-    
-    declare @type: BooksCollectionThymeleafLinkFactory: @Component;
-    
+
+    declare parents:BooksCollectionThymeleafLinkFactory implements MethodLinkFactory<BooksCollectionThymeleafController>;
+
+    declare @type: BooksCollectionThymeleafLinkFactory:@Component;
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BooksCollectionThymeleafLinkFactory.LIST = "list";
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BooksCollectionThymeleafLinkFactory.DATATABLES = "datatables";
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BooksCollectionThymeleafLinkFactory.SELECT2 = "select2";
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BooksCollectionThymeleafLinkFactory.CREATE = "create";
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BooksCollectionThymeleafLinkFactory.CREATEFORM = "createForm";
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BooksCollectionThymeleafLinkFactory.DELETEBATCH = "deleteBatch";
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BooksCollectionThymeleafLinkFactory.EXPORTCSV = "exportCsv";
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BooksCollectionThymeleafLinkFactory.EXPORTPDF = "exportPdf";
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BooksCollectionThymeleafLinkFactory.EXPORTXLS = "exportXls";
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return Class
      */
     public Class<BooksCollectionThymeleafController> BooksCollectionThymeleafLinkFactory.getControllerClass() {
         return BooksCollectionThymeleafController.class;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param methodName
      * @param parameters
      * @param pathVariables
@@ -118,5 +120,5 @@ privileged aspect BooksCollectionThymeleafLinkFactory_Roo_LinkFactory {
         }
         throw new IllegalArgumentException("Invalid method name: " + methodName);
     }
-    
+
 }

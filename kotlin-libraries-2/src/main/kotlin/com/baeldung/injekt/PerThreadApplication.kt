@@ -14,7 +14,8 @@ import java.util.concurrent.TimeUnit
 class PerThreadApplication {
     companion object : InjektMain() {
         private val LOG = LoggerFactory.getLogger(PerThreadApplication::class.java)
-        @JvmStatic fun main(args: Array<String>) {
+        @JvmStatic
+        fun main(args: Array<String>) {
             PerThreadApplication().run()
         }
 

@@ -4,7 +4,7 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Component;
 
 @Component
-@CacheConfig(cacheNames = { "addresses" })
+@CacheConfig(cacheNames = {"addresses"})
 public class CustomerServiceWithParent extends AbstractService {
     //
 }

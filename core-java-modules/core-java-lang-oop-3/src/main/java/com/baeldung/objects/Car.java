@@ -24,7 +24,7 @@ public class Car {
     public int getSpeed() {
         return speed;
     }
-    
+
     public int increaseSpeed(int increment) {
         if (increment > 0) {
             this.speed += increment;
@@ -33,7 +33,7 @@ public class Car {
         }
         return this.speed;
     }
-    
+
     public int decreaseSpeed(int decrement) {
         if (decrement > 0 && decrement <= this.speed) {
             this.speed -= decrement;
@@ -47,5 +47,5 @@ public class Car {
     public String toString() {
         return "Car [type=" + type + ", model=" + model + ", color=" + color + ", speed=" + speed + "]";
     }
-    
+
 }

@@ -7,58 +7,60 @@ import com.baeldung.web.BooksItemThymeleafController;
 import com.baeldung.web.BooksItemThymeleafLinkFactory;
 import io.springlets.web.mvc.util.MethodLinkFactory;
 import io.springlets.web.mvc.util.SpringletsMvcUriComponentsBuilder;
+
 import java.util.Map;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponents;
 
 privileged aspect BooksItemThymeleafLinkFactory_Roo_LinkFactory {
-    
-    declare parents: BooksItemThymeleafLinkFactory implements MethodLinkFactory<BooksItemThymeleafController>;
-    
-    declare @type: BooksItemThymeleafLinkFactory: @Component;
-    
+
+    declare parents:BooksItemThymeleafLinkFactory implements MethodLinkFactory<BooksItemThymeleafController>;
+
+    declare @type: BooksItemThymeleafLinkFactory:@Component;
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BooksItemThymeleafLinkFactory.SHOW = "show";
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BooksItemThymeleafLinkFactory.SHOWINLINE = "showInline";
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BooksItemThymeleafLinkFactory.EDITFORM = "editForm";
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BooksItemThymeleafLinkFactory.UPDATE = "update";
-    
+
     /**
      * TODO Auto-generated attribute documentation
-     * 
+     *
      */
     public static final String BooksItemThymeleafLinkFactory.DELETE = "delete";
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return Class
      */
     public Class<BooksItemThymeleafController> BooksItemThymeleafLinkFactory.getControllerClass() {
         return BooksItemThymeleafController.class;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param methodName
      * @param parameters
      * @param pathVariables
@@ -82,5 +84,5 @@ privileged aspect BooksItemThymeleafLinkFactory_Roo_LinkFactory {
         }
         throw new IllegalArgumentException("Invalid method name: " + methodName);
     }
-    
+
 }

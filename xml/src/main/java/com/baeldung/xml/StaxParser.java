@@ -40,65 +40,65 @@ public class StaxParser {
             while (eventReader.hasNext()) {
                 XMLEvent event = eventReader.nextEvent();
                 switch (event.getEventType()) {
-                case XMLStreamConstants.START_ELEMENT:
-                    StartElement startElement = event.asStartElement();
-                    String qName = startElement.getName().getLocalPart();
-                    if (qName.equalsIgnoreCase("tutorial")) {
-                        current = new Tutorial();
-                        Iterator<Attribute> attributes = startElement.getAttributes();
-                        while (attributes.hasNext()) {
-                            Attribute currentAt = attributes.next();
-                            if (currentAt.getName().toString().equalsIgnoreCase("tutId")) {
-                                current.setTutId(currentAt.getValue());
-                            } else if (currentAt.getName().toString().equalsIgnoreCase("type")) {
-                                current.setType(currentAt.getValue());
+                    case XMLStreamConstants.START_ELEMENT:
+                        StartElement startElement = event.asStartElement();
+                        String qName = startElement.getName().getLocalPart();
+                        if (qName.equalsIgnoreCase("tutorial")) {
+                            current = new Tutorial();
+                            Iterator<Attribute> attributes = startElement.getAttributes();
+                            while (attributes.hasNext()) {
+                                Attribute currentAt = attributes.next();
+                                if (currentAt.getName().toString().equalsIgnoreCase("tutId")) {
+                                    current.setTutId(currentAt.getValue());
+                                } else if (currentAt.getName().toString().equalsIgnoreCase("type")) {
+                                    current.setType(currentAt.getValue());
+                                }
+                            }
+                        } else if (qName.equalsIgnoreCase("title")) {
+                            bTitle = true;
+                        } else if (qName.equalsIgnoreCase("description")) {
+                            bDescription = true;
+                        } else if (qName.equalsIgnoreCase("date")) {
+                            bDate = true;
+                        } else if (qName.equalsIgnoreCase("author")) {
+                            bAuthor = true;
+                        }
+                        break;
+                    case XMLStreamConstants.CHARACTERS:
+                        Characters characters = event.asCharacters();
+                        if (bTitle) {
+                            if (current != null) {
+                                current.setTitle(characters.getData());
+                            }
+                            bTitle = false;
+                        }
+                        if (bDescription) {
+                            if (current != null) {
+                                current.setDescription(characters.getData());
+                            }
+                            bDescription = false;
+                        }
+                        if (bDate) {
+                            if (current != null) {
+                                current.setDate(characters.getData());
+                            }
+                            bDate = false;
+                        }
+                        if (bAuthor) {
+                            if (current != null) {
+                                current.setAuthor(characters.getData());
+                            }
+                            bAuthor = false;
+                        }
+                        break;
+                    case XMLStreamConstants.END_ELEMENT:
+                        EndElement endElement = event.asEndElement();
+                        if (endElement.getName().getLocalPart().equalsIgnoreCase("tutorial")) {
+                            if (current != null) {
+                                tutorials.add(current);
                             }
                         }
-                    } else if (qName.equalsIgnoreCase("title")) {
-                        bTitle = true;
-                    } else if (qName.equalsIgnoreCase("description")) {
-                        bDescription = true;
-                    } else if (qName.equalsIgnoreCase("date")) {
-                        bDate = true;
-                    } else if (qName.equalsIgnoreCase("author")) {
-                        bAuthor = true;
-                    }
-                    break;
-                case XMLStreamConstants.CHARACTERS:
-                    Characters characters = event.asCharacters();
-                    if (bTitle) {
-                        if (current != null) {
-                            current.setTitle(characters.getData());
-                        }
-                        bTitle = false;
-                    }
-                    if (bDescription) {
-                        if (current != null) {
-                            current.setDescription(characters.getData());
-                        }
-                        bDescription = false;
-                    }
-                    if (bDate) {
-                        if (current != null) {
-                            current.setDate(characters.getData());
-                        }
-                        bDate = false;
-                    }
-                    if (bAuthor) {
-                        if (current != null) {
-                            current.setAuthor(characters.getData());
-                        }
-                        bAuthor = false;
-                    }
-                    break;
-                case XMLStreamConstants.END_ELEMENT:
-                    EndElement endElement = event.asEndElement();
-                    if (endElement.getName().getLocalPart().equalsIgnoreCase("tutorial")) {
-                        if (current != null) {
-                            tutorials.add(current);
-                        }
-                    }
-                    break;
+                        break;
                 }
             }
 

@@ -15,6 +15,7 @@ import java.util.Map;
 
 public class AggregatingBolt extends BaseWindowedBolt {
     private OutputCollector outputCollector;
+
     @Override
     public void prepare(Map stormConf, TopologyContext context, OutputCollector collector) {
         this.outputCollector = collector;

@@ -25,9 +25,9 @@ public class DiscoveryClientController {
     @GetMapping("/discoveryClient")
     public String discoveryPing() throws RestClientException, ServiceUnavailableException {
         URI service = serviceUrl().map(s -> s.resolve("/ping"))
-            .orElseThrow(ServiceUnavailableException::new);
+                .orElseThrow(ServiceUnavailableException::new);
         return restTemplate.getForEntity(service, String.class)
-            .getBody();
+                .getBody();
     }
 
     @GetMapping("/ping")
@@ -42,9 +42,9 @@ public class DiscoveryClientController {
 
     public Optional<URI> serviceUrl() {
         return discoveryClient.getInstances("myApp")
-            .stream()
-            .findFirst()
-            .map(si -> si.getUri());
+                .stream()
+                .findFirst()
+                .map(si -> si.getUri());
     }
 
 }

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Import;
 @SpringBootApplication(exclude = {
         DataSourceAutoConfiguration.class,
         DataSourceTransactionManagerAutoConfiguration.class,
-        HibernateJpaAutoConfiguration.class })
+        HibernateJpaAutoConfiguration.class})
 @Import(FlipWebContextConfiguration.class)
 public class ApplicationConfig {
 

@@ -8,11 +8,11 @@ import services.UserServiceImpl;
 
 @Singleton
 public class Module extends AbstractModule {
-    
+
     protected void configure() {
-        
+
         bind(UserService.class).to(UserServiceImpl.class);
-        
+
     }
 
 }

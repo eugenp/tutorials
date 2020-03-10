@@ -16,11 +16,11 @@ class Team {
             return true;
         if (!(o instanceof Team))
             return false;
-        Team otherTeam = (Team)o;
+        Team otherTeam = (Team) o;
         boolean cityEquals = (this.city == null && otherTeam.city == null)
-          || this.city != null && this.city.equals(otherTeam.city);
+                || this.city != null && this.city.equals(otherTeam.city);
         boolean departmentEquals = (this.department == null && otherTeam.department == null)
-          || this.department != null && this.department.equals(otherTeam.department);
+                || this.department != null && this.department.equals(otherTeam.department);
         return cityEquals && departmentEquals;
     }
 

@@ -16,7 +16,7 @@ import org.junit.Test;
 import com.baeldung.hibernate.HibernateUtil;
 
 public class OptimisticLockingIntegrationTest {
-    
+
     private static SessionFactory sessionFactory;
 
     @Before
@@ -28,7 +28,7 @@ public class OptimisticLockingIntegrationTest {
         entityManager.persist(course);
         entityManager.persist(student);
         entityManager.getTransaction()
-            .commit();
+                .commit();
         entityManager.close();
     }
 
@@ -40,7 +40,7 @@ public class OptimisticLockingIntegrationTest {
         entityManager.remove(course);
         entityManager.remove(student);
         entityManager.getTransaction()
-            .commit();
+                .commit();
         entityManager.close();
     }
 
@@ -54,13 +54,13 @@ public class OptimisticLockingIntegrationTest {
         student2.setName("RICHARD");
         em2.persist(student2);
         em2.getTransaction()
-            .commit();
+                .commit();
         em2.close();
 
         student.setName("JOHN");
         em.persist(student);
         em.getTransaction()
-            .commit();
+                .commit();
         em.close();
     }
 
@@ -74,13 +74,13 @@ public class OptimisticLockingIntegrationTest {
         student2.setName("RICHARD");
         em2.persist(student2);
         em2.getTransaction()
-            .commit();
+                .commit();
         em2.close();
 
         student.setName("JOHN");
         em.persist(student);
         em.getTransaction()
-            .commit();
+                .commit();
         em.close();
     }
 
@@ -96,13 +96,13 @@ public class OptimisticLockingIntegrationTest {
         student2.setName("RICHARD");
         em2.persist(student2);
         em2.getTransaction()
-            .commit();
+                .commit();
         em2.close();
 
         student.setName("JOHN");
         em.persist(student);
         em.getTransaction()
-            .commit();
+                .commit();
         em.close();
     }
 
@@ -118,13 +118,13 @@ public class OptimisticLockingIntegrationTest {
         student2.setName("RICHARD");
         em2.persist(student2);
         em2.getTransaction()
-            .commit();
+                .commit();
         em2.close();
 
         student.setName("JOHN");
         em.persist(student);
         em.getTransaction()
-            .commit();
+                .commit();
         em.close();
     }
 
@@ -138,7 +138,7 @@ public class OptimisticLockingIntegrationTest {
 
         return entityManager;
     }
-    
+
     @AfterClass
     public static void afterTests() {
         sessionFactory.close();

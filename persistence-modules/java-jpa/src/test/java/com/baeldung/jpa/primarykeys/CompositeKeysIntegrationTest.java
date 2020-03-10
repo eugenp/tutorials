@@ -78,10 +78,10 @@ public class CompositeKeysIntegrationTest {
 
     private void persist(Account account) {
         em.getTransaction()
-            .begin();
+                .begin();
         em.persist(account);
         em.getTransaction()
-            .commit();
+                .commit();
     }
 
     private Book findBookByBookId() {
@@ -99,17 +99,17 @@ public class CompositeKeysIntegrationTest {
         assertNotNull(book);
         assertNotNull(book.getBookId());
         assertEquals(WAR_AND_PEACE, book.getBookId()
-            .getTitle());
+                .getTitle());
         assertEquals(ENGLISH, book.getBookId()
-            .getLanguage());
+                .getLanguage());
     }
 
     private void persist(Book book) {
         em.getTransaction()
-            .begin();
+                .begin();
         em.persist(book);
         em.getTransaction()
-            .commit();
+                .commit();
     }
 
     private void clearThePersistenceContext() {

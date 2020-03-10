@@ -12,27 +12,27 @@ import com.baeldung.springcloudgateway.custompredicates.service.GoldenCustomerSe
 
 @Configuration
 public class CustomPredicatesConfig {
-    
-    
+
+
     @Bean
     public GoldenCustomerRoutePredicateFactory goldenCustomer(GoldenCustomerService goldenCustomerService) {
         return new GoldenCustomerRoutePredicateFactory(goldenCustomerService);
     }
-    
+
 
     //@Bean
-    public RouteLocator routes(RouteLocatorBuilder builder, GoldenCustomerRoutePredicateFactory gf ) {
+    public RouteLocator routes(RouteLocatorBuilder builder, GoldenCustomerRoutePredicateFactory gf) {
 
         return builder.routes()
-          .route("dsl_golden_route", r -> r.path("/dsl_api/**")
-            .filters(f -> f.stripPrefix(1))
-            .uri("https://httpbin.org")
-            .predicate(gf.apply(new Config(true, "customerId"))))
-          .route("dsl_common_route", r -> r.path("/dsl_api/**")
-            .filters(f -> f.stripPrefix(1))
-            .uri("https://httpbin.org")
-            .predicate(gf.apply(new Config(false, "customerId"))))             
-          .build();
+                .route("dsl_golden_route", r -> r.path("/dsl_api/**")
+                        .filters(f -> f.stripPrefix(1))
+                        .uri("https://httpbin.org")
+                        .predicate(gf.apply(new Config(true, "customerId"))))
+                .route("dsl_common_route", r -> r.path("/dsl_api/**")
+                        .filters(f -> f.stripPrefix(1))
+                        .uri("https://httpbin.org")
+                        .predicate(gf.apply(new Config(false, "customerId"))))
+                .build();
     }
-    
+
 }

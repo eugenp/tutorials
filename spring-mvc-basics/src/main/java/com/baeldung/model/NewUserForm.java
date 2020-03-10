@@ -2,7 +2,7 @@ package com.baeldung.model;
 
 import com.baeldung.customvalidator.FieldsValueMatch;
 
-@FieldsValueMatch.List({ @FieldsValueMatch(field = "password", fieldMatch = "verifyPassword", message = "Passwords do not match!"), @FieldsValueMatch(field = "email", fieldMatch = "verifyEmail", message = "Email addresses do not match!") })
+@FieldsValueMatch.List({@FieldsValueMatch(field = "password", fieldMatch = "verifyPassword", message = "Passwords do not match!"), @FieldsValueMatch(field = "email", fieldMatch = "verifyEmail", message = "Email addresses do not match!")})
 public class NewUserForm {
     private String email;
     private String verifyEmail;

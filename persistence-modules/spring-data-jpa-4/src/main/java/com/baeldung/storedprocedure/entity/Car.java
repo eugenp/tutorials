@@ -11,8 +11,8 @@ import javax.persistence.ParameterMode;
 
 @Entity
 @NamedStoredProcedureQuery(name = "Car.getTotalCardsbyModelEntity", procedureName = "GET_TOTAL_CARS_BY_MODEL", parameters = {
-    @StoredProcedureParameter(mode = ParameterMode.IN, name = "model_in", type = String.class),
-    @StoredProcedureParameter(mode = ParameterMode.OUT, name = "count_out", type = Integer.class) })
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "model_in", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "count_out", type = Integer.class)})
 
 public class Car {
     @Id

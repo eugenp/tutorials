@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -13,7 +13,7 @@
         vm.dealer = entity;
         vm.previousState = previousState.name;
 
-        var unsubscribe = $rootScope.$on('gatewayApp:dealerUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('gatewayApp:dealerUpdate', function (event, result) {
             vm.dealer = result;
         });
         $scope.$on('$destroy', unsubscribe);

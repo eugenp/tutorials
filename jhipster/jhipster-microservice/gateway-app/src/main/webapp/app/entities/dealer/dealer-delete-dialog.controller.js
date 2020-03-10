@@ -1,9 +1,9 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('gatewayApp')
-        .controller('DealerDeleteController',DealerDeleteController);
+        .controller('DealerDeleteController', DealerDeleteController);
 
     DealerDeleteController.$inject = ['$uibModalInstance', 'entity', 'Dealer'];
 
@@ -14,11 +14,11 @@
         vm.clear = clear;
         vm.confirmDelete = confirmDelete;
 
-        function clear () {
+        function clear() {
             $uibModalInstance.dismiss('cancel');
         }
 
-        function confirmDelete (id) {
+        function confirmDelete(id) {
             Dealer.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);

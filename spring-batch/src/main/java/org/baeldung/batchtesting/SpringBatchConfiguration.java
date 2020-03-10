@@ -38,7 +38,7 @@ public class SpringBatchConfiguration {
 
     private static Logger LOGGER = LoggerFactory.getLogger(SpringBatchConfiguration.class);
 
-    private static final String[] TOKENS = { "bookname", "bookauthor", "bookformat", "isbn", "publishyear" };
+    private static final String[] TOKENS = {"bookname", "bookauthor", "bookformat", "isbn", "publishyear"};
 
     @Autowired
     private JobBuilderFactory jobBuilderFactory;
@@ -54,12 +54,12 @@ public class SpringBatchConfiguration {
         LOGGER.info("Configuring reader to input {}", input);
         // @formatter:off
         return builder
-          .name("bookRecordItemReader")
-          .resource(new FileSystemResource(input))
-          .delimited()
-          .names(TOKENS)
-          .fieldSetMapper(bookRecordFieldSetMapper)
-          .build();
+                .name("bookRecordItemReader")
+                .resource(new FileSystemResource(input))
+                .delimited()
+                .names(TOKENS)
+                .fieldSetMapper(bookRecordFieldSetMapper)
+                .build();
         // @formatter:on
     }
 
@@ -71,10 +71,10 @@ public class SpringBatchConfiguration {
         LOGGER.info("Configuring writer to output {}", output);
         // @formatter:off
         return builder
-          .name("bookItemWriter")
-          .jsonObjectMarshaller(marshaller)
-          .resource(new FileSystemResource(output))
-          .build();
+                .name("bookItemWriter")
+                .jsonObjectMarshaller(marshaller)
+                .resource(new FileSystemResource(output))
+                .build();
         // @formatter:on
     }
 
@@ -100,12 +100,12 @@ public class SpringBatchConfiguration {
     public Step step1(ItemReader<BookRecord> csvItemReader, ItemWriter<Book> jsonItemWriter) throws IOException {
         // @formatter:off
         return stepBuilderFactory
-          .get("step1")
-          .<BookRecord, Book> chunk(3)
-          .reader(csvItemReader)
-          .processor(bookItemProcessor())
-          .writer(jsonItemWriter)
-          .build();
+                .get("step1")
+                .<BookRecord, Book>chunk(3)
+                .reader(csvItemReader)
+                .processor(bookItemProcessor())
+                .writer(jsonItemWriter)
+                .build();
         // @formatter:on
     }
 
@@ -113,12 +113,12 @@ public class SpringBatchConfiguration {
     public Step step2(ItemReader<BookRecord> csvItemReader, ItemWriter<BookDetails> listItemWriter) {
         // @formatter:off
         return stepBuilderFactory
-          .get("step2")
-          .<BookRecord, BookDetails> chunk(3)
-          .reader(csvItemReader)
-          .processor(bookDetailsItemProcessor())
-          .writer(listItemWriter)
-          .build();
+                .get("step2")
+                .<BookRecord, BookDetails>chunk(3)
+                .reader(csvItemReader)
+                .processor(bookDetailsItemProcessor())
+                .writer(listItemWriter)
+                .build();
         // @formatter:on
     }
 
@@ -126,11 +126,11 @@ public class SpringBatchConfiguration {
     public Job transformBookRecords(Step step1, Step step2) throws IOException {
         // @formatter:off
         return jobBuilderFactory
-          .get("transformBooksRecords")
-          .flow(step1)
-          .next(step2)
-          .end()
-          .build();
+                .get("transformBooksRecords")
+                .flow(step1)
+                .next(step2)
+                .end()
+                .build();
         // @formatter:on
     }
 

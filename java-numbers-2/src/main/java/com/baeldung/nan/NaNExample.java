@@ -2,7 +2,6 @@ package com.baeldung.nan;
 
 /**
  * Sample usage of NaN.
- *
  */
 public class NaNExample {
 

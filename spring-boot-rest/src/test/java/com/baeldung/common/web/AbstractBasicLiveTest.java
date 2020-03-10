@@ -36,7 +36,7 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
     @Test
     public void whenResourcesAreRetrievedPaged_then200IsReceived() {
         create();
-        
+
         final Response response = RestAssured.get(getURL() + "?page=0&size=10");
 
         assertThat(response.getStatusCode(), is(200));
@@ -64,7 +64,7 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
         create();
         create();
         create();
-        
+
         final Response response = RestAssured.get(getURL() + "?page=0&size=2");
 
         final String uriToNextPage = extractURIByRel(response.getHeader(HttpHeaders.LINK), "next");
@@ -95,7 +95,7 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
         create();
         create();
         create();
-        
+
         final Response first = RestAssured.get(getURL() + "?page=0&size=2");
         final String uriToLastPage = extractURIByRel(first.getHeader(HttpHeaders.LINK), "last");
 
@@ -104,7 +104,7 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
         final String uriToNextPage = extractURIByRel(response.getHeader(HttpHeaders.LINK), "next");
         assertNull(uriToNextPage);
     }
-    
+
     // etags
 
     @Test
@@ -114,8 +114,8 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
 
         // When
         final Response findOneResponse = RestAssured.given()
-            .header("Accept", "application/json")
-            .get(uriOfResource);
+                .header("Accept", "application/json")
+                .get(uriOfResource);
 
         // Then
         assertNotNull(findOneResponse.getHeader(HttpHeaders.ETAG));
@@ -126,15 +126,15 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
         // Given
         final String uriOfResource = createAsUri();
         final Response findOneResponse = RestAssured.given()
-            .header("Accept", "application/json")
-            .get(uriOfResource);
+                .header("Accept", "application/json")
+                .get(uriOfResource);
         final String etagValue = findOneResponse.getHeader(HttpHeaders.ETAG);
 
         // When
         final Response secondFindOneResponse = RestAssured.given()
-            .header("Accept", "application/json")
-            .headers("If-None-Match", etagValue)
-            .get(uriOfResource);
+                .header("Accept", "application/json")
+                .headers("If-None-Match", etagValue)
+                .get(uriOfResource);
 
         // Then
         assertTrue(secondFindOneResponse.getStatusCode() == 304);
@@ -145,22 +145,22 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
         // Given
         final String uriOfResource = createAsUri();
         final Response firstFindOneResponse = RestAssured.given()
-            .header("Accept", "application/json")
-            .get(uriOfResource);
+                .header("Accept", "application/json")
+                .get(uriOfResource);
         final String etagValue = firstFindOneResponse.getHeader(HttpHeaders.ETAG);
         final long createdId = firstFindOneResponse.jsonPath().getLong("id");
 
         Foo updatedFoo = new Foo("updated value");
         updatedFoo.setId(createdId);
         Response updatedResponse = RestAssured.given().contentType(ContentType.JSON).body(updatedFoo)
-            .put(uriOfResource);
+                .put(uriOfResource);
         assertThat(updatedResponse.getStatusCode() == 200);
 
         // When
         final Response secondFindOneResponse = RestAssured.given()
-            .header("Accept", "application/json")
-            .headers("If-None-Match", etagValue)
-            .get(uriOfResource);
+                .header("Accept", "application/json")
+                .headers("If-None-Match", etagValue)
+                .get(uriOfResource);
 
         // Then
         assertTrue(secondFindOneResponse.getStatusCode() == 200);
@@ -174,9 +174,9 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
 
         // When
         final Response findOneResponse = RestAssured.given()
-            .header("Accept", "application/json")
-            .headers("If-Match", randomAlphabetic(8))
-            .get(uriOfResource);
+                .header("Accept", "application/json")
+                .headers("If-Match", randomAlphabetic(8))
+                .get(uriOfResource);
 
         // Then
         assertTrue(findOneResponse.getStatusCode() == 412);

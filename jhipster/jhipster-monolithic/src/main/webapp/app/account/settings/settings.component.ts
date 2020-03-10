@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { JhiLanguageService } from 'ng-jhipster';
+import {Component, OnInit} from '@angular/core';
+import {JhiLanguageService} from 'ng-jhipster';
 
-import { Principal, AccountService, JhiLanguageHelper } from '../../shared';
+import {Principal, AccountService, JhiLanguageHelper} from '../../shared';
 
 @Component({
     selector: 'jhi-settings',
@@ -22,7 +22,7 @@ export class SettingsComponent implements OnInit {
         this.languageService.setLocations(['settings']);
     }
 
-    ngOnInit () {
+    ngOnInit() {
         this.principal.identity().then((account) => {
             this.settingsAccount = this.copyAccount(account);
         });
@@ -31,7 +31,7 @@ export class SettingsComponent implements OnInit {
         });
     }
 
-    save () {
+    save() {
         this.account.save(this.settingsAccount).subscribe(() => {
             this.error = null;
             this.success = 'OK';
@@ -49,7 +49,7 @@ export class SettingsComponent implements OnInit {
         });
     }
 
-    copyAccount (account) {
+    copyAccount(account) {
         return {
             activated: account.activated,
             email: account.email,

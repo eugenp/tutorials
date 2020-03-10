@@ -21,25 +21,25 @@ public class ConditionalOnPropertyIntegrationTest {
     @Test
     public void whenGivenCustomPropertyValue_thenCustomServiceCreated() {
         this.contextRunner.withPropertyValues("com.baeldung.service=custom")
-            .withUserConfiguration(SimpleServiceConfiguration.class)
-            .run(context -> {
-                assertThat(context).hasBean("customService");
-                SimpleService simpleService = context.getBean(CustomService.class);
-                assertThat(simpleService.serve()).isEqualTo("Custom Service");
-                assertThat(context).doesNotHaveBean("defaultService");
-            });
+                .withUserConfiguration(SimpleServiceConfiguration.class)
+                .run(context -> {
+                    assertThat(context).hasBean("customService");
+                    SimpleService simpleService = context.getBean(CustomService.class);
+                    assertThat(simpleService.serve()).isEqualTo("Custom Service");
+                    assertThat(context).doesNotHaveBean("defaultService");
+                });
     }
 
     @Test
     public void whenGivenDefaultPropertyValue_thenDefaultServiceCreated() {
         this.contextRunner.withPropertyValues("com.baeldung.service=default")
-            .withUserConfiguration(SimpleServiceConfiguration.class)
-            .run(context -> {
-                assertThat(context).hasBean("defaultService");
-                SimpleService simpleService = context.getBean(DefaultService.class);
-                assertThat(simpleService.serve()).isEqualTo("Default Service");
-                assertThat(context).doesNotHaveBean("customService");
-            });
+                .withUserConfiguration(SimpleServiceConfiguration.class)
+                .run(context -> {
+                    assertThat(context).hasBean("defaultService");
+                    SimpleService simpleService = context.getBean(DefaultService.class);
+                    assertThat(simpleService.serve()).isEqualTo("Default Service");
+                    assertThat(context).doesNotHaveBean("customService");
+                });
     }
 
     @Configuration

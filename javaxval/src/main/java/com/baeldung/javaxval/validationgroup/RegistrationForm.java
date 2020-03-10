@@ -13,7 +13,7 @@ public class RegistrationForm {
     @NotBlank(groups = BasicInfo.class)
     private String phone;
 
-    @NotBlank(groups = { BasicInfo.class, AdvanceInfo.class })
+    @NotBlank(groups = {BasicInfo.class, AdvanceInfo.class})
     private String captcha;
 
     @NotBlank(groups = AdvanceInfo.class)

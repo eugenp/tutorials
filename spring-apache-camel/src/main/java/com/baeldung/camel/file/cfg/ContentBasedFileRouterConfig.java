@@ -13,14 +13,14 @@ import com.baeldung.camel.file.ContentBasedFileRouter;
 @Configuration
 public class ContentBasedFileRouterConfig extends CamelConfiguration {
 
-	@Bean
-	ContentBasedFileRouter getContentBasedFileRouter() {
-		return new ContentBasedFileRouter();
-	}
+    @Bean
+    ContentBasedFileRouter getContentBasedFileRouter() {
+        return new ContentBasedFileRouter();
+    }
 
-	@Override
-	public List<RouteBuilder> routes() {
-		return Arrays.asList(getContentBasedFileRouter());
-	}
+    @Override
+    public List<RouteBuilder> routes() {
+        return Arrays.asList(getContentBasedFileRouter());
+    }
 
 }

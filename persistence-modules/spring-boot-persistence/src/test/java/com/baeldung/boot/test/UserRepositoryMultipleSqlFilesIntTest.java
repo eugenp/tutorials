@@ -22,7 +22,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("multiplesqlfiles")
 public class UserRepositoryMultipleSqlFilesIntTest {
 
-    @Autowired private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Test
     public void givenTwoImportFilesWhenFindAllShouldReturnSixUsers() {

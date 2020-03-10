@@ -9,7 +9,6 @@ import com.baeldung.Application;
 
 /**
  * Note: In the IDE, remember to generate query type classes before running the Integration Test (e.g. in Eclipse right-click on the project > Run As > Maven generate sources)
- *
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)

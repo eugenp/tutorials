@@ -12,13 +12,13 @@ public class HelloWorldAppUnitTest {
 
         HelloWorldArgs jArgs = new HelloWorldArgs();
         JCommander helloCmd = JCommander
-          .newBuilder()
-          .addObject(jArgs)
-          .build();
+                .newBuilder()
+                .addObject(jArgs)
+                .build();
 
         // when
-        String[] argv = new String[] {
-          "--name", "JavaWorld"
+        String[] argv = new String[]{
+                "--name", "JavaWorld"
         };
         helloCmd.parse(argv);
 

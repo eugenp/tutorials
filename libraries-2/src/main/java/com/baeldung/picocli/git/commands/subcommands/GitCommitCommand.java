@@ -6,7 +6,7 @@ import static picocli.CommandLine.Command;
 import static picocli.CommandLine.Option;
 
 @Command(
-  name = "commit"
+        name = "commit"
 )
 @Component
 public class GitCommitCommand implements Runnable {

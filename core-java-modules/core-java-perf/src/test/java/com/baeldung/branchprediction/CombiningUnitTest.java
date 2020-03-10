@@ -15,11 +15,11 @@ public class CombiningUnitTest {
     @Test
     public void combined() {
         long[] first = LongStream.range(0, TOP)
-            .map(n -> Math.random() < FRACTION ? 0 : n)
-            .toArray();
+                .map(n -> Math.random() < FRACTION ? 0 : n)
+                .toArray();
         long[] second = LongStream.range(0, TOP)
-            .map(n -> Math.random() < FRACTION ? 0 : n)
-            .toArray();
+                .map(n -> Math.random() < FRACTION ? 0 : n)
+                .toArray();
 
         long count = 0;
         long start = System.currentTimeMillis();
@@ -37,11 +37,11 @@ public class CombiningUnitTest {
     @Test
     public void separate() {
         long[] first = LongStream.range(0, TOP)
-            .map(n -> Math.random() < FRACTION ? 0 : n)
-            .toArray();
+                .map(n -> Math.random() < FRACTION ? 0 : n)
+                .toArray();
         long[] second = LongStream.range(0, TOP)
-            .map(n -> Math.random() < FRACTION ? 0 : n)
-            .toArray();
+                .map(n -> Math.random() < FRACTION ? 0 : n)
+                .toArray();
 
         long count = 0;
         long start = System.currentTimeMillis();

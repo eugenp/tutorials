@@ -10,11 +10,11 @@ import io.springlets.data.jpa.repository.DetachableJpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect BookRepository_Roo_Jpa_Repository {
-    
-    declare parents: BookRepository extends DetachableJpaRepository<Book, Long>;
-    
-    declare parents: BookRepository extends BookRepositoryCustom;
-    
-    declare @type: BookRepository: @Transactional(readOnly = true);
-    
+
+    declare parents:BookRepository extends DetachableJpaRepository<Book,Long>;
+
+    declare parents:BookRepository extends BookRepositoryCustom;
+
+    declare @type: BookRepository:@Transactional(readOnly = true);
+
 }

@@ -109,10 +109,10 @@ public class Quote implements Serializable {
     @Override
     public String toString() {
         return "Quote{" +
-            "id=" + getId() +
-            ", symbol='" + getSymbol() + "'" +
-            ", price=" + getPrice() +
-            ", lastTrade='" + getLastTrade() + "'" +
-            "}";
+                "id=" + getId() +
+                ", symbol='" + getSymbol() + "'" +
+                ", price=" + getPrice() +
+                ", lastTrade='" + getLastTrade() + "'" +
+                "}";
     }
 }

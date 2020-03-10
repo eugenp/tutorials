@@ -1,14 +1,14 @@
 package com.baeldung.constructordi.domain;
 
 public class Transmission {
-	private String type;
+    private String type;
 
-	public Transmission(String type) {
-		this.type = type;
-	}
+    public Transmission(String type) {
+        this.type = type;
+    }
 
-	@Override
-	public String toString() {
-		return String.format("%s", type);
-	}
+    @Override
+    public String toString() {
+        return String.format("%s", type);
+    }
 }

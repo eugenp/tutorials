@@ -21,7 +21,7 @@ public class SubstringSearchUnitTest {
 
         // indexOf will return 9, because it's all lowercase
         Assert.assertEquals(9, "Bohemian Rhapsodyan".toLowerCase()
-            .indexOf("rhap"));
+                .indexOf("rhap"));
 
         // it will return 6, because it's the first occurrence. Sorry Queen for being blasphemic
         Assert.assertEquals(6, "Bohemian Rhapsodyan".indexOf("an"));

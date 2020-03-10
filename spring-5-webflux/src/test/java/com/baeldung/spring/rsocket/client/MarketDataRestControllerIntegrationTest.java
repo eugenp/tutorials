@@ -41,12 +41,12 @@ public class MarketDataRestControllerIntegrationTest {
         when(requestSpec.retrieveMono(MarketData.class)).thenReturn(Mono.just(marketData));
 
         testClient.get()
-                  .uri("/current/{stock}", "X")
-                  .exchange()
-                  .expectStatus()
-                  .isOk()
-                  .expectBody(MarketData.class)
-                  .isEqualTo(marketData);
+                .uri("/current/{stock}", "X")
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBody(MarketData.class)
+                .isEqualTo(marketData);
     }
 
     @Test
@@ -56,11 +56,11 @@ public class MarketDataRestControllerIntegrationTest {
         when(requestSpec.send()).thenReturn(Mono.empty());
 
         testClient.get()
-                  .uri("/collect")
-                  .exchange()
-                  .expectStatus()
-                  .isOk()
-                  .expectBody(Void.class);
+                .uri("/collect")
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBody(Void.class);
     }
 
     @Test
@@ -72,17 +72,17 @@ public class MarketDataRestControllerIntegrationTest {
         when(requestSpec.retrieveFlux(MarketData.class)).thenReturn(Flux.just(firstMarketData, secondMarketData));
 
         FluxExchangeResult<MarketData> result = testClient.get()
-                                                          .uri("/feed/{stock}", "X")
-                                                          .accept(TEXT_EVENT_STREAM)
-                                                          .exchange()
-                                                          .expectStatus()
-                                                          .isOk()
-                                                          .returnResult(MarketData.class);
+                .uri("/feed/{stock}", "X")
+                .accept(TEXT_EVENT_STREAM)
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .returnResult(MarketData.class);
         Flux<MarketData> marketDataFlux = result.getResponseBody();
         StepVerifier.create(marketDataFlux)
-                    .expectNext(firstMarketData)
-                    .expectNext(secondMarketData)
-                    .thenCancel()
-                    .verify();
+                .expectNext(firstMarketData)
+                .expectNext(secondMarketData)
+                .thenCancel()
+                .verify();
     }
 }

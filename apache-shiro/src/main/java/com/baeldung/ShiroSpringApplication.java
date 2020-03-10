@@ -31,15 +31,13 @@ public class ShiroSpringApplication {
     @Bean
     public ShiroFilterChainDefinition shiroFilterChainDefinition() {
         DefaultShiroFilterChainDefinition filter
-          = new DefaultShiroFilterChainDefinition();
+                = new DefaultShiroFilterChainDefinition();
 
         filter.addPathDefinition("/secure", "authc");
         filter.addPathDefinition("/**", "anon");
 
         return filter;
     }
-
-
 
 
 }

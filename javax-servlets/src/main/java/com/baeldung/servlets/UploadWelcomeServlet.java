@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "UploadWelcomeServlet", urlPatterns = "/uploadwelcome")
 public class UploadWelcomeServlet extends HttpServlet {
 
-  @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    request.getRequestDispatcher("/upload.jsp").forward(request, response);
-  }
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("/upload.jsp").forward(request, response);
+    }
 }

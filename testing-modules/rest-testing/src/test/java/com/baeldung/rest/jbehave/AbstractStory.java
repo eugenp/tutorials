@@ -24,10 +24,10 @@ public abstract class AbstractStory extends JUnitStories {
     @Override
     public Configuration configuration() {
         return new MostUsefulConfiguration()
-          .useStoryLoader(new LoadFromClasspath(this.getClass()))
-          .useStoryReporterBuilder(new StoryReporterBuilder()
-            .withCodeLocation(codeLocationFromClass(this.getClass()))
-            .withFormats(CONSOLE));
+                .useStoryLoader(new LoadFromClasspath(this.getClass()))
+                .useStoryReporterBuilder(new StoryReporterBuilder()
+                        .withCodeLocation(codeLocationFromClass(this.getClass()))
+                        .withFormats(CONSOLE));
     }
 
     abstract Object stepInstance();

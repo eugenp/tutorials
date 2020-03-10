@@ -4,24 +4,27 @@
           xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
           version="5.0" xml:id="olink.pubid">
-<refmeta>
-<refentrytitle>olink.pubid</refentrytitle>
-<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
-</refmeta>
-<refnamediv>
-<refname>olink.pubid</refname>
-<refpurpose>Names the public identifier portion of an OLink resolver query</refpurpose>
-</refnamediv>
+    <refmeta>
+        <refentrytitle>olink.pubid</refentrytitle>
+        <refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname>olink.pubid</refname>
+        <refpurpose>Names the public identifier portion of an OLink resolver query</refpurpose>
+    </refnamediv>
 
-<refsynopsisdiv>
-<src:fragment xml:id="olink.pubid.frag">
-<xsl:param name="olink.pubid">pubid</xsl:param>
-</src:fragment>
-</refsynopsisdiv>
+    <refsynopsisdiv>
+        <src:fragment xml:id="olink.pubid.frag">
+            <xsl:param name="olink.pubid">pubid</xsl:param>
+        </src:fragment>
+    </refsynopsisdiv>
 
-<refsection><info><title>Description</title></info>
+    <refsection>
+        <info>
+            <title>Description</title>
+        </info>
 
-<para></para>
+        <para></para>
 
-</refsection>
+    </refsection>
 </refentry>

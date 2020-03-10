@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Examples of passwords conforming to various specifications, using different libraries.
- * 
  */
 public class StringPasswordUnitTest {
 

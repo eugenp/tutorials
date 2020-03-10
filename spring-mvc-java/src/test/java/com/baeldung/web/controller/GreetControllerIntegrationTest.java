@@ -24,7 +24,7 @@ import com.baeldung.spring.web.config.WebConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { WebConfig.class, WebConfig.class })
+@ContextConfiguration(classes = {WebConfig.class, WebConfig.class})
 public class GreetControllerIntegrationTest {
 
     @Autowired

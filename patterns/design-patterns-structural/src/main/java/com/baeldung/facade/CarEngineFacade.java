@@ -11,7 +11,7 @@ public class CarEngineFacade {
     private CoolingController coolingController = new CoolingController();
     private CatalyticConverter catalyticConverter = new CatalyticConverter();
 
-    public void startEngine(){
+    public void startEngine() {
         fuelInjector.on();
         airFlowController.takeAir();
         fuelInjector.on();
@@ -22,7 +22,7 @@ public class CarEngineFacade {
         catalyticConverter.on();
     }
 
-    public void stopEngine(){
+    public void stopEngine() {
         fuelInjector.off();
         catalyticConverter.off();
         coolingController.cool(MAX_ALLOWED_TEMP);

@@ -14,7 +14,7 @@ public class CustomerOrder {
 
     public float calculateTotalPrice() {
         return orderItems.stream().map(OrderItem::getTotalPrice)
-          .reduce(0F, Float::sum);
+                .reduce(0F, Float::sum);
     }
 
     public void setOrderItems(List<OrderItem> orderItems) {

@@ -8,18 +8,18 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class User {
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-    
+
     @NotNull
     public String firstName;
 
     public String email;
-    
+
     public String toString() {
         return firstName + " : " + email;
     }
-    
+
 }

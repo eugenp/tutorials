@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+
 import com.baeldung.algorithms.minimax.MiniMax;
 import com.baeldung.algorithms.minimax.Tree;
 

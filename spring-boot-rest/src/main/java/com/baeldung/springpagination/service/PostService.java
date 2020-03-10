@@ -16,7 +16,7 @@ public class PostService implements IPostService {
 
     @Autowired
     private PostRepository postRepository;
-    
+
     @Autowired
     private IUserService userService;
 
@@ -24,7 +24,7 @@ public class PostService implements IPostService {
     public List<Post> getPostsList(int page, int size, String sortDir, String sort) {
 
         PageRequest pageReq
-        = PageRequest.of(page, size, Sort.Direction.fromString(sortDir), sort);
+                = PageRequest.of(page, size, Sort.Direction.fromString(sortDir), sort);
 
         Page<Post> posts = postRepository.findByUser(userService.getCurrentUser(), pageReq);
         return posts.getContent();

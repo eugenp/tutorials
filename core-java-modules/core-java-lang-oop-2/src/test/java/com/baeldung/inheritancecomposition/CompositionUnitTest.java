@@ -8,8 +8,8 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CompositionUnitTest {
-    
-    
+
+
     @Test
     public void givenComputerInstance_whenExtractedEachField_thenThreeAssertions() {
         Computer computer = new Computer(new StandardProcessor("Intel I3"), new StandardMemory("Kingston", "1TB"));

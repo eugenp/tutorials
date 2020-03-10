@@ -36,7 +36,7 @@ public class Tea {
     // when milk is not provided by client, don't add it
     public Tea(String name) {
         this(name, 0);
-    }   
+    }
 
     public String getName() {
         return name;

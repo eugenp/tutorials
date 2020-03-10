@@ -55,7 +55,7 @@ public class CellValueAndNotFormulaHelper {
 
         Sheet sheet = workbook.getSheetAt(0);
         FormulaEvaluator evaluator = workbook.getCreationHelper()
-            .createFormulaEvaluator();
+                .createFormulaEvaluator();
 
         CellAddress cellAddress = new CellAddress(cellLocation);
         Row row = sheet.getRow(cellAddress.getRow());

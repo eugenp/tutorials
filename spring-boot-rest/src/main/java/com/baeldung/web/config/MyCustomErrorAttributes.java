@@ -13,7 +13,7 @@ public class MyCustomErrorAttributes extends DefaultErrorAttributes {
     public Map<String, Object> getErrorAttributes(WebRequest webRequest, boolean includeStackTrace) {
         Map<String, Object> errorAttributes = super.getErrorAttributes(webRequest, includeStackTrace);
         errorAttributes.put("locale", webRequest.getLocale()
-            .toString());
+                .toString());
         errorAttributes.remove("error");
         errorAttributes.put("cause", errorAttributes.get("message"));
         errorAttributes.remove("message");

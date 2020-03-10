@@ -37,22 +37,22 @@ public class LetterUnitTest {
     @Test
     public void whenStaticCurriedFunctionIsCalled_thenaLetterIsCreated() {
         assertEquals(LETTER, LETTER_CREATOR
-            .apply(RETURNING_ADDRESS)
-            .apply(CLOSING)
-            .apply(DATE_OF_LETTER)
-            .apply(INSIDE_ADDRESS)
-            .apply(SALUTATION)
-            .apply(BODY));
+                .apply(RETURNING_ADDRESS)
+                .apply(CLOSING)
+                .apply(DATE_OF_LETTER)
+                .apply(INSIDE_ADDRESS)
+                .apply(SALUTATION)
+                .apply(BODY));
     }
 
     @Test
     public void whenStaticBuilderIsCalled_thenaLetterIsCreated() {
         assertEquals(LETTER, Letter.builder()
-            .withReturnAddress(RETURNING_ADDRESS)
-            .withClosing(CLOSING)
-            .withDateOfLetter(DATE_OF_LETTER)
-            .withInsideAddress(INSIDE_ADDRESS)
-            .withSalutation(SALUTATION)
-            .withBody(BODY));
+                .withReturnAddress(RETURNING_ADDRESS)
+                .withClosing(CLOSING)
+                .withDateOfLetter(DATE_OF_LETTER)
+                .withInsideAddress(INSIDE_ADDRESS)
+                .withSalutation(SALUTATION)
+                .withBody(BODY));
     }
 }

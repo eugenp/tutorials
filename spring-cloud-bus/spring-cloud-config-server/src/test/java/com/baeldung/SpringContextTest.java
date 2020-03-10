@@ -11,8 +11,8 @@ import com.baeldung.SpringCloudConfigServerApplication;
 @SpringBootTest(classes = SpringCloudConfigServerApplication.class)
 public class SpringContextTest {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+    }
 
 }

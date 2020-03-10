@@ -14,9 +14,9 @@ public class LocalSensitiveHashingUnitTest {
     @Test()
     public void givenNVectors_whenPerformLSH_thenShouldCalculateSameHashForSimilarVectors() {
         // given
-        boolean[] vector1 = new boolean[] { true, true, true, true, true };
-        boolean[] vector2 = new boolean[] { false, false, false, true, false };
-        boolean[] vector3 = new boolean[] { false, false, true, true, false };
+        boolean[] vector1 = new boolean[]{true, true, true, true, true};
+        boolean[] vector2 = new boolean[]{false, false, false, true, false};
+        boolean[] vector3 = new boolean[]{false, false, true, true, false};
 
         int sizeOfVectors = 5;
         int numberOfBuckets = 10;

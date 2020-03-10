@@ -25,21 +25,22 @@ public class ScheduleTimerBeanLiveTest {
     private final static long TIMEOUT = 5000l;
     private final static long TOLERANCE = 1000l;
 
-    @Inject TimerEventListener timerEventListener;
+    @Inject
+    TimerEventListener timerEventListener;
 
     @Deployment
     public static WebArchive deploy() {
         File[] jars = Maven
-          .resolver()
-          .loadPomFromFile("pom.xml")
-          .resolve("com.jayway.awaitility:awaitility")
-          .withTransitivity()
-          .asFile();
+                .resolver()
+                .loadPomFromFile("pom.xml")
+                .resolve("com.jayway.awaitility:awaitility")
+                .withTransitivity()
+                .asFile();
 
         return ShrinkWrap
-          .create(WebArchive.class)
-          .addAsLibraries(jars)
-          .addClasses(WithinWindowMatcher.class, TimerEvent.class, TimerEventListener.class, ScheduleTimerBean.class);
+                .create(WebArchive.class)
+                .addAsLibraries(jars)
+                .addClasses(WithinWindowMatcher.class, TimerEvent.class, TimerEventListener.class, ScheduleTimerBean.class);
     }
 
     @Test
@@ -49,14 +50,14 @@ public class ScheduleTimerBeanLiveTest {
         await().untilCall(to(timerEventListener.getEvents()).size(), equalTo(3));
 
         TimerEvent firstEvent = timerEventListener
-          .getEvents()
-          .get(0);
+                .getEvents()
+                .get(0);
         TimerEvent secondEvent = timerEventListener
-          .getEvents()
-          .get(1);
+                .getEvents()
+                .get(1);
         TimerEvent thirdEvent = timerEventListener
-          .getEvents()
-          .get(2);
+                .getEvents()
+                .get(2);
 
         long delay = secondEvent.getTime() - firstEvent.getTime();
         assertThat(delay, Matchers.is(WithinWindowMatcher.withinWindow(TIMEOUT, TOLERANCE)));

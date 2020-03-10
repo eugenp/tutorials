@@ -9,12 +9,14 @@ import org.springframework.integration.channel.QueueChannel;
 import org.springframework.messaging.Message;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+
 import com.baeldung.subflows.separateflows.SeparateFlowsExample.NumbersClassifier;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SeparateFlowsExample.class })
+@ContextConfiguration(classes = {SeparateFlowsExample.class})
 public class SeparateFlowsUnitTest {
     @Autowired
     private QueueChannel multipleOfThreeChannel;

@@ -1,7 +1,7 @@
-import { Component, OnDestroy } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
-import { Subscription } from 'rxjs';
+import {Component, OnDestroy} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
+import {JhiEventManager, JhiAlertService} from 'ng-jhipster';
+import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'jhi-alert-error',
@@ -17,6 +17,7 @@ import { Subscription } from 'rxjs';
 export class JhiAlertErrorComponent implements OnDestroy {
     alerts: any[];
     cleanHttpErrorListener: Subscription;
+
     /* tslint:disable */
     constructor(private alertService: JhiAlertService, private eventManager: JhiEventManager, private translateService: TranslateService) {
         /* tslint:enable */
@@ -44,7 +45,7 @@ export class JhiAlertErrorComponent implements OnDestroy {
                     });
                     if (errorHeader) {
                         const entityName = translateService.instant('global.menu.entities.' + entityKey);
-                        this.addErrorAlert(errorHeader, errorHeader, { entityName });
+                        this.addErrorAlert(errorHeader, errorHeader, {entityName});
                     } else if (httpErrorResponse.error !== '' && httpErrorResponse.error.fieldErrors) {
                         const fieldErrors = httpErrorResponse.error.fieldErrors;
                         for (i = 0; i < fieldErrors.length; i++) {
@@ -55,7 +56,7 @@ export class JhiAlertErrorComponent implements OnDestroy {
                             // convert 'something[14].other[4].id' to 'something[].other[].id' so translations can be written to it
                             const convertedField = fieldError.field.replace(/\[\d*\]/g, '[]');
                             const fieldName = translateService.instant('gatewayApp.' + fieldError.objectName + '.' + convertedField);
-                            this.addErrorAlert('Error on field "' + fieldName + '"', 'error.' + fieldError.message, { fieldName });
+                            this.addErrorAlert('Error on field "' + fieldName + '"', 'error.' + fieldError.message, {fieldName});
                         }
                     } else if (httpErrorResponse.error !== '' && httpErrorResponse.error.message) {
                         this.addErrorAlert(

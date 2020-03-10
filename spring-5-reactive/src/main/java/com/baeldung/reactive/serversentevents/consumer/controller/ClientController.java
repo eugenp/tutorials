@@ -47,21 +47,21 @@ public class ClientController {
         };
 
         Flux<ServerSentEvent<String>> eventStream = client.get()
-            .uri("/stream-sse")
-            .retrieve()
-            .bodyToFlux(type);
+                .uri("/stream-sse")
+                .retrieve()
+                .bodyToFlux(type);
 
         eventStream.subscribe(content -> logger.info("Current time: {} - Received SSE: name[{}], id [{}], content[{}] ", LocalTime.now(), content.event(), content.id(), content.data()), error -> logger.error("Error receiving SSE: {}", error),
-            () -> logger.info("Completed!!!"));
+                () -> logger.info("Completed!!!"));
     }
 
     @Async
     public void consumeFlux() {
         Flux<String> stringStream = client.get()
-            .uri("/stream-flux")
-            .accept(MediaType.TEXT_EVENT_STREAM)
-            .retrieve()
-            .bodyToFlux(String.class);
+                .uri("/stream-flux")
+                .accept(MediaType.TEXT_EVENT_STREAM)
+                .retrieve()
+                .bodyToFlux(String.class);
 
         stringStream.subscribe(content -> logger.info("Current time: {} - Received content: {} ", LocalTime.now(), content), error -> logger.error("Error retrieving content: {}", error), () -> logger.info("Completed!!!"));
     }
@@ -72,12 +72,12 @@ public class ClientController {
         };
 
         Flux<ServerSentEvent<String>> eventStream = client.get()
-            .uri("/stream-flux")
-            .accept(MediaType.TEXT_EVENT_STREAM)
-            .retrieve()
-            .bodyToFlux(type);
+                .uri("/stream-flux")
+                .accept(MediaType.TEXT_EVENT_STREAM)
+                .retrieve()
+                .bodyToFlux(type);
 
         eventStream.subscribe(content -> logger.info("Current time: {} - Received SSE: name[{}], id [{}], content[{}] ", LocalTime.now(), content.event(), content.id(), content.data()), error -> logger.error("Error receiving SSE: {}", error),
-            () -> logger.info("Completed!!!"));
+                () -> logger.info("Completed!!!"));
     }
 }

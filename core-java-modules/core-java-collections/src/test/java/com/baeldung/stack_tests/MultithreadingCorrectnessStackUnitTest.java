@@ -23,7 +23,7 @@ public class MultithreadingCorrectnessStackUnitTest {
         range(1, 10000).forEach(value -> deque.push(value));
 
         int sum = 0;
-        while(deque.peek() != null) {
+        while (deque.peek() != null) {
             sum += deque.pop();
         }
 
@@ -33,7 +33,7 @@ public class MultithreadingCorrectnessStackUnitTest {
         range(1, 10000).parallel().forEach(value -> deque.push(value));
 
         sum = 0;
-        while(deque.peek() != null) {
+        while (deque.peek() != null) {
             sum += deque.pop();
         }
 
@@ -49,7 +49,7 @@ public class MultithreadingCorrectnessStackUnitTest {
         range(1, 10000).forEach(value -> deque.push(value));
 
         int sum = 0;
-        while(deque.peek() != null) {
+        while (deque.peek() != null) {
             sum += deque.pop();
         }
 
@@ -59,7 +59,7 @@ public class MultithreadingCorrectnessStackUnitTest {
         range(1, 10000).parallel().forEach(value -> deque.push(value));
 
         sum = 0;
-        while(deque.peek() != null) {
+        while (deque.peek() != null) {
             sum += deque.pop();
         }
 
@@ -75,7 +75,7 @@ public class MultithreadingCorrectnessStackUnitTest {
         range(1, 10000).forEach(value -> deque.push(value));
 
         int sum = 0;
-        while(deque.peek() != null) {
+        while (deque.peek() != null) {
             sum += deque.pop();
         }
 
@@ -85,12 +85,12 @@ public class MultithreadingCorrectnessStackUnitTest {
         range(1, 10000).parallel().forEach(value -> deque.push(value));
 
         sum = 0;
-        while(deque.peek() != null) {
+        while (deque.peek() != null) {
             sum += deque.pop();
         }
 
         // This shouldn't happen.
-        if(sum == 49995000) {
+        if (sum == 49995000) {
             System.out.println("Something wrong in the environment, Please try some big value and check");
             // To safe-guard build without test failures.
             return;

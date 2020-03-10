@@ -72,7 +72,7 @@ public class CallingDefaultSerializerUnitTest {
 
         List actualFiles = (List) actual.get("files");
         assertEquals(mockFolder.getFiles().size(), actualFiles.size());
-        
+
     }
 
     @Test
@@ -123,7 +123,7 @@ public class CallingDefaultSerializerUnitTest {
         mapper.registerModule(module);
 
         mapper.writeValueAsString(mockFolder);
-        
+
     }
 
     @Test
@@ -134,7 +134,7 @@ public class CallingDefaultSerializerUnitTest {
         mapper.registerModule(module);
 
         String json = mapper.writeValueAsString(mockFolder);
-        
+
         HashMap<String, Object> actual = mapper.readValue(json, mapType);
 
         assertTrue(actual.containsKey("name"));
@@ -143,7 +143,7 @@ public class CallingDefaultSerializerUnitTest {
 
         List actualFiles = (List) actual.get("files");
         assertEquals(mockFolder.getFiles().size(), actualFiles.size());
-        
+
         Map actualDetails = (Map) actual.get("details");
         assertTrue(actualDetails.containsKey("id"));
         assertTrue(actualDetails.containsKey("name"));
@@ -151,8 +151,8 @@ public class CallingDefaultSerializerUnitTest {
         assertTrue(actualDetails.containsKey("created"));
         assertTrue(actualDetails.containsKey("modified"));
         assertTrue(actualDetails.containsKey("lastAccess"));
-        
-        assertEquals(mockFolder.getId().longValue(), ((Number)actualDetails.get("id")).longValue());
+
+        assertEquals(mockFolder.getId().longValue(), ((Number) actualDetails.get("id")).longValue());
         assertEquals(mockFolder.getName(), actualDetails.get("name"));
         assertEquals(mockFolder.getOwner(), actualDetails.get("owner"));
         assertEquals(mockFolder.getCreated(), new Date((long) actualDetails.get("created")));

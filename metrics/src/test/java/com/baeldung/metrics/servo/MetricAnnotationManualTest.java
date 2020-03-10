@@ -27,7 +27,8 @@ public class MetricAnnotationManualTest extends MetricTestBase {
     @Monitor(name = "integerCounter", type = DataSourceType.COUNTER, description = "Total number of update operations.")
     private final AtomicInteger updateCount = new AtomicInteger(0);
 
-    @MonitorTags private TagList tags = new BasicTagList(newArrayList(new BasicTag("tag-key", "tag-value")));
+    @MonitorTags
+    private TagList tags = new BasicTagList(newArrayList(new BasicTag("tag-key", "tag-value")));
 
     @Test
     public void givenAnnotatedMonitor_whenUpdated_thenDataCollected() throws Exception {

@@ -22,7 +22,7 @@ public class JaxpProcessorUnitTest {
     @Test
     public void givenXmlWithAttributes_whenModifyAttribute_thenGetXmlUpdated() throws IOException, SAXException, ParserConfigurationException, XPathExpressionException, TransformerFactoryConfigurationError, TransformerException {
         String path = getClass().getResource("/xml/attribute.xml")
-            .toString();
+                .toString();
         JaxpTransformer transformer = new JaxpTransformer(path);
         String attribute = "customer";
         String oldValue = "true";
@@ -36,7 +36,7 @@ public class JaxpProcessorUnitTest {
     @Test
     public void givenXmlXee_whenInit_thenThrowException() throws IOException, SAXException, ParserConfigurationException, XPathExpressionException, TransformerFactoryConfigurationError, TransformerException {
         String path = getClass().getResource("/xml/xee_attribute.xml")
-            .toString();
+                .toString();
 
         assertThatThrownBy(() -> {
 

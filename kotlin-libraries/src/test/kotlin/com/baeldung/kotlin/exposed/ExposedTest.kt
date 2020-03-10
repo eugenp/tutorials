@@ -75,7 +75,7 @@ class ExposedTest {
                     }
             val select = StarWarsFilms.select { (StarWarsFilms.director like "J.J.%") and (StarWarsFilms.sequelId eq 7) }
             assertEquals(1, select.count())
-            StarWarsFilms.update ({ StarWarsFilms.sequelId eq 8 }) {
+            StarWarsFilms.update({ StarWarsFilms.sequelId eq 8 }) {
                 it[name] = "Episode VIII – The Last Jedi"
                 with(SqlExpressionBuilder) {
                     it.update(StarWarsFilms.sequelId, StarWarsFilms.sequelId + 1)
@@ -156,8 +156,8 @@ class ExposedTest {
             Join(StarWarsFilms, sequel,
                     additionalConstraint = { sequel[StarWarsFilms.sequelId] eq StarWarsFilms.sequelId + 1 })
                     .selectAll().forEach {
-                assertEquals(it[sequel[StarWarsFilms.sequelId]], it[StarWarsFilms.sequelId] + 1)
-            }
+                        assertEquals(it[sequel[StarWarsFilms.sequelId]], it[StarWarsFilms.sequelId] + 1)
+                    }
         }
     }
 
@@ -257,7 +257,7 @@ class ExposedTest {
 
 }
 
-object Cities: IntIdTable() {
+object Cities : IntIdTable() {
     val name = varchar("name", 50)
 }
 
@@ -285,42 +285,42 @@ class StarWarsFilm(id: EntityID<Int>) : Entity<Int>(id) {
     companion object : EntityClass<Int, StarWarsFilm>(StarWarsFilms)
 
     var sequelId by StarWarsFilms.sequelId
-    var name     by StarWarsFilms.name
+    var name by StarWarsFilms.name
     var director by StarWarsFilms.director
-    var actors   by Actor via StarWarsFilmActors
-    val ratings  by UserRating referrersOn UserRatings.film
+    var actors by Actor via StarWarsFilmActors
+    val ratings by UserRating referrersOn UserRatings.film
 }
 
-object Users: IntIdTable() {
+object Users : IntIdTable() {
     val name = varchar("name", 50)
 }
 
-object UserRatings: IntIdTable() {
+object UserRatings : IntIdTable() {
     val value = long("value")
-    val film  = reference("film", StarWarsFilms)
-    val user  = reference("user", Users)
+    val film = reference("film", StarWarsFilms)
+    val user = reference("user", Users)
 }
 
-class User(id: EntityID<Int>): IntEntity(id) {
+class User(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<User>(Users)
 
     var name by Users.name
 }
 
-class UserRating(id: EntityID<Int>): IntEntity(id) {
+class UserRating(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<UserRating>(UserRatings)
 
     var value by UserRatings.value
-    var film  by StarWarsFilm referencedOn UserRatings.film
-    var user  by User         referencedOn UserRatings.user
+    var film by StarWarsFilm referencedOn UserRatings.film
+    var user by User referencedOn UserRatings.user
 }
 
-object Actors: IntIdTable() {
+object Actors : IntIdTable() {
     val firstname = varchar("firstname", 50)
     val lastname = varchar("lastname", 50)
 }
 
-class Actor(id: EntityID<Int>): IntEntity(id) {
+class Actor(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<Actor>(Actors)
 
     var firstname by Actors.firstname

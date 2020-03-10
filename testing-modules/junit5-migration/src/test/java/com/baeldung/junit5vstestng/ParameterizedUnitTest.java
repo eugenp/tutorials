@@ -15,17 +15,17 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class ParameterizedUnitTest {
 
     @ParameterizedTest
-    @ValueSource(strings = { "Hello", "World" })
+    @ValueSource(strings = {"Hello", "World"})
     void givenString_TestNullOrNot(String word) {
         assertNotNull(word);
     }
-    
+
     @ParameterizedTest
     @EnumSource(value = PizzaDeliveryStrategy.class, names = {"EXPRESS", "NORMAL"})
     void givenEnum_TestContainsOrNot(PizzaDeliveryStrategy timeUnit) {
         assertTrue(EnumSet.of(PizzaDeliveryStrategy.EXPRESS, PizzaDeliveryStrategy.NORMAL).contains(timeUnit));
     }
-    
+
     @ParameterizedTest
     @MethodSource("wordDataProvider")
     void givenMethodSource_TestInputStream(String argument) {
@@ -35,9 +35,9 @@ public class ParameterizedUnitTest {
     static Stream<String> wordDataProvider() {
         return Stream.of("foo", "bar");
     }
-    
+
     @ParameterizedTest
-    @CsvSource({ "1, Car", "2, House", "3, Train" })
+    @CsvSource({"1, Car", "2, House", "3, Train"})
     void givenCSVSource_TestContent(int id, String word) {
         assertNotNull(id);
         assertNotNull(word);

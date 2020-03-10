@@ -73,7 +73,7 @@
         <module>core-java-jar</module>
         <module>core-java-jndi</module>
         <!-- <module>core-java-jpms</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
-        <module>core-java-jvm</module>		
+        <module>core-java-jvm</module>
 
         <module>core-java-lambdas</module>
         <module>core-java-lang</module>

@@ -11,7 +11,7 @@ public class Context {
     @Override
     public String toString() {
         return "Context{" +
-          "userNameSecret='" + userName + '\'' +
-          '}';
+                "userNameSecret='" + userName + '\'' +
+                '}';
     }
 }

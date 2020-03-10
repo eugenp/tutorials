@@ -55,13 +55,13 @@ public class NeurophXOR {
         int outputSize = 1;
         DataSet ds = new DataSet(inputSize, outputSize);
 
-        DataSetRow rOne = new DataSetRow(new double[] { 0, 1 }, new double[] { 1 });
+        DataSetRow rOne = new DataSetRow(new double[]{0, 1}, new double[]{1});
         ds.addRow(rOne);
-        DataSetRow rTwo = new DataSetRow(new double[] { 1, 1 }, new double[] { 0 });
+        DataSetRow rTwo = new DataSetRow(new double[]{1, 1}, new double[]{0});
         ds.addRow(rTwo);
-        DataSetRow rThree = new DataSetRow(new double[] { 0, 0 }, new double[] { 0 });
+        DataSetRow rThree = new DataSetRow(new double[]{0, 0}, new double[]{0});
         ds.addRow(rThree);
-        DataSetRow rFour = new DataSetRow(new double[] { 1, 0 }, new double[] { 1 });
+        DataSetRow rFour = new DataSetRow(new double[]{1, 0}, new double[]{1});
         ds.addRow(rFour);
 
         BackPropagation backPropagation = new BackPropagation();

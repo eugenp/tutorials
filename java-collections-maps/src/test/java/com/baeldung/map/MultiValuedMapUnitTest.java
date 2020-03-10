@@ -23,20 +23,20 @@ public class MultiValuedMapUnitTest {
     @Test
     public void givenMultiValuesMap_whenPuttingMultipleValuesUsingPutMethod_thenReturningAllValues() {
         MultiValuedMap<String, String> map = new ArrayListValuedHashMap<>();
-        
+
         map.put("fruits", "apple");
         map.put("fruits", "orange");
-        
+
         assertThat((Collection<String>) map.get("fruits")).containsExactly("apple", "orange");
 
     }
- 
+
     @Test
     public void givenMultiValuesMap_whenPuttingMultipleValuesUsingPutAllMethod_thenReturningAllValues() {
         MultiValuedMap<String, String> map = new ArrayListValuedHashMap<>();
-       
+
         map.putAll("vehicles", Arrays.asList("car", "bike"));
-        
+
         assertThat((Collection<String>) map.get("vehicles")).containsExactly("car", "bike");
 
     }
@@ -44,9 +44,9 @@ public class MultiValuedMapUnitTest {
     @Test
     public void givenMultiValuesMap_whenGettingValueUsingGetMethod_thenReturningValue() {
         MultiValuedMap<String, String> map = new ArrayListValuedHashMap<>();
-      
+
         map.put("fruits", "apple");
-        
+
         assertThat((Collection<String>) map.get("fruits")).containsExactly("apple");
     }
 
@@ -57,10 +57,10 @@ public class MultiValuedMapUnitTest {
         map.put("fruits", "orange");
 
         Collection<Entry<String, String>> entries = (Collection<Entry<String, String>>) map.entries();
-        
-        for(Map.Entry<String,String> entry : entries) {
+
+        for (Map.Entry<String, String> entry : entries) {
             assertThat(entry.getKey()).contains("fruits");
-            assertTrue(entry.getValue().equals("apple") || entry.getValue().equals("orange") );
+            assertTrue(entry.getValue().equals("apple") || entry.getValue().equals("orange"));
         }
     }
 
@@ -71,9 +71,9 @@ public class MultiValuedMapUnitTest {
         map.put("fruits", "orange");
         map.put("vehicles", "car");
         map.put("vehicles", "bike");
-        
+
         MultiSet<String> keys = map.keys();
-        
+
         assertThat((keys)).contains("fruits", "vehicles");
 
     }
@@ -85,9 +85,9 @@ public class MultiValuedMapUnitTest {
         map.put("fruits", "orange");
         map.put("vehicles", "car");
         map.put("vehicles", "bike");
-        
+
         Set<String> keys = map.keySet();
-        
+
         assertThat(keys).contains("fruits", "vehicles");
 
     }
@@ -100,7 +100,7 @@ public class MultiValuedMapUnitTest {
         map.put("fruits", "orange");
         map.put("vehicles", "car");
         map.put("vehicles", "bike");
-        
+
         assertThat(((Collection<String>) map.values())).contains("apple", "orange", "car", "bike");
     }
 
@@ -113,9 +113,9 @@ public class MultiValuedMapUnitTest {
         map.put("vehicles", "car");
         map.put("vehicles", "bike");
         assertThat(((Collection<String>) map.values())).contains("apple", "orange", "car", "bike");
-        
+
         map.remove("fruits");
-        
+
         assertThat(((Collection<String>) map.values())).contains("car", "bike");
 
     }
@@ -129,9 +129,9 @@ public class MultiValuedMapUnitTest {
         map.put("vehicles", "car");
         map.put("vehicles", "bike");
         assertThat(((Collection<String>) map.values())).contains("apple", "orange", "car", "bike");
-        
+
         map.removeMapping("fruits", "apple");
-        
+
         assertThat(((Collection<String>) map.values())).contains("orange", "car", "bike");
     }
 
@@ -143,9 +143,9 @@ public class MultiValuedMapUnitTest {
         map.put("vehicles", "car");
         map.put("vehicles", "bike");
         assertThat(((Collection<String>) map.values())).contains("apple", "orange", "car", "bike");
-        
+
         map.clear();
-  
+
         assertTrue(map.isEmpty());
     }
 
@@ -156,7 +156,7 @@ public class MultiValuedMapUnitTest {
         map.put("fruits", "orange");
         map.put("vehicles", "car");
         map.put("vehicles", "bike");
-        
+
         assertTrue(map.containsKey("fruits"));
     }
 
@@ -167,7 +167,7 @@ public class MultiValuedMapUnitTest {
         map.put("fruits", "orange");
         map.put("vehicles", "car");
         map.put("vehicles", "bike");
-        
+
         assertTrue(map.containsValue("orange"));
     }
 
@@ -178,7 +178,7 @@ public class MultiValuedMapUnitTest {
         map.put("fruits", "orange");
         map.put("vehicles", "car");
         map.put("vehicles", "bike");
-        
+
         assertFalse(map.isEmpty());
     }
 
@@ -189,7 +189,7 @@ public class MultiValuedMapUnitTest {
         map.put("fruits", "orange");
         map.put("vehicles", "car");
         map.put("vehicles", "bike");
-        
+
         assertEquals(4, map.size());
     }
 
@@ -199,7 +199,7 @@ public class MultiValuedMapUnitTest {
         map.put("fruits", "apple");
         map.put("fruits", "orange");
         map.put("fruits", "orange");
-        
+
         assertThat((Collection<String>) map.get("fruits")).containsExactly("apple", "orange", "orange");
     }
 
@@ -208,7 +208,7 @@ public class MultiValuedMapUnitTest {
         MultiValuedMap<String, String> map = new HashSetValuedHashMap<>();
         map.put("fruits", "apple");
         map.put("fruits", "apple");
-  
+
         assertThat((Collection<String>) map.get("fruits")).containsExactly("apple");
     }
 
@@ -218,10 +218,10 @@ public class MultiValuedMapUnitTest {
         map.put("fruits", "apple");
         map.put("fruits", "orange");
         MultiValuedMap<String, String> immutableMap = MultiMapUtils.unmodifiableMultiValuedMap(map);
-        
+
         immutableMap.put("fruits", "banana");
 
     }
-    
+
 
 }

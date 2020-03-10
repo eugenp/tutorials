@@ -34,26 +34,26 @@ public class SpringBootMvcFnApplication {
     @Bean
     RouterFunction<ServerResponse> allApplicationRoutes(ProductController pc, ProductService ps) {
         return route().add(pc.remainingProductRoutes(ps))
-            .before(req -> {
-                LOG.info("Found a route which matches " + req.uri()
-                    .getPath());
-                return req;
-            })
-            .after((req, res) -> {
-                if (res.statusCode() == HttpStatus.OK) {
-                    LOG.info("Finished processing request " + req.uri()
-                        .getPath());
-                } else {
-                    LOG.info("There was an error while processing request" + req.uri());
-                }
-                return res;
-            })
-            .onError(Throwable.class, (e, res) -> {
-                LOG.error("Fatal exception has occurred", e);
-                return status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-            })
-            .build()
-            .and(route(RequestPredicates.all(), req -> notFound().build()));
+                .before(req -> {
+                    LOG.info("Found a route which matches " + req.uri()
+                            .getPath());
+                    return req;
+                })
+                .after((req, res) -> {
+                    if (res.statusCode() == HttpStatus.OK) {
+                        LOG.info("Finished processing request " + req.uri()
+                                .getPath());
+                    } else {
+                        LOG.info("There was an error while processing request" + req.uri());
+                    }
+                    return res;
+                })
+                .onError(Throwable.class, (e, res) -> {
+                    LOG.error("Fatal exception has occurred", e);
+                    return status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+                })
+                .build()
+                .and(route(RequestPredicates.all(), req -> notFound().build()));
     }
 
     public static class Error {

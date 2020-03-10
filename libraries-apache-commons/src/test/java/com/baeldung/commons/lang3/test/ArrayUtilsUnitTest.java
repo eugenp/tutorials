@@ -2,8 +2,11 @@ package com.baeldung.commons.lang3.test;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.apache.commons.lang3.ArrayUtils;
+
 import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 
 public class ArrayUtilsUnitTest {
@@ -25,17 +28,17 @@ public class ArrayUtilsUnitTest {
         String[] array = {"a", "b", "c"};
         assertThat(ArrayUtils.hashCode(array)).isEqualTo(997619);
     }
-    
+
     @Test
     public void givenArrayUtilsClass_whenCalledtoMap_thenCorrect() {
-        String[][] array = {{"1", "one", }, {"2", "two", }, {"3", "three"}};
+        String[][] array = {{"1", "one",}, {"2", "two",}, {"3", "three"}};
         Map map = new HashMap();
         map.put("1", "one");
         map.put("2", "two");
         map.put("3", "three");
         assertThat(ArrayUtils.toMap(array)).isEqualTo(map);
     }
-    
+
     @Test
     public void givenArrayUtilsClass_whenCallednullToEmptyStringArray_thenCorrect() {
         String[] array = null;

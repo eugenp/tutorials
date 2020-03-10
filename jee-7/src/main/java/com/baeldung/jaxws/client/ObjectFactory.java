@@ -8,18 +8,17 @@ import javax.xml.namespace.QName;
 
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the com.baeldung.jaxws.client package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the com.baeldung.jaxws.client package.
+ * <p>An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups.  Factory methods for each of these are
  * provided in this class.
- * 
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -41,14 +40,12 @@ public class ObjectFactory {
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.baeldung.jaxws.client
-     * 
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link EmployeeNotFound }
-     * 
      */
     public EmployeeNotFound createEmployeeNotFound() {
         return new EmployeeNotFound();
@@ -56,7 +53,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link CountEmployees }
-     * 
      */
     public CountEmployees createCountEmployees() {
         return new CountEmployees();
@@ -64,7 +60,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link AddEmployeeResponse }
-     * 
      */
     public AddEmployeeResponse createAddEmployeeResponse() {
         return new AddEmployeeResponse();
@@ -72,7 +67,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link EmployeeAlreadyExists }
-     * 
      */
     public EmployeeAlreadyExists createEmployeeAlreadyExists() {
         return new EmployeeAlreadyExists();
@@ -80,7 +74,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetEmployeeResponse }
-     * 
      */
     public GetEmployeeResponse createGetEmployeeResponse() {
         return new GetEmployeeResponse();
@@ -88,7 +81,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DeleteEmployeeResponse }
-     * 
      */
     public DeleteEmployeeResponse createDeleteEmployeeResponse() {
         return new DeleteEmployeeResponse();
@@ -96,7 +88,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetAllEmployeesResponse }
-     * 
      */
     public GetAllEmployeesResponse createGetAllEmployeesResponse() {
         return new GetAllEmployeesResponse();
@@ -104,7 +95,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link UpdateEmployee }
-     * 
      */
     public UpdateEmployee createUpdateEmployee() {
         return new UpdateEmployee();
@@ -112,7 +102,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link CountEmployeesResponse }
-     * 
      */
     public CountEmployeesResponse createCountEmployeesResponse() {
         return new CountEmployeesResponse();
@@ -120,7 +109,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetEmployee }
-     * 
      */
     public GetEmployee createGetEmployee() {
         return new GetEmployee();
@@ -128,7 +116,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DeleteEmployee }
-     * 
      */
     public DeleteEmployee createDeleteEmployee() {
         return new DeleteEmployee();
@@ -136,7 +123,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link UpdateEmployeeResponse }
-     * 
      */
     public UpdateEmployeeResponse createUpdateEmployeeResponse() {
         return new UpdateEmployeeResponse();
@@ -144,7 +130,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link AddEmployee }
-     * 
      */
     public AddEmployee createAddEmployee() {
         return new AddEmployee();
@@ -152,7 +137,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetAllEmployees }
-     * 
      */
     public GetAllEmployees createGetAllEmployees() {
         return new GetAllEmployees();
@@ -160,7 +144,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Employee }
-     * 
      */
     public Employee createEmployee() {
         return new Employee();
@@ -168,7 +151,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddEmployeeResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://bottomup.server.jaxws.baeldung.com/", name = "addEmployeeResponse")
     public JAXBElement<AddEmployeeResponse> createAddEmployeeResponse(AddEmployeeResponse value) {
@@ -177,7 +159,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link EmployeeAlreadyExists }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://bottomup.server.jaxws.baeldung.com/", name = "EmployeeAlreadyExists")
     public JAXBElement<EmployeeAlreadyExists> createEmployeeAlreadyExists(EmployeeAlreadyExists value) {
@@ -186,7 +167,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetEmployeeResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://bottomup.server.jaxws.baeldung.com/", name = "getEmployeeResponse")
     public JAXBElement<GetEmployeeResponse> createGetEmployeeResponse(GetEmployeeResponse value) {
@@ -195,7 +175,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link EmployeeNotFound }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://bottomup.server.jaxws.baeldung.com/", name = "EmployeeNotFound")
     public JAXBElement<EmployeeNotFound> createEmployeeNotFound(EmployeeNotFound value) {
@@ -204,7 +183,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CountEmployees }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://bottomup.server.jaxws.baeldung.com/", name = "countEmployees")
     public JAXBElement<CountEmployees> createCountEmployees(CountEmployees value) {
@@ -213,7 +191,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link UpdateEmployee }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://bottomup.server.jaxws.baeldung.com/", name = "updateEmployee")
     public JAXBElement<UpdateEmployee> createUpdateEmployee(UpdateEmployee value) {
@@ -222,7 +199,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DeleteEmployeeResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://bottomup.server.jaxws.baeldung.com/", name = "deleteEmployeeResponse")
     public JAXBElement<DeleteEmployeeResponse> createDeleteEmployeeResponse(DeleteEmployeeResponse value) {
@@ -231,7 +207,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetAllEmployeesResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://bottomup.server.jaxws.baeldung.com/", name = "getAllEmployeesResponse")
     public JAXBElement<GetAllEmployeesResponse> createGetAllEmployeesResponse(GetAllEmployeesResponse value) {
@@ -240,7 +215,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DeleteEmployee }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://bottomup.server.jaxws.baeldung.com/", name = "deleteEmployee")
     public JAXBElement<DeleteEmployee> createDeleteEmployee(DeleteEmployee value) {
@@ -249,7 +223,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link UpdateEmployeeResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://bottomup.server.jaxws.baeldung.com/", name = "updateEmployeeResponse")
     public JAXBElement<UpdateEmployeeResponse> createUpdateEmployeeResponse(UpdateEmployeeResponse value) {
@@ -258,7 +231,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddEmployee }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://bottomup.server.jaxws.baeldung.com/", name = "addEmployee")
     public JAXBElement<AddEmployee> createAddEmployee(AddEmployee value) {
@@ -267,7 +239,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetAllEmployees }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://bottomup.server.jaxws.baeldung.com/", name = "getAllEmployees")
     public JAXBElement<GetAllEmployees> createGetAllEmployees(GetAllEmployees value) {
@@ -276,7 +247,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CountEmployeesResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://bottomup.server.jaxws.baeldung.com/", name = "countEmployeesResponse")
     public JAXBElement<CountEmployeesResponse> createCountEmployeesResponse(CountEmployeesResponse value) {
@@ -285,7 +255,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetEmployee }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://bottomup.server.jaxws.baeldung.com/", name = "getEmployee")
     public JAXBElement<GetEmployee> createGetEmployee(GetEmployee value) {

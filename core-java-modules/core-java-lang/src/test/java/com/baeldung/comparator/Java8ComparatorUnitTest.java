@@ -34,9 +34,9 @@ public class Java8ComparatorUnitTest {
         Collections.sort(footballTeam, byRanking);
         System.out.println("After Sorting : " + footballTeam);
         assertEquals(footballTeam.get(0)
-            .getName(), "Steven");
+                .getName(), "Steven");
         assertEquals(footballTeam.get(2)
-            .getRanking(), 67);
+                .getRanking(), 67);
     }
 
     @Test
@@ -49,10 +49,10 @@ public class Java8ComparatorUnitTest {
         Collections.sort(footballTeam, byRanking);
         System.out.println("After Sorting : " + footballTeam);
         assertEquals(footballTeam.get(0)
-            .getName(), "Steven");
+                .getName(), "Steven");
         assertEquals(footballTeam.get(2)
-            .getRanking(), 67);
-        
+                .getRanking(), 67);
+
         System.out.println("********* byAge *********");
         Comparator<Player> byAge = Comparator.comparing(Player::getAge);
 
@@ -60,9 +60,9 @@ public class Java8ComparatorUnitTest {
         Collections.sort(footballTeam, byAge);
         System.out.println("After Sorting : " + footballTeam);
         assertEquals(footballTeam.get(0)
-            .getName(), "Roger");
+                .getName(), "Roger");
         assertEquals(footballTeam.get(2)
-            .getRanking(), 45);
+                .getRanking(), 45);
     }
 
 }

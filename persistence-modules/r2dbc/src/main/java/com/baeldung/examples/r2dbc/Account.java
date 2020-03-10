@@ -7,10 +7,11 @@ public class Account {
     private Long id;
     private String iban;
     private BigDecimal balance;
-    
-    
-    public Account() {}
-    
+
+
+    public Account() {
+    }
+
     public Account(Long id, String iban, BigDecimal balance) {
         this.id = id;
         this.iban = iban;
@@ -22,7 +23,7 @@ public class Account {
         this.iban = iban;
         this.balance = new BigDecimal(balance);
     }
-    
+
     /**
      * @return the id
      */

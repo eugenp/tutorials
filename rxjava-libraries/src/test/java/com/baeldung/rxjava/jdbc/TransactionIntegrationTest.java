@@ -21,24 +21,24 @@ public class TransactionIntegrationTest {
     public void whenCommitTransaction_thenRecordUpdated() {
         Observable<Boolean> begin = db.beginTransaction();
         Observable<Integer> createStatement = db
-          .update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int primary key, name varchar(255))")
-          .dependsOn(begin)
-          .count();
+                .update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int primary key, name varchar(255))")
+                .dependsOn(begin)
+                .count();
         Observable<Integer> truncateStatement = db.update("TRUNCATE TABLE EMPLOYEE")
                 .dependsOn(createStatement)
                 .count();
         Observable<Integer> insertStatement = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(1, 'John')")
-          .dependsOn(truncateStatement)
-          .count();
+                .dependsOn(truncateStatement)
+                .count();
         Observable<Integer> updateStatement = db.update("UPDATE EMPLOYEE SET name = 'Tom' WHERE id = 1")
-          .dependsOn(insertStatement)
-          .count();
+                .dependsOn(insertStatement)
+                .count();
         Observable<Boolean> commit = db.commit(updateStatement);
         String name = db.select("select name from EMPLOYEE WHERE id = 1")
-          .dependsOn(commit)
-          .getAs(String.class)
-          .toBlocking()
-          .single();
+                .dependsOn(commit)
+                .getAs(String.class)
+                .toBlocking()
+                .single();
 
         assertEquals("Tom", name);
     }
@@ -46,7 +46,7 @@ public class TransactionIntegrationTest {
     @After
     public void close() {
         db.update("DROP TABLE EMPLOYEE")
-          .dependsOn(createStatement);
+                .dependsOn(createStatement);
         connectionProvider.close();
     }
 }

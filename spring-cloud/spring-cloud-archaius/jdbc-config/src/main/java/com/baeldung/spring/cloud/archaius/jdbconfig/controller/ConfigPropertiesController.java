@@ -13,13 +13,13 @@ import com.netflix.config.DynamicStringProperty;
 public class ConfigPropertiesController {
 
     private DynamicStringProperty propertyOneWithDynamic = DynamicPropertyFactory.getInstance()
-        .getStringProperty("baeldung.archaius.properties.one", "not found!");
+            .getStringProperty("baeldung.archaius.properties.one", "not found!");
 
     private DynamicStringProperty propertyTwoWithDynamic = DynamicPropertyFactory.getInstance()
-        .getStringProperty("baeldung.archaius.properties.two", "not found!");
+            .getStringProperty("baeldung.archaius.properties.two", "not found!");
 
     private DynamicStringProperty propertyThreeWithDynamic = DynamicPropertyFactory.getInstance()
-        .getStringProperty("baeldung.archaius.properties.three", "not found!");
+            .getStringProperty("baeldung.archaius.properties.three", "not found!");
 
     @GetMapping("/properties-from-dynamic")
     public Map<String, String> getPropertiesFromDynamic() {

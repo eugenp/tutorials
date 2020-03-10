@@ -18,7 +18,7 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 
 @Configuration
 @EnableElasticsearchRepositories(basePackages = "com.baeldung.spring.data.es.repository")
-@ComponentScan(basePackages = { "com.baeldung.spring.data.es.service" })
+@ComponentScan(basePackages = {"com.baeldung.spring.data.es.service"})
 public class Config {
 
     @Value("${elasticsearch.home:/usr/local/Cellar/elasticsearch/5.6.0}")
@@ -32,9 +32,9 @@ public class Config {
         TransportClient client = null;
         try {
             final Settings elasticsearchSettings = Settings.builder()
-              .put("client.transport.sniff", true)
-              .put("path.home", elasticsearchHome)
-              .put("cluster.name", clusterName).build();
+                    .put("client.transport.sniff", true)
+                    .put("path.home", elasticsearchHome)
+                    .put("cluster.name", clusterName).build();
             client = new PreBuiltTransportClient(elasticsearchSettings);
             client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("127.0.0.1"), 9300));
         } catch (UnknownHostException e) {

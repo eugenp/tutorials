@@ -6,7 +6,9 @@ import javax.persistence.Id;
 
 @Entity
 public class Task {
-    private @Id @GeneratedValue Long id;
+    private @Id
+    @GeneratedValue
+    Long id;
     private String description;
 
     private String assignee;

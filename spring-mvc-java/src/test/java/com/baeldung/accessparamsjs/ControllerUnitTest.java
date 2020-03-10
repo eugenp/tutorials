@@ -22,8 +22,8 @@ public class ControllerUnitTest {
     @Test
     public void whenRequestThymeleaf_thenStatusOk() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/index")
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk());
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 
 }

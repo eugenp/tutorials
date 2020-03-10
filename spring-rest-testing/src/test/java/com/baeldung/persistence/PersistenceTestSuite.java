@@ -6,9 +6,9 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    // @formatter:off
+        // @formatter:off
 
-    FooServicePersistenceIntegrationTest.class
+        FooServicePersistenceIntegrationTest.class
 
 }) //
 public class PersistenceTestSuite {

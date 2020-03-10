@@ -7,10 +7,8 @@ import org.springframework.format.Formatter;
 import org.thymeleaf.util.StringUtils;
 
 /**
- * 
- * Name formatter class that implements the Spring Formatter interface. 
+ * Name formatter class that implements the Spring Formatter interface.
  * Formats a name(String) and return the value with spaces replaced by commas.
- *
  */
 public class NameFormatter implements Formatter<String> {
 

@@ -14,7 +14,7 @@ import org.springframework.data.cassandra.mapping.CassandraMappingContext;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
 @Configuration
-@PropertySource(value = { "classpath:cassandra.properties" })
+@PropertySource(value = {"classpath:cassandra.properties"})
 @EnableCassandraRepositories(basePackages = "com.baeldung.spring.data.cassandra.repository")
 public class CassandraConfig extends AbstractCassandraConfiguration {
     private static final Log LOGGER = LogFactory.getLog(CassandraConfig.class);

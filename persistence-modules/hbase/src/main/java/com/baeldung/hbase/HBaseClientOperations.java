@@ -54,7 +54,7 @@ public class HBaseClientOperations {
     }
 
     private void delete(Table table) throws IOException {
-        final byte[] rowToBeDeleted =  Bytes.toBytes("RowToBeDeleted");
+        final byte[] rowToBeDeleted = Bytes.toBytes("RowToBeDeleted");
         System.out.println("\n*** DELETE ~Insert data and then delete it~ ***");
 
         System.out.println("Inserting a data to be deleted later.");

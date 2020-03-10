@@ -12,12 +12,12 @@ public class AppConfig {
 
     @Lazy
     @Bean
-    public Region getRegion(){
+    public Region getRegion() {
         return new Region();
     }
 
     @Bean
-    public Country getCountry(){
+    public Country getCountry() {
         return new Country();
     }
 }

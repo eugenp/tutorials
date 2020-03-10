@@ -1,21 +1,22 @@
-import { Injectable } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
-import { JhiPaginationUtil, JhiResolvePagingParams } from 'ng-jhipster';
-import { UserRouteAccessService } from 'app/core';
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Quote } from 'app/shared/model/quotes/quote.model';
-import { QuoteService } from './quote.service';
-import { QuoteComponent } from './quote.component';
-import { QuoteDetailComponent } from './quote-detail.component';
-import { QuoteUpdateComponent } from './quote-update.component';
-import { QuoteDeletePopupComponent } from './quote-delete-dialog.component';
-import { IQuote } from 'app/shared/model/quotes/quote.model';
+import {Injectable} from '@angular/core';
+import {HttpResponse} from '@angular/common/http';
+import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes} from '@angular/router';
+import {JhiPaginationUtil, JhiResolvePagingParams} from 'ng-jhipster';
+import {UserRouteAccessService} from 'app/core';
+import {of} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {Quote} from 'app/shared/model/quotes/quote.model';
+import {QuoteService} from './quote.service';
+import {QuoteComponent} from './quote.component';
+import {QuoteDetailComponent} from './quote-detail.component';
+import {QuoteUpdateComponent} from './quote-update.component';
+import {QuoteDeletePopupComponent} from './quote-delete-dialog.component';
+import {IQuote} from 'app/shared/model/quotes/quote.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class QuoteResolve implements Resolve<IQuote> {
-    constructor(private service: QuoteService) {}
+    constructor(private service: QuoteService) {
+    }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const id = route.params['id'] ? route.params['id'] : null;

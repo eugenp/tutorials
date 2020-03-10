@@ -12,13 +12,13 @@ public class SwitchExpressionsWithYieldUnitTest {
         var me = 4;
         var operation = "squareMe";
         var result = switch (operation) {
-        case "doubleMe" -> {
-            yield me * 2;
-        }
-        case "squareMe" -> {
-            yield me * me;
-        }
-        default -> me;
+            case "doubleMe" -> {
+                yield me *2;
+            }
+            case "squareMe" -> {
+                yield me *me;
+            }
+            default -> me;
         };
 
         assertEquals(16, result);

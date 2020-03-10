@@ -7,23 +7,23 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class UserDto {
-    
+
     @JMap
     private long id;
 
     @JMap("email")
     private String username;
-    
+
     @JMap("birthDate")
     private int age;
 
-    @JMapConversion(from={"birthDate"}, to={"age"})
-    public int conversion(LocalDate birthDate){
+    @JMapConversion(from = {"birthDate"}, to = {"age"})
+    public int conversion(LocalDate birthDate) {
         return Period.between(birthDate, LocalDate.now()).getYears();
     }
-    
+
     // constructors
-    
+
     public UserDto() {
         super();
     }
@@ -35,8 +35,8 @@ public class UserDto {
         this.age = age;
     }
 
-   // getters and setters
-    
+    // getters and setters
+
     public long getId() {
         return id;
     }
@@ -65,5 +65,5 @@ public class UserDto {
     public String toString() {
         return "UserDto [id=" + id + ", username=" + username + ", age=" + age + "]";
     }
-    
+
 }

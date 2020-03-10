@@ -22,10 +22,10 @@ public class Result {
     public void setFacts(List<String> facts) {
         this.facts = facts;
     }
-    
+
     public void addFact(String fact) {
         this.facts.add(fact);
     }
-    
-    
+
+
 }

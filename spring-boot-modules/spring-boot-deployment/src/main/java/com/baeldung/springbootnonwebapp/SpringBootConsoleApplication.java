@@ -10,29 +10,29 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 1. Act as main class for spring boot application
  * 2. Also implements CommandLineRunner, so that code within run method
  * is executed before application startup but after all beans are effectively created
- * @author hemant
  *
+ * @author hemant
  */
 @SpringBootApplication
 public class SpringBootConsoleApplication implements CommandLineRunner {
 
-	private static Logger LOG = LoggerFactory.getLogger(SpringBootConsoleApplication.class);
+    private static Logger LOG = LoggerFactory.getLogger(SpringBootConsoleApplication.class);
 
-	public static void main(String[] args) {
-		LOG.info("STARTING THE APPLICATION");
-		SpringApplication.run(SpringBootConsoleApplication.class, args);
-		LOG.info("APPLICATION FINISHED");
-	}
+    public static void main(String[] args) {
+        LOG.info("STARTING THE APPLICATION");
+        SpringApplication.run(SpringBootConsoleApplication.class, args);
+        LOG.info("APPLICATION FINISHED");
+    }
 
-	/**
-	 * This method will be executed after the application context is loaded and
-	 * right before the Spring Application main method is completed.
-	 */
-	@Override
-	public void run(String... args) throws Exception {
-		LOG.info("EXECUTING : command line runner");
-    		for (int i = 0; i < args.length; ++i) {
-        		LOG.info("args[{}]: {}", i, args[i]);
-    		}
-	}
+    /**
+     * This method will be executed after the application context is loaded and
+     * right before the Spring Application main method is completed.
+     */
+    @Override
+    public void run(String... args) throws Exception {
+        LOG.info("EXECUTING : command line runner");
+        for (int i = 0; i < args.length; ++i) {
+            LOG.info("args[{}]: {}", i, args[i]);
+        }
+    }
 }

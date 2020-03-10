@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { Observable, throwError } from 'rxjs';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {Observable, throwError} from 'rxjs';
 
-import { BookstoreTestModule } from '../../../test.module';
-import { AccountService } from 'app/core';
-import { SettingsComponent } from 'app/account/settings/settings.component';
+import {BookstoreTestModule} from '../../../test.module';
+import {AccountService} from 'app/core';
+import {SettingsComponent} from 'app/account/settings/settings.component';
 
 describe('Component Tests', () => {
     describe('SettingsComponent', () => {

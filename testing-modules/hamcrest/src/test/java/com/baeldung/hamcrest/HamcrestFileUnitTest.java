@@ -22,7 +22,7 @@ public class HamcrestFileUnitTest {
     public final void whenVerifyingFileOrDirExist_thenCorrect() {
         File file = new File("src/test/resources/test1.in");
         File dir = new File("src/test/resources");
-        
+
         assertThat(file, anExistingFile());
         assertThat(dir, anExistingDirectory());
         assertThat(file, anExistingFileOrDirectory());
@@ -34,7 +34,7 @@ public class HamcrestFileUnitTest {
         File file = new File("src/test/resources/test1.in");
 
         assertThat(file, aReadableFile());
-        assertThat(file, aWritableFile());        
+        assertThat(file, aWritableFile());
     }
 
     @Test
@@ -42,7 +42,8 @@ public class HamcrestFileUnitTest {
         File file = new File("src/test/resources/test1.in");
 
         assertThat(file, aFileWithSize(11));
-        assertThat(file, aFileWithSize(greaterThan(1L)));;
+        assertThat(file, aFileWithSize(greaterThan(1L)));
+        ;
     }
 
     /*@Test

@@ -22,12 +22,14 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = { NotFoundException.class, Bar.class })
+@ContextConfiguration(classes = {NotFoundException.class, Bar.class})
 @RestClientTest
 public class RestTemplateResponseErrorHandlerIntegrationTest {
 
-    @Autowired private MockRestServiceServer server;
-    @Autowired private RestTemplateBuilder builder;
+    @Autowired
+    private MockRestServiceServer server;
+    @Autowired
+    private RestTemplateBuilder builder;
 
     @Test(expected = NotFoundException.class)
     public void givenRemoteApiCall_when404Error_thenThrowNotFound() {
@@ -35,13 +37,13 @@ public class RestTemplateResponseErrorHandlerIntegrationTest {
         Assert.assertNotNull(this.server);
 
         RestTemplate restTemplate = this.builder
-          .errorHandler(new RestTemplateResponseErrorHandler())
-          .build();
+                .errorHandler(new RestTemplateResponseErrorHandler())
+                .build();
 
         this.server
-          .expect(ExpectedCount.once(), requestTo("/bars/4242"))
-          .andExpect(method(HttpMethod.GET))
-          .andRespond(withStatus(HttpStatus.NOT_FOUND));
+                .expect(ExpectedCount.once(), requestTo("/bars/4242"))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.NOT_FOUND));
 
         Bar response = restTemplate.getForObject("/bars/4242", Bar.class);
         this.server.verify();

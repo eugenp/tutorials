@@ -112,7 +112,7 @@ public class NumberOfLineFinder {
         int lines = 0;
         try {
             List<String> lineItems = com.google.common.io.Files.readLines(Paths.get(fileName)
-                .toFile(), Charset.defaultCharset());
+                    .toFile(), Charset.defaultCharset());
             lines = lineItems.size();
         } catch (IOException ioe) {
             ioe.printStackTrace();

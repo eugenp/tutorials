@@ -11,8 +11,8 @@ public class SimpleGeneticAlgorithm {
 
     private static Integer eval(Genotype<BitGene> gt) {
         return gt.getChromosome()
-            .as(BitChromosome.class)
-            .bitCount();
+                .as(BitChromosome.class)
+                .bitCount();
     }
 
     public static void main(String[] args) {
@@ -20,11 +20,11 @@ public class SimpleGeneticAlgorithm {
         System.out.println("Before the evolution:\n" + gtf);
 
         Engine<BitGene, Integer> engine = Engine.builder(SimpleGeneticAlgorithm::eval, gtf)
-            .build();
+                .build();
 
         Genotype<BitGene> result = engine.stream()
-            .limit(500)
-            .collect(EvolutionResult.toBestGenotype());
+                .limit(500)
+                .collect(EvolutionResult.toBestGenotype());
 
         System.out.println("After the evolution:\n" + result);
 

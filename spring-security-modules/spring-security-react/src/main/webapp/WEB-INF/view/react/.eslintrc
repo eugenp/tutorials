@@ -1,7 +1,10 @@
 {
   "rules": {
-    "linebreak-style": [2, "unix"],
-    "semi":"off",
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "semi": "off",
     "no-console": "off"
   },
   "ecmaFeatures": {
@@ -13,10 +16,15 @@
     "node": true,
     "mocha": true
   },
-  "plugins": ["react"],
+  "plugins": [
+    "react"
+  ],
   "parser": "babel-eslint",
   "parserOptions": {
     "sourceType": "module"
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended"]
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ]
 }

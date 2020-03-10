@@ -10,41 +10,41 @@ public class ReflectionsUnitTest {
     public void givenTypeThenGetAllSubTypes() {
         ReflectionsApp reflectionsApp = new ReflectionsApp();
         assertFalse(reflectionsApp.getReflectionsSubTypes()
-            .isEmpty());
+                .isEmpty());
     }
 
     @Test
     public void givenTypeAndUsingBuilderThenGetAllSubTypes() {
         ReflectionsApp reflectionsApp = new ReflectionsApp();
         assertFalse(reflectionsApp.getReflectionsSubTypesUsingBuilder()
-            .isEmpty());
+                .isEmpty());
     }
 
     @Test
     public void givenAnnotationThenGetAllAnnotatedMethods() {
         ReflectionsApp reflectionsApp = new ReflectionsApp();
         assertFalse(reflectionsApp.getDateDeprecatedMethods()
-            .isEmpty());
+                .isEmpty());
     }
 
     @Test
     public void givenAnnotationThenGetAllAnnotatedConstructors() {
         ReflectionsApp reflectionsApp = new ReflectionsApp();
         assertFalse(reflectionsApp.getDateDeprecatedConstructors()
-            .isEmpty());
+                .isEmpty());
     }
 
     @Test
     public void givenParamTypeThenGetAllMethods() {
         ReflectionsApp reflectionsApp = new ReflectionsApp();
         assertFalse(reflectionsApp.getMethodsWithDateParam()
-            .isEmpty());
+                .isEmpty());
     }
 
     @Test
     public void givenReturnTypeThenGetAllMethods() {
         ReflectionsApp reflectionsApp = new ReflectionsApp();
         assertFalse(reflectionsApp.getMethodsWithVoidReturn()
-            .isEmpty());
+                .isEmpty());
     }
 }

@@ -18,8 +18,8 @@ public class AppLiveTest {
     public void givenBasicRoute_whenGet_thenCorrectOutput() throws Exception {
         final HttpUriRequest request = new HttpGet("http://localhost:9000/basic-route-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("GET called");
         }
     }
@@ -28,8 +28,8 @@ public class AppLiveTest {
     public void givenBasicRoute_whenPost_thenCorrectOutput() throws Exception {
         final HttpUriRequest request = new HttpPost("http://localhost:9000/basic-route-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("POST called");
         }
     }
@@ -38,8 +38,8 @@ public class AppLiveTest {
     public void givenBasicRoute_whenPut_thenCorrectOutput() throws Exception {
         final HttpUriRequest request = new HttpPut("http://localhost:9000/basic-route-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("PUT called");
         }
     }
@@ -48,8 +48,8 @@ public class AppLiveTest {
     public void givenBasicRoute_whenDelete_thenCorrectOutput() throws Exception {
         final HttpUriRequest request = new HttpDelete("http://localhost:9000/basic-route-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo("DELETE called");
         }
     }

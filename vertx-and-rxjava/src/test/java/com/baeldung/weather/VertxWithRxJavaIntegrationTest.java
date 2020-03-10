@@ -44,39 +44,39 @@ public class VertxWithRxJavaIntegrationTest {
 
         // read the file that contains one city name per line
         fileSystem
-          .rxReadFile("cities.txt").toFlowable()
-            .doOnNext(buffer -> log.info("File buffer ---\n{}\n---", buffer))
-          .flatMap(buffer -> Flowable.fromArray(buffer.toString().split("\\r?\\n")))
-            .doOnNext(city -> log.info("City from file: '{}'", city))
-          .filter(city -> !city.startsWith("#"))
-            .doOnNext(city -> log.info("City that survived filtering: '{}'", city))
-          .flatMap(city -> searchByCityName(httpClient, city))
-          .flatMap(HttpClientResponse::toFlowable)
-            .doOnNext(buffer -> log.info("JSON of city detail: '{}'", buffer))
-          .map(extractingWoeid())
-          .flatMap(cityId -> getDataByPlaceId(httpClient, cityId))
-          .flatMap(toBufferFlowable())
-            .doOnNext(buffer -> log.info("JSON of place detail: '{}'", buffer))
-          .map(Buffer::toJsonObject)
-          .map(toCityAndDayLength())
-          .subscribe(System.out::println, Throwable::printStackTrace);
+                .rxReadFile("cities.txt").toFlowable()
+                .doOnNext(buffer -> log.info("File buffer ---\n{}\n---", buffer))
+                .flatMap(buffer -> Flowable.fromArray(buffer.toString().split("\\r?\\n")))
+                .doOnNext(city -> log.info("City from file: '{}'", city))
+                .filter(city -> !city.startsWith("#"))
+                .doOnNext(city -> log.info("City that survived filtering: '{}'", city))
+                .flatMap(city -> searchByCityName(httpClient, city))
+                .flatMap(HttpClientResponse::toFlowable)
+                .doOnNext(buffer -> log.info("JSON of city detail: '{}'", buffer))
+                .map(extractingWoeid())
+                .flatMap(cityId -> getDataByPlaceId(httpClient, cityId))
+                .flatMap(toBufferFlowable())
+                .doOnNext(buffer -> log.info("JSON of place detail: '{}'", buffer))
+                .map(Buffer::toJsonObject)
+                .map(toCityAndDayLength())
+                .subscribe(System.out::println, Throwable::printStackTrace);
 
         Thread.sleep(20000);  // enough to give time to complete the execution
     }
 
     private static Function<HttpClientResponse, Publisher<? extends Buffer>> toBufferFlowable() {
         return response -> response
-          .toObservable()
-          .reduce(
-            Buffer.buffer(),
-            Buffer::appendBuffer).toFlowable();
+                .toObservable()
+                .reduce(
+                        Buffer.buffer(),
+                        Buffer::appendBuffer).toFlowable();
     }
 
     private static Function<Buffer, Long> extractingWoeid() {
         return cityBuffer -> cityBuffer
-          .toJsonArray()
-          .getJsonObject(0)
-          .getLong("woeid");
+                .toJsonArray()
+                .getJsonObject(0)
+                .getLong("woeid");
     }
 
     private static Function<JsonObject, CityAndDayLength> toCityAndDayLength() {
@@ -85,7 +85,7 @@ public class VertxWithRxJavaIntegrationTest {
             ZonedDateTime sunSet = ZonedDateTime.parse(json.getString("sun_set"));
             String cityName = json.getString("title");
             return new CityAndDayLength(
-              cityName, sunSet.toEpochSecond() - sunRise.toEpochSecond());
+                    cityName, sunSet.toEpochSecond() - sunRise.toEpochSecond());
         };
     }
 

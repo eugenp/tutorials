@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.util.Iterator;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
@@ -44,7 +45,7 @@ public class UploadController {
 
                 if (!item.isFormField()) {
                     try (InputStream uploadedStream = item.getInputStream();
-                            OutputStream out = new FileOutputStream("file.mov");) {
+                         OutputStream out = new FileOutputStream("file.mov");) {
                         IOUtils.copy(uploadedStream, out);
                         out.close();
                     }

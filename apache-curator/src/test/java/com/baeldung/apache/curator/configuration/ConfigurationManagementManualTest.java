@@ -28,18 +28,18 @@ public class ConfigurationManagementManualTest extends BaseManualTest {
 
             // Create key nodes structure
             client.create()
-                .forPath(key);
+                    .forPath(key);
 
             // Set data value for our key
             async.setData()
-                .forPath(key, expected.getBytes());
+                    .forPath(key, expected.getBytes());
 
             // Get data value
             AtomicBoolean isEquals = new AtomicBoolean();
             async.getData()
-                .forPath(key)
-                .thenAccept(
-                    data -> isEquals.set(new String(data).equals(expected)));
+                    .forPath(key)
+                    .thenAccept(
+                            data -> isEquals.set(new String(data).equals(expected)));
 
             await().until(() -> assertThat(isEquals.get()).isTrue());
         }
@@ -47,7 +47,7 @@ public class ConfigurationManagementManualTest extends BaseManualTest {
 
     @Test
     public void givenPath_whenWatchAKeyAndStoreAValue_thenWatcherIsTriggered()
-        throws Exception {
+            throws Exception {
         try (CuratorFramework client = newClient()) {
             client.start();
             AsyncCuratorFramework async = AsyncCuratorFramework.wrap(client);
@@ -56,27 +56,27 @@ public class ConfigurationManagementManualTest extends BaseManualTest {
 
             // Create key structure
             async.create()
-                .forPath(key);
+                    .forPath(key);
 
             List<String> changes = new ArrayList<>();
 
             // Watch data value
             async.watched()
-                .getData()
-                .forPath(key)
-                .event()
-                .thenAccept(watchedEvent -> {
-                    try {
-                        changes.add(new String(client.getData()
-                            .forPath(watchedEvent.getPath())));
-                    } catch (Exception e) {
-                        // fail ...
-                    }
-                });
+                    .getData()
+                    .forPath(key)
+                    .event()
+                    .thenAccept(watchedEvent -> {
+                        try {
+                            changes.add(new String(client.getData()
+                                    .forPath(watchedEvent.getPath())));
+                        } catch (Exception e) {
+                            // fail ...
+                        }
+                    });
 
             // Set data value for our key
             async.setData()
-                .forPath(key, expected.getBytes());
+                    .forPath(key, expected.getBytes());
 
             await().until(() -> assertThat(changes.size() > 0).isTrue());
         }
@@ -84,6 +84,6 @@ public class ConfigurationManagementManualTest extends BaseManualTest {
 
     private String getKey() {
         return String.format(KEY_FORMAT, UUID.randomUUID()
-            .toString());
+                .toString());
     }
 }

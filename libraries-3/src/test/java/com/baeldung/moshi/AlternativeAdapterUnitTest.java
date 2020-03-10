@@ -19,8 +19,8 @@ public class AlternativeAdapterUnitTest {
     @Test
     public void whenSerializing_thenAlternativeAdapterUsed() {
         Moshi moshi = new Moshi.Builder()
-          .add(new EpochMillisAdapter())
-          .build();
+                .add(new EpochMillisAdapter())
+                .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
         String json = jsonAdapter.toJson(new Post("Introduction to Moshi Json", "Baeldung", Instant.now()));
@@ -30,8 +30,8 @@ public class AlternativeAdapterUnitTest {
     @Test
     public void whenDeserializing_thenAlternativeAdapterUsed() throws IOException {
         Moshi moshi = new Moshi.Builder()
-          .add(new EpochMillisAdapter())
-          .build();
+                .add(new EpochMillisAdapter())
+                .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
         String json = "{\"author\":\"Baeldung\",\"posted\":1582095269204,\"title\":\"Introduction to Moshi Json\"}";
@@ -43,7 +43,8 @@ public class AlternativeAdapterUnitTest {
     public static class Post {
         String title;
         String author;
-        @EpochMillis Instant posted;
+        @EpochMillis
+        Instant posted;
 
         public Post() {
         }
@@ -81,9 +82,10 @@ public class AlternativeAdapterUnitTest {
         @Override
         public String toString() {
             return new ToStringBuilder(this).append("title", title).append("author", author).append("posted", posted)
-                .toString();
+                    .toString();
         }
     }
+
     @Retention(RetentionPolicy.RUNTIME)
     @Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD})
     @JsonQualifier
@@ -95,6 +97,7 @@ public class AlternativeAdapterUnitTest {
         public Long toJson(@EpochMillis Instant input) {
             return input.toEpochMilli();
         }
+
         @FromJson
         @EpochMillis
         public Instant fromJson(Long input) {

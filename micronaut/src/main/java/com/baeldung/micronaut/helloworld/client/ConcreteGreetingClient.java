@@ -8,21 +8,20 @@ import io.reactivex.Single;
 import javax.inject.Singleton;
 
 @Singleton
-public class ConcreteGreetingClient
-{
-   private RxHttpClient httpClient;
+public class ConcreteGreetingClient {
+    private RxHttpClient httpClient;
 
-   public ConcreteGreetingClient(@Client("/") RxHttpClient httpClient) {
-      this.httpClient = httpClient;
-   }
+    public ConcreteGreetingClient(@Client("/") RxHttpClient httpClient) {
+        this.httpClient = httpClient;
+    }
 
-   public String greet(String name) {
-      HttpRequest<String> req = HttpRequest.GET("/greet/" + name);
-      return httpClient.retrieve(req).blockingFirst();
-   }
+    public String greet(String name) {
+        HttpRequest<String> req = HttpRequest.GET("/greet/" + name);
+        return httpClient.retrieve(req).blockingFirst();
+    }
 
-   public Single<String> greetAsync(String name) {
-      HttpRequest<String> req = HttpRequest.GET("/async/greet/" + name);
-      return httpClient.retrieve(req).first("An error as occurred");
-   }
+    public Single<String> greetAsync(String name) {
+        HttpRequest<String> req = HttpRequest.GET("/async/greet/" + name);
+        return httpClient.retrieve(req).first("An error as occurred");
+    }
 }

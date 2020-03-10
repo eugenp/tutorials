@@ -41,14 +41,14 @@ public class HibernateUtil {
     private static ServiceRegistry configureServiceRegistry() throws IOException {
         Properties properties = getProperties();
         return new StandardServiceRegistryBuilder().applySettings(properties)
-            .build();
+                .build();
     }
 
     private static Properties getProperties() throws IOException {
         Properties properties = new Properties();
         URL propertiesURL = Thread.currentThread()
-            .getContextClassLoader()
-            .getResource(StringUtils.defaultString(PROPERTY_FILE_NAME, "hibernate.properties"));
+                .getContextClassLoader()
+                .getResource(StringUtils.defaultString(PROPERTY_FILE_NAME, "hibernate.properties"));
         try (FileInputStream inputStream = new FileInputStream(propertiesURL.getFile())) {
             properties.load(inputStream);
         }

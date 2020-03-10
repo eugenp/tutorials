@@ -10,7 +10,7 @@ public class StringChangeCaseUnitTest {
         String s = "Welcome to Baeldung!";
         assertEquals("WELCOME TO BAELDUNG!", s.toUpperCase());
     }
-    
+
 
     @Test
     public void givenString_whenChangingToLowerrcase_thenCaseChanged() {

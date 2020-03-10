@@ -22,9 +22,9 @@ class SortStringUnitTest {
     @Test
     void givenString_whenSortJava8_thenSorted() {
         String sorted = "bdca".chars()
-            .sorted()
-            .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-            .toString();
+                .sorted()
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
 
         assertThat(sorted).isEqualTo("abcd");
     }

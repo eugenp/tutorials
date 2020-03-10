@@ -21,15 +21,15 @@ import com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory;
 
 @RunWith(JUnit4.class)
 public class CustomLoggingIntegrationTest {
-    
+
     private static String logFilePath = System.getProperty("logging.folder.path");
-    
+
     @BeforeClass
     public static void setup() throws Exception {
-        
+
         Connection connection = ConnectionFactory.getConnection();
         connection.createStatement()
-          .execute("CREATE TABLE logs(" + "when TIMESTAMP," + "logger VARCHAR(255)," + "level VARCHAR(255)," + "message VARCHAR(4096)," + "throwable TEXT)");
+                .execute("CREATE TABLE logs(" + "when TIMESTAMP," + "logger VARCHAR(255)," + "level VARCHAR(255)," + "message VARCHAR(4096)," + "throwable TEXT)");
         connection.commit();
     }
 
@@ -85,7 +85,7 @@ public class CustomLoggingIntegrationTest {
 
         long logEventsCount = Files.lines(Paths.get(logFilePath))
                 .count();
-        
+
         assertTrue(logEventsCount >= 0 && logEventsCount <= count);
     }
 
@@ -112,7 +112,7 @@ public class CustomLoggingIntegrationTest {
         }
         Connection connection = ConnectionFactory.getConnection();
         ResultSet resultSet = connection.createStatement()
-          .executeQuery("SELECT COUNT(*) AS ROW_COUNT FROM logs");
+                .executeQuery("SELECT COUNT(*) AS ROW_COUNT FROM logs");
 
         int logCount = 0;
         if (resultSet.next()) {

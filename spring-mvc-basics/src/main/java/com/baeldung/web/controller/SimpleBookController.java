@@ -13,7 +13,8 @@ import com.baeldung.model.Book;
 public class SimpleBookController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-    public @ResponseBody Book getBook(@PathVariable int id) {
+    public @ResponseBody
+    Book getBook(@PathVariable int id) {
         return findBookById(id);
     }
 

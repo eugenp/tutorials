@@ -10,10 +10,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .authorizeRequests()
+                .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
-            .httpBasic();
-       http.cors(); //disable this line to reproduce the CORS 401
+                .httpBasic();
+        http.cors(); //disable this line to reproduce the CORS 401
     }
 }

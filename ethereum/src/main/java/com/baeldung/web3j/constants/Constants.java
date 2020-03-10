@@ -14,5 +14,4 @@ public class Constants {
     public static final String DEFAULT_CONTRACT_ADDRESS = "00000000000000000000";
 
 
-
 }

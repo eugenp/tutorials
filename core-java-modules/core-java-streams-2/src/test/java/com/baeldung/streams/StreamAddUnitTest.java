@@ -27,7 +27,7 @@ public class StreamAddUnitTest {
         Stream<Integer> newStream = Stream.concat(Stream.of(99), anStream);
 
         assertEquals(newStream.findFirst()
-          .get(), (Integer) 99);
+                .get(), (Integer) 99);
     }
 
     @Test

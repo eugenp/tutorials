@@ -35,35 +35,35 @@ public class CacheControlControllerIntegrationTest {
     @Test
     void whenResponseBody_thenReturnCacheHeader() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/hello/baeldung"))
-          .andDo(MockMvcResultHandlers.print())
-          .andExpect(MockMvcResultMatchers.status().isOk())
-          .andExpect(MockMvcResultMatchers.header()
-            .string("Cache-Control","max-age=60, must-revalidate, no-transform"));
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.header()
+                        .string("Cache-Control", "max-age=60, must-revalidate, no-transform"));
     }
 
     @Test
     void whenViewName_thenReturnCacheHeader() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/home/baeldung"))
-          .andDo(MockMvcResultHandlers.print())
-          .andExpect(MockMvcResultMatchers.status().isOk())
-          .andExpect(MockMvcResultMatchers.header().string("Cache-Control","max-age=60, must-revalidate, no-transform"))
-          .andExpect(MockMvcResultMatchers.view().name("home"));
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.header().string("Cache-Control", "max-age=60, must-revalidate, no-transform"))
+                .andExpect(MockMvcResultMatchers.view().name("home"));
     }
 
     @Test
     void whenStaticResources_thenReturnCacheHeader() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/resources/hello.css"))
-          .andDo(MockMvcResultHandlers.print())
-          .andExpect(MockMvcResultMatchers.status().isOk())
-          .andExpect(MockMvcResultMatchers.header().string("Cache-Control","max-age=60, must-revalidate, no-transform"));
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.header().string("Cache-Control", "max-age=60, must-revalidate, no-transform"));
     }
 
     @Test
     void whenInterceptor_thenReturnCacheHeader() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/login/baeldung"))
-          .andDo(MockMvcResultHandlers.print())
-          .andExpect(MockMvcResultMatchers.status().isOk())
-          .andExpect(MockMvcResultMatchers.header().string("Cache-Control","max-age=60, must-revalidate, no-transform"));
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.header().string("Cache-Control", "max-age=60, must-revalidate, no-transform"));
     }
 
     @Test
@@ -71,11 +71,9 @@ public class CacheControlControllerIntegrationTest {
         HttpHeaders headers = new HttpHeaders();
         headers.add(IF_UNMODIFIED_SINCE, "Tue, 04 Feb 2020 19:57:25 GMT");
         this.mockMvc.perform(MockMvcRequestBuilders.get("/productInfo/baeldung").headers(headers))
-          .andDo(MockMvcResultHandlers.print())
-          .andExpect(MockMvcResultMatchers.status().is(304));
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().is(304));
     }
-
-
 
 
 }

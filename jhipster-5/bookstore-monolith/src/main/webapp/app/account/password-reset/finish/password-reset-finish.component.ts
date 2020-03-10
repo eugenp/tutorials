@@ -1,9 +1,9 @@
-import { Component, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular/core';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit, AfterViewInit, Renderer, ElementRef} from '@angular/core';
+import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {ActivatedRoute} from '@angular/router';
 
-import { LoginModalService } from 'app/core';
-import { PasswordResetFinishService } from './password-reset-finish.service';
+import {LoginModalService} from 'app/core';
+import {PasswordResetFinishService} from './password-reset-finish.service';
 
 @Component({
     selector: 'jhi-password-reset-finish',
@@ -25,7 +25,8 @@ export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
         private route: ActivatedRoute,
         private elementRef: ElementRef,
         private renderer: Renderer
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.route.queryParams.subscribe(params => {
@@ -47,7 +48,7 @@ export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
         if (this.resetAccount.password !== this.confirmPassword) {
             this.doNotMatch = 'ERROR';
         } else {
-            this.passwordResetFinishService.save({ key: this.key, newPassword: this.resetAccount.password }).subscribe(
+            this.passwordResetFinishService.save({key: this.key, newPassword: this.resetAccount.password}).subscribe(
                 () => {
                     this.success = 'OK';
                 },

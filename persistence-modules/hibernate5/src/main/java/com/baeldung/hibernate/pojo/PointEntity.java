@@ -14,7 +14,7 @@ public class PointEntity {
     @GeneratedValue
     private Long id;
 
-    @Column(columnDefinition="BINARY(2048)")
+    @Column(columnDefinition = "BINARY(2048)")
     private Point point;
 
     public PointEntity() {

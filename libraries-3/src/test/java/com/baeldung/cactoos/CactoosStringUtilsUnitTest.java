@@ -8,47 +8,47 @@ import org.junit.Test;
 
 public class CactoosStringUtilsUnitTest {
 
-	@Test
-	public void whenFormattedTextIsPassedWithArgs_thenFormattedStringIsReturned() throws IOException {
+    @Test
+    public void whenFormattedTextIsPassedWithArgs_thenFormattedStringIsReturned() throws IOException {
 
-		CactoosStringUtils obj = new CactoosStringUtils();
+        CactoosStringUtils obj = new CactoosStringUtils();
 
-		// when
-		String formattedString = obj.createdFormattedString("John");
+        // when
+        String formattedString = obj.createdFormattedString("John");
 
-		// then
-		assertEquals("Hello John", formattedString);
+        // then
+        assertEquals("Hello John", formattedString);
 
-	}
-	
-	@Test
-	public void whenStringIsPassesdToLoweredOrUpperClass_thenCorrespondingStringIsReturned() throws Exception {
+    }
 
-		CactoosStringUtils obj = new CactoosStringUtils();
+    @Test
+    public void whenStringIsPassesdToLoweredOrUpperClass_thenCorrespondingStringIsReturned() throws Exception {
 
-		// when
-		String lowerCaseString = obj.toLowerCase("TeSt StrIng");
-		String upperCaseString = obj.toUpperCase("TeSt StrIng");
+        CactoosStringUtils obj = new CactoosStringUtils();
 
-		// then
-		assertEquals("test string", lowerCaseString);
-		assertEquals("TEST STRING", upperCaseString);
+        // when
+        String lowerCaseString = obj.toLowerCase("TeSt StrIng");
+        String upperCaseString = obj.toUpperCase("TeSt StrIng");
 
-	}
-	
-	@Test
-	public void whenEmptyStringIsPassesd_thenIsBlankReturnsTrue() throws Exception {
+        // then
+        assertEquals("test string", lowerCaseString);
+        assertEquals("TEST STRING", upperCaseString);
 
-		CactoosStringUtils obj = new CactoosStringUtils();
+    }
 
-		// when
-		boolean isBlankEmptyString = obj.isBlank("");
-		boolean isBlankNull = obj.isBlank(null);
+    @Test
+    public void whenEmptyStringIsPassesd_thenIsBlankReturnsTrue() throws Exception {
 
-		// then
-		assertEquals(true, isBlankEmptyString);
-		assertEquals(true, isBlankNull);
+        CactoosStringUtils obj = new CactoosStringUtils();
 
-	}
+        // when
+        boolean isBlankEmptyString = obj.isBlank("");
+        boolean isBlankNull = obj.isBlank(null);
+
+        // then
+        assertEquals(true, isBlankEmptyString);
+        assertEquals(true, isBlankNull);
+
+    }
 
 }

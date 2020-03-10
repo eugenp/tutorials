@@ -51,16 +51,16 @@ public class FindKthLargest {
         Integer[] rightArr;
 
         leftArr = IntStream.range(left, right)
-            .filter(i -> arr[i] < pivot)
-            .map(i -> arr[i])
-            .boxed()
-            .toArray(Integer[]::new);
+                .filter(i -> arr[i] < pivot)
+                .map(i -> arr[i])
+                .boxed()
+                .toArray(Integer[]::new);
 
         rightArr = IntStream.range(left, right)
-            .filter(i -> arr[i] > pivot)
-            .map(i -> arr[i])
-            .boxed()
-            .toArray(Integer[]::new);
+                .filter(i -> arr[i] > pivot)
+                .map(i -> arr[i])
+                .boxed()
+                .toArray(Integer[]::new);
 
         int leftArraySize = leftArr.length;
         System.arraycopy(leftArr, 0, arr, left, leftArraySize);

@@ -37,8 +37,8 @@ public class DoubleBraceUnitTest {
 
     @Test
     public void whenInitializeUnmodifiableSetWithDoubleBrace_containsElements() {
-         Set<String> countries = Stream.of("India", "USSR", "USA")
-           .collect(collectingAndThen(toSet(), Collections::unmodifiableSet));
+        Set<String> countries = Stream.of("India", "USSR", "USA")
+                .collect(collectingAndThen(toSet(), Collections::unmodifiableSet));
 
         assertTrue(countries.contains("India"));
     }

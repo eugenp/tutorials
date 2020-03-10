@@ -10,14 +10,14 @@ public class Movie {
 
     @NotEmpty(message = "Movie name cannot be empty.")
     private String name;
-    
+
     public Movie(String name) {
         this.id = UUID.randomUUID()
-            .toString();
+                .toString();
         this.name = name;
     }
 
-    public Movie(){
+    public Movie() {
 
     }
 

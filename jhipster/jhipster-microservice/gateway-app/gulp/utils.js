@@ -3,9 +3,9 @@
 var fs = require('fs');
 
 module.exports = {
-    endsWith : endsWith,
-    parseVersion : parseVersion,
-    isLintFixed : isLintFixed
+    endsWith: endsWith,
+    parseVersion: parseVersion,
+    isLintFixed: isLintFixed
 };
 
 function endsWith(str, suffix) {
@@ -13,6 +13,7 @@ function endsWith(str, suffix) {
 }
 
 var parseString = require('xml2js').parseString;
+
 // return the version number from `pom.xml` file
 function parseVersion() {
     var version = null;
@@ -31,6 +32,6 @@ function parseVersion() {
 }
 
 function isLintFixed(file) {
-	// Has ESLint fixed the file contents?
-	return file.eslint !== null && file.eslint.fixed;
+    // Has ESLint fixed the file contents?
+    return file.eslint !== null && file.eslint.fixed;
 }

@@ -28,15 +28,15 @@ public class EthListener extends EthereumListenerAdapter {
             long timeDelta = 0;
             for (int i = 0; i < thou; ++i) {
                 Block parent = ethereum
-                  .getBlockchain()
-                  .getBlockByHash(block.getParentHash());
+                        .getBlockchain()
+                        .getBlockByHash(block.getParentHash());
                 timeDelta += Math.abs(block.getTimestamp() - parent.getTimestamp());
             }
             response = String.valueOf(block
-              .getDifficultyBI()
-              .divide(BIUtil.toBI(timeDelta / thou))
-              .divide(new BigInteger("1000000000"))
-              .doubleValue()) + " GH/s";
+                    .getDifficultyBI()
+                    .divide(BIUtil.toBI(timeDelta / thou))
+                    .divide(new BigInteger("1000000000"))
+                    .doubleValue()) + " GH/s";
         }
         return response;
     }
@@ -52,11 +52,11 @@ public class EthListener extends EthereumListenerAdapter {
             out("Block difficulty: " + block.getDifficultyBI().toString());
             out("Block transactions: " + block.getTransactionsList().toString());
             out("Best block (last block): " + ethereum
-              .getBlockchain()
-              .getBestBlock().toString());
+                    .getBlockchain()
+                    .getBestBlock().toString());
             out("Total difficulty: " + ethereum
-              .getBlockchain()
-              .getTotalDifficulty().toString());
+                    .getBlockchain()
+                    .getTotalDifficulty().toString());
         }
     }
 

@@ -9,7 +9,7 @@ class BaeldungCategory {
         }
         return capitalizedStr
     }
-    
+
     public static double toThePower(Number self, Number exponent) {
         return Math.pow(self, exponent);
     }

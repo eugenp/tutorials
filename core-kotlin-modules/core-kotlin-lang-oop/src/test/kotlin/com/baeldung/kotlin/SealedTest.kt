@@ -4,7 +4,7 @@ import org.junit.Assert
 import org.junit.Test
 
 class SealedTest {
-    fun divide(a: Int, b: Int) : Result<Float, String> = when (b) {
+    fun divide(a: Int, b: Int): Result<Float, String> = when (b) {
         0 -> Failure("Division by zero")
         else -> Success(a.toFloat() / b)
     }

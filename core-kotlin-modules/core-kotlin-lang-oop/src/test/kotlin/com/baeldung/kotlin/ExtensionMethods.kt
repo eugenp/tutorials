@@ -13,7 +13,7 @@ class ExtensionMethods {
 
     @Test
     fun genericExtensionMethod() {
-        fun <T> T.concatAsString(b: T) : String {
+        fun <T> T.concatAsString(b: T): String {
             return this.toString() + b.toString()
         }
 

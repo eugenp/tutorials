@@ -1,6 +1,6 @@
-import { HttpInterceptor } from 'ng-jhipster';
-import { RequestOptionsArgs, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import {HttpInterceptor} from 'ng-jhipster';
+import {RequestOptionsArgs, Response} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
 
 export class NotificationInterceptor extends HttpInterceptor {
 
@@ -13,7 +13,7 @@ export class NotificationInterceptor extends HttpInterceptor {
     }
 
     responseIntercept(observable: Observable<Response>): Observable<Response> {
-        return <Observable<Response>> observable.catch((error) => {
+        return <Observable<Response>>observable.catch((error) => {
             let arr = Array.from(error.headers._headers);
             let headers = [];
             let i;

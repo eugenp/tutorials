@@ -29,84 +29,87 @@
   
   ======================================================================
 -->
-<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:svg="http://www.w3.org/2000/svg" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
-  <define name="db.imageobject.content" combine="choice">
-    <ref name="db.imagedata.svg"/>
-  </define>
-  <!-- ============================================================ -->
-  <div>
-    <db:refname>imagedata</db:refname>
-    <db:refpurpose>An SVG drawing in a media object</db:refpurpose>
-    <define name="db.imagedata.svg.role.attribute">
-      <attribute name="role"/>
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook"
+         xmlns:svg="http://www.w3.org/2000/svg" xmlns:s="http://purl.oclc.org/dsdl/schematron"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0"
+         xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
+    <define name="db.imageobject.content" combine="choice">
+        <ref name="db.imagedata.svg"/>
     </define>
-    <define name="db.imagedata.svg.attlist">
-      <interleave>
-        <optional>
-          <ref name="db.imagedata.svg.role.attribute"/>
-        </optional>
-        <ref name="db.common.attributes"/>
-        <optional>
-          <attribute name="format">
-            <db:refpurpose>Specifies that the format of the data is SVG</db:refpurpose>
-            <value>svg</value>
-            <a:documentation>Specifies SVG.</a:documentation>
-          </attribute>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.align.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.valign.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.width.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.contentwidth.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.scalefit.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.scale.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.depth.attribute"/>
-        </optional>
-        <optional>
-          <ref name="db.imagedata.contentdepth.attribute"/>
-        </optional>
-      </interleave>
-    </define>
-    <define name="db.imagedata.svg.info">
-      <ref name="db._info.title.forbidden"/>
-    </define>
-    <define name="db.imagedata.svg">
-      <element name="imagedata">
-        <ref name="db.imagedata.svg.attlist"/>
-        <ref name="db.imagedata.svg.info"/>
-        <oneOrMore>
-          <ref name="db._any.svg"/>
-        </oneOrMore>
-      </element>
-    </define>
-  </div>
-  <!-- ============================================================ -->
-  <div>
-    <db:refname>svg:*</db:refname>
-    <db:refpurpose>Any element from the SVG namespace</db:refpurpose>
-    <define name="db._any.svg">
-      <element>
-        <nsName ns="http://www.w3.org/2000/svg"/>
-        <zeroOrMore>
-          <choice>
-            <ref name="db._any.attribute"/>
-            <text/>
-            <ref name="db._any"/>
-          </choice>
-        </zeroOrMore>
-      </element>
-    </define>
-  </div>
+    <!-- ============================================================ -->
+    <div>
+        <db:refname>imagedata</db:refname>
+        <db:refpurpose>An SVG drawing in a media object</db:refpurpose>
+        <define name="db.imagedata.svg.role.attribute">
+            <attribute name="role"/>
+        </define>
+        <define name="db.imagedata.svg.attlist">
+            <interleave>
+                <optional>
+                    <ref name="db.imagedata.svg.role.attribute"/>
+                </optional>
+                <ref name="db.common.attributes"/>
+                <optional>
+                    <attribute name="format">
+                        <db:refpurpose>Specifies that the format of the data is SVG</db:refpurpose>
+                        <value>svg</value>
+                        <a:documentation>Specifies SVG.</a:documentation>
+                    </attribute>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.align.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.valign.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.width.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.contentwidth.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.scalefit.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.scale.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.depth.attribute"/>
+                </optional>
+                <optional>
+                    <ref name="db.imagedata.contentdepth.attribute"/>
+                </optional>
+            </interleave>
+        </define>
+        <define name="db.imagedata.svg.info">
+            <ref name="db._info.title.forbidden"/>
+        </define>
+        <define name="db.imagedata.svg">
+            <element name="imagedata">
+                <ref name="db.imagedata.svg.attlist"/>
+                <ref name="db.imagedata.svg.info"/>
+                <oneOrMore>
+                    <ref name="db._any.svg"/>
+                </oneOrMore>
+            </element>
+        </define>
+    </div>
+    <!-- ============================================================ -->
+    <div>
+        <db:refname>svg:*</db:refname>
+        <db:refpurpose>Any element from the SVG namespace</db:refpurpose>
+        <define name="db._any.svg">
+            <element>
+                <nsName ns="http://www.w3.org/2000/svg"/>
+                <zeroOrMore>
+                    <choice>
+                        <ref name="db._any.attribute"/>
+                        <text/>
+                        <ref name="db._any"/>
+                    </choice>
+                </zeroOrMore>
+            </element>
+        </define>
+    </div>
 </grammar>

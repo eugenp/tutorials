@@ -25,7 +25,7 @@ import com.baeldung.persistence.model.Foo;
 import com.baeldung.spring.config.PersistenceTestConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceTestConfig.class}, loader = AnnotationConfigContextLoader.class)
 @SuppressWarnings("unchecked")
 public class FooSortingPersistenceIntegrationTest {
 

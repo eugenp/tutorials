@@ -33,7 +33,7 @@ public class GraphExperiments {
         graph.vertices().filter("name = 'Martin'").show();
 
         graph.filterEdges("type = 'Friend'")
-            .dropIsolatedVertices().vertices().show();
+                .dropIsolatedVertices().vertices().show();
 
         graph.degrees().show();
         graph.inDegrees().show();

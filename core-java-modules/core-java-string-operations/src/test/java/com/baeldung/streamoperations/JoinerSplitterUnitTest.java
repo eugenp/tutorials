@@ -26,7 +26,7 @@ public class JoinerSplitterUnitTest {
     public void givenArray_transformedToStream_convertToPrefixPostfixString() {
 
         String[] programming_languages = {"java", "python",
-          "nodejs", "ruby"};
+                "nodejs", "ruby"};
         String expectation = "[java,python,nodejs,ruby]";
 
         String result = JoinerSplitter.joinWithPrefixPostFix(programming_languages);
@@ -64,20 +64,20 @@ public class JoinerSplitterUnitTest {
         assertEquals(result, expectation);
 
     }
-    
+
     @Test
     public void givenStringArray_transformedToStream_convertToMap() {
 
-        String[] programming_languages = new String[] {"language:java","os:linux","editor:emacs"};
-        
-        Map<String,String> expectation=new HashMap<>();
+        String[] programming_languages = new String[]{"language:java", "os:linux", "editor:emacs"};
+
+        Map<String, String> expectation = new HashMap<>();
         expectation.put("language", "java");
         expectation.put("os", "linux");
         expectation.put("editor", "emacs");
-        
+
         Map<String, String> result = JoinerSplitter.arrayToMap(programming_languages);
         assertEquals(result, expectation);
-        
+
     }
 
 }

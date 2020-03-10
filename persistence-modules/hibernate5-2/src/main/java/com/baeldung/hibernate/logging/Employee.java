@@ -19,7 +19,7 @@ public class Employee {
 
     public Employee() {
     }
-    
+
     public Employee(String name, String employeeNumber) {
         this.name = name;
         this.employeeNumber = employeeNumber;

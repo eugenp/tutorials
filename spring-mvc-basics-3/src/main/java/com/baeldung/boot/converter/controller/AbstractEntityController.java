@@ -18,12 +18,12 @@ public class AbstractEntityController {
     public ResponseEntity<Object> getStringToFoo(@PathVariable Foo foo) {
         return ResponseEntity.ok(foo);
     }
-    
+
     @GetMapping("/bar/{bar}")
     public ResponseEntity<Object> getStringToBar(@PathVariable Bar bar) {
         return ResponseEntity.ok(bar);
     }
-    
+
     @GetMapping
     public ResponseEntity<Object> getStringToMode(@RequestParam("mode") Modes mode) {
         return ResponseEntity.ok(mode);

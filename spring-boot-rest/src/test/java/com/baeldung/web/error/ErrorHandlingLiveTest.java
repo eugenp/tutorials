@@ -34,33 +34,33 @@ public class ErrorHandlingLiveTest {
     @Test
     public void whenRequestingFaultyEndpointAsJson_thenReceiveDefaultResponseWithConfiguredAttrs() {
         given().header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
-            .get(EXCEPTION_ENDPOINT)
-            .then()
-            .body("$", hasKey(LOCALE_RESPONSE_KEY_PATH))
-            .body(CAUSE_RESPONSE_KEY_PATH, is(CAUSE_RESPONSE_VALUE))
-            .body("$", not(hasKey(ERROR_RESPONSE_KEY_PATH)))
-            .body("$", not(hasKey(XML_RESPONSE_KEY_PATH)));
+                .get(EXCEPTION_ENDPOINT)
+                .then()
+                .body("$", hasKey(LOCALE_RESPONSE_KEY_PATH))
+                .body(CAUSE_RESPONSE_KEY_PATH, is(CAUSE_RESPONSE_VALUE))
+                .body("$", not(hasKey(ERROR_RESPONSE_KEY_PATH)))
+                .body("$", not(hasKey(XML_RESPONSE_KEY_PATH)));
     }
 
     @Test
     public void whenRequestingFaultyEndpointAsXml_thenReceiveXmlResponseWithConfiguredAttrs() {
         given().header(HttpHeaders.ACCEPT, MediaType.APPLICATION_XML_VALUE)
-            .get(EXCEPTION_ENDPOINT)
-            .then()
-            .body(LOCALE_RESPONSE_KEY_XML_PATH, isA(String.class))
-            .body(CAUSE_RESPONSE_KEY_XML_PATH, is(CAUSE_RESPONSE_VALUE))
-            .body(RESPONSE_XML_ROOT, not(hasKey(ERROR_RESPONSE_KEY_PATH)))
-            .body(XML_RESPONSE_KEY_XML_PATH, is(XML_RESPONSE_VALUE));
+                .get(EXCEPTION_ENDPOINT)
+                .then()
+                .body(LOCALE_RESPONSE_KEY_XML_PATH, isA(String.class))
+                .body(CAUSE_RESPONSE_KEY_XML_PATH, is(CAUSE_RESPONSE_VALUE))
+                .body(RESPONSE_XML_ROOT, not(hasKey(ERROR_RESPONSE_KEY_PATH)))
+                .body(XML_RESPONSE_KEY_XML_PATH, is(XML_RESPONSE_VALUE));
     }
 
     @Test
     public void whenRequestingFaultyEndpointAsHtml_thenReceiveWhitelabelPageResponse() throws Exception {
         try (WebClient webClient = new WebClient()) {
             webClient.getOptions()
-                .setThrowExceptionOnFailingStatusCode(false);
+                    .setThrowExceptionOnFailingStatusCode(false);
             HtmlPage page = webClient.getPage(EXCEPTION_ENDPOINT);
             assertThat(page.getBody()
-                .asText()).contains("Whitelabel Error Page");
+                    .asText()).contains("Whitelabel Error Page");
         }
     }
 }

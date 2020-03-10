@@ -14,7 +14,7 @@ public class WidgetController {
     public String addWidget(@ModelAttribute Widget widget) {
         return "enums/new";
     }
-    
+
     @PostMapping("/widget/add")
     public String saveWidget(@Valid Widget widget, Model model) {
         model.addAttribute("widget", widget);

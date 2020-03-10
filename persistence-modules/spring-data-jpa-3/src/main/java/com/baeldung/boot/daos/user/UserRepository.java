@@ -15,13 +15,13 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
-public interface UserRepository extends JpaRepository<User, Integer> , UserRepositoryCustom{
+public interface UserRepository extends JpaRepository<User, Integer>, UserRepositoryCustom {
 
     Stream<User> findAllByName(String name);
 
     @Query("SELECT u FROM User u WHERE u.status = 1")
     Collection<User> findAllActiveUsers();
-    
+
     @Query("select u from User u where u.email like '%@gmail.com'")
     List<User> findUsersWithGmailAddress();
 
@@ -75,14 +75,14 @@ public interface UserRepository extends JpaRepository<User, Integer> , UserRepos
     @Query(value = "INSERT INTO Users (name, age, email, status, active) VALUES (:name, :age, :email, :status, :active)", nativeQuery = true)
     @Modifying
     void insertUser(@Param("name") String name, @Param("age") Integer age, @Param("email") String email, @Param("status") Integer status, @Param("active") boolean active);
-    
+
     @Modifying
     @Query(value = "UPDATE Users u SET status = ? WHERE u.name = ?", nativeQuery = true)
     int updateUserSetStatusForNameNativePostgres(Integer status, String name);
-    
+
     @Query(value = "SELECT u FROM User u WHERE u.name IN :names")
-	  List<User> findUserByNameList(@Param("names") Collection<String> names);
-    
+    List<User> findUserByNameList(@Param("names") Collection<String> names);
+
     void deleteAllByCreationDateAfter(LocalDate date);
 
     @Modifying(clearAutomatically = true, flushAutomatically = true)

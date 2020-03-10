@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     stateConfig.$inject = ['$stateProvider'];
 
-    function stateConfig ($stateProvider) {
+    function stateConfig($stateProvider) {
         $stateProvider.state('docs', {
             parent: 'admin',
             url: '/docs',

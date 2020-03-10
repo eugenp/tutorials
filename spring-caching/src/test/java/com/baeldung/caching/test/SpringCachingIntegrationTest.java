@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { CachingConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {CachingConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class SpringCachingIntegrationTest {
 
     @Autowired

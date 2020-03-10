@@ -5,7 +5,7 @@
 <head>
     <title>Authorization</title>
     <style>
-        input[type=submit]{
+        input[type=submit] {
             width: 25%;
             padding: 4px 0px;
             display: inline-block;
@@ -25,7 +25,8 @@
 <body>
 
 <div class="container">
-    <p><h3>Want to Authorize scopes for client : ${client.clientId} ?</h3></p>
+    <p>
+    <h3>Want to Authorize scopes for client : ${client.clientId} ?</h3></p>
     <hr>
 
     <form method="post" action="authorize">

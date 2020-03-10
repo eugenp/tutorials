@@ -22,7 +22,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { MvcConfig.class, ManualSecurityConfig.class })
+@ContextConfiguration(classes = {MvcConfig.class, ManualSecurityConfig.class})
 public class ManualSecurityIntegrationTest {
 
     @Autowired
@@ -41,18 +41,18 @@ public class ManualSecurityIntegrationTest {
      */
     @Test
     public void whenLoginIsSuccessFulThenEndpointCanBeAccessedAndCurrentUserPrinted() throws Exception {
-        
+
         mockMvc.perform(get("/custom/print"))
-        .andExpect(status().isUnauthorized());
-        
+                .andExpect(status().isUnauthorized());
+
         HttpSession session = mockMvc.perform(post("/custom/login").param("username", "user1").param("password", "user1Pass"))
-            .andExpect(status().isOk())
-            .andReturn()
-            .getRequest()
-            .getSession();
-        
+                .andExpect(status().isOk())
+                .andReturn()
+                .getRequest()
+                .getSession();
+
         mockMvc.perform(get("/custom/print").session((MockHttpSession) session))
-            .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is2xxSuccessful());
     }
-    
+
 }

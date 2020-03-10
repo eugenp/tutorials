@@ -17,20 +17,20 @@ public class Address {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null) return false;
-        if(o.getClass() == com.baeldung.performancetests.model.source.Address.class) {
+        if (o.getClass() == com.baeldung.performancetests.model.source.Address.class) {
             com.baeldung.performancetests.model.source.Address address =
-              (com.baeldung.performancetests.model.source.Address) o;
+                    (com.baeldung.performancetests.model.source.Address) o;
             return Objects.equals(street, address.getStreet()) &&
-              Objects.equals(city, address.getCity()) &&
-              Objects.equals(postalCode, address.getPostalCode()) &&
-              Objects.equals(country, address.getCountry());
+                    Objects.equals(city, address.getCity()) &&
+                    Objects.equals(postalCode, address.getPostalCode()) &&
+                    Objects.equals(country, address.getCountry());
         }
-        if(o.getClass() != getClass()) return false;
+        if (o.getClass() != getClass()) return false;
         Address address = (Address) o;
         return Objects.equals(street, address.street) &&
-          Objects.equals(city, address.city) &&
-          Objects.equals(postalCode, address.postalCode) &&
-          Objects.equals(country, address.country);
+                Objects.equals(city, address.city) &&
+                Objects.equals(postalCode, address.postalCode) &&
+                Objects.equals(country, address.country);
     }
 
     @Override

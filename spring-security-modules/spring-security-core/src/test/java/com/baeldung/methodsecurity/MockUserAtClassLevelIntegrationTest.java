@@ -15,7 +15,7 @@ import com.baeldung.methodsecurity.service.UserRoleService;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration
-@WithMockUser(username = "john", roles = { "VIEWER" })
+@WithMockUser(username = "john", roles = {"VIEWER"})
 public class MockUserAtClassLevelIntegrationTest {
 
     @Test

@@ -34,14 +34,14 @@ public class InMemoryAuthControllerIntegrationTest {
     @Test
     public void givenAuthRequestOnPrivateService_shouldSucceedWith200() throws Exception {
         ResponseEntity<String> result = template.withBasicAuth("spring", "secret")
-            .getForEntity("/private/hello", String.class);
+                .getForEntity("/private/hello", String.class);
         assertEquals(HttpStatus.OK, result.getStatusCode());
     }
-    
+
     @Test
     public void givenInvalidAuthRequestOnPrivateService_shouldSucceedWith200() throws Exception {
         ResponseEntity<String> result = template.withBasicAuth("spring", "wrong")
-            .getForEntity("/private/hello", String.class);
+                .getForEntity("/private/hello", String.class);
         assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());
     }
 

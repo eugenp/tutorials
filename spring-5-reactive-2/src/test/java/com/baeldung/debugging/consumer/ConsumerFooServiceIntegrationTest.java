@@ -39,27 +39,27 @@ public class ConsumerFooServiceIntegrationTest {
         service.processFoo(flux);
 
         Collection<String> allLoggedEntries = ListAppender.getEvents()
-            .stream()
-            .map(ILoggingEvent::getFormattedMessage)
-            .collect(Collectors.toList());
+                .stream()
+                .map(ILoggingEvent::getFormattedMessage)
+                .collect(Collectors.toList());
 
         Collection<String> allSuppressedEntries = ListAppender.getEvents()
-            .stream()
-            .map(ILoggingEvent::getThrowableProxy)
-            .flatMap(t -> {
-                return Optional.ofNullable(t)
-                    .map(IThrowableProxy::getSuppressed)
-                    .map(Arrays::stream)
-                    .orElse(Stream.empty());
-            })
-            .map(IThrowableProxy::getMessage)
-            .collect(Collectors.toList());
+                .stream()
+                .map(ILoggingEvent::getThrowableProxy)
+                .flatMap(t -> {
+                    return Optional.ofNullable(t)
+                            .map(IThrowableProxy::getSuppressed)
+                            .map(Arrays::stream)
+                            .orElse(Stream.empty());
+                })
+                .map(IThrowableProxy::getMessage)
+                .collect(Collectors.toList());
         assertThat(allLoggedEntries).anyMatch(entry -> entry.contains("The following error happened on processFoo method!"))
-            .anyMatch(entry -> entry.contains("| onSubscribe"))
-            .anyMatch(entry -> entry.contains("| cancel()"));
+                .anyMatch(entry -> entry.contains("| onSubscribe"))
+                .anyMatch(entry -> entry.contains("| cancel()"));
 
         assertThat(allSuppressedEntries).anyMatch(entry -> entry.contains("Assembly trace from producer"))
-            .anyMatch(entry -> entry.contains("Error has been observed by the following operator(s)"));
+                .anyMatch(entry -> entry.contains("Error has been observed by the following operator(s)"));
     }
 
 }

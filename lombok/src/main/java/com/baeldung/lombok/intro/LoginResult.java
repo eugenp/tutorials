@@ -11,15 +11,20 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
 @RequiredArgsConstructor
-@Accessors(fluent = true) @Getter
+@Accessors(fluent = true)
+@Getter
 @EqualsAndHashCode(of = {"authToken"})
 public class LoginResult {
 
-    private final @NonNull Instant loginTs;
+    private final @NonNull
+    Instant loginTs;
 
-    private final @NonNull String authToken;
-    private final @NonNull Duration tokenValidity;
+    private final @NonNull
+    String authToken;
+    private final @NonNull
+    Duration tokenValidity;
 
-    private final @NonNull URL tokenRefreshUrl;
+    private final @NonNull
+    URL tokenRefreshUrl;
 
 }

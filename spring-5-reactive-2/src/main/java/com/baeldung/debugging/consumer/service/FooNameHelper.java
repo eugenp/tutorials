@@ -18,7 +18,7 @@ public class FooNameHelper {
         flux = flux.map(foo -> {
             String processedName = null;
             Integer random = ThreadLocalRandom.current()
-                .nextInt(0, 80);
+                    .nextInt(0, 80);
             processedName = (random != 0) ? foo.getFormattedName() : foo.getFormattedName() + "-bael";
             foo.setFormattedName(processedName);
             return foo;
@@ -30,11 +30,11 @@ public class FooNameHelper {
         return flux.map(foo -> {
             String processedName;
             Integer random = ThreadLocalRandom.current()
-                .nextInt(0, 100);
+                    .nextInt(0, 100);
 
             processedName = (random == 0) ? foo.getFormattedName()
-                .substring(10, 15)
-                : foo.getFormattedName()
+                    .substring(10, 15)
+                    : foo.getFormattedName()
                     .substring(0, 5);
 
             foo.setFormattedName(processedName);

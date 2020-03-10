@@ -15,7 +15,7 @@ import com.baeldung.boot.domain.GenericEntity;
 import com.baeldung.boot.repository.GenericEntityRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = { Application.class, H2JpaConfig.class })
+@SpringBootTest(classes = {Application.class, H2JpaConfig.class})
 public class SpringBootH2IntegrationTest {
 
     @Autowired

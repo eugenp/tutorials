@@ -2,6 +2,7 @@ package com.baeldung.interpolation;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import javax.validation.MessageInterpolator;
 import java.util.Locale;
 

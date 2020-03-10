@@ -2,17 +2,27 @@
 <HEAD>
     <TITLE>Online Electronic Store</TITLE>
     <style>
-        body {background-color: powderblue;}
-        h1   {color: blue;}
-        p    {color: red;}
+        body {
+            background-color: powderblue;
+        }
+
+        h1 {
+            color: blue;
+        }
+
+        p {
+            color: red;
+        }
+
         table.gridtable {
-            font-family: verdana,arial,sans-serif;
-            font-size:11px;
-            color:#333333;
+            font-family: verdana, arial, sans-serif;
+            font-size: 11px;
+            color: #333333;
             border-width: 1px;
             border-color: #666666;
             border-collapse: collapse;
         }
+
         table.gridtable th {
             border-width: 1px;
             padding: 8px;
@@ -20,6 +30,7 @@
             border-color: #666666;
             background-color: #dedede;
         }
+
         table.gridtable td {
             border-width: 1px;
             padding: 8px;
@@ -45,7 +56,9 @@
     #set( $count = 1 )
     <TABLE class="gridtable">
         <TR>
-            <TH>Serial #</TH><TH>Product Name</TH><TH>Price</TH>
+            <TH>Serial #</TH>
+            <TH>Product Name</TH>
+            <TH>Price</TH>
         </TR>
         #foreach( $product in $products )
             <TR>

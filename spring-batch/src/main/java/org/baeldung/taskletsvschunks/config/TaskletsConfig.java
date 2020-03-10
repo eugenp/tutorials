@@ -23,9 +23,11 @@ import org.springframework.transaction.PlatformTransactionManager;
 @EnableBatchProcessing
 public class TaskletsConfig {
 
-    @Autowired private JobBuilderFactory jobs;
+    @Autowired
+    private JobBuilderFactory jobs;
 
-    @Autowired private StepBuilderFactory steps;
+    @Autowired
+    private StepBuilderFactory steps;
 
     @Bean
     public JobLauncherTestUtils jobLauncherTestUtils() {
@@ -69,35 +71,35 @@ public class TaskletsConfig {
     @Bean
     protected Step readLines() {
         return steps
-          .get("readLines")
-          .tasklet(linesReader())
-          .build();
+                .get("readLines")
+                .tasklet(linesReader())
+                .build();
     }
 
     @Bean
     protected Step processLines() {
         return steps
-          .get("processLines")
-          .tasklet(linesProcessor())
-          .build();
+                .get("processLines")
+                .tasklet(linesProcessor())
+                .build();
     }
 
     @Bean
     protected Step writeLines() {
         return steps
-          .get("writeLines")
-          .tasklet(linesWriter())
-          .build();
+                .get("writeLines")
+                .tasklet(linesWriter())
+                .build();
     }
 
     @Bean
     public Job job() {
         return jobs
-          .get("taskletsJob")
-          .start(readLines())
-          .next(processLines())
-          .next(writeLines())
-          .build();
+                .get("taskletsJob")
+                .start(readLines())
+                .next(processLines())
+                .next(writeLines())
+                .build();
     }
 
 }

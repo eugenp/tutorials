@@ -12,7 +12,7 @@ public class LoopsInJava {
     }
 
     public int[] enhanced_for_each_loop() {
-        int[] intArr = { 0, 1, 2, 3, 4 };
+        int[] intArr = {0, 1, 2, 3, 4};
         int[] arr = new int[5];
         for (int num : intArr) {
             arr[num] = num;

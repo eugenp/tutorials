@@ -1,11 +1,11 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('gatewayApp')
         .directive('jhSort', jhSort);
 
-    function jhSort () {
+    function jhSort() {
         var directive = {
             restrict: 'A',
             scope: {
@@ -23,7 +23,7 @@
 
     SortController.$inject = ['$scope', '$element'];
 
-    function SortController ($scope, $element) {
+    function SortController($scope, $element) {
         var vm = this;
 
         vm.applyClass = applyClass;
@@ -34,7 +34,7 @@
         $scope.$watchGroup(['vm.predicate', 'vm.ascending'], vm.triggerApply);
         vm.triggerApply();
 
-        function applyClass (element) {
+        function applyClass(element) {
             var thisIcon = element.find('span.glyphicon'),
                 sortIcon = 'glyphicon-sort',
                 sortAsc = 'glyphicon-sort-by-attributes',
@@ -50,7 +50,7 @@
             thisIcon.addClass(add);
         }
 
-        function resetClasses () {
+        function resetClasses() {
             var allThIcons = $element.find('span.glyphicon'),
                 sortIcon = 'glyphicon-sort',
                 sortAsc = 'glyphicon-sort-by-attributes',
@@ -59,7 +59,7 @@
             allThIcons.addClass(sortIcon);
         }
 
-        function sort (field) {
+        function sort(field) {
             if (field !== vm.predicate) {
                 vm.ascending = true;
             } else {
@@ -70,7 +70,7 @@
             vm.callback();
         }
 
-        function triggerApply (values)  {
+        function triggerApply(values) {
             vm.resetClasses();
             if (values && values[0] !== '_score') {
                 vm.applyClass($element.find('th[jh-sort-by=\'' + values[0] + '\']'));

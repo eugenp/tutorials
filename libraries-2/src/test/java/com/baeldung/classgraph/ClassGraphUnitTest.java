@@ -65,9 +65,8 @@ public class ClassGraphUnitTest {
 
     private void doTest(Consumer<ScanResult> checker) {
         try (ScanResult result = new ClassGraph().enableAllInfo()
-                                                 .whitelistPackages(getClass().getPackage().getName())
-                                                 .scan())
-        {
+                .whitelistPackages(getClass().getPackage().getName())
+                .scan()) {
             checker.accept(result);
         }
     }

@@ -13,17 +13,20 @@ public class GreeterImpl implements Greeter, BundleActivator {
     private ServiceReference<Greeter> reference;
     private ServiceRegistration<Greeter> registration;
 
-    @Override public String sayHiTo(String name) {
+    @Override
+    public String sayHiTo(String name) {
         return "Hello " + name;
     }
 
-    @Override public void start(BundleContext context) throws Exception {
+    @Override
+    public void start(BundleContext context) throws Exception {
         System.out.println("Registering service.");
         registration = context.registerService(Greeter.class, new GreeterImpl(), new Hashtable<String, String>());
         reference = registration.getReference();
     }
 
-    @Override public void stop(BundleContext context) throws Exception {
+    @Override
+    public void stop(BundleContext context) throws Exception {
         System.out.println("Unregistering service.");
         registration.unregister();
     }

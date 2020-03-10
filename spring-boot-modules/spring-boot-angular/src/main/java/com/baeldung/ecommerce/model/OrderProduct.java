@@ -14,7 +14,8 @@ public class OrderProduct {
     @JsonIgnore
     private OrderProductPK pk;
 
-    @Column(nullable = false) private Integer quantity;
+    @Column(nullable = false)
+    private Integer quantity;
 
     public OrderProduct() {
         super();

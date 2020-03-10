@@ -12,7 +12,7 @@ public class ExternalPropertyFileLoader {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(ExternalPropertyFileLoader.class).build()
-        .run(args);
+                .run(args);
     }
 
 }

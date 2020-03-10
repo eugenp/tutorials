@@ -20,7 +20,7 @@ public class PagesController {
     public String getUserPage() {
         return "multipleHttpElems/myUserPage";
     }
-    
+
     @RequestMapping("/user/private/myPrivateUserPage")
     public String getPrivateUserPage() {
         return "multipleHttpElems/myPrivateUserPage";
@@ -35,7 +35,7 @@ public class PagesController {
     public String getUserLoginPage() {
         return "multipleHttpElems/login";
     }
-    
+
     @RequestMapping("/userLoginWithWarning")
     public String getUserLoginPageWithWarning() {
         return "multipleHttpElems/loginWithWarning";

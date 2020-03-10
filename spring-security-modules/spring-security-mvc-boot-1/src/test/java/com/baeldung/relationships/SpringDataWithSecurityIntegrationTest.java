@@ -77,7 +77,7 @@ public class SpringDataWithSecurityIntegrationTest {
         AppUser appUser = userRepository.findByUsername("lionel@messi.com");
         Authentication auth = new UsernamePasswordAuthenticationToken(new AppUserPrincipal(appUser), null, DummyContentUtil.getAuthorities());
         SecurityContextHolder.getContext()
-            .setAuthentication(auth);
+                .setAuthentication(auth);
         userRepository.updateLastLogin(new Date());
     }
 
@@ -91,13 +91,13 @@ public class SpringDataWithSecurityIntegrationTest {
         AppUser appUser = userRepository.findByUsername("lionel@messi.com");
         Authentication auth = new UsernamePasswordAuthenticationToken(new AppUserPrincipal(appUser), null, DummyContentUtil.getAuthorities());
         SecurityContextHolder.getContext()
-            .setAuthentication(auth);
+                .setAuthentication(auth);
         Page<Tweet> page = null;
         do {
             page = tweetRepository.getMyTweetsAndTheOnesILiked(PageRequest.of(page != null ? page.getNumber() + 1 : 0, 5));
             for (Tweet twt : page.getContent()) {
                 isTrue((twt.getOwner() == appUser.getUsername()) || (twt.getLikes()
-                    .contains(appUser.getUsername())), "I do not have any Tweets");
+                        .contains(appUser.getUsername())), "I do not have any Tweets");
             }
         } while (page.hasNext());
     }

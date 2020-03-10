@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import org.springframework.util.StreamUtils;
 

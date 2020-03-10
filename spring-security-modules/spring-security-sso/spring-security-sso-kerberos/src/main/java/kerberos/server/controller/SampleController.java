@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/endpoint")
 class SampleController {
 
-	@GetMapping
-	String getIt() {
-		return "data from kerberized server";
-	}
+    @GetMapping
+    String getIt() {
+        return "data from kerberized server";
+    }
 }

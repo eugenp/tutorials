@@ -56,7 +56,7 @@ public class FooMappingExamplesController {
         return "Get some Foos with Header";
     }
 
-    @RequestMapping(value = "/foos", headers = { "key1=val1", "key2=val2" })
+    @RequestMapping(value = "/foos", headers = {"key1=val1", "key2=val2"})
     @ResponseBody
     public String getFoosWithHeaders() {
         return "Get some Foos with Header";
@@ -68,7 +68,7 @@ public class FooMappingExamplesController {
     // return "Get some Foos with Header Old";
     // }
 
-    @RequestMapping(value = "/foos", produces = { "application/json", "application/xml" })
+    @RequestMapping(value = "/foos", produces = {"application/json", "application/xml"})
     @ResponseBody
     public String getFoosAsJsonFromREST() {
         return "Get some Foos with Header New";
@@ -76,7 +76,7 @@ public class FooMappingExamplesController {
 
     // advanced - multiple mappings
 
-    @RequestMapping(value = { "/advanced/bars", "/advanced/foos" })
+    @RequestMapping(value = {"/advanced/bars", "/advanced/foos"})
     @ResponseBody
     public String getFoosOrBarsByPath() {
         return "Advanced - Get some Foos or Bars";
@@ -88,37 +88,37 @@ public class FooMappingExamplesController {
         return "Fallback for GET Requests";
     }
 
-    @RequestMapping(value = "*", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "*", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String allFallback() {
         return "Fallback for All Requests";
     }
 
-    @RequestMapping(value = "/foos/multiple", method = { RequestMethod.PUT, RequestMethod.POST })
+    @RequestMapping(value = "/foos/multiple", method = {RequestMethod.PUT, RequestMethod.POST})
     @ResponseBody
     public String putAndPostFoos() {
         return "Advanced - PUT and POST within single method";
     }
- 
+
     // --- Ambiguous Mapping
- 
-    @GetMapping(value = "foos/duplicate" )
+
+    @GetMapping(value = "foos/duplicate")
     public String duplicate() {
         return "Duplicate";
     }
-    
+
     // uncomment for exception of type java.lang.IllegalStateException: Ambiguous mapping
 
     // @GetMapping(value = "foos/duplicate" )
     // public String duplicateEx() {
     // return "Duplicate";
     // }
-    
+
     @GetMapping(value = "foos/duplicate/xml", produces = MediaType.APPLICATION_XML_VALUE)
     public String duplicateXml() {
         return "Duplicate Xml";
     }
-     
+
     @GetMapping(value = "foos/duplicate/json", produces = MediaType.APPLICATION_JSON_VALUE)
     public String duplicateJson() {
         return "Duplicate Json";

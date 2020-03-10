@@ -11,7 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 import com.baeldung.dddhexagonalspring.application.cli.CliOrderController;
 
 @SpringBootApplication
-@PropertySource(value = { "classpath:ddd-layers.properties" })
+@PropertySource(value = {"classpath:ddd-layers.properties"})
 public class DomainLayerApplication implements CommandLineRunner {
 
     public static void main(final String[] args) {

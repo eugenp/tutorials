@@ -21,7 +21,7 @@ public class SemaphoresManualTest {
         final ExecutorService executorService = Executors.newFixedThreadPool(slots);
         final LoginQueueUsingSemaphore loginQueue = new LoginQueueUsingSemaphore(slots);
         IntStream.range(0, slots)
-          .forEach(user -> executorService.execute(loginQueue::tryLogin));
+                .forEach(user -> executorService.execute(loginQueue::tryLogin));
         executorService.shutdown();
         executorService.awaitTermination(10, TimeUnit.SECONDS);
 
@@ -35,7 +35,7 @@ public class SemaphoresManualTest {
         final ExecutorService executorService = Executors.newFixedThreadPool(slots);
         final LoginQueueUsingSemaphore loginQueue = new LoginQueueUsingSemaphore(slots);
         IntStream.range(0, slots)
-          .forEach(user -> executorService.execute(loginQueue::tryLogin));
+                .forEach(user -> executorService.execute(loginQueue::tryLogin));
         executorService.shutdown();
         executorService.awaitTermination(10, TimeUnit.SECONDS);
 
@@ -53,7 +53,7 @@ public class SemaphoresManualTest {
         final ExecutorService executorService = Executors.newFixedThreadPool(slots);
         final DelayQueueUsingTimedSemaphore delayQueue = new DelayQueueUsingTimedSemaphore(1, slots);
         IntStream.range(0, slots)
-          .forEach(user -> executorService.execute(delayQueue::tryAdd));
+                .forEach(user -> executorService.execute(delayQueue::tryAdd));
         executorService.shutdown();
         executorService.awaitTermination(10, TimeUnit.SECONDS);
 
@@ -67,7 +67,7 @@ public class SemaphoresManualTest {
         final ExecutorService executorService = Executors.newFixedThreadPool(slots);
         final DelayQueueUsingTimedSemaphore delayQueue = new DelayQueueUsingTimedSemaphore(1, slots);
         IntStream.range(0, slots)
-          .forEach(user -> executorService.execute(delayQueue::tryAdd));
+                .forEach(user -> executorService.execute(delayQueue::tryAdd));
         executorService.shutdown();
         executorService.awaitTermination(10, TimeUnit.SECONDS);
 
@@ -85,13 +85,13 @@ public class SemaphoresManualTest {
         final ExecutorService executorService = Executors.newFixedThreadPool(count);
         final CounterUsingMutex counter = new CounterUsingMutex();
         IntStream.range(0, count)
-          .forEach(user -> executorService.execute(() -> {
-              try {
-                  counter.increase();
-              } catch (final InterruptedException e) {
-                  e.printStackTrace();
-              }
-          }));
+                .forEach(user -> executorService.execute(() -> {
+                    try {
+                        counter.increase();
+                    } catch (final InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }));
         executorService.shutdown();
 
         assertTrue(counter.hasQueuedThreads());
@@ -103,13 +103,13 @@ public class SemaphoresManualTest {
         final ExecutorService executorService = Executors.newFixedThreadPool(count);
         final CounterUsingMutex counter = new CounterUsingMutex();
         IntStream.range(0, count)
-          .forEach(user -> executorService.execute(() -> {
-              try {
-                  counter.increase();
-              } catch (final InterruptedException e) {
-                  e.printStackTrace();
-              }
-          }));
+                .forEach(user -> executorService.execute(() -> {
+                    try {
+                        counter.increase();
+                    } catch (final InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }));
         executorService.shutdown();
         assertTrue(counter.hasQueuedThreads());
         Thread.sleep(5000);

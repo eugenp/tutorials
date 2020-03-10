@@ -17,26 +17,26 @@ public class DateComparisonUtils {
 
     public static boolean isSameDayUsingLocalDate(Date date1, Date date2) {
         LocalDate localDate1 = date1.toInstant()
-            .atZone(ZoneId.systemDefault())
-            .toLocalDate();
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
         LocalDate localDate2 = date2.toInstant()
-            .atZone(ZoneId.systemDefault())
-            .toLocalDate();
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
         return localDate1.isEqual(localDate2);
     }
 
     public static boolean isSameDayUsingInstant(Date date1, Date date2) {
         Instant instant1 = date1.toInstant()
-            .truncatedTo(ChronoUnit.DAYS);
+                .truncatedTo(ChronoUnit.DAYS);
         Instant instant2 = date2.toInstant()
-            .truncatedTo(ChronoUnit.DAYS);
+                .truncatedTo(ChronoUnit.DAYS);
         return instant1.equals(instant2);
     }
 
     public static boolean isSameDayUsingSimpleDateFormat(Date date1, Date date2) {
         SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
         return fmt.format(date1)
-            .equals(fmt.format(date2));
+                .equals(fmt.format(date2));
     }
 
     public static boolean isSameDayUsingCalendar(Date date1, Date date2) {

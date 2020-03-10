@@ -20,8 +20,8 @@ import com.google.common.base.Preconditions;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-derby.properties" })
-@ComponentScan({ "com.baeldung.persistence" })
+@PropertySource({"classpath:persistence-derby.properties"})
+@ComponentScan({"com.baeldung.persistence"})
 public class Cause4NonTransientConfig {
 
     @Autowired
@@ -35,7 +35,7 @@ public class Cause4NonTransientConfig {
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(restDataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+        sessionFactory.setPackagesToScan(new String[]{"com.baeldung.persistence.model"});
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;

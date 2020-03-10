@@ -17,7 +17,7 @@ import com.querydsl.core.annotations.QueryEntity;
 
 @QueryEntity
 @Document
-@CompoundIndexes({ @CompoundIndex(name = "email_age", def = "{'email.id' : 1, 'age': 1}") })
+@CompoundIndexes({@CompoundIndex(name = "email_age", def = "{'email.id' : 1, 'age': 1}")})
 public class User {
 
     @Id
@@ -37,7 +37,7 @@ public class User {
 
     public User() {
     }
-    
+
     public User(String name, Integer age) {
         this.name = name;
         this.age = age;

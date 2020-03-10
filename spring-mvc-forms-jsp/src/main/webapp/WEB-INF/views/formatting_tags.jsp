@@ -68,7 +68,7 @@
     </h3>
 
     <p>Formatted Date - with type set to time: <fmt:formatDate type="time"
-                                       value="${now}"/></p>
+                                                               value="${now}"/></p>
 
     <p>Formatted Date - with type set to date: <fmt:formatDate type="date"
                                                                value="${now}"/></p>
@@ -201,9 +201,9 @@
     <h3>
         <c:out value="<fmt:requestEncoding> Example"/>
     </h3>
-    <fmt:requestEncoding value = "UTF-8" />
-    <fmt:setLocale value = "fr_FR"/>
-    <fmt:setBundle basename = "com.baeldung.jstl.bundles.CustomMessage" var = "lang"/>
+    <fmt:requestEncoding value="UTF-8"/>
+    <fmt:setLocale value="fr_FR"/>
+    <fmt:setBundle basename="com.baeldung.jstl.bundles.CustomMessage" var="lang"/>
     <fmt:message key="verb.go" bundle="${lang}"/><br/>
     <fmt:message key="verb.come" bundle="${lang}"/><br/>
     <fmt:message key="verb.sit" bundle="${lang}"/><br/>

@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 public class CounterUtil {
 
-    public static String[] COUNTRY_NAMES = { "China", "Australia", "India", "USA", "USSR", "UK", "China", "France", "Poland", "Austria", "India", "USA", "Egypt", "China" };
+    public static String[] COUNTRY_NAMES = {"China", "Australia", "India", "USA", "USSR", "UK", "China", "France", "Poland", "Austria", "India", "USA", "Egypt", "China"};
 
     public static void counterWithWrapperObject(Map<String, Integer> counterMap) {
         for (String country : COUNTRY_NAMES) {
@@ -16,13 +16,13 @@ public class CounterUtil {
 
     public static void counterWithLambdaAndWrapper(Map<String, Long> counterMap) {
         Stream.of(COUNTRY_NAMES)
-            .collect(Collectors.groupingBy(k -> k, () -> counterMap, Collectors.counting()));
+                .collect(Collectors.groupingBy(k -> k, () -> counterMap, Collectors.counting()));
     }
 
     public static void counterWithParallelStreamAndWrapper(Map<String, Long> counterMap) {
         Stream.of(COUNTRY_NAMES)
-            .parallel()
-            .collect(Collectors.groupingBy(k -> k, () -> counterMap, Collectors.counting()));
+                .parallel()
+                .collect(Collectors.groupingBy(k -> k, () -> counterMap, Collectors.counting()));
     }
 
     public static class MutableInteger {
@@ -44,13 +44,13 @@ public class CounterUtil {
     public static void counterWithMutableInteger(Map<String, MutableInteger> counterMap) {
         for (String country : COUNTRY_NAMES) {
             counterMap.compute(country, (k, v) -> v == null ? new MutableInteger(0) : v)
-                .increment();
+                    .increment();
         }
     }
 
     public static void counterWithPrimitiveArray(Map<String, int[]> counterMap) {
         for (String country : COUNTRY_NAMES) {
-            counterMap.compute(country, (k, v) -> v == null ? new int[] { 0 } : v)[0]++;
+            counterMap.compute(country, (k, v) -> v == null ? new int[]{0} : v)[0]++;
         }
     }
 

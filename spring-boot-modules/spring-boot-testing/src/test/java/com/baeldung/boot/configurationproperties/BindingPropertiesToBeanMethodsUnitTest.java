@@ -27,7 +27,7 @@ public class BindingPropertiesToBeanMethodsUnitTest {
     @Test
     void givenBeanAnnotatedMethod_whenBindingProperties_thenAllFieldsAreSet() {
         assertEquals("192.168.0.2", serverConfig.getAddress()
-            .getIp());
+                .getIp());
 
         Map<String, String> expectedResourcesPath = new HashMap<>();
         expectedResourcesPath.put("imgs", "/root/def/imgs");

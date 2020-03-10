@@ -1,15 +1,15 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { ParseLinks, JhiLanguageService} from 'ng-jhipster';
+import {Component, OnInit, Inject} from '@angular/core';
+import {DatePipe} from '@angular/common';
+import {ParseLinks, JhiLanguageService} from 'ng-jhipster';
 
-import { Audit } from './audit.model';
-import { AuditsService } from './audits.service';
-import { ITEMS_PER_PAGE } from '../../shared';
-import { PaginationConfig } from '../../blocks/config/uib-pagination.config';
+import {Audit} from './audit.model';
+import {AuditsService} from './audits.service';
+import {ITEMS_PER_PAGE} from '../../shared';
+import {PaginationConfig} from '../../blocks/config/uib-pagination.config';
 
 @Component({
-  selector: 'jhi-audit',
-  templateUrl: './audits.component.html'
+    selector: 'jhi-audit',
+    templateUrl: './audits.component.html'
 })
 export class AuditsComponent implements OnInit {
     audits: Audit[];
@@ -52,12 +52,14 @@ export class AuditsComponent implements OnInit {
     }
 
     onChangeDate() {
-        this.auditsService.query({page: this.page - 1, size: this.itemsPerPage,
-            fromDate: this.fromDate, toDate: this.toDate}).subscribe(res => {
+        this.auditsService.query({
+            page: this.page - 1, size: this.itemsPerPage,
+            fromDate: this.fromDate, toDate: this.toDate
+        }).subscribe(res => {
 
             this.audits = res.json();
             this.links = this.parseLinks.parse(res.headers.get('link'));
-            this.totalItems = + res.headers.get('X-Total-Count');
+            this.totalItems = +res.headers.get('X-Total-Count');
         });
     }
 

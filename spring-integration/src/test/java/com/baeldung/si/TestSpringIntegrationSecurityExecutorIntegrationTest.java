@@ -22,7 +22,7 @@ import com.baeldung.si.security.SecurityConfig;
 import com.baeldung.si.security.SecurityPubSubChannel;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SecurityPubSubChannel.class, MessageConsumer.class, SecurityConfig.class })
+@ContextConfiguration(classes = {SecurityPubSubChannel.class, MessageConsumer.class, SecurityConfig.class})
 public class TestSpringIntegrationSecurityExecutorIntegrationTest {
 
     @Autowired
@@ -43,7 +43,7 @@ public class TestSpringIntegrationSecurityExecutorIntegrationTest {
     }
 
     @Test
-    @WithMockUser(username = "user", roles = { "VIEWER" })
+    @WithMockUser(username = "user", roles = {"VIEWER"})
     public void givenRoleUser_whenSendMessageToPSChannel_thenNoMessageArrived() throws IllegalStateException, InterruptedException {
         startPSChannel.send(new GenericMessage<String>(DIRECT_CHANNEL_MESSAGE));
 
@@ -54,7 +54,7 @@ public class TestSpringIntegrationSecurityExecutorIntegrationTest {
     }
 
     @Test
-    @WithMockUser(username = "user", roles = { "LOGGER", "VIEWER" })
+    @WithMockUser(username = "user", roles = {"LOGGER", "VIEWER"})
     public void givenRoleUserAndLogger_whenSendMessageToPSChannel_then2GetMessages() throws IllegalStateException, InterruptedException {
         startPSChannel.send(new GenericMessage<String>(DIRECT_CHANNEL_MESSAGE));
 

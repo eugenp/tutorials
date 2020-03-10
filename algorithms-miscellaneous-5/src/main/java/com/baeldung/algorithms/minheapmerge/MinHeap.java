@@ -58,7 +58,7 @@ public class MinHeap {
         heapNodes[i] = heapNodes[j];
         heapNodes[j] = temp;
     }
-    
+
     static int[] merge(int[][] array) {
         HeapNode[] heapNodes = new HeapNode[array.length];
         int resultingArraySize = 0;
@@ -68,7 +68,7 @@ public class MinHeap {
             heapNodes[i] = node;
             resultingArraySize += array[i].length;
         }
-        
+
         MinHeap minHeap = new MinHeap(heapNodes);
         int[] resultingArray = new int[resultingArraySize];
 

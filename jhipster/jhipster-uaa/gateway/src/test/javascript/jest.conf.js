@@ -13,7 +13,7 @@ module.exports = {
     },
     reporters: [
         'default',
-        [ 'jest-junit', { output: './target/test-results/jest/TESTS-results.xml' } ]
+        ['jest-junit', {output: './target/test-results/jest/TESTS-results.xml'}]
     ],
     testResultsProcessor: 'jest-sonar-reporter',
     transformIgnorePatterns: ['node_modules/(?!@angular/common/locales)'],

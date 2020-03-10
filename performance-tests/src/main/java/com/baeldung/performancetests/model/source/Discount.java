@@ -3,6 +3,7 @@ package com.baeldung.performancetests.model.source;
 import com.googlecode.jmapper.annotations.JGlobalMap;
 
 import java.math.BigDecimal;
+
 public class Discount {
     private String startTime;
     private String endTime;

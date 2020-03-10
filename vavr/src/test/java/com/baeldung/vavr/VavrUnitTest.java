@@ -33,7 +33,7 @@ public class VavrUnitTest {
     @Test
     public void givenList_whenSorts_thenCorrect() {
         List<Integer> sortedList = List.of(3, 2, 1)
-          .sorted();
+                .sorted();
     }
 
     /*
@@ -127,7 +127,7 @@ public class VavrUnitTest {
     @Test
     public void whenCreatesFunction_thenCorrect0() {
         Function0<String> getClazzName = () -> this.getClass()
-          .getName();
+                .getName();
         String clazzName = getClazzName.apply();
         assertEquals("com.baeldung.vavr.VavrUnitTest", clazzName);
     }
@@ -216,11 +216,11 @@ public class VavrUnitTest {
         assertEquals(-1, errorSentinel);
     }
 
-     @Test(expected = RuntimeException.class)
-     public void givenBadCode_whenTryHandles_thenCorrect3() {
+    @Test(expected = RuntimeException.class)
+    public void givenBadCode_whenTryHandles_thenCorrect3() {
         Try<Integer> result = Try.of(() -> 1 / 0);
-        result.getOrElseThrow(e->new RuntimeException(e));//re-throw different ex type
-     }
+        result.getOrElseThrow(e -> new RuntimeException(e));//re-throw different ex type
+    }
 
     // lazy
     @Test
@@ -261,7 +261,7 @@ public class VavrUnitTest {
     public void whenSumsJava8List_thenCorrect() {
         // Arrays.asList(1, 2, 3).stream().reduce((i, j) -> i + j);
         int sum = IntStream.of(1, 2, 3)
-          .sum();
+                .sum();
         assertEquals(6, sum);
     }
 
@@ -277,8 +277,8 @@ public class VavrUnitTest {
     @Test
     public void whenSumsVavrList_thenCorrect() {
         int sum = List.of(1, 2, 3)
-          .sum()
-          .intValue();
+                .sum()
+                .intValue();
         assertEquals(6, sum);
     }
 

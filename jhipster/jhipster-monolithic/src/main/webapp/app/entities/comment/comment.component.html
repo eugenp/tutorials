@@ -1,9 +1,10 @@
 <div>
     <h2>
         <span jhiTranslate="baeldungApp.comment.home.title">Comments</span>
-        <button class="btn btn-primary float-right create-comment" [routerLink]="['/', { outlets: { popup: ['comment-new'] } }]">
+        <button class="btn btn-primary float-right create-comment"
+                [routerLink]="['/', { outlets: { popup: ['comment-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="baeldungApp.comment.home.createLabel">
+            <span jhiTranslate="baeldungApp.comment.home.createLabel">
             Create new Comment
             </span>
         </button>
@@ -16,21 +17,25 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="text"><span jhiTranslate="baeldungApp.comment.text">Text</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="creationDate"><span jhiTranslate="baeldungApp.comment.creationDate">Creation Date</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="post.title"><span jhiTranslate="baeldungApp.comment.post">Post</span> <span class="fa fa-sort"></span></th>
-            <th></th>
+                <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="text"><span jhiTranslate="baeldungApp.comment.text">Text</span> <span
+                        class="fa fa-sort"></span></th>
+                <th jhiSortBy="creationDate"><span jhiTranslate="baeldungApp.comment.creationDate">Creation Date</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="post.title"><span jhiTranslate="baeldungApp.comment.post">Post</span> <span
+                        class="fa fa-sort"></span></th>
+                <th></th>
             </tr>
             </thead>
-            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']"
+                   [infiniteScrollDistance]="0">
             <tr *ngFor="let comment of comments ;trackBy: trackId">
                 <td><a [routerLink]="['../comment', comment.id ]">{{comment.id}}</a></td>
                 <td>{{comment.text}}</td>
                 <td>{{comment.creationDate | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="comment.post">
-                        <a [routerLink]="['../post', comment.post?.id ]" >{{comment.post?.title}}</a>
+                        <a [routerLink]="['../post', comment.post?.id ]">{{comment.post?.title}}</a>
                     </div>
                 </td>
                 <td class="text-right">

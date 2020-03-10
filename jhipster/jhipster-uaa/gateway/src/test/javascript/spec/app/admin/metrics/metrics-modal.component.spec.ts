@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { of, throwError } from 'rxjs';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {HttpResponse, HttpErrorResponse} from '@angular/common/http';
+import {of, throwError} from 'rxjs';
 
-import { GatewayTestModule } from '../../../test.module';
-import { JhiMetricsMonitoringModalComponent } from 'app/admin/metrics/metrics-modal.component';
-import { JhiMetricsService } from 'app/admin/metrics/metrics.service';
+import {GatewayTestModule} from '../../../test.module';
+import {JhiMetricsMonitoringModalComponent} from 'app/admin/metrics/metrics-modal.component';
+import {JhiMetricsService} from 'app/admin/metrics/metrics.service';
 
 describe('Component Tests', () => {
     describe('JhiMetricsMonitoringModalComponent', () => {
@@ -32,12 +32,12 @@ describe('Component Tests', () => {
         describe('ngOnInit', () => {
             it('should count the numbers of each thread type', () => {
                 comp.threadDump = [
-                    { name: 'test1', threadState: 'RUNNABLE' },
-                    { name: 'test2', threadState: 'WAITING' },
-                    { name: 'test3', threadState: 'TIMED_WAITING' },
-                    { name: 'test4', threadState: 'BLOCKED' },
-                    { name: 'test5', threadState: 'BLOCKED' },
-                    { name: 'test5', threadState: 'NONE' }
+                    {name: 'test1', threadState: 'RUNNABLE'},
+                    {name: 'test2', threadState: 'WAITING'},
+                    {name: 'test3', threadState: 'TIMED_WAITING'},
+                    {name: 'test4', threadState: 'BLOCKED'},
+                    {name: 'test5', threadState: 'BLOCKED'},
+                    {name: 'test5', threadState: 'NONE'}
                 ];
                 fixture.detectChanges();
 

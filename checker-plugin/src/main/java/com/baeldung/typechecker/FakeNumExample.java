@@ -6,14 +6,20 @@ import org.checkerframework.checker.fenum.qual.Fenum;
 public class FakeNumExample {
 
     // Here we use some String constants to represents countries.
-    static final @Fenum("country") String ITALY = "IT";
-    static final @Fenum("country") String US = "US";
-    static final @Fenum("country") String UNITED_KINGDOM = "UK";
+    static final @Fenum("country")
+    String ITALY = "IT";
+    static final @Fenum("country")
+    String US = "US";
+    static final @Fenum("country")
+    String UNITED_KINGDOM = "UK";
 
     // Here we use other String constants to represent planets instead.
-    static final @Fenum("planet") String MARS = "Mars";
-    static final @Fenum("planet") String EARTH = "Earth";
-    static final @Fenum("planet") String VENUS = "Venus";
+    static final @Fenum("planet")
+    String MARS = "Mars";
+    static final @Fenum("planet")
+    String EARTH = "Earth";
+    static final @Fenum("planet")
+    String VENUS = "Venus";
 
     // Now we write this method and we want to be sure that
     // the String parameter has a value of a country, not that is just a String.

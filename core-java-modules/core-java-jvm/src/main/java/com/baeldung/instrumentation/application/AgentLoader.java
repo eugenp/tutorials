@@ -19,14 +19,14 @@ public class AgentLoader {
 
         //iterate all jvms and get the first one that matches our application name
         Optional<String> jvmProcessOpt = Optional.ofNullable(VirtualMachine.list()
-          .stream()
-          .filter(jvm -> {
-              LOGGER.info("jvm:{}", jvm.displayName());
-              return jvm.displayName().contains(applicationName);
-          })
-          .findFirst().get().id());
+                .stream()
+                .filter(jvm -> {
+                    LOGGER.info("jvm:{}", jvm.displayName());
+                    return jvm.displayName().contains(applicationName);
+                })
+                .findFirst().get().id());
 
-        if(!jvmProcessOpt.isPresent()) {
+        if (!jvmProcessOpt.isPresent()) {
             LOGGER.error("Target Application not found");
             return;
         }

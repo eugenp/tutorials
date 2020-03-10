@@ -15,7 +15,7 @@ html {
     background-image: -moz-linear-gradient(center top, #aaa, #ddd);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(1, #ddd));
     background-image: linear-gradient(top, #aaa, #ddd);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaaaaa', EndColorStr = '#dddddd');
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#aaaaaa', EndColorStr='#dddddd');
     background-repeat: no-repeat;
     height: 100%;
     /* change the box model to exclude the padding from the calculation of 100% height (IE8+) */
@@ -379,11 +379,11 @@ tr {
     border: 0;
 }
 
-tr>td:first-child, tr>th:first-child {
+tr > td:first-child, tr > th:first-child {
     padding-left: 1.25em;
 }
 
-tr>td:last-child, tr>th:last-child {
+tr > td:last-child, tr > th:last-child {
     padding-right: 1.25em;
 }
 
@@ -398,7 +398,7 @@ th {
     background-color: #efefef;
     background-image: -moz-linear-gradient(top, #ffffff, #eaeaea);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(1, #eaeaea));
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#ffffff', EndColorStr = '#eaeaea');
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
     color: #666666;
     font-weight: bold;
@@ -564,11 +564,11 @@ a.skip {
     background: #7c7c7c no-repeat 50% 30%;
     margin-bottom: 20px;
     color: white;
-    height:300px;
-    text-align:center;
+    height: 300px;
+    text-align: center;
 }
 
 img.grails-logo {
-    height:340px;
-    margin-top:-10px;
+    height: 340px;
+    margin-top: -10px;
 }

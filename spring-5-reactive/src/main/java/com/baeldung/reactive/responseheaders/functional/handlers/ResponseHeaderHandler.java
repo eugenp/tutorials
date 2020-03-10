@@ -8,14 +8,14 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class ResponseHeaderHandler {
-    
+
     public Mono<ServerResponse> useHandler(final ServerRequest request) {
         String responseHeaderKey = "Baeldung-Example-Header";
         String responseHeaderValue = "Value-Handler";
         String responseBody = "Response with header using Handler";
 
         return ServerResponse.ok()
-            .header(responseHeaderKey, responseHeaderValue)
-            .body(Mono.just(responseBody),String.class);
+                .header(responseHeaderKey, responseHeaderValue)
+                .body(Mono.just(responseBody), String.class);
     }
 }

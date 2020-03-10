@@ -1,8 +1,8 @@
 /**
-  This class demonstrates how to build the components of 
-  the configuration factory, as described in Section 3 of 
-  "Programmatic Configuration with Log4j 2"
-**/
+ * This class demonstrates how to build the components of
+ * the configuration factory, as described in Section 3 of
+ * "Programmatic Configuration with Log4j 2"
+ **/
 package com.baeldung.logging.log4j2.simpleconfiguration;
 
 import java.io.IOException;
@@ -32,17 +32,17 @@ public class CustomConfigurationFactory extends ConfigurationFactory {
     static Configuration createConfiguration(final String name, ConfigurationBuilder<BuiltConfiguration> builder) {
         AppenderComponentBuilder console = builder.newAppender("Stdout", "Console");
         LayoutComponentBuilder layout = builder.newLayout("PatternLayout")
-            .addAttribute("pattern", "%d [%t] %-5level: %msg%n%throwable");
+                .addAttribute("pattern", "%d [%t] %-5level: %msg%n%throwable");
         console.add(layout);
         FilterComponentBuilder filter = builder.newFilter("MarkerFilter", Filter.Result.ACCEPT, Filter.Result.DENY);
         filter.addAttribute("marker", "FLOW");
         console.add(filter);
         builder.add(console);
         ComponentBuilder triggeringPolicies = builder.newComponent("Policies")
-            .addComponent(builder.newComponent("CronTriggeringPolicy")
-                .addAttribute("schedule", "0 0 0 * * ?"))
-            .addComponent(builder.newComponent("SizeBasedTriggeringPolicy")
-                .addAttribute("size", "100M"));
+                .addComponent(builder.newComponent("CronTriggeringPolicy")
+                        .addAttribute("schedule", "0 0 0 * * ?"))
+                .addComponent(builder.newComponent("SizeBasedTriggeringPolicy")
+                        .addAttribute("size", "100M"));
         AppenderComponentBuilder rollingFile = builder.newAppender("rolling", "RollingFile");
         rollingFile.addAttribute("fileName", "target/rolling.log");
         rollingFile.addAttribute("filePattern", "target/archive/rolling-%d{MM-dd-yy}.log.gz");
@@ -88,7 +88,7 @@ public class CustomConfigurationFactory extends ConfigurationFactory {
 
     @Override
     protected String[] getSupportedTypes() {
-        return new String[] { "*" };
+        return new String[]{"*"};
     }
 }
 

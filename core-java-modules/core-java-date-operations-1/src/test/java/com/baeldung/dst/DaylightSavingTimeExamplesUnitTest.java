@@ -16,9 +16,9 @@ import org.junit.Test;
 public class DaylightSavingTimeExamplesUnitTest {
 
     @Test
-    public void givenItalianTimeZone_WhenDSTHappens_ThenCorrectlyShiftTimeZone() throws ParseException {        
+    public void givenItalianTimeZone_WhenDSTHappens_ThenCorrectlyShiftTimeZone() throws ParseException {
         TimeZone.setDefault(TimeZone.getTimeZone("Europe/Rome"));
-        
+
         TimeZone tz = TimeZone.getTimeZone("Europe/Rome");
         Calendar cal = Calendar.getInstance(tz, Locale.ITALIAN);
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ITALIAN);
@@ -50,11 +50,11 @@ public class DaylightSavingTimeExamplesUnitTest {
 
         //@formatter:off
         System.out.println(String.format(
-               "    Zone ID = %s (%s)\n"  
-             + "  RawOffset = %s minutes\n"
-             + "        DST = %s minutes\n"
-             + "  -----------------------------------------",
-             tz.getID(), tz.getDisplayName(), tz.getRawOffset()/60000, tz.getDSTSavings()/60000));
+                "    Zone ID = %s (%s)\n"
+                        + "  RawOffset = %s minutes\n"
+                        + "        DST = %s minutes\n"
+                        + "  -----------------------------------------",
+                tz.getID(), tz.getDisplayName(), tz.getRawOffset() / 60000, tz.getDSTSavings() / 60000));
         //@formatter:on
     }
 

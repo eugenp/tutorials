@@ -17,9 +17,9 @@ public class CollectionsUnitTest {
         DB db = DBMaker.memoryDB().make();
 
         NavigableSet<String> set = db.
-          treeSet("mySet")
-          .serializer(Serializer.STRING)
-          .createOrOpen();
+                treeSet("mySet")
+                .serializer(Serializer.STRING)
+                .createOrOpen();
 
         String myString = "Baeldung!";
 

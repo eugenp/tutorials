@@ -11,5 +11,5 @@ public class UnknownHostExceptionHandlingUnitTest {
     public void givenUnknownHost_whenResolve_thenUnknownHostException() throws IOException {
         UnknownHostExceptionHandling.getResponseCodeUnhandled("http://locaihost");
     }
-    
+
 }

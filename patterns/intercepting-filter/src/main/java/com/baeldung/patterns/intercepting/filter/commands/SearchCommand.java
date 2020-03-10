@@ -12,7 +12,7 @@ public class SearchCommand extends FrontCommand {
     public void process() throws ServletException, IOException {
         super.process();
         Bookshelf bookshelf = (Bookshelf) request.getServletContext()
-          .getAttribute("bookshelf");
+                .getAttribute("bookshelf");
         String q = request.getParameter("q");
         List<Book> books = bookshelf.find(q);
         if (books.size() > 0) {

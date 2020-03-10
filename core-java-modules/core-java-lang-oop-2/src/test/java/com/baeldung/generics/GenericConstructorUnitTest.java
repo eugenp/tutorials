@@ -71,6 +71,6 @@ public class GenericConstructorUnitTest {
 
         assertEquals("sample", entry.getKey());
         assertEquals(1, entry.getValue()
-            .intValue());
+                .intValue());
     }
 }

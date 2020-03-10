@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Sample application to demonstrate basics of Spring Vault
- *
  */
 @SpringBootApplication
 public class SpringVaultApplication {

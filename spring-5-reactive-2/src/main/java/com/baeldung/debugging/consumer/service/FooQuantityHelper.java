@@ -12,7 +12,7 @@ public class FooQuantityHelper {
         flux = flux.map(foo -> {
             Integer result;
             Integer random = ThreadLocalRandom.current()
-                .nextInt(0, 90);
+                    .nextInt(0, 90);
             result = (random == 0) ? result = 0 : foo.getQuantity() + 2;
             foo.setQuantity(result);
             return foo;

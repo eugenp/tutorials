@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 
 @Configuration
-@ComponentScan({ "com.baeldung.javaxval.methodvalidation.model" })
+@ComponentScan({"com.baeldung.javaxval.methodvalidation.model"})
 public class MethodValidationConfig {
 
     @Bean

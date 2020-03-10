@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {Component, OnInit} from '@angular/core';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'jhi-metrics-modal',
@@ -14,7 +14,8 @@ export class JhiMetricsMonitoringModalComponent implements OnInit {
     threadDumpTimedWaiting = 0;
     threadDumpWaiting = 0;
 
-    constructor(public activeModal: NgbActiveModal) {}
+    constructor(public activeModal: NgbActiveModal) {
+    }
 
     ngOnInit() {
         this.threadDump.forEach(value => {

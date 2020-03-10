@@ -22,10 +22,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-          .anyRequest()
-          .authenticated()
-          .and()
-          .addFilterBefore(spnegoAuthenticationProcessingFilter(authenticationManagerBean()), BasicAuthenticationFilter.class);
+                .anyRequest()
+                .authenticated()
+                .and()
+                .addFilterBefore(spnegoAuthenticationProcessingFilter(authenticationManagerBean()), BasicAuthenticationFilter.class);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(kerberosAuthenticationProvider())
-          .authenticationProvider(kerberosServiceAuthenticationProvider());
+                .authenticationProvider(kerberosServiceAuthenticationProvider());
     }
 
     @Bean

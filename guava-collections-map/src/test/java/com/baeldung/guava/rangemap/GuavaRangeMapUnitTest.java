@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.Map;
+
 import org.junit.Test;
 import com.google.common.collect.ImmutableRangeMap;
 import com.google.common.collect.Range;
@@ -102,31 +103,31 @@ public class GuavaRangeMapUnitTest {
 
         assertNull(experiencedSubRangeDesignationMap.get(3));
         assertTrue(experiencedSubRangeDesignationMap.asMapOfRanges().values()
-            .containsAll(Arrays.asList("Executive Director", "Vice President", "Executive Director")));
-        
+                .containsAll(Arrays.asList("Executive Director", "Vice President", "Executive Director")));
+
     }
 
     @Test
     public void givenImmutableRangeMap_whenQueryWithinRange_returnsSucessfully() {
-        final RangeMap<Integer, String> experienceRangeDesignationMap = ImmutableRangeMap.<Integer, String> builder()
-	    .put(Range.closed(0, 2), "Associate")
-	    .put(Range.closed(3, 5), "Senior Associate")
-	    .put(Range.closed(6, 8), "Vice President")
-            .put(Range.closed(9, 15), "Executive Director")
-	    .put(Range.closed(16, 30), "Managing Director").build();
+        final RangeMap<Integer, String> experienceRangeDesignationMap = ImmutableRangeMap.<Integer, String>builder()
+                .put(Range.closed(0, 2), "Associate")
+                .put(Range.closed(3, 5), "Senior Associate")
+                .put(Range.closed(6, 8), "Vice President")
+                .put(Range.closed(9, 15), "Executive Director")
+                .put(Range.closed(16, 30), "Managing Director").build();
 
         assertEquals("Vice President", experienceRangeDesignationMap.get(6));
         assertEquals("Executive Director", experienceRangeDesignationMap.get(15));
     }
-    
+
     @Test(expected = IllegalArgumentException.class)
     public void givenImmutableRangeMap_whenRangeOverlaps_ThrowsException() {
-        ImmutableRangeMap.<Integer, String> builder()
-	      .put(Range.closed(0, 2), "Associate")
-	      .put(Range.closed(3, 5), "Senior Associate")
-	      .put(Range.closed(6, 8), "Vice President")
-              .put(Range.closed(8, 15), "Executive Director")
-	      .put(Range.closed(16, 30), "Managing Director").build();
+        ImmutableRangeMap.<Integer, String>builder()
+                .put(Range.closed(0, 2), "Associate")
+                .put(Range.closed(3, 5), "Senior Associate")
+                .put(Range.closed(6, 8), "Vice President")
+                .put(Range.closed(8, 15), "Executive Director")
+                .put(Range.closed(16, 30), "Managing Director").build();
 
     }
 }

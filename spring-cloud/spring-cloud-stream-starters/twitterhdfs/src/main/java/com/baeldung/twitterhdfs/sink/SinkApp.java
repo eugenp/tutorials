@@ -15,7 +15,7 @@ import org.springframework.integration.annotation.ServiceActivator;
 public class SinkApp {
     Logger log = LoggerFactory.getLogger(SinkApp.class);
 
-    @ServiceActivator(inputChannel= Sink.INPUT)
+    @ServiceActivator(inputChannel = Sink.INPUT)
     public void loggerSink(Object payload) {
         log.info("Received: " + payload);
     }

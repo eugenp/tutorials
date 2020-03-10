@@ -12,12 +12,12 @@ public class CustomExoticTypeEditor extends PropertyEditorSupport {
 
         return exoticType == null ? "" : exoticType.getName();
     }
-    
+
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
         ExoticType exoticType = new ExoticType();
         exoticType.setName(text.toUpperCase());
-        
+
         setValue(exoticType);
     }
 }

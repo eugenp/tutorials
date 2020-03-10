@@ -18,7 +18,7 @@ public class ArgumentMatcherWithLambdaUnitTest {
 
     @InjectMocks
     private UnemploymentServiceImpl unemploymentService;
-    
+
     @Mock
     private JobService jobService;
 
@@ -26,13 +26,13 @@ public class ArgumentMatcherWithLambdaUnitTest {
     public void whenPersonWithJob_thenIsNotEntitled() {
         Person peter = new Person("Peter");
         Person linda = new Person("Linda");
-        
+
         JobPosition teacher = new JobPosition("Teacher");
 
         when(jobService.findCurrentJobPosition(
                 ArgumentMatchers.argThat((p) -> p.getName().equals("Peter")))
-             ).thenReturn(Optional.of(teacher));
-        
+        ).thenReturn(Optional.of(teacher));
+
         assertTrue(unemploymentService.personIsEntitledToUnemploymentSupport(linda));
         assertFalse(unemploymentService.personIsEntitledToUnemploymentSupport(peter));
     }

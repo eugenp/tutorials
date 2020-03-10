@@ -21,9 +21,9 @@ public class ComparableUnitTest {
         footballTeam.add(player3);
         Collections.sort(footballTeam);
         assertEquals(footballTeam.get(0)
-            .getName(), "Steven");
+                .getName(), "Steven");
         assertEquals(footballTeam.get(2)
-            .getRanking(), 67);
+                .getRanking(), 67);
     }
 
 }

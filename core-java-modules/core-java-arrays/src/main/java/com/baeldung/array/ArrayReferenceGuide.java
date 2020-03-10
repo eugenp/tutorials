@@ -41,7 +41,7 @@ public class ArrayReferenceGuide {
         anArray[0] = 10;
         anArray[5] = 4;
 
-        int[] anotherArray = new int[] {1, 2, 3, 4, 5};
+        int[] anotherArray = new int[]{1, 2, 3, 4, 5};
     }
 
     private static void access() {
@@ -53,7 +53,7 @@ public class ArrayReferenceGuide {
     }
 
     private static void iterating() {
-        int[] anArray = new int[] {1, 2, 3, 4, 5};
+        int[] anArray = new int[]{1, 2, 3, 4, 5};
         for (int i = 0; i < anArray.length; i++) {
             System.out.println(anArray[i]);
         }
@@ -64,7 +64,7 @@ public class ArrayReferenceGuide {
     }
 
     private static void varargs() {
-        String[] groceries = new String[] {"Milk", "Tomato", "Chips"};
+        String[] groceries = new String[]{"Milk", "Tomato", "Chips"};
         varargMethod(groceries);
         varargMethod("Milk", "Tomato", "Chips");
     }
@@ -76,7 +76,7 @@ public class ArrayReferenceGuide {
     }
 
     private static void transformIntoList() {
-        Integer[] anArray = new Integer[] {1, 2, 3, 4, 5};
+        Integer[] anArray = new Integer[]{1, 2, 3, 4, 5};
 
         // Naïve implementation
         List<Integer> aList = new ArrayList<>(); // We create an empty list
@@ -101,31 +101,31 @@ public class ArrayReferenceGuide {
             System.out.println(e.getMessage());
         }
 
-        int[] anotherArray = new int[] {1, 2, 3, 4, 5};
+        int[] anotherArray = new int[]{1, 2, 3, 4, 5};
 //        List<Integer> anotherList = Arrays.asList(anotherArray);
     }
 
     private static void transformIntoStream() {
-        int[] anArray = new int[] {1, 2, 3, 4, 5};
+        int[] anArray = new int[]{1, 2, 3, 4, 5};
         IntStream aStream = Arrays.stream(anArray);
 
-        Integer[] anotherArray = new Integer[] {1, 2, 3, 4, 5};
+        Integer[] anotherArray = new Integer[]{1, 2, 3, 4, 5};
         Stream<Integer> anotherStream = Arrays.stream(anotherArray, 2, 4);
     }
 
     private static void sort() {
-        int[] anArray = new int[] {5, 2, 1, 4, 8};
+        int[] anArray = new int[]{5, 2, 1, 4, 8};
         Arrays.sort(anArray); // anArray is now {1, 2, 4, 5, 8}
 
-        Integer[] anotherArray = new Integer[] {5, 2, 1, 4, 8};
+        Integer[] anotherArray = new Integer[]{5, 2, 1, 4, 8};
         Arrays.sort(anotherArray); // anArray is now {1, 2, 4, 5, 8}
 
-        String[] yetAnotherArray = new String[] {"A", "E", "Z", "B", "C"};
+        String[] yetAnotherArray = new String[]{"A", "E", "Z", "B", "C"};
         Arrays.sort(yetAnotherArray, 1, 3, Comparator.comparing(String::toString).reversed()); // yetAnotherArray is now {"A", "Z", "E", "B", "C"}
     }
 
     private static void search() {
-        int[] anArray = new int[] {5, 2, 1, 4, 8};
+        int[] anArray = new int[]{5, 2, 1, 4, 8};
         for (int i = 0; i < anArray.length; i++) {
             if (anArray[i] == 4) {
                 System.out.println("Found at index " + i);
@@ -139,8 +139,8 @@ public class ArrayReferenceGuide {
     }
 
     private static void merge() {
-        int[] anArray = new int[] {5, 2, 1, 4, 8};
-        int[] anotherArray = new int[] {10, 4, 9, 11, 2};
+        int[] anArray = new int[]{5, 2, 1, 4, 8};
+        int[] anotherArray = new int[]{10, 4, 9, 11, 2};
 
         int[] resultArray = new int[anArray.length + anotherArray.length];
         for (int i = 0; i < resultArray.length; i++) {

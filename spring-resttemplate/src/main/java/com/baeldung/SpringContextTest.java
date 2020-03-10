@@ -9,13 +9,13 @@ import com.baeldung.produceimage.ImageApplication;
 import com.baeldung.responseheaders.ResponseHeadersApplication;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { ImageApplication.class,
-		ResponseHeadersApplication.class,
+@SpringBootTest(classes = {ImageApplication.class,
+        ResponseHeadersApplication.class,
         com.baeldung.web.upload.app.UploadApplication.class,
-		})
+})
 public class SpringContextTest {
 
     @Test
-    public void whenSpringContextIsBootstrapped_thenNoExceptions() {	
+    public void whenSpringContextIsBootstrapped_thenNoExceptions() {
     }
 }

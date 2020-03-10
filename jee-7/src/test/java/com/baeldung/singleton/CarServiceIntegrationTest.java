@@ -38,9 +38,9 @@ public class CarServiceIntegrationTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-            .addClasses(CarServiceBean.class, CarServiceSingleton.class, CarServiceEjbSingleton.class, Car.class)
-            .addAsResource("META-INF/persistence.xml")
-            .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+                .addClasses(CarServiceBean.class, CarServiceSingleton.class, CarServiceEjbSingleton.class, Car.class)
+                .addAsResource("META-INF/persistence.xml")
+                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
     @Inject
@@ -51,16 +51,16 @@ public class CarServiceIntegrationTest {
 
     @EJB
     private CarServiceEjbSingleton carServiceEjbSingleton;
-    
+
     @Test
-    public void givenASingleton_whenGetBeanIsCalledTwice_thenTheSameInstanceIsReturned() {       
+    public void givenASingleton_whenGetBeanIsCalledTwice_thenTheSameInstanceIsReturned() {
         CarServiceSingleton one = getBean(CarServiceSingleton.class);
         CarServiceSingleton two = getBean(CarServiceSingleton.class);
         assertTrue(one == two);
     }
-    
+
     @Test
-    public void givenAPojo_whenGetBeanIsCalledTwice_thenDifferentInstancesAreReturned() {       
+    public void givenAPojo_whenGetBeanIsCalledTwice_thenDifferentInstancesAreReturned() {
         CarServiceBean one = getBean(CarServiceBean.class);
         CarServiceBean two = getBean(CarServiceBean.class);
         assertTrue(one != two);
@@ -83,13 +83,13 @@ public class CarServiceIntegrationTest {
                     String model = Double.toString(Math.round(Math.random() * 100));
                     Car car = new Car("Speedster", model);
                     int serviceQueue = carServiceSingleton.service(car);
-                    assertTrue(serviceQueue < 10);                     
+                    assertTrue(serviceQueue < 10);
                 }
             }).start();
         }
         return;
     }
-    
+
     @Test
     public void givenEJB_whenConcurrentAccess_thenLockingIsProvided() {
         for (int i = 0; i < 10; i++) {

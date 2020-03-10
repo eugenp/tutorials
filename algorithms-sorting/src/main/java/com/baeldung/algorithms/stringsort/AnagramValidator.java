@@ -23,7 +23,7 @@ public class AnagramValidator {
 
     private static String prepare(String text) {
         return text.toLowerCase()
-            .trim()
-            .replaceAll("\\s+", "");
+                .trim()
+                .replaceAll("\\s+", "");
     }
 }

@@ -19,9 +19,9 @@ public class ExceptionHandlingIntegrationTest {
         TestObserver<String> testObserver = new TestObserver<>();
 
         Observable
-          .<String>error(UNKNOWN_ERROR)
-          .onErrorReturn(Throwable::getMessage)
-          .subscribe(testObserver);
+                .<String>error(UNKNOWN_ERROR)
+                .onErrorReturn(Throwable::getMessage)
+                .subscribe(testObserver);
 
         testObserver.assertNoErrors();
         testObserver.assertComplete();
@@ -34,9 +34,9 @@ public class ExceptionHandlingIntegrationTest {
         TestObserver<String> testObserver = new TestObserver<>();
 
         Observable
-          .<String>error(UNKNOWN_ERROR)
-          .onErrorResumeNext(Observable.just("one", "two"))
-          .subscribe(testObserver);
+                .<String>error(UNKNOWN_ERROR)
+                .onErrorResumeNext(Observable.just("one", "two"))
+                .subscribe(testObserver);
 
         testObserver.assertNoErrors();
         testObserver.assertComplete();
@@ -49,9 +49,9 @@ public class ExceptionHandlingIntegrationTest {
         TestObserver<String> testObserver = new TestObserver<>();
 
         Observable
-          .<String>error(UNKNOWN_ERROR)
-          .onErrorReturnItem("singleValue")
-          .subscribe(testObserver);
+                .<String>error(UNKNOWN_ERROR)
+                .onErrorReturnItem("singleValue")
+                .subscribe(testObserver);
 
         testObserver.assertNoErrors();
         testObserver.assertComplete();
@@ -64,11 +64,11 @@ public class ExceptionHandlingIntegrationTest {
         TestObserver<String> testObserver = new TestObserver<>();
 
         Observable
-          .<String>error(UNKNOWN_ERROR)
-          .onErrorResumeNext(throwable -> {
-              return Observable.just(throwable.getMessage(), "nextValue");
-          })
-          .subscribe(testObserver);
+                .<String>error(UNKNOWN_ERROR)
+                .onErrorResumeNext(throwable -> {
+                    return Observable.just(throwable.getMessage(), "nextValue");
+                })
+                .subscribe(testObserver);
 
         testObserver.assertNoErrors();
         testObserver.assertComplete();
@@ -82,9 +82,9 @@ public class ExceptionHandlingIntegrationTest {
         final AtomicBoolean state = new AtomicBoolean(false);
 
         Observable
-          .<String>error(UNKNOWN_ERROR)
-          .doOnError(throwable -> state.set(true))
-          .subscribe(testObserver);
+                .<String>error(UNKNOWN_ERROR)
+                .doOnError(throwable -> state.set(true))
+                .subscribe(testObserver);
 
         testObserver.assertError(UNKNOWN_ERROR);
         testObserver.assertNotComplete();
@@ -97,11 +97,11 @@ public class ExceptionHandlingIntegrationTest {
         TestObserver<String> testObserver = new TestObserver<>();
 
         Observable
-          .<String>error(UNKNOWN_ERROR)
-          .doOnError(throwable -> {
-              throw new RuntimeException("unexcepted");
-          })
-          .subscribe(testObserver);
+                .<String>error(UNKNOWN_ERROR)
+                .doOnError(throwable -> {
+                    throw new RuntimeException("unexcepted");
+                })
+                .subscribe(testObserver);
 
         testObserver.assertError(CompositeException.class);
         testObserver.assertNotComplete();
@@ -113,9 +113,9 @@ public class ExceptionHandlingIntegrationTest {
         TestObserver<String> testObserver = new TestObserver<>();
 
         Observable
-          .<String>error(UNKNOWN_EXCEPTION)
-          .onExceptionResumeNext(Observable.just("exceptionResumed"))
-          .subscribe(testObserver);
+                .<String>error(UNKNOWN_EXCEPTION)
+                .onExceptionResumeNext(Observable.just("exceptionResumed"))
+                .subscribe(testObserver);
 
         testObserver.assertNoErrors();
         testObserver.assertComplete();
@@ -128,9 +128,9 @@ public class ExceptionHandlingIntegrationTest {
         TestObserver<String> testObserver = new TestObserver<>();
 
         Observable
-          .<String>error(UNKNOWN_ERROR)
-          .onExceptionResumeNext(Observable.just("exceptionResumed"))
-          .subscribe(testObserver);
+                .<String>error(UNKNOWN_ERROR)
+                .onExceptionResumeNext(Observable.just("exceptionResumed"))
+                .subscribe(testObserver);
 
         testObserver.assertError(UNKNOWN_ERROR);
         testObserver.assertNotComplete();

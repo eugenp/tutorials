@@ -27,30 +27,30 @@ public class JsonbUnitTest {
         Jsonb jsonb = JsonbBuilder.create();
         // @formatter:off
         List<Person> personList = Arrays.asList(
-            new Person(1, "Jhon", "jhon@test.com", 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1000)), 
-            new Person(2, "Jhon", "jhon1@test.com", 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1500)), 
-            new Person(3, "Jhon", null, 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1000)),  
-            new Person(4, "Tom", "tom@test.com", 21, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1500)));            
+                new Person(1, "Jhon", "jhon@test.com", 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1000)),
+                new Person(2, "Jhon", "jhon1@test.com", 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1500)),
+                new Person(3, "Jhon", null, 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1000)),
+                new Person(4, "Tom", "tom@test.com", 21, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1500)));
         // @formatter:on
         String jsonArrayPerson = jsonb.toJson(personList);
         // @formatter:off
-        String jsonExpected = "[" + 
-          "{\"email\":\"jhon@test.com\"," + 
-           "\"id\":1,\"person-name\":\"Jhon\"," + 
-           "\"registeredDate\":\"09-09-2019\"," + 
-           "\"salary\":\"1000.0\"}," +
-          "{\"email\":\"jhon1@test.com\"," +
-           "\"id\":2,\"person-name\":\"Jhon\"," +
-           "\"registeredDate\":\"09-09-2019\"," +
-           "\"salary\":\"1500.0\"},{\"email\":null," +
-           "\"id\":3,\"person-name\":\"Jhon\"," +
-           "\"registeredDate\":\"09-09-2019\"," +
-           "\"salary\":\"1000.0\"}," +
-          "{\"email\":\"tom@test.com\"," +
-           "\"id\":4,\"person-name\":\"Tom\"," +
-           "\"registeredDate\":\"09-09-2019\"," +
-           "\"salary\":\"1500.0\"}"
-           + "]";
+        String jsonExpected = "[" +
+                "{\"email\":\"jhon@test.com\"," +
+                "\"id\":1,\"person-name\":\"Jhon\"," +
+                "\"registeredDate\":\"09-09-2019\"," +
+                "\"salary\":\"1000.0\"}," +
+                "{\"email\":\"jhon1@test.com\"," +
+                "\"id\":2,\"person-name\":\"Jhon\"," +
+                "\"registeredDate\":\"09-09-2019\"," +
+                "\"salary\":\"1500.0\"},{\"email\":null," +
+                "\"id\":3,\"person-name\":\"Jhon\"," +
+                "\"registeredDate\":\"09-09-2019\"," +
+                "\"salary\":\"1000.0\"}," +
+                "{\"email\":\"tom@test.com\"," +
+                "\"id\":4,\"person-name\":\"Tom\"," +
+                "\"registeredDate\":\"09-09-2019\"," +
+                "\"salary\":\"1500.0\"}"
+                + "]";
         // @formatter:on
         assertTrue(jsonArrayPerson.equals(jsonExpected));
     }
@@ -60,34 +60,34 @@ public class JsonbUnitTest {
         Jsonb jsonb = JsonbBuilder.create();
         // @formatter:off
         String personJsonArray =
-            "[" + 
-                "{\"email\":\"jhon@test.com\"," + 
-                 "\"id\":1,\"person-name\":\"Jhon\"," + 
-                 "\"registeredDate\":\"09-09-2019\"," + 
-                 "\"salary\":\"1000.0\"}," +
-                "{\"email\":\"jhon1@test.com\"," +
-                 "\"id\":2,\"person-name\":\"Jhon\"," +
-                 "\"registeredDate\":\"09-09-2019\"," +
-                 "\"salary\":\"1500.0\"},{\"email\":null," +
-                 "\"id\":3,\"person-name\":\"Jhon\"," +
-                 "\"registeredDate\":\"09-09-2019\"," +
-                 "\"salary\":\"1000.0\"}," +
-                "{\"email\":\"tom@test.com\"," +
-                 "\"id\":4,\"person-name\":\"Tom\"," +
-                 "\"registeredDate\":\"09-09-2019\"," +
-                 "\"salary\":\"1500.0\"}"
-                 + "]";
+                "[" +
+                        "{\"email\":\"jhon@test.com\"," +
+                        "\"id\":1,\"person-name\":\"Jhon\"," +
+                        "\"registeredDate\":\"09-09-2019\"," +
+                        "\"salary\":\"1000.0\"}," +
+                        "{\"email\":\"jhon1@test.com\"," +
+                        "\"id\":2,\"person-name\":\"Jhon\"," +
+                        "\"registeredDate\":\"09-09-2019\"," +
+                        "\"salary\":\"1500.0\"},{\"email\":null," +
+                        "\"id\":3,\"person-name\":\"Jhon\"," +
+                        "\"registeredDate\":\"09-09-2019\"," +
+                        "\"salary\":\"1000.0\"}," +
+                        "{\"email\":\"tom@test.com\"," +
+                        "\"id\":4,\"person-name\":\"Tom\"," +
+                        "\"registeredDate\":\"09-09-2019\"," +
+                        "\"salary\":\"1500.0\"}"
+                        + "]";
         // @formatter:on        
         @SuppressWarnings("serial")
         List<Person> personList = jsonb.fromJson(personJsonArray, new ArrayList<Person>() {
         }.getClass()
-            .getGenericSuperclass());
+                .getGenericSuperclass());
         // @formatter:off
         List<Person> personListExpected = Arrays.asList(
-            new Person(1, "Jhon", "jhon@test.com", 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1000)), 
-            new Person(2, "Jhon", "jhon1@test.com", 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1500)), 
-            new Person(3, "Jhon", null, 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1000)),  
-            new Person(4, "Tom", "tom@test.com", 21, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1500)));            
+                new Person(1, "Jhon", "jhon@test.com", 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1000)),
+                new Person(2, "Jhon", "jhon1@test.com", 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1500)),
+                new Person(3, "Jhon", null, 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1000)),
+                new Person(4, "Tom", "tom@test.com", 21, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1500)));
         // @formatter:on
         assertTrue(ListUtils.isEqualList(personList, personListExpected));
     }
@@ -99,12 +99,12 @@ public class JsonbUnitTest {
         Person person = new Person(1, "Jhon", "jhon@test.com", 20, LocalDate.of(2019, 9, 7), BigDecimal.valueOf(1000));
         String jsonPerson = jsonb.toJson(person);
         // @formatter:off
-        String jsonExpected = 
-            "{\"email\":\"jhon@test.com\"," +
-             "\"id\":1," +
-             "\"person-name\":\"Jhon\"," +
-             "\"registered_date\":\"07-09-2019\"," +
-             "\"salary\":\"1000.0\"}";
+        String jsonExpected =
+                "{\"email\":\"jhon@test.com\"," +
+                        "\"id\":1," +
+                        "\"person-name\":\"Jhon\"," +
+                        "\"registered_date\":\"07-09-2019\"," +
+                        "\"salary\":\"1000.0\"}";
         // @formatter:on
         assertTrue(jsonExpected.equals(jsonPerson));
     }
@@ -116,12 +116,12 @@ public class JsonbUnitTest {
         Person person = new Person(1, "Jhon", "jhon@test.com", 20, LocalDate.of(2019, 9, 7), BigDecimal.valueOf(1000));
         String jsonPerson = jsonb.toJson(person);
         // @formatter:off
-        String jsonExpected = 
-            "{\"salary\":\"1000.0\","+
-             "\"registeredDate\":\"07-09-2019\"," +
-             "\"person-name\":\"Jhon\"," +
-             "\"id\":1," +
-             "\"email\":\"jhon@test.com\"}";
+        String jsonExpected =
+                "{\"salary\":\"1000.0\"," +
+                        "\"registeredDate\":\"07-09-2019\"," +
+                        "\"person-name\":\"Jhon\"," +
+                        "\"id\":1," +
+                        "\"email\":\"jhon@test.com\"}";
         // @formatter:on
         assertTrue(jsonExpected.equals(jsonPerson));
     }
@@ -132,12 +132,12 @@ public class JsonbUnitTest {
         Person person = new Person(1, "Jhon", "jhon@test.com", 20, LocalDate.of(2019, 9, 7), BigDecimal.valueOf(1000));
         String jsonPerson = jsonb.toJson(person);
         // @formatter:off
-        String jsonExpected = 
-            "{\"email\":\"jhon@test.com\"," +
-             "\"id\":1," +
-             "\"person-name\":\"Jhon\"," +
-             "\"registeredDate\":\"07-09-2019\"," +
-             "\"salary\":\"1000.0\"}";
+        String jsonExpected =
+                "{\"email\":\"jhon@test.com\"," +
+                        "\"id\":1," +
+                        "\"person-name\":\"Jhon\"," +
+                        "\"registeredDate\":\"07-09-2019\"," +
+                        "\"salary\":\"1000.0\"}";
         // @formatter:on
         assertTrue(jsonExpected.equals(jsonPerson));
     }
@@ -147,15 +147,15 @@ public class JsonbUnitTest {
         Jsonb jsonb = JsonbBuilder.create();
         Person person = new Person(1, "Jhon", "jhon@test.com", 0, LocalDate.of(2019, 9, 7), BigDecimal.valueOf(1000.0));
         // @formatter:off
-        String jsonPerson = 
-            "{\"email\":\"jhon@test.com\"," + 
-             "\"id\":1," + 
-             "\"person-name\":\"Jhon\"," + 
-             "\"registeredDate\":\"07-09-2019\"," + 
-             "\"salary\":\"1000.0\"}";
+        String jsonPerson =
+                "{\"email\":\"jhon@test.com\"," +
+                        "\"id\":1," +
+                        "\"person-name\":\"Jhon\"," +
+                        "\"registeredDate\":\"07-09-2019\"," +
+                        "\"salary\":\"1000.0\"}";
         // @formatter:on
         assertTrue(jsonb.fromJson(jsonPerson, Person.class)
-            .equals(person));
+                .equals(person));
     }
 
     @Test
@@ -165,9 +165,9 @@ public class JsonbUnitTest {
         Person person = new Person(1, "Jhon", "jhon@test.com", 0, LocalDate.of(2019, 9, 7), BigDecimal.valueOf(1000.0));// new Person(1, "Jhon");
         String jsonPerson = jsonb.toJson(person);
         // @formatter:off
-        String jsonExpected = 
-            "{\"id\":1," +
-             "\"name\":\"Jhon\"}";
+        String jsonExpected =
+                "{\"id\":1," +
+                        "\"name\":\"Jhon\"}";
         // @formatter:on
         assertTrue(jsonExpected.equals(jsonPerson));
     }
@@ -178,12 +178,12 @@ public class JsonbUnitTest {
         Jsonb jsonb = JsonbBuilder.create(config);
         Person person = new Person(1, "Jhon", "jhon@test.com", 0, LocalDate.of(2019, 9, 7), BigDecimal.valueOf(1000.0));// new Person(1, "Jhon");
         // @formatter:off
-        String jsonPerson = 
-            "{\"id\":1," +
-             "\"name\":\"Jhon\"}";
+        String jsonPerson =
+                "{\"id\":1," +
+                        "\"name\":\"Jhon\"}";
         // @formatter:on
         assertTrue(jsonb.fromJson(jsonPerson, Person.class)
-            .equals(person));
+                .equals(person));
     }
 
 }

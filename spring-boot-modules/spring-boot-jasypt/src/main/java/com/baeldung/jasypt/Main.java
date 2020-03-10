@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.baeldung.jasypt" })
+@ComponentScan(basePackages = {"com.baeldung.jasypt"})
 @EnableEncryptableProperties
 public class Main {
     public static void main(String[] args) {

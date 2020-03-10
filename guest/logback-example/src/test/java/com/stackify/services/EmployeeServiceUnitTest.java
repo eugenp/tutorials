@@ -29,7 +29,7 @@ public class EmployeeServiceUnitTest {
         Logger htmlLogger = LoggerFactory.getLogger("htmlLogger");
         htmlLogger.error("Employee Information Update Failed");
         htmlLogger.info("New Account Created");
-        
+
         Logger colorLogger = LoggerFactory.getLogger("colorLogger");
         colorLogger.error("Employee Information Update Failed");
         colorLogger.info("New Account Created");

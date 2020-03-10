@@ -19,15 +19,15 @@ public class MockitoMisusingUnitTest {
     public void tearDown() {
         ThreadSafeMockingProgress.mockingProgress().reset();
     }
-    
+
     @Test
     public void givenNotASpy_whenDoReturn_thenThrowNotAMock() {
         try {
             List<String> list = new ArrayList<String>();
 
             Mockito.doReturn(100, Mockito.withSettings().lenient())
-                .when(list)
-                .size();
+                    .when(list)
+                    .size();
 
             fail("Should have thrown a NotAMockException because 'list' is not a mock!");
         } catch (NotAMockException e) {

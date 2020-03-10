@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 public class BeforeAllAndAfterAllAnnotationsUnitTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(BeforeAllAndAfterAllAnnotationsUnitTest.class);
-    
+
     @BeforeAll
     public static void setup() {
         LOG.info("startup - creating DB connection");

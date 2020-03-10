@@ -9,7 +9,7 @@ public class Employee {
     @Id
     private Long id;
     private String name;
-    
+
     public Employee() {
     }
 

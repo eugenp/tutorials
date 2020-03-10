@@ -16,39 +16,39 @@ public class ConnectionManagementManualTest {
 
     @Test
     public void givenRunningZookeeper_whenOpenConnection_thenClientIsOpened()
-        throws Exception {
+            throws Exception {
         int sleepMsBetweenRetries = 100;
         int maxRetries = 3;
         RetryPolicy retryPolicy = new RetryNTimes(maxRetries,
-            sleepMsBetweenRetries);
+                sleepMsBetweenRetries);
 
         try (CuratorFramework client = CuratorFrameworkFactory
-            .newClient("127.0.0.1:2181", retryPolicy)) {
+                .newClient("127.0.0.1:2181", retryPolicy)) {
             client.start();
 
             assertThat(client.checkExists()
-                .forPath("/")).isNotNull();
+                    .forPath("/")).isNotNull();
         }
     }
 
     @Test
     public void givenRunningZookeeper_whenOpenConnectionUsingAsyncNotBlocking_thenClientIsOpened()
-        throws InterruptedException {
+            throws InterruptedException {
         int sleepMsBetweenRetries = 100;
         int maxRetries = 3;
         RetryPolicy retryPolicy = new RetryNTimes(maxRetries,
-            sleepMsBetweenRetries);
+                sleepMsBetweenRetries);
 
         try (CuratorFramework client = CuratorFrameworkFactory
-            .newClient("127.0.0.1:2181", retryPolicy)) {
+                .newClient("127.0.0.1:2181", retryPolicy)) {
             client.start();
             AsyncCuratorFramework async = AsyncCuratorFramework.wrap(client);
 
             AtomicBoolean exists = new AtomicBoolean(false);
 
             async.checkExists()
-                .forPath("/")
-                .thenAcceptAsync(s -> exists.set(s != null));
+                    .forPath("/")
+                    .thenAcceptAsync(s -> exists.set(s != null));
 
             await().until(() -> assertThat(exists.get()).isTrue());
         }
@@ -56,22 +56,22 @@ public class ConnectionManagementManualTest {
 
     @Test
     public void givenRunningZookeeper_whenOpenConnectionUsingAsyncBlocking_thenClientIsOpened()
-        throws InterruptedException {
+            throws InterruptedException {
         int sleepMsBetweenRetries = 100;
         int maxRetries = 3;
         RetryPolicy retryPolicy = new RetryNTimes(maxRetries,
-            sleepMsBetweenRetries);
+                sleepMsBetweenRetries);
 
         try (CuratorFramework client = CuratorFrameworkFactory
-            .newClient("127.0.0.1:2181", retryPolicy)) {
+                .newClient("127.0.0.1:2181", retryPolicy)) {
             client.start();
             AsyncCuratorFramework async = AsyncCuratorFramework.wrap(client);
 
             AtomicBoolean exists = new AtomicBoolean(false);
 
             async.checkExists()
-                .forPath("/")
-                .thenAccept(s -> exists.set(s != null));
+                    .forPath("/")
+                    .thenAccept(s -> exists.set(s != null));
 
             await().until(() -> assertThat(exists.get()).isTrue());
         }

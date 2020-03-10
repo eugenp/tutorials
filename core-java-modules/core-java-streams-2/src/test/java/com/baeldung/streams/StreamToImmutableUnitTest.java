@@ -14,7 +14,7 @@ public class StreamToImmutableUnitTest {
     public void whenUsingCollectingToImmutableSet_thenSuccess() {
         List<String> givenList = Arrays.asList("a", "b", "c");
         List<String> result = givenList.stream()
-            .collect(collectingAndThen(toSet(), ImmutableList::copyOf));
+                .collect(collectingAndThen(toSet(), ImmutableList::copyOf));
 
         System.out.println(result.getClass());
     }
@@ -23,7 +23,7 @@ public class StreamToImmutableUnitTest {
     public void whenUsingCollectingToUnmodifiableList_thenSuccess() {
         List<String> givenList = new ArrayList<>(Arrays.asList("a", "b", "c"));
         List<String> result = givenList.stream()
-            .collect(collectingAndThen(toList(), Collections::unmodifiableList));
+                .collect(collectingAndThen(toList(), Collections::unmodifiableList));
 
         System.out.println(result.getClass());
     }
@@ -31,8 +31,8 @@ public class StreamToImmutableUnitTest {
     @Test
     public void whenCollectToImmutableList_thenSuccess() {
         List<Integer> list = IntStream.range(0, 9)
-            .boxed()
-            .collect(ImmutableList.toImmutableList());
+                .boxed()
+                .collect(ImmutableList.toImmutableList());
 
         System.out.println(list.getClass());
     }
@@ -41,7 +41,7 @@ public class StreamToImmutableUnitTest {
     public void whenCollectToMyImmutableListCollector_thenSuccess() {
         List<String> givenList = Arrays.asList("a", "b", "c", "d");
         List<String> result = givenList.stream()
-            .collect(MyImmutableListCollector.toImmutableList());
+                .collect(MyImmutableListCollector.toImmutableList());
 
         System.out.println(result.getClass());
     }
@@ -50,7 +50,7 @@ public class StreamToImmutableUnitTest {
     public void whenPassingSupplier_thenSuccess() {
         List<String> givenList = Arrays.asList("a", "b", "c", "d");
         List<String> result = givenList.stream()
-            .collect(MyImmutableListCollector.toImmutableList(LinkedList::new));
+                .collect(MyImmutableListCollector.toImmutableList(LinkedList::new));
 
         System.out.println(result.getClass());
     }

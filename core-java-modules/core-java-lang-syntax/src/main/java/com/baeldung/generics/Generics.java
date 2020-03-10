@@ -38,7 +38,7 @@ public class Generics {
     public <T> List<T> genericMethod(List<T> list) {
         return list.stream().collect(Collectors.toList());
     }
-    
+
     public List<Object> withErasure(List<Object> list) {
         return list.stream().collect(Collectors.toList());
     }

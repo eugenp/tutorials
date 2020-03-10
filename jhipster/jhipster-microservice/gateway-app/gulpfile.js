@@ -27,7 +27,7 @@ var handleErrors = require('./gulp/handle-errors'),
 var config = require('./gulp/config');
 
 gulp.task('clean', function () {
-    return del([config.dist], { dot: true });
+    return del([config.dist], {dot: true});
 });
 
 gulp.task('copy', ['copy:fonts', 'copy:common']);
@@ -61,7 +61,7 @@ gulp.task('styles', [], function () {
         .pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('inject', function() {
+gulp.task('inject', function () {
     runSequence('inject:dep', 'inject:app');
 });
 
@@ -98,8 +98,8 @@ gulp.task('ngconstant:dev', function () {
         template: config.constantTemplate,
         stream: true
     })
-    .pipe(rename('app.constants.js'))
-    .pipe(gulp.dest(config.app + 'app/'));
+        .pipe(rename('app.constants.js'))
+        .pipe(gulp.dest(config.app + 'app/'));
 });
 
 gulp.task('ngconstant:prod', function () {
@@ -112,8 +112,8 @@ gulp.task('ngconstant:prod', function () {
         template: config.constantTemplate,
         stream: true
     })
-    .pipe(rename('app.constants.js'))
-    .pipe(gulp.dest(config.app + 'app/'));
+        .pipe(rename('app.constants.js'))
+        .pipe(gulp.dest(config.app + 'app/'));
 });
 
 // check app for eslint errors

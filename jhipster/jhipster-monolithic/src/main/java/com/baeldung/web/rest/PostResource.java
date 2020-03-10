@@ -33,7 +33,7 @@ public class PostResource {
     private final Logger log = LoggerFactory.getLogger(PostResource.class);
 
     private static final String ENTITY_NAME = "post";
-        
+
     private final PostRepository postRepository;
 
     public PostResource(PostRepository postRepository) {
@@ -56,8 +56,8 @@ public class PostResource {
         }
         Post result = postRepository.save(post);
         return ResponseEntity.created(new URI("/api/posts/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+                .body(result);
     }
 
     /**
@@ -78,8 +78,8 @@ public class PostResource {
         }
         Post result = postRepository.save(post);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, post.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, post.getId().toString()))
+                .body(result);
     }
 
     /**

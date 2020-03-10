@@ -15,7 +15,7 @@ public class JSONArrayGetValueByKeyUnitTest {
     @Test
     public void givenJSONArrayAndAKey_thenReturnAllValuesForGivenKey() {
         String jsonStr = "[" + " {" + " \"name\": \"John\"," + " \"city\": \"chicago\"," + " \"age\": \"22\" " + "}," + " { " + "\"name\": \"Gary\"," + " \"city\": \"florida\"," + " \"age\": \"35\" " + "}," + " { " + "\"name\": \"Selena\","
-            + " \"city\": \"vegas\"," + " \"age\": \"18\" " + "} " + "]";
+                + " \"city\": \"vegas\"," + " \"age\": \"18\" " + "} " + "]";
 
         List<String> actualValues = obj.getValuesByKeyInJSONArray(jsonStr, "name");
 
@@ -25,7 +25,7 @@ public class JSONArrayGetValueByKeyUnitTest {
     @Test
     public void givenJSONArrayAndAKey_whenUsingJava8Syntax_thenReturnAllValuesForGivenKey() {
         String jsonStr = "[" + " {" + " \"name\": \"John\"," + " \"city\": \"chicago\"," + " \"age\": \"22\" " + "}," + " { " + "\"name\": \"Gary\"," + " \"city\": \"florida\"," + " \"age\": \"35\" " + "}," + " { " + "\"name\": \"Selena\","
-            + " \"city\": \"vegas\"," + " \"age\": \"18\" " + "} " + "]";
+                + " \"city\": \"vegas\"," + " \"age\": \"18\" " + "} " + "]";
 
         List<String> actualValues = obj.getValuesByKeyInJSONArrayUsingJava8(jsonStr, "name");
 

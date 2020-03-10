@@ -42,7 +42,7 @@ public class MatchWords {
         emits.forEach(System.out::println);
 
         boolean found = true;
-        for(String word : words) {
+        for (String word : words) {
             boolean contains = Arrays.toString(emits.toArray()).contains(word);
             if (!contains) {
                 found = false;

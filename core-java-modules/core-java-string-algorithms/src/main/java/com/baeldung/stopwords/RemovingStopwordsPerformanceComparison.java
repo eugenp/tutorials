@@ -19,12 +19,12 @@ import java.util.stream.Stream;
 public class RemovingStopwordsPerformanceComparison {
 
     private String data;
-    
+
     private List<String> stopwords;
 
     private String stopwordsRegex;
-    
-    
+
+
     public static void main(String[] args) throws Exception {
         org.openjdk.jmh.Main.main(args);
     }
@@ -41,8 +41,8 @@ public class RemovingStopwordsPerformanceComparison {
     public String removeManually() {
         String[] allWords = data.split(" ");
         StringBuilder builder = new StringBuilder();
-        for(String word:allWords) {
-            if(! stopwords.contains(word)) {
+        for (String word : allWords) {
+            if (!stopwords.contains(word)) {
                 builder.append(word);
                 builder.append(' ');
             }
@@ -53,7 +53,7 @@ public class RemovingStopwordsPerformanceComparison {
     @Benchmark
     public String removeAll() {
         ArrayList<String> allWords = Stream.of(data.split(" "))
-            .collect(Collectors.toCollection(ArrayList<String>::new));
+                .collect(Collectors.toCollection(ArrayList<String>::new));
         allWords.removeAll(stopwords);
         return allWords.stream().collect(Collectors.joining(" "));
     }

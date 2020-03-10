@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Configuration;
 public class JobConfiguration {
 
     private final static Logger LOGGER = Logger
-        .getLogger(JobConfiguration.class.getName());
+            .getLogger(JobConfiguration.class.getName());
 
     @Autowired
     private JobBuilderFactory jobBuilderFactory;
@@ -34,72 +34,72 @@ public class JobConfiguration {
     @Bean
     public Step step1() {
         return this.stepBuilderFactory.get("job1step1")
-            .tasklet(new Tasklet() {
-                @Override
-                public RepeatStatus execute(
-                    StepContribution contribution,
-                    ChunkContext chunkContext)
-                    throws Exception {
-                    LOGGER.info("Tasklet has run");
-                    return RepeatStatus.FINISHED;
-                }
-            }).build();
+                .tasklet(new Tasklet() {
+                    @Override
+                    public RepeatStatus execute(
+                            StepContribution contribution,
+                            ChunkContext chunkContext)
+                            throws Exception {
+                        LOGGER.info("Tasklet has run");
+                        return RepeatStatus.FINISHED;
+                    }
+                }).build();
     }
 
     @Bean
     public Step step2() {
         return this.stepBuilderFactory
-            .get("job1step2")
-            .<String, String> chunk(3)
-            .reader(
-                new ListItemReader<>(Arrays.asList("7",
-                    "2", "3", "10", "5", "6")))
-            .processor(
-                new ItemProcessor<String, String>() {
+                .get("job1step2")
+                .<String, String>chunk(3)
+                .reader(
+                        new ListItemReader<>(Arrays.asList("7",
+                                "2", "3", "10", "5", "6")))
+                .processor(
+                        new ItemProcessor<String, String>() {
+                            @Override
+                            public String process(String item)
+                                    throws Exception {
+                                LOGGER.info("Processing of chunks");
+                                return String.valueOf(Integer
+                                        .parseInt(item) * -1);
+                            }
+                        })
+                .writer(new ItemWriter<String>() {
                     @Override
-                    public String process(String item)
-                        throws Exception {
-                        LOGGER.info("Processing of chunks");
-                        return String.valueOf(Integer
-                            .parseInt(item) * -1);
+                    public void write(
+                            List<? extends String> items)
+                            throws Exception {
+                        for (String item : items) {
+                            LOGGER.info(">> " + item);
+                        }
                     }
-                })
-            .writer(new ItemWriter<String>() {
-                @Override
-                public void write(
-                    List<? extends String> items)
-                    throws Exception {
-                    for (String item : items) {
-                        LOGGER.info(">> " + item);
-                    }
-                }
-            }).build();
+                }).build();
     }
 
     @Bean
     public Job job1() {
         return this.jobBuilderFactory.get("job1")
-            .start(step1())
-            .next(step2())
-            .build();
+                .start(step1())
+                .next(step2())
+                .build();
     }
 
     @Bean
     public Job job2() {
         return jobBuilderFactory.get("job2")
-            .start(stepBuilderFactory.get("job2step1")
-                .tasklet(new Tasklet() {
-                    @Override
-                    public RepeatStatus execute(
-                        StepContribution contribution,
-                        ChunkContext chunkContext)
-                        throws Exception {
-                        LOGGER
-                            .info("This job is from Baeldung");
-                        return RepeatStatus.FINISHED;
-                    }
-                })
-                .build())
-            .build();
+                .start(stepBuilderFactory.get("job2step1")
+                        .tasklet(new Tasklet() {
+                            @Override
+                            public RepeatStatus execute(
+                                    StepContribution contribution,
+                                    ChunkContext chunkContext)
+                                    throws Exception {
+                                LOGGER
+                                        .info("This job is from Baeldung");
+                                return RepeatStatus.FINISHED;
+                            }
+                        })
+                        .build())
+                .build();
     }
 }

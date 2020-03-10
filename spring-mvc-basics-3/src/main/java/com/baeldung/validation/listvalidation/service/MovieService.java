@@ -26,7 +26,7 @@ public class MovieService {
         moviesData.add(m2);
 
     }
-    
+
     public Movie get(String name) {
         Movie movie = null;
         for (Movie m : moviesData) {

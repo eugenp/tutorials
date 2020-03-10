@@ -12,8 +12,8 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
-  loader = AnnotationConfigContextLoader.class,
-  classes = TestConfig.class)
+        loader = AnnotationConfigContextLoader.class,
+        classes = TestConfig.class)
 public class ApologizeServiceAutowiringIntegrationTest {
 
     private final static String TRANSLATED = "TRANSLATED";

@@ -12,10 +12,10 @@ import static org.assertj.core.data.MapEntry.entry;
 class DuplicatesCounterUnitTest {
 
     private static List<String> INPUT_LIST = Lists.list(
-        "expect1",
-        "expect2", "expect2",
-        "expect3", "expect3", "expect3",
-        "expect4", "expect4", "expect4", "expect4");
+            "expect1",
+            "expect2", "expect2",
+            "expect3", "expect3", "expect3",
+            "expect4", "expect4", "expect4", "expect4");
 
     @Test
     void givenInput_whenCountByClassicalLoop_thenGetResultMap() {
@@ -55,11 +55,11 @@ class DuplicatesCounterUnitTest {
 
     private void verifyResult(Map<String, Long> resultMap) {
         assertThat(resultMap)
-            .isNotEmpty().hasSize(4)
-            .containsExactly(
-                entry("expect1", 1L),
-                entry("expect2", 2L),
-                entry("expect3", 3L),
-                entry("expect4", 4L));
+                .isNotEmpty().hasSize(4)
+                .containsExactly(
+                        entry("expect1", 1L),
+                        entry("expect2", 2L),
+                        entry("expect3", 3L),
+                        entry("expect4", 4L));
     }
 }

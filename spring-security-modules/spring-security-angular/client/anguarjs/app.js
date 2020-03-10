@@ -7,6 +7,7 @@
         .run(run);
 
     config.$inject = ['$routeProvider', '$locationProvider'];
+
     function config($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
@@ -19,10 +20,11 @@
                 templateUrl: 'login/login.view.html',
                 controllerAs: 'vm'
             })
-            .otherwise({ redirectTo: '/login' });
+            .otherwise({redirectTo: '/login'});
     }
 
     run.$inject = ['$rootScope', '$location', '$http', '$window'];
+
     function run($rootScope, $location, $http, $window) {
         var userData = $window.sessionStorage.getItem('userData');
         if (userData) {
@@ -31,7 +33,8 @@
 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             var restrictedPage = $.inArray($location.path(), ['/login']) === -1;
-            var loggedIn = $window.sessionStorage.getItem('userData');;
+            var loggedIn = $window.sessionStorage.getItem('userData');
+            ;
             if (restrictedPage && !loggedIn) {
                 $location.path('/login');
             }

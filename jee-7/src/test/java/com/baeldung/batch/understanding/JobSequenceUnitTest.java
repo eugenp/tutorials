@@ -21,20 +21,20 @@ class JobSequenceUnitTest {
         Long executionId = jobOperator.start("simpleJobSequence", new Properties());
         JobExecution jobExecution = jobOperator.getJobExecution(executionId);
         jobExecution = BatchTestHelper.keepTestAlive(jobExecution);
-        assertEquals(2 , jobOperator.getStepExecutions(executionId).size());
+        assertEquals(2, jobOperator.getStepExecutions(executionId).size());
         assertEquals(jobExecution.getBatchStatus(), BatchStatus.COMPLETED);
     }
-    
+
     @Test
     public void givenFlow_thenBatch_CompleteWithSuccess() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();
         Long executionId = jobOperator.start("flowJobSequence", new Properties());
         JobExecution jobExecution = jobOperator.getJobExecution(executionId);
         jobExecution = BatchTestHelper.keepTestAlive(jobExecution);
-        assertEquals(3 , jobOperator.getStepExecutions(executionId).size());
+        assertEquals(3, jobOperator.getStepExecutions(executionId).size());
         assertEquals(jobExecution.getBatchStatus(), BatchStatus.COMPLETED);
     }
-    
+
     @Test
     public void givenDecider_thenBatch_CompleteWithSuccess() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();
@@ -47,10 +47,10 @@ class JobSequenceUnitTest {
             executedSteps.add(stepExecution.getStepName());
         }
         assertEquals(2, jobOperator.getStepExecutions(executionId).size());
-        assertArrayEquals(new String[] { "firstBatchStepStep1", "firstBatchStepStep3" }, executedSteps.toArray());
+        assertArrayEquals(new String[]{"firstBatchStepStep1", "firstBatchStepStep3"}, executedSteps.toArray());
         assertEquals(jobExecution.getBatchStatus(), BatchStatus.COMPLETED);
     }
-    
+
     @Test
     public void givenSplit_thenBatch_CompletesWithSuccess() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();

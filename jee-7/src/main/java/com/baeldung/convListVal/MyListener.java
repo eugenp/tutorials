@@ -9,13 +9,14 @@ import javax.faces.event.ValueChangeListener;
 
 public class MyListener implements ValueChangeListener {
 
-    private static final Logger LOG = Logger.getLogger(MyListener.class.getName());	
-	@Override
-	public void processValueChange(ValueChangeEvent event) throws AbortProcessingException {
+    private static final Logger LOG = Logger.getLogger(MyListener.class.getName());
+
+    @Override
+    public void processValueChange(ValueChangeEvent event) throws AbortProcessingException {
         if (event.getNewValue() != null) {
             LOG.log(Level.INFO, "\tNew Value:{0}", event.getNewValue());
         }
 
-	}
+    }
 
 }

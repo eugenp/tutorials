@@ -1,6 +1,7 @@
 package com.baeldung.web;
 
 import static org.junit.Assert.assertEquals;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;

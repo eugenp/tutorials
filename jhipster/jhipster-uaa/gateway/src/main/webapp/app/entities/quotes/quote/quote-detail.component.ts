@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
-import { IQuote } from 'app/shared/model/quotes/quote.model';
+import {IQuote} from 'app/shared/model/quotes/quote.model';
 
 @Component({
     selector: 'jhi-quote-detail',
@@ -10,10 +10,11 @@ import { IQuote } from 'app/shared/model/quotes/quote.model';
 export class QuoteDetailComponent implements OnInit {
     quote: IQuote;
 
-    constructor(private activatedRoute: ActivatedRoute) {}
+    constructor(private activatedRoute: ActivatedRoute) {
+    }
 
     ngOnInit() {
-        this.activatedRoute.data.subscribe(({ quote }) => {
+        this.activatedRoute.data.subscribe(({quote}) => {
             this.quote = quote;
         });
     }

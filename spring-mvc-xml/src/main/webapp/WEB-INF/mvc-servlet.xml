@@ -54,9 +54,9 @@
 
     <bean class="org.crsh.spring.SpringWebBootstrap">
         <property name="cmdMountPointConfig"
-	      value="war:/WEB-INF/crash/commands/" />
+                  value="war:/WEB-INF/crash/commands/"/>
         <property name="confMountPointConfig"
-          value="war:/WEB-INF/crash/" />
+                  value="war:/WEB-INF/crash/"/>
         <property name="config">
             <props>
                 <prop key="crash.telnet.port">5000</prop>

@@ -10,7 +10,7 @@ public class DiscoveryClientApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(DiscoveryClientApplication.class).web(true)
-            .run(args);
+                .run(args);
     }
 
 }

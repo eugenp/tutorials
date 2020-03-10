@@ -19,12 +19,12 @@ public class OnErrorRetryIntegrationTest {
         AtomicInteger atomicCounter = new AtomicInteger(0);
 
         Observable
-          .<String>error(() -> {
-              atomicCounter.incrementAndGet();
-              return UNKNOWN_ERROR;
-          })
-          .retry(1)
-          .subscribe(testObserver);
+                .<String>error(() -> {
+                    atomicCounter.incrementAndGet();
+                    return UNKNOWN_ERROR;
+                })
+                .retry(1)
+                .subscribe(testObserver);
 
         testObserver.assertError(UNKNOWN_ERROR);
         testObserver.assertNotComplete();
@@ -39,12 +39,12 @@ public class OnErrorRetryIntegrationTest {
         AtomicInteger atomicCounter = new AtomicInteger(0);
 
         Observable
-          .<String>error(() -> {
-              atomicCounter.incrementAndGet();
-              return UNKNOWN_ERROR;
-          })
-          .retry((integer, throwable) -> integer < 4)
-          .subscribe(testObserver);
+                .<String>error(() -> {
+                    atomicCounter.incrementAndGet();
+                    return UNKNOWN_ERROR;
+                })
+                .retry((integer, throwable) -> integer < 4)
+                .subscribe(testObserver);
 
         testObserver.assertError(UNKNOWN_ERROR);
         testObserver.assertNotComplete();
@@ -58,9 +58,9 @@ public class OnErrorRetryIntegrationTest {
         AtomicInteger atomicCounter = new AtomicInteger(0);
 
         Observable
-          .<String>error(UNKNOWN_ERROR)
-          .retryUntil(() -> atomicCounter.incrementAndGet() > 3)
-          .subscribe(testObserver);
+                .<String>error(UNKNOWN_ERROR)
+                .retryUntil(() -> atomicCounter.incrementAndGet() > 3)
+                .subscribe(testObserver);
 
         testObserver.assertError(UNKNOWN_ERROR);
         testObserver.assertNotComplete();
@@ -74,9 +74,9 @@ public class OnErrorRetryIntegrationTest {
         Exception noretryException = new Exception("don't retry");
 
         Observable
-          .<String>error(UNKNOWN_ERROR)
-          .retryWhen(throwableObservable -> Observable.<String>error(noretryException))
-          .subscribe(testObserver);
+                .<String>error(UNKNOWN_ERROR)
+                .retryWhen(throwableObservable -> Observable.<String>error(noretryException))
+                .subscribe(testObserver);
 
         testObserver.assertError(noretryException);
         testObserver.assertNotComplete();
@@ -89,12 +89,12 @@ public class OnErrorRetryIntegrationTest {
         AtomicInteger atomicCounter = new AtomicInteger(0);
 
         Observable
-          .<String>error(() -> {
-              atomicCounter.incrementAndGet();
-              return UNKNOWN_ERROR;
-          })
-          .retryWhen(throwableObservable -> Observable.empty())
-          .subscribe(testObserver);
+                .<String>error(() -> {
+                    atomicCounter.incrementAndGet();
+                    return UNKNOWN_ERROR;
+                })
+                .retryWhen(throwableObservable -> Observable.empty())
+                .subscribe(testObserver);
 
         testObserver.assertNoErrors();
         testObserver.assertComplete();
@@ -108,12 +108,12 @@ public class OnErrorRetryIntegrationTest {
         AtomicInteger atomicCounter = new AtomicInteger(0);
 
         Observable
-          .<String>error(() -> {
-              atomicCounter.incrementAndGet();
-              return UNKNOWN_ERROR;
-          })
-          .retryWhen(throwableObservable -> Observable.just("anything"))
-          .subscribe(testObserver);
+                .<String>error(() -> {
+                    atomicCounter.incrementAndGet();
+                    return UNKNOWN_ERROR;
+                })
+                .retryWhen(throwableObservable -> Observable.just("anything"))
+                .subscribe(testObserver);
 
         testObserver.assertNoErrors();
         testObserver.assertComplete();
@@ -127,14 +127,14 @@ public class OnErrorRetryIntegrationTest {
         long before = System.currentTimeMillis();
 
         Observable
-          .<String>error(UNKNOWN_ERROR)
-          .retryWhen(throwableObservable -> throwableObservable
-            .zipWith(Observable.range(1, 3), (throwable, integer) -> integer)
-            .flatMap(integer -> {
-                System.out.println("retried " + integer + " times");
-                return Observable.timer(integer, TimeUnit.SECONDS);
-            }))
-          .blockingSubscribe(testObserver);
+                .<String>error(UNKNOWN_ERROR)
+                .retryWhen(throwableObservable -> throwableObservable
+                        .zipWith(Observable.range(1, 3), (throwable, integer) -> integer)
+                        .flatMap(integer -> {
+                            System.out.println("retried " + integer + " times");
+                            return Observable.timer(integer, TimeUnit.SECONDS);
+                        }))
+                .blockingSubscribe(testObserver);
 
         testObserver.assertNoErrors();
         testObserver.assertComplete();

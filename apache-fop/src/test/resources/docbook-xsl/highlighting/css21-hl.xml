@@ -35,25 +35,25 @@ Reference: http://www.w3.org/TR/CSS21/propidx.html
         <end>*/</end>
     </highlighter>
     <highlighter type="string">
-		<string>"</string>
+        <string>"</string>
         <escape>\</escape>
-        <spanNewLines/>        
+        <spanNewLines/>
     </highlighter>
     <highlighter type="string">
-		<string>'</string>
-		<escape>\</escape>
+        <string>'</string>
+        <escape>\</escape>
         <spanNewLines/>
     </highlighter>
     <highlighter type="number">
         <point>.</point>
-        <pointStarts />
+        <pointStarts/>
     </highlighter>
     <highlighter type="word">
-    	<word>@charset</word>
-    	<word>@import</word>
-    	<word>@media</word>
-    	<word>@page</word>
-    	<style>directive</style>
+        <word>@charset</word>
+        <word>@import</word>
+        <word>@media</word>
+        <word>@page</word>
+        <style>directive</style>
     </highlighter>
     <highlighter type="keywords">
         <partChars>-</partChars>

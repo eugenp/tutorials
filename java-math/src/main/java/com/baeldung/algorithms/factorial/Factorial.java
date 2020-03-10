@@ -19,7 +19,7 @@ public class Factorial {
 
     public long factorialUsingStreams(int n) {
         return LongStream.rangeClosed(1, n)
-            .reduce(1, (long x, long y) -> x * y);
+                .reduce(1, (long x, long y) -> x * y);
     }
 
     public long factorialUsingRecursion(int n) {

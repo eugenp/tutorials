@@ -15,7 +15,7 @@ import org.springframework.http.MediaType;
 
 // In order to execute these tests, org.baeldung.custom.Application needs to be running.
 public class ApplicationLiveTest {
-    
+
     @Test
     public void givenUserWithReadPrivilegeAndHasPermission_whenGetFooById_thenOK() {
         final Response response = givenAuth("john", "123").get("http://localhost:8082/foos/1");
@@ -62,6 +62,6 @@ public class ApplicationLiveTest {
 
     //
     private RequestSpecification givenAuth(String username, String password) {
-        return RestAssured.given().log().uri().auth().form(username, password, new FormAuthConfig("/login","username","password"));
+        return RestAssured.given().log().uri().auth().form(username, password, new FormAuthConfig("/login", "username", "password"));
     }
 }

@@ -13,7 +13,7 @@ public class BookStoreWithHooksIntegrationHooks implements En {
         Before(1, () -> startBrowser());
     }
 
-    @Before(order=2, value="@Screenshots")
+    @Before(order = 2, value = "@Screenshots")
     public void beforeScenario(Scenario scenario) {
         takeScreenshot();
     }

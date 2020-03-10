@@ -5,7 +5,9 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Adapts {@link SimpleClassFile} to the {@link JavaCompiler} */
+/**
+ * Adapts {@link SimpleClassFile} to the {@link JavaCompiler}
+ */
 public class SimpleFileManager extends ForwardingJavaFileManager<StandardJavaFileManager> {
 
     private final List<SimpleClassFile> compiled = new ArrayList<>();
@@ -18,15 +20,14 @@ public class SimpleFileManager extends ForwardingJavaFileManager<StandardJavaFil
     public JavaFileObject getJavaFileForOutput(Location location,
                                                String className,
                                                JavaFileObject.Kind kind,
-                                               FileObject sibling)
-    {
+                                               FileObject sibling) {
         SimpleClassFile result = new SimpleClassFile(URI.create("string://" + className));
         compiled.add(result);
         return result;
     }
 
     /**
-     * @return  compiled binaries processed by the current class
+     * @return compiled binaries processed by the current class
      */
     public List<SimpleClassFile> getCompiled() {
         return compiled;

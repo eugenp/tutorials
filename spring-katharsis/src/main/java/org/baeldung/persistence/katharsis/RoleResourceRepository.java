@@ -13,7 +13,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class RoleResourceRepository implements ResourceRepositoryV2<Role, Long> {
 
-    @Autowired private RoleRepository roleRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Override
     public Role findOne(Long id, QuerySpec querySpec) {

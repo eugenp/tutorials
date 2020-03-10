@@ -19,14 +19,13 @@ internal class FuelHttpUnitTest {
 
         val latch = CountDownLatch(1)
 
-        "http://httpbin.org/get".httpGet().response{
-            request, response, result ->
+        "http://httpbin.org/get".httpGet().response { request, response, result ->
 
             val (data, error) = result
 
             Assertions.assertNull(error)
             Assertions.assertNotNull(data)
-            Assertions.assertEquals(200,response.statusCode)
+            Assertions.assertEquals(200, response.statusCode)
 
             latch.countDown()
         }
@@ -43,7 +42,7 @@ internal class FuelHttpUnitTest {
 
         Assertions.assertNull(error)
         Assertions.assertNotNull(data)
-        Assertions.assertEquals(200,response.statusCode)
+        Assertions.assertEquals(200, response.statusCode)
 
     }
 
@@ -51,13 +50,13 @@ internal class FuelHttpUnitTest {
     fun whenMakingSyncHttpGetURLEncodedRequest_thenResponseNotNullAndErrorNullAndStatusCode200() {
 
         val (request, response, result) =
-          "https://jsonplaceholder.typicode.com/posts"
-          .httpGet(listOf("id" to "1")).response()
+                "https://jsonplaceholder.typicode.com/posts"
+                        .httpGet(listOf("id" to "1")).response()
         val (data, error) = result
 
         Assertions.assertNull(error)
         Assertions.assertNotNull(data)
-        Assertions.assertEquals(200,response.statusCode)
+        Assertions.assertEquals(200, response.statusCode)
 
     }
 
@@ -66,14 +65,13 @@ internal class FuelHttpUnitTest {
 
         val latch = CountDownLatch(1)
 
-        Fuel.post("http://httpbin.org/post").response{
-            request, response, result ->
+        Fuel.post("http://httpbin.org/post").response { request, response, result ->
 
             val (data, error) = result
 
             Assertions.assertNull(error)
             Assertions.assertNotNull(data)
-            Assertions.assertEquals(200,response.statusCode)
+            Assertions.assertEquals(200, response.statusCode)
 
             latch.countDown()
         }
@@ -90,21 +88,21 @@ internal class FuelHttpUnitTest {
 
         Assertions.assertNull(error)
         Assertions.assertNotNull(data)
-        Assertions.assertEquals(200,response.statusCode)
+        Assertions.assertEquals(200, response.statusCode)
     }
 
     @Test
     fun whenMakingSyncHttpPostRequestwithBody_thenResponseNotNullAndErrorNullAndStatusCode200() {
 
         val (request, response, result) = Fuel.post("https://jsonplaceholder.typicode.com/posts")
-          .body("{ \"title\" : \"foo\",\"body\" : \"bar\",\"id\" : \"1\"}")
-          .response()
+                .body("{ \"title\" : \"foo\",\"body\" : \"bar\",\"id\" : \"1\"}")
+                .response()
 
         val (data, error) = result
 
         Assertions.assertNull(error)
         Assertions.assertNotNull(data)
-        Assertions.assertEquals(201,response.statusCode)
+        Assertions.assertEquals(201, response.statusCode)
     }
 
     @Test
@@ -118,12 +116,12 @@ internal class FuelHttpUnitTest {
 
 
         val (request, response, result) = "/get"
-          .httpGet().response()
+                .httpGet().response()
         val (data, error) = result
 
         Assertions.assertNull(error)
         Assertions.assertNotNull(data)
-        Assertions.assertEquals(200,response.statusCode)
+        Assertions.assertEquals(200, response.statusCode)
     }
 
     @Test
@@ -139,7 +137,7 @@ internal class FuelHttpUnitTest {
 
         Assertions.assertNull(error)
         Assertions.assertNotNull(data)
-        Assertions.assertEquals(200,response.statusCode)
+        Assertions.assertEquals(200, response.statusCode)
     }
 
     @Test
@@ -147,13 +145,12 @@ internal class FuelHttpUnitTest {
 
         Fuel.download("http://httpbin.org/bytes/32768").destination { response, url ->
             File.createTempFile("temp", ".tmp")
-        }.response{
-            request, response, result ->
+        }.response { request, response, result ->
 
             val (data, error) = result
             Assertions.assertNull(error)
             Assertions.assertNotNull(data)
-            Assertions.assertEquals(200,response.statusCode)
+            Assertions.assertEquals(200, response.statusCode)
         }
     }
 
@@ -161,15 +158,16 @@ internal class FuelHttpUnitTest {
     fun whenDownloadFilewithProgressHandler_thenCreateFileResponseNotNullAndErrorNullAndStatusCode200() {
 
         val (request, response, result) = Fuel.download("http://httpbin.org/bytes/327680")
-          .destination { response, url -> File.createTempFile("temp", ".tmp")
-        }.progress { readBytes, totalBytes ->
-            val progress = readBytes.toFloat() / totalBytes.toFloat()
-        }.response ()
+                .destination { response, url ->
+                    File.createTempFile("temp", ".tmp")
+                }.progress { readBytes, totalBytes ->
+                    val progress = readBytes.toFloat() / totalBytes.toFloat()
+                }.response()
 
         val (data, error) = result
         Assertions.assertNull(error)
         Assertions.assertNotNull(data)
-        Assertions.assertEquals(200,response.statusCode)
+        Assertions.assertEquals(200, response.statusCode)
 
 
     }
@@ -179,7 +177,7 @@ internal class FuelHttpUnitTest {
 
         val latch = CountDownLatch(1)
 
-        "https://jsonplaceholder.typicode.com/posts/1".httpGet().responseObject<Post> { _,_, result ->
+        "https://jsonplaceholder.typicode.com/posts/1".httpGet().responseObject<Post> { _, _, result ->
             val post = result.component1()
             Assertions.assertEquals(1, post?.userId)
             latch.countDown()
@@ -192,14 +190,14 @@ internal class FuelHttpUnitTest {
     @Test
     fun whenMakePOSTRequest_thenSerializePostwithGson() {
 
-        val post = Post(1,1, "Lorem", "Lorem Ipse dolor sit amet")
+        val post = Post(1, 1, "Lorem", "Lorem Ipse dolor sit amet")
 
         val (request, response, result) = Fuel.post("https://jsonplaceholder.typicode.com/posts")
                 .header("Content-Type" to "application/json")
                 .body(Gson().toJson(post).toString())
                 .response()
 
-        Assertions.assertEquals(201,response.statusCode)
+        Assertions.assertEquals(201, response.statusCode)
 
     }
 
@@ -210,8 +208,7 @@ internal class FuelHttpUnitTest {
 
 
         "https://jsonplaceholder.typicode.com/posts?id=1"
-                .httpGet().rx_object(Post.Deserializer()).subscribe{
-                    res, throwable ->
+                .httpGet().rx_object(Post.Deserializer()).subscribe { res, throwable ->
 
                     val post = res.component1()
                     Assertions.assertEquals(1, post?.get(0)?.userId)
@@ -248,12 +245,11 @@ internal class FuelHttpUnitTest {
 
         val latch = CountDownLatch(1)
 
-        Fuel.request(PostRoutingAPI.posts("1",null))
-          .responseObject(Post.Deserializer()) {
-              request, response, result ->
-              Assertions.assertEquals(1, result.component1()?.get(0)?.userId)
-              latch.countDown()
-          }
+        Fuel.request(PostRoutingAPI.posts("1", null))
+                .responseObject(Post.Deserializer()) { request, response, result ->
+                    Assertions.assertEquals(1, result.component1()?.get(0)?.userId)
+                    latch.countDown()
+                }
 
         latch.await()
     }
@@ -263,11 +259,11 @@ internal class FuelHttpUnitTest {
 
         val latch = CountDownLatch(1)
 
-        Fuel.request(PostRoutingAPI.comments("1",null))
-          .responseString { request, response, result ->
-            Assertions.assertEquals(200, response.statusCode)
-            latch.countDown()
-          }
+        Fuel.request(PostRoutingAPI.comments("1", null))
+                .responseString { request, response, result ->
+                    Assertions.assertEquals(200, response.statusCode)
+                    latch.countDown()
+                }
 
         latch.await()
     }

@@ -21,7 +21,7 @@ public class JavaPeriodUnitTest {
         LocalDate finalDate = initialDate.plus(Period.ofDays(5));
 
         int days = Period.between(initialDate, finalDate)
-            .getDays();
+                .getDays();
 
         assertThat(days).isEqualTo(5);
     }
@@ -48,9 +48,9 @@ public class JavaPeriodUnitTest {
 
         assertFalse(period.isNegative());
         assertEquals(56, period.plusDays(50)
-            .getDays());
+                .getDays());
         assertEquals(9, period.minusMonths(2)
-            .getMonths());
+                .getMonths());
 
         Period fromUnits = Period.of(3, 10, 10);
         Period fromDays = Period.ofDays(50);

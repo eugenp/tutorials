@@ -10,7 +10,7 @@ import org.junit.Test;
 public class ScannerIntUnitTest {
 
     protected static final String NUMBER_FILENAME = "src/test/resources/sampleNumberFile.txt";
-    
+
     @Test
     public void whenParsingExistingTextFile_thenGetIntArrayList() throws IOException {
         List<Integer> numbers = ScannerIntExample.generateArrayListFromFile(NUMBER_FILENAME);

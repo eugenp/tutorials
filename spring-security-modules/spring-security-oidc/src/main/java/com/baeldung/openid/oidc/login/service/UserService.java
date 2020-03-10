@@ -13,7 +13,7 @@ public class UserService {
 
     public Map<String, Object> getUserClaims() {
         Authentication authentication = SecurityContextHolder.getContext()
-            .getAuthentication();
+                .getAuthentication();
         if (authentication.getPrincipal() instanceof OidcUser) {
             OidcUser principal = ((OidcUser) authentication.getPrincipal());
             return principal.getClaims();

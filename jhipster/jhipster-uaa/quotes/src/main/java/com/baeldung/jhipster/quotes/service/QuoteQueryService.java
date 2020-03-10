@@ -44,6 +44,7 @@ public class QuoteQueryService extends QueryService<Quote> {
 
     /**
      * Return a {@link List} of {@link QuoteDTO} which matches the criteria from the database
+     *
      * @param criteria The object which holds all the filters, which the entities should match.
      * @return the matching entities.
      */
@@ -56,8 +57,9 @@ public class QuoteQueryService extends QueryService<Quote> {
 
     /**
      * Return a {@link Page} of {@link QuoteDTO} which matches the criteria from the database
+     *
      * @param criteria The object which holds all the filters, which the entities should match.
-     * @param page The page, which should be returned.
+     * @param page     The page, which should be returned.
      * @return the matching entities.
      */
     @Transactional(readOnly = true)
@@ -65,11 +67,12 @@ public class QuoteQueryService extends QueryService<Quote> {
         log.debug("find by criteria : {}, page: {}", criteria, page);
         final Specification<Quote> specification = createSpecification(criteria);
         return quoteRepository.findAll(specification, page)
-            .map(quoteMapper::toDto);
+                .map(quoteMapper::toDto);
     }
 
     /**
      * Return the number of matching entities in the database
+     *
      * @param criteria The object which holds all the filters, which the entities should match.
      * @return the number of matching entities.
      */

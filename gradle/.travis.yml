@@ -20,7 +20,7 @@ install:
 #Don't build tags
 branches:
   except:
-  - /^v\d/
+    - /^v\d/
 
 #Build and perform release (if needed)
 script:

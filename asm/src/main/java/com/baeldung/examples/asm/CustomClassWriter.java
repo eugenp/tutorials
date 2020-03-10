@@ -4,22 +4,24 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
+
 import static org.objectweb.asm.Opcodes.ACC_PUBLIC;
 import static org.objectweb.asm.Opcodes.ACC_STATIC;
 import static org.objectweb.asm.Opcodes.ASM4;
 import static org.objectweb.asm.Opcodes.V1_5;
+
 import org.objectweb.asm.Type;
 import org.objectweb.asm.util.TraceClassVisitor;
 
 /**
- *
- * @author baeldung
  * @param <String>
+ * @author baeldung
  */
 public class CustomClassWriter {
 
@@ -78,7 +80,7 @@ public class CustomClassWriter {
 
         @Override
         public void visit(int version, int access, String name,
-                String signature, String superName, String[] interfaces) {
+                          String signature, String superName, String[] interfaces) {
             String[] holding = new String[interfaces.length + 1];
             holding[holding.length - 1] = CLONEABLE;
             System.arraycopy(interfaces, 0, holding, 0, interfaces.length);
@@ -102,10 +104,10 @@ public class CustomClassWriter {
 
         @Override
         public MethodVisitor visitMethod(int access,
-                String name,
-                String desc,
-                String signature,
-                String[] exceptions) {
+                                         String name,
+                                         String desc,
+                                         String signature,
+                                         String[] exceptions) {
 
             if (name.equals("toUnsignedString0")) {
                 logger.info("Visiting unsigned method");
@@ -137,7 +139,7 @@ public class CustomClassWriter {
 
         @Override
         public FieldVisitor visitField(int access, String name, String desc,
-                String signature, Object value) {
+                                       String signature, Object value) {
             if (name.equals(fieldName)) {
                 isFieldPresent = true;
             }

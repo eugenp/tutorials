@@ -31,7 +31,7 @@ public class Combinatorics {
     }
 
     private static void combinationsInternal(
-      List<Integer> inputSet, int k, List<List<Integer>> results, ArrayList<Integer> accumulator, int index) {
+            List<Integer> inputSet, int k, List<List<Integer>> results, ArrayList<Integer> accumulator, int index) {
         int leftToAccumulate = k - accumulator.size();
         int possibleToAcculumate = inputSet.size() - index;
 
@@ -53,7 +53,7 @@ public class Combinatorics {
     }
 
     private static void powerSetInternal(
-      List<Character> set, List<List<Character>> powerSet, List<Character> accumulator, int index) {
+            List<Character> set, List<List<Character>> powerSet, List<Character> accumulator, int index) {
         if (index == set.size()) {
             powerSet.add(new ArrayList<>(accumulator));
         } else {

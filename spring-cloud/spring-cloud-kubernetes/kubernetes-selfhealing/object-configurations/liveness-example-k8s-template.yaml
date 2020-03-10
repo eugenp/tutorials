@@ -6,7 +6,7 @@ spec:
   selector:
     app: liveness-example
   ports:
-  - port: 8080
+    - port: 8080
 
 ---
 apiVersion: apps/v1
@@ -27,28 +27,28 @@ spec:
         app: liveness-example
     spec:
       containers:
-      - name: liveness-example
-        image: dbdock/liveness-example:1.0.0
-        imagePullPolicy: IfNotPresent
-        resources:
-          requests:
-            memory: 400Mi
-            cpu: 400m
-        ports:
-        - containerPort: 8080
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 10
-          timeoutSeconds: 2
-          periodSeconds: 3
-          failureThreshold: 1
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 20
-          timeoutSeconds: 2
-          periodSeconds: 8
-          failureThreshold: 1
+        - name: liveness-example
+          image: dbdock/liveness-example:1.0.0
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: 400Mi
+              cpu: 400m
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 3
+            failureThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 20
+            timeoutSeconds: 2
+            periodSeconds: 8
+            failureThreshold: 1

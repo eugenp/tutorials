@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory
 interface Logging
 
 inline fun <reified T : Logging> T.logger(): Logger =
-        //Wrong logger name!
+//Wrong logger name!
         //LoggerFactory.getLogger(javaClass.name + " w/interface")
         LoggerFactory.getLogger(getClassForLogging(T::class.java).name + " w/interface")
 

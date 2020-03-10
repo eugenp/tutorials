@@ -1,4 +1,4 @@
-import { Moment } from 'moment';
+import {Moment} from 'moment';
 
 export interface IQuote {
     id?: number;
@@ -8,5 +8,6 @@ export interface IQuote {
 }
 
 export class Quote implements IQuote {
-    constructor(public id?: number, public symbol?: string, public price?: number, public lastTrade?: Moment) {}
+    constructor(public id?: number, public symbol?: string, public price?: number, public lastTrade?: Moment) {
+    }
 }

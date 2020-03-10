@@ -14,7 +14,7 @@ public class PathPermission implements Permission {
 
     @Override
     public boolean implies(Permission p) {
-        if(p instanceof PathPermission) {
+        if (p instanceof PathPermission) {
             return ((PathPermission) p).path.startsWith(path);
         }
         return false;

@@ -17,18 +17,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-            .antMatchers("/h2-console/**")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .permitAll();
+                .antMatchers("/h2-console/**")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .permitAll();
         httpSecurity.csrf()
-            .ignoringAntMatchers("/h2-console/**");
+                .ignoringAntMatchers("/h2-console/**");
         httpSecurity.headers()
-            .frameOptions()
-            .sameOrigin();
+                .frameOptions()
+                .sameOrigin();
     }
 
     @Autowired
@@ -37,11 +37,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
-            .dataSource(dataSource)
-            .withDefaultSchema()
-            .withUser(User.withUsername("user")
-                .password(passwordEncoder().encode("pass"))
-                .roles("USER"));
+                .dataSource(dataSource)
+                .withDefaultSchema()
+                .withUser(User.withUsername("user")
+                        .password(passwordEncoder().encode("pass"))
+                        .roles("USER"));
     }
 
     @Bean

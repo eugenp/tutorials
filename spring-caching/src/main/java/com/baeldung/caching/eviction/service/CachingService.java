@@ -42,8 +42,8 @@ public class CachingService {
 
     public void evictAllCaches() {
         cacheManager.getCacheNames()
-          .parallelStream()
-          .forEach(cacheName -> cacheManager.getCache(cacheName).clear());
+                .parallelStream()
+                .forEach(cacheName -> cacheManager.getCache(cacheName).clear());
     }
 
     @Scheduled(fixedRate = 6000)

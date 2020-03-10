@@ -58,5 +58,5 @@
         <spring-cloud.version>2.1.1.RELEASE</spring-cloud.version>
         <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
     </properties>
-    
+
 </project>

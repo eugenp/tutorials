@@ -13,4 +13,4 @@ def calcSum2(x, y) {
     log.info("Logging an undefined variable: $z")
 }
 
-calcSum(1,5)
+calcSum(1, 5)

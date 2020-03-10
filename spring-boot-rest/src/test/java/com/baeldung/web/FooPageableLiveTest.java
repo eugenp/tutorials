@@ -24,7 +24,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ConfigIntegrationTest.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {ConfigIntegrationTest.class}, loader = AnnotationConfigContextLoader.class)
 @ActiveProfiles("test")
 public class FooPageableLiveTest extends AbstractBasicLiveTest<Foo> {
 
@@ -43,12 +43,12 @@ public class FooPageableLiveTest extends AbstractBasicLiveTest<Foo> {
     public final String createAsUri() {
         return createAsUri(new Foo(randomAlphabetic(6)));
     }
-    
+
     @Override
     @Test
     public void whenResourcesAreRetrievedPaged_then200IsReceived() {
         this.create();
-        
+
         final Response response = RestAssured.get(getPageableURL() + "?page=0&size=10");
 
         assertThat(response.getStatusCode(), is(200));
@@ -76,5 +76,5 @@ public class FooPageableLiveTest extends AbstractBasicLiveTest<Foo> {
     protected String getPageableURL() {
         return "http://localhost:" + APPLICATION_PORT + "/spring-boot-rest/foos/pageable";
     }
-    
+
 }

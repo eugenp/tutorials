@@ -11,7 +11,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { ClientWebConfig.class, SecurityJavaConfig.class, WebConfig.class })
+@ContextConfiguration(classes = {ClientWebConfig.class, SecurityJavaConfig.class, WebConfig.class})
 public class SpringContextTest {
 
     @Test

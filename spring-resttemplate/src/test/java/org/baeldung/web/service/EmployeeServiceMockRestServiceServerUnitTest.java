@@ -53,11 +53,11 @@ public class EmployeeServiceMockRestServiceServerUnitTest {
         Employee emp = new Employee("E001", "Eric Simmons");
 
         mockServer.expect(ExpectedCount.once(),
-          requestTo(new URI("http://localhost:8080/employee/E001")))
-            .andExpect(method(HttpMethod.GET))
-            .andRespond(withStatus(HttpStatus.OK)
-              .contentType(MediaType.APPLICATION_JSON)
-              .body(mapper.writeValueAsString(emp)));
+                requestTo(new URI("http://localhost:8080/employee/E001")))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(emp)));
 
         Employee employee = empService.getEmployee("E001");
         mockServer.verify();

@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 privileged aspect SpringDataJpaDetachableRepositoryConfiguration_Roo_Jpa_Repository_Configuration {
-    
-    declare @type: SpringDataJpaDetachableRepositoryConfiguration: @Configuration;
-    
-    declare @type: SpringDataJpaDetachableRepositoryConfiguration: @EnableJpaRepositories(repositoryBaseClass = DetachableJpaRepositoryImpl.class, basePackageClasses = RooApplication.class);
-    
+
+    declare @type: SpringDataJpaDetachableRepositoryConfiguration:@Configuration;
+
+    declare @type: SpringDataJpaDetachableRepositoryConfiguration:@EnableJpaRepositories(repositoryBaseClass = DetachableJpaRepositoryImpl.class, basePackageClasses = RooApplication.class);
+
 }

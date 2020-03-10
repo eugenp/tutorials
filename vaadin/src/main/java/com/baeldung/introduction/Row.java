@@ -1,15 +1,15 @@
 package com.baeldung.introduction;
 
 public class Row {
-    
+
     private String column1;
-    
+
     private String column2;
 
     private String column3;
-    
+
     public Row() {
-       
+
     }
 
     public Row(String column1, String column2, String column3) {
@@ -41,5 +41,5 @@ public class Row {
 
     public void setColumn3(String column3) {
         this.column3 = column3;
-    }    
+    }
 }

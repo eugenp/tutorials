@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
-@SpringBootApplication(exclude = { RedisReactiveAutoConfiguration.class })
+@SpringBootApplication(exclude = {RedisReactiveAutoConfiguration.class})
 public class ServerSSEApplication {
 
     public static void main(String[] args) {
@@ -21,8 +21,8 @@ public class ServerSSEApplication {
     @Bean
     public SecurityWebFilterChain sseServerSpringSecurityFilterChain(ServerHttpSecurity http) {
         http.authorizeExchange()
-            .anyExchange()
-            .permitAll();
+                .anyExchange()
+                .permitAll();
         return http.build();
     }
 

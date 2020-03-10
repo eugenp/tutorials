@@ -15,7 +15,8 @@ import java.util.List;
 
 @NodeEntity
 public class Movie {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     Long id;
 
     private String title;

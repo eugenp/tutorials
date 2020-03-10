@@ -4,7 +4,7 @@ public class CustomPair {
 
     private String key;
     private String value;
-    
+
     public CustomPair(String key, String value) {
         super();
         this.key = key;
@@ -26,8 +26,8 @@ public class CustomPair {
     public void setValue(String value) {
         this.value = value;
     }
-    
+
     public Object[] getPair() {
-        return new Object[] { this.key, this.value};
+        return new Object[]{this.key, this.value};
     }
 }

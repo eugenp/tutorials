@@ -15,14 +15,14 @@ import org.junit.Test;
 public class DatesCollectionIterationUnitTest {
 
     private Collection<LocalDate> localDates = LocalDate.now()
-        .datesUntil(LocalDate.now()
-            .plus(10L, ChronoUnit.DAYS))
-        .collect(Collectors.toList());
+            .datesUntil(LocalDate.now()
+                    .plus(10L, ChronoUnit.DAYS))
+            .collect(Collectors.toList());
 
     private Collection<Date> dates = localDates.stream()
-        .map(localDate -> Date.from(localDate.atStartOfDay(ZoneId.systemDefault())
-            .toInstant()))
-        .collect(Collectors.toList());
+            .map(localDate -> Date.from(localDate.atStartOfDay(ZoneId.systemDefault())
+                    .toInstant()))
+            .collect(Collectors.toList());
 
     @Test
     public void givenIteratingListOfDatesJava7_WhenStartTodayAndEnding10DaysAhead() {
@@ -48,7 +48,7 @@ public class DatesCollectionIterationUnitTest {
 
         while (current.before(end)) {
             dates.add(current);
-            
+
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(current);
             calendar.add(Calendar.DATE, 1);

@@ -38,13 +38,13 @@ public class CourseControllerUnitTest {
         when(courseService.getCourses()).thenReturn(Collections.emptyList());
 
         given()
-        .when()
-          .get("/courses")
-        .then()
-          .log().ifValidationFails()
-          .statusCode(OK.value())
-          .contentType(JSON)
-          .body(is(equalTo("[]")));
+                .when()
+                .get("/courses")
+                .then()
+                .log().ifValidationFails()
+                .statusCode(OK.value())
+                .contentType(JSON)
+                .body(is(equalTo("[]")));
     }
 
     @Test
@@ -54,10 +54,10 @@ public class CourseControllerUnitTest {
         when(courseService.getCourse(nonMatchingCourseCode)).thenThrow(new CourseNotFoundException(nonMatchingCourseCode));
 
         given()
-        .when()
-          .get("/courses/" + nonMatchingCourseCode)
-        .then()
-          .log().ifValidationFails()
-          .statusCode(NOT_FOUND.value());
+                .when()
+                .get("/courses/" + nonMatchingCourseCode)
+                .then()
+                .log().ifValidationFails()
+                .statusCode(NOT_FOUND.value());
     }
 }

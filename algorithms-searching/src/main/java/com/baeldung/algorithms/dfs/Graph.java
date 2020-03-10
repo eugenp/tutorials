@@ -69,6 +69,6 @@ public class Graph {
     }
 
     private void visit(int value) {
-        System.out.print(" " + value);        
+        System.out.print(" " + value);
     }
 }

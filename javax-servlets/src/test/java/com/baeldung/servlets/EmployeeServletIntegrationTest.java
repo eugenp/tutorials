@@ -21,34 +21,34 @@ import com.google.gson.Gson;
 @RunWith(MockitoJUnitRunner.class)
 public class EmployeeServletIntegrationTest {
 
-	@Mock
-	HttpServletRequest httpServletRequest;
+    @Mock
+    HttpServletRequest httpServletRequest;
 
-	@Mock
-	HttpServletResponse httpServletResponse;
+    @Mock
+    HttpServletResponse httpServletResponse;
 
-	Employee employee;
+    Employee employee;
 
-	@Test
-	public void whenPostRequestToEmployeeServlet_thenEmployeeReturnedAsJson() throws Exception {
+    @Test
+    public void whenPostRequestToEmployeeServlet_thenEmployeeReturnedAsJson() throws Exception {
 
-		//Given
-		int id = 1;
-		String name = "Karan Khanna";
-		String department = "IT";
-		long salary = 5000;
-		employee = new Employee(id, name, department, salary);
+        //Given
+        int id = 1;
+        String name = "Karan Khanna";
+        String department = "IT";
+        long salary = 5000;
+        employee = new Employee(id, name, department, salary);
 
-		StringWriter sw = new StringWriter();
-		PrintWriter pw = new PrintWriter(sw);
-		when(httpServletResponse.getWriter()).thenReturn(pw);
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        when(httpServletResponse.getWriter()).thenReturn(pw);
 
-		EmployeeServlet employeeServlet = new EmployeeServlet();
-		employeeServlet.doGet(httpServletRequest, httpServletResponse);
+        EmployeeServlet employeeServlet = new EmployeeServlet();
+        employeeServlet.doGet(httpServletRequest, httpServletResponse);
 
-		String employeeJsonString = sw.getBuffer().toString().trim();
-		Employee fetchedEmployee = new Gson().fromJson(employeeJsonString, Employee.class);
-		assertEquals(fetchedEmployee, employee);
-	}
+        String employeeJsonString = sw.getBuffer().toString().trim();
+        Employee fetchedEmployee = new Gson().fromJson(employeeJsonString, Employee.class);
+        assertEquals(fetchedEmployee, employee);
+    }
 
 }

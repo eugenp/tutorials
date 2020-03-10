@@ -35,33 +35,33 @@ public class LoginFieldsSimpleIntegrationTest extends AbstractExtraLoginFieldsIn
     public void givenAccessSecuredResource_whenAuthenticated_thenAuthHasExtraFields() throws Exception {
         MockHttpServletRequestBuilder securedResourceAccess = get("/user/index");
         MvcResult unauthenticatedResult = mockMvc.perform(securedResourceAccess)
-            .andExpect(status().is3xxRedirection())
-            .andReturn();
+                .andExpect(status().is3xxRedirection())
+                .andReturn();
 
         MockHttpSession session = (MockHttpSession) unauthenticatedResult.getRequest()
-            .getSession();
+                .getSession();
         String loginUrl = unauthenticatedResult.getResponse()
-            .getRedirectedUrl();
+                .getRedirectedUrl();
 
         User user = getUser();
 
         mockMvc.perform(post(loginUrl)
-            .param("username", user.getUsername())
-            .param("password", user.getPassword())
-            .param("domain", user.getDomain())
-            .session(session)
-            .with(csrf()))
-            .andExpect(status().is3xxRedirection())
-            .andExpect(redirectedUrlPattern("**/user/index"))
-            .andReturn();
+                .param("username", user.getUsername())
+                .param("password", user.getPassword())
+                .param("domain", user.getDomain())
+                .session(session)
+                .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrlPattern("**/user/index"))
+                .andReturn();
 
         mockMvc.perform(securedResourceAccess.session(session))
-            .andExpect(status().isOk());
-        
-        SecurityContext securityContext 
-            = (SecurityContext) session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
+                .andExpect(status().isOk());
+
+        SecurityContext securityContext
+                = (SecurityContext) session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
         Authentication auth = securityContext.getAuthentication();
-        assertEquals(((User)auth.getPrincipal()).getDomain(), user.getDomain());
+        assertEquals(((User) auth.getPrincipal()).getDomain(), user.getDomain());
     }
 
     private User getUser() {

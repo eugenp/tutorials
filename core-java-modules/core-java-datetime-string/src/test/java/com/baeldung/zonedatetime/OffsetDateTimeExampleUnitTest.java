@@ -17,6 +17,6 @@ public class OffsetDateTimeExampleUnitTest {
         OffsetDateTime time = offsetDateTimeExample.getCurrentTimeByZoneOffset(offset);
 
         assertTrue(time.getOffset()
-            .equals(ZoneOffset.of(offset)));
+                .equals(ZoneOffset.of(offset)));
     }
 }

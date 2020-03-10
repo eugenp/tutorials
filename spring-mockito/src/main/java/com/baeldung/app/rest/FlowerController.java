@@ -16,12 +16,12 @@ public class FlowerController {
     private FlowerService flowerService;
 
     @PostMapping("/isAFlower")
-    public String isAFlower (@RequestBody String flower) {
+    public String isAFlower(@RequestBody String flower) {
         return flowerService.analize(flower);
     }
 
     @PostMapping("/isABigFlower")
-    public Boolean isABigFlower (@RequestBody Flower flower) {
+    public Boolean isABigFlower(@RequestBody Flower flower) {
         return flowerService.isABigFlower(flower.getName(), flower.getPetals());
     }
 }

@@ -24,8 +24,8 @@ public class StreamCountUnitTest {
     @Test
     public void givenListOfCustomers_whenCount_thenGetListSize() {
         long count = customers
-          .stream()
-          .count();
+                .stream()
+                .count();
 
         assertThat(count).isEqualTo(4L);
     }
@@ -33,9 +33,9 @@ public class StreamCountUnitTest {
     @Test
     public void givenListOfCustomers_whenFilterByPointsOver100AndCount_thenGetTwo() {
         long countBigCustomers = customers
-          .stream()
-          .filter(c -> c.getPoints() > 100)
-          .count();
+                .stream()
+                .filter(c -> c.getPoints() > 100)
+                .count();
 
         assertThat(countBigCustomers).isEqualTo(2L);
     }
@@ -43,9 +43,9 @@ public class StreamCountUnitTest {
     @Test
     public void givenListOfCustomers_whenFilterByPointsAndNameAndCount_thenGetOne() {
         long count = customers
-          .stream()
-          .filter(c -> c.getPoints() > 10 && c.getName().startsWith("Charles"))
-          .count();
+                .stream()
+                .filter(c -> c.getPoints() > 10 && c.getName().startsWith("Charles"))
+                .count();
 
         assertThat(count).isEqualTo(1L);
     }
@@ -53,9 +53,9 @@ public class StreamCountUnitTest {
     @Test
     public void givenListOfCustomers_whenNoneMatchesFilterAndCount_thenGetZero() {
         long count = customers
-          .stream()
-          .filter(c -> c.getPoints() > 500)
-          .count();
+                .stream()
+                .filter(c -> c.getPoints() > 500)
+                .count();
 
         assertThat(count).isEqualTo(0L);
     }
@@ -63,9 +63,9 @@ public class StreamCountUnitTest {
     @Test
     public void givenListOfCustomers_whenUsingMethodOverHundredPointsAndCount_thenGetTwo() {
         long count = customers
-          .stream()
-          .filter(Customer::hasOverHundredPoints)
-          .count();
+                .stream()
+                .filter(Customer::hasOverHundredPoints)
+                .count();
 
         assertThat(count).isEqualTo(2L);
     }

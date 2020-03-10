@@ -59,9 +59,9 @@ public class PhoneNumberType implements UserType {
             st.setNull(index, Types.INTEGER);
         } else {
             PhoneNumber employeeNumber = (PhoneNumber) value;
-            st.setInt(index,employeeNumber.getCountryCode());
-            st.setInt(index+1,employeeNumber.getCityCode());
-            st.setInt(index+2,employeeNumber.getNumber());
+            st.setInt(index, employeeNumber.getCountryCode());
+            st.setInt(index + 1, employeeNumber.getCityCode());
+            st.setInt(index + 2, employeeNumber.getNumber());
         }
     }
 
@@ -71,7 +71,7 @@ public class PhoneNumberType implements UserType {
             return null;
 
         PhoneNumber empNumber = (PhoneNumber) value;
-        PhoneNumber newEmpNumber = new PhoneNumber(empNumber.getCountryCode(),empNumber.getCityCode(),empNumber.getNumber());
+        PhoneNumber newEmpNumber = new PhoneNumber(empNumber.getCountryCode(), empNumber.getCityCode(), empNumber.getNumber());
 
         return newEmpNumber;
     }

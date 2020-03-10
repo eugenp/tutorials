@@ -10,29 +10,29 @@ import org.junit.Test;
 
 public class CombiningListsUnitTest {
     private static final List<Object> first = Arrays.asList(new Object[]{
-            "One", 
-            "Two", 
+            "One",
+            "Two",
             "Three"
     });
-    
+
     private static final List<Object> second = Arrays.asList(new Object[]{
-            "Four", 
-            "Five", 
+            "Four",
+            "Five",
             "Six"
     });
 
     private static final List<Object> expected = Arrays.asList(new Object[]{
-            "One", 
-            "Two", 
+            "One",
+            "Two",
             "Three",
-            "Four", 
-            "Five", 
+            "Four",
+            "Five",
             "Six"
     });
-    
+
     @Test
     public void givenTwoLists_whenUsingNativeJava_thenArraysCombined() {
-    	assertThat(CombiningLists.usingNativeJava(first, second), is(expected));
+        assertThat(CombiningLists.usingNativeJava(first, second), is(expected));
     }
 
     @Test

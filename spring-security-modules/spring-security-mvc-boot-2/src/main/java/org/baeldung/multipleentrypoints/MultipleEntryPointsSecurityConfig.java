@@ -27,7 +27,7 @@ public class MultipleEntryPointsSecurityConfig {
         manager.createUser(User.withUsername("admin").password(encoder().encode("adminPass")).roles("ADMIN").build());
         return manager;
     }
-    
+
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
@@ -41,15 +41,15 @@ public class MultipleEntryPointsSecurityConfig {
         protected void configure(HttpSecurity http) throws Exception {
             //@formatter:off
             http.antMatcher("/admin/**")
-                .authorizeRequests().anyRequest().hasRole("ADMIN")
-                .and().httpBasic().authenticationEntryPoint(authenticationEntryPoint())    
-                .and().exceptionHandling().accessDeniedPage("/403");
+                    .authorizeRequests().anyRequest().hasRole("ADMIN")
+                    .and().httpBasic().authenticationEntryPoint(authenticationEntryPoint())
+                    .and().exceptionHandling().accessDeniedPage("/403");
             //@formatter:on
         }
-        
+
         @Bean
-        public AuthenticationEntryPoint authenticationEntryPoint(){
-            BasicAuthenticationEntryPoint entryPoint = new  BasicAuthenticationEntryPoint();
+        public AuthenticationEntryPoint authenticationEntryPoint() {
+            BasicAuthenticationEntryPoint entryPoint = new BasicAuthenticationEntryPoint();
             entryPoint.setRealmName("admin realm");
             return entryPoint;
         }
@@ -60,29 +60,29 @@ public class MultipleEntryPointsSecurityConfig {
     public static class App2ConfigurationAdapter extends WebSecurityConfigurerAdapter {
 
         protected void configure(HttpSecurity http) throws Exception {
-            
+
             //@formatter:off
             http.antMatcher("/user/**")
-                .authorizeRequests().anyRequest().hasRole("USER")              
-                .and().formLogin().loginProcessingUrl("/user/login")
-                .failureUrl("/userLogin?error=loginError").defaultSuccessUrl("/user/myUserPage")
-                .and().logout().logoutUrl("/user/logout").logoutSuccessUrl("/multipleHttpLinks")
-                .deleteCookies("JSESSIONID")
-                .and().exceptionHandling()
-                .defaultAuthenticationEntryPointFor(loginUrlauthenticationEntryPointWithWarning(),  new AntPathRequestMatcher("/user/private/**"))
-                .defaultAuthenticationEntryPointFor(loginUrlauthenticationEntryPoint(), new AntPathRequestMatcher("/user/general/**"))
-                .accessDeniedPage("/403")
-                .and().csrf().disable();
+                    .authorizeRequests().anyRequest().hasRole("USER")
+                    .and().formLogin().loginProcessingUrl("/user/login")
+                    .failureUrl("/userLogin?error=loginError").defaultSuccessUrl("/user/myUserPage")
+                    .and().logout().logoutUrl("/user/logout").logoutSuccessUrl("/multipleHttpLinks")
+                    .deleteCookies("JSESSIONID")
+                    .and().exceptionHandling()
+                    .defaultAuthenticationEntryPointFor(loginUrlauthenticationEntryPointWithWarning(), new AntPathRequestMatcher("/user/private/**"))
+                    .defaultAuthenticationEntryPointFor(loginUrlauthenticationEntryPoint(), new AntPathRequestMatcher("/user/general/**"))
+                    .accessDeniedPage("/403")
+                    .and().csrf().disable();
             //@formatter:on
         }
-        
+
         @Bean
-        public AuthenticationEntryPoint loginUrlauthenticationEntryPoint(){
+        public AuthenticationEntryPoint loginUrlauthenticationEntryPoint() {
             return new LoginUrlAuthenticationEntryPoint("/userLogin");
         }
-        
+
         @Bean
-        public AuthenticationEntryPoint loginUrlauthenticationEntryPointWithWarning(){
+        public AuthenticationEntryPoint loginUrlauthenticationEntryPointWithWarning() {
             return new LoginUrlAuthenticationEntryPoint("/userLoginWithWarning");
         }
     }

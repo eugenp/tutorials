@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class BaeldungHomePage {
 
     private SeleniumConfig config;
-    @FindBy(css=".header--menu > a")
+    @FindBy(css = ".header--menu > a")
     private WebElement title;
     @FindBy(css = ".menu-start-here > a")
     private WebElement startHere;

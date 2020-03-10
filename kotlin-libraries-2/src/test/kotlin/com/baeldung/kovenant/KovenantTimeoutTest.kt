@@ -27,7 +27,7 @@ class KovenantTimeoutTest {
         Assert.assertNull(result)
     }
 
-    fun <T> timedTask(millis: Long, body: () -> T) : Promise<T?, List<Exception>> {
+    fun <T> timedTask(millis: Long, body: () -> T): Promise<T?, List<Exception>> {
         val timeoutTask = task {
             Thread.sleep(millis)
             null

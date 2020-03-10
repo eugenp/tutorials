@@ -6,18 +6,18 @@
             </pattern>
         </encoder>
     </appender>
-    
-    <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter">
-		<level value="DEBUG" />
-	</logger>
 
-    <logger name="org.springframework" level="WARN" />
-    <logger name="org.springframework.transaction" level="WARN" />
+    <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter">
+        <level value="DEBUG"/>
+    </logger>
+
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.springframework.transaction" level="WARN"/>
 
     <!-- in order to debug some marshalling issues, this needs to be TRACE -->
-    <logger name="org.springframework.web.servlet.mvc" level="WARN" />
+    <logger name="org.springframework.web.servlet.mvc" level="WARN"/>
 
     <root level="INFO">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

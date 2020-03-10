@@ -36,11 +36,11 @@ public abstract class ReactiveCouchbaseConfiguration extends AbstractReactiveCou
     @Override
     public CouchbaseEnvironment couchbaseEnvironment() {
         return DefaultCouchbaseEnvironment
-          .builder()
-          .bootstrapHttpDirectPort(couchbaseProperties.getPort())
-          .build();
+                .builder()
+                .bootstrapHttpDirectPort(couchbaseProperties.getPort())
+                .build();
     }
-    
+
     @Bean(name = BeanNames.COUCHBASE_INDEX_MANAGER)
     public IndexManager couchbaseIndexManager() {
         return new IndexManager(true, true, false);

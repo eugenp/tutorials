@@ -34,9 +34,9 @@ public class VideoRepository {
 
     public void createTable(String keyspace) {
         CreateTable createTable = SchemaBuilder.createTable(TABLE_NAME).ifNotExists()
-          .withPartitionKey("video_id", DataTypes.UUID)
-          .withColumn("title", DataTypes.TEXT)
-          .withColumn("creation_date", DataTypes.TIMESTAMP);
+                .withPartitionKey("video_id", DataTypes.UUID)
+                .withColumn("title", DataTypes.TEXT)
+                .withColumn("creation_date", DataTypes.TIMESTAMP);
 
         executeStatement(createTable.build(), keyspace);
     }
@@ -51,9 +51,9 @@ public class VideoRepository {
         video.setId(videoId);
 
         RegularInsert insertInto = QueryBuilder.insertInto(TABLE_NAME)
-          .value("video_id", QueryBuilder.bindMarker())
-          .value("title", QueryBuilder.bindMarker())
-          .value("creation_date", QueryBuilder.bindMarker());
+                .value("video_id", QueryBuilder.bindMarker())
+                .value("title", QueryBuilder.bindMarker())
+                .value("creation_date", QueryBuilder.bindMarker());
 
         SimpleStatement insertStatement = insertInto.build();
 
@@ -64,9 +64,9 @@ public class VideoRepository {
         PreparedStatement preparedStatement = session.prepare(insertStatement);
 
         BoundStatement statement = preparedStatement.bind()
-          .setUuid(0, video.getId())
-          .setString(1, video.getTitle())
-          .setInstant(2, video.getCreationDate());
+                .setUuid(0, video.getId())
+                .setString(1, video.getTitle())
+                .setInstant(2, video.getCreationDate());
 
         session.execute(statement);
 
@@ -85,7 +85,7 @@ public class VideoRepository {
         List<Video> result = new ArrayList<>();
 
         resultSet.forEach(x -> result.add(
-            new Video(x.getUuid("video_id"), x.getString("title"), x.getInstant("creation_date"))
+                new Video(x.getUuid("video_id"), x.getString("title"), x.getInstant("creation_date"))
         ));
 
         return result;

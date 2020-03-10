@@ -14,8 +14,10 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import com.google.common.collect.Iterators;
+
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
 import org.junit.Test;
 
 public class StreamArrayConversionUnitTest {
@@ -57,14 +59,14 @@ public class StreamArrayConversionUnitTest {
     @Test
     public void givenStringArray_whenConvertedTwoWays_thenConvertedStreamsAreEqual() {
         assertTrue(Iterators
-            .elementsEqual(stringArrayToStreamUsingArraysStream(stringArray).iterator(),
-                stringArrayToStreamUsingStreamOf(stringArray).iterator()));
+                .elementsEqual(stringArrayToStreamUsingArraysStream(stringArray).iterator(),
+                        stringArrayToStreamUsingStreamOf(stringArray).iterator()));
     }
 
     @Test
     public void givenPrimitiveArray_whenConvertedTwoWays_thenConvertedStreamsAreNotEqual() {
         assertFalse(Iterators.elementsEqual(
-            primitiveIntArrayToStreamUsingArraysStream(intPrimitiveArray).iterator(),
-            primitiveIntArrayToStreamUsingStreamOf(intPrimitiveArray).iterator()));
+                primitiveIntArrayToStreamUsingArraysStream(intPrimitiveArray).iterator(),
+                primitiveIntArrayToStreamUsingStreamOf(intPrimitiveArray).iterator()));
     }
 }

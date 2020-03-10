@@ -20,8 +20,8 @@ public class TimerEvent {
     @Override
     public String toString() {
         return "TimerEvent {" +
-            "eventInfo='" + eventInfo + '\'' +
-            ", time=" + time +
-            '}';
+                "eventInfo='" + eventInfo + '\'' +
+                ", time=" + time +
+                '}';
     }
 }

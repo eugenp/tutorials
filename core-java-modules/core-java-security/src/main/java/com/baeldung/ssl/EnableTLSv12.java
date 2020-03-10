@@ -75,7 +75,7 @@ public class EnableTLSv12 {
         SSLSocketFactory socketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
         SSLSocket sslSocket = (SSLSocket) socketFactory.createSocket(url.trim(), port);
         SSLParameters params = new SSLParameters();
-        params.setProtocols(new String[] { "TLSv1.2" });
+        params.setProtocols(new String[]{"TLSv1.2"});
         sslSocket.setSSLParameters(params);
         sslSocket.startHandshake();
         handleCommunication(sslSocket, "SSLSocketFactory-SSLParameters");
@@ -84,7 +84,7 @@ public class EnableTLSv12 {
     public void enableTLSv12UsingProtocol() throws IOException {
         SSLSocketFactory socketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
         SSLSocket sslSocket = (SSLSocket) socketFactory.createSocket(url, port);
-        sslSocket.setEnabledProtocols(new String[] { "TLSv1.2" });
+        sslSocket.setEnabledProtocols(new String[]{"TLSv1.2"});
         sslSocket.startHandshake();
         handleCommunication(sslSocket, "SSLSocketFactory-EnabledProtocols");
     }

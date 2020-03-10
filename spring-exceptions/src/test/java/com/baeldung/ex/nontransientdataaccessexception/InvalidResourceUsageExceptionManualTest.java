@@ -15,7 +15,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import javax.sql.DataSource;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { Cause1NonTransientConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {Cause1NonTransientConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class InvalidResourceUsageExceptionManualTest {
 
     @Autowired

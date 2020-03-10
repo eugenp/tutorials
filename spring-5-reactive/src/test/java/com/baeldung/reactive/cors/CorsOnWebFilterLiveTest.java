@@ -20,74 +20,74 @@ public class CorsOnWebFilterLiveTest {
     @BeforeAll
     public static void setup() {
         client = WebTestClient.bindToServer()
-            .baseUrl(BASE_URL)
-            .defaultHeader("Origin", CORS_DEFAULT_ORIGIN)
-            .build();
+                .baseUrl(BASE_URL)
+                .defaultHeader("Origin", CORS_DEFAULT_ORIGIN)
+                .build();
     }
 
     @Test
     public void whenRequestingRegularEndpoint_thenObtainResponseWithCorsHeaders() {
         ResponseSpec response = client.put()
-            .uri(BASE_REGULAR_URL + "/regular-put-endpoint")
-            .exchange();
+                .uri(BASE_REGULAR_URL + "/regular-put-endpoint")
+                .exchange();
 
         response.expectHeader()
-            .valueEquals("Access-Control-Allow-Origin", CORS_DEFAULT_ORIGIN);
+                .valueEquals("Access-Control-Allow-Origin", CORS_DEFAULT_ORIGIN);
     }
 
     @Test
     public void whenRequestingRegularDeleteEndpoint_thenObtainForbiddenResponse() {
         ResponseSpec response = client.delete()
-            .uri(BASE_REGULAR_URL + "/regular-delete-endpoint")
-            .exchange();
+                .uri(BASE_REGULAR_URL + "/regular-delete-endpoint")
+                .exchange();
 
         response.expectStatus()
-            .isForbidden();
+                .isForbidden();
     }
 
     @Test
     public void whenPreflightDeleteEndpointWithExtraConfigs_thenObtainForbiddenResponse() {
         ResponseSpec response = client.options()
-            .uri(BASE_EXTRA_CORS_CONFIG_URL + "/further-mixed-config-endpoint")
-            .header("Access-Control-Request-Method", "DELETE")
-            .exchange();
+                .uri(BASE_EXTRA_CORS_CONFIG_URL + "/further-mixed-config-endpoint")
+                .header("Access-Control-Request-Method", "DELETE")
+                .exchange();
 
         response.expectStatus()
-            .isForbidden();
+                .isForbidden();
     }
 
     @Test
     public void whenRequestDeleteEndpointWithExtraConfigs_thenObtainForbiddenResponse() {
         ResponseSpec response = client.delete()
-            .uri(BASE_EXTRA_CORS_CONFIG_URL + "/further-mixed-config-endpoint")
-            .exchange();
+                .uri(BASE_EXTRA_CORS_CONFIG_URL + "/further-mixed-config-endpoint")
+                .exchange();
 
         response.expectStatus()
-            .isForbidden();
+                .isForbidden();
     }
 
     @Test
     public void whenPreflightFunctionalEndpoint_thenObtain404Response() {
         ResponseSpec response = client.options()
-            .uri(BASE_FUNCTIONALS_URL + "/functional-endpoint")
-            .header("Access-Control-Request-Method", "PUT")
-            .exchange();
+                .uri(BASE_FUNCTIONALS_URL + "/functional-endpoint")
+                .header("Access-Control-Request-Method", "PUT")
+                .exchange();
 
         response.expectHeader()
-            .valueEquals("Access-Control-Allow-Origin", CORS_DEFAULT_ORIGIN);
+                .valueEquals("Access-Control-Allow-Origin", CORS_DEFAULT_ORIGIN);
         response.expectHeader()
-            .valueEquals("Access-Control-Allow-Methods", "PUT");
+                .valueEquals("Access-Control-Allow-Methods", "PUT");
         response.expectHeader()
-            .valueEquals("Access-Control-Max-Age", "8000");
+                .valueEquals("Access-Control-Max-Age", "8000");
     }
 
     @Test
     public void whenRequestFunctionalEndpoint_thenObtainResponseWithCorsHeaders() {
         ResponseSpec response = client.put()
-            .uri(BASE_FUNCTIONALS_URL + "/functional-endpoint")
-            .exchange();
+                .uri(BASE_FUNCTIONALS_URL + "/functional-endpoint")
+                .exchange();
 
         response.expectHeader()
-            .valueEquals("Access-Control-Allow-Origin", CORS_DEFAULT_ORIGIN);
+                .valueEquals("Access-Control-Allow-Origin", CORS_DEFAULT_ORIGIN);
     }
 }

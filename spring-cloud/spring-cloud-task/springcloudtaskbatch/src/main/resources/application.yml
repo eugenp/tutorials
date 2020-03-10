@@ -4,7 +4,7 @@ logging:
       springframework:
         cloud:
           task: DEBUG
-                           
+
 spring:
   application:
     name: helloWorld

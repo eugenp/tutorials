@@ -3,6 +3,7 @@ package com.baeldung.shell.simple;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+
 import org.springframework.shell.core.Completion;
 import org.springframework.shell.core.Converter;
 import org.springframework.shell.core.MethodTarget;

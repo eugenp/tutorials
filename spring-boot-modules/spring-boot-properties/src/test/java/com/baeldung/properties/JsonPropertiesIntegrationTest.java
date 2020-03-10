@@ -35,9 +35,9 @@ public class JsonPropertiesIntegrationTest {
     @Test
     public void whenPropertiesLoadedViaJsonPropertySource_thenNestedLoadedAsMap() {
         Assert.assertEquals("sender", jsonProperties.getSender()
-            .get("name"));
+                .get("name"));
         Assert.assertEquals("street", jsonProperties.getSender()
-            .get("address"));
+                .get("address"));
     }
 
     @Test
@@ -51,9 +51,9 @@ public class JsonPropertiesIntegrationTest {
     public void whenLoadedIntoEnvironment_thenValuesLoadedIntoClassObject() {
         Assert.assertNotNull(customJsonProperties.getSender());
         Assert.assertEquals("sender", customJsonProperties.getSender()
-            .getName());
+                .getName());
         Assert.assertEquals("street", customJsonProperties.getSender()
-            .getAddress());
+                .getAddress());
     }
 
 }

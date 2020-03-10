@@ -25,13 +25,13 @@ public class IntroductionApplication extends Application<BasicConfiguration> {
         final BrandRepository brandRepository = new BrandRepository(initBrands());
         final BrandResource brandResource = new BrandResource(defaultSize, brandRepository);
         environment
-          .jersey()
-          .register(brandResource);
+                .jersey()
+                .register(brandResource);
 
         final ApplicationHealthCheck healthCheck = new ApplicationHealthCheck();
         environment
-          .healthChecks()
-          .register("application", healthCheck);
+                .healthChecks()
+                .register("application", healthCheck);
     }
 
     @Override

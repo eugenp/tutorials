@@ -12,7 +12,7 @@ public class StatisticsUnitTest {
 
     @Before
     public void setUp() {
-        values = new double[] { 65, 51, 16, 11, 6519, 191, 0, 98, 19854, 1, 32 };
+        values = new double[]{65, 51, 16, 11, 6519, 191, 0, 98, 19854, 1, 32};
 
         descriptiveStatistics = new DescriptiveStatistics();
         for (double v : values) {

@@ -14,9 +14,9 @@ public class AbstractInstanceFieldsUnitTest {
         // mock
         AbstractInstanceFields instClass = Mockito.mock(AbstractInstanceFields.class);
         Mockito
-          .doCallRealMethod()
-          .when(instClass)
-          .testFunc();
+                .doCallRealMethod()
+                .when(instClass)
+                .testFunc();
 
         // set counter greater than 5
         instClass.count = 7;
@@ -30,9 +30,9 @@ public class AbstractInstanceFieldsUnitTest {
 
         AbstractInstanceFields instClass = PowerMockito.mock(AbstractInstanceFields.class);
         PowerMockito
-          .doCallRealMethod()
-          .when(instClass)
-          .testFunc();
+                .doCallRealMethod()
+                .when(instClass)
+                .testFunc();
         Whitebox.setInternalState(instClass, "active", true);
 
         // compare the expected result with actual

@@ -20,12 +20,12 @@ public class BatchTestHelper {
     public static JobExecution keepTestAlive(JobExecution jobExecution) throws InterruptedException {
         int maxTries = 0;
         while (!jobExecution.getBatchStatus()
-            .equals(BatchStatus.COMPLETED)) {
+                .equals(BatchStatus.COMPLETED)) {
             if (maxTries < MAX_TRIES) {
                 maxTries++;
                 Thread.sleep(THREAD_SLEEP);
                 jobExecution = BatchRuntime.getJobOperator()
-                    .getJobExecution(jobExecution.getExecutionId());
+                        .getJobExecution(jobExecution.getExecutionId());
             } else {
                 break;
             }
@@ -37,12 +37,12 @@ public class BatchTestHelper {
     public static JobExecution keepTestFailed(JobExecution jobExecution) throws InterruptedException {
         int maxTries = 0;
         while (!jobExecution.getBatchStatus()
-            .equals(BatchStatus.FAILED)) {
+                .equals(BatchStatus.FAILED)) {
             if (maxTries < MAX_TRIES) {
                 maxTries++;
                 Thread.sleep(THREAD_SLEEP);
                 jobExecution = BatchRuntime.getJobOperator()
-                    .getJobExecution(jobExecution.getExecutionId());
+                        .getJobExecution(jobExecution.getExecutionId());
             } else {
                 break;
             }
@@ -55,12 +55,12 @@ public class BatchTestHelper {
     public static JobExecution keepTestStopped(JobExecution jobExecution) throws InterruptedException {
         int maxTries = 0;
         while (!jobExecution.getBatchStatus()
-            .equals(BatchStatus.STOPPED)) {
+                .equals(BatchStatus.STOPPED)) {
             if (maxTries < MAX_TRIES) {
                 maxTries++;
                 Thread.sleep(THREAD_SLEEP);
                 jobExecution = BatchRuntime.getJobOperator()
-                    .getJobExecution(jobExecution.getExecutionId());
+                        .getJobExecution(jobExecution.getExecutionId());
             } else {
                 break;
             }
@@ -73,12 +73,12 @@ public class BatchTestHelper {
         Map<Metric.MetricType, Long> metricsMap = getMetricsMap(stepExecution.getMetrics());
         return metricsMap.get(Metric.MetricType.COMMIT_COUNT);
     }
-    
+
     public static long getProcessSkipCount(StepExecution stepExecution) {
         Map<Metric.MetricType, Long> metricsMap = getMetricsMap(stepExecution.getMetrics());
         return metricsMap.get(Metric.MetricType.PROCESS_SKIP_COUNT);
     }
-    
+
     public static Map<Metric.MetricType, Long> getMetricsMap(Metric[] metrics) {
         Map<Metric.MetricType, Long> metricsMap = new HashMap<>();
         for (Metric metric : metrics) {

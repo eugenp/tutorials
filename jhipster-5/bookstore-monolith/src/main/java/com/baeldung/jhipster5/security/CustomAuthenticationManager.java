@@ -43,16 +43,14 @@ public class CustomAuthenticationManager implements AuthenticationManager {
         loginRequest.setUsername(authentication.getPrincipal().toString());
         loginRequest.setPassword(authentication.getCredentials().toString());
 
-        try
-        {
+        try {
             ResponseEntity<LoginResponse> response =
-                restTemplate.postForEntity(
-                    REMOTE_LOGIN_URL,
-                    loginRequest,
-                    LoginResponse.class);
+                    restTemplate.postForEntity(
+                            REMOTE_LOGIN_URL,
+                            loginRequest,
+                            LoginResponse.class);
 
-            if(response.getStatusCode().is2xxSuccessful())
-            {
+            if (response.getStatusCode().is2xxSuccessful()) {
                 //
                 // Need to create a new local user if this is the  first time logging in; this
                 // is required so they can be issued JWTs. We can use this flow to also keep
@@ -62,16 +60,12 @@ public class CustomAuthenticationManager implements AuthenticationManager {
                 //
 
                 User user = userService.getUserWithAuthoritiesByLogin(authentication.getPrincipal().toString())
-                                       .orElseGet(() -> userService.createUser(createUserDTO(response.getBody(), authentication)));
+                        .orElseGet(() -> userService.createUser(createUserDTO(response.getBody(), authentication)));
                 return createAuthentication(authentication, user);
-            }
-            else
-            {
+            } else {
                 throw new BadCredentialsException("Invalid username or password");
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             LOG.warn("Failed to authenticate", e);
             throw new AuthenticationServiceException("Failed to login", e);
         }
@@ -79,6 +73,7 @@ public class CustomAuthenticationManager implements AuthenticationManager {
 
     /**
      * Creates a new authentication with basic roles
+     *
      * @param auth Contains auth details that will be copied into the new one.
      * @param user User object representing who is logging in
      * @return Authentication
@@ -91,23 +86,24 @@ public class CustomAuthenticationManager implements AuthenticationManager {
         //
 
         Collection<? extends GrantedAuthority> authorities = user
-            .getAuthorities()
-            .stream()
-            .map(a -> new SimpleGrantedAuthority(a.getName()))
-            .collect(Collectors.toSet());
+                .getAuthorities()
+                .stream()
+                .map(a -> new SimpleGrantedAuthority(a.getName()))
+                .collect(Collectors.toSet());
 
         UsernamePasswordAuthenticationToken token
-            = new UsernamePasswordAuthenticationToken(
-            user.getId(),
-            auth.getCredentials().toString(),
-            authorities);
+                = new UsernamePasswordAuthenticationToken(
+                user.getId(),
+                auth.getCredentials().toString(),
+                authorities);
 
         return token;
     }
 
     /**
      * Creates a new UserDTO with basic info.
-     * @param loginResponse Response from peloton login API
+     *
+     * @param loginResponse  Response from peloton login API
      * @param authentication Contains user login info (namely username and password)
      * @return UserDTO
      */

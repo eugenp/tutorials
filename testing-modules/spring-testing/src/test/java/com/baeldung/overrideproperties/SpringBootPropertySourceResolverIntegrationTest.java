@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import com.baeldung.overrideproperties.resolver.PropertySourceResolver;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = { "example.firstProperty=annotation" })
+@SpringBootTest(properties = {"example.firstProperty=annotation"})
 @EnableWebMvc
 public class SpringBootPropertySourceResolverIntegrationTest {
 

@@ -97,14 +97,14 @@ public class R2dbcApplicationIntegrationTest {
     @Test
     public void whenBatchHas2Operations_then2AreExpected() {
         Mono.from(factory.create())
-          .flatMapMany(connection -> Flux.from(connection
-            .createBatch()
-            .add("select * from player")
-            .add("select * from player")
-            .execute()))
-          .as(StepVerifier::create)
-          .expectNextCount(2)
-          .verifyComplete();
+                .flatMapMany(connection -> Flux.from(connection
+                        .createBatch()
+                        .add("select * from player")
+                        .add("select * from player")
+                        .execute()))
+                .as(StepVerifier::create)
+                .expectNextCount(2)
+                .verifyComplete();
 
     }
 

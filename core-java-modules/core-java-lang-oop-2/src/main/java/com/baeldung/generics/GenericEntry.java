@@ -29,7 +29,7 @@ public class GenericEntry<T> {
         if (optional.isPresent()) {
             this.data = (T) optional.get();
             this.rank = optional.get()
-                .getRank();
+                    .getRank();
         }
     }
 

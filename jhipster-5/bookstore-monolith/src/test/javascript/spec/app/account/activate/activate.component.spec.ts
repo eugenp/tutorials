@@ -1,11 +1,11 @@
-import { TestBed, async, tick, fakeAsync, inject } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, of, throwError } from 'rxjs';
+import {TestBed, async, tick, fakeAsync, inject} from '@angular/core/testing';
+import {ActivatedRoute} from '@angular/router';
+import {Observable, of, throwError} from 'rxjs';
 
-import { BookstoreTestModule } from '../../../test.module';
-import { MockActivatedRoute } from '../../../helpers/mock-route.service';
-import { ActivateService } from 'app/account/activate/activate.service';
-import { ActivateComponent } from 'app/account/activate/activate.component';
+import {BookstoreTestModule} from '../../../test.module';
+import {MockActivatedRoute} from '../../../helpers/mock-route.service';
+import {ActivateService} from 'app/account/activate/activate.service';
+import {ActivateComponent} from 'app/account/activate/activate.component';
 
 describe('Component Tests', () => {
     describe('ActivateComponent', () => {
@@ -18,7 +18,7 @@ describe('Component Tests', () => {
                 providers: [
                     {
                         provide: ActivatedRoute,
-                        useValue: new MockActivatedRoute({ key: 'ABC123' })
+                        useValue: new MockActivatedRoute({key: 'ABC123'})
                     }
                 ]
             })

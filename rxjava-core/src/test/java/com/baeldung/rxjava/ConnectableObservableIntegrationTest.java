@@ -16,12 +16,12 @@ public class ConnectableObservableIntegrationTest {
     public void givenConnectableObservable_whenConnect_thenGetMessage() throws InterruptedException {
         String[] result = {""};
         ConnectableObservable<Long> connectable
-          = Observable.interval(500, TimeUnit.MILLISECONDS).publish();
+                = Observable.interval(500, TimeUnit.MILLISECONDS).publish();
         connectable.subscribe(i -> result[0] += i);
         assertFalse(result[0].equals("01"));
 
         connectable.connect();
         await()
-          .until(() -> assertTrue(result[0].equals("01")));
+                .until(() -> assertTrue(result[0].equals("01")));
     }
 }

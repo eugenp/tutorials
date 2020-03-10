@@ -10,26 +10,26 @@ import org.junit.Test;
 
 public class CactoosCollectionUtilsUnitTest {
 
-	@Test
-	public void whenFilteredClassIsCalledWithSpecificArgs_thenCorrespondingFilteredCollectionShouldBeReturned() throws IOException {
+    @Test
+    public void whenFilteredClassIsCalledWithSpecificArgs_thenCorrespondingFilteredCollectionShouldBeReturned() throws IOException {
 
-		CactoosCollectionUtils obj = new CactoosCollectionUtils();
+        CactoosCollectionUtils obj = new CactoosCollectionUtils();
 
-		// when
-		List<String> strings = new ArrayList<String>() { 
-            { 
-                add("Hello"); 
-                add("John"); 
-                add("Smith"); 
+        // when
+        List<String> strings = new ArrayList<String>() {
+            {
+                add("Hello");
+                add("John");
+                add("Smith");
                 add("Eric");
                 add("Dizzy");
-            } 
-        }; 
-		int size = obj.getFilteredList(strings).size();
+            }
+        };
+        int size = obj.getFilteredList(strings).size();
 
-		// then
-		assertEquals(3, size);
+        // then
+        assertEquals(3, size);
 
-	}
+    }
 
 }

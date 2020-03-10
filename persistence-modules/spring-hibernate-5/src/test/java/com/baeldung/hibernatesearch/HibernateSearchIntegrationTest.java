@@ -28,7 +28,7 @@ import java.util.List;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { HibernateSearchConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {HibernateSearchConfig.class}, loader = AnnotationConfigContextLoader.class)
 @Transactional
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class HibernateSearchIntegrationTest {
@@ -45,9 +45,9 @@ public class HibernateSearchIntegrationTest {
     public void setupTestData() {
 
         products = Arrays.asList(new Product(1, "Apple iPhone X 256 GB", 256, "The current high-end smartphone from Apple, with lots of memory and also Face ID"),
-            new Product(2, "Apple iPhone X 128 GB", 128, "The current high-end smartphone from Apple, with Face ID"), new Product(3, "Apple iPhone 8 128 GB", 128, "The latest smartphone from Apple within the regular iPhone line, supporting wireless charging"),
-            new Product(4, "Samsung Galaxy S7 128 GB", 64, "A great Android smartphone"), new Product(5, "Microsoft Lumia 650 32 GB", 32, "A cheaper smartphone, coming with Windows Mobile"),
-            new Product(6, "Microsoft Lumia 640 32 GB", 32, "A cheaper smartphone, coming with Windows Mobile"), new Product(7, "Microsoft Lumia 630 16 GB", 16, "A cheaper smartphone, coming with Windows Mobile"));
+                new Product(2, "Apple iPhone X 128 GB", 128, "The current high-end smartphone from Apple, with Face ID"), new Product(3, "Apple iPhone 8 128 GB", 128, "The latest smartphone from Apple within the regular iPhone line, supporting wireless charging"),
+                new Product(4, "Samsung Galaxy S7 128 GB", 64, "A great Android smartphone"), new Product(5, "Microsoft Lumia 650 32 GB", 32, "A cheaper smartphone, coming with Windows Mobile"),
+                new Product(6, "Microsoft Lumia 640 32 GB", 32, "A cheaper smartphone, coming with Windows Mobile"), new Product(7, "Microsoft Lumia 630 16 GB", 16, "A cheaper smartphone, coming with Windows Mobile"));
     }
 
     @Commit
@@ -64,10 +64,10 @@ public class HibernateSearchIntegrationTest {
 
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         fullTextEntityManager.createIndexer()
-            .startAndWait();
+                .startAndWait();
         int indexSize = fullTextEntityManager.getSearchFactory()
-            .getStatistics()
-            .getNumberOfIndexedEntities(Product.class.getName());
+                .getStatistics()
+                .getNumberOfIndexedEntities(Product.class.getName());
 
         assertEquals(products.size() - 1, indexSize);
     }
@@ -84,8 +84,8 @@ public class HibernateSearchIntegrationTest {
 
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         int indexSize = fullTextEntityManager.getSearchFactory()
-            .getStatistics()
-            .getNumberOfIndexedEntities(Product.class.getName());
+                .getStatistics()
+                .getNumberOfIndexedEntities(Product.class.getName());
 
         assertEquals(products.size(), indexSize);
     }

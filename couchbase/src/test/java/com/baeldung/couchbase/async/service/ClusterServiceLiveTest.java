@@ -16,8 +16,8 @@ import com.baeldung.couchbase.async.service.ClusterService;
 import com.couchbase.client.java.Bucket;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { AsyncIntegrationTestConfig.class })
-@TestExecutionListeners(listeners = { DependencyInjectionTestExecutionListener.class })
+@ContextConfiguration(classes = {AsyncIntegrationTestConfig.class})
+@TestExecutionListeners(listeners = {DependencyInjectionTestExecutionListener.class})
 public class ClusterServiceLiveTest extends AsyncIntegrationTest {
 
     @Autowired

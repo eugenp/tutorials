@@ -16,8 +16,8 @@ import static com.baeldung.springamqp.errorhandling.configuration.SimpleDLQAmqpC
 
 @Configuration
 @ConditionalOnProperty(
-  value = "amqp.configuration.current",
-  havingValue = "parking-lot-dlx")
+        value = "amqp.configuration.current",
+        havingValue = "parking-lot-dlx")
 public class DLXParkingLotAmqpConfiguration {
     public static final String DLX_EXCHANGE_MESSAGES = QUEUE_MESSAGES + ".dlx";
     public static final String QUEUE_PARKING_LOT = QUEUE_MESSAGES + ".parking-lot";
@@ -41,8 +41,8 @@ public class DLXParkingLotAmqpConfiguration {
     @Bean
     Queue messagesQueue() {
         return QueueBuilder.durable(QUEUE_MESSAGES)
-          .withArgument("x-dead-letter-exchange", DLX_EXCHANGE_MESSAGES)
-          .build();
+                .withArgument("x-dead-letter-exchange", DLX_EXCHANGE_MESSAGES)
+                .build();
     }
 
     @Bean

@@ -18,17 +18,17 @@ public class LoggingFilter extends BaseFilter {
 
     @Override
     public void doFilter(
-      ServletRequest request,
-      ServletResponse response,
-      FilterChain chain
+            ServletRequest request,
+            ServletResponse response,
+            FilterChain chain
     ) throws IOException, ServletException {
         chain.doFilter(request, response);
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String username = Optional
-          .ofNullable(httpServletRequest.getAttribute("username"))
-          .map(Object::toString)
-          .orElse("guest");
+                .ofNullable(httpServletRequest.getAttribute("username"))
+                .map(Object::toString)
+                .orElse("guest");
         log.info("Request from '{}@{}': {}?{}", username, request.getRemoteAddr(),
-          httpServletRequest.getRequestURI(), request.getParameterMap());
+                httpServletRequest.getRequestURI(), request.getParameterMap());
     }
 }

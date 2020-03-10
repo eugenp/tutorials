@@ -13,18 +13,18 @@ import java.net.UnknownHostException;
 @SpringBootApplication
 public class KubernetesFrontendApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(KubernetesFrontendApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(KubernetesFrontendApplication.class, args);
+    }
 
-	@GetMapping
-	public String helloWorld() throws UnknownHostException {
+    @GetMapping
+    public String helloWorld() throws UnknownHostException {
 
-		RestTemplate restTemplate = new RestTemplate();
-		String resourceUrl
-				= "http://demo-backend:8080";
-		ResponseEntity<String> response
-				= restTemplate.getForEntity(resourceUrl, String.class);
-		return "Message from backend is: " + response.getBody();
-	}
+        RestTemplate restTemplate = new RestTemplate();
+        String resourceUrl
+                = "http://demo-backend:8080";
+        ResponseEntity<String> response
+                = restTemplate.getForEntity(resourceUrl, String.class);
+        return "Message from backend is: " + response.getBody();
+    }
 }

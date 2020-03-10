@@ -16,5 +16,5 @@ public class PrimaryApplication {
         Manager manager = service.getManager();
         System.out.println(manager.getManagerName());
     }
-    
+
 }

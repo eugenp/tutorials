@@ -2,12 +2,13 @@ package com.baeldung.concurrent.volatilekeyword;
 
 
 public class SharedObject {
-    private volatile int count=0;
+    private volatile int count = 0;
 
-    void incrementCount(){
+    void incrementCount() {
         count++;
     }
-    public int  getCount(){
+
+    public int getCount() {
         return count;
     }
 }

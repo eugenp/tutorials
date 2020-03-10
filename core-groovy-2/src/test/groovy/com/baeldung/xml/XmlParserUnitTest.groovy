@@ -83,8 +83,8 @@ class XmlParserUnitTest extends Specification {
 
         when: "Removing all articles but with id==3"
         articles.article
-          .findAll { it.author.'@id'.text() != "3" }
-          .each { articles.remove(it) }
+                .findAll { it.author.'@id'.text() != "3" }
+                .each { articles.remove(it) }
 
         then: "There is only one article left"
         articles.children().size() == 1

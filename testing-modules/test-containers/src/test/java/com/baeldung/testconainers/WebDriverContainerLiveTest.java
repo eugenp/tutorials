@@ -12,16 +12,16 @@ import org.testcontainers.containers.BrowserWebDriverContainer;
 public class WebDriverContainerLiveTest {
     @Rule
     public BrowserWebDriverContainer chrome
-      = new BrowserWebDriverContainer()
-        .withCapabilities(new ChromeOptions());
+            = new BrowserWebDriverContainer()
+            .withCapabilities(new ChromeOptions());
 
     @Test
     public void whenNavigatedToPage_thenHeadingIsInThePage() {
         RemoteWebDriver driver = chrome.getWebDriver();
         driver.get("http://example.com");
         String heading = driver.findElement(By.xpath("/html/body/div/h1"))
-            .getText();
+                .getText();
         assertEquals("Example Domain", heading);
     }
-    
+
 }

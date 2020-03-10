@@ -3,17 +3,15 @@ package com.baeldung.synthetic;
 /**
  * Wrapper for a class which contains two synthetic methods accessors to a
  * private field.
- * 
- * @author Donato Rimenti
  *
+ * @author Donato Rimenti
  */
 public class SyntheticMethodDemo {
 
     /**
      * Class which contains two synthetic methods accessors to a private field.
-     * 
-     * @author Donato Rimenti
      *
+     * @author Donato Rimenti
      */
     class NestedClass {
 
@@ -27,7 +25,7 @@ public class SyntheticMethodDemo {
     /**
      * Gets the private nested field. We need to read the nested field in order
      * to generate the synthetic getter.
-     * 
+     *
      * @return the {@link NestedClass#nestedField}
      */
     public String getNestedField() {
@@ -37,9 +35,8 @@ public class SyntheticMethodDemo {
     /**
      * Sets the private nested field. We need to write the nested field in order
      * to generate the synthetic setter.
-     * 
-     * @param nestedField
-     *            the {@link NestedClass#nestedField}
+     *
+     * @param nestedField the {@link NestedClass#nestedField}
      */
     public void setNestedField(String nestedField) {
         new NestedClass().nestedField = nestedField;

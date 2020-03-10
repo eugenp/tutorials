@@ -16,14 +16,14 @@ public class EchoIntegrationTest {
 
     @BeforeClass
     public static void start() throws InterruptedException, IOException {
-        
+
         // Take an available port
         ServerSocket s = new ServerSocket(0);
         port = s.getLocalPort();
         s.close();
 
         Executors.newSingleThreadExecutor()
-            .submit(() -> new EchoServer().start(port));
+                .submit(() -> new EchoServer().start(port));
         Thread.sleep(500);
     }
 

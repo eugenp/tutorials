@@ -9,7 +9,7 @@ import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 
-public class OrikaConverter implements Converter{
+public class OrikaConverter implements Converter {
     private MapperFacade mapperFacade;
 
     public OrikaConverter() {

@@ -11,8 +11,8 @@ public class LoopDiagonallyUnitTest {
 
         LoopDiagonally loopDiagonally = new LoopDiagonally();
         String[][] twoDArray = {{"a", "b", "c"},
-                                {"d", "e", "f"},
-                                {"g", "h", "i"}};
+                {"d", "e", "f"},
+                {"g", "h", "i"}};
 
         String output = loopDiagonally.loopDiagonally(twoDArray);
         assertEquals("a db gec hf i", output);

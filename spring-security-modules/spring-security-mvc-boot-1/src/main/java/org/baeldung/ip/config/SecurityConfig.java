@@ -16,20 +16,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-       auth.inMemoryAuthentication().withUser("john").password("{noop}123").authorities("ROLE_USER");
-     //   auth.authenticationProvider(authenticationProvider);
+        auth.inMemoryAuthentication().withUser("john").password("{noop}123").authorities("ROLE_USER");
+        //   auth.authenticationProvider(authenticationProvider);
     }
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
         http.authorizeRequests()
-            .antMatchers("/login").permitAll()
+                .antMatchers("/login").permitAll()
 //            .antMatchers("/foos/**").hasIpAddress("11.11.11.11")
-            .antMatchers("/foos/**").access("isAuthenticated() and hasIpAddress('11.11.11.11')")
-            .anyRequest().authenticated()
-            .and().formLogin().permitAll()
-            .and().csrf().disable();
+                .antMatchers("/foos/**").access("isAuthenticated() and hasIpAddress('11.11.11.11')")
+                .anyRequest().authenticated()
+                .and().formLogin().permitAll()
+                .and().csrf().disable();
         // @formatter:on
     }
 

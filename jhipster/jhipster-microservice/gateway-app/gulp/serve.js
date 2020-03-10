@@ -29,7 +29,7 @@ module.exports = function () {
     var proxies = [
         // Ensure trailing slash in routes that require it
         function (req, res, next) {
-            requireTrailingSlash.forEach(function (route){
+            requireTrailingSlash.forEach(function (route) {
                 if (url.parse(req.url).path === route) {
                     res.statusCode = 301;
                     res.setHeader('Location', route + '/');
@@ -40,14 +40,14 @@ module.exports = function () {
             next();
         }
     ]
-    .concat(
-        // Build a list of proxies for routes: [route1_proxy, route2_proxy, ...]
-        proxyRoutes.map(function (r) {
-            var options = url.parse(baseUri + r);
-            options.route = r;
-            options.preserveHost = true;
-            return proxy(options);
-        }));
+        .concat(
+            // Build a list of proxies for routes: [route1_proxy, route2_proxy, ...]
+            proxyRoutes.map(function (r) {
+                var options = url.parse(baseUri + r);
+                options.route = r;
+                options.preserveHost = true;
+                return proxy(options);
+            }));
 
     browserSync({
         open: true,

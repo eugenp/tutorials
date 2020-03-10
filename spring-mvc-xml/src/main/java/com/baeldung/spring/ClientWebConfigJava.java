@@ -54,7 +54,7 @@ public class ClientWebConfigJava implements WebMvcConfigurer {
 
         return bean;
     }
-    
+
     @Bean
     public MethodValidationPostProcessor methodValidationPostProcessor() {
         return new MethodValidationPostProcessor();

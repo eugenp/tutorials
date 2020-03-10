@@ -20,17 +20,17 @@ public class CounterStatistics {
     private static final Map<String, int[]> counterWithIntArrayMap = new HashMap<>();
     private static final Map<String, Long> counterWithLongWrapperMap = new HashMap<>();
     private static final Map<String, Long> counterWithLongWrapperStreamMap = new HashMap<>();
-    
+
     static {
         CounterUtil.COUNTRY_NAMES = new String[10000];
-        final String prefix = "NewString"; 
+        final String prefix = "NewString";
         Random random = new Random();
-        for (int i=0; i<10000; i++) {
+        for (int i = 0; i < 10000; i++) {
             CounterUtil.COUNTRY_NAMES[i] = new String(prefix + random.nextInt(1000));
         }
     }
 
-  @Benchmark
+    @Benchmark
     public void wrapperAsCounter() {
         CounterUtil.counterWithWrapperObject(counterMap);
     }
@@ -39,7 +39,7 @@ public class CounterStatistics {
     public void lambdaExpressionWithWrapper() {
         CounterUtil.counterWithLambdaAndWrapper(counterWithLongWrapperMap);
     }
-    
+
     @Benchmark
     public void parallelStreamWithWrapper() {
         CounterUtil.counterWithParallelStreamAndWrapper(counterWithLongWrapperStreamMap);

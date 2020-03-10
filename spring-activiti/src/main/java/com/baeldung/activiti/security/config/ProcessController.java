@@ -32,23 +32,23 @@ public class ProcessController {
     public String startProcess() {
 
         String userId = SecurityContextHolder.getContext()
-            .getAuthentication()
-            .getName();
+                .getAuthentication()
+                .getName();
 
         identityService.setAuthenticatedUserId(userId);
 
         ProcessInstance pi = runtimeService.startProcessInstanceByKey("protected-process");
 
         List<Task> usertasks = taskService.createTaskQuery()
-            .processInstanceId(pi.getId())
-            .list();
+                .processInstanceId(pi.getId())
+                .list();
 
         taskService.complete(usertasks.iterator()
-            .next()
-            .getId());
+                .next()
+                .getId());
 
         return "Process started. Number of currently running process instances = " + runtimeService.createProcessInstanceQuery()
-            .count();
+                .count();
     }
 
 }

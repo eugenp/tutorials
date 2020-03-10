@@ -10,8 +10,8 @@
         <transition on="cancel" to="failure"/>
     </view-state>
 
-    <view-state id="success" />
+    <view-state id="success"/>
 
-    <view-state id="failure" />
+    <view-state id="failure"/>
 
 </flow>

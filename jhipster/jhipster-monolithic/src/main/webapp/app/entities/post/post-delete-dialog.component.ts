@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { EventManager, JhiLanguageService } from 'ng-jhipster';
+import {NgbActiveModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {EventManager, JhiLanguageService} from 'ng-jhipster';
 
-import { Post } from './post.model';
-import { PostPopupService } from './post-popup.service';
-import { PostService } from './post.service';
+import {Post} from './post.model';
+import {PostPopupService} from './post-popup.service';
+import {PostService} from './post.service';
 
 @Component({
     selector: 'jhi-post-delete-dialog',
@@ -25,11 +25,11 @@ export class PostDeleteDialogComponent {
         this.jhiLanguageService.setLocations(['post']);
     }
 
-    clear () {
+    clear() {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete (id: number) {
+    confirmDelete(id: number) {
         this.postService.delete(id).subscribe(response => {
             this.eventManager.broadcast({
                 name: 'postListModification',
@@ -49,10 +49,11 @@ export class PostDeletePopupComponent implements OnInit, OnDestroy {
     modalRef: NgbModalRef;
     routeSub: any;
 
-    constructor (
+    constructor(
         private route: ActivatedRoute,
         private postPopupService: PostPopupService
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe(params => {

@@ -12,7 +12,7 @@ public class Characteristic {
     @Id
     private Long id;
     private String type;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Item item;

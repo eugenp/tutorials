@@ -32,7 +32,7 @@ public class ProducerUnitTest {
                 .create();
 
         // Once the producer is created, it can be used for the entire application life-cycle
-        System.out.println("Created producer for the topic "+TOPIC_NAME);
+        System.out.println("Created producer for the topic " + TOPIC_NAME);
 
         // Send 5 test messages
         IntStream.range(1, 5).forEach(i -> {
@@ -47,7 +47,7 @@ public class ProducerUnitTest {
             try {
                 MessageId msgId = producer.send(msg);
 
-                System.out.println("Published message '"+content+"' with the ID "+msgId);
+                System.out.println("Published message '" + content + "' with the ID " + msgId);
             } catch (PulsarClientException e) {
                 System.out.println(e.getMessage());
             }

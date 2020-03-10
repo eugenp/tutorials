@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { JhiLanguageService } from 'ng-jhipster';
+import {Component, OnInit} from '@angular/core';
+import {JhiLanguageService} from 'ng-jhipster';
 
-import { Principal, AccountService, JhiLanguageHelper } from 'app/core';
+import {Principal, AccountService, JhiLanguageHelper} from 'app/core';
 
 @Component({
     selector: 'jhi-settings',
@@ -18,7 +18,8 @@ export class SettingsComponent implements OnInit {
         private principal: Principal,
         private languageService: JhiLanguageService,
         private languageHelper: JhiLanguageHelper
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.principal.identity().then(account => {

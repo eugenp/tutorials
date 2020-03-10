@@ -78,12 +78,12 @@ public class LuceneAnalyzerIntegrationTest {
     @Test
     public void whenUseCustomAnalyzerBuilder_thenAnalyzed() throws IOException {
         Analyzer analyzer = CustomAnalyzer.builder()
-            .withTokenizer("standard")
-            .addTokenFilter("lowercase")
-            .addTokenFilter("stop")
-            .addTokenFilter("porterstem")
-            .addTokenFilter("capitalization")
-            .build();
+                .withTokenizer("standard")
+                .addTokenFilter("lowercase")
+                .addTokenFilter("stop")
+                .addTokenFilter("porterstem")
+                .addTokenFilter("capitalization")
+                .build();
         List<String> result = analyze(SAMPLE_TEXT, analyzer);
 
         assertThat(result, contains("Baeldung.com", "Lucen", "Analyz", "Test"));
@@ -97,7 +97,7 @@ public class LuceneAnalyzerIntegrationTest {
     }
 
     // ================= usage example
-    
+
     @Test
     public void givenTermQuery_whenUseCustomAnalyzer_thenCorrect() {
         InMemoryLuceneIndex luceneIndex = new InMemoryLuceneIndex(new RAMDirectory(), new MyCustomAnalyzer());
@@ -108,23 +108,23 @@ public class LuceneAnalyzerIntegrationTest {
         List<Document> documents = luceneIndex.searchIndex(query);
         assertEquals(1, documents.size());
     }
-    
+
     @Test
     public void givenTermQuery_whenUsePerFieldAnalyzerWrapper_thenCorrect() {
-        Map<String,Analyzer> analyzerMap = new HashMap<>();
+        Map<String, Analyzer> analyzerMap = new HashMap<>();
         analyzerMap.put("title", new MyCustomAnalyzer());
         analyzerMap.put("body", new EnglishAnalyzer());
 
         PerFieldAnalyzerWrapper wrapper =
-          new PerFieldAnalyzerWrapper(new StandardAnalyzer(), analyzerMap);
+                new PerFieldAnalyzerWrapper(new StandardAnalyzer(), analyzerMap);
         InMemoryLuceneIndex luceneIndex = new InMemoryLuceneIndex(new RAMDirectory(), wrapper);
         luceneIndex.indexDocument("introduction", "introduction to lucene");
         luceneIndex.indexDocument("analyzers", "guide to lucene analyzers");
-        
+
         Query query = new TermQuery(new Term("body", "introduct"));
         List<Document> documents = luceneIndex.searchIndex(query);
         assertEquals(1, documents.size());
-        
+
         query = new TermQuery(new Term("title", "Introduct"));
 
         documents = luceneIndex.searchIndex(query);

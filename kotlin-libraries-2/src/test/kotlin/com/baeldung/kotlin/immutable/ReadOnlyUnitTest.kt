@@ -7,10 +7,10 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.ExpectedException
 
-class ReadOnlyUnitTest{
+class ReadOnlyUnitTest {
 
     @Test
-    fun givenReadOnlyList_whenCastToMutableList_checkNewElementsAdded(){
+    fun givenReadOnlyList_whenCastToMutableList_checkNewElementsAdded() {
 
         val list: List<String> = listOf("This", "Is", "Totally", "Immutable")
 
@@ -22,10 +22,10 @@ class ReadOnlyUnitTest{
 
     @Rule
     @JvmField
-    var ee : ExpectedException = ExpectedException.none()
+    var ee: ExpectedException = ExpectedException.none()
 
     @Test
-    fun givenImmutableList_whenAddTried_checkExceptionThrown(){
+    fun givenImmutableList_whenAddTried_checkExceptionThrown() {
 
         val list: List<String> = ImmutableList.of("I", "am", "actually", "immutable")
 
@@ -36,9 +36,9 @@ class ReadOnlyUnitTest{
     }
 
     @Test
-    fun givenMutableList_whenCopiedAndAddTried_checkExceptionThrown(){
+    fun givenMutableList_whenCopiedAndAddTried_checkExceptionThrown() {
 
-        val mutableList : List<String> = listOf("I", "Am", "Definitely", "Immutable")
+        val mutableList: List<String> = listOf("I", "Am", "Definitely", "Immutable")
 
         (mutableList as MutableList<String>)[2] = "100% Not"
 
@@ -53,11 +53,11 @@ class ReadOnlyUnitTest{
     }
 
     @Test
-    fun givenImmutableSetBuilder_whenAddTried_checkExceptionThrown(){
+    fun givenImmutableSetBuilder_whenAddTried_checkExceptionThrown() {
 
-        val mutableList : List<String> = listOf("Hello", "Baeldung")
+        val mutableList: List<String> = listOf("Hello", "Baeldung")
         val set: ImmutableSet<String> = ImmutableSet.builder<String>()
-                .add("I","am","immutable")
+                .add("I", "am", "immutable")
                 .addAll(mutableList)
                 .build()
 

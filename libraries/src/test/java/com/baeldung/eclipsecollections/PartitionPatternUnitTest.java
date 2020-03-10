@@ -23,7 +23,7 @@ public class PartitionPatternUnitTest {
         PartitionMutableList<Integer> partitionedFolks = numbers.partition(new Predicate<Integer>() {
 
             /**
-             * 
+             *
              */
             private static final long serialVersionUID = -1551138743683678406L;
 

@@ -9,7 +9,6 @@ import java.util.Map.Entry;
 
 /**
  * @author Santosh
- *
  */
 
 public class BreakContinue {
@@ -38,7 +37,7 @@ public class BreakContinue {
         nameMap.put("Grade3", Arrays.asList("Wilson", "Michael", "Stephen", "Ryan"));
 
         Iterator<Entry<String, List<String>>> iterator = nameMap.entrySet()
-            .iterator();
+                .iterator();
         Entry<String, List<String>> entry = null;
         List<String> names = null;
         while (iterator.hasNext()) {
@@ -64,10 +63,10 @@ public class BreakContinue {
         nameMap.put("Grade3", Arrays.asList("Wilson", "Michael", "Stephen", "Ryan"));
 
         Iterator<Entry<String, List<String>>> iterator = nameMap.entrySet()
-            .iterator();
+                .iterator();
         Entry<String, List<String>> entry = null;
         List<String> names = null;
-        compare: 
+        compare:
         while (iterator.hasNext()) {
             entry = iterator.next();
             names = entry.getValue();
@@ -91,7 +90,7 @@ public class BreakContinue {
         nameMap.put("Grade3", Arrays.asList("Wilson", "Michael", "Wilson", "Ryan"));
 
         Iterator<Entry<String, List<String>>> iterator = nameMap.entrySet()
-            .iterator();
+                .iterator();
         Entry<String, List<String>> entry = null;
         List<String> names = null;
         while (iterator.hasNext()) {
@@ -118,10 +117,10 @@ public class BreakContinue {
         nameMap.put("Grade3", Arrays.asList("Wilson", "Michael", "Wilson", "Ryan"));
 
         Iterator<Entry<String, List<String>>> iterator = nameMap.entrySet()
-            .iterator();
+                .iterator();
         Entry<String, List<String>> entry = null;
         List<String> names = null;
-        compare: 
+        compare:
         while (iterator.hasNext()) {
             entry = iterator.next();
             names = entry.getValue();

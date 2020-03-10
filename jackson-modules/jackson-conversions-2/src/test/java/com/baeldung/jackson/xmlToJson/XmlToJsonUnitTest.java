@@ -12,7 +12,7 @@ import java.io.IOException;
 public class XmlToJsonUnitTest {
 
     @Test
-    public void givenAnXML_whenUseDataBidingToConvertToJSON_thenReturnDataOK() throws IOException{
+    public void givenAnXML_whenUseDataBidingToConvertToJSON_thenReturnDataOK() throws IOException {
         String flowerXML = "<Flower><name>Poppy</name><color>RED</color><petals>9</petals></Flower>";
 
         XmlMapper xmlMapper = new XmlMapper();

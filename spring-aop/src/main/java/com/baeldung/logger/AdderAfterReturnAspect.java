@@ -8,6 +8,6 @@ public class AdderAfterReturnAspect {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public void afterReturn(final Object returnValue) throws Throwable {
-        logger.info("value return was {}",  returnValue);
+        logger.info("value return was {}", returnValue);
     }
 }

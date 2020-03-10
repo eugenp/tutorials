@@ -7,6 +7,7 @@ import dto.RequestDTO;
 
 public class MessageConverter {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+
     public static MessageDTO jsonNodeToMessage(JsonNode jsonNode) {
         return OBJECT_MAPPER.convertValue(jsonNode, MessageDTO.class);
     }
@@ -14,6 +15,7 @@ public class MessageConverter {
     public static JsonNode messageToJsonNode(MessageDTO messageDTO) {
         return OBJECT_MAPPER.convertValue(messageDTO, JsonNode.class);
     }
+
     public static RequestDTO jsonNodeToRequest(JsonNode jsonNode) {
         return OBJECT_MAPPER.convertValue(jsonNode, RequestDTO.class);
     }

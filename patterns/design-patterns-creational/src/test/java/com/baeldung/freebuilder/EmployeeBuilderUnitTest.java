@@ -26,15 +26,15 @@ public class EmployeeBuilderUnitTest {
         Employee.Builder builder = new Employee.Builder();
 
         Employee employee = builder.setName("baeldung")
-          .setAge(10)
-          .setDesignation("author")
-          .setEmail("abc@xyz.com")
-          .setSupervisorName("Admin")
-          .setPhoneNumber(4445566)
-          .setPermanent(true)
-          .setRole("developer")
-          .setAddress(address)
-          .build();
+                .setAge(10)
+                .setDesignation("author")
+                .setEmail("abc@xyz.com")
+                .setSupervisorName("Admin")
+                .setPhoneNumber(4445566)
+                .setPermanent(true)
+                .setRole("developer")
+                .setAddress(address)
+                .build();
 
         // then
         assertTrue(employee.getAddress().getCity().equalsIgnoreCase(CITY_NAME));
@@ -52,17 +52,17 @@ public class EmployeeBuilderUnitTest {
         Employee.Builder builder = new Employee.Builder();
 
         Employee employee = builder
-          .setName("baeldung")
-          .setAge(10)
-          .setDesignation("author")
-          .setEmail("abc@xyz.com")
-          .setSupervisorName("Admin")
-          .setPhoneNumber(4445566)
-          .setPermanent(true)
-          .setRole("developer")
-          .setAddress(address)
-          .mapSalaryInUSD(sal -> salaryInEuros * EUROS_TO_USD_RATIO)
-          .build();
+                .setName("baeldung")
+                .setAge(10)
+                .setDesignation("author")
+                .setEmail("abc@xyz.com")
+                .setSupervisorName("Admin")
+                .setPhoneNumber(4445566)
+                .setPermanent(true)
+                .setRole("developer")
+                .setAddress(address)
+                .mapSalaryInUSD(sal -> salaryInEuros * EUROS_TO_USD_RATIO)
+                .build();
 
         // then
         assertTrue(employee.getAddress().getPinCode().get() == PIN_CODE);
@@ -79,15 +79,15 @@ public class EmployeeBuilderUnitTest {
         Employee.Builder builder = new Employee.Builder();
 
         Employee employee = builder.setName("baeldung")
-          .setAge(10)
-          .setDesignation("author")
-          .setEmail("abc@xyz.com")
-          .setSupervisorName("Admin")
-          .setPhoneNumber(4445566)
-          .setPermanent(true)
-          .setRole("developer")
-          .setAddress(address)
-          .build();
+                .setAge(10)
+                .setDesignation("author")
+                .setEmail("abc@xyz.com")
+                .setSupervisorName("Admin")
+                .setPhoneNumber(4445566)
+                .setPermanent(true)
+                .setRole("developer")
+                .setAddress(address)
+                .build();
 
         // then
         assertTrue(employee.getPermanent().isPresent());
@@ -106,16 +106,16 @@ public class EmployeeBuilderUnitTest {
         Employee.Builder builder = new Employee.Builder();
 
         Employee employee = builder.setName("baeldung")
-          .setAge(10)
-          .setDesignation("author")
-          .setEmail("abc@xyz.com")
-          .setSupervisorName("Admin")
-          .setPhoneNumber(4445566)
-          .setNullablePermanent(null)
-          .setDateOfJoining(Optional.empty())
-          .setRole("developer")
-          .setAddress(address)
-          .build();
+                .setAge(10)
+                .setDesignation("author")
+                .setEmail("abc@xyz.com")
+                .setSupervisorName("Admin")
+                .setPhoneNumber(4445566)
+                .setNullablePermanent(null)
+                .setDateOfJoining(Optional.empty())
+                .setRole("developer")
+                .setAddress(address)
+                .build();
 
         // then
         assertNull(employee.getCurrentProject());
@@ -132,18 +132,18 @@ public class EmployeeBuilderUnitTest {
         Employee.Builder builder = new Employee.Builder();
 
         Employee employee = builder.setName("baeldung")
-          .setAge(10)
-          .setDesignation("author")
-          .setEmail("abc@xyz.com")
-          .setSupervisorName("Admin")
-          .setPhoneNumber(4445566)
-          .setNullablePermanent(null)
-          .setDateOfJoining(Optional.empty())
-          .setRole("developer")
-          .addAccessTokens(1221819L)
-          .addAccessTokens(1223441L, 134567L)
-          .setAddress(address)
-          .build();
+                .setAge(10)
+                .setDesignation("author")
+                .setEmail("abc@xyz.com")
+                .setSupervisorName("Admin")
+                .setPhoneNumber(4445566)
+                .setNullablePermanent(null)
+                .setDateOfJoining(Optional.empty())
+                .setRole("developer")
+                .addAccessTokens(1221819L)
+                .addAccessTokens(1223441L, 134567L)
+                .setAddress(address)
+                .build();
 
         // then
         assertTrue(employee.getAccessTokens().size() == 3);
@@ -160,19 +160,19 @@ public class EmployeeBuilderUnitTest {
         Employee.Builder builder = new Employee.Builder();
 
         Employee employee = builder.setName("baeldung")
-          .setAge(10)
-          .setDesignation("author")
-          .setEmail("abc@xyz.com")
-          .setSupervisorName("Admin")
-          .setPhoneNumber(4445566)
-          .setNullablePermanent(null)
-          .setDateOfJoining(Optional.empty())
-          .setRole("developer")
-          .addAccessTokens(1221819L)
-          .addAccessTokens(1223441L, 134567L)
-          .putAssetsSerialIdMapping("Laptop", 12345L)
-          .setAddress(address)
-          .build();
+                .setAge(10)
+                .setDesignation("author")
+                .setEmail("abc@xyz.com")
+                .setSupervisorName("Admin")
+                .setPhoneNumber(4445566)
+                .setNullablePermanent(null)
+                .setDateOfJoining(Optional.empty())
+                .setRole("developer")
+                .addAccessTokens(1221819L)
+                .addAccessTokens(1223441L, 134567L)
+                .putAssetsSerialIdMapping("Laptop", 12345L)
+                .setAddress(address)
+                .build();
 
         // then
         assertTrue(employee.getAssetsSerialIdMapping().size() == 1);
@@ -189,20 +189,20 @@ public class EmployeeBuilderUnitTest {
         Employee.Builder builder = new Employee.Builder();
 
         Employee employee = builder.setName("baeldung")
-          .setAge(10)
-          .setDesignation("author")
-          .setEmail("abc@xyz.com")
-          .setSupervisorName("Admin")
-          .setPhoneNumber(4445566)
-          .setNullablePermanent(null)
-          .setDateOfJoining(Optional.empty())
-          .setRole("developer")
-          .addAccessTokens(1221819L)
-          .addAccessTokens(1223441L, 134567L)
-          .putAssetsSerialIdMapping("Laptop", 12345L)
-          .setAddress(address)
-          .mutateAddress(a -> a.setPinCode(112200))
-          .build();
+                .setAge(10)
+                .setDesignation("author")
+                .setEmail("abc@xyz.com")
+                .setSupervisorName("Admin")
+                .setPhoneNumber(4445566)
+                .setNullablePermanent(null)
+                .setDateOfJoining(Optional.empty())
+                .setRole("developer")
+                .addAccessTokens(1221819L)
+                .addAccessTokens(1223441L, 134567L)
+                .putAssetsSerialIdMapping("Laptop", 12345L)
+                .setAddress(address)
+                .mutateAddress(a -> a.setPinCode(112200))
+                .build();
 
         // then
         assertTrue(employee.getAssetsSerialIdMapping().size() == 1);
@@ -216,9 +216,9 @@ public class EmployeeBuilderUnitTest {
         Employee.Builder builder = new Employee.Builder();
 
         Employee employee = builder.setName("baeldung")
-          .setAge(10)
-          .setEmail("abc@xyz.com")
-          .buildPartial();
+                .setAge(10)
+                .setEmail("abc@xyz.com")
+                .buildPartial();
 
         assertNotNull(employee.getEmail());
     }

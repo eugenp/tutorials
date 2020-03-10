@@ -27,7 +27,7 @@ public class IsNumeric {
         }
 
         return pattern.matcher(strNum)
-            .matches();
+                .matches();
     }
 
     public boolean usingNumberUtils_isCreatable(String strNum) {

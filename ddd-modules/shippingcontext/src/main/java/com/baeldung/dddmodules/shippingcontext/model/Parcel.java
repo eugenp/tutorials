@@ -16,7 +16,7 @@ public class Parcel {
 
     public float calculateTotalWeight() {
         return packageItems.stream().map(PackageItem::getWeight)
-          .reduce(0F, Float::sum);
+                .reduce(0F, Float::sum);
     }
 
     public boolean isTaxable() {
@@ -25,7 +25,7 @@ public class Parcel {
 
     public float calculateEstimatedValue() {
         return packageItems.stream().map(PackageItem::getWeight)
-          .reduce(0F, Float::sum);
+                .reduce(0F, Float::sum);
     }
 
     public int getOrderId() {

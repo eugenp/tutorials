@@ -15,10 +15,10 @@ class EmployeeBuilderUnitTest {
         Employee.Builder emplBuilder = new Employee.Builder();
 
         Employee employee = emplBuilder
-          .setName(NAME)
-          .setAge(12)
-          .setDepartment("Builder Pattern")
-          .build();
+                .setName(NAME)
+                .setAge(12)
+                .setDepartment("Builder Pattern")
+                .build();
 
         //then
         Assertions.assertTrue(employee.getName().equalsIgnoreCase(NAME));

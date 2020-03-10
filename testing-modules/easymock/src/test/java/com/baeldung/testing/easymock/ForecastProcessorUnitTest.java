@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ForecastProcessorUnitTest {
     private static int MAX_TEMP = 90;
-    
+
     @Rule
     public EasyMockRule rule = new EasyMockRule(this);
 
@@ -35,12 +35,12 @@ public class ForecastProcessorUnitTest {
     public void givenLocationName_whenWeatherServicePopulatesTemperatures_thenMaxTempReturned() throws ServiceUnavailableException {
         mockWeatherService.populateTemperature(EasyMock.anyObject(Location.class));
         EasyMock.expectLastCall()
-            .andAnswer(() -> {
-                Location passedLocation = (Location) EasyMock.getCurrentArguments()[0]; 
-                passedLocation.setMaximumTemparature(new BigDecimal(MAX_TEMP)); 
-                passedLocation.setMinimumTemperature(new BigDecimal(MAX_TEMP - 10));
-                return null;
-            });
+                .andAnswer(() -> {
+                    Location passedLocation = (Location) EasyMock.getCurrentArguments()[0];
+                    passedLocation.setMaximumTemparature(new BigDecimal(MAX_TEMP));
+                    passedLocation.setMinimumTemperature(new BigDecimal(MAX_TEMP - 10));
+                    return null;
+                });
         EasyMock.replay(mockWeatherService);
         BigDecimal maxTemperature = forecastProcessor.getMaximumTemperature("New York");
         EasyMock.verify(mockWeatherService);

@@ -28,7 +28,7 @@ public class MessageController {
      */
     @PostMapping(value = REQUEST_MAPPING)
     public ResponseEntity<String> processMessage(@RequestHeader Map<String, String> headers,
-            @RequestBody Message message) {
+                                                 @RequestBody Message message) {
 
         // Print headers
         headers.forEach((k, v) -> LOG.info(k + "=" + v));

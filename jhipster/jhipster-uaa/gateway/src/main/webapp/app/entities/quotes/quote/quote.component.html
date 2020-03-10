@@ -1,9 +1,10 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="gatewayApp.quotesQuote.home.title">Quotes</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-quote" [routerLink]="['/quote/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-quote"
+                [routerLink]="['/quote/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="gatewayApp.quotesQuote.home.createLabel">
+            <span jhiTranslate="gatewayApp.quotesQuote.home.createLabel">
             Create new Quote
             </span>
         </button>
@@ -14,11 +15,19 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="symbol"><span jhiTranslate="gatewayApp.quotesQuote.symbol">Symbol</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="price"><span jhiTranslate="gatewayApp.quotesQuote.price">Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="lastTrade"><span jhiTranslate="gatewayApp.quotesQuote.lastTrade">Last Trade</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
+                <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="symbol"><span jhiTranslate="gatewayApp.quotesQuote.symbol">Symbol</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="price"><span jhiTranslate="gatewayApp.quotesQuote.price">Price</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="lastTrade"><span jhiTranslate="gatewayApp.quotesQuote.lastTrade">Last Trade</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -57,10 +66,12 @@
     </div>
     <div *ngIf="quotes && quotes.length">
         <div class="row justify-content-center">
-            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5"
+                            [itemsPerPage]="itemsPerPage"></jhi-item-count>
         </div>
         <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                            [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
     </div>
 </div>

@@ -1,3 +1,3 @@
-module com.baeldung.httpclient {   
-	requires jdk.incubator.httpclient;
+module com.baeldung.httpclient {
+    requires jdk.incubator.httpclient;
 }

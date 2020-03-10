@@ -8,11 +8,11 @@ public class SingleImpl {
     public static void main(String[] args) {
 
         Single<String> single = Observable.just("Hello")
-          .toSingle()
-          .doOnSuccess(System.out::print)
-          .doOnError(e -> {
-              throw new RuntimeException(e.getMessage());
-          });
+                .toSingle()
+                .doOnSuccess(System.out::print)
+                .doOnError(e -> {
+                    throw new RuntimeException(e.getMessage());
+                });
         single.subscribe();
     }
 }

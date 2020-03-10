@@ -25,10 +25,10 @@ public class ThreadsApplication {
     private static final Logger logger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 
     public static void main(String[] args) {
-         testExecutor();
-         testExecutorService();
-         testScheduledExecutorService();
-         testThreadPoolExecutor();
+        testExecutor();
+        testExecutorService();
+        testScheduledExecutorService();
+        testThreadPoolExecutor();
         testForkJoinPool();
     }
 

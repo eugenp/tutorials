@@ -20,24 +20,24 @@ import com.google.gson.GsonBuilder;
 @RunWith(Parameterized.class)
 public class JsonFileUnitTest {
 
-	@Parameter
-	public Object object;
+    @Parameter
+    public Object object;
 
-	@Parameters
-	public static Object[] data() {
-		return new Object[] { 123.45, new User(1, "Tom", "American") };
-	}
+    @Parameters
+    public static Object[] data() {
+        return new Object[]{123.45, new User(1, "Tom", "American")};
+    }
 
-	@Test
-	public void givenProperData_whenStoredInFile_shouldSaveJsonSuccessfully() {
-		String filePath = "target/output.json";
-		try (Writer writer = new FileWriter(filePath)) {
-			Gson gson = new GsonBuilder().setPrettyPrinting().create();
-			gson.toJson(object, writer);
-			Assert.assertTrue(Files.exists(Paths.get(filePath)));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+    @Test
+    public void givenProperData_whenStoredInFile_shouldSaveJsonSuccessfully() {
+        String filePath = "target/output.json";
+        try (Writer writer = new FileWriter(filePath)) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            gson.toJson(object, writer);
+            Assert.assertTrue(Files.exists(Paths.get(filePath)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

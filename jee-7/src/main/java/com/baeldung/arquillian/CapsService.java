@@ -7,8 +7,8 @@ import javax.inject.Inject;
 public class CapsService {
     @Inject
     private CapsConvertor capsConvertor;
-    
-    public String getConvertedCaps(final String word){
+
+    public String getConvertedCaps(final String word) {
         return capsConvertor.getLowerCase().convert(word);
     }
 }

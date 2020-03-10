@@ -54,9 +54,9 @@ public class ClusterDynamicLoadBalanceLiveTest {
         }
 
         OptionalDouble avgElapse = elapseList
-          .stream()
-          .mapToLong(e -> e)
-          .average();
+                .stream()
+                .mapToLong(e -> e)
+                .average();
         assertTrue(avgElapse.isPresent());
         assertTrue(avgElapse.getAsDouble() > 1666.0);
 

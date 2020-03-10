@@ -25,11 +25,11 @@ public class RestrictedOperationsRequestFilter implements ContainerRequestFilter
     public void filter(ContainerRequestContext ctx) throws IOException {
         LOG.info("Restricted operations filter");
         if (ctx.getLanguage() != null && "EN".equals(ctx.getLanguage()
-            .getLanguage())) {
+                .getLanguage())) {
             LOG.info("Aborting request");
             ctx.abortWith(Response.status(Response.Status.FORBIDDEN)
-                .entity("Cannot access")
-                .build());
+                    .entity("Cannot access")
+                    .build());
         }
 
     }

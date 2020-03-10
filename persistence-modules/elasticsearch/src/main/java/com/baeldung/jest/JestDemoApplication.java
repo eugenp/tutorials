@@ -26,7 +26,7 @@ public class JestDemoApplication {
 
         // Check an index
         JestResult result = jestClient.execute(new IndicesExists.Builder("employees").build());
-        if(!result.isSucceeded()) {
+        if (!result.isSucceeded()) {
             System.out.println(result.getErrorMessage());
         }
 
@@ -53,10 +53,9 @@ public class JestDemoApplication {
                         .build())
                 .build());
 
-        if(jestResult.isSucceeded()) {
+        if (jestResult.isSucceeded()) {
             System.out.println("Success!");
-        }
-        else {
+        } else {
             System.out.println(jestResult.getErrorMessage());
         }
 
@@ -111,8 +110,8 @@ public class JestDemoApplication {
                 "  }\n" +
                 "}";
         List<SearchResult.Hit<Employee, Void>> searchResults =
-           jestClient.execute(new Search.Builder(search).build())
-           .getHits(Employee.class);
+                jestClient.execute(new Search.Builder(search).build())
+                        .getHits(Employee.class);
 
         searchResults.forEach(hit -> {
             System.out.println(String.format("Document %s has score %s", hit.id, hit.score));
@@ -123,7 +122,7 @@ public class JestDemoApplication {
         jestClient.execute(new Update.Builder(employee).index("employees").id("1").build());
 
         // Delete documents
-        jestClient.execute(new Delete.Builder("2") .index("employees") .build());
+        jestClient.execute(new Delete.Builder("2").index("employees").build());
 
         // Bulk operations
         Employee employeeObject1 = new Employee();
@@ -141,7 +140,7 @@ public class JestDemoApplication {
         jestClient.execute(new Bulk.Builder().defaultIndex("employees")
                 .addAction(new Index.Builder(employeeObject1).build())
                 .addAction(new Index.Builder(employeeObject2).build())
-                .addAction(new Delete.Builder("3").build()) .build());
+                .addAction(new Delete.Builder("3").build()).build());
 
         // Async operations
         Employee employeeObject3 = new Employee();
@@ -150,25 +149,27 @@ public class JestDemoApplication {
         employee.setYearsOfService(20);
         employee.setSkills(Arrays.asList("managing"));
 
-        jestClient.executeAsync( new Index.Builder(employeeObject3).build(), new JestResultHandler<JestResult>() {
-            @Override public void completed(JestResult result) {
+        jestClient.executeAsync(new Index.Builder(employeeObject3).build(), new JestResultHandler<JestResult>() {
+            @Override
+            public void completed(JestResult result) {
                 // handle result
             }
-            @Override public void failed(Exception ex) {
+
+            @Override
+            public void failed(Exception ex) {
                 // handle exception
             }
         });
     }
 
-    private static JestClient jestClient()
-    {
+    private static JestClient jestClient() {
         JestClientFactory factory = new JestClientFactory();
         factory.setHttpClientConfig(
-           new HttpClientConfig.Builder("http://localhost:9200")
-              .multiThreaded(true)
-              .defaultMaxTotalConnectionPerRoute(2)
-              .maxTotalConnection(20)
-              .build());
+                new HttpClientConfig.Builder("http://localhost:9200")
+                        .multiThreaded(true)
+                        .defaultMaxTotalConnectionPerRoute(2)
+                        .maxTotalConnection(20)
+                        .build());
         return factory.getObject();
     }
 }

@@ -17,15 +17,15 @@ public class WebClientConfig {
         ServerOAuth2AuthorizedClientExchangeFilterFunction oauth = new ServerOAuth2AuthorizedClientExchangeFilterFunction(clientRegistrations, authorizedClients);
         oauth.setDefaultOAuth2AuthorizedClient(true);
         return WebClient.builder()
-            .filter(oauth)
-            .build();
+                .filter(oauth)
+                .build();
     }
 
     @Bean
     WebClient otherWebClient(ReactiveClientRegistrationRepository clientRegistrations, ServerOAuth2AuthorizedClientRepository authorizedClients) {
         ServerOAuth2AuthorizedClientExchangeFilterFunction oauth = new ServerOAuth2AuthorizedClientExchangeFilterFunction(clientRegistrations, authorizedClients);
         return WebClient.builder()
-            .filter(oauth)
-            .build();
+                .filter(oauth)
+                .build();
     }
 }

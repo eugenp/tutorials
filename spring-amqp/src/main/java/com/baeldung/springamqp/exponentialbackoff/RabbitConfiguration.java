@@ -46,43 +46,43 @@ public class RabbitConfiguration {
     @Bean
     public Queue blockingQueue() {
         return QueueBuilder.nonDurable("blocking-queue")
-            .build();
+                .build();
     }
 
     @Bean
     public Queue nonBlockingQueue() {
         return QueueBuilder.nonDurable("non-blocking-queue")
-            .build();
+                .build();
     }
 
     @Bean
     public Queue retryWaitEndedQueue() {
         return QueueBuilder.nonDurable("retry-wait-ended-queue")
-            .build();
+                .build();
     }
 
     @Bean
     public Queue retryQueue1() {
         return QueueBuilder.nonDurable("retry-queue-1")
-            .deadLetterExchange("")
-            .deadLetterRoutingKey("retry-wait-ended-queue")
-            .build();
+                .deadLetterExchange("")
+                .deadLetterRoutingKey("retry-wait-ended-queue")
+                .build();
     }
 
     @Bean
     public Queue retryQueue2() {
         return QueueBuilder.nonDurable("retry-queue-2")
-            .deadLetterExchange("")
-            .deadLetterRoutingKey("retry-wait-ended-queue")
-            .build();
+                .deadLetterExchange("")
+                .deadLetterRoutingKey("retry-wait-ended-queue")
+                .build();
     }
 
     @Bean
     public Queue retryQueue3() {
         return QueueBuilder.nonDurable("retry-queue-3")
-            .deadLetterExchange("")
-            .deadLetterRoutingKey("retry-wait-ended-queue")
-            .build();
+                .deadLetterExchange("")
+                .deadLetterRoutingKey("retry-wait-ended-queue")
+                .build();
     }
 
     @Bean
@@ -98,10 +98,10 @@ public class RabbitConfiguration {
     @Bean
     public RetryOperationsInterceptor retryInterceptor() {
         return RetryInterceptorBuilder.stateless()
-            .backOffOptions(1000, 3.0, 10000)
-            .maxAttempts(5)
-            .recoverer(observableRecoverer())
-            .build();
+                .backOffOptions(1000, 3.0, 10000)
+                .maxAttempts(5)
+                .recoverer(observableRecoverer())
+                .build();
     }
 
     @Bean
@@ -122,7 +122,7 @@ public class RabbitConfiguration {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
 
-        Advice[] adviceChain = { retryInterceptor };
+        Advice[] adviceChain = {retryInterceptor};
         factory.setAdviceChain(adviceChain);
 
         return factory;
@@ -133,7 +133,7 @@ public class RabbitConfiguration {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
 
-        Advice[] adviceChain = { retryInterceptor };
+        Advice[] adviceChain = {retryInterceptor};
         factory.setAdviceChain(adviceChain);
 
         return factory;

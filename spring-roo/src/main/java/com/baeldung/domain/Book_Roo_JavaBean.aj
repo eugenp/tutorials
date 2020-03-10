@@ -6,95 +6,95 @@ package com.baeldung.domain;
 import com.baeldung.domain.Book;
 
 privileged aspect Book_Roo_JavaBean {
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return Long
      */
     public Long Book.getId() {
         return this.id;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param id
      */
     public void Book.setId(Long id) {
         this.id = id;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return Integer
      */
     public Integer Book.getVersion() {
         return this.version;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param version
      */
     public void Book.setVersion(Integer version) {
         this.version = version;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return String
      */
     public String Book.getTitle() {
         return this.title;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param title
      */
     public void Book.setTitle(String title) {
         this.title = title;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return String
      */
     public String Book.getAuthor() {
         return this.author;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param author
      */
     public void Book.setAuthor(String author) {
         this.author = author;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @return String
      */
     public String Book.getIsbn() {
         return this.isbn;
     }
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param isbn
      */
     public void Book.setIsbn(String isbn) {
         this.isbn = isbn;
     }
-    
+
 }

@@ -16,7 +16,7 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

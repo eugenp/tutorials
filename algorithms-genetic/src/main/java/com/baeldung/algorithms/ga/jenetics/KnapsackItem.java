@@ -24,11 +24,11 @@ public class KnapsackItem {
         return Collector.of(() -> new double[2], (a, b) -> {
             a[0] += b.size;
             a[1] += b.value;
-        } , (a, b) -> {
+        }, (a, b) -> {
             a[0] += b[0];
             a[1] += b[1];
             return a;
-        } , r -> new KnapsackItem(r[0], r[1]));
+        }, r -> new KnapsackItem(r[0], r[1]));
     }
 
 }

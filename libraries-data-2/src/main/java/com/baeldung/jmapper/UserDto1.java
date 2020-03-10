@@ -4,13 +4,13 @@ import com.googlecode.jmapper.annotations.JGlobalMap;
 
 @JGlobalMap
 public class UserDto1 {
-    
+
     private long id;
     private String email;
-    
-    
+
+
     // constructors
-    
+
     public UserDto1() {
         super();
     }
@@ -21,8 +21,8 @@ public class UserDto1 {
         this.email = email;
     }
 
-   // getters and setters
-    
+    // getters and setters
+
     public long getId() {
         return id;
     }
@@ -43,5 +43,5 @@ public class UserDto1 {
     public String toString() {
         return "UserDto [id=" + id + ", email=" + email + "]";
     }
-    
+
 }

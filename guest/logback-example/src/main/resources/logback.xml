@@ -6,8 +6,8 @@
         <target>System.out</target>
     </appender>
 
-    <property name="fileName" value="file.log" />
-    <property scope="context" resource="application.properties" />
+    <property name="fileName" value="file.log"/>
+    <property scope="context" resource="application.properties"/>
 
     <!-- configure appenders -->
     <appender name="rollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -101,49 +101,49 @@
 
     <!-- configure loggers -->
     <logger level="info" name="rollingFileLogger" additivity="false">
-        <appender-ref ref="rollingFileAppender" />
+        <appender-ref ref="rollingFileAppender"/>
     </logger>
-    
+
     <logger level="info" name="htmlLogger" additivity="false">
-        <appender-ref ref="htmlAppender" />
+        <appender-ref ref="htmlAppender"/>
     </logger>
-    
+
     <logger level="info" name="roleSiftingLogger" additivity="false">
-        <appender-ref ref="roleSiftingAppender" />
+        <appender-ref ref="roleSiftingAppender"/>
     </logger>
-	
+
     <logger level="info" name="colorLogger" additivity="false">
-        <appender-ref ref="colorAppender" />
+        <appender-ref ref="colorAppender"/>
     </logger>
-    
+
     <logger level="info" name="ignoredColorLogger">
-        <appender-ref ref="colorAppender" />
+        <appender-ref ref="colorAppender"/>
     </logger>
-    
+
     <logger level="info" name="levelFilterLogger" additivity="false">
-        <appender-ref ref="STDOUT_LEVEL_FILTER_APPENDER" />
+        <appender-ref ref="STDOUT_LEVEL_FILTER_APPENDER"/>
     </logger>
-    
+
     <logger level="info" name="thresholdFilterLogger" additivity="false">
-        <appender-ref ref="STDOUT_THRESHOLD_FILTER_APPENDER" />
+        <appender-ref ref="STDOUT_THRESHOLD_FILTER_APPENDER"/>
     </logger>
-    
+
     <logger level="info" name="evaluatorFilterLogger" additivity="false">
-        <appender-ref ref="STDOUT_EVALUATOR_FILTER_APPENDER" />
+        <appender-ref ref="STDOUT_EVALUATOR_FILTER_APPENDER"/>
     </logger>
-    
+
     <!-- configure root logger -->
     <root level="INFO">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
-	
-    <!-- configure root logger conditionally -->	
-    <property scope="context" resource="application.properties" />
-	
+
+    <!-- configure root logger conditionally -->
+    <property scope="context" resource="application.properties"/>
+
     <if condition='property("env").equals("dev")'>
         <then>
             <root level="TRACE">
-                <appender-ref ref="STDOUT" />
+                <appender-ref ref="STDOUT"/>
             </root>
         </then>
     </if>

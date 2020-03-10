@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class CustomNameUnitTest {
 
     @ParameterizedTest
-    @ValueSource(strings = { "Hello", "World" })
+    @ValueSource(strings = {"Hello", "World"})
     @DisplayName("Test Method to check that the inputs are not nullable")
     void givenString_TestNullOrNot(String word) {
         assertNotNull(word);

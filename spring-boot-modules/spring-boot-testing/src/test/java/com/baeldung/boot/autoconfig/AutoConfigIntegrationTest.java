@@ -27,7 +27,7 @@ public class AutoConfigIntegrationTest {
         int statusCode = RestAssured.get("http://localhost:" + port).statusCode();
         assertEquals(HttpStatus.UNAUTHORIZED.value(), statusCode);
     }
-    
+
     @Test
     public void givenAuthentication_whenAccessHome_thenOK() {
         int statusCode = RestAssured.given().auth().basic("john", "123").get("http://localhost:" + port).statusCode();

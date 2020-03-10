@@ -9,7 +9,9 @@ import io.rsocket.RSocket;
 import io.rsocket.RSocketFactory;
 import io.rsocket.frame.decoder.PayloadDecoder;
 import io.rsocket.transport.netty.client.TcpClientTransport;
+
 import java.time.Duration;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +41,9 @@ public class MarketDataRSocketControllerLiveTest {
     public void whenGetsFireAndForget_ThenReturnsNoResponse() throws InterruptedException {
         final MarketData marketData = new MarketData("X", 1);
         rSocketRequester.route("collectMarketData")
-                        .data(marketData)
-                        .send()
-                        .block(Duration.ofSeconds(10));
+                .data(marketData)
+                .send()
+                .block(Duration.ofSeconds(10));
 
         sleepForProcessing();
         verify(rSocketController).collectMarketData(any());
@@ -51,9 +53,9 @@ public class MarketDataRSocketControllerLiveTest {
     public void whenGetsRequest_ThenReturnsResponse() throws InterruptedException {
         final MarketDataRequest marketDataRequest = new MarketDataRequest("X");
         rSocketRequester.route("currentMarketData")
-                        .data(marketDataRequest)
-                        .send()
-                        .block(Duration.ofSeconds(10));
+                .data(marketDataRequest)
+                .send()
+                .block(Duration.ofSeconds(10));
 
         sleepForProcessing();
         verify(rSocketController).currentMarketData(any());
@@ -63,9 +65,9 @@ public class MarketDataRSocketControllerLiveTest {
     public void whenGetsRequest_ThenReturnsStream() throws InterruptedException {
         final MarketDataRequest marketDataRequest = new MarketDataRequest("X");
         rSocketRequester.route("feedMarketData")
-                        .data(marketDataRequest)
-                        .send()
-                        .block(Duration.ofSeconds(10));
+                .data(marketDataRequest)
+                .send()
+                .block(Duration.ofSeconds(10));
 
         sleepForProcessing();
         verify(rSocketController).feedMarketData(any());
@@ -82,11 +84,11 @@ public class MarketDataRSocketControllerLiveTest {
         @Lazy
         public RSocket rSocket() {
             return RSocketFactory.connect()
-                                 .mimeType(MimeTypeUtils.APPLICATION_JSON_VALUE, MimeTypeUtils.APPLICATION_JSON_VALUE)
-                                 .frameDecoder(PayloadDecoder.ZERO_COPY)
-                                 .transport(TcpClientTransport.create(7000))
-                                 .start()
-                                 .block();
+                    .mimeType(MimeTypeUtils.APPLICATION_JSON_VALUE, MimeTypeUtils.APPLICATION_JSON_VALUE)
+                    .frameDecoder(PayloadDecoder.ZERO_COPY)
+                    .transport(TcpClientTransport.create(7000))
+                    .start()
+                    .block();
         }
 
         @Bean

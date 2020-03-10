@@ -13,14 +13,14 @@ import java.util.stream.Collectors;
 import org.junit.Test;
 
 public class Java8PredicateChainUnitTest {
-    
+
     private List<String> names = Arrays.asList("Adam", "Alexander", "John", "Tom");
 
     @Test
     public void whenFilterList_thenSuccess() {
         List<String> result = names.stream()
-            .filter(name -> name.startsWith("A"))
-            .collect(Collectors.toList());
+                .filter(name -> name.startsWith("A"))
+                .collect(Collectors.toList());
 
         assertEquals(2, result.size());
         assertThat(result, contains("Adam", "Alexander"));
@@ -29,10 +29,10 @@ public class Java8PredicateChainUnitTest {
     @Test
     public void whenFilterListWithMultipleFilters_thenSuccess() {
         List<String> result = names.stream()
-            .filter(name -> name.startsWith("A"))
-            .filter(name -> name.length() < 5)
-            .collect(Collectors.toList());
-        
+                .filter(name -> name.startsWith("A"))
+                .filter(name -> name.length() < 5)
+                .collect(Collectors.toList());
+
         assertEquals(1, result.size());
         assertThat(result, contains("Adam"));
     }
@@ -40,9 +40,9 @@ public class Java8PredicateChainUnitTest {
     @Test
     public void whenFilterListWithComplexPredicate_thenSuccess() {
         List<String> result = names.stream()
-            .filter(name -> name.startsWith("A") && name.length() < 5)
-            .collect(Collectors.toList());
-        
+                .filter(name -> name.startsWith("A") && name.length() < 5)
+                .collect(Collectors.toList());
+
         assertEquals(1, result.size());
         assertThat(result, contains("Adam"));
     }
@@ -50,9 +50,9 @@ public class Java8PredicateChainUnitTest {
     @Test
     public void whenFilterListWithCombinedPredicatesInline_thenSuccess() {
         List<String> result = names.stream()
-            .filter(((Predicate<String>) name -> name.startsWith("A")).and(name -> name.length() < 5))
-            .collect(Collectors.toList());
-        
+                .filter(((Predicate<String>) name -> name.startsWith("A")).and(name -> name.length() < 5))
+                .collect(Collectors.toList());
+
         assertEquals(1, result.size());
         assertThat(result, contains("Adam"));
     }
@@ -63,8 +63,8 @@ public class Java8PredicateChainUnitTest {
         Predicate<String> predicate2 = str -> str.length() < 5;
 
         List<String> result = names.stream()
-            .filter(predicate1.and(predicate2))
-            .collect(Collectors.toList());
+                .filter(predicate1.and(predicate2))
+                .collect(Collectors.toList());
 
         assertEquals(1, result.size());
         assertThat(result, contains("Adam"));
@@ -76,8 +76,8 @@ public class Java8PredicateChainUnitTest {
         Predicate<String> predicate2 = str -> str.length() < 4;
 
         List<String> result = names.stream()
-            .filter(predicate1.or(predicate2))
-            .collect(Collectors.toList());
+                .filter(predicate1.or(predicate2))
+                .collect(Collectors.toList());
 
         assertEquals(2, result.size());
         assertThat(result, contains("John", "Tom"));
@@ -89,8 +89,8 @@ public class Java8PredicateChainUnitTest {
         Predicate<String> predicate2 = str -> str.length() < 4;
 
         List<String> result = names.stream()
-            .filter(predicate1.or(predicate2.negate()))
-            .collect(Collectors.toList());
+                .filter(predicate1.or(predicate2.negate()))
+                .collect(Collectors.toList());
 
         assertEquals(3, result.size());
         assertThat(result, contains("Adam", "Alexander", "John"));
@@ -104,9 +104,9 @@ public class Java8PredicateChainUnitTest {
         allPredicates.add(str -> str.length() > 4);
 
         List<String> result = names.stream()
-            .filter(allPredicates.stream()
-                .reduce(x -> true, Predicate::and))
-            .collect(Collectors.toList());
+                .filter(allPredicates.stream()
+                        .reduce(x -> true, Predicate::and))
+                .collect(Collectors.toList());
 
         assertEquals(1, result.size());
         assertThat(result, contains("Alexander"));
@@ -120,9 +120,9 @@ public class Java8PredicateChainUnitTest {
         allPredicates.add(str -> str.length() > 4);
 
         List<String> result = names.stream()
-            .filter(allPredicates.stream()
-                .reduce(x -> false, Predicate::or))
-            .collect(Collectors.toList());
+                .filter(allPredicates.stream()
+                        .reduce(x -> false, Predicate::or))
+                .collect(Collectors.toList());
 
         assertEquals(2, result.size());
         assertThat(result, contains("Adam", "Alexander"));

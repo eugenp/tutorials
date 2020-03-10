@@ -40,11 +40,11 @@ public class EmployeeServiceLiveTest {
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, APP_NAME + ".war")
-            .addPackage(com.baeldung.jaxws.server.bottomup.EmployeeService.class.getPackage())
-            .addPackage(com.baeldung.jaxws.server.bottomup.model.Employee.class.getPackage())
-            .addPackage(com.baeldung.jaxws.server.bottomup.exception.EmployeeNotFound.class.getPackage())
-            .addPackage(com.baeldung.jaxws.server.repository.EmployeeRepository.class.getPackage())
-            .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
+                .addPackage(com.baeldung.jaxws.server.bottomup.EmployeeService.class.getPackage())
+                .addPackage(com.baeldung.jaxws.server.bottomup.model.Employee.class.getPackage())
+                .addPackage(com.baeldung.jaxws.server.bottomup.exception.EmployeeNotFound.class.getPackage())
+                .addPackage(com.baeldung.jaxws.server.repository.EmployeeRepository.class.getPackage())
+                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
     @Before

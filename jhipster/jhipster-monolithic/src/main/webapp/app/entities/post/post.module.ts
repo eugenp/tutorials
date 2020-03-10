@@ -1,8 +1,8 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { BaeldungSharedModule } from '../../shared';
-import { BaeldungAdminModule } from '../../admin/admin.module';
+import {BaeldungSharedModule} from '../../shared';
+import {BaeldungAdminModule} from '../../admin/admin.module';
 
 import {
     PostService,
@@ -26,7 +26,7 @@ let ENTITY_STATES = [
     imports: [
         BaeldungSharedModule,
         BaeldungAdminModule,
-        RouterModule.forRoot(ENTITY_STATES, { useHash: true })
+        RouterModule.forRoot(ENTITY_STATES, {useHash: true})
     ],
     declarations: [
         PostComponent,
@@ -49,4 +49,5 @@ let ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class BaeldungPostModule {}
+export class BaeldungPostModule {
+}

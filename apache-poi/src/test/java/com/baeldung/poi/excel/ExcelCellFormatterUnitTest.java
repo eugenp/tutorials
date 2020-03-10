@@ -25,7 +25,7 @@ public class ExcelCellFormatterUnitTest {
 
     @Before
     public void setup() throws IOException, URISyntaxException {
-            fileLocation = Paths.get(ClassLoader.getSystemResource(FILE_NAME).toURI()).toString();
+        fileLocation = Paths.get(ClassLoader.getSystemResource(FILE_NAME).toURI()).toString();
     }
 
     @Test

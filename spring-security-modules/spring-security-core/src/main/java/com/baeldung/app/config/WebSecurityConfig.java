@@ -24,11 +24,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-            .withUser("jim").password(passwordEncoder().encode("jim")).roles("USER", "ACTUATOR")
-            .and().withUser("pam").password(passwordEncoder().encode("pam")).roles("USER")
-            .and().withUser("michael").password(passwordEncoder().encode("michael")).roles("MANAGER");
+                .withUser("jim").password(passwordEncoder().encode("jim")).roles("USER", "ACTUATOR")
+                .and().withUser("pam").password(passwordEncoder().encode("pam")).roles("USER")
+                .and().withUser("michael").password(passwordEncoder().encode("michael")).roles("MANAGER");
     }
-    
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

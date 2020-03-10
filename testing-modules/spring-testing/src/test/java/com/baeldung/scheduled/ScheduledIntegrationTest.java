@@ -10,7 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringJUnitConfig(ScheduledConfig.class)
 public class ScheduledIntegrationTest {
 
-    @Autowired Counter counter;
+    @Autowired
+    Counter counter;
 
     @Test
     public void givenSleepBy100ms_whenGetInvocationCount_thenIsGreaterThanZero() throws InterruptedException {

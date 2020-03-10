@@ -12,15 +12,14 @@ import org.junit.Test;
 
 /**
  * Test for {@link JettyServerFactory}.
- * 
- * @author Donato Rimenti
  *
+ * @author Donato Rimenti
  */
 public class JettyServerFactoryUnitTest {
 
     /**
      * Tests that when a base server is provided a request returns a status 404.
-     * 
+     *
      * @throws Exception
      */
     @Test
@@ -37,7 +36,7 @@ public class JettyServerFactoryUnitTest {
     /**
      * Tests that when a web app server is provided a request returns a status
      * 200.
-     * 
+     *
      * @throws Exception
      */
     @Test
@@ -54,7 +53,7 @@ public class JettyServerFactoryUnitTest {
     /**
      * Tests that when a multi handler server is provided a request returns a
      * status 200.
-     * 
+     *
      * @throws Exception
      */
     @Test
@@ -71,7 +70,7 @@ public class JettyServerFactoryUnitTest {
     /**
      * Sends a default HTTP GET request to the server and returns the response
      * status code.
-     * 
+     *
      * @return the status code of the response
      * @throws Exception
      */

@@ -17,7 +17,7 @@ import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { TestConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {TestConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class FooLiveTest {
     private static final String URL_PREFIX = "http://localhost:8080/spring-security-rest";
     // private FormAuthConfig formConfig = new FormAuthConfig(URL_PREFIX + "/login", "temporary", "temporary");
@@ -31,8 +31,8 @@ public class FooLiveTest {
         // }
         // return RestAssured.given().cookie("JSESSIONID", cookie);
         return RestAssured.given()
-            .auth().preemptive()
-            .basic("user", "userPass");
+                .auth().preemptive()
+                .basic("user", "userPass");
     }
 
     @Test

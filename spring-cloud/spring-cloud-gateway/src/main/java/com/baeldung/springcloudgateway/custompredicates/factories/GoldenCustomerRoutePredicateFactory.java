@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.baeldung.springcloudgateway.custompredicates.factories;
 
@@ -23,8 +23,8 @@ import com.baeldung.springcloudgateway.custompredicates.service.GoldenCustomerSe
 public class GoldenCustomerRoutePredicateFactory extends AbstractRoutePredicateFactory<GoldenCustomerRoutePredicateFactory.Config> {
 
     private final GoldenCustomerService goldenCustomerService;
-    
-    public GoldenCustomerRoutePredicateFactory(GoldenCustomerService goldenCustomerService ) {
+
+    public GoldenCustomerRoutePredicateFactory(GoldenCustomerService goldenCustomerService) {
         super(Config.class);
         this.goldenCustomerService = goldenCustomerService;
     }
@@ -32,51 +32,51 @@ public class GoldenCustomerRoutePredicateFactory extends AbstractRoutePredicateF
 
     @Override
     public List<String> shortcutFieldOrder() {
-        return Arrays.asList("isGolden","customerIdCookie");
+        return Arrays.asList("isGolden", "customerIdCookie");
     }
 
 
     @Override
     public Predicate<ServerWebExchange> apply(Config config) {
-        
+
         return (ServerWebExchange t) -> {
             List<HttpCookie> cookies = t.getRequest()
-              .getCookies()
-              .get(config.getCustomerIdCookie());
-              
-            boolean isGolden; 
-            if ( cookies == null || cookies.isEmpty()) {
+                    .getCookies()
+                    .get(config.getCustomerIdCookie());
+
+            boolean isGolden;
+            if (cookies == null || cookies.isEmpty()) {
                 isGolden = false;
-            }
-            else {                
-                String customerId = cookies.get(0).getValue();                
+            } else {
+                String customerId = cookies.get(0).getValue();
                 isGolden = goldenCustomerService.isGoldenCustomer(customerId);
             }
-              
-            return config.isGolden()?isGolden:!isGolden;           
+
+            return config.isGolden() ? isGolden : !isGolden;
         };
     }
-    
-    
+
+
     @Validated
-    public static class Config {        
+    public static class Config {
         boolean isGolden = true;
-        
+
         @NotEmpty
         String customerIdCookie = "customerId";
-        
-        
-        public Config() {}
-        
-        public Config( boolean isGolden, String customerIdCookie) {
+
+
+        public Config() {
+        }
+
+        public Config(boolean isGolden, String customerIdCookie) {
             this.isGolden = isGolden;
             this.customerIdCookie = customerIdCookie;
         }
-        
+
         public boolean isGolden() {
             return isGolden;
         }
-        
+
         public void setGolden(boolean value) {
             this.isGolden = value;
         }
@@ -94,9 +94,8 @@ public class GoldenCustomerRoutePredicateFactory extends AbstractRoutePredicateF
         public void setCustomerIdCookie(String customerIdCookie) {
             this.customerIdCookie = customerIdCookie;
         }
-        
-        
-        
+
+
     }
-    
+
 }

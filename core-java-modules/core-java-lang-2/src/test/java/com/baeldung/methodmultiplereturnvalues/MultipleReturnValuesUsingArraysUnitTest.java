@@ -1,6 +1,7 @@
 package com.baeldung.methodmultiplereturnvalues;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 class MultipleReturnValuesUsingArraysUnitTest {
@@ -15,11 +16,11 @@ class MultipleReturnValuesUsingArraysUnitTest {
 
     @Test
     void whenUsingArrayOfNumbers_thenMultipleNumberFieldsAreReturned() {
-        
+
         Number[] coordinates = MultipleReturnValuesUsingArrays.getCoordinatesNumberArray();
         assertEquals(10, coordinates[0]);
         assertEquals(12.5, coordinates[1]);
 
     }
-    
+
 }

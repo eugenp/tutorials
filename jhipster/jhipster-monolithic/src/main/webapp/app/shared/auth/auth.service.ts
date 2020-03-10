@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { LoginModalService } from '../login/login-modal.service';
-import { Principal } from './principal.service';
-import { StateStorageService } from './state-storage.service';
+import {LoginModalService} from '../login/login-modal.service';
+import {Principal} from './principal.service';
+import {StateStorageService} from './state-storage.service';
 
 @Injectable()
 export class AuthService {
@@ -13,14 +13,15 @@ export class AuthService {
         private stateStorageService: StateStorageService,
         private loginModalService: LoginModalService,
         private router: Router
-    ) {}
+    ) {
+    }
 
-    authorize (force) {
+    authorize(force) {
         let authReturn = this.principal.identity(force).then(authThen.bind(this));
 
         return authReturn;
 
-        function authThen () {
+        function authThen() {
             let isAuthenticated = this.principal.isAuthenticated();
             let toStateInfo = this.stateStorageService.getDestinationState().destination;
 
@@ -35,7 +36,7 @@ export class AuthService {
             let previousState = this.stateStorageService.getPreviousState();
             if (isAuthenticated && !fromStateInfo.name && previousState) {
                 this.stateStorageService.resetPreviousState();
-                this.router.navigate([previousState.name], { queryParams:  previousState.params  });
+                this.router.navigate([previousState.name], {queryParams: previousState.params});
                 return false;
             }
 

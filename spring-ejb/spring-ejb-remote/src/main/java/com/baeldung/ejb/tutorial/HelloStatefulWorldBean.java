@@ -15,5 +15,5 @@ public class HelloStatefulWorldBean implements HelloStatefulWorld {
         howManyTimes++;
         return "Hello Stateful World!";
     }
-    
+
 }

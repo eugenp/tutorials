@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.baeldung.subflows.subflowmapping.RouterExample.NumbersClassifier;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { RouterExample.class })
+@ContextConfiguration(classes = {RouterExample.class})
 public class RouterUnitTest {
     @Autowired
     private QueueChannel multipleofThreeChannel;

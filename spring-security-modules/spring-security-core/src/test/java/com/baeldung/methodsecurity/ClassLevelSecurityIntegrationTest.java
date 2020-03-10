@@ -17,34 +17,34 @@ import com.baeldung.methodsecurity.service.SystemService;
 @RunWith(SpringRunner.class)
 @ContextConfiguration
 public class ClassLevelSecurityIntegrationTest {
-    
+
     @Autowired
     SystemService systemService;
-    
+
     @Configuration
     @ComponentScan("com.baeldung.methodsecurity.*")
     public static class SpringConfig {
 
     }
-    
+
     @Test
-    @WithMockUser(username="john",roles={"ADMIN"})
-    public void givenRoleAdmin_whenCallGetSystemYear_return2017(){
+    @WithMockUser(username = "john", roles = {"ADMIN"})
+    public void givenRoleAdmin_whenCallGetSystemYear_return2017() {
         String systemYear = systemService.getSystemYear();
-        assertEquals("2017",systemYear);
+        assertEquals("2017", systemYear);
     }
-    
-    @Test(expected=AccessDeniedException.class)
-    @WithMockUser(username="john",roles={"VIEWER"})
-    public void givenRoleViewer_whenCallGetSystemYear_returnAccessDenied(){
+
+    @Test(expected = AccessDeniedException.class)
+    @WithMockUser(username = "john", roles = {"VIEWER"})
+    public void givenRoleViewer_whenCallGetSystemYear_returnAccessDenied() {
         String systemYear = systemService.getSystemYear();
-        assertEquals("2017",systemYear);
+        assertEquals("2017", systemYear);
     }
-    
+
     @Test
-    @WithMockUser(username="john",roles={"ADMIN"})
-    public void givenRoleAdmin_whenCallGetSystemDate_returnDate(){
+    @WithMockUser(username = "john", roles = {"ADMIN"})
+    public void givenRoleAdmin_whenCallGetSystemDate_returnDate() {
         String systemYear = systemService.getSystemDate();
-        assertEquals("31-12-2017",systemYear);
+        assertEquals("31-12-2017", systemYear);
     }
 }

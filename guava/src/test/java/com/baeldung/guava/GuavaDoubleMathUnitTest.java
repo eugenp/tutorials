@@ -76,8 +76,8 @@ public class GuavaDoubleMathUnitTest {
         double result = DoubleMath.log2(4);
         assertEquals(2, result, 0);
     }
-    
-    
+
+
     @Test
     public void whenLog2DoubleValues_shouldLog2ThemAndReturnTheResultForCeilingRounding() {
         int result = DoubleMath.log2(30, RoundingMode.CEILING);

@@ -1,4 +1,3 @@
-
 import org.junit.jupiter.api.Test
 import java.util.concurrent.ThreadLocalRandom
 import kotlin.test.assertTrue
@@ -8,7 +7,7 @@ class RandomNumberTest {
     @Test
     fun whenRandomNumberWithJavaUtilMath_thenResultIsBetween0And1() {
         val randomNumber = Math.random()
-        assertTrue { randomNumber >=0 }
+        assertTrue { randomNumber >= 0 }
         assertTrue { randomNumber <= 1 }
     }
 
@@ -28,7 +27,7 @@ class RandomNumberTest {
     @Test
     fun whenRandomNumberWithKotlinJSMath_thenResultIsBetween0And1() {
         val randomDouble = Math.random()
-        assertTrue { randomDouble >=0 }
+        assertTrue { randomDouble >= 0 }
         assertTrue { randomDouble <= 1 }
     }
 

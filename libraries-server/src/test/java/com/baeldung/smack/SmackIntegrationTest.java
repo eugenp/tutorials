@@ -27,13 +27,13 @@ public class SmackIntegrationTest {
     public static void setup() throws IOException, InterruptedException, XMPPException, SmackException {
 
         XMPPTCPConnectionConfiguration config = XMPPTCPConnectionConfiguration.builder()
-                .setUsernameAndPassword("baeldung","baeldung")
+                .setUsernameAndPassword("baeldung", "baeldung")
                 .setXmppDomain("jabb3r.org")
                 .setHost("jabb3r.org")
                 .build();
 
         XMPPTCPConnectionConfiguration config2 = XMPPTCPConnectionConfiguration.builder()
-                .setUsernameAndPassword("baeldung2","baeldung2")
+                .setUsernameAndPassword("baeldung2", "baeldung2")
                 .setXmppDomain("jabb3r.org")
                 .setHost("jabb3r.org")
                 .build();

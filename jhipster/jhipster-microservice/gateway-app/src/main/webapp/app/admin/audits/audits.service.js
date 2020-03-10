@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     AuditsService.$inject = ['$resource'];
 
-    function AuditsService ($resource) {
+    function AuditsService($resource) {
         var service = $resource('management/audits/:id', {}, {
             'get': {
                 method: 'GET',

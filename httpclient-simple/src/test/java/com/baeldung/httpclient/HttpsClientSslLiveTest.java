@@ -29,7 +29,7 @@ import org.junit.Test;
 /**
  * This test requires a localhost server over HTTPS <br>
  * It should only be manually run, not part of the automated build
- * */
+ */
 public class HttpsClientSslLiveTest {
 
     // "https://localhost:8443/spring-security-rest-basic-auth/api/bars/1" // local
@@ -41,24 +41,24 @@ public class HttpsClientSslLiveTest {
     @Test(expected = SSLHandshakeException.class)
     public final void whenHttpsUrlIsConsumed_thenException() throws IOException {
         final CloseableHttpClient httpClient = HttpClientBuilder.create()
-            .build();
+                .build();
 
         final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
         final HttpResponse response = httpClient.execute(getMethod);
         assertThat(response.getStatusLine()
-            .getStatusCode(), equalTo(200));
+                .getStatusCode(), equalTo(200));
     }
 
     @Test
     public final void givenHttpClientPre4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
         final TrustStrategy acceptingTrustStrategy = (certificate, authType) -> true;
-        
+
         final SSLContext sslContext = SSLContexts.custom()
                 .loadTrustMaterial(null, acceptingTrustStrategy)
                 .build();
 
         final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
-        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory> create().register("https", sslsf).build();
+        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create().register("https", sslsf).build();
         PoolingHttpClientConnectionManager clientConnectionManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
 
         final CloseableHttpClient httpClient = HttpClients.custom()
@@ -69,7 +69,7 @@ public class HttpsClientSslLiveTest {
         final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
         final HttpResponse response = httpClient.execute(getMethod);
         assertThat(response.getStatusLine()
-            .getStatusCode(), equalTo(200));
+                .getStatusCode(), equalTo(200));
 
         httpClient.close();
     }
@@ -78,19 +78,19 @@ public class HttpsClientSslLiveTest {
     public final void givenHttpClientAfter4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
         final TrustStrategy acceptingTrustStrategy = (certificate, authType) -> true;
         final SSLContext sslContext = SSLContexts.custom()
-            .loadTrustMaterial(null, acceptingTrustStrategy)
-            .build();
+                .loadTrustMaterial(null, acceptingTrustStrategy)
+                .build();
 
         final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
 
         final CloseableHttpClient httpClient = HttpClients.custom()
-            .setSSLSocketFactory(sslsf)
-            .build();
+                .setSSLSocketFactory(sslsf)
+                .build();
 
         final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
         final HttpResponse response = httpClient.execute(getMethod);
         assertThat(response.getStatusLine()
-            .getStatusCode(), equalTo(200));
+                .getStatusCode(), equalTo(200));
 
         httpClient.close();
     }
@@ -98,21 +98,21 @@ public class HttpsClientSslLiveTest {
     @Test
     public final void givenHttpClientPost4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
         final SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustSelfSignedStrategy())
-            .build();
+                .build();
         final NoopHostnameVerifier hostnameVerifier = new NoopHostnameVerifier();
 
         final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, hostnameVerifier);
         final CloseableHttpClient httpClient = HttpClients.custom()
-            .setSSLHostnameVerifier(hostnameVerifier)
-            .setSSLSocketFactory(sslsf)
-            .build();
+                .setSSLHostnameVerifier(hostnameVerifier)
+                .setSSLSocketFactory(sslsf)
+                .build();
 
         // new
 
         final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
         final HttpResponse response = httpClient.execute(getMethod);
         assertThat(response.getStatusLine()
-            .getStatusCode(), equalTo(200));
+                .getStatusCode(), equalTo(200));
         httpClient.close();
 
     }
@@ -120,18 +120,18 @@ public class HttpsClientSslLiveTest {
     @Test
     public final void givenIgnoringCertificates_whenHttpsUrlIsConsumed_thenCorrect() throws Exception {
         final SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, (certificate, authType) -> true)
-            .build();
+                .build();
 
         final CloseableHttpClient client = HttpClients.custom()
-            .setSSLContext(sslContext)
-            .setSSLHostnameVerifier(new NoopHostnameVerifier())
-            .build();
+                .setSSLContext(sslContext)
+                .setSSLHostnameVerifier(new NoopHostnameVerifier())
+                .build();
         final HttpGet httpGet = new HttpGet(HOST_WITH_SSL);
         httpGet.setHeader("Accept", "application/xml");
 
         final HttpResponse response = client.execute(httpGet);
         assertThat(response.getStatusLine()
-            .getStatusCode(), equalTo(200));
+                .getStatusCode(), equalTo(200));
     }
 
 }

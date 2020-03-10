@@ -33,7 +33,7 @@ public class CommentResource {
     private final Logger log = LoggerFactory.getLogger(CommentResource.class);
 
     private static final String ENTITY_NAME = "comment";
-        
+
     private final CommentRepository commentRepository;
 
     public CommentResource(CommentRepository commentRepository) {
@@ -56,8 +56,8 @@ public class CommentResource {
         }
         Comment result = commentRepository.save(comment);
         return ResponseEntity.created(new URI("/api/comments/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+                .body(result);
     }
 
     /**
@@ -78,8 +78,8 @@ public class CommentResource {
         }
         Comment result = commentRepository.save(comment);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, comment.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, comment.getId().toString()))
+                .body(result);
     }
 
     /**

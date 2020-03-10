@@ -21,8 +21,8 @@ public class DbBootstrap implements CommandLineRunner {
     public void run(String... arg0) throws Exception {
 
         IntStream.range(0, 10)
-          .forEach(count -> this.articleRepository.save(new Article(new Random().nextLong(), UUID.randomUUID()
-          .toString())));
+                .forEach(count -> this.articleRepository.save(new Article(new Random().nextLong(), UUID.randomUUID()
+                        .toString())));
 
     }
 }

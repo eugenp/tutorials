@@ -2,13 +2,13 @@ package com.baeldung.xml.jibx;
 
 public class Identity {
 
-	long customerId;
+    long customerId;
 
-	public long getCustomerId() {
-		return customerId;
-	}
+    public long getCustomerId() {
+        return customerId;
+    }
 
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
-	}
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
+    }
 }

@@ -93,26 +93,26 @@ public class BookResourceIntTest {
         MockitoAnnotations.initMocks(this);
         final BookResource bookResource = new BookResource(bookService);
         this.restBookMockMvc = MockMvcBuilders.standaloneSetup(bookResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter)
-            .setValidator(validator).build();
+                .setCustomArgumentResolvers(pageableArgumentResolver)
+                .setControllerAdvice(exceptionTranslator)
+                .setConversionService(createFormattingConversionService())
+                .setMessageConverters(jacksonMessageConverter)
+                .setValidator(validator).build();
     }
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
     public static Book createEntity(EntityManager em) {
         Book book = new Book()
-            .title(DEFAULT_TITLE)
-            .author(DEFAULT_AUTHOR)
-            .published(DEFAULT_PUBLISHED)
-            .quantity(DEFAULT_QUANTITY)
-            .price(DEFAULT_PRICE);
+                .title(DEFAULT_TITLE)
+                .author(DEFAULT_AUTHOR)
+                .published(DEFAULT_PUBLISHED)
+                .quantity(DEFAULT_QUANTITY)
+                .price(DEFAULT_PRICE);
         return book;
     }
 
@@ -129,9 +129,9 @@ public class BookResourceIntTest {
         // Create the Book
         BookDTO bookDTO = bookMapper.toDto(book);
         restBookMockMvc.perform(post("/api/books")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
-            .andExpect(status().isCreated());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
+                .andExpect(status().isCreated());
 
         // Validate the Book in the database
         List<Book> bookList = bookRepository.findAll();
@@ -155,9 +155,9 @@ public class BookResourceIntTest {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restBookMockMvc.perform(post("/api/books")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
+                .andExpect(status().isBadRequest());
 
         // Validate the Book in the database
         List<Book> bookList = bookRepository.findAll();
@@ -175,9 +175,9 @@ public class BookResourceIntTest {
         BookDTO bookDTO = bookMapper.toDto(book);
 
         restBookMockMvc.perform(post("/api/books")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
+                .andExpect(status().isBadRequest());
 
         List<Book> bookList = bookRepository.findAll();
         assertThat(bookList).hasSize(databaseSizeBeforeTest);
@@ -194,9 +194,9 @@ public class BookResourceIntTest {
         BookDTO bookDTO = bookMapper.toDto(book);
 
         restBookMockMvc.perform(post("/api/books")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
+                .andExpect(status().isBadRequest());
 
         List<Book> bookList = bookRepository.findAll();
         assertThat(bookList).hasSize(databaseSizeBeforeTest);
@@ -213,9 +213,9 @@ public class BookResourceIntTest {
         BookDTO bookDTO = bookMapper.toDto(book);
 
         restBookMockMvc.perform(post("/api/books")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
+                .andExpect(status().isBadRequest());
 
         List<Book> bookList = bookRepository.findAll();
         assertThat(bookList).hasSize(databaseSizeBeforeTest);
@@ -232,9 +232,9 @@ public class BookResourceIntTest {
         BookDTO bookDTO = bookMapper.toDto(book);
 
         restBookMockMvc.perform(post("/api/books")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
+                .andExpect(status().isBadRequest());
 
         List<Book> bookList = bookRepository.findAll();
         assertThat(bookList).hasSize(databaseSizeBeforeTest);
@@ -251,9 +251,9 @@ public class BookResourceIntTest {
         BookDTO bookDTO = bookMapper.toDto(book);
 
         restBookMockMvc.perform(post("/api/books")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
+                .andExpect(status().isBadRequest());
 
         List<Book> bookList = bookRepository.findAll();
         assertThat(bookList).hasSize(databaseSizeBeforeTest);
@@ -267,16 +267,16 @@ public class BookResourceIntTest {
 
         // Get all the bookList
         restBookMockMvc.perform(get("/api/books?sort=id,desc"))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(book.getId().intValue())))
-            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
-            .andExpect(jsonPath("$.[*].author").value(hasItem(DEFAULT_AUTHOR.toString())))
-            .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.toString())))
-            .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)))
-            .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.[*].id").value(hasItem(book.getId().intValue())))
+                .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
+                .andExpect(jsonPath("$.[*].author").value(hasItem(DEFAULT_AUTHOR.toString())))
+                .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.toString())))
+                .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)))
+                .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())));
     }
-    
+
     @Test
     @Transactional
     public void getBook() throws Exception {
@@ -285,14 +285,14 @@ public class BookResourceIntTest {
 
         // Get the book
         restBookMockMvc.perform(get("/api/books/{id}", book.getId()))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(book.getId().intValue()))
-            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
-            .andExpect(jsonPath("$.author").value(DEFAULT_AUTHOR.toString()))
-            .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.toString()))
-            .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY))
-            .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.id").value(book.getId().intValue()))
+                .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
+                .andExpect(jsonPath("$.author").value(DEFAULT_AUTHOR.toString()))
+                .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.toString()))
+                .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY))
+                .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()));
     }
 
     @Test
@@ -300,7 +300,7 @@ public class BookResourceIntTest {
     public void getNonExistingBook() throws Exception {
         // Get the book
         restBookMockMvc.perform(get("/api/books/{id}", Long.MAX_VALUE))
-            .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -316,17 +316,17 @@ public class BookResourceIntTest {
         // Disconnect from session so that the updates on updatedBook are not directly saved in db
         em.detach(updatedBook);
         updatedBook
-            .title(UPDATED_TITLE)
-            .author(UPDATED_AUTHOR)
-            .published(UPDATED_PUBLISHED)
-            .quantity(UPDATED_QUANTITY)
-            .price(UPDATED_PRICE);
+                .title(UPDATED_TITLE)
+                .author(UPDATED_AUTHOR)
+                .published(UPDATED_PUBLISHED)
+                .quantity(UPDATED_QUANTITY)
+                .price(UPDATED_PRICE);
         BookDTO bookDTO = bookMapper.toDto(updatedBook);
 
         restBookMockMvc.perform(put("/api/books")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
-            .andExpect(status().isOk());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
+                .andExpect(status().isOk());
 
         // Validate the Book in the database
         List<Book> bookList = bookRepository.findAll();
@@ -349,9 +349,9 @@ public class BookResourceIntTest {
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restBookMockMvc.perform(put("/api/books")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
-            .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(bookDTO)))
+                .andExpect(status().isBadRequest());
 
         // Validate the Book in the database
         List<Book> bookList = bookRepository.findAll();
@@ -368,8 +368,8 @@ public class BookResourceIntTest {
 
         // Delete the book
         restBookMockMvc.perform(delete("/api/books/{id}", book.getId())
-            .accept(TestUtil.APPLICATION_JSON_UTF8))
-            .andExpect(status().isOk());
+                .accept(TestUtil.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk());
 
         // Validate the database is empty
         List<Book> bookList = bookRepository.findAll();

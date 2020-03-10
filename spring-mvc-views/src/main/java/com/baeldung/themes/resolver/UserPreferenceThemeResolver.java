@@ -42,7 +42,7 @@ public class UserPreferenceThemeResolver implements ThemeResolver {
 
     private Optional<String> findUserPreferredTheme() {
         Authentication authentication = SecurityContextHolder.getContext()
-            .getAuthentication();
+                .getAuthentication();
         UserPreference userPreference = getUserPreference(authentication).orElse(new UserPreference());
         return Optional.ofNullable(userPreference.getTheme());
     }
@@ -62,7 +62,7 @@ public class UserPreferenceThemeResolver implements ThemeResolver {
     @Override
     public void setThemeName(HttpServletRequest request, HttpServletResponse response, String theme) {
         Authentication authentication = SecurityContextHolder.getContext()
-            .getAuthentication();
+                .getAuthentication();
         if (isAuthenticated(authentication)) {
             request.setAttribute(THEME_REQUEST_ATTRIBUTE_NAME, theme);
             UserPreference userPreference = getUserPreference(authentication).orElse(new UserPreference());

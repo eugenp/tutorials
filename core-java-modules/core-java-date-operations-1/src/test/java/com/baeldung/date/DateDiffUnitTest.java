@@ -69,7 +69,7 @@ public class DateDiffUnitTest {
         LocalDateTime ldt = LocalDateTime.now();
         ZonedDateTime now = ldt.atZone(ZoneId.of("America/Montreal"));
         ZonedDateTime sixDaysBehind = now.withZoneSameInstant(ZoneId.of("Asia/Singapore"))
-            .minusDays(6);
+                .minusDays(6);
         long diff = ChronoUnit.DAYS.between(sixDaysBehind, now);
         assertEquals(diff, 6);
     }

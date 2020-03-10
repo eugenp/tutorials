@@ -23,12 +23,12 @@
         document.getElementById("content").innerHTML += content;
     }, false);
 
-    source.addEventListener('open', function(e) {
+    source.addEventListener('open', function (e) {
         console.log('The connection has been opened');
     }, false);
 
-    source.addEventListener('error', function(e) {
-        if (e.readyState == EventSource.CLOSED){
+    source.addEventListener('error', function (e) {
+        if (e.readyState == EventSource.CLOSED) {
             console.log('The connection has been closed');
         }
     }, false);

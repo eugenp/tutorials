@@ -16,8 +16,8 @@ public interface GreetingService extends Service {
 
     @Override
     default Descriptor descriptor() {
-      return named("greetingservice").withCalls(
-            restCall(Method.GET, "/api/greeting/:fromUser", this::handleGreetFrom)
+        return named("greetingservice").withCalls(
+                restCall(Method.GET, "/api/greeting/:fromUser", this::handleGreetFrom)
         ).withAutoAcl(true);
     }
 }

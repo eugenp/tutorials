@@ -15,21 +15,21 @@ public class GsonAlternateUnitTest {
 
         Gson gson = new GsonBuilder().create();
 
-        Weather weather = gson.fromJson("{" + 
-            "\"location\": \"London\"," + 
-            "\"temp\": 15," + 
-            "\"weather\": \"Cloudy\"" + 
-            "}", Weather.class);
+        Weather weather = gson.fromJson("{" +
+                "\"location\": \"London\"," +
+                "\"temp\": 15," +
+                "\"weather\": \"Cloudy\"" +
+                "}", Weather.class);
 
         assertEquals("London", weather.getLocation());
         assertEquals("Cloudy", weather.getOutlook());
         assertEquals(15, weather.getTemp());
 
-        weather = gson.fromJson("{" + 
-            "\"place\": \"Lisbon\"," + 
-            "\"temperature\": 35," + 
-            "\"outlook\": \"Sunny\"" + 
-            "}", Weather.class);
+        weather = gson.fromJson("{" +
+                "\"place\": \"Lisbon\"," +
+                "\"temperature\": 35," +
+                "\"outlook\": \"Sunny\"" +
+                "}", Weather.class);
 
         assertEquals("Lisbon", weather.getLocation());
         assertEquals("Sunny", weather.getOutlook());

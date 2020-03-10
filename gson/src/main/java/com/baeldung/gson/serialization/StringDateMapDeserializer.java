@@ -26,11 +26,11 @@ public class StringDateMapDeserializer implements JsonDeserializer<Map<String, D
         System.out.println("Deserializer called");
         logger.info("Deserializer called");
         return elem.getAsJsonObject()
-          .entrySet()
-          .stream()
-          .filter(e -> e.getValue().isJsonPrimitive())
-          .filter(e -> e.getValue().getAsJsonPrimitive().isString())
-          .collect(Collectors.toMap(Map.Entry::getKey, e -> formatDate(e.getValue())));
+                .entrySet()
+                .stream()
+                .filter(e -> e.getValue().isJsonPrimitive())
+                .filter(e -> e.getValue().getAsJsonPrimitive().isString())
+                .collect(Collectors.toMap(Map.Entry::getKey, e -> formatDate(e.getValue())));
     }
 
     private Date formatDate(JsonElement value) {

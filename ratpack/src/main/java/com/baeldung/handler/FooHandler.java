@@ -7,6 +7,6 @@ public class FooHandler implements Handler {
     @Override
     public void handle(Context ctx) throws Exception {
         ctx.getResponse()
-            .send("Hello Foo!");
+                .send("Hello Foo!");
     }
 }

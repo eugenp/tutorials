@@ -15,7 +15,7 @@ import com.baeldung.multipledb.PersistenceUserConfiguration;
 @DataJpaTest(excludeAutoConfiguration = {
         PersistenceConfiguration.class,
         PersistenceUserConfiguration.class,
-        PersistenceProductConfiguration.class })
+        PersistenceProductConfiguration.class})
 @ContextConfiguration(classes = Application.class)
 public class SpringJpaContextIntegrationTest {
 

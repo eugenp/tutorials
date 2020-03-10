@@ -64,7 +64,7 @@ public class BitwiseAndLogicalANDOperatorsUnitTest {
 
     @Test
     public void givenTwoFalseExpressions_whenLogicalAndOperator_thenShortCircuitFalse() {
-        boolean shortCircuitResult = (2<1) && (4<5);
+        boolean shortCircuitResult = (2 < 1) && (4 < 5);
         assertFalse(shortCircuitResult);
     }
 

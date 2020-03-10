@@ -18,15 +18,15 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableJpaRepositories(basePackages = { "com.baeldung.boot.repository", "com.baeldung.repository" })
+@EnableJpaRepositories(basePackages = {"com.baeldung.boot.repository", "com.baeldung.repository"})
 @PropertySource("classpath:persistence-generic-entity.properties")
 //@PropertySource("classpath:persistence-derby.properties")
 //@PropertySource("classpath:persistence-hsqldb.properties")
 //@PropertySource("classpath:persistence-sqlite.properties")
 @EnableTransactionManagement
 @Profile("default") //only required to allow H2JpaConfig and H2TestProfileJPAConfig to coexist in same project
-                    //this demo project is showcasing several ways to achieve the same end, and class-level
-                    //Profile annotations are only necessary because the different techniques are sharing a project
+//this demo project is showcasing several ways to achieve the same end, and class-level
+//Profile annotations are only necessary because the different techniques are sharing a project
 public class H2JpaConfig {
 
     @Autowired
@@ -47,7 +47,7 @@ public class H2JpaConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "com.baeldung.boot.domain" });
+        em.setPackagesToScan(new String[]{"com.baeldung.boot.domain"});
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(additionalProperties());
         return em;

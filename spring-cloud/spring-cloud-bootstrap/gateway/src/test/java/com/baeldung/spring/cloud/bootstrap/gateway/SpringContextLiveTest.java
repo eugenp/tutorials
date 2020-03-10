@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 /**
  * This live test requires:
  * Eureka server and Gateway application up and running
- * 
+ *
  * <br>
  * For more info:
  * https://www.baeldung.com/spring-cloud-netflix-eureka

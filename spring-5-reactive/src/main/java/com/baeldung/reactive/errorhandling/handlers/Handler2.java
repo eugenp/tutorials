@@ -10,22 +10,22 @@ import reactor.core.publisher.Mono;
 @Component
 public class Handler2 {
 
-public Mono<ServerResponse> handleRequest2(ServerRequest request) {
-    return 
-        sayHello(request)
-            .flatMap(s -> ServerResponse.ok()
-                .contentType(MediaType.TEXT_PLAIN)
-                .syncBody(s))
-            .onErrorResume(e -> sayHelloFallback()
-                .flatMap(s -> ServerResponse.ok()
-                    .contentType(MediaType.TEXT_PLAIN)
-                    .syncBody(s)));
-}
+    public Mono<ServerResponse> handleRequest2(ServerRequest request) {
+        return
+                sayHello(request)
+                        .flatMap(s -> ServerResponse.ok()
+                                .contentType(MediaType.TEXT_PLAIN)
+                                .syncBody(s))
+                        .onErrorResume(e -> sayHelloFallback()
+                                .flatMap(s -> ServerResponse.ok()
+                                        .contentType(MediaType.TEXT_PLAIN)
+                                        .syncBody(s)));
+    }
 
     private Mono<String> sayHello(ServerRequest request) {
         try {
             return Mono.just("Hello, " + request.queryParam("name")
-                .get());
+                    .get());
         } catch (Exception e) {
             return Mono.error(e);
         }

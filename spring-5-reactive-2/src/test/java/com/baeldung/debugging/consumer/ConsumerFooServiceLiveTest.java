@@ -20,30 +20,30 @@ public class ConsumerFooServiceLiveTest {
     @BeforeAll
     public static void setup() {
         client = WebTestClient.bindToServer()
-            .baseUrl(BASE_URL)
-            .build();
+                .baseUrl(BASE_URL)
+                .build();
     }
 
     @Test
     public void whenRequestingDebugHookOn_thenObtainExpectedMessage() {
         ResponseSpec response = client.get()
-            .uri(DEBUG_HOOK_ON)
-            .exchange();
+                .uri(DEBUG_HOOK_ON)
+                .exchange();
         response.expectStatus()
-            .isOk()
-            .expectBody(String.class)
-            .isEqualTo("DEBUG HOOK ON");
+                .isOk()
+                .expectBody(String.class)
+                .isEqualTo("DEBUG HOOK ON");
     }
 
     @Test
     public void whenRequestingDebugHookOff_thenObtainExpectedMessage() {
         ResponseSpec response = client.get()
-            .uri(DEBUG_HOOK_OFF)
-            .exchange();
+                .uri(DEBUG_HOOK_OFF)
+                .exchange();
         response.expectStatus()
-            .isOk()
-            .expectBody(String.class)
-            .isEqualTo("DEBUG HOOK OFF");
+                .isOk()
+                .expectBody(String.class)
+                .isEqualTo("DEBUG HOOK OFF");
     }
 
 }

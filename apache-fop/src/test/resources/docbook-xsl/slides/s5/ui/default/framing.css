@@ -5,14 +5,57 @@
 
 /* target = 1024x768 */
 
-div#header, div#footer, .slide {width: 100%; top: 0; left: 0;}
-div#header {top: 0; height: 3em; z-index: 1;}
-div#footer {top: auto; bottom: 0; height: 2.5em; z-index: 5;}
-.slide {top: 0; width: 92%; padding: 3.5em 4% 4%; z-index: 2;  list-style: none;}
-div#controls {left: 50%; bottom: 0; width: 50%; z-index: 100;}
-div#controls form {text-align: right; width: 100%; margin: 0;}
-#currentSlide {position: absolute; width: 10%; left: 45%; bottom: 1em; z-index: 10;}
-html>body #currentSlide {position: fixed;}
+div#header, div#footer, .slide {
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+div#header {
+    top: 0;
+    height: 3em;
+    z-index: 1;
+}
+
+div#footer {
+    top: auto;
+    bottom: 0;
+    height: 2.5em;
+    z-index: 5;
+}
+
+.slide {
+    top: 0;
+    width: 92%;
+    padding: 3.5em 4% 4%;
+    z-index: 2;
+    list-style: none;
+}
+
+div#controls {
+    left: 50%;
+    bottom: 0;
+    width: 50%;
+    z-index: 100;
+}
+
+div#controls form {
+    text-align: right;
+    width: 100%;
+    margin: 0;
+}
+
+#currentSlide {
+    position: absolute;
+    width: 10%;
+    left: 45%;
+    bottom: 1em;
+    z-index: 10;
+}
+
+html > body #currentSlide {
+    position: fixed;
+}
 
 /*
 div#header {background: #FCC;}

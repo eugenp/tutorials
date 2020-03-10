@@ -13,7 +13,7 @@ public class User {
     private final String name;
     private final String email;
     private final String country;
-    
+
     public static User createWithDefaultCountry(String name, String email) {
         return new User(name, email, "Argentina");
     }
@@ -53,7 +53,7 @@ public class User {
     public String getCountry() {
         return country;
     }
-    
+
     private static void setLoggerProperties() {
         ConsoleHandler handler = new ConsoleHandler();
         handler.setLevel(Level.INFO);

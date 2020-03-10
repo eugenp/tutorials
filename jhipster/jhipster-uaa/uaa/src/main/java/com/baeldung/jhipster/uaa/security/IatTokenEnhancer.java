@@ -30,7 +30,7 @@ public class IatTokenEnhancer implements TokenEnhancer {
         }
         //add "iat" claim with current time in secs
         //this is used for an inactive session timeout
-        additionalInformation.put("iat", new Integer((int)(System.currentTimeMillis()/1000L)));
+        additionalInformation.put("iat", new Integer((int) (System.currentTimeMillis() / 1000L)));
         token.setAdditionalInformation(additionalInformation);
     }
 }

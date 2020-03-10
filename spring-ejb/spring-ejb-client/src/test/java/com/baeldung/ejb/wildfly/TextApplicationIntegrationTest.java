@@ -3,9 +3,11 @@ package com.baeldung.ejb.wildfly;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import javax.naming.NamingException;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
 import static org.junit.Assert.*;
 
 public class TextApplicationIntegrationTest {

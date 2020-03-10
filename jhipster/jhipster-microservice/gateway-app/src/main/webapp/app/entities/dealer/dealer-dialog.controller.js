@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,22 +7,22 @@
 
     DealerDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Dealer'];
 
-    function DealerDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Dealer) {
+    function DealerDialogController($timeout, $scope, $stateParams, $uibModalInstance, entity, Dealer) {
         var vm = this;
 
         vm.dealer = entity;
         vm.clear = clear;
         vm.save = save;
 
-        $timeout(function (){
+        $timeout(function () {
             angular.element('.form-group:eq(1)>input').focus();
         });
 
-        function clear () {
+        function clear() {
             $uibModalInstance.dismiss('cancel');
         }
 
-        function save () {
+        function save() {
             vm.isSaving = true;
             if (vm.dealer.id !== null) {
                 Dealer.update(vm.dealer, onSaveSuccess, onSaveError);
@@ -31,13 +31,13 @@
             }
         }
 
-        function onSaveSuccess (result) {
+        function onSaveSuccess(result) {
             $scope.$emit('gatewayApp:dealerUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }
 
-        function onSaveError () {
+        function onSaveError() {
             vm.isSaving = false;
         }
 

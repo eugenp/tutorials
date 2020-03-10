@@ -6,11 +6,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
- * 
  * Note: This app is configured to use the authorization service and the resource service located in Baeldung/spring-security-oauth repo
- * 
- * @author rozagerardo
  *
+ * @author rozagerardo
  */
 @PropertySource("classpath:webclient-client-credentials-oauth-application.properties")
 @EnableScheduling

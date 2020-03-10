@@ -26,18 +26,18 @@ public class WaitingForThreadsToFinishManualTest {
             Thread.currentThread().interrupt();
         }
     }
-    
+
     @Test
     public void givenMultipleThreads_whenUsingCountDownLatch_thenMainShoudWaitForAllToFinish() {
 
         ExecutorService WORKER_THREAD_POOL = Executors.newFixedThreadPool(10);
-        
+
         try {
             long startTime = System.currentTimeMillis();
 
             // create a CountDownLatch that waits for the 2 threads to finish
             CountDownLatch latch = new CountDownLatch(2);
-            
+
             for (int i = 0; i < 2; i++) {
                 WORKER_THREAD_POOL.submit(() -> {
                     try {
@@ -69,13 +69,13 @@ public class WaitingForThreadsToFinishManualTest {
         ExecutorService WORKER_THREAD_POOL = Executors.newFixedThreadPool(10);
 
         List<Callable<String>> callables = Arrays.asList(
-            new DelayedCallable("fast thread", 100), 
-            new DelayedCallable("slow thread", 3000));
+                new DelayedCallable("fast thread", 100),
+                new DelayedCallable("slow thread", 3000));
 
         try {
             long startProcessingTime = System.currentTimeMillis();
             List<Future<String>> futures = WORKER_THREAD_POOL.invokeAll(callables);
-            
+
             awaitTerminationAfterShutdown(WORKER_THREAD_POOL);
 
             try {
@@ -91,16 +91,16 @@ public class WaitingForThreadsToFinishManualTest {
             assertTrue(totalProcessingTime >= 3000);
 
             String firstThreadResponse = futures.get(0)
-                .get();
+                    .get();
             assertTrue("First response should be from the fast thread", "fast thread".equals(firstThreadResponse));
 
             String secondThreadResponse = futures.get(1)
-                .get();
+                    .get();
             assertTrue("Last response should be from the slow thread", "slow thread".equals(secondThreadResponse));
 
         } catch (ExecutionException | InterruptedException ex) {
             ex.printStackTrace();
-        }       
+        }
     }
 
     @Test
@@ -109,8 +109,8 @@ public class WaitingForThreadsToFinishManualTest {
         CompletionService<String> service = new ExecutorCompletionService<>(WORKER_THREAD_POOL);
 
         List<Callable<String>> callables = Arrays.asList(
-            new DelayedCallable("fast thread", 100), 
-            new DelayedCallable("slow thread", 3000));
+                new DelayedCallable("fast thread", 100),
+                new DelayedCallable("slow thread", 3000));
 
         for (Callable<String> callable : callables) {
             service.submit(callable);

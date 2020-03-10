@@ -184,7 +184,6 @@ public class JetS3tLiveTest {
     }
 
 
-
     @Test
     public void givenStreamDataUploaded_StreamDataIsDownloaded() throws Exception {
 
@@ -220,12 +219,12 @@ public class JetS3tLiveTest {
 
         // Convert back to ArrayList
         ObjectInputStream objectInputStream = new ObjectInputStream(newStreamObject.getDataInputStream());
-        ArrayList<Integer> newNumbers = (ArrayList<Integer>)objectInputStream.readObject();
+        ArrayList<Integer> newNumbers = (ArrayList<Integer>) objectInputStream.readObject();
 
-        assertEquals(2, (int)newNumbers.get(0));
-        assertEquals(3, (int)newNumbers.get(1));
-        assertEquals(5, (int)newNumbers.get(2));
-        assertEquals(7, (int)newNumbers.get(3));
+        assertEquals(2, (int) newNumbers.get(0));
+        assertEquals(3, (int) newNumbers.get(1));
+        assertEquals(5, (int) newNumbers.get(2));
+        assertEquals(7, (int) newNumbers.get(3));
 
         // Clean up
         deleteObject("stream");
@@ -324,7 +323,7 @@ public class JetS3tLiveTest {
 
         // Copy it
         s3Service.moveObject(BucketName, "test.jpg", TgtBucket,
-            new S3Object("spidey.jpg"), false);
+                new S3Object("spidey.jpg"), false);
 
 
         // Download

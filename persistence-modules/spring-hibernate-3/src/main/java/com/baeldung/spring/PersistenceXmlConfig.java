@@ -6,8 +6,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 // @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "com.baeldung.persistence.dao", "com.baeldung.persistence.service" })
-@ImportResource({ "classpath:persistenceConfig.xml" })
+@ComponentScan({"com.baeldung.persistence.dao", "com.baeldung.persistence.service"})
+@ImportResource({"classpath:persistenceConfig.xml"})
 public class PersistenceXmlConfig {
 
     public PersistenceXmlConfig() {

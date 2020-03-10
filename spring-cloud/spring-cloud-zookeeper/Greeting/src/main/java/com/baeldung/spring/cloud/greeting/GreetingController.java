@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GreetingController {
 
-	@Autowired
-	private HelloWorldClient helloWorldClient;
+    @Autowired
+    private HelloWorldClient helloWorldClient;
 
-	@GetMapping("/get-greeting")
-	public String greeting() {
+    @GetMapping("/get-greeting")
+    public String greeting() {
 
-		return helloWorldClient.HelloWorld();
+        return helloWorldClient.HelloWorld();
 
-	}
+    }
 
 }

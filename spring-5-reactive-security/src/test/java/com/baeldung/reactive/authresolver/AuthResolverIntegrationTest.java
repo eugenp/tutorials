@@ -20,44 +20,44 @@ public class AuthResolverIntegrationTest {
     @Test
     public void givenCustomerCredential_whenWelcomeCustomer_thenExpectOk() {
         testClient
-          .get()
-          .uri("/customer/welcome")
-          .header("Authorization", "Basic " + Base64Utils.encodeToString("customer1:pass1".getBytes()))
-          .exchange()
-          .expectStatus()
-          .isOk();
+                .get()
+                .uri("/customer/welcome")
+                .header("Authorization", "Basic " + Base64Utils.encodeToString("customer1:pass1".getBytes()))
+                .exchange()
+                .expectStatus()
+                .isOk();
     }
 
     @Test
     public void givenEmployeeCredential_whenWelcomeCustomer_thenExpect401Status() {
         testClient
-          .get()
-          .uri("/customer/welcome")
-          .header("Authorization", "Basic " + Base64Utils.encodeToString("employee1:pass1".getBytes()))
-          .exchange()
-          .expectStatus()
-          .isUnauthorized();
+                .get()
+                .uri("/customer/welcome")
+                .header("Authorization", "Basic " + Base64Utils.encodeToString("employee1:pass1".getBytes()))
+                .exchange()
+                .expectStatus()
+                .isUnauthorized();
     }
 
     @Test
     public void givenEmployeeCredential_whenWelcomeEmployee_thenExpectOk() {
         testClient
-          .get()
-          .uri("/employee/welcome")
-          .header("Authorization", "Basic " + Base64Utils.encodeToString("employee1:pass1".getBytes()))
-          .exchange()
-          .expectStatus()
-          .isOk();
+                .get()
+                .uri("/employee/welcome")
+                .header("Authorization", "Basic " + Base64Utils.encodeToString("employee1:pass1".getBytes()))
+                .exchange()
+                .expectStatus()
+                .isOk();
     }
 
     @Test
     public void givenCustomerCredential_whenWelcomeEmployee_thenExpect401Status() {
         testClient
-          .get()
-          .uri("/employee/welcome")
-          .header("Authorization", "Basic " + Base64Utils.encodeToString("customer1:pass1".getBytes()))
-          .exchange()
-          .expectStatus()
-          .isUnauthorized();
+                .get()
+                .uri("/employee/welcome")
+                .header("Authorization", "Basic " + Base64Utils.encodeToString("customer1:pass1".getBytes()))
+                .exchange()
+                .expectStatus()
+                .isUnauthorized();
     }
 }

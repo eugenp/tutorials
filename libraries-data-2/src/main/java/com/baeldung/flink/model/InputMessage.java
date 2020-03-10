@@ -18,6 +18,7 @@ public class InputMessage {
     public String getSender() {
         return sender;
     }
+
     public void setSender(String sender) {
         this.sender = sender;
     }

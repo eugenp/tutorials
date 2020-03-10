@@ -10,6 +10,7 @@ import java.lang.reflect.Method;
 public class TestRunner extends Runner {
 
     private Class testClass;
+
     public TestRunner(Class testClass) {
         super();
         this.testClass = testClass;
@@ -28,10 +29,10 @@ public class TestRunner extends Runner {
             for (Method method : testClass.getMethods()) {
                 if (method.isAnnotationPresent(Test.class)) {
                     notifier.fireTestStarted(Description
-                      .createTestDescription(testClass, method.getName()));
+                            .createTestDescription(testClass, method.getName()));
                     method.invoke(testObject);
                     notifier.fireTestFinished(Description
-                      .createTestDescription(testClass, method.getName()));
+                            .createTestDescription(testClass, method.getName()));
                 }
             }
         } catch (Exception e) {

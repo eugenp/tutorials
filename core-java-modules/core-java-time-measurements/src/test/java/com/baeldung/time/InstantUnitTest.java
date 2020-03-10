@@ -14,7 +14,7 @@ import static org.mockito.Mockito.when;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({ Instant.class })
+@PrepareForTest({Instant.class})
 public class InstantUnitTest {
 
     @Test

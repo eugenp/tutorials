@@ -7,6 +7,7 @@ public interface InvestmentService {
 
     /**
      * Sample service transferring a given amount of money.
+     *
      * @param amount
      * @return {@code true} when the transfer complete successfully, {@code false} otherwise.
      */

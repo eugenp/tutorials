@@ -18,10 +18,10 @@ import org.slf4j.LoggerFactory;
 public class BeforeEachAndAfterEachAnnotationsUnitTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(BeforeEachAndAfterEachAnnotationsUnitTest.class);
-    
+
     private List<String> list;
-    
-    @BeforeEach 
+
+    @BeforeEach
     public void init() {
         LOG.info("startup");
         list = new ArrayList<>(Arrays.asList("test1", "test2"));

@@ -8,14 +8,14 @@ public class ObservableRejectAndDontRequeueRecoverer extends RejectAndDontRequeu
 
     @Override
     public void recover(Message message, Throwable cause) {
-        if(observer != null) {
+        if (observer != null) {
             observer.run();
         }
-        
+
         super.recover(message, cause);
     }
-    
-    void setObserver(Runnable observer){
+
+    void setObserver(Runnable observer) {
         this.observer = observer;
     }
 }

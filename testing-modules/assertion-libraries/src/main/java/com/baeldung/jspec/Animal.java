@@ -7,7 +7,7 @@ public abstract class Animal {
     public Animal(String name) {
         this.name = name;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -36,6 +36,6 @@ public abstract class Animal {
             return false;
         return true;
     }
-    
-    
+
+
 }

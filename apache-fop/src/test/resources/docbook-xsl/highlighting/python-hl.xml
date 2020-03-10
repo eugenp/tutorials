@@ -29,72 +29,72 @@ Michiel Hendriks <elmuerte at users.sourceforge.net>
 
 -->
 <highlighters>
-	<highlighter type="annotation">
-		<!-- these are actually called decorators -->
-		<start>@</start>
-		<valueStart>(</valueStart>
-		<valueEnd>)</valueEnd>
-	</highlighter>
-	<highlighter type="oneline-comment">#</highlighter>
-	<highlighter type="string">
-		<string>"""</string>
-		<spanNewLines />
-	</highlighter>
-	<highlighter type="string">
-		<string>'''</string>
-		<spanNewLines />
-	</highlighter>
-	<highlighter type="string">
-		<string>"</string>
-		<escape>\</escape>
-	</highlighter>
-	<highlighter type="string">
-		<string>'</string>
-		<escape>\</escape>
-	</highlighter>
-	<highlighter type="hexnumber">
-		<prefix>0x</prefix>
-		<suffix>l</suffix>
-		<ignoreCase />
-	</highlighter>
-	<highlighter type="number">
-		<point>.</point>
-		<pointStarts />
-		<exponent>e</exponent>
-		<suffix>l</suffix>
-		<ignoreCase />
-	</highlighter>
-	<highlighter type="keywords">
-		<keyword>and</keyword>
-		<keyword>del</keyword>
-		<keyword>from</keyword>
-		<keyword>not</keyword>
-		<keyword>while</keyword>
-		<keyword>as</keyword>
-		<keyword>elif</keyword>
-		<keyword>global</keyword>
-		<keyword>or</keyword>
-		<keyword>with</keyword>
-		<keyword>assert</keyword>
-		<keyword>else</keyword>
-		<keyword>if</keyword>
-		<keyword>pass</keyword>
-		<keyword>yield</keyword>
-		<keyword>break</keyword>
-		<keyword>except</keyword>
-		<keyword>import</keyword>
-		<keyword>print</keyword>
-		<keyword>class</keyword>
-		<keyword>exec</keyword>
-		<keyword>in</keyword>
-		<keyword>raise</keyword>
-		<keyword>continue</keyword>
-		<keyword>finally</keyword>
-		<keyword>is</keyword>
-		<keyword>return</keyword>
-		<keyword>def</keyword>
-		<keyword>for</keyword>
-		<keyword>lambda</keyword>
-		<keyword>try</keyword>
-	</highlighter>
+    <highlighter type="annotation">
+        <!-- these are actually called decorators -->
+        <start>@</start>
+        <valueStart>(</valueStart>
+        <valueEnd>)</valueEnd>
+    </highlighter>
+    <highlighter type="oneline-comment">#</highlighter>
+    <highlighter type="string">
+        <string>"""</string>
+        <spanNewLines/>
+    </highlighter>
+    <highlighter type="string">
+        <string>'''</string>
+        <spanNewLines/>
+    </highlighter>
+    <highlighter type="string">
+        <string>"</string>
+        <escape>\</escape>
+    </highlighter>
+    <highlighter type="string">
+        <string>'</string>
+        <escape>\</escape>
+    </highlighter>
+    <highlighter type="hexnumber">
+        <prefix>0x</prefix>
+        <suffix>l</suffix>
+        <ignoreCase/>
+    </highlighter>
+    <highlighter type="number">
+        <point>.</point>
+        <pointStarts/>
+        <exponent>e</exponent>
+        <suffix>l</suffix>
+        <ignoreCase/>
+    </highlighter>
+    <highlighter type="keywords">
+        <keyword>and</keyword>
+        <keyword>del</keyword>
+        <keyword>from</keyword>
+        <keyword>not</keyword>
+        <keyword>while</keyword>
+        <keyword>as</keyword>
+        <keyword>elif</keyword>
+        <keyword>global</keyword>
+        <keyword>or</keyword>
+        <keyword>with</keyword>
+        <keyword>assert</keyword>
+        <keyword>else</keyword>
+        <keyword>if</keyword>
+        <keyword>pass</keyword>
+        <keyword>yield</keyword>
+        <keyword>break</keyword>
+        <keyword>except</keyword>
+        <keyword>import</keyword>
+        <keyword>print</keyword>
+        <keyword>class</keyword>
+        <keyword>exec</keyword>
+        <keyword>in</keyword>
+        <keyword>raise</keyword>
+        <keyword>continue</keyword>
+        <keyword>finally</keyword>
+        <keyword>is</keyword>
+        <keyword>return</keyword>
+        <keyword>def</keyword>
+        <keyword>for</keyword>
+        <keyword>lambda</keyword>
+        <keyword>try</keyword>
+    </highlighter>
 </highlighters>

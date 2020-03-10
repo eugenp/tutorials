@@ -15,13 +15,13 @@ public class TwitterService {
     private OAuth10aService service;
 
     @PostConstruct
-    private void init(){
+    private void init() {
         this.service = new ServiceBuilder(API_KEY)
                 .apiSecret(API_SECRET)
                 .build(TwitterApi.instance());
     }
 
-    public OAuth10aService getService(){
+    public OAuth10aService getService() {
         return service;
     }
 

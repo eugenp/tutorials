@@ -1,6 +1,7 @@
 package com.baeldung.concurrent.threadsafety.callables;
 
 import com.baeldung.concurrent.threadsafety.services.ReentrantReadWriteLockCounter;
+
 import java.util.concurrent.Callable;
 
 public class ReentranReadWriteLockCounterCallable implements Callable<Integer> {
@@ -10,7 +11,7 @@ public class ReentranReadWriteLockCounterCallable implements Callable<Integer> {
     public ReentranReadWriteLockCounterCallable(ReentrantReadWriteLockCounter counter) {
         this.counter = counter;
     }
-    
+
     @Override
     public Integer call() throws Exception {
         counter.incrementCounter();

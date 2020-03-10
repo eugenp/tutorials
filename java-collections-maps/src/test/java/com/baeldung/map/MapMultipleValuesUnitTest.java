@@ -55,7 +55,7 @@ public class MapMultipleValuesUnitTest {
         map.put("key1", "value1");
         map.put("key1", "value2");
         assertThat((Collection<String>) map.get("key1"))
-          .contains("value1", "value2");
+                .contains("value1", "value2");
     }
 
     @Test
@@ -65,16 +65,16 @@ public class MapMultipleValuesUnitTest {
         map.put("key1", "value2");
         map.put("key1", "value2");
         assertThat((Collection<String>) map.get("key1"))
-          .containsExactly("value1", "value2", "value2");
+                .containsExactly("value1", "value2", "value2");
     }
-    
+
     @Test
     public void givenHashSetValuedHashMap_whenPuttingTwiceTheSame_thenReturningOneValue() {
         MultiValuedMap<String, String> map = new HashSetValuedHashMap<>();
         map.put("key1", "value1");
         map.put("key1", "value1");
         assertThat((Collection<String>) map.get("key1"))
-          .containsExactly("value1");
+                .containsExactly("value1");
     }
 
     @Test(expected = UnsupportedOperationException.class)
@@ -83,19 +83,19 @@ public class MapMultipleValuesUnitTest {
         map.put("key1", "value1");
         map.put("key1", "value2");
         MultiValuedMap<String, String> immutableMap =
-          MultiMapUtils.unmodifiableMultiValuedMap(map);
+                MultiMapUtils.unmodifiableMultiValuedMap(map);
         immutableMap.put("key1", "value3");
     }
-    
+
     @Test
     public void givenArrayListMultiMap_whenInserting_thenCorrectOutput() {
         Multimap<String, String> map = ArrayListMultimap.create();
         map.put("key1", "value2");
         map.put("key1", "value1");
         assertThat((Collection<String>) map.get("key1"))
-          .containsExactly("value2", "value1");
-    }   
-    
+                .containsExactly("value2", "value1");
+    }
+
     @Test
     public void givenLinkedHashMultiMap_whenInserting_thenReturningValuesInInsertionOrder() {
         Multimap<String, String> map = LinkedHashMultimap.create();
@@ -103,7 +103,7 @@ public class MapMultipleValuesUnitTest {
         map.put("key1", "value1");
         map.put("key1", "value2");
         assertThat((Collection<String>) map.get("key1"))
-          .containsExactly("value3", "value1", "value2");
+                .containsExactly("value3", "value1", "value2");
     }
 
     @Test
@@ -113,7 +113,7 @@ public class MapMultipleValuesUnitTest {
         map.put("key1", "value1");
         map.put("key1", "value2");
         assertThat((Collection<String>) map.get("key1"))
-          .containsExactly("value1", "value2", "value3");
+                .containsExactly("value1", "value2", "value3");
     }
-    
+
 }

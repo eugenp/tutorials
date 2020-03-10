@@ -28,7 +28,7 @@ public class EmployeeDAO {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     private SimpleJdbcInsert simpleJdbcInsert;
-    
+
     private SimpleJdbcCall simpleJdbcCall;
 
     @Autowired
@@ -39,7 +39,7 @@ public class EmployeeDAO {
 
         namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
         simpleJdbcInsert = new SimpleJdbcInsert(dataSource).withTableName("EMPLOYEE");
-        
+
         // Commented as the database is H2, change the database and create procedure READ_EMPLOYEE before calling getEmployeeUsingSimpleJdbcCall 
         //simpleJdbcCall = new SimpleJdbcCall(dataSource).withProcedureName("READ_EMPLOYEE");
     }
@@ -68,7 +68,7 @@ public class EmployeeDAO {
 
     public Employee getEmployee(final int id) {
         final String query = "SELECT * FROM EMPLOYEE WHERE ID = ?";
-        return jdbcTemplate.queryForObject(query, new Object[] { id }, new EmployeeRowMapper());
+        return jdbcTemplate.queryForObject(query, new Object[]{id}, new EmployeeRowMapper());
     }
 
     public void addEmplyeeUsingExecuteMethod() {
@@ -115,7 +115,7 @@ public class EmployeeDAO {
         final int[] updateCounts = namedParameterJdbcTemplate.batchUpdate("INSERT INTO EMPLOYEE VALUES (:id, :firstName, :lastName, :address)", batch);
         return updateCounts;
     }
-    
+
     public Employee getEmployeeUsingSimpleJdbcCall(int id) {
         SqlParameterSource in = new MapSqlParameterSource().addValue("in_id", id);
         Map<String, Object> out = simpleJdbcCall.execute(in);

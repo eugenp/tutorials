@@ -30,8 +30,8 @@ public class Spf4jConfig {
             int lowerMagnitude = 0;
             int higherMagnitude = 4;
             int quantasPerMagnitude = 10;
-            INSTANCE = RecorderFactory.createScalableQuantizedRecorderSource(forWhat, unitOfMeasurement, 
-                sampleTimeMillis, factor, lowerMagnitude, higherMagnitude, quantasPerMagnitude);
+            INSTANCE = RecorderFactory.createScalableQuantizedRecorderSource(forWhat, unitOfMeasurement,
+                    sampleTimeMillis, factor, lowerMagnitude, higherMagnitude, quantasPerMagnitude);
         }
     }
 }

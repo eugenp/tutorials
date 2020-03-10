@@ -14,7 +14,7 @@ public class RegularExpressionsUnitTest {
             return false;
         }
         return pattern.matcher(strNum)
-            .matches();
+                .matches();
     }
 
     @Test

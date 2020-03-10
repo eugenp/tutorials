@@ -44,7 +44,7 @@ public class MockitoMockUnitTest {
         MyList listMock = mock(MyList.class, "myMock");
         when(listMock.add(anyString())).thenReturn(false);
         listMock.add(randomAlphabetic(6));
-        
+
         thrown.expect(TooLittleActualInvocations.class);
         thrown.expectMessage(containsString("myMock.add"));
 

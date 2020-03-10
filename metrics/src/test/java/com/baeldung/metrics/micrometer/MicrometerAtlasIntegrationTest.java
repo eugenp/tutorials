@@ -9,6 +9,7 @@ import static org.hamcrest.collection.IsMapContaining.hasEntry;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+
 import io.micrometer.atlas.AtlasMeterRegistry;
 import io.micrometer.core.instrument.Clock;
 import io.micrometer.core.instrument.Counter;
@@ -78,32 +79,32 @@ public class MicrometerAtlasIntegrationTest {
         compositeRegistry.gauge("baeldung.heat", 90);
 
         Optional<Gauge> oneGauge = oneSimpleMeter
-          .find("baeldung.heat")
-          .gauge();
+                .find("baeldung.heat")
+                .gauge();
         assertTrue(oneGauge.isPresent());
         Iterator<Measurement> measurements = oneGauge
-          .get()
-          .measure()
-          .iterator();
+                .get()
+                .measure()
+                .iterator();
 
         assertTrue(measurements.hasNext());
         assertThat(measurements
-          .next()
-          .getValue(), equalTo(90.00));
+                .next()
+                .getValue(), equalTo(90.00));
 
         Optional<Gauge> atlasGauge = atlasMeterRegistry
-          .find("baeldung.heat")
-          .gauge();
+                .find("baeldung.heat")
+                .gauge();
         assertTrue(atlasGauge.isPresent());
         Iterator<Measurement> anotherMeasurements = atlasGauge
-          .get()
-          .measure()
-          .iterator();
+                .get()
+                .measure()
+                .iterator();
 
         assertTrue(anotherMeasurements.hasNext());
         assertThat(anotherMeasurements
-          .next()
-          .getValue(), equalTo(90.00));
+                .next()
+                .getValue(), equalTo(90.00));
     }
 
     @Test
@@ -111,35 +112,35 @@ public class MicrometerAtlasIntegrationTest {
         class CountedObject {
             private CountedObject() {
                 Metrics
-                  .counter("objects.instance")
-                  .increment(1.0);
+                        .counter("objects.instance")
+                        .increment(1.0);
             }
         }
         Metrics.addRegistry(new SimpleMeterRegistry());
 
         Metrics
-          .counter("objects.instance")
-          .increment();
+                .counter("objects.instance")
+                .increment();
         new CountedObject();
 
         Optional<Counter> counterOptional = Metrics.globalRegistry
-          .find("objects.instance")
-          .counter();
+                .find("objects.instance")
+                .counter();
 
         assertTrue(counterOptional.isPresent());
         assertTrue(counterOptional
-          .get()
-          .count() == 2.0);
+                .get()
+                .count() == 2.0);
     }
 
     @Test
     public void givenCounter_whenIncrement_thenValueChanged() {
         SimpleMeterRegistry registry = new SimpleMeterRegistry();
         Counter counter = Counter
-          .builder("objects.instance")
-          .description("indicates instance count of the object")
-          .tags("dev", "performance")
-          .register(registry);
+                .builder("objects.instance")
+                .description("indicates instance count of the object")
+                .tags("dev", "performance")
+                .register(registry);
 
         counter.increment(2.0);
         assertTrue(counter.count() == 2);
@@ -162,7 +163,7 @@ public class MicrometerAtlasIntegrationTest {
         timer.record(30, TimeUnit.MILLISECONDS);
 
         assertTrue(2 == timer.count());
-        
+
         assertThat(timer.totalTime(TimeUnit.MILLISECONDS)).isBetween(40.0, 55.0);
     }
 
@@ -170,8 +171,8 @@ public class MicrometerAtlasIntegrationTest {
     public void givenLongTimer_whenRunTasks_thenTimerRecorded() {
         SimpleMeterRegistry registry = new SimpleMeterRegistry();
         LongTaskTimer longTaskTimer = LongTaskTimer
-          .builder("3rdPartyService")
-          .register(registry);
+                .builder("3rdPartyService")
+                .register(registry);
 
         long currentTaskId = longTaskTimer.start();
         try {
@@ -180,7 +181,7 @@ public class MicrometerAtlasIntegrationTest {
         }
         long timeElapsed = longTaskTimer.stop(currentTaskId);
 
-        assertEquals(2L, timeElapsed/((int) 1e6),1L);
+        assertEquals(2L, timeElapsed / ((int) 1e6), 1L);
     }
 
     @Test
@@ -188,8 +189,8 @@ public class MicrometerAtlasIntegrationTest {
         SimpleMeterRegistry registry = new SimpleMeterRegistry();
         List<String> list = new ArrayList<>(4);
         Gauge gauge = Gauge
-          .builder("cache.size", list, List::size)
-          .register(registry);
+                .builder("cache.size", list, List::size)
+                .register(registry);
 
         assertTrue(gauge.value() == 0.0);
 
@@ -201,9 +202,9 @@ public class MicrometerAtlasIntegrationTest {
     public void givenDistributionSummary_whenRecord_thenSummarized() {
         SimpleMeterRegistry registry = new SimpleMeterRegistry();
         DistributionSummary distributionSummary = DistributionSummary
-          .builder("request.size")
-          .baseUnit("bytes")
-          .register(registry);
+                .builder("request.size")
+                .baseUnit("bytes")
+                .register(registry);
         distributionSummary.record(3);
         distributionSummary.record(4);
         distributionSummary.record(5);
@@ -216,11 +217,11 @@ public class MicrometerAtlasIntegrationTest {
     public void givenTimer_whenEnrichWithQuantile_thenQuantilesComputed() {
         SimpleMeterRegistry registry = new SimpleMeterRegistry();
         Timer timer = Timer
-          .builder("test.timer")
-          .quantiles(WindowSketchQuantiles
-            .quantiles(0.3, 0.5, 0.95)
-            .create())
-          .register(registry);
+                .builder("test.timer")
+                .quantiles(WindowSketchQuantiles
+                        .quantiles(0.3, 0.5, 0.95)
+                        .create())
+                .register(registry);
 
         timer.record(2, TimeUnit.SECONDS);
         timer.record(2, TimeUnit.SECONDS);
@@ -235,30 +236,30 @@ public class MicrometerAtlasIntegrationTest {
 
     private Map<String, Integer> extractTagValueMap(MeterRegistry registry, Type meterType, double valueDivisor) {
         return registry
-          .getMeters()
-          .stream()
-          .filter(meter -> meter.getType() == meterType)
-          .collect(Collectors.toMap(meter -> {
-              Tag tag = meter
-                .getId()
-                .getTags()
-                .iterator()
-                .next();
-              return tag.getKey() + "=" + tag.getValue();
-          }, meter -> (int) (meter
-            .measure()
-            .iterator()
-            .next()
-            .getValue() / valueDivisor)));
+                .getMeters()
+                .stream()
+                .filter(meter -> meter.getType() == meterType)
+                .collect(Collectors.toMap(meter -> {
+                    Tag tag = meter
+                            .getId()
+                            .getTags()
+                            .iterator()
+                            .next();
+                    return tag.getKey() + "=" + tag.getValue();
+                }, meter -> (int) (meter
+                        .measure()
+                        .iterator()
+                        .next()
+                        .getValue() / valueDivisor)));
     }
 
     @Test
     public void givenDistributionSummary_whenEnrichWithHistograms_thenDataAggregated() {
         SimpleMeterRegistry registry = new SimpleMeterRegistry();
         DistributionSummary hist = DistributionSummary
-          .builder("summary")
-          .histogram(Histogram.linear(0, 10, 5))
-          .register(registry);
+                .builder("summary")
+                .histogram(Histogram.linear(0, 10, 5))
+                .register(registry);
 
         hist.record(3);
         hist.record(8);
@@ -276,9 +277,9 @@ public class MicrometerAtlasIntegrationTest {
     public void givenTimer_whenEnrichWithTimescaleHistogram_thenTimeScaleDataCollected() {
         SimpleMeterRegistry registry = new SimpleMeterRegistry();
         Timer timer = Timer
-          .builder("timer")
-          .histogram(Histogram.linearTime(TimeUnit.MILLISECONDS, 0, 200, 3))
-          .register(registry);
+                .builder("timer")
+                .histogram(Histogram.linearTime(TimeUnit.MILLISECONDS, 0, 200, 3))
+                .register(registry);
 
         timer.record(1000, TimeUnit.MILLISECONDS);
         timer.record(23, TimeUnit.MILLISECONDS);

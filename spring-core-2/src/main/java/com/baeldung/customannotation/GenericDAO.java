@@ -23,7 +23,9 @@ public class GenericDAO<E> {
         return Optional.empty();
     }
 
-    /** Only used for unit-testing. */
+    /**
+     * Only used for unit-testing.
+     */
     public final String getMessage() {
         return message;
     }

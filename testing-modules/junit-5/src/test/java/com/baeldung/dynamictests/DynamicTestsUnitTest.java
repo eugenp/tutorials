@@ -33,14 +33,14 @@ public class DynamicTestsUnitTest {
     @TestFactory
     Iterator<DynamicTest> dynamicTestsWithIterator() {
         return Arrays.asList(DynamicTest.dynamicTest("Add test", () -> assertEquals(2, Math.addExact(1, 1))), DynamicTest.dynamicTest("Multiply Test", () -> assertEquals(4, Math.multiplyExact(2, 2))))
-            .iterator();
+                .iterator();
     }
 
     @TestFactory
     Stream<DynamicTest> dynamicTestsFromIntStream() {
         return IntStream.iterate(0, n -> n + 2)
-            .limit(10)
-            .mapToObj(n -> DynamicTest.dynamicTest("test" + n, () -> assertTrue(n % 2 == 0)));
+                .limit(10)
+                .mapToObj(n -> DynamicTest.dynamicTest("test" + n, () -> assertTrue(n % 2 == 0)));
     }
 
     @TestFactory
@@ -76,10 +76,10 @@ public class DynamicTestsUnitTest {
         List<String> outputList = Arrays.asList("154.174.10.56", "211.152.104.132", "178.144.120.156");
 
         return inputList.stream()
-            .map(dom -> DynamicTest.dynamicTest("Resolving: " + dom, () -> {
-                int id = inputList.indexOf(dom);
-                assertEquals(outputList.get(id), resolver.resolveDomain(dom));
-            }));
+                .map(dom -> DynamicTest.dynamicTest("Resolving: " + dom, () -> {
+                    int id = inputList.indexOf(dom);
+                    assertEquals(outputList.get(id), resolver.resolveDomain(dom));
+                }));
 
     }
 
@@ -89,19 +89,19 @@ public class DynamicTestsUnitTest {
 
         EmployeeDao dao = new EmployeeDao();
         Stream<DynamicTest> saveEmployeeStream = inputList.stream()
-            .map(emp -> DynamicTest.dynamicTest("saveEmployee: " + emp.toString(), () -> {
-                Employee returned = dao.save(emp.getId());
-                assertEquals(returned.getId(), emp.getId());
-            }));
+                .map(emp -> DynamicTest.dynamicTest("saveEmployee: " + emp.toString(), () -> {
+                    Employee returned = dao.save(emp.getId());
+                    assertEquals(returned.getId(), emp.getId());
+                }));
 
         Stream<DynamicTest> saveEmployeeWithFirstNameStream = inputList.stream()
-            .filter(emp -> !emp.getFirstName()
-                .isEmpty())
-            .map(emp -> DynamicTest.dynamicTest("saveEmployeeWithName" + emp.toString(), () -> {
-                Employee returned = dao.save(emp.getId(), emp.getFirstName());
-                assertEquals(returned.getId(), emp.getId());
-                assertEquals(returned.getFirstName(), emp.getFirstName());
-            }));
+                .filter(emp -> !emp.getFirstName()
+                        .isEmpty())
+                .map(emp -> DynamicTest.dynamicTest("saveEmployeeWithName" + emp.toString(), () -> {
+                    Employee returned = dao.save(emp.getId(), emp.getFirstName());
+                    assertEquals(returned.getId(), emp.getId());
+                    assertEquals(returned.getFirstName(), emp.getFirstName());
+                }));
 
         return Stream.concat(saveEmployeeStream, saveEmployeeWithFirstNameStream);
     }

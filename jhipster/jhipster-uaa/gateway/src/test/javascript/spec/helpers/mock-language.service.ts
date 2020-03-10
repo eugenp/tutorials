@@ -1,6 +1,6 @@
-import { SpyObject } from './spyobject';
-import { JhiLanguageService } from 'ng-jhipster';
-import { JhiLanguageHelper } from 'app/core/language/language.helper';
+import {SpyObject} from './spyobject';
+import {JhiLanguageService} from 'ng-jhipster';
+import {JhiLanguageHelper} from 'app/core/language/language.helper';
 import Spy = jasmine.Spy;
 
 export class MockLanguageService extends SpyObject {
@@ -14,15 +14,20 @@ export class MockLanguageService extends SpyObject {
         this.getCurrentSpy = this.spy('getCurrent').andReturn(Promise.resolve(this.fakeResponse));
     }
 
-    init() {}
+    init() {
+    }
 
-    changeLanguage(languageKey: string) {}
+    changeLanguage(languageKey: string) {
+    }
 
-    setLocations(locations: string[]) {}
+    setLocations(locations: string[]) {
+    }
 
-    addLocation(location: string) {}
+    addLocation(location: string) {
+    }
 
-    reload() {}
+    reload() {
+    }
 }
 
 export class MockLanguageHelper extends SpyObject {

@@ -18,7 +18,7 @@ import com.baeldung.properties.parentchild.config.ParentConfig2;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextHierarchy({ @ContextConfiguration(classes = ParentConfig2.class), @ContextConfiguration(classes = ChildConfig2.class) })
+@ContextHierarchy({@ContextConfiguration(classes = ParentConfig2.class), @ContextConfiguration(classes = ChildConfig2.class)})
 public class ParentChildPropertyPlaceHolderPropertiesIntegrationTest {
 
     @Autowired

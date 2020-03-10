@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { MockBackend } from '@angular/http/testing';
-import { Http, BaseRequestOptions } from '@angular/http';
-import { JhiLanguageService } from 'ng-jhipster';
-import { MockLanguageService } from './helpers/mock-language.service';
+import {NgModule} from '@angular/core';
+import {MockBackend} from '@angular/http/testing';
+import {Http, BaseRequestOptions} from '@angular/http';
+import {JhiLanguageService} from 'ng-jhipster';
+import {MockLanguageService} from './helpers/mock-language.service';
 
 @NgModule({
     providers: [
@@ -21,4 +21,5 @@ import { MockLanguageService } from './helpers/mock-language.service';
         }
     ]
 })
-export class BaeldungTestModule {}
+export class BaeldungTestModule {
+}

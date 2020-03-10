@@ -11,12 +11,12 @@ public class WebClientApplication {
     public static void main(String[] args) {
         SpringApplication.run(WebClientApplication.class, args);
     }
-    
+
     @Bean
     public SecurityWebFilterChain functionalValidationsSpringSecurityFilterChain(ServerHttpSecurity http) {
         http.authorizeExchange()
-            .anyExchange()
-            .permitAll();
+                .anyExchange()
+                .permitAll();
         http.csrf().disable();
         return http.build();
     }

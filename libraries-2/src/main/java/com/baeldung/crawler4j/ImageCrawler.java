@@ -26,8 +26,8 @@ public class ImageCrawler extends WebCrawler {
             return false;
         }
 
-        if (IMG_PATTERNS.matcher(urlString).matches() 
-            || urlString.startsWith("https://www.baeldung.com/")) {
+        if (IMG_PATTERNS.matcher(urlString).matches()
+                || urlString.startsWith("https://www.baeldung.com/")) {
             return true;
         }
 
@@ -37,8 +37,8 @@ public class ImageCrawler extends WebCrawler {
     @Override
     public void visit(Page page) {
         String url = page.getWebURL().getURL();
-        if (IMG_PATTERNS.matcher(url).matches() 
-            && page.getParseData() instanceof BinaryParseData) {
+        if (IMG_PATTERNS.matcher(url).matches()
+                && page.getParseData() instanceof BinaryParseData) {
             String extension = url.substring(url.lastIndexOf("."));
             int contentLength = page.getContentData().length;
 

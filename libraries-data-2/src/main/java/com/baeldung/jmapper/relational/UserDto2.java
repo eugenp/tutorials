@@ -2,12 +2,12 @@ package com.baeldung.jmapper.relational;
 
 
 public class UserDto2 {
-    
+
     private long id;
     private String email;
-    
+
     // constructors
-    
+
     public UserDto2() {
         super();
     }
@@ -18,8 +18,8 @@ public class UserDto2 {
         this.email = email;
     }
 
-   // getters and setters
-    
+    // getters and setters
+
     public long getId() {
         return id;
     }
@@ -40,5 +40,5 @@ public class UserDto2 {
     public String toString() {
         return "UserDto2 [id=" + id + ", email=" + email + "]";
     }
-    
+
 }

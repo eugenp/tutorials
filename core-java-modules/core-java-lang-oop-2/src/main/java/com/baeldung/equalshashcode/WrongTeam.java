@@ -1,11 +1,11 @@
 package com.baeldung.equalshashcode;
 
 /* (non-Javadoc)
-* This class overrides equals, but it doesn't override hashCode.
-*
-* To see which problems this leads to:
-* TeamUnitTest.givenMapKeyWithoutHashCode_whenSearched_thenReturnsWrongValue
-*/
+ * This class overrides equals, but it doesn't override hashCode.
+ *
+ * To see which problems this leads to:
+ * TeamUnitTest.givenMapKeyWithoutHashCode_whenSearched_thenReturnsWrongValue
+ */
 class WrongTeam {
 
     String city;
@@ -22,9 +22,9 @@ class WrongTeam {
             return true;
         if (!(o instanceof WrongTeam))
             return false;
-        WrongTeam otherTeam = (WrongTeam)o;
+        WrongTeam otherTeam = (WrongTeam) o;
         return this.city == otherTeam.city
-          && this.department == otherTeam.department;
+                && this.department == otherTeam.department;
     }
 
 }

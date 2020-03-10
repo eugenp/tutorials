@@ -1,7 +1,7 @@
 package com.baeldung.inheritancecomposition.model;
 
 public class StandardMemory implements Memory {
-    
+
     private String brand;
     private String size;
 
@@ -13,7 +13,7 @@ public class StandardMemory implements Memory {
     public String getBrand() {
         return brand;
     }
-    
+
     public String getSize() {
         return size;
     }

@@ -10,14 +10,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 privileged aspect BookRepositoryCustom_Roo_Jpa_Repository_Custom {
-    
+
     /**
      * TODO Auto-generated method documentation
-     * 
+     *
      * @param globalSearch
      * @param pageable
      * @return Page
      */
     public abstract Page<Book> BookRepositoryCustom.findAll(GlobalSearch globalSearch, Pageable pageable);
-    
+
 }

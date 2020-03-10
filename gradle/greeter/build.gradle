@@ -1,6 +1,5 @@
-apply plugin : 'java'
-apply plugin : 'application'
-
+apply plugin: 'java'
+apply plugin: 'application'
 
 
 dependencies {
@@ -12,7 +11,6 @@ mainClassName = 'greeter.Greeter'
 run {
     if (project.hasProperty("appArgs")) {
         args Eval.me(appArgs)
-    }
-    else
+    } else
         args = ["Baeldung"];
 }

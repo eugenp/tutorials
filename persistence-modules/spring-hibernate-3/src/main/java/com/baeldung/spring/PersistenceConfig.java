@@ -21,8 +21,8 @@ import com.google.common.base.Preconditions;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-h2.properties" })
-@ComponentScan({ "com.baeldung.persistence.dao", "com.baeldung.persistence.service" })
+@PropertySource({"classpath:persistence-h2.properties"})
+@ComponentScan({"com.baeldung.persistence.dao", "com.baeldung.persistence.service"})
 public class PersistenceConfig {
 
     @Autowired
@@ -36,7 +36,7 @@ public class PersistenceConfig {
     public AnnotationSessionFactoryBean sessionFactory() {
         final AnnotationSessionFactoryBean sessionFactory = new AnnotationSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+        sessionFactory.setPackagesToScan(new String[]{"com.baeldung.persistence.model"});
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;

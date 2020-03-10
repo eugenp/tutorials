@@ -52,7 +52,7 @@ public class ListFactoryMethodsUnitTest {
 
     @Test
     public void ifListSizeIsOne_thenSuccess() {
-        int[] arr = { 1, 2, 3, 4 };
+        int[] arr = {1, 2, 3, 4};
         List<int[]> list = List.of(arr);
         assertEquals(1, list.size());
         assertArrayEquals(arr, list.get(0));

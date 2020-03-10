@@ -19,7 +19,7 @@ public class Book extends Item {
     private Date published;
     private BigDecimal pages;
 
-    public Book(){
+    public Book() {
         super();
     }
 

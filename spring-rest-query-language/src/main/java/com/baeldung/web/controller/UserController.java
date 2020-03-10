@@ -78,7 +78,7 @@ public class UserController {
     public List<User> findAllBySpecification(@RequestParam(value = "search") String search) {
         UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
         String operationSetExper = Joiner.on("|")
-            .join(SearchOperation.SIMPLE_OPERATION_SET);
+                .join(SearchOperation.SIMPLE_OPERATION_SET);
         Pattern pattern = Pattern.compile("(\\w+?)(" + operationSetExper + ")(\\p{Punct}?)(\\w+?)(\\p{Punct}?),");
         Matcher matcher = pattern.matcher(search + ",");
         while (matcher.find()) {
@@ -113,7 +113,7 @@ public class UserController {
 
         UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
         String operationSetExper = Joiner.on("|")
-            .join(SearchOperation.SIMPLE_OPERATION_SET);
+                .join(SearchOperation.SIMPLE_OPERATION_SET);
         Pattern pattern = Pattern.compile("(\\p{Punct}?)(\\w+?)(" + operationSetExper + ")(\\p{Punct}?)(\\w+?)(\\p{Punct}?),");
         Matcher matcher = pattern.matcher(searchParameters + ",");
         while (matcher.find()) {

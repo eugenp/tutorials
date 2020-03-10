@@ -19,14 +19,15 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class)
 public class RatingRetrieverUnitTest {
-    
-    @Configuration 
+
+    @Configuration
     @ComponentScan(basePackages = {"com.baeldung.order"})
-    static class ContextConfiguration {} 
-    
+    static class ContextConfiguration {
+    }
+
     @Autowired
     private List<Rating> ratings;
-    
+
     @Test
     public void givenOrderOnComponents_whenInjected_thenAutowireByOrderValue() {
         assertThat(ratings.get(0).getRating(), is(equalTo(1)));

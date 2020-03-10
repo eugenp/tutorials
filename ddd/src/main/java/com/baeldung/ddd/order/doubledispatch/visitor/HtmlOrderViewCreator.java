@@ -4,9 +4,9 @@ import com.baeldung.ddd.order.doubledispatch.Order;
 import com.baeldung.ddd.order.doubledispatch.SpecialOrder;
 
 public class HtmlOrderViewCreator implements OrderVisitor {
-    
+
     private String html;
-    
+
     public String getHtml() {
         return html;
     }

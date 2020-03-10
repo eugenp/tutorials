@@ -27,7 +27,7 @@ import com.baeldung.mvc.velocity.test.config.TestConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 // @ContextConfiguration(locations = {"classpath:mvc-servlet.xml"})
-@ContextConfiguration(classes = { TestConfig.class, WebConfig.class })
+@ContextConfiguration(classes = {TestConfig.class, WebConfig.class})
 @WebAppConfiguration
 public class DataContentControllerIntegrationTest {
 

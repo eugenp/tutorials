@@ -13,7 +13,7 @@ public class RenameUnitTest {
     @Test
     public void whenSerializing_thenFieldsGetRenamed() {
         Moshi moshi = new Moshi.Builder()
-          .build();
+                .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
         Post post = new Post("My Post", "Baeldung");
@@ -24,13 +24,14 @@ public class RenameUnitTest {
     @Test
     public void whenSerializing_thenRenamedFieldsGetConsumed() throws IOException {
         Moshi moshi = new Moshi.Builder()
-          .build();
+                .build();
         JsonAdapter<Post> jsonAdapter = moshi.adapter(Post.class);
 
         String json = "{\"authored_by\":\"Baeldung\",\"title\":\"My Post\"}";
         Post post = jsonAdapter.fromJson(json);
         System.out.println(post);
     }
+
     public static class Post {
         private String title;
         @Json(name = "authored_by")

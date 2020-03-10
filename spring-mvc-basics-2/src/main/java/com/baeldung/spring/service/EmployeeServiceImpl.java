@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class EmployeeServiceImpl implements  EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> getEmployeeList() {

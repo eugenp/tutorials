@@ -15,7 +15,7 @@ import static org.mockito.Mockito.when;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({ LocalDateTime.class })
+@PrepareForTest({LocalDateTime.class})
 public class LocalDateTimeUnitTest {
 
     @Test

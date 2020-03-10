@@ -51,9 +51,9 @@ public abstract class AbstractLiveTest<T extends Serializable> {
 
         final String resourceAsString = marshaller.encode(resource);
         return RestAssured.given()
-            .contentType(marshaller.getMime())
-            .body(resourceAsString)
-            .post(getURL());
+                .contentType(marshaller.getMime())
+                .body(resourceAsString)
+                .post(getURL());
     }
 
     //

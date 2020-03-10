@@ -12,43 +12,45 @@ import java.util.logging.Logger;
 @Table(name = "posts")
 public class Post {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private int id;
-  
-  @NotNull @Size(min = 10)
-  @Column(columnDefinition = "longtext")
-  private String post;
-  
-  @NotNull @Size(min = 5, max = 100)
-  @Column(unique = true)
-  private String title;
-  
-  @NotNull
-  @ManyToOne(targetEntity = User.class, optional = false)
-  private User author;
-  
-  @Column(name = "created_at")
-  private Date createdAt;
-  
-  @Column(name = "updated_at")
-  private Date updatedAt;
-  
-  @Transient
-  private Logger logger = Logger.getLogger(getClass().getName());
-  
-  public Post() {
-    createdAt = new Date();
-    updatedAt = new Date();
-  }
-  
-  public Post(String title, String post, User author) {
-    this.title = title;
-    this.post = post;
-    this.author = author;
-    createdAt = new Date();
-    updatedAt = new Date();
-  }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @NotNull
+    @Size(min = 10)
+    @Column(columnDefinition = "longtext")
+    private String post;
+
+    @NotNull
+    @Size(min = 5, max = 100)
+    @Column(unique = true)
+    private String title;
+
+    @NotNull
+    @ManyToOne(targetEntity = User.class, optional = false)
+    private User author;
+
+    @Column(name = "created_at")
+    private Date createdAt;
+
+    @Column(name = "updated_at")
+    private Date updatedAt;
+
+    @Transient
+    private Logger logger = Logger.getLogger(getClass().getName());
+
+    public Post() {
+        createdAt = new Date();
+        updatedAt = new Date();
+    }
+
+    public Post(String title, String post, User author) {
+        this.title = title;
+        this.post = post;
+        this.author = author;
+        createdAt = new Date();
+        updatedAt = new Date();
+    }
 
     public int getId() {
         return id;
@@ -99,7 +101,7 @@ public class Post {
         return "title: " + this.title
                 + "\npost: " + this.post
                 + "\nauthor: " + this.author
-                +"\ncreatetdAt: " + this.createdAt
+                + "\ncreatetdAt: " + this.createdAt
                 + "\nupdatedAt: " + this.updatedAt;
     }
 }

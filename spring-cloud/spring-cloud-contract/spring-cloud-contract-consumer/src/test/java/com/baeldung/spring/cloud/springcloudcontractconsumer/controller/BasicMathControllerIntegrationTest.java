@@ -30,16 +30,16 @@ public class BasicMathControllerIntegrationTest {
     @Test
     public void given_WhenPassEvenNumberInQueryParam_ThenReturnEven() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/calculate?number=2")
-          .contentType(MediaType.APPLICATION_JSON))
-          .andExpect(status().isOk())
-          .andExpect(content().string("Even"));
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Even"));
     }
 
     @Test
     public void given_WhenPassOddNumberInQueryParam_ThenReturnOdd() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/calculate?number=1")
-          .contentType(MediaType.APPLICATION_JSON))
-          .andExpect(status().isOk())
-          .andExpect(content().string("Odd"));
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Odd"));
     }
 }

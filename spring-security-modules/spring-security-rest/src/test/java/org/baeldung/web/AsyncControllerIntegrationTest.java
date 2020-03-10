@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { ClientWebConfig.class, SecurityJavaConfig.class, WebConfig.class })
+@ContextConfiguration(classes = {ClientWebConfig.class, SecurityJavaConfig.class, WebConfig.class})
 public class AsyncControllerIntegrationTest {
 
     @Autowired

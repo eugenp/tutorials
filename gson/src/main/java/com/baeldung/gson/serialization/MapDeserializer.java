@@ -15,14 +15,14 @@ public class MapDeserializer implements JsonDeserializer<Map<String, Object>> {
     public Map<String, Object> deserialize(JsonElement elem, Type type, JsonDeserializationContext context) throws JsonParseException {
 
         return elem.getAsJsonObject()
-          .entrySet()
-          .stream()
-          .collect(Collectors.toMap(
-            Map.Entry::getKey,
-            e -> e.getValue().isJsonPrimitive() ?
-              toPrimitive(e.getValue().getAsJsonPrimitive(), context)
-              : context.deserialize(e.getValue(), Employee.class)
-          ));
+                .entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        e -> e.getValue().isJsonPrimitive() ?
+                                toPrimitive(e.getValue().getAsJsonPrimitive(), context)
+                                : context.deserialize(e.getValue(), Employee.class)
+                ));
     }
 
     private Object toPrimitive(JsonPrimitive jsonValue, JsonDeserializationContext context) {

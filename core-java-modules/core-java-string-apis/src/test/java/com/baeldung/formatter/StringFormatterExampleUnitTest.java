@@ -32,9 +32,9 @@ public class StringFormatterExampleUnitTest {
         s = String.format("The correct answer is %B", true);
         assertEquals("The correct answer is TRUE", s);
     }
-    
+
     @Test
-    public void givenString_whenCharConversion_thenConvertedString() {        
+    public void givenString_whenCharConversion_thenConvertedString() {
         //Character Conversions
         String s = String.format("The correct answer is %c", 'a');
         assertEquals("The correct answer is a", s);
@@ -44,19 +44,19 @@ public class StringFormatterExampleUnitTest {
 
         s = String.format("The correct answer is %C", 'b');
         assertEquals("The correct answer is B", s);
-        
+
         s = String.format("The valid unicode character: %c", 0x0400);
         assertTrue(Character.isValidCodePoint(0x0400));
         assertEquals("The valid unicode character: Ѐ", s);
     }
-    
+
     @Test(expected = java.util.IllegalFormatCodePointException.class)
-    public void givenString_whenIllegalCodePointForConversion_thenError() {        
+    public void givenString_whenIllegalCodePointForConversion_thenError() {
         String s = String.format("The valid unicode character: %c", 0x11FFFF);
         assertFalse(Character.isValidCodePoint(0x11FFFF));
         assertEquals("The valid unicode character: Ā", s);
     }
-    
+
     @Test
     public void givenString_whenNumericIntegralConversion_thenConvertedString() {
         //Numeric Integral Conversions
@@ -69,9 +69,9 @@ public class StringFormatterExampleUnitTest {
         s = String.format("The number 25 in hexadecimal = %x", 25);
         assertEquals("The number 25 in hexadecimal = 19", s);
     }
-    
+
     @Test
-    public void givenString_whenNumericFloatingConversion_thenConvertedString() {        
+    public void givenString_whenNumericFloatingConversion_thenConvertedString() {
         //Numeric Floating-point Conversions
         String s = String.format("The computerized scientific format of 10000.00 "
                 + "= %e", 10000.00);
@@ -80,9 +80,9 @@ public class StringFormatterExampleUnitTest {
         s = String.format("The decimal format of 10.019 = %f", 10.019);
         assertEquals("The decimal format of 10.019 = 10.019000", s);
     }
-    
+
     @Test
-    public void givenString_whenLineSeparatorConversion_thenConvertedString() {        
+    public void givenString_whenLineSeparatorConversion_thenConvertedString() {
         //Line Separator Conversion
         String s = String.format("First Line %nSecond Line");
         assertEquals("First Line " + System.getProperty("line.separator")
@@ -117,7 +117,7 @@ public class StringFormatterExampleUnitTest {
         //Argument_Index
         String s = String.format("The date is: %tm %1$te,%1$tY", c);
         assertEquals("The date is: 12 10,2017", s);
-       
+
         s = String.format("The date is: %tm %<te,%<tY", c);
         assertEquals("The date is: 12 10,2017", s);
     }
@@ -130,7 +130,7 @@ public class StringFormatterExampleUnitTest {
         formatter.format("I am writting to a %s Instance.", sb.getClass());
         assertEquals("I am writting to a class java.lang.StringBuilder Instance.", sb.toString());
     }
-    
+
     @Test
     public void givenString_whenNoArguments_thenExpected() {
         //Using String Formatter without arguments

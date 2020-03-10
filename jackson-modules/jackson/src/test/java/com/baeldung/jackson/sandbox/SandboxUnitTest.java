@@ -18,9 +18,9 @@ public class SandboxUnitTest {
         testElement.setY("adasd");
         final ObjectMapper om = new ObjectMapper();
         om.setVisibility(om.getSerializationConfig()
-            .getDefaultVisibilityChecker()
-            .withFieldVisibility(JsonAutoDetect.Visibility.ANY)
-            .withGetterVisibility(JsonAutoDetect.Visibility.NONE));
+                .getDefaultVisibilityChecker()
+                .withFieldVisibility(JsonAutoDetect.Visibility.ANY)
+                .withGetterVisibility(JsonAutoDetect.Visibility.NONE));
 
         final String serialized = om.writeValueAsString(testElement);
         System.err.println(serialized);

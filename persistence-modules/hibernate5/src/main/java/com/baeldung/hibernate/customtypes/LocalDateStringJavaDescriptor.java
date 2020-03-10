@@ -43,7 +43,7 @@ public class LocalDateStringJavaDescriptor extends AbstractTypeDescriptor<LocalD
         if (value == null)
             return null;
 
-        if(String.class.isInstance(value))
+        if (String.class.isInstance(value))
             return LocalDate.from(LocalDateType.FORMATTER.parse((CharSequence) value));
 
         throw unknownWrap(value.getClass());

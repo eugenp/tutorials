@@ -7,15 +7,15 @@ public class Radiator {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Radiator.class);
 
-    public void on(){
+    public void on() {
         LOGGER.info("Radiator switched on!");
     }
 
-    public void off(){
+    public void off() {
         LOGGER.info("Radiator switched off!");
     }
 
-    public void setSpeed(Integer speed){
-        LOGGER.info("Setting radiator speed to {}",speed);
+    public void setSpeed(Integer speed) {
+        LOGGER.info("Setting radiator speed to {}", speed);
     }
 }

@@ -22,7 +22,7 @@ public class AggregateFunctionsIntegrationTest {
     @BeforeClass
     public static final void setup() throws HibernateException, IOException {
         session = HibernateUtil.getSessionFactory()
-            .openSession();
+                .openSession();
         transaction = session.beginTransaction();
 
         Student jonas = new Student("Jonas", 22);
@@ -53,35 +53,35 @@ public class AggregateFunctionsIntegrationTest {
     @Test
     public void whenMaxAge_ThenReturnValue() {
         int maxAge = (int) session.createQuery("SELECT MAX(age) from Student")
-            .getSingleResult();
+                .getSingleResult();
         assertThat(maxAge).isEqualTo(25);
     }
 
     @Test
     public void whenMinAge_ThenReturnValue() {
         int minAge = (int) session.createQuery("SELECT MIN(age) from Student")
-            .getSingleResult();
+                .getSingleResult();
         assertThat(minAge).isEqualTo(20);
     }
 
     @Test
     public void whenAverageAge_ThenReturnValue() {
         Double avgAge = (Double) session.createQuery("SELECT AVG(age) from Student")
-            .getSingleResult();
+                .getSingleResult();
         assertThat(avgAge).isEqualTo(22.2);
     }
 
     @Test
     public void whenCountAll_ThenReturnValue() {
         Long totalStudents = (Long) session.createQuery("SELECT COUNT(*) from Student")
-            .getSingleResult();
+                .getSingleResult();
         assertThat(totalStudents).isEqualTo(5);
     }
 
     @Test
     public void whenSumOfAllAges_ThenReturnValue() {
         Long sumOfAllAges = (Long) session.createQuery("SELECT SUM(age) from Student")
-            .getSingleResult();
+                .getSingleResult();
         assertThat(sumOfAllAges).isEqualTo(111);
     }
 }

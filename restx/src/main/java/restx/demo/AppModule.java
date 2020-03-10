@@ -10,6 +10,7 @@ import com.google.common.collect.ImmutableSet;
 import restx.security.*;
 import restx.factory.Module;
 import restx.factory.Provides;
+
 import javax.inject.Named;
 
 import java.nio.file.Paths;
@@ -18,7 +19,7 @@ import java.nio.file.Paths;
 public class AppModule {
     @Provides
     public SignatureKey signatureKey() {
-         return new SignatureKey("restx-demo -447494532235718370 restx-demo 801c9eaf-4116-48f2-906b-e979fba72757".getBytes(Charsets.UTF_8));
+        return new SignatureKey("restx-demo -447494532235718370 restx-demo 801c9eaf-4116-48f2-906b-e979fba72757".getBytes(Charsets.UTF_8));
     }
 
     @Provides

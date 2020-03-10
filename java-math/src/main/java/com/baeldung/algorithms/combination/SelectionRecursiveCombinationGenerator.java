@@ -9,8 +9,9 @@ public class SelectionRecursiveCombinationGenerator {
     private static final int N = 6;
     private static final int R = 3;
 
-    /** 
+    /**
      * Generate all combinations of r elements from a set
+     *
      * @param n - number of elements in input set
      * @param r - number of elements to be chosen
      * @return the list containing all combinations
@@ -21,13 +22,14 @@ public class SelectionRecursiveCombinationGenerator {
         return combinations;
     }
 
-    /** 
+    /**
      * Choose elements from set by recursing over elements selected
+     *
      * @param combinations - List to store generated combinations
-     * @param data - current combination
-     * @param start - starting element of remaining set
-     * @param end - last element of remaining set
-     * @param index - number of elements chosen so far.
+     * @param data         - current combination
+     * @param start        - starting element of remaining set
+     * @param end          - last element of remaining set
+     * @param index        - number of elements chosen so far.
      */
     private void helper(List<int[]> combinations, int data[], int start, int end, int index) {
         if (index == data.length) {

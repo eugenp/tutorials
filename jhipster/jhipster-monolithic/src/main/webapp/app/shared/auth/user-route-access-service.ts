@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {CanActivate, Router, ActivatedRouteSnapshot} from '@angular/router';
 
-import { AuthService } from '../';
+import {AuthService} from '../';
 
 @Injectable()
 export class UserRouteAccessService implements CanActivate {
@@ -10,6 +10,6 @@ export class UserRouteAccessService implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot): boolean | Promise<boolean> {
-        return this.auth.authorize(false).then( canActivate => canActivate);
+        return this.auth.authorize(false).then(canActivate => canActivate);
     }
 }

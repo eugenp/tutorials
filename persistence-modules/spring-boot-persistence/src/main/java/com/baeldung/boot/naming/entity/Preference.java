@@ -7,10 +7,12 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Preference {
 
-    @Id private Long id;
+    @Id
+    private Long id;
 
     private String name;
 
-    @ManyToOne private Account account;
+    @ManyToOne
+    private Account account;
 
 }

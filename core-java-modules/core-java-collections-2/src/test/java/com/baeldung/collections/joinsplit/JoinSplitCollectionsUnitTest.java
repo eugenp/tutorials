@@ -13,11 +13,11 @@ public class JoinSplitCollectionsUnitTest {
 
     @Test
     public void whenJoiningTwoArrays_thenJoined() {
-        String[] animals1 = new String[] { "Dog", "Cat" };
-        String[] animals2 = new String[] { "Bird", "Cow" };
+        String[] animals1 = new String[]{"Dog", "Cat"};
+        String[] animals2 = new String[]{"Bird", "Cow"};
         String[] result = Stream.concat(Arrays.stream(animals1), Arrays.stream(animals2)).toArray(String[]::new);
 
-        assertArrayEquals(result, new String[] { "Dog", "Cat", "Bird", "Cow" });
+        assertArrayEquals(result, new String[]{"Dog", "Cat", "Bird", "Cow"});
     }
 
     @Test
@@ -40,7 +40,7 @@ public class JoinSplitCollectionsUnitTest {
 
     @Test
     public void whenConvertArrayToString_thenConverted() {
-        String[] animals = new String[] { "Dog", "Cat", "Bird", "Cow" };
+        String[] animals = new String[]{"Dog", "Cat", "Bird", "Cow"};
         String result = Arrays.stream(animals).collect(Collectors.joining(", "));
 
         assertEquals(result, "Dog, Cat, Bird, Cow");
@@ -108,7 +108,7 @@ public class JoinSplitCollectionsUnitTest {
 
     @Test
     public void whenSplitArrayByWordLength_thenConverted() {
-        String[] animals = new String[] { "Dog", "Cat", "Bird", "Cow", "Pig", "Moose" };
+        String[] animals = new String[]{"Dog", "Cat", "Bird", "Cow", "Pig", "Moose"};
         Map<Integer, List<String>> result = Arrays.stream(animals).collect(Collectors.groupingBy(String::length));
 
         assertTrue(result.get(3).equals(Arrays.asList("Dog", "Cat", "Cow", "Pig")));
@@ -121,7 +121,7 @@ public class JoinSplitCollectionsUnitTest {
         String animals = "Dog, Cat, Bird, Cow";
         String[] result = animals.split(", ");
 
-        assertArrayEquals(result, new String[] { "Dog", "Cat", "Bird", "Cow" });
+        assertArrayEquals(result, new String[]{"Dog", "Cat", "Bird", "Cow"});
     }
 
     @Test

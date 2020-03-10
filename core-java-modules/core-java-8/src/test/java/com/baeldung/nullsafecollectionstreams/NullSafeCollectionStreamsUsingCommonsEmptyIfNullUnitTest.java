@@ -4,13 +4,15 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.stream.Stream;
+
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 
 public class NullSafeCollectionStreamsUsingCommonsEmptyIfNullUnitTest {
 
-    private final NullSafeCollectionStreamsUsingCommonsEmptyIfNull instance = 
+    private final NullSafeCollectionStreamsUsingCommonsEmptyIfNull instance =
             new NullSafeCollectionStreamsUsingCommonsEmptyIfNull();
 
     @Test
@@ -26,7 +28,7 @@ public class NullSafeCollectionStreamsUsingCommonsEmptyIfNullUnitTest {
     public void whenCollectionHasElements_thenExpectAStreamOfExactlyTheSameElements() {
 
         Collection<String> collection = Arrays.asList("a", "b", "c");
-        Stream<String> expResult = Arrays.stream(new String[] { "a", "b", "c" });
+        Stream<String> expResult = Arrays.stream(new String[]{"a", "b", "c"});
         Stream<String> result = instance.collectionAsStream(collection);
         assertStreamEquals(expResult, result);
     }
@@ -37,5 +39,5 @@ public class NullSafeCollectionStreamsUsingCommonsEmptyIfNullUnitTest {
             assertEquals(iter1.next(), iter2.next());
         assert !iter1.hasNext() && !iter2.hasNext();
     }
-    
+
 }

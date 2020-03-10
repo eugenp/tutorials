@@ -35,11 +35,11 @@ public class OAuth2AuthenticationConfiguration extends ResourceServerConfigurerA
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
-            .authorizeRequests()
-            .antMatchers("/auth/login").permitAll()
-            .antMatchers("/auth/logout").authenticated()
-            .and()
-            .apply(refreshTokenSecurityConfigurerAdapter());
+                .authorizeRequests()
+                .antMatchers("/auth/login").permitAll()
+                .antMatchers("/auth/logout").authenticated()
+                .and()
+                .apply(refreshTokenSecurityConfigurerAdapter());
     }
 
     /**

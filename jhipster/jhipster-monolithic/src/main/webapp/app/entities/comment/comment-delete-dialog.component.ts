@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { EventManager, JhiLanguageService } from 'ng-jhipster';
+import {NgbActiveModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {EventManager, JhiLanguageService} from 'ng-jhipster';
 
-import { Comment } from './comment.model';
-import { CommentPopupService } from './comment-popup.service';
-import { CommentService } from './comment.service';
+import {Comment} from './comment.model';
+import {CommentPopupService} from './comment-popup.service';
+import {CommentService} from './comment.service';
 
 @Component({
     selector: 'jhi-comment-delete-dialog',
@@ -25,11 +25,11 @@ export class CommentDeleteDialogComponent {
         this.jhiLanguageService.setLocations(['comment']);
     }
 
-    clear () {
+    clear() {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete (id: number) {
+    confirmDelete(id: number) {
         this.commentService.delete(id).subscribe(response => {
             this.eventManager.broadcast({
                 name: 'commentListModification',
@@ -49,10 +49,11 @@ export class CommentDeletePopupComponent implements OnInit, OnDestroy {
     modalRef: NgbModalRef;
     routeSub: any;
 
-    constructor (
+    constructor(
         private route: ActivatedRoute,
         private commentPopupService: CommentPopupService
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe(params => {

@@ -53,8 +53,8 @@ public class ResponseHeaderController {
         String responseBody = "Response with header using ResponseEntity (builder)";
 
         return ResponseEntity.ok()
-            .header(responseHeaderKey, responseHeaderValue)
-            .body(responseBody);
+                .header(responseHeaderKey, responseHeaderValue)
+                .body(responseBody);
     }
 
     @GetMapping("/response-entity-builder-with-http-headers")
@@ -64,7 +64,7 @@ public class ResponseHeaderController {
         String responseBody = "Response with header using ResponseEntity (builder)";
 
         return ResponseEntity.ok()
-            .headers(responseHeaders)
-            .body(responseBody);
+                .headers(responseHeaders)
+                .body(responseBody);
     }
 }

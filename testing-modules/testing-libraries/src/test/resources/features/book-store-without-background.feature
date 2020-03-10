@@ -1,4 +1,5 @@
 Feature: Book Store Without Background
+
   Scenario: Find books by author
     Given I have the following books in the store
       | The Devil in the White City          | Erik Larson |

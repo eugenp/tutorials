@@ -21,6 +21,7 @@ public class JGroupsMessenger extends ReceiverAdapter {
 
     /**
      * Connect to a JGroups cluster using command line options
+     *
      * @param args command line arguments
      * @throws Exception
      */
@@ -56,6 +57,7 @@ public class JGroupsMessenger extends ReceiverAdapter {
 
     /**
      * Quick and dirty implementaton of commons cli for command line args
+     *
      * @param args the command line args
      * @throws ParseException
      */
@@ -67,7 +69,7 @@ public class JGroupsMessenger extends ReceiverAdapter {
         HelpFormatter formatter = new HelpFormatter();
 
         options.addOption("u", "user", true, "User name")
-            .addOption("c", "cluster", true, "Cluster name");
+                .addOption("c", "cluster", true, "Cluster name");
 
         CommandLine line = parser.parse(options, args);
 
@@ -134,7 +136,7 @@ public class JGroupsMessenger extends ReceiverAdapter {
                     continue;
                 } else if (!destinationName.isEmpty()) {
                     destination = getAddress(destinationName)
-                      . orElseThrow(() -> new Exception("Destination not found"));
+                            .orElseThrow(() -> new Exception("Destination not found"));
                 }
 
                 // Accept a string to send
@@ -151,7 +153,8 @@ public class JGroupsMessenger extends ReceiverAdapter {
 
     /**
      * Send message from here
-     * @param destination the destination
+     *
+     * @param destination   the destination
      * @param messageString the message
      */
     private void sendMessage(Address destination, String messageString) {

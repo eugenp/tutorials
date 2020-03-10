@@ -33,7 +33,7 @@ class JndiUnitTest {
         Name objectName = new CompositeName("java:comp/env/jdbc");
 
         Enumeration<String> elements = objectName.getAll();
-        while(elements.hasMoreElements()) {
+        while (elements.hasMoreElements()) {
             System.out.println(elements.nextElement());
         }
 

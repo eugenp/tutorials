@@ -25,13 +25,13 @@ public class SpringBootInitialLoadIntegrationTest {
     @Test
     public void testLoadDataForTestClass() {
         assertEquals(3, employeeRepository.findAll()
-            .size());
+                .size());
     }
 
     @Test
     @Sql(scripts = {"/import_senior_employees.sql"}, config = @SqlConfig(encoding = "utf-8", transactionMode = TransactionMode.ISOLATED))
     public void testLoadDataForTestCase() {
         assertEquals(5, employeeRepository.findAll()
-            .size());
+                .size());
     }
 }

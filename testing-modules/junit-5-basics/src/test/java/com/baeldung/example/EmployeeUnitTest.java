@@ -29,7 +29,7 @@ public class EmployeeUnitTest {
 
         // given
         Mockito.when(jdbcTemplate.queryForObject(Mockito.any(String.class), Mockito.eq(Integer.class)))
-            .thenReturn(1);
+                .thenReturn(1);
 
         // when
         int countOfEmployees = employeeDAO.getCountOfEmployees();

@@ -10,6 +10,7 @@ import org.kie.internal.builder.DecisionTableConfiguration;
 import org.kie.internal.builder.DecisionTableInputType;
 import org.kie.internal.builder.KnowledgeBuilderFactory;
 import org.kie.internal.io.ResourceFactory;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -17,12 +18,12 @@ import java.util.List;
 public class DroolsBeanFactory {
 
     private static final String RULES_PATH = "com/baeldung/drools/rules/";
-    private KieServices kieServices=KieServices.Factory.get();
+    private KieServices kieServices = KieServices.Factory.get();
 
-    private  KieFileSystem getKieFileSystem() throws IOException{
+    private KieFileSystem getKieFileSystem() throws IOException {
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
-        List<String> rules=Arrays.asList("BackwardChaining.drl","SuggestApplicant.drl","Product_rules.xls");
-        for(String rule:rules){
+        List<String> rules = Arrays.asList("BackwardChaining.drl", "SuggestApplicant.drl", "Product_rules.xls");
+        for (String rule : rules) {
             kieFileSystem.write(ResourceFactory.newClassPathResource(rule));
         }
         return kieFileSystem;
@@ -45,21 +46,21 @@ public class DroolsBeanFactory {
     private void getKieRepository() {
         final KieRepository kieRepository = kieServices.getRepository();
         kieRepository.addKieModule(new KieModule() {
-                        public ReleaseId getReleaseId() {
+            public ReleaseId getReleaseId() {
                 return kieRepository.getDefaultReleaseId();
             }
         });
     }
 
-    public KieSession getKieSession(){
+    public KieSession getKieSession() {
         getKieRepository();
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
 
         kieFileSystem.write(ResourceFactory.newClassPathResource("com/baeldung/drools/rules/BackwardChaining.drl"));
         kieFileSystem.write(ResourceFactory.newClassPathResource("com/baeldung/drools/rules/SuggestApplicant.drl"));
         kieFileSystem.write(ResourceFactory.newClassPathResource("com/baeldung/drools/rules/Product_rules.xls"));
-        
-        
+
+
         KieBuilder kb = kieServices.newKieBuilder(kieFileSystem);
         kb.buildAll();
         KieModule kieModule = kb.getKieModule();
@@ -72,10 +73,10 @@ public class DroolsBeanFactory {
 
     public KieSession getKieSession(Resource dt) {
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem()
-            .write(dt);
+                .write(dt);
 
         KieBuilder kieBuilder = kieServices.newKieBuilder(kieFileSystem)
-            .buildAll();
+                .buildAll();
 
         KieRepository kieRepository = kieServices.getRepository();
 

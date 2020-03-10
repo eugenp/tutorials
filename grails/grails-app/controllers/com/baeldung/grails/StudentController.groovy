@@ -20,11 +20,11 @@ class StudentController {
 
     def save(Student student) {
         studentService.save(student)
-        redirect action:"index", method:"GET"
+        redirect action: "index", method: "GET"
     }
 
     def delete(Long id) {
         studentService.delete(id)
-        redirect action:"index", method:"GET"
+        redirect action: "index", method: "GET"
     }
 }

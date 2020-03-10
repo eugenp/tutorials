@@ -1,6 +1,6 @@
-import { Route } from '@angular/router';
+import {Route} from '@angular/router';
 
-import { JhiGatewayComponent } from './gateway.component';
+import {JhiGatewayComponent} from './gateway.component';
 
 export const gatewayRoute: Route = {
     path: 'gateway',

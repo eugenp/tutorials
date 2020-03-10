@@ -12,6 +12,6 @@ public class File {
     }
 
     public void setText(String text) {
-        this.text = this.text+text;
+        this.text = this.text + text;
     }
 }

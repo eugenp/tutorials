@@ -14,7 +14,7 @@ import com.baeldung.boot.jdbi.domain.CarModel;
 
 @UseClasspathSqlLocator
 public interface CarModelDao {
-    
+
     @SqlUpdate("insert")
     @GetGeneratedKeys
     Long insert(@BindBean CarModel carModel);
@@ -24,5 +24,5 @@ public interface CarModelDao {
     List<Long> bulkInsert(@BindBean List<CarModel> models);
 
     @SqlQuery
-    CarModel findByMakerIdAndSku(@Bind("makerId") Long makerId, @Bind("sku") String sku );
+    CarModel findByMakerIdAndSku(@Bind("makerId") Long makerId, @Bind("sku") String sku);
 }

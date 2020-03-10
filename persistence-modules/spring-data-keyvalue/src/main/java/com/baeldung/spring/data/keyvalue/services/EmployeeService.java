@@ -5,8 +5,8 @@ import java.util.Optional;
 import com.baeldung.spring.data.keyvalue.vo.Employee;
 
 public interface EmployeeService {
-	
-	void save(Employee employee);
+
+    void save(Employee employee);
 
     Optional<Employee> get(Integer id);
 

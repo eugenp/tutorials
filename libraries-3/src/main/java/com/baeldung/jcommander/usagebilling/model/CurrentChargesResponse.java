@@ -20,23 +20,23 @@ public class CurrentChargesResponse {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb
-          .append("Current Month Charges: {")
-          .append("\n\tcustomer: ")
-          .append(this.customerId)
-          .append("\n\ttotalAmountDue: ")
-          .append(this.amountDue.setScale(2, RoundingMode.HALF_UP))
-          .append("\n\tlineItems: [");
+                .append("Current Month Charges: {")
+                .append("\n\tcustomer: ")
+                .append(this.customerId)
+                .append("\n\ttotalAmountDue: ")
+                .append(this.amountDue.setScale(2, RoundingMode.HALF_UP))
+                .append("\n\tlineItems: [");
 
         for (LineItem li : this.lineItems) {
             sb
-              .append("\n\t\t{")
-              .append("\n\t\t\tsubscription: ")
-              .append(li.subscriptionId)
-              .append("\n\t\t\tamount: ")
-              .append(li.amount.setScale(2, RoundingMode.HALF_UP))
-              .append("\n\t\t\tquantity: ")
-              .append(li.quantity)
-              .append("\n\t\t},");
+                    .append("\n\t\t{")
+                    .append("\n\t\t\tsubscription: ")
+                    .append(li.subscriptionId)
+                    .append("\n\t\t\tamount: ")
+                    .append(li.amount.setScale(2, RoundingMode.HALF_UP))
+                    .append("\n\t\t\tquantity: ")
+                    .append(li.quantity)
+                    .append("\n\t\t},");
         }
 
         sb.append("\n\t]\n}\n");

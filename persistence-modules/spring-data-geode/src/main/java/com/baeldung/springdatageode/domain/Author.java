@@ -6,7 +6,7 @@ import org.springframework.data.gemfire.mapping.annotation.Region;
 
 @Region(name = "Authors")
 public class Author {
-    
+
     @Id
     private Long id;
 

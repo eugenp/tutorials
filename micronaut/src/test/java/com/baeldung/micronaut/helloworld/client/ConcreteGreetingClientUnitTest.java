@@ -8,31 +8,28 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class ConcreteGreetingClientUnitTest
-{
-   private EmbeddedServer server;
-   private ConcreteGreetingClient client;
+public class ConcreteGreetingClientUnitTest {
+    private EmbeddedServer server;
+    private ConcreteGreetingClient client;
 
-   @Before
-   public void setup()
-   {
-      server = ApplicationContext.run(EmbeddedServer.class);
-      client = server.getApplicationContext().getBean(ConcreteGreetingClient.class);
-   }
+    @Before
+    public void setup() {
+        server = ApplicationContext.run(EmbeddedServer.class);
+        client = server.getApplicationContext().getBean(ConcreteGreetingClient.class);
+    }
 
-   @After
-   public void cleanup()
-   {
-      server.stop();
-   }
+    @After
+    public void cleanup() {
+        server.stop();
+    }
 
-   @Test
-   public void testGreeting() {
-      assertEquals(client.greet("Mike"), "Hello Mike");
-   }
+    @Test
+    public void testGreeting() {
+        assertEquals(client.greet("Mike"), "Hello Mike");
+    }
 
-   @Test
-   public void testGreetingAsync() {
-      assertEquals(client.greetAsync("Mike").blockingGet(), "Hello Mike");
-   }
+    @Test
+    public void testGreetingAsync() {
+        assertEquals(client.greetAsync("Mike").blockingGet(), "Hello Mike");
+    }
 }

@@ -2,10 +2,10 @@ package com.baeldung.socket.read;
 
 import java.net.*;
 import java.nio.charset.StandardCharsets;
-import java.io.*; 
+import java.io.*;
 
 public class Server {
-    
+
     public void runServer(int port) {
         //Start the server and wait for connection
         try {
@@ -18,28 +18,28 @@ public class Server {
             //Read type and length of data
             char dataType = in.readChar();
             int length = in.readInt();
-            System.out.println("Type : "+dataType);
-            System.out.println("Lenght :"+length);
-            if(dataType == 's') {
+            System.out.println("Type : " + dataType);
+            System.out.println("Lenght :" + length);
+            if (dataType == 's') {
                 //Read String data in bytes
                 byte[] messageByte = new byte[length];
                 boolean end = false;
                 StringBuilder dataString = new StringBuilder(length);
                 int totalBytesRead = 0;
                 //We need to run while loop, to read all data in that stream
-                while(!end) {
+                while (!end) {
                     int currentBytesRead = in.read(messageByte);
                     totalBytesRead = currentBytesRead + totalBytesRead;
-                    if(totalBytesRead <= length) {
-                        dataString.append(new String(messageByte,0,currentBytesRead,StandardCharsets.UTF_8));
+                    if (totalBytesRead <= length) {
+                        dataString.append(new String(messageByte, 0, currentBytesRead, StandardCharsets.UTF_8));
                     } else {
-                        dataString.append(new String(messageByte,0,length - totalBytesRead + currentBytesRead,StandardCharsets.UTF_8));
+                        dataString.append(new String(messageByte, 0, length - totalBytesRead + currentBytesRead, StandardCharsets.UTF_8));
                     }
-                    if(dataString.length()>=length) {
+                    if (dataString.length() >= length) {
                         end = true;
                     }
                 }
-                System.out.println("Read "+length+" bytes of message from client. Message = "+dataString);
+                System.out.println("Read " + length + " bytes of message from client. Message = " + dataString);
             }
         } catch (Exception e) {
             e.printStackTrace();

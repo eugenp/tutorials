@@ -6,7 +6,7 @@ import java.net.SocketException;
 
 public class TryCatch {
 
-    public void execute() throws SocketException, ConnectionException, Exception  {
+    public void execute() throws SocketException, ConnectionException, Exception {
         //code that would throw any of: SocketException, ConnectionException, Exception
     }
 

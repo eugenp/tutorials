@@ -25,7 +25,7 @@ node {
     stage('backend tests') {
         try {
             sh "./mvnw test"
-        } catch(err) {
+        } catch (err) {
             throw err
         } finally {
             junit '**/target/surefire-reports/TEST-*.xml'
@@ -35,7 +35,7 @@ node {
     stage('frontend tests') {
         try {
             sh "./mvnw com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.yarn.arguments=test"
-        } catch(err) {
+        } catch (err) {
             throw err
         } finally {
             junit '**/target/test-results/karma/TESTS-*.xml'

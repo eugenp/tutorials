@@ -18,9 +18,9 @@ public class CustomMediaTypeControllerLiveTest {
     public void givenServiceEndpoint_whenGetRequestFirstAPIVersion_thenShouldReturn200() {
         given()
                 .accept("application/vnd.baeldung.api.v1+json")
-        .when()
+                .when()
                 .get(URL_PREFIX + "/public/api/items/1")
-        .then()
+                .then()
                 .contentType(ContentType.JSON).and().statusCode(200);
     }
 
@@ -29,9 +29,9 @@ public class CustomMediaTypeControllerLiveTest {
     public void givenServiceEndpoint_whenGetRequestSecondAPIVersion_thenShouldReturn200() {
         given()
                 .accept("application/vnd.baeldung.api.v2+json")
-        .when()
+                .when()
                 .get(URL_PREFIX + "/public/api/items/2")
-        .then()
+                .then()
                 .contentType(ContentType.JSON).and().statusCode(200);
     }
 }

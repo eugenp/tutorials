@@ -21,23 +21,23 @@ public class FunctionalHandler {
     public Mono<ServerResponse> handleRequest(final ServerRequest request) {
         Validator validator = new CustomRequestEntityValidator();
         Mono<String> responseBody = request.bodyToMono(CustomRequestEntity.class)
-            .map(body -> {
-                Errors errors = new BeanPropertyBindingResult(body, CustomRequestEntity.class.getName());
-                validator.validate(body, errors);
+                .map(body -> {
+                    Errors errors = new BeanPropertyBindingResult(body, CustomRequestEntity.class.getName());
+                    validator.validate(body, errors);
 
-                if (errors == null || errors.getAllErrors()
-                    .isEmpty()) {
-                    return String.format("Hi, %s [%s]!", body.getName(), body.getCode());
+                    if (errors == null || errors.getAllErrors()
+                            .isEmpty()) {
+                        return String.format("Hi, %s [%s]!", body.getName(), body.getCode());
 
-                } else {
-                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, errors.getAllErrors()
-                        .toString());
-                }
+                    } else {
+                        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, errors.getAllErrors()
+                                .toString());
+                    }
 
-            });
+                });
         return ServerResponse.ok()
-            .contentType(MediaType.APPLICATION_JSON)
-            .body(responseBody, String.class);
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(responseBody, String.class);
 
     }
 }

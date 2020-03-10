@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     JhiHealthService.$inject = ['$rootScope', '$http'];
 
-    function JhiHealthService ($rootScope, $http) {
+    function JhiHealthService($rootScope, $http) {
         var separator = '.';
         var service = {
             checkHealth: checkHealth,
@@ -18,26 +18,26 @@
 
         return service;
 
-        function checkHealth () {
+        function checkHealth() {
             return $http.get('management/health').then(function (response) {
                 return response.data;
             });
         }
 
-        function transformHealthData (data) {
+        function transformHealthData(data) {
             var response = [];
             flattenHealthData(response, null, data);
             return response;
         }
 
-        function getBaseName (name) {
+        function getBaseName(name) {
             if (name) {
                 var split = name.split('.');
                 return split[0];
             }
         }
 
-        function getSubSystemName (name) {
+        function getSubSystemName(name) {
             if (name) {
                 var split = name.split('.');
                 split.splice(0, 1);
@@ -47,7 +47,7 @@
         }
 
         /* private methods */
-        function flattenHealthData (result, path, data) {
+        function flattenHealthData(result, path, data) {
             angular.forEach(data, function (value, key) {
                 if (isHealthObject(value)) {
                     if (hasSubSystem(value)) {
@@ -61,7 +61,7 @@
             return result;
         }
 
-        function addHealthObject (result, isLeaf, healthObject, name) {
+        function addHealthObject(result, isLeaf, healthObject, name) {
 
             var healthData = {
                 'name': name
@@ -82,7 +82,7 @@
 
             // Add the of the details
             if (hasDetails) {
-                angular.extend(healthData, { 'details': details});
+                angular.extend(healthData, {'details': details});
             }
 
             // Only add nodes if they provide additional information
@@ -92,11 +92,11 @@
             return healthData;
         }
 
-        function getModuleName (path, name) {
+        function getModuleName(path, name) {
             var result;
             if (path && name) {
                 result = path + separator + name;
-            }  else if (path) {
+            } else if (path) {
                 result = path;
             } else if (name) {
                 result = name;
@@ -106,7 +106,7 @@
             return result;
         }
 
-        function hasSubSystem (healthObject) {
+        function hasSubSystem(healthObject) {
             var result = false;
             angular.forEach(healthObject, function (value) {
                 if (value && value.status) {
@@ -116,7 +116,7 @@
             return result;
         }
 
-        function isHealthObject (healthObject) {
+        function isHealthObject(healthObject) {
             var result = false;
             angular.forEach(healthObject, function (value, key) {
                 if (key === 'status') {

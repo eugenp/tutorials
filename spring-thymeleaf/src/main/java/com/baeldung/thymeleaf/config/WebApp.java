@@ -20,12 +20,12 @@ public class WebApp extends AbstractAnnotationConfigDispatcherServletInitializer
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[] { WebMVCConfig.class, WebMVCSecurity.class, InitSecurity.class };
+        return new Class<?>[]{WebMVCConfig.class, WebMVCSecurity.class, InitSecurity.class};
     }
 
     @Override
     protected String[] getServletMappings() {
-        return new String[] { "/" };
+        return new String[]{"/"};
     }
 
     @Override

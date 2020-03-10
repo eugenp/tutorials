@@ -6,7 +6,7 @@ interface MyInterface {
 
 class MyClass() : MyInterface {
     override fun someMethod(): String {
-        return("Hello, World!")
+        return ("Hello, World!")
     }
 }
 

@@ -15,8 +15,8 @@ public class MyService {
     private final String API_SECRET = "baeldung_api_secret";
 
     @PostConstruct
-    private void init(){
-        this.service  = new ServiceBuilder(API_KEY)
+    private void init() {
+        this.service = new ServiceBuilder(API_KEY)
                 .apiSecret(API_SECRET)
                 .scope("read write")
                 .build(MyApi.instance());

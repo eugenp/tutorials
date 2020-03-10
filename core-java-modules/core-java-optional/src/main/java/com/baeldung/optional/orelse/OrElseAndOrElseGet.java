@@ -24,11 +24,11 @@ public class OrElseAndOrElseGet {
 
     public String getNameUsingOrElse(String name) {
         return Optional.ofNullable(name)
-            .orElse(getRandomName());
+                .orElse(getRandomName());
     }
 
     public String getNameUsingOrElseGet(String name) {
         return Optional.ofNullable(name)
-            .orElseGet(() -> getRandomName());
+                .orElseGet(() -> getRandomName());
     }
 }

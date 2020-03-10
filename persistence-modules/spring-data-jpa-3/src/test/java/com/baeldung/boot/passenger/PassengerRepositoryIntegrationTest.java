@@ -71,7 +71,7 @@ public class PassengerRepositoryIntegrationTest {
         Passenger expected = Passenger.from("Fred", "Bloggs", 22);
 
         Page<Passenger> page = repository.findAll(PageRequest.of(0, 1,
-          Sort.by(Sort.Direction.ASC, "seatNumber")));
+                Sort.by(Sort.Direction.ASC, "seatNumber")));
 
         assertEquals(1, page.getContent().size());
 
@@ -119,7 +119,7 @@ public class PassengerRepositoryIntegrationTest {
     public void givenPassengers_whenFindByExampleCaseInsensitiveMatcher_thenExpectedReturned() {
         ExampleMatcher caseInsensitiveExampleMatcher = ExampleMatcher.matchingAll().withIgnoreCase();
         Example<Passenger> example = Example.of(Passenger.from("fred", "bloggs", null),
-          caseInsensitiveExampleMatcher);
+                caseInsensitiveExampleMatcher);
 
         Optional<Passenger> actual = repository.findOne(example);
 
@@ -136,11 +136,11 @@ public class PassengerRepositoryIntegrationTest {
         Passenger ricki = Passenger.from("Ricki", "Bobbie", 36);
 
         ExampleMatcher customExampleMatcher = ExampleMatcher.matchingAny().withMatcher("firstName",
-          ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase()).withMatcher("lastName",
-          ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase());
+                ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase()).withMatcher("lastName",
+                ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase());
 
         Example<Passenger> example = Example.of(Passenger.from("e", "s", null),
-          customExampleMatcher);
+                customExampleMatcher);
 
         List<Passenger> passengers = repository.findAll(example);
 
@@ -157,10 +157,10 @@ public class PassengerRepositoryIntegrationTest {
         Passenger ricki = Passenger.from("Ricki", "Bobbie", 36);
 
         ExampleMatcher ignoringExampleMatcher = ExampleMatcher.matchingAny().withMatcher("lastName",
-            ExampleMatcher.GenericPropertyMatchers.startsWith().ignoreCase()).withIgnorePaths("firstName", "seatNumber");
+                ExampleMatcher.GenericPropertyMatchers.startsWith().ignoreCase()).withIgnorePaths("firstName", "seatNumber");
 
         Example<Passenger> example = Example.of(Passenger.from(null, "b", null),
-            ignoringExampleMatcher);
+                ignoringExampleMatcher);
 
         List<Passenger> passengers = repository.findAll(example);
 

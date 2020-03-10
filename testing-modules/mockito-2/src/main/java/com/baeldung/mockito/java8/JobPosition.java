@@ -2,9 +2,10 @@ package com.baeldung.mockito.java8;
 
 public class JobPosition {
     private String title;
-    
-    public JobPosition() {}
-    
+
+    public JobPosition() {
+    }
+
     public JobPosition(String title) {
         super();
         this.title = title;

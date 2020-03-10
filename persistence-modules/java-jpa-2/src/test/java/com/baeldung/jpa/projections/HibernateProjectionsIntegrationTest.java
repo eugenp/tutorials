@@ -28,43 +28,43 @@ public class HibernateProjectionsIntegrationTest {
         Configuration configuration = getConfiguration();
         configuration.addAnnotatedClass(Product.class);
         sessionFactory = configuration.buildSessionFactory();
-    }    
-    
+    }
+
     @Before
     public void before() {
         session = sessionFactory.getCurrentSession();
-        transaction = session.beginTransaction();        
-    }   
-    
+        transaction = session.beginTransaction();
+    }
+
     @After
     public void after() {
-        if(transaction.isActive()) {
+        if (transaction.isActive()) {
             transaction.rollback();
         }
-    }  
+    }
 
     private static Configuration getConfiguration() {
         Configuration cfg = new Configuration();
         cfg.setProperty(AvailableSettings.DIALECT,
-            "org.hibernate.dialect.H2Dialect");
+                "org.hibernate.dialect.H2Dialect");
         cfg.setProperty(AvailableSettings.HBM2DDL_AUTO, "none");
         cfg.setProperty(AvailableSettings.DRIVER, "org.h2.Driver");
         cfg.setProperty(AvailableSettings.URL,
-            "jdbc:h2:mem:myexceptiondb2;DB_CLOSE_DELAY=-1;;INIT=RUNSCRIPT FROM 'src/test/resources/products.sql'");
+                "jdbc:h2:mem:myexceptiondb2;DB_CLOSE_DELAY=-1;;INIT=RUNSCRIPT FROM 'src/test/resources/products.sql'");
         cfg.setProperty(AvailableSettings.USER, "sa");
         cfg.setProperty(AvailableSettings.PASS, "");
         cfg.setProperty(AvailableSettings.CURRENT_SESSION_CONTEXT_CLASS, "thread");
         return cfg;
     }
-    
-    
+
+
     @SuppressWarnings("deprecation")
     @Test
     public void givenProductData_whenIdAndNameProjectionUsingCriteria_thenListOfObjectArrayReturned() {
         Criteria criteria = session.createCriteria(Product.class);
         criteria = criteria.setProjection(Projections.projectionList()
-            .add(Projections.id())
-            .add(Projections.property("name")));
+                .add(Projections.id())
+                .add(Projections.property("name")));
         List<Object[]> resultList = criteria.list();
 
         assertNotNull(resultList);
@@ -78,8 +78,8 @@ public class HibernateProjectionsIntegrationTest {
         assertEquals(4L, resultList.get(3)[0]);
         assertEquals("Product Name 4", resultList.get(3)[1]);
     }
-    
-    
+
+
     @Test
     public void givenProductData_whenNameProjectionUsingCriteria_thenListOfStringReturned() {
         Criteria criteria = session.createCriteria(Product.class);
@@ -93,13 +93,13 @@ public class HibernateProjectionsIntegrationTest {
         assertEquals("Product Name 3", resultList.get(2));
         assertEquals("Product Name 4", resultList.get(3));
     }
-    
+
     @Test
     public void givenProductData_whenCountByCategoryUsingCriteria_thenOK() {
         Criteria criteria = session.createCriteria(Product.class);
         criteria = criteria.setProjection(Projections.projectionList()
-            .add(Projections.groupProperty("category"))
-            .add(Projections.rowCount()));
+                .add(Projections.groupProperty("category"))
+                .add(Projections.rowCount()));
         List<Object[]> resultList = criteria.list();
 
         assertNotNull(resultList);
@@ -111,13 +111,13 @@ public class HibernateProjectionsIntegrationTest {
         assertEquals("category3", resultList.get(2)[0]);
         assertEquals(1L, resultList.get(2)[1]);
     }
-    
+
     @Test
     public void givenProductData_whenCountByCategoryWithAliasUsingCriteria_thenOK() {
         Criteria criteria = session.createCriteria(Product.class);
         criteria = criteria.setProjection(Projections.projectionList()
-            .add(Projections.groupProperty("category"))
-            .add(Projections.alias(Projections.rowCount(), "count")));
+                .add(Projections.groupProperty("category"))
+                .add(Projections.alias(Projections.rowCount(), "count")));
         criteria.addOrder(Order.asc("count"));
         List<Object[]> resultList = criteria.list();
 

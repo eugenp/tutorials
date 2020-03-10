@@ -12,10 +12,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes  = ChunksConfig.class)
+@ContextConfiguration(classes = ChunksConfig.class)
 public class ChunksIntegrationTest {
 
-    @Autowired private JobLauncherTestUtils jobLauncherTestUtils;
+    @Autowired
+    private JobLauncherTestUtils jobLauncherTestUtils;
 
     @Test
     public void givenChunksJob_WhenJobEnds_ThenStatusCompleted() throws Exception {

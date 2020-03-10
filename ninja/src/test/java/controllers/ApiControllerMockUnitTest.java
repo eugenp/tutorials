@@ -1,7 +1,9 @@
 package controllers;
 
 import static org.junit.Assert.assertEquals;
+
 import javax.inject.Inject;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +14,8 @@ import services.UserService;
 @RunWith(NinjaRunner.class)
 public class ApiControllerMockUnitTest {
 
-    @Inject private UserService userService;
+    @Inject
+    private UserService userService;
 
     ApplicationController applicationController;
 
@@ -28,5 +31,5 @@ public class ApiControllerMockUnitTest {
         System.out.println(result.getRenderable());
         assertEquals(userService.getUserMap().toString(), result.getRenderable().toString());
     }
-    
+
 }

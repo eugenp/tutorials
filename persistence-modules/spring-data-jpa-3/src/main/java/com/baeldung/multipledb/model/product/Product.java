@@ -58,10 +58,10 @@ public class Product {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append("Product [name=")
-            .append(name)
-            .append(", id=")
-            .append(id)
-            .append("]");
+                .append(name)
+                .append(", id=")
+                .append(id)
+                .append("]");
         return builder.toString();
     }
 }

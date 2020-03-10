@@ -29,22 +29,22 @@ public class PersonGeneratorUnitTest {
     @Before
     public void setUp() {
         String packagePath = this
-          .getClass()
-          .getPackage()
-          .getName()
-          .replace(".", "/") + "/person";
+                .getClass()
+                .getPackage()
+                .getName()
+                .replace(".", "/") + "/person";
         generator = new PersonGenerator();
         generatedFolderPath = generator
-          .getOutputPath()
-          .resolve(packagePath);
+                .getOutputPath()
+                .resolve(packagePath);
         expectedFolderPath = Paths.get(new File(".").getAbsolutePath() + "/src/test/java/" + packagePath);
     }
 
     @After
     public void tearDown() throws Exception {
         FileUtils.deleteDirectory(new File(generator
-          .getOutputPath()
-          .toUri()));
+                .getOutputPath()
+                .toUri()));
     }
 
     @Test

@@ -29,7 +29,7 @@ public class JacksonJsonViewUnitTest {
         mapper.disable(MapperFeature.DEFAULT_VIEW_INCLUSION);
 
         final String result = mapper.writerWithView(Views.Public.class)
-            .writeValueAsString(user);
+                .writeValueAsString(user);
 
         assertThat(result, containsString("John"));
         assertThat(result, not(containsString("1")));
@@ -41,7 +41,7 @@ public class JacksonJsonViewUnitTest {
 
         final ObjectMapper mapper = new ObjectMapper();
         final String result = mapper.writerWithView(Views.Public.class)
-            .writeValueAsString(item);
+                .writeValueAsString(item);
 
         assertThat(result, containsString("book"));
         assertThat(result, containsString("2"));
@@ -55,7 +55,7 @@ public class JacksonJsonViewUnitTest {
 
         final ObjectMapper mapper = new ObjectMapper();
         final String result = mapper.writerWithView(Views.Internal.class)
-            .writeValueAsString(item);
+                .writeValueAsString(item);
 
         assertThat(result, containsString("book"));
         assertThat(result, containsString("2"));
@@ -70,8 +70,8 @@ public class JacksonJsonViewUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
 
         final User user = mapper.readerWithView(Views.Public.class)
-            .forType(User.class)
-            .readValue(json);
+                .forType(User.class)
+                .readValue(json);
         assertEquals(1, user.getId());
         assertEquals("John", user.getName());
     }
@@ -85,7 +85,7 @@ public class JacksonJsonViewUnitTest {
         mapper.setSerializerFactory(serializerFactory);
 
         final String result = mapper.writerWithView(Views.Public.class)
-            .writeValueAsString(user);
+                .writeValueAsString(user);
         assertThat(result, containsString("JOHN"));
         assertThat(result, containsString("1"));
     }

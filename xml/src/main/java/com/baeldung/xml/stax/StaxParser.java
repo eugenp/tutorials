@@ -27,36 +27,36 @@ public class StaxParser {
                 if (nextEvent.isStartElement()) {
                     StartElement startElement = nextEvent.asStartElement();
                     switch (startElement.getName()
-                        .getLocalPart()) {
-                    case "website":
-                        website = new WebSite();
-                        Attribute url = startElement.getAttributeByName(new QName("url"));
-                        if (url != null) {
-                            website.setUrl(url.getValue());
-                        }
-                        break;
-                    case "name":
-                        nextEvent = reader.nextEvent();
-                        website.setName(nextEvent.asCharacters()
-                            .getData());
-                        break;
-                    case "category":
-                        nextEvent = reader.nextEvent();
-                        website.setCategory(nextEvent.asCharacters()
-                            .getData());
-                        break;
-                    case "status":
-                        nextEvent = reader.nextEvent();
-                        website.setStatus(nextEvent.asCharacters()
-                            .getData());
-                        break;
+                            .getLocalPart()) {
+                        case "website":
+                            website = new WebSite();
+                            Attribute url = startElement.getAttributeByName(new QName("url"));
+                            if (url != null) {
+                                website.setUrl(url.getValue());
+                            }
+                            break;
+                        case "name":
+                            nextEvent = reader.nextEvent();
+                            website.setName(nextEvent.asCharacters()
+                                    .getData());
+                            break;
+                        case "category":
+                            nextEvent = reader.nextEvent();
+                            website.setCategory(nextEvent.asCharacters()
+                                    .getData());
+                            break;
+                        case "status":
+                            nextEvent = reader.nextEvent();
+                            website.setStatus(nextEvent.asCharacters()
+                                    .getData());
+                            break;
                     }
                 }
                 if (nextEvent.isEndElement()) {
                     EndElement endElement = nextEvent.asEndElement();
                     if (endElement.getName()
-                        .getLocalPart()
-                        .equals("website")) {
+                            .getLocalPart()
+                            .equals("website")) {
                         websites.add(website);
                     }
                 }

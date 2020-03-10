@@ -107,10 +107,10 @@ public class Junit5AssertionsUnitTest {
     public void givenMultipleAssertion_whenAssertingAll_thenOK() {
         Object obj = null;
         assertAll(
-           "heading",
-           () -> assertEquals(4, 2 * 2, "4 is 2 times 2"),
-           () -> assertEquals("java", "JAVA".toLowerCase()),
-           () -> assertEquals(obj, null, "null is equal to null")
+                "heading",
+                () -> assertEquals(4, 2 * 2, "4 is 2 times 2"),
+                () -> assertEquals("java", "JAVA".toLowerCase()),
+                () -> assertEquals(obj, null, "null is equal to null")
         );
     }
 
@@ -125,22 +125,22 @@ public class Junit5AssertionsUnitTest {
     @Test
     public void whenAssertingTimeout_thenNotExceeded() {
         assertTimeout(
-          ofSeconds(2),
-          () -> {
-            // code that requires less then 2 minutes to execute
-            Thread.sleep(1000);
-          }
+                ofSeconds(2),
+                () -> {
+                    // code that requires less then 2 minutes to execute
+                    Thread.sleep(1000);
+                }
         );
     }
 
     @Test
     public void whenAssertingTimeoutPreemptively_thenNotExceeded() {
         assertTimeoutPreemptively(
-          ofSeconds(2),
-          () -> {
-            // code that requires less then 2 minutes to execute
-            Thread.sleep(1000);
-          }
+                ofSeconds(2),
+                () -> {
+                    // code that requires less then 2 minutes to execute
+                    Thread.sleep(1000);
+                }
         );
     }
 
@@ -162,10 +162,10 @@ public class Junit5AssertionsUnitTest {
     @Test
     void whenAssertingException_thenThrown() {
         Throwable exception = assertThrows(
-          IllegalArgumentException.class,
-          () -> {
-            throw new IllegalArgumentException("Exception message");
-          }
+                IllegalArgumentException.class,
+                () -> {
+                    throw new IllegalArgumentException("Exception message");
+                }
         );
         assertEquals("Exception message", exception.getMessage());
     }

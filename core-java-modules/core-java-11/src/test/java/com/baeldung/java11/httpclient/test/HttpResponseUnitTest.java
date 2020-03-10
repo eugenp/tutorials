@@ -19,15 +19,15 @@ public class HttpResponseUnitTest {
     @Test
     public void shouldReturnStatusOKWhenSendGetRequest() throws IOException, InterruptedException, URISyntaxException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("https://postman-echo.com/get"))
-            .version(HttpClient.Version.HTTP_2)
-            .GET()
-            .build();
+                .uri(new URI("https://postman-echo.com/get"))
+                .version(HttpClient.Version.HTTP_2)
+                .GET()
+                .build();
 
         HttpResponse<String> response = HttpClient.newBuilder()
-            .followRedirects(HttpClient.Redirect.NORMAL)
-            .build()
-            .send(request, HttpResponse.BodyHandlers.ofString());
+                .followRedirects(HttpClient.Redirect.NORMAL)
+                .build()
+                .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(response.statusCode(), equalTo(HttpURLConnection.HTTP_OK));
         assertNotNull(response.body());
@@ -36,19 +36,19 @@ public class HttpResponseUnitTest {
     @Test
     public void shouldResponseURIDifferentThanRequestUIRWhenRedirect() throws IOException, InterruptedException, URISyntaxException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("http://stackoverflow.com"))
-            .version(HttpClient.Version.HTTP_2)
-            .GET()
-            .build();
+                .uri(new URI("http://stackoverflow.com"))
+                .version(HttpClient.Version.HTTP_2)
+                .GET()
+                .build();
         HttpResponse<String> response = HttpClient.newBuilder()
-            .followRedirects(HttpClient.Redirect.NORMAL)
-            .build()
-            .send(request, HttpResponse.BodyHandlers.ofString());
+                .followRedirects(HttpClient.Redirect.NORMAL)
+                .build()
+                .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(request.uri()
-            .toString(), equalTo("http://stackoverflow.com"));
+                .toString(), equalTo("http://stackoverflow.com"));
         assertThat(response.uri()
-            .toString(), equalTo("https://stackoverflow.com/"));
+                .toString(), equalTo("https://stackoverflow.com/"));
     }
 
 }

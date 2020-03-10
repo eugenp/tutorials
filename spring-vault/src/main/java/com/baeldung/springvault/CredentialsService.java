@@ -9,9 +9,8 @@ import org.springframework.vault.support.VaultResponseSupport;
 
 /**
  * Sample service to demonstrate storing and retrieval of secrets.
- * 
+ * <p>
  * NOTE: We need to configure Vault and provide the Vault uri in the properties file.
- *
  */
 @Service
 public class CredentialsService {
@@ -20,11 +19,12 @@ public class CredentialsService {
     private VaultTemplate vaultTemplate;
 
     /**
-    *  To Secure Credentials
-    * @param credentials
-    * @return VaultResponse
-    * @throws URISyntaxException
-    */
+     * To Secure Credentials
+     *
+     * @param credentials
+     * @return VaultResponse
+     * @throws URISyntaxException
+     */
     public void secureCredentials(Credentials credentials) throws URISyntaxException {
 
         vaultTemplate.write("credentials/myapp", credentials);
@@ -32,6 +32,7 @@ public class CredentialsService {
 
     /**
      * To Retrieve Credentials
+     *
      * @return Credentials
      * @throws URISyntaxException
      */

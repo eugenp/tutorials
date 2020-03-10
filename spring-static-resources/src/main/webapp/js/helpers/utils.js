@@ -1,6 +1,6 @@
 /**
- * 
+ *
  */
 define({
-    helloWorld : 'hola'
+    helloWorld: 'hola'
 });

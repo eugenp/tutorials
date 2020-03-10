@@ -17,7 +17,7 @@ public class DateComparisonUtilsUnitTest {
 
     private Date toDate(LocalDateTime localDateTime) {
         return Date.from(localDateTime.atZone(ZoneId.systemDefault())
-            .toInstant());
+                .toInstant());
     }
 
     @Test

@@ -15,8 +15,8 @@ public class AttributesExampleControllerLiveTest {
     public void givenRequestAttribute_whenSet_thenRetrieveWithGet() throws Exception {
         final HttpUriRequest request = new HttpGet("http://localhost:9000/request-attribute-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo(AttributesExampleController.REQUEST_VALUE);
         }
     }
@@ -25,8 +25,8 @@ public class AttributesExampleControllerLiveTest {
     public void givenSessionAttribute_whenSet_thenRetrieveWithGet() throws Exception {
         final HttpUriRequest request = new HttpGet("http://localhost:9000/session-attribute-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(EntityUtils.toString(httpResponse.getEntity())).isEqualTo(AttributesExampleController.SESSION_VALUE);
         }
     }
@@ -34,10 +34,10 @@ public class AttributesExampleControllerLiveTest {
     @Test
     public void givenHeader_whenSet_thenRetrieveWithGet() throws Exception {
         final HttpUriRequest request = new HttpGet("http://localhost:9000/header-example");
-        request.addHeader("a-header","foobar");
+        request.addHeader("a-header", "foobar");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(httpResponse.getHeaders("a-header")[0].getValue()).isEqualTo("foobar");
         }
     }
@@ -46,8 +46,8 @@ public class AttributesExampleControllerLiveTest {
     public void givenNoHeader_whenSet_thenRetrieveDefaultValueWithGet() throws Exception {
         final HttpUriRequest request = new HttpGet("http://localhost:9000/header-example");
         try (final CloseableHttpResponse httpResponse = HttpClientBuilder.create()
-            .build()
-            .execute(request);) {
+                .build()
+                .execute(request);) {
             assertThat(httpResponse.getHeaders("a-header")[0].getValue()).isEqualTo(AttributesExampleController.HEADER);
         }
     }

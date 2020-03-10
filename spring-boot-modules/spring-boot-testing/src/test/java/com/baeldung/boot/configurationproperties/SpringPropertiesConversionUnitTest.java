@@ -37,8 +37,8 @@ public class SpringPropertiesConversionUnitTest {
     @Test
     void whenRegisteringCustomCredentialsConverter_thenCredentialsAreParsed() {
         assertEquals("user", propertyConversion.getCredentials()
-            .getUsername());
+                .getUsername());
         assertEquals("123", propertyConversion.getCredentials()
-            .getPassword());
+                .getPassword());
     }
 }

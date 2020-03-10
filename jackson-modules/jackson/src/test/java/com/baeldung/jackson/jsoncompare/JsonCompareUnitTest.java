@@ -73,7 +73,7 @@ public class JsonCompareUnitTest {
         assertTrue(actualObj1.equals(cmp, actualObj2));
 
     }
-    
+
     public class NumericNodeComparator implements Comparator<JsonNode> {
         @Override
         public int compare(JsonNode o1, JsonNode o2) {
@@ -90,7 +90,7 @@ public class JsonCompareUnitTest {
             return 1;
         }
     }
-    
+
     @Test
     public void givenTwoJsonDataObjects_whenComparedUsingCustomTextNodeComparator_thenEqual() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -106,7 +106,7 @@ public class JsonCompareUnitTest {
         assertTrue(actualObj1.equals(cmp, actualObj2));
 
     }
-    
+
     public class TextNodeComparator implements Comparator<JsonNode> {
         @Override
         public int compare(JsonNode o1, JsonNode o2) {

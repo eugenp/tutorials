@@ -4,7 +4,7 @@ interface Drawable {
     fun draw()
 }
 
-inline class CircleRadius(private val circleRadius : Double) : Drawable {
+inline class CircleRadius(private val circleRadius: Double) : Drawable {
     val diameterOfCircle get() = 2 * circleRadius
     fun areaOfCircle() = 3.14 * circleRadius * circleRadius
 

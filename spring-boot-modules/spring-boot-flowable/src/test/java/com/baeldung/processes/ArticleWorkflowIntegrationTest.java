@@ -22,19 +22,20 @@ public class ArticleWorkflowIntegrationTest {
     private RuntimeService runtimeService;
     @Autowired
     private TaskService taskService;
+
     @Test
-    @Deployment(resources = { "processes/article-workflow.bpmn20.xml" })
+    @Deployment(resources = {"processes/article-workflow.bpmn20.xml"})
     void articleApprovalTest() {
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("author", "test@baeldung.com");
         variables.put("url", "http://baeldung.com/dummy");
         runtimeService.startProcessInstanceByKey("articleReview", variables);
         Task task = taskService.createTaskQuery()
-            .singleResult();
+                .singleResult();
         assertEquals("Review the submitted tutorial", task.getName());
         variables.put("approved", true);
         taskService.complete(task.getId(), variables);
         assertEquals(0, runtimeService.createProcessInstanceQuery()
-            .count());
+                .count());
     }
 }

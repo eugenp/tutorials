@@ -14,7 +14,7 @@ public class DatesCollectionIteration {
 
     public void iteratingRangeOfDatesJava8(Collection<Date> dates) {
         dates.stream()
-            .forEach(this::processDate);
+                .forEach(this::processDate);
     }
 
     private void processDate(Date date) {

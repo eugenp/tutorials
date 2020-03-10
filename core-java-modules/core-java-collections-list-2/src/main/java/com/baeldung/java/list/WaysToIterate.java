@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- *  Demonstrates the different ways to loop over
- *  the elements of a list.
+ * Demonstrates the different ways to loop over
+ * the elements of a list.
  */
 public class WaysToIterate {
 
@@ -36,7 +36,7 @@ public class WaysToIterate {
      */
     public void iterateWithIterator() {
         Iterator<String> countriesIterator = countries.iterator();
-        while(countriesIterator.hasNext()) {
+        while (countriesIterator.hasNext()) {
             System.out.println(countriesIterator.next());
         }
     }
@@ -46,7 +46,7 @@ public class WaysToIterate {
      */
     public void iterateWithListIterator() {
         ListIterator<String> listIterator = countries.listIterator();
-        while(listIterator.hasNext()) {
+        while (listIterator.hasNext()) {
             System.out.println(listIterator.next());
         }
     }

@@ -12,7 +12,7 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Constraint(validatedBy = ValidReservationValidator.class)
-@Target({ METHOD, CONSTRUCTOR })
+@Target({METHOD, CONSTRUCTOR})
 @Retention(RUNTIME)
 @Documented
 public @interface ValidReservation {

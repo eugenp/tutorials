@@ -58,5 +58,5 @@
         <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
         <postgresql.version>9.4-1201-jdbc4</postgresql.version>
     </properties>
-    
+
 </project>

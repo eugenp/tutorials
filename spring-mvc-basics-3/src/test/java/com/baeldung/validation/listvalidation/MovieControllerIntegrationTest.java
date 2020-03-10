@@ -27,39 +27,39 @@ public class MovieControllerIntegrationTest {
     private MockMvc mvc;
 
     ObjectMapper objectMapper = new ObjectMapper();
-    
+
     @Test
     public void givenValidMovieList_whenAddingMovieList_thenIsOK() throws Exception {
         List<Movie> movies = new ArrayList<>();
         Movie movie = new Movie("Movie3");
         movies.add(movie);
         mvc.perform(MockMvcRequestBuilders.post("/movies")
-            .contentType(MediaType.APPLICATION_JSON_UTF8)
-            .content(objectMapper.writeValueAsString(movies)))
-            .andExpect(MockMvcResultMatchers.status()
-                .isOk());
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content(objectMapper.writeValueAsString(movies)))
+                .andExpect(MockMvcResultMatchers.status()
+                        .isOk());
     }
-    
+
     @Test
     public void givenEmptyMovieList_whenAddingMovieList_thenThrowBadRequest() throws Exception {
         List<Movie> movies = new ArrayList<>();
         mvc.perform(MockMvcRequestBuilders.post("/movies")
-            .contentType(MediaType.APPLICATION_JSON_UTF8)
-            .content(objectMapper.writeValueAsString(movies)))
-            .andExpect(MockMvcResultMatchers.status()
-                .isBadRequest());
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content(objectMapper.writeValueAsString(movies)))
+                .andExpect(MockMvcResultMatchers.status()
+                        .isBadRequest());
     }
-    
+
     @Test
     public void givenEmptyMovieName_whenAddingMovieList_thenThrowBadRequest() throws Exception {
         Movie movie = new Movie("");
         mvc.perform(MockMvcRequestBuilders.post("/movies")
-            .contentType(MediaType.APPLICATION_JSON_UTF8)
-            .content(objectMapper.writeValueAsString(Arrays.asList(movie))))
-            .andExpect(MockMvcResultMatchers.status()
-                .isBadRequest());
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content(objectMapper.writeValueAsString(Arrays.asList(movie))))
+                .andExpect(MockMvcResultMatchers.status()
+                        .isBadRequest());
     }
-    
+
     @Test
     public void given5MoviesInputList_whenAddingMovieList_thenThrowBadRequest() throws Exception {
         Movie movie1 = new Movie("Movie1");
@@ -74,10 +74,10 @@ public class MovieControllerIntegrationTest {
         movies.add(movie4);
         movies.add(movie5);
         mvc.perform(MockMvcRequestBuilders.post("/movies")
-            .contentType(MediaType.APPLICATION_JSON_UTF8)
-            .content(objectMapper.writeValueAsString(movies)))
-            .andExpect(MockMvcResultMatchers.status()
-                .isBadRequest());
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content(objectMapper.writeValueAsString(movies)))
+                .andExpect(MockMvcResultMatchers.status()
+                        .isBadRequest());
     }
-    
+
 }

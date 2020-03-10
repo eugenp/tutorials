@@ -12,14 +12,14 @@ public class MyInstrumentationAgent {
         LOGGER.info("[Agent] In premain method");
 
         String className = "com.baeldung.instrumentation.application.MyAtm";
-        transformClass(className,inst);
+        transformClass(className, inst);
     }
 
     public static void agentmain(String agentArgs, Instrumentation inst) {
         LOGGER.info("[Agent] In agentmain method");
 
         String className = "com.baeldung.instrumentation.application.MyAtm";
-        transformClass(className,inst);
+        transformClass(className, inst);
     }
 
     private static void transformClass(String className, Instrumentation instrumentation) {
@@ -35,8 +35,8 @@ public class MyInstrumentationAgent {
             LOGGER.error("Class [{}] not found with Class.forName");
         }
         // otherwise iterate all loaded classes and find what we want
-        for(Class<?> clazz: instrumentation.getAllLoadedClasses()) {
-            if(clazz.getName().equals(className)) {
+        for (Class<?> clazz : instrumentation.getAllLoadedClasses()) {
+            if (clazz.getName().equals(className)) {
                 targetCls = clazz;
                 targetClassLoader = targetCls.getClassLoader();
                 transform(targetCls, targetClassLoader, instrumentation);

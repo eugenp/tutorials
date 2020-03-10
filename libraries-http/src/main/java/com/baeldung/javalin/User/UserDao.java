@@ -25,7 +25,9 @@ class UserDao {
         return userDao;
     }
 
-    Optional<User> getUserById(int id) { return users.stream().filter(u -> u.id == id).findFirst(); }
+    Optional<User> getUserById(int id) {
+        return users.stream().filter(u -> u.id == id).findFirst();
+    }
 
     Iterable<String> getAllUsernames() {
         return users.stream().map(user -> user.name).collect(Collectors.toList());

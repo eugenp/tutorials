@@ -1,6 +1,7 @@
 package com.baeldung.java9.language;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class TryWithResourcesUnitTest {
@@ -37,7 +38,8 @@ public class TryWithResourcesUnitTest {
         } catch (Exception ex) {
         }
 
-        try (new MyAutoCloseable() { }.finalWrapper.finalCloseable) {
+        try (new MyAutoCloseable() {
+        }.finalWrapper.finalCloseable) {
             assertEquals("Expected and Actual does not match", 2, closeCount);
         } catch (Exception ex) {
         }

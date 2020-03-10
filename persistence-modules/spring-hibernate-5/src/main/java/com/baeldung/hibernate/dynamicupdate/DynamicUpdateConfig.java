@@ -25,9 +25,9 @@ import com.google.common.base.Preconditions;
 
 @EnableTransactionManagement
 @Configuration
-@PropertySource({ "classpath:persistence-h2.properties" })
-@EnableJpaRepositories(basePackages = { "com.baeldung.hibernate.dynamicupdate" })
-@ComponentScan({ "com.baeldung.hibernate.dynamicupdate" })
+@PropertySource({"classpath:persistence-h2.properties"})
+@EnableJpaRepositories(basePackages = {"com.baeldung.hibernate.dynamicupdate"})
+@ComponentScan({"com.baeldung.hibernate.dynamicupdate"})
 public class DynamicUpdateConfig {
 
     @Autowired
@@ -37,7 +37,7 @@ public class DynamicUpdateConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "com.baeldung.hibernate.dynamicupdate.model" });
+        em.setPackagesToScan(new String[]{"com.baeldung.hibernate.dynamicupdate.model"});
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

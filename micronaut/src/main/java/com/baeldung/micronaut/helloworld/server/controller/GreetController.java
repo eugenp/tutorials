@@ -21,8 +21,7 @@ public class GreetController {
     }
 
     @Post(value = "/{name}", consumes = MediaType.TEXT_PLAIN)
-    public String setGreeting(@Body String name)
-    {
+    public String setGreeting(@Body String name) {
         return greetingService.getGreeting() + name;
     }
 }

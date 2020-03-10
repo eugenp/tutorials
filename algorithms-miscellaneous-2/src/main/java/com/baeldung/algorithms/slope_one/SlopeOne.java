@@ -27,9 +27,8 @@ public class SlopeOne {
     /**
      * Based on the available data, calculate the relationships between the
      * items and number of occurences
-     * 
-     * @param data
-     *            existing user data and their items' ratings
+     *
+     * @param data existing user data and their items' ratings
      */
     private static void buildDifferencesMatrix(Map<User, HashMap<Item, Double>> data) {
         for (HashMap<Item, Double> user : data.values()) {
@@ -66,9 +65,8 @@ public class SlopeOne {
     /**
      * Based on existing data predict all missing ratings. If prediction is not
      * possible, the value will be equal to -1
-     * 
-     * @param data
-     *            existing user data and their items' ratings
+     *
+     * @param data existing user data and their items' ratings
      */
     private static void predict(Map<User, HashMap<Item, Double>> data) {
         HashMap<Item, Double> uPred = new HashMap<Item, Double>();

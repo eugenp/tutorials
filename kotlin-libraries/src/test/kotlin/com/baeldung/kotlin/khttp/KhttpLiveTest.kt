@@ -126,7 +126,7 @@ class KhttpLiveTest {
                 json = mapOf("pr1" to "1", "pr2" to "2"))
 
         val baos = ByteArrayOutputStream()
-        response.contentIterator(chunkSize = 10).forEach { arr : ByteArray -> baos.write(arr) }
+        response.contentIterator(chunkSize = 10).forEach { arr: ByteArray -> baos.write(arr) }
         val json = JSONObject(String(baos.toByteArray())).getJSONObject("json")
 
         assertEquals("1", json["pr1"])
@@ -139,7 +139,7 @@ class KhttpLiveTest {
             khttp.get(url = "http://localhost/nothing/to/see/here")
 
             fail("Should have thrown an exception")
-        } catch (e : ConnectException) {
+        } catch (e: ConnectException) {
             //Ok
         }
     }

@@ -14,11 +14,11 @@ import com.baeldung.ddd.order.doubledispatch.SpecialDiscountPolicy;
 import com.baeldung.ddd.order.doubledispatch.SpecialOrder;
 
 public class MethodOverloadExampleUnitTest {
-// @formatter:off
-@DisplayName(
-    "given discount policy accepting special orders, " +
-    "when apply the policy on special order declared as regular order, " +
-    "then regular discount method is used"
+    // @formatter:off
+    @DisplayName(
+            "given discount policy accepting special orders, " +
+                    "when apply the policy on special order declared as regular order, " +
+                    "then regular discount method is used"
     )
 // @formatter:on    
     @Test

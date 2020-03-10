@@ -9,10 +9,10 @@
 <#list statuses>
     <ul>
         <#items as status>
-        <li>${status}</li>
-    </#items>
+            <li>${status}</li>
+        </#items>
     </ul>
-    <#else>
+<#else>
     <p>No statuses available</p>
 </#list>
 

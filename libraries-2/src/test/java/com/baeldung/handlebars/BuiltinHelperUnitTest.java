@@ -56,7 +56,7 @@ public class BuiltinHelperUnitTest {
         String templateString = template.apply(person);
 
         assertThat(templateString)
-          .contains("<span>Java is my friend.</span>", "<span>Spring is my friend.</span>");
+                .contains("<span>Java is my friend.</span>", "<span>Spring is my friend.</span>");
     }
 
     @Test
@@ -72,7 +72,7 @@ public class BuiltinHelperUnitTest {
         String templateString = template.apply(person);
 
         assertThat(templateString)
-          .contains("<span>Java is my friend.</span>", "<span>Spring is my friend.</span>");
+                .contains("<span>Java is my friend.</span>", "<span>Spring is my friend.</span>");
     }
 
     @Test

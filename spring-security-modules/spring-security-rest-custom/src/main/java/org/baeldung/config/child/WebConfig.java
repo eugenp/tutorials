@@ -27,7 +27,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 //@ImportResource({ "classpath:prop.xml" })    
 //@PropertySource("classpath:foo.properties")
 public class WebConfig implements WebMvcConfigurer {
-    
+
     @Autowired
     private ApplicationContext applicationContext;
 
@@ -50,31 +50,31 @@ public class WebConfig implements WebMvcConfigurer {
         ppc.setIgnoreUnresolvablePlaceholders(true);
         return ppc;
     }
-    
+
     @Bean
     public ViewResolver viewResolver() {
-      ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-      resolver.setTemplateEngine(templateEngine());
-      resolver.setCharacterEncoding("UTF-8");
-      return resolver;
+        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+        resolver.setTemplateEngine(templateEngine());
+        resolver.setCharacterEncoding("UTF-8");
+        return resolver;
     }
 
     @Bean
     public ISpringTemplateEngine templateEngine() {
-      SpringTemplateEngine engine = new SpringTemplateEngine();
-      engine.setEnableSpringELCompiler(true);
-      engine.setTemplateResolver(templateResolver());
-      engine.addDialect(new SpringSecurityDialect());
-      return engine;
+        SpringTemplateEngine engine = new SpringTemplateEngine();
+        engine.setEnableSpringELCompiler(true);
+        engine.setTemplateResolver(templateResolver());
+        engine.addDialect(new SpringSecurityDialect());
+        return engine;
     }
 
     private ITemplateResolver templateResolver() {
-      SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
-      resolver.setApplicationContext(applicationContext);
-      resolver.setPrefix("/WEB-INF/templates/");
-      resolver.setSuffix(".html");
-      resolver.setTemplateMode(TemplateMode.HTML);
-      return resolver;
+        SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
+        resolver.setApplicationContext(applicationContext);
+        resolver.setPrefix("/WEB-INF/templates/");
+        resolver.setSuffix(".html");
+        resolver.setTemplateMode(TemplateMode.HTML);
+        return resolver;
     }
 
 }

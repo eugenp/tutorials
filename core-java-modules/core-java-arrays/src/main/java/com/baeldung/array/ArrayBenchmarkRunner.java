@@ -6,16 +6,16 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 public class ArrayBenchmarkRunner {
 
-  public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
-    Options options = new OptionsBuilder()
-        .include(SearchArrayUnitTest.class.getSimpleName()).threads(1)
-        .forks(1).shouldFailOnError(true).shouldDoGC(true)
-        .jvmArgs("-server").build();
+        Options options = new OptionsBuilder()
+                .include(SearchArrayUnitTest.class.getSimpleName()).threads(1)
+                .forks(1).shouldFailOnError(true).shouldDoGC(true)
+                .jvmArgs("-server").build();
 
-    new Runner(options).run();
+        new Runner(options).run();
 
 
-  }
+    }
 
 }

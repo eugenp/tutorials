@@ -48,7 +48,7 @@ public class DomainOrderService implements OrderService {
 
     private Order getOrder(UUID id) {
         return orderRepository
-          .findById(id)
-          .orElseThrow(() -> new RuntimeException("Order with given id doesn't exist"));
+                .findById(id)
+                .orElseThrow(() -> new RuntimeException("Order with given id doesn't exist"));
     }
 }

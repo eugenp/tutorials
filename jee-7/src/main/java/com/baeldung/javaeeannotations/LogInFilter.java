@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
   description = "Filter all account transaction URLs"
   )*/
 public class LogInFilter implements javax.servlet.Filter {
-    
+
     public void init(FilterConfig filterConfig) throws ServletException {
     }
 
@@ -30,7 +30,7 @@ public class LogInFilter implements javax.servlet.Filter {
     }
 
     public void destroy() {
-        
+
     }
 
 }

@@ -13,7 +13,7 @@ public class SingleEventPrintConsumer implements EventConsumer {
     @SuppressWarnings("unchecked")
     public EventHandler<ValueEvent>[] getEventHandler() {
         final EventHandler<ValueEvent> eventHandler = (event, sequence, endOfBatch) -> print(event.getValue(), sequence);
-        return new EventHandler[] { eventHandler };
+        return new EventHandler[]{eventHandler};
     }
 
     private void print(final int id, final long sequenceId) {

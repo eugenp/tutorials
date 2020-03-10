@@ -40,11 +40,12 @@ public class EmployeeController {
         return new ModelAndView("employeeHome", "employee", new Employee());
     }
 
-    @RequestMapping(value = "/employee/{Id}", produces = { "application/json", "application/xml" }, method = RequestMethod.GET)
-    public @ResponseBody Employee getEmployeeById(@PathVariable final long Id) {
+    @RequestMapping(value = "/employee/{Id}", produces = {"application/json", "application/xml"}, method = RequestMethod.GET)
+    public @ResponseBody
+    Employee getEmployeeById(@PathVariable final long Id) {
         return employeeMap.get(Id);
     }
-    
+
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
     public String submit(@ModelAttribute("employee") final Employee employee, final BindingResult result, final ModelMap model) {
         if (result.hasErrors()) {

@@ -1,4 +1,6 @@
-package ${package};
+package $
+
+{package};
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

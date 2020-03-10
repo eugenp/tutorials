@@ -1,5 +1,5 @@
-import { SpyObject } from './spyobject';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {SpyObject} from './spyobject';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import Spy = jasmine.Spy;
 
 export class MockActiveModal extends SpyObject {

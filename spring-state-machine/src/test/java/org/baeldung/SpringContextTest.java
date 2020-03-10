@@ -12,9 +12,9 @@ import com.baeldung.spring.statemachine.config.SimpleEnumStateMachineConfigurati
 import com.baeldung.spring.statemachine.config.SimpleStateMachineConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SimpleStateMachineConfiguration.class, SimpleEnumStateMachineConfiguration.class,
-		JunctionStateMachineConfiguration.class, HierarchicalStateMachineConfiguration.class,
-		ForkJoinStateMachineConfiguration.class })
+@ContextConfiguration(classes = {SimpleStateMachineConfiguration.class, SimpleEnumStateMachineConfiguration.class,
+        JunctionStateMachineConfiguration.class, HierarchicalStateMachineConfiguration.class,
+        ForkJoinStateMachineConfiguration.class})
 public class SpringContextTest {
 
     @Test

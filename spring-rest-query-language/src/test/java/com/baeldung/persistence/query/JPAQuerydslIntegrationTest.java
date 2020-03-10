@@ -21,7 +21,7 @@ import com.baeldung.persistence.model.MyUser;
 import com.baeldung.spring.PersistenceConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class })
+@ContextConfiguration(classes = {PersistenceConfig.class})
 @Transactional
 @Rollback
 public class JPAQuerydslIntegrationTest {

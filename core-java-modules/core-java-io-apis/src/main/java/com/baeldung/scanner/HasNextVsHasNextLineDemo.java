@@ -16,11 +16,11 @@ public class HasNextVsHasNextLineDemo {
 
 
     private static final String INPUT = new StringBuilder()
-        .append("magic\tproject\n")
-        .append("     database: oracle\n")
-        .append("dependencies:\n")
-        .append("spring:foo:bar\n")
-        .append("\n").toString();
+            .append("magic\tproject\n")
+            .append("     database: oracle\n")
+            .append("dependencies:\n")
+            .append("spring:foo:bar\n")
+            .append("\n").toString();
 
     private static void hasNextBasic() {
         printHeader("hasNext() Basic");

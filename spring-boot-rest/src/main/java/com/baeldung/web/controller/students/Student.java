@@ -1,19 +1,20 @@
 package com.baeldung.web.controller.students;
 
 public class Student {
-    
+
     private long id;
     private String firstName;
     private String lastName;
-    
-    public Student() {}
-    
+
+    public Student() {
+    }
+
     public Student(String firstName, String lastName) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
     }
-    
+
     public Student(long id, String firstName, String lastName) {
         super();
         this.id = id;

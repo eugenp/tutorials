@@ -19,12 +19,12 @@ import static org.hamcrest.text.StringContainsInOrder.stringContainsInOrder;
 import static org.junit.Assert.assertThat;
 
 public class HamcrestTextUnitTest {
-    
+
     @Test
     public final void whenTwoStringsAreEqual_thenCorrect() {
         String first = "hello";
         String second = "Hello";
-        
+
         assertThat(first, equalToIgnoringCase(second));
     }
 
@@ -32,7 +32,7 @@ public class HamcrestTextUnitTest {
     public final void whenTwoStringsAreEqualWithWhiteSpace_thenCorrect() {
         String first = "hello";
         String second = "   Hello   ";
-        
+
         assertThat(first, equalToIgnoringWhiteSpace(second));
     }
 
@@ -66,32 +66,32 @@ public class HamcrestTextUnitTest {
     @Test
     public final void whenVerifyStringContains_thenCorrect() {
         String first = "hello";
-    
+
         assertThat(first, containsString("lo"));
         assertThat(first, containsStringIgnoringCase("EL"));
     }
-    
+
     @Test
     public final void whenVerifyStringContainsInOrder_thenCorrect() {
         String first = "hello";
-    
-        assertThat(first, stringContainsInOrder("e","l","o"));
+
+        assertThat(first, stringContainsInOrder("e", "l", "o"));
     }
-    
+
     @Test
     public final void whenVerifyStringStartsWith_thenCorrect() {
         String first = "hello";
-    
+
         assertThat(first, startsWith("he"));
         assertThat(first, startsWithIgnoringCase("HEL"));
     }
-    
+
     @Test
     public final void whenVerifyStringEndsWith_thenCorrect() {
         String first = "hello";
-    
+
         assertThat(first, endsWith("lo"));
         assertThat(first, endsWithIgnoringCase("LO"));
     }
-    
+
 }

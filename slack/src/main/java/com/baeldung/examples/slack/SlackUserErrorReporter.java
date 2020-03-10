@@ -30,22 +30,22 @@ public class SlackUserErrorReporter implements ErrorReporter {
     public void reportProblem(String problem) {
         LOG.debug("Sending message to user {}: {}", user, problem);
         UsersInfoResponse usersInfoResponse = slackClient
-            .lookupUserByEmail(UserEmailParams.builder()
-                .setEmail(user)
-                .build()
-            ).join().unwrapOrElseThrow();
+                .lookupUserByEmail(UserEmailParams.builder()
+                        .setEmail(user)
+                        .build()
+                ).join().unwrapOrElseThrow();
 
         ImOpenResponse imOpenResponse = slackClient.openIm(ImOpenParams.builder()
-            .setUserId(usersInfoResponse.getUser().getId())
-            .build()
+                .setUserId(usersInfoResponse.getUser().getId())
+                .build()
         ).join().unwrapOrElseThrow();
 
         imOpenResponse.getChannel().ifPresent(channel -> {
             slackClient.postMessage(
-                ChatPostMessageParams.builder()
-                    .setText(problem)
-                    .setChannelId(channel.getId())
-                    .build()
+                    ChatPostMessageParams.builder()
+                            .setText(problem)
+                            .setChannelId(channel.getId())
+                            .build()
             ).join().unwrapOrElseThrow();
         });
     }

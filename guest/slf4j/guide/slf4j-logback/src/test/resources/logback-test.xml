@@ -3,6 +3,6 @@
     <appender name="LISTAPPENDER" class="com.stackify.slf4j.guide.utils.ListAppender">
     </appender>
     <root level="trace">
-        <appender-ref ref="LISTAPPENDER" />
+        <appender-ref ref="LISTAPPENDER"/>
     </root>
 </configuration>

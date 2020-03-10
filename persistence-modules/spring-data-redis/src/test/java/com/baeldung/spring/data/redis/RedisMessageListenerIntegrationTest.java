@@ -27,16 +27,16 @@ import redis.embedded.RedisServerBuilder;
 public class RedisMessageListenerIntegrationTest {
 
     private static redis.embedded.RedisServer redisServer;
-    
+
     @Autowired
     private RedisMessagePublisher redisMessagePublisher;
-    
+
     @BeforeClass
     public static void startRedisServer() throws IOException {
         redisServer = new RedisServerBuilder().port(6379).setting("maxmemory 256M").build();
         redisServer.start();
     }
-    
+
     @AfterClass
     public static void stopRedisServer() throws IOException {
         redisServer.stop();

@@ -1,5 +1,8 @@
 #!/bin/bash
-SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+SCRIPTPATH="$(
+  cd "$(dirname "$0")"
+  pwd -P
+)"
 . $SCRIPTPATH/vault-env.sh
 
 # Please replace the unseal keys below for your own

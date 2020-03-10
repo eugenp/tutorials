@@ -18,7 +18,7 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ClientConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {ClientConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class ClientLiveTest {
 
     @Autowired

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ExampleThree", description = "JSP Servlet With Annotations", urlPatterns = { "/ExampleThree" })
+@WebServlet(name = "ExampleThree", description = "JSP Servlet With Annotations", urlPatterns = {"/ExampleThree"})
 public class ExampleThree extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

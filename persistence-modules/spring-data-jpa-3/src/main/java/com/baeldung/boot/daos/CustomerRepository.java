@@ -8,12 +8,11 @@ import com.baeldung.boot.domain.Customer;
 
 /**
  * JPA CrudRepository interface
- * 
- * @author ysharma2512
  *
+ * @author ysharma2512
  */
 @Repository
 @Transactional
-public interface CustomerRepository extends CrudRepository<Customer, Long>{
+public interface CustomerRepository extends CrudRepository<Customer, Long> {
 
 }

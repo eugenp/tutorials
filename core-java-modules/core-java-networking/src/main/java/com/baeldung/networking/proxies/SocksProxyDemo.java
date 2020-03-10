@@ -16,15 +16,15 @@ public class SocksProxyDemo {
     public static void main(String... args) throws IOException {
 
         URL weburl = new URL(URL_STRING);
-        Proxy socksProxy 
-          = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress("127.0.0.1", 1080));
-        HttpURLConnection socksConnection 
-          = (HttpURLConnection) weburl.openConnection(socksProxy);
+        Proxy socksProxy
+                = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress("127.0.0.1", 1080));
+        HttpURLConnection socksConnection
+                = (HttpURLConnection) weburl.openConnection(socksProxy);
         System.out.println(UrlConnectionUtils.contentAsString(socksConnection));
 
         Socket proxySocket = new Socket(socksProxy);
-        InetSocketAddress socketHost 
-          = new InetSocketAddress(SOCKET_SERVER_HOST, SOCKET_SERVER_PORT);
+        InetSocketAddress socketHost
+                = new InetSocketAddress(SOCKET_SERVER_HOST, SOCKET_SERVER_PORT);
         proxySocket.connect(socketHost);
         // do stuff with the socket
     }

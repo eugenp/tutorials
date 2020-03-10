@@ -37,10 +37,10 @@ public class IgniteStream {
         Path path = Paths.get(IgniteStream.class.getResource("employees.txt").toURI());
 
         Files.lines(path)
-          .forEach(line -> {
-              Employee employee = GSON.fromJson(line, Employee.class);
-              streamer.addData(employee.getId(), employee);
-          });
-    }    
-    
+                .forEach(line -> {
+                    Employee employee = GSON.fromJson(line, Employee.class);
+                    streamer.addData(employee.getId(), employee);
+                });
+    }
+
 }

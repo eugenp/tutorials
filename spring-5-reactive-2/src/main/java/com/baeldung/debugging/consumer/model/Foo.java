@@ -19,9 +19,9 @@ public class Foo {
 
     public Foo(FooDto dto) {
         this.id = (ThreadLocalRandom.current()
-            .nextInt(0, 100) == 0) ? null : dto.getId();
+                .nextInt(0, 100) == 0) ? null : dto.getId();
         this.formattedName = dto.getName();
         this.quantity = ThreadLocalRandom.current()
-            .nextInt(0, 10);
+                .nextInt(0, 10);
     }
 }

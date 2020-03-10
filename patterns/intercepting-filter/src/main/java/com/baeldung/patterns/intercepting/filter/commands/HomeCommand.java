@@ -10,7 +10,7 @@ public class HomeCommand extends FrontCommand {
     public void process() throws ServletException, IOException {
         super.process();
         Bookshelf bookshelf = (Bookshelf) request.getServletContext()
-          .getAttribute("bookshelf");
+                .getAttribute("bookshelf");
         request.setAttribute("books", bookshelf);
         forward("home");
     }

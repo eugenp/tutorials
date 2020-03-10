@@ -7,8 +7,8 @@ import spock.lang.Stepwise
 @Stepwise
 class StepwiseTest extends Specification {
 
-    def 'I will run as first'() { }
+    def 'I will run as first'() {}
 
-    def 'I will run as second'() { }
+    def 'I will run as second'() {}
 
 }

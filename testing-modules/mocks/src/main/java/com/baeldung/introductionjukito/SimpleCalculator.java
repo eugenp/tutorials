@@ -4,7 +4,7 @@ public class SimpleCalculator implements Calculator {
 
     @Override
     public double add(double a, double b) {
-        return a+b;
+        return a + b;
     }
 
 }

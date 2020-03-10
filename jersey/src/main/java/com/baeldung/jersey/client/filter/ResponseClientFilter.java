@@ -20,7 +20,7 @@ public class ResponseClientFilter implements ClientResponseFilter {
         LOG.info("Response client filter");
 
         responseContext.getHeaders()
-            .add("X-Test-Client", "Test response client filter");
+                .add("X-Test-Client", "Test response client filter");
     }
 
 }

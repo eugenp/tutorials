@@ -31,7 +31,7 @@ public class UserRoleService {
         return securityContext.getAuthentication().getName();
     }
 
-    @Secured({ "ROLE_VIEWER", "ROLE_EDITOR" })
+    @Secured({"ROLE_VIEWER", "ROLE_EDITOR"})
     public boolean isValidUsername(String username) {
         return userRoleRepository.isValidUsername(username);
     }
@@ -42,7 +42,7 @@ public class UserRoleService {
         return securityContext.getAuthentication().getName();
     }
 
-    @RolesAllowed({ "ROLE_VIEWER", "ROLE_EDITOR" })
+    @RolesAllowed({"ROLE_VIEWER", "ROLE_EDITOR"})
     public boolean isValidUsername2(String username) {
         return userRoleRepository.isValidUsername(username);
     }

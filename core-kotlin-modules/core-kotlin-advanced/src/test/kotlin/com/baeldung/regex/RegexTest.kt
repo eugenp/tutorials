@@ -103,8 +103,8 @@ class RegexTest {
     fun whenComplexReplace_thenReplacement() {
         val regex = """(red|green|blue)""".toRegex()
         val beautiful = "Roses are red, Violets are blue"
-        val reallyBeautiful = regex.replace(beautiful) {
-            matchResult ->  matchResult.value.toUpperCase() + "!"
+        val reallyBeautiful = regex.replace(beautiful) { matchResult ->
+            matchResult.value.toUpperCase() + "!"
         }
 
         assertEquals("Roses are RED!, Violets are BLUE!", reallyBeautiful)

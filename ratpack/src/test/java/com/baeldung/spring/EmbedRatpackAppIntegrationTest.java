@@ -19,23 +19,23 @@ public class EmbedRatpackAppIntegrationTest {
     @Test
     public void whenSayHello_thenGotWelcomeMessage() {
         assertEquals("hello baeldung!", appUnderTest
-          .getHttpClient()
-          .getText("/hello"));
+                .getHttpClient()
+                .getText("/hello"));
     }
 
     @Test
     public void whenRequestList_thenGotArticles() throws IOException {
         assertEquals(3, appUnderTest
-          .getHttpClient()
-          .getText("/list")
-          .split(",").length);
+                .getHttpClient()
+                .getText("/list")
+                .split(",").length);
     }
 
     @Test
     public void whenRequestStaticResource_thenGotStaticContent() {
         assertThat(appUnderTest
-          .getHttpClient()
-          .getText("/"), containsString("page is static"));
+                .getHttpClient()
+                .getText("/"), containsString("page is static"));
     }
 
 }

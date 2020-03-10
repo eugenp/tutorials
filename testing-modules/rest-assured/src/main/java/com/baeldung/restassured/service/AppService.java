@@ -25,10 +25,10 @@ public class AppService {
 
     public Movie findMovie(int id) {
         return movieSet.stream()
-            .filter(movie -> movie.getId()
-                .equals(id))
-            .findFirst()
-            .orElse(null);
+                .filter(movie -> movie.getId()
+                        .equals(id))
+                .findFirst()
+                .orElse(null);
     }
 
     public File getFile(int id) {

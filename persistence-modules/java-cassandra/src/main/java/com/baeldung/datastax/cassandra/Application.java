@@ -35,7 +35,7 @@ public class Application {
 
         videoRepository.insertVideo(new Video("Video Title 1", Instant.now()));
         videoRepository.insertVideo(new Video("Video Title 2",
-            Instant.now().minus(1, ChronoUnit.DAYS)));
+                Instant.now().minus(1, ChronoUnit.DAYS)));
 
         List<Video> videos = videoRepository.selectAll();
 

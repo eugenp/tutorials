@@ -27,13 +27,13 @@ public class MetricObserverManualTest extends MetricTestBase {
     @Test
     public void givenMetrics_whenRegister_thenMonitored() throws InterruptedException {
         Gauge<Double> gauge = new BasicGauge<>(MonitorConfig
-          .builder("test")
-          .build(), () -> 2.32);
+                .builder("test")
+                .build(), () -> 2.32);
         assertEquals(2.32, gauge.getValue(), 0.01);
 
         DefaultMonitorRegistry
-          .getInstance()
-          .register(gauge);
+                .getInstance()
+                .register(gauge);
 
         for (int i = 0; i < 2; i++) {
             SECONDS.sleep(1);

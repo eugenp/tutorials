@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
-  name = "BankAccountServlet", 
-  description = "Represents a Bank Account and it's transactions", 
-  urlPatterns = {"/account", "/bankAccount" }, 
-  initParams = { @WebInitParam(name = "type", value = "savings") }
-  )
+        name = "BankAccountServlet",
+        description = "Represents a Bank Account and it's transactions",
+        urlPatterns = {"/account", "/bankAccount"},
+        initParams = {@WebInitParam(name = "type", value = "savings")}
+)
 /*@ServletSecurity(
   value = @HttpConstraint(rolesAllowed = {"Member"}),
   httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"Admin"})}
@@ -36,13 +36,13 @@ public class AccountServlet extends javax.servlet.http.HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        
+
         double accountBalance = 1000d;
         String paramDepositAmt = request.getParameter("dep");
         double depositAmt = Double.parseDouble(paramDepositAmt);
 
         accountBalance = accountBalance + depositAmt;
-        
+
         PrintWriter writer = response.getWriter();
         writer.println("<html> Balance of " + accountType + " account is: " + accountBalance + "</html>");
         writer.flush();

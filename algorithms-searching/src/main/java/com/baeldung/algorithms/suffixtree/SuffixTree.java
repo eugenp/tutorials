@@ -32,8 +32,8 @@ public class SuffixTree {
             if (lastNode != null) {
                 List<Integer> positions = getPositions(lastNode);
                 positions = positions.stream()
-                    .sorted()
-                    .collect(Collectors.toList());
+                        .sorted()
+                        .collect(Collectors.toList());
                 positions.forEach(m -> result.add((markPatternInText(m, pattern))));
             }
         }
@@ -51,8 +51,8 @@ public class SuffixTree {
             String newText = suffix;
             if (nodes.size() > 0) {
                 String existingSuffixUptoLastNode = nodes.stream()
-                    .map(a -> a.getText())
-                    .reduce("", String::concat);
+                        .map(a -> a.getText())
+                        .reduce("", String::concat);
 
                 // Remove prefix from newText already included in parent
                 newText = newText.substring(existingSuffixUptoLastNode.length());
@@ -65,13 +65,13 @@ public class SuffixTree {
     private List<Integer> getPositions(Node node) {
         List<Integer> positions = new ArrayList<>();
         if (node.getText()
-            .endsWith(WORD_TERMINATION)) {
+                .endsWith(WORD_TERMINATION)) {
             positions.add(node.getPosition());
         }
         for (int i = 0; i < node.getChildren()
-            .size(); i++) {
+                .size(); i++) {
             positions.addAll(getPositions(node.getChildren()
-                .get(i)));
+                    .get(i)));
         }
         return positions;
     }
@@ -85,7 +85,7 @@ public class SuffixTree {
 
     private void addChildNode(Node parentNode, String text, int position) {
         parentNode.getChildren()
-            .add(new Node(text, position));
+                .add(new Node(text, position));
     }
 
     private void extendNode(Node node, String newText, int position) {
@@ -106,17 +106,17 @@ public class SuffixTree {
         Node childNode = new Node(childNewText, parentNode.getPosition());
 
         if (parentNode.getChildren()
-            .size() > 0) {
-            while (parentNode.getChildren()
                 .size() > 0) {
+            while (parentNode.getChildren()
+                    .size() > 0) {
                 childNode.getChildren()
-                    .add(parentNode.getChildren()
-                        .remove(0));
+                        .add(parentNode.getChildren()
+                                .remove(0));
             }
         }
 
         parentNode.getChildren()
-            .add(childNode);
+                .add(childNode);
         parentNode.setText(parentNewText);
         parentNode.setPosition(POSITION_UNDEFINED);
     }
@@ -134,9 +134,9 @@ public class SuffixTree {
     private List<Node> getAllNodesInTraversePath(String pattern, Node startNode, boolean isAllowPartialMatch) {
         List<Node> nodes = new ArrayList<>();
         for (int i = 0; i < startNode.getChildren()
-            .size(); i++) {
+                .size(); i++) {
             Node currentNode = startNode.getChildren()
-                .get(i);
+                    .get(i);
             String nodeText = currentNode.getText();
             if (pattern.charAt(0) == nodeText.charAt(0)) {
                 if (isAllowPartialMatch && pattern.length() <= nodeText.length()) {

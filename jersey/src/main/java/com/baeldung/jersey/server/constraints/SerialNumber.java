@@ -10,12 +10,12 @@ import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = { SerialNumber.Validator.class })
+@Constraint(validatedBy = {SerialNumber.Validator.class})
 public @interface SerialNumber {
 
     String message()
 
-    default "Fruit serial number is not valid";
+            default "Fruit serial number is not valid";
 
     Class<?>[] groups() default {};
 

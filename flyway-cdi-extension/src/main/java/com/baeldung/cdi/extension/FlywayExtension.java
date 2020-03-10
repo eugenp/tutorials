@@ -55,7 +55,9 @@ public class FlywayExtension implements Extension {
     void afterBeanDiscovery(@Observes AfterBeanDiscovery abdEvent, BeanManager bm) {
         abdEvent.addBean()
                 .types(javax.sql.DataSource.class, DataSource.class)
-                .qualifiers(new AnnotationLiteral<Default>() {}, new AnnotationLiteral<Any>() {})
+                .qualifiers(new AnnotationLiteral<Default>() {
+                }, new AnnotationLiteral<Any>() {
+                })
                 .scope(ApplicationScoped.class)
                 .name(DataSource.class.getName())
                 .beanClass(DataSource.class)
@@ -68,7 +70,8 @@ public class FlywayExtension implements Extension {
     }
 
     void runFlywayMigration(@Observes AfterDeploymentValidation adv, BeanManager manager) {
-        Flyway flyway = manager.createInstance().select(Flyway.class, new AnnotationLiteral<FlywayType>() {}).get();
+        Flyway flyway = manager.createInstance().select(Flyway.class, new AnnotationLiteral<FlywayType>() {
+        }).get();
         flyway.migrate();
     }
 }

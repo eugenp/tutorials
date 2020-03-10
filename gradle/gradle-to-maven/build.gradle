@@ -32,8 +32,8 @@ install {
                     }
                 }
             }
-            pom.whenConfigured {pom ->
-                pom.dependencies.find {dep -> dep.groupId == 'junit' && dep.artifactId == 'junit' }.optional = true
+            pom.whenConfigured { pom ->
+                pom.dependencies.find { dep -> dep.groupId == 'junit' && dep.artifactId == 'junit' }.optional = true
             }
             pom.writeTo("${mavenPomDir}/${project.group}/${project.name}/pom.xml")
         }

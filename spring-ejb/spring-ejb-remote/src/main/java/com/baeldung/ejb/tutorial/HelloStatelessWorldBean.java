@@ -8,5 +8,5 @@ public class HelloStatelessWorldBean implements HelloStatelessWorld {
     public String getHelloWorld() {
         return "Hello Stateless World!";
     }
- 
+
 }

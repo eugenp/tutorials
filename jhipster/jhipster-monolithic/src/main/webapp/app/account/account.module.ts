@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { BaeldungSharedModule } from '../shared';
+import {BaeldungSharedModule} from '../shared';
 
 import {
     Register,
@@ -22,7 +22,7 @@ import {
 @NgModule({
     imports: [
         BaeldungSharedModule,
-        RouterModule.forRoot(accountState, { useHash: true })
+        RouterModule.forRoot(accountState, {useHash: true})
     ],
     declarations: [
         ActivateComponent,
@@ -42,4 +42,5 @@ import {
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class BaeldungAccountModule {}
+export class BaeldungAccountModule {
+}

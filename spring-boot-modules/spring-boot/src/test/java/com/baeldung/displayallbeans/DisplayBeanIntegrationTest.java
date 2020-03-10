@@ -28,7 +28,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestPropertySource(properties = { "management.port=0", "management.endpoints.web.exposure.include=*" })
+@TestPropertySource(properties = {"management.port=0", "management.endpoints.web.exposure.include=*"})
 public class DisplayBeanIntegrationTest {
 
     @LocalServerPort
@@ -57,8 +57,8 @@ public class DisplayBeanIntegrationTest {
         ParameterizedTypeReference<Map<String, ContextBeans>> responseType = new ParameterizedTypeReference<Map<String, ContextBeans>>() {
         };
         RequestEntity<Void> requestEntity = RequestEntity.get(new URI("http://localhost:" + this.mgt + ACTUATOR_PATH + "/beans"))
-            .accept(MediaType.APPLICATION_JSON)
-            .build();
+                .accept(MediaType.APPLICATION_JSON)
+                .build();
         ResponseEntity<Map<String, ContextBeans>> entity = this.testRestTemplate.exchange(requestEntity, responseType);
 
         then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -67,12 +67,12 @@ public class DisplayBeanIntegrationTest {
     @Test
     public void givenRestTemplate_whenAccessEndpointUrl_thenReturnsBeanNames() throws Exception {
         RequestEntity<Void> requestEntity = RequestEntity.get(new URI("http://localhost:" + this.mgt + ACTUATOR_PATH + "/beans"))
-            .accept(MediaType.APPLICATION_JSON)
-            .build();
+                .accept(MediaType.APPLICATION_JSON)
+                .build();
         ResponseEntity<BeanActuatorResponse> entity = this.testRestTemplate.exchange(requestEntity, BeanActuatorResponse.class);
 
         Collection<String> beanNamesList = entity.getBody()
-            .getBeans();
+                .getBeans();
 
         assertThat(beanNamesList).contains("fooController", "fooService");
     }
@@ -90,8 +90,8 @@ public class DisplayBeanIntegrationTest {
 
         public Collection<String> getBeans() {
             return this.contexts.get("application")
-                .get("beans")
-                .keySet();
+                    .get("beans")
+                    .keySet();
         }
 
         public Map<String, Map<String, Map<String, Map<String, Object>>>> getContexts() {

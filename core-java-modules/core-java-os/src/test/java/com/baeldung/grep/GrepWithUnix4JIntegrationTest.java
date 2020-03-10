@@ -6,9 +6,12 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.unix4j.Unix4j;
+
 import static org.unix4j.Unix4j.*;
 import static org.junit.Assert.assertEquals;
+
 import org.unix4j.line.Line;
+
 import static org.unix4j.unix.Grep.*;
 import static org.unix4j.unix.cut.CutOption.*;
 
@@ -19,7 +22,7 @@ public class GrepWithUnix4JIntegrationTest {
     @Before
     public void init() {
         final String separator = File.separator;
-        final String filePath = String.join(separator, new String[] { "src", "test", "resources", "dictionary.in" });
+        final String filePath = String.join(separator, new String[]{"src", "test", "resources", "dictionary.in"});
         fileToGrep = new File(filePath);
     }
 

@@ -6,7 +6,7 @@ public class ThreadYield {
             int counter = 0;
             while (counter < 2) {
                 System.out.println(Thread.currentThread()
-                    .getName());
+                        .getName());
                 counter++;
                 Thread.yield();
             }

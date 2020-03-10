@@ -11,12 +11,12 @@ public class HystrixController {
     private SpringExistingClient client;
 
     @RequestMapping("/withHystrix")
-    public String withHystrix() throws InterruptedException{
+    public String withHystrix() throws InterruptedException {
         return client.invokeRemoteServiceWithHystrix();
     }
 
     @RequestMapping("/withOutHystrix")
-    public String withOutHystrix() throws InterruptedException{
+    public String withOutHystrix() throws InterruptedException {
         return client.invokeRemoteServiceWithOutHystrix();
     }
 }

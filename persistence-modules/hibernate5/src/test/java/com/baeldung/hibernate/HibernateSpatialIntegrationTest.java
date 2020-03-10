@@ -37,9 +37,11 @@ public class HibernateSpatialIntegrationTest {
     @Before
     public void setUp() throws IOException {
         session = HibernateUtil.getSessionFactory("hibernate-spatial.properties")
-          .openSession();
+                .openSession();
         transaction = session.beginTransaction();
-        session.doWork(conn -> { GeoDB.InitGeoDB(conn); });
+        session.doWork(conn -> {
+            GeoDB.InitGeoDB(conn);
+        });
     }
 
     @After
@@ -73,7 +75,7 @@ public class HibernateSpatialIntegrationTest {
 
         Point point = (Point) wktToGeometry("POINT (3 4)");
         Query query = session.createQuery("select p from PointEntity p "
-          + "where disjoint(p.point, :point) = true", PointEntity.class);
+                + "where disjoint(p.point, :point) = true", PointEntity.class);
         query.setParameter("point", point);
         assertEquals("POINT (1 2)", ((PointEntity) query.getResultList().get(0)).getPoint().toString());
         assertEquals("POINT (5 6)", ((PointEntity) query.getResultList().get(1)).getPoint().toString());
@@ -87,10 +89,10 @@ public class HibernateSpatialIntegrationTest {
         insertPoint("POINT (5 6)");
 
         Query query = session.createQuery("select p from PointEntity p where within(p.point, :area) = true",
-          PointEntity.class);
+                PointEntity.class);
         query.setParameter("area", wktToGeometry("POLYGON((0 0, 0 5, 5 5, 5 0, 0 0))"));
         assertThat(query.getResultList().stream().map(p -> ((PointEntity) p).getPoint().toString()))
-          .containsOnly("POINT (1 1)", "POINT (1 2)", "POINT (3 4)");
+                .containsOnly("POINT (1 1)", "POINT (1 2)", "POINT (3 4)");
     }
 
     @Test
@@ -101,11 +103,11 @@ public class HibernateSpatialIntegrationTest {
         insertPoint("POINT (5 6)");
 
         Query query = session.createQuery("select p from PointEntity p where within(p.point, :circle) = true",
-          PointEntity.class);
+                PointEntity.class);
         query.setParameter("circle", createCircle(0.0, 0.0, 5));
 
         assertThat(query.getResultList().stream().map(p -> ((PointEntity) p).getPoint().toString()))
-          .containsOnly("POINT (1 1)", "POINT (1 2)");
+                .containsOnly("POINT (1 1)", "POINT (1 2)");
     }
 
     @Test
@@ -115,10 +117,10 @@ public class HibernateSpatialIntegrationTest {
         insertPolygon("POLYGON ((2 2, 3 1, 2 5, 4 3, 3 3, 2 2))");
 
         Query query = session.createQuery("select p from PolygonEntity p where touches(p.polygon, :polygon) = true",
-          PolygonEntity.class);
+                PolygonEntity.class);
         query.setParameter("polygon", wktToGeometry("POLYGON ((5 5, 5 10, 10 10, 10 5, 5 5))"));
         assertThat(query.getResultList().stream().map(p -> ((PolygonEntity) p).getPolygon().toString()))
-          .containsOnly("POLYGON ((0 0, 0 5, 5 5, 5 0, 0 0))", "POLYGON ((3 0, 3 5, 8 5, 8 0, 3 0))");
+                .containsOnly("POLYGON ((0 0, 0 5, 5 5, 5 0, 0 0))", "POLYGON ((3 0, 3 5, 8 5, 8 0, 3 0))");
     }
 
     private void insertPoint(String point) throws ParseException {
@@ -147,12 +149,12 @@ public class HibernateSpatialIntegrationTest {
         shapeFactory.setSize(radius * 2);
         return shapeFactory.createCircle();
     }
-    
+
     public static Properties getProperties(String propertyFile) throws IOException {
         Properties properties = new Properties();
         URL propertiesURL = Thread.currentThread()
-          .getContextClassLoader()
-          .getResource(propertyFile);
+                .getContextClassLoader()
+                .getResource(propertyFile);
         try (FileInputStream inputStream = new FileInputStream(propertiesURL.getFile())) {
             properties.load(inputStream);
         }

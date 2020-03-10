@@ -52,14 +52,14 @@ public class AggregationLiveTest {
         InputStream is = AggregationLiveTest.class.getResourceAsStream(DATASET_JSON);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         reader.lines()
-            .forEach(line -> collection.insertOne(Document.parse(line)));
+                .forEach(line -> collection.insertOne(Document.parse(line)));
         reader.close();
     }
 
     @Test
     public void givenCountryCollection_whenEnglishSpeakingCountriesCounted_thenNinetyOne() {
         Document englishSpeakingCountries = collection.aggregate(Arrays.asList(match(Filters.eq("languages.name", "English")), count()))
-            .first();
+                .first();
 
         assertEquals(91, englishSpeakingCountries.get("count"));
     }
@@ -68,14 +68,14 @@ public class AggregationLiveTest {
     public void givenCountryCollection_whenAreaSortedDescending_thenSuccess() {
 
         collection.aggregate(Arrays.asList(sort(Sorts.descending("area")), limit(7), out("largest_seven")))
-            .toCollection();
+                .toCollection();
 
         MongoCollection<Document> largestSeven = database.getCollection("largest_seven");
 
         assertEquals(7, largestSeven.countDocuments());
 
         Document usa = largestSeven.find(Filters.eq("alpha3Code", "USA"))
-            .first();
+                .first();
 
         assertNotNull(usa);
     }
@@ -83,7 +83,7 @@ public class AggregationLiveTest {
     @Test
     public void givenCountryCollection_whenCountedRegionWise_thenMaxInAfrica() {
         Document maxCountriedRegion = collection.aggregate(Arrays.asList(group("$region", Accumulators.sum("tally", 1)), sort(Sorts.descending("tally"))))
-            .first();
+                .first();
         assertTrue(maxCountriedRegion.containsValue("Africa"));
     }
 
@@ -92,13 +92,13 @@ public class AggregationLiveTest {
         Bson borderingCountriesCollection = project(Projections.fields(Projections.excludeId(), Projections.include("name"), Projections.computed("borderingCountries", Projections.computed("$size", "$borders"))));
 
         int maxValue = collection.aggregate(Arrays.asList(borderingCountriesCollection, group(null, Accumulators.max("max", "$borderingCountries"))))
-            .first()
-            .getInteger("max");
+                .first()
+                .getInteger("max");
 
         assertEquals(15, maxValue);
 
         Document maxNeighboredCountry = collection.aggregate(Arrays.asList(borderingCountriesCollection, match(Filters.eq("borderingCountries", maxValue))))
-            .first();
+                .first();
         assertTrue(maxNeighboredCountry.containsValue("China"));
 
     }

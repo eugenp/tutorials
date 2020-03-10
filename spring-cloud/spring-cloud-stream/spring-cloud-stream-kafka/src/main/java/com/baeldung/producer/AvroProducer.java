@@ -32,11 +32,11 @@ public class AvroProducer {
         employeeKey.setDepartmentName("IT");
 
         Message<Employee> message = MessageBuilder.withPayload(employee)
-            .setHeader(KafkaHeaders.MESSAGE_KEY, employeeKey)
-            .build();
+                .setHeader(KafkaHeaders.MESSAGE_KEY, employeeKey)
+                .build();
 
         processor.output()
-            .send(message);
+                .send(message);
     }
 
 }
