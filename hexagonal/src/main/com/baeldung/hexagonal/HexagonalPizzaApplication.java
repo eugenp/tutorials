@@ -1,4 +1,4 @@
-package com.technopreneur.patterns;
+package com.baeldung.hexagonal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

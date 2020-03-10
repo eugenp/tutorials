@@ -1,8 +1,8 @@
-package com.technopreneur.patterns.port;
+package com.baeldung.hexagonal.port;
 
 import java.util.List;
 
-import com.technopreneur.patterns.core.domain.Pizza;
+import com.baeldung.hexagonal.core.domain.Pizza;
 
 public interface PizzaService {
 	

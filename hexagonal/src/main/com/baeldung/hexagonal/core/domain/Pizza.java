@@ -1,4 +1,4 @@
-package com.technopreneur.patterns.core.domain;
+package com.baeldung.hexagonal.core.domain;
 
 import java.io.Serializable;
 

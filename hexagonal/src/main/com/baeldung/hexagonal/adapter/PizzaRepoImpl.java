@@ -1,4 +1,4 @@
-package com.technopreneur.patterns.adapter;
+package com.baeldung.hexagonal.adapter;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
-import com.technopreneur.patterns.core.domain.Pizza;
-import com.technopreneur.patterns.port.PizzaRepo;
+import com.baeldung.hexagonal.core.domain.Pizza;
+import com.baeldung.hexagonal.port.PizzaRepo;
 
 @Repository
 public class PizzaRepoImpl implements PizzaRepo {
