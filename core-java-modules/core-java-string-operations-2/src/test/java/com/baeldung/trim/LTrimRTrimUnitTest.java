@@ -67,15 +67,8 @@ public class LTrimRTrimUnitTest {
     @Test
     public void givenString_whenCallingStringUtilsStripStartEnd_thenReturnsTrue() {
         // Use StringUtils containsIgnoreCase to avoid case insensitive issues
-        String ltrim = org.apache.commons.lang3.StringUtils.stripStart(src, " ");
-        String rtrim = org.apache.commons.lang3.StringUtils.stripEnd(src, " ");
-        
-        // Compare the Strings obtained and the expected
-        Assert.assertTrue(ltrimResult.equalsIgnoreCase(ltrim));
-        Assert.assertTrue(rtrimResult.equalsIgnoreCase(rtrim));
-
-        ltrim = org.apache.commons.lang3.StringUtils.stripStart(src, null);
-        rtrim = org.apache.commons.lang3.StringUtils.stripEnd(src, null);
+        String ltrim = org.apache.commons.lang3.StringUtils.stripStart(src, null);
+        String rtrim = org.apache.commons.lang3.StringUtils.stripEnd(src, null);
 
         // Compare the Strings obtained and the expected
         Assert.assertTrue(ltrimResult.equalsIgnoreCase(ltrim));
