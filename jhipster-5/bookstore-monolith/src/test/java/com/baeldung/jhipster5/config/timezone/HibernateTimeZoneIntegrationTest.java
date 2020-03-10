@@ -24,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BookstoreApp.class)
-public class HibernateTimeZoneIntTest {
+public class HibernateTimeZoneIntegrationTest {
 
     @Autowired
     private DateTimeWrapperRepository dateTimeWrapperRepository;
