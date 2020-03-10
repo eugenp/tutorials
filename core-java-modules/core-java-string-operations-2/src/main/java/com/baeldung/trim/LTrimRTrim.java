@@ -114,11 +114,8 @@ public class LTrimRTrim {
     // Apache Commons StringUtils containsIgnoreCase
     @Benchmark
     public boolean apacheCommonsStringUtils() {
-        String ltrim = org.apache.commons.lang3.StringUtils.stripStart(src, " ");
-        String rtrim = org.apache.commons.lang3.StringUtils.stripEnd(src, " ");
-
-        ltrim = org.apache.commons.lang3.StringUtils.stripStart(src, null);
-        rtrim = org.apache.commons.lang3.StringUtils.stripEnd(src, null);
+        String ltrim = org.apache.commons.lang3.StringUtils.stripStart(src, null);
+        String rtrim = org.apache.commons.lang3.StringUtils.stripEnd(src, null);
 
         return checkStrings(ltrim, rtrim);
     }
