@@ -1,14 +1,14 @@
-package org.baeldung;
+package com.baeldung;
 
 import java.util.Arrays;
 import java.util.HashSet;
 
 import javax.annotation.PostConstruct;
 
-import org.baeldung.persistence.dao.RoleRepository;
-import org.baeldung.persistence.dao.UserRepository;
-import org.baeldung.persistence.model.Role;
-import org.baeldung.persistence.model.User;
+import com.baeldung.persistence.dao.RoleRepository;
+import com.baeldung.persistence.dao.UserRepository;
+import com.baeldung.persistence.model.Role;
+import com.baeldung.persistence.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
