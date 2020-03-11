@@ -409,7 +409,7 @@
                 <module>drools</module>
                 <module>dropwizard</module>
                 <module>dubbo</module>
-
+                <module>design-patterns</module>
                 <module>ethereum</module>
 
                 <module>feign</module>
