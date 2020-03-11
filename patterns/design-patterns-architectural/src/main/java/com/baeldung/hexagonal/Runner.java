@@ -1,8 +1,8 @@
 package com.baeldung.hexagonal;
 
-import com.baeldung.hexagonal.adapter.RegularDiscountCalculator;
-import com.baeldung.hexagonal.adapter.SalesDiscountCalculator;
-import com.baeldung.hexagonal.application.Application;
+import com.baeldung.hexagonal.adapter.PrimaryPriceCalculator;
+import com.baeldung.hexagonal.adapter.SecondaryRegularDiscountCalculator;
+import com.baeldung.hexagonal.adapter.SecondarySalesDiscountCalculator;
 import com.baeldung.hexagonal.port.PriceCalculator;
 import com.baeldung.hexagonal.port.DiscountCalculator;
 
@@ -20,9 +20,9 @@ public class Runner {
         }
 
         try {
-            DiscountCalculator provider = PARAMETERS[0].equalsIgnoreCase(args[0]) ? new RegularDiscountCalculator() : new SalesDiscountCalculator();
+            DiscountCalculator provider = PARAMETERS[0].equalsIgnoreCase(args[0]) ? new SecondaryRegularDiscountCalculator() : new SecondarySalesDiscountCalculator();
 
-            Application application = new Application(provider);
+            PrimaryPriceCalculator application = new PrimaryPriceCalculator(provider);
             useService(application, NUMBERS[0]);
             useService(application, NUMBERS[1]);
             useService(application, NUMBERS[2]);
