@@ -12,7 +12,7 @@ public class SingleLock extends ConcurrentAccessExperiment {
         lock = new ReentrantLock();
     }
 
-    protected synchronized Supplier<?> putSupplier(Map<String,String> map, int key) {
+    protected Supplier<?> putSupplier(Map<String,String> map, int key) {
         return (()-> {
             try {
                 lock.lock();
@@ -27,7 +27,7 @@ public class SingleLock extends ConcurrentAccessExperiment {
         });
     }
 
-    protected synchronized Supplier<?> getSupplier(Map<String,String> map, int key) {
+    protected Supplier<?> getSupplier(Map<String,String> map, int key) {
         return (()-> {
             try {
                 lock.lock();
