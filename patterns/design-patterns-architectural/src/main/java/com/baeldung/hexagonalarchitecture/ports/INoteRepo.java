@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface INoteRepo {
 
-        void save(Note note);
+    void save(Note note);
 
-        List<Note> findAll();
+    List<Note> findAll();
 }

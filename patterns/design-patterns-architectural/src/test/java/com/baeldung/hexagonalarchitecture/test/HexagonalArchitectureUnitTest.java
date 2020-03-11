@@ -11,16 +11,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class HexagonalArchitectureUnitTest {
 
-        @Test
-        public void givenAdapters_whenDomainCalled_thenTwoAssertions() {
+    @Test
+    public void givenAdapters_whenDomainCalled_thenTwoAssertions() {
 
-                NoteListRepoAdapter repo = new NoteListRepoAdapter();
-                NoteListServiceAdapter noteService = new NoteListServiceAdapter(repo);
+        NoteListRepoAdapter repo = new NoteListRepoAdapter();
+        NoteListServiceAdapter noteService = new NoteListServiceAdapter(repo);
 
-                noteService.write("test");
-                List<Note> notes = noteService.read();
+        noteService.write("test");
+        List<Note> notes = noteService.read();
 
-                assertThat(notes.size()).isEqualTo(1);
-                assertThat(notes.get(0).getNumCharacters()).isEqualTo(4);
-        }
+        assertThat(notes.size()).isEqualTo(1);
+        assertThat(notes.get(0)
+            .getNumCharacters()).isEqualTo(4);
+    }
 }

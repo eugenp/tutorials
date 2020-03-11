@@ -8,21 +8,21 @@ import java.util.List;
 
 public class NoteListServiceAdapter implements INoteService {
 
-        private INoteRepo repo;
+    private INoteRepo repo;
 
-        public NoteListServiceAdapter(INoteRepo repo) {
-                this.repo = repo;
-        }
+    public NoteListServiceAdapter(INoteRepo repo) {
+        this.repo = repo;
+    }
 
-        @Override
-        public List<Note> read() {
-                return this.repo.findAll();
-        }
+    @Override
+    public List<Note> read() {
+        return this.repo.findAll();
+    }
 
-        @Override
-        public void write(String text) {
-                Note note = new Note();
-                note.setText(text);
-                repo.save(note);
-        }
+    @Override
+    public void write(String text) {
+        Note note = new Note();
+        note.setText(text);
+        repo.save(note);
+    }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface INoteService {
 
-        List<Note> read();
+    List<Note> read();
 
-        void write(String text);
+    void write(String text);
 }
