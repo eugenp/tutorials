@@ -1,4 +1,4 @@
-package org.baeldung;
+package com.baeldung;
 
 import io.katharsis.spring.boot.v3.KatharsisConfigV3;
 

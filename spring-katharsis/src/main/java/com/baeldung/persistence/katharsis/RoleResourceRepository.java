@@ -1,12 +1,12 @@
-package org.baeldung.persistence.katharsis;
+package com.baeldung.persistence.katharsis;
 
 
+import com.baeldung.persistence.dao.RoleRepository;
 import io.katharsis.queryspec.QuerySpec;
 import io.katharsis.repository.ResourceRepositoryV2;
 import io.katharsis.resource.list.ResourceList;
 
-import org.baeldung.persistence.dao.RoleRepository;
-import org.baeldung.persistence.model.Role;
+import com.baeldung.persistence.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

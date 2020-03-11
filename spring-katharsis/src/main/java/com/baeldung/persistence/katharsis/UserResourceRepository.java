@@ -1,11 +1,11 @@
-package org.baeldung.persistence.katharsis;
+package com.baeldung.persistence.katharsis;
 
+import com.baeldung.persistence.dao.UserRepository;
+import com.baeldung.persistence.model.User;
 import io.katharsis.queryspec.QuerySpec;
 import io.katharsis.repository.ResourceRepositoryV2;
 import io.katharsis.resource.list.ResourceList;
 
-import org.baeldung.persistence.dao.UserRepository;
-import org.baeldung.persistence.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
