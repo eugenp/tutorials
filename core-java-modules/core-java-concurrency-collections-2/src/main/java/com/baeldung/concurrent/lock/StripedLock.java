@@ -10,12 +10,7 @@ public class StripedLock extends ConcurrentAccessExperiment {
     Striped<Lock> lock;
 
     public StripedLock(int buckets) {
-        lock = getStripedLock(buckets);
-    }
-
-    private Striped<Lock> getStripedLock(int buckets) {
-        Striped<Lock> map = Striped.lock(buckets);
-        return map;
+        lock = Striped.lock(buckets);
     }
 
     protected synchronized Supplier<?> putSupplier(Map<String,String> map, int key) {
