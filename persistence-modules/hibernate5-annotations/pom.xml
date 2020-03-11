@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>hibernate5-annotations</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <name>hibernate5-annotations</name>
+    <packaging>jar</packaging>
+    <description>Hibernate tutorial illustrating the use of named parameters</description>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>persistence-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate-core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+        </dependency>
+
+        <dependency>
+        	<groupId>org.apache.commons</groupId>
+        	<artifactId>commons-lang3</artifactId>
+        	<version>${commons.lang3.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-testing</artifactId>
+            <version>${hibernate-core.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-spatial</artifactId>
+            <version>${hibernate-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.opengeo</groupId>
+            <artifactId>geodb</artifactId>
+            <version>${geodb.version}</version>
+        </dependency>
+    </dependencies>
+    
+    <repositories>
+        <repository>
+            <id>geodb-repo</id>
+            <name>GeoDB repository</name>
+            <url>http://repo.boundlessgeo.com/main/</url>
+        </repository>
+    </repositories>
+
+    <properties>
+        <hibernate-core.version>5.4.7.Final</hibernate-core.version>
+        <h2.version>1.4.200</h2.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
+        <maven.deploy.skip>true</maven.deploy.skip>
+        <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
+        <hibernate.core.version>5.4.7.Final</hibernate.core.version>
+        <h2.version>1.4.200</h2.version>
+        <commons.lang3.version>3.8.1</commons.lang3.version>
+        <geodb.version>0.9</geodb.version>
+    </properties>
+
+</project>
