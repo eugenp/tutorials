@@ -22,7 +22,8 @@ public class SingleLock extends ConcurrentAccessExperiment {
             } finally {
                 try {
                     lock.unlock();
-                } catch (Exception e) {}            }
+                } catch (Exception e) {}
+            }
             return null;
         });
     }
@@ -37,7 +38,8 @@ public class SingleLock extends ConcurrentAccessExperiment {
             } finally {
                 try {
                     lock.unlock();
-                } catch (Exception e) {}            }
+                } catch (Exception e) {}
+            }
             return null;
         });
     }
