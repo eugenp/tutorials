@@ -40,6 +40,7 @@ public class BlockingClientUnitTest {
 
             for (String line; (line = reader.readLine()) != null; ) {
                 ourStore.append(line);
+                ourStore.append(System.lineSeparator());
             }
         }
 
