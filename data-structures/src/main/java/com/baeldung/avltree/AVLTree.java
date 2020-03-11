@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.balancedbinarytree;
+package com.baeldung.avltree;
 
 public class AVLTree {
 
