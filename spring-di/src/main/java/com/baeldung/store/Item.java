@@ -1,4 +1,4 @@
-package org.baeldung.store;
+package com.baeldung.store;
 
 public interface Item {
 
