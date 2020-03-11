@@ -14,30 +14,30 @@ public class SingleLock extends ConcurrentAccessExperiment {
 
     protected synchronized Supplier<?> putSupplier(Map<String,String> map, int key) {
         return (()-> {
-            boolean done = false;
             try {
-                while(!done) {
-                    done = lock.tryLock();
-                }
+                lock.lock();
                 map.put("key" + key, "value" + key);
+            } catch (Exception e) {
+                this.putSupplier(map, key);
             } finally {
-                lock.unlock();
-            }
+                try {
+                    lock.unlock();
+                } catch (Exception e) {}            }
             return null;
         });
     }
 
     protected synchronized Supplier<?> getSupplier(Map<String,String> map, int key) {
         return (()-> {
-            boolean done = false;
             try {
-                while(!done) {
-                	done = lock.tryLock();
-                }
+                lock.lock();
                 map.get("key" + key);
+            } catch (Exception e) {
+                this.getSupplier(map, key);
             } finally {
-                lock.unlock();
-            }
+                try {
+                    lock.unlock();
+                } catch (Exception e) {}            }
             return null;
         });
     }
