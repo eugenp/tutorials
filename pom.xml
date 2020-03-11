@@ -6,6 +6,9 @@
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>design-patterns</module>
+    </modules>
     <name>parent-modules</name>
     <packaging>pom</packaging>
 
