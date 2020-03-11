@@ -4,7 +4,9 @@ import com.baeldung.hexagonalarchitecture.domain.Note;
 
 import java.util.List;
 
-public interface INoteReader {
+public interface INoteService {
 
-        List<Note> read(INoteRepo repo);
+        List<Note> read();
+
+        void write(String text);
 }
