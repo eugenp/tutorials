@@ -1,4 +1,4 @@
-package org.baeldung.store;
+package com.baeldung.store;
 
 import static org.junit.Assert.assertNotNull;
 

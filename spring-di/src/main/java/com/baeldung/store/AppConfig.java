@@ -1,4 +1,4 @@
-package org.baeldung.store;
+package com.baeldung.store;
 
 import org.springframework.context.annotation.Bean;
 

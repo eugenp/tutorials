@@ -1,4 +1,4 @@
-package org.baeldung.store;
+package com.baeldung.store;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
