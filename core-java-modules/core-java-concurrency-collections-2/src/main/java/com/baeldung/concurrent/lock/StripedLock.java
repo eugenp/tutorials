@@ -7,23 +7,25 @@ import com.google.common.base.Supplier;
 import com.google.common.util.concurrent.Striped;
 
 public class StripedLock extends ConcurrentAccessExperiment {
-    Striped<Lock> lock;
+    Striped<Lock> stripedLock;
 
     public StripedLock(int buckets) {
-        lock = Striped.lock(buckets);
+        stripedLock = Striped.lock(buckets);
     }
 
     protected synchronized Supplier<?> putSupplier(Map<String,String> map, int key) {
         return (()-> {
-            Lock currentLock = lock.get("key" + key);
-            boolean done = false;
+        	int bucket = key % stripedLock.size();
+            Lock lock = stripedLock.get(bucket);
             try {
-                while(!done) {
-                    done = currentLock.tryLock();
-                }
+                lock.tryLock();
                 map.put("key" + key, "value" + key);
+            } catch (Exception e) {
+                this.putSupplier(map, key);
             } finally {
-                currentLock.unlock();
+                try {
+                    lock.unlock();
+                } catch (Exception e) {}
             }
             return null;
         });
@@ -31,15 +33,17 @@ public class StripedLock extends ConcurrentAccessExperiment {
 
     protected synchronized Supplier<?> getSupplier(Map<String,String> map, int key) {
         return (()-> {
-            Lock currentLock = lock.get("key" + key);
-            boolean done = false;
+        	int bucket = key % stripedLock.size();
+            Lock lock = stripedLock.get(bucket);
             try {
-                while(!done) {
-                    done = currentLock.tryLock();
-                }
+                lock.tryLock();
                 map.get("key" + key);
+            } catch (Exception e) {
+                this.getSupplier(map, key);
             } finally {
-                currentLock.unlock();
+                try {
+                    lock.unlock();
+                } catch (Exception e) {}
             }
             return null;
         });
