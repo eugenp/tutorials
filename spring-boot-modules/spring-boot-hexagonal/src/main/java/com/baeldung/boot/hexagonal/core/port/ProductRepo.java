@@ -1,4 +1,4 @@
-package com.baeldung.boot.hexagonal.port;
+package com.baeldung.boot.hexagonal.core.port;
 
 import com.baeldung.boot.hexagonal.core.domain.Product;
 

@@ -1,8 +1,7 @@
 package com.baeldung.boot.hexagonal.adapter;
 
 import com.baeldung.boot.hexagonal.core.domain.Product;
-import com.baeldung.boot.hexagonal.port.ProductService;
-import com.baeldung.boot.hexagonal.web.ProductResource;
+import com.baeldung.boot.hexagonal.core.port.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/product")
-public class ProductController implements ProductResource {
+public class ProductController {
     @Autowired
     private ProductService productService;
 

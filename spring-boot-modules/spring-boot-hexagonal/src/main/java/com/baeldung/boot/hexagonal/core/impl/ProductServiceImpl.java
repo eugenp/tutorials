@@ -1,9 +1,8 @@
 package com.baeldung.boot.hexagonal.core.impl;
 
 import com.baeldung.boot.hexagonal.core.domain.Product;
-import com.baeldung.boot.hexagonal.port.ProductRepo;
-import com.baeldung.boot.hexagonal.port.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.baeldung.boot.hexagonal.core.port.ProductRepo;
+import com.baeldung.boot.hexagonal.core.port.ProductService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

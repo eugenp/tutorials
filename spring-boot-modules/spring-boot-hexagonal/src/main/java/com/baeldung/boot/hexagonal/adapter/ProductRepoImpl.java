@@ -1,7 +1,7 @@
 package com.baeldung.boot.hexagonal.adapter;
 
 import com.baeldung.boot.hexagonal.core.domain.Product;
-import com.baeldung.boot.hexagonal.port.ProductRepo;
+import com.baeldung.boot.hexagonal.core.port.ProductRepo;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
