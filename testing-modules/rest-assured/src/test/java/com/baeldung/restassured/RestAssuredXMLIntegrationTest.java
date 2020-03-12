@@ -17,8 +17,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.xml.HasXPath.hasXPath;
 
 public class RestAssuredXMLIntegrationTest {
-    private static final int PORT = 8081;
-    private static WireMockServer wireMockServer = new WireMockServer(PORT);
+    private static WireMockServer wireMockServer;
 
     private static final String EVENTS_PATH = "/employees";
     private static final String APPLICATION_XML = "application/xml";
@@ -27,9 +26,11 @@ public class RestAssuredXMLIntegrationTest {
     @BeforeClass
     public static void before() throws Exception {
         System.out.println("Setting up!");
+        final int port = Util.getAvailablePort();
+        wireMockServer = new WireMockServer(port);
         wireMockServer.start();
-        configureFor("localhost", PORT);
-        RestAssured.port = PORT;
+        configureFor("localhost", port);
+        RestAssured.port = port;
         stubFor(post(urlEqualTo(EVENTS_PATH)).willReturn(
           aResponse().withStatus(200)
             .withHeader("Content-Type", APPLICATION_XML)
