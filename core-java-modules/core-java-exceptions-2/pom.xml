@@ -13,12 +13,24 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../../parent-java</relativePath>
 	</parent>
+	
+	<dependencies>
+		<!-- test scoped -->
+		<dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
 
 	<description> </description>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- testing -->
+		<assertj-core.version>3.10.0</assertj-core.version>
 	</properties>
 
 </project>

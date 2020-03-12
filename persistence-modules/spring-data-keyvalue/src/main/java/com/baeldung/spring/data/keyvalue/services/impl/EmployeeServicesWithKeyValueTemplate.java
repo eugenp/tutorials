@@ -49,7 +49,7 @@ public class EmployeeServicesWithKeyValueTemplate implements EmployeeService {
 	@Override
 	public Iterable<Employee> getSortedListOfEmployeesBySalary() {
 		KeyValueQuery query = new KeyValueQuery();
-		query.setSort(new Sort(Sort.Direction.DESC, "salary"));
+		query.setSort(Sort.by(Sort.Direction.DESC, "salary"));
 		return keyValueTemplate.find(query, Employee.class);
 	}
 

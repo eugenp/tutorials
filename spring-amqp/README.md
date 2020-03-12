@@ -6,3 +6,4 @@ This module contains articles about Spring with the AMQP messaging system
 
 - [Messaging With Spring AMQP](https://www.baeldung.com/spring-amqp)
 - [RabbitMQ Message Dispatching with Spring AMQP](https://www.baeldung.com/rabbitmq-spring-amqp)
+- [Error Handling with Spring AMQP](https://www.baeldung.com/spring-amqp-error-handling)
