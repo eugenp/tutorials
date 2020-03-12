@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 import static org.junit.Assert.fail;
 
-public class PrimeNumbersUnitTest {
+public class PrimeNumbersUnitManualTest {
 
     private static Logger logger = Logger.getAnonymousLogger();
 
