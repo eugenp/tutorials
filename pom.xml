@@ -453,6 +453,7 @@
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
+                <module>java-hexagonal-architecture</module>
                 <module>java-jdi</module>
                 <module>java-lite</module>
                 <module>java-math</module>
