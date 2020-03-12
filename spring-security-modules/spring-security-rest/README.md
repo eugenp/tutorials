@@ -16,3 +16,4 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [Intro to Spring Security Expressions](https://www.baeldung.com/spring-security-expressions)
 - [Spring Security for a REST API](https://www.baeldung.com/securing-a-restful-web-service-with-spring-security)
 - [Spring Security Expressions - hasRole Example](https://www.baeldung.com/spring-security-expressions-basic)
+- [Error Handling for REST with Spring](https://www.baeldung.com/exception-handling-for-rest-with-spring)
