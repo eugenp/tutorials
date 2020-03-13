@@ -1,6 +1,5 @@
 package com.baeldung.concurrent.atomic;
 
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicMarkableReference;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -18,24 +17,21 @@ public class AtomicMarkableReferenceUnitTest {
             this.name = name;
         }
 
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (obj == null) {
-                return false;
-            }
-            if (!(obj instanceof Employee))
-                return false;
-            Employee employee = (Employee) obj;
-            return id == employee.id && name.equals(employee.name);
+        public int getId() {
+            return id;
         }
 
-        @Override
-        public int hashCode() {
-            return Objects.hash(id, name);
+        public void setId(int id) {
+            this.id = id;
         }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }       
     }
 
     @Test
