@@ -3,6 +3,7 @@ package com.baeldung.concurrent.lock;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
+import java.util.Map;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
@@ -25,28 +26,28 @@ public class ConcurrentAccessBenchmark {
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    public void singleLockHashMap() throws InterruptedException {
-        (new SingleLock()).doWork(new HashMap<String,String>(), THREADS, SLOTS);
+    public Map<String,String> singleLockHashMap() throws InterruptedException {
+        return (new SingleLock()).doWork(new HashMap<String,String>(), THREADS, SLOTS);
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    public void stripedLockHashMap() throws InterruptedException {
-    	(new StripedLock(BUCKETS)).doWork(new HashMap<String,String>(), THREADS, SLOTS);
+    public Map<String,String> stripedLockHashMap() throws InterruptedException {
+        return (new StripedLock(BUCKETS)).doWork(new HashMap<String,String>(), THREADS, SLOTS);
     }
-    
+
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    public void singleLockConcurrentHashMap() throws InterruptedException {
-    	(new SingleLock()).doWork(new ConcurrentHashMap<String,String>(), THREADS, SLOTS);
+    public Map<String,String> singleLockConcurrentHashMap() throws InterruptedException {
+        return (new SingleLock()).doWork(new ConcurrentHashMap<String,String>(), THREADS, SLOTS);
     }
-    
+
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    public void stripedLockConcurrentHashMap() throws InterruptedException {
-    	(new StripedLock(BUCKETS)).doWork(new ConcurrentHashMap<String,String>(), THREADS, SLOTS);
+    public Map<String,String> stripedLockConcurrentHashMap() throws InterruptedException {
+        return (new StripedLock(BUCKETS)).doWork(new ConcurrentHashMap<String,String>(), THREADS, SLOTS);
     }
 }
