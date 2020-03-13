@@ -1,7 +1,5 @@
 package com.baeldung.hexagonalarchitecture.core;
 
-import java.util.Objects;
-
 public class User {
     private String username;
     private String password;

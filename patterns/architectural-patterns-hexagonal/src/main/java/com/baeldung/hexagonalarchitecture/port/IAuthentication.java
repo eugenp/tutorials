@@ -1,7 +1,7 @@
 package com.baeldung.hexagonalarchitecture.port;
 
 public interface IAuthentication {
-    void login();
+    boolean login(String username, String password);
 
-    void register();
+    boolean register(String username, String password, String email);
 }

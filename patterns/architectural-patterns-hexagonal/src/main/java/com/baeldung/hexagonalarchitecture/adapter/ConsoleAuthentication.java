@@ -2,19 +2,17 @@ package com.baeldung.hexagonalarchitecture.adapter;
 
 import java.util.Scanner;
 
-import com.baeldung.hexagonalarchitecture.core.UserManagerApp;
 import com.baeldung.hexagonalarchitecture.port.IAuthentication;
 
-public class ConsoleAuthentication implements IAuthentication {
-    UserManagerApp userManagerApp;
+public class ConsoleAuthentication {
+    IAuthentication authentication;
     Scanner consoleInput;
 
-    public ConsoleAuthentication(UserManagerApp userManagerApp) {
-        this.userManagerApp = userManagerApp;
+    public ConsoleAuthentication(IAuthentication authenticationApp) {
+        this.authentication = authenticationApp;
         this.consoleInput = new Scanner(System.in);
     }
 
-    @Override
     public void login() {
         System.out.print("Username: ");
         String usernameInput = consoleInput.next();
@@ -22,10 +20,9 @@ public class ConsoleAuthentication implements IAuthentication {
         System.out.print("Password: ");
         String passwordInput = consoleInput.next();
 
-        userManagerApp.login(usernameInput, passwordInput);
+        authentication.login(usernameInput, passwordInput);
     }
 
-    @Override
     public void register() {
         System.out.print("Username: ");
         String usernameInput = consoleInput.next();
@@ -36,6 +33,6 @@ public class ConsoleAuthentication implements IAuthentication {
         System.out.print("Email: ");
         String emailInput = consoleInput.next();
 
-        userManagerApp.register(usernameInput, passwordInput, emailInput);
+        authentication.register(usernameInput, passwordInput, emailInput);
     }
 }
