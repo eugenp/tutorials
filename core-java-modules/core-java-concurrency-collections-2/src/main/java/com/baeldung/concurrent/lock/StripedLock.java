@@ -15,7 +15,7 @@ public class StripedLock extends ConcurrentAccessExperiment {
 
     protected Supplier<?> putSupplier(Map<String,String> map, int key) {
         return (()-> {
-        	int bucket = key % stripedLock.size();
+            int bucket = key % stripedLock.size();
             Lock lock = stripedLock.get(bucket);
             try {
                 lock.tryLock();
@@ -33,7 +33,7 @@ public class StripedLock extends ConcurrentAccessExperiment {
 
     protected Supplier<?> getSupplier(Map<String,String> map, int key) {
         return (()-> {
-        	int bucket = key % stripedLock.size();
+            int bucket = key % stripedLock.size();
             Lock lock = stripedLock.get(bucket);
             try {
                 lock.tryLock();
