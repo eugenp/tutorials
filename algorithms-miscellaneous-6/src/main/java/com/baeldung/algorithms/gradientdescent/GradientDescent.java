@@ -12,10 +12,12 @@ public class GradientDescent {
         double currentX = initialX;
         double previousX = initialX;
         double previousY = f.apply(previousX);
+        int iter = 100;
 
         currentX += stepCoefficient * previousY;
 
-        while (previousStep > precision) {
+        while (previousStep > precision && iter > 0) {
+            iter--;
             double currentY = f.apply(currentX);
             if (currentY > previousY) {
                 stepCoefficient = -stepCoefficient / 2;
