@@ -20,11 +20,11 @@ import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Unit tests for the UTC Hibernate configuration.
+ * Tests for the UTC Hibernate configuration.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BookstoreApp.class)
-public class HibernateTimeZoneTest {
+public class HibernateTimeZoneIntegrationTest {
 
     @Autowired
     private DateTimeWrapperRepository dateTimeWrapperRepository;
