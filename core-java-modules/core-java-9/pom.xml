@@ -37,6 +37,11 @@
             <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons-collections4.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -69,6 +74,7 @@
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>
         <guava.version>25.1-jre</guava.version>
+        <commons-collections4.version>4.1</commons-collections4.version>
     </properties>
 
 </project>
