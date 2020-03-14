@@ -53,24 +53,6 @@
                 </dependency>
             </dependencies>
         </profile>
-        <profile>
-            <id>mac-profile</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <file>
-                    <exists>${java.home}/../Classes/classes.jar</exists>
-                </file>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>com.sun</groupId>
-                    <artifactId>tools</artifactId>
-                    <version>${java.version}</version>
-                    <scope>system</scope>
-                    <systemPath>${java.home}/../Classes/classes.jar</systemPath>
-                </dependency>
-            </dependencies>
-        </profile>
     </profiles>
 
     <properties>
