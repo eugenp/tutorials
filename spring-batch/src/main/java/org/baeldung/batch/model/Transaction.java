@@ -1,8 +1,10 @@
 package org.baeldung.batch.model;
 
-import java.util.Date;
+import org.baeldung.batch.service.adapter.LocalDateTimeAdapter;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.time.LocalDateTime;
 
 @SuppressWarnings("restriction")
 @XmlRootElement(name = "transactionRecord")
@@ -11,7 +13,7 @@ public class Transaction {
     private int userId;
     private int age;
     private String postCode;
-    private Date transactionDate;
+    private LocalDateTime transactionDate;
     private double amount;
 
     /* getters and setters for the attributes */
@@ -32,11 +34,12 @@ public class Transaction {
         this.userId = userId;
     }
 
-    public Date getTransactionDate() {
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    public LocalDateTime getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(Date transactionDate) {
+    public void setTransactionDate(LocalDateTime transactionDate) {
         this.transactionDate = transactionDate;
     }
 

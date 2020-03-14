@@ -11,7 +11,7 @@
 - [Introduction to Java Serialization](http://www.baeldung.com/java-serialization)
 - [Guide to UUID in Java](http://www.baeldung.com/java-uuid)
 - [Creating a Java Compiler Plugin](http://www.baeldung.com/java-build-compiler-plugin)
-- [Quick Guide to the Java Stack](http://www.baeldung.com/java-stack)
+- [Quick Guide to the Java Stack](https://www.baeldung.com/java-stack)
 - [Compiling Java *.class Files with javac](http://www.baeldung.com/javac)
 - [Introduction to Javadoc](http://www.baeldung.com/javadoc)
 - [Guide to the Externalizable Interface in Java](http://www.baeldung.com/java-externalizable)

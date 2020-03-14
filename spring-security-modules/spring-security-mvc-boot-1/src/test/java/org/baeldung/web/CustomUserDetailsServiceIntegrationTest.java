@@ -59,7 +59,7 @@ public class CustomUserDetailsServiceIntegrationTest {
     @WithAnonymousUser
     public void givenAnonymous_whenRequestFoo_thenRetrieveUnauthorized() throws Exception {
         this.mvc.perform(get("/foos/1").with(csrf()))
-            .andExpect(status().isUnauthorized());
+            .andExpect(status().isFound());
     }
 
     @Test
