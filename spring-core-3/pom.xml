@@ -67,6 +67,12 @@
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+        
+        <dependency>
+		    <groupId>log4j</groupId>
+		    <artifactId>log4j</artifactId>
+		    <version>${log4j.version}</version>
+		</dependency>
     </dependencies>
 
     <build>
@@ -83,6 +89,7 @@
         <maven.surefire.version>2.22.1</maven.surefire.version>
         <annotation-api.version>1.3.2</annotation-api.version>
         <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
+        <log4j.version>1.2.17</log4j.version>
     </properties>
 
 </project>
