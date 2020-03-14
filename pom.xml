@@ -391,60 +391,7 @@
                 <module>core-groovy</module>
                 <module>core-groovy-2</module>
                 <module>core-groovy-collections</module>
-                <!-- <module>core-java-modules/core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
-                <!-- <module>core-java-modules/core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
-                <!-- <module>core-java-modules/core-java-12</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
-                <module>core-java-modules/core-java-8</module>
-                <module>core-java-modules/core-java-8-2</module>
-                <module>core-java-modules/core-java-annotations</module>
-                <module>core-java-modules/core-java-streams</module>
-                <module>core-java-modules/core-java-streams-2</module>
-                <module>core-java-modules/core-java-streams-3</module>
-                <!-- <module>core-java-modules/core-java-9-streams</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-                <module>core-java-modules/core-java-function</module>
-                <module>core-java-modules/core-java-lang-math</module>
-                <!-- We haven't upgraded to java 9.-->
-                <!--
-                <module>core-java-modules/core-java-date-operations-1</module>
-                <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>core-java-modules/core-java-datetime-java8</module>
-                <module>core-java-modules/core-java-datetime-string</module>
-                <module>core-java-modules/core-java-time-measurements</module>
-                -->
-                <module>core-java-modules/core-java-text</module>
-                <module>core-java-modules/core-java-lambdas</module>
-                <!--<module>core-java-modules/core-java-9-jigsaw</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-                <!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
-                <module>core-java-modules/core-java-arrays</module>
-                <module>core-java-modules/core-java-arrays-2</module>
-                <module>core-java-modules/core-java-collections</module>
-                <module>core-java-modules/core-java-collections-2</module>
-                <module>core-java-modules/core-java-collections-3</module>
-                <module>core-java-modules/core-java-collections-list</module>
-                <module>core-java-modules/core-java-collections-list-2</module>
-                <module>core-java-modules/core-java-collections-list-3</module>
-                <module>core-java-modules/core-java-collections-array-list</module>
-                <module>core-java-modules/core-java-collections-set</module>
-                <module>core-java-modules/core-java-concurrency-basic</module>
-                <module>core-java-modules/core-java-concurrency-basic-2</module>
-                <module>core-java-modules/core-java-concurrency-collections</module>
-                <module>core-java-modules/core-java-io</module>
-                <module>core-java-modules/core-java-io-2</module>
-                <module>core-java-modules/core-java-io-apis</module>
-                <module>core-java-modules/core-java-io-conversions</module>
-                <module>core-java-modules/core-java-nio</module>
-                <module>core-java-modules/core-java-nio-2</module>
-                <module>core-java-modules/core-java-security</module>
-		            <module>core-java-modules/core-java-security-2</module>
-                <module>core-java-modules/core-java-exceptions</module>
-                <module>core-java-modules/core-java-lang-syntax</module>
-                <module>core-java-modules/core-java-lang-syntax-2</module>
-                <module>core-java-modules/core-java-lang</module>
-                <module>core-java-modules/core-java-lang-2</module>
-                <module>core-java-modules/core-java-lang-oop</module>
-                <module>core-java-modules/core-java-lang-oop-2</module>
-                <module>core-java-modules/core-java-lang-oop-3</module>
-                <module>core-java-modules/core-java-lang-oop-4</module>
+
                 <module>core-java-modules</module>
                 <module>core-kotlin-modules</module>
                 <module>core-scala</module>
@@ -957,58 +904,7 @@
                 <module>core-groovy</module>
                 <module>core-groovy-2</module>
                 <module>core-groovy-collections</module>
-                <!-- <module>core-java-modules/core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
-                <!-- <module>core-java-modules/core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
-                <module>core-java-modules/core-java-8</module>
-                <module>core-java-modules/core-java-8-2</module>
-                <module>core-java-modules/core-java-annotations</module>
-                <module>core-java-modules/core-java-streams</module>
-                <module>core-java-modules/core-java-streams-2</module>
-                <module>core-java-modules/core-java-streams-3</module>
-                <!-- <module>core-java-modules/core-java-9-streams</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-                <module>core-java-modules/core-java-function</module>
-                <module>core-java-modules/core-java-lang-math</module>
-                <!-- We haven't upgraded to java 9.-->
-                <!--
-                <module>core-java-modules/core-java-date-operations-1</module>
-                <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>core-java-modules/core-java-datetime-java8</module>
-                <module>core-java-modules/core-java-datetime-string</module>
-                <module>core-java-modules/core-java-time-measurements</module>
-                -->
-                <module>core-java-modules/core-java-text</module>
-                <!--<module>core-java-modules/core-java-9-jigsaw</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-                <!--<module>core-java-modules/core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
-                <module>core-java-modules/core-java-arrays</module>
-                <module>core-java-modules/core-java-arrays-2</module>
-                <module>core-java-modules/core-java-collections</module>
-                <module>core-java-modules/core-java-collections-2</module>
-                <module>core-java-modules/core-java-collections-3</module>
-                <module>core-java-modules/core-java-collections-list</module>
-                <module>core-java-modules/core-java-collections-list-2</module>
-                <module>core-java-modules/core-java-collections-list-3</module>
-                <module>core-java-modules/core-java-collections-array-list</module>
-                <module>core-java-modules/core-java-collections-set</module>
-                <module>core-java-modules/core-java-concurrency-basic</module>
-                <module>core-java-modules/core-java-concurrency-basic-2</module>
-                <module>core-java-modules/core-java-concurrency-collections</module>
-                <module>core-java-modules/core-java-io</module>
-                <module>core-java-modules/core-java-io-2</module>
-                <module>core-java-modules/core-java-io-apis</module>
-                <module>core-java-modules/core-java-io-conversions</module>
-                <module>core-java-modules/core-java-nio</module>
-                <module>core-java-modules/core-java-nio-2</module>
-                <module>core-java-modules/core-java-security</module>
-		            <module>core-java-modules/core-java-security-2</module>
-                <module>core-java-modules/core-java-exceptions</module>
-                <module>core-java-modules/core-java-lang-syntax</module>
-                <module>core-java-modules/core-java-lang-syntax-2</module>
-                <module>core-java-modules/core-java-lang</module>
-                <module>core-java-modules/core-java-lang-2</module>
-                <module>core-java-modules/core-java-lang-oop</module>
-                <module>core-java-modules/core-java-lang-oop-2</module>
-                <module>core-java-modules/core-java-lang-oop-3</module>
-                <module>core-java-modules/core-java-lang-oop-4</module>
+
                 <module>core-java-modules</module>
                 <module>core-kotlin-modules</module>
                 <module>core-scala</module>
