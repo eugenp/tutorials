@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Order {
@@ -40,13 +41,11 @@ public class Order {
     }
 
     private OrderItem getOrderItem(final UUID id) {
-        return orderItems
-          .stream()
-          .filter(orderItem -> orderItem
-            .getProductId()
-            .equals(id))
-          .findFirst()
-          .orElseThrow(() -> new DomainException("Product with " + id + " doesn't exist."));
+        return orderItems.stream()
+            .filter(orderItem -> orderItem.getProductId()
+                .equals(id))
+            .findFirst()
+            .orElseThrow(() -> new DomainException("Product with " + id + " doesn't exist."));
     }
 
     private void validateState() {
@@ -75,6 +74,21 @@ public class Order {
 
     public List<OrderItem> getOrderItems() {
         return Collections.unmodifiableList(orderItems);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, orderItems, price, status);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Order))
+            return false;
+        Order other = (Order) obj;
+        return Objects.equals(id, other.id) && Objects.equals(orderItems, other.orderItems) && Objects.equals(price, other.price) && status == other.status;
     }
 
     private Order() {

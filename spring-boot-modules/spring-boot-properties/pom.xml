@@ -43,6 +43,12 @@
             <artifactId>httpcore</artifactId>
             <version>${httpcore.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>${configuration-processor.version}</version>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -121,6 +127,7 @@
         <guava.version>20.0</guava.version>
         <httpcore.version>4.4.11</httpcore.version>
         <resource.delimiter>@</resource.delimiter>
+        <configuration-processor.version>2.2.4.RELEASE</configuration-processor.version>
     </properties>
 
 </project>
