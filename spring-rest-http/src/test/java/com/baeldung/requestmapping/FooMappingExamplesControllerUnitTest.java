@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(FooMappingExamplesController.class)
-public class FooMappingExamplesControllerTest {
+public class FooMappingExamplesControllerUnitTest {
 
     @Autowired
     private MockMvc mvc;
