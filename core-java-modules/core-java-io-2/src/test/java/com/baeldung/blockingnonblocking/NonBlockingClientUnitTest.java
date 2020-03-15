@@ -31,7 +31,7 @@ public class NonBlockingClientUnitTest {
     }
 
     @Test
-    public void givenJavaNIOSocketChannel_whenReadingAndWriting_thenUseBuffers() throws IOException {
+    public void givenJavaNIOSocketChannel_whenReadingAndWritingWithBuffers_thenSuccess() throws IOException {
         // given a NIO SocketChannel and a charset
         InetSocketAddress address = new InetSocketAddress("localhost", wireMockRule.port());
         SocketChannel socketChannel = SocketChannel.open(address);
@@ -58,25 +58,25 @@ public class NonBlockingClientUnitTest {
     }
 
     @Test
-    public void givenJavaNIO_whenReadingAndWriting_thenSmallBuffers() throws IOException {
+    public void givenJavaNIOSocketChannel_whenReadingAndWritingWithSmallBuffers_thenSuccess() throws IOException {
         // given a NIO SocketChannel and a charset
         InetSocketAddress address = new InetSocketAddress("localhost", wireMockRule.port());
-        SocketChannel socket = SocketChannel.open(address);
+        SocketChannel socketChannel = SocketChannel.open(address);
         Charset charset = StandardCharsets.UTF_8;
 
         // when we write and read using buffers that are too small for our message
-        socket.write(charset.encode(CharBuffer.wrap("GET " + REQUESTED_RESOURCE + " HTTP/1.0\r\n\r\n")));
+        socketChannel.write(charset.encode(CharBuffer.wrap("GET " + REQUESTED_RESOURCE + " HTTP/1.0\r\n\r\n")));
 
         ByteBuffer buffer = ByteBuffer.allocate(8); // or allocateDirect if we need direct memory access
         CharBuffer charBuffer = CharBuffer.allocate(8);
         CharsetDecoder decoder = charset.newDecoder();
         StringBuilder ourStore = new StringBuilder();
-        while (socket.read(buffer) != -1 || buffer.position() > 0) {
+        while (socketChannel.read(buffer) != -1 || buffer.position() > 0) {
             buffer.flip();
             storeBufferContents(buffer, charBuffer, decoder, ourStore);
             buffer.compact();
         }
-        socket.close();
+        socketChannel.close();
 
         // then we read and saved our data
         assertTrue(ourStore
