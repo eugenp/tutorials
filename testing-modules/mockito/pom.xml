@@ -90,7 +90,6 @@
 
         <!-- testing -->
         <powermock.version>2.0.2</powermock.version>
-        <hamcrest.version>2.0.0.0</hamcrest.version>
         <javax.persistence.version>2.1.1</javax.persistence.version>
     </properties>
 

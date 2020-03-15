@@ -1,8 +1,8 @@
 package com.baeldung.persistence.model;
 
-import org.springframework.hateoas.ResourceSupport;
+import org.springframework.hateoas.RepresentationModel;
 
-public class Order extends ResourceSupport {
+public class Order extends RepresentationModel<Order> {
     private String orderId;
     private double price;
     private int quantity;
