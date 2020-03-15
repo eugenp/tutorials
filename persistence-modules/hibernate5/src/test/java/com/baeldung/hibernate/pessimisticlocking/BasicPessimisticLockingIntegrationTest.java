@@ -1,12 +1,12 @@
 package com.baeldung.hibernate.pessimisticlocking;
 
 import com.baeldung.hibernate.HibernateUtil;
-import com.vividsolutions.jts.util.Assert;
 
 import org.hibernate.SessionFactory;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.locationtech.jts.util.Assert;
 
 import javax.persistence.*;
 import java.io.IOException;
