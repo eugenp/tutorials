@@ -1,6 +1,6 @@
-## Hibernate 5
+## Hibernate JPA
 
-This module contains articles about Hibernate 5.
+This module contains articles about Hibernate JPA.
 
 ### Relevant articles:
 
@@ -12,5 +12,4 @@ This module contains articles about Hibernate 5.
 - [One-to-One Relationship in JPA](https://www.baeldung.com/jpa-one-to-one)
 - [Enabling Transaction Locks in Spring Data JPA](https://www.baeldung.com/java-jpa-transaction-locks)
 - [TransactionRequiredException Error](https://www.baeldung.com/jpa-transaction-required-exception)
-- [FetchMode in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-fetchmode)
 - [JPA/Hibernate Persistence Context](https://www.baeldung.com/jpa-hibernate-persistence-context)
