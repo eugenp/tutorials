@@ -2,47 +2,36 @@ package com.baeldung.algorithms.boruvka;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.graph.MutableValueGraph;
+import com.google.common.graph.ValueGraphBuilder;
 
 public class BoruvkaUnitTest {
 
-    private Input input;
-    private static String INPUT_JSON = "/input.json";
+    private MutableValueGraph<Integer, Integer> graph;
 
     @Before
-    public void convertInputJsonToObject() throws JsonParseException, JsonMappingException, IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        StringBuilder jsonStr = new StringBuilder();
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(BoruvkaMST.class.getResourceAsStream(INPUT_JSON)))) {
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                jsonStr.append(line)
-                    .append("\n");
-            }
-        }
-
-        input = mapper.readValue(jsonStr.toString(), Input.class);
-
+    public void setup() {
+        graph = ValueGraphBuilder.undirected()
+            .build();
+        graph.putEdgeValue(0, 1, 8);
+        graph.putEdgeValue(0, 2, 5);
+        graph.putEdgeValue(1, 2, 9);
+        graph.putEdgeValue(1, 3, 11);
+        graph.putEdgeValue(2, 3, 15);
+        graph.putEdgeValue(2, 4, 10);
+        graph.putEdgeValue(3, 4, 7);
     }
 
     @Test
-    public void givenInputGraph_whenBoruvkaPerformed_thenMinimumSpanningTree() throws JsonParseException, JsonMappingException, IOException {
-        Graph graph = new Graph(input);
+    public void givenInputGraph_whenBoruvkaPerformed_thenMinimumSpanningTree() {
         BoruvkaMST boruvkaMST = new BoruvkaMST(graph);
-
-        Tree mst = (Tree) boruvkaMST.getMST();
+        MutableValueGraph<Integer, Integer> mst = boruvkaMST.getMST();
 
         assertEquals(30, boruvkaMST.getTotalWeight());
-        assertEquals(4, mst.getEdgeCount());
+        assertEquals(4, mst.edges().size());
     }
 
 }
