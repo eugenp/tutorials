@@ -24,7 +24,7 @@ import com.baeldung.ioccontainer.bean.CustomBeanFactoryPostProcessor;
 import com.baeldung.ioccontainer.bean.CustomBeanPostProcessor;
 import com.baeldung.ioccontainer.bean.Student;
 
-public class IOCContainerAppTest {
+public class IOCContainerAppUnitTest {
 
     private LogAppender logAppender;
     private List<LoggingEvent> loggingEvents;
