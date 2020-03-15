@@ -25,7 +25,7 @@ public class BlockingClientUnitTest {
     }
 
     @Test
-    public void givenJavaIOSocket_whenReadingAndWritingWithStreams_thenReadSuccessfully() throws IOException {
+    public void givenJavaIOSocket_whenReadingAndWritingWithStreams_thenSuccess() throws IOException {
         // given an IO socket and somewhere to store our result
         Socket socket = new Socket("localhost", wireMockRule.port());
         StringBuilder ourStore = new StringBuilder();
