@@ -16,11 +16,10 @@ public class SingleLock extends ConcurrentAccessExperiment {
         return (()-> {
             try {
                 lock.lock();
-                map.put("key" + key, "value" + key);
+                return map.put("key" + key, "value" + key);
             } finally {
                 lock.unlock();
             }
-            return null;
         });
     }
 
@@ -28,11 +27,10 @@ public class SingleLock extends ConcurrentAccessExperiment {
         return (()-> {
             try {
                 lock.lock();
-                map.get("key" + key);
+                return map.get("key" + key);
             } finally {
                 lock.unlock();
             }
-            return null;
         });
     }
 }
