@@ -32,7 +32,7 @@ public class LazyLoadNoTransPropertyOnIntegrationTest {
     }
 
     @Test
-    public void whenCallTransactionalMethodWithPropertyOnThenTestPass() {
+    public void whenCallTransactionalMethodWithPropertyOn_thenTestPass() {
         SQLStatementCountValidator.reset();
         long docsCount = serviceLayer.countAllDocsTransactional();
         assertEquals(EXPECTED_DOCS_COLLECTION_SIZE, docsCount);
