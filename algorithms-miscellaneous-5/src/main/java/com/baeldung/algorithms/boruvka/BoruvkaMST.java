@@ -1,52 +1,70 @@
 package com.baeldung.algorithms.boruvka;
 
+import com.google.common.graph.EndpointPair;
+import com.google.common.graph.MutableValueGraph;
+import com.google.common.graph.ValueGraphBuilder;
+
 public class BoruvkaMST {
 
-    private static Tree mst = new Tree();
+    private static MutableValueGraph<Integer, Integer> mst = ValueGraphBuilder.undirected()
+        .build();
     private static int totalWeight;
 
-    public BoruvkaMST(Graph graph) {
-        DisjointSet dSet = new DisjointSet(graph.getNodes());
+    public BoruvkaMST(MutableValueGraph<Integer, Integer> graph) {
 
-        // repeat at most log N times or until we have N-1 edges
-        for (int t = 1; t < graph.getNodes() && mst.getEdgeCount() < graph.getNodes() - 1; t = t + t) {
+        int size = graph.nodes()
+            .size();
 
-            // foreach tree in forest, find closest edge
-            Edge[] closestEdgeArray = new Edge[graph.getNodes()];
-            for (Edge edge : graph.getAllEdges()) {
-                int first = edge.getFirst();
-                int second = edge.getSecond();
-                int firstParent = dSet.getParent(first);
-                int secondParent = dSet.getParent(second);
+        UnionFind uf = new UnionFind(size);
+
+        for (int t = 1; t < size && mst.edges().size() < size - 1; t = t + t) {
+            EndpointPair<Integer>[] closestEdgeArray = new EndpointPair[size];
+            for (EndpointPair<Integer> edge : graph.edges()) {
+                int first = edge.nodeU();
+                int second = edge.nodeV();
+                int firstParent = uf.find(first);
+                int secondParent = uf.find(second);
                 if (firstParent == secondParent) {
-                    continue; // same tree
+                    continue;
                 }
-                if (closestEdgeArray[firstParent] == null || edge.getWeight() < closestEdgeArray[firstParent].getWeight()) {
+
+                int weight = graph.edgeValueOrDefault(first, second, 0);
+
+                if (closestEdgeArray[firstParent] == null) {
                     closestEdgeArray[firstParent] = edge;
                 }
-                if (closestEdgeArray[secondParent] == null || edge.getWeight() < closestEdgeArray[secondParent].getWeight()) {
+                if (closestEdgeArray[secondParent] == null) {
+                    closestEdgeArray[secondParent] = edge;
+                }
+
+                int firstParentWeight = graph.edgeValueOrDefault(closestEdgeArray[firstParent].nodeU(), closestEdgeArray[firstParent].nodeV(), 0);
+                int secondParentWeight = graph.edgeValueOrDefault(closestEdgeArray[secondParent].nodeU(), closestEdgeArray[secondParent].nodeV(), 0);
+
+                if (weight < firstParentWeight) {
+                    closestEdgeArray[firstParent] = edge;
+                }
+                if (weight < secondParentWeight) {
                     closestEdgeArray[secondParent] = edge;
                 }
             }
 
-            // add newly discovered edges to MST
-            for (int i = 0; i < graph.getNodes(); i++) {
-                Edge edge = closestEdgeArray[i];
+            for (int i = 0; i < size; i++) {
+                EndpointPair<Integer> edge = closestEdgeArray[i];
                 if (edge != null) {
-                    int first = edge.getFirst();
-                    int second = edge.getSecond();
-                    // don't add the same edge twice
-                    if (dSet.getParent(first) != dSet.getParent(second)) {
-                        mst.addEdge(edge);
-                        totalWeight += edge.getWeight();
-                        dSet.union(first, second);
+                    int first = edge.nodeU();
+                    int second = edge.nodeV();
+                    int weight = graph.edgeValueOrDefault(first, second, 0);
+                    if (uf.find(first) != uf.find(second)) {
+                        mst.putEdgeValue(first, second, weight);
+                        totalWeight += weight;
+                        uf.union(first, second);
                     }
                 }
             }
         }
     }
 
-    public Iterable<Edge> getMST() {
+    public MutableValueGraph<Integer, Integer> getMST() {
         return mst;
     }
 
