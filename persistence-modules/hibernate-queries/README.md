@@ -1,6 +1,6 @@
-## Hibernate 5
+## Hibernate Queries
 
-This module contains articles about Hibernate 5.
+This module contains articles about use of Queries in Hibernate.
 
 ### Relevant articles:
 
