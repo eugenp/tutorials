@@ -10,7 +10,6 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [Find If Two Numbers Are Relatively Prime in Java](https://www.baeldung.com/java-two-relatively-prime-numbers)
 - [Knapsack Problem Implementation in Java](https://www.baeldung.com/java-knapsack)
 - [How to Determine if a Binary Tree is Balanced](https://www.baeldung.com/java-balanced-binary-tree)
-- [The Caesar Cipher in Java](https://www.baeldung.com/java-caesar-cipher)
 - [Overview of Combinatorial Problems in Java](https://www.baeldung.com/java-combinatorial-algorithms)
 - [Prim’s Algorithm](https://www.baeldung.com/java-prim-algorithm)
 - [Maximum Subarray Problem](https://www.baeldung.com/java-maximum-subarray)

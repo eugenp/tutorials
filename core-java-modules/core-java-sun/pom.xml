@@ -41,20 +41,6 @@
         </resources>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven-jar-plugin.version}</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>libs/</classpathPrefix>
-                            <mainClass>com.baeldung.executable.ExecutableMavenJar</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>${exec-maven-plugin.version}</version>
@@ -115,7 +101,6 @@
 
         <!-- maven plugins -->
         <sun-tools.version>1.8.0</sun-tools.version>
-        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
     </properties>
 
 </project>
