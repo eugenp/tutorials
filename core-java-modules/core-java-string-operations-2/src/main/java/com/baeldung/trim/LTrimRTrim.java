@@ -35,7 +35,7 @@ public class LTrimRTrim {
     }
 
     @Setup
-    private void setup() {
+    public void setup() {
         src = "       White spaces left and right          ";
         ltrimResult = "White spaces left and right          ";
         rtrimResult = "       White spaces left and right";
@@ -68,7 +68,7 @@ public class LTrimRTrim {
 
     // Going through the String detecting Whitespaces
     @Benchmark
-    private boolean whileCharacters() {
+    public boolean whileCharacters() {
         String ltrim = whileLtrim(src);
         String rtrim = whileRtrim(src);
 
@@ -77,7 +77,7 @@ public class LTrimRTrim {
 
     // replaceAll() and Regular Expressions
     @Benchmark
-    private boolean replaceAllRegularExpression() {
+    public boolean replaceAllRegularExpression() {
         String ltrim = src.replaceAll("^\\s+", "");
         String rtrim = src.replaceAll("\\s+$", "");
 
@@ -96,7 +96,7 @@ public class LTrimRTrim {
 
     // Pattern matches() with replaceAll
     @Benchmark
-    private boolean patternMatchesLTtrimRTrim() {
+    public boolean patternMatchesLTtrimRTrim() {
         String ltrim = patternLtrim(src);
         String rtrim = patternRtrim(src);
 
@@ -105,7 +105,7 @@ public class LTrimRTrim {
 
     // Guava CharMatcher trimLeadingFrom / trimTrailingFrom
     @Benchmark
-    private boolean guavaCharMatcher() {
+    public boolean guavaCharMatcher() {
         String ltrim = CharMatcher.whitespace().trimLeadingFrom(src);
         String rtrim = CharMatcher.whitespace().trimTrailingFrom(src);
 
@@ -114,7 +114,7 @@ public class LTrimRTrim {
 
     // Apache Commons StringUtils containsIgnoreCase
     @Benchmark
-    private boolean apacheCommonsStringUtils() {
+    public boolean apacheCommonsStringUtils() {
         String ltrim = StringUtils.stripStart(src, null);
         String rtrim = StringUtils.stripEnd(src, null);
 
