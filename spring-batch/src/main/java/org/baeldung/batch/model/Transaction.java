@@ -1,15 +1,19 @@
 package org.baeldung.batch.model;
 
-import java.util.Date;
+import org.baeldung.batch.service.adapter.LocalDateTimeAdapter;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.time.LocalDateTime;
 
 @SuppressWarnings("restriction")
 @XmlRootElement(name = "transactionRecord")
 public class Transaction {
     private String username;
     private int userId;
-    private Date transactionDate;
+    private int age;
+    private String postCode;
+    private LocalDateTime transactionDate;
     private double amount;
 
     /* getters and setters for the attributes */
@@ -30,11 +34,12 @@ public class Transaction {
         this.userId = userId;
     }
 
-    public Date getTransactionDate() {
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    public LocalDateTime getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(Date transactionDate) {
+    public void setTransactionDate(LocalDateTime transactionDate) {
         this.transactionDate = transactionDate;
     }
 
@@ -46,9 +51,25 @@ public class Transaction {
         this.amount = amount;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
     @Override
     public String toString() {
-        return "Transaction [username=" + username + ", userId=" + userId + ", transactionDate=" + transactionDate + ", amount=" + amount + "]";
+        return "Transaction [username=" + username + ", userId=" + userId + ", age=" + age + ", postCode=" + postCode + ", transactionDate=" + transactionDate + ", amount=" + amount + "]";
     }
 
 }

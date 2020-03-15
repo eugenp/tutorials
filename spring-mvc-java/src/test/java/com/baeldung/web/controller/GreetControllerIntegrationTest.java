@@ -32,7 +32,7 @@ public class GreetControllerIntegrationTest {
 
     private MockMvc mockMvc;
 
-    private static final String CONTENT_TYPE = "application/json;charset=UTF-8";
+    private static final String CONTENT_TYPE = "application/json";
 
     @Before
     public void setup() throws Exception {
