@@ -1,6 +1,6 @@
 ## Hibernate 5
 
-This module contains articles about Hibernate 5.
+This module contains articles about Hibernate 5. Let's not add more articles here, we should not be creating a -2 out of it. Please add to other existing hibernate-* modules, or create a new one.
 
 ### Relevant articles:
 
@@ -13,4 +13,3 @@ This module contains articles about Hibernate 5.
 - [Guide to the Hibernate EntityManager](https://www.baeldung.com/hibernate-entitymanager)
 - [Using c3p0 with Hibernate](https://www.baeldung.com/hibernate-c3p0)
 - [Persist a JSON Object Using Hibernate](https://www.baeldung.com/hibernate-persist-json-object)
-- [[Next -->]](/hibernate5-2)
