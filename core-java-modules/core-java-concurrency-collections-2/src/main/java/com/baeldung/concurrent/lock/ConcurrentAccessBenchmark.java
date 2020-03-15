@@ -18,36 +18,37 @@ import org.openjdk.jmh.annotations.Warmup;
 @Fork(value = 2)
 @Warmup(iterations = 0)
 public class ConcurrentAccessBenchmark {
-    ConcurrentAccessExperiment accessMyMap;
     static final int SLOTS = 4;
     static final int THREADS = 10000;
     static final int BUCKETS = Runtime.getRuntime().availableProcessors() * SLOTS;
+    SingleLock singleLock = new SingleLock();
+    StripedLock stripedLock = new StripedLock(BUCKETS);
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     public Map<String,String> singleLockHashMap() throws InterruptedException {
-        return (new SingleLock()).doWork(new HashMap<String,String>(), THREADS, SLOTS);
+        return singleLock.doWork(new HashMap<String,String>(), THREADS, SLOTS);
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     public Map<String,String> stripedLockHashMap() throws InterruptedException {
-        return (new StripedLock(BUCKETS)).doWork(new HashMap<String,String>(), THREADS, SLOTS);
+        return stripedLock.doWork(new HashMap<String,String>(), THREADS, SLOTS);
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     public Map<String,String> singleLockConcurrentHashMap() throws InterruptedException {
-        return (new SingleLock()).doWork(new ConcurrentHashMap<String,String>(), THREADS, SLOTS);
+        return singleLock.doWork(new ConcurrentHashMap<String,String>(), THREADS, SLOTS);
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     public Map<String,String> stripedLockConcurrentHashMap() throws InterruptedException {
-        return (new StripedLock(BUCKETS)).doWork(new ConcurrentHashMap<String,String>(), THREADS, SLOTS);
+        return stripedLock.doWork(new ConcurrentHashMap<String,String>(), THREADS, SLOTS);
     }
 }
