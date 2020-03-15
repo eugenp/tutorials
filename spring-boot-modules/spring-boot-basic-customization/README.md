@@ -8,4 +8,4 @@ This module contains articles about Spring Boot customization
  - [Using Custom Banners in Spring Boot](https://www.baeldung.com/spring-boot-custom-banners)
  - [Create a Custom FailureAnalyzer with Spring Boot](https://www.baeldung.com/spring-boot-failure-analyzer)
  - [Spring Boot: Customize Whitelabel Error Page](https://www.baeldung.com/spring-boot-custom-error-page)
- 
+ - [Spring Boot: Configuring a Main Class](https://www.baeldung.com/spring-boot-main-class)
