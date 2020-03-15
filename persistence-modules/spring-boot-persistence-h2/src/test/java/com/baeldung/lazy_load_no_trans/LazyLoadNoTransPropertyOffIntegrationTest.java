@@ -24,7 +24,7 @@ public class LazyLoadNoTransPropertyOffIntegrationTest {
     private static final long EXPECTED_DOCS_COLLECTION_SIZE = 6;
 
     @Test(expected = LazyInitializationException.class)
-    public void whenCallNonTransactionalMethodWithPropertyOffThenThrowException() {
+    public void whenCallNonTransactionalMethodWithPropertyOff_thenThrowException() {
         serviceLayer.countAllDocsNonTransactional();
     }
 
