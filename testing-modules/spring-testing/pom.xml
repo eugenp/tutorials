@@ -19,7 +19,7 @@
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>java-hamcrest</artifactId>
-            <version>${hamcrest.version}</version>
+            <version>${java-hamcrest.version}</version>
         </dependency>
 
         <dependency>
@@ -114,7 +114,7 @@
 
     <properties>
         <!-- testing -->
-        <hamcrest.version>2.0.0.0</hamcrest.version>
+        <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
         <awaitility.version>3.1.6</awaitility.version>
         <junit.jupiter.version>5.5.0</junit.jupiter.version>
         <junit.commons.version>1.5.2</junit.commons.version>

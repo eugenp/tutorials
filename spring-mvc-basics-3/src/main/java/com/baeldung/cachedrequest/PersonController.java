@@ -1,4 +1,4 @@
-package org.baeldung.cachedrequest;
+package com.baeldung.cachedrequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -62,12 +62,12 @@
             <plugin>
                 <groupId>org.codehaus.groovy</groupId>
                 <artifactId>groovy-eclipse-compiler</artifactId>
-                <version>3.3.0-01</version>
+                <version>${groovy.compiler.version}</version>
                 <extensions>true</extensions>
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
                     <compilerId>groovy-eclipse-compiler</compilerId>
                     <source>${java.version}</source>
@@ -77,7 +77,7 @@
                     <dependency>
                         <groupId>org.codehaus.groovy</groupId>
                         <artifactId>groovy-eclipse-compiler</artifactId>
-                        <version>3.3.0-01</version>
+                        <version>${groovy.compiler.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.codehaus.groovy</groupId>
@@ -113,7 +113,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.20.1</version>
+                <version>${surefire.plugin.version}</version>
                 <configuration>
                     <useFile>false</useFile>
                     <includes>
@@ -126,7 +126,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${assembly.plugin.version}</version>
                 <configuration>
                     <!-- get all project dependencies -->
                     <descriptorRefs>
@@ -183,6 +183,10 @@
         <groovy-wslite.version>1.1.3</groovy-wslite.version>
         <logback.version>1.2.3</logback.version>
         <groovy.version>2.5.7</groovy.version>
+        <assembly.plugin.version>3.1.0</assembly.plugin.version>
+        <surefire.plugin.version>2.20.1</surefire.plugin.version>
+        <compiler.plugin.version>3.8.0</compiler.plugin.version>
+        <groovy.compiler.version>3.3.0-01</groovy.compiler.version>
     </properties>
 
 </project>

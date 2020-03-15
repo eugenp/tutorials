@@ -9,6 +9,6 @@ This module contains articles about Servlets.
 - [Uploading Files with Servlets and JSP](https://www.baeldung.com/upload-file-servlet)
 - [Example of Downloading File in a Servlet](https://www.baeldung.com/servlet-download-file)
 - [Returning a JSON Response from a Servlet](https://www.baeldung.com/servlet-json-response)
-- [Java EE Servlet Exception Handling](https://www.baeldung.com/servlet-exceptions)
+- [Jakarta EE Servlet Exception Handling](https://www.baeldung.com/servlet-exceptions)
 - [Context and Servlet Initialization Parameters](https://www.baeldung.com/context-servlet-initialization-param)
 - [The Difference between getRequestURI and getPathInfo in HttpServletRequest](https://www.baeldung.com/http-servlet-request-requesturi-pathinfo)
