@@ -34,14 +34,16 @@ public class AtomicMarkableReferenceUnitTest {
 
     @Test
     void givenMarkValueAsTrue_whenUsingIsMarkedMethod_thenMarkValueShouldBeTrue() {
-        AtomicMarkableReference<Employee> employeeNode = new AtomicMarkableReference<Employee>(new Employee(123, "Mike"), true);
+        Employee employee = new Employee(123, "Mike");
+        AtomicMarkableReference<Employee> employeeNode = new AtomicMarkableReference<Employee>(employee, true);
 
         Assertions.assertTrue(employeeNode.isMarked());
     }
 
     @Test
     void givenMarkValueAsFalse_whenUsingIsMarkedMethod_thenMarkValueShouldBeFalse() {
-        AtomicMarkableReference<Employee> employeeNode = new AtomicMarkableReference<Employee>(new Employee(123, "Mike"), false);
+        Employee employee = new Employee(123, "Mike");
+        AtomicMarkableReference<Employee> employeeNode = new AtomicMarkableReference<Employee>(employee, false);
 
         Assertions.assertFalse(employeeNode.isMarked());
     }
@@ -49,7 +51,7 @@ public class AtomicMarkableReferenceUnitTest {
     @Test
     void whenUsingGetReferenceMethod_thenCurrentReferenceShouldBeReturned() {
         Employee employee = new Employee(123, "Mike");
-        AtomicMarkableReference<Employee> employeeNode = new AtomicMarkableReference<Employee>(employee, false);
+        AtomicMarkableReference<Employee> employeeNode = new AtomicMarkableReference<Employee>(employee, true);
 
         Assertions.assertEquals(employee, employeeNode.getReference());
     }
@@ -90,8 +92,8 @@ public class AtomicMarkableReferenceUnitTest {
     @Test
     void givenDifferentObjectReference_whenUsingAttemptMarkMethod_thenMarkShouldNotBeUpdated() {
         Employee employee = new Employee(123, "Mike");
-        Employee expectedEmployee = new Employee(123, "Mike");
         AtomicMarkableReference<Employee> employeeNode = new AtomicMarkableReference<Employee>(employee, true);
+        Employee expectedEmployee = new Employee(123, "Mike");
 
         Assertions.assertFalse(employeeNode.attemptMark(expectedEmployee, false));
         Assertions.assertTrue(employeeNode.isMarked());
@@ -154,23 +156,23 @@ public class AtomicMarkableReferenceUnitTest {
 
     @Test
     void givenNotCurrentReferenceAndCurrentMark_whenUsingWeakCompareAndSet_thenReferenceAndMarkShouldNotBeUpdated() {
-        Employee expectedEmployee = new Employee(123, "Mike");
-        AtomicMarkableReference<Employee> employeeNode = new AtomicMarkableReference<Employee>(expectedEmployee, true);
+        Employee employee = new Employee(123, "Mike");
+        AtomicMarkableReference<Employee> employeeNode = new AtomicMarkableReference<Employee>(employee, true);
         Employee newEmployee = new Employee(124, "John");
 
         Assertions.assertFalse(employeeNode.weakCompareAndSet(new Employee(1234, "Steve"), newEmployee, true, false));
-        Assertions.assertEquals(expectedEmployee, employeeNode.getReference());
+        Assertions.assertEquals(employee, employeeNode.getReference());
         Assertions.assertTrue(employeeNode.isMarked());
     }
 
     @Test
     void givenCurrentReferenceAndNotCurrentMark_whenUsingWeakCompareAndSet_thenReferenceAndMarkShouldNotBeUpdated() {
-        Employee expectedEmployee = new Employee(123, "Mike");
-        AtomicMarkableReference<Employee> employeeNode = new AtomicMarkableReference<Employee>(expectedEmployee, true);
+        Employee employee = new Employee(123, "Mike");
+        AtomicMarkableReference<Employee> employeeNode = new AtomicMarkableReference<Employee>(employee, true);
         Employee newEmployee = new Employee(124, "John");
 
-        Assertions.assertFalse(employeeNode.weakCompareAndSet(expectedEmployee, newEmployee, false, true));
-        Assertions.assertEquals(expectedEmployee, employeeNode.getReference());
+        Assertions.assertFalse(employeeNode.weakCompareAndSet(employee, newEmployee, false, true));
+        Assertions.assertEquals(employee, employeeNode.getReference());
         Assertions.assertTrue(employeeNode.isMarked());
     }
 
