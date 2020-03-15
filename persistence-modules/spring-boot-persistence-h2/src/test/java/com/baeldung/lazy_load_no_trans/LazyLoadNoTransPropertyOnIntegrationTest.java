@@ -26,16 +26,22 @@ public class LazyLoadNoTransPropertyOnIntegrationTest {
     @Test
     public void whenCallNonTransactionalMethodWithPropertyOn_thenGetNplusOne() {
         SQLStatementCountValidator.reset();
+
         long docsCount = serviceLayer.countAllDocsNonTransactional();
+
         assertEquals(EXPECTED_DOCS_COLLECTION_SIZE, docsCount);
+
         SQLStatementCountValidator.assertSelectCount(EXPECTED_USERS_COUNT + 1);
     }
 
     @Test
     public void whenCallTransactionalMethodWithPropertyOn_thenTestPass() {
         SQLStatementCountValidator.reset();
+
         long docsCount = serviceLayer.countAllDocsTransactional();
+
         assertEquals(EXPECTED_DOCS_COLLECTION_SIZE, docsCount);
+
         SQLStatementCountValidator.assertSelectCount(2);
     }
 }
