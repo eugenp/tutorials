@@ -13,15 +13,13 @@
 
 package com.baeldung.petstore.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.util.Objects;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Category
@@ -40,7 +38,7 @@ public class Category {
 
 
   public Category id(Long id) {
-    
+
     this.id = id;
     return this;
   }
@@ -65,7 +63,7 @@ public class Category {
 
 
   public Category name(String name) {
-    
+
     this.name = name;
     return this;
   }

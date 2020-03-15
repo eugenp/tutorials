@@ -14,13 +14,11 @@
 package com.baeldung.petstore.client.api;
 
 import com.baeldung.petstore.client.model.Order;
-import org.junit.Test;
-import org.junit.Ignore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for StoreApi
@@ -30,7 +28,7 @@ public class StoreApiTest {
 
     private final StoreApi api = new StoreApi();
 
-    
+
     /**
      * Delete purchase order by ID
      *
@@ -46,7 +44,7 @@ public class StoreApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Returns pet inventories by status
      *
@@ -61,7 +59,7 @@ public class StoreApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Find purchase order by ID
      *
@@ -77,11 +75,11 @@ public class StoreApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Place an order for a pet
      *
-     * 
+     *
      *
      * @throws ApiException
      *          if the Api call fails
@@ -93,5 +91,5 @@ public class StoreApiTest {
 
         // TODO: test validations
     }
-    
+
 }

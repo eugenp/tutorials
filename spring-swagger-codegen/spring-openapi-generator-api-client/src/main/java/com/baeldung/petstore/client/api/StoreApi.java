@@ -1,30 +1,25 @@
 package com.baeldung.petstore.client.api;
 
 import com.baeldung.petstore.client.invoker.ApiClient;
-
 import com.baeldung.petstore.client.model.Order;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestClientException;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-03-15T06:14:01.568992-05:00[America/Chicago]")
 @Component("com.baeldung.petstore.client.api.StoreApi")
@@ -71,12 +66,12 @@ public class StoreApi {
      */
     public ResponseEntity<Void> deleteOrderWithHttpInfo(Long orderId) throws RestClientException {
         Object postBody = null;
-        
+
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'orderId' when calling deleteOrder");
         }
-        
+
         // create path and map variables
         final Map<String, Object> uriVariables = new HashMap<String, Object>();
         uriVariables.put("orderId", orderId);
@@ -117,7 +112,7 @@ public class StoreApi {
      */
     public ResponseEntity<Map<String, Integer>> getInventoryWithHttpInfo() throws RestClientException {
         Object postBody = null;
-        
+
         String path = apiClient.expandPath("/store/inventory", Collections.<String, Object>emptyMap());
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
@@ -125,7 +120,7 @@ public class StoreApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap formParams = new LinkedMultiValueMap();
 
-        final String[] accepts = { 
+        final String[] accepts = {
             "application/json"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
@@ -163,12 +158,12 @@ public class StoreApi {
      */
     public ResponseEntity<Order> getOrderByIdWithHttpInfo(Long orderId) throws RestClientException {
         Object postBody = null;
-        
+
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'orderId' when calling getOrderById");
         }
-        
+
         // create path and map variables
         final Map<String, Object> uriVariables = new HashMap<String, Object>();
         uriVariables.put("orderId", orderId);
@@ -179,7 +174,7 @@ public class StoreApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap formParams = new LinkedMultiValueMap();
 
-        final String[] accepts = { 
+        final String[] accepts = {
             "application/json", "application/xml"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
@@ -193,7 +188,7 @@ public class StoreApi {
     }
     /**
      * Place an order for a pet
-     * 
+     *
      * <p><b>200</b> - successful operation
      * <p><b>400</b> - Invalid Order
      * @param body order placed for purchasing the pet (required)
@@ -206,7 +201,7 @@ public class StoreApi {
 
     /**
      * Place an order for a pet
-     * 
+     *
      * <p><b>200</b> - successful operation
      * <p><b>400</b> - Invalid Order
      * @param body order placed for purchasing the pet (required)
@@ -215,12 +210,12 @@ public class StoreApi {
      */
     public ResponseEntity<Order> placeOrderWithHttpInfo(Order body) throws RestClientException {
         Object postBody = body;
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'body' when calling placeOrder");
         }
-        
+
         String path = apiClient.expandPath("/store/order", Collections.<String, Object>emptyMap());
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
@@ -228,11 +223,11 @@ public class StoreApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap formParams = new LinkedMultiValueMap();
 
-        final String[] accepts = { 
+        final String[] accepts = {
             "application/json", "application/xml"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
+        final String[] contentTypes = {
             "application/json"
         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);

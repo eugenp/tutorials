@@ -13,16 +13,17 @@
 
 package com.baeldung.petstore.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import org.threeten.bp.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+import java.util.Objects;
+
+import org.threeten.bp.OffsetDateTime;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Order
@@ -54,9 +55,9 @@ public class Order {
    */
   public enum StatusEnum {
     PLACED("placed"),
-    
+
     APPROVED("approved"),
-    
+
     DELIVERED("delivered");
 
     private String value;
@@ -94,7 +95,7 @@ public class Order {
 
 
   public Order id(Long id) {
-    
+
     this.id = id;
     return this;
   }
@@ -119,7 +120,7 @@ public class Order {
 
 
   public Order petId(Long petId) {
-    
+
     this.petId = petId;
     return this;
   }
@@ -144,7 +145,7 @@ public class Order {
 
 
   public Order quantity(Integer quantity) {
-    
+
     this.quantity = quantity;
     return this;
   }
@@ -169,7 +170,7 @@ public class Order {
 
 
   public Order shipDate(OffsetDateTime shipDate) {
-    
+
     this.shipDate = shipDate;
     return this;
   }
@@ -194,7 +195,7 @@ public class Order {
 
 
   public Order status(StatusEnum status) {
-    
+
     this.status = status;
     return this;
   }
@@ -219,7 +220,7 @@ public class Order {
 
 
   public Order complete(Boolean complete) {
-    
+
     this.complete = complete;
     return this;
   }

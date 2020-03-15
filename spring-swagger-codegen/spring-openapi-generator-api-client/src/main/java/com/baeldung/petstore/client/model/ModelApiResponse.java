@@ -13,15 +13,13 @@
 
 package com.baeldung.petstore.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.util.Objects;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * ModelApiResponse
@@ -44,7 +42,7 @@ public class ModelApiResponse {
 
 
   public ModelApiResponse code(Integer code) {
-    
+
     this.code = code;
     return this;
   }
@@ -69,7 +67,7 @@ public class ModelApiResponse {
 
 
   public ModelApiResponse type(String type) {
-    
+
     this.type = type;
     return this;
   }
@@ -94,7 +92,7 @@ public class ModelApiResponse {
 
 
   public ModelApiResponse message(String message) {
-    
+
     this.message = message;
     return this;
   }

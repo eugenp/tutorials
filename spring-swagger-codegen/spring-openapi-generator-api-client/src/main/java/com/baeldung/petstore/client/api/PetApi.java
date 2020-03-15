@@ -1,12 +1,10 @@
 package com.baeldung.petstore.client.api;
 
 import com.baeldung.petstore.client.invoker.ApiClient;
-
-import java.io.File;
 import com.baeldung.petstore.client.model.ModelApiResponse;
 import com.baeldung.petstore.client.model.Pet;
 
-import java.util.ArrayList;
+import java.io.File;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -14,12 +12,6 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpHeaders;
@@ -27,6 +19,11 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestClientException;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-03-15T06:14:01.568992-05:00[America/Chicago]")
 @Component("com.baeldung.petstore.client.api.PetApi")
@@ -52,7 +49,7 @@ public class PetApi {
 
     /**
      * Add a new pet to the store
-     * 
+     *
      * <p><b>405</b> - Invalid input
      * @param body Pet object that needs to be added to the store (required)
      * @throws RestClientException if an error occurs while attempting to invoke the API
@@ -63,7 +60,7 @@ public class PetApi {
 
     /**
      * Add a new pet to the store
-     * 
+     *
      * <p><b>405</b> - Invalid input
      * @param body Pet object that needs to be added to the store (required)
      * @return ResponseEntity&lt;Void&gt;
@@ -71,12 +68,12 @@ public class PetApi {
      */
     public ResponseEntity<Void> addPetWithHttpInfo(Pet body) throws RestClientException {
         Object postBody = body;
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'body' when calling addPet");
         }
-        
+
         String path = apiClient.expandPath("/pet", Collections.<String, Object>emptyMap());
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
@@ -86,7 +83,7 @@ public class PetApi {
 
         final String[] accepts = { };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
+        final String[] contentTypes = {
             "application/json", "application/xml"
         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
@@ -98,7 +95,7 @@ public class PetApi {
     }
     /**
      * Deletes a pet
-     * 
+     *
      * <p><b>400</b> - Invalid ID supplied
      * <p><b>404</b> - Pet not found
      * @param petId Pet id to delete (required)
@@ -111,7 +108,7 @@ public class PetApi {
 
     /**
      * Deletes a pet
-     * 
+     *
      * <p><b>400</b> - Invalid ID supplied
      * <p><b>404</b> - Pet not found
      * @param petId Pet id to delete (required)
@@ -121,12 +118,12 @@ public class PetApi {
      */
     public ResponseEntity<Void> deletePetWithHttpInfo(Long petId, String apiKey) throws RestClientException {
         Object postBody = null;
-        
+
         // verify the required parameter 'petId' is set
         if (petId == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'petId' when calling deletePet");
         }
-        
+
         // create path and map variables
         final Map<String, Object> uriVariables = new HashMap<String, Object>();
         uriVariables.put("petId", petId);
@@ -174,12 +171,12 @@ public class PetApi {
      */
     public ResponseEntity<List<Pet>> findPetsByStatusWithHttpInfo(List<String> status) throws RestClientException {
         Object postBody = null;
-        
+
         // verify the required parameter 'status' is set
         if (status == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'status' when calling findPetsByStatus");
         }
-        
+
         String path = apiClient.expandPath("/pet/findByStatus", Collections.<String, Object>emptyMap());
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
@@ -189,7 +186,7 @@ public class PetApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase(Locale.ROOT)), "status", status));
 
-        final String[] accepts = { 
+        final String[] accepts = {
             "application/json", "application/xml"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
@@ -227,12 +224,12 @@ public class PetApi {
     @Deprecated
     public ResponseEntity<List<Pet>> findPetsByTagsWithHttpInfo(List<String> tags) throws RestClientException {
         Object postBody = null;
-        
+
         // verify the required parameter 'tags' is set
         if (tags == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'tags' when calling findPetsByTags");
         }
-        
+
         String path = apiClient.expandPath("/pet/findByTags", Collections.<String, Object>emptyMap());
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
@@ -242,7 +239,7 @@ public class PetApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase(Locale.ROOT)), "tags", tags));
 
-        final String[] accepts = { 
+        final String[] accepts = {
             "application/json", "application/xml"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
@@ -280,12 +277,12 @@ public class PetApi {
      */
     public ResponseEntity<Pet> getPetByIdWithHttpInfo(Long petId) throws RestClientException {
         Object postBody = null;
-        
+
         // verify the required parameter 'petId' is set
         if (petId == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'petId' when calling getPetById");
         }
-        
+
         // create path and map variables
         final Map<String, Object> uriVariables = new HashMap<String, Object>();
         uriVariables.put("petId", petId);
@@ -296,7 +293,7 @@ public class PetApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap formParams = new LinkedMultiValueMap();
 
-        final String[] accepts = { 
+        final String[] accepts = {
             "application/json", "application/xml"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
@@ -310,7 +307,7 @@ public class PetApi {
     }
     /**
      * Update an existing pet
-     * 
+     *
      * <p><b>400</b> - Invalid ID supplied
      * <p><b>404</b> - Pet not found
      * <p><b>405</b> - Validation exception
@@ -323,7 +320,7 @@ public class PetApi {
 
     /**
      * Update an existing pet
-     * 
+     *
      * <p><b>400</b> - Invalid ID supplied
      * <p><b>404</b> - Pet not found
      * <p><b>405</b> - Validation exception
@@ -333,12 +330,12 @@ public class PetApi {
      */
     public ResponseEntity<Void> updatePetWithHttpInfo(Pet body) throws RestClientException {
         Object postBody = body;
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'body' when calling updatePet");
         }
-        
+
         String path = apiClient.expandPath("/pet", Collections.<String, Object>emptyMap());
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
@@ -348,7 +345,7 @@ public class PetApi {
 
         final String[] accepts = { };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
+        final String[] contentTypes = {
             "application/json", "application/xml"
         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
@@ -360,7 +357,7 @@ public class PetApi {
     }
     /**
      * Updates a pet in the store with form data
-     * 
+     *
      * <p><b>405</b> - Invalid input
      * @param petId ID of pet that needs to be updated (required)
      * @param name Updated name of the pet (optional)
@@ -373,7 +370,7 @@ public class PetApi {
 
     /**
      * Updates a pet in the store with form data
-     * 
+     *
      * <p><b>405</b> - Invalid input
      * @param petId ID of pet that needs to be updated (required)
      * @param name Updated name of the pet (optional)
@@ -383,12 +380,12 @@ public class PetApi {
      */
     public ResponseEntity<Void> updatePetWithFormWithHttpInfo(Long petId, String name, String status) throws RestClientException {
         Object postBody = null;
-        
+
         // verify the required parameter 'petId' is set
         if (petId == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'petId' when calling updatePetWithForm");
         }
-        
+
         // create path and map variables
         final Map<String, Object> uriVariables = new HashMap<String, Object>();
         uriVariables.put("petId", petId);
@@ -406,7 +403,7 @@ public class PetApi {
 
         final String[] accepts = { };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
+        final String[] contentTypes = {
             "application/x-www-form-urlencoded"
         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
@@ -418,7 +415,7 @@ public class PetApi {
     }
     /**
      * uploads an image
-     * 
+     *
      * <p><b>200</b> - successful operation
      * @param petId ID of pet to update (required)
      * @param additionalMetadata Additional data to pass to server (optional)
@@ -432,7 +429,7 @@ public class PetApi {
 
     /**
      * uploads an image
-     * 
+     *
      * <p><b>200</b> - successful operation
      * @param petId ID of pet to update (required)
      * @param additionalMetadata Additional data to pass to server (optional)
@@ -442,12 +439,12 @@ public class PetApi {
      */
     public ResponseEntity<ModelApiResponse> uploadFileWithHttpInfo(Long petId, String additionalMetadata, File file) throws RestClientException {
         Object postBody = null;
-        
+
         // verify the required parameter 'petId' is set
         if (petId == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'petId' when calling uploadFile");
         }
-        
+
         // create path and map variables
         final Map<String, Object> uriVariables = new HashMap<String, Object>();
         uriVariables.put("petId", petId);
@@ -463,11 +460,11 @@ public class PetApi {
         if (file != null)
             formParams.add("file", new FileSystemResource(file));
 
-        final String[] accepts = { 
+        final String[] accepts = {
             "application/json"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
+        final String[] contentTypes = {
             "multipart/form-data"
         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);

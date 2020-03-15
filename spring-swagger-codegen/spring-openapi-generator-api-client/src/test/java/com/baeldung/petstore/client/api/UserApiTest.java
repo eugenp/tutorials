@@ -14,13 +14,11 @@
 package com.baeldung.petstore.client.api;
 
 import com.baeldung.petstore.client.model.User;
-import org.junit.Test;
-import org.junit.Ignore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for UserApi
@@ -30,7 +28,7 @@ public class UserApiTest {
 
     private final UserApi api = new UserApi();
 
-    
+
     /**
      * Create user
      *
@@ -46,11 +44,11 @@ public class UserApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Creates list of users with given input array
      *
-     * 
+     *
      *
      * @throws ApiException
      *          if the Api call fails
@@ -62,11 +60,11 @@ public class UserApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Creates list of users with given input array
      *
-     * 
+     *
      *
      * @throws ApiException
      *          if the Api call fails
@@ -78,7 +76,7 @@ public class UserApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Delete user
      *
@@ -94,11 +92,11 @@ public class UserApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Get user by user name
      *
-     * 
+     *
      *
      * @throws ApiException
      *          if the Api call fails
@@ -110,11 +108,11 @@ public class UserApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Logs user into the system
      *
-     * 
+     *
      *
      * @throws ApiException
      *          if the Api call fails
@@ -127,11 +125,11 @@ public class UserApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Logs out current logged in user session
      *
-     * 
+     *
      *
      * @throws ApiException
      *          if the Api call fails
@@ -142,7 +140,7 @@ public class UserApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Updated user
      *
@@ -159,5 +157,5 @@ public class UserApiTest {
 
         // TODO: test validations
     }
-    
+
 }

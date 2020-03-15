@@ -13,16 +13,14 @@
 
 package com.baeldung.petstore.client.api;
 
-import java.io.File;
 import com.baeldung.petstore.client.model.ModelApiResponse;
 import com.baeldung.petstore.client.model.Pet;
-import org.junit.Test;
-import org.junit.Ignore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.io.File;
 import java.util.List;
-import java.util.Map;
+
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for PetApi
@@ -32,11 +30,11 @@ public class PetApiTest {
 
     private final PetApi api = new PetApi();
 
-    
+
     /**
      * Add a new pet to the store
      *
-     * 
+     *
      *
      * @throws ApiException
      *          if the Api call fails
@@ -48,11 +46,11 @@ public class PetApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Deletes a pet
      *
-     * 
+     *
      *
      * @throws ApiException
      *          if the Api call fails
@@ -65,7 +63,7 @@ public class PetApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Finds Pets by status
      *
@@ -81,7 +79,7 @@ public class PetApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Finds Pets by tags
      *
@@ -97,7 +95,7 @@ public class PetApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Find pet by ID
      *
@@ -113,11 +111,11 @@ public class PetApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Update an existing pet
      *
-     * 
+     *
      *
      * @throws ApiException
      *          if the Api call fails
@@ -129,11 +127,11 @@ public class PetApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Updates a pet in the store with form data
      *
-     * 
+     *
      *
      * @throws ApiException
      *          if the Api call fails
@@ -147,11 +145,11 @@ public class PetApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * uploads an image
      *
-     * 
+     *
      *
      * @throws ApiException
      *          if the Api call fails
@@ -165,5 +163,5 @@ public class PetApiTest {
 
         // TODO: test validations
     }
-    
+
 }

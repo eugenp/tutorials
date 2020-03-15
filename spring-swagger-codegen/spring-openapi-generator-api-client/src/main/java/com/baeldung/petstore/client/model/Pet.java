@@ -13,19 +13,20 @@
 
 package com.baeldung.petstore.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.baeldung.petstore.client.model.Category;
-import com.baeldung.petstore.client.model.Tag;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import com.baeldung.petstore.client.model.Category;
+import com.baeldung.petstore.client.model.Tag;
+
 import java.util.ArrayList;
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.Objects;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Pet
@@ -60,9 +61,9 @@ public class Pet {
    */
   public enum StatusEnum {
     AVAILABLE("available"),
-    
+
     PENDING("pending"),
-    
+
     SOLD("sold");
 
     private String value;
@@ -97,7 +98,7 @@ public class Pet {
 
 
   public Pet id(Long id) {
-    
+
     this.id = id;
     return this;
   }
@@ -122,7 +123,7 @@ public class Pet {
 
 
   public Pet category(Category category) {
-    
+
     this.category = category;
     return this;
   }
@@ -147,7 +148,7 @@ public class Pet {
 
 
   public Pet name(String name) {
-    
+
     this.name = name;
     return this;
   }
@@ -171,7 +172,7 @@ public class Pet {
 
 
   public Pet photoUrls(List<String> photoUrls) {
-    
+
     this.photoUrls = photoUrls;
     return this;
   }
@@ -200,7 +201,7 @@ public class Pet {
 
 
   public Pet tags(List<Tag> tags) {
-    
+
     this.tags = tags;
     return this;
   }
@@ -233,7 +234,7 @@ public class Pet {
 
 
   public Pet status(StatusEnum status) {
-    
+
     this.status = status;
     return this;
   }

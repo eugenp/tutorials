@@ -1,6 +1,5 @@
 package com.baeldung.petstore.client.invoker.auth;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
 import org.springframework.http.HttpHeaders;

@@ -1,30 +1,25 @@
 package com.baeldung.petstore.client.api;
 
 import com.baeldung.petstore.client.invoker.ApiClient;
-
 import com.baeldung.petstore.client.model.User;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestClientException;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-03-15T06:14:01.568992-05:00[America/Chicago]")
 @Component("com.baeldung.petstore.client.api.UserApi")
@@ -69,12 +64,12 @@ public class UserApi {
      */
     public ResponseEntity<Void> createUserWithHttpInfo(User body) throws RestClientException {
         Object postBody = body;
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'body' when calling createUser");
         }
-        
+
         String path = apiClient.expandPath("/user", Collections.<String, Object>emptyMap());
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
@@ -84,7 +79,7 @@ public class UserApi {
 
         final String[] accepts = { };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
+        final String[] contentTypes = {
             "application/json"
         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
@@ -96,7 +91,7 @@ public class UserApi {
     }
     /**
      * Creates list of users with given input array
-     * 
+     *
      * <p><b>0</b> - successful operation
      * @param body List of user object (required)
      * @throws RestClientException if an error occurs while attempting to invoke the API
@@ -107,7 +102,7 @@ public class UserApi {
 
     /**
      * Creates list of users with given input array
-     * 
+     *
      * <p><b>0</b> - successful operation
      * @param body List of user object (required)
      * @return ResponseEntity&lt;Void&gt;
@@ -115,12 +110,12 @@ public class UserApi {
      */
     public ResponseEntity<Void> createUsersWithArrayInputWithHttpInfo(List<User> body) throws RestClientException {
         Object postBody = body;
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'body' when calling createUsersWithArrayInput");
         }
-        
+
         String path = apiClient.expandPath("/user/createWithArray", Collections.<String, Object>emptyMap());
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
@@ -130,7 +125,7 @@ public class UserApi {
 
         final String[] accepts = { };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
+        final String[] contentTypes = {
             "application/json"
         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
@@ -142,7 +137,7 @@ public class UserApi {
     }
     /**
      * Creates list of users with given input array
-     * 
+     *
      * <p><b>0</b> - successful operation
      * @param body List of user object (required)
      * @throws RestClientException if an error occurs while attempting to invoke the API
@@ -153,7 +148,7 @@ public class UserApi {
 
     /**
      * Creates list of users with given input array
-     * 
+     *
      * <p><b>0</b> - successful operation
      * @param body List of user object (required)
      * @return ResponseEntity&lt;Void&gt;
@@ -161,12 +156,12 @@ public class UserApi {
      */
     public ResponseEntity<Void> createUsersWithListInputWithHttpInfo(List<User> body) throws RestClientException {
         Object postBody = body;
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'body' when calling createUsersWithListInput");
         }
-        
+
         String path = apiClient.expandPath("/user/createWithList", Collections.<String, Object>emptyMap());
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
@@ -176,7 +171,7 @@ public class UserApi {
 
         final String[] accepts = { };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
+        final String[] contentTypes = {
             "application/json"
         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
@@ -209,12 +204,12 @@ public class UserApi {
      */
     public ResponseEntity<Void> deleteUserWithHttpInfo(String username) throws RestClientException {
         Object postBody = null;
-        
+
         // verify the required parameter 'username' is set
         if (username == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'username' when calling deleteUser");
         }
-        
+
         // create path and map variables
         final Map<String, Object> uriVariables = new HashMap<String, Object>();
         uriVariables.put("username", username);
@@ -237,7 +232,7 @@ public class UserApi {
     }
     /**
      * Get user by user name
-     * 
+     *
      * <p><b>200</b> - successful operation
      * <p><b>400</b> - Invalid username supplied
      * <p><b>404</b> - User not found
@@ -251,7 +246,7 @@ public class UserApi {
 
     /**
      * Get user by user name
-     * 
+     *
      * <p><b>200</b> - successful operation
      * <p><b>400</b> - Invalid username supplied
      * <p><b>404</b> - User not found
@@ -261,12 +256,12 @@ public class UserApi {
      */
     public ResponseEntity<User> getUserByNameWithHttpInfo(String username) throws RestClientException {
         Object postBody = null;
-        
+
         // verify the required parameter 'username' is set
         if (username == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'username' when calling getUserByName");
         }
-        
+
         // create path and map variables
         final Map<String, Object> uriVariables = new HashMap<String, Object>();
         uriVariables.put("username", username);
@@ -277,7 +272,7 @@ public class UserApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap formParams = new LinkedMultiValueMap();
 
-        final String[] accepts = { 
+        final String[] accepts = {
             "application/json", "application/xml"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
@@ -291,7 +286,7 @@ public class UserApi {
     }
     /**
      * Logs user into the system
-     * 
+     *
      * <p><b>200</b> - successful operation
      * <p><b>400</b> - Invalid username/password supplied
      * @param username The user name for login (required)
@@ -305,7 +300,7 @@ public class UserApi {
 
     /**
      * Logs user into the system
-     * 
+     *
      * <p><b>200</b> - successful operation
      * <p><b>400</b> - Invalid username/password supplied
      * @param username The user name for login (required)
@@ -315,17 +310,17 @@ public class UserApi {
      */
     public ResponseEntity<String> loginUserWithHttpInfo(String username, String password) throws RestClientException {
         Object postBody = null;
-        
+
         // verify the required parameter 'username' is set
         if (username == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'username' when calling loginUser");
         }
-        
+
         // verify the required parameter 'password' is set
         if (password == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'password' when calling loginUser");
         }
-        
+
         String path = apiClient.expandPath("/user/login", Collections.<String, Object>emptyMap());
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
@@ -336,7 +331,7 @@ public class UserApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "username", username));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "password", password));
 
-        final String[] accepts = { 
+        final String[] accepts = {
             "application/json", "application/xml"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
@@ -350,7 +345,7 @@ public class UserApi {
     }
     /**
      * Logs out current logged in user session
-     * 
+     *
      * <p><b>0</b> - successful operation
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -360,14 +355,14 @@ public class UserApi {
 
     /**
      * Logs out current logged in user session
-     * 
+     *
      * <p><b>0</b> - successful operation
      * @return ResponseEntity&lt;Void&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
     public ResponseEntity<Void> logoutUserWithHttpInfo() throws RestClientException {
         Object postBody = null;
-        
+
         String path = apiClient.expandPath("/user/logout", Collections.<String, Object>emptyMap());
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
@@ -410,17 +405,17 @@ public class UserApi {
      */
     public ResponseEntity<Void> updateUserWithHttpInfo(String username, User body) throws RestClientException {
         Object postBody = body;
-        
+
         // verify the required parameter 'username' is set
         if (username == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'username' when calling updateUser");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'body' when calling updateUser");
         }
-        
+
         // create path and map variables
         final Map<String, Object> uriVariables = new HashMap<String, Object>();
         uriVariables.put("username", username);
@@ -433,7 +428,7 @@ public class UserApi {
 
         final String[] accepts = { };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
+        final String[] contentTypes = {
             "application/json"
         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
