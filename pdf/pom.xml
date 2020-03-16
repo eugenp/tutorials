@@ -14,6 +14,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
+        </dependency>
+    
+        <dependency>
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>pdfbox-tools</artifactId>
             <version>${pdfbox-tools.version}</version>
@@ -80,6 +86,7 @@
         <poi-scratchpad.version>3.15</poi-scratchpad.version>
         <batik-transcoder.version>1.8</batik-transcoder.version>
         <poi-ooxml.version>3.15</poi-ooxml.version>
+        <commons-codec.version>1.14</commons-codec.version>
     </properties>
 
 </project>
