@@ -40,14 +40,14 @@ public class NonBlockingClientUnitTest {
         // when we write and read using buffers
         socketChannel.write(charset.encode(CharBuffer.wrap("GET " + REQUESTED_RESOURCE + " HTTP/1.0\r\n\r\n")));
 
-        ByteBuffer buffer = ByteBuffer.allocate(8); // or allocateDirect if we need direct memory access
+        ByteBuffer byteBuffer = ByteBuffer.allocate(8192); // or allocateDirect if we need direct memory access
         CharBuffer charBuffer = CharBuffer.allocate(8192);
-        CharsetDecoder decoder = charset.newDecoder();
+        CharsetDecoder charsetDecoder = charset.newDecoder();
         StringBuilder ourStore = new StringBuilder();
-        while (socketChannel.read(buffer) != -1 || buffer.position() > 0) {
-            buffer.flip();
-            storeBufferContents(buffer, charBuffer, decoder, ourStore);
-            buffer.compact();
+        while (socketChannel.read(byteBuffer) != -1 || byteBuffer.position() > 0) {
+            byteBuffer.flip();
+            storeBufferContents(byteBuffer, charBuffer, charsetDecoder, ourStore);
+            byteBuffer.compact();
         }
         socketChannel.close();
 
@@ -67,14 +67,14 @@ public class NonBlockingClientUnitTest {
         // when we write and read using buffers that are too small for our message
         socketChannel.write(charset.encode(CharBuffer.wrap("GET " + REQUESTED_RESOURCE + " HTTP/1.0\r\n\r\n")));
 
-        ByteBuffer buffer = ByteBuffer.allocate(8); // or allocateDirect if we need direct memory access
+        ByteBuffer byteBuffer = ByteBuffer.allocate(8); // or allocateDirect if we need direct memory access
         CharBuffer charBuffer = CharBuffer.allocate(8);
-        CharsetDecoder decoder = charset.newDecoder();
+        CharsetDecoder charsetDecoder = charset.newDecoder();
         StringBuilder ourStore = new StringBuilder();
-        while (socketChannel.read(buffer) != -1 || buffer.position() > 0) {
-            buffer.flip();
-            storeBufferContents(buffer, charBuffer, decoder, ourStore);
-            buffer.compact();
+        while (socketChannel.read(byteBuffer) != -1 || byteBuffer.position() > 0) {
+            byteBuffer.flip();
+            storeBufferContents(byteBuffer, charBuffer, charsetDecoder, ourStore);
+            byteBuffer.compact();
         }
         socketChannel.close();
 
