@@ -39,7 +39,7 @@ public class BankAccountService implements Depositable, Withdrawable {
         if (hasWithdrawn) {
             repository.save(account);
         }
-        
+
         return hasWithdrawn;
     }
 }

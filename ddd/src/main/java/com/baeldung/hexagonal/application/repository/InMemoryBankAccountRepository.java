@@ -10,7 +10,7 @@ import com.baeldung.hexagonal.domain.BankAccount;
 
 @Component
 public class InMemoryBankAccountRepository implements BankAccountRepository {
-    
+
     private Map<Long, BankAccount> accounts = new HashMap<Long, BankAccount>();
 
     @Override

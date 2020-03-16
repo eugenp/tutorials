@@ -16,7 +16,7 @@ public class HexagonalApplication {
     public static void main(final String[] args) {
         SpringApplication.run(HexagonalApplication.class, args);
     }
-    
+
     @Bean
     public CommandLineRunner bootstrapData(BankAccountRepository repository) {
         return (args) -> {

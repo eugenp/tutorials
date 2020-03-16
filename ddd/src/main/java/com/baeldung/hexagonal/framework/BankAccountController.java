@@ -7,25 +7,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.hexagonal.application.service.BankAccountService;
+import com.baeldung.hexagonal.application.Depositable;
+import com.baeldung.hexagonal.application.Withdrawable;
 
 @RestController
 @RequestMapping("/account")
 public class BankAccountController {
-        
-    private BankAccountService service;
-    
-    public BankAccountController(BankAccountService service) {
-        this.service = service;
+
+    private final Depositable depositable;
+    private final Withdrawable withdrawable;
+
+    public BankAccountController(Depositable depositable, Withdrawable withdrawable) {
+        this.depositable = depositable;
+        this.withdrawable = withdrawable;
     }
 
     @PostMapping(value = "/{id}/deposit/{amount}")
     void deposit(@PathVariable final Long id, @PathVariable final BigDecimal amount) {
-        service.deposit(id, amount);
+        depositable.deposit(id, amount);
     }
 
     @PostMapping(value = "/{id}/withdraw/{amount}")
     void withdraw(@PathVariable final Long id, @PathVariable final BigDecimal amount) {
-        service.withdraw(id, amount);
+        withdrawable.withdraw(id, amount);
     }
 }
