@@ -46,29 +46,33 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.13</version>
+            <version>${mysql.version}</version>
         </dependency>
-
         <dependency>
-        	<groupId>org.apache.commons</groupId>
-        	<artifactId>commons-lang3</artifactId>
-        	<version>${commons.lang3.version}</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang3.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <hibernate-core.version>5.4.7.Final</hibernate-core.version>
         <h2.version>1.4.200</h2.version>
+        <mysql.version>8.0.13</mysql.version>
+        <postgresql.version>42.2.11</postgresql.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <maven.deploy.skip>true</maven.deploy.skip>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
