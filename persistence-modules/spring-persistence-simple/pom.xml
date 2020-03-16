@@ -93,6 +93,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.mockito</groupId> 
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version> 
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
             <version>${querydsl.version}</version>
@@ -137,6 +143,7 @@
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <querydsl.version>4.2.1</querydsl.version>
+        <mockito.version>3.3.3</mockito.version>
 
         <!-- util -->
         <guava.version>21.0</guava.version>
