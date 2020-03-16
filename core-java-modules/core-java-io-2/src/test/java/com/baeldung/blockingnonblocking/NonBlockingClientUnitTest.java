@@ -84,8 +84,8 @@ public class NonBlockingClientUnitTest {
           .contains("It worked!"));
     }
 
-    void storeBufferContents(ByteBuffer buffer, CharBuffer charBuffer, CharsetDecoder decoder, StringBuilder ourStore) {
-        decoder.decode(buffer, charBuffer, true);
+    void storeBufferContents(ByteBuffer byteBuffer, CharBuffer charBuffer, CharsetDecoder charsetDecoder, StringBuilder ourStore) {
+        charsetDecoder.decode(byteBuffer, charBuffer, true);
         charBuffer.flip();
         ourStore.append(charBuffer);
         charBuffer.clear();
