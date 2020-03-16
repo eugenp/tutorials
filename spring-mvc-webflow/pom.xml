@@ -73,6 +73,24 @@
         </resources>
         <plugins>
             <plugin>
+                <groupId>org.apache.tomee.maven</groupId>
+                <artifactId>tomee-maven-plugin</artifactId>
+                <version>8.0.1</version>
+                <configuration>
+                    <tomeeHttpPort>8080</tomeeHttpPort>
+                    <context>spring-mvc-webflow</context>
+                    <reloadOnUpdate>true</reloadOnUpdate>
+                    <tomeeClassifier>plume</tomeeClassifier>
+                    <synchronization>
+                        <extensions>
+                            <extension>.class</extension>
+                        </extensions>
+                    </synchronization>
+                    <args>-Xmx2048m -XX:PermSize=256m -Dtomee.serialization.class.blacklist=- -Dtomee.serialization.class.whitelist=*</args>
+                    <removeDefaultWebapps>true</removeDefaultWebapps>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${maven-war-plugin.version}</version>
