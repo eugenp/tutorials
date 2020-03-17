@@ -1,18 +1,15 @@
 package org.baeldung.conditionalflow.step;
 
-import org.springframework.batch.item.ItemWriter;
-
 import java.io.OutputStream;
 import java.util.List;
+
+import org.springframework.batch.item.ItemWriter;
 
 public class PrependingStdoutWriter<T> implements ItemWriter<T> {
     private String prependText;
     private OutputStream writeTo;
 
-    private PrependingStdoutWriter() {
-    }
-
-    public PrependingStdoutWriter(String prependText, OutputStream os){
+    public PrependingStdoutWriter(String prependText, OutputStream os) {
         this.prependText = prependText;
         this.writeTo = os;
     }
