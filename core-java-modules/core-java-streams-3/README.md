@@ -9,5 +9,5 @@ This module contains articles about the Stream API in Java.
 - [Guide to Java 8’s Collectors](https://www.baeldung.com/java-8-collectors)
 - [Primitive Type Streams in Java 8](https://www.baeldung.com/java-8-primitive-streams)
 - [Debugging Java 8 Streams with IntelliJ](https://www.baeldung.com/intellij-debugging-java-streams)
-- [Add BigDecimals using Stream](https://www.baeldung.com/add-bigdecimals-using-stream/)
+- [Add BigDecimals using the Stream API](https://www.baeldung.com/add-bigdecimals-using-the-stream-api/)
 - More articles: [[<-- prev>]](/../core-java-streams-2)
