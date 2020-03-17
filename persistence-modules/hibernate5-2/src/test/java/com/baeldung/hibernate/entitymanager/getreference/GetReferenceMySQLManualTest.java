@@ -15,9 +15,9 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * We need to have a running PostgreSQL instance in order to execute this integration test
+ * We need to have a running MySQL instance and a schema named "baeldung" ready in order to execute this integration test
  */
-public class GetReferencePostgreSQLIntegrationTest {
+public class GetReferenceMySQLManualTest {
 
     private static EntityManagerFactory entityManagerFactory;
     private static EntityManager entityManager;
@@ -32,10 +32,10 @@ public class GetReferencePostgreSQLIntegrationTest {
         ((Logger) LoggerFactory.getLogger("org.hibernate.type.descriptor.sql")).setLevel(Level.OFF);
         ((Logger) LoggerFactory.getLogger("org.hibernate.stat")).setLevel(Level.OFF);
 
-        entityManagerFactory = Persistence.createEntityManagerFactory("com.baeldung.hibernate.entitymanager.game_player_postgresql");
+        entityManagerFactory = Persistence.createEntityManagerFactory("com.baeldung.hibernate.entitymanager.game_player_mysql");
     }
 
-    private void runInTransaction(Runnable task) {
+    private void runInTransaction(Runnable task){
         // We create new persistence context for each test method to discard Hibernate first level cache.
         // So that we can see the behavior of getReference() method in a non-cached environment.
         entityManager = entityManagerFactory.createEntityManager();
