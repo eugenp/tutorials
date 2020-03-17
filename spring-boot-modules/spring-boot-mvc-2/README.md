@@ -6,4 +6,4 @@ This module contains articles about Spring Web MVC in Spring Boot projects.
 
 - [Functional Controllers in Spring MVC](https://www.baeldung.com/spring-mvc-functional-controllers)
 - [Specify an Array of Strings as Body Parameters in Swagger](https://www.baeldung.com/swagger-body-array-of-strings)
-- More articles: [[prev -->]](/spring-boot-mvc)
+- More articles: [[prev -->]](/spring-boot-modules/spring-boot-mvc)
