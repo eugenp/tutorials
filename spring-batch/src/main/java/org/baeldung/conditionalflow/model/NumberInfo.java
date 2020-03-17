@@ -5,12 +5,12 @@ import java.util.Objects;
 public class NumberInfo {
     private int number;
 
-    public static NumberInfo from(int number){
-        return new NumberInfo(number);
-    }
-
     public NumberInfo(int number) {
         this.number = number;
+    }
+
+    public static NumberInfo from(int number) {
+        return new NumberInfo(number);
     }
 
     public boolean isPositive() {
@@ -27,8 +27,10 @@ public class NumberInfo {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         NumberInfo that = (NumberInfo) o;
         return number == that.number;
     }
@@ -40,8 +42,6 @@ public class NumberInfo {
 
     @Override
     public String toString() {
-        return "NumberInfo{" +
-                "number=" + number +
-                '}';
+        return "NumberInfo{" + "number=" + number + '}';
     }
 }
