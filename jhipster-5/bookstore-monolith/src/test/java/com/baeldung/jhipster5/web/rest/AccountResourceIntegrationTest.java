@@ -49,7 +49,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BookstoreApp.class)
-public class AccountResourceIntTest {
+public class AccountResourceIntegrationTest {
 
     @Autowired
     private UserRepository userRepository;
