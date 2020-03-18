@@ -13,3 +13,4 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Parsing Command-Line Parameters with Airline](https://www.baeldung.com/java-airline)
 - [Introduction to cache2k](https://www.baeldung.com/java-cache2k)
 - [Introduction to the jcabi-aspects AOP Annotations Library](https://www.baeldung.com/java-jcabi-aspects)
+- [Introduction to Takes](https://www.baeldung.com/java-takes)
