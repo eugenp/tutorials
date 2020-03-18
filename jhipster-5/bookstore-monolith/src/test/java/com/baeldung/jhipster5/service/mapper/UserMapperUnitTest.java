@@ -26,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BookstoreApp.class)
-public class UserMapperTest {
+public class UserMapperUnitTest {
 
     private static final String DEFAULT_LOGIN = "johndoe";
 
