@@ -3,12 +3,6 @@ package com.baeldung.ioccontainer;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.log4j.AppenderSkeleton;
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggingEvent;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,49 +20,37 @@ import com.baeldung.ioccontainer.bean.Student;
 
 public class IOCContainerAppUnitTest {
 
-    private LogAppender logAppender;
-    private List<LoggingEvent> loggingEvents;
-
     @BeforeEach
-    public void initializeLogAppender() {
-        logAppender = new LogAppender();
-        Logger.getRootLogger()
-            .addAppender(logAppender);
-        loggingEvents = logAppender.events;
-    }
-
     @AfterEach
-    public void removeLogAppender() {
-        Logger.getRootLogger()
-            .removeAppender(logAppender);
+    public void resetInstantiationFlag() {
+        Student.isBeanInstantiated = false;
+        CustomBeanPostProcessor.isBeanInstantiated = false;
+        CustomBeanFactoryPostProcessor.isBeanInstantiated = false;
     }
 
     @Test
-    public void whenBFInitialized_thenNoStudentLogPrinted() {
+    public void whenBFInitialized_thenStudentNotInitialized() {
         Resource res = new ClassPathResource("ioc-container-difference-example.xml");
         BeanFactory factory = new XmlBeanFactory(res);
-
-        String expected = "Student Bean is initialized";
-        assertFalse(checkWhetherLoggerContains(expected));
+        
+        assertFalse(Student.isBeanInstantiated);
     }
 
     @Test
-    public void whenBFInitialized_thenStudentLogPrinted() {
-
+    public void whenBFInitialized_thenStudentInitialized() {
+    
         Resource res = new ClassPathResource("ioc-container-difference-example.xml");
         BeanFactory factory = new XmlBeanFactory(res);
         Student student = (Student) factory.getBean("student");
-
-        String expected = "Student Bean is initialized";
-        assertTrue(checkWhetherLoggerContains(expected));
+    
+        assertTrue(Student.isBeanInstantiated);
     }
-
+    
     @Test
-    public void whenAppContInitialized_thenStudentObjInitialized() {
+    public void whenAppContInitialized_thenStudentInitialized() {
         ApplicationContext context = new ClassPathXmlApplicationContext("ioc-container-difference-example.xml");
-
-        String expected = "Student Bean is initialized";
-        assertTrue(checkWhetherLoggerContains(expected));
+        
+        assertTrue(Student.isBeanInstantiated);
     }
 
     @Test
@@ -76,22 +58,16 @@ public class IOCContainerAppUnitTest {
         Resource res = new ClassPathResource("ioc-container-difference-example.xml");
         ConfigurableListableBeanFactory factory = new XmlBeanFactory(res);
 
-        String beanFactoryPostProcessorExpectedLog = "BeanFactoryPostProcessor is Registered";
-        assertFalse(checkWhetherLoggerContains(beanFactoryPostProcessorExpectedLog));
-
-        String beanPostProcessorExpectedLog = "BeanPostProcessor is Registered Before Initialization";
-        assertFalse(checkWhetherLoggerContains(beanPostProcessorExpectedLog));
+        assertFalse(CustomBeanFactoryPostProcessor.isBeanInstantiated);
+        assertFalse(CustomBeanPostProcessor.isBeanInstantiated);
     }
 
     @Test
     public void whenAppContInitialized_thenBFPostProcessorAndBPostProcessorRegisteredAutomatically() {
         ApplicationContext context = new ClassPathXmlApplicationContext("ioc-container-difference-example.xml");
 
-        String beanFactoryPostProcessorExpectedLog = "BeanFactoryPostProcessor is Registered";
-        assertTrue(checkWhetherLoggerContains(beanFactoryPostProcessorExpectedLog));
-
-        String beanPostProcessorExpectedLog = "BeanPostProcessor is Registered Before Initialization";
-        assertTrue(checkWhetherLoggerContains(beanPostProcessorExpectedLog));
+        assertTrue(CustomBeanFactoryPostProcessor.isBeanInstantiated);
+        assertTrue(CustomBeanPostProcessor.isBeanInstantiated);
     }
 
     @Test
@@ -101,37 +77,12 @@ public class IOCContainerAppUnitTest {
 
         CustomBeanFactoryPostProcessor beanFactoryPostProcessor = new CustomBeanFactoryPostProcessor();
         beanFactoryPostProcessor.postProcessBeanFactory(factory);
-        String beanFactoryPostProcessorExpectedLog = "BeanFactoryPostProcessor is Registered";
-        assertTrue(checkWhetherLoggerContains(beanFactoryPostProcessorExpectedLog));
+        assertTrue(CustomBeanFactoryPostProcessor.isBeanInstantiated);
 
         CustomBeanPostProcessor beanPostProcessor = new CustomBeanPostProcessor();
         factory.addBeanPostProcessor(beanPostProcessor);
         Student student = (Student) factory.getBean("student");
-        String beanPostProcessorExpectedLog = "BeanPostProcessor is Registered Before Initialization";
-        assertTrue(checkWhetherLoggerContains(beanPostProcessorExpectedLog));
+        assertTrue(CustomBeanPostProcessor.isBeanInstantiated);
     }
 
-    private boolean checkWhetherLoggerContains(String expectedLogMessge) {
-        boolean isLogExist = loggingEvents.stream()
-            .anyMatch(logEvent -> logEvent.getMessage()
-                .equals(expectedLogMessge));
-        return isLogExist;
-    }
-
-    public static class LogAppender extends AppenderSkeleton {
-        public List<LoggingEvent> events = new ArrayList<LoggingEvent>();
-
-        public void close() {
-        }
-
-        public boolean requiresLayout() {
-            return false;
-        }
-
-        @Override
-        protected void append(LoggingEvent event) {
-            events.add(event);
-        }
-
-    }
 }
