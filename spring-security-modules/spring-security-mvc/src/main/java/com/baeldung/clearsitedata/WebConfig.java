@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.clearsitedata;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +14,6 @@ import java.util.concurrent.TimeUnit;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"com.baeldung"})
+@ComponentScan(basePackages = {"com.baeldung.clearsitedata"})
 public class WebConfig implements WebMvcConfigurer {
 }
