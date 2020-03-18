@@ -10,4 +10,5 @@ This module contains articles about string operations.
 - [Java String equalsIgnoreCase()](https://www.baeldung.com/java-string-equalsignorecase)
 - [Case-Insensitive String Matching in Java](https://www.baeldung.com/java-case-insensitive-string-matching)
 - [L-Trim and R-Trim in Java](https://www.baeldung.com/l-trim-and-r-trim-in-java)
+- [L-Trim and R-Trim Alternatives in Java](https://www.baeldung.com/java-trim-alternatives)
 - More articles: [[<-- prev]](../core-java-string-operations)
