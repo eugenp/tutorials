@@ -8,4 +8,5 @@ This module contains articles about core Spring functionality
 - [Guide to the Spring BeanFactory](https://www.baeldung.com/spring-beanfactory)
 - [How to use the Spring FactoryBean?](https://www.baeldung.com/spring-factorybean)
 - [Spring – Injecting Collections](https://www.baeldung.com/spring-injecting-collections)
+- [Design Patterns in the Spring Framework](https://www.baeldung.com/spring-framework-design-patterns)
 - More articles: [[<-- prev]](/spring-core-2)
