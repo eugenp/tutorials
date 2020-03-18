@@ -50,6 +50,27 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		
+		 <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+        
+         <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>${xstream.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -103,6 +124,7 @@
         <start-class>com.baeldung.swagger2boot.SpringBootSwaggerApplication</start-class>
         <!-- <start-class>com.baeldung.springbootmvc.SpringBootMvcFnApplication</start-class> -->
         <spring-boot.version>2.2.0.BUILD-SNAPSHOT</spring-boot.version>
+         <xstream.version>1.4.11.1</xstream.version>
     </properties>
 
 </project>
