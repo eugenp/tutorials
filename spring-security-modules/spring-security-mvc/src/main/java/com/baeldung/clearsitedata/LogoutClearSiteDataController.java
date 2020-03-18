@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.clearsitedata;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

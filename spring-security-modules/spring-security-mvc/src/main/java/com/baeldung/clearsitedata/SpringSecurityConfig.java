@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.clearsitedata;
 
 
 import org.springframework.context.annotation.Configuration;
