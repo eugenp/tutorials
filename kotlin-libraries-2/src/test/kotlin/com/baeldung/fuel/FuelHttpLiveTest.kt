@@ -12,7 +12,11 @@ import org.junit.jupiter.api.Test
 import java.io.File
 import java.util.concurrent.CountDownLatch
 
-internal class FuelHttpUnitTest {
+/**
+ * These live tests make connections to the external systems: http://httpbin.org, https://jsonplaceholder.typicode.com
+ * Make sure these hosts are up and your internet connection is on before running the tests.
+ */
+internal class FuelHttpLiveTest {
 
     @Test
     fun whenMakingAsyncHttpGetRequest_thenResponseNotNullAndErrorNullAndStatusCode200() {
