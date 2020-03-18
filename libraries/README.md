@@ -45,4 +45,5 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Implementing a FTP-Client in Java](https://www.baeldung.com/java-ftp-client)
 - [Introduction to Functional Java](https://www.baeldung.com/java-functional-library)
 - [A Guide to the Reflections Library](https://www.baeldung.com/reflections-library)
+- [Using NullAway to Avoid NullPointerExceptions](https://www.baeldung.com/java-nullaway)
 - More articles [[next -->]](/libraries-2)
