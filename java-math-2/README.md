@@ -4,5 +4,6 @@ This module contains articles about math in Java.
 
 ### Relevant articles:
 
-- [Basic Calculator in Java](https://www.baeldung.com/basic-calculator-in-java)
+- [Calculating Logarithms in Java](https://www.baeldung.com/java-logarithms)
+- [Finding Greatest Common Divisor in Java](https://www.baeldung.com/java-greatest-common-divisor)
 - More articles: [[<-- prev]](/../java-math)
