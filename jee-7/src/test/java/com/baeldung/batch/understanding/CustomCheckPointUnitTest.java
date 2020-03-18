@@ -12,7 +12,9 @@ import javax.batch.runtime.StepExecution;
 import com.baeldung.batch.understanding.BatchTestHelper;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Disabled;
 
+@Disabled("Should be fixed in BAEL-3812")
 class CustomCheckPointUnitTest {
     @Test
     public void givenChunk_whenCustomCheckPoint_thenCommitCountIsThree() throws Exception {
