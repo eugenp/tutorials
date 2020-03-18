@@ -22,7 +22,7 @@ import io.jsonwebtoken.security.Keys;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TokenProviderTest {
+public class TokenProviderUnitTest {
 
     private final long ONE_MINUTE = 60000;
     private Key key;

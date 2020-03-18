@@ -31,7 +31,7 @@ import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BookstoreApp.class)
-public class MailServiceIntTest {
+public class MailServiceIntegrationTest {
 
     @Autowired
     private JHipsterProperties jHipsterProperties;

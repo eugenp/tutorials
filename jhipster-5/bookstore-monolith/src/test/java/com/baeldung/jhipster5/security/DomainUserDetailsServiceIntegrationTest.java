@@ -28,7 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BookstoreApp.class)
 @Transactional
-public class DomainUserDetailsServiceIntTest {
+public class DomainUserDetailsServiceIntegrationTest {
 
     private static final String USER_ONE_LOGIN = "test-user-one";
     private static final String USER_ONE_EMAIL = "test-user-one@localhost";
