@@ -17,7 +17,6 @@
         <module>spring-security-acl</module>
         <module>spring-security-angular/server</module>
         <module>spring-security-cache-control</module>
-        <module>spring-security-clear-site-data</module>
         <module>spring-security-core</module>
         <module>spring-security-cors</module>
         <module>spring-security-kerberos</module>
