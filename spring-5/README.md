@@ -16,3 +16,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Assert Statements](https://www.baeldung.com/spring-assert)
 - [Configuring a Hikari Connection Pool with Spring Boot](https://www.baeldung.com/spring-boot-hikari)
 - [Difference between \<context:annotation-config> vs \<context:component-scan>](https://www.baeldung.com/spring-contextannotation-contextcomponentscan)
+- [Finding the Spring Version](https://www.baeldung.com/spring-find-version)
