@@ -33,7 +33,7 @@ import static com.baeldung.jhipster5.repository.CustomAuditEventRepository.EVENT
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BookstoreApp.class)
 @Transactional
-public class CustomAuditEventRepositoryIntTest {
+public class CustomAuditEventRepositoryIntegrationTest {
 
     @Autowired
     private PersistenceAuditEventRepository persistenceAuditEventRepository;

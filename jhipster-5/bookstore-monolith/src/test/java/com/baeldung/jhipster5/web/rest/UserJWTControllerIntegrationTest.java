@@ -33,7 +33,7 @@ import static org.hamcrest.Matchers.not;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BookstoreApp.class)
-public class UserJWTControllerIntTest {
+public class UserJWTControllerIntegrationTest {
 
     @Autowired
     private TokenProvider tokenProvider;

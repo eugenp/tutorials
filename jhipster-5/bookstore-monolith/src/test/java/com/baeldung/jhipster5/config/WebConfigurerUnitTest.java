@@ -37,7 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @see WebConfigurer
  */
-public class WebConfigurerTest {
+public class WebConfigurerUnitTest {
 
     private WebConfigurer webConfigurer;
 
@@ -116,7 +116,7 @@ public class WebConfigurerTest {
         props.getCors().setMaxAge(1800L);
         props.getCors().setAllowCredentials(true);
 
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(new WebConfigurerTestController())
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(new WebConfigurerUnitTestController())
             .addFilters(webConfigurer.corsFilter())
             .build();
 
@@ -146,7 +146,7 @@ public class WebConfigurerTest {
         props.getCors().setMaxAge(1800L);
         props.getCors().setAllowCredentials(true);
 
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(new WebConfigurerTestController())
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(new WebConfigurerUnitTestController())
             .addFilters(webConfigurer.corsFilter())
             .build();
 
@@ -161,7 +161,7 @@ public class WebConfigurerTest {
     public void testCorsFilterDeactivated() throws Exception {
         props.getCors().setAllowedOrigins(null);
 
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(new WebConfigurerTestController())
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(new WebConfigurerUnitTestController())
             .addFilters(webConfigurer.corsFilter())
             .build();
 
@@ -176,7 +176,7 @@ public class WebConfigurerTest {
     public void testCorsFilterDeactivated2() throws Exception {
         props.getCors().setAllowedOrigins(new ArrayList<>());
 
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(new WebConfigurerTestController())
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(new WebConfigurerUnitTestController())
             .addFilters(webConfigurer.corsFilter())
             .build();
 
