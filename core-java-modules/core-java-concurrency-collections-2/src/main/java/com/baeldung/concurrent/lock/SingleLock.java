@@ -14,8 +14,8 @@ public class SingleLock extends ConcurrentAccessExperiment {
 
     protected Supplier<?> putSupplier(Map<String,String> map, int key) {
         return (()-> {
+            lock.lock();
             try {
-                lock.lock();
                 return map.put("key" + key, "value" + key);
             } finally {
                 lock.unlock();
@@ -25,8 +25,8 @@ public class SingleLock extends ConcurrentAccessExperiment {
 
     protected Supplier<?> getSupplier(Map<String,String> map, int key) {
         return (()-> {
+            lock.lock();
             try {
-                lock.lock();
                 return map.get("key" + key);
             } finally {
                 lock.unlock();
