@@ -17,8 +17,8 @@ public class StripedLock extends ConcurrentAccessExperiment {
         return (()-> {
             int bucket = key % stripedLock.size();
             Lock lock = stripedLock.get(bucket);
+            lock.lock();
             try {
-                lock.lock();
                 return map.put("key" + key, "value" + key);
             } finally {
                 lock.unlock();
@@ -30,8 +30,8 @@ public class StripedLock extends ConcurrentAccessExperiment {
         return (()-> {
             int bucket = key % stripedLock.size();
             Lock lock = stripedLock.get(bucket);
+            lock.lock();
             try {
-                lock.lock();
                 return map.get("key" + key);
             } finally {
                 lock.unlock();
