@@ -14,5 +14,3 @@ This module contains articles about math in Java.
 - [Convert Latitude and Longitude to a 2D Point in Java](https://www.baeldung.com/java-convert-latitude-longitude)
 - [Debugging with Eclipse](https://www.baeldung.com/eclipse-debugging)
 - [Matrix Multiplication in Java](https://www.baeldung.com/java-matrix-multiplication)
-- [Calculating Logarithms in Java](https://www.baeldung.com/java-logarithms)
-- [Finding Greatest Common Divisor in Java](https://www.baeldung.com/java-greatest-common-divisor)
