@@ -40,7 +40,7 @@
         <module>xmlunit-2</module>
         <module>junit-4</module>
         <module>testing-libraries</module>
-        <module>powermockito</module>
+        <module>powermock</module>
     </modules>
 
 </project>
