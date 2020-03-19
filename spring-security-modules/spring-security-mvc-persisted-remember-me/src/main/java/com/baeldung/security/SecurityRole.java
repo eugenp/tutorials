@@ -1,4 +1,4 @@
-package org.baeldung.security;
+package com.baeldung.security;
 
 /**
  * Simple enum of Security Roles available.

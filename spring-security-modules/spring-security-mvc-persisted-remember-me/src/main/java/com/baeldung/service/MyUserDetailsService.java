@@ -1,8 +1,8 @@
-package org.baeldung.service;
+package com.baeldung.service;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.baeldung.security.SecurityRole;
+import com.baeldung.security.SecurityRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
