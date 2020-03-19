@@ -22,7 +22,7 @@
 
     </http>
 
-    <beans:bean id="myAuthenticationSuccessHandler" class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler"/>
+    <beans:bean id="myAuthenticationSuccessHandler" class="com.baeldung.security.MySimpleUrlAuthenticationSuccessHandler"/>
 
     <authentication-manager id="authenticationManager">
         <authentication-provider>
@@ -31,10 +31,5 @@
                 <user name="admin1" password="{noop}admin1Pass" authorities="ROLE_ADMIN"/>
             </user-service>
         </authentication-provider>
-    </authentication-manager>
-
-<!--     <mvc:interceptors>
-        <bean id="loggerInterceptor" class="org.baeldung.web.interceptor.LoggerInterceptor" />
-    </mvc:interceptors> -->
-    
+    </authentication-manager>ù
 </beans:beans>
