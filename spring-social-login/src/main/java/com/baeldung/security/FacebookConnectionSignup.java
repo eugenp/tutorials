@@ -1,9 +1,9 @@
-package org.baeldung.security;
+package com.baeldung.security;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
-import org.baeldung.persistence.dao.UserRepository;
-import org.baeldung.persistence.model.User;
+import com.baeldung.persistence.dao.UserRepository;
+import com.baeldung.persistence.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionSignUp;
