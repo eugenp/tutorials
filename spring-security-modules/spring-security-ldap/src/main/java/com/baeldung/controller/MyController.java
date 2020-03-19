@@ -1,4 +1,4 @@
-package org.baeldung.controller;
+package com.baeldung.controller;
 
 import java.security.Principal;
 import java.util.Arrays;
