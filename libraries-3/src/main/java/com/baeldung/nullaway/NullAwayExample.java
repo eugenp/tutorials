@@ -1,7 +1,5 @@
 package com.baeldung.nullaway;
 
-import com.baeldung.distinct.Person;
-
 public class NullAwayExample {
 
     /*
