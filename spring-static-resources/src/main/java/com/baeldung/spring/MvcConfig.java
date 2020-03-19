@@ -1,4 +1,4 @@
-package org.baeldung.spring;
+package com.baeldung.spring;
 
 import java.util.Locale;
 
@@ -25,7 +25,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@ComponentScan(basePackages = { "org.baeldung.web.controller", "org.baeldung.persistence.service", "org.baeldung.persistence.dao" })
+@ComponentScan(basePackages = { "com.baeldung.web.controller", "com.baeldung.persistence.service", "com.baeldung.persistence.dao" })
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
     @Autowired

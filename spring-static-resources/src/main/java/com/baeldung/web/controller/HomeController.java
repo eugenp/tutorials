@@ -1,4 +1,4 @@
-package org.baeldung.web.controller;
+package com.baeldung.web.controller;
 
 import java.io.IOException;
 import java.text.DateFormat;
