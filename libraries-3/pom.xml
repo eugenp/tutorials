@@ -178,7 +178,7 @@
                     <compilerArgs>
                         <!-- NullAway will warn by default, uncomment the next line to make the build fail -->
                         <!-- <arg>-Xep:NullAway:ERROR</arg> -->
-                        <arg>-XepExcludedPaths:(.*)/test/.*|(.*)/streamex/.*</arg>
+                        <arg>-XepExcludedPaths:(.*)/test/.*|(.*)/streamex/.*|(.*)/jcabi/.*</arg>
                         <arg>-XepOpt:NullAway:AnnotatedPackages=com.baeldung.nullaway</arg>
                     </compilerArgs>
                 </configuration>
