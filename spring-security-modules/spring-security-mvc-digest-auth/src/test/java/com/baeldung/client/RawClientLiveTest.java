@@ -1,4 +1,4 @@
-package org.baeldung.client;
+package com.baeldung.client;
 
 import java.io.IOException;
 
@@ -6,7 +6,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.baeldung.spring.ClientConfig;
+import com.baeldung.spring.ClientConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
