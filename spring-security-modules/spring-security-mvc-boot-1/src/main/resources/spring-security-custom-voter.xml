@@ -22,12 +22,12 @@
                 <beans:bean class="org.springframework.security.web.access.expression.WebExpressionVoter"/>
                 <beans:bean class="org.springframework.security.access.vote.AuthenticatedVoter"/>
                 <beans:bean class="org.springframework.security.access.vote.RoleVoter"/>
-                <beans:bean class="org.baeldung.voter.MinuteBasedVoter"/>
+                <beans:bean class="com.baeldung.roles.voter.MinuteBasedVoter"/>
             </beans:list>
         </beans:constructor-arg>
     </beans:bean>
 
-    <beans:bean id="minuteBasedVoter" class="org.baeldung.voter.MinuteBasedVoter"/>
+    <beans:bean id="minuteBasedVoter" class="com.baeldung.roles.voter.MinuteBasedVoter"/>
 
     <authentication-manager>
         <authentication-provider>
