@@ -74,16 +74,6 @@
             <type>pom</type>
         </dependency>
         <dependency>
-            <groupId>com.squareup.moshi</groupId>
-            <artifactId>moshi</artifactId>
-            <version>${moshi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.moshi</groupId>
-            <artifactId>moshi-adapters</artifactId>
-            <version>${moshi.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.jcabi</groupId>
             <artifactId>jcabi-aspects</artifactId>
             <version>${jcabi-aspects.version}</version>
@@ -258,7 +248,6 @@
         <cactoos.version>0.43</cactoos.version>
         <airline.version>2.7.2</airline.version>
         <cache2k.version>1.2.3.Final</cache2k.version>
-        <moshi.version>1.9.2</moshi.version>
         <jcabi-aspects.version>0.22.6</jcabi-aspects.version>
         <aspectjrt.version>1.9.2</aspectjrt.version>
         <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
