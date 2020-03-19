@@ -1,12 +1,12 @@
-package org.baeldung.acl;
+package com.baeldung.acl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
-import org.baeldung.acl.persistence.dao.NoticeMessageRepository;
-import org.baeldung.acl.persistence.entity.NoticeMessage;
+import com.baeldung.acl.persistence.dao.NoticeMessageRepository;
+import com.baeldung.acl.persistence.entity.NoticeMessage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class SpringACLIntegrationTest extends AbstractJUnit4SpringContextTests{
     private static String EDITTED_CONTENT = "EDITED";
     
     @Configuration
-    @ComponentScan("org.baeldung.acl.*")
+    @ComponentScan("com.baeldung.acl.*")
     public static class SpringConfig {
 
     }
