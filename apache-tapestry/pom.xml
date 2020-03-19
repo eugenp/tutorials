@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+<project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>apache-tapestry</artifactId>
@@ -9,9 +11,8 @@
     <packaging>war</packaging>
 
     <dependencies>
-        <!-- To set up an application with a database, change the artifactId below to
-             tapestry-hibernate, and add a dependency on your JDBC driver. You'll also
-             need to add Hibernate configuration files, such as hibernate.cfg.xml. -->
+        <!-- To set up an application with a database, change the artifactId below to tapestry-hibernate, 
+        and add a dependency on your JDBC driver. You'll also need to add Hibernate configuration files, such as hibernate.cfg.xml. -->
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-core</artifactId>
@@ -32,17 +33,10 @@
         </dependency>
 
         <!-- Uncomment this to add support for file uploads: -->
-        <!--
-         <dependency>
-            <groupId>org.apache.tapestry</groupId>
-            <artifactId>tapestry-upload</artifactId>
-            <version>${tapestry-release-version}</version>
-        </dependency>
-        -->
+        <!-- <dependency> <groupId>org.apache.tapestry</groupId> <artifactId>tapestry-upload</artifactId> <version>${tapestry-release-version}</version> </dependency> -->
 
-        <!-- A dependency on either JUnit or TestNG is required, or the surefire plugin (which runs the tests)
-will fail, preventing Maven from packaging the WAR. Tapestry includes a large number
-of testing facilities designed for use with TestNG (http://testng.org/), so it's recommended. -->
+        <!-- A dependency on either JUnit or TestNG is required, or the surefire plugin (which runs the tests) will fail, preventing Maven from packaging the WAR. Tapestry includes 
+            a large number of testing facilities designed for use with TestNG (http://testng.org/), so it's recommended. -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -57,8 +51,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <scope>test</scope>
         </dependency>
 
-        <!-- Provided by the servlet container, but sometimes referenced in the application
-       code. -->
+        <!-- Provided by the servlet container, but sometimes referenced in the application code. -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -108,8 +101,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
                 <configuration>
                     <!-- Log to the console. -->
                     <requestLog implementation="org.mortbay.jetty.NCSARequestLog">
-                        <!-- This doesn't do anything for Jetty, but is a workaround for a Maven bug
-                             that prevents the requestLog from being set. -->
+                        <!-- This doesn't do anything for Jetty, but is a workaround for a Maven bug that prevents the requestLog from being set. -->
                         <append>true</append>
                     </requestLog>
                     <systemProperties>
@@ -123,7 +115,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         </plugins>
     </build>
 
-    <reporting/>
+    <reporting />
 
     <repositories>
         <repository>
@@ -131,8 +123,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <url>http://repository.jboss.org/nexus/content/groups/public/</url>
         </repository>
 
-        <!-- This repository is only needed when the Tapestry version is a preview release, rather
-             than a final release. -->
+        <!-- This repository is only needed when the Tapestry version is a preview release, rather than a final release. -->
         <repository>
             <id>apache-staging</id>
             <url>https://repository.apache.org/content/groups/staging/</url>
