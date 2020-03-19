@@ -1,7 +1,7 @@
-package org.baeldung.config;
+package com.baeldung.config;
 
-import org.baeldung.security.FacebookSignInAdapter;
-import org.baeldung.security.FacebookConnectionSignup;
+import com.baeldung.security.FacebookSignInAdapter;
+import com.baeldung.security.FacebookConnectionSignup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,7 +18,7 @@ import org.springframework.social.connect.web.ProviderSignInController;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan(basePackages = { "org.baeldung.security" })
+@ComponentScan(basePackages = { "com.baeldung.security" })
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
