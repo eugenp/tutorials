@@ -1,4 +1,4 @@
-package org.baeldung.acl.config;
+package com.baeldung.acl.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

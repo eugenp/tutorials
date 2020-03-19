@@ -1,4 +1,4 @@
-package org.baeldung.acl.config;
+package com.baeldung.acl.config;
 
 import javax.sql.DataSource;
 
