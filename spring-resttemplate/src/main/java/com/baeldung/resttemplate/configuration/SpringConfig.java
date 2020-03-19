@@ -26,8 +26,4 @@ public class SpringConfig {
         return new RestTemplateBuilder(customRestTemplateCustomizer());
     }
 
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
 }
