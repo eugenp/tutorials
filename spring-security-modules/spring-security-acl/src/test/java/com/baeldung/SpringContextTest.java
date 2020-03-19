@@ -1,4 +1,4 @@
-package org.baeldung;
+package com.baeldung;
 
 import com.baeldung.acl.Application;
 import org.junit.Test;
