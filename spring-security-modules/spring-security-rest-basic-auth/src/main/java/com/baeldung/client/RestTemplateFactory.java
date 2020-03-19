@@ -1,4 +1,4 @@
-package org.baeldung.client;
+package com.baeldung.client;
 
 import org.apache.http.HttpHost;
 import org.springframework.beans.factory.FactoryBean;

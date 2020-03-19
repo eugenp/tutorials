@@ -1,6 +1,6 @@
-package org.baeldung.filter;
+package com.baeldung.filter;
 
-import org.baeldung.security.RestAuthenticationEntryPoint;
+import com.baeldung.security.RestAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package org.baeldung.web.dto;
+package com.baeldung.web.dto;
 
 import java.io.Serializable;
 

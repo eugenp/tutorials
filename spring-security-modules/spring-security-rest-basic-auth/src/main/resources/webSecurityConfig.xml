@@ -23,6 +23,6 @@
 
     <global-method-security pre-post-annotations="enabled"/>
         
-    <beans:bean id="myBasicAuthenticationEntryPoint" class="org.baeldung.basic.MyBasicAuthenticationEntryPoint" />
+    <beans:bean id="myBasicAuthenticationEntryPoint" class="com.baeldung.basic.MyBasicAuthenticationEntryPoint" />
 
 </beans:beans>

@@ -1,9 +1,9 @@
-package org.baeldung.web.controller;
+package com.baeldung.web.controller;
 
 import java.nio.charset.Charset;
 
 import org.apache.commons.codec.binary.Base64;
-import org.baeldung.web.dto.Bar;
+import com.baeldung.web.dto.Bar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpHeaders;

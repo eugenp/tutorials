@@ -1,4 +1,4 @@
-package org.baeldung.filter;
+package com.baeldung.filter;
 
 import org.springframework.web.filter.GenericFilterBean;
 
