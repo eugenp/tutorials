@@ -1,4 +1,4 @@
-package org.baeldung.config;
+package com.baeldung.config;
 
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Configuration;

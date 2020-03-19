@@ -1,4 +1,4 @@
-package org.baeldung;
+package com.baeldung;
 import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
