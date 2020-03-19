@@ -1,4 +1,4 @@
-package org.baeldung.basic;
+package com.baeldung.basic;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
