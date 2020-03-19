@@ -1336,8 +1336,8 @@
         <junit.version>4.12</junit.version>
         <hamcrest.version>2.2</hamcrest.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
-	<mockito.version>3.3.0</mockito.version>
-	<byte-buddy.version>1.10.5</byte-buddy.version>
+        <mockito.version>3.3.0</mockito.version>
+        <byte-buddy.version>1.10.5</byte-buddy.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.30</org.slf4j.version>
