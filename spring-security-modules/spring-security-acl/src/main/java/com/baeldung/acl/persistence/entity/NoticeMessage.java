@@ -1,4 +1,4 @@
-package org.baeldung.acl.persistence.entity;
+package com.baeldung.acl.persistence.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
