@@ -23,7 +23,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("org.baeldung.web")
+@ComponentScan("com.baeldung.web")
 //@ImportResource({ "classpath:prop.xml" })    
 //@PropertySource("classpath:foo.properties")
 public class WebConfig implements WebMvcConfigurer {
