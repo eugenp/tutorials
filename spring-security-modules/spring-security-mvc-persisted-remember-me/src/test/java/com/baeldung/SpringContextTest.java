@@ -1,8 +1,8 @@
-package org.baeldung;
+package com.baeldung;
 
-import org.baeldung.spring.MvcConfig;
-import org.baeldung.spring.PersistenceConfig;
-import org.baeldung.spring.SecurityConfig;
+import com.baeldung.spring.MvcConfig;
+import com.baeldung.spring.PersistenceConfig;
+import com.baeldung.spring.SecurityConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

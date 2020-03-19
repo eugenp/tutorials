@@ -1,4 +1,4 @@
-package org.baeldung.spring;
+package com.baeldung.spring;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,7 +14,7 @@ import org.springframework.web.servlet.view.JstlView;
  * Spring Web Configuration.
  */
 @EnableWebMvc
-@ComponentScan("org.baeldung")
+@ComponentScan("com.baeldung")
 @Configuration
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
