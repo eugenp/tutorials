@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
-@ComponentScan("org.baeldung.service")
+@ComponentScan("com.baeldung.service")
 // @ImportResource({ "classpath:prop.xml" })
 @PropertySource("classpath:foo.properties")
 public class ServiceConfig {
