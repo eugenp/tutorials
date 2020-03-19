@@ -1,4 +1,4 @@
-package org.baeldung.spring;
+package com.baeldung.spring;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
