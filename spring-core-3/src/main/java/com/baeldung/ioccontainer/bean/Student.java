@@ -1,9 +1,17 @@
 package com.baeldung.ioccontainer.bean;
 
 public class Student {
-    public static boolean isBeanInstantiated = false;
+    private static boolean isBeanInstantiated = false;
 
     public void postConstruct() {
-        isBeanInstantiated = true;
+        setBeanInstantiated(true);
+    }
+
+    public static boolean isBeanInstantiated() {
+        return isBeanInstantiated;
+    }
+
+    public static void setBeanInstantiated(boolean isBeanInstantiated) {
+        Student.isBeanInstantiated = isBeanInstantiated;
     }
 }
