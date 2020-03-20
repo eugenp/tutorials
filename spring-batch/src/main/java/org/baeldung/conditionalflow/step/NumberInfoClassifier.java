@@ -10,7 +10,8 @@ import org.springframework.batch.item.ItemProcessor;
 import static org.baeldung.conditionalflow.NumberInfoDecider.NOTIFY;
 import static org.baeldung.conditionalflow.NumberInfoDecider.QUIET;
 
-public class NumberInfoClassifier extends ItemListenerSupport<NumberInfo, Integer> implements ItemProcessor<NumberInfo, Integer> {
+public class NumberInfoClassifier extends ItemListenerSupport<NumberInfo, Integer>
+        implements ItemProcessor<NumberInfo, Integer> {
     private StepExecution stepExecution;
 
     @BeforeStep
