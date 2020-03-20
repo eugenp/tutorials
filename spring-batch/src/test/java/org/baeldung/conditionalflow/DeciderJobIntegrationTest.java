@@ -1,15 +1,12 @@
 package org.baeldung.conditionalflow;
 
 import org.baeldung.conditionalflow.config.NumberInfoConfig;
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.StepExecution;
-import org.springframework.batch.test.AssertFile;
 import org.springframework.batch.test.JobLauncherTestUtils;
-import org.springframework.batch.test.JobRepositoryTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -37,17 +34,20 @@ public class DeciderJobIntegrationTest {
     private JobLauncherTestUtils jobLauncherTestUtils;
 
     @Test
-    public void whenNumberGeneratorDecider_thenNotifyStepRuns() throws Exception {
+    public void givenNumberGeneratorDecider_whenDeciderRuns_thenStatusIsNotify() throws Exception {
         JobExecution jobExecution = jobLauncherTestUtils.launchJob();
         Collection<StepExecution> actualStepExecutions = jobExecution.getStepExecutions();
         ExitStatus actualJobExitStatus = jobExecution.getExitStatus();
 
-        assertEquals(actualJobExitStatus.getExitCode().toString(), "COMPLETED");
-        assertEquals(actualStepExecutions.size(), 2);
+        assertEquals("COMPLETED", actualJobExitStatus.getExitCode()
+            .toString());
+        assertEquals(2, actualStepExecutions.size());
         boolean notifyStepDidRun = false;
         Iterator<StepExecution> iterator = actualStepExecutions.iterator();
-        while(iterator.hasNext() && !notifyStepDidRun){
-            if(iterator.next().getStepName().equals("Notify step")){
+        while (iterator.hasNext() && !notifyStepDidRun) {
+            if (iterator.next()
+                .getStepName()
+                .equals("Notify step")) {
                 notifyStepDidRun = true;
             }
         }

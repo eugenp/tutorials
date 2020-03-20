@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 class NumberInfoUnitTest {
 
     @Test
-    void whenPositive_isPositive() {
+    void givenPositive_whenFrom_isPositive() {
         assertTrue(NumberInfo.from(1)
             .isPositive());
         assertTrue(NumberInfo.from(11)
@@ -22,7 +22,7 @@ class NumberInfoUnitTest {
     }
 
     @Test
-    void whenNegative_isPositive_isFalse() {
+    void givenNegative_whenFrom_isNegative() {
         assertFalse(NumberInfo.from(-1)
             .isPositive());
         assertFalse(NumberInfo.from(-10)
@@ -30,7 +30,7 @@ class NumberInfoUnitTest {
     }
 
     @Test
-    void whenEven_isEven() {
+    void givenEven_whenFrom_isEven() {
         assertTrue(NumberInfo.from(0)
             .isEven());
         assertTrue(NumberInfo.from(-2)
@@ -44,7 +44,7 @@ class NumberInfoUnitTest {
     }
 
     @Test
-    void whenOdd_isEven_isFalse() {
+    void givenOdd_whenFrom_isOdd() {
 
         assertFalse(NumberInfo.from(1)
             .isEven());
@@ -62,7 +62,7 @@ class NumberInfoUnitTest {
     }
 
     @Test
-    void testStatic_fromMethod_equals_getNumber() {
+    void giveGeneratedInt_whenFrom_isNumberFromGenerator() {
         for (int i = -100; i < 100; i++) {
             assertEquals(i, NumberInfo.from(i)
                 .getNumber());

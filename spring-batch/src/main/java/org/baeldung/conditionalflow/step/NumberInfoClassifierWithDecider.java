@@ -13,5 +13,4 @@ public class NumberInfoClassifierWithDecider extends ItemListenerSupport<NumberI
     public Integer process(NumberInfo numberInfo) throws Exception {
         return Integer.valueOf(numberInfo.getNumber());
     }
-
 }

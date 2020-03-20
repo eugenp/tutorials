@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class NumberInfoClassifierUnitTest {
 
     @Test
-    void process_convertsToInteger() throws Exception {
+    void givenNumberInfo_whenProcess_thenConvertsToInteger() throws Exception {
         NumberInfoClassifier nic = new NumberInfoClassifier();
         assertEquals(Integer.valueOf(4), nic.process(NumberInfo.from(4)));
         assertEquals(Integer.valueOf(-4), nic.process(NumberInfo.from(-4)));
