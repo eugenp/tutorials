@@ -1,14 +1,21 @@
 package com.baeldung.ioccontainer.bean;
 
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
 public class CustomBeanPostProcessor implements BeanPostProcessor {
-    public static boolean isBeanInstantiated = false;
+    private static boolean isBeanPostProcessorRegistered = false;
     
     @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        isBeanInstantiated = true;
+    public Object postProcessBeforeInitialization(Object bean, String beanName){
+        setBeanPostProcessorRegistered(true);
         return bean;
+    }
+
+    public static boolean isBeanPostProcessorRegistered() {
+        return isBeanPostProcessorRegistered;
+    }
+
+    public static void setBeanPostProcessorRegistered(boolean isBeanPostProcessorRegistered) {
+        CustomBeanPostProcessor.isBeanPostProcessorRegistered = isBeanPostProcessorRegistered;
     }
 }

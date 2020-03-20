@@ -23,9 +23,9 @@ public class IOCContainerAppUnitTest {
     @BeforeEach
     @AfterEach
     public void resetInstantiationFlag() {
-        Student.isBeanInstantiated = false;
-        CustomBeanPostProcessor.isBeanInstantiated = false;
-        CustomBeanFactoryPostProcessor.isBeanInstantiated = false;
+        Student.setBeanInstantiated(false);
+        CustomBeanPostProcessor.setBeanPostProcessorRegistered(false);
+        CustomBeanFactoryPostProcessor.setBeanFactoryPostProcessorRegistered(false);
     }
 
     @Test
@@ -33,24 +33,23 @@ public class IOCContainerAppUnitTest {
         Resource res = new ClassPathResource("ioc-container-difference-example.xml");
         BeanFactory factory = new XmlBeanFactory(res);
         
-        assertFalse(Student.isBeanInstantiated);
+        assertFalse(Student.isBeanInstantiated());
     }
 
     @Test
     public void whenBFInitialized_thenStudentInitialized() {
-    
         Resource res = new ClassPathResource("ioc-container-difference-example.xml");
         BeanFactory factory = new XmlBeanFactory(res);
         Student student = (Student) factory.getBean("student");
     
-        assertTrue(Student.isBeanInstantiated);
+        assertTrue(Student.isBeanInstantiated());
     }
     
     @Test
     public void whenAppContInitialized_thenStudentInitialized() {
         ApplicationContext context = new ClassPathXmlApplicationContext("ioc-container-difference-example.xml");
         
-        assertTrue(Student.isBeanInstantiated);
+        assertTrue(Student.isBeanInstantiated());
     }
 
     @Test
@@ -58,16 +57,8 @@ public class IOCContainerAppUnitTest {
         Resource res = new ClassPathResource("ioc-container-difference-example.xml");
         ConfigurableListableBeanFactory factory = new XmlBeanFactory(res);
 
-        assertFalse(CustomBeanFactoryPostProcessor.isBeanInstantiated);
-        assertFalse(CustomBeanPostProcessor.isBeanInstantiated);
-    }
-
-    @Test
-    public void whenAppContInitialized_thenBFPostProcessorAndBPostProcessorRegisteredAutomatically() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("ioc-container-difference-example.xml");
-
-        assertTrue(CustomBeanFactoryPostProcessor.isBeanInstantiated);
-        assertTrue(CustomBeanPostProcessor.isBeanInstantiated);
+        assertFalse(CustomBeanFactoryPostProcessor.isBeanFactoryPostProcessorRegistered());
+        assertFalse(CustomBeanPostProcessor.isBeanPostProcessorRegistered());
     }
 
     @Test
@@ -77,12 +68,19 @@ public class IOCContainerAppUnitTest {
 
         CustomBeanFactoryPostProcessor beanFactoryPostProcessor = new CustomBeanFactoryPostProcessor();
         beanFactoryPostProcessor.postProcessBeanFactory(factory);
-        assertTrue(CustomBeanFactoryPostProcessor.isBeanInstantiated);
+        assertTrue(CustomBeanFactoryPostProcessor.isBeanFactoryPostProcessorRegistered());
 
         CustomBeanPostProcessor beanPostProcessor = new CustomBeanPostProcessor();
         factory.addBeanPostProcessor(beanPostProcessor);
         Student student = (Student) factory.getBean("student");
-        assertTrue(CustomBeanPostProcessor.isBeanInstantiated);
+        assertTrue(CustomBeanPostProcessor.isBeanPostProcessorRegistered());
     }
+    
+    @Test
+    public void whenAppContInitialized_thenBFPostProcessorAndBPostProcessorRegisteredAutomatically() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("ioc-container-difference-example.xml");
 
+        assertTrue(CustomBeanFactoryPostProcessor.isBeanFactoryPostProcessorRegistered());
+        assertTrue(CustomBeanPostProcessor.isBeanPostProcessorRegistered());
+    }
 }
