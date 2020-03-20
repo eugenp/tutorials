@@ -8,9 +8,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -23,39 +22,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sourceforge.barbecue</groupId>
-            <artifactId>barbecue</artifactId>
-            <version>${barbecue.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sf.barcode4j</groupId>
-            <artifactId>barcode4j</artifactId>
-            <version>${barcode4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>${zxing.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>javase</artifactId>
-            <version>${zxing.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.kenglxn.qrgen</groupId>
-            <artifactId>javase</artifactId>
-            <version>${qrgen.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.rvesse</groupId>
@@ -90,6 +56,16 @@
             <version>${takes.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>${httpcore.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
             <version>${velocity-engine-core.version}</version>
@@ -119,7 +95,7 @@
             <url>https://jitpack.io</url>
         </repository>
     </repositories>
-    
+
     <build>
         <finalName>libraries-3</finalName>
         <plugins>
@@ -239,10 +215,6 @@
     <properties>
         <jcommander.version>1.78</jcommander.version>
         <lombok.version>1.18.6</lombok.version>
-        <barbecue.version>1.5-beta1</barbecue.version>
-        <barcode4j.version>2.1</barcode4j.version>
-        <zxing.version>3.3.0</zxing.version>
-        <qrgen.version>2.6.0</qrgen.version>
 
         <cactoos.version>0.43</cactoos.version>
         <airline.version>2.7.2</airline.version>
@@ -254,6 +226,8 @@
         <aspectjweaver.version>1.9.2</aspectjweaver.version>
         
         <takes.version>1.19</takes.version>
+        <httpcore.version>4.4.13</httpcore.version>
+        <httpclient.version>4.5.12</httpclient.version>
         <velocity-engine-core.version>2.2</velocity-engine-core.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     </properties>
