@@ -14,7 +14,9 @@ import javax.batch.runtime.Metric;
 import javax.batch.runtime.StepExecution;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Disabled;
 
+@Disabled("Should be fixed in BAEL-3812")
 class SimpleChunkUnitTest {
     @Test
     public void givenChunk_thenBatch_CompletesWithSucess() throws Exception {
