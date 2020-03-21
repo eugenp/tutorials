@@ -53,7 +53,40 @@
             <version>${shedlock.version}</version>
         </dependency>
 
+        <!-- Barcodes -->
+        <dependency>
+            <groupId>net.sourceforge.barbecue</groupId>
+            <artifactId>barbecue</artifactId>
+            <version>${barbecue.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.barcode4j</groupId>
+            <artifactId>barcode4j</artifactId>
+            <version>${barcode4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kenglxn.qrgen</groupId>
+            <artifactId>javase</artifactId>
+            <version>${qrgen.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>${zxing.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>${zxing.version}</version>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 
     <build>
         <finalName>spring-boot-libraries</finalName>
@@ -153,6 +186,10 @@
         <modelmapper.version>2.3.2</modelmapper.version>
         <problem-spring-web.version>0.23.0</problem-spring-web.version>
         <shedlock.version>2.1.0</shedlock.version>
+        <barbecue.version>1.5-beta1</barbecue.version>
+        <barcode4j.version>2.1</barcode4j.version>
+        <qrgen.version>2.6.0</qrgen.version>
+        <zxing.version>3.3.0</zxing.version>
     </properties>
 
 </project>
