@@ -33,14 +33,14 @@ Next, they are segregated further on the basis of tests that we want to execute.
 
 Therefore, we have a total of 6 profiles:
 
-| Profile                | Includes                    | Type of test enabled |
-| ---------------------- | --------------------------- | -------------------- |
-| default-first          | First set of projects       | *UnitTest            |
-| integration-lite-first | First set of projects       | *IntegrationTest     |
-| default-second         | Second set of projects      | *UnitTest            |
-| integration-lite-first | Second set of projects      | *IntegrationTest     |
-| default-heavy          | Heavy/long running projects | *UnitTest            |
-| integration-heavy      | Heavy/long running projects | *IntegrationTest     |
+| Profile                 | Includes                    | Type of test enabled |
+| ----------------------- | --------------------------- | -------------------- |
+| default-first           | First set of projects       | *UnitTest            |
+| integration-lite-first  | First set of projects       | *IntegrationTest     |
+| default-second          | Second set of projects      | *UnitTest            |
+| integration-lite-second | Second set of projects      | *IntegrationTest     |
+| default-heavy           | Heavy/long running projects | *UnitTest            |
+| integration-heavy       | Heavy/long running projects | *IntegrationTest     |
 
 Building the project
 ====================
