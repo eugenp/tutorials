@@ -13,27 +13,27 @@ public class UnionFind {
         }
     }
 
-    public int find(int vertex) {
-        while (vertex != parents[vertex]) {
-            vertex = parents[vertex];
+    public int find(int u) {
+        while (u != parents[u]) {
+            u = parents[u];
         }
-        return vertex;
+        return u;
     }
 
-    public void union(int vertex1, int vertex2) {
-        int vertex1Parent = find(vertex1);
-        int vertex2Parent = find(vertex2);
-        if (vertex1Parent == vertex2Parent) {
+    public void union(int u, int v) {
+        int uParent = find(u);
+        int vParent = find(v);
+        if (uParent == vParent) {
             return;
         }
 
-        if (ranks[vertex1Parent] < ranks[vertex2Parent]) {
-            parents[vertex1Parent] = vertex2Parent;
-        } else if (ranks[vertex1Parent] > ranks[vertex2Parent]) {
-            parents[vertex2Parent] = vertex1Parent;
+        if (ranks[uParent] < ranks[vParent]) {
+            parents[uParent] = vParent;
+        } else if (ranks[uParent] > ranks[vParent]) {
+            parents[vParent] = uParent;
         } else {
-            parents[vertex2Parent] = vertex1Parent;
-            ranks[vertex1Parent]++;
+            parents[vParent] = uParent;
+            ranks[uParent]++;
         }
     }
 }
