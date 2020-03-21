@@ -11,7 +11,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [The @ServletComponentScan Annotation in Spring Boot](https://www.baeldung.com/spring-servletcomponentscan)
 - [How to Register a Servlet in Java](https://www.baeldung.com/register-servlet)
 - [Guide to Spring WebUtils and ServletRequestUtils](https://www.baeldung.com/spring-webutils-servletrequestutils)
-- [Using Custom Banners in Spring Boot](https://www.baeldung.com/spring-boot-custom-banners)
 - [Guide to Internationalization in Spring Boot](https://www.baeldung.com/spring-boot-internationalization)
 - [Create a Custom FailureAnalyzer with Spring Boot](https://www.baeldung.com/spring-boot-failure-analyzer)
 - [Dynamic DTO Validation Config Retrieved from the Database](https://www.baeldung.com/spring-dynamic-dto-validation)
