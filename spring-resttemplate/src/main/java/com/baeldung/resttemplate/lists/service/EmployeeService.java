@@ -7,7 +7,7 @@ import com.baeldung.resttemplate.lists.dto.Employee;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Service("EmployeeListService")
 public class EmployeeService
 {
     public List<Employee> getAllEmployees()
