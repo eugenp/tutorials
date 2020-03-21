@@ -336,6 +336,7 @@
                 <module>algorithms-miscellaneous-3</module>
                 <module>algorithms-miscellaneous-4</module>
                 <module>algorithms-miscellaneous-5</module>
+		<module>algorithms-miscellaneous-6</module>
                 <module>algorithms-searching</module>
                 <module>algorithms-sorting</module>
                 <module>algorithms-sorting-2</module>
@@ -634,8 +635,8 @@
                 <module>spring-batch</module>
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
+    		<module>spring-boot-parent</module>
                 <module>spring-boot-rest</module>
-
                 <module>spring-caching</module>
 
                 <module>spring-cloud</module>
@@ -848,6 +849,7 @@
                 <module>algorithms-miscellaneous-3</module>
                 <module>algorithms-miscellaneous-4</module>
                 <module>algorithms-miscellaneous-5</module>
+		<module>algorithms-miscellaneous-6</module>
                 <module>algorithms-searching</module>
                 <module>algorithms-sorting</module>
                 <module>algorithms-sorting-2</module>
@@ -1138,8 +1140,8 @@
                 <module>spring-batch</module>
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
+		<module>spring-boot-parent</module>
                 <module>spring-boot-rest</module>
-
                 <module>spring-caching</module>
 
                 <module>spring-cloud</module>
