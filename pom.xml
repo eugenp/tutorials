@@ -635,8 +635,9 @@
                 <module>spring-batch</module>
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
-    		<module>spring-boot-parent</module>
+		<module>spring-boot-parent</module>
                 <module>spring-boot-rest</module>
+
                 <module>spring-caching</module>
 
                 <module>spring-cloud</module>
@@ -1142,6 +1143,7 @@
                 <module>spring-boot-modules</module>
 		<module>spring-boot-parent</module>
                 <module>spring-boot-rest</module>
+
                 <module>spring-caching</module>
 
                 <module>spring-cloud</module>
@@ -1341,7 +1343,7 @@
         <!-- plugins -->
         <!-- can't upgrade the plugin yet; as there is an issue with 2.22 no longer running all the tests-->
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <java.version>1.8</java.version>
         <log4j.version>1.2.17</log4j.version>
@@ -1369,9 +1371,9 @@
         <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
         <custom-pmd.version>0.0.1</custom-pmd.version>
         <gitflow-incremental-builder.version>3.8</gitflow-incremental-builder.version>
-        <maven-jxr-plugin.version>2.3</maven-jxr-plugin.version>
+        <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
         <!-- <maven-pmd-plugin.version>3.9.0</maven-pmd-plugin.version> -->
-        <maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
+        <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
         <lombok.version>1.16.12</lombok.version>
         <h2.version>1.4.197</h2.version>
     </properties>
