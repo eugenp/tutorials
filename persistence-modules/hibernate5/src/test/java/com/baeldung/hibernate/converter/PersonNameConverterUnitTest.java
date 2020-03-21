@@ -55,12 +55,6 @@ public class PersonNameConverterUnitTest {
         session.flush();
         session.clear();
 
-        String dbPersonName = (String) session.createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-            .setParameter("id", id)
-            .getSingleResult();
-
-        assertEquals(surname + ", " + name, dbPersonName);
-
         Person dbPerson = session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
             .setParameter("id", id)
             .getSingleResult();
@@ -88,12 +82,6 @@ public class PersonNameConverterUnitTest {
         session.flush();
         session.clear();
 
-        String dbPersonName = (String) session.createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-            .setParameter("id", id)
-            .getSingleResult();
-
-        assertEquals("", dbPersonName);
-
         Person dbPerson = session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
             .setParameter("id", id)
             .getSingleResult();
@@ -117,12 +105,6 @@ public class PersonNameConverterUnitTest {
 
         session.flush();
         session.clear();
-
-        String dbPersonName = (String) session.createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-            .setParameter("id", id)
-            .getSingleResult();
-
-        assertEquals("surname, ", dbPersonName);
 
         Person dbPerson = session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
             .setParameter("id", id)
@@ -151,12 +133,6 @@ public class PersonNameConverterUnitTest {
         session.flush();
         session.clear();
 
-        String dbPersonName = (String) session.createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-            .setParameter("id", id)
-            .getSingleResult();
-
-        assertEquals("name", dbPersonName);
-
         Person dbPerson = session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
             .setParameter("id", id)
             .getSingleResult();
@@ -183,12 +159,6 @@ public class PersonNameConverterUnitTest {
 
         session.flush();
         session.clear();
-
-        String dbPersonName = (String) session.createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-            .setParameter("id", id)
-            .getSingleResult();
-
-        assertEquals("", dbPersonName);
 
         Person dbPerson = session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
             .setParameter("id", id)
