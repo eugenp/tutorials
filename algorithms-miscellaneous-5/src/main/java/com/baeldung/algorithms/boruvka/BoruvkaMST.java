@@ -12,52 +12,57 @@ public class BoruvkaMST {
 
     public BoruvkaMST(MutableValueGraph<Integer, Integer> graph) {
 
-        int size = graph.nodes()
-            .size();
+        int size = graph.nodes().size();
 
         UnionFind uf = new UnionFind(size);
 
+        // repeat at most log N times or until we have N-1 edges
         for (int t = 1; t < size && mst.edges().size() < size - 1; t = t + t) {
+            
             EndpointPair<Integer>[] closestEdgeArray = new EndpointPair[size];
+
+            // foreach tree in graph, find closest edge
             for (EndpointPair<Integer> edge : graph.edges()) {
-                int first = edge.nodeU();
-                int second = edge.nodeV();
-                int firstParent = uf.find(first);
-                int secondParent = uf.find(second);
-                if (firstParent == secondParent) {
-                    continue;
+                int u = edge.nodeU();
+                int v = edge.nodeV();
+                int uParent = uf.find(u);
+                int vParent = uf.find(v);
+                if (uParent == vParent) {
+                    continue; // same tree
                 }
 
-                int weight = graph.edgeValueOrDefault(first, second, 0);
+                int weight = graph.edgeValueOrDefault(u, v, 0);
 
-                if (closestEdgeArray[firstParent] == null) {
-                    closestEdgeArray[firstParent] = edge;
+                if (closestEdgeArray[uParent] == null) {
+                    closestEdgeArray[uParent] = edge;
                 }
-                if (closestEdgeArray[secondParent] == null) {
-                    closestEdgeArray[secondParent] = edge;
+                if (closestEdgeArray[vParent] == null) {
+                    closestEdgeArray[vParent] = edge;
                 }
 
-                int firstParentWeight = graph.edgeValueOrDefault(closestEdgeArray[firstParent].nodeU(), closestEdgeArray[firstParent].nodeV(), 0);
-                int secondParentWeight = graph.edgeValueOrDefault(closestEdgeArray[secondParent].nodeU(), closestEdgeArray[secondParent].nodeV(), 0);
+                int uParentWeight = graph.edgeValueOrDefault(closestEdgeArray[uParent].nodeU(), closestEdgeArray[uParent].nodeV(), 0);
+                int vParentWeight = graph.edgeValueOrDefault(closestEdgeArray[vParent].nodeU(), closestEdgeArray[vParent].nodeV(), 0);
 
-                if (weight < firstParentWeight) {
-                    closestEdgeArray[firstParent] = edge;
+                if (weight < uParentWeight) {
+                    closestEdgeArray[uParent] = edge;
                 }
-                if (weight < secondParentWeight) {
-                    closestEdgeArray[secondParent] = edge;
+                if (weight < vParentWeight) {
+                    closestEdgeArray[vParent] = edge;
                 }
             }
 
+            // add newly discovered edges to MST
             for (int i = 0; i < size; i++) {
                 EndpointPair<Integer> edge = closestEdgeArray[i];
                 if (edge != null) {
-                    int first = edge.nodeU();
-                    int second = edge.nodeV();
-                    int weight = graph.edgeValueOrDefault(first, second, 0);
-                    if (uf.find(first) != uf.find(second)) {
-                        mst.putEdgeValue(first, second, weight);
+                    int u = edge.nodeU();
+                    int v = edge.nodeV();
+                    int weight = graph.edgeValueOrDefault(u, v, 0);
+                    // don't add the same edge twice
+                    if (uf.find(u) != uf.find(v)) {
+                        mst.putEdgeValue(u, v, weight);
                         totalWeight += weight;
-                        uf.union(first, second);
+                        uf.union(u, v);
                     }
                 }
             }
