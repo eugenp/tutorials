@@ -20,6 +20,7 @@
         <module>design-patterns-creational</module>
         <module>design-patterns-functional</module>
         <module>design-patterns-structural</module>
+        <module>hexagonal-architectural</module>
         <module>dip</module>
         <module>front-controller</module>
         <module>intercepting-filter</module>
