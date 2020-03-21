@@ -20,7 +20,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Getting Started with GraphQL and Spring Boot](https://www.baeldung.com/spring-graphql)
 - [Guide to Spring Type Conversions](https://www.baeldung.com/spring-type-conversions)
 - [An Introduction to Kong](https://www.baeldung.com/kong)
-- [Spring Boot: Customize Whitelabel Error Page](https://www.baeldung.com/spring-boot-custom-error-page)
 - [Spring Boot: Configuring a Main Class](https://www.baeldung.com/spring-boot-main-class)
 - [A Quick Intro to the SpringBootServletInitializer](https://www.baeldung.com/spring-boot-servlet-initializer)
 - [How to Define a Spring Boot Filter?](https://www.baeldung.com/spring-boot-add-filter)
