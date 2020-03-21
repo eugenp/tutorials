@@ -1,9 +1,9 @@
-package com.baeldung.architecture.hexagonal.adapter;
+package com.baeldung.architecture.hexagonal.port;
 
 import com.baeldung.architecture.hexagonal.Movie;
 
 import java.util.List;
 
-public interface MovieDisplayAdapter {
+public interface MovieDisplay {
     void display(List<Movie> matchedMovies);
 }

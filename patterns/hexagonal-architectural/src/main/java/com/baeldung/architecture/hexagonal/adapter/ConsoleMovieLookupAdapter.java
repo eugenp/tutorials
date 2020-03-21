@@ -1,11 +1,12 @@
 package com.baeldung.architecture.hexagonal.adapter;
 
 import com.baeldung.architecture.hexagonal.MovieSearch;
+import com.baeldung.architecture.hexagonal.port.MovieLookup;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-public class ConsoleMovieLookupAdapter implements MovieLookupAdapter {
+public class ConsoleMovieLookupAdapter implements MovieLookup {
     private MovieSearch movieSearch;
     public ConsoleMovieLookupAdapter(MovieSearch movieSearch) {
         this.movieSearch = movieSearch;

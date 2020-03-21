@@ -1,19 +1,19 @@
 package com.baeldung.architecture.hexagonal;
 
-import com.baeldung.architecture.hexagonal.adapter.MovieDataSourceAdapter;
-import com.baeldung.architecture.hexagonal.adapter.MovieDisplayAdapter;
+import com.baeldung.architecture.hexagonal.port.MovieDataSource;
+import com.baeldung.architecture.hexagonal.port.MovieDisplay;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class MovieSearch {
-    private MovieDataSourceAdapter movieDataSourceAdapter;
-    private MovieDisplayAdapter movieDisplayAdapter;
+    private MovieDataSource movieDataSourceAdapter;
+    private MovieDisplay movieDisplayAdapter;
 
     private List<Movie> movies;
 
-    public MovieSearch(MovieDataSourceAdapter movieDataSourceAdapter, MovieDisplayAdapter movieDisplayAdapter) {
+    public MovieSearch(MovieDataSource movieDataSourceAdapter, MovieDisplay movieDisplayAdapter) {
         this.movieDataSourceAdapter = movieDataSourceAdapter;
         this.movieDisplayAdapter = movieDisplayAdapter;
     }
