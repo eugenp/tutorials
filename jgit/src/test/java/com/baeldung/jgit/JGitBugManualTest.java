@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Tests which show issues with JGit that we reported upstream.
  */
-public class JGitBugIntegrationTest {
+public class JGitBugManualTest {
     @Test
     public void testRevWalkDisposeClosesReader() throws IOException {
         try (Repository repo = Helper.openJGitRepository()) {
