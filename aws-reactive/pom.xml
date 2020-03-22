@@ -16,12 +16,6 @@
     <name>aws-reactive</name>
     <description>AWS Reactive Sample</description>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <spring.version>2.2.1.RELEASE</spring.version>
-        <awssdk.version>2.10.27</awssdk.version>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
 
@@ -105,4 +99,9 @@
         </plugins>
     </build>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <spring.version>2.2.1.RELEASE</spring.version>
+        <awssdk.version>2.10.27</awssdk.version>
+    </properties>
 </project>
