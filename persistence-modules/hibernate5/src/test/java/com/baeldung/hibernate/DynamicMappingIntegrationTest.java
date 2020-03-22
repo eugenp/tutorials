@@ -100,7 +100,7 @@ public class DynamicMappingIntegrationTest {
 
         List<Phone> fullPhoneList = session.createQuery("from Phone").getResultList();
         assertThat(fullPhoneList).hasSize(2);
-
+        
     }
 
     @Test
