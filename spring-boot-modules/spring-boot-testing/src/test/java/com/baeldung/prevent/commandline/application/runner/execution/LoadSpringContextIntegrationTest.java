@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verify;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { ApplicationCommandLineRunnerApp.class }, 
-                      initializers = ConfigFileApplicationContextInitializer.class)
+  initializers = ConfigFileApplicationContextInitializer.class)
 public class LoadSpringContextIntegrationTest {
     @SpyBean
     TaskService taskService;
