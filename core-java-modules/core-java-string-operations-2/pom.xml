@@ -64,6 +64,11 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh-generator.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.assertj</groupId>
@@ -113,6 +118,7 @@
         <hibernate-validator.version>6.0.2.Final</hibernate-validator.version>
         <javax.el-api.version>3.0.0</javax.el-api.version>
         <javax.el.version>2.2.6</javax.el.version>
+        <commons-codec.version>1.14</commons-codec.version>
     </properties>
 
 </project>
