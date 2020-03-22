@@ -7,10 +7,11 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Profile("!test")
-@ConditionalOnProperty(prefix = "application.runner", 
-                       value = "enabled", 
-                       havingValue = "true", 
-                       matchIfMissing = true)
+@ConditionalOnProperty(
+  prefix = "application.runner", 
+  value = "enabled", 
+  havingValue = "true", 
+  matchIfMissing = true)
 @Component
 public class ApplicationRunnerTaskExecutor implements ApplicationRunner {
     private TaskService taskService;

@@ -18,8 +18,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {ApplicationCommandLineRunnerApp.class},
-        initializers = ConfigFileApplicationContextInitializer.class)
+@ContextConfiguration(classes = { ApplicationCommandLineRunnerApp.class }, 
+                      initializers = ConfigFileApplicationContextInitializer.class)
 public class LoadSpringContextIntegrationTest {
     @SpyBean
     TaskService taskService;
@@ -31,8 +31,7 @@ public class LoadSpringContextIntegrationTest {
     ApplicationRunner applicationRunner;
 
     @Test
-    void whenContextLoads_thenAllBeansAreLoadedButCommandLineAndApplicationRunnerAreNotExecuted() 
-        throws Exception {
+    void whenContextLoads_thenRunnersDoNotRun() throws Exception {
         assertNotNull(taskService);
         assertNotNull(commandLineRunner);
         assertNotNull(applicationRunner);
