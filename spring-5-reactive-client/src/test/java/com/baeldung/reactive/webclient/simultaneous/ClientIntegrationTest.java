@@ -25,11 +25,14 @@ public class ClientIntegrationTest {
 
     private WireMockServer wireMockServer;
 
+    private Client client;
+    
     @Before
     public void setup() {
-        wireMockServer = new WireMockServer(wireMockConfig().port(8090));
+        wireMockServer = new WireMockServer(wireMockConfig().dynamicPort());
         wireMockServer.start();
         configureFor("localhost", wireMockServer.port());
+        client = new Client("http://localhost:" + wireMockServer.port());
     }
 
     @After
@@ -53,8 +56,6 @@ public class ClientIntegrationTest {
         List<Integer> userIds = IntStream.rangeClosed(1, requestsNumber)
             .boxed()
             .collect(Collectors.toList());
-
-        Client client = new Client("http://localhost:8090");
 
         // Act
         long start = System.currentTimeMillis();

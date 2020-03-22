@@ -31,10 +31,10 @@ public class ReactiveIntegrationTest {
     
     @Before
     public void setup() {
-        wireMockServer = new WireMockServer(wireMockConfig().port(8089));
+        wireMockServer = new WireMockServer(wireMockConfig().dynamicPort());
         wireMockServer.start();
         configureFor("localhost", wireMockServer.port());
-        client = WebClient.create("http://localhost:8089");
+        client = WebClient.create("http://localhost:" + wireMockServer.port());
     }
 
     @After
