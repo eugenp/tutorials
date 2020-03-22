@@ -65,7 +65,7 @@
     </dependencies>
 
     <properties>
-        <hibernate.version>5.3.10.Final</hibernate.version>
+        <hibernate.version>5.4.12.Final</hibernate.version>
         <assertj-core.version>3.8.0</assertj-core.version>
         <hibernate-validator.version>6.0.16.Final</hibernate-validator.version>
         <org.glassfish.javax.el.version>3.0.1-b11</org.glassfish.javax.el.version>        

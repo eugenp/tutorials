@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.type.StringNVarcharType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -54,9 +55,10 @@ public class PersonNameConverterUnitTest {
 
         session.flush();
         session.clear();
-
-        String dbPersonName = (String) session.createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-            .setParameter("id", id)
+        
+        String dbPersonName = (String)session.createNativeQuery("select * from PersonTable p where p.id = :id")
+            .addScalar("personName", new StringNVarcharType())
+            .setParameter("id", id)     
             .getSingleResult();
 
         assertEquals(surname + ", " + name, dbPersonName);
@@ -87,10 +89,11 @@ public class PersonNameConverterUnitTest {
 
         session.flush();
         session.clear();
-
-        String dbPersonName = (String) session.createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-            .setParameter("id", id)
-            .getSingleResult();
+        
+        String dbPersonName = (String) session.createNativeQuery("select * from PersonTable p where p.id = :id")
+            .addScalar("personName", new StringNVarcharType())
+            .setParameter("id", id)     
+            .getSingleResult(); 
 
         assertEquals("", dbPersonName);
 
@@ -117,10 +120,11 @@ public class PersonNameConverterUnitTest {
 
         session.flush();
         session.clear();
-
-        String dbPersonName = (String) session.createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-            .setParameter("id", id)
-            .getSingleResult();
+        
+        String dbPersonName = (String) session.createNativeQuery("select * from PersonTable p where p.id = :id")
+            .addScalar("personName", new StringNVarcharType())
+            .setParameter("id", id)     
+            .getSingleResult(); 
 
         assertEquals("surname, ", dbPersonName);
 
@@ -150,10 +154,11 @@ public class PersonNameConverterUnitTest {
 
         session.flush();
         session.clear();
-
-        String dbPersonName = (String) session.createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-            .setParameter("id", id)
-            .getSingleResult();
+        
+        String dbPersonName = (String) session.createNativeQuery("select * from PersonTable p where p.id = :id")
+            .addScalar("personName", new StringNVarcharType())
+            .setParameter("id", id)     
+            .getSingleResult(); 
 
         assertEquals("name", dbPersonName);
 
@@ -183,10 +188,11 @@ public class PersonNameConverterUnitTest {
 
         session.flush();
         session.clear();
-
-        String dbPersonName = (String) session.createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-            .setParameter("id", id)
-            .getSingleResult();
+        
+        String dbPersonName = (String) session.createNativeQuery("select * from PersonTable p where p.id = :id")     
+            .addScalar("personName", new StringNVarcharType())
+            .setParameter("id", id)     
+            .getSingleResult(); 
 
         assertEquals("", dbPersonName);
 
