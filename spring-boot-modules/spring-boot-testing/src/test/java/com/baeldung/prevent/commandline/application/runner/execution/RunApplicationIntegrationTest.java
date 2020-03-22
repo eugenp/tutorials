@@ -19,7 +19,7 @@ class RunApplicationIntegrationTest {
     CommandLineTaskExecutor commandLineTaskExecutor;
 
     @Test
-    void whenContextLoads_thenTheCommandLineAndApplicationRunnerAreExecuted() throws Exception {
+    void whenContextLoads_thenRunnersRun() throws Exception {
         verify(applicationRunnerTaskExecutor, times(1)).run(any());
         verify(commandLineTaskExecutor, times(1)).run(any());
     }

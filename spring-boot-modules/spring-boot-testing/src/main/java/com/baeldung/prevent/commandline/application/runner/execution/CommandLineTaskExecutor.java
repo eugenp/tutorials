@@ -6,10 +6,11 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Profile("!test")
-@ConditionalOnProperty(prefix = "command.line.runner", 
-                       value = "enabled", 
-                       havingValue = "true", 
-                       matchIfMissing = true)
+@ConditionalOnProperty(
+  prefix = "command.line.runner", 
+  value = "enabled", 
+  havingValue = "true", 
+  matchIfMissing = true)
 @Component
 public class CommandLineTaskExecutor implements CommandLineRunner {
     private TaskService taskService;

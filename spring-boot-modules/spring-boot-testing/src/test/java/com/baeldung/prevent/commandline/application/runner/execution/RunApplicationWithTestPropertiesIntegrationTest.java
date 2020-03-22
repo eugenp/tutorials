@@ -12,23 +12,21 @@ import com.baeldung.prevent.commandline.application.runner.execution.Application
 import com.baeldung.prevent.commandline.application.runner.execution.CommandLineTaskExecutor;
 import com.baeldung.prevent.commandline.application.runner.execution.TaskService;
 
-@SpringBootTest(
-        properties = {
-                "command.line.runner.enabled=false",
-                "application.runner.enabled=false"
-        })
+@SpringBootTest(properties = { 
+  "command.line.runner.enabled=false", 
+  "application.runner.enabled=false" })
 class RunApplicationWithTestPropertiesIntegrationTest {
     @Autowired
     private ApplicationContext context;
 
     @Test
-    void whenContextLoads_thenTheCommandLineAndApplicationRunnerAreNotLoaded() {
+    void whenContextLoads_thenRunnersAreNotLoaded() {
         assertNotNull(context.getBean(TaskService.class));
-        assertThrows(NoSuchBeanDefinitionException.class,
-                () -> context.getBean(CommandLineTaskExecutor.class),
-                "CommandLineRunner should not be loaded during this integration test");
-        assertThrows(NoSuchBeanDefinitionException.class,
-                () -> context.getBean(ApplicationRunnerTaskExecutor.class),
-                "ApplicationRunner should not be loaded during this integration test");
+        assertThrows(NoSuchBeanDefinitionException.class, 
+          () -> context.getBean(CommandLineTaskExecutor.class), 
+          "CommandLineRunner should not be loaded during this integration test");
+        assertThrows(NoSuchBeanDefinitionException.class, 
+          () -> context.getBean(ApplicationRunnerTaskExecutor.class), 
+          "ApplicationRunner should not be loaded during this integration test");
     }
 }
