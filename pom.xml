@@ -435,6 +435,7 @@
                 <module>guava-collections-set</module>
                 <module>guava-io</module>
                 <module>guava-modules</module>
+                <module>guava-concurrency</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
 
