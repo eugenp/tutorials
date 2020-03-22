@@ -17,6 +17,7 @@
         <module>guava-18</module>
         <module>guava-19</module>
         <module>guava-21</module>
+        <module>guava-concurrency</module>
     </modules>
 
 </project>
