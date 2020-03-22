@@ -31,5 +31,9 @@
                 <user name="admin1" password="{noop}admin1Pass" authorities="ROLE_ADMIN"/>
             </user-service>
         </authentication-provider>
-    </authentication-manager>ù
+    </authentication-manager>
+
+    <!--     <mvc:interceptors>
+        <bean id="loggerInterceptor" class="com.baeldung.web.interceptor.LoggerInterceptor" />
+    </mvc:interceptors> -->
 </beans:beans>
