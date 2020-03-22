@@ -1,6 +1,6 @@
-## Java Math
+=========
 
-This module contains articles about math in Java.
+## Core Java 8 Cookbooks and Examples - Part 2
 
 ### Relevant articles:
 
