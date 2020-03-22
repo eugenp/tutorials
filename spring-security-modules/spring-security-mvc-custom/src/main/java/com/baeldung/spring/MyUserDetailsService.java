@@ -1,4 +1,4 @@
-package org.baeldung.spring;
+package com.baeldung.spring;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
