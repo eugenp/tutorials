@@ -47,6 +47,14 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock -->
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>2.26.3</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
