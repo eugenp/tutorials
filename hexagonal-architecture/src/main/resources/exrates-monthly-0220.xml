@@ -1,0 +1,1172 @@
+<?xml version="1.0"?>
+<exchangeRateMonthList Period="01/Feb/2020 to 29/Feb/2020">
+  <exchangeRate>
+    <countryName>Argentina</countryName>
+    <countryCode>AR</countryCode>
+    <currencyName>Peso </currencyName>
+    <currencyCode>ARS</currencyCode>
+    <rateNew>78.99</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Australia</countryName>
+    <countryCode>AU</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>AUD</currencyCode>
+    <rateNew>1.9213</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Brazil</countryName>
+    <countryCode>BR</countryCode>
+    <currencyName>Real </currencyName>
+    <currencyCode>BRL</currencyCode>
+    <rateNew>5.4965</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Canada</countryName>
+    <countryCode>CA</countryCode>
+    <currencyName>Dollar</currencyName>
+    <currencyCode>CAD</currencyCode>
+    <rateNew>1.7239</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Denmark</countryName>
+    <countryCode>DK</countryCode>
+    <currencyName>Krone </currencyName>
+    <currencyCode>DKK</currencyCode>
+    <rateNew>8.8662</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Hong Kong</countryName>
+    <countryCode>HK</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>HKD</currencyCode>
+    <rateNew>10.21</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>India</countryName>
+    <countryCode>IN</countryCode>
+    <currencyName>Rupee </currencyName>
+    <currencyCode>INR</currencyCode>
+    <rateNew>93.55</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Israel</countryName>
+    <countryCode>IL</countryCode>
+    <currencyName>Shekel </currencyName>
+    <currencyCode>ILS</currencyCode>
+    <rateNew>4.5495</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Japan</countryName>
+    <countryCode>JP</countryCode>
+    <currencyName>Yen </currencyName>
+    <currencyCode>JPY</currencyCode>
+    <rateNew>144.42</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Malaysia</countryName>
+    <countryCode>MY</countryCode>
+    <currencyName>Ringgit </currencyName>
+    <currencyCode>MYR</currencyCode>
+    <rateNew>5.3436</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Mexico</countryName>
+    <countryCode>MX</countryCode>
+    <currencyName>Mexican Peso </currencyName>
+    <currencyCode>MXN</currencyCode>
+    <rateNew>24.55</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>New Zealand</countryName>
+    <countryCode>NZ</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>NZD</currencyCode>
+    <rateNew>1.9929</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Norway</countryName>
+    <countryCode>NO</countryCode>
+    <currencyName>Norwegian Krone </currencyName>
+    <currencyCode>NOK</currencyCode>
+    <rateNew>11.81</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Philippines</countryName>
+    <countryCode>PH</countryCode>
+    <currencyName>Peso </currencyName>
+    <currencyCode>PHP</currencyCode>
+    <rateNew>66.9</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Saudi Arabia</countryName>
+    <countryCode>SA</countryCode>
+    <currencyName>Riyal </currencyName>
+    <currencyCode>SAR</currencyCode>
+    <rateNew>4.9294</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Singapore</countryName>
+    <countryCode>SG</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>SGD</currencyCode>
+    <rateNew>1.7731</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>South Africa</countryName>
+    <countryCode>ZA</countryCode>
+    <currencyName>Rand </currencyName>
+    <currencyCode>ZAR</currencyCode>
+    <rateNew>18.84</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>South Korea</countryName>
+    <countryCode>KR</countryCode>
+    <currencyName>Won </currencyName>
+    <currencyCode>KRW</currencyCode>
+    <rateNew>1530.26</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Sweden</countryName>
+    <countryCode>SE</countryCode>
+    <currencyName>Krona </currencyName>
+    <currencyCode>SEK</currencyCode>
+    <rateNew>12.51</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Switzerland</countryName>
+    <countryCode>CH</countryCode>
+    <currencyName>Franc </currencyName>
+    <currencyCode>CHF</currencyCode>
+    <rateNew>1.2748</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Taiwan</countryName>
+    <countryCode>TW</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>TWD</currencyCode>
+    <rateNew>39.39</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Thailand</countryName>
+    <countryCode>TH</countryCode>
+    <currencyName>Baht </currencyName>
+    <currencyCode>THB</currencyCode>
+    <rateNew>39.9</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>USA</countryName>
+    <countryCode>US</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>USD</currencyCode>
+    <rateNew>1.314</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Eurozone</countryName>
+    <countryCode>EU</countryCode>
+    <currencyName>Euro </currencyName>
+    <currencyCode>EUR</currencyCode>
+    <rateNew>1.1864</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Abu Dhabi</countryName>
+    <countryCode>DH</countryCode>
+    <currencyName>Dirham </currencyName>
+    <currencyCode>AED</currencyCode>
+    <rateNew>4.82</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Albania</countryName>
+    <countryCode>AL</countryCode>
+    <currencyName>Lek </currencyName>
+    <currencyCode>ALL</currencyCode>
+    <rateNew>144.8</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Algeria</countryName>
+    <countryCode>DZ</countryCode>
+    <currencyName>Dinar </currencyName>
+    <currencyCode>DZD</currencyCode>
+    <rateNew>157.24</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Angola</countryName>
+    <countryCode>AO</countryCode>
+    <currencyName>Readj Kwanza </currencyName>
+    <currencyCode>AOA</currencyCode>
+    <rateNew>648.1</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Antigua</countryName>
+    <countryCode>AG</countryCode>
+    <currencyName>E Caribbean Dollar </currencyName>
+    <currencyCode>XCD</currencyCode>
+    <rateNew>3.5479</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Armenia</countryName>
+    <countryCode>AM</countryCode>
+    <currencyName>Dram </currencyName>
+    <currencyCode>AMD</currencyCode>
+    <rateNew>628.34</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Aruba</countryName>
+    <countryCode>AA</countryCode>
+    <currencyName>Florin</currencyName>
+    <currencyCode>AWG</currencyCode>
+    <rateNew>2.3521</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Azerbaijan</countryName>
+    <countryCode>AZ</countryCode>
+    <currencyName>New Manat </currencyName>
+    <currencyCode>AZN</currencyCode>
+    <rateNew>2.2293</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Bahamas</countryName>
+    <countryCode>BS</countryCode>
+    <currencyName>Dollar</currencyName>
+    <currencyCode>BSD</currencyCode>
+    <rateNew>1.314</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Bahrain</countryName>
+    <countryCode>BH</countryCode>
+    <currencyName>Dinar </currencyName>
+    <currencyCode>BHD</currencyCode>
+    <rateNew>0.4955</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Bangladesh</countryName>
+    <countryCode>BD</countryCode>
+    <currencyName>Taka </currencyName>
+    <currencyCode>BDT</currencyCode>
+    <rateNew>111.75</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Barbados</countryName>
+    <countryCode>BB</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>BBD</currencyCode>
+    <rateNew>2.6281</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Belarus</countryName>
+    <countryCode>BY</countryCode>
+    <currencyName>Rouble </currencyName>
+    <currencyCode>BYN</currencyCode>
+    <rateNew>2.782</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Belize</countryName>
+    <countryCode>BZ</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>BZD</currencyCode>
+    <rateNew>2.6281</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Benin</countryName>
+    <countryCode>BJ</countryCode>
+    <currencyName>CFA Franc </currencyName>
+    <currencyCode>XOF</currencyCode>
+    <rateNew>778.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Bermuda</countryName>
+    <countryCode>BM</countryCode>
+    <currencyName>Dollar (US) </currencyName>
+    <currencyCode>BMD</currencyCode>
+    <rateNew>1.314</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Bhutan</countryName>
+    <countryCode>BT</countryCode>
+    <currencyName>Ngultrum </currencyName>
+    <currencyCode>BTN</currencyCode>
+    <rateNew>93.55</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Bolivia</countryName>
+    <countryCode>BO</countryCode>
+    <currencyName>Boliviano </currencyName>
+    <currencyCode>BOB</currencyCode>
+    <rateNew>9.08</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Bosnia- Herzegovinia</countryName>
+    <countryCode>BA</countryCode>
+    <currencyName>Marka </currencyName>
+    <currencyCode>BAM</currencyCode>
+    <rateNew>2.2305</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Botswana</countryName>
+    <countryCode>BW</countryCode>
+    <currencyName>Pula </currencyName>
+    <currencyCode>BWP</currencyCode>
+    <rateNew>14.09</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Brunei</countryName>
+    <countryCode>BN</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>BND</currencyCode>
+    <rateNew>1.7731</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Bulgaria</countryName>
+    <countryCode>BG</countryCode>
+    <currencyName>Lev </currencyName>
+    <currencyCode>BGN</currencyCode>
+    <rateNew>2.3206</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Burkina Faso</countryName>
+    <countryCode>BK</countryCode>
+    <currencyName>CFA Franc </currencyName>
+    <currencyCode>XOF</currencyCode>
+    <rateNew>778.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Burundi</countryName>
+    <countryCode>BI</countryCode>
+    <currencyName>Franc </currencyName>
+    <currencyCode>BIF</currencyCode>
+    <rateNew>2472.74</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Cambodia</countryName>
+    <countryCode>KH</countryCode>
+    <currencyName>Riel </currencyName>
+    <currencyCode>KHR</currencyCode>
+    <rateNew>5321.87</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Cameroon Republic</countryName>
+    <countryCode>CM</countryCode>
+    <currencyName>CFA Franc </currencyName>
+    <currencyCode>XAF</currencyCode>
+    <rateNew>778.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Cape Verde Islands</countryName>
+    <countryCode>CV</countryCode>
+    <currencyName>Escudo </currencyName>
+    <currencyCode>CVE</currencyCode>
+    <rateNew>130.94</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Cayman Islands</countryName>
+    <countryCode>KY</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>KYD</currencyCode>
+    <rateNew>1.0775</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Central African Republic</countryName>
+    <countryCode>CF</countryCode>
+    <currencyName>CFA Franc </currencyName>
+    <currencyCode>XAF</currencyCode>
+    <rateNew>778.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Chad</countryName>
+    <countryCode>TD</countryCode>
+    <currencyName>CFA Franc </currencyName>
+    <currencyCode>XAF</currencyCode>
+    <rateNew>778.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Chile</countryName>
+    <countryCode>CL</countryCode>
+    <currencyName>Peso </currencyName>
+    <currencyCode>CLP</currencyCode>
+    <rateNew>1014.63</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>China</countryName>
+    <countryCode>CN</countryCode>
+    <currencyName>Yuan</currencyName>
+    <currencyCode>CNY</currencyCode>
+    <rateNew>9.0685</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Colombia</countryName>
+    <countryCode>CO</countryCode>
+    <currencyName>Peso </currencyName>
+    <currencyCode>COP</currencyCode>
+    <rateNew>4381.54</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Comoros</countryName>
+    <countryCode>KM</countryCode>
+    <currencyName>Franc </currencyName>
+    <currencyCode>KMF</currencyCode>
+    <rateNew>583.69</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Congo (Brazaville)</countryName>
+    <countryCode>CG</countryCode>
+    <currencyName>CFA Franc </currencyName>
+    <currencyCode>XAF</currencyCode>
+    <rateNew>778.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Congo (DemRep)</countryName>
+    <countryCode>ZR</countryCode>
+    <currencyName>Congo Fr </currencyName>
+    <currencyCode>CDF</currencyCode>
+    <rateNew>2221.39</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Costa Rica</countryName>
+    <countryCode>CR</countryCode>
+    <currencyName>Colon </currencyName>
+    <currencyCode>CRC</currencyCode>
+    <rateNew>744.91</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Cote d'Ivoire</countryName>
+    <countryCode>CI</countryCode>
+    <currencyName>CFA Franc</currencyName>
+    <currencyCode>XOF</currencyCode>
+    <rateNew>778.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Croatia</countryName>
+    <countryCode>HR</countryCode>
+    <currencyName>Kuna </currencyName>
+    <currencyCode>HRK</currencyCode>
+    <rateNew>8.8256</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Cuba</countryName>
+    <countryCode>CU</countryCode>
+    <currencyName>Peso </currencyName>
+    <currencyCode>CUP</currencyCode>
+    <rateNew>1.314</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Czech Republic</countryName>
+    <countryCode>CZ</countryCode>
+    <currencyName>Koruna </currencyName>
+    <currencyCode>CZK</currencyCode>
+    <rateNew>29.82</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Djibouti</countryName>
+    <countryCode>DJ</countryCode>
+    <currencyName>Franc </currencyName>
+    <currencyCode>DJF</currencyCode>
+    <rateNew>233.53</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Dominica</countryName>
+    <countryCode>DM</countryCode>
+    <currencyName>E Caribbean Dollar </currencyName>
+    <currencyCode>XCD</currencyCode>
+    <rateNew>3.5479</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Dominican Republic</countryName>
+    <countryCode>DO</countryCode>
+    <currencyName>Peso </currencyName>
+    <currencyCode>DOP</currencyCode>
+    <rateNew>70.24</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Dubai</countryName>
+    <countryCode>DU</countryCode>
+    <currencyName>Dirham </currencyName>
+    <currencyCode>AED</currencyCode>
+    <rateNew>4.82</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Ecuador</countryName>
+    <countryCode>EC</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>ECS</currencyCode>
+    <rateNew>1.314</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Egypt</countryName>
+    <countryCode>EG</countryCode>
+    <currencyName>Pound </currencyName>
+    <currencyCode>EGP</currencyCode>
+    <rateNew>20.76</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>El Salvador</countryName>
+    <countryCode>SV</countryCode>
+    <currencyName>Colon </currencyName>
+    <currencyCode>SVC</currencyCode>
+    <rateNew>11.49</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Equatorial Guinea</countryName>
+    <countryCode>GQ</countryCode>
+    <currencyName>CFA Franc </currencyName>
+    <currencyCode>XAF</currencyCode>
+    <rateNew>778.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Eritrea</countryName>
+    <countryCode>ER</countryCode>
+    <currencyName>Nakfa </currencyName>
+    <currencyCode>ERN</currencyCode>
+    <rateNew>19.71</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Ethiopia</countryName>
+    <countryCode>ET</countryCode>
+    <currencyName>Birr </currencyName>
+    <currencyCode>ETB</currencyCode>
+    <rateNew>42.08</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Fiji Islands</countryName>
+    <countryCode>FJ</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>FJD</currencyCode>
+    <rateNew>2.8538</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Fr. Polynesia</countryName>
+    <countryCode>PF</countryCode>
+    <currencyName>CFP Franc</currencyName>
+    <currencyCode>XPF</currencyCode>
+    <rateNew>141.58</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Gabon</countryName>
+    <countryCode>GA</countryCode>
+    <currencyName>CFA Franc </currencyName>
+    <currencyCode>XAF</currencyCode>
+    <rateNew>778.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Gambia</countryName>
+    <countryCode>GM</countryCode>
+    <currencyName>Dalasi </currencyName>
+    <currencyCode>GMD</currencyCode>
+    <rateNew>67.34</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Georgia</countryName>
+    <countryCode>GE</countryCode>
+    <currencyName>Lari </currencyName>
+    <currencyCode>GEL</currencyCode>
+    <rateNew>3.7871</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Ghana</countryName>
+    <countryCode>GH</countryCode>
+    <currencyName>Cedi </currencyName>
+    <currencyCode>GHS</currencyCode>
+    <rateNew>7.4112</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Grenada</countryName>
+    <countryCode>GD</countryCode>
+    <currencyName>E Caribbean Dollar </currencyName>
+    <currencyCode>XCD</currencyCode>
+    <rateNew>3.5479</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Guatemala</countryName>
+    <countryCode>GT</countryCode>
+    <currencyName>Quetzal </currencyName>
+    <currencyCode>GTQ</currencyCode>
+    <rateNew>10.1</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Guinea Bissau</countryName>
+    <countryCode>GW</countryCode>
+    <currencyName>CFA Franc</currencyName>
+    <currencyCode>XOF</currencyCode>
+    <rateNew>778.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Guinea Republic</countryName>
+    <countryCode>GN</countryCode>
+    <currencyName>Franc </currencyName>
+    <currencyCode>GNF</currencyCode>
+    <rateNew>12531.37</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Guyana</countryName>
+    <countryCode>GY</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>GYD</currencyCode>
+    <rateNew>274.55</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Haiti</countryName>
+    <countryCode>HT</countryCode>
+    <currencyName>Gourde </currencyName>
+    <currencyCode>HTG</currencyCode>
+    <rateNew>121.07</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Honduras</countryName>
+    <countryCode>HN</countryCode>
+    <currencyName>Lempira </currencyName>
+    <currencyCode>HNL</currencyCode>
+    <rateNew>32.39</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Hungary</countryName>
+    <countryCode>HU</countryCode>
+    <currencyName>Forint </currencyName>
+    <currencyCode>HUF</currencyCode>
+    <rateNew>398.7</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Iceland</countryName>
+    <countryCode>IS</countryCode>
+    <currencyName>Krona </currencyName>
+    <currencyCode>ISK</currencyCode>
+    <rateNew>163.49</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Indonesia</countryName>
+    <countryCode>ID</countryCode>
+    <currencyName>Rupiah </currencyName>
+    <currencyCode>IDR</currencyCode>
+    <rateNew>17929.46</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Iraq</countryName>
+    <countryCode>IQ</countryCode>
+    <currencyName>Dinar </currencyName>
+    <currencyCode>IQD</currencyCode>
+    <rateNew>1564.36</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Jamaica</countryName>
+    <countryCode>JM</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>JMD</currencyCode>
+    <rateNew>180.12</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Jordan</countryName>
+    <countryCode>JO</countryCode>
+    <currencyName>Dinar </currencyName>
+    <currencyCode>JOD</currencyCode>
+    <rateNew>0.9317</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Kazakhstan</countryName>
+    <countryCode>KZ</countryCode>
+    <currencyName>Tenge </currencyName>
+    <currencyCode>KZT</currencyCode>
+    <rateNew>495.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Kenya</countryName>
+    <countryCode>KE</countryCode>
+    <currencyName>Schilling </currencyName>
+    <currencyCode>KES</currencyCode>
+    <rateNew>132.52</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Kuwait</countryName>
+    <countryCode>KW</countryCode>
+    <currencyName>Dinar </currencyName>
+    <currencyCode>KWD</currencyCode>
+    <rateNew>0.3991</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Kyrgyz Republic</countryName>
+    <countryCode>KG</countryCode>
+    <currencyName>Som </currencyName>
+    <currencyCode>KGS</currencyCode>
+    <rateNew>91.58</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Lao People's Dem Rep</countryName>
+    <countryCode>LA</countryCode>
+    <currencyName>Kip </currencyName>
+    <currencyCode>LAK</currencyCode>
+    <rateNew>11688.41</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Lebanon</countryName>
+    <countryCode>LB</countryCode>
+    <currencyName>Pound </currencyName>
+    <currencyCode>LBP</currencyCode>
+    <rateNew>1986.83</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Lesotho</countryName>
+    <countryCode>LS</countryCode>
+    <currencyName>Loti </currencyName>
+    <currencyCode>LSL</currencyCode>
+    <rateNew>18.84</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Liberia</countryName>
+    <countryCode>LR</countryCode>
+    <currencyName>Dollar (US) </currencyName>
+    <currencyCode>LRD</currencyCode>
+    <rateNew>1.314</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Libya</countryName>
+    <countryCode>LY</countryCode>
+    <currencyName>Dinar </currencyName>
+    <currencyCode>LYD</currencyCode>
+    <rateNew>1.8397</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Macao</countryName>
+    <countryCode>MO</countryCode>
+    <currencyName>Pataca </currencyName>
+    <currencyCode>MOP</currencyCode>
+    <rateNew>10.51</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Macedonia</countryName>
+    <countryCode>MK</countryCode>
+    <currencyName>Denar </currencyName>
+    <currencyCode>MKD</currencyCode>
+    <rateNew>73.06</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Madagascar</countryName>
+    <countryCode>MG</countryCode>
+    <currencyName>Malagasy Ariary</currencyName>
+    <currencyCode>MGA</currencyCode>
+    <rateNew>4861.96</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Malawi</countryName>
+    <countryCode>MW</countryCode>
+    <currencyName>Kwacha </currencyName>
+    <currencyCode>MWK</currencyCode>
+    <rateNew>967.81</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Maldive Islands</countryName>
+    <countryCode>MV</countryCode>
+    <currencyName>Rufiyaa </currencyName>
+    <currencyCode>MVR</currencyCode>
+    <rateNew>20.36</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Mali Republic</countryName>
+    <countryCode>ML</countryCode>
+    <currencyName>CFA Franc</currencyName>
+    <currencyCode>XOF</currencyCode>
+    <rateNew>778.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Mauritania</countryName>
+    <countryCode>MR</countryCode>
+    <currencyName>Ouguiya </currencyName>
+    <currencyCode>MRO</currencyCode>
+    <rateNew>46.95</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Mauritius</countryName>
+    <countryCode>MU</countryCode>
+    <currencyName>Rupee </currencyName>
+    <currencyCode>MUR</currencyCode>
+    <rateNew>48.32</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Moldova</countryName>
+    <countryCode>MD</countryCode>
+    <currencyName>Leu </currencyName>
+    <currencyCode>MDL</currencyCode>
+    <rateNew>23.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Mongolia</countryName>
+    <countryCode>MN</countryCode>
+    <currencyName>Tugrik </currencyName>
+    <currencyCode>MNT</currencyCode>
+    <rateNew>3609.67</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Montserrat</countryName>
+    <countryCode>MS</countryCode>
+    <currencyName>E Caribbean Dollar </currencyName>
+    <currencyCode>XCD</currencyCode>
+    <rateNew>3.5479</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Morocco</countryName>
+    <countryCode>MA</countryCode>
+    <currencyName>Dirham </currencyName>
+    <currencyCode>MAD</currencyCode>
+    <rateNew>12.63</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Mozambique</countryName>
+    <countryCode>MZ</countryCode>
+    <currencyName> Metical </currencyName>
+    <currencyCode>MZN</currencyCode>
+    <rateNew>83.4</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Myanmar</countryName>
+    <countryCode>MM</countryCode>
+    <currencyName>Kyat </currencyName>
+    <currencyCode>MMK</currencyCode>
+    <rateNew>1930.07</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Nepal</countryName>
+    <countryCode>NP</countryCode>
+    <currencyName>Rupee </currencyName>
+    <currencyCode>NPR</currencyCode>
+    <rateNew>149.68</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>New Caledonia</countryName>
+    <countryCode>NC</countryCode>
+    <currencyName>CFP Franc </currencyName>
+    <currencyCode>XPF</currencyCode>
+    <rateNew>141.58</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Nicaragua</countryName>
+    <countryCode>NI</countryCode>
+    <currencyName>Gold Cordoba </currencyName>
+    <currencyCode>NIO</currencyCode>
+    <rateNew>44.54</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Niger Republic</countryName>
+    <countryCode>NE</countryCode>
+    <currencyName>CFA Franc </currencyName>
+    <currencyCode>XOF</currencyCode>
+    <rateNew>778.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Nigeria</countryName>
+    <countryCode>NG</countryCode>
+    <currencyName>Naira </currencyName>
+    <currencyCode>NGN</currencyCode>
+    <rateNew>475.35</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Oman</countryName>
+    <countryCode>OM</countryCode>
+    <currencyName>Rial </currencyName>
+    <currencyCode>OMR</currencyCode>
+    <rateNew>0.5059</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Pakistan</countryName>
+    <countryCode>PK</countryCode>
+    <currencyName>Rupee </currencyName>
+    <currencyCode>PKR</currencyCode>
+    <rateNew>203.07</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Panama</countryName>
+    <countryCode>PA</countryCode>
+    <currencyName>Balboa </currencyName>
+    <currencyCode>PAB</currencyCode>
+    <rateNew>1.314</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Papua New Guinea</countryName>
+    <countryCode>PG</countryCode>
+    <currencyName>Kina </currencyName>
+    <currencyCode>PGK</currencyCode>
+    <rateNew>4.481</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Paraguay</countryName>
+    <countryCode>PY</countryCode>
+    <currencyName>Guarani </currencyName>
+    <currencyCode>PYG</currencyCode>
+    <rateNew>8577.12</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Peru</countryName>
+    <countryCode>PE</countryCode>
+    <currencyName>New Sol </currencyName>
+    <currencyCode>PEN</currencyCode>
+    <rateNew>4.3543</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Poland</countryName>
+    <countryCode>PL</countryCode>
+    <currencyName>Zloty </currencyName>
+    <currencyCode>PLN</currencyCode>
+    <rateNew>5.0315</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Qatar</countryName>
+    <countryCode>QA</countryCode>
+    <currencyName>Riyal </currencyName>
+    <currencyCode>QAR</currencyCode>
+    <rateNew>4.7844</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Romania</countryName>
+    <countryCode>RO</countryCode>
+    <currencyName>New Leu </currencyName>
+    <currencyCode>RON</currencyCode>
+    <rateNew>5.6692</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Russia</countryName>
+    <countryCode>RU</countryCode>
+    <currencyName>Rouble </currencyName>
+    <currencyCode>RUB</currencyCode>
+    <rateNew>81.54</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Rwanda</countryName>
+    <countryCode>RW</countryCode>
+    <currencyName>Franc </currencyName>
+    <currencyCode>RWF</currencyCode>
+    <rateNew>1228.68</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Saotome &amp; Principe</countryName>
+    <countryCode>ST</countryCode>
+    <currencyName>Dobra </currencyName>
+    <currencyCode>STD</currencyCode>
+    <rateNew>29237.5</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Senegal</countryName>
+    <countryCode>SN</countryCode>
+    <currencyName>CFA Franc </currencyName>
+    <currencyCode>XOF</currencyCode>
+    <rateNew>778.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Serbia</countryName>
+    <countryCode>XS</countryCode>
+    <currencyName>Dinar </currencyName>
+    <currencyCode>RSD</currencyCode>
+    <rateNew>139.46</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Seychelles</countryName>
+    <countryCode>SC</countryCode>
+    <currencyName>Rupee </currencyName>
+    <currencyCode>SCR</currencyCode>
+    <rateNew>18.34</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Sierra Leone</countryName>
+    <countryCode>SL</countryCode>
+    <currencyName>Leone </currencyName>
+    <currencyCode>SLL</currencyCode>
+    <rateNew>12976.17</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Soloman Islands</countryName>
+    <countryCode>SB</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>SBD</currencyCode>
+    <rateNew>10.9</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Somali Republic</countryName>
+    <countryCode>SO</countryCode>
+    <currencyName>Schilling </currencyName>
+    <currencyCode>SOS</currencyCode>
+    <rateNew>762.14</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Sri Lanka</countryName>
+    <countryCode>LK</countryCode>
+    <currencyName>Rupee </currencyName>
+    <currencyCode>LKR</currencyCode>
+    <rateNew>238.49</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>St Christopher &amp; Anguilla</countryName>
+    <countryCode>KN</countryCode>
+    <currencyName>E Caribbean Dollar </currencyName>
+    <currencyCode>XCD</currencyCode>
+    <rateNew>3.5479</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>St Lucia</countryName>
+    <countryCode>LC</countryCode>
+    <currencyName>E Caribbean Dollar </currencyName>
+    <currencyCode>XCD</currencyCode>
+    <rateNew>3.5479</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>St Vincent</countryName>
+    <countryCode>VC</countryCode>
+    <currencyName>E Caribbean Dollar </currencyName>
+    <currencyCode>XCD</currencyCode>
+    <rateNew>3.5479</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Sudan Republic</countryName>
+    <countryCode>SD</countryCode>
+    <currencyName>Pound </currencyName>
+    <currencyCode>SDG</currencyCode>
+    <rateNew>59.55</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Surinam</countryName>
+    <countryCode>SR</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>SRD</currencyCode>
+    <rateNew>9.8001</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Swaziland</countryName>
+    <countryCode>SZ</countryCode>
+    <currencyName>Lilangeni </currencyName>
+    <currencyCode>SZL</currencyCode>
+    <rateNew>18.84</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Tanzania</countryName>
+    <countryCode>TZ</countryCode>
+    <currencyName>Schilling</currencyName>
+    <currencyCode>TZS</currencyCode>
+    <rateNew>3027.55</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Togo Republic</countryName>
+    <countryCode>TG</countryCode>
+    <currencyName>CFA Franc </currencyName>
+    <currencyCode>XOF</currencyCode>
+    <rateNew>778.25</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Tonga Islands</countryName>
+    <countryCode>TO</countryCode>
+    <currencyName>Pa'anga (AUS) </currencyName>
+    <currencyCode>TOP</currencyCode>
+    <rateNew>1.9213</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Trinidad/Tobago</countryName>
+    <countryCode>TT</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>TTD</currencyCode>
+    <rateNew>8.9019</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Tunisia</countryName>
+    <countryCode>TN</countryCode>
+    <currencyName>Dinar </currencyName>
+    <currencyCode>TND</currencyCode>
+    <rateNew>3.7086</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Turkey</countryName>
+    <countryCode>TR</countryCode>
+    <currencyName>Turkish  Lira </currencyName>
+    <currencyCode>TRY</currencyCode>
+    <rateNew>7.7782</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Turkmenistan</countryName>
+    <countryCode>TM</countryCode>
+    <currencyName>New Manat </currencyName>
+    <currencyCode>TMT</currencyCode>
+    <rateNew>4.6123</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>UAE</countryName>
+    <countryCode>AE</countryCode>
+    <currencyName>Dirham </currencyName>
+    <currencyCode>AED</currencyCode>
+    <rateNew>4.82</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Uganda</countryName>
+    <countryCode>UG</countryCode>
+    <currencyName>Schilling </currencyName>
+    <currencyCode>UGX</currencyCode>
+    <rateNew>4829.1</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Ukraine</countryName>
+    <countryCode>UA</countryCode>
+    <currencyName>Hryvnia </currencyName>
+    <currencyCode>UAH</currencyCode>
+    <rateNew>32.12</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Uruguay</countryName>
+    <countryCode>UY</countryCode>
+    <currencyName>Peso </currencyName>
+    <currencyCode>UYU</currencyCode>
+    <rateNew>49.07</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Uzbekistan</countryName>
+    <countryCode>UZ</countryCode>
+    <currencyName>Sum </currencyName>
+    <currencyCode>UZS</currencyCode>
+    <rateNew>12545.24</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Vanuatu</countryName>
+    <countryCode>VU</countryCode>
+    <currencyName>Vatu </currencyName>
+    <currencyCode>VUV</currencyCode>
+    <rateNew>153.17</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Venezuela</countryName>
+    <countryCode>VE</countryCode>
+    <currencyName>Bolivar Fuerte </currencyName>
+    <currencyCode>VEF</currencyCode>
+    <rateNew>326591</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Vietnam</countryName>
+    <countryCode>VN</countryCode>
+    <currencyName>Dong </currencyName>
+    <currencyCode>VND</currencyCode>
+    <rateNew>30447.05</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Wallis &amp; Futuna Islands</countryName>
+    <countryCode>WF</countryCode>
+    <currencyName>CFP Franc </currencyName>
+    <currencyCode>XPF</currencyCode>
+    <rateNew>141.58</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Western Samoa</countryName>
+    <countryCode>WS</countryCode>
+    <currencyName>Tala </currencyName>
+    <currencyCode>WST</currencyCode>
+    <rateNew>3.4662</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Yemen (Rep of)</countryName>
+    <countryCode>YE</countryCode>
+    <currencyName>Rial </currencyName>
+    <currencyCode>YER</currencyCode>
+    <rateNew>328.37</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Zambia</countryName>
+    <countryCode>ZM</countryCode>
+    <currencyName>Kwacha </currencyName>
+    <currencyCode>ZMW</currencyCode>
+    <rateNew>19.15</rateNew>
+  </exchangeRate>
+  <exchangeRate>
+    <countryName>Zimbabwe</countryName>
+    <countryCode>ZW</countryCode>
+    <currencyName>Dollar </currencyName>
+    <currencyCode>ZWL</currencyCode>
+    <rateNew>475.55</rateNew>
+  </exchangeRate>
+</exchangeRateMonthList>
