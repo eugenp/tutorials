@@ -1,16 +1,22 @@
-package com.baeldung.web.dto;
+package com.baeldung.library.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
 
-    private long id;
-    private String title;
-    private String author;
+    @Id
+    Long id;
+    String title;
+    String author;
 
-    public long getId() {
+    // getters and setters
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -28,5 +34,6 @@ public class Book {
 
     public void setAuthor(String author) {
         this.author = author;
-    }    
+    }
+
 }
