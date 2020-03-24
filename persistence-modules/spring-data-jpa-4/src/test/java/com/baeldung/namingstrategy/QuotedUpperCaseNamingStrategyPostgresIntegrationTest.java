@@ -22,8 +22,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DataJpaTest(excludeAutoConfiguration = TestDatabaseAutoConfiguration.class)
-@TestPropertySource("quoted-lower-case-naming-strategy.properties")
-class QuotedLowerCaseNamingStrategyIntegrationTest {
+@TestPropertySource("quoted-upper-case-naming-strategy-on-postgres.properties")
+class QuotedUpperCaseNamingStrategyPostgresIntegrationTest {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -42,28 +42,31 @@ class QuotedLowerCaseNamingStrategyIntegrationTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"person", "PERSON", "Person"})
-    void givenPeopleAndLowerCaseNamingStrategy_whenQueryPersonUnquoted_thenException(String tableName) {
+    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonUnquoted_thenResult(String tableName) {
         Query query = entityManager.createNativeQuery("select * from " + tableName);
 
+        // Unexpected result
         assertThrows(SQLGrammarException.class, query::getResultStream);
     }
 
     @Test
-    void givenPeopleAndLowerCaseNamingStrategy_whenQueryPersonQuotedUpperCase_thenException() {
+    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonQuotedUpperCase_thenException() {
         Query query = entityManager.createNativeQuery("select * from \"PERSON\"");
 
-        assertThrows(SQLGrammarException.class, query::getResultStream);
-    }
-
-    @Test
-    void givenPeopleAndLowerCaseNamingStrategy_whenQueryPersonQuotedLowerCase_thenResult() {
-        Query query = entityManager.createNativeQuery("select * from \"person\"");
-
+        // Expected result
         List<Person> result = (List<Person>) query.getResultStream()
           .map(this::fromDatabase)
           .collect(Collectors.toList());
 
         assertThat(result).isNotEmpty();
+    }
+
+    @Test
+    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonQuotedLowerCase_thenResult() {
+        Query query = entityManager.createNativeQuery("select * from \"person\"");
+
+        // Expected result
+        assertThrows(SQLGrammarException.class, query::getResultStream);
     }
 
     public Person fromDatabase(Object databaseRow) {
