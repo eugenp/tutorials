@@ -26,3 +26,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Shutdown Callbacks](https://www.baeldung.com/spring-shutdown-callbacks)
 - [Container Configuration in Spring Boot 2](https://www.baeldung.com/embeddedservletcontainercustomizer-configurableembeddedservletcontainer-spring-boot)
 - [Validation in Spring Boot](https://www.baeldung.com/spring-boot-bean-validation)
+- [Running Setup Data on Startup in Spring](https://www.baeldung.com/running-setup-logic-on-startup-in-spring)
