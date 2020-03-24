@@ -39,7 +39,7 @@ public class AddingNewLineToString {
 		rhyme = line1 + System.getProperty("line.separator") + line2;
 		System.out.println(rhyme);
                 
-                //6. Using %n
+                //7. Using %n
                 System.out.println("7. Using %n");
                 rhyme = "Humpty Dumpty sat on a wall.%nHumpty Dumpty had a great fall.";
                 System.out.println(rhyme);
