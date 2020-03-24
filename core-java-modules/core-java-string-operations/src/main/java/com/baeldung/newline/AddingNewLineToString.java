@@ -38,6 +38,11 @@ public class AddingNewLineToString {
 		System.out.println("6. Using System.getProperty(\"line.separator\")");
 		rhyme = line1 + System.getProperty("line.separator") + line2;
 		System.out.println(rhyme);
+                
+                //6. Using %n
+                System.out.println("7. Using %n");
+                rhyme = "Humpty Dumpty sat on a wall.%nHumpty Dumpty had a great fall.";
+                System.out.println(rhyme);
 		
 		System.out.println("***HTML to rendered in a browser***");
 		//1. Line break for HTML using <br>
