@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DataJpaTest(excludeAutoConfiguration = TestDatabaseAutoConfiguration.class)
 @TestPropertySource("spring-physical-naming-strategy.properties")
-class SpringPhysicalNamingStrategyIntegrationTest {
+class SpringPhysicalNamingStrategyH2IntegrationTest {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -42,9 +42,10 @@ class SpringPhysicalNamingStrategyIntegrationTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"person", "PERSON", "Person"})
-    void givenPeopleAndDefaultNamingStrategy_whenQueryPersonUnquoted_thenResult(String tableName) {
+    void givenPeopleAndSpringNamingStrategy_whenQueryPersonUnquoted_thenResult(String tableName) {
         Query query = entityManager.createNativeQuery("select * from " + tableName);
 
+        // Expected result
         List<Person> result = (List<Person>) query.getResultStream()
           .map(this::fromDatabase)
           .collect(Collectors.toList());
@@ -53,9 +54,10 @@ class SpringPhysicalNamingStrategyIntegrationTest {
     }
 
     @Test
-    void givenPeopleAndDefaultNamingStrategyAndH2Database_whenQueryPersonQuotedUpperCase_thenResult() {
+    void givenPeopleAndSpringNamingStrategy_whenQueryPersonQuotedUpperCase_thenResult() {
         Query query = entityManager.createNativeQuery("select * from \"PERSON\"");
 
+        // Unexpected result
         List<Person> result = (List<Person>) query.getResultStream()
           .map(this::fromDatabase)
           .collect(Collectors.toList());
@@ -64,9 +66,10 @@ class SpringPhysicalNamingStrategyIntegrationTest {
     }
 
     @Test
-    void givenPeopleAndDefaultNamingStrategyAndH2Database_whenQueryPersonQuotedLowerCase_thenException() {
+    void givenPeopleAndSpringNamingStrategy_whenQueryPersonQuotedLowerCase_thenException() {
         Query query = entityManager.createNativeQuery("select * from \"person\"");
 
+        // Unexpected result
         assertThrows(SQLGrammarException.class, query::getResultStream);
     }
 
