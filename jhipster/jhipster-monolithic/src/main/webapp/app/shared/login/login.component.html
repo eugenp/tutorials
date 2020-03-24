@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <h4 class="modal-title" jhiTranslate="login.title">Sign in</h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="activeModal.dismiss('closed')"><span aria-hidden="true">x</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <h1 jhiTranslate="login.title">Sign in</h1>
+        </div>
+        <div class="col-md-8 offset-md-2">
+            <div class="alert alert-danger" *ngIf="authenticationError" jhiTranslate="login.messages.error.authentication">
+                <strong>Failed to sign in!</strong> Please check your credentials and try again.
+            </div>
+        </div>
+        <div class="col-md-8 offset-md-2">
+            <form class="form" role="form" (ngSubmit)="login()">
+                <div class="form-group">
+                    <label for="username" jhiTranslate="global.form.username">Login</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="{{'global.form.username.placeholder' | translate}}"
+                    [(ngModel)]="username">
+                </div>
+                <div class="form-group">
+                    <label for="password" jhiTranslate="login.form.password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="{{'login.form.password.placeholder' | translate}}"
+                           [(ngModel)]="password">
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label" for="rememberMe">
+                        <input class="form-check-input" type="checkbox" name="rememberMe" id="rememberMe" [(ngModel)]="rememberMe" checked>
+                        <span jhiTranslate="login.form.rememberme">Remember me</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" jhiTranslate="login.form.button">Sign in</button>
+            </form>
+            <p></p>
+            <div class="alert alert-warning">
+                <a class="alert-link" (click)="requestResetPassword()" jhiTranslate="login.password.forgot">Did you forget your password?</a>
+            </div>
+            <div class="alert alert-warning">
+            	<span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>
+                <a class="alert-link" (click)="register()" jhiTranslate="global.messages.info.register.link">Register a new account</a>
+            </div>
+        </div>
+    </div>
+</div>

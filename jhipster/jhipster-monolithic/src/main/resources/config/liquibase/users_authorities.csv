@@ -1,0 +1,6 @@
+user_id;authority_name
+1;ROLE_ADMIN
+1;ROLE_USER
+3;ROLE_ADMIN
+3;ROLE_USER
+4;ROLE_USER

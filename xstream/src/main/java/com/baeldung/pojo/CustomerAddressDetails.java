@@ -39,7 +39,6 @@ public class CustomerAddressDetails {
         this.age = age;
     }
 
-
     public List<AddressDetails> getAddressDetails() {
         return addressDetails;
     }

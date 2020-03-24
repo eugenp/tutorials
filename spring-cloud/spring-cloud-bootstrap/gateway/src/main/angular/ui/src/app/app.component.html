@@ -1,0 +1,37 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Book Rater <span *ngIf="principal.isAdmin()">Admin</span></a>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <button *ngIf="principal.authenticated" type="button" class="btn btn-link" (click)="onLogout()">Logout</button>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>Book Rater App</h1>
+    <p *ngIf="!principal.authenticated" class="lead">Anyone can view the books.</p>
+    <p *ngIf="principal.authenticated && !principal.isAdmin()" class="lead">Users can view and create ratings</p>
+    <p *ngIf="principal.isAdmin()"  class="lead">Admins can do anything!</p>
+  </div>
+</div>
+
+<section class="books">
+  <div class="container">
+    <div class="row">
+      <div class="col-md">
+        <div class="row">
+          <div class="col-md-12">
+            <app-book-list [principal]="principal" (onBookSelected)="selectBook($event)"></app-book-list>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="selectedBook != null" class="col-md-3">
+        <app-book-detail [selectedBook]="selectedBook" [principal]="principal" (closeBook)="closeBookDetail()"></app-book-detail>
+      </div>
+    </div>
+  </div>
+</section>

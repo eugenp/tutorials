@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+    th:with="lang=${#locale.language}" th:lang="${lang}">
 <head>
 <title>Home</title>
 </head>
@@ -17,6 +17,12 @@
 		</tr>
 		<tr>
 			<td><a th:href="@{/listStudents}" th:text="#{msg.ListStudents}" /></td>
+		</tr>
+		<tr>
+			<td><a th:href="@{/listTeachers}" th:text="#{msg.ListTeachers}" /></td>
+		</tr>
+		<tr>
+			<td><a th:href="@{/listBooks}" th:text="#{msg.ListBooks}" /></td>
 		</tr>
 	</table>
 </body>

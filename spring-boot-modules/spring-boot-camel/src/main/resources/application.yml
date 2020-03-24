@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+# for example purposes of Camel version 2.18 and below
+baeldung:
+  api:
+    path: '/camel' 
+
+camel:
+  springboot:
+    # The Camel context name
+    name: ServicesRest
+
+# Binding health checks to a different port
+management:
+  port: 8081
+
+# disable all management enpoints except health
+endpoints:
+  enabled: false
+  health:
+    enabled: true
+
+# The application configuration properties
+quickstart:
+  generateOrderPeriod: 10s
+  processOrderPeriod: 30s

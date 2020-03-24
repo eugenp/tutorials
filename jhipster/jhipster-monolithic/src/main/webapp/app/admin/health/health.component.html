@@ -1,0 +1,34 @@
+<div>
+    <h2>
+        <span jhiTranslate="health.title">Health Checks</span>
+        <button class="btn btn-primary float-right" (click)="refresh()">
+            <span class="fa fa-refresh"></span> <span jhiTranslate="health.refresh.button">Refresh</span>
+        </button>
+    </h2>
+    <div class="table-responsive">
+        <table id="healthCheck" class="table table-striped">
+            <thead>
+                <tr>
+                    <th jhiTranslate="health.table.service">Service Name</th>
+                    <th class="text-center" jhiTranslate="health.table.status">Status</th>
+                    <th class="text-center" jhiTranslate="health.details.details">Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let health of healthData">
+                    <td>{{'health.indicator.' + baseName(health.name) | translate}} {{subSystemName(health.name)}}</td>
+                    <td class="text-center">
+                        <span class="badge" [ngClass]="getBadgeClass(health.status)" jhiTranslate="{{'health.status.' + health.status}}">
+                            {{health.status}}
+                        </span>
+                    </td>
+                    <td class="text-center">
+                        <a class="hand" (click)="showHealth(health)" *ngIf="health.details || health.error">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

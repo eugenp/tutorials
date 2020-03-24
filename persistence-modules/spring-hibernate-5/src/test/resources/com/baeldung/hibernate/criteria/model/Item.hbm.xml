@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.baeldung.hibernate.criteria.model.Item" table="ITEM">
+		<id name="itemId" type="java.lang.Integer">
+			<column name="ITEM_ID" />
+			<generator class="identity" />
+		</id>
+		<property name="itemDescription" type="string">
+			<column name="ITEM_DESC" length="100" />
+		</property>
+		<property name="itemPrice" type="java.lang.Integer">
+			<column name="ITEM_PRICE" not-null="true" />
+		</property>
+		<property name="itemName" type="string">
+			<column name="ITEM_NAME" not-null="true" />
+		</property>
+	</class>
+	
+</hibernate-mapping>

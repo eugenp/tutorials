@@ -1,0 +1,12 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /                           controllers.StudentController.listStudents()
+GET     /:id                        controllers.StudentController.retrieve(id:Int)
+POST    /                           controllers.StudentController.create(request: Request)
+PUT     /                           controllers.StudentController.update(request: Request)
+DELETE  /:id                        controllers.StudentController.delete(id:Int)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

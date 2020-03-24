@@ -1,0 +1,13 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+<persistence-unit name="defaultPersistenceUnit" transaction-type="JTA">
+    <class>com.baeldung.arquillian.Car</class>
+    <properties>
+        <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
+        <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:testdb"/>
+        <property name="javax.persistence.jdbc.user" value="sa"/>
+        <property name="javax.persistence.jdbc.password" value=""/>
+        <property name="eclipselink.ddl-generation" value="create-tables"/>
+        <property name="hibernate.hbm2ddl.auto" value="update" />
+    </properties>
+</persistence-unit>
+</persistence>

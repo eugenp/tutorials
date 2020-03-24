@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-block">
+    <button type="button" class="close" aria-label="Close" (click)="closeBookDetail()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="card-title">Title: {{selectedBook.title}}</h4>
+    <h6 class="card-subtitle mb-2 text-muted">Author: {{selectedBook.author}}</h6>
+    <p class="card-text">A quick summary of the book</p>
+    <app-rating *ngIf="principal.authenticated" [bookId]="selectedBook.id" [principal]="principal"></app-rating>
+  </div>
+</div>

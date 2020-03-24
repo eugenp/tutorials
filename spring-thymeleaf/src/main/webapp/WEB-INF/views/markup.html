@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Thymeleaf Fragments: markup</title>
+</head>
+<body>
+    <header th:insert="fragments/general.html :: header"> </header>
+    <div th:replace="fragments/general.html :: aside"></div>
+    <div th:replace="fragments/general.html :: div.another"></div>
+    <div th:replace="fragments/general.html :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+
+html, body, main {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  color: white;
+  font-family: 'Poiret One', sans-serif;
+  opacity:.95;
+}
+
+main {
+  background-size: cover;
+}
+
+main > div.wrapper {
+  position: relative;
+  left: 15%;
+  top: 15%;
+  width: 40%;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 48px;
+  letter-spacing: 2px;
+}
+
+span, a {
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: lightgray;
+}
+
+input {
+  width: 225px;
+  background: none !important;
+  border-radius: 25px;
+  background-color: #fff;
+  color: white;
+  outline: none;
+  margin-left: 2px;
+  padding-left: 25px;
+  padding-bottom: 9px;
+  padding-top: 9px;
+}
+
+button {
+  width: 100px;
+  align-content: center;
+  text-align: center;
+  background: transparent;
+  border-radius: 25px;
+  padding: 6px;
+  color: white;
+}
+
+button:hover {
+  opacity: .6;
+}

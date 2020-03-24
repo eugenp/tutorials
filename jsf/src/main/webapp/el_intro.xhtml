@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Baeldung | The EL Intro</title>
+</h:head>
+
+<h:body>
+    <h:form id="elForm">
+
+
+        <h:messages/>
+        <h:panelGrid columns="2">
+            <h:outputText value="First Name"/>
+            <h:inputText id="firstName" binding="#{firstName}" required="true" value="#{ELBean.firstName}"/>
+            <h:outputText value="Last Name"/>
+            <h:inputText id="lastName" required="true" value="#{ELBean.lastName}"/>
+            <h:outputText value="Save by value binding"/>
+            <h:commandButton value="Save" action="#{ELBean.save}">
+
+            </h:commandButton>
+            <h:outputText value="Evaluate backing bean EL"/>
+            <h:commandButton value="Save" action="#{ELBean.saveByELEvaluation}">
+            </h:commandButton>
+            <h:outputText value="Save by passing value to method"/>
+            <h:commandButton value="Save"
+                             action="#{ELBean.saveFirstName(firstName.value.toString().concat('(passed)'))}"/>
+            <h:outputText value="JavaScript (click after saving First Name)"/>
+            <h:button value="Alert" onclick="alert('Hello #{ELBean.firstName}')"/>
+        </h:panelGrid>
+
+        <br/>
+        <h:outputText value="Current Request HTTP Headers:"/>
+        <table border="1">
+            <th>Key</th>
+            <th>Value</th>
+            <c:forEach items="#{header}" var="header">
+                <tr>
+                    <td>#{header.key}</td>
+                    <td>#{header.value}</td>
+                </tr>
+            </c:forEach>
+        </table>
+
+    </h:form>
+</h:body>
+</html>
+

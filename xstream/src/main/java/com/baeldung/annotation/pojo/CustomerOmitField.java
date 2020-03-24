@@ -5,7 +5,6 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 import java.util.Date;
 
-
 @XStreamAlias("customer")
 public class CustomerOmitField {
 
@@ -42,9 +41,7 @@ public class CustomerOmitField {
 
     @Override
     public String toString() {
-        return "CustomerOmitAnnotation [firstName=" + firstName + ", lastName="
-                + lastName + ", dob=" + dob + "]";
+        return "CustomerOmitAnnotation [firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob + "]";
     }
-
 
 }

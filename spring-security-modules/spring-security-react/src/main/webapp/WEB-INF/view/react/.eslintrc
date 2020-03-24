@@ -1,0 +1,22 @@
+{
+  "rules": {
+    "linebreak-style": [2, "unix"],
+    "semi":"off",
+    "no-console": "off"
+  },
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "plugins": ["react"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"]
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="$$codebase">
+    <information>
+        <title>Hello</title>
+        <vendor>Example</vendor>
+    </information>
+    <resources>
+        <j2se version="1.2+"/>
+        <jar href="jws.jar" main="true" />
+    </resources>
+    <application-desc/>
+</jnlp>

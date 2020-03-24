@@ -1,0 +1,32 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+
+<h2>Enter participant</h2>
+<form th:action="@{/participants}">
+
+    <input type="text" th:name="participant"/>
+    <select name="country">
+        <option value="de">Germany</option>
+        <option value="nl">Netherlands</option>
+        <option value="pl">Poland</option>
+        <option value="lv">Latvia</option>
+    </select>
+    <button type="submit" th:name="action" th:value="in">check-in</button>
+    <button type="submit" th:name="action" th:value="out">check-out</button>
+</form>
+
+<th:block th:if="${id != null}">
+    <h2 >User Details</h2>
+    <p>Details for user [[${id}]] ...</p>
+</th:block>
+
+<h2>Users</h2>
+<th:block th:each="userId: ${userIds}">
+    <p>
+        <a th:href="@{/participants(id=${userId})}"> User [[${userId}]]</a>
+    </p>
+</th:block>
+
+</html>

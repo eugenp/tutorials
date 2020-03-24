@@ -1,17 +1,15 @@
-=========
+## Guava
 
-## Guava and Hamcrest Cookbooks and Examples
-
+This module contains articles a Google Guava
 
 ### Relevant Articles: 
-- [Guava Collections Cookbook](http://www.baeldung.com/guava-collections)
-- [Guava Ordering Cookbook](http://www.baeldung.com/guava-order)
-- [Guava Functional Cookbook](http://www.baeldung.com/guava-functions-predicates)
-- [Hamcrest Collections Cookbook](http://www.baeldung.com/hamcrest-collections-arrays)
-- [Partition a List in Java](http://www.baeldung.com/java-list-split)
-- [Filtering and Transforming Collections in Guava](http://www.baeldung.com/guava-filter-and-transform-a-collection)
-- [Guava – Join and Split Collections](http://www.baeldung.com/guava-joiner-and-splitter-tutorial)
-- [Guava – Write to File, Read from File](http://www.baeldung.com/guava-write-to-file-read-from-file)
-- [Guava – Lists](http://www.baeldung.com/guava-lists)
-- [Guava – Sets](http://www.baeldung.com/guava-sets)
-- [Guava – Maps](http://www.baeldung.com/guava-maps)
+- [Guava Functional Cookbook](https://www.baeldung.com/guava-functions-predicates)
+- [Guide to Guava’s PreConditions](https://www.baeldung.com/guava-preconditions)
+- [Introduction to Guava CacheLoader](https://www.baeldung.com/guava-cacheloader)
+- [Introduction to Guava Memoizer](https://www.baeldung.com/guava-memoizer)
+- [Guide to Guava’s EventBus](https://www.baeldung.com/guava-eventbus)
+- [Guide to Guava’s Reflection Utilities](https://www.baeldung.com/guava-reflection)
+- [Guide to Mathematical Utilities in Guava](https://www.baeldung.com/guava-math)
+- [Bloom Filter in Java using Guava](https://www.baeldung.com/guava-bloom-filter)
+- [Quick Guide to the Guava RateLimiter](https://www.baeldung.com/guava-rate-limiter)
+

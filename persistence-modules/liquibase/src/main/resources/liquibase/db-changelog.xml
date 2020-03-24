@@ -1,0 +1,69 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="testRollback" author="baeldung">
+        <createTable tableName="baeldung_tutorial">
+            <column name="id" type="int"/>
+            <column name="heading" type="varchar(36)"/>
+            <column name="author" type="varchar(36)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="baeldung_tutorial"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="multiStatementRollback" author="baeldung">
+        <createTable tableName="baeldung_tutorial2">
+            <column name="id" type="int"/>
+            <column name="heading" type="varchar(36)"/>
+            <column name="author" type="varchar(36)"/>
+        </createTable>
+        <createTable tableName="baeldung_tutorial3">
+            <column name="id" type="int"/>
+            <column name="heading" type="varchar(36)"/>
+            <column name="author" type="varchar(36)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="baeldung_tutorial2"/>
+            <dropTable tableName="baeldung_tutorial3"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="multipleRollbackTags" author="baeldung">
+        <createTable tableName="baeldung_tutorial4">
+            <column name="id" type="int"/>
+            <column name="heading" type="varchar(36)"/>
+            <column name="author" type="varchar(36)"/>
+        </createTable>
+        <createTable tableName="baeldung_tutorial5">
+            <column name="id" type="int"/>
+            <column name="heading" type="varchar(36)"/>
+            <column name="author" type="varchar(36)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="baeldung_tutorial4"/>
+        </rollback>
+        <rollback>
+            <dropTable tableName="baeldung_tutorial5"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="referChangeSetForRollback" author="baeldung">
+        <dropTable tableName="baeldung_tutorial2"/>
+        <dropTable tableName="baeldung_tutorial3"/>
+        <rollback changeSetId="multiStatementRollback" changeSetAuthor="baeldung"/>
+    </changeSet>
+
+    <changeSet id="emptyRollback" author="baeldung">
+        <createTable tableName="baeldung_tutorial6">
+            <column name="id" type="int"/>
+            <column name="heading" type="varchar(36)"/>
+            <column name="author" type="varchar(36)"/>
+        </createTable>
+        <rollback/>
+    </changeSet>
+
+
+</databaseChangeLog>

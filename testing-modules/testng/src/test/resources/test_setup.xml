@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression_test">
+    <test name="test setup">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.baeldung.SummationServiceIntegrationTest">
+                <methods>
+                    <include name="givenNumbers_sumEquals_thenCorrect"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

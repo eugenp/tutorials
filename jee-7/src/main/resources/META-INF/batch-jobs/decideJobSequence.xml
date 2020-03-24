@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="decideJobSequence" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/jobXML_1_0.xsd"
+	version="1.0">
+	<step id="firstBatchStepStep1" next="firstDecider">
+		<batchlet ref="simpleBatchLet" />
+	</step>	
+	<decision id="firstDecider" ref="deciderJobSequence">
+        <next on="nothing" to="firstBatchStepStep3"/>
+    </decision>
+	<step id="firstBatchStepStep2">
+		<batchlet ref="simpleBatchLet" />
+	</step>	
+	<step id="firstBatchStepStep3">
+		<batchlet ref="simpleBatchLet" />
+	</step>		
+</job>	

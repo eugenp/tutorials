@@ -1,0 +1,28 @@
+{
+		"odds": [{
+			"price": 1.30,
+			"status": 0,
+			"ck": 12.2,
+			"name": "1"
+		},
+		{
+			"price": 5.25,
+			"status": 1,
+			"ck": 13.1,
+			"name": "X"
+		},
+		{
+			"price": 2.70,
+			"status": 0,
+			"ck": 12.2,
+			"name": "0"
+		},
+		{
+			"price": 1.20,
+			"status": 2,
+			"ck": 13.1,
+			"name": "2"
+		}
+		
+		]
+}

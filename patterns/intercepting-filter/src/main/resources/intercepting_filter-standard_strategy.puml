@@ -1,0 +1,26 @@
+@startuml
+scale 1.5
+
+class FrontControllerServlet {
+    void doGet()
+    void doPost()
+}
+abstract class BaseFilter {
+    void init()
+    void destroy()
+}
+class LoggingFilter {
+    void doFilter()
+}
+class EncodingFilter {
+    void doFilter()
+}
+class FrontCommand {
+    void process()
+}
+
+FrontControllerServlet .right.-- FrontCommand
+FrontControllerServlet -- BaseFilter
+BaseFilter <|-- LoggingFilter
+BaseFilter <|-- EncodingFilter
+@enduml

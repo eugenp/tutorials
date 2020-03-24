@@ -1,0 +1,12 @@
+#!/usr/local/bin/java --source 11
+
+import java.util.Arrays;
+
+public class Addition
+{
+    public static void main(String[] args) {
+        System.out.println(Arrays.stream(args)
+          .mapToInt(Integer::parseInt)
+          .sum());
+    }
+}

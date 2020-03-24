@@ -1,0 +1,10 @@
+rootProject.name = 'gradletutorial'
+
+
+include 'greeting-library'
+include 'greeting-library-java'
+include 'greeter'
+include 'gradletaskdemo'
+include 'junit5'
+
+println 'This will be executed during the initialization phase.'

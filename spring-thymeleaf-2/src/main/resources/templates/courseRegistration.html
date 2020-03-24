@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Register for course</title>
+<script>
+	function validateForm() {
+		var e = document.getElementById("course");
+		var value = e.options[e.selectedIndex].value;
+		if (value == '') {
+			var error = document.getElementById("errormesg");
+			error.textContent = e.getAttribute('data-validation-message');
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+
+	<h3>Register Here</h3>
+	<form action="#" th:action="@{/registerCourse}" th:object="${course}"
+		method="post" onsubmit="return validateForm();">
+		<span id="errormesg" style="color: red"></span> <span
+			style="font-weight: bold" th:text="${successMessage}"></span>
+		<table>
+			<tr>
+				<td><label th:text="#{msg.courseName}+': '"></label></td>
+				<td><select id="course" th:field="*{name}"
+					th:data-validation-message="#{msg.courseName.mandatory}">
+						<option th:value="''" th:text="'Select'"></option>
+						<option th:value="'Mathematics'" th:text="'Mathematics'"></option>
+						<option th:value="'History'" th:text="'History'"></option>
+				</select></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit" /></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

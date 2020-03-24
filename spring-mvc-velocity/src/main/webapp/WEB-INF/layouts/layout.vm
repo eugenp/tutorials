@@ -1,0 +1,22 @@
+<html>
+<head>
+ <title>Spring with Velocity</title>  
+</head>
+<body>
+  <div>
+      #parse("/WEB-INF/fragments/header.vm")
+  </div>
+  
+  
+  <div>
+  
+    <!-- View index.vm is inserted here -->
+    $screen_content
+ 
+  </div>
+  
+  <div>
+      #parse("/WEB-INF/fragments/footer.vm")
+  </div>
+</body>
+</html>

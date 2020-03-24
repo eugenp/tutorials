@@ -12,5 +12,4 @@ public class BeanA {
     public BeanA() {
         super();
     }
-
 }

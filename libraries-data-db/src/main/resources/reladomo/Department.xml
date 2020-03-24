@@ -1,0 +1,11 @@
+<MithraObject objectType="transactional">
+    <PackageName>com.baeldung.libraries.reladomo</PackageName>
+    <ClassName>Department</ClassName>
+    <DefaultTable>departments</DefaultTable>
+
+    <Attribute name="id" javaType="long" columnName="department_id"   primaryKey="true"/>
+    <Attribute name="name" javaType="String" columnName="name" maxLength="50" truncate="true"/>
+    <Relationship name="employees" relatedObject="Employee" cardinality="one-to-many" reverseRelationshipName="department" relatedIsDependent="true">
+         Employee.departmentId = this.id
+    </Relationship>
+</MithraObject>

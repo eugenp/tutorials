@@ -20,7 +20,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class DefaultParser {
-    
+
     private File file;
 
     public DefaultParser(File file) {
@@ -69,7 +69,7 @@ public class DefaultParser {
         }
         return node;
     }
-    
+
     public NodeList getNodeListByTitle(String name) {
         NodeList nodeList = null;
         try {
@@ -125,11 +125,11 @@ public class DefaultParser {
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
 
             Document xmlDocument = builder.parse(this.getFile());
-            
+
             this.clean(xmlDocument);
 
             XPath xPath = XPathFactory.newInstance().newXPath();
-            
+
             xPath.setNamespaceContext(new NamespaceContext() {
 
                 @Override

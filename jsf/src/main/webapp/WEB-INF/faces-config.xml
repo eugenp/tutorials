@@ -25,6 +25,12 @@
             </var>
         </resource-bundle>
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+        
+        <navigation-handler>
+	    org.primefaces.mobile.application.MobileNavigationHandler
+        </navigation-handler>
+		
+    <!-- 	<default-render-kit-id>PRIMEFACES_MOBILE</default-render-kit-id> -->
     </application>
 
     <navigation-rule>

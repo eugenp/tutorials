@@ -1,0 +1,17 @@
+@startuml
+scale 1.5
+
+class Client
+class FilterManager
+interface FilterChain
+interface "Filter 1"
+interface "Filter 2"
+interface "Filter 3"
+
+Client .right.-- FilterManager
+FilterManager .right.-- Target
+FilterManager -- FilterChain
+FilterChain .right.-- "Filter 3"
+FilterChain .right.-- "Filter 2"
+FilterChain .right.-- "Filter 1"
+@enduml

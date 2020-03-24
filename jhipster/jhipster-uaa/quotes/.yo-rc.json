@@ -1,0 +1,38 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.baeldung.jhipster.quotes",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "5.4.2",
+    "applicationType": "microservice",
+    "baseName": "quotes",
+    "packageName": "com.baeldung.jhipster.quotes",
+    "packageFolder": "com/baeldung/jhipster/quotes",
+    "serverPort": "8081",
+    "authenticationType": "uaa",
+    "uaaBaseName": "uaa",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YTQzODg4YTM4NDU3YTJjMDZiZDczYTI5NThmNGU5Y2Y4ZDcxMjUxMzI1MmI4MmQwM2RmMzYxMzVjYzljN2MzNjcyYjhiNzk3NTVhN2M2NjY1YjVhZjk1YTkyMTI0MGJlODczZDZkNzA5YjAxZThhMDMyMDFkMTgyZjBhYjJkM2Y=",
+    "enableTranslation": true,
+    "languages": [
+      "en"
+    ],
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
