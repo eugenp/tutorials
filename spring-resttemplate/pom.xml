@@ -1,15 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-resttemplate</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>spring-resttemplate</name>
     <packaging>war</packaging>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
@@ -125,7 +125,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
         </dependency>
 
         <dependency>
@@ -162,10 +162,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>${maven.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${source.version}</source>
+                    <target>${target.version}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -308,6 +308,10 @@
         <!-- okhttp -->
         <com.squareup.okhttp3.version>3.4.1</com.squareup.okhttp3.version>
         <pact.version>3.5.11</pact.version>
+        <source.version>1.8</source.version>
+        <target.version>1.8</target.version>
+        <junit.version>4.12</junit.version>
+        <maven.version>3.7.0</maven.version>
     </properties>
 
 </project>

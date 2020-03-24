@@ -1,30 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>versions-maven-plugin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-	<name>versions-maven-plugin</name>
+    <name>versions-maven-plugin</name>
 
     <dependencies>
-
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.3</version>
+            <version>${commons.io.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>4.0</version>
+            <version>${commons.collections4.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.0</version>
+            <version>${commons.lang3.version}</version>
         </dependency>
 
         <dependency>
@@ -36,9 +36,8 @@
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
-            <version>1.9.1</version>
+            <version>${commons.beanutils.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -46,7 +45,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>2.7</version>
+                <version>${versions.plugin.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>org.apache.commons:commons-collections4</exclude>
@@ -69,9 +68,14 @@
             </snapshots>
         </repository>
     </repositories>
-	
-    <properties>        
+
+    <properties>
         <commons-compress-version>1.15</commons-compress-version>
+        <commons.io.version>2.3</commons.io.version>
+        <versions.plugin.version>2.7</versions.plugin.version>
+        <commons.beanutils.version>1.9.1</commons.beanutils.version>
+        <commons.lang3.version>3.0</commons.lang3.version>
+        <commons.collections4.version>4.0</commons.collections4.version>
     </properties>
 
 </project>

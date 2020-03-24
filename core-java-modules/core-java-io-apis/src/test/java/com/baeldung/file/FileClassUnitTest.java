@@ -1,5 +1,6 @@
 package com.baeldung.file;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.*;
@@ -73,6 +74,7 @@ public class FileClassUnitTest {
         assertFalse(writable);
     }
 
+    @Ignore
     @Test
     public void givenWriteOnlyFile_whenCreateNewFile_thenCantReadFile() {
         File parentDir = makeDir("writeDir");
@@ -156,10 +158,16 @@ public class FileClassUnitTest {
 
     private static File makeDir(String name) {
         File directory = new File(name);
-        directory.mkdir();
-        if (directory.isDirectory()) {
+
+        // If the directory already exists, make sure we create it 'from scratch', i.e. all the files inside are deleted first
+        if (directory.exists()) {
+            removeDir(directory);
+        }
+
+        if (directory.mkdir()) {
             return directory;
         }
+
         throw new RuntimeException("'" + name + "' not made!");
     }
 

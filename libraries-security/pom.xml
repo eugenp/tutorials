@@ -74,10 +74,11 @@
 
     <properties>
         <scribejava.version>5.6.0</scribejava.version>
-		<passay.version>1.3.1</passay.version>
+        <passay.version>1.3.1</passay.version>
         <tink.version>1.2.2</tink.version>
-		<cryptacular.version>1.2.2</cryptacular.version>
+        <cryptacular.version>1.2.2</cryptacular.version>
         <jasypt.version>1.9.2</jasypt.version>
         <bouncycastle.version>1.58</bouncycastle.version>
     </properties>
+
 </project>

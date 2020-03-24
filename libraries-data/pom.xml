@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-data</artifactId>
     <name>libraries-data</name>
@@ -74,19 +74,19 @@
         <dependency>
             <groupId>commons-cli</groupId>
             <artifactId>commons-cli</artifactId>
-            <version>1.2</version>
+            <version>${commons.cli.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.1</version>
+            <version>${commons.io.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
-            <version>3.0.1</version>
+            <version>${httpclient.version}</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
@@ -133,7 +133,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.3</version>
+                <version>${assembly.plugin.version}</version>
                 <configuration>
                     <descriptors>
                         <descriptor>src/main/resources/assembly/hadoop-job.xml</descriptor>
@@ -158,6 +158,10 @@
     </build>
 
     <properties>
+        <assembly.plugin.version>2.3</assembly.plugin.version>
+        <commons.cli.version>1.2</commons.cli.version>
+        <commons.io.version>2.1</commons.io.version>
+        <httpclient.version>3.0.1</httpclient.version>
         <storm.version>1.2.2</storm.version>
         <kafka.version>1.0.0</kafka.version>
         <ignite.version>2.4.0</ignite.version>
@@ -166,7 +170,7 @@
         <flink.version>1.5.0</flink.version>
         <hazelcast.version>3.8.4</hazelcast.version>
         <org.apache.crunch.crunch-core.version>0.15.0</org.apache.crunch.crunch-core.version>
-        <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client> 
+        <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client>
         <slf4j.version>1.7.25</slf4j.version>
     </properties>
 

@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>javaxval</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>javaxval</name>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -39,11 +40,11 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-	
+
     <properties>
         <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
-        <javax.el.version>3.0.0</javax.el.version>    
+        <javax.el.version>3.0.0</javax.el.version>
         <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
         <assertj.version>3.11.1</assertj.version>
-    </properties>    
+    </properties>
 </project>
