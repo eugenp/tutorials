@@ -12,12 +12,8 @@ public class PrependingStdoutWriter<T> implements ItemWriter<T> {
         this.prependText = prependText;
     }
 
-    public PrependingStdoutWriter(String prependText) {
-        this(prependText, System.out);
-    }
-
     @Override
-    public void write(List<? extends T> list) throws Exception {
+    public void write(List<? extends T> list) {
         for (T listItem : list) {
             System.out.println(prependText + " " + listItem.toString());
         }
