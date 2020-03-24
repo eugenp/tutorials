@@ -7,11 +7,9 @@ import org.springframework.batch.item.ItemWriter;
 
 public class PrependingStdoutWriter<T> implements ItemWriter<T> {
     private String prependText;
-    private OutputStream writeTo;
 
-    public PrependingStdoutWriter(String prependText, OutputStream os) {
+    public PrependingStdoutWriter(String prependText) {
         this.prependText = prependText;
-        this.writeTo = os;
     }
 
     public PrependingStdoutWriter(String prependText) {
