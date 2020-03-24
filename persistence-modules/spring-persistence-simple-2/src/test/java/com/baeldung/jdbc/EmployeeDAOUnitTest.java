@@ -27,10 +27,12 @@ public class EmployeeDAOUnitTest {
         ReflectionTestUtils.setField(employeeDAO, "jdbcTemplate", jdbcTemplate);
         Mockito.when(jdbcTemplate.queryForObject("SELECT COUNT(*) FROM EMPLOYEE", Integer.class))
           .thenReturn(4);
+
         assertEquals(4, employeeDAO.getCountOfEmployees());
 
         Mockito.when(jdbcTemplate.queryForObject(Mockito.anyString(), Mockito.eq(Integer.class)))
           .thenReturn(3);
+
         assertEquals(3, employeeDAO.getCountOfEmployees());
     }
 
@@ -40,8 +42,10 @@ public class EmployeeDAOUnitTest {
           .addScript("classpath:jdbc/schema.sql")
           .addScript("classpath:jdbc/test-data.sql")
           .build();
+
         EmployeeDAO employeeDAO = new EmployeeDAO();
         employeeDAO.setDataSource(dataSource);
+
         assertEquals(4, employeeDAO.getCountOfEmployees());
     }
 }

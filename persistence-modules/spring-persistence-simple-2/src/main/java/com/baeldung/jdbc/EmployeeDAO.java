@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public class EmployeeDAO {
     private JdbcTemplate jdbcTemplate;
 
-    public void setDataSource(final DataSource dataSource) {
+    public void setDataSource(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
