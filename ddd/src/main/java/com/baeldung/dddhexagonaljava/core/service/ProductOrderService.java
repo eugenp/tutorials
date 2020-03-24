@@ -2,17 +2,19 @@ package com.baeldung.dddhexagonaljava.core.service;
 
 import com.baeldung.dddhexagonaljava.core.domain.Order;
 import com.baeldung.dddhexagonaljava.ports.NotificationService;
+import com.baeldung.dddhexagonaljava.ports.OrderService;
 
 import java.text.MessageFormat;
 
-public class OrderService {
+public class ProductOrderService implements OrderService {
 
     private NotificationService notificationService;
 
-    public OrderService(NotificationService notificationService) {
+    public ProductOrderService(NotificationService notificationService) {
         this.notificationService = notificationService;
     }
 
+    @Override
     public void createOrder(Order order) {
         //create order
 
