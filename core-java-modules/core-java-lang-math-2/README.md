@@ -13,4 +13,4 @@
 - [Convert Latitude and Longitude to a 2D Point in Java](https://www.baeldung.com/java-convert-latitude-longitude)
 - [Debugging with Eclipse](https://www.baeldung.com/eclipse-debugging)
 - [Matrix Multiplication in Java](https://www.baeldung.com/java-matrix-multiplication)
-- More articles: [[<-- Prev]](/../core-java-lang-math)
+- More articles: [[<-- Prev]](/core-java-modules/core-java-lang-math)
