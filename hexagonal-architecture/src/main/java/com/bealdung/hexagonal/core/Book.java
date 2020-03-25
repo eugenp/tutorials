@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Setter
 @Getter
-public class Book{
+public class Book {
     @Id
     @GeneratedValue
     private Long id;
