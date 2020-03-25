@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Company Data</title>
+		<script src="https://code.jquery.com/jquery-3.1.0.js"
+			integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="
+			crossorigin="anonymous"></script>
+		<script>
+			$(document).ready(function(){
+				$('#REST-button').click(function() {
+				   $.ajax({
+				      url: 'http://localhost:8080/spring-rest/companyRest?callback=getCompanyData',
+				      data: {
+				         format: 'json'
+				      },
+					  type: 'GET',
+					  jsonpCallback:'getCompanyData',
+					  dataType: 'jsonp',
+				      error: function() {
+				         $('#infoREST').html('<p>An error has occurred</p>');
+				      },
+				      success: function(data) {
+						console.log("sucess");
+				      }
+				   });
+				});
+			});
+		
+		    function getCompanyData(data) { 
+				document.write("<b>ID:</b> "+data.id+"<br/>");	 
+				document.write("<b>NAME:</b> "+data.name+"<br/>");
+				document.write("<br/>");
+		     }
+	     </script>
+	</head>
+	<body>
+	
+		<!-- Using REST URL-->
+		<button id="REST-button">Test REST JSON-P!</button>
+		<div id="infoREST"></div>
+	
+	</body>
+</html>
