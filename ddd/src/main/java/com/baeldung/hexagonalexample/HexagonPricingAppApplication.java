@@ -1,4 +1,4 @@
-package com.baeldung.hexagonexample;
+package com.baeldung.hexagonalexample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

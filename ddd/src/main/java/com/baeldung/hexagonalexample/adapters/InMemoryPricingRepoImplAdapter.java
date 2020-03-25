@@ -1,4 +1,4 @@
-package com.baeldung.hexagonexample.adapters;
+package com.baeldung.hexagonalexample.adapters;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
-import com.baeldung.hexagonexample.domain.Material;
-import com.baeldung.hexagonexample.ports.PricingRepo;
+import com.baeldung.hexagonalexample.domain.Material;
+import com.baeldung.hexagonalexample.ports.PricingRepo;
 
 @Repository
 public class InMemoryPricingRepoImplAdapter implements PricingRepo {

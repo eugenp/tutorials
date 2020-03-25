@@ -1,4 +1,4 @@
-package com.baeldung.hexagonexample.domain;
+package com.baeldung.hexagonalexample.domain;
 
 import java.math.BigDecimal;
 

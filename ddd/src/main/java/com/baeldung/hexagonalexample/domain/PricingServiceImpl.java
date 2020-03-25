@@ -1,12 +1,12 @@
-package com.baeldung.hexagonexample.domain;
+package com.baeldung.hexagonalexample.domain;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.hexagonexample.ports.PricingRepo;
-import com.baeldung.hexagonexample.ports.PricingService;
+import com.baeldung.hexagonalexample.ports.PricingRepo;
+import com.baeldung.hexagonalexample.ports.PricingService;
 
 @Service
 public class PricingServiceImpl implements PricingService {

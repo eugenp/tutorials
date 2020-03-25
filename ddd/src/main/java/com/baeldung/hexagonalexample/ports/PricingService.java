@@ -1,8 +1,8 @@
-package com.baeldung.hexagonexample.ports;
+package com.baeldung.hexagonalexample.ports;
 
 import java.util.List;
 
-import com.baeldung.hexagonexample.domain.Material;
+import com.baeldung.hexagonalexample.domain.Material;
 
 public interface PricingService {
 
