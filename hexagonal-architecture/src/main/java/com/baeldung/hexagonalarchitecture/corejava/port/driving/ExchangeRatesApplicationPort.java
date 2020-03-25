@@ -1,9 +1,9 @@
 package com.baeldung.hexagonalarchitecture.corejava.port.driving;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 public interface ExchangeRatesApplicationPort {
-    List<String> loadAvailableCurrencies();
+    Set<String> loadAvailableCurrencies();
     double getCurrencyExchangeRatesForDate(String currencyCode, Date date);
 }

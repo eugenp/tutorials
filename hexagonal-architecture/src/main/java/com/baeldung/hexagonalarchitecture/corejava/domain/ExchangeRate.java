@@ -6,12 +6,12 @@ public class ExchangeRate {
 
     private String currencyCode;
     private Date date;
-    private double exchangeRate;
+    private double rate;
 
-    public ExchangeRate(String currencyCode, Date date, double exchangeRate) {
+    public ExchangeRate(String currencyCode, Date date, double rate) {
         this.currencyCode = currencyCode;
         this.date = date;
-        this.exchangeRate = exchangeRate;
+        this.rate = rate;
     }
 
     public String getCurrencyCode() {
@@ -22,12 +22,12 @@ public class ExchangeRate {
         this.currencyCode = currencyCode;
     }
 
-    public double getExchangeRate() {
-        return exchangeRate;
+    public double getRate() {
+        return rate;
     }
 
-    public void setExchangeRate(double exchangeRate) {
-        this.exchangeRate = exchangeRate;
+    public void setRate(double rate) {
+        this.rate = rate;
     }
 
     public Date getDate() {

@@ -2,37 +2,36 @@ package com.baeldung.hexagonalarchitecture.corejava.adapter.driven;
 
 
 import com.baeldung.hexagonalarchitecture.corejava.domain.ExchangeRate;
+import com.baeldung.hexagonalarchitecture.corejava.parser.ExchangeRateDateParser;
 import com.baeldung.hexagonalarchitecture.corejava.port.driven.ExchangeRateInfrastructurePort;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
-import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class MonthlyExchangeRateInfrastructureAdapter implements ExchangeRateInfrastructurePort {
 
-    private SimpleDateFormat format;
+    private static final String EXCHANGE_RATES_SOURCE_FILE = "exchange-rates.csv";
+
+    private ExchangeRateDateParser parser;
 
     public MonthlyExchangeRateInfrastructureAdapter() {
-        this.format = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+        this.parser = new ExchangeRateDateParser();
     }
 
-    // todo temp solution, just example
     @Override
     public List<ExchangeRate> loadExchangeRates() {
-
-        // todo load it from a file
-        try {
-            return Arrays.asList(
-                    new ExchangeRate("ARS", format.parse("12-jan-2012"), 63.71D),
-                    new ExchangeRate("EUR", format.parse("24-jul-2018"), 0.93D));
-        } catch (ParseException e) {
-            // todo temp solution
-            e.printStackTrace();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(
+                getClass().getClassLoader().getResourceAsStream(EXCHANGE_RATES_SOURCE_FILE)))) {
+            // skip the header of the csv
+            return reader.lines().skip(1).map(line -> {
+                String[] exchangeRate = line.split(",");
+                return new ExchangeRate(exchangeRate[1], parser.parseExchangeRateDate(exchangeRate[0]), Double.parseDouble(exchangeRate[2]));
+            }).collect(Collectors.toList());
+        } catch (IOException e) {
+            throw new IllegalStateException("Loading from exchange rates file has failed.");
         }
-
-        return new ArrayList<>();
     }
 }

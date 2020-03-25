@@ -5,9 +5,9 @@ import com.baeldung.hexagonalarchitecture.corejava.domain.ExchangeRatesService;
 import com.baeldung.hexagonalarchitecture.corejava.port.driving.ExchangeRatesApplicationPort;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
-// todo in this case just calling service methods
+//  this specific driving port implementation is just calling service methods in this case
 public class ExchangeRatesApplicationAdapter implements ExchangeRatesApplicationPort {
 
     private ExchangeRatesService exchangeRatesService;
@@ -17,7 +17,7 @@ public class ExchangeRatesApplicationAdapter implements ExchangeRatesApplication
     }
 
     @Override
-    public List<String> loadAvailableCurrencies() {
+    public Set<String> loadAvailableCurrencies() {
         return exchangeRatesService.loadAvailableCurrencies();
     }
 

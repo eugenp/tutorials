@@ -1,84 +1,59 @@
 package com.baeldung.hexagonalarchitecture.corejava;
 
-
 import com.baeldung.hexagonalarchitecture.corejava.adapter.driving.ExchangeRatesApplicationAdapter;
+import com.baeldung.hexagonalarchitecture.corejava.parser.ExchangeRateDateParser;
 import com.baeldung.hexagonalarchitecture.corejava.port.driving.ExchangeRatesApplicationPort;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 // represents application layer
 public class ExchangeRatesApplication {
 
     private ExchangeRatesApplicationPort exchangeRatesApplicationPort;
 
-    private SimpleDateFormat formatter;
+    private ExchangeRateDateParser exchangeRateDateParser;
 
-    public static void main(String[] args) {
-        ExchangeRatesApplication exchangeRatesApplication = new ExchangeRatesApplication();
-        try {
-            exchangeRatesApplication.execute(args);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    // todo the whole app setup - can be used in diff way - just switch implementations
     public ExchangeRatesApplication() {
         exchangeRatesApplicationPort = new ExchangeRatesApplicationAdapter();
-        // todo extract the format to const
-        formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        exchangeRateDateParser = new ExchangeRateDateParser();
     }
 
-    public void execute(String[] args) throws IllegalArgumentException {
-
-        if (args.length == 0) {
-            throw new IllegalArgumentException("Please provide commands.");
+    public String execute(String[] commandArguments) {
+        if (commandArguments.length == 0) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Please provide one of these commands: \n"
+                                    + " - 'currencies' - to list all available currencies\n"
+                                    + " - 'get $currencyCode $%s - to get exchange rate for given currency and date",
+                            exchangeRateDateParser.getExchangeRateDateFormat()));
         }
-
-        switch (args[0]) {
+        switch (commandArguments[0]) {
             case "currencies":
-                printAllAvailableCurrencies();
-                break;
+                return loadAllAvailableCurrencies();
             case "get":
-                printExchangeRateForCurrencyAndDate(args);
-                break;
+                return printExchangeRateForCurrencyAndDate(commandArguments);
             default:
-                throw new IllegalArgumentException("Incorrect command provided");
+                throw new IllegalArgumentException(String.format("Unknown command provided: %s", commandArguments[0]));
         }
     }
 
-    private void printExchangeRateForCurrencyAndDate(String[] args) {
+    private String printExchangeRateForCurrencyAndDate(String[] args) {
         if (args.length < 3) {
-            throw new IllegalArgumentException("Not sufficient ... ");
+            throw new IllegalArgumentException(
+                    String.format("Incorrect 'get' command provided. Expected command format is 'get $currencyCode $%s",
+                            exchangeRateDateParser.getExchangeRateDateFormat()));
         }
 
         String dateTime = args[2];
-
-        Date exchangeRateDate;
-        try {
-            exchangeRateDate = parseDate(dateTime);
-        } catch (ParseException e) {
-            throw new IllegalArgumentException("Date expected in different format: TODO + old");
-        }
-
         String currencyCode = args[1];
-        double exchangeRate = exchangeRatesApplicationPort.getCurrencyExchangeRatesForDate(currencyCode, exchangeRateDate);
 
-        System.out.println(String.join(" ",
+        return String.format("%s %s %f",
                 currencyCode,
                 dateTime,
-                Double.toString(exchangeRate)));
+                exchangeRatesApplicationPort.getCurrencyExchangeRatesForDate(
+                        currencyCode,
+                        exchangeRateDateParser.parseExchangeRateDate(dateTime)));
     }
 
-    private Date parseDate(String dateTime) throws ParseException {
-        return formatter.parse(dateTime);
-    }
-
-    private void printAllAvailableCurrencies() {
-        for (String currencyCode : exchangeRatesApplicationPort.loadAvailableCurrencies()) {
-            System.out.println(currencyCode);
-        }
+    private String loadAllAvailableCurrencies() {
+        return String.join("\n", exchangeRatesApplicationPort.loadAvailableCurrencies());
     }
 }
