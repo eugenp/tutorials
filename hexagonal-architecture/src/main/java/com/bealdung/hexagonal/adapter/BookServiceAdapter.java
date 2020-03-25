@@ -24,8 +24,8 @@ public class BookServiceAdapter implements BookRepositoryPort {
     }
 
     @Override
-    public Book getBook(Long userId) {
-        return entityManager.find(Book.class, userId);
+    public Book getBook(Long bookId) {
+        return entityManager.find(Book.class, bookId);
     }
 
 }

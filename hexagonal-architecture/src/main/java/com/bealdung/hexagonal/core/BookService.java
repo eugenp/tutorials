@@ -10,11 +10,11 @@ public class BookService {
     @Autowired
     private BookRepositoryPort bookRepository;
 
-    public void create(String name, String role, int salary) {
-        bookRepository.create(name, role, salary);
+    public void create(String name, String author, int pages) {
+        bookRepository.create(name, author, pages);
     }
 
-    public Book view(Long userId) {
-        return bookRepository.getBook(userId);
+    public Book view(Long bookId) {
+        return bookRepository.getBook(bookId);
     }
 }
