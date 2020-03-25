@@ -13,4 +13,4 @@
 - [Calculating Logarithms in Java](https://www.baeldung.com/java-logarithms)
 - [Finding Greatest Common Divisor in Java](https://www.baeldung.com/java-greatest-common-divisor)
 - [Calculate Percentage in Java](https://www.baeldung.com/java-calculate-percentage)
-- More articles: [[<-- next]](/../core-java-lang-math-2)
+- More articles: [[Next -->]](/core-java-modules/core-java-lang-math-2)
