@@ -1,6 +1,6 @@
-## Java Math
+=========
 
-This module contains articles about math in Java.
+## Core Java 8 Cookbooks and Examples - Part 2
 
 ### Relevant articles:
 
@@ -10,9 +10,7 @@ This module contains articles about math in Java.
 - [Calculate the Distance Between Two Points in Java](https://www.baeldung.com/java-distance-between-two-points)
 - [Find the Intersection of Two Lines in Java](https://www.baeldung.com/java-intersection-of-two-lines)
 - [Round Up to the Nearest Hundred](https://www.baeldung.com/java-round-up-nearest-hundred)
-- [Calculate Percentage in Java](https://www.baeldung.com/java-calculate-percentage)
 - [Convert Latitude and Longitude to a 2D Point in Java](https://www.baeldung.com/java-convert-latitude-longitude)
 - [Debugging with Eclipse](https://www.baeldung.com/eclipse-debugging)
 - [Matrix Multiplication in Java](https://www.baeldung.com/java-matrix-multiplication)
-- [Calculating Logarithms in Java](https://www.baeldung.com/java-logarithms)
-- [Finding Greatest Common Divisor in Java](https://www.baeldung.com/java-greatest-common-divisor)
+- More articles: [[<-- prev]](/../core-java-lang-math)
