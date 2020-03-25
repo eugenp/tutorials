@@ -1,6 +1,5 @@
 package org.baeldung.conditionalflow.step;
 
-import java.io.OutputStream;
 import java.util.List;
 
 import org.springframework.batch.item.ItemWriter;
