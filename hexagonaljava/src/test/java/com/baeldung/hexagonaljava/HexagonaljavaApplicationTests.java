@@ -9,5 +9,4 @@ class HexagonaljavaApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
