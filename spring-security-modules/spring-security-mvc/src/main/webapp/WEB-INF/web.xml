@@ -30,7 +30,7 @@
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>org.baeldung.spring</param-value>
+        <param-value>com.baeldung.spring</param-value>
     </context-param>
 
     <listener>
@@ -60,7 +60,7 @@
     
 <!--      <filter>
         <filter-name>SessionFilter</filter-name>
-        <filter-class>org.baeldung.security.SessionFilter</filter-class>
+        <filter-class>com.baeldung.security.SessionFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>SessionFilter</filter-name>
