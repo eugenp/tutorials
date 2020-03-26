@@ -35,7 +35,6 @@ public class StudentResultJdbcRepoImpl implements StudentResultRepo {
             this.jdbcTemplate.batchUpdate(insertQuery, new BatchPreparedStatementSetter() {
                 @Override
                 public void setValues(final PreparedStatement ps, final int i) throws SQLException {
-
                     ps.setString(1, entry.getKey());
                     ps.setDouble(2, entry.getValue());
                     ps.setInt(3, student.getId());
