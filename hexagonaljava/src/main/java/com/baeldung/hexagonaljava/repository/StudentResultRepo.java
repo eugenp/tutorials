@@ -7,5 +7,4 @@ public interface StudentResultRepo {
     void save(Student student);
 
     Student getStudent(Integer id);
-
 }
