@@ -15,7 +15,6 @@ public class StudentResultServiceImpl implements StudentResultService {
     @Override
     public void save(Student student) {
         studentResultRepo.save(student);
-
     }
 
     @Override
@@ -23,10 +22,9 @@ public class StudentResultServiceImpl implements StudentResultService {
         Student student = studentResultRepo.getStudent(id);
         double totalMarks = 0;
         for (double marks : student.getMarks()
-            .values()) {
+          .values()) {
             totalMarks += marks;
         }
         return totalMarks;
     }
-
 }

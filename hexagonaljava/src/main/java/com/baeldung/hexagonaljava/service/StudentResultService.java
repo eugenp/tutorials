@@ -4,8 +4,7 @@ import com.baeldung.hexagonaljava.entity.Student;
 
 public interface StudentResultService {
 
-    public void save(Student student);
+    void save(Student student);
 
-    public Double getTotalMarks(Integer id);
-
+    Double getTotalMarks(Integer id);
 }

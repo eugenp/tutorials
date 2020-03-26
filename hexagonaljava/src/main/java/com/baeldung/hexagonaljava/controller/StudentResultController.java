@@ -25,5 +25,4 @@ public class StudentResultController {
     public Double getTotalMarks(@PathVariable Integer id) {
         return studentResultService.getTotalMarks(id);
     }
-
 }

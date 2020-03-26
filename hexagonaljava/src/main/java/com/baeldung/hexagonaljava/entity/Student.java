@@ -33,5 +33,4 @@ public class Student {
     public void setMarks(Map<String, Double> marks) {
         this.marks = marks;
     }
-
 }

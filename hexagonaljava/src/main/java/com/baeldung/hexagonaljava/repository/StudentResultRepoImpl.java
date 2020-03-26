@@ -15,12 +15,10 @@ public class StudentResultRepoImpl implements StudentResultRepo {
     @Override
     public void save(Student student) {
         studentsMap.put(student.getId(), student);
-
     }
 
     @Override
     public Student getStudent(Integer id) {
         return studentsMap.get(id);
     }
-
 }
