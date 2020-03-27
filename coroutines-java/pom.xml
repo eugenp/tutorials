@@ -53,7 +53,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.6.0</version>
                 <configuration>
-                    <mainClass>com.baeldung.App</mainClass>
+                    <mainClass>com.baeldung.introduction.App</mainClass>
                     <workingDirectory>target/classes</workingDirectory>
                     <executable>java</executable>
                     <arguments>
@@ -68,7 +68,7 @@
                         <classpath />
 
                         <!-- Main class -->
-                        <argument>com.baeldung.App</argument>
+                        <argument>com.baeldung.introduction.App</argument>
                     </arguments>
                 </configuration>
             </plugin>
