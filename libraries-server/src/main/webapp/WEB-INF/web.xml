@@ -4,11 +4,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <context-param>
-        <param-name>org.eclipse.jetty.server.context.ManagedAttributes</param-name>
-        <param-value>push</param-value>
-    </context-param>
-
     <servlet>
         <servlet-name>http2Jetty</servlet-name>
         <servlet-class>com.baeldung.jetty.http2.Http2JettyServlet</servlet-class>
@@ -23,7 +18,7 @@
         <filter-class>org.eclipse.jetty.servlets.PushCacheFilter</filter-class>
         <init-param>
             <param-name>ports</param-name>
-            <param-value>9092</param-value>
+            <param-value>8444</param-value>
         </init-param>
         <init-param>
             <param-name>maxAssociations</param-name>

@@ -3,39 +3,14 @@
 
 <Configure id="Server" class="org.eclipse.jetty.server.Server">
 
-    <Call name="addBean">
-        <Arg>
-            <New class="org.eclipse.jetty.jmx.MBeanContainer">
-                <Arg>
-                    <Call class="java.lang.management.ManagementFactory" name="getPlatformMBeanServer" />
-                </Arg>
-            </New>
-        </Arg>
-    </Call>
-
     <New id="sslContextFactory" class="org.eclipse.jetty.util.ssl.SslContextFactory">
         <Set name="keyStorePath">src/main/resources/keystore.jks</Set>
         <Set name="keyStorePassword">storepwd</Set>
         <Set name="trustStorePath">src/main/resources/truststore.jks</Set>
         <Set name="trustStorePassword">storepwd</Set>
         <Set name="protocol">TLSv1.2</Set>
-        <Set name="CipherComparator">
-            <Get class="org.eclipse.jetty.http2.HTTP2Cipher" name="COMPARATOR"/>
-        </Set>
-        <Set name="useCipherSuitesOrder">true</Set>
     </New>
-
     <New id="httpConfig" class="org.eclipse.jetty.server.HttpConfiguration"/>
-    <New id="tlsHttpConfig" class="org.eclipse.jetty.server.HttpConfiguration">
-        <Arg>
-            <Ref id="httpConfig"/>
-        </Arg>
-        <Call name="addCustomizer">
-            <Arg>
-                <New class="org.eclipse.jetty.server.SecureRequestCustomizer"/>
-            </Arg>
-        </Call>
-    </New>
 
     <Call name="addConnector">
         <Arg>
@@ -56,13 +31,13 @@
                         <Item>
                             <New class="org.eclipse.jetty.server.HttpConnectionFactory">
                                 <Arg name="config">
-                                    <Ref id="tlsHttpConfig"/>
+                                    <Ref id="httpConfig"/>
                                 </Arg>
                             </New>
                         </Item>
                     </Array>
                 </Arg>
-                <Set name="port">9091</Set>
+                <Set name="port">8443</Set>
             </New>
         </Arg>
     </Call>
@@ -91,17 +66,14 @@
                         <Item>
                             <New class="org.eclipse.jetty.http2.server.HTTP2ServerConnectionFactory">
                                 <Arg name="config">
-                                    <Ref id="tlsHttpConfig"/>
+                                    <Ref id="httpConfig"/>
                                 </Arg>
                             </New>
                         </Item>
                     </Array>
                 </Arg>
-                <Set name="Port">9092</Set>
+                <Set name="Port">8444</Set>
             </New>
         </Arg>
     </Call>
-
-    <Set class="org.eclipse.jetty.alpn.ALPN" name="debug" type="boolean">true</Set>
-
 </Configure>

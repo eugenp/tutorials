@@ -16,10 +16,10 @@ public class Http2JettyServlet extends HttpServlet {
         response.addDateHeader("Last-Modified", 0);
         response.addDateHeader("Expires", 0);
 
-        String path = request.getRequestURI();
-        InputStream input = getServletContext().getResourceAsStream(path);
+        String requestPath = request.getRequestURI();
+        InputStream input = getServletContext().getResourceAsStream(requestPath);
         OutputStream output = response.getOutputStream();
-        byte[] buffer = new byte[4 * 1024];
+        byte[] buffer = new byte[1024];
         int read;
         while ((read = input.read(buffer)) >= 0) {
             output.write(buffer, 0, read);            
