@@ -1,7 +1,5 @@
 package com.baeldung.fibonacci;
 
-import static java.lang.Math.pow;
-
 public class FibonacciSeriesUtils {
 
     public static int nthFibonacciTermRecursiveMethod(int n) {
