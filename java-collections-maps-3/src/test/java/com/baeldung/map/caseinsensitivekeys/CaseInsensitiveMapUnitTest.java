@@ -1,17 +1,16 @@
 package com.baeldung.map.caseinsensitivekeys;
 
 import org.apache.commons.collections4.map.CaseInsensitiveMap;
-import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.util.LinkedCaseInsensitiveMap;
-import static org.junit.Assert.*;
-
+import java.util.Map;
 import java.util.TreeMap;
+import static org.junit.Assert.*;
 
 public class CaseInsensitiveMapUnitTest {
     @Test
     public void givenCaseInsensitiveTreeMap_whenTwoEntriesAdded_thenSizeIsOne(){
-        TreeMap<String, Integer> treeMap = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        Map<String, Integer> treeMap = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         treeMap.put("abc", 1);
         treeMap.put("ABC", 2);
 
@@ -21,7 +20,7 @@ public class CaseInsensitiveMapUnitTest {
 
     @Test
     public void givenCommonsCaseInsensitiveMap_whenTwoEntriesAdded_thenSizeIsOne(){
-        CaseInsensitiveMap<String, Integer> commonsHashMap = new CaseInsensitiveMap<>();
+        Map<String, Integer> commonsHashMap = new CaseInsensitiveMap<>();
         commonsHashMap.put("abc", 1);
         commonsHashMap.put("ABC", 2);
 
@@ -41,20 +40,20 @@ public class CaseInsensitiveMapUnitTest {
 
     @Test
     public void givenCaseInsensitiveTreeMap_whenSameEntryAdded_thenValueUpdated(){
-        TreeMap<String, Integer> treeMap = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        Map<String, Integer> treeMap = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         treeMap.put("abc", 1);
         treeMap.put("ABC", 2);
 
-        Assert.assertEquals((Integer)2, treeMap.get("aBc"));
+        assertEquals((Integer)2, treeMap.get("aBc"));
     }
 
     @Test
     public void givenCommonsCaseInsensitiveMap_whenSameEntryAdded_thenValueUpdated(){
-        CaseInsensitiveMap<String, Integer> commonsHashMap = new CaseInsensitiveMap<>();
+        Map<String, Integer> commonsHashMap = new CaseInsensitiveMap<>();
         commonsHashMap.put("abc", 1);
         commonsHashMap.put("ABC", 2);
 
-        Assert.assertEquals((Integer)2, commonsHashMap.get("aBc"));
+        assertEquals((Integer)2, commonsHashMap.get("aBc"));
     }
 
     @Test
@@ -63,25 +62,25 @@ public class CaseInsensitiveMapUnitTest {
         linkedHashMap.put("abc", 1);
         linkedHashMap.put("ABC", 2);
 
-        Assert.assertEquals((Integer)2, linkedHashMap.get("aBc"));
+        assertEquals((Integer)2, linkedHashMap.get("aBc"));
     }
 
     @Test
     public void givenCaseInsensitiveTreeMap_whenEntryRemoved_thenSizeIsZero(){
-        TreeMap<String, Integer> treeMap = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        Map<String, Integer> treeMap = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         treeMap.put("abc", 3);
         treeMap.remove("aBC");
 
-        Assert.assertEquals(0, treeMap.size());
+        assertEquals(0, treeMap.size());
     }
 
     @Test
     public void givenCommonsCaseInsensitiveMap_whenEntryRemoved_thenSizeIsZero(){
-        CaseInsensitiveMap<String, Integer> commonsHashMap = new CaseInsensitiveMap<>();
+        Map<String, Integer> commonsHashMap = new CaseInsensitiveMap<>();
         commonsHashMap.put("abc", 3);
         commonsHashMap.remove("aBC");
 
-        Assert.assertEquals(0, commonsHashMap.size());
+        assertEquals(0, commonsHashMap.size());
     }
 
     @Test
@@ -90,6 +89,6 @@ public class CaseInsensitiveMapUnitTest {
         linkedHashMap.put("abc", 3);
         linkedHashMap.remove("aBC");
 
-        Assert.assertEquals(0, linkedHashMap.size());
+        assertEquals(0, linkedHashMap.size());
     }
 }
