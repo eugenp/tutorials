@@ -22,7 +22,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [An Introduction to Kong](https://www.baeldung.com/kong)
 - [Spring Boot: Configuring a Main Class](https://www.baeldung.com/spring-boot-main-class)
 - [A Quick Intro to the SpringBootServletInitializer](https://www.baeldung.com/spring-boot-servlet-initializer)
-- [Guide to the Favicon in Spring Boot](https://www.baeldung.com/spring-boot-favicon)
 - [Spring Shutdown Callbacks](https://www.baeldung.com/spring-shutdown-callbacks)
 - [Container Configuration in Spring Boot 2](https://www.baeldung.com/embeddedservletcontainercustomizer-configurableembeddedservletcontainer-spring-boot)
 - [Validation in Spring Boot](https://www.baeldung.com/spring-boot-bean-validation)
