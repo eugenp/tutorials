@@ -45,6 +45,7 @@ public class CaseInsensitiveMapUnitTest {
         treeMap.put("ABC", 2);
 
         assertEquals((Integer)2, treeMap.get("aBc"));
+        assertEquals((Integer)2, treeMap.get("ABc"));
     }
 
     @Test
@@ -54,6 +55,7 @@ public class CaseInsensitiveMapUnitTest {
         commonsHashMap.put("ABC", 2);
 
         assertEquals((Integer)2, commonsHashMap.get("aBc"));
+        assertEquals((Integer)2, commonsHashMap.get("ABc"));
     }
 
     @Test
@@ -63,6 +65,7 @@ public class CaseInsensitiveMapUnitTest {
         linkedHashMap.put("ABC", 2);
 
         assertEquals((Integer)2, linkedHashMap.get("aBc"));
+        assertEquals((Integer)2, linkedHashMap.get("ABc"));
     }
 
     @Test
