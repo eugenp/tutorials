@@ -1,6 +1,7 @@
-package com.baeldung.map;
+package com.baeldung.map.caseinsensitivekeys;
 
 import org.apache.commons.collections4.map.CaseInsensitiveMap;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.util.LinkedCaseInsensitiveMap;
 import static org.junit.Assert.*;
@@ -23,7 +24,7 @@ public class CaseInsensitiveMapUnitTest {
         commonsHashMap.put("abc", 1);
         commonsHashMap.put("ABC", 2);
 
-        assertEquals(commonsHashMap.get("aBc"), (Integer)2);
+        Assert.assertEquals(commonsHashMap.get("aBc"), (Integer)2);
     }
 
     @Test
@@ -32,6 +33,6 @@ public class CaseInsensitiveMapUnitTest {
         linkedHashMap.put("abc", 3);
         linkedHashMap.remove("aBC");
 
-        assertEquals(linkedHashMap.size(), 0);
+        Assert.assertEquals(linkedHashMap.size(), 0);
     }
 }
