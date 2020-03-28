@@ -26,17 +26,10 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
         <commons-collections4.version>4.1</commons-collections4.version>
         <assertj.version>3.6.1</assertj.version>
-        <spring.version>5.2.5.RELEASE</spring.version>
     </properties>
 </project>
