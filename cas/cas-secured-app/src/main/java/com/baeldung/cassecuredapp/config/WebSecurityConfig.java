@@ -31,11 +31,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private Logger logger = LoggerFactory.getLogger(WebSecurityConfig.class);
     private SingleSignOutFilter singleSignOutFilter;
     private LogoutFilter logoutFilter;
+    private CasAuthenticationProvider casAuthenticationProvider;
+    private ServiceProperties serviceProperties;
 
     @Autowired
-    public WebSecurityConfig(SingleSignOutFilter singleSignOutFilter, LogoutFilter logoutFilter) {
+    public WebSecurityConfig(SingleSignOutFilter singleSignOutFilter, LogoutFilter logoutFilter,
+                             CasAuthenticationProvider casAuthenticationProvider,
+                             ServiceProperties serviceProperties) {
         this.logoutFilter = logoutFilter;
         this.singleSignOutFilter = singleSignOutFilter;
+        this.serviceProperties = serviceProperties;
+        this.casAuthenticationProvider = casAuthenticationProvider;
     }
 
 
@@ -52,56 +58,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(casAuthenticationProvider());
+        auth.authenticationProvider(casAuthenticationProvider);
     }
 
+    @Bean
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
-        return new ProviderManager(Collections.singletonList(casAuthenticationProvider()));
+        return new ProviderManager(Collections.singletonList(casAuthenticationProvider));
     }
 
-    @Bean
-    public CasAuthenticationFilter casAuthenticationFilter() throws Exception {
-        CasAuthenticationFilter filter = new CasAuthenticationFilter();
-        filter.setAuthenticationManager(authenticationManager());
-        filter.setServiceProperties(serviceProperties());
-        return filter;
-    }
-
-    @Bean
-    public ServiceProperties serviceProperties() {
-        logger.info("service properties");
-        ServiceProperties serviceProperties = new ServiceProperties();
-        serviceProperties.setService("http://cas-client:8900/login/cas");
-        serviceProperties.setSendRenew(false);
-        return serviceProperties;
-    }
-
-    @Bean
-    @Primary
     public AuthenticationEntryPoint authenticationEntryPoint() {
         CasAuthenticationEntryPoint entryPoint = new CasAuthenticationEntryPoint();
         entryPoint.setLoginUrl("https://localhost:8443/login");
-        entryPoint.setServiceProperties(serviceProperties());
+        entryPoint.setServiceProperties(serviceProperties);
         return entryPoint;
     }
 
-    @Bean
-    public TicketValidator ticketValidator() {
-        return new Cas30ServiceTicketValidator("https://localhost:8443");
-    }
-
-    @Bean
-    public CasAuthenticationProvider casAuthenticationProvider() {
-        CasAuthenticationProvider provider = new CasAuthenticationProvider();
-        provider.setServiceProperties(serviceProperties());
-        provider.setTicketValidator(ticketValidator());
-        provider.setUserDetailsService(
-                s -> new User("test@test.com", "Mellon", true, true, true, true,
-                        AuthorityUtils.createAuthorityList("ROLE_ADMIN")));
-        provider.setKey("CAS_PROVIDER_LOCALHOST_8900");
-        return provider;
-    }
 
 
 }

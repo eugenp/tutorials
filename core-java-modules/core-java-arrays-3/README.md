@@ -1,5 +1,3 @@
-## Core Java Arrays (Part 3)
+### Relevant Articles:
 
-This module contains articles about Java arrays
-
-## Relevant Articles
+- [Arrays.deepEquals](https://www.baeldung.com/java-arrays-deepequals)

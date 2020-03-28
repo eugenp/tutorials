@@ -435,7 +435,6 @@
             <artifactId>reflections</artifactId>
             <version>${reflections.version}</version>
         </dependency>
-
     </dependencies>
 
     <repositories>
@@ -552,6 +551,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 
