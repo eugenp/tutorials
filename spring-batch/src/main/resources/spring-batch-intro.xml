@@ -22,14 +22,14 @@
                 </property>
                 <property name="fieldSetMapper">
                     <bean
-                        class="org.baeldung.batch.service.RecordFieldSetMapper" />
+                        class="com.baeldung.batch.service.RecordFieldSetMapper" />
                 </property>
             </bean>
         </property>
         <property name="linesToSkip" value="1" />
     </bean>
 
-    <bean id="itemProcessor" class="org.baeldung.batch.service.CustomItemProcessor" />
+    <bean id="itemProcessor" class="com.baeldung.batch.service.CustomItemProcessor" />
 
     <bean id="itemWriter" class="org.springframework.batch.item.xml.StaxEventItemWriter">
         <property name="resource" value="file:xml/output.xml" />
@@ -40,7 +40,7 @@
     <bean id="recordMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
         <property name="classesToBeBound">
             <list>
-                <value>org.baeldung.batch.model.Transaction</value>
+                <value>com.baeldung.batch.model.Transaction</value>
             </list>
         </property>
     </bean>
@@ -50,6 +50,21 @@
             <batch:tasklet>
                 <batch:chunk reader="itemReader" writer="itemWriter"
                     processor="itemProcessor" commit-interval="10">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+    </batch:job>
+
+    <batch:job id="retryBatchJob">
+        <batch:step id="retryStep">
+            <batch:tasklet>
+                <batch:chunk reader="itemReader" writer="itemWriter"
+                             processor="retryItemProcessor" commit-interval="10"
+                             retry-limit="3">
+                    <batch:retryable-exception-classes>
+                        <batch:include class="org.apache.http.conn.ConnectTimeoutException"/>
+                        <batch:include class="org.springframework.dao.DeadlockLoserDataAccessException"/>
+                    </batch:retryable-exception-classes>
                 </batch:chunk>
             </batch:tasklet>
         </batch:step>

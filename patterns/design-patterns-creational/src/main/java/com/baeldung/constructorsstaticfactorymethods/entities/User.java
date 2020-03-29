@@ -19,8 +19,8 @@ public class User {
     }
 
     public static User createWithLoggedInstantiationTime(String name, String email, String country) {
-        setLoggerProperties();
         LOGGER.log(Level.INFO, "Creating User instance at : {0}", LocalTime.now());
+
         return new User(name, email, country);
     }
 
@@ -52,12 +52,5 @@ public class User {
 
     public String getCountry() {
         return country;
-    }
-    
-    private static void setLoggerProperties() {
-        ConsoleHandler handler = new ConsoleHandler();
-        handler.setLevel(Level.INFO);
-        handler.setFormatter(new SimpleFormatter());
-        LOGGER.addHandler(handler);
     }
 }
