@@ -1,6 +1,10 @@
 package com.baeldung.dbunit;
 
-import org.dbunit.*;
+import org.dbunit.DefaultPrepAndExpectedTestCase;
+import org.dbunit.IDatabaseTester;
+import org.dbunit.JdbcDatabaseTester;
+import org.dbunit.PrepAndExpectedTestCaseSteps;
+import org.dbunit.VerifyTableDefinition;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
@@ -11,6 +15,8 @@ import org.junit.Test;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PrepAndExpectedDbUnitTest extends DefaultPrepAndExpectedTestCase {
     private static final String JDBC_DRIVER = org.h2.Driver.class.getName();
@@ -63,8 +69,8 @@ public class PrepAndExpectedDbUnitTest extends DefaultPrepAndExpectedTestCase {
         final ResultSet rs = (ResultSet) super.runTest(verifyTables, prepDataFiles, expectedDataFiles, testSteps);
 
         // or place assertions at the end
-        assertTrue(rs.next());
-        assertEquals("Xavier", rs.getString("last_name"));
+        assertThat(rs.next()).isTrue();
+        assertThat(rs.getString("last_name")).isEqualTo("Xavier");
     }
 
     @Test
