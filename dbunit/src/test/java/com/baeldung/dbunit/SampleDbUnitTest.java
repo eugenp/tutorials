@@ -13,11 +13,13 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
+import static com.baeldung.dbunit.ConnectionSettings.JDBC_DRIVER;
+import static com.baeldung.dbunit.ConnectionSettings.JDBC_URL;
+import static com.baeldung.dbunit.ConnectionSettings.PASSWORD;
+import static com.baeldung.dbunit.ConnectionSettings.USER;
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class SampleDbUnitTest extends DBTestCase {
-    private static final String JDBC_DRIVER = org.h2.Driver.class.getName();
-    private static final String JDBC_URL = "jdbc:h2:mem:default;DB_CLOSE_DELAY=-1;init=runscript from 'classpath:schema.sql'";
-    private static final String USER = "sa";
-    private static final String PASSWORD = "";
 
     public SampleDbUnitTest(String name) {
         super(name);
@@ -46,29 +48,23 @@ public class SampleDbUnitTest extends DBTestCase {
 
     @Test
     public void testSelect() throws Exception {
-        // Arrange
         final Connection connection = getConnection().getConnection();
 
-        // Act
         final ResultSet rs = connection.createStatement().executeQuery("select * from iTEMS where id = 1");
 
-        // Assert
-        assertTrue(rs.next());
-        assertEquals("Grey T-Shirt", rs.getString("title"));
+        assertThat(rs.next()).isTrue();
+        assertThat(rs.getString("title")).isEqualTo("Grey T-Shirt");
     }
 
     @Test
     public void testDelete() throws Exception {
-        // Arrange
         final Connection connection = getConnection().getConnection();
 
         final InputStream is = SampleDbUnitTest.class.getClassLoader().getResourceAsStream("items_exp_delete.xml");
         ITable expectedTable = (new FlatXmlDataSetBuilder().build(is)).getTable("items");
 
-        // Act
         connection.createStatement().executeUpdate("delete from ITEMS where id = 2");
 
-        // Assert
         final IDataSet databaseDataSet = getConnection().createDataSet();
         ITable actualTable = databaseDataSet.getTable("items");
 
@@ -77,16 +73,13 @@ public class SampleDbUnitTest extends DBTestCase {
 
     @Test
     public void testUpdate() throws Exception {
-        // Arrange
         final Connection connection = getConnection().getConnection();
 
         final InputStream is = SampleDbUnitTest.class.getClassLoader().getResourceAsStream("items_exp_rename.xml");
         ITable expectedTable = (new FlatXmlDataSetBuilder().build(is)).getTable("items");
 
-        // Act
         connection.createStatement().executeUpdate("update ITEMS set title='new name' where id = 1");
 
-        // Assert
         final IDataSet databaseDataSet = getConnection().createDataSet();
         ITable actualTable = databaseDataSet.getTable("items");
 

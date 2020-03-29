@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <dataset>
-	<USERS id='1' first_name='Charles' last_name='Xavier' />
-	<USERS id='3' first_name='Jean' last_name='Grey' />
+    <USERS id='1' first_name='Charles' last_name='Xavier'/>
+    <USERS id='3' first_name='Jean' last_name='Grey'/>
 </dataset>
