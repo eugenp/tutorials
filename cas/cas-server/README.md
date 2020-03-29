@@ -99,3 +99,7 @@ Invokes the CAS Command Line Shell. For a list of commands either use no argumen
 ```bash
 ./build.sh cli
 ```
+
+### Relevant Articles:
+
+- [CAS SSO With Spring Security](https://www.baeldung.com/spring-security-cas-sso)

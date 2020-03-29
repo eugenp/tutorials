@@ -13,7 +13,6 @@ import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.messaging.rsocket.RSocketRequester.RequestSpec;
-import org.springframework.messaging.rsocket.RSocketRequester.ResponseSpec;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.FluxExchangeResult;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -34,15 +33,12 @@ public class MarketDataRestControllerIntegrationTest {
     @Mock
     private RequestSpec requestSpec;
 
-    @Mock
-    private ResponseSpec responseSpec;
-
     @Test
     public void whenInitiatesRequest_ThenGetsResponse() throws Exception {
         when(rSocketRequester.route("currentMarketData")).thenReturn(requestSpec);
-        when(requestSpec.data(any())).thenReturn(responseSpec);
+        when(requestSpec.data(any())).thenReturn(requestSpec);
         MarketData marketData = new MarketData("X", 1);
-        when(responseSpec.retrieveMono(MarketData.class)).thenReturn(Mono.just(marketData));
+        when(requestSpec.retrieveMono(MarketData.class)).thenReturn(Mono.just(marketData));
 
         testClient.get()
                   .uri("/current/{stock}", "X")
@@ -56,8 +52,8 @@ public class MarketDataRestControllerIntegrationTest {
     @Test
     public void whenInitiatesFireAndForget_ThenGetsNoResponse() throws Exception {
         when(rSocketRequester.route("collectMarketData")).thenReturn(requestSpec);
-        when(requestSpec.data(any())).thenReturn(responseSpec);
-        when(responseSpec.send()).thenReturn(Mono.empty());
+        when(requestSpec.data(any())).thenReturn(requestSpec);
+        when(requestSpec.send()).thenReturn(Mono.empty());
 
         testClient.get()
                   .uri("/collect")
@@ -70,10 +66,10 @@ public class MarketDataRestControllerIntegrationTest {
     @Test
     public void whenInitiatesRequest_ThenGetsStream() throws Exception {
         when(rSocketRequester.route("feedMarketData")).thenReturn(requestSpec);
-        when(requestSpec.data(any())).thenReturn(responseSpec);
+        when(requestSpec.data(any())).thenReturn(requestSpec);
         MarketData firstMarketData = new MarketData("X", 1);
         MarketData secondMarketData = new MarketData("X", 2);
-        when(responseSpec.retrieveFlux(MarketData.class)).thenReturn(Flux.just(firstMarketData, secondMarketData));
+        when(requestSpec.retrieveFlux(MarketData.class)).thenReturn(Flux.just(firstMarketData, secondMarketData));
 
         FluxExchangeResult<MarketData> result = testClient.get()
                                                           .uri("/feed/{stock}", "X")

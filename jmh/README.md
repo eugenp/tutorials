@@ -1,4 +1,8 @@
-## Relevant articles:
+## Java Microbenchmark Harness
 
-- [Microbenchmarking with Java](http://www.baeldung.com/java-microbenchmark-harness)
+This module contains articles about the Java Microbenchmark Harness (JMH).
+
+### Relevant articles:
+
+- [Microbenchmarking with Java](https://www.baeldung.com/java-microbenchmark-harness)
 

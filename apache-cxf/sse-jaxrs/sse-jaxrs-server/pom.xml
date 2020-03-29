@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>sse-jaxrs-server</artifactId>
     <name>sse-jaxrs-server</name>
     <packaging>war</packaging>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>sse-jaxrs</artifactId>
@@ -18,19 +19,19 @@
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.1</version>
+            <version>${rs-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
-            <version>2.0</version>
+            <version>${cdi-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.json.bind</groupId>
             <artifactId>javax.json.bind-api</artifactId>
-            <version>1.0</version>
+            <version>${bind-api.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -80,6 +81,9 @@
         <liberty-maven-plugin.version>2.4.2</liberty-maven-plugin.version>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <openliberty-version>18.0.0.2</openliberty-version>
+        <rs-api.version>2.1</rs-api.version>
+        <cdi-api.version>2.0</cdi-api.version>
+        <bind-api.version>1.0</bind-api.version>
     </properties>
 
 </project>

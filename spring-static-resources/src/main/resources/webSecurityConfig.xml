@@ -23,7 +23,7 @@
         <security:logout invalidate-session="false" logout-success-url="/logout.html?logSucc=true" delete-cookies="JSESSIONID"/>
 	</security:http>
 
-    <bean id="myAuthenticationSuccessHandler" class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler"/>
+    <bean id="myAuthenticationSuccessHandler" class="com.baeldung.security.MySimpleUrlAuthenticationSuccessHandler"/>
     
 	<security:authentication-manager>
 		<security:authentication-provider>

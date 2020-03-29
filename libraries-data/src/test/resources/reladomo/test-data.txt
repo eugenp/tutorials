@@ -1,7 +1,0 @@
-class com.baeldung.reladomo.Department
-id, name
-1, "Marketing"
-
-class com.baeldung.reladomo.Employee
-id, name
-1, "Paul"

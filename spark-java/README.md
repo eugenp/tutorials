@@ -1,6 +1,6 @@
-=========
+## Spark Java
 
-## Spark Java Framework Tutorial Sample Project
+This module contains articles about Spark
 
 ### Relevant Articles
-- [Building an API With the Spark Java Framework](http://www.baeldung.com/spark-framework-rest-api)
+- [Building an API With the Spark Java Framework](https://www.baeldung.com/spark-framework-rest-api)

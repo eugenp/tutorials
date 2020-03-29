@@ -47,7 +47,9 @@ public class Dom4jProcessorUnitTest {
         String expectedXml = new String(Files.readAllBytes((Paths.get(getClass().getResource("/xml/attribute_expected.xml")
             .toURI()))));
 
-        String result = transformer.modifyAttribute(attribute, oldValue, newValue);
+        String result = transformer
+          .modifyAttribute(attribute, oldValue, newValue)
+          .replaceAll("(?m)^[ \t]*\r?\n", "");//Delete extra spaces added by Java 11
 
         assertThat(result).and(expectedXml)
             .areSimilar();
