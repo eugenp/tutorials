@@ -12,7 +12,7 @@ public class StringEncodeUnitTest {
     private String unencodedString = new String("Entwickeln Sie mit Vergnügen".getBytes(), StandardCharsets.US_ASCII);
 
     @Test
-    public void givenWhenUsAsciiString_whenCompating_thenCompareNotEquals() {
+    public void givenUsAsciiString_whenComparing_thenCompareNotEquals() {
         assertNotEquals(unencodedString, "Entwickeln Sie mit Vergnügen");
     }
 
