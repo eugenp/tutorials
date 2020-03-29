@@ -10,6 +10,7 @@
     <http auto-config="true" use-expressions="true">
         <intercept-url pattern="/" access="permitAll"/>
         <intercept-url pattern="/home" access="permitAll"/>
+        <intercept-url pattern="/css/**" access="permitAll"/>
         <intercept-url pattern="/login" access="permitAll"/>
         <intercept-url pattern="/secure" access="isAuthenticated()"/>
         
