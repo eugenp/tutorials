@@ -13,6 +13,7 @@
         <assertj-core.version>3.14.0</assertj-core.version>
         <dbunit.version>2.6.0</dbunit.version>
     </properties>
+
     <name>dbunit</name>
 
     <parent>
