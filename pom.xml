@@ -388,7 +388,6 @@
                 <module>blade</module>
                 <module>bootique</module>
 
-                <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -899,7 +898,6 @@
                 <module>blade</module>
                 <module>bootique</module>
 
-                <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
