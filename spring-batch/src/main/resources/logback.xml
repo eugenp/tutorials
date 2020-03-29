@@ -8,15 +8,15 @@
         </layout>
     </appender>
 
-    <logger name="org.baeldung.taskletsvschunks" level="debug" additivity="false">
+    <logger name="com.baeldung.taskletsvschunks" level="debug" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
     
-    <logger name="org.baeldung.batchscheduler" level="debug" additivity="false">
+    <logger name="com.baeldung.batchscheduler" level="debug" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
     
-    <logger name="org.baeldung.batchtesting" level="debug" additivity="false">
+    <logger name="com.baeldung.batchtesting" level="debug" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
 
