@@ -567,6 +567,7 @@
                 <module>rxjava-libraries</module>
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
+				<module>hexaginal-architecture</module>
             </modules>
 
         </profile>
@@ -1263,6 +1264,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
+				<module>hexaginal-architecture</module>
             </modules>
 
         </profile>

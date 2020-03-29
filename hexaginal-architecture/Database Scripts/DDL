@@ -1,0 +1,10 @@
+--
+CREATE SCHEMA IF NOT EXISTS college;
+use college;
+
+create table student (
+      id integer NOT NULL AUTO_INCREMENT,
+      age integer not null,
+      name varchar(40) not null,
+      PRIMARY KEY (id)
+);
