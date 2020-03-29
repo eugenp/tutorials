@@ -5,7 +5,7 @@ import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
-import org.dbunit.dataset.xml.FlatXmlDataSet;
+import org.dbunit.dataset.filter.DefaultColumnFilter;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.junit.After;
@@ -18,8 +18,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.dbunit.Assertion.assertEquals;
 
 public class OldSchoolDbUnitTest {
     private static final String JDBC_DRIVER = org.h2.Driver.class.getName();
@@ -44,7 +43,7 @@ public class OldSchoolDbUnitTest {
 
     private static IDataSet initDataSet() throws Exception {
         final InputStream is = OldSchoolDbUnitTest.class.getClassLoader().getResourceAsStream("data.xml");
-        return new FlatXmlDataSet(is);
+        return new FlatXmlDataSetBuilder().build(is);
     }
 
     @Before
@@ -59,35 +58,43 @@ public class OldSchoolDbUnitTest {
 
     @Test
     public void testSelect() throws Exception {
-        // Arrange
         final Connection connection = tester.getConnection().getConnection();
 
-        // Act
         final ResultSet rs = connection.createStatement().executeQuery("select * from iTEMS where id = 1");
 
-        // Assert
-        assertTrue(rs.next());
-        assertEquals("Grey T-Shirt", rs.getString("title"));
+        assertThat(rs.next()).isTrue();
+        assertThat(rs.getString("title")).isEqualTo("Grey T-Shirt");
     }
 
     @Test
     public void testDelete() throws Exception {
-        // Arrange
         final Connection connection = tester.getConnection().getConnection();
 
         final InputStream is = OldSchoolDbUnitTest.class.getClassLoader().getResourceAsStream("items_exp_delete.xml");
         ITable expectedTable = new FlatXmlDataSetBuilder().build(is).getTable("items");
-        //expectedTable = DefaultColumnFilter.excludedColumnsTable(expectedTable, new String[]{"produced"});
 
-        // Act
         connection.createStatement().executeUpdate("delete from ITEMS where id = 2");
 
-        // Assert
         final IDataSet databaseDataSet = tester.getConnection().createDataSet();
         ITable actualTable = databaseDataSet.getTable("items");
-        //actualTable = DefaultColumnFilter.excludedColumnsTable(actualTable, new String[]{"produced"});
 
-        Assertion.assertEquals(expectedTable, actualTable);
+        assertEquals(expectedTable, actualTable);
+    }
+
+    @Test
+    public void testDeleteWithExcludedColumns() throws Exception {
+        final Connection connection = tester.getConnection().getConnection();
+
+        final InputStream is = OldSchoolDbUnitTest.class.getClassLoader().getResourceAsStream("items_exp_delete_no_produced.xml");
+        ITable expectedTable = new FlatXmlDataSetBuilder().build(is).getTable("items");
+
+        connection.createStatement().executeUpdate("delete from ITEMS where id = 2");
+
+        final IDataSet databaseDataSet = tester.getConnection().createDataSet();
+        ITable actualTable = databaseDataSet.getTable("items");
+        actualTable = DefaultColumnFilter.excludedColumnsTable(actualTable, new String[]{"produced"});
+
+        assertEquals(expectedTable, actualTable);
     }
 
     @Test
@@ -107,7 +114,7 @@ public class OldSchoolDbUnitTest {
         ITable actualTable = databaseDataSet.getTable("items");
         //actualTable = DefaultColumnFilter.excludedColumnsTable(actualTable, new String[]{"produced"});
 
-        assertThat(actualTable).isEqualTo(actualTable);
+        assertEquals(expectedTable, actualTable);
     }
 
 }
