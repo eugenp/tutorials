@@ -6,6 +6,7 @@ import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.xml.FlatXmlDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.junit.After;
 import org.junit.Before;
@@ -16,6 +17,7 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -74,7 +76,7 @@ public class OldSchoolDbUnitTest {
         final Connection connection = tester.getConnection().getConnection();
 
         final InputStream is = OldSchoolDbUnitTest.class.getClassLoader().getResourceAsStream("items_exp_delete.xml");
-        ITable expectedTable = (new FlatXmlDataSet(is)).getTable("items");
+        ITable expectedTable = new FlatXmlDataSetBuilder().build(is).getTable("items");
         //expectedTable = DefaultColumnFilter.excludedColumnsTable(expectedTable, new String[]{"produced"});
 
         // Act
@@ -94,7 +96,7 @@ public class OldSchoolDbUnitTest {
         final Connection connection = tester.getConnection().getConnection();
 
         final InputStream is = OldSchoolDbUnitTest.class.getClassLoader().getResourceAsStream("items_exp_rename.xml");
-        ITable expectedTable = (new FlatXmlDataSet(is)).getTable("items");
+        ITable expectedTable = new FlatXmlDataSetBuilder().build(is).getTable("items");
         //expectedTable = DefaultColumnFilter.excludedColumnsTable(expectedTable, new String[]{"produced"});
 
         // Act
@@ -105,7 +107,7 @@ public class OldSchoolDbUnitTest {
         ITable actualTable = databaseDataSet.getTable("items");
         //actualTable = DefaultColumnFilter.excludedColumnsTable(actualTable, new String[]{"produced"});
 
-        Assertion.assertEquals(expectedTable, actualTable);
+        assertThat(actualTable).isEqualTo(actualTable);
     }
 
 }

@@ -3,6 +3,16 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>dbunit</artifactId>
     <version>1.0</version>
+    <properties>
+        <h2.version>1.4.200</h2.version>
+
+        <maven-compiler-plugin.target>1.8</maven-compiler-plugin.target>
+        <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+
+        <assertj-core.version>3.14.0</assertj-core.version>
+        <dbunit.version>2.6.0</dbunit.version>
+    </properties>
     <name>dbunit</name>
 
     <parent>
@@ -22,14 +32,30 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.197</version>
+            <version>${h2.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
-    <properties>
-        <!-- testing -->
-        <dbunit.version>2.6.0</dbunit.version>
-    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven-compiler-plugin.source}</source>
+                    <target>${maven-compiler-plugin.target}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
