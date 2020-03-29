@@ -9,11 +9,11 @@ import org.junit.Test;
 
 public class StringEncodeUnitTest {
 
-    private String unencodedString = new String("Entwickeln Sie mit Vergnügen".getBytes(), StandardCharsets.US_ASCII);
+    private String asciiEncodedString = new String("Entwickeln Sie mit Vergnügen".getBytes(), StandardCharsets.US_ASCII);
 
     @Test
-    public void givenWhenUsAsciiString_whenCompating_thenCompareNotEquals() {
-        assertNotEquals(unencodedString, "Entwickeln Sie mit Vergnügen");
+    public void givenUsAsciiString_whenComparing_thenCompareNotEquals() {
+        assertNotEquals(asciiEncodedString, "Entwickeln Sie mit Vergnügen");
     }
 
     /*
@@ -21,7 +21,7 @@ public class StringEncodeUnitTest {
      */
     @Test
     public void givenSomeUnencodedString_whenApacheCommonsCodecEncode_thenCompareEquals() {
-        assertEquals(new ApacheCommonsCodecEncode().encodeString(unencodedString), unencodedString);
+        assertEquals(asciiEncodedString, new ApacheCommonsCodecEncode().encodeString(asciiEncodedString));
     }
 
     /*
@@ -29,7 +29,7 @@ public class StringEncodeUnitTest {
      */
     @Test
     public void givenSomeUnencodedString_whenCoreJavaEncode_thenCompareEquals() {
-        assertEquals(new CoreJavaEncode().encodeString(unencodedString), unencodedString);
+        assertEquals(asciiEncodedString, new CoreJavaEncode().encodeString(asciiEncodedString));
     }
 
     /*
@@ -37,6 +37,6 @@ public class StringEncodeUnitTest {
      */
     @Test
     public void givenSomeUnencodedString_whenJava7StandardCharsetsEncode_thenCompareEquals() {
-        assertEquals(new Java7StandardCharsetsEncode().encodeString(unencodedString), unencodedString);
+        assertEquals(asciiEncodedString, new Java7StandardCharsetsEncode().encodeString(asciiEncodedString));
     }
 }
