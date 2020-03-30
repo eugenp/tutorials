@@ -3,7 +3,7 @@
 ### Compile and Run
 
 ```shell script
-./gradlew clean bootRun
+gradle clean bootRun
 ```
 
 ### Test examples
