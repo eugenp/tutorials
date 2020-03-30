@@ -1,6 +1,6 @@
-package com.baeldung.crud.repositories;
+package com.baeldung.hexagonal.crud.infrastructure.persistence;
 
-import com.baeldung.crud.entities.User;
+import com.baeldung.hexagonal.crud.domain.entity.User;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends CrudRepository<User, Long> {
     
     List<User> findByName(String name);
-    
 }

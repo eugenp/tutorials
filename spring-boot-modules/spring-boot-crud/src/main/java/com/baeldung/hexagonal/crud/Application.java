@@ -1,4 +1,4 @@
-package com.baeldung.crud;
+package com.baeldung.hexagonal.crud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,12 +8,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@SpringBootApplication 
-@EnableAutoConfiguration
-@ComponentScan(basePackages={"com.baeldung.crud"})
-@EnableJpaRepositories(basePackages="com.baeldung.crud.repositories")
+@SpringBootApplication
+@EnableJpaRepositories(basePackages="com.baeldung.hexagonal.crud.infrastructure.persistence")
 @EnableTransactionManagement
-@EntityScan(basePackages="com.baeldung.crud.entities")
+@EntityScan(basePackages="com.baeldung.hexagonal.crud.domain.entity")
 public class Application {
 
     public static void main(String[] args) {
