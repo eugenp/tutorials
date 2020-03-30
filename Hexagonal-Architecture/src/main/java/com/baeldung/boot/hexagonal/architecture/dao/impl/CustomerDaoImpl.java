@@ -15,26 +15,29 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CustomerDaoImpl implements CustomerDao {
 
-	private List<Customer> customers = new ArrayList<>();
-	
-	@Override
-	public void createCustomer(Customer customer) {
-		customers.add(customer);
-	}
+    private List<Customer> customers = new ArrayList<>();
 
-	@Override
-	public Customer fetchCustomerById(Long customerId) {
-		log.info("Fetching customer with id: {}",customerId);
-		if(!customers.isEmpty()) {
-			Optional<Customer> customerOptional = customers.stream().filter(customer -> {
-				return customer.getCustomerId().longValue() == customerId.longValue();
-			}).findFirst();
-			if(customerOptional.isPresent()) {
-				log.info("Customer found with following details: {}", customerOptional.get());
-				return customerOptional.get();
-			}
-		}
-		log.info("No customer found.");
-		return null;
-	}
+    @Override
+    public void createCustomer(Customer customer) {
+        customers.add(customer);
+    }
+
+    @Override
+    public Customer fetchCustomerById(Long customerId) {
+        log.info("Fetching customer with id: {}", customerId);
+        if (!customers.isEmpty()) {
+            Optional<Customer> customerOptional = customers.stream()
+                .filter(customer -> {
+                    return customer.getCustomerId()
+                        .longValue() == customerId.longValue();
+                })
+                .findFirst();
+            if (customerOptional.isPresent()) {
+                log.info("Customer found with following details: {}", customerOptional.get());
+                return customerOptional.get();
+            }
+        }
+        log.info("No customer found.");
+        return null;
+    }
 }

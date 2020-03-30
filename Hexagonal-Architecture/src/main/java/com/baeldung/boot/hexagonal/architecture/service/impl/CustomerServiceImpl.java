@@ -10,22 +10,22 @@ import com.baeldung.boot.hexagonal.architecture.service.CustomerService;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-	@Autowired
-	CustomerDao customerDao;
-	
-	private Integer customerId = 1;
-	
-	@Override
-	public Customer createCustomer(Customer customer) {
-		customer.setCustomerId(Long.valueOf(String.valueOf(customerId)));
-		customerDao.createCustomer(customer);
-		customerId++;
-		return customer;
-	}
+    @Autowired
+    CustomerDao customerDao;
 
-	@Override
-	public Customer fetchCustomerById(Long customerId) {
-		return customerDao.fetchCustomerById(customerId);
-	}
+    private Integer customerId = 1;
+
+    @Override
+    public Customer createCustomer(Customer customer) {
+        customer.setCustomerId(Long.valueOf(String.valueOf(customerId)));
+        customerDao.createCustomer(customer);
+        customerId++;
+        return customer;
+    }
+
+    @Override
+    public Customer fetchCustomerById(Long customerId) {
+        return customerDao.fetchCustomerById(customerId);
+    }
 
 }

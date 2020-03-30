@@ -18,19 +18,19 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CustomerController {
 
-	@Autowired
-	CustomerService customerService;
-	
-	@PostMapping("/create")
-	public Customer CreateCustomer(@RequestBody Customer customer) {
-		log.info("Request arrived for saving the customer.");
-		Customer createdCustomer = customerService.createCustomer(customer);
-		log.info("Customer added successfully.");
-		return createdCustomer;
-	}
-	
-	@GetMapping("/{customerId}/details") 
-	public Customer getCustomer(@PathVariable Long customerId) {
-		return customerService.fetchCustomerById(customerId); 
-	}
+    @Autowired
+    CustomerService customerService;
+
+    @PostMapping("/create")
+    public Customer CreateCustomer(@RequestBody Customer customer) {
+        log.info("Request arrived for saving the customer.");
+        Customer createdCustomer = customerService.createCustomer(customer);
+        log.info("Customer added successfully.");
+        return createdCustomer;
+    }
+
+    @GetMapping("/{customerId}/details")
+    public Customer getCustomer(@PathVariable Long customerId) {
+        return customerService.fetchCustomerById(customerId);
+    }
 }
