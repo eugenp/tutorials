@@ -50,13 +50,13 @@ public class PrepAndExpectedDbUnitTest extends DefaultPrepAndExpectedTestCase {
     @Test
     public void testSelect() throws Exception {
         final Connection connection = getConnection().getConnection();
-        final VerifyTableDefinition[] verifyTables = {new VerifyTableDefinition("USERS", new String[]{})};
+        final VerifyTableDefinition[] verifyTables = {new VerifyTableDefinition("CLIENTS", new String[]{})};
         final String[] prepDataFiles = {"/users.xml"};
         final String[] expectedDataFiles = {"/users.xml"};
         final PrepAndExpectedTestCaseSteps testSteps =
                 () -> connection
                         .createStatement()
-                        .executeQuery("select * from USERS where id = 1");
+                        .executeQuery("select * from CLIENTS where id = 1");
 
         final ResultSet rs = (ResultSet) super.runTest(verifyTables, prepDataFiles, expectedDataFiles, testSteps);
 
@@ -67,13 +67,13 @@ public class PrepAndExpectedDbUnitTest extends DefaultPrepAndExpectedTestCase {
     @Test
     public void testUpdate() throws Exception {
         final Connection connection = getConnection().getConnection();
-        final VerifyTableDefinition[] verifyTables = {new VerifyTableDefinition("USERS", new String[]{})}; // define tables to verify
+        final VerifyTableDefinition[] verifyTables = {new VerifyTableDefinition("CLIENTS", new String[]{})}; // define tables to verify
         final String[] prepDataFiles = {"/users.xml"};
         final String[] expectedDataFiles = {"/users_exp_rename.xml"};
         final PrepAndExpectedTestCaseSteps testSteps =
                 () -> connection
                         .createStatement()
-                        .executeUpdate("update USERS set first_name = 'new name' where id = 1");
+                        .executeUpdate("update CLIENTS set first_name = 'new name' where id = 1");
 
         super.runTest(verifyTables, prepDataFiles, expectedDataFiles, testSteps);
     }
@@ -81,13 +81,13 @@ public class PrepAndExpectedDbUnitTest extends DefaultPrepAndExpectedTestCase {
     @Test
     public void testDelete() throws Exception {
         final Connection connection = getConnection().getConnection();
-        final VerifyTableDefinition[] verifyTables = {new VerifyTableDefinition("USERS", new String[]{})};
+        final VerifyTableDefinition[] verifyTables = {new VerifyTableDefinition("CLIENTS", new String[]{})};
         final String[] prepDataFiles = {"/users.xml"};
         final String[] expectedDataFiles = {"/users_exp_delete.xml"};
         final PrepAndExpectedTestCaseSteps testSteps =
                 () -> connection
                         .createStatement()
-                        .executeUpdate("delete from USERS where id = 2");
+                        .executeUpdate("delete from CLIENTS where id = 2");
 
         super.runTest(verifyTables, prepDataFiles, expectedDataFiles, testSteps);
     }
