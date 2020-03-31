@@ -27,7 +27,6 @@ public class DbUnitTest extends DBTestCase {
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_CONNECTION_URL, JDBC_URL);
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_USERNAME, USER);
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_PASSWORD, PASSWORD);
-        // System.setProperty( PropertiesBasedJdbcDatabaseTester.DBUNIT_SCHEMA, "");
     }
 
     @Override
