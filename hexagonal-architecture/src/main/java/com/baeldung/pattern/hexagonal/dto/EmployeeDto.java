@@ -2,13 +2,13 @@ package com.baeldung.pattern.hexagonal.dto;
 
 public class EmployeeDto {
 
-        Integer id;
+        private Integer id;
 
-        String name;
+        private String name;
 
-        Integer age;
+        private Integer age;
 
-        String department;
+        private String department;
 
         public Integer getId() {
                 return id;

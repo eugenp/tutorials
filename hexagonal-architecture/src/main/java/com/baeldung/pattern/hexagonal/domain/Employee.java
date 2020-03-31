@@ -10,13 +10,13 @@ import java.io.Serializable;
          */
         private static final long serialVersionUID = -5605175902240159269L;
 
-        @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id") Integer id;
+        private Integer id;
 
-        @Column(name = "name") String name;
+        private String name;
 
-        @Column(name = "age") Integer age;
+        private Integer age;
 
-        @Column(name = "department") String department;
+        private String department;
 
         public Employee() {
         }
@@ -29,7 +29,7 @@ import java.io.Serializable;
                 this.department = department;
         }
 
-        public Integer getId() {
+        @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id") public Integer getId() {
                 return id;
         }
 
@@ -37,7 +37,7 @@ import java.io.Serializable;
                 this.id = id;
         }
 
-        public String getName() {
+        @Column(name = "name") public String getName() {
                 return name;
         }
 
@@ -45,7 +45,7 @@ import java.io.Serializable;
                 this.name = name;
         }
 
-        public Integer getAge() {
+        @Column(name = "age") public Integer getAge() {
                 return age;
         }
 
@@ -53,7 +53,7 @@ import java.io.Serializable;
                 this.age = age;
         }
 
-        public String getDepartment() {
+        @Column(name = "department") public String getDepartment() {
                 return department;
         }
 
