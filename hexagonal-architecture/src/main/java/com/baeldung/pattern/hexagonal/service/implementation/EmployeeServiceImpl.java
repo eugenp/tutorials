@@ -8,29 +8,24 @@ import com.baeldung.pattern.hexagonal.exception.ResourceNotFoundException;
 import com.baeldung.pattern.hexagonal.repository.EmployeeRepo;
 import com.baeldung.pattern.hexagonal.service.EmployeeService;
 
-@Service
-public class EmployeeServiceImpl implements EmployeeService {
+@Service public class EmployeeServiceImpl implements EmployeeService {
 
-    @Autowired
-    EmployeeRepo empRepo;
+        @Autowired EmployeeRepo empRepo;
 
-    @Override
-    public Employee createEmployee(Employee emp) {
-        return empRepo.createEmployee(emp);
-    }
-
-    @Override
-    public Employee getEmployeeById(Integer id) {
-        Employee emp = empRepo.findById(id);
-        if (null == emp) {
-            throw new ResourceNotFoundException("EMP_NOT_FOUND", "Employee not found");
+        @Override public Employee createEmployee(Employee emp) {
+                return empRepo.createEmployee(emp);
         }
-        return emp;
-    }
 
-    @Override
-    public void removeEmployeeById(Integer id) {
-        empRepo.deleteById(id);
-    }
+        @Override public Employee getEmployeeById(Integer id) {
+                Employee emp = empRepo.findById(id);
+                if (null == emp) {
+                        throw new ResourceNotFoundException("EMP_NOT_FOUND", "Employee not found");
+                }
+                return emp;
+        }
+
+        @Override public void removeEmployeeById(Integer id) {
+                empRepo.deleteById(id);
+        }
 
 }

@@ -5,11 +5,6 @@ import java.io.Serializable;
 
 @Entity @Table(name = "employee") public class Employee implements Serializable {
 
-        /**
-         *
-         */
-        private static final long serialVersionUID = -5605175902240159269L;
-
         private Integer id;
 
         private String name;
