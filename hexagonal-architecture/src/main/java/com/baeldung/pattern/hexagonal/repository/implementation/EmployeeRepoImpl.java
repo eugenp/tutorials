@@ -17,9 +17,9 @@ public class EmployeeRepoImpl implements EmployeeRepo {
     
 
     @Override
-    public void createEmployee(Employee emp) {
-        // TODO Auto-generated method stub
-        
+    public Employee createEmployee(Employee emp) {
+       Employee newEmp = employeeRepository.save(emp);
+       return newEmp;
     }
 
     @Override
@@ -29,9 +29,10 @@ public class EmployeeRepoImpl implements EmployeeRepo {
     }
 
     @Override
-    public boolean deleteById(Integer id) {
-        // TODO Auto-generated method stub
-        return false;
+    public void deleteById(Integer id) {
+        if(null != findById(id)) {
+            employeeRepository.deleteById(id);
+        }
     }
 
 }

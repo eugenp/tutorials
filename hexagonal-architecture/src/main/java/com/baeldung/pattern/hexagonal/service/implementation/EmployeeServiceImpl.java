@@ -15,9 +15,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     EmployeeRepo empRepo;
 
     @Override
-    public void createEmployee(Employee emp) {
-        // TODO Auto-generated method stub
-
+    public Employee createEmployee(Employee emp) {
+        return empRepo.createEmployee(emp);
     }
 
     @Override
@@ -30,9 +29,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public boolean removeEmployeeById(Integer id) {
-        // TODO Auto-generated method stub
-        return false;
+    public void removeEmployeeById(Integer id) {
+        empRepo.deleteById(id);
     }
 
 }

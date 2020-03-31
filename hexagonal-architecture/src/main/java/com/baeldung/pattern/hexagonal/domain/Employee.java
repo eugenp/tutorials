@@ -2,14 +2,18 @@ package com.baeldung.pattern.hexagonal.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Entity
 @Table(name = "employee")
 public class Employee implements Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -5605175902240159269L;
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     Integer id;
 
