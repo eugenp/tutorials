@@ -1,12 +1,12 @@
-package com.baeldung.concurrent.atomic;
+package com.baeldung.atomicstampedreference;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
 public class SafeAccount {
 
-    AtomicInteger stamp = new AtomicInteger(0);
-    AtomicStampedReference<Integer> balance = new AtomicStampedReference<>(0, 0);
+    private AtomicInteger stamp = new AtomicInteger(0);
+    private AtomicStampedReference<Integer> balance = new AtomicStampedReference<>(0, 0);
 
     public int getBalance() {
         return this.balance.get(new int[1]);

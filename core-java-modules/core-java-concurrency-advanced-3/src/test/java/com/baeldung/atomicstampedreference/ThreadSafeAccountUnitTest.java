@@ -1,12 +1,12 @@
-package com.baeldung.concurrent.atomic;
+package com.baeldung.atomicstampedreference;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ThreadSafeAccountTest {
+public class ThreadSafeAccountUnitTest {
 
     @Test
-    public void givenMultiThread_whenSafeAccountSetBalance() throws InterruptedException {
+    public void givenMultiThread_whenSafeAccount_thenSetBalance() throws InterruptedException {
         SafeAccount account = new SafeAccount();
         Thread t = new Thread(() -> {
             while (!account.withdrawal(100))
