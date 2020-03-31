@@ -4,10 +4,10 @@ import com.baeldung.pattern.hexagonal.domain.Employee;
 
 public interface EmployeeRepo {
 
-    public Employee createEmployee(Employee emp);
+        public Employee createEmployee(Employee emp);
 
-    public Employee findById(Integer id);
-    
-    public void deleteById(Integer id);
+        public Employee findById(Integer id);
+
+        public void deleteById(Integer id);
 
 }

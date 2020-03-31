@@ -10,11 +10,10 @@ import com.baeldung.pattern.hexagonal.exception.dto.ErrorResponseDTO;
 
 public class RESTExceptionHnadler {
 
-    @ExceptionHandler({ RESTException.class })
-    public ResponseEntity<ErrorResponseDTO> RestExceptionHandler(RESTException rex) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(new ErrorResponseDTO(rex.getErrorCode(), rex.getMessage()), headers, rex.getHttpStatus());
-    }
+        @ExceptionHandler({ RESTException.class }) public ResponseEntity<ErrorResponseDTO> RestExceptionHandler(RESTException rex) {
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_JSON);
+                return new ResponseEntity<>(new ErrorResponseDTO(rex.getErrorCode(), rex.getMessage()), headers, rex.getHttpStatus());
+        }
 
 }

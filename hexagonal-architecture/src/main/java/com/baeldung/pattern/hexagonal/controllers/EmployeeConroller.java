@@ -16,32 +16,24 @@ import com.baeldung.pattern.hexagonal.dto.EmployeeDto;
 import com.baeldung.pattern.hexagonal.mappers.EmployeeMapper;
 import com.baeldung.pattern.hexagonal.service.EmployeeService;
 
-@RestController
-@RequestMapping("/employees")
-public class EmployeeConroller {
+@RestController @RequestMapping("/employees") public class EmployeeConroller {
 
-    @Autowired
-    EmployeeService employeeService;
+        @Autowired EmployeeService employeeService;
 
-    @Autowired
-    EmployeeMapper employeeMapper;
+        @Autowired EmployeeMapper employeeMapper;
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> createEmployee(@RequestBody EmployeeDto emp) {
-        Employee newEmp = employeeService.createEmployee(employeeMapper.toDomain(emp));
-        return ResponseEntity.ok(employeeMapper.toDto(newEmp));
-    }
+        @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE) public ResponseEntity<?> createEmployee(@RequestBody EmployeeDto emp) {
+                Employee newEmp = employeeService.createEmployee(employeeMapper.toDomain(emp));
+                return ResponseEntity.ok(employeeMapper.toDto(newEmp));
+        }
 
-    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<EmployeeDto> getEmployee(@PathVariable(name = "id") Integer id) {
-        Employee emp = employeeService.getEmployeeById(id);
-        return ResponseEntity.ok(employeeMapper.toDto(emp));
-    }
+        @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE) public ResponseEntity<EmployeeDto> getEmployee(@PathVariable(name = "id") Integer id) {
+                Employee emp = employeeService.getEmployeeById(id);
+                return ResponseEntity.ok(employeeMapper.toDto(emp));
+        }
 
-    @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> removeEmployee(@PathVariable(name = "id") Integer id) {
-        employeeService.removeEmployeeById(id);
-        return ResponseEntity.noContent()
-            .build();
-    }
+        @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE) public ResponseEntity<?> removeEmployee(@PathVariable(name = "id") Integer id) {
+                employeeService.removeEmployeeById(id);
+                return ResponseEntity.noContent().build();
+        }
 }
