@@ -1,40 +1,56 @@
 package com.baeldung.guava.mapmaker;
 
+import com.baeldung.guava.entity.Profile;
+import com.baeldung.guava.entity.Session;
+import com.baeldung.guava.entity.User;
 import com.google.common.collect.MapMaker;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.concurrent.ConcurrentMap;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertNotNull;
 
 public class GuavaMapMakerUnitTest {
     @Test
-    public void whenMakeMap_thenCreated() {
-        ConcurrentMap<String, String> concurrentMap = new MapMaker().makeMap();
-        assertNotNull(concurrentMap);
+    public void whenCreateCaches_thenCreated() {
+        ConcurrentMap<User, Session> sessionCache = new MapMaker().makeMap();
+        assertNotNull(sessionCache);
+
+        ConcurrentMap<User, Profile> profileCache = new MapMaker().makeMap();
+        assertNotNull(profileCache);
+
+        User userA = new User(1, "UserA");
+
+        sessionCache.put(userA, new Session(100));
+        Assert.assertThat(sessionCache.size(), equalTo(1));
+
+        profileCache.put(userA, new Profile(1000, "Personal"));
+        Assert.assertThat(profileCache.size(), equalTo(1));
     }
 
     @Test
-    public void whenMakeMapWithWeakKeys_thenCreated() {
-        ConcurrentMap<String, String> concurrentMap = new MapMaker().weakKeys().makeMap();
-        assertNotNull(concurrentMap);
+    public void whenCreateCacheWithInitialCapacity_thenCreated() {
+        ConcurrentMap<User, Profile> profileCache = new MapMaker().initialCapacity(100).makeMap();
+        assertNotNull(profileCache);
     }
 
     @Test
-    public void whenMakeMapWithWeakValues_thenCreated() {
-        ConcurrentMap<String, String> concurrentMap = new MapMaker().weakValues().makeMap();
-        assertNotNull(concurrentMap);
+    public void whenCreateCacheWithConcurrencyLevel_thenCreated() {
+        ConcurrentMap<User, Session> sessionCache = new MapMaker().concurrencyLevel(10).makeMap();
+        assertNotNull(sessionCache);
     }
 
     @Test
-    public void whenMakeMapWithInitialCapacity_thenCreated() {
-        ConcurrentMap<String, String> concurrentMap = new MapMaker().initialCapacity(10).makeMap();
-        assertNotNull(concurrentMap);
+    public void whenCreateCacheWithWeakKeys_thenCreated() {
+        ConcurrentMap<User, Session> sessionCache = new MapMaker().weakKeys().makeMap();
+        assertNotNull(sessionCache);
     }
 
     @Test
-    public void whenMakeMapWithConcurrencyLevel_thenCreated() {
-        ConcurrentMap<String, String> concurrentMap = new MapMaker().concurrencyLevel(10).makeMap();
-        assertNotNull(concurrentMap);
+    public void whenCreateCacheWithWeakValues_thenCreated() {
+        ConcurrentMap<User, Profile> profileCache = new MapMaker().weakValues().makeMap();
+        assertNotNull(profileCache);
     }
 }
