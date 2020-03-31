@@ -10,10 +10,18 @@ import org.junit.Test;
 import java.io.IOException;
 import static org.junit.Assert.assertNotNull;
 
-/**
- * Tests which show issues with JGit that we reported upstream.
- */
-public class JGitBugIntegrationTest {
+public class JGitBugManualTest {
+    
+    /**
+     * This test case expects one git repository to be present in local file system.
+     * Currently this test uses the Baeldung repository i.e. the current checkout repository.
+     * It finds the repository by tracking back and scan file system to find .git folder in
+     * the file system.
+     * 
+     * Before running the test case ensure that the .git folder is present.
+     * 
+     * @throws IOException
+     */
     @Test
     public void testRevWalkDisposeClosesReader() throws IOException {
         try (Repository repo = Helper.openJGitRepository()) {
