@@ -55,4 +55,22 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
         ITable actualTable = databaseDataSet.getTable("CLIENTS");
         Assertion.assertEquals(expectedTable, actualTable);
     }
+
+
+    @Test
+    public void testAssertByQuery() throws Exception {
+        IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(getClass()
+                .getClassLoader()
+                .getResourceAsStream("expected-user.xml"));
+        ITable expectedTable = expectedDataSet.getTable("CLIENTS");
+        Connection conn = getDataSource().getConnection();
+        conn.createStatement()
+                .executeUpdate(
+                        "INSERT INTO CLIENTS (first_name, last_name) VALUES ('John', 'Jansen')");
+        ITable actualData = getConnection()
+                .createQueryTable(
+                        "result_name",
+                        "SELECT * FROM CLIENTS WHERE id='2'");
+        Assertion.assertEqualsIgnoreCols(expectedTable, actualData, new String[]{"id"});
+    }
 }
