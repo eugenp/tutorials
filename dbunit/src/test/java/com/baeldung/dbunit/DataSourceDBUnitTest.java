@@ -2,10 +2,15 @@ package com.baeldung.dbunit;
 
 import org.dbunit.Assertion;
 import org.dbunit.DataSourceBasedDBTestCase;
+import org.dbunit.assertion.DiffCollectingFailureHandler;
+import org.dbunit.assertion.Difference;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
+import org.dbunit.operation.DatabaseOperation;
 import org.h2.jdbcx.JdbcDataSource;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import javax.sql.DataSource;
@@ -14,6 +19,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static com.baeldung.dbunit.ConnectionSettings.JDBC_URL;
+import static java.util.stream.Collectors.joining;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
@@ -33,6 +39,27 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
                 .getClassLoader()
                 .getResourceAsStream("data.xml"));
     }
+
+    @Override
+    protected DatabaseOperation getSetUpOperation() {
+        return DatabaseOperation.REFRESH;
+    }
+
+    @Override
+    protected DatabaseOperation getTearDownOperation() {
+        return DatabaseOperation.DELETE_ALL;
+    }
+
+    @Before
+    public void setUp() throws Exception {
+        super.setUp();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        super.tearDown();
+    }
+
 
     @Test
     public void testSimpleDataSet() throws SQLException {
@@ -56,7 +83,6 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
         Assertion.assertEquals(expectedTable, actualTable);
     }
 
-
     @Test
     public void testAssertByQuery() throws Exception {
         IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(getClass()
@@ -70,7 +96,26 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
         ITable actualData = getConnection()
                 .createQueryTable(
                         "result_name",
-                        "SELECT * FROM CLIENTS WHERE id='2'");
+                        "SELECT * FROM CLIENTS WHERE last_name='Jansen'");
         Assertion.assertEqualsIgnoreCols(expectedTable, actualData, new String[]{"id"});
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testMultipleFailures() throws Exception {
+        IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(getClass().getClassLoader().getResourceAsStream("expected-multiple-failures.xml"));
+        ITable expectedTable = expectedDataSet.getTable("ITEMS");
+        Connection conn = getDataSource().getConnection();
+        conn.createStatement().executeUpdate("INSERT INTO ITEMS (title, price) VALUES ('Battery', '1000000')");
+        ITable actualData = getConnection().createDataSet().getTable("ITEMS");
+        DiffCollectingFailureHandler collectingHandler = new DiffCollectingFailureHandler();
+        Assertion.assertEquals(expectedTable, actualData, collectingHandler);
+        if (!collectingHandler.getDiffList().isEmpty()) {
+            String message = (String) collectingHandler.getDiffList().stream().map(d -> formatDifference((Difference) d)).collect(joining("\n"));
+//        throw new AssertionError(message);
+        }
+    }
+
+    private static String formatDifference(Difference diff) {
+        return "expected value in " + diff.getExpectedTable().getTableMetaData().getTableName() + "." + diff.getColumnName() + " row " + diff.getRowIndex() + ":" + diff.getExpectedValue() + ", but was: " + diff.getActualValue();
     }
 }

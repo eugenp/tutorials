@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <dataset>
     <ITEMS id='1' title='new name' price='17.99'/>
     <ITEMS id='2' title='Fitted Hat' price='29.99'/>

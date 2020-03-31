@@ -1,5 +1,6 @@
 package com.baeldung.dbunit;
 
+import org.dbunit.Assertion;
 import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
@@ -36,7 +37,7 @@ public class OldSchoolDbUnitTest {
         final JdbcDatabaseTester tester = new JdbcDatabaseTester(JDBC_DRIVER, JDBC_URL, USER, PASSWORD);
         tester.setDataSet(initDataSet());
         tester.setSetUpOperation(DatabaseOperation.REFRESH);
-        tester.setTearDownOperation(DatabaseOperation.NONE);
+        tester.setTearDownOperation(DatabaseOperation.DELETE_ALL);
         return tester;
     }
 
@@ -63,6 +64,22 @@ public class OldSchoolDbUnitTest {
 
         assertThat(rs.next()).isTrue();
         assertThat(rs.getString("title")).isEqualTo("Grey T-Shirt");
+    }
+
+    @Test
+    public void testIgnoringProduced() throws Exception {
+        final Connection connection = tester.getConnection().getConnection();
+        final String[] excludedColumns = {"id", "produced"};
+        final IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(getClass().getClassLoader()
+                .getResourceAsStream("expected-ignoring-registered_at.xml"));
+        final ITable expectedTable = DefaultColumnFilter.excludedColumnsTable(expectedDataSet.getTable("ITEMS"), excludedColumns);
+
+        connection.createStatement().executeUpdate("INSERT INTO ITEMS (title, price, produced)  VALUES('Necklace', 199.99, now())");
+
+        final IDataSet databaseDataSet = tester.getConnection().createDataSet();
+        final ITable actualTable = DefaultColumnFilter.excludedColumnsTable(databaseDataSet.getTable("ITEMS"), excludedColumns);
+
+        Assertion.assertEquals(expectedTable, actualTable);
     }
 
     @Test
