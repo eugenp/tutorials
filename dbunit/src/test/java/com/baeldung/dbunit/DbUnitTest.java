@@ -19,9 +19,9 @@ import static com.baeldung.dbunit.ConnectionSettings.PASSWORD;
 import static com.baeldung.dbunit.ConnectionSettings.USER;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SampleDbUnitTest extends DBTestCase {
+public class DbUnitTest extends DBTestCase {
 
-    public SampleDbUnitTest(String name) {
+    public DbUnitTest(String name) {
         super(name);
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_DRIVER_CLASS, JDBC_DRIVER);
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_CONNECTION_URL, JDBC_URL);
@@ -32,7 +32,7 @@ public class SampleDbUnitTest extends DBTestCase {
 
     @Override
     protected IDataSet getDataSet() throws Exception {
-        final InputStream is = SampleDbUnitTest.class.getClassLoader().getResourceAsStream("data.xml");
+        final InputStream is = DbUnitTest.class.getClassLoader().getResourceAsStream("data.xml");
         return new FlatXmlDataSetBuilder().build(is);
     }
 
@@ -53,14 +53,14 @@ public class SampleDbUnitTest extends DBTestCase {
         final ResultSet rs = connection.createStatement().executeQuery("select * from iTEMS where id = 1");
 
         assertThat(rs.next()).isTrue();
-        assertThat(rs.getString("title")).isEqualTo("Grey T-Shirt");
+        assertThat(rs.getString( "title")).isEqualTo("Grey T-Shirt");
     }
 
     @Test
     public void testDelete() throws Exception {
         final Connection connection = getConnection().getConnection();
 
-        final InputStream is = SampleDbUnitTest.class.getClassLoader().getResourceAsStream("items_exp_delete.xml");
+        final InputStream is = DbUnitTest.class.getClassLoader().getResourceAsStream("items_exp_delete.xml");
         ITable expectedTable = (new FlatXmlDataSetBuilder().build(is)).getTable("items");
 
         connection.createStatement().executeUpdate("delete from ITEMS where id = 2");
@@ -75,7 +75,7 @@ public class SampleDbUnitTest extends DBTestCase {
     public void testUpdate() throws Exception {
         final Connection connection = getConnection().getConnection();
 
-        final InputStream is = SampleDbUnitTest.class.getClassLoader().getResourceAsStream("items_exp_rename.xml");
+        final InputStream is = DbUnitTest.class.getClassLoader().getResourceAsStream("items_exp_rename.xml");
         ITable expectedTable = (new FlatXmlDataSetBuilder().build(is)).getTable("items");
 
         connection.createStatement().executeUpdate("update ITEMS set title='new name' where id = 1");
