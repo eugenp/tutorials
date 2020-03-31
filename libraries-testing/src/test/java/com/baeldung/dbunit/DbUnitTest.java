@@ -9,7 +9,6 @@ import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.junit.Test;
 
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
@@ -31,7 +30,7 @@ public class DbUnitTest extends DBTestCase {
 
     @Override
     protected IDataSet getDataSet() throws Exception {
-        try (final InputStream is = DbUnitTest.class.getClassLoader().getResourceAsStream("data.xml")) {
+        try (final java.io.InputStream is = DbUnitTest.class.getClassLoader().getResourceAsStream("dbunit/data.xml")) {
             return new FlatXmlDataSetBuilder().build(is);
         }
     }
@@ -60,7 +59,7 @@ public class DbUnitTest extends DBTestCase {
     public void testDelete() throws Exception {
         final Connection connection = getConnection().getConnection();
 
-        try (final InputStream is = DbUnitTest.class.getClassLoader().getResourceAsStream("items_exp_delete.xml")) {
+        try (final java.io.InputStream is = DbUnitTest.class.getClassLoader().getResourceAsStream("dbunit/items_exp_delete.xml")) {
             ITable expectedTable = (new FlatXmlDataSetBuilder().build(is)).getTable("items");
 
             connection.createStatement().executeUpdate("delete from ITEMS where id = 2");
@@ -76,7 +75,7 @@ public class DbUnitTest extends DBTestCase {
     public void testUpdate() throws Exception {
         final Connection connection = getConnection().getConnection();
 
-        try (final InputStream is = DbUnitTest.class.getClassLoader().getResourceAsStream("items_exp_rename.xml")) {
+        try (final java.io.InputStream is = DbUnitTest.class.getClassLoader().getResourceAsStream("dbunit/items_exp_rename.xml")) {
             ITable expectedTable = (new FlatXmlDataSetBuilder().build(is)).getTable("items");
 
             connection.createStatement().executeUpdate("update ITEMS set title='new name' where id = 1");

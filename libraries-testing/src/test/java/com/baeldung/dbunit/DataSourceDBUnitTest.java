@@ -15,8 +15,6 @@ import org.junit.Test;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
 
-import javax.sql.DataSource;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,7 +28,7 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
     private static Logger logger = LoggerFactory.getLogger(DataSourceDBUnitTest.class);
 
     @Override
-    protected DataSource getDataSource() {
+    protected javax.sql.DataSource getDataSource() {
         JdbcDataSource dataSource = new JdbcDataSource();
         dataSource.setURL(JDBC_URL);
         dataSource.setUser("sa");
@@ -40,9 +38,9 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
 
     @Override
     protected IDataSet getDataSet() throws Exception {
-        try (InputStream resourceAsStream = getClass()
+        try (java.io.InputStream resourceAsStream = getClass()
                 .getClassLoader()
-                .getResourceAsStream("data.xml")) {
+                .getResourceAsStream("dbunit/data.xml")) {
             return new FlatXmlDataSetBuilder().build(resourceAsStream);
         }
     }
@@ -92,9 +90,9 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
 
     @Test
     public void testAssertByQuery() throws Exception {
-        try (final InputStream is = getClass()
+        try (final java.io.InputStream is = getClass()
                 .getClassLoader()
-                .getResourceAsStream("expected-user.xml")) {
+                .getResourceAsStream("dbunit/expected-user.xml")) {
             final IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(is);
             final ITable expectedTable = expectedDataSet.getTable("CLIENTS");
             final Connection conn = getDataSource().getConnection();
@@ -113,9 +111,9 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
 
     @Test
     public void testMultipleFailures() throws Exception {
-        try (final InputStream is = getClass()
+        try (final java.io.InputStream is = getClass()
                 .getClassLoader()
-                .getResourceAsStream("expected-multiple-failures.xml")) {
+                .getResourceAsStream("dbunit/expected-multiple-failures.xml")) {
             final IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(is);
             final ITable expectedTable = expectedDataSet.getTable("ITEMS");
             final Connection conn = getDataSource().getConnection();

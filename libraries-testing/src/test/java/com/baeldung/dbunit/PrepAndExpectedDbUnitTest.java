@@ -12,7 +12,6 @@ import org.dbunit.util.fileloader.DataFileLoader;
 import org.dbunit.util.fileloader.FlatXmlDataFileLoader;
 import org.junit.Test;
 
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
@@ -39,7 +38,7 @@ public class PrepAndExpectedDbUnitTest extends DefaultPrepAndExpectedTestCase {
     }
 
     private IDataSet initDataSet() throws Exception {
-        try (final InputStream is = getClass().getClassLoader().getResourceAsStream("data.xml")) {
+        try (final java.io.InputStream is = getClass().getClassLoader().getResourceAsStream("dbunit/data.xml")) {
             return new FlatXmlDataSetBuilder().build(is);
         }
     }
@@ -52,8 +51,8 @@ public class PrepAndExpectedDbUnitTest extends DefaultPrepAndExpectedTestCase {
     public void testSelect() throws Exception {
         final Connection connection = getConnection().getConnection();
         final VerifyTableDefinition[] verifyTables = {new VerifyTableDefinition("CLIENTS", new String[]{})};
-        final String[] prepDataFiles = {"/users.xml"};
-        final String[] expectedDataFiles = {"/users.xml"};
+        final String[] prepDataFiles = {"/dbunit/users.xml"};
+        final String[] expectedDataFiles = {"/dbunit/users.xml"};
         final PrepAndExpectedTestCaseSteps testSteps = () -> connection.createStatement()
                 .executeQuery("select * from CLIENTS where id = 1");
 
@@ -67,8 +66,8 @@ public class PrepAndExpectedDbUnitTest extends DefaultPrepAndExpectedTestCase {
     public void testUpdate() throws Exception {
         final Connection connection = getConnection().getConnection();
         final VerifyTableDefinition[] verifyTables = {new VerifyTableDefinition("CLIENTS", new String[]{})}; // define tables to verify
-        final String[] prepDataFiles = {"/users.xml"};
-        final String[] expectedDataFiles = {"/users_exp_rename.xml"};
+        final String[] prepDataFiles = {"/dbunit/users.xml"};
+        final String[] expectedDataFiles = {"/dbunit/users_exp_rename.xml"};
         final PrepAndExpectedTestCaseSteps testSteps = () -> connection.createStatement()
                 .executeUpdate("update CLIENTS set first_name = 'new name' where id = 1");
 
@@ -79,8 +78,8 @@ public class PrepAndExpectedDbUnitTest extends DefaultPrepAndExpectedTestCase {
     public void testDelete() throws Exception {
         final Connection connection = getConnection().getConnection();
         final VerifyTableDefinition[] verifyTables = {new VerifyTableDefinition("CLIENTS", new String[]{})};
-        final String[] prepDataFiles = {"/users.xml"};
-        final String[] expectedDataFiles = {"/users_exp_delete.xml"};
+        final String[] prepDataFiles = {"/dbunit/users.xml"};
+        final String[] expectedDataFiles = {"/dbunit/users_exp_delete.xml"};
         final PrepAndExpectedTestCaseSteps testSteps = () -> connection.createStatement()
                 .executeUpdate("delete from CLIENTS where id = 2");
 

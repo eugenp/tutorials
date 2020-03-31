@@ -13,7 +13,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
@@ -42,7 +41,7 @@ public class OldSchoolDbUnitTest {
     }
 
     private static IDataSet initDataSet() throws Exception {
-        try (final InputStream is = OldSchoolDbUnitTest.class.getClassLoader().getResourceAsStream("data.xml")) {
+        try (final java.io.InputStream is = OldSchoolDbUnitTest.class.getClassLoader().getResourceAsStream("dbunit/data.xml")) {
             return new FlatXmlDataSetBuilder().build(is);
         }
     }
@@ -71,8 +70,8 @@ public class OldSchoolDbUnitTest {
     public void testIgnoringProduced() throws Exception {
         final Connection connection = tester.getConnection().getConnection();
         final String[] excludedColumns = {"id", "produced"};
-        try (final InputStream is = getClass().getClassLoader()
-                .getResourceAsStream("expected-ignoring-registered_at.xml")) {
+        try (final java.io.InputStream is = getClass().getClassLoader()
+                .getResourceAsStream("dbunit/expected-ignoring-registered_at.xml")) {
             final IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(is);
             final ITable expectedTable = DefaultColumnFilter.excludedColumnsTable(expectedDataSet.getTable("ITEMS"), excludedColumns);
 
@@ -89,9 +88,9 @@ public class OldSchoolDbUnitTest {
     public void testDelete() throws Exception {
         final Connection connection = tester.getConnection().getConnection();
 
-        try (final InputStream is =
+        try (final java.io.InputStream is =
                      OldSchoolDbUnitTest.class.getClassLoader()
-                             .getResourceAsStream("items_exp_delete.xml");) {
+                             .getResourceAsStream("dbunit/items_exp_delete.xml");) {
             ITable expectedTable = new FlatXmlDataSetBuilder().build(is).getTable("items");
 
             connection.createStatement().executeUpdate("delete from ITEMS where id = 2");
@@ -107,9 +106,9 @@ public class OldSchoolDbUnitTest {
     public void testDeleteWithExcludedColumns() throws Exception {
         final Connection connection = tester.getConnection().getConnection();
 
-        try (final InputStream is =
+        try (final java.io.InputStream is =
                      OldSchoolDbUnitTest.class.getClassLoader()
-                             .getResourceAsStream("items_exp_delete_no_produced.xml")) {
+                             .getResourceAsStream("dbunit/items_exp_delete_no_produced.xml")) {
             final ITable expectedTable = new FlatXmlDataSetBuilder().build(is).getTable("items");
 
             connection.createStatement().executeUpdate("delete from ITEMS where id = 2");
@@ -126,9 +125,9 @@ public class OldSchoolDbUnitTest {
     public void testUpdate() throws Exception {
         final Connection connection = tester.getConnection().getConnection();
 
-        try (final InputStream is =
+        try (final java.io.InputStream is =
                      OldSchoolDbUnitTest.class.getClassLoader()
-                             .getResourceAsStream("items_exp_rename.xml")) {
+                             .getResourceAsStream("dbunit/items_exp_rename.xml")) {
             final ITable expectedTable = new FlatXmlDataSetBuilder().build(is).getTable("items");
 
             connection.createStatement().executeUpdate("update ITEMS set title='new name' where id = 1");
@@ -144,9 +143,9 @@ public class OldSchoolDbUnitTest {
     public void testUpdateWithExcludedColumns() throws Exception {
         final Connection connection = tester.getConnection().getConnection();
 
-        try (final InputStream is =
+        try (final java.io.InputStream is =
                      OldSchoolDbUnitTest.class.getClassLoader()
-                             .getResourceAsStream("items_exp_rename_no_produced.xml")) {
+                             .getResourceAsStream("dbunit/items_exp_rename_no_produced.xml")) {
             ITable expectedTable = new FlatXmlDataSetBuilder().build(is).getTable("items");
 
             connection.createStatement().executeUpdate("update ITEMS set title='new name' where id = 1");
