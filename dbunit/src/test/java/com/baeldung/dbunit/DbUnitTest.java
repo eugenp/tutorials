@@ -42,7 +42,7 @@ public class DbUnitTest extends DBTestCase {
 
     @Override
     protected DatabaseOperation getTearDownOperation() {
-        return DatabaseOperation.NONE;
+        return DatabaseOperation.DELETE_ALL;
     }
 
     @Test
