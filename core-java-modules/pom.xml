@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.core-java-modules</groupId>
     <artifactId>core-java-modules</artifactId>
@@ -52,13 +54,8 @@
 
         <!-- <module>core-java-date-operations-1</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
         <module>core-java-date-operations-2</module>
-        <!-- We haven't upgraded to java 9.-->
-        <!--
-        <module>core-java-datetime-computations</module>
-        <module>core-java-datetime-conversion</module>
-        <module>core-java-datetime-java8</module>
-        <module>core-java-datetime-string</module>
-        -->
+        <!-- We haven't upgraded to java 9. -->
+        <!-- <module>core-java-datetime-computations</module> <module>core-java-datetime-conversion</module> <module>core-java-datetime-java8</module> <module>core-java-datetime-string</module> -->
 
         <module>core-java-exceptions</module>
         <module>core-java-exceptions-2</module>
@@ -73,12 +70,13 @@
         <module>core-java-jar</module>
         <module>core-java-jndi</module>
         <!-- <module>core-java-jpms</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
-        <module>core-java-jvm</module>		
+        <module>core-java-jvm</module>
 
         <module>core-java-lambdas</module>
         <module>core-java-lang</module>
         <module>core-java-lang-2</module>
         <module>core-java-lang-math</module>
+        <module>core-java-lang-math-2</module>
         <module>core-java-lang-oop</module>
         <module>core-java-lang-oop-2</module>
         <module>core-java-lang-oop-3</module>
@@ -93,7 +91,7 @@
         <module>core-java-nio-2</module>
 
         <module>core-java-optional</module>
-        <!--<module>core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
+        <!--<module>core-java-os</module> --> <!-- We haven't upgraded to java 9. -->
 
         <module>core-java-perf</module>
 

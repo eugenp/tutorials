@@ -12,3 +12,5 @@ This module contains articles about Properties in Spring Boot.
 - [Spring YAML Configuration](https://www.baeldung.com/spring-yaml)
 - [Using Spring @Value with Defaults](https://www.baeldung.com/spring-value-defaults)
 - [How to Inject a Property Value Into a Class Not Managed by Spring?](https://www.baeldung.com/inject-properties-value-non-spring-class)
+- [Add Build Properties to a Spring Boot Application](https://www.baeldung.com/spring-boot-build-properties)
+- [IntelliJ – Cannot Resolve Spring Boot Configuration Properties Error](https://www.baeldung.com/intellij-resolve-spring-boot-configuration-properties)
