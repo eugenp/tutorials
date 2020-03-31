@@ -22,7 +22,7 @@ import com.baeldung.pattern.hexagonal.service.EmployeeService;
 
         @Autowired EmployeeMapper employeeMapper;
 
-        @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE) public ResponseEntity<?> createEmployee(@RequestBody EmployeeDto emp) {
+        @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE) public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto emp) {
                 Employee newEmp = employeeService.createEmployee(employeeMapper.toDomain(emp));
                 return ResponseEntity.ok(employeeMapper.toDto(newEmp));
         }
