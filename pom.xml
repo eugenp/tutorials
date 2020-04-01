@@ -601,7 +601,6 @@
             </build>
 
             <modules>
-
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
@@ -1289,8 +1288,6 @@
             </build>
 
             <modules>
-                <module>dbunit</module>
-
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
