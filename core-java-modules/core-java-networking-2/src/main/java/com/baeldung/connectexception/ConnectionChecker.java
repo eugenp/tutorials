@@ -10,7 +10,6 @@ public class ConnectionChecker {
 
         try {
             Socket clientSocket = new Socket(host, port);
-            System.out.println("is client connected to server? " + clientSocket.isConnected());
 
             // successfully connected to host, do something with opened socket
 
