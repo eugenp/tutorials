@@ -1,4 +1,4 @@
-package com.baeldung.introduction;
+package com.baeldung.quasar;
 
 import co.paralleluniverse.fibers.Fiber;
 
