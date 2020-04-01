@@ -1,4 +1,4 @@
-package com.baeldung.java9.set;
+package com.baeldung.set;
 
 import com.google.common.collect.ImmutableSet;
 
