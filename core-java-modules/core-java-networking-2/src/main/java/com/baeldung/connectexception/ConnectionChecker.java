@@ -12,11 +12,11 @@ public class ConnectionChecker {
             Socket clientSocket = new Socket(host, port);
             System.out.println("is client connected to server? " + clientSocket.isConnected());
 
-            //successfully connected to host, do something with opened socket
+            // successfully connected to host, do something with opened socket
 
             clientSocket.close();
         } catch (ConnectException e) {
-            //host and port combination not valid
+            // host and port combination not valid
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
