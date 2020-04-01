@@ -14,20 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baeldung.springboot.hexagonal.domain.Flight;
 import com.baeldung.springboot.hexagonal.domain.Reservation;
 import com.baeldung.springboot.hexagonal.domain.ReservationService;
-import com.baeldung.springboot.hexagonal.infrastructure.customerjpa.ReservationFile;
-import com.baeldung.springboot.hexagonal.infrastructure.customerjpa.ReservationFileRepository;
 
 @RestController
 public class BookingController {
     private ReservationService reservationService;
-    private ReservationFileRepository repo;
 
-    public BookingController(ReservationService reservationService, ReservationFileRepository repo) {
+    public BookingController(ReservationService reservationService) {
         this.reservationService = reservationService;
     }
 
     @GetMapping("/findFlights")
-    public List<Flight> getTravel(@RequestParam("date") String date, @RequestParam("origin") String origin,
+    public List<Flight> findFlights(@RequestParam("date") String date, @RequestParam("origin") String origin,
             @RequestParam("destination") String destination) {
         return reservationService.identifyFLights(date, origin, destination);
     }
@@ -48,10 +45,5 @@ public class BookingController {
         reservation.setCustomerId(customerId);
         reservation.setId(reservationId);
         return reservationService.cancel(reservation);
-    }
-
-    @GetMapping("/booking")
-    public List<ReservationFile> booking() {
-        return repo.findAll();
     }
 }
