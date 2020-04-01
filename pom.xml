@@ -388,7 +388,6 @@
                 <module>blade</module>
                 <module>bootique</module>
 
-                <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -730,6 +729,7 @@
                 <module>spring-threads</module>
                 <module>spring-thymeleaf</module>
                 <module>spring-thymeleaf-2</module>
+                <module>spring-thymeleaf-3</module>
 
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
@@ -899,7 +899,6 @@
                 <module>blade</module>
                 <module>bootique</module>
 
-                <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -1231,6 +1230,7 @@
 
                 <module>spring-thymeleaf</module>
                 <module>spring-thymeleaf-2</module>
+                <module>spring-thymeleaf-3</module>
 
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
