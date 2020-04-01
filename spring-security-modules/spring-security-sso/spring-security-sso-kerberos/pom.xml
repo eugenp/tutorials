@@ -6,7 +6,7 @@
     <artifactId>spring-security-sso-kerberos</artifactId>
 
     <parent>
-        <groupId>org.baeldung</groupId>
+        <groupId>com.baeldung</groupId>
         <artifactId>spring-security-sso</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>

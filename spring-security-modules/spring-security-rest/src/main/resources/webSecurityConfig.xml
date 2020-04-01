@@ -30,7 +30,7 @@
 	</http>
 
 	<beans:bean id="mySuccessHandler"
-		class="org.baeldung.security.MySavedRequestAwareAuthenticationSuccessHandler" />
+		class="com.baeldung.security.MySavedRequestAwareAuthenticationSuccessHandler" />
 	<beans:bean id="myFailureHandler"
 		class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler" />
 
