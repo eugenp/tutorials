@@ -12,6 +12,7 @@ import org.dbunit.util.fileloader.DataFileLoader;
 import org.dbunit.util.fileloader.FlatXmlDataFileLoader;
 import org.junit.Test;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
@@ -23,67 +24,60 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class PrepAndExpectedDbUnitTest extends DefaultPrepAndExpectedTestCase {
 
-    @Override
-    public void setUp() throws Exception {
-        setDatabaseTester(initDatabaseTester());
-        setDataFileLoader(initDataFileLoader());
-        super.setUp();
-    }
-
-    private IDatabaseTester initDatabaseTester() throws Exception {
-        final JdbcDatabaseTester tester = new JdbcDatabaseTester(JDBC_DRIVER, JDBC_URL, USER, PASSWORD);
-        tester.setDataSet(initDataSet());
-        tester.setSetUpOperation(DatabaseOperation.REFRESH);
-        return tester;
-    }
-
-    private IDataSet initDataSet() throws Exception {
-        try (final java.io.InputStream is = getClass().getClassLoader().getResourceAsStream("dbunit/data.xml")) {
-            return new FlatXmlDataSetBuilder().build(is);
+        @Override public void setUp() throws Exception {
+                setDatabaseTester(initDatabaseTester());
+                setDataFileLoader(initDataFileLoader());
+                super.setUp();
         }
-    }
 
-    private DataFileLoader initDataFileLoader() {
-        return new FlatXmlDataFileLoader();
-    }
+        private IDatabaseTester initDatabaseTester() throws Exception {
+                final JdbcDatabaseTester tester = new JdbcDatabaseTester(JDBC_DRIVER, JDBC_URL, USER, PASSWORD);
+                tester.setDataSet(initDataSet());
+                tester.setSetUpOperation(DatabaseOperation.REFRESH);
+                return tester;
+        }
 
-    @Test
-    public void testSelect() throws Exception {
-        final Connection connection = getConnection().getConnection();
-        final VerifyTableDefinition[] verifyTables = {new VerifyTableDefinition("CLIENTS", new String[]{})};
-        final String[] prepDataFiles = {"/dbunit/users.xml"};
-        final String[] expectedDataFiles = {"/dbunit/users.xml"};
-        final PrepAndExpectedTestCaseSteps testSteps = () -> connection.createStatement()
-                .executeQuery("select * from CLIENTS where id = 1");
+        private IDataSet initDataSet() throws Exception {
+                try (final InputStream is = getClass().getClassLoader().getResourceAsStream("dbunit/data.xml")) {
+                        return new FlatXmlDataSetBuilder().build(is);
+                }
+        }
 
-        final ResultSet rs = (ResultSet) super.runTest(verifyTables, prepDataFiles, expectedDataFiles, testSteps);
+        private DataFileLoader initDataFileLoader() {
+                return new FlatXmlDataFileLoader();
+        }
 
-        assertThat(rs.next()).isTrue();
-        assertThat(rs.getString("last_name")).isEqualTo("Xavier");
-    }
+        @Test public void testSelect() throws Exception {
+                final Connection connection = getConnection().getConnection();
+                final VerifyTableDefinition[] verifyTables = { new VerifyTableDefinition("CLIENTS", new String[] {}) };
+                final String[] prepDataFiles = { "/dbunit/users.xml" };
+                final String[] expectedDataFiles = { "/dbunit/users.xml" };
+                final PrepAndExpectedTestCaseSteps testSteps = () -> connection.createStatement().executeQuery("select * from CLIENTS where id = 1");
 
-    @Test
-    public void testUpdate() throws Exception {
-        final Connection connection = getConnection().getConnection();
-        final VerifyTableDefinition[] verifyTables = {new VerifyTableDefinition("CLIENTS", new String[]{})}; // define tables to verify
-        final String[] prepDataFiles = {"/dbunit/users.xml"};
-        final String[] expectedDataFiles = {"/dbunit/users_exp_rename.xml"};
-        final PrepAndExpectedTestCaseSteps testSteps = () -> connection.createStatement()
-                .executeUpdate("update CLIENTS set first_name = 'new name' where id = 1");
+                final ResultSet rs = (ResultSet) super.runTest(verifyTables, prepDataFiles, expectedDataFiles, testSteps);
 
-        super.runTest(verifyTables, prepDataFiles, expectedDataFiles, testSteps);
-    }
+                assertThat(rs.next()).isTrue();
+                assertThat(rs.getString("last_name")).isEqualTo("Xavier");
+        }
 
-    @Test
-    public void testDelete() throws Exception {
-        final Connection connection = getConnection().getConnection();
-        final VerifyTableDefinition[] verifyTables = {new VerifyTableDefinition("CLIENTS", new String[]{})};
-        final String[] prepDataFiles = {"/dbunit/users.xml"};
-        final String[] expectedDataFiles = {"/dbunit/users_exp_delete.xml"};
-        final PrepAndExpectedTestCaseSteps testSteps = () -> connection.createStatement()
-                .executeUpdate("delete from CLIENTS where id = 2");
+        @Test public void testUpdate() throws Exception {
+                final Connection connection = getConnection().getConnection();
+                final VerifyTableDefinition[] verifyTables = { new VerifyTableDefinition("CLIENTS", new String[] {}) }; // define tables to verify
+                final String[] prepDataFiles = { "/dbunit/users.xml" };
+                final String[] expectedDataFiles = { "/dbunit/users_exp_rename.xml" };
+                final PrepAndExpectedTestCaseSteps testSteps = () -> connection.createStatement().executeUpdate("update CLIENTS set first_name = 'new name' where id = 1");
 
-        super.runTest(verifyTables, prepDataFiles, expectedDataFiles, testSteps);
-    }
+                super.runTest(verifyTables, prepDataFiles, expectedDataFiles, testSteps);
+        }
+
+        @Test public void testDelete() throws Exception {
+                final Connection connection = getConnection().getConnection();
+                final VerifyTableDefinition[] verifyTables = { new VerifyTableDefinition("CLIENTS", new String[] {}) };
+                final String[] prepDataFiles = { "/dbunit/users.xml" };
+                final String[] expectedDataFiles = { "/dbunit/users_exp_delete.xml" };
+                final PrepAndExpectedTestCaseSteps testSteps = () -> connection.createStatement().executeUpdate("delete from CLIENTS where id = 2");
+
+                super.runTest(verifyTables, prepDataFiles, expectedDataFiles, testSteps);
+        }
 
 }
