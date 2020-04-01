@@ -52,7 +52,11 @@
             <artifactId>shedlock-provider-jdbc-template</artifactId>
             <version>${shedlock.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+        </dependency>
         <!-- Barcodes -->
         <dependency>
             <groupId>net.sourceforge.barbecue</groupId>
@@ -79,6 +83,7 @@
             <artifactId>javase</artifactId>
             <version>${zxing.version}</version>
         </dependency>
+
     </dependencies>
 
     <repositories>
@@ -185,6 +190,7 @@
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <modelmapper.version>2.3.2</modelmapper.version>
         <problem-spring-web.version>0.23.0</problem-spring-web.version>
+        <h2.version>1.4.200</h2.version>
         <shedlock.version>2.1.0</shedlock.version>
         <barbecue.version>1.5-beta1</barbecue.version>
         <barcode4j.version>2.1</barcode4j.version>
