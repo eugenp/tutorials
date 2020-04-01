@@ -71,16 +71,14 @@ public class BsonToJsonIntegrationTest {
             json = bson.toJson();
         }
         
-        String expectedJson = """
-           {"_id": "isbn",
-                "className": "com.baeldung.morphia.domain.Book",
-                "title": "title",
-                "author": "author",
-                "publisher": {"_id": {"$oid": "fffffffffffffffffffffffa"},
-                    "name": "publisher"},
-                "price": 3.95,
-                "publishDate": {"$date": 1577898812000}}
-        """.replaceAll("\\n\\s+", " ").trim();
+        String expectedJson = "{\"_id\": \"isbn\", " + 
+            "\"className\": \"com.baeldung.morphia.domain.Book\", " + 
+            "\"title\": \"title\", " + 
+            "\"author\": \"author\", " + 
+            "\"publisher\": {\"_id\": {\"$oid\": \"fffffffffffffffffffffffa\"}, " + 
+            "\"name\": \"publisher\"}, " + 
+            "\"price\": 3.95, " + 
+            "\"publishDate\": {\"$date\": 1577898812000}}";
 
         assertNotNull(json);
         
@@ -101,16 +99,14 @@ public class BsonToJsonIntegrationTest {
                 .build());
         }
         
-        String expectedJson = """
-           {"_id": "isbn",
-                "className": "com.baeldung.morphia.domain.Book",
-                "title": "title",
-                "author": "author",
-                "publisher": {"_id": {"$oid": "fffffffffffffffffffffffa"},
-                    "name": "publisher"},
-                "price": 3.95,
-                "publishDate": {"$date": "2020-01-01T17:13:32Z"}}
-        """.replaceAll("\\n\\s+", " ").trim();
+        String expectedJson = "{\"_id\": \"isbn\", " + 
+            "\"className\": \"com.baeldung.morphia.domain.Book\", " + 
+            "\"title\": \"title\", " + 
+            "\"author\": \"author\", " + 
+            "\"publisher\": {\"_id\": {\"$oid\": \"fffffffffffffffffffffffa\"}, " + 
+            "\"name\": \"publisher\"}, " + 
+            "\"price\": 3.95, " + 
+            "\"publishDate\": {\"$date\": \"2020-01-01T17:13:32Z\"}}";
 
         assertNotNull(json);
         
@@ -130,16 +126,14 @@ public class BsonToJsonIntegrationTest {
                 .build());
         }
 
-        String expectedJson = """
-            {"_id": "isbn",
-                 "className": "com.baeldung.morphia.domain.Book",
-                 "title": "title",
-                 "author": "author",
-                 "publisher": {"_id": {"$oid": "fffffffffffffffffffffffa"},
-                     "name": "publisher"},
-                 "price": 3.95,
-                 "publishDate": "2020-01-01T17:13:32Z"}
-         """.replaceAll("\\n\\s+", " ").trim();
+        String expectedJson = "{\"_id\": \"isbn\", " + 
+            "\"className\": \"com.baeldung.morphia.domain.Book\", " + 
+            "\"title\": \"title\", " + 
+            "\"author\": \"author\", " + 
+            "\"publisher\": {\"_id\": {\"$oid\": \"fffffffffffffffffffffffa\"}, " + 
+            "\"name\": \"publisher\"}, " + 
+            "\"price\": 3.95, " + 
+            "\"publishDate\": \"2020-01-01T17:13:32Z\"}";
 
         assertEquals(expectedJson, json);
 
