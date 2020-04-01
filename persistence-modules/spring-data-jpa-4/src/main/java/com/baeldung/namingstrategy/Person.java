@@ -9,7 +9,6 @@ public class Person {
     @Id
     private Long id;
 
-    @Column(name = "FIRSTNAME")
     private String firstName;
 
     private String lastName;
