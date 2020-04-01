@@ -601,7 +601,6 @@
             </build>
 
             <modules>
-                <module>dbunit</module>
 
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
