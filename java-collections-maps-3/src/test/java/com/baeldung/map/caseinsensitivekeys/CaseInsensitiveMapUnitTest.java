@@ -29,7 +29,7 @@ public class CaseInsensitiveMapUnitTest {
 
     @Test
     public void givenLinkedCaseInsensitiveMap_whenTwoEntriesAdded_thenSizeIsOne(){
-        LinkedCaseInsensitiveMap<Integer> linkedHashMap = new LinkedCaseInsensitiveMap<>();
+        Map<String, Integer> linkedHashMap = new LinkedCaseInsensitiveMap<>();
         linkedHashMap.put("abc", 1);
         linkedHashMap.put("ABC", 2);
 
@@ -58,7 +58,7 @@ public class CaseInsensitiveMapUnitTest {
 
     @Test
     public void givenLinkedCaseInsensitiveMap_whenSameEntryAdded_thenValueUpdated(){
-        LinkedCaseInsensitiveMap<Integer> linkedHashMap = new LinkedCaseInsensitiveMap<>();
+        Map<String, Integer> linkedHashMap = new LinkedCaseInsensitiveMap<>();
         linkedHashMap.put("abc", 1);
         linkedHashMap.put("ABC", 2);
 
@@ -86,7 +86,7 @@ public class CaseInsensitiveMapUnitTest {
 
     @Test
     public void givenLinkedCaseInsensitiveMap_whenEntryRemoved_thenSizeIsZero(){
-        LinkedCaseInsensitiveMap<Integer> linkedHashMap = new LinkedCaseInsensitiveMap<>();
+        Map<String, Integer> linkedHashMap = new LinkedCaseInsensitiveMap<>();
         linkedHashMap.put("abc", 3);
         linkedHashMap.remove("aBC");
 
