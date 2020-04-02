@@ -19,7 +19,7 @@ public class ReservationFile {
     private Long customerId;
     private String travelDate;
     private String flightNumbers;
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<FlightEntity> flights;
 
     public Long getId() {

@@ -8,7 +8,7 @@ public class Flight {
 
     public Flight() {
     }
-    
+
     public Flight(String number, String origin, String destination, String date) {
         this.number = number;
         this.origin = origin;

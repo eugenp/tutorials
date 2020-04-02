@@ -24,8 +24,7 @@ public class BookingController {
     }
 
     @GetMapping("/findFlights")
-    public List<Flight> findFlights(@RequestParam("date") String date, @RequestParam("origin") String origin,
-            @RequestParam("destination") String destination) {
+    public List<Flight> findFlights(@RequestParam("date") String date, @RequestParam("origin") String origin, @RequestParam("destination") String destination) {
         return reservationService.identifyFLights(date, origin, destination);
     }
 

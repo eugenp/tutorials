@@ -29,15 +29,13 @@ public class CustomerFileJpaImpl implements CustomerFileService {
     @Override
     @Transactional
     public List<Reservation> bookings(Long customerId) {
-        return repository.findByCustomerId(customerId).stream()
-                .map(CustomerFileJpaImpl::toReservation)
-                .collect(Collectors.toList());
+        return repository.findByCustomerId(customerId).stream().map(CustomerFileJpaImpl::toReservation).collect(Collectors.toList());
     }
 
     @Override
     public boolean delete(Long customerId, UUID booking) {
         ReservationFile file = repository.findByCustomerIdAndReservationId(customerId, booking);
-        if(file!=null) {
+        if (file != null) {
             repository.delete(file);
             return true;
         }
@@ -48,16 +46,12 @@ public class CustomerFileJpaImpl implements CustomerFileService {
         Reservation reservation = new Reservation();
         reservation.setCustomerId(file.getCustomerId());
         reservation.setId(file.getReservationId());
-        
-        for(int i=0; i<file.getFlights().size(); i++)
+
+        for (int i = 0; i < file.getFlights().size(); i++)
             file.getFlights().get(i);
-        
-        reservation.setFlights(
-                file.getFlights().stream()
-                    .map(CustomerFileJpaImpl::toFlight)
-                    .collect(Collectors.toList())
-                );
-        
+
+        reservation.setFlights(file.getFlights().stream().map(CustomerFileJpaImpl::toFlight).collect(Collectors.toList()));
+
         return reservation;
     }
 
@@ -67,15 +61,12 @@ public class CustomerFileJpaImpl implements CustomerFileService {
         record.setCustomerId(booking.getCustomerId());
         record.setTravelDate(booking.getFlights().get(0).getDate());
 
-        record.setFlights(
-                booking.getFlights().stream()
-                    .map(CustomerFileJpaImpl::toFlightEntity)
-                    .collect(Collectors.toList())
-                    
-                );
+        record.setFlights(booking.getFlights().stream().map(CustomerFileJpaImpl::toFlightEntity).collect(Collectors.toList())
+
+        );
         return record;
     }
-    
+
     private static Flight toFlight(FlightEntity entity) {
         Flight flight = new Flight();
         flight.setDate(entity.getDate());
@@ -84,7 +75,7 @@ public class CustomerFileJpaImpl implements CustomerFileService {
         flight.setNumber(entity.getNumber());
         return flight;
     }
-    
+
     private static FlightEntity toFlightEntity(Flight flight) {
         FlightEntity entity = new FlightEntity();
         entity.setDate(flight.getDate());

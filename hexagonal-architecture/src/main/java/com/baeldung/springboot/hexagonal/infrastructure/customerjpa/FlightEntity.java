@@ -9,7 +9,7 @@ public class FlightEntity {
     @Id
     @GeneratedValue
     private Long id;
-    
+
     private String number;
     private String origin;
     private String destination;

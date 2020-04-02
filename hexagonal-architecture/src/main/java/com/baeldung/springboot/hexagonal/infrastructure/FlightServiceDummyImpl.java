@@ -9,11 +9,6 @@ import org.springframework.stereotype.Component;
 
 import com.baeldung.springboot.hexagonal.domain.Flight;
 
-/**
- * Dummy implementation of the {@link FlightService} interface. This dummy class
- * only knows a predefined set of routes, can be easily replaced by a HTTP call
- * to a real service.
- */
 @Component
 public class FlightServiceDummyImpl implements FlightService {
     private static final String CDG = "CDG";
@@ -28,8 +23,7 @@ public class FlightServiceDummyImpl implements FlightService {
             String flightCode1 = flightCodes.get(origin + CDG);
             String flightCode2 = flightCodes.get(CDG + destination);
             if (flightCode1 != null && flightCode2 != null) {
-                return Arrays.asList(new Flight(flightCode1, origin, CDG, date),
-                        new Flight(flightCode2, CDG, destination, date));
+                return Arrays.asList(new Flight(flightCode1, origin, CDG, date), new Flight(flightCode2, CDG, destination, date));
             }
             ;
         }

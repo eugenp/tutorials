@@ -4,17 +4,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class Reservation {
-    /**
-     * Functional ID of the reservation
-     */
     private UUID id;
-    /**
-     * Customer holding the reservation
-     */
     private Long customerId;
-    /**
-     * List of flights in the reservation
-     */
     private List<Flight> flights;
 
     public UUID getId() {
