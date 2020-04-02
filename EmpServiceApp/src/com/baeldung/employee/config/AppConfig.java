@@ -38,16 +38,6 @@ public class AppConfig {
         return new ModelMapper();
     }
 
-    /*    @Bean
-    public ObjectMapper objectMapper() {
-    
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-    
-        return mapper;
-    }
-    */
 
     @Bean(name = "emf")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -58,7 +48,7 @@ public class AppConfig {
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setPackagesToScan("com.baeldung.employee");
         factory.setDataSource(h2DataSource());
-        // factory.setJpaProperties(jpaProperties());
+
 
         return factory;
     }

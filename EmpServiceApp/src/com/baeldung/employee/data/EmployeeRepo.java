@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.baeldung.employee.domain.Employee;
 
-public interface EmployeeRepo extends JpaRepository<Employee, Long> {
+public interface EmployeeRepo extends JpaRepository<Employee, Integer> {
 
 }
