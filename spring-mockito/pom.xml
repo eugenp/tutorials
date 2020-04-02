@@ -28,7 +28,7 @@
     </dependencies>
 
     <properties>
-        <mockito.version>2.21.0</mockito.version>
+        <mockito.version>2.24.0</mockito.version>
     </properties>
 
 </project>
