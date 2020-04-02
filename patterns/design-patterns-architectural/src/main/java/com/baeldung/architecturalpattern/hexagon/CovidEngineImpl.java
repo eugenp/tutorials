@@ -1,11 +1,15 @@
-package com.baeldung.architecturalpattern.adapters;
+package com.baeldung.architecturalpattern.hexagon;
 
 import com.baeldung.architecturalpattern.dao.Covid;
-import com.baeldung.architecturalpattern.ports.CovidService;
+import com.baeldung.architecturalpattern.ports.CovidRepo;
 
-public class CovidServiceImpl implements CovidService {
+public class CovidEngineImpl implements CovidEngine {
 
-    private CovidRepoImpl repoImpl = new CovidRepoImpl();
+    private CovidRepo repoImpl;
+
+    public CovidEngineImpl(CovidRepo repoImpl) {
+        this.repoImpl = repoImpl;
+    }
 
     @Override
     public void updateStatus(String countryName, int activeCase, int recoveredCase, int fatalCase) {

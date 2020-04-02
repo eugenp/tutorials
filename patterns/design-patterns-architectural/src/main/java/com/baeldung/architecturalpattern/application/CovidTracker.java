@@ -1,12 +1,16 @@
 package com.baeldung.architecturalpattern.application;
 
-import com.baeldung.architecturalpattern.adapters.CovidServiceImpl;
+import com.baeldung.architecturalpattern.adapters.CovidRepoImpl;
+import com.baeldung.architecturalpattern.adapters.CovidUIServiceImpl;
 import com.baeldung.architecturalpattern.dao.Covid;
-import com.baeldung.architecturalpattern.ports.CovidService;
+import com.baeldung.architecturalpattern.hexagon.CovidEngine;
+import com.baeldung.architecturalpattern.hexagon.CovidEngineImpl;
+import com.baeldung.architecturalpattern.ports.CovidRepo;
+import com.baeldung.architecturalpattern.ports.CovidUIService;
 
 public class CovidTracker {
 
-    static CovidService trackerApplication = new CovidServiceImpl();
+    private static CovidUIService trackerApplication;
 
     public static void feedCountryData(String countryName, int activeNoOfCases, int recoveredCases, int fatalCases) {
         trackerApplication.updateStatus("India", 20, 10, 5);
@@ -15,17 +19,24 @@ public class CovidTracker {
     }
 
     public static Covid getCountryData(String countryName) {
-        return trackerApplication.getStatus("India");
+        return trackerApplication.getStatus(countryName);
     }
 
     public static void main(String[] args) {
 
+        CovidRepo repo = new CovidRepoImpl();
+        
+        CovidEngine engine = new CovidEngineImpl(repo);
+        
+        trackerApplication = new CovidUIServiceImpl(engine);
+
         feedCountryData("India", 20, 10, 5);
         feedCountryData("Germany", 50, 25, 10);
         feedCountryData("Italy", 100, 50, 20);
+
         // This object holds the information for the Country India
-        Covid indiaStatus = getCountryData("India");
+        Covid indiaStatus = getCountryData("Germany");
         System.out.println(indiaStatus.getCountryName() + ":" + indiaStatus.getTotalCases());
-        
+
     }
 }

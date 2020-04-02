@@ -1,8 +1,8 @@
-package com.baeldung.architecturalpattern.ports;
+package com.baeldung.architecturalpattern.hexagon;
 
 import com.baeldung.architecturalpattern.dao.Covid;
 
-public interface CovidService {
+public interface CovidEngine {
 
     public void updateStatus(String countryName, int activeCase, int recoveredCase, int fatalCase);
 
