@@ -1,8 +1,5 @@
 package com.baeldung.guava.mapmaker;
 
-import com.baeldung.guava.entity.Profile;
-import com.baeldung.guava.entity.Session;
-import com.baeldung.guava.entity.User;
 import com.google.common.collect.MapMaker;
 import org.junit.Assert;
 import org.junit.Test;
