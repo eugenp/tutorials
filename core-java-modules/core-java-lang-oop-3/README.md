@@ -8,7 +8,6 @@ This module contains articles about Object-oriented programming (OOP) in Java
 - [Guide to the super Java Keyword](https://www.baeldung.com/java-super)
 - [Guide to the this Java Keyword](https://www.baeldung.com/java-this)
 - [Java ‘public’ Access Modifier](https://www.baeldung.com/java-public-keyword)
-- [Composition, Aggregation, and Association in Java](https://www.baeldung.com/java-composition-aggregation-association)
 - [Nested Classes in Java](https://www.baeldung.com/java-nested-classes)
 - [A Guide to Inner Interfaces in Java](https://www.baeldung.com/java-inner-interfaces)
 - [Java Classes and Objects](https://www.baeldung.com/java-classes-objects)

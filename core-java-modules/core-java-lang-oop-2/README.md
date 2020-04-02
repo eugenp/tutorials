@@ -8,8 +8,6 @@ This module contains articles about Object-oriented programming (OOP) in Java
 - [Raw Types in Java](https://www.baeldung.com/raw-types-java)
 - [Marker Interfaces in Java](https://www.baeldung.com/java-marker-interfaces)
 - [Java equals() and hashCode() Contracts](https://www.baeldung.com/java-equals-hashcode-contracts)
-- [Immutable Objects in Java](https://www.baeldung.com/java-immutable-object)
-- [Inheritance and Composition (Is-a vs Has-a relationship) in Java](https://www.baeldung.com/java-inheritance-composition)
 - [Static and Default Methods in Interfaces in Java](https://www.baeldung.com/java-static-default-methods)
 - [Abstract Classes in Java](https://www.baeldung.com/java-abstract-class)
 - [[<-- Prev]](/core-java-modules/core-java-lang-oop)[[More -->]](/core-java-modules/core-java-lang-oop-3)

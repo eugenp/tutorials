@@ -16,5 +16,6 @@
 
     <modules>
         <module>core-java-lang-oop-constructors</module>
+        <module>core-java-lang-oop-patterns</module>
     </modules>
 </project>
