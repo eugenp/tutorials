@@ -15,7 +15,6 @@ public class CaseInsensitiveMapUnitTest {
         treeMap.put("ABC", 2);
 
         assertEquals(1, treeMap.size());
-
     }
 
     @Test
