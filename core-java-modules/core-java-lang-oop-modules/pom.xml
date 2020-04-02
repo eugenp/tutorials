@@ -9,7 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>core-java-oop-modules</artifactId>
+    <groupId>com.baeldung.core-java-lang-oop-modules</groupId>
+    <artifactId>core-java-lang-oop-modules</artifactId>
+    <name>core-java-lang-oop-modules</name>
+    <packaging>pom</packaging>
 
-
+    <modules>
+        <module>core-java-lang-oop-constructors</module>
+    </modules>
 </project>

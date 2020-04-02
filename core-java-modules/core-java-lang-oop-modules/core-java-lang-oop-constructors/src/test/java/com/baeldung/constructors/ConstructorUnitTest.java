@@ -1,20 +1,19 @@
 package com.baeldung.constructors;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.logging.Logger;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ConstructorUnitTest {
-    final static Logger LOGGER = Logger.getLogger(ConstructorUnitTest.class.getName());
-
+    
     @Test
     public void givenNoExplicitContructor_whenUsed_thenFails() {
         BankAccount account = new BankAccount();
-        assertThatThrownBy(() -> {
+        Assertions.assertThatThrownBy(() -> {
             account.toString();
         }).isInstanceOf(Exception.class);
     }
@@ -22,7 +21,7 @@ public class ConstructorUnitTest {
     @Test
     public void givenNoArgumentConstructor_whenUsed_thenSucceeds() {
         BankAccountEmptyConstructor account = new BankAccountEmptyConstructor();
-        assertThatCode(() -> {
+        Assertions.assertThatCode(() -> {
             account.toString();
         }).doesNotThrowAnyException();
     }
@@ -33,7 +32,7 @@ public class ConstructorUnitTest {
         BankAccountParameterizedConstructor account =
                 new BankAccountParameterizedConstructor("Tom", opened, 1000.0f);
 
-        assertThatCode(() -> {
+        Assertions.assertThatCode(() -> {
             account.toString();
         }).doesNotThrowAnyException();
     }
