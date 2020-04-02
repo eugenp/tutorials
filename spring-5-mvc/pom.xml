@@ -42,6 +42,11 @@
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+        </dependency>
         <!--kotlin deps -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -175,8 +180,8 @@
         <jayway-rest-assured.version>2.9.0</jayway-rest-assured.version>
         <jackson.version>2.9.9</jackson.version> <!-- Same as spring-boot-dependencies:2.1.7.RELEASE -->
         <kotlin.version>1.2.71</kotlin.version> <!-- Same as spring-boot-dependencies:2.1.7.RELEASE -->
-        <start-class>com.baeldung.Spring5Application</start-class>
         <httpclient.version>4.5.8</httpclient.version>
+        <start-class>com.baeldung.Spring5Application</start-class>
     </properties>
 
 </project>

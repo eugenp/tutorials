@@ -12,3 +12,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Returning Custom Status Codes from Spring Controllers](https://www.baeldung.com/spring-mvc-controller-custom-http-status-code)
 - [Spring RequestMapping](https://www.baeldung.com/spring-requestmapping)
 - [Guide to DeferredResult in Spring](https://www.baeldung.com/spring-deferred-result)
+- [Using JSON Patch in Spring REST APIs](https://www.baeldung.com/spring-rest-json-patch)

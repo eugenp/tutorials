@@ -11,3 +11,4 @@ This module contains articles about the Java Set collection
 - [Guide to EnumSet](https://www.baeldung.com/java-enumset)
 - [Set Operations in Java](https://www.baeldung.com/java-set-operations)
 - [Copying Sets in Java](https://www.baeldung.com/java-copy-sets)
+- [Immutable Set in Java](https://www.baeldung.com/java-immutable-set)
