@@ -6,7 +6,7 @@ class BankAccount {
     String name;
     LocalDateTime opened;
     double balance;
-    
+
     @Override
     public String toString() {
         return String.format("%s, %s, %f", this.name, this.opened.toString(), this.balance);
@@ -47,14 +47,13 @@ class BankAccountCopyConstructor extends BankAccount {
         this.opened = opened;
         this.balance = balance;
     }
-        
+
     public BankAccountCopyConstructor(BankAccount other) {
         this.name = other.name;
         this.opened = LocalDateTime.now();
         this.balance = 0.0f;
     }
 }
-
 class BankAccountChainedConstructors extends BankAccount {
     public BankAccountChainedConstructors(String name, LocalDateTime opened, double balance) {
         this.name = name;
