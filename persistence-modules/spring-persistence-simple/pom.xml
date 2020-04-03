@@ -131,7 +131,7 @@
         <org.springframework.version>5.2.5.RELEASE</org.springframework.version>
 
         <!-- persistence -->
-        <hibernate.version>5.4.2.Final</hibernate.version>
+        <hibernate.version>5.4.13.Final</hibernate.version>
         <mysql-connector-java.version>6.0.6</mysql-connector-java.version>
         <h2.version>1.4.200</h2.version>
         <spring-data-jpa.version>2.2.6.RELEASE</spring-data-jpa.version>
