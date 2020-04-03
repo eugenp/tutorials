@@ -4,25 +4,23 @@ import com.baeldung.app.api.Flower;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@ExtendWith(MockitoExtension.class)
-public class FlowerReaderServiceTestWithoutSpring {
+@ExtendWith(SpringExtension.class)
+@SpringBootTest
+public class FlowerReaderServiceUnitTest {
 
-    @Mock
+    @MockBean
     private ObjectMapper objectMapper;
 
+    @Autowired
     private FlowerReaderService flowerReader;
-
-    @BeforeEach
-    public void setUp() {
-        flowerReader = new FlowerReaderService(objectMapper);
-    }
 
     @Test
     public void whenCallingWithJsonAsString_thenReturnsExpectedFlowerObject() throws JsonProcessingException {
@@ -37,6 +35,7 @@ public class FlowerReaderServiceTestWithoutSpring {
 
         Assertions.assertEquals(roseName, expectedRose.getName());
         Assertions.assertEquals(rosePetals, expectedRose.getPetals());
+
     }
 
     @Test
