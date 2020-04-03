@@ -1,6 +1,6 @@
 package com.baeldung.hexagonarch.adapters.driven;
 
-import org.hexagonarch.ports.driven.Person;
+import com.baeldung.hexagonarch.ports.driven.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Collection;

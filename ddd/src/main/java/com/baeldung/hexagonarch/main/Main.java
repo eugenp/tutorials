@@ -1,9 +1,9 @@
 package com.baeldung.hexagonarch.main;
 
-import org.hexagonarch.adapters.driven.PersonDatabaseRepository;
-import org.hexagonarch.adapters.driver.FlyerSenderServiceTest;
-import org.hexagonarch.ports.driven.PersonRepository;
-import org.hexagonarch.ports.driver.MailBoxService;
+import com.baeldung.hexagonarch.adapters.driven.PersonDatabaseRepository;
+import com.baeldung.hexagonarch.adapters.driver.FlyerSenderServiceTest;
+import com.baeldung.hexagonarch.ports.driven.PersonRepository;
+import com.baeldung.hexagonarch.ports.driver.MailBoxService;
 
 import java.lang.reflect.Constructor;
 

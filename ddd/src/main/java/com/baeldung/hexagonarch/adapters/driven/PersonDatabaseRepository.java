@@ -1,7 +1,7 @@
 package com.baeldung.hexagonarch.adapters.driven;
 
-import org.hexagonarch.ports.driven.Person;
-import org.hexagonarch.ports.driven.PersonRepository;
+import com.baeldung.hexagonarch.ports.driven.Person;
+import com.baeldung.hexagonarch.ports.driven.PersonRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

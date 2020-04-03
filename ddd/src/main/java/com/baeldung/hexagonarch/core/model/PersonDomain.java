@@ -1,6 +1,6 @@
 package com.baeldung.hexagonarch.core.model;
 
-import org.hexagonarch.ports.driven.Person;
+import com.baeldung.hexagonarch.ports.driven.Person;
 
 public class PersonDomain {
 

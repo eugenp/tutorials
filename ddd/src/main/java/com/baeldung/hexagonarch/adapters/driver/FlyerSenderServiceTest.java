@@ -1,6 +1,6 @@
 package com.baeldung.hexagonarch.adapters.driver;
 
-import org.hexagonarch.ports.driver.MailBoxService;
+import com.baeldung.hexagonarch.ports.driver.MailBoxService;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

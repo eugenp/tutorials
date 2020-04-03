@@ -1,9 +1,9 @@
 package com.baeldung.hexagonarch.core.service;
 
-import org.hexagonarch.core.model.PersonDomain;
-import org.hexagonarch.ports.driven.Person;
-import org.hexagonarch.ports.driven.PersonRepository;
-import org.hexagonarch.ports.driver.MailBoxService;
+import com.baeldung.hexagonarch.core.model.PersonDomain;
+import com.baeldung.hexagonarch.ports.driven.Person;
+import com.baeldung.hexagonarch.ports.driven.PersonRepository;
+import com.baeldung.hexagonarch.ports.driver.MailBoxService;
 
 import java.util.Collection;
 import java.util.Optional;
