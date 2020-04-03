@@ -1,25 +1,6 @@
 package com.baeldung.spring.data.persistence.jpaquery;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
 import com.baeldung.spring.data.persistence.config.PersistenceConfig;
-import com.baeldung.spring.data.persistence.jpaquery.UserRepository;
 import com.baeldung.spring.data.persistence.model.User;
 import org.junit.After;
 import org.junit.Test;
@@ -35,6 +16,16 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import java.time.LocalDate;
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.*;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -283,7 +274,7 @@ public class UserRepositoryCommon {
         userRepository.save(new User(USER_NAME_PETER, LocalDate.now(), USER_EMAIL2, ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE", LocalDate.now(), USER_EMAIL3, INACTIVE_STATUS));
 
-        List<User> usersSortByName = userRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
+        List<User> usersSortByName = userRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
 
         assertThat(usersSortByName.get(0)
           .getName()).isEqualTo(USER_NAME_ADAM);
@@ -295,7 +286,7 @@ public class UserRepositoryCommon {
         userRepository.save(new User(USER_NAME_PETER, LocalDate.now(), USER_EMAIL2, ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE", LocalDate.now(), USER_EMAIL3, INACTIVE_STATUS));
 
-        userRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
+        userRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
 
         List<User> usersSortByNameLength = userRepository.findAll(Sort.by("LENGTH(name)"));
 
@@ -458,6 +449,8 @@ public class UserRepositoryCommon {
 
         userRepository.save(usr01);
         userRepository.save(usr02);
+
+        System.out.println(TimeZone.getDefault());
 
         List<User> users = userRepository.findUsersWithGmailAddress();
         assertEquals(1, users.size());
