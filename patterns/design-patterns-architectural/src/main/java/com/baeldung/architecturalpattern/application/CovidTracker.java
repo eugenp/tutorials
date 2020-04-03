@@ -12,6 +12,10 @@ public class CovidTracker {
 
     private static CovidUIService trackerApplication;
 
+    private static CovidRepo repo;
+
+    private static CovidEngine engine;
+
     public static void feedCountryData(String countryName, int activeNoOfCases, int recoveredCases, int fatalCases) {
         trackerApplication.updateStatus("India", 20, 10, 5);
         trackerApplication.updateStatus("Germany", 50, 25, 10);
@@ -24,10 +28,10 @@ public class CovidTracker {
 
     public static void main(String[] args) {
 
-        CovidRepo repo = new CovidRepoImpl();
-        
-        CovidEngine engine = new CovidEngineImpl(repo);
-        
+        repo = new CovidRepoImpl();
+
+        engine = new CovidEngineImpl(repo);
+
         trackerApplication = new CovidUIServiceImpl(engine);
 
         feedCountryData("India", 20, 10, 5);
