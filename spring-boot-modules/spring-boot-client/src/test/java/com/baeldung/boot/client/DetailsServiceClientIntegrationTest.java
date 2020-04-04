@@ -1,10 +1,12 @@
-package org.baeldung.boot.client;
+package com.baeldung.boot.client;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
-import org.baeldung.boot.Application;
+import com.baeldung.boot.Application;
+import com.baeldung.boot.client.Details;
+import com.baeldung.boot.client.DetailsServiceClient;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

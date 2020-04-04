@@ -1,4 +1,4 @@
-package org.baeldung.boot.client;
+package com.baeldung.boot.client;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;

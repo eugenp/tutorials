@@ -1,4 +1,4 @@
-package org.baeldung.websocket.client;
+package com.baeldung.websocket.client;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
