@@ -43,7 +43,7 @@ public class PersistenceConfig {
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(restDataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+        sessionFactory.setPackagesToScan("com.baeldung.persistence.model");
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
@@ -53,7 +53,7 @@ public class PersistenceConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(restDataSource());
-        emf.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+        emf.setPackagesToScan("com.baeldung.persistence.model");
 
         final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         emf.setJpaVendorAdapter(vendorAdapter);
@@ -101,10 +101,7 @@ public class PersistenceConfig {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
-
         hibernateProperties.setProperty("hibernate.show_sql", "true");
-        // hibernateProperties.setProperty("hibernate.format_sql", "true");
-        // hibernateProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
 
         // Envers properties
         hibernateProperties.setProperty("org.hibernate.envers.audit_table_suffix", env.getProperty("envers.audit_table_suffix"));
