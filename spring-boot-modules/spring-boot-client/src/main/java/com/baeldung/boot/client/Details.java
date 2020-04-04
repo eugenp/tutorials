@@ -1,4 +1,4 @@
-package org.baeldung.boot.client;
+package com.baeldung.boot.client;
 
 public class Details {
 

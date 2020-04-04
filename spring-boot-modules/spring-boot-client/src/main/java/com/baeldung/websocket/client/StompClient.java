@@ -1,4 +1,4 @@
-package org.baeldung.websocket.client;
+package com.baeldung.websocket.client;
 
 import java.util.Scanner;
 
