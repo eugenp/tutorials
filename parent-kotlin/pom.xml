@@ -28,11 +28,6 @@
             <id>kotlin-eap</id>
             <url>http://dl.bintray.com/kotlin/kotlin-eap</url>
         </repository>
-        <repository>
-            <id>spring-milestone</id>
-            <name>Spring Milestone Repository</name>
-            <url>https://repo.spring.io/milestone</url>
-        </repository>
     </repositories>
 
     <pluginRepositories>
@@ -217,7 +212,7 @@
         <ktor.io.version>0.9.5</ktor.io.version>
         <assertj.version>3.12.0</assertj.version>
         <junit.platform.version>1.3.2</junit.platform.version>
-        <boot.dependencies.version>2.2.0.M4</boot.dependencies.version>
+        <boot.dependencies.version>2.2.6.RELEASE</boot.dependencies.version>
     </properties>
 
 </project>
