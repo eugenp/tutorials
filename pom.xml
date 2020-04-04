@@ -1259,6 +1259,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
+                <module>libraries-concurrency</module>
             </modules>
 
         </profile>
