@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class CarIntegrationTest {
+public class CarUnitTest {
     @Test
     public void whenNumberOfCarObjectsInitialized_thenStaticCounterIncreases() {
         new Car("Jaguar", "V8");
