@@ -22,7 +22,7 @@ import static org.mockito.Mockito.verify;
  * Created by madhumita.g on 01-08-2018.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class CatUnitTest {
+public class DogUnitTest {
 
     @Mock
     private Appender mockAppender;
@@ -45,9 +45,9 @@ public class CatUnitTest {
     @Test
     public void makeNoiseTest() {
 
-        Cat cat = new Cat();
+        Dog dog = new Dog();
 
-        cat.makeNoise();
+        dog.makeNoise();
 
         verify(mockAppender).doAppend(captorLoggingEvent.capture());
 

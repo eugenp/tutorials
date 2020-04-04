@@ -15,7 +15,7 @@ public class AnimalActivity {
         logger.info("Animal is sleeping");
     }
 
-    public static void sleep(Cat cat) {
+    public static void sleep(Dog dog) {
         logger.info("Cat is sleeping");
     }
 
@@ -30,7 +30,7 @@ public class AnimalActivity {
 
 
         //assigning a dog object to reference of type Animal
-        Animal catAnimal = new Cat();
+        Animal catAnimal = new Dog();
 
         catAnimal.makeNoise();
 
