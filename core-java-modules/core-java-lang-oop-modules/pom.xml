@@ -21,5 +21,6 @@
         <module>core-java-lang-oop-modifiers</module>
         <module>core-java-lang-oop-types</module>
         <module>core-java-lang-oop-inheritance</module>
+        <module>core-java-lang-oop-methods</module>
     </modules>
 </project>
