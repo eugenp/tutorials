@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
-@ComponentScan("org.baeldung.properties.core")
+@ComponentScan("com.baeldung.properties.core")
 @PropertySource("classpath:foo.properties")
 public class ExternalPropertiesWithJavaConfig {
 
