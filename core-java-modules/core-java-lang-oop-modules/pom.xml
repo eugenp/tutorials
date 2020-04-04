@@ -19,5 +19,6 @@
         <module>core-java-lang-oop-patterns</module>
         <module>core-java-lang-oop-generics</module>
         <module>core-java-lang-oop-modifiers</module>
+        <module>core-java-lang-oop-types</module>
     </modules>
 </project>
