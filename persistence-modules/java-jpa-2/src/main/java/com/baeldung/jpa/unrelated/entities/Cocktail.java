@@ -11,31 +11,34 @@ import java.util.Objects;
 @Table(name = "cocktails")
 public class Cocktail {
     @Id
-    @Column(name="cocktail_name")
+    @Column(name = "cocktail_name")
     private String name;
 
     @Column
     private double price;
 
-    @Column(name="category")
+    @Column(name = "category")
     private String category;
 
     @OneToOne
     @NotFound(action = NotFoundAction.IGNORE)
-    @JoinColumn(name = "cocktail_name",
-            referencedColumnName = "cocktail",
-            insertable = false,
-            updatable = false,
-            foreignKey = @javax.persistence.ForeignKey(value= ConstraintMode.NO_CONSTRAINT))
+    @JoinColumn(name = "cocktail_name", 
+        referencedColumnName = "cocktail", 
+        insertable = false, updatable = false, 
+        foreignKey = @javax.persistence
+        .ForeignKey(value = ConstraintMode.NO_CONSTRAINT)
+        )
     private Recipe recipe;
 
     @OneToMany
-    @NotFound(action=NotFoundAction.IGNORE)
-    @JoinColumn(name = "cocktail",
-            referencedColumnName = "cocktail_name",
-            insertable = false,
-            updatable = false,
-            foreignKey = @javax.persistence.ForeignKey(value= ConstraintMode.NO_CONSTRAINT))
+    @NotFound(action = NotFoundAction.IGNORE)
+    @JoinColumn(
+        name = "cocktail", 
+        referencedColumnName = "cocktail_name", 
+        insertable = false, 
+        updatable = false, 
+        foreignKey = @javax.persistence
+        .ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
     private List<MultipleRecipe> recipeList;
 
     public Cocktail() {
@@ -69,12 +72,14 @@ public class Cocktail {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Cocktail cocktail = (Cocktail) o;
-        return Double.compare(cocktail.price, price) == 0 &&
-                Objects.equals(name, cocktail.name) &&
-                Objects.equals(category, cocktail.category);
+        return Double.compare(cocktail.price, price) == 0 && 
+            Objects.equals(name, cocktail.name) && 
+            Objects.equals(category, cocktail.category);
     }
 
     @Override
