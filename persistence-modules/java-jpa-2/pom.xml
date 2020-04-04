@@ -48,6 +48,17 @@
             <version>${postgres.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+            <version>${querydsl.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <version>${querydsl.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.assertj</groupId>
@@ -101,7 +112,24 @@
                         <configuration>
                             <sources>
                                 <source>target/metamodel</source>
+                                <source>${project.build.directory}/generated-sources/java/</source>
                             </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.mysema.maven</groupId>
+                <artifactId>apt-maven-plugin</artifactId>
+                <version>1.1.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/generated-sources/java</outputDirectory>
+                            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                         </configuration>
                     </execution>
                 </executions>
@@ -118,6 +146,7 @@
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-processor-plugin.version>3.3.3</maven-processor-plugin.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+        <querydsl.version>4.2.2</querydsl.version>
     </properties>
 
 </project>
