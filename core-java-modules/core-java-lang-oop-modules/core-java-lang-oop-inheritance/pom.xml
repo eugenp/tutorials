@@ -9,7 +9,20 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>core-java-lang-oop-types</artifactId>
-    <name>core-java-lang-oop-types</name>
+    <artifactId>core-java-lang-oop-inheritance</artifactId>
+    <name>core-java-lang-oop-inheritance</name>
     <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <assertj-core.version>3.10.0</assertj-core.version>
+    </properties>
 </project>

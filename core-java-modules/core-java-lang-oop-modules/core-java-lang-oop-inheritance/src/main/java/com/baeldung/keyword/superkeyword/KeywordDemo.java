@@ -1,6 +1,4 @@
-package com.baeldung.keyword;
-
-import com.baeldung.keyword.superkeyword.SuperSub;
+package com.baeldung.keyword.superkeyword;
 
 /**
  * Created by Gebruiker on 5/14/2018.
