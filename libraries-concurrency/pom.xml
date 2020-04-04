@@ -14,7 +14,7 @@
     </parent>
 
     <modules>
-        <module>coroutines-java</module>
+        <module>coroutines-with-quasar</module>
     </modules>
 
 </project>
