@@ -86,10 +86,6 @@
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
         <module>core-java-lang-oop-modules</module>
-        <module>core-java-lang-oop</module>
-        <module>core-java-lang-oop-2</module>
-        <module>core-java-lang-oop-3</module>
-        <module>core-java-lang-oop-4</module>
         <module>core-java-lang-operators</module>
         <module>core-java-lang-syntax</module>
         <module>core-java-lang-syntax-2</module>
