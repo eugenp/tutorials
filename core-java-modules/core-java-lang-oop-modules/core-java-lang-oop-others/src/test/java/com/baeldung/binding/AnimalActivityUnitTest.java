@@ -62,9 +62,9 @@ public class AnimalActivityUnitTest {
     @Test
     public void givenDogReference__whenRefersCatObject_shouldCallFunctionWithAnimalParam() {
 
-        Cat cat = new Cat();
+        Dog dog = new Dog();
 
-        AnimalActivity.sleep(cat);
+        AnimalActivity.sleep(dog);
 
         verify(mockAppender).doAppend(captorLoggingEvent.capture());
 
@@ -79,7 +79,7 @@ public class AnimalActivityUnitTest {
     @Test
     public void givenAnimaReference__whenRefersDogObject_shouldCallFunctionWithAnimalParam() {
 
-        Animal cat = new Cat();
+        Animal cat = new Dog();
 
         AnimalActivity.sleep(cat);
 

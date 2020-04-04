@@ -6,9 +6,9 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by madhumita.g on 25-07-2018.
  */
-public class Cat extends Animal {
+public class Dog extends Animal {
 
-    final static Logger logger = LoggerFactory.getLogger(Cat.class);
+    final static Logger logger = LoggerFactory.getLogger(Dog.class);
 
     public void makeNoise() {
 
