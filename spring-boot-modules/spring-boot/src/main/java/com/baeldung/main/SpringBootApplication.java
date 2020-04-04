@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
 
 @RestController
 @EnableAutoConfiguration
-@ComponentScan({ "org.baeldung.common.error", "com.baeldung.common.error.controller", "com.baeldung.common.properties", "com.baeldung.common.resources", "com.baeldung.endpoints", "com.baeldung.service", "com.baeldung.monitor.jmx", "com.baeldung.boot.config" })
+@ComponentScan({ "com.baeldung.common.error", "com.baeldung.common.error.controller", "com.baeldung.common.properties", "com.baeldung.common.resources", "com.baeldung.endpoints", "com.baeldung.service", "com.baeldung.monitor.jmx", "com.baeldung.boot.config" })
 public class SpringBootApplication {
 
     private static ApplicationContext applicationContext;
