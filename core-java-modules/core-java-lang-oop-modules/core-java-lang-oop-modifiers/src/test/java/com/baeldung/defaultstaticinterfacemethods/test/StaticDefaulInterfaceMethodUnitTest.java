@@ -1,4 +1,4 @@
-package com.baeldung.defaultistaticinterfacemethods.test;
+package com.baeldung.defaultstaticinterfacemethods.test;
 
 import com.baeldung.defaultstaticinterfacemethods.model.Car;
 import com.baeldung.defaultstaticinterfacemethods.model.Motorbike;

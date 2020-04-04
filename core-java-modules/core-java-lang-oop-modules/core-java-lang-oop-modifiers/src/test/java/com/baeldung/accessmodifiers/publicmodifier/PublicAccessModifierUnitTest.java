@@ -1,4 +1,4 @@
-package com.baeldung.accessmodifiers;
+package com.baeldung.accessmodifiers.publicmodifier;
 
 import com.baeldung.accessmodifiers.publicmodifier.ListOfThree;
 import com.baeldung.accessmodifiers.publicmodifier.Student;

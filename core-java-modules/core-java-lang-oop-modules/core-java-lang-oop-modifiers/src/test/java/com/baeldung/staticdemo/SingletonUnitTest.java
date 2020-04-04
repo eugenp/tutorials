@@ -3,7 +3,7 @@ package com.baeldung.staticdemo;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SingletonIntegrationTest {
+public class SingletonUnitTest {
 
     @Test
     public void givenStaticInnerClass_whenMultipleTimesInstanceCalled_thenOnlyOneTimeInitialized() {

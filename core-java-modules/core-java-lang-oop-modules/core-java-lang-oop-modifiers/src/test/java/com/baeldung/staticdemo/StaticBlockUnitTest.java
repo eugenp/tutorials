@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class StaticBlockIntegrationTest {
+public class StaticBlockUnitTest {
 
     @Test
     public void whenAddedListElementsThroughStaticBlock_thenEnsureCorrectOrder() {

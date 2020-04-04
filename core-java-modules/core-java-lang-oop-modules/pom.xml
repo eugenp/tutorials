@@ -18,5 +18,6 @@
         <module>core-java-lang-oop-constructors</module>
         <module>core-java-lang-oop-patterns</module>
         <module>core-java-lang-oop-generics</module>
+        <module>core-java-lang-oop-modifiers</module>
     </modules>
 </project>
