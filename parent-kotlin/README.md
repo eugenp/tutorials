@@ -1,2 +1,3 @@
+## Parent Kotlin
 
-Parent module for Kotlin projects.
+This is a parent module for all projects using Kotlin

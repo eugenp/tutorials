@@ -1,4 +1,4 @@
-package org.baeldung.guava;
+package com.baeldung.guava;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

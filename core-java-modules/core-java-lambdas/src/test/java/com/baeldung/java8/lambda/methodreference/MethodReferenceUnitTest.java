@@ -35,9 +35,9 @@ public class MethodReferenceUnitTest {
     public void referenceToInstanceMethodOfArbitratyObjectOfParticularType() {
         List<Integer> numbers = Arrays.asList(5, 3, 50, 24, 40, 2, 9, 18);
         numbers.stream()
-            .sorted((a, b) -> Integer.compare(a, b));
+            .sorted((a, b) -> a.compareTo(b));
         numbers.stream()
-            .sorted(Integer::compare);
+            .sorted(Integer::compareTo);
     }
 
     @Test

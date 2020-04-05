@@ -1,16 +1,11 @@
 package com.baeldung.spring.session;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.io.IOException;
-import java.util.Set;
-
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -20,19 +15,27 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import redis.clients.jedis.Jedis;
 import redis.embedded.RedisServer;
 
+import java.io.IOException;
+import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SessionWebApplication.class, webEnvironment = WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes = SessionWebApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class SessionControllerIntegrationTest {
 
-    private Jedis jedis;
     private static RedisServer redisServer;
+
+    @LocalServerPort
+    private int port;
+
+    private Jedis jedis;
     private TestRestTemplate testRestTemplate;
     private TestRestTemplate testRestTemplateWithAuth;
-    private String testUrl = "http://localhost:8080/";
 
     @BeforeClass
     public static void startRedisServer() throws IOException {
@@ -41,7 +44,7 @@ public class SessionControllerIntegrationTest {
     }
     
     @AfterClass
-    public static void stopRedisServer() throws IOException {
+    public static void stopRedisServer() {
         redisServer.stop();
     }
     
@@ -63,13 +66,13 @@ public class SessionControllerIntegrationTest {
 
     @Test
     public void testUnauthenticatedCantAccess() {
-        ResponseEntity<String> result = testRestTemplate.getForEntity(testUrl, String.class);
+        ResponseEntity<String> result = testRestTemplate.getForEntity(getTestUrl(), String.class);
         assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());
     }
 
     @Test
     public void testRedisControlsSession() {
-        ResponseEntity<String> result = testRestTemplateWithAuth.getForEntity(testUrl, String.class);
+        ResponseEntity<String> result = testRestTemplateWithAuth.getForEntity(getTestUrl(), String.class);
         assertEquals("hello admin", result.getBody()); // login worked
 
         Set<String> redisResult = jedis.keys("*");
@@ -80,13 +83,16 @@ public class SessionControllerIntegrationTest {
         headers.add("Cookie", sessionCookie);
         HttpEntity<String> httpEntity = new HttpEntity<>(headers);
 
-        result = testRestTemplate.exchange(testUrl, HttpMethod.GET, httpEntity, String.class);
+        result = testRestTemplate.exchange(getTestUrl(), HttpMethod.GET, httpEntity, String.class);
         assertEquals("hello admin", result.getBody()); // access with session works worked
 
         jedis.flushAll(); // clear all keys in redis
 
-        result = testRestTemplate.exchange(testUrl, HttpMethod.GET, httpEntity, String.class);
+        result = testRestTemplate.exchange(getTestUrl(), HttpMethod.GET, httpEntity, String.class);
         assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());// access denied after sessions are removed in redis
+    }
 
+    private String getTestUrl(){
+        return "http://localhost:" + port;
     }
 }

@@ -1,8 +1,5 @@
 package com.baeldung.tags;
 
-import com.baeldung.junit.tags.example.Employee;
-import com.baeldung.junit.tags.example.EmployeeDAO;
-import com.baeldung.junit.tags.example.SpringJdbcConfig;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -13,12 +10,19 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.baeldung.junit.tags.example.Employee;
+import com.baeldung.junit.tags.example.EmployeeDAO;
+import com.baeldung.junit.tags.example.SpringJdbcConfig;
+
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { SpringJdbcConfig.class }, loader = AnnotationConfigContextLoader.class)
+@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 public class EmployeeDAOIntegrationTest {
 
     @Autowired

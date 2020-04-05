@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-5-reactive</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-5-reactive</name>
@@ -28,11 +27,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectreactor</groupId>
-            <artifactId>reactor-spring</artifactId>
-            <version>${reactor-spring.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.json.bind</groupId>
@@ -80,7 +74,7 @@
             <scope>test</scope>
         </dependency>
 
-         <!-- Spring WebFlux WebSession -->
+        <!-- Spring WebFlux WebSession -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
@@ -112,20 +106,11 @@
         <dependency>
             <groupId>io.reactivex.rxjava2</groupId>
             <artifactId>rxjava</artifactId>
-            <version>${rxjava-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-test</artifactId>
-            <version>${project-reactor-test}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -165,13 +150,10 @@
 
     <properties>
         <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
-        <rxjava-version>2.1.12</rxjava-version>
         <johnzon.version>1.1.3</johnzon.version>
         <jsonb-api.version>1.0</jsonb-api.version>
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
         <commons-collections4.version>4.1</commons-collections4.version>
-        <project-reactor-test>3.2.3.RELEASE</project-reactor-test>
-        <httpclient.version>4.5.8</httpclient.version>
     </properties>
 
 </project>

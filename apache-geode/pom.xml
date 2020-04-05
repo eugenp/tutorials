@@ -6,7 +6,7 @@
     <artifactId>apache-geode</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>apache-geode</name>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -19,27 +19,10 @@
             <artifactId>geode-core</artifactId>
             <version>${geode.core}</version>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-        </dependency>
     </dependencies>
-    
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-	
+
     <properties>
         <geode.core>1.6.0</geode.core>
     </properties>
+
 </project>

@@ -5,7 +5,7 @@
     <artifactId>cdi</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>cdi</name>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-spring-4</artifactId>
@@ -23,7 +23,7 @@
             <groupId>org.jboss.weld.se</groupId>
             <artifactId>weld-se-core</artifactId>
             <version>${weld-se-core.version}</version>
-        </dependency>  
+        </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
@@ -34,12 +34,6 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -59,7 +53,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-	
+
     <properties>
         <cdi-api.version>2.0.SP1</cdi-api.version>
         <weld-se-core.version>3.0.5.Final</weld-se-core.version>
@@ -67,4 +61,5 @@
         <assertj-core.version>3.10.0</assertj-core.version>
         <spring.version>5.1.2.RELEASE</spring.version>
     </properties>
+
 </project>

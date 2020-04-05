@@ -16,7 +16,7 @@
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>org.baeldung.config</param-value>
+        <param-value>com.baeldung.config</param-value>
     </context-param>
 
     <listener>
