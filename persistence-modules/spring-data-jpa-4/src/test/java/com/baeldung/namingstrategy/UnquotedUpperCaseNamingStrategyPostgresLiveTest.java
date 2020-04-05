@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DataJpaTest(excludeAutoConfiguration = TestDatabaseAutoConfiguration.class)
 @TestPropertySource("unquoted-upper-case-naming-strategy-on-postgres.properties")
-class UnquotedUpperCaseNamingStrategyPostgresIntegrationTest {
+class UnquotedUpperCaseNamingStrategyPostgresLiveTest {
 
     @PersistenceContext
     private EntityManager entityManager;

@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DataJpaTest(excludeAutoConfiguration = TestDatabaseAutoConfiguration.class)
 @TestPropertySource("spring-physical-naming-strategy-on-postgres.properties")
-class SpringPhysicalNamingStrategyPostgresIntegrationTest {
+class SpringPhysicalNamingStrategyPostgresLiveTest {
 
     @PersistenceContext
     private EntityManager entityManager;
