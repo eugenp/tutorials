@@ -10,9 +10,6 @@ public class Flower {
         this.petals = petals;
     }
 
-    public Flower() {
-    }
-
     public String getName() {
         return name;
     }
