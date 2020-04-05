@@ -22,8 +22,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DataJpaTest(excludeAutoConfiguration = TestDatabaseAutoConfiguration.class)
-@TestPropertySource("unquoted-lower-case-naming-strategy-on-postgres.properties")
-class UnquotedLowerCaseNamingStrategyPostgresIntegrationTest {
+@TestPropertySource("quoted-lower-case-naming-strategy-on-postgres.properties")
+class QuotedLowerCaseNamingStrategyPostgresLiveTest {
 
     @PersistenceContext
     private EntityManager entityManager;

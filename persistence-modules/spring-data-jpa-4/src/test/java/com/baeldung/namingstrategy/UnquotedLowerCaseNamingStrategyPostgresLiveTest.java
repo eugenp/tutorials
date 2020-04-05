@@ -22,8 +22,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DataJpaTest(excludeAutoConfiguration = TestDatabaseAutoConfiguration.class)
-@TestPropertySource("quoted-upper-case-naming-strategy-on-postgres.properties")
-class QuotedUpperCaseNamingStrategyPostgresIntegrationTest {
+@TestPropertySource("unquoted-lower-case-naming-strategy-on-postgres.properties")
+class UnquotedLowerCaseNamingStrategyPostgresLiveTest {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -42,16 +42,8 @@ class QuotedUpperCaseNamingStrategyPostgresIntegrationTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"person", "PERSON", "Person"})
-    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonUnquoted_thenResult(String tableName) {
+    void givenPeopleAndLowerCaseNamingStrategy_whenQueryPersonUnquoted_thenResult(String tableName) {
         Query query = entityManager.createNativeQuery("select * from " + tableName);
-
-        // Unexpected result
-        assertThrows(SQLGrammarException.class, query::getResultStream);
-    }
-
-    @Test
-    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonQuotedUpperCase_thenException() {
-        Query query = entityManager.createNativeQuery("select * from \"PERSON\"");
 
         // Expected result
         List<Person> result = (List<Person>) query.getResultStream()
@@ -62,11 +54,23 @@ class QuotedUpperCaseNamingStrategyPostgresIntegrationTest {
     }
 
     @Test
-    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonQuotedLowerCase_thenResult() {
-        Query query = entityManager.createNativeQuery("select * from \"person\"");
+    void givenPeopleAndLowerCaseNamingStrategy_whenQueryPersonQuotedUpperCase_thenException() {
+        Query query = entityManager.createNativeQuery("select * from \"PERSON\"");
 
         // Expected result
         assertThrows(SQLGrammarException.class, query::getResultStream);
+    }
+
+    @Test
+    void givenPeopleAndLowerCaseNamingStrategy_whenQueryPersonQuotedLowerCase_thenResult() {
+        Query query = entityManager.createNativeQuery("select * from \"person\"");
+
+        // Expected result
+        List<Person> result = (List<Person>) query.getResultStream()
+          .map(this::fromDatabase)
+          .collect(Collectors.toList());
+
+        assertThat(result).isNotEmpty();
     }
 
     public Person fromDatabase(Object databaseRow) {
