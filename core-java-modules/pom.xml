@@ -42,7 +42,7 @@
         <module>core-java-collections-list</module>
         <module>core-java-collections-list-2</module>
         <module>core-java-collections-list-3</module>
-        <module>core-java-collections-set</module>
+        <!-- <module>core-java-collections-set</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
 
         <module>core-java-concurrency-2</module>
         <module>core-java-concurrency-advanced</module>
@@ -76,6 +76,7 @@
         <module>core-java-lang</module>
         <module>core-java-lang-2</module>
         <module>core-java-lang-math</module>
+        <module>core-java-lang-math-2</module>
         <module>core-java-lang-oop</module>
         <module>core-java-lang-oop-2</module>
         <module>core-java-lang-oop-3</module>

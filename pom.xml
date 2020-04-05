@@ -388,7 +388,6 @@
                 <module>blade</module>
                 <module>bootique</module>
 
-                <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -456,13 +455,12 @@
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
+                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-lite</module>
-                <module>java-math</module>
-                <module>java-math-2</module> <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
                 <module>java-numbers-3</module>
@@ -732,6 +730,7 @@
                 <module>spring-threads</module>
                 <module>spring-thymeleaf</module>
                 <module>spring-thymeleaf-2</module>
+                <module>spring-thymeleaf-3</module>
 
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
@@ -901,7 +900,6 @@
                 <module>blade</module>
                 <module>bootique</module>
 
-                <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -969,13 +967,12 @@
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
+                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-lite</module>
-                <module>java-math</module>
-                <module>java-math-2</module> <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
                 <module>java-numbers-3</module>
@@ -1235,6 +1232,7 @@
 
                 <module>spring-thymeleaf</module>
                 <module>spring-thymeleaf-2</module>
+                <module>spring-thymeleaf-3</module>
 
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
@@ -1265,6 +1263,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
+                <module>libraries-concurrency</module>
             </modules>
 
         </profile>

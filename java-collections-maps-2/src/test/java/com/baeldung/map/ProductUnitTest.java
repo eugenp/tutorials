@@ -3,6 +3,8 @@ package com.baeldung.map;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -119,6 +121,54 @@ class ProductUnitTest {
         productsByName.remove("E-Bike");
 
         assertNull(productsByName.get("E-Bike"));
+    }
+
+    @Test
+    public void givenMutableKeyWhenKeyChangeThenValueNotFound() {
+        // Given
+        MutableKey key = new MutableKey("initial");
+
+        Map<MutableKey, String> items = new HashMap<>();
+        items.put(key, "success");
+
+        // When
+        key.setName("changed");
+
+        // Then
+        assertNull(items.get(key));
+    }
+
+    static class MutableKey {
+        private String name;
+
+        public MutableKey(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+            MutableKey that = (MutableKey) o;
+            return Objects.equals(name, that.name);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(name);
+        }
     }
 
 }
