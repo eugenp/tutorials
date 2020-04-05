@@ -1,37 +1,44 @@
 package com.baeldung.evaluation.tictactoe.adapter.player;
 
-import com.baeldung.evaluation.tictactoe.port.IPlayer;
-import org.apache.commons.lang3.tuple.ImmutablePair;
+import com.baeldung.evaluation.tictactoe.port.TicTacToeGame;
+import com.baeldung.evaluation.tictactoe.port.Player;
+import org.apache.commons.lang3.tuple.ImmutableTriple;
+import com.baeldung.evaluation.tictactoe.port.TicTacToeGame.GameResult;
 
+import java.util.Observable;
 import java.util.Random;
 
-public class RandomPlayer implements IPlayer {
-
+public class RandomPlayer extends Player {
     private Character[][] grid;
+    private boolean gameOver;
 
-    @Override public String getName() {
-        return "Computer (RANDOM)";
+    public RandomPlayer(TicTacToeGame game) {
+        super(game);
     }
 
-    @Override public ImmutablePair<Integer, Integer> move() {
+    public void randomMove() {
         Random random = new Random();
         if (grid == null) {
-            return new ImmutablePair<>(random.nextInt(3), random.nextInt(3));
+            move(random.nextInt(3), random.nextInt(3));
         } else {
             while (true) {
                 int x = random.nextInt(3);
                 int y = random.nextInt(3);
                 if (grid[x][y] == ' ') {
-                    return new ImmutablePair<>(x, y);
+                    move(x, y);
+                    return;
                 }
             }
         }
     }
 
-    @Override public void endGame(Result result) {
+    @Override public void update(Observable o, Object update) {
+        ImmutableTriple gameState = (ImmutableTriple) update;
+        grid = (Character[][]) gameState.middle;
+        gameOver = gameState.right != GameResult.PLAYING;
     }
 
-    @Override public void update(Character[][] grid) {
-        this.grid = grid;
+    @Override public boolean canMove() {
+        return !gameOver;
     }
 }
