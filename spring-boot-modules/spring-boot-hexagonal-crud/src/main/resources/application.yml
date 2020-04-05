@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:mydb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        validator:
+          apply_to_ddl: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+logging:
+  level:
+    com.baeldung.hexagonal.crud: DEBUG
