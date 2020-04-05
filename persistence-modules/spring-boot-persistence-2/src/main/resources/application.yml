@@ -1,1 +1,9 @@
-
+# Available profiles
+#   - none for no profile
+#   - oracle-pooling-basic - Oracle database with HikariCP. Loads configuration from application-oracle-pooling-basic.properties
+#   - oracle - Uses OracleDataSource. This profile also needs "oracle-pooling-basic"
+#   - oracle-ucp - Uses PoolDataSource. This profile also needs "oracle-pooling-basic"
+#   - c3p0 - Uses ComboPooledDataSource. This profile also needs "oracle-pooling-basic"
+spring:
+   profiles:
+      active: none
