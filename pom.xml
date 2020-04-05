@@ -82,7 +82,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.maven.surefire</groupId>
+               <groupId>org.apache.maven.surefire</groupId>
             <artifactId>surefire-logger-api</artifactId>
             <version>${maven-surefire-plugin.version}</version>
             <!-- to get around bug https://github.com/junit-team/junit5/issues/801 -->
