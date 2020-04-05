@@ -8,8 +8,4 @@ This module contains articles about Java 9 core features
 - [Introduction to Chronicle Queue](https://www.baeldung.com/java-chronicle-queue)
 - [Iterate Through a Range of Dates in Java](https://www.baeldung.com/java-iterate-date-range)
 - [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
-- [Immutable Set in Java](https://www.baeldung.com/java-immutable-set)
 - [Immutable ArrayList in Java](https://www.baeldung.com/java-immutable-list)
-
-Note: also contains part of the code for the article
-[How to Filter a Collection in Java](https://www.baeldung.com/java-collection-filtering).

@@ -72,6 +72,7 @@
         <module>spring-jpa</module>
         <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
         <module>spring-persistence-simple</module>
+        <module>spring-persistence-simple-2</module>
     </modules>
 
 </project>

@@ -10,3 +10,7 @@
 - [Basic Calculator in Java](https://www.baeldung.com/java-basic-calculator)
 - [Overflow and Underflow in Java](https://www.baeldung.com/java-overflow-underflow)
 - [Obtaining a Power Set of a Set in Java](https://www.baeldung.com/java-power-set-of-a-set)
+- [Calculating Logarithms in Java](https://www.baeldung.com/java-logarithms)
+- [Finding Greatest Common Divisor in Java](https://www.baeldung.com/java-greatest-common-divisor)
+- [Calculate Percentage in Java](https://www.baeldung.com/java-calculate-percentage)
+- More articles: [[Next -->]](/core-java-modules/core-java-lang-math-2)
