@@ -1,15 +1,17 @@
 package com.baeldung.mockito.additionalanswers;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+public class BookRepository {
+    public Book getByBookId(Long bookId) {
+        return new Book(bookId, "To Kill a Mocking Bird", "Harper Lee", 256);
+    }
 
-import java.util.List;
+    public Book save(Book book) {
+        return new Book(book.getBookId(), book.getTitle(), book.getAuthor(), book.getNumberOfPages());
+    }
 
-@Repository
-public interface BookRepository extends JpaRepository<Book, Long> {
-    Book getByBookId(Long bookId);
-    List<Book> getAllByAuthor(String author);
-    Book getBookByTitle(String title);
-    Book getBookByTitleAnAndAuthorAndNumberOfPages(String title, String author, int numOfPages);
-    Book getBookByTitleAndAuthor(String title, String author);
+    public Book checkIfEquals(Book bookOne, Book bookTwo, Book bookThree) {
+        if (bookOne.equals(bookTwo) && bookTwo.equals(bookThree) && bookThree.equals(bookOne)) {
+            return bookOne;
+        } else return bookTwo;
+    }
 }
