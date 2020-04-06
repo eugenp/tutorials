@@ -1263,7 +1263,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
-                <module>libraries-concurrency</module>
+                <!-- <module>libraries-concurrency</module> --> <!-- Disabling temporarily. Should we fixed in BAEL-2398 -->
             </modules>
 
         </profile>
