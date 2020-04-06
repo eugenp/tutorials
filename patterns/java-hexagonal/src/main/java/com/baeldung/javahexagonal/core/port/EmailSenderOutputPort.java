@@ -6,6 +6,6 @@ import com.baeldung.javahexagonal.core.domain.User;
 
 public interface EmailSenderOutputPort {
 
-	public void sendRegisterEmail(User user) throws IOException;
-	
+    public void sendRegisterEmail(User user) throws IOException;
+
 }

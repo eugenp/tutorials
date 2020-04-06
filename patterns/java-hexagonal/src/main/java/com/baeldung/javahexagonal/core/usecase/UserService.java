@@ -11,46 +11,46 @@ import com.baeldung.javahexagonal.core.port.UserRepoOutputPort;
 @Service
 public class UserService implements UserInputPort {
 
-	@Autowired
-	private UserRepoOutputPort userRepoPort;
+    @Autowired
+    private UserRepoOutputPort userRepoPort;
 
-	@Autowired
-	private EmailSenderOutputPort emailSenderPort;
+    @Autowired
+    private EmailSenderOutputPort emailSenderPort;
 
-	@Override
-	public User registerUser(User user) throws Exception {
+    @Override
+    public User registerUser(User user) throws Exception {
 
-		User createdUser = userRepoPort.getUserByEmail(user.getEmail());
+        User createdUser = userRepoPort.getUserByEmail(user.getEmail());
 
-		if (createdUser == null) {
-			createdUser = userRepoPort.saveUser(user);
-			emailSenderPort.sendRegisterEmail(createdUser);
+        if (createdUser == null) {
+            createdUser = userRepoPort.saveUser(user);
+            emailSenderPort.sendRegisterEmail(createdUser);
 
-		} else {
-			throw new Exception("Email already taken");
-		}
+        } else {
+            throw new Exception("Email already taken");
+        }
 
-		return createdUser;
-	}
+        return createdUser;
+    }
+}
 
-	@Override
-	public User getUserByEmail(String email) {
-		User user = userRepoPort.getUserByEmail(email);
-		System.out.println(user);
-		return user;
-	}
+    @Override
+    public User getUserByEmail(String email) {
+        User user = userRepoPort.getUserByEmail(email);
+        return user;
+    }
 
-	@Override
-	public User updateUser(User user) throws Exception {
-		User updatedUser = userRepoPort.getUserByEmail(user.getEmail());
+    @Override
+    public User updateUser(User user) throws Exception {
+        User updatedUser = userRepoPort.getUserByEmail(user.getEmail());
 
-		if (updatedUser != null) {
-			updatedUser = userRepoPort.updateUser(user);
-		} else {
-			throw new Exception("User does not exists");
-		}
-		
-		return updatedUser;
-	}
+        if (updatedUser != null) {
+            updatedUser = userRepoPort.updateUser(user);
+        } else {
+            throw new Exception("User does not exists");
+        }
+
+        return updatedUser;
+    }
 
 }

@@ -8,7 +8,7 @@ import com.baeldung.javahexagonal.core.domain.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-	
-	public User findUserByEmail(@Param("email") String email);
+
+    public User findUserByEmail(@Param("email") String email);
 
 }
