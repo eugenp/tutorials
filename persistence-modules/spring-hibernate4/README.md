@@ -9,7 +9,6 @@ This module contains articles about Spring with Hibernate 4
 - [Stored Procedures with Hibernate](https://www.baeldung.com/stored-procedures-with-hibernate-tutorial)
 - [Hibernate: save, persist, update, merge, saveOrUpdate](https://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate)
 - [Eager/Lazy Loading In Hibernate](https://www.baeldung.com/hibernate-lazy-eager-loading)
-- [The DAO with Spring and Hibernate](https://www.baeldung.com/persistence-layer-with-spring-and-hibernate)
 - [Auditing with JPA, Hibernate, and Spring Data JPA](https://www.baeldung.com/database-auditing-jpa)
 
 ### Quick Start
