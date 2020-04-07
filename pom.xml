@@ -962,9 +962,6 @@
 
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
-                <module>java-collections-maps</module>
-                <module>java-collections-maps-2</module>
-                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
