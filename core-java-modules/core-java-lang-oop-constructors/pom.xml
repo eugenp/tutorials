@@ -3,14 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>core-java-lang-oop-modules</artifactId>
-        <groupId>com.baeldung.core-java-lang-oop-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
+        <groupId>com.baeldung.core-java-modules</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>core-java-lang-oop-modifiers</artifactId>
-    <name>core-java-lang-oop-modifiers</name>
+    <artifactId>core-java-lang-oop-constructors</artifactId>
+    <name>core-java-lang-oop-constructors</name>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -18,12 +18,6 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
