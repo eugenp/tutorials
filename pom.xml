@@ -536,6 +536,7 @@
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
+                <!-- <module>netty</module> --> <!-- we haven't upgraded to Java 13 -->
                 <module>ninja</module>
                 <module>open-liberty</module>
 
@@ -1047,6 +1048,7 @@
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
+                <!-- <module>netty</module> --> <!-- we haven't upgraded to Java 13 -->
                 <module>ninja</module>
                 <module>open-liberty</module>
 
