@@ -7,7 +7,6 @@ This module contains articles about core Spring functionality
 - [Guide to Spring @Autowired](http://www.baeldung.com/spring-autowire)
 - [Spring Profiles](http://www.baeldung.com/spring-profiles)
 - [A Spring Custom Annotation for a Better DAO](http://www.baeldung.com/spring-annotation-bean-pre-processor)
-- [Running Setup Data on Startup in Spring](http://www.baeldung.com/running-setup-logic-on-startup-in-spring)
 - [Quick Guide to Spring Bean Scopes](http://www.baeldung.com/spring-bean-scopes)
 - [Custom Scope in Spring](http://www.baeldung.com/spring-custom-scope)
 - [@Order in Spring](http://www.baeldung.com/spring-order)
