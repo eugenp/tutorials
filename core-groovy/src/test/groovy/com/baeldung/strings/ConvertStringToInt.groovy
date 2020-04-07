@@ -10,7 +10,7 @@ import static org.junit.Assert.assertNull
 class ConvertStringToInt {
 
     @Test
-    void givenString_thenConvertToIntegerUsingAsInteger() {
+    void givenString_whenUsingAsInteger_thenConvertToInteger() {
         def stringNum = "123"
         def invalidString = "123a"
         Integer expectedInteger = 123
@@ -22,7 +22,7 @@ class ConvertStringToInt {
     }
 
     @Test
-    void givenString_thenConvertToIntUsingAsInt() {
+    void givenString_whenUsingAsInt_thenConvertToInt() {
         def stringNum = "123"
         int expectedInt = 123
         int intNum = stringNum as int
@@ -31,7 +31,7 @@ class ConvertStringToInt {
     }
 
     @Test
-    void givenString_thenConvertToIntegerUsingToInteger() {
+    void givenString_whenUsingToInteger_thenConvertToInteger() {
         def stringNum = "123"
         int expectedInt = 123
         int intNum = stringNum.toInteger()
@@ -40,7 +40,7 @@ class ConvertStringToInt {
     }
 
     @Test
-    void givenString_thenConvertToIntegerUsingParseInt() {
+    void givenString_whenUsingParseInt_thenConvertToInteger() {
         def stringNum = "123"
         int expectedInt = 123
         int intNum = Integer.parseInt(stringNum)
@@ -49,7 +49,7 @@ class ConvertStringToInt {
     }
 
     @Test
-    void givenString_thenConvertToIntegerUsingValueOf() {
+    void givenString_whenUsingValueOf_thenConvertToInteger() {
         def stringNum = "123"
         int expectedInt = 123
         int intNum = Integer.valueOf(stringNum)
@@ -58,7 +58,7 @@ class ConvertStringToInt {
     }
 
     @Test
-    void givenString_thenConvertToIntegerUsingIntValue() {
+    void givenString_whenUsingIntValue_thenConvertToInteger() {
         def stringNum = "123"
         int expectedInt = 123
         int intNum = new Integer(stringNum).intValue()
@@ -69,7 +69,7 @@ class ConvertStringToInt {
     }
 
     @Test
-    void givenString_thenConvertToIntegerUsingDecimalFormat() {
+    void givenString_whenUsingDecimalFormat_thenConvertToInteger() {
         def stringNum = "123"
         int expectedInt = 123
         DecimalFormat decimalFormat = new DecimalFormat("#")
