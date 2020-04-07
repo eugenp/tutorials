@@ -13,10 +13,14 @@ public class Http2ClientInitializer extends ChannelInitializer<SocketChannel> {
     private final int maxContentLength;
     private Http2SettingsHandler settingsHandler;
     private Http2ClientResponseHandler responseHandler;
+    private String host;
+    private int port;
 
-    public Http2ClientInitializer(SslContext sslCtx, int maxContentLength) {
+    public Http2ClientInitializer(SslContext sslCtx, int maxContentLength, String host, int port) {
         this.sslCtx = sslCtx;
         this.maxContentLength = maxContentLength;
+        this.host = host;
+        this.port = port;
     }
 
     @Override
@@ -27,7 +31,7 @@ public class Http2ClientInitializer extends ChannelInitializer<SocketChannel> {
         
         if (sslCtx != null) {
             ChannelPipeline pipeline = ch.pipeline();
-            pipeline.addLast(sslCtx.newHandler(ch.alloc(), Http2Client.HOST, Http2Client.PORT));
+            pipeline.addLast(sslCtx.newHandler(ch.alloc(), host, port));
             pipeline.addLast(Http2Util.getClientAPNHandler(maxContentLength, settingsHandler, responseHandler));
         }
     }

@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelHandlerContext;
@@ -17,6 +20,7 @@ import io.netty.util.CharsetUtil;
 
 public class Http2ClientResponseHandler extends SimpleChannelInboundHandler<FullHttpResponse> {
 
+    private final Logger logger = LoggerFactory.getLogger(Http2ClientResponseHandler.class);
     private final Map<Integer, MapValues> streamidMap;
 
     public Http2ClientResponseHandler() {
@@ -27,10 +31,12 @@ public class Http2ClientResponseHandler extends SimpleChannelInboundHandler<Full
         return streamidMap.put(streamId, new MapValues(writeFuture, promise));
     }
 
-    public void awaitResponses(long timeout, TimeUnit unit) {
+    public String awaitResponses(long timeout, TimeUnit unit) {
 
         Iterator<Entry<Integer, MapValues>> itr = streamidMap.entrySet()
             .iterator();
+        
+        String response = null;
 
         while (itr.hasNext()) {
             Entry<Integer, MapValues> entry = itr.next();
@@ -52,9 +58,13 @@ public class Http2ClientResponseHandler extends SimpleChannelInboundHandler<Full
             if (!promise.isSuccess()) {
                 throw new RuntimeException(promise.cause());
             }
-            System.out.println("---Stream id: " + entry.getKey() + " received---");
+            logger.info("---Stream id: " + entry.getKey() + " received---");
+            response = entry.getValue().getResponse();
+            
             itr.remove();
         }
+        
+        return response;
 
     }
 
@@ -63,14 +73,14 @@ public class Http2ClientResponseHandler extends SimpleChannelInboundHandler<Full
         Integer streamId = msg.headers()
             .getInt(HttpConversionUtil.ExtensionHeaderNames.STREAM_ID.text());
         if (streamId == null) {
-            System.err.println("HttpResponseHandler unexpected message received: " + msg);
+            logger.error("HttpResponseHandler unexpected message received: " + msg);
             return;
         }
 
         MapValues value = streamidMap.get(streamId);
 
         if (value == null) {
-            System.err.println("Message received for unknown stream id " + streamId);
+            logger.error("Message received for unknown stream id " + streamId);
             ctx.close();
         } else {
             ByteBuf content = msg.content();
@@ -78,9 +88,11 @@ public class Http2ClientResponseHandler extends SimpleChannelInboundHandler<Full
                 int contentLength = content.readableBytes();
                 byte[] arr = new byte[contentLength];
                 content.readBytes(arr);
-                System.out.println(new String(arr, 0, contentLength, CharsetUtil.UTF_8));
+                String response = new String(arr, 0, contentLength, CharsetUtil.UTF_8);
+                logger.info("Response from Server: "+ (response));
+                value.setResponse(response);
             }
-
+            
             value.getPromise()
                 .setSuccess();
         }
@@ -89,6 +101,15 @@ public class Http2ClientResponseHandler extends SimpleChannelInboundHandler<Full
     public static class MapValues {
         ChannelFuture writeFuture;
         ChannelPromise promise;
+        String response;
+
+        public String getResponse() {
+            return response;
+        }
+
+        public void setResponse(String response) {
+            this.response = response;
+        }
 
         public MapValues(ChannelFuture writeFuture2, ChannelPromise promise2) {
             this.writeFuture = writeFuture2;

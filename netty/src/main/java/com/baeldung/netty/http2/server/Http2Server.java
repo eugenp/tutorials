@@ -1,5 +1,8 @@
 package com.baeldung.netty.http2.server;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.baeldung.netty.http2.Http2Util;
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -16,7 +19,8 @@ import io.netty.handler.ssl.SslContext;
 
 public final class Http2Server {
 
-    static final int PORT = 8443;
+    private static final int PORT = 8443;
+    private static final Logger logger = LoggerFactory.getLogger(Http2Server.class);
 
     public static void main(String[] args) throws Exception {
         SslContext sslCtx = Http2Util.createSSLContext(true);
@@ -43,7 +47,7 @@ public final class Http2Server {
                 .sync()
                 .channel();
 
-            System.err.println("HTTP/2 Server is listening on https://127.0.0.1:" + PORT + '/');
+            logger.info("HTTP/2 Server is listening on https://127.0.0.1:" + PORT + '/');
 
             ch.closeFuture()
                 .sync();
