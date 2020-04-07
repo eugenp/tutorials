@@ -14,7 +14,7 @@
     </parent>
 
     <modules>
-        <module>coroutines-with-quasar</module>
+        <!-- <module>coroutines-with-quasar</module>  --><!-- we haven't upgraded to Java 12 -->
     </modules>
 
 </project>
