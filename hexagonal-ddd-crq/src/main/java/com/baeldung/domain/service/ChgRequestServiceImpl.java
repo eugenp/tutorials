@@ -64,6 +64,6 @@ public class ChgRequestServiceImpl implements ChgRequestService {
     private ChgRequest getChgRequest(UUID id) {
         return chgRequestRepository
                 .findById(id)
-                .orElseThrow(() -> new RuntimeException("Invoice with given id doesn't exist"));
+                .orElseThrow(() -> new RuntimeException("ChgRequest with given id doesn't exist"));
     }
 }

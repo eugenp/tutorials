@@ -38,7 +38,7 @@ public class ChgRequestController {
     }
 
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public UUID createInvoice(@RequestBody final CreateChgRequest createChgRequest) {
+    public UUID createChgRequest(@RequestBody final CreateChgRequest createChgRequest) {
         return chgRequestService.createChgRequest(createChgRequest.getAppMetadata());
     }
 

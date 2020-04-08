@@ -31,8 +31,8 @@ public class CassandraDbChgRequestRepository implements ChgRequestRepository {
 
     @Override
     public Optional<ChgRequest> findById(UUID id) {
-        var maybeInvoiceEntity = chgRequestRepository.findById(id);
-        return maybeInvoiceEntity.map(ChgRequestEntity::toChgRequest);
+        var maybeChgRequestEntity = chgRequestRepository.findById(id);
+        return maybeChgRequestEntity.map(ChgRequestEntity::toChgRequest);
     }
 
     @Override

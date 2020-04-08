@@ -1,6 +1,6 @@
 spring:
   application:
-    name: invoice-system
+    name: change-request-system
     version: 1.0-SNAPSHOT
 
   autoconfigure:
