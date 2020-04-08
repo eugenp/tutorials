@@ -1,5 +1,7 @@
 package com.baeldung.jpa.unrelated.entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
@@ -8,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cocktails")
+@Table(name = "menu")
 public class Cocktail {
     @Id
     @Column(name = "cocktail_name")
@@ -22,7 +24,7 @@ public class Cocktail {
 
     @OneToOne
     @NotFound(action = NotFoundAction.IGNORE)
-    @JoinColumn(name = "cocktail_name", 
+    @JoinColumn(name = "cocktail_name",
         referencedColumnName = "cocktail", 
         insertable = false, updatable = false, 
         foreignKey = @javax.persistence
@@ -30,7 +32,7 @@ public class Cocktail {
         )
     private Recipe recipe;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(
         name = "cocktail", 

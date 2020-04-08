@@ -38,6 +38,7 @@ public class UnrelatedEntitiesUnitTest {
         entityManager.close();
     }
 
+
     @Test
     public void whenQueryingForCocktailThatHasRecipe_thenTheExpectedCocktailReturned() {
         // JPA
