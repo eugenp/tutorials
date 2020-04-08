@@ -17,6 +17,7 @@ import org.junit.platform.commons.logging.LoggerFactory;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import javax.sql.DataSource;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -33,7 +34,7 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
     private static final Logger logger = LoggerFactory.getLogger(DataSourceDBUnitTest.class);
 
     @Override
-    protected javax.sql.DataSource getDataSource() {
+    protected DataSource getDataSource() {
         JdbcDataSource dataSource = new JdbcDataSource();
         dataSource.setURL(JDBC_URL);
         dataSource.setUser("sa");
