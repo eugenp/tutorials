@@ -21,9 +21,11 @@ public class OracleUCPConfiguration {
         dataSource.setUser("books");
         dataSource.setPassword("books");
         dataSource.setConnectionFactoryClassName("oracle.jdbc.pool.OracleDataSource");
-        dataSource.setURL("jdbc:oracle:thin:@//localhost:11521/ORCLPDB1");     
+        dataSource.setURL("jdbc:oracle:thin:@//localhost:11521/ORCLPDB1");
+        
         dataSource.setFastConnectionFailoverEnabled(true);
         dataSource.setInitialPoolSize(5);
+        dataSource.setMinPoolSize(5);
         dataSource.setMaxPoolSize(10);
         return dataSource;
     }
