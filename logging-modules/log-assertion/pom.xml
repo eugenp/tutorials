@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.junit</groupId>
+    <artifactId>log-assertion</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <dependencies>
+        <!-- pull in logback-core and slf4j-api -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.15.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <java.version>1.8</java.version>
+        <jdk.version>${java.version}</jdk.version>
+    </properties>
+</project>
