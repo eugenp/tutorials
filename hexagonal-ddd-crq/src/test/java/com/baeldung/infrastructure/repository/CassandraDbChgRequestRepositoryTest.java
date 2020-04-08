@@ -33,7 +33,7 @@ class CassandraDbChgRequestRepositoryTest {
     }
 
     @Test
-    void shouldFindAll_ThenReturnInvoice() {
+    void shouldFindAll_ThenReturnChgRequest() {
         // Arrange
         var alpha = new AppMetadata("alpha", "1.3.1", "random jira link", "prod-us-west-2", "rolling out new feature");
 
@@ -48,7 +48,7 @@ class CassandraDbChgRequestRepositoryTest {
     }
 
     @Test
-    void shouldFindById_ThenReturnInvoice() {
+    void shouldFindById_ThenReturnChgRequest() {
         // Arrange
         var tango = new AppMetadata("tango", "2.3.1", "random jira link", "prod-us-east-1", "rolling out new feature");
         var chgRequest = new ChgRequest(UUID.randomUUID(), tango);
@@ -56,9 +56,9 @@ class CassandraDbChgRequestRepositoryTest {
 
         // Act
         chgRequestRepository.save(chgRequest);
-        var mayBeInvoice = chgRequestRepository.findById(chgRequest.getId());
+        var mayBeChgRequest = chgRequestRepository.findById(chgRequest.getId());
 
         // Assert
-        mayBeInvoice.ifPresent(chgRequestFromDao -> assertEquals(chgRequest.getId(), chgRequestFromDao.getId()));
+        mayBeChgRequest.ifPresent(chgRequestFromDao -> assertEquals(chgRequest.getId(), chgRequestFromDao.getId()));
     }
 }
