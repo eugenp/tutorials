@@ -155,7 +155,7 @@ public class UnrelatedEntitiesUnitTest {
     }
 
     @Test
-    public void whenQueryingForRumCocktailsInMenuRecipes_thenTheExpectedRecipesReturned() {
+    public void whenQueryingForMultipleRecipes_thenTheExpectedRecipesReturned() {
         Consumer<List<MultipleRecipe>> verifyResult = recipes -> {
             assertEquals(2, recipes.size());
             recipes.forEach(r -> assertEquals(mojito.getName(), r.getCocktail()));
@@ -165,9 +165,8 @@ public class UnrelatedEntitiesUnitTest {
         List<MultipleRecipe> recipes = entityManager.createQuery("select distinct r "
             + "from MultipleRecipe r "
             + "join Cocktail c " 
-            + "on r.cocktail = c.name and r.baseIngredient = :category",
+            + "on r.baseIngredient = c.category",
         MultipleRecipe.class)
-            .setParameter("category", mojito.getCategory())
             .getResultList();
         verifyResult.accept(recipes);
 
@@ -176,8 +175,7 @@ public class UnrelatedEntitiesUnitTest {
         QMultipleRecipe multipleRecipe = QMultipleRecipe.multipleRecipe;
         recipes = new JPAQuery<MultipleRecipe>(entityManager).from(multipleRecipe)
             .join(cocktail)
-            .on(multipleRecipe.cocktail.eq(cocktail.name)
-                .and(multipleRecipe.baseIngredient.eq(mojito.getCategory())))
+            .on(multipleRecipe.baseIngredient.eq(cocktail.category))
             .fetch();
         verifyResult.accept(recipes);
     }
