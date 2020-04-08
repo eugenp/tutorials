@@ -10,7 +10,7 @@ import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ChecksumUtilsTest {
+class ChecksumUtilsUnitTest {
 
     byte[] arr;
 
