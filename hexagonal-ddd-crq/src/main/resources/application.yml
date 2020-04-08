@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: change-request-system
+    version: 1.0-SNAPSHOT
+
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+  data:
+    cassandra:
+      keyspace-name: chgrequestdatabase
+      username: cassandra
+      password: cassandra
+      contact-points: localhost
+      port: 9042
+

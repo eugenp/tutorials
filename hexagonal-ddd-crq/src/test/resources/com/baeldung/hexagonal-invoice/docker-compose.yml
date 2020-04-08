@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  cassandra-database:
+    image: cassandra:3.11.6
+    container_name: cassandra-db
+    restart: always
+    ports: 
+      - 9042:9042
+  cassandra-init:
+    image: cassandra:3.11.6
+    container_name: cassandra-db-init
+    depends_on:
+      - cassandra-database
+    volumes:
+      - ./cassandra-init.cql:/cassandra-init.cql:ro
+    command: bin/bash -c "echo Initializing cassandra schema... && sleep 30 && cqlsh -u cassandra -p cassandra -f cassandra-init.cql cassandra-db"
