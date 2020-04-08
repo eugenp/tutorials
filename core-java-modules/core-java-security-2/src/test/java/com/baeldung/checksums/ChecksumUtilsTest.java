@@ -1,7 +1,8 @@
 package com.baeldung.checksums;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -13,7 +14,7 @@ class ChecksumUtilsTest {
 
     byte[] arr;
 
-    @BeforeEach
+    @Before
     void setUp() {
         arr =  new byte[]{0,10,21,20,35,40,120,56,72,22};
     }
