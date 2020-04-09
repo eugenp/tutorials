@@ -17,7 +17,7 @@
     <repositories>
         <repository>
             <id>OpenNMS Repository</id>
-            <url>http://repo.opennms.org/maven2/</url>
+            <url>https://repo.opennms.org/maven2/</url>
         </repository>
     </repositories>
 
@@ -26,11 +26,6 @@
             <groupId>javax.samples.jnlp</groupId>
             <artifactId>jnlp-servlet</artifactId>
             <version>${jnlp-servlet.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.samples.jnlp</groupId>
-            <artifactId>jnlp-jardiff</artifactId>
-            <version>${jnlp-jardiff.version}</version>
         </dependency>
     </dependencies>
 
@@ -84,7 +79,6 @@
 
     <properties>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
-        <jnlp-jardiff.version>1.6.0</jnlp-jardiff.version>
         <jnlp-servlet.version>1.6.0</jnlp-servlet.version>
     </properties>
 
