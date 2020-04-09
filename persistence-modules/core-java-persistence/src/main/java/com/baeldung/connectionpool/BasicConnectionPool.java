@@ -1,8 +1,6 @@
 package com.baeldung.connectionpool;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +40,27 @@ public class BasicConnectionPool implements ConnectionPool {
         }
 
         Connection connection = connectionPool.remove(connectionPool.size() - 1);
+        connection = checkConnection(connection);
         usedConnections.add(connection);
+        return connection;
+    }
+
+    public Connection checkConnection(Connection connection){
+        boolean flag = false;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT 1");
+            rs.next();
+        } catch (Exception e) {
+            flag = true;
+        }
+        if (flag){
+            try {
+                connection = createConnection(this.url, this.user, this.password);
+            } catch (SQLException e) {
+                //Unable to give another life to connection
+            }
+        }
         return connection;
     }
 
