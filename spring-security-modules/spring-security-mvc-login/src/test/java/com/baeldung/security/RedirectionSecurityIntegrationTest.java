@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "/RedirectionWebSecurityConfig.xml", "/mvc-servlet.xml" })
+@ContextConfiguration({ "/RedirectionWebSecurityConfig.xml" })
 @WebAppConfiguration
 public class RedirectionSecurityIntegrationTest {
 
