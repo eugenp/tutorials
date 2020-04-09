@@ -122,6 +122,7 @@
 
         <!-- <module>multimodulemavenproject</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
         <module>pre-jpms</module>
+        <module>core-java-arrays-sorting</module>
     </modules>
 
 </project>

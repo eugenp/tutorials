@@ -1,6 +1,6 @@
 package com.baeldung.array;
 
-import com.baeldung.arraycopy.model.Employee;
+import com.baeldung.sort.Employee;
 import org.junit.Before;
 import org.junit.Test;
 

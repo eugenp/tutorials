@@ -1,7 +1,5 @@
 package com.baeldung.array;
 
-import com.baeldung.arraycopy.model.Employee;
-
 import java.util.Comparator;
 
 public class SortedArrayChecker {

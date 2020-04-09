@@ -1,6 +1,5 @@
 package com.baeldung.sort;
 
-import com.baeldung.arraycopy.model.Employee;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -86,5 +85,4 @@ public class ArraySortUnitTest {
 
         assertArrayEquals(new Employee[]{david, john, mary}, employees);
     }
-
 }
