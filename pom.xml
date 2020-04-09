@@ -455,6 +455,7 @@
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
+                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
@@ -535,6 +536,7 @@
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
+                <!-- <module>netty</module> --> <!-- we haven't upgraded to Java 13 -->
                 <module>ninja</module>
                 <module>open-liberty</module>
 
@@ -966,6 +968,7 @@
                 <module>java-collections-conversions-2</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
+                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
@@ -1045,6 +1048,7 @@
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
+                <!-- <module>netty</module> --> <!-- we haven't upgraded to Java 13 -->
                 <module>ninja</module>
                 <module>open-liberty</module>
 
@@ -1261,6 +1265,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
+                <module>libraries-concurrency</module>
             </modules>
 
         </profile>
