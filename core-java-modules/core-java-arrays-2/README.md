@@ -13,5 +13,4 @@ This module contains articles about Java arrays
 - [Removing an Element from an Array in Java](https://www.baeldung.com/java-array-remove-element)
 - [Removing the First Element of an Array](https://www.baeldung.com/java-array-remove-first-element)
 - [Adding an Element to a Java Array vs an ArrayList](https://www.baeldung.com/java-add-element-to-array-vs-list)
-- [Arrays.sort vs Arrays.parallelSort](https://www.baeldung.com/java-arrays-sort-vs-parallelsort)
 - [[<-- Prev]](/core-java-modules/core-java-arrays)

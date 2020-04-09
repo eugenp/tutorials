@@ -10,7 +10,4 @@ This module contains articles about Java arrays
 - [Multi-Dimensional Arrays In Java](https://www.baeldung.com/java-jagged-arrays)
 - [Find Sum and Average in a Java Array](https://www.baeldung.com/java-array-sum-average)
 - [Arrays in Java: A Reference Guide](https://www.baeldung.com/java-arrays-guide)
-- [How to Reverse an Array in Java](http://www.baeldung.com/java-invert-array)
-- [Sorting Arrays in Java](https://www.baeldung.com/java-sorting-arrays)
-- [Checking If an Array Is Sorted in Java](https://www.baeldung.com/java-check-sorted-array)
 - [[More -->]](/core-java-modules/core-java-arrays-2)
