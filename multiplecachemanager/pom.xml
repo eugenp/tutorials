@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.5.RELEASE</version>
+		<version>2.2.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.baeldung.</groupId>
-	<artifactId>hexagonaljava</artifactId>
+	<groupId>com.baeldung</groupId>
+	<artifactId>multiplecachemanager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hexagonaljava</name>
-	<description>Demo project for Spring Boot</description>
+	<name>multiplecachemanager</name>
+	<description>sample project for configuring multiple cache managers</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -21,8 +21,28 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		
+		<dependency>
+    		<groupId>com.github.ben-manes.caffeine</groupId>
+    		<artifactId>caffeine</artifactId>
+    	</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -34,17 +54,6 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-		
-		<dependency>
-   		 	<groupId>org.springframework.boot</groupId>
-    	 	<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
-
-		<dependency>
-    		<groupId>com.h2database</groupId>
-   			<artifactId>h2</artifactId>
-    		<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 
