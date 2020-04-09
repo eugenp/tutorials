@@ -1,105 +1,146 @@
-CAS Overlay Template
-============================
+CAS Overlay Template [![Build Status](https://travis-ci.org/apereo/cas-overlay-template.svg?branch=master)](https://travis-ci.org/apereo/cas-overlay-template)
+=======================
 
-Generic CAS WAR overlay to exercise the latest versions of CAS. This overlay could be freely used as a starting template for local CAS war overlays. The CAS services management overlay is available [here](https://github.com/apereo/cas-services-management-overlay).
+Generic CAS WAR overlay to exercise the latest versions of CAS. This overlay could be freely used as a starting template for local CAS war overlays.
 
 # Versions
 
-```xml
-<cas.version>5.3.x</cas.version>
+- CAS `6.1.x`
+- JDK `11`
+
+# Overview
+
+To build the project, use:
+
+```bash
+# Use --refresh-dependencies to force-update SNAPSHOT versions
+./gradlew[.bat] clean build
 ```
-
-# Requirements
-
-* JDK 1.8+
-
-# Configuration
-
-The `etc` directory contains the configuration files and directories that need to be copied to `/etc/cas/config`.
-
-# Build
 
 To see what commands are available to the build script, run:
 
 ```bash
-./build.sh help
+./gradlew[.bat] tasks
 ```
 
-To package the final web application, run:
+To launch into the CAS command-line shell:
 
 ```bash
-./build.sh package
+./gradlew[.bat] downloadShell runShell
 ```
 
-To update `SNAPSHOT` versions run:
+To fetch and overlay a CAS resource or view, use:
 
 ```bash
-./build.sh package -U
+./gradlew[.bat] getResource -PresourceName=[resource-name]
 ```
+
+To list all available CAS views and templates:
+
+```bash
+./gradlew[.bat] listTemplateViews
+```
+
+To unzip and explode the CAS web application file and the internal resources jar:
+
+```bash
+./gradlew[.bat] explodeWar
+```
+
+# Configuration
+
+- The `etc` directory contains the configuration files and directories that need to be copied to `/etc/cas/config`.
+
+```bash
+./gradlew[.bat] copyCasConfiguration
+```
+
+- The specifics of the build are controlled using the `gradle.properties` file.
+
+## Adding Modules
+
+CAS modules may be specified under the `dependencies` block of the [Gradle build script](build.gradle):
+
+```gradle
+dependencies {
+    compile "org.apereo.cas:cas-server-some-module:${project.casVersion}"
+    ...
+}
+```
+
+To collect the list of all project modules and dependencies:
+
+```bash
+./gradlew[.bat] allDependencies
+```
+
+### Clear Gradle Cache
+
+If you need to, on Linux/Unix systems, you can delete all the existing artifacts (artifacts and metadata) Gradle has downloaded using:
+
+```bash
+# Only do this when absolutely necessary
+rm -rf $HOME/.gradle/caches/
+```
+
+Same strategy applies to Windows too, provided you switch `$HOME` to its equivalent in the above command.
 
 # Deployment
 
-- Create a keystore file `thekeystore` under `/etc/cas`. Use the password `changeit` for both the keystore and the key/certificate entries.
+- Create a keystore file `thekeystore` under `/etc/cas`. Use the password `changeit` for both the keystore and the key/certificate entries. This can either be done using the JDK's `keytool` utility or via the following command:
+
+```bash
+./gradlew[.bat] createKeystore
+```
+
 - Ensure the keystore is loaded up with keys and certificates of the server.
 
 On a successful deployment via the following methods, CAS will be available at:
 
-* `http://cas.server.name:8080/cas`
 * `https://cas.server.name:8443/cas`
 
 ## Executable WAR
 
-Run the CAS web application as an executable WAR.
+Run the CAS web application as an executable WAR:
 
 ```bash
-./build.sh run
+./gradlew[.bat] run
 ```
 
-## Spring Boot
-
-Run the CAS web application as an executable WAR via Spring Boot. This is most useful during development and testing.
+Debug the CAS web application as an executable WAR:
 
 ```bash
-./build.sh bootrun
+./gradlew[.bat] debug
 ```
 
-### Warning!
+Run the CAS web application as a *standalone* executable WAR:
 
-Be careful with this method of deployment. `bootRun` is not designed to work with already executable WAR artifacts such that CAS server web application. YMMV. Today, uses of this mode ONLY work when there is **NO OTHER** dependency added to the build script and the `cas-server-webapp` is the only present module. See [this issue](https://github.com/spring-projects/spring-boot/issues/8320) for more info.
-
-
-## Spring Boot App Server Selection
-
-There is an app.server property in the `pom.xml` that can be used to select a spring boot application server.
-It defaults to `-tomcat` but `-jetty` and `-undertow` are supported.
-
-It can also be set to an empty value (nothing) if you want to deploy CAS to an external application server of your choice.
-
-```xml
-<app.server>-tomcat<app.server>
-```
-
-## Windows Build
-
-If you are building on windows, try `build.cmd` instead of `build.sh`. Arguments are similar but for usage, run:
-
-```
-build.cmd help
+```bash
+./gradlew[.bat] clean executable
 ```
 
 ## External
 
-Deploy resultant `target/cas.war`  to a servlet container of choice.
+Deploy the binary web application file `cas.war` after a successful build to a servlet container of choice.
 
+## Docker
 
-## Command Line Shell
+The following strategies outline how to build and deploy CAS Docker images.
 
-Invokes the CAS Command Line Shell. For a list of commands either use no arguments or use `-h`. To enter the interactive shell use `-sh`.
+### Jib
+
+The overlay embraces the [Jib Gradle Plugin](https://github.com/GoogleContainerTools/jib) to provide easy-to-use out-of-the-box tooling for building CAS docker images. Jib is an open-source Java containerizer from Google that lets Java developers build containers using the tools they know. It is a container image builder that handles all the steps of packaging your application into a container image. It does not require you to write a Dockerfile or have Docker installed, and it is directly integrated into the overlay.
 
 ```bash
-./build.sh cli
+./gradlew build jibDockerBuild
 ```
 
-### Relevant Articles:
+### Dockerfile
 
-- [CAS SSO With Spring Security](https://www.baeldung.com/spring-security-cas-sso)
+You can also use the native Docker tooling and the provided `Dockerfile` to build and run CAS.
+
+```bash
+chmod +x *.sh
+./docker-build.sh
+./docker-run.sh
+```
