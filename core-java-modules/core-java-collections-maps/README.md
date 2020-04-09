@@ -4,7 +4,6 @@ This module contains articles about Map data structures in Java.
 
 ### Relevant Articles: 
 - [Guide to the Guava BiMap](https://www.baeldung.com/guava-bimap)
-- [A Guide to Java HashMap](https://www.baeldung.com/java-hashmap)
 - [A Guide to LinkedHashMap in Java](https://www.baeldung.com/java-linked-hashmap)
 - [A Guide to TreeMap in Java](https://www.baeldung.com/java-treemap)
 - [How to Store Duplicate Keys in a Map in Java?](https://www.baeldung.com/java-map-duplicate-keys)
