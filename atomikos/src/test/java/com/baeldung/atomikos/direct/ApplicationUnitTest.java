@@ -12,6 +12,7 @@ import java.util.UUID;
 import javax.sql.DataSource;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.atomikos.icatch.jta.UserTransactionImp;
@@ -26,6 +27,7 @@ public class ApplicationUnitTest {
         .toString();
 
     @Test
+    @Ignore
     public void testPlaceOrderSuccess() throws Exception {
         int amount = 1;
         long initialBalance = getBalance(inventoryDataSource, productId);
@@ -36,6 +38,7 @@ public class ApplicationUnitTest {
     }
 
     @Test
+    @Ignore
     public void testPlaceOrderFailure() throws Exception {
         int amount = 10;
         long initialBalance = getBalance(inventoryDataSource, productId);

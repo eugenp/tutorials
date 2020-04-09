@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,7 @@ public class ApplicationUnitTest {
     OrderRepository orderRepository;
 
     @Test
+    @Ignore
     public void testPlaceOrderSuccess() throws Exception {
         int amount = 1;
         long initialBalance = getBalance(inventoryRepository, productId);
@@ -45,6 +47,7 @@ public class ApplicationUnitTest {
     }
 
     @Test
+    @Ignore
     public void testPlaceOrderFailure() throws Exception {
         int amount = 10;
         long initialBalance = getBalance(inventoryRepository, productId);
