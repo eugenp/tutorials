@@ -96,4 +96,15 @@ class ConvertStringToInt {
         def invalidString = null
         invalidString.toInteger()
     }
+
+    @Test
+    void givenString_whenUsingIsInteger_thenCheckIfCorrectValue() {
+        def invalidString = "123a"
+        def validString = "123"
+        def invalidNum = invalidString?.isInteger() ? invalidString as Integer : false
+        def correctNum = validString?.isInteger() ? validString as Integer : false
+
+        assertEquals(false, invalidNum)
+        assertEquals(123, correctNum)
+    }
 }
