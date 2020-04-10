@@ -13,4 +13,4 @@ This module contains articles about Gson
 - [Convert String to JsonObject with Gson](https://www.baeldung.com/gson-string-to-jsonobject)
 - [Mapping Multiple JSON Fields to a Single Java Field](https://www.baeldung.com/json-multiple-fields-single-java-field)
 - [Serializing and Deserializing a List with Gson](https://www.baeldung.com/gson-list)
-
+- [Compare Two JSON Objects with Gson](https://www.baeldung.com/gson-compare-json-objects)

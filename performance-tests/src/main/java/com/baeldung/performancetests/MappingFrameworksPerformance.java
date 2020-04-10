@@ -1,4 +1,4 @@
-package com.baeldung.performancetests.benchmark;
+package com.baeldung.performancetests;
 
 import com.baeldung.performancetests.dozer.DozerConverter;
 import com.baeldung.performancetests.jmapper.JMapperConverter;

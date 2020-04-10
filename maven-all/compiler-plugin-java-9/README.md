@@ -1,3 +1,3 @@
 ### Relevant Articles
 
-- [Maven Compiler Plugin](http://www.baeldung.com/maven-compiler-plugin)
+- [Maven Compiler Plugin](https://www.baeldung.com/maven-compiler-plugin)

@@ -21,6 +21,9 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <listener>
+        <listener-class>org.crsh.plugin.WebPluginLifeCycle</listener-class>
+    </listener>
 
     <!-- Spring child -->
     <servlet>

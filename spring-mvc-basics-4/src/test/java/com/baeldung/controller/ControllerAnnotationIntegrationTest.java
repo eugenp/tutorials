@@ -1,8 +1,8 @@
-package org.baeldung.controller;
+package com.baeldung.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.baeldung.controller.config.WebConfig;
-import org.baeldung.controller.student.Student;
+import com.baeldung.controller.config.WebConfig;
+import com.baeldung.controller.student.Student;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

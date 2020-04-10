@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xsi:schemaLocation="
+      http://www.springframework.org/schema/security
+      http://www.springframework.org/schema/security/spring-security.xsd
+      http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <http use-expressions="true" auto-config="true" access-decision-manager-ref="accessDecisionManager">
+        <intercept-url pattern="/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+
+        <form-login default-target-url="/"/>
+        <csrf disabled="true"/>
+        <logout logout-url="/logout" delete-cookies="JSESSIONID" logout-success-url="/login"/>
+    </http>
+
+    <beans:bean id="accessDecisionManager" class="org.springframework.security.access.vote.UnanimousBased">
+        <beans:constructor-arg>
+            <beans:list>
+                <beans:bean class="org.springframework.security.web.access.expression.WebExpressionVoter"/>
+                <beans:bean class="org.springframework.security.access.vote.AuthenticatedVoter"/>
+                <beans:bean class="org.springframework.security.access.vote.RoleVoter"/>
+                <beans:bean class="com.baeldung.roles.voter.MinuteBasedVoter"/>
+            </beans:list>
+        </beans:constructor-arg>
+    </beans:bean>
+
+    <beans:bean id="minuteBasedVoter" class="com.baeldung.roles.voter.MinuteBasedVoter"/>
+
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="user" password="pass" authorities="ROLE_USER"/>
+                <user name="admin" password="pass" authorities="ROLE_ADMIN"/>
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+</beans:beans>

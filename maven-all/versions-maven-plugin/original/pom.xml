@@ -46,7 +46,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>2.7</version>
+                <version>${versions.plugin.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>org.apache.commons:commons-collections4</exclude>
@@ -76,6 +76,7 @@
         <commons-collections4.version>4.0</commons-collections4.version>
         <commons-lang3.version>3.0</commons-lang3.version>
         <commons-beanutils.version>1.9.1</commons-beanutils.version>
+        <versions.plugin.version>2.7</versions.plugin.version>
     </properties>
     	
 </project>

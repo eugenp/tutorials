@@ -148,8 +148,6 @@
     </build>
 
     <properties>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
         <restx.version>0.35-rc4</restx.version>
         <logback-classic.version>1.2.3</logback-classic.version>
     </properties>

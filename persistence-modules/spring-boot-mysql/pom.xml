@@ -37,18 +37,7 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <finalName>spring-boot-mysql</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
-
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mysql-connector-java.version>8.0.12</mysql-connector-java.version>
     </properties>
 

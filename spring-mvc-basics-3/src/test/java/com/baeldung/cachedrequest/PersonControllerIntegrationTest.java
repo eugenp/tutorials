@@ -1,4 +1,4 @@
-package org.baeldung.cachedrequest;
+package com.baeldung.cachedrequest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;

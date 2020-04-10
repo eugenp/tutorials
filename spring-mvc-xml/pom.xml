@@ -92,6 +92,36 @@
             <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- CRaSH Dependency -->
+        <dependency>
+            <groupId>org.crashub</groupId>
+            <artifactId>crash.embed.spring</artifactId>
+            <version>${crash.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.crashub</groupId>
+            <artifactId>crash.cli</artifactId>
+            <version>${crash.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.crashub</groupId>
+            <artifactId>crash.connectors.telnet</artifactId>
+            <version>${crash.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Groovy -->
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>${groovy.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -137,6 +167,9 @@
 
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+
+        <crash.version>1.3.2</crash.version>
+        <groovy.version>3.0.0-rc-3</groovy.version>
 
     </properties>
 

@@ -13,4 +13,5 @@ This module contains articles about Object-oriented programming (OOP) in Java
 - [The “final” Keyword in Java](https://www.baeldung.com/java-final)
 - [Type Erasure in Java Explained](https://www.baeldung.com/java-type-erasure)
 - [Variable and Method Hiding in Java](https://www.baeldung.com/java-variable-method-hiding)
+- [Object-Oriented-Programming Concepts in Java](https://www.baeldung.com/java-oop)
 - [[More -->]](/core-java-modules/core-java-lang-oop-2)

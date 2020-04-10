@@ -14,4 +14,4 @@ This module contains articles about Object-Oriented Programming in Kotlin
 - [Guide to Kotlin Interfaces](https://www.baeldung.com/kotlin-interfaces)
 - [Inline Classes in Kotlin](https://www.baeldung.com/kotlin-inline-classes)
 - [Static Methods Behavior in Kotlin](https://www.baeldung.com/kotlin-static-methods)
-- More articles: [[next -->]](/core-kotlin-lang-oop-2)
+- More articles: [[next -->]](/core-kotlin-modules/core-kotlin-lang-oop-2)

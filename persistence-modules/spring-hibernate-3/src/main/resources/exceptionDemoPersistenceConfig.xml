@@ -16,7 +16,7 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
  
     <context:annotation-config />
-    <context:component-scan base-package="org.baeldung.persistence" />
+    <context:component-scan base-package="com.baeldung.persistence" />
     <context:property-placeholder location="classpath:persistence-h2.properties"/>
 
 
