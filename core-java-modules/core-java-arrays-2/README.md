@@ -5,7 +5,6 @@ This module contains articles about Java arrays
 ## Relevant Articles
 
 - [Extending an Array’s Length](https://www.baeldung.com/java-array-add-element-at-the-end)
-- [Looping Diagonally Through a 2d Java Array](https://www.baeldung.com/java-loop-diagonal-array)
 - [Converting Between Stream and Array in Java](https://www.baeldung.com/java-stream-to-array)
 - [Convert a Float to a Byte Array in Java](https://www.baeldung.com/java-convert-float-to-byte-array)
 - [Array Operations in Java](https://www.baeldung.com/java-common-array-operations)
