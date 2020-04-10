@@ -42,6 +42,9 @@
         <module>core-java-collections-list</module>
         <module>core-java-collections-list-2</module>
         <module>core-java-collections-list-3</module>
+        <module>core-java-collections-maps</module>
+        <module>core-java-collections-maps-2</module>
+        <module>core-java-collections-maps-3</module>
         <!-- <module>core-java-collections-set</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
 
         <module>core-java-concurrency-2</module>
