@@ -125,6 +125,7 @@
         <module>core-java-arrays-sorting</module>
         <module>core-java-arrays-guides</module>
         <module>core-java-arrays-multidimensional</module>
+        <module>core-java-arrays-convert</module>
     </modules>
 
 </project>
