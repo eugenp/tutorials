@@ -37,7 +37,7 @@ public class Book {
     public Book() {
 
     }
-    
+
     public Book(String isbn, String title, String author, double cost, Publisher publisher) {
         this.isbn = isbn;
         this.title = title;
