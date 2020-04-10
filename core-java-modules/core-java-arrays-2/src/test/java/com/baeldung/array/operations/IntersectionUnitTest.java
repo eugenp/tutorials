@@ -2,7 +2,7 @@ package com.baeldung.array.operations;
 
 import org.junit.jupiter.api.Test;
 
-import static com.baeldung.array.operations.ArrayOperations.*;
+import static com.baeldung.array.operations.ArraysIntersectionOperations.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class IntersectionUnitTest {

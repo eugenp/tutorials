@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 @BenchmarkMode(Mode.AverageTime)
 @Warmup(iterations = 5)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
-public class SearchArrayUnitTest {
+public class SearchArrayBenchmark {
 
     @State(Scope.Benchmark)
     public static class SearchData {
