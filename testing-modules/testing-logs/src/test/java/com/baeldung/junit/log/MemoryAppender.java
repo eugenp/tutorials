@@ -13,9 +13,6 @@ import ch.qos.logback.core.read.ListAppender;
 /**
  * In memory slf4j appender<br/>
  * Convenient appender to be able to check slf4j invocations
- * 
- * @author M405991
- * @author m408461
  */
 public class MemoryAppender extends ListAppender<ILoggingEvent> {
 
@@ -24,19 +21,29 @@ public class MemoryAppender extends ListAppender<ILoggingEvent> {
     }
 
     public void checkContains(String string, Level level) {
-        Assert.assertTrue("Message expected to contain " + string + " with severity " + level, this.list.stream().anyMatch(event -> event.getMessage().toString().contains(string) && event.getLevel().equals(level)));
+        Assert.assertTrue("Message expected to contain " + string + " with severity " + level, 
+                this.list.stream()
+                         .anyMatch(event -> event.getMessage().toString().contains(string) 
+                                            && event.getLevel().equals(level)));
     }
 
     public int countEventsForLogger(String loggerName) {
-        return (int) this.list.stream().filter(event -> event.getLoggerName().contains(loggerName)).count();
+        return (int) this.list.stream()
+                .filter(event -> event.getLoggerName().contains(loggerName))
+                .count();
     }
 
     public List<ILoggingEvent> search(String string) {
-        return this.list.stream().filter(event -> event.getMessage().toString().contains(string)).collect(Collectors.toList());
+        return this.list.stream()
+                .filter(event -> event.getMessage().toString().contains(string))
+                .collect(Collectors.toList());
     }
 
     public List<ILoggingEvent> search(String string, Level level) {
-        return this.list.stream().filter(event -> event.getMessage().toString().contains(string) && event.getLevel().equals(level)).collect(Collectors.toList());
+        return this.list.stream()
+                .filter(event -> event.getMessage().toString().contains(string) 
+                                 && event.getLevel().equals(level))
+                .collect(Collectors.toList());
     }
 
     public int getSize() {
