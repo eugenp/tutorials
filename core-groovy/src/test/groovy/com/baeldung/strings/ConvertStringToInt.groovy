@@ -62,10 +62,17 @@ class ConvertStringToInt {
         def stringNum = "123"
         int expectedInt = 123
         int intNum = new Integer(stringNum).intValue()
-        int secondIntNum = new Integer(stringNum)
 
         assertEquals(intNum, expectedInt)
-        assertEquals(secondIntNum, expectedInt)
+    }
+
+    @Test
+    void givenString_whenUsingNewInteger_thenConvertToInteger() {
+        def stringNum = "123"
+        int expectedInt = 123
+        int intNum = new Integer(stringNum)
+
+        assertEquals(intNum, expectedInt)
     }
 
     @Test
