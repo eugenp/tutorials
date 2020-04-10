@@ -1,21 +1,19 @@
 package com.baeldung.batch.understanding;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 import javax.batch.operations.JobOperator;
 import javax.batch.runtime.BatchRuntime;
 import javax.batch.runtime.BatchStatus;
 import javax.batch.runtime.JobExecution;
-import javax.batch.runtime.Metric.MetricType;
 import javax.batch.runtime.StepExecution;
+import java.util.List;
+import java.util.Properties;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.assertEquals;
 
+@Disabled("Should be fixed in BAEL-3812")
 class SimpleErrorChunkUnitTest {
 
     @Test

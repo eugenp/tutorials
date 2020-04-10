@@ -21,7 +21,6 @@
         <module>jackson-conversions-2</module>
         <module>jackson-custom-conversions</module>
         <module>jackson-exceptions</module>
-        <module>jackson-simple</module>
     </modules>
 
     <dependencies>

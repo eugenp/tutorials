@@ -4,7 +4,7 @@ INSERT INTO acl_sid (id, principal, sid) VALUES
 (3, 0, 'ROLE_EDITOR');
 
 INSERT INTO acl_class (id, class) VALUES
-(1, 'org.baeldung.acl.persistence.entity.NoticeMessage');
+(1, 'com.baeldung.acl.persistence.entity.NoticeMessage');
 
 INSERT INTO system_message(id,content) VALUES 
 (1,'First Level Message'),

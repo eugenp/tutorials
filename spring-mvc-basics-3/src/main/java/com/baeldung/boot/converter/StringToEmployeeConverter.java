@@ -1,6 +1,6 @@
-package org.baeldung.boot.converter;
+package com.baeldung.boot.converter;
 
-import org.baeldung.boot.domain.Employee;
+import com.baeldung.boot.domain.Employee;
 import org.springframework.core.convert.converter.Converter;
 
 public class StringToEmployeeConverter implements Converter<String, Employee> {

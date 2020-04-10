@@ -1,21 +1,25 @@
 package com.baeldung.restdocs;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-
-import org.springframework.hateoas.ResourceSupport;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.RepresentationModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @RestController
 @RequestMapping("/")
 public class IndexController {
 
-    @GetMapping
-    public ResourceSupport index() {
-        ResourceSupport index = new ResourceSupport();
-        index.add(linkTo(CRUDController.class).withRel("crud"));
-        return index;
+    static class CustomRepresentationModel extends RepresentationModel<CustomRepresentationModel> {
+        public CustomRepresentationModel(Link initialLink) {
+            super(initialLink);
+        }
     }
 
+    @GetMapping
+    public CustomRepresentationModel index() {
+        return new CustomRepresentationModel(linkTo(CRUDController.class).withRel("crud"));
+    }
 }

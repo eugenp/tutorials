@@ -1,4 +1,4 @@
-package org.baeldung;
+package com.baeldung;
 
 import com.baeldung.springmvcforms.configuration.ApplicationConfiguration;
 

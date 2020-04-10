@@ -12,7 +12,6 @@ This module contains articles about Object-oriented programming (OOP) in Java
 - [Immutable Objects in Java](https://www.baeldung.com/java-immutable-object)
 - [Inheritance and Composition (Is-a vs Has-a relationship) in Java](https://www.baeldung.com/java-inheritance-composition)
 - [A Guide to Constructors in Java](https://www.baeldung.com/java-constructors)
-- [Composition, Aggregation, and Association in Java](https://www.baeldung.com/java-composition-aggregation-association)
 - [Static and Default Methods in Interfaces in Java](https://www.baeldung.com/java-static-default-methods)
 - [Java Copy Constructor](https://www.baeldung.com/java-copy-constructor)
 - [Abstract Classes in Java](https://www.baeldung.com/java-abstract-class)

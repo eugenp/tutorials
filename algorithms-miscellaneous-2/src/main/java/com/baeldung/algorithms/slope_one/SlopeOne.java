@@ -98,7 +98,7 @@ public class SlopeOne {
             for (Item j : InputData.items) {
                 if (e.getValue().containsKey(j)) {
                     clean.put(j, e.getValue().get(j));
-                } else {
+                } else if (!clean.containsKey(j)) {
                     clean.put(j, -1.0);
                 }
             }
