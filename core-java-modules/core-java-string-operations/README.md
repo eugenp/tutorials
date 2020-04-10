@@ -13,4 +13,5 @@ This module contains articles about string operations.
 - [Adding a Newline Character to a String in Java](https://www.baeldung.com/java-string-newline)
 - [Check If a String Contains a Substring](https://www.baeldung.com/java-string-contains-substring)
 - [Java Base64 Encoding and Decoding](https://www.baeldung.com/java-base64-encode-and-decode)
+- [Java Convert PDF to Base64](https://www.baeldung.com/java-convert-pdf-to-base64)
 - More articles: [[next -->]](../core-java-string-operations-2)
