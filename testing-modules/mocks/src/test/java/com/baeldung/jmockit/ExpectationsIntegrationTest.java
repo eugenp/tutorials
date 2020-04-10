@@ -1,21 +1,21 @@
 package com.baeldung.jmockit;
 
-import com.baeldung.jmockit.ExpectationsCollaborator;
-import com.baeldung.jmockit.Model;
-import mockit.Delegate;
-import mockit.Expectations;
-import mockit.Mocked;
-import mockit.Verifications;
-import mockit.integration.junit4.JMockit;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
+import mockit.Delegate;
+import mockit.Expectations;
+import mockit.Mocked;
+import mockit.Verifications;
+import mockit.integration.junit4.JMockit;
 
 @RunWith(JMockit.class)
 @SuppressWarnings("unchecked")
@@ -112,17 +112,16 @@ public class ExpectationsIntegrationTest {
             result = "foo";
             result = new Exception();
             result = "bar";
-            mock.methodReturnsInt();
-            result = new int[]{1, 2, 3};
-            mock.methodReturnsString();
             returns("foo", "bar");
             mock.methodReturnsInt();
+            result = new int[]{1, 2, 3};
             result = 1;
         }};
 
         assertEquals("Should return foo", "foo", mock.methodReturnsString());
         try {
             mock.methodReturnsString();
+            fail("Shouldn't reach here");
         } catch (Exception e) {
             // NOOP
         }
@@ -134,13 +133,14 @@ public class ExpectationsIntegrationTest {
         assertEquals("Should return bar", "bar", mock.methodReturnsString());
         assertEquals("Should return 1", 1, mock.methodReturnsInt());
     }
-
+    
     @Test
     public void testDelegate(@Mocked ExpectationsCollaborator mock) {
         new Expectations() {{
             mock.methodForDelegate(anyInt);
-            result = new Delegate() {
-                public int delegate(int i) throws Exception {
+            
+            result = new Delegate<Integer>() {
+                int delegate(int i) throws Exception {
                     if (i < 3) {
                         return 5;
                     } else {
@@ -153,6 +153,7 @@ public class ExpectationsIntegrationTest {
         assertEquals("Should return 5", 5, mock.methodForDelegate(1));
         try {
             mock.methodForDelegate(3);
+            fail("Shouldn't reach here");
         } catch (Exception e) {
         }
     }

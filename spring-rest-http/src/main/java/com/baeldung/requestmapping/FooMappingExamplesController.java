@@ -1,6 +1,8 @@
 package com.baeldung.requestmapping;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -103,8 +105,8 @@ public class FooMappingExamplesController {
     // --- Ambiguous Mapping
  
     @GetMapping(value = "foos/duplicate" )
-    public String duplicate() {
-        return "Duplicate";
+    public ResponseEntity<String> duplicate() {
+        return new ResponseEntity<>("Duplicate", HttpStatus.OK);
     }
     
     // uncomment for exception of type java.lang.IllegalStateException: Ambiguous mapping
@@ -114,14 +116,14 @@ public class FooMappingExamplesController {
     // return "Duplicate";
     // }
     
-    @GetMapping(value = "foos/duplicate/xml", produces = MediaType.APPLICATION_XML_VALUE)
-    public String duplicateXml() {
-        return "Duplicate Xml";
+    @GetMapping(value = "foos/duplicate", produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<String> duplicateXml() {
+        return new ResponseEntity<>("<message>Duplicate</message>", HttpStatus.OK);
     }
      
-    @GetMapping(value = "foos/duplicate/json", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String duplicateJson() {
-        return "Duplicate Json";
+    @GetMapping(value = "foos/duplicate", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> duplicateJson() {
+        return new ResponseEntity<>("{\"message\":\"Duplicate\"}", HttpStatus.OK);
     }
 
 }

@@ -15,6 +15,7 @@
 
     <modules>
         <module>spring-swagger-codegen-api-client</module>
+        <module>spring-openapi-generator-api-client</module>
         <module>spring-swagger-codegen-app</module>
     </modules>
 

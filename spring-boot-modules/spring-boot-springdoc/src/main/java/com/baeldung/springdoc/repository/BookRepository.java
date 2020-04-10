@@ -1,13 +1,14 @@
 package com.baeldung.springdoc.repository;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-
+import com.baeldung.springdoc.model.Book;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
-import com.baeldung.springdoc.model.Book;
+import java.util.*;
+
+import static java.util.stream.Collectors.toList;
 
 @Repository
 public class BookRepository {
@@ -24,5 +25,12 @@ public class BookRepository {
 
     public Collection<Book> getBooks() {
         return books.values();
+    }
+
+    public Page<Book> getBooks(Pageable pageable) {
+        int toSkip = pageable.getPageSize() * pageable.getPageNumber();
+        List<Book> result = books.values().stream().skip(toSkip).limit(pageable.getPageSize()).collect(toList());
+
+        return new PageImpl<>(result, pageable, books.size());
     }
 }

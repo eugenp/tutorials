@@ -73,8 +73,6 @@ ninja/devDb.mv.db
 **/out-tsc
 **/nbproject/
 **/nb-configuration.xml
-core-scala/.cache-main
-core-scala/.cache-tests
 
 
 persistence-modules/hibernate5/transaction.log

@@ -9,4 +9,5 @@ This module contains articles about core features in the Java language
 - [Java Default Parameters Using Method Overloading](https://www.baeldung.com/java-default-parameters-method-overloading)
 - [How to Return Multiple Values From a Java Method](https://www.baeldung.com/java-method-return-multiple-values)
 - [Guide to the Java finally Keyword](https://www.baeldung.com/java-finally-keyword)
+- [The Java Headless Mode](https://www.baeldung.com/java-headless-mode)
 - [[<-- Prev]](/core-java-modules/core-java-lang)

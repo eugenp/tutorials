@@ -3,7 +3,7 @@
 This module contains articles about Kotlin core features.
 
 ### Relevant articles:
-- [Introduction to the Kotlin Language](https://www.baeldung.com/kotlin-intro)
+- [Introduction to the Kotlin Language](https://www.baeldung.com/kotlin/tutorial)
 - [Kotlin Java Interoperability](https://www.baeldung.com/kotlin-java-interoperability)
 - [Get a Random Number in Kotlin](https://www.baeldung.com/kotlin-random-number)
 - [Create a Java and Kotlin Project with Maven](https://www.baeldung.com/kotlin-maven-java-project)
@@ -13,4 +13,7 @@ This module contains articles about Kotlin core features.
 - [Implementing a Binary Tree in Kotlin](https://www.baeldung.com/kotlin-binary-tree)
 - [JUnit 5 for Kotlin Developers](https://www.baeldung.com/junit-5-kotlin)
 - [Converting Kotlin Data Class from JSON using GSON](https://www.baeldung.com/kotlin-json-convert-data-class)
+- [Fuel HTTP Library with Kotlin](https://www.baeldung.com/kotlin-fuel)
+- [Introduction to Kovenant Library for Kotlin](https://www.baeldung.com/kotlin-kovenant)
+- [Dependency Injection for Kotlin with Injekt](https://www.baeldung.com/kotlin-dependency-injection-with-injekt)
 - [[More --> ]](/core-kotlin-modules/core-kotlin-2)
