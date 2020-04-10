@@ -30,12 +30,12 @@ public class ForeignMemoryUnitTest {
     public void whenMultipleValuesAreSet_thenAccessAll() {
         VarHandle varHandle = MemoryHandles
                 .varHandle(int.class, ByteOrder.nativeOrder());
-        try(MemorySegment memorySegment = MemorySegment.allocateNative(100)){
+        try(MemorySegment memorySegment = MemorySegment.allocateNative(100)) {
             MemoryAddress base = memorySegment.baseAddress();
-            for(int i=0; i<25; i++){
+            for(int i=0; i<25; i++) {
                 varHandle.set(base.addOffset((i*4)), i);
             }
-            for(int i=0; i<25; i++){
+            for(int i=0; i<25; i++) {
                 assertThat(varHandle.get(base.addOffset((i*4))), is(i));
             }
         }
@@ -49,7 +49,7 @@ public class ForeignMemoryUnitTest {
         VarHandle varHandle = sequenceLayout.varHandle(long.class, MemoryLayout
                 .PathElement.sequenceElement());
         try(MemorySegment memorySegment = MemorySegment
-                .allocateNative(sequenceLayout)){
+                .allocateNative(sequenceLayout)) {
             MemoryAddress base = memorySegment.baseAddress();
             for(long i=0; i<sequenceLayout.elementCount().getAsLong(); i++) {
                 varHandle.set(base, i, i);
