@@ -12,15 +12,32 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-java</relativePath>
     </parent>
-    
+
     <dependencies>
-    	<dependency>
+        <dependency>
             <groupId>it.unimi.dsi</groupId>
             <artifactId>dsiutils</artifactId>
             <version>${dsiutils.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>${vavr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-   
+
     <build>
         <finalName>java-numbers-3</finalName>
         <resources>
@@ -33,6 +50,9 @@
 
     <properties>
         <dsiutils.version>2.6.0</dsiutils.version>
+        <vavr.version>0.10.2</vavr.version>
+        <commons.version>3.9</commons.version>
+        <assertj.version>3.6.1</assertj.version>
     </properties>
 
 </project>

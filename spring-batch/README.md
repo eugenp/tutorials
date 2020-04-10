@@ -9,3 +9,4 @@ This module contains articles about Spring Batch
 - [How to Trigger and Stop a Scheduled Spring Batch Job](https://www.baeldung.com/spring-batch-start-stop-job)
 - [Configuring Skip Logic in Spring Batch](https://www.baeldung.com/spring-batch-skip-logic)
 - [Testing a Spring Batch Job](https://www.baeldung.com/spring-batch-testing-job)
+- [Configuring Retry Logic in Spring Batch](https://www.baeldung.com/spring-batch-retry-logic)

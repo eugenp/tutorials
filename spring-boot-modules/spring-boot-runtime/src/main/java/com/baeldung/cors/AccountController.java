@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountController {
 
     @CrossOrigin("http://example.com")
-    @RequestMapping("/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     public Account retrieve(@PathVariable Long id) {
         return new Account(id);
     }

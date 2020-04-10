@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <persistence-unit name="com.baeldung.movie_catalog">
+        <description>Hibernate EntityManager Demo</description>
+        <class>com.baeldung.hibernate.pojo.Movie</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/moviecatalog"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+        </properties>
+    </persistence-unit>
+    <!-- Persistence unit for H2 -->
+    <persistence-unit name="com.baeldung.hibernate.entitymanager.game_player_h2">
+        <description>EntityManager getReference persistence unit</description>
+        <class>com.baeldung.hibernate.entitymanager.getreference.Game</class>
+        <class>com.baeldung.hibernate.entitymanager.getreference.Player</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <!-- even if we set exclude-unlisted-classes=true, strangely it's not enough to exclude defined hbm files in hibernate.cfg.xml.
+            So, some entities out of the scope unwillingly managed by our persistence unit. In order to prevent this, we disable autodetection
+            of the hbm files completely. When we set this property, hibernate ignores the exclude-unlisted-classes property. -->
+            <property name="hibernate.archive.autodetection" value=""/>
+
+            <property name="hibernate.jpa.compliance.proxy" value="false"/>
+
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.generate_statistics" value="false"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+        </properties>
+    </persistence-unit>
+    <!-- Persistence unit for MySQL -->
+    <persistence-unit name="com.baeldung.hibernate.entitymanager.game_player_mysql">
+        <description>EntityManager getReference persistence unit</description>
+        <class>com.baeldung.hibernate.entitymanager.getreference.Game</class>
+        <class>com.baeldung.hibernate.entitymanager.getreference.Player</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <!-- even if we set exclude-unlisted-classes=true, strangely it's not enough to exclude defined hbm files in hibernate.cfg.xml.
+            So, some entities out of the scope unwillingly managed by our persistence unit. In order to prevent this, we disable autodetection
+            of the hbm files completely. When we set this property, hibernate ignores the exclude-unlisted-classes property. -->
+            <property name="hibernate.archive.autodetection" value=""/>
+
+            <property name="hibernate.jpa.compliance.proxy" value="false"/>
+
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.generate_statistics" value="false"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/baeldung"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="password"/>
+
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="javax.persistence.schema-generation.create-script-source" value="/META-INF/create-db.sql"/>
+            <property name="javax.persistence.schema-generation.drop-script-source" value="/META-INF/drop-db.sql"/>
+            <property name="javax.persistence.sql-load-script-source" value="/META-INF/data.sql"/>
+
+        </properties>
+    </persistence-unit>
+    <!-- Persistence unit for PostgreSQL -->
+    <persistence-unit name="com.baeldung.hibernate.entitymanager.game_player_postgresql">
+        <description>EntityManager getReference persistence unit</description>
+        <class>com.baeldung.hibernate.entitymanager.getreference.Game</class>
+        <class>com.baeldung.hibernate.entitymanager.getreference.Player</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <!-- even if we set exclude-unlisted-classes=true, strangely it's not enough to exclude defined hbm files in hibernate.cfg.xml.
+            So, some entities out of the scope unwillingly managed by our persistence unit. In order to prevent this, we disable autodetection
+            of the hbm files completely. When we set this property, hibernate ignores the exclude-unlisted-classes property. -->
+            <property name="hibernate.archive.autodetection" value=""/>
+
+            <property name="hibernate.jpa.compliance.proxy" value="false"/>
+
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.generate_statistics" value="false"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="javax.persistence.schema-generation.create-script-source" value="/META-INF/create-db.sql"/>
+            <property name="javax.persistence.schema-generation.drop-script-source" value="/META-INF/drop-db.sql"/>
+            <property name="javax.persistence.sql-load-script-source" value="/META-INF/data.sql"/>
+
+        </properties>
+    </persistence-unit>
+</persistence> 
