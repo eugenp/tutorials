@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class, loader = AnnotationConfigContextLoader.class)
-public class SpringRetryIntegrationTest {
+public class SpringRetryTest {
 
     @Autowired
     private MyService myService;
