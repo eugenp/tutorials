@@ -1,4 +1,4 @@
-package com.baeldung.strings
+package com.baeldung.stringtoint
 
 import org.junit.Test
 
