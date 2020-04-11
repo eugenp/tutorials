@@ -4,4 +4,4 @@ This module contains articles about downloading attachment from email using pop3
 
 ### Relevant articles:
 
-- [A quick guide to downloading attachment using Java Mail API](https://www.baeldung.com/)
+- [A quick guide to downloading email attachments using Java Mail API](https://www.baeldung.com/)
