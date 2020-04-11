@@ -8,6 +8,11 @@
 	<name>mail-attachment-downloader</name>
 	<description>Utility to download attachments from email using java mail API</description>
 
+	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
 		<dependency>
