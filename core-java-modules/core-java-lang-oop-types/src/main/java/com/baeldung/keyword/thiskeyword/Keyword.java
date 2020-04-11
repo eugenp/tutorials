@@ -1,17 +1,17 @@
 package com.baeldung.keyword.thiskeyword;
 
-public class KeywordUnitTest {
+public class Keyword {
 
     private String name;
     private int age;
 
-    public KeywordUnitTest() {
+    public Keyword() {
         this("John", 27);
         this.printMessage();
         printInstance(this);
     }
 
-    public KeywordUnitTest(String name, int age) {
+    public Keyword(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -20,11 +20,11 @@ public class KeywordUnitTest {
         System.out.println("invoked by this");
     }
 
-    public void printInstance(KeywordUnitTest thisKeyword) {
+    public void printInstance(Keyword thisKeyword) {
         System.out.println(thisKeyword);
     }
 
-    public KeywordUnitTest getCurrentInstance() {
+    public Keyword getCurrentInstance() {
         return this;
     }
 
@@ -33,8 +33,8 @@ public class KeywordUnitTest {
         boolean isInnerClass = true;
 
         public ThisInnerClass() {
-            KeywordUnitTest thisKeyword = KeywordUnitTest.this;
-            String outerString = KeywordUnitTest.this.name;
+            Keyword thisKeyword = Keyword.this;
+            String outerString = Keyword.this.name;
             System.out.println(this.isInnerClass);
         }
     }
