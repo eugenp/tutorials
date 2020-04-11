@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.baeldung.mail</groupId>
+	<artifactId>mail-attachment-downloader</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>mail-attachment-downloader</name>
+	<description>Utility to download attachments from email using java mail API</description>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
+	</dependencies>
+
+</project>
