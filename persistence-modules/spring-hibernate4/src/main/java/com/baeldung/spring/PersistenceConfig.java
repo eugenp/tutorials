@@ -23,6 +23,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.baeldung.hibernate.audit.AuditorAwareImpl;
 import com.baeldung.persistence.dao.IBarAuditableDao;
 import com.baeldung.persistence.dao.IBarDao;
 import com.baeldung.persistence.dao.IFooAuditableDao;
@@ -58,6 +59,11 @@ public class PersistenceConfig {
         super();
     }
 
+    @Bean("auditorProvider")
+    public AuditorAwareImpl auditorAwareImpl() {
+        return new AuditorAwareImpl();
+    }
+    
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
