@@ -18,7 +18,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.10.3</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -30,6 +30,7 @@
 
     <properties>
         <mockito.version>2.21.0</mockito.version>
+        <jackson.version>2.10.3</jackson.version>
     </properties>
 
 </project>
