@@ -8,15 +8,32 @@ import java.util.Map;
 import static org.junit.Assert.assertTrue;
 
 public class ComputeIfAbsentUnitTest {
-        @Test public void whenKeyIsPresent_thenFetchTheValue() {
+
+        @Test
+        public void whenKeyIsPresent_thenFetchTheValue() {
                 Map<String, Integer> stringLength = new HashMap<>();
                 stringLength.put("John", 4);
                 assertTrue(stringLength.computeIfAbsent("John", s -> s.length()) == 4);
         }
 
-        @Test public void whenKeyIsNotPresent_thenComputeTheValueUsingMappingFunctionAndStore() {
+        @Test
+        public void whenKeyIsNotPresent_thenComputeTheValueUsingMappingFunctionAndStore() {
                 Map<String, Integer> stringLength = new HashMap<>();
                 assertTrue(stringLength.computeIfAbsent("John", s -> s.length()) == 4);
                 assertTrue(stringLength.get("John") == 4);
         }
+
+        @Test
+        public void whenMappingFunctionReturnsNull_thenDoNotRecordMapping() {
+                Map<String, Integer> stringLength = new HashMap<>();
+                assertTrue(stringLength.computeIfAbsent("John", s -> null) == null);
+                assertTrue(stringLength.get("John") == null);
+        }
+
+        @Test(expected = RuntimeException.class)
+        public void whenMappingFunctionThrowsException_thenExceptionIsRethrown() {
+                Map<String, Integer> stringLength = new HashMap<>();
+                stringLength.computeIfAbsent("John", s -> {throw new RuntimeException();});
+        }
+
 }
