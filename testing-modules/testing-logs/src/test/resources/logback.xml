@@ -7,7 +7,6 @@
             </Pattern>
         </layout>
     </appender>
-
     <root level="error">
         <appender-ref ref="CONSOLE"/>
     </root>

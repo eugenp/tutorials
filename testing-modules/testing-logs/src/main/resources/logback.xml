@@ -7,12 +7,10 @@
             </Pattern>
         </layout>
     </appender>
-
     <logger name="com.baeldung.junit.log" level="debug" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
     <root level="error">
         <appender-ref ref="CONSOLE"/>
     </root>
-
 </configuration>
