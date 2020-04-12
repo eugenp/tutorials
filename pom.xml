@@ -453,6 +453,7 @@
 
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
+                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
@@ -564,7 +565,7 @@
                 <module>rxjava-libraries</module>
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
-				
+
 				<module>atomikos</module>
             </modules>
 
@@ -965,6 +966,7 @@
 
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
+                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
@@ -1075,7 +1077,7 @@
                 <module>rxjava-libraries</module>
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
-				
+
 				<module>atomikos</module>
             </modules>
 
