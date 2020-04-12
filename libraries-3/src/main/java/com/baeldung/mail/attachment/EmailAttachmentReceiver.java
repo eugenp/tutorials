@@ -75,14 +75,7 @@ public class EmailAttachmentReceiver {
                 // filtering message with content type 'multipart'
                 if (message.getContentType()
                     .equalsIgnoreCase(MULTIPART)) {
-                    Multipart multipart = (Multipart) message.getContent();
-                    for (int partCount = 0; partCount < multipart.getCount(); partCount++) {
-                        MimeBodyPart mimeBodyPart = (MimeBodyPart) multipart.getBodyPart(partCount);
-                        if (Part.ATTACHMENT.equalsIgnoreCase(mimeBodyPart.getDisposition())) {
-                            // this is the attachment.
-                            mimeBodyPart.saveFile(directory + File.separator + mimeBodyPart.getFileName());
-                        }
-                    }
+                    checkForAttachmentsAndSave(message, directory);
                 }
             }
             // closing open connections
@@ -92,8 +85,24 @@ public class EmailAttachmentReceiver {
             LOGGER.error("An error occurred while downloading attachments", noSuchProviderException);
         } catch (MessagingException messagingException) {
             LOGGER.error("An error occurred while downloading attachments", messagingException);
-        } catch (IOException ioException) {
+        } catch(IOException ioException) {
             LOGGER.error("An error occurred while downloading attachments", ioException);
         }
+    }
+
+    private void checkForAttachmentsAndSave(Message message, String directory) throws IOException, MessagingException {
+        Multipart multipart = (Multipart) message.getContent();
+        for (int partCount = 0; partCount < multipart.getCount(); partCount++) {
+            if (isAttachment(partCount, multipart)) {
+                // this is the attachment.
+                MimeBodyPart mimeBodyPart = (MimeBodyPart) multipart.getBodyPart(partCount);
+                mimeBodyPart.saveFile(directory + File.separator + mimeBodyPart.getFileName());
+            }
+        }
+    }
+
+    private boolean isAttachment(int partCount, Multipart multipart) throws MessagingException {
+        MimeBodyPart mimeBodyPart = (MimeBodyPart) multipart.getBodyPart(partCount);
+        return Part.ATTACHMENT.equalsIgnoreCase(mimeBodyPart.getDisposition());
     }
 }
