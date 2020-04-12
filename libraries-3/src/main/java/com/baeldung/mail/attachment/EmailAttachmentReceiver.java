@@ -56,16 +56,16 @@ public class EmailAttachmentReceiver {
         properties.put(String.format(MAIL_PROTOCOL_PORT, this.protocol), this.port);
 
         // SSL settings
-        properties.setProperty(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_CLASS, this.protocol), JAVAX_NET_SSL_SSL_SOCKET_FACTORY);
-        properties.setProperty(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_FALLBACK, this.protocol), FALSE);
-        properties.setProperty(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_PORT, this.protocol), this.port);
+        properties.put(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_CLASS, this.protocol), JAVAX_NET_SSL_SSL_SOCKET_FACTORY);
+        properties.put(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_FALLBACK, this.protocol), FALSE);
+        properties.put(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_PORT, this.protocol), this.port);
 
         // obtaining sessions
         Session session = Session.getDefaultInstance(properties);
         try {
-            // connecting to the mail server
-            Store store = session.getStore(this.protocol);
-            store.connect(this.userName, this.password);
+                // connecting to the mail server
+                Store store = session.getStore(this.protocol);
+                store.connect(this.userName, this.password);
 
             // opens the inbox folder
             Folder inbox = store.getFolder(INBOX);
