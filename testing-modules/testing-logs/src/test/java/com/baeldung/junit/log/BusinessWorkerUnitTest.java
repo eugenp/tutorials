@@ -12,9 +12,7 @@ import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
 
 public class BusinessWorkerUnitTest {
-
     private static MemoryAppender memoryAppender;
-
     private static final String LOGGER_NAME = "com.baeldung.junit.log";
     private static final String MSG = "This is a test message!!!";
 
@@ -47,5 +45,4 @@ public class BusinessWorkerUnitTest {
         // I check that the entry that is not present is the trace level
         assertThat(memoryAppender.contains(MSG, Level.TRACE)).isFalse();
     }
-
 }
