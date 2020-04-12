@@ -4,8 +4,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.read.ListAppender;
@@ -20,11 +18,10 @@ public class MemoryAppender extends ListAppender<ILoggingEvent> {
         this.list.clear();
     }
 
-    public void checkContains(String string, Level level) {
-        Assert.assertTrue("Message expected to contain " + string + " with severity " + level, 
-                this.list.stream()
-                         .anyMatch(event -> event.getMessage().toString().contains(string) 
-                                            && event.getLevel().equals(level)));
+    public boolean contains(String string, Level level) {
+        return this.list.stream()
+                        .anyMatch(event -> event.getMessage().toString().contains(string) 
+                                           && event.getLevel().equals(level));
     }
 
     public int countEventsForLogger(String loggerName) {
