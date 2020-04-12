@@ -39,12 +39,13 @@ public class BusinessWorkerJunitTest {
     public void test() {
         BusinessWorker worker = new BusinessWorker();
         worker.generateLogs(MSG);
-
+        
         // I check that I only have 4 messages (all but trace)
         assertThat(memoryAppender.countEventsForLogger(LOGGER_NAME)).isEqualTo(4);
-        
         // I look for a specific message at a specific level, and I only have 1
         assertThat(memoryAppender.search(MSG, Level.INFO).size()).isEqualTo(1);
+        // I check that the entry that is not present is the trace level
+        assertThat(memoryAppender.contains(MSG, Level.TRACE)).isFalse();
     }
 
 }
