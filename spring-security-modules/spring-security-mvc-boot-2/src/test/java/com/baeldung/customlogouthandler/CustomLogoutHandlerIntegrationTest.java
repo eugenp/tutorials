@@ -1,6 +1,7 @@
 package com.baeldung.customlogouthandler;
 
-import com.baeldung.customlogouthandler.services.UserCache;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,96 +12,97 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlGroup;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.baeldung.customlogouthandler.services.UserCache;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {LogoutDemoApplication.class, MvcConfiguration.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@SqlGroup({
-		@Sql(value = "classpath:customlogouthandler/before.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD),
-		@Sql(value = "classpath:customlogouthandler/after.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
-})
+@SpringBootTest(classes = { CustomLogoutApplication.class }, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SqlGroup({ @Sql(value = "classpath:customlogouthandler/before.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD), @Sql(value = "classpath:customlogouthandler/after.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD) })
+@TestPropertySource(locations="classpath:customlogouthandler/application.properties")
 class CustomLogoutHandlerIntegrationTest {
 
-	@Autowired
-	private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
-	@Autowired
-	private UserCache userCache;
+    @Autowired
+    private UserCache userCache;
 
-	@LocalServerPort
-	private int port;
+    @LocalServerPort
+    private int port;
 
-	@Test
-	public void whenLogin_thenUseUserCache() throws Exception {
-	// User cache should be empty on start
-	assertThat(userCache.size()).isEqualTo(0);
+    @Test
+    public void whenLogin_thenUseUserCache() {
+        // User cache should be empty on start
+        assertThat(userCache.size()).isEqualTo(0);
 
-	// Request using first login
-	ResponseEntity<String> response = restTemplate
-			.withBasicAuth("user", "pass")
-			.getForEntity(getLanguageUrl(), String.class);
+        // Request using first login
+        ResponseEntity<String> response = restTemplate.withBasicAuth("user", "pass")
+            .getForEntity(getLanguageUrl(), String.class);
 
-	assertThat(response.getBody()).contains("english");
+        assertThat(response.getBody()).contains("english");
 
-	// User cache must contain the user
-	assertThat(userCache.size()).isEqualTo(1);
+        // User cache must contain the user
+        assertThat(userCache.size()).isEqualTo(1);
 
-	// Getting the session cookie
-	HttpHeaders requestHeaders = new HttpHeaders();
-	requestHeaders.add("Cookie", response.getHeaders().getFirst(HttpHeaders.SET_COOKIE));
+        // Getting the session cookie
+        HttpHeaders requestHeaders = new HttpHeaders();
+        requestHeaders.add("Cookie", response.getHeaders()
+            .getFirst(HttpHeaders.SET_COOKIE));
 
-	// Request with the session cookie
-	response = restTemplate
-			.exchange(getLanguageUrl(), HttpMethod.GET, new HttpEntity(requestHeaders), String.class);
-	assertThat(response.getBody()).contains("english");
+        // Request with the session cookie
+        response = restTemplate.exchange(getLanguageUrl(), HttpMethod.GET, new HttpEntity<String>(requestHeaders), String.class);
+        assertThat(response.getBody()).contains("english");
 
-	// Logging out using the session cookies
-	response = restTemplate.exchange(getLogoutUrl(), HttpMethod.GET, new HttpEntity(requestHeaders), String.class);
-	assertThat(response.getStatusCode().value()).isEqualTo(200);
-	}
+        // Logging out using the session cookies
+        response = restTemplate.exchange(getLogoutUrl(), HttpMethod.GET, new HttpEntity<String>(requestHeaders), String.class);
+        assertThat(response.getStatusCode()
+            .value()).isEqualTo(200);
+    }
 
-	@Test
-	public void whenLogout_thenCacheIsEmpty() throws Exception {
-	// User cache should be empty on start
-	assertThat(userCache.size()).isEqualTo(0);
+    @Test
+    public void whenLogout_thenCacheIsEmpty() {
+        // User cache should be empty on start
+        assertThat(userCache.size()).isEqualTo(0);
 
-	// Request using first login
-	ResponseEntity<String> response = restTemplate
-			.withBasicAuth("user", "pass")
-			.getForEntity(getLanguageUrl(), String.class);
+        // Request using first login
+        ResponseEntity<String> response = restTemplate.withBasicAuth("user", "pass")
+            .getForEntity(getLanguageUrl(), String.class);
 
-	assertThat(response.getBody()).contains("english");
+        assertThat(response.getBody()).contains("english");
 
-	// User cache must contain the user
-	assertThat(userCache.size()).isEqualTo(1);
+        // User cache must contain the user
+        assertThat(userCache.size()).isEqualTo(1);
 
-	// Getting the session cookie
-	HttpHeaders requestHeaders = new HttpHeaders();
-	requestHeaders.add("Cookie", response.getHeaders().getFirst(HttpHeaders.SET_COOKIE));
+        // Getting the session cookie
+        HttpHeaders requestHeaders = new HttpHeaders();
+        requestHeaders.add("Cookie", response.getHeaders()
+            .getFirst(HttpHeaders.SET_COOKIE));
 
-	// Logging out using the session cookies
-	response = restTemplate.exchange(getLogoutUrl(), HttpMethod.GET, new HttpEntity(requestHeaders), String.class);
-	assertThat(response.getStatusCode().value()).isEqualTo(200);
+        // Logging out using the session cookies
+        response = restTemplate.exchange(getLogoutUrl(), HttpMethod.GET, new HttpEntity<String>(requestHeaders), String.class);
+        assertThat(response.getStatusCode()
+            .value()).isEqualTo(200);
 
-	// User cache must be empty now
-	// this is the reaction on custom logout filter execution
-	assertThat(userCache.size()).isEqualTo(0);
+        // User cache must be empty now
+        // this is the reaction on custom logout filter execution
+        assertThat(userCache.size()).isEqualTo(0);
 
-	// Assert unathorized request
-	response = restTemplate.exchange(getLanguageUrl(), HttpMethod.GET, new HttpEntity(requestHeaders), String.class);
-	assertThat(response.getStatusCode().value()).isEqualTo(401);
-	}
+        // Assert unauthorized request
+        response = restTemplate.exchange(getLanguageUrl(), HttpMethod.GET, new HttpEntity<String>(requestHeaders), String.class);
+        assertThat(response.getStatusCode()
+            .value()).isEqualTo(401);
+    }
 
-	private String getLanguageUrl() {
-		return "http://localhost:" + port + "/user/language";
-	}
+    private String getLanguageUrl() {
+        return "http://localhost:" + port + "/user/language";
+    }
 
-	private String getLogoutUrl() {
-		return "http://localhost:" + port + "/user/logout";
-	}
+    private String getLogoutUrl() {
+        return "http://localhost:" + port + "/user/logout";
+    }
 
 }
