@@ -26,14 +26,20 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-elasticsearch</artifactId>
             <version>${spring-data-elasticsearch.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.elasticsearch</groupId>
-            <artifactId>elasticsearch</artifactId>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-high-level-client</artifactId>
             <version>${elasticsearch.version}</version>
         </dependency>
         <dependency>
@@ -49,27 +55,15 @@
         </dependency>
 
         <dependency>
-            <groupId>com.vividsolutions</groupId>
-            <artifactId>jts</artifactId>
-            <version>${jts.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>xerces</groupId>
-                    <artifactId>xercesImpl</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.locationtech.jts</groupId>
+            <artifactId>jts-core</artifactId>
+            <version>1.16.1</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.elasticsearch.client</groupId>
-            <artifactId>transport</artifactId>
-            <version>${elasticsearch.version}</version>
         </dependency>
 
         <dependency>
@@ -88,9 +82,9 @@
     </dependencies>
 
     <properties>
-        <spring-data-elasticsearch.version>3.0.8.RELEASE</spring-data-elasticsearch.version>
+        <spring-data-elasticsearch.version>3.2.6.RELEASE</spring-data-elasticsearch.version>
         <jna.version>4.5.2</jna.version>
-        <elasticsearch.version>5.6.0</elasticsearch.version>
+        <elasticsearch.version>7.6.2</elasticsearch.version>
         <fastjson.version>1.2.47</fastjson.version>
         <spatial4j.version>0.6</spatial4j.version>
         <jts.version>1.13</jts.version>

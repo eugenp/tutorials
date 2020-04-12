@@ -1,4 +1,5 @@
 package com.baeldung.elasticsearch;
+
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -12,8 +13,7 @@ import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.common.geo.GeoPoint;
-import org.elasticsearch.common.geo.ShapeRelation;
-import org.elasticsearch.common.geo.builders.ShapeBuilders;
+import org.elasticsearch.common.geo.builders.EnvelopeBuilder;
 import org.elasticsearch.common.unit.DistanceUnit;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.QueryBuilder;
@@ -23,13 +23,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.locationtech.jts.geom.Coordinate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.baeldung.spring.data.es.config.Config;
-import com.vividsolutions.jts.geom.Coordinate;
 
 /**
  * 
@@ -75,13 +75,12 @@ public class GeoQueriesManualTest {
           .indices()
           .prepareRefresh(WONDERS_OF_WORLD)
           .get();
-
-        Coordinate topLeft =new Coordinate(74, 31.2);
-        Coordinate bottomRight =new Coordinate(81.1, 24);
+ 
+        Coordinate topLeft = new Coordinate(74, 31.2);
+        Coordinate bottomRight = new Coordinate(81.1, 24);
         QueryBuilder qb = QueryBuilders
-            .geoShapeQuery("region", ShapeBuilders.newEnvelope(topLeft, bottomRight))
-            .relation(ShapeRelation.WITHIN);
-
+            .geoShapeQuery("region", new EnvelopeBuilder(topLeft, bottomRight).buildGeometry());
+            //.relation(ShapeRelation.WITHIN));
 
         SearchResponse searchResponse = client.prepareSearch(WONDERS_OF_WORLD)
           .setTypes(WONDERS)
