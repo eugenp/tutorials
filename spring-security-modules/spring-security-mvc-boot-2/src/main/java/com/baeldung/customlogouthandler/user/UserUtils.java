@@ -5,8 +5,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 public class UserUtils {
 
-    public static String getAuthenticatedUserLogin() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    public static String getAuthenticatedUserName() {
+        Authentication auth = SecurityContextHolder.getContext()
+            .getAuthentication();
         return auth != null ? ((org.springframework.security.core.userdetails.User) auth.getPrincipal()).getUsername() : null;
     }
 
