@@ -1,0 +1,1 @@
+This is a sample program for demonstrating hexagonal architecture
