@@ -1,0 +1,45 @@
+server:
+    port: 12000
+
+management:
+  security:
+    enabled: false
+
+spring:
+  main:
+    banner-mode: 'off'
+  application:
+    name: test
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:remindme
+    username: remindme
+    password: remindme
+# spring.datasource.schema: classpath:/schema.sql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+hello:
+  world:
+   message: This is a message configured from the application.yml.
+
+test:
+  service:
+    url: https://jsonplaceholder.typicode.com/posts/1
+    
+github:
+  service:
+    url: https://api.github.com
+    
+auth:
+  token: Z293dGhhbXQ0OmFiZjAzNjYxMTQ4NWI4ZTI0ODUwOWUyOTNlYmM1YTg1ZTkxZjAwMmE=

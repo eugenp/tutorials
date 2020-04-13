@@ -1,0 +1,200 @@
+{
+	"id": "4b8b48c6-6ace-591d-2ae0-859e990cb93a",
+	"name": "remind-me-user-github-services Collection",
+	"description": "",
+	"order": [
+		"ae75cf90-913e-ab51-03ae-20455895c0eb",
+		"e208eba8-d72d-6442-0a8a-dd293d02ea86",
+		"cb502b59-a5f0-3f8c-c75c-8cb03a400273",
+		"b79ba201-76cb-d105-e466-6d199c3107e8",
+		"83011566-3911-5028-5fc0-d3535fed74e5",
+		"daee2474-d07f-41cc-57bf-593dc641d080"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1567365600376,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "83011566-3911-5028-5fc0-d3535fed74e5",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:12000/users/5e8465ac-e711-4ee8-83c5-6643783ebe5",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1567366024614,
+			"name": "Delete existing User",
+			"description": "Delete existing User",
+			"collectionId": "4b8b48c6-6ace-591d-2ae0-859e990cb93a",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "ae75cf90-913e-ab51-03ae-20455895c0eb",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:12000/users",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1567365921155,
+			"name": "Get All users",
+			"description": "Get Request to pull all the existing users",
+			"collectionId": "4b8b48c6-6ace-591d-2ae0-859e990cb93a",
+			"responses": [],
+			"rawModeData": "{\n    \"firstName\": \"Gowtham\",\n    \"surName\": \"Tummala\",\n    \"position\": \"SSE\",\n    \"gitProfRelUrl\": \"https://github.com/gowthamt4\"\n}"
+		},
+		{
+			"id": "b79ba201-76cb-d105-e466-6d199c3107e8",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:12000/users",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1567366029870,
+			"name": "Create new user",
+			"description": "Create new user",
+			"collectionId": "4b8b48c6-6ace-591d-2ae0-859e990cb93a",
+			"responses": [],
+			"rawModeData": "{\n    \"firstName\": \"Gowtham\",\n    \"surName\": \"Tummala\",\n    \"position\": \"SSE\",\n    \"gitProfRelUrl\": \"https://github.com/gowthamt4\"\n}"
+		},
+		{
+			"id": "cb502b59-a5f0-3f8c-c75c-8cb03a400273",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:12000/users/5e8465ac-e711-4ee8-83c5-6643783ebe58",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1567366040920,
+			"name": "Edit User details",
+			"description": "Edit User details",
+			"collectionId": "4b8b48c6-6ace-591d-2ae0-859e990cb93a",
+			"responses": [],
+			"rawModeData": "{\n    \"id\": \"5e8465ac-e711-4ee8-83c5-6643783ebe58\",\n    \"firstName\": \"Gowtham Babu\",\n    \"surName\": \"Tummala\",\n    \"position\": \"SSE\",\n    \"gitProfRelUrl\": \"https://github.com/gowthamt4\"\n}"
+		},
+		{
+			"id": "daee2474-d07f-41cc-57bf-593dc641d080",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:12000/users/mojombo/repos",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1567366259220,
+			"name": "GitRepo and languages Details",
+			"description": "GitRepo and languages Details",
+			"collectionId": "4b8b48c6-6ace-591d-2ae0-859e990cb93a",
+			"responses": [],
+			"rawModeData": "{\n    \"id\": \"7f4db63c-bcaa-429c-a715-0842232dcbbf\",\n    \"firstName\": \"Gowtham Babu\",\n    \"surName\": \"Tummala\",\n    \"position\": \"SSE\",\n    \"gitProfRelUrl\": \"https://github.com/gowthamt4\"\n}"
+		},
+		{
+			"id": "e208eba8-d72d-6442-0a8a-dd293d02ea86",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:12000/users/a0f4559d-f570-46a7-b851-647b01ac3280",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1567365927684,
+			"name": "Get User Details by Passing the user id",
+			"description": "Get User Details by Passing the user id",
+			"collectionId": "4b8b48c6-6ace-591d-2ae0-859e990cb93a",
+			"responses": [],
+			"rawModeData": "{\n    \"id\": \"a0f4559d-f570-46a7-b851-647b01ac3280\",\n    \"firstName\": \"Gowtham Babu\",\n    \"surName\": \"Tummala\",\n    \"position\": \"SSE\",\n    \"gitProfRelUrl\": \"https://github.com/gowthamt4\"\n}"
+		}
+	]
+}
