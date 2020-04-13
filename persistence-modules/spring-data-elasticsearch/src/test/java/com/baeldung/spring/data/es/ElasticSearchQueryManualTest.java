@@ -14,6 +14,11 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 import java.util.Map;
 
+import com.baeldung.spring.data.es.config.Config;
+import com.baeldung.spring.data.es.model.Article;
+import com.baeldung.spring.data.es.model.Author;
+import com.baeldung.spring.data.es.service.ArticleService;
+
 import org.apache.lucene.search.join.ScoreMode;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
@@ -25,22 +30,16 @@ import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.BucketOrder;
 import org.elasticsearch.search.aggregations.bucket.MultiBucketsAggregation;
 import org.elasticsearch.search.aggregations.bucket.terms.StringTerms;
-import org.elasticsearch.search.aggregations.bucket.terms.Terms;
 import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.baeldung.spring.data.es.config.Config;
-import com.baeldung.spring.data.es.model.Article;
-import com.baeldung.spring.data.es.model.Author;
-import com.baeldung.spring.data.es.service.ArticleService;
 
 /**
  * 
@@ -54,7 +53,7 @@ import com.baeldung.spring.data.es.service.ArticleService;
 public class ElasticSearchQueryManualTest {
 
     @Autowired
-    private ElasticsearchTemplate elasticsearchTemplate;
+    private ElasticsearchRestTemplate elasticsearchTemplate;
 
     @Autowired
     private ArticleService articleService;

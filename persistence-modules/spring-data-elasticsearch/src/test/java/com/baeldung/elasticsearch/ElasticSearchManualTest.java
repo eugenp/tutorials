@@ -58,7 +58,7 @@ public class ElasticSearchManualTest {
     @Test
     public void givenJsonString_whenJavaObject_thenIndexDocument() throws Exception {
         String jsonObject = "{\"age\":20,\"dateOfBirth\":1471466076564,\"fullName\":\"John Doe\"}";
-        IndexRequest request = new IndexRequest("people");
+        IndexRequest request = new IndexRequest("people", "Doe");
         request.source(jsonObject, XContentType.JSON);
 
         IndexResponse response = client.index(request, RequestOptions.DEFAULT);
@@ -71,7 +71,7 @@ public class ElasticSearchManualTest {
     @Test
     public void givenDocumentId_whenJavaObject_thenDeleteDocument() throws Exception {
         String jsonObject = "{\"age\":10,\"dateOfBirth\":1471455886564,\"fullName\":\"Johan Doe\"}";
-        IndexRequest indexRequest = new IndexRequest("people");
+        IndexRequest indexRequest = new IndexRequest("people", "Doe");
         indexRequest.source(jsonObject, XContentType.JSON);
 
         IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);
@@ -79,6 +79,7 @@ public class ElasticSearchManualTest {
 
         DeleteRequest deleteRequest = new DeleteRequest("people");
         deleteRequest.id(id);
+        deleteRequest.type("Doe");
 
         DeleteResponse deleteResponse = client.delete(deleteRequest, RequestOptions.DEFAULT);
 
@@ -95,6 +96,8 @@ public class ElasticSearchManualTest {
         List<Person> results = Arrays.stream(searchHits)
           .map(hit -> JSON.parseObject(hit.getSourceAsString(), Person.class))
           .collect(Collectors.toList());
+      
+      results.forEach(System.out::println);
     }
 
     @Test
@@ -140,6 +143,7 @@ public class ElasticSearchManualTest {
         final List<Person> results = Arrays.stream(response.getHits().getHits())
           .map(hit -> JSON.parseObject(hit.getSourceAsString(), Person.class))
           .collect(Collectors.toList());
+        results.forEach(System.out::println);
     }
 
     @Test
@@ -152,7 +156,7 @@ public class ElasticSearchManualTest {
           .field("age", "10")
           .endObject();
 
-        IndexRequest indexRequest = new IndexRequest("people");
+        IndexRequest indexRequest = new IndexRequest("people", "Doe");
         indexRequest.source(builder);
 
         IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);

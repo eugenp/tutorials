@@ -79,8 +79,7 @@ public class GeoQueriesManualTest {
         Coordinate topLeft = new Coordinate(74, 31.2);
         Coordinate bottomRight = new Coordinate(81.1, 24);
         QueryBuilder qb = QueryBuilders
-            .geoShapeQuery("region", new EnvelopeBuilder(topLeft, bottomRight).buildGeometry());
-            //.relation(ShapeRelation.WITHIN));
+            .geoShapeQuery("region", new EnvelopeBuilder(topLeft, bottomRight));
 
         SearchResponse searchResponse = client.prepareSearch(WONDERS_OF_WORLD)
           .setTypes(WONDERS)

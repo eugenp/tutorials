@@ -84,7 +84,7 @@
     <properties>
         <spring-data-elasticsearch.version>3.2.6.RELEASE</spring-data-elasticsearch.version>
         <jna.version>4.5.2</jna.version>
-        <elasticsearch.version>7.6.2</elasticsearch.version>
+        <elasticsearch.version>6.8.8</elasticsearch.version>
         <fastjson.version>1.2.47</fastjson.version>
         <spatial4j.version>0.6</spatial4j.version>
         <jts.version>1.13</jts.version>
