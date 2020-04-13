@@ -1,0 +1,96 @@
+group = 'org.requirementsascode'
+version = '0.5.2'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+sourceCompatibility = 8
+targetCompatibility = 8
+
+repositories {
+	mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'poem - hexagon',
+                   'Implementation-Version': version
+	}
+}
+
+dependencies {
+	compile 'org.requirementsascode:requirementsascodecore:1.2.2'
+  	testCompile 'junit:junit:4.12'
+}
+repositories {
+	mavenCentral()
+	maven {
+		url "https://oss.sonatype.org/content/repositories/snapshots/"
+	}
+}
+
+task javadocJar(type: Jar) {
+	classifier = 'javadoc'
+	from javadoc
+}
+
+task sourcesJar(type: Jar) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+
+artifacts {
+	archives javadocJar, sourcesJar
+}
+
+if (project.hasProperty("signing.keyId")) {
+	apply plugin: 'signing'
+
+	signing {
+	    sign configurations.archives
+	}
+	
+	uploadArchives {
+	    repositories {
+	        mavenDeployer {
+	            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+	            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+	               authentication(userName: sonatypeUsername, password: sonatypePassword)
+	            }
+	            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+	               authentication(userName: sonatypeUsername, password: sonatypePassword)
+	            } 
+	            
+	            pom.project {
+	               name 'poem-hexagon'
+	               packaging 'jar'
+	               description 'A simple example for a hexagonal architecture.'
+	               url 'http://requirementsascode.org/'
+	
+	               scm {
+	                   url 'scm:git@github.com:bertilmuth/requirementsascode.git'
+	                   connection 'scm:git@github.com:bertilmuth/requirementsascode.git'
+	                   developerConnection 'scm:git@github.com:bertilmuth/requirementsascode.git'
+	               }
+	
+	               licenses {
+	                   license {
+	                       name 'The Apache Software License, Version 2.0'
+	                       url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+	                       distribution 'repo'
+	                   }
+	               }
+	
+	               developers {
+	                   developer {
+	                       id 'bertilmuth'
+	                       name 'Bertil Muth'
+	                   }
+	               }
+	           }
+	        }
+	    }
+	}
+}
