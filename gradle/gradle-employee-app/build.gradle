@@ -18,6 +18,10 @@ task configured {
     println 'The project is configured'
 }
 
+task wrapper(type: Wrapper){
+    gradleVersion = '5.3.1'
+}
+
 repositories {
     jcenter()
 }
