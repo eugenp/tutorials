@@ -92,11 +92,17 @@
             <artifactId>de.flapdoodle.embed.mongo</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>${guice.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <joda-money.version>1.0.1</joda-money.version>
         <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
+        <guice.version>4.0</guice.version>
     </properties>
 
 </project>
