@@ -10,22 +10,22 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
+import com.baeldung.spring.data.es.config.Config;
+import com.baeldung.spring.data.es.model.Article;
+import com.baeldung.spring.data.es.model.Author;
+import com.baeldung.spring.data.es.service.ArticleService;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.baeldung.spring.data.es.config.Config;
-import com.baeldung.spring.data.es.model.Article;
-import com.baeldung.spring.data.es.model.Author;
-import com.baeldung.spring.data.es.service.ArticleService;
 
 /**
  * 
@@ -39,7 +39,7 @@ import com.baeldung.spring.data.es.service.ArticleService;
 public class ElasticSearchManualTest {
 
     @Autowired
-    private ElasticsearchTemplate elasticsearchTemplate;
+    private ElasticsearchRestTemplate elasticsearchTemplate;
 
     @Autowired
     private ArticleService articleService;
