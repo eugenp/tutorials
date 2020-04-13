@@ -20,8 +20,10 @@ import com.baeldung.spring.data.es.model.Author;
 import com.baeldung.spring.data.es.service.ArticleService;
 
 import org.apache.lucene.search.join.ScoreMode;
+import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.client.Client;
+import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.unit.Fuzziness;
 import org.elasticsearch.index.query.MultiMatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
@@ -29,8 +31,9 @@ import org.elasticsearch.search.aggregations.Aggregation;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.BucketOrder;
 import org.elasticsearch.search.aggregations.bucket.MultiBucketsAggregation;
-import org.elasticsearch.search.aggregations.bucket.terms.StringTerms;
+import org.elasticsearch.search.aggregations.bucket.terms.ParsedStringTerms;
 import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,7 +62,7 @@ public class ElasticSearchQueryManualTest {
     private ArticleService articleService;
 
     @Autowired
-    private Client client;
+    private RestHighLevelClient client;
 
     private final Author johnSmith = new Author("John Smith");
     private final Author johnDoe = new Author("John Doe");
@@ -141,13 +144,18 @@ public class ElasticSearchQueryManualTest {
     }
 
     @Test
-    public void givenAnalyzedQuery_whenMakeAggregationOnTermCount_thenEachTokenCountsSeparately() {
+    public void givenAnalyzedQuery_whenMakeAggregationOnTermCount_thenEachTokenCountsSeparately() throws Exception {
         final TermsAggregationBuilder aggregation = AggregationBuilders.terms("top_tags").field("title");
-        final SearchResponse response = client.prepareSearch("blog").setTypes("article").addAggregation(aggregation)
-          .execute().actionGet();
+        
+        final SearchSourceBuilder builder = new SearchSourceBuilder().aggregation(aggregation);
+        final SearchRequest searchRequest = new SearchRequest("blog")
+          .types("article")
+          .source(builder);
 
+        final SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
+        
         final Map<String, Aggregation> results = response.getAggregations().asMap();
-        final StringTerms topTags = (StringTerms) results.get("top_tags");
+        final ParsedStringTerms topTags = (ParsedStringTerms) results.get("top_tags");
 
         final List<String> keys = topTags.getBuckets().stream()
           .map(MultiBucketsAggregation.Bucket::getKeyAsString)
@@ -157,14 +165,20 @@ public class ElasticSearchQueryManualTest {
     }
 
     @Test
-    public void givenNotAnalyzedQuery_whenMakeAggregationOnTermCount_thenEachTermCountsIndividually() {
+    public void givenNotAnalyzedQuery_whenMakeAggregationOnTermCount_thenEachTermCountsIndividually() throws Exception {
         final TermsAggregationBuilder aggregation = AggregationBuilders.terms("top_tags").field("tags")
           .order(BucketOrder.count(false));
-        final SearchResponse response = client.prepareSearch("blog").setTypes("article").addAggregation(aggregation)
-          .execute().actionGet();
+
+        final SearchSourceBuilder builder = new SearchSourceBuilder().aggregation(aggregation);
+        final SearchRequest searchRequest = new SearchRequest()
+          .indices("blog")
+          .types("article")
+          .source(builder);
+
+        final SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
 
         final Map<String, Aggregation> results = response.getAggregations().asMap();
-        final StringTerms topTags = (StringTerms) results.get("top_tags");
+        final ParsedStringTerms topTags = (ParsedStringTerms) results.get("top_tags");
 
         final List<String> keys = topTags.getBuckets().stream()
           .map(MultiBucketsAggregation.Bucket::getKeyAsString)

@@ -9,8 +9,7 @@ import com.baeldung.spring.data.es.config.Config;
 
 /**
  * 
- * This Manual test requires:
- * * Elasticsearch instance running on host
+ * This Manual test requires: * Elasticsearch instance running on host
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
