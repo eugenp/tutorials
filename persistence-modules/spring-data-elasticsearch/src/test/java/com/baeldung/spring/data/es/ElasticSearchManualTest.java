@@ -29,9 +29,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * 
- * This Manual test requires:
- * * Elasticsearch instance running on host
- * * with cluster name = elasticsearch
+ * This Manual test requires: * Elasticsearch instance running on host * with
+ * cluster name = elasticsearch
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -88,26 +87,29 @@ public class ElasticSearchManualTest {
     @Test
     public void givenPersistedArticles_whenSearchByAuthorsName_thenRightFound() {
 
-        final Page<Article> articleByAuthorName = articleService
-          .findByAuthorName(johnSmith.getName(), PageRequest.of(0, 10));
+        final Page<Article> articleByAuthorName = articleService.findByAuthorName(johnSmith.getName(),
+                PageRequest.of(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenCustomQuery_whenSearchByAuthorsName_thenArticleIsFound() {
-        final Page<Article> articleByAuthorName = articleService.findByAuthorNameUsingCustomQuery("Smith", PageRequest.of(0, 10));
+        final Page<Article> articleByAuthorName = articleService.findByAuthorNameUsingCustomQuery("Smith",
+                PageRequest.of(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenTagFilterQuery_whenSearchByTag_thenArticleIsFound() {
-        final Page<Article> articleByAuthorName = articleService.findByFilteredTagQuery("elasticsearch", PageRequest.of(0, 10));
+        final Page<Article> articleByAuthorName = articleService.findByFilteredTagQuery("elasticsearch",
+                PageRequest.of(0, 10));
         assertEquals(3L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenTagFilterQuery_whenSearchByAuthorsName_thenArticleIsFound() {
-        final Page<Article> articleByAuthorName = articleService.findByAuthorsNameAndFilteredTagQuery("Doe", "elasticsearch", PageRequest.of(0, 10));
+        final Page<Article> articleByAuthorName = articleService.findByAuthorsNameAndFilteredTagQuery("Doe",
+                "elasticsearch", PageRequest.of(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
@@ -115,7 +117,7 @@ public class ElasticSearchManualTest {
     public void givenPersistedArticles_whenUseRegexQuery_thenRightArticlesFound() {
 
         final SearchQuery searchQuery = new NativeSearchQueryBuilder().withFilter(regexpQuery("title", ".*data.*"))
-          .build();
+                .build();
         final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
 
         assertEquals(1, articles.size());
@@ -142,7 +144,7 @@ public class ElasticSearchManualTest {
         final String articleTitle = "Spring Data Elasticsearch";
 
         final SearchQuery searchQuery = new NativeSearchQueryBuilder()
-          .withQuery(matchQuery("title", articleTitle).minimumShouldMatch("75%")).build();
+                .withQuery(matchQuery("title", articleTitle).minimumShouldMatch("75%")).build();
         final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
         assertEquals(1, articles.size());
         final long count = articleService.count();
@@ -155,7 +157,7 @@ public class ElasticSearchManualTest {
     @Test
     public void givenSavedDoc_whenOneTermMatches_thenFindByTitle() {
         final SearchQuery searchQuery = new NativeSearchQueryBuilder()
-          .withQuery(matchQuery("title", "Search engines").operator(AND)).build();
+                .withQuery(matchQuery("title", "Search engines").operator(AND)).build();
         final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
         assertEquals(1, articles.size());
     }
