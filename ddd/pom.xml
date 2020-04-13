@@ -102,7 +102,7 @@
     <properties>
         <joda-money.version>1.0.1</joda-money.version>
         <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
-        <guice.version>4.0</guice.version>
+        <guice.version>4.2.3</guice.version>
     </properties>
 
 </project>
