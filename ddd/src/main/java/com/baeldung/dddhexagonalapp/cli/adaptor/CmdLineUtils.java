@@ -23,8 +23,6 @@ public class CmdLineUtils {
     public static void printMainmenu() {
         System.out.println("ALL : Display list of all card holders");
         System.out.println("REGISTER : Register a new card holder");
-        System.out.println("UPGRADE : Upgrade card category");
-        System.out.println("DOWNGRADE : Downgrade card category");
         System.out.println("INFO : Show main menu command");
         System.out.println("EXIT : Exit application");
     }

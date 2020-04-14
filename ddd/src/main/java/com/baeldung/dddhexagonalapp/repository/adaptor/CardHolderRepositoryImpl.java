@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import com.baeldung.dddhexagonalapp.coreapp.domain.CardCategory;
 import com.baeldung.dddhexagonalapp.coreapp.domain.CardHolder;
-import com.baeldung.dddhexagonalapp.coreapp.exception.CardHolderNotFoundException;
 import com.baeldung.dddhexagonalapp.coreapp.repository.CardHolderRepository;
 import com.baeldung.dddhexagonalapp.repository.adaptor.utils.RepositoryUtils;
 
@@ -20,22 +18,11 @@ public class CardHolderRepositoryImpl implements CardHolderRepository {
 
         cardholder.setCardHolderId(RepositoryUtils.getPrimaryKey());
         cardholder.setCreditCardLimit(5000);
-        cardholder.setStatus(CardCategory.BUDGET);
+        cardholder.setStatus("PREMIUM");
 
         dataStore.putIfAbsent(cardholder.getCardHolderId(), cardholder);
 
         return cardholder;
-    }
-
-    public CardHolder UpdateCardHolder(CardHolder cardHolder) throws CardHolderNotFoundException {
-
-        if (!dataStore.containsKey(cardHolder.getCardHolderId())) {
-            throw new CardHolderNotFoundException("Card Holder " + cardHolder.getCardHolderId() + "can't be found");
-        }
-
-        dataStore.put(cardHolder.getCardHolderId(), cardHolder);
-        return cardHolder;
-
     }
 
     @Override

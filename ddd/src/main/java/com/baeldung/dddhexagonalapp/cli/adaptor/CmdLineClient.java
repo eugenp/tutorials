@@ -2,20 +2,21 @@ package com.baeldung.dddhexagonalapp.cli.adaptor;
 
 import java.util.Scanner;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
+import com.baeldung.dddhexagonalapp.coreapp.service.CardHolderServiceImpl;
+import com.baeldung.dddhexagonalapp.repository.adaptor.CardHolderRepositoryImpl;
 
 public class CmdLineClient {
 
     public static void main(String[] args) {
 
-        Injector injector = Guice.createInjector(new CmdLineModule());
-        CmdLineInterface commandConsole = injector.getInstance(CmdLineInterface.class);
+        CmdLineInterfaceImpl commandConsole = new CmdLineInterfaceImpl(new CardHolderServiceImpl(new CardHolderRepositoryImpl() {
+        }));
+
         CmdLineClient.start(commandConsole);
 
     }
 
-    public static void start(CmdLineInterface commandConsole) {
+    public static void start(CmdLineInterfaceImpl commandConsole) {
 
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
@@ -25,10 +26,6 @@ public class CmdLineClient {
                 commandConsole.list(scanner);
             } else if ("REGISTER".equalsIgnoreCase(cmd)) {
                 commandConsole.register(scanner);
-            } else if ("UPGRADE".equalsIgnoreCase(cmd)) {
-                commandConsole.upgrade(scanner);
-            } else if ("DOWNGRADE".equalsIgnoreCase(cmd)) {
-                commandConsole.downgrade(scanner);
             } else if ("INFO".equalsIgnoreCase(cmd)) {
                 commandConsole.info();
             } else if ("EXIT".equalsIgnoreCase(cmd)) {

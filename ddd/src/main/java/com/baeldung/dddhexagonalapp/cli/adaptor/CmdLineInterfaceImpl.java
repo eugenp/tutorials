@@ -1,16 +1,14 @@
 package com.baeldung.dddhexagonalapp.cli.adaptor;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 import java.util.Scanner;
 
 import com.baeldung.dddhexagonalapp.coreapp.domain.CardHolder;
-import com.baeldung.dddhexagonalapp.coreapp.exception.CardHolderNotFoundException;
 import com.baeldung.dddhexagonalapp.coreapp.service.CardHolderService;
 import com.google.inject.Inject;
 
-public class CmdLineInterfaceImpl implements CmdLineInterface {
+public class CmdLineInterfaceImpl{
 
     private CardHolderService cardHolderService;
 
@@ -52,60 +50,6 @@ public class CmdLineInterfaceImpl implements CmdLineInterface {
 
         System.out.println("New card holder registered successfully with the following : ");
         CmdLineUtils.printCardHolder(registered);
-
-    }
-
-    public void upgrade(Scanner scanner) {
-        System.out.println("What is the card holder Id you want to upgrade? ");
-        String cardHolderId = CmdLineUtils.readString(scanner);
-        Optional<CardHolder> cardHolderWrapper = cardHolderService.findCardHolderById(Integer.valueOf(cardHolderId));
-
-        if (cardHolderWrapper.isPresent()) {
-            System.out.println("The Card holder you want to upgrade is as following");
-            CmdLineUtils.printCardHolder(cardHolderWrapper.get());
-            System.out.println("Do you want to proceed ? Y(es)/N(o)");
-            String confirm = CmdLineUtils.readString(scanner);
-
-            if (confirm.equalsIgnoreCase("yes") || confirm.equalsIgnoreCase("y")) {
-                try {
-                    CardHolder cardHolder = cardHolderService.upgradeCardHolder(cardHolderWrapper.get());
-                    System.out.println("Card holder upgrade successful with the following : ");
-                    CmdLineUtils.printCardHolder(cardHolder);
-                } catch (CardHolderNotFoundException e) {
-                    System.out.println("Card holder upgrade failed");
-                }
-
-            }
-        } else {
-            System.out.println("Can't find the card holder with supplied Id. Please try again ");
-        }
-
-    }
-
-    public void downgrade(Scanner scanner) {
-        System.out.println("What is the card holder Id you want to downgrade? ");
-        String cardHolderId = CmdLineUtils.readString(scanner);
-        Optional<CardHolder> cardHolderWrapper = cardHolderService.findCardHolderById(Integer.valueOf(cardHolderId));
-
-        if (cardHolderWrapper.isPresent()) {
-            System.out.println("The Card holder you want to downgrade is as following");
-            CmdLineUtils.printCardHolder(cardHolderWrapper.get());
-            System.out.println("Do you want to proceed ? Y(es)/N(o)");
-            String confirm = CmdLineUtils.readString(scanner);
-
-            if (confirm.equalsIgnoreCase("yes") || confirm.equalsIgnoreCase("y")) {
-                try {
-                    CardHolder cardHolder = cardHolderService.downgradeCardHolder(cardHolderWrapper.get());
-                    System.out.println("Card holder downgrade successful with the following : ");
-                    CmdLineUtils.printCardHolder(cardHolder);
-                } catch (CardHolderNotFoundException e) {
-                    System.out.println("Card holder downgrade failed");
-                }
-
-            }
-        } else {
-            System.out.println("Can't find the card holder with supplied Id. Please try again ");
-        }
 
     }
 

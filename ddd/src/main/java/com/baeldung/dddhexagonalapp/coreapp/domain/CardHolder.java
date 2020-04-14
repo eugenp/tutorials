@@ -5,7 +5,7 @@ public class CardHolder {
     private int cardHolderId;
     private String firstName;
     private String lastName;
-    private CardCategory status;
+    private String status;
     private int creditCardLimit;
 
     private String creditCardNumber;
@@ -34,11 +34,11 @@ public class CardHolder {
         this.lastName = lastName;
     }
 
-    public CardCategory getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(CardCategory status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
