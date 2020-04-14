@@ -1,10 +1,10 @@
 package com.baeldung.orelseoptional;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.util.Optional;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class OrElseOptionalUnitTest {
 
@@ -23,6 +23,40 @@ public class OrElseOptionalUnitTest {
         Optional<String> optionalString = Optional.empty();
         Optional<String> fallbackOptionalString = Optional.ofNullable(missingOptional);
         assertEquals(fallbackOptionalString, OptionalUtils.or(optionalString, fallbackOptionalString));
+    }
+
+    @Test
+    public void givenTwoOptionalMethods_whenFirstEmpty_thenBothEvaluated() {
+        ItemsProvider itemsProvider = new ItemsProvider();
+
+        Optional<String> item = itemsProvider.getEmptyItem()
+                .map(Optional::of)
+                .orElseGet(itemsProvider::getProduct);
+
+        assertEquals(Optional.of("product"), item);
+    }
+
+    @Test
+    public void givenTwoOptionalMethods_whenFirstNonEmpty_thenSecondNotEvaluated() {
+        ItemsProvider itemsProvider = new ItemsProvider();
+
+        Optional<String> item = itemsProvider.getProduct()
+                .map(Optional::of)
+                .orElseGet(itemsProvider::getEmptyItem);
+
+        assertEquals(Optional.of("product"), item);
+    }
+
+    private static class ItemsProvider {
+        Optional<String> getEmptyItem(){
+            System.out.println("Returning an empty item");
+            return Optional.empty();
+        }
+
+        Optional<String> getProduct(){
+            System.out.println("Returning a product");
+            return Optional.of("product");
+        }
     }
 
 //    Uncomment code when code base is compatible with Java 9
