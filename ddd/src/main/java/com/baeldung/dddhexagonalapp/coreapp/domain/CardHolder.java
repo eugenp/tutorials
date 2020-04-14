@@ -57,4 +57,10 @@ public class CardHolder {
     public void setCreditCardNumber(String creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
     }
+
+    @Override
+    public String toString() {
+
+        return "Card holder ID: " + cardHolderId + "\n" + "Card holder name: " + firstName + " " + lastName + "\n" + "Card Limit: " + creditCardLimit + " USD" + "\n" + "Card Category: " + status + "\n" + "Credit card number: " + creditCardNumber;
+    }
 }

@@ -6,13 +6,11 @@ import java.util.Scanner;
 
 import com.baeldung.dddhexagonalapp.coreapp.domain.CardHolder;
 import com.baeldung.dddhexagonalapp.coreapp.service.CardHolderService;
-import com.google.inject.Inject;
 
 public class CmdLineInterfaceImpl{
 
     private CardHolderService cardHolderService;
 
-    @Inject
     public CmdLineInterfaceImpl(CardHolderService cardHolderService) {
         this.cardHolderService = cardHolderService;
     }
@@ -25,7 +23,7 @@ public class CmdLineInterfaceImpl{
         allCardHolders.stream()
             .forEach(c -> {
 
-                CmdLineUtils.printCardHolder(c);
+                System.out.println(c);
                 System.out.println("------------------------------------");
             });
 
@@ -33,10 +31,10 @@ public class CmdLineInterfaceImpl{
 
     public void register(Scanner scanner) {
         System.out.println("What is the first name ? ");
-        String firstName = CmdLineUtils.readString(scanner);
+        String firstName = readString(scanner);
 
         System.out.println("What is the last name ? ");
-        String lastName = CmdLineUtils.readString(scanner);
+        String lastName = readString(scanner);
 
         CardHolder unregistered = new CardHolder();
         unregistered.setFirstName(firstName.toUpperCase());
@@ -49,12 +47,19 @@ public class CmdLineInterfaceImpl{
         CardHolder registered = cardHolderService.registerCardHolder(unregistered);
 
         System.out.println("New card holder registered successfully with the following : ");
-        CmdLineUtils.printCardHolder(registered);
+        System.out.println(registered);
 
     }
 
     public void info() {
-        CmdLineUtils.printMainmenu();
+        System.out.println("ALL : Display list of all card holders");
+        System.out.println("REGISTER : Register a new card holder");
+        System.out.println("INFO : Show main menu command");
+        System.out.println("EXIT : Exit application");
     }
 
+    private static String readString(Scanner scanner) {
+        System.out.print("$ ");
+        return scanner.next();
+    }
 }

@@ -21,7 +21,7 @@ public class CmdLineClient {
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
         while (!exit) {
-            String cmd = CmdLineUtils.readString(scanner);
+            String cmd = readString(scanner);
             if ("ALL".equalsIgnoreCase(cmd)) {
                 commandConsole.list(scanner);
             } else if ("REGISTER".equalsIgnoreCase(cmd)) {
@@ -37,4 +37,8 @@ public class CmdLineClient {
 
     }
 
+    public static String readString(Scanner scanner) {
+        System.out.print("$ ");
+        return scanner.next();
+    }
 }

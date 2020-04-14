@@ -5,13 +5,11 @@ import java.util.Optional;
 
 import com.baeldung.dddhexagonalapp.coreapp.repository.CardHolderRepository;
 import com.baeldung.dddhexagonalapp.coreapp.domain.CardHolder;
-import com.google.inject.Inject;
 
 public class CardHolderServiceImpl implements CardHolderService {
 
     private CardHolderRepository repo;
 
-    @Inject
     public CardHolderServiceImpl(CardHolderRepository respository) {
         repo = respository;
     }
