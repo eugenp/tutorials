@@ -26,37 +26,25 @@ public class OrElseOptionalUnitTest {
     }
 
     @Test
-    public void givenTwoOptionalMethods_whenFirstEmpty_thenBothEvaluated() {
+    public void givenTwoOptionalMethods_whenFirstEmpty_thenSecondEvaluated() {
         ItemsProvider itemsProvider = new ItemsProvider();
 
         Optional<String> item = itemsProvider.getEmptyItem()
                 .map(Optional::of)
-                .orElseGet(itemsProvider::getProduct);
+                .orElseGet(itemsProvider::getNail);
 
-        assertEquals(Optional.of("product"), item);
+        assertEquals(Optional.of("nail"), item);
     }
 
     @Test
     public void givenTwoOptionalMethods_whenFirstNonEmpty_thenSecondNotEvaluated() {
         ItemsProvider itemsProvider = new ItemsProvider();
 
-        Optional<String> item = itemsProvider.getProduct()
+        Optional<String> item = itemsProvider.getNail()
                 .map(Optional::of)
-                .orElseGet(itemsProvider::getEmptyItem);
+                .orElseGet(itemsProvider::getHammer);
 
-        assertEquals(Optional.of("product"), item);
-    }
-
-    private static class ItemsProvider {
-        Optional<String> getEmptyItem(){
-            System.out.println("Returning an empty item");
-            return Optional.empty();
-        }
-
-        Optional<String> getProduct(){
-            System.out.println("Returning a product");
-            return Optional.of("product");
-        }
+        assertEquals(Optional.of("nail"), item);
     }
 
 //    Uncomment code when code base is compatible with Java 9
