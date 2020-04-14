@@ -18,6 +18,12 @@
             <artifactId>cassandra-driver-core</artifactId>
             <version>${cassandra-driver-core.version}</version>
             <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.cassandraunit/cassandra-unit -->

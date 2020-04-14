@@ -8,3 +8,4 @@ This module contains articles about core Kotlin collections.
 - [Overview of Kotlin Collections API](https://www.baeldung.com/kotlin-collections-api)
 - [Converting a List to Map in Kotlin](https://www.baeldung.com/kotlin-list-to-map)
 - [Filtering Kotlin Collections](https://www.baeldung.com/kotlin-filter-collection)
+- [Collection Transformations in Kotlin](https://www.baeldung.com/kotlin-collection-transformations)

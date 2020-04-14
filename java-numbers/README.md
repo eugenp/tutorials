@@ -12,4 +12,5 @@ This module contains articles about numbers in Java.
 - [Calculating the nth Root in Java](https://www.baeldung.com/java-nth-root)
 - [Convert Double to String, Removing Decimal Places](https://www.baeldung.com/java-double-to-string)
 - [Changing the Order in a Sum Operation Can Produce Different Results?](https://www.baeldung.com/java-floating-point-sum-order)
+- [Using Math.sin with Degrees](https://www.baeldung.com/java-math-sin-degrees)
 - More articles: [[next -->]](/../java-numbers-2)
