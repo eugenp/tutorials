@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"poem.boundary"},{"l":"poem.boundary.driven_port"},{"l":"poem.boundary.driver_port"},{"l":"poem.boundary.internal.command_handler"},{"l":"poem.boundary.internal.domain"},{"l":"poem.command"},{"l":"poem.simple"},{"l":"poem.simple.driven_adapter"},{"l":"poem.simple.driver_adapter"}]

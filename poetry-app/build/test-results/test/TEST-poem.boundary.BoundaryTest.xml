@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="poem.boundary.BoundaryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-13T17:23:15" hostname="WynAdmins-MacBook-Pro.local" time="0.03">
-  <properties/>
-  <testcase name="englishPoem" classname="poem.boundary.BoundaryTest" time="0.03"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

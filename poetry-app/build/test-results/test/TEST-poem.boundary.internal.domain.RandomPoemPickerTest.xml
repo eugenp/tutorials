@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="poem.boundary.internal.domain.RandomPoemPickerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-04-13T17:23:15" hostname="WynAdmins-MacBook-Pro.local" time="0.008">
-  <properties/>
-  <testcase name="picks_random_poem_from_single_element_list" classname="poem.boundary.internal.domain.RandomPoemPickerTest" time="0.006"/>
-  <testcase name="picks_random_poem_from_mutiple_element_list" classname="poem.boundary.internal.domain.RandomPoemPickerTest" time="0.001"/>
-  <testcase name="picks_random_poem_from_empty_list" classname="poem.boundary.internal.domain.RandomPoemPickerTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
