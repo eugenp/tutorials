@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <h1>Subject</h1>
+        <p th:text="${#servletContext.getAttribute('emailsubject')}"></p>
+        <h1>Content</h1>
+        <p th:text="${#servletContext.getAttribute('emailcontent')}"></p>
+        <h1>Email address</h1>
+        <p th:text="${#servletContext.getAttribute('emailaddress')}"></p>
+        <h1>Language</h1>
+        <p th:text="${#servletContext.getAttribute('emaillocale')}"></p>
+    </body>
+</html>

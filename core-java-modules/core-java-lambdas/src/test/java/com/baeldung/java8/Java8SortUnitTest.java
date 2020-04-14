@@ -1,18 +1,17 @@
 package com.baeldung.java8;
 
-import static org.hamcrest.Matchers.equalTo;
+import com.baeldung.java8.entity.Human;
+import com.google.common.collect.Lists;
+import com.google.common.primitives.Ints;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-import com.baeldung.java8.entity.Human;
-import com.google.common.collect.Lists;
-import com.google.common.primitives.Ints;
+import static org.hamcrest.Matchers.equalTo;
 
 public class Java8SortUnitTest {
 
@@ -113,11 +112,11 @@ public class Java8SortUnitTest {
         humans.sort(Comparator.comparing(Human::getName));
         Assert.assertThat(humans.get(0), equalTo(new Human("Jack", 12)));
     }
-    
+
     @Test
     public final void givenStreamNaturalOrdering_whenSortingEntitiesByName_thenCorrectlySorted() {
         final List<String> letters = Lists.newArrayList("B", "A", "C");
-        
+
         final List<String> sortedLetters = letters.stream().sorted().collect(Collectors.toList());
         Assert.assertThat(sortedLetters.get(0), equalTo("A"));
     }
@@ -126,7 +125,7 @@ public class Java8SortUnitTest {
     public final void givenStreamCustomOrdering_whenSortingEntitiesByName_thenCorrectlySorted() {
         final List<Human> humans = Lists.newArrayList(new Human("Sarah", 10), new Human("Jack", 12));
         final Comparator<Human> nameComparator = (h1, h2) -> h1.getName().compareTo(h2.getName());
-        
+
         final List<Human> sortedHumans = humans.stream().sorted(nameComparator).collect(Collectors.toList());
         Assert.assertThat(sortedHumans.get(0), equalTo(new Human("Jack", 12)));
     }
@@ -164,4 +163,48 @@ public class Java8SortUnitTest {
         Assert.assertThat(reverseSortedHumans.get(0), equalTo(new Human("Sarah", 10)));
     }
 
+    @Test(expected = NullPointerException.class)
+    public final void givenANullElement_whenSortingEntitiesByName_thenThrowsNPE() {
+        final List<Human> humans = Lists.newArrayList(null, new Human("Jack", 12));
+
+        humans.sort((h1, h2) -> h1.getName().compareTo(h2.getName()));
+    }
+
+    @Test
+    public final void givenANullElement_whenSortingEntitiesByNameManually_thenMovesTheNullToLast() {
+        final List<Human> humans = Lists.newArrayList(null, new Human("Jack", 12), null);
+
+        humans.sort((h1, h2) -> {
+            if (h1 == null) return h2 == null ? 0 : 1;
+            else if (h2 == null) return -1;
+
+            return h1.getName().compareTo(h2.getName());
+        });
+
+        Assert.assertNotNull(humans.get(0));
+        Assert.assertNull(humans.get(1));
+        Assert.assertNull(humans.get(2));
+    }
+
+    @Test
+    public final void givenANullElement_whenSortingEntitiesByName_thenMovesTheNullToLast() {
+        final List<Human> humans = Lists.newArrayList(null, new Human("Jack", 12), null);
+
+        humans.sort(Comparator.nullsLast(Comparator.comparing(Human::getName)));
+
+        Assert.assertNotNull(humans.get(0));
+        Assert.assertNull(humans.get(1));
+        Assert.assertNull(humans.get(2));
+    }
+
+    @Test
+    public final void givenANullElement_whenSortingEntitiesByName_thenMovesTheNullToStart() {
+        final List<Human> humans = Lists.newArrayList(null, new Human("Jack", 12), null);
+
+        humans.sort(Comparator.nullsFirst(Comparator.comparing(Human::getName)));
+
+        Assert.assertNull(humans.get(0));
+        Assert.assertNull(humans.get(1));
+        Assert.assertNotNull(humans.get(2));
+    }
 }
