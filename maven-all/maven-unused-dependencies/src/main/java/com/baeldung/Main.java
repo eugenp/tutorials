@@ -6,6 +6,7 @@ import java.util.Map;
 import org.slf4j.LoggerFactory;
 
 public class Main {
+
     public static void main(String[] args) {
         Map<String, String> map = new HashMap<>();
         map.put("Dallas", "Texas");
@@ -15,4 +16,5 @@ public class Main {
         LoggerFactory.getLogger(Main.class)
             .info("Map: {}", map);
     }
+
 }
