@@ -9,6 +9,13 @@ public class Employee {
 
     private String address;
 
+    public Employee(int id, String firstName, String lastName, String address) {
+        setId(id);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setAddress(address);
+    }
+
     public int getId() {
         return id;
     }
