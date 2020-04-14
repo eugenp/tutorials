@@ -22,7 +22,10 @@ public class BasicAuthController {
             session.invalidate();
         }
         for (Cookie cookie : request.getCookies()) {
-            cookie.setMaxAge(0);
+            String cookieName = cookie.getName();
+            Cookie cookieToDelete = new Cookie(cookieName, null);
+            cookieToDelete.setMaxAge(0);
+            response.addCookie(cookieToDelete);
         }
         return "redirect:/login?logout";
     }
