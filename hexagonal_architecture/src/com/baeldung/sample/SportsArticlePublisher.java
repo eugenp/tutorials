@@ -5,14 +5,14 @@ import com.thirdparty.sample.DBDriver;
 public class SportsArticlePublisher implements ArticlePublisher {
 
 	@Override
-	public void createDatabaseEntries(Article article) throws PublishException {
-		DBDriver.createNewRowForArticle(article.heading,  article.content);
+	public void createDatabaseEntries(Article article) {
+		DBDriver.createNewRowForArticle(article.heading.text,  article.content);
 		DBDriver.updateMetaData(article.content);
 		
 	}
 
 	@Override
-	public void publishArticle(Article article) throws PublishException {
+	public void publishArticle(Article article) {
 		WebPublisher.publish(article);
 	}
 

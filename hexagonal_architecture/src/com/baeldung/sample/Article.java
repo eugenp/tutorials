@@ -29,3 +29,16 @@ public class Article {
 		this.createdDate = createdDate;
 	}
 }
+
+class Heading {
+	public String size;
+	public String text;
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+}
