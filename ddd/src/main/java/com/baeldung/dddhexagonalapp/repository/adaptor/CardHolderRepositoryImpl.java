@@ -5,18 +5,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import com.baeldung.dddhexagonalapp.coreapp.domain.CardHolder;
 import com.baeldung.dddhexagonalapp.coreapp.repository.CardHolderRepository;
-import com.baeldung.dddhexagonalapp.repository.adaptor.utils.RepositoryUtils;
 
 public class CardHolderRepositoryImpl implements CardHolderRepository {
 
     private Map<Integer, CardHolder> dataStore = new HashMap<>();
 
+    private static AtomicInteger atomicInt = new AtomicInteger(0);
+
+    public static int getPrimaryKey() {
+        return atomicInt.incrementAndGet();
+    }
+
     public CardHolder CreateCardHolder(CardHolder cardholder) {
 
-        cardholder.setCardHolderId(RepositoryUtils.getPrimaryKey());
+        cardholder.setCardHolderId(getPrimaryKey());
         cardholder.setCreditCardLimit(5000);
         cardholder.setStatus("PREMIUM");
 
