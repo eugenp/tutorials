@@ -113,6 +113,6 @@ public class EmailAttachmentReceiver {
 
     private boolean isAttachment(int partCount, Multipart multipart) throws MessagingException {
         MimeBodyPart mimeBodyPart = (MimeBodyPart) multipart.getBodyPart(partCount);
-        return Part.ATTACHMENT.equalsIgnoreCase(mimeBodyPart.getDisposition());
+        return Part.ATTACHMENT.equals(mimeBodyPart.getDisposition());
     }
 }
