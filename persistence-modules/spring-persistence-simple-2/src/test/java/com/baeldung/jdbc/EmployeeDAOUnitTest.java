@@ -98,5 +98,10 @@ public class EmployeeDAOUnitTest {
         assertEquals(1, employees.get(0).getId());
         assertEquals(3, employees.get(1).getId());
         assertEquals(4, employees.get(2).getId());
+
+        ids.clear();
+        ids.add(2);
+        employees = employeeDAO.getEmployeesFromLargeIdList(ids);
+        assertEquals(1, employees.size());
     }
 }
