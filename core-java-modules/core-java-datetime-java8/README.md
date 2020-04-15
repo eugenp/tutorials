@@ -13,4 +13,4 @@ This module contains articles about the Date and Time API introduced with Java 8
 - [How to Get the Start and the End of a Day using Java](http://www.baeldung.com/java-day-start-end)
 - [Set the Time Zone of a Date in Java](https://www.baeldung.com/java-set-date-time-zone)
 - [Comparing Dates in Java](https://www.baeldung.com/java-comparing-dates)
-- [Generating Random Dates in Java](https://www.baeldung.com/java-random-dates)
+- [[Next -->]](/core-java-modules/core-java-datetime-java8-2)
