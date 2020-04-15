@@ -45,7 +45,8 @@ public class EmployeeDAO {
     }
 
     public List<Employee> getEmployeesFromLargeIdList(List<Integer> ids) {
-        jdbcTemplate.execute("CREATE TEMPORARY TABLE employee_tmp (id INT NOT NULL)");
+        jdbcTemplate.execute("CREATE TEMPORARY TABLE IF NOT EXISTS employee_tmp (id INT NOT NULL)");
+        jdbcTemplate.update("DELETE FROM employee_tmp");
 
         List<Object[]> employeeIds = new ArrayList<>();
         for (Integer id : ids) {
