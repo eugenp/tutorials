@@ -12,9 +12,8 @@ import com.baeldung.dddhexagonalapp.coreapp.repository.CardHolderRepository;
 
 public class CardHolderRepositoryImpl implements CardHolderRepository {
 
-    private Map<Integer, CardHolder> dataStore = new HashMap<>();
-
     private static AtomicInteger atomicInt = new AtomicInteger(0);
+    private Map<Integer, CardHolder> dataStore = new HashMap<>();
 
     public static int getPrimaryKey() {
         return atomicInt.incrementAndGet();

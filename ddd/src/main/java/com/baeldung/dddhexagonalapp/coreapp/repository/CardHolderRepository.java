@@ -7,10 +7,10 @@ import com.baeldung.dddhexagonalapp.coreapp.domain.CardHolder;
 
 public interface CardHolderRepository {
 
-    public CardHolder CreateCardHolder(CardHolder cardholder);
+    CardHolder CreateCardHolder(CardHolder cardholder);
 
-    public List<CardHolder> findAll();
+    List<CardHolder> findAll();
 
-    public Optional<CardHolder> findCardHolderById(int cardHolderId);
+    Optional<CardHolder> findCardHolderById(int cardHolderId);
 
 }

@@ -8,6 +8,11 @@ public class CardHolder {
     private String status;
     private int creditCardLimit;
 
+    public CardHolder(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     private String creditCardNumber;
 
     public int getCardHolderId() {
