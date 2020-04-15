@@ -52,23 +52,25 @@ public class EmailAttachmentReceiver {
         Properties properties = new Properties();
 
         // server settings
-        properties.put(String.format(MAIL_PROTOCOL_HOST, this.protocol), this.host);
-        properties.put(String.format(MAIL_PROTOCOL_PORT, this.protocol), this.port);
+        properties.put(String.format(MAIL_PROTOCOL_HOST, protocol), host);
+        properties.put(String.format(MAIL_PROTOCOL_PORT, protocol), port);
 
         // SSL settings
-        properties.put(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_CLASS, this.protocol), JAVAX_NET_SSL_SSL_SOCKET_FACTORY);
-        properties.put(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_FALLBACK, this.protocol), FALSE);
-        properties.put(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_PORT, this.protocol), this.port);
+        properties.put(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_CLASS, protocol), JAVAX_NET_SSL_SSL_SOCKET_FACTORY);
+        properties.put(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_FALLBACK, protocol), FALSE);
+        properties.put(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_PORT, protocol), port);
 
         // obtaining sessions
         Session session = Session.getDefaultInstance(properties);
+        Store store = null;
+        Folder inbox = null;
         try {
-                // connecting to the mail server
-                Store store = session.getStore(this.protocol);
-                store.connect(this.userName, this.password);
+            // connecting to the mail server
+            store = session.getStore(protocol);
+            store.connect(userName, password);
 
             // opens the inbox folder
-            Folder inbox = store.getFolder(INBOX);
+            inbox = store.getFolder(INBOX);
             inbox.open(Folder.READ_ONLY);
             List<Message> messages = asList(inbox.getMessages());
             for (Message message : messages) {
@@ -78,15 +80,23 @@ public class EmailAttachmentReceiver {
                     checkForAttachmentsAndSave(message, directory);
                 }
             }
-            // closing open connections
-            inbox.close();
-            store.close();
         } catch (NoSuchProviderException noSuchProviderException) {
             LOGGER.error("An error occurred while downloading attachments", noSuchProviderException);
         } catch (MessagingException messagingException) {
             LOGGER.error("An error occurred while downloading attachments", messagingException);
-        } catch(IOException ioException) {
+        } catch (IOException ioException) {
             LOGGER.error("An error occurred while downloading attachments", ioException);
+        } finally {
+            try {
+                if (inbox != null) {
+                    inbox.close();
+                }
+                if (store != null) {
+                    store.close();
+                }
+            } catch (MessagingException messagingException) {
+                LOGGER.error("An error occurred while closing connections", messagingException);
+            }
         }
     }
 
