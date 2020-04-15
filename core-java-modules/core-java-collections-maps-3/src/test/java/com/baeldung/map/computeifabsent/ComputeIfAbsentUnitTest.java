@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class ComputeIfAbsentUnitTest {
 
@@ -27,7 +28,7 @@ public class ComputeIfAbsentUnitTest {
         public void whenMappingFunctionReturnsNull_thenDoNotRecordMapping() {
                 Map<String, Integer> stringLength = new HashMap<>();
                 assertEquals(stringLength.computeIfAbsent("John", s -> null), null);
-                assertEquals(stringLength.get("John"), null);
+                assertNull(stringLength.get("John"));
         }
 
         @Test(expected = RuntimeException.class)
