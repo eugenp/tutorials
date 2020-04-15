@@ -14,6 +14,13 @@ import org.springframework.cloud.task.configuration.EnableTask;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+/**
+ * This Application requires:
+ * *  a MySql instance running, that allows a root user with no password, and with a database named 
+ * 
+ * (e.g. with the following command `docker run -p 3306:3306 --name bael-mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true -e MYSQL_DATABASE=springcloud mysql:latest`)
+ *
+ */
 @SpringBootApplication
 @EnableTask
 @EnableBatchProcessing

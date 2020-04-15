@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>property-exp-custom-config</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>property-exp-custom-config</name>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-property-exp</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/application*.yml</include>
+                    <include>**/application*.yaml</include>
+                    <include>**/application*.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/application*.yml</exclude>
+                    <exclude>**/application*.yaml</exclude>
+                    <exclude>**/application*.properties</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${apache-maven.version}</version>
+                <configuration>
+                    <delimiters>
+                        <delimiter>@</delimiter>
+                    </delimiters>
+                    <useDefaultDelimiters>true</useDefaultDelimiters>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec-maven-plugin.version}</version>
+                <configuration>
+                    <mainClass>com.baeldung.propertyexpansion.SpringBootPropertyExpansionApp</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
+        <custom.property>Custom Property Value</custom.property>
+        <apache-maven.version>2.7</apache-maven.version>
+        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+    </properties>
+
+</project>

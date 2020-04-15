@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>couchbase</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>couchbase</name>
+    <packaging>jar</packaging>
     <description>Couchbase Tutorials</description>
 
     <parent>
@@ -25,7 +26,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson-version}</version>
+            <version>${jackson.version}</version>
         </dependency>
         <!-- Spring Context for Dependency Injection -->
         <dependency>
@@ -69,8 +70,6 @@
     <properties>
         <couchbase.client.version>2.5.0</couchbase.client.version>
         <spring-framework.version>4.3.5.RELEASE</spring-framework.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
-        <jackson-version>2.9.1</jackson-version>
     </properties>
 
 </project>

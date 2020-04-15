@@ -1,0 +1,15 @@
+
+#
+# Minio profile
+#
+aws:
+  s3:
+    region: sa-east-1
+    endpoint: http://localhost:9000
+    accessKeyId: 8KLF8U60JER4AP23H0A6
+    secretAccessKey: vX4uM7e7nNGPqjcXycVVhceNR7NQkiMQkR9Hoctf
+    bucket: bucket1
+
+  
+    
+    

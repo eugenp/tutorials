@@ -13,6 +13,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.annotation.PostConstruct;
 
+/**
+ * Note: In the IDE, remember to generate query type classes before running the Integration Test (e.g. in Eclipse right-click on the project > Run As > Maven generate sources)
+ */
 @SpringBootApplication
 @EntityScan("com.baeldung.entity")
 @EnableJpaRepositories("com.baeldung.controller.repository")

@@ -1,23 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.singletonsession</groupId>
     <artifactId>ejb-beans</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <name>EJB Beans</name>
+    <name>spring-ejb-beans</name>
 
     <parent>
         <groupId>com.baeldung.spring.ejb</groupId>
         <artifactId>spring-ejb</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>${arquillian-bom.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/javax/javaee-api -->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>${javaee.version}</version>
             <scope>provided</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.openejb/tomee-embedded -->
@@ -26,10 +37,92 @@
             <artifactId>tomee-embedded</artifactId>
             <version>${tomee-embedded.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+         <!-- Dependency for EJB javax -->
+        <dependency>
+            <groupId>javax.ejb</groupId>
+            <artifactId>javax.ejb-api</artifactId>
+            <version>${javax.ejb-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Spring JMS -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <version>${springframework.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- ActiveMQ -->
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-broker</artifactId>
+            <version>${activemq.broker.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq.tooling</groupId>
+            <artifactId>activemq-junit</artifactId>
+            <version>${activemq.junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>arquillian-glassfish-embedded</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.arquillian.container</groupId>
+                    <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
+                    <version>${arquillian-glassfish-embedded-3.1.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.main.extras</groupId>
+                    <artifactId>glassfish-embedded-all</artifactId>
+                    <version>${glassfish-embedded-all.version}</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
+        <arquillian-bom.version>1.1.13.Final</arquillian-bom.version>
         <tomee-embedded.version>1.7.5</tomee-embedded.version>
+        <glassfish-embedded-all.version>3.1.2</glassfish-embedded-all.version>
+        <arquillian-glassfish-embedded-3.1.version>1.0.0.CR4</arquillian-glassfish-embedded-3.1.version>
+        <javax.ejb-api.version>3.2</javax.ejb-api.version>
+        <springframework.version>5.2.3.RELEASE</springframework.version>
+        <activemq.broker.version>5.10.2</activemq.broker.version>
+        <activemq.junit.version>5.13.1</activemq.junit.version>
+        <mockito.version>2.21.0</mockito.version>
+        <byte-buddy.version>1.8.5</byte-buddy.version>
     </properties>
 
 </project>

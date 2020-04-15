@@ -9,14 +9,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.baeldung.web.controller" })
+@ComponentScan(basePackages = { "com.baeldung.web.controller.message" })
 public class TestConfig implements WebMvcConfigurer {
 
     @Autowired
@@ -45,5 +44,4 @@ public class TestConfig implements WebMvcConfigurer {
         templateEngine.setTemplateResolver(templateResolver());
         return templateEngine;
     }
-
 }

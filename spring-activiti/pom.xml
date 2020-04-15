@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-activiti</artifactId>
-    <packaging>jar</packaging>
     <name>spring-activiti</name>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-1</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-1</relativePath>
     </parent>
@@ -42,12 +42,23 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <mainClass>com.baeldung.activitiwithspring.ActivitiWithSpringApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
-        <start-class>com.example.activitiwithspring.ActivitiWithSpringApplication</start-class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <activiti.version>6.0.0</activiti.version>
-        <java.version>1.8</java.version>
     </properties>
 
 </project>

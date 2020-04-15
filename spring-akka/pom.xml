@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-akka</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>spring-akka</name>
@@ -19,7 +19,7 @@
         </dependency>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-actor_2.11</artifactId>
+            <artifactId>akka-actor_${scala.version}</artifactId>
             <version>${akka.version}</version>
         </dependency>
         <dependency>
@@ -44,6 +44,7 @@
     <properties>
         <spring.version>4.3.4.RELEASE</spring.version>
         <akka.version>2.4.14</akka.version>
+        <scala.version>2.11</scala.version>
     </properties>
 
 </project>

@@ -1,23 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-data-redis</artifactId>
     <version>1.0</version>
+    <name>spring-data-redis</name>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-5</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-5</relativePath>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-redis</artifactId>
-            <version>${spring-data-redis}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -29,33 +62,7 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>${jedis.version}</version>
             <type>jar</type>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -65,24 +72,33 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
-            <version>${spring-data-commons.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.kstyrc</groupId>
             <artifactId>embedded-redis</artifactId>
             <version>${embedded-redis.version}</version>
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <fork>false</fork>
+                    <forkCount>0</forkCount>
+                    <argLine>-Xmx1024m</argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
-        <spring-data-redis>2.0.3.RELEASE</spring-data-redis>
         <cglib.version>3.2.4</cglib.version>
-        <jedis.version>2.9.0</jedis.version>
         <nosqlunit.version>0.10.0</nosqlunit.version>
-        <spring-data-commons.version>2.0.3.RELEASE</spring-data-commons.version>
         <embedded-redis.version>0.6</embedded-redis.version>
+        <spring-boot.version>2.1.9.RELEASE</spring-boot.version>
     </properties>
 
 </project>

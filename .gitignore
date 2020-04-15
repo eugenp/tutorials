@@ -1,8 +1,10 @@
 */bin/*
+bin/
 
 *.class
 
 # Package Files #
+*.jar
 *.war
 *.ear
 
@@ -19,18 +21,24 @@
 .idea/
 *.iml
 *.iws
+out/
+
+# VSCode
+.vscode/
 
 # Mac
 .DS_Store
 
 # Maven
-log/
+log/*
 target/
+
+# Gradle
+.gradle/
 
 spring-openid/src/main/resources/application.properties
 .recommenders/
 /spring-hibernate4/nbproject/
-spring-security-openid/src/main/resources/application.properties
 
 spring-all/*.log
 
@@ -57,8 +65,27 @@ core-java-io/target_link.txt
 core-java/src/main/java/com/baeldung/manifest/MANIFEST.MF
 ethereum/logs/
 jmeter/src/main/resources/*-JMeter.csv
+ninja/devDb.mv.db
 
 **/node_modules/
 **/dist
 **/tmp
 **/out-tsc
+**/nbproject/
+**/nb-configuration.xml
+
+
+persistence-modules/hibernate5/transaction.log
+apache-avro/src/main/java/com/baeldung/avro/model/
+jta/transaction-logs/
+software-security/sql-injection-samples/derby.log
+spring-soap/src/main/java/com/baeldung/springsoap/gen/
+/report-*.json
+transaction.log
+*-shell.log
+
+apache-cxf/cxf-aegis/baeldung.xml
+apache-fop/src/test/resources/input.xml
+apache-fop/src/test/resources/output_herold.pdf
+apache-fop/src/test/resources/output_html2fo.pdf
+apache-fop/src/test/resources/output_jtidy.pdf

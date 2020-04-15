@@ -5,16 +5,13 @@
 2. Open another shell and execute the command below:
 > vault operator init
 
-Vault will output the unseal keys and root token: STORE THEM SAFELY !!!
+Unseal Key 1: Iwvpd4IVofhcmQ2HEIPs5HMUbz4tz6JhqmLZ6+1MhAPx
+Unseal Key 2: ANQDXUFGGtLtt6grX25YsdmeKELhM/ioKWzwFukJIe2f
+Unseal Key 3: 8MHyzFnOvlwVQzdWYJ3BIN4xPDOn8a4VemZ/Qe5HgurU
+Unseal Key 4: ywT9YR9OfxIpA4l1RniNNCvSZWAuNZsAEFRyD7aqFOrp
+Unseal Key 5: q1c7M+lnlT72jGLoCH+jjri6KGSBhc5lCzlT0I1R9URU
 
-Example output:
-Unseal Key 1: OfCseaSZzjTZmrxhfx+5clKobwLGCNiJdAlfixSG9E3o
-Unseal Key 2: iplVLPTHW0n0WL5XuI6QWwyNtWbKTek1SoKcG0gR7vdT
-Unseal Key 3: K0TleK3OYUvWFF+uIDsQuf5a+/gkv1PtZ3O47ornzRoF
-Unseal Key 4: +5zhysLAO4hIdZs0kiZpkrRovw11uQacfloiBwnZBJA/
-Unseal Key 5: GDwSq18lXV3Cw4MoHsKIH137kuI0mdl36UiD9WxOdulc
-
-Initial Root Token: d341fdaf-1cf9-936a-3c38-cf5eec94b5c0
+Initial Root Token: dee7107a-8819-0719-62a3-cea3ea854589
 
 ...
 
@@ -73,8 +70,8 @@ flush privileges;
 > vault write database/roles/fakebank-accounts-rw ^
     db_name=mysql-fakebank ^
     creation_statements="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT SELECT,INSERT,UPDATE ON fakebank.* TO '{{name}}'@'%';" ^
-    default_ttl="1m" ^
-    max_ttl="2m"  
+    default_ttl="5m" ^
+    max_ttl="30m"  
 	
 === Get credentials
 > vault read database/creds/fakebank-accounts-rw

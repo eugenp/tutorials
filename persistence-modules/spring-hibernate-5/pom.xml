@@ -1,16 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-hibernate-5</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>spring-hibernate-5</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <artifactId>persistence-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
     </parent>
 
     <dependencies>
@@ -49,6 +48,11 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
@@ -120,16 +124,6 @@
 
     </dependencies>
 
-    <build>
-        <finalName>spring-hibernate-5</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
-
     <properties>
         <!-- Spring -->
         <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
@@ -143,12 +137,9 @@
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <hsqldb.version>2.3.4</hsqldb.version>
-        <h2.version>1.4.195</h2.version>
 
         <!-- util -->
         <guava.version>21.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
-
     </properties>
 
 </project>

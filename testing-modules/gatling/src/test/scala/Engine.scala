@@ -3,11 +3,10 @@ import io.gatling.core.config.GatlingPropertiesBuilder
 
 object Engine extends App {
 
-    val props = new GatlingPropertiesBuilder
-    props.dataDirectory(IDEPathHelper.dataDirectory.toString)
-    props.resultsDirectory(IDEPathHelper.resultsDirectory.toString)
-    props.bodiesDirectory(IDEPathHelper.bodiesDirectory.toString)
-    props.binariesDirectory(IDEPathHelper.mavenBinariesDirectory.toString)
+  val props = new GatlingPropertiesBuilder()
+    .resourcesDirectory(IDEPathHelper.resourcesDirectory.toString)
+    .resultsDirectory(IDEPathHelper.resultsDirectory.toString)
+    .binariesDirectory(IDEPathHelper.mavenBinariesDirectory.toString)
 
-    Gatling.fromMap(props.build)
+  Gatling.fromMap(props.build)
 }

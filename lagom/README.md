@@ -1,11 +1,12 @@
+## Lagom
+
+This module contains articles about the Lagom framework.
+
 ### Relevant articles
 
-- [Guide to Reactive Microservices Using Lagom Framework](http://www.baeldung.com/lagom-reactive-microservices)
+- [Guide to Reactive Microservices Using Lagom Framework](https://www.baeldung.com/lagom-reactive-microservices)
 
-
-
-
-Steps to setup from scratch
+### Steps to setup from scratch
 
 1) Create sbt build file "build.sbt" 
 2) Create plugins file project/plugins.sbt
@@ -35,13 +36,13 @@ Steps to setup from scratch
 10) Run project: sbt lagom:runAll
 	
 
-Sample Run:
-curl http://localhost:9000/api/greeting/Nikhil;
+### Sample Run:
+```
+$ curl http://localhost:9000/api/greeting/Nikhil;
 Hello Nikhil! Today's weather stats: Going to be very humid, Take Water
 
-curl http://localhost:9000/api/greeting/Nikhil;
+$ curl http://localhost:9000/api/greeting/Nikhil;
 Hello Again Nikhil! Today's weather stats: Going to Rain, Take Umbrella
-
-
+```
 
 

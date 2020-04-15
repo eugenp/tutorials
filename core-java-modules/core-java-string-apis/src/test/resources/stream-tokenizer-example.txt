@@ -1,0 +1,3 @@
+3 quick brown foxes jump over the "lazy" dog!
+#test1
+//test2

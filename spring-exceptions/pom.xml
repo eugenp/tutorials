@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-exceptions</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>spring-exceptions</name>
@@ -179,7 +179,6 @@
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
         <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
         <javassist.version>3.21.0-GA</javassist.version>
-        <jstl.version>1.2</jstl.version>
 
         <!-- persistence -->
         <hibernate.version>5.2.5.Final</hibernate.version>
@@ -189,12 +188,10 @@
 
         <!-- various -->
         <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
-        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <javax.el.version>2.2</javax.el.version>
 
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
 
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
@@ -202,7 +199,6 @@
         <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
 

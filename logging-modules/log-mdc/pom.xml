@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>log-mdc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>log-mdc</name>
@@ -29,13 +29,13 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet.version}</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.library}</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!--log4j dependencies -->
@@ -76,7 +76,6 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -98,13 +97,9 @@
     </build>
 
     <properties>
-        <log4j.version>1.2.17</log4j.version>
         <log4j2.version>2.7</log4j2.version>
         <disruptor.version>3.3.6</disruptor.version>
         <jbosslogging.version>3.3.0.Final</jbosslogging.version>
-        <javax.servlet.version>3.1.0</javax.servlet.version>
-        <jackson.library>2.8.5</jackson.library>
-        <maven-war-plugin.version>2.4</maven-war-plugin.version>
     </properties>
 
 </project>

@@ -1,5 +1,10 @@
 package com.baeldung.reactive;
 
+import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
+import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
+
+import java.time.Duration;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.springframework.http.server.reactive.HttpHandler;
@@ -12,21 +17,17 @@ import com.baeldung.web.reactive.Task;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.ipc.netty.NettyContext;
-import reactor.ipc.netty.http.server.HttpServer;
-
-import java.time.Duration;
-
-import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
-import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
+import reactor.netty.DisposableServer;
+import reactor.netty.http.server.HttpServer;
 
 public class Spring5ReactiveServerClientIntegrationTest {
-
-    private static NettyContext nettyContext;
+    private static DisposableServer disposableServer;
 
     @BeforeAll
     public static void setUp() throws Exception {
-        HttpServer server = HttpServer.create("localhost", 8080);
+        HttpServer server = HttpServer.create()
+            .host("localhost")
+            .port(8080);
         RouterFunction<?> route = RouterFunctions.route(POST("/task/process"), request -> ServerResponse.ok()
             .body(request.bodyToFlux(Task.class)
                 .map(ll -> new Task("TaskName", 1)), Task.class))
@@ -34,13 +35,13 @@ public class Spring5ReactiveServerClientIntegrationTest {
                 .body(Mono.just("server is alive"), String.class)));
         HttpHandler httpHandler = RouterFunctions.toHttpHandler(route);
         ReactorHttpHandlerAdapter adapter = new ReactorHttpHandlerAdapter(httpHandler);
-        nettyContext = server.newHandler(adapter)
-            .block();
+        disposableServer = server.handle(adapter)
+            .bindNow();
     }
 
     @AfterAll
     public static void shutDown() {
-        nettyContext.dispose();
+        disposableServer.disposeNow();
     }
 
     // @Test

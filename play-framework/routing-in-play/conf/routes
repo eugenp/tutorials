@@ -1,7 +1,15 @@
-GET     /    controllers.HomeController.index(author="Baeldung",id:Int?=1)
-GET     /:author     controllers.HomeController.index(author,id:Int?=1)
-GET     /greet/:name/:age    controllers.HomeController.greet(name,age:Integer)
-GET     /square/$num<[0-9]+>    controllers.HomeController.squareMe(num:Long)
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET        /                           controllers.HomeController.index
+GET        /writer                     controllers.HomeController.writer(author = "Baeldung", id: Int ?= 1)
+GET        /writer/:author             controllers.HomeController.writer(author: String, id: Int ?= 1)
+GET        /baeldung/:id               controllers.HomeController.viewUser(id: String)
+GET        /greet/:name/:age           controllers.HomeController.greet(name: String, age: Integer)
+GET        /square/$num<[0-9]+>        controllers.HomeController.squareMe(num: Long)
+GET        /*data                      controllers.HomeController.introduceMe(data)
+
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
-GET     /*data    controllers.HomeController.introduceMe(data)
+GET        /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

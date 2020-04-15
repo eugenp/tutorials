@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>azure</artifactId>
     <version>0.1</version>
-    <packaging>war</packaging>
     <name>azure</name>
+    <packaging>war</packaging>
     <description>Demo project for Spring Boot on Azure</description>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
@@ -44,7 +45,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -127,7 +127,6 @@
         <docker.image.prefix>${azure.containerRegistry}.azurecr.io</docker.image.prefix>
         <docker-maven-plugin.version>1.1.0</docker-maven-plugin.version>
         <azure-webapp-maven-plugin.version>1.1.0</azure-webapp-maven-plugin.version>
-        <java.version>1.8</java.version>
     </properties>
 
 </project>

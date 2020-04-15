@@ -5,10 +5,10 @@
   "version": "1.0-SNAPSHOT",
   "name": "Json Maven Polyglot",
   "parent": {
-    "groupId": "org.springframework.boot",
-    "artifactId": "spring-boot-starter-parent",
-    "version": "2.0.5.RELEASE",
-    "relativePath": null
+    "groupId": "com.baeldung",
+    "artifactId": "parent-boot-2",
+    "version": "0.0.1-SNAPSHOT",
+    "relativePath": "../../parent-boot-2"
   },
   "properties": {
     "project.build.sourceEncoding": "UTF-8",

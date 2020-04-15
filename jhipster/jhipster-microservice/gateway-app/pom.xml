@@ -7,7 +7,6 @@
         <groupId>com.baeldung.jhipster</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
     <groupId>com.gateway</groupId>
     <artifactId>gateway-app</artifactId>
     <packaging>war</packaging>
@@ -97,6 +96,7 @@
         <undertow.version>1.4.10.Final</undertow.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
         <yarn.version>v0.21.3</yarn.version>
+        <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
     </properties>
 
     <dependencyManagement>
@@ -470,7 +470,7 @@
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
+                    <version>${lifecycle.mapping.version}</version>
                     <configuration>
                         <lifecycleMappingMetadata>
                             <pluginExecutions>

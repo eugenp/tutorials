@@ -1,0 +1,94 @@
+<configuration>
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+    <property name="LOGS_FOLDER" value="${logs.base:-logs}" />
+
+    <appender name="errorFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOGS_FOLDER}/errors.log</File>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <pattern>%d [%-16thread] [%-10X{principal}] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS_FOLDER}/errors.%d.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <if condition='p("restx.mode").equals("prod")'>
+        <then>
+            <!-- production mode -->
+            <appender name="appLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <File>${LOGS_FOLDER}/app.log</File>
+                <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                    <level>INFO</level>
+                </filter>
+                <encoder>
+                    <pattern>%d [%-16thread] [%-10X{principal}] %-5level %logger{36} - %msg%n</pattern>
+                </encoder>
+                <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <fileNamePattern>${LOGS_FOLDER}/app.%d.log</fileNamePattern>
+                    <maxHistory>10</maxHistory>
+                </rollingPolicy>
+            </appender>
+            <appender name="debugFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <File>${LOGS_FOLDER}/debug.log</File>
+                <encoder>
+                    <pattern>%d [%-16thread] [%-10X{principal}] %-5level %logger{36} - %msg%n</pattern>
+                </encoder>
+                <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+                    <fileNamePattern>${LOGS_FOLDER}/debug.%i.log.zip</fileNamePattern>
+                    <minIndex>1</minIndex>
+                    <maxIndex>3</maxIndex>
+                </rollingPolicy>
+
+                <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+                    <maxFileSize>50MB</maxFileSize>
+                </triggeringPolicy>
+            </appender>
+            <root level="INFO">
+                <appender-ref ref="debugFile" />
+                <appender-ref ref="appLog" />
+            </root>
+        </then>
+        <else>
+            <!-- not production mode -->
+            <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+                <encoder>
+                    <pattern>%d [%-16thread] [%-10X{principal}] %-5level %logger{36} - %msg%n</pattern>
+                </encoder>
+            </appender>
+            <appender name="appLog" class="ch.qos.logback.core.FileAppender">
+                <File>${LOGS_FOLDER}/app.log</File>
+                <encoder>
+                    <pattern>%d [%-16thread] [%-10X{principal}] %-5level %logger{36} - %msg%n</pattern>
+                </encoder>
+            </appender>
+
+            <root level="INFO">
+                <appender-ref ref="STDOUT" />
+                <appender-ref ref="appLog" />
+            </root>
+        </else>
+    </if>
+
+    <!-- clean up container logs -->
+    <logger name="org.eclipse.jetty.server.AbstractConnector" level="WARN" />
+    <logger name="org.eclipse.jetty.server.handler.ContextHandler" level="WARN" />
+    <logger name="org.eclipse.jetty.webapp.StandardDescriptorProcessor" level="WARN" />
+
+    <logger name="org.hibernate.validator.internal.engine.ConfigurationImpl" level="WARN" />
+    <logger name="org.reflections.Reflections" level="WARN" />
+
+    <logger name="restx.factory.Factory" level="WARN" />
+
+    <!-- app logs - set DEBUG level, in prod it will go to a dedicated file -->
+    <logger name="restx.demo" level="DEBUG" />
+
+    <root level="INFO">
+        <appender-ref ref="errorFile" />
+    </root>
+</configuration>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>bazelapp</artifactId>
+    <name>bazelapp</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>bazel</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.baeldung</groupId>
+            <artifactId>bazelgreeting</artifactId>
+            <version>${bazelgreeting.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <bazelgreeting.version>1.0.0-SNAPSHOT</bazelgreeting.version>
+    </properties>
+
+</project>

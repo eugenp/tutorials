@@ -1,8 +1,8 @@
-### Stripe API for Java Sample Project
+### Stripe 
 
-This is Spring Boot project that displays a checkout form and charges a credit card using the Stripe API for Java.
+This module contains articles about Stripe
 
 ### Relevant articles
 
-- [Introduction to the Stripe API for Java](http://www.baeldung.com/java-stripe-api)
+- [Introduction to the Stripe API for Java](https://www.baeldung.com/java-stripe-api)
 

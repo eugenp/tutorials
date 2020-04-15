@@ -1,16 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-jpa</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>spring-jpa</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <artifactId>persistence-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
     </parent>
 
     <dependencies>
@@ -42,11 +42,6 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-ehcache</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
@@ -93,7 +88,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>${javax.servlet.jstl.version}</version>
+            <version>${jstl.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -133,54 +128,27 @@
 
     </dependencies>
 
-    <build>
-        <finalName>spring-jpa</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>${maven-war-plugin.version}</version>
-                <configuration>
-                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.3.8.RELEASE</org.springframework.version>
+        <org.springframework.version>5.1.5.RELEASE</org.springframework.version>
         <javassist.version>3.21.0-GA</javassist.version>
 
         <!-- persistence -->
-        <hibernate.version>5.2.10.Final</hibernate.version>
+        <hibernate.version>5.2.17.Final</hibernate.version>
         <mysql-connector-java.version>6.0.6</mysql-connector-java.version>
-        <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
-        <h2.version>1.4.195</h2.version>
+        <spring-data-jpa.version>2.1.5.RELEASE</spring-data-jpa.version>
 
         <!-- web -->
-        <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
         <javax.servlet.servlet-api.version>2.5</javax.servlet.servlet-api.version>
 
         <!-- various -->
-        <hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
+        <hibernate-validator.version>6.0.15.Final</hibernate-validator.version>
         <xml-apis.version>1.4.01</xml-apis.version>
         <javax.el-api.version>2.2.5</javax.el-api.version>
 
         <!-- util -->
         <guava.version>21.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <assertj.version>3.8.0</assertj.version>
-
-        <!-- maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
     </properties>
 
 </project>

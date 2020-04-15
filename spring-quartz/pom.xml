@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-quartz</artifactId>
     <name>spring-quartz</name>
     <version>0.0.1-SNAPSHOT</version>
@@ -11,10 +9,10 @@
     <description>Demo project for Scheduling in Spring with Quartz</description>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-1</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -33,6 +31,16 @@
             <artifactId>quartz</artifactId>
             <version>${quartz.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3p0.version}</version>
+        </dependency>
+        <!-- h2 in-memory database -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -45,7 +53,8 @@
     </build>
 
     <properties>
-        <quartz.version>2.2.3</quartz.version>
+        <quartz.version>2.3.0</quartz.version>
+        <c3p0.version>0.9.5.2</c3p0.version>
     </properties>
 
 </project>
