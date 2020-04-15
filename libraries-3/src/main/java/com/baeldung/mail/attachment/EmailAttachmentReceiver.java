@@ -24,24 +24,22 @@ public class EmailAttachmentReceiver {
 
     final Logger LOGGER = LoggerFactory.getLogger(EmailAttachmentReceiver.class);
 
-    private static final String MAIL_PROTOCOL_PORT = "mail.%s.port";
-    private static final String MAIL_PROTOCOL_HOST = "mail.%s.host";
-    private static final String MAIL_PROTOCOL_SOCKET_FACTORY_PORT = "mail.%s.socketFactory.port";
-    private static final String MAIL_PROTOCOL_SOCKET_FACTORY_FALLBACK = "mail.%s.socketFactory.fallback";
-    private static final String MAIL_PROTOCOL_SOCKET_FACTORY_CLASS = "mail.%s.socketFactory.class";
+    private static final String MAIL_IMAP_PORT = "mail.imap.port";
+    private static final String MAIL_IMAP_HOST = "mail.imap.host";
+    private static final String MAIL_IMAP_SOCKET_FACTORY_PORT = "mail.imap.socketFactory.port";
+    private static final String MAIL_IMAP_SOCKET_FACTORY_FALLBACK = "mail.imap.socketFactory.fallback";
+    private static final String MAIL_IMAP_SOCKET_FACTORY_CLASS = "mail.imap.socketFactory.class";
     private static final String FALSE = "false";
     private static final String JAVAX_NET_SSL_SSL_SOCKET_FACTORY = "javax.net.ssl.SSLSocketFactory";
     private static final String MULTIPART = "multipart";
     private static final String INBOX = "INBOX";
 
-    private String protocol;
     private String host;
     private String port;
     private String userName;
     private String password;
 
-    public EmailAttachmentReceiver(String host, String protocol, String port, String userName, String password) {
-        this.protocol = protocol;
+    public EmailAttachmentReceiver(String host, String port, String userName, String password) {
         this.host = host;
         this.port = port;
         this.userName = userName;
@@ -52,13 +50,13 @@ public class EmailAttachmentReceiver {
         Properties properties = new Properties();
 
         // server settings
-        properties.put(String.format(MAIL_PROTOCOL_HOST, protocol), host);
-        properties.put(String.format(MAIL_PROTOCOL_PORT, protocol), port);
+        properties.put(MAIL_IMAP_HOST, host);
+        properties.put(MAIL_IMAP_PORT, port);
 
         // SSL settings
-        properties.put(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_CLASS, protocol), JAVAX_NET_SSL_SSL_SOCKET_FACTORY);
-        properties.put(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_FALLBACK, protocol), FALSE);
-        properties.put(String.format(MAIL_PROTOCOL_SOCKET_FACTORY_PORT, protocol), port);
+        properties.put(MAIL_IMAP_SOCKET_FACTORY_CLASS, JAVAX_NET_SSL_SSL_SOCKET_FACTORY);
+        properties.put(MAIL_IMAP_SOCKET_FACTORY_FALLBACK, FALSE);
+        properties.put(MAIL_IMAP_SOCKET_FACTORY_PORT, port);
 
         // obtaining sessions
         Session session = Session.getDefaultInstance(properties);
@@ -66,7 +64,7 @@ public class EmailAttachmentReceiver {
         Folder inbox = null;
         try {
             // connecting to the mail server
-            store = session.getStore(protocol);
+            store = session.getStore("imap");
             store.connect(userName, password);
 
             // opens the inbox folder
