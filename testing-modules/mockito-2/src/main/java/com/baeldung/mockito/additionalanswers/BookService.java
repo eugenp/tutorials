@@ -15,8 +15,8 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public Book checkifEquals(Book book1, Book book2, Book book3) {
-        return bookRepository.checkIfEquals(book1, book2, book3);
+    public Book selectRandomBook(Book book1, Book book2, Book book3) {
+        return bookRepository.selectRandomBook(book1, book2, book3);
     }
 }
 
