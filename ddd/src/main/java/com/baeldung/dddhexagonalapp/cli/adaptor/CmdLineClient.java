@@ -2,21 +2,17 @@ package com.baeldung.dddhexagonalapp.cli.adaptor;
 
 import java.util.Scanner;
 
-import com.baeldung.dddhexagonalapp.coreapp.service.CardHolderServiceImpl;
-import com.baeldung.dddhexagonalapp.repository.adaptor.CardHolderRepositoryImpl;
-
 public class CmdLineClient {
 
     public static void main(String[] args) {
 
-        CmdLineInterfaceImpl commandConsole = new CmdLineInterfaceImpl(new CardHolderServiceImpl(new CardHolderRepositoryImpl() {
-        }));
+        CmdLineConsole commandConsole = new CmdLineConsole();
 
         CmdLineClient.start(commandConsole);
 
     }
 
-    public static void start(CmdLineInterfaceImpl commandConsole) {
+    public static void start(CmdLineConsole commandConsole) {
 
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;

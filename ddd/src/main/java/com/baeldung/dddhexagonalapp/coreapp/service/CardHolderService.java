@@ -3,14 +3,26 @@ package com.baeldung.dddhexagonalapp.coreapp.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.baeldung.dddhexagonalapp.coreapp.repository.CardHolderRepository;
 import com.baeldung.dddhexagonalapp.coreapp.domain.CardHolder;
+import com.baeldung.dddhexagonalapp.repository.adaptor.CardHolderRepositoryImpl;
 
-public interface CardHolderService {
+public class CardHolderService {
 
-    public CardHolder registerCardHolder(CardHolder cardHolder);
+    private CardHolderRepository repo = new CardHolderRepositoryImpl();
 
-    public List<CardHolder> getAllCardHolders();
+    public CardHolder registerCardHolder(CardHolder cardHolder) {
 
-    public Optional<CardHolder> findCardHolderById(int cardHolderId);
+        return repo.CreateCardHolder(cardHolder);
+
+    }
+
+    public List<CardHolder> getAllCardHolders() {
+        return repo.findAll();
+    }
+
+    public Optional<CardHolder> findCardHolderById(int cardHolderId) {
+        return repo.findCardHolderById(cardHolderId);
+    }
 
 }

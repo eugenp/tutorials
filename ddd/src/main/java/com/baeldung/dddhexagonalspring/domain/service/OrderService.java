@@ -4,7 +4,7 @@ import com.baeldung.dddhexagonalspring.domain.Product;
 
 import java.util.UUID;
 
-public interface OrderService {
+public interface  OrderService {
     UUID createOrder(Product product);
 
     void addProduct(UUID id, Product product);

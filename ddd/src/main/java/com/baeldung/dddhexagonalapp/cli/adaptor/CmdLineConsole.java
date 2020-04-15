@@ -7,13 +7,9 @@ import java.util.Scanner;
 import com.baeldung.dddhexagonalapp.coreapp.domain.CardHolder;
 import com.baeldung.dddhexagonalapp.coreapp.service.CardHolderService;
 
-public class CmdLineInterfaceImpl{
+public class CmdLineConsole {
 
-    private CardHolderService cardHolderService;
-
-    public CmdLineInterfaceImpl(CardHolderService cardHolderService) {
-        this.cardHolderService = cardHolderService;
-    }
+    private CardHolderService cardHolderService = new CardHolderService();
 
     public void list(Scanner scanner) {
         System.out.println("All card holders registered so far");
@@ -62,4 +58,5 @@ public class CmdLineInterfaceImpl{
         System.out.print("$ ");
         return scanner.next();
     }
+
 }
