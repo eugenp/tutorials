@@ -7,13 +7,12 @@ public class CardHolder {
     private String lastName;
     private String status;
     private int creditCardLimit;
+    private String creditCardNumber;
 
     public CardHolder(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
-    private String creditCardNumber;
 
     public int getCardHolderId() {
         return cardHolderId;

@@ -46,5 +46,4 @@ public class CmdLineConsole {
         System.out.println("INFO : Show main menu command");
         System.out.println("EXIT : Exit application");
     }
-
 }
