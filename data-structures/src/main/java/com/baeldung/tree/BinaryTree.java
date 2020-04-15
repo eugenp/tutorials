@@ -142,7 +142,7 @@ public class BinaryTree {
                 nodes.add(node.left);
             }
 
-            if (node.left != null) {
+            if (node.right != null) {
                 nodes.add(node.right);
             }
         }
