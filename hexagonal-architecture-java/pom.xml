@@ -19,6 +19,8 @@
         <java.version>1.8</java.version>
         <org.projectlombok.version>1.18.12</org.projectlombok.version>
         <springframework.version>5.2.5.RELEASE</springframework.version>
+        <mockito.version>3.3.3</mockito.version>
+        <junit.version>4.13</junit.version>
     </properties>
 
     <dependencies>
@@ -48,42 +50,27 @@
             <artifactId>spring-web</artifactId>
             <version>${springframework.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.baeldung</groupId>
-                <artifactId>appcore</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.baeldung</groupId>
-                <artifactId>in-memory-db-adapter</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.baeldung</groupId>
-                <artifactId>rest-api-adapter</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
 
-    <modules>
-        <module>appcore</module>
-        <module>in-memory-db-adapter</module>
-        <module>rest-api-adapter</module>
-    </modules>
 </project>

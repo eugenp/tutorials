@@ -5,6 +5,7 @@ import com.baeldung.hexagonal.domain.Book;
 import java.util.List;
 import java.util.Optional;
 
+
 public interface BookService {
 
     int addBook(Book newBook);
