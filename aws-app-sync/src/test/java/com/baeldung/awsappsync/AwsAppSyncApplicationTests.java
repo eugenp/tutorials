@@ -35,7 +35,7 @@ class AwsAppSyncApplicationTests {
 	}
 
 	@Test
-	void testGraphQuery() {
+	void givenGraphQuery_whenListEvents_thenReturnAllEvents() {
 
 		Map<String, Object> requestBody = new HashMap<>();
 		requestBody.put("query", "query ListEvents {\n" +
@@ -60,11 +60,14 @@ class AwsAppSyncApplicationTests {
 
 		String bodyString = response.bodyToMono(String.class).block();
 
-		assertTrue(bodyString != null && bodyString.contains("My First Event"));
+		assertNotNull(bodyString);
+		assertTrue(bodyString.contains("My First Event"));
+		assertTrue(bodyString.contains("where"));
+		assertTrue(bodyString.contains("when"));
 	}
 
 	@Test
-	void testGraphAdd() {
+	void givenGraphAdd_whenMutation_thenReturnIdNameDesc() {
 
 		String queryString = "mutation add {\n" +
 				"    createEvent(\n" +
@@ -75,8 +78,6 @@ class AwsAppSyncApplicationTests {
 				"    ){\n" +
 				"        id\n" +
 				"        name\n" +
-				"        where\n" +
-				"        when\n" +
 				"        description\n" +
 				"    }\n" +
 				"}";
@@ -94,6 +95,10 @@ class AwsAppSyncApplicationTests {
 				.retrieve();
 
 		String bodyString = response.bodyToMono(String.class).block();
-		assertTrue(bodyString != null && bodyString.contains("Day 2"));
+
+		assertNotNull(bodyString);
+		assertTrue(bodyString.contains("My added GraphQL event"));
+		assertFalse(bodyString.contains("where"));
+		assertFalse(bodyString.contains("when"));
 	}
 }
