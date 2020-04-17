@@ -1,6 +1,5 @@
-package com.baeldung.algorithms.sort.bynumber;
+package com.baeldung.algorithms.bynumber;
 
-import com.baeldung.algorithms.sort.bynumber.NaturalOrderComparators;
 import org.junit.Test;
 
 import java.util.ArrayList;
