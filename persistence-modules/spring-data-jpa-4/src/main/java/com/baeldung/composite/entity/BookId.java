@@ -2,6 +2,7 @@ package com.baeldung.composite.entity;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable public class BookId implements Serializable {
 
@@ -30,5 +31,18 @@ import java.io.Serializable;
 
         public void setName(String name) {
                 this.name = name;
+        }
+
+        @Override public boolean equals(Object o) {
+                if (this == o)
+                        return true;
+                if (o == null || getClass() != o.getClass())
+                        return false;
+                BookId bookId = (BookId) o;
+                return Objects.equals(author, bookId.author) && Objects.equals(name, bookId.name);
+        }
+
+        @Override public int hashCode() {
+                return Objects.hash(author, name);
         }
 }

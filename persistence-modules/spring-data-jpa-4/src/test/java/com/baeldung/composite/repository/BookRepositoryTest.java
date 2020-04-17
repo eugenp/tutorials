@@ -47,4 +47,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
                 assertEquals(2, books.size());
         }
+
+        @Test public void testFindByGenre() {
+                List<Book> books = repository.findByIdAuthor(JANE);
+
+                assertEquals(2, books.size());
+        }
 }
