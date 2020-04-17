@@ -1,7 +1,7 @@
 package com.baeldung.concurrent.threadsafety;
 
 import com.baeldung.concurrent.threadsafety.callables.ExtrinsicLockCounterCallable;
-import com.baeldung.concurrent.threadsafety.services.ExtrinsicLockCounter;
+import com.baeldung.concurrent.threadsafety.services.ObjectLockCounter;
 import org.junit.Test;
 
 import java.util.concurrent.ExecutorService;
@@ -10,12 +10,12 @@ import java.util.concurrent.Future;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ExtrinsicLockCounterUnitTest {
+public class ObjectLockCounterUnitTest {
 
     @Test
     public void whenCalledIncrementCounter_thenCorrect() throws Exception {
         ExecutorService executorService = Executors.newFixedThreadPool(2);
-        ExtrinsicLockCounter counter = new ExtrinsicLockCounter();
+        ObjectLockCounter counter = new ObjectLockCounter();
         Future<Integer> future1 = (Future<Integer>) executorService.submit(new ExtrinsicLockCounterCallable(counter));
         Future<Integer> future2 = (Future<Integer>) executorService.submit(new ExtrinsicLockCounterCallable(counter));
 
