@@ -9,3 +9,4 @@
 - [Pre-compile Regex Patterns Into Pattern Objects](https://www.baeldung.com/java-regex-pre-compile)
 - [Difference Between Java Matcher find() and matches()](https://www.baeldung.com/java-matcher-find-vs-matches)
 - [How to Use Regular Expressions to Replace Tokens in Strings](https://www.baeldung.com/java-regex-token-replacement)
+- [Regular Expressions \s and \s+ in Java](https://www.baeldung.com/java-regex-s-splus)

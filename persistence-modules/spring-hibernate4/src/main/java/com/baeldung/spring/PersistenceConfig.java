@@ -23,6 +23,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.baeldung.hibernate.audit.AuditorAwareImpl;
 import com.baeldung.persistence.dao.IBarAuditableDao;
 import com.baeldung.persistence.dao.IBarDao;
 import com.baeldung.persistence.dao.IFooAuditableDao;
@@ -46,7 +47,7 @@ import com.google.common.base.Preconditions;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = { "com.baeldung.persistence" }, transactionManagerRef = "jpaTransactionManager")
-@EnableJpaAuditing
+@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 @PropertySource({ "classpath:persistence-h2.properties" })
 @ComponentScan({ "com.baeldung.persistence" })
 public class PersistenceConfig {
@@ -58,6 +59,11 @@ public class PersistenceConfig {
         super();
     }
 
+    @Bean("auditorProvider")
+    public AuditorAwareImpl auditorAwareImpl() {
+        return new AuditorAwareImpl();
+    }
+    
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();

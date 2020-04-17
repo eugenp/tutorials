@@ -6,7 +6,7 @@
     <groupId>com.baeldung.examples.r2dbc</groupId>
     <artifactId>r2dbc-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>r2dbc-example</name>
+    <name>r2dbc</name>
     <description>Sample R2DBC Project</description>
 
     <parent>
