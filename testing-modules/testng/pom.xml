@@ -42,7 +42,7 @@
 
     <properties>
         <!-- testing -->
-        <testng.version>6.10</testng.version>
+        <testng.version>7.1.0</testng.version>
     </properties>
 
 </project>
