@@ -14,21 +14,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <repositories>
-        <repository>
-            <id>OpenNMS Repository</id>
-            <url>https://repo.opennms.org/maven2/</url>
-        </repository>
-    </repositories>
-
-    <dependencies>
-        <dependency>
-            <groupId>javax.samples.jnlp</groupId>
-            <artifactId>jnlp-servlet</artifactId>
-            <version>${jnlp-servlet.version}</version>
-        </dependency>
-    </dependencies>
-
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
@@ -79,7 +64,6 @@
 
     <properties>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
-        <jnlp-servlet.version>1.6.0</jnlp-servlet.version>
     </properties>
 
 </project>
