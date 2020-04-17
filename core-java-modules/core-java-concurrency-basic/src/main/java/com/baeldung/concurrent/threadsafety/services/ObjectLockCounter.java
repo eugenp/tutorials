@@ -1,11 +1,11 @@
 package com.baeldung.concurrent.threadsafety.services;
 
-public class ExtrinsicLockCounter {
+public class ObjectLockCounter {
 
     private int counter;
     private final Object lock = new Object();
 
-    public ExtrinsicLockCounter() {
+    public ObjectLockCounter() {
         this.counter = 0;
     }
 
