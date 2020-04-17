@@ -28,8 +28,7 @@ public class Cocktail {
         referencedColumnName = "cocktail", 
         insertable = false, updatable = false, 
         foreignKey = @javax.persistence
-        .ForeignKey(value = ConstraintMode.NO_CONSTRAINT)
-        )
+          .ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
     private Recipe recipe;
 
     @OneToMany(fetch = FetchType.LAZY)
@@ -40,7 +39,7 @@ public class Cocktail {
         insertable = false, 
         updatable = false, 
         foreignKey = @javax.persistence
-        .ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
+          .ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
     private List<MultipleRecipe> recipeList;
 
     public Cocktail() {
