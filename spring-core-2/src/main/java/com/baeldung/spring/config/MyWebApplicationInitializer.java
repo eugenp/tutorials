@@ -6,15 +6,12 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
-import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.context.support.GenericWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-public class MainWebAppInitializer implements WebApplicationInitializer
+public class MyWebApplicationInitializer implements WebApplicationInitializer
 {
 
     /**
@@ -22,7 +19,7 @@ public class MainWebAppInitializer implements WebApplicationInitializer
      */
     @Override
     public void onStartup(final ServletContext sc) throws ServletException {
-        System.out.println("MainWebAppInitializer.onStartup()");
+        System.out.println("MyWebApplicationInitializer.onStartup()");
 
         // Create the 'root' Spring application context
         final AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();

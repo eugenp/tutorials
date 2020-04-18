@@ -14,11 +14,11 @@
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
-    <modules>
+    <!--<modules>
         <module>disabling-console-jul</module>
         <module>disabling-console-log4j2</module>
         <module>disabling-console-logback</module>
-    </modules>
+    </modules>-->
 
     <dependencies>
 
