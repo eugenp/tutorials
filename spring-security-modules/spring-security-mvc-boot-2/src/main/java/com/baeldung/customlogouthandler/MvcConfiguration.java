@@ -35,7 +35,7 @@ public class MvcConfiguration extends WebSecurityConfigurerAdapter {
                 .logout()
                     .logoutUrl("/user/logout")
                     .addLogoutHandler(logoutHandler)
-                    .logoutSuccessHandler((new HttpStatusReturningLogoutSuccessHandler(HttpStatus.OK)))
+                    .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler(HttpStatus.OK))
                     .permitAll()
             .and()
                 .csrf()
