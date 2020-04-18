@@ -806,7 +806,7 @@
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
-                <!-- <module>jws</module> --> <!-- Failing the build. Fixing in http://jira.baeldung.com/browse/BAEL-3992 -->
+                <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
 
@@ -1303,7 +1303,7 @@
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
-                <!-- <module>jws</module> --> <!-- Failing the build. Fixing in http://jira.baeldung.com/browse/BAEL-3992 -->
+                <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
 
