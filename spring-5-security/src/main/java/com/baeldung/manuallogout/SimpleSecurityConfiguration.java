@@ -12,13 +12,14 @@ public class SimpleSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin()
-                .loginProcessingUrl("/login")
-                .loginPage("/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/")
-                .failureUrl("/login?error");
+        http
+                .authorizeRequests(authorize -> authorize
+                        .antMatchers("/index").permitAll()
+                )
+                .formLogin(formLogin -> formLogin
+                        .loginPage("/login")
+                        .failureUrl("/login?error")
+                );
     }
 
     @Override
@@ -26,14 +27,6 @@ public class SimpleSecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("user")
                 .password("password")
-                .roles("USER")
-                .and()
-                .withUser("manager")
-                .password("password")
-                .credentialsExpired(true)
-                .accountExpired(true)
-                .accountLocked(true)
-                .authorities("WRITE_PRIVILEGES", "READ_PRIVILEGES")
-                .roles("MANAGER");
+                .roles("USER");
     }
 }

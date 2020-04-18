@@ -2,8 +2,7 @@ package com.baeldung.manuallogout;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class BasicAuthController {
 
-    @RequestMapping(value = {"/basiclogout"}, method = RequestMethod.POST)
+    @PostMapping("/basiclogout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session;
         SecurityContextHolder.clearContext();
