@@ -7,13 +7,11 @@ public class Employee {
 
     private String lastName;
 
-    private String address;
 
-    public Employee(int id, String firstName, String lastName, String address) {
-        setId(id);
-        setFirstName(firstName);
-        setLastName(lastName);
-        setAddress(address);
+    public Employee(int id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public int getId() {
@@ -40,12 +38,5 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(final String address) {
-        this.address = address;
-    }
 
 }
