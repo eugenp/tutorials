@@ -32,7 +32,7 @@ public class MultipleCacheManagerIntegrationUnitTest {
     private CacheManager alternateCacheManager;
 
     @Test
-    public void whenCallGetOrderDetail_thenDataShouldBeInCaffieneCacheManager() {
+    public void givenCacheResolverIsConfigured_whenCallGetOrderDetail_thenDataShouldBeInCaffieneCacheManager() {
         Integer key = 30001;
         cacheManager.getCache("orders")
             .evict(key);
@@ -50,7 +50,7 @@ public class MultipleCacheManagerIntegrationUnitTest {
     }
 
     @Test
-    public void whenCallGetOrderPrice_thenDataShouldBeInAlternateCacheManager() {
+    public void givenCacheResolverIsConfigured_whenCallGetOrderPrice_thenDataShouldBeInAlternateCacheManager() {
         Integer key = 30001;
         alternateCacheManager.getCache("orderprice")
             .evict(key);
