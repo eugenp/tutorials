@@ -387,7 +387,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-
+                <!-- <module>cas</module> --> <!-- Not a maven project -->
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -900,7 +900,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-
+                <!-- <module>cas</module> --> <!-- Not a maven project -->
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
