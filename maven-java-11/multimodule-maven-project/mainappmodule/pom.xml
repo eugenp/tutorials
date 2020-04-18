@@ -12,9 +12,6 @@
         <groupId>com.baeldung.multimodule-maven-project</groupId>
         <artifactId>multimodule-maven-project</artifactId>
         <version>1.0</version>
-        <entitymodule.version>1.0</entitymodule.version>
-        <daomodule.version>1.0</daomodule.version>
-        <userdaomodule.version>1.0</userdaomodule.version>
     </parent>
 
     <dependencies>
@@ -34,5 +31,11 @@
             <version>${userdaomodule.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <entitymodule.version>1.0</entitymodule.version>
+        <daomodule.version>1.0</daomodule.version>
+        <userdaomodule.version>1.0</userdaomodule.version>
+    </properties>
 
 </project>
