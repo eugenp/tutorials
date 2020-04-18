@@ -505,6 +505,7 @@
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-http</module>
+                <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
@@ -1017,6 +1018,7 @@
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-http</module>
+                <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
