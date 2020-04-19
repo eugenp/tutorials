@@ -5,10 +5,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import org.jdbi.v3.core.Jdbi;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +22,7 @@ import com.baeldung.boot.jdbi.service.CarMakerService;
 import lombok.extern.slf4j.Slf4j;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = {SpringBootJdbiApplication.class, JdbiConfiguration.class})
 @Slf4j
 public class SpringBootJdbiApplicationUnitTest {
     
