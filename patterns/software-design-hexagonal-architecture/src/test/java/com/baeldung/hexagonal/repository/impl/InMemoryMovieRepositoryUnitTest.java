@@ -15,7 +15,7 @@ public class InMemoryMovieRepositoryUnitTest {
     private final InMemoryMovieRepository inMemoryMovieRepository = new InMemoryMovieRepository();
 
     @Test
-    public void whenMovieIsSaved_ThenVerifyIfItCanBeFoundById() { 
+    public void whenMovieIsSaved_ThenVerifyIfItCanBeFoundById() {
         final UUID uuid = UUID.randomUUID();
         final Movie movie = new Movie(uuid, "LOTR: The fellowship of the ring");
         inMemoryMovieRepository.save(movie);

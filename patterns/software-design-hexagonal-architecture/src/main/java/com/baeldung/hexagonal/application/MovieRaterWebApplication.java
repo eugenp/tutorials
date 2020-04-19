@@ -82,7 +82,7 @@ public final class MovieRaterWebApplication {
             try {
                 final Movie movie = movieService.findMovieById(UUID.fromString(movieId));
                 if (movie == null) {
-                    
+
                 }
                 movieService.addRating(UUID.fromString(movieId), reviewer, noOfStars);
                 return gson.toJson(new AppResponse(200, "Done"));
