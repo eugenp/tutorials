@@ -1,0 +1,14 @@
+grant codebase "file:./target/core-java-security-2-0.1.0-SNAPSHOT.jar" {
+    permission javax.security.auth.AuthPermission "createLoginContext.jaasApplication";
+    permission javax.security.auth.AuthPermission "doAsPrivileged";
+    permission java.lang.RuntimePermission "readFileDescriptor";
+    permission java.lang.RuntimePermission "writeFileDescriptor";
+};
+
+grant codebase "file:./target/core-java-security-2-0.1.0-SNAPSHOT.jar" {
+    permission javax.security.auth.AuthPermission "modifyPrincipals";
+};
+
+grant principal com.sun.security.auth.UserPrincipal "testuser" {
+    permission com.baeldung.jaas.ResourcePermission "test_resource";
+};
