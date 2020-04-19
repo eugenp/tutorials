@@ -40,7 +40,7 @@ public class UnrelatedEntitiesUnitTest {
 
 
     @Test
-    public void whenQueryingForCocktailThatHasRecipe_thenTheExpectedCocktailReturned() {
+    public void givenCocktailsWithRecipe_whenQuerying_thenTheExpectedCocktailsReturned() {
         // JPA
         Cocktail cocktail = entityManager.createQuery("select c "
             + "from Cocktail c join c.recipe", Cocktail.class)
@@ -67,7 +67,7 @@ public class UnrelatedEntitiesUnitTest {
     }
 
     @Test
-    public void whenQueryingForCocktailThatHasNotARecipe_thenTheExpectedCocktailReturned() {
+    public void givenCocktailsWithoutRecipe_whenQuerying_thenTheExpectedCocktailsReturned() {
         Cocktail cocktail = entityManager.createQuery("select c "
             + "from Cocktail c left join c.recipe r " 
             + "where r is null", Cocktail.class)
@@ -97,7 +97,7 @@ public class UnrelatedEntitiesUnitTest {
     }
 
     @Test
-    public void whenQueringForCocktailThatHasRecipes_thenTheExpectedCocktailReturned() {
+    public void givenCocktailsWithMultipleRecipes_whenQuerying_thenTheExpectedCocktailsReturned() {
         // JPQL
         Cocktail cocktail = entityManager.createQuery("select c "
             + "from Cocktail c join c.recipeList", Cocktail.class)
@@ -124,7 +124,7 @@ public class UnrelatedEntitiesUnitTest {
     }
 
     @Test
-    public void whenQueryingForCocktailThatHasNotRecipes_thenTheExpectedCocktailReturned() {
+    public void givenCocktailsWithoutMultipleRecipes_whenQuerying_thenTheExpectedCocktailsReturned() {
         // JPQL
         Cocktail cocktail = entityManager.createQuery("select c "
             + "from Cocktail c left join c.recipeList r "
@@ -156,7 +156,7 @@ public class UnrelatedEntitiesUnitTest {
     }
 
     @Test
-    public void whenQueryingForMultipleRecipes_thenTheExpectedRecipesReturned() {
+    public void givenMultipleRecipesWithCocktails_whenQuerying_thenTheExpectedMultipleRecipesReturned() {
         Consumer<List<MultipleRecipe>> verifyResult = recipes -> {
             assertEquals(2, recipes.size());
             recipes.forEach(r -> assertEquals(mojito.getName(), r.getCocktail()));
