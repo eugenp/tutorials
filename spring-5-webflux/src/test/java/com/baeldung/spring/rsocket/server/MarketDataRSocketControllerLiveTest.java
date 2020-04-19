@@ -92,7 +92,7 @@ public class MarketDataRSocketControllerLiveTest {
         @Bean
         @Lazy
         RSocketRequester rSocketRequester(RSocketStrategies rSocketStrategies) {
-            return RSocketRequester.wrap(rSocket(), MimeTypeUtils.APPLICATION_JSON, rSocketStrategies);
+            return RSocketRequester.wrap(rSocket(), MimeTypeUtils.APPLICATION_JSON, MimeTypeUtils.APPLICATION_JSON, rSocketStrategies);
         }
     }
 }

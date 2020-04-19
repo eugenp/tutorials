@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>maven-enforcer</artifactId>
-	<name>maven-enforcer</name>
-    	
+    <name>maven-enforcer</name>
+
     <parent>
-        <artifactId>maven</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>maven</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -19,11 +19,11 @@
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <version>3.0.0-M2</version>
                 <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>com.baeldung</groupId>-->
-                        <!--<artifactId>custom-rule</artifactId>-->
-                        <!--<version>1.0</version>-->
-                    <!--</dependency>-->
+                <!--<dependency>-->
+                <!--<groupId>com.baeldung</groupId>-->
+                <!--<artifactId>custom-rule</artifactId>-->
+                <!--<version>1.0</version>-->
+                <!--</dependency>-->
                 <!--</dependencies>-->
                 <executions>
                     <execution>
@@ -71,6 +71,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>

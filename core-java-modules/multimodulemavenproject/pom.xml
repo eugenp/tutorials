@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.multimodulemavenproject</groupId>
     <artifactId>multimodulemavenproject</artifactId>
     <version>1.0</version>
-    <packaging>pom</packaging>
     <name>multimodulemavenproject</name>
-    
+    <packaging>pom</packaging>
+
     <parent>
-        <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../../</relativePath>
     </parent>
-    
+
     <modules>
         <module>entitymodule</module>
         <module>daomodule</module>
         <module>userdaomodule</module>
         <module>mainappmodule</module>
     </modules>
-    
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -37,27 +38,29 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
+
     <build>
         <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.0</version>
+                    <version>${compiler.plugin.version}</version>
                     <configuration>
-                        <configuration>
-                            <source>1.9</source>
-                            <target>1.9</target>
-                        </configuration>
+                        <source>${source.version}</source>
+                        <target>${target.version}</target>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
-    
+
     <properties>
+        <compiler.plugin.version>3.8.0</compiler.plugin.version>
+        <source.version>1.9</source.version>
+        <target.version>1.9</target.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <assertj-core.version>3.12.2</assertj-core.version>
     </properties>
+
 </project>

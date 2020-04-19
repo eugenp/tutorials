@@ -1,11 +1,7 @@
 package com.baeldung.protobuf;
 
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.junit.Assert.assertThat;
-
-import java.io.IOException;
-import java.io.InputStream;
-
+import com.baeldung.protobuf.BaeldungTraining.Course;
+import com.googlecode.protobuf.format.JsonFormat;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -15,33 +11,38 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestTemplate;
 
-import com.baeldung.protobuf.BaeldungTraining.Course;
-import com.googlecode.protobuf.format.JsonFormat;
+import java.io.IOException;
+import java.io.InputStream;
+
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertThat;
 
 @DirtiesContext
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = Application.class, webEnvironment = WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes = Application.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ApplicationIntegrationTest {
-
-    private static final String COURSE1_URL = "http://localhost:8080/courses/1";
 
     @Autowired
     private RestTemplate restTemplate;
 
+    @LocalServerPort
+    private int port;
+
     @Test
     public void whenUsingRestTemplate_thenSucceed() {
-        ResponseEntity<Course> course = restTemplate.getForEntity(COURSE1_URL, Course.class);
+        ResponseEntity<Course> course = restTemplate.getForEntity(getUrl(), Course.class);
         assertResponse(course.toString());
     }
 
     @Test
     public void whenUsingHttpClient_thenSucceed() throws IOException {
-        InputStream responseStream = executeHttpRequest(COURSE1_URL);
+        InputStream responseStream = executeHttpRequest(getUrl());
         String jsonOutput = convertProtobufMessageStreamToJsonString(responseStream);
         assertResponse(jsonOutput);
     }
@@ -73,5 +74,9 @@ public class ApplicationIntegrationTest {
         assertThat(response, containsString("phone"));
         assertThat(response, containsString("number"));
         assertThat(response, containsString("type"));
+    }
+
+    private String getUrl() {
+        return "http://localhost:" + port + "/courses/1";
     }
 }

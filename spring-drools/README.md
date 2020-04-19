@@ -4,4 +4,4 @@ This modules contains articles about Spring with Drools
 
 ## Relevant articles:
 
-- [Drools Spring Integration](http://www.baeldung.com/drools-spring-integration)
+- [Drools Spring Integration](https://www.baeldung.com/drools-spring-integration)

@@ -25,7 +25,7 @@ public class DeepCopyUnitTest {
     }
 
     @Test
-    public void whenModifyingOriginalObject_thenConstructorCopyShouldNotChange() {
+    public void whenModifyingOriginalObject_thenCopyShouldNotChange() {
         Address address = new Address("Downing St 10", "London", "England");
         User pm = new User("Prime", "Minister", address);
         User deepCopy = new User(pm);
@@ -124,5 +124,14 @@ public class DeepCopyUnitTest {
         }
         end = System.currentTimeMillis();
         System.out.println("Cloning with Jackson took " + (end - start) + " milliseconds.");
+    }
+    
+    @Test
+    public void whenModifyingOriginalObject_ThenCopyShouldChange() {
+        Address address = new Address("Downing St 10", "London", "England");
+        User pm = new User("Prime", "Minister", address);
+        User shallowCopy = new User(pm.getFirstName(), pm.getLastName(), pm.getAddress());
+        address.setCountry("Great Britain");
+        assertThat(shallowCopy.getAddress().getCountry()).isEqualTo(pm.getAddress().getCountry());
     }
 }

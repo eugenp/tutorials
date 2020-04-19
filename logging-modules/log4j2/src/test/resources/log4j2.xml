@@ -5,8 +5,7 @@
         <xi:include
             href="log4j2-includes/console-appender_pattern-layout_colored.xml" />
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
-            <PatternLayout
-                pattern="%d [%t] %-5level %logger{36} - %msg%n%throwable" />
+            <PatternLayout pattern="%style{%date{DEFAULT}}{yellow} %highlight{%-5level}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green} %message"/>
         </Console>
         <Console name="ConsoleRedAppender" target="SYSTEM_OUT">
             <PatternLayout pattern="%style{%message}{red}%n" />

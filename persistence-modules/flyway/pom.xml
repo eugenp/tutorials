@@ -8,8 +8,8 @@
     <description>Flyway Callbacks Demo</description>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-1</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-1</relativePath>
     </parent>

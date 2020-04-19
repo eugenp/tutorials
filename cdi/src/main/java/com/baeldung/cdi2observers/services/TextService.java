@@ -1,4 +1,4 @@
-package com.baeldung.cdi.cdi2observers.services;
+package com.baeldung.cdi2observers.services;
 
 public class TextService {
 

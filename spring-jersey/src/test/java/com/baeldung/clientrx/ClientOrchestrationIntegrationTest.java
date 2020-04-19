@@ -41,9 +41,9 @@ public class ClientOrchestrationIntegrationTest {
 
     private Client client = ClientBuilder.newClient();
 
-    private WebTarget userIdService = client.target("http://localhost:8080/id-service/ids");
-    private WebTarget nameService = client.target("http://localhost:8080/name-service/users/{userId}/name");
-    private WebTarget hashService = client.target("http://localhost:8080/hash-service/{rawValue}");
+    private WebTarget userIdService = client.target("http://localhost:{port}/id-service/ids");
+    private WebTarget nameService = client.target("http://localhost:{port}/name-service/users/{userId}/name");
+    private WebTarget hashService = client.target("http://localhost:{port}/hash-service/{rawValue}");
 
     private Logger logger = LoggerFactory.getLogger(ClientOrchestrationIntegrationTest.class);
 
@@ -54,7 +54,7 @@ public class ClientOrchestrationIntegrationTest {
     private List<String> expectedHashValues = Arrays.asList("roht1", "kluh2", "WodiwKcalb3", "RehtnapKclab4", "kciteht5", "eyekwah6");
 
     @Rule
-    public WireMockRule wireMockServer = new WireMockRule();
+    public WireMockRule wireMockServer = new WireMockRule(0);
 
     @Before
     public void setup() {
@@ -83,19 +83,19 @@ public class ClientOrchestrationIntegrationTest {
 
         final CountDownLatch completionTracker = new CountDownLatch(expectedHashValues.size()); // used to keep track of the progress of the subsequent calls
 
-        userIdService.request().accept(MediaType.APPLICATION_JSON).async().get(new InvocationCallback<List<Long>>() {
+        getUserIdService().request().accept(MediaType.APPLICATION_JSON).async().get(new InvocationCallback<List<Long>>() {
             @Override
             public void completed(List<Long> employeeIds) {
                 logger.info("[CallbackExample] id-service result: {}", employeeIds);
                 employeeIds.forEach((id) -> {
                     // for each employee ID, get the name
-                    nameService.resolveTemplate("userId", id).request().async().get(new InvocationCallback<String>() {
+                    getNameService().resolveTemplate("userId", id).request().async().get(new InvocationCallback<String>() {
 
                         @Override
                         public void completed(String response) {
                             logger.info("[CallbackExample] name-service result: {}", response);
 
-                            hashService.resolveTemplate("rawValue", response + id).request().async().get(new InvocationCallback<String>() {
+                            getHashService().resolveTemplate("rawValue", response + id).request().async().get(new InvocationCallback<String>() {
                                 @Override
                                 public void completed(String response) {
                                     logger.info("[CallbackExample] hash-service result: {}", response);
@@ -144,7 +144,7 @@ public class ClientOrchestrationIntegrationTest {
 
         final CountDownLatch completionTracker = new CountDownLatch(expectedHashValues.size()); // used to keep track of the progress of the subsequent calls
 
-        CompletionStage<List<Long>> userIdStage = userIdService.request().accept(MediaType.APPLICATION_JSON).rx().get(new GenericType<List<Long>>() {
+        CompletionStage<List<Long>> userIdStage = getUserIdService().request().accept(MediaType.APPLICATION_JSON).rx().get(new GenericType<List<Long>>() {
         }).exceptionally((throwable) -> {
             logger.warn("[CompletionStageExample] An error has occurred");
             return null;
@@ -153,11 +153,11 @@ public class ClientOrchestrationIntegrationTest {
         userIdStage.thenAcceptAsync(employeeIds -> {
             logger.info("[CompletionStageExample] id-service result: {}", employeeIds);
             employeeIds.forEach((Long id) -> {
-                CompletableFuture<String> completable = nameService.resolveTemplate("userId", id).request().rx().get(String.class).toCompletableFuture();
+                CompletableFuture<String> completable = getNameService().resolveTemplate("userId", id).request().rx().get(String.class).toCompletableFuture();
 
                 completable.thenAccept((String userName) -> {
                     logger.info("[CompletionStageExample] name-service result: {}", userName);
-                    hashService.resolveTemplate("rawValue", userName + id).request().rx().get(String.class).toCompletableFuture().thenAcceptAsync(hashValue -> {
+                    getHashService().resolveTemplate("rawValue", userName + id).request().rx().get(String.class).toCompletableFuture().thenAcceptAsync(hashValue -> {
                         logger.info("[CompletionStageExample] hash-service result: {}", hashValue);
                         receivedHashValues.add(hashValue);
                         completionTracker.countDown();
@@ -191,18 +191,18 @@ public class ClientOrchestrationIntegrationTest {
 
         final CountDownLatch completionTracker = new CountDownLatch(expectedHashValues.size()); // used to keep track of the progress of the subsequent calls
 
-        Observable<List<Long>> observableUserIdService = userIdService.register(RxObservableInvokerProvider.class).request().accept(MediaType.APPLICATION_JSON).rx(RxObservableInvoker.class).get(new GenericType<List<Long>>() {
+        Observable<List<Long>> observableUserIdService = getUserIdService().register(RxObservableInvokerProvider.class).request().accept(MediaType.APPLICATION_JSON).rx(RxObservableInvoker.class).get(new GenericType<List<Long>>() {
         }).asObservable();
 
         observableUserIdService.subscribe((List<Long> employeeIds) -> {
             logger.info("[ObservableExample] id-service result: {}", employeeIds);
-            Observable.from(employeeIds).subscribe(id -> nameService.register(RxObservableInvokerProvider.class).resolveTemplate("userId", id).request().rx(RxObservableInvoker.class).get(String.class).asObservable() // gotten the name for the given
+            Observable.from(employeeIds).subscribe(id -> getNameService().register(RxObservableInvokerProvider.class).resolveTemplate("userId", id).request().rx(RxObservableInvoker.class).get(String.class).asObservable() // gotten the name for the given
                     // userId
                     .doOnError((throwable) -> {
                         logger.warn("[ObservableExample] An error has occurred in the username request step {}", throwable.getMessage());
                     }).subscribe(userName -> {
                         logger.info("[ObservableExample] name-service result: {}", userName);
-                        hashService.register(RxObservableInvokerProvider.class).resolveTemplate("rawValue", userName + id).request().rx(RxObservableInvoker.class).get(String.class).asObservable() // gotten the hash value for
+                        getHashService().register(RxObservableInvokerProvider.class).resolveTemplate("rawValue", userName + id).request().rx(RxObservableInvoker.class).get(String.class).asObservable() // gotten the hash value for
                                 // userId+username
                                 .doOnError((throwable) -> {
                                     logger.warn("[ObservableExample] An error has occurred in the hashing request step {}", throwable.getMessage());
@@ -233,18 +233,18 @@ public class ClientOrchestrationIntegrationTest {
 
         final CountDownLatch completionTracker = new CountDownLatch(expectedHashValues.size()); // used to keep track of the progress of the subsequent calls
 
-        Flowable<List<Long>> userIdFlowable = userIdService.register(RxFlowableInvokerProvider.class).request().rx(RxFlowableInvoker.class).get(new GenericType<List<Long>>() {
+        Flowable<List<Long>> userIdFlowable = getUserIdService().register(RxFlowableInvokerProvider.class).request().rx(RxFlowableInvoker.class).get(new GenericType<List<Long>>() {
         });
 
         userIdFlowable.subscribe((List<Long> employeeIds) -> {
             logger.info("[FlowableExample] id-service result: {}", employeeIds);
             Flowable.fromIterable(employeeIds).subscribe(id -> {
-                nameService.register(RxFlowableInvokerProvider.class).resolveTemplate("userId", id).request().rx(RxFlowableInvoker.class).get(String.class) // gotten the name for the given userId
+                getNameService().register(RxFlowableInvokerProvider.class).resolveTemplate("userId", id).request().rx(RxFlowableInvoker.class).get(String.class) // gotten the name for the given userId
                         .doOnError((throwable) -> {
                             logger.warn("[FlowableExample] An error has occurred in the username request step {}", throwable.getMessage());
                         }).subscribe(userName -> {
                     logger.info("[FlowableExample] name-service result: {}", userName);
-                    hashService.register(RxFlowableInvokerProvider.class).resolveTemplate("rawValue", userName + id).request().rx(RxFlowableInvoker.class).get(String.class) // gotten the hash value for userId+username
+                    getHashService().register(RxFlowableInvokerProvider.class).resolveTemplate("rawValue", userName + id).request().rx(RxFlowableInvoker.class).get(String.class) // gotten the hash value for userId+username
                             .doOnError((throwable) -> {
                                 logger.warn(" [FlowableExample] An error has occurred in the hashing request step!", throwable);
                             }).subscribe(hashValue -> {
@@ -267,6 +267,22 @@ public class ClientOrchestrationIntegrationTest {
         }
 
         assertThat(receivedHashValues).containsAll(expectedHashValues);
+    }
+
+    private int getPort() {
+        return wireMockServer.port();
+    }
+
+    private WebTarget getUserIdService() {
+        return userIdService.resolveTemplate("port", getPort());
+    }
+
+    private WebTarget getNameService() {
+        return nameService.resolveTemplate("port", getPort());
+    }
+
+    private WebTarget getHashService() {
+        return hashService.resolveTemplate("port", getPort());
     }
 
 }

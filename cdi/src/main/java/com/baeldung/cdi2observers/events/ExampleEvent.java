@@ -1,4 +1,4 @@
-package com.baeldung.cdi.cdi2observers.events;
+package com.baeldung.cdi2observers.events;
 
 public class ExampleEvent {
     

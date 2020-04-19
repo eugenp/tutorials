@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Poetry Contest: Submission</title>
+</head>
+<body>
+
+<form action="#" method="post" th:action="@{/web/feedback}" th:object="${feedback}">
+
+    <table border='0' cellpadding='2' cellspacing='2' width='480px'>
+
+        <tr>
+            <td align='center'>
+                <label for="email">Email:</label>
+            </td>
+            <td>
+                <input th:field=*{emailId} type="text"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td align='center'>
+                <label for="comment">Comment:</label>
+            </td>
+            <td>
+                <textarea cols="30" rows="30" th:field=*{comment}/>
+            </td>
+        </tr>
+
+        <tr>
+            <td align='center'>
+                <input type="submit" value="Submit Feedback">
+            </td>
+        </tr>
+
+
+    </table>
+</form>
+
+</body>
+</html>

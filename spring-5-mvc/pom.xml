@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-5-mvc</artifactId>
     <name>spring-5-mvc</name>
-    <description>spring 5 MVC sample project about new features</description>
     <packaging>jar</packaging>
+    <description>spring 5 MVC sample project about new features</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -42,18 +42,26 @@
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+        </dependency>
         <!--kotlin deps -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jre8</artifactId>
+            <version>${kotlin.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-reflect</artifactId>
+            <version>${kotlin.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
         <!-- runtime and test scoped -->
         <dependency>
@@ -170,8 +178,10 @@
 
     <properties>
         <jayway-rest-assured.version>2.9.0</jayway-rest-assured.version>
-        <kotlin.version>1.1.2</kotlin.version>
-        <start-class>com.baeldung.Spring5Application</start-class>
+        <jackson.version>2.9.9</jackson.version> <!-- Same as spring-boot-dependencies:2.1.7.RELEASE -->
+        <kotlin.version>1.2.71</kotlin.version> <!-- Same as spring-boot-dependencies:2.1.7.RELEASE -->
         <httpclient.version>4.5.8</httpclient.version>
+        <start-class>com.baeldung.Spring5Application</start-class>
     </properties>
+
 </project>

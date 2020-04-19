@@ -6,10 +6,10 @@
     <artifactId>remoting-http-api</artifactId>
     <name>remoting-http-api</name>
     <description>API definition shared between client and server.</description>
-	
-	<parent>
-        <artifactId>remoting-http</artifactId>
+
+    <parent>
         <groupId>com.baeldung</groupId>
+        <artifactId>remoting-http</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 

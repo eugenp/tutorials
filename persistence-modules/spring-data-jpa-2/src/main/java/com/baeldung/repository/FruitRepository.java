@@ -23,5 +23,5 @@ public interface FruitRepository extends JpaRepository<Fruit, Long> {
 
     @Modifying
     @Query("delete from Fruit f where f.name=:name or f.color=:color")
-    List<Fruit> deleteFruits(@Param("name") String name, @Param("color") String color);
+    int deleteFruits(@Param("name") String name, @Param("color") String color);
 }

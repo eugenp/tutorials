@@ -1,13 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>hystrix</artifactId>
     <version>1.0</version>
     <name>hystrix</name>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-1</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-1</relativePath>
     </parent>
@@ -41,22 +42,10 @@
             <artifactId>hystrix-metrics-event-stream</artifactId>
             <version>${hystrix-metrics-event-stream.version}</version>
         </dependency>
-        <!--<dependency> <groupId>com.netflix.hystrix</groupId> <artifactId>hystrix-dashboard</artifactId> <version>${hystrix-dashboard.version}</version> </dependency> -->
         <dependency>
             <groupId>com.netflix.rxjava</groupId>
             <artifactId>rxjava-core</artifactId>
             <version>${rxjava-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>${hamcrest-all.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -65,9 +54,7 @@
         <hystrix-core.version>1.5.8</hystrix-core.version>
         <rxjava-core.version>0.20.7</rxjava-core.version>
         <!-- maven plugins -->
-        <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <hystrix-metrics-event-stream.version>1.5.8</hystrix-metrics-event-stream.version>
-        <hystrix-dashboard.version>1.5.8</hystrix-dashboard.version>
     </properties>
 
 </project>

@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>jooby</artifactId>
-	<groupId>com.baeldung.jooby</groupId>
-	<version>1.0</version>
-	<name>jooby</name>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.jooby</groupId>
+    <artifactId>jooby</artifactId>
+    <version>1.0</version>
+    <name>jooby</name>
 
-	<parent>
-		<groupId>com.baeldung</groupId>
-		<artifactId>parent-modules</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.jooby</groupId>
-				<artifactId>modules</artifactId>
-				<version>${jooby.version}</version>
-				<type>pom</type>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jooby</groupId>
+                <artifactId>modules</artifactId>
+                <version>${jooby.version}</version>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.jooby</groupId>
-			<artifactId>jooby-netty</artifactId>
-			<version>${jooby.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jooby</groupId>
-			<artifactId>jooby-jedis</artifactId>
-			<version>${jooby.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.rest-assured</groupId>
-			<artifactId>rest-assured</artifactId>
-			<scope>test</scope>
-			<version>${rest-assured.version}</version>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.jooby</groupId>
+            <artifactId>jooby-netty</artifactId>
+            <version>${jooby.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jooby</groupId>
+            <artifactId>jooby-jedis</artifactId>
+            <version>${jooby.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+            <version>${rest-assured.version}</version>
+        </dependency>
+    </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>${maven-shade-plugin.version}</version>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>${maven-shade-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 
-	<properties>
-		<jooby.version>1.1.3</jooby.version>
-		<rest-assured.version>3.1.1</rest-assured.version>
-		<application.class>com.baeldung.jooby.App</application.class>
-		<maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
-	</properties>
+    <properties>
+        <jooby.version>1.1.3</jooby.version>
+        <rest-assured.version>3.1.1</rest-assured.version>
+        <application.class>com.baeldung.jooby.App</application.class>
+        <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
+    </properties>
 
 </project>

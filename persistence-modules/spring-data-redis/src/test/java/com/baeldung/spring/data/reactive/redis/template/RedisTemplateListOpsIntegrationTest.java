@@ -36,7 +36,7 @@ public class RedisTemplateListOpsIntegrationTest {
     
     @BeforeClass
     public static void startRedisServer() throws IOException {
-        redisServer = new RedisServerBuilder().port(6379).setting("maxheap 128M").build();
+        redisServer = new RedisServerBuilder().port(6379).setting("maxmemory 128M").build();
         redisServer.start();
     }
     

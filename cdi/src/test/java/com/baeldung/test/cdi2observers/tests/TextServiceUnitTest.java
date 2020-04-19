@@ -1,8 +1,9 @@
-package com.baeldung.cdi.cdi2observers.tests;
+package com.baeldung.test.cdi2observers.tests;
 
-import com.baeldung.cdi.cdi2observers.services.TextService;
-import static org.assertj.core.api.Assertions.assertThat;
+import com.baeldung.cdi2observers.services.TextService;
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class TextServiceUnitTest {
 

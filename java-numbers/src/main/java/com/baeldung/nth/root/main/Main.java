@@ -7,7 +7,7 @@ public class Main {
         NthRootCalculator calculator = new NthRootCalculator();
         Double base = Double.parseDouble(args[0]);
         Double n = Double.parseDouble(args[1]);
-        Double result = calculator.calculate(base, n);
+        Double result = calculator.calculateWithRound(base, n);
         System.out.println("The " + n + " root of " + base + " equals to " + result + ".");
     }
 }

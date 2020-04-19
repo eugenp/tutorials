@@ -1,7 +1,6 @@
 package com.baeldung.repository;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -69,9 +68,8 @@ class FruitRepositoryIntegrationTest {
     @Sql(scripts = { "/test-fruit-data.sql" })
     public void givenFruits_WhenDeletedByColorOrName_ThenDeletedFruitsShouldReturn() {
 
-        List<Fruit> fruits = fruitRepository.deleteFruits("apple", "green");
+        int deletedCount = fruitRepository.deleteFruits("apple", "green");
 
-        assertEquals("number of fruits are not matching", 3, fruits.size());
-        fruits.forEach(fruit -> assertTrue("Its not a green fruit or apple", ("green".equals(fruit.getColor())) || "apple".equals(fruit.getColor())));
+        assertEquals("number of fruits are not matching", 3, deletedCount);
     }
 }

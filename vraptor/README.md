@@ -4,7 +4,7 @@ This module contains articles about VRaptor
 
 ### Relevant Article:
 
-- [Introduction to VRaptor in Java](http://www.baeldung.com/vraptor)
+- [Introduction to VRaptor in Java](https://www.baeldung.com/vraptor)
 
 # VRaptor blank project
 
@@ -27,6 +27,3 @@ Após criar seu projeto você pode rodá-lo com um tomcat7 ou +:
 `mvn tomcat7:run`
 
 Cuidado para *jamais* executar `mvn tomcat:run` pois ele usará um tomcat6 (incompatível).
-
-
-

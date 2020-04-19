@@ -11,15 +11,18 @@ import java.util.concurrent.Future;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ReentrantLockCounterUnitTest {
-    
+
     @Test
     public void whenCalledIncrementCounter_thenCorrect() throws Exception {
         ExecutorService executorService = Executors.newFixedThreadPool(2);
         ReentrantLockCounter counter = new ReentrantLockCounter();
         Future<Integer> future1 = (Future<Integer>) executorService.submit(new ReentrantLockCounterCallable(counter));
         Future<Integer> future2 = (Future<Integer>) executorService.submit(new ReentrantLockCounterCallable(counter));
-        
-        assertThat(future1.get()).isEqualTo(1);
-        assertThat(future2.get()).isEqualTo(2);
+
+        // Just to make sure both are completed
+        future1.get();
+        future2.get();
+
+        assertThat(counter.getCounter()).isEqualTo(2);
     }
 }

@@ -1,3 +1,3 @@
-### Relevant Articles: 
+### Relevant Articles:
 
-- [Introduction to Scala](https://www.baeldung.com/scala-intro)
+- [Pattern Matching in Scala](https://www.baeldung.com/scala/pattern-matching)

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>    
-    <groupId>com.baeldung.spring.cloud</groupId>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-cloud-zuul-eureka-integration</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>Spring Cloud Zuul and Eureka Integration</name>
-    <description>Spring Cloud Zuul and Eureka Integration</description>
     <packaging>pom</packaging>
+    <description>Spring Cloud Zuul and Eureka Integration</description>
 
     <parent>
         <groupId>com.baeldung.spring.cloud</groupId>
@@ -28,4 +27,5 @@
         <spring-boot-maven-plugin.version>1.4.2.RELEASE</spring-boot-maven-plugin.version>
         <commons-config.version>1.10</commons-config.version>
     </properties>
+    
 </project>

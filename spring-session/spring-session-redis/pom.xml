@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-session-redis</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <name>spring-session-redis</name>
     <packaging>jar</packaging>
-	<name>spring-session-redis</name>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-1</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-1</relativePath>
     </parent>
@@ -37,9 +37,9 @@
             <version>${embedded-redis.version}</version>
         </dependency>
     </dependencies>
-    
+
     <properties>
-    	<embedded-redis.version>0.6</embedded-redis.version>
+        <embedded-redis.version>0.6</embedded-redis.version>
     </properties>
 
 </project>

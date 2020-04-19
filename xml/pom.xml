@@ -1,6 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>xml</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -137,68 +139,68 @@
         </dependency>
     </dependencies>
 
-	<build>
-		<finalName>xml</finalName>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.jibx</groupId>
-					<artifactId>maven-jibx-plugin</artifactId>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		<plugins>
-			<plugin>
-				<groupId>org.jibx</groupId>
-				<artifactId>maven-jibx-plugin</artifactId>
-				<version>${maven-jibx-plugin.version}</version>
-				<configuration>
-					<directory>src/main/resources</directory>
-					<includes>
-						<includes>*-binding.xml</includes>
-					</includes>
-					<excludes>
-						<exclude>template-binding.xml</exclude>
-					</excludes>
-					<schemaBindingDirectory>src/main/resources</schemaBindingDirectory>
-					<includeSchemaBindings>
-						<includeSchemaBindings>*-binding.xml</includeSchemaBindings>
-					</includeSchemaBindings>
-					<verbose>true</verbose>
-				</configuration>
-				<executions>
-					<execution>
-						<id>process-classes</id>
-						<phase>process-classes</phase>
-						<goals>
-							<goal>bind</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>process-test-classes</id>
-						<phase>process-test-classes</phase>
-						<goals>
-							<goal>test-bind</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-			</plugin>
-			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven-surefire-plugin.version}</version>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <finalName>xml</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.jibx</groupId>
+                    <artifactId>maven-jibx-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.jibx</groupId>
+                <artifactId>maven-jibx-plugin</artifactId>
+                <version>${maven-jibx-plugin.version}</version>
+                <configuration>
+                    <directory>src/main/resources</directory>
+                    <includes>
+                        <includes>*-binding.xml</includes>
+                    </includes>
+                    <excludes>
+                        <exclude>template-binding.xml</exclude>
+                    </excludes>
+                    <schemaBindingDirectory>src/main/resources</schemaBindingDirectory>
+                    <includeSchemaBindings>
+                        <includeSchemaBindings>*-binding.xml</includeSchemaBindings>
+                    </includeSchemaBindings>
+                    <verbose>true</verbose>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>process-classes</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>bind</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>process-test-classes</id>
+                        <phase>process-test-classes</phase>
+                        <goals>
+                            <goal>test-bind</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 
     <profiles>
         <profile>
@@ -325,8 +327,7 @@
                         </configuration>
                     </plugin>
                     <plugin>
-                        <!-- NOTE: We don't need a groupId specification 
-                            because the group is org.apache.maven.plugins ...which is assumed by default. -->
+                        <!-- NOTE: We don't need a groupId specification because the group is org.apache.maven.plugins ...which is assumed by default. -->
                         <artifactId>maven-assembly-plugin</artifactId>
                         <configuration>
                             <archiveBaseDirectory>${project.basedir}</archiveBaseDirectory>
@@ -345,10 +346,8 @@
                         </configuration>
                         <executions>
                             <execution>
-                                <id>make-assembly</id><!-- this is used for 
-                                    inheritance merges -->
-                                <phase>package</phase><!-- append to the 
-                                    packaging phase. -->
+                                <id>make-assembly</id><!-- this is used for inheritance merges -->
+                                <phase>package</phase><!-- append to the packaging phase. -->
                                 <goals>
                                     <goal>attached</goal><!-- goals == mojos -->
                                 </goals>

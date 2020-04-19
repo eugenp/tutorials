@@ -7,22 +7,50 @@ import org.apache.tomcat.util.descriptor.web.FilterDef;
 import org.apache.tomcat.util.descriptor.web.FilterMap;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.util.Random;
 
 /**
  * Created by adi on 1/10/18.
  */
 public class ProgrammaticTomcat {
 
+    private static boolean isFree(int port) {
+        try {
+            new ServerSocket(port).close();
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
     private Tomcat tomcat = null;
+
+    private int randomPort;
+
+    public ProgrammaticTomcat() {
+        // Get a random port number in range 6000 (inclusive) - 9000 (exclusive)
+        this.randomPort = new Random()
+                .ints(6000, 9000)
+                .filter(ProgrammaticTomcat::isFree)
+                .findFirst()
+                .orElse(8080);
+    }
 
     // uncomment for live test
     // public static void main(String[] args) throws LifecycleException, ServletException, URISyntaxException, IOException {
     // startTomcat();
     // }
 
+
+    public int getPort() {
+        return randomPort;
+    }
+
     public void startTomcat() throws LifecycleException {
         tomcat = new Tomcat();
-        tomcat.setPort(8080);
+        tomcat.setPort(randomPort);
         tomcat.setHostname("localhost");
         String appBase = ".";
         tomcat.getHost().setAppBase(appBase);

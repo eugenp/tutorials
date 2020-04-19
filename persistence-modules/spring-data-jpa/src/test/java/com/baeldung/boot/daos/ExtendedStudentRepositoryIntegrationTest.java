@@ -1,9 +1,10 @@
 package com.baeldung.boot.daos;
 
-import com.baeldung.boot.Application;
-import com.baeldung.boot.config.PersistenceConfiguration;
-import com.baeldung.boot.daos.ExtendedStudentRepository;
-import com.baeldung.boot.domain.Student;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,10 +13,8 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.annotation.Resource;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import com.baeldung.boot.Application;
+import com.baeldung.boot.domain.Student;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {Application.class})

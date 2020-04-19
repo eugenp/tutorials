@@ -33,7 +33,7 @@ public class RedisMessageListenerIntegrationTest {
     
     @BeforeClass
     public static void startRedisServer() throws IOException {
-        redisServer = new RedisServerBuilder().port(6379).setting("maxheap 256M").build();
+        redisServer = new RedisServerBuilder().port(6379).setting("maxmemory 256M").build();
         redisServer.start();
     }
     
@@ -46,7 +46,7 @@ public class RedisMessageListenerIntegrationTest {
     public void testOnMessage() throws Exception {
         String message = "Message " + UUID.randomUUID();
         redisMessagePublisher.publish(message);
-        Thread.sleep(100);
+        Thread.sleep(1000);
         assertTrue(RedisMessageSubscriber.messageList.get(0).contains(message));
     }
 }

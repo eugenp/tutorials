@@ -1,45 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.baeldung.msf4j</groupId>
-	<artifactId>msf4j</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>msf4j</name>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.msf4j</groupId>
+    <artifactId>msf4j</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>msf4j</name>
 
     <parent>
-        <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-			    <groupId>org.wso2.msf4j</groupId>
-			    <artifactId>msf4j-service</artifactId>
-			    <version>${msf4j.version}</version>
-			    <type>pom</type>
-			</dependency>
-		</dependencies>		
-	</dependencyManagement>
-	
-	<dependencies>
-		<dependency>
-			<groupId>org.wso2.msf4j</groupId>
-			<artifactId>msf4j-spring</artifactId>
-			<version>${msf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.wso2.msf4j</groupId>
-			<artifactId>msf4j-mustache-template</artifactId>
-			<version>${msf4j.version}</version>
-		</dependency>
-	</dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wso2.msf4j</groupId>
+                <artifactId>msf4j-service</artifactId>
+                <version>${msf4j.version}</version>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-	<properties>
-		<microservice.mainClass>com.baeldung.msf4j.msf4jintro.Application</microservice.mainClass>
-		<msf4j.version>2.6.3</msf4j.version>
-	</properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.wso2.msf4j</groupId>
+            <artifactId>msf4j-spring</artifactId>
+            <version>${msf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.msf4j</groupId>
+            <artifactId>msf4j-mustache-template</artifactId>
+            <version>${msf4j.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <microservice.mainClass>com.baeldung.msf4j.msf4jintro.Application</microservice.mainClass>
+        <msf4j.version>2.6.3</msf4j.version>
+    </properties>
 
 </project>

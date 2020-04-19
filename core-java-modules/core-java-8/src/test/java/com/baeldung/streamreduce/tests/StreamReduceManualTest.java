@@ -1,5 +1,7 @@
 package com.baeldung.streamreduce.tests;
 
+import com.baeldung.streamreduce.entities.Rating;
+import com.baeldung.streamreduce.entities.Review;
 import com.baeldung.streamreduce.entities.User;
 import com.baeldung.streamreduce.utilities.NumberUtils;
 import java.util.ArrayList;
@@ -62,6 +64,31 @@ public class StreamReduceManualTest {
         int result = users.stream().reduce(0, (partialAgeResult, user) -> partialAgeResult + user.getAge(), Integer::sum);
         
         assertThat(result).isEqualTo(65);
+    }
+
+    @Test
+    public void givenUserList_whenReduceWithGreaterAgeAccumulator_thenFindsOldest() {
+        List<User> users = Arrays.asList(new User("John", 30), new User("Alex", 40), new User("Julie", 35));
+
+        User oldest = users.stream().reduce(users.get(0), (user1, user2) -> user1.getAge() >= user2.getAge() ? user1 : user2);
+
+        assertThat(oldest).isEqualTo(users.get(1));
+    }
+
+    @Test
+    public void givenUserListWithRatings_whenReduceWithGreaterAgeAccumulator_thenFindsOldest() {
+        User john = new User("John", 30);
+        john.getRating().add(new Review(5, ""));
+        john.getRating().add(new Review(3, "not bad"));
+        User julie = new User("Julie", 35);
+        john.getRating().add(new Review(4, "great!"));
+        john.getRating().add(new Review(2, "terrible experience"));
+        john.getRating().add(new Review(4, ""));
+        List<User> users = Arrays.asList(john, julie);
+
+        Rating averageRating = users.stream().reduce(new Rating(), (rating, user) -> Rating.average(rating, user.getRating()), Rating::average);
+
+        assertThat(averageRating.getPoints()).isEqualTo(3.6);
     }
 
     @Test

@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>custom-rule</artifactId>
-	<name>custom-rule</name>
-	
+    <name>custom-rule</name>
+
     <parent>
-        <artifactId>maven</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>maven</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -64,4 +64,5 @@
         <maven.version>2.0.9</maven.version>
         <plexus-container-default.version>1.0-alpha-9</plexus-container-default.version>
     </properties>
+
 </project>

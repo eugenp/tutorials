@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring.cloud</groupId>
     <artifactId>spring-cloud-aws</artifactId>
     <name>spring-cloud-aws</name>
-    <description>Spring Cloud AWS Examples</description>
     <packaging>jar</packaging>
+    <description>Spring Cloud AWS Examples</description>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-1</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-1</relativePath>
     </parent>
@@ -50,7 +50,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-aws</artifactId>
-                <version>2.0.1.RELEASE</version>
+                <version>${spring-cloud}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -60,5 +60,7 @@
     <properties>
         <start-class>com.baeldung.spring.cloud.aws.SpringCloudAwsApplication</start-class>
         <spring-cloud.version>Dalston.SR4</spring-cloud.version>
+        <spring-cloud>2.0.1.RELEASE</spring-cloud>
     </properties>
+    
 </project>

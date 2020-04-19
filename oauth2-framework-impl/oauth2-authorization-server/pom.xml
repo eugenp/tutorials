@@ -3,25 +3,15 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>oauth2-authorization-server</artifactId>
-    <packaging>war</packaging>
     <name>oauth2-authorization-server</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung.oauth2</groupId>
         <artifactId>oauth2-framework-impl</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
-    <properties>
-        <h2.version>1.4.199</h2.version>
-        <httpPort>9080</httpPort>
-        <httpsPort>9443</httpsPort>
-        <nimbus-jose-jwt.version>7.3</nimbus-jose-jwt.version>
-        <bcprov-jdk15on.version>1.62</bcprov-jdk15on.version>
-        <bcpkix-jdk15on.version>1.62</bcpkix-jdk15on.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -40,6 +30,7 @@
             <version>${bcpkix-jdk15on.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -73,4 +64,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <h2.version>1.4.199</h2.version>
+        <httpPort>9080</httpPort>
+        <httpsPort>9443</httpsPort>
+        <nimbus-jose-jwt.version>7.3</nimbus-jose-jwt.version>
+        <bcprov-jdk15on.version>1.62</bcprov-jdk15on.version>
+        <bcpkix-jdk15on.version>1.62</bcpkix-jdk15on.version>
+    </properties>
+
 </project>
