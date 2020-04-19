@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BookApplication.class)
-public class BookRepositoryTest {
+public class BookRepositoryIntegrationTest {
 
     public static final String JAVA_101 = "Java101";
     public static final String JANE = "Jane";
