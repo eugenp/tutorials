@@ -11,11 +11,7 @@ public class FlowerJsonStringValidator {
     }
 
     public boolean flowerHasPetals(String jsonFlowerAsString) throws JsonProcessingException {
-        Flower flower = readFlower(jsonFlowerAsString);
+        Flower flower = objectMapper.readValue(jsonFlowerAsString, Flower.class);
         return flower.getPetals() > 0;
-    }
-
-    private Flower readFlower(String flowerAsJson) throws JsonProcessingException {
-        return objectMapper.readValue(flowerAsJson, Flower.class);
     }
 }
