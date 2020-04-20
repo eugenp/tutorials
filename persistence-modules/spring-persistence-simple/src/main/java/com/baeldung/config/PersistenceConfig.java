@@ -1,9 +1,7 @@
 package com.baeldung.config;
 
-import java.util.Properties;
-
-import javax.sql.DataSource;
-
+import com.baeldung.persistence.service.FooService;
+import com.google.common.base.Preconditions;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,16 +21,15 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.baeldung.hibernate.dao.FooDao;
-import com.baeldung.jpa.dao.IFooDao;
-import com.google.common.base.Preconditions;
+import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = { "com.baeldung.hibernate.dao" }, transactionManagerRef = "jpaTransactionManager")
 @EnableJpaAuditing
 @PropertySource({ "classpath:persistence-mysql.properties" })
-@ComponentScan({ "com.baeldung.persistence", "com.baeldung.hibernate.dao" })
+@ComponentScan(basePackages = { "com.baeldung.persistence.dao", "com.baeldung.jpa.dao" })
 public class PersistenceConfig {
 
     @Autowired
@@ -46,7 +43,7 @@ public class PersistenceConfig {
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(restDataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+        sessionFactory.setPackagesToScan("com.baeldung.persistence.model");
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
@@ -56,7 +53,7 @@ public class PersistenceConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(restDataSource());
-        emf.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+        emf.setPackagesToScan("com.baeldung.persistence.model");
 
         final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         emf.setJpaVendorAdapter(vendorAdapter);
@@ -96,18 +93,15 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public IFooDao fooHibernateDao() {
-        return new FooDao();
+    public FooService fooService() {
+        return new FooService();
     }
 
     private final Properties hibernateProperties() {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
-
         hibernateProperties.setProperty("hibernate.show_sql", "true");
-        // hibernateProperties.setProperty("hibernate.format_sql", "true");
-        // hibernateProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
 
         // Envers properties
         hibernateProperties.setProperty("org.hibernate.envers.audit_table_suffix", env.getProperty("envers.audit_table_suffix"));
