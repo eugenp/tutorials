@@ -189,10 +189,13 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-				<!-- Excludes FastR classes from compilations since they require GraalVM -->
+					<!-- Excludes FastR classes from compilations since they require GraalVM -->
 					<excludes>
 						<exclude>com/baeldung/r/FastRMean.java</exclude>
 					</excludes>
+					<testExcludes>
+						<exclude>com/baeldung/r/FastRMeanUnitTest.java</exclude>						
+					</testExcludes>
 				</configuration>
 			</plugin>
 		</plugins>
