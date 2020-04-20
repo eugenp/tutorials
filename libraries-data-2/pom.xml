@@ -128,6 +128,24 @@
             <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
+        
+		<dependency>
+			<groupId>org.rosuda.REngine</groupId>
+			<artifactId>Rserve</artifactId>
+			<version>${rserve.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.jbytecode</groupId>
+			<artifactId>RCaller</artifactId>
+			<version>${rcaller.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.renjin</groupId>
+			<artifactId>renjin-script-engine</artifactId>
+			<version>${renjin.version}</version>
+		</dependency>
     </dependencies>
 
     <repositories>
@@ -137,6 +155,13 @@
             <url>http://repo.numericalmethod.com/maven/</url>
             <layout>default</layout>
         </repository>
+        
+        <!-- Needed for Renjin -->
+		<repository>
+			<id>bedatadriven</id>
+			<name>bedatadriven public repo</name>
+			<url>https://nexus.bedatadriven.com/content/groups/public/</url>
+		</repository>
     </repositories>
 
     <properties>
@@ -153,6 +178,24 @@
         <assertj.version>3.6.2</assertj.version>
         <slf4j.version>1.7.25</slf4j.version>
         <awaitility.version>3.0.0</awaitility.version>
+        <renjin.version>RELEASE</renjin.version>
+        <rcaller.version>3.0</rcaller.version>
+        <rserve.version>1.8.1</rserve.version>
     </properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+				<!-- Excludes FastR classes from compilations since they require GraalVM -->
+					<excludes>
+						<exclude>com/baeldung/r/FastRMean.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
