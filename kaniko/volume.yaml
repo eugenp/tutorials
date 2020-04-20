@@ -11,4 +11,4 @@ spec:
     - ReadWriteOnce
   storageClassName: local-storage
   hostPath:
-    path: /home/docker/kaniko # replace this with the output of pwd command from before, if it is different
+    path: /home/docker/kaniko # Path to the local mount directory that was setup
