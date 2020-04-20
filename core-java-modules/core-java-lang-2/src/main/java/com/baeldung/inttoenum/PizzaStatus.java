@@ -10,14 +10,14 @@ public enum PizzaStatus {
 
         private static Map intToEnumValuesMapping = new HashMap<>();
         static {
-                int ENUM_VAL_INDEX = 0;
+                int PIZZA_ORDER_STATUS_INDEX = 0;
                 for (PizzaStatus pizzaStatus : PizzaStatus.values()) {
-                        intToEnumValuesMapping.put(ENUM_VAL_INDEX, pizzaStatus);
-                        ENUM_VAL_INDEX++;
+                        intToEnumValuesMapping.put(PIZZA_ORDER_STATUS_INDEX, pizzaStatus);
+                        PIZZA_ORDER_STATUS_INDEX++;
                 }
         }
 
-        public static PizzaStatus castIntToEnum(int pageType) {
-                return (PizzaStatus) intToEnumValuesMapping.get(pageType);
+        public static PizzaStatus castIntToEnum(int pizzaOrderStatusIndex) {
+                return (PizzaStatus) intToEnumValuesMapping.get(pizzaOrderStatusIndex);
         }
 }
