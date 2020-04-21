@@ -13,7 +13,7 @@ import java.util.List;
 import com.baeldung.spring.data.es.config.Config;
 import com.baeldung.spring.data.es.model.Article;
 import com.baeldung.spring.data.es.model.Author;
-import com.baeldung.spring.data.es.service.ArticleService;
+import com.baeldung.spring.data.es.repository.ArticleRepository;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -41,7 +41,7 @@ public class ElasticSearchManualTest {
     private ElasticsearchRestTemplate elasticsearchTemplate;
 
     @Autowired
-    private ArticleService articleService;
+    private ArticleRepository articleRepository;
 
     private final Author johnSmith = new Author("John Smith");
     private final Author johnDoe = new Author("John Doe");
@@ -55,22 +55,22 @@ public class ElasticSearchManualTest {
         Article article = new Article("Spring Data Elasticsearch");
         article.setAuthors(asList(johnSmith, johnDoe));
         article.setTags("elasticsearch", "spring data");
-        articleService.save(article);
+        articleRepository.save(article);
 
         article = new Article("Search engines");
         article.setAuthors(asList(johnDoe));
         article.setTags("search engines", "tutorial");
-        articleService.save(article);
+        articleRepository.save(article);
 
         article = new Article("Second Article About Elasticsearch");
         article.setAuthors(asList(johnSmith));
         article.setTags("elasticsearch", "spring data");
-        articleService.save(article);
+        articleRepository.save(article);
 
         article = new Article("Elasticsearch Tutorial");
         article.setAuthors(asList(johnDoe));
         article.setTags("elasticsearch");
-        articleService.save(article);
+        articleRepository.save(article);
     }
 
     @Test
@@ -80,35 +80,35 @@ public class ElasticSearchManualTest {
         Article article = new Article("Making Search Elastic");
         article.setAuthors(authors);
 
-        article = articleService.save(article);
+        article = articleRepository.save(article);
         assertNotNull(article.getId());
     }
 
     @Test
     public void givenPersistedArticles_whenSearchByAuthorsName_thenRightFound() {
 
-        final Page<Article> articleByAuthorName = articleService.findByAuthorName(johnSmith.getName(),
+        final Page<Article> articleByAuthorName = articleRepository.findByAuthorsName(johnSmith.getName(),
                 PageRequest.of(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenCustomQuery_whenSearchByAuthorsName_thenArticleIsFound() {
-        final Page<Article> articleByAuthorName = articleService.findByAuthorNameUsingCustomQuery("Smith",
+        final Page<Article> articleByAuthorName = articleRepository.findByAuthorsNameUsingCustomQuery("Smith",
                 PageRequest.of(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenTagFilterQuery_whenSearchByTag_thenArticleIsFound() {
-        final Page<Article> articleByAuthorName = articleService.findByFilteredTagQuery("elasticsearch",
+        final Page<Article> articleByAuthorName = articleRepository.findByFilteredTagQuery("elasticsearch",
                 PageRequest.of(0, 10));
         assertEquals(3L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenTagFilterQuery_whenSearchByAuthorsName_thenArticleIsFound() {
-        final Page<Article> articleByAuthorName = articleService.findByAuthorsNameAndFilteredTagQuery("Doe",
+        final Page<Article> articleByAuthorName = articleRepository.findByAuthorsNameAndFilteredTagQuery("Doe",
                 "elasticsearch", PageRequest.of(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
@@ -133,9 +133,9 @@ public class ElasticSearchManualTest {
         final Article article = articles.get(0);
         final String newTitle = "Getting started with Search Engines";
         article.setTitle(newTitle);
-        articleService.save(article);
+        articleRepository.save(article);
 
-        assertEquals(newTitle, articleService.findOne(article.getId()).get().getTitle());
+        assertEquals(newTitle, articleRepository.findById(article.getId()).get().getTitle());
     }
 
     @Test
@@ -147,11 +147,11 @@ public class ElasticSearchManualTest {
                 .withQuery(matchQuery("title", articleTitle).minimumShouldMatch("75%")).build();
         final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
         assertEquals(1, articles.size());
-        final long count = articleService.count();
+        final long count = articleRepository.count();
 
-        articleService.delete(articles.get(0));
+        articleRepository.delete(articles.get(0));
 
-        assertEquals(count - 1, articleService.count());
+        assertEquals(count - 1, articleRepository.count());
     }
 
     @Test
