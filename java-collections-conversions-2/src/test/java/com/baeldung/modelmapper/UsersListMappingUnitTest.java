@@ -13,18 +13,17 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
-
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 
 /**
- * @sasam0320
- * @description
  * This class has test methods of mapping Integer to Character list,
  * mapping user list to DTO list using MapperUtil generic methods and Converter
+ *
+ * @author sasam0320
  */
-public class UserMappingTest {
+public class UsersListMappingUnitTest {
 
     private ModelMapper mapper;
     private List<User> users;
@@ -42,7 +41,7 @@ public class UserMappingTest {
     }
 
     @Test
-    public void testMapIntegerList() {
+    public void whenMapIntegerToCharList() {
 
         List<Integer> integers = new ArrayList<Integer>();
 
@@ -53,12 +52,12 @@ public class UserMappingTest {
         List<Character> characters = mapper.map(integers, new TypeToken<List<Character>>() {
         }.getType());
 
-        assertThat(characters, hasItems('1','2','3'));
+        assertThat(characters, hasItems('1', '2', '3'));
 
     }
 
     @Test
-    public void testMapGenericTypeLists() {
+    public void givenUsersList_whenUseGenericType_thenMapToDto() {
 
         // Mapping lists using generic type methods
 
