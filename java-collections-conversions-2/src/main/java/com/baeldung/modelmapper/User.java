@@ -1,10 +1,8 @@
-package com.baeldung.model;
-
-import java.util.List;
+package com.baeldung.modelmapper;
 
 /**
  * @author sasam0320
- * @date 4/18/2020
+ * @description User model entity class
  */
 public class User {
 

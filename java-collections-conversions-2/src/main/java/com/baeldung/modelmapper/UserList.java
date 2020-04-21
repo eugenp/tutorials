@@ -1,12 +1,11 @@
-package com.baeldung.model;
+package com.baeldung.modelmapper;
 
 import java.util.Collection;
 
 /**
  * @author sasam0320
- * @date 4/18/2020
+ * @description UserList class that contain collection of users
  */
-
 public class UserList {
 
     private Collection<User> users;
