@@ -49,6 +49,12 @@
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
 
+        <!-- Circuit Breaker -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
+        </dependency>
+        
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator-cdi</artifactId>
@@ -84,10 +90,8 @@
     </build>
 
     <properties>
-        <spring-cloud-dependencies.version>Greenwich.SR3</spring-cloud-dependencies.version>
-
-        <!-- Spring Boot version compatible with Spring Cloud Release train -->
-        <spring-boot.version>2.1.9.RELEASE</spring-boot.version>
+        <spring-cloud-dependencies.version>Hoxton.SR3</spring-cloud-dependencies.version>
+        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <hibernate-validator.version>6.0.2.Final</hibernate-validator.version>
     </properties>
 
