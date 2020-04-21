@@ -1,8 +1,5 @@
-package com.baeldung.util;
+package com.baeldung.modelmapper;
 
-import com.baeldung.model.User;
-import com.baeldung.model.UserDTO;
-import com.baeldung.model.UserList;
 import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
 import org.modelmapper.PropertyMap;
@@ -11,10 +8,11 @@ import java.util.List;
 
 /**
  * @author sasam0320
- * @date 4/18/2020
+ * @description
+ * UserPropertyMap class instantiates the converter to map the data from the user list to the user name list.
+ * In the configuration method, we call a converter to do the mapping.
  */
-
-public class UserPropertyMap extends PropertyMap<UserList, UserDTO> {
+public class UserPropertyMap extends PropertyMap<UserList, UserListDTO> {
 
 
     Converter<List<User>, List<String>> converter = new AbstractConverter<List<User>, List<String>>() {
