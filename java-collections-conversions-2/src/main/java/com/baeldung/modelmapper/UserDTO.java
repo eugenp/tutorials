@@ -1,17 +1,14 @@
-package com.baeldung.model;
-
-import java.util.List;
+package com.baeldung.modelmapper;
 
 /**
  * @author sasam0320
- * @date 4/18/2020
+ * @description UserDTO model class
  */
 public class UserDTO {
 
     private String userId;
     private String userName;
     private String email;
-    private List<String> usernames;
 
     // getters and setters
 
@@ -39,11 +36,5 @@ public class UserDTO {
         this.email = email;
     }
 
-    public List<String> getUsernames() {
-        return usernames;
-    }
 
-    public void setUsernames(List<String> usernames) {
-        this.usernames = usernames;
-    }
 }
