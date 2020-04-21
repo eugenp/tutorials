@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <!-- POM file generated with GWT webAppCreator -->
     <modelVersion>4.0.0</modelVersion>
     <artifactId>google-web-toolkit</artifactId>
@@ -53,8 +54,7 @@
     </dependencies>
 
     <build>
-        <!-- Output classes directly into the webapp, so that IDEs and "mvn process-classes"
-            update them in DevMode -->
+        <!-- Output classes directly into the webapp, so that IDEs and "mvn process-classes" update them in DevMode -->
         <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
 
         <plugins>
@@ -76,8 +76,7 @@
                     <moduleName>com.baeldung.Google_web_toolkit</moduleName>
                     <moduleShortName>Google_web_toolkit</moduleShortName>
                     <failOnError>true</failOnError>
-                    <!-- GWT compiler 2.8 requires 1.8, hence define sourceLevel here if
-                        you use a different source language for java compilation -->
+                    <!-- GWT compiler 2.8 requires 1.8, hence define sourceLevel here if you use a different source language for java compilation -->
                     <sourceLevel>${maven.compiler.source}</sourceLevel>
                     <!-- Compiler configuration -->
                     <compilerArgs>
@@ -109,9 +108,8 @@
 
     <properties>
 
-        <!-- Setting maven.compiler.source to something different to 1.8 needs
-            that you configure the sourceLevel in gwt-maven-plugin since GWT compiler
-            2.8 requires 1.8 (see gwt-maven-plugin block below) -->
+        <!-- Setting maven.compiler.source to something different to 1.8 needs that you configure the sourceLevel in gwt-maven-plugin since GWT compiler 2.8 requires 1.8 (see gwt-maven-plugin 
+            block below) -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 

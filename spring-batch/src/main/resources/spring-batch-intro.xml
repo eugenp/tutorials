@@ -22,14 +22,14 @@
                 </property>
                 <property name="fieldSetMapper">
                     <bean
-                        class="org.baeldung.batch.service.RecordFieldSetMapper" />
+                        class="com.baeldung.batch.service.RecordFieldSetMapper" />
                 </property>
             </bean>
         </property>
         <property name="linesToSkip" value="1" />
     </bean>
 
-    <bean id="itemProcessor" class="org.baeldung.batch.service.CustomItemProcessor" />
+    <bean id="itemProcessor" class="com.baeldung.batch.service.CustomItemProcessor" />
 
     <bean id="itemWriter" class="org.springframework.batch.item.xml.StaxEventItemWriter">
         <property name="resource" value="file:xml/output.xml" />
@@ -40,7 +40,7 @@
     <bean id="recordMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
         <property name="classesToBeBound">
             <list>
-                <value>org.baeldung.batch.model.Transaction</value>
+                <value>com.baeldung.batch.model.Transaction</value>
             </list>
         </property>
     </bean>

@@ -16,7 +16,7 @@ public class SpringProfilesWithMavenPropertiesIntegrationTest {
     DatasourceConfig datasourceConfig;
 
     @Test
-    public void testSpringProfiles() {
+    public void setupDatasource() {
         Assert.assertTrue(datasourceConfig instanceof DevDatasourceConfig);
     }
 }
