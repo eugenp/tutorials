@@ -3,8 +3,8 @@ package com.baeldung.modelmapper;
 import java.util.Collection;
 
 /**
+ * UserList class that contain collection of users
  * @author sasam0320
- * @description UserList class that contain collection of users
  */
 public class UserList {
 

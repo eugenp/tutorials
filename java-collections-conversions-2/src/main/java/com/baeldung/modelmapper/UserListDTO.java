@@ -3,8 +3,8 @@ package com.baeldung.modelmapper;
 import java.util.List;
 
 /**
+ * UserListDTO class that contain list of username properties
  * @author sasam0320
- * @description UserListDTO class that contain list of username properties
  */
 public class UserListDTO {
 

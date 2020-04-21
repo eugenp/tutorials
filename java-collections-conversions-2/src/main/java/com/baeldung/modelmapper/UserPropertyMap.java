@@ -7,10 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author sasam0320
- * @description
  * UserPropertyMap class instantiates the converter to map the data from the user list to the user name list.
  * In the configuration method, we call a converter to do the mapping.
+ * @author sasam0320
  */
 public class UserPropertyMap extends PropertyMap<UserList, UserListDTO> {
 

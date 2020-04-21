@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author sasam0320
- * @description
  * This is a helper class that contains methods for generic mapping of the users list.
  * Initially, an instance of ModelMapper was created. In the static block we set the matching configuration to STRICT.
+ *
+ * @author sasam0320
  */
 public class MapperUtil {
 

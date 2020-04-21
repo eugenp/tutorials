@@ -1,8 +1,8 @@
 package com.baeldung.modelmapper;
 
 /**
+ * User model entity class
  * @author sasam0320
- * @description User model entity class
  */
 public class User {
 
