@@ -13,3 +13,4 @@ This module contains articles a Google Guava
 - [Bloom Filter in Java using Guava](https://www.baeldung.com/guava-bloom-filter)
 - [Quick Guide to the Guava RateLimiter](https://www.baeldung.com/guava-rate-limiter)
 - [Introduction to Guava Throwables](https://www.baeldung.com/guava-throwables)
+- [Guava Cache](https://www.baeldung.com/guava-cache)
