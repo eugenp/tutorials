@@ -2,7 +2,8 @@ package com.baeldung.modelmapper;
 
 /**
  * User model entity class
- * @author sasam0320
+ *
+ * @author Sasa Milenkovic
  */
 public class User {
 
@@ -14,7 +15,8 @@ public class User {
 
     // Standard constructors, getters and setters
 
-    public User(){}
+    public User() {
+    }
 
     public User(String userId, String userName, String email, String contactNumber, String userType) {
         this.userId = userId;
