@@ -17,7 +17,7 @@ import java.util.Map;
 import com.baeldung.spring.data.es.config.Config;
 import com.baeldung.spring.data.es.model.Article;
 import com.baeldung.spring.data.es.model.Author;
-import com.baeldung.spring.data.es.service.ArticleService;
+import com.baeldung.spring.data.es.repository.ArticleRepository;
 
 import org.apache.lucene.search.join.ScoreMode;
 import org.elasticsearch.action.search.SearchRequest;
@@ -58,7 +58,7 @@ public class ElasticSearchQueryManualTest {
   private ElasticsearchRestTemplate elasticsearchTemplate;
 
   @Autowired
-  private ArticleService articleService;
+  private ArticleRepository articleRepository;
 
   @Autowired
   private RestHighLevelClient client;
@@ -76,22 +76,22 @@ public class ElasticSearchQueryManualTest {
     Article article = new Article("Spring Data Elasticsearch");
     article.setAuthors(asList(johnSmith, johnDoe));
     article.setTags("elasticsearch", "spring data");
-    articleService.save(article);
+    articleRepository.save(article);
 
     article = new Article("Search engines");
     article.setAuthors(asList(johnDoe));
     article.setTags("search engines", "tutorial");
-    articleService.save(article);
+    articleRepository.save(article);
 
     article = new Article("Second Article About Elasticsearch");
     article.setAuthors(asList(johnSmith));
     article.setTags("elasticsearch", "spring data");
-    articleService.save(article);
+    articleRepository.save(article);
 
     article = new Article("Elasticsearch Tutorial");
     article.setAuthors(asList(johnDoe));
     article.setTags("elasticsearch");
-    articleService.save(article);
+    articleRepository.save(article);
   }
 
   @Test
