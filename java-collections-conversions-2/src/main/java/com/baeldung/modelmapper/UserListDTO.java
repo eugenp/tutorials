@@ -4,7 +4,8 @@ import java.util.List;
 
 /**
  * UserListDTO class that contain list of username properties
- * @author sasam0320
+ *
+ * @author Sasa Milenkovic
  */
 public class UserListDTO {
 

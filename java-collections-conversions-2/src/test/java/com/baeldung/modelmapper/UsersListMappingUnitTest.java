@@ -21,7 +21,7 @@ import static org.junit.Assert.assertThat;
  * This class has test methods of mapping Integer to Character list,
  * mapping user list to DTO list using MapperUtil generic methods and Converter
  *
- * @author sasam0320
+ * @author Sasa Milenkovic
  */
 public class UsersListMappingUnitTest {
 

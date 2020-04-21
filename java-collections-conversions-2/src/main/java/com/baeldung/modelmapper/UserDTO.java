@@ -2,7 +2,8 @@ package com.baeldung.modelmapper;
 
 /**
  * UserDTO model class
- * @author sasam0320
+ *
+ * @author Sasa Milenkovic
  */
 public class UserDTO {
 
