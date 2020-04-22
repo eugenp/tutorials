@@ -8,16 +8,15 @@ public enum PizzaStatus {
         READY,
         DELIVERED;
 
-        private static Map intToEnumValuesMapping = new HashMap<>();
+        private static Map<Integer, PizzaStatus> intToEnumValuesMapping = new HashMap<>();
         static {
-                int PIZZA_ORDER_STATUS_INDEX = 0;
-                for (PizzaStatus pizzaStatus : PizzaStatus.values()) {
-                        intToEnumValuesMapping.put(PIZZA_ORDER_STATUS_INDEX, pizzaStatus);
-                        PIZZA_ORDER_STATUS_INDEX++;
+                PizzaStatus[] pizzaStatuses = PizzaStatus.values();
+                for(int pizzaStatusIndex = 0; pizzaStatusIndex < pizzaStatuses.length; pizzaStatusIndex++) {
+                        intToEnumValuesMapping.put(pizzaStatusIndex, pizzaStatuses[pizzaStatusIndex]);
                 }
         }
 
-        public static PizzaStatus castIntToEnum(int pizzaOrderStatusIndex) {
-                return (PizzaStatus) intToEnumValuesMapping.get(pizzaOrderStatusIndex);
+        public static PizzaStatus castIntToEnum(int pizzaStatusIndex) {
+                return intToEnumValuesMapping.get(pizzaStatusIndex);
         }
 }
