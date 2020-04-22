@@ -1,4 +1,4 @@
-package com.baeldung.encode;
+package com.baeldung.encodetoutf8;
 
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,7 +36,7 @@ public class StringEncodeUnitTest {
      */
     @Test
     public void givenSomeUnencodedString_whenApacheCommonsCodecEncode_thenCompareEquals() {
-        String rawString = "Develop with pleasure";
+        String rawString = "Entwickeln Sie mit Vergnügen";
         byte[] bytes = StringUtils.getBytesUtf8(rawString);
 
         String utf8EncodedString = StringUtils.newStringUtf8(bytes);
@@ -49,7 +49,7 @@ public class StringEncodeUnitTest {
      */
     @Test
     public void givenSomeUnencodedString_whenCoreJavaEncode_thenCompareEquals() {
-        String rawString = "Develop with pleasure";
+        String rawString = "Entwickeln Sie mit Vergnügen";
         byte[] bytes = rawString.getBytes(StandardCharsets.UTF_8);
 
         String utf8EncodedString = new String(bytes, StandardCharsets.UTF_8);
@@ -62,7 +62,7 @@ public class StringEncodeUnitTest {
      */
     @Test
     public void givenSomeUnencodedString_whenJava7StandardCharsetsEncode_thenCompareEquals() {
-        String rawString = "Develop with pleasure";
+        String rawString = "Entwickeln Sie mit Vergnügen";
         ByteBuffer buffer = StandardCharsets.UTF_8.encode(rawString);
 
         String utf8EncodedString = StandardCharsets.UTF_8.decode(buffer)
