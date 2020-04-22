@@ -1,16 +1,13 @@
 package com.baeldung.collections.filtering;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
+import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(JUnitPlatform.class)
 public class CollectionFiltersUnitTest {
 
     private static final Collection<Integer> BASE_INTEGER_COLLECTION = Arrays.asList(9, 14, 2, 7, 1, 5, 8);
