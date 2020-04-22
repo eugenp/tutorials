@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Currency exchange table</title>
+</head>
+	<body>
+		<table>
+			<tbody>
+			<tr>
+				<td th:text="${#numbers.formatCurrency(param.amount)}"></td>
+				<td th:text="${#numbers.formatDecimal(param.amount, 1, 'COMMA', 2, 'POINT')}"></td>
+				<td th:text="${#strings.replace(#numbers.formatCurrency(param.amount), '.00', '')}"></td>
+			</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
