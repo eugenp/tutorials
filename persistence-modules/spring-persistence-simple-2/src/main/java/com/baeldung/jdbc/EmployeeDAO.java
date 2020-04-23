@@ -28,7 +28,8 @@ public class EmployeeDAO {
 
     public List<Employee> getEmployeesFromIdListNamed(List<Integer> ids) {
         SqlParameterSource parameters = new MapSqlParameterSource("ids", ids);
-        List<Employee> employees = namedJdbcTemplate.query("SELECT * FROM EMPLOYEE WHERE id IN (:ids)", 
+        List<Employee> employees = namedJdbcTemplate.query(
+          "SELECT * FROM EMPLOYEE WHERE id IN (:ids)", 
           parameters, 
           (rs, rowNum) -> new Employee(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name")));
 
