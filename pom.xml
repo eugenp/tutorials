@@ -1341,10 +1341,7 @@
                     
                 </plugins>
             </build>
-            
-            <!-- <modules> -->
-                <!-- <module>persistence-modules</module> -->
-            <!-- </modules> -->
+
 
         </profile>
 
