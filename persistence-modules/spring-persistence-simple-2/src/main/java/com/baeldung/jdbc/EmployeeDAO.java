@@ -37,7 +37,8 @@ public class EmployeeDAO {
 
     public List<Employee> getEmployeesFromIdList(List<Integer> ids) {
         String inSql = String.join(",", Collections.nCopies(ids.size(), "?"));
-        List<Employee> employees = jdbcTemplate.query(String.format("SELECT * FROM EMPLOYEE WHERE id IN (%s)", inSql), 
+        List<Employee> employees = jdbcTemplate.query(
+          String.format("SELECT * FROM EMPLOYEE WHERE id IN (%s)", inSql), 
           ids.toArray(), 
           (rs, rowNum) -> new Employee(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name")));
 
@@ -53,7 +54,8 @@ public class EmployeeDAO {
         }
         jdbcTemplate.batchUpdate("INSERT INTO employee_tmp VALUES(?)", employeeIds);
 
-        List<Employee> employees = jdbcTemplate.query("SELECT * FROM EMPLOYEE WHERE id IN (SELECT id FROM employee_tmp)", 
+        List<Employee> employees = jdbcTemplate.query(
+          "SELECT * FROM EMPLOYEE WHERE id IN (SELECT id FROM employee_tmp)", 
           (rs, rowNum) -> new Employee(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name")));
 
         jdbcTemplate.update("DELETE FROM employee_tmp");
