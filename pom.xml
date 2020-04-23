@@ -387,7 +387,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-
+                <!-- <module>cas</module> --> <!-- Not a maven project -->
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -453,8 +453,6 @@
 
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
-                <module>java-collections-maps</module>
-                <module>java-collections-maps-2</module>
                 <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
@@ -507,6 +505,7 @@
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-http</module>
+                <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
@@ -567,6 +566,8 @@
                 <module>rxjava-libraries</module>
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
+
+				<module>atomikos</module>
             </modules>
 
         </profile>
@@ -900,7 +901,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-
+                <!-- <module>cas</module> --> <!-- Not a maven project -->
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -966,8 +967,6 @@
 
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
-                <module>java-collections-maps</module>
-                <module>java-collections-maps-2</module>
                 <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
@@ -1019,6 +1018,7 @@
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-http</module>
+                <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
@@ -1079,6 +1079,8 @@
                 <module>rxjava-libraries</module>
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
+
+				<module>atomikos</module>
             </modules>
 
         </profile>
@@ -1202,6 +1204,7 @@
                 <module>spring-mvc-views</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
+                <module>spring-mvc-crash</module>
 
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
