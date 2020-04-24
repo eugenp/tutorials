@@ -1,4 +1,4 @@
-package com.baeldung.finagle;
+package com.baeldung.rpc.finagle;
 
 import com.twitter.finagle.Http;
 import com.twitter.finagle.ListeningServer;
