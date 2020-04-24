@@ -14,19 +14,19 @@ public class ModifyBodyRouteConfig {
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder) {
         return builder.routes()
-            .route("modify_request_body", r -> r.path("/post")
-                .filters(f -> f.modifyRequestBody(String.class, Hello.class, MediaType.APPLICATION_JSON_VALUE,
-                        (exchange, s) -> Mono.just(new Hello(s.toUpperCase())))).uri("https://httpbin.org"))
-            .build();
+          .route("modify_request_body", r -> r.path("/post")
+            .filters(f -> f.modifyRequestBody(String.class, Hello.class, MediaType.APPLICATION_JSON_VALUE,
+              (exchange, s) -> Mono.just(new Hello(s.toUpperCase())))).uri("https://httpbin.org"))
+          .build();
     }  
 
     @Bean
     public RouteLocator responseRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
-            .route("modify_response_body", r -> r.path("/put/**")
-                .filters(f -> f.modifyResponseBody(String.class, Hello.class, MediaType.APPLICATION_JSON_VALUE,
-                        (exchange, s) -> Mono.just(new Hello("New Body")))).uri("https://httpbin.org"))
-            .build();
+          .route("modify_response_body", r -> r.path("/put/**")
+            .filters(f -> f.modifyResponseBody(String.class, Hello.class, MediaType.APPLICATION_JSON_VALUE,
+              (exchange, s) -> Mono.just(new Hello("New Body")))).uri("https://httpbin.org"))
+          .build();
     } 
 
     static class Hello {
