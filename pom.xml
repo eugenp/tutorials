@@ -418,6 +418,7 @@
                 <module>ethereum</module>
 
                 <module>feign</module>
+                <module>finagle</module>
                 <module>flyway-cdi-extension</module>
 
                 <module>geotools</module>
