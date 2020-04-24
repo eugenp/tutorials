@@ -27,9 +27,9 @@ public class UnrelatedEntitiesUnitTest {
         entityManager.persist(ginTonic);
         entityManager.persist(new Recipe(mojito.getName(), "Some instructions"));
         entityManager.persist(new MultipleRecipe(1L, mojito.getName(), 
-            "some instructions", mojito.getCategory()));
+          "some instructions", mojito.getCategory()));
         entityManager.persist(new MultipleRecipe(2L, mojito.getName(), 
-            "some other instructions", mojito.getCategory()));
+          "some other instructions", mojito.getCategory()));
         entityManager.getTransaction().commit();
     }
 
@@ -43,56 +43,56 @@ public class UnrelatedEntitiesUnitTest {
     public void givenCocktailsWithRecipe_whenQuerying_thenTheExpectedCocktailsReturned() {
         // JPA
         Cocktail cocktail = entityManager.createQuery("select c "
-            + "from Cocktail c join c.recipe", Cocktail.class)
-            .getSingleResult();
+          + "from Cocktail c join c.recipe", Cocktail.class)
+          .getSingleResult();
         verifyResult(mojito, cocktail);
 
         cocktail = entityManager.createQuery("select c "
-            + "from Cocktail c join Recipe r "
-            + "on c.name = r.cocktail", Cocktail.class)
-            .getSingleResult();
+          + "from Cocktail c join Recipe r "
+          + "on c.name = r.cocktail", Cocktail.class)
+          .getSingleResult();
         verifyResult(mojito, cocktail);
 
         // QueryDSL
         cocktail = new JPAQuery<Cocktail>(entityManager).from(QCocktail.cocktail)
-            .join(QCocktail.cocktail.recipe)
-            .fetchOne();
+          .join(QCocktail.cocktail.recipe)
+          .fetchOne();
         verifyResult(mojito, cocktail);
 
         cocktail = new JPAQuery<Cocktail>(entityManager).from(QCocktail.cocktail)
-            .join(QRecipe.recipe)
-            .on(QCocktail.cocktail.name.eq(QRecipe.recipe.cocktail))
-            .fetchOne();
+          .join(QRecipe.recipe)
+          .on(QCocktail.cocktail.name.eq(QRecipe.recipe.cocktail))
+          .fetchOne();
         verifyResult(mojito, cocktail);
     }
 
     @Test
     public void givenCocktailsWithoutRecipe_whenQuerying_thenTheExpectedCocktailsReturned() {
         Cocktail cocktail = entityManager.createQuery("select c "
-            + "from Cocktail c left join c.recipe r " 
-            + "where r is null", Cocktail.class)
-            .getSingleResult();
+          + "from Cocktail c left join c.recipe r " 
+          + "where r is null", Cocktail.class)
+          .getSingleResult();
         verifyResult(ginTonic, cocktail);
 
         cocktail = entityManager.createQuery("select c "
-            + "from Cocktail c left join Recipe r " 
-            + "on c.name = r.cocktail " 
-            + "where r is null", Cocktail.class)
-            .getSingleResult();
+          + "from Cocktail c left join Recipe r " 
+          + "on c.name = r.cocktail " 
+          + "where r is null", Cocktail.class)
+          .getSingleResult();
         verifyResult(ginTonic, cocktail);
 
         QRecipe recipe = new QRecipe("alias");
         cocktail = new JPAQuery<Cocktail>(entityManager).from(QCocktail.cocktail)
-            .leftJoin(QCocktail.cocktail.recipe, recipe)
-            .where(recipe.isNull())
-            .fetchOne();
+          .leftJoin(QCocktail.cocktail.recipe, recipe)
+          .where(recipe.isNull())
+          .fetchOne();
         verifyResult(ginTonic, cocktail);
 
         cocktail = new JPAQuery<Cocktail>(entityManager).from(QCocktail.cocktail)
-            .leftJoin(QRecipe.recipe)
-            .on(QCocktail.cocktail.name.eq(QRecipe.recipe.cocktail))
-            .where(QRecipe.recipe.isNull())
-            .fetchOne();
+          .leftJoin(QRecipe.recipe)
+          .on(QCocktail.cocktail.name.eq(QRecipe.recipe.cocktail))
+          .where(QRecipe.recipe.isNull())
+          .fetchOne();
         verifyResult(ginTonic, cocktail);
     }
 
@@ -100,26 +100,26 @@ public class UnrelatedEntitiesUnitTest {
     public void givenCocktailsWithMultipleRecipes_whenQuerying_thenTheExpectedCocktailsReturned() {
         // JPQL
         Cocktail cocktail = entityManager.createQuery("select c "
-            + "from Cocktail c join c.recipeList", Cocktail.class)
-            .getSingleResult();
+          + "from Cocktail c join c.recipeList", Cocktail.class)
+          .getSingleResult();
         verifyResult(mojito, cocktail);
 
         cocktail = entityManager.createQuery("select c "
-            + "from Cocktail c join MultipleRecipe mr "
-            + "on mr.cocktail = c.name", Cocktail.class)
-            .getSingleResult();
+          + "from Cocktail c join MultipleRecipe mr "
+          + "on mr.cocktail = c.name", Cocktail.class)
+          .getSingleResult();
         verifyResult(mojito, cocktail);
 
         // QueryDSL
         cocktail = new JPAQuery<Cocktail>(entityManager).from(QCocktail.cocktail)
-            .join(QCocktail.cocktail.recipeList)
-            .fetchOne();
+          .join(QCocktail.cocktail.recipeList)
+          .fetchOne();
         verifyResult(mojito, cocktail);
 
         cocktail = new JPAQuery<Cocktail>(entityManager).from(QCocktail.cocktail)
-            .join(QMultipleRecipe.multipleRecipe)
-            .on(QCocktail.cocktail.name.eq(QMultipleRecipe.multipleRecipe.cocktail))
-            .fetchOne();
+          .join(QMultipleRecipe.multipleRecipe)
+          .on(QCocktail.cocktail.name.eq(QMultipleRecipe.multipleRecipe.cocktail))
+          .fetchOne();
         verifyResult(mojito, cocktail);
     }
 
@@ -127,31 +127,31 @@ public class UnrelatedEntitiesUnitTest {
     public void givenCocktailsWithoutMultipleRecipes_whenQuerying_thenTheExpectedCocktailsReturned() {
         // JPQL
         Cocktail cocktail = entityManager.createQuery("select c "
-            + "from Cocktail c left join c.recipeList r "
-            + "where r is null", Cocktail.class)
-            .getSingleResult();
+          + "from Cocktail c left join c.recipeList r "
+          + "where r is null", Cocktail.class)
+          .getSingleResult();
         verifyResult(ginTonic, cocktail);
 
         cocktail = entityManager.createQuery("select c "
-            + "from Cocktail c left join MultipleRecipe r " 
-            + "on c.name = r.cocktail "
-            + "where r is null", Cocktail.class)
-            .getSingleResult();
+          + "from Cocktail c left join MultipleRecipe r " 
+          + "on c.name = r.cocktail "
+          + "where r is null", Cocktail.class)
+          .getSingleResult();
         verifyResult(ginTonic, cocktail);
 
         // QueryDSL
         QMultipleRecipe multipleRecipe = new QMultipleRecipe("alias");
         cocktail = new JPAQuery<Cocktail>(entityManager).from(QCocktail.cocktail)
-            .leftJoin(QCocktail.cocktail.recipeList, multipleRecipe)
-            .where(multipleRecipe.isNull())
-            .fetchOne();
+          .leftJoin(QCocktail.cocktail.recipeList, multipleRecipe)
+          .where(multipleRecipe.isNull())
+          .fetchOne();
         verifyResult(ginTonic, cocktail);
 
         cocktail = new JPAQuery<Cocktail>(entityManager).from(QCocktail.cocktail)
-            .leftJoin(QMultipleRecipe.multipleRecipe)
-            .on(QCocktail.cocktail.name.eq(QMultipleRecipe.multipleRecipe.cocktail))
-            .where(QMultipleRecipe.multipleRecipe.isNull())
-            .fetchOne();
+          .leftJoin(QMultipleRecipe.multipleRecipe)
+          .on(QCocktail.cocktail.name.eq(QMultipleRecipe.multipleRecipe.cocktail))
+          .where(QMultipleRecipe.multipleRecipe.isNull())
+          .fetchOne();
         verifyResult(ginTonic, cocktail);
     }
 
@@ -164,20 +164,21 @@ public class UnrelatedEntitiesUnitTest {
 
         // JPQL
         List<MultipleRecipe> recipes = entityManager.createQuery("select distinct r "
-            + "from MultipleRecipe r "
-            + "join Cocktail c " 
-            + "on r.baseIngredient = c.category",
-        MultipleRecipe.class)
-            .getResultList();
+          + "from MultipleRecipe r "
+          + "join Cocktail c " 
+          + "on r.baseIngredient = c.category",
+          MultipleRecipe.class).getResultList();
+        
         verifyResult.accept(recipes);
 
         // QueryDSL
         QCocktail cocktail = QCocktail.cocktail;
         QMultipleRecipe multipleRecipe = QMultipleRecipe.multipleRecipe;
         recipes = new JPAQuery<MultipleRecipe>(entityManager).from(multipleRecipe)
-            .join(cocktail)
-            .on(multipleRecipe.baseIngredient.eq(cocktail.category))
-            .fetch();
+          .join(cocktail)
+          .on(multipleRecipe.baseIngredient.eq(cocktail.category))
+          .fetch();
+        
         verifyResult.accept(recipes);
     }
 

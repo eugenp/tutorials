@@ -34,11 +34,13 @@ public class Recipe {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Recipe recipe = (Recipe) o;
-        return Objects.equals(cocktail, recipe.cocktail) &&
-                Objects.equals(instructions, recipe.instructions);
+        return Objects.equals(cocktail, recipe.cocktail) 
+          && Objects.equals(instructions, recipe.instructions);
     }
 
     @Override
