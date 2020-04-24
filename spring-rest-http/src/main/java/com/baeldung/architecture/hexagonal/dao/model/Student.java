@@ -8,17 +8,29 @@ public class Student {
 
     private int className;
 
-    public int getRoll(){return this.roll;}
+    public int getRoll() {
+        return this.roll;
+    }
 
-    public void setRoll(int roll){this.roll=roll;}
+    public void setRoll(int roll) {
+        this.roll = roll;
+    }
 
-    public String getName() { return this.name; }
+    public String getName() {
+        return this.name;
+    }
 
-    public void setName(String name) { this.name=name; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public int getClassName() { return this.className; }
+    public int getClassName() {
+        return this.className;
+    }
 
-    public void setClassName(int className) { this.className=className; }
+    public void setClassName(int className) {
+        this.className = className;
+    }
 
     @Override
     public String toString() {
