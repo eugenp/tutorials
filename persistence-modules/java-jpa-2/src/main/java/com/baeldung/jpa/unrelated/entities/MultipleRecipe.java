@@ -56,15 +56,16 @@ public class MultipleRecipe {
         if (o == null || getClass() != o.getClass())
             return false;
         MultipleRecipe that = (MultipleRecipe) o;
+        
         return Objects.equals(id, that.id) && 
-            Objects.equals(cocktail, that.cocktail) && 
-            Objects.equals(instructions, that.instructions) && 
-            Objects.equals(baseIngredient, that.baseIngredient);
+          Objects.equals(cocktail, that.cocktail) && 
+          Objects.equals(instructions, that.instructions) && 
+          Objects.equals(baseIngredient, that.baseIngredient);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, cocktail, 
-            instructions, baseIngredient);
+          instructions, baseIngredient);
     }
 }
