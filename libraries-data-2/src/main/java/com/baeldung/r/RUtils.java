@@ -15,16 +15,19 @@ import java.util.stream.Collectors;
  */
 public class RUtils {
 
-	/**
-	 * Loads the script.R and returns its content as a string.
-	 * 
-	 * @return the script.R content as a string
-	 * @throws IOException        if any error occurs
-	 * @throws URISyntaxException if any error occurs
-	 */
-	static String getMeanScriptContent() throws IOException, URISyntaxException {
-		URI rScriptUri = RUtils.class.getClassLoader().getResource("script.R").toURI();
-		Path inputScript = Paths.get(rScriptUri);
-		return Files.lines(inputScript).collect(Collectors.joining());
-	}
+    /**
+     * Loads the script.R and returns its content as a string.
+     * 
+     * @return the script.R content as a string
+     * @throws IOException        if any error occurs
+     * @throws URISyntaxException if any error occurs
+     */
+    static String getMeanScriptContent() throws IOException, URISyntaxException {
+        URI rScriptUri = RUtils.class.getClassLoader()
+            .getResource("script.R")
+            .toURI();
+        Path inputScript = Paths.get(rScriptUri);
+        return Files.lines(inputScript)
+            .collect(Collectors.joining());
+    }
 }

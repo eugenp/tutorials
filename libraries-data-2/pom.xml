@@ -128,24 +128,21 @@
             <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
-        
-		<dependency>
-			<groupId>org.rosuda.REngine</groupId>
-			<artifactId>Rserve</artifactId>
-			<version>${rserve.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.jbytecode</groupId>
-			<artifactId>RCaller</artifactId>
-			<version>${rcaller.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.renjin</groupId>
-			<artifactId>renjin-script-engine</artifactId>
-			<version>${renjin.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>org.rosuda.REngine</groupId>
+            <artifactId>Rserve</artifactId>
+            <version>${rserve.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jbytecode</groupId>
+            <artifactId>RCaller</artifactId>
+            <version>${rcaller.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.renjin</groupId>
+            <artifactId>renjin-script-engine</artifactId>
+            <version>${renjin.version}</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -157,11 +154,11 @@
         </repository>
         
         <!-- Needed for Renjin -->
-		<repository>
-			<id>bedatadriven</id>
-			<name>bedatadriven public repo</name>
-			<url>https://nexus.bedatadriven.com/content/groups/public/</url>
-		</repository>
+        <repository>
+            <id>bedatadriven</id>
+            <name>bedatadriven public repo</name>
+            <url>https://nexus.bedatadriven.com/content/groups/public/</url>
+        </repository>
     </repositories>
 
     <properties>
@@ -183,22 +180,22 @@
         <rserve.version>1.8.1</rserve.version>
     </properties>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<!-- Excludes FastR classes from compilations since they require GraalVM -->
-					<excludes>
-						<exclude>com/baeldung/r/FastRMean.java</exclude>
-					</excludes>
-					<testExcludes>
-						<exclude>com/baeldung/r/FastRMeanUnitTest.java</exclude>						
-					</testExcludes>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!-- Excludes FastR classes from compilations since they require GraalVM -->
+                    <excludes>
+                        <exclude>com/baeldung/r/FastRMean.java</exclude>
+                    </excludes>
+                    <testExcludes>
+                        <exclude>com/baeldung/r/FastRMeanUnitTest.java</exclude>						
+                    </testExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

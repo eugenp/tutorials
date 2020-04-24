@@ -12,18 +12,18 @@ import org.junit.Test;
 @Ignore
 public class FastRMeanUnitTest {
 
-	/**
-	 * Object to test.
-	 */
-	private FastRMean fastrMean = new FastRMean();
+    /**
+     * Object to test.
+     */
+    private FastRMean fastrMean = new FastRMean();
 
-	/**
-	 * Test for {@link FastRMeanUnitTest#mean(int[])}.
-	 */
-	@Test
-	public void givenValues_whenMean_thenCorrect() {
-		int[] input = { 1, 2, 3, 4, 5 };
-		double result = fastrMean.mean(input);
-		Assert.assertEquals(3.0, result, 0.000001);
-	}
+    /**
+     * Test for {@link FastRMeanUnitTest#mean(int[])}.
+     */
+    @Test
+    public void givenValues_whenMean_thenCorrect() {
+        int[] input = { 1, 2, 3, 4, 5 };
+        double result = fastrMean.mean(input);
+        Assert.assertEquals(3.0, result, 0.000001);
+    }
 }
