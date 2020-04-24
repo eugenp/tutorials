@@ -1,4 +1,4 @@
-package com.baeldung.finagle;
+package com.baeldung.rpc.finagle;
 
 import com.twitter.finagle.Service;
 import com.twitter.finagle.SimpleFilter;
