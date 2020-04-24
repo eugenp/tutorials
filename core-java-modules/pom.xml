@@ -31,10 +31,14 @@
         <!-- <module>core-java-9-streams</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
 
         <module>core-java-annotations</module>
-        <module>core-java-arrays</module>
-        <module>core-java-arrays-2</module>
-        <module>core-java-arrays-3</module>
 
+        <module>core-java-arrays-sorting</module>
+        <module>core-java-arrays-guides</module>
+        <module>core-java-arrays-multidimensional</module>
+        <module>core-java-arrays-convert</module>
+        <module>core-java-arrays-operations-basic</module>
+        <module>core-java-arrays-operations-advanced</module>
+        
         <module>core-java-collections</module>
         <module>core-java-collections-2</module>
         <module>core-java-collections-3</module>
@@ -42,6 +46,9 @@
         <module>core-java-collections-list</module>
         <module>core-java-collections-list-2</module>
         <module>core-java-collections-list-3</module>
+        <module>core-java-collections-maps</module>
+        <module>core-java-collections-maps-2</module>
+        <module>core-java-collections-maps-3</module>
         <!-- <module>core-java-collections-set</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
 
         <module>core-java-concurrency-2</module>
@@ -66,6 +73,7 @@
         <module>core-java-io-2</module>
         <module>core-java-io-apis</module>
         <module>core-java-io-conversions</module>
+        <module>core-java-io-conversions-2</module>
 
         <module>core-java-jar</module>
         <module>core-java-jndi</module>
