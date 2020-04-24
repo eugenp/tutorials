@@ -8,8 +8,8 @@ public class WebFilterGatewayApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(WebFilterGatewayApplication.class)
-            .profiles("webfilters")
-            .run(args);
+          .profiles("webfilters")
+          .run(args);
     }
 
 }
