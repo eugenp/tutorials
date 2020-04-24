@@ -6,7 +6,9 @@ import com.baeldung.hexagonal.tictactoe.domain.TicTacToe;
 
 public class Game {
     public static void main(String[] args) {
-        TicTacToe tictactoe = new TicTacToe(new ConsoleInputAdapter(), new ConsoleDisplayAdapter());
-        tictactoe.play();
+        ConsoleDisplayAdapter display = new ConsoleDisplayAdapter();
+        TicTacToe tictactoe = new TicTacToe(display);
+        ConsoleInputAdapter input = new ConsoleInputAdapter(tictactoe);
+        tictactoe.play(input);
     }
 }

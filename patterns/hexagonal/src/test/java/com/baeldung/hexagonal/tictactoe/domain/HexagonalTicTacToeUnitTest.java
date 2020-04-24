@@ -50,11 +50,10 @@ public class HexagonalTicTacToeUnitTest {
     @Test
     public void whenColumnFull_thenPlayerWins() {
         Integer[] inputs = { 1, 2, 4, 3, 7 };
-        MockInput input = new MockInput(Arrays.asList(inputs));
         MockDisplay display = new MockDisplay();
-
-        TicTacToe ticTacToe = new TicTacToe(input, display);
-        ticTacToe.play();
+        TicTacToe ticTacToe = new TicTacToe(display);
+        MockInput input = new MockInput(Arrays.asList(inputs));
+        ticTacToe.play(input);
         Integer status = display.getStatus();
         assertNotNull("The game did not end!", status);
         assertEquals("Player 1 didn't win", 1, status.intValue());

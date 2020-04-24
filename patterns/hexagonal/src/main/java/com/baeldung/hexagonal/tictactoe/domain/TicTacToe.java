@@ -1,19 +1,16 @@
 package com.baeldung.hexagonal.tictactoe.domain;
 
-public class TicTacToe {
-    private InputPort input;
+public class TicTacToe implements TicTacToeGame {
     private DisplayPort display;
-
     private int[][] table;
 
-    public TicTacToe(InputPort input, DisplayPort display) {
-        this.input = input;
+    public TicTacToe(DisplayPort display) {
         this.display = display;
-
         table = new int[3][3];
     }
 
-    public void play() {
+    @Override
+    public void play(InputPort input) {
         boolean playerOne = true;
         int status = 0;
 
