@@ -22,8 +22,12 @@ import org.slf4j.LoggerFactory;
 
 public class EmailAttachmentReceiver {
 
+
+
+
     final Logger LOGGER = LoggerFactory.getLogger(EmailAttachmentReceiver.class);
 
+    private static final String IMAP = "imap";
     private static final String MAIL_IMAP_PORT = "mail.imap.port";
     private static final String MAIL_IMAP_HOST = "mail.imap.host";
     private static final String MAIL_IMAP_SOCKET_FACTORY_PORT = "mail.imap.socketFactory.port";
@@ -33,6 +37,8 @@ public class EmailAttachmentReceiver {
     private static final String JAVAX_NET_SSL_SSL_SOCKET_FACTORY = "javax.net.ssl.SSLSocketFactory";
     private static final String MULTIPART = "multipart";
     private static final String INBOX = "INBOX";
+    private static final String AN_ERROR_OCCURRED_WHILE_CLOSING_CONNECTIONS = "An error occurred while closing connections";
+    private static final String AN_ERROR_OCCURRED_WHILE_DOWNLOADING_ATTACHMENTS = "An error occurred while downloading attachments";
 
     private String host;
     private String port;
@@ -64,7 +70,7 @@ public class EmailAttachmentReceiver {
         Folder inbox = null;
         try {
             // connecting to the mail server
-            store = session.getStore("imap");
+            store = session.getStore(IMAP);
             store.connect(userName, password);
 
             // opens the inbox folder
@@ -79,11 +85,11 @@ public class EmailAttachmentReceiver {
                 }
             }
         } catch (NoSuchProviderException noSuchProviderException) {
-            LOGGER.error("An error occurred while downloading attachments", noSuchProviderException);
+            LOGGER.error(AN_ERROR_OCCURRED_WHILE_DOWNLOADING_ATTACHMENTS, noSuchProviderException);
         } catch (MessagingException messagingException) {
-            LOGGER.error("An error occurred while downloading attachments", messagingException);
+            LOGGER.error(AN_ERROR_OCCURRED_WHILE_DOWNLOADING_ATTACHMENTS, messagingException);
         } catch (IOException ioException) {
-            LOGGER.error("An error occurred while downloading attachments", ioException);
+            LOGGER.error(AN_ERROR_OCCURRED_WHILE_DOWNLOADING_ATTACHMENTS, ioException);
         } finally {
             try {
                 if (inbox != null) {
@@ -93,7 +99,7 @@ public class EmailAttachmentReceiver {
                     store.close();
                 }
             } catch (MessagingException messagingException) {
-                LOGGER.error("An error occurred while closing connections", messagingException);
+                LOGGER.error(AN_ERROR_OCCURRED_WHILE_CLOSING_CONNECTIONS, messagingException);
             }
         }
     }
