@@ -9,6 +9,6 @@ This module contains articles about string operations.
 - [String toLowerCase and toUpperCase Methods in Java](https://www.baeldung.com/java-string-convert-case)
 - [Java String equalsIgnoreCase()](https://www.baeldung.com/java-string-equalsignorecase)
 - [Case-Insensitive String Matching in Java](https://www.baeldung.com/java-case-insensitive-string-matching)
-- [L-Trim and R-Trim in Java](https://www.baeldung.com/l-trim-and-r-trim-in-java)
 - [L-Trim and R-Trim Alternatives in Java](https://www.baeldung.com/java-trim-alternatives)
+- [Java Convert PDF to Base64](https://www.baeldung.com/java-convert-pdf-to-base64)
 - More articles: [[<-- prev]](../core-java-string-operations)

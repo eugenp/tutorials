@@ -208,7 +208,7 @@
 
     <properties>
         <!-- The main class to start by executing java -jar -->
-        <start-class>org.baeldung.boot.Application</start-class>
+        <start-class>com.baeldung.boot.Application</start-class>
         <jquery.version>3.1.1</jquery.version>
         <bootstrap.version>3.3.7-1</bootstrap.version>
         <jpa.version>2.2</jpa.version>
