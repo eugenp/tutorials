@@ -36,7 +36,6 @@ public class HibernateTypesIntegrationTest {
         setUp();
     }
 
-
     @Test
     void whenSavingHibernateTypes_thenTheCorrectJsonIsStoredInTheDatabase() {
         Album emptyAlbum = new Album();
