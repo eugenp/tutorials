@@ -38,134 +38,134 @@ public class HibernateTypesIntegrationTest {
 
 
     @Test
-    void hibernateTypeJsonTest() {
-        Album nullAlbum = new Album();
-        nullAlbum = albumRepository.save(nullAlbum);
+    void whenSavingHibernateTypes_thenTheCorrectJsonIsStoredInTheDatabase() {
+        Album emptyAlbum = new Album();
+        emptyAlbum = albumRepository.save(emptyAlbum);
 
-        Song nullSong = new Song();
-        nullSong = songRepository.save(nullSong);
+        Song emptySong = new Song();
+        emptySong = songRepository.save(emptySong);
 
-        Artist artist0 = new Artist();
-        artist0.setCountry("England");
-        artist0.setGenre("Pop");
-        artist0.setName("Superstar");
+        Artist superstarArtist = new Artist();
+        superstarArtist.setCountry("England");
+        superstarArtist.setGenre("Pop");
+        superstarArtist.setName("Superstar");
 
-        Song song0 = new Song();
-        song0.setArtist(artist0);
-        song0.setName("A Happy Song");
-        song0.setLength(Duration.ofMinutes(4).getSeconds());
-        song0 = songRepository.save(song0);
+        Song aHappySong = new Song();
+        aHappySong.setArtist(superstarArtist);
+        aHappySong.setName("A Happy Song");
+        aHappySong.setLength(Duration.ofMinutes(4).getSeconds());
+        aHappySong = songRepository.save(aHappySong);
 
-        Song song1 = new Song();
-        song1.setArtist(artist0);
-        song1.setName("A Sad Song");
-        song1.setLength(Duration.ofMinutes(2).getSeconds());
-        song1 = songRepository.save(song1);
+        Song aSadSong = new Song();
+        aSadSong.setArtist(superstarArtist);
+        aSadSong.setName("A Sad Song");
+        aSadSong.setLength(Duration.ofMinutes(2).getSeconds());
+        aSadSong = songRepository.save(aSadSong);
 
-        Song song2 = new Song();
-        song2.setArtist(artist0);
-        song2.setName("Another Happy Song");
-        song2.setLength(Duration.ofMinutes(3).getSeconds());
-        song2 = songRepository.save(song2);
+        Song anotherHappySong = new Song();
+        anotherHappySong.setArtist(superstarArtist);
+        anotherHappySong.setName("Another Happy Song");
+        anotherHappySong.setLength(Duration.ofMinutes(3).getSeconds());
+        anotherHappySong = songRepository.save(anotherHappySong);
 
-        Artist artist1 = new Artist();
-        artist1.setCountry("Jamaica");
-        artist1.setGenre("Reggae");
-        artist1.setName("Newcomer");
+        Artist newcomer = new Artist();
+        newcomer.setCountry("Jamaica");
+        newcomer.setGenre("Reggae");
+        newcomer.setName("Newcomer");
 
-        Song song3 = new Song();
-        song3.setArtist(artist1);
-        song3.setName("A New Song");
-        song3.setLength(Duration.ofMinutes(5).getSeconds());
-        song3 = songRepository.save(song3);
+        Song aNewSong = new Song();
+        aNewSong.setArtist(newcomer);
+        aNewSong.setName("A New Song");
+        aNewSong.setLength(Duration.ofMinutes(5).getSeconds());
+        aNewSong = songRepository.save(aNewSong);
 
-        CoverArt album0CoverArt = new CoverArt();
-        album0CoverArt.setUpcCode(UUID.randomUUID().toString());
-        album0CoverArt.setFrontCoverArtUrl("http://fakeurl-0");
-        album0CoverArt.setBackCoverArtUrl("http://fakeurl-1");
+        CoverArt superstarAlbumCoverArt = new CoverArt();
+        superstarAlbumCoverArt.setUpcCode(UUID.randomUUID().toString());
+        superstarAlbumCoverArt.setFrontCoverArtUrl("http://fakeurl-0");
+        superstarAlbumCoverArt.setBackCoverArtUrl("http://fakeurl-1");
 
-        Album album0 = new Album();
-        album0.setCoverArt(album0CoverArt);
-        album0.setName("Album 0");
-        album0.setSong(Lists.newArrayList(song0, song1, song2));
-        album0 = albumRepository.save(album0);
+        Album superstarAlbum = new Album();
+        superstarAlbum.setCoverArt(superstarAlbumCoverArt);
+        superstarAlbum.setName("The Superstar Album");
+        superstarAlbum.setSong(Lists.newArrayList(aHappySong, aSadSong, anotherHappySong));
+        superstarAlbum = albumRepository.save(superstarAlbum);
 
-        CoverArt album1CoverArt = new CoverArt();
-        album1CoverArt.setUpcCode(UUID.randomUUID().toString());
-        album1CoverArt.setFrontCoverArtUrl("http://fakeurl-2");
-        album1CoverArt.setBackCoverArtUrl("http://fakeurl-3");
+        CoverArt newcomerAlbumCoverArt = new CoverArt();
+        newcomerAlbumCoverArt.setUpcCode(UUID.randomUUID().toString());
+        newcomerAlbumCoverArt.setFrontCoverArtUrl("http://fakeurl-2");
+        newcomerAlbumCoverArt.setBackCoverArtUrl("http://fakeurl-3");
 
-        Album album1 = new Album();
-        album1.setCoverArt(album1CoverArt);
-        album1.setName("Album 1");
-        album1.setSong(Lists.newArrayList(song3));
-        albumRepository.save(album1);
+        Album newcomerAlbum = new Album();
+        newcomerAlbum.setCoverArt(newcomerAlbumCoverArt);
+        newcomerAlbum.setName("The Newcomer Album");
+        newcomerAlbum.setSong(Lists.newArrayList(aNewSong));
+        albumRepository.save(newcomerAlbum);
 
-        Iterable<Album> queryAlbumsResult = albumRepository.findAll();
-        assertThat(queryAlbumsResult).hasSize(3);
+        Iterable<Album> selectAlbumsQueryResult = albumRepository.findAll();
+        assertThat(selectAlbumsQueryResult).hasSize(3);
 
-        Iterable<Song> querySongsResult = songRepository.findAll();
-        assertThat(querySongsResult).hasSize(5);
+        Iterable<Song> selectSongsQueryResult = songRepository.findAll();
+        assertThat(selectSongsQueryResult).hasSize(5);
 
-        Album queryAlbumResult;
+        Album selectAlbumQueryResult;
 
-        queryAlbumResult = albumRepository.findById(nullAlbum.getId()).get();
-        assertThat(queryAlbumResult.getName()).isNull();
-        assertThat(queryAlbumResult.getCoverArt()).isNull();
-        assertThat(queryAlbumResult.getSongs()).isNullOrEmpty();
+        selectAlbumQueryResult = albumRepository.findById(emptyAlbum.getId()).get();
+        assertThat(selectAlbumQueryResult.getName()).isNull();
+        assertThat(selectAlbumQueryResult.getCoverArt()).isNull();
+        assertThat(selectAlbumQueryResult.getSongs()).isNullOrEmpty();
 
-        queryAlbumResult = albumRepository.findById(album0.getId()).get();
-        assertThat(queryAlbumResult.getName()).isEqualTo("Album 0");
-        assertThat(queryAlbumResult.getCoverArt().getFrontCoverArtUrl()).isEqualTo("http://fakeurl-0");
-        assertThat(queryAlbumResult.getCoverArt().getBackCoverArtUrl()).isEqualTo("http://fakeurl-1");
-        assertThat(queryAlbumResult.getSongs()).hasSize(3);
-        assertThat(queryAlbumResult.getSongs()).usingFieldByFieldElementComparator().containsExactlyInAnyOrder(song0, song1, song2);
+        selectAlbumQueryResult = albumRepository.findById(superstarAlbum.getId()).get();
+        assertThat(selectAlbumQueryResult.getName()).isEqualTo("Album 0");
+        assertThat(selectAlbumQueryResult.getCoverArt().getFrontCoverArtUrl()).isEqualTo("http://fakeurl-0");
+        assertThat(selectAlbumQueryResult.getCoverArt().getBackCoverArtUrl()).isEqualTo("http://fakeurl-1");
+        assertThat(selectAlbumQueryResult.getSongs()).hasSize(3);
+        assertThat(selectAlbumQueryResult.getSongs()).usingFieldByFieldElementComparator().containsExactlyInAnyOrder(aHappySong, aSadSong, anotherHappySong);
 
-        queryAlbumResult = albumRepository.findById(album1.getId()).get();
-        assertThat(queryAlbumResult.getName()).isEqualTo("Album 1");
-        assertThat(queryAlbumResult.getCoverArt().getFrontCoverArtUrl()).isEqualTo("http://fakeurl-2");
-        assertThat(queryAlbumResult.getCoverArt().getBackCoverArtUrl()).isEqualTo("http://fakeurl-3");
-        assertThat(queryAlbumResult.getSongs()).hasSize(1);
-        assertThat(queryAlbumResult.getSongs()).usingFieldByFieldElementComparator().containsExactlyInAnyOrder(song3);
+        selectAlbumQueryResult = albumRepository.findById(superstarAlbum.getId()).get();
+        assertThat(selectAlbumQueryResult.getName()).isEqualTo("Album 1");
+        assertThat(selectAlbumQueryResult.getCoverArt().getFrontCoverArtUrl()).isEqualTo("http://fakeurl-2");
+        assertThat(selectAlbumQueryResult.getCoverArt().getBackCoverArtUrl()).isEqualTo("http://fakeurl-3");
+        assertThat(selectAlbumQueryResult.getSongs()).hasSize(1);
+        assertThat(selectAlbumQueryResult.getSongs()).usingFieldByFieldElementComparator().containsExactlyInAnyOrder(aNewSong);
 
-        Song querySongResult;
+        Song selectSongQueryResult;
 
-        querySongResult = songRepository.findById(nullSong.getId()).get();
-        assertThat(querySongResult.getName()).isNull();
-        assertThat(querySongResult.getLength()).isZero();
-        assertThat(querySongResult.getArtist()).isNull();
+        selectSongQueryResult = songRepository.findById(emptySong.getId()).get();
+        assertThat(selectSongQueryResult.getName()).isNull();
+        assertThat(selectSongQueryResult.getLength()).isZero();
+        assertThat(selectSongQueryResult.getArtist()).isNull();
 
-        querySongResult = songRepository.findById(song0.getId()).get();
-        assertThat(querySongResult.getName()).isEqualTo("A Happy Song");
-        assertThat(querySongResult.getLength()).isEqualTo(Duration.ofMinutes(4).getSeconds());
-        assertThat(querySongResult.getArtist().getName()).isEqualTo("Superstar");
-        assertThat(querySongResult.getArtist().getGenre()).isEqualTo("Pop");
-        assertThat(querySongResult.getArtist().getCountry()).isEqualTo("England");
+        selectSongQueryResult = songRepository.findById(aHappySong.getId()).get();
+        assertThat(selectSongQueryResult.getName()).isEqualTo("A Happy Song");
+        assertThat(selectSongQueryResult.getLength()).isEqualTo(Duration.ofMinutes(4).getSeconds());
+        assertThat(selectSongQueryResult.getArtist().getName()).isEqualTo("Superstar");
+        assertThat(selectSongQueryResult.getArtist().getGenre()).isEqualTo("Pop");
+        assertThat(selectSongQueryResult.getArtist().getCountry()).isEqualTo("England");
 
-        querySongResult = songRepository.findById(song1.getId()).get();
-        assertThat(querySongResult.getName()).isEqualTo("A Sad Song");
-        assertThat(querySongResult.getLength()).isEqualTo(Duration.ofMinutes(2).getSeconds());
-        assertThat(querySongResult.getArtist().getName()).isEqualTo("Superstar");
-        assertThat(querySongResult.getArtist().getGenre()).isEqualTo("Pop");
-        assertThat(querySongResult.getArtist().getCountry()).isEqualTo("England");
+        selectSongQueryResult = songRepository.findById(aSadSong.getId()).get();
+        assertThat(selectSongQueryResult.getName()).isEqualTo("A Sad Song");
+        assertThat(selectSongQueryResult.getLength()).isEqualTo(Duration.ofMinutes(2).getSeconds());
+        assertThat(selectSongQueryResult.getArtist().getName()).isEqualTo("Superstar");
+        assertThat(selectSongQueryResult.getArtist().getGenre()).isEqualTo("Pop");
+        assertThat(selectSongQueryResult.getArtist().getCountry()).isEqualTo("England");
 
-        querySongResult = songRepository.findById(song2.getId()).get();
-        assertThat(querySongResult.getName()).isEqualTo("Another Happy Song");
-        assertThat(querySongResult.getLength()).isEqualTo(Duration.ofMinutes(3).getSeconds());
-        assertThat(querySongResult.getArtist().getName()).isEqualTo("Superstar");
-        assertThat(querySongResult.getArtist().getGenre()).isEqualTo("Pop");
-        assertThat(querySongResult.getArtist().getCountry()).isEqualTo("England");
+        selectSongQueryResult = songRepository.findById(anotherHappySong.getId()).get();
+        assertThat(selectSongQueryResult.getName()).isEqualTo("Another Happy Song");
+        assertThat(selectSongQueryResult.getLength()).isEqualTo(Duration.ofMinutes(3).getSeconds());
+        assertThat(selectSongQueryResult.getArtist().getName()).isEqualTo("Superstar");
+        assertThat(selectSongQueryResult.getArtist().getGenre()).isEqualTo("Pop");
+        assertThat(selectSongQueryResult.getArtist().getCountry()).isEqualTo("England");
 
-        querySongResult = songRepository.findById(song3.getId()).get();
-        assertThat(querySongResult.getName()).isEqualTo("A New Song");
-        assertThat(querySongResult.getLength()).isEqualTo(Duration.ofMinutes(5).getSeconds());
-        assertThat(querySongResult.getArtist().getName()).isEqualTo("Newcomer");
-        assertThat(querySongResult.getArtist().getGenre()).isEqualTo("Reggae");
-        assertThat(querySongResult.getArtist().getCountry()).isEqualTo("Jamaica");
+        selectSongQueryResult = songRepository.findById(aNewSong.getId()).get();
+        assertThat(selectSongQueryResult.getName()).isEqualTo("A New Song");
+        assertThat(selectSongQueryResult.getLength()).isEqualTo(Duration.ofMinutes(5).getSeconds());
+        assertThat(selectSongQueryResult.getArtist().getName()).isEqualTo("Newcomer");
+        assertThat(selectSongQueryResult.getArtist().getGenre()).isEqualTo("Reggae");
+        assertThat(selectSongQueryResult.getArtist().getCountry()).isEqualTo("Jamaica");
     }
 
     @Test
-    void hibernateTypeYearMonthTest() {
+    void whenSavingAHibernateTypeYearMonth_thenTheCorrectValueIsStoredInTheDatabase() {
         Song mySong = new Song();
         YearMonth now = YearMonth.of(2019, 12);
         mySong.setArtist(new Artist());
@@ -174,9 +174,9 @@ public class HibernateTypesIntegrationTest {
         mySong.setRecordedOn(now);
         mySong = songRepository.save(mySong);
 
-        Song queryResult;
-        queryResult = songRepository.findById(mySong.getId()).get();
-        assertThat(queryResult.getRecordedOn().getYear()).isEqualTo(2019);
-        assertThat(queryResult.getRecordedOn().getMonthValue()).isEqualTo(12);
+        Song selectSongQueryResult;
+        selectSongQueryResult = songRepository.findById(mySong.getId()).get();
+        assertThat(selectSongQueryResult.getRecordedOn().getYear()).isEqualTo(2019);
+        assertThat(selectSongQueryResult.getRecordedOn().getMonthValue()).isEqualTo(12);
     }
 }
