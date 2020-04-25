@@ -115,14 +115,14 @@ public class HibernateTypesIntegrationTest {
         assertThat(selectAlbumQueryResult.getSongs()).isNullOrEmpty();
 
         selectAlbumQueryResult = albumRepository.findById(superstarAlbum.getId()).get();
-        assertThat(selectAlbumQueryResult.getName()).isEqualTo("Album 0");
+        assertThat(selectAlbumQueryResult.getName()).isEqualTo("The Superstar Album");
         assertThat(selectAlbumQueryResult.getCoverArt().getFrontCoverArtUrl()).isEqualTo("http://fakeurl-0");
         assertThat(selectAlbumQueryResult.getCoverArt().getBackCoverArtUrl()).isEqualTo("http://fakeurl-1");
         assertThat(selectAlbumQueryResult.getSongs()).hasSize(3);
         assertThat(selectAlbumQueryResult.getSongs()).usingFieldByFieldElementComparator().containsExactlyInAnyOrder(aHappySong, aSadSong, anotherHappySong);
 
-        selectAlbumQueryResult = albumRepository.findById(superstarAlbum.getId()).get();
-        assertThat(selectAlbumQueryResult.getName()).isEqualTo("Album 1");
+        selectAlbumQueryResult = albumRepository.findById(newcomerAlbum.getId()).get();
+        assertThat(selectAlbumQueryResult.getName()).isEqualTo("The Newcomer Album");
         assertThat(selectAlbumQueryResult.getCoverArt().getFrontCoverArtUrl()).isEqualTo("http://fakeurl-2");
         assertThat(selectAlbumQueryResult.getCoverArt().getBackCoverArtUrl()).isEqualTo("http://fakeurl-3");
         assertThat(selectAlbumQueryResult.getSongs()).hasSize(1);
