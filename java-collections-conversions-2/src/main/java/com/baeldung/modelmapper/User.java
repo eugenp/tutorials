@@ -8,7 +8,7 @@ package com.baeldung.modelmapper;
 public class User {
 
     private String userId;
-    private String userName;
+    private String username;
     private String email;
     private String contactNumber;
     private String userType;
@@ -18,9 +18,9 @@ public class User {
     public User() {
     }
 
-    public User(String userId, String userName, String email, String contactNumber, String userType) {
+    public User(String userId, String username, String email, String contactNumber, String userType) {
         this.userId = userId;
-        this.userName = userName;
+        this.username = username;
         this.email = email;
         this.contactNumber = contactNumber;
         this.userType = userType;
@@ -34,12 +34,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getEmail() {
