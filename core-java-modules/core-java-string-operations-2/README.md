@@ -12,4 +12,5 @@ This module contains articles about string operations.
 - [L-Trim and R-Trim in Java](https://www.baeldung.com/l-trim-and-r-trim-in-java)
 - [L-Trim and R-Trim Alternatives in Java](https://www.baeldung.com/java-trim-alternatives)
 - [Java Convert PDF to Base64](https://www.baeldung.com/java-convert-pdf-to-base64)
+- [Encode a String to UTF-8 in Java](https://www.baeldung.com/java-string-encode-utf-8)
 - More articles: [[<-- prev]](../core-java-string-operations)
