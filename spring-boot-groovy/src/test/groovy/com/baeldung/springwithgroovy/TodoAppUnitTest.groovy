@@ -1,4 +1,4 @@
-package com.baeldung.app
+package com.baeldung.springwithgroovy
 
 import static org.junit.jupiter.api.Assertions.assertEquals
 import static org.junit.jupiter.api.Assertions.assertTrue
@@ -12,7 +12,7 @@ import org.springframework.http.MediaType
 import org.springframework.test.context.event.annotation.BeforeTestClass
 import org.springframework.test.context.junit4.SpringRunner
 
-import com.baeldung.app.entity.Todo
+import com.baeldung.springwithgroovy.entity.Todo
 
 import io.restassured.RestAssured
 import io.restassured.response.Response

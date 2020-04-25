@@ -1,6 +1,6 @@
-package com.baeldung.app.service
+package com.baeldung.springwithgroovy.service
 
-import com.baeldung.app.entity.Todo
+import com.baeldung.springwithgroovy.entity.Todo
 
 interface TodoService {
 

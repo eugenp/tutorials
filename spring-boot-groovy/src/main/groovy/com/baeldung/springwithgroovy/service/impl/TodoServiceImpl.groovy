@@ -1,11 +1,11 @@
-package com.baeldung.app.service.impl
+package com.baeldung.springwithgroovy.service.impl
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
-import com.baeldung.app.entity.Todo
-import com.baeldung.app.repository.TodoRepository
-import com.baeldung.app.service.TodoService
+import com.baeldung.springwithgroovy.entity.Todo
+import com.baeldung.springwithgroovy.repository.TodoRepository
+import com.baeldung.springwithgroovy.service.TodoService
 
 @Service
 class TodoServiceImpl implements TodoService {

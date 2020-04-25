@@ -1,4 +1,4 @@
-package com.baeldung.app.entity
+package com.baeldung.springwithgroovy.entity
 
 import javax.persistence.Column
 import javax.persistence.Entity

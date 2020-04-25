@@ -1,4 +1,4 @@
-package com.baeldung.app.controller
+package com.baeldung.springwithgroovy.controller
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 
-import com.baeldung.app.entity.Todo
-import com.baeldung.app.service.TodoService
+import com.baeldung.springwithgroovy.entity.Todo
+import com.baeldung.springwithgroovy.service.TodoService
 
 @RestController
 @RequestMapping('todo')

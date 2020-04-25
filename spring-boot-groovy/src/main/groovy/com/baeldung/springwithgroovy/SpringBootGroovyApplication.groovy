@@ -1,9 +1,9 @@
-package com.baeldung.app
+package com.baeldung.springwithgroovy
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
-import com.baeldung.app.SpringBootGroovyApplication
+import com.baeldung.springwithgroovy.SpringBootGroovyApplication
 
 @SpringBootApplication
 class SpringBootGroovyApplication {
