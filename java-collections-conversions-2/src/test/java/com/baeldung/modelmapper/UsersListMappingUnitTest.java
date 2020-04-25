@@ -25,14 +25,14 @@ import static org.junit.Assert.assertThat;
  */
 public class UsersListMappingUnitTest {
 
-    private ModelMapper mapper;
+    private ModelMapper modelMapper;
     private List<User> users;
 
     @Before
     public void init() {
 
-        mapper = new ModelMapper();
-        mapper.addMappings(new UserPropertyMap());
+        modelMapper = new ModelMapper();
+        modelMapper.addMappings(new UserPropertyMap());
         users = new ArrayList();
         users.add(new User("b100", "user1", "user1@baeldung.com", "111-222", "USER"));
         users.add(new User("b101", "user2", "user2@baeldung.com", "111-333", "USER"));
@@ -49,7 +49,7 @@ public class UsersListMappingUnitTest {
         integers.add(2);
         integers.add(3);
 
-        List<Character> characters = mapper.map(integers, new TypeToken<List<Character>>() {
+        List<Character> characters = modelMapper.map(integers, new TypeToken<List<Character>>() {
         }.getType());
 
         assertThat(characters, hasItems('1', '2', '3'));
@@ -66,14 +66,14 @@ public class UsersListMappingUnitTest {
         assertThat(userDtoList, Matchers.<UserDTO>hasItem(
                 Matchers.both(hasProperty("userId", equalTo("b100")))
                         .and(hasProperty("email", equalTo("user1@baeldung.com")))
-                        .and(hasProperty("userName", equalTo("user1")))));
+                        .and(hasProperty("username", equalTo("user1")))));
 
         // Mapping lists using PropertyMap and Converter
 
         UserList userList = new UserList();
         userList.setUsers(users);
         UserListDTO dto = new UserListDTO();
-        mapper.map(userList, dto);
+        modelMapper.map(userList, dto);
 
         assertNotNull(dto);
         assertThat(dto, Matchers.hasProperty("usernames"));
