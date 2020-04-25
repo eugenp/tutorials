@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <ITEMS id='1' title='new name' price='17.99' produced='2019-03-20'/>
+    <ITEMS id='2' title='Fitted Hat' price='29.99'/>
+    <ITEMS id='3' title='Backpack' price='54.99'/>
+    <ITEMS id='4' title='Earrings' price='14.99'/>
+    <ITEMS id='5' title='Socks' price='9.99'/>
+</dataset>

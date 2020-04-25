@@ -26,12 +26,17 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="submit" formaction="mail/sendTemplate" value="Send Email Using Template">
+                                <input type="submit" formaction="mail/sendTemplate" value="Send Email Using Text Template">
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <input type="submit" formaction="mail/sendAttachment" value="Send Email With Attachment">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" formaction="mail/sendHtml" value="Send HTML Email">
                             </td>
                         </tr>
                     </table>
