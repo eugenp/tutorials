@@ -12,9 +12,9 @@ import scala.runtime.BoxedUnit;
 
 import static org.junit.Assert.assertEquals;
 
-public class ClientServerTest {
+public class FinagleIntegrationTest {
     @Test
-    public void clientShouldReceiveResponseFromServer() throws Exception {
+    public void givenServerAndClient_whenRequestSent_thenClientShouldReceiveResponseFromServer() throws Exception {
         // given
         Service serverService = new LogFilter().andThen(new GreetingService());
         Http.serve(":8080", serverService);
