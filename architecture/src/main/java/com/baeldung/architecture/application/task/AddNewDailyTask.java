@@ -26,4 +26,4 @@ public class AddNewDailyTask implements CreateTask {
             addNewTask.create(task);
         }
     }
-}
+};
