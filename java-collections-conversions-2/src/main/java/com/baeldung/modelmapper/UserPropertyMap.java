@@ -18,14 +18,15 @@ public class UserPropertyMap extends PropertyMap<UserList, UserListDTO> {
 
     Converter<List<User>, List<String>> converter = new AbstractConverter<List<User>, List<String>>() {
 
-        List<String> usernames = new ArrayList<>();
+        protected List<String> usernames;
 
+        @Override
         protected List<String> convert(List<User> users) {
 
-            users.forEach(user -> usernames.add(user.getUserName()));
+            usernames = new ArrayList<String>();
+            users.forEach(user -> usernames.add(user.getUsername()));
             return usernames;
         }
-
     };
 
     @Override
