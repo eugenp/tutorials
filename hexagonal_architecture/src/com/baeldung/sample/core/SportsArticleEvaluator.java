@@ -1,6 +1,8 @@
-package com.baeldung.sample;
+package com.baeldung.sample.core;
 
-import com.thirdparty.sample.PlagiarismChecker;
+import com.baeldung.sample.adpater.WebPublisher;
+import com.baeldung.sample.port.Article;
+import com.baeldung.sample.port.ArticleEvaluator;
 
 public class SportsArticleEvaluator implements ArticleEvaluator {
 
@@ -8,24 +10,24 @@ public class SportsArticleEvaluator implements ArticleEvaluator {
 
 	@Override
 	public void checkForFormattingCorrecctness(Article article) {
-		if(article.heading.size!=HEADING_SIZE) {
+		if(article.getHeadingSize()!=HEADING_SIZE) {
 			throw new RuntimeException("Incorrect Heading Size");
 		}
 		
-		if(article.content.length()<=300) {
+		if(article.getContent().length()<=300) {
 			throw new RuntimeException("Too small content, please add more details");
 		}
 	}
 
 	@Override
 	public void checkForContentCorrectness(Article article){
-		double plagiarismPercentage = PlagiarismChecker.checkOnlineForPlagiarism(article.content);
+		double plagiarismPercentage = WebPublisher.checkOnlineForPlagiarismScore(article.content);
 		
 		if(plagiarismPercentage >= 25.00) {
 			throw new RuntimeException("Plagiarism check failed!");
 		}
 		
-		double confidence = PlagiarismChecker.checkOnlineForFactCheck(article.content);
+		double confidence = WebPublisher.checkOnlineForFactScore(article.content);
 		if(confidence < 80.00) {
 			throw new RuntimeException("Fact check failed!, please re-check the score details mentioned in article");
 		}

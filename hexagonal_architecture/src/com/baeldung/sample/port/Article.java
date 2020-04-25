@@ -1,16 +1,21 @@
-package com.baeldung.sample;
+package com.baeldung.sample.port;
 
 public class Article {
-	Heading heading;
-	String content;
+	public Heading heading;
+	public String content;
 	String createdDate;
 	
-	public Heading getHeading() {
-		return heading;
+	public String getHeading() {
+		return heading.toString();
 	}
 	
-	public void setHeading(Heading heading) {
-		this.heading = heading;
+	public String getHeadingSize() {
+		return heading.size;
+	}
+	
+	public void setHeading(String headingTxt, String size) {
+		this.heading.setText(headingTxt);
+		this.heading.setSize(size);
 	}
 	
 	public String getContent() {
@@ -40,5 +45,9 @@ class Heading {
 
 	public void setSize(String size) {
 		this.size = size;
+	}
+	
+	public void setText(String headingTxt) {
+		this.text = headingTxt;
 	}
 }

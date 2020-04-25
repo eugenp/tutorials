@@ -1,4 +1,4 @@
-package com.baeldung.sample;
+package com.baeldung.sample.port;
 
 public interface ArticleEvaluator {
 	public void checkForFormattingCorrecctness(Article article);

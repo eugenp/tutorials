@@ -1,4 +1,4 @@
-package com.baeldung.sample;
+package com.baeldung.sample.port;
 
 public interface ArticlePublisher {
 	public void createDatabaseEntries(Article article);
