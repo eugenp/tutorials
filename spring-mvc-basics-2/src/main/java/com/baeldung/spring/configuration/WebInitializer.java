@@ -20,6 +20,7 @@ public class WebInitializer implements WebApplicationInitializer {
         // ctx.register(GroovyConfiguration.class);
         // ctx.register(JadeTemplateConfiguration.class);
         // ctx.register(PushConfiguration.class);
+        ctx.register(EmailConfiguration.class);
         // ctx.setServletContext(container);
         
         //ctx.register(TilesApplicationConfiguration.class);
