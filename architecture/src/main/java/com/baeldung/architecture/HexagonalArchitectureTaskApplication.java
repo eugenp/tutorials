@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class HexagonalArchitectureTaskApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(HexagonalArchitectureTaskApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(HexagonalArchitectureTaskApplication.class, args);
+	}
 
 }

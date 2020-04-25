@@ -19,4 +19,4 @@ public class AddNewTask implements CreateTask {
     public void create(Task newTask) {
         taskService.createTask(newTask);
     }
-}
+};
