@@ -48,8 +48,7 @@ public class TaskController {
      */
     @GetMapping("/manager")
     @PreAuthorize("hasRole('ROLE_MANAGER')")
-    public ResponseEntity<Iterable<Task>> getAlManagerTasks()
-    {
+    public ResponseEntity<Iterable<Task>> getAlManagerTasks() {
         Iterable<Task> tasks = taskService.findAll();
 
         return ResponseEntity.ok().body(tasks);
@@ -59,8 +58,7 @@ public class TaskController {
      * Example of restricting specific endpoints to specific roles using SecurityContext.
      */
     @GetMapping("/actuator")
-    public ResponseEntity<Iterable<Task>> getAlActuatorTasks()
-    {
+    public ResponseEntity<Iterable<Task>> getAlActuatorTasks() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null && auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ACTUATOR")))
         {
@@ -76,8 +74,7 @@ public class TaskController {
      * Example of restricting specific endpoints to specific roles using UserDetailsService.
      */
     @GetMapping("/admin")
-    public ResponseEntity<Iterable<Task>> getAlAdminTasks()
-    {
+    public ResponseEntity<Iterable<Task>> getAlAdminTasks() {
         if(userDetailsService != null) {
             UserDetails details = userDetailsService.loadUserByUsername("pam");
             if (details != null && details.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ADMIN"))) {
@@ -94,8 +91,7 @@ public class TaskController {
      * Example of restricting specific endpoints to specific roles using HttpServletRequest.
      */
     @GetMapping("/admin2")
-    public ResponseEntity<Iterable<Task>> getAlAdminTasksUsingServlet(HttpServletRequest request)
-    {
+    public ResponseEntity<Iterable<Task>> getAlAdminTasksUsingServlet(HttpServletRequest request) {
         if (!request.isUserInRole("ROLE_ADMIN")) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
