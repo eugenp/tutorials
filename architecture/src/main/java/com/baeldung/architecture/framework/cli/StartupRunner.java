@@ -17,6 +17,7 @@ public class StartupRunner implements ApplicationRunner {
     }
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        System.out.println("Adding daily tasks");
         Task task = new Task();
         task.setDescription("Startup Task");
         addNewDailyTask.create(task);

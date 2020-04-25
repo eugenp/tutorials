@@ -19,4 +19,4 @@ public class GetTasks implements GetAllTasks {
     public Iterable<Task> getAll() {
         return taskService.getAllTasks();
     }
-}
+};
