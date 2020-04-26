@@ -16,18 +16,19 @@ public class Account {
 
     @Id
     @GeneratedValue
-    Long id;
+    private Long id;
 
     @Column(nullable = false, length = 100)
-    String name;
+    private String name;
 
     @Column(name = "email_address")
-    String emailAddress;
+    private String emailAddress;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    List<AccountSetting> accountSettings = new ArrayList<>();
+    private List<AccountSetting> accountSettings = new ArrayList<>();
 
-    public Account() {}
+    public Account() {
+    }
 
     public Account(String name, String emailAddress) {
         this.name = name;

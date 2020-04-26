@@ -16,13 +16,13 @@ import java.util.Map;
 
 public class HibernateUtil {
 
+    /**
+     * Generates database create commands for the specified entities using Hibernate native API, SchemaExport.
+     * Creation commands are exported into the create.sql file.
+     */
     public static void generateSchema() {
         Map<String, String> settings = new HashMap<>();
-        settings.put(Environment.URL, "jdbc:mysql://localhost:3306/baeldung");
-        settings.put(Environment.USER, "baeldung");
-        settings.put(Environment.PASS, "baeldung");
-        settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-        settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL57Dialect");
+        settings.put(Environment.URL, "jdbc:h2:mem:schema");
 
         StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(settings).build();
 

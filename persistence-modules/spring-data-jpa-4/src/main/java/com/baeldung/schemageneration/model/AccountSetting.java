@@ -14,13 +14,13 @@ public class AccountSetting {
 
     @Id
     @GeneratedValue
-    Long id;
+    private Long id;
 
     @Column(name = "name", nullable = false)
-    String settingName;
+    private String settingName;
 
     @Column(name = "value", nullable = false)
-    String settingValue;
+    private String settingValue;
 
     @ManyToOne()
     @JoinColumn(name ="account_id", nullable = false)
