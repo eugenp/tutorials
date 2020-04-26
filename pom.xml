@@ -652,6 +652,7 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-core-4</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
@@ -1157,6 +1158,7 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-core-4</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
