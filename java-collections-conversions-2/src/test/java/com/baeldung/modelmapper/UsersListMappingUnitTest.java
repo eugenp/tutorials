@@ -59,7 +59,7 @@ public class UsersListMappingUnitTest {
     @Test
     public void givenUsersList_whenUseGenericType_thenMapToDto() {
 
-        // Mapping lists using generic type methods
+        // Mapping lists using custom type methods
 
         List<UserDTO> userDtoList = MapperUtil.mapList(users, UserDTO.class);
 
@@ -72,12 +72,12 @@ public class UsersListMappingUnitTest {
 
         UserList userList = new UserList();
         userList.setUsers(users);
-        UserListDTO dto = new UserListDTO();
-        modelMapper.map(userList, dto);
+        UserListDTO dtos = new UserListDTO();
+        modelMapper.map(userList, dtos);
 
-        assertNotNull(dto);
-        assertThat(dto, Matchers.hasProperty("usernames"));
-        assertThat(dto.getUsernames(), hasSize(3));
+        assertNotNull(dtos);
+        assertThat(dtos, Matchers.hasProperty("usernames"));
+        assertThat(dtos.getUsernames(), hasSize(3));
 
     }
 
