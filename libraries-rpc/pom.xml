@@ -16,15 +16,20 @@
       <dependency>
         <groupId>com.twitter</groupId>
         <artifactId>finagle-core_2.13</artifactId>
-        <version>20.4.0</version>
+        <version>${finagle.core.version}</version>
       </dependency>
       <dependency>
           <groupId>com.twitter</groupId>
           <artifactId>finagle-http_2.13</artifactId>
-          <version>20.4.0</version>
+          <version>${finagle.http.version}</version>
       </dependency>
 
     </dependencies>
+
+    <properties>
+        <finagle.core.version>20.4.0</finagle.core.version>
+        <finagle.http.version>20.4.0</finagle.http.version>
+    </properties>
 
 
 </project>
