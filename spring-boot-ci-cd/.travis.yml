@@ -1,0 +1,13 @@
+language: java
+jdk:
+  - openjdk11
+services:
+  - docker
+
+before_install:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker pull openjdk:11-jre-slim-sid
+
+script:
+  - ./mvnw clean install
+  - ./mvnw heroku:deploy -P deploy-heroku,deploy-docker
