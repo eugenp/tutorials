@@ -63,5 +63,4 @@
 	<properties>
 		<ehcache.version>3.5.2</ehcache.version>
 	</properties>
-
 </project>
