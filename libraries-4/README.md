@@ -20,18 +20,6 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Locality-Sensitive Hashing in Java Using Java-LSH](https://www.baeldung.com/locality-sensitive-hashing)
 - [Introduction to Neuroph](https://www.baeldung.com/neuroph)
 
-#4
-- [Quick Guide to RSS with Rome](https://www.baeldung.com/rome-rss)
-- [Introduction to PCollections](https://www.baeldung.com/java-pcollections)
-- [Introduction to Eclipse Collections](https://www.baeldung.com/eclipse-collections)
-- [DistinctBy in the Java Stream API](https://www.baeldung.com/java-streams-distinct-by)
-- [Introduction to NoException](https://www.baeldung.com/no-exception)
-- [Spring Yarg Integration](https://www.baeldung.com/spring-yarg)
-- [Delete a Directory Recursively in Java](https://www.baeldung.com/java-delete-directory)
-- [Guide to JDeferred](https://www.baeldung.com/jdeferred)
-- [Introduction to MBassador](https://www.baeldung.com/mbassador)
-- [Using Pairs in Java](https://www.baeldung.com/java-pairs)
-
 #5
 - [Introduction to Caffeine](https://www.baeldung.com/java-caching-caffeine)
 - [Introduction to StreamEx](https://www.baeldung.com/streamex)
