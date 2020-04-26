@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.map.mutable.UnifiedMap;
 import org.eclipse.collections.impl.tuple.Tuples;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class ForEachPatternUnitTest {
@@ -23,7 +24,7 @@ public class ForEachPatternUnitTest {
         }
 
         for (int i = 0; i < map.size(); i++) {
-            assertEquals("New Value", map.get(i + 1));
+            Assert.assertEquals("New Value", map.get(i + 1));
         }
     }
 }
