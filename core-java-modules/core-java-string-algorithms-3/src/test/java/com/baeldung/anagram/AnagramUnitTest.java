@@ -63,7 +63,7 @@ public class AnagramUnitTest {
     }
 
     @Test
-    public void ggivenNonAnagram_whenUsingLetterBasedMultiset_thenIdentifyAnagram() {
+    public void givenNonAnagram_whenUsingLetterBasedMultiset_thenIdentifyAnagram() {
         Anagram anagram = new Anagram();
         String string1 = "A decimal point";
         String string2 = "I’m dot in place.";

@@ -118,6 +118,4 @@
         <spock-core.version>1.1-groovy-2.4</spock-core.version>
         <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
     </properties>
-
 </project>
-
