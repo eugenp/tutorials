@@ -1,4 +1,12 @@
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO
+    reactor.netty.http.client: INFO
+    
 spring:
+  redis:
+    host: localhost
+    port: 6379
   cloud:
     gateway:
       routes:
@@ -81,13 +89,14 @@ spring:
               factor: 2
               basedOnPreviousValue: false
               
-      - id: circuitbreaker_route
+      - id: request_rate_limiter
         uri: https://httpbin.org
         predicates:
-        - Path=/status/504
+        - Path=/redis/get/**
         filters:
-        - name: CircuitBreaker
+        - StripPrefix=1
+        - name: RequestRateLimiter
           args:
-            name: myCircuitBreaker
-            fallbackUri: forward:/anything
-        - RewritePath=/status/504, /anything
+            redis-rate-limiter.replenishRate: 10
+            redis-rate-limiter.burstCapacity: 5
+            key-resolver: "#{@userKeyResolver}"
