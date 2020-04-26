@@ -256,10 +256,9 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <wsdlDirectory>src/main/resources</wsdlDirectory>
-                        <wsdlFiles>
-                            <wsdlFile>country.wsdl</wsdlFile> 
-                        </wsdlFiles>
+                        <wsdlUrls>
+                            <wsdlUrl>http://localhost:8888/ws/country?wsdl</wsdlUrl>
+                        </wsdlUrls>
                         <keep>true</keep> 
                         <packageName>com.baeldung.soap.ws.client.generated</packageName> 
                         <sourceDestDir>src/main/java</sourceDestDir>
