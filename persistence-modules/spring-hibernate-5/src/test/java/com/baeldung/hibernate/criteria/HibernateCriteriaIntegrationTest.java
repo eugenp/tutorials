@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.baeldung.hibernate.criteria.model.Item;
@@ -24,6 +25,7 @@ public class HibernateCriteriaIntegrationTest {
     final private ApplicationView av = new ApplicationView();
 
     @Test
+    @Ignore
     public void testPerformanceOfCriteria() {
         assertFalse(av.checkIfCriteriaTimeLower());
     }

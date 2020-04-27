@@ -42,11 +42,6 @@
             <version>${guava.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-commons</artifactId>
             <version>${junit.platform.version}</version>
@@ -78,7 +73,6 @@
         <commons-codec.version>1.11</commons-codec.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <guava.version>28.1-jre</guava.version>
-        <jackson.version>2.10.2</jackson.version>
         <junit.platform.version>1.6.0</junit.platform.version>
     </properties>
 

@@ -1,6 +1,7 @@
 package com.baeldung.jackson.date;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
@@ -8,6 +9,8 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -30,7 +33,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 public class JacksonDateUnitTest {
 
     @Test
-    public void whenSerializingDateWithJackson_thenSerializedToNumber() throws JsonProcessingException, ParseException {
+    public void whenSerializingDateWithJackson_thenSerializedToTimestamp() throws JsonProcessingException, ParseException {
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
@@ -60,6 +63,21 @@ public class JacksonDateUnitTest {
 
         final String result = mapper.writeValueAsString(event);
         assertThat(result, containsString("1970-01-01T02:30:00.000+00:00"));
+    }
+    
+    @Test
+    public void whenDeserialisingZonedDateTimeWithDefaults_thenNotCorrect()
+      throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.findAndRegisterModules();
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
+        String converted = objectMapper.writeValueAsString(now);
+     
+        ZonedDateTime restored = objectMapper.readValue(converted, ZonedDateTime.class);
+        System.out.println("serialized: " + now);
+        System.out.println("restored: " + restored);
+        assertThat(now, is(restored));
     }
 
     @Test

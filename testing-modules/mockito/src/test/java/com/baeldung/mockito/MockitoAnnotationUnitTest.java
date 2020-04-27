@@ -75,7 +75,53 @@ public class MockitoAnnotationUnitTest {
         Mockito.doReturn(100).when(spiedList).size();
         assertEquals(100, spiedList.size());
     }
+    
+    @Test
+    public void whenSpyingOnList_thenCorrect() {
+        List<String> list = new ArrayList<String>();
+        List<String> spyList = Mockito.spy(list);
+     
+        spyList.add("one");
+        spyList.add("two");
+     
+        Mockito.verify(spyList).add("one");
+        Mockito.verify(spyList).add("two");
+     
+        assertEquals(2, spyList.size());
+    }
 
+    @Test
+    public void whenUsingTheSpyAnnotation_thenObjectIsSpied() {
+        spiedList.add("one");
+        spiedList.add("two");
+     
+        Mockito.verify(spiedList).add("one");
+        Mockito.verify(spiedList).add("two");
+     
+        assertEquals(2, spiedList.size());
+    }
+    
+    @Test
+    public void whenStubASpy_thenStubbed() {
+        List<String> list = new ArrayList<String>();
+        List<String> spyList = Mockito.spy(list);
+     
+        assertEquals(0, spyList.size());
+     
+        Mockito.doReturn(100).when(spyList).size();
+        assertEquals(100, spyList.size());
+    }
+    
+    @Test
+    public void whenCreateSpy_thenCreate() {
+        List<String> spyList = Mockito.spy(new ArrayList<>());
+     
+        spyList.add("one");
+        Mockito.verify(spyList).add("one");
+     
+        assertEquals(1, spyList.size());
+    }
+    
     @Test
     public void whenNotUseCaptorAnnotation_thenCorrect() {
         final List<String> mockList = Mockito.mock(List.class);
