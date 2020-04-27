@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.cloud</groupId>
-    <artifactId>openfeign</artifactId>
+    <artifactId>spring-cloud-openfeign</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>openfeign</name>
+    <name>spring-cloud-openfeign</name>
     <description>OpenFeign project for Spring Boot</description>
 
     <parent>

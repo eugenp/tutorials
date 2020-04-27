@@ -387,7 +387,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-
+                <!-- <module>cas</module> --> <!-- Not a maven project -->
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -453,6 +453,7 @@
 
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
+                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
@@ -504,6 +505,7 @@
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-http</module>
+                <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
@@ -564,7 +566,7 @@
                 <module>rxjava-libraries</module>
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
-				
+
 				<module>atomikos</module>
             </modules>
 
@@ -650,6 +652,7 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-core-4</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
@@ -805,7 +808,7 @@
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
-                <!-- <module>jws</module> --> <!-- Failing the build. Fixing in http://jira.baeldung.com/browse/BAEL-3992 -->
+                <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
 
@@ -899,7 +902,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-
+                <!-- <module>cas</module> --> <!-- Not a maven project -->
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -965,6 +968,7 @@
 
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
+                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
@@ -1015,6 +1019,7 @@
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-http</module>
+                <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
@@ -1075,7 +1080,7 @@
                 <module>rxjava-libraries</module>
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
-				
+
 				<module>atomikos</module>
             </modules>
 
@@ -1153,6 +1158,7 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-core-4</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
@@ -1200,6 +1206,7 @@
                 <module>spring-mvc-views</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
+                <module>spring-mvc-crash</module>
 
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
@@ -1300,7 +1307,7 @@
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
-                <!-- <module>jws</module> --> <!-- Failing the build. Fixing in http://jira.baeldung.com/browse/BAEL-3992 -->
+                <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
 
