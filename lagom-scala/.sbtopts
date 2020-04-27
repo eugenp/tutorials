@@ -1,0 +1,4 @@
+-J-Xms512M
+-J-Xmx4096M
+-J-Xss2M
+-J-XX:MaxMetaspaceSize=1024M
