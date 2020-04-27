@@ -9,5 +9,8 @@ before_install:
   - docker pull openjdk:11-jre-slim-sid
 
 script:
-  - ./mvnw clean install
+  - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent install
   - ./mvnw heroku:deploy -P deploy-heroku,deploy-docker
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
