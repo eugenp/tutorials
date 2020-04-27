@@ -98,5 +98,9 @@
             </plugin>
         </plugins>
     </build>
+    
+    <properties>
+        <javac.target>1.8</javac.target>
+    </properties>
 
 </project>
