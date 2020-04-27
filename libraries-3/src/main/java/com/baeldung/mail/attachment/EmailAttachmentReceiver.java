@@ -1,10 +1,7 @@
 package com.baeldung.mail.attachment;
 
-import static java.util.Arrays.asList;
-
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Folder;
@@ -22,11 +19,7 @@ import org.slf4j.LoggerFactory;
 
 public class EmailAttachmentReceiver {
 
-
-
-
-    final Logger LOGGER = LoggerFactory.getLogger(EmailAttachmentReceiver.class);
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmailAttachmentReceiver.class);
     private static final String IMAP = "imap";
     private static final String MAIL_IMAP_PORT = "mail.imap.port";
     private static final String MAIL_IMAP_HOST = "mail.imap.host";
@@ -76,7 +69,7 @@ public class EmailAttachmentReceiver {
             // opens the inbox folder
             inbox = store.getFolder(INBOX);
             inbox.open(Folder.READ_ONLY);
-            List<Message> messages = asList(inbox.getMessages());
+            Message[] messages = inbox.getMessages();
             for (Message message : messages) {
                 // filtering message with content type 'multipart'
                 if (message.getContentType()

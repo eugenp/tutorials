@@ -2,8 +2,8 @@ package com.baeldung.mail.attachment;
 
 public class MailAttachmentDownloaderApplication {
     public static void main(String[] args) {
-         String host = "imap.gmail.com";
-         String port = "993";
+        String host = "imap.gmail.com";
+        String port = "993";
 
         String userName = "your_email_address";
         String password = "your_email_password";
