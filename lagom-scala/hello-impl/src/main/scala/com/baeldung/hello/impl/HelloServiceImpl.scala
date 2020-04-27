@@ -1,8 +1,11 @@
 package com.baeldung.hello.impl
 
 import akka.NotUsed
-import akka.actor.{ActorSystem, Props}
+import akka.actor.ActorSystem
+import akka.cluster.Cluster
+import akka.cluster.routing.{ClusterRouterGroup, ClusterRouterGroupSettings}
 import akka.pattern.ask
+import akka.routing.ConsistentHashingGroup
 import akka.stream.scaladsl.Source
 import akka.util.Timeout
 import com.baeldung.hello.akka.{Job, JobAccepted, JobStatus, Worker}
@@ -16,8 +19,25 @@ import scala.concurrent.duration._
 class HelloServiceImpl(system: ActorSystem, pubSub: PubSubRegistry)(implicit ec: ExecutionContext)
   extends HelloService {
 
+  if (Cluster.get(system).selfRoles("worker-node")) {
+    system.actorOf(Worker.props(pubSub), "worker")
+  }
+
   val workerRouter = {
-    system.actorOf(Worker.props(pubSub), "workerRouter")
+    val paths = List("/user/worker")
+    val groupConf = ConsistentHashingGroup(paths, hashMapping = {
+      case Job(_, task, _) => task
+    })
+    val routerProps = ClusterRouterGroup(
+      groupConf,
+      ClusterRouterGroupSettings(
+        totalInstances = 1000,
+        routeesPaths = paths,
+        allowLocalRoutees = true,
+        useRoles = Set("worker-node")
+      )
+    ).props
+    system.actorOf(routerProps, "workerRouter")
   }
 
   override def submit(): ServiceCall[Job, JobAccepted] = ServiceCall {
