@@ -1,12 +1,11 @@
 package com.baeldung.relationships;
 
-import com.baeldung.AppConfig;
-import com.baeldung.data.repositories.TweetRepository;
-import com.baeldung.data.repositories.UserRepository;
-import com.baeldung.models.AppUser;
-import com.baeldung.models.Tweet;
-import com.baeldung.security.AppUserPrincipal;
-import com.baeldung.util.DummyContentUtil;
+import com.baeldung.relationships.repositories.TweetRepository;
+import com.baeldung.relationships.repositories.UserRepository;
+import com.baeldung.relationships.models.AppUser;
+import com.baeldung.relationships.models.Tweet;
+import com.baeldung.relationships.security.AppUserPrincipal;
+import com.baeldung.relationships.util.DummyContentUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

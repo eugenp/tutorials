@@ -121,6 +121,8 @@
         <springframework.version>5.2.3.RELEASE</springframework.version>
         <activemq.broker.version>5.10.2</activemq.broker.version>
         <activemq.junit.version>5.13.1</activemq.junit.version>
+        <mockito.version>2.21.0</mockito.version>
+        <byte-buddy.version>1.8.5</byte-buddy.version>
     </properties>
 
 </project>

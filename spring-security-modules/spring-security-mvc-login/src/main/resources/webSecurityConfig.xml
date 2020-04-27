@@ -25,11 +25,11 @@
 
     </http>
 
-    <beans:bean name="customLogoutSuccessHandler" class="org.baeldung.security.CustomLogoutSuccessHandler"/>
+    <beans:bean name="customLogoutSuccessHandler" class="com.baeldung.security.CustomLogoutSuccessHandler"/>
 
-    <beans:bean name="customAccessDeniedHandler" class="org.baeldung.security.CustomAccessDeniedHandler" />
+    <beans:bean name="customAccessDeniedHandler" class="com.baeldung.security.CustomAccessDeniedHandler" />
 
-    <beans:bean id="authenticationFailureHandler" name="customAuthenticationFaiureHandler" class="org.baeldung.security.CustomAuthenticationFailureHandler"/>
+    <beans:bean id="authenticationFailureHandler" name="customAuthenticationFaiureHandler" class="com.baeldung.security.CustomAuthenticationFailureHandler"/>
 
     <authentication-manager>
         <authentication-provider>
