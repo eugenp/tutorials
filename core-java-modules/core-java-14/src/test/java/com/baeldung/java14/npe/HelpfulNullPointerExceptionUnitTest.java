@@ -1,4 +1,4 @@
-package com.baeldung.java14.helpfulnullpointerexceptions;
+package com.baeldung.java14.npe;
 
 import org.junit.Test;
 
