@@ -38,7 +38,7 @@ public class TeamUnitTest {
     }
 
     @Test
-    public void equalsContract() {
+    public void equalsHashCodeContracts() {
         EqualsVerifier.forClass(Team.class).verify();
     }
 

@@ -1,5 +1,6 @@
-package com.baeldung.hashcode.entities;
+package com.baeldung.hashcode.apachecommons;
 
+import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,12 +31,11 @@ public class User {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 31 * hash + (int) id;
-        hash = 31 * hash + (name == null ? 0 : name.hashCode());
-        hash = 31 * hash + (email == null ? 0 : email.hashCode());
-        logger.info("hashCode() method called - Computed hash: " + hash);
-        return hash;
+        return new HashCodeBuilder(17, 37).
+          append(id).
+          append(name).
+          append(email).
+          toHashCode();
     }
     // getters and setters here
     

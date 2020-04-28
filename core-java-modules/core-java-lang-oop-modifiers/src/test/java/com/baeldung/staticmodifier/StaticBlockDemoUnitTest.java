@@ -7,11 +7,11 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class StaticBlockUnitTest {
+public class StaticBlockDemoUnitTest {
 
     @Test
     public void whenAddedListElementsThroughStaticBlock_thenEnsureCorrectOrder() {
-        List<String> actualList = StaticBlock.getRanks();
+        List<String> actualList = StaticBlockDemo.getRanks();
         assertThat(actualList, contains("Lieutenant", "Captain", "Major", "Colonel", "General"));
     }
 }

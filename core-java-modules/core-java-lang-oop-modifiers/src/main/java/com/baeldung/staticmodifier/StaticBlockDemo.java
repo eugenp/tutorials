@@ -3,7 +3,7 @@ package com.baeldung.staticmodifier;
 import java.util.LinkedList;
 import java.util.List;
 
-public class StaticBlock {
+public class StaticBlockDemo {
     private static List<String> ranks = new LinkedList<>();
 
     static {
@@ -23,6 +23,6 @@ public class StaticBlock {
     }
 
     public static void setRanks(List<String> ranks) {
-        StaticBlock.ranks = ranks;
+        StaticBlockDemo.ranks = ranks;
     }
 }
