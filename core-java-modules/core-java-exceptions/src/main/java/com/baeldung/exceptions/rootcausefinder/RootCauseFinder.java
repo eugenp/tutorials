@@ -1,4 +1,4 @@
-package com.baeldung.exceptions;
+package com.baeldung.exceptions.rootcausefinder;
 
 import java.time.LocalDate;
 import java.time.Period;
