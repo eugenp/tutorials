@@ -813,8 +813,8 @@
                 <module>libraries</module> <!-- very long running -->
 
                 <module>vaadin</module>
-		<module>vavr</module>
-		<module>vavr-2</module>
+                <module>vavr</module>
+                <module>vavr-2</module>
             </modules>
         </profile>
 
@@ -1313,12 +1313,12 @@
                 <module>libraries</module> <!-- very long running -->
 
                 <module>vaadin</module>
-		<module>vavr</module>
-		<module>vavr-2</module>
+                <module>vavr</module>
+                <module>vavr-2</module>
             </modules>
 
         </profile>
-        
+
         <profile>
             <id>live-all</id>
 
@@ -1342,7 +1342,7 @@
                             </includes>
                         </configuration>
                     </plugin>
-                    
+
                 </plugins>
             </build>
 
