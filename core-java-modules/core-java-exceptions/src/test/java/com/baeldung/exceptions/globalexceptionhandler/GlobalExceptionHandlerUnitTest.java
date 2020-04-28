@@ -1,4 +1,4 @@
-package com.baeldung.exceptions;
+package com.baeldung.exceptions.globalexceptionhandler;
 
 import org.junit.After;
 import org.junit.Before;
