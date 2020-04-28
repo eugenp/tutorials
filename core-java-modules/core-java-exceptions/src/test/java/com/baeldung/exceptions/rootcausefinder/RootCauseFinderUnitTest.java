@@ -1,4 +1,4 @@
-package com.baeldung.exceptions;
+package com.baeldung.exceptions.rootcausefinder;
 
 import com.google.common.base.Throwables;
 import org.apache.commons.lang3.exception.ExceptionUtils;
