@@ -2,6 +2,7 @@ package com.baeldung.concurrent;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.testing.threadtester.AnnotatedTestRunner;
@@ -34,6 +35,7 @@ public class MyCounterThreadWeaverUnitTest {
         assertEquals(2, counter.getCount());
     }
 
+    @Ignore
     @Test
     public void testCounter() {
         new AnnotatedTestRunner().runTests(this.getClass(), MyCounter.class);

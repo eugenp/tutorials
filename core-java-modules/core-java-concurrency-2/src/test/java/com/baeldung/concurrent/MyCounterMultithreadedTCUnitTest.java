@@ -1,5 +1,6 @@
 package com.baeldung.concurrent;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import edu.umd.cs.mtc.MultithreadedTestCase;
@@ -25,9 +26,10 @@ public class MyCounterMultithreadedTCUnitTest extends MultithreadedTestCase {
     @SuppressWarnings("deprecation")
     @Override
     public void finish() {
-        assertEquals(2, counter.getCount());
+    	assertEquals(2, counter.getCount());
     }
 
+    @Ignore
     @Test
     public void testCounter() throws Throwable {
         TestFramework.runManyTimes(new MyCounterMultithreadedTCUnitTest(), 1000);

@@ -6,6 +6,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class MyCounterSimpleUnitTest {
@@ -18,7 +19,8 @@ public class MyCounterSimpleUnitTest {
         assertEquals(500, counter.getCount());
     }
 
-    // @Test
+    @Ignore
+    @Test
     public void testCounterWithConcurrency() throws InterruptedException {
         int numberOfThreads = 100;
         ExecutorService service = Executors.newFixedThreadPool(10);
@@ -34,7 +36,8 @@ public class MyCounterSimpleUnitTest {
         assertEquals(numberOfThreads, counter.getCount());
     }
 
-    // @Test
+    @Ignore
+    @Test
     public void testSummationWithConcurrencyAndWait() throws InterruptedException {
         int numberOfThreads = 2;
         ExecutorService service = Executors.newFixedThreadPool(10);
