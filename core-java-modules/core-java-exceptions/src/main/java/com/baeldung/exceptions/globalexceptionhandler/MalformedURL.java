@@ -1,4 +1,4 @@
-package com.baeldung.exceptions;
+package com.baeldung.exceptions.globalexceptionhandler;
 
 import java.net.MalformedURLException;
 import java.net.URL;
