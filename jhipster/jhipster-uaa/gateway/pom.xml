@@ -1013,7 +1013,7 @@
 	
     <properties>
         <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
-        <spring.web.version>0.24.0-RC.0</spring.web.version>
+        <spring.web.version>0.24.0</spring.web.version>
         <!-- Build properties -->
         <maven.version>3.0.0</maven.version>
         <java.version>1.8</java.version>

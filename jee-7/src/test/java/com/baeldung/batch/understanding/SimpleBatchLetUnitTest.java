@@ -1,17 +1,16 @@
 package com.baeldung.batch.understanding;
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Properties;
 
 import javax.batch.operations.JobOperator;
 import javax.batch.runtime.BatchRuntime;
 import javax.batch.runtime.BatchStatus;
 import javax.batch.runtime.JobExecution;
-import java.util.Properties;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
-@Disabled("Should be fixed in BAEL-3812")
 class SimpleBatchLetUnitTest {
     @Test
     public void givenBatchLet_thenBatch_CompleteWithSuccess() throws Exception {
