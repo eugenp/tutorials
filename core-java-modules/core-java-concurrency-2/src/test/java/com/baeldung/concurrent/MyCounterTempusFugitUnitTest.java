@@ -3,6 +3,7 @@ package com.baeldung.concurrent;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.AfterClass;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -20,6 +21,7 @@ public class MyCounterTempusFugitUnitTest {
 
     private static MyCounter counter = new MyCounter();
 
+    @Ignore
     @Test
     @Concurrent(count = 2)
     @Repeating(repetition = 10)
