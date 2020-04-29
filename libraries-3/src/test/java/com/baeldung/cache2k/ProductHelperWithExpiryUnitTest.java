@@ -6,13 +6,17 @@ import org.junit.Test;
 
 public class ProductHelperWithExpiryUnitTest {
 
-    ProductHelperWithExpiry productHelper = new ProductHelperWithExpiry();
-
     @Test
-    public void whenInvokedGetDiscountForExpiredProduct_thenNoDiscount() throws InterruptedException {
+    public void whenInvokedGetDiscountAfterExpiration_thenDiscountCalculatedAgain() throws InterruptedException {
+        ProductHelperWithExpiry productHelper = new ProductHelperWithExpiry();
+        assertTrue(productHelper.getCacheMissCount() == 0);
         assertTrue(productHelper.getDiscount("Sports") == 20);
+        assertTrue(productHelper.getCacheMissCount() == 1);
+
         Thread.sleep(20);
-        assertTrue(productHelper.getDiscount("Sports") == 0);
+
+        assertTrue(productHelper.getDiscount("Sports") == 20);
+        assertTrue(productHelper.getCacheMissCount() == 2);
     }
 
 }

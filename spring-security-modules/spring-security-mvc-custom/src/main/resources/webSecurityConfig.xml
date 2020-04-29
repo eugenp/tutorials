@@ -22,7 +22,7 @@
 
     </http>
 
-    <beans:bean id="myAuthenticationSuccessHandler" class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler"/>
+    <beans:bean id="myAuthenticationSuccessHandler" class="com.baeldung.security.MySimpleUrlAuthenticationSuccessHandler"/>
 
     <authentication-manager id="authenticationManager">
         <authentication-provider>
@@ -33,8 +33,7 @@
         </authentication-provider>
     </authentication-manager>
 
-<!--     <mvc:interceptors>
-        <bean id="loggerInterceptor" class="org.baeldung.web.interceptor.LoggerInterceptor" />
+    <!--     <mvc:interceptors>
+        <bean id="loggerInterceptor" class="com.baeldung.web.interceptor.LoggerInterceptor" />
     </mvc:interceptors> -->
-    
 </beans:beans>

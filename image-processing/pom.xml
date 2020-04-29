@@ -50,12 +50,24 @@
             <artifactId>imageio-bmp</artifactId>
             <version>${imageio.version}</version>
         </dependency>
+        <dependency>
+            <groupId>net.sourceforge.tess4j</groupId>
+            <artifactId>tess4j</artifactId>
+            <version>${tess4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>tesseract-platform</artifactId>
+            <version>${tesseract-platform.version}</version>
+        </dependency>
     </dependencies>
-
+    
     <properties>
         <core-image.version>1.3.5</core-image.version>
         <ij.version>1.51h</ij.version>
         <imageio.version>3.3.2</imageio.version>
+        <tess4j.version>4.5.1</tess4j.version>
+        <tesseract-platform.version>4.1.0-1.5.2</tesseract-platform.version>
     </properties>
 
 </project>

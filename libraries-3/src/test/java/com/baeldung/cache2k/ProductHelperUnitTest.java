@@ -6,12 +6,13 @@ import org.junit.Test;
 
 public class ProductHelperUnitTest {
 
-    ProductHelper productHelper = new ProductHelper();
-
     @Test
-    public void whenInvokedGetDiscount_thenGetItFromCache() {
+    public void whenInvokedGetDiscountTwice_thenGetItFromCache() {
+        ProductHelper productHelper = new ProductHelper();
+        assertTrue(productHelper.getCacheMissCount() == 0);
         assertTrue(productHelper.getDiscount("Sports") == 20);
-        assertTrue(productHelper.getDiscount("Electronics") == 0);
+        assertTrue(productHelper.getDiscount("Sports") == 20);
+        assertTrue(productHelper.getCacheMissCount() == 1);
     }
 
 }

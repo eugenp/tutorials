@@ -7,4 +7,5 @@ This module contains articles about date operations in Java.
 - [Checking If Two Java Dates Are on the Same Day](https://www.baeldung.com/java-check-two-dates-on-same-day)
 - [Converting Java Date to OffsetDateTime](https://www.baeldung.com/java-convert-date-to-offsetdatetime)
 - [How to Set the JVM Time Zone](https://www.baeldung.com/java-jvm-time-zone)
+- [How to determine day of week by passing specific date in Java?](https://www.baeldung.com/java-get-day-of-week)
 - [[<-- Prev]](/core-java-modules/core-java-date-operations-1)

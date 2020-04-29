@@ -18,7 +18,7 @@ class BuildInfoServiceIntegrationTest {
     
     @Test
     void whenGetApplicationDescription_thenSuccess() {
-        assertThat(service.getApplicationDescription(), Matchers.is("This is simple boot application for Spring boot actuator test"));
+        assertThat(service.getApplicationDescription(), Matchers.is("Spring Boot Properties Module"));
         assertThat(service.getApplicationVersion(), Matchers.is("0.0.1-SNAPSHOT"));
     }
 }

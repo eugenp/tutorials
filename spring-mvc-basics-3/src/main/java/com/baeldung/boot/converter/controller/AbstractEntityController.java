@@ -1,8 +1,8 @@
-package org.baeldung.boot.converter.controller;
+package com.baeldung.boot.converter.controller;
 
-import org.baeldung.boot.domain.Bar;
-import org.baeldung.boot.domain.Foo;
-import org.baeldung.boot.domain.Modes;
+import com.baeldung.boot.domain.Bar;
+import com.baeldung.boot.domain.Foo;
+import com.baeldung.boot.domain.Modes;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
