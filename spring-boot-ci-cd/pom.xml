@@ -86,25 +86,17 @@
       <build>
         <plugins>
           <plugin>
-            <groupId>com.spotify</groupId>
-            <artifactId>dockerfile-maven-plugin</artifactId>
-            <version>1.4.13</version>
-            <executions>
-              <execution>
-                <id>default</id>
-                <goals>
-                  <goal>build</goal>
-                  <goal>push</goal>
-                </goals>
-              </execution>
-            </executions>
+            <groupId>com.google.cloud.tools</groupId>
+            <artifactId>jib-maven-plugin</artifactId>
+            <version>2.2.0</version>
             <configuration>
-              <repository>lukaszrys/spring-boot-ci-cd</repository>
-              <tag>${project.version}</tag>
-              <tag>latest</tag>
-              <buildArgs>
-                <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
-              </buildArgs>
+              <to>
+                <image>registry.hub.docker.com/baeldungjib/baeldung-ci-cd-process</image>
+                <tags>
+                  <tag>${project.version}</tag>
+                  <tag>latest</tag>
+                </tags>
+              </to>
             </configuration>
           </plugin>
         </plugins>
