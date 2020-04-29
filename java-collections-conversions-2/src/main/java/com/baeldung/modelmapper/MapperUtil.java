@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * This is a helper class that contains method for generic mapping of the users list.
+ * This is a helper class that contains method for custom mapping of the users list.
  * Initially, an instance of ModelMapper was created.
  *
  * @author Sasa Milenkovic
