@@ -27,8 +27,7 @@ public class SimpleSecurityConfiguration {
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .antMatcher("/basic/**")
-                    .authorizeRequests().anyRequest().permitAll()
-                    .and()
+                    .authorizeRequests(authz -> authz.anyRequest().permitAll())
                     .logout(logout -> logout
                             .logoutUrl("/basic/basiclogout")
                             .addLogoutHandler(new SecurityContextLogoutHandler())
@@ -44,8 +43,7 @@ public class SimpleSecurityConfiguration {
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .antMatcher("/cookies/**")
-                    .authorizeRequests().anyRequest().permitAll()
-                    .and()
+                    .authorizeRequests(authz -> authz.anyRequest().permitAll())
                     .logout(logout -> logout
                             .logoutUrl("/cookies/cookielogout")
                             .addLogoutHandler(new SecurityContextLogoutHandler())
@@ -72,8 +70,7 @@ public class SimpleSecurityConfiguration {
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .antMatcher("/csd/**")
-                    .authorizeRequests().anyRequest().permitAll()
-                    .and()
+                    .authorizeRequests(authz -> authz.anyRequest().permitAll())
                     .logout(logout -> logout
                             .logoutUrl("/csd/csdlogout")
                             .addLogoutHandler(new HeaderWriterLogoutHandler(new ClearSiteDataHeaderWriter(SOURCE)))
