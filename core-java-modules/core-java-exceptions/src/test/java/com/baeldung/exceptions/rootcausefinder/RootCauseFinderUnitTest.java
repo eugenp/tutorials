@@ -1,5 +1,7 @@
 package com.baeldung.exceptions.rootcausefinder;
 
+import com.baeldung.exceptions.rootcausefinder.RootCauseFinder.CalculationException;
+import com.baeldung.exceptions.rootcausefinder.RootCauseFinder.DateOutOfRangeException;
 import com.google.common.base.Throwables;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.junit.jupiter.api.Assertions;
@@ -9,7 +11,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 
-import static com.baeldung.exceptions.RootCauseFinder.*;
+import static com.baeldung.exceptions.rootcausefinder.RootCauseFinder.AgeCalculator;
+import static com.baeldung.exceptions.rootcausefinder.RootCauseFinder.findCauseUsingPlainJava;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
