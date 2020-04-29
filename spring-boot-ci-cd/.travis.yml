@@ -10,7 +10,7 @@ before_install:
 
 script:
   - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent install
-  - ./mvnw heroku:deploy -P deploy-heroku,deploy-docker
+  - ./mvnw heroku:deploy jib:build -P deploy-heroku,deploy-docker
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
