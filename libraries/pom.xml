@@ -12,18 +12,18 @@
     </parent>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor -->
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-actor_2.12</artifactId>
-            <version>${typesafe-akka.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-testkit_2.12</artifactId>
-            <version>${typesafe-akka.version}</version>
-            <scope>test</scope>
-        </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.typesafe.akka</groupId>-->
+<!--            <artifactId>akka-actor_2.12</artifactId>-->
+<!--            <version>${typesafe-akka.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.typesafe.akka</groupId>-->
+<!--            <artifactId>akka-testkit_2.12</artifactId>-->
+<!--            <version>${typesafe-akka.version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/org.beykery/neuroph/2.92 -->
         <dependency>
             <groupId>org.beykery</groupId>
@@ -36,16 +36,16 @@
             <artifactId>cglib</artifactId>
             <version>${cglib.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-net</groupId>
-            <artifactId>commons-net</artifactId>
-            <version>${commons-net.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.commons</groupId>-->
+<!--            <artifactId>commons-lang3</artifactId>-->
+<!--            <version>${commons-lang3.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>commons-net</groupId>-->
+<!--            <artifactId>commons-net</artifactId>-->
+<!--            <version>${commons-net.version}</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.javatuples</groupId>
@@ -64,11 +64,11 @@
             <version>${javers.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>io.nats</groupId>
-            <artifactId>jnats</artifactId>
-            <version>${jnats.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.nats</groupId>-->
+<!--            <artifactId>jnats</artifactId>-->
+<!--            <version>${jnats.version}</version>-->
+<!--        </dependency>-->
 
 <!--        <dependency>-->
 <!--            <groupId>rome</groupId>-->
@@ -228,11 +228,11 @@
             <artifactId>jool</artifactId>
             <version>${jool.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.openjdk.jmh</groupId>-->
+<!--            <artifactId>jmh-core</artifactId>-->
+<!--            <version>${jmh.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -244,18 +244,18 @@
             <artifactId>java-lsh</artifactId>
             <version>${java-lsh.version}</version>
         </dependency>
-        <dependency>
-            <groupId>au.com.dius</groupId>
-            <artifactId>pact-jvm-consumer-junit_2.11</artifactId>
-            <version>${pact.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy-all</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>au.com.dius</groupId>-->
+<!--            <artifactId>pact-jvm-consumer-junit_2.11</artifactId>-->
+<!--            <version>${pact.version}</version>-->
+<!--            <scope>test</scope>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.codehaus.groovy</groupId>-->
+<!--                    <artifactId>groovy-all</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
 <!--        <dependency>-->
 <!--            <groupId>org.awaitility</groupId>-->
 <!--            <artifactId>awaitility</artifactId>-->
@@ -274,16 +274,16 @@
             <version>${org.hamcrest.java-hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>${bytebuddy.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy-agent</artifactId>
-            <version>${bytebuddy.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>net.bytebuddy</groupId>-->
+<!--            <artifactId>byte-buddy</artifactId>-->
+<!--            <version>${bytebuddy.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>net.bytebuddy</groupId>-->
+<!--            <artifactId>byte-buddy-agent</artifactId>-->
+<!--            <version>${bytebuddy.version}</version>-->
+<!--        </dependency>-->
 <!--        <dependency>-->
 <!--            <groupId>org.pcollections</groupId>-->
 <!--            <artifactId>pcollections</artifactId>-->
@@ -320,43 +320,43 @@
 <!--            <artifactId>jdeferred-core</artifactId>-->
 <!--            <version>${jdeferred.version}</version>-->
 <!--        </dependency>-->
-        <dependency>
-            <groupId>com.codepoetics</groupId>
-            <artifactId>protonpack</artifactId>
-            <version>${protonpack.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.functionaljava</groupId>
-            <artifactId>functionaljava-java8</artifactId>
-            <version>${functionaljava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.ben-manes.caffeine</groupId>
-            <artifactId>caffeine</artifactId>
-            <version>${caffeine.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.codepoetics</groupId>-->
+<!--            <artifactId>protonpack</artifactId>-->
+<!--            <version>${protonpack.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.functionaljava</groupId>-->
+<!--            <artifactId>functionaljava-java8</artifactId>-->
+<!--            <version>${functionaljava.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.github.ben-manes.caffeine</groupId>-->
+<!--            <artifactId>caffeine</artifactId>-->
+<!--            <version>${caffeine.version}</version>-->
+<!--        </dependency>-->
 
-        <!--Java Docker API Client -->
-        <dependency>
-            <groupId>com.github.docker-java</groupId>
-            <artifactId>docker-java</artifactId>
-            <version>${docker.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>jcl-over-slf4j</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-classic</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!--Java Docker API Client -->
+<!--        &lt;!&ndash;Java Docker API Client &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.github.docker-java</groupId>-->
+<!--            <artifactId>docker-java</artifactId>-->
+<!--            <version>${docker.version}</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.slf4j</groupId>-->
+<!--                    <artifactId>slf4j-log4j12</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.slf4j</groupId>-->
+<!--                    <artifactId>jcl-over-slf4j</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>ch.qos.logback</groupId>-->
+<!--                    <artifactId>logback-classic</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;Java Docker API Client &ndash;&gt;-->
 
         <!-- google api -->
         <dependency>
@@ -364,58 +364,58 @@
             <artifactId>google-oauth-client-jetty</artifactId>
             <version>${google-api.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-streams</artifactId>
-            <version>${kafka.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>${kafka.version}</version>
-            <classifier>test</classifier>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.kafka</groupId>-->
+<!--            <artifactId>kafka-streams</artifactId>-->
+<!--            <version>${kafka.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.kafka</groupId>-->
+<!--            <artifactId>kafka-clients</artifactId>-->
+<!--            <version>${kafka.version}</version>-->
+<!--            <classifier>test</classifier>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
-        <!-- Atlassian Fugue -->
-        <dependency>
-            <groupId>io.atlassian.fugue</groupId>
-            <artifactId>fugue</artifactId>
-            <version>${fugue.version}</version>
-        </dependency>
+<!--        &lt;!&ndash; Atlassian Fugue &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>io.atlassian.fugue</groupId>-->
+<!--            <artifactId>fugue</artifactId>-->
+<!--            <version>${fugue.version}</version>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>org.jctools</groupId>
-            <artifactId>jctools-core</artifactId>
-            <version>${jctools.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.jctools</groupId>-->
+<!--            <artifactId>jctools-core</artifactId>-->
+<!--            <version>${jctools.version}</version>-->
+<!--        </dependency>-->
 
         <!-- resilience4j -->
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-circuitbreaker</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-bulkhead</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-retry</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-timelimiter</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup</groupId>
-            <artifactId>javapoet</artifactId>
-            <version>${javapoet.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.github.resilience4j</groupId>-->
+<!--            <artifactId>resilience4j-circuitbreaker</artifactId>-->
+<!--            <version>${resilience4j.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.github.resilience4j</groupId>-->
+<!--            <artifactId>resilience4j-bulkhead</artifactId>-->
+<!--            <version>${resilience4j.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.github.resilience4j</groupId>-->
+<!--            <artifactId>resilience4j-retry</artifactId>-->
+<!--            <version>${resilience4j.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.github.resilience4j</groupId>-->
+<!--            <artifactId>resilience4j-timelimiter</artifactId>-->
+<!--            <version>${resilience4j.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.squareup</groupId>-->
+<!--            <artifactId>javapoet</artifactId>-->
+<!--            <version>${javapoet.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
@@ -423,18 +423,18 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.mockftpserver</groupId>
-            <artifactId>MockFtpServer</artifactId>
-            <version>${mockftpserver.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- Reflections -->
-        <dependency>
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <version>${reflections.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.mockftpserver</groupId>-->
+<!--            <artifactId>MockFtpServer</artifactId>-->
+<!--            <version>${mockftpserver.version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; Reflections &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.reflections</groupId>-->
+<!--            <artifactId>reflections</artifactId>-->
+<!--            <version>${reflections.version}</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <repositories>
@@ -562,7 +562,7 @@
         <javatuples.version>1.2</javatuples.version>
         <assertj.version>3.6.2</assertj.version>
         <javers.version>3.1.0</javers.version>
-        <jnats.version>1.0</jnats.version>
+<!--        <jnats.version>1.0</jnats.version>-->
 
         <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.9.26</serenity.version>
@@ -574,24 +574,24 @@
         <pact.version>3.5.0</pact.version>
 <!--        <awaitility.version>3.0.0</awaitility.version>-->
         <org.hamcrest.java-hamcrest.version>2.0.0.0</org.hamcrest.java-hamcrest.version>
-        <bytebuddy.version>1.7.1</bytebuddy.version>
+<!--        <bytebuddy.version>1.7.1</bytebuddy.version>-->
 <!--        <pcollections.version>2.1.2</pcollections.version>-->
 <!--        <rome.version>1.0</rome.version>-->
 <!--        <eclipse-collections.version>8.2.0</eclipse-collections.version>-->
 <!--        <streamex.version>0.6.5</streamex.version>-->
 <!--        <vavr.version>0.9.0</vavr.version>-->
 
-        <protonpack.version>1.15</protonpack.version>
-        <caffeine.version>2.5.5</caffeine.version>
+<!--        <protonpack.version>1.15</protonpack.version>-->
+<!--        <caffeine.version>2.5.5</caffeine.version>-->
         <google-api.version>1.23.0</google-api.version>
-        <kafka.version>2.0.0</kafka.version>
-        <docker.version>3.0.14</docker.version>
+<!--        <kafka.version>2.0.0</kafka.version>-->
+<!--        <docker.version>3.0.14</docker.version>-->
 
         <jets3t-version>0.9.4.0006L</jets3t-version>
-        <jctools.version>2.1.2</jctools.version>
-        <typesafe-akka.version>2.5.11</typesafe-akka.version>
-        <resilience4j.version>0.12.1</resilience4j.version>
-        <javapoet.version>1.10.0</javapoet.version>
+<!--        <jctools.version>2.1.2</jctools.version>-->
+<!--        <typesafe-akka.version>2.5.11</typesafe-akka.version>-->
+<!--        <resilience4j.version>0.12.1</resilience4j.version>-->
+<!--        <javapoet.version>1.10.0</javapoet.version>-->
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <javax.jdo.version>3.2.0-m7</javax.jdo.version>
         <datanucleus.version>5.1.1</datanucleus.version>
@@ -603,17 +603,17 @@
         <spring-mock-mvc.version>3.0.3</spring-mock-mvc.version>
         <quartz.version>2.3.0</quartz.version>
         <jool.version>0.9.12</jool.version>
-        <jmh.version>1.19</jmh.version>
+<!--        <jmh.version>1.19</jmh.version>-->
 <!--        <noexception.version>1.1.0</noexception.version>-->
 <!--        <yarg.version>2.0.4</yarg.version>-->
 <!--        <mbassador.version>1.3.1</mbassador.version>-->
 <!--        <jdeferred.version>1.2.6</jdeferred.version>-->
-        <functionaljava.version>4.8.1</functionaljava.version>
-        <fugue.version>4.5.1</fugue.version>
+<!--        <functionaljava.version>4.8.1</functionaljava.version>-->
+<!--        <fugue.version>4.5.1</fugue.version>-->
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
-        <mockftpserver.version>2.7.1</mockftpserver.version>
-        <commons-net.version>3.6</commons-net.version>
-        <reflections.version>0.9.11</reflections.version>
+<!--        <mockftpserver.version>2.7.1</mockftpserver.version>-->
+<!--        <commons-net.version>3.6</commons-net.version>-->
+<!--        <reflections.version>0.9.11</reflections.version>-->
     </properties>
 
 </project>
