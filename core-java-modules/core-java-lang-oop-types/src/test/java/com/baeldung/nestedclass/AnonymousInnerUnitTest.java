@@ -6,7 +6,7 @@ abstract class SimpleAbstractClass {
     abstract void run();
 }
 
-public class AnonymousInnerTest {
+public class AnonymousInnerUnitTest {
 
     @Test
     public void run() {
