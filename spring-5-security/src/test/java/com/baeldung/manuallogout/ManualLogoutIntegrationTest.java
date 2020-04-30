@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.web.authentication.rememberme.AbstractRememberMeServices;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -36,7 +37,22 @@ public class ManualLogoutIntegrationTest {
 
     @WithMockUser(value = "spring")
     @Test
-    public void givenLoggedUserWhenUserLogoutThenSessionCleared() throws Exception {
+    public void givenLoggedUserWhenUserLogoutThenSessionClearedAndNecessaryCookieCleared() throws Exception {
+
+        MockHttpServletRequest requestStateAfterLogout = this.mockMvc.perform(post("/basic/basiclogout").secure(true).with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(unauthenticated())
+                .andExpect(cookie().maxAge(AbstractRememberMeServices.SPRING_SECURITY_REMEMBER_ME_COOKIE_KEY, 0))
+                .andReturn()
+                .getRequest();
+
+        HttpSession sessionStateAfterLogout = requestStateAfterLogout.getSession();
+        assertNull(sessionStateAfterLogout.getAttribute(ATTRIBUTE_NAME));
+    }
+
+    @WithMockUser(value = "spring")
+    @Test
+    public void givenLoggedUserWhenUserLogoutThenSessionClearedAndAllCookiesCleared() throws Exception {
 
         MockHttpSession session = new MockHttpSession();
         session.setAttribute(ATTRIBUTE_NAME, ATTRIBUTE_VALUE);
@@ -44,7 +60,7 @@ public class ManualLogoutIntegrationTest {
         Cookie randomCookie = new Cookie(COOKIE_NAME, COOKIE_VALUE);
         randomCookie.setMaxAge(EXPIRY); // 10 minutes
 
-        MockHttpServletRequest requestStateAfterLogout = this.mockMvc.perform(post("/basiclogout").secure(true).with(csrf()).session(session).cookie(randomCookie))
+        MockHttpServletRequest requestStateAfterLogout = this.mockMvc.perform(post("/cookies/cookielogout").secure(true).with(csrf()).session(session).cookie(randomCookie))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(unauthenticated())
                 .andExpect(cookie().maxAge(COOKIE_NAME, 0))
@@ -53,15 +69,13 @@ public class ManualLogoutIntegrationTest {
 
         HttpSession sessionStateAfterLogout = requestStateAfterLogout.getSession();
         assertNull(sessionStateAfterLogout.getAttribute(ATTRIBUTE_NAME));
-
-
     }
 
     @WithMockUser(value = "spring")
     @Test
     public void givenLoggedUserWhenUserLogoutThenClearDataSiteHeaderPresent() throws Exception {
 
-        this.mockMvc.perform(post("/csdlogout").secure(true).with(csrf()))
+        this.mockMvc.perform(post("/csd/csdlogout").secure(true).with(csrf()))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(header().exists(CLEAR_SITE_DATA_HEADER))
