@@ -24,6 +24,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
@@ -72,7 +78,7 @@
     </build>
 
     <properties>
-        <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
+        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <custom.property>Custom Property Value</custom.property>
         <apache-maven.version>2.7</apache-maven.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
