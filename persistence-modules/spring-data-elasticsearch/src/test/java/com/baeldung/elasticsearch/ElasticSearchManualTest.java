@@ -9,12 +9,15 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.alibaba.fastjson.JSON;
 
 import org.elasticsearch.action.DocWriteResponse.Result;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.delete.DeleteResponse;
+import org.elasticsearch.action.get.GetRequest;
+import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchRequest;
@@ -34,10 +37,9 @@ import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.RestClients;
 
 /**
- * 
- * This Manual test requires: * Elasticsearch instance running on host * with
- * cluster name = elasticsearch
- *
+ * This Manual test requires: * Elasticsearch instance running on localhost:9200.
+ * The following docker command can be used:
+ * docker run -d --name es761 -p 9200:9200 -e "discovery.type=single-node" elasticsearch:7.6.1
  */
 public class ElasticSearchManualTest {
   private List<Person> listOfPersons = new ArrayList<>();
@@ -57,28 +59,35 @@ public class ElasticSearchManualTest {
   @Test
   public void givenJsonString_whenJavaObject_thenIndexDocument() throws Exception {
     String jsonObject = "{\"age\":20,\"dateOfBirth\":1471466076564,\"fullName\":\"John Doe\"}";
-    IndexRequest request = new IndexRequest("people", "Doe");
+    IndexRequest request = new IndexRequest("people");
     request.source(jsonObject, XContentType.JSON);
-
+    
     IndexResponse response = client.index(request, RequestOptions.DEFAULT);
     String index = response.getIndex();
-
+    long version = response.getVersion();
+    
     assertEquals(Result.CREATED, response.getResult());
-    assertEquals(index, "people");
+    assertEquals(1, version);
+    assertEquals("people", index);
   }
 
   @Test
   public void givenDocumentId_whenJavaObject_thenDeleteDocument() throws Exception {
     String jsonObject = "{\"age\":10,\"dateOfBirth\":1471455886564,\"fullName\":\"Johan Doe\"}";
-    IndexRequest indexRequest = new IndexRequest("people", "Doe");
+    IndexRequest indexRequest = new IndexRequest("people");
     indexRequest.source(jsonObject, XContentType.JSON);
 
     IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);
     String id = response.getId();
 
+    GetRequest getRequest = new GetRequest("people");
+    getRequest.id(id);
+
+    GetResponse getResponse = client.get(getRequest, RequestOptions.DEFAULT);
+    System.out.println(getResponse.getSourceAsString());
+
     DeleteRequest deleteRequest = new DeleteRequest("people");
     deleteRequest.id(id);
-    deleteRequest.type("Doe");
 
     DeleteResponse deleteResponse = client.delete(deleteRequest, RequestOptions.DEFAULT);
 
@@ -98,8 +107,8 @@ public class ElasticSearchManualTest {
 
   @Test
   public void givenSearchParameters_thenReturnResults() throws Exception {
-    SearchSourceBuilder builder = new SearchSourceBuilder().postFilter(QueryBuilders.rangeQuery("age").from(5).to(15))
-        .from(0).size(60).explain(true);
+    SearchSourceBuilder builder = 
+      new SearchSourceBuilder().postFilter(QueryBuilders.rangeQuery("age").from(5).to(15));
 
     SearchRequest searchRequest = new SearchRequest();
     searchRequest.searchType(SearchType.DFS_QUERY_THEN_FETCH);
@@ -107,8 +116,7 @@ public class ElasticSearchManualTest {
 
     SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
 
-    builder = new SearchSourceBuilder().postFilter(QueryBuilders.simpleQueryStringQuery("+John -Doe OR Janette"))
-        .from(0).size(60).explain(true);
+    builder = new SearchSourceBuilder().postFilter(QueryBuilders.simpleQueryStringQuery("+John -Doe OR Janette"));
 
     searchRequest = new SearchRequest();
     searchRequest.searchType(SearchType.DFS_QUERY_THEN_FETCH);
@@ -116,8 +124,7 @@ public class ElasticSearchManualTest {
 
     SearchResponse response2 = client.search(searchRequest, RequestOptions.DEFAULT);
 
-    builder = new SearchSourceBuilder().postFilter(QueryBuilders.matchQuery("John", "Name*")).from(0).size(60)
-        .explain(true);
+    builder = new SearchSourceBuilder().postFilter(QueryBuilders.matchQuery("John", "Name*"));
     searchRequest = new SearchRequest();
     searchRequest.searchType(SearchType.DFS_QUERY_THEN_FETCH);
     searchRequest.source(builder);
@@ -126,9 +133,15 @@ public class ElasticSearchManualTest {
 
     response2.getHits();
     response3.getHits();
-
-    final List<Person> results = Arrays.stream(response.getHits().getHits())
-        .map(hit -> JSON.parseObject(hit.getSourceAsString(), Person.class)).collect(Collectors.toList());
+    
+    final List<Person> results = 
+      Stream.of(response.getHits().getHits(), 
+        response2.getHits().getHits(), 
+        response3.getHits().getHits())
+      .flatMap(Arrays::stream)
+      .map(hit -> JSON.parseObject(hit.getSourceAsString(), Person.class))
+      .collect(Collectors.toList());
+    
     results.forEach(System.out::println);
   }
 
@@ -137,7 +150,7 @@ public class ElasticSearchManualTest {
     XContentBuilder builder = XContentFactory.jsonBuilder().startObject().field("fullName", "Test")
         .field("salary", "11500").field("age", "10").endObject();
 
-    IndexRequest indexRequest = new IndexRequest("people", "Doe");
+    IndexRequest indexRequest = new IndexRequest("people");
     indexRequest.source(builder);
 
     IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);

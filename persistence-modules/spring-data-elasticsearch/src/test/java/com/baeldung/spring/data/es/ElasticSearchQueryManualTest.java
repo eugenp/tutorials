@@ -2,7 +2,6 @@ package com.baeldung.spring.data.es;
 
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
-import static org.elasticsearch.index.query.Operator.AND;
 import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.matchPhraseQuery;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
@@ -26,6 +25,7 @@ import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.unit.Fuzziness;
 import org.elasticsearch.index.query.MultiMatchQueryBuilder;
+import org.elasticsearch.index.query.Operator;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.aggregations.Aggregation;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
@@ -39,16 +39,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
+import org.springframework.data.elasticsearch.core.SearchHits;
+import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
-import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * 
- * This Manual test requires: * Elasticsearch instance running on host * with
- * cluster name = elasticsearch
- *
+ * This Manual test requires: * Elasticsearch instance running on localhost:9200.
+ * The following docker command can be used:
+ * docker run -d --name es761 -p 9200:9200 -e "discovery.type=single-node" elasticsearch:7.6.1
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Config.class)
@@ -68,10 +69,10 @@ public class ElasticSearchQueryManualTest {
 
   @Before
   public void before() {
-    elasticsearchTemplate.deleteIndex(Article.class);
-    elasticsearchTemplate.createIndex(Article.class);
-    elasticsearchTemplate.putMapping(Article.class);
-    elasticsearchTemplate.refresh(Article.class);
+    elasticsearchTemplate.indexOps(Article.class).delete();
+    elasticsearchTemplate.indexOps(Article.class).create();
+    elasticsearchTemplate.indexOps(Article.class).createMapping();
+    elasticsearchTemplate.indexOps(Article.class).refresh();;
 
     Article article = new Article("Spring Data Elasticsearch");
     article.setAuthors(asList(johnSmith, johnDoe));
@@ -96,40 +97,55 @@ public class ElasticSearchQueryManualTest {
 
   @Test
   public void givenFullTitle_whenRunMatchQuery_thenDocIsFound() {
-    final SearchQuery searchQuery = new NativeSearchQueryBuilder()
-        .withQuery(matchQuery("title", "Search engines").operator(AND)).build();
-    final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
-    assertEquals(1, articles.size());
+    final NativeSearchQuery searchQuery = new NativeSearchQueryBuilder()
+        .withQuery(matchQuery("title", "Search engines").operator(Operator.AND)).build();
+    final SearchHits<Article> articles = 
+      elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+    assertEquals(1, articles.getTotalHits());
   }
 
   @Test
   public void givenOneTermFromTitle_whenRunMatchQuery_thenDocIsFound() {
-    final SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title", "Engines Solutions"))
+    final NativeSearchQuery searchQuery = 
+      new NativeSearchQueryBuilder().withQuery(matchQuery("title", "Engines Solutions"))
         .build();
-    final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
-    assertEquals(1, articles.size());
-    assertEquals("Search engines", articles.get(0).getTitle());
+    
+    final SearchHits<Article> articles = 
+      elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+    
+    assertEquals(1, articles.getTotalHits());
+    assertEquals("Search engines", articles.getSearchHit(0).getContent().getTitle());
   }
 
   @Test
   public void givenPartTitle_whenRunMatchQuery_thenDocIsFound() {
-    final SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title", "elasticsearch data"))
+    final NativeSearchQuery searchQuery = 
+      new NativeSearchQueryBuilder().withQuery(matchQuery("title", "elasticsearch data"))
         .build();
-    final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
-    assertEquals(3, articles.size());
+
+    final SearchHits<Article> articles = 
+      elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+    
+    assertEquals(3, articles.getTotalHits());
   }
 
   @Test
   public void givenFullTitle_whenRunMatchQueryOnVerbatimField_thenDocIsFound() {
-    SearchQuery searchQuery = new NativeSearchQueryBuilder()
-        .withQuery(matchQuery("title.verbatim", "Second Article About Elasticsearch")).build();
-    List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
-    assertEquals(1, articles.size());
+    NativeSearchQuery searchQuery = new NativeSearchQueryBuilder()
+      .withQuery(matchQuery("title.verbatim", "Second Article About Elasticsearch"))
+      .build();
 
-    searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title.verbatim", "Second Article About"))
-        .build();
-    articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
-    assertEquals(0, articles.size());
+    SearchHits<Article> articles = 
+      elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+    
+    assertEquals(1, articles.getTotalHits());
+
+    searchQuery = new NativeSearchQueryBuilder()
+      .withQuery(matchQuery("title.verbatim", "Second Article About"))
+      .build();
+    
+    articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+    assertEquals(0, articles.getTotalHits());
   }
 
   @Test
@@ -137,10 +153,10 @@ public class ElasticSearchQueryManualTest {
     final QueryBuilder builder = nestedQuery("authors", boolQuery().must(termQuery("authors.name", "smith")),
         ScoreMode.None);
 
-    final SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(builder).build();
-    final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
+    final NativeSearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(builder).build();
+    final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
 
-    assertEquals(2, articles.size());
+    assertEquals(2, articles.getTotalHits());
   }
 
   @Test
@@ -148,7 +164,7 @@ public class ElasticSearchQueryManualTest {
     final TermsAggregationBuilder aggregation = AggregationBuilders.terms("top_tags").field("title");
 
     final SearchSourceBuilder builder = new SearchSourceBuilder().aggregation(aggregation);
-    final SearchRequest searchRequest = new SearchRequest("blog").types("article").source(builder);
+    final SearchRequest searchRequest = new SearchRequest("blog").source(builder);
 
     final SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
 
@@ -167,7 +183,7 @@ public class ElasticSearchQueryManualTest {
         .order(BucketOrder.count(false));
 
     final SearchSourceBuilder builder = new SearchSourceBuilder().aggregation(aggregation);
-    final SearchRequest searchRequest = new SearchRequest().indices("blog").types("article").source(builder);
+    final SearchRequest searchRequest = new SearchRequest().indices("blog").source(builder);
 
     final SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
 
@@ -181,32 +197,36 @@ public class ElasticSearchQueryManualTest {
 
   @Test
   public void givenNotExactPhrase_whenUseSlop_thenQueryMatches() {
-    final SearchQuery searchQuery = new NativeSearchQueryBuilder()
+    final NativeSearchQuery searchQuery = new NativeSearchQueryBuilder()
         .withQuery(matchPhraseQuery("title", "spring elasticsearch").slop(1)).build();
-    final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
-    assertEquals(1, articles.size());
+
+    final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+    
+    assertEquals(1, articles.getTotalHits());
   }
 
   @Test
   public void givenPhraseWithType_whenUseFuzziness_thenQueryMatches() {
-    final SearchQuery searchQuery = new NativeSearchQueryBuilder()
+    final NativeSearchQuery searchQuery = new NativeSearchQueryBuilder()
         .withQuery(
-            matchQuery("title", "spring date elasticserch").operator(AND).fuzziness(Fuzziness.ONE).prefixLength(3))
+            matchQuery("title", "spring date elasticserch").operator(Operator.AND).fuzziness(Fuzziness.ONE).prefixLength(3))
         .build();
 
-    final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
-    assertEquals(1, articles.size());
+    final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+    
+    assertEquals(1, articles.getTotalHits());
   }
 
   @Test
   public void givenMultimatchQuery_whenDoSearch_thenAllProvidedFieldsMatch() {
-    final SearchQuery searchQuery = new NativeSearchQueryBuilder()
+    final NativeSearchQuery searchQuery = new NativeSearchQueryBuilder()
         .withQuery(
             multiMatchQuery("tutorial").field("title").field("tags").type(MultiMatchQueryBuilder.Type.BEST_FIELDS))
         .build();
 
-    final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
-    assertEquals(2, articles.size());
+    final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+
+    assertEquals(2, articles.getTotalHits());
   }
 
   @Test
@@ -215,9 +235,9 @@ public class ElasticSearchQueryManualTest {
         .must(nestedQuery("authors", boolQuery().must(termQuery("authors.name", "doe")), ScoreMode.None))
         .filter(termQuery("tags", "elasticsearch"));
 
-    final SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(builder).build();
-    final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
+    final NativeSearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(builder).build();
+    final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
 
-    assertEquals(2, articles.size());
+    assertEquals(2, articles.getTotalHits());
   }
 }
