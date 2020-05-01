@@ -1,5 +1,5 @@
 ### Relevant Articles: 
-- [Derived Query Methods in Spring Data JPA Repositories](TBD)
+- [Spring JPA @Embedded and @EmbeddedId](TBD)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
