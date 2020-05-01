@@ -1,20 +1,29 @@
 package com.baeldung.web.controller;
 
-import com.baeldung.model.Employee;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.MatrixVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.*;
+import com.baeldung.model.Employee;
 
 @SessionAttributes("employees")
 @Controller
-@ControllerAdvice
 public class EmployeeController {
 
     Map<Long, Employee> employeeMap = new HashMap<>();
@@ -35,7 +44,7 @@ public class EmployeeController {
     public @ResponseBody Employee getEmployeeById(@PathVariable final long Id) {
         return employeeMap.get(Id);
     }
-
+    
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
     public String submit(@ModelAttribute("employee") final Employee employee, final BindingResult result, final ModelMap model) {
         if (result.hasErrors()) {
@@ -49,11 +58,6 @@ public class EmployeeController {
         employeeMap.put(employee.getId(), employee);
 
         return "employeeView";
-    }
-
-    @ModelAttribute
-    public void addAttributes(final Model model) {
-        model.addAttribute("msg", "Welcome to the Netherlands!");
     }
 
     @RequestMapping(value = "/employees/{name}", method = RequestMethod.GET)

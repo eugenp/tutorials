@@ -1,0 +1,46 @@
+<html t:type="layout" title="apache-tapestry Index"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+        >
+
+    <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="hero-unit">
+        <p>
+            <img src="${asset:context:images/tapestry.png}"
+                 alt="${message:greeting}" title="${message:greeting}"/>
+        </p>
+        <h3>${message:greeting}</h3>
+        <p>The current time is: <strong>${currentTime}</strong></p>
+        <p>
+            This is a template for a simple marketing or informational website. It includes a large callout called
+            the hero unit and three supporting pieces of content. Use it as a starting point to create something
+            more unique.
+        </p>
+        <p><t:actionlink t:id="learnmore" class="btn btn-primary btn-large">Learn more &raquo;</t:actionlink></p>
+    </div>
+
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="span4">
+            <h2>Normal link</h2>
+            <p>Clink the bottom link and the page refresh with event <code>complete</code></p>
+            <p><t:eventlink event="complete" class="btn btn-default">Complete&raquo;</t:eventlink></p>
+        </div>
+        <t:zone t:id="middlezone" class="span4">
+
+        </t:zone>
+        <div class="span4">
+            <h2>Ajax link</h2>
+            <p>Click the bottom link to update just the middle column with Ajax call with event <code>ajax</code></p>
+            <p><t:eventlink event="ajax" zone="middlezone" class="btn btn-default">Ajax&raquo;</t:eventlink></p>
+        </div>
+    </div>
+
+    <t:block t:id="block">
+        <h2>Ajax updated</h2>
+        <p>I'v been updated through AJAX call</p>
+        <p>The current time is: <strong>${currentTime}</strong></p>
+    </t:block>
+
+</html>

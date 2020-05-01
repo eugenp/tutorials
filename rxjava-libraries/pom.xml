@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>rxjava-libraries</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>rxjava-libraries</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-java</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-java</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>${rx.java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.reactivex.rxjava2</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>${rx.java2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jakewharton.rxrelay2</groupId>
+            <artifactId>rxrelay</artifactId>
+            <version>${rxrelay.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.davidmoten</groupId>
+            <artifactId>rxjava-jdbc</artifactId>
+            <version>${rx.java.jdbc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <rx.java.jdbc.version>0.7.11</rx.java.jdbc.version>
+        <rx.java.version>1.2.5</rx.java.version>
+        <rxrelay.version>2.0.0</rxrelay.version>
+        <rx.java2.version>2.2.2</rx.java2.version>
+        <assertj.version>3.8.0</assertj.version>
+    </properties>
+
+</project>

@@ -5,11 +5,11 @@
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd"
 >
 
-    <context:property-placeholder location="classpath:persistence-mysql.properties"/>
+    <context:property-placeholder location="classpath:persistence-h2.properties"/>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="org.baeldung.persistence.model"/>
+        <property name="packagesToScan" value="com.baeldung.persistence.model"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>

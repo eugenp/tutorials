@@ -40,4 +40,5 @@ public class AppConfig {
     public SingletonObjectFactoryBean singletonObjectFactoryBean() {
         return new SingletonObjectFactoryBean();
     }
+    
 }

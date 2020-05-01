@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>core-java-io</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <name>core-java-io</name>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-java</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-java</relativePath>
+    </parent>
+
+    <dependencies>
+        <!-- test scoped -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>${opencsv.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Mime Type Resolution Libraries -->
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-core</artifactId>
+            <version>${tika.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jmimemagic</groupId>
+            <artifactId>jmimemagic</artifactId>
+            <version>${jmime-magic.version}</version>
+        </dependency>
+        <!-- Context Libraries -->
+        <dependency>
+            <groupId>com.sun.messaging.mq</groupId>
+            <artifactId>fscontext</artifactId>
+            <version>${fscontext.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>core-java-io</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec-maven-plugin.version}</version>
+                <configuration>
+                    <executable>java</executable>
+                    <mainClass>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</mainClass>
+                    <arguments>
+                        <argument>-Xmx300m</argument>
+                        <argument>-XX:+UseParallelGC</argument>
+                        <argument>-classpath</argument>
+                        <classpath />
+                        <argument>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.baeldung.resource.MyResourceLoader</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>integration</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+
+                        <executions>
+                            <execution>
+                                <id>run-benchmarks</id>
+                                <!-- <phase>integration-test</phase> -->
+                                <phase>none</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <classpathScope>test</classpathScope>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-classpath</argument>
+                                        <classpath />
+                                        <argument>org.openjdk.jmh.Main</argument>
+                                        <argument>.*</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <properties>
+        <!-- util -->
+        <opencsv.version>4.1</opencsv.version>
+        <!-- testing -->
+        <assertj.version>3.6.1</assertj.version>
+        <!-- maven plugins -->
+        <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
+        <hsqldb.version>2.4.0</hsqldb.version>
+        <!-- Mime Type Libraries -->
+        <tika.version>1.18</tika.version>
+        <jmime-magic.version>0.1.5</jmime-magic.version>
+        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
+        <fscontext.version>4.4.2</fscontext.version>
+    </properties>
+
+</project>

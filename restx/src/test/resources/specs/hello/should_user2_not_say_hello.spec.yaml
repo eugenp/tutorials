@@ -1,0 +1,10 @@
+title: should user2 not say hello
+given:
+  - time: 2013-08-28T01:19:44.770+02:00
+  - uuids: [ "56f71fcc-42d3-422f-9458-8ad37fc4a0b5" ]
+wts:
+  - when: |
+      GET message
+      $RestxSession: {"_expires":"2013-09-27T01:19:44.770+02:00","principal":"user2","sessionKey":"56f71fcc-42d3-422f-9458-8ad37fc4a0b5"}
+    then: |
+      403

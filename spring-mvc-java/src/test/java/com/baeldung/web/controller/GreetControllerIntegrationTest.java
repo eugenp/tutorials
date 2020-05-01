@@ -20,12 +20,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.spring.web.config.ApplicationConfig;
 import com.baeldung.spring.web.config.WebConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { ApplicationConfig.class, WebConfig.class })
+@ContextConfiguration(classes = { WebConfig.class, WebConfig.class })
 public class GreetControllerIntegrationTest {
 
     @Autowired
@@ -33,7 +32,7 @@ public class GreetControllerIntegrationTest {
 
     private MockMvc mockMvc;
 
-    private static final String CONTENT_TYPE = "application/json;charset=UTF-8";
+    private static final String CONTENT_TYPE = "application/json";
 
     @Before
     public void setup() throws Exception {
@@ -41,7 +40,7 @@ public class GreetControllerIntegrationTest {
     }
 
     @Test
-    public void givenWAC_whenServletContext_thenItProvidesGreetController() {
+    public void givenWac_whenServletContext_thenItProvidesGreetController() {
         final ServletContext servletContext = wac.getServletContext();
         Assert.assertNotNull(servletContext);
         Assert.assertTrue(servletContext instanceof MockServletContext);
@@ -60,7 +59,7 @@ public class GreetControllerIntegrationTest {
     }
 
     @Test
-    public void givenGreetURIWithPathVariable_whenMockMVC_thenVerifyResponse() throws Exception {
+    public void givenGreetURIWithPathVariable_whenMockMVC_thenResponseOK() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/greetWithPathVariable/John")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(CONTENT_TYPE))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World John!!!"));
     }
@@ -72,7 +71,7 @@ public class GreetControllerIntegrationTest {
     }
 
     @Test
-    public void givenGreetURIWithQueryParameter_whenMockMVC_thenVerifyResponse() throws Exception {
+    public void givenGreetURIWithQueryParameter_whenMockMVC_thenResponseOK() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/greetWithQueryVariable").param("name", "John Doe")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(CONTENT_TYPE))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World John Doe!!!"));
     }
@@ -84,7 +83,7 @@ public class GreetControllerIntegrationTest {
     }
 
     @Test
-    public void givenGreetURIWithPostAndFormData_whenMockMVC_thenVerifyResponse() throws Exception {
+    public void givenGreetURIWithPostAndFormData_whenMockMVC_thenResponseOK() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/greetWithPostAndFormData").param("id", "1").param("name", "John Doe")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(CONTENT_TYPE)).andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World John Doe!!!")).andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1));
     }

@@ -1,0 +1,7 @@
+ <MithraRuntime>
+    <ConnectionManager className="com.gs.fw.common.mithra.test.ConnectionManagerForTests">
+        <Property name="resourceName" value="testDb"/>
+        <MithraObjectConfiguration className="com.baeldung.libraries.reladomo.Department" cacheType="partial"/>
+        <MithraObjectConfiguration className="com.baeldung.libraries.reladomo.Employee" cacheType="partial"/>
+    </ConnectionManager>
+ </MithraRuntime>

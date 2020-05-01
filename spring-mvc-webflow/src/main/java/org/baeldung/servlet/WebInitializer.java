@@ -1,9 +1,9 @@
-package org.baeldung.servlet;
+package com.baeldung.servlet;
 
 import javax.servlet.ServletRegistration.Dynamic;
 
-import org.baeldung.spring.WebFlowConfig;
-import org.baeldung.spring.WebMvcConfig;
+import com.baeldung.spring.WebFlowConfig;
+import com.baeldung.spring.WebMvcConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {

@@ -7,6 +7,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.t
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
 import org.apache.catalina.Context;
+import org.apache.catalina.Wrapper;
 import org.apache.catalina.startup.Tomcat;
 import org.springframework.boot.web.embedded.tomcat.TomcatWebServer;
 import org.springframework.boot.web.server.WebServer;
@@ -41,7 +42,8 @@ public class ExploreSpring5URLPatternUsingRouterFunctions {
         tomcat.setPort(9090);
         Context rootContext = tomcat.addContext("", System.getProperty("java.io.tmpdir"));
         ServletHttpHandlerAdapter servlet = new ServletHttpHandlerAdapter(httpHandler);
-        Tomcat.addServlet(rootContext, "httpHandlerServlet", servlet);
+        Wrapper servletWrapper = Tomcat.addServlet(rootContext, "httpHandlerServlet", servlet);
+        servletWrapper.setAsyncSupported(true);
         rootContext.addServletMappingDecoded("/", "httpHandlerServlet");
 
         TomcatWebServer server = new TomcatWebServer(tomcat);

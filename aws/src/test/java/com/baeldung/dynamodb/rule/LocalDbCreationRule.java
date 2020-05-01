@@ -15,7 +15,7 @@ public class LocalDbCreationRule extends ExternalResource {
     @Override
     protected void before() throws Exception {
         String port = "8000";
-        this.server = ServerRunner.createServerFromCommandLineArgs(new String[]{"-inMemory", "-port", port});
+        this.server = ServerRunner.createServerFromCommandLineArgs(new String[]{"-inMemory","-sharedDb" ,"-port", port});
         server.start();
     }
 

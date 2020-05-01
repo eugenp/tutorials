@@ -1,21 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>remoting-amqp</artifactId>
-        <groupId>com.baeldung</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>remoting-amqp-client</artifactId>
-    <packaging>jar</packaging>
-
     <name>remoting-amqp-client</name>
+    <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>remoting-amqp</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
     <dependencies>
         <dependency>
@@ -30,7 +26,9 @@
         </dependency>
         <dependency>
             <groupId>com.baeldung</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>remoting-http-api</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
+
 </project>

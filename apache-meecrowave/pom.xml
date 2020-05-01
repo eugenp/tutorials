@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>apache-meecrowave</artifactId>
+    <version>0.0.1</version>
+    <name>apache-meecrowave</name>
+    <description>A sample REST API application with Meecrowave</description>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.meecrowave/meecrowave-core -->
+        <dependency>
+            <groupId>org.apache.meecrowave</groupId>
+            <artifactId>meecrowave-core</artifactId>
+            <version>${meecrowave-core.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.meecrowave/meecrowave-jpa -->
+        <dependency>
+            <groupId>org.apache.meecrowave</groupId>
+            <artifactId>meecrowave-jpa</artifactId>
+            <version>${meecrowave-jpa.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.meecrowave</groupId>
+            <artifactId>meecrowave-junit</artifactId>
+            <version>${meecrowave-junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.meecrowave</groupId>
+                <artifactId>meecrowave-maven-plugin</artifactId>
+                <version>${meecrowave-maven-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <meecrowave-junit.version>1.2.0</meecrowave-junit.version>
+        <okhttp.version>3.10.0</okhttp.version>
+        <meecrowave-jpa.version>1.2.1</meecrowave-jpa.version>
+        <meecrowave-core.version>1.2.1</meecrowave-core.version>
+        <meecrowave-maven-plugin.version>1.2.1</meecrowave-maven-plugin.version>
+    </properties>
+
+</project>

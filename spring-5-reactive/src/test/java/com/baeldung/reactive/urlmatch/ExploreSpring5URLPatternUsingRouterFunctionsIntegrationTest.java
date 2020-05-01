@@ -6,8 +6,6 @@ import org.junit.Test;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-import com.baeldung.reactive.urlmatch.ExploreSpring5URLPatternUsingRouterFunctions;
-
 public class ExploreSpring5URLPatternUsingRouterFunctionsIntegrationTest {
 
     private static WebTestClient client;

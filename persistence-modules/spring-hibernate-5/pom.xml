@@ -1,16 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-hibernate-5</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>spring-hibernate-5</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <artifactId>persistence-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
     </parent>
 
     <dependencies>
@@ -49,6 +48,11 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
@@ -93,30 +97,10 @@
             <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>${org.hamcrest.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <version>${org.springframework.security.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit-dep</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>${org.hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -140,22 +124,11 @@
 
     </dependencies>
 
-    <build>
-        <finalName>spring-hibernate-5</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
-
     <properties>
         <!-- Spring -->
         <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
         <org.springframework.data.version>1.10.6.RELEASE</org.springframework.data.version>
         <org.springframework.security.version>4.2.1.RELEASE</org.springframework.security.version>
-        <org.springframework.data.version>1.10.6.RELEASE</org.springframework.data.version>
 
         <!-- persistence -->
         <hibernate.version>5.2.10.Final</hibernate.version>
@@ -164,33 +137,9 @@
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <hsqldb.version>2.3.4</hsqldb.version>
-        <h2.version>1.4.195</h2.version>
-
-        <!-- logging -->
-        <org.slf4j.version>1.7.21</org.slf4j.version>
-        <logback.version>1.1.7</logback.version>
-
-        <!-- various -->
-        <hibernate-validator.version>5.4.0.Final</hibernate-validator.version>
-        <javax.el-api.version>2.2.5</javax.el-api.version>
 
         <!-- util -->
         <guava.version>21.0</guava.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
-
-        <!-- testing -->
-        <org.hamcrest.version>1.3</org.hamcrest.version>
-        <junit.version>4.12</junit.version>
-        <httpcore.version>4.4.1</httpcore.version>
-        <httpclient.version>4.5</httpclient.version>
-        <rest-assured.version>2.9.0</rest-assured.version>
-
-        <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-
     </properties>
 
 </project>

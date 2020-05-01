@@ -12,14 +12,16 @@ import org.jooq.impl.DSL;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataAccessException;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
-@Transactional("transactionManager")
+import com.baeldung.jooq.introduction.PersistenceContextIntegrationTest;
+
+@ContextConfiguration(classes = PersistenceContextIntegrationTest.class)
+@Transactional(transactionManager = "transactionManager")
+@RunWith(SpringJUnit4ClassRunner.class)
 public class SpringBootIntegrationTest {
 
     @Autowired
@@ -47,12 +49,13 @@ public class SpringBootIntegrationTest {
                 .from(AUTHOR).join(AUTHOR_BOOK).on(AUTHOR.ID.equal(AUTHOR_BOOK.AUTHOR_ID))
                 .join(BOOK).on(AUTHOR_BOOK.BOOK_ID.equal(BOOK.ID))
                 .groupBy(AUTHOR.LAST_NAME)
+                .orderBy(AUTHOR.LAST_NAME.desc())
                 .fetch();
 
         assertEquals(3, result.size());
         assertEquals("Sierra", result.getValue(0, AUTHOR.LAST_NAME));
         assertEquals(Integer.valueOf(2), result.getValue(0, DSL.count()));
-        assertEquals("Schildt", result.getValue(2, AUTHOR.LAST_NAME));
+        assertEquals("Bates", result.getValue(2, AUTHOR.LAST_NAME));
         assertEquals(Integer.valueOf(1), result.getValue(2, DSL.count()));
     }
 

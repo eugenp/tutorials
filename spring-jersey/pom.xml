@@ -2,10 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-jersey</artifactId>
     <version>0.1-SNAPSHOT</version>
+    <name>spring-jersey</name>
     <packaging>war</packaging>
 
     <parent>
@@ -13,37 +12,6 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-    <build>
-        <finalName>spring-jersey</finalName>
-        <plugins>
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>${maven-war-plugin.version}</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <version>${cargo-maven2-plugin.version}</version>
-                <configuration>
-                    <wait>true</wait>
-                    <container>
-                        <containerId>jetty8x</containerId>
-                        <type>embedded</type>
-                    </container>
-                    <configuration>
-                        <properties>
-                            <cargo.servlet.port>8082</cargo.servlet.port>
-                        </properties>
-                    </configuration>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <dependencies>
 
@@ -69,7 +37,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet-api-version}</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -108,6 +76,57 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.ext.rx</groupId>
+            <artifactId>jersey-rx-client-rxjava</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.ext.rx</groupId>
+            <artifactId>jersey-rx-client-rxjava2</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>${wiremock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <profiles>
@@ -127,6 +146,7 @@
                                 <configuration>
                                     <excludes>
                                         <exclude>**/*IntegrationTest.java</exclude>
+                                        <exclude>**/*IntTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/*LiveTest.java</include>
@@ -169,13 +189,46 @@
         </profile>
     </profiles>
 
+    <build>
+        <finalName>spring-jersey</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>${cargo-maven2-plugin.version}</version>
+                <configuration>
+                    <wait>true</wait>
+                    <container>
+                        <containerId>jetty8x</containerId>
+                        <type>embedded</type>
+                    </container>
+                    <configuration>
+                        <properties>
+                            <cargo.servlet.port>8082</cargo.servlet.port>
+                        </properties>
+                    </configuration>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
-        <jersey.version>2.26</jersey.version>
-        <maven-war-plugin.version>3.2.0</maven-war-plugin.version>
+        <jersey.version>2.29.1</jersey.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <httpcore.version>4.4.9</httpcore.version>
         <httpclient.version>4.5.5</httpclient.version>
-        <servlet-api-version>4.0.0</servlet-api-version>
+        <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
+        <wiremock.version>2.25.1</wiremock.version>
+        <assertj-core.version>3.10.0</assertj-core.version>
+        <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
     </properties>
 
 </project>

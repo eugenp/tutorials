@@ -3,7 +3,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath "io.ratpack:ratpack-gradle:1.4.5"
+    classpath "io.ratpack:ratpack-gradle:1.5.4"
     classpath "com.h2database:h2:1.4.193"
   }
 }
@@ -14,6 +14,8 @@ if (!JavaVersion.current().java8Compatible) {
 
 apply plugin: "io.ratpack.ratpack-java"
 apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'io.ratpack.ratpack-groovy'
 
 repositories {
   jcenter()

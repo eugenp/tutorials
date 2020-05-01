@@ -1,2 +1,6 @@
+## Spring JMS
+
+This module contains articles about Spring with JMS
+
 ### Relevant Articles:
-- [An Introduction To Spring JMS](http://www.baeldung.com/spring-jms)
+- [Getting Started with Spring JMS](https://www.baeldung.com/spring-jms)
