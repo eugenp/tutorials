@@ -1015,7 +1015,7 @@
                 <module>asm</module>
                 <module>atomix</module>
                 <module>aws</module>
-				<module>aws-app-sync</module>
+                <module>aws-app-sync</module>
                 <module>aws-lambda</module>
                 <module>axon</module>
                 <module>azure</module>
