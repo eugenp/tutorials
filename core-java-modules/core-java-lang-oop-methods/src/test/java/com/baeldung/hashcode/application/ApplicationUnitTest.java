@@ -1,6 +1,6 @@
 package com.baeldung.hashcode.application;
 
-import com.baeldung.hashcode.entities.User;
+import com.baeldung.hashcode.standard.User;
 import org.junit.Test;
 
 import java.util.HashMap;
