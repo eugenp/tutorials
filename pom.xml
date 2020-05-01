@@ -497,9 +497,6 @@
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
-                <module>libraries-4</module>
-                <module>libraries-5</module>
-                <module>libraries-6</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -814,6 +811,9 @@
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+                <module>libraries-6</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
@@ -1014,9 +1014,6 @@
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
-                <module>libraries-4</module>
-                <module>libraries-5</module>
-                <module>libraries-6</module>
 
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -1317,6 +1314,9 @@
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+                <module>libraries-6</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
