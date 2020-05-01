@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class CreditAppUnitTest {
@@ -40,13 +41,28 @@ public class CreditAppUnitTest {
         assertNotNull(lender);
     }
     
+    @Ignore
+    @Test
+    public void givenBorrower_whenDoubleOrNotString_thenRequestLoan() {
+        Borrower borrower = new Borrower();
+        double amount = 100.0;
+        
+        /*if(amount instanceof Double) { // Compilation error, no autoboxing
+            borrower.requestLoan(amount);
+        }
+        
+        if(!(amount instanceof String)) { // Compilation error, incompatible operands
+            borrower.requestLoan(amount);
+        }*/
+        
+    }
+    
     @Test
     public void givenBorrower_whenLoanAmountIsDouble_thenRequestLoan() {
         Borrower borrower = new Borrower();
         double amount = 100.0;
         
-        //if(amount instanceof Double) // Compilation error, no autoboxing
-        if(Double.class.isInstance(amount)) {
+        if(Double.class.isInstance(amount)) { // No compilation error
             borrower.requestLoan(amount);
         }
         assertEquals(100, borrower.getTotalLoanAmount());
@@ -57,8 +73,7 @@ public class CreditAppUnitTest {
         Borrower borrower = new Borrower();
         Double amount = 100.0;
         
-        //if(amount instanceof String) // Compilation error, incompatible operands
-        if(!String.class.isInstance(amount)) {
+        if(!String.class.isInstance(amount)) { // No compilation error
             borrower.requestLoan(amount);
         }
         assertEquals(100, borrower.getTotalLoanAmount());
