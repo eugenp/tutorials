@@ -3,7 +3,6 @@
 This module contains articles about Object-oriented programming (OOP) in Java
 
 ### Relevant Articles: 
-- [Guide to hashCode() in Java](https://www.baeldung.com/java-hashcode)
 - [A Guide to the Static Keyword in Java](https://www.baeldung.com/java-static)
 - [Polymorphism in Java](https://www.baeldung.com/java-polymorphism)
 - [Method Overloading and Overriding in Java](https://www.baeldung.com/java-method-overload-override)
