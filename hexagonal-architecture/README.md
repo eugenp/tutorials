@@ -1,0 +1,1 @@
+This is a Spring Boot application to illustrate the Hexagonal Architecture in Java.
