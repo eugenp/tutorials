@@ -15,16 +15,18 @@ public class TextManipulator {
         text = text.concat(newText);
     }
 
-    public void findWordAndReplace(String word, String replacementWord) {
+    public String findWordAndReplace(String word, String replacementWord) {
         if (text.contains(word)) {
             text = text.replace(word, replacementWord);
-        } else System.out.println("Word you want to replace is not found in the text");
+        }
+        return text;
     }
 
-    public void findWordAndDelete(String word) {
+    public String findWordAndDelete(String word) {
         if (text.contains(word)) {
             text = text.replace(word, "");
-        } else System.out.println("Word you want to delete is not found in the text");
+        }
+        return text;
     }
 
  /*
