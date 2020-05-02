@@ -14,12 +14,8 @@ import java.util.List;
 @Service
 public class ProductServiceImplementation implements ProductService {
 
-    private ProductRepository productRepository;
-
     @Autowired
-    public ProductServiceImplementation(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+    private ProductRepository productRepository;
 
     @Override
     public List<Product> getProducts() {
@@ -37,7 +33,7 @@ public class ProductServiceImplementation implements ProductService {
     }
 
     @Override
-    public void removeProduct(Integer productId) {
-        productRepository.removeProduct(productId);
+    public Product removeProduct(Integer productId) {
+        return productRepository.removeProduct(productId);
     }
 }

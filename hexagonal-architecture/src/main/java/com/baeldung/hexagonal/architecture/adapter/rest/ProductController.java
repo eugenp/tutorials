@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * The class defines a REST controller which is an input adapters and invoke actions on the application using the inbound ports of application.
+ * The class defines a REST controller which is an input adapters and invokes action on the application using the inbound ports of application.
  */
 @RestController
 @RequestMapping("/api/v1/product")
@@ -39,8 +39,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{productId}")
-    public ResponseEntity<Void> removeProduct(@PathVariable Integer productId) {
-        productService.removeProduct(productId);
-        return new ResponseEntity<Void>(HttpStatus.OK);
+    public ResponseEntity<Product> removeProduct(@PathVariable Integer productId) {
+        return new ResponseEntity<Product>(productService.removeProduct(productId), HttpStatus.OK);
     }
 }

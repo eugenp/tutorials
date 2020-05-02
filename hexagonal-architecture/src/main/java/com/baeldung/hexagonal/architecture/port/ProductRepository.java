@@ -15,5 +15,5 @@ public interface ProductRepository {
 
     Product addProduct(Product product);
 
-    void removeProduct(Integer productId);
+    Product removeProduct(Integer productId);
 }

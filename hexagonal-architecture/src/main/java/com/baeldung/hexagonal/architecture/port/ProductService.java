@@ -4,7 +4,7 @@ import com.baeldung.hexagonal.architecture.domain.model.Product;
 import java.util.List;
 
 /**
- * The interface an inbound port provides the flow and the application functionality to the outside
+ * The interface is an inbound port provides the flow and the application functionality to the outside
  */
 public interface ProductService {
 
@@ -14,5 +14,5 @@ public interface ProductService {
 
     Product addProduct(Product product);
 
-    void removeProduct(Integer productId);
+    Product removeProduct(Integer productId);
 }

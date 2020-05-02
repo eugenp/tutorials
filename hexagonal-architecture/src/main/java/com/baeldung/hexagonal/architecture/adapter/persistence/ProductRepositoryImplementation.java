@@ -33,7 +33,13 @@ public class ProductRepositoryImplementation implements ProductRepository {
     }
 
     @Override
-    public void removeProduct(Integer productId) {
-        productMap.remove(productId);
+    public Product removeProduct(Integer productId) {
+        if(productMap.get(productId)!= null){
+            Product product = productMap.get(productId);
+            productMap.remove(productId);
+            return product;
+        } else
+            return null;
+
     }
 }
