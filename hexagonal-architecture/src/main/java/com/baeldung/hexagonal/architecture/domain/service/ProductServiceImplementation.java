@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * The class is an use case implementation of the inbound port to communication from the core application to the downstream system
+ * The class is an use case implementation of the inbound port.
  */
 @Service
 public class ProductServiceImplementation implements ProductService {
