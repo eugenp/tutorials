@@ -1,9 +1,4 @@
-package com.baeldung.spring.data.persistence.jpaquery;
-
-import java.time.LocalDate;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Stream;
+package com.baeldung.spring.data.persistence.repository;
 
 import com.baeldung.spring.data.persistence.model.User;
 import org.springframework.data.domain.Page;
@@ -13,6 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Stream;
 
 public interface UserRepository extends JpaRepository<User, Integer>, UserRepositoryCustom {
 

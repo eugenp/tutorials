@@ -1,21 +1,16 @@
-package com.baeldung.spring.data.persistence.jpaquery;
+package com.baeldung.spring.data.persistence.repository;
 
+import com.baeldung.spring.data.persistence.model.User;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
-import com.baeldung.spring.data.persistence.model.User;
 
 public class UserRepositoryCustomImpl implements UserRepositoryCustom {
 
