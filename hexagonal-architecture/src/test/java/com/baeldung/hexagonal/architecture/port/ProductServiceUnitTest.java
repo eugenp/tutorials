@@ -73,19 +73,22 @@ public class ProductServiceUnitTest {
         Product laptop = new Product(3, "Laptop", "Macbook Pro");
 
         List<Product> allProducts = productService.getProducts();
-        verifyGetProductsIsCalledOnce();
+
         assertThat(allProducts).hasSize(3).extracting(Product::getType).contains(mobilePhone.getType(), book.getType(), laptop.getType());
+        verifyGetProductsIsCalledOnce();
     }
 
     @Test
     public void whenAddProduct_thenProductTypeIsMatched() {
         Product electronics = new Product(4, "Electronics", "Bluetooth Speaker");
+
         assertThat(productService.addProduct(electronics)).extracting(Product::getType).as(electronics.getType());
     }
 
     @Test
     public void whenRemoveProductById_thenTwoProductReturned() {
         Product laptop = new Product(3, "Laptop", "Macbook Pro");
+
         assertThat(productService.removeProduct(3)).extracting(Product::getType).as(laptop.getType());
     }
 
