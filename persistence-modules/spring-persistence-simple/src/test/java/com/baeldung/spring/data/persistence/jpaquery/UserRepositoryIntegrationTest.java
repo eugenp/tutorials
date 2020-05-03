@@ -1,9 +1,5 @@
 package com.baeldung.spring.data.persistence.jpaquery;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.time.LocalDate;
-
 import com.baeldung.spring.data.persistence.config.PersistenceConfig;
 import com.baeldung.spring.data.persistence.model.User;
 import org.junit.Test;
@@ -14,9 +10,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Created by adam.
- */
+import java.time.LocalDate;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
 @DirtiesContext
