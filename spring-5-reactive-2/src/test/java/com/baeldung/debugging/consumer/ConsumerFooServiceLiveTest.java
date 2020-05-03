@@ -7,6 +7,11 @@ import org.springframework.test.web.reactive.server.WebTestClient.ResponseSpec;
 
 import com.baeldung.debugging.consumer.service.FooService;
 
+/**
+ * In order to run this live test, start the following classes:
+ * - com.baeldung.debugging.server.ServerDebuggingApplication
+ * - com.baeldung.debugging.consumer.ConsumerDebuggingApplication
+ */
 public class ConsumerFooServiceLiveTest {
 
     FooService service = new FooService();

@@ -10,7 +10,10 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [Find If Two Numbers Are Relatively Prime in Java](https://www.baeldung.com/java-two-relatively-prime-numbers)
 - [Knapsack Problem Implementation in Java](https://www.baeldung.com/java-knapsack)
 - [How to Determine if a Binary Tree is Balanced](https://www.baeldung.com/java-balanced-binary-tree)
-- [The Caesar Cipher in Java](https://www.baeldung.com/java-caesar-cipher)
 - [Overview of Combinatorial Problems in Java](https://www.baeldung.com/java-combinatorial-algorithms)
 - [Prim’s Algorithm](https://www.baeldung.com/java-prim-algorithm)
-- More articles: [[<-- prev]](/../algorithms-miscellaneous-4)
+- [Maximum Subarray Problem](https://www.baeldung.com/java-maximum-subarray)
+- [How to Merge Two Sorted Arrays](https://www.baeldung.com/java-merge-sorted-arrays)
+- [Median of Stream of Integers using Heap](https://www.baeldung.com/java-stream-integers-median-using-heap)
+- More articles: [[<-- prev]](/../algorithms-miscellaneous-4) [[next -->]](/../algorithms-miscellaneous-6)
+

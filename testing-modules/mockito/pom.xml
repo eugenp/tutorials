@@ -44,19 +44,6 @@
         </dependency>
 
         <!-- test scoped -->
-
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-module-junit4</artifactId>
-            <version>${powermock.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito2</artifactId>
-            <version>${powermock.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -90,7 +77,6 @@
 
         <!-- testing -->
         <powermock.version>2.0.2</powermock.version>
-        <hamcrest.version>2.0.0.0</hamcrest.version>
         <javax.persistence.version>2.1.1</javax.persistence.version>
     </properties>
 
