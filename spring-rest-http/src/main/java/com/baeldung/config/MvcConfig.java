@@ -21,7 +21,7 @@ import java.util.List;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan({ "com.baeldung.web", "com.baeldung.requestmapping" })
+@ComponentScan({ "com.baeldung.web.controller.status", "com.baeldung.requestmapping" })
 public class MvcConfig implements WebMvcConfigurer {
 
     public MvcConfig() {

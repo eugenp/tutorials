@@ -3,6 +3,7 @@ version: '3'
 services:
   order-mongo-database:
     image: mongo:3.4.13
+    container_name: order-mongo-db
     restart: always
     ports:
       - 27017:27017
@@ -12,3 +13,18 @@ services:
       MONGO_INITDB_DATABASE: order-database
     volumes:
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+  order-cassandra-database:
+    image: cassandra:3.11.5
+    container_name: order-cassandra-db
+    restart: always
+    ports: 
+      - 9042:9042
+  order-cassandra-init:
+    image: cassandra:3.11.5
+    container_name: order-cassandra-db-init
+    depends_on:
+      - order-cassandra-database
+    volumes:
+      - ./cassandra-init.cql:/cassandra-init.cql:ro
+    command: bin/bash -c "echo Initializing cassandra schema... && sleep 30 && cqlsh -u cassandra -p cassandra -f cassandra-init.cql order-cassandra-db" 
+      

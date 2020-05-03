@@ -38,6 +38,42 @@
             <version>${tomee-embedded.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+         <!-- Dependency for EJB javax -->
+        <dependency>
+            <groupId>javax.ejb</groupId>
+            <artifactId>javax.ejb-api</artifactId>
+            <version>${javax.ejb-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Spring JMS -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <version>${springframework.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- ActiveMQ -->
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-broker</artifactId>
+            <version>${activemq.broker.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq.tooling</groupId>
+            <artifactId>activemq-junit</artifactId>
+            <version>${activemq.junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
@@ -81,6 +117,12 @@
         <tomee-embedded.version>1.7.5</tomee-embedded.version>
         <glassfish-embedded-all.version>3.1.2</glassfish-embedded-all.version>
         <arquillian-glassfish-embedded-3.1.version>1.0.0.CR4</arquillian-glassfish-embedded-3.1.version>
+        <javax.ejb-api.version>3.2</javax.ejb-api.version>
+        <springframework.version>5.2.3.RELEASE</springframework.version>
+        <activemq.broker.version>5.10.2</activemq.broker.version>
+        <activemq.junit.version>5.13.1</activemq.junit.version>
+        <mockito.version>2.21.0</mockito.version>
+        <byte-buddy.version>1.8.5</byte-buddy.version>
     </properties>
 
 </project>

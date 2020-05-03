@@ -79,8 +79,8 @@
     </build>
 
     <properties>
-        <spring-boot-admin-server.version>2.1.6</spring-boot-admin-server.version>
-        <spring-boot-admin-starter-client.version>2.1.6</spring-boot-admin-starter-client.version>
+        <spring-boot-admin-server.version>2.2.2</spring-boot-admin-server.version>
+        <spring-boot-admin-starter-client.version>2.2.2</spring-boot-admin-starter-client.version>
         <spring-boot-admin-server-ui-login.version>1.5.7</spring-boot-admin-server-ui-login.version>
         <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
     </properties>

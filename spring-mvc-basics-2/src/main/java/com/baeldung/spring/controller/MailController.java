@@ -1,10 +1,17 @@
 package com.baeldung.spring.controller;
 
-import com.baeldung.spring.mail.EmailServiceImpl;
-import com.baeldung.spring.domain.MailObject;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -12,25 +19,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.baeldung.spring.domain.MailObject;
+import com.baeldung.spring.mail.EmailService;
+
+import freemarker.template.TemplateException;
 
 @Controller
 @RequestMapping("/mail")
 public class MailController {
 
     @Autowired
-    public EmailServiceImpl emailService;
+    public EmailService emailService;
 
     @Value("${attachment.invoice}")
     private String attachmentPath;
-
-    @Autowired
-    public SimpleMailMessage template;
 
     private static final Map<String, Map<String, String>> labels;
 
@@ -46,7 +48,7 @@ public class MailController {
 
         //Email with template
         props = new HashMap<>();
-        props.put("headerText", "Send Email Using Template");
+        props.put("headerText", "Send Email Using Text Template");
         props.put("messageLabel", "Template Parameter");
         props.put("additionalInfo",
                 "The parameter value will be added to the following message template:<br>" +
@@ -60,6 +62,7 @@ public class MailController {
         props.put("messageLabel", "Message");
         props.put("additionalInfo", "To make sure that you send an attachment with this email, change the value for the 'attachment.invoice' in the application.properties file to the path to the attachment.");
         labels.put("sendAttachment", props);
+
     }
     
     @RequestMapping(method = RequestMethod.GET)
@@ -85,6 +88,7 @@ public class MailController {
         return "mail/send";
     }
 
+
     @RequestMapping(value = "/send", method = RequestMethod.POST)
     public String createMail(Model model,
                              @ModelAttribute("mailObject") @Valid MailObject mailObject,
@@ -95,7 +99,7 @@ public class MailController {
         emailService.sendSimpleMessage(mailObject.getTo(),
                 mailObject.getSubject(), mailObject.getText());
 
-        return "redirect:/home";
+        return "emails";
     }
 
     @RequestMapping(value = "/sendTemplate", method = RequestMethod.POST)
@@ -107,10 +111,9 @@ public class MailController {
         }
         emailService.sendSimpleMessageUsingTemplate(mailObject.getTo(),
                 mailObject.getSubject(),
-                template,
                 mailObject.getText());
 
-        return "redirect:/home";
+        return "redirect:/mail";
     }
 
     @RequestMapping(value = "/sendAttachment", method = RequestMethod.POST)
@@ -127,6 +130,47 @@ public class MailController {
                 attachmentPath
         );
 
-        return "redirect:/home";
+        return "redirect:/mail";
+    }
+    
+
+    @RequestMapping(value = {"/sendHtml"}, method = RequestMethod.GET)
+    public String getHtmlMailView(Model model,
+                             HttpServletRequest request) {
+
+        Map<String, String> templateEngines = new HashMap<>();
+        templateEngines.put("Thymeleaf", "Thymeleaf");
+        templateEngines.put("Freemarker", "Freemarker");
+        model.addAttribute("mailObject", new MailObject());
+        model.addAttribute("templateEngines", templateEngines);
+        return "mail/sendHtml";
+    }
+
+    @RequestMapping(value = "/sendHtml", method = RequestMethod.POST)
+    public String createHtmlMail(Model model,
+                             @ModelAttribute("mailObject") @Valid MailObject mailObject,
+                             Errors errors) throws IOException, MessagingException, TemplateException {
+        if (errors.hasErrors()) {
+            return "mail/send";
+        }
+        
+        Map<String, Object> templateModel = new HashMap<>();
+        templateModel.put("recipientName", mailObject.getRecipientName());
+        templateModel.put("text", mailObject.getText());
+        templateModel.put("senderName", mailObject.getSenderName());
+        
+        if (mailObject.getTemplateEngine().equalsIgnoreCase("thymeleaf")) {
+            emailService.sendMessageUsingThymeleafTemplate(
+                    mailObject.getTo(),
+                    mailObject.getSubject(),
+                    templateModel);
+        } else {
+            emailService.sendMessageUsingFreemarkerTemplate(
+                mailObject.getTo(),
+                mailObject.getSubject(),
+                templateModel);
+        }
+
+        return "redirect:/mail";
     }
 }

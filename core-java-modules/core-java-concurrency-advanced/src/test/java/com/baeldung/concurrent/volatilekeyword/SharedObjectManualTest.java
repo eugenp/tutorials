@@ -10,7 +10,7 @@ public class SharedObjectManualTest {
     public void whenOneThreadWrites_thenVolatileReadsFromMainMemory() throws InterruptedException {
         SharedObject sharedObject = new SharedObject();
 
-        Thread writer = new Thread(() -> sharedObject.increamentCount());
+        Thread writer = new Thread(() -> sharedObject.incrementCount());
         writer.start();
         Thread.sleep(100);
 
@@ -31,11 +31,11 @@ public class SharedObjectManualTest {
     @Test
     public void whenTwoThreadWrites_thenVolatileReadsFromMainMemory() throws InterruptedException {
         SharedObject sharedObject = new SharedObject();
-        Thread writerOne = new Thread(() -> sharedObject.increamentCount());
+        Thread writerOne = new Thread(() -> sharedObject.incrementCount());
         writerOne.start();
         Thread.sleep(100);
 
-        Thread writerTwo = new Thread(() -> sharedObject.increamentCount());
+        Thread writerTwo = new Thread(() -> sharedObject.incrementCount());
         writerTwo.start();
         Thread.sleep(100);
 

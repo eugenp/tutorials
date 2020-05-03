@@ -6,6 +6,7 @@
     <name>spring-boot-properties</name>
     <packaging>jar</packaging>
     <description>Spring Boot Properties Module</description>
+    <version>0.0.1-SNAPSHOT</version>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -42,6 +43,12 @@
             <artifactId>httpcore</artifactId>
             <version>${httpcore.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>${configuration-processor.version}</version>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -64,6 +71,19 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <delimiters>
+                        <delimiter>@</delimiter>
+                    </delimiters>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <profiles>
@@ -106,6 +126,8 @@
         <commons-configuration.version>1.10</commons-configuration.version>
         <guava.version>20.0</guava.version>
         <httpcore.version>4.4.11</httpcore.version>
+        <resource.delimiter>@</resource.delimiter>
+        <configuration-processor.version>2.2.4.RELEASE</configuration-processor.version>
     </properties>
 
 </project>
