@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.quarkus.liquibase</groupId>
     <artifactId>quarkus-liquibase-parent</artifactId>
-    <name>quarkus-liquibase-parent</name>
+    <name>quarkus-liquibase</name>
     <packaging>pom</packaging>
 
     <parent>
