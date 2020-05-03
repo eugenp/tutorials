@@ -23,7 +23,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-${envTarget:h2}.properties" })
 @ComponentScan({ "com.baeldung.spring.data.persistence" })
-//@ImportResource("classpath*:*springDataPersistenceConfig.xml")
+//@ImportResource("classpath*:*springDataJpaRepositoriesConfig.xml")
 @EnableJpaRepositories("com.baeldung.spring.data.persistence.repository")
 public class PersistenceConfig {
 
