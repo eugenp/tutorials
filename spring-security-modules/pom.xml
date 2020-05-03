@@ -30,6 +30,7 @@
         <module>spring-security-mvc-login</module>
         <module>spring-security-mvc-persisted-remember-me</module>
         <module>spring-security-mvc-socket</module>
+        <module>spring-security-okta</module>
         <module>spring-security-oidc</module>
         <module>spring-security-react</module>   
         <module>spring-security-rest</module>
