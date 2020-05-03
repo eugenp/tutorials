@@ -50,11 +50,9 @@
             </dependency>
     </dependencies>
 
-    <properties>
-        <jedis.version>3.2.0</jedis.version>
+    <properties>        
         <embedded-redis.version>0.6</embedded-redis.version>
-        <redisson.version>3.3.0</redisson.version>
-        <lettuce-core.version>5.0.1.RELEASE</lettuce-core.version>
+        <redisson.version>3.3.0</redisson.version>        
     </properties>
 
 </project>
