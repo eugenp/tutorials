@@ -55,6 +55,11 @@
             <artifactId>groovy-wslite</artifactId>
             <version>${groovy-wslite.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit</groupId>
+            <artifactId>junit5-engine</artifactId>
+            <version>5.0.0-ALPHA</version>
+        </dependency>
     </dependencies>
 
     <build>
