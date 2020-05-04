@@ -1,5 +1,6 @@
 package com.baeldung.hexagonal.banking.output.adapter;
 
+import java.util.Optional;
 import java.util.function.Supplier;
 
 import javax.persistence.EntityNotFoundException;
@@ -23,13 +24,13 @@ public class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccount
     }
 
     @Override
-    public Account loadAccount(Long accountNumber) {
+    public Optional<Account> loadAccount(Long accountNumber) {
         AccountJpaEntity account = accountRepository.findById(accountNumber)
             .orElseThrow(EntityNotFoundException::new);
 
-        return mapperFactory.get()
+        return Optional.of(mapperFactory.get()
             .getMapper(account.getAccountType())
-            .mapToDomainEntity(account);
+            .mapToDomainEntity(account));
     }
 
     @Override

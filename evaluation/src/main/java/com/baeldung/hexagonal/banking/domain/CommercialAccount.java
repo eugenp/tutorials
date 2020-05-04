@@ -11,6 +11,10 @@ public class CommercialAccount extends Account {
     public CommercialAccount(Company company, int pin, BigDecimal startingDeposit) {
         super(company, pin, startingDeposit);
     }
+    
+    public CommercialAccount(Long accountNumber, Company company, int pin, BigDecimal startingDeposit) {
+        super(accountNumber, company, pin, startingDeposit);
+    }
 
     protected void addAuthorizedUser(Person person) {
         if (authorizedUsers == null)

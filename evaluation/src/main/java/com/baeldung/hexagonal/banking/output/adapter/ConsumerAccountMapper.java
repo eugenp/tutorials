@@ -10,7 +10,7 @@ public class ConsumerAccountMapper implements AccountMapper {
     public Account mapToDomainEntity(AccountJpaEntity account) {
         Person company = new Person(account.getFirstName(), account.getLastName(), account.getAccountHolderIdNumber());
 
-        return new ConsumerAccount(company, account.getPin(), account.getBalance());
+        return new ConsumerAccount(account.getAccountNumber(), company, account.getPin(), account.getBalance());
     }
 
     @Override

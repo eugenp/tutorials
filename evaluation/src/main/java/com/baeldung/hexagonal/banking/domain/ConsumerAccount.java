@@ -7,4 +7,8 @@ public class ConsumerAccount extends Account {
         super(person, pin, currentBalance);
 
     }
+    public ConsumerAccount(Long accountNumber, Person person, int pin, BigDecimal currentBalance) {
+        super(accountNumber, person, pin, currentBalance);
+
+    }
 }

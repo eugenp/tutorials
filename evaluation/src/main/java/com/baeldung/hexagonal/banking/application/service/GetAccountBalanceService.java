@@ -2,7 +2,6 @@ package com.baeldung.hexagonal.banking.application.service;
 
 import java.math.BigDecimal;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.baeldung.hexagonal.banking.input.port.GetAccountBalanceQueryPort;
@@ -20,7 +19,7 @@ public class GetAccountBalanceService implements GetAccountBalanceQueryPort{
 
     @Override
     public BigDecimal getBalance(Long accountNumber) {
-        return loadAccountPort.loadAccount(accountNumber)
+        return loadAccountPort.loadAccount(accountNumber).get()
             .getBalance();
     }
 

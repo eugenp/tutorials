@@ -21,28 +21,27 @@ public class OpenAccountService implements OpenAccontUseCasePort {
     @Override
     public Long openCommercialAccount(OpenCommercialAccountCommand command) {
 
-        if (givenDataIsValidToOpenAnAccount(command.getPin(), command.getStartingDeposit())) {
-            CommercialAccount newCommercialAccount = new CommercialAccount(command.getAccountHolder(), command.getPin(), command.getStartingDeposit());
-            return createAccountPort.createOrUpdateAccount(newCommercialAccount)
-                .getAccountNumber();
-        } else {
+        if (!givenDataIsValidToOpenAnAccount(command.getPin(), command.getStartingDeposit())) 
             throw new InvalidDataException(command.getPin(), command.getStartingDeposit());
-        }
+        
+        CommercialAccount newCommercialAccount = new CommercialAccount(command.getAccountHolder(), command.getPin(), command.getStartingDeposit());
+        return createAccountPort.createOrUpdateAccount(newCommercialAccount)
+            .getAccountNumber();
+    
 
     }
 
     @Override
     public Long openConsumerAccount(OpenConsumerAccountCommand command) {
-        if (givenDataIsValidToOpenAnAccount(command.getPin(), command.getStartingDeposit())) {
-            ConsumerAccount newCommercialAccount = new ConsumerAccount(command.getAccountHolder(), command.getPin(), command.getStartingDeposit());
-            return createAccountPort.createOrUpdateAccount(newCommercialAccount)
-                .getAccountNumber();
-        } else {
+        
+        if (!givenDataIsValidToOpenAnAccount(command.getPin(), command.getStartingDeposit())) 
             throw new InvalidDataException(command.getPin(), command.getStartingDeposit());
-        }
+            
+        ConsumerAccount newConsumerAccount = new ConsumerAccount(command.getAccountHolder(), command.getPin(), command.getStartingDeposit());
+        return createAccountPort.createOrUpdateAccount(newConsumerAccount)
+            .getAccountNumber();
+        
     }
-
-   
 
     private boolean givenDataIsValidToOpenAnAccount(int pin, BigDecimal startingDeposit) {
         return pin > 0 && startingDeposit.compareTo(BigDecimal.ZERO) >= 0;

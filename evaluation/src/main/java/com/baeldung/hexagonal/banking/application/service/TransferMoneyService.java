@@ -12,11 +12,11 @@ import com.baeldung.hexagonal.banking.output.port.UpdateAccountStatePort;
 
 @Component
 @Transactional
-public class TransferMoneyService implements TransferMoneyUseCasePort{
+public class TransferMoneyService implements TransferMoneyUseCasePort {
 
     private final LoadAccountPort loadAccountPort;
     private final UpdateAccountStatePort updateAccountStatePort;
-    
+
     public TransferMoneyService(LoadAccountPort loadAccountPort, UpdateAccountStatePort updateAccountStatePort) {
         super();
         this.loadAccountPort = loadAccountPort;
@@ -24,33 +24,29 @@ public class TransferMoneyService implements TransferMoneyUseCasePort{
     }
 
     @Override
-    public boolean transferMoney(TransferMoneyCommand command) {
+    public void transferMoney(TransferMoneyCommand command) throws InvalidPinException, NotEnoughBalanceException{
+
+
+        Account sourceAccount = loadAccountPort.loadAccount(command.getSourceAccountNumber())
+            .get();
+
+        if (!sourceAccount.validatePin(command.getAttemptedPin())) {
+            throw new InvalidPinException();
+        }
         
-            Account sourceAccount = loadAccountPort.loadAccount(
-                            command.getSourceAccountNumber());
+        if (!sourceAccount.debitAccount(command.getAmount())) {
+            throw new NotEnoughBalanceException();
+        }
+        
+        Account targetAccount = loadAccountPort.loadAccount(command.getTargetAccountNumber())
+            .get();
 
-            Account targetAccount = loadAccountPort.loadAccount(
-                            command.getTargetAccountNumber());
 
-            
-           if(!sourceAccount.validatePin(command.getAttemptedPin())) {
-               throw new InvalidPinException();
-           }
-           // AccountId sourceAccountId = sourceAccount.getId()
-           //                 .orElseThrow(() -> new IllegalStateException("expected source account ID not to be empty"));
-           // AccountId targetAccountId = targetAccount.getId()
-           //                 .orElseThrow(() -> new IllegalStateException("expected target account ID not to be empty"));
+        targetAccount.creditAccount(command.getAmount());
 
-            if (!sourceAccount.debitAccount(command.getAmount())) {
-               throw new NotEnoughBalanceException();
-            }
-            
-            targetAccount.creditAccount(command.getAmount());
-            
-            updateAccountStatePort.createOrUpdateAccount(sourceAccount);
-            updateAccountStatePort.createOrUpdateAccount(targetAccount);
+        updateAccountStatePort.createOrUpdateAccount(sourceAccount);
+        updateAccountStatePort.createOrUpdateAccount(targetAccount);
 
-            return true;
+           
     }
-
 }

@@ -10,7 +10,7 @@ public class CommercialAccountMapper implements AccountMapper {
     public Account mapToDomainEntity(AccountJpaEntity account) {
         Company company = new Company(account.getCompanyName(), account.getAccountHolderIdNumber());
 
-        return new CommercialAccount(company, account.getPin(), account.getBalance());
+        return new CommercialAccount(account.getAccountNumber(), company, account.getPin(), account.getBalance());
     }
 
     @Override
