@@ -1,6 +1,6 @@
-## Core Java Lang OOP - Types
+## Core Java Lang OOP - Inheritance
 
-This module contains articles about types in Java
+This module contains articles about inheritance in Java
 
 ### Relevant Articles: 
 - [Java Interfaces](https://www.baeldung.com/java-interfaces)
