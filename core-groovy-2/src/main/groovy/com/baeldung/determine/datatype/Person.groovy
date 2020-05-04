@@ -1,4 +1,4 @@
-package com.baeldung.groovy.determine.datatype
+package com.baeldung.determine.datatype
 
 class Person {
     
