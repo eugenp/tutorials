@@ -1,10 +1,10 @@
 package com.baeldung.hexagonal.banking.domain;
 
 public class Company extends AccountHolder {
-    private String companyName;
+    private final String companyName;
 
     public Company(String companyName, int taxId) {
-        super(taxId);
+        super(taxId, "Commercial");
         this.companyName = companyName;
     }
 

@@ -1,28 +1,45 @@
 package com.baeldung.hexagonal.banking.output.adapter;
 
+import java.util.function.Supplier;
+
+import javax.persistence.EntityNotFoundException;
+
+import org.springframework.stereotype.Component;
+
 import com.baeldung.hexagonal.banking.domain.Account;
-import com.baeldung.hexagonal.banking.output.port.CreateAccountPort;
 import com.baeldung.hexagonal.banking.output.port.LoadAccountPort;
-import com.baeldung.hexagonal.banking.output.port.UpdateAccountPort;
+import com.baeldung.hexagonal.banking.output.port.UpdateAccountStatePort;
 
-public class AccountPersistenceAdapter implements CreateAccountPort, LoadAccountPort, UpdateAccountPort {
+@Component
+public class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccountStatePort {
 
-    @Override
-    public Account updateAccount(Account account) {
-        // TODO Auto-generated method stub
-        return null;
+    private final AccountRepository accountRepository;
+    private final Supplier<AccountMapperFactory> mapperFactory;
+
+    public AccountPersistenceAdapter(AccountRepository accountRepository) {
+        super();
+        this.accountRepository = accountRepository;
+        mapperFactory = AccountMapperFactory::new;
     }
 
     @Override
     public Account loadAccount(Long accountNumber) {
-        // TODO Auto-generated method stub
-        return null;
+        AccountJpaEntity account = accountRepository.findById(accountNumber)
+            .orElseThrow(EntityNotFoundException::new);
+
+        return mapperFactory.get()
+            .getMapper(account.getAccountType())
+            .mapToDomainEntity(account);
     }
 
     @Override
-    public Account createAccount(Account account) {
-        // TODO Auto-generated method stub
-        return null;
+    public Account createOrUpdateAccount(Account account) {
+        
+        accountRepository.save(mapperFactory.get()
+            .getMapper(account.getAccountHolder().getHolderType())
+            .mapToJpaEntity(account));
+        
+        return account;
     }
 
 }

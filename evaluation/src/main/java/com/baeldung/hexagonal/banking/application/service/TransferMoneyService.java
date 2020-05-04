@@ -8,16 +8,16 @@ import com.baeldung.hexagonal.banking.domain.Account;
 import com.baeldung.hexagonal.banking.input.port.TransferMoneyCommand;
 import com.baeldung.hexagonal.banking.input.port.TransferMoneyUseCasePort;
 import com.baeldung.hexagonal.banking.output.port.LoadAccountPort;
-import com.baeldung.hexagonal.banking.output.port.UpdateAccountPort;
+import com.baeldung.hexagonal.banking.output.port.UpdateAccountStatePort;
 
 @Component
 @Transactional
 public class TransferMoneyService implements TransferMoneyUseCasePort{
 
     private final LoadAccountPort loadAccountPort;
-    private final UpdateAccountPort updateAccountStatePort;
+    private final UpdateAccountStatePort updateAccountStatePort;
     
-    public TransferMoneyService(LoadAccountPort loadAccountPort, UpdateAccountPort updateAccountStatePort) {
+    public TransferMoneyService(LoadAccountPort loadAccountPort, UpdateAccountStatePort updateAccountStatePort) {
         super();
         this.loadAccountPort = loadAccountPort;
         this.updateAccountStatePort = updateAccountStatePort;
@@ -27,10 +27,10 @@ public class TransferMoneyService implements TransferMoneyUseCasePort{
     public boolean transferMoney(TransferMoneyCommand command) {
         
             Account sourceAccount = loadAccountPort.loadAccount(
-                            command.getSourceAccountId());
+                            command.getSourceAccountNumber());
 
             Account targetAccount = loadAccountPort.loadAccount(
-                            command.getTargetAccountId());
+                            command.getTargetAccountNumber());
 
             
            if(!sourceAccount.validatePin(command.getAttemptedPin())) {
@@ -47,8 +47,8 @@ public class TransferMoneyService implements TransferMoneyUseCasePort{
             
             targetAccount.creditAccount(command.getAmount());
             
-            updateAccountStatePort.updateAccount(sourceAccount);
-            updateAccountStatePort.updateAccount(targetAccount);
+            updateAccountStatePort.createOrUpdateAccount(sourceAccount);
+            updateAccountStatePort.createOrUpdateAccount(targetAccount);
 
             return true;
     }

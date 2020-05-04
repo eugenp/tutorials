@@ -1,23 +1,41 @@
 package com.baeldung.hexagonal.banking.domain;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
-public class Account {
+public abstract class Account {
 
-    private AccountHolder accountHolder;
-    private Long accountNumber;
+    private final AccountHolder accountHolder;
+    private final Long accountNumber;
     private int pin;
     private BigDecimal balance;
 
-    protected Account(AccountHolder accountHolder, Long accountNumber, int pin, BigDecimal startingDeposit) {
+    protected Account(AccountHolder accountHolder, int pin, BigDecimal startingDeposit) {
         this.accountHolder = accountHolder;
-        this.accountNumber = accountNumber;
         this.pin = pin;
         this.balance = startingDeposit;
+        this.accountNumber = getNextAccountNumber();
+    }
+    
+    protected Account(Long accountNumber, AccountHolder accountHolder, int pin, BigDecimal startingDeposit) {
+        this.accountHolder = accountHolder;
+        this.pin = pin;
+        this.balance = startingDeposit;
+        this.accountNumber = accountNumber;
+    }
+    
+    private Long getNextAccountNumber() {
+        return UUID.randomUUID()
+            .getMostSignificantBits();
+
     }
 
     public AccountHolder getAccountHolder() {
         return accountHolder;
+    }
+    
+    public int getPin() {
+        return pin;
     }
 
     public boolean validatePin(int attemptedPin) {
@@ -50,7 +68,7 @@ public class Account {
     }
 
     public boolean debitAccount(BigDecimal amount) {
-        if (isGivenAmountValid(amount) && isThereFunds(amount)) {
+        if (isGivenAmountValid(amount) && areThereFunds(amount)) {
             balance = balance.subtract(amount);
             return true;
         } else {
@@ -58,7 +76,7 @@ public class Account {
         }
     }
 
-    private boolean isThereFunds(BigDecimal amount) {
+    private boolean areThereFunds(BigDecimal amount) {
         return amount.compareTo(this.balance) <= 0;
     }
 

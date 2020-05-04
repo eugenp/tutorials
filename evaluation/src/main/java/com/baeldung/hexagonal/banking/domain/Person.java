@@ -3,22 +3,20 @@ package com.baeldung.hexagonal.banking.domain;
 import java.util.Objects;
 
 public class Person extends AccountHolder {
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
 
     public Person(String firstName, String lastName, int idNumber) {
-        super(idNumber);
+        super(idNumber, "Consumer");
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
     public String getFirstName() {
-
         return firstName;
     }
 
     public String getLastName() {
-        // complete the function
         return lastName;
     }
 

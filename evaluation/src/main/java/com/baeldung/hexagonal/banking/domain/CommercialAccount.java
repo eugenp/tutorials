@@ -8,8 +8,8 @@ public class CommercialAccount extends Account {
 
     private List<Person> authorizedUsers;
 
-    public CommercialAccount(Company company, Long accountNumber, int pin, BigDecimal startingDeposit) {
-        super(company, accountNumber, pin, startingDeposit);
+    public CommercialAccount(Company company, int pin, BigDecimal startingDeposit) {
+        super(company, pin, startingDeposit);
     }
 
     protected void addAuthorizedUser(Person person) {
