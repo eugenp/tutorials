@@ -7,7 +7,6 @@ have their own dedicated modules.
 
 - [Guide to the Core Maven Plugins](https://www.baeldung.com/core-maven-plugins)
 - [Maven Resources Plugin](https://www.baeldung.com/maven-resources-plugin)
-- [Maven Compiler Plugin](https://www.baeldung.com/maven-compiler-plugin)
 - [Quick Guide to the Maven Surefire Plugin](https://www.baeldung.com/maven-surefire-plugin)
 - [The Maven Failsafe Plugin](https://www.baeldung.com/maven-failsafe-plugin)
 - [The Maven Verifier Plugin](https://www.baeldung.com/maven-verifier-plugin)

@@ -96,7 +96,7 @@
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <asspectj.version>1.8.9</asspectj.version>
-        <powermock.version>2.0.0-RC.4</powermock.version>
+        <powermock.version>2.0.0</powermock.version>
         <jmockit.version>1.44</jmockit.version>
         <!-- plugins -->
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>

@@ -34,9 +34,9 @@ public class BookServiceUnitTest {
         Book book2 = new Book(2L, "Animal Farm", "George Orwell", 300);
         Book book3 = new Book(3L, "Romeo and Juliet", "William Shakespeare", 200);
 
-        Mockito.when(bookRepository.checkIfEquals(any(Book.class), any(Book.class), any(Book.class))).then(AdditionalAnswers.returnsSecondArg());
+        Mockito.when(bookRepository.selectRandomBook(any(Book.class), any(Book.class), any(Book.class))).then(AdditionalAnswers.returnsSecondArg());
 
-        Book secondBook = bookService.checkifEquals(book1, book2, book3);
+        Book secondBook = bookService.selectRandomBook(book1, book2, book3);
 
         assertEquals(secondBook, book2);
     }
@@ -47,9 +47,9 @@ public class BookServiceUnitTest {
         Book book2 = new Book(2L, "Animal Farm", "George Orwell", 300);
         Book book3 = new Book(3L, "Romeo and Juliet", "William Shakespeare", 200);
 
-        Mockito.when(bookRepository.checkIfEquals(any(Book.class), any(Book.class), any(Book.class))).then(AdditionalAnswers.returnsLastArg());
+        Mockito.when(bookRepository.selectRandomBook(any(Book.class), any(Book.class), any(Book.class))).then(AdditionalAnswers.returnsLastArg());
 
-        Book lastBook = bookService.checkifEquals(book1, book2, book3);
+        Book lastBook = bookService.selectRandomBook(book1, book2, book3);
         assertEquals(lastBook, book3);
     }
 
@@ -59,9 +59,9 @@ public class BookServiceUnitTest {
         Book book2 = new Book(2L, "Animal Farm", "George Orwell", 300);
         Book book3 = new Book(3L, "Romeo and Juliet", "William Shakespeare", 200);
 
-        Mockito.when(bookRepository.checkIfEquals(any(Book.class), any(Book.class), any(Book.class))).then(AdditionalAnswers.returnsArgAt(1));
+        Mockito.when(bookRepository.selectRandomBook(any(Book.class), any(Book.class), any(Book.class))).then(AdditionalAnswers.returnsArgAt(1));
 
-        Book bookOnIndex = bookService.checkifEquals(book1, book2, book3);
+        Book bookOnIndex = bookService.selectRandomBook(book1, book2, book3);
 
         assertEquals(bookOnIndex, book2);
     }
