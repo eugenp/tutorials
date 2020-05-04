@@ -1,6 +1,8 @@
 package com.baeldung.controller.rss;
 
 import com.baeldung.spring.configuration.ApplicationConfiguration;
+import com.baeldung.spring.configuration.EmailConfiguration;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringJUnitWebConfig(ApplicationConfiguration.class)
+@SpringJUnitWebConfig(classes={ApplicationConfiguration.class, EmailConfiguration.class})
 public class ArticleRssIntegrationTest {
     public static final String APPLICATION_RSS_XML = "application/rss+xml";
     public static final String APPLICATION_RSS_JSON = "application/rss+json";

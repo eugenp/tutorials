@@ -18,7 +18,7 @@ public class SecurityController {
 
     @RequestMapping(value = "/username2", method = RequestMethod.GET)
     @ResponseBody
-    public String currentUserNameSimple(final Principal principal) {
+    public String currentUserName(final Principal principal) {
         return principal.getName();
     }
 

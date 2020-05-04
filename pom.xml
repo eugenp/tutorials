@@ -387,7 +387,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-
+                <!-- <module>cas</module> --> <!-- Not a maven project -->
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -505,6 +505,7 @@
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-http</module>
+                <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
@@ -651,6 +652,7 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-core-4</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
@@ -806,12 +808,13 @@
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
-                <!-- <module>jws</module> --> <!-- Failing the build. Fixing in http://jira.baeldung.com/browse/BAEL-3992 -->
+                <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
 
                 <module>vaadin</module>
                 <module>vavr</module>
+                <module>vavr-2</module>
             </modules>
         </profile>
 
@@ -900,7 +903,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-
+                <!-- <module>cas</module> --> <!-- Not a maven project -->
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -1017,6 +1020,7 @@
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-http</module>
+                <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
@@ -1155,6 +1159,7 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-core-4</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
@@ -1303,13 +1308,44 @@
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
-                <!-- <module>jws</module> --> <!-- Failing the build. Fixing in http://jira.baeldung.com/browse/BAEL-3992 -->
+                <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
 
                 <module>vaadin</module>
                 <module>vavr</module>
+                <module>vavr-2</module>
             </modules>
+
+        </profile>
+
+        <profile>
+            <id>live-all</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/SpringContextTest.java</exclude>
+                                <exclude>**/*UnitTest.java</exclude>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*JdbcTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+
 
         </profile>
 
