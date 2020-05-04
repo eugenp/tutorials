@@ -1,14 +1,15 @@
-package com.baeldung.determine.datatype;
+package com.baeldung.determine.datatype
 
 import org.junit.Assert
-import org.junit.Test;
+import org.junit.Test
+import com.baeldung.determine.datatype.Person
 
 public class PersonTest {
     
     @Test
     public void givenWhenParameterTypeIsInteger_thenReturnTrue() {
         Person personObj = new Person(10)
-        Assert.assertTrue(personObj.ageAsInt instanceof Integer);
+        Assert.assertTrue(personObj.ageAsInt instanceof Integer)
     }
     
     @Test
@@ -30,7 +31,7 @@ public class PersonTest {
     
     @Test
     public void givenWhenObjectIsInstanceOfType_thenReturnTrue() {
-        Person personObj = new Person()
+        Person personObj = new Person
         Assert.assertTrue(personObj instanceof Person)
     }
 
