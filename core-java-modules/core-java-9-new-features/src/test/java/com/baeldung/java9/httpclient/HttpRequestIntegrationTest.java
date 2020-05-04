@@ -22,7 +22,7 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by adam.
  */
-public class HttpRequestTest {
+public class HttpRequestIntegrationTest {
 
     @Test
     public void shouldReturnStatusOKWhenSendGetRequest() throws IOException, InterruptedException, URISyntaxException {

@@ -18,7 +18,7 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by adam.
  */
-public class HttpResponseTest {
+public class HttpResponseIntegrationTest {
 
     @Test
     public void shouldReturnStatusOKWhenSendGetRequest() throws IOException, InterruptedException, URISyntaxException {
