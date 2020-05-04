@@ -13,7 +13,7 @@ public class DatabaseConfig {
 	public DataSource dataSource() {
 
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		return builder.setType(EmbeddedDatabaseType.HSQL).addScript("schema.sql").addScript("schema.sql").build();
+		return builder.setType(EmbeddedDatabaseType.HSQL).build();
 	}
 
 }
