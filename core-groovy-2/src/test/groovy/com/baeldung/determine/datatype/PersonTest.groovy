@@ -31,7 +31,7 @@ public class PersonTest {
     
     @Test
     public void givenWhenObjectIsInstanceOfType_thenReturnTrue() {
-        Person personObj = new Person
+        Person personObj = new Person()
         Assert.assertTrue(personObj instanceof Person)
     }
 
