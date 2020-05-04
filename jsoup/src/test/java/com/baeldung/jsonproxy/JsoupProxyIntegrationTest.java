@@ -1,4 +1,4 @@
-package com.baeldung.jsoup.proxy;
+package com.baeldung.jsonproxy;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
