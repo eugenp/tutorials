@@ -652,6 +652,7 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-core-4</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
@@ -813,6 +814,7 @@
 
                 <module>vaadin</module>
                 <module>vavr</module>
+                <module>vavr-2</module>
             </modules>
         </profile>
 
@@ -1157,6 +1159,7 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-core-4</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
@@ -1311,7 +1314,38 @@
 
                 <module>vaadin</module>
                 <module>vavr</module>
+                <module>vavr-2</module>
             </modules>
+
+        </profile>
+
+        <profile>
+            <id>live-all</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/SpringContextTest.java</exclude>
+                                <exclude>**/*UnitTest.java</exclude>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*JdbcTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+
 
         </profile>
 
