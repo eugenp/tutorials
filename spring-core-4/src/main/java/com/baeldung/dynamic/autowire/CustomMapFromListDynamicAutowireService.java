@@ -9,17 +9,17 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
-public class InterfaceDynamicAutowireService {
+public class CustomMapFromListDynamicAutowireService {
     private final Map<String, RegionService> servicesByCountryCode;
 
     @Autowired
-    public InterfaceDynamicAutowireService(List<RegionService> regionServices) {
+    public CustomMapFromListDynamicAutowireService(List<RegionService> regionServices) {
         servicesByCountryCode = regionServices.stream()
-                .collect(Collectors.toMap(RegionService::getCountryCode, Function.identity()));
+                .collect(Collectors.toMap(RegionService::getISOCountryCode, Function.identity()));
     }
 
-    public boolean isServerActive(String countryCode, int serverId) {
-        RegionService service = servicesByCountryCode.get(countryCode);
+    public boolean isServerActive(String isoCountryCode, int serverId) {
+        RegionService service = servicesByCountryCode.get(isoCountryCode);
 
         return service.isServerActive(serverId);
     }
