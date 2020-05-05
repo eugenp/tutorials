@@ -13,4 +13,5 @@ This module contains articles about Spring with Thymeleaf
 - [Working with Boolean in Thymeleaf](https://www.baeldung.com/thymeleaf-boolean)
 - [Working With Custom HTML Attributes in Thymeleaf](https://www.baeldung.com/thymeleaf-custom-html-attributes)
 - [How to Create an Executable JAR with Maven](https://www.baeldung.com/executable-jar-with-maven)
+- [https://www.baeldung.com/spring-mvc-thymeleaf-data](https://www.baeldung.com/spring-mvc-thymeleaf-data)
 - [[<-- prev]](/spring-thymeleaf)
