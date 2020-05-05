@@ -8,7 +8,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles: 
 - [Integration Testing in Spring](https://www.baeldung.com/integration-testing-in-spring)
-- [A Quick Guide to Spring MVC Matrix Variables](https://www.baeldung.com/spring-mvc-matrix-variables)
 - [File Upload with Spring MVC](https://www.baeldung.com/spring-file-upload)
 - [Introduction to HtmlUnit](https://www.baeldung.com/htmlunit)
 - [Upload and Display Excel Files with Spring MVC](https://www.baeldung.com/spring-mvc-excel-files)

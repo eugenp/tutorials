@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = {"com.baeldung.cache"})
-public class WebConfig implements WebMvcConfigurer {
+public class CacheWebConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
