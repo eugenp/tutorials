@@ -17,14 +17,14 @@ public class DynamicAutowireIntegrationTest {
     private BeanFactoryDynamicAutowireService beanFactoryDynamicAutowireService;
 
     @Autowired
-    private InterfaceDynamicAutowireService interfaceDynamicAutowireService;
+    private CustomMapFromListDynamicAutowireService customMapFromListDynamicAutowireService;
 
     @Test
     public void testConstructWorkerByJava() {
-        assertThat(beanFactoryDynamicAutowireService.isServerActive("uk", 101), is(false));
-        assertThat(interfaceDynamicAutowireService.isServerActive("uk", 101), is(false));
+        assertThat(beanFactoryDynamicAutowireService.isServerActive("GB", 101), is(false));
+        assertThat(customMapFromListDynamicAutowireService.isServerActive("GB", 101), is(false));
 
-        assertThat(beanFactoryDynamicAutowireService.isServerActive("usa", 101), is(true));
-        assertThat(interfaceDynamicAutowireService.isServerActive("usa", 101), is(true));
+        assertThat(beanFactoryDynamicAutowireService.isServerActive("US", 101), is(true));
+        assertThat(customMapFromListDynamicAutowireService.isServerActive("US", 101), is(true));
     }
 }

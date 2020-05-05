@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BeanFactoryDynamicAutowireService {
+    private static final String SERVICE_NAME_SUFFIX = "regionService";
     private final BeanFactory beanFactory;
 
     @Autowired
@@ -13,10 +14,14 @@ public class BeanFactoryDynamicAutowireService {
         this.beanFactory = beanFactory;
     }
 
-    public boolean isServerActive(String countryCode, int serverId) {
-        RegionService service = beanFactory.getBean(countryCode, RegionService.class);
+    public boolean isServerActive(String isoCountryCode, int serverId) {
+        RegionService service = beanFactory.getBean(getRegionServiceBeanName(isoCountryCode), RegionService.class);
 
         return service.isServerActive(serverId);
+    }
+
+    private String getRegionServiceBeanName(String isoCountryCode) {
+        return isoCountryCode + SERVICE_NAME_SUFFIX;
     }
 
 }
