@@ -1,10 +1,6 @@
 package com.baeldung.config;
 
-import java.util.Properties;
-
-import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
-
+import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -21,7 +17,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.google.common.base.Preconditions;
+import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
@@ -43,7 +40,7 @@ public class PersistenceJPAConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+        em.setPackagesToScan("com.baeldung.persistence.model");
 
         final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -64,9 +61,9 @@ public class PersistenceJPAConfig {
     }
 
     @Bean
-    public PlatformTransactionManager transactionManager(final EntityManagerFactory emf) {
+    public PlatformTransactionManager transactionManager() {
         final JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(emf);
+        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
         return transactionManager;
     }
 

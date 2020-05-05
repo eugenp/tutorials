@@ -14,7 +14,8 @@ public class BasicConnectionPool implements ConnectionPool {
     private final List<Connection> connectionPool;
     private final List<Connection> usedConnections = new ArrayList<>();
     private static final int INITIAL_POOL_SIZE = 10;
-    private final int MAX_POOL_SIZE = 20;
+    private static final int MAX_POOL_SIZE = 20;
+    private static final int MAX_TIMEOUT = 5;
 
     public static BasicConnectionPool create(String url, String user, String password) throws SQLException {
         List<Connection> pool = new ArrayList<>(INITIAL_POOL_SIZE);
@@ -42,6 +43,11 @@ public class BasicConnectionPool implements ConnectionPool {
         }
 
         Connection connection = connectionPool.remove(connectionPool.size() - 1);
+
+        if(!connection.isValid(MAX_TIMEOUT)){
+            connection = createConnection(url, user, password);
+        }
+
         usedConnections.add(connection);
         return connection;
     }
