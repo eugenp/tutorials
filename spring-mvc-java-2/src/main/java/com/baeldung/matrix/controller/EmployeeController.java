@@ -1,32 +1,22 @@
-package com.baeldung.web.controller;
+package com.baeldung.matrix.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
+import com.baeldung.matrix.model.Employee;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.MatrixVariable;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.baeldung.model.Employee;
+import java.util.*;
 
 @SessionAttributes("employees")
 @Controller
 public class EmployeeController {
 
-    Map<Long, Employee> employeeMap = new HashMap<>();
+    public Map<Long, Employee> employeeMap = new HashMap<>();
 
     @ModelAttribute("employees")
     public void initEmployees() {
