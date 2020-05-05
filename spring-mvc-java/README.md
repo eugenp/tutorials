@@ -13,6 +13,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Introduction to HtmlUnit](https://www.baeldung.com/htmlunit)
 - [Upload and Display Excel Files with Spring MVC](https://www.baeldung.com/spring-mvc-excel-files)
 - [web.xml vs Initializer with Spring](https://www.baeldung.com/spring-xml-vs-java-config)
-- [Spring MVC @PathVariable with a dot (.) gets truncated](https://www.baeldung.com/spring-mvc-pathvariable-dot)
 - [A Java Web Application Without a web.xml](https://www.baeldung.com/java-web-app-without-web-xml)
 - [Accessing Spring MVC Model Objects in JavaScript](https://www.baeldung.com/spring-mvc-model-objects-js)
