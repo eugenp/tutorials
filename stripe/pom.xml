@@ -28,9 +28,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <!-- version is explicit here because the one provided with the current spring-boot-starter-parent has a bug in NetBeans; can be removed if spring-boot-starter-parent is 
-                upgraded -->
         </dependency>
         <dependency>
             <groupId>com.stripe</groupId>
