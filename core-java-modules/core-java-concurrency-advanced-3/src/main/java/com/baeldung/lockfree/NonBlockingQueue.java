@@ -6,8 +6,8 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class NonBlockingQueue<T> {
 
-    private AtomicReference<Node<T>> head, tail;
-    private AtomicInteger size;
+    private final AtomicReference<Node<T>> head, tail;
+    private final AtomicInteger size;
 
     public NonBlockingQueue() {
         head = new AtomicReference<>(null);
@@ -57,7 +57,7 @@ public class NonBlockingQueue<T> {
     }
 
     private class Node<T> {
-        private T value;
+        private volatile T value;
         private volatile Node<T> next;
         private volatile Node<T> previous;
 
