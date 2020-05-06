@@ -12,7 +12,7 @@ import com.baeldung.catalog.domain.ProductRepository;
 @ApplicationScoped
 public class TransientProductRepository implements ProductRepository {
     private Map<String, Product> productMap = new HashMap<>();
-    
+
     public Optional<Product> findById(String id) {
         return Optional.ofNullable(productMap.get(id));
     }

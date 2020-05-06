@@ -8,12 +8,13 @@ public class GetProductResponse {
     private String id;
     private String shortDescription;
     private Set<ProductPrice> prices;
-    
+
     /**
      * For serialization
      */
-    public GetProductResponse() {}
-   
+    public GetProductResponse() {
+    }
+
     public GetProductResponse(String id, String shortDescription, Set<ProductPrice> prices) {
         super();
         this.id = id;

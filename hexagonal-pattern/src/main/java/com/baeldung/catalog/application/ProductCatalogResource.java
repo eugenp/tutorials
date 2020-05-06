@@ -13,7 +13,7 @@ import com.baeldung.catalog.domain.ProductService;
 @Path("/products")
 public class ProductCatalogResource {
     private ProductService productService;
-    
+
     @Inject
     public ProductCatalogResource(ProductService productService) {
         this.productService = productService;

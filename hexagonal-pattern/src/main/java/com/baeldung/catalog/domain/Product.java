@@ -29,7 +29,7 @@ public class Product {
             .filter(e -> e.matches(dateTime))
             .findFirst();
     }
-    
+
     public String getId() {
         return id;
     }
@@ -61,12 +61,11 @@ public class Product {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Product product = (Product) o;
-        return Objects.equals(id, product.id) &&
-                Objects.equals(shortName, product.shortName) &&
-                Objects.equals(tags, product.tags) &&
-                Objects.equals(productPrices, product.productPrices);
+        return Objects.equals(id, product.id) && Objects.equals(shortName, product.shortName) && Objects.equals(tags, product.tags) && Objects.equals(productPrices, product.productPrices);
     }
 }

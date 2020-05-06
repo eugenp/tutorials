@@ -27,11 +27,11 @@ public class ProductPrice {
         this.end = end;
         validateDateRange();
     }
-    
+
     public boolean matches(ZonedDateTime dateTime) {
         return getStart().isBefore(dateTime) && getEnd().isAfter(dateTime);
     }
-    
+
     private void validateDateRange() {
         if (start.isAfter(end)) {
             throw new InvalidPriceRangeException();
@@ -57,12 +57,12 @@ public class ProductPrice {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         ProductPrice that = (ProductPrice) o;
-        return Objects.equals(price, that.price) &&
-                Objects.equals(start, that.start) &&
-                Objects.equals(end, that.end);
+        return Objects.equals(price, that.price) && Objects.equals(start, that.start) && Objects.equals(end, that.end);
     }
 
     public static Comparator<ProductPrice> dateComparator() {
