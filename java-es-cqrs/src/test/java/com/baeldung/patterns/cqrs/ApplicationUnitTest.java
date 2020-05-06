@@ -1,8 +1,13 @@
 package com.baeldung.patterns.cqrs;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import com.baeldung.patterns.cqrs.aggregates.UserAggregate;
 import com.baeldung.patterns.cqrs.commands.CreateUserCommand;
@@ -17,15 +22,25 @@ import com.baeldung.patterns.domain.Address;
 import com.baeldung.patterns.domain.Contact;
 import com.baeldung.patterns.domain.User;
 
-public class Main {
+public class ApplicationUnitTest {
 
-    public static void main(String[] args) throws Exception {
-        UserWriteRepository writeRepository = new UserWriteRepository();
-        UserReadRepository readRepository = new UserReadRepository();
-        UserProjector projector = new UserProjector(readRepository);
-        UserAggregate userAggregate = new UserAggregate(writeRepository);
-        UserProjection userProjection = new UserProjection(readRepository);
+    private UserWriteRepository writeRepository;
+    private UserReadRepository readRepository;
+    private UserProjector projector;
+    private UserAggregate userAggregate;
+    private UserProjection userProjection;
 
+    @Before
+    public void setUp() {
+        writeRepository = new UserWriteRepository();
+        readRepository = new UserReadRepository();
+        projector = new UserProjector(readRepository);
+        userAggregate = new UserAggregate(writeRepository);
+        userProjection = new UserProjection(readRepository);
+    }
+
+    @Test
+    public void testApplication() throws Exception {
         String userId = UUID.randomUUID()
             .toString();
         User user = null;
@@ -47,11 +62,13 @@ public class Main {
         user = userAggregate.handleUpdateUserCommand(updateUserCommand);
         projector.project(user);
 
-        AddressByRegionQuery addressByRegionQuery = new AddressByRegionQuery(user.getUserid(), "NY");
-        System.out.println(userProjection.handle(addressByRegionQuery));
+        ContactByTypeQuery contactByTypeQuery = new ContactByTypeQuery(userId, "EMAIL");
+        assertEquals(Stream.of(new Contact("EMAIL", "tom.sawyer@gmail.com"))
+            .collect(Collectors.toSet()), userProjection.handle(contactByTypeQuery));
+        AddressByRegionQuery addressByRegionQuery = new AddressByRegionQuery(userId, "NY");
+        assertEquals(Stream.of(new Address("New York", "NY", "10001"))
+            .collect(Collectors.toSet()), userProjection.handle(addressByRegionQuery));
 
-        ContactByTypeQuery contactByTypeQuery = new ContactByTypeQuery(user.getUserid(), "EMAIL");
-        System.out.println(userProjection.handle(contactByTypeQuery));
     }
 
 }

@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sapient.learning</groupId>
-	<artifactId>java-events</artifactId>
+	<artifactId>java-es-cqrs</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>java-es-cqrs</name>
 	<properties>
@@ -16,5 +16,12 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.12</version>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 </project>

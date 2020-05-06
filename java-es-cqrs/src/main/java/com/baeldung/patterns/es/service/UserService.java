@@ -1,6 +1,5 @@
 package com.baeldung.patterns.es.service;
 
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -23,8 +22,7 @@ public class UserService {
     }
 
     public void createUser(String userId, String firstName, String lastName) {
-        UserCreatedEvent event = new UserCreatedEvent(userId, firstName, lastName);
-        repository.addEvent(userId, event);
+        repository.addEvent(userId, new UserCreatedEvent(userId, firstName, lastName));
     }
 
     public void updateUser(String userId, Set<Contact> contacts, Set<Address> addresses) throws Exception {
@@ -32,49 +30,30 @@ public class UserService {
         if (user == null)
             throw new Exception("User does not exist.");
 
-        List<Contact> contactsToRemove = user.getContacts()
+        user.getContacts()
             .stream()
             .filter(c -> !contacts.contains(c))
-            .collect(Collectors.toList());
-        for (Contact contact : contactsToRemove) {
-            UserContactRemovedEvent contactRemovedEvent = new UserContactRemovedEvent(contact.getType(), contact.getDetail());
-            repository.addEvent(userId, contactRemovedEvent);
-        }
-
-        List<Contact> contactsToAdd = contacts.stream()
+            .forEach(c -> repository.addEvent(userId, new UserContactRemovedEvent(c.getType(), c.getDetail())));
+        contacts.stream()
             .filter(c -> !user.getContacts()
                 .contains(c))
-            .collect(Collectors.toList());
-        for (Contact contact : contactsToAdd) {
-            UserContactAddedEvent contactAddedEvent = new UserContactAddedEvent(contact.getType(), contact.getDetail());
-            repository.addEvent(userId, contactAddedEvent);
-        }
-
-        List<Address> addressesToRemove = user.getAddresses()
+            .forEach(c -> repository.addEvent(userId, new UserContactAddedEvent(c.getType(), c.getDetail())));
+        user.getAddresses()
             .stream()
             .filter(a -> !addresses.contains(a))
-            .collect(Collectors.toList());
-        for (Address address : addressesToRemove) {
-            UserAddressRemovedEvent addressRemovedEvent = new UserAddressRemovedEvent(address.getCity(), address.getState(), address.getPostcode());
-            repository.addEvent(userId, addressRemovedEvent);
-        }
-
-        List<Address> addressesToAdd = addresses.stream()
+            .forEach(a -> repository.addEvent(userId, new UserAddressRemovedEvent(a.getCity(), a.getState(), a.getPostcode())));
+        addresses.stream()
             .filter(a -> !user.getAddresses()
                 .contains(a))
-            .collect(Collectors.toList());
-        for (Address address : addressesToAdd) {
-            UserAddressAddedEvent addressAddedEvent = new UserAddressAddedEvent(address.getCity(), address.getState(), address.getPostcode());
-            repository.addEvent(userId, addressAddedEvent);
-        }
+            .forEach(a -> repository.addEvent(userId, new UserAddressAddedEvent(a.getCity(), a.getState(), a.getPostcode())));
     }
 
     public Set<Contact> getContactByType(String userId, String contactType) throws Exception {
         User user = UserUtility.recreateUserState(repository, userId);
         if (user == null)
             throw new Exception("User does not exist.");
-        Set<Contact> contacts = user.getContacts();
-        return contacts.stream()
+        return user.getContacts()
+            .stream()
             .filter(c -> c.getType()
                 .equals(contactType))
             .collect(Collectors.toSet());
@@ -84,11 +63,10 @@ public class UserService {
         User user = UserUtility.recreateUserState(repository, userId);
         if (user == null)
             throw new Exception("User does not exist.");
-        Set<Address> addresses = user.getAddresses();
-        return addresses.stream()
+        return user.getAddresses()
+            .stream()
             .filter(a -> a.getState()
                 .equals(state))
             .collect(Collectors.toSet());
     }
-
 }

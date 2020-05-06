@@ -12,7 +12,6 @@ import com.baeldung.patterns.es.events.UserAddressRemovedEvent;
 import com.baeldung.patterns.es.events.UserContactAddedEvent;
 import com.baeldung.patterns.es.events.UserContactRemovedEvent;
 import com.baeldung.patterns.es.events.UserCreatedEvent;
-import com.baeldung.patterns.es.events.UserRemovedEvent;
 import com.baeldung.patterns.es.repository.EventStore;
 
 public class UserUtility {
@@ -26,9 +25,6 @@ public class UserUtility {
                 UserCreatedEvent e = (UserCreatedEvent) event;
                 user = new User(UUID.randomUUID()
                     .toString(), e.getFirstName(), e.getLastName());
-            }
-            if (event instanceof UserRemovedEvent) {
-                user = null;
             }
             if (event instanceof UserAddressAddedEvent) {
                 UserAddressAddedEvent e = (UserAddressAddedEvent) event;
