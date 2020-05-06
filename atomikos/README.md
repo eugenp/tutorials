@@ -1,5 +1,4 @@
 ## Atomikos
-
 This module contains articles about Atomikos
 
 ### Relevant Articles: 
