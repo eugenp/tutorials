@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.persistence.jpaquery;
+package com.baeldung.spring.data.persistence.repository;
 
 import com.baeldung.spring.data.persistence.config.PersistenceConfig;
 import com.baeldung.spring.data.persistence.model.User;
